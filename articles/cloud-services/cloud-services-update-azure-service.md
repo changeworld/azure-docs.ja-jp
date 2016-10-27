@@ -1,6 +1,6 @@
 <properties
-pageTitle="クラウド サービスの更新方法 | Microsoft Azure"
-description="Azure のクラウド サービスの更新方法について説明します。クラウド サービスで更新が処理され、可用性が確保されるしくみについて説明します。"
+pageTitle="How to update a cloud service | Microsoft Azure"
+description="Learn how to update cloud services in Azure. Learn how an update on a cloud service proceeds to ensure availability."
 services="cloud-services"
 documentationCenter=""
 authors="Thraka"
@@ -15,176 +15,183 @@ ms.topic="article"
 ms.date="08/10/2016"
 ms.author="adegeo"/>
 
-# クラウド サービスの更新方法
 
-## Overview
-クラウド上でロールとゲスト OS の両方を含むクラウド サービスを更新するには、次の 3 つの手順を実施します。最初に、クラウド サービスまたは OS の新しいバージョン用のバイナリ ファイルと構成ファイルをアップロードする必要があります。次に、Azure で、クラウド サービスの新しいバージョンの要件に基づいて、クラウド サービスのコンピューティング リソースとネットワーク リソースが予約されます。最後に、Azure で、ローリング アップグレードが実行され、可用性を維持しながら、テナントが新しいバージョンまたは新しいゲスト OS に段階的に更新されます。この記事では、この最後の手順であるローリング アップグレードの詳細について説明します。
+# <a name="how-to-update-a-cloud-service"></a>How to update a cloud service
 
-## Azure サービスを更新する
+## <a name="overview"></a>Overview
+At 10,000 feet, updating a cloud service, including both its roles and guest OS, is a three step process. First, the binaries and configuration files for the new cloud service or OS version must be uploaded. Next, Azure reserves compute and network resources for the cloud service based on the requirements of the new cloud service version. Finally, Azure performs a rolling upgrade to incrementally update the tenant to the new version or guest OS, while preserving your availability. This article discusses the details of this last step – the rolling upgrade.
 
-Azure では、ロール インスタンスが、アップグレード ドメイン (UD) と呼ばれる論理的なグループに編成されます。アップグレード ドメイン (UD) は、1 つのグループとして更新されるロール インスタンスの論理セットです。Azure ではクラウド サービスの更新を一度に 1 つの UD に対して行います。そのため、他の UD 内のインスタンスは引き続きトラフィックを処理できます。
+## <a name="update-an-azure-service"></a>Update an Azure Service
 
-アップグレード ドメインの既定の数は 5 です。アップグレード ドメインの数を変更するには、サービスの定義ファイル (.csdef) に upgradeDomainCount 属性を追加します。upgradeDomainCount 属性の詳細については、「[WebRole スキーマ](https://msdn.microsoft.com/library/azure/gg557553.aspx)」または「[WorkerRole スキーマ](https://msdn.microsoft.com/library/azure/gg557552.aspx)」を参照してください。
+Azure organizes your role instances into logical groupings called upgrade domains (UD). Upgrade domains (UD) are logical sets of role instances that are updated as a group.  Azure updates a cloud service one UD at a time, which allows instances in other UDs to continue serving traffic.
 
-サービス内の 1 つ以上のロールをインプレースで更新すると、Azure では、そのロールが属するアップグレード ドメインに相当するロール インスタンスのセットが更新されます。Azure は、1 つのアップグレード ドメイン内のすべてのインスタンスを更新してから (つまり、インスタンスを停止し、更新して、オンラインに復帰させてから)、次のドメインの処理に移ります。現在のアップグレード ドメインで実行されているインスタンスのみを停止することで、更新が実行中のサービスに与える影響を最小限に抑えています。詳細については、この記事で後ほど説明する「[アップグレードの処理のしくみ](#howanupgradeproceeds)」を参照してください。
+The default number of upgrade domains is 5. You can specify a different number of upgrade domains by including the upgradeDomainCount attribute in the service’s definition file (.csdef). For more information about the upgradeDomainCount attribute, see [WebRole Schema](https://msdn.microsoft.com/library/azure/gg557553.aspx) or [WorkerRole Schema](https://msdn.microsoft.com/library/azure/gg557552.aspx).
 
-> [AZURE.NOTE] **更新**と**アップグレード**という用語は、Azure に関する文脈では若干異なる意味で使用されますが、このドキュメントで取り上げる機能のプロセスと説明においては同じ意味と考えて問題ありません。
+When you perform an in-place update of one or more roles in your service, Azure updates sets of role instances according to the upgrade domain to which they belong. Azure updates all of the instances in a given upgrade domain – stopping them, updating them, bringing them back on-line – then moves onto the next domain. By stopping only the instances running in the current upgrade domain, Azure makes sure that an update occurs with the least possible impact to the running service. For more information, see [How the update proceeds](#howanupgradeproceeds) later in this article.
 
-ダウンタイムなしでロールをインプレース更新するには、サービスにそのロール インスタンスを少なくとも 2 つ定義する必要があります。サービスが 1 つのロールの 1 つのインスタンスのみで構成されている場合、インプレース更新が完了するまでサービスを使用できません。
+> [AZURE.NOTE] While the terms **update** and **upgrade** have slightly different meaning in the context Azure, they can be used interchangeably for the processes and descriptions of the features in this document.
 
-このトピックでは、Azure の更新に関する次の情報について説明します。
+Your service must define at least two instances of a role for that role to be updated in-place without downtime. If the service consists of only one instance of one role, your service will be unavailable until the in-place update has finished.
 
--   [更新中に許可されるサービスの変更](#AllowedChanges)
--   [アップグレードの処理のしくみ](#howanupgradeproceeds)
--   [更新のロールバック](#RollbackofanUpdate)
--   [進行中のデプロイに対する複数の変更操作の開始](#multiplemutatingoperations)
--   [複数のアップグレード ドメインへのロールの分配](#distributiondfroles)
+This topic covers the following information about Azure updates:
+
+-   [Allowed service changes during an update](#AllowedChanges)
+-   [How an upgrade proceeds](#howanupgradeproceeds)
+-   [Rollback of an update](#RollbackofanUpdate)
+-   [Initiating multiple mutating operations on an ongoing deployment](#multiplemutatingoperations)
+-   [Distribution of roles across upgrade domains](#distributiondfroles)
 
 <a name="AllowedChanges"></a>
-## 更新中に許可されるサービスの変更
-次の表は、更新中に許可されるサービスの変更を示しています。
+## <a name="allowed-service-changes-during-an-update"></a>Allowed service changes during an update
+The following table shows the allowed changes to a service during an update:
 
-|ホスティング、サービス、ロールに対して許可される変更|インプレース更新|ステージング (VIP スワップ)|削除と再デプロイ|
+|Changes permitted to hosting, services, and roles|In-place update|Staged (VIP swap)|Delete and re-deploy|
 |---|---|---|---|
-|オペレーティング システムのバージョン|はい|はい|はい
-|.NET 信頼レベル|はい|はい|はい|
-|仮想マシンのサイズ<sup>1</sup>|はい<sup>2</sup>|はい|はい|
-|ローカル ストレージの設定|増加のみ<sup>2</sup>|はい|はい|
-|サービス内のロールの追加または削除|はい|はい|はい|
-|特定のロールのインスタンスの数|はい|はい|はい|
-|サービスのエンドポイントの数または種類|はい<sup>2</sup>|いいえ|はい|
-|構成設定の名前と値|はい|はい|はい|
-|構成設定の値 (名前は不可)|はい|はい|はい|
-|新しい証明書の追加|はい|はい|はい|
-|既存の証明書の変更|はい|はい|はい|
-|新しいコードのデプロイ|はい|はい|はい|
-<sup>1</sup>サイズ変更は、クラウド サービスで使用できるサイズのサブセットに制限されます。
+|Operating system version|Yes|Yes|Yes
+|.NET trust level|Yes|Yes|Yes|
+|Virtual machine size<sup>1</sup>|Yes<sup>2</sup>|Yes|Yes|
+|Local storage settings|Increase only<sup>2</sup>|Yes|Yes|
+|Add or remove roles in a service|Yes|Yes|Yes|
+|Number of instances of a particular role|Yes|Yes|Yes|
+|Number or type of endpoints for a service|Yes<sup>2</sup>|No|Yes|
+|Names and values of configuration settings|Yes|Yes|Yes|
+|Values (but not names) of configuration settings|Yes|Yes|Yes|
+|Add new certificates|Yes|Yes|Yes|
+|Change existing certificates|Yes|Yes|Yes|
+|Deploy new code|Yes|Yes|Yes|
+<sup>1</sup>Size change limited to the subset of sizes available for the cloud service.
 
-<sup>2</sup>Azure SDK 1.5 以降のバージョンが必要です。
+<sup>2</sup>Requires Azure SDK 1.5 or later versions.
 
-> [AZURE.WARNING] 仮想マシンのサイズを変更すると、ローカル データが破棄されます。
+> [AZURE.WARNING] Changing the virtual machine size will destroy local data.
 
 
-更新中、次の操作はサポートされていません。
+The following items are not supported during an update:
 
--   ロールの名前の変更。そのロールを削除してから、新しい名前を持つロールを追加してください。
--   アップグレード ドメインの数の変更。
--   ローカル リソースのサイズの縮小。
+-   Changing the name of a role. Remove and then add the role with the new name.
+-   Changing of the Upgrade Domain count.
+-   Decreasing the size of the local resources.
 
-ローカル リソースのサイズの縮小など、サービスの定義に他の更新を加える場合は、代わりに VIP スワップ更新を実行する必要があります。詳細については、「[Swap Deployment](https://msdn.microsoft.com/library/azure/ee460814.aspx)」を参照してください。
+If you are making other updates to your service's definition, such as decreasing the size of local resource, you must perform a VIP swap update instead. For more information, see [Swap Deployment](https://msdn.microsoft.com/library/azure/ee460814.aspx).
 
 <a name="howanupgradeproceeds"></a>
-## アップグレードの処理のしくみ
-サービス内のすべてのロールを更新するか、サービス内の単一のロールを更新するかを決めることができます。どちらの場合も、アップグレード対象の最初のアップグレード ドメインに属する各ロールのインスタンスがすべて停止され、アップグレードされてから、オンラインに復帰します。最初のアップグレード ドメインがオンラインに戻った後で、2 番目のアップグレード ドメイン内のインスタンスが、停止後にアップグレードされて、オンラインに復帰します。クラウド サービスでは、一度に 1 つのアップグレードしかアクティブになりません。アップグレードは常に、クラウド サービスの最新のバージョンに対して実行されます。
+## <a name="how-an-upgrade-proceeds"></a>How an upgrade proceeds
+You can decide whether you want to update all of the roles in your service or a single role in the service. In either case, all instances of each role that is being upgraded and belong to the first upgrade domain are stopped, upgraded, and brought back online. Once they are back online, the instances in the second upgrade domain are stopped, upgraded, and brought back online. A cloud service can have at most one upgrade active at a time. The upgrade is always performed against the latest version of the cloud service.
 
-次の図は、サービス内のすべてのロールをアップグレードする場合のアップグレードの処理のしくみを示しています。
+The following diagram illustrates how the upgrade proceeds if you are upgrading all of the roles in the service:
 
-![サービスのアップグレード](media/cloud-services-update-azure-service/IC345879.png "サービスのアップグレード")
+![Upgrade service](media/cloud-services-update-azure-service/IC345879.png "Upgrade service")
 
-この次の図では、単一のロールのみをアップグレードする場合の更新の処理のしくみを示しています。
+This next diagram illustrates how the update proceeds if you are upgrading only a single role:
 
-![ロールのアップグレード](media/cloud-services-update-azure-service/IC345880.png "ロールのアップグレード")
+![Upgrade role](media/cloud-services-update-azure-service/IC345880.png "Upgrade role")  
 
-> [AZURE.NOTE] 単一のインスタンスから複数のインスタンスにサービスをアップグレードすると、Azure によるサービスのアップグレード方法の理由から、アップグレードの実行中はサービスが停止されます。サービス レベル アグリーメントによるサービスの可用性保証は、複数のインスタンスでデプロイされたサービスのみに適用されます。次の一覧は、各ドライブ上のデータが Azure サービスのアップグレード シナリオによってどのような影響を受けるかを示しています。
+> [AZURE.NOTE] When upgrading a service from a single instance to multiple instances your service will be brought down while the upgrade is performed due to the way Azure upgrades services. The service level agreement guaranteeing service availability only applies to services that are deployed with more than one instance. The following list describes how the data on each drive is affected by each Azure service upgrade scenario:
 >
->VM の再起動:
+>VM Reboot:
 >
--   C: 保持される
--   D: 保持される
--   E: 保持される
+-   C: Preserved
+-   D: Preserved
+-   E: Preserved
 >
->ポータルの再起動:
+>Portal Reboot:
 >
--   C: 保持される
--   D: 保持される
--   E: 破棄される
+-   C: Preserved
+-   D: Preserved
+-   E: Destroyed
 >
->ポータルの再イメージ化:
+>Portal Reimage:
 >
--   C: 保持される
--   D: 破棄される
--   E: 破棄される
+-   C: Preserved
+-   D: Destroyed
+-   E: Destroyed
 
->インプレース アップグレード:
+>In-Place Upgrade:
 >
--   C: 保持される
--   D: 保持される
--   E: 破棄される
+-   C: Preserved
+-   D: Preserved
+-   E: Destroyed
 >
->ノードの移行:
+>Node migration:
 >
--   C: 破棄される
--   D: 破棄される
--   E: 破棄される
+-   C: Destroyed
+-   D: Destroyed
+-   E: Destroyed
 
->上の一覧中の E: ドライブはロールのルート ドライブを表しているため、ハードコーディングしないように注意してください。代わりに、%RoleRoot% 環境変数を使用してドライブを表してください。
+>Note that, in the above list, the E: drive represents the role’s root drive, and should not be hard-coded. Instead, use the %RoleRoot% environment variable to represent the drive.
 
->単一のインスタンスのみで構成されるサービスをアップグレードする場合にダウンタイムを最小限に抑えるには、複数のインスタンスで構成される新しいサービスをステージング サーバーにデプロイし、VIP スワップを実行します。
+>To minimize the downtime when upgrading a single-instance service, deploy a new multi-instance service to the staging server and perform a VIP swap.
 
-自動更新中、Azure ファブリック コントローラーがクラウド サービスの正常性を定期的に評価し、次の UD に進む安全なタイミングを判断します。この正常性の評価はロールごとに実行され、最新バージョンのインスタンス (つまり、処理済みの UD のインスタンス) のみが対象になります。この評価では、ロールごとに、最小限の数のロール インスタンスが良好な最終状態になったかどうかが検証されます。
+During an automatic update, the Azure Fabric Controller periodically evaluates the health of the cloud service to determine when it’s safe to walk the next UD. This health evaluation is performed on a per-role basis and considers only instances in the latest version (i.e. instances from UDs that have already been walked). It verifies that a minimum number of role instances, for each role, have achieved a satisfactory terminal state.
 
-### ロール インスタンス開始のタイムアウト
-ファブリック コントローラーは、各ロール インスタンスが開始状態に到達するまで 30 分間待機します。このタイムアウト期間が経過すると、ファブリック コントローラーは次のロール インスタンスに進みます。
+### <a name="role-instance-start-timeout"></a>Role Instance Start Timeout
+The Fabric Controller will wait 30 minutes for each role instance to reach a Started state. If the timeout duration elapses, the Fabric Controller will continue walking to the next role instance.
 
 <a name="RollbackofanUpdate"></a>
-## 更新のロールバック
-Azure では、更新中のサービス管理の柔軟性を高めるために、最初の更新要求が Azure ファブリック コントローラーで受信された後もサービスに対する追加の操作を実行することができます。ロールバックは、デプロイに対する更新 (構成の変更) またはアップグレードが**進行中**状態の場合にのみ実行できます。更新またはアップグレードが進行中であると見なされるのは、新しいバージョンに更新されていないサービスのインスタンスが少なくとも 1 つある場合です。ロールバックが許可されるかどうかをテストするには、[Get Deployment](https://msdn.microsoft.com/library/azure/ee460804.aspx) と [Get Cloud Service Properties](https://msdn.microsoft.com/library/azure/ee460806.aspx) の操作で返される RollbackAllowed フラグの値が true に設定されているかどうかを確認します。
+## <a name="rollback-of-an-update"></a>Rollback of an update
+Azure provides flexibility in managing services during an update by letting you initiate additional operations on a service, after the initial update request is accepted by the Azure Fabric Controller. A rollback can only be performed when an update (configuration change) or upgrade is in the **in progress** state on the deployment. An update or upgrade is considered to be in-progress as long as there is at least one instance of the service which has not yet been updated to the new version. To test whether a rollback is allowed, check the value of the RollbackAllowed flag, returned by [Get Deployment](https://msdn.microsoft.com/library/azure/ee460804.aspx) and [Get Cloud Service Properties](https://msdn.microsoft.com/library/azure/ee460806.aspx) operations, is set to true.
 
-> [AZURE.NOTE] VIP スワップ アップグレードでは、サービスの実行中のインスタンス全体が別のインスタンスに置き換えられるため、ロールバックの呼び出しは、**インプレース**の更新またはアップグレードに対して行われた場合のみ有効です。
+> [AZURE.NOTE] It only makes sense to call Rollback on an **in-place** update or upgrade because VIP swap upgrades involve replacing one entire running instance of your service with another.
 
-進行中の更新をロールバックすると、デプロイに次の影響を与えます。
+Rollback of an in-progress update has the following effects on the deployment:
 
--   新しいバージョンへの更新またはアップグレードが完了していないロール インスタンスは、更新またはアップグレードされません。これらのインスタンスでは、目的のバージョンのサービスが既に実行されているためです。
--   サービス パッケージ (\*.cspkg) ファイルかサービス構成 (\*.cscfg) ファイル (または両方のファイル) の新しいバージョンへの更新またはアップグレードが完了したロール インスタンスは、アップグレードする前のバージョンのファイルに戻ります。
+-   Any role instances which had not yet been updated or upgraded to the new version are not updated or upgraded, because those instances are already running the target version of the service.
+-   Any role instances which had already been updated or upgraded to the new version of the service package (\*.cspkg) file or the service configuration (\*.cscfg) file (or both files) are reverted to the pre-upgrade version of these files.
 
-ロールバックは、次の機能によって実現されています。
+This functionally is provided by the following features:
 
--   [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) 操作。新しいバージョンへの更新が完了していないインスタンスがサービスに少なくとも 1 つある場合に、構成の更新 ([Change Deployment Configuration](https://msdn.microsoft.com/library/azure/ee460809.aspx) 呼び出しによってトリガーされた操作) またはアップグレード ([Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx) の呼び出しによってトリガーされた操作) に対して呼び出すことができます。
--   Locked 要素と RollbackAllowed 要素。[Get Deployment](https://msdn.microsoft.com/library/azure/ee460804.aspx) 操作と [Get Cloud Service Properties](https://msdn.microsoft.com/library/azure/ee460806.aspx) 操作の応答本文の一部として返されます。
-    1.  Locked 要素を使用すると、特定のデプロイで変更操作を呼び出すことができるタイミングを検出できます。
-    2.  RollbackAllowed 要素を使用すると、特定のデプロイで [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) 操作を呼び出すことができるタイミングを検出できます。
+-   The [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) operation, which can be called on a configuration update (triggered by calling [Change Deployment Configuration](https://msdn.microsoft.com/library/azure/ee460809.aspx)) or an upgrade (triggered by calling [Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx)) as long as there is at least one instance in the service which has not yet been updated to the new version.
+-   The Locked element and the RollbackAllowed element, which are returned as part of the response body of the [Get Deployment](https://msdn.microsoft.com/library/azure/ee460804.aspx) and [Get Cloud Service Properties](https://msdn.microsoft.com/library/azure/ee460806.aspx) operations:
+    1.  The Locked element allows you to detect when a mutating operation can be invoked on a given deployment.
+    2.  The RollbackAllowed element allows you to detect when the [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) operation can be called on a given deployment.
 
-    ロールバックを実行するために、Locked 要素と RollbackAllowed 要素の両方を確認する必要はありません。RollbackAllowed が true に設定されていることを確認するだけで十分です。"x-ms-version: 2011-10-01" またはそれ以降のバージョンに設定されている要求ヘッダーを使用してこれらのメソッドが呼び出された場合のみ、この 2 つの要素が返されます。バージョン管理ヘッダーの詳細については、「[サービス管理のバージョン管理](https://msdn.microsoft.com/library/azure/gg592580.aspx)」を参照してください。
+    In order to perform a rollback, you do not have to check both the Locked and the RollbackAllowed elements. It suffices to confirm that RollbackAllowed is set to true. These elements are only returned if these methods are invoked by using the request header set to “x-ms-version: 2011-10-01” or a later version. For more information about versioning headers, see [Service Management Versioning](https://msdn.microsoft.com/library/azure/gg592580.aspx).
 
-更新やアップグレードのロールバックがサポートされないのは、次のような場合です。
+There are some situations where a rollback of an update or upgrade is not supported, these are as follows:
 
--   ローカル リソースの不足: 更新によってロールのローカル リソース使用量が増える場合、Azure のプラットフォームではロールバックが許可されません。
--   クォータの制限: 更新することでスケールダウンする場合、ロールバック操作を完了できるだけのコンピューティング クォータがなくなる可能性があります。Azure の各サブスクリプションには、そのサブスクリプションに関連付けられているクォータがあります。このクォータは、そのサブスクリプションに属するすべてのホストされるサービスで使用できるコアの最大数を指定しています。特定の更新のロールバックを実行することでサブスクリプションがクォータを越える場合、ロールバックは有効になりません。
--   競合状態: 最初の更新が完了している場合、ロールバックできません。
+-   Reduction in local resources - If the update increases the local resources for a role the Azure platform does not allow rolling back. 
+-   Quota limitations - If the update was a scale down operation you may no longer have sufficient compute quota to complete the rollback operation. Each Azure subscription has a quota associated with it that specifies the maximum number of cores which can be consumed by all hosted services that belong to that subscription. If performing a rollback of a given update would put your subscription over quota then that a rollback will not be enabled.
+-   Race condition - If the initial update has completed, a rollback is not possible.
 
-更新のロールバックが役立つ例の 1 つが、[Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx) 操作を手動モードで使用して、Azure のホストされるサービスに対する大規模なインプレース アップグレードがロール アウトされるペースを制御する場合です。
+An example of when the rollback of an update might be useful is if you are using the [Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx) operation in manual mode to control the rate at which a major in-place upgrade to your Azure hosted service is rolled out.
 
-このようなアップグレードのロールアウトでは、[Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx) を手動モードで呼び出して、アップグレード ドメインの逐次処理を開始します。アップグレードの監視中に、ある時点で、最初のアップグレード ドメインの一部のロール インスタンスが応答しなくなっていることに気付いた場合、そのデプロイに対して [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) 操作を呼び出すことができます。これによって、まだアップグレードされていないインスタンスはそのまま、アップグレード済みのインスタンスは以前のサービス パッケージと構成にロールバックできます。
+During the rollout of the upgrade you call [Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx) in manual mode and begin to walk upgrade domains. If at some point, as you monitor the upgrade, you note some role instances in the first upgrade domains that you examine have become unresponsive, you can call the [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) operation on the deployment, which will leave untouched the instances which had not yet been upgraded and rollback instances which had been upgraded to the previous service package and configuration.
 
 <a name="multiplemutatingoperations"></a>
-## 進行中のデプロイに対する複数の変更操作の開始
-進行中のデプロイに対して複数の変更操作を同時に開始することが必要になる場合があります。たとえば、サービス更新を実行していて、その更新がサービス全体にロール アウトされている間に、更新のロールバック、別の更新の適用、場合によってはデプロイの削除など、なんらかの変更を加える必要が生じることがあります。これが必要になる一例は、アップグレード後のロール インスタンスでクラッシュが繰り返し発生するようなバグがサービス アップグレードのコードに含まれている状況です。この場合、アップグレード済みのドメイン内で正常な状態のインスタンスが少なくなるため、Azure ファブリック コントローラーでは、アップグレードの適用を進めることができなくなります。この状態は、*スタック デプロイ*と呼ばれます。更新をロールバックするか、失敗したデプロイを上書きする形で新しい更新を適用することで、スタック デプロイを正常な状態に戻すことができます。
+## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>Initiating multiple mutating operations on an ongoing deployment
+In some cases you may want to initiate multiple simultaneous mutating operations on an ongoing deployment. For example, you may perform a service update and, while that update is being rolled out across your service, you want to make some change, e.g. to roll the update back, apply a different update, or even delete the deployment. A case in which this might be necessary is if a service upgrade contains buggy code which causes an upgraded role instance to repeatedly crash. In this case, the Azure Fabric Controller will not be able to make progress in applying that upgrade because an insufficient number of instances in the upgraded domain are healthy. This state is referred to as a *stuck deployment*. You can unstick the deployment by rolling back the update or applying a fresh update over top of the failing one.
 
-サービスを更新またはアップグレードする最初の要求が Azure ファブリック コントローラーで受信されると、後続の変更操作を開始できます。つまり、別の変更操作を開始するために、最初の操作が完了するまで待つ必要はありません。
+Once the initial request to update or upgrade the service has been received by the Azure Fabric Controller, you can start subsequent mutating operations. That is, you do not have to wait for the initial operation to complete before you can start another mutating operation.
 
-最初の更新の進行中に 2 つ目の更新操作を開始すると、ロールバック操作と似た方法で処理が実行されます。2 番目の更新が自動モードである場合、最初のアップグレード ドメインが直ちにアップグレードされ、複数のアップグレード ドメインのインスタンスが同時にオフラインになる可能性があります。
+Initiating a second update operation while the first update is ongoing will perform similar to the rollback operation. If the second update is in automatic mode, the first upgrade domain will be upgraded immediately, possibly leading to instances from multiple upgrade domains being offline at the same point in time.
 
-変更操作には、[Change Deployment Configuration](https://msdn.microsoft.com/library/azure/ee460809.aspx)、[Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx)、[Update Deployment Status](https://msdn.microsoft.com/library/azure/ee460808.aspx)、[Delete Deployment](https://msdn.microsoft.com/library/azure/ee460815.aspx)、および [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx) があります。
+The mutating operations are as follows: [Change Deployment Configuration](https://msdn.microsoft.com/library/azure/ee460809.aspx), [Upgrade Deployment](https://msdn.microsoft.com/library/azure/ee460793.aspx), [Update Deployment Status](https://msdn.microsoft.com/library/azure/ee460808.aspx), [Delete Deployment](https://msdn.microsoft.com/library/azure/ee460815.aspx), and [Rollback Update Or Upgrade](https://msdn.microsoft.com/library/azure/hh403977.aspx).
 
-[Get Deployment](https://msdn.microsoft.com/library/azure/ee460804.aspx) と [Get Cloud Service Properties](https://msdn.microsoft.com/library/azure/ee460806.aspx) の 2 つの操作は Locked フラグを返します。このフラグを調べることで、特定のデプロイに対して変更操作を呼び出すことができるかどうかを判断できます。
+Two operations, [Get Deployment](https://msdn.microsoft.com/library/azure/ee460804.aspx) and [Get Cloud Service Properties](https://msdn.microsoft.com/library/azure/ee460806.aspx), return the Locked flag which can be examined to determine whether a mutating operation can be invoked on a given deployment.
 
-これらの操作のうち、Locked フラグを返すバージョンを呼び出すには、要求ヘッダーに "x-ms-version: 2011-10-01" 以降を設定する必要があります。バージョン管理ヘッダーの詳細については、「[サービス管理のバージョン管理](https://msdn.microsoft.com/library/azure/gg592580.aspx)」を参照してください。
+In order to call the version of these methods which returns the Locked flag, you must set request header to “x-ms-version: 2011-10-01” or a later. For more information about versioning headers, see [Service Management Versioning](https://msdn.microsoft.com/library/azure/gg592580.aspx).
 
 <a name="distributiondfroles"></a>
-## 複数のアップグレード ドメインへのロールの分配
-Azure では、設定された数のアップグレード ドメイン全体に対してロール インスタンスが均等に分配されます。この数は、サービス定義 (.csdef) ファイルの一部として構成することができます。アップグレード ドメインの最大数は 20 で、既定値は 5 です。サービス定義ファイルの変更方法の詳細については、「[Azure サービスの定義スキーマ (.csdef ファイル)](cloud-services-model-and-package.md#csdef)」を参照してください。
+## <a name="distribution-of-roles-across-upgrade-domains"></a>Distribution of roles across upgrade domains
+Azure distributes instances of a role evenly across a set number of upgrade domains, which can be configured as part of the service definition (.csdef) file. The max number of upgrade domains is 20 and the default is 5. For more information about how to modify the service definition file, see [Azure Service Definition Schema (.csdef File)](cloud-services-model-and-package.md#csdef).
 
-たとえば、ロールに 10 個のインスタンスがある場合、既定では各アップグレード ドメインに 2 個のインスタンスが含まれます。ロールに 14 個のインスタンスがある場合は、4 つのアップグレード ドメインにそれぞれ 3 個のインスタンスが含まれ、5 番目のアップグレード ドメインには 2 個が含まれます。
+For example, if your role has ten instances, by default each upgrade domain contains two instances. If your role has 14 instances, then four of the upgrade domains contain three instances, and a fifth domain contains two.
 
-アップグレード ドメインは、0 から始まるインデックスで識別されます。最初のアップグレード ドメインの ID は 0、2 番目のアップグレード ドメインの ID は 1、と続きます。
+Upgrade domains are identified with a zero-based index: the first upgrade domain has an ID of 0, and the second upgrade domain has an ID of 1, and so on.
 
-次の図は、サービスに 2 つのアップグレード ドメインが定義されているときに、2 つのロールで構成されるサービスが分配されるしくみを示しています。サービスは、Web ロールの 8 個のインスタンスと worker ロールの 9 個のインスタンスを実行しています。
+The following diagram illustrates how a service than contains two roles are distributed when the service defines two upgrade domains. The service is running eight instances of the web role and nine instances of the worker role.
 
-![アップグレード ドメインの分配](media/cloud-services-update-azure-service/IC345533.png "アップグレード ドメインの分配")
+![Distribution of Upgrade Domains](media/cloud-services-update-azure-service/IC345533.png "Distribution of Upgrade Domains")
 
-> [AZURE.NOTE] 複数のアップグレード ドメインにインスタンスを割り当てる方法は、Azure が制御します。どのインスタンスをどのドメインに割り当てるかを指定することはできません。
+> [AZURE.NOTE] Note that Azure controls how instances are allocated across upgrade domains. It's not possible to specify which instances are allocated to which domain.
 
-## 次のステップ
-[Cloud Services の管理方法](cloud-services-how-to-manage.md) [Cloud Services の監視方法](cloud-services-how-to-monitor.md) [Cloud Services の構成方法](cloud-services-how-to-configure.md)
+## <a name="next-steps"></a>Next steps
+[How to Manage Cloud Services](cloud-services-how-to-manage.md)  
+[How to Monitor Cloud Services](cloud-services-how-to-monitor.md)  
+[How to Configure Cloud Services](cloud-services-how-to-configure.md)  
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

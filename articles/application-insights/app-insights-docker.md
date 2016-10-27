@@ -1,149 +1,154 @@
 <properties 
-	pageTitle="Application Insights で Docker アプリケーションを監視する" 
-	description="Docker のパフォーマンス カウンター、イベント、および例外を、コンテナー化されたアプリからのテレメトリと共に Application Insights に表示できます。" 
-	services="application-insights" 
+    pageTitle="Monitor Docker applications in Application Insights" 
+    description="Docker perf counters, events and exceptions can be displayed on Application Insights, along with the telemetry from the containerized apps." 
+    services="application-insights" 
     documentationCenter=""
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="12/01/2015" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="12/01/2015" 
+    ms.author="awills"/>
  
-# Application Insights で Docker アプリケーションを監視する
 
-[Docker](https://www.docker.com/) コンテナーから取得したライフサイクル イベントとパフォーマンス カウンターを Application Insights でグラフ化できます。[Application Insights](app-insights-overview.md) イメージをホストのコンテナーにインストールすると、ホストとその他のイメージのパフォーマンス カウンターが表示されます。
+# <a name="monitor-docker-applications-in-application-insights"></a>Monitor Docker applications in Application Insights
 
-Docker で、すべての依存関係を備えた軽量コンテナーにアプリを配布します。これらは、Docker エンジンを実行しているすべてのホスト コンピューターで実行します。
+Lifecycle events and performance counters from [Docker](https://www.docker.com/) containers can be charted on Application Insights. Install the [Application Insights](app-insights-overview.md) image in a container in your host, and it will display  performance counters for the host, as well as for the other images.
 
-Docker ホストで [Application Insights イメージ](https://hub.docker.com/r/microsoft/applicationinsights/)を実行すると、次のメリットが得られます。
+With Docker you distribute your apps in lightweight containers complete with all dependencies. They'll run on any host machine that runs a Docker Engine.
 
-* ホストで実行されているすべてのコンテナーに関するライフサイクル テレメトリ (開始や停止など)。
-* すべてのコンテナーのパフォーマンス カウンター。CPU、メモリ、ネットワークの使用状況など。
-* コンテナーで実行されているアプリに [Application Insights SDK をインストールした](app-insights-java-live.md)場合、これらのアプリのすべてのテレメトリにコンテナーとホスト マシンを識別するプロパティが追加されます。たとえば、1 つ以上のホストで実行中のアプリのインスタンスがある場合、アプリのテレメトリをホスト別に簡単にフィルター処理できます。
+When you run the [Application Insights image](https://hub.docker.com/r/microsoft/applicationinsights/) on your Docker host, you'll get these benefits:
 
-![例](./media/app-insights-docker/00.png)
+* Lifecycle telemetry about all the containers running on the host - start, stop, and so on.
+* Performance counters for all the containers. CPU, memory, network usage, and more.
+* If you [installed Application Insights SDK](app-insights-java-live.md) in the apps running in the containers, all the telemetry of those apps will have additional properties identifying the container and host machine. So for example, if you have instances of an app running in more than one host, you'll easily be able to filter your app telemetry by host.
 
-
-## Application Insights リソースを設定する
-
-1. [Microsoft Azure ポータル](https://azure.com)にサインインし、アプリ用の Application Insights リソースを開きます。または [新しく作成](app-insights-create-new-resource.md)します。 
-
-    *どのリソースを使用する必要があるか。* ホストで実行されているアプリが他者によって開発されている場合は、[新しい Application Insights リソースを作成する](app-insights-create-new-resource.md)必要があります。テレメトリの表示と分析はこの場所で行います (アプリの種類には [その他] を選択します)。
-
-    ただし、アプリの開発者である場合は、各アプリに [Application Insights SDK を追加する](app-insights-java-live.md)ことをお勧めします。すべてのアプリが 1 つのビジネス アプリケーションのコンポーネントである場合は、テレメトリを 1 つのリソースに送信するように構成することで、同じリソースを使用して Docker のライフサイクルとパフォーマンスのデータを表示できます。
-
-    3 番目のシナリオは、アプリの大半は自分で開発しているが、それらのテレメトリの表示には別のリソースを使用している場合です。その場合は、Docker データ用の別個のリソースを作成できます。
-
-2.	Docker タイルを追加します。**[タイルの追加]** を選択し、ギャラリーから Docker タイルをドラッグした後、**[完了]** をクリックします。
-
-    ![例](./media/app-insights-docker/03.png)
+![example](./media/app-insights-docker/00.png)
 
 
-3. **[要点]** ドロップダウンをクリックし、インストルメンテーション キーをコピーします。これを使用して SDK にテレメトリの送信先を指示します。
+## <a name="set-up-your-application-insights-resource"></a>Set up your Application Insights resource
+
+1. Sign into [Microsoft Azure Portal](https://azure.com) and open the Application Insights resource for your app; or [create a new one](app-insights-create-new-resource.md). 
+
+    *Which resource should I use?* If the apps that you are running on your host were developed by someone else, then you'll need to [create a new Application Insights resource](app-insights-create-new-resource.md). This is where you view and analyze the telemetry. (Select 'Other' for the app type.)
+
+    But if you're the developer of the apps, then we hope you [added Application Insights SDK](app-insights-java-live.md) to each of them. If they're all really components of a single business application, then you might configure all of them to send telemetry to one resource, and you'll use that same resource to display the Docker lifecycle and performance data. 
+
+    A third scenario is that you developed most of the apps, but you are using separate resources to display their telemetry. In that case, you'll probably also want to create a separate resource for the Docker data. 
+
+2.  Add the Docker tile: Choose **Add Tile**, drag the Docker tile from the gallery, and then click **Done**. 
+
+    ![example](./media/app-insights-docker/03.png)
 
 
-    ![例](./media/app-insights-docker/02-props.png)
-
-すぐにまた戻ってテレメトリを見るので、ブラウザー ウィンドウはそのままにします。
+3. Click the **Essentials** drop-down and copy the Instrumentation Key. You'll use this to tell the SDK where to send its telemetry.
 
 
-## ホスト上で Application Insights モニターを実行する
+    ![example](./media/app-insights-docker/02-props.png)
+
+Keep that browser window handy, as you'll come back to it soon to look at your telemetry.
+
+
+## <a name="run-the-application-insights-monitor-on-your-host"></a>Run the Application Insights monitor on your host
  
-テレメトリを表示する場所ができたので、テレメトリを収集して送信するコンテナー化されたアプリを設定できます。
+Now that you've got somewhere to display the telemetry, you can set up the containerized app that will collect and send it.
 
-1.	Docker ホストに接続します。 
-2.	インストルメンテーション キーを次のコマンドで編集して実行します。
+1.  Connect to your Docker host. 
+2.  Edit your instrumentation key into this command, and then run it:
  
     ```
 
     docker run -v /var/run/docker.sock:/docker.sock -d microsoft/applicationinsights ikey=000000-1111-2222-3333-444444444
     ```
 
-Docker ホストごとに 1 つの Application Insights イメージが必要です。アプリケーションが複数の Docker ホストにデプロイされている場合は、上のコマンドをすべてのホストで繰り返します。
+Only one Application Insights image is required per Docker host. If your application is deployed on multiple Docker hosts, then repeat the command on every host.
 
-## アプリケーションを更新する
+## <a name="update-your-app"></a>Update your app
 
-アプリケーションが [Application Insights SDK for Java](app-insights-java-get-started.md) でインストルメント化されている場合は、次の行を、プロジェクト内のApplicationInsights.xml ファイルの`<TelemetryInitializers>` 要素の下に追加します。
+If your application is instrumented with the [Application Insights SDK for Java](app-insights-java-get-started.md), add the following line into the ApplicationInsights.xml file in your project, under the `<TelemetryInitializers>` element:
 
 ```xml
 
     <Add type="com.microsoft.applicationinsights.extensibility.initializer.docker.DockerContextInitializer"/> 
 ```
 
-これで、アプリから送信されるすべてのテレメトリ項目にコンテナーやホスト ID などの Docker 情報が追加されます。
+This adds Docker information such as container and host id to every telemetry item sent from your app.
 
-## テレメトリの表示
+## <a name="view-your-telemetry"></a>View your telemetry
 
-Azure ポータルで Application Insights リソースに戻ります。
+Go back to your Application Insights resource in the Azure portal.
 
-Docker タイルをクリックします。
+Click through the Docker tile.
 
-特に Docker エンジンで他のコンテナーを実行している場合は、Docker コンテナーから到着するデータがすぐに表示されます 。
-
-
-取得できるビューのいくつかを次に示します。
-
-### ホスト、アクティビティ、イメージ別のパフォーマンス カウンター
+You'll shortly see data arriving from the Docker app, especially if you have other containers running on your Docker engine.
 
 
-![例](./media/app-insights-docker/10.png)
+Here are some of the views you can get.
+
+### <a name="perf-counters-by-host,-activity-by-image"></a>Perf counters by host, activity by image
 
 
-![例](./media/app-insights-docker/11.png)
+![example](./media/app-insights-docker/10.png)
 
 
-
-詳細を表示するホストまたはイメージ名をクリックします。
+![example](./media/app-insights-docker/11.png)
 
 
 
-ビューをカスタマイズするには、グラフまたはグリッド見出しをクリックするか、[グラフの追加] を使用します。
-
-[メトリックス エクスプローラーの詳細情報](app-insights-metrics-explorer.md)
-
-### Docker コンテナーのイベント
+Click any host or image name for more detail.
 
 
-![例](./media/app-insights-docker/13.png)
 
-個々のイベントを調べるには、[[検索]](app-insights-diagnostic-search.md) をクリックします。検索およびフィルターを使用して必要なイベントを探します。イベントをクリックすると詳細情報が表示されます。
+To customize the view, click any chart, the grid heading, or use Add Chart. 
+
+[Learn more about metrics explorer](app-insights-metrics-explorer.md).
+
+### <a name="docker-container-events"></a>Docker container events
+
+
+![example](./media/app-insights-docker/13.png)
+
+To investigate individual events, click [Search](app-insights-diagnostic-search.md). Search and filter to find the events you want. Click any event to get more detail.
  
-### コンテナー名別の例外
+### <a name="exceptions-by-container-name"></a>Exceptions by container name
  
 
-![例](./media/app-insights-docker/14.png)
+![example](./media/app-insights-docker/14.png)
 
-### アプリのテレメトリに追加された Docker コンテキスト
+### <a name="docker-context-added-to-app-telemetry"></a>Docker context added to app telemetry
 
-AI SDK でインストルメント化されたアプリケーションから送信されたテレメトリを Docker コンテキスト付きで要求します。
+Request telemetry sent from the application instrumented with AI SDK, enriched with Docker context:
 
-![例](./media/app-insights-docker/16.png)
+![example](./media/app-insights-docker/16.png)
 
-プロセッサ時間と使用可能メモリのパフォーマンス カウンター。Docker コンテナー名によってグループ化されています。
-
-
-![例](./media/app-insights-docker/15.png)
+Processor time and available memory performance counters, enriched and grouped by Docker container name:
 
 
+![example](./media/app-insights-docker/15.png)
 
 
 
-## Q & A
 
-*Docker からは取得できず、Application Insights からは取得できるものは何ですか*
 
-* コンテナーおよびイメージ別のパフォーマンス カウンターの詳細情報です。
-* コンテナーとアプリ データが 1 つのダッシュボードに統合されます。
-* さらに分析するために、データベース、Power BI、その他のダッシュボードに[テレメトリをエクスポート](app-insights-export-telemetry.md)できます。
+## <a name="q-&-a"></a>Q & A
 
-*アプリ自体からテレメトリを取得するにはどうすればよいですか*
+*What does Application Insights give me that I can't get from Docker?*
 
-* Application Insights SDK をアプリにインストールします。詳細情報: [Java Web アプリ](app-insights-java-get-started.md)、[Windows Web アプリ](app-insights-asp-net.md)。
+* Detailed breakdown of performance counters by container and image.
+* Integrate container and app data in one dashboard.
+* [Export telemetry](app-insights-export-telemetry.md) for further analysis to a database, Power BI or other dashboard.
 
-<!---HONumber=AcomDC_1203_2015-->
+*How do I get telemetry from the app itself?*
+
+* Install the Application Insights SDK in the app. Learn how for: [Java web apps](app-insights-java-get-started.md), [Windows web apps](app-insights-asp-net.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

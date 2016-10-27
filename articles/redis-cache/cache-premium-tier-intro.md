@@ -1,93 +1,99 @@
 <properties 
-	pageTitle="Azure Redis Cache Premium レベルの概要 | Microsoft Azure" 
-	description="Premium レベルの Azure Redis Cache インスタンス向けの Redis の永続化、Redis クラスタリング、および VNET サポートの作成と管理方法について説明します。" 
-	services="redis-cache" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="douge" 
-	editor=""/>
+    pageTitle="Introduction to the Azure Redis Cache Premium tier | Microsoft Azure" 
+    description="Learn how to create and manage Redis Persistence, Redis clustering, and VNET support for your Premium tier Azure Redis Cache instances" 
+    services="redis-cache" 
+    documentationCenter="" 
+    authors="steved0x" 
+    manager="douge" 
+    editor=""/>
 
 <tags 
-	ms.service="cache" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="cache-redis" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/15/2016" 
-	ms.author="sdanie"/>
+    ms.service="cache" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="cache-redis" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/15/2016" 
+    ms.author="sdanie"/>
 
-# Azure Redis Cache Premium レベルの概要
-Azure Redis Cache は、データへの超高速アクセスを提供することで、拡張性や応答性の高いアプリケーションの作成を可能にするマネージ キャッシュです。
 
-新しい Premium レベルは、Standard レベルの全機能に加えて、パフォーマンスの向上、ワークロードの増加、障害復旧、インポート/エクスポート、セキュリティの強化などを備えたエンタープライズ対応のレベルです。Premium キャッシュ レベルの追加機能の詳細をお知りになりたい場合は、このドキュメントを引き続きお読みください。
+# <a name="introduction-to-the-azure-redis-cache-premium-tier"></a>Introduction to the Azure Redis Cache Premium tier
+Azure Redis Cache is a distributed, managed cache that helps you build highly scalable and responsive applications by providing super-fast access to your data. 
 
-## Standard/Basic レベルを超えるパフォーマンス
-**Standard/Basic レベルを超えるパフォーマンス。** Premium レベルのキャッシュは、高速プロセッサを備え、Basic/Standard レベルと比較して優れたパフォーマンスを発揮するハードウェア上にデプロイされます。Premium レベルのキャッシュは、スループットが高く、待機時間が低くなっています。
+The new Premium-tier is an Enterprise ready tier, which includes all the Standard-tier features and more, such as better performance, bigger workloads, disaster recovery, import/export, and enhanced security. Continue reading to learn more about the additional features of the Premium cache tier.
 
-**同じサイズのキャッシュでも Standard レベルと比べて Premium のスループットの方が高い。** たとえば、C6 (Standard) キャッシュのスループットが毎秒 15 万要求であるのに対し、53 GB の P4 (Premium) キャッシュは毎秒 25 万要求です。
+## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Better performance compared to Standard or Basic tier
+**Better performance over Standard or Basic tier.** Caches in the Premium tier are deployed on hardware which has faster processors and gives better performance compared to the Basic or Standard Tier. Premium tier Caches have higher throughput and lower latencies. 
 
-Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
+**Throughput for the same sized Cache is higher in Premium as compared to Standard tier.** For example, the throughput of a 53 GB P4 (Premium) cache is 250K requests per second as compared to 150K for C6 (Standard).
 
-## Redis データの保持
-Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。基盤となるインフラストラクチャに問題が発生した場合、データが失われる可能性があります。Premium レベルの Resis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。Azure Redis Cache には、[Redis の永続化](http://redis.io/topics/persistence)の RDB オプションと AOF オプション (近日公開予定) があります。
+For more information about size, throughput, and bandwidth with premium caches, see [Azure Redis Cache FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
-永続化の構成手順については、「[Premium Azure Redis Cache の永続性の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
+## <a name="redis-data-persistence"></a>Redis data persistence
+The Premium tier allows you to persist the cache data in an Azure Storage account. In a Basic/Standard cache all the data is stored only in memory. In case of underlying infrastructure issues there can be potential data loss. We recommend using the Redis data persistence feature in the Premium tier to increase resiliency against data loss. Azure Redis Cache offers RDB and AOF (coming soon) options in [Redis persistence](http://redis.io/topics/persistence). 
 
-##Redis クラスター
-53 GB を超えるキャッシュを作成するか、複数の Redis ノード間でデータを共有する場合、Premium レベルで利用可能な Redis クラスタリングを使用することができます。各ノードは、Azure によって管理される高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。
+For instructions on configuring persistence, see [How to configure persistence for a Premium Azure Redis Cache](cache-how-to-premium-persistence.md).
 
-**Redis クラスタリングでは、スケールとスループットを最大限に利用できます。** クラスター内のシャード (ノード) の数を増やすと、スループットは直線的に増加します。たとえば、10 個のシャードから成る P4 クラスターを作成すると、利用可能なスループットは毎秒 250 万要求 (25 万 * 10) となります。Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
+##<a name="redis-cluster"></a>Redis cluster
+If you want to create caches larger than 53 GB or want to shard data across multiple Redis nodes, you can use Redis clustering which is available in the Premium tier. Each node consists of a primary/replica cache pair managed by Azure for high availability. 
 
-クラスタリングを開始する場合は、「[Premium Azure Redis Cache のクラスタリングの構成方法](cache-how-to-premium-clustering.md)」を参照してください。
+**Redis clustering gives you maximum scale and throughput.** Throughput increases linearly as you increase the number of shards (nodes) in the cluster. Eg. If you create a P4 cluster of 10 shards, then the available throughput is 250K *10 = 2.5 Million requests per second. Please see the [Azure Redis Cache FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use) for more details about size, throughput, and bandwidth with premium caches.
 
-##強化されたセキュリティと分離
+To get started with clustering, see [How to configure clustering for a Premium Azure Redis Cache](cache-how-to-premium-clustering.md).
 
-Basic/Standard レベルで作成されたキャッシュは、パブリック インターネット上でアクセス可能です。キャッシュへのアクセスは、アクセス キーに基づいて制限されます。Premium レベルでは、さらに、指定されたネットワーク内のクライアントだけがキャッシュにアクセスできるようにすることが可能になります。Redis Cache は、[Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) 内にデプロイできます。サブネット、アクセス制御ポリシー、およびその他の Redis へのアクセスをさらに制限する機能を始め、VNet のすべての機能を使用できます。
+##<a name="enhanced-security-and-isolation"></a>Enhanced security and isolation
 
-詳細については、「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)」を参照してください。
+Caches created in the Basic or Standard tier are accessible on the public internet. Access to the Cache is restricted based on the access key. With the Premium tier you can further ensure that only clients within a specified network can access the Cache. You can deploy Redis Cache in an [Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/). You can use all the features of VNet such as subnets, access control policies, and other features to further restrict access to Redis.
 
-## Import/Export
+For more information, see [How to configure Virtual Network support for a Premium Azure Redis Cache](cache-how-to-premium-vnet.md).
 
-Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache データベース (RDB) のスナップショットを Premium キャッシュからエクスポートし、Azure ストレージ アカウント内のページ BLOB にインポートすることで、Azure Redis Cache との間でデータのインポートとエクスポートを実行できます。これにより、異なる Azure Redis Cache インスタンス間での移行または使用前のキャッシュへのデータ入力が可能になります。
+## <a name="import/export"></a>Import/Export
 
-インポートは、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使用できます。データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。インポート処理中に、Azure Redis Cache は RDB ファイルを Azure ストレージからメモリに読み込み、キーをキャッシュに挿入します。
+Import/Export is an Azure Redis Cache data management operation which allows you to import data into Azure Redis Cache or export data from Azure Redis Cache by importing and exporting a Redis Cache Database (RDB) snapshot from a premium cache to a page blob in an Azure Storage Account. This enables you to migrate between different Azure Redis Cache instances or populate the cache with data before use.
 
-エクスポート機能では、Azure Redis Cache に格納されたデータを Redis と互換性のある RDB ファイルにエクスポートできます。この機能を使えば、Azure Redis Cache インスタンス間でデータを移動したり、Azure Redis Cache インスタンスから別の Redis サーバーにデータを移動したりできます。エクスポート処理中に、Azure Redis Cache サーバー インスタンスをホストする VM 上に一時ファイルが作成され、それが指定されたストレージ アカウントにアップロードされます。エクスポート操作が完了したら、操作の成否にかかわらず、この一時ファイルは削除されます。
+Import can be used to bring Redis compatible RDB file(s) from any Redis server running in any cloud or environment, including Redis running on Linux, Windows, or any cloud provider such as Amazon Web Services and others. Importing data is an easy way to create a cache with pre-populated data. During the import process, Azure Redis Cache loads the RDB files from Azure storage into memory and then inserts the keys into the cache.
 
-詳細については、[Azure Redis Cache との間でデータのインポートとエクスポートを実行する方法](cache-how-to-import-export-data.md)に関するページを参照してください。
+Export allows you to export the data stored in Azure Redis Cache to Redis compatible RDB file(s). You can use this feature to move data from one Azure Redis Cache instance to another or to another Redis server. During the export process, a temporary file is created on the VM that hosts the Azure Redis Cache server instance, and the file is uploaded to the designated storage account. When the export operation completes with either a status of success or failure, the temporary file is deleted.
 
-## Reboot
+For more information, see [How to import data into and export data from Azure Redis Cache](cache-how-to-import-export-data.md).
 
-Premium レベルでは、キャッシュの 1 つ以上のノードをオンデマンドで再起動できます。これにより、障害発生時のアプリケーションの回復性をテストすることができます。次のノードを再起動できます。
+## <a name="reboot"></a>Reboot
 
--	キャッシュのマスター ノード
--	キャッシュのスレーブ ノード
--	キャッシュのマスター ノードとスレーブ ノードの両方
--	クラスタリングを備えた Premium キャッシュを使用している場合は、マスター ノード、スレーブ ノード、またはその両方を、キャッシュの個々のシャードに対して再起動できます
+The premium tier allows you to reboot one or more nodes of your cache on-demand. This allows you to test your application for resiliency in the event of a failure. You can reboot the following nodes.
 
-詳細については、「[再起動](cache-administration.md#reboot)」および「[再起動に関する FAQ](cache-administration.md#reboot-faq)」をご覧ください。
+-   Master node of your cache
+-   Slave node of your cache
+-   Both master and slave nodes of your cache
+-   When using a premium cache with clustering, you can reboot the master, slave, or both nodes for individual shards in the cache
 
-## 更新のスケジュール
+For more information, see [Reboot](cache-administration.md#reboot) and [Reboot FAQ](cache-administration.md#reboot-faq).
 
-更新のスケジュール機能では、キャッシュのメンテナンス時間を指定できます。メンテナンス時間を指定すると、その時間にすべての Redis サーバーの更新が実行されます。メンテナンス時間を指定するには、目的の曜日をオンにして、曜日ごとにメンテナンス時間の開始時刻を指定します。メンテナンス時間の時刻は UTC 時間で指定します。
+## <a name="schedule-updates"></a>Schedule updates
 
-詳細については、「[更新のスケジュール](cache-administration.md#schedule-updates)」および「[更新のスケジュールに関する FAQ](cache-administration.md#schedule-updates-faq)」をご覧ください。
+The scheduled updates feature allows you to designate a maintenance window for your cache. When the maintenance window is specified, any Redis server updates are made during this window. To designate a maintenance window, select the desired days and specify the maintenance window start hour for each day. Note that the maintenance window time is in UTC. 
 
->[AZURE.NOTE] スケジュールされたメンテナンス時間に行われるのは、Redis サーバーの更新だけです。メンテナンス時間は、Azure の更新や、VM のオペレーティング システムへの更新には適用されません。
+For more information, see [Schedule updates](cache-administration.md#schedule-updates) and [Schedule updates FAQ](cache-administration.md#schedule-updates-faq).
 
-## Premium レベルにスケーリングするには
+>[AZURE.NOTE] Only Redis server updates are made during the scheduled maintenance window. The maintenance window does not apply to Azure updates or updates to the VM operating system.
 
-Premium レベルにスケーリングするには、**[価格レベルの変更]** ブレードで Premium レベルのいずれかを選択するだけです。PowerShell および CLI を使用して、キャッシュを Premium レベルにスケーリングすることもできます。手順については、「[Azure Redis Cache のスケーリング方法](cache-how-to-scale.md)」および「[スケーリング処理を自動化する方法](cache-how-to-scale.md#how-to-automate-a-scaling-operation)」をご覧ください。
+## <a name="to-scale-to-the-premium-tier"></a>To scale to the premium tier
 
-## 次のステップ
+To scale to the premium tier, simply choose one of the premium tiers in the **Change pricing tier** blade. You can also scale your cache to the premium tier using PowerShell and CLI. For step-by-step instructions, see [How to Scale Azure Redis Cache](cache-how-to-scale.md) and [How to automate a scaling operation](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
-キャッシュを作成し、Premium レベルの新機能を確認します。
+## <a name="next-steps"></a>Next steps
 
--	[How to configure persistence for a Premium Azure Redis Cache (Premium Azure Redis Cache の永続性の構成方法)](cache-how-to-premium-persistence.md)
--	[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)
--	[How to configure clustering for a Premium Azure Redis Cache (Premium Azure Redis Cache のクラスタリングの構成方法)](cache-how-to-premium-clustering.md)
--	[Azure Redis Cache との間でデータのインポートとエクスポートを実行する方法](cache-how-to-import-export-data.md)
--	[Azure Redis Cache を管理する方法](cache-administration.md)
+Create a cache and explore the new premium tier features.
+
+-   [How to configure persistence for a Premium Azure Redis Cache](cache-how-to-premium-persistence.md)
+-   [How to configure Virtual Network support for a Premium Azure Redis Cache](cache-how-to-premium-vnet.md)
+-   [How to configure clustering for a Premium Azure Redis Cache](cache-how-to-premium-clustering.md)
+-   [How to import data into and export data from Azure Redis Cache](cache-how-to-import-export-data.md)
+-   [How to administer Azure Redis Cache](cache-administration.md)
   
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

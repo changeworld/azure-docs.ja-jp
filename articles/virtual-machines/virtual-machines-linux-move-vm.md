@@ -1,62 +1,66 @@
 <properties
-	pageTitle="Linux VM の移動 | Microsoft Azure"
-	description="Resource Manager デプロイメント モデルで Linux VM を他の Azure サブスクリプションまたはリソース グループに移動します。"
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="cynthn"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Move a Linux VM | Microsoft Azure"
+    description="Move a Linux VM to another Azure subscription or resource group in the Resource Manager deployment model."
+    services="virtual-machines-linux"
+    documentationCenter=""
+    authors="cynthn"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/08/2016"
-	ms.author="cynthn"/>
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/08/2016"
+    ms.author="cynthn"/>
 
-	
-
-
-# 他のサブスクリプションまたはリソース グループへの Linux VM の移動
-
-この記事では、リソース グループまたはサブスクリプション間で Linux VM を移動する方法について説明します。サブスクリプション間での VM の移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動する場合に便利です。
-
-> [AZURE.NOTE] 移動の一環として新しいリソース ID が作成されます。VM を移動したら、この新しいリソース ID を使用するために、ツールやスクリプトを更新する必要があります。
+    
 
 
-## Azure CLI を使用して VM を移動する 
 
-VM を適切に移動するには、VM とそのすべての関連リソースを移動する必要があります。**azure group show** コマンドを使用して、リソース グループのすべてのリソースとその ID を表示します。これはコマンドの出力をファイルにパイプするときに便利で、ID をコピーして、この後のコマンドに貼り付けることができます。
+# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Move a Linux VM to another subscription or resource group
 
-	azure group show <resourceGroupName>
+This article walks you through how to move a Linux VM between resource groups or subscriptions. Moving a VM between subscriptions can be handy if you created a VM in a personal subscription and now want to move it to your company's subscription.
 
-VM とそのリソースを他のリソース グループに移動するには、**azure resource move** CLI コマンドを使用します。次の例では、VM と、その VM に必要な最も一般的なリソースを移動する方法について説明します。**-i** パラメーターを使用して、移動するリソースの ID のコンマ区切りのリスト (スペースなし) を渡します。
+> [AZURE.NOTE] New resource IDs are created as part of the move. Once the VM has been moved, you need to update your tools and scripts to use the new resource IDs. 
 
-	
+
+## <a name="use-the-azure-cli-to-move-a-vm"></a>Use the Azure CLI to move a VM 
+
+To successfully move a VM, you need to move the VM and all its supporting resources. Use the **azure group show** command to list all the resources in a resource group and their IDs. It helps to pipe the output of this command to a file so you can copy and paste the IDs into later commands.
+
+    azure group show <resourceGroupName>
+
+To move a VM and its resources to another resource group, use the **azure resource move** CLI command. The following example shows how to move a VM and the most common resources it requires. We use the **-i** parameter and pass in a comma-separated list (without spaces) of IDs for the resources to move.
+
+    
     vm=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Compute/virtualMachines/<vmName>
-	nic=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/networkInterfaces/<nicName>
-	nsg=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/networkSecurityGroups/<nsgName>
-	pip=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/publicIPAddresses/<publicIPName>
-	vnet=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/virtualNetworks/<vnetName>
-	diag=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Storage/storageAccounts/<diagnosticStorageAccountName>
-	storage=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Storage/storageAccounts/<storageAcountName>  	
-	
-	azure resource move --ids $vm,$nic,$nsg,$pip,$vnet,$storage,$diag -d "<destinationResourceGroup>"
-	
-VM とそのリソースを他のサブスクリプションに移動する場合は、**--destination-subscriptionId &#60;destinationSubscriptionID&#62;** パラメーターを追加して、移動先のサブスクリプションを指定します。
+    nic=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/networkInterfaces/<nicName>
+    nsg=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/networkSecurityGroups/<nsgName>
+    pip=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/publicIPAddresses/<publicIPName>
+    vnet=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Network/virtualNetworks/<vnetName>
+    diag=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Storage/storageAccounts/<diagnosticStorageAccountName>
+    storage=/subscriptions/<sourceSubscriptionID>/resourceGroups/<sourceResourceGroup>/providers/Microsoft.Storage/storageAccounts/<storageAcountName>      
+    
+    azure resource move --ids $vm,$nic,$nsg,$pip,$vnet,$storage,$diag -d "<destinationResourceGroup>"
+    
+If you want to move the VM and its resources to a different subscription, add the **--destination-subscriptionId &#60;destinationSubscriptionID&#62;** parameter to specify the destination subscription.
 
-Windows コンピューターでコマンド プロンプトから操作する場合は、宣言するときに、変数名の前に **$** を追加する必要があります。これは、Linux では必要ありません。
+If you are working from the Command Prompt on a Windows computer, you need to add a **$** in front of the variable names when you declare them. This isn't needed in Linux.
 
-指定したリソースの移動を確認するように求められたら、「**Y**」を入力して、リソースの移動を確定します。
-	
+You are asked to confirm that you want to move the specified resource. Type **Y** to confirm that you want to move the resources.
+    
 
 [AZURE.INCLUDE [virtual-machines-common-move-vm](../../includes/virtual-machines-common-move-vm.md)]
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-リソース グループとサブスクリプションの間でさまざまな種類のリソースを移動できます。詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../resource-group-move-resources.md)」を参照してください。
+You can move many different types of resources between resource groups and subscriptions. For more information, see [Move resources to new resource group or subscription](../resource-group-move-resources.md).    
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

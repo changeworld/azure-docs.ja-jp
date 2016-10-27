@@ -1,61 +1,63 @@
 <properties
-	pageTitle="Azure Notification Hubs の安全なプッシュ"
-	description="Azure でセキュリティで保護されたプッシュ通知を送信する方法について説明します。コード サンプルは .NET API を使用して C# で記述されています。"
-	documentationCenter="windows"
-	authors="wesmc7777"
-	manager="erikre"
-	editor=""
-	services="notification-hubs"/>
+    pageTitle="Azure Notification Hubs Secure Push"
+    description="Learn how to send secure push notifications in Azure. Code samples written in C# using the .NET API."
+    documentationCenter="windows"
+    authors="wesmc7777"
+    manager="erikre"
+    editor=""
+    services="notification-hubs"/>
 
 <tags
-	ms.service="notification-hubs" 
-	ms.workload="mobile"
-	ms.tgt_pltfrm="windows"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="06/29/2016"
-	ms.author="wesmc"/>
+    ms.service="notification-hubs" 
+    ms.workload="mobile"
+    ms.tgt_pltfrm="windows"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="06/29/2016"
+    ms.author="wesmc"/>
 
-#Azure Notification Hubs の安全なプッシュ
+
+#<a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure Push
 
 > [AZURE.SELECTOR]
-- [Windows ユニバーサル](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
+- [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
 - [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
 - [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
 
 
-##Overview
+##<a name="overview"></a>Overview
 
-Microsoft Azure でプッシュ通知がサポートされたことで、マルチプラットフォームに対応し、簡単に使用できる、スケールアウトされたプッシュ通知インフラストラクチャを利用できるようになりました。これにより、モバイル プラットフォーム向けアプリケーション (コンシューマー用途およびエンタープライズ用途) にプッシュ通知機能を実装する作業が大幅に簡略化されます。
+Push notification support in Microsoft Azure enables you to access an easy-to-use, multiplatform, scaled-out push infrastructure, which greatly simplifies the implementation of push notifications for both consumer and enterprise applications for mobile platforms.
 
-規制やセキュリティの制約により、アプリケーションでは、標準のプッシュ通知インフラストラクチャからは転送できないものを通知に含める必要がある場合があります。このチュートリアルでは、クライアントのデバイスとアプリケーションのバックエンドとの間の安全で認証された接続を通して機密情報を送信することによって、同じエクスペリエンスを実現する方法について説明します。
+Due to regulatory or security constraints, sometimes an application might want to include something in the notification that cannot be transmitted through the standard push notification infrastructure. This tutorial describes how to achieve the same experience by sending sensitive information through a secure, authenticated connection between the client device and the app backend.
 
-大まかには、フローは次のようになります。
+At a high level, the flow is as follows:
 
-1. アプリケーションのバックエンド:
-	- バックエンド データベースに安全なペイロードを格納します。
-	- この通知の ID をデバイスに送信します (安全でない情報は送信しません)。
-2. 通知を受け取ったときのデバイスのアプリケーション:
-	- デバイスは、安全なペイロードを要求するバックエンドにアクセスします。
-	- アプリケーションはデバイスに通知としてペイロードを表示できます。
+1. The app back-end:
+    - Stores secure payload in back-end database.
+    - Sends the ID of this notification to the device (no secure information is sent).
+2. The app on the device, when receiving the notification:
+    - The device contacts the back-end requesting the secure payload.
+    - The app can show the payload as a notification on the device.
 
-重要なのは、前のフロー (およびこのチュートリアル) では、デバイスは、ユーザーがログインした後、認証トークンをローカル ストレージに保存すると想定していることです。デバイスはこのトークンを使用して通知の安全なペイロードを取得できるため、これによって完全にシームレスなエクスペリエンスが保証されます。アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリケーションは、通知を受け取ったときにアプリケーションの起動を促す一般的な通知を表示する必要があります。その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
+It is important to note that in the preceding flow (and in this tutorial), we assume that the device stores an authentication token in local storage, after the user logs in. This guarantees a completely seamless experience, as the device can retrieve the notification’s secure payload using this token. If your application does not store authentication tokens on the device, or if these tokens can be expired, the device app, upon receiving the notification should display a generic notification prompting the user to launch the app. The app then authenticates the user and shows the notification payload.
 
-この安全なプッシュのチュートリアルでは、プッシュ通知を安全に送信する方法を説明します。このチュートリアルは「[ユーザーへの通知](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)」チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください。
+This Secure Push tutorial shows how to send a push notification securely. The tutorial builds on the [Notify Users](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) tutorial, so you should complete the steps in that tutorial first.
 
-> [AZURE.NOTE] このチュートリアルは、「[Notification Hubs の使用 (Windows ストア)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」の説明に従って通知が作成され、構成されていることを前提としています。また、Windows Phone 8.1 には (Windows Phone ではなく) Windows の資格情報が必要で、Windows Phone 8.0 または Silverlight 8.1 ではバックグラウンド タスクが機能しないことに注意してください。Windows ストア アプリケーションの場合は、アプリケーションでロック画面が有効 (Appmanifest でチェック ボックスをオンにする) な場合にだけバックグラウンド タスクから通知を受信できます。
+> [AZURE.NOTE] This tutorial assumes that you have created and configured your notification hub as described in [Getting Started with Notification Hubs (Windows Store)](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+Also, note that Windows Phone 8.1 requires Windows (not Windows Phone) credentials, and that background tasks do not work on Windows Phone 8.0 or Silverlight 8.1. For Windows Store applications, you can receive notifications via a background task only if the app is lock-screen enabled (click the checkbox in the Appmanifest).
 
 [AZURE.INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## Windows Phone プロジェクトを変更する
+## <a name="modify-the-windows-phone-project"></a>Modify the Windows Phone Project
 
-1. **NotifyUserWindowsPhone** プロジェクトで、次のコードを App.xaml.cs に追加して、プッシュ バックグラウンド タスクを登録します。`OnLaunched()` メソッドの最後に次のコード行を追加します。
+1. In the **NotifyUserWindowsPhone** project, add the following code to App.xaml.cs to register the push background task. Add the following line of code at the end of the `OnLaunched()` method:
 
-		RegisterBackgroundTask();
+        RegisterBackgroundTask();
 
-2. 引き続き App.xaml.cs で、`OnLaunched()` の直後に次のコードを追加します。
+2. Still in App.xaml.cs, add the following code immediately after the `OnLaunched()` method:
 
-		private async void RegisterBackgroundTask()
+        private async void RegisterBackgroundTask()
         {
             if (!Windows.ApplicationModel.Background.BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name == "PushBackgroundTask"))
             {
@@ -69,121 +71,125 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
             }
         }
 
-3. App.xaml.cs ファイルの先頭に次の `using` ステートメントを追加します。
+3. Add the following `using` statements at the top of the App.xaml.cs file:
 
-		using Windows.Networking.PushNotifications;
-		using Windows.ApplicationModel.Background;
+        using Windows.Networking.PushNotifications;
+        using Windows.ApplicationModel.Background;
 
-4. Visual Studio の **[ファイル]** メニューで **[すべて保存]** をクリックします。
+4. From the **File** menu in Visual Studio, click **Save All**.
 
-## プッシュ バックグラウンド コンポーネントを作成する
+## <a name="create-the-push-background-component"></a>Create the Push Background Component
 
-次の手順では、プッシュ バックグラウンド コンポーネントを作成します。
+The next step is to create the push background component.
 
-1. ソリューション エクスプローラーで、ソリューションの最上位ノード (この場合は、**Solution SecurePush**) を右クリックし、**[追加]**、**[新しいプロジェクト]** の順にクリックします。
+1. In Solution Explorer, right-click the top-level node of the solution (**Solution SecurePush** in this case), then click **Add**, then click **New Project**.
 
-2. **[ストア アプリ]** を展開し、**[Windows Phone アプリ]**、**[Windows ランタイム コンポーネント (Windows Phone)]** の順にクリックします。プロジェクトの名前として「**PushBackgroundComponent**」と入力し、**[OK]** をクリックしてプロジェクトを作成します。
+2. Expand **Store Apps**, then click **Windows Phone Apps**, then click **Windows Runtime Component (Windows Phone)**. Name the project **PushBackgroundComponent**, and then click **OK** to create the project.
 
-	![][12]
+    ![][12]
 
-3. ソリューション エクスプローラーで、**PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。新しいクラスに「**PushBackgroundTask.cs**」という名前を付けます。**[追加]** をクリックしてクラスを生成します。
+3. In Solution Explorer, right-click the **PushBackgroundComponent (Windows Phone 8.1)** project, then click **Add**, then click **Class**. Name the new class **PushBackgroundTask.cs**. Click **Add** to generate the class.
 
-4. **PushBackgroundComponent** 名前空間定義の内容全体を次のコードで置き換えます。プレースホルダー `{back-end endpoint}` をバックエンドのデプロイ時に取得したバックエンド エンドポイントで置き換えます。
+4. Replace the entire contents of the **PushBackgroundComponent** namespace definition with the following code, substituting the placeholder `{back-end endpoint}` with the back-end endpoint obtained while deploying your back-end:
 
-		public sealed class Notification
-    		{
-        		public int Id { get; set; }
-        		public string Payload { get; set; }
-        		public bool Read { get; set; }
-    		}
+        public sealed class Notification
+            {
+                public int Id { get; set; }
+                public string Payload { get; set; }
+                public bool Read { get; set; }
+            }
 
-		    public sealed class PushBackgroundTask : IBackgroundTask
-    		{
-        		private string GET_URL = "{back-end endpoint}/api/notifications/";
+            public sealed class PushBackgroundTask : IBackgroundTask
+            {
+                private string GET_URL = "{back-end endpoint}/api/notifications/";
 
-        		async void IBackgroundTask.Run(IBackgroundTaskInstance taskInstance)
-		        {
-        		    // Store the content received from the notification so it can be retrieved from the UI.
-		            RawNotification raw = (RawNotification)taskInstance.TriggerDetails;
-            		var notificationId = raw.Content;
+                async void IBackgroundTask.Run(IBackgroundTaskInstance taskInstance)
+                {
+                    // Store the content received from the notification so it can be retrieved from the UI.
+                    RawNotification raw = (RawNotification)taskInstance.TriggerDetails;
+                    var notificationId = raw.Content;
 
-            		// retrieve content
-		            BackgroundTaskDeferral deferral = taskInstance.GetDeferral();
-            		var httpClient = new HttpClient();
-		            var settings = ApplicationData.Current.LocalSettings.Values;
-		            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", (string)settings["AuthenticationToken"]);
+                    // retrieve content
+                    BackgroundTaskDeferral deferral = taskInstance.GetDeferral();
+                    var httpClient = new HttpClient();
+                    var settings = ApplicationData.Current.LocalSettings.Values;
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", (string)settings["AuthenticationToken"]);
 
-		            var notificationString = await httpClient.GetStringAsync(GET_URL + notificationId);
+                    var notificationString = await httpClient.GetStringAsync(GET_URL + notificationId);
 
-            		var notification = JsonConvert.DeserializeObject<Notification>(notificationString);
+                    var notification = JsonConvert.DeserializeObject<Notification>(notificationString);
 
-		            ShowToast(notification);
+                    ShowToast(notification);
 
-		            deferral.Complete();
-		        }
+                    deferral.Complete();
+                }
 
-		        private void ShowToast(Notification notification)
-		        {
-		            ToastTemplateType toastTemplate = ToastTemplateType.ToastText01;
-		            XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(toastTemplate);
-            		XmlNodeList toastTextElements = toastXml.GetElementsByTagName("text");
-		            toastTextElements[0].AppendChild(toastXml.CreateTextNode(notification.Payload));
-    	        	ToastNotification toast = new ToastNotification(toastXml);
-		            ToastNotificationManager.CreateToastNotifier().Show(toast);
-    		    }
-    		}
+                private void ShowToast(Notification notification)
+                {
+                    ToastTemplateType toastTemplate = ToastTemplateType.ToastText01;
+                    XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(toastTemplate);
+                    XmlNodeList toastTextElements = toastXml.GetElementsByTagName("text");
+                    toastTextElements[0].AppendChild(toastXml.CreateTextNode(notification.Payload));
+                    ToastNotification toast = new ToastNotification(toastXml);
+                    ToastNotificationManager.CreateToastNotifier().Show(toast);
+                }
+            }
 
-5. ソリューション エクスプローラーで **PushBackgroundComponent (Windows Phone 8.1)** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+5. In Solution Explorer, right-click the **PushBackgroundComponent (Windows Phone 8.1)** project and then click **Manage NuGet Packages**.
 
-6. 左側で、**[オンライン]** をクリックします。
+6. On the left-hand side, click **Online**.
 
-7. **[検索]** ボックスに、「**Http Client**」と入力します。
+7. In the **Search** box, type **Http Client**.
 
-8. 結果の一覧で、**[Microsoft HTTP Client Libraries]**、**[インストール]** の順にクリックします。インストールを完了します。
+8. In the results list, click **Microsoft HTTP Client Libraries**, and then click **Install**. Complete the installation.
 
-9. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。**Json.NET** パッケージをインストールし、NuGet パッケージ マネージャーのウィンドウを閉じます。
+9. Back in the NuGet **Search** box, type **Json.net**. Install the **Json.NET** package, then close the NuGet Package Manager window.
 
-10. **PushBackgroundTask.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+10. Add the following `using` statements at the top of the **PushBackgroundTask.cs** file:
 
-		using Windows.ApplicationModel.Background;
-		using Windows.Networking.PushNotifications;
-		using System.Net.Http;
-		using Windows.Storage;
-		using System.Net.Http.Headers;
-		using Newtonsoft.Json;
-		using Windows.UI.Notifications;
-		using Windows.Data.Xml.Dom;
+        using Windows.ApplicationModel.Background;
+        using Windows.Networking.PushNotifications;
+        using System.Net.Http;
+        using Windows.Storage;
+        using System.Net.Http.Headers;
+        using Newtonsoft.Json;
+        using Windows.UI.Notifications;
+        using Windows.Data.Xml.Dom;
 
-11. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[参照]** を右クリックし、**[参照の追加]** をクリックします。参照マネージャー ダイアログで、**PushBackgroundComponent** のチェック ボックスをオンにして、**[OK]** をクリックします。
+11. In Solution Explorer, in the **NotifyUserWindowsPhone (Windows Phone 8.1)** project, right-click **References**, then click **Add Reference...**. In the Reference Manager dialog, check the box next to **PushBackgroundComponent**, and then click **OK**.
 
-12. ソリューション エクスプローラーで、**NotifyUserWindowsPhone (Windows Phone 8.1)** プロジェクトの **[Package.appxmanifest]** をダブルクリックします。**[通知]** で、**[トースト対応]** を **[はい]** に設定します。
+12. In Solution Explorer, double-click **Package.appxmanifest** in the **NotifyUserWindowsPhone (Windows Phone 8.1)** project. Under **Notifications**, set **Toast Capable** to **Yes**.
 
-	![][3]
+    ![][3]
 
-13. 引き続き **Package.appxmanifest** で、上部の **[宣言]** メニューをクリックします。**[使用可能な宣言]** ボックスで、**[バックグラウンド タスク]**、**[追加]** の順にクリックします。
+13. Still in **Package.appxmanifest**, click the **Declarations** menu near the top. In the **Available Declarations** dropdown, click **Background Tasks**, and then click **Add**.
 
-14. **Package.appxmanifest** で、**[プロパティ]** の **[プッシュ通知]** チェック ボックスをオンにします。
+14. In **Package.appxmanifest**, under **Properties**, check **Push notification**.
 
-15. **Package.appxmanifest** で、**[アプリ設定]** の **[エントリ ポイント]** フィールドに「**PushBackgroundComponent.PushBackgroundTask**」と入力します。
+15. In **Package.appxmanifest**, under **App Settings**, type **PushBackgroundComponent.PushBackgroundTask** in the **Entry Point** field.
 
-	![][13]
+    ![][13]
 
-16. **[ファイル]** メニューの **[すべて保存]** をクリックします。
+16. From the **File** menu, click **Save All**.
 
-## アプリケーションの実行
+## <a name="run-the-application"></a>Run the Application
 
-アプリケーションを実行するには、以下の手順に従います。
+To run the application, do the following:
 
-1. Visual Studio で、**AppBackend** Web API アプリケーションを実行します。ASP.NET Web ページが表示されます。
+1. In Visual Studio, run the **AppBackend** Web API application. An ASP.NET web page is displayed.
 
-2. Visual Studio で、**NotifyUserWindowsPhone (Windows Phone 8.1)** Windows Phone アプリケーションを実行します。Windows Phone エミュレーターが自動的に起動し、アプリケーションを読み込みます。
+2. In Visual Studio, run the **NotifyUserWindowsPhone (Windows Phone 8.1)** Windows Phone app. The Windows Phone emulator runs and loads the app automatically.
 
-3. **NotifyUserWindowsPhone** アプリケーションの UI で、ユーザー名とパスワードを入力します。文字列は任意ですが、値は同じである必要があります。
+3. In the **NotifyUserWindowsPhone** app UI, enter a username and password. These can be any string, but they must be the same value.
 
-4. **NotifyUserWindowsPhone** アプリケーションの UI で、**[ログインして登録]** をクリックします。次に、**[プッシュを送信する]** をクリックします。
+4. In the **NotifyUserWindowsPhone** app UI, click **Log in and register**. Then click **Send push**.
 
 [3]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push3.png
 [12]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push12.png
 [13]: ./media/notification-hubs-aspnet-backend-windows-dotnet-secure-push/notification-hubs-secure-push13.png
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

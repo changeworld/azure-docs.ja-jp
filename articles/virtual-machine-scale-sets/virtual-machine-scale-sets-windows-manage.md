@@ -1,39 +1,40 @@
 <properties
-	pageTitle="仮想マシン スケール セットの VM を管理する | Microsoft Azure"
-	description="Azure PowerShell を利用し、仮想マシン スケール セットで仮想マシンを管理する"
-	services="virtual-machine-scale-sets"
-	documentationCenter=""
-	authors="davidmu1"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Manage VMs in a Virtual Machine Scale Set | Microsoft Azure"
+    description="Manage virtual machines in a virtual machine scale set using Azure PowerShell."
+    services="virtual-machine-scale-sets"
+    documentationCenter=""
+    authors="davidmu1"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machine-scale-sets"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/14/2016"
-	ms.author="davidmu"/>
+    ms.service="virtual-machine-scale-sets"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/27/2016"
+    ms.author="davidmu"/>
 
-# 仮想マシン スケール セットで仮想マシンを管理する
 
-この記事では、仮想マシン スケール セットで仮想マシン リソースを管理する方法を紹介します。
+# <a name="manage-virtual-machines-in-a-virtual-machine-scale-set"></a>Manage virtual machines in a virtual machine scale set
 
-スケール セットで仮想マシンを管理するためのあらゆる作業で、管理するマシンのインスタンス ID が必要になります。[Azure リソース エクスプローラー](https://resources.azure.com)を利用し、スケール セットの仮想マシンのインスタンス ID を検索できます。リソース エクスプローラーを利用し、完了した作業の状態を確認することもできます。
+Use the tasks in this article to manage virtual machines in your virtual machine scale set.
 
-最新バージョンの Azure PowerShell をインストールし、使用するサブスクリプションを選択して、Azure アカウントにサインインする方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
+Most of the tasks that involve managing a virtual machine in a scale set require that you know the instance ID of the machine that you want to manage. You can use [Azure Resource Explorer](https://resources.azure.com) to find the instance ID of a virtual machine in a scale set. You also use Resource Explorer to verify the status of the tasks that you finish.
 
-## 仮想マシン スケール セットに関する情報を表示する
+See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for information about installing the latest version of Azure PowerShell, selecting your subscription, and signing in to your account.
 
-スケール セットに関する全般情報を取得できます。これは、インスタンス ビューとも呼ばれています。あるいは、セットのリソースに関する情報など、より具体的な情報を取得できます。
+## <a name="display-information-about-a-scale-set"></a>Display information about a scale set
 
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* を仮想マシン スケール セットの名前に置き換えます。それから、このコマンドを実行します。
+You can get general information about a scale set, which is also referred to as the instance view. Or, you can get more specific information, such as information about the resources in the scale set.
+
+Replace the quoted values with the name or your resource group and scale set and then run the command:
 
     Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
 
-次のような結果が返されます。
+It returns something like this:
 
     Id                                          : /subscriptions/{sub-id}/resourceGroups/myrg1/providers/Microsoft.Compute/virtualMachineScaleSets/myvmss1
     Name                                        : myvmss1
@@ -89,11 +90,11 @@
         Settings                                : {"xmlCfg":"...","storageAccount":"astore"}
     ProvisioningState                           : Succeeded
     
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* を仮想マシン スケール セットの名前に置き換え、*InstanceId* を情報の取得元となる仮想マシンのインスタンス ID に置き換えます。それから、このコマンドを実行します。
+Replace the quoted values with the name of your resource group and scale set. Replace *#* with the instance identifier of the virtual machine that you want to get information about and then run it:
 
     Get-AzureRmVmssVM -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
         
-次のような結果が返されます。
+It returns something like this example:
 
     Id                            : /subscriptions/{sub-id}/resourceGroups/myrg1/providers/Microsoft.Compute/
                                     virtualMachineScaleSets/myvmss1/virtualMachines/0
@@ -142,13 +143,13 @@
       Settings                    : {"xmlCfg":"...","storageAccount":"astore"}
       ProvisioningState           : Succeeded
         
-## スケール セットで仮想マシンを起動する
+## <a name="start-a-virtual-machine-in-a-scale-set"></a>Start a virtual machine in a scale set
 
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* を起動する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
+Replace the quoted values with the name of your resource group and scale set. Replace *#* with the identifier of the virtual machine that you want to start and then run it:
 
     Start-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-リソース エクスプローラーで、インスタンスの状態が **running** (実行中) であることがわかります。
+In Resource Explorer, we can see that the status of the instance is **running**:
 
     "statuses": [
       {
@@ -164,17 +165,17 @@
       }
     ]
 
--InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを開始できます。
+You can start all the virtual machines in the scale set by not using the -InstanceId parameter.
     
-## スケール セットで仮想マシンを停止する
+## <a name="stop-a-virtual-machine-in-a-scale-set"></a>Stop a virtual machine in a scale set
 
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* を停止する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
+Replace the quoted values with the name of your resource group and scale set. Replace *#* with the identifier of the virtual machine that you want to stop and then run it:
 
-	Stop-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
+    Stop-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
 
-リソース エクスプローラーで、インスタンスの状態が **deallocated** (割り当て解除) であることがわかります。
+In Resource Explorer, we can see that the status of the instance is **deallocated**:
 
-	"statuses": [
+    "statuses": [
       {
         "code": "ProvisioningState/succeeded",
         "level": "Info",
@@ -188,22 +189,34 @@
       }
     ]
     
-仮想マシンを停止して割当てを解除しない場合、-StayProvisioned パラメーターを使用します。-InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを停止できます。
+To stop a virtual machine and not deallocate it, use the -StayProvisioned parameter. You can stop all the virtual machines in the set by not using the -InstanceId parameter.
     
-## スケール セットで仮想マシンを再起動する
+## <a name="restart-a-virtual-machine-in-a-scale-set"></a>Restart a virtual machine in a scale set
 
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* を再起動する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
+Replace the quoted values with the name of your resource group and the scale set. Replace *#* with the identifier of the virtual machine that you want to restart and then run it:
 
-	Restart-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
+    Restart-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceId #
     
--InstanceId パラメーターを使用しなければ、セット内のすべての仮想マシンを再起動できます。
+You can restart all the virtual machines in the set by not using the -InstanceId parameter.
 
-## スケール セットから仮想マシンを削除する
+## <a name="remove-a-virtual-machine-from-a-scale-set"></a>Remove a virtual machine from a scale set
 
-このコマンドで、*resource group name* を仮想マシン スケール セットが含まれているリソース グループの名前に置き換え、*scale set name* をスケール セットの名前に置き換え、*InstanceId* をスケール セットから削除する仮想マシンの ID に置き換えます。それから、このコマンドを実行します。
+Replace the quoted values with the name of your resource group and the scale set. Replace *#* with the identifier of the virtual machine that you want to remove and then run it:  
 
-	Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId #
+    Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name" -InstanceId #
 
--InstanceId パラメーターを使用しなければ、すべての仮想マシンをスケール セットから削除できます。
+You can remove the virtual machine scale set all at once by not using the -InstanceId parameter.
 
-<!---HONumber=AcomDC_0720_2016-->
+## <a name="change-the-capacity-of-a-scale-set"></a>Change the capacity of a scale set
+
+You can add or remove virtual machines by changing the capacity of the set. Get the scale set that you want to change, set the capacity to what you want it to be, and then update the scale set with the new capacity. In these commands, replace the quoted values with the name of your resource group and the scale set.
+
+  $vmss = Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" $vmss.sku.capacity = 5 Update-AzureRmVmss -ResourceGroupName "resource group name" -Name "scale set name" -VirtualMachineScaleSet $vmss 
+
+If you are removing virtual machines from the scale set, the virtual machines with the highest ids are removed first.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,246 +1,249 @@
 <properties 
-	pageTitle="ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する" 
-	description="Visual Studio により ASP.NET Web API を使用するアプリケーションを Azure Web アプリケーションにデプロイする方法を示すチュートリアル。" 
-	services="app-service\web" 
-	documentationCenter=".net" 
-	authors="Rick-Anderson" 
-	writer="Rick-Anderson" 
-	manager="wpickett" 
-	editor=""/>
+    pageTitle="Create a REST service using ASP.NET Web API and SQL Database in Azure App Service" 
+    description="A tutorial that teaches you how to deploy an app that uses the ASP.NET Web API to an Azure web app by using Visual Studio." 
+    services="app-service\web" 
+    documentationCenter=".net" 
+    authors="Rick-Anderson" 
+    writer="Rick-Anderson" 
+    manager="wpickett" 
+    editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="02/29/2016" 
-	ms.author="riande"/>
+    ms.service="app-service-web" 
+    ms.workload="web" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="dotnet" 
+    ms.topic="article" 
+    ms.date="02/29/2016" 
+    ms.author="riande"/>
 
-# ASP.NET Web API と SQL Database を使用する Rest サービスを Azure App Service に作成する
 
-このチュートリアルでは、Visual Studio 2013 または Visual Studio 2013 Community Edition の Web の発行ウィザードを使用して、ASP.NET Web アプリを [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする方法を示します。
+# <a name="create-a-rest-service-using-asp.net-web-api-and-sql-database-in-azure-app-service"></a>Create a REST service using ASP.NET Web API and SQL Database in Azure App Service
 
-Azure アカウントは無料で開くことができます。また、まだ Visual Studio 2013 を持っていない場合は、SDK によって Visual Studio 2013 for Web Express が自動的にインストールされます。これで、Azure 向けの開発を完全に無料で始めることができます。
+This tutorial shows how to deploy an ASP.NET web app to an [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) by using the Publish Web wizard in Visual Studio 2013 or Visual Studio 2013 Community Edition. 
 
-このチュートリアルは、Azure を使用した経験がない読者を対象に作成されています。このチュートリアルでは、クラウドで動作する単純な Web アプリケーションを作成します。
+You can open an Azure account for free, and if you don't already have Visual Studio 2013, the SDK automatically installs Visual Studio 2013 for Web Express. So you can start developing for Azure entirely for free.
+
+This tutorial assumes that you have no prior experience using Azure. On completing this tutorial, you'll have a simple web app up and running in the cloud.
  
-学習内容:
+You'll learn:
 
-* Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
-* Visual Studio の ASP.NET MVC 5 プロジェクトを作成して Azure アプリケーションに発行する方法
-* ASP.NET Web API を使用して REST ベースの API 呼び出しを可能にする方法
-* SQL データベースを使用して Azure にデータを保存する方法
-* Azure にアプリケーションの更新を発行する方法
+* How to enable your machine for Azure development by installing the Azure SDK.
+* How to create a Visual Studio ASP.NET MVC 5 project and publish it to an Azure app.
+* How to use the ASP.NET Web API to enable Restful API calls.
+* How to use a SQL database to store data in Azure.
+* How to publish application updates to Azure.
 
-ASP.NET MVC 5 に基づく、データベース アクセスに ADO.NET Entity Framework を使用する、簡単な連絡先リスト Web アプリケーションをビルドします。次の図に、完成したアプリケーションを示します。
+You'll build a simple contact list web application that is built on ASP.NET MVC 5 and uses the ADO.NET Entity Framework for database access. The following illustration shows the completed application:
 
-![Web サイトのスクリーンショット][intro001]
+![screenshot of web site][intro001]
 
 <!-- the next line produces the "Set up the development environment" section as see at http://azure.microsoft.com/documentation/articles/web-sites-dotnet-get-started/ -->
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-### プロジェクトを作成する
+### <a name="create-the-project"></a>Create the project
 
-1. Visual Studio 2013 を起動します。
-1. **[ファイル]** メニューの **[新しいプロジェクト]** をクリックします。
-3. **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]** を展開して **[Web]**、**[ASP.NET Web アプリケーション]** の順にクリックします。アプリケーションに「**ContactManager**」という名前を付けて、**[OK]** をクリックします。
+1. Start Visual Studio 2013.
+1. From the **File** menu click **New Project**.
+3. In the **New Project** dialog box, expand **Visual C#** and select **Web**  and then select **ASP.NET Web Application**. Name the application **ContactManager** and click **OK**.
 
-	![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.PNG)
+    ![New Project dialog box](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.png)
 
-1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで、**[MVC]** テンプレートを選択します。**[Web API]** をオンにし、**[認証の変更]** をクリックします。
+1. In the **New ASP.NET Project** dialog box, select the **MVC** template, check **Web API** and then click **Change Authentication**.
 
-1. **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。
+1. In the **Change Authentication** dialog box, click **No Authentication**, and then click **OK**.
 
-	![[認証なし]](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/GS13noauth.png)
+    ![No Authentication](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/GS13noauth.png)
 
-	作成中のサンプル アプリケーションには、ユーザーのログインが必要な機能は実装されません。認証と承認の機能を実装する方法については、このチュートリアルの最後にある「[次のステップ](#nextsteps)」セクションを参照してください。
+    The sample application you're creating won't have features that require users to log in. For information about how to implement authentication and authorization features, see the [Next Steps](#nextsteps) section at the end of this tutorial. 
 
-1. **[新しい ASP.NET プロジェクト]** ダイアログ ボックスで **[クラウドでホスト]** がチェックされていることを確認して、[**OK**] をクリックします。
+1. In the **New ASP.NET Project** dialog box, make sure the **Host in the Cloud** is checked and click **OK**.
 
 
-Azure にまだサインしていない場合は、サインインするように求められます。
+If you have not previously signed in to Azure, you will be prompted to sign in.
 
-1. 構成ウィザードでは *ContactManager* に基づいて一意の名前が提示されます (下図を参照)。近くのリージョンを選択します。[azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") を使用すると、最も待機時間が短いデータ センターを検索することができます。 
-2. データベース サーバーをまだ作成していない場合は、**[新しいサーバーの作成]** を選択して、データベース ユーザー名とパスワードを入力します。
+1. The configuration wizard will suggest a unique name based on *ContactManager* (see the image below). Select a region near you. You can use [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") to find the lowest latency data center. 
+2. If you haven't created a database server before, select **Create new server**, enter a database user name and password.
 
-	![Configure Azure Website](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/configAz.PNG)
+    ![Configure Azure Website](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/configAz.PNG)
 
-データベース サーバーがある場合は、そのサーバーを使用して新しいデータベースを作成します。データベース サーバーは貴重なリソースであるため、一般的にはデータベースごとにデータベース サーバーを作成するのではなく、同じサーバー上にテスト用や開発用の複数のデータベースを作成してください。Web サイトとデータベースが同じリージョンにあることを確認してください。
+If you have a database server, use that to create a new database. Database servers are a precious resource, and you generally want to create multiple databases on the same server for testing and development rather than creating a database server per database. Make sure your web site and database are in the same region.
 
 ![Configure Azure Website](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/configWithDB.PNG)
 
-### ページのヘッダーとフッターを設定する
+### <a name="set-the-page-header-and-footer"></a>Set the page header and footer
 
 
-1. **ソリューション エクスプローラー**で、*Views\\Shared* フォルダーを展開し、*\_Layout.cshtml* ファイルを開きます。
+1. In **Solution Explorer**, expand the *Views\Shared* folder and open the *_Layout.cshtml* file.
 
-	![\_Layout.cshtml in Solution Explorer][newapp004]
+    ![_Layout.cshtml in Solution Explorer][newapp004]
 
-1. *Views\\Shared\_Layout.cshtml* ファイルの内容を、次のコードに置き換えます。
+1. Replace the contents of the *Views\Shared_Layout.cshtml* file with the following code:
 
 
-		<!DOCTYPE html>
-		<html lang="en">
-		<head>
-		    <meta charset="utf-8" />
-		    <title>@ViewBag.Title - Contact Manager</title>
-		    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-		    <meta name="viewport" content="width=device-width" />
-		    @Styles.Render("~/Content/css")
-		    @Scripts.Render("~/bundles/modernizr")
-		</head>
-		<body>
-		    <header>
-		        <div class="content-wrapper">
-		            <div class="float-left">
-		                <p class="site-title">@Html.ActionLink("Contact Manager", "Index", "Home")</p>
-		            </div>
-		        </div>
-		    </header>
-		    <div id="body">
-		        @RenderSection("featured", required: false)
-		        <section class="content-wrapper main-content clear-fix">
-		            @RenderBody()
-		        </section>
-		    </div>
-		    <footer>
-		        <div class="content-wrapper">
-		            <div class="float-left">
-		                <p>&copy; @DateTime.Now.Year - Contact Manager</p>
-		            </div>
-		        </div>
-		    </footer>
-		    @Scripts.Render("~/bundles/jquery")
-		    @RenderSection("scripts", required: false)
-		</body>
-		</html>
-			
-前に示しているマークアップにより、アプリケーション名が "My ASP.NET App" から "Contact Manager" に変更され、**Home**、**About**、**Contact** へのリンクが削除されます。
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <title>@ViewBag.Title - Contact Manager</title>
+            <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+            <meta name="viewport" content="width=device-width" />
+            @Styles.Render("~/Content/css")
+            @Scripts.Render("~/bundles/modernizr")
+        </head>
+        <body>
+            <header>
+                <div class="content-wrapper">
+                    <div class="float-left">
+                        <p class="site-title">@Html.ActionLink("Contact Manager", "Index", "Home")</p>
+                    </div>
+                </div>
+            </header>
+            <div id="body">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div>
+            <footer>
+                <div class="content-wrapper">
+                    <div class="float-left">
+                        <p>&copy; @DateTime.Now.Year - Contact Manager</p>
+                    </div>
+                </div>
+            </footer>
+            @Scripts.Render("~/bundles/jquery")
+            @RenderSection("scripts", required: false)
+        </body>
+        </html>
+            
+The markup above changes the app name from "My ASP.NET App" to "Contact Manager", and it removes the links to **Home**, **About** and **Contact**.
 
-### ローカルでアプリケーションを実行する
+### <a name="run-the-application-locally"></a>Run the application locally
 
-1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。アプリケーションのホーム ページが既定のブラウザーに表示されます。![To Do List のホーム ページ](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.PNG)
+1. Press CTRL+F5 to run the application.
+The application home page appears in the default browser.
+    ![To Do List home page](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.png)
 
-これで、Azure にデプロイするアプリケーションを作成するために必要な操作が完了しました。データベース機能は後で追加します。
+This is all you need to do for now to create the application that you'll deploy to Azure. Later you'll add database functionality.
 
-## Azure にアプリケーションを展開する
+## <a name="deploy-the-application-to-azure"></a>Deploy the application to Azure
 
-1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、コンテキスト メニューの **[発行]** をクリックします。
+1. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
 
-	![プロジェクトのコンテキスト メニューの [発行]][PublishVSSolution]
+    ![Publish in project context menu][PublishVSSolution]
 
-	**Web の発行**ウィザードが開きます。
+    The **Publish Web** wizard opens.
 
-12. **[発行]** をクリックします。
+12. Click **Publish**.
 
 ![Settings tab](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/pw.png)
 
-Azure サーバーにファイルをコピーする処理が開始されます。**出力**ウィンドウでは、実行されたデプロイ操作が表示され、デプロイが問題なく完了したことが報告されます。
+Visual Studio begins the process of copying the files to the Azure server. The **Output** window shows what deployment actions were taken and reports successful completion of the deployment.
 
-14. 自動的に既定のブラウザーが開き、デプロイ先のサイトの URL にアクセスします。
+14. The default browser automatically opens to the URL of the deployed site.
 
-	これで、作成したアプリケーションはクラウドで実行されています。
-	
-	![To Do List home page running in Azure][rxz2]
+    The application you created is now running in the cloud.
+    
+    ![To Do List home page running in Azure][rxz2]
 
-## アプリケーションにデータベースを追加する
+## <a name="add-a-database-to-the-application"></a>Add a database to the application
 
-次に、MVC アプリケーションを更新して、連絡先を表示および更新してデータをデータベースに保存する機能を追加します。アプリケーションでは、データベースの作成およびデータベース内のデータの読み取りと更新に Entity Framework を使用します。
+Next, you'll update the MVC application to add the ability to display and update contacts and store the data in a database. The application will use the Entity Framework to create the database and to read and update data in the database.
 
-### 連絡先のデータ モデル クラスを追加する
+### <a name="add-data-model-classes-for-the-contacts"></a>Add data model classes for the contacts
 
-まず、コードで単純なデータ モデルを作成します。
+You begin by creating a simple data model in code.
 
-1. **ソリューション エクスプローラー**で、Models フォルダーを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
+1. In **Solution Explorer**, right-click the Models folder, click **Add**, and then **Class**.
 
-	![Add Class in Models folder context menu][adddb001]
+    ![Add Class in Models folder context menu][adddb001]
 
-2. **[新しい項目の追加]** ダイアログ ボックスで、新しいクラス ファイルに「*Contact.cs*」という名前を付け、[**追加**] をクリックします。
+2. In the **Add New Item** dialog box, name the new class file *Contact.cs*, and then click **Add**.
 
-	![[新しい項目の追加] ダイアログ ボックス][adddb002]
+    ![Add New Item dialog box][adddb002]
 
-3. Contacts.cs ファイルの内容を次のコードに置き換えます。
+3. Replace the contents of the Contacts.cs file with the following code.
 
-		using System.Globalization;
-		namespace ContactManager.Models
-		{
-    		public class Contact
-   			{
-        		public int ContactId { get; set; }
-				public string Name { get; set; }
-				public string Address { get; set; }
-	        	public string City { get; set; }
-				public string State { get; set; }
-				public string Zip { get; set; }
-				public string Email { get; set; }
-				public string Twitter { get; set; }
-				public string Self
-        		{
-            		get { return string.Format(CultureInfo.CurrentCulture,
-				         "api/contacts/{0}", this.ContactId); }
-            		set { }
-        		}
-    		}
-		}
+        using System.Globalization;
+        namespace ContactManager.Models
+        {
+            public class Contact
+            {
+                public int ContactId { get; set; }
+                public string Name { get; set; }
+                public string Address { get; set; }
+                public string City { get; set; }
+                public string State { get; set; }
+                public string Zip { get; set; }
+                public string Email { get; set; }
+                public string Twitter { get; set; }
+                public string Self
+                {
+                    get { return string.Format(CultureInfo.CurrentCulture,
+                         "api/contacts/{0}", this.ContactId); }
+                    set { }
+                }
+            }
+        }
 
-**Contact** クラスでは、各連絡先について保存するデータと、データベースが必要とする主キー (ContactID) を定義します。データ モデルの詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。
+The **Contact** class defines the data that you will store for each contact, plus a primary key, ContactID, that is needed by the database. You can get more information about data models in the [Next Steps](#nextsteps) section at the end of this tutorial.
 
-### アプリケーション ユーザーが連絡先を操作できる Web ページを作成する
+### <a name="create-web-pages-that-enable-app-users-to-work-with-the-contacts"></a>Create web pages that enable app users to work with the contacts
 
-ASP.NET MVC では、スキャフォールディング機能によって、作成、読み取り、更新、および削除 (CRUD) の各操作を実行するコードを自動的に生成できます。
+The ASP.NET MVC the scaffolding feature can automatically generate code that performs create, read, update, and delete (CRUD) actions.
 
-## データのコントローラーとビューを追加する
+## <a name="add-a-controller-and-a-view-for-the-data"></a>Add a Controller and a view for the data
 
-1. **ソリューション エクスプローラー**で、Controllers フォルダーを展開します。
+1. In **Solution Explorer**, expand the Controllers folder.
 
-3. プロジェクトをビルドします **(Ctrl + Shift + B)**。(スキャフォールディング機能の使用前にプロジェクトをビルドする必要があります。)
+3. Build the project **(Ctrl+Shift+B)**. (You must build the project before using scaffolding mechanism.) 
 
-4. Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。
+4. Right-click the Controllers folder and click **Add**, and then click **Controller**.
 
-	![Add Controller in Controllers folder context menu][addcode001]
+    ![Add Controller in Controllers folder context menu][addcode001]
 
-1. **[スキャフォールディングの追加]** ダイアログ ボックスで、**[Entity Framework を使用した、ビューのある MVC コントローラー]** を選択し、**[追加]** をクリックします。
+1. In the **Add Scaffold** dialog box, select **MVC Controller with views, using Entity Framework** and click **Add**.
 
- ![コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.PNG)
+ ![Add controller](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.png)
 
-6. コントローラー名を **HomeController** に設定します。モデル クラスとして **[Contact]** を選択します。**[新しいデータ コンテキスト]** ボタンをクリックし、**[新しいデータ コンテキストの種類]** で既定の "ContactManager.Models.ContactManagerContext" をそのまま使用します。**[追加]** をクリックします。
+6. Set the controller name to **HomeController**. Select **Contact** as your model class. Click the **New data context** button and accept the default "ContactManager.Models.ContactManagerContext" for the **New data context type**. Click **Add**.
 
 
-	ダイアログ ボックスで、"HomeController という名前のファイルは既に存在します。ファイルを置き換えますか?" とたずねられます。**[はい]** をクリックします。新しいプロジェクトで作成した home コントローラーで上書きされます。連絡先リストに新しい home コントローラーが使用されるようになります。
+    A dialog box will prompt you: "A file with the name HomeController already exits. Do you want to replace it?". Click **Yes**. We are overwriting the Home Controller that was created with the new project. We will use the new Home Controller for our contact list.
 
-	Visual Studio によって、**Contact** オブジェクトの CRUD データベース操作に対応したコントローラー メソッドとビューが作成されます。
+    Visual Studio creates controller methods and views for CRUD database operations for **Contact** objects.
 
-## Migrations の有効化、データベースの作成、サンプル データとデータ初期化子の追加 ##
+## <a name="enable-migrations,-create-the-database,-add-sample-data-and-a-data-initializer"></a>Enable Migrations, create the database, add sample data and a data initializer ##
 
-次の作業では、作成したデータ モデルに基づいてデータベースを作成するために、[Code First Migrations](http://curah.microsoft.com/55220) 機能を有効にします。
+The next task is to enable the [Code First Migrations](http://curah.microsoft.com/55220) feature in order to create the database based on the data model you created.
 
-1. **[ツール]** メニューの **[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。
+1. In the **Tools** menu, select **Library Package Manager** and then **Package Manager Console**.
 
-	![[ツール] メニューの [パッケージ マネージャー コンソール]][addcode008]
+    ![Package Manager Console in Tools menu][addcode008]
 
-2. **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
+2. In the **Package Manager Console** window, enter the following command:
 
-		enable-migrations 
+        enable-migrations 
   
-	**enable-migrations** コマンドによって *Migrations* フォルダーが作成され、そのフォルダーに *Configuration.cs* ファイルが保存されます。このファイルを編集して Migration を構成できます。
+    The **enable-migrations** command creates a *Migrations* folder and it puts in that folder a *Configuration.cs* file that you can edit to configure Migrations. 
 
-2. **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを入力します。
+2. In the **Package Manager Console** window, enter the following command:
 
-		add-migration Initial
+        add-migration Initial
 
-	**add-migration Initial** コマンドによって、**&lt;date\_stamp&gt;Initial** という名前のクラスが生成され、データベースの作成に使用されます。最初のパラメーター (*Initial*) は任意であり、このファイルの名前の作成に使用されます。新しいクラス ファイルは**ソリューション エクスプローラー**で表示できます。
+    The **add-migration Initial** command generates a class named **&lt;date_stamp&gt;Initial** that creates the database. The first parameter ( *Initial* ) is arbitrary and used to create the name of the file. You can see the new class files in **Solution Explorer**.
 
-	**Initial** クラスでは、**Up** メソッドを使用して Contacts テーブルを作成し、**Down** メソッドを使用してそのテーブルを削除します (前の状態に戻します)。
+    In the **Initial** class, the **Up** method creates the Contacts table, and the **Down** method (used when you want to return to the previous state) drops it.
 
-3. *Migrations\\Configuration.cs* ファイルを開きます。
+3. Open the *Migrations\Configuration.cs* file. 
 
-4. 次の名前空間を追加します。
+4. Add the following namespaces. 
 
-    	 using ContactManager.Models;
+         using ContactManager.Models;
 
-5. *Seed* メソッドを次のコードに置き換えます。
-		
+5. Replace the *Seed* method with the following code:
+        
         protected override void Seed(ContactManager.Models.ContactManagerContext context)
         {
             context.Contacts.AddOrUpdate(p => p.Name,
@@ -297,125 +300,126 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
                 );
         }
 
-	このコードでは、連絡先情報を使用してデータベースを初期化します。Seed メソッドによるデータベースへのデータの登録の詳細については、「[Debugging Entity Framework (EF) DBs (Entity Framework (EF) DB のデバッグ)](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx)」を参照してください。
+    This code above will initialize the database with the contact information. For more information on seeding the database, see [Debugging Entity Framework (EF) DBs](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx).
 
 
-1. **[パッケージ マネージャー コンソール]** で、次のコマンドを入力します。
+1. In the **Package Manager Console** enter the command:
 
-		update-database
+        update-database
 
-	![パッケージ マネージャー コンソールのコマンド][addcode009]
+    ![Package Manager Console commands][addcode009]
 
-	**update-database** によって、データベースを作成する最初の移行が実行されます。既定では、データベースは SQL Server Express LocalDB データベースとして作成されます
+    The **update-database** runs the first migration which creates the database. By default, the database is created as a SQL Server Express LocalDB database.
 
-1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
+1. Press CTRL+F5 to run the application. 
 
-アプリケーションでは、登録されたデータが表示され、編集、詳細、削除のリンクが示されます。
+The application shows the seed data and provides edit, details and delete links.
 
 ![MVC view of data][rxz3]
 
-## ビューの編集
+## <a name="edit-the-view"></a>Edit the View
 
-1. *Views\\Home\\Index.cshtml* ファイルを開きます。次の手順では、生成されたマークアップを、[jQuery](http://jquery.com/) と [Knockout.js](http://knockoutjs.com/) を使用するコードに置き換えます。この新しいコードは、Web API と JSON を使用して連絡先リストを取得し、knockout.js を使用して連絡先データを UI にバインドします。詳細については、このチュートリアルの末尾にある「[次のステップ](#nextsteps)」を参照してください。 
+1. Open the *Views\Home\Index.cshtml* file. In the next step, we will replace the generated markup with code that uses [jQuery](http://jquery.com/) and [Knockout.js](http://knockoutjs.com/). This new code retrieves the list of contacts from using web API and JSON and then binds the contact data to the UI using knockout.js. For more information, see the [Next Steps](#nextsteps) section at the end of this tutorial. 
 
 
-2. このファイルの内容を次のコードに置き換えます。
+2. Replace the contents of the file with the following code.
 
-		@model IEnumerable<ContactManager.Models.Contact>
-		@{
-		    ViewBag.Title = "Home";
-		}
-		@section Scripts {
-		    @Scripts.Render("~/bundles/knockout")
-		    <script type="text/javascript">
-		        function ContactsViewModel() {
-		            var self = this;
-		            self.contacts = ko.observableArray([]);
-		            self.addContact = function () {
-		                $.post("api/contacts",
-		                    $("#addContact").serialize(),
-		                    function (value) {
-		                        self.contacts.push(value);
-		                    },
-		                    "json");
-		            }
-		            self.removeContact = function (contact) {
-		                $.ajax({
-		                    type: "DELETE",
-		                    url: contact.Self,
-		                    success: function () {
-		                        self.contacts.remove(contact);
-		                    }
-		                });
-		            }
+        @model IEnumerable<ContactManager.Models.Contact>
+        @{
+            ViewBag.Title = "Home";
+        }
+        @section Scripts {
+            @Scripts.Render("~/bundles/knockout")
+            <script type="text/javascript">
+                function ContactsViewModel() {
+                    var self = this;
+                    self.contacts = ko.observableArray([]);
+                    self.addContact = function () {
+                        $.post("api/contacts",
+                            $("#addContact").serialize(),
+                            function (value) {
+                                self.contacts.push(value);
+                            },
+                            "json");
+                    }
+                    self.removeContact = function (contact) {
+                        $.ajax({
+                            type: "DELETE",
+                            url: contact.Self,
+                            success: function () {
+                                self.contacts.remove(contact);
+                            }
+                        });
+                    }
 
-		            $.getJSON("api/contacts", function (data) {
-		                self.contacts(data);
-		            });
-		        }
-		        ko.applyBindings(new ContactsViewModel());	
-		</script>
-		}
-		<ul id="contacts" data-bind="foreach: contacts">
-		    <li class="ui-widget-content ui-corner-all">
-		        <h1 data-bind="text: Name" class="ui-widget-header"></h1>
-		        <div><span data-bind="text: $data.Address || 'Address?'"></span></div>
-		        <div>
-		            <span data-bind="text: $data.City || 'City?'"></span>,
-		            <span data-bind="text: $data.State || 'State?'"></span>
-		            <span data-bind="text: $data.Zip || 'Zip?'"></span>
-		        </div>
-		        <div data-bind="if: $data.Email"><a data-bind="attr: { href: 'mailto:' + Email }, text: Email"></a></div>
-		        <div data-bind="ifnot: $data.Email"><span>Email?</span></div>
-		        <div data-bind="if: $data.Twitter"><a data-bind="attr: { href: 'http://twitter.com/' + Twitter }, text: '@@' + Twitter"></a></div>
-		        <div data-bind="ifnot: $data.Twitter"><span>Twitter?</span></div>
-		        <p><a data-bind="attr: { href: Self }, click: $root.removeContact" class="removeContact ui-state-default ui-corner-all">Remove</a></p>
-		    </li>
-		</ul>
-		<form id="addContact" data-bind="submit: addContact">
-		    <fieldset>
-		        <legend>Add New Contact</legend>
-		        <ol>
-		            <li>
-		                <label for="Name">Name</label>
-		                <input type="text" name="Name" />
-		            </li>
-		            <li>
-		                <label for="Address">Address</label>
-		                <input type="text" name="Address" >
-		            </li>
-		            <li>
-		                <label for="City">City</label>
-		                <input type="text" name="City" />
-		            </li>
-		            <li>
-		                <label for="State">State</label>
-		                <input type="text" name="State" />
-		            </li>
-		            <li>
-		                <label for="Zip">Zip</label>
-		                <input type="text" name="Zip" />
-		            </li>
-		            <li>
-		                <label for="Email">E-mail</label>
-		                <input type="text" name="Email" />
-		            </li>
-		            <li>
-		                <label for="Twitter">Twitter</label>
-		                <input type="text" name="Twitter" />
-		            </li>
-		        </ol>
-		        <input type="submit" value="Add" />
-		    </fieldset>
-		</form>
+                    $.getJSON("api/contacts", function (data) {
+                        self.contacts(data);
+                    });
+                }
+                ko.applyBindings(new ContactsViewModel());  
+        </script>
+        }
+        <ul id="contacts" data-bind="foreach: contacts">
+            <li class="ui-widget-content ui-corner-all">
+                <h1 data-bind="text: Name" class="ui-widget-header"></h1>
+                <div><span data-bind="text: $data.Address || 'Address?'"></span></div>
+                <div>
+                    <span data-bind="text: $data.City || 'City?'"></span>,
+                    <span data-bind="text: $data.State || 'State?'"></span>
+                    <span data-bind="text: $data.Zip || 'Zip?'"></span>
+                </div>
+                <div data-bind="if: $data.Email"><a data-bind="attr: { href: 'mailto:' + Email }, text: Email"></a></div>
+                <div data-bind="ifnot: $data.Email"><span>Email?</span></div>
+                <div data-bind="if: $data.Twitter"><a data-bind="attr: { href: 'http://twitter.com/' + Twitter }, text: '@@' + Twitter"></a></div>
+                <div data-bind="ifnot: $data.Twitter"><span>Twitter?</span></div>
+                <p><a data-bind="attr: { href: Self }, click: $root.removeContact" class="removeContact ui-state-default ui-corner-all">Remove</a></p>
+            </li>
+        </ul>
+        <form id="addContact" data-bind="submit: addContact">
+            <fieldset>
+                <legend>Add New Contact</legend>
+                <ol>
+                    <li>
+                        <label for="Name">Name</label>
+                        <input type="text" name="Name" />
+                    </li>
+                    <li>
+                        <label for="Address">Address</label>
+                        <input type="text" name="Address" >
+                    </li>
+                    <li>
+                        <label for="City">City</label>
+                        <input type="text" name="City" />
+                    </li>
+                    <li>
+                        <label for="State">State</label>
+                        <input type="text" name="State" />
+                    </li>
+                    <li>
+                        <label for="Zip">Zip</label>
+                        <input type="text" name="Zip" />
+                    </li>
+                    <li>
+                        <label for="Email">E-mail</label>
+                        <input type="text" name="Email" />
+                    </li>
+                    <li>
+                        <label for="Twitter">Twitter</label>
+                        <input type="text" name="Twitter" />
+                    </li>
+                </ol>
+                <input type="submit" value="Add" />
+            </fieldset>
+        </form>
 
-3. Content フォルダーを右クリックし、**[追加]** をクリックして、**[新しい項目]** をクリックします。
+3. Right-click the Content folder and click **Add**, and then click **New Item...**.
 
-	![Content フォルダーのコンテキスト メニューの [スタイル シートの追加]][addcode005]
+    ![Add style sheet in Content folder context menu][addcode005]
 
-4. **[新しい項目の追加]** ダイアログ ボックスで、右上の検索ボックスに「**スタイル**」と入力し、**[スタイル シート]** を選択します。![Add New Item dialog box][rxStyle]
+4. In the **Add New Item** dialog box, enter **Style** in the upper right search box and then select **Style Sheet**.
+    ![Add New Item dialog box][rxStyle]
 
-5. ファイルに *Contacts.css* という名前を付け、**[追加]** をクリックします。このファイルの内容を次のコードに置き換えます。
+5. Name the file *Contacts.css* and click **Add**. Replace the contents of the file with the following code.
     
         .column {
             float: left;
@@ -471,85 +475,85 @@ ASP.NET MVC では、スキャフォールディング機能によって、作�
             text-decoration: none;
         }
 
-	このスタイル シートは Contact Manager アプリケーションで使用されるレイアウト、色、スタイルに適用されます。
+    We will use this style sheet for the layout, colors and styles used in the contact manager app.
 
-6. *App\_Start\\BundleConfig.cs* ファイルを開きます。
+6. Open the *App_Start\BundleConfig.cs* file.
 
 
-7. 次のコードを追加して [Knockout](http://knockoutjs.com/index.html "KO") プラグインを登録します。
+7. Add the following code to register the [Knockout](http://knockoutjs.com/index.html "KO") plugin.
 
-		bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
-		            "~/Scripts/knockout-{version}.js"));
-	このサンプルでは Knockout を使用して、画面テンプレートを処理する動的な JavaScript コードを簡略化します。
+        bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                    "~/Scripts/knockout-{version}.js"));
+    This sample using knockout to simplify dynamic JavaScript code that handles the screen templates.
 
-8. contents/css エントリを変更して *contacts.css* スタイル シートを登録します。次の行を変更します。
+8. Modify the contents/css entry to register the *contacts.css* style sheet. Change the following line:
 
                  bundles.Add(new StyleBundle("~/Content/css").Include(
                    "~/Content/bootstrap.css",
                    "~/Content/site.css"));
-変更後:
+To:
 
         bundles.Add(new StyleBundle("~/Content/css").Include(
                    "~/Content/bootstrap.css",
                    "~/Content/contacts.css",
                    "~/Content/site.css"));
 
-1. パッケージ マネージャー コンソールで、次のコマンドを実行して Knockout をインストールします。
+1. In the Package Manager Console, run the following command to install Knockout.
 
-		Install-Package knockoutjs
+        Install-Package knockoutjs
 
-## Web API を使用する REST ベースのインターフェイスに対応したコントローラーを追加する
+## <a name="add-a-controller-for-the-web-api-restful-interface"></a>Add a controller for the Web API Restful interface
 
-1. **ソリューション エクスプローラー**で、Controllers フォルダーを右クリックし、**[追加]**、**[コントローラー]** の順にクリックします。 
+1. In **Solution Explorer**, right-click Controllers and click **Add** and then **Controller....** 
 
-1. **[スキャフォールディングの追加]** ダイアログ ボックスで、「**Entity Framework を使用した、操作のある Web API 2 コントローラー**」と入力し、**[追加]** をクリックします。
+1. In the **Add Scaffold** dialog box, enter **Web API 2 Controller with actions, using Entity Framework** and then click **Add**.
 
-	![API コントローラーの追加](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.PNG)
+    ![Add API controller](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.png)
 
-4. **[コントローラーの追加]** ダイアログ ボックスで、コントローラー名として「ContactsController」と入力します。**[モデル クラス]** で [Contact (ContactManager.Models)] を選択します。**[データ コンテキスト クラス]** で既定値をそのまま使用します。
+4. In the **Add Controller** dialog box, enter "ContactsController" as your controller name. Select "Contact (ContactManager.Models)" for the **Model class**.  Keep the default value for the **Data context class**. 
 
-6. **[追加]** をクリックします。
+6. Click **Add**.
 
-### ローカルでアプリケーションを実行する
+### <a name="run-the-application-locally"></a>Run the application locally
 
-1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
+1. Press CTRL+F5 to run the application.
 
-	![Index ページ][intro001]
+    ![Index page][intro001]
 
-2. 連絡先を入力し、**[Add]** をクリックします。アプリケーションはホーム ページに戻り、入力した連絡先が表示されます。
+2. Enter a contact and click **Add**. The app returns to the home page and displays the contact you entered.
 
-	![Index page with to-do list items][addwebapi004]
+    ![Index page with to-do list items][addwebapi004]
 
-3. ブラウザーで、**/api/contacts** を URL に追加します。
+3. In the browser, append **/api/contacts** to the URL.
 
-	追加後の URL は http://localhost:1234/api/contacts のようになります。追加した REST ベースの Web API によって、保存されている連絡先が返されます。Firefox と Chrome では、それらのデータが XML 形式で表示されます。
+    The resulting URL will resemble http://localhost:1234/api/contacts. The RESTful web API you added returns the stored contacts. Firefox and Chrome will display the data in XML format.
 
-	![Index page with to-do list items][rxFFchrome]
-	
+    ![Index page with to-do list items][rxFFchrome]
+    
 
-	IE では、連絡先を開くか保存するように求められます。
+    IE will prompt you to open or save the contacts.
 
-	![Web API の保存確認のダイアログ ボックス][addwebapi006]
-	
-	
-	返された連絡先はメモ帳やブラウザーで開くことができます。
-	
-	この出力は、モバイルの Web ページやアプリケーションのような別のアプリケーションで使用できます。
+    ![Web API save dialog][addwebapi006]
+    
+    
+    You can open the returned contacts in notepad or a browser.
+    
+    This output can be consumed by another application such as mobile web page or application.
 
-	![Web API の保存確認のダイアログ ボックス][addwebapi007]
+    ![Web API save dialog][addwebapi007]
 
-	**セキュリティ警告**: この時点で、アプリケーションは安全ではなく CSRF 攻撃に対して脆弱です。このチュートリアルの後半では、この脆弱性を排除します。詳細については、「[クロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止][prevent-csrf-attacks]」を参照してください。
-## XSRF 保護を追加する
+    **Security Warning**: At this point, your application is insecure and vulnerable to CSRF attack. Later in the tutorial we will remove this vulnerability. For more information see [Preventing Cross-Site Request Forgery (CSRF) Attacks][prevent-csrf-attacks].
+## <a name="add-xsrf-protection"></a>Add XSRF Protection
 
-クロスサイト リクエスト フォージェリ (XSRF または CSRF) は、Web でホストされるアプリケーションに対する攻撃であり、それによって悪意のある Web サイトが、クライアント ブラウザーとそのブラウザーが信頼する Web サイトの間のやり取りに影響を及ぼす可能性があります。これらの攻撃が可能になるのは、要求ごとに Web ブラウザーが自動的に認証トークンを Web サイトに送信するからです。標準的な例は、ASP.NET のフォーム認証チケットなどの認証クッキーです。ただし、永続的な認証メカニズム (Windows 認証や基本認証など) を使用する Web サイトも、これらの攻撃の対象になることがあります。
+Cross-site request forgery (also known as XSRF or CSRF) is an attack against web-hosted applications whereby a malicious website can influence the interaction between a client browser and a website trusted by that browser. These attacks are made possible because web browsers will send authentication tokens automatically with every request to a website. The canonical example is an authentication cookie, such as ASP.NET's Forms Authentication ticket. However, websites which use any persistent authentication mechanism (such as Windows Authentication, Basic, and so forth) can be targeted by these attacks.
 
-XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング攻撃には攻撃対象とのやり取りが必要です。フィッシング攻撃では、悪意のある Web サイトがターゲット Web サイトを模擬し、攻撃対象は重要な情報を攻撃者に提供するようにだまされます。XSRF 攻撃では、多くの場合に攻撃対象とのやり取りは必要ありません。むしろ攻撃者が利用するのは、ブラウザーがすべての関連クッキーを模擬 Web サイトに自動的に送信することです。
+An XSRF attack is distinct from a phishing attack. Phishing attacks require interaction from the victim. In a phishing attack, a malicious website will mimic the target website, and the victim is fooled into providing sensitive information to the attacker. In an XSRF attack, there is often no interaction necessary from the victim. Rather, the attacker is relying on the browser automatically sending all relevant cookies to the destination website.
 
-詳細については、「[Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page)」および「[XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) (CSRF)」を参照してください。
+For more information, see the [Open Web Application Security Project](https://www.owasp.org/index.php/Main_Page) (OWASP) [XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)).
 
-1. **ソリューション エクスプローラー**で、**[ContactManager]** プロジェクトを右クリックし、**[追加]**、**[クラス]** の順にクリックします。
+1. In **Solution Explorer**, right **ContactManager** project and click **Add** and then click **Class**.
 
-2. ファイルに「*ValidateHttpAntiForgeryTokenAttribute.cs*」という名前を付け、次のコードを追加します。
+2. Name the file *ValidateHttpAntiForgeryTokenAttribute.cs* and add the following code:
 
         using System;
         using System.Collections.Generic;
@@ -600,7 +604,7 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
                 {
                     string cookieToken = String.Empty;
                     string formToken = String.Empty;
-					IEnumerable<string> tokenHeaders;
+                    IEnumerable<string> tokenHeaders;
                     if (request.Headers.TryGetValues("RequestVerificationToken", out tokenHeaders))
                     {
                         string tokenValue = tokenHeaders.FirstOrDefault();
@@ -619,17 +623,17 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
             }
         }
 
-1. 次の *using* ステートメントを contracts コントローラーに追加します。これにより **[ValidateHttpAntiForgeryToken]** 属性にアクセスできるようになります。
+1. Add the following *using* statement to the contracts controller so you have access to the **[ValidateHttpAntiForgeryToken]** attribute.
 
-		using ContactManager.Filters;
+        using ContactManager.Filters;
 
-1. **[ValidateHttpAntiForgeryToken]** 属性を **ContactsController** の Post メソッドに追加して、XSRF の脅威から保護します。そのコードを "PutContact"、"PostContact"、**DeleteContact** の各アクション メソッドに追加します。
+1. Add the **[ValidateHttpAntiForgeryToken]** attribute to the Post methods of the **ContactsController** to protect it from XSRF threats. You will add it to the "PutContact",  "PostContact" and **DeleteContact** action methods.
 
-		[ValidateHttpAntiForgeryToken]
-	        public IHttpActionResult PutContact(int id, Contact contact)
-	        {
+        [ValidateHttpAntiForgeryToken]
+            public IHttpActionResult PutContact(int id, Contact contact)
+            {
 
-1. *Views\\Home\\Index.cshtml* ファイルの *[Scripts]* セクションを更新して、XSRF トークンを取得するコードを含めます。
+1. Update the *Scripts* section of the *Views\Home\Index.cshtml* file to include code to get the XSRF tokens.
 
          @section Scripts {
             @Scripts.Render("~/bundles/knockout")
@@ -682,70 +686,71 @@ XSRF 攻撃はフィッシング攻撃とは異なります。フィッシング
                }
                ko.applyBindings(new ContactsViewModel());
             </script>
-		 }
+         }
 
 
-## Azure および SQL データベースにアプリケーションの更新を発行する
+## <a name="publish-the-application-update-to-azure-and-sql-database"></a>Publish the application update to Azure and SQL Database
 
-アプリケーションを発行するには、前に説明した手順を繰り返します。
+To publish the application, you repeat the procedure you followed earlier.
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[発行]** をクリックします。
+1. In **Solution Explorer**, right click the project and select **Publish**.
 
-	![Publish][rxP]
+    ![Publish][rxP]
 
-5. **[設定]** タブをクリックします。
-	
+5. Click the **Settings** tab.
+    
 
-1. **[ContactsManagerContext(ContactsManagerContext)]** の下で、**v** アイコンをクリックして、*リモート接続文字列*を連絡先データベースの接続文字列に変更します。**[ContactDB]** をクリックします。
+1. Under **ContactsManagerContext(ContactsManagerContext)**, click the **v** icon to change *Remote connection string* to the connection string for the contact database. Click **ContactDB**.
 
-	![[設定]](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png)
+    ![Settings](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png)
 
-7. **[Code First Migrations の実行 (アプリケーションの起動時に実行)]** チェック ボックスをオンにします。
+7. Check the box for **Execute Code First Migrations (runs on application start)**.
 
-1. **[次へ]** をクリックし、**[プレビュー]** をクリックします。Visual Studio で、追加または更新されるファイルの一覧が表示されます。
+1. Click **Next** and then click **Preview**. Visual Studio displays a list of the files that will be added or updated.
 
-8. **[発行]** をクリックします。デプロイが完了すると、ブラウザーでアプリケーションのホーム ページが開かれます。
+8. Click **Publish**.
+After the deployment completes, the browser opens to the home page of the application.
 
-	![連絡先が表示されていない Index ページ][intro001]
+    ![Index page with no contacts][intro001]
 
-	Visual Studio の発行プロセスにより、デプロイされた *Web.config* ファイル内の接続文字列は SQL データベースを指すよう自動的に構成されました。また、Code First Migrations は、デプロイ後にアプリケーションが初めてデータベースに接続するときに、データベースを最新バージョンに自動的にアップグレードするよう構成されました。
+    The Visual Studio publish process automatically configured the connection string in the deployed *Web.config* file to point to the SQL database. It also configured Code First Migrations to automatically upgrade the database to the latest version the first time the application accesses the database after deployment.
 
-	この構成の結果、前の手順で作成した **Initial** クラスのコードが実行されて、Code First によってデータベースが作成されました。この処理は、デプロイ後にアプリケーションが初めてデータベースにアクセスしようとしたときに行われました。
+    As a result of this configuration, Code First created the database by running the code in the **Initial** class that you created earlier. It did this the first time the application tried to access the database after deployment.
 
-9. アプリケーションをローカルで実行したときと同様に連絡先を入力して、データベースのデプロイが成功したことを確認します。
+9. Enter a contact as you did when you ran the app locally, to verify that database deployment succeeded.
 
-入力した項目が保存され、Contact Manager のページに表示されることを確認すると、その項目がデータベースに保存されたことがわかります。
+When you see that the item you enter is saved and appears on the contact manager page, you know that it has been stored in the database.
 
-![連絡先が表示された Index ページ][addwebapi004]
+![Index page with contacts][addwebapi004]
 
-これで、データの保存先に SQL Database を使用して、アプリケーションがクラウドで実行されるようになりました。Azure 上でアプリケーションのテストを終えたら、そのアプリケーションを削除します。アプリケーションはパブリックであり、アクセスを制限するメカニズムを備えていません。
+The application is now running in the cloud, using SQL Database to store its data. After you finish testing the application in Azure, delete it. The application is public and doesn't have a mechanism to limit access.
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-実際のアプリケーションでは認証と権限承認が必要になるため、その目的でメンバーシップ データベースを使用します。「[Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database (OAuth、メンバーシップ、SQL データベースを使用するセキュリティで保護された ASP.NET MVC アプリケーションのデプロイ)](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)」は、このチュートリアルに基づいており、メンバーシップ データベースを使用する Web アプリケーションをデプロイする方法について説明しています。
+A real application would require authentication and authorization, and you would use the membership database for that purpose. The tutorial [Deploy a Secure ASP.NET MVC application with OAuth, Membership and SQL Database](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md) is based on this tutorial and shows how to deploy a web application with the membership database.
 
-Azure アプリケーションにデータを保存するには、Azure Storage を使用する方法もあります。Azure Storage には、非リレーショナル データを BLOB 形式とテーブル形式で保存できます。Web API、ASP.NET MVC、および Window Azure の詳細については、次の Web ページを参照してください。
+Another way to store data in an Azure application is to use Azure storage, which provide non-relational data storage in the form of blobs and tables. The following links provide more information on Web API, ASP.NET MVC and Window Azure.
  
 
-* [MVC を使用した Entity Framework の概要に関するページ][EFCodeFirstMVCTutorial]
-* [ASP.NET MVC 5 の入門ページ](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
-* [ASP.NET Web API の入門ページ](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)
-* [Debugging WAWS (WAWS のデバッグ)](web-sites-dotnet-troubleshoot-visual-studio.md)
+* [Getting Started with Entity Framework using MVC][EFCodeFirstMVCTutorial]
+* [Intro to ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
+* [Your First ASP.NET Web API](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)
+* [Debugging WAWS](web-sites-dotnet-troubleshoot-visual-studio.md)
 
-このチュートリアルとサンプル アプリケーションは、Tom Dykstra と Barry Dorrans (Twitter [@blowdart](http://blogs.msdn.com/b/rickandy/)) の協力の下、[Rick Anderson](https://twitter.com/RickAndMSFT) (Twitter [@RickAndMSFT](https://twitter.com/blowdart)) が執筆しました。
+This tutorial and the sample application was written by [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [@RickAndMSFT](https://twitter.com/RickAndMSFT)) with assistance from Tom Dykstra and Barry Dorrans (Twitter [@blowdart](https://twitter.com/blowdart)). 
 
-役に立った内容や改善点など、皆様からのご意見をお寄せください。このチュートリアルに関してだけでなく、ここで紹介した製品に関するご意見やご要望もお待ちしております。お寄せいただいたご意見は、今後の改善に役立たせていただきます。特に、メンバーシップ データベースの構成とデプロイの自動化に関するご意見をお待ちしております。
+Please leave feedback on what you liked or what you would like to see improved, not only about the tutorial itself but also about the products that it demonstrates. Your feedback will help us prioritize improvements. We are especially interested in finding out how much interest there is in more automation for the process of configuring and deploying the membership database. 
 
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+## <a name="what's-changed"></a>What's changed
+* For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
 [Add an OAuth Provider]: #addOauth
-[Add Roles to the Membership Database]: #mbrDB
-[Create a Data Deployment Script]: #ppd
-[Update the Membership Database]: #ppd2
+[Add Roles to the Membership Database]:#mbrDB
+[Create a Data Deployment Script]:#ppd
+[Update the Membership Database]:#ppd2
 [setupdbenv]: #bkmk_setupdevenv
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app
@@ -810,4 +815,8 @@ Azure アプリケーションにデータを保存するには、Azure Storage 
 [prevent-csrf-attacks]: http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-(csrf)-attacks
  
 
-<!------HONumber=AcomDC_0323_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

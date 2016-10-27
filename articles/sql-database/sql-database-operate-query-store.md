@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database のクエリ ストアの動作"
-   description="Azure SQL Database でクエリ ストアがどのように動作するかについて説明します"
+   pageTitle="Operating Query Store in Azure SQL Database"
+   description="Learn how to operate the Query Store in Azure SQL Database"
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -17,46 +17,51 @@
    ms.date="08/16/2016"
    ms.author="carlrab"/>
 
-# Azure SQL Database のクエリ ストアの動作 
 
-Azure のクエリ ストアは、すべてのクエリに関する詳細な履歴情報を継続的に収集して提示する、完全に管理されたデータベース機能です。クエリ ストアは、航空機のフライト データ レコーダーに似ていると考えることができます。この機能によって、クラウドとオンプレミスのユーザーの両方が、クエリ パフォーマンスのトラブルシューティングを大幅に簡素化できます。この記事では、Azure でのクエリ ストアの動作の特定の側面について説明します。この事前収集されたクエリ データを使用してパフォーマンスの問題をすばやく診断して解決することで、業務に向ける時間を増やすことができます。
+# <a name="operating-the-query-store-in-azure-sql-database"></a>Operating the Query Store in Azure SQL Database 
 
-クエリ ストアは、2015 年 11 月以降、Azure SQL Database で[グローバルに使用できる](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/)ようになっています。クエリ ストアは、[SQL Database Advisor やパフォーマンス ダッシュボード](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)などのパフォーマンス分析とチューニング機能の基盤です。この記事の発行時点で、クエリ ストアは、Azure の 200,000 台を超えるユーザー データベースで実行され、クエリに関連する情報を、数か月にわたって中断することなく収集し続けています。
+Query Store in Azure is a fully managed database feature that continuously collects and presents detailed historic information about all queries. You can think about Query Store as similar to an airplane's flight data recorder that significantly simplifies query performance troubleshooting both for cloud and on-premises customers. This article explains specific aspects of operating Query Store in Azure. Using this pre-collected query data, you can quickly diagnose and resolve performance problems and thus spend more time focusing on their business. 
 
-> [AZURE.IMPORTANT] Microsoft では、すべての Azure SQL Database (既存と新規) でクエリ ストアをアクティブ化するプロセスを続けています。
+Query Store has been [globally available](https://azure.microsoft.com/updates/general-availability-azure-sql-database-query-store/) in Azure SQL Database since November, 2015. Query Store is the foundation for performance analysis and tuning features, such as [SQL Database Advisor and Performance Dashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). At the moment of publishing this article, Query Store is running in more than 200,000 user databases in Azure, collecting query-related information for several months, without interruption.
 
-## クエリ ストアの最適構成
+> [AZURE.IMPORTANT] Microsoft is in the process of activating Query Store for all Azure SQL databases (existing and new). 
 
-このセクションでは、クエリ ストアと、[SQL Database Advisor やパフォーマンス ダッシュボード](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)などの依存機能の信頼できる動作を保証するように考えられた、最適構成の既定値について説明します。既定の構成は、データ収集が継続的に実施される (OFF/READ\_ONLY 状態の時間が最小限になる) ように最適化されています。
+## <a name="optimal-query-store-configuration"></a>Optimal Query Store Configuration
 
-| 構成 | Description | 既定値 | コメント |
+This section describes optimal configuration defaults that are designed to ensure reliable operation of the Query Store and dependent features, such as [SQL Database Advisor and Performance Dashboard](https://azure.microsoft.com/updates/sqldatabaseadvisorga/). Default configuration is optimized for continuous data collection, that is minimal time spent in OFF/READ_ONLY states.
+
+| Configuration | Description | Default | Comment |
 | ------------- | ----------- | ------- | ------- |
-| MAX\_STORAGE\_SIZE\_MB | クエリ ストアがユーザーのデータベース内で使用するデータ領域の制限を指定します。 | 100 | 新しいデータベースに適用 |
-| INTERVAL\_LENGTH\_MINUTES | クエリ プランで収集されたランタイム統計が集計されて保存される間隔を定義します。すべてのアクティブなクエリ プランには、この構成で定義された期間の行が最大で 1 行含まれます。 | 60 | 新しいデータベースに適用 |
-| STALE\_QUERY\_THRESHOLD\_DAYS | 保存されたランタイム統計と非アクティブなクエリのリテンション期間を制御する、時間に基づくクリーンアップ ポリシー | 30 | 新しいデータベースと前の既定値 (367) を持つデータベースに適用 |
-| SIZE\_BASED\_CLEANUP\_MODE | クエリ ストアのデータ サイズが制限値に近づいたときに、データの自動クリーンアップが発生するかどうかを指定します | AUTO | すべてのデータベースに適用 |
-| QUERY\_CAPTURE\_MODE | すべてのクエリを追跡するか、クエリのサブセットのみを追跡するかを指定します | AUTO | すべてのデータベースに適用 |
-| FLUSH\_INTERVAL\_SECONDS | キャプチャされたランタイム統計がディスクにフラッシュされる前に、メモリ内に保持される最大期間を指定します | 900 | 新しいデータベースに適用 |
+| MAX_STORAGE_SIZE_MB | Specifies the limit for the data space that Query Store can take inside z customer database | 100 | Enforced for new databases |
+| INTERVAL_LENGTH_MINUTES | Defines size of time window during which collected runtime statistics for query plans are aggregated and persisted. Every active query plan has at most one row for a period of time defined with this configuration | 60   | Enforced for new databases |
+| STALE_QUERY_THRESHOLD_DAYS | Time-based cleanup policy that controls the retention period of persisted runtime statistics and inactive queries | 30 | Enforced for new databases and databases with previous default (367) |
+| SIZE_BASED_CLEANUP_MODE | Specifies whether automatic data cleanup takes place when Query Store data size approaches the limit | AUTO | Enforced for all databases |
+| QUERY_CAPTURE_MODE | Specifies whether all queries or only a subset of queries are tracked | AUTO | Enforced for all databases |
+| FLUSH_INTERVAL_SECONDS | Specifies maximum period during which captured runtime statistics are kept in memory, before flushing to disk | 900 | Enforced for new databases |
 ||||||
 
-> [AZURE.IMPORTANT] 上記の既定値は、すべての Azure SQL Database でのクエリ ストアのアクティブ化の最終段階で自動的に適用されます (上記の重要な注意事項を参照してください)。アクティブ化された後、ユーザーによって設定された構成値は、主要なワークロードまたはクエリ ストアの信頼できる動作に悪影響を与えない限り、Azure SQL Database によって変更されることはありません。
+> [AZURE.IMPORTANT] These defaults are automatically applied in the final stage of Query Store activation in all Azure SQL databases (see preceding important note). After this light up, Azure SQL Database won’t be changing configuration values set by customers, unless they negatively impact primary workload or reliable operations of the Query Store.
 
-カスタム設定を維持する場合は、[ALTER DATABASE とクエリ ストア オプション](https://msdn.microsoft.com/library/bb522682.aspx)を使用して、構成を前の状態に戻します。「[クエリ ストアを使用する際の推奨事項](https://msdn.microsoft.com/library/mt604821.aspx)」で、よく選ばれている最適構成のパラメーターを確認してください。
+If you want to stay with your custom settings, use [ALTER DATABASE with Query Store options](https://msdn.microsoft.com/library/bb522682.aspx) to revert configuration to the previous state. Check out [Best Practices with the Query Store](https://msdn.microsoft.com/library/mt604821.aspx) in order to learn how top chose optimal configuration parameters.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
 [SQL Database Performance Insight](sql-database-performance.md)
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-詳細については、次の記事を参照してください。
+For more information check out the following articles:
 
-- [データベースのためのフライト データ レコーダー](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database)
+- [A flight data recorder for your database](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
 
-- [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx)
+- [Monitoring Performance By Using the Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
 
-- [クエリ ストアの使用シナリオ](https://msdn.microsoft.com/library/mt614796.aspx)
+- [Query Store Usage Scenarios](https://msdn.microsoft.com/library/mt614796.aspx)
 
-- [クエリ ストアを使用したパフォーマンスの監視](https://msdn.microsoft.com/library/dn817826.aspx)
+- [Monitoring Performance By Using the Query Store](https://msdn.microsoft.com/library/dn817826.aspx) 
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

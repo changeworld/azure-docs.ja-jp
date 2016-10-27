@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure RemoteApp イメージの作成 | Microsoft Azure"
-    description="Azure RemoteApp のイメージ作成に使用できるオプションについて説明します。"
+    pageTitle="Create an Azure RemoteApp image | Microsoft Azure"
+    description="Learn about the options available for creating images for Azure RemoteApp"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -17,21 +17,26 @@
 
 
 
-# Azure RemoteApp イメージの作成
+
+# <a name="create-an-azure-remoteapp-image"></a>Create an Azure RemoteApp image
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Azure RemoteApp は、イメージを使用してユーザーと共有しているアプリを保持します。(Azure はユーザーのイメージを取得し、それを使用して VM を作成します。ユーザーは、Azure RemoteApp にサインインするとそのイメージにアクセスします。) クラウド型かハイブリッド型かに関係なく、選択したアプリケーションの Azure RemoteApp コレクションを作成するには、まず、これらのアプリケーションがインストールされた状態のイメージを作成します。次に、そのイメージを使用するコレクションを作成し、コレクションにユーザーを割り当てて、それらのユーザーにアプリを発行します。
+Azure RemoteApp uses images to hold the apps that you share with your users. (We take your image and use it to create VMs - that's what the users access when they sign into Azure RemoteApp.) To create an Azure RemoteApp collection with your choice of applications, whether it is cloud or hybrid, you  start by creating an image with those applications installed. Then, create a collection that uses that image, assign users to the collection, and publish apps to those users.
 
-イメージの作成または使用には、いくつかのオプションあります。イメージの基本的な[要件](remoteapp-imagereqs.md)として、 イメージが Windows Server 2012 R2 を実行すること、およびリモート デスクトップ セッション ホスト (RDSH) のロールがインストールされていることが必要です。興味深いのは、その取得方法です。
+You have several options for creating or using images. The basic [requirement](remoteapp-imagereqs.md) for an image is that it run Windows Server 2012 R2 and have the Remote Desktop Session Host (RDSH) role installed. How you get that is where things get interesting.
 
-イメージの場合、次のオプションがあります。
+You have the following options when it comes to images:
 
-- [Azure 仮想マシンに基づくイメージ](remoteapp-image-on-azurevm.md)をインポートして使用できます。これは、カスタム設定を必要とする基幹業務アプリに最適です。イメージをカスタマイズして、アプリ用に動作させることができます。
-- [カスタム イメージを作成してアップロード](remoteapp-create-custom-image.md)できます。オンプレミスのリモート デスクトップ サービス デプロイに使用するイメージが既にある場合は、これが最適です。
-- RemoteApp サブスクリプションに含まれる[テンプレート イメージ](remoteapp-images.md)のいずれか 1 つを使用できます。これらのイメージは、RemoteApp チームによって作成および管理されているもので、イメージに含まれる標準的なアプリケーション (Office スイートなど) をユーザーが使用できます。なお、運用設定では Office 365 Pro Plus イメージのみ使用可能です。
+- You can import and use an [image based on an Azure virtual machine](remoteapp-image-on-azurevm.md). This is good for line-of-business apps that require custom settings. You can customize the image to work for the app.
+- You can [create and upload a custom image](remoteapp-create-custom-image.md). This is good if you already have an image that you use for your on-premises Remote Desktop Services deployment.
+- You can use one of the [template images](remoteapp-images.md) included in your RemoteApp subscription. These images are created and maintained by the RemoteApp team and contain some standard applications (like the Office suite) that you can make available to your users. Note that only the Office 365 Pro Plus image can be used in a production setting.
 
-イメージの取得および作成方法に関わりなく、[アプリ要件](remoteapp-appreqs.md)を正しく理解し、アプリが RemoteApp で正常に動作することを確認してください。次の手順は、[クラウド](remoteapp-create-cloud-deployment.md) コレクションまたは[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションの作成です。
+Regardless of where you get your image or how you create it, you'll want to make sure you understand the [app requirements](remoteapp-appreqs.md) to ensure that your app works well in RemoteApp. Then, the next step is to create a [cloud](remoteapp-create-cloud-deployment.md) or [hybrid](remoteapp-create-hybrid-deployment.md) collection.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

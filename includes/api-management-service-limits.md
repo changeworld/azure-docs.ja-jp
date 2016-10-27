@@ -1,11 +1,13 @@
-| リソース | 制限 |
+| Resource                          | Limit                                    |
 |-----------------------------------|------------------------------------------|
-| API 呼び出し (スケール単位あたり) | 1 日あたり 3,200 万回<sup>1</sup> |
-| データの転送 (スケール単位あたり) | 1 日あたり 161 GB<sup>1</sup> |
-| キャッシュ | 5 GB<sup>1</sup> |
-| スケールの単位 | 無制限<sup>1</sup> |
-| Azure Active Directory の統合| 無制限のユーザー アカウント<sup>1</sup> |
+| API Calls (per unit of scale)     | 32 million per day<sup>1</sup>            |
+| Data transfer (per unit of scale) | 161 GB per day<sup>1</sup> |
+| Cache                             | 5 GB<sup>1</sup> |
+| Units of scale                    | Unlimited<sup>1</sup> |
+| Azure Active Directory Integration| Unlimited User Accounts<sup>1</sup> |
 
-<sup>1</sup>API Management に関する制限は、各価格レベルによって異なります。価格レベルとそれに関連する制限については、[API Management の価格](https://azure.microsoft.com/pricing/details/api-management/)を参照してください。
+<sup>1</sup>API Management limits are different for each pricing tier. To see the pricing tiers and their associated limits and scaling options, see [API Management Pricing](https://azure.microsoft.com/pricing/details/api-management/).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

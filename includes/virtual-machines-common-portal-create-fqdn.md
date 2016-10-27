@@ -1,23 +1,25 @@
-## 簡単な手順 
+## <a name="quick-steps"></a>Quick steps 
 
-この記事では、ポータルでサブスクリプションにログインし、Resource Manager デプロイメント モデルを使用して利用可能なイメージで仮想マシンを作成していることを前提としています。仮想マシンの起動後、次の手順に従います。
+The article assumes that you have logged in to your subscription in the portal, and created a virtual machine with the available images using the Resource Manager deployment model. Follow these steps once your virtual machine starts running.
 
-1.  ポータルで仮想マシンの設定を表示し、パブリック IP アドレスをクリックします。
+1.  View the virtual machine settings on the portal and click the Public IP address.
 
-    ![IP リソースの検索](./media/virtual-machines-common-portal-create-fqdn/locatePublicIP.PNG)
+    ![locate ip resource](./media/virtual-machines-common-portal-create-fqdn/locatePublicIP.PNG)
 
-2.  パブリック IP の DNS 名が空白であることに注意してください。[パブリック IP] ブレードの **[構成]** をクリックします。
+2.  Note that the DNS name for the Public IP is blank. Click **Configuration** for the Public IP blade.
 
     ![settings ip](./media/virtual-machines-common-portal-create-fqdn/settingsIP.PNG)
 
-3.  目的の DNS 名ラベルを入力し、この構成を**保存**します。
+3.  Enter the desired DNS name label and **Save** this configuration.
 
-    ![DNS 名のラベルの入力](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
+    ![enter dns name label](./media/virtual-machines-common-portal-create-fqdn/dnsNameLabel.PNG)
 
-    これで、パブリック IP リソースのブレードでこの新しい DNS ラベルが表示されるようになりました。
+    The Public IP resource now shows this new DNS label on its blade.
 
-4.  パブリック IP ブレードを閉じ、ポータルの仮想マシン ブレードに戻ります。パブリック IP リソースの IP アドレスの横に DNS 名/FQDN が表示されることを確認します。
+4.  Close the Public IP blades and go back to the virtual machine blade in the portal. Verify that the DNS name/FQDN appears next to the IP address for the Public IP resource.
 
-    ![FQDN が作成される](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
+    ![FQDN is created](./media/virtual-machines-common-portal-create-fqdn/fqdnCreated.PNG)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

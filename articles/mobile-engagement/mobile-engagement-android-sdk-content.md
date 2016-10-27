@@ -1,44 +1,49 @@
 <properties 
-	pageTitle="Azure Mobile Engagement Android SDK の統合" 
-	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
-	editor="" />
+    pageTitle="Azure Mobile Engagement Android SDK Integration" 
+    description="Latest updates and procedures for Android SDK for Azure Mobile Engagement"
+    services="mobile-engagement" 
+    documentationCenter="mobile" 
+    authors="piyushjo" 
+    manager="dwrede" 
+    editor="" />
 
 <tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-android" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="08/19/2016" 
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement" 
+    ms.workload="mobile" 
+    ms.tgt_pltfrm="mobile-android" 
+    ms.devlang="Java" 
+    ms.topic="article" 
+    ms.date="08/19/2016" 
+    ms.author="piyushjo" />
 
-#SDK の内容
 
-このドキュメントでは、SDK アーカイブの内容を一覧にして説明しています。
+#<a name="sdk-content"></a>SDK Content
+
+This document lists and describes the content of the SDK archive.
 
 `mobile-engagement-VERSION.jar`
 
-> Engagement SDK のクラス ファイル。
+> Engagement SDK class files.
 
-`res` フォルダー
+`res` folder
 
-> Engagement Reach SDK のリソース (描画可能でアプリケーションに含めるファイルをレイアウト)。
+> Engagement Reach SDK resources (drawable and layout files to include in your applications).
 
-`src` フォルダー
+`src` folder
 
-> Engagement SDK のソース コード。
+> Engagement SDK source code.
 >
-> サービスのソース (`com.microsoft.azure.engagement.service.EngagementService` および関連するソース ファイル) は含まれていません。
+> Note that the sources of the service are not included (`com.microsoft.azure.engagement.service.EngagementService` and its related source files).
 
 `documentation.html`
 
-> ダウンロードした SDK のバージョンに対応するドキュメント サイトへのショートカット。
+> A shortcut to the documentation site corresponding to the downloaded version of the SDK.
 
-その他のファイルはソフトウェア ライセンスのコピーです。
+Other files are a copy of the software licenses.
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

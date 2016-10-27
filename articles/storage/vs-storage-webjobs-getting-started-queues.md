@@ -1,548 +1,553 @@
 <properties
-	pageTitle="キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト) | Microsoft Azure"
-	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Web ジョブ プロジェクトで Azure キュー ストレージの使用を開始する方法について説明します。"
-	services="storage"
-	documentationCenter=""
-	authors="TomArcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Getting started with queue storage and Visual Studio connected services (WebJob projects) | Microsoft Azure"
+    description="How to get started using Azure Queue storage in a WebJob project after connecting to a storage account using Visual Studio connected services."
+    services="storage"
+    documentationCenter=""
+    authors="TomArcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="storage"
-	ms.workload="web"
-	ms.tgt_pltfrm="vs-getting-started"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/18/2016"
-	ms.author="tarcher"/>
+    ms.service="storage"
+    ms.workload="web"
+    ms.tgt_pltfrm="vs-getting-started"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/18/2016"
+    ms.author="tarcher"/>
 
-# Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
+
+# <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-(webjob-projects)"></a>Getting started with Azure Queue storage and Visual Studio connected services (WebJob Projects)
 
 [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## 概要
+## <a name="overview"></a>Overview
 
-この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログ ボックスを使用して Azure ストレージ アカウントを参照または作成した後に、Visual Studio の Azure Web ジョブ プロジェクトで Azure キュー ストレージの使用を開始する方法について説明します。Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
+This article describes how get started using Azure Queue storage in a Visual Studio Azure WebJob project after you have created or referenced an Azure storage account by using the Visual Studio  **Add Connected Services** dialog box. When you add a storage account to a WebJob project by using the Visual Studio **Add Connected Services** dialog, the appropriate Azure Storage NuGet packages are installed, the appropriate .NET references are added to the project, and connection strings for the storage account are updated in the App.config file.  
 
-この記事では、Azure Web ジョブ SDK バージョン 1.x を Azure キュー ストレージ サービスとともに使用する方法を示す C# コード サンプルについて説明します。
+This article provides C# code samples that show how to use the Azure WebJobs SDK version 1.x with the Azure Queue storage service.
 
-Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。詳細については、「[.NET を使用して Azure Queue Storage を使用する](storage-dotnet-how-to-use-queues.md)」をご覧ください。ASP.NET の詳細については、[ASP.NET](http://www.asp.net) に関するページを参照してください。
-
-
-
-## キュー メッセージを受信したときに関数をトリガーする方法
-
-キュー メッセージを受信したときに WebJobs SDK が呼び出す関数を記述するには、**QueueTrigger** 属性を使用します。属性コンストラクターは、ポーリングのためにキューの名前を指定する文字列パラメーター受け取ります。キューの名前を動的に設定する方法については、「[構成オプションの設定方法](#how-to-set-configuration-options)」をご覧ください。
-
-### 文字列のキュー メッセージ
-
-次の例では、キューに文字列メッセージが含まれます。キューメッセージの内容が含まれる **logMessage** と呼ばれる文字列パラメーターに **QueueTrigger** が適用されます。この関数は[ダッシュボードにログ メッセージを書き込みます](#how-to-write-logs)。
+Azure Queue storage is a service for storing large numbers of messages that can be accessed from anywhere in the world via authenticated calls using HTTP or HTTPS. A single queue message can be up to 64 KB in size, and a queue can contain millions of messages, up to the total capacity limit of a storage account. See [Get started with Azure Queue Storage using .NET](storage-dotnet-how-to-use-queues.md) for more information. For more information about ASP.NET, see [ASP.NET](http://www.asp.net).
 
 
-		public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
-		{
-		    logger.WriteLine(logMessage);
-		}
 
-**string** だけでなく、パラメーターにはバイト配列、**CloudQueueMessage** オブジェクト、または自分で定義した POCO があります。
+## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>How to trigger a function when a queue message is received
 
-### POCO ([Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+To write a function that the WebJobs SDK calls when a queue message is received, use the **QueueTrigger** attribute. The attribute constructor takes a string parameter that specifies the name of the queue to poll. To see how to set the queue name dynamically, check out [How to set Configuration Options](#how-to-set-configuration-options).
 
-次の例では、**BlobName** プロパティを持つ **BlobInformation** オブジェクトの JSON がキュー メッセージに含まれています。SDK は自動的にオブジェクトを逆シリアル化します。
+### <a name="string-queue-messages"></a>String queue messages
 
-		public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
-		{
-		    logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
-		}
+In the following example, the queue contains a string message, so **QueueTrigger** is applied to a string parameter named **logMessage** which contains the content of the queue message. The function [writes a log message to the Dashboard](#how-to-write-logs).
 
-SDK は [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages/Newtonsoft.Json)を使用してメッセージのシリアル化と逆シリアル化を行います。キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。
 
-		BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
-		var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
-		logQueue.AddMessage(queueMessage);
+        public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
+        {
+            logger.WriteLine(logMessage);
+        }
 
-### Async 関数
+Besides **string**, the parameter may be a byte array, a **CloudQueueMessage** object, or a POCO  that you define.
 
-次の async 関数は[ダッシュボードにログを書き込みます](#how-to-write-logs)。
+### <a name="poco-[(plain-old-clr-object](http://en.wikipedia.org/wiki/plain_old_clr_object))-queue-messages"></a>POCO [(Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) queue messages
 
-		public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
-		{
-		    await logger.WriteLineAsync(logMessage);
-		}
+In the following example, the queue message contains JSON for a **BlobInformation** object which includes a **BlobName** property. The SDK automatically deserializes the object.
 
-Async 関数は、BLOB をコピーする次の例が示すように、[キャンセル トークン](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)を必要とする場合があります。(**queueTrigger** プレースホルダーの説明については、「[BLOB](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message)」セクションを参照してください。)
+        public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
+        {
+            logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
+        }
 
-		public async static Task ProcessQueueMessageAsyncCancellationToken(
-		    [QueueTrigger("blobcopyqueue")] string blobName,
-		    [Blob("textblobs/{queueTrigger}",FileAccess.Read)] Stream blobInput,
-		    [Blob("textblobs/{queueTrigger}-new",FileAccess.Write)] Stream blobOutput,
-		    CancellationToken token)
-		{
-		    await blobInput.CopyToAsync(blobOutput, 4096, token);
-		}
+The SDK uses the [Newtonsoft.Json NuGet package](http://www.nuget.org/packages/Newtonsoft.Json) to serialize and deserialize messages. If you create queue messages in a program that doesn't use the WebJobs SDK, you can write code like the following example to create a POCO queue message that the SDK can parse.
 
-## QueueTrigger 属性が連携する種類
+        BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
+        var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
+        logQueue.AddMessage(queueMessage);
 
-次の種類の **QueueTrigger** を使用できます。
+### <a name="async-functions"></a>Async functions
+
+The following async function [writes a log to the Dashboard](#how-to-write-logs).
+
+        public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
+        {
+            await logger.WriteLineAsync(logMessage);
+        }
+
+Async functions may take a [cancellation token](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken), as shown in the following example which copies a blob. (For an explanation of the **queueTrigger** placeholder, see the [Blobs](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) section.)
+
+        public async static Task ProcessQueueMessageAsyncCancellationToken(
+            [QueueTrigger("blobcopyqueue")] string blobName,
+            [Blob("textblobs/{queueTrigger}",FileAccess.Read)] Stream blobInput,
+            [Blob("textblobs/{queueTrigger}-new",FileAccess.Write)] Stream blobOutput,
+            CancellationToken token)
+        {
+            await blobInput.CopyToAsync(blobOutput, 4096, token);
+        }
+
+## <a name="types-the-queuetrigger-attribute-works-with"></a>Types the QueueTrigger attribute works with
+
+You can use **QueueTrigger** with the following types:
 
 * **string**
-* JSON としてシリアル化された POCO の型
-* **byte**
+* A POCO type serialized as JSON
+* **byte[]**
 * **CloudQueueMessage**
 
-## ポーリング アルゴリズム
+## <a name="polling-algorithm"></a>Polling algorithm
 
-SDK はランダムな指数バックオフ アルゴリズムを実装することで、ストレージ トランザクション コストにおけるアイドル状態のキューのポーリングの影響を軽減しています。メッセージが見つかった場合、SDK は 2 秒間待機した後、別のメッセージをチェックします。 メッセージが見つからない場合は約 4 秒間待機してから再試行します。その後もキュー メッセージの取得失敗が続けば、待機時間は規定値として 1 分間に設定されている最大待機時間に達するまで増え続けます。[この最大待機時間の設定は変更可能です](#how-to-set-configuration-options)。
+The SDK implements a random exponential back-off algorithm to reduce the effect of idle-queue polling on storage transaction costs.  When a message is found, the SDK waits two seconds and then checks for another message; when no message is found it waits about four seconds before trying again. After subsequent failed attempts to get a queue message, the wait time continues to increase until it reaches the maximum wait time, which defaults to one minute. [The maximum wait time is configurable](#how-to-set-configuration-options).
 
-## 複数のインスタンス
+## <a name="multiple-instances"></a>Multiple instances
 
-Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各マシン上で実行され、各マシンがトリガーを待機して関数の実行を試行します。一部のシナリオでは、これによっていくつかの関数が同じデータを 2 回処理する場合があるため、関数をべき等にする (同じ入力データで関数を繰り返し呼び出しても重複した結果を生成しないように記述する) 必要があります。
+If your web app runs on multiple instances, a continuous WebJobs runs on each machine, and each machine will wait for triggers and attempt to run functions. In some scenarios this can lead to some functions processing the same data twice, so functions should be idempotent (written so that calling them repeatedly with the same input data doesn't produce duplicate results).  
 
-## 並列実行
+## <a name="parallel-execution"></a>Parallel execution
 
-異なるキューをリッスンする複数の関数を使用している場合、複数のメッセージを同時に受信したとき、SDK では並行してそれらを呼び出します。
+If you have multiple functions listening on different queues, the SDK will call them in parallel when messages are received simultaneously.
 
-1 つのキューに対して複数のメッセージが受信される場合も同様に処理されます。既定では、SDK は一度にキュー メッセージ 16 個のバッチを取得し、それらを並列処理する関数を実行します。[バッチ サイズの設定は変更可能です](#how-to-set-configuration-options)。処理中のメッセージの数がバッチ サイズの半分まで減少すると、SDK は別のバッチを取得し、そのメッセージの処理を開始します。そのため、1 つの関数につき同時に処理されるメッセージの最大数は、バッチ サイズの 1.5 倍です。この制限は、**QueueTrigger** 属性を持つ各関数に個別に適用されます。1 つのキューで受信した複数のメッセージを並列に実行したくない場合は、バッチ サイズを 1 に設定します。
+The same is true when multiple messages are received for a single queue. By default, the SDK gets a batch of 16 queue messages at a time and executes the function that processes them in parallel. [The batch size is configurable](#how-to-set-configuration-options). When the number being processed gets down to half of the batch size, the SDK gets another batch and starts processing those messages. Therefore the maximum number of concurrent messages being processed per function is one and a half times the batch size. This limit applies separately to each function that has a **QueueTrigger** attribute. If you don't want parallel execution for messages received on one queue, set the batch size to 1.
 
-## キューまたはキュー メッセージ メタデータの取得
+## <a name="get-queue-or-queue-message-metadata"></a>Get queue or queue message metadata
 
-メソッド シグネチャにパラメーターを追加すると、次のメッセージ プロパティを取得できます。
+You can get the following message properties by adding parameters to the method signature:
 
 * **DateTimeOffset** expirationTime
 * **DateTimeOffset** insertionTime
 * **DateTimeOffset** nextVisibleTime
-* **string** queueTrigger (メッセージのテキストが含まれます)
+* **string** queueTrigger (contains message text)
 * **string** id
 * **string** popReceipt
 * **int** dequeueCount
 
-Azure ストレージ API を直接扱う場合は、**CloudStorageAccount** パラメーターも追加できます。
+If you want to work directly with the Azure storage API, you can also add a **CloudStorageAccount** parameter.
 
-次の例では、このメタデータをすべて INFO アプリケーション ログに書き込みます。この例では logMessage と queueTrigger の両方にキュー メッセージの内容が含まれます。
+The following example writes all of this metadata to an INFO application log. In the example, both logMessage and queueTrigger contain the content of the queue message.
 
-		public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
-		    DateTimeOffset expirationTime,
-		    DateTimeOffset insertionTime,
-		    DateTimeOffset nextVisibleTime,
-		    string id,
-		    string popReceipt,
-		    int dequeueCount,
-		    string queueTrigger,
-		    CloudStorageAccount cloudStorageAccount,
-		    TextWriter logger)
-		{
-		    logger.WriteLine(
-		        "logMessage={0}\n" +
-			"expirationTime={1}\ninsertionTime={2}\n" +
-		        "nextVisibleTime={3}\n" +
-		        "id={4}\npopReceipt={5}\ndequeueCount={6}\n" +
-		        "queue endpoint={7} queueTrigger={8}",
-		        logMessage, expirationTime,
-		        insertionTime,
-		        nextVisibleTime, id,
-		        popReceipt, dequeueCount,
-		        cloudStorageAccount.QueueEndpoint,
-		        queueTrigger);
-		}
+        public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
+            DateTimeOffset expirationTime,
+            DateTimeOffset insertionTime,
+            DateTimeOffset nextVisibleTime,
+            string id,
+            string popReceipt,
+            int dequeueCount,
+            string queueTrigger,
+            CloudStorageAccount cloudStorageAccount,
+            TextWriter logger)
+        {
+            logger.WriteLine(
+                "logMessage={0}\n" +
+            "expirationTime={1}\ninsertionTime={2}\n" +
+                "nextVisibleTime={3}\n" +
+                "id={4}\npopReceipt={5}\ndequeueCount={6}\n" +
+                "queue endpoint={7} queueTrigger={8}",
+                logMessage, expirationTime,
+                insertionTime,
+                nextVisibleTime, id,
+                popReceipt, dequeueCount,
+                cloudStorageAccount.QueueEndpoint,
+                queueTrigger);
+        }
 
-サンプル コードによって書き込まれたサンプル ログを次に示します。
+Here is a sample log written by the sample code:
 
-		logMessage=Hello world!
-		expirationTime=10/14/2014 10:31:04 PM +00:00
-		insertionTime=10/7/2014 10:31:04 PM +00:00
-		nextVisibleTime=10/7/2014 10:41:23 PM +00:00
-		id=262e49cd-26d3-4303-ae88-33baf8796d91
-		popReceipt=AgAAAAMAAAAAAAAAfc9H0n/izwE=
-		dequeueCount=1
-		queue endpoint=https://contosoads.queue.core.windows.net/
-		queueTrigger=Hello world!
+        logMessage=Hello world!
+        expirationTime=10/14/2014 10:31:04 PM +00:00
+        insertionTime=10/7/2014 10:31:04 PM +00:00
+        nextVisibleTime=10/7/2014 10:41:23 PM +00:00
+        id=262e49cd-26d3-4303-ae88-33baf8796d91
+        popReceipt=AgAAAAMAAAAAAAAAfc9H0n/izwE=
+        dequeueCount=1
+        queue endpoint=https://contosoads.queue.core.windows.net/
+        queueTrigger=Hello world!
 
-## グレースフル シャットダウン
+## <a name="graceful-shutdown"></a>Graceful shutdown
 
-連続した Web ジョブで実行されている関数は、Web ジョブが中断しそうな場合にオペレーティング システムから通知を受けられる **CancellationToken** パラメーターを受け取ることができます。この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
+A function that runs in a continuous WebJob can accept a **CancellationToken** parameter which enables the operating system to notify the function when the WebJob is about to be terminated. You can use this notification to make sure the function doesn't terminate unexpectedly in a way that leaves data in an inconsistent state.
 
-次の例では、関数内で Web ジョブの終了が迫っているか確認する方法を示します。
+The following example shows how to check for impending WebJob termination in a function.
 
-	public static void GracefulShutdownDemo(
-	            [QueueTrigger("inputqueue")] string inputText,
-	            TextWriter logger,
-	            CancellationToken token)
-	{
-	    for (int i = 0; i < 100; i++)
-	    {
-	        if (token.IsCancellationRequested)
-	        {
-	            logger.WriteLine("Function was cancelled at iteration {0}", i);
-	            break;
-	        }
-	        Thread.Sleep(1000);
-	        logger.WriteLine("Normal processing for queue message={0}", inputText);
-	    }
-	}
+    public static void GracefulShutdownDemo(
+                [QueueTrigger("inputqueue")] string inputText,
+                TextWriter logger,
+                CancellationToken token)
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            if (token.IsCancellationRequested)
+            {
+                logger.WriteLine("Function was cancelled at iteration {0}", i);
+                break;
+            }
+            Thread.Sleep(1000);
+            logger.WriteLine("Normal processing for queue message={0}", inputText);
+        }
+    }
 
-**注:** このダッシュボードではシャットダウンされた関数のステータスや出力が正しく示されていない可能性があります。
+**Note:** The Dashboard might not correctly show the status and output of functions that have been shut down.
 
-詳細については、[Web ジョブのグレースフル シャットダウン](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)に関するページを参照してください。
+For more information, see [WebJobs Graceful Shutdown](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
-## キュー メッセージの処理中にキュー メッセージを作成する方法
+## <a name="how-to-create-a-queue-message-while-processing-a-queue-message"></a>How to create a queue message while processing a queue message
 
-新しいキュー メッセージを作成する関数を記述するには、**Queue** 属性を使用します。**QueueTrigger** のように、キューの名前を文字列として渡すことも、[キューの名前を動的に設定する](#how-to-set-configuration-options)ことも可能です。
+To write a function that creates a new queue message, use the **Queue** attribute. Like **QueueTrigger**, you pass in the queue name as a string or you can [set the queue name dynamically](#how-to-set-configuration-options).
 
-### 文字列のキュー メッセージ
+### <a name="string-queue-messages"></a>String queue messages
 
-次の非 Async コード サンプルでは、"inputqueue" という名前のキューに受信したキュー メッセージと同じ内容で、"outputqueue" という名前のキューにキュー メッセージを新しく作成します(このセクションの後半に示すように、非同期関数では、**IAsyncCollector<T>** を使用します)。
+The following non-async code sample creates a new queue message in the queue named "outputqueue" with the same content as the queue message received in the queue named "inputqueue". (For async functions use **IAsyncCollector<T>** as shown later in this section.)
 
 
-		public static void CreateQueueMessage(
-		    [QueueTrigger("inputqueue")] string queueMessage,
-		    [Queue("outputqueue")] out string outputQueueMessage )
-		{
-		    outputQueueMessage = queueMessage;
-		}
+        public static void CreateQueueMessage(
+            [QueueTrigger("inputqueue")] string queueMessage,
+            [Queue("outputqueue")] out string outputQueueMessage )
+        {
+            outputQueueMessage = queueMessage;
+        }
 
-### POCO ([Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-[(plain-old-clr-object](http://en.wikipedia.org/wiki/plain_old_clr_object))-queue-messages"></a>POCO [(Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) queue messages
 
-文字列ではなく POCO オブジェクトを含むキュー メッセージを作成するには、出力パラメーターとして POCO 型を **Queue** 属性のコンス トラクターに渡します。
+To create a queue message that contains a POCO rather than a string, pass the POCO type as an output parameter to the **Queue** attribute constructor.
 
-		public static void CreateQueueMessage(
-		    [QueueTrigger("inputqueue")] BlobInformation blobInfoInput,
-		    [Queue("outputqueue")] out BlobInformation blobInfoOutput )
-		{
-		    blobInfoOutput = blobInfoInput;
-		}
+        public static void CreateQueueMessage(
+            [QueueTrigger("inputqueue")] BlobInformation blobInfoInput,
+            [Queue("outputqueue")] out BlobInformation blobInfoOutput )
+        {
+            blobInfoOutput = blobInfoInput;
+        }
 
-SDK はオブジェクトを JSON に自動的にシリアル化します。オブジェクトが null の場合でもキュー メッセージは常に作成されます。
+The SDK automatically serializes the object to JSON. A queue message is always created, even if the object is null.
 
-### (非同期関数での) 複数のメッセージの作成
+### <a name="create-multiple-messages-or-in-async-functions"></a>Create multiple messages or in async functions
 
-複数のメッセージを作成するには、次の例に示すように出力キューのパラメーター型を **ICollector<T>** または **IAsyncCollector<T>** にします。
+To create multiple messages, make the parameter type for the output queue **ICollector<T>** or **IAsyncCollector<T>**, as shown in the following example.
 
-		public static void CreateQueueMessages(
-		    [QueueTrigger("inputqueue")] string queueMessage,
-		    [Queue("outputqueue")] ICollector<string> outputQueueMessage,
-		    TextWriter logger)
-		{
-		    logger.WriteLine("Creating 2 messages in outputqueue");
-		    outputQueueMessage.Add(queueMessage + "1");
-		    outputQueueMessage.Add(queueMessage + "2");
-		}
+        public static void CreateQueueMessages(
+            [QueueTrigger("inputqueue")] string queueMessage,
+            [Queue("outputqueue")] ICollector<string> outputQueueMessage,
+            TextWriter logger)
+        {
+            logger.WriteLine("Creating 2 messages in outputqueue");
+            outputQueueMessage.Add(queueMessage + "1");
+            outputQueueMessage.Add(queueMessage + "2");
+        }
 
-**Add** メソッドが呼び出されると、すぐに各キュー メッセージが作成されます。
+Each queue message is created immediately when the **Add** method is called.
 
-### キューの属性が連携する種類
+### <a name="types-that-the-queue-attribute-works-with"></a>Types that the Queue attribute works with
 
-次のパラメーターの種類に **Queue** 属性を使用できます。
+You can use the **Queue** attribute on the following parameter types:
 
-* **out string** (関数が終了したときに、パラメーター値が null でない場合は、キュー メッセージを作成します)
-* **out byte** (**string** と同様に動作)
-* **out CloudQueueMessage** (**string** と同様に動作)
-* **out POCO** (シリアル化可能な型で、関数が終了したときに、パラメーターが null である場合は、null オブジェクトでメッセージを作成します)
+* **out string** (creates queue message if parameter value is non-null when the function ends)
+* **out byte[]** (works like **string**)
+* **out CloudQueueMessage** (works like **string**)
+* **out POCO** (a serializable type, creates a message with a null object if the paramter is null when the function ends)
 * **ICollector**
 * **IAsyncCollector**
-* **CloudQueue** (Azure Storage API を直接使用して、手動でメッセージを作成します)
+* **CloudQueue** (for creating messages manually using the Azure Storage API directly)
 
-### 関数本体での Web ジョブ SDK 属性の使用
+### <a name="use-webjobs-sdk-attributes-in-the-body-of-a-function"></a>Use WebJobs SDK attributes in the body of a function
 
-**Queue**、**Blob**、**Table** などの WebJobs SDK 属性を使用する前に関数で何らかの処理を行う必要がある場合は、**IBinder** インターフェイスを使用できます。
+If you need to do some work in your function before using a WebJobs SDK attribute such as **Queue**, **Blob**, or **Table**, you can use the **IBinder** interface.
 
-次の例では、入力キュー メッセージを取得して同じ内容の新しい出力キュー メッセージを作成します。出力キュー名は、関数本体のコードによって設定されます。
+The following example takes an input queue message and creates a new message with the same content in an output queue. The output queue name is set by code in the body of the function.
 
-		public static void CreateQueueMessage(
-		    [QueueTrigger("inputqueue")] string queueMessage,
-		    IBinder binder)
-		{
-		    string outputQueueName = "outputqueue" + DateTime.Now.Month.ToString();
-		    QueueAttribute queueAttribute = new QueueAttribute(outputQueueName);
-		    CloudQueue outputQueue = binder.Bind<CloudQueue>(queueAttribute);
-		    outputQueue.AddMessage(new CloudQueueMessage(queueMessage));
-		}
+        public static void CreateQueueMessage(
+            [QueueTrigger("inputqueue")] string queueMessage,
+            IBinder binder)
+        {
+            string outputQueueName = "outputqueue" + DateTime.Now.Month.ToString();
+            QueueAttribute queueAttribute = new QueueAttribute(outputQueueName);
+            CloudQueue outputQueue = binder.Bind<CloudQueue>(queueAttribute);
+            outputQueue.AddMessage(new CloudQueueMessage(queueMessage));
+        }
 
-**Table** と **Blob** 属性で **IBinder** インターフェイスを使用することもできます。
+The **IBinder** interface can also be used with the **Table** and **Blob** attributes.
 
-## キュー メッセージの処理中に BLOB およびテーブルの読み書きを行う方法
+## <a name="how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a>How to read and write blobs and tables while processing a queue message
 
-**Blob** と **Table** 属性を持つと、BLOB および Table を読み書きすることができます。このセクションのサンプルは、BLOB に適用されます。BLOB が作成されるか更新されたときにプロセスをトリガーするコード サンプルについては「[WebJobs SDK で Azure BLOB ストレージを使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」を参照してください。テーブルを読み書きするコード サンプルについては、「[WebJobs SDK を使用して Azure テーブル ストレージを使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md)」を参照してください。
+The **Blob** and **Table** attributes enable you to read and write blobs and tables. The samples in this section apply to blobs. For code samples that show how to trigger processes when blobs are created or updated, see [How to use Azure blob storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md), and for code samples that read and write tables, see [How to use Azure table storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md).
 
-### BLOB の操作を開始する文字列キュー メッセージ
+### <a name="string-queue-messages-triggering-blob-operations"></a>String queue messages triggering blob operations
 
-文字列を含むキュー メッセージでは、**queueTrigger** は、メッセージの内容を含む **Blob** 属性の **blobPath** パラメーターで使用できるプレースホルダーです。
+For a queue message that contains a string, **queueTrigger** is a placeholder you can use in the **Blob** attribute's **blobPath** parameter that contains the contents of the message.
 
-次の例では、BLOB の読み取りと書き込みに **Stream** オブジェクトを使用しています。キュー メッセージは、textblobs コンテナーにある BLOB の名前です。名前に "-new" を加えた BLOB のコピーが同じコンテナー内に作成されます。
+The following example uses **Stream** objects to read and write blobs. The queue message is the name of a blob located in the textblobs container. A copy of the blob with "-new" appended to the name is created in the same container.
 
-		public static void ProcessQueueMessage(
-		    [QueueTrigger("blobcopyqueue")] string blobName,
-		    [Blob("textblobs/{queueTrigger}",FileAccess.Read)] Stream blobInput,
-		    [Blob("textblobs/{queueTrigger}-new",FileAccess.Write)] Stream blobOutput)
-		{
-		    blobInput.CopyTo(blobOutput, 4096);
-		}
+        public static void ProcessQueueMessage(
+            [QueueTrigger("blobcopyqueue")] string blobName,
+            [Blob("textblobs/{queueTrigger}",FileAccess.Read)] Stream blobInput,
+            [Blob("textblobs/{queueTrigger}-new",FileAccess.Write)] Stream blobOutput)
+        {
+            blobInput.CopyTo(blobOutput, 4096);
+        }
 
-**Blob** 属性コンストラクターが、コンテナーと BLOB 名を指定する **blobPath** パラメーターを受け取ります。このプレース ホルダーの詳細については、「[WebJobs SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」をご覧ください。
+The **Blob** attribute constructor takes a **blobPath** parameter that specifies the container and blob name. For more information about this placeholder, see [How to use Azure blob storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md).
 
-属性が **Stream** オブジェクトを修飾するともう 1 つのコンス トラクターのパラメーターが **FileAccess** モードを読み取り、書き込み、読み取り/書き込みとして指定します。
+When the attribute decorates a **Stream** object, another constructor parameter specifies the **FileAccess** mode as read, write, or read/write.
 
-次の例では、**CloudBlockBlob** オブジェクトを使用して BLOB を削除します。キュー メッセージは、BLOB の名前です。
+The following example uses a **CloudBlockBlob** object to delete a blob. The queue message is the name of the blob.
 
-		public static void DeleteBlob(
-		    [QueueTrigger("deleteblobqueue")] string blobName,
-		    [Blob("textblobs/{queueTrigger}")] CloudBlockBlob blobToDelete)
-		{
-		    blobToDelete.Delete();
-		}
+        public static void DeleteBlob(
+            [QueueTrigger("deleteblobqueue")] string blobName,
+            [Blob("textblobs/{queueTrigger}")] CloudBlockBlob blobToDelete)
+        {
+            blobToDelete.Delete();
+        }
 
-### POCO ([Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-[(plain-old-clr-object](http://en.wikipedia.org/wiki/plain_old_clr_object))-queue-messages"></a>POCO [(Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) queue messages
 
-キュー メッセージ内に JSON として格納される POCO については、プレースホルダーを使用して、**Queue** 属性の **blobPath** パラメーター内でオブジェクトのプロパティを指定できます。また、キュー メタデータのプロパティ名もプレースホルダーとして使用できます。「[キューまたはキュー メッセージ メタデータの取得](#get-queue-or-queue-message-metadata)」をご覧ください。
+For a POCO stored as JSON in the queue message, you can use placeholders that name properties of the object in the **Queue** attribute's **blobPath** parameter. You can also use queue metadata property names as placeholders. See [Get queue or queue message metadata](#get-queue-or-queue-message-metadata).
 
-次の例では、BLOB を別の拡張子を持つ新しい BLOB にコピーします。キュー メッセージは、 **BlobName** および **BlobNameWithoutExtension** プロパティを含む **BlobInformation** オブジェクトです。プロパティの名前は、**Blob** 属性の BLOB パスのプレース ホルダーとして使用されます
+The following example copies a blob to a new blob with a different extension. The queue message is a **BlobInformation** object that includes **BlobName** and **BlobNameWithoutExtension** properties. The property names are used as placeholders in the blob path for the **Blob** attributes.
 
-		public static void CopyBlobPOCO(
-		    [QueueTrigger("copyblobqueue")] BlobInformation blobInfo,
-		    [Blob("textblobs/{BlobName}", FileAccess.Read)] Stream blobInput,
-		    [Blob("textblobs/{BlobNameWithoutExtension}.txt", FileAccess.Write)] Stream blobOutput)
-		{
-		    blobInput.CopyTo(blobOutput, 4096);
-		}
+        public static void CopyBlobPOCO(
+            [QueueTrigger("copyblobqueue")] BlobInformation blobInfo,
+            [Blob("textblobs/{BlobName}", FileAccess.Read)] Stream blobInput,
+            [Blob("textblobs/{BlobNameWithoutExtension}.txt", FileAccess.Write)] Stream blobOutput)
+        {
+            blobInput.CopyTo(blobOutput, 4096);
+        }
 
-SDK は [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages/Newtonsoft.Json)を使用してメッセージのシリアル化と逆シリアル化を行います。キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。
+The SDK uses the [Newtonsoft.Json NuGet package](http://www.nuget.org/packages/Newtonsoft.Json) to serialize and deserialize messages. If you create queue messages in a program that doesn't use the WebJobs SDK, you can write code like the following example to create a POCO queue message that the SDK can parse.
 
-		BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
-		var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
-		logQueue.AddMessage(queueMessage);
+        BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
+        var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
+        logQueue.AddMessage(queueMessage);
 
-BLOB をオブジェクトにバインドする前に関数内でいくつかの処理を行う必要がある場合、「[関数本体での Web ジョブ SDK 属性の使用](#use-webjobs-sdk-attributes-in-the-body-of-a-function)」で示したように、関数本体で属性を使用することができます。
+If you need to do some work in your function before binding a blob to an object, you can use the attribute in the body of the function, as shown in [Use WebJobs SDK attributes in the body of a function](#use-webjobs-sdk-attributes-in-the-body-of-a-function).
 
-###BLOB 属性と連携して使用できる種類
+###<a name="types-you-can-use-the-blob-attribute-with"></a>Types you can use the Blob attribute with
 
-**Blob** 属性は、次の種類で使用できます。
+The **Blob** attribute can be used with the following types:
 
-* **Stream** (読み取りまたは書き込み、FileAccess コンス トラクターのパラメーターを使用して指定)
+* **Stream** (read or write, specified by using the FileAccess constructor parameter)
 * **TextReader**
 * **TextWriter**
-* **string** (読み取り)
-* **out string** (書き込みは、関数を返されたときに、文字列パラメーターが null 以外の場合にのみ BLOB を作成します)
-* POCO (読み取り)
-* out POCO (書き込みは常に、BLOB を作成し、関数が返されたときに、POCO のパラメーターが null の場合は、null オブジェクトとして作成します)
-* **CloudBlobStream** (書き込み)
-* **ICloudBlob** (読み取りまたは書き込み)
-* **CloudBlockBlob** (読み取りまたは書き込みe)
-* **CloudPageBlob** (読み取りまたは書き込み)
+* **string** (read)
+* **out string** (write; creates a blob only if the string parameter is non-null when the function returns)
+* POCO (read)
+* out POCO (write; always creates a blob, creates as null object if POCO parameter is null when the function returns)
+* **CloudBlobStream** (write)
+* **ICloudBlob** (read or write)
+* **CloudBlockBlob** (read or write)
+* **CloudPageBlob** (read or write)
 
-##有害メッセージの処理方法
+##<a name="how-to-handle-poison-messages"></a>How to handle poison messages
 
-関数の失敗を引き起こす内容を含むメッセージは*有害メッセージ*と呼ばれます。関数が失敗してもキュー メッセージは削除されず、最終的には回収されて、このサイクルを繰り返します。SDK では一定数繰り返し送信されると自動的にそのサイクルを中断します。また手動でも処理できます。
+Messages whose content causes a function to fail are called *poison messages*. When the function fails, the queue message is not deleted and eventually is picked up again, causing the cycle to be repeated. The SDK can automatically interrupt the cycle after a limited number of iterations, or you can do it manually.
 
-### 有害メッセージの自動処理
+### <a name="automatic-poison-message-handling"></a>Automatic poison message handling
 
-SDKでは、キュー メッセージを処理する関数を最大 5 回呼び出します。5 回目の実行に失敗した場合、メッセージは有害キューに移動されます。再試行の最大数を構成する方法については、「[構成オプションの設定方法](#how-to-set-configuration-options)」をご覧ください。
+The SDK will call a function up to 5 times to process a queue message. If the fifth try fails, the message is moved to a poison queue. You can see how to configure the maximum number of retries in [How to set configuration options](#how-to-set-configuration-options).
 
-有害キューには *{originalqueuename}*-poison という名前が付けられます。メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
+The poison queue is named *{originalqueuename}*-poison. You can write a function to process messages from the poison queue by logging them or sending a notification that manual attention is needed.
 
-次の例では、キュー メッセージが存在しない BLOB の名前を含んでいると、**CopyBlob** 関数が失敗します。その場合、メッセージは copyblobqueue キューから copyblobqueue-poison キューへと移動されます。その後、**ProcessPoisonMessage** が有害メッセージを記録されます。
+In the following example the **CopyBlob** function will fail when a queue message contains the name of a blob that doesn't exist. When that happens, the message is moved from the copyblobqueue queue to the copyblobqueue-poison queue. The **ProcessPoisonMessage** then logs the poison message.
 
-		public static void CopyBlob(
-		    [QueueTrigger("copyblobqueue")] string blobName,
-		    [Blob("textblobs/{queueTrigger}", FileAccess.Read)] Stream blobInput,
-		    [Blob("textblobs/{queueTrigger}-new", FileAccess.Write)] Stream blobOutput)
-		{
-		    blobInput.CopyTo(blobOutput, 4096);
-		}
+        public static void CopyBlob(
+            [QueueTrigger("copyblobqueue")] string blobName,
+            [Blob("textblobs/{queueTrigger}", FileAccess.Read)] Stream blobInput,
+            [Blob("textblobs/{queueTrigger}-new", FileAccess.Write)] Stream blobOutput)
+        {
+            blobInput.CopyTo(blobOutput, 4096);
+        }
 
-		public static void ProcessPoisonMessage(
-		    [QueueTrigger("copyblobqueue-poison")] string blobName, TextWriter logger)
-		{
-		    logger.WriteLine("Failed to copy blob, name=" + blobName);
-		}
+        public static void ProcessPoisonMessage(
+            [QueueTrigger("copyblobqueue-poison")] string blobName, TextWriter logger)
+        {
+            logger.WriteLine("Failed to copy blob, name=" + blobName);
+        }
 
-次の画像は、これらの関数が有害メッセージを処理したときのコンソール出力を表しています。
+The following illustration shows console output from these functions when a poison message is processed.
 
-![有害メッセージ処理のためのコンソール出力](./media/vs-storage-webjobs-getting-started-queues/poison.png)
+![Console output for poison message handling](./media/vs-storage-webjobs-getting-started-queues/poison.png)
 
-### 有害メッセージの手動処理
+### <a name="manual-poison-message-handling"></a>Manual poison message handling
 
-**dequeueCount** という名前の **int** パラメーターを関数に加えることで、処理のためにメッセージが取得された回数が得られます。関数コードの dequeue 回数を確認し、特定の閾値を超えたときにメッセージを処理する、独自の有害メッセージの処理を実行できます。具体例を次に示します。
+You can get the number of times a message has been picked up for processing by adding an **int** parameter named **dequeueCount** to your function. You can then check the dequeue count in function code and perform your own poison message handling when the number exceeds a threshold, as shown in the following example.
 
-		public static void CopyBlob(
-		    [QueueTrigger("copyblobqueue")] string blobName, int dequeueCount,
-		    [Blob("textblobs/{queueTrigger}", FileAccess.Read)] Stream blobInput,
-		    [Blob("textblobs/{queueTrigger}-new", FileAccess.Write)] Stream blobOutput,
-		    TextWriter logger)
-		{
-		    if (dequeueCount > 3)
-		    {
-		        logger.WriteLine("Failed to copy blob, name=" + blobName);
-		    }
-		    else
-		    {
-		    blobInput.CopyTo(blobOutput, 4096);
-		    }
-		}
+        public static void CopyBlob(
+            [QueueTrigger("copyblobqueue")] string blobName, int dequeueCount,
+            [Blob("textblobs/{queueTrigger}", FileAccess.Read)] Stream blobInput,
+            [Blob("textblobs/{queueTrigger}-new", FileAccess.Write)] Stream blobOutput,
+            TextWriter logger)
+        {
+            if (dequeueCount > 3)
+            {
+                logger.WriteLine("Failed to copy blob, name=" + blobName);
+            }
+            else
+            {
+            blobInput.CopyTo(blobOutput, 4096);
+            }
+        }
 
-## 構成オプションの設定方法
+## <a name="how-to-set-configuration-options"></a>How to set configuration options
 
-**JobHostConfiguration** 型を使用して次の構成オプションを設定できます。
+You can use the **JobHostConfiguration** type to set the following configuration options:
 
-* コード内で SDK の接続文字列を設定する。
-* 最大デキュー回数などの **QueueTrigger** 設定を構成する。
-* 構成からキューの名前を取得する。
-
-###コード内で SDK の接続文字列を設定する
+* Set the SDK connection strings in code.
+* Configure **QueueTrigger** settings such as maximum dequeue count.
+* Get queue names from configuration.
+
+###<a name="set-sdk-connection-strings-in-code"></a>Set SDK connection strings in code
 
-コード内で SDK の接続文字列を設定することにより、次の例に示すように、構成ファイルまたは環境変数に独自の接続文字列の名前を使用できます。
+Setting the SDK connection strings in code enables you to use your own connection string names in configuration files or environment variables, as shown in the following example.
 
-		static void Main(string[] args)
-		{
-		    var _storageConn = ConfigurationManager
-		        .ConnectionStrings["MyStorageConnection"].ConnectionString;
+        static void Main(string[] args)
+        {
+            var _storageConn = ConfigurationManager
+                .ConnectionStrings["MyStorageConnection"].ConnectionString;
 
-		    var _dashboardConn = ConfigurationManager
-		        .ConnectionStrings["MyDashboardConnection"].ConnectionString;
+            var _dashboardConn = ConfigurationManager
+                .ConnectionStrings["MyDashboardConnection"].ConnectionString;
 
-		    var _serviceBusConn = ConfigurationManager
-		        .ConnectionStrings["MyServiceBusConnection"].ConnectionString;
+            var _serviceBusConn = ConfigurationManager
+                .ConnectionStrings["MyServiceBusConnection"].ConnectionString;
 
-		    JobHostConfiguration config = new JobHostConfiguration();
-		    config.StorageConnectionString = _storageConn;
-		    config.DashboardConnectionString = _dashboardConn;
-		    config.ServiceBusConnectionString = _serviceBusConn;
-		    JobHost host = new JobHost(config);
-		    host.RunAndBlock();
-		}
+            JobHostConfiguration config = new JobHostConfiguration();
+            config.StorageConnectionString = _storageConn;
+            config.DashboardConnectionString = _dashboardConn;
+            config.ServiceBusConnectionString = _serviceBusConn;
+            JobHost host = new JobHost(config);
+            host.RunAndBlock();
+        }
 
-### QueueTrigger 設定の構成
+### <a name="configure-queuetrigger-settings"></a>Configure QueueTrigger  settings
 
-キュー メッセージの処理に適用される次の設定を構成できます。
+You can configure the following settings that apply to the queue message processing:
 
-- 並列実行のために同時に取得するキュー メッセージの最大数 (既定値は 16)。
-- キュー メッセージが有害キューに送られるまでの最大再試行回数 (既定値は 5)。
-- キューが空の場合に再度ポーリングを実行するまでの最大待機時間 (既定値は 1 分)。
+- The maximum number of queue messages that are picked up simultaneously to be executed in parallel (default is 16).
+- The maximum number of retries before a queue message is sent to a poison queue (default is 5).
+- The maximum wait time before polling again when a queue is empty (default is 1 minute).
 
-次の例は、これらの設定の構成方法を示しています。
+The following example shows how to configure these settings:
 
-		static void Main(string[] args)
-		{
-		    JobHostConfiguration config = new JobHostConfiguration();
-		    config.Queues.BatchSize = 8;
-		    config.Queues.MaxDequeueCount = 4;
-		    config.Queues.MaxPollingInterval = TimeSpan.FromSeconds(15);
-		    JobHost host = new JobHost(config);
-		    host.RunAndBlock();
-		}
+        static void Main(string[] args)
+        {
+            JobHostConfiguration config = new JobHostConfiguration();
+            config.Queues.BatchSize = 8;
+            config.Queues.MaxDequeueCount = 4;
+            config.Queues.MaxPollingInterval = TimeSpan.FromSeconds(15);
+            JobHost host = new JobHost(config);
+            host.RunAndBlock();
+        }
 
-### コードの Web ジョブ SDK コンストラクター パラメーター値の設定
+### <a name="set-values-for-webjobs-sdk-constructor-parameters-in-code"></a>Set values for WebJobs SDK constructor parameters in code
 
-キュー名、BLOB 名、コンテナー、テーブル名をハード コーディングではなく、コードに指定する場合もあります。たとえば、**QueueTrigger** のキュー名を構成ファイルか環境変数に指定します。
+Sometimes you want to specify a queue name, a blob name or container, or a table name in code rather than hard-code it. For example, you might want to specify the queue name for **QueueTrigger** in a configuration file or environment variable.
 
-**NameResolver** オブジェクトを **JobHostConfiguration** 型に渡して実行します。WebJobs SDK 属性コンストラクターのパラメーターにパーセント (%) 記号で囲まれた特殊なプレースホルダーを追加し、**NameResolver** コードでこれらのプレースホルダーの代わりに使用する実際の値を指定します。
+You can do that by passing in a **NameResolver** object to the **JobHostConfiguration** type. You include special placeholders surrounded by percent (%) signs in WebJobs SDK attribute constructor parameters, and your **NameResolver** code specifies the actual values to be used in place of those placeholders.
 
-たとえば、テスト環境で「logqueuetest」という名前のキューを、実行環境で「logqueueprod」という名前のキューを使用したいとします。ハードコーディングされたキューの名前ではなく、実際のキューの名前を持つであろう、**appSettings** コレクション内のエントリの名前を指定する必要があります。**appSettings** キーが logqueue の場合、関数は次の例のようになります。
+For example, suppose you want to use a queue named logqueuetest in the test environment and one named logqueueprod in production. Instead of a hard-coded queue name, you want to specify the name of an entry in the **appSettings** collection that would have the actual queue name. If the **appSettings** key is logqueue, your function could look like the following example.
 
-		public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
-		{
-		    Console.WriteLine(logMessage);
-		}
+        public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
+        {
+            Console.WriteLine(logMessage);
+        }
 
-**NameResolver** クラスは、次の例に示すように **appSettings** からキューの名前を取得できます。
+Your **NameResolver** class could then get the queue name from **appSettings** as shown in the following example:
 
-		public class QueueNameResolver : INameResolver
-		{
-		    public string Resolve(string name)
-		    {
-		        return ConfigurationManager.AppSettings[name].ToString();
-		    }
-		}
+        public class QueueNameResolver : INameResolver
+        {
+            public string Resolve(string name)
+            {
+                return ConfigurationManager.AppSettings[name].ToString();
+            }
+        }
 
-次の例のように、**NameResolver** クラスを **JobHost** オブジェクトに渡します。
+You pass the **NameResolver** class in to the **JobHost** object as shown in the following example.
 
-		static void Main(string[] args)
-		{
-		    JobHostConfiguration config = new JobHostConfiguration();
-		    config.NameResolver = new QueueNameResolver();
-		    JobHost host = new JobHost(config);
-		    host.RunAndBlock();
-		}
+        static void Main(string[] args)
+        {
+            JobHostConfiguration config = new JobHostConfiguration();
+            config.NameResolver = new QueueNameResolver();
+            JobHost host = new JobHost(config);
+            host.RunAndBlock();
+        }
 
-**注:** 関数が呼び出されるたびに、キュー、テーブル、BLOB の名前は解決されますが、BLOB コンテナーの名前はアプリケーションの起動時にのみ解決されます。ジョブの実行中には、BLOB コンテナーの名前を変更することはできません。
+**Note:** Queue, table, and blob names are resolved each time a function is called, but blob container names are resolved only when the application starts. You can't change blob container name while the job is running.
 
-## 関数を手動でトリガーする方法
+## <a name="how-to-trigger-a-function-manually"></a>How to trigger a function manually
 
-関数を手動でトリガーするには、次の例に示すように **JobHost** オブジェクトで **Call** または **CallAsync** メソッドを使用し、関数では **NoAutomaticTrigger** 属性を使用します。
+To trigger a function manually, use the **Call** or **CallAsync** method on the **JobHost** object and the **NoAutomaticTrigger** attribute on the function, as shown in the following example.
 
-		public class Program
-		{
-		    static void Main(string[] args)
-		    {
-		        JobHost host = new JobHost();
-		        host.Call(typeof(Program).GetMethod("CreateQueueMessage"), new { value = "Hello world!" });
-		    }
+        public class Program
+        {
+            static void Main(string[] args)
+            {
+                JobHost host = new JobHost();
+                host.Call(typeof(Program).GetMethod("CreateQueueMessage"), new { value = "Hello world!" });
+            }
 
-		    [NoAutomaticTrigger]
-		    public static void CreateQueueMessage(
-		        TextWriter logger,
-		        string value,
-		        [Queue("outputqueue")] out string message)
-		    {
-		        message = value;
-		        logger.WriteLine("Creating queue message: ", message);
-		    }
-		}
+            [NoAutomaticTrigger]
+            public static void CreateQueueMessage(
+                TextWriter logger,
+                string value,
+                [Queue("outputqueue")] out string message)
+            {
+                message = value;
+                logger.WriteLine("Creating queue message: ", message);
+            }
+        }
 
-## ログを書き込む方法
+## <a name="how-to-write-logs"></a>How to write logs
 
-ダッシュボードは次の 2 つの場所でログを表示します。Web ジョブのページと特定の Web ジョブの呼び出しのページです。
+The Dashboard shows logs in two places: the page for the WebJob, and the page for a particular WebJob invocation.
 
-![Web ジョブ ページのログ](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
+![Logs in WebJob page](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-![関数の呼び出しページのログ](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
+![Logs in function invocation page](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-関数または **Main()** メソッドに呼び出すコンソール メソッドの出力は、特定の メソッド呼び出しのページではなく、WebJob のダッシュボード ページに表示されます。メソッド シグネチャのパラメーターから取得した TextWriter オブジェクトの出力は、メソッド呼び出しのダッシュボード ページに表示されます。
+Output from Console methods that you call in a function or in the **Main()** method appears in the Dashboard page for the WebJob, not in the page for a particular method invocation. Output from the TextWriter object that you get from a parameter in your method signature appears in the Dashboard page for a method invocation.
 
-コンソールはシングル スレッドで、多くのジョブ関数が同時に実行されるため、コンソールの出力を特定のメソッド呼び出しにリンクすることはできません。そのため、SDK は各関数の呼び出しに独自のログ書き込みオブジェクトを提供しています。
+Console output can't be linked to a particular method invocation because the Console is single-threaded, while many job functions may be running at the same time. That's why the  SDK provides each function invocation with its own unique log writer object.
 
-[アプリケーション トレース ログ](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview)を書き込むには、**Console.Out** (INFO としてマークされたログを作成) および **Console.Error** (ERROR としてマークされたログを作成) を使用します。代わりの方法としては、INFO と ERROR に加え、詳細、警告、重大レベルを提供する[トレースまたはトレース ソース](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)を使用します。ログをトレースするアプリケーションは、Azure Web アプリの構成方法によって、Web アプリ ログ ファイル、Azure テーブル、Azure BLOB に表示されます。すべてのコンソール出力と同様に、最新の 100 のアプリケーションのログは関数呼び出しのページではなく、Web ジョブのダッシュボード ページに表示されます。
+To write [application tracing logs](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), use **Console.Out** (creates logs marked as INFO) and **Console.Error** (creates logs marked as ERROR). An alternative is to use [Trace or TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), which provides Verbose, Warning, and Critical levels in addition to Info and Error. Application tracing logs appear in the web app log files, Azure tables, or Azure blobs depending on how you configure your Azure web app. As is true of all Console output, the most recent 100 application logs also appear in the Dashboard page for the WebJob, not the page for a function invocation.
 
-プログラムがローカルまたはその他の環境で実行されているのではなく、Azure Web ジョブで実行されている場合は、コンソール出力はダッシュボードにのみ表示されます。
+Console output appears in the Dashboard only if the program is running in an Azure WebJob, not if the program is running locally or in some other environment.
 
-Dashboard の接続文字列を null に設定すると、ログを無効にできます。詳細については、「[構成オプションの設定方法](#how-to-set-configuration-options)」をご覧ください。
+You can disable logging by setting the Dashboard connection string to null. For more information, see [How to set Configuration Options](#how-to-set-configuration-options).
 
-次の例では、ログを書き込むいくつかの方法を示しています。
+The following example shows several ways to write logs:
 
-		public static void WriteLog(
-		    [QueueTrigger("logqueue")] string logMessage,
-		    TextWriter logger)
-		{
-		    Console.WriteLine("Console.Write - " + logMessage);
-		    Console.Out.WriteLine("Console.Out - " + logMessage);
-		    Console.Error.WriteLine("Console.Error - " + logMessage);
-		    logger.WriteLine("TextWriter - " + logMessage);
-		}
+        public static void WriteLog(
+            [QueueTrigger("logqueue")] string logMessage,
+            TextWriter logger)
+        {
+            Console.WriteLine("Console.Write - " + logMessage);
+            Console.Out.WriteLine("Console.Out - " + logMessage);
+            Console.Error.WriteLine("Console.Error - " + logMessage);
+            logger.WriteLine("TextWriter - " + logMessage);
+        }
 
-WebJobs SDK ダッシュボードで特定の関数呼び出しのページに移動し、**[Toggle Output (出力切り替え)]** を選択すると、**TextWriter** オブジェクトからの出力が表示されます。
+In the WebJobs SDK Dashboard, the output from the **TextWriter** object shows up when you go to the page for a particular function invocation and select **Toggle Output**:
 
-![呼び出しのリンク](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
+![Invocation link](./media/vs-storage-webjobs-getting-started-queues/dashboardinvocations.png)
 
-![関数の呼び出しページのログ](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
+![Logs in function invocation page](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 
-Web ジョブのページ (特定の関数呼び出しのページではなく) に移動して、**[Toggle Output (出力切り替え)]** を選択すると、WebJobs SDK ダッシュボードでコンソール出力の最新 100 件が表示されます。
+In the WebJobs SDK Dashboard, the most recent 100 lines of Console output show up when you go to the page for the WebJob (not for the function invocation) and select **Toggle Output**.
 
-![出力切り替え](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
+![Toggle output](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-連続的な Web ジョブでは、Web アプリのファイル システム内の /data/jobs/continuous/*{webjobname}*/job\_log.txt にアプリケーション ログが表示されます。
+In a continuous WebJob, application logs show up in /data/jobs/continuous/*{webjobname}*/job_log.txt in the web app file system.
 
-		[09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
-		[09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
-		[09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
+        [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
+        [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
+        [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-次に示したのは、Azure BLOB におけるアプリケーション ログの例です。2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
+In an Azure blob the application logs look like this: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13,Error,contosoadsnew,491e54,635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
 
-Azure テーブルでは **Console.Out** および **Console.Error** ログが次のように表示されます。
+And in an Azure table the **Console.Out** and **Console.Error** logs look like this:
 
-![テーブル内の INFO ログ](./media/vs-storage-webjobs-getting-started-queues/tableinfo.png)
+![Info log in table](./media/vs-storage-webjobs-getting-started-queues/tableinfo.png)
 
-![テーブル内の ERROR ログ](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
+![Error log in table](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-この記事では、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure WebJobs および WebJobs SDK の使用方法の詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
+This article has provided code samples that show how to handle common scenarios for working with Azure queues. For more information about how to use Azure WebJobs and the WebJobs SDK, see [Azure WebJobs documentation resources](http://go.microsoft.com/fwlink/?linkid=390226).
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

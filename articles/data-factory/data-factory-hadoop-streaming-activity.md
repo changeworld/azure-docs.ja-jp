@@ -1,202 +1,218 @@
 <properties 
-	pageTitle="Hadoop ストリーミング アクティビティ" 
-	description="Azure Data Factory で Hadoop ストリーミング アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hadoop ストリーミング プログラミングを実行する方法について説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+    pageTitle="Hadoop Streaming Activity" 
+    description="Learn how you can use the Hadoop Streaming Activity in an Azure data factory to run Hadoop Streaming programs on an on-demand/your own HDInsight cluster." 
+    services="data-factory" 
+    documentationCenter="" 
+    authors="sharonlo101" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/20/2016" 
-	ms.author="spelluru"/>
+    ms.service="data-factory" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/20/2016" 
+    ms.author="shlo"/>
 
-# Hadoop ストリーミング アクティビティ
-HDInsightStreamingActivity アクティビティを使用して、Azure Data Factory パイプラインから Hadoop ストリーミング ジョブを呼び出すことができます。次の JSON スニペットは、パイプライン JSON ファイルで HDInsightStreamingActivity を使用する構文です。
 
-Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight ストリーミング アクティビティは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)の、または[オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の Windows/Linux ベースの HDInsight クラスターで Hadoop ストリーミング プログラムを実行します。この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事に基づいています。
+# <a name="hadoop-streaming-activity"></a>Hadoop Streaming Activity
+> [AZURE.SELECTOR]
+[Hive](data-factory-hive-activity.md)  
+[Pig](data-factory-pig-activity.md)  
+[MapReduce](data-factory-map-reduce.md)  
+[Hadoop Streaming](data-factory-hadoop-streaming-activity.md)
+[Machine Learning](data-factory-azure-ml-batch-execution-activity.md) 
+[Stored Procedure](data-factory-stored-proc-activity.md)
+[Data Lake Analytics U-SQL](data-factory-usql-activity.md)
+[.NET custom](data-factory-use-custom-activities.md)
 
-## JSON のサンプル
-HDInsight クラスターには、サンプル プログラム (wc.exe および cat.exe) とデータ (davinci.txt) が自動的に設定されます。既定では、HDInsight クラスターで使用されるコンテナーの名前は、クラスター自体の名前になります。たとえば、クラスター名が myhdicluster の場合、関連付けられる BLOB コンテナーの名は myhdicluster になります。
+You can use the HDInsightStreamingActivity Activity invoke a Hadoop Streaming job from an Azure Data Factory pipeline. The following JSON snippet shows the syntax for using the HDInsightStreamingActivity in a pipeline JSON file. 
 
-	{
-	    "name": "HadoopStreamingPipeline",
-	    "properties": {
-	        "description": "Hadoop Streaming Demo",
-	        "activities": [
-	            {
-	                "type": "HDInsightStreaming",
-	                "typeProperties": {
-	                    "mapper": "cat.exe",
-	                    "reducer": "wc.exe",
-	                    "input": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/gutenberg/davinci.txt",
-	                    "output": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/StreamingOutput/wc.txt",
-	                    "filePaths": [
-	                        "<nameofthecluster>/example/apps/wc.exe",
-	                        "<nameofthecluster>/example/apps/cat.exe"
-	                    ],
-	                    "fileLinkedService": "StorageLinkedService",
-	                    "getDebugInfo": "Failure"
-	                },
-	                "outputs": [
-	                    {
-	                        "name": "StreamingOutputDataset"
-	                    }
-	                ],
-	                "policy": {
-	                    "timeout": "01:00:00",
-	                    "concurrency": 1,
-	                    "executionPriorityOrder": "NewestFirst",
-	                    "retry": 1
-	                },
-	                "scheduler": {
-	                    "frequency": "Day",
-	                    "interval": 1
-	                },
-	                "name": "RunHadoopStreamingJob",
-	                "description": "Run a Hadoop streaming job",
-	                "linkedServiceName": "HDInsightLinkedService"
-	            }
-	        ],
-	        "start": "2014-01-04T00:00:00Z",
-	        "end": "2014-01-05T00:00:00Z"
-	    }
-	}
+The HDInsight Streaming Activity in a Data Factory [pipeline](data-factory-create-pipelines.md) executes Hadoop Streaming programs on [your own](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) or [on-demand](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux-based HDInsight cluster. This article builds on the [data transformation activities](data-factory-data-transformation-activities.md) article, which presents a general overview of data transformation and the supported transformation activities.
 
-以下の点に注意してください。
+## <a name="json-sample"></a>JSON sample
+The HDInsight cluster is automatically populated with example programs (wc.exe and cat.exe) and data (davinci.txt). By default, name of the container that is used by the HDInsight cluster is the name of the cluster itself. For example, if your cluster name is myhdicluster, name of the blob container associated would be myhdicluster. 
 
-1. **linkedServiceName** には、ストリーミングする mapreduce ジョブが実行される HDInsight クラスターを示す、リンクされたサービス名を設定します。
-2. アクティビティの種類には **HDInsightStreaming** に設定します。
-3. **mapper** プロパティには、mapper 実行可能ファイルの名前を指定します。例では、cat.exe が mapper 実行可能ファイルです。
-4. **reducer** プロパティには、reducer 実行可能ファイルの名前を指定します。例では、wc.exe が reducer 実行可能ファイルです。
-5. **input** プロパティには、mapper の入力ファイルを、場所を含めて指定します。例の "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample は BLOB コンテナー、example/data/Gutenberg はフォルダー、davinci.txt は BLOB です。
-6. **output** プロパティには、reducer の出力ファイルを、場所を含めて指定します。Hadoop ストリーミング ジョブの出力は、このプロパティに指定されている場所に書き込まれます。
-7. **filePaths** セクションには、mapper と reducer の実行可能ファイルのパスを指定します。例の "adfsample/example/apps/wc.exe"： adfsample は BLOB コンテナー、example/apps はフォルダー、wc.exe は実行可能ファイルです。
-8. **fileLinkedService** プロパティには、filePaths セクションに指定されたファイルを含む Azure ストレージを表す Azure Storage のリンクされたサービスを指定します。
-9. **arguments** プロパティには、ストリーミング ジョブの引数を指定します。
-10. **getDebugInfo** プロパティは、省略可能な要素です。Failure に設定されていると、エラー時にのみログがダウンロードされます。All に設定されていると、ログは実行状態に関係なく常にダウンロードされます。
+    {
+        "name": "HadoopStreamingPipeline",
+        "properties": {
+            "description": "Hadoop Streaming Demo",
+            "activities": [
+                {
+                    "type": "HDInsightStreaming",
+                    "typeProperties": {
+                        "mapper": "cat.exe",
+                        "reducer": "wc.exe",
+                        "input": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/gutenberg/davinci.txt",
+                        "output": "wasb://<nameofthecluster>@spestore.blob.core.windows.net/example/data/StreamingOutput/wc.txt",
+                        "filePaths": [
+                            "<nameofthecluster>/example/apps/wc.exe",
+                            "<nameofthecluster>/example/apps/cat.exe"
+                        ],
+                        "fileLinkedService": "StorageLinkedService",
+                        "getDebugInfo": "Failure"
+                    },
+                    "outputs": [
+                        {
+                            "name": "StreamingOutputDataset"
+                        }
+                    ],
+                    "policy": {
+                        "timeout": "01:00:00",
+                        "concurrency": 1,
+                        "executionPriorityOrder": "NewestFirst",
+                        "retry": 1
+                    },
+                    "scheduler": {
+                        "frequency": "Day",
+                        "interval": 1
+                    },
+                    "name": "RunHadoopStreamingJob",
+                    "description": "Run a Hadoop streaming job",
+                    "linkedServiceName": "HDInsightLinkedService"
+                }
+            ],
+            "start": "2014-01-04T00:00:00Z",
+            "end": "2014-01-05T00:00:00Z"
+        }
+    }
 
-> [AZURE.NOTE] 例に示すように、**outputs** プロパティには、Hadoop ストリーミング アクティビティ用の出力データセットを指定します。このデータセットは、パイプラインのスケジュールを実行するために必要となる単なるダミーのデータセットです。**inputs**プロパティにアクティビティ用の入力データセットを指定する必要はありません。
+Note the following points:
 
-	
-## 例
-このチュートリアルのパイプラインでは、Azure HDInsight クラスターで Word Count ストリーミングの Map/Reduce プログラムを実行します。
+1. Set the **linkedServiceName** to the name of the linked service that points to your HDInsight cluster on which the streaming mapreduce job is run.
+2. Set the type of the activity to **HDInsightStreaming**.
+3. For the **mapper** property, specify the name of mapper executable. In the example, cat.exe is the mapper executable.
+4. For the **reducer** property, specify the name of reducer executable. In the example, wc.exe is the reducer executable.
+5. For the **input** type property, specify the input file (including the location) for the mapper. In the example: "wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample is the blob container, example/data/Gutenberg is the folder, and davinci.txt is the blob.
+6. For the **output** type property, specify the output file (including the location) for the reducer. The output of the Hadoop Streaming job is written to the location specified for this property.
+7. In the **filePaths** section, specify the paths for the mapper and reducer executables. In the example: "adfsample/example/apps/wc.exe", adfsample is the blob container, example/apps is the folder, and wc.exe is the executable.
+8. For the **fileLinkedService** property, specify the Azure Storage linked service that represents the Azure storage that contains the files specified in the filePaths section.
+9. For the **arguments** property, specify the arguments for the streaming job.
+10. The **getDebugInfo** property is an optional element. When it is set to Failure, the logs are downloaded only on failure. When it is set to All, logs are always downloaded irrespective of the execution status.
 
-### リンクされたサービス
+> [AZURE.NOTE] As shown in the example, you specify an output dataset for the Hadoop Streaming Activity for the **outputs** property. This dataset is just a dummy dataset that is required to drive the pipeline schedule. You do not need to specify any input dataset for the activity for the **inputs** property.  
 
-#### Azure Storage のリンクされたサービス
-最初に、Azure HDInsight クラスターによって使用される Azure Storage を Azure データ ファクトリにリンクする、リンクされたサービスを作成します。次のコードをコピー/貼り付けする場合は、アカウント名とアカウント キーを、使用する Azure Storage のアカウント名とアカウント キーに必ず置き換えてください。
+    
+## <a name="example"></a>Example
+The pipeline in this walkthrough runs the Word Count streaming Map/Reduce program on your Azure HDInsight cluster. 
 
-	{
-	    "name": "StorageLinkedService",
-	    "properties": {
-	        "type": "AzureStorage",
-	        "typeProperties": {
-	            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
-	        }
-	    }
-	}
+### <a name="linked-services"></a>Linked services
 
-#### Azure HDInsight のリンクされたサービス
-次に、Azure HDInsight クラスターを Azure データ ファクトリにリンクする、リンクされたサービスを作成します。次のコードをコピー/貼り付けする場合は、HDInsight クラスター名を使用する HDInsight クラスターの名前に置き換え、ユーザー名とパスワードを変更してください。
-	
-	{
-	    "name": "HDInsightLinkedService",
-	    "properties": {
-	        "type": "HDInsight",
-	        "typeProperties": {
-	            "clusterUri": "https://<HDInsight cluster name>.azurehdinsight.net",
-	            "userName": "admin",
-	            "password": "**********",
-	            "linkedServiceName": "StorageLinkedService"
-	        }
-	    }
-	}
+#### <a name="azure-storage-linked-service"></a>Azure Storage linked service
+First, you create a linked service to link the Azure Storage that is used by the Azure HDInsight cluster to the Azure data factory. If you copy/paste the following code, do not forget to replace account name and account key with the name and key of your Azure Storage. 
 
-### データセット
+    {
+        "name": "StorageLinkedService",
+        "properties": {
+            "type": "AzureStorage",
+            "typeProperties": {
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
+            }
+        }
+    }
 
-#### 出力データセット
-この例のパイプラインには入力はありません。HDInsight ストリーミング アクティビティ用の出力データセットを指定します。このデータセットは、パイプラインのスケジュールを実行するために必要となる単なるダミーのデータセットです。
+#### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight linked service
+Next, you create a linked service to link your Azure HDInsight cluster to the Azure data factory. If you copy/paste the following code, replace HDInsight cluster name with the name of your HDInsight cluster, and change user name and password values. 
+    
+    {
+        "name": "HDInsightLinkedService",
+        "properties": {
+            "type": "HDInsight",
+            "typeProperties": {
+                "clusterUri": "https://<HDInsight cluster name>.azurehdinsight.net",
+                "userName": "admin",
+                "password": "**********",
+                "linkedServiceName": "StorageLinkedService"
+            }
+        }
+    }
 
-	{
-	    "name": "StreamingOutputDataset",
-	    "properties": {
-	        "published": false,
-	        "type": "AzureBlob",
-	        "linkedServiceName": "StorageLinkedService",
-	        "typeProperties": {
-	            "folderPath": "adftutorial/streamingdata/",
-	            "format": {
-	                "type": "TextFormat",
-	                "columnDelimiter": ","
-	            },
-	        },
-	        "availability": {
-	            "frequency": "Day",
-	            "interval": 1
-	        }
-	    }
-	}
+### <a name="datasets"></a>Datasets
 
-### パイプライン
+#### <a name="output-dataset"></a>Output dataset
+The pipeline in this example does not take any inputs. You specify an output dataset for the HDInsight Streaming Activity. This dataset is just a dummy dataset that is required to drive the pipeline schedule. 
 
-この例のパイプラインには、**HDInsightStreaming** という種類のアクティビティが 1 つだけあります。
+    {
+        "name": "StreamingOutputDataset",
+        "properties": {
+            "published": false,
+            "type": "AzureBlob",
+            "linkedServiceName": "StorageLinkedService",
+            "typeProperties": {
+                "folderPath": "adftutorial/streamingdata/",
+                "format": {
+                    "type": "TextFormat",
+                    "columnDelimiter": ","
+                },
+            },
+            "availability": {
+                "frequency": "Day",
+                "interval": 1
+            }
+        }
+    }
 
-HDInsight クラスターには、サンプル プログラム (wc.exe および cat.exe) とデータ (davinci.txt) が自動的に設定されます。既定では、HDInsight クラスターで使用されるコンテナーの名前は、クラスター自体の名前になります。たとえば、クラスター名が myhdicluster の場合、関連付けられる BLOB コンテナーの名は myhdicluster になります。
+### <a name="pipeline"></a>Pipeline
 
-	{
-	    "name": "HadoopStreamingPipeline",
-	    "properties": {
-	        "description": "Hadoop Streaming Demo",
-	        "activities": [
-	            {
-	                "type": "HDInsightStreaming",
-	                "typeProperties": {
-	                    "mapper": "cat.exe",
-	                    "reducer": "wc.exe",
-	                    "input": "wasb://<blobcontainer>@spestore.blob.core.windows.net/example/data/gutenberg/davinci.txt",
-	                    "output": "wasb://<blobcontainer>@spestore.blob.core.windows.net/example/data/StreamingOutput/wc.txt",
-	                    "filePaths": [
-	                        "<blobcontainer>/example/apps/wc.exe",
-	                        "<blobcontainer>/example/apps/cat.exe"
-	                    ],
-	                    "fileLinkedService": "StorageLinkedService"
-	                },
-	                "outputs": [
-	                    {
-	                        "name": "StreamingOutputDataset"
-	                    }
-	                ],
-	                "policy": {
-	                    "timeout": "01:00:00",
-	                    "concurrency": 1,
-	                    "executionPriorityOrder": "NewestFirst",
-	                    "retry": 1
-	                },
-	                "scheduler": {
-	                    "frequency": "Day",
-	                    "interval": 1
-	                },
-	                "name": "RunHadoopStreamingJob",
-	                "description": "Run a Hadoop streaming job",
-	                "linkedServiceName": "HDInsightLinkedService"
-	            }
-	        ],
-	        "start": "2014-01-04T00:00:00Z",
-	        "end": "2014-01-05T00:00:00Z"
-	    }
-	}
+The pipeline in this example has only one activity that is of type: **HDInsightStreaming**. 
 
-## 関連項目
-- [Hive アクティビティ](data-factory-hive-activity.md)
-- [Pig アクティビティ](data-factory-pig-activity.md)
-- [MapReduce アクティビティ](data-factory-map-reduce.md)
-- [Spark プログラムを呼び出す](data-factory-spark.md)
-- [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+The HDInsight cluster is automatically populated with example programs (wc.exe and cat.exe) and data (davinci.txt). By default, name of the container that is used by the HDInsight cluster is the name of the cluster itself. For example, if your cluster name is myhdicluster, name of the blob container associated would be myhdicluster.  
 
-<!---HONumber=AcomDC_0921_2016-->
+    {
+        "name": "HadoopStreamingPipeline",
+        "properties": {
+            "description": "Hadoop Streaming Demo",
+            "activities": [
+                {
+                    "type": "HDInsightStreaming",
+                    "typeProperties": {
+                        "mapper": "cat.exe",
+                        "reducer": "wc.exe",
+                        "input": "wasb://<blobcontainer>@spestore.blob.core.windows.net/example/data/gutenberg/davinci.txt",
+                        "output": "wasb://<blobcontainer>@spestore.blob.core.windows.net/example/data/StreamingOutput/wc.txt",
+                        "filePaths": [
+                            "<blobcontainer>/example/apps/wc.exe",
+                            "<blobcontainer>/example/apps/cat.exe"
+                        ],
+                        "fileLinkedService": "StorageLinkedService"
+                    },
+                    "outputs": [
+                        {
+                            "name": "StreamingOutputDataset"
+                        }
+                    ],
+                    "policy": {
+                        "timeout": "01:00:00",
+                        "concurrency": 1,
+                        "executionPriorityOrder": "NewestFirst",
+                        "retry": 1
+                    },
+                    "scheduler": {
+                        "frequency": "Day",
+                        "interval": 1
+                    },
+                    "name": "RunHadoopStreamingJob",
+                    "description": "Run a Hadoop streaming job",
+                    "linkedServiceName": "HDInsightLinkedService"
+                }
+            ],
+            "start": "2014-01-04T00:00:00Z",
+            "end": "2014-01-05T00:00:00Z"
+        }
+    }
+
+## <a name="see-also"></a>See Also
+- [Hive Activity](data-factory-hive-activity.md)
+- [Pig Activity](data-factory-pig-activity.md)
+- [MapReduce Activity](data-factory-map-reduce.md)
+- [Invoke Spark programs](data-factory-spark.md)
+- [Invoke R scripts](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

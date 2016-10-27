@@ -1,6 +1,6 @@
 <properties
-   pageTitle="HDInsight での Windows ベースの Hadoop クラスターの作成 | Microsoft Azure"
-   	description="Azure HDInsight のクラスターを作成する方法について説明します。"
+   pageTitle="Create Windows-based Hadoop clusters in HDInsight | Microsoft Azure"
+    description="Learn how to create clusters for Azure HDInsight."
    services="hdinsight"
    documentationCenter=""
    tags="azure-portal"
@@ -17,228 +17,233 @@
    ms.date="07/08/2016"
    ms.author="jgao"/>
 
-# HDInsight での Windows ベースの Hadoop クラスターの作成
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
+# <a name="create-windows-based-hadoop-clusters-in-hdinsight"></a>Create Windows-based Hadoop clusters in HDInsight
 
-Hadoop クラスターは、クラスターでのタスクの分散処理に使用される複数の仮想マシン (ノード) で構成されます。Azure では個々のノードのインストールと構成の実装の詳細を抽象化しているため、一般的な構成情報を提供する必要があります。この記事では、これらの構成設定について説明します。
+[AZURE.INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
->[AZURE.NOTE] このドキュメントの情報は、Windows ベースの Azure HDInsight クラスターに固有のものです。Linux ベースのクラスターについては、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+A Hadoop cluster consists of several virtual machines (nodes) that are used for distributed processing of tasks on the cluster. Azure abstracts the implementation details of installation and configuration of individual nodes, so you have to provide general configuration information. In this article, you will learn these configuration settings.
 
-## クラスターの種類##
+>[AZURE.NOTE] The information in this document is specific to Windows-based Azure HDInsight clusters. For information about Linux-based clusters, see [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-現在、HDInsight では、それぞれ特定の機能を提供する一連のコンポーネントを備えた 4 種類のクラスターを提供しています。
+## <a name="access-control-requirements"></a>Access control requirements
 
-| クラスターの種類 | 機能 |
+[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+
+## <a name="cluster-types##"></a>Cluster types##
+
+Currently, HDInsight provides four different types of clusters, each with a set of components to provide certain functionalities.
+
+| Cluster type | Functionality |
 | ------------ | ----------------------------- |
-| Hadoop は、 | クエリと分析 (バッチ ジョブ) |
-| HBase | NoSQL データ ストレージ |
-| Storm | リアルタイム イベント処理 |
-| Spark (プレビュー) | メモリ内処理、対話型クエリ、マイクロバッチ ストリーム処理 |
+| Hadoop       | Query and analysis (batch jobs)     |
+| HBase        | NoSQL data storage            |
+| Storm        | Real-time event processing |
+| Spark (Preview) | In-memory processing, interactive queries, micro-batch stream processing |
 
-各クラスターの種類には、独自のノード数、クラスター内のノードを表す用語、およびノードの種類ごとに既定の VM サイズがあります。次の表では、各ノードの種類のノード数がかっこ内に示されています。
+Each cluster type has its own number of nodes, terminology for nodes within the cluster, and default VM size for each node type. In the following table, the number of nodes for each node type is in parentheses.
 
-| 型| ノード (ノードの数)| ダイアグラム|
+| Type| Nodes (number of nodes)| Diagram|
 |-----|------|--------|
-|Hadoop は、| ヘッド ノード (2)、データ ノード (1 以上)|![HDInsight Hadoop クラスター ノード](./media/hdinsight-provision-clusters/HDInsight.Hadoop.roles.png)|
-|HBase|ヘッド サーバー (2)、リージョン サーバー (1 以上)、マスター/ZooKeeper ノード (3)|![HDInsight HBase クラスター ノード](./media/hdinsight-provision-clusters/HDInsight.HBase.roles.png)|
-|Storm|Nimbus ノード (2)、Supervisor サーバー (1 以上)、ZooKeeper ノード (3)|![HDInsight Storm クラスター ノード](./media/hdinsight-provision-clusters/HDInsight.Storm.roles.png)|
-|Spark|ヘッド ノード (2)、ワーカー ノード (1 以上)、ZooKeeper ノード (3) (A1 ZooKeeper VM サイズでは無料)|![HDInsight Spark クラスター ノード](./media/hdinsight-provision-clusters/HDInsight.Spark.roles.png)|
+|Hadoop| Head node (2), data node (1+)|![HDInsight Hadoop cluster nodes](./media/hdinsight-provision-clusters/HDInsight.Hadoop.roles.png)|
+|HBase|Head server (2), region server (1+), master/ZooKeeper node (3)|![HDInsight HBase cluster nodes](./media/hdinsight-provision-clusters/HDInsight.HBase.roles.png)|
+|Storm|Nimbus node (2), supervisor server (1+), ZooKeeper node (3)|![HDInsight Storm cluster nodes](./media/hdinsight-provision-clusters/HDInsight.Storm.roles.png)|
+|Spark|Head node (2), worker node (1+), ZooKeeper node (3) (free for A1 ZooKeeper VM size)|![HDInsight Spark cluster nodes](./media/hdinsight-provision-clusters/HDInsight.Spark.roles.png)|
 
-> [AZURE.IMPORTANT] クラスターの作成時または作成後のスケーリングで 32 個を超える worker ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
+> [AZURE.IMPORTANT] If you plan on having more than 32 worker nodes, either at cluster creation or by scaling the cluster after creation, then you must select a head node size with at least 8 cores and 14 GB of RAM.
 
-[スクリプト アクション](#customize-clusters-using-script-action)を使用して、Hue や R などの他のコンポーネントをこれらの基本的な種類に追加することができます。
+You can add other components such as Hue or R to these basic types by using [Script Actions](#customize-clusters-using-script-action).
 
-## 基本的な構成オプション
+## <a name="basic-configuration-options"></a>Basic configuration options
 
-HDInsight クラスターを作成する際に必要な基本的な構成オプションを以下に示します。
+The following are the basic configuration options required for creating an HDInsight cluster.
 
-### クラスター名###
+### <a name="cluster-name###"></a>Cluster name###
 
-クラスター名は、クラスターの識別に使用します。クラスター名はグローバルに一意である必要があり、次の名前付けのガイドラインに従う必要があります。
+Cluster name is used to identify a cluster. Cluster name must be globally unique, and it must follow these naming guidelines:
 
-- このフィールドには、3 ～ 63 文字の文字列を指定する必要があります。
-- このフィールドには、文字、数字、ハイフンのみを含めることができます。
+- The field must be a string that contains between 3 and 63 characters
+- The field can contain only letters, numbers, and hyphens.
 
-### クラスターの種類 ###
+### <a name="cluster-type"></a>Cluster type ###
 
-「[クラスターの種類](#cluster-types)」を参照してください。
+See [Cluster types](#cluster-types).
 
-### オペレーティング システム ###
+### <a name="operating-system"></a>Operating system ###
 
-次の 2 つのオペレーティング システムのいずれかで HDInsight クラスターを作成できます。
+You can create HDInsight clusters on one of the following two operating systems:
 
-- Linux での HDInsightHDInsight には、Azure で Linux クラスターを構成するためのオプションが用意されています。Linux または Unix に詳しい場合や、Linux 向けに構築された Hadoop エコシステム コンポーネントとの簡単な統合が必要な場合は、既存の Linux ベースの Hadoop ソリューションから移行することで Linux クラスターを構成します。詳細については、「[Get started with Hadoop on Linux in HDInsight (HDInsight の Linux での Hadoop の使用)](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
+- HDInsight on Linux. HDInsight provides the option of configuring Linux clusters on Azure. Configure a Linux cluster if you are familiar with Linux or Unix, are migrating from an existing Linux-based Hadoop solution, or want easy integration with Hadoop ecosystem components built for Linux. For more information, see [Get started with Hadoop on Linux in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
-- Windows 上の HDInsight (Windows Server 2012 R2 Datacenter)。
+- HDInsight on Windows (Windows Server 2012 R2 Datacenter).
 
-### HDInsight のバージョン###
+### <a name="hdinsight-version###"></a>HDInsight version###
 
-HDInsight のバージョンを使用して、このクラスターで使用する HDInsight のバージョンを特定します。詳細については、[HDInsight での Hadoop クラスターのバージョンとコンポーネント](https://go.microsoft.com/fwLink/?LinkID=320896&clcid=0x409)に関する記事を参照してください。
+HDInsight version is used to determine the version of HDInsight to use for this cluster. For more information, see [Hadoop cluster versions and components in HDInsight](https://go.microsoft.com/fwLink/?LinkID=320896&clcid=0x409).
 
-### サブスクリプション名###
+### <a name="subscription-name###"></a>Subscription name###
 
-各 HDInsight クラスターは、1 つの Azure サブスクリプションに関連付けられます。
+Each HDInsight cluster is tied to one Azure subscription.
 
-### リソース グループ名###
+### <a name="resource-group-name###"></a>Resource group name###
 
-[Azure Resource Manager](../resource-group-overview.md) を使用して、アプリケーションのこれらのリソースを、デプロイ、更新、監視、または削除できます。
+With [Azure Resource Manager](../resource-group-overview.md), you can deploy, update, monitor, or delete the resources for your application.
 
-### 資格情報
+### <a name="credentials"></a>Credentials
 
-HDInsight クラスターでは、クラスターの作成時に次の 3 つのユーザー アカウントを構成できます。
+With the HDInsight clusters, you can configure three user accounts during cluster creation.
 
-- [Azure Resource Manager](../resource-group-overview.md) を使用すると、アプリケーション内の複数のリソースを、Azure リソース グループと呼ばれる 1 つのグループとして使用できます。アプリケーションのこれらのすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
+- [Azure Resource Manager](../resource-group-overview.md) helps you work with the resources in your application as a group, referred to as an Azure resource group. You can deploy, update, monitor, or delete all of the resources for your application in a single, coordinated operation.
 
-- HTTP ユーザー。既定のユーザー名は、Azure ポータルの基本構成における *admin* です。この既定のユーザーは "クラスター ユーザー" と呼ばれることもあります。
-- RDP ユーザー (Windows クラスター)。RDP を使用してクラスターに接続します。アカウントの作成時に、アカウント作成当日から 90 日以内の有効期限を設定する必要があります。
-- SSH ユーザー (Linux クラスター)。SSH を使用したクラスターへの接続。「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」の手順に従ってクラスターを作成した後に、追加の SSH ユーザー アカウントを作成できます。
+- HTTP user. The default user name is *admin* in the basic configuration on the Azure portal. Sometimes the default is called "Cluster user."
+- RDP user (Windows clusters). Connect to the cluster by using RDP. When you create the account, you must set an expiration date within 90 days of the day you create the account.
+- SSH user (Linux clusters). Connect to the cluster by using SSH. You can create additional SSH user accounts after the cluster is created by following the steps in [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-### データ ソース ###
+### <a name="data-source"></a>Data source ###
 
-元の Hadoop 分散ファイル システム (HDFS) では、クラスター上の多数のローカル ディスクを使用します。HDInsight はデータ ストレージとして Azure BLOB ストレージを使用します。Azure BLOB ストレージは、堅牢な汎用ストレージ ソリューションであり、HDInsight とシームレスに統合されます。HDFS インターフェイスを使用して、HDInsight のすべてのコンポーネントで BLOB ストレージの構造化データまたは非構造化データを直接操作できます。BLOB ストレージにデータを格納すると、ユーザー データを失わずに、計算に使用されている HDInsight クラスターを安全に削除できます。
+The original Hadoop distributed file system (HDFS) uses many local disks on the cluster. HDInsight uses Azure Blob storage for data storage. Azure Blob storage is a robust, general-purpose storage solution that integrates seamlessly with HDInsight. Through an HDFS interface, the full set of components in HDInsight can operate directly on structured or unstructured data in Blob storage. If you store data in Blob storage, you can safely delete the HDInsight clusters that are used for computation without losing user data.
 
-構成時に、Azure ストレージ アカウントと、その Azure ストレージ アカウントの Azure BLOB ストレージ コンテナーを指定する必要があります。一部の作成プロセスでは、Azure ストレージ アカウントと BLOB ストレージ コンテナーを事前に作成しておく必要があります。BLOB ストレージ コンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターがアクセス可能なその他の Azure Storage アカウント (リンクされたストレージ) を指定できます。また、クラスターは、完全なパブリック読み取りアクセスまたは BLOB だけを対象とするパブリック読み取りアクセスで構成された BLOB ストレージ コンテナーにアクセスすることもできます。詳細については、[Azure Storage リソースへのアクセスの管理](../storage/storage-manage-access-to-resources.md)に関するページを参照してください。
+During configuration, you must specify an Azure storage account and an Azure Blob storage container on the Azure storage account. Some creation processes require the Azure storage account and the Blob storage container to be created beforehand. The Blob storage container is used as the default storage location by the cluster. Optionally, you can specify additional Azure storage accounts (linked storage) that will be accessible by the cluster. The cluster can also access any Blob storage containers that are configured with full public read access, or public read access for blobs only.  For more information, see [Manage Access to Azure Storage Resources](../storage/storage-manage-access-to-resources.md).
 
-![HDInsight ストレージ](./media/hdinsight-provision-clusters/HDInsight.storage.png)
+![HDInsight storage](./media/hdinsight-provision-clusters/HDInsight.storage.png)
 
->[AZURE.NOTE] 次の図に示すように、BLOB ストレージ コンテナーには、一連の BLOB がまとめられています。
+>[AZURE.NOTE] A Blob storage container provides a grouping of a set of blobs as shown in the following image.
 
-構成時に、Azure ストレージ アカウントと、その Azure ストレージ アカウントの Azure BLOB ストレージ コンテナーを指定する必要があります。一部の作成プロセスでは、Azure ストレージ アカウントと BLOB ストレージ コンテナーを事前に作成しておく必要があります。BLOB ストレージ コンテナーは、既定の保存先としてクラスターで使用されます。必要に応じて、クラスターがアクセスできるその他の Azure Storage アカウント (リンクされたストレージ) を指定できます。クラスターは、完全なパブリック読み取りアクセスまたは BLOB だけを対象とするパブリック読み取りアクセスで構成された BLOB コンテナーにアクセスすることもできます。詳細については、[Azure Storage リソースへのアクセスの管理](../storage/storage-manage-access-to-resources.md)に関するページを参照してください。
+During configuration, you must specify an Azure storage account and an Azure Blob storage container on the Azure storage account. Some creation processes require the Azure storage account and the Blob storage container to be created beforehand. The Blob storage container is used as the default storage location by the cluster. Optionally, you can specify additional Azure storage accounts (linked storage) that the cluster can access. The cluster can also access any Blob containers that are configured with full public read access or public read access for blobs only. For more information, see [Manage Access to Azure Storage Resources](../storage/storage-manage-access-to-resources.md).
 
 
-![Azure BLOB ストレージ](./media/hdinsight-provision-clusters/Azure.blob.storage.jpg)
+![Azure Blob Storage](./media/hdinsight-provision-clusters/Azure.blob.storage.jpg)
 
-ビジネス データの格納には、既定の BLOB ストレージ コンテナーを使用しないことをお勧めします。ストレージ コストを削減するために、既定の BLOB ストレージ コンテナーの使用後、コンテナーを毎回削除することをお勧めします。既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。コンテナーを削除する前に、ログを取り出してください。
+We do not recommend the default Blob storage container for storing business data. Deleting the default Blob storage container after each use to reduce storage cost is a good practice. The default container contains application and system logs. Make sure to retrieve the logs before deleting the container.
 
->[AZURE.WARNING] HDinsight では、1 つの BLOB ストレージ コンテナーの複数のクラスターによる共有はサポートされません。
+>[AZURE.WARNING] HDInsight does not support sharing one Blob storage container for multiple clusters.
 
-セカンダリ BLOB ストレージの詳細については、「[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。
+For more information about secondary Blob storage, see [HDFS-compatible Azure Blob storage with Hadoop in HDInsight](hdinsight-hadoop-use-blob-storage.md).
 
-Azure Blob ストレージに加え、[Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) も HDInsight での HBase クラスターの既定のストレージ アカウントとして、また、4 つのすべての HDInsight クラスターの種類のリンクされたストレージとして使用できます。詳細については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+In addition to Azure Blob storage, you can also use [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) as a default storage account for an HBase cluster in HDInsight and as linked storage for all four HDInsight cluster types. For more information, see [Create an HDInsight cluster with Data Lake Store using Azure portal](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
-### 場所 (リージョン)###
+### <a name="location-(region)###"></a>Location (region)###
 
-HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure の場所に配置されている必要があります。
+The HDInsight cluster and its default storage account must be located at the same Azure location.
 
-![Azure Azure リージョン](./media/hdinsight-provision-clusters/Azure.regions.png)
+![Azure regions](./media/hdinsight-provision-clusters/Azure.regions.png)
 
-サポートされているリージョンのリストについては、「[HDInsight の価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」の **[リージョン]** ドロップダウン リストをクリックしてください。
+For a list of supported regions, click the **Region** drop-down list on [HDInsight pricing](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
-### ノード価格レベル###
+### <a name="node-pricing-tiers###"></a>Node pricing tiers###
 
-クラスターの有効期間中、これらのノードの使用量に対して課金されます。課金はクラスターが作成されると開始され、クラスターが削除されると停止されます。クラスターを割り当て解除または保留にすることはできません。
+Customers are billed for the usage of those nodes for the duration of the cluster’s life. Billing starts when a cluster is created and stops when the cluster is deleted. Clusters can’t be de-allocated or put on hold.
 
-クラスターの種類によって、ノードの種類、ノード数、ノード サイズが異なります。たとえば、Hadoop クラスターの種類には 2 つの_ヘッド ノード_と 4 つの_データ ノード_ (既定) がありますが、Storm クラスターの種類には 2 つの _Nimbus ノード_、3 つの _ZooKeeper ノード_と 4 つの_Supervisor ノード_ (既定) があります。HDInsight クラスターのコストは、ノード数とノードの仮想マシンのサイズによって決まります。たとえば、大量のメモリを必要とする操作を実行することがわかっている場合は、より多くのメモリを持つコンピューティング リソースを選択できます。学習目的の場合は、1 つのデータ ノードの操作をお勧めします。HDInsight の価格の詳細については、「[HDInsight 価格](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)」をご覧ください。
+Different cluster types have different node types, numbers of nodes, and node sizes. For example, a Hadoop cluster type has two _head nodes_ and a default of four _data nodes_, while a Storm cluster type has two _nimbus nodes_, three _ZooKeeper nodes_, and a default of four _supervisor nodes_. The cost of HDInsight clusters is determined by the number of nodes and the virtual machine sizes for the nodes. For example, if you know that you will be performing operations that need a lot of memory, you may want to select a compute resource with more memory. For learning purposes, we recommend working with one data node. For more information about HDInsight pricing, see [HDInsight pricing](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
->[AZURE.NOTE] クラスター サイズの制限は、Azure サブスクリプションによって異なります。制限値を上げるには、課金サポートにお問い合わせください。
+>[AZURE.NOTE] The cluster size limit varies among Azure subscriptions. Contact billing support to increase the limit.
 
->ノードに使用される仮想マシン イメージは、HDInsight サービスの実装の詳細であるため、クラスターで使用されるノードは仮想マシンとしてカウントされません。ただし、ノードで使用されるコンピューティング コアは、サブスクリプションで利用できるコンピューティング コアとしてカウントされ、その合計数に含まれます。利用可能なコアとクラスターで使用されるコアの数は、HDInsight クラスターの作成時に、[ノード価格レベル] ブレードの概要セクションで確認できます。
+>The nodes used by your cluster do not count as virtual machines because the virtual machine images used for the nodes are an implementation detail of the HDInsight service. However, the compute cores used by the nodes do count against the total number of compute cores available to your subscription. You can see the available cores and the number of cores the cluster will use in the summary section of the Node Pricing Tiers blade when creating an HDInsight cluster.
 
-Azure ポータルを使用してクラスターを構成するときに、__[ノード価格レベル]__ ブレードでノード サイズを利用できます。また、別のノード サイズに関連するコストを確認することもできます。次のスクリーンショットは、Linux ベースの Hadoop クラスターの選択肢を示しています。
+When you configure the cluster with the Azure portal, the node size is available through the __Node Pricing Tier__ blade. You can also see the cost associated with the different node sizes. The following screenshot shows the choices for a Linux-based Hadoop cluster.
 
-![HDInsight VM ノードのサイズ](./media/hdinsight-provision-clusters/hdinsight.node.sizes.png)
+![HDInsight vm node sizes](./media/hdinsight-provision-clusters/hdinsight.node.sizes.png)
 
-次の表に、HDInsight クラスターでサポートされているサイズと、それらが提供する容量を示します。
+The following tables show the sizes supported by HDInsight clusters and the capacities they provide.
 
-### Standard レベル: A シリーズ###
+### <a name="standard-tier:-a-series###"></a>Standard tier: A-series###
 
-クラシック デプロイ モデルでは、一部の VM サイズが PowerShell と CLI で若干異なります。
+In the classic deployment model, some VM sizes are slightly different in PowerShell and CLI.
 
-* Standard\_A3: Large
-* Standard\_A4: ExtraLarge
+* Standard_A3 is Large
+* Standard_A4 is ExtraLarge
 
-|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
+|Size |CPU cores|Memory|NICs (max.)|Max. disk size|Max. data disks (1023 GB each)|Max. IOPS (500 per disk)|
 |---|---|---|---|---|---|---|
-|Standard\_A3\\Large|4|7 GB|2|一時ディスク = 285 GB |8|8 x 500|
-|Standard\_A4\\ExtraLarge|8|14 GB|4|一時ディスク = 605 GB |16|16 x 500|
-|Standard\_A6|4|28 GB|2|一時ディスク = 285 GB |8|8 x 500|
-|Standard\_A7|8|56 GB|4|一時ディスク = 605 GB |16|16 x 500|
+|Standard_A3\Large|4|7 GB|2|Temporary = 285 GB |8|8x500|
+|Standard_A4\ExtraLarge|8|14 GB|4|Temporary = 605 GB |16|16x500|
+|Standard_A6|4|28 GB|2|Temporary = 285 GB |8|8x500|
+|Standard_A7|8|56 GB|4|Temporary = 605 GB |16|16x500|
 
 
-### Standard レベル: D シリーズ###
+### <a name="standard-tier:-d-series###"></a>Standard tier: D-series###
 
-|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
+|Size |CPU cores|Memory|NICs (max.)|Max. disk size|Max. data disks (1023 GB each)|Max. IOPS (500 per disk)|
 |---|---|---|---|---|---|---|
-|Standard\_D3 |4|14 GB|4|一時的 (SSD) = 200 GB |8|8 x 500|
-|Standard\_D4 |8|28 GB|8|一時的 (SSD) = 400 GB |16|16 x 500|
-|Standard\_D12 |4|28 GB|4|一時的 (SSD) = 200 GB |8|8 x 500|
-|Standard\_D13 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500|
-|Standard\_D14 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500|
+|Standard_D3 |4|14 GB|4|Temporary (SSD) =200 GB |8|8x500|
+|Standard_D4 |8|28 GB|8|Temporary (SSD) =400 GB |16|16x500|
+|Standard_D12 |4|28 GB|4|Temporary (SSD) =200 GB |8|8x500|
+|Standard_D13 |8|56 GB|8|Temporary (SSD) =400 GB |16|16x500|
+|Standard_D14 |16|112 GB|8|Temporary (SSD) =800 GB |32|32x500|
 
 
-### Standard レベル: Dv2 シリーズ###
+### <a name="standard-tier:-dv2-series###"></a>Standard tier: Dv2-series###
 
-|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
+|Size |CPU cores|Memory|NICs (max.)|Max. disk size|Max. data disks (1023 GB each)|Max. IOPS (500 per disk)|
 |---|---|---|---|---|---|---|
-|Standard\_D3\_v2 |4|14 GB|4|一時的 (SSD) = 200 GB |8|8 x 500|
-|Standard\_D4\_v2 |8|28 GB|8|一時的 (SSD) = 400 GB |16|16 x 500|
-|Standard\_D12\_v2 |4|28 GB|4|一時的 (SSD) = 200 GB |8|8 x 500|
-|Standard\_D13\_v2 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500|
-|Standard\_D14\_v2 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500|     
+|Standard_D3_v2 |4|14 GB|4|Temporary (SSD) =200 GB |8|8x500|
+|Standard_D4_v2 |8|28 GB|8|Temporary (SSD) =400 GB |16|16x500|
+|Standard_D12_v2 |4|28 GB|4|Temporary (SSD) =200 GB |8|8x500|
+|Standard_D13_v2 |8|56 GB|8|Temporary (SSD) =400 GB |16|16x500|
+|Standard_D14_v2 |16|112 GB|8|Temporary (SSD) =800 GB |32|32x500|     
 
-これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項については、[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)に関する記事をご覧ください。さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。
+For deployment considerations to be aware of when you're planning to use these resources, see [Sizes for virtual machines](../virtual-machines/virtual-machines-windows-sizes.md). For information about pricing of various sizes, see [HDInsight Pricing](https://azure.microsoft.com/pricing/details/hdinsight).   
 
-> [AZURE.IMPORTANT] クラスターの作成時または作成後のスケーリングで 32 個を超える worker ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
+> [AZURE.IMPORTANT] If you plan on having more than 32 worker nodes, either at cluster creation or by scaling the cluster after creation, you must select a head node size with at least 8 cores and 14 GB of RAM.
 
-課金はクラスターが作成されると開始され、クラスターが削除されると停止されます。価格の詳細については、[HDInsight の価格詳細](https://azure.microsoft.com/pricing/details/hdinsight/)に関する記述を参照してください。
+Billing starts when a cluster is created and stops when the cluster is deleted. For more information about pricing, see [HDInsight pricing details](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 
-|サイズ |CPU コア数|メモリ|NIC (最大)|最大ディスク サイズ|最大データ ディスク数 (各ディスク 1,023 GB)|最大IOPS (各ディスク 500)|
+|Size |CPU cores|Memory|NICs (max.)|Max. disk size|Max. data disks (1023 GB each)|Max. IOPS (500 per disk)|
 |---|---|---|---|---|---|---|
-|Standard\_D3\_v2 |4|14 GB|4|一時的 (SSD) = 200 GB |8|8 x 500|
-|Standard\_D4\_v2 |8|28 GB|8|一時的 (SSD) = 400 GB |16|16 x 500|
-|Standard\_D12\_v2 |4|28 GB|4|一時的 (SSD) = 200 GB |8|8 x 500|
-|Standard\_D13\_v2 |8|56 GB|8|一時的 (SSD) = 400 GB |16|16 x 500|
-|Standard\_D14\_v2 |16|112 GB|8|一時的 (SSD) = 800 GB |32|32 x 500|    
+|Standard_D3_v2 |4|14 GB|4|Temporary (SSD) =200 GB |8|8x500|
+|Standard_D4_v2 |8|28 GB|8|Temporary (SSD) =400 GB |16|16x500|
+|Standard_D12_v2 |4|28 GB|4|Temporary (SSD) =200 GB |8|8x500|
+|Standard_D13_v2 |8|56 GB|8|Temporary (SSD) =400 GB |16|16x500|
+|Standard_D14_v2 |16|112 GB|8|Temporary (SSD) =800 GB |32|32x500|    
 
-これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項については、[仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)に関する記事をご覧ください。さまざまなサイズの価格については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight)」をご覧ください。
+For deployment considerations to be aware of when you're planning to use these resources, see [Sizes for virtual machines](../virtual-machines/virtual-machines-windows-sizes.md). For information about pricing of the various sizes, see [HDInsight Pricing](https://azure.microsoft.com/pricing/details/hdinsight).  
 
-> [AZURE.IMPORTANT] クラスターの作成時または作成後のスケーリングで 32 個を超える worker ノードを使用することを予定している場合は、コア数が 8 個以上、RAM が 14 GB 以上のヘッド ノード サイズを選択する必要があります。
+> [AZURE.IMPORTANT] If you plan on having more than 32 worker nodes, either at cluster creation or by scaling the cluster after creation, then you must select a head node size with at least 8 cores and 14 GB of RAM.
 
- 課金はクラスターが作成されると開始され、クラスターが削除されると停止されます。価格の詳細については、[HDInsight の価格詳細](https://azure.microsoft.com/pricing/details/hdinsight/)に関する記述を参照してください。
-
-
-## 記憶域の追加
-
-場合によっては、クラスターへのストレージの追加が必要になることがあります。たとえば、異なる地理的リージョンまたは異なるサービスの複数の Azure ストレージ アカウントがあり、それらをすべて HDInsight で分析する場合などです。
-
-セカンダリ BLOB ストレージの詳細については、「[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)」を参照してください。セカンダリ Data Lake Store の詳細については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+ Billing starts when a cluster is created and stops when the cluster is deleted. For more information on pricing, see [HDInsight pricing details](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 
-## Hive/Oozie metastore の使用
+## <a name="add-more-storage"></a>Add more storage
 
-HDInsight クラスターを削除した後に、Hive テーブルを保持する場合は、将来別の HDInsight クラスターに metastore をアタッチする目的で、カスタム metastore を使用することを強くお勧めします。
+In some cases, you may want to add more storage to the cluster. For example, you might have multiple Azure storage accounts for different geographical regions or for different services, but you want to analyze them all with HDInsight.
 
-> [AZURE.IMPORTANT] HDInsight のメタストアは、下位互換性がありません。たとえば、HDInsight 3.3 クラスターのメタストアを使用して HDInsight 3.2 のクラスターを作成することはできません。
+For more information about secondary Blob storage, see [Use HDFS-compatible Azure Blob storage with Hadoop in HDInsight](hdinsight-hadoop-use-blob-storage.md). For more information about secondary Data Lake stores, see [Create HDInsight clusters with Data Lake Store using the Azure portal](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
-メタストアには、Hive テーブル、パーティション、スキーマ、列などについての Hive と Oozie メタデータが格納されます。metastore は、Hive と Oozie メタデータを保持するのに役立ちます。新しいクラスターを作成するときに、Hive テーブルまたは Oozie ジョブを再作成する必要はありません。既定では、Hive は組み込みの Azure SQL Database を使用してこの情報を格納します。組み込みデータベースは、クラスターが削除されるとメタデータを保持できません。たとえば、Hive metastore で作成したクラスターで Hive テーブルを作成する場合、同じ Hive metastore を使用してクラスターを削除して再作成すると、それらのテーブルを確認できます。
 
-HBase のクラスターの種類では、メタストア構成は使用できません。
+## <a name="use-a-hive/oozie-metastore"></a>Use a Hive/Oozie metastore
 
-> [AZURE.IMPORTANT] カスタム metastore を作成するときは、データベース名にダッシュやハイフンを使用しないでください。使用すると、クラスター作成プロセスが失敗することがあります。
+We strongly recommend that you use a custom metastore if you want to keep your Hive tables after you delete your HDInsight cluster for purposes of attaching that metastore to another HDInsight cluster in the future.
 
-## Azure 仮想ネットワークの使用
+> [AZURE.IMPORTANT] HDInsight metastore is not backward compatible. For example, you cannot use a metastore of an HDInsight 3.3 cluster to create an HDInsight 3.2 cluster.
 
-[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) によって、ソリューションに必要なリソースを含む、セキュリティで保護された永続的なネットワークを作成できます。Virtual Network では次のことが可能です。
+The metastore contains Hive and Oozie metadata, such as Hive tables, partitions, schemas, and columns. The metastore helps you to retain your Hive and Oozie metadata. You don't need to re-create Hive tables or Oozie jobs when you create a new cluster. By default, Hive uses an embedded Azure SQL database to store this information. The embedded database can't preserve the metadata when the cluster is deleted. For example, if you create Hive tables in a cluster created with a Hive metastore, you can see those tables if you delete and re-create the cluster with the same Hive metastore.
 
-* プライベート ネットワーク (クラウドのみ) 内でのクラウド リソース間の接続
+Metastore configuration is not available for HBase cluster types.
 
-	![クラウドのみの構成の図](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-cloud-only.png)
+> [AZURE.IMPORTANT] When you're creating a custom metastore, do not use a database name that contains dashes or hyphens because this can cause the cluster creation process to fail.
 
-* 仮想プライベート ネットワーク (VPN) を使用したローカル データセンター ネットワークへのクラウド リソースの接続 (サイト間またはポイント対サイト)。
+## <a name="use-azure-virtual-network"></a>Use Azure Virtual Network
 
-| サイト間構成 | ポイント対サイト構成 |
+[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) helps you create a secure, persistent network that contains the resources you need for your solution. With a virtual network, you can:
+
+* Connect cloud resources together in a private network (cloud-only).
+
+    ![diagram of cloud-only configuration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-cloud-only.png)
+
+* Connect your cloud resources to your local datacenter network (site-to-site or point-to-site) by using a virtual private network (VPN).
+
+| Site-to-site configuration | Point-to-site configuration |
 | -------------------------- | --------------------------- |
-| サイト間構成では、ハードウェア VPN を使用するか、ルーティングとリモート アクセス サービスを使用して、データセンターの複数のリソースを Azure Virtual Network に接続できます。<br />![サイト間構成の図](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-site-to-site.png) | ポイント対サイト構成では、ソフトウェア VPN を使用して、特定のリソースを Azure Virtual Network に接続できます。<br />![ポイント対サイト構成の図](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-point-to-site.png) |
+| With site-to-site configuration, you can connect to multiple resources from your datacenter to Azure Virtual Network by using a hardware VPN or the Routing and Remote Access Service.<br />![diagram of site-to-site configuration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-site-to-site.png) | With point-to-site configuration, you can connect a specific resource to Azure Virtual Network by using a software VPN.<br />![diagram of point-to-site configuration](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-vnet-point-to-site.png) |
 
-Windows ベースのクラスターでは、クラシック Virtual Network が必要であり、Linux ベースのクラスターでは、Azure Resource Manager Virtual Network が必要です。ネットワークの種類が正しくない場合、クラスターの作成には使用できません。
+Windows-based clusters require a classic virtual network, while Linux-based clusters require an Azure Resource Manager virtual network. If you do not have the correct type of network, it will not be usable when you create the cluster.
 
-Virtual Network の具体的な構成要件など、Virtual Network で HDInsight がどのように機能するかについては、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
+For more information about how HDInsight works with a virtual network, including specific configuration requirements for the virtual network, see [Extend HDInsight capabilities by using Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
 
-## HDInsight クラスターのカスタマイズ (ブートストラップ) を使用したクラスターのカスタマイズ
+## <a name="customize-clusters-by-using-hdinsight-cluster-customization-(bootstrap)"></a>Customize clusters by using HDInsight cluster customization (bootstrap)
 
-次の構成ファイルを構成することが必要な場合があります。
+Sometimes, you want to configure the following configuration files:
 
 - clusterIdentity.xml
 - core-site.xml
@@ -256,27 +261,31 @@ Virtual Network の具体的な構成要件など、Virtual Network で HDInsigh
 - webhcat-site.xml
 - yarn-site.xml
 
-クラスターの有効期間中に変更を保持するには、作成プロセスで HDInsight クラスターのカスタマイズを使用します。Linux ベースのクラスターで、Ambari を使用することもできます。詳細については、「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」を参照してください。
+To keep the changes through the clusters' lifetime, you can use HDInsight cluster customization during the creation process. You can also use Ambari in Linux-based clusters. For more information, see [Customize HDInsight clusters by using Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
->[AZURE.NOTE] 再イメージ化により、Windows ベースのクラスターは変更を保持できません。詳細については、「[Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)」を参照してください。クラスターの有効期間中に変更を保持するには、作成プロセスで HDInsight クラスターのカスタマイズを使用する必要があります。
+>[AZURE.NOTE] The Windows-based clusters can't retain the changes due to reimage. For more information, see [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx). To keep the changes throughout the lifetime of a cluster, you must use HDInsight cluster customization during the creation process.
 
-## スクリプト アクションを使用したクラスターのカスタマイズ
+## <a name="customize-clusters-by-using-script-action"></a>Customize clusters by using Script Action
 
-追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。詳細については、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster.md)」を参照してください。
+You can install additional components or customize cluster configuration by using scripts during creation. Such scripts are invoked via **Script Action**, which is a configuration option that can be used from the Azure portal, HDInsight Windows PowerShell cmdlets, or the HDInsight .NET SDK. For more information, see [Customize a HDInsight cluster by using Script Action](hdinsight-hadoop-customize-cluster.md).
 
 
 
-## クラスターの作成方法
+## <a name="cluster-creation-methods"></a>Cluster creation methods
 
-この記事では、Windows ベースの HDInsight クラスターの作成に関する基本的な情報を提供しました。次の表を使用して、ニーズに最も適した方法を使用したクラスターの作成方法に関する特定の情報を見つけてください。
+In this article, you have learned basic information about creating a Windows-based HDInsight cluster. Use the following table to find specific information about how to create a cluster by using a method that best suits your needs.
 
-| クラスターの作成方法 | Web ブラウザー | コマンド ライン | REST API | SDK | Linux、Mac OS X、または Unix | Windows |
+| Clusters created with | Web browser | Command line | REST API | SDK | Linux, Mac OS X, or Unix | Windows |
 | ------------------------------- |:----------------------:|:--------------------:|:------------------:|:------------:|:-----------------------------:|:------------:|
-| [Azure ポータル](hdinsight-hadoop-create-windows-clusters-portal.md) | ✔ | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ |
-| [Azure CLI](hdinsight-hadoop-create-windows-clusters-cli.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
-| [Azure PowerShell](hdinsight-hadoop-create-windows-clusters-powershell.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
-| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) | &nbsp; | ✔ | ✔ | &nbsp; | ✔ | ✔ |
-| [.NET SDK](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔ | ✔ |
-| [Azure リソース マネージャーのテンプレート](hdinsight-hadoop-create-windows-clusters-arm-templates.md) | &nbsp; | ✔ | &nbsp; | &nbsp; | ✔ | ✔ |
+| [The Azure portal](hdinsight-hadoop-create-windows-clusters-portal.md) | ✔     | &nbsp; | &nbsp; | &nbsp; | ✔      | ✔ |
+| [Azure CLI](hdinsight-hadoop-create-windows-clusters-cli.md)         | &nbsp; | ✔     | &nbsp; | &nbsp; | ✔      | ✔ |
+| [Azure PowerShell](hdinsight-hadoop-create-windows-clusters-powershell.md) | &nbsp; | ✔     | &nbsp; | &nbsp; | ✔ | ✔ |
+| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) | &nbsp; | ✔     | ✔ | &nbsp; | ✔      | ✔ |
+| [.NET SDK](hdinsight-hadoop-create-windows-clusters-dotnet-sdk.md) | &nbsp; | &nbsp; | &nbsp; | ✔ | ✔      | ✔ |
+| [Azure Resource Manager templates](hdinsight-hadoop-create-windows-clusters-arm-templates.md) | &nbsp; | ✔     | &nbsp; | &nbsp; | ✔      | ✔ |
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

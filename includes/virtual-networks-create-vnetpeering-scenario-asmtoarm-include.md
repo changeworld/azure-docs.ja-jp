@@ -1,9 +1,12 @@
-## RM からクラシックへの仮想ネットワークのピアリング
+## <a name="peering-virtual-networks-from-rm-to-classic"></a>Peering virtual networks from RM to classic
 
-このシナリオでは、2 つの Vnet 間、具体的には、Azure Resource Manager デプロイメント モデルに属する **VNET1** とクラシック デプロイメント モデルに属する **VNET2** の間にピアリングを作成します。
+In this scenario, you will create a peering between two VNets, namely **VNET1** and **VNET2** belonging to Azure Resource Manager deployment model and classic deployment model respectively.
 
-> [AZURE.NOTE] 仮想ネットワークはすべて同じサブスクリプションに属している必要があります。
+> [AZURE.NOTE] The virtual networks must be in the same subscription.
 
 ![asm to arm deployment scenario](./media/virtual-networks-create-vnetpeering-scenario-asmtoarm-include/figure01.PNG)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

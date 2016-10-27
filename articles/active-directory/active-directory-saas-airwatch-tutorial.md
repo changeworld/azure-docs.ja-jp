@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と AirWatch の統合 | Microsoft Azure" 
-    description="Azure Active Directory で AirWatch を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with AirWatch | Microsoft Azure" 
+    description="Learn how to use AirWatch with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,174 +11,183 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と AirWatch の統合
 
-このチュートリアルでは、Azure と AirWatch の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+#<a name="tutorial:-azure-active-directory-integration-with-airwatch"></a>Tutorial: Azure Active Directory integration with AirWatch
 
--   有効な Azure サブスクリプション
--   AirWatch でのシングル サインオンが有効なサブスクリプション
+The objective of this tutorial is to show the integration of Azure and AirWatch.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
-このチュートリアルを完了すると、AirWatch に割り当てた Azure AD ユーザーは、AirWatch 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+-   A valid Azure subscription
+-   An AirWatch single sign-on enabled subscription
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+After completing this tutorial, the Azure AD users you have assigned to AirWatch will be able to single sign into the application at your AirWatch company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-1.  AirWatch のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+The scenario outlined in this tutorial consists of the following building blocks:
+
+1.  Enabling the application integration for AirWatch
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
 ![AirWatch](./media/active-directory-saas-airwatch-tutorial/IC791913.png "AirWatch")
-##AirWatch のアプリケーション統合の有効化
+##<a name="enabling-the-application-integration-for-airwatch"></a>Enabling the application integration for AirWatch
 
-このセクションでは、AirWatch のアプリケーション統合を有効にする方法について説明します。
+The objective of this section is to outline how to enable the application integration for AirWatch.
 
-###AirWatch のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-airwatch,-perform-the-following-steps:"></a>To enable the application integration for AirWatch, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-airwatch-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-airwatch-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-airwatch-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-airwatch-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-airwatch-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-airwatch-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-airwatch-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  [**検索**] ボックスに、「**AirWatch**」と入力します。
+6.  In the **search box**, type **AirWatch**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-airwatch-tutorial/IC791914.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-airwatch-tutorial/IC791914.png "Application Gallery")
 
-7.  結果ウィンドウで [**AirWatch**] を選択し、[**完了**] をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **AirWatch**, and then click **Complete** to add the application.
 
     ![AirWatch](./media/active-directory-saas-airwatch-tutorial/IC791915.png "AirWatch")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで AirWatch に対する認証を行えるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+The objective of this section is to outline how to enable users to authenticate to AirWatch with their account in Azure AD using federation based on the SAML protocol.  
+As part of this procedure, you are required to create a base-64 encoded certificate file.  
+If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **[AirWatch]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **AirWatch** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-airwatch-tutorial/IC791916.png "Configure Single Sign-On")
 
-2.  [**ユーザーの AirWatch へのアクセスを設定してください**] ページで、[**Microsoft Azure AD のシングル サインオン**] を選択し、[**次へ**] をクリックします。
+2.  On the **How would you like users to sign on to AirWatch** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-airwatch-tutorial/IC791917.png "Configure Single Sign-On")
 
-3.  [**アプリケーション URL の構成**] ページの [**AirWatch サインオン URL**] テキスト ボックスに、AirWatch アプリケーションへのサインインにユーザーが使用する URL (例: ”*https:// companycode.awmdm.com/AirWatch/Login?gid=companycode*”) を入力し、[**次へ**] をクリックします。
+3.  On the **Configure App URL** page, in the **AirWatch Sign On URL** textbox, type your URL used by your users to sign in to your AirWatch application (e.g.: "*https:// companycode.awmdm.com/AirWatch/Login?gid=companycode*"), and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-airwatch-tutorial/IC791918.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-airwatch-tutorial/IC791918.png "Configure App URL")
 
-4.  [**AirWatch でのシングル サインオン構成**] ページで、[**証明書のダウンロード**] をクリックし、コンピューターに証明書ファイルを保存します。
+4.  On the **Configure single sign-on at AirWatch** page, click **Download certificate**, and then save the certificate file on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-airwatch-tutorial/IC791919.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザーのウィンドウで、管理者として AirWatch 企業サイトにログインします。
+5.  In a different web browser window, log into your AirWatch company site as an administrator.
 
-6.  左側のナビゲーション ウィンドウで、[**Accounts**]、[**Administrators**] の順にクリックします。
+6.  In the left navigation pane, click **Accounts**, and then click **Administrators**.
 
     ![Administrators](./media/active-directory-saas-airwatch-tutorial/IC791920.png "Administrators")
 
-7.  [**Settings**] メニューを展開し、[**Directory Services**] をクリックします。
+7.  Expand the **Settings** menu, and then click **Directory Services**.
 
     ![Settings](./media/active-directory-saas-airwatch-tutorial/IC791921.png "Settings")
 
-8.  [**User**] タブをクリックし、[**Base DN**] テキスト フィールドにドメイン名を入力してから [**Save**] をクリックします。
+8.  Click the **User** tab, in the **Base DN** textfield, type your domain name, and then click **Save**.
 
     ![User](./media/active-directory-saas-airwatch-tutorial/IC791922.png "User")
 
-9.  [**Server**] タブをクリックします。
+9.  Click the **Server** tab.
 
     ![Server](./media/active-directory-saas-airwatch-tutorial/IC791923.png "Server")
 
-10. 次の手順に従います。
+10. Perform the following steps:
 
     ![Upload](./media/active-directory-saas-airwatch-tutorial/IC791924.png "Upload")
 
-    1.  [**Directory Type**] として [**None**] を選択します。
-    2.  [**Use SAML For Authentication**] を選択します。
-    3.  ダウンロードした証明書をアップロードするには、[**Upload**] をクリックします。
+    1.  As **Directory Type**, select **None**.
+    2.  Select **Use SAML For Authentication**.
+    3.  To upload the downloaded certificate, click **Upload**.
 
-11. [**Request**] セクションで、次の手順に従います。
+11. In the **Request** section, perform the following steps:
 
     ![Request](./media/active-directory-saas-airwatch-tutorial/IC791925.png "Request")
 
-    1.  [**Request Binding Type**] として [**POST**] を選択します。
-    2.  Azure クラシック ポータルの **[Airwatch でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[ID プロバイダー シングル サインオン URL]** テキスト ボックスに貼り付けます。
-    3.  [**NameID Format**] として [**Email Address**] を選択します。
-    4.  [**Save**] をクリックします。
+    1.  As **Request Binding Type**, select **POST**.
+    2.  In the Azure classic portal, on the **Configure single sign-on at Airwatch** dialog page, copy the **Single Sign-On Service URL** value, and then paste it into the **Identity Provider Single Sign On URL** textbox.
+    3.  As **NameID Format**, select **Email Address**.
+    4.  Click **Save**.
 
-12. [**User**] タブをもう一度クリックします。
+12. Click the **User** tab again.
 
     ![User](./media/active-directory-saas-airwatch-tutorial/IC791926.png "User")
 
-13. [**Attribute**] セクションで、次の手順に従います。
+13. In the **Attribute** section, perform the following steps:
 
     ![Attribute](./media/active-directory-saas-airwatch-tutorial/IC791927.png "Attribute")
 
-    1.  [**Object Identifier**] テキスト ボックスに「**http://schemas.microsoft.com/identity/claims/objectidentifier**」と入力します。
-    2.  [**Username**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 」と入力します。
-    3.  [**Display Name**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
-    4.  [**First Name**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
-    5.  [**Last Name**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
-    6.  [**Email**] テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
-    7.  **[保存]** をクリックします。
+    1.  In the **Object Identifier** textbox, type **http://schemas.microsoft.com/identity/claims/objectidentifier**.
+    2.  In the **Username** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    3.  In the **Display Name** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    4.  In the **First Name** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    5.  In the **Last Name** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.
+    6.  In the **Email** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    7.  Click **Save**.
 
-14. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+14. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-airwatch-tutorial/IC791928.png "Configure Single Sign-On")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
 
-Azure AD ユーザーが AirWatch にログインできるようにするには、そのユーザーを AirWatch にプロビジョニングする必要があります。AirWatch の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into AirWatch, they must be provisioned into AirWatch.  
+In the case of AirWatch, provisioning is a manual task.
 
-###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
+###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
 
-1.  **AirWatch** 企業サイトに管理者としてログインします。
+1.  Log in to your **AirWatch** company site as administrator.
 
-2.  左側のナビゲーション ウィンドウで、[**Accounts**]、[**Users**] の順にクリックします。
+2.  In the navigation pane on the left side, click **Accounts**, and then click **Users**.
 
     ![Users](./media/active-directory-saas-airwatch-tutorial/IC791929.png "Users")
 
-3.  [**Users**] メニューで、[**List View**] 、**[Add] > [Add User]** の順にクリックします。
+3.  In the **Users** menu, click **List View**, and then click **Add \> Add User**.
 
-    ![ユーザーの追加](./media/active-directory-saas-airwatch-tutorial/IC791930.png "ユーザーの追加")
+    ![Add User](./media/active-directory-saas-airwatch-tutorial/IC791930.png "Add User")
 
-4.  [**Add / Edit User**] ダイアログで、次の手順を実行します。
+4.  On the **Add / Edit User** dialog, perform the following steps:
 
-    ![ユーザーの追加](./media/active-directory-saas-airwatch-tutorial/IC791931.png "ユーザーの追加")
+    ![Add User](./media/active-directory-saas-airwatch-tutorial/IC791931.png "Add User")
 
-    1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの [**Username**]、[**Password**]、[**Confirm Password**]、[**First Name**]、[**Last Name**]、[**Email Address**] を入力します。
-    2.  [**Save**] をクリックします。
+    1.  Type the **Username**, **Password**, **Confirm Password**, **First Name**, **Last Name**, **Email Address** of a valid Azure Active Directory account you want to provision into the related textboxes.
+    2.  Click **Save**.
 
->[AZURE.NOTE] 他の AirWatch ユーザー アカウントの作成ツールまたは AirWatch から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other AirWatch user account creation tools or APIs provided by AirWatch to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
 
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを AirWatch に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-airwatch,-perform-the-following-steps:"></a>To assign users to AirWatch, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **AirWatch** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **AirWatch **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-airwatch-tutorial/IC791932.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-airwatch-tutorial/IC791932.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-airwatch-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

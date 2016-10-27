@@ -1,50 +1,55 @@
 <properties
-	pageTitle="複数の仮想マシンの作成 | Microsoft Azure"
-	description="Windows で複数の仮想マシンを作成するためのオプション"
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="gbowerman"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Create multiple virtual machines | Microsoft Azure"
+    description="Options for creating multiple virtual machines on Windows"
+    services="virtual-machines-windows"
+    documentationCenter=""
+    authors="gbowerman"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-windows"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/02/2016"
-	ms.author="guybo"/>
+    ms.service="virtual-machines-windows"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="05/02/2016"
+    ms.author="guybo"/>
 
-# 複数の Azure 仮想マシンを作成する
 
-似通った仮想マシンを大量に作成する必要があるシナリオは数多く見られます。例として、ハイパフォーマンス コンピューティング (HPC)、大規模なデータ分析、スケーラブルでステートレスであることが多い中間層またはバックエンド サーバー (Web サーバーなど)、分散データベースなどがあります。
+# <a name="create-multiple-azure-virtual-machines"></a>Create multiple Azure virtual machines
 
-この記事では、Azure で複数の VM を作成するために使用できるオプションについて説明します。これらのオプションは、一連の VM を手動で作成する単純な事例ではありません。多数の VM を作成する必要がある場合、通常使用するプロセスでは、スケールをうまく調整できません。
+There are many scenarios where you need to create a large number of similar virtual machines (VMs). Some examples include high-performance computing (HPC), large-scale data analysis, scalable and often stateless middle-tier or backend servers (such as webservers), and distributed databases.
 
-似通った多数の VM を作成する方法の 1 つは、_リソース ループ_の Azure Resource Manager コンストラクトを使用することです。
+This article discusses the available options to create multiple VMs in Azure. These options go beyond the simple cases where you manually create a series of VMs. To create many VMs, the processes that you typically use don't scale well if you need to create more than a handful of VMs.
 
-## Resource ループ
+One way to create many similar VMs is to use the Azure Resource Manager construct of _resource loops_.
 
-リソース ループは、Azure Resource Manager テンプレート内の構文の簡略記法です。リソース ループは、似通った構成のリソースをループで作成できます。リソース ループを使用して、複数のストレージ アカウント、ネットワーク インターフェイス、または仮想マシンを作成できます。リソース グループの詳細については、「[リソース ループを使用して可用性セット内に VM を作成する](https://azure.microsoft.com/documentation/templates/201-vm-copy-index-loops/)」を参照してください。
+## <a name="resource-loops"></a>Resource loops
 
-## スケールの課題
+Resource loops are a syntactical shorthand in Azure Resource Manager templates. Resource loops can create a set of similarly configured resources in a loop. You can use resource loops to create multiple storage accounts, network interfaces, or virtual machines. For more information about resource loops, refer to [Create VMs in availability sets using resource loops](https://azure.microsoft.com/documentation/templates/201-vm-copy-index-loops/).
 
-リソース ループは、規模に応じたクラウド インフラストラクチャのより簡単な構築とより簡潔なテンプレートの作成を実現しますが、いくつかの課題もあります。たとえば、リソース グループを使用して 100 台の仮想マシンを作成する場合は、ネットワーク インターフェイス コントローラー (NIC) を対応する VM とストレージ アカウントに関連付ける必要があります。VM とストレージ アカウントの数は一致しない可能性があるため、リソース ループの複数のサイズも処理する必要があります。これらは解決可能な問題であるとはいえ、規模に応じて複雑さが大幅に増します。
+## <a name="challenges-of-scale"></a>Challenges of scale
 
-スケールが弾性的に変化するインフラストラクチャが必要な場合は、別の課題が発生します。たとえば、ワークロードに応じて VM の数を自動的に増減させる自動スケール インフラストラクチャが必要な場合です。VM には、さまざまな数 (スケールアウトやスケールイン) に対応する統合されたメカニズムが用意されていません。VM を削除してスケールインする場合、VM を複数の更新ドメインや障害ドメインに分散させて高可用性を保証することは容易ではありません。
+Although resource loops make it easier to build out a cloud infrastructure at scale and produce more concise templates, certain challenges remain. For example, if you use a resource loop to create 100 virtual machines, you need to correlate network interface controllers (NICs) with corresponding VMs and storage accounts. Because the number of VMs is likely to be different from the number of storage accounts, you'll have to deal with different resource loop sizes, too. These are solvable problems, but the complexity increases significantly with scale.
 
-さらに、リソース ループを使用すると、リソースを作成するための複数の呼び出しが基礎となるファブリックに対して行われます。複数の呼び出しで似通ったリソースを作成するとき、Azure には、この設計を改良してデプロイの信頼性とパフォーマンスを最適化するための潜在的なチャンスがあります。ここで、_仮想マシン スケール セット_が登場します。
+Another challenge occurs when you need an infrastructure that scales elastically. For example, you might want an autoscale infrastructure that automatically increases or decreases the number of VMs in response to workload. VMs don't provide an integrated mechanism to vary in number (scale out and scale in). If you scale in by removing VMs, it's difficult to guarantee high availability by making sure that VMs are balanced across update and fault domains.
 
-## 仮想マシン スケール セット
+Finally, when you use a resource loop, multiple calls to create resources go to the underlying fabric. When multiple calls create similar resources, Azure has an implicit opportunity to improve upon this design and optimize deployment reliability and performance. This is where _virtual machine scale sets_ come in.
 
-仮想マシン スケール セットは、同一の VM のセットをデプロイして管理するための Azure Cloud Services リソースです。すべての VM を同一に構成することで、VM スケール セットは、スケールインとスケールアウトを簡単に実行できます。実行するのは、セット内の VM の数を変更するだけです。ワークロードの需要に基づいて VM スケール セットを自動スケールするように構成することもできます。
+## <a name="virtual-machine-scale-sets"></a>Virtual machine scale sets
 
-コンピューティング リソースをスケール アウトしたりスケール インしたりする必要のあるアプリケーションでは、複数の障害ドメインと更新ドメインに対してスケール操作が暗黙的にバランシングされます。
+Virtual machine scale sets are an Azure Cloud Services resource to deploy and manage a set of identical VMs. With all VMs configured the same, VM scale sets are easy to scale in and scale out. You simply change the number of VMs in the set. You can also configure VM scale sets to autoscale based on the demands of the workload.
 
-複数のリソース (NIC、VM など) を関連付ける代わりに、VM スケール セットには一元的に構成できるネットワーク、ストレージ、仮想マシン、および拡張プロパティがあります。
+For applications that need to scale compute resources out and in, scale operations are implicitly balanced across fault and update domains.
 
-VM スケールセットの概要については、[仮想マシン スケール セットの作成に関するページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)を参照してください。詳細な情報については、[仮想マシン スケール セットのドキュメント](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/)を参照してください。
+Instead of correlating multiple resources such as NICs and VMs, a VM scale set has network, storage, virtual machine, and extension properties that you can configure centrally.
 
-<!---HONumber=AcomDC_0518_2016-->
+For an introduction to VM scale sets, refer to the [Virtual machine scale sets product page](https://azure.microsoft.com/services/virtual-machine-scale-sets/). For more detailed information, go to the [Virtual machines scale sets documentation](https://azure.microsoft.com/documentation/services/virtual-machine-scale-sets/).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

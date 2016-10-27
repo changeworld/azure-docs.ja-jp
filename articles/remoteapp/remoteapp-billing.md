@@ -1,7 +1,7 @@
 
 <properties
-    pageTitle="Azure RemoteApp の課金の変更 | Microsoft Azure"
-    description="Azure RemoteApp の課金を停止する方法について説明します。"
+    pageTitle="Change the billing for Azure RemoteApp | Microsoft Azure"
+    description="Learn how to stop being billed for Azure RemoteApp."
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -18,19 +18,23 @@
 
 
 
-# Azure RemoteApp の課金を停止する方法
+
+# <a name="how-to-stop-being-billed-for-azure-remoteapp"></a>How to stop being billed for Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Azure RemoteApp コレクションがある限り、ユーザーを割り当てていなくても、RemoteApp に対して課金されます。この課金を停止するには、すべてのコレクションを削除します。
+As long as you have Azure RemoteApp collections, even with no users assigned, you will be billed for RemoteApp. To stop this billing, delete all of your collections. 
 
-コレクションを削除するには次の手順に従います。
+To delete your collection:
 
-1. Azure クラシック ポータルで、[RemoteApp] ページを開きます。
-2. 削除するコレクションをクリックし、ページの下部にある **[削除]** をクリックします。
-3. サブスクリプション内のコレクションごとにこの手順を繰り返します。
+1. In the Azure classic portal, open the RemoteApp page.
+2. Click the collection you want to delete, and then click **Delete** at the bottom of the page.
+3. Repeat this for each collection in your subscription. 
 
-各コレクションを削除するのに数分かかる場合があります。
+It might take a few minutes to delete each collection.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

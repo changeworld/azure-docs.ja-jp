@@ -1,7 +1,7 @@
 <properties 
-    pageTitle="T-SQL を使用したエラスティック プール内への Azure SQL データベースの作成または移動 | Microsoft Azure" 
-    description="T-SQL を使用してエラスティック プール内に Azure SQL データベースを作成します。または、T-SQL を使用してエラスティック プールにデータベースを移動したり、エラスティック プールからデータベースを移動したりします。" 
-	services="sql-database" 
+    pageTitle="Create or move an Azure SQL database into an elastic pool using T-SQL | Microsoft Azure" 
+    description="Use T-SQL to create an Azure SQL database in an elastic pool. Or use T-SQL to move the datbase in and out of pools." 
+    services="sql-database" 
     documentationCenter="" 
     authors="srinia" 
     manager="jhubbard" 
@@ -16,70 +16,73 @@
     ms.date="05/27/2016"
     ms.author="srinia"/>
 
-# Transact-SQL を使用したエラスティック データベース プールの監視と管理  
+
+# <a name="monitor-and-manage-an-elastic-database-pool-with-transact-sql"></a>Monitor and manage an elastic database pool with Transact-SQL  
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](sql-database-elastic-pool-manage-portal.md)
+- [Azure portal](sql-database-elastic-pool-manage-portal.md)
 - [PowerShell](sql-database-elastic-pool-manage-powershell.md)
 - [C#](sql-database-elastic-pool-manage-csharp.md)
 - [T-SQL](sql-database-elastic-pool-manage-tsql.md)
 
-データベースをエラスティック プールに作成したりエラスティック プールから移動したりするには、[Create Database (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) コマンドと [Alter Database (Azure SQL Database)](https://msdn.microsoft.com/library/mt574871.aspx) コマンドを使います。これらのコマンドを使用する前に、エラスティック プールが存在している必要があります。これらのコマンドは、データベースのみに作用します。T-SQL コマンドを使用して新しいプールを作成したりプールのプロパティ (最小 eDTU、最大 eDTU など) の設定を変更したりすることはできません。
+Use the [Create Database (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) and [Alter Database(Azure SQL Database)](https://msdn.microsoft.com/library/mt574871.aspx) commands to create and move databases into and out of elastic pools. The elastic pool must exist before you can use these commands. These commands affect only databases. Creation of new pools and the setting of pool properties (such as min and max eDTUs) cannot be changed with T-SQL commands.
 
-> [AZURE.NOTE] エラスティック プールは、現在プレビュー段階にある米国中北部とインド西部を除くすべての Azure リージョンで一般公開 (GA) されています。プレビュー段階のリージョンでも、できるだけ早く一般公開される予定です。また、現在のところ、エラスティック プールでは、[インメモリ OLTP またはインメモリ分析](sql-database-in-memory.md)を使用するデータベースをサポートしていません。
+## <a name="create-a-new-database-in-an-elastic-pool"></a>Create a new database in an elastic pool
+Use the CREATE DATABASE command with the SERVICE_OBJECTIVE option.   
 
-## エラスティック プールでの新しいデータベースの作成
-CREATE DATABASE コマンドと共に SERVICE\_OBJECTIVE オプションを使用します。
+    CREATE DATABASE db1 ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3M100] ));
+    -- Create a database named db1 in a pool named S3M100.
 
-	CREATE DATABASE db1 ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3M100] ));
-	-- Create a database named db1 in a pool named S3M100.
-
-エラスティック プール内のすべてのデータベースが、エラスティック プールのサービス レベル (Basic、Standard、Premium) を継承します。
+All databases in an elastic pool inherit the service tier of the elastic pool (Basic, Standard, Premium). 
 
 
-## エラスティック プール間でのデータベースの移動
-ALTER DATABASE コマンドと共に MODIFY を使用します。SERVICE\_OBJECTIVE オプションに ELASTIC\_POOL を設定し、name にターゲット プールの名前を設定します。
+## <a name="move-a-database-between-elastic-pools"></a>Move a database between elastic pools
+Use the ALTER DATABASE command with the MODIFY and set SERVICE\_OBJECTIVE option as ELASTIC\_POOL; set the name to the name of the target pool.
 
-	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [PM125] ));
-	-- Move the database named db1 to a pool named P1M125  
+    ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [PM125] ));
+    -- Move the database named db1 to a pool named P1M125  
 
-## エラスティック プールへのデータベースの移動 
-ALTER DATABASE コマンドと共に MODIFY を使用します。SERVICE\_OBJECTIVE オプションに ELASTIC\_POOL を設定し、name にターゲット プールの名前を設定します。
+## <a name="move-a-database-into-an-elastic-pool"></a>Move a database into an elastic pool 
+Use the ALTER DATABASE command with the MODIFY and set SERVICE\_OBJECTIVE option as ELASTIC_POOL; set the name to the name of the target pool.
 
-	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3100] ));
-	-- Move the database named db1 to a pool named S3100.
+    ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = ELASTIC_POOL (name = [S3100] ));
+    -- Move the database named db1 to a pool named S3100.
 
-## エラスティック プールからのデータベースの移動
-ALTER DATABASE コマンドを使用し、SERVICE\_OBJECTIVE をいずれかのパフォーマンス レベル (S0、S1 など) に設定します。
+## <a name="move-a-database-out-of-an-elastic-pool"></a>Move a database out of an elastic pool
+Use the ALTER DATABASE command and set the SERVICE_OBJECTIVE to one of the performance levels (S0, S1, etc).
 
-	ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = 'S1');
-	-- Changes the database into a stand-alone database with the service objective S1.
+    ALTER DATABASE db1 MODIFY ( SERVICE_OBJECTIVE = 'S1');
+    -- Changes the database into a stand-alone database with the service objective S1.
 
-## エラスティック プール内のデータベースの一覧表示
-エラスティック プール内のデータベースを一覧表示するには、[sys.database\_service \_objectives ビュー](https://msdn.microsoft.com/library/mt712619)を使用します。ビューを照会するためにマスター データベースにログインします。
+## <a name="list-databases-in-an-elastic-pool"></a>List databases in an elastic pool
+Use the [sys.database\_service \_objectives view](https://msdn.microsoft.com/library/mt712619) to list all the databases in an elastic pool. Log in to the master database to query the view.
 
-	SELECT d.name, slo.*  
-	FROM sys.databases d 
-	JOIN sys.database_service_objectives slo  
-	ON d.database_id = slo.database_id
-	WHERE elastic_pool_name = 'MyElasticPool'; 
+    SELECT d.name, slo.*  
+    FROM sys.databases d 
+    JOIN sys.database_service_objectives slo  
+    ON d.database_id = slo.database_id
+    WHERE elastic_pool_name = 'MyElasticPool'; 
 
-## プールのリソース使用状況データを取得する
+## <a name="get-resource-usage-data-for-a-pool"></a>Get resource usage data for a pool
 
-論理サーバーのエラスティック プールのリソース使用量の統計を確認するには、[sys.elastic\_pool \_resource \_stats ビュー](https://msdn.microsoft.com/library/mt280062.aspx)を使用します。ビューを照会するためにマスター データベースにログインします。
+Use the [sys.elastic\_pool \_resource \_stats view](https://msdn.microsoft.com/library/mt280062.aspx) to examine the resource usage statistics of an elastic pool on a logical server. Log in to the master database to query the view.
 
-	SELECT * FROM sys.elastic_pool_resource_stats 
-	WHERE elastic_pool_name = 'MyElasticPool'
-	ORDER BY end_time DESC;
+    SELECT * FROM sys.elastic_pool_resource_stats 
+    WHERE elastic_pool_name = 'MyElasticPool'
+    ORDER BY end_time DESC;
 
-## Elastic Database のリソース使用状況を取得する
+## <a name="get-resource-usage-for-an-elastic-database"></a>Get resource usage for an elastic database
 
-エラスティック プール内のデータベースのリソース使用量の統計を確認するには、[sys.dm\_ db\_ resource\_stats ビュー](https://msdn.microsoft.com/library/dn800981.aspx)または [sys.resource \_stats ビュー](https://msdn.microsoft.com/library/dn269979.aspx)を使用します。このプロセスは、任意の 1 つのデータベースのリソース使用量を照会する操作に似ています。
+Use the [sys.dm\_ db\_ resource\_stats view](https://msdn.microsoft.com/library/dn800981.aspx) or [sys.resource \_stats view](https://msdn.microsoft.com/library/dn269979.aspx) to examine the resource usage statistics of a database in an elastic pool. This process is similar to querying resource usage for any single database.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-エラスティック データベース プールを作成した後は、エラスティック ジョブを作成してプール内のエラスティック データベース を管理できます。エラスティック ジョブはプールのデータベースの任意の数に対して T-SQL スクリプトの実行を容易にします。詳細については、「[エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」をご覧ください。
+After creating an elastic database pool, you can manage elastic databases in the pool by creating elastic jobs. Elastic jobs facilitate running T-SQL scripts against any number of databases in the pool. For more information, see [Elastic database jobs overview](sql-database-elastic-jobs-overview.md). 
 
-Elastic Database のツールを使用してスケールアウト、データの移動、クエリ、トランザクションの作成を行う方法については、「[Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)」を参照してください。
+See [Scaling out with Azure SQL Database](sql-database-elastic-scale-introduction.md): use elastic database tools to scale-out, move data, query, or create transactions.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

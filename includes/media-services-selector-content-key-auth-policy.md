@@ -4,4 +4,6 @@
 - [REST API](../articles/media-services/media-services-rest-configure-content-key-auth-policy.md)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 
-<!---HONumber=Oct15_HO3-->
+<!--HONumber=Oct16_HO2-->
+
+

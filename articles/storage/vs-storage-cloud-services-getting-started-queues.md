@@ -1,122 +1,123 @@
 <properties
-    pageTitle="キュー ストレージと Visual Studio 接続済みサービスの概要 (クラウド サービス) | Microsoft Azure"
-	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio のクラウド サービス プロジェクトで Azure キュー ストレージの使用を開始する方法について説明します。"
-	services="storage"
-	documentationCenter=""
-	authors="TomArcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Get started with queue storage and Visual Studio connected services (cloud services) | Microsoft Azure"
+    description="How to get started using Azure Queue storage in a cloud service project in Visual Studio after connecting to a storage account using Visual Studio connected services"
+    services="storage"
+    documentationCenter=""
+    authors="TomArcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="storage"
-	ms.workload="web"
-	ms.tgt_pltfrm="vs-getting-started" 
-	ms.devlang="na"
-	ms.topic="article"
+    ms.service="storage"
+    ms.workload="web"
+    ms.tgt_pltfrm="vs-getting-started" 
+    ms.devlang="na"
+    ms.topic="article"
     ms.date="07/18/2016"
-	ms.author="tarcher"/>
+    ms.author="tarcher"/>
 
-# Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Cloud Services プロジェクト)
+
+# <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-(cloud-services-projects)"></a>Getting started with Azure Queue storage and Visual Studio connected services (cloud services projects)
 
 [AZURE.INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## 概要
+## <a name="overview"></a>Overview
 
-この記事では、Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Cloud Services プロジェクトで Azure ストレージ アカウントを作成または参照した後に、Visual Studio で Azure キュー ストレージの使用を開始する方法について説明します。
+This article describes how to get started using Azure Queue storage in Visual Studio after you have created or referenced an Azure storage account in a cloud services project by using the  Visual Studio **Add Connected Services** dialog.
 
-コードでキューを作成する方法を説明します。また、キュー メッセージの追加、変更、読み取り、削除などの基本的なキュー操作を実行する方法についても説明します。サンプルは C# コードで記述され、[.NET 用 Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)を使用しています。
+We'll show you how to create a queue in code. We'll also show you how to perform basic queue operations, such as adding, modifying, reading and removing queue messages. The samples are written in C# code and use the [Microsoft Azure Storage Client Library for .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
-**接続済みサービスの追加**操作によって、プロジェクト内の Azure ストレージにアクセスする適切な NuGet パッケージがインストールされ、プロジェクトの構成ファイルに、ストレージ アカウントの接続文字列が追加されます。
+The **Add Connected Services** operation installs the appropriate NuGet packages to access Azure storage in your project and adds the connection string for the storage account to your project configuration files.
 
- - コードでキューを操作する方法の詳細については、「[.NET を使用して Azure Queue Storage を使用する](storage-dotnet-how-to-use-queues.md)」をご覧ください。
- - Azure Storage の一般情報については、「[ストレージのドキュメント](https://azure.microsoft.com/documentation/services/storage/)」を参照してください。
- - Azure Cloud Services の一般情報については、「[Cloud Services のドキュメント](https://azure.microsoft.com/documentation/services/cloud-services/)」を参照してください。
- - ASP.NET アプリケーションのプログラミングについての詳細は、「[ASP.NET](http://www.asp.net)」をご覧ください。
-
-
-Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。
+ - See [Get started with Azure Queue storage using .NET](storage-dotnet-how-to-use-queues.md) for more information on manipulating queues in code.
+ - See [Storage documentation](https://azure.microsoft.com/documentation/services/storage/) for general information about Azure Storage.
+ - See [Cloud Services documentation](https://azure.microsoft.com/documentation/services/cloud-services/) for general information about Azure cloud services.
+ - See [ASP.NET](http://www.asp.net) for more information about programming ASP.NET applications.
 
 
-## コードでキューにアクセスする
-
-Visual Studio Cloud Services プロジェクトでキューにアクセスするには、Azure キュー ストレージにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
-
-1. C# ファイル冒頭の名前空間宣言に、次の **using** ステートメントが含まれていることをご確認ください。
-
-		using Microsoft.Framework.Configuration;
-		using Microsoft.WindowsAzure.Storage;
-		using Microsoft.WindowsAzure.Storage.Queue;
-
-2. ストレージ アカウント情報を表す **CloudStorageAccount** オブジェクトを取得します。次のコードを使用して、Azure サービス構成からストレージ接続文字列とストレージ アカウント情報を取得できます。
-
-		 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-		   CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-
-3. ストレージ アカウント内のキュー オブジェクトを参照する **CloudQueueClient** オブジェクトを取得します。
-
-	    // Create the queue client.
-    	CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-
-4. 特定のキューを参照する **CloudQueue** オブジェクトを取得します。
-
-    	// Get a reference to a queue named "messageQueue"
-	    CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
+Azure Queue storage is a service for storing large numbers of messages that can be accessed from anywhere in the world via authenticated calls using HTTP or HTTPS. A single queue message can be up to 64 KB in size, and a queue can contain millions of messages, up to the total capacity limit of a storage account.
 
 
-**注:** 上記のコードはすべて、以下の例に示すコードの前に使用してください。
+## <a name="access-queues-in-code"></a>Access queues in code
 
-## コードでキューを作成する
+To access queues in Visual Studio Cloud Services projects, you need to include the following items to any C# source file that access Azure Queue storage.
 
-コードでキューが作成するには、**CreateIfNotExists** に呼び出しを追加します。
+1. Make sure the namespace declarations at the top of the C# file include these **using** statements.
 
-	// Create the CloudQueue if it does not exist
-	messageQueue.CreateIfNotExists();
+        using Microsoft.Framework.Configuration;
+        using Microsoft.WindowsAzure.Storage;
+        using Microsoft.WindowsAzure.Storage.Queue;
 
-## メッセージをキューに追加する
+2. Get a **CloudStorageAccount** object that represents your storage account information. Use the following code to get the your storage connection string and storage account information from the Azure service configuration.
 
-既存のキューにメッセージを挿入するには、新しい **CloudQueueMessage** オブジェクトを作成した後、**AddMessage** メソッドを呼び出します。
+         CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+           CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
 
-**CloudQueueMessage** オブジェクトは、文字列 (UTF-8 形式) またはバイト配列から作成できます。
+3. Get a **CloudQueueClient** object to reference the queue objects in your storage account.  
 
-次の例では、'Hello, World' というメッセージを挿入します。
+        // Create the queue client.
+        CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-	// Create a message and add it to the queue.
-	CloudQueueMessage message = new CloudQueueMessage("Hello, World");
-	messageQueue.AddMessage(message);
+4. Get a **CloudQueue** object to reference a specific queue.
 
-## キュー内のメッセージを読み取る
+        // Get a reference to a queue named "messageQueue"
+        CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**PeekMessage** メソッドを呼び出すと、キューの先頭にあるメッセージをキューから削除せずにピークできます。
 
-	// Peek at the next message
+**NOTE:** Use all of the above code in front of the code in the following samples.
+
+## <a name="create-a-queue-in-code"></a>Create a queue in code
+
+To create the queue in code, just add a call to **CreateIfNotExists**.
+
+    // Create the CloudQueue if it does not exist
+    messageQueue.CreateIfNotExists();
+
+## <a name="add-a-message-to-a-queue"></a>Add a message to a queue
+
+To insert a message into an existing queue, create a new **CloudQueueMessage** object, then call the **AddMessage** method.
+
+A **CloudQueueMessage** object can be created from either a string (in UTF-8 format) or a byte array.
+
+Here is an example which inserts the message 'Hello, World'.
+
+    // Create a message and add it to the queue.
+    CloudQueueMessage message = new CloudQueueMessage("Hello, World");
+    messageQueue.AddMessage(message);
+
+## <a name="read-a-message-in-a-queue"></a>Read a message in a queue
+
+You can peek at the message in the front of a queue without removing it from the queue by calling the **PeekMessage** method.
+
+    // Peek at the next message
     CloudQueueMessage peekedMessage = messageQueue.PeekMessage();
 
-## キュー内のメッセージを読み取って削除する
+## <a name="read-and-remove-a-message-in-a-queue"></a>Read and remove a message in a queue
 
-コードでは、2 つの手順でキューからメッセージを削除 (デキュー) できます。
+Your code can remove (de-queue) a message from a queue in two steps.
 
-1. **GetMessage** を呼び出すと、キュー内の次のメッセージが取得されます。**GetMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。既定では、このメッセージを参照できない状態は 30 秒間続きます。
-2.	また、キューからのメッセージの削除を完了するには、**DeleteMessage** を呼び出します。
+1. Call **GetMessage** to get the next message in a queue. A message returned from **GetMessage** becomes invisible to any other code reading messages from this queue. By default, this message stays invisible for 30 seconds.
+2.  To finish removing the message from the queue, call **DeleteMessage**.
 
-このようにメッセージを 2 つの手順で削除することで、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合に、コードの別のインスタンスで同じメッセージを取得し、もう一度処理することができます。次のコードでは、メッセージが処理された直後に **DeleteMessage** を呼び出します。
+This two-step process of removing a message assures that if your code fails to process a message due to hardware or software failure, another instance of your code can get the same message and try again. The following code calls **DeleteMessage** right after the message has been processed.
 
-	// Get the next message in the queue.
-	CloudQueueMessage retrievedMessage = messageQueue.GetMessage();
+    // Get the next message in the queue.
+    CloudQueueMessage retrievedMessage = messageQueue.GetMessage();
 
-	// Process the message in less than 30 seconds
+    // Process the message in less than 30 seconds
 
-	// Then delete the message.
-	await messageQueue.DeleteMessage(retrievedMessage);
+    // Then delete the message.
+    await messageQueue.DeleteMessage(retrievedMessage);
 
 
-## オプションを追加してキュー メッセージを処理および削除する
+## <a name="use-additional-options-to-process-and-remove-queue-messages"></a>Use additional options to process and remove queue messages
 
-キューからのメッセージの取得をカスタマイズする方法は 2 つあります。
+There are two ways you can customize message retrieval from a queue.
 
- - メッセージのバッチを取得できます (最大 32 個)。
- - コードで各メッセージを完全に処理できるように、非表示タイムアウトの設定を長くまたは短くすることができます。次のコード例では、**GetMessages** メソッドを使用して、1 回の呼び出しで 20 個のメッセージを取得します。その後、**foreach** ループを使用して、各メッセージを処理します。また、各メッセージの非表示タイムアウトを 5 分に設定します。この 5 分の非表示期間は、すべてのメッセージに対して同時に開始します。そのため、**GetMessages** の呼び出しから 5 分が経過すると、削除されていないすべてのメッセージが再び表示されます。
+ - You can get a batch of messages (up to 32).
+ - You can set a longer or shorter invisibility timeout, allowing your code more or less time to fully process each message. The following code example uses the **GetMessages** method to get 20 messages in one call. Then it processes each message using a **foreach** loop. It also sets the invisibility timeout to five minutes for each message. Note that the 5 minutes starts for all messages at the same time, so after 5 minutes have passed since the call to **GetMessages**, any messages which have not been deleted will become visible again.
 
-次に例を示します。
+Here's an example:
 
     foreach (CloudQueueMessage message in messageQueue.GetMessages(20, TimeSpan.FromMinutes(5)))
     {
@@ -127,22 +128,22 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
 
     }
 
-## キューの長さを取得する
+## <a name="get-the-queue-length"></a>Get the queue length
 
-キュー内のメッセージの概数を取得できます。**FetchAttributes** メソッドは、メッセージ数などのキューの属性を取得するようキュー サービスに要求します。**ApproximateMethodCount** プロパティは、キュー サービスを呼び出さずに、**FetchAttributes** メソッドによって取得された最後の値を返します。
+You can get an estimate of the number of messages in a queue. The **FetchAttributes** method asks the Queue service to retrieve the queue attributes, including the message count. The **ApproximateMethodCount** property returns the last value retrieved by the **FetchAttributes** method, without calling the Queue service.
 
-	// Fetch the queue attributes.
-	messageQueue.FetchAttributes();
+    // Fetch the queue attributes.
+    messageQueue.FetchAttributes();
 
     // Retrieve the cached approximate message count.
     int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 
-	// Display number of messages.
-	Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
+    // Display number of messages.
+    Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
-## Async-Await パターンを一般的な Azure Queue API で使用する
+## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Use the Async-Await Pattern with common Azure Queue APIs
 
-この例では、Async-Await パターンを一般的な Azure Queue API で使用する方法を示します。このサンプルは、特定のメソッドの非同期バージョンをそれぞれ呼び出しています。これは、各メソッドの **Async** 接尾辞によって確認できます。非同期のメソッドを使用するとき、async-await パターンは、呼び出しが完了するまでローカルでの実行を中断します。この動作により、現在のスレッドで別の作業を実行できるようになるため、パフォーマンスのボトルネックを回避し、アプリケーションの全体的な応答性が向上させることができます。.NET での Async-Await パターンの使用方法の詳細については、[Async と Await (C# と Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) に関するページを参照してください。
+This example shows how to use the Async-Await pattern with common Azure Queue APIs. The sample calls the async version of each of the given methods, this can be seen by the **Async** post-fix of each method. When an async method is used the async-await pattern suspends local execution until the call completes. This behavior allows the current thread to do other work which helps avoid performance bottlenecks and improves the overall responsiveness of your application. For more details on using the Async-Await pattern in .NET see [Async and Await (C# and Visual Basic)] (https://msdn.microsoft.com/library/hh191443.aspx)
 
     // Create a message to put in the queue
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
@@ -159,15 +160,19 @@ Visual Studio Cloud Services プロジェクトでキューにアクセスする
     await messageQueue.DeleteMessageAsync(retrievedMessage);
     Console.WriteLine("Deleted message");
 
-## キューを削除する
+## <a name="delete-a-queue"></a>Delete a queue
 
-キューおよびキューに格納されているすべてのメッセージを削除するには、キュー オブジェクトの **Delete** メソッドを呼び出します。
+To delete a queue and all the messages contained in it, call the **Delete** method on the queue object.
 
     // Delete the queue.
     messageQueue.Delete();
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
 [AZURE.INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

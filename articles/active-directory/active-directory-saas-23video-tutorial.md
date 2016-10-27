@@ -1,267 +1,273 @@
 <properties
-	pageTitle="チュートリアル: Azure Active Directory と 23 Video の統合 | Microsoft Azure"
-	description="Azure Active Directory と 23 Video の間でシングル サインオンを構成する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with 23 Video | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and 23 Video."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/05/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/24/2016"
+    ms.author="jeedes"/>
 
 
-# チュートリアル: Azure Active Directory と 23 Video の統合
 
-このチュートリアルの目的は、23 Video と Azure Active Directory (Azure AD) を統合する方法を説明することです。23 Video と Azure AD の統合には、次の利点があります。
+# <a name="tutorial:-azure-active-directory-integration-with-23-video"></a>Tutorial: Azure Active Directory integration with 23 Video
 
-- 23 Video にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に 23 Video にサインオン (シングル サインオン) できるようにします。
+The objective of this tutorial is to show you how to integrate 23 Video with Azure Active Directory (Azure AD).  
+Integrating 23 Video with Azure AD provides you with the following benefits: 
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+- You can control in Azure AD who has access to 23 Video 
+- You can enable your users to automatically get signed-on to 23 Video (Single Sign-On) with their Azure AD accounts
 
-## 前提条件 
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-23 Video と Azure AD の統合を構成するには、次のものが必要です。
+## <a name="prerequisites"></a>Prerequisites 
 
-- Azure AD サブスクリプション
-- 23 Video でのシングル サインオンが有効なサブスクリプション
+To configure Azure AD integration with 23 Video, you need the following items:
+
+- An Azure AD subscription
+- A 23 Video single-sign on enabled subscription
 
 
-> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
+To test the steps in this tutorial, you should follow these recommendations:
 
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/). 
 
  
-## シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+## <a name="scenario-description"></a>Scenario Description
+The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
+The scenario outlined in this tutorial consists of two main building blocks:
 
-1. ギャラリーからの 23 Video の追加
-2. Azure AD シングル サインオンの構成とテスト
+1. Adding 23 Video from the gallery 
+2. Configuring and testing Azure AD single sign-on
 
 
-## ギャラリーからの 23 Video の追加
-Azure AD への 23 Video の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に 23 Video を追加する必要があります。
+## <a name="adding-23-video-from-the-gallery"></a>Adding 23 Video from the gallery
+To configure the integration of 23 Video into Azure AD, you need to add 23 Video from the gallery to your list of managed SaaS apps.
 
-**ギャラリーから 23 Video を追加するには、次の手順に従います。**
+**To add 23 Video from the gallery, perform the following steps:**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
 
-	![Active Directory][1]
+    ![Active Directory][1]
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
 
-	![アプリケーション][2]
+    ![Applications][2]
 
-4. ページの下部にある **[追加]** をクリックします。
+4. Click **Add** at the bottom of the page.
 
-	![アプリケーション][3]
+    ![Applications][3]
 
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-	![アプリケーション][4]
+    ![Applications][4]
 
-6. 検索ボックスに、「**23 Video**」と入力します。
+6. In the search box, type **23 Video**.
 
-	![アプリケーション][5]
+    ![Applications][5]
 
-7. 結果ウィンドウで **[23 Video]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7. In the results pane, select **23 Video**, and then click **Complete** to add the application.
 
-	![アプリケーション][25]
+    ![Applications][25]
 
-##  Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、23 Video で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+The objective of this section is to show you how to configure and test Azure AD single sign-on with 23 Video based on a test user called "Britta Simon".
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する 23 Video ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと 23 Video の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、23 Video の **[Username]** の値として割り当てることで確立されます。
+For single sign-on to work, Azure AD needs to know what the counterpart user in 23 Video to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in 23 Video needs to be established.  
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in 23 Video.
  
-23 Video で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+To configure and test Azure AD single sign-on with 23 Video, you need to complete the following building blocks:
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[ 23 Video のテスト ユーザーの作成](#creating-a-23-video-test-user)** - 23 Video で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+4. **[Creating a 23 Video test user](#creating-a-23-video-test-user)** - to have a counterpart of Britta Simon in 23 Video that is linked to the Azure AD representation of her.
+5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-### Azure AD シングル サインオンの構成
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
 
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、23 Video アプリケーションでシングル サインオンを構成することです。
+The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your 23 Video application.
 
-**23 Video で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**To configure Azure AD single sign-on with 23 Video, perform the following steps:**
 
-1. Azure クラシック ポータルの **23 Video** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1. In the Azure classic portal, on the **23 Video** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
 
-	![Configure Single Sign-On][6]
+    ![Configure Single Sign-On][6] 
 
-2. **[ユーザーの 23 Video へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2. On the **How would you like users to sign on to 23 Video** page, select **Azure AD Single Sign-On**, and then click **Next**.
 
-	![Azure AD Single Sign-On][7]
+    ![Azure AD Single Sign-On][7] 
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+3. On the **Configure App Settings** dialog page, perform the following steps:
 
-	![Azure AD Single Sign-On][8]
+    ![Azure AD Single Sign-On][8] 
  
-     a.**[応答 URL]** ボックスに、ユーザーが 23 Video サイトへのサインオンに使用する URL を入力します (例: *https://britta-simon.23Video.com/saml/login*)。
+     a. In the **Reply URL** textbox, type the URL used by your users to sign-on to your 23 Video site (e.g.: *https://britta-simon.23Video.com/saml/login*).
 
-     > [AZURE.NOTE] SAML 2.0 を使用した Active Directory の統合は、23 Video のすべてのユーザーが使用できます。関連するメタデータが必要な場合は、サポート ([support@23company.com](mailto:support@23company.com)) にお問い合わせください。
+     > [AZURE.NOTE] Active Directory integration using SAML 2.0 is available for all 23 Video users. Please contact the Support at [support@23company.com](mailto:support@23company.com) if you need the related metadata.
 
-     b.**[次へ]** をクリックします。
+     b. Click **Next**.
  
-4. **[23 Video でのシングル サインオンの構成]** ページで、次のステップを実行します。
+4. On the **Configure single sign-on at 23 Video** page, perform the following steps:
 
-	![Azure AD Single Sign-On][9]
+    ![Azure AD Single Sign-On][9] 
 
-    a.[証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。
+    a. Click Download certificate, and then save the file on your computer.
 
-    b.23 Video サポート チーム ([support@23company.com](mailto:support@23company.com)) に連絡して、ダウンロードした証明書、**発行者の URL**、**シングル サインオン サービス URL**、**シングル サインアウト URL** を提供し、23 Video アプリの SSO のセットアップを依頼します。
+    b. Contact your 23 Video support team via [support@23company.com](mailto:support@23company.com), provide them with the downloaded certificate, the **Issuer URL**, the **Single Sign-On Service URL**, the **Single Sign-Out URL**, and then ask them to setup SSO for your 23 Video app. 
 
-    c.**[次へ]** をクリックします。
+    c. Click **Next**.
 
 
-6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+6. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**. 
 
-	![Azure AD Single Sign-On][10]
+    ![Azure AD Single Sign-On][10]
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+7. On the **Single sign-on confirmation** page, click **Complete**.  
   
-	![Azure AD Single Sign-On][11]
+    ![Azure AD Single Sign-On][11]
 
 
 
 
-### Azure AD のテスト ユーザーの作成
-このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
 
-![Azure AD ユーザーの作成][20]
+![Create Azure AD User][20]
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+**To create a test user in Azure AD, perform the following steps:**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_09.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-23video-tutorial/create_aaduser_09.png)  
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
+3. To display the list of users, in the menu on the top, click **Users**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_03.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-23video-tutorial/create_aaduser_03.png) 
  
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**. 
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_04.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-23video-tutorial/create_aaduser_04.png) 
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
+5. On the **Tell us about this user** dialog page, perform the following steps: 
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_05.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-23video-tutorial/create_aaduser_05.png)  
 
-    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. As Type Of User, select New user in your organization.
 
-    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-    c.**[次へ]** をクリックします。
+    c. Click **Next**.
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
+6.  On the **User Profile** dialog page, perform the following steps: 
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_06.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-23video-tutorial/create_aaduser_06.png) 
  
-    a.**[名]** ボックスに「**Britta**」と入力します。
+    a. In the **First Name** textbox, type **Britta**.  
 
-    b.**[姓]** ボックスに「**Simon**」と入力します。
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
+    d. In the **Role** list, select **User**.
+    e. Click **Next**.
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
+7. On the **Get temporary password** dialog page, click **create**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-23video-tutorial/create_aaduser_07.png) 
  
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+8. On the **Get temporary password** dialog page, perform the following steps:
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-23video-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-23video-tutorial/create_aaduser_08.png) 
   
-    a.**[新しいパスワード]** の値を書き留めます。
+    a. Write down the value of the **New Password**.
 
-    b.**[完了]** をクリックします。
+    b. Click **Complete**.   
 
   
  
-### 23 Video テスト ユーザーの作成
+### <a name="creating-a-23-video-test-user"></a>Creating a 23 Video test user
 
-このセクションの目的は、23 Video で Britta Simon というユーザーを作成することです。
+The objective of this section is to create a user called Britta Simon in 23 Video.
 
-**23 Video で Britta Simon というユーザーを作成するには、次の手順に従います。**
+**To create a user called Britta Simon in 23 Video, perform the following steps:**
 
-1. 23 Video 企業サイトに管理者としてサインオンします。
+1. Sign on to your 23 Video company site as administrator.
 
-1. **[Settings]** に移動します。
-
-
-2. **[Users (ユーザー)]** セクションで **[Configure (構成)]** をクリックします。
-
-	![ユーザーの割り当て][400]
-
-3. **[Add a new user (新しいユーザーの追加)]** をクリックします。
-
-	![ユーザーの割り当て][401]
-
-4. **[Invite someone to join this site (別のユーザーをこのサイトに招待)]** セクションで、次の手順を実行します。
-
-	![ユーザーの割り当て][402]
-
-    a.**[E-mail addresses]** ボックスに、Azure AD の Britta Simon の電子メール アドレスを入力します。
-
-    b.**[Add the user]** をクリックします。
+1. Go to **Settings**.
 
 
-### Azure AD テスト ユーザーの割り当て
+2. In **Users** section, click **Configure**.
 
-このセクションの目的は、Britta Simon に 23 Video へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+    ![Assign User][400]
 
-![ユーザーの割り当て][200]
+3. Click **Add a new user**. 
 
-**23 Video に Britta Simon を割り当てるには、次の手順に従います。**
+    ![Assign User][401]
 
-1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+4. In the **Invite someone to join this site** section, perform the following steps:
 
-	![ユーザーの割り当て][201]
+    ![Assign User][402]
 
-2. アプリケーションの一覧で **[23 Video]** を選択します。
+    a. In the **E-mail addresses** textbox, type Britta Simon's email address in Azure AD.
 
-	![ユーザーの割り当て][202]
-
-1. 上部のメニューで **[ユーザー]** をクリックします。
-
-	![ユーザーの割り当て][203]
-
-1. ユーザーの一覧で **[Britta Simon]** を選択します。
-
-2. 下部にあるツール バーで **[割り当て]** をクリックします。
-
-	![ユーザーの割り当て][205]
+    b. Click **Add the user**.   
 
 
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-### シングル サインオンのテスト
+The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to 23 Video.
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで [23 Video] タイルをクリックすると、自動的に 23 Video アプリケーションにサインオンします。
+![Assign User][200] 
+
+**To assign Britta Simon to 23 Video, perform the following steps:**
+
+1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+
+    ![Assign User][201] 
+
+2. In the applications list, select **23 Video**.
+
+    ![Assign User][202] 
+
+1. In the menu on the top, click **Users**.
+
+    ![Assign User][203] 
+
+1. In the Users list, select **Britta Simon**.
+
+2. In the toolbar on the bottom, click **Assign**.
+
+    ![Assign User][205]
 
 
-## その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+
+The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
+When you click the 23 Video tile in the Access Panel, you should get automatically signed-on to your 23 Video application.
+
+
+## <a name="additional-resources"></a>Additional Resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -291,4 +297,12 @@ Azure AD への 23 Video の統合を構成するには、ギャラリーから�
 [401]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_11.png
 [402]: ./media/active-directory-saas-23video-tutorial/tutorial_23video_12.png
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

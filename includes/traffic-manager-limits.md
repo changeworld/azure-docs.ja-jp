@@ -1,8 +1,10 @@
-リソース| 既定の制限
+Resource| Default limit
 ---|---
-サブスクリプションあたりのプロファイル数 | 100 <sup>1</sup>
-プロファイルあたりのエンドポイント数| 200
+Profiles per subscription | 100 <sup>1</sup>
+Endpoints per profile| 200
 
-<sup>1</sup> これらの制限値を大きくする必要がある場合は、サポートにお問い合せください。
+<sup>1</sup>Contact support in case you need to increase these limits.
 
-<!---HONumber=Nov15_HO1-->
+<!--HONumber=Oct16_HO2-->
+
+

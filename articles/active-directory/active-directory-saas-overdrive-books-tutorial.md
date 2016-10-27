@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と OverDrive Books の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Overdrive Books を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Overdrive Books | Microsoft Azure" 
+    description="Learn how to use Overdrive Books with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,106 +11,112 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/08/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と OverDrive Books の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-overdrive-books"></a>Tutorial: Azure Active Directory integration with Overdrive Books
   
-このチュートリアルの目的は、Azure と OverDrive の統合を紹介することです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and OverDrive.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   OverDrive でのシングル サインオンが有効なサブスクリプション
+-   A valid Azure subscription
+-   An OverDrive single sign-on enabled subscription
   
-このチュートリアルを完了すると、OverDrive に割り当てた Azure AD ユーザーは、OverDrive 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to OverDrive will be able to single sign into the application at your OverDrive company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  OverDrive のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for OverDrive
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-overdrive-books-tutorial/IC784462.png "シナリオ")
-##OverDrive のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-overdrive-books-tutorial/IC784462.png "Scenario")
+##<a name="enabling-the-application-integration-for-overdrive"></a>Enabling the application integration for OverDrive
   
-このセクションでは、OverDrive のアプリケーション統合を有効にする方法について説明します。
+The objective of this section is to outline how to enable the application integration for OverDrive.
 
-###OverDrive のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-overdrive,-perform-the-following-steps:"></a>To enable the application integration for OverDrive, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-overdrive-books-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-overdrive-books-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-overdrive-books-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-overdrive-books-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-overdrive-books-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-overdrive-books-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-overdrive-books-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **[検索ボックス]** に、「**OverDrive**」と入力します。
+6.  In the **search box**, type **OverDrive**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-overdrive-books-tutorial/IC784463.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-overdrive-books-tutorial/IC784463.png "Application Gallery")
 
-7.  結果ウィンドウで **[OverDrive]** を選び、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **OverDrive**, and then click **Complete** to add the application.
 
     ![OverDrive](./media/active-directory-saas-overdrive-books-tutorial/IC799950.png "OverDrive")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで OverDrive に対する認証を行えるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to OverDrive with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **OverDrive** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **OverDrive** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Enable single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784465.png "Enable single sign-on")
 
-2.  **[ユーザーの OverDrive へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選び、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to OverDrive** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784466.png "Configure single sign-on")
 
-3.  **[Configure App URL]** (アプリケーション URL の構成) ページの **[OverDrive サインイン URL]** テキストボックスに、"*http://mslibrarytest.libraryreserve.com*"* というパターンの URL を入力して、*[次へ]* をクリックします。
+3.  On the **Configure App URL** page, in the **OverDrive Sign In URL** textbox, type your URL using the following pattern "*http://mslibrarytest.libraryreserve.com*", and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-overdrive-books-tutorial/IC784467.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-overdrive-books-tutorial/IC784467.png "Configure App URL")
 
-4.  **[OverDrive でのシングル サインオン構成]** ページで、メタデータ ファイルをダウンロードし、OverDrive サポート チームに送信します。
+4.  On the **Configure single sign-on at OverDrive** page, to download the metadata file, and then send it to the OverDrive support team.
 
     ![Configure single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784468.png "Configure single sign-on")
 
-    >[AZURE.NOTE]OverDrive サポート チームはシングル サインオンを構成し、構成の完了時に通知を送信します。
+    >[AZURE.NOTE]The OverDrive support team configures single sign-on for you and sends you a notification when the configuration has been completed.
 
-5.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+5.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
-    ![Configure single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784469.png "シングル サインオンの構成")
-##ユーザー プロビジョニングの構成
+    ![Configure single sign-on](./media/active-directory-saas-overdrive-books-tutorial/IC784469.png "Configure single sign-on")
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-OverDrive へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられているユーザーが OverDrive にログインしようとすると、必要に応じて OverDrive アカウントが自動的に作成されます。
+There is no action item for you to configure user provisioning to OverDrive.  
+When an assigned user tries to log into OverDrive, an OverDrive account is automatically created if necessary.
 
->[AZURE.NOTE]OverDrive から提供されている他の OverDrive ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE]You can use any other OverDrive user account creation tools or APIs provided by OverDrive to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを OverDrive に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-overdrive,-perform-the-following-steps:"></a>To assign users to OverDrive, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **OverDrive** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **OverDrive **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-overdrive-books-tutorial/IC784470.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-overdrive-books-tutorial/IC784470.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-overdrive-books-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

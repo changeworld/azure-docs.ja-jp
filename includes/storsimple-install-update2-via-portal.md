@@ -1,49 +1,52 @@
 <!--author=alkohli last changed: 03/17/16-->
 
-#### Azure ポータルから 更新プログラムをインストールするには
+#### <a name="to-install-an-update-from-the-azure-portal"></a>To install an update from the Azure portal
 
-1. StorSimple サービス ページでデバイスを選択します。**[デバイス]**、**[メンテナンス]** の順にクリックします。
+1. On the StorSimple service page, select your device. Navigate to **Devices** > **Maintenance**.
 
-2. ページの下部にある **[更新プログラムのスキャン]** をクリックします。利用可能な更新プログラムをスキャンするジョブが作成されます。このジョブが正常に完了すると、通知されます。
+2. At the bottom of the page, click **Scan Updates**. A job will be created to scan for available updates. You will be notified when the job has completed successfully.
 
-3. 同じページの **[ソフトウェア更新プログラム]** セクションで、新しいソフトウェア更新プログラムを利用できることがわかります。更新プログラムをデバイスに適用する前に、リリース ノートを確認することをお勧めします。
+3. In the **Software Updates** section on the same page, you will see that new software updates are available. We recommend that you review the release notes before you apply an update on your device.
 
-4. ページの下部にある **[更新プログラムのインストール]** をクリックし、**[OK]** をクリックします。
+4. At the bottom of the page, click **Install Updates**, and then **OK**.
 
-5. **[更新プログラムのインストール]** ダイアログ ボックスで、推奨事項に従っていることを確認し、 **[上記の要件を理解し、デバイスをアップグレードする準備ができました]** を選択し、チェック ボタンをクリックします。
+5. In the **Install updates** dialog box, make sure that you've followed the recommendations, then select **I understand the above requirement and am ready to upgrade my device** and click the check button.
 
     ![Confirmation message](./media/storsimple-install-update2-via-portal/InstallUpdate12_2M.png)
 
-7. 一連の前提条件のチェックが開始されます。チェックの内容は次のとおりです
+7. A set of prerequisite checks will now start. These include:
 
-	- **コントローラーの正常性チェック**では、両方のデバイス コントローラーが正常であり、オンラインであることを確認します。
+    - **Controller health checks** to verify that both the device controllers are healthy and online.
 
-	- **ハードウェア コンポーネントの正常性チェック**では、StorSimple デバイスのすべてのハードウェア コンポーネントが正常であることを確認します。
+    - **Hardware component health checks** to verify that all the hardware components on your StorSimple device are healthy.
 
-	- **DATA 0 チェック**では、デバイスで DATA 0 が有効であることを確認します。このインターフェイスが有効でない場合は、有効にしてから再試行する必要があります。
+    - **DATA 0 checks** to verify that DATA 0 is enabled on your device. If this interface is not enabled, you will need to enable it and then retry.
 
-	- **DATA 2 と DATA 3 のチェック**では、DATA 2 と DATA 3 のネットワーク インターフェイスが有効でないことを確認します。これらのインターフェイスが有効になっている場合、無効にしてからデバイスを更新する必要があります。このチェックは、GA ソフトウェアを実行するデバイスから更新する場合にのみ実行されます。バージョン 0.1、0.2、または 0.3 を実行しているデバイスでは、このチェックは必要ありません。
+    - **DATA 2 and DATA 3 checks** to verify that DATA 2 and DATA 3 network interfaces are not enabled. If these interfaces are enabled, then you will need to disable them and then try to update your device. This check is performed only if you are updating from a device running GA software. Devices running versions 0.1, 0.2, or 0.3 will not need this check.
 
-	- **ゲートウェイ チェック**は、Update 1 より前のバージョンを実行しているデバイスで行われます。このチェックは、Update 1 より前のソフトウェアを実行中のすべてのデバイスで実行されますが、ゲートウェイが DATA 0 以外のネットワーク インターフェイス用に構成されているデバイスでは失敗します。
+    - **Gateway check** on any device running a version prior to Update 1. This check is performed on all the device running pre-update 1 software but fails on the devices that have a gateway configured for a network interface other than DATA 0.
 
-	すべてのチェックが正常に完了すると、更新プログラムが適用されます。チェックが実行中であることが通知されます。
+    The update is applied if all checks are successfully completed. You will be notified that checks are in progress.
 
     ![Pre-check notification](./media/storsimple-install-update2-via-portal/InstallUpdate12_3M.png)
 
-    チェックが失敗した例を次に示します。この場合、両方のデバイス コントローラーが正常であり、オンラインであることを確認する必要があります。また、ハードウェア コンポーネントの正常性も確認する必要があります。この例では、コント ローラー 0 とコント ローラー 1 の各コンポーネントに対処する必要があります。これらの問題に自分で対処できない場合、Microsoft サポートに連絡することが必要になる場合があります。
+    The following is an example in which the checks failed. You will need to verify that both the device controllers are healthy and online. You will also need to check the health of the hardware components. In this example, Controller 0 and Controller 1 components need attention. You may need to contact Microsoft Support if you cannot address these issues by yourself.
 
-   	 ![Checks failed](./media/storsimple-install-update2-via-portal/HCS_PreUpgradeChecksFailed-include.png)
+     ![Checks failed](./media/storsimple-install-update2-via-portal/HCS_PreUpgradeChecksFailed-include.png)
 
-8. チェックが正常に完了したら、更新ジョブが作成されます。更新ジョブが正常に作成されると、通知されます。
+8. After the checks are successfully completed, an update job will be created. You will be notified when the update job is successfully created.
 
     ![Update job creation](./media/storsimple-install-update2-via-portal/InstallUpdate12_44M.png)
 
-    その後、更新プログラムがデバイスに適用されます。
+    The update will then be applied on your device.
 
-9. 更新ジョブの進行状況を監視するには、**[ジョブの表示]** をクリックします。**[ジョブ]** ページで、更新の進行状況を確認できます。
+9. To monitor the progress of the update job, click **View Job**. On the **Jobs** page, you can see the update progress.
 
-10. 更新が完了するまでに数時間かかります。更新ジョブを選択し、**[詳細]** をクリックすると、ジョブの詳細をいつでも表示できます。
+10. The update will take a few hours to complete. Select the update job and click **Details** to view the details of the job at any time.
 
-11. ジョブが完了したら、**[メンテナンス]** ページに移動し、**[ソフトウェア更新プログラム]** まで下にスクロールします。
+11. After the job is complete, navigate to the **Maintenance** page and scroll down to **Software Updates**.
 
-<!---HONumber=AcomDC_0323_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

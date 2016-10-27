@@ -1,106 +1,113 @@
 <properties
-	pageTitle=" Azure Portal での Azure Media Services アカウントの作成 | Microsoft Azure"
-	description="このチュートリアルでは、Azure Portal で Azure Media Services アカウントを作成する手順について説明します。"
-	services="media-services"
-	documentationCenter=""
-	authors="Juliako"
-	manager="erikre"
-	editor=""/>
+    pageTitle=" Create an Azure Media Services account with the Azure portal | Microsoft Azure"
+    description="This tutorial walks you through the steps of creating an Azure Media Services account with the Azure portal."
+    services="media-services"
+    documentationCenter=""
+    authors="Juliako"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/07/2016"
-	ms.author="juliako"/>
+    ms.service="media-services"
+    ms.workload="media"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/07/2016"
+    ms.author="juliako"/>
 
 
-# Azure Portal での Azure Media Services アカウントの作成
+
+# <a name="create-an-azure-media-services-account-with-the-azure-portal"></a>Create an Azure Media Services account with the Azure portal
 
 > [AZURE.SELECTOR]
-- [ポータル](media-services-portal-create-account.md)
+- [Portal](media-services-portal-create-account.md)
 - [PowerShell](media-services-manage-with-powershell.md)
-- [REST ()](http://msdn.microsoft.com/library/azure/dn194267.aspx)
+- [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+> [AZURE.NOTE] To complete this tutorial, you need an Azure account. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/). 
 
-Azure Portal には、Azure Media Services (AMS) アカウントをすばやく作成する方法が用意されています。アカウントを使用して Media Services にアクセスすると、Azure でメディア コンテンツを保存、暗号化、エンコード、管理、およびストリーミングすることができます。Media Services アカウントを作成するときは、同時に Media Services アカウントと同じリージョンにストレージ アカウントも作成して関連付けます (または既存のストレージ アカウントを使用します)。
+The Azure portal provides a way to quickly create an Azure Media Services (AMS) account. You can use your account to access Media Services that enable you to store, encrypt, encode, manage, and stream media content in Azure. At the time you create a Media Services account, you also create an associated storage account (or use an existing one) in the same geographic region as the Media Services account.
 
-この記事では、いくつかの一般的な概念について説明し、Azure Portal で Media Services アカウントを作成する方法を示します。
+This article explains some common concepts and shows how to create a Media Services account with the Azure portal.
 
-## 概念
+## <a name="concepts"></a>Concepts
 
-Media Services にアクセスするには、関連付けられた次の 2 つのアカウントが必要です。
+Accessing Media Services requires two associated accounts:
 
-- Media Services アカウント。アカウントを使用して、Azure で利用可能なクラウド ベースの Media Services にアクセスできます。Media Services アカウントには実際のメディア コンテンツは保存されません。代わりに、メディア コンテンツに関するメタデータおよびメディア処理ジョブがアカウントに保存されます。アカウントを作成するときに、利用可能な Media Services リージョンを選択します。選択したリージョンに、アカウントのメタデータ レコードを保存するデータ センターが配置されます。
+- A Media Services account. Your account gives you access to a set of cloud-based Media Services that are available in Azure. A Media Services account does not store actual media content. Instead it stores metadata about the media content and media processing jobs in your account. At the time you create the account, you select an available Media Services region. The region you select is a data center that stores the metadata records for your account.
 
-	利用可能な Media Services (AMS) リージョンには、北ヨーロッパ、西ヨーロッパ、米国西部、米国東部、東南アジア、東アジア、西日本、東日本があります。Media Services は、アフィニティ グループを使用しません。
-	
-	AMS は、現在、ブラジル南部、インド西部、インド南部、およびインド中部のデータ センターでも利用可能です。Azure Portal を使用して、Media Services アカウントを作成し、ここで示すさまざまなタスクを実行できるようになりました。ただし、これらのデータ センターでは Live Encoding は有効ではありません。また、これらのデータ センターで、すべての種類のエンコード予約ユニットを使用できるわけではありません。
-	
-	- ブラジル南部: Standard および Basic エンコード予約ユニットのみ使用可能です。
-	- インド西部およびインド南部: メディア ファイルのストレージ BLOB を用意します。ストレージ アカウントは Media Services アカウントと同じリージョンにある必要があります。Media Services アカウントを作成するときに、同じリージョンにある既存のストレージ アカウントを選択することも、同じリージョンに新しいストレージ アカウントを作成することもできます。メディア サービス アカウントを削除しても、関連付けられたストレージ アカウントにある BLOB は削除されません。
+    Available Media Services (AMS) regions include the following: North Europe, West Europe, West US, East US, Southeast Asia, East Asia, Japan West, Japan East. Media Services does not use affinity groups.
+    
+    AMS is now also available in the following data centers: Brazil South, India West, India South, and India Central. You can now use the Azure  portal to create Media Service accounts and perform various tasks described here. However, Live Encoding is not enabled in these data centers. Further, not all types of Encoding Reserved Units are available in these data centers.
+    
+    - Brazil South: Only Standard and Basic Encoding Reserved Units are available.
+    - India West, India South: Provide storage blobs for media files; storage accounts must be located in the same geographic region as the Media Services account. When you create a Media Services account, you can either choose an existing storage account in the same region, or you can create a new storage account in the same region. If you delete a Media Services account, the blobs in your related storage account are not deleted.
 
-## AMS アカウントの作成
+## <a name="create-an-ams-account"></a>Create an AMS account
 
-このセクションでは、AMS アカウントを作成する方法について説明します。
+The steps in this section show how to create an AMS account.
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
-2. **[+新規]**、**[メディア + CDN]**、**[Media Services]** の順にクリックします。
+1. Log in at the [Azure portal](https://portal.azure.com/).
+2. Click **+New** > **Media + CDN** > **Media Services**.
 
-	![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new1.png)
+    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new1.png)
 
-3. **[CREATE MEDIA SERVICES ACCOUNT (Media Services アカウントの作成)]** に必要な値を入力します。
+3. In **CREATE MEDIA SERVICES ACCOUNT** enter required values.
 
-	![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new3.png)
-	
-	1. **[アカウント名]** に新しい AMS アカウントの名前を入力します。Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 ～ 24 文字です。
-	2. [サブスクリプション] ボックスで、アクセス権のある別の Azure サブスクリプションを選択します。
-	
-	2. **[リソース グループ]** ボックスで、新規または既存のリソースを選択します。リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。[こちら](resource-group-overview.md#resource-groups)を参照してください。
-	3. **[場所]** ボックスで、この Media Services アカウントのメディアとメタデータのレコードを保存するリージョンを選択します。このリージョンでメディアの処理とストリーミングが行われます。ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。
-	
-	3. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、ストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
+    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new3.png)
+    
+    1. In **Account Name**, enter the name of the new AMS account. A Media Services account name is all lowercase numbers or letters with no spaces, and is 3 to 24 characters in length.
+    2. In Subscription, select among the different Azure subscriptions that you have access to.
+    
+    2. In **Resource Group**, select the new or existing resource.  A resource group is a collection of resources that share lifecycle, permissions, and policies. Learn more [here](resource-group-overview.md#resource-groups).
+    3. In **Location**,  select the geographic region that will be used to store the media and metadata records for your Media Services account. This  region will be used to process and stream your media. Only the available Media Services regions appear in the drop-down list box. 
+    
+    3. In **Storage Account**, select a storage account to provide blob storage of the media content from your Media Services account. You can select an existing storage account in the same geographic region as your Media Services account, or you can create a storage account. A new storage account is created in the same region. The rules for storage account names are the same as for Media Services accounts.
 
-		ストレージの詳細については、[こちら](storage-introduction.md)を参照してください。
+        Learn more about storage [here](storage-introduction.md).
 
-	4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、アカウントのデプロイの進行状況を確認します。
-	
-7. フォームの下部にある **[作成]** をクリックします。
+    4. Select **Pin to dashboard** to see the progress of the account deployment.
+    
+7. Click **Create** at the bottom of the form.
 
-	アカウントの作成に成功すると、ステータスが **[実行中]** に変化します。
+    Once the account is successfully created, the status changes to **Running**. 
 
-	![Media Services settings](./media/media-services-portal-vod-get-started/media-services-settings.png)
+    ![Media Services settings](./media/media-services-portal-vod-get-started/media-services-settings.png)
 
-	AMS アカウントを管理するには (ビデオのアップロード、資産のエンコード、ジョブの進行の監視など)、**[設定]** ウィンドウを使用します。
+    To manage your AMS account (for example, upload videos, encode assets, monitor job progress) use the **Settings** window.
 
-## Manage Keys
+## <a name="manage-keys"></a>Manage Keys
 
-Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
+You need the account name and the primary key information to programmatically access the Media Services account.
 
-1. Azure ポータルで、自分のアカウントを選択します。
+1. In the Azure portal, select your account. 
 
-	**[設定]** ウィンドウが右側に表示されます。
+    The **Settings** window appears on the right. 
 
-2. **[設定]** ウィンドウで、**[キー]** を選択します。
+2. In the **Settings** window, select **Keys**. 
 
-	**[キーの管理]** ウィンドウに、アカウント名、プライマリ キー、セカンダリ キーが表示されます。
-3. コピー ボタンをクリックして値をコピーします。
-	
-	![Media Services Keys](./media/media-services-portal-vod-get-started/media-services-keys.png)
+    The **Manage keys** windows shows the account name and the primary and secondary keys is displayed. 
+3. Press the copy button to copy the values.
+    
+    ![Media Services Keys](./media/media-services-portal-vod-get-started/media-services-keys.png)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-これで、ファイルを AMS アカウントにアップロードできるようになりました。詳細については、[ファイルのアップロード](media-services-portal-upload-files.md)に関するページを参照してください。
+You can now upload files into your AMS account. For more information, see [Upload files](media-services-portal-upload-files.md).
 
-## Media Services のラーニング パス
+## <a name="media-services-learning-paths"></a>Media Services learning paths
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##フィードバックの提供
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

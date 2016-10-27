@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple デバイスの Web プロキシを設定する | Microsoft Azure"
-   description="StorSimple 用 Windows PowerShell を使用して StorSimple デバイス用に Web プロキシを構成する方法について説明します。"
+   pageTitle="Set up web proxy for a StorSimple device | Microsoft Azure"
+   description="Learn how to use Windows PowerShell for StorSimple to configure web proxy settings for your StorSimple device."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,140 +15,145 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
-# StorSimple デバイスの Web プロキシを構成する
 
-## Overview
+# <a name="configure-web-proxy-for-your-storsimple-device"></a>Configure web proxy for your StorSimple device
 
-このチュートリアルでは、StorSimple 用 Windows PowerShell を使用して StorSimple デバイスの Web プロキシ設定を構成および表示する方法について説明します。Web プロキシ設定は、クラウドと通信するときに StorSimple デバイスで使用されます。Web プロキシ サーバーは、別のセキュリティ レイヤーの追加、コンテンツのフィルター処理、キャッシュによる帯域幅要件の緩和、分析の補助に使用されます。
+## <a name="overview"></a>Overview
 
-Web プロキシは StorSimple デバイスのオプションの構成です。Web プロキシの構成には StorSimple 用 Windows PowerShell のみ使用できます。構成には、次の 2 つの手順を実行します。
+This tutorial describes how to use Windows PowerShell for StorSimple to configure and view web proxy settings for your StorSimple device. The web proxy settings are used by the StorSimple device when communicating with the cloud. A web proxy server is used to add another layer of security, filter content, cache to ease bandwidth requirements or even help with analytics.
 
-1. まず、セットアップ ウィザードまたは StorSimple 用 Windows PowerShell のコマンドレットを使用して、Web プロキシ設定を構成します。
+Web proxy is an optional configuration for your StorSimple device. You can configure web proxy only via Windows PowerShell for StorSimple. The configuration is a two-step process as follows:
 
-2. 次に、StorSimple 用 Windows PowerShell のコマンドレットを使用して、構成した Web プロキシ設定を有効にします。
+1. You first configure web proxy settings through the setup wizard or Windows PowerShell for StorSimple cmdlets.
 
-Web プロキシの構成が完了したら、Microsoft Azure StorSimple Manager サービスと StorSimple 用 Windows PowerShell の両方で、構成済みの Web プロキシ設定を表示できます。
+2. You then enable the configured web proxy settings via Windows PowerShell for StorSimple cmdlets.
 
-このチュートリアルを読むと、次のことができるようになります。
+After the web proxy configuration is complete, you can view the configured web proxy settings in both the Microsoft Azure StorSimple Manager service and the Windows PowerShell for StorSimple. 
 
-- セットアップ ウィザードとコマンドレットを使用して Web プロキシを構成する
-- コマンドレットを使用して Web プロキシを有効にする
-- Azure クラシック ポータルで Web プロキシ設定を表示する
-- Web プロキシの構成中のエラーをトラブルシューティングする
+After reading this tutorial, you will be able to:
+
+- Configure web proxy by using setup wizard and cmdlets
+- Enable web proxy by using cmdlets
+- View web proxy settings in the Azure classic portal
+- Troubleshoot errors during web proxy configuration
 
 
-## StorSimple 用 Windows PowerShell を使用して Web プロキシを構成する
+## <a name="configure-web-proxy-via-windows-powershell-for-storsimple"></a>Configure web proxy via Windows PowerShell for StorSimple
 
-Web プロキシ設定を構成するには、次のいずれかを使用します。
+You use either of the following to configure web proxy settings:
 
-- 構成手順を案内するセットアップ ウィザード。
+- Setup wizard to guide you through the configuration steps.
 
-- StorSimple 用 Windows PowerShell のコマンドレット。
+- Cmdlets in Windows PowerShell for StorSimple.
 
-これらの各方法について、以下のセクションで説明します。
+Each of these methods is discussed in the following sections.
 
-## セットアップ ウィザードを使用して Web プロキシを構成する
+## <a name="configure-web-proxy-via-the-setup-wizard"></a>Configure web proxy via the setup wizard
 
-セットアップ ウィザードを使用し、案内に従って Web プロキシの構成手順を実行できます。次の手順を実行して、デバイスで Web プロキシを構成します。
+You can use the setup wizard to guide you through the steps for web proxy configuration. Perform the following steps to configure web proxy on your device.
 
-#### セットアップ ウィザードを使用して Web プロキシを構成するには
+#### <a name="to-configure-web-proxy-via-the-setup-wizard"></a>To configure web proxy via the setup wizard
 
-1. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択し、**デバイス管理者のパスワード**を入力します。次のコマンドを入力してセットアップ ウィザード セッションを開始します。
+1. In the serial console menu, choose option 1, **Log in with full access** and provide the **device administrator password**. Type the following command to start a setup wizard session:
 
     `Invoke-HcsSetupWizard`
 
-2. デバイスの登録に初めてセットアップ ウィザードを使用する場合は、Web プロキシ構成の前に表示される、必要なすべてのネットワーク設定を構成する必要があります。デバイスが既に登録されている場合は、Web プロキシ構成に達するまで、構成済みのすべてのネットワーク設定をそのまま使用することができます。セットアップ ウィザードで、Web プロキシ設定を構成するかどうかを確認するメッセージが表示されたら、「**Yes**」と入力します。
+2. If this is the first time that you have used the setup wizard for device registration, you will need to configure all the required network settings until you reach the web proxy configuration. If your device is already registered, you can accept all the configured network settings until you reach the web proxy configuration. In the setup wizard, when prompted to configure web proxy settings, type **Yes**.
 
-3. **[Web Proxy URL]** には、Web プロキシ サーバーの IP アドレスまたは完全修飾ドメイン名 (FQDN) と、クラウドと通信するときにデバイスで使用する TCP ポート番号を指定します。次の形式を使用します。
+3. For the **Web Proxy URL**, specify the IP address or the fully qualified domain name (FQDN) of your web proxy server and the TCP port number that you would like your device to use when communicating with the cloud. Use the following format:
 
-	`http://<IP address or FQDN of the web proxy server>:<TCP port number>`
+    `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
 
-	既定では、TCP ポート番号 8080 が指定されています。
+    By default, TCP port number 8080 is specified.
 
-4. 認証の種類として、**[NTLM]**、**[Basic]**、または **[None]** を選択します。[Basic] は、プロキシ サーバー構成で最も安全性が低い認証です。[NTLM] \(NT LAN Manager) は、ユーザーを認証するために 3 段階のメッセージング システム (さらに整合性が要求される場合は 4 段階の場合もあります) を使用する最も安全性が高く複雑な認証プロトコルです。既定の認証は NTLM です。詳細については、[基本認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページと[NTLM 認証](http://hc.apache.org/httpclient-3.x/authentication.html)に関するページを参照してください。
+4. Choose the authentication type as **NTLM**, **Basic**, or **None**. Basic is the least secure authentication for the proxy server configuration. NT LAN Manager (NTLM) is a highly secure and complex authentication protocol that uses a three-way messaging system (sometimes four if additional integrity is required) to authenticate a user. The default authentication is NTLM. For more information, see [Basic](http://hc.apache.org/httpclient-3.x/authentication.html) and [NTLM authentication](http://hc.apache.org/httpclient-3.x/authentication.html). 
 
-	> [AZURE.IMPORTANT] **StorSimple Manager サービスのデバイス監視グラフは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっている場合に正しく機能しません。監視グラフを機能させるには、認証が [None] に設定されていることを確認する必要があります。**
+    > [AZURE.IMPORTANT] **In the StorSimple Manager service, the device monitoring charts do not work when Basic or NTLM authentication is enabled in the proxy server configuration for the device. For the monitoring charts to work, you will need to ensure that authentication is set to NONE.**
 
-5. 認証を使用している場合は、**Web プロキシ ユーザー名**と **Web プロキシ パスワード**を指定します。また、パスワードの確認も必要です。
+5. If you are using authentication, supply a **Web Proxy Username** and a **Web Proxy Password**. You will also need to confirm the password.
 
-	![Configure Web Proxy On StorSimple Device1](./media/storsimple-configure-web-proxy/IC751830.png)
+    ![Configure Web Proxy On StorSimple Device1](./media/storsimple-configure-web-proxy/IC751830.png)
 
-初めてデバイスを登録する場合は、登録に進みます。デバイスが既に登録されている場合、ウィザードは終了します。構成した設定は保存されます。
+If you are registering your device for the first time, continue with the registration. If your device was already registered, the wizard will exit. The configured settings will be saved.
 
-また、Web プロキシも有効になります。「[Web プロキシを有効にする](#enable-web-proxy)」の手順を省略し、すぐに、「[Azure クラシック ポータルで Web プロキシ設定を表示する](#view-web-proxy-settings-in-the-azure-classic-portal)」に進むことができます。
+Web proxy will now also be enabled. You can skip the [Enable web proxy](#enable-web-proxy) step and go directly to [View web proxy settings in the Azure classic portal](#view-web-proxy-settings-in-the-azure-classic-portal).
 
 
-## StorSimple 用 Windows PowerShell のコマンドレットを使用して Web プロキシを構成する
+## <a name="configure-web-proxy-via-windows-powershell-for-storsimple-cmdlets"></a>Configure web proxy via Windows PowerShell for StorSimple cmdlets
 
-Web プロキシ設定を構成するための代替手段として、StorSimple 用 Windows PowerShell のコマンドレットを使用する方法があります。次の手順を実行して、Web プロキシを構成します。
+An alternate way to configure web proxy settings is via the Windows PowerShell for StorSimple cmdlets. Perform the following steps to configure web proxy.
 
-#### コマンドレットを使用して Web プロキシを構成するには
+#### <a name="to-configure-web-proxy-via-cmdlets"></a>To configure web proxy via cmdlets
 
-1. シリアル コンソール メニューで、オプション 1 を選択し、**フル アクセスでログイン**します。画面の指示に従って、**デバイス管理者のパスワード**を入力します。既定のパスワードは `Password1` です。
+1. In the serial console menu, choose option 1, **Log in with full access**. When prompted, provide the **device administrator password**. The default password is `Password1`.
 
-2. コマンド プロンプトに、次のコマンドを入力します。
+2. At the command prompt, type:
 
-	`Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
+    `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
 
-	入力を求めるメッセージが次のように表示されたら、パスワードを入力して確認します。
+    Provide and confirm the password when prompted, as shown below.
 
-	![Configure Web Proxy On StorSimple Device3](./media/storsimple-configure-web-proxy/IC751831.png)
+    ![Configure Web Proxy On StorSimple Device3](./media/storsimple-configure-web-proxy/IC751831.png)
 
-これで、Web プロキシが構成されたので、有効にする必要があります。
+The web proxy is now configured and needs to be enabled.
 
-## Web プロキシを有効にする
+## <a name="enable-web-proxy"></a>Enable web proxy
 
-Web プロキシは、既定では無効になっています。StorSimple デバイスで Web プロキシ設定を構成したら、StorSimple 用 Windows PowerShell を使用して Web プロキシ設定を有効にする必要があります。
+Web proxy is disabled by default. After you configure the web proxy settings on your StorSimple device, you need to use the Windows PowerShell for StorSimple to enable the web proxy settings.
 
-> [AZURE.NOTE] **セットアップ ウィザードを使用して Web プロキシを構成した場合、この手順は必要ありません。セットアップ ウィザードのセッションの後、Web プロキシは既定で自動的に有効になります。**
+> [AZURE.NOTE] **This step will not be required if you used the setup wizard to configure web proxy. Web proxy is automatically enabled by default after a setup wizard session.**
 
-StorSimple 用 Windows PowerShell で次の手順を実行し、デバイスで Web プロキシを有効にします。
+Perform the following steps in Windows PowerShell for StorSimple to enable web proxy on your device:
 
-#### Web プロキシを有効にするには
+#### <a name="to-enable-web-proxy"></a>To enable web proxy
 
-1. シリアル コンソール メニューで、オプション 1 を選択し、**フル アクセスでログイン**します。画面の指示に従って、**デバイス管理者のパスワード**を入力します。既定のパスワードは `Password1` です。
+1. In the serial console menu, choose option 1, **Log in with full access**. When prompted, provide the **device administrator password**. The default password is `Password1`.
 
-2. コマンド プロンプトに、次のコマンドを入力します。
+2. At the command prompt, type:
 
-	`Enable-HcsWebProxy`
+    `Enable-HcsWebProxy`
 
-	これで、StorSimple デバイスの Web プロキシ構成が有効になりました。
+    You have now enabled the web proxy configuration on your StorSimple device.
 
-	![Configure Web Proxy On StorSimple Device4](./media/storsimple-configure-web-proxy/IC751832.png)
+    ![Configure Web Proxy On StorSimple Device4](./media/storsimple-configure-web-proxy/IC751832.png)
 
-## Azure クラシック ポータルで Web プロキシ設定を表示する
+## <a name="view-web-proxy-settings-in-the-azure-classic-portal"></a>View web proxy settings in the Azure classic portal
 
-Web プロキシ設定は、Windows PowerShell インターフェイスを使用して構成します。クラシック ポータル内から変更することはできません。ただし、構成済みの設定をクラシック ポータルで表示することはできます。次の手順を実行して、Web プロキシを表示します。
+The web proxy settings are configured through the Windows PowerShell interface and cannot be changed from within the classic portal. You can, however, view these configured settings in the classic portal. Perform the following steps to view web proxy.
 
-#### Web プロキシ設定を表示するには
-1. **[StorSimple Manager サービス]、[デバイス]** の順に移動します。デバイスを選択してクリックし、**[構成]** に移動します。
-1. **[構成]** ページで **[Web プロキシの設定]** セクションまで下へスクロールします。次に示すように、StorSimple デバイスで構成した Web プロキシ設定を表示できます。
+#### <a name="to-view-web-proxy-settings"></a>To view web proxy settings
+1. Navigate to **StorSimple Manager service > Devices**. Select and click a device and then go to **Configure**.
+1. Scroll down on the **Configure** page to **Web proxy settings** section. You can view the configured web proxy settings on your StorSimple device as shown below.
 
-	![管理ポータルで Web プロキシを表示する](./media/storsimple-configure-web-proxy/ViewWebProxyPortal_M.png)
+    ![View Web Proxy in Management Portal](./media/storsimple-configure-web-proxy/ViewWebProxyPortal_M.png)
  
-## Web プロキシ構成中のエラー
+## <a name="errors-during-web-proxy-configuration"></a>Errors during web proxy configuration
 
-Web プロキシの設定が正しく構成されていない場合は、StorSimple 用 Windows PowerShell でユーザーにエラー メッセージが表示されます。次の表では、このようなエラー メッセージ、考えられる原因、および推奨される操作について説明します。
+If the web proxy settings have been configured incorrectly, error messages will be displayed to the user in Windows PowerShell for StorSimple. The following table explains some of these error messages, their probable causes, and recommended actions.
 
-|シリアル番号|HRESULT エラー コード|考えられる根本原因|推奨される操作|
+|Serial no.|HRESULT error Code|Possible root cause|Recommended action|
 |:---|:---|:---|:---|
-|1\.|0x80070001|コマンドがパッシブ コントローラーから実行されていて、アクティブ コントローラーと通信することができません。|アクティブ コントローラーでコマンドを実行します。パッシブ コントローラーからコマンドを実行するには、接続をパッシブ コントローラーからアクティブ コントローラーに修正する必要があります。この接続を確立できない場合、Microsoft サポートに問い合わせる必要があります。|
-|手順 2.|0x800710dd - 操作識別子が無効です|StorSimple 仮想デバイスではプロキシ設定がサポートされていません。|StorSimple 仮想デバイスではプロキシ設定がサポートされていません。これらの設定は、StorSimple の物理デバイスでのみ構成できます。|
-|手順 3.|0x80070057 - 無効なパラメーター|プロキシ設定に指定されたパラメーターの 1 つが有効ではありません。|URI が正しい形式で指定されていません。形式は `http://<IP address or FQDN of the web proxy server>:<TCP port number>` を使用してください。|
-|4\.|0x800706ba - RPC サーバーを利用できません|根本的原因は次のいずれかです。</br></br>クラスターが稼働していません。</br></br>データパス サービスが実行されていません。</br></br>コマンドがパッシブ コントローラーから実行されていて、アクティブ コントローラーと通信することができません。|Microsoft サポートに問い合わせて、クラスターが稼働していて、データパス サービスが実行されていることを確認します。</br></br>アクティブ コントローラーからコマンドを実行します。パッシブ コントローラーからコマンドを実行する場合、パッシブ コントローラーがアクティブ コントローラーと通信できることが必要となります。この接続を確立できない場合、Microsoft サポートに問い合わせる必要があります。|
-|5\.|0x800706be - RPC 呼び出しに失敗しました|クラスターはダウンしています。|Microsoft サポートに問い合わせて、クラスターが稼働しているかどうかを確認してください。|
-|6\.|0x8007138f - クラスター リソースが見つかりません|プラットフォーム サービス クラスター リソースが見つかりません。これはインストールが適切でなかった場合に発生することがあります。|デバイスを工場出荷時の既定値にリセットすることが必要になる場合があります。プラットフォーム リソースの作成が必要になる場合があります。Microsoft サポートに対処法をお問い合わせください。|
-|7\.|0x8007138c - クラスター リソースがオンラインではありません|プラットフォームまたはデータパス クラスター リソースがオンラインではありません。|Microsoft サポートに連絡し、データパスとプラットフォーム サービス リソースがオンラインになるようにしてください。|
+|1.|0x80070001|Command is run from the passive controller and it is not able to communicate with the active controller.|Run the command on the active controller. To run the command from the passive controller, you will need to fix the connectivity from passive to active controller. You will need to engage Microsoft Support if this connectivity is broken.|
+|2.|0x800710dd - The operation identifier is not valid|Proxy settings are not supported on StorSimple virtual device.|Proxy settings are not supported on StorSimple virtual device. These can only be configured on a StorSimple physical device.|
+|3.|0x80070057 - Invalid parameter|One of the parameters provided for the proxy settings is not valid.|The URI is not provided in correct format. Use the following format: `http://<IP address or FQDN of the web proxy server>:<TCP port number>`|
+|4.|0x800706ba - RPC server not available|The root cause is one of the following:</br></br>Cluster is not up.</br></br>Datapath service is not running.</br></br>The command is run from passive controller and it is not able to communicate with the active controller.|Please engage Microsoft Support to ensure that the cluster is up and datapath service is running.</br></br>Run the command from the active controller. If you want to run the command from the passive controller, you will need to ensure the passive controller can communicate with the active controller. You will need to engage Microsoft Support if this connectivity is broken.|
+|5.|0x800706be - RPC call failed|Cluster is down.|Please engage Microsoft Support to ensure that the cluster is up.|
+|6.|0x8007138f - Cluster resource not found|Platform service cluster resource is not found. This can happen when the installation was not proper.|You may need to perform a factory reset on your device. You may need to create a platform resource. Please contact Microsoft Support for next steps.|
+|7.|0x8007138c - Cluster resource not online|Platform or datapath cluster resources are not online.|Please contact Microsoft Support to help ensure that the datapath and platform service resource are online.|
 
 > [AZURE.NOTE] 
 > 
-> -  上記のエラー メッセージの一覧ですべてを網羅しているわけではありません。
-> - Web プロキシの設定に関連するエラーは、StorSimple Manager サービスの Azure クラシック ポータルには表示されません。構成が完了した後で Web プロキシに問題がある場合、クラシック ポータルではデバイスの状態が **"オフライン"** になります。
+> -  The above list of error messages is not exhaustive. 
+> - Errors related to web proxy settings will not be displayed in the Azure classic portal in your StorSimple Manager service. If there is an issue with web proxy after the configuration is completed, the device status will change to **Offline** in the classic portal.|
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-- デバイスのデプロイまたは Web プロキシ設定の構成中に問題が発生した場合は、[StorSimple デバイスのデプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページを参照してください。
+- If you experience any issues while deploying your device or configuring web proxy settings, refer to [Troubleshoot your StorSimple device deployment](storsimple-troubleshoot-deployment.md).
 
-- StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
+- To learn how to use the StorSimple Manager service, go to [Use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

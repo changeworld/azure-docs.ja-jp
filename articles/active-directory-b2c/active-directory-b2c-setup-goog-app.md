@@ -1,67 +1,72 @@
 <properties
-	pageTitle="Azure Active Directory B2C: Google+ の構成 | Microsoft Azure"
-	description="Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Google+ アカウントを使用するコンシューマーにサインアップとサインインを提供します。"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="swkrish"
-	manager="msmbaldwin"
-	editor="bryanla"/>
+    pageTitle="Azure Active Directory B2C: Google+ configuration | Microsoft Azure"
+    description="Provide sign-up and sign-in to consumers with Google+ accounts in your applications that are secured by Azure Active Directory B2C."
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="swkrish"
+    manager="mbaldwin"
+    editor="bryanla"/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/24/2016"
-	ms.author="swkrish"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/24/2016"
+    ms.author="swkrish"/>
 
-# Azure Active Directory B2C: Google+ アカウントでコンシューマーにサインアップおよびサインインを提供する
 
-## Google+ アプリケーションを作成する
+# <a name="azure-active-directory-b2c:-provide-sign-up-and-sign-in-to-consumers-with-google+-accounts"></a>Azure Active Directory B2C: Provide sign-up and sign-in to consumers with Google+ accounts
 
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Google+ を使用するには、Google+ アプリケーションを作成し、適切なパラメーターを提供する必要があります。そのためには Google+ アカウントが必要です。アカウントがない場合は、[https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) で取得できます。
+## <a name="create-a-google+-application"></a>Create a Google+ application
 
-1. [Google Developers Console](https://console.developers.google.com/) に移動し、Google+ アカウントの資格情報でサインインします。
-2. **[プロジェクトの作成]** をクリックし、**[プロジェクト名]** を入力して、**[作成]** をクリックします。
+To use Google+ as an identity provider in Azure Active Directory (Azure AD) B2C, you need to create a Google+ application and supply it with the right parameters. You need a Google+ account to do this. If you don’t have one, you can get it at [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp).
 
-    ![Google+ - 作業開始](./media/active-directory-b2c-setup-goog-app/google-get-started.png)
+1. Go to the [Google Developers Console](https://console.developers.google.com/) and sign in with your Google+ account credentials.
+2. Click **Create project**, enter a **Project name**, and then click **Create**.
 
-    ![Google+ - 新しいプロジェクト](./media/active-directory-b2c-setup-goog-app/google-new-project.png)
+    ![Google+ - Get started](./media/active-directory-b2c-setup-goog-app/google-get-started.png)
 
-3. 左側のナビゲーションで、**[API マネージャー]** をクリックし、**[認証情報]** をクリックします。
-4. 上部の **[OAuth 同意画面]** タブをクリックします。
+    ![Google+ - New project](./media/active-directory-b2c-setup-goog-app/google-new-project.png)
 
-    ![Google+ - 認証情報](./media/active-directory-b2c-setup-goog-app/google-add-cred.png)
+3. Click **API Manager** and then click **Credentials** in the left navigation.
+4. Click the **OAuth consent screen** tab at the top.
 
-5. 有効な **[メール アドレス]** を選択または指定し、**サービス名**を入力して、**[保存]** をクリックします。
+    ![Google+ - Credentials](./media/active-directory-b2c-setup-goog-app/google-add-cred.png)
 
-    ![Google+ - OAuth 同意画面](./media/active-directory-b2c-setup-goog-app/google-consent-screen.png)
+5. Select or specify a valid **Email address**, provide a **Product name**, and click **Save**.
 
-6. **[新しい資格情報]** をクリックし、**[OAuth クライアント ID]** を選択します。
+    ![Google+ - OAuth consent screen](./media/active-directory-b2c-setup-goog-app/google-consent-screen.png)
 
-    ![Google+ - OAuth 同意画面](./media/active-directory-b2c-setup-goog-app/google-add-oauth2-client-id.png)
+6. Click **New credentials** and then choose **OAuth client ID**.
 
-7. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
+    ![Google+ - OAuth consent screen](./media/active-directory-b2c-setup-goog-app/google-add-oauth2-client-id.png)
 
-    ![Google+ - OAuth 同意画面](./media/active-directory-b2c-setup-goog-app/google-web-app.png)
+7. Under **Application type**, select **Web application**.
 
-8. アプリケーションの**名前**を指定します。**[承認済みの JavaScript 生成元]** フィールドに「`https://login.microsoftonline.com`」と入力し、**[承認済みのリダイレクト URI]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。**{tenant}** の値は大文字小文字が区別されます。**[作成]** をクリックします。
+    ![Google+ - OAuth consent screen](./media/active-directory-b2c-setup-goog-app/google-web-app.png)
 
-    ![Google+ - クライアント ID の作成](./media/active-directory-b2c-setup-goog-app/google-create-client-id.png)
+8. Provide a **Name** for your application, enter `https://login.microsoftonline.com` in the **Authorized JavaScript origins** field, and `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` in the **Authorized redirect URIs** field. Replace **{tenant}** with your tenant's name (for example, contosob2c.onmicrosoft.com). The **{tenant}** value is case-sensitive. Click **Create**.
 
-9. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。テナントで ID プロバイダーとして Google+ を構成するには、両方の値が必要です。**[クライアント シークレット]** は、重要なセキュリティ資格情報です。
+    ![Google+ - Create client ID](./media/active-directory-b2c-setup-goog-app/google-create-client-id.png)
 
-    ![Google+ - クライアント シークレット](./media/active-directory-b2c-setup-goog-app/google-client-secret.png)
+9. Copy the values of **Client ID** and **Client secret**. You will need both of them to configure Google+ as an identity provider in your tenant. **Client secret** is an important security credential.
 
-## テナントで ID プロバイダーとして Google+ を構成する
+    ![Google+ - Client secret](./media/active-directory-b2c-setup-goog-app/google-client-secret.png)
 
-1. この手順に従って、Azure ポータルで [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)します。
-2. B2C 機能ブレードで、**[ID プロバイダー]** をクリックします。
-3. ブレードの上部にある **[+追加]** をクリックします。
-4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。たとえば、「G+」などと入力します。
-5. **[ID プロバイダーの種類]** をクリックし、**[Google]** を選択して、**[OK]** をクリックします。
-6. **[この ID プロバイダーを設定する]** をクリックし、前に作成した Google+ アプリケーションのクライアント ID とクライアント シークレットを入力します。
-7. **[OK]** をクリックし、**[作成]** をクリックして Google+ の構成を保存します。
+## <a name="configure-google+-as-an-identity-provider-in-your-tenant"></a>Configure Google+ as an identity provider in your tenant
 
-<!---HONumber=AcomDC_0727_2016-->
+1. Follow these steps to [navigate to the B2C features blade](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) on the Azure portal.
+2. On the B2C features blade, click **Identity providers**.
+3. Click **+Add** at the top of the blade.
+4. Provide a friendly **Name** for the identity provider configuration. For example, enter "G+".
+5. Click **Identity provider type**, select **Google**, and click **OK**.
+6. Click **Set up this identity provider** and enter the client ID and client secret of the Google+ application that you created earlier.
+7. Click **OK** and then click **Create** to save your Google+ configuration.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

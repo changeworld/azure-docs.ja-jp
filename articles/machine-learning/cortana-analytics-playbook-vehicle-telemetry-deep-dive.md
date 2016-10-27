@@ -1,723 +1,730 @@
 <properties 
-	pageTitle="車両テレメトリ分析ソリューション プレイブック: ソリューションの詳細 | Microsoft Azure" 
-	description="Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="jhubbard" 
-	editor="cgronlun" />
+    pageTitle="Vehicle telemetry analytics solution playbook: deep dive into the solution | Microsoft Azure" 
+    description="Use the capabilities of Cortana Intelligence to gain real-time and predictive insights on vehicle health and driving habits." 
+    services="machine-learning" 
+    documentationCenter="" 
+    authors="bradsev" 
+    manager="jhubbard" 
+    editor="cgronlun" />
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/12/2016" 
-	ms.author="bradsev" />
+    ms.service="machine-learning" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/12/2016" 
+    ms.author="bradsev" />
 
 
-# 車両テレメトリ分析ソリューション プレイブック: ソリューションの詳細
 
-この**メニュー**は、このプレイブック内の各セクションにリンクされています。
+# <a name="vehicle-telemetry-analytics-solution-playbook:-deep-dive-into-the-solution"></a>Vehicle telemetry analytics solution playbook: deep dive into the solution
+
+This **menu** links to the sections of this playbook: 
 
 [AZURE.INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
-このセクションでは、ソリューション アーキテクチャで示されている各ステージについて、手順やカスタマイズのアドバイスと共に詳しく説明します。
+This section drills down into each of the stages depicted in the Solution Architecture with instructions and pointers for customization. 
 
-## データ ソース
+## <a name="data-sources"></a>Data Sources
 
-このソリューションでは、次の 2 つのデータ ソースを使用します。
+The solution uses two different data sources:
 
-- **シミュレートされた車両信号と診断データセット**
-- **車両カタログ**
+- **simulated vehicle signals and diagnostic dataset** and 
+- **vehicle catalog**
 
-車両テレマティックス シミュレーターは、このソリューションの一部として含まれています。診断情報と信号を出力し、信号は特定の時点での車両の状態と運転パターンに対応しています。[ここ](http://go.microsoft.com/fwlink/?LinkId=717075)をクリックして、**車両テレマティックス シミュレーター Visual Studio ソリューション**をダウンロードし、要件に基づいてカスタマイズします。車両カタログには、参照データセットと、モデル マッピングに対する VIN が含まれています。
+A vehicle telematics simulator is included as part of this solution. It emits diagnostic information and signals corresponding to the state of the vehicle and to the driving pattern at a given point in time. Click [Vehicle Telematics Simulator](http://go.microsoft.com/fwlink/?LinkId=717075) to download the **Vehicle Telematics Simulator Visual Studio Solution** for customizations based on your requirements. The vehicle catalog contains a reference dataset with a VIN to model mapping.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig2-vehicle-telematics-simulator.png)
 
-*図 2 - 車両テレマティックス シミュレーター*
+*Figure 2 – Vehicle Telematics Simulator*
 
-これは、次のスキーマを含む JSON 形式のデータセットです。
+This is a JSON-formatted dataset that contains the following schema.
 
-分割 | Description | 値 
+Column | Description | Values 
  ------- | ----------- | --------- 
-VIN | ランダムに生成された車両識別番号 | ランダムに生成された 10,000 個の車両識別番号を持つマスター リストから取得されます。
-Outside temperature | 車両運転時の外部温度 | ランダムに生成された 0 ～ 100 の数値
-Engine temperature | 車両のエンジン温度 | ランダムに生成された 0 ～ 500 の数値
-速度 | 車両運転時のエンジン回転数 | ランダムに生成された 0 ～ 100 の数値
-Fuel | 車両の燃料レベル | ランダムに生成された 0 ～ 100 の数値 (燃料レベルの割合を示す)
-EngineOil | 車両のエンジン オイル レベル | ランダムに生成された 0 ～ 100 の数値 (エンジン オイル レベルの割合を示す)
-タイヤ空気圧 | 車両のタイヤ空気圧 | ランダムに生成された 0 ～ 50 の数値 (タイヤ空気圧レベルの割合を示す)
-Odometer | 車両の走行距離計の数値 | ランダムに生成された 0 ～ 200000 の数値
-Accelerator\_pedal\_position | 車両のアクセル ペダルの位置 | ランダムに生成された 0 ～ 100 の数値 (アクセル レベルの割合を示す)
-Parking\_brake\_status | 車両が駐車されているかどうか | True または False
-Headlamp\_status | ヘッドライトがついているかどうか | True または False
-Brake\_pedal\_status | ブレーキ ペダルが踏まれているかどうか | True または False
-Transmission\_gear\_position | 車両のギアの位置 | 状態: first、second、third、fourth、fifth、sixth、seventh、eighth
-Ignition\_status | 車両が走行しているか停車しているか | True または False
-Windshield\_wiper\_status | フロント ガラス ワイパーが動作しているかどうか | True または False
-ABS | ABS が動作中かどうか | True または False
-Timestamp | データ ポイントが作成されたときのタイムスタンプ | 日付
-City | 車両の場所 | このソリューションでは、ベルビュー、レドモンド、サマミッシュ、シアトルの 4 つの都市
+VIN | Randomly generated Vehicle Identification Number | This is obtained from a master list of 10,000 randomly generated vehicle identification numbers.
+Outside temperature | The outside temperature where the vehicle is driving | Randomly generated number from 0-100
+Engine temperature | The engine temperature of the vehicle | Randomly generated number from 0-500
+Speed | The engine speed at which the vehicle is driving | Randomly generated number from 0-100
+Fuel | The fuel level of the vehicle | Randomly generated number from 0-100 (indicates fuel level percentage)
+EngineOil | The engine oil level of the vehicle | Randomly generated number from 0-100 (indicates engine oil level percentage)
+Tire pressure | The tire pressure of the vehicle | Randomly generated number from 0-50 (indicates tire pressure level percentage)
+Odometer | The odometer reading of the vehicle | Randomly generated number from 0-200000
+Accelerator_pedal_position | The accelerator pedal position of the vehicle | Randomly generated number from 0-100 (indicates accelerator level percentage)
+Parking_brake_status | Indicates whether the vehicle is parked or not | True or False
+Headlamp_status | Indicates where the headlamp is on or not | True or False
+Brake_pedal_status | Indicates whether the brake pedal is pressed or not | True or False
+Transmission_gear_position | The transmission gear position of the vehicle | States: first, second, third, fourth, fifth, sixth, seventh, eighth
+Ignition_status | Indicates whether the vehicle is running or stopped | True or False
+Windshield_wiper_status | Indicates whether the windshield wiper is turned or not | True or False
+ABS | Indicates whether ABS is engaged or not | True or False
+Timestamp | The timestamp when the data point is created | Date
+City | The location of the vehicle | 4 cities in this solution: Bellevue, Redmond, Sammamish, Seattle
 
 
-車両モデル参照データセットには、VIN とモデルのマッピングが含まれています。
+The vehicle model reference dataset contains VIN to the model mapping. 
 
-VIN | モデル |
+VIN | Model |
 --------------|------------------
-FHL3O1SA4IEHB4WU1 | セダン |
-8J0U8XCPRGW4Z3NQE | ハイブリッド |
-WORG68Z2PLTNZDBI7 | ファミリー サルーン |
-JTHMYHQTEPP4WBMRN | セダン |
-W9FTHG27LZN1YWO0Y | ハイブリッド |
-MHTP9N792PHK08WJM | ファミリー サルーン |
-EI4QXI2AXVQQING4I | セダン |
-5KKR2VB4WHQH97PF8 | ハイブリッド |
-W9NSZ423XZHAONYXB | ファミリー サルーン |
-26WJSGHX4MA5ROHNL | コンバーチブル |
-GHLUB6ONKMOSI7E77 | ステーション ワゴン |
-9C2RHVRVLMEJDBXLP | コンパクト カー |
-BRNHVMZOUJ6EOCP32 | 小型 SUV |
-VCYVW0WUZNBTM594J | スポーツ カー |
-HNVCE6YFZSA5M82NY | 中型 SUV |
-4R30FOR7NUOBL05GJ | ステーション ワゴン |
-WYNIIY42VKV6OQS1J | 大型 SUV |
-8Y5QKG27QET1RBK7I | 大型 SUV |
-DF6OX2WSRA6511BVG | クーペ |
-Z2EOZWZBXAEW3E60T | セダン |
-M4TV6IEALD5QDS3IR | ハイブリッド |
-VHRA1Y2TGTA84F00H | ファミリー サルーン |
-R0JAUHT1L1R3BIKI0 | セダン |
-9230C202Z60XX84AU | ハイブリッド |
-T8DNDN5UDCWL7M72H | ファミリー サルーン |
-4WPYRUZII5YV7YA42 | セダン |
-D1ZVY26UV2BFGHZNO | ハイブリッド |
-XUF99EW9OIQOMV7Q7 | ファミリー サルーン
-8OMCL3LGI7XNCC21U | コンバーチブル |
-……. | |
+FHL3O1SA4IEHB4WU1 | Sedan |
+8J0U8XCPRGW4Z3NQE | Hybrid |
+WORG68Z2PLTNZDBI7 | Family Saloon |
+JTHMYHQTEPP4WBMRN | Sedan |
+W9FTHG27LZN1YWO0Y | Hybrid |
+MHTP9N792PHK08WJM | Family Saloon |
+EI4QXI2AXVQQING4I | Sedan |
+5KKR2VB4WHQH97PF8 | Hybrid |
+W9NSZ423XZHAONYXB | Family Saloon |
+26WJSGHX4MA5ROHNL | Convertible |
+GHLUB6ONKMOSI7E77 | Station Wagon |
+9C2RHVRVLMEJDBXLP | Compact Car |
+BRNHVMZOUJ6EOCP32 | Small SUV |
+VCYVW0WUZNBTM594J | Sports Car |
+HNVCE6YFZSA5M82NY | Medium SUV |
+4R30FOR7NUOBL05GJ | Station Wagon |
+WYNIIY42VKV6OQS1J | Large SUV |
+8Y5QKG27QET1RBK7I | Large SUV |
+DF6OX2WSRA6511BVG | Coupe |
+Z2EOZWZBXAEW3E60T | Sedan |
+M4TV6IEALD5QDS3IR | Hybrid |
+VHRA1Y2TGTA84F00H | Family Saloon |
+R0JAUHT1L1R3BIKI0 | Sedan |
+9230C202Z60XX84AU | Hybrid |
+T8DNDN5UDCWL7M72H | Family Saloon |
+4WPYRUZII5YV7YA42 | Sedan |
+D1ZVY26UV2BFGHZNO | Hybrid |
+XUF99EW9OIQOMV7Q7 | Family Saloon
+8OMCL3LGI7XNCC21U | Convertible |
+…….  |   |
 
 
-### シミュレートされたデータを生成するには
-1.	データ シミュレーター パッケージをダウンロードするには、車両テレマティックス シミュレーター ノードの右上隅にある矢印をクリックします。ローカルのコンピューターにファイルを保存して、展開します。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telemetry-blueprint.png) *図 3 – 車両テレメトリ分析ソリューションのブループリント*
+### <a name="to-generate-simulated-data"></a>To generate simulated data
+1.  To download the data simulator package, click the arrow on the upper right of the Vehicle Telematics Simulator node . Save and extract the files locally on your machine. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig3-vehicle-telemetry-blueprint.png) *Figure 3 – Vehicle Telemetry Analytics Solution Blueprint*
 
-2.	ローカル コンピューター上で、車両テレマティックス シミュレーター パッケージを展開したフォルダーに移動します。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig4-vehicle-telematics-simulator-folder.png)*図 4 - 車両テレマティックス シミュレーターのフォルダー*
+2.  On your local machine, go to the folder where you extracted the Vehicle Telematics Simulator package. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig4-vehicle-telematics-simulator-folder.png) *Figure 4 – Vehicle Telematics Simulator folder*
 
-3.	アプリケーション **CarEventGenerator.exe** を実行します。
+3.  Execute the application **CarEventGenerator.exe**.
 
-### 参照
+### <a name="references"></a>References
 
-[Vehicle Telematics Simulator Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717075)
+[Vehicle Telematics Simulator Visual Studio Solution](http://go.microsoft.com/fwlink/?LinkId=717075) 
 
 [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/)
 
 [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 
 
-## データの取り込み
-車両信号、診断イベント、リアルタイム分析、一括分析を取り込むために、Azure Event Hubs、Stream Analytics、および Data Factory の組み合わせが利用されます。これらのすべてのコンポーネントは、ソリューション デプロイの一部として作成および構成されます。
+## <a name="ingestion"></a>Ingestion
+Combinations of Azure Event Hubs, Stream Analytics, and Data Factory are leveraged to ingest the vehicle signals, the diagnostic events, and real-time and batch analytics. All these components are created and configured as part of the solution deployment. 
 
-### リアルタイム分析
-車両テレマティックス シミュレーターによって生成されたイベントは、Event Hub SDK を使用してイベント ハブに公開されます。Stream Analytics ジョブは、イベント ハブからこれらのイベントを取り込み、リアルタイムでデータを処理して、車両の状態を分析します。
+### <a name="real-time-analysis"></a>Real-time analysis
+The events generated by the Vehicle Telematics Simulator are published to the Event Hub using the Event Hub SDK. The Stream Analytics job ingests these events from the Event Hub and processes the data in real time to analyze the vehicle health. 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig5-vehicle-telematics-event-hub-dashboard.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig5-vehicle-telematics-event-hub-dashboard.png) 
 
-*図 5 - Event Hub ダッシュボード*
+*Figure 5 - Event Hub dashboard*
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig6-vehicle-telematics-stream-analytics-job-processing-data.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig6-vehicle-telematics-stream-analytics-job-processing-data.png) 
 
-*図 6 - Stream Analytics ジョブによるデータの処理*
+*Figure 6 - Stream analytics job processing data*
 
-Stream Analytics ジョブは以下の処理を行います。
+The stream analytics job;
 
-- イベント ハブからデータを取り込む
-- 参照データと結合して、車両 VIN を対応するモデルにマップする
-- データを Azure Blob Storage に保持して、さまざまな一括分析で利用できるようにする
+- ingests data from the Event Hub 
+- performs a join with the reference data to map the vehicle VIN to the corresponding model 
+- persists them into Azure blob storage for rich batch analytics. 
 
-以下の Stream Analytics クエリを使用して、データを Azure Blob Storage に保持します。
+The following stream analytics query is used to persist the data into Azure blob storage. 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig7-vehicle-telematics-stream-analytics-job-query-for-data-ingestion.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig7-vehicle-telematics-stream-analytics-job-query-for-data-ingestion.png) 
 
-*図 7 - データを取り込むための Stream Analytics ジョブ クエリ*
+*Figure 7 - Stream analytics job query for data ingestion*
 
-### 一括分析
-さまざまな一括分析のために、シミュレートされた車両信号と診断データセットの追加のボリュームも生成されます。これは、一括処理で適切な代表的データ ボリュームを使用するために必要です。そのために、Azure Data Factory ワークフローで "PrepareSampleDataPipeline" という名前のパイプラインを使用して、1 年分のシミュレートされた車両信号と診断データセットを生成しています。[ここ](http://go.microsoft.com/fwlink/?LinkId=717077)をクリックして、Data Factory カスタム DotNet アクティビティ Visual Studio ソリューションをダウンロードし、要件に基づいてカスタマイズします。
+### <a name="batch-analysis"></a>Batch analysis
+We are also generating an additional volume of simulated vehicle signals and diagnostic dataset for richer batch analytics. This is required to ensure a good representative data volume for batch processing. For this purpose, we are using a pipeline named "PrepareSampleDataPipeline" in the Azure Data Factory workflow to generate one year's worth of simulated vehicle signals and diagnostic dataset. Click [Data Factory custom activity](http://go.microsoft.com/fwlink/?LinkId=717077) to download the Data Factory custom DotNet activity Visual Studio solution for customizations based on your requirements. 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig8-vehicle-telematics-prepare-sample-data-for-batch-processing.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig8-vehicle-telematics-prepare-sample-data-for-batch-processing.png) 
 
-*図 8 - 一括処理ワークフローのサンプル データの準備*
+*Figure 8 - Prepare Sample data for batch processing workflow*
 
-パイプラインは、以下に示すカスタム ADF .NET アクティビティで構成されています。
+The pipeline consists of a custom ADF .Net Activity, show here:
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig9-vehicle-telematics-prepare-sample-data-pipeline.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig9-vehicle-telematics-prepare-sample-data-pipeline.png) 
 
-*図 9 - PrepareSampleDataPipeline*
+*Figure 9 - PrepareSampleDataPipeline*
 
-パイプラインが正常に実行され、"RawCarEventsTable" データセットが "Ready" としてマークされると、1 年分のシミュレートされた車両信号と診断データが生成されます。ストレージ アカウントの "connectedcar" コンテナーの下に、次のフォルダーとファイルが作成されます。
+Once the pipeline executes successfully and "RawCarEventsTable" dataset is marked "Ready", one-year worth of simulated vehicle signals and diagnostic data are produced. You see the following folder and file created in your storage account under the "connectedcar" container:
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig10-vehicle-telematics-prepare-sample-data-pipeline-output.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig10-vehicle-telematics-prepare-sample-data-pipeline-output.png) 
 
-*図 10 - PrepareSampleDataPipeline の出力*
+*Figure 10 - PrepareSampleDataPipeline Output*
 
-### 参照
+### <a name="references"></a>References
 
-[ストリームの挿入に関する Azure Event Hub SDK](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+[Azure Event Hub SDK for stream ingestion](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-[Azure Data Factory のデータ移動機能](../data-factory/data-factory-data-movement-activities.md) [Azure Data Factory DotNet アクティビティ](../data-factory/data-factory-use-custom-activities.md)
+[Azure Data Factory data movement capabilities](../data-factory/data-factory-data-movement-activities.md)
+[Azure Data Factory DotNet Activity](../data-factory/data-factory-use-custom-activities.md)
 
-[サンプル データを準備するための Azure Data Factory DotNet アクティビティの Visual Studio ソリューション](http://go.microsoft.com/fwlink/?LinkId=717077)
+[Azure Data Factory DotNet activity visual studio solution for preparing sample data](http://go.microsoft.com/fwlink/?LinkId=717077) 
 
 
-## データセットの分割
+## <a name="partition-the-dataset"></a>Partition the dataset
 
-未加工の半構造化された車両信号データセットと診断データセットは、データの準備の手順で、YEAR/MONTH 形式に分割されます。この分割はクエリを効率化します。また、最初の BLOB アカウントがいっぱいになったら次のアカウントにフェールオーバーすることにより、スケーラブルな長期保存を可能にします。
+The raw semi-structured vehicle signals and diagnostic dataset are partitioned in the data preparation step into a YEAR/MONTH format. This partitioning promotes more efficient querying and scalable long-term storage by enabling fault-over from one blob account to the next as the first account fills up. 
 
->[AZURE.NOTE] ソリューションのこの手順は、一括処理の場合にだけ行います。
+>[AZURE.NOTE] This step in the solution is applicable only to batch processing.
 
-入出力データのデータ管理
+Input and output data data management:
 
-- **出力データ** (ラベルは *PartitionedCarEventsTable*) は、基本的な "最も加工されていない" 形式のデータとして、顧客の "Data Lake" に長期間保存されます。
-- このパイプラインへの**入力データ**は、出力データが入力に対して完全に忠実であれば、通常は破棄されます。後で使用する場合にのみ、格納 (および分割) されます。
+- The **output data** (labeled *PartitionedCarEventsTable*) is to be kept for a long period of time as the foundational/"rawest" form of data in the customer's "Data Lake". 
+- The **input data** to this pipeline would typically be discarded as the output data has full fidelity to the input - it's just stored (partitioned) better for subsequent use.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig11-vehicle-telematics-partition-car-events-workflow.png)
 
-*図 11 - 車両イベントの分割のワークフロー*
+*Figure 11 – Partition Car Events workflow*
 
-生データは、"PartitionCarEventsPipeline" の Hive HDInsight アクティビティを使用して分割されます。手順 1. で生成された 1 年間のサンプル データは、YEAR/MONTH 形式に分割されます。パーティションは、1 年の各月の車両信号と診断データの生成に使用されます (合計 12 個のパーティション)。
+The raw data is partitioned using a Hive HDInsight activity in "PartitionCarEventsPipeline". The sample data generated in step 1 for a year is partitioned by YEAR/MONTH. The partitions are used to generate vehicle signals and diagnostic data for each month (total 12 partitions) of a year. 
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig12-vehicle-telematics-partition-car-events-pipeline.png)
 
-*図 12 - PartitionCarEventsPipeline*
+*Figure 12 - PartitionCarEventsPipeline*
 
-分割には、次に示す "partitioncarevents.hql" という名前の Hive スクリプトを使用します。このスクリプトは、ダウンロードした zip の \\demo\\src\\connectedcar\\scripts フォルダーにあります。
+The following Hive script, named "partitioncarevents.hql", is used for partitioning and is located in the "\demo\src\connectedcar\scripts" folder of the downloaded zip. 
 
 
-	SET hive.exec.dynamic.partition=true;
-	SET hive.exec.dynamic.partition.mode = nonstrict;
-	set hive.cli.print.header=true;
+    SET hive.exec.dynamic.partition=true;
+    SET hive.exec.dynamic.partition.mode = nonstrict;
+    set hive.cli.print.header=true;
 
-	DROP TABLE IF EXISTS RawCarEvents; 
-	CREATE EXTERNAL TABLE RawCarEvents 
-	(
-            	vin								string,
-				model							string,
-				timestamp						string,
-				outsidetemperature				string,
-				enginetemperature				string,
-				speed							string,
-				fuel							string,
-				engineoil						string,
-				tirepressure					string,
-				odometer						string,
-				city							string,
-				accelerator_pedal_position		string,
-				parking_brake_status			string,
-				headlamp_status					string,
-				brake_pedal_status				string,
-				transmission_gear_position		string,
-				ignition_status					string,
-				windshield_wiper_status			string,
-				abs  							string,
-				gendate							string
+    DROP TABLE IF EXISTS RawCarEvents; 
+    CREATE EXTERNAL TABLE RawCarEvents 
+    (
+                vin                             string,
+                model                           string,
+                timestamp                       string,
+                outsidetemperature              string,
+                enginetemperature               string,
+                speed                           string,
+                fuel                            string,
+                engineoil                       string,
+                tirepressure                    string,
+                odometer                        string,
+                city                            string,
+                accelerator_pedal_position      string,
+                parking_brake_status            string,
+                headlamp_status                 string,
+                brake_pedal_status              string,
+                transmission_gear_position      string,
+                ignition_status                 string,
+                windshield_wiper_status         string,
+                abs                             string,
+                gendate                         string
                 
-	) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:RAWINPUT}'; 
+    ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:RAWINPUT}'; 
 
-	DROP TABLE IF EXISTS PartitionedCarEvents; 
-	CREATE EXTERNAL TABLE PartitionedCarEvents 
-	(
-            	vin								string,
-				model							string,
-				timestamp						string,
-				outsidetemperature				string,
-				enginetemperature				string,
-				speed							string,
-				fuel							string,
-				engineoil						string,
-				tirepressure					string,
-				odometer						string,
-				city							string,
-				accelerator_pedal_position		string,
-				parking_brake_status			string,
-				headlamp_status					string,
-				brake_pedal_status				string,
-				transmission_gear_position		string,
-				ignition_status					string,
-				windshield_wiper_status			string,
-				abs  							string,
-				gendate							string
-	) partitioned by (YearNo int, MonthNo int) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:PARTITIONEDOUTPUT}';
+    DROP TABLE IF EXISTS PartitionedCarEvents; 
+    CREATE EXTERNAL TABLE PartitionedCarEvents 
+    (
+                vin                             string,
+                model                           string,
+                timestamp                       string,
+                outsidetemperature              string,
+                enginetemperature               string,
+                speed                           string,
+                fuel                            string,
+                engineoil                       string,
+                tirepressure                    string,
+                odometer                        string,
+                city                            string,
+                accelerator_pedal_position      string,
+                parking_brake_status            string,
+                headlamp_status                 string,
+                brake_pedal_status              string,
+                transmission_gear_position      string,
+                ignition_status                 string,
+                windshield_wiper_status         string,
+                abs                             string,
+                gendate                         string
+    ) partitioned by (YearNo int, MonthNo int) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:PARTITIONEDOUTPUT}';
 
-	DROP TABLE IF EXISTS Stage_RawCarEvents; 
-	CREATE TABLE IF NOT EXISTS Stage_RawCarEvents 
-	(
-            	vin								string,
-				model							string,
-				timestamp						string,
-				outsidetemperature				string,
-				enginetemperature				string,
-				speed							string,
-				fuel							string,
-				engineoil						string,
-				tirepressure					string,
-				odometer						string,
-				city							string,
-				accelerator_pedal_position		string,
-				parking_brake_status			string,
-				headlamp_status					string,
-				brake_pedal_status				string,
-				transmission_gear_position		string,
-				ignition_status					string,
-				windshield_wiper_status			string,
-				abs  							string,
-				gendate							string,
-				YearNo 							int,
-				MonthNo 						int) 
-	ROW FORMAT delimited fields terminated by ',' LINES TERMINATED BY '10';
+    DROP TABLE IF EXISTS Stage_RawCarEvents; 
+    CREATE TABLE IF NOT EXISTS Stage_RawCarEvents 
+    (
+                vin                             string,
+                model                           string,
+                timestamp                       string,
+                outsidetemperature              string,
+                enginetemperature               string,
+                speed                           string,
+                fuel                            string,
+                engineoil                       string,
+                tirepressure                    string,
+                odometer                        string,
+                city                            string,
+                accelerator_pedal_position      string,
+                parking_brake_status            string,
+                headlamp_status                 string,
+                brake_pedal_status              string,
+                transmission_gear_position      string,
+                ignition_status                 string,
+                windshield_wiper_status         string,
+                abs                             string,
+                gendate                         string,
+                YearNo                          int,
+                MonthNo                         int) 
+    ROW FORMAT delimited fields terminated by ',' LINES TERMINATED BY '10';
 
-	INSERT OVERWRITE TABLE Stage_RawCarEvents
-	SELECT
-		vin,			
-		model,
-		timestamp,
-		outsidetemperature,
-		enginetemperature,
-		speed,
-		fuel,
-		engineoil,
-		tirepressure,
-		odometer,
-		city,
-		accelerator_pedal_position,
-		parking_brake_status,
-		headlamp_status,
-		brake_pedal_status,
-		transmission_gear_position,
-		ignition_status,
-		windshield_wiper_status,
-		abs,
-		gendate,
-		Year(gendate),
-		Month(gendate)
+    INSERT OVERWRITE TABLE Stage_RawCarEvents
+    SELECT
+        vin,            
+        model,
+        timestamp,
+        outsidetemperature,
+        enginetemperature,
+        speed,
+        fuel,
+        engineoil,
+        tirepressure,
+        odometer,
+        city,
+        accelerator_pedal_position,
+        parking_brake_status,
+        headlamp_status,
+        brake_pedal_status,
+        transmission_gear_position,
+        ignition_status,
+        windshield_wiper_status,
+        abs,
+        gendate,
+        Year(gendate),
+        Month(gendate)
 
-	FROM RawCarEvents WHERE Year(gendate) = ${hiveconf:Year} AND Month(gendate) = ${hiveconf:Month}; 
+    FROM RawCarEvents WHERE Year(gendate) = ${hiveconf:Year} AND Month(gendate) = ${hiveconf:Month}; 
 
-	INSERT OVERWRITE TABLE PartitionedCarEvents PARTITION(YearNo, MonthNo) 
-	SELECT
-		vin,			
-		model,
-		timestamp,
-		outsidetemperature,
-		enginetemperature,
-		speed,
-		fuel,
-		engineoil,
-		tirepressure,
-		odometer,
-		city,
-		accelerator_pedal_position,
-		parking_brake_status,
-		headlamp_status,
-		brake_pedal_status,
-		transmission_gear_position,
-		ignition_status,
-		windshield_wiper_status,
-		abs,
-		gendate,
-		YearNo,
-		MonthNo
-	FROM Stage_RawCarEvents WHERE YearNo = ${hiveconf:Year} AND MonthNo = ${hiveconf:Month};
+    INSERT OVERWRITE TABLE PartitionedCarEvents PARTITION(YearNo, MonthNo) 
+    SELECT
+        vin,            
+        model,
+        timestamp,
+        outsidetemperature,
+        enginetemperature,
+        speed,
+        fuel,
+        engineoil,
+        tirepressure,
+        odometer,
+        city,
+        accelerator_pedal_position,
+        parking_brake_status,
+        headlamp_status,
+        brake_pedal_status,
+        transmission_gear_position,
+        ignition_status,
+        windshield_wiper_status,
+        abs,
+        gendate,
+        YearNo,
+        MonthNo
+    FROM Stage_RawCarEvents WHERE YearNo = ${hiveconf:Year} AND MonthNo = ${hiveconf:Month};
 
-*図 13 - PartitionConnectedCarEvents Hive スクリプト*
+*Figure 13 - PartitionConnectedCarEvents Hive Script*
 
-パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、次のパーティションが生成されます。
+Once the pipeline is executed successfully, you see the following partitions generated in your storage account under the "connectedcar" container.
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig14-vehicle-telematics-partitioned-output.png)
 
-*図 14 - 分割された出力*
+*Figure 14 - Partitioned Output*
 
-データは最適化され、管理しやすくなり、さまざまな一括調査を処理する準備ができました。
+The data is now optimized, is more manageable and ready for further processing to gain rich batch insights. 
 
-## データ分析
+## <a name="data-analysis"></a>Data Analysis
 
-このセクションでは、Azure Stream Analytics、Azure Machine Learning、Azure Data Factory、Azure HDInsight を組み合わせて、車両の状態と運転の習慣に対してさまざまな高度な分析を行う方法について説明します。このセクションには、次の 3 つのサブセクションがあります。
+In this section, you see how to combine Azure Stream Analytics, Azure Machine Learning, Azure Data Factory, and Azure HDInsight for rich advanced analytics on vehicle health and driving habits. There are three subsections here:
 
-1.	**機械学習**: このサブセクションには、サービス メンテナンスを必要とする車両と、安全性の問題のためにリコールを必要とする車両を予測するためにこのソリューションで使用した、異常検出実験に関する情報が含まれています。
-2.	**リアルタイム分析**: このサブセクションには、Stream Analytics クエリ言語を使用し、カスタム アプリケーションによるリアルタイムでの機械学習実験を運用可能にした、リアルタイム分析に関する情報が含まれています。
-3.	**一括分析**: このサブセクションには、Azure Data Factory によって運用可能になった Azure HDInsight と Azure Machine Learning を使用した、一括データの変換と処理に関する情報が含まれています。
+1.  **Machine Learning**: This subsection contains information on the anomaly detection experiment that we have used in this solution to predict vehicles requiring servicing maintenance and vehicles requiring recalls due to safety issues.
+2.  **Real-time analysis**: This subsection contains information regarding the real-time analytics using the Stream Analytics Query Language and operationalizing the machine learning experiment in real time using a custom application.
+3.  **Batch analysis**: This subsection contains information regarding the transforming and processing of the batch data using Azure HDInsight and Azure Machine Learning operationalized by Azure Data Factory.
 
-### Machine Learning
+### <a name="machine-learning"></a>Machine Learning
 
-ここでの目標は、特定の状態の統計データに基づいて、メンテナンスやリコールを必要とする車両を予測することです。想定した条件は、以下のとおりです。
+Our goal here is to predict the vehicles that require maintenance or recall based on certain heath statistics. We make the following assumptions
 
-- 次の 3 つの条件のいずれかに該当する場合、車両は**サービス メンテナンス**を必要とする。
-	- タイヤ空気圧が低い
-	- エンジン オイルのレベルが低い
-	- エンジン温度が高い
+- If one of the following three conditions are true, the vehicles require **servicing maintenance**:
+    - Tire pressure is low
+    - Engine oil level is low
+    - Engine temperature is high
 
-- 次の条件のいずれかに該当する場合、車両には**安全性の問題**があり、**リコール**を必要とする。
-	- エンジン温度が高いが、外部温度が低い
-	- エンジン温度が低いが、外部温度が高い
+- If one of the following conditions are true, the vehicles may have a **safety issue** and require **recall**:
+    - Engine temperature is high but outside temperature is low
+    - Engine temperature is low but outside temperature is high
 
-これらの要件に基づき、異常を検出するための 2 つの異なるモデルを作成しました。1 つは車両メンテナンスの検出用で、もう 1 つは車両リコールの検出用です。どちらのモデルでも、異常検出のために、組み込みの主成分分析 (PCA) アルゴリズムが使用されています。
+Based on the previous requirements, we have created two separate models to detect anomalies, one for vehicle maintenance detection, and one for vehicle recall detection. In both these models, the built-in Principal Component Analysis (PCA) algorithm is used for anomaly detection. 
 
-**メンテナンス検出モデル**
+**Maintenance detection model**
 
-3 つのインジケーター (タイヤ空気圧、エンジン オイル、エンジン温度) のいずれかがそれぞれの条件を満たす場合、メンテナンス検出モデルは異常を報告します。そのため、モデルの構築では、これらの 3 つの変数だけを考慮すれば済みます。Azure Machine Learning による実験では、まず、**データセット内の列の選択**モジュールを使用して、これらの 3 つの変数を抽出します。次に、PCA ベースの異常検出モジュールを使用して、異常検出モデルを構築します。
+If one of three indicators - tire pressure, engine oil, or engine temperature - satisfies its respective condition, the maintenance detection model reports an anomaly. As a result, we only need to consider these three variables in building the model. In our experiment in Azure Machine Learning, we first use a **Select Columns in Dataset** module to extract these three variables. Next we use the PCA-based anomaly detection module to build the anomaly detection model. 
 
-主成分分析 (PCA) は、機能の選択、分類、および異常検出に使用できる、機械学習で確立された手法です。PCA では、関連を持つ可能性がある変数を含むケースのセットを、主要成分と呼ばれる値のセットに変換します。PCA ベースのモデルの基本的な考え方は、機能や異常をより簡単に識別できるように、データをより低い次元の空間に投影することです。
+Principal Component Analysis (PCA) is an established technique in machine learning that can be applied to feature selection, classification, and anomaly detection. PCA converts a set of case containing possibly correlated variables, into a set of values called principal components. The key idea of PCA-based modeling is to project data onto a lower-dimensional space so that features and anomalies can be more easily identified.
  
-検出モデルの新しい入力のそれぞれに対して、異常検出機能はまず、固有ベクトルへの投影を計算し、次に正規化された再構成エラーを計算します。この正規化されたエラーが、異常スコアです。エラーのスコアが高いほど、より異常なインスタンスになります。
+For each new input to  the detection model, the anomaly detector first computes its projection on the eigenvectors, and then computes the normalized reconstruction error. This normalized error is the anomaly score. The higher the error, the more anomalous the instance is. 
 
-メンテナンス検出の問題では、各レコードを 3 次元空間内の点として考えることができます。この点は、タイヤ空気圧、エンジン オイル、およびエンジン温度の座標によって定義されます。これらの異常をキャプチャするには、PCA を使用して、3 次元空間内の元データを 2 次元空間に投影します。そのため、PCA で使用する Number of components パラメーターを 2 に設定しました。このパラメーターは、PCA ベースの異常検出を適用するときに、重要な役割を果たします。PCA を使用してデータを投影すると、これらの異常をより簡単に特定できます。
+In the maintenance detection problem, each record can be considered as a point in a 3-dimensional space defined by tire pressure, engine oil, and engine temperature coordinates. To capture these anomalies, we can project the original data in the 3-dimensional space onto a 2-dimensional space using PCA. Thus, we set the parameter Number of components to use in PCA to be 2. This parameter plays an important role in applying PCA-based anomaly detection. After projecting data using PCA, we can identify these anomalies more easily.
 
-**リコール異常検出モデル** リコール異常検出モデルでは、データセット内の列の選択モジュールと PCA ベースの異常検出モジュールを同じような方法で使用します。具体的には、まず、**データセット内の列の選択**モジュールを使用して、3 つの変数 (エンジン温度、外部温度、速度) を抽出します。エンジン温度は、通常、速度と関連しているため、速度の変数も含めます。次に、PCA ベースの異常検出モジュールを使用して、3 次元空間から 2 次元空間にデータを投影します。エンジン温度と外部温度が大きく負相関している場合、リコール条件が満たされ、車両のリコールが必要になります。PCA ベースの異常検出アルゴリズムを使用すると、PCA の実行後、異常をキャプチャできます。
+**Recall anomaly detection model** In the recall anomaly detection model, we use the Select Columns in Dataset and PCA-based anomaly detection modules in a similar way. Specifically, we first extract three variables - engine temperature, outside temperature, and speed - using the **Select Columns in Dataset** module. We also include the speed variable since the engine temperature typically is correlated to the speed. Next we use PCA-based anomaly detection module to project the data from the 3-dimensional space onto a 2-dimensional space. The recall criteria are satisfied and so the vehicle requires recall when engine temperature and outside temperature are highly negatively correlated. Using PCA-based anomaly detection algorithm, we can capture the anomalies after performing PCA. 
 
-どちらのモデルをトレーニングするときも、PCA ベースの異常検出モデルをトレーニングするための入力データとして、メンテナンスやリコールを必要としない通常のデータを使用する必要があります。スコア付け実験では、トレーニング済みの異常検出モデルを使用して、車両がメンテナンスやリコールを必要とするかどうかを調べます。
+When training either model, we need to use normal data, which does not require maintenance or recall as the input data to train the PCA-based anomaly detection model. In the scoring experiment, we use the trained anomaly detection model to detect whether or not the vehicle requires maintenance or recall. 
 
 
-### リアルタイム分析
+### <a name="real-time-analysis"></a>Real-time analysis
 
-次の Stream Analytics SQL クエリを使用して、車両速度、燃料レベル、エンジン温度、走行距離計の数値、タイヤ空気圧、エンジン オイル レベルなどの重要な車両パラメーターすべての平均を取得します。この平均を使用して、異常を検出してアラートを発行し、特定の地域で運転されている車両の全体的な状態を判断して、人口統計に関連付けます。
+The following Stream Analytics SQL Query is used to get the average of all the important vehicle parameters like vehicle speed, fuel level, engine temperature, odometer reading, tire pressure, engine oil level, and others. The averages are used to detect anomalies, issue alerts, and determine the overall health conditions of vehicles operated in specific region and then correlate it to demographics. 
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig15-vehicle-telematics-stream-analytics-query-for-real-time-processing.png)
 
-図 15 - リアルタイム処理のための Stream Analytics クエリ
+Figure 15 – Stream analytics query for real-time processing
 
-すべての平均は、3 秒間のタンブリング ウィンドウで計算します。ここでタンブリング ウィンドウを使用しているのは、重複せずに連続する時間間隔が必要であるためです。
+All the averages are calculated over a 3-second TumblingWindow. We are using TubmlingWindow in this case since we require non-overlapping and contiguous time intervals. 
 
-Azure Stream Analytics のすべての "ウィンドウ化" 機能の詳細については、「[Windowing (Azure Stream Analytics) (ウィンドウ化 (Azure Stream Analytics))](https://msdn.microsoft.com/library/azure/dn835019.aspx)」を参照してください。
+To learn more about all the "Windowing" capabilities in Azure Stream Analytics, click [Windowing (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835019.aspx).
 
-**リアルタイムの予測**
+**Real-time prediction**
 
-機械学習モデルをリアルタイムで運用できるようにするアプリケーションが、ソリューションの一部として含まれています。"RealTimeDashboardApp" と呼ばれるこのアプリケーションは、ソリューションのデプロイの一環として作成および構成されます。このアプリケーションは、以下の処理を行います。
+An application is included as part of the solution to operationalize the machine learning model in real time. This application called “RealTimeDashboardApp” is created and configured as part of the solution deployment. The application performs the following:
 
-1.	Stream Analytics があるパターンで連続的にイベントを発行しているイベント ハブ インスタンスをリッスンします。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-stream-analytics-query-for-publishing.png)"*図 16 – 出力のイベント ハブ インスタンスにデータを発行するための Stream Analytics クエリ*"
+1.  Listens to an Event Hub instance where Stream Analytics is publishing the events in a pattern continuously. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig16-vehicle-telematics-stream-analytics-query-for-publishing.png)*Figure 16 – Stream analytics query for publishing the data to an output Event Hub instance* 
 
-2.	このアプリケーションが受け取るすべてのイベントに対して、次の処理を行います。
+2.  For every event that this application receives: 
 
-	- Machine Learning Request-Response Scoring (RRS) エンドポイントを使用して、データを処理します。RRS エンドポイントは、デプロイの一環として自動的に発行されます。
-	- RRS 出力は、プッシュ API を使用して PowerBI データセットに発行されます。
+    - Processes the data using Machine Learning Request-Response Scoring (RRS) endpoint. The RRS endpoint is automatically published as part of the deployment.
+    - The RRS output is published to a PowerBI dataset using the push APIs.
 
-このパターンは、基幹業務 (LOB) アプリケーションを、アラート、通知、メッセージングなどのシナリオ用のリアルタイム分析フローと統合するシナリオにも適用できます。
+This pattern is also applicable to scenarios in which you want to integrate a Line of Business (LoB) application with the real-time analytics flow, for scenarios such as alerts, notifications, and messaging.
 
-[ここ](http://go.microsoft.com/fwlink/?LinkId=717078)をクリックして、RealtimeDashboardApp Visual Studio ソリューションをダウンロードし、カスタマイズします。
+Click [RealtimeDashboardApp download](http://go.microsoft.com/fwlink/?LinkId=717078) to download the RealtimeDashboardApp Visual Studio solution for customizations. 
 
-**リアルタイム ダッシュボード アプリケーションを実行するには**
+**To execute the Real-time Dashboard Application**
 
-1.	ダイアグラム ビューで PowerBI ノードをクリックし、プロパティ ウィンドウで "Download Real-time Dashboard Application" リンクをクリックします。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17-vehicle-telematics-powerbi-dashboard-setup.png) *図 17 – PowerBI ダッシュボードのセットアップ手順*
-2.	ローカルに展開し、保存します。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-realtimedashboardapp-folder.png) *図 18 – RealtimeDashboardApp フォルダー*
-3.	RealtimeDashboardApp.exe アプリケーションを実行します。
-4.	有効な Power BI 資格情報を指定し、サインインして、[Accept] をクリックします。![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png)
+1.  Click the PowerBI node on the diagram view and click the "Download Real-time Dashboard Application" link on the properties pane. ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig17-vehicle-telematics-powerbi-dashboard-setup.png) *Figure 17 – PowerBI dashboard setup instructions*
+2.  Extract and save locally ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig18-vehicle-telematics-realtimedashboardapp-folder.png) *Figure 18 – RealtimeDashboardApp folder*
+3.  Execute the application RealtimeDashboardApp.exe
+4.  Provide valid Power BI credentials, sign in and click Accept ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19a-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig19b-vehicle-telematics-realtimedashboardapp-sign-in-to-powerbi.png) 
 
-"*図 19 – RealtimeDashboardApp: PowerBI へのサインイン*"
+*Figure 19 – RealtimeDashboardApp: Sign in to PowerBI*
 
->[AZURE.NOTE] PowerBI データセットをフラッシュする場合は、"flushdata" パラメーターを指定して RealtimeDashboardApp を実行します。
+>[AZURE.NOTE] If you want to flush the PowerBI dataset, execute the RealtimeDashboardApp with the "flushdata" parameter: 
 
-	RealtimeDashboardApp.exe -flushdata
+    RealtimeDashboardApp.exe -flushdata
 
-### 一括分析
+### <a name="batch-analysis"></a>Batch analysis
 
-ここでの目標は、Contoso Motors がビッグ データを活用するために Azure コンピューティング機能をどのように使用しているかを示すことです。運転パターン、使用行動、および車両の状態についてさまざまな情報を得て、次のようなことに役立てています。これにより、次のことが可能になります。
+The goal here is to show how Contoso Motors utilizes the Azure compute capabilities to harness big data to gain rich insights on driving pattern, usage behavior, and vehicle health. This makes it possible to:
 
-- カスタマー エクスペリエンスを向上させ、運転の習慣や燃費のよい運転行動についての知見を提供して、コストを下げます。
-- 顧客とその運転パターンについて事前に学習して、ビジネスの意思決定を制御したり、最高クラスの製品やサービスを提供します。
+- Improve the customer experience and make it cheaper by providing insights on driving habits and fuel efficient driving behaviors
+- Learn proactively about customers and their driving patters to govern business decisions and provide the best in class products & services
 
-このソリューションでは、以下のメトリックを対象にします。
+In this solution, we are targeting the following metrics:
 
-1.	**アグレッシブな運転行動**: モデル、場所、運転条件、時期の傾向を識別して、アグレッシブな運転パターンを把握します。Contoso Motors は、マーケティング キャンペーン、新しい個人用機能の促進、走行距離ベースの保険料などにこれらの知見を使用できます。
-2.	**低燃費な運転行動**: モデル、場所、運転条件、時期の傾向を識別して、低燃費な運転パターンを把握します。Contoso Motors は、マーケティング キャンペーン、新機能の促進、低コストで環境にやさしい運転習慣についての運転者への積極的な広報などにこれらの知見を使用できます。
-3.	**リコール モデル**: 異常検出の機械学習実験を実施して、リコールを必要とするモデルを識別します。
+1.  **Aggressive driving behavior**: Identifies the trend of the models, locations, driving conditions, and time of the year to gain insights on aggressive driving patterns. Contoso Motors can use these insights for marketing campaigns, driving new personalized features and usage-based insurance.
+2.  **Fuel efficient driving behavior**: Identifies the trend of the models, locations, driving conditions, and time of the year to gain insights on fuel efficient driving patterns. Contoso Motors can use these insights for marketing campaigns, driving new features and proactive reporting to the drivers for cost effective and environment friendly driving habits. 
+3.  **Recall models**: Identifies models requiring recalls by operationalizing the anomaly detection machine learning experiment
 
-次に、各メトリックの詳細を説明します。
+Let's look into the details of each of these metrics,
 
 
-**アグレッシブな運転パターン**
+**Aggressive driving pattern**
 
-分割された車両信号と診断データが、"AggresiveDrivingPatternPipeline" という名前のパイプラインで Hive を使用して処理され、アグレッシブな運転パターンを示すモデル、場所、車両、運転条件などのパラメーターが特定されます。
+The partitioned vehicle signals and diagnostic data are processed in the pipeline named "AggresiveDrivingPatternPipeline" using Hive to determine the models, location, vehicle, driving conditions, and other parameters that exhibits aggressive driving pattern.
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig20-vehicle-telematics-aggressive-driving-pattern.png) *図 20 – アグレッシブな運転パターンのワークフロー*
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig20-vehicle-telematics-aggressive-driving-pattern.png) 
+*Figure 20 – Aggressive driving pattern workflow*
 
-アグレッシブな運転条件パターンを分析するために使用される "aggresivedriving.hql" という名前の Hive スクリプトは、ダウンロードした zip ファイルの \\demo\\src\\connectedcar\\scripts フォルダーにあります。
+The Hive script named "aggresivedriving.hql" used for analyzing aggressive driving condition pattern is located at "\demo\src\connectedcar\scripts" folder of the downloaded zip. 
 
-	DROP TABLE IF EXISTS PartitionedCarEvents; 
-	CREATE EXTERNAL TABLE PartitionedCarEvents
-	(
-            	vin								string,
-				model							string,
-				timestamp						string,
-				outsidetemperature				string,
-				enginetemperature				string,
-				speed							string,
-				fuel							string,
-				engineoil						string,
-				tirepressure					string,
-				odometer						string,
-				city							string,
-				accelerator_pedal_position		string,
-				parking_brake_status			string,
-				headlamp_status					string,
-				brake_pedal_status				string,
-				transmission_gear_position		string,
-				ignition_status					string,
-				windshield_wiper_status			string,
-				abs  							string,
-				gendate							string
+    DROP TABLE IF EXISTS PartitionedCarEvents; 
+    CREATE EXTERNAL TABLE PartitionedCarEvents
+    (
+                vin                             string,
+                model                           string,
+                timestamp                       string,
+                outsidetemperature              string,
+                enginetemperature               string,
+                speed                           string,
+                fuel                            string,
+                engineoil                       string,
+                tirepressure                    string,
+                odometer                        string,
+                city                            string,
+                accelerator_pedal_position      string,
+                parking_brake_status            string,
+                headlamp_status                 string,
+                brake_pedal_status              string,
+                transmission_gear_position      string,
+                ignition_status                 string,
+                windshield_wiper_status         string,
+                abs                             string,
+                gendate                         string
                                 
-	) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:PARTITIONEDINPUT}';
+    ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:PARTITIONEDINPUT}';
 
-	DROP TABLE IF EXISTS CarEventsAggresive; 
-	CREATE EXTERNAL TABLE CarEventsAggresive
-	(
-               	vin 						string, 
-				model						string,
-                timestamp					string,
-				city						string,
-				speed 			 			string,
-				transmission_gear_position	string,
-				brake_pedal_status			string,
-				Year						string,
-				Month						string
+    DROP TABLE IF EXISTS CarEventsAggresive; 
+    CREATE EXTERNAL TABLE CarEventsAggresive
+    (
+                vin                         string, 
+                model                       string,
+                timestamp                   string,
+                city                        string,
+                speed                       string,
+                transmission_gear_position  string,
+                brake_pedal_status          string,
+                Year                        string,
+                Month                       string
                                 
-	) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:AGGRESIVEOUTPUT}';
+    ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:AGGRESIVEOUTPUT}';
 
 
 
-	INSERT OVERWRITE TABLE CarEventsAggresive
-	select
-	vin,
-	model,
-	timestamp,
-	city,
-	speed,
-	transmission_gear_position,
-	brake_pedal_status,
-	"${hiveconf:Year}" as Year,
-	"${hiveconf:Month}" as Month
-	from PartitionedCarEvents
-	where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND brake_pedal_status = '1' AND speed >= '50'
+    INSERT OVERWRITE TABLE CarEventsAggresive
+    select
+    vin,
+    model,
+    timestamp,
+    city,
+    speed,
+    transmission_gear_position,
+    brake_pedal_status,
+    "${hiveconf:Year}" as Year,
+    "${hiveconf:Month}" as Month
+    from PartitionedCarEvents
+    where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND brake_pedal_status = '1' AND speed >= '50'
 
-*図 21 – アグレッシブな運転パターンの Hive クエリ*
+*Figure 21 – Aggressive driving pattern Hive query*
 
-このスクリプトは、車両のギアの位置、ブレーキ ペダルの状態、速度の組み合わせを使用して、高速度でのブレーキ使用パターンに基づいた無謀/アグレッシブな運転行動を検出します。
+It uses the combination of vehicle's transmission gear position, brake pedal status, and speed to detect reckless/aggressive driving behavior based on braking pattern at high speed. 
 
-パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、次のパーティションが生成されます。
+Once the pipeline is executed successfully, you see the following partitions generated in your storage account under the "connectedcar" container.
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig22-vehicle-telematics-aggressive-driving-pattern-output.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig22-vehicle-telematics-aggressive-driving-pattern-output.png) 
 
-*図 22 – AggressiveDrivingPatternPipeline の出力*
+*Figure 22 – AggressiveDrivingPatternPipeline output*
 
 
-**低燃費な運転パターン**
+**Fuel efficient driving pattern**
 
-分割された車両信号と診断データが、"FuelEfficientDrivingPatternPipeline" という名前のパイプラインで処理されます。Hive を使用して、低燃費な運転パターンを示すモデル、場所、車両、運転条件などのプロパティが特定されます。
+The partitioned vehicle signals and diagnostic data are processed in the pipeline named "FuelEfficientDrivingPatternPipeline". Hive is used to determine the models, location, vehicle, driving conditions, and other properties that exhibit fuel efficient driving pattern.
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig23-vehicle-telematics-fuel-efficient-driving-pattern.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig23-vehicle-telematics-fuel-efficient-driving-pattern.png) 
 
-*図 23 – 低燃費な運転パターンのワークフロー*
+*Figure 23 – Fuel efficient driving pattern workflow*
 
-アグレッシブな運転条件パターンを分析するために使用される "fuelefficientdriving.hql" という名前の Hive スクリプトは、ダウンロードした zip ファイルの \\demo\\src\\connectedcar\\scripts フォルダーにあります。
+The Hive script named "fuelefficientdriving.hql" used for analyzing aggressive driving condition pattern is located at "\demo\src\connectedcar\scripts" folder of the downloaded zip. 
 
-	DROP TABLE IF EXISTS PartitionedCarEvents; 
-	CREATE EXTERNAL TABLE PartitionedCarEvents
-	(
-            	vin								string,
-				model							string,
-				timestamp						string,
-				outsidetemperature				string,
-				enginetemperature				string,
-				speed							string,
-				fuel							string,
-				engineoil						string,
-				tirepressure					string,
-				odometer						string,
-				city							string,
-				accelerator_pedal_position		string,
-				parking_brake_status			string,
-				headlamp_status					string,
-				brake_pedal_status				string,
-				transmission_gear_position		string,
-				ignition_status					string,
-				windshield_wiper_status			string,
-				abs  							string,
-				gendate							string
+    DROP TABLE IF EXISTS PartitionedCarEvents; 
+    CREATE EXTERNAL TABLE PartitionedCarEvents
+    (
+                vin                             string,
+                model                           string,
+                timestamp                       string,
+                outsidetemperature              string,
+                enginetemperature               string,
+                speed                           string,
+                fuel                            string,
+                engineoil                       string,
+                tirepressure                    string,
+                odometer                        string,
+                city                            string,
+                accelerator_pedal_position      string,
+                parking_brake_status            string,
+                headlamp_status                 string,
+                brake_pedal_status              string,
+                transmission_gear_position      string,
+                ignition_status                 string,
+                windshield_wiper_status         string,
+                abs                             string,
+                gendate                         string
                                 
-	) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:PARTITIONEDINPUT}';
+    ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:PARTITIONEDINPUT}';
 
-	DROP TABLE IF EXISTS FuelEfficientDriving; 
-	CREATE EXTERNAL TABLE FuelEfficientDriving
-	(
-               	vin 						string, 
-				model						string,
-               	city						string,
-				speed 			 			string,
-				transmission_gear_position	string,                
-				brake_pedal_status			string,            
-				accelerator_pedal_position	string,                             
-				Year						string,
-				Month						string
+    DROP TABLE IF EXISTS FuelEfficientDriving; 
+    CREATE EXTERNAL TABLE FuelEfficientDriving
+    (
+                vin                         string, 
+                model                       string,
+                city                        string,
+                speed                       string,
+                transmission_gear_position  string,                
+                brake_pedal_status          string,            
+                accelerator_pedal_position  string,                             
+                Year                        string,
+                Month                       string
                                 
-	) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:FUELEFFICIENTOUTPUT}';
+    ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:FUELEFFICIENTOUTPUT}';
 
 
 
-	INSERT OVERWRITE TABLE FuelEfficientDriving
-	select
-	vin,
-	model,
-	city,
-	speed,
-	transmission_gear_position,
-	brake_pedal_status,
-	accelerator_pedal_position,
-	"${hiveconf:Year}" as Year,
-	"${hiveconf:Month}" as Month
-	from PartitionedCarEvents
-	where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND parking_brake_status = '0' AND brake_pedal_status = '0' AND speed <= '60' AND accelerator_pedal_position >= '50'
+    INSERT OVERWRITE TABLE FuelEfficientDriving
+    select
+    vin,
+    model,
+    city,
+    speed,
+    transmission_gear_position,
+    brake_pedal_status,
+    accelerator_pedal_position,
+    "${hiveconf:Year}" as Year,
+    "${hiveconf:Month}" as Month
+    from PartitionedCarEvents
+    where transmission_gear_position IN ('fourth', 'fifth', 'sixth', 'seventh', 'eight') AND parking_brake_status = '0' AND brake_pedal_status = '0' AND speed <= '60' AND accelerator_pedal_position >= '50'
 
 
-*図 24 – 低燃費な運転パターンの Hive クエリ*
+*Figure 24 – Fuel efficient driving pattern Hive query*
 
-このスクリプトは、車両のギアの位置、ブレーキ ペダルの状態、速度、アクセル ペダルの位置の組み合わせを使用して、加速度、ブレーキ使用、速度のパターンに基づいた低燃費な運転行動を検出します。
+It uses the combination of vehicle's transmission gear position, brake pedal status, speed, and accelerator pedal position to detect fuel efficient driving behavior based on acceleration, braking, and speed patterns. 
 
-パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、次のパーティションが生成されます。
+Once the pipeline is executed successfully, you see the following partitions generated in your storage account under the "connectedcar" container.
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-fuel-efficient-driving-pattern-output.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig25-vehicle-telematics-fuel-efficient-driving-pattern-output.png) 
 
-*図 25 - FuelEfficientDrivingPatternPipeline の出力*
+*Figure 25 – FuelEfficientDrivingPatternPipeline output*
 
 
-**リコール予測**
+**Recall Predictions**
 
-機械学習実験はプロビジョニングされ、ソリューション デプロイの一環として、Web サービスとして発行されます。このワークフローでは、バッチ スコアリング エンドポイントが使用されます。データ ファクトリのリンクされたサービスとして登録され、データ ファクトリのバッチ スコアリング アクティビティを使用して運用可能にされます。
+The machine learning experiment is provisioned and published as a web service as part of the solution deployment. The batch scoring end point is leveraged in this workflow, registered as a data factory linked service and operationalized using data factory batch scoring activity.
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig26-vehicle-telematics-machine-learning-endpoint.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig26-vehicle-telematics-machine-learning-endpoint.png) 
 
-*図 26 – データ ファクトリのリンクされたサービスとして登録された機械学習エンドポイント*
+*Figure 26 – Machine learning endpoint registered as a linked service in data factory*
 
-登録された、リンクされたサービスは、異常検出モデルを使用してデータにスコアを付けるために、DetectAnomalyPipeline で使用されます。
+The registered linked service is used in the DetectAnomalyPipeline to score the data using the anomaly detection model. 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig27-vehicle-telematics-aml-batch-scoring.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig27-vehicle-telematics-aml-batch-scoring.png) 
 
-*図 27 – データ ファクトリでの Azure Machine Learning バッチ スコアリング アクティビティ*
+*Figure 27 – Azure Machine Learning Batch Scoring activity in data factory* 
 
-このパイプラインで、バッチ スコアリング Web サービスとの運用が可能になるようにデータを準備する手順は、ごくわずかです。
+There are few steps performed in this pipeline for data preparation so that it can be operationalized with the batch scoring web service. 
 
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig28-vehicle-telematics-pipeline-predicting-recalls.png)
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig28-vehicle-telematics-pipeline-predicting-recalls.png) 
 
-*図 28 – リコールが必要な車両を予測するための DetectAnomalyPipeline*
+*Figure 28 – DetectAnomalyPipeline for predicting vehicles requiring recalls* 
 
-スコア付けが完了すると、HDInsight アクティビティを使用してデータが処理および集計され、確率スコアが 0.60 以上のデータはモデルによって異常として分類されます。
+Once the scoring is completed, an HDInsight activity is used to process and aggregate the data that are categorized as anomalies by the model with a probability score of 0.60 or higher.
 
-	DROP TABLE IF EXISTS CarEventsAnomaly; 
-	CREATE EXTERNAL TABLE CarEventsAnomaly 
-	(
-            	vin							string,
-				model						string,
-				gendate						string,
-				outsidetemperature			string,
-				enginetemperature			string,
-				speed						string,
-				fuel						string,
-				engineoil					string,
-				tirepressure				string,
-				odometer					string,
-				city						string,
-				accelerator_pedal_position	string,
-				parking_brake_status		string,
-				headlamp_status				string,
-				brake_pedal_status			string,
-				transmission_gear_position	string,
-				ignition_status				string,
-				windshield_wiper_status		string,
-				abs  						string,
-				maintenanceLabel			string,
-				maintenanceProbability		string,
-				RecallLabel					string,
-				RecallProbability			string
+    DROP TABLE IF EXISTS CarEventsAnomaly; 
+    CREATE EXTERNAL TABLE CarEventsAnomaly 
+    (
+                vin                         string,
+                model                       string,
+                gendate                     string,
+                outsidetemperature          string,
+                enginetemperature           string,
+                speed                       string,
+                fuel                        string,
+                engineoil                   string,
+                tirepressure                string,
+                odometer                    string,
+                city                        string,
+                accelerator_pedal_position  string,
+                parking_brake_status        string,
+                headlamp_status             string,
+                brake_pedal_status          string,
+                transmission_gear_position  string,
+                ignition_status             string,
+                windshield_wiper_status     string,
+                abs                         string,
+                maintenanceLabel            string,
+                maintenanceProbability      string,
+                RecallLabel                 string,
+                RecallProbability           string
                                 
-	) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:ANOMALYOUTPUT}';
+    ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:ANOMALYOUTPUT}';
 
-	DROP TABLE IF EXISTS RecallModel; 
-	CREATE EXTERNAL TABLE RecallModel 
-	(
+    DROP TABLE IF EXISTS RecallModel; 
+    CREATE EXTERNAL TABLE RecallModel 
+    (
 
-				vin							string,
-				model						string,
-				city						string,
-				outsidetemperature			string,
-				enginetemperature			string,
-				speed						string,
-            	Year						string,
-				Month						string				
+                vin                         string,
+                model                       string,
+                city                        string,
+                outsidetemperature          string,
+                enginetemperature           string,
+                speed                       string,
+                Year                        string,
+                Month                       string              
                                 
-	) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:RECALLMODELOUTPUT}';
+    ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '10' STORED AS TEXTFILE LOCATION '${hiveconf:RECALLMODELOUTPUT}';
 
-	INSERT OVERWRITE TABLE RecallModel
-	select
-	vin,
-	model,
-	city,
-	outsidetemperature,
-	enginetemperature,
-	speed,
-	"${hiveconf:Year}" as Year,
-	"${hiveconf:Month}" as Month
-	from CarEventsAnomaly
-	where RecallLabel = '1' AND RecallProbability >= '0.60'
-
-
-パイプラインが正常に実行されると、ストレージ アカウントの "connectedcar" コンテナーの下に、次のパーティションが生成されます。
-
-![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-detect-anamoly-pipeline-output.png)
-
-*図 30 – DetectAnomalyPipeline の出力*
+    INSERT OVERWRITE TABLE RecallModel
+    select
+    vin,
+    model,
+    city,
+    outsidetemperature,
+    enginetemperature,
+    speed,
+    "${hiveconf:Year}" as Year,
+    "${hiveconf:Month}" as Month
+    from CarEventsAnomaly
+    where RecallLabel = '1' AND RecallProbability >= '0.60'
 
 
-## Publish
+Once the pipeline is executed successfully, you see the following partitions generated in your storage account under the "connectedcar" container.
 
-### リアルタイム分析
+![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-detect-anamoly-pipeline-output.png) 
 
-Stream Analytics ジョブのクエリの 1 つでは、出力のイベント ハブ インスタンスにイベントが発行されます。
+*Figure 30 – Figure 30 – DetectAnomalyPipeline output*
+
+
+## <a name="publish"></a>Publish
+
+### <a name="real-time-analysis"></a>Real-time analysis
+
+One of the queries in the stream analytics job publishes the events to an output Event Hub instance. 
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig31-vehicle-telematics-stream-analytics-job-publishes-output-event-hub.png)
 
-*図 31 - Stream Analytics ジョブから出力のイベント ハブ インスタンスへの発行*
+*Figure 31 – Stream analytics job publishes to an output Event Hub instance*
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig32-vehicle-telematics-stream-analytics-query-publish-output-event-hub.png)
 
-*図 32 - 出力のイベント ハブ インスタンスに発行するための Stream Analytics クエリ*
+*Figure 32 – Stream analytics query to publish to the output Event Hub instance*
 
-このイベントのストリームは、ソリューションに含まれている RealTimeDashboardApp で使用されます。このアプリケーションは、リアルタイム スコアリングのために Machine Learning Request-Response Web サービスを利用し、結果のデータを PowerBI データセットで使用するために発行します。
+This stream of events is consumed by the RealTimeDashboardApp included in the solution. This application leverages the Machine Learning Request-Response web service for real-time scoring and publishes the resultant data to a PowerBI dataset for consumption. 
 
-### 一括分析
+### <a name="batch-analysis"></a>Batch analysis
 
-バッチとリアルタイム処理の結果は、Azure SQL Database テーブルで使用するために発行されます。Azure SQL Server、データベース、およびテーブルは、セットアップ スクリプトの一部として自動的に作成されます。
+The results of the batch and real-time processing are published to the Azure SQL Database tables for consumption. The Azure SQL Server, Database, and the tables are created automatically as part of the setup script. 
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig33-vehicle-telematics-batch-processing-results-copy-to-data-mart.png)
 
-*図 33 - バッチ処理の結果をデータ マートにコピーするワークフロー*
+*Figure 33 – Batch processing results copy to data mart workflow*
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig34-vehicle-telematics-stream-analytics-job-publishes-to-data-mart.png)
 
-*図 34 - Stream Analytics ジョブからデータ マートへの発行*
+*Figure 34 – Stream analytics job publishes to data mart*
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig35-vehicle-telematics-data-mart-setting-in-stream-analytics-job.png)
 
-*図 35 – Stream Analytics ジョブでのデータ マートの設定*
+*Figure 35 – Data mart setting in stream analytics job*
 
 
-## 使用
+## <a name="consume"></a>Consume
 
-Power BI は、このソリューションに機能豊富なダッシュボードを提供し、リアルタイムなデータおよび予測分析を視覚化します。
+Power BI gives this solution a rich dashboard for real-time data and predictive analytics visualizations. 
 
-PowerBI レポートとダッシュボードを設定するための詳細な手順については、ここをクリックしてください。最終的に、ダッシュボードは、次のようになります。
+Click here for detailed instructions on setting up the PowerBI reports and the dashboard. The final dashboard looks like this:
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig36-vehicle-telematics-powerbi-dashboard.png)
 
-*図 36 - PowerBI ダッシュボード*
+*Figure 36 - PowerBI Dashboard*
 
-## 概要
+## <a name="summary"></a>Summary
 
-このドキュメントには、車両テレメトリ分析ソリューションの詳細な説明が含まれています。これは、予測と行動によるリアルタイム分析と一括分析用のラムダ アーキテクチャ パターンを示しています。このパターンは、ホット パス (リアルタイム) 分析およびコールド パス (一括) 分析を必要とする幅広いユース ケースに適用されます。
+This document contains a detailed drill-down of the Vehicle Telemetry Analytics Solution. This showcases a lambda architecture pattern for real-time and batch analytics with predictions and actions. This pattern applies to a wide range of use cases that require hot path (real-time) and cold path (batch) analytics. 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

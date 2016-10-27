@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure のデータ分類 | Microsoft Azure"
-   description="この記事では、データ分類の基礎を紹介し、特にクラウド コンピューティングで Azure を使用する状況でのデータ分類の価値について説明します。"
+   pageTitle="Data Classification for Azure | Microsoft Azure"
+   description="This article provides an introduction to the fundamentals of data classification, and highlights its value, specifically in the context of cloud computing and using Microsoft Azure"
    services="security"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,227 +16,233 @@
    ms.date="08/16/2016"
    ms.author="yurid"/>
 
-# Azure のデータ分類
 
-この記事では、データ分類の基礎を紹介し、特にクラウド コンピューティングのコンテキストで Microsoft Azure を使用する場合のデータ分類の価値について説明します。
+# <a name="data-classification-for-azure"></a>Data classification for Azure
 
-## データ分類の基礎
+This article provides an introduction to the fundamentals of data classification and highlights its value, specifically in the context of cloud computing and using Microsoft Azure. 
 
-組織でのデータ分類が成功するには、組織のニーズを大局的に認識し、データ資産が置かれている場所を完全に理解する必要があります。
+## <a name="data-classification-fundamentals"></a>Data classification fundamentals
+
+Successful data classification in an organization requires broad awareness of your organization’s needs and a thorough understanding of where your data assets reside.  
  
-データは、次の 3 つの基本的な状態のいずれかで存在します。
+Data exists in one of three basic states: 
 
-- 保存中
-- 進行中
-- 転送中のデータ
+- At rest 
+- In process 
+- In transit 
  
-データ分類を行う場合、3 つの状態にそれぞれ固有の技術的なソリューションが必要となりますが、データ分類の原則はそれぞれの状態に同じものを適用する必要があります。機密情報として分類されるデータは、保存中、進行中、転送中の各状態で機密情報のまま維持する必要があります。
+All three states require unique technical solutions for data classification, but the applied principles of data classification should be the same for each. Data that is classified as confidential needs to stay confidential when at rest, in process, and in transit. 
  
-また、データは構造化データとなることもあれば、非構造化データとなることもあります。データベースやスプレッドシートに見られる構造化データを対象にした一般的な分類プロセスは、ドキュメント、ソース コード、電子メールなどの非構造化データの場合よりも簡単で管理にかかる時間も短くなります。
+Data can also be either structured or unstructured. Typical classification processes for the structured data found in databases and spreadsheets are less complex and time-consuming to manage than those for unstructured data such as documents, source code, and email. 
 
-> [AZURE.TIP] Azure の機能とデータ暗号化のためのベスト プラクティスの詳細については、「[Azure Data Encryption Best Practices (Azure データ暗号化のベスト プラクティス)](azure-security-data-encryption-best-practices.md)」をご覧ください。
+> [AZURE.TIP] for more information regarding Azure capabilities and best practices for data encryption read [Azure Data Encryption Best Practices](azure-security-data-encryption-best-practices.md)
 
-一般的に、組織は構造化データよりも非構造化データの方を多く所有しています。構造化データであるか非構造化データであるかに関係なく、データの機密度を管理することが重要です。データ分類が適切に実装されると、重要データ資産または機密データ資産は、公開対象または無料配布対象と見なされるデータ資産の場合に比べて、より厳しい監督下で確実に管理されます。
+In general, organizations will have more unstructured data than structured data. Regardless of whether data is structured or unstructured, it is important for you to manage data sensitivity. When properly implemented, data classification helps ensure that sensitive or confidential data assets are managed with greater oversight than data assets that are considered public or free to distribute. 
 
-### データへのアクセスの制御 
+### <a name="controlling-access-to-data"></a>Controlling access to data 
 
-認証と承認は混同され、その役割が誤解されることがよくあります。実際には、次の図のように両者はまったく異なります。
+Authentication and authorization are often confused with each other and their roles misunderstood. In reality they are quite different, as shown in the following figure.  
 
-![データ アクセスと制御](./media/azure-security-data-classification/azure-security-data-classification-fig1.png)
+![Data access and control](./media/azure-security-data-classification/azure-security-data-classification-fig1.png)
 
-### 認証 
+### <a name="authentication"></a>Authentication 
 
-認証は、通常、少なくとも 2 つの部分で構成されます。1 つはユーザーを識別するユーザー名またはユーザー ID です。もう 1 つはユーザー名資格情報が有効であることを確認するためのトークンです (パスワードなど)。このプロセスでは、認証したユーザーに任意のアイテムまたはサービスへのアクセス権を付与するのでなく、ユーザーがユーザー本人であることを確認します。
+Authentication typically consists of at least two parts: a username or user ID to identify a user and a token, such as a password, to confirm that the username credential is valid. The process does not provide the authenticated user with access to any items or services; it verifies that the user is who they say they are.   
 
-> [AZURE.TIP] [Azure Active Directory](./active-directory/active-directory-whatis.md) は、クラウドベースの ID サービスであり、これによりユーザーを認証し承認することができます。
+> [AZURE.TIP] [Azure Active Directory](../active-directory/active-directory-whatis.md) provides cloud-based identity services that allow you to authenticate and authorize users. 
 
-### 承認
+### <a name="authorization"></a>Authorization
  
-承認は、認証されたユーザーに対して、アプリケーション、データセット、データ ファイル、またはその他のオブジェクトにアクセスする権限を付与するプロセスです。アクセス可能なアイテムを使用、変更、または削除する権限を、認証されたユーザーに割り当てる場合は、データ分類に注意を払う必要があります。
+Authorization is the process of providing an authenticated user the ability to access an application, data set, data file, or some other object. Assigning authenticated users the rights to use, modify, or delete items that they can access requires attention to data classification. 
 
-承認を適切に行うには、ファイルおよび情報へのアクセスを希望する個々のユーザーのニーズを、ロール、セキュリティ ポリシー、およびリスク ポリシーの組み合わせを考慮に入れて検証するメカニズムを実装する必要があります。たとえば、特定の基幹業務 (LOB) アプリケーションからのデータには、すべての従業員がアクセスを必要とするとは限りません。また、人事 (HR) ファイルへのアクセスを必要とするのは、通常、ごく一部の従業員に限られます。しかし、データにアクセスできるユーザー、時間、および方法を組織で管理するためには、ユーザーを認証するための効果的なシステムを準備する必要があります。
+Successful authorization requires implementation of a mechanism to validate individual users’ needs to access files and information based on a combination of role, security policy, and risk policy considerations. For example, data from specific line-of-business (LOB) applications might not need to be accessed by all employees, and only a small subset of employees will likely need access to human resources (HR) files. But for organizations to control who can access data, as well as when and how, an effective system for authenticating users must be in place. 
 
-> [AZURE.TIP] Microsoft Azure では、Azure ロールベースのアクセス制御 (RBAC) を活用して、ユーザーが業務の遂行に必要なアクセス量のみを許可するようにしています。詳細については、「[Azure Active Directory リソースへのアクセスをロールの割り当てによって管理する](../active-directory/role-based-access-control-configure.md)」をご覧ください。
+> [AZURE.TIP] in Microsoft Azure, make sure to leverage Azure Role-Based Access Control (RBAC) to grant only the amount of access that users need to perform their jobs. Read [Use role assignments to manage access to your Azure Active Directory resources](../active-directory/role-based-access-control-configure.md) for more information. 
 
-### クラウド コンピューティングでのロールと責任 
+### <a name="roles-and-responsibilities-in-cloud-computing"></a>Roles and responsibilities in cloud computing 
 
-クラウド プロバイダーでリスク管理を支援することもできますが、顧客はデータ分類の管理および実施が適切に実装され、適切なレベルのデータ管理サービスが確実に実現されることを必要としています。
+Although cloud providers can help manage risks, customers need to ensure that data classification management and enforcement is properly implemented to provide the appropriate level of data management services.  
  
-データ分類の責任は、次の図に示すように、準備されるクラウド サービス モデルによって異なります。主なクラウド サービス モデルとして 3 つあります。サービスとしてのインフラストラクチャ (IaaS)、サービスとしてのプラットフォーム (PaaS)、およびサービスとしてのソフトウェア (SaaS) です。また、データ分類メカニズムの実装については、クラウド プロバイダーへの依存度および期待内容によって異なります。
+Data classification responsibilities will vary based on which cloud service model is in place, as shown in the following figure. The three primary cloud service models are infrastructure as a service (IaaS), platform as a service (PaaS), and software as a service (SaaS). Implementation of data classification mechanisms will also vary based on the reliance on and expectations of the cloud provider. 
 
-![ロール](./media/azure-security-data-classification/azure-security-data-classification-fig2.png)
+![Roles](./media/azure-security-data-classification/azure-security-data-classification-fig2.png)
 
-データ分類の責任はユーザー側にあるとしても、クラウド プロバイダーはクラウドに格納される顧客データのセキュリティ保護およびプライバシー維持の方法について書面にて確約する必要があります。
+Although you are responsible for classifying your data, cloud providers should make written commitments about how they will secure and maintain the privacy of the customer data stored within their cloud.  
 
-- **IaaS プロバイダー**の要件は、仮想環境がデータ分類の機能と顧客のコンプライアンス要件に対応可能であることを確認することに限定されます。IaaS プロバイダーの場合、顧客データがコンプライアンス要件に対応していることの確認が必要なだけなので、データ分類におけるプロバイダーのロールは大きくありません。それでも、プロバイダーはデータ センターのセキュリティ保護に加えて、仮想環境がデータ分類要件に対応していることを確認する必要があります。
-- **PaaS プロバイダー**の責任を混在させることができます。階層型アプローチでこのプラットフォームを使用すれば、分類ツールのセキュリティを確保することができるからです。PaaS プロバイダーは認証に加えて、場合によっては一部の承認規則を担当することがあり、アプリケーション層にセキュリティ機能とデータ分類機能を備える必要があります。IaaS プロバイダーの場合と同様に、PaaS プロバイダーでも関連する任意のデータ分類要件にプラットフォームが準拠していることを確認する必要があります。
-- **SaaS プロバイダー**は承認チェーンの一部と見なされることが多く、このプロバイダーでは SaaS アプリケーションで格納されるデータが分類の種類によって制御可能であることを確認する必要があります。SaaS アプリケーションは LOB アプリケーションで使用することができ、性質上、使用および格納されるデータを認証し承認する手段を備えている必要があります。
+- **IaaS providers** requirements are limited to ensuring that the virtual environment can accommodate data classification capabilities and customer compliance requirements. IaaS providers have a smaller role in data classification because they only need to ensure that customer data addresses compliance requirements. However, providers must still ensure that their virtual environments address data classification requirements in addition to securing their data centers.
+- **PaaS providers** responsibilities may be mixed, because the platform could be used in a layered approach to provide security for a classification tool. PaaS providers may be responsible for authentication and possibly some authorization rules, and must provide security and data classification capabilities to their application layer. Much like IaaS providers, PaaS providers need to ensure that their platform complies with any relevant data classification requirements.
+- **SaaS providers** will frequently be considered as part of an authorization chain, and will need to ensure that the data stored in the SaaS application can be controlled by classification type. SaaS applications can be used for LOB applications, and by their very nature need to provide the means to authenticate and authorize data that is used and stored. 
 
-## 分類プロセス 
+## <a name="classification-process"></a>Classification process 
 
-データ分類の必要性を理解し、その実装を希望している組織の多くは、どこから始めればよいのか、という基本的な課題に直面します。
+Many organizations that understand the need for data classification and want to implement it face a basic challenge: where to begin?
 
-データ分類を効果的かつ簡単に実装する方法として、[MOF](https://technet.microsoft.com/solutionaccelerators/dd320379.aspx) で定義された PLAN、DO、CHECK、ACT モデルを使用する方法があります。次の図は、このモデルでデータ分類を適切に実装するために必要なタスクをグラフ化したものです。
+One effective and simple way to implement data classification is to use the PLAN, DO, CHECK, ACT model from [MOF](https://technet.microsoft.com/solutionaccelerators/dd320379.aspx). The following figure charts the tasks that are required to successfully implement data classification in this model.  
 
-1. **PLAN**。データ資産の識別、分類プログラムをデプロイするデータ管理人の特定、保護プロファイルの開発を行います。
-2. **DO**。データ分類ポリシーの合意が得られたら、分類プログラムをデプロイし、必要に応じて機密データに対する実施テクノロジを実装します。
-3. **CHECK**。レポートを確認および検証して、使用するツールと方法が分類ポリシーに実質的に対応していることを確認します。
-4. **ACT**。データ アクセスの状態をレビューし、再分類および改訂手法を使用して改訂を行う必要があるファイルとデータをレビューして、変更の採用および新しいリスクへの対処を行います。
+1. **PLAN**. Identify data assets, a data custodian to deploy the classification program, and develop protection profiles. 
+2. **DO**. After data classification policies are agreed upon, deploy the program and implement enforcement technologies as needed for confidential data.  
+3. **CHECK**. Check and validate reports to ensure that the tools and methods being used are effectively addressing the classification policies. 
+4. **ACT**. Review the status of data access and review files and data that require revision using a reclassification and revision methodology to adopt changes and to address new risks.  
 
-![PLAN、DO、CHECK、ACT](./media/azure-security-data-classification/azure-security-data-classification-fig3.png)
+![Plan, do, Check, Act](./media/azure-security-data-classification/azure-security-data-classification-fig3.png)
  
-###ニーズに対応する用語モデルを選択する
+###<a name="select-a-terminology-model-that-addresses-your-needs"></a>Select a terminology model that addresses your needs
  
-データを分類するためのプロセスは数種類あります。たとえば、手動プロセス、ユーザーまたはシステムの場所に基づいてデータを分類する場所ベースのプロセス、アプリケーション ベースのプロセス (データベース固有の分類など)、さまざまなテクノロジで使用される自動化プロセスなどがあります。一部については、この記事の後の「機密データの保護」セクションで説明します。
+Several types of processes exist for classifying data, including manual processes, location-based processes that classify data based on a user’s or system’s location, application-based processes such as database-specific classification, and automated processes used by various technologies, some of which are described in the “Protecting confidential data” section later in this article.  
  
-この記事では、業界で高い評価を受けよく利用されているモデルをベースにした 2 つの一般的な用語モデルを紹介します。この 2 つの用語モデル (両方とも分類の機密度のレベルは 3 つ) を次の表に示します。
+This article introduces two generalized terminology models that are based on well-used and industry-respected models. These terminology models, both of which provide three levels of classification sensitivity, are shown in the following table.  
 
-> [AZURE.NOTE] 通常異なるレベルに分類されるデータを結合したファイルまたはソースを分類する場合は、存在する中で最もレベルの高い分類で、全体的な分類を設定する必要があります。たとえば、重要データと制限付きデータを含むファイルは制限付きデータとして分類する必要があります。
+> [AZURE.NOTE] when classifying a file or resource that combines data that would typically be classified at differing levels, the highest level of classification present should establish the overall classification. For example, a file containing sensitive and restricted data should be classified as restricted.  
 
-| **機密度** | **用語モデル 1** | **用語モデル 2** |
+| **Sensitivity**   | **Terminology model 1**   | **Terminology model 2** |
 |--------------------|---------------------------|-------------------------|
-| 高 | 機密 | 制限付き |
-| 中 | 内部使用のみ | 重要 |
-| 低 | パブリック | 制限なし |
+| High               | Confidential              | Restricted              |
+| Medium             | For internal use only     | Sensitive               |
+| Low                | Public                    | Unrestricted            |
 
-#### 機密 (制限付き) 
+#### <a name="confidential-(restricted)"></a>Confidential (restricted) 
 
-機密または制限付きとして分類される情報には、侵害されたか、失われた場合に 1 つまたは複数の個人または組織、あるいはその両方にとって大打撃となる可能性があるデータが含まれます。このような情報は、一般的に "関係者以外極秘" 扱いで提供され、次の情報を含む場合があります。
+Information that is classified as confidential or restricted includes data that can be catastrophic to one or more individuals and/or organizations if compromised or lost. Such information is frequently provided on a “need to know” basis and might include: 
 
-- 個人データ。例として、社会保障または身分登録番号、パスポート番号、クレジット カード番号、運転免許証番号、医療記録、健康保険証書 ID 番号など、個人を特定できる情報が挙げられます。
-- 財務記録。例として、当座預金口座や投資口座番号などの財務会計番号があります。
-- ビジネス資料。固有のドキュメントまたはデータ、あるいは特定の知的財産などがあります。
-- 法的情報。例として、潜在的に弁護士秘匿権限のあるデータが挙げられます。
-- 認証データ。例として、秘密暗号化キー、ユーザー名とパスワードの組み合わせ、その他の識別シーケンス (生体認証秘密キー ファイルなど) が挙げられます。
+- Personal data, including personally identifiable information such as Social Security or national identification numbers, passport numbers, credit card numbers, driver's license numbers, medical records, and health insurance policy ID numbers.  
+- Financial records, including financial account numbers such as checking or investment account numbers. 
+- Business material, such as documents or data that is unique or specific intellectual property.  
+- Legal data, including potential attorney-privileged material. 
+- Authentication data, including private cryptography keys, username password pairs, or other identification sequences such as private biometric key files. 
 
-機密情報として分類されたデータには、データ処理に関する規制要件およびコンプライアンス要件が適用されます。
+Data that is classified as confidential frequently has regulatory and compliance requirements for data handling. 
 
-#### 内部使用のみ (重要)
+#### <a name="for-internal-use-only-(sensitive)"></a>For internal use only (sensitive)
  
-中程度の機密度として分類される情報としては、紛失したり破損したりした場合、個人または組織、あるいはその両方に重大な影響をあたえないファイルおよびデータが挙げられます。このような情報には次のようなものが含まれます。
+Information that is classified as being of medium sensitivity includes files and data that would not have a severe impact on an individual and/or organization if lost or destroyed. Such information might include: 
 
-- 電子メール。ほとんどの場合、削除または配布によって危機的状況を招くことはありません (ただし、機密分類で識別されたユーザーからのメールボックスまたはメールは除く)。
-- 機密データを含んでいないドキュメントとファイル。
+- Email, most of which can be deleted or distributed without causing a crisis (excluding mailboxes or email from individuals who are identified in the confidential classification).  
+- Documents and files that do not include confidential data.
  
-一般に、この分類には機密扱いでないものが含まれます。この分類にはほとんどのビジネス データを含めることができます。日常的に管理または使用されるファイルの大部分は重要情報として分類できるからです。パブリック情報または機密情報とするデータを除き、既定ではビジネス組織内のすべてのデータを重要情報として分類することができます。
+Generally, this classification includes anything that is not confidential. This classification can include most business data, because most files that are managed or used day-to-day can be classified as sensitive. With the exception of data that is made public or is confidential, all data within a business organization can be classified as sensitive by default. 
 
-#### パブリック (制限なし)
+#### <a name="public-(unrestricted)"></a>Public (unrestricted)
  
-パブリックとして分類される情報には、ビジネスのニーズや活動にとって重要ではないデータやファイルが含まれます。この分類には、マーケティング資料や報道発表など、用途に応じて意図的に公開リリースされたデータを含めることもできます。さらに、この分類には、電子メール サービスによって格納されたスパム電子メール メッセージなどのデータを含めることもできます。
+Information that is classified as public includes data and files that are not critical to business needs or operations. This classification can also include data that has deliberately been released to the public for their use, such as marketing material or press announcements. In addition, this classification can include data such as spam email messages stored by an email service. 
 
-### データ所有権の定義
+### <a name="define-data-ownership"></a>Define data ownership
  
-すべてのデータ資産について所有権の明確な保護チェーンを確立することが重要です。次の表に、各種のデータ所有権ロールと、それぞれのロールの権限を示します。
+It’s important to establish a clear custodial chain of ownership for all data assets. The following table identifies different data ownership roles in data classification efforts and their respective rights.  
 
-| **ロール** | **作成** | **変更/削除** | **デリゲート** | **読み取り** | **アーカイブ/復元** |
+| **Role**        | **Create**    | **Modify/delete**   | **Delegate**  | **Read**    | **Archive/restore**   |
 |-----------------|---------------|---------------------|---------------|-------------|-----------------------|
-| 所有者 | ○ | ○ | ○ | ○ | ○ |
-| 管理人 | | | ○ | | |
-| 管理者 | | | | | ○ |
-| ユーザー* | | ○ | | ○ | |
-**ユーザーは管理人から編集や削除などの追加の権限を付与される場合があります*
+| Owner           | X             | X                   | X             | X           | X                     |
+| Custodian       |               |                     | X             |             |                       |
+| Administrator   |               |                     |               |             | X                     |
+| User\*          |               | X                   |               | X           |                       |
+**Users may be granted additional rights such as edit and delete by a custodian* 
 
-> [AZURE.NOTE] 上の表は、ロールと権限の全内容ではなく、代表的な例のみを示しています。
+> [AZURE.NOTE] this table does not provide an exhaustive list of roles and rights, but merely a representative sample. 
 
-**データ資産の所有者**は、データの元々の作成者であり、所有権を委任し、管理人を割り当てることができます。ファイルが作成されると、所有者は分類を割り当てることができるようになります。すなわち、所有者には、属する組織のポリシーに基づいて機密扱いと分類する必要がある情報を把握しておく責任があります。データ資産の所有者のすべてのデータを、"内部使用のみ (重要)" として自動的に分類することができます。ただし、当該所有者が "機密 (制限付き)" データを所有または作成する責任がある場合はその限りではありません。多くの場合、データの分類後、所有者のロールは変わります。たとえば、所有者は機密情報のデータベースを作成し、その権限をデータ管理人に譲渡する場合があります。
+The **data asset owner** is the original creator of the data, who can delegate ownership and assign a custodian. When a file is created, the owner should be able to assign a classification, which means that they have a responsibility to understand what needs to be classified as confidential based on their organization’s policies. All of a data asset owner’s data can be auto-classified as for internal use only (sensitive) unless they are responsible for owning or creating confidential (restricted) data types. Frequently, the owner’s role will change after the data is classified. For example, the owner might create a database of classified information and relinquish their rights to the data custodian.  
 
-> [AZURE.NOTE] データ資産の所有者は、個人的なものもあれば組織に属するものもあるサービス、デバイス、およびメディアを組み合わせて使用することがよくあります。組織のポリシーが明確に規定されていれば、ノート PC やスマート デバイスなどのデバイスの使用状況がデータ分類のガイドラインに従っていることを容易に確認することができます。
+> [AZURE.NOTE] data asset owners often use a mixture of services, devices, and media, some of which are personal and some of which belong to the organization. A clear organizational policy can help ensure that usage of devices such as laptops and smart devices is in accordance with data classification guidelines.  
 
-**データ資産の管理人**は、資産の所有者 (またはその代理人) によって割り当てられ、資産の所有者との契約に従って、または適用可能なポリシー要件に従って資産を管理します。管理人のロールは、自動化されたシステムで実装できるのが理想的です。資産の管理人は、必要なアクセス制御が実施されていることを確認し、委任された資産を管理および保護する役割を担います。資産の管理人の責任には、次のようなものがあります。
+The **data asset custodian** is assigned by the asset owner (or their delegate) to manage the asset according to agreements with the asset owner or in accordance with applicable policy requirements. Ideally, the custodian role can be implemented in an automated system. An asset custodian ensures that necessary access controls are provided and is responsible for managing and protecting assets delegated to their care. The responsibilities of the asset custodian could include:  
 
-- 資産の所有者の指示に従って、または資産の所有者との契約に従って資産を保護します。
-- 分類ポリシーに準拠していることを確認します。
-- 合意に基づく制御手順または保護手順に変更を加える場合は、事前にその旨を資産の所有者に通知します。
-- 資産の管理人の責任の削除または変更について資産の所有者に報告します。
-- **管理者**は、整合性が維持されていることを確認する役割を担います。データ資産の所有者、管理人、またはユーザーではありません。実際には、管理者ロールの多くは、データへのアクセス権を持たないデータ コンテナー管理サービスです。管理者ロールには、データのバックアップと復元、資産の記録の維持、資産を収容するデバイスおよびストレージの選択、取得、および操作が含まれます。
-- 資産のユーザーには、データまたはファイルへのアクセス権を付与されているユーザーが含まれます。所有者は、アクセス権の割り当てを資産の管理人に委任することがよくあります。
+- Protecting the asset in accordance with the asset owner’s direction or in agreement with the asset owner 
+- Ensuring that classification policies are complied with 
+- Informing asset owners of any changes to agreed-upon controls and/or protection procedures prior to those changes taking effect 
+- Reporting to the asset owner about changes to or removal of the asset custodian’s responsibilities 
+- An **administrator** represents a user who is responsible for ensuring that integrity is maintained, but they are not a data asset owner, custodian, or user. In fact, many administrator roles provide data container management services without having access to the data. The administrator role includes backup and restoration of the data, maintaining records of the assets, and choosing, acquiring, and operating the devices and storage that house the assets. 
+- The asset user includes anyone who is granted access to data or a file. Access assignment is often delegated by the owner to the asset custodian.  
 
-### 実装
+### <a name="implementation"></a>Implementation
   
-管理に関する考慮事項は、すべての分類手法に適用されます。これらの考慮事項には、誰が、どのようなデータ資産を、どこで、いつ、なぜ、使用し、アクセスし、変更し、または削除するのかについて、詳細を含める必要があります。すべての資産管理は、組織のリスク表示方法を理解した上で実施される必要があります。ただし、データ分類プロセスの定義に従って簡単な手法の適用が可能です。データ分類に対する追加の考慮事項には、新しいアプリケーションおよびツールの導入、および分類方法が実装された後での変更管理が含まれます。
+Management considerations apply to all classification methodologies. These considerations need to include details about who, what, where, when, and why a data asset would be used, accessed, changed, or deleted. All asset management must be done with an understanding of how an organization views its risks, but a simple methodology can be applied as defined in the data classification process. Additional considerations for data classification include the introduction of new applications and tools, and managing change after a classification method is implemented.  
 
-### 再分類
+### <a name="reclassification"></a>Reclassification
  
-データ資産の再分類または分類状態の変更は、データ資産の重要性またはリスク プロファイルが変化したとユーザーまたはシステムが判断した場合に実行される必要があります。この作業は、分類が最新かつ有効な状態に維持されるようにするために重要です。手動で分類されないコンテンツのほとんどは、自動的に分類されるか、またはデータの管理人もしくはデータの所有者によって使用状況に応じて分類されます。
+Reclassifying or changing the classification state of a data asset needs to be done when a user or system determines that the data asset’s importance or risk profile has changed. This effort is important for ensuring that the classification status continues to be current and valid. Most content that is not classified manually can be classified automatically or based on usage by a data custodian or data owner. 
 
-### 手動によるデータの再分類
+### <a name="manual-data-reclassification"></a>Manual data reclassification
  
-この作業によって、変更の詳細を確実にキャプチャおよび監査するのが理想的です。手動による再分類を行う理由は、ほとんどの場合、機密度に関する理由によるものか、記録が紙の形式で維持されていることによるものか、または元々間違って分類されているデータをレビューする必要があることによるものです。この記事ではデータ分類とクラウドへのデータの移動を検討しているので、手動による再分類を行う場合は、状況に応じて対処する必要があります。分類の要件に対処するにはリスク管理のレビューが理想的です。一般的に、このような作業では、分類を必要とする対象についての組織のポリシーを検討し、既定の分類状態 (すべてのデータとファイルは重要情報となり、機密情報とはならない) について検討し、リスクの高いデータには異議を唱えます。
+Ideally, this effort would ensure that the details of a change are captured and audited. The most likely reason for manual reclassification would be for reasons of sensitivity, or for records kept in paper format, or a requirement to review data that was originally misclassified. Because this paper considers data classification and moving data to the cloud, manual reclassification efforts would require attention on a case-by-case basis and a risk management review would be ideal to address classification requirements. Generally, such an effort would consider the organization’s policy about what needs to be classified, the default classification state (all data and files being sensitive but not confidential), and take exceptions for high-risk data. 
 
-### 自動的なデータの再分類
+### <a name="automatic-data-reclassification"></a>Automatic data reclassification
  
-自動的なデータの再分類では、手動による分類と同じ一般的な規則を使用します。ただし、例外として、自動化されたソリューションでは、規則が順守され、必要に応じて規則が適用されるようにすることができます。データ分類はデータ分類実施ポリシーの一環として実行できます。このポリシーは承認テクノロジを使用してデータを格納、使用、および転送している場合に実施できます。
+Automatic data reclassification uses the same general rule as manual classification. The exception is that automated solutions can ensure that rules are followed and applied as needed. Data classification can be done as part of a data classification enforcement policy, which can be enforced when data is stored, in use, and in transit using authorization technology.
 
-- アプリケーションベース。特定のアプリケーションを使用すると、既定で分類レベルが設定されます。たとえば、顧客関係管理 (CRM) ソフトウェア、人事および健康記録管理ツールからのデータは既定では機密情報となります。
-- 場所ベース。データの場所がわかると、データの機密度を容易に特定できます。たとえば、人事部門や財務部門で格納されたデータは、本質的に機密情報である可能性が高くなります。
+- Application-based. Using certain applications by default sets a classification level. For example, data from customer relationship management (CRM) software, HR, and health record management tools is confidential by default. 
+- Location-based. Data location can help identify data sensitivity. For example, data that is stored by an HR or financial department is more likely to be confidential in nature.  
  
-### データのリテンション期間、回復、および破棄 
+### <a name="data-retention,-recovery,-and-disposal"></a>Data retention, recovery, and disposal 
 
-データの回復とデータの破棄は、データの再分類と同様にデータ資産の管理における不可欠な要素です。データの回復および破棄に関する原則は、データ リテンション期間ポリシーによって定義され、データの再分類の場合と同じ方法で実施されます。このような作業は、管理人ロールと管理者ロールの共同作業として実行されます。
+Data recovery and disposal, like data reclassification, is an essential aspect of managing data assets. The principles for data recovery and disposal would be defined by a data retention policy and enforced in the same manner as data reclassification; such an effort would be performed by the custodian and administrator roles as a collaborative task.  
 
-データ リテンション期間ポリシーを使用しないと、データが失われたり、法的証拠開示要件に違反したりする可能性があります。明確に定義されたデータ リテンション期間ポリシーを備えていない組織のほとんどは、既定の "すべて保持する" リテンション期間ポリシーを使用する傾向にあります。ただし、このようなデータ リテンション期間ポリシーの場合、クラウド サービスのシナリオでは追加のリスクが生じます。
+Failure to have a data retention policy could mean data loss or failure to comply with regulatory and legal discovery requirements. Most organizations that do not have a clearly defined data retention policy tend to use a default “keep everything” retention policy. However, such a retention policy has additional risks in cloud services scenarios. 
 
-たとえば、クラウド サービス プロバイダーのデータ リテンション期間ポリシーは、"サブスクリプション期間" を対象としたものと見なすことができます (サービスの料金が支払われている間、データは保持される)。このような支払いに応じて保持する契約では、企業リテンション期間ポリシーまたは規制リテンション期間ポリシーに対応していない場合があります。機密データ対するポリシーを定義する場合には、ベスト プラクティスに基づいてデータが格納および削除されるようにすることができます。さらに、アーカイブ ポリシーを作成することで、どのようなデータをいつ破棄する必要があるかを把握することができます。
+For example, a data retention policy for cloud service providers can be considered as for "the duration of the subscription” (as long as the service is paid for, the data is retained). Such a pay-for-retention agreement may not address corporate or regulatory retention policies. Defining a policy for confidential data can ensure that data is stored and removed based on best practices. In addition, an archival policy can be created to formalize an understanding about what data should be disposed of and when. 
 
-データ リテンション期間ポリシーは、必須の規制要件およびコンプライアンス要件に加えて、企業の法的なリテンション期間要件に対応する必要があります。データの分類により、プロバイダーに格納されたデータに対するリテンション期間と例外について疑問が生じる場合があります。このような疑問は、データが正しく分類されていない場合に生じやすくなります。
+Data retention policy should address the required regulatory and compliance requirements, as well as corporate legal retention requirements. Classified data might provoke questions about retention duration and exceptions for data that has been stored with a provider; such questions are more likely for data that has not been classified correctly. 
 
-> [AZURE.TIP] Azure データ リテンション期間ポリシーの詳細については、「[マイクロソフト オンライン サブスクリプション契約](https://azure.microsoft.com/support/legal/subscription-agreement/)」をご覧ください。
+> [AZURE.TIP] learn more about Azure Data Retention policies and more by reading the [Microsoft Online Subscription Agreement](https://azure.microsoft.com/support/legal/subscription-agreement/)
 
-## 機密データの保護
+## <a name="protecting-confidential-data"></a>Protecting confidential data
   
-データを分類した後、機密データを保護する方法を見つけ出し実装することは、データ保護デプロイ ストラテジの不可欠な部分となります。機密データを保護するには、クラウドでのデータの格納方法と送信方法だけでなく、従来のアーキテクチャでの場合についても特別な注意を払う必要があります。
+After data is classified, finding and implementing ways to protect confidential data becomes an integral part of any data protection deployment strategy. Protecting confidential data requires additional attention to how data is stored and transmitted in conventional architectures as well as in the cloud. 
 
-このセクションでは、機密情報として分類されたデータを保護するための強制措置を自動化することができるいくつかのテクノロジについて基本情報を提供します。
+This section provides basic information about some technologies that can automate enforcement efforts to help protect data that has been classified as confidential. 
  
-次の図に示すように、これらのテクノロジは、オンプレミスのソリューションまたはクラウド ベースのソリューションとしてデプロイできます。ハイブリッド方式では、一部をオンプレミスに、一部をクラウドにデプロイすることができます (暗号化や Rights Management などのいくつかのテクノロジは、適用範囲をユーザー デバイスに広げることができます)。
+As the following figure shows, these technologies can be deployed as on-premises or cloud-based solutions—or in a hybrid fashion, with some of them deployed on-premises and some in the cloud. (Some technologies, such as encryption and rights management, also extend to user devices.)  
 
-![テクノロジ](./media/azure-security-data-classification/azure-security-data-classification-fig4.png)
+![Technologies](./media/azure-security-data-classification/azure-security-data-classification-fig4.png)
 
-### Rights Management ソフトウェア  
+### <a name="rights-management-software"></a>Rights management software  
 
-データの損失を防ぐためのソリューションの 1 つは、Rights Management ソフトウェアです。組織内の終了ポイントで情報の流れを中断しようとするアプローチとは異なり、Rights Management ソフトウェアはデータ ストレージ テクノロジの深いレベルで機能します。ドキュメントが暗号化されると、それらを暗号化解除できるユーザーを管理する制御では、ディレクトリ サービスなどの認証制御ソリューションで定義されているアクセス制御方式が使用されます。
+One solution for preventing data loss is rights management software. Unlike approaches that attempt to interrupt the flow of information at exit points in an organization, rights management software works at deep levels within data storage technologies. Documents are encrypted, and control over who can decrypt them uses access controls that are defined in an authentication control solution such as a directory service.  
 
-> [AZURE.TIP] Azure Rights Management (Azure RMS) を情報保護ソリューションとして使用することで、さまざまなシナリオでデータを保護することができます。この Azure ソリューションの詳細については、「[What is Azure Rights Management? (Azure Rights Management とは)](https://docs.microsoft.com/rights-management/understand-explore/what-is-azure-rms)」をご覧ください。
+> [AZURE.TIP] you can use Azure Rights Management (Azure RMS) as the information protection solution to protect data in different scenarios. Read [What is Azure Rights Management?](https://docs.microsoft.com/rights-management/understand-explore/what-is-azure-rms) for more information about this Azure solution.
 
-Rights Management ソフトウェアの利点のいくつかを次に示します。
+Some of the benefits of rights management software include: 
 
-- 保護対象の機密情報。ユーザーは、Rights Management 対応アプリケーションを使用してデータを直接保護することができます。追加の手順は必要ありません。ドキュメントの作成、電子メールの送信、およびデータの公開では、一貫性のあるデータ保護エクスペリエンスを利用できます。
-- 保護はデータと一緒に移動します。顧客は、クラウド、既存の IT インフラストラクチャ、またはユーザーのデスクトップのいずれでも、データにアクセスできるユーザーを引き続き制御できます。組織はビジネス要件に応じてデータを暗号化しアクセスを制限することができます。
-- 既定の情報保護ポリシー。管理者とユーザーは、"企業の機密情報 – 読み取り専用" や "転送不可" などの多くの一般的なビジネス シナリオで、標準的なポリシーを使用できます。 カスタム使用権限を柔軟に定義できるように、読み取り、コピー、印刷、保存、編集、転送などの一連の豊富な使用権限がサポートされています。
+- Safeguarded sensitive information. Users can protect their data directly using rights management-enabled applications. No additional steps are required—authoring documents, sending email, and publishing data offer a consistent data protection experience. 
+- Protection travels with the data. Customers remain in control of who has access to their data, whether in the cloud, existing IT infrastructure, or at the user’s desktop. Organizations can choose to encrypt their data and restrict access according to their business requirements. 
+- Default information protection policies. Administrators and users can use standard policies for many common business scenarios, such as "Company Confidential–Read Only" and "Do Not Forward." A rich set of usage rights are supported such as read, copy, print, save, edit, and forward to allow flexibility in defining custom usage rights. 
 
-> [AZURE.TIP] Azure Storage のデータを保護するには、保存データ向けの [Azure Storage Service Encryption](../storage/storage-service-encryption.md) を使用します。また、[Azure Disk Encryption](azure-security-disk-encryption.md) を使用すると、Azure Virtual Machines で使用する仮想ディスクに含まれるデータを容易に保護することができます。
+> [AZURE.TIP] you can protect data in Azure Storage by using [Azure Storage Service Encryption](../storage/storage-service-encryption.md) for Data at Rest. You can also use [Azure Disk Encryption](azure-security-disk-encryption.md) to help protect data contained on virtual disks used for Azure Virtual Machines.
 
-### 暗号化ゲートウェイ
+### <a name="encryption-gateways"></a>Encryption gateways
 
-暗号化ゲートウェイは、クラウド ベースのデータへのすべてのアクセスを再ルーティングして暗号化サービスを提供する独自のレイヤーで動作します。このアプローチを仮想プライベート ネットワーク (VPN) の場合と混同しないでください。暗号化ゲートウェイは、クラウド ベースのソリューションに透過的なレイヤーを提供するよう設計されています。
+Encryption gateways operate in their own layers to provide encryption services by rerouting all access to cloud-based data. This approach should not be confused with that of a virtual private network (VPN). Encryption gateways are designed to provide a transparent layer to cloud-based solutions.   
 
-暗号化ゲートウェイは、転送中のデータおよび保存データを暗号化することで、機密情報として分類されたデータを管理およびセキュリティ保護する手段を提供できます。
+Encryption gateways can provide a means to manage and secure data that has been classified as confidential by encrypting the data in transit as well as data at rest.  
  
-暗号化ゲートウェイは、ユーザー デバイスとアプリケーション データ センターとの間のデータ フローに対して配置され、暗号化/暗号化解除サービスを提供します。これらのソリューション (VPN など) は、ほとんどはオンプレミスのソリューションです。暗号化キーに対する制御権をサードパーティに提供する設計になっています。これにより、1 つのプロバイダーにデータおよびキー管理の両方が配置されるリスクを軽減できます。このようなソリューションは、暗号化と同様に、ユーザーとサービスの間でシームレスかつ透過的に機能するように設計されています。
+Encryption gateways are placed into the data flow between user devices and application data centers to provide encryption/decryption services. These solutions, like VPNs, are predominantly on-premises solutions. They are designed to provide a third party with control over encryption keys, which helps reduce the risk of placing both the data and key management with one provider. Such solutions are designed, much like encryption, to work seamlessly and transparently between users and the service. 
 
-> [AZURE.TIP] Azure ExpressRoute を利用すれば、専用プライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。この機能の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」をご覧ください。オンプレミスのネットワークと [Azure との間のクロス プレミス接続用のオプションとして、他にはサイト間 VPN があります](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。
+> [AZURE.TIP] you can use Azure ExpressRoute to extend your on-premises networks into the Microsoft cloud over a dedicated private connection. Read [ExpressRoute technical overview](../expressroute/expressroute-introduction.md) for more information about this capability. Another options for cross premises connectivity between your on-premises network and [Azure is a site-to-site VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-### データ損失の防止 
-データ損失 (データ漏洩とも呼ばれることもある) は重要な考慮事項です。内部関係者が悪意を持って意図的にまたは偶発的に引き起こす外部データ損失を防止することは、多くの組織にとって最も重要なことです。
+### <a name="data-loss-prevention"></a>Data loss prevention 
+Data loss (sometimes referred to as data leakage) is an important consideration, and the prevention of external data loss via malicious and accidental insiders is paramount for many organizations.  
  
-データ損失防止 (DLP) テクノロジを使用すれば、電子メール サービスなどのソリューションが機密情報として分類されたデータを送信しないようにすることができます。組織では既存の製品の DLP 機能を利用してデータ損失を容易に防ぐことができます。このような機能では、簡単に一から作成することも、ソフトウェア プロバイダーによって提供されるテンプレートを使用して作成することもできるポリシーを使用します。
+Data loss prevention (DLP) technologies can help ensure that solutions such as email services do not transmit data that has been classified as confidential. Organizations can take advantage of DLP features in existing products to help prevent data loss. Such features use policies that can be easily created from scratch or by using a template supplied by the software provider.  
  
-DLP テクノロジでは、キーワード照合、ディクショナリ照合、正規表現の評価、およびその他のコンテンツ検証を介して詳細なコンテンツ分析を実行して、組織の DLP ポリシーに違反するコンテンツを検出することができます。たとえば、DLP は次の種類のデータの損失を防ぐのに役立ちます。
+DLP technologies can perform deep content analysis through keyword matches, dictionary matches, regular expression evaluation, and other content examination to detect content that violates organizational DLP policies. For example, DLP can help prevent the loss of the following types of data: 
 
-- 社会保障番号と身分登録番号
-- 銀行取引情報
-- クレジット カード番号
-- IP アドレス
+- Social Security and national identification numbers 
+- Banking information 
+- Credit card numbers  
+- IP addresses 
 
-また、DLP テクノロジの中には、DLP の構成を上書きする機能を備えたものがあります (たとえば、組織が給与プロセッサに社会保障番号の情報を送信する必要がある場合に)。さらに、送信してはいけない重要情報を送信する前にユーザーに通知が行くように、DLP を構成することができます。
+Some DLP technologies also provide the ability to override the DLP configuration (for example, if an organization needs to transmit Social Security number information to a payroll processor). In addition, it’s possible to configure DLP so that users are notified before they even attempt to send sensitive information that should not be transmitted. 
 
-> [AZURE.TIP] Office 365 DLP 機能を使用して、ドキュメントを保護することができます。詳細については、「[Office 365 compliance controls: Data Loss Prevention (Office 365 コンプライアンス制御: データ損失防止)](https://blogs.office.com/2013/10/28/office-365-compliance-controls-data-loss-prevention/)」をご覧ください。
+> [AZURE.TIP] you can use Office 365 DLP capabilities to protect your documents. Read [Office 365 compliance controls: Data Loss Prevention](https://blogs.office.com/2013/10/28/office-365-compliance-controls-data-loss-prevention/) for more information.
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-- [Azure Data Encryption Best Practices (Azure のデータ暗号化のベスト プラクティス)](azure-security-data-encryption-best-practices.md)
-- [Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](azure-security-identity-management-best-practices.md)
-- [Azure セキュリティ チームのブログ](http://blogs.msdn.com/b/azuresecurity/)
+- [Azure Data Encryption Best Practices](azure-security-data-encryption-best-practices.md)
+- [Azure Identity Management and access control security best practices](azure-security-identity-management-best-practices.md)
+- [Azure Security Team Blog](http://blogs.msdn.com/b/azuresecurity/)
 - [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

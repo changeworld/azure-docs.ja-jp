@@ -1,226 +1,228 @@
 <properties
-	pageTitle="Azure Backup とは | Microsoft Azure"
-	description="Azure Backup と Recovery Services を利用すれば、Windows Server、Windows クライアント コンピューター、System Center DPM サーバー、Azure Virtual Machines のデータとアプリケーションをバックアップして、復元できます。"
-	services="backup"
-	documentationCenter=""
-	authors="markgalioto"
-	manager="cfreeman"
-	editor="tysonn"
-	keywords="バックアップと復元, 復元サービス, バックアップ ソリューション"/>
+    pageTitle="What is Azure Backup? | Microsoft Azure"
+    description="By using Azure Backup and Recovery Services, you can back up and restore data and applications from Windows Servers, Windows client machines, System Center DPM servers and Azure virtual machines."
+    services="backup"
+    documentationCenter=""
+    authors="markgalioto"
+    manager="cfreeman"
+    editor="tysonn"
+    keywords="backup and restore; recovery services; backup solutions"/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="07/21/2016"
-	ms.author="jimpark; trinadhk"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="10/19/2016"
+    ms.author="jimpark; trinadhk"/>
 
-# Azure Backup とは
-Azure Backup は、Microsoft Cloud のデータのバックアップと復元に使用するサービスです。既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。また、クラウド内で実行されている資産を保護できます。Azure Backup は、拡張性、持続性、高可用性に優れた世界クラスのインフラストラクチャの上に構築された Recovery Services を提供します。
 
-[Azure Backup の概要に関するビデオ](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
+# <a name="what-is-azure-backup?"></a>What is Azure Backup?
+Azure Backup is the service that you use to back up and restore your data in the Microsoft cloud. It replaces your existing on-premises or off-site backup solution with a cloud-based solution that is reliable, secure, and cost-competitive. It also helps protect assets that run in the cloud. Azure Backup provides recovery services built on a world-class infrastructure that is scalable, durable, and highly available.
 
-## Azure Backup を使用する理由
-従来のバックアップ ソリューションは、クラウドをディスクやテープなどのエンドポイントのように扱えるように進化してきました。この方法は単純ですが、制限もあります。たとえば、基礎となるプラットフォームを最大限に活用することができないため、非効率的でコストの高いソリューションになってしまいます。これに対し、Azure Backup では、強力で低コストなクラウド バックアップ ソリューションの利点を最大限に引き出すことができます。Azure Backup には次のような利点があります。
+[Watch a video overview of Azure Backup](https://azure.microsoft.com/documentation/videos/what-is-azure-backup/)
 
-| 機能 | 長所 |
+## <a name="why-use-azure-backup?"></a>Why use Azure Backup?
+Traditional backup solutions have evolved to treat the cloud as an endpoint similar to disks or tape. While this approach is simple, it is also limited. It does not take full advantage of an underlying cloud platform and translates to an inefficient, expensive solution.
+In contrast, Azure Backup delivers all the advantages of a powerful and affordable cloud backup solution. Here are some of the key benefits that Azure Backup provides.
+
+| Feature | Benefit |
 | ------- | ------- |
-| ストレージ管理の自動化 | オンプレミスのストレージ デバイスに対する設備投資は必要ありません。Azure Backup は、従量制課金モデルを使用して、バックアップ ストレージを自動的に割り当てて管理します。 |
-| 無制限のスケーリング | 保守と監視のオーバーヘッドなしに高可用性が保証されます。Azure Backup は、基盤となる Azure クラウドの機能とスケールを使用して、非侵入型の自動スケール機能を提供します。 |
-| 複数のストレージ オプション | 必要に応じてバックアップ ストレージを選択できます。<li>ローカル冗長ストレージ ブロック BLOB は、コスト意識の高いお客様に最適です。ローカル ハードウェアの障害からデータを保護するうえでも役立ちます。<li>geo レプリケーション ストレージ ブロック BLOB は、ペアリングされているデータセンターに、さらに 3 つのコピーを提供します。この追加のコピーによって、Azure サイトレベルの障害が発生した場合でも、バックアップ データの高可用性を確保することができます。 |
-| 無制限のデータ転送 | Backup コンテナーからの復元操作時の出力 (送信) データ転送は無料です。Azure へのデータ受信も無料です。利用できる場合はインポート サービスと連携します。 |
-| データの暗号化 | データの暗号化によって、パブリック クラウドでの顧客データを安全に送信および保存できます。暗号化パスフレーズはソースに保存されます。転送されたり Azure に保存されたりすることはありません。データを復元するには暗号化キーが必要です。お客様のみがサービス内のデータにフル アクセスできます。 |  
-| アプリケーションの整合性のバックアップ | Windows でのアプリケーション整合性バックアップの場合、復元時に修正は不要であり、目標復旧時間が短縮されます。ユーザーは迅速に実行状態に戻ることができます。 |
-| 長期保存 | Azure にバックアップすると、ユーザーは、オフサイトのテープ バックアップ ソリューションに代価を払うよりも、低コストでテープに似た強力なソリューションを利用できます。 |
+| Automatic storage management | No capital expenditure is needed for on-premises storage devices. Azure Backup automatically allocates and manages backup storage, and it uses a pay-as-you-use consumption model. |
+| Unlimited scaling | Take advantage of high availability guarantees without the overhead of maintenance and monitoring. Azure Backup uses the underlying power and scale of the Azure cloud, with its nonintrusive autoscaling capabilities. |
+| Multiple storage options | Choose your backup storage based on need:<li>A locally redundant storage block blob is ideal for price-conscious customers, and it still helps protect data against local hardware failures. <li>A geo-replication storage block blob provides three more copies in a paired datacenter. These extra copies help ensure that your backup data is highly available even if an Azure site-level disaster occurs. |
+| Unlimited data transfer | There is no charge for any egress (outbound) data transfer during a restore operation from the Backup vault. Data inbound to Azure is also free. Works with the import service where it is available. |
+| Data encryption | Data encryption allows for secure transmission and storage of customer data in the public cloud. The encryption passphrase is stored at the source, and it is never transmitted or stored in Azure. The encryption key is required to restore any of the data, and only the customer has full access to the data in the service. |  
+| Application-consistent backup | Application-consistent backups on Windows help ensure that fixes are not needed at the time of restore, which reduces the recovery time objective. This allows customers to return to a running state more quickly. |
+| Long-term retention | Rather than pay for off-site tape backup solutions, customers can back up to Azure, which provides a compelling tape-like solution at a low cost. |
 
-## Azure Backup のコンポーネント
-Backup はハイブリッド バックアップ ソリューションなので、連携してエンド ツー エンドのバックアップと復元のワークフローを実現する複数のコンポーネントで構成されます。
+## <a name="azure-backup-components"></a>Azure Backup components
+Because Backup is a hybrid backup solution, it consists of multiple components that work together to enable end-to-end backup and restore workflows.
 
-![Azure Backup のコンポーネント](./media/backup-introduction-to-azure-backup/azure-backup-overview.png)
+![Azure Backup components](./media/backup-introduction-to-azure-backup/azure-backup-overview.png)
 
-### デプロイメント シナリオ
+### <a name="deployment-scenarios"></a>Deployment scenarios
 
-| コンポーネント | Azure にデプロイできる? | オンプレミスにデプロイできる? | サポートされているターゲット ストレージ|
+| Component | Can be deployed in Azure? | Can be deployed on-premises? | Target storage supported|
 | --- | --- | --- | --- |
-| Azure Backup エージェント | <p>**はい**</p> <p>Azure Backup エージェントは、Azure で実行されている任意の Windows Server VM にデプロイできます。</p> | <p>**はい**</p> <p>Backup エージェントは、任意の Windows Server VM または物理マシンにデプロイできます。</p> | <p>Azure Backup コンテナー</p> |
-| System Center Data Protection Manager (DPM) | <p>**はい**</p><p>詳細については、[System Center DPM を使用して Azure のワークロードを保護する方法](http://blogs.technet.com/b/dpm/archive/2014/09/02/azure-iaas-workload-protection-using-data-protection-manager.aspx)を確認してください。</p> | <p>**はい**</p> <p>詳細については、[自社のデータセンターのワークロードと VM を保護する方法](https://technet.microsoft.com/library/hh758173.aspx)を確認してください。</p> | <p>ローカルに接続されているディスク、</p><p>Azure Backup コンテナー、</p><p>テープ (オンプレミスのみ)</p> |
-| Azure Backup Server | <p>**はい**</p><p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)を確認してください。</p> | <p>**はい**</p> <p>詳細については、[Azure Backup Server を使用して Azure のワークロードを保護する方法](backup-azure-microsoft-azure-backup.md)を確認してください。</p> | <p>ローカルに接続されているディスク、</p><p>Azure Backup コンテナー</p> |
-| Azure Backup (VM 拡張機能) | <p>**はい**</p><p>Azure のファブリックの一部</p><p>[Azure のサービスとしてのインフラストラクチャ (IaaS) 仮想マシンのバックアップ](backup-azure-vms-introduction.md)に特化しています。</p> | <p>**いいえ**</p> <p>System Center DPM を使用して、データセンターの仮想マシンをバックアップします。</p> | <p>Azure Backup コンテナー</p> |
+| Azure Backup agent | <p>**Yes**</p> <p>The Azure Backup agent can be deployed on any Windows Server VM that runs in Azure.</p> | <p>**Yes**</p> <p>The Backup agent can be deployed on any Windows Server VM or physical machine.</p> | <p>Azure Backup vault</p> |
+| System Center Data Protection Manager (DPM) | <p>**Yes**</p><p>Learn more about [how to protect workloads in Azure by using System Center DPM](http://blogs.technet.com/b/dpm/archive/2014/09/02/azure-iaas-workload-protection-using-data-protection-manager.aspx).</p> | <p>**Yes**</p> <p>Learn more about [how to protect workloads and VMs in your datacenter](https://technet.microsoft.com/library/hh758173.aspx).</p> | <p>Locally attached disk,</p> <p>Azure Backup vault,</p> <p>tape (on-premises only)</p> |
+| Azure Backup Server | <p>**Yes**</p><p>Learn more about [how to protect workloads in Azure by using Azure Backup Server](backup-azure-microsoft-azure-backup.md).</p> | <p>**Yes**</p> <p>Learn more about [how to protect workloads in Azure by using Azure Backup Server](backup-azure-microsoft-azure-backup.md).</p> | <p>Locally attached disk,</p> <p>Azure Backup vault</p> |
+| Azure Backup (VM extension) | <p>**Yes**</p><p>Part of Azure fabric</p><p>Specialized for [backup of Azure infrastructure as a service (IaaS) virtual machines](backup-azure-vms-introduction.md).</p> | <p>**No**</p> <p>Use System Center DPM to back up virtual machines in your datacenter.</p> | <p>Azure Backup vault</p> |
 
-### 各コンポーネントのメリットと制限事項
+### <a name="component-level-benefits-and-limitations"></a>Component level benefits and limitations
 
-| コンポーネント | メリット | 制限事項 | 回復の単位 |
+| Component | Benefits | Limitations | Recovery granularity |
 | --- | --- | --- | --- |
-| Azure Backup (MARS) エージェント | <li>物理と仮想のどちらの Windows OS マシンでもファイルとフォルダーをバックアップできる (VM はオンプレミスと Azure のどちらにも配置できる)<li>別途バックアップ サーバーは不要<li>Azure Backup コンテナーを使用 | <li>バックアップ/ファイル レベルの復元は 1 日 3 回まで<li>ファイル/フォルダー/ボリューム レベルの復元のみ。アプリケーションは認識されない<li>Linux には非対応 | ファイル/フォルダー/ボリューム |
-| System Center Data Protection Manager | <li>アプリ認識スナップショット (VSS)<li>バックアップを実行するタイミングを思いどおりに設定可能<li>きめ細かい回復単位 (全レベル)<li>Azure Backup コンテナーを使用可能<li>Linux に対応 (Hyper-V でホストされている場合) | <li>異機種混在環境には非対応 (VMware VM バックアップ、Oracle ワークロード バックアップ) | ファイル/フォルダー/ボリューム<br>/VM/アプリケーション |
-| Microsoft Azure Backup サーバー | <li>アプリ認識スナップショット (VSS)<li>バックアップを実行するタイミングを思いどおりに設定可能<li>きめ細かい回復単位 (全レベル)<li>Azure Backup コンテナーを使用可能<li>Linux に対応 (Hyper-V でホストされている場合)<li>System Center ライセンスは不要 | <li>異機種混在環境には非対応 (VMware VM バックアップ、Oracle ワークロード バックアップ)<li>常にアクティブな Azure サブスクリプションが必須<li>テープ バックアップには非対応 | ファイル/フォルダー/ボリューム<br>/VM/アプリケーション |
-| Azure IaaS VM のバックアップ | <li>Windows/Linux のネイティブ バックアップ<li>特定のエージェントのインストールが不要<li>バックアップ インフラストラクチャを必要としないファブリック レベルのバックアップ | <li>バックアップ/ディスク レベルの復元は 1 日に 1 回<li>オンプレミスでバックアップできない | VM<br>すべてのディスク (PowerShell を使用) |
+| Azure Backup (MARS) agent | <li>Can backup files and folders on a Windows OS machine, be it physical or virtual (VMs can be anywhere on-premises or Azure)<li>No separate backup server required<li>Uses Azure Backup Vault | <li>Three times a day backup/file level restore<li>File/folder/volume level restore only, not application aware<li>No support for Linux | files/folders/volumes |
+| System Center Data Protection Manager | <li>App aware snapshots (VSS)<li>Full flexibility for when to take backups<li>Recovery granularity (all)<li>Can use Azure Backup vault<li>Linux support (if hosted on Hyper-V) | <li>Lack of heterogeneous support (VMware VM back up, Oracle workload back up).  | files/folders/volumes<br>/VMs/applications |
+| Microsoft Azure Backup Server | <li>App aware snapshots (VSS)<li>Full flexibility for when to take backups<li>Recovery granularity (all)<li>Can use Azure Backup vault<li>Linux support (if hosted on Hyper-V)<li>Does not require a System Center license | <li>Lack of heterogeneous support (VMware VM back up, Oracle workload back up).<li>Always requires live Azure subscription<li>No support for tape backup | files/folders/volumes<br>/VMs/applications |
+| Azure IaaS VM Backup | <li>Native backups for Windows/Linux<li>No specific agent installation required<li>Fabric level backup with no backup infrastructure needed | <li>Once a day back up/disk level restore<li>Cannot back up on-premises | VMs<br>All disks(using PowerShell) |
 
-## バックアップできるアプリケーションとワークロード
+## <a name="which-applications-and-workloads-can-be-backed-up?"></a>Which applications and workloads can be backed up?
 
-| ワークロード | ソース コンピューター | Azure Backup ソリューション |
+| Workload | Source machine | Azure Backup solution |
 | --- | --- |---|
-| ファイルとフォルダー | Windows Server | <p>[Azure Backup エージェント](backup-configure-vault.md)、</p> <p>[System Center DPM](backup-azure-dpm-introduction.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| ファイルとフォルダー | Windows クライアント | <p>[Azure Backup エージェント](backup-configure-vault.md)、</p> <p>[System Center DPM](backup-azure-dpm-introduction.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Hyper-V 仮想マシン (Windows) | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Hyper-V 仮想マシン (Linux) | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Microsoft Exchange | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ Azure Backup エージェント)、</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (Azure Backup エージェントを含む)</p> |
-| Azure IaaS VM (Windows) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
-| Azure IaaS VM (Linux) | - | [Azure Backup (VM 拡張機能)](backup-azure-vms-introduction.md) |
+| Files and folders | Windows Server | <p>[Azure Backup agent](backup-configure-vault.md),</p> <p>[System Center DPM](backup-azure-dpm-introduction.md) (+ the Azure Backup agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (includes the Azure Backup agent)</p>  |
+| Files and folders | Windows client | <p>[Azure Backup agent](backup-configure-vault.md),</p> <p>[System Center DPM](backup-azure-dpm-introduction.md) (+ the Azure Backup agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (includes the Azure Backup agent)</p>  |
+| Hyper-V virtual machine (Windows) | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ the Azure Backup agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (includes the Azure Backup agent)</p> |
+| Hyper-V virtual machine (Linux) | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ the Azure Backup agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (includes the Azure Backup agent)</p>  |
+| Microsoft SQL Server | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ the Azure Backup agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (includes the Azure Backup agent)</p>  |
+| Microsoft SharePoint | Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ the Azure Backup agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (includes the Azure Backup agent)</p>   |
+| Microsoft Exchange |  Windows Server | <p>[System Center DPM](backup-azure-backup-sql.md) (+ the Azure Backup agent),</p> <p>[Azure Backup Server](backup-azure-microsoft-azure-backup.md) (includes the Azure Backup agent)</p>   |
+| Azure IaaS VMs (Windows) | - | [Azure Backup (VM extension)](backup-azure-vms-introduction.md) |
+| Azure IaaS VMs (Linux) | - | [Azure Backup (VM extension)](backup-azure-vms-introduction.md) |
 
-## ARM と Linux のサポート
+## <a name="arm-and-linux-support"></a>ARM and Linux support
 
-| コンポーネント | ARM サポート | Linux (Azure での動作保証済み) サポート |
+| Component | ARM Support | Linux (Azure endorsed) Support |
 | --- | --- | --- |
-| Azure Backup (MARS) エージェント | はい | なし (Windows ベースのエージェントのみ) |
-| System Center Data Protection Manager | あり (ゲスト内のエージェント) | Hyper-V のみ (Azure VM は不可) ファイル整合性のバックアップのみが可能 |
-| Azure Backup Server (MABS) | あり (ゲスト内のエージェント) | Hyper-V のみ (Azure VM は不可) ファイル整合性のバックアップのみが可能 (DPM と同じ) |
-| Azure IaaS VM のバックアップ | はい | はい |
+| Azure Backup (MARS) agent | Yes | No (Only Windows based agent) |
+| System Center Data Protection Manager | Yes (Agent in guest) | Only Hyper-V (Not Azure VM) Only file-consistent backup is possible |
+| Azure Backup Server (MABS) | Yes (Agent in guest) | Only Hyper-V (Not Azure VM) Only file-consistent backup is possible (Same as DPM) |
+| Azure IaaS VM Backup | Yes | Yes |
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
 
-## Premium Storage VM のバックアップと復元
+## <a name="back-up-and-restore-premium-storage-vms"></a>Back up and Restore Premium Storage VMs
 
-Azure Backup サービスで、Premium Storage VM が保護されるようになりました。
+The Azure Backup service now protects Premium Storage VMs.
 
-### Premium Storage VM のバックアップ
+### <a name="back-up-premium-storage-vms"></a>Back up Premium Storage VMs
 
-Premium Storage VM をバックアップすると、Backup サービスによって、Premium ストレージ アカウントの一時的なステージング場所が作成されます。"AzureBackup-" というステージングの場所は、VM にアタッチされている Premium ディスクの合計データ サイズと同じです。
+While backing up Premium Storage VMs, the Backup service creates a temporary staging location in the Premium Storage account. The staging location, named "AzureBackup-", is equal to the total data size of the premium disks attached to the VM.
 
->[AZURE.NOTE] ステージングの場所は変更または編集できません。
+>[AZURE.NOTE] Do not modify or edit the staging location.
 
-バックアップ ジョブが完了したら、ステージングの場所は削除されます。ステージングの場所に使用されるストレージの価格は、すべての [Premium Storage の価格](../storage/storage-premium-storage.md#pricing-and-billing)に準じます。
+Once the backup job finishes, the staging location is deleted. The price of storage used for the staging location is consistent with all [Premium storage pricing](../storage/storage-premium-storage.md#pricing-and-billing).
 
-### Premium Storage VM の復元
+### <a name="restore-premium-storage-vms"></a>Restore Premium Storage VMs
 
-Premium Storage VM は、Premium Storage と通常のストレージのどちらかに復元することができます。Premium Storage VM の復旧ポイントを Premium Storage に復元する方法が、復元の一般的なプロセスです。ただし、Premium Storage VM の復旧ポイント Standard Storage に復元する方がコスト効率が良い場合があります。このような復元は、VM の一部のファイルのみが必要な場合に利用できます。
+Premium Storage VM can be restored to either Premium Storage or to normal storage. Restoring a Premium Storage VM recovery point back to Premium Storage is the typical process of restoration. However, it can be cost effective to restore a Premium Storage VM recovery point to standard storage. This type of restoration can be used if you need a subset of files from the VM.
 
-## 機能
-以下の 5 つの表では、各コンポーネントにおける Backup の機能の処理方法をまとめます。
+## <a name="functionality"></a>Functionality
+These five tables summarize how backup functionality is handled in each component.
 
-### Storage
+### <a name="storage"></a>Storage
 
-| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
+| Feature | Azure Backup agent | System Center DPM | Azure Backup Server | Azure Backup (VM extension) |
 | ------- | --- | --- | --- | ---- |
-| Azure Backup コンテナー | ![はい][green] | ![はい][green] | ![はい][green] | ![はい][green] |
-| ディスク ストレージ | | ![はい][green] | ![はい][green] | |
-| テープ ストレージ | | ![はい][green] | | |
-| 圧縮 (バックアップ コンテナー) | ![はい][green] | ![はい][green]| ![はい][green] | |
-| 増分バックアップ | ![はい][green] | ![はい][green] | ![はい][green] | ![はい][green] |
-| ディスクの重複除去 | | ![部分的][yellow] | ![部分的][yellow]| | |
+| Azure Backup vault | ![Yes][green] | ![Yes][green] | ![Yes][green] | ![Yes][green] |
+| Disk storage | | ![Yes][green] | ![Yes][green] |  |
+| Tape storage | | ![Yes][green] |  | |
+| Compression (in backup vault) | ![Yes][green] | ![Yes][green]| ![Yes][green] | |
+| Incremental backup | ![Yes][green] | ![Yes][green] | ![Yes][green] | ![Yes][green] |
+| Disk deduplication | | ![Partially][yellow] | ![Partially][yellow]| | |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
-バックアップ コンテナーは、すべてのコンポーネントの中で優先されるストレージ ターゲットです。System Center DPM と Backup Server には、ローカル ディスク コピーを作成するオプションもありますが、テープ ストレージ デバイスにデータを書き込むオプションがあるのは System Center DPM のみです。
+The Backup vault is the preferred storage target across all components. System Center DPM and Backup Server also provide the option to have a local disk copy. However, only System Center DPM provides the option to write data to a tape storage device.
 
-#### 増分バックアップ
-ターゲット ストレージ (ディスク、テープ、バックアップ コンテナー) がどれであるかにかかわらず、すべてのコンポーネントが増分バックアップをサポートします。増分バックアップは、前回のバックアップ以降に行われた変更のみを転送対象とすることで、高い保存効率と時間効率を実現します。
+#### <a name="incremental-backup"></a>Incremental backup
+Every component supports incremental backup regardless of the target storage (disk, tape, backup vault). Incremental backup ensures that backups are storage and time efficient, by transferring only those changes made since the last backup.
 
-#### 圧縮
-必要となるストレージ使用量を削減するために、バックアップが圧縮されます。VM 拡張機能は、圧縮が行われない唯一のコンポーネントです。VM 拡張機能では、すべてのバックアップ データが圧縮されずに、ユーザーのストレージ アカウントから、同じリージョンにあるバックアップ コンテナーにコピーされます。圧縮せずにデータを格納することで、使用されるストレージは若干増えますが、復元時間が短縮されます。
+#### <a name="compression"></a>Compression
+Backups are compressed to reduce the required storage space. The only component that does not use compression is the VM extension. With VM extension, all backup data is copied from the customer storage account to the backup vault in the same region without compressing it. While going without compression slightly inflates the storage used, storing the data without compression allows for faster restore times.
 
-#### 重複除去
-System Center DPM と Backup Server では、[Hyper-V 仮想マシンにデプロイ](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx)すると、重複除去がサポートされます。重複除去は、バックアップ ストレージとして仮想マシンに接続された仮想ハード ディスク (VHD) 上で、Windows Server の重複除去を使用してホスト レベルで実行されます。
+#### <a name="deduplication"></a>Deduplication
+Deduplication is supported for System Center DPM and Backup Server when it is [deployed in a Hyper-V virtual machine](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx). Deduplication is performed at the host level by using Windows Server deduplication on virtual hard disks (VHDs) that are attached to the virtual machine as backup storage.
 
->[AZURE.WARNING] Azure では、どの Backup コンポーネントについても重複除去を使用できません。System Center DPM と Backup Server が Azure にデプロイされている場合は、VM に接続されているストレージ ディスクを重複除去できません。
+>[AZURE.WARNING] Deduplication is not available in Azure for any of the Backup components. When System Center DPM and Backup Server are deployed in Azure, the storage disks attached to the VM cannot be deduplicated.
 
-### セキュリティ
+### <a name="security"></a>Security
 
-| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
+| Feature | Azure Backup agent | System Center DPM | Azure Backup Server | Azure Backup (VM extension) |
 | ------- | --- | --- | --- | ---- |
-| ネットワーク セキュリティ (対 Azure) | ![はい][green] |![はい][green] | ![はい][green] | ![部分的][yellow]|
-| ネットワーク セキュリティ (Azure 内) | ![Yes][green] |![はい][green] | ![はい][green] | ![部分的][yellow]|
+| Network security (to Azure) | ![Yes][green] |![Yes][green] | ![Yes][green] | ![Partially][yellow]|
+| Data security (in Azure) | ![Yes][green] |![Yes][green] | ![Yes][green] | ![Partially][yellow]|
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
-サーバーからバックアップ コンテナーまでのすべてのバックアップ トラフィックは、Advanced Encryption Standard 256 を使用して暗号化されます。データは、セキュリティで保護された HTTPS リンク上で送信されます。また、バックアップ データは、暗号化された形式でバックアップ コンテナーにも格納されます。このデータのロックを解除するパスフレーズは、お客様のみが保持します。マイクロソフトは、どの時点でもバックアップ データの暗号化を解除できせん。
+All backup traffic from your servers to the Backup vault is encrypted by using Advanced Encryption Standard 256. The data is sent over a secure HTTPS link. The backup data is also stored in the Backup vault in encrypted form. Only the customer holds the passphrase to unlock this data. Microsoft cannot decrypt the backup data at any point.
 
->[AZURE.WARNING] バックアップ データの暗号化に使用されるキーは、ユーザーの手元にだけ存在します。マイクロソフトは Azure にコピーを保持していませんし、キーにもアクセスできません。ユーザーがキーを紛失した場合、マイクロソフトはバックアップ データを復旧できません。
+>[AZURE.WARNING] The key used to encrypt the backup data is present only with the customer. Microsoft does not maintain a copy in Azure and does not have any access to the key. If the key is misplaced, Microsoft cannot recover the backup data.
 
-Azure VM のバックアップの場合は、仮想マシン "*内*" で暗号化を設定する必要があります。Windows 仮想マシンでは BitLocker を使用し、Linux 仮想マシンでは **dm-crypt** を使用します。Azure Backup では、この経路で受け取るバックアップ データは自動的に暗号化されません。
+Backing up Azure VMs requires setting up encryption *within* the virtual machine. Use BitLocker on Windows virtual machines and **dm-crypt** on Linux virtual machines. Azure Backup does not automatically encrypt backup data that comes through this path.
 
-### サポートされるワークロード
+### <a name="supported-workloads"></a>Supported workloads
 
-| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
+| Feature | Azure Backup agent | System Center DPM | Azure Backup Server | Azure Backup (VM extension) |
 | ------- | --- | --- | --- | ---- |
-| Windows Server コンピューター -- ファイルとフォルダー | ![はい][green] | ![はい][green] | ![はい][green] | |
-| Windows クライアント コンピューター -- ファイルとフォルダー | ![はい][green] | ![はい][green] | ![はい][green] | |
-| Hyper-V 仮想マシン (Windows) | | ![はい][green] | ![はい][green] | |
-| Hyper-V 仮想マシン (Linux) | | ![はい][green] | ![はい][green] | |
-| Microsoft SQL Server | | ![はい][green] | ![はい][green] | |
-| Microsoft SharePoint | | ![はい][green] | ![はい][green] | |
-| Microsoft Exchange | | ![はい][green] | ![はい][green] | |
-| Azure 仮想マシン (Windows) | | | | ![はい][green] |
-| Azure 仮想マシン (Linux) | | | | ![はい][green] |
+| Windows Server machine--files and folders | ![Yes][green] | ![Yes][green] | ![Yes][green] | |
+| Windows client machine--files and folders | ![Yes][green] | ![Yes][green] | ![Yes][green] | |
+| Hyper-V virtual machine (Windows) | | ![Yes][green] | ![Yes][green] | |
+| Hyper-V virtual machine (Linux) | | ![Yes][green] | ![Yes][green] | |
+| Microsoft SQL Server | | ![Yes][green] | ![Yes][green] | |
+| Microsoft SharePoint | | ![Yes][green] | ![Yes][green] | |
+| Microsoft Exchange  | | ![Yes][green] | ![Yes][green] | |
+| Azure virtual machine (Windows) | | | | ![Yes][green] |
+| Azure virtual machine (Linux) | | | | ![Yes][green] |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key-2.png)
 
-### ネットワーク
+### <a name="network"></a>Network
 
-| 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
+| Feature | Azure Backup agent | System Center DPM | Azure Backup Server | Azure Backup (VM extension) |
 | ------- | --- | --- | --- | ---- |
-| ネットワーク圧縮 (対バックアップ サーバー) | | ![はい][green] | ![はい][green] | |
-| ネットワーク圧縮 (対バックアップ コンテナー) | ![はい][green] | ![はい][green] | ![はい][green] | |
-| ネットワーク プロトコル (対バックアップ サーバー) | | TCP | TCP | |
-| ネットワーク プロトコル (対バックアップ コンテナー) | HTTPS | HTTPS | HTTPS | HTTPS |
+| Network compression (to the backup server) | | ![Yes][green] | ![Yes][green] | |
+| Network compression (to the backup vault) | ![Yes][green] | ![Yes][green] | ![Yes][green] | |
+| Network protocol (to the backup server) | | TCP | TCP | |
+| Network protocol (to the backup vault) | HTTPS | HTTPS | HTTPS | HTTPS |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key-2.png)
 
-VM 拡張機能はデータを Azure ストレージ アカウントからストレージ ネットワーク経由で直接読み取るので、このトラフィックを最適化する必要はありません。トラフィックは Azure データセンターのローカル ストレージ ネットワークを経由し、帯域幅のために圧縮が必要になることはほとんどありません。
+Because the VM extension reads the data directly from the Azure storage account over the storage network, it is not necessary to optimize this traffic. The traffic is over the local storage network in the Azure datacenter, so there is little need for compression because of bandwidth considerations.
 
-バックアップ サーバー (DPM または Backup Server) へのデータを保護する場合は、プライマリ サーバーからバックアップ サーバーへのトラフィックを圧縮して帯域幅を削減できます。
+If you are backing up your data to a backup server (DPM or Backup Server), traffic from the primary server to the backup server can be compressed to save on bandwidth.
 
-#### ネットワークのスロットル
-Azure Backup エージェントには、データ転送時のネットワーク帯域幅の使用方法を制御できるスロットル機能があります。業務時間中に実行が必要なデータのバックアップ処理が他のインターネット トラフィックに干渉しないようにする必要がある場合などに効果を発揮します。データ転送のスロットルはバックアップと復元のアクティビティに適用されます。
+#### <a name="network-throttling"></a>Network Throttling
+The Azure Backup agent provides throttling capability, which allows you to control how network bandwidth is used during data transfer. Throttling can be helpful if you need to back up data during work hours but do not want the backup process to interfere with other internet traffic. Throttling for data transfer applies to back up and restore activities.
 
-### バックアップと保持
+### <a name="backup-and-retention"></a>Backup and retention
 
-| | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure Backup (VM 拡張機能) |
+|  | Azure Backup agent | System Center DPM | Azure Backup Server | Azure Backup (VM extension) |
 | --- | --- | --- | --- | --- |
-| バックアップ頻度 (対バックアップ コンテナー) | 3 バックアップ/日 | 2 バックアップ/日 |2 バックアップ/日 | 1 バックアップ/日 |
-| バックアップ頻度 (対ディスク) | 適用不可 | <p>SQL Server の場合は 15 分ごと</p> <p>他のワークロードの場合は 1 時間ごと</p> | <p>SQL Server の場合は 15 分ごと</p> <p>他のワークロードの場合は 1 時間ごと</p> |適用不可 |
-| 保持オプション | 毎日、毎週、毎月、毎年 | 毎日、毎週、毎月、毎年 | 毎日、毎週、毎月、毎年 |毎日、毎週、毎月、毎年 |
-| 保持期間 | 最大 99 年 | 最大 99 年 | 最大 99 年 | 最大 99 年 |
-| バックアップ コンテナーの回復ポイント | 無制限 | 無制限 | 無制限 | 無制限 |
-| ローカル ディスクの回復ポイント | 適用不可 | ファイル サーバーの場合 64 個、<br><br>アプリケーション サーバーの場合 448 個 | ファイル サーバーの場合 64 個、<br><br>アプリケーション サーバーの場合 448 個 |適用不可 |
-| テープの回復ポイント | 適用不可 | 無制限 | 適用不可 | 適用不可 |
+| Backup frequency (to the backup vault) | Three backups per day | Two backups per day |Two backups per day | One backup per day |
+| Backup frequency (to disk) | Not applicable | <p>Every 15 minutes for SQL Server</p> <p>Every hour for other workloads</p> | <p>Every 15 minutes for SQL Server</p> <p>Every hour for other workloads</p> |Not applicable |
+| Retention options | Daily, weekly, monthly, yearly | Daily, weekly, monthly, yearly | Daily, weekly, monthly, yearly |Daily, weekly, monthly, yearly |
+| Retention period | Up to 99 years | Up to 99 years | Up to 99 years | Up to 99 years |
+| Recovery points in Backup vault | Unlimited | Unlimited | Unlimited | Unlimited |
+| Recovery points on local disk | Not applicable | 64 for File Servers,<br><br>448 for Application Servers | 64 for File Servers,<br><br>448 for Application Servers |Not applicable |
+| Recovery points on tape | Not applicable | Unlimited | Not applicable | Not applicable |
 
-## 資格情報コンテナーの資格情報ファイルとは
+## <a name="what-is-the-vault-credential-file?"></a>What is the vault credential file?
 
-資格情報コンテナーの資格情報ファイルは、各バックアップ資格情報コンテナーごとにポータルによって生成される証明書です。ポータルは公開キーを Access Control Service (ACS) にアップロードします。ユーザーは、資格情報をダウンロードする際に提供される秘密キーをコンピューターの登録時に入力します。コンピューターは公開キーによって認証され、Azure Backup サービスで識別されたコンテナーにバックアップ データを送信できるようになります。
+The vault credentials file is a certificate generated by the portal for each backup vault. The portal then uploads the public key to the Access Control Service (ACS). The private key is provided to the user when downloading the credentials and then entered during the machine registration. The private key authenticates the machine to send backup data to an identified vault in the Azure Backup service.
 
-資格情報コンテナーの資格情報は登録ワークフロー中しか使用されません。コンテナーの資格情報ファイルが漏えいしないようにするのはユーザーの責任です。悪意のあるユーザーが入手した場合、資格情報コンテナーの資格情報ファイルを使用し、同じ資格情報コンテナーに対してその他のコンピューターが登録されてしまう可能性があります。ただし、バックアップ データは顧客ごとに専用のパスフレーズを使用して暗号化されているため、既存のバックアップ データが漏えいすることはありません。また、このような懸念を緩和するために、コンテナーの資格情報は 48 時間で期限切れになるよう設定されています。バックアップ コンテナーの資格情報は何回でもダウンロードできますが、登録ワークフロー時に適用できるのは最新のファイルのみです。
+The vault credential is used only during the registration workflow. It is your responsibility to ensure that the vault credentials file is not compromised. If it falls in the hands of any rogue-user, the vault credentials file can be used to register other machines against the same vault. However, since the backup data is encrypted using a passphrase belonging only to the customer, existing backup data cannot be compromised. To mitigate this concern, vault credentials are set to expire in 48 hours. While you can download the vault credentials of a backup vault any number of times, only the latest file is applicable during the registration workflow.
 
-## Azure Backup と Azure Site Recovery はどのように違いますか
-バックアップの復元と障害復旧はよく間違われます。どちらもデータをキャプチャして復元セマンティクスを提供しますが、中核となる価値提案は異なります。
+## <a name="how-does-azure-backup-differ-from-azure-site-recovery?"></a>How does Azure Backup differ from Azure Site Recovery?
+Many customers confuse backup recovery and disaster recovery. Both capture data and provide restore semantics, but their core value propositions are different.
 
-Azure Backup は、オンプレミスのデータまたはクラウド内のデータをバックアップします。Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、フェールバックを調整します。障害復旧ソリューションでは、データの安全性と復元可能性を維持し (Backup)、"*さらに*"、障害が発生したときにワークロードの可用性を維持する (Site Recovery) 必要があるため、どちらのサービスも重要です。
+Azure Backup backs up data on-premises and in the cloud. Azure Site Recovery coordinates virtual-machine and physical-server replication, failover, and failback. Both services are important because your disaster recovery solution needs to keep your data safe and recoverable (Backup) *and* keep your workloads available (Site Recovery) when outages occur.
 
-バックアップと障害復旧に関する意思決定を行うにあたっては、次の概念が役立ちます。
+The following concepts help you make important decisions around backup and disaster recovery.
 
-| 概念 | 詳細 | バックアップ | 障害復旧 (DR) |
+| Concept | Details | Backup | Disaster recovery (DR) |
 | ------- | ------- | ------ | ----------------- |
-| 目標復旧時点 (RPO) | 復旧を行う必要がある場合に許容されるデータ損失の量です。 | バックアップ ソリューションの許容されるRPO には幅があります。仮想マシンのバックアップの RPO は通常 1 日であるのに対し、データベースのバックアップの RPO は最低 15 分です。 | 障害復旧ソリューションでは RPO が低くなります。DR コピーは、数秒遅れまたは数分遅れのことがあります。 |
-| 目標復旧時間 (RTO) | 復旧または復元の完了に要する時間です。 | RPO が大きくなるほど、一般的にはバックアップ ソリューションで処理が必要なデータ量が増えるため、RTO は長くなります。たとえば、オフサイトの場所からテープを輸送するのにかかる時間によっては、テープからのデータの復元に日単位の時間を要する場合があります。 | 障害復旧ソリューションは、よりソースと同期されているため、RTO は短くなります。必要な変更は少数です。 |
-| 保持 | データを保存する必要がある期間 | 運用の復旧を必要とするシナリオ (データの破損、不注意によるファイルの削除、OS の障害) では、通常、バックアップ データの保持期間は最大 30 日です。<br>コンプライアンスの観点から、月単位または年単位でデータを保存することが必要になる場合があります。バックアップ データは、このような場合のアーカイブに最適です。 | 障害復旧には運用復旧データのみが必要となり、実行には通常、数時間から最大で 1 日かかります。DR ソリューションでは詳細なデータ キャプチャが使用されるため、DR データを使用する長期的な保持はお勧めできません。 |
+| Recovery point objective (RPO) | The amount of acceptable data loss if a recovery needs to be done. | Backup solutions have wide variability in their acceptable RPO. Virtual machine backups usually have an RPO of one day, while database backups have RPOs as low as 15 minutes. | Disaster recovery solutions have low RPOs. The DR copy can be behind by a few seconds or a few minutes. |
+| Recovery time objective (RTO) | The amount of time that it takes to complete a recovery or restore. | Because of the larger RPO, the amount of data that a backup solution needs to process is typically much higher, which leads to longer RTOs. For example, it can take days to restore data from tapes, depending on the time it takes to transport the tape from an off-site location. | Disaster recovery solutions have smaller RTOs because they are more in sync with the source. Fewer changes need to be processed. |
+| Retention | How long data needs to be stored | For scenarios that require operational recovery (data corruption, inadvertent file deletion, OS failure), backup data is typically retained for 30 days or less.<br>From a compliance standpoint, data might need to be stored for months or even years. Backup data is ideally suited for archiving in such cases. | Disaster recovery needs only operational recovery data, which typically takes a few hours or up to a day. Because of the fine-grained data capture used in DR solutions, using DR data for long-term retention is not recommended. |
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-シンプルな Azure Backup をお試しください。手順については、次のいずれかのチュートリアルを参照してください。
+Try out a simple Azure Backup. For instructions, see one of these tutorials:
 
-- [Azure Backup を試す](backup-try-azure-backup-in-10-mins.md)
-- [Azure VM Backup を試す](backup-azure-vms-first-look.md)
+- [Try Azure Backup](backup-try-azure-backup-in-10-mins.md)
+- [Try Azure VM Backup](backup-azure-vms-first-look.md)
 
-これらのチュートリアルに従うとすぐにバックアップできるため、データをバックアップするための最短コースしか確認できません。実行するバックアップの種類に関する詳細については、次のページを参照してください。
+Because those tutorials help you back up quickly, they show you only the most direct path for backing up your data. For additional information about the type of back up you want to do, see:
 
-- [Windows マシンのバックアップ](backup-configure-vault.md)
-- [アプリケーション ワークロードのバックアップ](backup-azure-microsoft-azure-backup.md)
-- [Azure IaaS VM のバックアップ](backup-azure-vms-prepare.md)
+- [Back up Windows machine](backup-configure-vault.md)
+- [Back up application workloads](backup-azure-microsoft-azure-backup.md)
+- [Backup Azure IaaS VMs](backup-azure-vms-prepare.md)
 
 
 
@@ -228,4 +230,8 @@ Azure Backup は、オンプレミスのデータまたはクラウド内のデ�
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,36 +1,39 @@
-ストレージ エミュレーターでは、共有キー認証について、単一の固定アカウントと既知の認証キーがサポートされています。このアカウントとキーのみ、ストレージ エミュレーターで共有キー資格情報として使用できます。次に例を示します。
+The storage emulator supports a single fixed account and a well-known authentication key for Shared Key authentication. This account and key are the only Shared Key credentials permitted for use with the storage emulator. They are:
 
     Account name: devstoreaccount1
     Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
     
-> [AZURE.NOTE]ストレージ エミュレーターでサポートされている認証キーは、クライアント認証コードの機能をテストすることだけを目的としています。セキュリティ機能は果たしません。ストレージ エミュレーターで運用環境のストレージ アカウントとキーを使用することはできません。開発アカウントは運用データで使用できないことにもご注意ください。
+> [AZURE.NOTE] The authentication key supported by the storage emulator is intended only for testing the functionality of your client authentication code. It does not serve any security purpose. You cannot use your production storage account and key with the storage emulator. Also note that you should not use the development account with production data.
 >
-> ストレージ エミュレーターでは HTTP 経由の接続のみがサポートされることに注意してください。ただし、Azure 運用環境のストレージ アカウント内のリソースにアクセスする際は、HTTPS が推奨されるプロトコルです。
+> Note that the storage emulator supports connection via HTTP only. However, HTTPS is the recommended protocol for accessing resources in an Azure production storage account.
  
-#### ショートカットを使用してエミュレーター アカウントに接続する
+#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Connect to the emulator account using a shortcut
 
-アプリケーションからストレージ エミュレーターに接続する最も簡単な方法は、ショートカット `UseDevelopmentStorage=true` を参照するアプリケーションの構成ファイル内から接続文字列を構成することです。たとえば、app.config ファイル内でのストレージ エミュレーターへの接続文字列は次のようになります。
+The easiest way to connect to the storage emulator from your application is to configure a connection string from within your application's configuration file that references the shortcut `UseDevelopmentStorage=true`. Here's an example of a connection string to the storage emulator in an app.config file: 
 
     <appSettings>
       <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
     </appSettings>
 
-#### よく知られたアカウント名とキーを使用してエミュレーター アカウントに接続する
+#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Connect to the emulator account using the well-known account name and key
 
-エミュレーターのアカウント名とキーを参照する接続文字列を作成するには、接続文字列内のエミュレーターから使用する各サービスのエンドポイントを指定する必要があることに注意してください。これは、接続文字列が運用ストレージ アカウントに使用するものと異なるエミュレーター エンドポイントを参照するために必要です。たとえば、接続文字列の値は次のようになります。
+To create a connection string that references the emulator account name and key, note that you must specify the endpoints for each of the services that you wish to use from the emulator in the connection string. This is necessary so that the connection string will reference the emulator endpoints, which are different than those for a production storage account. For example, the value of your connection string will look like this:
 
-	DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
-	AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;
+    DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
+    AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;
     BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;
     TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
     QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1; 
 
-この値は、前述のショートカット `UseDevelopmentStorage=true` と同じです。
+This value is identical to the shortcut shown above, `UseDevelopmentStorage=true`.
 
-#### HTTP プロキシを指定する
+#### <a name="specify-an-http-proxy"></a>Specify an HTTP proxy
 
-また、サービスをストレージ エミュレーターでテストする際に使用する HTTP プロキシを指定することもできます。これは、ストレージ サービスに対する操作をデバッグするとき、HTTP の要求と応答を調べる場合に便利です。プロキシを指定するには、`DevelopmentStorageProxyUri` オプションを接続文字列に追加し、値としてプロキシ URI を設定します。たとえば、次に示す接続文字列は、ストレージ エミュレーターを指しており、HTTP プロキシを構成しています。
+You can also specify an HTTP proxy to use when you're testing your service against the storage emulator. This can be useful for observing HTTP requests and responses while you're debugging operations against the storage services. To specify a proxy, add the `DevelopmentStorageProxyUri` option to the connection string, and set its value to the proxy URI. For example, here is a connection string that points to the storage emulator and configures an HTTP proxy:
 
     UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

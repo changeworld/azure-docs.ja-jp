@@ -1,6 +1,6 @@
 <properties
-   pageTitle="VS Code で Resource Manager テンプレートを操作する | Microsoft Azure"
-   description="Visual Studio Code を設定し、Azure Resource Manager テンプレートを作成する方法について説明します。"
+   pageTitle="Use VS Code with Resource Manager templates | Microsoft Azure"
+   description="Shows how to set up Visual Studio Code to create Azure Resource Manager templates."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="cmatskas"
@@ -16,124 +16,129 @@
    ms.date="09/26/2016"
    ms.author="chmatsk;tomfitz"/>
 
-# Visual Studio Code で Azure Resource Manager テンプレートを操作する
 
-Azure Resource Manager テンプレートは、リソースおよび関連する依存関係を記述する JSON ファイルです。これらのファイルは大きく複雑になることがあるため、ツールのサポートが重要です。Visual Studio Code は新しく軽量なオープン ソースのクロスプラットフォーム コード エディターです。[新たな拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)で Resource Manager テンプレートの作成と編集をサポートします。VS Code はどこででも実行が可能です。Resource Manager テンプレートをデプロイする場合を除き、インターネットへのアクセスを必要としません。
+# <a name="working-with-azure-resource-manager-templates-in-visual-studio-code"></a>Working with Azure Resource Manager Templates in Visual Studio Code
 
-まだ VS Code を入手していない場合は、[https://code.visualstudio.com/](https://code.visualstudio.com/) からインストールできます。
+Azure Resource Manager templates are JSON files that describe a resource and related dependencies. These files can sometimes be large and complicated so tooling support is important. Visual Studio Code is a new, lightweight, open-source, cross-platform code editor. It supports creating and editing Resource Manager templates through a [new extension](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools). VS Code runs everywhere and doesn't require Internet access unless you also want to deploy your Resource Manager templates.
 
-## Resource Manager 拡張機能のインストール
+If you do not already have VS Code, you can install it at [https://code.visualstudio.com/](https://code.visualstudio.com/).
 
-VS Code で JSON テンプレートを操作するには、拡張機能のインストールが必要です。次の手順で Resource Manager JSON テンプレートの言語サポートをダウンロードおよびインストールします。
+## <a name="install-the-resource-manager-extension"></a>Install the Resource Manager extension
 
-1. VS Code を起動します。
-2. クイック オープンを行います (Ctrl + P キーを押します)。
-3. 次のコマンドを実行します。
+To work with the JSON templates in VS Code, you need to install an extension. The following steps download and install the language support for Resource Manager JSON templates:
+
+1. Launch VS Code 
+2. Open Quick Open (Ctrl+P) 
+3. Run the following command: 
 
         ext install azurerm-vscode-tools
 
-4. 拡張機能を有効にするように求められたら、VS Code を再起動します。
+4. Restart VS Code when prompted to enable the extension. 
 
- これで完了です。
+ Job done!
 
-## Resource Manager のスニペットの設定
+## <a name="set-up-resource-manager-snippets"></a>Set up Resource Manager snippets
 
-前の手順でツールのサポートをインストールしましたが、次は JSON テンプレートのスニペットが使えるように、VS Code を構成する必要があります。
+The previous steps installed the tooling support, but now we need to configure VS Code to use JSON template snippets.
 
-1. ファイルの内容を [azure-xplat-arm-tooling](https://raw.githubusercontent.com/Azure/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) リポジトリからクリップボードにコピーします。
-2. VS Code を起動します。
-3. VS Code では、JSON スニペットは 2 通りの方法で開くことができます。**[ファイル]**、**[ユーザー設定]**、**[User Snippets (ユーザー スニペット)]**、**[JSON]** の順にクリックして移動するか、**F1** キーを押し、"**Preferences: Snippets**" を選択できるようになるまで「**preferences**」と入力してください。
+1. Copy the contents of the file from the [azure-xplat-arm-tooling](https://raw.githubusercontent.com/Azure/azure-xplat-arm-tooling/master/VSCode/armsnippets.json) repository to your clipboard.
+2. Launch VS Code 
+3. In VS Code, you can open the JSON snippets file by either navigating to **File** -> **Preferences** -> **User Snippets** -> **JSON**, or by selecting **F1** and typing **preferences** until you can select **Preferences: Snippets**.
 
     ![preference snippets](./media/resource-manager-vs-code/preferences-snippets.png)
 
-    オプションから **JSON** を選択します。
+    From the options, select **JSON**.
 
     ![select json](./media/resource-manager-vs-code/select-json.png)
 
-4. 手順 1. のファイルの内容を、ユーザー スニペット ファイルの最後の "}" の前に貼り付けます。
-5. JSON が正しく記述されており、どこにも波線が表示されていないことを確認します。
-6. ユーザー スニペット ファイルを保存して閉じます。
+4. Paste the contents of the file on step 1 into your user snippets file before the final "}" 
+5. Make sure the JSON looks OK and there are no squiggles anywhere. 
+6. Save and close the user snippets file.
 
-Resource Manager スニペットの使用を開始するために必要な作業は以上です。次に、この設定をテストします。
+That's all that's needed to start using the Resource Manager snippets. Next, we'll put this setup to the test.
 
-## VS Code でのテンプレートの操作
+## <a name="work-with-template-in-vs-code"></a>Work with template in VS Code
 
-テンプレートの操作を手軽に開始するには、[GitHub](https://github.com/Azure/azure-quickstart-templates) にあるいずれかのクイック スタート テンプレートを取得するか、独自のテンプレートを使用してください。どのリソース グループでも、ポータルを通じて簡単に[テンプレートをエクスポート](resource-manager-export-template.md)できます。
+The easiest way to start working with a template is to either grab one of the Quick Start Templates available on [Github](https://github.com/Azure/azure-quickstart-templates) or use one of your own. You can easily [export a template](resource-manager-export-template.md) for any of your resource groups through the portal. 
 
-1. リソース グループからテンプレートをエクスポートした場合は、抽出したファイルを VS Code で開きます。
+1. If you exported a template from a resource group, open the extracted files in VS Code.
 
     ![show files](./media/resource-manager-vs-code/show-files.png)
 
-2. template.json ファイルを開き、編集とリソースの追加ができるようにします。"**"resources": [**" の後で Enter キーを押し、新しい行を開始します。「**arm**」と入力すると、オプションの一覧が表示されます。これらのオプションは、インストールしたテンプレートのスニペットです。次のようになります。
+2. Open the template.json file so that you can edit it and add some additional resources. After the **"resources": [** press enter to start a new line. If you type **arm**, you'll be presented with a list of options. These options are the template snippets you installed. It should look like this: 
 
     ![show snippets](./media/resource-manager-vs-code/type-snippets.png)
 
-3. 使用するスニペットを選択してください。この記事では、新しいパブリック IP アドレスを作成するために "**arm-ip**" を選択します。新しく作成されたリソースの右中かっこ "}" の後ろにコンマを入力し、テンプレートの構文が有効であることを確認します。
+3. Choose the snippet you wish. For this article, I am choosing **arm-ip** to create a new public IP address. Put a comma after the closing bracket "}" of the newly created resource to make sure your template syntax is valid.
 
      ![add comma](./media/resource-manager-vs-code/add-comma.png)
 
-4. VS Code には IntelliSense が組み込まれています。テンプレートの編集の際、VS Code は使用可能な値を提案します。たとえば、変数のセクションをテンプレートに追加するには、**""** (2 つの二重引用符) を追加し、この引用符の間で **Ctrl + Space** キーを押します。"**variables**" を含むオプションが表示されます。
+4. VS Code has built-in IntelliSense. As you edit your templates, VS Code suggests available values. For example, to add a variables section to your template, add **""** (two double-quotes) and select **Ctrl+Space** between those quotes. You will be presented with options including **variables**.
 
     ![add variables](./media/resource-manager-vs-code/add-variables.png)
 
-5. IntelliSense は、使用可能な値または関数も提示します。パラメーターの値にプロパティを設定するには、**""** と **Ctrl + Space** キーを使って式を作成します。関数名の入力を開始します。使用する関数を見つけたら、**Tab** キーを押します。
+5. IntelliSense can also suggest available values or functions. To set a property to a parameter value, create an expression with **"[]"** and **Ctrl+Space**. You can start typing the name of a function. Select **Tab** when you have found the function you want.
 
     ![add parameter](./media/resource-manager-vs-code/select-parameters.png)
 
-6. 関数内でもう一度 **Ctrl + Space** キーを押し、そのテンプレートで使用可能なパラメーターの一覧を表示します。
+6. Select **Ctrl+Space** again within the function to see a list of the available parameters within your template.
 
     ![add parameter](./media/resource-manager-vs-code/select-avail-parameters.png)
 
-7. テンプレートのスキーマ検証で問題があった場合、エディターにはいつもの波線が表示されます。エラーと警告の一覧を見るには、**Ctrl + Shift + M** キーを押すか、左下のステータス バーのグリフを選択します。
+7. If you have any schema validation issues in your template, you'll see the familiar squiggles in the editor. You can view the list of errors and warnings by typing **Ctrl+Shift+M** or selecting the glyphs in the lower left status bar.
 
     ![errors](./media/resource-manager-vs-code/errors.png)
 
-    テンプレートを検証すると、構文の問題の検出に役立ちますが、無視できるエラーも表示される場合があります。場合によっては、エディターがテンプレートを最新ではないスキーマと比較し、正しい箇所もエラーとして報告する場合があります。たとえば、最近 Resource Manager に関数が 1 つ追加されたにもかかわらず、スキーマが更新されていなかったとします。エディターは、デプロイ中に関数が正常に機能したにもかかわらず、エラーを報告します。
+    Validation of your template can help you detect syntax problems; however, you may also see errors that you can ignore. In some cases, the editor is comparing your template against a schema that is not up-to-date and therefore reports an error even though you know it is correct. For example, suppose a function has recently been added to Resource Manager but the schema has not been updated. The editor reports an error despite the fact the function works correctly during deployment.
 
     ![error message](./media/resource-manager-vs-code/unrecognized-function.png)
 
-## 新しいリソースのデプロイ
+## <a name="deploy-your-new-resources"></a>Deploy your new resources
 
-テンプレートの準備が整ったら、次の手順で新しいリソースをデプロイできます。
+When your template is ready, you can deploy the new resources following the instructions below: 
 
-### Windows
+### <a name="windows"></a>Windows
 
-1. PowerShell コマンド プロンプトを開きます。
-2. 次のとおり入力してログインします。
+1. Open a PowerShell command prompt 
+2. To login type: 
 
         Login-AzureRmAccount 
 
-3. 複数のサブスクリプションがある場合は、次のように入力して、サブスクリプションの一覧を取得します。
+3. If you have multiple subscriptions, get a list of the subscriptions with:
 
         Get-AzureRmSubscription
 
-    その後、使用するサブスクリプションを選択します。
+    And select the subscription to use.
    
         Select-AzureRmSubscription -SubscriptionId <Subscription Id>
 
-4. parameters.json ファイルのパラメーターを更新します。
-5. Deploy.ps1 を実行して、Azure 上にテンプレートをデプロイします。
+4. Update the parameters in your parameters.json file
+5. Run the Deploy.ps1 to deploy your template on Azure
 
-### OSX/Linux
+### <a name="osx/linux"></a>OSX/Linux
 
-1. ターミナル ウィンドウを開きます。
-2. 次のとおり入力してログインします。
+1. Open a terminal window 
+2. To login type:
 
         azure login 
 
-3. 複数のサブスクリプションがある場合は、次のようにして適切なサブスクリプションを選択します。
+3. If you have multiple subscriptions, select the right subscription with:
 
         azure account set <subscriptionNameOrId> 
 
-4. parameters.json ファイルのパラメーターを更新します。
-5. 次のコマンドを実行して、テンプレートをデプロイします。
+4. Update the parameters in the parameters.json file.
+5. To deploy the template, run:
 
         azure group deployment create -f <PathToTemplate> 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- テンプレートの詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
-- テンプレート関数の詳細については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
-- Visual Studio Code を使用した作業の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)で紹介された「[Build cloud apps with Visual Studio Code (Visual Studio Code を使用したクラウド アプリの構築)](https://github.com/Microsoft/HealthClinic.biz/wiki/Build-cloud-apps-with-Visual-Studio-Code)」を参照してください。HealthClinic.biz のデモに関連する他のクイック スタートについては、「[Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
+- To learn more about templates, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
+- To learn about template functions, see [Azure Resource Manager template functions](resource-group-template-functions.md).
+- For more examples of working with Visual Studio Code, see [Build cloud apps with Visual Studio Code](https://github.com/Microsoft/HealthClinic.biz/wiki/Build-cloud-apps-with-Visual-Studio-Code) from the [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). For more quickstarts from the HealthClinic.biz demo, see [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts).
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

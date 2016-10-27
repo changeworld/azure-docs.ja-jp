@@ -1,50 +1,55 @@
 <properties
-	pageTitle="Azure Active Directory プレビューでディレクトリからユーザーを削除する | Microsoft Azure"
-	description="Azure Active Directory からユーザーとそのユーザーのすべての情報を削除する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="femila"
-	editor=""/>
+    pageTitle="Delete a user from a directory in Azure Active Directory preview | Microsoft Azure"
+    description="Explains how to delete a user and all of its information from Azure Active Directory"
+    services="active-directory"
+    documentationCenter=""
+    authors="curtand"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/12/2016"
-	ms.author="curtand"/>
-
-# Azure Active Directory プレビューでディレクトリからユーザーを削除する
-
-この記事では、Azure Active Directory (Azure AD) プレビューでディレクトリからユーザーを削除する方法について説明します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。
-
-## ユーザーの削除
-
-1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
-
-2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
-
-    ![ユーザー管理を開く](./media/active-directory-users-delete-user-azure-portal/create-users-user-management.png)
-
-3.  **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
-
-    ![[ユーザー] ブレードを開く](./media/active-directory-users-delete-user-azure-portal/create-users-open-users-blade.png)
-
-4. **[ユーザーとグループ - ユーザー]** ブレードで、一覧からユーザーを選択します。
-
-5. 選択したユーザーのブレードで、**[概要]** を選択し、コマンド バーの **[削除]** をクリックします。
-
-    ![[削除] をクリックする](./media/active-directory-users-delete-user-azure-portal/create-users-delete-command.png)
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/12/2016"
+    ms.author="curtand"/>
 
 
-## 参照トピック
+# <a name="delete-a-user-from-a-directory-in-azure-active-directory-preview"></a>Delete a user from a directory in Azure Active Directory preview
 
-- [ユーザーの追加](active-directory-users-create-azure-portal.md)
-- [新しい Azure ポータルでのユーザーのパスワードのリセット](active-directory-users-reset-password-azure-portal.md)
-- [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
-- [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)
-- [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
+This article explains how to delete a user from a directory in Azure Active Directory (Azure AD) preview. [What's in the preview?](active-directory-preview-explainer.md) For information about adding new users in your organization, see [Add new users to Azure Active Directory](active-directory-users-create-azure-portal.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+## <a name="delete-a-user"></a>Delete a user
+
+1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+
+2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
+
+    ![Opening user management](./media/active-directory-users-delete-user-azure-portal/create-users-user-management.png)
+
+3.  On the **Users and groups** blade, select **Users**.
+
+    ![Opening the Users blade](./media/active-directory-users-delete-user-azure-portal/create-users-open-users-blade.png)
+
+4. On the **Users and groups - Users** blade, select a user from the list.
+
+5. On the blade for the selected user, select **Overview**, and then in the command bar, select **Delete**.
+
+    ![Selecting the Delete command](./media/active-directory-users-delete-user-azure-portal/create-users-delete-command.png)
+
+
+## <a name="what's-next"></a>What's next
+
+- [Add a user](active-directory-users-create-azure-portal.md)
+- [Reset a user's password in the new Azure portal](active-directory-users-reset-password-azure-portal.md)
+- [Assign a user to a role in your Azure AD](active-directory-users-assign-role-azure-portal.md)
+- [Change a user's work information](active-directory-users-work-info-azure-portal.md)
+- [Manage user profiles](active-directory-users-profile-azure-portal.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

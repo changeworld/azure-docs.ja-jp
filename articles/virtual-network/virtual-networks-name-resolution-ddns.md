@@ -1,6 +1,6 @@
 <properties
-   pageTitle="動的 DNS を使用してホスト名を登録する"
-   description="このページでは、独自の DNS サーバーにホスト名を登録するために動的 DNS をセットアップする方法の詳細を示しています。"
+   pageTitle="Using Dynamic DNS to register hostnames"
+   description="This page gives details on how to set up Dynamic DNS to register hostnames in your own DNS servers."
    services="dns"
    documentationCenter="na"
    authors="GarethBradshawMSFT"
@@ -15,23 +15,24 @@
    ms.date="08/31/2016"
    ms.author="sewhee" />
 
-# 動的 DNS を使用し、独自の DNS サーバーでホスト名を登録する
 
-Azure は仮想マシン (VM) とロール インスタンスの[名前を解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)します。ただし、Azure によって提供される名前解決を超えるニーズがある場合は、独自の DNS サーバーを設置できます。これにより、独自の特定のニーズに合わせて、DNS ソリューションをカスタマイズすることができます。たとえば、Active Directory ドメイン コントローラーを介したオンプレミスのリソースへのアクセスが必要になる場合があります。
+# <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Using Dynamic DNS to register hostnames in your own DNS server
 
-カスタム DNS サーバーが Azure VM としてホストされるときに、同じ VNET のホスト名のクエリを Azure に転送して、ホスト名を解決できます。このルートを使用しない場合は、動的 DNS を使用して DNS サーバーに VM のホスト名を登録できます。Azure には、DNS サーバーに直接レコードを作成する機能 (資格情報など) がないため、多くの場合に代替の準備が必要になります。一般的なシナリオと代替手段を次に示します。
+[Azure provides name resolution](virtual-networks-name-resolution-for-vms-and-role-instances.md) for virtual machines (VMs) and role instances. However, when your name resolution needs go beyond those provided by Azure, you can provide your own DNS servers. This gives you the power to tailor your DNS solution to suit your own specific needs. For example, you may need to access on-premises resources via your Active Directory domain controller.
 
-## Windows クライアント
+When your custom DNS servers are hosted as Azure VMs you can forward hostname queries for the same vnet to Azure to resolve hostnames. If you do not wish to use this route, you can register your VM hostnames in your DNS server using Dynamic DNS.  Azure doesn't have the ability (e.g. credentials) to directly create records in your DNS servers, so alternative arrangements are often needed. Here are some common scenarios with alternatives.
 
-ドメインに参加していない Windows クライアントは、起動時や IP アドレスの変更時に、セキュリティ保護されていない動的 DNS (DDNS) の更新を試みます。DNS 名は、ホスト名とプライマリ DNS サフィックスの組み合わせです。Azure はプライマリ DNS サフィックスを空白のままにしますが、これは VM で [UI](https://technet.microsoft.com/library/cc794784.aspx) または[自動化](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix)によって設定できます。
+## <a name="windows-clients"></a>Windows clients
 
-ドメインに参加している Windows クライアントは、セキュリティ保護された動的 DNS を使用し、その IP アドレスをドメイン コント ローラーに登録します。ドメイン参加プロセスでは、クライアントにプライマリ DNS サフィックスを設定し、信頼関係を作成して管理します。
+Non-domain-joined Windows clients attempt unsecured Dynamic DNS (DDNS) updates when they boot or when their IP address changes. The DNS name is the hostname plus the primary DNS suffix. Azure leaves the primary DNS suffix blank, but you can set this in the VM, via the [UI](https://technet.microsoft.com/library/cc794784.aspx) or [by using automation](https://social.technet.microsoft.com/forums/windowsserver/3720415a-6a9a-4bca-aa2a-6df58a1a47d7/change-primary-dns-suffix).
 
-## Linux クライアント
+Domain-joined Windows clients register their IP addresses with the domain controller by using secure Dynamic DNS. The domain-join process sets the primary DNS suffix on the client and creates and maintains the trust relationship.
 
-Linux クライアントは一般に、起動時にそれ自体を DNS サーバーに登録することはなく、DHCP サーバーがそれを行うことを前提としています。Azure の DHCP サーバーは、DNS サーバーにレコードを登録する機能も資格も備えていません。Bind パッケージに含まれる「*nsupdate*」という名前のツールを利用し、動的 DNS 更新を送信できます。動的 DNS プロトコルは標準化されているため、DNS サーバーで Bind を使用していないときにも *nsupdate* を利用できます。
+## <a name="linux-clients"></a>Linux clients
 
-DHCP クライアントが提供するフックを使用して、DNS サーバー内にホスト名エントリを作成して登録できます。DHCP 周期の間、クライアントは */etc/dhcp/dhclient-exit-hooks.d/* のスクリプトを実行します。*nsupdate* を利用し、新しい IP アドレスを登録するためにこれを利用できます。次に例を示します。
+Linux clients generally don't register themselves with the DNS server on startup, they assume the DHCP server does it. Azure's DHCP servers do not have the ability or credentials to register records in your DNS server.  You can use a tool called *nsupdate*, which is included in the Bind package, to send Dynamic DNS updates. Because the Dynamic DNS protocol is standardized, you can use *nsupdate* even when you're not using Bind on the DNS server.
+
+You can use the hooks that are provided by the DHCP client to create and maintain the hostname entry in the DNS server. During the DHCP cycle, the client executes the scripts in */etc/dhcp/dhclient-exit-hooks.d/*. This can be used to register the new IP address by using *nsupdate*. For example:
 
         #!/bin/sh
         requireddomain=mydomain.local
@@ -58,12 +59,17 @@ DHCP クライアントが提供するフックを使用して、DNS サーバ�
         #done
         exit 0;
 
-*nsupdate* コマンドを利用し、セキュリティ保護された動的 DNS 更新を実行することもできます。たとえば、Bind DNS サーバーを利用するとき、公開鍵/秘密鍵のペアが[生成されます](http://linux.yyz.us/nsupdate/)。要求の署名を検証できるように、DNS サーバーは鍵の公開部分で[構成されます](http://linux.yyz.us/dns/ddns-server.html)。動的 DNS 更新要求に署名するために、*-k* オプションを利用し、*nsupdate* に鍵のペアを与える必要があります。
+You can also use the *nsupdate* command to perform secure Dynamic DNS updates. For example, when you're using a Bind DNS server, a public-private key pair is [generated](http://linux.yyz.us/nsupdate/).  The DNS server is [configured](http://linux.yyz.us/dns/ddns-server.html) with the public part of the key so that it can verify the signature on the request. You must use the *-k* option to provide the key-pair to *nsupdate* in order for the Dynamic DNS update request to be signed.
 
-Windows DNS サーバーを利用しているとき、Kerberos 認証を利用し、*nsupdate* に *-g* パラメーターを指定できます (Windows 版の *nsupdate* では利用できません)。その際、*kinit* を利用し、資格情報を読み込みます ([キータブ ファイル](http://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)などから).その後、*nsupdate -g* がキャッシュから資格情報を取得します。
+When you're using a Windows DNS server, you can use Kerberos authentication with the *-g* parameter in *nsupdate* (not available in the Windows version of *nsupdate*). To do this, use *kinit* to load the credentials (e.g. from a [keytab file](http://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)). Then *nsupdate -g* will pick up the credentials from the cache.
 
-必要に応じて、DNS 検索サフィックスを VM に追加できます。DNS サフィックスは、*/etc/resolv.conf* ファイルに指定します。ほとんどの Linux ディストリビューションはこのファイルの内容を自動的に管理するため、通常は編集できません。ただし、HCP クライアントの *supersede* コマンドを利用し、サフィックスを上書きできます。その際、*/etc/dhcp/dhclient.conf* で次を追加します。
+If needed, you can add a DNS search suffix to your VMs. The DNS suffix is specified in the */etc/resolv.conf* file. Most Linux distros automatically manage the content of this file, so usually you can't edit it. However, you can override the suffix by using the DHCP client's *supersede* command. To do this, in */etc/dhcp/dhclient.conf*, add:
 
         supersede domain-name <required-dns-suffix>;
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

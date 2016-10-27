@@ -1,15 +1,17 @@
-| リソース | 制限 |
+| Resource                                    | Limit                                  |
 |---------------------------------------------|----------------------------------------|
-| キャッシュ サイズ | 530 GB (詳細については、[お問い合わせ](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)ください) |
-| データベース | 64 |
-| 接続されている最大クライアント数 | 40,000 |
-| Redis Cache のレプリカ (高可用性向け) | 1 |
-| クラスタリングを使用した Premium キャッシュ内のシャード | 10 |
+| Cache size                                  | 530 GB ([contact us](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase) for more)                                  |
+| Databases                                   | 64                                     |
+| Max connected clients                       | 40,000                                 |
+| Redis Cache replicas (for high availability) | 1 |
+| Shards in a premium cache with clustering    | 10 |
 
-Azure Redis Cache の制限とサイズは価格レベルによって異なります。価格レベルと関連付けられたサイズについては、「[Azure Redis Cache の料金](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
+Azure Redis Cache limits and sizes are different for each pricing tier. To see the pricing tiers and their associated sizes, see [Azure Redis Cache Pricing](https://azure.microsoft.com/pricing/details/cache/).
 
-Azure Redis Cache 構成の制限については、「[既定の Redis サーバー構成](redis-cache/cache-configure.md#default-redis-server-configuration)」をご覧ください。
+For more information on Azure Redis Cache configuration limits, see [Default Redis server configuration](redis-cache/cache-configure.md#default-redis-server-configuration).
 
-Azure Redis Cache インスタンスの構成と管理は Microsoft によって行われるため、すべての Redis コマンドが Azure Redis Cache でサポートされるわけではありません。詳細については、[Azure Redis Cache でサポートされない Redis コマンド]((redis-cache/cache-configure.md#redis-commands-not-supported-in-azure-redis-cache) を参照してください。
+Because configuration and management of Azure Redis Cache instances is done by Microsoft, not all Redis commands are supported in Azure Redis Cache. For more information, see [Redis commands not supported in Azure Redis Cache]((redis-cache/cache-configure.md#redis-commands-not-supported-in-azure-redis-cache).
 
-<!---HONumber=AcomDC_0525_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

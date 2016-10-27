@@ -1,5 +1,8 @@
-カスタム プローブを使用すると、サーバーのバック エンド プールの正常性監視状態をより細かく制御できます。チェック間隔、失敗した要求のしきい値、タイムアウト設定を変更できます。
+Custom probes allows you to have more granular control about health monitoring status for your back end pool of servers. You can change the interval checks, failed request threshold and timeout settings.
 
-この記事では、カスタム プローブを使用するか、既存のアプリケーション ゲートウェイにカスタム プローブを追加して、アプリケーション ゲートウェイを作成する手順について説明します。
+This article will guide you to create an application gateway with a custom probe or adding a custom probe to an existing application gateway. 
 
-<!---HONumber=AcomDC_0107_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

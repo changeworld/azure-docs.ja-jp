@@ -1,10 +1,10 @@
 <properties
-pageTitle="ロジック アプリで SharePoint Online コネクタを使用する方法 | Microsoft Azure"
-description="SharePoint Online コネクタを使用するロジック アプリを作成して、SharePoint でリストを管理します。"
-services="logic-apps"	
-documentationCenter=".net,nodejs,java" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Learn how to use the SharePoint Online connector in logic apps | Microsoft Azure"
+description="Create logic apps with the SharePoint Online connector to mange lists on SharePoint."
+services="logic-apps"   
+documentationCenter=".net,nodejs,java"  
+authors="msftman"   
+manager="erikre"    
 editor=""
 tags="connectors" />
 
@@ -17,639 +17,640 @@ ms.workload="integration"
 ms.date="07/19/2016"
 ms.author="deonhe"/>
 
-# SharePoint Online コネクタの概要
 
-SharePoint Online コネクタを使用すると、SharePoint リストを管理できます。
+# <a name="get-started-with-the-sharepoint-online-connector"></a>Get started with the SharePoint Online connector
 
-[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
+Use the SharePoint Online connector to manage SharePoint lists.  
 
-## SharePoint Online への接続
+To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "接続" を作成する必要があります。[接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。
+## <a name="connect-to-sharepoint-online"></a>Connect to SharePoint Online
 
-### SharePoint Online への接続を作成する
+Before your logic app can access any service, you first need to create a *connection* to the service. A [connection](./connectors-overview.md) provides connectivity between a logic app and another service.  
 
->[AZURE.INCLUDE [SharePoint への接続を作成する手順](../../includes/connectors-create-api-sharepointonline.md)]
+### <a name="create-a-connection-to-sharepoint-online"></a>Create a connection to SharePoint Online
 
-## SharePoint Online トリガーの使用
+>[AZURE.INCLUDE [Steps to create a connection to SharePoint](../../includes/connectors-create-api-sharepointonline.md)]
 
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
+## <a name="use-a-sharepoint-online-trigger"></a>Use a SharePoint Online trigger
 
->[AZURE.INCLUDE [SharePoint Online トリガーを作成する手順](../../includes/connectors-create-api-sharepointonline-trigger.md)]
+A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
 
-## SharePoint Online アクションの使用
+>[AZURE.INCLUDE [Steps to create a SharePoint Online trigger](../../includes/connectors-create-api-sharepointonline-trigger.md)]
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。アクションの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
+## <a name="use-a-sharepoint-online-action"></a>Use a SharePoint Online action
 
->[AZURE.INCLUDE [SharePoint Online アクションを作成する手順](../../includes/connectors-create-api-sharepointonline-action.md)]
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
 
-## 技術的な詳細
+>[AZURE.INCLUDE [Steps to create a SharePoint Online action](../../includes/connectors-create-api-sharepointonline-action.md)]
 
-ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
+## <a name="technical-details"></a>Technical Details
 
-## SharePoint Online トリガー
+Here are the details about the triggers, actions and responses that this connection supports:
 
-SharePoint には次のトリガーがあります。
+## <a name="sharepoint-online-triggers"></a>SharePoint Online triggers
 
-|トリガー | 説明|
+SharePoint has the following trigger(s):  
+
+|Trigger | Description|
 |--- | ---|
-|[ファイルの作成時](connectors-create-api-sharepointonline.md#when-a-file-is-created)|この操作では、SharePoint フォルダーに新しいファイルが作成されたときにフローをトリガーします。|
-|[ファイルの変更時](connectors-create-api-sharepointonline.md#when-a-file-is-modified)|この操作では、SharePoint フォルダーのファイルが変更されたときにフローをトリガーします。|
-|[新しいアイテムの作成時](connectors-create-api-sharepointonline.md#when-a-new-item-is-created)|この操作では、SharePoint リストに新しいアイテムが作成されたときにフローをトリガーします。|
-|[既存のアイテムの変更時](connectors-create-api-sharepointonline.md#when-an-existing-item-is-modified)|この操作では、SharePoint リストの既存のアイテムが変更されたときにフローをトリガーします。|
+|[When a file is created](connectors-create-api-sharepointonline.md#when-a-file-is-created)|This operation triggers a flow when a new file is created in a SharePoint folder.|
+|[When a file is modified](connectors-create-api-sharepointonline.md#when-a-file-is-modified)|This operation triggers a flow when a file is modified in a SharePoint folder.|
+|[When a new item is created](connectors-create-api-sharepointonline.md#when-a-new-item-is-created)|This operation triggers a flow when a new item is created in a SharePoint list.|
+|[When an existing item is modified](connectors-create-api-sharepointonline.md#when-an-existing-item-is-modified)|This operation triggers a flow when an existing item is modified in a SharePoint list.|
 
 
-## SharePoint Online アクション
+## <a name="sharepoint-online-actions"></a>SharePoint Online actions
 
-SharePoint には次のアクションがあります。
+SharePoint has the following actions:
 
 
-|アクション|説明|
+|Action|Description|
 |--- | ---|
-|[ファイルのメタデータを取得する](connectors-create-api-sharepointonline.md#get-file-metadata)|この操作では、ファイル ID を使用してファイルのメタデータを取得します。|
-|[ファイルを更新する](connectors-create-api-sharepointonline.md#update-file)|この操作では、ファイルの内容を更新します。|
-|[ファイルを削除する](connectors-create-api-sharepointonline.md#delete-file)|この操作では、ファイルを削除します。|
-|[パスを使用してファイルのメタデータを取得する](connectors-create-api-sharepointonline.md#get-file-metadata-using-path)|この操作では、ファイル パスを使用してファイルのメタデータを取得します。|
-|[パスを使用してファイルの内容を取得する](connectors-create-api-sharepointonline.md#get-file-content-using-path)|この操作では、ファイル パスを使用してファイルの内容を取得します。|
-|[ファイルの内容を取得する](connectors-create-api-sharepointonline.md#get-file-content)|この操作では、ファイルID を使用してファイルの内容を取得します。|
-|[ファイルを作成する](connectors-create-api-sharepointonline.md#create-file)|この操作では、SharePoint サイトにファイルをアップロードします。|
-|[ファイルをコピーする](connectors-create-api-sharepointonline.md#copy-file)|この操作では、SharePoint サイトにファイルをコピーします。|
-|[フォルダーの内容を一覧表示する](connectors-create-api-sharepointonline.md#list-folder)|この操作では、SharePoint フォルダーに含まれているファイルを取得します。|
-|[ルート フォルダーの内容を一覧表示する](connectors-create-api-sharepointonline.md#list-root-folder)|この操作では、ルート SharePoint フォルダー内のファイルを取得します。|
-|[フォルダーを抽出する](connectors-create-api-sharepointonline.md#extract-folder)|この操作では、SharePoint フォルダーにアーカイブ ファイル (例: .zip) を抽出します。|
-|[複数のアイテムを取得する](connectors-create-api-sharepointonline.md#get-items)|この操作では、SharePoint リストから複数のアイテムを取得します。|
-|[アイテムを作成する](connectors-create-api-sharepointonline.md#create-item)|この操作では、SharePoint リストに新しいアイテムを作成します。|
-|[アイテムを取得する](connectors-create-api-sharepointonline.md#get-item)|この操作では、SharePoint リストから 1 つのアイテムを ID で取得します。|
-|[アイテムを削除する](connectors-create-api-sharepointonline.md#delete-item)|この操作では、SharePoint リストからアイテムを削除します。|
-|[アイテムを更新する](connectors-create-api-sharepointonline.md#update-item)|この操作では、SharePoint リストのアイテムを更新します。|
-|[エンティティの値を取得する](connectors-create-api-sharepointonline.md#get-entity-values)|この操作では、SharePoint エンティティの使用可能な値を取得します。|
-|[リストを取得する](connectors-create-api-sharepointonline.md#get-lists)|この操作では、サイトから SharePoint リストを取得します。|
-### アクションの詳細
+|[Get file metadata](connectors-create-api-sharepointonline.md#get-file-metadata)|This operation gets file metadata using the file id.|
+|[Update file](connectors-create-api-sharepointonline.md#update-file)|This operation updates file content.|
+|[Delete file](connectors-create-api-sharepointonline.md#delete-file)|This operation deletes a file.|
+|[Get file metadata using path](connectors-create-api-sharepointonline.md#get-file-metadata-using-path)|This operation gets file metadata using the file path.|
+|[Get file content using path](connectors-create-api-sharepointonline.md#get-file-content-using-path)|This operation gets file contents using the file path.|
+|[Get file content](connectors-create-api-sharepointonline.md#get-file-content)|This operation gets file content using the file id.|
+|[Create file](connectors-create-api-sharepointonline.md#create-file)|This operation uploads a file to a SharePoint site.|
+|[Copy file](connectors-create-api-sharepointonline.md#copy-file)|This operation copies a file to a SharePoint site.|
+|[List folder](connectors-create-api-sharepointonline.md#list-folder)|This operation gets files contained in a SharePoint folder.|
+|[List root folder](connectors-create-api-sharepointonline.md#list-root-folder)|This operaiton gets the files in the root SharePoint folder.|
+|[Extract folder](connectors-create-api-sharepointonline.md#extract-folder)|This operation extracts an archive file into a SharePoint folder (example: .zip).|
+|[Get items](connectors-create-api-sharepointonline.md#get-items)|This operation gets items from a SharePoint list.|
+|[Create item](connectors-create-api-sharepointonline.md#create-item)|This operation creates a new item in a SharePoint list.|
+|[Get item](connectors-create-api-sharepointonline.md#get-item)|This operation gets a single item by its id from a SharePoint list.|
+|[Delete item](connectors-create-api-sharepointonline.md#delete-item)|This operation deletes an item from a SharePoint list.|
+|[Update item](connectors-create-api-sharepointonline.md#update-item)|This operation updates an item in a SharePoint list.|
+|[Get entity values](connectors-create-api-sharepointonline.md#get-entity-values)|This operation gets possible values for a SharePoint entity.|
+|[Get lists](connectors-create-api-sharepointonline.md#get-lists)|This operation gets SharePoint lists from a site.|
+### <a name="action-details"></a>Action details
 
-ここでは、このコネクタのアクションおよびトリガーとその応答について詳しく説明します。
-
-
-
-### ファイルのメタデータを取得する
-この操作では、ファイル ID を使用してファイルのメタデータを取得します。
+Here are the details for the actions and triggers for this connector, along with their responses:
 
 
-|プロパティ名| Displayname Settings|説明|
+
+### <a name="get-file-metadata"></a>Get file metadata
+This operation gets file metadata using the file id. 
+
+
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|id*|ファイル識別子|ファイルを選択する|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|id*|File identifier|Select a file|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### ファイルを更新する
-この操作では、ファイルの内容を更新します。
+### <a name="update-file"></a>Update file
+This operation updates file content. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|id*|ファイル識別子|ファイルを選択する|
-|body*|ファイル コンテンツ|ファイルの内容|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|id*|File identifier|Select a file|
+|body*|File Content|Content of the file|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### ファイルを削除する
-この操作では、ファイルを削除します。
+### <a name="delete-file"></a>Delete file
+This operation deletes a file. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|id*|ファイル識別子|ファイルを選択する|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|id*|File identifier|Select a file|
 
-* は、必須のプロパティを示します。
-
-
+An * indicates that a property is required
 
 
-### パスを使用してファイルのメタデータを取得する
-この操作では、ファイル パスを使用してファイルのメタデータを取得します。
 
 
-|プロパティ名| Displayname Settings|説明|
+### <a name="get-file-metadata-using-path"></a>Get file metadata using path
+This operation gets file metadata using the file path. 
+
+
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|path*|ファイル パス|ファイルを選択する|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|path*|File path|Select a file|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
-|ETag|string|
-|FileLocator|文字列|
-
-
-
-
-### パスを使用してファイルの内容を取得する
-この操作では、ファイル パスを使用してファイルの内容を取得します。
-
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|path*|ファイル パス|ファイルを選択する|
-
-* は、必須のプロパティを示します。
-
-
-
-
-### ファイルの内容を取得する
-この操作では、ファイルID を使用してファイルの内容を取得します。
-
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|id*|ファイル識別子|ファイルを選択する|
-
-* は、必須のプロパティを示します。
-
-
-
-
-### ファイルを作成する
-この操作では、SharePoint サイトにファイルをアップロードします。
-
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|folderPath*|フォルダー パス|ファイルを選択する|
-|name*|ファイル名|ファイルの名前|
-|body*|ファイル コンテンツ|ファイルの内容|
-
-* は、必須のプロパティを示します。
-
-#### 出力の詳細
-
-BlobMetadata
-
-
-| プロパティ名 | データ型 |
-|---|---|---|
-|ID|string|
-|名前|string|
-|DisplayName|string|
-|パス|string|
-|LastModified|string|
-|サイズ|integer|
-|MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### ファイルをコピーする
-この操作では、SharePoint サイトにファイルをコピーします。
+### <a name="get-file-content-using-path"></a>Get file content using path
+This operation gets file contents using the file path. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|source*|Source file path (抽出元ファイル パス)|ソース ファイルのパス|
-|destination*|Destination file path (コピー先ファイル パス)|宛先ファイルのパス|
-|overwrite|Overwrite flag (上書きフラグ)|抽出先ファイルが存在する場合にファイルを上書きするかどうか|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|path*|File path|Select a file|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+
+
+
+### <a name="get-file-content"></a>Get file content
+This operation gets file content using the file id. 
+
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|id*|File identifier|Select a file|
+
+An * indicates that a property is required
+
+
+
+
+### <a name="create-file"></a>Create file
+This operation uploads a file to a SharePoint site. 
+
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|folderPath*|Folder Path|Select a file|
+|name*|File name|Name of the file|
+|body*|File Content|Content of the file|
+
+An * indicates that a property is required
+
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### ファイルの作成時
-この操作では、SharePoint フォルダーに新しいファイルが作成されたときにフローをトリガーします。
+### <a name="copy-file"></a>Copy file
+This operation copies a file to a SharePoint site. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL|
-|folderId*|フォルダー ID|フォルダーを選択する|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|source*|Source file Path|Path to the source file|
+|destination*|Destination file path|Path to the destination file|
+|overwrite|Overwrite flag|Whether or not to overwrite the destination file if it exists|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-
-
-
-### ファイルの変更時
-この操作では、SharePoint フォルダーのファイルが変更されたときにフローをトリガーします。
-
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL|
-|folderId*|フォルダー ID|フォルダーを選択する|
-
-* は、必須のプロパティを示します。
-
-
-
-
-### フォルダーの内容を一覧表示する
-この操作では、SharePoint フォルダーに含まれているファイルを取得します。
-
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|id*|ファイル識別子|フォルダーの一意識別子|
-
-* は、必須のプロパティを示します。
-
-
-
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### ルート フォルダーの内容を一覧表示する
-この操作では、ルート SharePoint フォルダー内のファイルを取得します。
+### <a name="when-a-file-is-created"></a>When a file is created
+This operation triggers a flow when a new file is created in a SharePoint folder. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
+|dataset*|Site URL|SharePoint site url|
+|folderId*|Folder Id|Select a folder|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
 
 
-#### 出力の詳細
+
+### <a name="when-a-file-is-modified"></a>When a file is modified
+This operation triggers a flow when a file is modified in a SharePoint folder. 
+
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|dataset*|Site URL|SharePoint site url|
+|folderId*|Folder Id|Select a folder|
+
+An * indicates that a property is required
+
+
+
+
+### <a name="list-folder"></a>List folder
+This operation gets files contained in a SharePoint folder. 
+
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|id*|File identifier|Unique identifier of the folder|
+
+An * indicates that a property is required
+
+
+
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### フォルダーを抽出する
-この操作では、SharePoint フォルダーにアーカイブ ファイル (例: .zip) を抽出します。
+### <a name="list-root-folder"></a>List root folder
+This operaiton gets the files in the root SharePoint folder. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite|)
-|source*|Source file path (抽出元ファイル パス)|ソース ファイルのパス|
-|destination*|Destination folder path (抽出先フォルダー パス)|宛先フォルダーのパス|
-|overwrite|Overwrite flag (上書きフラグ)|抽出先ファイルが存在する場合にファイルを上書きするかどうか|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
 
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### 新しいアイテムの作成時
-この操作では、SharePoint リストに新しいアイテムが作成されたときにフローをトリガーします。
+### <a name="extract-folder"></a>Extract folder
+This operation extracts an archive file into a SharePoint folder (example: .zip). 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|table*|リスト名|SharePoint リストの名前|
-|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
-|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
-|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
-|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
+|dataset*|Site URL|SharePoint site url like http://contoso.sharepoint.com/sites/mysite|
+|source*|Source file Path|Path to the source file|
+|destination*|Destination folder path|Path to the destination folder|
+|overwrite|Overwrite flag|Whether or not to overwrite the destination file if it exists|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+
+
+#### <a name="output-details"></a>Output Details
+
+BlobMetadata
+
+
+| Property Name | Data Type |
+|---|---|---|
+|Id|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Size|integer|
+|MediaType|string|
+|IsFolder|boolean|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### <a name="when-a-new-item-is-created"></a>When a new item is created
+This operation triggers a flow when a new item is created in a SharePoint list. 
+
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|dataset*|Site url|SharePoint site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table*|List name|SharePoint list name|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to retrieve (default = 256)|
+
+An * indicates that a property is required
+
+#### <a name="output-details"></a>Output Details
 
 ItemsList
 
 
-| プロパティ名 | データ型 | 
+| Property Name | Data Type | 
 |---|---|
-|値|array|
+|value|array|
 
 
 
 
-### 既存のアイテムの変更時
-この操作では、SharePoint リストの既存のアイテムが変更されたときにフローをトリガーします。
+### <a name="when-an-existing-item-is-modified"></a>When an existing item is modified
+This operation triggers a flow when an existing item is modified in a SharePoint list. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|table*|リスト名|SharePoint リストの名前|
-|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
-|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
-|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
-|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
+|dataset*|Site url|SharePoint site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table*|List name|SharePoint list name|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to retrieve (default = 256)|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 ItemsList
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
 
 
-### 複数のアイテムを取得する
-この操作では、SharePoint リストから複数のアイテムを取得します。
+### <a name="get-items"></a>Get items
+This operation gets items from a SharePoint list. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|table*|リスト名|SharePoint リストの名前|
-|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
-|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
-|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
-|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
+|dataset*|Site url|SharePoint site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table*|List name|SharePoint list name|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to retrieve (default = 256)|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 ItemsList
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
 
 
-### アイテムを作成する
-この操作では、SharePoint リストに新しいアイテムを作成します。
+### <a name="create-item"></a>Create item
+This operation creates a new item in a SharePoint list. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|table*|リスト名|SharePoint リストの名前|
-|item*|項目|作成する項目|
+|dataset*|Site url|SharePoint site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table*|List name|SharePoint list name|
+|item*|Item|Item to create|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
-項目
+Item
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
 |ItemInternalId|string|
 
 
 
 
-### アイテムを取得する
-この操作では、SharePoint リストから 1 つのアイテムを ID で取得します。
+### <a name="get-item"></a>Get item
+This operation gets a single item by its id from a SharePoint list. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|table*|リスト名|SharePoint リストの名前|
-|id*|ID|取得する項目の一意識別子|
+|dataset*|Site url|SharePoint site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table*|List name|SharePoint list name|
+|id*|Id|Unique identifier of item to be retrieved|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
-項目
+Item
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
 |ItemInternalId|string|
 
 
 
 
-### アイテムを削除する
-この操作では、SharePoint リストからアイテムを削除します。
+### <a name="delete-item"></a>Delete item
+This operation deletes an item from a SharePoint list. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|table*|リスト名|SharePoint リストの名前|
-|id*|ID|削除する項目の一意識別子|
+|dataset*|Site url|SharePoint site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table*|List name|SharePoint list name|
+|id*|Id|Unique identifier of item to be deleted|
 
-* は、必須のプロパティを示します。
-
-
+An * indicates that a property is required
 
 
-### アイテムを更新する
-この操作では、SharePoint リストのアイテムを更新します。
 
 
-|プロパティ名| Displayname Settings|説明|
+### <a name="update-item"></a>Update item
+This operation updates an item in a SharePoint list. 
+
+
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|table*|リスト名|SharePoint リストの名前|
-|id*|ID|更新する項目の一意識別子|
-|item*|項目|変更されたプロパティがある項目|
+|dataset*|Site url|SharePoint site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table*|List name|SharePoint list name|
+|id*|Id|Unique identifier of item to be updated|
+|item*|Item|Item with changed properties|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
-項目
+Item
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
 |ItemInternalId|string|
 
 
 
 
-### エンティティの値を取得する
-この操作では、SharePoint エンティティの使用可能な値を取得します。
+### <a name="get-entity-values"></a>Get entity values
+This operation gets possible values for a SharePoint entity. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|SharePoint サイトの URL|SharePoint サイトの URL|
-|table*|テーブル名|テーブル名|
-|id*|エンティティ ID|エンティティ ID|
+|dataset*|SharePoint site url|SharePoint site url|
+|table*|table name|table name|
+|id*|entity id|entity id|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
-
-
+#### <a name="output-details"></a>Output Details
 
 
 
-### リストを取得する
-この操作では、サイトから SharePoint リストを取得します。
 
 
-|プロパティ名| Displayname Settings|説明|
+### <a name="get-lists"></a>Get lists
+This operation gets SharePoint lists from a site. 
+
+
+|Property Name| Display Name|Description|
 | ---|---|---|
-|dataset*|サイトの URL|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
+|dataset*|Site url|SharePoint site url (example: http://contoso.sharepoint.com/sites/mysite)|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 TablesList
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
 
-## HTTP 応答
+## <a name="http-responses"></a>HTTP responses
 
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
+The actions and triggers above can return one or more of the following HTTP status codes: 
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|承認済み|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました。|
-|default|操作に失敗しました。|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occurred.|
+|default|Operation Failed.|
 
 
 
@@ -665,7 +666,10 @@ TablesList
 
 
 
-## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!----HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

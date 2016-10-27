@@ -1,308 +1,313 @@
 <properties
-	pageTitle="Azure でマイクロサービスを予測どおりにデプロイする"
-	description="Azure App Service のマイクロサービスで構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法について説明します。"
-	services="app-service"
-	documentationCenter=""
-	authors="cephalin"
-	manager="wpickett"
-	editor="jimbe"/>
+    pageTitle="Provision and deploy microservices predictably in Azure"
+    description="Learn how to deploy an application composed of microservices in Azure App Service as a single unit and in a predictable manner using JSON resource group templates and PowerShell scripting."
+    services="app-service"
+    documentationCenter=""
+    authors="cephalin"
+    manager="wpickett"
+    editor="jimbe"/>
 
 <tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="01/06/2016"
-	ms.author="cephalin"/>
+    ms.service="app-service"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="01/06/2016"
+    ms.author="cephalin"/>
 
 
-# Azure でマイクロサービスを予測どおりにデプロイする #
 
-このチュートリアルでは、[Azure App Service](/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。
+# <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Provision and deploy microservices predictably in Azure #
 
-高度に分離されたマイクロサービスで構成される拡張性の高いアプリケーションのプロビジョニングとデプロイを成功させるには、再現性と予測性が非常に重要です。[Azure App Service](/services/app-service/) を使用して、Web アプリ、モバイル アプリ、API アプリ、およびロジック アプリを含むマイクロサービスを作成できます。[Azure リソース マネージャー ](../resource-group-overview.md)を使用して、すべてのマイクロサービスを、データベースやソース管理設定などのリソースの依存関係と共に 1 つのユニットとして管理できます。さらに、このようなアプリケーションを、JSON テンプレートと単純な PowerShell スクリプトを使用してデプロイすることもできます。
+This tutorial shows how to provision and deploy an application composed of [microservices](https://en.wikipedia.org/wiki/Microservices) in [Azure App Service](/services/app-service/) as a single unit and in a predictable manner using JSON resource group templates and PowerShell scripting. 
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+When provisioning and deploying high-scale applications that are composed of highly decoupled microservices, repeatability and predictability are crucial to success. [Azure App Service](/services/app-service/) enables you to create microservices that include web apps, mobile apps, API apps, and logic apps. [Azure Resource Manager](../resource-group-overview.md) enables you to manage all the microservices as a unit, together with resource dependencies such as database and source control settings. Now, you can also deploy such an application using JSON templates and simple PowerShell scripting. 
 
-## 学習内容 ##
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
-このチュートリアルでは、次のものを含むアプリケーションをデプロイします。
+## <a name="what-you-will-do"></a>What you will do ##
 
--	2 つの Web アプリケーション (つまり 2 つのマイクロサービス)
--	バックエンド SQL Database
--	アプリ設定、接続文字列、ソース管理
--	Application Insights、アラート、自動スケールの設定
+In the tutorial, you will deploy an application that includes:
 
-## 使用するツール ##
+-   Two web apps (i.e. two microservices)
+-   A backend SQL Database
+-   App settings, connection strings, and source control
+-   Application insights, alerts, autoscaling settings
 
-このチュートリアルでは、次のツールを使用します。ここはツールについて包括的に説明するための場所ではないため、簡単な説明と詳細情報へのリンクを紹介するにとどめて、エンド ツー エンドのシナリオに準拠します。
+## <a name="tools-you-will-use"></a>Tools you will use ##
 
-### Azure リソース マネージャー テンプレート (JSON) ###
+In this tutorial, you will use the following tools. Since it’s not comprehensive discussion on tools, I’m going to stick to the end-to-end scenario and just give you a brief intro to each, and where you can find more information on it. 
+
+### <a name="azure-resource-manager-templates-(json)"></a>Azure Resource Manager templates (JSON) ###
  
-たとえば、Azure App Service で Web アプリを作成するたびに、Azure リソース マネージャーでは、JSON テンプレートを使用して、リソース グループ全体とコンポーネント リソースが作成されます。[スケーラブル WordPress](/marketplace/partners/wordpress/scalablewordpress/) アプリなど、[Azure Marketplace](/marketplace) の複雑なテンプレートには、MySQL データベース、ストレージ アカウント、App Service プラン、Web アプリ自体、アラート ルール、アプリ設定、自動スケールの設定などを含めることができます。また、これらのすべてのテンプレートは、PowerShell を介して利用できます。これらのテンプレートをダウンロードして使用する方法については、[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
+Every time you create a web app in Azure App Service, for example, Azure Resource Manager uses a JSON template to create the entire resource group with the component resources. A complex template from the [Azure Marketplace](/marketplace) like the [Scalable WordPress](/marketplace/partners/wordpress/scalablewordpress/) app can include the MySQL database, storage accounts, the App Service plan, the web app itself, alert rules, app settings, autoscale settings, and more, and all these templates are available to you through PowerShell. For information on how to download and use these templates, see [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md).
 
-Azure リソース マネージャー テンプレートの詳細については、[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)に関するページをご覧ください。
+For more information on the Azure Resource Manager templates, see [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md)
 
-### Azure SDK 2.6 for Visual Studio ###
+### <a name="azure-sdk-2.6-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio ###
 
-最新の SDK では、JSON エディターにおけるリソース マネージャー テンプレートのサポートが強化されました。これを使用すると、リソース グループ テンプレートを一からすばやく作成したり、既存の JSON テンプレート (ダウンロードしたギャラリー テンプレートなど) を開いて変更したりできます。また、パラメーター ファイルを設定したり、Azure リソース グループのソリューションから直接リソース グループをデプロイしたりすることもできます。
+The newest SDK contains improvements to the Resource Manager template support in the JSON editor. You can use this to quickly create a resource group template from scratch or open an existing JSON template (such as a downloaded gallery template) for modification, populate the parameters file, and even deploy the resource group directly from an Azure Resource Group solution.
 
-詳細については、[Azure SDK 2.6 for Visual Studio](/blog/2015/04/29/announcing-the-azure-sdk-2-6-for-net/) に関するページをご覧ください。
+For more information, see [Azure SDK 2.6 for Visual Studio](/blog/2015/04/29/announcing-the-azure-sdk-2-6-for-net/).
 
-### Azure PowerShell 0.8.0 以降 ###
+### <a name="azure-powershell-0.8.0-or-later"></a>Azure PowerShell 0.8.0 or later ###
 
-Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モジュールに加えて Azure リソース マネージャー モジュールが含まれています。この新しいモジュールを使用して、リソース グループをデプロイするスクリプトを作成できます。
+Beginning in version 0.8.0, the Azure PowerShell installation includes the Azure Resource Manager module in addition to the Azure module. This new module enables you to script the deployment of resource groups.
 
-詳細については、[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
+For more information, see [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md)
 
-### Azure リソース エクスプローラー ###
+### <a name="azure-resource-explorer"></a>Azure Resource Explorer ###
 
-この[プレビュー ツール](https://resources.azure.com)を使用すると、サブスクリプションのすべてのリソース グループの JSON 定義と個々のリソースを表示できます。このツールでは、リソースの JSON 定義の編集、リソースの階層全体の削除、新しいリソースの作成を実行できます。このツールですぐに利用できる情報は、特定の種類のリソースに設定する必要のあるプロパティ、適切な値などを示すため、テンプレートの作成に非常に役立ちます。[Azure ポータル](https://portal.azure.com/)でリソース グループを作成し、エクスプローラー ツールで JSON 定義を調べてリソース グループのテンプレート化に利用できます。
+This [preview tool](https://resources.azure.com) enables you to explore the JSON definitions of all the resource groups in your subscription and the individual resources. In the tool, you can edit the JSON definitions of a resource, delete an entire hierarchy of resources, and create new resources.  The information readily available in this tool is very helpful for template authoring because it shows you what properties you need to set for a particular type of resource, the correct values, etc. You can even create your resource group in the [Azure Portal](https://portal.azure.com/), then inspect its JSON definitions in the explorer tool to help you templatize the resource group.
 
-### [Azure にデプロイ] ボタン ###
+### <a name="deploy-to-azure-button"></a>Deploy to Azure button ###
 
-ソース管理に GitHub を使用する場合、README.MD に [[Azure にデプロイ] ボタン](/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/)を配置できます。これにより、設定することなく Azure にデプロイする UI が実現します。任意の単純な Web アプリでこの処理が可能ですが、これを拡張すると、リポジトリのルートに azuredeploy.json ファイルを配置することでリソース グループ全体をデプロイできるようになります。この JSON ファイルは、リソース グループ テンプレートを含んでおり、[Azure にデプロイ] ボタンでリソース グループを作成するために使用されます。例については、このチュートリアルで使用する [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) サンプルを参照してください。
+If you use GitHub for source control, you can put a [Deploy to Azure button](/blog/2014/11/13/deploy-to-azure-button-for-azure-websites-2/) into your README.MD, which enables a turn-key deployment UI to Azure. While you can do this for any simple web app, you can extend this to enable deploying an entire resource group by putting an azuredeploy.json file in the repository root. This JSON file, which contains the resource group template, will be used by the Deploy to Azure button to create the resource group. For an example, see the [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) sample, which you will use in this tutorial.
 
-## リソース グループ テンプレートのサンプルを入手する ##
+## <a name="get-the-sample-resource-group-template"></a>Get the sample resource group template ##
 
-それでは早速本題に入りましょう。
+So now let’s get right to it.
 
-1. 	[ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) App Service のサンプルに移動します。
+1.  Navigate to the [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) App Service sample.
 
-2.	 readme.md の **[Azure にデプロイ]** をクリックします。
+2.   In readme.md, click **Deploy to Azure**.
  
-3.	[deploy-to-azure](https://deploy.azure.com) サイトが表示され、デプロイメント パラメーターの入力が求められます。ほとんどのフィールドにはリポジトリ名が設定されていますが、一部にランダムな文字列が設定されていることに注意してください。必要に応じてすべてのフィールドを変更できますが、入力する必要があるのは SQL Server の管理用のログインとパスワードだけです。**[次へ]** をクリックします。
+3.  You’re taken to the [deploy-to-azure](https://deploy.azure.com) site and asked to input deployment parameters. Notice that most of the fields are populated with the repository name and some random strings for you. You can change all the fields if you want, but the only things you have to enter are the SQL Server administrative login and the password, then click **Next**.
  
-	![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
+    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
 
-4.	次に、**[デプロイ]** をクリックしてデプロイメント プロセスを開始します。プロセスの実行が完了したら、http://todoapp*XXXX*.azurewebsites.net リンクをクリックし、デプロイされたアプリケーションを参照します。
+4.  Next, click **Deploy** to start the deployment process. Once the process runs to completion, click the http://todoapp*XXXX*.azurewebsites.net link to browse the deployed application. 
 
-	![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
+    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
 
-	UI は、初めて参照するときに少し時間がかかります。これは、アプリがちょうど起動中であるためですが、十分な機能を備えたアプリケーションと考えてください。
+    The UI would be a little slow when you first browse to it because the apps are just starting up, but convince yourself that it’s a fully-functional application.
 
-5.	[デプロイ] ページに戻り、**[管理]** リンクをクリックすると、Azure ポータルに新しいアプリケーションが表示されます。
+5.  Back in the Deploy page, click the **Manage** link to see the new application in the Azure Portal.
 
-6.	**[要点]** ボックスの一覧で、リソース グループのリンクをクリックします。**[外部プロジェクト]** で、Web アプリが既に GitHub リポジトリに接続されていることにも注意してください。
+6.  In the **Essentials** dropdown, click the resource group link. Note also that the web app is already connected to the GitHub repository under **External Project**. 
 
-	![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
+    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
  
-7.	リソース グループのブレードを見ると、リソース グループ内には 2 つの Web Apps と 1 つの SQL Database が既に存在します。
+7.  In the resource group blade, note that there are already two web apps and one SQL Database in the resource group.
 
-	![](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
+    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
  
-このわずか数分間に、2 つのマイクロサービス アプリケーションが完全にデプロイされ、コンポーネント、依存関係、設定、データベース、継続的な発行が、Azure リソース マネージャーで自動化されたオーケストレーションによって設定されることを確認しました。これはすべて、次の 2 つで行われました。
+Everything that you just saw in a few short minutes is a fully deployed two-microservice application, with all the components, dependencies, settings, database, and continuous publishing, set up by an automated orchestration in Azure Resource Manager. All this was done by two things:
 
--	[Azure にデプロイ] ボタン
--	リポジトリのルートにある azuredeploy.json
+-   The Deploy to Azure button
+-   azuredeploy.json in the repo root
 
-これと同じアプリケーションは、何度でもデプロイでき、毎回まったく同じ構成にすることができます。この手法が持つ反復性と予測可能性によって、拡張性の高いアプリケーションを簡単に自信を持ってデプロイできます。
+You can deploy this same application tens, hundreds, or thousands of times and have the exact same configuration every time. The repeatability and the predictability of this approach enables you to deploy high-scale applications with ease and confidence.
 
-## AZUREDEPLOY.JSON を確認 (または編集) する ##
+## <a name="examine-(or-edit)-azuredeploy.json"></a>Examine (or edit) AZUREDEPLOY.JSON ##
 
-次に、GitHub リポジトリがどのように設定されたかを見てみましょう。Azure .NET SDK で JSON エディターを使用します。[Azure .NET SDK 2.6](/downloads/) をまだインストールしていない場合は、今すぐインストールしてください。
+Now let’s look at how the GitHub repository was set up. You will be using the JSON editor in the Azure .NET SDK, so if you haven’t already installed [Azure .NET SDK 2.6](/downloads/), do it now.
 
-1.	お気に入りの git ツールを使用して [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) リポジトリを複製します。次のスクリーンショットでは、Visual Studio 2013 のチーム エクスプローラーでこれを実行します。
+1.  Clone the [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) repository using your favorite git tool. In the screenshot below, I’m doing this in the Team Explorer in Visual Studio 2013.
 
-	![](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
+    ![](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
 
-2.	リポジトリのルートから、azuredeploy.json を Visual Studio で開きます。[JSON アウトライン] ウィンドウが表示されない場合は、Azure .NET SDK をインストールする必要があります。
+2.  From the repository root, open azuredeploy.json in Visual Studio. If you don’t see the JSON Outline pane, you need to install Azure .NET SDK.
 
-	![](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
+    ![](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
 
-JSON 形式について詳しく説明する予定はありませんが、「[その他のリソース](#resources)」セクションには、リソース グループ テンプレートの言語を習得するためのリンクが用意されています。ここでは、アプリをデプロイするための独自のカスタム テンプレートを作成するのに役立つ、興味深い機能のみについて説明します。
+I’m not going to describe every detail of the JSON format, but the [More Resources](#resources) section has links for learning the resource group template language. Here, I’m just going to show you the interesting features that can help you get started in making your own custom template for app deployment.
 
-### パラメーター ###
+### <a name="parameters"></a>Parameters ###
 
-パラメーター セクションを見ると、そこにあるパラメーターのほとんどが、**[Azure にデプロイ]** ボタンによって入力が求められる内容であることがわかります。**[Azure にデプロイ]** ボタンで表示されるサイトでは、入力用の UI に、azuredeploy.json で定義されたパラメーターを使用して値が設定されます。これらのパラメーターは、リソース名、プロパティの値など、リソースの定義全体で使用されます。
+Take a look at the parameters section to see that most of these parameters are what the **Deploy to Azure** button prompts you to input. The site behind the **Deploy to Azure** button populates the input UI using the parameters defined in azuredeploy.json. These parameters are used throughout the resource definitions, such as resource names, property values, etc.
 
-### リソース ###
+### <a name="resources"></a>Resources ###
 
-リソース ノードを見ると、SQL Server のインスタンス、App Service プラン、2 つの Web Apps の、4 つの最上位レベルのリソースが定義されていることがわかります。
+In the resources node, you can see that 4 top-level resources are defined, including a SQL Server instance, an App Service plan, and two web apps. 
 
-#### App Service プラン ####
+#### <a name="app-service-plan"></a>App Service plan ####
 
-まず、JSON の単純なルート レベルのリソースから始めましょう。[JSON アウトライン] で、**[hostingPlanName]** という名前の App Service プランをクリックして、対応する JSON コードを強調表示します。
+Let’s start with a simple root-level resource in the JSON. In the JSON Outline, click the App Service plan named **[hostingPlanName]** to highlight the corresponding JSON code. 
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
 
-`type` 要素で App Service プラン (かなり前にはサーバー ファームと呼ばれていました) の文字列を指定し、その他の要素とプロパティは、JSON ファイルで定義されているパラメーターを使用して設定されます。このリソースには、入れ子になったリソースは存在しません。
+Note that the `type` element specifies the string for an App Service plan (it was called a server farm a long, long time ago), and other elements and properties are filled in using the parameters defined in the JSON file, and this resource doesn’t have any nested resources.
 
->[AZURE.NOTE] `apiVersion` の値によって JSON リソース定義を使用する REST API のバージョンが Azure に指示され、`{}` 内でのリソースの形式に影響する可能性があることにも注意してください。
+>[AZURE.NOTE] Note also that the value of `apiVersion` tells Azure which version of the REST API to use the JSON resource definition with, and it can affect how the resource should be formatted inside the `{}`. 
 
-#### SQL Server ####
+#### <a name="sql-server"></a>SQL Server ####
 
-次に、[JSON アウトライン] で **SQLServer** という名前の SQL Server リソースをクリックします。
+Next, click on the SQL Server resource named **SQLServer** in the JSON Outline.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
  
-強調表示された JSON コードに関して、次の点に注意してください。
+Note the following about the highlighted JSON code:
 
--	パラメーターの使用により、作成されたリソースは互いに一貫性を持つように名前が付けられ、構成されます。
--	SQL Server リソースには、入れ子になったリソースが 2 つあり、それぞれで `type` に異なる値が設定されています。
--	データベースとファイアウォール規則が定義されている、`“resources”: […]` 内で入れ子になったリソースには、ルート レベルの SQL Server リソースのリソース ID を指定する `dependsOn` 要素があります。これは、Azure リソース マネージャーに対して、"このリソースを作成する前に、その他のリソースが既に存在する必要があり、その他のリソースがテンプレートで定義されている場合は、そのリソースを最初に作成すること" を指示します。
+-   The use of parameters ensures that the created resources are named and configured in a way that makes them consistent with one another.
+-   The SQLServer resource has two nested resources, each has a different value for `type`.
+-   The nested resources inside `“resources”: […]`, where the database and the firewall rules are defined, have a `dependsOn` element that specifies the resource ID of the root-level SQLServer resource. This tells Azure Resource Manager, “before you create this resource, that other resource must already exist; and if that other resource is defined in the template, then create that one first”.
 
-	>[AZURE.NOTE] `resourceId()` 関数の使用方法の詳細については、[Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)に関するページを参照してください。
+    >[AZURE.NOTE] For detailed information on how to use the `resourceId()` function, see [Azure Resource Manager Template Functions](../resource-group-template-functions.md).
 
--	`dependsOn` 要素のおかげで、Azure リソース マネージャーでは、並行して作成できるリソースと順番に作成する必要があるリソースを認識できます。
+-   The effect of the `dependsOn` element is that Azure Resource Manager can know which resources can be created in parallel and which resources must be created sequentially. 
 
-#### Web Apps ####
+#### <a name="web-app"></a>Web app ####
 
-次に、少し複雑な実際の Web Apps に移りましょう。[JSON アウトライン] で [variables('apiSiteName')] Web アプリをクリックして、その JSON コードを強調表示します。さらに興味深くなっていることに気が付きます。このために、機能を 1 つずつ説明します。
+Now, let’s move on to the actual web apps themselves, which are more complicated. Click the [variables(‘apiSiteName’)] web app in the JSON Outline to highlight its JSON code. You’ll notice that things are getting much more interesting. For this purpose, I’ll talk about the features one by one:
 
-##### ルート リソース #####
+##### <a name="root-resource"></a>Root resource #####
 
-Web アプリは、2 つの異なるリソースに依存します。つまり、Azure リソース マネージャーで Web アプリが作成されるのは、App Service プランと SQL Server インスタンスの両方が作成された後だけです。
+The web app depends on two different resources. This means that Azure Resource Manager will create the web app only after both the App Service plan and the SQL Server instance are created.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
-##### アプリケーション設定 #####
+##### <a name="app-settings"></a>App settings #####
 
-アプリ設定は、入れ子になったリソースとしても定義されます。
+The app settings are also defined as a nested resource.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-`config/appsettings` の `properties` 要素には、`“<name>” : “<value>”` 形式のアプリ設定が 2 つ含まれています。
+In the `properties` element for `config/appsettings`, you have two app settings in the format `“<name>” : “<value>”`.
 
--	`PROJECT` は、Visual Studio のマルチプロジェクト ソリューションで使用するプロジェクトを Azure のデプロイメントに伝える [KUDU 設定](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)です。ソース管理の構成方法については後で説明しますが、ToDoApp コードは Visual Studio のマルチ プロジェクト ソリューションに含まれているため、この設定は必要です。
--	`clientUrl` は、単に、アプリケーション コードで使用されるアプリ設定です。
+-   `PROJECT` is a [KUDU setting](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) that tells Azure deployment which project to use in a multi-project Visual Studio solution. I will show you later how source control is configured, but since the ToDoApp code is in a multi-project Visual Studio solution, we need this setting.
+-   `clientUrl` is simply an app setting that the application code uses.
 
-##### Connection strings #####
+##### <a name="connection-strings"></a>Connection strings #####
 
-接続文字列は、入れ子になったリソースとしても定義されます。
+The connection strings are also defined as a nested resource.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-`config/connectionstrings` の `properties` 要素では、各接続文字列が `“<name>” : {“value”: “…”, “type”: “…”}` という特定の形式で、名前と値のペアとしても定義されています。`type` 要素に指定できる値は、`MySql`、`SQLServer`、`SQLAzure`、および `Custom` です。
+In the `properties` element for `config/connectionstrings`, each connection string is also defined as a name:value pair, with the specific format of `“<name>” : {“value”: “…”, “type”: “…”}`. For the `type` element, possible values are `MySql`, `SQLServer`, `SQLAzure`, and `Custom`.
 
->[AZURE.TIP] 接続文字列の種類の最終的な一覧については、Azure PowerShell で次のコマンドを実行します: [Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+>[AZURE.TIP] For a definitive list of the connection string types, run the following command in Azure PowerShell: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
     
-##### ソース管理 #####
+##### <a name="source-control"></a>Source control #####
 
-ソース管理の設定は、入れ子になったリソースとしても定義されます。Azure リソース マネージャーは、このリソースを使用して継続的な発行 (後で `IsManualIntegration` の注意点をご確認ください) を構成し、さらに、JSON ファイルの処理中にアプリケーション コードのデプロイメントを自動的に開始します。
+The source control settings are also defined as a nested resource. Azure Resource Manager uses this resource to configure continuous publishing (see caveat on `IsManualIntegration` later) and also to kick off the deployment of application code automatically during the processing of the JSON file.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
-`RepoUrl` と `branch` は、非常に直感的で、Git リポジトリと、発行元となる分岐の名前を指しています。繰り返しになりますが、これらの情報は入力パラメーターで定義されています。
+`RepoUrl` and `branch` should be pretty intuitive and should point to the Git repository and the name of the branch to publish from. Again, these are defined by input parameters. 
 
-`dependsOn` 要素では、`sourcecontrols/web` が Web アプリのリソース自体に加え、`config/appsettings` と `config/connectionstrings` にも依存していることに注意してください。これは、`sourcecontrols/web` が構成されると、Azure のデプロイメント プロセスが、アプリケーション コードのデプロイ、ビルド、開始を自動的に試みるためです。したがって、この依存関係を挿入すると、アプリケーション コードが実行される前に、アプリケーションから必要なアプリ設定と接続文字列にアクセスできることを確認できます。
+Note in the `dependsOn` element that, in addition to the web app resource itself, `sourcecontrols/web` also depends on `config/appsettings` and `config/connectionstrings`. This is because once `sourcecontrols/web` is configured, the Azure deployment process will automatically attempt to deploy, build, and start the application code. Therefore, inserting this dependency helps you make sure that the application has access to the required app settings and connection strings before the application code is run. 
 
->[AZURE.NOTE] `IsManualIntegration` が `true` に設定されていることにも注意してください。このチュートリアルでこのプロパティが必要なのは、実際には GitHub リポジトリを所有していないためです。したがって、実際には、[ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) からの継続的な発行 (Azure へのリポジトリの自動更新のプッシュ) を構成するためのアクセス許可を Azure に付与することはできません。[Azure ポータル](https://portal.azure.com/)で事前に所有者の GitHub の資格情報を構成している場合のみ、指定されたリポジトリの既定値 `false` を使用できます。つまり、以前に、ユーザーの資格情報を使用して、[Azure ポータル](https://portal.azure.com/)で任意のアプリのソース管理に GitHub または BitBucket を設定した場合、Azure では資格情報が記憶されるため、今後は GitHub または BitBucket からアプリをデプロイするたびにその資格情報が使用されます。ただし、まだ設定していない場合は、Azure リソース マネージャーが Web アプリのソース管理の設定を構成しようとしたときに、JSON テンプレートのデプロイメントに失敗します。その原因は、リポジトリの所有者の資格情報で GitHub や BitBucket にログインできないからです。
+>[AZURE.NOTE] Note also that `IsManualIntegration` is set to `true`. This property is necessary in this tutorial because you do not actually own the GitHub repository, and thus cannot actually grant permission to Azure to configure continuous publishing from [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) (i.e. push automatic repository updates to Azure). You can use the default value `false` for the specified repository only if you have configured the owner’s GitHub credentials in the [Azure portal](https://portal.azure.com/) before. In other words, if you have set up source control to GitHub or BitBucket for any app in the [Azure Portal](https://portal.azure.com/) previously, using your user credentials, then Azure will remember the credentials and use them whenever you deploy any app from GitHub or BitBucket in the future. However, if you haven’t done this already, deployment of the JSON template will fail when Azure Resource Manager tries to configure the web app’s source control settings because it cannot log into GitHub or BitBucket with the repository owner’s credentials.
 
-## JSON テンプレートとデプロイ済みのリソース グループを比較する ##
+## <a name="compare-the-json-template-with-deployed-resource-group"></a>Compare the JSON template with deployed resource group ##
 
-ここでは、[Azure ポータル](https://portal.azure.com/)内の Web アプリのすべてのブレードを確認できます。別のツールでも詳細をある程度まで確認できます。[Azure リソース エクスプローラー](https://resources.azure.com) プレビュー ツールに移動します。ここでは、実際に Azure のバックエンドに存在するように、サブスクリプションに含まれるすべてのリソース グループの JSON 表現が示されます。また、Azure のリソース グループの JSON 階層が、リソース グループの作成に使用されたテンプレート ファイル内の階層にどのように対応しているかも確認できます。
+Here, you can go through all the web app’s blades in the [Azure Portal](https://portal.azure.com/), but there’s another tool that’s just as useful, if not more. Go to the [Azure Resource Explorer](https://resources.azure.com) preview tool, which gives you a JSON representation of all the resource groups in your subscriptions, as they actually exist in the Azure backend. You can also see how the resource group’s JSON hierarchy in Azure corresponds with the hierarchy in the template file that’s used to create it.
 
-たとえば、[Azure リソース エクスプローラー](https://resources.azure.com) ツールに移動し、エクスプローラーでノードを展開すると、リソース グループと、それぞれのリソースの種類で収集されるルート レベルのリソースが表示されます。
+For example, when I go to the [Azure Resource Explorer](https://resources.azure.com) tool and expand the nodes in the explorer, I can see the resource group and the root-level resources that are collected under their respective resource types.
 
 ![](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
 
-Web アプリにドリルダウンすると、下のスクリーンショットのように、Web アプリの構成の詳細を表示できます。
+If you drill down to a web app, you should be able to see web app configuration details similar to the below screenshot:
 
 ![](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
 
-ここでも、入れ子になったリソースには、JSON テンプレート ファイルのリソースによく似た階層が必要です。また、JSON ウィンドウには、アプリ設定、接続文字列などが正しく反映されていることがわかります。ここに設定が存在しない場合は、JSON ファイルに問題があることを示す可能性があり、JSON テンプレート ファイルのトラブルシューティングに役立ちます。
+Again, the nested resources should have a hierarchy very similar to those in your JSON template file, and you should see the app settings, connection strings, etc., properly reflected in the JSON pane. The absence of settings here may indicate an issue with your JSON file and can help you troubleshoot your JSON template file.
 
-## リソース グループ テンプレートを自分でデプロイする ##
+## <a name="deploy-the-resource-group-template-yourself"></a>Deploy the resource group template yourself ##
 
-**[Azure へのデプロイ]** ボタンは優れていますが、azuredeploy.json を GitHub に既にプッシュしている場合にのみ、azuredeploy.json でリソース グループ テンプレートをデプロイできます。Azure .NET SDK には、ローカル コンピューターから直接 JSON テンプレート ファイルをデプロイするためのツールも用意されています。これを行うには、次の手順に従います。
+The **Deploy to Azure** button is great, but it allows you to deploy the resource group template in azuredeploy.json only if you have already pushed azuredeploy.json to GitHub. The Azure .NET SDK also provides the tools for you to deploy any JSON template file directly from your local machine. To do this, follow the steps below:
 
-1.	Visual Studio で、**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします。
+1.  In Visual Studio, click **File** > **New** > **Project**.
 
-2.	**[Visual C#]**、**[クラウド]**、**[Azure リソース グループ]** の順にクリックし、**[OK]** をクリックします。
+2.  Click **Visual C#** > **Cloud** > **Azure Resource Group**, then click **OK**.
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 
-3.	**[Azure テンプレートの選択]** で、**[空白のテンプレート]** を選択し、**[OK]** をクリックします。
+3.  In **Select Azure Template**, select **Blank Template** and click **OK**.
 
-4.	azuredeploy.json を新しいプロジェクトの **[テンプレート]** フォルダーにドラッグします。
+4.  Drag azuredeploy.json into the **Template** folder of your new project.
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
 
-5.	ソリューション エクスプローラーで、コピーした azuredeploy.json を開きます。
+5.  From Solution Explorer, open the copied azuredeploy.json.
 
-6.	デモで使用する目的のみで、**[リソースの追加]** をクリックして、標準の Application Insights リソースをいくつか JSON ファイルに追加してみます。JSON ファイルのデプロイのみに興味がある場合は、デプロイの手順に進んでください。
+6.  Just for the sake of the demonstration, let’s add some standard Application Insight resources to our JSON file, by clicking **Add Resource**. If you’re just interested in deploying the JSON file, skip to the deploy steps.
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
 
-7.	**[Web Apps 用の Application Insights]** を選択し、既存の App Service プランと Web アプリが選択されていることを確認して、**[追加]** をクリックします。
+7.  Select **Application Insights for Web Apps**, then make sure an existing App Service plan and web app is selected, and then click **Add**.
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
 
-	リソースとその機能に応じて、App Service プランまたは Web アプリへの依存関係を持つ新しいリソースがいくつか表示されます。これらのリソースは既存の定義では有効になっていないため、変更します。
+    You’ll now be able to see several new resources that, depending on the resource and what it does, have dependencies on either the App Service plan or the web app. These resources are not enabled by their existing definition and you’re going to change that.
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
  
-8.	[JSON アウトライン] で、**appInsights AutoScale** をクリックし、その JSON コードを強調表示します。これは App Service プランのスケーリング設定です。
+8.  In the JSON Outline, click **appInsights AutoScale** to highlight its JSON code. This is the scaling setting for your App Service plan.
 
-9.	強調表示された JSON コードで、`location` プロパティと `enabled` プロパティを見つけて次のように設定します。
+9.  In the highlighted JSON code, locate the `location` and `enabled` properties and set them as shown below.
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
 
-10.	[JSON アウトライン] で、**CPUHigh appInsights** をクリックし、その JSON コードを強調表示します。これはアラートです。
+10. In the JSON Outline, click **CPUHigh appInsights** to highlight its JSON code. This is an alert.
 
-11.	`location` プロパティと `isEnabled` プロパティを見つけて次のように設定します。他の 3 つのアラート (紫色の電球) についても同様の操作を行います。
+11. Locate the `location` and `isEnabled` properties and set them as shown below. Do the same for the other three alerts (purple bulbs).
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
 
-12.	これで、デプロイする準備が整いました。プロジェクトを右クリックして **[デプロイ]**、**[新しいデプロイ]** の順に選択します。
+12. You’re now ready to deploy. Right-click the project and select **Deploy** > **New Deployment**.
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 
-13.	ログインしていない場合は、Azure アカウントにログインします。
+13. Log into your Azure account if you haven’t already done so.
 
-14.	サブスクリプションに含まれる既存のリソース グループを選択するか、新しいリソース グループを作成して、**[azuredeploy.json]** を選択し、**[パラメーターの編集]** をクリックします。
+14. Select an existing resource group in your subscription or create a new one, select **azuredeploy.json**, and then click **Edit Parameters**.
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
 
-	これで、便利なテーブルで、テンプレート ファイルで定義されているすべてのパラメーターを編集できるようになりました。既定値を定義するパラメーターには既定値が既に設定されています。また、使用できる値の一覧を定義するパラメーターはドロップダウン リストとして表示されます。
+    You’ll now be able to edit all the parameters defined in the template file in a nice table. Parameters that define defaults will already have their default values, and parameters that define a list of allowed values will be shown as dropdowns.
 
-	![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
 
-15.	空のパラメーターすべてに値を設定します。**[repoUrl]** には [GitHub リポジトリの ToDoApp のアドレス](https://github.com/azure-appservice-samples/ToDoApp.git)を使用します。その後、**[保存]** をクリックします。
+15. Fill in all the empty parameters, and use the [GitHub repo address for ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) in **repoUrl**. Then, click **Save**.
  
-	![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
+    ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
 
-	>[AZURE.NOTE] 自動スケールは、**Standard** レベル以上で提供される機能です。プラン レベルのアラートは、**Basic** レベル以上で提供される機能です。AppInsights の新しいリソースすべてが点灯されたことがわかるように、**sku** パラメーターを **Standard** または **Premium** に設定する必要があります。
-	
-16.	**[デプロイ]** をクリックします。**[パスワードの保存]** を選択した場合、パスワードはパラメーター ファイルに**プレーンテキスト**で保存されます。それ以外の場合は、デプロイメント プロセス中にデータベースのパスワードを入力するように求められます。
+    >[AZURE.NOTE] Autoscaling is a feature offered in **Standard** tier or higher, and plan-level alerts are features offered in **Basic** tier or higher, you’ll need to set the **sku** parameter to **Standard** or **Premium** in order to see all your new App Insights resources light up.
+    
+16. Click **Deploy**. If you selected **Save passwords**, the password will be saved in the parameter file **in plain text**. Otherwise, you’ll be asked to input the database password during the deployment process.
 
-これで終了です。 後は、[Azure ポータル](https://portal.azure.com/)と[Azure リソース エクスプローラー](https://resources.azure.com) ツールに移動して、JSON でデプロイされたアプリケーションに追加された新しいアラートと自動スケールの設定を表示するだけです。
+That’s it! Now you just need to go to the [Azure Portal](https://portal.azure.com/) and the [Azure Resource Explorer](https://resources.azure.com) tool to see the new alerts and autoscale settings added to your JSON deployed application.
 
-このセクションの手順では、主に次の操作を実行しました。
+Your steps in this section mainly accomplished the following:
 
-1.	テンプレート ファイルを準備する
-2.	テンプレート ファイルに合うパラメーター ファイルを作成する
-3.	パラメーター ファイルを使用してテンプレート ファイルをデプロイする
+1.  Prepared the template file
+2.  Created a parameter file to go with the template file
+3.  Deployed the template file with the parameter file
 
-最後の手順は、PowerShell コマンドレットで簡単に実行されます。Visual Studio でアプリケーションをデプロイしたときに実行された内容を確認するには、Scripts\\Deploy-AzureResourceGroup.ps1 を開きます。大量のコードが存在しますが、パラメーター ファイルを使用してテンプレート ファイルをデプロイするために必要な関連するすべてのコードのみを強調表示しています。
+The last step is easily done by a PowerShell cmdlet. To see what Visual Studio did when it deployed your application, open Scripts\Deploy-AzureResourceGroup.ps1. There’s a lot of code there, but I’m just going to highlight all the pertinent code you need to deploy the template file with the parameter file.
 
 ![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
-最後のコマンドレット `New-AzureResourceGroup` で、実際にアクションが実行されます。これまでの内容から、ツールを利用すれば、クラウド アプリケーションを予測どおりにデプロイするのは比較的簡単です。同じパラメーター ファイルを使用して同じテンプレートでコマンドレットを実行するたびに、同じ結果が得られます。
+The last cmdlet, `New-AzureResourceGroup`, is the one that actually performs the action. All this should demonstrate to you that, with the help of tooling, it is relatively straightforward to deploy your cloud application predictably. Every time you run the cmdlet on the same template with the same parameter file, you’re going to get the same result.
 
-## 概要 ##
+## <a name="summary"></a>Summary ##
 
-DevOps では、反復性と予測可能性が、マイクロサービスで構成される拡張性の高いアプリケーションのデプロイメントに成功するための鍵になります。このチュートリアルでは、Azure リソース マネージャーのテンプレートを使用して、2 つのマイクロサービス アプリケーションを 1 つのリソース グループとして Azure にデプロイしました。Azure のアプリケーションをテンプレートに変換するために必要な知識を習得することで、そのアプリケーションを予測どおりにプロビジョニングしてデプロイできるようになることを願っています。
+In DevOps, repeatability and predictability are keys to any successful deployment of a high-scale application composed of microservices. In this tutorial, you have deployed a two-microservice application to Azure as a single resource group using the Azure Resource Manager template. Hopefully, it has given you the knowledge you need in order to start converting your application in Azure into a template and can provision and deploy it predictably. 
 
-## 次のステップ ##
+## <a name="next-steps"></a>Next Steps ##
 
-[アジャイル手法を適用する方法](app-service-agile-software-development.md)および[「フライティング デプロイメント」](app-service-web-test-in-production-controlled-test-flight.md)のような簡単かつ高度なデプロイメント技法でマイクロサービス アプリケーションを継続的に容易にパブリッシュする方法を参照してください。
+Find out how to [apply agile methodologies and continuously publish your microservices application with ease](app-service-agile-software-development.md) and advanced deployment techniques like [flighting deployment](app-service-web-test-in-production-controlled-test-flight.md) easily.
 
 <a name="resources"></a>
-## その他のリソース ##
+## <a name="more-resources"></a>More resources ##
 
--	[Azure リソース マネージャー テンプレートの言語](../resource-group-authoring-templates.md)
--	[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
--	[Azure リソース マネージャーのテンプレートの関数](../resource-group-template-functions.md)
--	[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)
--	[Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
--	[Azure でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)
+-   [Azure Resource Manager Template Language](../resource-group-authoring-templates.md)
+-   [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md)
+-   [Azure Resource Manager Template Functions](../resource-group-template-functions.md)
+-   [Deploy an application with Azure Resource Manager template](../resource-group-template-deploy.md)
+-   [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md)
+-   [Troubleshooting Resource Group Deployments in Azure](../resource-manager-troubleshoot-deployments-portal.md)
 
 
 
 
  
 
-<!---HONumber=AcomDC_0330_2016------>
+
+
+<!--HONumber=Oct16_HO2-->
+
+

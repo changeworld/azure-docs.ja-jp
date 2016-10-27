@@ -1,14 +1,17 @@
-ここでは、新しい項目が Service Bus キューに送信された場合、ロジック アプリ ワークフローを開始するために、**[Service Bus - When a message is received in a queue (Service Bus - メッセージをキューで受信する場合)]** トリガーがどのように使用されるのかを示します。
+Here's how to use the **Service Bus - When a message is received in a queue** trigger to initiate a logic app workflow when a new item is sent to a Service Bus queue.  
 
->[AZURE.NOTE]Service Bus に接続していない場合は、Service Bus 接続文字列でサインインするよう求められます。
+>[AZURE.NOTE]You will be prompted to sign in with your Service Bus connection string if you have not already created a connection to Service Bus.  
 
-1. Logic Apps デザイナーの検索ボックスに「*service bus*」と入力し、**[Service Bus - When a message is received in a queue (Service Bus - メッセージをキューで受信する場合)]** トリガーを選択します。  
-![Service Bus トリガー イメージ 1](./media/connectors-create-api-servicebus/trigger-1.png)   
-- **[When a message is received in a queue (メッセージをキューで受信する場合)]** コントロールが表示されます。  
-![Service Bus トリガー イメージ 2](./media/connectors-create-api-servicebus/trigger-2.png)   
-- 監視するトリガーのService Bus キューの名前を入力します。  
-![Service Bus トリガー イメージ 3](./media/connectors-create-api-servicebus/trigger-3.png)   
+1. In the search box on the logic apps designer, enter **service bus**. Then select the **Service Bus - When a message is received in a queue** trigger.  
+![Service Bus trigger image 1](./media/connectors-create-api-servicebus/trigger-1.png)   
+- The **When a message is received in a queue** dialog box is displayed.  
+![Service Bus trigger image 2](./media/connectors-create-api-servicebus/trigger-2.png)   
+- Enter the name of the Service Bus queue you would like the trigger to monitor.   
+![Service Bus trigger image 3](./media/connectors-create-api-servicebus/trigger-3.png)   
 
-この時点で、ロジック アプリはトリガーで構成されています。選択したキューで新しい項目を受信すると、そのトリガーは、ワークフローでその他のトリガーとアクションの実行を開始します。
+At this point, your logic app has been configured with a trigger. When a new item is received in the queue you selected, the trigger will begin a run of the other triggers and actions in the workflow.    
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

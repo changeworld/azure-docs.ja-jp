@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Fault Analysis Service の概要 | Microsoft Azure"
-   description="この記事では、サービスに対して障害を誘発させてテスト シナリオを実行する Service Fabric の Fault Analysis Service について説明します。"
+   pageTitle="Fault Analysis Service overview | Microsoft Azure"
+   description="This article describes the Fault Analysis Service in Service Fabric for inducing faults and running test scenarios against your services."
    services="service-fabric"
    documentationCenter=".net"
    authors="rishirsinha"
@@ -16,108 +16,113 @@
    ms.date="04/06/2016"
    ms.author="rsinha"/>
 
-# Fault Analysis Service の概要
 
-Fault Analysis Service は、Microsoft Azure Service Fabric で構築されたサービスをテストするために設計されています。Fault Analysis Service を使用すると、アプリケーションに対して意味のある障害を誘発させ、完全なテスト シナリオを実行することができます。これらのエラーとシナリオでは、サービスがその有効期間中に経験する多数の状態と遷移を、完全に管理された安全で一貫性のある方法で実行して検証します。
+# <a name="introduction-to-the-fault-analysis-service"></a>Introduction to the Fault Analysis Service
 
-アクションは、サービスをテストするための、そのサービスを対象にした個別のエラーです。サービス開発者は、複雑なシナリオを記述するための構成要素としてアクションを使用できます。次に例を示します。
+The Fault Analysis Service is designed for testing services that are built on Microsoft Azure Service Fabric. With the Fault Analysis Service you can induce meaningful faults and run complete test scenarios against your applications. These faults and scenarios exercise and validate the numerous states and transitions that a service will experience throughout its lifetime, all in a controlled, safe, and consistent manner.
 
-  * ノードを再起動して、コンピューターまたは VM がリブートされる状況をシミュレートします。
+Actions are the individual faults targeting a service for testing it. A service developer can use these as building blocks to write complicated scenarios. For example:
 
-  * ステートフル サービスのレプリカを移動して、負荷分散、フェールオーバー、またはアプリケーションのアップグレードをシミュレートします。
+  * Restart a node to simulate any number of situations where a machine or VM is rebooted.
 
-  * ステートフル サービスでのクォーラムの損失を発生させ、新しいデータを受け入れるための十分な "バックアップ" または "セカンダリ" レプリカがないことが原因で書き込み操作を続行できない、という状況を作ります。
+  * Move a replica of your stateful service to simulate load balancing, failover, or application upgrade.
 
-  * ステートフル サービスでのデータ損失を発生させ、すべてのインメモリ状態が完全に消去された状況を作ります。
+  * Invoke quorum loss on a stateful service to create a situation where write operations can't proceed because there aren't enough "back-up" or "secondary" replicas to accept new data.
 
-シナリオは、1 つまたは複数のアクションで構成される複雑な操作です。Fault Analysis Service では、組み込みの完全なシナリオを 2 つ提供します。
+  * Invoke data loss on a stateful service to create a situation where all in-memory state is completely wiped out.
 
-  * 混乱のシナリオ
-  * フェールオーバーのシナリオ
+Scenarios are complex operations composed of one or more actions. The Fault Analysis Service provides two built-in complete scenarios:
 
-## サービスとしてテストする
+  * Chaos Scenario
+  * Failover Scenario
 
-Fault Analysis Service は、Service Fabric クラスターで自動的に開始される Service Fabric システム サービスです。これは、フォールト挿入、テスト シナリオの実行、および正常性分析のホストとして動作するサービスです。
+## <a name="testing-as-a-service"></a>Testing as a service
+
+The Fault Analysis Service is a Service Fabric system service that is automatically started with a Service Fabric cluster. This is service acts as the host for fault injection, test scenario execution, and health analysis. 
 
 ![Fault Analysis Service][0]
 
-フォールト アクションまたはテスト シナリオが開始されると、コマンドが Fault Analysis Service に送信され、フォールト アクションまたはテスト シナリオが実行されます。Fault Analysis Service が確実にフォールトとシナリオを実行し、結果を検証できるように、Fault Analysis Service はステートフルです。たとえば、Fault Analysis Service を使用すると、実行時間の長いテスト シナリオを確実に実行できます。また、テストはクラスター内で実行されているため、このサービスではクラスターと自分のサービスの状態を調べて、エラーに関する詳細情報を提供することができます。
+When a fault action or test scenario is initiated, a command is sent to the Fault Analysis Service to run the fault action or test scenario. The Fault Analysis Service is stateful so that it can reliable run faults and scenarios and validate results. For example, a long-running test scenario can be reliably executed by the Fault Analysis Service. And because tests are being executed inside the cluster, the service can examine the state of the cluster and your services to provide more in-depth information about failures.
 
-## 分散システムをテストする
+## <a name="testing-distributed-systems"></a>Testing distributed systems
 
-Service Fabric を使用すると、スケーラブルな分散アプリケーションを作成する作業が大幅に簡単になります。同様に、Fault Analysis Service を使用すると、分散アプリケーションのテストが簡単になります。テスト時に解決する必要がある 3 つの主な問題があります。
+Service Fabric makes the job of writing and managing distributed scalable applications significantly easier. The Fault Analysis Service makes testing a distributed application similarly easier. There are three main issues that need to be solved while testing:
 
-1. 現実世界のシナリオで発生する可能性のある障害のシミュレート/生成: Service Fabric の重要な側面の 1 つに、分散アプリケーションをさまざまな障害から回復できることがあります。しかし、アプリケーションがこれらの障害から回復できることをテストするためには、制御されたテスト環境で現実世界の障害をシミュレート/生成するメカニズムが必要です。
+1. Simulating/generating failures that might occur in real-world scenarios: One of the important aspects of Service Fabric is that it enables distributed applications to recover from various failures. However, to test that the application is able to recover from these failures, we need a mechanism to simulate/generate these real-world failures in a controlled test environment.
 
-2. 相互関係がある障害を生成する機能: ネットワーク障害やコンピューター エラー障害などのシステムの基本的な障害は、個別に生成することは簡単です。個々のエラーの相互作業の結果として、実際に発生する可能性がある無数のシナリオを生成することは、容易ではありません。
+2. The ability to generate correlated failures: Basic failures in the system, such as network failures and machine failures, are easy to produce individually. Generating a significant number of scenarios that can happen in the real world as a result of the interactions of these individual failures is non-trivial.
 
-3. 開発とデプロイのさまざまなレベルでのエクスペリエンスの統合: さまざまな種類の障害を生成できるフォールト インジェクション システムはたくさんあります。ただし、ワンボックス開発者シナリオを使用して運用環境でのテストを行うことを目的として、同じテストを大規模なテスト環境で実行するには、これらのシステムのエクスペリエンスでは不十分です。
+3. Unified experience across various levels of development and deployment: There are many fault injection systems that can do various types of failures. However, the experience in all of these is poor when moving from one-box developer scenarios, to running the same tests in large test environments, to using them for tests in production.
 
-これらの問題を解決するメカニズムはたくさんありますが、ワンボックス開発者環境から運用環境のクラスターでのテストに至るまで、必要な保証を常に提供しながら実行されるシステムはありません。Fault Analysis Service を使用すると、アプリケーション開発者はビジネス ロジックのテストに集中できます。Fault Analysis Service は、基盤となる分散システムでサービスの相互作用をテストするために必要なすべての機能を提供します。
+While there are many mechanisms to solve these problems, a system that does the same with required guarantees--all the way from a one-box developer environment, to test in production clusters--is missing. The Fault Analysis Service helps the application developers concentrate on testing their business logic. The Fault Analysis Service provides all the capabilities needed to test the interaction of the service with the underlying distributed system.
 
 
 
-### 現実世界の障害をシミュレート/生成するシナリオ
+### <a name="simulating/generating-real-world-failure-scenarios"></a>Simulating/generating real-world failure scenarios
 
-障害に対する分散システムの堅牢性をテストするには、障害を生成するメカニズムが必要です。理論上、ノード停止のような障害の生成は簡単なように見えますが、Service Fabric が解決しようとするものと同じ一貫性の問題が発生し始めます。たとえば、ノードをシャットダウンする場合は、次のようなワークフローが必要です。
+To test the robustness of a distributed system against failures, we need a mechanism to generate failures. While in theory, generating a failure like a node down seems easy, it starts hitting the same set of consistency problems that Service Fabric is trying to solve. As an example, if we want to shut down a node, the required workflow is the following:
 
-1. クライアントからノードのシャットダウン要求を発行します。
+1. From the client, issue a shutdown node request.
 
-2. 適切なノードに要求を送信します。
+2. Send the request to the right node.
 
-    a.ノードが見つからない場合、要求は失敗する必要があります。
+    a. If the node is not found, it should fail.
 
-    b.ノードが見つかった場合、要求は、ノードがシャットダウンされた場合にのみ返る必要があります。
+    b. If the node is found, it should return only if the node is shut down.
 
-この障害をテストの観点から検証するには、障害が誘発されたときに障害が実際に発生したことをテストで知る必要があります。Service Fabric が提供する保証は、コマンドがアクセスした時点のノードの状態 (ノードはこれから停止されるか、既に停止されていた) です。どちらにしても、テストでは、状態を正しく判断し、成功か失敗かを正しく検証する必要があります。Service Fabric の外部で実装される、同様の障害を処理するシステムでは、ネットワーク、ハードウェア、ソフトウェアの問題が多数発生する可能性があり、その結果、前述の保証を提供できないことがあります。前述の問題が存在する中で、Service Fabric は、クラスターの状態を再構成してこれらの問題を回避します。そのため、Fault Analysis Service は正しい保証を提供できます。
+To verify the failure from a test perspective, the test needs to know that when this failure is induced, the failure actually happens. The guarantee that Service Fabric provides is that either the node will go down or was already down when the command reached the node. In either case the test should be able to correctly reason about the state and succeed or fail correctly in its validation. A system implemented outside of Service Fabric to do the same set of failures could hit many network, hardware, and software issues, which would prevent it from providing the preceding guarantees. In the presence of the issues stated before, Service Fabric will reconfigure the cluster state to work around the issues, and hence the Fault Analysis Service will still be able to give the right set of guarantees.
 
-### 必要なイベントとシナリオの生成
+### <a name="generating-required-events-and-scenarios"></a>Generating required events and scenarios
 
-現実世界の障害を常にシミュレートすることは容易ではありませんが、相互関係がある障害を生成することは、さらに難しい処理です。たとえば、次のような場合、永続化されたステートフル サービスでデータの損失が発生します。
+While simulating a real-world failure consistently is tough to start with, the ability to generate correlated failures is even tougher. For example, a data loss happens in a stateful persisted service when the following things happen:
 
-1. レプリカの書き込みクォーラムだけがレプリケーションで同期された場合。すべてのセカンダリ レプリカでプライマリに対する遅延が発生している場合。
+1. Only a write quorum of the replicas are caught up on replication. All the secondary replicas lag behind the primary.
 
-2. (コード パッケージまたはノードの停止が原因で) レプリカが停止し、そのために書き込みクォーラムが停止した場合。
+2. The write quorum goes down because of the replicas going down (due to a code package or node going down).
 
-3. (ディスクの破損またはコンピューターの再イメージ化が原因で) レプリカのデータが失われ、そのために書き込みクォーラムを回復できない場合。
+3. The write quorum cannot come back up because the data for the replicas is lost (due to disk corruption or machine reimaging).
 
-これらの相互関係がある障害は、現実の世界で (個別エラーほど頻繁ではないにしろ) 確かに発生します。このようなシナリオを運用環境で発生する前にテストすることが重要です。さらに重要なのは、(すべてのエンジニアが勤務している日中の) 制御された状況の中で、これらのシナリオを運用環境のワークロードでシミュレートする能力です。これにより、運用環境で障害が午前 2 時に初めて発生するような状況を避けることができます。
+These correlated failures do happen in the real world, but not as frequently as individual failures. The ability to test for these scenarios before they happen in production is critical. Even more important is the ability to simulate these scenarios with production workloads in controlled circumstances (in the middle of the day with all engineers on deck). That is much better than having it happen for the first time in production at 2:00 A.M.
 
-### 異なる環境にまたがる統合されたエクスペリエンス
+### <a name="unified-experience-across-different-environments"></a>Unified experience across different environments
 
-従来は、開発環境、テスト環境、運用環境用に 3 つの異なるエクスペリエンスのセットを作成するのが普通でした。モデルは次のようなものでした。
+The practice traditionally has been to create three different sets of experiences, one for the development environment, one for tests, and one for production. The model was:
 
-1. 開発環境では、個々のメソッドの単体テストを可能にする状態遷移を生成します。
+1. In the development environment, produce state transitions that allow unit tests of individual methods.
 
-2. テスト環境では、障害を生成し、さまざまな障害シナリオを適用してエンド ツー エンドのテストを実行します。
+2. In the test environment, produce failures to allow end-to-end tests that exercise various failure scenarios.
 
-3. 運用環境を不自然な障害が発生しない状態に保ち、障害に対してきわめて迅速に人間が対応できるようにします。
+3. Keep the production environment pristine to prevent any non-natural failures and to ensure that there is extremely quick human response to failure.
 
-Service Fabric では、Fault Analysis Service を通して、開発者環境から運用環境まで同じ方法を使用するように変える提案をしています。これを実現する方法は 2 つあります。
+In Service Fabric, through the Fault Analysis Service, we are proposing to turn this around and use the same methodology from developer environment to production. There are two ways to achieve this:
 
-1. 制御された障害を誘発させるために、1 台のコンピューターの環境から運用環境のクラスターに至るまで、すべての環境で Fault Analysis Service API を使用します。
+1. To induce controlled failures, use the Fault Analysis Service APIs from a one-box environment all the way to production clusters.
 
-2. クラスターで障害を自動的に誘発させるために、Fault Analysis Service を使用して自動障害を生成します。構成を通して障害の割合を制御すると、同じサービスを異なる環境で異なる方法でテストすることができます。
+2. To give the cluster a fever that causes automatic induction of failures, use the Fault Analysis Service to generate automatic failures. Controlling the rate of failures through configuration enables the same service to be tested differently in different environments.
 
-Service Fabric では、異なる環境で障害の規模が異なっても、実際のメカニズムは同一になります。これにより、コーディングからデプロイまでのパイプラインが大幅に短縮され、現実世界の負荷でサービスをテストすることができます。
+With Service Fabric, though the scale of failures would be different in the different environments, the actual mechanisms would be identical. This allows for a much quicker code-to-deployment pipeline and the ability to test the services under real-world loads.
 
-## Fault Analysis Service を使用する
+## <a name="using-the-fault-analysis-service"></a>Using the Fault Analysis Service
 
 **C#**
 
-Fault Analysis Service 機能は、Microsoft.ServiceFabric NuGet パッケージの System.Fabric 名前空間にあります。Fault Analysis Service 機能を使用するには、この NuGet パッケージを参照先としてプロジェクトに含める必要があります。
+Fault Analysis Service features are in the System.Fabric namespace in the Microsoft.ServiceFabric NuGet package. To use the Fault Analysis Service features, include the nuget package as a reference in your project.
 
 **PowerShell**
 
-PowerShell を使用するには、Service Fabric SDK をインストールする必要があります。SDK がインストールされると、ServiceFabric PowerShell モジュールが使用できるように自動的に読み込まれます。
+To use PowerShell, you must install the Service Fabric SDK. After the SDK is installed, the ServiceFabric PowerShell module is auto loaded for you to use.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-真のクラウド スケール サービスを作成するには、デプロイの前と後の両方で、サービスが現実世界の障害に耐えることができることを保証することが不可欠です。サービスが主流の今日の世界において、短期間でコードを刷新し実稼働に移すことはきわめて重要です。Fault Analysis Service は、まさにそれをサービス開発者が実現するために役立ちます。
+To create truly cloud-scale services, it is critical to ensure, both before and after deployment, that services can withstand real world failures. In the services world today, the ability to innovate quickly and move code to production quickly is very important. The Fault Analysis Service helps service developers to do precisely that.
 
-組み込みの[テスト シナリオ](service-fabric-testability-scenarios.md)を使用して、アプリケーションとサービスのテストを開始するか、または、Fault Analysis Service から提供される[フォールト アクション](service-fabric-testability-actions.md)を使用して、独自のテスト シナリオを作成します。
+Begin testing your applications and services using the built-in [test scenarios](service-fabric-testability-scenarios.md), or author your own test scenarios using the [fault actions](service-fabric-testability-actions.md) provided by the Fault Analysis Service.
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

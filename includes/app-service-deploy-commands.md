@@ -1,9 +1,12 @@
 
-リソースを Azure にデプロイするには、Azure アカウントにログインし、Azure リソース マネージャー モジュールを使用する必要があります。Azure リソース マネージャーを Azure PowerShell または Azure CLI で使用する方法については、次のトピックを参照してください。
+To deploy the resources to Azure, you must be logged in to your Azure account and you must use the Azure Resource Manager module. To learn about using Azure Resource Manager with either Azure PowerShell or Azure CLI, see:
 
-- [Azure リソース マネージャーでの Windows PowerShell の使用](../articles/powershell-azure-resource-manager.md)
-- [Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)
+- [Using Azure PowerShell with Azure Resource Manager](../articles/powershell-azure-resource-manager.md)
+- [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management](../articles/xplat-cli-azure-resource-manager.md).
 
-次の例では、指定した名前のアカウントにリソース グループが既にあるものと想定しています。
+The following examples assume you already have a resource group in your account with the specified name. 
 
-<!---HONumber=AcomDC_0420_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

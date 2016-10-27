@@ -1,69 +1,71 @@
 <properties 
-	pageTitle="Azure Mobile Engagement で個人用に設定された通知を送信する" 
-	description="名前などのユーザー プロファイル情報を通知に含めることで個人用に設定した通知を送信する方法"		
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
-	editor="" />
+    pageTitle="Send personalized notification with Azure Mobile Engagement" 
+    description="How to send personalized notifications by including user profile information in the notifications like their names"        
+    services="mobile-engagement" 
+    documentationCenter="mobile" 
+    authors="piyushjo" 
+    manager="dwrede" 
+    editor="" />
 
 <tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="all" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/19/2016" 
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement" 
+    ms.workload="mobile" 
+    ms.tgt_pltfrm="all" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/19/2016" 
+    ms.author="piyushjo" />
 
-#ユーザー名を追加し、通知を個人用に設定する
 
-アプリ ユーザーに通知にもっと注目してもらうには、通知を個人に合わせて設定します。たとえば、アプリ ユーザーの名前を選択し、個々のユーザーに合わせて通知をカスタマイズすると非常に効果的です。ここで注意が必要です。この方法を使いすぎると、一部のユーザーにとって気味が悪く感じられる可能性があるため、ユーザーの名前を通知に追加する方法は慎重に利用する必要があります。また、この方法を利用する前に、モバイル アプリで個人情報の提供に関して完全な同意を与えるかどうかをユーザーが選択できるようにします。
+#<a name="personalize-notifications-by-including-user-name"></a>Personalize notifications by including user name
 
-技術的には、Azure Mobile Engagement を利用し、以下の手順で通知をカスタマイズします。ユーザー名を通知に追加するシナリオが利用されています。アプリ情報またはタグの概念が利用されます。その値はモバイル アプリに統合されている SDK か API で渡されます。これらのアプリ情報またはタグは次のように利用できます。
+In your quest to make notifications more appealing to your app users, you should consider personalizing them. One powerful approach comprises of selectively using the app users names to address the notifications to make them more personal. A word of caution here - you should approach adding user names to the notifications carefully because if you overuse this strategy then it could come across as creepy for some app users. You should also ensure that you are letting the user opt in to provide these personal details to you with full consent in the mobile app before starting to use this. 
 
-1. アプリ情報の値に基づき、通知の対象を特定のユーザーにするために
-2. 通知内でデバイス/ユーザーに固有の値で置換されるプレースホルダーとして (そのデバイスに通知が送信されます)
+Technically, with Azure Mobile Engagement, you can accomplish personalizing the notifications by following the steps below in which we will use the scenario of including user name in the notifications. You will use the concept of App-Info or Tags whose values could either be passed by the SDKs integrated in the Mobile App or via APIs. These App-Infos or Tags could then be used:
 
-> [AZURE.IMPORTANT] アプリ情報値を各通知で置換するというこの追加処理に起因し、通知の送信速度が落ちることに注意してください。
+1. for targeting notifications to specific users based on the values of the App-Info or 
+2. as placeholders in the notifications which will be replaced with values specific to the device/user while sending notifications to that device. 
 
-##Mobile Engagement ポータルでアプリ情報を登録する
+> [AZURE.IMPORTANT] Note that the speed of sending notifications will see a reduction because of this additional processing of replacing app-info values with each notifications. 
 
-1) 最初に Azure ポータルでアプリ情報またはタグを登録します。そのために **[設定]** -> **[タグ (アプリ情報)]** に進みます。
+##<a name="register-app-info-in-the-mobile-engagement-portal"></a>Register App-Info in the Mobile Engagement Portal
 
-![][1]
+1) You start with registering App Info or Tags in the Azure portal. Go to **Settings** -> **Tag (App-Info)** for this.  
 
-2) **[新しいタグ (アプリ情報)]** をクリックし、「*user\_name*」と名付け、種類を「*文字列*」に指定し、**[送信]** をクリックします。
+![][1]  
+
+2) Click on **New tag (app-info)** and provide the name as *user_name* and the type as *string* and click **Submit**. 
 
 ![][2]
 
-3) 最後に、この登録されたアプリ情報が次のように表示されます。
+3) You will finally see this app-info registered like the following:
 
 ![][3]
 
-##クライアント SDK からアプリ情報を送信する
+##<a name="send-app-info-from-the-client-sdk"></a>Send App-Info from the client SDK
 
-ここでは Windows ユニバーサル アプリの例を使用しますが、Microsoft の他の SDK にもこれに相当する手法があります。
+Here we are using the Windows Universal app example but equivalent methods exist for our other SDKs also. 
 
-おそらくは認証後に名前などのプロファイル情報をユーザーから取得する方法がモバイル アプリにある場合、`SendAppInfo` メソッドをここで呼び出し、先に登録した `user_name` アプリ情報の値を Mobile Engagement サービス バックエンドに入力します。
+Assuming you have a method in the mobile app where you get the profile information from the user like their names probably after authenticating them, you will call `SendAppInfo` method here and populate the value of the `user_name` app info that you registered earlier into the Mobile Engagement service backend. 
 
     Dictionary<object, object> appInfo = new Dictionary<object, object>();
     appInfo.Add("user_name", str);
     EngagementAgent.Instance.SendAppInfo(appInfo); 
 
-##個人用に設定した通知を送信する
+##<a name="send-personalized-notifications"></a>Send personalized notifications
 
-この **user\_name** を利用し、通知を送信する用意ができました。
+Now you are all set to send notifications using this **user_name**. 
 
-1) Mobile Engagement ポータルに進みます。**[リーチ]** タブで通知を作成できます。このプレースホルダーは、通知タイトルまたは本文のどこでも、次の形式で使用できます。
+1) Go to Mobile Engagement Portal on the **Reach** tab to create a notification and you can use this placeholder in the following format anywhere in the notification title or the body. 
 
-![][4]
+![][4]  
 
-> [AZURE.NOTE] user\_name アプリ情報が設定されていないユーザーは通知を受け取りません。通知キャンペーンをテスト モードで実行したときにアプリ情報を設定しなかった場合は、プレース ホルダーを置換するために'?' が送信されます。
+> [AZURE.NOTE] Any users for which the user_name app info is not set, will not get any notification. If you run the notification campaign in test mode and if you do not have app-info set then we will send '?' character to replace the placeholder. 
 
-2) Mobile Engagement がこの通知を送信するデバイスを選択するとき、このアプリ情報を見て、プレースホルダーの値を置換します。たとえば、ユーザーに `str = "Scott"` を設定している場合、このユーザーに関して、デバイス登録が **user\_name = SCOTT** というアプリ情報に関連付けられます。このユーザーにはアプリ プッシュ情報の出力が次の形式で表示されます。
+2) When Mobile Engagement will select a device to send this notification then it will look at this app-info and replace the value in the placeholder.  
+For example, if we have set `str = "Scott"` for a user than the device registration will get associated with the app info of **user_name = SCOTT** for this user and this user will see an out of app push notification in the following format. 
 
-![][5]
+![][5]  
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-send-personalized-notifications/app-info.png
@@ -72,4 +74,9 @@
 [4]: ./media/mobile-engagement-send-personalized-notifications/personal-notification.png
 [5]: ./media/mobile-engagement-send-personalized-notifications/notification.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,135 +1,141 @@
 <properties
-	pageTitle="System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする | Microsoft Azure"
-	description="System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする方法について説明する"
-	services="backup"
-	documentationCenter=""
-	authors="MaanasSaran"
-	manager="NKolli1"
-	editor=""/>
+    pageTitle="Back up an Exchange server to Azure Backup with System Center 2012 R2 DPM | Microsoft Azure"
+    description="Learn how to back up an Exchange server to Azure Backup using System Center 2012 R2 DPM"
+    services="backup"
+    documentationCenter=""
+    authors="MaanasSaran"
+    manager="NKolli1"
+    editor=""/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/15/2016"
-	ms.author="anuragm;jimpark;delhan;trinadhk;markgal"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/15/2016"
+    ms.author="anuragm;jimpark;delhan;trinadhk;markgal"/>
 
 
-# System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
-この記事では、Microsoft Exchange Server を Azure Backup にバックアップするために System Center 2012 R2 Data Protection Manager (DPM) サーバーを構成する方法を説明します。
 
-## 更新プログラム
-Azure Backup に DPM サーバーを正常に登録するには、System Center 2012 R2 DPM 用の最新の更新プログラムのロールアップと、Azure Backup エージェントの最新バージョンをインストールする必要があります。[Microsoft カタログ](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager)から最新の更新プログラムのロールアップを取得します。
+# <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Back up an Exchange server to Azure Backup with System Center 2012 R2 DPM
+This article describes how to configure a System Center 2012 R2 Data Protection Manager (DPM) server to back up a Microsoft Exchange server to  Azure Backup.  
 
->[AZURE.NOTE] この記事の例では、Azure Backup エージェントのバージョン 2.0.8719.0 と、System Center 2012 R2 DPM に対する更新プログラムのロールアップ 6 がインストールされています。
+## <a name="updates"></a>Updates
+To successfully register the DPM server with Azure Backup, you must install the latest update rollup for System Center 2012 R2 DPM and the latest version of the Azure Backup Agent. Get the latest update rollup from the [Microsoft Catalog](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager).
 
-## 前提条件
-先に進む前に、Microsoft Azure Backup を使用してワークロードを保護する上で必要なすべての[前提条件](backup-azure-dpm-introduction.md#prerequisites)が満たされていることを確認します。該当する前提条件を以下に示します。
+>[AZURE.NOTE] For the examples in this article, version 2.0.8719.0 of the Azure Backup Agent is installed, and Update Rollup 6 is installed on System Center 2012 R2 DPM.
 
-- Azure サイトに対するバックアップ コンテナーが作成済みである。
-- エージェントとコンテナーの資格情報が DPM サーバーにダウンロード済みである。
-- DPM サーバーにエージェントがインストールされている。
-- コンテナーの資格情報を使用して DPM サーバーを登録済みである。
-- Exchange 2016 を保護する場合は、DPM 2012 R2 UR9 以降にアップグレードしてください。
+## <a name="prerequisites"></a>Prerequisites
+Before you continue, make sure that all the [prerequisites](backup-azure-dpm-introduction.md#prerequisites) for using Microsoft Azure Backup to protect workloads have been met. These prerequisites include the following:
 
-## DPM 保護エージェント  
-Exchange サーバーに DPM 保護エージェントをインストールするには、次の手順に従います。
+- A backup vault on the Azure site has been created.
+- Agent and vault credentials have been downloaded to the DPM server.
+- The agent is installed on the DPM server.
+- The vault credentials were used to register the DPM server.
+- If you are protecting Exchange 2016, please upgrade to DPM 2012 R2 UR9 or later
 
-1. ファイアウォールが正しく構成されていることを確認します。「[エージェントに対するファイアウォール例外の構成](https://technet.microsoft.com/library/Hh758204.aspx)」を参照してください。
+## <a name="dpm-protection-agent"></a>DPM protection agent  
+To install the DPM protection agent on the Exchange server, follow these steps:
 
-2. DPM 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順にクリックし、Exchange サーバーにエージェントをインストールします。詳細な手順については、「[DPM 保護エージェントのインストール](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396)」を参照してください。
+1. Make sure that the firewalls are correctly configured. See [Configure firewall exceptions for the agent](https://technet.microsoft.com/library/Hh758204.aspx).
 
-## Exchange サーバーの保護グループを作成する
+2. Install the agent on the Exchange server by clicking **Management > Agents > Install** in DPM Administrator Console. See [Install the DPM protection agent](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) for detailed steps.
 
-1. DPM 管理者コンソールで **[保護]** をクリックし、次にツール リボンの **[新規]** をクリックして **[新しい保護グループの作成]** ウィザードを開きます。
+## <a name="create-a-protection-group-for-the-exchange-server"></a>Create a protection group for the Exchange server
 
-2. ウィザードの **[ようこそ]** 画面で **[次へ]** をクリックします。
+1. In the DPM Administrator Console, click **Protection**, and then click **New** on the tool ribbon to open the **Create New Protection Group** wizard.
 
-3. **[保護グループの種類の選択]** 画面で、**[サーバー]** を選択し、**[次へ]** をクリックします。
+2. On the **Welcome** screen of the wizard click **Next**.
 
-4. 保護する Exchange サーバー データベースを選択し、**[次へ]** をクリックします。
+3. On the **Select protection group type** screen, select **Servers** and click **Next**.
 
-    >[AZURE.NOTE] Exchange 2013 を保護する場合は、「[Exchange 2013 の前提条件](https://technet.microsoft.com/library/dn751029.aspx)」を確認してください。
+4. Select the Exchange server database that you want to protect and click **Next**.
 
-    次の例では、Exchange 2010 データベースが選択されています。
+    >[AZURE.NOTE] If you are protecting Exchange 2013, check the [Exchange 2013 prerequisites](https://technet.microsoft.com/library/dn751029.aspx).
 
-    ![グループ メンバーの選択](./media/backup-azure-backup-exchange-server/select-group-members.png)
+    In the following example, the Exchange 2010 database is selected.
 
-5. データ保護方法を選択します。
+    ![Select group members](./media/backup-azure-backup-exchange-server/select-group-members.png)
 
-    保護グループに名前を付けて、次のオプションの両方を選択します。
+5. Select the data protection method.
 
-    - ディスクを使用した短期的な保護を利用する
-    - オンライン保護を利用する
+    Name the protection group, and then select both of the following options:
 
-6. **[次へ]** をクリックします。
+    - I want short-term protection using Disk.
+    - I want online protection.
 
-7. Exchange Server データベースの整合性を確認する場合は、**[Eseutil を実行してデータの整合性をチェックする]** オプションを選択します。
+6. Click **Next**.
 
-    このオプションを選択すると、Exchange サーバー上で **eseutil** コマンドを実行したときに I/O トラフィックが生成されるのを防ぐために、DPM サーバー上でバックアップの整合性チェックが実行されます。
+7. Select the **Run Eseutil to check data integrity** option if you want to check the integrity of the Exchange Server databases.
 
-    >[AZURE.NOTE] このオプションを使用するには、DPM サーバー上の C:\\Program Files\\Microsoft System Center 2012 R2\\DPM\\DPM\\bin ディレクトリに Ese.dll ファイルと Eseutil.exe ファイルをコピーする必要があります。これを行わないと、次のエラーがトリガーされます。![eseutil エラー](./media/backup-azure-backup-exchange-server/eseutil-error.png)
+    After you select this option, backup consistency checking will be run on the DPM server to avoid the I/O traffic that’s generated by running the **eseutil** command on the Exchange server.
 
-8. **[次へ]** をクリックします。
+    >[AZURE.NOTE] To use this option, you must copy the Ese.dll and Eseutil.exe files to the C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin directory on the DPM server. Otherwise, the following error is triggered:  
+    ![eseutil error](./media/backup-azure-backup-exchange-server/eseutil-error.png)
 
-9. **[コピー バックアップ]** 用のデータベースを選択し、**[次へ]** をクリックします。
+8. Click **Next**.
 
-    >[AZURE.NOTE] データベースの少なくとも 1 つの DAG コピーに対して “完全バックアップ” が選択されていない場合、ログは切り捨てられません。
+9. Select the database for **Copy Backup**, and then click **Next**.
 
-10. **[短期的なバックアップ]** の目標を構成し、**[次へ]** をクリックします。
+    >[AZURE.NOTE] If you do not select “Full backup” for at least one DAG copy of a database, logs will not be truncated.
 
-11. 使用可能なディスク領域を確認し、**[次へ]** をクリックします。
+10. Configure the goals for **Short-Term backup**, and then click **Next**.
 
-12. DPM サーバーで初期レプリケーションを作成する時刻を選択し、**[次へ]** をクリックします。
+11. Review the available disk space, and then click **Next**.
 
-13. 整合性チェック オプションを選択し、**[次へ]** をクリックします。
+12. Select the time at which the DPM server will create the initial replication, and then click **Next**.
 
-14. Azure にバックアップするデータベースを選択し、**[次へ]** をクリックします。次に例を示します。
+13. Select the consistency check options, and then click **Next**.
 
-    ![オンライン保護データの指定](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
+14. Choose the database that you want to back up to Azure, and then click **Next**. For example:
 
-15. **Azure Backup** のスケジュールを定義し、**[次へ]** をクリックします。次に例を示します。
+    ![Specify online protection data](./media/backup-azure-backup-exchange-server/specify-online-protection-data.png)
 
-    ![オンライン バックアップ スケジュールの指定](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
+15. Define the schedule for **Azure Backup**, and then click **Next**. For example:
 
-    >[AZURE.NOTE] オンライン回復ポイントは高速完全回復ポイントに基づいています。そのため、オンライン回復ポイントは、高速完全回復ポイントに指定した時刻より後にスケジュールする必要があります。
+    ![Specify online backup schedule](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
-16. **Azure Backup** の保持ポリシーを構成し、**[次へ]** をクリックします。
+    >[AZURE.NOTE] Note Online recovery points are based on express full recovery points. Therefore, you must schedule the online recovery point after the time that’s specified for the express full recovery point.
 
-17. オンライン レプリケーション オプションを選択し、**[次へ]** をクリックします。
+16. Configure the retention policy for **Azure Backup**, and then click **Next**.
 
-    データベースの規模が大きい場合は、ネットワーク経由で最初のバックアップを作成するのに時間がかかる可能性があります。この問題を回避するには、オフライン バックアップを作成します。
+17. Choose an online replication option and click **Next**.
 
-    ![オンライン保持ポリシーの指定](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
+    If you have a large database, it could take a long time for the initial backup to be created over the network. To avoid this issue, you can create an offline backup.  
 
-18. 設定を確認し、**[グループの作成]** をクリックします。
+    ![Specify online retention policy](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 
-19. **[閉じる]** をクリックします。
+18. Confirm the settings, and then click **Create Group**.
 
-## Exchange データベースを回復する
+19. Click **Close**.
 
-1. Exchange データベースを回復するには、DPM 管理者コンソールで **[回復]** をクリックします。
+## <a name="recover-the-exchange-database"></a>Recover the Exchange database
 
-2. 回復する Exchange データベースを特定します。
+1. To recover an Exchange database, click **Recovery** in the DPM Administrator Console.
 
-3. *[回復時刻]* ドロップダウン リストからオンライン回復ポイントを選択します。
+2. Locate the Exchange database that you want to recover.
 
-4. **[回復]** をクリックして、**回復ウィザード**を開始します。
+3. Select an online recovery point from the *recovery time* drop-down list.
 
-オンライン回復ポイントでは、5 種類の回復があります。
+4. Click **Recover** to start the **Recovery Wizard**.
 
-- **元の Exchange Server の場所に回復する:** データは元の Exchange サーバーに回復します。
-- **Exchange Server 上の別のデータベースに回復する:** データは別の Exchange サーバー上の別のデータベースに回復します。
-- **回復用データベースに回復する:** データは Exchange 回復データベース (RDB) に回復します。
-- **ネットワーク フォルダーにコピーする:** データはネットワーク フォルダーに回復します。
-- **テープにコピーする:** テープ ライブラリまたはスタンドアロンのテープ ドライブが DPM サーバーに接続され、そこで構成されている場合、回復ポイントは空きテープにコピーされます。
+For online recovery points, there are five recovery types:
 
-    ![オンライン レプリケーションの選択](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
+- **Recover to original Exchange Server location:** The data will be recovered to the original Exchange server.
+- **Recover to another database on an Exchange Server:** The data will be recovered to another database on another Exchange server.
+- **Recover to a Recovery Database:** The data will be recovered to an Exchange Recovery Database (RDB).
+- **Copy to a network folder:** The data will be recovered to a network folder.
+- **Copy to tape:** If you have a tape library or a stand-alone tape drive attached and configured on the DPM server, the recovery point will be copied to a free tape.
 
-## 次のステップ
+    ![Choose online replication](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
+
+## <a name="next-steps"></a>Next steps
 
 - [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

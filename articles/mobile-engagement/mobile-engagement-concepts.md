@@ -1,88 +1,93 @@
 <properties
-	pageTitle="Mobile Engagement の概念 | Microsoft Azure"
-	description="Azure Mobile Engagement の概念"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="dwrede"
-	editor="" />
+    pageTitle="Mobile Engagement concepts | Microsoft Azure"
+    description="Azure Mobile Engagement concepts"
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager="dwrede"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/19/2016"
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-android"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/19/2016"
+    ms.author="piyushjo" />
 
-# Azure Mobile Engagement の概念
 
-Mobile Engagement は、サポートされているすべてのプラットフォームに共通の概念をいくつかを定義します。この記事では、それらの概念について簡単に説明します。
+# <a name="azure-mobile-engagement-concepts"></a>Azure Mobile Engagement concepts
 
-この記事は、Mobile Engagement を初めて使用する場合に読むことをお勧めします。使用しているプラットフォームに固有のドキュメントも参照してください。プラットフォーム固有のドキュメントには、この記事で説明する概念が詳細に説明され、例および考えられる制限事項が記載されているためです。
+Mobile Engagement defines a few concepts common to all supported platforms. This article briefly describes those concepts.
 
-## デバイスとユーザー
-Mobile Engagement は、各デバイスの一意の識別子を生成することによってユーザーを識別します。この識別子はデバイス ID (または `deviceid`) と呼ばれます。同じデバイスを実行中のすべてのアプリケーションが同じデバイス ID を共有するように生成されます。
+This article is a good start if you are new to Mobile Engagement. Also make sure to read the documentation specific to the platform you are using, as it will refine the concepts described in this article with more details and examples as well as possible limitations.
 
-暗黙的には、Mobile Engagement では、1 つのデバイスが 1 人のユーザーにのみ属するためユーザーとデバイスは同等の概念であると見なされます。
+## <a name="devices-and-users"></a>Devices and users
+Mobile Engagement identifies users by generating a unique identifier for each device. This identifier is called the device identifier (or `deviceid`). It is generated in such a way that all applications running of the same device share the same device identifier.
 
-## セッションとアクティビティ
-セッションは、ユーザーが使用を開始してから終了するまでにユーザーによって実行されるアプリケーションの 1 回の使用です。
+Implicitly, it means that Mobile Engagement considers one device to belong to exactly one user, and thus, users and devices are equivalent concepts.
 
-アクティビティは、1 人のユーザーによって実行されるアプリケーションの特定のサブ パーツ (通常は画面ですが、アプリケーションに適した任意のものにすることができます) の 1 回の使用です。
+## <a name="sessions-and-activities"></a>Sessions and activities
+A session is one use of the application performed by a user, from the time the user starts using it, until the user stops.
 
-ユーザーは、一度に 1 つのアクティビティのみを実行できます。
+An activity is one use of a given sub-part of the application performed by one user (it is usually a screen, but it can be anything suitable to the application).
 
-アクティビティは、名前 (64 文字に制限されます) で識別され、必要に応じて (1024 バイトの制限内で) いくつかの追加データを埋め込むことができます。
+A user can only perform one activity at a time.
 
-セッションは、ユーザーが実行する一連のアクティビティから自動的に計算されます。セッションは、ユーザーが最初のアクティビティを開始したときに開始し、最後のアクティビティを終了したときに終了します。これは、セッションを明示的に開始または終了する必要がないことを意味します。代わりに、アクティビティを明示的に開始または停止します。アクティビティが報告されない場合、セッションは報告されません。
+An activity is identified by a name (limited to 64 characters) and can optionally embed some extra data (in the limit of 1024 bytes).
 
-## イベント
-イベントは、インスタント アクション (ユーザーがボタンを押したり記事を読んだりするなど) のレポートに使用されます。
+Sessions are automatically computed from the sequence of activities performed by users. A session starts when the user starts his first activity and stops when he finishes his last activity. This means that a session does not need to be explicitly started or stopped. Instead, activities are explicitly started or stopped. If no activity is reported, no session is reported.
 
-イベントは、現在のセッションまたは実行中のジョブに関連している場合や、スタンドアロン イベントの場合があります。
+## <a name="events"></a>Events
+Events are used to report instant actions (like button pressed or articles read by users).
 
-イベントは、名前 (64 文字に制限されます) で識別され、必要に応じて (1024 バイトの制限内で) いくつかの追加データを埋め込むことができます。
+An event can be related to the current session, to a running job, or it can be a standalone event.
 
-## エラー
-エラーは、アプリケーションで正しく検出された問題 (正しくないユーザー操作や、API 呼び出しの失敗など) をレポートするために使用されます。
+An event is identified by a name (limited to 64 characters) and can optionally embed some extra data (in the limit of 1024 bytes).
 
-エラーは、現在のセッションまたは実行中のジョブに関連している場合や、スタンドアロン エラーの場合があります。
+## <a name="error"></a>Error
+Errors are used to report issues correctly detected by the application (like incorrect user actions, or API call failures).
 
-エラーは、名前 (64 文字に制限されます) で識別され、必要に応じて (1024 バイトの制限内で) いくつかの追加データを埋め込むことができます。
+An error can be related to the current session, to a running job, or it can be a standalone error.
 
-## 設定
-ジョブは、期間を持つアクション (API 呼び出しの期間、広告の表示時間、バック グラウンド タスクの実行時間、ユーザー操作の期間など) をレポートするために使用されます。
+An error is identified by a name (limited to 64 characters) and can optionally embed some extra data (in the limit of 1024 bytes).
 
-タスクはユーザーの操作なしでバック グラウンドで実行できるため、ジョブはセッションに関連しません。
+## <a name="job"></a>Job
+Jobs are used to report actions having a duration (like duration of API calls, display time of ads, duration of background tasks or duration of user actions).
 
-ジョブは、名前 (64 文字に制限されます) で識別され、必要に応じて (1024 バイトの制限内で) いくつかの追加データを埋め込むことができます。
+A job is not related to a session, because a task can be performed in the background, without any user interaction.
 
-## クラッシュ
-クラッシュは、Mobile Engagement SDK がアプリケーションのエラー (アプリケーションでは検出されない問題がクラッシュを引き起こした場合) をレポートするために自動的に発行します。
+A job is identified by a name (limited to 64 characters) and can optionally embed some extra data (in the limit of 1024 bytes).
 
-## アプリケーション情報
-アプリケーション情報 (すなわち app info) は、ユーザーにタグを付けるため、つまりアプリケーションのユーザーに何らかのデータを関連付けるために使用されます (これは、アプリケーション情報が Azure Mobile Engagement プラットフォームのサーバー側に格納される点を除いて、Web の Cookie と同様です)。
+## <a name="crash"></a>Crash
+Crashes are issued automatically by the Mobile Engagement SDK to report application failures where issues not detected by the application make it crash.
 
-アプリケーション情報は、Mobile Engagement SDK の API を使用するか、Mobile Engagement プラットフォームのデバイス API を使用して登録できます。
+## <a name="application-information"></a>Application information
+Application information (or app info) is used to tag users, that is, to associate some data to the users of an application (this is similar to web cookies, except that app info is stored on the server side on the Azure Mobile Engagement platform).
 
-アプリケーション情報は、デバイスに関連付けられているキー/値ペアです。キーは、アプリケーション情報の名前です (64 文字の ASCII 文字 [a-zA-Z]、[0-9] の数字、およびアンダースコア [\_] に制限されます)。値 (1024 文字に制限されます) には、任意の文字列、整数、日付 (yyyy-MM-dd)、またはブール値 (true または false) を指定できます。
+App info can be registered by using the Mobile Engagement SDK API or by using the Mobile Engagement platform Device API.
 
-Mobile Engagement 価格条件で定義されている制限内で、任意の数のアプリケーション情報をデバイスに関連付けることができます。指定されたキーについて、Mobile Engagement は最新の値セットのみ追跡します (履歴はありません)。アプリケーション情報の値を設定または変更すると、Mobile Engagement はこのアプリケーション情報の対象ユーザー条件のセット (指定されている場合) の再評価を強制されるため、アプリケーション情報を使用してリアルタイム プッシュをトリガーできます。
+App info is a key/value pair associated to a device. The key is the name of the app info (limited to 64 ASCII letters [a-zA-Z], numbers [0-9] and underscores [_]). The value (limited to 1024 characters) can be any string, integer, date (yyyy-MM-dd) or Boolean (true or false).
 
-## 追加のデータ
-追加のデータ (または extras) は、イベント、エラー、アクティビティ、およびジョブにアタッチできる任意のデータです。
+Any number of app info can be associated to a device, within the limits defined by the Mobile Engagement pricing terms. For one given key, Mobile Engagement only keeps track of the latest value set (no history). Setting or changing the value of an app info forces Mobile Engagement to re-evaluate audience criteria set on this app info (if any) meaning that app info can be used to trigger realtime pushes.
 
-extras は JSON オブジェクトと同様に構造化されます。キー/値ペアのツリーで構成されます。キーは、64 文字の ASCII 文字 [a-zA-Z]、[0-9] の数字、およびアンダースコア [\_] に制限され、extras の合計サイズは 1024 文字に制限されます (Mobile Engagement SDK によって JSON でエンコードされた後)。
+## <a name="extra-data"></a>Extra data
+Extra data (or extras) is some arbitrary data that can be attached to events, errors, activities and jobs.
 
-キー/値ペアのツリー全体が JSON オブジェクトとして格納されます。それにもかかわらず、キー/値の最初のレベルだけが分解されてセグメントのような一部の高度な機能から直接アクセス可能になります (たとえば、値 "scifi" を設定した追加キー "content\_type" を使用して、"content\_viewed" という名前のイベントを過去 1 か月間に 10 回以上送信したすべてのユーザーから構成される "SciFi fans" というセグメントを簡単に定義できます)。したがって、スカラー値 (文字列、日付、整数、ブール値など) を使用したキー/値ペアの単純なリストから構成される extras のみを送信することを強くお勧めします。
+Extras are structured similarly to JSON objects: they are made of a tree of key/value pairs. Keys are limited to 64 ASCII letters [a-zA-Z], numbers [0-9] and underscores [_]) and the total size of extras is limited to 1024 characters (once encoded in JSON by the Mobile Engagement SDK).
 
-## 次のステップ
+The whole tree of key/value pairs is stored as a JSON object. Nevertheless, only the first level of keys/values is decomposed to be directly accessible to some advanced functions like Segments (for example, you can easily define a segment called “SciFi fans” that is made of all users having sent at least 10 times the event named “content_viewed” with the extra key “content_type” set to the value “scifi” in the last month). It is thus highly recommended to send only extras made of simple lists of key/value pairs using scalar values (for example, strings, dates, integers or Boolean).
 
-- [Azure Mobile Engagement 向け Windows ユニバーサル SDK の概要](mobile-engagement-windows-store-sdk-overview.md)
-- [Azure モバイル エンゲージメントの Windows Phone Silverlight SDK 概要](mobile-engagement-windows-phone-sdk-overview.md)
+## <a name="next-steps"></a>Next steps
+
+- [Windows Universal SDK overview for Azure Mobile Engagement](mobile-engagement-windows-store-sdk-overview.md)
+- [Windows Phone Silverlight SDK overview for Azure Mobile Engagement](mobile-engagement-windows-phone-sdk-overview.md)
 - [iOS SDK for Azure Mobile Engagement](mobile-engagement-ios-sdk-overview.md)
 - [Android SDK for Azure Mobile Engagement](mobile-engagement-android-sdk-overview.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

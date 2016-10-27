@@ -1,88 +1,93 @@
 <properties
-	pageTitle="Azure ポータル内の移動に関するリファレンス"
-	description="App Service Web のユーザー エクスペリエンスについて、管理ポータルと Azure ポータルの違いを説明します"
-	services="app-service"
-	documentationCenter=""
-	authors="jaime-espinosa"
-	manager="wpickett"
-	editor="jimbe"/>
+    pageTitle="Reference for navigating the Azure portal"
+    description="Learn the different user experiences for App Service Web between the management portal and the Azure Portal"
+    services="app-service"
+    documentationCenter=""
+    authors="jaime-espinosa"
+    manager="wpickett"
+    editor="jimbe"/>
 
 <tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="02/26/2016"
-	ms.author="jaime-espinosa"/>
+    ms.service="app-service"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="02/26/2016"
+    ms.author="jaime-espinosa"/>
 
-# Azure ポータル内の移動に関するリファレンス
 
-Azure Websites は、現在は [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) と呼ばれています。この名前の変更を反映し、Azure ポータルの説明も記載するために、すべてのドキュメントの更新が進められています。この更新プロセスが完了するまでは、Azure ポータルでの Web Apps の操作ガイドとして、このドキュメントを使用できます。
+# <a name="reference-for-navigating-the-azure-portal"></a>Reference for navigating the Azure portal
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+Azure Websites are now called [App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). We're updating all of our documentation to reflect this name change and to provide instructions for the Azure Portal. Until that process is done, you can use this document as a guide for working with Web Apps in the Azure portal.
+
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
  
-## Azure クラシック ポータルの今後について
+## <a name="the-future-of-the-azure-classic-portal"></a>The future of the Azure Classic Portal
 
-Azure クラシック ポータルでブランド変更が行われる一方で、クラシック ポータルを Azure ポータルに置き換えるプロセスが進められています。クラシック ポータルが廃止されるので、新規開発の焦点は Azure ポータルに移行しつつあります。Web Apps の今後の新機能はすべて Azure ポータルで提供されます。Web Apps が提供する優れた最新機能を活用するために、Azure ポータルを使い始めてください。
+While you will notice the branding changes on the Azure Classic Portal, that portal is in the process of being replaced by the Azure Portal. As the classic portal is being phased out, the focus for new development is shifting to the Azure Portal. All upcoming new features for Web Apps will come in the Azure Portal. Start using the Azure Portal to take advantage of the latest and greatest that Web Apps have to offer.
 
-## Azure クラシック ポータルと Azure ポータルのレイアウトの違い
+## <a name="layout-differences-between-the-azure-classic-portal-and-azure-portal"></a>Layout differences between the Azure Classic Portal and Azure Portal
 
-クラシック ポータルでは、すべての Azure サービスが左側に一覧表示されています。クラシック ポータルでの移動はツリー構造に従っており、サービスから各要素へと移動します。この構造は、独立したコンポーネントを管理する場合には適しています。しかし、Azure で構築されるアプリケーションは相互に接続されたサービスの集合体であり、このツリー構造は、サービスの集合体を操作するうえで最適な構造ではありません。
+In the classic portal, all the Azure services are listed on the left hand side. Navigation in the classic portal follows a tree structure, where you start from the service and navigate into each element. This structure works well when managing independent components. However, applications built on Azure are a collection of interconnected services, and this tree structure isn't ideal for working with collections of services. 
 
-Azure ポータルでは、複数のサービスのコンポーネントを使用して、アプリケーションをエンド ツー エンドで簡単に構築できます。Azure ポータルは、*ジャーニー*として構造化されています。*ジャーニー*とは、さまざまなコンポーネントのコンテナーである*ブレード*が連なったものです。たとえば、Web アプリに対する自動スケールの設定は*ジャーニー*であり、これによって次の例に示すような、**[Web サイト]** ブレード (このブレード タイトルについては、まだ新しい用語には更新されていません)、**[設定]** ブレード、**[スケール アウト]** ブレードなど、複数のブレードが表示されます。この例では、CPU の使用状況に応じた自動スケーリングが設定されているので、**[CPU の割合]** ブレードも同様に表示されています。*ブレード*内のコンポーネントは*パート*と呼ばれており、タイルに似ています。
+The Azure portal makes it easy to build applications end-to-end with components from multiple services. The portal is organized as *journeys*. A *journey* is a series of *blades*, which are containers for the different components. For example, setting up auto-scaling for a web app is a *journey* which takes you several blades as shown in the following example: the **web-site** blade (that blade title has not yet been updated to use the new terminology), the **Settings** blade, and the **Scale out** blade. In the example, auto scaling is being set up to depend on CPU usage, so there is also a **CPU Percentage** blade. The components within the *blades* are called *parts*, which look like tiles. 
 
 ![](./media/app-service-web-app-azure-portal/AutoScaling.png)
 
-## 移動の例: Web アプリを作成する
+## <a name="navigation-example:-create-a-web-app"></a>Navigation example: create a web app
 
-新しい Web アプリの作成方法は、以前と同じように簡単です。次の画像は、Web アプリを動作させるために必要な手順の数がそれほど変わっていないことを示すために、クラシック ポータルとポータルを並べて表示しています。
+Creating new web apps is still as easy as 1-2-3. The following image shows the classic portal and the portal side-by-side to demonstrate that not much has changed in the number of steps needed to get a web app up and running. 
 
 ![](./media/app-service-web-app-azure-portal/CreateWebApp.png)
 
-ポータルでは、WordPress のような人気のギャラリー アプリケーションなど、最も一般的な種類の Web アプリから選択することができます。利用できるすべてのアプリケーションの一覧については、[Azure Marketplace] を参照してください。
+In the portal you can choose from the most common types of web apps, including popular gallery applications like WordPress. For a full list of available applications, visit the [Azure Marketplace].
 
-Web アプリを作成するときは、クラシック ポータルの場合と同様に、ポータルで URL、App Service プラン、場所を指定します。
+When you create a web app, you specify URL, App Service plan, and location in the portal just as you do in the classic portal. 
 
 ![](./media/app-service-web-app-azure-portal/CreateWebAppSettings.png)
 
-さらに、ポータルでは、その他の共通設定を定義できます。たとえば、[リソース グループ](../resource-group-overview.md)は、関連する Azure リソースの表示と管理を単純化します。
+In addition, the portal lets you define other common settings. For example, [resource groups](../resource-group-overview.md) make it simple to see and manage related Azure resources. 
 
-## 移動の例: 設定と機能
+## <a name="navigation-example:-settings-and-features"></a>Navigation example: settings and features
 
-すべての設定と機能は、今では 1 つのブレードへと合理的にグループ化されており、そこから移動を開始することができます。
+All the settings and features are now logically grouped in a single blade, from which you can navigate.
 
 ![](./media/app-service-web-app-azure-portal/WebAppSettings.png)
 
-たとえば、**[設定]** ブレードの **[カスタム ドメインと SSL]** をクリックすると、カスタム ドメインを作成できます。
+For example, you can create custom domains by clicking **Custom domains and SSL** in the **Settings** blade.
 
 ![](./media/app-service-web-app-azure-portal/ConfigureWebApp.png)
 
-監視のアラートを設定するには、**[要求とエラー]**、**[アラートの追加]** の順にクリックします。
+To set up a monitoring alert, click **Requests and errors** and then **Add Alert**.
 
 ![](./media/app-service-web-app-azure-portal/Monitoring.png)
 
-診断を有効にするには、**[設定]** ブレードの **[診断ログ]** をクリックします。
+To enable diagnostics, click **Diagnostics logs** in the **Settings** blade.
 
 ![](./media/app-service-web-app-azure-portal/Diagnostics.png)
  
-アプリケーション設定を構成するには、**[設定]** ブレードの **[アプリケーション設定]** をクリックします。
+To configure application settings, click **Application settings** in the **Settings** blade. 
 
 ![](./media/app-service-web-app-azure-portal/AppSettingsPreview.png)
 
-ブランド名のほかにも、ポータル内のいくつかの要素が、見つけやすくなるように名前を変更されたり、異なるグループに分けられたりしています。たとえば、以下のスクリーンショットは、クラシック ポータルのアプリケーション設定 (**構成**) に対応するページです。
+Other than the brand name, a few things in the portal have been renamed or grouped differently to make it easier to find them. For example, below is a screenshot of the corresponding page for app settings (**Configure**) in the classic portal.
 
 ![](./media/app-service-web-app-azure-portal/AppSettings.png)
 
-## その他のリソース
+## <a name="more-resources"></a>More Resources
 
 [Azure Portal]: https://portal.azure.com
 [Azure Marketplace]: /marketplace/
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
 
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+## <a name="what's-changed"></a>What's changed
+* For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
  
 
-<!---HONumber=AcomDC_0302_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

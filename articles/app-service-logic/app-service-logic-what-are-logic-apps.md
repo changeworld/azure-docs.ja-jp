@@ -1,78 +1,79 @@
 <properties 
-	pageTitle="Logic Apps とは" 
-	description="App Service Logic Apps ついてさらに詳しく説明します" 
-	authors="kevinlam1" 
-	manager="dwrede" 
-	editor="" 
-	services="logic-apps" 
-	documentationCenter=""/>
+    pageTitle="What are Logic Apps?" 
+    description="Learn more about App Service Logic Apps" 
+    authors="kevinlam1" 
+    manager="dwrede" 
+    editor="" 
+    services="logic-apps" 
+    documentationCenter=""/>
 
 <tags
-	ms.service="logic-apps"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article" 
-	ms.date="07/12/2016"
-	ms.author="klam"/>
+    ms.service="logic-apps"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article" 
+    ms.date="10/12/2016"
+    ms.author="klam"/>
 
-#Logic Apps とは
 
-Logic Apps では、クラウド上でのスケーラブルな統合やワークフローを簡略化し、実装するための手段を提供します。また、ワークフローと呼ばれる一連のステップとしてプロセスをモデル化し、自動化するためのビジュアル デザイナーが用意されています。サービスとプロトコルをまたいだ迅速な統合のために、クラウドとオンプレミスの両方で[数多くのコネクタ](../connectors/apis-list.md)が提供されています。ロジック アプリはトリガー ("Dynamics CRM にアカウントが追加されたとき" など) によって起動することができ、その後も数多くのアクション、変換、条件ロジックを組み合わせて起動できます。
+# <a name="what-are-logic-apps?"></a>What are Logic Apps?
 
-Logic Apps を使用する利点は次のとおりです。
+Logic Apps provide a way to simplify and implement scalable integrations and workflows in the cloud. It provides a visual designer to model and automate your process as a series of steps known as a workflow.  There are [many connectors](../connectors/apis-list.md) across the cloud and on-premises to quickly integrate across services and protocols.  A logic app begins with a trigger (like 'When an account is added to Dynamics CRM') and after firing can begin many combinations actions, conversions, and condition logic.
 
-- わかりやすい設計ツールを使って複雑なプロセスを設計できるため、時間を節約できる
-- コードでは実装が難しいパターンやワークフローをシームレスに実装できる
-- テンプレートを基に簡単に設計を開始できる
-- 独自のカスタム API、コード、アクションでロジック アプリをカスタマイズできる
-- オンプレミスとクラウドにまたがる異なるシステム間で接続や同期ができる
-- BizTalk Server、API Management、Azure Functions、Azure Service Bus を基に作成でき、最上級の統合サポートが得られる
+The advantages of using Logic Apps include the following:  
 
-Logic Apps は完全に管理された iPaaS (サービスとしての統合プラットフォーム) であり、開発者はホスティング、スケーラビリティ、可用性、管理能力の構築について頭を悩ます必要がなくなります。Logic Apps は需要に合わせて自動的にスケールアップします。
+- Saving time by designing complex processes using easy to understand design tools
+- Implementing patterns and workflows seamlessly, that would otherwise be difficult to implement in code
+- Getting started quickly from templates
+- Customizing your logic app with your own custom APIs, code, and actions
+- Connect and synchronise disparate systems across on-premises and the cloud
+- Build off of BizTalk server, API Management, Azure Functions, and Azure Service Bus with first-class integration support
 
-![フロー アプリ デザイナー](./media/app-service-logic-what-are-logic-apps/LogicAppCapture2.png)
+Logic Apps is a fully managed iPaaS (integration Platform as a Service) allowing developers not to have to worry about building hosting, scalability, availability and management.  Logic Apps will scale up automatically to meet demand.
 
-既に説明したように、Logic Apps を使うと、ビジネス プロセスを自動化できます。いくつかの例を次に示します。
+![Flow app designer](./media/app-service-logic-what-are-logic-apps/LogicAppCapture2.png)
+
+As mentioned, with Logic Apps, you can automate business processes. Here are a couple examples:  
  
-* FTP サーバーにアップロードされたファイルを Azure Storage に移動する
-* オンプレミス システムとクラウド システムの間で命令を処理し、ルーティングする
-* 特定のトピックに関するすべてのツイートを監視し、センチメントを分析して、フォローアップが必要なアイテム用にアラートやタスクを作成する
+* Move files uploaded to an FTP server into Azure Storage
+* Process and route orders across on-premises and cloud systems
+* Monitor all tweets about a certain topic, analyze the sentiment, and create alerts and tasks for items needing followup.
 
-こうしたシナリオはすべてビジュアル デザイナーで、コードを 1 行も記述することなく構成できます。[ロジック アプリの構築を今すぐ開始][create]しましょう。作成後のロジック アプリは、複数の環境やリージョンにわたり、[すばやくデプロイして再構築](app-service-logic-create-deploy-template.md)できます。
+Scenarios such as these can be configured all from the visual designer and without writing a single line of code. Get started [building your logic app now][create].  Once written - a logic app can be [quickly deployed and reconfigured](app-service-logic-create-deploy-template.md) across multiple environments and regions.
 
-## なぜ Logic Apps か
+## <a name="why-logic-apps?"></a>Why Logic Apps?
 
-Logic Apps を利用することで、エンタープライズ統合の領域に速度とスケーラビリティが加わります。使いやすいデザイン ツール、利用できるさまざまなトリガーとアクション、強力な管理ツールを駆使することで、API の一元的な管理がこれまでになく簡単になります。ビジネスのデジタル化が進むなか、Logic Apps を利用すれば、従来型のシステムと最先端システムを結び付けることが可能です。
+Logic Apps brings speed and scalability into the enterprise integration space.  The ease of use of the designer, variety of available triggers and actions, and powerful management tools make centralizing your APIs simpler than ever.  As businesses move towards digitalization, Logic Apps allows you to connect legacy and cutting-edge systems together.
 
-さらに、[エンタープライズ統合アカウント][biztalk]を使えば、[XML メッセージング][xml]や[取引先管理][tpm]などを活用して、成熟した統合シナリオへと拡張することができます。
+Additionally, with our [Enterprise Integration Account][biztalk] you can scale to mature integration scenarios with the power of a [XML messaging][xml], [trading partner management][tpm], and more.
 
-- **使いやすいデザイン ツール** - Logic Apps は、ブラウザーや Visual Studio ツールで全体を設計することができます。トリガーによる起動 - 単純なスケジュールから特定のイベント (GitHub Issue の作成時など) まで、さまざまなタイミングでトリガーを設定できます。次に、豊富なコネクタのギャラリーを使用して必要な数のアクションを調整します。
+- **Easy to use design tools** - Logic Apps can be designed end-to-end in the browser or with Visual Studio tools. Start with a trigger - from a simple schedule to when a GitHub issue is created. Then orchestrate any number of actions using the rich gallery of connectors.
 
-- **API と簡単に接続** - 簡単に説明できるような構成タスクでさえ、コードとして実装するには困難が伴います。Logic Apps を使用すれば異なるシステムへの接続も簡単です。クラウド マーケティング ソリューションをオンプレミスの請求書作成システムに接続しようとしていますか? エンタープライズ サービス バスを使用して、API やシステム間でのメッセージングを一元的に管理する必要がありますか? Logic Apps は、これらの問題にソリューションを提供する、最も迅速で信頼できる手段です。
+- **Connect APIs easily** - Even composition tasks that are easy to describe are difficult to implement in code. Logic Apps makes it easy to connect disparate systems. Want to connect your cloud marketing solution to your on-premises billing system? Want to centralize messaging across APIs and systems with an Enterprise Service Bus? Logic apps are the fastest, most reliable way to deliver solutions to these problems.
 
-- **テンプレートからすばやく開始** - 作業開始を手助けするため、一般的なソリューションを速やかに作成できる[テンプレート ギャラリー][templates]が用意されています。高度な B2B ソリューションから単純な SaaS 接続にまで対応し、単なる "お遊び用" のテンプレートも用意しています。Logic Apps の機能を理解するには、このギャラリーが一番の近道です。
+- **Get started quickly from templates** - To help you get started we've provided a [gallery of templates][templates] that allow you to rapidly create some common solutions. From advanced B2B solutions to simple SaaS connectivity, and even a few that are just 'for fun' - the gallery is the fastest way to get started with the power of Logic Apps.
 
-- **組み込みの拡張機能** - 必要なコネクタが見つかりませんか? Logic Apps はユーザー独自の API やコードと連携するように設計されているため、独自の API アプリを簡単に作成してカスタム コネクタとして使用することや、[Azure Function](https://functions.azure.com) を呼び出し、要求に応じてコード スニペットを実行することができます。
+- **Extensibility baked-in** - Don't see the connector you need? Logic Apps is designed to work with your own APIs and code; you can easily create your own API app to use as a custom connector, or call into an [Azure Function](https://functions.azure.com) to execute snippets of code on-demand. 
 
-- **真の統合能力** - 手軽に始めて必要に応じて拡張できます。Logic Apps は、Microsoft の業界屈指の統合ソリューション、BizTalk の能力を統合担当者が簡単に利用して必要なソリューションを構築できるようにしています。[Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md) の詳細をご確認ください。
+- **Real integration horsepower** - Start easy and grow as you need. Logic Apps can easily leverage the power of BizTalk, Microsoft's industry leading integration solution to enable integration professionals to build the solutions they need. Find out more about the [Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md).
 
-## Logic Apps の概念
+## <a name="logic-app-concepts"></a>Logic App Concepts
 
-Logic Apps の機能を構成する主な要素とは次のとおりです。
+The following are some of the key pieces that comprise the Logic Apps experience. 
 
-- **ワークフロー** - Logic Apps では、ビジネス プロセスを一連の手順やワークフローとしてグラフィカルにモデル化できます。
-- **マネージ コネクタ** - ロジック アプリにはデータとサービスへのアクセスが必要です。マネージ コネクタは、データへの接続とデータの操作を支援する目的で作成されています。[マネージ コネクタ][managedapis]に関するページで、現在利用できるコネクタの一覧を確認してください。
-- **トリガー** - 一部のマネージ コネクタは、トリガーとしても動作します。トリガーは、電子メールや Azure のストレージ アカウントの変更の到着などの特定のイベントに基づいて、ワークフローの新しいインスタンスを開始します。
--  **アクション** - ワークフローにおけるトリガーの後の各ステップは、アクションと呼ばれます。通常、各アクションはマネージ コネクタまたはカスタム API アプリでの操作にマップされます。
-- **Enterprise Integration Pack** - Logic Apps には、高度な統合シナリオ向けに BizTalk の機能が含まれています。BizTalk は、Microsoft による業界屈指の統合プラットフォームです。Enterprise Integration Pack コネクタにより、Logic Apps ワークフローに検証や変換などを簡単に含めることができます。
+- **Workflow** - Logic Apps provides a graphical way to model your business processes as a series of steps or a workflow.
+- **Managed Connectors** - Your logic apps need access to data and services. Managed connectors are created specifically to aid you when you are connecting to and working with your data. See the list of connectors available now in [managed connectors][managedapis].
+- **Triggers** - Some Managed Connectors can also act as a trigger. A trigger starts a new instance of a workflow based on a specific event, like the arrival of an e-mail or a change in your Azure Storage account.
+-  **Actions** - Each step after the trigger in a workflow is called an action. Each action typically maps to an operation on your managed connector or custom API apps.
+- **Enterprise Integration Pack** - For more advanced integration scenarios, Logic Apps includes capabilities from BizTalk. BizTalk is Microsoft's industry leading integration platform. The Enterprise Integration Pack connectors allow you to easily include validation, transformation, and more in to your Logic App workflows.
 
-## Getting Started (概要)  
+## <a name="getting-started"></a>Getting Started  
 
-- Logic Apps の使用を開始するには、[ロジック アプリの作成][create]に関するページのチュートリアルに従ってください。
-- [一般的な例とシナリオを確認する](app-service-logic-examples-and-scenarios.md)
-- [Logic Apps を使用してビジネス プロセスを自動化する](http://channel9.msdn.com/Events/Build/2016/T694)
-- [Logic Apps を使用してシステムを統合する方法を説明する](http://channel9.msdn.com/Events/Build/2016/P462)
+- To get started with Logic Apps, follow the [create a Logic App][create] tutorial.  
+- [View common examples and scenarios](app-service-logic-examples-and-scenarios.md)
+- [You can automate business processes with Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694) 
+- [Learn How to Integrate your systems with Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
 
 [biztalk]: app-service-logic-enterprise-integration-accounts.md
 [appservice]: ../app-service/app-service-value-prop-what-is.md
@@ -82,4 +83,8 @@ Logic Apps の機能を構成する主な要素とは次のとおりです。
 [xml]: app-service-logic-enterprise-integration-b2b.md
 [templates]: app-service-logic-use-logic-app-templates.md
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

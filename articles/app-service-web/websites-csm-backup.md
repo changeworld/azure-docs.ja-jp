@@ -1,54 +1,55 @@
 <properties
-	pageTitle="REST を使用して App Service アプリのバックアップと復元を実行する"
-	description="RESTful API 呼び出しを使用して、Azure App Service でアプリのバックアップと復元を行う方法について説明します。"
-	services="app-service"
-	documentationCenter=""
-	authors="NKing92"
-	manager="wpickett"
+    pageTitle="Use REST to back up and restore App Service apps"
+    description="Learn how to use RESTful API calls to back up and restore an app in Azure App Service"
+    services="app-service"
+    documentationCenter=""
+    authors="NKing92"
+    manager="wpickett"
     editor="" />
 
 <tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/10/2016"
-	ms.author="nicking"/>
-# REST を使用して App Service アプリのバックアップと復元を実行する
+    ms.service="app-service"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/10/2016"
+    ms.author="nicking"/>
+
+# <a name="use-rest-to-back-up-and-restore-app-service-apps"></a>Use REST to back up and restore App Service apps
 
 > [AZURE.SELECTOR]
 - [PowerShell](../app-service/app-service-powershell-backup.md)
 - [REST API](websites-csm-backup.md)
 
-[App Service アプリ](https://azure.microsoft.com/services/app-service/web/)は Azure Storage に BLOB としてバックアップできます。バックアップには、アプリのデータベースを含めることもできます。アプリが誤って削除された場合、あるいは以前のバージョンに戻す必要がある場合、前のバックアップから復元できます。バックアップは必要に応じていつでも実行できます。あるいは、適切な間隔でバックアップのスケジュールを作成できます。
+[App Service apps](https://azure.microsoft.com/services/app-service/web/) can be backed up as blobs in Azure storage. The backup can also contain the app’s databases. If the app is ever accidentally deleted, or if the app needs to be reverted to a previous version, it can be restored from any previous backup. Backups can be done at any time on demand, or backups can be scheduled at suitable intervals.
 
-この記事では、RESTful API 要求を使用してアプリのバックアップと復元を実行する方法について説明します。Azure ポータルでアプリのバックアップを視覚的に作成し、管理する場合は、「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください。
+This article explains how to backup and restore an app with RESTful API requests. If you would like to create and manage app backups graphically through the Azure portal, see [Back up a web app in Azure App Service](web-sites-backup.md)
 
 <a name="gettingstarted"></a>
-## Getting Started (概要)
-REST 要求を送信するには、アプリの**名前**、**リソース グループ**、**サブスクリプション ID** を把握しておく必要があります。この情報は、[Azure ポータル](https://portal.azure.com)の **[App Service]** ブレードでアプリをクリックすると確認できます。この記事の例では、Web サイト **backuprestoreapiexamples.azurewebsites.net** を構成します。これは Default-Web-WestUS リソース グループに保存され、ID 00001111-2222-3333-4444-555566667777 のサブスクリプションで実行されます。
+## <a name="getting-started"></a>Getting Started
+To send REST requests, you need to know your app’s **name**, **resource group**, and **subscription id**. This information can be found by clicking your app in the **App Service** blade of the [Azure portal](https://portal.azure.com). For the examples in this article, we are configuring the website **backuprestoreapiexamples.azurewebsites.net**. It is stored in the Default-Web-WestUS resource group and is running on a subscription with the ID 00001111-2222-3333-4444-555566667777.
 
-![サンプル Web サイト情報][SampleWebsiteInformation]
+![Sample Website Information][SampleWebsiteInformation]
 
 <a name="backup-restore-rest-api"></a>
-## REST API のバックアップと復元
-REST API を利用してアプリをバックアップし、復元する方法の例をこれからいくつか取り上げます。それぞれの例に、URL と HTTP の要求本文が含まれます。サンプル URL には、{subscription-id} のように、中かっこで閉じられたプレースホルダーが含まれます。このプレースホルダーをアプリの対応する情報に置き換えます。参照のために、サンプル URL の各プレースホルダーの説明を記載します。
+## <a name="backup-and-restore-rest-api"></a>Backup and restore REST API
+We will now cover several examples of how to use the REST API to backup and restore an app. Each example includes a URL and HTTP request body. The sample URL contains placeholders wrapped in curly braces, such as {subscription-id}. Replace the placeholders with the corresponding information for your app. For reference, here is an explanation of each placeholder that appears in the example URLs.
 
-* subscription-id – アプリを含む Azure サブスクリプションの ID
-* resource-group-name – アプリを含むリソース グループの名前
-* name – アプリの名前
-* backup-id – アプリのバックアップの ID
+* subscription-id – ID of the Azure subscription containing the app
+* resource-group-name – Name of the resource group containing the app
+* name – Name of the app
+* backup-id – ID of the app backup
 
-HTTP 要求に追加できる任意のパラメーターを含む、API の完全ドキュメントについては、[Azure リソース エクスプローラー](https://resources.azure.com/)を参照してください。
+For the complete documentation of the API, including several optional parameters that can be included in the HTTP request, see the [Azure Resource Explorer](https://resources.azure.com/).
 
 <a name="backup-on-demand"></a>
-## アプリのオンデマンド バックアップ
-アプリをすぐにバックアップするには、**POST** 要求を **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backup/** に送信します。
+## <a name="backup-an-app-on-demand"></a>Backup an app on demand
+To back up an app immediately, send a **POST** request to **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backup/**.
 
-Microsoft のサンプル Web サイトを利用した URL は次のようになります。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backup/**
+Here is what the URL looks like using our example website. **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backup/**
 
-バックアップの保存に使用するストレージ アカウントを指定するには、要求の本文で JSON オブジェクトを指定します。JSON オブジェクトには、"**storageAccountUrl**" という名前のプロパティを含める必要があります。このプロパティには [SAS URL](../storage/storage-dotnet-shared-access-signature-part-1.md) があり、バックアップ BLOB を保持する Azure Storage コンテナーに書き込み許可を与えます。データベースをバックアップする場合、バックアップするデータベースの名前、種類、接続文字列を含む一覧を提供する必要もあります。
+Supply a JSON object in the body of your request to specify which storage account to use to store the backup. The JSON object must have a property named **storageAccountUrl**, which holds a [SAS URL](../storage/storage-dotnet-shared-access-signature-part-1.md) granting write access to the Azure Storage container that holds the backup blob. If you want to back up your databases, you must also supply a list containing the names, types, and connection strings of the databases to be backed up.
 
 ```
 {
@@ -66,7 +67,7 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
-要求が受信されると、すぐにアプリのバックアップが開始されます。バックアップ プロセスの完了には時間がかかる場合があります。HTTP 応答には ID が含まれます。この ID を別の要求で利用して、バックアップの状態を確認できます。次に、バックアップ要求に対する HTTP 応答の本文の例を示します。
+A backup of the app begins immediately when the request is received. The backup process may take a long time to complete. The HTTP response contains an ID that you can use in another request to see the status of the backup. Here is an example of the body of the HTTP response to our backup request.
 
 ```
 {
@@ -96,18 +97,18 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
->[AZURE.NOTE] エラー メッセージは HTTP 応答のログ プロパティにあります。
+>[AZURE.NOTE] Error messages can be found in the log property of the HTTP response.
 
 <a name="schedule-automatic-backups"></a>
-## 自動バックアップのスケジュールを作成する
-アプリは、オンデマンド バックアップするだけでなく、バックアップのスケジュールを作成し、自動実行することもできます。
+## <a name="schedule-automatic-backups"></a>Schedule automatic backups
+In addition to backing up an app on demand, you can also schedule a backup to happen automatically.
 
-### 新しい自動バックアップ スケジュールを設定する
-バックアップ スケジュールを設定するには、**PUT** 要求を **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/config/backup** に送信します。
+### <a name="set-up-a-new-automatic-backup-schedule"></a>Set up a new automatic backup schedule
+To set up a backup schedule, send a **PUT** request to **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/config/backup**.
 
-Microsoft のサンプル Web サイトを利用した URL は次のようになります。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/config/backup**
+Here is what the URL looks like for our example website. **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/config/backup**
 
-要求本文には、バックアップ構成を指定する JSON オブジェクトを含める必要があります。すべての必須パラメーターが含まれている例を次に示します。
+The request body must have a JSON object that specifies the backup configuration. Here is an example with all the required parameters.
 
 ```
 {
@@ -127,24 +128,24 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
-この例では、7 日ごとに自動的にバックアップするようにアプリを設定します。パラメーターの **frequencyInterval** と **frequencyUnit** の両方によりバックアップの頻度が決定されます。**frequencyUnit** の有効な値は **hour** と **day** です。たとえば、12 時間ごとにアプリをバックアップするには、frequencyInterval を「12」に設定し、frequencyUnit を「hour」に設定します。
+This example configures the app to be automatically backed up every seven days. The parameters **frequencyInterval** and **frequencyUnit** together determine how often the backups happen. Valid values for **frequencyUnit** are **hour** and **day**. For example, to back up an app every 12 hours, set frequencyInterval to 12 and frequencyUnit to hour.
 
-古いバックアップはストレージ アカウントから自動的に削除されます。**retentionPeriodInDays** パラメーターでバックアップの保存期間を指定できます。保存期間に関係なく、常に少なくとも 1 つのバックアップを保存する場合、**keepAtLeastOneBackup** を「true」に設定します。
+Old backups are automatically removed from the storage account. You can control how old the backups can be by setting the **retentionPeriodInDays** parameter. If you want to always have at least one backup saved, regardless of how old it is, set **keepAtLeastOneBackup** to true.
 
-### 自動バックアップ スケジュールを取得する
-アプリのバックアップ構成を取得するには、**POST** 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/config/backup/list** に送信します。
+### <a name="get-the-automatic-backup-schedule"></a>Get the automatic backup schedule
+To get an app’s backup configuration, send a **POST** request to the URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/config/backup/list**.
 
-Microsoft のサンプル サイトの URL は **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/config/backup/list** です。
+The URL for our example site is **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/config/backup/list**.
 
 <a name="get-backup-status"></a>
-## バックアップのステータスを取得する
-アプリの規模によっては、バックアップの完了に時間がかかる場合があります。バックアップは失敗したり、タイムアウトになったり、部分的に成功したりすることもあります。すべてのアプリのバックアップの状態を確認するには、**GET** 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups** に送信します。
+## <a name="get-the-status-of-a-backup"></a>Get the status of a backup
+Depending on how large the app is, a backup may take a while to complete. Backups might also fail, time out, or partially succeed. To see the status of all an app’s backups, send a **GET** request to the URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups**.
 
-特定のバックアップの状態を確認するには、GET 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}** に送信します。
+To see the status of a specific backup, send a GET request to the URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}**.
 
-Microsoft のサンプル Web サイトを利用した URL は次のようになります。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1**
+Here is what the URL looks like for our example website. **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1**
 
-応答本文には、この例のような JSON オブジェクトが含まれます。
+The response body contains a JSON object similar to this example.
 
 ```
 {
@@ -165,26 +166,26 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
-バックアップの状態は列挙型です。次のような状態があります。
+The status of a backup is an enumerated type. Here is every possible state.
 
-* 0 – InProgress: バックアップは開始されていますが、まだ完了していません。
-* 1 – Failed: バックアップは失敗しました。
-* 2 – Succeeded: バックアップは完了しました。
-* 3 – TimedOut: バックアップは時間どおり完了せず、取り消されました。
-* 4 – Created: バックアップ要求が待ち行列に入っていますが、開始されていません。
-* 5 – Skipped: スケジュールで始動したバックアップの数が多すぎたため、バックアップが進行しませんでした。
-* 6 – PartiallySucceeded: バックアップは完了しましたが、読み取れなかったため、バックアップされなかったファイルがあります。これは通常、ファイルの排他ロックに起因して発生します。
-* 7 – DeleteInProgress: バックアップの削除が要求されていますが、まだ削除されていません。
-* 8 – DeleteFailed: バックアップを削除できませんでした。バックアップの作成に使用された SAS URL が失効している可能性があります。
-* 9 – Deleted: バックアップは削除されました。
+* 0 – InProgress: The backup has been started but has not yet completed.
+* 1 – Failed: The backup was unsuccessful.
+* 2 – Succeeded: The backup completed successfully.
+* 3 – TimedOut: The backup did not finish in time and was canceled.
+* 4 – Created: The backup request is queued but has not been started.
+* 5 – Skipped: The backup did not proceed due to a schedule triggering too many backups.
+* 6 – PartiallySucceeded: The backup succeeded, but some files were not backed up because they could not be read. This usually happens because an exclusive lock was placed on the files.
+* 7 – DeleteInProgress: The backup has been requested to be deleted, but has not yet been deleted.
+* 8 – DeleteFailed: The backup could not be deleted. This might happen because the SAS URL that was used to create the backup has expired.
+* 9 – Deleted: The backup was deleted successfully.
 
 <a name="restore-app"></a>
-## アプリをバックアップから復元する
-アプリが削除された場合、または以前のバージョンにアプリを戻す場合は、バックアップからアプリを復元できます。復元を呼び出すには、**POST** 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}/restore** に送信します。
+## <a name="restore-an-app-from-a-backup"></a>Restore an app from a backup
+If your app has been deleted, or if you want to revert your app to a previous version, you can restore the app from a backup. To invoke a restore, send a **POST** request to the URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}/restore**.
 
-Microsoft のサンプル Web サイトを利用した URL は次のようになります。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1/restore**
+Here is what the URL looks like for our example website. **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1/restore**
 
-要求本文で、復元操作のプロパティを含む JSON オブジェクトを送信します。次の例にすべての必須プロパティが含まれています。
+In the request body, send a JSON object that contains the properties for the restore operation. Here is an example containing all required properties:
 
 ```
 {
@@ -203,22 +204,22 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
-### 新しいアプリに復元する
-バックアップを復元するとき、既存のアプリを上書きするのではなく、新しいアプリを作成した方が便利な場合があります。その場合は、作成する新しいアプリを指すように要求 URL を変更し、JSON の **overwrite** プロパティを **false** に変更します。
+### <a name="restore-to-a-new-app"></a>Restore to a new app
+Sometimes you might want to create a new app when you restore a backup, instead of overwriting an already existing app. To do this, change the request URL to point to the new app you want to create, and change the **overwrite** property in the JSON to **false**.
 
 <a name="delete-app-backup"></a>
-## アプリのバックアップを削除する
-バックアップを削除する場合、**DELETE** 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}** に送信します。
+## <a name="delete-an-app-backup"></a>Delete an app backup
+If you would like to delete a backup, send a **DELETE** request to the URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}**.
 
-Microsoft のサンプル Web サイトを利用した URL は次のようになります。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1**
+Here is what the URL looks like for our example website. **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1**
 
 <a name="manage-sas-url"></a>
-## バックアップの SAS URL を管理する
-Azure App Service は、バックアップの作成時に指定された SAS URL を利用して、Azure Storage からバックアップを削除しようとします。この SAS URL が無効になっている場合、REST API でバックアップを削除することはできません。ただし、**POST** 要求を URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}/list** に送信し、バックアップに関連付けられている SAS URL を更新できます。
+## <a name="manage-a-backup’s-sas-url"></a>Manage a backup’s SAS URL
+Azure App Service will attempt to delete your backup from Azure Storage using the SAS URL that was provided when the backup was created. If this SAS URL is no longer valid, the backup cannot be deleted through the REST API. However, you can update the SAS URL associated with a backup by sending a **POST** request to the URL **https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Web/sites/{name}/backups/{backup-id}/list**.
 
-Microsoft のサンプル Web サイトを利用した URL は次のようになります。 **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1/list**
+Here is what the URL looks like for our example website. **https://management.azure.com/subscriptions/00001111-2222-3333-4444-555566667777/resourceGroups/Default-Web-WestUS/providers/Microsoft.Web/sites/backuprestoreapiexamples/backups/1/list**
 
-要求本文で、新しい SAS URL を含む JSON オブジェクトを送信します。たとえば次のようになります。
+In the request body, send a JSON object that contains the new SAS URL. Here is an example.
 
 ```
 {
@@ -229,9 +230,13 @@ Microsoft のサンプル Web サイトを利用した URL は次のようにな
 }
 ```
 
->[AZURE.NOTE] セキュリティ上の理由から、特定のバックアップの GET 要求を送信するとき、バックアップに関連付けられている SAS URL は返されません。バックアップに関連付けられている SAS URL を表示する場合、POST 要求を上記と同じ URL に送信します。空の JSON オブジェクトを要求本文に追加します。サーバーからの応答には、SAS URL を含む、そのバックアップのすべての情報が含まれます。
+>[AZURE.NOTE] For security reasons, the SAS URL associated with a backup is not returned when sending a GET request for a specific backup. If you want to view the SAS URL associated with a backup, send a POST request to the same URL above. Include an empty JSON object in the request body. The response from the server contains all of that backup’s information, including its SAS URL.
 
 <!-- IMAGES -->
 [SampleWebsiteInformation]: ./media/websites-csm-backup/01siteconfig.png
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

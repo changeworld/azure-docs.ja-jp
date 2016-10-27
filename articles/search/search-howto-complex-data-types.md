@@ -1,11 +1,11 @@
 <properties
-    pageTitle="Azure Search で複合データ型をモデル化する方法 | Microsoft Azure Search"
-    description="階層または入れ子になったデータ構造は、フラット化された行セットとコレクション データ型を使用して、Azure Search インデックスでモデル化できます。"
+    pageTitle="How to model complex data types in Azure Search | Microsoft Azure Search"
+    description="Nested or hierarchical data structures can be modeled in an Azure Search index using flattened rowset and Collections data type."
     services="search"
     documentationCenter=""
-	authors="LiamCa"
-	manager="pablocas"
-	editor=""
+    authors="LiamCa"
+    manager="pablocas"
+    editor=""
     tags="complex data types; compound data types; aggregate data types"
 />
 
@@ -19,15 +19,16 @@
     ms.author="liamca"
 />
 
-# Azure Search で複合データ型をモデル化する方法
 
-Azure Search インデックスの設定に使用する外部データセットの中には、下部構造が階層または入れ子となっているために、表形式の行セットに適切に分解できないものが存在します。このような構造の例として、単一の顧客に複数の住所と電話番号が含まれるケース、単一の SKU に複数の色とサイズが含まれるケース、1 冊の書籍に複数の著者が存在するケースなどが挙げられます。モデル化の際に使う用語では、このような構造を "*複合データ型*"、"*コンパウンド データ型*"、"*コンポジット データ型*"、"*集合体データ型*" などの用語で呼ぶことがあります。
+# <a name="how-to-model-complex-data-types-in-azure-search"></a>How to model complex data types in Azure Search
 
-複合データ型は Azure Search でネイティブにサポートされているわけではありませんが、実証済みの回避策では、データ構造をフラット化し、次に**コレクション** データ型を使用するという 2 段階のプロセスを用いることで、データの内部構造を再構築できます。この記事で説明されている手法により、コンテンツの検索、ファセット化、フィルター処理、並べ替えが可能になります。
+External datasets used to populate an Azure Search index sometimes include hierarchical or nested substructures that do not break down neatly into a tabular rowset. Examples of such structures might include multiple locations and phone numbers for a single customer, multiple colors and sizes for a single SKU, multiple authors of a single book, and so on. In modeling terms, you might see these structures referred to as *complex data types*, *compound data types*, *composite data types*, or *aggregate data types*, to name a few.
 
-## 複合データ構造の例
+Complex data types are not natively supported in Azure Search, but a proven workaround includes a two-step process of flattening the structure and then using a **Collection** data type to reconstitute the interior structure. Following the technique described in this article allows the content to be searched, faceted, filtered, and sorted.
 
-通常、対象となるデータは、一連の JSON ドキュメントまたは XML ドキュメント、または DocumentDB のような NoSQL ストア内のアイテムとして存在します。構造的に、このような問題は、検索やフィルター処理を行う必要のある子アイテムが複数存在することに起因しています。回避策を説明する出発点として、次の JSON ドキュメントをご覧ください。このドキュメントは、例として一連の連絡先の一覧を示しています。
+## <a name="example-of-a-complex-data-structure"></a>Example of a complex data structure
+
+Typically, the data in question resides as a set of JSON or XML documents, or as items in a NoSQL store such as DocumentDB. Structurally, the challenge stems from having multiple child items that need to be searched and filtered.  As a starting point for illustrating the workaround, take the following JSON document that lists a set of contacts as an example:
 
 ~~~~~
 [
@@ -63,22 +64,22 @@ Azure Search インデックスの設定に使用する外部データセット�
 }]
 ~~~~~
 
-"id"、"name"、"company" というフィールドは、Azure Search インデックス内のフィールドとして一対一の関係で簡単にマップできますが、"locations" フィールドには場所の配列が含まれており、その中には場所の ID と説明の両方が含まれています。Azure Search には、これをサポートするデータ型が存在しないため、Azure Search でこれをモデル化するには別の方法が必要になります。
+While the fields named ‘id’, ‘name’ and ‘company’ can easily be mapped one-to-one as fields within an Azure Search index, the ‘locations’ field contains an array of locations, having both a set of location IDs as well as location descriptions. Given that Azure Search does not have a data type that supports this, we need a different way to model this in Azure Search. 
 
-> [AZURE.NOTE] この手法は、Kirk Evans によるブログの投稿「[Indexing DocumentDB with Azure Search (Azure Search で DocumentDB をインデックス化する方法)](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/)」でも説明されています。この手法は "データのフラット化" と呼ばれ、`locationsID` および `locationsDescription` と呼ばれるフィールドを使用します。これらのフィールドは両方とも[コレクション](https://msdn.microsoft.com/library/azure/dn798938.aspx) (または文字列の配列) です。
+> [AZURE.NOTE] This technique is also described by Kirk Evans in a blog post [Indexing DocumentDB with Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/), which shows a technique called "flattening the data", whereby you would have a field called `locationsID` and `locationsDescription` that are both [collections](https://msdn.microsoft.com/library/azure/dn798938.aspx) (or an array of strings).   
 
-## パート 1: 個々のフィールドに配列をフラット化する
+## <a name="part-1:-flatten-the-array-into-individual-fields"></a>Part 1: Flatten the array into individual fields
 
-このデータセットを格納する Azure Search インデックスを作成するには、入れ子になった下部構造のそれぞれに対応するフィールドを作成します。ここでの下部構造とは、[コレクション](https://msdn.microsoft.com/library/azure/dn798938.aspx) データ型 (または文字列の配列) である `locationsID` と `locationsDescription` を指します。これらのフィールドでは、John Smith の `locationsID` フィールドに値 "1" と "2" のインデックスを作成し、Jen Campbell の `locationsID` フィールドに値 "3" と "4" のインデックスを作成します。
+To create an Azure Search index that accommodates this dataset, create individual fields for the nested substructure: `locationsID` and `locationsDescription` with a data type of [collections](https://msdn.microsoft.com/library/azure/dn798938.aspx) (or an array of strings). In these fields you would index the values ‘1’ and ‘2’ into the `locationsID` field for John Smith and the values ‘3’ & ‘4’ into the `locationsID` field for Jen Campbell.  
 
-Azure Search では、データは次のように表示されます。
+Your data within Azure Search would look like this: 
 
 ![sample data, 2 rows](./media/search-howto-complex-data-types/sample-data.png)
 
 
-## パート 2: インデックス定義にコレクションのフィールドを追加する
+## <a name="part-2:-add-a-collection-field-in-the-index-definition"></a>Part 2: Add a collection field in the index definition
 
-インデックス スキーマでは、フィールド定義は次の例のようになります。
+In the index schema, the field definitions might look similar to this example.
 
 ~~~~
 var index = new Index()
@@ -95,19 +96,19 @@ var index = new Index()
 };
 ~~~~
 
-## 検索動作を検証し、必要に応じてインデックスを拡張する
+## <a name="validate-search-behaviors-and-optionally-extend-the-index"></a>Validate search behaviors and optionally extend the index
 
-インデックスの作成とデータの読み込みが完了したら、ソリューションをテストして、データセットに対する検索クエリの実行を検証できるようになります。各**コレクション** フィールドは、**検索**、**フィルター処理**、**ファセット化**が可能である必要があります。次のようなクエリを実行できるようになります。
+Assuming you created the index and loaded the data, you can now test the solution to verify search query execution against the dataset. Each **collection** field should be **searchable**, **filterable** and **facetable**. You should be able to run queries like:
 
-* "Adventureworks Headquarters" で働く人をすべて検索する。
-* "Home Office" で働く人の数をカウントする。
-* "Home Office" で働く人のうち、他のオフィスでも働く人について、そのオフィス名を表示し、各オフィスで働く人数をカウントする。
+* Find all people who work at the ‘Adventureworks Headquarters’.
+* Get a count of the number of people who work in a ‘Home Office’.  
+* Of the people who work at a ‘Home Office’, show what other offices they work along with a count of the people in each location.  
 
-場所の ID と場所の説明の両方を組み合わせた検索を実行する必要がある場合、この手法ではうまくいきません。次に例を示します。
+Where this technique falls apart is when you need to do a search that combines both the location id as well as the location description. For example:
 
-* "Home Office" で働き、かつ場所の ID が "4" である人をすべて検索する。
+* Find all people where they have a Home Office AND has a location ID of 4.  
 
-元の内容は次のようなものだったことを思い出してください。
+If you recall the original content looked like this:
 
 ~~~~
    {
@@ -116,33 +117,36 @@ var index = new Index()
    }
 ~~~~
 
-ところが、既にデータを別々のフィールドに分割してしまったため、Jen Campbell の "Home Office" が `locationsID 3` に関連しているのか、`locationsID 4` に関連しているのかを知るすべはありません。
+However, now that we have separated the data into separate fields, we have no way of knowing if the Home Office for Jen Campbell relates to `locationsID 3` or `locationsID 4`.  
 
-このようなケースを処理するには、インデックスでもう 1 つのフィールドを定義し、そのフィールドですべてのデータを単一のコレクションに結合します。この例では、このフィールドを `locationsCombined` と呼びます。ここでは、内容を区切るために `||` を使用しますが、内容に対して一意である文字の組み合わせであれば、どのような区切り記号でも選択できます。次に例を示します。
+To handle this case, define another field in the index that combines all of the data into a single collection.  For our example, we will call this field `locationsCombined` and we will separate the content with a `||` although you can choose any separator that you think would be a unique set of characters for your content. For example: 
 
 ![sample data, 2 rows with separator](./media/search-howto-complex-data-types/sample-data-2.png)
 
-`locationsCombined` フィールドを使用すると、次の例のような、さらに多くのクエリに対応できるようになります。
+Using this `locationsCombined` field, we can now accommodate even more queries, such as:
 
-* "Home Office" で働き、かつ場所の ID が "4" である人をカウントする。
-* "Home Office" で働き、かつ場所の ID が "4" である人を検索する。
+* Show a count of people who work at a ‘Home Office’ with location Id of ‘4’.  
+* Search for people who work at a ‘Home Office’ with location Id ‘4’. 
 
-## 制限事項
+## <a name="limitations"></a>Limitations
 
-この手法は多くのシナリオで役立ちますが、すべての場合に適用できるわけではありません。For example:
+This technique is useful for a number of scenarios, but it is not applicable in every case.  For example:
 
-1. 複合データ型に静的な一連のフィールドがなく、すべての指定可能な型を 1 つのフィールドにマップすることができない場合。
-2. 入れ子になったオブジェクトを更新する際に、Azure Search インデックスで何を更新する必要があるのかを正確に判断するための追加作業が必要になる場合。
+1. If you do not have a static set of fields in your complex data type and there was no way to map all the possible types to a single field. 
+2. Updating the nested objects requires some extra work to determine exactly what needs to be updated in the Azure Search index
 
-## サンプル コード
+## <a name="sample-code"></a>Sample code
 
-Azure Search に複合 JSON データセットのインデックスを作成し、このデータセットに対してさまざまなクエリを実行する方法の例については、こちらの [GitHub リポジトリ](https://github.com/liamca/AzureSearchComplexTypes)を参照してください。
+You can see an example on how to index a complex JSON data set into Azure Search and perform a number of queries over this dataset at this [GitHub repo](https://github.com/liamca/AzureSearchComplexTypes).
 
-## 次のステップ
+## <a name="next-step"></a>Next step
 
-Azure Search UserVoice ページで、[複合データ型のネイティブ サポートに関する投票を行ってください](https://feedback.azure.com/forums/263029-azure-search)。機能の実装に関する要望がほかにもある場合は、入力をお願いします。Twitter で @liamca 宛てに直接ご連絡いただいてもかまいません。
+[Vote for native support for complex data types](https://feedback.azure.com/forums/263029-azure-search) on the Azure Search UserVoice page and provide any additional input that you’d like us to consider regarding feature implementation. You can also reach out to me directly on Twitter at @liamca.
 
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

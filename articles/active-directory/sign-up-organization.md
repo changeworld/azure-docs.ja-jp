@@ -1,31 +1,32 @@
 <properties
-	pageTitle="Azure への組織としてのサインアップ"
-	description="職場または学校アカウントを使用して、組織の内部設置型 ID と Azure AD の間の効率性を既に強化した既存のユーザー アカウント、ポリシー、設定、または内部設置型サーバー デプロイを利用する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="markusvi"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure への組織としてのサインアップ"
+    description="職場または学校アカウントを使用して、組織の内部設置型 ID と Azure AD の間の効率性を既に強化した既存のユーザー アカウント、ポリシー、設定、または内部設置型サーバー デプロイを利用する方法について説明します。"
+    services="active-directory"
+    documentationCenter=""
+    authors="markusvi"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/13/2016"
-	ms.author="markvi"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/10/2016"
+    ms.author="markvi"/>
 
 
-# Azure への組織としてのサインアップ
 
-最近まで、新しい Microsoft Azure サブスクリプションにサインアップするには、必ず Microsoft アカウント (Windows Live ID) を使用する必要がありました。現在、Azure では、次に示す 2 つのアカウントのいずれかを使用してサインアップすることができます。
+# <a name="sign-up-for-azure-as-an-organization"></a>Azure への組織としてのサインアップ
 
-* **Microsoft アカウント** (個人ユーザー向け) - Outlook (Hotmail)、Messenger、OneDrive、MSN、Xbox LIVE、Office 365 など、すべてのコンシューマー向け Microsoft 製品とクラウド サービスにアクセスできます。Outlook.com のメールボックスにサインアップすると、Microsoft アカウントが自動的に作成されます。作成した Microsoft アカウントは、コンシューマーに関連した Microsoft クラウド サービスまたは Azure へのアクセスに使用できます。[詳細情報](http://www.microsoft.com/account/default.aspx)
+最近まで、新しい Microsoft Azure サブスクリプションにサインアップするには、必ず Microsoft アカウント (Windows Live ID) を使用する必要がありました。 現在、Azure では、次に示す 2 つのアカウントのいずれかを使用してサインアップすることができます。
 
-* **職場または学校アカウント** (企業または教育機関で使用するために管理者が発行) - Azure、Microsoft Intune、Office 365 など、すべての中小規模企業、大規模企業向け Microsoft クラウド サービスへのアクセスが可能になります。このサービスのいずれかに組織としてサインアップすると、クラウド ベースのディレクトリが Azure Active Directory で自動的にプロビジョニングされ、組織が表示されます。[詳細情報](active-directory-administer.md)
+* **Microsoft アカウント** (個人ユーザー向け) - Outlook (Hotmail)、Messenger、OneDrive、MSN、Xbox LIVE、Office 365 など、すべてのコンシューマー向け Microsoft 製品とクラウド サービスにアクセスできます。 Outlook.com のメールボックスにサインアップすると、Microsoft アカウントが自動的に作成されます。 作成した Microsoft アカウントは、コンシューマーに関連した Microsoft クラウド サービスまたは Azure へのアクセスに使用できます。 [詳細情報](http://www.microsoft.com/account/default.aspx)
 
-	このディレクトリが作成されたら、管理者がユーザーを作成し、それぞれがアクセスする必要があるクラウド サービス (Azure など) のサブスクリプションに基づいて各ユーザーにライセンスを付与できます。
+* **職場または学校アカウント** (企業または教育機関で使用するために管理者が発行) - Azure、Microsoft Intune、Office 365 など、すべての中小規模企業、大規模企業向け Microsoft クラウド サービスへのアクセスが可能になります。 このサービスのいずれかに組織としてサインアップすると、クラウド ベースのディレクトリが Azure Active Directory で自動的にプロビジョニングされ、組織が表示されます。 [詳細情報](active-directory-administer.md)
+
+    このディレクトリが作成されたら、管理者がユーザーを作成し、それぞれがアクセスする必要があるクラウド サービス (Azure など) のサブスクリプションに基づいて各ユーザーにライセンスを付与できます。
 
 組織として Azure にサインアップする必要がある場合は、 [**今すぐサインアップ**](https://azure.microsoft.com/pricing/purchase-options/)
 
@@ -35,4 +36,8 @@
 * [Azure AD とは](active-directory-whatis.md)
 * [クラウド内のオンプレミスの ID インフラストラクチャの使用](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

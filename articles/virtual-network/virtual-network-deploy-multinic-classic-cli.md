@@ -1,6 +1,6 @@
 <properties
-   pageTitle="クラシック デプロイメント モデルで Azure CLI を使用して複数 NIC の VM をデプロイする | Microsoft Azure"
-   description="クラシック デプロイメント モデルで Azure CLI を使用して複数の NIC の VM をデプロイする方法を説明します"
+   pageTitle="Deploy multi NIC VMs using the Azure CLI in the classic deployment model | Microsoft Azure"
+   description="Learn how to deploy multi NIC VMs using the Azure CLI in the classic deployment model"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -17,161 +17,166 @@
    ms.date="02/02/2016"
    ms.author="jdial" />
 
-#Azure CLI を使用した複数の NIC VM (クラシック) のデプロイ
+
+#<a name="deploy-multi-nic-vms-(classic)-using-the-azure-cli"></a>Deploy multi NIC VMs (classic) using the Azure CLI
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager モデルを使用してこれらの手順を実行する](virtual-network-deploy-multinic-arm-cli.md)方法について説明します。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-classic-include.md)] Learn how to [perform these steps using the Resource Manager model](virtual-network-deploy-multinic-arm-cli.md).
 
 [AZURE.INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-現時点では、NIC が 1 つの VM と、NIC が複数ある VM を、同じクラウド サービスに含めることはできません。したがって、このシナリオでは、バックエンド サーバーは、他のすべてのコンポーネントと異なるクラウド サービスで実装する必要があります。以下の手順では、メイン リソースに *IaaSStory* という名前のクラウド サービスを使用し、バックエンド サーバーに *IaaSStory-BackEnd* を使用します。
+Currently, you cannot have VMs with a single NIC and VMs with multiple NICs in the same cloud service. Therefore, you need to implement the back end servers in a different cloud service than and all other components in the scenario. The steps below use a cloud service named *IaaSStory* for the main resources, and *IaaSStory-BackEnd* for the back end servers.
 
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-バックエンド サーバーをデプロイするには、このシナリオで必要なすべてのリソースを含むメイン クラウド サービスをデプロイする必要があります。少なくとも、バックエンド用のサブネットを含む仮想ネットワークを作成する必要があります。仮想ネットワークをデプロイする方法については、「[Azure CLI を使用した仮想ネットワークの作成](virtual-networks-create-vnet-classic-cli.md)」を参照してください。
+Before you can deploy the back end servers, you need to deploy the main cloud service with all the necessary resources for this scenario. At minimum, you need to create a virtual network with a subnet for the backend. Visit [Create a virtual network by using the Azure CLI](virtual-networks-create-vnet-classic-cli.md) to learn how to deploy a virtual network.
 
 [AZURE.INCLUDE [azure-cli-prerequisites-include.md](../../includes/azure-cli-prerequisites-include.md)]
 
-## バックエンド VM のデプロイ
+## <a name="deploy-the-back-end-vms"></a>Deploy the back end VMs
 
-バックエンド VM は、以下にリストしたリソースの作成に依存します。
+The backend VMs depend on the creation of the resources listed below.
 
-- **データ ディスクのストレージ アカウント**。パフォーマンスを高めるために、データベース サーバー上のデータ ディスクはソリッド ステート ドライブ (SSD) テクノロジーを使用します。これには、Premium Storage アカウントが必要です。デプロイする Azure の場所が Premium Storage をサポートすることを確認してください。
-- **NIC**。各 VM には 2 つの NIC があり、1 つはデータベース アクセス用で、もう 1 つは管理用です。
-- **可用性セット**。メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。
+- **Storage account for data disks**. For better performance, the data disks on the database servers will use solid state drive (SSD) technology, which requires a premium storage account. Make sure the Azure location you deploy to support premium storage.
+- **NICs**. Each VM will have two NICs, one for database access, and one for management.
+- **Availability set**. All database servers will be added to a single availability set, to ensure at least one of the VMs is up and running during maintenance.
 
-### 手順 1 - スクリプトの開始
+### <a name="step-1---start-your-script"></a>Step 1 - Start your script
 
-使用するすべての Bash スクリプトは、[ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh)からダウンロードできます。以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
+You can download the full bash script used [here](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh). Follow the steps below to change the script to work in your environment.
 
-1. 上記の[前提条件](#Prerequisites)でデプロイした既存のリソース グループに基づいて、以下の変数の値を変更します。
+1. Change the values of the variables below based on your existing resource group deployed above in [Prerequisites](#Prerequisites).
 
-		location="useast2"
-		vnetName="WTestVNet"
-		backendSubnetName="BackEnd"
+        location="useast2"
+        vnetName="WTestVNet"
+        backendSubnetName="BackEnd"
 
-2. バックエンド デプロイメントに使用する値に基づいて、以下の変数の値を変更します。
+2. Change the values of the variables below based on the values you want to use for your backend deployment.
 
-		backendCSName="IaaSStory-Backend"
-		prmStorageAccountName="iaasstoryprmstorage"
-		image="0b11de9248dd4d87b18621318e037d37__RightImage-Ubuntu-14.04-x64-v14.2.1"
-		avSetName="ASDB"
-		vmSize="Standard_DS3"
-		diskSize=127
-		vmNamePrefix="DB"
-		osDiskName="osdiskdb"
-		dataDiskPrefix="db"
-		dataDiskName="datadisk"
-		ipAddressPrefix="192.168.2."
-		username='adminuser'
-		password='adminP@ssw0rd'
-		numberOfVMs=2
+        backendCSName="IaaSStory-Backend"
+        prmStorageAccountName="iaasstoryprmstorage"
+        image="0b11de9248dd4d87b18621318e037d37__RightImage-Ubuntu-14.04-x64-v14.2.1"
+        avSetName="ASDB"
+        vmSize="Standard_DS3"
+        diskSize=127
+        vmNamePrefix="DB"
+        osDiskName="osdiskdb"
+        dataDiskPrefix="db"
+        dataDiskName="datadisk"
+        ipAddressPrefix="192.168.2."
+        username='adminuser'
+        password='adminP@ssw0rd'
+        numberOfVMs=2
 
-### 手順 2 - VM 用に必要なリソースの作成
+### <a name="step-2---create-necessary-resources-for-your-vms"></a>Step 2 - Create necessary resources for your VMs
 
-1. すべてのバックエンド VM 向けに新しいクラウド サービスを作成します。リソース グループ名のための `$backendCSName` 変数と Azure リージョンのための `$location` を使用していることに注意してください。
+1. Create a new cloud service for all backend VMs. Notice the use of the `$backendCSName` variable for the resource group name, and `$location` for the Azure region.
 
-		azure service create --serviceName $backendCSName \
-		    --location $location
+        azure service create --serviceName $backendCSName \
+            --location $location
 
-2. VM で使用するデータ ディスクと OS の Premium Storage アカウントを作成します。
+2. Create a premium storage account for the OS and data disks to be used by yours VMs.
 
-		azure storage account create $prmStorageAccountName \
-		    --location $location \
-		    --type PLRS
+        azure storage account create $prmStorageAccountName \
+            --location $location \
+            --type PLRS
 
-### 手順 3 - 複数 NIC を持つ VM の作成
+### <a name="step-3---create-vms-with-multiple-nics"></a>Step 3 - Create VMs with multiple NICs
 
-1. `numberOfVMs` 変数に基づいて、複数の VM を作成するループを開始します。
+1. Start a loop to create multiple VMs, based on the `numberOfVMs` variables.
 
-		for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
-		do
+        for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
+        do
 
-2. 各 VM について、2 つの NIC それぞれの名前と IP アドレスを指定します。
+2. For each VM, specify the name and IP address of each of the two NICs.
 
-		    nic1Name=$vmNamePrefix$suffixNumber-DA
-		    x=$((suffixNumber+3))
-		    ipAddress1=$ipAddressPrefix$x
+            nic1Name=$vmNamePrefix$suffixNumber-DA
+            x=$((suffixNumber+3))
+            ipAddress1=$ipAddressPrefix$x
 
-		    nic2Name=$vmNamePrefix$suffixNumber-RA
-		    x=$((suffixNumber+53))
-		    ipAddress2=$ipAddressPrefix$x
+            nic2Name=$vmNamePrefix$suffixNumber-RA
+            x=$((suffixNumber+53))
+            ipAddress2=$ipAddressPrefix$x
 
-4. VM を作成します。名前、サブネット、IP アドレスを持つすべての NIC の一覧を含む `--nic-config` パラメーターを使用していることに注目します。
+4. Create the VM. Notice the usage of the `--nic-config` parameter, containing a list of all NICs with name, subnet, and IP address.
 
-		    azure vm create $backendCSName $image $username $password \
-		        --connect $backendCSName \
-		        --vm-name $vmNamePrefix$suffixNumber \
-		        --vm-size $vmSize \
-		        --availability-set $avSetName \
-		        --blob-url $prmStorageAccountName.blob.core.windows.net/vhds/$osDiskName$suffixNumber.vhd \
-		        --virtual-network-name $vnetName \
-		        --subnet-names $backendSubnetName \
-		        --nic-config $nic1Name:$backendSubnetName:$ipAddress1::,$nic2Name:$backendSubnetName:$ipAddress2::
+            azure vm create $backendCSName $image $username $password \
+                --connect $backendCSName \
+                --vm-name $vmNamePrefix$suffixNumber \
+                --vm-size $vmSize \
+                --availability-set $avSetName \
+                --blob-url $prmStorageAccountName.blob.core.windows.net/vhds/$osDiskName$suffixNumber.vhd \
+                --virtual-network-name $vnetName \
+                --subnet-names $backendSubnetName \
+                --nic-config $nic1Name:$backendSubnetName:$ipAddress1::,$nic2Name:$backendSubnetName:$ipAddress2::
 
-5. 各 VM あたり 2 つのデータ ディスクを作成します。
+5. For each VM, create two data disks.
 
-		    azure vm disk attach-new $vmNamePrefix$suffixNumber \
-		        $diskSize \
-		        vhds/$dataDiskPrefix$suffixNumber$dataDiskName-1.vhd
+            azure vm disk attach-new $vmNamePrefix$suffixNumber \
+                $diskSize \
+                vhds/$dataDiskPrefix$suffixNumber$dataDiskName-1.vhd
 
-		    azure vm disk attach-new $vmNamePrefix$suffixNumber \
-		        $diskSize \
-		        vhds/$dataDiskPrefix$suffixNumber$dataDiskName-2.vhd
-		done
+            azure vm disk attach-new $vmNamePrefix$suffixNumber \
+                $diskSize \
+                vhds/$dataDiskPrefix$suffixNumber$dataDiskName-2.vhd
+        done
 
-### 手順 4 - スクリプトの実行
+### <a name="step-4---run-the-script"></a>Step 4 - Run the script
 
-ニーズに合わせてスクリプトをダウンロードおよび変更したら、スクリプトを実行して複数の NIC を持つバックエンド データベース VM を作成してください。
+Now that you downloaded and changed the script based on your needs, run the script to create the back end database VMs with multiple NICs.
 
-1. スクリプトを保存し、**Bash** ターミナルから実行します。次のように、最初の出力が表示されます。
+1. Save your script and run it from your **Bash** terminal. You will see the initial output, as shown below.
 
-		info:    Executing command service create
-		info:    Creating cloud service
-		data:    Cloud service name IaaSStory-Backend
-		info:    service create command OK
-		info:    Executing command storage account create
-		info:    Creating storage account
-		info:    storage account create command OK
-		info:    Executing command vm create
-		info:    Looking up image 0b11de9248dd4d87b18621318e037d37__RightImage-Ubuntu-14.04-x64-v14.2.1
-		info:    Looking up virtual network
-		info:    Looking up cloud service
-		info:    Getting cloud service properties
-		info:    Looking up deployment
-		info:    Creating VM
+        info:    Executing command service create
+        info:    Creating cloud service
+        data:    Cloud service name IaaSStory-Backend
+        info:    service create command OK
+        info:    Executing command storage account create
+        info:    Creating storage account
+        info:    storage account create command OK
+        info:    Executing command vm create
+        info:    Looking up image 0b11de9248dd4d87b18621318e037d37__RightImage-Ubuntu-14.04-x64-v14.2.1
+        info:    Looking up virtual network
+        info:    Looking up cloud service
+        info:    Getting cloud service properties
+        info:    Looking up deployment
+        info:    Creating VM
 
-2. 数分後に実行が終了し、次のように、出力の残りの部分が表示されます。
+2. After a few minutes, the execution will end and you will see the rest of the output as shown below.
 
-		info:    OK
-		info:    vm create command OK
-		info:    Executing command vm disk attach-new
-		info:    Getting virtual machines
-		info:    Adding Data-Disk
-		info:    vm disk attach-new command OK
-		info:    Executing command vm disk attach-new
-		info:    Getting virtual machines
-		info:    Adding Data-Disk
-		info:    vm disk attach-new command OK
-		info:    Executing command vm create
-		info:    Looking up image 0b11de9248dd4d87b18621318e037d37__RightImage-Ubuntu-14.04-x64-v14.2.1
-		info:    Looking up virtual network
-		info:    Looking up cloud service
-		info:    Getting cloud service properties
-		info:    Looking up deployment
-		info:    Creating VM
-		info:    OK
-		info:    vm create command OK
-		info:    Executing command vm disk attach-new
-		info:    Getting virtual machines
-		info:    Adding Data-Disk
-		info:    vm disk attach-new command OK
-		info:    Executing command vm disk attach-new
-		info:    Getting virtual machines
-		info:    Adding Data-Disk
-		info:    vm disk attach-new command OK
+        info:    OK
+        info:    vm create command OK
+        info:    Executing command vm disk attach-new
+        info:    Getting virtual machines
+        info:    Adding Data-Disk
+        info:    vm disk attach-new command OK
+        info:    Executing command vm disk attach-new
+        info:    Getting virtual machines
+        info:    Adding Data-Disk
+        info:    vm disk attach-new command OK
+        info:    Executing command vm create
+        info:    Looking up image 0b11de9248dd4d87b18621318e037d37__RightImage-Ubuntu-14.04-x64-v14.2.1
+        info:    Looking up virtual network
+        info:    Looking up cloud service
+        info:    Getting cloud service properties
+        info:    Looking up deployment
+        info:    Creating VM
+        info:    OK
+        info:    vm create command OK
+        info:    Executing command vm disk attach-new
+        info:    Getting virtual machines
+        info:    Adding Data-Disk
+        info:    vm disk attach-new command OK
+        info:    Executing command vm disk attach-new
+        info:    Getting virtual machines
+        info:    Adding Data-Disk
+        info:    vm disk attach-new command OK
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

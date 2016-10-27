@@ -1,39 +1,40 @@
 <properties 
-	pageTitle="PowerShell を使用して Application Insights のアラートを設定する" 
-	description="Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。" 
-	services="application-insights" 
+    pageTitle="Use Powershell to set alerts in Application Insights" 
+    description="Automate configuration of Application Insights to get emails about metric changes." 
+    services="application-insights" 
     documentationCenter=""
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/19/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="02/19/2016" 
+    ms.author="awills"/>
  
-# PowerShell を使用して Application Insights のアラートを設定する
 
-[Visual Studio Application Insights](app-insights-overview.md) では、[アラート](app-insights-alerts.md)の構成を自動化できます。
+# <a name="use-powershell-to-set-alerts-in-application-insights"></a>Use PowerShell to set alerts in Application Insights
 
-さらに、[Webhook を設定してアラートへの対応を自動化](../azure-portal/insights-webhooks-alerts.md)できます。
+You can automate the configuration of [alerts](app-insights-alerts.md) in [Visual Studio Application Insights](app-insights-overview.md). 
 
-## 1 回限りのセットアップ
+In addition, you can [set webhooks to automate your response to an alert](../azure-portal/insights-webhooks-alerts.md).
 
-以前に Azure サブスクリプションで PowerShell を使用したことがない場合
+## <a name="one-time-setup"></a>One-time setup
 
-スクリプトを実行するコンピューターに Azure PowerShell モジュールをインストールします。
+If you haven't used PowerShell with your Azure subscription before:
 
- * [Microsoft Web Platform Installer (v5 以上)](http://www.microsoft.com/web/downloads/platform.aspx) をインストールします。
- * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
+Install the Azure Powershell module on the machine where you want to run the scripts. 
+
+ * Install [Microsoft Web Platform Installer (v5 or higher)](http://www.microsoft.com/web/downloads/platform.aspx).
+ * Use it to install Microsoft Azure Powershell
 
 
-## Connect to Azure
+## <a name="connect-to-azure"></a>Connect to Azure
 
-Azure PowerShell を起動して、[サブスクリプションに接続](../powershell-install-configure.md)します。
+Start Azure PowerShell and [connect to your subscription](../powershell-install-configure.md):
 
 ```PowerShell
 
@@ -42,11 +43,11 @@ Azure PowerShell を起動して、[サブスクリプションに接続](../pow
 ```
 
 
-## アラートの取得
+## <a name="get-alerts"></a>Get alerts
 
     Get-AlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
-## アラートの追加
+## <a name="add-alert"></a>Add alert
 
 
     Add-AlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
@@ -63,11 +64,11 @@ Azure PowerShell を起動して、[サブスクリプションに接続](../pow
 
 
 
-## 例 1
+## <a name="example-1"></a>Example 1
 
-「HTTP 要求に対するサーバーの応答時間」の 5 分間の平均が 1 秒を超えた場合、電子メールで通知してください。私の Application Insights リソースは IceCreamWebApp と呼ばれており、リソース グループ Fabrikam 内にあります。私は Azure サブスクリプションの所有者です。
+Email me if the server's response to HTTP requests, averaged over 5 minutes, is slower than 1 second. My Application Insights resource is called IceCreamWebApp, and it is in resource group Fabrikam. I am the owner of the Azure subscription.
 
-GUID は、サブスクリプション ID です (アプリケーションのインストルメンテーション キーではありません)。
+The GUID is the subscription ID (not the instrumentation key of the application).
 
     Add-AlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
@@ -80,9 +81,9 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
      -SendEmailToServiceOwners `
      -Location "East US" -RuleType Metric
 
-## 例 2
+## <a name="example-2"></a>Example 2
 
-[TrackMetric()](app-insights-api-custom-events-metrics.md#track-metric) を使用して "salesPerHour" という名前のメトリックを報告するアプリケーションがあります。 24 時間にわたる "salesPerHour" の平均が 100 を下回る場合は、私の同僚に電子メールを送信してください。
+I have an application in which I use [TrackMetric()](app-insights-api-custom-events-metrics.md#track-metric) to report a metric named "salesPerHour." Send an email to my colleagues if "salesPerHour" drops below 100, averaged over 24 hours.
 
     Add-AlertRule -Name "poor sales" `
      -Description "slow sales alert" `
@@ -95,57 +96,60 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
      -CustomEmails "satish@fabrikam.com","lei@fabrikam.com" `
      -Location "East US" -RuleType Metric
 
-別の追跡呼び出しの[測定パラメーター](app-insights-api-custom-events-metrics.md#properties) (TrackEvent や trackPageView など) を使用して報告されるメトリックにも同じルールを使用できます。
+The same rule can be used for the metric reported by using the [measurement parameter](app-insights-api-custom-events-metrics.md#properties) of another tracking call such as TrackEvent or trackPageView.
 
-## メトリックの名前
+## <a name="metric-names"></a>Metric names
 
-メトリックの名前 | 画面の名前 | 説明
+Metric name | Screen name | Description
 ---|---|---
-`basicExceptionBrowser.count`|ブラウザーの例外|ブラウザーでスローされた、キャッチされない例外の数。
-`basicExceptionServer.count`|サーバーの例外|アプリによってスローされた未処理の例外の数
-`clientPerformance.clientProcess.value`|クライアントの処理時間|ドキュメントの最終バイトを受信してから、DOM が読み込まれるまでの時間。非同期要求がまだ処理されている可能性があります。
-`clientPerformance.networkConnection.value`|ページ読み込みのネットワーク接続時間| ブラウザーがネットワークに接続するために要する時間です。キャッシュされている場合は、0 にすることができます。
-`clientPerformance.receiveRequest.value`|受信応答時間| ブラウザーが要求を送信してから応答を受信し始めるまでの時間。
-`clientPerformance.sendRequest.value`|要求送信時間| ブラウザーが要求を送信するのに要する時間。
-`clientPerformance.total.value`|ブラウザーのページ読み込み時間|ユーザーが要求を出してから DOM、スタイル シート、スクリプト、およびイメージが読み込まれるまでの時間。
-`performanceCounter.available_bytes.value`|使用可能なメモリ|プロセスまたはシステムの用途で、すぐに利用できる物理メモリ。
-`performanceCounter.io_data_bytes_per_sec.value`|IO 処理速度|ファイル、ネットワーク、およびデバイスに対する読み書きで 1 秒あたりに処理される合計バイト数。
-`performanceCounter.number_of_exceps_thrown_per_sec`|例外レート|1 秒あたりにスローされる例外。
-`performanceCounter.percentage_processor_time.value`|プロセス CPU|アプリケーション プロセスの実行命令に対してプロセッサが使用するすべてのプロセス スレッドの経過時間の割合。
-`performanceCounter.percentage_processor_total.value`|プロセッサ時間|プロセッサが非アイドル スレッドで費やす時間の割合。
-`performanceCounter.process_private_bytes.value`|プロセスのプライベート バイト|監視対象のアプリケーション プロセスに対して専用に割り当てられるメモリ。
-`performanceCounter.request_execution_time.value`|ASP.NET 要求の実行時間|最新の要求の実行時間。
-`performanceCounter.requests_in_application_queue.value`|実行キュー内の ASP.NET 要求|アプリケーション要求キューの長さ。
-`performanceCounter.requests_per_sec`|ASP.NET 要求レート|ASP.NET からの 1 秒あたりのアプリケーションへのすべての要求のレート。
-`remoteDependencyFailed.durationMetric.count`|依存関係の障害|サーバー アプリケーションによる外部リソースの呼び出しが失敗した回数。
-`request.duration`|サーバーの応答時間|HTTP 要求を受信してから、応答の送信を終了するまでの時間。
-`request.rate`|要求レート|1 秒あたりのアプリケーションに出されるすべての要求のレート。
-`requestFailed.count`|失敗した要求|400 またはこれより大きな応答コードを生じさせた HTTP 要求の数 
-`view.count`|ページ ビュー|Web ページに対するクライアント ユーザーの要求数。代理トラフィックはフィルターで除外されます。
-{カスタム メトリック名}|{メトリック名}|[TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) または[追跡呼び出しの測定パラメーター](app-insights-api-custom-events-metrics.md#properties)で報告されるメトリック値。
+`basicExceptionBrowser.count`|Browser exceptions|Count of uncaught exceptions thrown in the browser.
+`basicExceptionServer.count`|Server exceptions|Count of unhandled exceptions thrown by the app
+`clientPerformance.clientProcess.value`|Client processing time|Time between receiving the last byte of a document until the DOM is loaded. Async requests may still be processing.
+`clientPerformance.networkConnection.value`|Page load network connect time| Time the browser takes to connect to the network. Can be 0 if cached.
+`clientPerformance.receiveRequest.value`|Receiving response time| Time between browser sending request to starting to receive response.
+`clientPerformance.sendRequest.value`|Send request time| Time taken by browser to send request.
+`clientPerformance.total.value`|Browser page load time|Time from user request until DOM, stylesheets, scripts and images are loaded.
+`performanceCounter.available_bytes.value`|Available memory|Physical memory immediately available for a process or for system use.
+`performanceCounter.io_data_bytes_per_sec.value`|Process IO Rate|Total bytes per second read and written to files, network and devices.
+`performanceCounter.number_of_exceps_thrown_per_sec`|exception rate|Exceptions thrown per second.
+`performanceCounter.percentage_processor_time.value`|Process CPU|The percentage of elapsed time of all process threads used by the processor to execution instructions for the applications process.
+`performanceCounter.percentage_processor_total.value`|Processor time|The percentage of time that the processor spends in non-Idle threads.
+`performanceCounter.process_private_bytes.value`|Process private bytes|Memory exclusively assigned to the monitored application's processes.
+`performanceCounter.request_execution_time.value`|ASP.NET request execution time|Execution time of the most recent request.
+`performanceCounter.requests_in_application_queue.value`|ASP.NET requests in execution queue|Length of the application request queue.
+`performanceCounter.requests_per_sec`|ASP.NET request rate|Rate of all requests to the application per second from ASP.NET.
+`remoteDependencyFailed.durationMetric.count`|Dependency failures|Count of failed calls made by the server application to external resources.
+`request.duration`|Server response time|Time between receiving an HTTP request and finishing sending the response.
+`request.rate`|Request rate|Rate of all requests to the application per second.
+`requestFailed.count`|Failed requests|Count of HTTP requests that resulted in a response code >= 400 
+`view.count`|Page views|Count of client user requests for a web page. Synthetic traffic is filtered out.
+{your custom metric name}|{Your metric name}|Your metric value reported by [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) or in the [measurements parameter of a tracking call](app-insights-api-custom-events-metrics.md#properties).
 
-メトリックは、さまざまなテレメトリ モジュールによって送信されます。
+The metrics are sent by different telemetry modules:
 
-メトリック グループ | コレクター モジュール
+Metric group | Collector module
 ---|---
-basicExceptionBrowser、<br/>clientPerformance、<br/>view | [ブラウザーの JavaScript](app-insights-javascript.md)
-performanceCounter | [パフォーマンス](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)
-remoteDependencyFailed| [依存関係](app-insights-configuration-with-applicationinsights-config.md#nuget-package-1)
-request、<br/>requestFailed|[サーバー要求](app-insights-configuration-with-applicationinsights-config.md#nuget-package-2)
+basicExceptionBrowser,<br/>clientPerformance,<br/>view | [Browser JavaScript](app-insights-javascript.md)
+performanceCounter | [Performance](app-insights-configuration-with-applicationinsights-config.md#nuget-package-3)
+remoteDependencyFailed| [Dependency](app-insights-configuration-with-applicationinsights-config.md#nuget-package-1)
+request,<br/>requestFailed|[Server request](app-insights-configuration-with-applicationinsights-config.md#nuget-package-2)
 
-## Webhook
+## <a name="webhooks"></a>Webhooks
 
-[アラートへの対応を自動化](../azure-portal/insights-webhooks-alerts.md)できます。アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
+You can [automate your response to an alert](../azure-portal/insights-webhooks-alerts.md). Azure will call a web address of your choice when an alert is raised. 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
 
-* [Application Insights を構成するスクリプト](app-insights-powershell-script-create-resource.md)
-* [テンプレートから Application Insights と Web テスト リソースを作成する](app-insights-powershell.md)
-* [Microsoft Azure 診断の Application Insights への結合を自動化する](app-insights-powershell-azure-diagnostics.md)
-* [アラートへの対応を自動化する](../azure-portal/insights-webhooks-alerts.md)
+* [Script to configure Application Insights](app-insights-powershell-script-create-resource.md)
+* [Create Application Insights and web test resources from templates](app-insights-powershell.md)
+* [Automate coupling Microsoft Azure Diagnostics to Application Insights](app-insights-powershell-azure-diagnostics.md)
+* [Automate your response to an alert](../azure-portal/insights-webhooks-alerts.md)
 
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,10 +1,10 @@
 <properties
 pageTitle="SMTP | Microsoft Azure"
-description="Azure App Service を使用してロジック アプリを作成します。SMTP に接続して電子メールを送信します。"
-services="logic-apps"	
-documentationCenter=".net,nodejs,java" 	
-authors="msftman"	
-manager="erikre"	
+description="Create logic apps with Azure App service. Connect to SMTP to send email."
+services="logic-apps"   
+documentationCenter=".net,nodejs,java"  
+authors="msftman"   
+manager="erikre"    
 editor=""
 tags="connectors" />
 
@@ -17,121 +17,125 @@ ms.workload="integration"
 ms.date="07/15/2016"
 ms.author="deonhe"/>
 
-# SMTP コネクタの概要
 
-SMTP に接続して電子メールを送信します。
+# <a name="get-started-with-the-smtp-connector"></a>Get started with the SMTP connector
 
-[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
+Connect to SMTP to send email.
 
-## SMTP への接続
+To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "接続" を作成する必要があります。[接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。たとえば、SMTP に接続するには、まず SMTP "接続" が必要です。接続を作成するには、接続先のサービスへのアクセスに通常使用する資格情報を入力する必要があります。そのため、SMTP の例では、SMTP への接続を作成するために、接続名、SMTP サーバーのアドレス、ユーザーのログイン情報に対して資格情報が必要になります。接続の詳細については、[こちら]()をご覧ください。
+## <a name="connect-to-smtp"></a>Connect to SMTP
 
-### SMTP への接続を作成する
+Before your logic app can access any service, you first need to create a *connection* to the service. A [connection](./connectors-overview.md) provides connectivity between a logic app and another service. For example, in order to connect to SMTP, you first need an SMTP *connection*. To create a connection, you would need to provide the credentials you normally use to access the service you wish to connect to. So, in the SMTP example, you would need the credentials to your connection name, SMTP server address, and user login information in order to create the connection to SMTP. [Learn more about connections]()  
 
->[AZURE.INCLUDE [SMTP への接続を作成する手順](../../includes/connectors-create-api-smtp.md)]
+### <a name="create-a-connection-to-smtp"></a>Create a connection to SMTP
 
-## SMTP トリガーの使用
+>[AZURE.INCLUDE [Steps to create a connection to SMTP](../../includes/connectors-create-api-smtp.md)]
 
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
+## <a name="use-an-smtp-trigger"></a>Use an SMTP trigger
 
-SMTP には独自のトリガーがないため、この例では **[Salesforce - When an object is created (Salesforce - オブジェクトの作成時)]** トリガーを使用します。このトリガーは、Salesforce で新しいオブジェクトが作成されるとアクティブになります。この例では、Salesforce で新しい潜在顧客が作成されるたびに、新しい潜在顧客の作成を通知する "電子メールの送信" アクションが SMTP コネクタ経由で実行されるようにトリガーを設定します。
+A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-1. Logic Apps デザイナーの検索ボックスに「salesforce」と入力し、**[Salesforce - When an object is created (Salesforce - オブジェクトの作成時)]** トリガーを選択します。  
+In this example, because SMTP does not have a trigger of its own, we'll use the **Salesforce - When an object is created** trigger. This trigger will activate when a new object is created in Salesforce. For our example, we'll set it up such that every time a new lead is created in Salesforce, a *send email* action occurs via the SMTP connector with a notification of the new lead being created.
+
+1. Enter *salesforce* in the search box on the logic apps designer then select the **Salesforce - When an object is created** trigger.  
  ![](../../includes/media/connectors-create-api-salesforce/trigger-1.png)  
 
-2. **[When an object is created (オブジェクトの作成時)]** コントロールが表示されます。  
+2. The **When an object is created** control is displayed.
  ![](../../includes/media/connectors-create-api-salesforce/trigger-2.png)  
 
-3. **[オブジェクトの種類]** を選択し、オブジェクトの一覧から *[潜在顧客]* を選択します。この手順では、Salesforce で新しい潜在顧客が作成されるたびにロジック アプリに通知するトリガーを作成していることを示しています。  
+3. Select the **Object Type** then select *Lead* from the list of objects. In this step you are indicating that you are creating a trigger that will notify your logic app whenever a new lead is created in Salesforce.  
  ![](../../includes/media/connectors-create-api-salesforce/trigger3.png)  
 
-4. トリガーが作成されました。  
+4. The trigger has been created.  
  ![](../../includes/media/connectors-create-api-salesforce/trigger-4.png)  
 
-## SMTP アクションの使用
+## <a name="use-an-smtp-action"></a>Use an SMTP action
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。アクションの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-トリガーが追加されたら、次の手順に従って、Salesforce で新しい潜在顧客が作成されたときに実行される SMTP アクションを追加します。
+Now that the trigger has been added, follow these steps to add an SMTP action that will occur when a new lead is created in Salesforce.
 
-1. **[+ 新しいステップ]** をクリックして、新しい潜在顧客が作成されたときに実行するアクションを追加します。  
+1. Select **+ New Step** to add the action you would like to take when a new lead is created.  
  ![](../../includes/media/connectors-create-api-salesforce/trigger4.png)  
 
-2. **[アクションの追加]** を選択します。実行するアクションを検索できる検索ボックスが開きます。  
+2. Select **Add an action**. This opens the search box where you can search for any action you would like to take.  
  ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-2.png)  
 
-3. 「smtp」と入力して、SMTP に関連するアクションを検索します。
+3. Enter *smtp* to search for actions related to SMTP.  
 
-4. 新しい潜在顧客が作成されたときに実行するアクションとして、**[SMTP - Send Email (SMTP - 電子メールの送信)]** を選択します。アクションの制御ブロックが表示されます。これまで SMTP 接続を確立したことがない場合は、このデザイナー ブロックで接続を確立する必要があります。  
- ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)  
+4. Select **SMTP - Send Email** as the action to take when the new lead is created. The action control block opens. You will have to establish your smtp connection in the designer block if you have not done so previously.  
+ ![](../../includes/media/connectors-create-api-smtp/smtp-2.png)    
 
-5. **[SMTP - Send Email (SMTP - 電子メールの送信)]** ブロックで、必要な電子メール情報を入力します。  
+5. Input your desired email information in the **SMTP - Send Email** block.  
  ![](../../includes/media/connectors-create-api-smtp/using-smtp-action-4.PNG)  
 
-6. ワークフローをアクティブにするために、作業内容を保存します。
+6. Save your work in order to activate your workflow.  
 
-## 技術的な詳細
+## <a name="technical-details"></a>Technical details
 
-ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
+Here are the details about the triggers, actions and responses that this connection supports:
 
-## SMTP トリガー
+## <a name="smtp-triggers"></a>SMTP triggers
 
-SMTP にはトリガーはありません。
+SMTP has no triggers. 
 
-## SMTP アクション
+## <a name="smtp-actions"></a>SMTP actions
 
-SMTP には次のアクションがあります。
+SMTP has the following action:
 
 
-|アクション|説明|
+|Action|Description|
 |--- | ---|
-|[電子メールを送信する](connectors-create-api-smtp.md#send-email)|この操作では、1 人以上の受信者に電子メールを送信します。|
+|[Send Email](connectors-create-api-smtp.md#send-email)|This operation sends an email to one or more recipients.|
 
-### アクションの詳細
+### <a name="action-details"></a>Action details
 
-ここでは、このコネクタのアクションとその応答について詳しく説明します。
-
-
-### 電子メールを送信する
-この操作では、1 人以上の受信者に電子メールを送信します。
+Here are the details for the action of this connector, along with its responses:
 
 
-|プロパティ名| Displayname Settings|説明|
+### <a name="send-email"></a>Send Email
+This operation sends an email to one or more recipients. 
+
+
+|Property Name| Display Name|Description|
 | ---|---|---|
-|To|To|"recipient1@domain.com;recipient2@domain.com" のようにセミコロンで区切って電子メール アドレスを指定|
-|CC|cc|"recipient1@domain.com;recipient2@domain.com" のようにセミコロンで区切って電子メール アドレスを指定|
-|[件名]|[件名]|電子メールの件名|
-|本文|本文|電子メールの本文|
-|ファイル|ファイル|差出人の電子メールアドレス (例: sender@domain.com)|
-|IsHtml|Is HTML|電子メールを HTML として送信 (true/false)|
-|[Bcc]|bcc|"recipient1@domain.com;recipient2@domain.com" のようにセミコロンで区切って電子メール アドレスを指定|
-|[重要度]|[重要度]|電子メールの重要度 (高、標準、または低)|
-|ContentData|Attachments Content Data (添付ファイルのコンテンツ データ)|コンテンツ データ (ストリームの場合は base64 でエンコード、文字列の場合は現状のまま)|
-|ContentType|Attachments Content Type (添付ファイルのコンテンツの種類)|コンテンツの種類|
-|ContentTransferEncoding|Attachments Content Transfer Encoding (添付ファイルのコンテンツ転送エンコード)|コンテンツ転送エンコード (base64 またはなし)|
-|FileName|Attachments File Name (添付ファイルのファイル名)|ファイル名|
-|ContentId|Attachments Content ID (添付ファイルのコンテンツ ID)|コンテンツ ID|
+|To|To|Specify email addresses separated by semicolons like recipient1@domain.com;recipient2@domain.com|
+|CC|cc|Specify email addresses separated by semicolons like recipient1@domain.com;recipient2@domain.com|
+|Subject|Subject|Email subject|
+|Body|Body|Email body|
+|From|From|Email address of sender like sender@domain.com|
+|IsHtml|Is Html|Send the email as HTML (true/false)|
+|Bcc|bcc|Specify email addresses separated by semicolons like recipient1@domain.com;recipient2@domain.com|
+|Importance|Importance|Importance of the email (High, Normal, or Low)|
+|ContentData|Attachments Content Data|Content data (base64 encoded for streams and as-is for string)|
+|ContentType|Attachments Content Type|Content type|
+|ContentTransferEncoding|Attachments Content Transfer Encoding|Content Transfer Encoding (base64 or none)|
+|FileName|Attachments File Name|File name|
+|ContentId|Attachments Content ID|Content id|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
 
-## HTTP 応答
+## <a name="http-responses"></a>HTTP responses
 
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
+The actions and triggers above can return one or more of the following HTTP status codes: 
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|承認済み|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました。|
-|default|操作に失敗しました。|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occurred.|
+|default|Operation Failed.|
 
-## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!----HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

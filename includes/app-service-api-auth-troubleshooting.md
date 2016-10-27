@@ -1,23 +1,26 @@
-ほとんどの場合、認証エラーは、構成設定が正しくないか、一貫性がないことが原因で発生します。ここでは、推奨される確認事項について説明します。
+Most of the time authentication errors result from incorrect or inconsistent configuration settings. Here are some specific suggestions for things to check.
 
-* **[保存]** ボタンを見逃さないように気を付けます。見逃すことはよくあります。ポータル ページに表示された正しい値を見ているだけで、実際は Azure 環境や Azure AD アプリケーションに保存されていない状況です。
-* Azure ポータルの **[アプリケーション設定]** ブレードで構成した設定について、設定を入力したときに正しい API アプリまたは Web アプリを選択したことを確認します。また、**[接続文字列]** ではなく、**[アプリケーション設定]** に入力されていることを確認します。これら 2 つのセクションの形式は似ています。
-* JavaScript フロント エンドに対する認証の場合、マニフェストを改めてダウンロードし、`oauth2AllowImplicitFlow` が `true` に正常に変更されたことを確認します。
-* URL の構成には常に HTTPS を使用したことを確認します。
+* Make sure that you didn't miss the **Save** button anywhere. This is often easy to do, and the result is that you'll be looking at the correct values on a portal page but they haven't actually been saved in the Azure environment or Azure AD application.
+* For settings configured in the **Application Settings** blade of the Azure portal, make sure that the correct API app or web app was selected when the settings were entered.  Also make sure that the settings were entered as **App settings** and not **Connection strings**, as the format of the two sections is similar.
+* For authentication to a JavaScript front end, download the manifest again to verify that `oauth2AllowImplicitFlow` was successfully changed to `true`.
+* Verify that you used HTTPS wherever you configured URLs:
 
-	* プロジェクト コード
-	* CORS
-	* 各 API アプリと Web アプリの Azure 環境アプリケーション設定
-	* Azure AD アプリケーション設定
-	
-	API アプリの URL をポータルからコピーする場合は `http://` の場合も多いので、手動で `https://` に変更する必要があります。
+    * In project code
+    * In CORS
+    * In Azure environment App settings for each API app and web app
+    * In Azure AD application settings.
+    
+    Note that if you copy an API app's URL from the portal, it often has `http://` and you have to manually change it to `https://`.
 
-* コードを変更した場合は、正常にデプロイされたことを確認します。たとえば、複数のプロジェクトがあるソリューションの場合、プロジェクトのコードを変更し、変更をデプロイするときに誤って別のコードを選択することがあります。
-* ブラウザーで HTTP URL ではなく HTTPS URL にアクセスしていることを確認します。Visual Studio の既定では、HTTP URL でプロファイルが発行され、プロジェクトのデプロイ後にブラウザーで開くときに HTTP が使用されます。
-* JavaScript フロント エンドに対する認証の場合、JavaScript コードが呼び出す API アプリで CORS が正しく構成されていることを確認します。問題が CORS 関連である可能性がある場合は、許可される配信元 URL として "*" を試してみます。
-* JavaScript フロント エンドの場合、ブラウザーの Developer Tools の [Console] タブを開いて詳細なエラー情報を表示し、[Network] の HTTP 要求を確認します。ただし、[Console] のエラー メッセージは誤解を招く内容の場合があります。CORS のエラーを示すメッセージが表示されていても、実際の問題は認証の場合があります。これを確認するには、認証を一時的に無効にしてアプリを実行します。
-* .NET API アプリの場合、[customErrors モードを Off](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remoteview) に設定して、可能な限り多くの情報がエラー メッセージで得られるようにします。
-* .NET API アプリの場合、[リモート デバッグ セッション](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を開始し、ADAL を使用してベアラー トークンの取得するコード、または予測されるサービス プリンシパル ID に対して要求を確認するコードに渡される変数の値を確認します。コードはさまざまなソースの構成値を選択することができるので、意外な結果になることがあります。たとえば、Azure App Service 環境設定を構成するときに `ida:ClientId` を `ida:ClientID` と名前を間違えると、Azure App Service 設定が無視され、Web.config ファイルが検索されて、`ida:ClientId` 値が取得される可能性があります。 
-* 通常の Internet Explorer ウィンドウでうまくいかない場合は、既存のログインが妨げになっている可能性があるので、InPrivate を試し、Chrome または Firefox を使ってみてください。
+* Make sure that any code changes were successfully deployed. For example, in a multiple-project solution it's possible to change a project's code and accidentally choose one of the others when you intend to deploy the change.
+* Make sure that you are going to HTTPS URLs in your browser, not HTTP URLs. By default, Visual Studio creates publish profiles with HTTP URLs, and that's what opens in the browser after you deploy a project.
+* For authentication to a JavaScript front end, make sure that CORS is correctly configured on the API app that the JavaScript code calls. If in doubt about whether the problem is CORS-related, try "*" as the allowed origin URL. 
+* For a JavaScript front end, open your browser's Developer Tools Console tab to get more error information, and examine HTTP requests on the Network. However, Console error messages may be misleading. If you get a message indicating a CORS error, the real issue may be authentication. You can check if this is the case by running the app with authentication temporarily temporarily disabled.
+* For a .NET API app, make sure you are getting as much information in error messages as possible by setting [customErrors mode to Off](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remoteview).
+* For a .NET API app, start a [remote debugging session](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug), and examine the values of the variables that are passed to code that uses ADAL to acquire a bearer token, or code that checks claims against the expected service principal ID. Note that your code can pick up configuration values from many different sources, so it's possible to find surprises this way. For example, if you mistype `ida:ClientId` as `ida:ClientID` when configuring Azure App Service environment settings, the code might get the `ida:ClientId` value that it's looking for from the Web.config file, ignoring the Azure App Service setting. 
+* If things don't work in a normal Internet Explorer window, an existing log-in may be interfering; try InPrivate and try Chrome or Firefox.
 
-<!---HONumber=AcomDC_0309_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,201 +1,207 @@
 <properties
-	pageTitle="ディスクを Linux VM にアタッチする | Microsoft Azure"
-	description="データ ディスクを Linux を実行する Azure 仮想マシンに接続し、初期化して、使用できる状態にする方法について説明します。"
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="iainfoulds"
-	manager="timlt"
-	editor="tysonn"
-	tags="azure-service-management"/>
+    pageTitle="Attach a disk to a Linux VM | Microsoft Azure"
+    description="Learn how to attach a data disk to an Azure virtual machine running Linux and initialize it so it's ready for use."
+    services="virtual-machines-linux"
+    documentationCenter=""
+    authors="iainfoulds"
+    manager="timlt"
+    editor="tysonn"
+    tags="azure-service-management"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/23/2016"
-	ms.author="iainfou"/>
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/23/2016"
+    ms.author="iainfou"/>
 
-# データ ディスクを Linux 仮想マシンに接続する方法
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] [Resource Manager デプロイ モデルを使用してデータディスクを接続する](virtual-machines-linux-add-disk.md)方法を参照してください。
+# <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>How to Attach a Data Disk to a Linux Virtual Machine
 
-空のディスクと、データが含まれているディスクのどちらも Azure VM に接続できます。どちらの種類のディスクも、Azure ストレージ アカウントの .vhd ファイルです。Linux マシンへのディスクの追加では、ディスクを接続した後、初期化とフォーマットを行って使用できるようにする必要があります。この記事では、空のディスクと、データが含まれているディスクの両方を Azure VM に接続し、新しいディスクを初期化してフォーマットする方法について詳しく説明します。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)] See how to [attach a data disk using the Resource Manager deployment model](virtual-machines-linux-add-disk.md).
 
-> [AZURE.NOTE] 仮想マシンのデータを格納するには、1 つ以上の個別のディスクを使用することをお勧めします。Azure の仮想マシンを作成するとき、オペレーティング システム ディスクと一時ディスクが表示されます。**永続データの格納に一時ディスクを使用しないでください。** 名前が示すとおり、D ドライブは一時的なストレージのみを提供します。Azure Storage に配置されていないため、冗長性やバックアップは提供しません。一時ディスクは通常、Azure Linux Agent によって管理され、**/mnt/resource** (または Ubuntu イメージでは **/mnt** )に自動的にマウントされます。一方で、データ ディスクには Linux カーネルによって `/dev/sdc` のような名前が付けられる場合があります。その場合、このリソースをパーティション分割し、フォーマットしてからマウントする必要があります。詳細については、「[Azure Linux エージェント ユーザー ガイド][Agent]」を参照してください。
+You can attach both empty disks and disks that contain data to your Azure VMs. Both types of disks are .vhd files that reside in an Azure storage account. As with adding any disk to a Linux machine, after you attach the disk you need to initialize and format it so it's ready for use. This article details attaching both empty disks and disks already containing data to your VMs, as well as how to then initialize and format a new disk.
+
+> [AZURE.NOTE] It's a best practice to use one or more separate disks to store a virtual machine's data. When you create an Azure virtual machine, it has an operating system disk and a temporary disk. **Do not use the temporary disk to store persistent data.** As the name implies, it provides temporary storage only. It offers no redundancy or backup because it doesn't reside in Azure storage.
+> The temporary disk is typically managed by the Azure Linux Agent and automatically mounted to **/mnt/resource** (or **/mnt** on Ubuntu images). On the other hand, a data disk might be named by the Linux kernel something like `/dev/sdc`, and you need to partition, format, and mount this resource. See the [Azure Linux Agent User Guide][Agent] for details.
 
 [AZURE.INCLUDE [howto-attach-disk-windows-linux](../../includes/howto-attach-disk-linux.md)]
 
-## Linux での新しいデータ ディスクの初期化
+## <a name="initialize-a-new-data-disk-in-linux"></a>Initialize a new data disk in Linux
 
-1. VM に SSH 接続します。詳細については、「[Linux を実行する仮想マシンにログオンする方法][Logon]」を参照してください。
+1. SSH to your VM. For further details, see [How to log on to a virtual machine running Linux][Logon].
 
-2. 次に、データ ディスクの初期化のためにデバイスの ID を検索する必要があります。この作業を実行する 2 つの方法があります。
+2. Next you need to find the device identifier for the data disk to initialize. There are two ways to do that:
 
-	a) 次のコマンドのように、ログの SCSI デバイスを検索します。
+    a) Grep for SCSI devices in the logs, such as in the following command:
 
-			$sudo grep SCSI /var/log/messages
+            $sudo grep SCSI /var/log/messages
 
-	最新の Ubuntu ディストリビューションの場合は、`/var/log/messages` へのログ記録が既定で無効になっていることがあるため、`sudo grep SCSI /var/log/syslog` の使用が必要になる場合があります。
+    For recent Ubuntu distributions, you may need to use `sudo grep SCSI /var/log/syslog` because logging to `/var/log/messages` might be disabled by default.
 
-	表示されたメッセージで、最後に追加されたデータ ディスクの識別子を確認できます。
+    You can find the identifier of the last data disk that was added in the messages that are displayed.
 
-	![ディスク メッセージに取得](./media/virtual-machines-linux-classic-attach-disk/scsidisklog.png)
+    ![Get the disk messages](./media/virtual-machines-linux-classic-attach-disk/scsidisklog.png)
 
-	または
+    OR
 
-	b) `lsscsi` コマンドを使用してデバイスの ID を検索します。`lsscsi` は、`yum install lsscsi` (Red Hat ベースのディストリビューション) または `apt-get install lsscsi` (Debian ベースのディストリビューション) のいずれかでインストールできます。検索対象のディスクは、その _LUN_ (**論理ユニット番号**) で検索できます。たとえば、ディスクに割り当てた _LUN_ は、`azure vm disk list <virtual-machine>` から以下のように簡単に確認することができます。
+    b) Use the `lsscsi` command to find out the device id. `lsscsi` can be installed by either `yum install lsscsi` (on Red Hat based distributions) or `apt-get install lsscsi` (on Debian based distributions). You can find the disk you are looking for by its _lun_ or **logical unit number**. For example, the _lun_ for the disks you attached can be easily seen from `azure vm disk list <virtual-machine>` as:
 
-			~$ azure vm disk list TestVM
-			info:    Executing command vm disk list
-			+ Fetching disk images
-			+ Getting virtual machines
-			+ Getting VM disks
-			data:    Lun  Size(GB)  Blob-Name                         OS
-			data:    ---  --------  --------------------------------  -----
-			data:         30        TestVM-2645b8030676c8f8.vhd  Linux
-			data:    0    100       TestVM-76f7ee1ef0f6dddc.vhd
-			info:    vm disk list command OK
+            ~$ azure vm disk list TestVM
+            info:    Executing command vm disk list
+            + Fetching disk images
+            + Getting virtual machines
+            + Getting VM disks
+            data:    Lun  Size(GB)  Blob-Name                         OS
+            data:    ---  --------  --------------------------------  -----
+            data:         30        TestVM-2645b8030676c8f8.vhd  Linux
+            data:    0    100       TestVM-76f7ee1ef0f6dddc.vhd
+            info:    vm disk list command OK
 
-	このデータを、同じサンプル仮想マシンに対する `lsscsi` の出力と比較します。
+    Compare this data with the output of `lsscsi` for the same sample virtual machine:
 
-			ops@TestVM:~$ lsscsi
-			[1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
-			[2:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sda
-			[3:0:1:0]    disk    Msft     Virtual Disk     1.0   /dev/sdb
-			[5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc
+            ops@TestVM:~$ lsscsi
+            [1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
+            [2:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sda
+            [3:0:1:0]    disk    Msft     Virtual Disk     1.0   /dev/sdb
+            [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc
 
-	各行の組にある最後の数字が _LUN_ です。詳細については、「`man lsscsi`」を参照してください。
+    The last number in the tuple in each row is the _lun_. See `man lsscsi` for more information.
 
-3. プロンプトで、次のコマンドを入力して、デバイスを作成します。
+3. At the prompt, type the following command to create your device:
 
-		$sudo fdisk /dev/sdc
+        $sudo fdisk /dev/sdc
 
 
-4. 表示されるプロンプトで「**n**」と入力すると、新しいパーティションが作成されます。
+4. When prompted, type **n** to create a new partition.
 
 
-	![デバイスの作成](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
+    ![Create device](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartition.png)
 
-5. 求められたら、「**p**」と入力して、パーティションをプライマリ パーティションにします。「**1**」と入力して最初のパーティションにし、Enter キーを押してシリンダーの既定値をそのまま使用します。システムによっては、シリンダーではなく、最初と最後のセクターの既定値が表示される場合があります。これらの既定値をそのまま使用することもできます。
+5. When prompted, type **p** to make the partition the primary partition. Type **1** to make it the first partition, and then type enter to accept the default value for the cylinder. On some systems, it can show the default values of the first and the last sectors, instead of the cylinder. You can choose to accept these defaults.
 
 
-	![Create partition](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartdetails.png)
+    ![Create partition](./media/virtual-machines-linux-classic-attach-disk/fdisknewpartdetails.png)
 
 
 
-6. 「**p**」を入力すると、パーティション分割されたディスクに関する詳細情報が表示されます。
+6. Type **p** to see the details about the disk that is being partitioned.
 
 
-	![ディスク情報の表示](./media/virtual-machines-linux-classic-attach-disk/fdiskpartitiondetails.png)
+    ![List disk information](./media/virtual-machines-linux-classic-attach-disk/fdiskpartitiondetails.png)
 
 
 
-7. 「**w**」と入力すると、ディスクの設定が書き込まれます。
+7. Type **w** to write the settings for the disk.
 
 
-	![Write the disk changes](./media/virtual-machines-linux-classic-attach-disk/fdiskwritedisk.png)
+    ![Write the disk changes](./media/virtual-machines-linux-classic-attach-disk/fdiskwritedisk.png)
 
-8. これで、新しいパーティションにファイル システムを作成できます。パーティション番号をデバイス ID に追加します (次の例では `/dev/sdc1`)。次の例では、ext4 パーティションを /dev/sdc1 に作成します。
+8. Now you can create the file system on the new partition. Append the partition number to the device ID (in the following example `/dev/sdc1`). The following example creates an ext4 partition on /dev/sdc1:
 
-		# sudo mkfs -t ext4 /dev/sdc1
+        # sudo mkfs -t ext4 /dev/sdc1
 
-	![Create file system](./media/virtual-machines-linux-classic-attach-disk/mkfsext4.png)
+    ![Create file system](./media/virtual-machines-linux-classic-attach-disk/mkfsext4.png)
 
-	>[AZURE.NOTE] SuSE Linux Enterprise 11 システムでは、ext4 ファイル システムへのアクセスは読み取り専用のみサポートされます。これらのシステムには ext4 ではなく ext3 として新しいファイル システムの書式設定することをお勧めします。
+    >[AZURE.NOTE] SuSE Linux Enterprise 11 systems only support read-only access for ext4 file systems. For these systems, it is recommended to format the new file system as ext3 rather than ext4.
 
 
-9. 次のように、新しいファイル システムをマウントするディレクトリを作成します。
+9. Make a directory to mount the new file system, as follows:
 
-		# sudo mkdir /datadrive
+        # sudo mkdir /datadrive
 
 
-10. 最後に、次のように、ドライブをマウントできます。
+10. Finally you can mount the drive, as follows:
 
-		# sudo mount /dev/sdc1 /datadrive
+        # sudo mount /dev/sdc1 /datadrive
 
-	これで、データ ディスクを **/datadrive** として使用する準備ができました。
-	
-	![ディレクトリの作成とディスクのマウント](./media/virtual-machines-linux-classic-attach-disk/mkdirandmount.png)
+    The data disk is now ready to use as **/datadrive**.
+    
+    ![Create the directory and mount the disk](./media/virtual-machines-linux-classic-attach-disk/mkdirandmount.png)
 
 
-11. 新しいドライブを /etc/fstab に追加します。
+11. Add the new drive to /etc/fstab:
 
-	再起動後にドライブを自動的に再マウントするために、そのドライブを /etc/fstab ファイルに追加する必要があります。また、ドライブを参照する際に、デバイス名 (つまり /dev/sdc1) だけではなく、UUID (汎用一意識別子) を /etc/fstab で使用することもお勧めします。UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされて残りのデータ ディスクにそれらのデバイス ID が割り当てられるのを防ぐことができます。新しいドライブの UUID を確認するには、**blkid** ユーティリティを次のように使用します。
+    To ensure the drive is remounted automatically after a reboot it must be added to the /etc/fstab file. In addition, it is highly recommended that the UUID (Universally Unique IDentifier) is used in /etc/fstab to refer to the drive rather than just the device name (i.e. /dev/sdc1). Using the UUID avoids the incorrect disk being mounted to a given location if the OS detects a disk error during boot and any remaining data disks then being assigned those device IDs. To find the UUID of the new drive, you can use the **blkid** utility:
 
-		# sudo -i blkid
+        # sudo -i blkid
 
-	出力は、次のようになります。
+    The output looks similar to the following:
 
-		/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
-		/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
-		/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+        /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
+        /dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
+        /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 
 
-	>[AZURE.NOTE] **/etc/fstab** ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
+    >[AZURE.NOTE] Improperly editing the **/etc/fstab** file could result in an unbootable system. If unsure, refer to the distribution's documentation for information on how to properly edit this file. It is also recommended that a backup of the /etc/fstab file is created before editing.
 
-	次に、テキスト エディターで **/etc/fstab** ファイルを開きます。
+    Next, open the **/etc/fstab** file in a text editor:
 
-		# sudo vi /etc/fstab
+        # sudo vi /etc/fstab
 
-	この例では、前の手順で作成した新しい **/dev/sdc1** デバイスに対して UUID 値を使用し、マウント ポイントとして **/datadrive** を使用します。次の行を **/etc/fstab** ファイルの末尾に追加します。
+    In this example, we use the UUID value for the new **/dev/sdc1** device that was created in the previous steps, and the mountpoint **/datadrive**. Add the following line to the end of the **/etc/fstab** file:
 
-		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
+        UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
 
-	または、SuSE Linux に基づいたシステムでは、わずかに異なる形式を使用する必要がある場合があります。
+    Or, on systems based on SuSE Linux you may need to use a slightly different format:
 
-		/dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext3   defaults   1   2
+        /dev/disk/by-uuid/33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext3   defaults   1   2
 
-	これで、ファイル システムが正しくマウントされるかどうかをテストできます。そのためには、ファイル システムをマウント解除してから、再度マウントします。つまり、前の手順で作成したサンプルのマウント ポイント `/datadrive` を使用します。
+    You can now test that the file system is mounted properly by unmounting and then remounting the file system, i.e. using the example mount point `/datadrive` created in the earlier steps:
 
-		# sudo umount /datadrive
-		# sudo mount /datadrive
+        # sudo umount /datadrive
+        # sudo mount /datadrive
 
-	`mount` コマンドでエラーが発生した場合、/etc/fstab ファイルの構文が正しいかどうかを確認してください。追加のデータ ドライブやパーティションを作成する場合は、それらも /etc/fstab に個別に入力します。
+    If the `mount` command produces an error, check the /etc/fstab file for correct syntax. If additional data drives or partitions are created, enter them into /etc/fstab separately as well.
 
-	次のコマンドを使用して、ドライブを書き込み可能にします。
+    Make the drive writable by using this command:
 
-		# sudo chmod go+w /datadrive
+        # sudo chmod go+w /datadrive
 
->[AZURE.NOTE] この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。これが頻繁に発生する場合、大部分のディストリビューションでは `nofail` または `nobootwait` fstab オプションが提供されます。これによって、起動時にディスクのマウントが失敗してもシステムを起動することができます。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
+>[AZURE.NOTE] Subsequently removing a data disk without editing fstab could cause the VM to fail to boot. If this is a common occurrence, most distributions provide either the `nofail` and/or `nobootwait` fstab options that allow a system to boot even if the disk fails to mount at boot time. Consult your distribution's documentation for more information on these parameters.
 
-### Azure における Linux の TRIM/UNMAP サポート
-一部の Linux カーネルでは、ディスク上の未使用ブロックを破棄するために TRIM/UNMAP 操作がサポートされます。これらの操作は主に、Standard Storage で、削除されたページが無効になり、破棄できるようになったことを Azure に通知するときに役立ちます。ページを破棄すると、サイズの大きいファイルを作成して削除する場合のコストを節約できます。
+### <a name="trim/unmap-support-for-linux-in-azure"></a>TRIM/UNMAP support for Linux in Azure
+Some Linux kernels support TRIM/UNMAP operations to discard unused blocks on the disk. These operations are primarily useful in standard storage to inform Azure that deleted pages are no longer valid and can be discarded. Discarding pages can save cost if you create large files and then delete them.
 
-Linux VM で TRIM のサポートを有効にする方法は 2 通りあります。通常どおり、ご使用のディストリビューションで推奨される方法をお問い合わせください。
+There are two ways to enable TRIM support in your Linux VM. As usual, consult your distribution for the recommended approach:
 
-- 次のように、`/etc/fstab` で `discard` マウント オプションを使用します。
+- Use the `discard` mount option in `/etc/fstab`, for example:
 
-		UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
+        UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
 
-- または、`fstrim` コマンドを手動でコマンド ラインから実行するか、crontab に追加して定期的に実行することができます。
+- Alternatively, you can run the `fstrim` command manually from the command line, or add it to your crontab to run regularly:
 
-	**Ubuntu**
+    **Ubuntu**
 
-		# sudo apt-get install util-linux
-		# sudo fstrim /datadrive
+        # sudo apt-get install util-linux
+        # sudo fstrim /datadrive
 
-	**RHEL/CentOS**
+    **RHEL/CentOS**
 
-		# sudo yum install util-linux
-		# sudo fstrim /datadrive
+        # sudo yum install util-linux
+        # sudo fstrim /datadrive
 
-## トラブルシューティング
+## <a name="troubleshooting"></a>Troubleshooting
 [AZURE.INCLUDE [virtual-machines-linux-lunzero](../../includes/virtual-machines-linux-lunzero.md)]
 
 
-## 次のステップ
-以下の記事で、Linux VM の使用方法について詳しい情報を得ることができます。
+## <a name="next-steps"></a>Next Steps
+You can read more about using your Linux VM in the following articles:
 
-- [Linux を実行する仮想マシンにログオンする方法][Logon]
+- [How to log on to a virtual machine running Linux][Logon]
 
-- [Linux 仮想マシンからディスクを切断する方法](virtual-machines-linux-classic-detach-disk.md)
+- [How to detach a disk from a Linux virtual machine](virtual-machines-linux-classic-detach-disk.md)
 
-- [クラシック デプロイ モデルでの Azure CLI の使用](../virtual-machines-command-line-tools.md)
+- [Using the Azure CLI with the Classic deployment model](../virtual-machines-command-line-tools.md)
 
 <!--Link references-->
 [Agent]: virtual-machines-linux-agent-user-guide.md
 [Logon]: virtual-machines-linux-mac-create-ssh-keys.md
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

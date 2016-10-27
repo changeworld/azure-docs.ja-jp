@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure のセキュリティのベスト プラクティスとパターン | Microsoft Azure"
-   description="この記事では、Azure セキュリティのベスト プラクティスとパターンの概要と、別の Azure リソースのセキュリティ ベスト プラクティスを精選した一覧を提供します。"
+   pageTitle="Azure security best practices and patterns | Microsoft Azure"
+   description="The article provides an introduction about Azure Security Best Practices and Patterns and a curated list of security best practices for different Azure resources."
    services="azure-security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,32 +16,37 @@
    ms.date="09/16/2016"
    ms.author="terrylan"/>
 
-# Azure セキュリティのベスト プラクティスとパターン
 
-現在、以下の Azure セキュリティのベスト プラクティスとパターンの記事があります。Azure セキュリティのベスト プラクティスとパターンの増加する一覧の更新を確認するには、このサイトを定期的にアクセスしてください。
+# <a name="azure-security-best-practices-and-patterns"></a>Azure security best practices and patterns
 
-- [Azure のネットワーク セキュリティに関するベスト プラクティス](azure-security-network-security-best-practices.md)
-- [Azure のデータ セキュリティと暗号化のベスト プラクティス](azure-security-data-encryption-best-practices.md)
-- [ID 管理とアクセス制御セキュリティのベスト プラクティス](azure-security-identity-management-best-practices.md)
-- [モノのインターネットのセキュリティのベスト プラクティス](azure-security-iot-best-practices.md)
-- [Microsoft Azure IaaS でのソフトウェアの更新のためのベスト プラクティス](azure-security-best-practices-software-updates-iaas.md)
-- [Azure の境界セキュリティに関するベスト プラクティス](../best-practices-network-security.md)
-- [Azure における安全なハイブリッド ネットワーク アーキテクチャの実装](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
+We currently have the following Azure security best practices and patterns articles. Make sure to visit this site periodically to see updates to our growing list of Azure security best practices and patterns:  
 
-Azure には、ソリューションを構築できるセキュリティで保護されたプラットフォームが用意されています。また、Azure 上のソリューションをより高いセキュリティで保護するためのサービスとテクノロジも提供しています。多数のオプションを利用できるため、多くのお客様から、セキュリティを向上させるために Microsoft がベスト プラクティスやパターンとして推奨する内容について興味があるとのご意見をいただいています。
+- [Azure network security best practices](azure-security-network-security-best-practices.md)
+- [Azure data security and encryption best practices](azure-security-data-encryption-best-practices.md)
+- [Identity management and access control security best practices](azure-security-identity-management-best-practices.md)
+- [Internet of Things security best practices](azure-security-iot-best-practices.md)
+- [Best practices for software update on Microsoft Azure IaaS](azure-security-best-practices-software-updates-iaas.md)
+- [Azure boundary security best practices](../best-practices-network-security.md)
+- [Implementing a secure hybrid network architecture in Azure](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
 
-関心を持たれている内容を理解しましたので、お客様が実行できる内容を説明するドキュメントのコレクションを作成し、Azure デプロイのセキュリティの向上に役立つと考える適切なコンテキストを提供しています。
+Azure provides a secure platform on which you can build your solutions. We also provide services and technologies to make your solutions on Azure more secure. Because of the many options available to you, many of you have voiced an interest in what Microsoft recommends as best practices and patterns for improving security.
 
-このベスト プラクティスとパターンの記事では、特定のトピックにおけるベスト プラクティスと役立つパターンのコレクションについて説明します。このベスト プラクティスとパターンは、このテクノロジに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
+We understand your interest and have created a collection of documents that describe things you can do, given the right context, to improve the security of Azure deployments.
 
-それぞれのベスト プラクティスについて、次の点を説明するよう努めます。
+In these best practices and patterns articles, we discuss a collection of best practices and useful patterns for specific topics. These best practices and patterns are derived from our experiences with these technologies and the experiences of customers like yourself.
 
-- ベスト プラクティスの内容
-- そのベスト プラクティスをお勧めする理由
-- そのベスト プラクティスを実践しなかった場合に発生する可能性がある事態
-- そのベスト プラクティスに代わる対処法
-- そのベスト プラクティスを実践する方法
+For each best practice we strive to explain:
 
-マイクロソフトでは、Azure のセキュリティ アーキテクチャとベスト プラクティスに関する記事を今後さらに拡充させていく予定です。ご希望のテーマがあればぜひ、このページの一番下にあるコメント欄でお知らせください。
+- What the best practice is
+- Why you want to enable that best practice
+- What might be the result if you fail to enable the best practice
+- Possible alternatives to the best practice
+- How you can learn to enable the best practice
 
-<!---HONumber=AcomDC_0921_2016-->
+We look forward to including many more articles on Azure security architecture and best practices. If there are topics that you'd like us to include, let us know in the discussion area at the bottom of this page.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

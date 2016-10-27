@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure コマンド ライン インターフェイスを使用して Azure Data Lake Analytics を管理する | Azure" 
-   description="Azure CLI を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ジョブ、およびユーザーを管理する方法について説明します。" 
+   pageTitle="Manage Azure Data Lake Analytics using Azure Command-line Interface | Azure" 
+   description="Learn how to manage Data Lake Analytics accounts, data sources, jobs and users using Azure CLI" 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
@@ -16,202 +16,209 @@
    ms.date="05/16/2016"
    ms.author="edmaca"/>
 
-# Azure コマンド ライン インターフェイス (CLI) を使用して Azure Data Lake Analytics を管理する
+
+# <a name="manage-azure-data-lake-analytics-using-azure-command-line-interface-(cli)"></a>Manage Azure Data Lake Analytics using Azure Command-line Interface (CLI)
 
 [AZURE.INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Azure を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。他のツールを使用する管理のトピックを表示するには、上のタブ セレクターをクリックします。
+Learn how to manage Azure Data Lake Analytics accounts, data sources, users, and jobs using the Azure. To see management topic using other tools, click the tab select above.
 
-**前提条件**
+**Prerequisites**
 
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+Before you begin this tutorial, you must have the following:
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- **Azure CLI**。「[Azure CLI のインストールと構成](../xplat-cli-install.md)」をご覧ください。
-	- このデモを完了するためには、**プレリリース版の** [Azure CLI ツール](https://github.com/MicrosoftBigData/AzureDataLake/releases)をダウンロードしてインストールします。
-- **認証**。次のコマンドを使用します。
+- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
+- **Azure CLI**. See [Install and configure Azure CLI](../xplat-cli-install.md).
+    - Download and install the **pre-release** [Azure CLI tools](https://github.com/MicrosoftBigData/AzureDataLake/releases) in order to complete this demo.
+- **Authentication**, using the following command:
 
-		azure login
-	職場か学校のアカウントを使用した認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](../xplat-cli-connect.md)」をご覧ください。
-- **Azure リソース マネージャー モードへの切り替え**。次のコマンドを使用します。
+        azure login
+    For more information on authenticating using a work or school account, see [Connect to an Azure subscription from the Azure CLI](../xplat-cli-connect.md).
+- **Switch to the Azure Resource Manager mode**, using the following command:
 
-		azure config mode arm
+        azure config mode arm
 
-**Data Lake Store と Data Lake Analytics のコマンド一覧を表示するには:**
+**To list the Data Lake Store and Data Lake Analytics commands:**
 
-	azure datalake store
-	azure datalake analytics
-
-<!-- ################################ -->
-<!-- ################################ -->
-## アカウントの管理
-
-Data Lake Analytics ジョブを実行するには、Data Lake Analytics アカウントが必要です。Azure HDInsight とは異なり、ジョブを実行しなければ、Analytics アカウントには課金されません。ジョブの実行時にのみ課金されます。詳細については、「[Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
-
-###アカウントの作成
-
-  	azure datalake analytics account create "<Data Lake Analytics Account Name>" "<Azure Location>" "<Resource Group Name>" "<Default Data Lake Account Name>"
-
-
-###アカウントの更新
-
-次のコマンドは、既存の Data Lake Analytics アカウントのプロパティを更新します。
-  	
-	azure datalake analytics account set "<Data Lake Analytics Account Name>"
-
-
-###アカウントの一覧表示
-
-Data Lake Analytics アカウントを一覧表示します。
-
-	azure datalake analytics account list
-
-特定のリソース グループ内の Data Lake Analytics アカウントをリストします。
-
-	azure datalake analytics account list -g "<Azure Resource Group Name>"
-
-特定の Data Lake Analytics アカウントの詳細を取得します。
-
-	azure datalake analytics account show -g "<Azure Resource Group Name>" -n "<Data Lake Analytics Account Name>"
-
-###Data Lake Analytics アカウントの削除
-
-  	azure datalake analytics account delete "<Data Lake Analytics Account Name>"
-
+    azure datalake store
+    azure datalake analytics
 
 <!-- ################################ -->
 <!-- ################################ -->
-## アカウント データ ソースの管理
+## <a name="manage-accounts"></a>Manage accounts
 
-Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
+Before running any Data Lake Analytics jobs, you must have a Data Lake Analytics account. Unlike Azure HDInsight, you don't pay for an Analytics account when it is not running a job.  You only pay for the time when it is running a job.  For more information, see [Azure Data Lake Analytics Overview](data-lake-analytics-overview.md).  
+
+###<a name="create-accounts"></a>Create accounts
+
+    azure datalake analytics account create "<Data Lake Analytics Account Name>" "<Azure Location>" "<Resource Group Name>" "<Default Data Lake Account Name>"
+
+
+###<a name="update-accounts"></a>Update accounts
+
+The following command updates the properties of an existing Data Lake Analytics Account
+    
+    azure datalake analytics account set "<Data Lake Analytics Account Name>"
+
+
+###<a name="list-accounts"></a>List accounts
+
+List Data Lake Analytics accounts 
+
+    azure datalake analytics account list
+
+List Data Lake Analytics accounts within a specific resource group
+
+    azure datalake analytics account list -g "<Azure Resource Group Name>"
+
+Get details of a specific Data Lake Analytics account
+
+    azure datalake analytics account show -g "<Azure Resource Group Name>" -n "<Data Lake Analytics Account Name>"
+
+###<a name="delete-data-lake-analytics-accounts"></a>Delete Data Lake Analytics accounts
+
+    azure datalake analytics account delete "<Data Lake Analytics Account Name>"
+
+
+<!-- ################################ -->
+<!-- ################################ -->
+## <a name="manage-account-data-sources"></a>Manage account data sources
+
+Data Lake Analytics currently supports the following data sources:
 
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 - [Azure Storage](../storage/storage-introduction.md)
 
-Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake Storage アカウントを指定する必要があります。既定の ADL ストレージ アカウントは、ジョブ メタデータとジョブ監査ログを保存するために使用されます。Analytics アカウントを作成したら、さらに Data Lake Storage アカウントや Azure Storage アカウントを追加することができます。
+When you create an Analytics account, you must designate an Azure Data Lake Storage account to be the default storage account. The default ADL storage account is used to store job metadata and job audit logs. After you have created an Analytics account, you can add additional Data Lake Storage accounts and/or Azure Storage account. 
 
-### 既定の ADL ストレージ アカウントの検索
+### <a name="find-the-default-adl-storage-account"></a>Find the default ADL storage account
 
-	azure datalake analytics account show "<Data Lake Analytics Account Name>"
+    azure datalake analytics account show "<Data Lake Analytics Account Name>"
 
-値は、properties:datalakeStoreAccount:name の下に表示されます。
+The value is listed under properties:datalakeStoreAccount:name.
 
-### 他の Azure BLOB ストレージ アカウントの追加
+### <a name="add-additional-azure-blob-storage-accounts"></a>Add additional Azure Blob storage accounts
 
-  	azure datalake analytics account datasource add -n "<Data Lake Analytics Account Name>" -b "<Azure Blob Storage Account Short Name>" -k "<Azure Storage Account Key>"
+    azure datalake analytics account datasource add -n "<Data Lake Analytics Account Name>" -b "<Azure Blob Storage Account Short Name>" -k "<Azure Storage Account Key>"
 
->[AZURE.NOTE] BLOB ストレージの短い名のみがサポートされます。"myblob.blob.core.windows.net" などの FQDN 名は使用しないでください。
+>[AZURE.NOTE] Only Blob storage short names are supported.  Don't use FQDN, for example "myblob.blob.core.windows.net".
 
-### 他の Data Lake Store アカウントの追加
+### <a name="add-additional-data-lake-store-accounts"></a>Add additional Data Lake Store accounts
 
-  	azure datalake analytics account datasource add -n "<Data Lake Analytics Account Name>" -l "<Data Lake Store Account Name>" [-d]
+    azure datalake analytics account datasource add -n "<Data Lake Analytics Account Name>" -l "<Data Lake Store Account Name>" [-d]
 
-[-d] は追加される Data Lake が既定の Data Lake アカウントかどうかを示すスイッチであり、省略可能です。
+[-d] is an optional switch to indicate whether the Data Lake being added is the default Data Lake account. 
 
-### 既存のデータ ソースの更新
+### <a name="update-existing-data-source"></a>Update existing data source
 
-既存の Data Lake Store アカウントを既定として設定するには:
+To set an existing Data Lake Store account to be the default:
 
-  	azure datalake analytics account datasource set -n "<Data Lake Analytics Account Name>" -l "<Azure Data Lake Store Account Name>" -d
-	  
-既存の BLOB ストレージ アカウント キーを更新するには:
+    azure datalake analytics account datasource set -n "<Data Lake Analytics Account Name>" -l "<Azure Data Lake Store Account Name>" -d
+      
+To update an existing Blob storage account key:
 
-  	azure datalake analytics account datasource set -n "<Data Lake Analytics Account Name>" -b "<Blob Storage Account Name>" -k "<New Blob Storage Account Key>"
+    azure datalake analytics account datasource set -n "<Data Lake Analytics Account Name>" -b "<Blob Storage Account Name>" -k "<New Blob Storage Account Key>"
 
-### データ ソースの一覧表示:
+### <a name="list-data-sources:"></a>List data sources:
 
-	azure datalake analytics account show "<Data Lake Analytics Account Name>"
-	
-![データ ソースを一覧表示している Data Lake Analytics](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
+    azure datalake analytics account show "<Data Lake Analytics Account Name>"
+    
+![Data Lake Analytics list data source](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-data-source.png)
 
-### データ ソースの削除:
+### <a name="delete-data-sources:"></a>Delete data sources:
 
-Data Lake Store アカウントを削除するには:
+To delete a Data Lake Store account:
 
-  	azure datalake analytics account datasource delete "<Data Lake Analytics Account Name>" "<Azure Data Lake Store Account Name>"
+    azure datalake analytics account datasource delete "<Data Lake Analytics Account Name>" "<Azure Data Lake Store Account Name>"
 
-BLOB ストレージ アカウントを削除するには:
+To delete a Blob storage account:
 
-  	azure datalake analytics account datasource delete "<Data Lake Analytics Account Name>" "<Blob Storage Account Name>"
+    azure datalake analytics account datasource delete "<Data Lake Analytics Account Name>" "<Blob Storage Account Name>"
 
-## ジョブの管理
+## <a name="manage-jobs"></a>Manage jobs
 
-ジョブを作成するには、Data Lake Analytics アカウントが必要です。詳細については、「[Data Lake Analytics アカウントの管理](#manage-accounts)」を参照してください。
+You must have a Data Lake Analytics account before you can create a job.  For more information, see [Manage Data Lake Analytics accounts](#manage-accounts).
 
-### ジョブのリスト
+### <a name="list-jobs"></a>List jobs
 
-  	azure datalake analytics job list -n "<Data Lake Analytics Account Name>"
+    azure datalake analytics job list -n "<Data Lake Analytics Account Name>"
 
-![データ ソースを一覧表示している Data Lake Analytics](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-jobs.png)
+![Data Lake Analytics list data source](./media/data-lake-analytics-manage-use-cli/data-lake-analytics-list-jobs.png)
 
-### ジョブの詳細の取得
+### <a name="get-job-details"></a>Get job details
 
-  	azure datalake analytics job show -n "<Data Lake Analytics Account Name>" -j "<Job ID>"
-	
-### ジョブの送信
+    azure datalake analytics job show -n "<Data Lake Analytics Account Name>" -j "<Job ID>"
+    
+### <a name="submit-jobs"></a>Submit jobs
 
-> [AZURE.NOTE] ジョブの既定の優先度は 1000 で、ジョブの並列処理の既定の次数は 1 です。
+> [AZURE.NOTE] The default priority of a job is 1000, and the default degree of parallelism for a job is 1.
 
-	azure datalake analytics job create  "<Data Lake Analytics Account Name>" "<Job Name>" "<Script>"
+    azure datalake analytics job create  "<Data Lake Analytics Account Name>" "<Job Name>" "<Script>"
 
-### ジョブの取り消し
+### <a name="cancel-jobs"></a>Cancel jobs
 
-list コマンドを使用してジョブ ID を検索した後、cancel を使用してそのジョブを取り消します。
+Use the list command to find the job id, and then use cancel to cancel the job.
 
-  	azure datalake analytics job list -n "<Data Lake Analytics Account Name>"
-  	azure datalake analytics job cancel "<Data Lake Analytics Account Name>" "<Job ID>"
+    azure datalake analytics job list -n "<Data Lake Analytics Account Name>"
+    azure datalake analytics job cancel "<Data Lake Analytics Account Name>" "<Job ID>"
 
-## カタログの管理
+## <a name="manage-catalog"></a>Manage catalog
 
-U-SQL カタログを使用して、U-SQL スクリプトで共有できるように、データとコードを構成します。カタログでは、Azure Data Lake のデータを使用して可能な限り最高のパフォーマンスを実現できます。詳細については、「[U-SQL カタログの使用](data-lake-analytics-use-u-sql-catalog.md)」を参照してください。
+The U-SQL catalog is used to structure data and code so they can be shared by U-SQL scripts. The catalog enables the highest performance possible with data in Azure Data Lake. For more information, see [Use U-SQL catalog](data-lake-analytics-use-u-sql-catalog.md).
  
-###カタログ項目のリスト
+###<a name="list-catalog-items"></a>List catalog items
 
-	#List databases
-	azure datalake analytics catalog list -n "<Data Lake Analytics Account Name>" -t database
+    #List databases
+    azure datalake analytics catalog list -n "<Data Lake Analytics Account Name>" -t database
 
-	#List tables
-	azure datalake analytics catalog list -n "<Data Lake Analytics Account Name>" -t table
-	
-タイプには、データベース、スキーマ、アセンブリ、外部データ ソース、テーブル、テーブル値関数、またはテーブルの統計情報が含まれます。
+    #List tables
+    azure datalake analytics catalog list -n "<Data Lake Analytics Account Name>" -t table
+    
+The types include database, schema, assembly, external data source, table, table valued function or table statistics.
 
-###カタログ シークレットの作成
+###<a name="create-catalog-secret"></a>Create catalog secret
 
-	azure datalake analytics catalog secret create -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
+    azure datalake analytics catalog secret create -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
 
-### カタログ シークレットの変更
+### <a name="modify-catalog-secret"></a>Modify catalog secret
 
-  	azure datalake analytics catalog secret set -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
+    azure datalake analytics catalog secret set -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
 
-###カタログ シークレットの削除
+###<a name="delete-catalog-secret"></a>Delete catalog secret
 
-	azure datalake analytics catalog secrete delete -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
+    azure datalake analytics catalog secrete delete -n "<Data Lake Analytics Account Name>" <databaseName> <hostUri> <secretName>
 
 <!-- ################################ -->
 <!-- ################################ -->
-## ARM グループの使用
+## <a name="use-arm-groups"></a>Use ARM groups
 
-アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」を参照してください。
+Applications are typically made up of many components, for example a web app, database, database server, storage, and 3rd party services. Azure Resource Manager (ARM) enables you to work with the resources in your application as a group, referred to as an Azure Resource Group. You can deploy, update, monitor or delete all of the resources for your application in a single, coordinated operation. You use a template for deployment and that template can work for different environments such as testing, staging and production. You can clarify billing for your organization by viewing the rolled-up costs for the entire group. For more information, see [Azure Resource Manager Overview](../resource-group-overview.md). 
 
-Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
+A Data Lake Analytics service can include the following components:
 
-- Azure Data Lake Analytics アカウント
-- 必要な既定の Azure Data Lake Storage アカウント
-- 追加の Azure Data Lake Storage アカウント
-- 追加の Azure Storage アカウント
+- Azure Data Lake Analytics account
+- Required default Azure Data Lake Storage account
+- Additional Azure Data Lake Storage accounts
+- Additional Azure Storage accounts
 
-管理しやすくするために 1 つの ARM グループの下にこれらすべてのコンポーネントを作成することができます。
+You can create all these components under one ARM group to make them easier to manage.
 
-![Azure Data Lake Analytics のアカウントとストレージ](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
+![Azure Data Lake Analytics account and storage](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
 
-Data Lake Analytics アカウントと従属するストレージ アカウントは同じ Azure データ センターに配置する必要があります。ただし、ARM グループは別のデータ センターに配置できます。
+A Data Lake Analytics account and the dependent storage accounts must be placed in the same Azure data center.
+The ARM group however can be located in a different data center.  
 
 
-##関連項目 
+##<a name="see-also"></a>See also 
 
-- [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-- [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
-- [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Overview of Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+- [Get started with Data Lake Analytics using Azure Portal](data-lake-analytics-get-started-portal.md)
+- [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)
+- [Monitor and troubleshoot Azure Data Lake Analytics jobs using Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center の種類別のセキュリティの警告 | Microsoft Azure"
-   description="このドキュメントでは、Azure Security Center で利用できるセキュリティの警告の種類についてわかりやすく説明します。"
+   pageTitle="Security alerts by Type in Azure Security Center | Microsoft Azure"
+   description="This document helps to understand the type of security alerts available in Azure Security Center."
    services="security-center"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,209 +16,215 @@
    ms.date="09/20/2016"
    ms.author="yurid"/>
 
-# Azure Security Center の種類別のセキュリティの警告
-このドキュメントでは、Azure Security Center で利用できるさまざまな種類のセキュリティの警告についてわかりやすく説明します。警告を管理する方法の詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
 
-> [AZURE.NOTE] 高度な検出を有効にするには、Azure Security Center Standard にアップグレードしてください。90 日間の無料試用版が提供されています。アップグレードするには、[[セキュリティ ポリシー]](security-center-policies.md) の [価格レベル] を選択してください。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+# <a name="security-alerts-by-type-in-azure-security-center"></a>Security Alerts by Type in Azure Security Center
+This document helps you to understand the different types of security alerts available in Azure Security Center. Read [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) for more information on how to manage alerts.
+
+> [AZURE.NOTE] To enable advanced detections, upgrade to Azure Security Center Standard. A free 90-day trial is available. To upgrade, select Pricing Tier in the [Security Policy](security-center-policies.md). See the [pricing page](https://azure.microsoft.com/pricing/details/security-center/) to learn more.
 
 
-## 使用できる警告の種類
-Azure Security Center では、サイバー キル チェーンの各段階に応じた各種の警告が用意されています。次の図は、これらの段階のいくつかに関連するさまざまな警告の例を部分的に示したものです。
+## <a name="what-type-of-alerts-are-available?"></a>What type of alerts are available?
+Azure Security Center provides a variety of alerts that align with the stages of the cyber kill chain. The figure below provides some examples of various alerts as they relate to some of these stages.
 
 ![Kill chain](./media/security-center-alerts-type/security-center-alerts-type-fig1.png)
 
 
-**ターゲットと攻撃**
+**Target & Attack**
 
-- 受信 RDP/SSH 攻撃
-- アプリケーションと DDoS 攻撃 (WAF パートナー)
-- 不正侵入検出 (NG ファイアウォール パートナー)
+- Inbound RDP/SSH attacks
+- Application and DDoS attacks (WAF partners)
+- Intrusion detection (NG Firewall partners)
 
-**インストールとエクスプロイト**
+**Install & Exploit**
 
-- 既知のマルウェア シグネチャ (AM パートナー)
-- インメモリ マルウェアとエクスプロイトの試行
-- 疑わしいプロセスの実行
-- 検出を防ぐ回避行動
-- 侵入拡大
-- 内部偵察
-- 疑わしい PowerShell アクティビティ
+- Known malware signatures (AM partners)
+- In-memory malware & exploit attempts
+- Suspicious process execution
+- Evasive maneuvers to avoid discovery
+- Lateral movement
+- Internal reconnaissance
+- Suspicious PowerShell activity
 
-**侵害後**
+**Post Breach**  
 
-- 既知の悪意のある IP との通信 (データの搾取、遠隔操作)
-- セキュリティの侵害されたリソースを使用した追加の攻撃の開始 (送信ポート スキャン RDP/SSH ブルート フォース攻撃、スパム)
+- Communication to a known malicious IP (data exfiltration or command & control)
+- Using compromised resources to mount additional attacks (outbound port scanning RDP/SSH brute force attacks, and spam)
 
-さまざまな種類の攻撃が各段階に関連し、さまざまなサブシステムをターゲットとしています。これらの段階の攻撃に対処するために、Security Center では警告に 3 つのカテゴリを設けています。
+Different types of attacks are associated with each stage and they target different subsystems. To address attacks during these stages, Security Center has three categories of alerts:
 
-- 仮想マシンの動作分析 (VMBA)
-- ネットワーク分析
-- リソース分析
+- Virtual Machine Behavioral Analysis (VMBA)
+- Network Analysis
+- Resource Analysis
 
-## 仮想マシンの動作分析
+## <a name="virtual-machine-behavioral-analysis"></a>Virtual machine behavioral analysis
 
-Azure Security Center は動作分析を使用し、(プロセス作成イベント、ログイン イベントなどの) 仮想マシンのイベント ログの分析に基づいて、セキュリティの侵害されたリソースを特定します。また、他のシグナルとの間には、蔓延している攻撃の裏付けとなる兆候を確認できる相関関係が存在します。
+Azure Security Center can use behavioral analytics to identify compromised resources based on analysis of virtual machine event logs, for example: Process Creation Events, Login Events, etc.). In addition, there is correlation with other signals to check for supporting evidence of a widespread campaign.
 
-> [AZURE.NOTE] Security Center の検出機能に関する詳細については、「[Azure Security Center の検出機能](security-center-detection-capabilities.md)」を参照してください。
+> [AZURE.NOTE] For more information about how Security Center detection capabilities work, read [Azure Security Center Detection Capabilities](security-center-detection-capabilities.md).
 
-### クラッシュ分析
+### <a name="crash-analysis"></a>Crash analysis
 
-クラッシュ ダンプ メモリ分析は、従来のセキュリティ ソリューションを回避することができる高度なマルウェアの検出に使用される方法です。さまざまな形式のマルウェアは、ディスクへの書き込みを行わないことや、ディスクに書き込まれたソフトウェア コンポーネントを暗号化することで、ウイルス対策製品によって検出される可能性を減らすよう試みます。このことが、従来のマルウェア対策手法を使ったマルウェア検出を困難にしています。しかし、マルウェアが機能するためにはメモリに痕跡を残す必要があるので、メモリ分析を使用すればそのようなマルウェアを検出することができます。
+Crash dump memory analysis is a method used to detect sophisticated malware that is able to evade traditional security solutions. Various forms of malware try to reduce the chance of being detected by anti-virus products by never writing to disk or by encrypting software components written to disk. This makes the malware difficult to detect using traditional antimalware approaches. However, such malware can be detected using memory analysis, as malware must leave traces in memory in order to function.
 
-ソフトウェアがクラッシュすると、クラッシュ時のメモリが部分的にクラッシュ ダンプにキャプチャされます。クラッシュは、マルウェア、一般的なアプリケーション、またはシステムの問題によって引き起こされる可能性があります。Security Center では、クラッシュ ダンプでメモリを分析することによって、ソフトウェアの脆弱性の悪用や機密データへのアクセスに使用された手法を検出できます。また、侵入したコンピューターに密かに常駐するタイプの手法であっても検出が可能です。Security Center バックエンドによって分析が実行されるため、この方法ではホストのパフォーマンスに対する影響が最小限に抑えられます。
+When software crashes, a crash dump captures a portion of memory at the time of the crash. The crash may be caused by malware, general application or system issues. By analyzing the memory in the crash dump, Security Center can detect techniques used to exploit vulnerabilities in software, access confidential data, and surreptitiously persist with-in a compromised machine. This is accomplished with minimum performance impact to hosts as the analysis is performed by the Security Center back-end.
 
-次に示したのは、クラッシュ ダンプ分析の警告に共通するフィールドです。
+The following fields are common to crash dump analysis alerts listed below:
 
-- DUMPFILE (ダンプ ファイル): クラッシュ ダンプ ファイルの名前
-- PROCESSNAME (プロセス名): クラッシュしているプロセスの名前
-- PROCESSVERSION (プロセスのバージョン): クラッシュしているプロセスのバージョン
+- DUMPFILE: Name of the crash dump file
+- PROCESSNAME: Name of the crashing process
+- PROCESSVERSION: Version of the crashing process
 
-### シェルコードの検出
+### <a name="shellcode-discovered"></a>Shellcode discovered
 
-シェルコードは、マルウェアがソフトウェアの脆弱性を突破した後に実行されるペイロードです。この警告は、悪質なペイロードに共通した振る舞いをする実行可能コードがクラッシュ ダンプ分析によって検出されたことを意味します。悪意のないソフトウェアによる振る舞いである可能性もありますが、ソフトウェア開発の標準的な慣例からは逸脱しています。
+Shellcode is the payload that is run after malware has exploited a software vulnerability. This alert indicates that crash dump analysis has detected executable code exhibiting behavior commonly performed by malicious payloads. Although non-malicious software may perform this behavior, it is not typical of normal software development practices.
 
-この警告には、他にも次のフィールドがあります。
+This alert provides the following additional field:
 
-- ADDRESS (アドレス): メモリ内におけるシェルコードの場所
+- ADDRESS: The location in memory of the shellcode
 
-このタイプの警告の例を次に示します。
+This is an example of this type of alert:
 
-![Shellcode alert](./media/security-center-alerts-type/security-center-alerts-type-fig2.png)
+![Shellcode alert](./media/security-center-alerts-type/security-center-alerts-type-fig2.png) 
 
-### モジュールのハイジャックの検出
+### <a name="module-hijacking-discovered"></a>Module hijacking discovered
 
-Windows システムの共通の機能をソフトウェアから利用できるようにするために、Windows にはダイナミック リンク ライブラリ (DLL) が使用されています。DLL ハイジャックは、マルウェアが DLL の読み込み順序を改変することによって行われます。このときメモリに悪質なペイロードが読み込まれ、任意のコードを実行できる状態となります。この警告は、2 つの異なるパスから同様の名前のモジュールが読み込まれた (なおかつ読み込み元となったパスのいずれかが Windows システムの共通のバイナリ ファイルの格納場所である) ことをクラッシュ ダンプ分析が検出したことを意味します。
+Windows relies on Dynamic Link Libraries (DLLs) to allow software to utilize common Windows system functionality. DLL Hijacking occurs when malware changes the DLL load order to load malicious payloads into memory, where arbitrary code can be executed. This alert indicates the crash dump analysis has detected a similarly named module is loaded from two different paths, where one of the loaded paths comes from a common Windows system binary location.
 
-悪意からではなく、インストルメント化や Windows OS の拡張、Windows アプリケーションの拡張といった目的で、通常のソフトウェア開発者が DLL の読み込み順序を変更することも皆無ではありません。DLL 読み込み順序に対する悪意のある変更と、無害である可能性の高い変更とを判別しやすいように、Azure Security Center では、読み込まれているモジュールに疑わしい特徴が見られるかどうかをチェックします。このチェックの結果は、警告の "SIGNATURE (シグネチャ)" フィールドに表示され、警告の重大度、説明、修正手順に反映されます。ハイジャック モジュールが悪質なものであるかどうかについては、ディスク上のハイジャック モジュールのコピーを分析する (たとえばファイルのデジタル署名の検証、ウイルス対策スキャンを実行する) ことで、さらに詳しい情報を得ることができます。
+Legitimate software developers occasionally change the DLL load order for non-malicious reasons, such as instrumenting, extending the Windows OS or Windows applications. To help differentiate between malicious and potentially benign changes to the DLL load order, Azure Security Center checks whether or not a loaded module conforms to a suspicious profile. The result of this check is indicated by the “SIGNATURE” field of the alert and is reflected in the severity of the alert, alert description, and alert remediation steps. Analyzing the on disk copy of the hijacking module, such as by verifying the files digital signature or running an anti-virus scan, may provide more information as to the legitimate or malicious nature of the hijacking module.
 
-前出の「シェルコードの検出」のセクションで取り上げた共通のフィールドに加え、この警告には次のフィールドがあります。
+In addition to the common fields described in the “Shellcode Discovered” section above, this alert provides the following fields:
 
-- SIGNATURE (シグネチャ): ハイジャック モジュールが、疑わしい動作の特徴と一致しているかどうかを示します。
-- HIJACKEDMODULE (ハイジャックされたモジュール): ハイジャックされた Windows システム モジュールの名前。
-- HIJACKEDMODULEPATH (ハイジャックされたモジュールのパス): ハイジャックされた Windows システム モジュールのパス。
-- HIJACKINGMODULEPATH (ハイジャック モジュールのパス): ハイジャック モジュールのパス。
+- SIGNATURE: Indicates if the hijacking module conforms to a profile of suspicious behavior
+- HIJACKEDMODULE: The name of the hijacked Windows system module
+- HIJACKEDMODULEPATH: The path of the hijacked Windows system module
+- HIJACKINGMODULEPATH: The path of the hijacking module
 
-このタイプの警告の例を次に示します。
+This is an example of this type of alert:
 
-![Module hijacking alert](./media/security-center-alerts-type/security-center-alerts-type-fig3.png)
+![Module hijacking alert](./media/security-center-alerts-type/security-center-alerts-type-fig3.png) 
 
-### Windows モジュールのなりすましの検出
+### <a name="masquerading-windows-module-detected"></a>Masquerading Windows module detected
 
-マルウェアには、Windows システムに共通するバイナリ名 (SVCHOST.EXE など) やモジュール名 (NTDLL.DLL など) が使用されている場合があります。悪質なソフトウェアを "紛れ込ませる" ことで、その正体をシステム管理者に見破られないようにするためです。この警告は、Windows システムのモジュール名と同じ名前のモジュールがクラッシュ ダンプ ファイルに含まれているものの、それ以外の点は一般的な Windows モジュールの基準をそのモジュールは満たしていないことが、クラッシュ ダンプ分析によって検出されたことを意味します。そのモジュールが悪質なものであるかどうかについては、ディスク上のなりすましモジュールのコピーを分析することによって、さらに詳しい情報を得ることができます。実行される分析の例を次に示します。
+Malware may use common names of Windows system binaries (e.g., SVCHOST.EXE) or modules (e.g., NTDLL.DLL) in order to “blend-in” and obscure the nature of the malicious software from system administrators. This alert indicates the crash dump analysis has detected that the crash dump file contains modules that use Windows system module names, but do not satisfy other criteria that are typical of Windows modules. Analyzing the on disk copy of the masquerading module may provide more information as to the legitimate or malicious nature of this module. Analysis may include:
 
-- 問題になっているファイルが正規ソフトウェア パッケージの一部として出荷されていること確認する
-- ファイルのデジタル署名を確認する
-- ファイルに対してウイルス対策スキャンを実行する
+- Confirm that the file in question is shipped as part of a legitimate software package
+- Verify the file’s digital signature
+- Run an anti-virus scan on the file
 
-前出の「シェルコードの検出」のセクションで取り上げた共通のフィールドに加え、この警告には次のフィールドもあります。
+In addition to the common fields described in the “Shellcode Discovered” section above, this alert provides the following additional fields:
 
-- DETAILS (詳細): モジュールのメタデータが有効であるかどうかと、モジュールがシステム パスから読み込まれたかどうかを表します。
-- NAME (名前): Windows のモジュールになりすましているモジュールの名前。
-- PATH (パス): Windows のモジュールになりすましているモジュールのパス。
+- DETAILS: Describes whether the modules metadata is valid and whether the module was loaded from a system path.
+- NAME: The name of the masquerading Windows module
+- PATH: The path to the masquerading Windows module.
 
-また、この警告にはモジュールの PE ヘッダーから特定のフィールド ("CHECKSUM"、"TIMESTAMP" など) が抽出されて表示されます。これらのフィールドは、モジュールに存在する場合にのみ表示されます。これらのフィールドの詳細については、「[Microsoft PE and COFF 仕様](https://msdn.microsoft.com/windows/hardware/gg463119.aspx)」を参照してください。
+This alert also extracts and displays the certain fields, from the module’s PE header, such as “CHECKSUM” and “TIMESTAMP”. These fields are only displayed if the fields are present in the module. See the [Microsoft PE and COFF Specification](https://msdn.microsoft.com/windows/hardware/gg463119.aspx) for details on these fields.
 
-このタイプの警告の例を次に示します。
+This is an example of this type of alert:
 
-![Masquerading Windows alert](./media/security-center-alerts-type/security-center-alerts-type-fig4.png)
+![Masquerading Windows alert](./media/security-center-alerts-type/security-center-alerts-type-fig4.png) 
 
-### システム バイナリの改変の検出
+### <a name="modified-system-binary-discovered"></a>Modified system binary discovered
 
-マルウェアは、侵入したシステム上でこっそりデータにアクセスしたり人目に付かないよう常駐したりするために、主要なシステム バイナリを改変する場合があります。この警告は、Windows OS の主要なバイナリがメモリ内またはディスク上で改変されたことがクラッシュ ダンプ分析によって検出されたことを意味します。悪意からではなく、迂回やアプリケーションの互換性といった目的で、通常のソフトウェア開発者がメモリ内のシステム モジュールに変更を加えることも皆無ではありません。悪質なモジュールとそうでないモジュールを判別しやすいよう、Azure Security Center は、改変されたモジュールに疑わしい特徴が見られるかどうかをチェックします。このチェックの結果は、警告の重大度、説明、修正手順に反映されます。
+Malware may modify core system binaries in order to covertly access data or surreptitiously persist on a compromised system. This alert indicates the crash dump analysis has detected that core Windows OS binaries have been modified in memory or on disk.
+Legitimate software developers occasionally modify system modules in memory for non-malicious reasons, such as Detours or for application compatibility. To help differentiate between malicious and potentially legitimate modules, Azure Security Center checks whether or not the modified module conforms to a suspicious profile. The result of this check is indicated by the severity of the alert, alert description, and alert remediation steps.
 
-前出の「シェルコードの検出」のセクションで取り上げた共通のフィールドに加え、この警告には次のフィールドもあります。
+In addition to the common fields described in the “Shellcode Discovered” section above, this alert provides the following additional fields:
 
-- MODULENAME (モジュール名): 改変されたシステム バイナリの名前。
-- MODULEVERSION (モジュールのバージョン): 改変されたシステム バイナリのバージョン。
+- MODULENAME: Name of the modified system binary
+- MODULEVERSION: Version of the modified system binary
 
-このタイプの警告の例を次に示します。
+This is an example of this type of alert:
 
-![System binary alert](./media/security-center-alerts-type/security-center-alerts-type-fig5.png)
+![System binary alert](./media/security-center-alerts-type/security-center-alerts-type-fig5.png) 
 
-### 疑わしいプロセスの実行
+### <a name="suspicious-process-executed"></a>Suspicious process executed
 
-Security Center は、ターゲット仮想マシンで実行されている疑わしいプロセスを識別し、警告をトリガーします。検出は、特定の名前を探して行われるのではなく、パラメーターによって行われます。このため、攻撃者が実行できるものに名前を変更したとしても、Security Center は依然として疑わしいプロセスを検出できます。
+Security Center identifies suspicious process in execution in the target virtual machine and trigger an alert. The detection doesn’t look for the specific name, but by its parameter, therefore even if the attacker renames the executable, Security Center still be able to detect.
  
-このタイプの警告の例を次に示します。
+This is an example of this type of alert:
 
 ![Suspicious process alert](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
-### 複数のドメイン アカウントのクエリ
+### <a name="multiple-domain-accounts-queried"></a>Multiple domain accounts queried
 
-Security Center は、ドメイン アカウントに対しクエリが複数回試行されていることを検出できます。このような試行は通常、ネットワーク偵察時に攻撃者が実行することです。攻撃者は、この手法を使ってドメインに問い合わせ、ユーザー、ドメインの管理者アカウント、ドメイン コントローラーであるコンピューターを特定できるほか、他のドメインとの潜在的なドメイン信頼関係も特定できます。
+Security Center can detect multiple attempts to query domain accounts, which is something usually performed by attackers during network reconnaissance. Attackers can leverage this technique to query the domain to identify who are the users, what are the domain admin accounts, which computers are Domain Controllers and also potential domain trust relationship with other domains.
 
-このタイプの警告の例を次に示します。
+This is an example of this type of alert:
 
 ![Multiple domains account alert](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
 
-## ネットワーク分析
+## <a name="network-analysis"></a>Network analysis
 
-Security Center のネットワーク脅威検出は、Azure IPFIX (Internet Protocol Flow Information Export) トラフィックからセキュリティ情報を自動的に収集することによって機能します。この情報を分析し、ときには複数の情報源から得た情報との関連性を探りながら、脅威を特定します。
+Security Center network threat detection works by automatically collecting security information from your Azure IPFIX (Internet Protocol Flow Information Export) traffic. It analyzes this information, often correlating information from multiple sources, to identify threats.
 
-### 疑わしい送信トラフィックの検出
+### <a name="suspicious-outgoing-traffic-detected"></a>Suspicious outgoing traffic detected
 
-ネットワーク デバイスは、他の種類のシステムとほぼ同じように検出、プロファイリングされることがあります。通常、攻撃者は初めにポート スキャンまたはポート スイープを行います。次の例では、VM からの疑わしい SSH トラフィックが存在しており、外部リソースに対する SSH ブルート フォース攻撃またはポート スイープ攻撃が行われている可能性があります。
+Network devices can be discovered and profiled in much the same way as other types of systems. Attackers usually start with port scanning / port sweeping. In the example below you have a suspicious SSH traffic from a VM that can be performing a SSH brute force or port sweeping attack against an external resource.
 
-![Suspicious outgoing traffic alert](./media/security-center-alerts-type/security-center-alerts-type-fig8.png)
+![Suspicious outgoing traffic alert](./media/security-center-alerts-type/security-center-alerts-type-fig8.png) 
 
-この警告では、攻撃の開始に使用されたリソース、セキュリティが侵害されたコンピューター、検出の日時、使用されたプロトコルとポートを特定できる情報が表示されます。このブレードでは、問題を軽減するために使用できる修復手順の一覧も表示されます。
+This alert gives information that enables you to identify the resource that was used to initiate this attack, the compromised machine, the detection time, the protocol and port that was used. This blade also gives you a list of remediation steps that can be used to mitigate this issue.
 
-### 悪意のあるコンピューターとのネットワーク通信
+### <a name="network-communication-with-a-malicious-machine"></a>Network communication with a malicious machine
 
-Azure Security Center は、悪意のある IP アドレス (多くの場合、コマンド アンド コントロール センター) と通信している、セキュリティが侵害されたコンピューターを、Microsoft 脅威インテリジェンス フィードを利用して検出できます。この例では、Azure Security Center によって、Pony Loader マルウェア ([Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF) とも呼ばれる) を使用した通信が行われたことが検出されました。
+By leveraging Microsoft threat intelligence feeds, Azure Security Center can detect compromised machines that are communicating with malicious IP addresses, in many cases a command and control center. In this case Azure Security Center detected that the communication was done using Pony Loader malware (also known as [Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF)).
 
 ![network communication alert](./media/security-center-alerts-type/security-center-alerts-type-fig9.png)
 
-この警告では、この攻撃の開始に使用されたリソース、攻撃されたリソース、被害を受けた IP、攻撃者の IP、検出の日時を特定できる情報が表示されます。
+This alert gives information that enables you to identify the resource that was used to initiate this attack, the attacked resource, the victim IP, the attacker IP and the detection time.
 
-[AZURE.NOTE] ライブ IP アドレスは、プライバシー保護の目的でこのスクリーンショットからは削除しています。
+[AZURE.NOTE] Live IP addresses were removed from this screenshot for privacy purpose.
 
 
-### 送信サービス拒否攻撃の可能性の検出
+### <a name="possible-outgoing-denial-of-service-attack-detected"></a>Possible outgoing denial-of-service attack detected
 
-ある仮想マシンによって送信された異常なネットワーク トラフィックが原因で、Security Center が潜在的なサービス拒否型の攻撃をトリガーする場合があります。
+Anomalous network traffic originated from one virtual machine can lead Security Center to trigger a potential denial-of-service type of attack.
  
-このタイプの警告の例を次に示します。
+This is an example of this type of alert:
 
 ![Outgoing DOS](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
 
-## リソース分析
+## <a name="resource-analysis"></a>Resource analysis
 
-Security Center リソース分析は、[Azure SQL Db 脅威の検出](../sql-database/sql-database-threat-detection-get-started.md)の機能との統合など、PaaS サービスに重点を置いています。これらの領域の分析結果に基づいて、Security Center は警告に関連するリソースをトリガーします。
+Security Center resource analysis focuses in PaaS services, such as the integration with [Azure SQL Db Threat Detection](../sql-database/sql-database-threat-detection-get-started.md) feature. Based on the analysis’s results from these areas, Security Center triggers a resource related alert.
 
-### SQL インジェクションの可能性
+### <a name="potential-sql-injection"></a>Potential SQL injection
 
-SQL インジェクションとは、後で SQL Server のインスタンスに渡して解析と実行の対象とする文字列に、悪意のあるコードが挿入される攻撃です。SQL ステートメントを構成するすべてのプロシージャにおいて、挿入に対する脆弱性を確認する必要があります。SQL Server は、受け取った有効な構文のクエリをすべて実行してしまうからです。SQL 脅威の検出では、機械学習、動作分析、異常検出を使用して、Azure SQL データベースで発生しているおそれのある疑わしいイベントを特定します。次に例を示します。
+SQL injection is an attack in which malicious code is inserted into strings that are later passed to an instance of SQL Server for parsing and execution. Any procedure that constructs SQL statements should be reviewed for injection vulnerabilities because SQL Server executes all syntactically valid queries that it receives. SQL Threat Detection uses machine learning, behavioral analysis and anomaly detection to determine suspicious events that might be taking place in your Azure SQL Databases. For example:
 
-- 以前の従業員によるデータベース アクセスの試行
-- SQL インジェクション攻撃
-- 在宅中のユーザーからの運用データベースへの不自然なアクセス
+- Attempted database access by a former employee 
+- SQL injection attacks 
+- Unusual access to production database from a user at home
 
 ![Potential SQL Injection alert](./media/security-center-alerts-type/security-center-alerts-type-fig11.png)
 
-この警告では、攻撃を受けたリソース、検出の日時、攻撃の状態を特定する情報が表示され、さらに詳しい調査手順へのリンクも表示されます。
+This alert gives information that enables you to identify the attacked resource, the detection time, the state of the attack and it also provides a link to further investigation steps.
 
-### SQL インジェクションにつながる脆弱性
+### <a name="vulnerability-to-sql-injection"></a>Vulnerability to SQL Injection
 
-この警告は、SQL インジェクション攻撃につながる潜在的な脆弱性を示すアプリケーション エラーがデータベースで検出された場合にトリガーされます。
+This alert is triggered when an application error has been detected on a database which may indicate a possible vulnerability to SQL injection attacks.
 
 ![Potential SQL Injection alert](./media/security-center-alerts-type/security-center-alerts-type-fig12-new.png)
 
-### 不明な場所からの不自然なアクセス
+### <a name="unusual-access-from-unfamiliar-location"></a>Unusual access from unfamiliar location
 
-この警告は、最後の期間に見られなかった不明な IP アドレスからのアクセスがサーバーで検出された場合にトリガーされます。
+This alert is triggered when an access from an unfamiliar IP address was detected on server, which was not seen in the last period.
 
 ![Unusual access alert](./media/security-center-alerts-type/security-center-alerts-type-fig13-new.png)
 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-このドキュメントでは、Security Center のさまざまな種類のセキュリティの警告について説明しました。セキュリティ センターの詳細については、次を参照してください。
+In this document, you learned about the different types of security alerts in Security Center. To learn more about Security Center, see the following:
 
-- [Azure Security Center でのセキュリティ インシデントの処理](security-center-incident.md)
-- [Azure Security Center の検出機能](security-center-detection-capabilities.md)
-- [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+- [Handling Security Incident in Azure Security Center](security-center-incident.md)
+- [Azure Security Center Detection Capabilities](security-center-detection-capabilities.md)
+- [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md)
+- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Find blog posts about Azure security and compliance.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

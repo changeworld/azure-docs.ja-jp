@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する | Microsoft Azure" 
-    description="Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する" 
+    pageTitle="Configure Geo-Replication for Azure SQL Database with the Azure portal | Microsoft Azure" 
+    description="Configure Geo-Replication for Azure SQL Database using the Azure portal" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
@@ -16,89 +16,91 @@
     ms.date="07/14/2016"
     ms.author="sstein"/>
 
-# Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する
+
+# <a name="configure-geo-replication-for-azure-sql-database-with-the-azure-portal"></a>Configure Geo-Replication for Azure SQL Database with the Azure portal
 
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-geo-replication-overview.md)
-- [Azure ポータル](sql-database-geo-replication-portal.md)
+- [Overview](sql-database-geo-replication-overview.md)
+- [Azure Portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [T-SQL](sql-database-geo-replication-transact-sql.md)
 
-この記事では、[Azure ポータル](http://portal.azure.com)を使用して SQL Database のアクティブ geo レプリケーションを構成する方法について説明します。
+This article shows you how to configure Active Geo-Replication for SQL Database with the [Azure portal](http://portal.azure.com).
 
-Azure ポータルを使用してフェールオーバーを開始するには、「[Azure ポータルを使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-portal.md)」を参照してください。
+To initiate failover with the Azure portal, see [Initiate a planned or unplanned failover for Azure SQL Database with the Azure portal](sql-database-geo-replication-failover-portal.md).
 
->[AZURE.NOTE] すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
+>[AZURE.NOTE] Active Geo-Replication (readable secondaries) is now available for all databases in all service tiers. In April 2017 the non-readable secondary type will be retired and existing non-readable databases will automatically be upgraded to readable secondaries.
 
-Azure ポータルを使用して geo レプリケーションを構成するには、次のものが必要です。
+To configure Geo-Replication using the Azure portal, you need the following:
 
-- Azure サブスクリプション。
-- Azure SQL Database データベース。別の地理的リージョンにレプリケートするプライマリ データベースです。
+- An Azure subscription. 
+- An Azure SQL Database database - The primary database that you want to replicate to a different geographical region.
 
-## セカンダリ データベースの追加
+## <a name="add-secondary-database"></a>Add secondary database
 
-次の手順では、geo レプリケーション パートナーシップに新しいセカンダリ データベースを作成します。
+The following steps create a new secondary database in a Geo-Replication partnership.  
 
-セカンダリ データベースを追加するには、サブスクリプションの所有者または共同所有者でなければなりません。
+To add a secondary you must be the subscription owner or co-owner. 
 
-セカンダリ データベースは、プライマリ データベースと同じ名前となります。また、既定でのサービス レベルはプライマリ データベースと同じになります。セカンダリ データベースは、読み取り可能または読み取り不可とすることができるほか、単一データベースまたはエラスティック データベースとすることができます。詳細については、「[サービス レベル](sql-database-service-tiers.md)」を参照してください。セカンダリ データベースを作成しシード処理を行うと、プライマリ データベースから新しいセカンダリ データベースへのデータのレプリケートが開始されます。
+The secondary database will have the same name as the primary database and will, by default, have the same service level. The secondary database can be readable or non-readable, and can be a single database or an elastic database. For more information, see [Service Tiers](sql-database-service-tiers.md).
+After the secondary is created and seeded, data will begin replicating from the primary database to the new secondary database. 
 
-> [AZURE.NOTE] パートナー データベースが既に存在する場合 (たとえば、前の geo レプリケーションのリレーションシップを終了した結果として)、コマンドは失敗します。
+> [AZURE.NOTE] If the partner database already exists (for example - as a result of terminating a previous Geo-Replication relationship) the command will fail.
 
-### セカンダリ データベースの追加
+### <a name="add-secondary"></a>Add secondary
 
-1. [Azure ポータル](http://portal.azure.com)で、geo レプリケーションについてセットアップするデータベースを参照します。
-2. [SQL Database] ブレードで、**[すべての設定]**、**[geo レプリケーション]** の順に選択します。
-3. セカンダリ データベースを作成するリージョンを選択します。
-
-
-    ![セカンダリ データベースの追加][1]
+1. In the [Azure portal](http://portal.azure.com) browse to the database that you want to setup for Geo-Replication.
+2. On the SQL Database blade, select **All settings** > **Geo-Replication**.
+3. Select the region to create the secondary database.
 
 
-4. **[セカンダリの種類]** (**[読み取り可能]** または **[読み取り不能]**) を構成します。
-5. セカンダリ データベース用のサーバーを選択または構成します。
+    ![Add secondary][1]
 
-    ![セカンダリ データベースの作成][3]
 
-5. 必要に応じて、以下のようにセカンダリ データベースをエラスティック データベース プールに追加できます。
+4. Configure the **Secondary type** (**Readable**, or **Non-readable**).
+5. Select or configure the server for the secondary database.
 
-       - **[エラスティック データベース プール]** をクリックし、ターゲット サーバー上でセカンダリ データベースを作成するプールを選択します。このワークフローでは新しいプールは作成されないので、ターゲット サーバー上にプールが既に存在している必要があります。
+    ![Create Secondary][3]
 
-6. **[作成]** をクリックして、セカンダリ データベースを追加します。
+5. Optionally, you can add a secondary database to an elastic database pool:
+
+       - Click **Elastic database pool** and select a pool on the target server to create the secondary database in. A pool must already exist on the target server as this workflow does not create a new pool.
+
+6. Click **Create** to add the secondary.
  
-6. セカンダリ データベースが作成され、シード処理が始まります。
+6. The secondary database is created and the seeding process begins. 
  
-    ![シード処理][6]
+    ![seeding][6]
 
-7. シード処理が完了すると、セカンダリ データベースは自身の状態 (読み取り不可) を表示します。
+7. When the seeding process is complete the secondary database displays its status (non-readable.
 
-    ![セカンダリ データベース準備完了][9]
-
-
-
-## セカンダリ データベースを削除する
-
-この操作では、セカンダリ データベースへのレプリケーションを完全に終了し、セカンダリ データベースのロールを通常の読み取り/書き込みデータベースに変更します。セカンダリ データベースへの接続が切断された場合、コマンドは成功しますが、接続が復元するまでセカンダリ データベースは読み取り/書き込み状態になりません。
-
-1. [Azure ポータル](http://portal.azure.com)で、geo レプリケーション パートナーシップのプライマリ データベースを参照します。
-2. [SQL Database] ブレードで、**[すべての設定]**、**[geo レプリケーション]** の順に選択します。
-3. **[セカンダリ]** ボックスの一覧で、geo レプリケーション パートナーシップから削除するデータベースを選択します。
-4. **[レプリケーションを停止する]** をクリックします。
-
-    ![セカンダリ データベースの削除][7]
+    ![secondary ready][9]
 
 
-5. **[レプリケーションの停止]** をクリックすると、確認ウィンドウが開きます。**[はい]** をクリックして、geo レプリケーション パートナーシップからデータベースを削除します (これにより、データベースはどのレプリケーションにも属さない読み取り/書き込みデータベースに設定されます)。
+
+## <a name="remove-secondary-database"></a>Remove secondary database
+
+The operation permanently terminates the replication to the secondary database and change the role of the secondary to a regular read-write database. If the connectivity to the secondary database is broken the command succeeds but the secondary will not become read-write until after connectivity is restored.  
+
+1. In the [Azure portal](http://portal.azure.com) browse to the primary database in the Geo-Replication partnership.
+2. On the SQL Database blade, select **All settings** > **Geo-Replication**.
+3. In the **SECONDARIES** list select the database you want to remove from the Geo-Replication partnership.
+4. Click **Stop Replication**.
+
+    ![remove secondary][7]
 
 
-    ![削除の確認][8]
+5. Clicking **Stop Replication** opens a confirmation window so click **Yes** to remove the database from the Geo-Replication partnership (set it to a read-write database not part of any replication).
 
 
-## 次のステップ
+    ![confirm removal][8]
 
-- アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
-- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+
+## <a name="next-steps"></a>Next steps
+
+- To learn more about Active Geo-Replication, see - [Active Geo-Replication](sql-database-geo-replication-overview.md)
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
 
 
 <!--Image references-->
@@ -113,4 +115,9 @@ Azure ポータルを使用して geo レプリケーションを構成するに
 [9]: ./media/sql-database-geo-replication-portal/seeding-complete.png
 [10]: ./media/sql-database-geo-replication-portal/failover.png
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,78 +1,83 @@
 <properties 
-	pageTitle="Azure の SQL Server Virtual Machine に格納されているデータを探索する | Microsoft Azure" 
-	description="Azure の SQL Server VM に格納されているデータを探索する方法について説明します。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="jhubbard" 
-	editor="cgronlun" />
+    pageTitle="Explore data in SQL Server Virtual Machine on Azure | Microsoft Azure" 
+    description="How to explore data that is stored in a SQL Server VM on Azure." 
+    services="machine-learning" 
+    documentationCenter="" 
+    authors="bradsev" 
+    manager="jhubbard" 
+    editor="cgronlun" />
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/13/2016" 
-	ms.author="bradsev" />
-
-#Azure の SQL Server Virtual Machine に格納されているデータを探索する
+    ms.service="machine-learning" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/13/2016" 
+    ms.author="bradsev" /> 
 
 
-このドキュメントでは、Azure の SQL Server VM に格納されているデータを探索する方法について説明します。これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。
+#<a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Explore data in SQL Server Virtual Machine on Azure
 
-次の**メニュー**は、ツールを使用してさまざまなストレージ環境のデータを探索する方法を説明するトピックにリンクしています。このタスクは、Cortana Analytics Process (CAP) の 1 ステップです。
+
+This document covers how to explore data that is stored in a SQL Server VM on Azure. This can be done by data wrangling using SQL or by using a programming language like Python.
+
+The following **menu** links to topics that describe how to use tools to explore data from various storage environments. This task is a step in the Cortana Analytics Process (CAP).
 
 [AZURE.INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
 
-> [AZURE.NOTE] このドキュメントのサンプルの SQL ステートメントは、データが SQL Server に存在することを前提としています。存在しない場合は、クラウド データ サイエンス プロセス マップを参照して、SQL Server へデータを移動する方法を確認してください。
+> [AZURE.NOTE] The sample SQL statements in this document assume that data is in SQL Server. If it isn't, refer to the cloud data science process map to learn how to move your data to SQL Server.
 
 
 
-## <a name="sql-dataexploration"></a>SQL スクリプトを使用して SQL データを探索する
+## <a name="<a-name="sql-dataexploration"></a>explore-sql-data-with-sql-scripts"></a><a name="sql-dataexploration"></a>Explore SQL data with SQL scripts
 
-SQL Server のデータ ストアの探索に使用できるいくつかのサンプル SQL スクリプトを次に示します。
+Here are a few sample SQL scripts that can be used to explore data stores in SQL Server.
 
-1. 1 日ごとの所見の数を取得する
+1. Get the count of observations per day
 
-	`SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)`
+    `SELECT CONVERT(date, <date_columnname>) as date, count(*) as c from <tablename> group by CONVERT(date, <date_columnname>)` 
 
-2. カテゴリ列内のレベルを取得する
+2. Get the levels in a categorical column
 
-	`select  distinct <column_name> from <databasename>`
+    `select  distinct <column_name> from <databasename>`
 
-3. 2 つのカテゴリ列の組み合わせ内のレベルの数を取得する
+3. Get the number of levels in combination of two categorical columns 
 
-	`select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
+    `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
 
-4. 数値型列の分布を取得する
+4. Get the distribution for numerical columns
 
-	`select <column_name>, count(*) from <tablename> group by <column_name>`
+    `select <column_name>, count(*) from <tablename> group by <column_name>`
 
-> [AZURE.NOTE] 実用的な例として、[NYC タクシー データセット](http://www.andresmh.com/nyctaxitrips/)を使用し、エンドツーエンドのチュートリアルの「[IPython Notebook と SQL Server を使用した NYC データの処理](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb)」というタイトルの IPNB を参照することができます。
+> [AZURE.NOTE] For a practical example, you can use the [NYC Taxi dataset](http://www.andresmh.com/nyctaxitrips/) and refer to the IPNB titled [NYC Data wrangling using IPython Notebook and SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) for an end-to-end walk-through.
 
-##<a name="python"></a>Python を使用して SQL データを探索する
+##<a name="<a-name="python"></a>explore-sql-data-with-python"></a><a name="python"></a>Explore SQL data with Python
 
-データが SQL Server に格納されている場合に、Python を使用してデータを探索し、特徴を生成する手順は、「[Azure BLOB データを高度な分析を使用して処理する](machine-learning-data-science-process-data-blob.md)」で説明されているように、Python を使用して Azure BLOB のデータを処理する手順と似ています。データは、データベースから pandas データ フレームに読み込む必要があります。その後、さらに処理することができます。このセクションでは、データベースに接続して、データ フレームにデータを読み込むプロセスについて記載します。
+Using Python to explore data and generate features when the data is in SQL Server is similar to processing data in Azure blob using Python, as documented in [Process Azure Blob data in your data science environment](machine-learning-data-science-process-data-blob.md). The data needs to be loaded from the database into a pandas DataFrame and then can be processed further. We document the process of connecting to the database and loading the data into the DataFrame in this section.
 
-次の接続文字列形式を使用して pyodbc を使用し Python から SQL Server データベースに接続することができます (サーバー名、データベース名、ユーザー名およびパスワードは使用する特定の値に置き換えてください)。
+The following connection string format can be used to connect to a SQL Server database from Python using pyodbc (replace servername, dbname, username, and password with your specific values):
 
-	#Set up the SQL Azure connection
-	import pyodbc	
-	conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+    #Set up the SQL Azure connection
+    import pyodbc   
+    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Python の [Pandas ライブラリ](http://pandas.pydata.org/)には、Python プログラミングでデータを操作するためのデータ構造とデータ解析ツールの豊富なセットが用意されています。次のコードは、SQL Server データベースから返される結果を Pandas データ フレームに読み取ります。
+The [Pandas library](http://pandas.pydata.org/) in Python provides a rich set of data structures and data analysis tools for data manipulation for Python programming. The following code reads the results returned from a SQL Server database into a Pandas data frame:
 
-	# Query database and load the returned results in pandas data frame
-	data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
+    # Query database and load the returned results in pandas data frame
+    data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
 
-これで、「[データ サイエンス環境で Azure BLOB データを処理する](machine-learning-data-science-process-data-blob.md)」トピックで扱うとおりに Pandas データ フレームを操作できるようになりました。
+Now you can work with the Pandas DataFrame as covered in the topic [Process Azure Blob data in your data science environment](machine-learning-data-science-process-data-blob.md).
 
-## Cortana Analytics Process の活用例
+## <a name="cortana-analytics-process-in-action-example"></a>Cortana Analytics Process in Action Example
 
-パブリック データセットを使用した Cortana Analytics Process のエンド ツー エンドのチュートリアル例については、「[Team Data Science Process の活用: SQL Server の使用](machine-learning-data-science-process-sql-walkthrough.md)」を参照してください。
+For an end-to-end walkthrough example of the Cortana Analytics Process using a public dataset, see [The Team Data Science Process in action: using SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

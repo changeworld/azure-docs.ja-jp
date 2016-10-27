@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Clever の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Clever を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Clever | Microsoft Azure" 
+    description="Learn how to use Clever with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,143 +11,152 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Clever の統合
 
-このチュートリアルでは、Azure と Clever の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+#<a name="tutorial:-azure-active-directory-integration-with-clever"></a>Tutorial: Azure Active Directory integration with Clever
 
--   有効な Azure サブスクリプション
--   Clever テナント
+The objective of this tutorial is to show the integration of Azure and Clever. The scenario outlined in this tutorial assumes that you already have the following items:
 
-このチュートリアルを完了すると、Clever に割り当てた Azure AD ユーザーは、Clever 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+-   A valid Azure subscription
+-   A Clever tenant
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+After completing this tutorial, the Azure AD users you have assigned to Clever will be able to single sign into the application at your Clever company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-1.  Clever のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+The scenario outlined in this tutorial consists of the following building blocks:
 
-![シナリオ](./media/active-directory-saas-clever-tutorial/IC798977.png "シナリオ")
-##Clever のアプリケーション統合の有効化
+1.  Enabling the application integration for Clever
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-このセクションでは、Clever のアプリケーション統合を有効にする方法について説明します。
+![Scenario](./media/active-directory-saas-clever-tutorial/IC798977.png "Scenario")
+##<a name="enabling-the-application-integration-for-clever"></a>Enabling the application integration for Clever
 
-###Clever のアプリケーション統合を有効にするには、次の手順を実行します。
+The objective of this section is to outline how to enable the application integration for Clever.
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+###<a name="to-enable-the-application-integration-for-clever,-perform-the-following-steps:"></a>To enable the application integration for Clever, perform the following steps:
+
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-clever-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-clever-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-clever-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-clever-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-clever-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-clever-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-clever-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Clever**」と入力します。
+6.  In the **search box**, type **Clever**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-clever-tutorial/IC798978.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-clever-tutorial/IC798978.png "Application Gallery")
 
-7.  結果ウィンドウで **[Clever]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Clever**, and then click **Complete** to add the application.
 
     ![Clever](./media/active-directory-saas-clever-tutorial/IC798979.png "Clever")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Clever に対する認証を行えるようにする方法を説明します。Clever アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットはその例です。
+The objective of this section is to outline how to enable users to authenticate to Clever with their account in Azure AD using federation based on the SAML protocol.  
+Your Clever application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your **saml token attributes** configuration.  
+The following screenshot shows an example for this.
 
-![属性](./media/active-directory-saas-clever-tutorial/IC798980.png "属性")
+![Attributes](./media/active-directory-saas-clever-tutorial/IC798980.png "Attributes")
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Clever** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Clever** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC784682.png "Configure Single Sign-On")
 
-2.  **[ユーザーの Clever へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Clever** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC798981.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Clever のサインオン URL]** ボックスに、ユーザーが Clever アプリケーションにサインオンするときに使用する URL (例: *https://clever.com/in/azsandbox*) を入力し、**[次へ]* をクリックします。
+3.  On the **Configure App URL** page, in the **Clever Sign On URL** textbox, type the URL used by your users to sign-on to your Clever application (e.g.: *https://clever.com/in/azsandbox*), and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-clever-tutorial/IC798982.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-clever-tutorial/IC798982.png "Configure App URL")
 
-4.  **[Clever でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターでメタデータ ファイルをローカルに保存します。
+4.  On the **Configure single sign-on at Clever** page, to download your metadata, click **Download metadata**, and then save the metadata file locally on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC798983.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザー ウィンドウで、Clever 企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your Clever company site as an administrator.
 
-6.  ツールバーで、**[インスタント ログイン]** をクリックします。
+6.  In the toolbar, click **Instant Login**.
 
-    ![インスタント ログイン](./media/active-directory-saas-clever-tutorial/IC798984.png "インスタント ログイン")
+    ![Instant Login](./media/active-directory-saas-clever-tutorial/IC798984.png "Instant Login")
 
-7.  **[インスタント ログイン]** ページで、次の手順を実行します。
+7.  On the **Instant Login** page, perform the following steps:
 
-    ![インスタント ログイン](./media/active-directory-saas-clever-tutorial/IC798985.png "インスタント ログイン")
+    ![Instant Login](./media/active-directory-saas-clever-tutorial/IC798985.png "Instant Login")
 
-    1.  **ログイン URL** を入力します。
+    1.  Type the **Login URL**.  
 
-        >[AZURE.NOTE] **ログイン URL** はカスタム値です。実際の値は、SClever サポート チームから取得できます。
+        >[AZURE.NOTE] The **Login URL** is a custom value.
+You can get the actual value from your Clever support team.
 
-    2.  **[ID システム]** として、**[ADFS]** を選択します。
-    3.  **[保存]** をクリックします。
+    2.  As **Identity System**, select **ADFS**.
+    3.  Click **Save**.
 
-8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-clever-tutorial/IC798986.png "Configure Single Sign-On")
 
-9.  上部のメニューで、**[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
+9.  In the menu on the top, click **Attributes** to open the **SAML Token Attributes** dialog.
 
-    ![属性](./media/active-directory-saas-clever-tutorial/IC795920.png "属性")
+    ![Attributes](./media/active-directory-saas-clever-tutorial/IC795920.png "Attributes")
 
-10. 必要な属性のマッピングを追加するには、次の手順を実行します。
+10. To add the required attribute mappings, perform the following steps:
 
-    ![SAML トークンの属性](./media/active-directory-saas-clever-tutorial/IC795921.png "SAML トークンの属性")
+    ![saml token attributes](./media/active-directory-saas-clever-tutorial/IC795921.png "saml token attributes")
 
-	|属性名|属性値|
-    |---|---|
-    |clever.student.credentials.district\_username|User.userprincipalname|
+  	|Attribute Name|Attribute Value|
+  	|---|---|
+  	|clever.student.credentials.district\_username|User.userprincipalname|
 
-    1.  上記の表の各データ行で、**[ユーザー属性の追加]** をクリックします。
-    2.  **[属性名]** ボックスに、その行に対して表示される属性名を入力します。
-    3.  **[属性値]** ボックスで、その行に対して表示される属性値を選択します。
-    4.  **[完了]** をクリックします。
+    1.  For each data row in the table above, click **add user attribute**.
+    2.  In the **Attribute Name** textbox, type the attribute name shown for that row.
+    3.  In the **Attribute Value** textbox, select the attribute value shown for that row.
+    4.  Click **Complete**.
 
-11. **[変更の適用]** をクリックします。
+11. Click **Apply Changes**.
 
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
 
-Azure AD ユーザーが Clever にログインできるようにするには、そのユーザーを Clever にプロビジョニングする必要があります。Clever の場合、プロビジョニングは Clever サポート チームが実行する必要のある手動のタスクです。
+In order to enable Azure AD users to log into Clever, they must be provisioned into Clever.  
+In the case of Clever, provisioning is a manual task that needs to be performed by your Clever support team.
 
->[AZURE.NOTE] Clever から提供されている他の Clever ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other Clever user account creation tools or APIs provided by Clever to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
 
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Clever に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-clever,-perform-the-following-steps:"></a>To assign users to Clever, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Clever** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Clever **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-clever-tutorial/IC798987.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-clever-tutorial/IC798987.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-clever-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

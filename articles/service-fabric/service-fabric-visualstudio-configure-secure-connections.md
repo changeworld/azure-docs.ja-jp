@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric クラスターでサポートされているセキュリティ保護された接続を構成する |Microsoft Azure"
-   description="Visual Studio を使用して、Azure Service Fabric クラスターでサポートされているセキュリティで保護された接続を構成する方法について説明します。"
+   pageTitle="Configure secure connections supported by the Service Fabric cluster | Microsoft Azure"
+   description="Learn how to use Visual Studio to configure secure connections that are supported by the Azure Service Fabric cluster."
    services="service-fabric"
    documentationCenter="na"
    authors="cawaMS"
@@ -16,45 +16,46 @@
    ms.date="10/08/2015"
    ms.author="cawaMS" />
 
-# Visual Studio から Service Fabric クラスターにセキュリティ保護された接続を構成する
 
-アクセス制御ポリシーが構成されている Azure Service Fabric クラスターに Visual Studio を使用して安全にアクセスする方法について説明します。
+# <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Configure secure connections to a Service Fabric cluster from Visual Studio
 
-## クラスターの接続の種類
+Learn how to use Visual Studio to securely access an Azure Service Fabric cluster with access control policies configured.
 
-Azure Service Fabric クラスターでサポートされている接続には、**セキュリティ保護されていない**接続と **x509 証明書に基づいて**セキュリティ保護された接続の 2 つの種類があります (Service Fabric クラスターがオンプレミスでホストされている場合は、**Windows** 認証と **dSTS** 認証もサポートされます)。 クラスターの作成中に、クラスターの接続の種類を構成する必要があります。作成した接続の種類を後で変更することはできません。
+## <a name="cluster-connection-types"></a>Cluster connection types
 
-Visual Studio Service Fabric Tools は、クラスターに接続して発行するために必要なすべての種類の認証をサポートしています。セキュリティ保護された Service Fabric クラスターをセットアップする方法については、「[Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md)」を参照してください。
+Two types of connections are supported by the Azure Service Fabric cluster: **non-secure** connections and **x509 certificate-based** secure connections. (For Service Fabric clusters hosted on-premises, **Windows** and **dSTS** authentications are also supported.) You have to configure the cluster connection type when the cluster is being created. Once it's created, the connection type can’t be changed.
 
-## 発行プロファイルにクラスター接続を構成する
+The Visual Studio Service Fabric tools support all authentication types for connecting to a cluster for publishing. See [Setting up a Service Fabric cluster from the Azure portal](service-fabric-cluster-creation-via-portal.md) for instructions on how to set up a secure Service Fabric cluster.
 
-Visual Studio から Service Fabric プロジェクトを発行するには、**[Service Fabric アプリケーションの発行]** ダイアログ ボックスで、**[接続エンドポイント]** セクションの **[選択]** をクリックして Azure Service Fabric クラスターを選択します。Azure アカウントにサインインし、サブスクリプションで利用可能な既存のクラスターを選択できます。
+## <a name="configure-cluster-connections-in-publish-profiles"></a>Configure cluster connections in publish profiles
 
-![**[Service Fabric アプリケーションの発行]** ダイアログ ボックスを使用して Service Fabric 接続を構成します。][publishdialog]
+If you publish a Service Fabric project from Visual Studio, use the **Publish Service Fabric Application** dialog box to choose an Azure Service Fabric cluster by clicking the **Select** button in **Connection endpoint** section. You can sign in to your Azure account and then select an existing cluster under your subscriptions.
 
-**[Service Fabric クラスターの選択]** ダイアログ ボックスによって自動的にクラスターの接続が検証されます。検証に成功した場合、システムに正しい証明書がインストールされていてクラスターに安全に接続できるか、クラスターがセキュリティ保護されていないことを意味しています。検証に失敗した場合は、ネットワークに問題が発生しているか、システムが正しく構成されていないためにセキュリティ保護されたクラスターに接続できない可能性があります。
+![The **Publish Service Fabric Application** dialog box is used to configure a Service Fabric connection.][publishdialog]
 
-![**[Service Fabric クラスターの選択]** ダイアログ ボックスで、既存の Service Fabric クラスター接続を構成するか、新しいクラスター接続を作成して構成することができます。][selectsfcluster]
+The **Select Service Fabric Cluster** dialog box automatically validates the cluster connection. If validation passes, it means that your system has the correct certificates installed to connect to the cluster securely, or your cluster is non-secure. Validation failures can be caused by network issues or by not having your system correctly configured to connect to a secure cluster.
 
-### セキュリティ保護されたクラスターに接続するには
+![In the **Select Service Fabric Cluster** dialog box, you can configure an existing Service Fabric cluster connection or create and configure a new cluster connection.][selectsfcluster]
 
-1.	接続先のクラスターによって信頼されているクライアント証明書のいずれかにアクセスできることを確認します。証明書は通常、Personal Information Exchange (.pfx) ファイルとして共有されています。クライアントへのアクセスを許可するようにサーバーを構成する方法については、「[Azure ポータルからの Service Fabric クラスターのセットアップ](service-fabric-cluster-creation-via-portal.md)」を参照してください。
+### <a name="to-connect-to-a-secure-cluster"></a>To connect to a secure cluster
 
-2.	信頼された証明書をインストールします。そのためには、.pfx ファイルをダブルクリックするか、PowerShell スクリプト Import-PfxCertificate を使用して証明書をインポートします。証明書を **Cert:\\LocalMachine\\My** にインストールします。証明書のインポート時、すべての既定設定をそのまま使用して問題ありません。
+1.  Make sure you can access one of the client certificates that the destination cluster trusts. The certificate is usually shared as a Personal Information Exchange (.pfx) file. See [Setting up a Service Fabric cluster from the Azure portal](service-fabric-cluster-creation-via-portal.md) for how to configure the server to grant access to a client.
 
-3.	プロジェクトのショートカット メニューで **[発行]** を選択し、**[Azure アプリケーションの公開]** ダイアログ ボックスを開いて、対象のクラスターを選択します。自動的に接続が解決され、発行プロファイルにセキュリティ保護された接続パラメーターが保存されます。
+2.  Install the trusted certificate. To do this, double-click the .pfx file, or use the PowerShell script Import-PfxCertificate to import the certificates. Install the certificate to **Cert:\LocalMachine\My**. It's OK to accept all default settings while importing the certificate.
 
-4.	[省略可能]: 発行プロファイルを編集して、セキュリティ保護されたクラスターの接続を指定できます。
+3.  Choose the **Publish...** command on the shortcut menu of the project to open the **Publish Azure Application** dialog box and then select the target cluster. The tool automatically resolves the connection and saves the secure connection parameters in the publish profile.
 
-    発行プロファイルの XML ファイルを手動で編集して証明書の情報を指定するため、証明書ストアの名前、ストアの場所、および証明書の拇印をメモしておいてください。後で、証明書ストアの名前とストアの場所に対して値の指定が必要になります。詳細については、[方法: 証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695(v=vs.110).aspx) を参照してください。
+4.  [Optional]: You can edit the publish profile to specify a secure cluster connection.
 
-    *ClusterConnectionParameters* パラメーターを使用して、Service Fabric クラスターに接続するときに使用する PowerShell のパラメーターを指定できます。Connect-ServiceFabricCluster コマンドレットが受け取るパラメーターをすべて使用できます。使用可能なパラメーターの一覧については、「[Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx)」を参照してください。
+    Since you're manually editing the Publish Profile XML file to specify the certificate information, be sure to note the certificate store name, store location, and certificate thumbprint. You'll need to provide these values for the certificate's store name and store location. See [How to: Retrieve the Thumbprint of a Certificate](https://msdn.microsoft.com/library/ms734695(v=vs.110).aspx) for more information.
 
-    リモート クラスターに発行する場合は、そのクラスターに適したパラメーターを指定する必要があります。次は、セキュリティ保護されていないクラスターに接続する場合の例です。
+    You can use the *ClusterConnectionParameters* parameters to specify the PowerShell parameters to use when connecting to the Service Fabric cluster. Valid parameters are any that are accepted by the Connect-ServiceFabricCluster cmdlet. See [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx) for a list of available parameters.
+
+    If you’re publishing to a remote cluster, you need to specify the appropriate parameters for that specific cluster. The following is an example of connecting to a non-secure cluster:
 
     `<ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com:19000" />`
 
-    次は、x509 証明書ベースのセキュリティ保護されたクラスターに接続する場合の例です。
+    Here’s an example for connecting to an x509 certificate-based secure cluster:
 
     ```
     <ClusterConnectionParameters
@@ -67,13 +68,17 @@ Visual Studio から Service Fabric プロジェクトを発行するには、**
     StoreName="My" />
     ```
 
-5.	アップグレード パラメーターやアプリケーション パラメーター ファイルの場所など、他の必要な設定を編集してから、Visual Studio の **[Service Fabric アプリケーションの発行]** ダイアログ ボックスからアプリケーションを発行します。
+5.  Edit any other necessary settings, such as upgrade parameters and Application Parameter file location, and then publish your application from the **Publish Service Fabric Application** dialog box in Visual Studio.
 
-## 次のステップ
-Service Fabric クラスターにアクセスする方法の詳細については、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+For more information about accessing Service Fabric clusters, see [Visualizing your cluster by using Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->
-[publishdialog]: ./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png
-[selectsfcluster]: ./media/service-fabric-visualstudio-configure-secure-connections/selectsfcluster.png
+[publishdialog]:./media/service-fabric-visualstudio-configure-secure-connections/publishdialog.png
+[selectsfcluster]:./media/service-fabric-visualstudio-configure-secure-connections/selectsfcluster.png
 
-<!---HONumber=AcomDC_0114_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

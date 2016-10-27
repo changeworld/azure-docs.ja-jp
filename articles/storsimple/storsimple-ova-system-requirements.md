@@ -1,6 +1,6 @@
 <properties
-   pageTitle="StorSimple Virtual Array のシステム要件"
-   description="StorSimple Virtual Array のソフトウェア要件とネットワーク要件について説明します。"
+   pageTitle="StorSimple Virtual Array system requirements"
+   description="Learn about the software and networking requirements for your StorSimple Virtual Array"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,119 +16,124 @@
    ms.date="07/14/2016"
    ms.author="alkohli"/>
 
-# StorSimple Virtual Array のシステム要件
 
-## 概要
+# <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array system requirements
 
-この記事では、Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) とアレイにアクセスするストレージ クライアントの重要なシステム要件について説明します。StorSimple システムをデプロイする前に以下の情報を慎重に確認します。さらにデプロイと後続の操作中にも必要に応じて以下の情報を参照することをお勧めします。
+## <a name="overview"></a>Overview
 
-システム要件は次のとおりです。
+This article describes important system requirements for your Microsoft Azure StorSimple Virtual Array (also known as StorSimple on-premises virtual device or StorSimple virtual device) and for the storage clients accessing the array. We recommend that you review the information carefully before you deploy your StorSimple system, and then refer back to it as necessary during deployment and subsequent operation.
 
--   **ストレージ クライアントのソフトウェア要件** - サポートされている仮想化プラットフォーム、Web ブラウザー、iSCSI イニシエーター、SMB クライアント、仮想デバイスの最小要件、オペレーティング システムの追加要件について説明します。
+The system requirements include:
 
--   **、StorSimple デバイスのネットワーク要件** - iSCSI、クラウド、または管理トラフィックを使用できるようにするため、ファイアウォールで開いておく必要があるポートについての情報を提供します。
+-   **Software requirements for storage clients** - describes the supported virtualization platforms, web browsers, iSCSI initiators, SMB clients, minimum virtual device requirements, and any additional requirements for those operating systems.
 
-この記事に記載されている StorSimple のシステム要件の情報は、StorSimple Virtual Array にのみ適用されます。
+-   **Networking requirements for the StorSimple device** - provides information about the ports that need to be open in your firewall to allow for iSCSI, cloud, or management traffic.
 
-- 8000 シリーズ デバイスについては、「[StorSimple ソフトウェア、高可用性、ネットワークの要件](storsimple-system-requirements.md)」をご覧ください。
+The StorSimple system requirements information published in this article applies to StorSimple Virtual Arrays only.
+
+- For 8000 series devices, go to [System requirements for your StorSimple 8000 series device](storsimple-system-requirements.md).
  
-- 7000 シリーズ デバイスについては、「[StorSimple System Requirements](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)」をご覧ください。
+- For 7000 series devices, go to [System requirements for your StorSimple 5000-7000 series device](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements).
 
 
-## ソフトウェア要件
+## <a name="software-requirements"></a>Software requirements
 
-ソフトウェア要件には、サポートされている Web ブラウザー、SMB のバージョン、仮想化プラットフォーム、仮想デバイスの最小要件に関する情報が含まれています。
+The software requirements include the information on the supported web browsers, SMB versions, virtualization platforms and the minimum virtual device requirements.
 
-### サポートされている仮想化プラットフォーム
+### <a name="supported-virtualization-platforms"></a>Supported virtualization platforms
 
 
-| **ハイパーバイザー** | **バージョン** |
+| **Hypervisor** | **Version**                          |
 |----------------|--------------------------------------|
-| Hyper-V | Windows Server 2008 R2 SP1 以降 |
-| VMware ESXi | 5\.5 以降 |
+| Hyper-V        | Windows Server 2008 R2 SP1 and later |
+| VMware ESXi    | 5.5 and later                        |
 
-### 仮想デバイスの要件
+### <a name="virtual-device-requirements"></a>Virtual device requirements
 
-| **コンポーネント** | **要件** |
+| **Component**                                | **Requirement**            |
 |----------------------------------------------|----------------------------|
-| 最小仮想プロセッサ (コア) 数 | 4 |
-| 最小メモリ (RAM) | 8 GB |
-| ディスク領域<sup>1</sup> | OS ディスク - 80 GB <br></br>データ ディスク - 500 GB ～ 8 TB|
-| 最小ネットワーク インターフェイス数 | 1 |
-| 最小インターネット帯域幅<sup>2</sup> | 5 Mbps |
+| Minimum number of virtual processors (cores) | 4                          |
+| Minimum memory (RAM)                         | 8 GB                       |
+| Disk space<sup>1</sup>                       | OS disk - 80 GB <br></br>Data disk - 500 GB to 8 TB|
+| Minimum number of network interface(s)       | 1                          |
+| Minimum Internet bandwidth<sup>2</sup>       | 5 Mbps                     |
 
-<sup>1</sup> - 仮想プロビジョニング対応
+<sup>1</sup> - Thin provisioned
 
-<sup>2</sup> - ネットワーク要件は、日次データ変化率によって異なる場合があります。たとえば、デバイスで 1 日に 10 GB 以上の変更をバックアップする必要がある場合、5 Mbps 接続での日次バックアップには最大 4.25 時間かかる可能性があります (データの圧縮も重複除去もできなかった場合)。
+<sup>2</sup> - Network requirements may vary depending on the daily data change rate. For example, if a device needs to back up 10 GB or more changes during a day, then the daily backup over a 5 Mbps connection could take up to 4.25 hours (if the data could not be compressed or deduplicated).
 
-### サポートされている Web ブラウザー
+### <a name="supported-web-browsers"></a>Supported web browsers
 
-| **コンポーネント** | **バージョン** | **その他の要件/注意事項** |
+| **Component**     | **Version** | **Additional requirements/notes** |
 |-------------------|-----------------|-----------------------------------|
-| Microsoft Edge | 最新バージョン | |
-| Internet Explorer | 最新バージョン | Internet Explorer 11 でテスト済み |
-| Google Chrome | 最新バージョン | Chrome 46 でテスト済み |
+| Microsoft Edge    | Latest version  |                                   |
+| Internet Explorer | Latest version  | Tested with Internet Explorer 11  |
+| Google Chrome     | Latest version  | Tested with Chrome 46             |
 
-### サポートされているストレージ クライアント 
+### <a name="supported-storage-clients"></a>Supported storage clients 
 
-次のソフトウェア要件は、StorSimple Virtual Array (iSCSI サーバーとして構成されている) にアクセスする iSCSI イニシエーターに適用されます。
+The following software requirements are for the iSCSI initiators that access your StorSimple Virtual Array (configured as an iSCSI server).
 
-| **サポートされているオペレーティング システム** | **必須のバージョン** | **その他の要件/注意事項** |
+| **Supported operating systems** | **Version required** | **Additional requirements/notes** |
 | --------------------------- | ---------------- | ------------- |
-| Windows Server | 2008R2 SP1、2012、2012R2 |StorSimple は、シン プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームを作成できます。部分的にプロビジョニングされたボリュームは作成できません。StorSimple iSCSI ボリュームをサポートしているのは次のもののみです。<ul><li>Windows ベーシック ディスク上のシンプル ボリューム。</li><li>ボリュームをフォーマットするための Windows NTFS。</li>|
+| Windows Server              | 2008R2 SP1, 2012, 2012R2 |StorSimple can create thinly provisioned and fully provisioned volumes. It cannot create partially provisioned volumes. StorSimple iSCSI volumes are supported for only: <ul><li>Simple volumes on Windows basic disks.</li><li>Windows NTFS for formatting a volume.</li>|
 
-次のソフトウェア要件は、StorSimple Virtual Array (ファイル サーバーとして構成されている) にアクセスする SMB クライアントに適用されます。
+The following software requirements are for the SMB clients that access your StorSimple Virtual Array (configured as a file server).
 
-| **SMB バージョン** |
+| **SMB Version** |
 |-------------|
-| SMB 2.x |
-| SMB 3.0 |
-| SMB 3.02 |
+| SMB 2.x     |
+| SMB 3.0     |
+| SMB 3.02    |
  
-## ネットワーク要件 
+## <a name="networking-requirements"></a>Networking requirements 
 
-iSCSI、SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。*アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します
+The following table lists the ports that need to be opened in your firewall to allow for iSCSI, SMB, cloud, or management traffic. In this table, *in* or *inbound* refers to the direction from which incoming client requests access your device. *Out* or *outbound* refers to the direction in which your StorSimple device sends data externally, beyond the deployment: for example, outbound to the Internet.
 
-| **ポート番号<sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
+| **Port No.<sup>1</sup>** | **In or out** | **Port scope** | **Required**              | **Notes**                                                                                                            |
 |--------------------------|---------------|----------------|---------------------------|----------------------------------------------------------------------------------------------------------------------|
-| TCP 80 (HTTP) | アウト | WAN | いいえ | 送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。<br></br>送信 Web プロキシは、ユーザーが構成できます。 |
-| TCP 443 (HTTPS) | アウト | WAN | あり | 送信ポートは、クラウドのデータへのアクセスに使用します。<br></br>送信 Web プロキシは、ユーザーが構成できます。 |
-| UDP 53 (DNS) | アウト | WAN | 場合によっては、メモを参照してください。 | このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。<br></br> **メモ**: ファイル サーバーをデプロイする場合は、ローカル DNS サーバーを使用することをお勧めします。|
-| UDP 123 (NTP) | アウト | WAN | 場合によっては、メモを参照してください。 | このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。<br></br> **メモ**: ファイル サーバーをデプロイする場合は、Active Directory ドメイン コントローラーと時刻を同期することをお勧めします。 |
-| TCP 80 (HTTP) | イン | LAN | あり | これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。<br></br>**メモ**: HTTP 経由でのローカル UI へのアクセスは、自動的に HTTPS にリダイレクトされます。|
-| TCP 443 (HTTPS) | イン | LAN | あり | これは、ローカル管理に使用する StorSimple デバイスのローカル UI の受信ポートです。|
-| TCP 3260 (iSCSI) | イン | LAN | いいえ | このポートは、iSCSI を介してデータにアクセスするために使用されます。|
+| TCP 80 (HTTP)            | Out           | WAN            | No                        | Outbound port is used for Internet access to retrieve updates. <br></br>The outbound web proxy is user configurable. |
+| TCP 443 (HTTPS)          | Out           | WAN            | Yes                       | Outbound port is used for accessing data in the cloud. <br></br>The outbound web proxy is user configurable. |
+| UDP 53 (DNS)             | Out           | WAN            | In some cases; see notes. | This port is required only if you are using an Internet-based DNS server. <br></br> **Note**: If deploying a file server, we recommend using local DNS server.|
+| UDP 123 (NTP)            | Out           | WAN            | In some cases; see notes. | This port is required only if you are using an Internet-based NTP server.<br></br> **Note:** If deploying a file server, we recommend synchronizing time with your Active Directory domain controllers.  |
+| TCP 80 (HTTP)           | In            | LAN            | Yes                       | This is the inbound port for local UI on the StorSimple device for local management. <br></br> **Note**: Accessing the local UI over HTTP will automatically redirect to HTTPS.|
+| TCP 443 (HTTPS)          | In            | LAN            | Yes                       | This is the inbound port for local UI on the StorSimple device for local management.|
+| TCP 3260 (iSCSI)         | In            | LAN            | No                        | This port is used to access data over iSCSI.|
 
-<sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
+<sup>1</sup> No inbound ports need to be opened on the public Internet.
 
-> [AZURE.IMPORTANT] StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
+> [AZURE.IMPORTANT] Ensure that the firewall does not modify or decrypt any SSL traffic between the StorSimple device and Azure.
 
 
-### ファイアウォール ルールの URL パターン 
+### <a name="url-patterns-for-firewall-rules"></a>URL patterns for firewall rules 
 
-多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。Virtual Array と StorSimple Manager サービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなどの他の Microsoft アプリケーションに依存しています。その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。これにより、ネットワーク管理者は必要に応じて StorSimple のファイアウォール ルールを監視し更新する必要があります。
+Network administrators can often configure advanced firewall rules based on the URL patterns to filter the inbound and the outbound traffic. Your virtual array and the StorSimple Manager service depend on other Microsoft applications such as Azure Service Bus, Azure Active Directory Access Control, storage accounts, and Microsoft Update servers. The URL patterns associated with these applications can be used to configure firewall rules. It is important to understand that the URL patterns associated with these applications can change. This in turn will require the network administrator to monitor and update firewall rules for your StorSimple as and when needed. 
 
-ほとんどの場合、StorSimple 固定 IP アドレスに基づき、送信トラフィックのファイアウォール ルールを設定することが推奨されます。ただし、次の情報を使用して、セキュリティで保護された環境を作成するのにために必要な高度なファイアウォール ルールを設定することもできます。
+We recommend that you set your firewall rules for outbound traffic, based on StorSimple fixed IP addresses, liberally in most cases. However, you can use the information below to set advanced firewall rules that are needed to create secure environments.
 
 > [AZURE.NOTE] 
 > 
-> - デバイスの (送信元) IP は、常にすべてのクラウド対応ネットワーク インターフェイスに合わせて設定します。
-> - 宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/ja-JP/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
+> - The device (source) IPs should always be set to all the cloud-enabled network interfaces. 
+> - The destination IPs should be set to [Azure datacenter IP ranges](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653).
 
 
-| URL パターン | コンポーネント/機能 |
+| URL pattern                                                      | Component/Functionality                                           |
 |------------------------------------------------------------------|---------------------------------------------------------------|
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus|
-|`http://*.backup.windowsazure.com`|デバイス登録|
-|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|証明書の失効 |
-| `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure ストレージ アカウントと監視 |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> |
-| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
-| `https://*.partners.extranet.microsoft.com/*` | サポート パッケージ |
-| `http://*.data.microsoft.com ` | Windows の Telemetry Service (「[顧客満足度及び診断テレメトリのための更新プログラム](https://support.microsoft.com/ja-JP/kb/3068708)」を参照) |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`   | StorSimple Manager service<br>Access Control Service<br>Azure Service Bus|
+|`http://*.backup.windowsazure.com`|Device registration|
+|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|Certificate revocation |
+| `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure storage accounts and monitoring |
+| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update servers<br>                        |
+| `http://*.deploy.akamaitechnologies.com`                         |Akamai CDN |
+| `https://*.partners.extranet.microsoft.com/*`                    | Support package                                                  |
+| `http://*.data.microsoft.com `                   | Telemetry service in Windows, see the [update for customer experience and diagnostic telemetry](https://support.microsoft.com/en-us/kb/3068708)                                                  |
 
-## 次のステップ
+## <a name="next-step"></a>Next step
 
--   [StorSimple Virtual Array をデプロイするためにポータルを準備します。](storsimple-ova-deploy1-portal-prep.md)
+-   [Prepare the portal to deploy your StorSimple Virtual Array](storsimple-ova-deploy1-portal-prep.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

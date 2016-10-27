@@ -1,40 +1,46 @@
 <a name="tellmevm"></a>
-## 仮想マシンに関する詳細情報
+## <a name="tell-me-about-virtual-machines"></a>Tell me about virtual machines
 
-Azure Virtual Machines では、クラウドで仮想マシンを作成し、使用することができます。*"サービスとしてのインフラストラクチャ (IaaS)"* として提供されるこの仮想マシン テクノロジには、さまざまな利用方法があります。次に例をいくつか示します。
+Azure Virtual Machines lets you create and use virtual machines in the cloud. Providing what's known as *Infrastructure as a Service (IaaS)*, virtual machine technology can be used in variety of ways. Some examples are:
 
-- **開発とテスト用の仮想マシン (VM)。** VM は、アプリケーションのコード開発とテストに必要な特定の構成でコンピューターをすばやく簡単に作成する方法を提供するので、開発グループは一般に VM を使用します。Azure Virtual Machines は、このような VM を作成し、使用して、不要になったときに削除できる簡単で経済的な方法を提供します。
-- **クラウドでのアプリケーションの実行。** 一部のアプリケーションをパブリック クラウドで実行することには、コスト面でのメリットがあります。たとえば、需要が急増しているアプリケーションについて考えてみます。十分なハードウェアを装備した独自のデータセンターを設置すると、ピーク時の需要に対応できますが、そのハードウェアはほとんどの時間、使用率が低下することになります。このアプリケーションを Azure で実行すると、必要なときにだけ VM の追加料金を支払い、需要が少なくなったときにはシャットダウンすることができます。また、オンデマンドのコンピューティング リソースをコミットメントなしに早急に必要とするスタートアップ企業にとっても、Azure は最も適した選択肢と言えます。
-- **自社のデータセンターをパブリック クラウドに拡張する。** Azure Virtual Network があれば、自社のオンプレミスのネットワークの延長として仮想ネットワーク (VNET) を作成し、VM をその VNET に追加できます。これにより、[SharePoint](../articles/virtual-machines/virtual-machines-windows-sharepoint-farm.md)、[SQL Server](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md) などのアプリケーションやその他のアプリケーションを Azure VM 上で実行できます。この方法は、アプリケーションを自社のデータ センターの VM で実行するよりもデプロイが容易で、コストを抑えられます。   
-- **障害復旧。** めったに利用しないバックアップ データセンターの料金を払い続けるよりも、IaaS ベースの障害回復を使用すると、必要なコンピューティング リソースを本当に必要なときにだけ料金が発生します。たとえば、プライマリ データセンターが故障した場合、Azure で実行する VM を作成して、基幹的なアプリケーションを実行し、その後、不要になったときにはシャットダウンできます。
+- **Virtual machines (VMs) for development and test.** Development groups commonly use VMs because they offer a quick, easy way to create a computer with specific configurations required to code and test an application. Azure Virtual Machines provides a straightforward and economical way to create these VMs, use them, then delete them when they're no longer needed.
+- **Running applications in the cloud.** It makes economic sense to run some applications in the public cloud. One example is an application that has large spikes in demand. Although you could equip your own data center with enough hardware to handle peak demand, that hardware might be underutilized much of the time. Running this application on Azure lets you pay for extra VMs only when you need them and shut them down when you don't. Or, suppose you're a start-up that needs on-demand computing resources quickly and with no commitment. Once again, Azure can be the right choice.
+- **Extending your own datacenter into the public cloud.** When you use Azure Virtual Network, your organization can create a virtual network (VNET) that's an extension of your own on-premises network and add VMs to that VNET. This allows running applications such as [SharePoint](../articles/virtual-machines/virtual-machines-windows-sharepoint-farm.md), [SQL Server](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md) and others on an Azure VM. This approach might be easier to deploy or less expensive than running them in VMs your own datacenter.   
+- **Disaster recovery.** Rather than paying continuously for a backup datacenter that's rarely used, IaaS-based disaster recovery lets you pay for the computing resources you need only when you really need them.  For example, if your primary datacenter goes down, you can create VMs running on Azure to run essential applications, then shut them down when they're no longer needed.
 
-他の仮想マシンと同様に、Azure の VM にはオペレーティング システム、ストレージ、ネットワーク機能があり、さまざまなアプリケーションを実行できます。Azure またはいずれかのパートナーから提供されたイメージを使用したり、独自のイメージを使用したりできます。例には、以下のさまざまなバージョン、エディション、および構成が含まれます。
+Like other virtual machines, a VM in Azure has an operating system, storage and networking capabilities and can run a wide variety of applications. You can use an image provided by Azure or one of it's partners, or use your own. Examples include various versions, editions and configurations of:
  
-- Suse、Ubuntu、CentOS などの Linux サーバー
+- Linux servers such as Suse, Ubuntu and CentOS
 - Windows Server 
 - SQL Server
 - BizTalk Server 
 - SharePoint Server
 
-仮想マシンは、仮想ハード ディスク (VHD) を使用して、オペレーティング システム (OS) およびデータを保存します。VHD は、OS をインストールするために選択できるイメージの保存にも使用できます。次の図はそのことに加えて、VM の作成および管理に使用できる 2 つのツールを示しています。
+Virtual machines use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you can choose from to install an OS. The following figure shows this, as well as two of the tools for creating and managing your VMs.
 
-<a name="fig_createvms"></a> ![vm\_diagram](./media/virtual-machines-choose-me-content/diagram.png)
+<a name="fig_createvms"></a>
+![vm_diagram](./media/virtual-machines-choose-me-content/diagram.png)
 
-**図: Azure Virtual Machines はサービスとしてのインフラストラクチャ (IaaS) を提供する。**
+**Figure: Azure Virtual Machines provides Infrastructure as a Service.**
 
-VM は、ブラウザー ベースのポータル、スクリプトがサポートされるコマンド ライン ツール、または直接 REST API を使用して管理できます。RightScale や ScaleXtreme などの Microsoft パートナーも、REST API を基にした管理サービスを提供しています。
+VMs can be managed using a browser-based portal, command-line tools with support for scripting, or directly through the REST API. Microsoft partners such as RightScale and ScaleXtreme also provide management services that rely on the REST API. 
 
-OS の他に、VM で使用できるその他の構成は次のとおりです。
+Along with the OS, other configuration choices you have with VMs include:
 
-- サイズ。接続できるディスクの数や処理能力などの要因を決定します。Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。詳細については、「[Sizes for Virtual Machines (仮想マシンのサイズ)](../articles/virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。  
-- 新しい VM がホストされる Azure リージョン (米国、ヨーロッパ、またはアジア)。 
-- VM の拡張機能。ウイルス対策ソフトウエアの実行や Windows PowerShell の Desired State Configuration 機能の使用などの能力を仮想マシンに追加します。
+- The size, which determines factors such as how many disks you can attach and the processing power. Azure offers a wide variety of sizes to support many types of uses. For details, see [Sizes for Virtual Machines](../articles/virtual-machines/virtual-machines-linux-sizes.md).  
+- The Azure region where your new VM will be hosted, such as in the US, Europe, or Asia. 
+- VM extensions, which give your virtual machine additional capabilities, such as running anti-virus or using the Desired State Configuration feature of Windows PowerShell.
 
-VM を考慮する利点は他にもあります。それは次のとおりです。
+Other benefits to consider for VMs include:
 
-**従量課金制** -- Azure では、VM のサイズおよびオペレーティング システムに基づいて時間単位の料金を請求します。時間単位を満たさない場合は、分単位でのみ請求します。ストレージは別料金で、別個に請求されます。詳細については、「[Virtual Machines Pricing (仮想マシンの料金)](https://azure.microsoft.com/pricing/details/virtual-machines/)」を参照してください。
+**Pay-as-you-go** -- Azure charges an hourly price based on the VM’s size and operating system. For partial hours, Azure charges only for the minutes of use. Storage is priced and charged separately. For details, see [Virtual Machines Pricing](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
-**回復力** -- Azure は、動作している各 VM をホストする物理ハードウェアを監視します。VM を実行している物理サーバーに障害が生じると、Azure はこれを検出し、VM を新しいハードウェアに移動させて再起動します。このプロセスはサービス復旧と呼ばれることがあります。また、VHD の冗長なコピーを BLOB ストレージに保持することで、仮想マシンのデータを保護します。
+**Resiliency** -- Azure monitors the physical hardware that hosts each running VM. If a physical server running a VM fails, Azure notices this, moves the VM to new hardware and restarts the VM. This process is sometimes called service healing. Azure also protects a virtual machine's data, by keeping redundant copies of the VHDs in blob storage. 
 
+
+
+
+
+<!--HONumber=Oct16_HO2-->
 
 

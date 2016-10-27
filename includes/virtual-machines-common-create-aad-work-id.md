@@ -1,94 +1,94 @@
 
 <br>
 
-> [AZURE.NOTE] 管理者からユーザー名とパスワードが提供されている場合は、既に職場または学校の ID を持っている可能性があります (*組織 ID* とも呼ばれます)。その場合、いつでも Azure アカウントの使用を開始して、アカウントが必要な Azure リソースにアクセスできます。これらのリソースを使用できない場合は、この記事をもう一度ご確認ください。詳細については、「[サインインで使用できるアカウント](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts)」、「[Azure サブスクリプションと Azure AD との関係](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir)」をご覧ください。
+> [AZURE.NOTE] If you were given a user name and password by an administrator, there's a good chance that you already have a work or school ID (also sometimes called an *organizational ID*). If so, you can immediately begin to use your Azure account to access Azure resources that require one. If you find that you cannot use those resources, you may need to return to this article for help. For more information, see [Accounts that you can use for sign in](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SignInAccounts) and [How an Azure subscription is related to Azure AD](https://msdn.microsoft.com/library/azure/dn629581.aspx#BKMK_SubRelationToDir).
 
-手順は簡単です。Azure クラシック ポータルで署名済み ID を見つけて、既定の Azure Active Directory ドメインを検出し、Azure 共同管理者として新しいユーザーを追加する必要があります。
+The steps are simple. You need to locate your signed on identity in the Azure classic portal, discover your default Azure Active Directory domain, and add a new user to it as an Azure co-administrator.
 
-## Azure クラシック ポータルで既定のディレクトリを見つける
+## <a name="locate-your-default-directory-in-the-azure-classic-portal"></a>Locate your default directory in the Azure classic portal
 
-まず、個人の Microsoft アカウント ID で [Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。ログインしたら、左側の青色のパネルを下にスクロールし、**[ACTIVE DIRECTORY]** をクリックします。
+Start by logging in to the [Azure classic portal](https://manage.windowsazure.com) with your personal Microsoft account identity. After you are logged in, scroll down the blue panel on the left side and click **ACTIVE DIRECTORY**.
 
 ![Azure Active Directory](./media/virtual-machines-common-create-aad-work-id/azureactivedirectorywidget.png)
 
-最初に、Azure で自分の ID の一部を確認しましょう。次に示すように、メイン ウィンドウで既定のディレクトリが 1 つあることがわかります。
+Let's start by finding some information about your identity in Azure. You should see something like the following in the main pane, showing that you have one default directory.
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultaadlisting.png)
 
-その他の情報を確認してみましょう。既定のディレクトリ列をクリックすると、既定のディレクトリのプロパティが表示されます。
+Let's find out some more information about it. Click the default directory row, which brings you into the default directory properties.  
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectorypage.png)
 
-既定のドメイン名を表示するには、**[DOMAINS]** をクリックします。
+To view the default domain name, click **DOMAINS**.
 
 ![](./media/virtual-machines-common-create-aad-work-id/domainclicktoseeyourdefaultdomain.png)
 
-ここでは、Azure アカウントが作成されると、onmicrosoft.com のサブドメインとして使用する個人 ID のハッシュ値 (文字列から生成される数字) である個人の既定ドメインが Azure Active Directory によって作成されたことが確認できるはずです。このドメインを使用して、新しいユーザーを追加することになります。
+Here you should be able to see that when the Azure account was created, Azure Active Directory created a personal default domain that is a hash value (a number generated from a string of text) of your personal ID used as a subdomain of onmicrosoft.com. That's the domain to which you will now add a new user.
 
-## 既定のドメインで新しいユーザーを作成する
+## <a name="creating-a-new-user-in-the-default-domain"></a>Creating a new user in the default domain
 
-**[ユーザー]** をクリックし、自分の個人アカウントを探します。**[ソース]** 列を確認すると **Microsoft アカウント**であることがわかります。ユーザーを既定の onmicrosoft.com Azure Active Directory ドメインで作成します。
+Click **USERS** and look for your single personal account. You should see in the **SOURCED FROM** column that it is a **Microsoft account**. We want to create a user in your default .onmicrosoft.com Azure Active Directory domain.
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectoryuserslisting.png)
 
-次の数ステップでは[手順](https://technet.microsoft.com/library/hh967632.aspx#BKMK_1)の説明に従いますが、特定の例を使用します。
+We're going to follow [these instructions](https://technet.microsoft.com/library/hh967632.aspx#BKMK_1) in the next few steps, but use a specific example.
 
-ページ下部で **[+追加]** をクリックします。表示されるページで、新しいユーザー名を入力し、**[ユーザーの種類]** で **[組織内の新しいユーザー]** を選択します。この例では、新しいユーザー名は `ahmet` です。以前に特定した既定のドメインを ahmet のメール アドレスのドメインとして選択してください。矢印をクリックして次へ進みます。
+At the bottom of the page, click **+ADD USER**. In the page that appears, type the new user name, and make the **Type of User** a **New user in your organization**. In this example, the new user name is `ahmet`. Select the default domain that you discovered previously as the domain for ahmet's email address. Click the next arrow when finished.
 
 ![](./media/virtual-machines-common-create-aad-work-id/addingauserwithdirectorydropdown.png)
 
-Ahmet の詳細を追加しますが、適切な **[ロール]** 値を選択してください。**[グローバル管理者]** を使用すると確実ですが、使用できる場合には、下位のロールを使用することをお勧めします。この例では、**[ユーザー]** ロールを使用します (詳細については、「[ロール別の管理者権限](https://msdn.microsoft.com/library/azure/dn468213.aspx#BKMK_1)」を参照してください)。 操作の各ログで Multi-Factor Authentication を使用する必要がない場合は、Multi-Factor Authentication を有効にしないでください。終了したら、矢印をクリックします。
+Add more details for Ahmet, but make sure to select the appropriate **ROLE** value. It's easy to use **Global Admin** to make sure things are working, but if you can use a lesser role, that's a good idea. This example uses the **User** role. (Find out more at [Administrator permissions by role](https://msdn.microsoft.com/library/azure/dn468213.aspx#BKMK_1).) Do not enable multi-factor authentication unless you want to use multifactor authentication for each log in operation. Click the next arrow when you're finished.
 
 ![](./media/virtual-machines-common-create-aad-work-id/userprofileuseradmin.png)
 
-**[作成]** ボタンをクリックして、Ahmet の一時パスワードを生成、表示します。
+Click the **create** button to generate and display a temporary password for Ahmet.
 
 ![](./media/virtual-machines-common-create-aad-work-id/gettemporarypasswordforuser.png)
 
-ユーザー名の電子メール アドレスをコピーするか、または[ **パスワードを電子メールで送信**]を使用します。すぐにログオン時にその情報が必要になります。
+Copy the user name email address, or use **SEND PASSWORD IN EMAIL**. You'll need the information to log on shortly.
 
 ![](./media/virtual-machines-common-create-aad-work-id/receivedtemporarypassworddialog.png)
 
-Azure Active Directory から取得した新しいユーザー、**開発者の Ahmet** が表示されます。Azure Active Directory を使用して、職場または学校の新しい ID を作成しました。ただし、この ID には Azure のリソースを使用する権限がまだありません。
+Now you should see the new user, **Ahmet the Developer**, sourced from Azure Active Directory. You've created the new work or school identity with Azure Active Directory. However, this identity does not yet have permissions to use Azure resources.
 
 ![](./media/virtual-machines-common-create-aad-work-id/defaultdirectoryusersaftercreate.png)
 
-[**パスワードを電子メールで送信**]を使用する場合、次のような電子メールが送信されます。
+If you use **SEND PASSWORD IN EMAIL**, the following kind of email is sent.
 
 ![](./media/virtual-machines-common-create-aad-work-id/emailreceivedfromnewusercreation.png)
 
-## サブスクリプションに Azure 共同管理者の権限を追加する
+## <a name="adding-azure-co-administrator-rights-for-subscriptions"></a>Adding Azure co-administrator rights for subscriptions
 
-今度は、新しいユーザーが管理ポータルにサインインできるように、サブスクリプションの共同管理者として新しいユーザーを追加する必要があります。そのためには、左下のパネルで [**設定**] をクリックします。
+Now you need to add the new user as a co-administrator of your subscription so the new user can sign in to the Management Portal. To do this, in the lower-left panel click **Settings**.
 
 ![](./media/virtual-machines-common-create-aad-work-id/thesettingswidget.png)
 
-メインの設定領域で、上部の **[管理者]** をクリックすると、個人の Microsoft アカウント ID のみが表示されるはずです。ページ下部で **[+追加]** をクリックし、共同管理者を指定します。ここでは、既定のドメインと、作成した新しいユーザーの電子メール アドレスを入力します。次のスクリーン ショットのように、既定のディレクトリのユーザーの横に緑色のチェック マークが表示されます。このユーザーに管理を許可するすべてのサブスクリプションを選択してください。
+In the main settings area, click **ADMINISTRATORS** at the top and you should see only your personal Microsoft account identity. At the bottom of the page, click **+ADD** to specify a co-administrator. Here, enter the email address of the new user you had created, including your default domain. As shown in the next screenshot, a green check mark appears next to the user for the default directory. Remember to select all of the subscriptions that you would like this user to be able to administer.
 
 ![](./media/virtual-machines-common-create-aad-work-id/addingnewuserascoadmin.png)
 
-完了すると、新しい共同管理者 ID を含む、2 人のユーザーが表示されます。ポータルからログアウトします。
+When you are done, you should now see two users, including your new co-administrator identity. Log out of the portal.
 
 ![](./media/virtual-machines-common-create-aad-work-id/newuseraddedascoadministrator.png)
 
-## 新しいユーザーとしてログインしてパスワードを変更する
+## <a name="logging-in-and-changing-the-new-user's-password"></a>Logging in and changing the new user's password
 
-作成した新しいユーザーとしてログインします。
+Log in as the new user you created.
 
 ![](./media/virtual-machines-common-create-aad-work-id/signinginwithnewuser.png)
 
-すぐに新しいパスワードを作成するように求められます。
+You will immediately be prompted to create a new password.
 
 ![](./media/virtual-machines-common-create-aad-work-id/mustupdateyourpassword.png)
 
-次のような正常に完了したことを示す内容が表示されます。
+You should be rewarded with success that looks like the following.
 
 ![](./media/virtual-machines-common-create-aad-work-id/successtourdialog.png)
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-新しい Azure Active Directory の ID で [Azure リソース グループ テンプレート](../articles/xplat-cli-azure-resource-manager.md)を使用できます。
+You can now use your new Azure Active Directory identity to use [Azure resource group templates](../articles/xplat-cli-azure-resource-manager.md).
 
     azure login
     info:    Executing command login
@@ -119,4 +119,7 @@ Azure Active Directory から取得した新しいユーザー、**開発者の 
     data:
     info:    group create command OK
 
-<!---HONumber=AcomDC_0330_2016------>
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple デバイスの非アクティブ化と削除 |Microsoft Azure"
-   description="StorSimple デバイスを非アクティブ化して削除することによって、サービスからこれを削除する方法について説明します。"
+   pageTitle="Deactivate and delete a StorSimple device | Microsoft Azure"
+   description="Describes how to remove StorSimple device from service by  first deactivating it and then deleting it."
    services="storsimple"
    documentationCenter=""
    authors="SharS"
@@ -12,97 +12,102 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="06/01/2016"
+   ms.date="10/18/2016"
    ms.author="anoobbacker" />
 
-# StorSimple デバイスの非アクティブ化と削除
 
-## 概要
+# <a name="deactivate-and-delete-a-storsimple-device"></a>Deactivate and delete a StorSimple device
 
-StorSimple デバイスをサービスから切り離したいことがあります (デバイスを交換またはアップグレードする場合や、StorSimple が不要になった場合など)。その場合は、削除する前に、デバイスを非アクティブ化する必要があります。非アクティブ化すると、デバイスとこれに対応する StorSimple Manager サービスの接続が切断されます。このチュートリアルでは、StorSimple デバイスを非アクティブ化した後に削除することによってサービスから削除する方法について説明します。
+## <a name="overview"></a>Overview
 
-デバイスを非アクティブ化すると、デバイスにローカルに保存されていたすべてのデータにアクセスできなくなります。復元できるのは、クラウドに保存されていた、デバイスに関連付けられているデータだけです。
+You may wish to take a StorSimple device out of service (for example, if you are replacing or upgrading your device or if you are no longer using StorSimple). If this is the case, you will need to deactivate the device before you can delete it. Deactivating severs the connection between the device and the corresponding StorSimple Manager service. This tutorial explains how to remove a StorSimple device from service by first deactivating it and then deleting it. 
 
->[AZURE.WARNING] 非アクティブ化は永続的な操作であるため、元に戻すことはできません。ファクトリで最初にリセットしない限り、非アクティブ化されたデバイスを StorSimple Manager サービスに登録することはできません。
+When you deactivate a device, any data that was stored locally on the device will no longer be accessible. Only the data associated with the device that was stored in the cloud can be recovered.  
+
+>[AZURE.WARNING] Deactivation is a PERMANENT operation and cannot be undone. A deactivated device cannot be registered with the StorSimple Manager service unless it is first reset by the factory. 
 >
->出荷時の設定にリセットするプロセスにより、お使いのデバイスにローカルに保存されているすべてのデータが削除されます。したがって、デバイスを非アクティブ化する前に、すべてのデータのクラウド スナップショットを取得することが不可欠です。これを行うことにより、後ですべてのデータを回復できます。
+>The factory reset process deletes all the data that was stored locally on your device. Therefore, it is essential that you take a cloud snapshot of all your data before you deactivate a device. This will allow you to recover all the data at a later stage.
 
-このチュートリアルでは、次の方法について説明します。
+This tutorial explains how to:
 
-- デバイスを非アクティブ化してデータを削除する
-- デバイスを非アクティブ化してデータを保持する
+- Deactivate a device and delete the data
+- Deactivate a device and retain the data
 
-また、非アクティブ化および削除が StorSimple 仮想デバイスでどのように動作するのかについても説明します。
+It also explains how deactivation and deletion works on a StorSimple virtual device.
 
->[AZURE.NOTE] StorSimple 物理または仮想デバイスを非アクティブ化する前に、デバイスに依存するクライアントとホストを必ず停止または削除してください。
+>[AZURE.NOTE] Before you deactivate a StorSimple physical or virtual device, make sure to stop or delete clients and hosts that depend on that device.
 
-## データの非アクティブ化と削除
+## <a name="deactivate-and-delete-data"></a>Deactivate and delete data
 
-デバイスを完全に削除し、デバイスのデータを保持しない場合は、以下の手順を実行します。
+If you are interested in deleting the device completely and do not want to retain the data on the device, then complete the following steps.
 
-#### デバイスを非アクティブ化してデータを削除するには  
+#### <a name="to-deactivate-the-device-and-delete-the-data"></a>To deactivate the device and delete the data  
 
-1. デバイスを非アクティブ化する前に、デバイスに関連付けられているすべてのボリューム コンテナー (および、ボリューム) を削除する必要があります。ボリューム コンテナーを削除できるのは、関連付けられているバックアップを削除した後だけです。
+1. Prior to deactivating a device, you must delete all the volume containers (and the volumes) associated with the device. You can delete volume containers only after you have deleted the associated backups.
 
-2. 次のようにデバイスを非アクティブ化します。
+2. Deactivate the device as follows:
 
-    1. StorSimple Manager サービスの **[デバイス]** ページで、非アクティブ化するデバイスを選択し、ページの下部にある **[非アクティブ化]** をクリックします。
+    1. On the StorSimple Manager service **Devices** page, select the device that you wish to deactivate and, at the bottom of the page, click **Deactivate**.
 
-    2. 確認メッセージが表示されます。**[はい]** をクリックして続行します。非アクティブ化のプロセスが開始され、完了するまでに数分かかります。
+    2. A confirmation message will appear. Click **Yes** to continue. The deactivate process will start and take a few minutes to complete.
 
-3. 非アクティブ化を行った後は、デバイスを完全に削除できます。デバイスを削除すると、サービスに接続されているデバイスの一覧からそのデバイスが削除されます。サービスは、削除されたデバイスをもはや管理できなくなります。次のようにしてデバイスを削除します。
+3. After deactivation, you can delete the device completely. Deleting a device removes it from the list of devices connected to the service. The service can then no longer manage the deleted device. Use the following steps to delete the device:
 
-    1. StorSimple Manager サービスの **[デバイス**] ページで、削除する非アクティブ化済みデバイスを選択します。
+    1. On the StorSimple Manager service **Devices** page, select a deactivated device that you wish to delete.
 
-    2. ページの下部にある **[削除]** をクリックします。
+    2. On the bottom on the page, click **Delete**.
 
-    3. 確認を求められます。**[はい]** をクリックして続行します。
+    3. You will be prompted for confirmation. Click **Yes** to continue.
 
-    デバイスが削除されるまで数分かかる場合があります。
+    It may take a few minutes for the device to be deleted.
 
-## データの非アクティブ化と保持
+## <a name="deactivate-and-retain-data"></a>Deactivate and retain data
 
-デバイスを削除するだけで、データは保持する場合は、以下の手順を実行します。
+If you are interested in deleting the device but want to retain the data, then complete the following steps.
 
-####デバイスを非アクティブ化してデータを保持するには 
+####<a name="to-deactivate-a-device-and-retain-the-data"></a>To deactivate a device and retain the data 
 
-1. デバイスを非アクティブ化します。すべてのボリューム コンテナーとデバイスのスナップショットが残ります。
+1. Deactivate the device. All the volume containers and the snapshots of the device will remain.
 
-    1. StorSimple Manager サービスの **[デバイス]** ページで、非アクティブ化するデバイスを選択し、ページの下部にある **[非アクティブ化]** をクリックします。
+    1. On the StorSimple Manager service **Devices** page, select the device that you wish to deactivate and, at the bottom of the page, click **Deactivate**.
 
-    2. 確認メッセージが表示されます。**[はい]** をクリックして続行します。非アクティブ化のプロセスが開始され、完了するまでに数分かかります。
+    2. A confirmation message will appear. Click **Yes** to continue. The deactivate process will start and take a few minutes to complete.
 
-2. これで、ボリューム コンテナーと、関連付けられているスナップショットをフェールオーバーできます。手順については、「[StorSimple デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)」を参照してください。
+2. You can now fail over the volume containers and the associated snapshots. For procedures, go to [Failover and disaster recovery for your StorSimple device](storsimple-device-failover-disaster-recovery.md).
 
-3. 非アクティブ化とフェールオーバーを行った後、デバイスを完全に削除できます。デバイスを削除すると、サービスに接続されているデバイスの一覧からそのデバイスが削除されます。サービスは、削除されたデバイスをもはや管理できなくなります。次のようにしてデバイスを削除します。
+3. After deactivation and failover, you can delete the device completely. Deleting a device removes it from the list of devices connected to the service. The service can then no longer manage the deleted device. Complete the following steps to delete the device:
  
-    1. StorSimple Manager サービスの **[デバイス**] ページで、削除する非アクティブ化済みデバイスを選択します。
+    1. On the StorSimple Manager service **Devices** page, select a deactivated device that you wish to delete.
 
-    2. ページの下部にある **[削除]** をクリックします。
+    2. On the bottom on the page, click **Delete**.
 
-    3. 確認を求められます。**[はい]** をクリックして続行します。
+    3. You will be prompted for confirmation. Click **Yes** to continue.
 
-    デバイスが削除されるまで数分かかる場合があります。
+    It may take a few minutes for the device to be deleted.
 
-## 仮想デバイスの非アクティブ化と削除
+## <a name="deactivate-and-delete-a-virtual-device"></a>Deactivate and delete a virtual device
 
-StorSimple 仮想デバイスの場合、非アクティブ化すると仮想マシンの割り当てが解除されます。その後、仮想マシンおよびプロビジョニング時に作成されたリソースを削除できます。仮想デバイスを非アクティブにすると、以前の状態に復元することはできません。
+For a StorSimple virtual device, deactivation deallocates the virtual machine. You can then delete the virtual machine and the resources created when it was provisioned. After the virtual device is deactivated, it cannot be restored to its previous state. 
 
-非アクティブ化すると次のアクションが実行されます。
+Deactivation results in the following actions:
 
-- StorSimple 仮想デバイスが削除されます。
+- The StorSimple virtual device is removed.
 
-- StorSimple 仮想デバイス用に作成された OS ディスクとデータ ディスクが削除されます。
+- The OSDisk and Data Disks created for the StorSimple virtual device are removed.
 
-- プロビジョニング中に作成されたホストされるサービスと Virtual Network は保持されます。これらのエンティティを使用していない場合は、手動で削除する必要があります。
+- The Hosted Service and Virtual Network that were created during provisioning are retained. If you are not using these entities, you should delete them manually.
 
-- StorSimple 仮想デバイスによって作成されたクラウド スナップショットは保持されます。
+- Cloud snapshots created by the StorSimple virtual device are retained.
 
-## 次のステップ
-- 非アクティブ化されたデバイスを出荷時の既定値に復元するには、「[デバイスの出荷時設定へのリセット](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings)」をご覧ください。
+## <a name="next-steps"></a>Next steps
+- To restore the deactivated device to factory defaults, go to [Reset the device to factory default settings](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 
-- 技術的な詳細については、[Microsoft サポートに問い合わせ](storsimple-contact-microsoft-support.md)てください。
+- For technical assistance, [contact Microsoft Support](storsimple-contact-microsoft-support.md).
 
-- StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
+- To learn more about how to use the StorSimple Manager service, go to [Use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md). 
 
-<!---HONumber=AcomDC_0608_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

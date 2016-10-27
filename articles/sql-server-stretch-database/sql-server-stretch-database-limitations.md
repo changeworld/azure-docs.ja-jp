@@ -1,62 +1,63 @@
 <properties
-	pageTitle="Stretch Database の制限事項 | Microsoft Azure"
-	description="Stretch Database の制限事項について説明します。"
-	services="sql-server-stretch-database"
-	documentationCenter=""
-	authors="douglaslMS"
-	manager=""
-	editor=""/>
+    pageTitle="Limitations for Stretch Database | Microsoft Azure"
+    description="Learn about limitations for Stretch Database."
+    services="sql-server-stretch-database"
+    documentationCenter=""
+    authors="douglaslMS"
+    manager=""
+    editor=""/>
 
 <tags
-	ms.service="sql-server-stretch-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/14/2016"
-	ms.author="douglasl"/>
+    ms.service="sql-server-stretch-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="06/14/2016"
+    ms.author="douglasl"/>
 
-# Stretch Database の制限事項
 
-Stretch が有効なテーブルの制限事項と、テーブルの Stretch の有効化を現在妨げている制限事項について説明します。
+# <a name="limitations-for-stretch-database"></a>Limitations for Stretch Database
 
-##  <a name="Caveats"></a> Stretch が有効なテーブルの制限事項
+Learn about limitations for Stretch\-enabled tables, and about limitations that currently prevent you from enabling Stretch for a table.
 
-Stretch が有効なテーブルの制限事項を次に示します。
+##  <a name="<a-name="caveats"></a>-limitations-for-stretch\-enabled-tables"></a><a name="Caveats"></a> Limitations for Stretch\-enabled tables
 
-### 制約
+Stretch\-enabled tables have the following limitations.
 
--   移行されたデータが含まれる Azure テーブルの UNIQUE 制約と PRIMARY KEY 制約では一意性が強制されません。
+### <a name="constraints"></a>Constraints
 
-### DML 操作
+-   Uniqueness is not enforced for UNIQUE constraints and PRIMARY KEY constraints in the Azure table that contains the migrated data.
 
--   Stretch が有効なテーブル、または Stretch が有効なテーブルが含まれるビューでは、移行されている行、または移行する資格がある行は、更新も削除できません。
+### <a name="dml-operations"></a>DML operations
 
--   リンクされているサーバーの Stretch が有効なテーブルに行を挿入することはできません。
+-   You can't UPDATE or DELETE rows that have been migrated, or rows that are eligible for migration, in a Stretch\-enabled table or in a view that includes Stretch\-enabled tables.
 
-### インデックス
+-   You can't INSERT rows into a Stretch\-enabled table on a linked server.
 
--   Stretch が有効なテーブルを含むビューのインデックスを作成することはできません。
+### <a name="indexes"></a>Indexes
 
--   SQL Server インデックスのフィルターは、リモート テーブルには反映されません。
+-   You can't create an index for a view that includes Stretch\-enabled tables.
 
-##  <a name="Limitations"></a> テーブルの Stretch の有効化を現在妨げている制限事項
+-   Filters on SQL Server indexes are not propagated to the remote table.
 
-テーブルの Stretch の有効化を現在妨げている制限事項を次に示します。
+##  <a name="<a-name="limitations"></a>-limitations-that-currently-prevent-you-from-enabling-stretch-for-a-table"></a><a name="Limitations"></a> Limitations that currently prevent you from enabling Stretch for a table
 
-### テーブルのプロパティ
+The following items currently prevent you from enabling Stretch for a table.
 
--   1,023 よりも多くの列または 998 よりも多くのインデックスが含まれるテーブル
+### <a name="table-properties"></a>Table properties
 
--   FILESTREAM データが格納されている FileTable またはテーブル
+-   Tables that have more than 1,023 columns or more than 998 indexes
 
--   レプリケートされたテーブル、または変更追跡あるいは Change Data Capture が現在使用されているテーブル
+-   FileTables or tables that contain FILESTREAM data
 
--   メモリ最適化テーブル
+-   Tables that are replicated, or that are actively using Change Tracking or Change Data Capture
 
-### データの種類
+-   Memory\-optimized tables
 
--   text、ntext、および image
+### <a name="data-types"></a>Data types
+
+-   text, ntext and image
 
 -   timestamp
 
@@ -64,36 +65,40 @@ Stretch が有効なテーブルの制限事項を次に示します。
 
 -   XML
 
--   CLR データ型。geometry、geography、hierarchyid、CLR ユーザー定義型など
+-   CLR data types including geometry, geography, hierarchyid, and CLR user\-defined types
 
-### 列の型
+### <a name="column-types"></a>Column types
 
 -   COLUMN\_SET
 
--   計算列
+-   Computed columns
 
-### 制約
+### <a name="constraints"></a>Constraints
 
--   既定の制約と CHECK 制約
+-   Default constraints and check constraints
 
--   テーブルを参照する外部キー制約。親子関係 (Order と Order\_Detail など) では、子テーブル (Order\_Detail) については Stretch を有効にできますが、親テーブル (Order) に対して有効にすることはできません。
+-   Foreign key constraints that reference the table. In a parent\-child relationship \(for example, Order and Order\_Detail\), you can enable Stretch for the child table \(Order\_Detail\) but not for the parent table \(Order\).
 
-### インデックス
+### <a name="indexes"></a>Indexes
 
--   フル テキスト インデックス
+-   Full text indexes
 
--   XML インデックス
+-   XML indexes
 
--   空間インデックス
+-   Spatial indexes
 
--   テーブルを参照するインデックス付きビュー
+-   Indexed views that reference the table
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-[Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する](sql-server-stretch-database-identify-databases.md)
+[Identify databases and tables for Stretch Database by running Stretch Database Advisor](sql-server-stretch-database-identify-databases.md)
 
-[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md)
+[Enable Stretch Database for a database](sql-server-stretch-database-enable-database.md)
 
-[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
+[Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

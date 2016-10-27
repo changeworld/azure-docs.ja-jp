@@ -1,447 +1,453 @@
 <properties
-	pageTitle="最初の Data Factory の作成 (Visual Studio) | Microsoft Azure"
-	description="このチュートリアルでは、Visual Studio を使用して、サンプルの Azure Data Factory パイプラインを作成します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
-	editor="monicar"/>
+    pageTitle="Build your first data factory (Visual Studio) | Microsoft Azure"
+    description="In this tutorial, you create a sample Azure Data Factory pipeline using Visual Studio."
+    services="data-factory"
+    documentationCenter=""
+    authors="spelluru"
+    manager="jhubbard"
+    editor="monicar"/>
 
 <tags
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article" 
-	ms.date="08/01/2016"
-	ms.author="spelluru"/>
+    ms.service="data-factory"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article" 
+    ms.date="10/17/2016"
+    ms.author="spelluru"/>
 
-# チュートリアル: Microsoft Visual Studio を使用した初めての Azure データ ファクトリの作成
+
+# <a name="tutorial:-build-your-azure-first-data-factory-using-microsoft-visual-studio"></a>Tutorial: Build your Azure first data factory using Microsoft Visual Studio
 > [AZURE.SELECTOR]
-- [チュートリアルの概要](data-factory-build-your-first-pipeline.md)
-- [Data Factory エディターを使用する](data-factory-build-your-first-pipeline-using-editor.md)
-- [PowerShell の使用](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Visual Studio の使用](data-factory-build-your-first-pipeline-using-vs.md)
-- [Using Resource Manager Template](data-factory-build-your-first-pipeline-using-arm.md)
+- [Overview and prerequisites](data-factory-build-your-first-pipeline.md)
+- [Azure portal](data-factory-build-your-first-pipeline-using-editor.md)
+- [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
+- [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+- [Resource Manager Template](data-factory-build-your-first-pipeline-using-arm.md)
+- [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-この記事では、Microsoft Visual Studio を使用して最初の Azure データ ファクトリを作成します。
+In this article, you use the Microsoft Visual Studio to create your first Azure data factory.
 
-## 前提条件
-1. 「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通し、**前提条件**の手順を完了する必要があります。
-2. Data Factory エンティティを Visual Studio から Azure Data Factory に発行できる **Azure サブスクリプションの管理者**である必要があります。
-3. コンピューターに以下がインストールされている必要があります。
-	- Visual Studio 2013 または Visual Studio 2015
-	- Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
-	- Visual Studio 用の最新の Azure Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。メニューで **[ツール]**、**[拡張機能と更新プログラム]**、**[オンライン]**、**[Visual Studio ギャラリー]**、**[Microsoft Azure Data Factory Tools for Visual Studio]**、**[更新]** の順にクリックして、プラグインを更新することもできます。
+## <a name="prerequisites"></a>Prerequisites
+1. Read through [Tutorial Overview](data-factory-build-your-first-pipeline.md) article and complete the **prerequisite** steps.
+2. You must be an **administrator of the Azure subscription** to be able to publish Data Factory entities from Visual Studio to Azure Data Factory.
+3. You must have the following installed on your computer: 
+    - Visual Studio 2013 or Visual Studio 2015
+    - Download Azure SDK for Visual Studio 2013 or Visual Studio 2015. Navigate to [Azure Download Page](https://azure.microsoft.com/downloads/) and click **VS 2013** or **VS 2015** in the **.NET** section.
+    - Download the latest Azure Data Factory plugin for Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) or [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). You can also update the plugin by doing the following: On the menu, click **Tools** -> **Extensions and Updates** -> **Online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory Tools for Visual Studio** -> **Update**. 
  
-それでは、Visual Studio を使用して、Azure データ ファクトリを作成しましょう。
+Now, let's use Visual Studio to create an Azure data factory. 
 
 
-## Visual Studio プロジェクトの作成 
-1. **Visual Studio 2013** または **Visual Studio 2015** を起動します。**[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。**[新しいプロジェクト]** ダイアログ ボックスが表示されます。
-2. **[新しいプロジェクト]** ダイアログで、**[DataFactory]** テンプレートを選択し、**[空の Data Factory プロジェクト]** をクリックします。
+## <a name="create-visual-studio-project"></a>Create Visual Studio project 
+1. Launch **Visual Studio 2013** or **Visual Studio 2015**. Click **File**, point to **New**, and click **Project**. You should see the **New Project** dialog box.  
+2. In the **New Project** dialog, select the **DataFactory** template, and click **Empty Data Factory Project**.   
 
-	![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
+    ![New project dialog box](./media/data-factory-build-your-first-pipeline-using-vs/new-project-dialog.png)
 
-3. プロジェクトの**名前**、**場所**、**ソリューション**の名前を入力し、**[OK]** をクリックします。
+3. Enter a **name** for the project, **location**, and a name for the **solution**, and click **OK**.
 
-	![Solution Explorer](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
+    ![Solution Explorer](./media/data-factory-build-your-first-pipeline-using-vs/solution-explorer.png)
 
-## リンクされたサービスの作成
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行して入力データを変換する HDInsight Hive アクティビティなどを含めることができます。コピー アクティビティでサポートされているすべてのソースとシンクについては、[サポートされているデータ ストア](data-factory-data-movement-activities.md##supported-data-stores-and-formats)に関する記事を参照してください。Data Factory でサポートされているコンピューティング サービスの一覧については、「[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)」を参照してください。
+## <a name="create-linked-services"></a>Create linked services
+A data factory can have one or more pipelines. A pipeline can have one or more activities in it. For example, a Copy Activity to copy data from a source to a destination data store and a HDInsight Hive activity to run Hive script to transform input data. See [supported data stores](data-factory-data-movement-activities.md##supported-data-stores-and-formats) for all the sources and sinks supported by the Copy Activity. See [compute linked services](data-factory-compute-linked-services.md) for the list of compute services supported by Data Factory. 
 
-この手順では、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクします。Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。HDInsight のリンクされたサービスは、このサンプルのパイプラインのアクティビティに指定された Hive スクリプトを実行するために使用されます。自分のシナリオで使用するデータ ストアやコンピューティング サービスを特定し、リンクされたサービスを作成して、それらのサービスをデータ ファクトリにリンクします。
+In this step, you link your Azure Storage account and an on-demand Azure HDInsight cluster to your data factory. The Azure Storage account holds the input and output data for the pipeline in this sample. The HDInsight linked service is used to run Hive script specified in the activity of the pipeline in this sample. Identify what data store/compute services are used in your scenario and link those services to the data factory by creating linked services.  
 
-後で Data Factory ソリューションを発行するときに、データ ファクトリの名前と設定を指定します。
+You specify the name and settings for the data factory later when you publish your Data Factory solution.
 
-#### Azure Storage のリンクされたサービスを作成する
-この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。このチュートリアルでは、同じ Azure ストレージ アカウントを使用して、入力/出力データと HQL スクリプト ファイルを格納します。
+#### <a name="create-azure-storage-linked-service"></a>Create Azure Storage linked service
+In this step, you link your Azure Storage account to your data factory. For this tutorial, you use the same Azure Storage account to store input/output data and the HQL script file. 
 
-4. ソリューション エクスプローラーの **[Linked Services]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。
-5. **[新しい項目の追加]** ダイアログ ボックスで、一覧から **[Azure Storage のリンクされたサービス]** を選択し、**[追加]** をクリックします。
-3. **accountname** と **accountkey** を Azure ストレージ アカウントとそのキーで置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+4. Right-click **Linked Services** in the solution explorer, point to **Add**, and click **New Item**.      
+5. In the **Add New Item** dialog box, select **Azure Storage Linked Service** from the list, and click **Add**. 
+3. Replace **accountname** and **accountkey** with the name of your Azure storage account and its key. To learn how to get your storage access key, see [View, copy and regenerate storage access keys](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)
 
-	![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
+    ![Azure Storage Linked Service](./media/data-factory-build-your-first-pipeline-using-vs/azure-storage-linked-service.png)
 
-4. **AzureStorageLinkedService1.json** ファイルを保存します。
+4. Save the **AzureStorageLinkedService1.json** file.
 
-#### Azure HDInsight のリンクされたサービスを作成する
-この手順では、オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。HDInsight クラスターは、実行時に自動的に作成されます。また、処理が終わり、アイドル状態が一定時間続くと削除されます。オンデマンド HDInsight クラスターの代わりに、独自の HDInsight クラスターを使用できます。詳細については、「[計算のリンクされたサービス](data-factory-compute-linked-services.md)」を参照してください。
+#### <a name="create-azure-hdinsight-linked-service"></a>Create Azure HDInsight linked service
+In this step, you link an on-demand HDInsight cluster to your data factory. The HDInsight cluster is automatically created at runtime and deleted after it is done processing and idle for the specified amount of time. You could use your own HDInsight cluster instead of using an on-demand HDInsight cluster. See [Compute Linked Services](data-factory-compute-linked-services.md) for details. 
 
-1. **ソリューション エクスプローラー**の **[リンクされたサービス]** を右クリックして、**[追加]** をポイントし、**[新しい項目]** をクリックします。
-2. **[HDInsight のオンデマンドのリンクされたサービス]** を選択し、**[追加]** をクリックします。
-3. **JSON** を次のように置き換えます。
+1. In the **Solution Explorer**, right-click **Linked Services**, point to **Add**, and click **New Item**.
+2. Select **HDInsight On Demand Linked Service**, and click **Add**. 
+3. Replace the **JSON** with the following:
 
-		{
-		  "name": "HDInsightOnDemandLinkedService",
-		  "properties": {
-		    "type": "HDInsightOnDemand",
-		    "typeProperties": {
-		      "version": "3.2",
-		      "clusterSize": 1,
-		      "timeToLive": "00:30:00",
-		      "linkedServiceName": "AzureStorageLinkedService1"
-		    }
-		  }
-		}
-	
-	次の表に、このスニペットで使用される JSON プロパティの説明を示します。
-	
-	プロパティ | 説明
-	-------- | -----------
-	バージョン | 作成された HDInsight のバージョンが 3.2 になるように指定します。 
-	ClusterSize | HDInsight クラスターのサイズを指定します。 
-	TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。
-	linkedServiceName | HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。
+        {
+          "name": "HDInsightOnDemandLinkedService",
+          "properties": {
+            "type": "HDInsightOnDemand",
+            "typeProperties": {
+              "version": "3.2",
+              "clusterSize": 1,
+              "timeToLive": "00:30:00",
+              "linkedServiceName": "AzureStorageLinkedService1"
+            }
+          }
+        }
+    
+    The following table provides descriptions for the JSON properties used in the snippet:
+    
+    Property | Description
+    -------- | -----------
+    Version | Specifies that the version of the HDInsight created to be 3.2. 
+    ClusterSize | Specifies the size of the HDInsight cluster. 
+    TimeToLive | Specifies that the idle time for the HDInsight cluster, before it is deleted.
+    linkedServiceName | Specifies the storage account that is used to store the logs that are generated by HDInsight
 
-	以下の点に注意してください。
-	
-	- Data Factory は、上記の JSON で **Windows ベース**の HDInsight クラスターを自動的に作成します。**Linux ベース**の HDInsight クラスターを作成させることもできます。詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
-	- オンデマンド HDInsight クラスターの代わりに、**独自の HDInsight クラスター**を使用できます。詳細については、[HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に関するセクションを参照してください。
-	- HDInsight クラスターは、JSON (**linkedServiceName**) で指定した Blob Storage に**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。この動作は仕様です。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。クラスターは、処理が終了すると自動的に削除されます。
-	
-		処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。これらのコンテナーの名前は、"adf**<データ ファクトリ名>**-**<リンクされたサービス名>**-<日時スタンプ>" というパターンに従います。Azure Blob Storage 内のコンテナーを削除するには、[Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。
+    Note the following: 
+    
+    - The Data Factory creates a **Windows-based** HDInsight cluster for you with the preceding JSON. You could also have it create a **Linux-based** HDInsight cluster. See [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) for details. 
+    - You could use **your own HDInsight cluster** instead of using an on-demand HDInsight cluster. See [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) for details.
+    - The HDInsight cluster creates a **default container** in the blob storage you specified in the JSON (**linkedServiceName**). HDInsight does not delete this container when the cluster is deleted. This behavior is by design. With on-demand HDInsight linked service, a HDInsight cluster is created every time a slice is processed unless there is an existing live cluster (**timeToLive**). The cluster is automatically deleted when the processing is done.
+    
+        As more slices are processed, you see many containers in your Azure blob storage. If you do not need them for troubleshooting of the jobs, you may want to delete them to reduce the storage cost. The names of these containers follow a pattern: "adf**yourdatafactoryname**-**linkedservicename**-datetimestamp". Use tools such as [Microsoft Storage Explorer](http://storageexplorer.com/) to delete containers in your Azure blob storage.
 
-	詳細については、「[On-demand HDInsight Linked Service (オンデマンド HDInsight のリンクされたサービス)](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)」を参照してください。
-4. **HDInsightOnDemandLinkedService1.json** ファイルを保存します。
+    See [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) for details. 
+4. Save the **HDInsightOnDemandLinkedService1.json** file.
 
-## データセットを作成する
-この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。これらのデータセットは、このチュートリアルで前に作成した **AzureStorageLinkedService1** を参照します。このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。
+## <a name="create-datasets"></a>Create datasets
+In this step, you create datasets to represent the input and output data for Hive processing. These datasets refer to the **AzureStorageLinkedService1** you have created earlier in this tutorial. The linked service points to an Azure Storage account and datasets specify container, folder, file name in the storage that holds input and output data.   
 
-#### 入力データセットの作成
+#### <a name="create-input-dataset"></a>Create input dataset
 
-1. **ソリューション エクスプローラー**の **[テーブル]** を右クリックし、**[追加]** をポイントして、**[新しい項目]** をクリックします。
-2. 一覧から **[Azure BLOB]** を選択し、ファイルの名前を **InputDataSet.json** に変更して、**[追加]** をクリックします。
-3. エディターで **JSON** を次のコードに置き換えます。
+1. In the **Solution Explorer**, right-click **Tables**, point to **Add**, and click **New Item**. 
+2. Select **Azure Blob** from the list, change the name of the file to **InputDataSet.json**, and click **Add**.
+3. Replace the **JSON** in the editor with the following: 
 
-	この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。さらに、**adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します。
-		
-		{
-			"name": "AzureBlobInput",
-		    "properties": {
-		        "type": "AzureBlob",
-		        "linkedServiceName": "AzureStorageLinkedService1",
-		        "typeProperties": {
-		            "fileName": "input.log",
-		            "folderPath": "adfgetstarted/inputdata",
-		            "format": {
-		                "type": "TextFormat",
-		                "columnDelimiter": ","
-		            }
-		        },
-		        "availability": {
-		            "frequency": "Month",
-		            "interval": 1
-		        },
-		        "external": true,
-		        "policy": {}
-		    }
-		} 
+    In the JSON snippet, you are creating a dataset called **AzureBlobInput** that represents input data for an activity in the pipeline. In addition, you specify that the input data is located in the blob container called **adfgetstarted** and the folder called **inputdata**
+        
+        {
+            "name": "AzureBlobInput",
+            "properties": {
+                "type": "AzureBlob",
+                "linkedServiceName": "AzureStorageLinkedService1",
+                "typeProperties": {
+                    "fileName": "input.log",
+                    "folderPath": "adfgetstarted/inputdata",
+                    "format": {
+                        "type": "TextFormat",
+                        "columnDelimiter": ","
+                    }
+                },
+                "availability": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
+                "external": true,
+                "policy": {}
+            }
+        } 
 
-	次の表に、このスニペットで使用される JSON プロパティの説明を示します。
+    The following table provides descriptions for the JSON properties used in the snippet:
 
-	| プロパティ | Description |
-	| :------- | :---------- |
-	| type | データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |  
-	| linkedServiceName | 前に作成した AzureStorageLinkedService1 を参照します。 |
-	| fileName | このプロパティは省略可能です。このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。このチュートリアルでは、input.log のみが処理されます。 |
-	| type | ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 | 
-	| columnDelimiter | ログ ファイル内の列はコンマ (,) で区切られています。 |
-	| frequency/interval | frequency を Month に設定し、interval を 1 に設定しています。そのため、入力スライスは 1 か月ごとになります。 | 
-	| 外部 | Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 | 
-	  
-	
-3. **InputDataset.json** ファイルを保存します。
-
- 
-#### 出力データセットの作成
-次に、Azure BLOB ストレージに格納される出力データを表す出力データセットを作成します。
-
-1. **ソリューション エクスプローラー**の **[テーブル]** を右クリックし、**[追加]** をポイントして、**[新しい項目]** をクリックします。
-2. 一覧から **[Azure BLOB]** を選択し、ファイルの名前を **OutputDataset.json** に変更して、**[追加]** をクリックします。
-3. エディターで **JSON** を次のコードに置き換えます。
-
-	この JSON スニペットでは、**AzureBlobOutput** というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
-	
-		{
-		  "name": "AzureBlobOutput",
-		  "properties": {
-		    "type": "AzureBlob",
-		    "linkedServiceName": "AzureStorageLinkedService1",
-		    "typeProperties": {
-		      "folderPath": "adfgetstarted/partitioneddata",
-		      "format": {
-		        "type": "TextFormat",
-		        "columnDelimiter": ","
-		      }
-		    },
-		    "availability": {
-		      "frequency": "Month",
-		      "interval": 1
-		    }
-		  }
-		}
-
-	これらのプロパティの説明については、「**入力データセットを作成する**」セクションを参照してください。Data Factory サービスによってデータセットが生成されるため、出力データセットの external プロパティは設定しません。
-
-4. **OutputDataset.json** ファイルを保存します。
-
-
-### パイプラインの作成
-この手順では、**HDInsightHive** アクティビティを含む最初のパイプラインを作成します。入力スライスは 1 か月ごと (frequency: Month、interval: 1) に使用可能であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します。出力データセットとアクティビティの scheduler の設定は一致している必要があります。現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。次の JSON で使用されているプロパティについては、このセクションの最後で説明します。
-
-1. **ソリューション エクスプローラー**で、**[パイプライン]** を右クリックして **[追加]** をポイントし、**[新しい項目]** をクリックします。
-2. 一覧から **[Hive 変換パイプライン]** を選択し、**[追加]** をクリックします。
-3. **JSON** を次のスニペットに置き換えます。
-
-	> [AZURE.IMPORTANT] **storageaccountname** をストレージ アカウントの名前に置き換えます。
-
-		{
-		    "name": "MyFirstPipeline",
-		    "properties": {
-		        "description": "My first Azure Data Factory pipeline",
-		        "activities": [
-		            {
-		                "type": "HDInsightHive",
-		                "typeProperties": {
-		                    "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
-		                    "scriptLinkedService": "AzureStorageLinkedService1",
-		                    "defines": {
-		                        "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
-		                        "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
-		                    }
-		                },
-		                "inputs": [
-		                    {
-		                        "name": "AzureBlobInput"
-		                    }
-		                ],
-		                "outputs": [
-		                    {
-		                        "name": "AzureBlobOutput"
-		                    }
-		                ],
-		                "policy": {
-		                    "concurrency": 1,
-		                    "retry": 3
-		                },
-		                "scheduler": {
-		                    "frequency": "Month",
-		                    "interval": 1
-		                },
-		                "name": "RunSampleHiveActivity",
-		                "linkedServiceName": "HDInsightOnDemandLinkedService"
-		            }
-		        ],
-		        "start": "2016-04-01T00:00:00Z",
-		        "end": "2016-04-02T00:00:00Z",
-		        "isPaused": false
-		    }
-		}
-
- 	この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
-	
-	この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
-	
-	Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**AzureStorageLinkedService1** という名前) および **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
-
-	**defines** セクションは、Hive 構成値 (例: ${hiveconf:inputtable}、${hiveconf:partitionedtable}) として Hive スクリプトに渡される実行時設定を指定するために使用されます。
-
-	パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
-
-	アクティビティ JSON では、**linkedServiceName** に指定されたコンピューティング **HDInsightOnDemandLinkedService** で Hive スクリプトが実行されるように指定します。
-
-	> [AZURE.NOTE] 例で使用した JSON プロパティの詳細については、「[パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline)」を参照してください。
-3. **HiveActivity1.json** ファイルを保存します。
-
-### 依存関係として partitionweblogs.hql と input.log を追加する 
-
-1. **[ソリューション エクスプローラー]** ウィンドウで **[依存関係]** を右クリックし、**[追加]** をポイントして **[既存の項目]** をクリックします。
-2. **C:\\ADFGettingStarted** に移動し、**partitionweblogs.hql** ファイルと **input.log** ファイルを選択して、**[追加]** をクリックします。これら 2 つのファイルは、「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」の前提条件の一環として作成しています。
-
-次の手順でソリューションを発行すると、**adfgetstarted** BLOB コンテナーの scripts フォルダーに **partitionweblogs.hql** ファイルがアップロードされます。
-
-### Data Factory エンティティの発行/デプロイ
-
-18. ソリューション エクスプローラーでプロジェクトを右クリックし、**[発行]** をクリックします。
-19. **[Microsoft アカウントの新規登録]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
-20. 次のダイアログ ボックスが表示されます。
-
-	![[発行] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
-
-21. Data Factory の構成ページで、次の操作を行います。
-	1. **[Data Factory の新規作成]** オプションを選択します。
-	2. データ ファクトリの一意の**名前**を入力します。たとえば、「**FirstDataFactoryUsingVS09152016**」と入力します。名前はグローバルに一意である必要があります。
-	
-		> [AZURE.IMPORTANT] 発行時に "**Data factory 名 "FirstDataFactoryUsingVS" は利用できません**" というエラーが発生した場合は、名前を変更します (yournameFirstDataFactoryUsingVS など)。Data Factory アーティファクトの名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。
-	3. **[サブスクリプション]** フィールドで適切なサブスクリプションを選択します。
-	 
-		> [AZURE.IMPORTANT] サブスクリプションが表示されない場合は、サブスクリプションの管理者または共同管理者のアカウントを使用してログインしたことを確認します。
-	4. 作成するデータ ファクトリの**リソース グループ**を選択します。
-	5. データ ファクトリの**リージョン**を選択します。
-	6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。(**[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します)。
-23. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。
-24. 概要を確認し、**[次へ]** をクリックし、デプロイ プロセスを開始し、**[デプロイ ステータス]** を表示します。
-25. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。
+  	| Property | Description |
+  	| :------- | :---------- |
+  	| type | The type property is set to AzureBlob because data resides in Azure blob storage. |  
+  	| linkedServiceName | refers to the AzureStorageLinkedService1 you created earlier. |
+  	| fileName | This property is optional. If you omit this property, all the files from the folderPath are picked. In this case, only the input.log is processed. |
+  	| type | The log files are in text format, so we use TextFormat. | 
+  	| columnDelimiter | columns in the log files are delimited by the comma character (,) |
+  	| frequency/interval | frequency set to Month and interval is 1, which means that the input slices are available monthly. | 
+  	| external | this property is set to true if the input data is not generated by the Data Factory service. | 
+      
+    
+3. Save the **InputDataset.json** file. 
 
  
-注意すべき重要な点は、次のとおりです。
+#### <a name="create-output-dataset"></a>Create output dataset
+Now, you create the output dataset to represent the output data stored in the Azure Blob storage. 
 
-- "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
+1. In the **Solution Explorer**, right-click **tables**, point to **Add**, and click **New Item**. 
+2. Select **Azure Blob** from the list, change the name of the file to **OutputDataset.json**, and click **Add**. 
+3. Replace the **JSON** in the editor with the following: 
 
-	- Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
-		
-			Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
-	
-		Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
-	
-			Get-AzureRmResourceProvider
-	- Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com)にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。この操作によって、プロバイダーが自動的に登録されます。
-- 	データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-- 	Data Factory インスタンスを作成するには、Azure サブスクリプションの管理者または共同管理者である必要があります。
+    In the JSON snippet, you are creating a dataset called **AzureBlobOutput**, and specifying the structure of the data that is produced by the Hive script. In addition, you specify that the results are stored in the blob container called **adfgetstarted** and the folder called **partitioneddata**. The **availability** section specifies that the output dataset is produced on a monthly basis.
+    
+        {
+          "name": "AzureBlobOutput",
+          "properties": {
+            "type": "AzureBlob",
+            "linkedServiceName": "AzureStorageLinkedService1",
+            "typeProperties": {
+              "folderPath": "adfgetstarted/partitioneddata",
+              "format": {
+                "type": "TextFormat",
+                "columnDelimiter": ","
+              }
+            },
+            "availability": {
+              "frequency": "Month",
+              "interval": 1
+            }
+          }
+        }
+
+    See **Create the input dataset** section for descriptions of these properties. You do not set the external property on an output dataset as the dataset is produced by the Data Factory service.
+
+4. Save the **OutputDataset.json** file.
+
+
+### <a name="create-pipeline"></a>Create pipeline
+In this step, you create your first pipeline with a **HDInsightHive** activity. The input slice is available monthly (frequency: Month, interval: 1), output slice is produced monthly, and the scheduler property for the activity is also set to monthly. The settings for the output dataset and the activity scheduler must match. Currently, output dataset is what drives the schedule, so you must create an output dataset even if the activity does not produce any output. If the activity doesn't take any input, you can skip creating the input dataset. The properties used in the following JSON are explained at the end of this section.
+
+1. In the **Solution Explorer**, right-click **Pipelines**, point to **Add**, and click **New Item.** 
+2. Select **Hive Transformation Pipeline** from the list, and click **Add**. 
+3. Replace the **JSON** with the following snippet.
+
+    > [AZURE.IMPORTANT] replace **storageaccountname** with the name of your storage account.
+
+        {
+            "name": "MyFirstPipeline",
+            "properties": {
+                "description": "My first Azure Data Factory pipeline",
+                "activities": [
+                    {
+                        "type": "HDInsightHive",
+                        "typeProperties": {
+                            "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
+                            "scriptLinkedService": "AzureStorageLinkedService1",
+                            "defines": {
+                                "inputtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/inputdata",
+                                "partitionedtable": "wasb://adfgetstarted@<storageaccountname>.blob.core.windows.net/partitioneddata"
+                            }
+                        },
+                        "inputs": [
+                            {
+                                "name": "AzureBlobInput"
+                            }
+                        ],
+                        "outputs": [
+                            {
+                                "name": "AzureBlobOutput"
+                            }
+                        ],
+                        "policy": {
+                            "concurrency": 1,
+                            "retry": 3
+                        },
+                        "scheduler": {
+                            "frequency": "Month",
+                            "interval": 1
+                        },
+                        "name": "RunSampleHiveActivity",
+                        "linkedServiceName": "HDInsightOnDemandLinkedService"
+                    }
+                ],
+                "start": "2016-04-01T00:00:00Z",
+                "end": "2016-04-02T00:00:00Z",
+                "isPaused": false
+            }
+        }
+
+    In the JSON snippet, you are creating a pipeline that consists of a single activity that uses Hive to process Data on an HDInsight cluster.
+    
+    In the JSON snippet, you are creating a pipeline that consists of a single activity that uses Hive to process Data on an HDInsight cluster.
+    
+    The Hive script file, **partitionweblogs.hql**, is stored in the Azure storage account (specified by the scriptLinkedService, called **AzureStorageLinkedService1**), and in **script** folder in the container **adfgetstarted**.
+
+    The **defines** section is used to specify the runtime settings that are passed to the hive script as Hive configuration values (e.g ${hiveconf:inputtable}, ${hiveconf:partitionedtable}).
+
+    The **start** and **end** properties of the pipeline specifies the active period of the pipeline.
+
+    In the activity JSON, you specify that the Hive script runs on the compute specified by the **linkedServiceName** – **HDInsightOnDemandLinkedService**.
+
+    > [AZURE.NOTE] See [Anatomy of a Pipeline](data-factory-create-pipelines.md#anatomy-of-a-pipeline) for details about JSON properties used in the example. 
+3. Save the **HiveActivity1.json** file.
+
+### <a name="add-partitionweblogs.hql-and-input.log-as-a-dependency"></a>Add partitionweblogs.hql and input.log as a dependency 
+
+1. Right-click **Dependencies** in the **Solution Explorer** window, point to **Add**, and click **Existing Item**.  
+2. Navigate to the **C:\ADFGettingStarted** and select **partitionweblogs.hql**, **input.log** files, and click **Add**. You had created these two files as part of prerequisites from the [Tutorial Overview](data-factory-build-your-first-pipeline.md).
+
+When you publish the solution in the next step, the **partitionweblogs.hql** file is uploaded to the scripts folder in the **adfgetstarted** blob container.   
+
+### <a name="publish/deploy-data-factory-entities"></a>Publish/deploy Data Factory entities
+
+18. Right-click project in the Solution Explorer, and click **Publish**. 
+19. If you see **Sign in to your Microsoft account** dialog box, enter your credentials for the account that has Azure subscription, and click **sign in**.
+20. You should see the following dialog box:
+
+    ![Publish dialog box](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
+
+21. In the Configure data factory page, do the following: 
+    1. select **Create New Data Factory** option.
+    2. Enter a unique **name** for the data factory. For example: **FirstDataFactoryUsingVS09152016**. The name must be globally unique.  
+    
+    
+        > [AZURE.IMPORTANT] If you receive the error **Data factory name “FirstDataFactoryUsingVS” is not available** when publishing, change the name (for example, yournameFirstDataFactoryUsingVS). See [Data Factory - Naming Rules](data-factory-naming-rules.md) topic for naming rules for Data Factory artifacts.
+3. Select the right subscription for the **Subscription** field.
+     
+     
+        > [AZURE.IMPORTANT] If you do not see any subscription, ensure that you logged in using an account that is an admin or co-admin of the subscription.  
+        
+    4. Select the **resource group** for the data factory to be created. 
+    5. Select the **region** for the data factory. 
+    6. Click **Next** to switch to the **Publish Items** page. (Press **TAB** to move out of the Name field to if the **Next** button is disabled.) 
+23. In the **Publish Items** page, ensure that all the Data Factories entities are selected, and click **Next** to switch to the **Summary** page.     
+24. Review the summary and click **Next** to start the deployment process and view the **Deployment Status**.
+25. In the **Deployment Status** page, you should see the status of the deployment process. Click Finish after the deployment is done. 
 
  
-## パイプラインを監視する
+Important points to note: 
 
-### ダイアグラム ビューを使用してパイプラインを監視する
-6. [Azure ポータル](https://portal.azure.com/)にログインし、次の操作を行います。
-	1. **[参照]** をクリックし、**[Data Factory]** を選択します。
-		![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png) 
-	2. データ ファクトリの一覧から **[FirstDataFactoryUsingVS]** を選択します。 
+- If you receive the error: "**This subscription is not registered to use namespace Microsoft.DataFactory**", do one of the following and try publishing again: 
 
-		![Select your data factory](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
+    - In Azure PowerShell, run the following command to register the Data Factory provider. 
+        
+            Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    
+        You can run the following command to confirm that the Data Factory provider is registered. 
+    
+            Get-AzureRmResourceProvider
+    - Login using the Azure subscription in to the [Azure portal](https://portal.azure.com) and navigate to a Data Factory blade (or) create a data factory in the Azure portal. This action automatically registers the provider for you.
+-   The name of the data factory may be registered as a DNS name in the future and hence become publically visible.
+-   To create Data Factory instances, you need to be an admin or co-admin of the Azure subscription
 
-7. 該当するデータ ファクトリのホーム ページで **[ダイアグラム]** をクリックします。
+ 
+## <a name="monitor-pipeline"></a>Monitor pipeline
+
+### <a name="monitor-pipeline-using-diagram-view"></a>Monitor pipeline using Diagram View
+6. Log in to the [Azure portal](https://portal.azure.com/), do the following:
+    1. Click **More services** and click **Data factories**.
+        ![Browse data factories](./media/data-factory-build-your-first-pipeline-using-vs/browse-datafactories.png) 
+    2. Select the name of your data factory (for example: **FirstDataFactoryUsingVS09152016**) from the list of data factories. 
+        ![Select your data factory](./media/data-factory-build-your-first-pipeline-using-vs/select-first-data-factory.png)
+7. In the home page for your data factory, click **Diagram**.
   
-	![Diagram tile](./media/data-factory-build-your-first-pipeline-using-vs/diagram-tile.png)
-7. ダイアグラム ビューに、パイプラインの概要と、このチュートリアルで使用するデータセットが表示されます。
-	
-	![ダイアグラム ビュー](./media/data-factory-build-your-first-pipeline-using-vs/diagram-view-2.png)
-8. パイプラインのすべてのアクティビティを表示するために、ダイアグラム内のパイプラインを右クリックし、[パイプラインを開く] をクリックします。
+    ![Diagram tile](./media/data-factory-build-your-first-pipeline-using-vs/diagram-tile.png)
+7. In the Diagram View, you see an overview of the pipelines, and datasets used in this tutorial.
+    
+    ![Diagram View](./media/data-factory-build-your-first-pipeline-using-vs/diagram-view-2.png) 
+8. To view all activities in the pipeline, right-click pipeline in the diagram and click Open Pipeline. 
 
-	![パイプラインを開くメニュー](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-menu.png)
-9. パイプラインの HDInsightHive アクティビティが表示されることを確認します。
+    ![Open pipeline menu](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-menu.png)
+9. Confirm that you see the HDInsightHive activity in the pipeline. 
   
-	![Open pipeline view](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
+    ![Open pipeline view](./media/data-factory-build-your-first-pipeline-using-vs/open-pipeline-view.png)
 
-	前のビューに戻るには、上部にある階層リンク メニューの **[データ ファクトリ]** をクリックします。
-10. **ダイアグラム ビュー**で、**AzureBlobInput** データセットをダブルクリックします。スライスの状態が **[準備完了]** であることを確認します。スライスの状態が [準備完了] と表示されるまでに数分かかる場合があります。しばらく待っても [準備完了] と表示されない場合は、入力ファイル (input.log) が適切なコンテナー (adfgetstarted) とフォルダー (inputdata) に配置されていることを確認してください。
+    To navigate back to the previous view, click **Data factory** in the breadcrumb menu at the top. 
+10. In the **Diagram View**, double-click the dataset **AzureBlobInput**. Confirm that the slice is in **Ready** state. It may take a couple of minutes for the slice to show up in Ready state. If it does not happen after you wait for sometime, see if you have the input file (input.log) placed in the right container (adfgetstarted) and folder (inputdata).
 
-	![Input slice in ready state](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
-11. **[X]** をクリックして、**[AzureBlobInput]** ブレードを閉じます。
-12. **ダイアグラム ビュー**で、**AzureBlobOutput** データセットをダブルクリックします。現在処理中のスライスが表示されます。
+    ![Input slice in ready state](./media/data-factory-build-your-first-pipeline-using-vs/input-slice-ready.png)
+11. Click **X** to close **AzureBlobInput** blade. 
+12. In the **Diagram View**, double-click the dataset **AzureBlobOutput**. You see that the slice that is currently being processed.
 
-	![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
-9. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。
-	>[AZURE.IMPORTANT] オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。そのため、パイプラインによるスライスの処理に**約 30 分**かかると想定してください。
+    ![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-blade.png)
+9. When processing is done, you see the slice in **Ready** state.
 
-	![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png)
-	
-10. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。
+    > [AZURE.IMPORTANT] Creation of an on-demand HDInsight cluster usually takes sometime (approximately 20 minutes). Therefore, expect the pipeline to take **approximately 30 minutes** to process the slice.  
+
+    ![Dataset](./media/data-factory-build-your-first-pipeline-using-vs/dataset-slice-ready.png) 
+    
+10. When the slice is in **Ready** state, check the **partitioneddata** folder in the **adfgetstarted** container in your blob storage for the output data.  
  
-	![output data](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
-11. スライスをクリックすると、**[データ スライス]** ブレードに詳細が表示されます。
+    ![output data](./media/data-factory-build-your-first-pipeline-using-vs/three-ouptut-files.png)
+11. Click the slice to see details about it in a **Data slice** blade.
 
-	![Data slice details](./media/data-factory-build-your-first-pipeline-using-vs/data-slice-details.png)
-12. **[アクティビティの実行]** 一覧でアクティビティの実行をクリックすると、**[アクティビティの実行の詳細]** ウィンドウにアクティビティの実行の詳細 (このシナリオでは Hive アクティビティ) が表示されます。 ![アクティビティ実行の詳細](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-blade.png)
-	
-	ログ ファイルで、実行された Hive クエリとステータス情報を確認できます。これらのログは、すべての問題のトラブルシューティングに役立ちます。
- 
-
-Azure ポータルを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、[データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md)に関するページを参照してください。
-
-### 監視と管理アプリを使用してパイプラインを監視する
-パイプラインは、監視と管理アプリを使用して監視することもできます。このアプリケーションの使い方の詳細については、[監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
-
-1. [監視と管理] タイルをクリックします。
-
-	![Monitor & Manage tile](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-tile.png)
-2. 監視と管理アプリケーションが表示されます。パイプラインの開始時刻 (2016 年 4 月 1 日午前 12:00) と終了時刻 (2016 年 4 月 2 日午前 12:00) と一致するように、**[開始時刻]** と **[終了時刻]** を変更し、**[適用]** をクリックします。
-
-	![Monitor & Manage App](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-app.png)
-3. [アクティビティ ウィンドウ] 一覧でアクティビティ ウィンドウを選択し、詳細を確認します。 ![Activity window details](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
-
-
-> [AZURE.IMPORTANT] 入力ファイルは、スライスが正常に処理された時点で削除されます。そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、adfgetstarted コンテナーの inputdata フォルダーに入力ファイル (input.log) をアップロードしてください。
+    ![Data slice details](./media/data-factory-build-your-first-pipeline-using-vs/data-slice-details.png)  
+12. Click an activity run in the **Activity runs list** to see details about an activity run (Hive activity in our scenario) in an **Activity run details** window.   
+    ![Activity run details](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-blade.png)  
+    
+    From the log files, you can see the Hive query that was executed and status information. These logs are useful for troubleshooting any issues.  
  
 
-## サーバー エクスプローラーを使用して Data Factory を表示する
+See [Monitor datasets and pipeline](data-factory-monitor-manage-pipelines.md) for instructions on how to use the Azure portal to monitor the pipeline and datasets you have created in this tutorial.
 
-1. **Visual Studio** のメニューで **[ビュー]** をクリックし、**[サーバー エクスプローラー]** をクリックします。
-2. [サーバー エクスプローラー] ウィンドウで、**[Azure]** を展開し、**[Data Factory]** を展開します。**[Visual Studio にサインイン]** が表示されたら、Azure サブスクリプションに関連付けられている**アカウント**を入力し、**[続行]** をクリックします。**パスワード**を入力し、**[サインイン]** をクリックします。Visual Studio は、サブスクリプション内のすべての Azure データ ファクトリに関する情報を取得しようとします。**[Data Factory Task List (Data Factory タスク リスト)]** ウィンドウで、この操作のステータスを確認します。
+### <a name="monitor-pipeline-using-monitor-&-manage-app"></a>Monitor pipeline using Monitor & Manage App
+You can also use Monitor & Manage application to monitor your pipelines. For detailed information about using this application, see [Monitor and manage Azure Data Factory pipelines using Monitoring and Management App](data-factory-monitor-manage-app.md).
 
-	![Server Explorer](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
-3. データ ファクトリを右クリックし、**[Data Factory を新しいプロジェクトにエクスポートする]** を選択して、既存のデータ ファクトリに基づいて Visual Studio プロジェクトを作成します。
+1. Click Monitor & Manage tile.
 
-	![データ ファクトリのエクスポート](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
+    ![Monitor & Manage tile](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-tile.png) 
+2. You should see Monitor & Manage application. Change the **Start time** and **End time** to match start (04-01-2016 12:00 AM) and end times (04-02-2016 12:00 AM) of your pipeline, and click **Apply**.
 
-## Visual Studio の Data Factory ツールを更新する
+    ![Monitor & Manage App](./media/data-factory-build-your-first-pipeline-using-vs/monitor-and-manage-app.png) 
+3. Select an activity window in the Activity Windows list to see details about it. 
+    ![Activity window details](./media/data-factory-build-your-first-pipeline-using-vs/activity-window-details.png)
 
-Visual Studio の Azure Data Factory ツールを更新するには、次のように行います。
 
-1. メニューで **[ツール]** をクリックし、**[拡張機能と更新プログラム]** を選択します。
-2. 左ウィンドウで **[更新]** を選択し、**[Visual Studio ギャラリー]** を選択します。
-3. **[Visual Studio の Azure Data Factory ツール]** を選択して、**[更新]** をクリックします。このエントリが表示されない場合は、ツールは既に最新バージョンです。
+> [AZURE.IMPORTANT] The input file gets deleted when the slice is processed successfully. Therefore, if you want to rerun the slice or do the tutorial again, upload the input file (input.log) to the inputdata folder of the adfgetstarted container.
+ 
 
-## 構成ファイルを使用する
-リンクされたサービス/テーブル/パイプラインには、Visual Studio から構成ファイルを使用して環境ごとに異なるプロパティを構成できます。
+## <a name="use-server-explorer-to-view-data-factories"></a>Use Server Explorer to view data factories
 
-Azure Storage のリンクされたサービスに関して次のような JSON 定義があるとします。Data Factory エンティティのデプロイ先となる環境 (開発/テスト/運用) ごとに異なる値を **connectionString** の accountname と accountkey に指定するには、環境ごとに個別の構成ファイルを使用します。
+1. In **Visual Studio**, click **View** on the menu, and click **Server Explorer**.
+2. In the Server Explorer window, expand **Azure** and expand **Data Factory**. If you see **Sign in to Visual Studio**, enter the **account** associated with your Azure subscription and click **Continue**. Enter **password**, and click **Sign in**. Visual Studio tries to get information about all Azure data factories in your subscription. You see the status of this operation in the **Data Factory Task List** window.
 
-	{
-	    "name": "StorageLinkedService",
-	    "properties": {
-	        "type": "AzureStorage",
-	        "description": "",
-	        "typeProperties": {
-	            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-	        }
-	    }
-	} 
+    ![Server Explorer](./media/data-factory-build-your-first-pipeline-using-vs/server-explorer.png)
+3. You can right-click a data factory, and select **Export Data Factory to New Project** to create a Visual Studio project based on an existing data factory.
 
-### 構成ファイルを追加する
-環境ごとに次の手順を実行して構成ファイルを追加します。
+    ![Export data factory](./media/data-factory-build-your-first-pipeline-using-vs/export-data-factory-menu.png)
 
-1. Visual Studio ソリューションで Data Factory プロジェクトを右クリックし、**[追加]** をポイントして **[新しい項目]** をクリックします。
-2. 左側にあるインストールされたテンプレートの一覧で **[構成]** を選択し、**[構成ファイル]** を選択して、構成ファイルの**名前**を入力し、**[追加]** をクリックします。
+## <a name="update-data-factory-tools-for-visual-studio"></a>Update Data Factory tools for Visual Studio
 
-	![Add configuration file](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
-3. 次の形式で構成パラメーターとその値を追加します。
+To update Azure Data Factory tools for Visual Studio, do the following:
 
-		{
-		    "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
-		    "AzureStorageLinkedService1": [
-		        {
-		            "name": "$.properties.typeProperties.connectionString",
-		            "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-		        }
-		    ],
-		    "AzureSqlLinkedService1": [
-		        {
-		            "name": "$.properties.typeProperties.connectionString",
-		            "value":  "Server=tcp:spsqlserver.database.windows.net,1433;Database=spsqldb;User ID=spelluru;Password=Sowmya123;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-		        }
-		    ]
-		}
+1. Click **Tools** on the menu and select **Extensions and Updates**.
+2. Select **Updates** in the left pane and then select **Visual Studio Gallery**.
+3. Select **Azure Data Factory tools for Visual Studio** and click **Update**. If you do not see this entry, you already have the latest version of the tools. 
 
-	この例で構成しているのは、Azure Storage のリンクされたサービスと Azure SQL のリンクされたサービスの connectionString プロパティです。名前を指定するための構文が [JsonPath](http://goessner.net/articles/JsonPath/) であることに注目してください。
+## <a name="use-configuration-files"></a>Use configuration files
+You can use configuration files in Visual Studio to configure properties for linked services/tables/pipelines differently for each environment. 
 
-	ここで、JSON のプロパティが、次のコードのように値の配列になっているとします。
+Consider the following JSON definition for an Azure Storage linked service. To specify **connectionString** with different values for accountname and accountkey based on the environment (Dev/Test/Production) to which you are deploying Data Factory entities. You can achieve this behavior by using separate configuration file for each environment. 
 
-		"structure": [
-	  		{
-	  			"name": "FirstName",
-	    		"type": "String"
-	  		},
-	  		{
-	    		"name": "LastName",
-	    	    "type": "String"
-			}
-		],
-	
-	次の構成ファイルのように、プロパティを構成します (0 から始まるインデックスを使用)。
-		
-		{
+    {
+        "name": "StorageLinkedService",
+        "properties": {
+            "type": "AzureStorage",
+            "description": "",
+            "typeProperties": {
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
+        }
+    } 
+
+### <a name="add-a-configuration-file"></a>Add a configuration file
+Add a configuration file for each environment by performing the following steps:   
+
+1. Right-click the Data Factory project in your Visual Studio solution, point to **Add**, and click **New item**.
+2. Select **Config** from the list of installed templates on the left, select **Configuration File**, enter a **name** for the configuration file, and click **Add**.
+
+    ![Add configuration file](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
+3. Add configuration parameters and their values in the following format.
+
+        {
+            "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
+            "AzureStorageLinkedService1": [
+                {
+                    "name": "$.properties.typeProperties.connectionString",
+                    "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+                }
+            ],
+            "AzureSqlLinkedService1": [
+                {
+                    "name": "$.properties.typeProperties.connectionString",
+                    "value":  "Server=tcp:spsqlserver.database.windows.net,1433;Database=spsqldb;User ID=spelluru;Password=Sowmya123;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                }
+            ]
+        }
+
+    This example configures connectionString property of an Azure Storage linked service and an Azure SQL linked service. Notice that the syntax for specifying name is [JsonPath](http://goessner.net/articles/JsonPath/).   
+
+    If JSON has a property that has an array of values as shown in the following code:  
+
+        "structure": [
+            {
+                "name": "FirstName",
+                "type": "String"
+            },
+            {
+                "name": "LastName",
+                "type": "String"
+            }
+        ],
+    
+    Configure properties as shown in the following configuration file (use zero-based indexing): 
+        
+        {
             "name": "$.properties.structure[0].name",
             "value": "FirstName"
         }
@@ -458,8 +464,8 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
             "value": "String"
         }
 
-### スペースが含まれているプロパティ名
-プロパティ名にスペースが含まれている場合は、次の例 (Database server name) のように、角かっこを使用します。
+### <a name="property-names-with-spaces"></a>Property names with spaces
+If a property name has spaces in it, use square brackets as shown in the following example (Database server name): 
 
      {
          "name": "$.properties.activities[1].typeProperties.webServiceParameters.['Database server name']",
@@ -467,44 +473,48 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
      }
 
 
-### 構成を指定してソリューションをデプロイする
-Azure Data Factory のエンティティを VS で発行するときに、その発行操作に使用する構成を指定できます。
+### <a name="deploy-solution-using-a-configuration"></a>Deploy solution using a configuration
+When you are publishing Azure Data Factory entities in VS, you can specify the configuration that you want to use for that publishing operation. 
 
-構成ファイルを使用して Azure Data Factory プロジェクトのエンティティを発行するには、次の手順を実行します。
+To publish entities in an Azure Data Factory project using configuration file:   
 
-1. Data Factory プロジェクトを右クリックして **[発行]** をクリックし、**[Publish Items (項目の発行)]** ダイアログ ボックスを表示します。
-2. **[Configure data factory (データ ファクトリの構成)]** ページで、既存のデータ ファクトリを選択するか、データ ファクトリを作成するために値を指定して、**[次へ]** をクリックします。
-3. **[Publish Items (項目の発行)]** ページのドロップダウン リストに、**[Select Deployment Config (デプロイ構成の選択)]** フィールドで使用できる構成が表示されます。
+1. Right-click Data Factory project and click **Publish** to see the **Publish Items** dialog box. 
+2. Select an existing data factory or specify values for creating a data factory on the **Configure data factory** page, and click **Next**.   
+3. On the **Publish Items** page: you see a drop-down list with available configurations for the **Select Deployment Config** field.
 
-	![Select config file](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
+    ![Select config file](./media/data-factory-build-your-first-pipeline-using-vs/select-config-file.png)
 
-4. 使用する**構成ファイル**を選択し、**[次へ]** をクリックします。
-5. JSON ファイルの名前が **[概要]** ページに表示されていることを確認し、**[次へ]** をクリックします。
-6. デプロイ操作が終了したら、**[完了]** をクリックします。
+4. Select the **configuration file** that you would like to use and click **Next**. 
+5. Confirm that you see the name of JSON file in the **Summary** page and click **Next**. 
+6. Click **Finish** after the deployment operation is finished. 
 
-実際にデプロイすると、Data Factory エンティティの JSON ファイルに指定されているプロパティの値が、構成ファイルの値を使用して設定された後、Azure Data Factory サービスにエンティティがデプロイされます。
+When you deploy, the values from the configuration file are used to set values for properties in the JSON files for Data Factory entities before the entities are deployed to Azure Data Factory service.   
 
-## 概要 
-このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。
+## <a name="summary"></a>Summary 
+In this tutorial, you created an Azure data factory to process data by running Hive script on a HDInsight hadoop cluster. You used the Data Factory Editor in the Azure portal to do the following steps:  
 
-1.	Azure **データ ファクトリ**を作成しました。
-2.	次の 2 つの**リンクされたサービス**を作成しました。
-	1.	入出力ファイルを保持する Azure Blob Storage をデータ ファクトリにリンクするための **Azure Storage** のリンクされたサービス。
-	2.	オンデマンド HDInsight Hadoop クラスターをデータ ファクトリにリンクするための **Azure HDInsight** オンデマンドのリンクされたサービス。Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。
-3.	パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの**データセット**を作成しました。
-4.	**HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
+1.  Created an Azure **data factory**.
+2.  Created two **linked services**:
+    1.  **Azure Storage** linked service to link your Azure blob storage that holds input/output files to the data factory.
+    2.  **Azure HDInsight** on-demand linked service to link an on-demand HDInsight Hadoop cluster to the data factory. Azure Data Factory creates a HDInsight Hadoop cluster just-in-time to process input data and produce output data. 
+3.  Created two **datasets**, which describe input and output data for HDInsight Hive activity in the pipeline. 
+4.  Created a **pipeline** with a **HDInsight Hive** activity.  
 
 
-## 次のステップ
-この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
+## <a name="next-steps"></a>Next Steps
+In this article, you have created a pipeline with a transformation activity (HDInsight Activity) that runs a Hive script on an on-demand HDInsight cluster. To see how to use a Copy Activity to copy data from an Azure Blob to Azure SQL, see [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
   
-## 関連項目
-| トピック | 説明 |
+## <a name="see-also"></a>See Also
+| Topic | Description |
 | :---- | :---- |
-| [データ変換のアクティビティ](data-factory-data-transformation-activities.md) | この記事には、Azure Data Factory でサポートされているデータ変換のアクティビティ (このチュートリアルで使用した HDInsight Hive 変換など) の一覧を示します。 | 
-| [スケジュールと実行](data-factory-scheduling-and-execution.md) | この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
-| [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
-| [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
-| [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
+| [Data Transformation Activities](data-factory-data-transformation-activities.md) | This article provides a list of data transformation activities (such as HDInsight Hive transformation you used in this tutorial) supported by Azure Data Factory. | 
+| [Scheduling and execution](data-factory-scheduling-and-execution.md) | This article explains the scheduling and execution aspects of Azure Data Factory application model. |
+| [Pipelines](data-factory-create-pipelines.md) | This article helps you understand pipelines and activities in Azure Data Factory and how to use them to construct end-to-end data-driven workflows for your scenario or business. |
+| [Datasets](data-factory-create-datasets.md) | This article helps you understand datasets in Azure Data Factory.
+| [Monitor and manage pipelines using Monitoring App](data-factory-monitor-manage-app.md) | This article describes how to monitor, manage, and debug pipelines using the Monitoring & Management App. 
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

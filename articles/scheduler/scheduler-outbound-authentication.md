@@ -1,10 +1,10 @@
 <properties
- pageTitle="Scheduler 送信認証"
- description="Scheduler 送信認証"
+ pageTitle="Scheduler Outbound Authentication"
+ description="Scheduler Outbound Authentication"
  services="scheduler"
  documentationCenter=".NET"
- authors="krisragh"
- manager="dwrede"
+ authors="derek1ee"
+ manager="kevinlam1"
  editor=""/>
 <tags
  ms.service="scheduler"
@@ -13,45 +13,46 @@
  ms.devlang="dotnet"
  ms.topic="article"
  ms.date="08/15/2016"
- ms.author="krisragh"/>
+ ms.author="deli"/>
 
-# Scheduler 送信認証
 
-Scheduler ジョブでは、認証を必要とするサービスを呼び出すことが必要になる場合があります。このようにして、呼び出されたサービスは、Scheduler ジョブがそのリソースにアクセスできるかどうかを確認できます。このようなサービスには、他の Azure サービス、Salesforce.com、Facebook、およびセキュリティで保護されたカスタム Web サイトが含まれます。
+# <a name="scheduler-outbound-authentication"></a>Scheduler Outbound Authentication
 
-## 認証の追加と削除
+Scheduler jobs may need to call out to services that require authentication. This way, a called service can determine if the Scheduler job can access its resources. Some of these services include other Azure services, Salesforce.com, Facebook, and secure custom websites.
 
-Scheduler ジョブに認証を追加するのは簡単です。ジョブを作成または更新するときに JSON の子要素 `authentication` を `request` 要素に追加するだけです。PUT 要求、PATCH 要求、または POST 要求で `authentication` オブジェクトの一部として Scheduler サービスに渡されたシークレットが応答で返されることはありません応答では、シークレット情報は null に設定されます。または、認証済みのエンティティを表す公開トークンが含まれる場合があります。
+## <a name="adding-and-removing-authentication"></a>Adding and Removing Authentication
 
-認証を削除するには、ジョブに対する PUT または PATCH 操作を明示的に実行して、`authentication` オブジェクトを null に設定します。応答に認証プロパティが含まれることはありません。
+Adding authentication to a Scheduler job is simple – add a JSON child element `authentication` to the `request` element when creating or updating a job. Secrets passed to the Scheduler service in a PUT, PATCH, or POST request – as part of the `authentication` object – are never returned in responses. In responses, secret information is set to null or may have a public token that represents the authenticated entity.
 
-現在サポートされている認証の種類は、(SSL/TLS クライアント証明書を使用するための) `ClientCertificate` モデル、(基本認証用の) `Basic` モデル、(Active Directory の OAuth 認証用の) `ActiveDirectoryOAuth` モデルのみです。
+To remove authentication, PUT or PATCH the job explicitly, setting the `authentication` object to null. You will not see any authentication properties back in response.
 
-## ClientCertificate 認証の要求本文
+Currently, the only supported authentication types are the `ClientCertificate` model (for using the SSL/TLS client certificates), the `Basic` model (for Basic authentication), and the `ActiveDirectoryOAuth` model (for Active Directory OAuth authentication.)
 
-`ClientCertificate` モデルを使用して認証を追加する場合は、要求本文に次の要素を指定します。
+## <a name="request-body-for-clientcertificate-authentication"></a>Request Body for ClientCertificate Authentication
 
-|要素|Description|
+When adding authentication using the `ClientCertificate` model, specify the following additional elements in the request body.  
+
+|Element|Description|
 |:---|:---|
-|_authentication (親要素)_|SSL クライアント証明書を使用するための認証オブジェクト。|
-|_type_|必須。認証の種類。SSL クライアント証明書の場合、値 `ClientCertificate` を使用する必要があります。|
-|_pfx_|必須。Base64 でエンコードされた PFX ファイルのコンテンツ。|
-|_password_|必須。PFX ファイルにアクセスするためのパスワード。|
+|_authentication (parent element)_|Authentication object for using an SSL client certificate.|
+|_type_|Required. Type of authentication.For SSL client certificates, the value must be `ClientCertificate`.|
+|_pfx_|Required. Base64-encoded contents of the PFX file.|
+|_password_|Required. Password to access the PFX file.|
 
 
-## ClientCertificate 認証の応答本文
+## <a name="response-body-for-clientcertificate-authentication"></a>Response Body for ClientCertificate Authentication
 
-認証情報を含めて要求を送信した場合、応答には次の認証に関連する要素が含まれます。
+When a request is sent with authentication info, the response contains the following authentication-related elements.
 
-|要素 |Description |
+|Element |Description |
 |:--|:--|
-|_authentication (親要素)_ |SSL クライアント証明書を使用するための認証オブジェクト。|
-|_type_ |認証の種類。SSL クライアント証明書の場合、値 `ClientCertificate` を使用します。|
-|_certificateThumbprint_ |証明書の拇印。|
-|_certificateSubjectName_ |証明書のサブジェクト識別名。|
-|_certificateExpiration_ |証明書の有効期限日。|
+|_authentication (parent element)_ |Authentication object for using an SSL client certificate.|
+|_type_ |Type of authentication. For SSL client certificates, the value is `ClientCertificate`.|
+|_certificateThumbprint_ |The thumbprint of the certificate.|
+|_certificateSubjectName_ |The subject distinguished name of the certificate.|
+|_certificateExpiration_ |The expiration date of the certificate.|
 
-## ClientCertificate 認証のサンプル REST 要求
+## <a name="sample-rest-request-for-clientcertificate-authentication"></a>Sample REST Request for ClientCertificate Authentication
 
 ```
 PUT https://management.azure.com/subscriptions/1fe0abdf-581e-4dfe-9ec7-e5cb8e7b205e/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -67,10 +68,10 @@ Content-Type: application/json; charset=utf-8
       "request": {
         "uri": "https://mywebserviceendpoint.com",
         "method": "GET",
-		"headers": {
+        "headers": {
           "x-ms-version": "2013-03-01"
         },
-		"authentication": {
+        "authentication": {
           "type": "clientcertificate",
           "password": "password",
           "pfx": "pfx key"
@@ -88,7 +89,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-## ClientCertificate 認証のサンプル REST 応答
+## <a name="sample-rest-response-for-clientcertificate-authentication"></a>Sample REST Response for ClientCertificate Authentication
 
 ```
 HTTP/1.1 200 OK
@@ -145,28 +146,28 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## 基本認証の要求本文
+## <a name="request-body-for-basic-authentication"></a>Request Body for Basic Authentication
 
-`Basic` モデルを使用して認証を追加する場合は、要求本文に次の要素を指定します。
+When adding authentication using the `Basic` model, specify the following additional elements in the request body.
 
-|要素|Description|
+|Element|Description|
 |:--|:--|
-|_authentication (親要素)_ |基本認証を使用するための認証オブジェクト。|
-|_type_ |必須。認証の種類。基本認証の場合、値 `Basic` を使用する必要があります。|
-|_username_ |必須。認証するユーザー名。|
-|_password_ |必須。認証するパスワード。|
+|_authentication (parent element)_ |Authentication object for using Basic authentication.|
+|_type_ |Required. Type of authentication. For Basic authentication, the value must be `Basic`.|
+|_username_ |Required. Username to authenticate.|
+|_password_ |Required. Password to authenticate.|
 
-## 基本認証の応答本文
+## <a name="response-body-for-basic-authentication"></a>Response Body for Basic Authentication
 
-認証情報を含めて要求を送信した場合、応答には次の認証に関連する要素が含まれます。
+When a request is sent with authentication info, the response contains the following authentication-related elements.
 
-|要素|Description|
+|Element|Description|
 |:--|:--|
-|_authentication (親要素)_ |基本認証を使用するための認証オブジェクト。|
-|_type_ |認証の種類。基本認証の場合、値 `Basic` を使用します。|
-|_username_ |認証されたユーザー名。|
+|_authentication (parent element)_ |Authentication object for using Basic authentication.|
+|_type_ |Type of authentication. For Basic authentication, the value is `Basic`.|
+|_username_ |The authenticated username.|
 
-## 基本認証のサンプル REST 要求
+## <a name="sample-rest-request-for-basic-authentication"></a>Sample REST Request for Basic Authentication
 
 ```
 PUT https://management.azure.com/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -183,12 +184,12 @@ Content-Type: application/json; charset=utf-8
       "request": {
         "uri": "https://mywebserviceendpoint.com",
         "method": "GET",
-		"headers": {
+        "headers": {
           "x-ms-version": "2013-03-01"
         },
-		"authentication": {
+        "authentication": {
           "type": "basic",
-		  "username": "user",
+          "username": "user",
           "password": "password"
         }
       },
@@ -204,7 +205,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-## 基本認証のサンプル REST 応答
+## <a name="sample-rest-response-for-basic-authentication"></a>Sample REST Response for Basic Authentication
 
 ```
 HTTP/1.1 200 OK
@@ -259,36 +260,36 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## ActiveDirectoryOAuth 認証の要求本文
+## <a name="request-body-for-activedirectoryoauth-authentication"></a>Request Body for ActiveDirectoryOAuth Authentication
 
-`ActiveDirectoryOAuth` モデルを使用して認証を追加する場合は、要求本文に次の要素を指定します。
+When adding authentication using the `ActiveDirectoryOAuth` model, specify the following additional elements in the request body.
 
-|要素 |Description |
+|Element |Description |
 |:--|:--|
-|_authentication (親要素)_ |ActiveDirectoryOAuth 認証を使用するための認証オブジェクト。|
-|_type_ |必須。認証の種類。ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth` を使用する必要があります。|
-|_tenant_ |必須。Azure AD テナントのテナント ID です。|
-|_audience_ |必須。https://management.core.windows.net/.| に設定します。
-|_clientId_ |必須。Azure AD アプリケーションのクライアント識別子を指定します。|
-|_secret_ |必須。トークンを要求しているクライアントのシークレット。|
+|_authentication (parent element)_ |Authentication object for using ActiveDirectoryOAuth authentication.|
+|_type_ |Required. Type of authentication. For ActiveDirectoryOAuth authentication, the value must be `ActiveDirectoryOAuth`.|
+|_tenant_ |Required. The tenant identifier for the Azure AD tenant.|
+|_audience_ |Required. This is set to https://management.core.windows.net/.|
+|_clientId_ |Required. Provide the client identifier for the Azure AD application.|
+|_secret_ |Required. Secret of the client that is requesting the token.|
 
-### テナント ID の確認
+### <a name="determining-your-tenant-identifier"></a>Determining your Tenant Identifier
 
-Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAccount` を実行すると確認できます。
+You can find the tenant identifier for the Azure AD tenant by running `Get-AzureAccount` in Azure PowerShell.
 
-## ActiveDirectoryOAuth 認証の応答本文
+## <a name="response-body-for-activedirectoryoauth-authentication"></a>Response Body for ActiveDirectoryOAuth Authentication
 
-認証情報を含めて要求を送信した場合、応答には次の認証に関連する要素が含まれます。
+When a request is sent with authentication info, the response contains the following authentication-related elements.
 
-|要素 |Description |
+|Element |Description |
 |:--|:--|
-|_authentication (親要素)_ |ActiveDirectoryOAuth 認証を使用するための認証オブジェクト。|
-|_type_ |認証の種類。ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth` を使用します。|
-|_tenant_ |Azure AD テナントのテナント ID です。 |
-|_audience_ |https://management.core.windows.net/.| に設定します。
-|_clientId_ |Azure AD アプリケーションのクライアント識別子。|
+|_authentication (parent element)_ |Authentication object for using ActiveDirectoryOAuth authentication.|
+|_type_ |Type of authentication. For ActiveDirectoryOAuth authentication, the value is `ActiveDirectoryOAuth`.|
+|_tenant_ |The tenant identifier for the Azure AD tenant. |
+|_audience_ |This is set to https://management.core.windows.net/.|
+|_clientId_ |The client identifier for the Azure AD application.|
 
-## ActiveDirectoryOAuth 認証のサンプル REST 要求
+## <a name="sample-rest-request-for-activedirectoryoauth-authentication"></a>Sample REST Request for ActiveDirectoryOAuth Authentication
 
 ```
 PUT https://management.azure.com/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -305,10 +306,10 @@ Content-Type: application/json; charset=utf-8
       "request": {
         "uri": "https://mywebserviceendpoint.com",
         "method": "GET",
-		"headers": {
+        "headers": {
           "x-ms-version": "2013-03-01"
         },
-		"authentication": {
+        "authentication": {
           "tenant":"microsoft.onmicrosoft.com",
           "audience":"https://management.core.windows.net/",
           "clientId":"dc23e764-9be6-4a33-9b9a-c46e36f0c137",
@@ -328,7 +329,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-## ActiveDirectoryOAuth 認証のサンプル REST 応答
+## <a name="sample-rest-response-for-activedirectoryoauth-authentication"></a>Sample REST Response for ActiveDirectoryOAuth Authentication
 
 ```
 HTTP/1.1 200 OK
@@ -386,23 +387,27 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## 関連項目
+## <a name="see-also"></a>See Also
 
 
- [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
+ [What is Scheduler?](scheduler-intro.md)
 
- [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+ [Azure Scheduler concepts, terminology, and entity hierarchy](scheduler-concepts-terms.md)
 
- [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
+ [Get started using Scheduler in the Azure portal](scheduler-get-started-portal.md)
 
- [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
+ [Plans and billing in Azure Scheduler](scheduler-plans-billing.md)
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
+ [Azure Scheduler REST API reference](https://msdn.microsoft.com/library/mt629143)
 
- [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
+ [Azure Scheduler PowerShell cmdlets reference](scheduler-powershell-reference.md)
 
- [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
+ [Azure Scheduler high-availability and reliability](scheduler-high-availability-reliability.md)
 
- [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
+ [Azure Scheduler limits, defaults, and error codes](scheduler-limits-defaults-errors.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

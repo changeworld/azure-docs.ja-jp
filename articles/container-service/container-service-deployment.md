@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Azure コンテナー サービス クラスターのデプロイ | Microsoft Azure"
-   description="Azure ポータル、Azure CLI、PowerShell を利用して Azure コンテナー サービスをデプロイします。"
+   pageTitle="Deploy an Azure Container Service cluster | Microsoft Azure"
+   description="Deploy an Azure Container Service cluster by using the Azure portal, the Azure CLI, or PowerShell."
    services="container-service"
    documentationCenter=""
    authors="rgardler"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker、コンテナー、マイクロ サービス、Mesos、Azure"/>
+   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -18,171 +18,176 @@
    ms.date="09/13/2016"
    ms.author="rogardle"/>
 
-# Azure コンテナー サービス クラスターのデプロイ
 
-Azure コンテナー サービスでは、人気のオープン ソースのコンテナー クラスタリングやオーケストレーション ソリューションを短期間でデプロイできます。Azure コンテナー サービスと、Azure Resource Manager テンプレートまたは Azure ポータルを利用し、DC/OS クラスターと Docker Swarm クラスターをデプロイできます。これらのクラスターは Azure 仮想マシン スケール セットでデプロイされ、Azure ネットワーキングとストレージ サービスが活用されます。Azure コンテナー サービスにアクセスするには、Azure サブスクリプションが必要です。サブスクリプションがない場合でも、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップできます。
+# <a name="deploy-an-azure-container-service-cluster"></a>Deploy an Azure Container Service cluster
 
-このドキュメントでは、[Azure ポータル](#creating-a-service-using-the-azure-portal)、[Azure コマンド ライン インターフェイス (CLI)](#creating-a-service-using-the-azure-cli)、[Azure PowerShell モジュール](#creating-a-service-using-powershell)を利用し、Azure コンテナー サービスをデプロイする方法を段階的に説明します。
+Azure Container Service provides rapid deployment of popular open-source container clustering and orchestration solutions. By using Azure Container Service, you can deploy DC/OS and Docker Swarm clusters with Azure Resource Manager templates or the Azure portal. You deploy these clusters by using Azure Virtual Machine Scale Sets, and the clusters take advantage of Azure networking and storage offerings. To access Azure Container Service, you need an Azure subscription. If you don't have one, then you can sign up for a [free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935).
 
-## Azure ポータルを使用してサービスを作成する
+This document walks you through deploying an Azure Container Service cluster by using the [Azure portal](#creating-a-service-using-the-azure-portal), the [Azure command-line interface (CLI)](#creating-a-service-using-the-azure-cli), and the [Azure PowerShell module](#creating-a-service-using-powershell).  
 
-Azure ポータルにサインインし、**[新規]** を選択して、Azure Marketplace で **Azure コンテナー サービス**を検索します。
+## <a name="create-a-service-by-using-the-azure-portal"></a>Create a service by using the Azure portal
 
-![Create deployment 1](media/acs-portal1.png) <br />
+Sign in to the Azure portal, select **New**, and search the Azure Marketplace for **Azure Container Service**.
 
-**[Azure Container Service (Azure コンテナー サービス)]** を選択し、**[作成]** をクリックします。
+![Create deployment 1](media/acs-portal1.png)  <br />
 
-![Create deployment 2](media/acs-portal2.png) <br />
+Select **Azure Container Service**, and click **Create**.
 
-次の情報を入力します。
+![Create deployment 2](media/acs-portal2.png)  <br />
 
-- **[ユーザー名]**: Azure コンテナー サービス クラスターの各仮想マシンと仮想マシン スケール セットのアカウントに使用されるユーザー名です。
-- **[サブスクリプション]**: Azure サブスクリプションを選択します。
-- **[リソース グループ]**: 既存のリソース グループを選択するか、新しいリソース グループを作成します。
-- **[場所]**: Azure コンテナー サービスのデプロイの Azure リージョンを選択します。
-- **[SSH 公開キー]**: Azure コンテナー サービスの Virtual Machines に対する認証に使用する公開キーを追加します。このキーには改行を含めないでください。また、先頭に 'ssh-rsa'、末尾に 'username@domain' を付ける必要があります。**ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm** のようになります。Secure Shell (SSH) キーの作成方法については、[Linux の記事](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/)と [Windows の記事](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/)を参照してください。
+Enter the following information:
 
-準備が完了したら、**[OK]** をクリックします。
+- **User name**: This is the user name that will be used for an account on each of the virtual machines and virtual machine scale sets in the Azure Container Service cluster.
+- **Subscription**: Select an Azure subscription.
+- **Resource group**: Select an existing resource group, or create a new one.
+- **Location**: Select an Azure region for the Azure Container Service deployment.
+- **SSH public key**: Add the public key that will be used for authentication against Azure Container Service virtual machines. It is very important that this key contains no line breaks, and that it includes the 'ssh-rsa' prefix and the 'username@domain' postfix. It should look something like the following: **ssh-rsa AAAAB3Nz...<...>...UcyupgH azureuser@linuxvm**. For guidance on creating Secure Shell (SSH) keys, see the [Linux]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-linux/) and [Windows]( https://azure.microsoft.com/documentation/articles/virtual-machines-linux-ssh-from-windows/) articles.
 
-![Create deployment 3](media/acs-portal3.png) <br />
+Click **OK** when you're ready to proceed.
 
-オーケストレーションの種類を選択します。オプションは次のとおりです。
+![Create deployment 3](media/acs-portal3.png)  <br />
 
-- **[DC/OS]**: DC/OS クラスターをデプロイします。
-- **[Swarm]**: Docker Swarm クラスターをデプロイします。
+Select an Orchestration type. The options are:
 
-準備が完了したら、**[OK]** をクリックします。
+- **DC/OS**: Deploys a DC/OS cluster.
+- **Swarm**: Deploys a Docker Swarm cluster.
 
-![Create deployment 4](media/acs-portal4.png) <br />
+Click **OK** when you're ready to proceed.
 
-次の情報を入力します。
+![Create deployment 4](media/acs-portal4.png)  <br />
 
-- **[Master count (マスター数)]**: クラスターのマスター数。
-- **[Agent count (エージェント数)]**: Docker Swarm の場合、エージェント スケール セットのエージェントの初期数です。DC/OS の場合、プライベート スケール セットのエージェントの初期数です。また、事前に決められた数のエージェントを含むパブリック スケール セットが作成されます。このパブリック スケール セットのエージェント数は、クラスターに作成されたマスター数によって決まります (1 マスターに 1 パブリック エージェント、3 または 5 マスターに 2 パブリック エージェント)。
-- **[Agent virtual machine size (エージェント仮想マシン サイズ)]**: エージェント仮想マシンのサイズ。
-- **[DNS プレフィックス]**: サービス名の完全修飾ドメイン名の主要部分の先頭に付ける世界で一意の名前。
+Enter the following information:
 
-準備が完了したら、**[OK]** をクリックします。
+- **Master count**: The number of masters in the cluster.
+- **Agent count**: For Docker Swarm, this will be the initial number of agents in the agent scale set. For DC/OS, this will be the initial number of agents in a private scale set. Additionally, a public scale set is created, which contains a predetermined number of agents. The number of agents in this public scale set is determined by how many masters have been created in the cluster--one public agent for one master, and two public agents for three or five masters.
+- **Agent virtual machine size**: The size of the agent virtual machines.
+- **DNS prefix**: A world unique name that will be used to prefix key parts of the fully qualified domain names for the service.
 
-![Create deployment 5](media/acs-portal5.png) <br />
+Click **OK** when you're ready to proceed.
 
-サービスの検証が完了したら、**[OK]** をクリックします。
+![Create deployment 5](media/acs-portal5.png)  <br />
 
-![Create deployment 6](media/acs-portal6.png) <br />
+Click **OK** after service validation has finished.
 
-**[作成]** をクリックしてデプロイ プロセスを開始します。
+![Create deployment 6](media/acs-portal6.png)  <br />
 
-![Create deployment 7](media/acs-portal7.png) <br />
+Click **Create** to start the deployment process.
 
-デプロイを Azure ポータルに固定した場合、デプロイの状態を確認できます。
+![Create deployment 7](media/acs-portal7.png)  <br />
 
-![Create deployment 8](media/acs-portal8.png) <br />
+If you've elected to pin the deployment to the Azure portal, you can see the deployment status.
 
-デプロイが完了したら、Azure コンテナー サービス クラスターを利用できます。
+![Create deployment 8](media/acs-portal8.png)  <br />
 
-## Azure CLI を使用してサービスを作成する
+When the deployment has completed, the Azure Container Service cluster is ready for use.
 
-コマンド ラインを使用して Azure コンテナー サービスのインスタンスを作成するには、Azure サブスクリプションが必要です。サブスクリプションがない場合でも、[無料試用版](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935)にサインアップできます。また、Azure CLI を[インストール](../xplat-cli-install.md)し、[構成](../xplat-cli-connect.md)する必要があります。
+## <a name="create-a-service-by-using-the-azure-cli"></a>Create a service by using the Azure CLI
 
-DC/OS または Docker Swarm クラスターをデプロイするには、GitHub から次のテンプレートのいずれかを選択します。既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
+To create an instance of Azure Container Service by using the command line, you need an Azure subscription. If you don't have one, then you can sign up for a [free trial](http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=AA4C1C935). You also need to have [installed](../xplat-cli-install.md) and [configured](../xplat-cli-connect.md) the Azure CLI.
 
-* [DC/OS テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
-* [Swarm テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+To deploy a DC/OS or Docker Swarm cluster, select one of the following templates from GitHub. Note that both of these templates are the same, with the exception of the default orchestrator selection.
 
-次に、Azure CLI が Azure サブスクリプションに接続されたことを確認します。この処理には、次のコマンドを使用できます。
+* [DC/OS template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* [Swarm template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+
+Next, make sure that the Azure CLI has been connected to an Azure subscription. You can do this by using the following command:
 
 ```bash
 azure account show
 ```
-Azure アカウントが返されない場合、次のコマンドを使用して CLI を Azure にサインインさせます。
+If an Azure account is not returned, use the following command to sign the CLI in to Azure.
 
 ```bash
 azure login -u user@domain.com
 ```
 
-次に、Azure リソース マネージャーを使用するように Azure CLI ツールを構成します。
+Next, configure the Azure CLI tools to use Azure Resource Manager.
 
 ```bash
 azure config mode arm
 ```
 
-次のコマンドを使用して、Azure リソース グループとコンテナー サービス クラスターを作成します。
+Create an Azure resource group and Container Service cluster with the following command, where:
 
-- **RESOURCE\_GROUP** は、このサービスで使用するリソース グループの名前です。
-- **LOCATION** は、リソース グループと Azure コンテナー サービスのデプロイを作成する Azure リージョンです。
-- **TEMPLATE\_URI** は、デプロイ ファイルの場所です。これは Raw ファイルになります。GitHub UI のポインターではありません。この URL を見つけるには、GitHub で azuredeploy.json ファイルを選択し、**[Raw]** ボタンをクリックします。
+- **RESOURCE_GROUP** is the name of the resource group that you want to use for this service.
+- **LOCATION** is the Azure region where the resource group and Azure Container Service deployment will be created.
+- **TEMPLATE_URI** is the location of the deployment file. Note that this must be the Raw file, not a pointer to the GitHub UI. To find this URL, select the azuredeploy.json file in GitHub, and click the **Raw** button.
 
-> [AZURE.NOTE] このコマンドを実行すると、シェルからデプロイのパラメーター値の入力が求められます。
+> [AZURE.NOTE] When you run this command, the shell will prompt you for deployment parameter values.
 
 ```bash
 azure group create -n RESOURCE_GROUP DEPLOYMENT_NAME -l LOCATION --template-uri TEMPLATE_URI
 ```
 
-### テンプレート パラメーターを指定する
+### <a name="provide-template-parameters"></a>Provide template parameters
 
-このバージョンのコマンドでは、パラメーターを対話で定義する必要があります。JSON で書式設定された文字列などのパラメーターを指定する場合、`-p` スイッチでそれを実行できます。次に例を示します。
+This version of the command requires you to define parameters interactively. If you want to provide parameters, such as a JSON-formatted string, you can do so by using the `-p` switch. For example:
 
  ```bash
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -p '{ "param1": "value1" … }'
 ```
 
-または、`-e` スイッチを利用し、JSON で書式設定されたパラメーター ファイルを指定することもできます。
+Alternatively, you can provide a JSON-formatted parameters file by using the `-e` switch:
 
 ```bash
 azure group deployment create RESOURCE_GROUP DEPLOYMENT_NAME --template-uri TEMPLATE_URI -e PATH/FILE.JSON
 ```
 
-`azuredeploy.parameters.json` という名前のサンプル パラメーター ファイルを参照するには、GitHub で Azure コンテナー サービス テンプレートと共にこのファイルを検索します。
+To see an example parameters file named `azuredeploy.parameters.json`, look for it with the Azure Container Service templates in GitHub.
 
-## PowerShell を使用してサービスを作成する
+## <a name="create-a-service-by-using-powershell"></a>Create a service by using PowerShell
 
-PowerShell を使用して Azure コンテナー サービス クラスターをデプロイすることもできます。このドキュメントはバージョン 1.0 の [Azure PowerShell モジュール](https://azure.microsoft.com/blog/azps-1-0/)に基づいています。
+You can also deploy an Azure Container Service cluster with PowerShell. This document is based on the version 1.0 [Azure PowerShell module](https://azure.microsoft.com/blog/azps-1-0/).
 
-DC/OS または Docker Swarm クラスターをデプロイするには、次のテンプレートのいずれかを選択します。既定のオーケストレーターの選択を除き、これらのテンプレートは同じです。
+To deploy a DC/OS or Docker Swarm cluster, select one of the following templates. Note that both of these templates are the same, with the exception of the default orchestrator selection.
 
-* [DC/OS テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
-* [Swarm テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
+* [DC/OS template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-mesos)
+* [Swarm template](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)
 
-Azure サブスクリプションでクラスターを作成する前に、PowerShell セッションが Azure にサインインしていることを確認します。そのためには、`Get-AzureRMSubscription` コマンドを使用します。
+Before creating a cluster in your Azure subscription, verify that your PowerShell session has been signed in to Azure. You can do this with the `Get-AzureRMSubscription` command:
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Azure にサインインする必要がある場合、`Login-AzureRMAccount` コマンドを使用します。
+If you need to sign in to Azure, use the `Login-AzureRMAccount` command:
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-新しいリソース グループにデプロイする場合、最初にリソース グループを作成する必要があります。新しいリソース グループを作成するには、`New-AzureRmResourceGroup` コマンドを使用し、リソース グループの名前とターゲット リージョンを指定します。
+If you're deploying to a new resource group, you must first create the resource group. To create a new resource group, use the `New-AzureRmResourceGroup` command, and specify a resource group name and destination region:
 
 ```powershell
 New-AzureRmResourceGroup -Name GROUP_NAME -Location REGION
 ```
 
-リソース グループを作成したら、次のコマンドでクラスターを作成できます。目的のテンプレートの URI は `-TemplateUri` パラメーターに指定されます。このコマンドを実行すると、PowerShell からデプロイのパラメーター値の入力が求められます。
+After you create a resource group, you can create your cluster with the following command. The URI of the desired template will be specified for the `-TemplateUri` parameter. When you run this command, PowerShell will prompt you for deployment parameter values.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name DEPLOYMENT_NAME -ResourceGroupName RESOURCE_GROUP_NAME -TemplateUri TEMPLATE_URI
 ```
 
-### テンプレート パラメーターを指定する
+### <a name="provide-template-parameters"></a>Provide template parameters
 
-PowerShell に慣れている場合は、マイナス記号 (-) を入力して Tab キーを押すことで、コマンドレットで利用可能なパラメーターを順番に表示できることをご存じのことと思われます。この機能は、テンプレートで定義するパラメーターでも同様に使用できます。テンプレート名を入力すると、コマンドレットがすぐにテンプレートをフェッチし、パラメーターを解析して、テンプレート パラメーターをコマンドに動的に追加します。これにより、テンプレート パラメーターの値の指定が非常に簡単になります。また、必須のパラメーター値を忘れた場合は、PowerShell から値を求められます。
+If you're familiar with PowerShell, you know that you can cycle through the available parameters for a cmdlet by typing a minus sign (-) and then pressing the TAB key. This same functionality also works with parameters that you define in your template. As soon as you type the template name, the cmdlet fetches the template, parses the parameters, and adds the template parameters to the command dynamically. This makes it very easy to specify the template parameter values. And, if you forget a required parameter value, PowerShell prompts you for the value.
 
-パラメーターが含まれている完全なコマンドを以下に示します。リソースの名前には独自の値を指定できます。
+Below is the full command, with parameters included. You can provide your own values for the names of the resources.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName RESOURCE_GROUP_NAME-TemplateURI TEMPLATE_URI -adminuser value1 -adminpassword value2 ....
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-これでクラスターが機能します。接続と管理の詳細については、次のドキュメントを参照してください。
+Now that you have a functioning cluster, see these documents for connection and management details:
 
-- [Azure コンテナー サービス クラスターに接続する](container-service-connect.md)
-- [Azure コンテナー サービスと DC/OS の使用](container-service-mesos-marathon-rest.md)
-- [Azure コンテナー サービスと Docker Swarm の使用](container-service-docker-swarm.md)
+- [Connect to an Azure Container Service cluster](container-service-connect.md)
+- [Work with Azure Container Service and DC/OS](container-service-mesos-marathon-rest.md)
+- [Work with Azure Container Service and Docker Swarm](container-service-docker-swarm.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

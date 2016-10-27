@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="PowerShell ワークフローについての説明"
-   description="この記事では、PowerShell に慣れている作成者を対象に、PowerShell と PowerShell ワークフローの具体的な違いについて簡単に説明します。"
+   pageTitle="Learning PowerShell Workflow"
+   description="This article is intended as a quick lesson for authors familiar with PowerShell to understand the specific differences between PowerShell and PowerShell Workflow."
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
@@ -15,91 +15,92 @@
    ms.date="09/12/2016"
    ms.author="bwren" />
 
-# Windows PowerShell ワークフローについて
 
-Azure Automation の Runbook は Windows PowerShell ワークフローとして実装されています。Windows PowerShell ワークフローは Windows PowerShell スクリプトと似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。この記事は既に PowerShell に慣れているユーザーを対象としており、PowerShell スクリプトを PowerShell ワークフローに変換する場合に必要となる考え方について説明します。
+# <a name="learning-windows-powershell-workflow"></a>Learning Windows PowerShell Workflow
 
-A workflow is a sequence of programmed, connected steps that perform long-running tasks or require the coordination of multiple steps across multiple devices or managed nodes.The benefits of a workflow over a normal script include the ability to simultaneously perform an action against multiple devices and the ability to automatically recover from failures.A Windows PowerShell Workflow is a Windows PowerShell script that leverages Windows Workflow Foundation.ワークフローは Windows PowerShell の構文で記述され、Windows PowerShell によって起動されますが、Windows Workflow Foundation によって処理されます。
+Runbooks in Azure Automation are implemented as Windows PowerShell Workflows.  A Windows PowerShell Workflow is similar to a Windows PowerShell script but has some significant differences that can be confusing to a new user.  This article is intended for users already familiar with PowerShell and briefly explains concepts that you require if you are converting a PowerShell script to a PowerShell Workflow for use in a runbook.  
 
-この記事のトピックに関する詳細については、「[Windows PowerShell ワークフローについて](http://technet.microsoft.com/library/jj134242.aspx)」をご覧ください。
+A workflow is a sequence of programmed, connected steps that perform long-running tasks or require the coordination of multiple steps across multiple devices or managed nodes. The benefits of a workflow over a normal script include the ability to simultaneously perform an action against multiple devices and the ability to automatically recover from failures. A Windows PowerShell Workflow is a Windows PowerShell script that leverages Windows Workflow Foundation. While the workflow is written with Windows PowerShell syntax and launched by Windows PowerShell, it is processed by Windows Workflow Foundation.
 
-## Runbook の種類
+For complete details on the topics in this article, see [Getting Started with Windows PowerShell Workflow](http://technet.microsoft.com/library/jj134242.aspx).
 
-Azure Automation の Runbook には、*PowerShell Workflow*、*PowerShell*、*グラフィカル*の 3 種類があります。Runbook を作成するときに Runbook の種類を定義し、作成した後で種類を変えることはできません。
+## <a name="types-of-runbook"></a>Types of runbook
 
-PowerShell ワークフロー Runbook および PowerShell Runbook は、Azure Automation のテキスト エディター、または PowerShell ISE などのオフライン エディターを使用して PowerShell のコードを直接操作するユーザーに適しています。PowerShell ワークフロー Runbook を作成するには、この記事の説明を理解する必要があります。
+There are three types of runbook in Azure Automation, *PowerShell Workflow*, *PowerShell* and *graphical*.  You define the runbook type when you create the runbook, and you can't convert a runbook to the other type once it's been created.
 
-グラフィカルな Runbook ではグラフィカル インターフェイスを使用するため、基になる PowerShell ワークフローの複雑性を意識することなく、同じアクティビティとコマンドレットを使用して Runbook を作成することができます。チェックポイントや並列実行などのこの記事で紹介する概念は、グラフィカルな Runbook にも当てはまりますが、詳細な構文を気にする必要はありません。
+PowerShell workflow runbooks and PowerShell runbooks are for users who prefer to work directly with the PowerShell code either using the textual editor in Azure Automation or an offline editor such as PowerShell ISE. You should understand the information in this article if you are creating a PowerShell Workflow runbook. 
 
-## ワークフローの基本構造
+Graphical runbooks allow you to create a runbook using the same activities and cmdlets but using a graphical interface that hides the complexities of the underlying PowerShell workflow.  Concepts in this article such as checkpoints and parallel execution still apply to graphical runbooks, but you won't have to worry about the detailed syntax. 
 
-PowerShell スクリプトを PowerShell ワークフローに変換する最初のステップは、スクリプトを **Workflow** キーワードで囲むことです。ワークフローは、**Workflow** キーワードで始まり、中かっこで囲まれたスクリプトの本文が後に続きます。次の構文に示すように、ワークフローの名前は **Workflow** キーワードの後に続きます。
+## <a name="basic-structure-of-a-workflow"></a>Basic structure of a workflow
+
+The first step to converting a PowerShell script to a PowerShell workflow is enclosing it with the **Workflow** keyword.  A workflow starts with the **Workflow** keyword followed by the body of the script enclosed in braces. The name of the workflow follows the **Workflow** keyword as shown in the following syntax. 
 
     Workflow Test-Workflow
     {
        <Commands>
     }
 
-The name of the workflow must match the name of the Automation runbook.Runbook がインポートされている場合、ファイル名はワークフロー名と一致していなければならず、末尾は .ps1 でなければなりません。
+The name of the workflow must match the name of the Automation runbook. If the runbook is being imported, then the filename must match the workflow name and must end in .ps1.
 
-ワークフローにパラメーターを追加するには、スクリプトの場合と同様に **Param** キーワードを使用します。
+To add parameters to the workflow, use the **Param** keyword just as you would to a script. 
 
-## コードの変更
+## <a name="code-changes"></a>Code changes
 
-PowerShell ワークフローのコードは PowerShell スクリプト コードとほぼ同じですが、いくつかの重要な変更点があります。次のセクションでは、ワークフローで実行するための PowerShell スクリプトに対して行う必要がある変更について説明します。
+PowerShell workflow code looks almost identical to PowerShell script code except for a few significant changes.  The following sections describe changes that you will need to make to a PowerShell script for it to run in a workflow.
 
-### アクティビティ
+### <a name="activities"></a>Activities
 
-アクティビティとは、ワークフロー内の特定のタスクです。スクリプトが 1 つ以上のコマンドで構成されているのと同様に、ワークフローも順番に実行される 1 つ以上のアクティビティで構成されます。Windows PowerShell ワークフローでは、ワークフローの実行時に Windows PowerShell コマンドレットの多くが自動でアクティビティに変換されます。Runbook でこれらのコマンドレットのいずれかを指定すると、対応するアクティビティは、実際には Windows Workflow Foundation で実行されます。対応するアクティビティがないコマンドレットの場合、Windows PowerShell ワークフローは [InlineScript](#inlinescript) アクティビティ内のコマンドレットを自動的に実行します。InlineScript ブロックに明示的に含めないと除外され、ワークフローでは使用できない一連のコマンドレットがあります。これらの概念の詳細については、「[スクリプト ワークフローでのアクティビティの使用](http://technet.microsoft.com/library/jj574194.aspx)」を参照してください。
+An activity is a specific task in a workflow. Just as a script is composed of one or more commands, a workflow is composed of one or more activities that are carried out in a sequence. Windows PowerShell Workflow automatically converts many of the Windows PowerShell cmdlets to activities when it runs a workflow. When you specify one of these cmdlets in your runbook, the corresponding activity is actually run by Windows Workflow Foundation. For those cmdlets without a corresponding activity, Windows PowerShell Workflow automatically runs the cmdlet within an [InlineScript](#inlinescript) activity. There is a set of cmdlets that are excluded and cannot be used in a workflow unless you explicitly include them in an InlineScript block. For further details on these concepts, see [Using Activities in Script Workflows](http://technet.microsoft.com/library/jj574194.aspx).
 
-ワークフロー アクティビティは、操作を構成するための一連の共通パラメーターを共有します。ワークフローの共通パラメーターの詳細については、「[about\_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx)」を参照してください。
+Workflow activities share a set of common parameters to configure their operation. For details about the workflow common parameters, see [about_WorkflowCommonParameters](http://technet.microsoft.com/library/jj129719.aspx).
 
-### 位置指定パラメーター
+### <a name="positional-parameters"></a>Positional parameters
 
-ワークフローのアクティビティおよびコマンドレットでは、位置指定パラメーターを使用できません。このため、パラメーターを使用する必要があります。
+You can't use positional parameters with activities and cmdlets in a workflow.  All this means is that you must use parameter names.
 
 For example, consider the following code that gets all running services.
 
-	 Get-Service | Where-Object {$_.Status -eq "Running"}
+     Get-Service | Where-Object {$_.Status -eq "Running"}
 
-同じコードをワークフローで実行しようとすると、「指定された名前のパラメーターを使用してパラメーター セットを解決できません。」というメッセージが表示されます。 これを修正するには、次のようにパラメーター名を指定します。
+If you try to run this same code in a workflow, you'll get a message like "Parameter set cannot be resolved using the specified named parameters."  To correct this, simply provide the parameter name as in the following.
 
-	Workflow Get-RunningServices
-	{
-		Get-Service | Where-Object -FilterScript {$_.Status -eq "Running"}
-	}
+    Workflow Get-RunningServices
+    {
+        Get-Service | Where-Object -FilterScript {$_.Status -eq "Running"}
+    }
 
-### 逆シリアル化されたオブジェクト
+### <a name="deserialized-objects"></a>Deserialized objects
 
-ワークフロー内のオブジェクトは逆シリアル化されます。This means that their properties are still available, but not their methods.例として、サービス オブジェクトの Stop メソッドを使用してサービスを停止する次の PowerShell コードを考えます。
+Objects in workflows are deserialized.  This means that their properties are still available, but not their methods.  For example, consider the following PowerShell code that stops a service using the Stop method of the Service object.
 
-	$Service = Get-Service -Name MyService
-	$Service.Stop()
+    $Service = Get-Service -Name MyService
+    $Service.Stop()
 
-ワークフローでこれを実行しようとすると、「Windows PowerShell ワークフローでは、メソッド呼び出しはサポートされていません」というエラー メッセージが表示されます。
+If you try to run this in a workflow, you'll get an error saying "Method invocation is not supported in a Windows PowerShell Workflow".  
 
-これに対処する 1 つの方法は、これら 2 つのコード行を [InlineScript](#InlineScript) ブロックにラップすることであり、この場合 $Service はブロック内のサービス オブジェクトです。
+One option is to wrap these two lines of code in an [InlineScript](#InlineScript) block in which case $Service would be a service object within the block. 
 
-	Workflow Stop-Service
-	{
-		InlineScript {
-			$Service = Get-Service -Name MyService
-			$Service.Stop()
-		}
-	} 
+    Workflow Stop-Service
+    {
+        InlineScript {
+            $Service = Get-Service -Name MyService
+            $Service.Stop()
+        }
+    } 
 
-もう 1 つの方法は、メソッドとして同じ機能を実行する別のコマンドレットがある場合は、それを使用することです。このサンプルの場合、Stop-Service コマンドレットは Stop メソッドと同じ機能を提供し、ワークフローでは次のように使用できます。
+Another option is to use another cmdlet that performs the same functionality as the method, if one is available.  In the case of our sample, the Stop-Service cmdlet provides the same functionality as the Stop method, and you could use the following for a workflow.
 
-	Workflow Stop-MyService
-	{
-		$Service = Get-Service -Name MyService
-		Stop-Service -Name $Service.Name
-	}
+    Workflow Stop-MyService
+    {
+        $Service = Get-Service -Name MyService
+        Stop-Service -Name $Service.Name
+    }
 
 
-## InlineScript
+## <a name="inlinescript"></a>InlineScript
 
-**InlineScript** アクティビティは、PowerShell ワークフローではなく従来の PowerShell スクリプトとして 1 つまたは複数のコマンドを実行する必要がある場合に便利です。While commands in a workflow are sent to Windows Workflow Foundation for processing, commands in an InlineScript block are processed by Windows PowerShell.
+The **InlineScript** activity is useful when you need to run one or more commands as traditional PowerShell script instead of PowerShell workflow.  While commands in a workflow are sent to Windows Workflow Foundation for processing, commands in an InlineScript block are processed by Windows PowerShell. 
 
 InlineScript uses the syntax shown below.
 
@@ -108,50 +109,50 @@ InlineScript uses the syntax shown below.
       <Script Block>
     } <Common Parameters>
 
-InlineScript の出力を変数に割り当てることで、出力を返すことができます。次の例では、サービスを停止した後、サービス名を出力しています。
+You can return output from an InlineScript by assigning the output to a variable. The following example stops a service and then outputs the service name.
 
-	Workflow Stop-MyService
-	{
-		$Output = InlineScript {
-			$Service = Get-Service -Name MyService
-			$Service.Stop()
-			$Service
-		}
+    Workflow Stop-MyService
+    {
+        $Output = InlineScript {
+            $Service = Get-Service -Name MyService
+            $Service.Stop()
+            $Service
+        }
 
-		$Output.Name
-	}
-
-
-InlineScript ブロックに値を渡すことはできますが、**$Using** スコープ修飾子を使用する必要があります。次の例は前の例と同じですが、サービス名を変数によって渡しています。
-
-	Workflow Stop-MyService
-	{
-		$ServiceName = "MyService"
-	
-		$Output = InlineScript {
-			$Service = Get-Service -Name $Using:ServiceName
-			$Service.Stop()
-			$Service
-		}
-
-		$Output.Name
-	}
+        $Output.Name
+    }
 
 
-InlineScript アクティビティは特定のワークフローにとって重要ですが、ワークフロー コンストラクトをサポートせず、次の理由により、必要な場合にのみ使用する必要があります。
+You can pass values into an InlineScript block, but you must use **$Using** scope modifier.  The following example is identical to the previous example except that the service name is provided by a variable. 
 
-- InlineScript ブロックの内部で[チェックポイント](#Checkpoints)を使用することはできません。ブロック内でエラーが発生した場合は、ブロックの先頭から再開する必要があります。
-- InlineScript ブロックの内部で[並列実行](#parallel-execution)を使用することはできません。
-- InlineScript は、InlineScript ブロックの長さ全体について Windows PowerShell セッションを保持するため、ワークフローの拡張性に影響します。
+    Workflow Stop-MyService
+    {
+        $ServiceName = "MyService"
+    
+        $Output = InlineScript {
+            $Service = Get-Service -Name $Using:ServiceName
+            $Service.Stop()
+            $Service
+        }
 
-InlineScript の使用の詳細については、「[ワークフローでの Windows PowerShell コマンドの実行](http://technet.microsoft.com/library/jj574197.aspx)」および「[about\_InlineScript](http://technet.microsoft.com/library/jj649082.aspx)」を参照してください。
+        $Output.Name
+    }
 
 
-## 並列処理
+While InlineScript activities may be critical in certain workflows, they do not support workflow constructs and should only be used when necessary for the following reasons:
 
-Windows PowerShell ワークフローの利点の 1 つは、一般的なスクリプトのように順番に実行するのでなく、一連のコマンドを並行して実行できることです。
+- You cannot use [checkpoints](#Checkpoints) inside of an InlineScript block. If a failure occurs within the block, it must be resumed from the beginning of the block.
+- You cannot use [parallel execution](#parallel-execution) inside of an InlineScriptBlock.
+- InlineScript affects scalability of the workflow since it holds the Windows PowerShell session for the entire length of the InlineScript block.
 
-**Parallel** キーワードを使用して、同時に実行される複数のコマンドを含むスクリプト ブロックを作成できます。This uses the syntax shown below.この場合、Activity1 と Activity2 は同時に開始されます。Activity3 は、Activity1 と Activity2 の両方が完了した後にのみ開始されます。
+For further details on using InlineScript, see [Running Windows PowerShell Commands in a Workflow](http://technet.microsoft.com/library/jj574197.aspx) and [about_InlineScript](http://technet.microsoft.com/library/jj649082.aspx).
+
+
+## <a name="parallel-processing"></a>Parallel processing
+
+One advantage of Windows PowerShell Workflows is the ability to perform a set of commands in parallel instead of sequentially as with a typical script. 
+
+You can use the **Parallel** keyword to create a script block with multiple commands that will run concurrently. This uses the syntax shown below. In this case, Activity1 and Activity2 will start at the same time. Activity3 will start only after both Activity1 and Activity2 have completed.
 
     Parallel
     {
@@ -161,28 +162,28 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
     <Activity3>
 
 
-例として、複数のファイルをネットワーク上にコピーする次の PowerShell コマンドを考えます。These commands are run sequentially so that one file must finish copying before the next is started.
+For example, consider the following PowerShell commands that copy multiple files to a network destination.  These commands are run sequentially so that one file must finish copying before the next is started.     
 
-	$Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
-	$Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
-	$Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
+    $Copy-Item -Path C:\LocalPath\File1.txt -Destination \\NetworkPath\File1.txt
+    $Copy-Item -Path C:\LocalPath\File2.txt -Destination \\NetworkPath\File2.txt
+    $Copy-Item -Path C:\LocalPath\File3.txt -Destination \\NetworkPath\File3.txt
 
-次のワークフローでは、すべてのコピーが同時に開始されるように、同じコマンドが並列実行されます。すべてが完全にコピーされた後でのみ、完了メッセージが表示されます。
+The following workflow runs these same commands in parallel so that they all start copying at the same time.  Only after they are all completely copied is the completion message displayed.
 
-	Workflow Copy-Files
-	{
-		Parallel 
-		{
-			$Copy-Item -Path "C:\LocalPath\File1.txt" -Destination "\\NetworkPath"
-			$Copy-Item -Path "C:\LocalPath\File2.txt" -Destination "\\NetworkPath"
-			$Copy-Item -Path "C:\LocalPath\File3.txt" -Destination "\\NetworkPath"
-		}
+    Workflow Copy-Files
+    {
+        Parallel 
+        {
+            $Copy-Item -Path "C:\LocalPath\File1.txt" -Destination "\\NetworkPath"
+            $Copy-Item -Path "C:\LocalPath\File2.txt" -Destination "\\NetworkPath"
+            $Copy-Item -Path "C:\LocalPath\File3.txt" -Destination "\\NetworkPath"
+        }
 
-		Write-Output "Files copied."
-	}
+        Write-Output "Files copied."
+    }
 
 
-**ForEach -Parallel** の構文を使用することにより、コレクション内の各項目のコマンドを同時に処理できます。コレクション内の項目は並行して処理され、スクリプト ブロック内のコマンドは順番に実行されます。This uses the syntax shown below.この場合、Activity1 は、コレクション内のすべての項目に対して同時に開始されます。For each item, Activity2 will start after Activity1 is complete.Activity3 は、すべての項目における Activity1 と Activity2 の両方が完了した後にのみ開始されます。
+You can use the **ForEach -Parallel** construct to process commands for each item in a collection concurrently. The items in the collection are processed in parallel while the commands in the script block run sequentially. This uses the syntax shown below. In this case, Activity1 will start at the same time for all items in the collection. For each item, Activity2 will start after Activity1 is complete. Activity3 will start only after both Activity1 and Activity2 have completed for all items.
 
     ForEach -Parallel ($<item> in $<collection>)
     {
@@ -191,29 +192,29 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
     }
     <Activity3>
 
-次の例は、並列でファイルのコピーを行う前の例と似ています。In this case, a message is displayed for each file after it copies.Only after they are all completely copied is the final completion message displayed.
+The following example is similar to the previous example copying files in parallel.  In this case, a message is displayed for each file after it copies.  Only after they are all completely copied is the final completion message displayed.
 
-	Workflow Copy-Files
-	{
-		$files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
+    Workflow Copy-Files
+    {
+        $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
 
-		ForEach -Parallel ($File in $Files) 
-		{
-			$Copy-Item -Path $File -Destination \\NetworkPath
-			Write-Output "$File copied."
-		}
-		
-		Write-Output "All files copied."
-	}
+        ForEach -Parallel ($File in $Files) 
+        {
+            $Copy-Item -Path $File -Destination \\NetworkPath
+            Write-Output "$File copied."
+        }
+        
+        Write-Output "All files copied."
+    }
 
-> [AZURE.NOTE]  We do not recommend running child runbooks in parallel since this has been shown to give unreliable results.子 Runbook からの出力が表示されないことがあり、1 つの子 Runbook での設定が並列に実行されている他の子 Runbook に影響を与える可能性があります。
+> [AZURE.NOTE]  We do not recommend running child runbooks in parallel since this has been shown to give unreliable results.  The output from the child runbook sometimes will not show up, and settings in one child runbook can affect the other parallel child runbooks 
 
 
-## チェックポイント
+## <a name="checkpoints"></a>Checkpoints
 
-*チェックポイント* は、変数の現在の値と、そのポイントに生成された出力を含むワークフローの現在の状態のスナップショットです。ワークフローがエラーで終了した場合、または中断した場合、次の実行時には、ワークフローの先頭からではなく、最後のチェックポイントから開始されます。**Checkpoint-Workflow** アクティビティを使用してワークフローにチェックポイントを設定できます。
+A *checkpoint* is a snapshot of the current state of the workflow that includes the current value for variables and any output generated to that point. If a workflow ends in error or is suspended, then the next time it is run it will start from its last checkpoint instead of the start of the worfklow.  You can set a checkpoint in a workflow with the **Checkpoint-Workflow** activity.
 
-次のサンプル コードでは、Activity2 の後に例外が発生し、ワークフローが終了します。ワークフローを再実行すると、設定された最後のチェックポイントの直後に Activity2 があるため、まず Activity2 が実行されます。
+In the following sample code, an exception occurs after Activity2 causing the workflow to end. When the workflow is run again, it starts by running Activity2 since this was just after the last checkpoint set.
 
     <Activity1>
     Checkpoint-Workflow
@@ -221,27 +222,27 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
     <Exception>
     <Activity3>
 
-例外を引き起こす可能性があり、ワークフローが再開された場合は繰り返す必要のないアクティビティの後に、ワークフローのチェックポイントを設定する必要があります。For example, your workflow may create a virtual machine.チェックポイントをコマンドの前後に設定して、仮想マシンを作成できます。If the creation fails, then the commands would be repeated if the workflow is started again.作成の成功後にワークフローが失敗した場合、ワークフローが再開されても仮想マシンが再び作成されることはありません。
+You should set checkpoints in a workflow after activities that may be prone to exception and should not be repeated if the workflow is resumed. For example, your workflow may create a virtual machine. You could set a checkpoint both before and after the commands to create the virtual machine. If the creation fails, then the commands would be repeated if the workflow is started again. If the the worfklow fails after the creation succeeds, then the virtual machine will not be created again when the workflow is resumed.
 
-次の例では、ネットワーク上の場所に複数のファイルをコピーし、各ファイルの後にチェックポイントを設定します。If the network location is lost, then the workflow will end in error.ワークフローを再び開始すると、最後のチェックポイントで再開するので、既にコピーされているファイルだけがスキップされます。
+The following example copies multiple files to a network location and sets a checkpoint after each file.  If the network location is lost, then the workflow will end in error.  When it is started again, it will resume at the last checkpoint meaning that only the files that have already been copied will be skipped.
 
-	Workflow Copy-Files
-	{
-		$files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
+    Workflow Copy-Files
+    {
+        $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt","C:\LocalPath\File3.txt")
 
-		ForEach ($File in $Files) 
-		{
-			$Copy-Item -Path $File -Destination \\NetworkPath
-			Write-Output "$File copied."
-			Checkpoint-Workflow
-		}
-		
-		Write-Output "All files copied."
-	}
+        ForEach ($File in $Files) 
+        {
+            $Copy-Item -Path $File -Destination \\NetworkPath
+            Write-Output "$File copied."
+            Checkpoint-Workflow
+        }
+        
+        Write-Output "All files copied."
+    }
 
-ユーザー名資格情報は、[Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) アクティビティを呼び出した後、または最後のチェックポイントの後は保持されないため、資格情報を null に設定し、**Suspend-Workflow** またはチェックポイントが呼び出された後にアセット ストアから再取得する必要があります。そうしないと、次のエラー メッセージが表示されます: *永続データの保存が完了できなかったか、保存された永続データが壊れているため、ワークフロー ジョブを再開できません。ワークフローを再起動する必要があります。*
+Because username credentials are not persisted after you call the [Suspend-Workflow](https://technet.microsoft.com/library/jj733586.aspx) activity or after the last checkpoint, you need to set the credentials to null and then retrieve them again from the asset store after **Suspend-Workflow** or checkpoint is called.  Otherwise, you may receive the following error message: *The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.*
 
-次の同じコードは、PowerShell ワークフロー Runbook でこれを処理する方法を示しています。
+The following same code demonstrates how to handle this in your PowerShell Workflow runbooks.
 
        
     workflow CreateTestVms
@@ -267,13 +268,17 @@ Windows PowerShell ワークフローの利点の 1 つは、一般的なスク�
      } 
 
 
-これは、サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合には必要ありません。
+This is not required if you are authenticating using a Run As account configured with a service principal.  
 
-チェックポイントの詳細については、「[スクリプト ワークフローへのチェックポイントの追加](http://technet.microsoft.com/library/jj574114.aspx)」を参照してください。
+For more information about checkpoints, see [Adding Checkpoints to a Script Workflow](http://technet.microsoft.com/library/jj574114.aspx).
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-- PowerShell ワークフロー Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
+- To get started with PowerShell workflow runbooks, see [My first PowerShell workflow runbook](automation-first-runbook-textual.md) 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

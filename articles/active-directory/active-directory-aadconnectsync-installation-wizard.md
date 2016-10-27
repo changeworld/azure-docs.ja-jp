@@ -1,87 +1,94 @@
 <properties
-	pageTitle="Azure AD Connect 同期: インストール ウィザードの 2 回目の実行 | Microsoft Azure"
-	description="2 回目のインストール ウィザードの実行時の動作について説明します。"
-	keywords="Azure AD Connect インストール ウィザードの 2 回目の実行では、メンテナンス設定を構成できます。"
-	services="active-directory"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure AD Connect sync: Running the installation wizard a second time | Microsoft Azure"
+    description="Explains how the installation wizard works the second time you run it."
+    keywords="The Azure AD Connect installation wizard lets you configure maintenance settings the second time you run it"
+    services="active-directory"
+    documentationCenter=""
+    authors="andkjell"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/31/2016"
-	ms.author="andkjell"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/31/2016"
+    ms.author="billmath"/>
 
 
-# Azure AD Connect 同期: インストール ウィザードの 2 回目の実行
-初めて Azure AD Connect のインストール ウィザードを実行すると、インストールの構成方法が手順に沿って表示されます。インストール ウィザードをもう一度実行すると、メンテナンスのオプションが表示されます。
 
-インストール ウィザードは、[スタート] メニューに **[Azure AD Connect]** という名前で表示されます。
+# <a name="azure-ad-connect-sync:-running-the-installation-wizard-a-second-time"></a>Azure AD Connect sync: Running the installation wizard a second time
+The first time you run the Azure AD Connect installation wizard, it walks you through how to configure your installation. If you run the installation wizard again, it offers options for maintenance.
 
-![[スタート] メニュー](./media/active-directory-aadconnectsync-installation-wizard/startmenu.png)
+You can find the installation wizard in the start menu named **Azure AD Connect**.
 
-インストール ウィザードを開始すると、以下のオプションがあるページが表示されます。
+![Start menu](./media/active-directory-aadconnectsync-installation-wizard/startmenu.png)
 
-![その他のタスクの一覧を含むページ](./media/active-directory-aadconnectsync-installation-wizard/additionaltasks.png)
+When you start the installation wizard, you see a page with these options:
 
-Azure AD Connect を使用して ADFS をインストールした場合は、これら以外のオプションも表示されます。ADFS の追加オプションについては、「[ADFS management (ADFS 管理)](active-directory-aadconnect-federation-management.md#ad-fs-management)」を参照してください。
+![Page with a list of additional tasks](./media/active-directory-aadconnectsync-installation-wizard/additionaltasks.png)
 
-いずれかのタスクを選択し、**[次へ]** をクリックして続行します。
+If you have installed ADFS with Azure AD Connect, you have even more options. The additional options you have for ADFS are documented in [ADFS management](active-directory-aadconnect-federation-management.md#ad-fs-management).
 
-> [AZURE.IMPORTANT] インストール ウィザードが開いている間は、同期エンジンでのすべての操作が中断されます。構成の変更を完了したら、すぐにインストール ウィザードを閉じてください。
+Select one of the tasks and click **Next** to continue.
 
-## 現在の構成を表示する
-このオプションでは、現在構成されているオプションの簡易ビューを表示します。
+> [AZURE.IMPORTANT] While you have the installation wizard open, all operations in the sync engine are suspended. Make sure you close the installation wizard as soon as you have completed your configuration changes.
 
-![すべてのオプションとそれらの状態の一覧を含むページ](./media/active-directory-aadconnectsync-installation-wizard/viewconfig.png)
+## <a name="view-current-configuration"></a>View current configuration
+This option gives you a quick view of your currently configured options.
 
-戻るには、**[前へ]** をクリックします。**[終了]** を選択すると、インストール ウィザードが閉じます。
+![Page with a list of all options and their state](./media/active-directory-aadconnectsync-installation-wizard/viewconfig.png)
 
-## 同期オプションをカスタマイズする
-同期の構成を変更するには、このオプションを使用します。カスタム構成のインストール パスからオプションのサブセットが表示されます。このオプションは、最初に高速インストールを使用した場合でも表示されます。
+Click **Previous** to go back. If you select **Exit**, you close the installation wizard.
 
-- [ディレクトリを追加する](active-directory-aadconnect-get-started-custom.md#connect-your-directories)。ディレクトリの削除については、[コネクタの削除](active-directory-aadconnectsync-service-manager-ui-connectors.md#delete)についての説明を参照してください。
-- [ドメインと OU のフィルター処理を変更する](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)。
-- グループのフィルター処理を削除する。
-- [オプションの機能を変更する](active-directory-aadconnect-get-started-custom.md#optional-features)。
+## <a name="customize-synchronization-options"></a>Customize synchronization options
+This option is used to make changes to the sync configuration. You see a subset of options from the custom configuration installation path. You see this option even if you used express installation initially.
 
-最初のインストール時のその他のオプションは変更することができないため、使用できません。オプションは次のとおりです。
+- [Add more directories](active-directory-aadconnect-get-started-custom.md#connect-your-directories). For removing a directory, see [Delete a Connector](active-directory-aadconnectsync-service-manager-ui-connectors.md#delete).
+- [Change Domain and OU filtering](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering).
+- Remove Group filtering.
+- [Change optional features](active-directory-aadconnect-get-started-custom.md#optional-features).
 
-- UserPrincipalName と sourceAnchor として使用する属性を変更する。
-- 別のフォレストのオブジェクトに使用する結合方法を変更する。
-- グループ ベースのフィルター処理を有効にする。
+The other options from the initial installation cannot be changed and are not available. These options are:
 
-## ディレクトリ スキーマの更新
-このオプションは、オンプレミス AD DS フォレストのいずれかでスキーマを変更した場合に使用します。たとえば、Exchange をインストールした場合や、デバイス オブジェクトを持つ Windows Server 2012 スキーマにアップグレードしたような場合です。そのような場合は、AD DS からもう一度スキーマを読み取ってキャッシュを更新するよう、Azure AD Connect に指示する必要があります。この操作により、同期規則も再生成されます。例として、Exchange のスキーマを追加した場合は、Exchange の同期規則が構成に追加されます。
+- Change the attribute to use for userPrincipalName and sourceAnchor.
+- Change the joining method for objects from different forest.
+- Enable group-based filtering.
 
-このオプションを選択すると、構成に含まれるすべてのディレクトリの一覧が表示されます。既定の設定を保持し、すべてのフォレストを更新するか、一部のフォレストの選択を解除することができます。
+## <a name="refresh-directory-schema"></a>Refresh directory schema
+This option is used if you have changed the schema in one of your on-premises AD DS forests. For example, you might have installed Exchange or upgraded to a Windows Server 2012 schema with device objects. In this case, you need to instruct Azure AD Connect to read the schema again from AD DS and update its cache. This action also regenerates the Sync Rules. If you add the Exchange schema, as an example, the Sync Rules for Exchange are added to the configuration.
 
-![環境内のすべてのディレクトリの一覧を含むページ](./media/active-directory-aadconnectsync-installation-wizard/refreshschema.png)
+When you select this option, all the directories in your configuration are listed. You can keep the default setting and refresh all forests or unselect some of them.
 
-## ステージング モードの構成
-このオプションを使用すると、サーバー上のステージング モードを有効または無効にすることができます。ステージング モードとその使用方法の詳細については、「[操作](active-directory-aadconnectsync-operations.md#staging-mode)」を参照してください。
+![Page with a list of all directories in the environment](./media/active-directory-aadconnectsync-installation-wizard/refreshschema.png)
 
-このオプションでは、ステージングが現時点で有効になっているか無効になっているかが表示されます。![Option that is also showing the current state of staging mode](./media/active-directory-aadconnectsync-installation-wizard/stagingmodecurrentstate.png)
+## <a name="configure-staging-mode"></a>Configure staging mode
+This option allows you to enable and disable staging mode on the server. More information about staging mode and how it is used can be found in [Operations](active-directory-aadconnectsync-operations.md#staging-mode).
 
-状態を変更するには、このオプションを選択し、チェック ボックスをオンまたはオフにします。![Option that is also showing the current state of staging mode](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
+The option shows if staging is currently enabled or disabled:  
+![Option that is also showing the current state of staging mode](./media/active-directory-aadconnectsync-installation-wizard/stagingmodecurrentstate.png)
 
-## ユーザー サインインの変更
-このオプションでは、パスワード同期からフェデレーションに、またはその逆に変更することができます。**[構成しない]** に変更することはできません。
+To change the state, select this option and select or unselect the checkbox.  
+![Option that is also showing the current state of staging mode](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
-このオプションの詳細については、「[ユーザーのサインイン](active-directory-aadconnect-user-signin.md#changing-user-sign-in-method)」を参照してください。
+## <a name="change-user-sign-in"></a>Change user sign-in
+This option allows you to change from password sync to federation or the other way around. You cannot change to **do not configure**.
 
-## 次のステップ
+For more information on this option, see [user sign-in](active-directory-aadconnect-user-signin.md#changing-user-sign-in-method).
 
-- Azure AD Connect Sync の同期で使用される構成モデルについて詳しくは、「[Understanding Declarative Provisioning (宣言型のプロビジョニングについて)](active-directory-aadconnectsync-understanding-declarative-provisioning.md)」をご覧ください。
+## <a name="next-steps"></a>Next steps
 
-**概要トピック**
+- Learn more about the configuration model used by Azure AD Connect sync in [Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md).
 
-- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
-- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+**Overview topics**
 
-<!---HONumber=AcomDC_0907_2016-->
+- [Azure AD Connect sync: Understand and customize synchronization](active-directory-aadconnectsync-whatis.md)
+- [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

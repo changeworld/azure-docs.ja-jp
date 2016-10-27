@@ -1,84 +1,95 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication の概要"
-	description="保護しようとしている対象とユーザーが位置する場所を尋ねることで、ユーザーに最適な多要素認証セキュリティ ソリューションを選択します。次に、クラウド、MFA Server、または AD FS を選択します。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+    pageTitle="Azure Multi-Factor Authentication - Getting Started"
+    description="Choose the multi-factor authentication secutiry solution that is right for you by asking what am i trying to secure and where are my users located.  Then choose cloud, MFA Server or AD FS."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor="curtland"/>
 
 <tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/15/2016"
-	ms.author="kgremban"/>
-
-#ユーザーに適した多要素のセキュリティ ソリューションの選択
-
-さまざまな種類の Azure Multi-Factor Authentication があるため、使用に適したバージョンを把握するには、2 つの要素を判別する必要があります。その要素とは次のとおりです。
-
--	<a href="#-1">セキュリティで保護しようとしている対象</a>
--	<a href="#-2">ユーザーが位置する場所</a>
-
-次のセクションでは、この判断についてガイダンスを提供します。
-
-<h2 id="-1">セキュリティで保護しようとしている対象</h2>
-
-適切な多要素認証ソリューションを判別するには、まず 2 番目の認証方法で保護しようとしている対象に関する疑問に答える必要があります。Azure のアプリケーションですか。 またはリモート アクセス システムなどですか。何をセキュリティで保護しようとしているかを判断すると、多要素認証を有効にする必要がある場所に関する疑問に答えることができます。
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/15/2016"
+    ms.author="kgremban"/>
 
 
-セキュリティで保護しようとしている対象| クラウドでの Multi-Factor Authentication|Multi-Factor Authentication Server
+#<a name="choose-the-multi-factor-security-solution-for-you"></a>Choose the multi-factor security solution for you
+
+Because there are several flavors of Azure Multi-Factor Authentication we must determine a couple of things in order to figure out which version is the proper one to use.  Those things are:
+
+-   [What am I trying to secure](#what-am-i-trying-to-secure)
+-   [Where are the users located](#where-are-the-users-located)
+
+The following sections will provide guidance on determining each of these.
+
+## <a name="what-am-i-trying-to-secure?"></a>What am I trying to secure?
+
+In order to determine the correct multi-factor authentication solution, first we must answer the question of what are you trying to secure with a second method of authentication.  Is it an application that is in Azure?  Or is it a remote access system for example.  By determining what we are trying to secure, we will seek to answer the question of where multi-factor authentication needs to be enabled.  
+
+
+What are you trying to secure| Multi-Factor Authentication in the cloud|Multi-Factor Authentication Server
 ------------- | :-------------: | :-------------: |
-ファースト パーティの Microsoft アプリ|* |* |
-アプリ ギャラリー内の SaaS アプリ|* |* |
-Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション|* |* |
-Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション | |* |
-VPN、RDG などのリモート アクセス| |* |
+First party Microsoft apps|* |* |
+Saas apps in the app gallery|* |* |
+IIS applications published through Azure AD App Proxy|* |* |
+IIS applications not published through Azure AD App Proxy | |* |
+Remote access such as VPN, RDG| |* |
 
 
 
-<h2 id="-2">ユーザーが配置される場所</h2>
+## <a name="where-are-the-users-located"></a>Where are the users located
 
-次に、ユーザーが配置される場所に応じて、使用する適切なソリューションを判断できます。これは、クラウドでの多要素認証か、MFA Server を使用するオンプレミスの多要素認証のどちらかです。
+Next, depending on where our users are located, we can determine the correct solution to use, whether it is multi-factor authentication in the cloud or on-premises using the MFA Server.
 
 
 
-ユーザーの位置| 解決策
+User Location| Solution
 ------------- | :------------- |
-Azure Active Directory| クラウドでの Multi-Factor Authentication|
-AD FS によるフェデレーションを使用した Azure AD とオンプレミスの AD| クラウドでの MFA と MFA Server の両方を使用可能
-DirSync を使用する Azure AD とオンプレミスの AD、Azure AD Sync、Azure AD Connect。パスワード同期なし|クラウドでの MFA と MFA Server の両方を使用可能
-DirSync を使用する Azure AD とオンプレミスの AD、Azure AD Sync、Azure AD Connect。パスワード同期あり|クラウドでの Multi-Factor Authentication
-オンプレミスの Active Directory|Multi-Factor Authentication Server
+Azure Active Directory| Multi-Factor Authentication in the cloud|
+Azure AD and on-premises AD using federation with AD FS| Both MFA in the cloud and MFA Server are available options
+Azure AD and on-premises AD using DirSync, Azure AD Sync, Azure AD Connect - no password sync|Both MFA in the cloud and MFA Server are available options
+Azure AD and on-premises AD using DirSync, Azure AD Sync, Azure AD Connect - with password sync|Multi-Factor Authentication in the cloud
+On-premises Active Directory|Multi-Factor Authentication Server
 
-次の表ではクラウドでの Multi-Factor Authentication の機能と、Multi-Factor Authentication Server の機能を比較しています。
+The following table is a comparison of the features that are a with Multi-Factor Authentication in the cloud and with the Multi-Factor Authentication Server.
 
- | クラウドでの Multi-Factor Authentication | Multi-Factor Authentication Server
+ | Multi-Factor Authentication in the cloud | Multi-Factor Authentication Server
 ------------- | :-------------: | :-------------: |
-2 番目の要素としてのモバイル アプリ通知 | ● | ● |
-2 番目の要素としてのモバイル アプリ確認コード | ● | ●
-第 2 要素としての音声通話 | ● | ●
-第 2 要素としての単方向 SMS | ● | ●
-第 2 要素としての双方向 SMS | | ●
-第 2 要素としてのハードウェア トークン | | ●
-MFA をサポートしていないクライアントのアプリ パスワード | ● |  
-認証方法の管理制御 | ● | ●
-PIN モード | | ●
-不正アクセスのアラート | ● | ●
-MFA レポート | ● | ●
-ワンタイム バイパス | | ●
-音声通話のカスタムあいさつ文 | ● | ●
-音声通話のカスタマイズ可能な発信元 ID | ● | ●
-信頼できる IP | ● | ●
-信頼済みデバイスの MFA の記憶 | ● |  
-条件付きアクセス | ● | ●
-キャッシュ | | ●
+Mobile app notification as a second factor | ● | ● |
+Mobile app verification code as a second factor | ● | ●
+Phone call as second factor | ● | ●
+One-way SMS as second factor | ● | ●
+Two-way SMS as second factor |  | ●
+Hardware Tokens as second factor |  | ●
+App passwords for clients that don’t support MFA | ● |  
+Admin control over authentication methods | ● | ●
+PIN mode |  | ●
+Fraud alert | ● | ●
+MFA Reports | ● | ●
+One-Time Bypass |  | ●
+Custom greetings for phone calls | ● | ●
+Customizable caller ID for phone calls | ● | ●
+Trusted IPs | ● | ●
+Remember MFA for trusted devices  | ● |  
+Conditional access | ● | ●
+Cache |  | ●
 
-クラウドの多要素認証を使用するか、オンプレミスの MFA Server を使用するかを決定しました。これで、Azure Multi-Factor Authentication の設定と使用を開始できます。**適したシナリオのアイコンを選択してください。**
+Now that we have determined whether to use cloud multi-factor authentication or the MFA Server on-premises, we can get started setting up and using Azure Multi-Factor Authentication.   **Select the icon that represents your scenario!**
 
-<center> [![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md) &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &#160;&#160;&#160;&#160;&#160; </center>
+<center>
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+[![Cloud](./media/multi-factor-authentication-get-started/cloud2.png)](multi-factor-authentication-get-started-cloud.md)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[![Proofup](./media/multi-factor-authentication-get-started/server2.png)](multi-factor-authentication-get-started-server.md) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</center>
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

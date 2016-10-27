@@ -1,50 +1,57 @@
 <properties
-	pageTitle="Azure App Service のベスト プラクティス"
-	description="Azure App Service のベスト プラクティスとトラブルシューティングについて説明します。"
-	services="app-service"
-	documentationCenter=""
-	authors="dariagrigoriu"
-	manager="wpickett"
-	editor="mollybos"/>
+    pageTitle="Best Practices for Azure App Service"
+    description="Learn best practices and troubleshooting for Azure App Service."
+    services="app-service"
+    documentationCenter=""
+    authors="dariagrigoriu"
+    manager="wpickett"
+    editor="mollybos"/>
 
 <tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/30/2016"
-	ms.author="dariagrigoriu"/>
+    ms.service="app-service"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="06/30/2016"
+    ms.author="dariagrigoriu"/>
     
-# Azure App Service のベスト プラクティス
 
-この記事では、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) を使用するためのベスト プラクティスを概説します。
+# <a name="best-practices-for-azure-app-service"></a>Best Practices for Azure App Service
 
-## <a name="colocation"></a>コロケーション
-Web アプリやデータベースなど、ソリューションを構成する Azure リソースを別々のリージョンに配置すると、次のような影響が考えられます。
+This article summarizes best practices for using [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). 
 
-*  リソース間の通信における待機時間の増大
-*  リージョン間の送信データ転送にかかる料金。[Azure の料金](https://azure.microsoft.com/pricing/details/data-transfers)に関するページを参照してください。
+## <a name="<a-name="colocation"></a>colocation"></a><a name="colocation"></a>Colocation
+When Azure resources composing a solution such as a web app and a database are located in different regions the effects can include the following:
 
-Web アプリ、データベース、コンテンツやデータを保持するためのストレージ アカウントなど、ソリューションを構成する Azure リソースは、同じリージョンに配置すること (コロケーション) をお勧めします。リソースを作成する場合は、それらを必ず同じ Azure リージョン内に配置してください。ただし、特定のビジネスまたは設計上の理由で難しい場合はその限りでありません。Premium App Service プラン アプリで現在使用できる [App Service の複製機能](app-service-web-app-cloning-portal.md)を利用すれば、App Service アプリをデータベースと同じリージョンに移動することができます。
+*  Increased latency in communication between resources
+*  Monetary charges for outbound data transfer cross-region as noted on the [Azure pricing page](https://azure.microsoft.com/pricing/details/data-transfers).
 
-## <a name="memoryresources"></a>アプリが予想よりも多くのメモリを消費している場合
-監視またはサービスの推奨事項に示されている情報を基に、アプリが予想よりも多くのメモリを消費していることに気付いた場合は、[App Service の自動修復機能](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites)を検討してください。自動修復機能のオプションの 1 つでは、メモリのしきい値に基づいて独自の処置を行います。処置の内容は、電子メールによる通知から、メモリ ダンプによる調査、さらに worker プロセスのリサイクルによるその場での軽減処理まで広範囲に及びます。自動修復は、[App Service サポート サイトの拡張機能](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps)に関するこのブログ投稿の説明に沿って、Web.config またはわかりやすいユーザー インターフェイスを使用して構成することができます。
+Colocation in the same region is best for Azure resources composing a solution such as a web app and a database or storage account used to hold content or data. When creating resources you should make sure they are in the same Azure region unless you have specific business or design reason for them not to be. You can move an App Service app to the same region as your database by leveraging the [App Service cloning feature](app-service-web-app-cloning-portal.md) currently available for Premium App Service Plan apps.   
 
-## <a name="CPUresources"></a>アプリが予想よりも多くの CPU リソースを消費している場合
-監視またはサービスの推奨事項の説明を基に、アプリが予想よりも多くの CPU リソースを消費していること、または CPU スパイクが繰り返し発生していることに気が付いた場合は、App Service プランのスケール アップまたはスケール アウトを検討してください。アプリケーションがステートフルである場合は、スケール アップが唯一のオプションとなります。一方、アプリケーションがステートレスである場合、スケール アウトにより、柔軟性と拡張性を高めることができます。
+## <a name="<a-name="memoryresources"></a>when-apps-consume-more-memory-than-expected"></a><a name="memoryresources"></a>When apps consume more memory than expected
+When you notice an app consumes more memory than expected as indicated via monitoring or service recommendations consider the [App Service Auto-Healing feature](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites). One of the options for the Auto-Healing feature is taking custom actions based on a memory threshold. Actions span the spectrum from email notifications to investigation via memory dump to on-the-spot mitigation by recycling the worker process. Auto-healing can be configured via web.config and via a friendly user interface as described at in this blog post for the [App Service Support Site Extension](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
 
-"ステートフル" アプリケーション対 "ステートレス" アプリケーションの詳細については、ビデオ「[Planning a Scalable End-to-End Multi-Tier Application on Microsoft Azure Web App (Microsoft Azure Web App でスケーラブルなエンド ツー エンドの多層アプリケーションを計画する)](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)」を参照してください。App Service のスケール オプションおよび自動スケール オプションの詳細については、「[Azure App Service の Web アプリをスケーリングする](web-sites-scale.md)」を参照してください。
+## <a name="<a-name="cpuresources"></a>when-apps-consume-more-cpu-than-expected"></a><a name="CPUresources"></a>When apps consume more CPU than expected
+When you notice an app consumes more CPU than expected or experiences repeated CPU spikes as indicated via monitoring or service recommendations consider scaling up or scaling out the App Service plan. If your application is statefull, scaling up is the only option, while if your application is stateless, scaling out will give you more flexibility and higher scale potential. 
 
-## <a name="socketresources"></a>ソケット リソースを使い果たした場合
-送信 TCP 接続を使い果たしてしまう理由としては、一般的には、使用しているライブラリが TCP 接続を再利用するように実装されていないことや、HTTP - Keep-Alive などの上位レベルのプロトコルが活用されていないことなどが挙げられます。App Service プランでアプリによって参照される各ライブラリのドキュメントを再確認し、送信接続が効率的に再利用されるようにコード内でライブラリが構成またはアクセスされるようにしてください。また、ライブラリのドキュメントのガイダンスに従って適切に作成しリリースするか、接続のリークを防ぐためにクリーンアップを行ってください。このようなクライアント ライブラリの調査中は、複数のインスタンスにスケール アウトすることで影響を軽減することができます。
+For more information about “statefull” vs “stateless” applications you can watch this video: [Planning a Scalable End-to-End Multi-Tier Application on Microsoft Azure Web App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). For more information about App Service scaling and autoscaling options read: [Scale a Web App in Azure App Service](web-sites-scale.md).  
 
-## <a name="appbackup"></a>アプリのバックアップが失敗するようになった場合
-アプリのバックアップが失敗する場合は、最も一般的な理由として、無効なストレージ設定と無効なデータベース構成の 2 つが考えられます。通常、このようなエラーはストレージまたはデータベースのリソースに変更が加えられた場合か、これらのリソースへのアクセス方法が変更された場合 (バックアップ設定で選択したデータベースに関して資格情報が更新された場合など) に発生します。バックアップは、通常はスケジュールに応じて実行され、ストレージへのアクセス (バックアップしたファイルの出力用) とデータベースへのアクセス (バックアップに含まれる内容のコピーと読み取り用) が必要になります。これらのリソースのいずれかにアクセスできないと、バックアップは常に失敗します。
+## <a name="<a-name="socketresources"></a>when-socket-resources-are-exhausted"></a><a name="socketresources"></a>When socket resources are exhausted
+A common reason for exhausting outbound TCP connections is the use of client libraries which are not implemented to reuse TCP connections, or in the case of a higher level protocol such as HTTP - Keep-Alive not being leveraged. Please review the documentation for each of the libraries referenced by the apps in your App Service Plan to ensure they are configured or accessed in your code for efficient reuse of outbound connections. Also follow the library documentation guidance for proper creation and release or cleanup to avoid leaking connections. While such client libraries investigations are in progress impact may be mitigated by scaling out to multiple instances.  
 
-バックアップ エラーが発生した場合は、最新のバックアップ結果を確認してどちらの種類のエラーが発生しているのかを把握してください。ストレージへのアクセス エラーが発生している場合は、バックアップ構成で使用しているストレージ設定を確認し、更新してください。データベースへのアクセス エラーが発生している場合は、アプリ設定に含まれる接続文字列を確認し、更新してから、必要なデータベースが正しく含まれるようにバックアップ構成を更新してください。アプリのバックアップの詳細については、[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)に関するドキュメントを参照してください。
+## <a name="<a-name="appbackup"></a>when-your-app-backup-starts-failing"></a><a name="appbackup"></a>When your app backup starts failing
+The two most common reasons why app backup fails are: invalid storage settings and invalid database configuration. These failures typically happen when there are changes to storage or database resources, or changes for how to access these resources (e.g. credentials updated for the database selected in the backup settings). Backups typically run on a schedule and require access to storage (for outputting the backed up files) and databases (for copying and reading contents to be included in the backup). The result of failing to access either of these resources would be consistent backup failure. 
 
-## <a name="nodejs"></a>新しい Node.js アプリを Azure App Service にデプロイする場合
-Node.js アプリ向けの Azure App Service の既定の構成は、最も一般的なアプリのニーズに最も合うように設計されています。Node.js アプリの構成で、パーソナライズされたチューニングの利点を活用してパフォーマンスの向上または CPU/メモリ/ネットワーク リソースのリソース使用量の最適化を行う場合には、マイクロソフトが用意したベスト プラクティスやトラブルシューティング手順を確認できます。次のドキュメントの記事では、Node.js アプリでの構成に必要となる可能性のある iisnode 設定について、また、アプリが直面する可能性のあるさまざまなシナリオや問題を説明し、これらの問題に対処する方法を示します: [Azure App Service でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md)。
+When backup failures happen, please review most recent results to understand which type of failure is happening. In the case of storage access failures, please review and update the storage settings used in the backup configuration. In the case of database access failures, please review and update your connections strings as part of app settings; then proceed to update your backup configuration to properly include the required databases. For more information on app backup please see the [Back up a web app in Azure App Service](web-sites-backup.md) documentation.
 
-<!---HONumber=AcomDC_0713_2016-->
+## <a name="<a-name="nodejs"></a>when-new-node.js-apps-are-deployed-to-azure-app-service"></a><a name="nodejs"></a>When new Node.js apps are deployed to Azure App Service
+Azure App Service default configuration for Node.js apps is intended to best suit the needs of most common apps. If configuration for your Node.js app would benefit from personalized tuning to improve performance or optimize resource usage for CPU/memory/network resources, you could review our best practices and troubleshooting steps. This documentation article describes the iisnode settings you may need to configure for your Node.js app, describes the various scenarios or issues that your app may be facing, and shows how to address these issues: [Best practices and troubleshooting guide for Node applications on Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md).   
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

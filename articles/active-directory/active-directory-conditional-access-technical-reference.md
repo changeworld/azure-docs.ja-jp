@@ -1,85 +1,90 @@
 
 <properties
-	pageTitle="Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス | Microsoft Azure"
-	description="条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。"
+    pageTitle="Azure Active Directory Conditional Access technical reference | Microsoft Azure"
+    description="With Conditional access control, Azure Active Directory checks the specific conditions you pick when authenticating the user and before allowing access to the application. Once those conditions are met, the user is authenticated and allowed access to the application."
     services="active-directory"
-	documentationCenter=""
-	authors="markusvi"
-	manager="femila"
-	editor=""/>
+    documentationCenter=""
+    authors="MarkusVi"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-	ms.date="07/26/2016"
-	ms.author="markvi"/>
+    ms.date="10/20/2016"
+    ms.author="markvi"/>
 
-# Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
 
-## 条件付きアクセスで有効になっているサービス
-条件付きアクセス規則は、さまざまな Azure AD アプリケーションの種類でサポートされています。たとえば、次のような種類です。
+# <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory Conditional Access technical reference
 
-- Azure AD アプリケーション ギャラリーのフェデレーション アプリケーション
-- Azure AD アプリケーション ギャラリーのパスワード SSO アプリケーション
-- Azure アプリケーション プロキシに登録されているアプリケーション
-- Azure AD に登録されている、開発された基幹業務およびマルチ テナント アプリケーション
+## <a name="services-enabled-with-conditional-access"></a>Services enabled with conditional access
+Conditional Access rules are supported across various Azure AD application types. This list includes:
+
+- Federated applications from the Azure AD application gallery
+- Password SSO applications from the Azure AD application gallery
+- Applications registered with the Azure Application Proxy
+- Developed line of business and multi-tenant applications registered with Azure AD
 - Visual Studio Online
 - Azure Remote App
-- 	Dynamics CRM
+-   Dynamics CRM
 - Microsoft Office 365 Yammer
 - Microsoft Office 365 Exchange Online
-- Microsoft Office 365 SharePoint Online (OneDrive for Business を含む)
+- Microsoft Office 365 SharePoint Online (includes OneDrive for Business)
 
 
-## アクセス規則の有効化
+## <a name="enable-access-rules"></a>Enable access rules
 
-各規則は、アプリケーションごとに有効または無効にすることができます。規則が**オン**の場合、その規則は有効になり、アプリケーションにアクセスするユーザーに適用されます。**オフ**の場合、規則は使用されず、ユーザーのサインイン エクスペリエンスに影響しません。
+Each rule can be enabled or disabled on a per application bases. When rules are **ON** they will be enabled and enforced for users accessing the application. When they are **OFF** they will not be used and will not impact the users sign in experience.
 
-## 特定のユーザーへの規則の適用
-規則は、**[適用対象]** を設定することにより、セキュリティ グループに基づいて、ユーザーの特定のセットに適用できます。**[適用対象]** には、**[すべてのユーザー]** または **[グループ]** を設定できます。**[すべてのユーザー]** に設定すると、規則はアプリケーションへのアクセス権を持つすべてのユーザーに適用されます。**[グループ]** オプションを使用すると、特定のセキュリティ グループと配布グループを選択でき、規則はそのグループにのみ適用されます。
+## <a name="applying-rules-to-specific-users"></a>Applying rules to specific users
+Rules can be applied to specific sets of users based on security group by setting **Apply To**. **Apply To** can be set to **All Users** or **Groups**. When set to **All Users** the rules will apply to any user with access to the application. The **Groups** option allows specific security and distribution groups to be selected, rules will only be enforced for these groups.
 
-規則をデプロイする場合、通常は、ユーザーの限定的なセット (パイロット テスト グループのメンバー) に最初に適用します。完了したら、その規則は **[すべてのユーザー]** に適用できます。これにより組織内のすべてのユーザーに規則が適用されます。
+When deploying a rule,  it is common to first apply it a limited set of users, that are members of a piloting groups. Once complete the rule can be applied to **All Users**. This will cause the rule to be enforced for all users in the organization.
 
-[グループの選択] で、**[例外]** オプションを使用して、ポリシーから除外することもできます。これらのグループのメンバーは、適用されるグループに含まれている場合でも、除外されます。
+Select groups may also be exempted from policy using the **Except** option. Any members of these groups will be exempted even if they appear in an included group.
 
-## "職場" ネットワーク
-
-
-"職場" ネットワークを使用する条件付きアクセス規則は、Azure AD で構成されている信頼済み IP 範囲に依存するか、AD FS からの "企業ネットワーク内" 要求を使用します。これらの規則は、次のようなものです。
-
-- 作業中でない場合、多要素認証が必要です
-- 作業中でない場合、アクセスをブロック
-
-"職場" ネットワークを指定するためのオプション
-
-1. [多要素認証の構成ページ](../multi-factor-authentication/multi-factor-authentication-whats-next.md)で、信頼済み IP 範囲を構成します。条件付きアクセス ポリシーは、各認証要求とトークン発行に対して、構成済みの範囲を使用して規則を評価します。
-2. 企業ネットワーク内要求の使用を構成します。このオプションは、AD FS を使用して、フェデレーション ディレクトリで使用できます。[企業ネットワーク内要求の詳細についてはこちらをご覧ください。](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)
-3. パブリック IP アドレス範囲を構成します。ディレクトリの [構成] タブで、パブリック IP アドレスを設定できます。条件付きアクセスは、これらの IP アドレスを "職場" の IP アドレスとして使用します。これにより、MFA の設定ページで適用される 50 の IP アドレス制限を超えて、追加の範囲を構成することができます。
+## <a name="“at-work”-networks"></a>“At work” networks
 
 
+Conditional access rules that use an “At work” network, rely on trusted IP address ranges that have been configured in Azure AD, or use of the "inside corpnet" claim from AD FS. These rules include:
 
-## アプリケーションの秘密度に基づく規則
+- Require multi-factor authentication when not at work
+- Block access when not at work
 
-規則は、アプリケーションごとに構成します。そうすることで、価値の高いサービスをセキュリティで保護し、その他のサービスへのアクセスには影響を与えないようにすることができます。条件付きアクセス規則は、アプリケーションの **[構成]** タブで構成できます。
+Options for specifiying “at work” networks
 
-現在、用意されている規則は、次のとおりです。
+1. Configure trusted IP address ranges in the [multi-factor authentication configuration page](../multi-factor-authentication/multi-factor-authentication-whats-next.md). Conditional Access policy will use the configured ranges on each authentication request and token issuance to evaluate rules. 
+2. Configure use of the inside corpnet claim, this option can be used with federated directories, using AD FS. [Learn more about the inside coronet claims](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips).
+3. Configure public IP address ranges. On the configure tab, for your directory, you can set public IP addresses. Conditional Access will use these as ‘at work’ IP addresses, this allows additional ranges to be configure, above the 50 IP address limit that is enforced by the MFA setting page.
 
-- **多要素認証が必要です**
- - このポリシーが適用されるユーザーはすべて、多要素認証によって少なくとも 1 回は認証されなければなりません。
+
+
+## <a name="rules-based-on-application-sensitivity"></a>Rules based on application sensitivity
+
+Rules are configured per application allowing the high value services to be secured without impacting access to other services. Conditional access rules can be configured on the  **Configure** tab of the application. 
+
+Rules currently offered:
+
+- **Require multi-factor authentication**
+ - All users that this policy is applied to will be required to authenticate via multi-factor authentication at least once.
  
-- **作業中でない場合、多要素認証が必要です**
- - このポリシーが適用されている場合、職場以外のリモートの場所からサービスにアクセスするすべてのユーザーが、多要素認証を少なくとも 1 回実行している必要があります。職場からリモートの場所に移動した場合は、サービスにアクセスするときに、多要素認証を実行する必要があります。
+- **Require multi-factor authentication when not at work**
+ - If this policy is applied, all users will be required to have performed multi-factor authentication at least once if they access the service from a non-work remote location. If they move from a work to remote location, they will be required to perform multifactor authentication when accessing the service.
  
-- **作業中でない場合、アクセスをブロック**
- - ユーザーが職場からリモートの場所に移動した場合、"作業中でない場合、アクセスをブロック" ポリシーが適用されていると、そのユーザーはブロックされます。職場に戻ると、アクセスは再度許可されます。
+- **Block access when not at work** 
+ - When users move from work to a remote location, they will be blocked if the "Block access when not at work" policy is applied to them.  They will be re-allowed access when at a work location.
 
 
-## 関連トピック
+## <a name="related-topics"></a>Related topics
 
-- [Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)
+- [Securing access to Office 365 and other apps connected to Azure Active Directory](active-directory-conditional-access.md)
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

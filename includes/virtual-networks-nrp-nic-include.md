@@ -1,80 +1,83 @@
-## NIC
+## <a name="nic"></a>NIC
  
-ネットワーク インターフェイス カード (NIC) リソースは、VNet リソース内の既存のサブネットへのネットワーク接続を提供します。NIC をスタンドアロン オブジェクトとして作成できますが、実際に接続を提供するには NIC を別のオブジェクトに関連付ける必要があります。NIC を使用することで、VM をサブネット、パブリック IP アドレス、またはロード バランサーに接続することができます。
+A network interface card (NIC) resource provides network connectivity to an existing subnet in a VNet resource. Although you can create a NIC as a stand alone object, you need to associate it to another object to actually provide connectivity. A NIC can be used to connect a VM to a subnet, a public IP address, or a load balancer.  
 
-|プロパティ|説明|値の例|
+|Property|Description|Sample values|
 |---|---|---|
-|**virtualMachine**|NIC が関連付けられるVM。|/subscriptions/{guid}/../Microsoft.Compute/virtualMachines/vm1|
-|**macAddress**|NIC の MAC アドレス|4 ～ 30 の任意の値|
-|**networkSecurityGroup**|NIC に関連付けられている NSG|/subscriptions/{guid}/../Microsoft.Network/networkSecurityGroups/myNSG1|
-|**dnsSettings**|NIC の DNS 設定|[PIP](#Public-IP-address) に関するページを参照してください。|
+|**virtualMachine**|VM the NIC is associated with.|/subscriptions/{guid}/../Microsoft.Compute/virtualMachines/vm1|
+|**macAddress**|MAC address for the NIC|any value between 4 and 30|
+|**networkSecurityGroup**|NSG associated to the NIC|/subscriptions/{guid}/../Microsoft.Network/networkSecurityGroups/myNSG1|
+|**dnsSettings**|DNS settings for the NIC|see [PIP](#Public-IP-address)|
 
-ネットワーク インターフェイス カード (NIC) は、仮想マシン (VM) に関連するネットワーク インターフェイスを表します。VM には、1 つ以上の NIC を含めることができます。
+A Network Interface Card, or NIC, represents a network interface that can be associated to a virtual machine (VM). A VM can have one or more NICs.
 
-![1 つの VM での NIC](./media/resource-groups-networking/Figure3.png)
+![NIC's on a single VM](./media/resource-groups-networking/Figure3.png)
 
-### IP 構成
-NIC には、以下のプロパティを含む **ipConfigurations** という名前の子オブジェクトがあります。
+### <a name="ip-configurations"></a>IP configurations
+NICs have a child object named **ipConfigurations** containing the following properties:
 
-|プロパティ|説明|値の例|
+|Property|Description|Sample values|
 |---|---|---|
-|**subnet**|NIC が接続されているサブネットです。|/subscriptions/{guid}/../Microsoft.Network/virtualNetworks/myvnet1/subnets/mysub1|
-|**privateIPAddress**|サブネット内の NIC の IP アドレス|10\.0.0.8|
-|**privateIPAllocationMethod**|IP の割り当て方法|動的または静的|
-|**enableIPForwarding**|ルーティングに NIC を使用できるかどうか|true または false|
-|**primary**|NIC は VM のプライマリ NIC であるかどうか|true または false|
-|**publicIPAddress**|NIC に関連付けられた PIP|「[DNS の設定](#DNS-settings)」を参照してください。|
-|**loadBalancerBackendAddressPools**|NIC が関連付けられたバックエンド アドレス プール||
-|**loadBalancerInboundNatRules**|NIC が関連付けられた受信ロード バランサーの NAT 規則||
+|**subnet**|Subnet the NIC is onnected to.|/subscriptions/{guid}/../Microsoft.Network/virtualNetworks/myvnet1/subnets/mysub1|
+|**privateIPAddress**|IP address for the NIC in the subnet|10.0.0.8|
+|**privateIPAllocationMethod**|IP allocation method|Dynamic or Static|
+|**enableIPForwarding**|Whether the NIC can be used for routing|true or false|
+|**primary**|Whether the NIC is the primary NIC for the VM|true or false|
+|**publicIPAddress**|PIP associated with the NIC|see [DNS Settings](#DNS-settings)|
+|**loadBalancerBackendAddressPools**|Back end address pools the NIC is associated with||
+|**loadBalancerInboundNatRules**|Inbound load balancer NAT rules the NIC is associated with||
 
-JSON 形式でのパブリック IP アドレスのサンプル:
+Sample public IP address in JSON format:
 
-	{
-	    "name": "lb-nic1-be",
-	    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Network/networkInterfaces/lb-nic1-be",
-	    "etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-	    "type": "Microsoft.Network/networkInterfaces",
-	    "location": "eastus",
-	    "properties": {
-	        "provisioningState": "Succeeded",
-	        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-	        "ipConfigurations": [
-	            {
-	                "name": "NIC-config",
-	                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Network/networkInterfaces/lb-nic1-be/ipConfigurations/NIC-config",
-	                "etag": "W/"0027f1a2-3ac8-49de-b5d5-fd46550500b1"",
-	                "properties": {
-	                    "provisioningState": "Succeeded",
-	                    "privateIPAddress": "10.0.0.4",
-	                    "privateIPAllocationMethod": "Dynamic",
-	                    "subnet": {
-	                        "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/NRPRG/providers/Microsoft.Network/virtualNetworks/NRPVnet/subnets/NRPVnetSubnet"
-	                    },
-	                    "loadBalancerBackendAddressPools": [
-	                        {
-	                            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/NRPbackendpool"
-	                        }
-	                    ],
-	                    "loadBalancerInboundNatRules": [
-	                        {
-	                            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1"
-	                        }
-	                    ]
-	                }
-	            }
-	        ],
-	        "dnsSettings": { ... },
-	        "macAddress": "00-0D-3A-10-F1-29",
-	        "enableIPForwarding": false,
-	        "primary": true,
-	        "virtualMachine": {
-	            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Compute/virtualMachines/web1"
-	        }
-	    }
-	}
+    {
+        "name": "lb-nic1-be",
+        "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Network/networkInterfaces/lb-nic1-be",
+        "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
+        "type": "Microsoft.Network/networkInterfaces",
+        "location": "eastus",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "ipConfigurations": [
+                {
+                    "name": "NIC-config",
+                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Network/networkInterfaces/lb-nic1-be/ipConfigurations/NIC-config",
+                    "etag": "W/\"0027f1a2-3ac8-49de-b5d5-fd46550500b1\"",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "privateIPAddress": "10.0.0.4",
+                        "privateIPAllocationMethod": "Dynamic",
+                        "subnet": {
+                            "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/NRPRG/providers/Microsoft.Network/virtualNetworks/NRPVnet/subnets/NRPVnetSubnet"
+                        },
+                        "loadBalancerBackendAddressPools": [
+                            {
+                                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/NRPbackendpool"
+                            }
+                        ],
+                        "loadBalancerInboundNatRules": [
+                            {
+                                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "dnsSettings": { ... },
+            "macAddress": "00-0D-3A-10-F1-29",
+            "enableIPForwarding": false,
+            "primary": true,
+            "virtualMachine": {
+                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/nrprg/providers/Microsoft.Compute/virtualMachines/web1"
+            }
+        }
+    }
 
-### その他のリソース
+### <a name="additional-resources"></a>Additional resources
 
-- NIC に関する [REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163579.aspx) も参照してください。
+- Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt163579.aspx) for NICs.
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

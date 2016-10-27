@@ -1,6 +1,6 @@
 <properties
-   pageTitle="StorSimple Virtual Array 1 のデプロイ - ポータルの準備"
-   description="StorSimple Virtual Array をデプロイする最初のチュートリアルでは、ポータルの準備を行います。"
+   pageTitle="Deploy StorSimple Virtual Array 1 - Portal Preparation"
+   description="First tutorial to deploy StorSimple virtual array involves preparing the portal"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,191 +16,196 @@
    ms.date="05/24/2016"
    ms.author="alkohli"/>
 
-# StorSimple Virtual Array のデプロイ - ポータルの準備
+
+# <a name="deploy-storsimple-virtual-array---prepare-the-portal"></a>Deploy StorSimple Virtual Array - Prepare the portal
 
 ![](./media/storsimple-ova-deploy1-portal-prep/getstarted4.png)
 
-## 概要
+## <a name="overview"></a>Overview
 
-この記事は、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。仮想アレイをファイル サーバーまたは iSCSI サーバーとして完全にデプロイするために必要なデプロイ チュートリアル シリーズの最初の記事です。仮想アレイをプロビジョニングする前に、StorSimple Manager サービスを作成して構成するために必要な準備について説明します。また、デプロイ構成チェックリストや構成の前提条件へのリンクも記載しています。
+This article applies to Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device or StorSimple virtual device) running March 2016 general availability (GA) release. This is the first article in the series of deployment tutorials required to completely deploy your virtual array as a file server or an iSCSI server. This article describes the preparation required to create and configure your StorSimple Manager service prior to provisioning a virtual array. This article also links out to a deployment configuration checklist as well as configuration prerequisites.
 
-セットアップと構成のプロセスを完了するには、管理者特権が必要です。開始する前に、デプロイ構成チェックリストを確認することをお勧めします。ポータルの準備は 10 分ほどで完了します。
+You will need administrator privileges to complete the setup and configuration process. We recommend that you review the deployment configuration checklist before you begin. The portal preparation will take less than 10 minutes.
 
-この記事に記載されている情報は、Azure クラシック ポータルだけでなく、Microsoft Azure Government Cloud での StorSimple Virtual Arrays のデプロイに適用されます。
+The information published in this article applies to the deployment of StorSimple Virtual Arrays in Azure classic portal as well as Microsoft Azure Government Cloud.
 
-### 作業開始
+### <a name="get-started"></a>Get started
 
-デプロイのワークフローは、ポータルの準備、仮想化環境内への仮想アレイのプロビジョニング、セットアップ ウィザードの完了という構成になっています。ファイル サーバーまたは iSCSI サーバーとして StorSimple Virtual Array をデプロイする作業を開始するには、次の表のリソース (記事とビデオ) を参照してください。
+The deployment workflow consists of preparing the portal, provisioning a virtual array in your virtualized environment, and completing the setup. To get started with the StorSimple Virtual Array deployment as a file server or an iSCSI server, you will need to refer to the following tabulated resources (articles and videos).
 
-#### デプロイに関する記事
+#### <a name="deployment-articles"></a>Deployment articles
 
-StorSimple Virtual Array をデプロイするには、次の記事を順番に参照してください。
+Refer to the following articles in the prescribed sequence to deploy your StorSimple Virtual Array.
 
-| **#** | **手順** | **作業内容** | **参照ドキュメント**|
+| **#** | **In this step**                          | **You will do this …**                                                         | **Use these documents.**|
 |------|-------------------------------------------|--------------------------------------------------------------------------------|------------------------|
-|1\. | **Azure クラシック ポータルのセットアップ** | StorSimple 仮想デバイスをプロビジョニングする前に、StorSimple Manager サービスを作成して構成します。 |[ポータルを準備する](storsimple-ova-deploy1-portal-prep.md)|
-|2\. | **Virtual Array のプロビジョニング** | Hyper-V の場合: Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行するホスト システムに StorSimple 仮想デバイスをプロビジョニングして接続します。<br></br> <br></br> VMware の場合: VMware ESXi 5.5 以降を実行するホスト システムに StorSimple オンプレミス仮想デバイスをプロビジョニングして接続します。<br></br>| [HYPER-V で仮想アレイをプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で仮想アレイをプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)|
-|3\. | **Virtual Array のセットアップ** | ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。これで、SMB 共有をプロビジョニングできます。<br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。これで、iSCSI ボリュームをプロビジョニングできます。| [ファイル サーバーとして Virtual Array をセットアップする](storsimple-ova-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-ova-deploy3-iscsi-setup.md)|
+|1.   | **Set up the Azure classic portal**       | Create and configure your StorSimple Manager service prior to provisioning a StorSimple virtual device.  |[Prepare the portal](storsimple-ova-deploy1-portal-prep.md)|
+|2.   | **Provision the Virtual Array**           | For Hyper-V, provision and connect to a StorSimple virtual device on a host system running Hyper-V on Windows Server 2012 R2, Windows Server 2012, or Windows Server 2008 R2. <br></br> <br></br> For VMware, provision and connect to a StorSimple on-premises virtual device on a host system running VMware ESXi 5.5 and above.<br></br>| [Provision a virtual array in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) <br></br> <br></br> [Provision a virtual array in VMware](storsimple-ova-deploy2-provision-vmware.md)|
+|3.    | **Set up the Virtual Array**              | For your file server, perform initial setup, register your StorSimple file server, and complete the device setup. You can then provision SMB shares. <br></br> <br></br> For your iSCSI server, perform initial setup, register your StorSimple iSCSI server, and complete the device setup. You can then provision iSCSI volumes.| [Set up virtual array as file server](storsimple-ova-deploy3-fs-setup.md)<br></br> <br></br>[Set up virtual array as iSCSI server](storsimple-ova-deploy3-iscsi-setup.md)|
 
-#### デプロイに関するビデオ
+#### <a name="deployment-videos"></a>Deployment videos
 
-| **手順** | **ビデオ**|
+| **To do this step...** |  **Watch this video.**|
 |----------------|-------------|
-| StorSimple Virtual Array の使用を開始するための詳細な手順 | [StorSimple Virtual Array の使用を開始する](https://azure.microsoft.com/documentation/videos/get-started-with-the-storsimple-virtual-array/)|
-| HYPER-V で StorSimple Virtual Array をプロビジョニングするための詳細な手順|[StorSimple Virtual Array を作成する](https://azure.microsoft.com/documentation/videos/create-a-storsimple-virtual-array/) |
-|StorSimple Virtual Array を構成して登録するための詳細な手順|[StorSimple Virtual Array を構成する](https://azure.microsoft.com/documentation/videos/configure-a-storsimple-virtual-array/)|
-|ファイル サーバーとして構成した StorSimple Virtual Array で共有を作成し、共有をバックアップし、データを復元するための詳細な手順|[StorSimple Virtual Array を使用する](https://azure.microsoft.com/documentation/videos/use-the-storsimple-virtual-array/)|
-|StorSimple Virtual Array のフェールオーバーと障害復旧のための詳細な手順|[StorSimple Virtual Array の障害復旧](https://azure.microsoft.com/documentation/videos/storsimple-virtual-array-disaster-recovery/)
+| Step-by-step instructions to get started with the StorSimple Virtual Array. | [Get started with the StorSimple Virtual Array](https://azure.microsoft.com/documentation/videos/get-started-with-the-storsimple-virtual-array/)|
+| Step-by-step instructions to provision a StorSimple Virtual Array in Hyper-V.|[Create a StorSimple Virtual Array](https://azure.microsoft.com/documentation/videos/create-a-storsimple-virtual-array/) |
+|Step-by-step instructions to configure and register a StorSimple Virtual Array|[Configure a StorSimple Virtual Array](https://azure.microsoft.com/documentation/videos/configure-a-storsimple-virtual-array/)|
+|Step-by-step instructions to create shares, back up shares, and restore data on a StorSimple Virtual Array configured as a file server|[Use the StorSimple Virtual Array](https://azure.microsoft.com/documentation/videos/use-the-storsimple-virtual-array/)|
+|Step-by-step instructions for failover and disaster recovery of a StorSimple Virtual Array|[StorSimple Virtual Array Disaster Recovery](https://azure.microsoft.com/documentation/videos/storsimple-virtual-array-disaster-recovery/)
 
-これで、Azure クラシック ポータルをセットアップする準備が整いました。
+You can now begin to set up the Azure classic portal.
 
-## 構成チェックリスト
+## <a name="configuration-checklist"></a>Configuration checklist
 
-構成チェックリストでは、StorSimple デバイスでソフトウェアを構成する前に収集する必要のある情報について説明しています。事前にこの情報を準備することで、環境内に StorSimple デバイスをデプロイするプロセスを効率化できます。StorSimple 仮想デバイスをファイル サーバーとしてデプロイする場合と iSCSI サーバーとしてデプロイする場合とではチェックリストの内容が異なります。
+The configuration checklist describes the information that you need to collect before you configure the software on your StorSimple device. Preparing this information ahead of time will help streamline the process of deploying the StorSimple device in your environment. Depending upon whether your StorSimple virtual device will be deployed as a file server or an iSCSI server, you will need one of the following checklists.
 
--   [StorSimple Virtual Array のファイル サーバー構成チェックリスト](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf)をダウンロード
+-   Download the [StorSimple Virtual Array File Server Configuration Checklist](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
 
--   [StorSimple Virtual Array の iSCSI サーバー構成チェックリスト](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf)をダウンロード
+-   Download the [StorSimple Virtual Array iSCSI Server Configuration Checklist](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
 
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-ここでは、StorSimple Manager サービス、StorSimple 仮想デバイス、およびデータセンター ネットワークの構成の前提条件について説明します。
+Here you will find the configuration prerequisites for your StorSimple Manager service, your StorSimple virtual device, and the datacenter network.
 
-### StorSimple Manager サービスの場合
+### <a name="for-the-storsimple-manager-service"></a>For the StorSimple Manager service
 
-開始する前に次の点を確認します。
+Before you begin, make sure that:
 
--   アクセスの資格情報を持つ Microsoft アカウントがあること。
+-   You have your Microsoft account with access credentials.
 
--   アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
+-   You have your Microsoft Azure storage account with access credentials.
 
--   Microsoft Azure サブスクリプションで StorSimple Manager サービスが有効になっていること。
+-   Your Microsoft Azure subscription should be enabled for StorSimple Manager service.
 
-### StorSimple 仮想デバイスの場合
+### <a name="for-the-storsimple-virtual-device"></a>For the StorSimple virtual device
 
-仮想デバイスをデプロイする前に次の点を確認します。
+Before you deploy a virtual device, make sure that:
 
--   Windows Server 2008 R2 以降の Hyper-V または VMware (ESXi 5.5 以降) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
+-   You have access to a host system running Hyper-V on Windows Server 2008 R2 or later or VMware (ESXi 5.5 or later) that can be used to a provision a device.
 
--   ホスト システムで、次のリソースを仮想デバイスのプロビジョニング専用に使用できること。
+-   The host system is able to dedicate the following resources to provision your virtual device:
 
-	-   最小で 4 コア。
+    -   A minimum of 4 cores.
 
-	-   少なくとも 8 GB の RAM。
+    -   At least 8 GB of RAM.
 
-	-   ネットワーク インターフェイス 1 つ。
+    -   One network interface.
 
-	-   システム データ用の 500 GB の仮想ディスク。
+    -   A 500 GB virtual disk for system data.
 
-### データセンター ネットワークの前提条件
+### <a name="for-the-datacenter-network"></a>For the datacenter network
 
-開始する前に次の点を確認します。
+Before you begin, make sure that:
 
--   StorSimple デバイスのネットワーク要件に従ってデータセンターのネットワークが構成されていること。詳細については、「[StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。
+-   The network in your datacenter is configured as per the networking requirements for your StorSimple device. For more information, see the [StorSimple Virtual Array System Requirements](storsimple-ova-system-requirements.md).
 
--   StorSimple 仮想デバイスで専用の 5 Mbps インターネット帯域幅 (またはそれ以上) が常に利用できること。この帯域幅はその他のアプリケーションと共有できません。
+-   Your StorSimple virtual device has a dedicated 5 Mbps Internet bandwidth (or more) available at all times. This bandwidth should not be shared with any other applications.
 
-## 準備の手順
+## <a name="step-by-step-preparation"></a>Step-by-step preparation
 
-次の手順を順番に実行すると、StorSimple Manager サービス用のポータルを準備できます。
+Use the following step-by-step instructions to prepare your portal for the StorSimple Manager service.
 
-## 手順 1. 新しいサービスを作成する
+## <a name="step-1:-create-a-new-service"></a>Step 1: Create a new service
 
-StorSimple Manager サービスの 1 つのインスタンスで複数の StorSimple 1200 デバイスを管理できます。StorSimple Manager サービスの新しいインスタンスを作成するには、次の手順を実行します。既存の StorSimple Manager サービスで StorSimple 1200 デバイスを管理する場合は、この手順は省略して「[手順 2: サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
+A single instance of the StorSimple Manager service can manage multiple StorSimple 1200 devices. Perform the following steps to create a new instance of the StorSimple Manager service. If you have an existing StorSimple Manager service to manage your 1200 devices, skip this step and go to [Step2: Get the service registration key](#step-2-get-the-service-registration-key).
 
 [AZURE.INCLUDE [storsimple-ova-create-new-service](../../includes/storsimple-ova-create-new-service.md)]
 
 > [AZURE.IMPORTANT]
 >
-> サービスでストレージ アカウントの自動作成を有効にしていない場合は、サービスの作成が完了してから、1 つ以上のストレージ アカウントを作成する必要があります。
+> If you did not enable the automatic creation of a storage account with your service, you will need to create at least one storage account after you have successfully created a service.
 >
 
-> - ストレージ アカウントを自動的に作成していない場合は、「[サービスの新しいストレージ アカウントを構成する](#optional-step-configure-a-new-storage-account-for-the-service)」に移動して詳細な手順をご確認ください。
+> - If you did not create a storage account automatically, go to [Configure a new storage account for the service](#optional-step-configure-a-new-storage-account-for-the-service) for detailed instructions.
 >
 
-> - ストレージ アカウントの自動作成を有効にしている場合は、「[手順 2. サービス登録キーを取得する](#step-2-get-the-service-registration-key)」に進みます。
+> - If you enabled the automatic creation of a storage account, go to [Step 2: Get the service registration key](#step-2-get-the-service-registration-key).
 
 
-## 手順 2. サービス登録キーを取得する
+## <a name="step-2:-get-the-service-registration-key"></a>Step 2: Get the service registration key
 
 
-StorSimple Manager サービスが稼働したら、サービス登録キーを取得する必要があります。このキーを使用して StorSimple デバイスを登録し、サービスに接続します。
+After the StorSimple Manager service is up and running, you will need to get the service registration key. This key is used to register and connect your StorSimple device with the service.
 
-[Azure クラシック ポータル](https://manage.windowsazure.com/)で、次の手順を実行します。
+Perform the following steps in the [Azure classic portal](https://manage.windowsazure.com/).
 
 
 [AZURE.INCLUDE [storsimple-ova-get-service-registration-key](../../includes/storsimple-ova-get-service-registration-key.md)]
 
 > [AZURE.NOTE]
 >
-> StorSimple Manager サービスに登録する必要があるすべての StorSimple Manager デバイスの登録に、サービス登録キーを使用します。
+> The service registration key is used to register all the StorSimple Manager devices that need to register with your StorSimple Manager service.
 
-## 手順 3: 仮想デバイスのイメージをダウンロードする
+## <a name="step-3:-download-the-virtual-device-image"></a>Step 3: Download the virtual device image
 
-サービス登録キーを取得したら、ホスト システムに仮想デバイスをプロビジョニングするために、適切な仮想デバイスのイメージをダウンロードする必要があります。仮想デバイスのイメージはオペレーティング システムに固有で、Azure クラシック ポータルの [クイック スタート] ページからダウンロードできます。
+After you have the service registration key, you will need to download the appropriate virtual device image to provision a virtual device on your host system. The virtual device images are operating system specific and can be downloaded from the Quick Start page in the Azure classic portal.
 
-> [AZURE.IMPORTANT] StorSimple Virtual Array で実行されているソフトウェアは、Storsimple Manager サービスとの組み合わせでのみ使用できます。
+> [AZURE.IMPORTANT] The software running on the StorSimple Virtual Array may only be used in conjunction with the Storsimple Manager service.
 
 
-[Azure クラシック ポータル](https://manage.windowsazure.com/)で、次の手順を実行します。
+Perform the following steps in the [Azure classic portal](https://manage.windowsazure.com/).
 
-#### 仮想デバイスのイメージを取得するには
+#### <a name="to-get-the-virtual-device-image"></a>To get the virtual device image
 
-1.  **[StorSimple Manager]** サービス ページで、作成したサービスをクリックします。この操作により、**[クイック スタート]** ページが表示されます (**[クイック スタート]** ページには、クイック スタート アイコン ![](./media/storsimple-ova-deploy1-portal-prep/image8.png) をクリックすることによっていつでもアクセスできます)。
+1.  On the **StorSimple Manager service** page, click the service that you created. This will take you to the **Quick Start** page. (You can click the quick start icon ![](./media/storsimple-ova-deploy1-portal-prep/image8.png) to access the **Quick Start** page at any time.)
 
-1.  Microsoft ダウンロード センターからダウンロードするイメージに対応するリンクをクリックします。イメージ ファイルは約 4.8 GB です。
+1.  Click the link corresponding to the image that you want to download from the Microsoft Download Center. The image files are approximately 4.8 GB.
 
-	-   Windows Server 2012 以降の Hyper-V 用 VHDX
+    -   VHDX for Hyper-V on Windows Server 2012 and later
 
-	-   Windows Server 2008 R2 以降の Hyper-V 用 VHD
+    -   VHD for Hyper-V on Windows Server 2008 R2 and later
 
-	-   VMWare ESXi 5.5 以降用 VMDK
+    -   VMDK for VMWare ESXi 5.5 and later
 
-2.  ファイルをローカル ドライブにダウンロードして解凍し、解凍したファイルの場所をメモしておきます。
+2.  Download and unzip the file to a local drive, making a note of where the unzipped file is located.
 
-![動画アイコン](./media/storsimple-ova-deploy1-portal-prep/video_icon.png) **ビデオ**
+![video icon](./media/storsimple-ova-deploy1-portal-prep/video_icon.png) **Video available**
 
-StorSimple Virtual Array の使用を開始するための詳細な手順を説明したビデオをご覧ください。
+Watch the video for step-by-step instructions to get started with the StorSimple Virtual Array.
 
 > [AZURE.VIDEO get-started-with-the-storsimple-virtual-array]
 
 
 
-## 省略可能な手順: サービスの新しいストレージ アカウントを構成する
+## <a name="optional-step:-configure-a-new-storage-account-for-the-service"></a>Optional step: Configure a new storage account for the service
 
-これは省略可能な手順で、サービスでストレージ アカウントの自動作成を有効にしていない場合のみ実行する必要があります。
+This is an optional step that needs to be performed only if you did not enable the automatic creation of a storage account with your service.
 
-別のリージョンで Azure ストレージ アカウントを作成する必要がある場合、詳しい手順については、[ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。
+If you need to create an Azure storage account in a different region, see [How to create a storage account](storage-create-storage-account.md#create-a-storage-account) for step-by-step instructions.
 
-既存の Microsoft Azure ストレージ アカウントを追加するには、[Azure クラシック ポータル](https://manage.windowsazure.com/)の [StorSimple Manager サービス] ページで次の手順を実行します。
+Perform the following steps in the [Azure classic portal](https://manage.windowsazure.com/) on the StorSimple Manager service page to add an existing Microsoft Azure storage account.
 
-#### ストレージ アカウントを追加するには
+#### <a name="to-add-a-storage-account"></a>To add a storage account
 
-1.  StorSimple Manager サービスのランディング ページでサービスを選択し、ダブルクリックします。この操作により、**[クイック スタート]** ページが表示されます。**[構成]** ページを選択します。
+1.  On the StorSimple Manager service landing page, select your service and double-click it. This will take you to the **Quick Start** page. Select the **Configure** page.
 
-2.  **[ストレージ アカウントの追加/編集]** をクリックします。**[ストレージ アカウントの追加/編集]** ダイアログ ボックスで、次の手順を実行します。
+2.  Click **Add/edit storage account**. In the **Add/Edit Storage Account** dialog box, do the following:
 
-	1.  **[新規追加]** をクリックします。
+    1.  Click **Add new**.
 
-	1.  ストレージ アカウントの名前を入力します。
+    1.  Provide a name for your storage account.
 
-	1.  Microsoft Azure ストレージ アカウントのプライマリ **アクセス キー**を入力します。
+    1.  Supply the primary **Access Key** for your Microsoft Azure storage account.
 
-	1.  **[SSL モードを有効にする]** を選択して、デバイスとクラウド間のネットワーク通信用にセキュリティで保護されたチャネルを作成します。プライベート クラウド内で運用している場合にのみ、**[SSL モードを有効にする]** チェック ボックスをオフにします。
+    1.  Select **Enable SSL mode** to create a secure channel for network communication between your device and the cloud. Clear the **Enable SSL mode** check box only if you are operating within a private cloud.
 
-	1.  チェック マーク アイコン ![](./media/storsimple-ova-deploy1-portal-prep/image7.png) をクリックします。ストレージ アカウントが正常に作成されると通知が表示されます。
+    1.  Click the check icon ![](./media/storsimple-ova-deploy1-portal-prep/image7.png). You will be notified after the storage account is successfully created.
 
-		![](./media/storsimple-ova-deploy1-portal-prep/image11.png)
+        ![](./media/storsimple-ova-deploy1-portal-prep/image11.png)
 
-1.  新しく作成されたストレージ アカウントは、**[構成]** ページの **[ストレージ アカウント]** に表示されます。**[保存]** をクリックして、新しく作成されたストレージ アカウントを保存します。確認を求められたら、**[OK]** をクリックします。
+1.  The newly created storage account will be displayed on the **Configure** page under **Storage accounts**. Click **Save** to save the newly created storage account. Click **OK** when prompted for confirmation.
 
 
-## 次のステップ
+## <a name="next-step"></a>Next step
 
-次の手順では、StorSimple 仮想デバイス用の仮想マシンをプロビジョニングします。使用するホスト オペレーティング システムに応じて手順は異なります。
+The next step is to provision a virtual machine for your StorSimple virtual device. Depending on your host operating system, see the detailed instructions in:
 
--   [Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)
+-   [Provision a StorSimple Virtual Array in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md)
 
--   [VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)
+-   [Provision a StorSimple Virtual Array in VMware](storsimple-ova-deploy2-provision-vmware.md)
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

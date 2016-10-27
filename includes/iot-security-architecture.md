@@ -1,257 +1,260 @@
-# モノのインターネットのセキュリティ アーキテクチャ
+# <a name="internet-of-things-security-architecture"></a>Internet of Things security architecture
 
-システムを設計する際は、そのシステムに対する脅威のリスクを把握し、設計と構築時にそれに応じた適切な防御措置を講じることが重要となります。特に重要なことは、最初からセキュリティを考慮に入れて製品を設計することです。攻撃者がどのような方法でシステムに侵入しうるかを把握しておけば、適切な軽減策を初期段階から講じることができるためです。
+When designing a system, it is important to understand the potential threats to that system, and add appropriate defenses accordingly, as the system is designed and architected. It is particularly important to design the product from the start with security in mind because understanding how an attacker might be able to compromise a system helps make sure appropriate mitigations are in place from the beginning. 
 
-## セキュリティの第一歩は脅威モデル
+## <a name="security-starts-with-a-threat-model"></a>Security starts with a threat model
  
-マイクロソフトは以前から自社製品に脅威モデルを採用すると共に、だれもが使用できるよう、その脅威モデル化プロセスを公開してきました。マイクロソフトの経験上、モデル化には、懸念される脅威が把握しやすくなるというだけでなく、それ以上に思いがけない利点もあります。たとえば開発チーム以外の人々との間で、率直な議論ができるようになり、新しいアイデアや改善策が製品にもたらされることがあります。
+Microsoft has long used threat models for its products and has made the company’s threat modeling process publically available. The company experience demonstrates that the modelling has unexpected benefits beyond the immediate understanding of what threats are the most concerning. For example, it also creates an avenue for an open discussion with others outside the development team, which can lead to new ideas and improvements in the product.
   
-脅威をモデル化する目的は、攻撃者がどのような方法でシステムに侵入しうるかを把握したうえで、適切な軽減策を講じることです。脅威がモデル化されていれば設計チームは否応なしに、システムのデプロイ後ではなく設計段階で軽減策を考慮するようになります。この点は非常に重要です。なぜなら、現場で稼働している無数のデバイスに対してセキュリティ対策を行うことは現実的ではなく、間違いが起きやすいうえに、利用者を危険にさらすことになるからです。
+The objective of threat modeling is to understand how an attacker might be able to compromise a system and then make sure appropriate mitigations are in place. Threat modeling forces the design team to consider mitigations as the system is designed rather than after a system is deployed. This fact is critically important, because retrofitting security defenses to a myriad of devices in the field is infeasible, error prone and will leave customers at risk.
 
-システムのユーザーに利益をもたらす機能的要件を収集することは多くの開発チームが得意とすることです。しかし漠然と、何者かによって行われるシステム悪用の手法を見極めようとすると、ぐっと難易度が上がります。攻撃者がどのようなことを、どのような理由で行うのか。その点を開発チームは、脅威のモデル化によって把握することができます。脅威のモデル化は、セキュリティの設計上や、セキュリティに影響を及ぼす設計変更上の意思決定についての論点を形成する体系化されたプロセスです。脅威モデルは単なるドキュメントですが、このように文書化することが、知識の継続と獲得した教訓の蓄積、新しいチームの迅速な受け入れに寄与する最良の方法でもあります。また、セキュリティに関して顧客に約束する必達目標など、セキュリティをさまざまな角度から考慮できることも、脅威のモデル化の成果の一つといえます。脅威のモデル化と共に、こうした必達目標が貴社の IoT ソリューションに関する情報提供となり、テストを促進する要因となります。
+Many development teams do an excellent job capturing the functional requirements for the system that benefit customers. However, identifying non-obvious ways that someone might misuse the system is more challenging. Threat modeling can help development teams understand what an attacker might do and why. Threat modeling is a structured process that creates a discussion about the security design decisions in the system, as well as changes to the design that are made along the way that impact security. While a threat model is simply a document, this documentation also represents an ideal way to ensure continuity of knowledge, retention of lessons learned, and help new team onboard rapidly. Finally, an outcome of threat modeling is to enable you to consider other aspects of security, such as what security commitments you wish to provide to your customers. These commitments in conjunction with threat modeling will inform and drive testing of your Internet of Things (IoT) solution.
  
 
-### いつ脅威のモデル化を行うか
+### <a name="when-to-threat-model"></a>When to threat model
 
-[脅威のモデル化](http://www.microsoft.com/security/sdl/adopt/threatmodeling.aspx)は、設計フェーズに組み込まれたときにその価値が最大となります。脅威を排除するための変更には、設計段階が最も柔軟に対応できます。設計によって脅威を排除することが成果として求められます。その方が軽減策を後から追加してテストし、最新の状態に保つよりもはるかに容易です。そもそも、後から脅威を排除することが必ずしも可能であるとは限りません。製品の完成度が増してくるにつれて、脅威を排除することは難しくなっていきます。結局は、脅威のモデル化を開発の初期段階で行った場合と比べて必要な作業が増え、より重要な部分でトレードオフに苦渋の決断を迫られることとなります。
+[Threat modeling](http://www.microsoft.com/security/sdl/adopt/threatmodeling.aspx) offers the greatest value if it is incorporated into the design phase. When you are designing, you have the greatest flexibility to make changes to eliminate threats. Eliminating threats by design is the desired outcome. It is much easier than adding mitigations, testing them, and ensuring they remain current and moreover, such elimination is not always possible. It becomes harder to eliminate threats as a product becomes more mature, and in turn will ultimately require more work and a lot harder tradeoffs than threat modeling early on in the development.
 
-### 脅威のモデル化の対象は何か
+### <a name="what-to-threat-model"></a>What to threat model
 
-脅威のモデルは、ソリューション全体を対象とし、次の点に着目する必要があります。
+You should thread model the solution as a whole and also focus in the following areas:
 
-- セキュリティとプライバシーの機能
-- 不具合がセキュリティに影響するような機能
-- 信頼の境界と面する機能
+- The security and privacy features
+- The features whose failures are security relevant
+- The features that touch a trust boundary 
 
-### だれが脅威のモデル化を行うか
+### <a name="who-threat-models"></a>Who threat models
 
-脅威のモデル化は、特別なプロセスではありません。脅威モデルのドキュメントは、ソリューションを構成する他の要素と同様に取り扱い、検証することをお勧めします。システムのユーザーに利益をもたらす機能的要件を収集することは多くの開発チームが得意とすることです。しかし漠然と、何者かによって行われるシステム悪用の手法を見極めようとすると、ぐっと難易度が上がります。攻撃者がどのようなことを、どのような理由で行うのか。その点を開発チームは、脅威のモデル化によって把握することができます。
+Threat modeling is a process like any other.  It is a good idea to treat the threat model document like any other component of the solution and validate it. Many development teams do an excellent job capturing the functional requirements for the system that benefit customers. However, identifying non-obvious ways that someone might misuse the system is more challenging. Threat modeling can help development teams understand what an attacker might do and why.
 
-### どのように脅威のモデル化を行うか
+### <a name="how-to-threat-model"></a>How to threat model
 
-脅威のモデル化プロセスは、次の 4 つのステップから成ります。
+The threat modeling process is composed of four steps; the steps are:
 
-- アプリケーションのモデル化
-- 脅威の列挙
-- 脅威の軽減
-- 軽減策の検証
+- Model the application
+- Enumerate Threats
+- Mitigate threats
+- Validate the mitigations
 
-#### モデル化プロセスのステップ
+#### <a name="the-process-steps"></a>The process steps
 
-実際に即した方法でいうと、脅威モデルは次の 3 つの手順で構築します。
+Three rules of thumb to keep in mind when building a threat model:
 
-1. リファレンス アーキテクチャを基に図を作成します。
-2. 概要の把握に着手します。深く踏み込んで調査する前に概要を見極め、システムの全体像を把握します。そうすることで、詳しく掘り下げるべきポイントを確実に特定することができます。
-3. モデル化のプロセスを推進します。本来の目的を忘れないようにしてください。プロセスそのものに縛られてはいけません。つまりモデル化のフェーズで問題が見つかり、詳しく調査したいと思ったら、そのようにしてください。 盲目的にその手順に従う必要はありません。
+1. Create a diagram out of reference architecture. 
+2. Start breadth-first. Get an overview, and understand the system as a whole, before deep-diving.  This helps ensure that you deep-dive in the right places.
+3. Drive the process, don’t let the process drive you. If you find an issue in the modeling phase and want to explore it, go for it!  Don’t feel you need to follow these steps slavishly.  
 
-#### 脅威
+#### <a name="threats"></a>Threats
 
-脅威モデルの核となる要素は次の 4 つです。
+The four core elements of a threat model are:
 
-- プロセス (Web サービス、Win32 サービス、*nix デーモンなど)。いくつかの複雑なエンティティ (フィールド ゲートウェイ、センサーなど) については、その領域を技術的に掘り下げることが困難である場合には、プロセスとして概念化してかまいません。
-- データ ストア (構成ファイルやデータベースなど、さまざまなデータの保存場所)。
-- データ フロー (アプリケーション内の要素間におけるデータの移動)。
-- 外部エンティティ。システムと接する要素のうちアプリケーションの管理下にないもの (ユーザー、衛星伝送など)。
+- Processes (web services, Win32 services, *nix daemons, etc. Note that some complex entities (e.g. field gateways and sensors) can be abstracted as a process when a technical drill down in these areas is not possible.
+- Data stores (anywhere data is stored, such as a configuration file or database)
+- Data flow (where data moves between other elements in the application)
+- External Entities (anything that interacts with the system, but is not under the control of the application, examples include users and satellite feeds)
 
-アーキテクチャ図の要素はいずれも、さまざまな脅威の影響を受けます。マイクロソフトでは、それらの頭文字を取って STRIDE と読んでいます。STRIDE の各要素について詳しくは、「[Threat Modeling Again, STRIDE (STRIDE に基づく脅威のモデル化)](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/)」を参照してください。
+All elements in the architectural diagram are subject to various threats; we will use the STRIDE mnemonic. Read [Threat Modeling Again, STRIDE](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) to know more about the STRIDE elements.
 
-アプリケーション図を構成する各要素が、STRIDE で表されるそれぞれ異なった脅威にさらされます。
+Different elements of the application diagram are subject to certain STRIDE threats:
 
-- プロセスは STRIDE の影響を受けます。
-- データ フローは TID の影響を受けます。
-- データ ストアは TID の影響を受けます。データ ストアがログ ファイルである場合、R の影響も受けます。
-- 外部エンティティは SRD の影響を受けます。
+- Processes are subject to STRIDE
+- Data flows are subject to TID
+- Data stores are subject to TID, and sometimes R, if the data stores are log files.
+- External entities are subject to SRD
 
-## IoT のセキュリティ
+## <a name="security-in-iot"></a>Security in IoT
 
-特殊な用途をもって接続されるデバイスには、膨大な数の対話領域と対話パターンがあり、デバイスへのデジタル アクセスのセキュリティを確保するうえでは、そのすべてを、基本的な枠組みを形成するものとして捉える必要があります。デバイスを直接操作することによって実行される操作 (アクセス セキュリティは物理的な立ち入り管理によって確保される) と区別するために、ここでは "デジタル アクセス" という言葉を使用しています。たとえば施錠された部屋にデバイスを設置することは、物理的な立ち入り管理の領域です。物理的アクセスをソフトウェアやハードウェアによって防止することはできませんが、物理的なアクセスがシステム障害に発展するのを防ぐための対策を講じることはできます。
+Connected special-purpose devices have a significant number of potential interaction surface areas and interaction patterns, all of which must be considered to provide a framework for securing digital access to those devices. The term “digital access” is used here to distinguish from any operations that are carried out through direct device interaction where access security is provided through physical access control. For example, putting the device into a room with a lock on the door. While physical access cannot be denied using software and hardware, measures can be taken to prevent physical access from leading to system interference. 
 
-対話パターンを調査するときに注目するのは、"デバイスの制御" と "デバイスのデータ" です。その両者に同程度の注意を払う必要があります。"デバイスの制御" は、動作に何らかの変更または作用を与えてその状態やその環境の状態を変えるためにデバイスに与えられる情報と見なすことができます。これに対し、"デバイスのデータ" は、デバイスがその状態やその環境に関して観察された状態について、他者に出力する情報と見なすことができます。
+As we explore the interaction patterns, we will look at “device control” and “device data” with the same level of attention. “Device control” can be classified as any information that is provided to a device by any party with the goal of changing or influencing its behavior towards its state or the state of its environment. “Device data” can be classified as any information that a device emits to any other party about its state and the observed state of its environment.
    
-脅威のモデル化を実践する過程では、セキュリティのベスト プラクティスを最適な形で適用するために、標準的な IoT アーキテクチャをいくつかのコンポーネント/ゾーンに分割することをお勧めします。このセクションを通じて、これらのゾーンについて詳しく見ていくことにしましょう。以下のようなゾーンがあります。
+In order to optimize security best practices, it is recommended that a typical IoT architecture be divided into several component/zones as part of the threat modeling exercise. These zones are described fully throughout this section and include:
 
--	デバイス
--	フィールド ゲートウェイ
--	クラウド ゲートウェイ
--	承認。
+-   Device,
+-   Field Gateway,
+-   Cloud gateways, and
+-   Services.
 
-ゾーンは、大まかにソリューションを分割する手法です。それぞれのゾーンに、固有のデータや認証要件、承認要件が存在することも少なくありません。被害を隔離したり、低い信頼ゾーンがそれより高い信頼ゾーンに及ぼす影響を限定したりする目的にもゾーンは使用されます。
+Zones are broad way to segment a solution; each zone often has its own data and authentication and authorization requirements. Zones can also be used to isolation damage and restrict the impact of low trust zones on higher trust zones.
 
-各ゾーンは信頼の境界によって仕切られています。下の図に赤色の点線で示した箇所が信頼の境界です。この図は、ソースからソースへのデータまたは情報の遷移を表しています。この遷移の過程でデータや情報は STRIDE、つまり Spoofing (スプーフィング)、Tampering (改ざん)、Repudiation (否認)、Information Disclosure (情報漏えい)、Denial of Service (サービス拒否)、Elevation of Privilege (特権の昇格) の影響にさらされることとなります。
+Each zone is separated by a Trust Boundary, which is noted as the dotted red line in the diagram below. It represents a transition of data/information from one source to another. During this transition, the data/information could be subject to Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service and Elevation of Privilege (STRIDE).
 
-![IoT Security Zones](media/iot-security-architecture/iot-security-architecture-fig1.png)
+![IoT Security Zones](media/iot-security-architecture/iot-security-architecture-fig1.png) 
 
-それぞれの境界の内側に描写されている構成要素もまた STRIDE の影響下にあり、こうしてソリューションの脅威をあらゆる角度からモデル化することができます。以下の各セクションで、それぞれの構成要素について詳しく説明すると共に、セキュリティ上の具体的な懸念事項と導入すべき解決策について取り上げます。
+The components depicted within each boundary are also subjected to STRIDE, enabling a full 360 threat modeling view of the solution. The sections below elaborate on each of the components and specific security concerns and solutions that should be put into place.
 
-では、これらのゾーンで一般的に見られる標準的な構成要素について見ていきましょう。
+The sections that follows will discuss standard components typically found in these zones.
 
-### デバイス ゾーン
+### <a name="the-device-zone"></a>The Device Zone
 
-デバイス環境とは、デバイスと物理的に近接し、物理的に近づいたり "ローカル ネットワーク" を介してデバイスにピア ツー ピアでデジタル アクセスしたりできる空間を指します。"ローカル ネットワーク" は、パブリック インターネットと明確に区別され隔離された (ただしパブリック インターネットとの橋渡し的な役割を果たすこともある) ネットワークであり、デバイスどうしのピア ツー ピア通信を可能にする狭い範囲の無線技術を含みます。そうしたローカル ネットワークを擬似的に作り出すネットワークの仮想化技術は*対象外*となります。また、2 台のデバイスがピア ツー ピア通信の関係を結ぶうえでパブリック ネットワーク空間を介した通信が必要となるような公共通信事業者のネットワークも、ローカル ネットワークには当てはまりません。
+The device environment is the immediate physical space around the device where physical access and/or “local network” peer-to-peer digital access to the device is feasible. A “local network” is assumed to be a network that is distinct and insulated from – but potentially bridged to – the public Internet, and includes any short-range wireless radio technology that permits peer-to-peer communication of devices. It does *not* include any network virtualization technology creating the illusion of such a local network and it does also not include public operator networks that require any two devices to communicate across public network space if they were to enter a peer-to-peer communication relationship.
 
-### フィールド ゲートウェイ ゾーン
+### <a name="the-field-gateway-zone"></a>The Field Gateway Zone
 
-フィールド ゲートウェイは、通信を可能にする要素として、また場合によってはデバイスの制御システムやデバイスのデータ処理の拠点としての役割を果たします。フィールド ゲートウェイのゾーンには、フィールド ゲートウェイ自体とそこに接続されているすべてのデバイスが含まれます。フィールド ゲートウェイは、その名前が示すように、専用のデータ処理機構の外で作動します。通常、特定の場所に固定され、物理的な侵入のリスクがあります。また、運用上の冗長性は限られています。フィールド ゲートウェイとは一般に、何者かがその働きを理解したうえで近づき、妨害行為を行うことができる対象をいいます。
+Field gateway is a device/appliance or some general-purpose server computer software that acts as communication enabler and, potentially, as a device control system and device data processing hub. The field gateway zone includes the field gateway itself and all devices that are attached to it. As the name implies, field gateways act outside dedicated data processing facilities, are usually location bound, are potentially subject to physical intrusion, and will have limited operational redundancy. All to say that a field gateway is commonly a thing one can touch and sabotage while knowing what its function is. 
 
-アクセスと情報の流れを管理することにおいて積極的役割を果たしてきたという点で、フィールド ゲートウェイは単なるトラフィック ルーターとは異なります。つまり、アプリケーションによってアドレス指定されるエンティティやネットワーク接続端末、セッション端末が、フィールド ゲートウェイということになります。一方、NAT デバイスやファイアウォールは、フィールド ゲートウェイの資格を満たしません。明示的な接続やセッション端末というよりは、むしろ、それらによって確立される接続やセッションをルーティング (またはブロック) する働きが主体です。フィールド ゲートウェイには、2 種類の攻撃対象領域があります。1 つは、フィールド ゲートウェイに接続されているデバイスと接する領域です。フィールド ゲートウェイ ゾーンの内側を表します。もう 1 つは、外部からのあらゆる通信と接する領域で、フィールド ゲートウェイ ゾーンのエッジの部分となります。
+A field gateway is different from a mere traffic router in that it has had an active role in managing access and information flow, meaning it is an application addressed entity and network connection or session terminal. An NAT device or firewall, in contrast, do not qualify as field gateways since they are not explicit connection or session terminals, but rather a route (or block) connections or sessions made through them. The field gateway has two distinct surface areas. One faces the devices that are attached to it and represents the inside of the zone, and the other faces all external parties and is the edge of the zone.   
 
-### クラウド ゲートウェイ ゾーン
+### <a name="the-cloud-gateway-zone"></a>The cloud gateway zone
 
-クラウド ゲートウェイは、デバイスまたはフィールド ゲートウェイと、さまざまなサイトとの間でパブリック ネットワーク空間を介してリモート通信を可能にするシステムです。その先には通常、クラウドベースの制御/データ分析システム、つまりそのようなシステムが連携する集合体が存在します。場合によっては、タブレットやスマートフォンなどの端末から特殊用途のデバイスへのアクセスをクラウド ゲートウェイが直接つかさどるケースもあります。ここでいう "クラウド" とは、接続されているデバイスやフィールド ゲートウェイと同じ場所に固定されない専用のデータ処理システムを指します。またクラウド ゾーンでは、運用上の対策によって標的への物理的なアクセスができないようになっており、必ずしも "パブリック クラウド" インフラストラクチャには公開されていません。
+Cloud gateway is a system that enables remote communication from and to devices or field gateways from several different sites across public network space, typically towards a cloud-based control and data analysis system, a federation of such systems. In some cases, a cloud gateway may immediately facilitate access to special-purpose devices from terminals such as tablets or phones. In the context discussed here, “cloud” is meant to refer to a dedicated data processing system that is not bound to the same site as the attached devices or field gateways. Also in a Cloud Zone, operational measures prevent targeted physical access and is not necessarily exposed to a “public cloud” infrastructure.  
 
-クラウド ゲートウェイとそこに接続されているすべてのデバイス (またはフィールド ゲートウェイ) を他のネットワーク トラフィックから隔離するために、クラウド ゲートウェイはネットワーク仮想化オーバーレイにマッピングすることも考えられます。クラウド ゲートウェイそのものは、デバイス制御システムではなく、デバイス データの処理や保存を行う機構でもありません。そうした機構とのインターフェイスとなります。クラウド ゲートウェイ ゾーンには、クラウド ゲートウェイ自体のほか、そこに直接または間接的に接続されているすべてのフィールド ゲートウェイとデバイスが含まれます。このゾーンのエッジは、外部からのあらゆる通信が経由する明確な攻撃対象領域となっています。
+A cloud gateway may potentially be mapped into a network virtualization overlay to insulate the cloud gateway and all of its attached devices or field gateways from any other network traffic. The cloud gateway itself is neither a device control system nor a processing or storage facility for device data; those facilities interface with the cloud gateway. The cloud gateway zone includes the cloud gateway itself along with all field gateways and devices directly or indirectly attached to it. The edge of the zone is a distinct surface area where all external parties communicate through.
 
-### サービス ゾーン
+### <a name="the-services-zone"></a>The services zone
 
-ここでいう "サービス" とは、データの収集と分析、コマンド、制御などを目的に、フィールド ゲートウェイまたはクラウド ゲートウェイを介してデバイスと連動するソフトウェア コンポーネントまたはモジュールのことです。サービスは橋渡し的な役割を持ちます。サービスはその ID の下で、ゲートウェイをはじめとするサブシステムに働きかけ、データの保存や分析を行い、そこから得られた知見やスケジュールに基づいて、デバイスに自律的にコマンドを発行したり、承認されたエンド ユーザーに対して情報や制御機能を提供したりする役割を果たします。
+A “service” is defined for this context as any software component or module that is interfacing with devices through a field- or cloud gateway for data collection and analysis, as well as for command and control.  Services are mediators. They act under their identity towards gateways and other subsystems, store and analyze data, autonomously issue commands to devices based on data insights or schedules and expose information and control capabilities to authorized end-users.
 
-### 情報デバイスと特殊用途デバイス
+### <a name="information-devices-vs.-special-purpose-devices"></a>Information-devices vs. special-purpose devices
 
-PC、スマートフォン、タブレットは、代表的な双方向情報デバイスです。スマートフォンとタブレットは、バッテリの駆動時間を最大化することを念頭に設計されています。すぐにユーザーが操作するような状況にないときや、音楽の再生や目的地へのナビゲーションといったサービスを提供していないときには、一部の機能がオフになるのが理想です。システムの観点から見ると、これらの IT デバイスは主にユーザーの分身として人に働きかけます。つまり人に何かの行動を起こさせる働きや、入力データを収集して人を感知する働きがあるといえます。
+PCs, phones, and tablets are primarily interactive information devices. Phones and tablets are explicitly optimized around maximizing battery lifetime. They preferably turn off partially when not immediately interacting with a person, or when not providing services like playing music or guiding their owner to a particular location. From a systems perspective, these information technology devices are mainly acting as proxies towards people. They are “people actuators” suggesting actions and “people sensors” collecting input. 
 
-一方、特殊用途のデバイスは、単純な温度センサーから、無数のコンポーネントから成る複雑な工場製造ラインまでさまざまです。情報デバイスと比べて、はるかに目的が限定的であり、ユーザー インターフェイスが備わっていたとしても、物理的空間の中の技術と連動するか、そのような技術に組み込まれていることが大半です。周囲温度の測定と報告、バルブの開閉、サーボの制御、警告音の発報、照明のオン/オフといったさまざまな作業を行います。特殊用途のデバイスは、汎用性が優先される情報デバイスでは使用に耐えない、または情報デバイスではコストやサイズが大きすぎる、衝撃に弱すぎるといった状況で活躍します。技術的な設計や、製造に認められる予算、稼働予定年数には、その具体的な目的がそのまま反映されます。許容される消費電力コスト、物理的な据付面積、ひいては利用できる記憶域、計算能力、セキュリティ機能は、この 2 つの主要要因の制約を受けることとなります。
+Special-purpose devices, from simple temperature sensors to complex factory production lines with thousands of components inside them, are different. These devices are much more scoped in purpose and even if they provide some user interface, they are largely scoped to interfacing with or be integrated into assets in the physical world. They measure and report environmental circumstances, turn valves, control servos, sound alarms, switch lights, and do many other tasks. They help to do work for which an information device is either too generic, too expensive, too big, or too brittle. The concrete purpose immediately dictates their technical design as well the available monetary budget for their production and scheduled lifetime operation. The combination of these two key factors constrains the available operational energy budget, physical footprint, and thus available storage, compute, and security capabilities.  
 
-オートメーション化されたデバイスやリモート制御のデバイスに、物理的な不良や制御ロジックの欠陥など何らかの "問題" が生じた場合、意図的な侵害行為や不正な操作につながります。製造ロットの破壊、建物の略奪や火事、人身事故、最悪、死亡事故が起こる可能性もあります。当然その被害の大きさは、クレジット カードの盗難に遭って限度額いっぱいまで使われたというのとは、まったく次元が異なります。モノを動かすデバイスや、モノを動かすコマンドに直結するセンサー データには、E コマースやバンキングよりも高いセキュリティ水準が求められます。
+If something “goes wrong” with automated or remote controllable devices, for example, physical defects or control logic defects to willful unauthorized intrusion and manipulation. The production lots may be destroyed, buildings may be looted or burned down, and people may be injured or even die. This is, of course, a whole different class of damage than someone maxing out a stolen credit card's limit. The security bar for devices that make things move, and also for sensor data that eventually results in commands that cause things to move, must be higher than in any e-commerce or banking scenario. 
 
 
-### デバイス制御とデバイス データの対話
+### <a name="device-control-and-device-data-interactions"></a>Device control and device data interactions
 
-特殊な用途をもって接続されるデバイスには、膨大な数の対話領域と対話パターンがあり、デバイスへのデジタル アクセスのセキュリティを確保するうえでは、そのすべてを、基本的な枠組みを形成するものとして捉える必要があります。デバイスを直接操作することによって実行される操作 (アクセス セキュリティは物理的な立ち入り管理によって確保される) と区別するために、ここでは "デジタル アクセス" という言葉を使用しています。たとえば施錠された部屋にデバイスを設置することは、物理的な立ち入り管理の領域です。物理的アクセスをソフトウェアやハードウェアによって防止することはできませんが、物理的なアクセスがシステム障害に発展するのを防ぐための対策を講じることはできます。
+Connected special-purpose devices have a significant number of potential interaction surface areas and interaction patterns, all of which must be considered to provide a framework for securing digital access to those devices. The term “digital access” is used here to distinguish from any operations that are carried out through direct device interaction where access security is provided through physical access control. For example, putting the device into a room with a lock on the door. While physical access cannot be denied using software and hardware, measures can be taken to prevent physical access from leading to system interference. 
  
-対話パターンを調査するときに注目するのは、"デバイスの制御" と "デバイスのデータ" です。脅威をモデル化する際は、その両者に同程度の注意を払う必要があります。"デバイスの制御" は、動作に何らかの変更または作用を与えてその状態やその環境の状態を変えるためにデバイスに与えられる情報と見なすことができます。これに対し、"デバイスのデータ" は、デバイスがその状態やその環境に関して観察された状態について、他者に出力する情報と見なすことができます。
+As we explore the interaction patterns, we will look at “device control” and “device data” with the same level of attention while threat modeling. “Device control” can be classified as any information that is provided to a device by any party with the goal of changing or influencing its behavior towards its state or the state of its environment. “Device data” can be classified as any information that a device emits to any other party about its state and the observed state of its environment. 
 
-## Azure IoT リファレンス アーキテクチャの脅威のモデル化
+## <a name="threat-modeling-the-azure-iot-reference-architecture"></a>Threat modeling the Azure IoT reference architecture
 
-マイクロソフトは、既に述べたフレームワークを使って Azure IoT の脅威をモデル化しています。そこで以下のセクションでは、IoT に対する脅威のモデル化の考え方とそれによって特定された脅威の解決方法を具体的な Azure IoT リファレンス アーキテクチャの例で説明します。私たちが注目したのは主に次の 4 つの領域です。
+Microsoft uses the framework outlined above to do threat modelling for Azure IoT. In the section below we therefore use the concrete example of Azure IoT Reference Architecture to demonstrate how to think about threat modelling for IoT and how to address the threats identified. In our case we identified four main areas of focus:
 
--	デバイスとデータ ソース
--	データ転送
--	デバイスとイベント処理
--	プレゼンテーション
+-   Devices and Data Sources,
+-   Data Transport,
+-   Device and Event Processing, and
+-   Presentation
 
-![Threat Modeling for Azure IoT](media/iot-security-architecture/iot-security-architecture-fig2.png)
+![Threat Modeling for Azure IoT](media/iot-security-architecture/iot-security-architecture-fig2.png) 
 
-以下の図は、Microsoft Threat Modeling Tool で使用されているデータ フロー ダイアグラム モデルを使ってマイクロソフトの IoT アーキテクチャを単純化したものです。
+The diagram below provides a simplified view of Microsoft’s IoT Architecture using a Data Flow Diagram model that is used by the Microsoft Threat Modeling Tool:
 
 ![Threat Modeling for Azure IoT using MS Threat Modeling Tool](media/iot-security-architecture/iot-security-architecture-fig3.png)
 
-このアーキテクチャは、デバイスの機能とゲートウェイの機能が切り離されていることに注目してください。そのおかげで、より安全性の高いゲートウェイ デバイスを利用できるようになっています。つまりユーザーは、安全なプロトコルを使ってクラウド ゲートウェイと通信できます。一般に、安全なプロトコルの使用には、デバイス (サーモスタットなど) に本来備わっている以上の処理オーバーヘッドが伴います。Azure サービス ゾーンにおけるクラウド ゲートウェイは Azure IoT Hub サービスを想定しています。
+It is important to note that the architecture separates the device and gateway capabilities. This allows the user to leverage gateway devices that are more secure: they are capable of communicating with the cloud gateway using secure protocols, which typically requires greater processing overhead that a native device  - such as a thermostat - could provide on its own. In the Azure services zone, we assume that the Cloud Gateway is represented by the Azure IoT Hub service.
 
-### デバイスとデータ ソース/データ転送
+### <a name="device-and-data-sources/data-transport"></a>Device and data sources/data transport
 
-このセクションでは、上に示したアーキテクチャを脅威のモデル化の観点から詳しく見ていきます。また、このアーキテクチャ特有の問題点をマイクロソフトがどのように解決しているかについても簡単に説明します。脅威モデルの核となる要素に焦点を絞って説明しています。
+This section explores the architecture outlined above through the lens of threat modeling and gives an overview of how we are addressing some of the inherent concerns. We will focus on the core elements of a threat model:
 
-- 処理 (管理下にある処理と外部の処理)
-- 通信 (データ フロー)
-- 記憶域 (データ ストア)
+- Processes (those under our control and external items)
+- Communication (also called data flows)
+- Storage (also called data stores)
 
-#### 処理
+#### <a name="processes"></a>Processes
 
-Azure IoT アーキテクチャに示したカテゴリごとに、マイクロソフトは、データ/情報が存在する各種のステージ (処理、通信、記憶域) にわたって、さまざまな脅威の軽減に努めます。以降、"処理" カテゴリに関して最も一般的な脅威について大まかに述べた後、その最良の軽減策について簡単に説明します。
+In each of the categories outlined in the Azure IoT architecture, we try to mitigate a number of different threats across the different stages data/information exists in: process, communication, and storage. Below we give an overview of the most common ones for the “process” category, followed by an overview of how these could be best mitigated: 
 
-**スプーフィング (S)**: 攻撃者が、ソフトウェア レベルまたはハードウェア レベルでデバイスから暗号化キー マテリアルを抽出し、その後、その抽出元となったデバイスの ID で、異なる物理デバイスまたは異なる仮想デバイスからシステムにアクセスする可能性があります。たとえばテレビを操作するリモコンが、いたずらの道具に使われる可能性があります。
+**Spoofing (S)**: An attacker may extract cryptographic key material from a device, either at the software or hardware level, and subsequently access the system with a different physical or virtual device under the identity of the device the key material has been taken from. A good illustration is remote controls that can turn any TV and that are popular prankster tools.
 
-**サービス拒否 (D)**: 妨害電波やケーブルの切断によって、デバイスの機能が停止したり、通信できない状態になったりする可能性があります。たとえば防犯カメラの電源やネットワーク接続が意図的に切断されると、データがまったく報告されない状態となります。
+**Denial of Service (D)**: A device can be rendered incapable of functioning or communicating by interfering with radio frequencies or cutting wires. For example, a surveillance camera that had its power or network connection intentionally knocked out will not report data, at all.
 
-**改ざん (T)**: デバイス上で実行されているソフトウェアの一部または全部が、攻撃者によって差し替えられるおそれがあります。キー マテリアルまたはそのキー マテリアルを保持する暗号機構に違法なプログラムがアクセスできた場合、差し替わったソフトウェアによって、デバイスの本物の ID が悪用される可能性があります。たとえば攻撃者が、抽出したキー マテリアルを利用して、デバイスからのデータを通信経路上で傍受、遮断し、偽のデータに置き換えて、盗んだキー マテリアルで認証をパスすることが考えられます。
+**Tampering (T)**: An attacker may partially or wholly replace the software running on the device, potentially allowing the replaced software to leverage the genuine identity of the device if the key material or the cryptographic facilities holding key materials were available to the illicit program. For example, an attacker may leverage extracted key material to intercept and suppress data from the device on the communication path and replace it with false data that is authenticated with the stolen key material.
 
-**情報漏えい (I)**: デバイス上で実行されるソフトウェアが改変されていた場合、その改変されたソフトウェアから、許可していない相手にデータが漏えいするおそれがあります。たとえば攻撃者が、抽出したキー マテリアルを悪用し、デバイスとコントローラー (フィールド ゲートウェイまたはクラウド ゲートウェイ) との間の通信経路にそのキー マテリアルを注入して情報を吸い上げるおそれがあります。
+**Information Disclosure (I)**: If the device is running manipulated software, such manipulated software could potentially leak data to unauthorized parties. For example, an attacker may leverage extracted key material to inject itself into the communication path between the device and a controller or field gateway or cloud gateway to siphon off information.
 
-**特権の昇格 (E)**: 特定の働きをするデバイスが、他の目的に利用される可能性があります。たとえば半開状態となるようにプログラムされているバルブが、意図的に全開にされる可能性があります。
+**Elevation of Privilege (E)**: A device that does specific function can be forced to do something else. For example, a valve that is programmed to open half way can be tricked to open all the way.
 
-| **コンポーネント** | **Threat** | **対応策** | **リスク** | **実装** |
+| **Component** | **Threat** | **Mitigation**                                                                                                                                                | **Risk**                                                                                                                                                                                                    | **Implementation**                                                                                                                                                                                                                                                                                                                                     |
 |---------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| デバイス | S | デバイスに ID を割り当てて本物であることを確認します。 | デバイスまたはその一部が他のデバイスに差し替えられます。意図したデバイスと通信しているという確信はどうすれば得られるでしょうか。 | トランスポート層セキュリティ (TLS) または IPSec を使ってデバイスを認証します。完全な非対称暗号を扱うことのできないデバイスでは、インフラストラクチャが事前共有キー (PSK) の使用をサポートしている必要があります。Azure AD の [OAuth](http://www.rfc-editor.org/in-notes/internet-drafts/draft-ietf-ace-oauth-authz-01.txt) をご利用ください。 |
-| | TRID | 改ざん防止機構をデバイスに適用します。たとえば、デバイスからキーや他の暗号マテリアルを抽出することがきわめて困難または不可能となるようにします。 | 何者かによってデバイスが改ざんされた場合にリスクが発生します (物理的干渉)。デバイスが改ざんされていないという確信はどうすれば得られるでしょうか。 | 最も効果的な軽減策は、トラステッド プラットフォーム モジュール (TPM) 機能です。基盤に直付けされた特殊な回路にキーを格納することができます。この回路からキーを読み出すことはできません。この回路は、格納されたキーを使う暗号処理にのみ利用でき、そこからキーが漏えいすることは決してありません。デバイスのメモリの暗号化、デバイスのキー管理、コード署名を行います。 |
-| | E | デバイスのアクセス制御を行います。承認スキームを設けます。 | 外部ソース (または侵害されたセンサー) からのコマンドによってデバイスの操作を別途実行できた場合、本来であれば利用できない操作を攻撃者に許すことになります。 | デバイスの承認スキームを設けます。 |
-| フィールド ゲートウェイ | S | クラウド ゲートウェイに対してフィールド ゲートウェイが本物であることを証明します (証明書、PSK、要求など)。 | 何者かがフィールド ゲートウェイになりすました場合、任意のデバイスに見せかけることができます。 | TLS RSA/PSK、IPSec、[RFC 4279](https://tools.ietf.org/html/rfc4279)。キーの保存と認証に関してはデバイスの場合とまったく同じです。TPM を使用することが最善の方法となります。IPSec の 6LowPAN 拡張によってワイヤレス センサー ネットワーク (WSN) をサポートします。 |
-| | TRID | 改ざんされないようにフィールド ゲートウェイを保護します (TPM を使用するなど)。 | なりすましによる攻撃。一見フィールド ゲートウェイと通信しているかのようにクラウド ゲートウェイに見せかけて情報を漏えいさせたり、データを改ざんしたりします。 | メモリの暗号化、TPM、認証。 |
-| | E | フィールド ゲートウェイにアクセス制御機構を導入します。 | | |
+| Device        | S          | Assigning identity to the device and authenticating the device                                                                                                | Replacing device or part of the device with some other device. How do we know we are talking to the right device?                                                                                           | Authenticating the device, using Transport Layer Security (TLS) or IPSec. Infrastructure should support using pre-shared key (PSK) on those devices that cannot handle full asymmetric cryptography. Leverage Azure AD, [OAuth](http://www.rfc-editor.org/in-notes/internet-drafts/draft-ietf-ace-oauth-authz-01.txt)                             |
+|               | TRID       | Apply tamperproof mechanisms to the device for example by making it very hard to impossible to extract keys and other cryptographic material from the device. | The risk is if someone is tampering the device (physical interference). How are we sure, that device has not tampered with.                                                                                 | The most effective mitigation is a trusted platform module (TPM) capability that allows storing keys in special on-chip circuitry from which the keys cannot be read, but can only be used for cryptographic operations that use the key but never disclose the key. Memory encryption of the device. Key management for the device. Signing the code. |
+|               | E          | Having access control of the device. Authorization scheme.                                                                                                    | If the device allows for individual actions to be performed based on commands from an outside source, or even compromised sensors, it will allow the attack to perform operations not otherwise accessible. | Having authorization scheme for the device                                                                                                                                                                                                                                                                                                             |
+| Field Gateway | S          | Authenticating the Field gateway to Cloud Gateway (cert based, PSK, Claim based,..)                                                                           | If someone can spoof Field Gateway, then it can present itself as any device.                                                                                                                               | TLS RSA/PSK, IPSe, [RFC 4279](https://tools.ietf.org/html/rfc4279). All the same key storage and attestation concerns of devices in general – best case is use TPM. 6LowPAN extension for IPSec to support Wireless Sensor Networks (WSN).                                                                                                              |
+|               | TRID       | Protect the Field Gateway against tampering (TPM?)                                                                                                            | Spoofing attacks that trick the cloud gateway thinking it is talking to field gateway could result in information disclosure and data tampering                                                             | Memory encryption, TPM’s, authentication.                                                                                                                                                                                                                                                                                                              |
+|               | E          | Access control mechanism for Field Gateway                                                                                                                    |                                                                                                                                                                                                             |                                                                                                                                                                                                                                                                                                                                                        |
 
-このカテゴリの脅威の例をいくつか紹介します。
+Here are some examples of threats in this category:
 
-スプーフィング: 攻撃者が、ソフトウェア レベルまたはハードウェア レベルでデバイスから暗号化キー マテリアルを抽出し、その後、その抽出元となったデバイスの ID で、異なる物理デバイスまたは異なる仮想デバイスからシステムにアクセスする可能性があります。
+Spoofing: An attacker may extract cryptographic key material from a device, either at the software or hardware level, and subsequently access the system with a different physical or virtual device under the identity of the device the key material has been taken from.
 
-**サービス拒否**: 妨害電波やケーブルの切断によって、デバイスの機能が停止したり、通信できない状態になったりする可能性があります。たとえば防犯カメラの電源やネットワーク接続が意図的に切断されると、データがまったく報告されない状態となります。
+**Denial of Service**: A device can be rendered incapable of functioning or communicating by interfering with radio frequencies or cutting wires. For example, a surveillance camera that had its power or network connection intentionally knocked out will not report data, at all.
 
-**改ざん**: デバイス上で実行されているソフトウェアの一部または全部が、攻撃者によって差し替えられるおそれがあります。キー マテリアルまたはそのキー マテリアルを保持する暗号機構に違法なプログラムがアクセスできた場合、差し替わったソフトウェアによって、デバイスの本物の ID が悪用される可能性があります。
+**Tampering**: An attacker may partially or wholly replace the software running on the device, potentially allowing the replaced software to leverage the genuine identity of the device if the key material or the cryptographic facilities holding key materials were available to the illicit program.
 
-**改ざん**: たとえば、だれもいない廊下の可視スペクトル画像を表示する防犯カメラに、そのような廊下の写真をかざすことが考えられます。発煙センサーや火災感知器の下で何者かがライターを点火したことによって、警報が鳴ることも考えられます。いずれの場合も、デバイスのシステムとしては、技術的に十分な信頼性が確保されているかもしれませんが、報告される情報は改変されています。
+**Tampering**: A surveillance camera that’s showing a visible-spectrum picture of an empty hallway could be aimed at a photograph of such a hallway. A smoke or fire sensor could be reporting someone holding a lighter under it. In either case, the device may be technically fully trustworthy towards the system, but it will report manipulated information.
 
-**改ざん**: 攻撃者が、抽出したキー マテリアルを利用して、デバイスからのデータを通信経路上で傍受、遮断し、偽のデータに置き換えて、盗んだキー マテリアルで認証をパスすることが考えられます。
+**Tampering**: An attacker may leverage extracted key material to intercept and suppress data from the device on the communication path and replace it with false data that is authenticated with the stolen key material.
 
-**改ざん**: デバイス上で実行されているソフトウェアの一部または全部が、攻撃者によって差し替えられるおそれがあります。キー マテリアルまたはそのキー マテリアルを保持する暗号機構に違法なプログラムがアクセスできた場合、差し替わったソフトウェアによって、デバイスの本物の ID が悪用される可能性があります。
+**Tampering**: An attacker may partially or completely replace the software running on the device, potentially allowing the replaced software to leverage the genuine identity of the device if the key material or the cryptographic facilities holding key materials were available to the illicit program.
    
-**情報漏えい**: デバイス上で実行されるソフトウェアが改変されていた場合、その改変されたソフトウェアから、許可していない相手にデータが漏えいするおそれがあります。
+**Information Disclosure**: If the device is running manipulated software, such manipulated software could potentially leak data to unauthorized parties.
 
-**情報漏えい**: 攻撃者が、抽出したキー マテリアルを悪用し、デバイスとコントローラー (フィールド ゲートウェイまたはクラウド ゲートウェイ) との間の通信経路にそのキー マテリアルを注入して情報を吸い上げるおそれがあります。
+**Information Disclosure**: An attacker may leverage extracted key material to inject itself into the communication path between the device and a controller or field gateway or cloud gateway to siphon off information.
 
-**サービス拒否**: さまざまな産業用機械で意図的にデバイスの電源が切られたり、通信ができないモードに設定されたりするおそれがあります。
+**Denial of Service**: The device can be turned off or turned into a mode where communication is not possible (which is intentional in many industrial machines).
 
-**改ざん**: 制御システムにとって未知の状態 (既知のキャリブレーション パラメーターの範囲外) で動作するようにデバイスの構成が変更され、間違った解釈につながりうるデータがデバイスから出力される可能性があります。
+**Tampering**: The device can be reconfigured to operate in a state unknown to the control system (outside of known calibration parameters) and thus provide data that can be misinterpreted
 
-**特権の昇格**: 特定の機能を実行するデバイスが、他の目的に利用される可能性があります。たとえば半開状態となるようにプログラムされているバルブが、意図的に全開にされる可能性があります。
+**Elevation of Privilege**: A device that does specific function can be forced to do something else. For example, a valve that is programmed to open half way can be tricked to open all the way.
 
-**サービス拒否**: デバイスが通信不可能な状態になる可能性があります。
+**Denial of Service**: The device can be turned into a state where communication is not possible.
 
-**改ざん**: 制御システムにとって未知の状態 (既知のキャリブレーション パラメーターの範囲外) で動作するようにデバイスの構成が変更され、間違った解釈につながりうるデータがデバイスから出力される可能性があります。
+**Tampering**: The device can be reconfigured to operate in a state unknown to the control system (outside of known calibration parameters) and thus provide data that can be misinterpreted.
  
-**スプーフィング/改ざん/否認**: 民生用のリモコンでまれにあることですが、セキュリティが確保されていない場合、攻撃者がデバイスの状態を匿名で操作することができます。たとえばテレビを操作するリモコンが、いたずらの道具に使われる可能性があります。
+**Spoofing/Tampering/Repudiation**: If not secured (which is rarely the case with consumer remote controls) an attacker can manipulate the state of a device anonymously. A good illustration is remote controls that can turn any TV and that are popular prankster tools.
 
-#### 通信
+#### <a name="communication"></a>Communication
 
-デバイス間、デバイスとフィールド ゲートウェイ間、デバイスとクラウド ゲートウェイ間の通信経路に関する脅威について取り上げます。以下の表は、デバイス/VPN 上のオープン ソケットに関するいくつかの指針をまとめたものです。
+Threats around communication path between devices, devices and field gateways and device and cloud gateway. The table below has some guidance around open sockets on the device/VPN:
 
-| **コンポーネント** | **Threat** | **対応策** | **リスク** | **実装** |
+| **Component**               | **Threat** | **Mitigation**                                      | **Risk**                                                                                                      | **Implementation**                                                                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|------------|-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| デバイス対 IoT Hub | TID | (D)TLS (PSK/RSA) によってトラフィックを暗号化します。 | デバイスとゲートウェイとの間の通信を傍受または妨害します。 | プロトコル レベルでセキュリティを確保します。カスタム プロトコルの場合は、その保護方法を把握する必要があります。ほとんどの場合、通信は、デバイスと IoT Hub との間で行われます (デバイス側から接続が開始されます)。 |
-| デバイス対デバイス | TID | (D)TLS (PSK/RSA) によってトラフィックを暗号化します。 | デバイス間で転送されているデータが読み取られます。データが改ざんされます。デバイスに対する新規接続が過剰に繰り返されます。 | プロトコル レベルでセキュリティを確保します (HTTP(S)/AMQP/MQTT/CoAP)。カスタム プロトコルの場合は、その保護方法を把握する必要があります。DoS の脅威を軽減するには、クラウド ゲートウェイまたはフィールド ゲートウェイを介してデバイスをピアリングし、それらのデバイスがネットワークに対するクライアントとしてのみ動作するように徹底します。ピアリングされた 2 台のデバイスは、ゲートウェイによって仲介された後に直接接続となる場合があります。 |
-| 外部エンティティ対デバイス | TID | 外部エンティティをデバイスに対して強力にペアリングします。 | デバイスへの接続が傍受されます。デバイスとの通信が妨害されます。 | 外部エンティティをデバイスの NFC/Bluetooth LE に対して確実にペアリングします。デバイスの操作パネルを制御します (物理)。 |
-| フィールド ゲートウェイ対クラウド ゲートウェイ | TID | TLS (PSK/RSA) によってトラフィックを暗号化します。 | デバイスとゲートウェイとの間の通信を傍受または妨害します。 | プロトコル レベルでセキュリティを確保します (HTTP(S)/AMQP/MQTT/CoAP)。カスタム プロトコルの場合は、その保護方法を把握する必要があります。 |
-| デバイス対クラウド ゲートウェイ | TID | TLS (PSK/RSA) によってトラフィックを暗号化します。 | デバイスとゲートウェイとの間の通信を傍受または妨害します。 | プロトコル レベルでセキュリティを確保します (HTTP(S)/AMQP/MQTT/CoAP)。カスタム プロトコルの場合は、その保護方法を把握する必要があります。 |
+| Device IoT Hub              | TID        | (D)TLS (PSK/RSA) to encrypt the traffic             | Eavesdropping or interfering the communication between the device and the gateway                             | Security on the protocol level. With custom protocols, we need to figure out how to protect them. In most cases, the communication takes place from the device to the IoT Hub (device initiates the connection).                                                                                                                                                                 |
+| Device Device               | TID        | (D)TLS (PSK/RSA) to encrypt the traffic.            | Reading data in transit between devices. Tampering with the data. Overloading the device with new connections | Security on the protocol level (HTTP(S)/AMQP/MQTT/CoAP. With custom protocols, we need to figure out how to protect them. The mitigation for the DoS threat is to peer devices through a cloud or field gateway and have them only act as clients towards the network. The peering may result in a direct connection between the peers after having been brokered by the gateway |
+| External Entity Device      | TID        | Strong pairing of the external entity to the device | Eavesdropping the connection to the device. Interfering the communication with the device                     | Securely pairing the external entity to the device NFC/Bluetooth LE. Controlling the operational panel of the device (Physical)                                                                                                                                                                                                                                                  |
+| Field Gateway Cloud Gateway | TID        | TLS (PSK/RSA) to encrypt the traffic.               | Eavesdropping or interfering the communication between the device and the gateway                             | Security on the protocol level (HTTP(S)/AMQP/MQTT/CoAP). With custom protocols, we need to figure out how to protect them.                                                                                                                                                                                                                                                       |
+| Device Cloud Gateway        | TID        | TLS (PSK/RSA) to encrypt the traffic.               | Eavesdropping or interfering the communication between the device and the gateway                             | Security on the protocol level (HTTP(S)/AMQP/MQTT/CoAP). With custom protocols, we need to figure out how to protect them.                                                                                                                                                                                                                                                       |
 
-このカテゴリの脅威の例をいくつか紹介します。
+Here are some examples of threats in this category:
 
-**サービス拒否**: 一般に、制約の厳しいデバイスは、受信接続や一方的に送りつけられるデータグラムをネットワーク上で常時待機する形で DoS の脅威にさらされます。攻撃者は、多数の接続を同時に開き、何も処理を行わないか、処理に極端に時間をかけることがあります。また、一方的なトラフィックでデバイスの処理能力をパンクさせる場合もあります。どちらの場合もデバイスは事実上、ネットワークで機能不全の状態となります。
+**Denial of Service**: Constrained devices are generally under DoS threat when they actively listen for inbound connections or unsolicited datagrams on a network, because an attacker can open many connections in parallel and not service them or service them very slowly, or the device can be flooded with unsolicited traffic. In both cases, the device can effectively be rendered inoperable on the network.
 
-**スプーフィング、情報漏えい**: 制約の厳しいデバイスや特殊用途のデバイスには、パスワードや PIN による保護など、万能型のセキュリティ機構が採用されていたり、ネットワークが信頼できるという前提で動作していたりするケースが少なくありません。デバイスが同じネットワーク上にあれば情報へのアクセスは許可されますが、肝心のネットワークの保護に共有キーしか使われていないケースが多く見られます。デバイスやネットワークに対する共有シークレットが漏えいした場合、デバイスが制御されたり、デバイスから出力されたデータが傍受されたりする可能性があります。
+**Spoofing, Information Disclosure**: Constrained devices and special-purpose devices often have one-for-all security facilities like password or PIN protection, or they wholly rely on trusting the network, meaning they will grant access to information when a device is on the same network, and that network is often only protected by a shared key. That means that when the shared secret to device or network is disclosed, it is possible to control the device or observe data emitted from the device.  
 
-**スプーフィング**: 攻撃者は放送を傍受するか、部分的に上書きして、発信元になりすます場合があります (中間者攻撃)。
+**Spoofing**: an attacker may intercept or partially override the broadcast and spoof the originator (man in the middle)
 
-**改ざん**: 攻撃者は放送を傍受するか、部分的に上書きして、偽の情報を送信する場合があります。
+**Tampering**: an attacker may intercept or partially override the broadcast and send false information 
 
-**情報漏えい**: 攻撃者は放送を傍受して、承認なく情報を入手する場合があります。**サービス拒否**: 攻撃者は、放送信号を妨害して情報を配信できないようにする場合があります。
+**Information Disclosure:** an attacker may eavesdrop on a broadcast and obtain information without authorization **Denial of Service:** an attacker may jam the broadcast signal and deny information distribution
 
-#### Storage
+#### <a name="storage"></a>Storage
 
-すべてのデバイスとフィールド ゲートウェイは、何らかの形態の記憶域を持ちます (データをキューに格納するための一時的な記憶域、OS イメージを保存するための記憶域など)。
+Every device and field gateway has some form of storage (temporary for queuing the data, os image storage).
 
-| **コンポーネント** | **Threat** | **対応策** | **リスク** | **実装** |
+| **Component**                            | **Threat** | **Mitigation**                       | **Risk**                                                                                                                                                                                                                                                                                                                | **Implementation**                                                                                                                                                     |
 |------------------------------------------|------------|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| デバイスの記憶域 | TRID | 記憶域を暗号化し、ログに署名します。 | 記憶域からデータ (個人を特定できる情報) が読み取られたり、テレメトリ データが改ざんされたりします。キューやキャッシュに格納されたコマンド制御データが改ざんされます。構成の更新パッケージやファームウェアの更新パッケージが、ローカルにキャッシュされるかローカルのキューに格納されている間に改ざんされた場合、OS やシステム コンポーネントのセキュリティ侵害につながる可能性があります | 暗号化、メッセージ認証コード (MAC)、デジタル署名を導入します。可能であれば、アクセス許可またはリソース アクセス制御リスト (ACL) を使った強力なアクセス制御を導入します。 |
-| デバイスの OS イメージ | TRID | | OS が改ざんされたり、OS コンポーネントが差し替えられたりします。 | OS パーティションの読み取り専用化、OS イメージの署名、暗号化を行います。 |
-| フィールド ゲートウェイの記憶域 (データのキューイング) | TRID | 記憶域を暗号化し、ログに署名します。 | 記憶域からデータ (個人を特定できる情報) が読み取られたり、テレメトリ データが改ざんされたりします。キューやキャッシュに格納されたコマンド制御データが改ざんされることもあります。(デバイスまたはフィールド ゲートウェイに対する) 構成の更新パッケージやファームウェアの更新パッケージが、ローカルにキャッシュされるかローカルのキューに格納されている間に改ざんされた場合、OS やシステム コンポーネントのセキュリティ侵害につながる可能性があります | BitLocker |
-| フィールド ゲートウェイの OS イメージ | TRID | | OS が改ざんされたり、OS コンポーネントが差し替えられたりします。 | OS パーティションの読み取り専用化、OS イメージの署名、暗号化を行います。 |
+| Device storage                           | TRID       | Storage encryption, signing the logs | Reading data from the storage (PII data), tampering with telemetry data. Tampering with queued or cached command control data. Tampering with configuration or firmware update packages while cached or queued locally can lead to OS and/or system components being compromised                                         | Encryption, message authentication code (MAC) or digital signature. Where possible, strong access control through resource access control lists (ACLs) or permissions. |
+| Device OS image                          | TRID       |                                      | Tampering with OS /replacing the OS components                                                                                                                                                                                                                                                                         | Read-only OS partition, signed OS image, Encryption                                                                                                                    |
+| Field Gateway storage (queuing the data) | TRID       | Storage encryption, signing the logs | Reading data from the storage (PII data), tampering with telemetry data, tampering with queued or cached command control data. Tampering with configuration or firmware update packages (destined for devices or field gateway) while cached or queued locally can lead to OS and/or system components being compromised | BitLocker                                                                                                                                                              |
+| Field Gateway OS image                   | TRID       |                                      | Tampering with OS /replacing the OS components                                                                                                                                                                                                                                                                          | Read-only OS partition, signed OS image, Encryption                                                                                                                    |
 
-### デバイスとイベント処理/クラウド ゲートウェイ ゾーン
+### <a name="device-and-event-processing/cloud-gateway-zone"></a>Device and event processing/cloud gateway zone
 
-クラウド ゲートウェイは、デバイスまたはフィールド ゲートウェイと、さまざまなサイトとの間でパブリック ネットワーク空間を介してリモート通信を可能にするシステムです。その先には通常、クラウドベースの制御/データ分析システム、つまりそのようなシステムが連携する集合体が存在します。場合によっては、タブレットやスマートフォンなどの端末から特殊用途のデバイスへのアクセスをクラウド ゲートウェイが直接つかさどるケースもあります。ここでいう "クラウド" とは、接続されているデバイスやフィールド ゲートウェイと同じ場所に固定されない専用のデータ処理システムを指します。運用上の対策によって標的への物理的なアクセスができないようになっていますが、必ずしも "パブリック クラウド" インフラストラクチャには公開されていません。クラウド ゲートウェイとそこに接続されているすべてのデバイス (またはフィールド ゲートウェイ) を他のネットワーク トラフィックから隔離するために、クラウド ゲートウェイはネットワーク仮想化オーバーレイにマッピングすることも考えられます。クラウド ゲートウェイそのものは、デバイス制御システムではなく、デバイス データの処理や保存を行う機構でもありません。そうした機構とのインターフェイスとなります。クラウド ゲートウェイ ゾーンには、クラウド ゲートウェイ自体のほか、そこに直接または間接的に接続されているすべてのフィールド ゲートウェイとデバイスが含まれます。
+A cloud gateway is system that enables remote communication from and to devices or field gateways from several different sites across public network space, typically towards a cloud-based control and data analysis system, a federation of such systems. In some cases, a cloud gateway may immediately facilitate access to special-purpose devices from terminals such as tablets or phones. In the context discussed here, “cloud” is meant to refer to a dedicated data processing system that is not bound to the same site as the attached devices or field gateways, and where operational measures prevent targeted physical access but is not necessarily to a “public cloud” infrastructure.  A cloud gateway may potentially be mapped into a network virtualization overlay to insulate the cloud gateway and all of its attached devices or field gateways from any other network traffic. The cloud gateway itself is neither a device control system nor a processing or storage facility for device data; those facilities interface with the cloud gateway. The cloud gateway zone includes the cloud gateway itself along with all field gateways and devices directly or indirectly attached to it.
 
-クラウド ゲートウェイは、独自に構築されたソフトウェアであることが一般的です。サービスとして実行され、フィールド ゲートウェイやデバイスの接続先となるエンドポイントを公開します。そのため、セキュリティを念頭に置いて設計されている必要があります。このサービスの設計と構築については、[SDL](http://www.microsoft.com/sdl) プロセスに従ってください。
+Cloud gateway is mostly custom built piece of software running as a service with exposed endpoints to which field gateway and devices connect. As such it must be designed with security in mind. Please follow [SDL](http://www.microsoft.com/sdl) process for designing and building this service. 
 
-#### サービス ゾーン
+#### <a name="services-zone"></a>Services zone
 
-制御システム (コントローラー) は、デバイスの制御を目的として、あるいは、デバイス データを収集、保存、分析して提示したり、その後の制御を行ったりするために、デバイスやフィールド ゲートウェイ、クラウド ゲートウェイと連動するソフトウェア ソリューションです。制御システムは、ここで扱う範囲で唯一、人との対話を直接つかさどる可能性のある存在です。ただし中間の物理的制御領域は例外です。つまり人がデバイスの電源をオフにしたり、さまざまな特性を変化させたりすることができるものの、デジタルでアクセスできる同等の機能が存在しないようなスイッチは制御システムではありません。
+A control system (or controller) is a software solution that interfaces with a device, or a field gateway, or cloud gateway for the purpose of controlling one or multiple devices and/or to collect and/or store and/or analyze device data for presentation, or subsequent control purposes. Control systems are the only entities in the scope of this discussion that may immediately facilitate interaction with people. The exception are intermediate physical control surfaces on devices, like a switch that allows a person to turn the device off or change other properties, and for which there is no functional equivalent that can be accessed digitally. 
 
-中間の物理的制御領域とは、同等の機能をリモートから開始したり、リモートの入力と競合するような入力を防止したりできるよう、何らかの統制ロジックによって、物理的な制御領域の機能が制限されているような領域をいいます。そのような中間の制御領域は概念上、そのデバイスが並行して接続されている他のリモート制御システムと同じ基本機能を利用するローカルの制御システムに接続されます。クラウド コンピューティングに対する主な脅威については、[Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) のページをご覧ください。
+Intermediate physical control surfaces are those where any sort of governing logic constrains the function of the physical control surface such that an equivalent function can be initiated remotely or input conflicts with remote input can be avoided – such intermediated control surfaces are conceptually attached to a local control system that leverages the same underlying functionality as any other remote control system that the device may be attached to in parallel. Top threats to the cloud computing can be read at [Cloud Security Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) page.
 
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-その他の情報については、次の記事を参照してください。
+Refer to the following articles for additional information:
 
 - [SDL Threat Modeling Tool](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
-- [Microsoft Azure IoT リファレンス アーキテクチャ](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
+- [Microsoft Azure IoT reference architecture](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)
  
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

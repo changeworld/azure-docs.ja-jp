@@ -1,12 +1,15 @@
 
-| トランザクションの種類 | リージョンあたりのコンテナーごとに、10 秒間に許可される最大トランザクション数
+| Transactions Type | Max transactions allowed in 10 seconds, per vault per region
 --- | ---
 | HSM- CREATE KEY | 5
-| HSM - その他のトランザクション | 1,000
-| ソフトキーの CREATE KEY | 10
-| ソフトキーのその他のトランザクション | 1500
-| すべてのシークレット、資格情報コンテナーに関連するトランザクション | 2000
+| HSM- other transactions | 1000
+| Soft-key CREATE KEY | 10
+| Soft-key other transactions | 1500
+| All secrets, vault related transactions | 2000
  
  
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

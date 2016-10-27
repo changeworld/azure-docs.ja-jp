@@ -1,10 +1,12 @@
-この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。この設定で、DNS サーバーは作成されません。
+This setting allows you to specify the DNS server that you want to use for name resolution for this virtual network. It does not create a DNS server.
 
-1. 仮想ネットワークの **[設定]** ページで、**[DNS サーバー]** に移動し、クリックして [DNS サーバー] ブレードを開きます。
-2. **[DNS サーバー]** ページの **[DNS サーバー]** で、**[カスタム DNS]** を選択します。
-3. **[プライマリ DNS サーバー]** フィールドで、名前解決に使用する DNS サーバー名の IP アドレスを入力します。
-4. ブレードの上部の **[保存]** をクリックして構成内容を保存します。
+1. On the **Settings** page for your virtual network, navigate to **DNS Servers** and click to open the DNS servers blade.
+2. On the **DNS Servers** page, under **DNS servers**, select **Custom DNS**.
+3. In the **Primary DNS server** field, enter the IP address of the DNS server that you want to use for name resolution.
+4. Click **Save** at the top of the blade to save your configuration.
 
-	![カスタム DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
+    ![Custom DNS](./media/vpn-gateway-add-dns-rm-portal/customdns400.png)
 
-<!---HONumber=AcomDC_0406_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

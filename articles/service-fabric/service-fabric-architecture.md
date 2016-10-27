@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric のアーキテクチャ | Microsoft Azure"
-   description="Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。この記事は、Service Fabric のアーキテクチャを説明しています。"
+   pageTitle="Service Fabric architecture | Microsoft Azure"
+   description="Service Fabric is a distributed systems platform used to build scalable, reliable, and easily-managed applications for the cloud. This article shows the architecture of Service Fabric."
    services="service-fabric"
    documentationCenter=".net"
    authors="rishirsinha"
@@ -16,49 +16,54 @@
    ms.date="06/09/2016"
    ms.author="rsinha"/>
 
-# Service Fabric のアーキテクチャ
 
-Service Fabric は複数層のサブシステムで構築されています。これらのサブシステムを使用すると、次のようなアプリケーションを作成できます。
+# <a name="service-fabric-architecture"></a>Service Fabric architecture
 
-* 高可用性
-* 拡張性
-* 管理可能
-* テスト可能
+Service Fabric is built with layered subsystems. These subsystems enable you to write applications that are:
 
-次の図は、Service Fabric の主要なサブシステムを示しています。
+* Highly available
+* Scalable
+* Manageable
+* Testable
 
-![Service Fabric のアーキテクチャ図](media/service-fabric-architecture/service-fabric-architecture.png)
+The following diagram shows the major subsystems of Service Fabric.
 
-分散システムの場合は、クラスター内のノード間で安全に通信する機能が不可欠です。スタックのベースには、ノード間に安全な通信を提供するトランスポート サブシステムがあります。トランスポート サブシステムの上に、フェデレーション サブシステムがあります。このサブシステムは、さまざまなノードを 1 つのエンティティ (クラスター) にクラスター化し、これによりエラーの検出、リーダー選定の実行、およびルーティングを Service Fabric が一貫して実行できるようにしています。フェデレーション サブシステムの上層にある信頼性サブシステムは、Service Fabric のサービスの信頼性を、レプリケーション、リソース管理、およびフェールオーバーなどのメカニズムを通じて管理しています。また、フェデレーション サブシステムは、単一のノード上でアプリケーションのライフサイクルを管理するホスティングとアクティブ化のサブシステムの基にもなります。管理サブシステムは、アプリケーションとサービスのライフサイクルを管理します。テスト容易性サブシステムを使用すると、アプリケーション開発者は、アプリケーションやサービスを運用環境にデプロイする前後に、エラーのシミュレーションによってサービスをテストすることができます。Service Fabric では、通信サブシステムを使って、サービスの場所を解決する機能を提供します。開発者に公開されているアプリケーション プログラミング モデルは、ツールを有効にするためのアプリケーション モデルと共にサブシステムの一番上の層に配置されます。
+![Diagram of Service Fabric architecture](media/service-fabric-architecture/service-fabric-architecture.png)
 
-## トランスポート サブシステム
-トランスポート サブシステムには、ポイント ツー ポイントのデータグラム通信チャネルが実装されています。このチャネルは、Service Fabric クラスター内の通信や Service Fabric クラスターとクライアント間の通信に使用されます。一方向通信パターンと要求/応答通信パターンがサポートされており、これによってブロードキャストおよびマルチキャストをフェデレーション層に実装するための基盤が提供されています。トランスポート サブシステムは、X509 証明書または Windows セキュリティを使用して通信を保護します。このサブシステムは、Service Fabric によって内部的に使用されるもので、アプリケーション プログラミングの開発者は直接アクセスできません。
+In a distributed system, the ability to securely communicate between nodes in a cluster is crucial. At the base of the stack is the transport subsystem, which provides secure communication between nodes. Above the transport subsystem lies the federation subsystem, which clusters the different nodes into a single entity (named clusters) so that Service Fabric can detect failures, perform leader election, and provide consistent routing. The reliability subsystem, layered on top of the federation subsystem, is responsible for the reliability of Service Fabric services through mechanisms such as replication, resource management, and failover. The federation subsystem also underlies the hosting and activation subsystem, which manages the lifecycle of an application on a single node. The management subsystem manages the lifecycle of applications and services. The testability subsystem helps application developers test their services through simulated faults before and after deploying applications and services to production environments. Service Fabric provides the ability to resolve service locations through its communication subsystem. The application programming models exposed to developers are layered on top of these subsystems along with the application model to enable tooling.
 
-## フェデレーション サブシステム
-分散システムのノードのセットを論理的に判断するには、一貫性のあるシステム観が必要です。フェデレーション サブシステムは、トランスポートのサブシステムによって提供される通信プリミティブを使用し、さまざまなノードを論理的な判断が可能な 1 つの統一されたクラスターに合成します。これは、エラー検出、リーダー選定、および一貫性のあるルーティングなど、他のサブシステムで必要な分散システムのプリミティブを提供します。フェデレーション サブシステムは、128 ビット トークン領域を持つ分散ハッシュ テーブル上に構築されます。サブシステムのノード上にはリング トポロジが作成され、リング内の各ノードには、所有権のトークン領域のサブセットが割り当てられます。エラー検出のため、レイヤーはハート ビートと調停に基づく、リース メカニズムを使用します。フェデレーション サブシステムは、複雑な結合と出発プロトコルにより、1 つのトークンに 1 人の所有者だけが常に存在するようにします。これにより、リーダー選定と一貫性のあるルーティングの保証を提供できます。
+## <a name="transport-subsystem"></a>Transport subsystem
+The transport subsystem implements a point-to-point datagram communication channel. This channel is used for communication within service fabric clusters and communication between the service fabric cluster and clients. It supports one-way and request-reply communication patterns, which provides the basis for implementing broadcast and multicast in the Federation layer. The transport subsystem secures communication by using X509 certificates or Windows security. This subsystem is used internally by Service Fabric and is not directly accessible to developers for application programming.
 
-## 信頼性サブシステム
-信頼性サブシステムは、_レプリケーター_、_Failover Manager_、および_リソース バランサー_を使用するときに、Service Fabric のサービス状態の高可用性を実現します。
+## <a name="federation-subsystem"></a>Federation subsystem
+In order to reason about a set of nodes in a distributed system, you need to have a consistent view of the system. The federation subsystem uses the communication primitives provided by the transport subsystem and stitches the various nodes into a single unified cluster that it can reason about. It provides the distributed systems primitives needed by the other subsystems - failure detection, leader election, and consistent routing. The federation subsystem is built on top of distributed hash tables with a 128-bit token space. The subsystem creates a ring topology over the nodes, with each node in the ring being allocated a subset of the token space for ownership. For failure detection, the layer uses a leasing mechanism based on heart beating and arbitration. The federation subsystem also guarantees through intricate join and departure protocols that only a single owner of a token exists at any time. This provide leader election and consistent routing guarantees.
 
-* レプリケーターは、プライマリ サービス レプリカの状態が変わると自動的にセカンダリ レプリカをレプリケートし、サービス レプリカ セット内のプライマリ レプリカとセカンダリ レプリカの一貫性が維持されるようにします。レプリケーターは、レプリカ セット内のレプリカ間のクォーラム管理を担当します。レプリケーターは、フェールオーバー ユニットとの対話処理によって、レプリケートする操作の一覧を取得します。Reconfiguration Agent から、レプリカ セットの構成が提供されます。この構成は、操作がレプリケートされる必要があるレプリカを示します。Service Fabric は、Fabric Replicator と呼ばれる既定のレプリケーターを提供しており、プログラミング モデル API はこれを使用して、サービス状態の高可用性と信頼性を実現できます。
-* Failover Manager は、ノードがクラスターに追加されたり、クラスターから削除されたりすると、使用可能なノード間で負荷を自動的に再配分します。クラスターのノードでエラーが発生した場合、クラスターは自動的にサービス レプリカを再構成し、可用性が失われないようにします。
-* リソース マネージャーは、クラスター内の障害ドメイン全体にサービス レプリカを配置し、すべてのフェールオーバー ユニットの動作を保証します。さらに、リソース マネージャーは、基になるクラスター ノードの共有プール間でサービス リソースのバランスを調整し、最適な均一負荷分散を実現します。
+## <a name="reliability-subsystem"></a>Reliability subsystem
+The reliability subsystem provides the mechanism to make the state of a Service Fabric service highly available through the use of the _Replicator_, _Failover Manager_, and _Resource Balancer_.
 
-## 管理サブシステム
-管理サブシステムは、エンド ツー エンド サービス、およびアプリケーション ライフサイクルを管理します。PowerShell コマンドレットと管理 API により、アプリケーションのプロビジョニング、デプロイ、パッチ、アップグレード、およびプロビジョニング解除が、可用性を失うことなく実現できます。管理サブシステムは、次のサービスを使用してこれを実行します。
+* The Replicator ensures that state changes in the primary service replica will automatically be replicated to secondary replicas, maintaining consistency between the primary and secondary replicas in a service replica set. The replicator is responsible for quorum management among the replicas in the replica set. It interacts with the failover unit to get the list of operations to replicate, and the reconfiguration agent provides it with the configuration of the replica set. That configuration indicates which replicas the operations need to be replicated. Service Fabric provides a default replicator called Fabric Replicator, which can be used by the programming model API to make the service state highly available and reliable.
+* The Failover Manager ensures that when nodes are added to or removed from the cluster, the load is automatically redistributed across the available nodes. If a node in the cluster fails, the cluster will automatically reconfigure the service replicas to maintain availability.
+* The Resource Manager places service replicas across failure domain in the cluster and ensures that all failover units are operational. The Resource Manager also balances service resources across the underlying shared pool of cluster nodes to achieve optimal uniform load distribution.
 
-* **クラスター マネージャー**: これは、信頼性から Failover Manager と対話処理を行い、サービス配置に関する制約に基づいてノードにアプリケーションを配置するプライマリ サービスです。フェールオーバー サブシステムのリソース マネージャーは、制約が破られていないことを確認します。クラスター マネージャーは、プロビジョニングからプロビジョニング解除までの、アプリケーションのライフサイクルを管理します。これは、ヘルス マネージャーと統合して、アプリケーションの可用性が、アップグレード中にセマンティック正常性パースペクティブから失われないようにします。
-* **ヘルス マネージャー**: このサービスにより、アプリケーション、サービス、クラスター エンティティの正常性を監視できます。クラスター エンティティ (ノード、サービス パーティション、レプリカなど) が正常性の情報をレポートし、集中型正常性ストアに集計されます。この正常性の情報は、クラスター内の複数のノード間で分散されるサービスやノードの特定時点での正常性スナップショットを提供するもので、これにより、必要な修正操作を実行することが可能になります。正常性クエリ API では、正常性サブシステムにレポートされた正常性イベントに対してクエリを実行できます。正常性クエリ API は、正常性ストアに格納されている生の正常性データを返すか、特定のクラスター エンティティの集計解釈正常性データを返します。
-* **イメージ ストア**: このサービスは、アプリケーション バイナリの保管と配付を可能にします。このサービスでは、アプリケーションのアップロード先およびダウンロード元となる単純な分散ファイル ストアを提供します。
+## <a name="management-subsystem"></a>Management subsystem
+The management subsystem provides end-to-end service and application lifecycle management. PowerShell cmdlets and administrative APIs enable you to provision, deploy, patch, upgrade, and de-provision applications without loss of availability. The management subsystem performs this through the following services.
+
+* **Cluster Manager**: This is the primary service that interacts with the Failover Manager from reliability to place the applications on the nodes based on the service placement constraints. The Resource Manager in failover subsystem ensures that the constraints are never broken. The cluster manager manages the lifecycle of the applications from provision to de-provision. It integrates with the health manager to ensure that application availability is not lost from a semantic health perspective during upgrades.
+* **Health Manager**: This service enables health monitoring of applications, services, and cluster entities. Cluster entities (such as nodes, service partitions, and replicas) can report health information, which is then aggregated into the centralized health store. This health information provides an overall point-in-time health snapshot of the services and nodes distributed across multiple nodes in the cluster, enabling you to take any needed corrective actions. Health query APIs enable you to query the health events reported to the health subsystem. The health query APIs return the raw health data stored in the health store or the aggregated, interpreted health data for a specific cluster entity.
+* **Image Store**: This service provides storage and distribution of the application binaries. This service provides a simple distributed file store where the applications are uploaded to and downloaded from.
 
 
-## ホスティング サブシステム
-クラスター マネージャーは、ホスティング サブシステム (各ノードで実行している) に対して、特定のノードで管理が必要なサービスを通知します。ホスティング サブシステムは、そのノード上のアプリケーションのライフサイクルを管理します。これは、信頼性コンポーネントおよび正常性コンポーネントと対話し、レプリカが適切に配置されて正常な状態にあることを確認します。
+## <a name="hosting-subsystem"></a>Hosting subsystem
+The cluster manager informs the hosting subsystem (running on each node) which services it needs to manage for a particular node. The hosting subsystem then manages the lifecycle of the application on that node. It interacts with the reliability and health components to ensure that the replicas are properly placed and are healthy.
 
-## 通信サブシステム
-このサブシステムは、ネーム サービスを介して、クラスター検索やサービス検索内での信頼できるメッセージ処理を提供します。ネーム サービスは、サービス名を解決してクラスター内の場所に対応付けて、ユーザーによるサービス名とプロパティの管理を可能にします。ネーム サービスを使用することにより、クライアントはクラスター内の任意のノードと安全に通信して、サービス名を解決し、サービス メタデータを取得できます。Service Fabric のユーザーは、単純な名前付けクライアント API を使用して、ノードのダイナミズムやクラスターのサイズ変更に関係なく、現在のネットワークの場所を解決する能力のあるサービスおよびクライアントを開発できます。
+## <a name="communication-subsystem"></a>Communication subsystem
+This subsystem provides reliable messaging within the cluster and service discovery through the Naming service. The Naming service resolves service names to a location in the cluster and enables users to manage service names and properties. Using the Naming service, clients can securely communicate with any node in the cluster to resolve a service name and retrieve service metadata. Using a simple Naming client API, users of Service Fabric can develop services and clients capable of resolving the current network location despite node dynamism or the re-sizing of the cluster.
 
-## テスト容易性サブシステム
-テスト容易性サブシステムは、テスト サービス専用に設計され Service Fabric 上に構築されている一連のツールです。このツールを使用すると、開発者は検証意義のあるエラーを容易に誘発してテスト シナリオを実行することができ、サービスがその有効期間内に直面する可能性のある状態と遷移を、完全に管理下にある安全な方法で、試行および検証できます。また、テスト容易性は可用性を失うことなく、予測されるさまざまなエラーを繰り返すことができる、より長いテストを実行するメカニズムも提供します。これにより、ユーザーは運用環境でテストを実行できます。
+## <a name="testability-subsystem"></a>Testability subsystem
+Testability is a suite of tools specifically designed for testing services built on Service Fabric. The tools let a developer easily induce meaningful faults and run test scenarios to exercise and validate the numerous states and transitions that a service will experience throughout its lifetime, all in a controlled and safe manner. Testability also provides a mechanism to run longer tests that can iterate through various possible failures without losing availability. This provides you with a test-in-production environment.
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

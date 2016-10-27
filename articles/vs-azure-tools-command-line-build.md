@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure のコマンド ライン ビルド | Microsoft Azure"
-   description="Azure のコマンド ライン ビルド"
+   pageTitle="Command-line build for Azure | Microsoft Azure"
+   description="Command-line build for Azure"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,51 +15,56 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Azure のコマンド ライン ビルド
 
-## Overview
+# <a name="command-line-build-for-azure"></a>Command-Line Build for Azure
 
-コマンド プロンプトで MSBuild を実行すると、Azure のデプロイ用パッケージを作成できます。一部のビルド プロセスを自動化するだけでなく、デバッグ、ステージング、および運用向けのビルドを構成、定義できます。
+## <a name="overview"></a>Overview
+
+You can create a package for Azure deployment by running MSBuild at a command prompt. You can configure and define builds for debugging, staging, and production, in addition to automating some of the build process.
 
 
-## Microsoft Build Engine (MSBuild)
+## <a name="microsoft-build-engine-(msbuild)"></a>Microsoft Build Engine (MSBuild)
 
-Microsoft Build Engine (MSBuild) を使用すると、Visual Studio がインストールされていないビルド ラボ環境で製品のビルドを構築できます。MSBuild は、拡張可能で Microsoft が完全にサポートしている XML 形式をプロジェクト ファイルに使用します。このファイル形式では、1 つまたは複数のプラットフォームや構成でビルドが必要な項目を記述できます。
+By using the Microsoft Build Engine (MSBuild), you can build products in build lab environments where Visual Studio isn't installed. MSBuild uses an XML format for project files that's extensible and fully supported by Microsoft. In this file format, you can describe what items must be built for one or more platforms and configurations.
 
-MSBuild はコマンド プロンプトで実行することもできます。このトピックでは、その方法について説明します。コマンド プロンプトでプロパティを設定すると、プロジェクトの特定の構成を作成できます。同様に、MSBuild コマンドをビルドするターゲットを定義することもできます。コマンド ライン パラメーターおよび MSBuild の詳細については、「[MSBuild コマンド ライン リファレンス](https://msdn.microsoft.com/library/ms164311.aspx)」を参照してください。
+You can also run MSBuild at a command prompt, and this topic describes that approach. By setting properties at a command prompt, you can build specific configurations of a project. Similarly, you can also define the targets that the MSBuild command will build. For more information about command-line parameters and MSBuild, see [MSBuild Command Line Reference](https://msdn.microsoft.com/library/ms164311.aspx).
 
-## インストール
+## <a name="installation"></a>Installation
 
-MSBuild を使用して Azure パッケージを作成するには、ソフトウェアおよびツールをビルド サーバーにインストールする必要があります。次の手順で説明します。
+As the following procedure describes, you must install software and tools on the build server before you can create an Azure package by using MSBuild:
 
-1. .NET Framework 4 以降をインストールします。この中に MSBuild が含まれています。
+1. Install the .NET Framework 4 or later, which includes MSBuild.
 
-1. [Azure Authoring Tools](http://go.microsoft.com/fwlink/?LinkId=394615) をインストールします (MicrosoftAzureAuthoringTools-x64.msi または MicrosoftAzureAuthoringTools-x86.msi を選択してください)。
+1. Install the [Azure Authoring Tools](http://go.microsoft.com/fwlink/?LinkId=394615) (look for MicrosoftAzureAuthoringTools-x64.msi or MicrosoftAzureAuthoringTools-x86.msi.
 
-1. [Azure Libraries for .NET](http://go.microsoft.com/fwlink/?LinkId=394616) をインストールします (MicrosoftAzureLibsForNet-x64.msi または MicrosoftAzureLibs-x86.msi を選択してください)。
+1. Install the [Azure Libraries for .NET](http://go.microsoft.com/fwlink/?LinkId=394616) (look for MicrosoftAzureLibsForNet-x64.msi or MicrosoftAzureLibs-x86.msi.
 
-1. 別のコンピューターの Visual Studio がインストールされている場所にある Microsoft.WebApplication.targets ファイルをコピーします。
+1. Copy the Microsoft.WebApplication.targets file from a Visual Studio installation on another computer.
 
-    このファイルは、C:\\Program Files (x86)\\MSBuild\\Microsoft\\Visual Studio\\v12.0\\WebApplications (Visual Studio 2012 の場合は v11.0 ディレクトリ) に含まれています。このファイルをビルド サーバーの同じディレクトリにコピーする必要があります。
+    The file is located in the directory C:\Program Files (x86)\MSBuild\Microsoft\Visual Studio\v12.0\WebApplications (v11.0 for Visual Studio 2012), and you should copy it to the same directory on the build server.
 
-1. [Azure Tools for Visual Studio](http://go.microsoft.com/fwlink/?LinkId=394616) をインストールします。
+1. Install the [Azure Tools for Visual Studio](http://go.microsoft.com/fwlink/?LinkId=394616).
 
-    Visual Studio 2013 プロジェクトをビルドするには、WindowsAzureTools.vs120.exe を探します。
+    Look for WindowsAzureTools.vs120.exe to build Visual Studio 2013 projects.
 
-## MSBuild パラメーター
+## <a name="msbuild-parameters"></a>MSBuild Parameters
 
-パッケージを作成する最も簡単な方法は、`/t:Publish` オプションを指定して MSBuild を実行することです。このコマンドを使用すると、既定では、ProjectDir\\bin\\Configuration\\app.publish など、プロジェクトのルート フォルダーを相対的に参照するディレクトリが作成されます。Azure プロジェクトをビルドすると、パッケージ ファイルとそれに対応する構成ファイルの 2 つのファイルが生成されます。
+The simplest way to create a package is to run MSBuild with the `/t:Publish` option. By default, this command creates a directory in relation to the root folder for the project, such as ProjectDir\bin\Configuration\app.publish\. When you build an Azure project, you generate two files, the package file itself and the accompanying configuration file:
 
 - Project.cspkg
 
 - ServiceConfiguration.TargetProfile.cscfg
 
-既定では、各 Azure プロジェクトにはローカル (デバッグ) ビルド用に 1 つ、クラウド (ステージングまたは運用) ビルド用に 1 つのサービス構成ファイルが含まれていますが、必要に応じてサービス構成ファイルを追加または削除できます。Visual Studio 内でパッケージをビルドするときは、パッケージに含めるサービス構成ファイルを指定するよう求められます。MSBuild を使用してパッケージをビルドする場合、既定でローカル サービス構成ファイルが含められます。別のサービス構成ファイルを含めるには、MSBuild コマンドの `TargetProfile` プロパティ を設定します (`MSBuild /t:Publish /p:TargetProfile=ProfileName`)。
+By default, each Azure project includes one service-configuration file for local (debugging) builds and another for cloud (staging or production) builds, but you can add or remove service-configuration files as needed. When you build a package within Visual Studio, you will be asked which service-configuration file to include alongside the package. When you build a package by using MSBuild, the local service-configuration file is included by default. To include a different service-configuration file, set the `TargetProfile` property of the MSBuild command (`MSBuild /t:Publish /p:TargetProfile=ProfileName`).
 
-パッケージと構成ファイルの格納に別のディレクトリを使用する場合は、`/p:PublishDir=Directory` オプションを使用してパスを設定します。その際、末尾に円記号の区切り記号を含めます。
+If you want to use an alternate directory for the stored package and configuration files, set the path by using the `/p:PublishDir=Directory\` option, including the trailing backslash separator.
 
-## デプロイ
+## <a name="deployment"></a>Deployment
 
-パッケージは、ビルド後に Azure にデプロイできます。このプロセスについて説明するチュートリアルについては、Azure の Web サイトを参照してください。このプロセスを自動化する方法については、「[Azure でのクラウド サービスの継続的な配信](./cloud-services/cloud-services-dotnet-continuous-delivery.md)」を参照してください。
+After the package is built, you can deploy it to Azure. For a tutorial that demonstrates that process, see the Azure website. For information about how to automate that process, see [Continuous Delivery for Cloud Services in Azure](./cloud-services/cloud-services-dotnet-continuous-delivery.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

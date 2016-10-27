@@ -1,23 +1,25 @@
-#### 仮想デバイス上にパブリック エンドポイントを作成するには
+#### <a name="to-create-public-endpoints-on-the-virtual-device"></a>To create public endpoints on the virtual device
 
-1. Azure クラシック ポータルにサインインします。
+1. Sign in to the Azure classic portal.
 
-- **[Virtual Machines]** をクリックし、仮想デバイスとして使用している仮想マシンを選択します。
+- Click **Virtual Machines**, and then select the virtual machine that is being used as your virtual device.
 
-- **[エンドポイント]** をクリックします。**[エンドポイント]** ページに仮想マシンのすべてのエンドポイントが示されます。
+- Click **Endpoints**. The **Endpoints** page lists all endpoints for the virtual machine.
 
-- **[追加]** をクリックします。**[エンドポイントの追加]** ダイアログ ボックスが表示されます。矢印をクリックして続行します。
+- Click **Add**. The **Add Endpoint** dialog box appears. Click the arrow to continue.
 
-- **[名前]** にエンドポイントの名前の「**WinRMHttps**」を入力します。
+- For the **Name**, type the following name for the endpoint: **WinRMHttps**.
 
-- **[プロトコル]** には **[TCP]** を指定します。
+- For the **Protocol**, specify **TCP**.
 
-- **[パブリック ポート]** に、接続に使用するポート番号を入力します。
+- For the **Public Port**, type the port numbers that you want to use for the connection.
 
-- **[プライベート ポート]** に「**5986**」と入力します。
+- For the **Private Port**, type **5986**.
 
-- チェック マークをクリックしてエンドポイントを作成します。
+- Click the check mark to create the endpoint.
 
-エンドポイントを作成した後、詳細を表示して、パブリック仮想 IP (VIP) アドレスを決定できます。このアドレスを記録します。
+After the endpoint is created, you can view its details to determine the Public Virtual IP (VIP) address. Record this address.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

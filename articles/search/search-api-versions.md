@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Search の API バージョン | Microsoft Azure | Search API"
-   description="Azure Search REST API のバージョン ポリシーと .NET SDK のクライアント ライブラリ"
+   pageTitle="API versions of Azure Search | Microsoft Azure | Search API"
+   description="Version policy for Azure Search REST APIs and the client library in the .NET SDK."
    services="search"
    documentationCenter=""
    authors="brjohnstmsft"
@@ -16,58 +16,64 @@
    ms.date="08/16/2016"
    ms.author="brjohnst"/>
 
-# Azure Search の API バージョン
 
-Azure Search は、機能の更新を定期的にロールアウトします。このような更新が発生すると、下位互換性を維持するために、API の新しいバージョンを公開することが必要な場合があります (毎回とは限りません)。新しいバージョンが発行されると、お客様は検索サービスの更新内容をコードに統合するタイミングと方法を管理することができます。
+# <a name="api-versions-in-azure-search"></a>API versions in Azure Search
 
-原則として、新しい API バージョンの発行は、必要な場合にのみ行うようにしています。お客様側で新しいバージョンを使用できるようにコードをアップグレードする作業が必要になる可能性があるからです。下位互換性が保たれなくなる形で API の一部の要素を変更する必要がある場合に限り、新しいバージョンを発行します。下位互換性は、既存の機能に変更を加えたことや、新機能において既存の API のセキュリティ構成を変更したことが原因で維持できなくなることがあります。
+Azure Search rolls out feature updates on a regular basis. Sometimes, but not always, these updates require us to publish a new version of our API in order to preserve backward compatibility. Publishing a new version allows you to control when and how you integrate search service updates in your code.
 
-SDK 更新プログラムの場合も同じルールに従っています。Azure Search SDK は[セマンティック バージョニング](http://semver.org/) ルールに従います。そのため、バージョンにはメジャー、マイナー、およびビルド番号という 3 つの部分があります (たとえば、1.1.0)。SDK の新しいメジャー バージョンは、下位互換性が保たれなくなる変更が生じた場合にのみリリースされます。下位互換性が保たれる機能更新の場合は、マイナー バージョンがインクリメントされ、バグ修正の場合は、ビルド バージョンのみがインクリメントされます。
+As a rule, we try to publish new versions only when necessary, since it can involve some effort to upgrade your code to use a new API version. We will only publish a new version if we need to change some aspect of the API in a way that breaks backward compatibility. This can happen because of fixes to existing features, or because of new features that change existing API surface area.
 
-##現在のバージョンのスナップショット 
+We follow the same rule for SDK updates. The Azure Search SDK follows the [semantic versioning](http://semver.org/) rules, which means that its version has three parts: major, minor, and build number (for example, 1.1.0). We will release a new major version of the SDK only in case of changes that break backward compatibility. For non-breaking feature updates, we will increment the minor version, and for bug fixes we will only increase the build version.
 
-Azure Search とのすべてのプログラミング インターフェイスの現行バージョンのスナップショットを次に示します。このドキュメントの後続のセクションでは、ロードマップとその他の詳細について説明します。
+##<a name="snapshot-of-current-versions"></a>Snapshot of current versions 
 
-インターフェイス|最新のメジャー バージョン|状態
+Below is a snapshot of the current versions of all programming interfaces to Azure Search. Roadmaps and other details can be found in subsequent sections of this document.
+
+Interfaces|Most recent major version|Status
 ----------|-------------------------|------
-[.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)|1\.1|一般公開、2016年 2 月にリリース済み
-[.NET SDK のプレビュー](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx)|2\.0-preview|2016 年 8 月にリリースのプレビュー
-[サービス REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)|2015-02-28|一般公開
-[サービス REST API プレビュー](search-api-2015-02-28-preview.md)|2015-02-28-Preview|Preview
-[管理 REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx)|2015-08-19|一般公開
+[.NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx)|1.1|Generally Available, released February 2016
+[.NET SDK Preview](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx)|2.0-preview|Preview, released August 2016
+[Service REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx)|2015-02-28|Generally Available
+[Service REST API Preview](search-api-2015-02-28-preview.md)|2015-02-28-Preview|Preview
+[Management REST API](https://msdn.microsoft.com/library/azure/dn832684.aspx)|2015-08-19|Generally Available
 
-REST API の場合は、各呼び出しに対して `api-version` を含める必要があります。これにより、容易にプレビュー API などの特定のバージョンを対象にすることができます。次の例に、`api-version` パラメーターを指定する方法を示します。
+For the REST APIs, including the `api-version` on each call is required. This makes it easy to target a specific version, such as a preview API. The following example illustrates how the `api-version` parameter is specified:
 
     GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2015-02-28
 
-> [AZURE.NOTE] 各要求で `api-version` を指定するとしても、すべての API 要求で同じバージョンを使用することをお勧めします。このことは、特に、新しい API バージョンが、以前のバージョンで認識されない属性または操作を導入している場合に当てはまります。API バージョンを混在させると、意図しない結果を招くおそれがあるので、お勧めしません。
+> [AZURE.NOTE] Although each request has an `api-version`, we recommend that you use the same version for all API requests. This is especially true when new API versions introduce attributes or operations that are not recognized by previous versions. Mixing API versions can have unintended consequences and should be avoided.
 > 
-サービス REST API と管理 REST API は、それぞれ別々にバージョン管理されます。バージョン番号の類似性は偶然によるものです。
+The Service REST API and Management REST API are versioned independently of each other. Any similarity in version numbers is co-incidental.
 
-一般公開 (またはGA) の API は、実稼働環境で使用でき、Azure サービス レベル アグリーメントの対象です。プレビュー バージョンには、必ずしも GA バージョンに移行されるとは限らない実験用の機能が含まれています。**実稼働アプリケーションではプレビュー API を使用しないことを強くお勧めします。**
+Generally available (or GA) APIs can be used in production and are subject to Azure service level agreements. Preview versions have experimental features that are not always migrated to a GA version. **We strongly advise against using preview APIs in production applications.**
 
-##SDK バージョンのロードマップ
+##<a name="sdk-version-roadmap"></a>SDK version roadmap
 
-.NET SDK の各バージョンは、サービス REST API の特定のバージョンを対象としています。機能はまず REST API でロールアウトされ、次に SDK で実装されます。
+Each version of the .NET SDK targets a particular version of the Service REST API. Features are rolled out in the REST API first, and then implemented in the SDK.
 
-.NET SDK は現在一般に公開されており、次のバージョンに向けた作業が進行中です。下表では、次に登場するものを把握できるように、SDK の今後のバージョンに目を向けます。
+The .NET SDK is now generally available and work is already underway on the next version. The following table looks ahead to future versions of the SDK so that you have an idea of what’s coming up next.
 
-.NET SDK バージョン|REST API バージョン|Features (機能)|ETA
+.NET SDK version|REST API version|Features|ETA
 ----------------|----------------|--------|---
-1\.1|2015-02-28|Lucene クエリ構文|2016 年 2 月
-2\.0-preview|2015-02-28-Preview|カスタム アナライザー、Azure BLOB および Table インデクサー、フィールド マッピング、ETag|2016 年 8 月
-2\.x|新しい GA API バージョン|2\.0-preview と同じ|2016 年第 4 四半期初旬
+1.1|2015-02-28|Lucene query syntax|February 2016
+2.0-preview|2015-02-28-Preview|Custom analyzers, Azure Blob and Table indexers, Field mappings, ETags|August 2016
+2.x|New GA API version|Same as 2.0-preview|Early Q4 2016
 
-##プレビュー バージョンと一般公開バージョンについて
+##<a name="about-preview-and-generally-available-versions"></a>About Preview and Generally Available versions
 
-Azure Search の場合は常に、まず REST API によって、次に .NET SDK のプレリリース版によって実験機能を事前に公開します。
+Azure Search always pre-releases experimental features through the REST API first, then through prerelease versions of the .NET SDK.
 
-プレビュー機能は必ずしも GA リリースに移行されるとは限りません。GA バージョンの機能は安定しており、小規模の下位互換性のある修正プログラムと機能強化以外は変更される可能性は少ないですが、プレビュー機能は機能の設計や実装についてのフィードバックを収集する目的で、テストや実験的な目的に使用できます。
+Preview features are not guaranteed to be migrated to a GA release. Whereas features in a GA version are considered stable and unlikely to change with the exception of small backward-compatible fixes and enhancements, preview features are available for testing and experimentation, with the goal of gathering feedback on feature design and implementation. 
 
-ただし、プレビュー機能は変更される可能性があるため、プレビュー バージョンに依存した実稼働コードの作成はお勧めしません。古いプレビュー バージョンを使用している場合は、一般公開 (GA) バージョンに移行することをお勧めします。
+However, because preview features are subject to change, we recommend against writing production code that takes a dependency on preview versions. If you are using an older preview version, we recommend migrating to the generally available (GA) version. 
 
-.NET SDK の場合: コード移行のガイダンスについては、[.NET SDK のアップグレード](search-dotnet-sdk-migration.md)に関する記事を参照してください。
+For the .NET SDK: Guidance for code migration can be found at [Upgrade the .NET SDK](search-dotnet-sdk-migration.md).
 
-一般的な可用性とは、Azure Search がサービス レベル アグリーメント (SLA) の下で稼働することを意味します。SLA については、[Azure Search のサービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)に関する記事を参照してください。
+General availability means that Azure Search is now under the service level agreement (SLA). The SLA can be found at [Azure Search Service Level Agreements](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

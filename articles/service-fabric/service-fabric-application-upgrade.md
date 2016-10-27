@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric アプリケーションのアップグレード | Microsoft Azure"
-   description="この記事では、アップグレード モードの選択や正常性チェックの実行など、Service Fabric アプリケーションのアップグレードの概要を紹介します。"
+   pageTitle="Service Fabric application upgrade | Microsoft Azure"
+   description="This article provides an introduction to upgrading a Service Fabric application, including choosing upgrade modes and performing health checks."
    services="service-fabric"
    documentationCenter=".net"
    authors="mani-ramaswamy"
@@ -17,57 +17,62 @@
    ms.author="subramar"/>
 
 
-# Service Fabric アプリケーションのアップグレード
 
-Service Fabric アプリケーションは、サービスのコレクションです。アップグレードの際、Service Fabric は新しい[アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application)を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。サービスが変更されていない場合は、そのサービスはアップグレードされません。
+# <a name="service-fabric-application-upgrade"></a>Service Fabric application upgrade
 
-## ローリング アップグレードの概要
+An Azure Service Fabric application is a collection of services. During an upgrade, Service Fabric compares the new [application manifest](service-fabric-application-model.md#describe-an-application) with the previous version and determines which services in the application require updates. Service Fabric compares the version numbers in the service manifests with the version numbers in the previous version. If a service has not changed, that service is not upgraded.
 
-アプリケーションのローリング アップグレードでは、アップグレードは段階的に実行されます。各段階で、アップグレードは、更新ドメインと呼ばれる、クラスター内のノードのサブセットに適用されます。その結果、アプリケーションはアップグレード全体を通して引き続き使用できます。アップグレード中に、クラスターに古いバージョンと新しいバージョンが混在することがあります。
+## <a name="rolling-upgrades-overview"></a>Rolling upgrades overview
 
-そのため、その 2 つのバージョンには上位互換性と下位互換性がある必要があります。互換性がない場合は、アプリケーション管理者が複数フェーズのアップグレードを担当して可用性を維持します。複数フェーズのアップグレードでは、最初に、以前のバージョンと互換性のあるアプリケーションの中間バージョンにアップグレードします。次に、更新前のバージョンとの互換性を破る最終バージョンにアップグレードします。この最終バージョンは、中間バージョンに対応しています。
+In a rolling application upgrade, the upgrade is performed in stages. At each stage, the upgrade is applied to a subset of nodes in the cluster, called an update domain. As a result, the application remains available throughout the upgrade. During the upgrade, the cluster may contain a mix of the old and new versions.
 
-更新ドメインは、クラスターを構成するときに、クラスター マニフェストで指定されます。更新ドメインが更新を受け取る順序は特に決まってはいません。更新ドメインは、アプリケーションのデプロイの論理単位です。更新ドメインを使用すると、アップグレード中、サービスの可用性は高く維持されます。
+For that reason, the two versions must be forward and backward compatible. If they are not compatible, the application administrator is responsible for staging a multiple-phase upgrade to maintain availability. In a multiple-phase upgrade, the first step is upgrading to an intermediate version of the application that is compatible with the previous version. The second step is to upgrade the final version that breaks compatibility with the pre-update version, but is compatible with the intermediate version.
 
-アップグレードがクラスター内のすべてのノードに適用される場合 (アプリケーションに含まれている更新ドメインが 1 つのみの場合) は、非ローリング アップグレードを行うことができます。このアプローチは推奨されません。サービスがダウンして、アップグレード時に利用可能にならないためです。さらに、Azure では、クラスターが 1 つだけの更新ドメインでセットアップされた場合、一切保証しません。
+Update domains are specified in the cluster manifest when you configure the cluster. Update domains do not receive updates in a particular order. An update domain is a logical unit of deployment for an application. Update domains allow the services to remain at high availability during an upgrade.
 
-## アップグレード時の正常性チェック
+Non-rolling upgrades are possible if the upgrade is applied to all nodes in the cluster, which is the case when the application has only one update domain. This approach is not recommended, since the service goes down and isn't available at the time of upgrade. Additionally, Azure doesn't provide any guarantees when a cluster is set up with only one update domain.
 
-アップグレードには、正常性ポリシーを設定する必要があります (既定値を使用することもできます)。指定されたタイムアウト内にすべての更新ドメインがアップグレードされた場合や、すべての更新ドメインが正常であると判断された場合は、アップグレードが成功したことになります。正常な更新ドメインとは、その更新ドメインが、正常性ポリシーで指定されているすべての正常性チェックに合格したことを意味します。たとえば、正常性ポリシーでは、Service Fabric で正常性が定義されているように、アプリケーション インスタンス内のすべてのサービスが*正常*であることが要求される場合があります。
+## <a name="health-checks-during-upgrades"></a>Health checks during upgrades
 
-アップグレード中の Service Fabric による正常性ポリシーと正常性チェックはサービスとアプリケーションに依存しません。つまり、サービス固有のテストは実行されません。たとえば、サービスにスループット要件が必要になる場合がありますが、Service Fabric にはスループットを確認するための情報がありません。実行されるチェックについては、[正常性に関する記事](service-fabric-health-introduction.md)をご覧ください。アップグレード中に実行されるチェックには、アプリケーション パッケージが正しくコピーされたかどうか、インスタンスが開始されたかどうかなどのテストが含まれます。
+For an upgrade, health policies have to be set (or default values may be used). An upgrade is termed successful when all update domains are upgraded within the specified time-outs, and when all update domains are deemed healthy.  A healthy update domain means that the update domain passed all the health checks specified in the health policy. For example, a health policy may mandate that all services within an application instance must be *healthy*, as health is defined by Service Fabric.
 
-アプリケーションの正常性は、アプリケーションの子エンティティの集約です。つまり、Service Fabric では、アプリケーションで報告された正常性によってアプリケーションの正常性が評価されます。また、アプリケーションのすべてのサービスの正常性もそのように評価されます。Service Fabric では、アプリケーション サービスの正常性が、サービスのレプリカなど、それらの子の正常性を集約することでさらに評価されます。アプリケーションの正常性ポリシーが満たされると、アップグレードを続行できます。正常性ポリシーに違反すると、アプリケーションのアップグレードは失敗します。
+Health policies and checks during upgrade by Service Fabric are service and application agnostic. That is, no service-specific tests are done.  For example, your service might have a throughput requirement, but Service Fabric does not have the information to check throughput. Refer to the [health articles](service-fabric-health-introduction.md) for the checks that are performed. The checks that happen during an upgrade include tests for whether the application package was copied correctly, whether the instance was started, and so on.
 
-## アップグレード モード
+The application health is an aggregation of the child entities of the application. In short, Service Fabric evaluates the health of the application through the health that is reported on the application. It also evaluates the health of all the services for the application this way. Service Fabric further evaluates the health of the application services by aggregating the health of their children, such as the service replica. Once the application health policy is satisfied, the upgrade can proceed. If the health policy is violated, the application upgrade fails.
 
-アプリケーションのアップグレードに推奨されるモードは、監視対象モードです。これは、よく使用されるモードです。監視対象モードでは、1 つの更新ドメインでアップグレードを実行し、(指定されたポリシーに従って) すべての正常性チェックに合格すると、自動的に次の更新ドメインに移ります。正常性チェックが失敗した場合やタイムアウトに達した場合は、更新ドメインのアップグレードはロールバックされるか、監視対象外手動モードに切り替えられます。アップグレードを構成するときに、この 2 つのモードのいずれかを、アップグレードが失敗した場合のモードとして選択できます。
+## <a name="upgrade-modes"></a>Upgrade modes
 
-監視対象外手動モードでは、更新ドメインですべてのアップグレードが行われた後、次の更新ドメインでアップグレードを開始するために、手動操作が必要になります。Service Fabric の正常性チェックは実行されません。管理者は、次の更新ドメインでアップグレードを開始する前に、正常性または状態のチェックを実行します。
+The mode that we recommend for application upgrade is the monitored mode, which is the commonly used mode. Monitored mode performs the upgrade on one update domain, and if all health checks pass (per the policy specified), moves on to the next update domain automatically.  If health checks fail and/or time-outs are reached, the upgrade is either rolled back for the update domain, or the mode is changed to unmonitored manual. You can configure the upgrade to choose one of those two modes for failed upgrades. 
 
-## アプリケーション アップグレードのフローチャート
+Unmonitored manual mode needs manual intervention after every upgrade on an update domain, to kick off the upgrade on the next update domain. No Service Fabric health checks are performed. The administrator performs the health or status checks before starting the upgrade in the next update domain.
 
-以下に示すフローチャートは、Service Fabric アプリケーションのアップグレード プロセスをわかりやすく示しています。特に、このフローでは 1 つの更新ドメインのアップグレードが成功または失敗と見なされるときに、*HealthCheckStableDuration*、*HealthCheckRetryTimeout*、*UpgradeHealthCheckInterval* などのタイムアウトが制御にどのように役立つかを説明します。
+## <a name="application-upgrade-flowchart"></a>Application upgrade flowchart
 
-![Service Fabric アプリケーションのアップグレード プロセス][image]
+The flowchart following this paragraph can help you understand the upgrade process of a Service Fabric application. In particular, the flow describes how the time-outs, including *HealthCheckStableDuration*, *HealthCheckRetryTimeout*, and *UpgradeHealthCheckInterval*, help control when the upgrade in one update domain is considered a success or a failure.
+
+![The upgrade process for a Service Fabric Application][image]
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md)に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
+[Upgrading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) walks you through an application upgrade using Visual Studio.
 
-[PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
+[Upgrading your Application Using Powershell](service-fabric-application-upgrade-tutorial-powershell.md) walks you through an application upgrade using PowerShell.
 
-[アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。
+Control how your application upgrades by using [Upgrade Parameters](service-fabric-application-upgrade-parameters.md).
 
-[データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
+Make your application upgrades compatible by learning how to use [Data Serialization](service-fabric-application-upgrade-data-serialization.md).
 
-[高度なトピック](service-fabric-application-upgrade-advanced.md)を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
+Learn how to use advanced functionality while upgrading your application by referring to [Advanced Topics](service-fabric-application-upgrade-advanced.md).
 
-「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
+Fix common problems in application upgrades by referring to the steps in [Troubleshooting Application Upgrades](service-fabric-application-upgrade-troubleshooting.md).
  
 
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center でシステムの更新プログラムを適用する | Microsoft Azure"
-   description="このドキュメントでは、Azure Security Center の推奨事項である ";**システムの更新プログラムを適用する**"; と ";**システムの更新後に再起動する**"; を実装する方法について説明します。"
+   pageTitle="Apply system updates in Azure Security Center | Microsoft Azure"
+   description="This document shows you how to implement the Azure Security Center recommendations **Apply system updates** and **Reboot after system updates**."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,48 +16,59 @@
    ms.date="07/29/2016"
    ms.author="terrylan"/>
 
-# Azure Security Center でシステムの更新プログラムを適用する
 
-Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) の監視が毎日行われています。Security Center は、Windows VM に構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。また、Linux システムにおける最新の更新プログラムについても確認します。VM でシステムの更新プログラムが不足している場合は、それらを適用するよう Security Center による推奨が行われます。
+# <a name="apply-system-updates-in-azure-security-center"></a>Apply system updates in Azure Security Center
 
-> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+Azure Security Center monitors daily Windows and  Linux virtual machines (VMs) for missing operating system updates. Security Center retrieves a list of available security and critical updates from Windows Update or Windows Server Update Services (WSUS), depending on which service is configured on a Windows VM.  Security Center also checks for the latest updates in Linux systems. If your VM is missing a system update, Security Center will recommend that you apply system updates
 
-## 推奨事項の実装
+> [AZURE.NOTE] This document introduces the service by using an example deployment.  This is not a step-by-step guide.
 
-1. **[推奨事項]** ブレードで、**[システムの更新プログラムを適用する]** を選択します。![システムの更新の適用][1]
+## <a name="implement-the-recommendation"></a>Implement the recommendation
 
-2. **[システムの更新プログラムを適用する]** ブレードが開き、システムの更新が行われていない VM の一覧が表示されます。VM を選択します。![Select a VM][2]
+1. In the **Recommendations** blade, select **Apply system updates**.
+![Apply system updates][1]
 
-3. ブレードが開き、選択した VM に不足している更新プログラムの一覧が表示されます。システムの更新プログラムを選択します。この例では、KB3156016 を選択します。![Missing security updates][3]
+2. The **Apply system updates** blade opens displaying a list of VMs missing system updates. Select a VM.
+![Select a VM][2]
 
-4. **セキュリティ更新プログラム**のブレードの手順に従い、不足している更新プログラムを適用します。![Security update][4]
+3. A blade opens displaying a list of missing updates for that VM. Select a system update. In this example, let’s select KB3156016.
+![Missing security updates][3]
 
-## システムの更新後に再起動する
+4. Follow the steps in the **Security Update** blade to apply the missing update.
+![Security update][4]
 
-5. **[推奨事項]** ブレードに戻ります。システムの更新プログラムを適用した後は、**[システムの更新後に再起動する]** という新しいエントリが生成されています。このエントリは、システムの更新プログラムの適用プロセスを完了するために、VM の再起動が必要であることを示しています。![Reboot after system updates][5]
+## <a name="reboot-after-system-updates"></a>Reboot after system updates
 
-6. **[システムの更新後に再起動する]** を選択します。これにより、**[システムの更新を完了するために、再起動は保留中です]** ブレードが開き、システムの更新プログラムの適用プロセスを完了するために再起動が必要な VM の一覧が表示されます。![Restart pending][6]
+5. Return to the **Recommendations** blade. A new entry was generated after you applied system updates, called **Reboot after system updates**. This entry lets you know that you need to reboot the VM to complete the process of applying system updates.
+![Reboot after system updates][5]
 
-Azure から VM を再起動して、プロセスを完了します。
+6. Select **Reboot after system updates**. This opens **A restart is pending to complete system updates** blade displaying a list of VMs that you need to restart to complete the apply system updates process.
+![Restart pending][6]
 
-## 関連項目
+Restart the VM from Azure to complete the process.
 
-セキュリティ センターの詳細については、次を参照してください。
+## <a name="see-also"></a>See also
 
-- [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-- [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- [Azure Security Center でのセキュリティ正常性の監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明しています。
-- [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) - セキュリティの警告の管理と対応の方法について説明しています。
-- [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- [Azure Security Center に関する FAQ](security-center-faq.md) -- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+To learn more about Security Center, see the following:
+
+- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
+- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Find blog posts about Azure security and compliance.
 
 <!--Image references-->
 [1]: ./media/security-center-apply-system-updates/recommendation.png
-[2]: ./media/security-center-apply-system-updates/select-vm.png
+[2]:./media/security-center-apply-system-updates/select-vm.png
 [3]: ./media/security-center-apply-system-updates/missing-security-updates.png
 [4]: ./media/security-center-apply-system-updates/security-update.png
 [5]: ./media/security-center-apply-system-updates/reboot-after-system-updates.png
 [6]: ./media/security-center-apply-system-updates/restart-pending.png
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

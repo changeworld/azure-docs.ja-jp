@@ -1,15 +1,17 @@
-型 | サービス | トリガー | 入力 | 出力 
+Type | Service | Trigger | Input | Output 
 -----|---------|---------|-------|--------
-スケジュール | Azure Functions | &#10004; | | 
-HTTP (REST または Webhook) | Azure Functions | &#10004; | | &#10004;*
-BLOB ストレージ | Azure Storage (Azure Storage) | &#10004; | &#10004; | &#10004; 
-イベント | Azure Event Hubs | &#10004; | | &#10004;
-キュー | Azure Storage (Azure Storage) | &#10004; | | &#10004;
-テーブル | Azure Storage (Azure Storage) | | &#10004; | &#10004;
-テーブル | Azure Mobile Apps | | &#10004; | &#10004;
-NoSQL DB | Azure DocumentDB | | &#10004; | &#10004;
-プッシュ通知 | Azure Notification Hubs | | | &#10004;
+Schedule | Azure Functions | &#10004; |  | 
+HTTP (REST or webhook) | Azure Functions | &#10004; |  | &#10004;\*
+Blob Storage | Azure Storage | &#10004; | &#10004; | &#10004; 
+Events | Azure Event Hubs | &#10004; | | &#10004;
+Queues | Azure Storage | &#10004; |  | &#10004;
+Tables | Azure Storage |  | &#10004; | &#10004;
+Tables | Azure Mobile Apps |  | &#10004; | &#10004;
+No-SQL DB | Azure DocumentDB |  | &#10004; | &#10004;
+Push Notifications | Azure Notification Hubs | | | &#10004;
 
-(* - http アウト バインドには http トリガーが必要です)
+(\* - The http out binding requires an http trigger)
 
-<!---HONumber=AcomDC_0608_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,9 @@
-リソース|上限
+Resource|Maximum Limit
 ---|---
-1 スケール セットあたりの最大仮想マシン数|100
-1 リージョンあたりの最大スケール セット数|200
+Maximum number of VMs in a scale set|100
+Maximum number of scale sets in a region|200
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

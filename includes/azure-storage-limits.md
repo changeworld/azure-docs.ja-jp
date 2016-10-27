@@ -1,42 +1,46 @@
-リソース|既定の制限
+Resource|Default Limit
 ---|---
-サブスクリプションあたりのストレージ アカウント数|200<sup>1</sup>
-ストレージ アカウントあたりの容量 (TB)|500 TB
-ストレージ アカウントあたりの BLOB コンテナー、BLOB、ファイル共有、テーブル、キュー、エンティティ、メッセージの最大数|制限はストレージ アカウントの容量のみ (500 TB)
-単一の BLOB コンテナー、テーブル、キューの最大サイズ|500 TB
-ブロック BLOB 内または追加 BLOB 内の最大ブロック数|50,000
-ブロック BLOB 内または追加 BLOB 内のブロックの最大サイズ|4 MB
-ブロック BLOB または追加 BLOB の最大サイズ|50,000 x 4 MB (約 195 GB) 
-ページ BLOB の最大サイズ |1 TB (テラバイト)
-テーブル エンティティの最大サイズ|1 MB
-テーブル エンティティの最大プロパティ数|252
-キュー内の最大メッセージ サイズ|64 KB
-ファイル共有の最大サイズ|5 TB
-ファイル共有内の最大ファイル サイズ|1 TB (テラバイト)
-ファイル共有内の最大ファイル数|制限は、ファイル共有の合計容量のみ (5 TB)
-最大 8 KB の IOPS (共有あたり)|1,000
-ファイル共有内の最大ファイル数|制限は、ファイル共有の合計容量のみ (5 TB)
-ストレージ アカウントあたりの BLOB コンテナー、BLOB、ファイル共有、テーブル、キュー、エンティティ、メッセージの最大数|制限はストレージ アカウントの容量のみ (500 TB)
-コンテナー、ファイル共有、テーブル、またはキューごとの保存されるアクセス ポリシーの最大数|5
-ストレージ アカウントあたりの合計要求レート (オブジェクト サイズは 1KB とする)|最大 20,000 の IOPS、エンティティ/秒、またはメッセージ/秒
-単一 BLOB のターゲット スループット|毎秒最大 60 MB または毎秒最大 500 要求
-単一キューのターゲット スループット (1 KB のメッセージ)|毎秒最大 2000 メッセージ
-単一テーブル パーティションのターゲット スループット (1 KB のエンティティ)|毎秒最大 2000 エンティティ
-単一ファイル共有のターゲット スループット|最大 60 MB/秒
-ストレージ アカウントあたりの最大受信速度<sup>2</sup> (米国リージョン)|GRS/ZRS<sup>3</sup> が有効な場合は 10 Gbps、LRS の場合は 20 Gbps
-ストレージ アカウントあたりの最大送信速度<sup>2</sup> (米国リージョン)|RA-GRS/GRS/ZRS<sup>3</sup> が有効な場合は 20 Gbps、LRS の場合は 30 Gbps
-ストレージ アカウントあたりの最大受信速度<sup>2</sup> (ヨーロッパおよびアジア リージョン)|GRS/ZRS<sup>3</sup> が有効な場合は 5 Gbps、LRS の場合は 10 Gbps
-ストレージ アカウントあたりの最大送信速度<sup>2</sup> (ヨーロッパおよびアジア リージョン)|RA-GRS/GRS/ZRS<sup>3</sup> が有効な場合は 10 Gbps、LRS の場合は 15 Gbps
+Number of storage accounts per subscription|200<sup>1</sup>
+TB per storage account|500 TB
+Max number of blob containers, blobs, file shares, tables, queues, entities, or messages per storage account|Only limit is the 500 TB storage account capacity
+Max size of a single blob container, table, or queue|500 TB
+Max number of blocks in a block blob or append blob|50,000
+Max size of a block in a block blob or append blob|4 MB
+Max size of a block blob or append blob|50,000 X 4 MB (approx. 195 GB) 
+Max size of a page blob |1 TB
+Max size of a table entity|1 MB
+Max number of properties in a table entity|252
+Max size of a message in a queue|64 KB
+Max size of a file share|5 TB
+Max size of a file in a file share|1 TB
+Max number of files in a file share|Only limit is the 5 TB total capacity of the file share
+Max 8 KB IOPS per share|1000
+Max number of files in a file share|Only limit is the 5 TB total capacity of the file share
+Max number of blob containers, blobs, file shares, tables, queues, entities, or messages per storage account|Only limit is the 500 TB storage account capacity
+Max number of stored access policies per container, file share, table, or queue|5
+Total Request Rate (assuming 1KB object size) per storage account|Up to 20,000 IOPS, entities per second, or messages per second
+Target throughput for single blob|Up to 60 MB per second, or up to 500 requests per second
+Target throughput for single queue (1 KB messages)|Up to 2000 messages per second
+Target throughput for single table partition (1 KB entities)|Up to 2000 entities per second
+Target throughput for single file share|Up to 60 MB per second
+Max ingress<sup>2</sup> per storage account (US Regions)|10 Gbps if GRS/ZRS<sup>3</sup> enabled, 20 Gbps for LRS
+Max egress<sup>2</sup> per storage account (US Regions)|20 Gbps if RA-GRS/GRS/ZRS<sup>3</sup> enabled, 30 Gbps for LRS
+Max ingress<sup>2</sup> per storage account (European and Asian Regions)|5 Gbps if GRS/ZRS<sup>3</sup> enabled, 10 Gbps for LRS
+Max egress<sup>2</sup> per storage account (European and Asian Regions)|10 Gbps if RA-GRS/GRS/ZRS<sup>3</sup> enabled, 15 Gbps for LRS
 
-<sup>1</sup>これには、Standard および Premium ストレージ アカウントの両方が含まれます。必要なストレージ アカウントが 200 個を超える場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。Azure Storage チームがビジネス ケースを確認します。承認された場合、最大 250 個のストレージ アカウントが与えられます。
+<sup>1</sup>This includes both Standard and Premium storage accounts. If you require more than 200 storage accounts, make a request through [Azure Support](https://azure.microsoft.com/support/faq/). The Azure Storage team will review your business case and may approve up to 250 storage accounts. 
 
-<sup>2</sup>"受信" とはストレージ アカウントに送信されるすべてのデータ (要求) のことです。*送信*とはストレージ アカウントから送信されるすべてのデータ (応答) のことです。
+<sup>2</sup>*Ingress* refers to all data (requests) being sent to a storage account. *Egress* refers to all data (responses) being received from a storage account.  
 
-<sup>3</sup>Azure Storage のレプリケーションには次のオプションがあります。
+<sup>3</sup>Azure Storage replication options include:
 
-- **RA-GRS**: 読み取りアクセス地理冗長ストレージ。RA-GRS が有効な場合、2 次拠点への送信ターゲットは、1 次拠点と同じになります。
-- **GRS**: 地理冗長ストレージ。
-- **ZRS**: ゾーン冗長ストレージ。ブロック BLOB でのみ使用できます。
-- **LRS**: ローカル冗長ストレージ。
+- **RA-GRS**: Read-access geo-redundant storage. If RA-GRS is enabled, egress targets for the secondary location are identical to those for the primary location.
+- **GRS**:  Geo-redundant storage. 
+- **ZRS**: Zone-redundant storage. Available only for block blobs. 
+- **LRS**: Locally redundant storage. 
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO3-->
+
+

@@ -1,112 +1,115 @@
 <properties 
-    pageTitle="PowerShell を使用して Azure SQL Database のサービス階層とパフォーマンス レベルを変更する" 
-    description="「Azure SQL Database のサービス階層とパフォーマンス レベルを変更する」では、PowerShell を使用した SQL Database のスケール アップとスケール ダウンの方法について説明しています。PowerShell を使用して Azure SQL Database の価格レベルを変更します。" 
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Change the service tier and performance level of an Azure SQL database using PowerShell | Microsoft Azure" 
+    description="Change the service tier and performance level of an Azure SQL database shows how to scale your SQL database up or down with PowerShell. Changing the pricing tier of an Azure SQL database with PowerShell." 
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="NA"
-	ms.date="07/19/2016"
-	ms.author="sstein"
-	ms.workload="data-management"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"/>
+    ms.service="sql-database"
+    ms.devlang="NA"
+    ms.date="10/12/2016"
+    ms.author="sstein"
+    ms.workload="data-management"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"/>
 
 
-# PowerShell で SQL Database のサービス階層とパフォーマンス レベル (価格レベル) を変更する
+
+# <a name="change-the-service-tier-and-performance-level-(pricing-tier)-of-a-sql-database-with-powershell"></a>Change the service tier and performance level (pricing tier) of a SQL database with PowerShell
 
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](sql-database-scale-up.md)
-- [PowerShell](sql-database-scale-up-powershell.md)
+- [Azure portal](sql-database-scale-up.md)
+- [**PowerShell**](sql-database-scale-up-powershell.md)
 
 
-サービス レベルとパフォーマンス レベルは、SQL Database で利用できる機能とリソースを表しており、アプリケーションのニーズの変化に応じて更新できます。詳細については、「[サービス レベル](sql-database-service-tiers.md)」をご覧ください。
+Service tiers and performance levels describe the features and resources available for your SQL database and can be updated as the needs of your application change. For details, see [Service Tiers](sql-database-service-tiers.md).
 
-データベースのサービス レベルやパフォーマンス レベルを変更すると、新しいパフォーマンス レベルで元のデータベースのレプリカが作成され、接続先がそのレプリカに切り替えられます。このプロセスでデータが失われることはありませんが、レプリカに切り替えるほんの少しの間、データベースに接続できなくなるため、実行中の一部トランザクションがロールバックされる場合があります。この時間はさまざまですが、平均 4 秒以内であり、99% 以上が 30 秒未満です。ごくまれですが、特に、接続が無効になった時点で多数のトランザクションが実行中の場合、この時間が長引くことがあります。
+Note that changing the service tier and/or performance level of a database creates a replica of the original database at the new performance level, and then switches connections over to the replica. No data is lost during this process but during the brief moment when we switch over to the replica, connections to the database are disabled, so some transactions in flight may be rolled back. This window varies, but is on average under 4 seconds, and in more than 99% of cases is less than 30 seconds. Very infrequently, especially if there are large numbers of transactions in flight at the moment connections are disabled, this window may be longer.  
 
-スケールアップ プロセス全体の継続時間は、変更前後のデータベースのサイズとサービス レベルによって異なります。たとえば、250 GB のデータベースを Standard サービス レベルとの間または Standard サービス レベル内で変更する場合は、6 時間以内に完了します。Premium サービス レベル内で同じサイズのデータベースのパフォーマンス レベルを変更する場合は、3 時間以内で完了します。
-
-
-- データベースをダウングレードするには、データベースがダウングレード後のサービス階層で許可されている最大サイズより小さい必要があります。
-- [geo レプリケーション](sql-database-geo-replication-portal.md)を有効にしてデータベースをアップグレードする場合、まず、そのセカンダリ データベースを目的のパフォーマンス レベルにアップグレードしてから、プライマリ データベースをアップグレードする必要があります。
-- Premium サービス階層からダウングレードするときは、最初に geo レプリケーション リレーションシップをすべて終了する必要があります。「[Azue SQL Database を障害から回復する](sql-database-disaster-recovery.md)」に記載されている手順に従って、プライマリ データベースとアクティブなセカンダリ データベース間のレプリケーション プロセスを停止できます。
-- サービス階層によって、提供されている復元サービスは異なります。ダウングレードすると、特定の時点に復元する機能を使えなくなったり、バックアップの保存期間が短くなったりする可能性があります。詳細については、「[Azure SQL Database のバックアップと復元](sql-database-business-continuity.md)」を参照してください。
-- データベースに対する新しいプロパティは、変更が完了するまで適用されません。
+The duration of the entire scale-up process depends on both the size and service tier of the database before and after the change. For example, a 250 GB database that is changing to, from, or within a Standard service tier, should complete within 6 hours. For a database of the same size that is changing performance levels within the Premium service tier, it should complete within 3 hours.
 
 
-
-**この記事を完了するには、以下が必要です。**
-
-- Azure サブスクリプション。Azure サブスクリプションがない場合は、このページの上部にある "**無料アカウント**" をクリックしてサブスクリプションを作成してから、この記事に戻って最後まで完了してください。
-- Azure SQL Database。SQL Database がない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
-- Azure PowerShell。
-
-
-[AZURE.INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
+- To downgrade a database, the database should be smaller than the maximum allowed size of the target service tier. 
+- When upgrading a database with [Geo-Replication](sql-database-geo-replication-portal.md) enabled, you must first upgrade its secondary databases to the desired performance tier before upgrading the primary database.
+- When downgrading from a Premium service tier, you must first terminate all Geo-Replication relationships. You can follow the steps described in the [Recover from an outage](sql-database-disaster-recovery.md) topic to stop the replication process between the primary and the active secondary databases.
+- The restore service offerings are different for the various service tiers. If you are downgrading you may lose the ability to restore to a point in time, or have a lower backup retention period. For more information, see [Azure SQL Database Backup and Restore](sql-database-business-continuity.md).
+- The new properties for the database are not applied until the changes are complete.
 
 
 
-## SQL Database のサービス階層とパフォーマンス レベルを変更する
+**To complete this article you need the following:**
 
-**Set-AzureRmSqlDatabase** コマンドレットを実行し、**-RequestedServiceObjectiveName** を目的の価格レベルのパフォーマンス レベルに設定します (*S0*、*S1*、*S2*、*S3*、*P1*、*P2* など)。
+- An Azure subscription. If you need an Azure subscription simply click **FREE ACCOUNT** at the top of this page, and then come back to finish this article.
+- An Azure SQL database. If you do not have a SQL database, create one following the steps in this article: [Create your first Azure SQL Database](sql-database-get-started.md).
+- Azure PowerShell.
 
-    $ResourceGroupName = "resourceGroupName"
+
+[AZURE.INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
+
+
+
+## <a name="change-the-service-tier-and-performance-level-of-your-sql-database"></a>Change the service tier and performance level of your SQL database
+
+Run the **Set-AzureRmSqlDatabase** cmdlet and set the **-RequestedServiceObjectiveName** to the performance level of the desired pricing tier; for example *S0*, *S1*, *S2*, *S3*, *P1*, *P2*, ...
+
+```
+$ResourceGroupName = "resourceGroupName"
     
-    $ServerName = "serverName"
-    $DatabaseName = "databaseName"
+$ServerName = "serverName"
+$DatabaseName = "databaseName"
 
-    $NewEdition = "Standard"
-    $NewPricingTier = "S2"
+$NewEdition = "Standard"
+$NewPricingTier = "S2"
 
-    $ScaleRequest = Set-AzureRmSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
-
+Set-AzureRmSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
+```
 
   
 
    
 
 
-## SQL Database のサービス階層とパフォーマンス レベルを変更するサンプル PowerShell スクリプト
+## <a name="sample-powershell-script-to-change-the-service-tier-and-performance-level-of-your-sql-database"></a>Sample PowerShell script to change the service tier and performance level of your SQL database
 
-    
+Replace ```{variables}``` with your values (do not include the curly braces).
 
+```
+$SubscriptionId = "{4cac86b0-1e56-bbbb-aaaa-000000000000}"
     
-    $SubscriptionId = "4cac86b0-1e56-bbbb-aaaa-000000000000"
+$ResourceGroupName = "{resourceGroup}"
+$Location = "{AzureRegion}"
     
-    $ResourceGroupName = "resourceGroupName"
-    $Location = "Japan West"
+$ServerName = "{server}"
+$DatabaseName = "{database}"
     
-    $ServerName = "serverName"
-    $DatabaseName = "databaseName"
+$NewEdition = "{Standard}"
+$NewPricingTier = "{S2}"
     
-    $NewEdition = "Standard"
-    $NewPricingTier = "S2"
+Add-AzureRmAccount
+Set-AzureRmContext -SubscriptionId $SubscriptionId
     
-    Add-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId $SubscriptionId
-    
-    $ScaleRequest = Set-AzureRmSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
-    
-    $ScaleRequest
-    
+Set-AzureRmSqlDatabase -DatabaseName $DatabaseName -ServerName $ServerName -ResourceGroupName $ResourceGroupName -Edition $NewEdition -RequestedServiceObjectiveName $NewPricingTier
+```
         
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [スケールアウトとスケールイン](sql-database-elastic-scale-get-started.md)
-- [SSMS での SQL Database の接続とクエリ](sql-database-connect-query-ssms.md)
-- [Azure SQL Database のエクスポート](sql-database-export-powershell.md)
+- [Scale out and in](sql-database-elastic-scale-get-started.md)
+- [Connect and query a SQL database with SSMS](sql-database-connect-query-ssms.md)
+- [Export an Azure SQL database](sql-database-export-powershell.md)
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-- [ビジネス継続性の概要](sql-database-business-continuity.md)
-- [SQL Database のドキュメント](http://azure.microsoft.com/documentation/services/sql-database/)
-- [Azure SQL Database コマンドレット](http://msdn.microsoft.com/library/mt574084.aspx)
+- [Business Continuity Overview](sql-database-business-continuity.md)
+- [SQL Database documentation](http://azure.microsoft.com/documentation/services/sql-database/)
+- [Azure SQL Database Cmdlets](http://msdn.microsoft.com/library/mt574084.aspx)
 
-<!---HONumber=AcomDC_0720_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

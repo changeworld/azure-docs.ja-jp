@@ -1,23 +1,25 @@
-**新しい CDN プロファイルを作成するには**
+**To create a new CDN profile**
 
-1. [Azure ポータル](https://portal.azure.com)の左上の **[新規]** をクリックします。**[新規]** ブレードで、**[メディア + CDN]**、**[CDN]** の順に選択します。
+1. In the [Azure Portal](https://portal.azure.com), in the upper left, click **New**.  In the **New** blade, select **Media + CDN**, then **CDN**.
 
-    新しい CDN プロファイル ブレードが表示されます。
+    The new CDN profile blade appears.
 
-    ![新しい CDN プロファイル](./media/cdn-create-profile/new-cdn-profile-include.png)
+    ![New CDN Profile](./media/cdn-create-profile/new-cdn-profile-include.png)
 
-2. CDN プロファイルの名前を入力します。
+2. Enter a name for your CDN profile.
 
-3. **[場所]** を選択します。これは、CDN プロファイル情報が格納される Azure の場所です。CDN エンドポイントの場所には影響しません。
+3. Select a **Location**.  This is the Azure location where your CDN profile information will be stored.  It has no impact on CDN endpoint locations.
 
-4. **リソース グループ**を選択または作成します。リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md#resource-groups)」を参照してください。
+4. Select or create a **Resource Group**.  For more information on Resource Groups, see [Azure Resource Manager overview](resource-group-overview.md#resource-groups).
 
-5. **価格レベル**を選択しますCDN の価格レベルの比較については、[CDN の概要](cdn-overview.md#azure-cdn-features)に関する記事を参照してください。
+5. Select a **Pricing tier**.  See the [CDN Overview](cdn-overview.md#azure-cdn-features) for a comparison of pricing tiers.
     
-    ![CDN の価格レベルの選択](./media/cdn-create-profile/cdn-choose-sku-include.png)
+    ![CDN pricing tier selection](./media/cdn-create-profile/cdn-choose-sku-include.png)
 
-6. この CDN プロファイルの**サブスクリプション**を選択します。
+6. Select the **Subscription** for this CDN profile.
 
-7. **[作成]** ボタンをクリックして、新しいプロファイルを作成します。
+7. Click the **Create** button to create the new profile. 
 
-<!---HONumber=AcomDC_0706_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

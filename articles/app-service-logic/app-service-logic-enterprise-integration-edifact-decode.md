@@ -1,93 +1,97 @@
 <properties 
-	pageTitle="Enterprise Integration Pack の Decode EDIFACT Message コネクタの詳細情報 | Microsoft Azure App Service | Microsoft Azure" 
-	description="Enterprise Integration Pack と Logic Apps を使用してパートナーを使用する方法について説明します。" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="padmavc" 
-	manager="erikre" 
-	editor=""/>
+    pageTitle="Learn about Enterprise Integration Pack Decode EDIFACT Message Connector | Microsoft Azure App Service | Microsoft Azure" 
+    description="Learn how to use partners with the Enterprise Integration Pack and Logic apps" 
+    services="logic-apps" 
+    documentationCenter=".net,nodejs,java"
+    authors="padmavc" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/15/2016" 
-	ms.author="padmavc"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/15/2016" 
+    ms.author="padmavc"/>
 
-# Decode EDIFACT Message を使ってみる
 
-EDI およびパートナー固有のプロパティを検証したり、各トランザクション セットに対して XML ドキュメントを生成したり、処理したトランザクションの受信確認を生成したりできます。
+# <a name="get-started-with-decode-edifact-message"></a>Get started with Decode EDIFACT Message
 
-## 接続の作成
+Validates EDI and partner-specific properties, generates XML document for each transaction set and generates acknowledgment for processed transaction.
 
-### 前提条件
+## <a name="create-the-connection"></a>Create the connection
 
-* Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
+### <a name="prerequisites"></a>Prerequisites
 
-* Decode EDIFACT Message コネクタを使用するには、統合アカウントが必要です。[統合アカウント](./app-service-logic-enterprise-integration-create-integration-account.md)、[パートナー](./app-service-logic-enterprise-integration-partners.md)、および [EDIFACT 契約](./app-service-logic-enterprise-integration-edifact.md)の作成方法の詳細を確認してください。
+* An Azure account; you can create a [free account](https://azure.microsoft.com/free)
 
-### 次の手順に従って、Decode EDIFACT Message に接続します。
+* An Integration Account is required to use Decode EDIFACT message connector. See details on how to create an [Integration Account](./app-service-logic-enterprise-integration-create-integration-account.md), [partners](./app-service-logic-enterprise-integration-partners.md) and [EDIFACT agreement](./app-service-logic-enterprise-integration-edifact.md)
 
-1. [ロジック アプリの作成](./app-service-logic-create-a-logic-app.md)に関する記事に例が記載されています。
+### <a name="connect-to-decode-edifact-message-using-the-following-steps:"></a>Connect to Decode EDIFACT Message using the following steps:
 
-2. このコネクタにはトリガーがありません。ロジック アプリを起動するには、他のトリガー (要求トリガーなど) を使用します。Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。ドロップダウン リストから [Microsoft が管理している API を表示] を選択し、検索ボックスに「EDIFACT」と入力します。[Decode EDIFACT Message] を選択します。
+1. [Create a Logic App](./app-service-logic-create-a-logic-app.md) provides an example.
 
-	![search EDIFACT](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage1.png)
-	
-3. これまでに統合アカウントへの接続を作成したことがない場合は、接続の詳細情報を求められます。
+2. This connector does not have any triggers. Use other triggers to start the Logic App, such as a Request trigger.  In the Logic App designer, add a trigger and add an action.  Select Show Microsoft managed APIs in the drop-down list and then enter "EDIFACT" in the search box.  Select Decode EDIFACT Message
 
-	![create integration account](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage2.png)
+    ![search EDIFACT](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage1.png)
+    
+3. If you haven’t previously created any connections to Integration Account, you are prompted for the connection details
 
-4. 統合アカウントの詳細を入力します。アスタリスクが付いているプロパティは必須です。
+    ![create integration account](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage2.png)  
 
-	| プロパティ | 詳細 |
-	| -------- | ------- |
-	| 接続名 * | 接続の任意の名前を入力します。 |
-	| 統合アカウント * | 統合アカウント名を入力します。統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
+4. Enter the Integration Account details.  Properties with an asterisk are required
 
-	入力を完了すると、接続の詳細は次のようになります。
+  	| Property | Details |
+  	| -------- | ------- |
+  	| Connection Name * | Enter any name for your connection |
+  	| Integration Account * | Enter the Integration Account name. Be sure your Integration Account and Logic app are in the same Azure location |
 
-	![integration account created](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage3.png)
+    Once complete, your connection details look similar to the following
 
-5. **[作成]** を選択します。
+    ![integration account created](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage3.png)  
 
-6. 接続が作成されたことを確認します。
+5. Select **Create**
 
-	![integration account connection details](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage5.png)
+6. Notice the connection has been created
 
-7. デコードする EDIFACT フラット ファイル メッセージを選択します。
+    ![integration account connection details](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage5.png)  
 
-	![provide mandatory fields](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage5.png)
+7. Select EDIFACT flat file message to decode
 
-## EDIFACT Decode の機能
+    ![provide mandatory fields](./media/app-service-logic-enterprise-integration-edifactorconnector/edifactdecodeimage5.png)  
 
-* 送信者の修飾子および識別子を受信者の修飾子および識別子と照合することで、契約を解決する
-* 1 つのメッセージ内の複数のインターチェンジを分割する
-* 取引パートナー契約と照らし合わせてエンベロープを検証する
-* インターチェンジを逆アセンブルする
-* EDI およびパートナー固有のプロパティに対して、次のような検証を行う
-	* インターチェンジ エンベロープの構造の検証
-	* 制御スキーマと照らし合わせたエンベロープのスキーマ検証
-	* メッセージ スキーマと照らし合わせたトランザクション セット データ要素のスキーマ検証
-	* トランザクション セット データ要素に対して実行される EDI 検証
-* インターチェンジ、グループ、およびトランザクション セットの制御番号が重複していないことを検証する (構成されている場合)
-	* 以前に受信したインターチェンジと照らし合わせて、インターチェンジ制御番号を確認する。
-	* インターチェンジ内の他のグループ制御番号と照らし合わせて、グループ制御番号を確認する。
-	* グループ内の他のトランザクション セット制御番号と照らし合わせて、トランザクション セット制御番号を確認する。
-* 各トランザクション セットの XML ドキュメントを生成する
-* インターチェンジ全体を XML に変換する
-	* [インターチェンジをトランザクション セットとして分割 - エラー発生時にトランザクション セットを中断]: インターチェンジの各トランザクション セットを個別の XML ドキュメントとして解析します。インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、EDIFACT Decode は失敗したトランザクション セットのみを中断します。
-	* [インターチェンジをトランザクション セットとして分割 - エラー発生時にインターチェンジを中断]: インターチェンジの各トランザクション セットを個別の XML ドキュメントとして解析します。インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、EDIFACT Decode はインターチェンジ全体を中断します。
-	* [インターチェンジの保存 - エラー発生時にトランザクション セットを中断]: バッチ インターチェンジ全体に対する XML ドキュメントを作成します。EDIFACT Decode は、検証に失敗したトランザクション セットだけを中断し、他のすべてのトランザクション セットの処理を継続します。
-	* [インターチェンジの保存 - エラー発生時にインターチェンジを中断]: バッチ インターチェンジ全体に対する XML ドキュメントを作成します。インターチェンジの 1 つ以上のトランザクション セットが検証に失敗した場合、EDIFACT Decode はインターチェンジ全体を中断します。
-* 技術 (制御) 確認または機能確認を生成する (構成されている場合)
-	* 技術確認または制御確認は、完全に受信したインターチェンジの構文チェックの結果を報告します。
-	* 機能確認は、受信したインターチェンジまたはグループの承認または拒否を確認します。
+## <a name="edifact-decode-does-following"></a>EDIFACT Decode does following
 
-## 次のステップ
+* Resolve the agreement by matching the sender qualifier & identifier and receiver qualifier & identifier
+* Splits multiple interchanges in a single message into separate.
+* Validates the envelope against trading partner agreement
+* Disassembles the interchange.
+* Validates EDI and partner-specific properties includes
+    * Validation of the structure of the interchange envelope.
+    * Schema validation of the envelope against the control schema.
+    * Schema validation of the transaction-set data elements against the message schema.
+    * EDI validation performed on transaction-set data elements
+* Verifies that the interchange, group, and transaction set control numbers are not duplicates (if configured) 
+    * Checks the interchange control number against previously received interchanges. 
+    * Checks the group control number against other group control numbers in the interchange. 
+    * Checks the transaction set control number against other transaction set control numbers in that group.
+* Generates an XML document for each transaction set.
+* Converts the entire interchange to XML 
+    * Split Interchange as transaction sets - suspend transaction sets on error: Parses each transaction set in an interchange into a separate XML document. If one or more transaction sets in the interchange fail validation, then EDIFACT Decode suspends only those transaction sets. 
+    * Split Interchange as transaction sets - suspend interchange on error: Parses each transaction set in an interchange into a separate XML document.  If one or more transaction sets in the interchange fail validation, then EDIFACT Decode suspends the entire interchange.
+    * Preserve Interchange - suspend transaction sets on error: Creates an XML document for the entire batched interchange. EDIFACT Decode suspends only those transaction sets that fail validation, while continuing to process all other transaction sets
+    * Preserve Interchange - suspend interchange on error: Creates an XML document for the entire batched interchange. If one or more transaction sets in the interchange fail validation, then EDIFACT Decode suspends the entire interchange, 
+* Generates a Technical (control) and/or Functional acknowledgment (if configured).
+    * A Technical Acknowledgment or the CONTRL ACK reports the results of a syntactical check of the complete received interchange.
+    * A functional acknowledgment acknowledges accept or reject a received interchange or a group
 
-[Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0824_2016-->
+[Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack") 
+
+
+<!--HONumber=Oct16_HO2-->
+
+

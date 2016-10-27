@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure ポータルを使用してクラシック モードで静的プライベート IP を設定する方法 | Microsoft Azure"
-   description="静的プライベート IP の概要と、Azure ポータルを使用してクラシック モードで静的プライベート IP を管理する方法について説明します。"
+   pageTitle="How to set a static private IP in classic mode using the Azure Portal| Microsoft Azure"
+   description="Understanding static private IPs and how to manage them in classic mode using the Azure portal"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -17,68 +17,72 @@
    ms.date="02/04/2016"
    ms.author="jdial" />
 
-# Azure ポータルで静的プライベート IP アドレスを設定する方法 (クラシック)
+
+# <a name="how-to-set-a-static-private-ip-address-(classic)-in-the-azure-portal"></a>How to set a static private IP address (classic) in the Azure portal
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-selectors-classic-include](../../includes/virtual-networks-static-private-ip-selectors-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、クラシック デプロイメント モデルについて説明します。[リソース マネージャーのデプロイメント モデルで静的プライベート IP アドレスを管理する](virtual-networks-static-private-ip-arm-pportal.md)こともできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] This article covers the classic deployment model. You can also [manage a static private IP address in the Resource Manager deployment model](virtual-networks-static-private-ip-arm-pportal.md).
 
 [AZURE.INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-次のサンプルの手順では、単純な環境が既に作成されていると想定します。このドキュメントに表示されている手順を実行する場合は、まず、[vnet の作成](virtual-networks-create-vnet-classic-pportal.md)に関する記事に示されているテスト環境を構築します。
+The sample steps below expect a simple environment already created. If you want to run the steps as they are displayed in this document, first build the test environment described in [create a vnet](virtual-networks-create-vnet-classic-pportal.md).
 
-## VM 作成時に静的プライベート IP アドレスを指定する方法
-静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、以下の手順に従います。
+## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>How to specify a static private IP address when creating a VM
+To create a VM named *DNS01* in the *FrontEnd* subnet of a VNet named *TestVNet* with a static private IP of *192.168.1.101*, follow the steps below:
 
-1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. **[新規]**、**[Compute]**、**[Windows Server 2012 R2 Datacenter]** の順にクリックし、**[デプロイ モデルの選択]** の一覧に既に **[クラシック]** と表示されているのを確認してから **[作成]** をクリックします。
+1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
+2. Click **NEW** > **Compute** > **Windows Server 2012 R2 Datacenter**, notice that the **Select a deployment model** list already shows **Classic**, and then click **Create**.
 
-	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
+    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
 
-3. **[VM の作成]** ブレードで、作成する VM の名前 (ここでは *DNS01*)、ローカル管理者のアカウント、およびパスワードを入力します。
+3. In the **Create VM** blade, enter the name of the VM to be created (*DNS01* in our scenario), the local administrator account, and password.
 
-	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
+    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
 
-4. **[オプションの構成]**、**[ネットワーク]**、**[Virtual Network]** の順にクリックし、**[TestVNet]** をクリックします。**[TestVNet]** を使用できない場合は、場所として *[米国中央部]* を使用しており、この記事の冒頭で説明されているテスト環境が作成済みであることを確認してください。
+4. Click **Optional Configuration** > **Network** > **Virtual Network**, and then click **TestVNet**. If **TestVNet** is not available, make sure you are using the *Central US* location and have created the test environment described at the beginning of this article.
 
-	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
+    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
 
-5. **[ネットワーク]** ブレードで、以下のように、現在選択されているサブネットが *FrontEnd* であることを確認し、**[IP アドレス]** をクリックしてから、**[IP アドレスの割り当て]** の下にある **[静的]** をクリックして、**[IP アドレス]** に 「*192.168.1.101*」と入力します。
+5. In the **Network** blade, make sure the subnet currently selected is *FrontEnd*, then click **IP addresses**, under **IP address assignment** click **Static**, and then enter *192.168.1.101* for **IP Address** as seen below.
 
-	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure04.png)
+    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure04.png)   
 
-6. **[IP アドレス]** ブレードで **[OK]** をクリックし、**[ネットワーク]** ブレードで **[OK]** をクリックしてから、**[オプションの構成]** ブレードで **[OK]** をクリックします。
-7. **[VM の作成]** ブレードで、**[作成]** をクリックします。ダッシュ ボードに以下のタイルが表示されることを確認します。
+6. Click **OK** in the **IP addresses** blade, then click **OK** in the **Network** blade, and click **OK** in the **Optional config** blade.
+7. In the **Create VM** blade, click **Create**. Notice the tile below displayed in your dashboard.
 
-	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
+    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure05.png)
 
-## VM 用の静的プライベート IP アドレス情報を取得する方法
+## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>How to retrieve static private IP address information for a VM
 
-上記の手順で作成された VM の静的プライベート IP アドレス情報を表示するには、次の手順を実行します。
+To view the static private IP address information for the VM created with the steps above, execute the steps below.
 
-1. Azure ポータルで、**[すべて参照]**、**[仮想マシン (クラシック)]**、**[DNS01]**、**[すべての設定]**、**[IP アドレス]** の順にクリックし、以下の IP アドレスの割り当てと IP アドレスを確認します。
+1. From the Azure Azure portal, click **BROWSE ALL** > **Virtual machines (classic)** > **DNS01** > **All settings** > **IP addresses** and notice the IP address assignment and IP address as seen below.
 
-	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
+    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
 
-## VM から静的プライベート IP アドレスを削除する方法
-上記で作成した VM から静的プライベート IP アドレスを削除するには、以下の手順に従います。
-	
-1. 上記の **[IP アドレス]** ブレードで、**[IP アドレスの割り当て]** の右にある **[動的]** をクリックしてから、**[保存]**、**[はい]** の順にクリックします。
+## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>How to remove a static private IP address from a VM
+To remove the static private IP address from the VM created above, follow the steps below.
+    
+1. From the **IP addresses** blade shown above, click **Dynamic** to the right of **IP address assignment**, then click **Save**, and then click **Yes**.
 
-	![Azure ポータルでの VM の作成](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
+    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
 
-## 既存の VM に静的プライベート IP アドレスを追加する方法
-上記の手順を使用して作成した VM に静的プライベート IP アドレスを追加するには、次の手順に従います。
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>How to add a static private IP address to an existing VM
+To add a static private IP address to the VM created using the steps above, follow the steps below:
 
-1. 上記の **[IP アドレス]** ブレードで、**[IP アドレスの割り当て]** の右にある **[静的]** をクリックします。
-2. **[IP アドレス]** に「*192.168.1.101*」と入力してから、**[保存]**、**[はい]** の順にクリックします。
+1. From the **IP addresses** blade shown above, click **Static** to the right of **IP address assignment**.
+2. Type *192.168.1.101* for **IP address**, then click **Save**, and then click **Yes**.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [予約済みパブリック IP](virtual-networks-reserved-public-ip.md) アドレスについて理解する。
-- [インスタンスレベル パブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスについて理解する。
-- [予約済み IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) を確認する。
+- Learn about [reserved public IP](virtual-networks-reserved-public-ip.md) addresses.
+- Learn about [instance-level public IP (ILPIP)](virtual-networks-instance-level-public-ip.md) addresses.
+- Consult the [Reserved IP REST APIs](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

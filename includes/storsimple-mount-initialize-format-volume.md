@@ -1,38 +1,41 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### ボリュームをマウント、初期化、フォーマットするには
+#### <a name="to-mount,-initialize,-and-format-a-volume"></a>To mount, initialize, and format a volume
 
-1. Microsoft iSCSI イニシエーターを開始します。
+1. Start the Microsoft iSCSI initiator.
 
-2. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[探索]** タブで、**[ポータルの探索]** をクリックします。
+2. In the **iSCSI Initiator Properties** window, on the **Discovery** tab, click **Discover Portal**.
 
-3. **[ターゲット ポータルの探索]** ダイアログ ボックスで、iSCSI 対応のネットワーク インターフェイスの IP アドレスを入力し、**[OK]** をクリックします。
+3. In the **Discover Target Portal** dialog box, supply the IP address of your iSCSI-enabled network interface, and then click **OK**. 
 
-4. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[ターゲット]** タブで、**[検出されたターゲット]** を見つけます。デバイスの状態が **[非アクティブ]** になっています。
+4. In the **iSCSI Initiator Properties** window, on the **Targets** tab, locate the **Discovered targets**. The device status should appear as **Inactive**.
 
-5. ターゲット デバイスを選択し、**[接続]** をクリックします。デバイスが接続されると、状態が **[接続]** に変わります (Microsoft iSCSI イニシエーターの使用方法の詳細については、「[Microsoft iSCSI イニシエーターのインストールと構成][1]」を参照してください)。
+5. Select the target device and then click **Connect**. After the device is connected, the status should change to **Connected**. (For more information about using the Microsoft iSCSI initiator, see [Installing and Configuring Microsoft iSCSI Initiator][1]).
 
-6. Windows ホスト上で、Windows ロゴ キーを押しながら X キーを押し、**[ファイル名を指定して実行]** をクリックします。
+6. On your Windows host, press the Windows Logo key + X, and then click **Run**. 
 
-7. **[ファイル名を指定して実行]** ダイアログ ボックスに、「**Diskmgmt.msc**」と入力します。**[OK]** をクリックします。**[ディスクの管理]** ダイアログ ボックスが表示されます。右側のウィンドウに、ホスト上のボリュームが表示されます。
+7. In the **Run** dialog box, type **Diskmgmt.msc**. Click **OK**, and the **Disk Management** dialog box will appear. The right pane will show the volumes on your host.
 
-8. 次の図に示すように、マウントされているボリュームが **[ディスクの管理]** ウィンドウに表示されます。検出されたボリュームを右クリックし (ディスク名をクリック)、**[オンライン]** をクリックします。
+8. In the **Disk Management** window, the mounted volumes will appear as shown in the following illustration. Right-click the discovered volume (click the disk name), and then click **Online**.
 
-     ![ボリュームの初期化とフォーマット](./media/storsimple-mount-initialize-format-volume/HCS_InitializeFormatVolume-include.png)
+     ![Initialize format volume](./media/storsimple-mount-initialize-format-volume/HCS_InitializeFormatVolume-include.png) 
 
-9. もう一度ボリュームを右クリックし (ディスク名をクリック)、**[初期化]** をクリックします。
+9. Right-click the volume (click the disk name) again, and then click **Initialize**.
 
-10. シンプル ボリュームをフォーマットするには、次の手順を実行します。
-  1. ボリュームを選択して右クリックし (右側の領域をクリック)、**[新しいシンプル ボリューム]** をクリックします。
-  2. 新しいシンプル ボリューム ウィザードで、ボリュームのサイズとドライブの文字を指定し、このボリュームを NTFS ファイル システムとして構成します。
-  3. 64 KB アロケーション ユニット サイズを指定します。このアロケーション ユニット サイズは、StorSimple ソリューションで使用されている重複除去アルゴリズムに適しています。
-  4. クイック フォーマットを実行します。
+10. To format a simple volume, perform the following steps:
+  1. Select the volume, right-click it (click the right area), and click **New Simple Volume**.
+  2. In the New Simple Volume wizard, specify the volume size and drive letter and configure the volume as an NTFS file system.
+  3. Specify a 64 KB allocation unit size. This allocation unit size works well with the deduplication algorithms used in the StorSimple solution.
+  4. Perform a quick format.
 
-![ビデオ](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **ビデオ**
+![Video available](./media/storsimple-mount-initialize-format-volume/Video_icon.png) **Video available**
 
-StorSimple ボリュームのマウント、初期化、およびフォーマットの方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/)を参照してください。
+To watch a video that demonstrates how to mount, initialize, and format a StorSimple volume, click [here](https://azure.microsoft.com/documentation/videos/mount-initialize-and-format-a-storsimple-volume/).
 
 <!--Link references-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
-<!---HONumber=AcomDC_0128_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

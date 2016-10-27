@@ -1,115 +1,120 @@
 <properties
-	pageTitle="Azure App Service での API Apps の認証と承認 | Microsoft Azure"
-	description="Azure App Service が API Apps 向けに提供している認証サービスと承認サービスについて説明します。"
-	services="app-service\api"
-	documentationCenter=".net"
-	authors="tdykstra"
-	manager="wpickett"
-	editor=""/>
+    pageTitle="Authentication and authorization for API Apps in Azure App Service | Microsoft Azure"
+    description="Learn about the authentication and authorization services that Azure App Service provides for API Apps."
+    services="app-service\api"
+    documentationCenter=".net"
+    authors="tdykstra"
+    manager="wpickett"
+    editor=""/>
 
 <tags
-	ms.service="app-service-api"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/23/2016"
-	ms.author="rachelap"/>
+    ms.service="app-service-api"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="05/23/2016"
+    ms.author="rachelap"/>
 
-# Azure App Service での API Apps の認証と承認
 
-## 概要 
+# <a name="authentication-and-authorization-for-api-apps-in-azure-app-service"></a>Authentication and authorization for API Apps in Azure App Service
 
-> [AZURE.NOTE] このトピックは、Web、モバイル、および API Apps に関する説明が記載された[App Service の認証/承認](../app-service/app-service-authentication-overview.md)に関する記事に統合される予定です。
+## <a name="overview"></a>Overview 
 
-Azure App Service は、[OAuth 2.0](#oauth) と [OpenID Connect](#oauth) を実装する、組み込みの認証および承認サービスを提供します。この記事では、Azure App Service の API Apps に使用可能なサービスとオプションについて説明します。
+> [AZURE.NOTE] This topic will be migrated to a consolidated [App Service Authentication / Authorization](../app-service/app-service-authentication-overview.md) topic, which covers Web, Mobile, and API Apps.
 
-次の図は、App Service の認証の鍵となるいくつかの特性を示しています。
+Azure App Service offers built-in authentication and authorization services that implement [OAuth 2.0](#oauth) and [OpenID Connect](#oauth). This article describes the services and options that are available for API Apps in Azure App Service.
 
-* 受信した API 要求の前処理を行います。つまり、App Service でサポートされる言語またはフレームワークが処理されます。
-* 認証処理をどこまで独自のコードで行うかに関して、いくつかの選択肢が提供されています。
-* エンド ユーザーとサービス アカウントの両方の認証に対応します。
-* ID プロバイダーとして、Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントの 5 つがサポートされます。
-* API Apps、Web Apps、Mobile Apps のいずれについても同じ処理が行われます。
+The following diagram illustrates some key characteristics of App Service authentication:
+
+* It preprocesses incoming API requests, which means it works with any language or framework supported by App Service.
+* It gives you several options for how much authentication work you want to do in your own code.
+* It works for both end user and service account authentication. 
+* It supports five identity providers: Azure Active Directory, Facebook, Google, Twitter, and Microsoft Account.
+* It works the same for API Apps, Web Apps, and Mobile Apps.
 
 ![](./media/app-service-api-authentication/api-apps-overview.png)
 
-## 言語を選ばない
+## <a name="language-agnostic"></a>Language agnostic
 
-App Service 認証処理は、要求が API アプリに到達する前の時点で行われます。つまり、認証機能を利用する側の API アプリは、どのような言語、どのようなフレームワークで作成されていてもかまいません。API の開発には、ASP.NET、Java、Node.js のほか、App Service でサポートされるあらゆるフレームワークを使用できます。
+App Service authentication processing happens before requests reach your API app, which means that the authentication features work for API apps written in any language or framework.  Your API can be based on ASP.NET, Java, Node.js, or any framework that App Service supports.
 
-App Service は、HTTP 要求の Authorization ヘッダーで JSON Web トークン (JWT) を受け渡しします。コードは、その作成に使用された言語やフレームワークに関係なく、必要な情報をトークンから取得することができます。また、App Service では、いくつかの特殊なヘッダーを設定すると、ごく一般的に使用される要求にも簡単にアクセスすることができます。その例を次に示します。
+App Service passes on the JSON web token (JWT) in the Authorization header of an HTTP request, and code written in any language or framework can get the information it needs from the token. In addition, App Service gives you easier access to the most commonly used claims by setting some special headers, such as the following:
 
 * X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 * X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN
 * X-MS-TOKEN-FACEBOOK-EXPIRES-ON
  
-.NET API では `Authorize` 属性を使用できます。要求の情報は .NET のクラスで自動的に設定されるため、要求に基づくコードをすぐに記述して、きめ細かな承認処理を行うことができます。
+In a .NET API, you can use the `Authorize` attribute, and for fine-grained authorization you can easily write code based on claims because claims information is populated for you in .NET classes.
 
-## 複数の保護オプション
+## <a name="multiple-protection-options"></a>Multiple protection options
 
-App Service は、API アプリに対する匿名 HTTP 要求の到達を禁止するか、すべての要求を通過させて匿名 HTTP 要求を含む要求のトークンを検証するか、または、要求に対して操作を行うことなく、すべての要求を通過させることができます。
+App Service can prevent anonymous HTTP requests from reaching your API app, it can pass on all requests and validate tokens for requests that include them, or it can let through all requests without taking any action on them:
 
-1. 認証済みの要求のみ API アプリへの到達を許可する。
+1. Allow only authenticated requests to reach your API app.
 
-	ブラウザーから匿名要求を受信した場合、App Service は、選択した認証プロバイダー (Azure AD、Google、Twitter など) のログオン ページにリダイレクトされます。
+    If an anonymous request is received from a browser, App Service will redirect to a logon page for the authentication provider (Azure AD, Google, Twitter, etc.) that you choose. 
 
-	この選択肢をアプリで採用した場合、認証コードを自分で記述する必要は一切ありません。また、最も重要な要求は HTTP ヘッダー内に指定されているため承認コードも単純です。
+    With this option, you don't need to write any authentication code at all in your app, and authorization code is simplified because the most important claims are provided in the HTTP headers.
 
-2. すべての要求に API アプリへの到達を許可したうえで、認証済みの要求を検証し、HTTP ヘッダー内の認証情報を受け渡しする。
+2. Allow all requests to reach your API app, but validate authenticated requests and pass along authentication information in the HTTP headers.
 
-	この選択肢では、匿名要求をより柔軟に処理することができますが、匿名ユーザーに API の利用を禁止する場合は、独自にコードを記述する必要があります。最も一般的な要求は HTTP 要求のヘッダーで渡されるため、承認コードは比較的単純です。
-	
-3. すべての要求に API への到達を許可し、要求に含まれる認証情報に対して何も実行しない。
+    This option gives you more flexibility in handling anonymous requests, but you have to write code if you want to prevent anonymous users from using your API. Since the most popular claims are passed in the headers of HTTP requests, authorization code is relatively simple.
+    
+3. Allow all requests to reach your API, take no action on authentication information in the requests.
 
-	この選択肢を採用した場合、認証と承認に伴う一切の処理をアプリケーション コードに委ねることになります。
+    This option leaves the tasks of authentication and authorization entirely up to your application code.
 
-どの選択肢を採用するかは、[Azure ポータル](https://portal.azure.com/)の **[認証/承認]** ブレードで選びます。
+In the [Azure portal](https://portal.azure.com/), you select the option you want on the **Authentication / Authorization** blade.
 
 ![](./media/app-service-api-authentication/authblade.png)
 
-1 つ目と 2 つ目の選択肢については、**[App Service 認証]** をオンにし、**[要求が認証されなかったときに実行する処理]** ドロップダウン リストの **[ログイン]** または **[要求を許可 (何もしない)]** を選択します。**[ログイン]** を選択した場合は、認証プロバイダーを選んで、その構成を行う必要があります。
+For options 1 and 2, turn on **App Service Authentication**, and in the **Action to take when request is not authenticated** drop-down list choose **Log in** or **Allow request (no action)**.  If you choose **Log in**, you have to choose an authentication provider and configure that provider.
 
 ![](./media/app-service-api-authentication/actiontotake.png)
 
-認証を構成する方法の詳細については、「[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)」を参照してください。この記事は API アプリだけでなくモバイル アプリにも適用され、他の認証プロバイダーに関する他の記事へのリンクが記載されています。
+For detailed information about how to configure authentication, see [How to configure your App Service application to use Azure Active Directory login](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md). The article applies to API apps as well as mobile apps, and it links to other articles for the other authentication providers.
  
-## <a id="internal"></a> サービス アカウントの認証
+## <a name="<a-id="internal"></a>-service-account-authentication"></a><a id="internal"></a> Service account authentication
 
-App Service 認証では、内部的なシナリオ (API アプリから別の API アプリを呼び出すなど) を処理します。このシナリオでは、エンド ユーザーの資格情報ではなく、サービス アカウントの資格情報を使用して、トークンを取得します。サービス アカウントは、Azure Active Directory では*サービス プリンシパル*とも呼ばれ、このようなアカウントでの認証は、サービス間シナリオとも呼ばれます。
+App Service authentication works for internal scenarios such as for calling from one API app to another API app. In this scenario you get a token by using credentials for a service account instead of end user credentials. A service account is also known as a *service principal* in Azure Active Directory, and authentication using such an account is also known as a service-to-service scenario. 
 
-サービス間シナリオでは、呼び出し先の API アプリを Azure Active Directory で保護し、その API アプリを呼び出すときに AAD サービス プリンシパル承認トークンを提供します。クライアント ID とクライアント シークレットを AAD アプリケーションから提供して、トークンを取得します。Mobile Services Zumo トークンの処理で使用されていたような Azure 専用の特殊なコードは不要です。このシナリオについて、ASP.NET API アプリを使った例が、[API Apps のサービス プリンシパル認証](app-service-api-dotnet-service-principal-auth.md)に関するチュートリアルで紹介されています。
+For service-to-service scenarios, protect the called API app by using Azure Active Directory, and provide an AAD service principal authorization token when you call the API app. You get a token by providing the client ID and client secret from the AAD application. No special Azure-only code is required, such as used to be true for handling the Mobile Services Zumo token. An example of this scenario using ASP.NET API apps is covered by the tutorial [Service principal authentication for API Apps](app-service-api-dotnet-service-principal-auth.md).
 
-App Service 認証を使わずにサービス間の認証を行う場合、クライアント証明書または基本認証を利用することができます。Azure のクライアント証明書の詳細については、「[Web Apps の TLS 相互認証を構成する方法](../app-service-web/app-service-web-configure-tls-mutual-auth.md)」を参照してください。ASP.NET での基本認証の詳細については、「[ASP.NET Web API 2 での認証フィルター](http://www.asp.net/web-api/overview/security/authentication-filters)」を参照してください。
+If you want to handle a service-to-service scenario without using App Service authentication, you can use client certificates or basic authentication. For information about client certificates in Azure, see [How To Configure TLS Mutual Authentication for Web Apps](../app-service-web/app-service-web-configure-tls-mutual-auth.md). For information about basic authentication in ASP.NET, see [Authentication Filters in ASP.NET Web API 2](http://www.asp.net/web-api/overview/security/authentication-filters).
 
-App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、「[App Service でホストされたカスタム API のロジック アプリでの使用](../app-service-logic/app-service-logic-custom-hosted-api.md)」で説明されています。
+Service account authentication from an App Service logic app to an API app is a special case that is explained in [Using your custom API hosted on App Service with Logic apps](../app-service-logic/app-service-logic-custom-hosted-api.md).
 
-## モバイル クライアント認証
+## <a name="mobile-client-authentication"></a>Mobile client authentication
 
-モバイル クライアントから認証を処理する方法の詳細については、「[モバイル アプリの認証に関するドキュメント](../app-service-mobile/app-service-mobile-ios-get-started-users.md)」を参照してください。App Service 認証は、モバイル アプリと API アプリと同じ方法で処理されます。
+For information about how to handle authentication from mobile clients, see the [documentation on authentication for mobile apps](../app-service-mobile/app-service-mobile-ios-get-started-users.md). App Service authentication works the same way for mobile apps and API apps.
   
-## 詳細情報
+## <a name="more-information"></a>More information
 
-Azure App Service での認証と承認の詳細については、以下のリソースを参照してください。
+For more information about authentication and authorization in Azure App Service, see the following resources:
 
-* [Expanding App Service authentication / authorization (App Service の認証/承認の展開)](/blog/announcing-app-service-authentication-authorization/)
-* [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md) (ページの先頭に、他の認証プロバイダーのリンクがあります)
+* [Expanding App Service authentication / authorization](/blog/announcing-app-service-authentication-authorization/)
+* [How to configure your App Service application to use Azure Active Directory login](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md) (Includes links for other authentication providers at the top of the page.) 
 
-OAuth 2.0、OpenID Connect、JSON Web トークン (JWT) の詳細については、次のリソースを参照してください。
+For more information about OAuth 2.0, OpenID Connect, and JSON Web Tokens (JWT), see the following resources.
 
-* [OAuth 2.0 の概要](http://shop.oreilly.com/product/0636920021810.do "OAuth 2.0 の概要")
-* [OAuth2、OpenID Connect と JSON Web トークン (JWT) の概要 - PluralSight コース](http://www.pluralsight.com/courses/oauth2-json-web-tokens-openid-connect-introduction)
-* [ASP.NET での複数のクライアント用 RESTful API の構築とセキュリティ保護 - PluralSight コース](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
+* [Getting started with OAuth 2.0](http://shop.oreilly.com/product/0636920021810.do "Getting Started with OAuth 2.0") 
+* [Introduction to OAuth2, OpenID Connect and JSON Web Tokens (JWT) - PluralSight Course](http://www.pluralsight.com/courses/oauth2-json-web-tokens-openid-connect-introduction) 
+* [Building and Securing a RESTful API for Multiple Clients in ASP.NET - PluralSight course](http://www.pluralsight.com/courses/building-securing-restful-api-aspdotnet)
 
-Azure Active Directory の詳細については、次のリソースを参照してください。
+For more information about Azure Active Directory, see the following resources.
 
-* [Azure AD のシナリオ](http://aka.ms/aadscenarios)
-* [Azure AD 開発者ガイド](http://aka.ms/aaddev)
-* [Azure AD のサンプル](http://aka.ms/aadsamples)
+* [Azure AD scenarios](http://aka.ms/aadscenarios)
+* [Azure AD developers' guide](http://aka.ms/aaddev)
+* [Azure AD samples](http://aka.ms/aadsamples)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-この記事では、API アプリに使用できる App Service の認証と承認の機能について説明しました。入門シリーズの次のチュートリアルでは、[App Service API Apps にユーザー認証](app-service-api-dotnet-user-principal-auth.md)を実装する方法について説明します。
+This article has explained authentication and authorization features of App Service that you can use for API apps. The next tutorial in the getting started series shows how to implement [user authentication in App Service API Apps](app-service-api-dotnet-user-principal-auth.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,193 +1,194 @@
 <properties
-	pageTitle="Java での Azure Search の使用 | Microsoft Azure | ホスト型クラウド検索サービス"
-	description="プログラミング言語として Java を使用して Azure でホスト型クラウド検索アプリケーションを作成する方法を説明します。"
-	services="search"
-	documentationCenter=""
-	authors="EvanBoyle"
-	manager="pablocas"
-	editor="v-lincan"/>
+    pageTitle="Get started with Azure Search in Java | Microsoft Azure | Hosted cloud search service"
+    description="How to build a hosted cloud search application on Azure using Java as your programming language."
+    services="search"
+    documentationCenter=""
+    authors="EvanBoyle"
+    manager="pablocas"
+    editor="v-lincan"/>
 
 <tags
-	ms.service="search"
-	ms.devlang="na"
-	ms.workload="search"
-	ms.topic="hero-article"
-	ms.tgt_pltfrm="na"
-	ms.date="07/14/2016"
-	ms.author="evboyle"/>
+    ms.service="search"
+    ms.devlang="na"
+    ms.workload="search"
+    ms.topic="hero-article"
+    ms.tgt_pltfrm="na"
+    ms.date="07/14/2016"
+    ms.author="evboyle"/>
 
-# Java での Azure Search の使用
+
+# <a name="get-started-with-azure-search-in-java"></a>Get started with Azure Search in Java
 > [AZURE.SELECTOR]
-- [ポータル](search-get-started-portal.md)
+- [Portal](search-get-started-portal.md)
 - [.NET](search-howto-dotnet-sdk.md)
 
-検索エクスペリエンスとして Azure Search を使用するカスタム Java 検索アプリケーションを作成する方法を説明します。このチュートリアルでは、[Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を使用して、この演習で使用するオブジェクトおよび操作を作成します。
+Learn how to build a custom Java search application that uses Azure Search for its search experience. This tutorial uses the [Azure Search Service REST API](https://msdn.microsoft.com/library/dn798935.aspx) to construct the objects and operations used in this exercise.
 
-このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Azure ポータル](https://portal.azure.com)でサインアップできます。詳しい手順については、「[Azure ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」を参照してください。
+To run this sample, you must have an Azure Search service, which you can sign up for in the [Azure Portal](https://portal.azure.com). See [Create an Azure Search service in the portal](search-create-service-portal.md) for step-by-step instructions.
 
-このサンプルをビルドしてテストするには次のソフトウェアを使用しました。
+We used the following software to build and test this sample:
 
-- [Eclipse IDE for Java EE Developers](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar)。EE バージョンを必ずダウンロードしてください。検証手順の 1 つで、このエディションにしかない機能が必要です。
+- [Eclipse IDE for Java EE Developers](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar). Be sure to download the EE version. One of the verification steps requires a feature that is found only in this edition.
 
 - [JDK 8u40](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 - [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
 
-## データについて
+## <a name="about-the-data"></a>About the data
 
-このサンプル アプリケーションでは、[United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm) からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
+This sample application uses data from the [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm), filtered on the state of Rhode Island to reduce the dataset size. We'll use this data to build a search application that returns landmark buildings such as hospitals and schools, as well as geological features like streams, lakes, and summits.
 
-このアプリケーションでは、**SearchServlet.java** プログラムは [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) コンストラクトを使用してインデックスを作成して読み込み、パブリック Azure SQL Database からフィルター処理された USGS データセットを取得します。オンライン データ ソースに対する定義済みの資格情報と接続情報は、プログラム コードで提供されます。データ アクセスに関しては、これ以上の構成は必要ありません。
+In this application, the **SearchServlet.java** program builds and loads the index using an [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) construct, retrieving the filtered USGS dataset from a public Azure SQL Database. Predefined credentials and connection  information to the online data source are provided in the program code. In terms of data access, no further configuration is necessary.
 
-> [AZURE.NOTE] このデータセットにフィルターを提供し、無料価格レベルのドキュメントを 10,000 件未満に制限しました。標準レベルを使用する場合は、この制限は適用されず、より大きなデータセットを使用するようにこのコードを変更できます。各価格レベルの容量の詳細については、「[制限および制約](search-limits-quotas-capacity.md)」を参照してください。
+> [AZURE.NOTE] We applied a filter on this dataset to stay under the 10,000 document limit of the free pricing tier. If you use the standard tier, this limit does not apply, and you can modify this code to use a bigger dataset. For details about capacity for each pricing tier, see [Limits and constraints](search-limits-quotas-capacity.md).
 
-## プログラム ファイルについて
+## <a name="about-the-program-files"></a>About the program files
 
-このサンプルに関連するファイルの一覧を次に示します。
+The following list describes the files that are relevant to this sample.
 
-- Search.jsp: ユーザー インターフェイスを提供します
-- SearchServlet.java: メソッドを提供します (MVC のコントローラーに似ています)
-- SearchServiceClient.java: HTTP 要求を処理します
-- SearchServiceHelper.java: 静的メソッドを提供するヘルパー クラスです
-- Document.java: データ モデルを提供します
-- config.properties: Search サービスの URL と API キーを設定します
-- Pom.xml: Maven が依存します
+- Search.jsp: Provides the user interface
+- SearchServlet.java: Provides methods (similar to a controller in MVC)
+- SearchServiceClient.java: Handles HTTP requests
+- SearchServiceHelper.java: A helper class that provides static methods
+- Document.java: Provides the data model
+- config.properties: Sets the Search service URL and api-key
+- Pom.xml: A Maven dependency
 
 <a id="sub-2"></a>
-## Azure Search サービスのサービス名と API キーの取得
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Find the service name and api-key of your Azure Search service
 
-Azure Search へのすべての REST API 呼び出しで、サービスの URL と API キーを指定する必要があります。
+All REST API calls into Azure Search require that you provide the service URL and an api-key. 
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ジャンプ バーで、**[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
-3. 使用するサービスを選択します。
-4. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
+1. Sign in to the [Azure Portal](https://portal.azure.com).
+2. In the jump bar, click **Search service** to list all of the Azure Search services provisioned for your subscription.
+3. Select the service you want to use.
+4. On the service dashboard, you'll see tiles for essential information as well as the key icon for accessing the admin keys.
 
-  	![][3]
+    ![][3]
 
-5. サービスの URL と管理者キーをコピーします。後で **config.properties** ファイルに追加するときに必要になります。
+5. Copy the service URL and an admin key. You will need them later, when you add them to the **config.properties** file.
 
-## サンプル ファイルのダウンロード
+## <a name="download-the-sample-files"></a>Download the sample files
 
-1. Github で [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) に移動します。
+1. Go to [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) on Github.
 
-2. **[Download ZIP]** をクリックして .zip ファイルをディスクに保存した後、すべてのファイルをコンテナーに抽出します。後でプロジェクトを探しやすいように、Java ワークスペースにファイルを抽出してください。
+2. Click **Download ZIP**, save the .zip file to disk, and then extract all the files it contains. Consider extracting the files into your Java workspace to make it easier to find the project later.
 
-3. サンプル ファイルは読み取り専用です。フォルダーのプロパティを右クリックし、読み取り専用の属性をオフにします。
+3. The sample files are read-only. Right-click folder properties and clear the read-only attribute.
 
-以降のすべてのファイル変更および実行ステートメントは、このフォルダー内のファイルに対して行われます。
+All subsequent file modifications and run statements will be made against files in this folder.  
 
-## プロジェクトのインポート
+## <a name="import-project"></a>Import project
 
-1. Eclipse で、**[File]**、**[Import]**、**[General]**、**[Existing Projects into Workspace]** の順に選択します。
+1. In Eclipse, choose **File** > **Import** > **General** > **Existing Projects into Workspace**.
 
     ![][4]
 
-2. **[Select root directory]** で、サンプル ファイルを含むフォルダーを参照します。.project フォルダーが含まれるフォルダーを選択します。プロジェクトが選択項目として **[Projects]** の一覧に表示されます。
+2. In **Select root directory**, browse to the folder containing sample files. Select the folder that contains the .project folder. The project should appear in the **Projects** list as a selected item.
 
     ![][12]
 
-3. **[完了]** をクリックします。
+3. Click **Finish**.
 
-4. **Project Explorer** を使用して、ファイルを表示および編集します。まだ開いていない場合は、**[Window]**、**[Show View]**、**[Project Explorer]** の順にクリックするか、またはショートカットを使用して開きます。
+4. Use **Project Explorer** to view and edit the files. If it's not already open, click **Window** > **Show View** > **Project Explorer** or use the shortcut to open it.
 
-## サービスの URL と API キーの構成
+## <a name="configure-the-service-url-and-api-key"></a>Configure the service URL and api-key
 
-1. **Project Explorer** で、**config.properties** をダブルクリックして、サーバー名と API キーを含む構成設定を編集します。
+1. In **Project Explorer**, double-click **config.properties** to edit the configuration settings containing the server name and api-key.
 
-2. この記事で前述の手順を参照し、[Azure ポータル](https://portal.azure.com)でサービスの URL と API キーを探して、**config.properties** に入力する値を取得します。
+2. Refer to the steps earlier in this article, where you found the service URL and api-key in the [Azure Portal](https://portal.azure.com), to get the values you will now enter into **config.properties**.
 
-3. **config.properties** で、「API キー」をサービスの API キーに置き換えます。次に、サービス名 (URL http://servicename.search.windows.net の最初のコンポーネント) で同じファイルの「サービス名」を置き換えます。
+3. In **config.properties**, replace "Api Key" with the api-key for your service. Next, service name (the first component of the URL http://servicename.search.windows.net) replaces "service name" in the same file.
 
-	![][5]
+    ![][5]
 
-## プロジェクト、ビルド、ランタイムの環境の構成
+## <a name="configure-the-project,-build-and-runtime-environments"></a>Configure the project, build and runtime environments
 
-1. Eclipse の Project Explorer で、プロジェクトを右クリックし、**[Properties]**、**[Project Facets]** の順に選択します。
+1. In Eclipse, in Project Explorer, right-click the project > **Properties** > **Project Facets**.
 
-2. **[Dynamic Web Module]**、**[Java]**、**[JavaScript]** を選択します。
+2. Select **Dynamic Web Module**, **Java**, and **JavaScript**.
 
     ![][6]
 
-3. **[Apply]** をクリックします。
+3. Click **Apply**.
 
-4. **[Window]**、**[Preferences]**、**[Server]**、**[Runtime Environments]**、**[Add..]** の順に選択します。
+4. Select **Window** > **Preferences** > **Server** > **Runtime Environments** > **Add..**.
 
-5. Apache を展開し、前にインストールした Apache Tomcat サーバーのバージョンを選択します。この例では、バージョン 8 をインストールしました。
+5. Expand Apache and select the version of the Apache Tomcat server you previously installed. On our system, we installed version 8.
 
-	![][7]
+    ![][7]
 
-6. 次のページでは、Tomcat のインストール ディレクトリを指定します。Windows コンピューターでは、通常、C:\\Program Files\\Apache Software Foundation\\Tomcat *version* です。
+6. On the next page, specify the Tomcat installation directory. On a Windows computer, this will most likely be C:\Program Files\Apache Software Foundation\Tomcat *version*.
 
-6. **[完了]** をクリックします。
+6. Click **Finish**.
 
-7. **[Window]**、**[Preferences]**、**[Java]**、**[Installed JREs]**、**[Add]** の順に選択します。
+7. Select **Window** > **Preferences** > **Java** > **Installed JREs** > **Add**.
 
-8. **[Add JRE]** で、**[Standard VM]** を選択します。
+8. In **Add JRE**, select **Standard VM**.
 
-10. **[次へ]** をクリックします。
+10. Click **Next**.
 
-11. [JRE Definition] の [JRE home] で、**[Directory]** をクリックします。
+11. In JRE Definition, in JRE home, click **Directory**.
 
-12. **[Program Files]**、**[Java]** に移動し、先にインストールした JDK を選択します。JRE として JDK を選択することが重要です。
+12. Navigate to **Program Files** > **Java** and select the JDK you previously installed. It's important to select the JDK as the JRE.
 
-13. [Installed JREs] で、**[JDK]** を選択します。設定は次のスクリーン ショットのようになります。
+13. In Installed JREs, choose the **JDK**. Your settings should look similar to the following screenshot.
 
     ![][9]
 
-14. 必要に応じて、**[Window]**、**[Web Browser]**、**[Internet Explorer]** を選択し、外部のブラウザー ウィンドウでアプリケーションを開きます。外部のブラウザーを使用すると、Web アプリケーションのエクスペリエンスがよくなります。
+14. Optionally, select **Window** > **Web Browser** > **Internet Explorer** to open the application in an external browser window. Using an external browser gives you a better Web application experience.
 
     ![][8]
 
-構成タスクが完了しました。次に、プロジェクトをビルドして実行します。
+You have now completed the configuration tasks. Next, you'll build and run the project.
 
-## プロジェクトのビルド
+## <a name="build-the-project"></a>Build the project
 
-1. Project Explorer で、プロジェクト名を右クリックし、**[Run As]**、**[Maven build...]** の順に選択してプロジェクトを構成します。
+1. In Project Explorer, right-click the project name and choose **Run As** > **Maven build...** to configure the project.
 
     ![][10]
 
-8. [Edit Configuration] の [Goals] に「clean install」と入力し、**[Run]** をクリックします。
+8. In Edit Configuration, in Goals, type "clean install", and then click **Run**.
 
-ステータス メッセージがコンソール ウィンドウに出力されます。[BUILD SUCCESS] と表示されれば、プロジェクトはエラーなしでビルドされています。
+Status messages are output to the console window. You should see BUILD SUCCESS indicating the project built without errors.
 
-## アプリの実行
+## <a name="run-the-app"></a>Run the app
 
-この最後の手順では、ローカル サーバーのランタイム環境でアプリケーションを実行します。
+In this last step, you will run the application in a local server runtime environment.
 
-まだ Eclipse でサーバーのランタイム環境を指定していない場合は、最初に行う必要があります。
+If you haven't yet specified a server runtime environment in Eclipse, you'll need to do that first.
 
-1. Project Explorer で **[WebContent]** を展開します。
+1. In Project Explorer, expand **WebContent**.
 
-5. **Search.jsp** を右クリックし、**[Run As]**、**[Run on Server]** の順に選択します。Apache Tomcat サーバーを選択し、**[Run]** をクリックします。
+5. Right-click **Search.jsp** > **Run As** > **Run on Server**. Select the Apache Tomcat server, and then click **Run**.
 
-> [AZURE.TIP] 既定以外のワークスペースを使用してプロジェクトを保存した場合は、サーバー起動エラーを防ぐために、プロジェクトの場所を指し示すように **[Run Configuration]** を変更する必要があります。Project Explorer で、**Search.jsp** を右クリックし、**[Run As]**、**[Run Configurations]** の順に選択します。Apache Tomcat サーバーを選択します。**[Arguments]** をクリックします。**[Workspace]** または **[File System]** をクリックして、プロジェクトを含むフォルダーを設定します。
+> [AZURE.TIP] If you used a non-default workspace to store your project, you'll need to modify **Run Configuration** to point to the project location to avoid a server start-up error. In Project Explorer, right-click **Search.jsp** > **Run As** > **Run Configurations**. Select the Apache Tomcat server. Click **Arguments**. Click **Workspace** or **File System** to set the folder containing the project.
 
-アプリケーションを実行すると、ブラウザー ウィンドウが開き、語句を入力するための検索ボックスが表示されます。
+When you run the application, you should see a browser window, providing a search box for entering terms.
 
-サービスがインデックスを作成して読み込めるように、1 分程度待ってから **[Search]** をクリックします。HTTP 404 エラーが発生する場合は、もう少し長く待ってから再び試すだけで十分です。
+Wait about one minute before clicking **Search** to give the service time to create and load the index. If you get an HTTP 404 error, you just need to wait a little bit longer before trying again.
 
-## USGS データの検索
+## <a name="search-on-usgs-data"></a>Search on USGS data
 
-USGS データ セットには、ロードアイランド州に関連するレコードが含まれています。検索ボックスが空の状態で **[Search]** をクリックすると、既定で、上位 50 のエントリが取得されます。
+The USGS data set includes records that are relevant to the state of Rhode Island. If you click **Search** on an empty search box, you will get the top 50 entries, which is the default.
 
-検索語句を入力すると、検索エンジンに処理するものが提供されます。地域の名前を入力してみてください。"Roger Williams" はロードアイランド州の最初の州知事でした。多数の公園、建造物、および学校に彼の名前が付けられています。
+Entering a search term will give the search engine something to go on. Try entering a regional name. "Roger Williams" was the first governor of Rhode Island. Numerous parks, buildings, and schools are named after him.
 
 ![][11]
 
-次のような語句も試すことができます。
+You could also try any of these terms:
 
 - Pawtucket
 - Pembroke
 - goose +cape
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-これは、Java と USGS データセットに基づく最初の Azure Search チュートリアルです。カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
+This is the first Azure Search tutorial based on Java and the USGS dataset. Over time, we'll extend this tutorial to demonstrate additional search features you might want to use in your custom solutions.
 
-Azure Search についての知識が既にある場合は、このサンプルを基にして、さらに調べることができます。[検索ページ](search-pagination-page-layout.md)を変更したり、[ファセット ナビゲーション](search-faceted-navigation.md)を実装したりしてみてください。また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。
+If you already have some background in Azure Search, you can use this sample as a springboard for further experimentation, perhaps augmenting the [search page](search-pagination-page-layout.md), or implementing [faceted navigation](search-faceted-navigation.md). You can also improve upon the search results page by adding counts and batching documents so that users can page through the results.
 
-Azure Search を初めて使用する場合は、 他のチュートリアルも試して、作成できるものについての理解を深めることをお勧めします。他のリソースについては、[ドキュメントのページ](https://azure.microsoft.com/documentation/services/search/)を参照してください。[ビデオとチュートリアルの一覧](search-video-demo-tutorial-list.md)のリンクから、さらに多くの情報にアクセスすることもできます。
+New to Azure Search? We recommend trying other tutorials to develop an understanding of what you can create. Visit our [documentation page](https://azure.microsoft.com/documentation/services/search/) to find more resources. You can also view the links in our [Video and Tutorial list](search-video-demo-tutorial-list.md) to access more information.
 
 <!--Image references-->
 [1]: ./media/search-get-started-java/create-search-portal-1.PNG
@@ -203,4 +204,8 @@ Azure Search を初めて使用する場合は、 他のチュートリアルも
 [11]: ./media/search-get-started-java/rogerwilliamsschool1.PNG
 [12]: ./media/search-get-started-java/AzSearch-Java-SelectProject.png
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

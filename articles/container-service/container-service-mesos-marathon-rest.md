@@ -1,13 +1,13 @@
 <properties
-   pageTitle="REST API を使用した Azure コンテナー サービスのコンテナー管理| Microsoft Azure"
-   description="Marathon REST API を使用して、Azure コンテナー サービス Mesos クラスターにコンテナーをデプロイします。"
+   pageTitle="Azure Container Service container management through the REST API | Microsoft Azure"
+   description="Deploy containers to an Azure Container Service Mesos cluster by using the Marathon REST API."
    services="container-service"
    documentationCenter=""
    authors="neilpeterson"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker、コンテナー、マイクロ サービス、Mesos、Azure"/>
+   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -16,28 +16,29 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="09/13/2016"
-   ms.author="nepeters"/>
+   ms.author="timlt"/>
 
-# REST API を使用したコンテナー管理
 
-DC/OS はクラスター化されたワークロードをデプロイし、スケールするための環境を提供すると共に、基礎となるハードウェアを抽象化します。DC/OS に加え、コンピューティング ワークロードのスケジュールと実行を管理するフレームワークもあります。
+# <a name="container-management-through-the-rest-api"></a>Container management through the REST API
 
-一般的な各種ワークロードに対応したフレームワークがあるものの、このドキュメントでは、Marathon を使ってコンテナー デプロイを作成し、スケールする方法について説明します。これらの例を見ていく前に、Azure コンテナー サービスで構成された DC/OS クラスターが必要です。また、このクラスターへのリモート接続も必要です。これらの項目の詳細については、次の記事を参照してください。
+DC/OS provides an environment for deploying and scaling clustered workloads, while abstracting the underlying hardware. On top of DC/OS, there is a framework that manages scheduling and executing compute workloads.
 
-- [Azure コンテナー サービス クラスターのデプロイ](container-service-deployment.md)
-- [Azure コンテナー サービス クラスターに接続する](container-service-connect.md)
+Although frameworks are available for many popular workloads, this document describes how you can create and scale container deployments by using Marathon. Before working through these examples, you need a DC/OS cluster that is configured in Azure Container Service. You also need to have remote connectivity to this cluster. For more information on these items, see the following articles:
 
-Azure コンテナー サービス クラスターに接続したら、http://localhost:local-port を通じて DC/OS と関連の REST API にアクセスできます。このドキュメントの例では、ポート 80 にトンネリングしていることを前提としています。たとえば、Marathon エンドポイントには、`http://localhost/marathon/v2/` で到達できます。さまざまな API の詳細については、[Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) と [Chronos API](https://mesos.github.io/chronos/docs/api.html) に関する Mesosphere ドキュメントと [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/) に関する Apache ドキュメントを参照してください。
+- [Deploying an Azure Container Service cluster](container-service-deployment.md)
+- [Connecting to an Azure Container Service cluster](container-service-connect.md)
 
-## DC/OS と Marathon から情報を収集する
+After you are connected to the Azure Container Service cluster, you can access the DC/OS and related REST APIs through http://localhost:local-port. The examples in this document assume that you are tunneling on port 80. For example, the Marathon endpoint can be reached at `http://localhost/marathon/v2/`. For more information on the various APIs, see the Mesosphere documentation for the [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) and the [Chronos API](https://mesos.github.io/chronos/docs/api.html), and the Apache documentation for the [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
-DC/OS クラスターにコンテナーをデプロイする前に、DC/OS エージェントの名前や現在の状態など、DC/OS クラスターに関する情報を収集します。DC/OS REST API の `master/slaves` エンドポイントに情報を照会してください。問題がなければ、DC/OS エージェントの一覧と各エージェントのプロパティが表示されます。
+## <a name="gather-information-from-dc/os-and-marathon"></a>Gather information from DC/OS and Marathon
+
+Before you deploy containers to the DC/OS cluster, gather some information about the DC/OS cluster, such as the names and current status of the DC/OS agents. To do so, query the `master/slaves` endpoint of the DC/OS REST API. If everything goes well, you will see a list of DC/OS agents and several properties for each.
 
 ```bash
 curl http://localhost/mesos/master/slaves
 ```
 
-次に、Marathon `/apps` エンドポイントを利用し、DC/OS クラスターに対する現在のアプリケーション デプロイを確認します。これが新しいクラスターであれば、アプリ用の空の配列が表示されます。
+Now, use the Marathon `/apps` endpoint to check for current application deployments to the DC/OS cluster. If this is a new cluster, you will see an empty array for apps.
 
 ```
 curl localhost/marathon/v2/apps
@@ -45,9 +46,9 @@ curl localhost/marathon/v2/apps
 {"apps":[]}
 ```
 
-## Docker 形式のコンテナーのデプロイ
+## <a name="deploy-a-docker-formatted-container"></a>Deploy a Docker-formatted container
 
-Docker 形式のコンテナーは、意図するデプロイについて記述した JSON ファイルを利用して、Marathon 経由でデプロイします。次のサンプルでは Nginx コンテナーがデプロイされます。DC/OS エージェントのポート 80 をコンテナーのポート 80 に関連付けます。また、"acceptedResourceRoles" プロパティが "slave\_public" に設定されることにも注意してください。この設定により、パブリックに公開されたエージェント スケール セット内のエージェントにコンテナーがデプロイされます。
+You deploy Docker-formatted containers through Marathon by using a JSON file that describes the intended deployment. The following sample will deploy the Nginx container, binding port 80 of the DC/OS agent to port 80 of the container. Also note that the ‘acceptedResourceRoles’ property is set to ‘slave_public’. This will deploy the container to an agent in the public-facing agent scale set.
 
 ```json
 {
@@ -71,57 +72,57 @@ Docker 形式のコンテナーは、意図するデプロイについて記述�
 }
 ```
 
-Docker 形式のコンテナーをデプロイするために、独自の JSON ファイルを作成するか、[Azure コンテナー サービスのデモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)に用意されているサンプルを使用します。アクセス可能な場所にそれを格納します。次に、コンテナーをデプロイするために、次のコマンドを実行します。JSON ファイルの名前を指定します。
+In order to deploy a Docker-formatted container, create your own JSON file, or use the sample provided at [Azure Container Service demo](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json). Store it in an accessible location. Next, to deploy the container, run the following command. Specify the name of the JSON file.
 
 ```
 curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-type: application/json"
 ```
 
-出力は次のようになります。
+The output will be similar to the following:
 
 ```json
 {"version":"2015-11-20T18:59:00.494Z","deploymentId":"b12f8a73-f56a-4eb1-9375-4ac026d6cdec"}
 ```
 
-ここで、アプリケーションについて Marathon にクエリを実行すると、この新しいアプリケーションが出力に表示されます。
+Now, if you query Marathon for applications, this new application will show in the output.
 
 ```
 curl localhost/marathon/v2/apps
 ```
 
-## コンテナーのスケール
+## <a name="scale-your-containers"></a>Scale your containers
 
-Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることもできます。前の例では、アプリケーションの 1 つのインスタンスをデプロイしました。それをアプリケーションの 3 つのインスタンスにスケールアウトしてみましょう。これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
+You can also use the Marathon API to scale out or scale in application deployments. In the previous example, you deployed one instance of an application. Let's scale this out to three instances of an application. To do so, create a JSON file by using the following JSON text, and store it in an accessible location.
 
 ```json
 { "instances": 3 }
 ```
 
-次のコマンドを実行してアプリケーションをスケールアウトします。
+Run the following command to scale out the application.
 
->[AZURE.NOTE] URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID を追加したものになります。ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
+>[AZURE.NOTE] The URI will be http://localhost/marathon/v2/apps/ and then the ID of the application to scale. If you are using the Nginx sample that is provided here, the URI would be http://localhost/marathon/v2/apps/nginx.
 
 ```json
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
-最後に、Marathon エンドポイントに対してアプリケーションを照会します。現在、3 つの Nginx コンテナーがあることがわかります。
+Finally, query the Marathon endpoint for applications. You will see that there are now three of the Nginx containers.
 
 ```
 curl localhost/marathon/v2/apps
 ```
 
-## この演習での PowerShell の使用: PowerShell を使った Marathon REST API の操作
+## <a name="use-powershell-for-this-exercise:-marathon-rest-api-interaction-with-powershell"></a>Use PowerShell for this exercise: Marathon REST API interaction with PowerShell
 
-これと同じ操作は、Windows システム上で PowerShell コマンドを使って実行できます。
+You can perform these same actions by using PowerShell commands on a Windows system.
 
-エージェント名やエージェントの状態など、DC/OS クラスターに関する情報を収集するには、次のコマンドを実行します。
+To gather information about the DC/OS cluster, such as agent names and agent status, run the following command.
 
 ```powershell
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 ```
 
-Docker 形式のコンテナーは、意図するデプロイについて記述した JSON ファイルを利用して、Marathon 経由でデプロイします。次のサンプルでは Nginx コンテナーがデプロイされます。DC/OS エージェントのポート 80 をコンテナーのポート 80 に関連付けます。
+You deploy Docker-formatted containers through Marathon by using a JSON file that describes the intended deployment. The following sample will deploy the Nginx container, binding port 80 of the DC/OS agent to port 80 of the container.
 
 ```json
 {
@@ -142,29 +143,33 @@ Docker 形式のコンテナーは、意図するデプロイについて記述�
 }
 ```
 
-独自の JSON ファイルを作成するか、[Azure コンテナー サービスのデモ](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json)に用意されているサンプルを使用します。アクセス可能な場所にそれを格納します。次に、コンテナーをデプロイするために、次のコマンドを実行します。JSON ファイルの名前を指定します。
+Create your own JSON file, or use the sample provided at [Azure Container Service demo](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/marathon/marathon.json). Store it in an accessible location. Next, to deploy the container, run the following command. Specify the name of the JSON file.
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-Marathon API を利用して、アプリケーションのデプロイをスケールアウトまたはスケールインすることもできます。前の例では、アプリケーションの 1 つのインスタンスをデプロイしました。それをアプリケーションの 3 つのインスタンスにスケールアウトしてみましょう。これを行うには、次の JSON テキストを使って JSON ファイルを作成し、それをアクセス可能な場所に保存します。
+You can also use the Marathon API to scale out or scale in application deployments. In the previous example, you deployed one instance of an application. Let's scale this out to three instances of an application. To do so, create a JSON file by using the following JSON text, and store it in an accessible location.
 
 ```json
 { "instances": 3 }
 ```
 
-次のコマンドを実行してアプリケーションをスケールアウトします。
+Run the following command to scale out the application.
 
-> [AZURE.NOTE] URI は、http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID を追加したものになります。ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
+> [AZURE.NOTE] The URI will be http://localhost/marathon/v2/apps/ and then the ID of the application to scale. If you are using the Nginx sample provided here, the URI would be http://localhost/marathon/v2/apps/nginx.
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [Mesos HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)。
-- [Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)。
+- [Read more about the Mesos HTTP endpoints]( http://mesos.apache.org/documentation/latest/endpoints/).
+- [Read more about the Marathon REST API]( https://mesosphere.github.io/marathon/docs/rest-api.html).
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

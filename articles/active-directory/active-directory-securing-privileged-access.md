@@ -1,77 +1,78 @@
 <properties
-	pageTitle="Azure AD での特権アクセスのセキュリティ保護 |Microsoft Azure"
-	description="このトピックでは、Azure、Azure Active Directory、および Microsoft Online Services で特権アクセスを保護するための方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="mwahl"/>
+    pageTitle="Securing Privileged Access in Azure AD | Microsoft Azure"
+    description="A topic that explains the approaches for securing privileged access across Azure, Azure Active Directory and Microsoft Online Services."
+    services="active-directory"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor="mwahl"/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/14/2016"
-	ms.author="kgremban"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/14/2016"
+    ms.author="kgremban"/>
 
 
-# Azure AD での特権アクセスのセキュリティ保護
 
-現代の組織にとって特権アクセスのセキュリティ保護は、ビジネス資産を保護するうえで重要な最初のステップです。特権アカウントとは、IT システムを管理するアカウントです。サイバー攻撃では、組織のデータやシステムへのアクセス手段を得るために、このようなアカウントが標的にされます。特権アクセスを保護するためには、悪意のあるユーザーにさらされる危険からアカウントとシステムを分離する必要があります。
+# <a name="securing-privileged-access-in-azure-ad"></a>Securing privileged access in Azure AD
 
-クラウド サービスを経由して特権アクセスを取得するユーザーが増えつつあります。たとえば、Office 365 のグローバル管理者、Azure サブスクリプション管理者、VM や SaaS アプリの管理アクセス権を持つユーザーなどがこれにあたります。
+Securing privileged access is a critical first step to help protect business assets in a modern organization. Privileged accounts are those that administer and manage IT systems. Cyber-attackers target these accounts to gain access to an organization’s data and systems. In order to secure privileged access, you should isolate the accounts and systems from the risk of being exposed to a malicious user.
 
-Microsoft では、[特権アクセスのセキュリティ保護](https://technet.microsoft.com/library/mt631194.aspx)に関するこちらのロードマップを採用することをお勧めしています。
+More users are starting to get privileged access through cloud services. This can include global administrators of Office365, Azure subscription administrators, and users who have administrative access in VMs or on SaaS apps.
 
-Azure Active Directory を使用して Azure や Office 365 などの Microsoft サービスとアプリケーションへのアクセスを管理しているお客様は、ユーザー アカウントの管理と認証を Active Directory と Azure Active Directory のどちらで行っている場合でも、これらの原則が当てはまります。次のセクションでは、特権アクセスのセキュリティ保護をサポートする Azure AD の機能について詳しく説明します。
+Microsoft recommends you follow this roadmap on [Securing Privileged Access](https://technet.microsoft.com/library/mt631194.aspx).
 
-## 多要素認証
+For customers using Azure Active Directory to manage access to Azure, Office 365, or other Microsoft services and applications, these principles apply whether user accounts are managed and authenticated by Active Directory or in Azure Active Directory. The following sections provide more information on Azure AD features to support securing privileged access.
 
-管理者認証のセキュリティを高めるために、権限を付与する前に多要素認証 (MFA) を要求する必要があります。MFA は、本人性の確認において、ユーザー名とパスワードに加えて、その他の要素を取り入れる手法です。ユーザーのサインインとトランザクションに 2 層構造のセキュリティを確保することができます。
+## <a name="multi-factor-authentication"></a>Multi-factor authentication
 
-Azure Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。電話、テキスト メッセージ、モバイル アプリによる通知、確認コードやサード パーティの OATH トークンなど、一連の簡単な照合方法を通じて確実な認証を行うことができます。
+To increase the security of administrator authentication, you should require multi-factor authentication (MFA) before granting privileges. MFA is a method of verifying who you are that requires the use of more than just a username and password. It provides a second layer of security to user sign-ins and transactions.
 
-Azure Multi-Factor Authentication の概要については、次のビデオをご覧ください。
+Azure Multi-Factor Authentication helps safeguard access to data and applications while meeting user demand for a simple sign-in process. It delivers strong authentication via a range of easy verification options including phone calls, text messages, mobile app notifications, or verification code and 3rd party OATH tokens.
+
+For an overview of how Azure Multi-Factor Authentication works see the following video.
 
 >[AZURE.VIDEO windows-azure-multi-factor-authentication]
 
-詳細については、「[MFA for Office 365 and MFA for Azure (Office 365 の MFA と Azure の MFA)](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/)」を参照してください。
+For more details, see [MFA for Office 365 and MFA for Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/).
 
-## 期限付きの特権
+## <a name="time-bound-privileges"></a>Time-bound privileges
 
-組織によっては、高い特権を持つロールに割り当てられたユーザーが増えすぎることがあります。サービスのサインアップなど、特定のアクティビティのためにユーザーがロールに追加されたが、その後、ユーザーはあまり権限を使用していないというケースもあります。
+Some organizations may find that they have too many users in highly privileged roles. A user might have been added to the role for a particular activity, like to sign up for a service, but didn't use those privileges frequently afterward.
 
-特権の公開期間を短縮し、使用状況の可視性を高めるには、ユーザーがタスクの実行を必要としている場合にのみ特権をジャスト イン タイム (JIT) で取得するようにユーザーを制限します。Azure Active Directory と Microsoft Online Services では、[Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM) を使用することができます。
+To lower the exposure time of privileges and increase your visibility into their use, limit users to only taking on their privileges Just in Time (JIT), when they need to perform a task. For Azure Active Directory and Microsoft Online Services, you can use [Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM).
 
 
 ![PIM dashboard][2]
 
 
-## 攻撃の検出
+## <a name="attack-detection"></a>Attack detection
 
-[Azure Active Directory Identity Protection](active-directory-identityprotection.md) は、リスク イベントや組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供します。リスク イベントを基にして、Identity Protection は各ユーザーのユーザー リスク レベルを計算し、ユーザーがリスク ベースのポリシーを構成して組織の ID を自動的に保護するできるようにします。これらのポリシーを、Azure Active Directory や EMS によって提供される他の条件付きアクセス コントロールと組み合わせて、ユーザーを自動的にブロックしたり、パスワードのリセットや多要素認証の適用などの提案を提示したりすることができます。
+[Azure Active Directory Identity Protection](active-directory-identityprotection.md) provides a consolidated view into risk events and potential vulnerabilities affecting your organization’s identities. Based on risk events, Identity Protection calculates a user risk level for each user, enabling you to configure risk-based policies to automatically protect the identities of your organization. These policies, along with other conditional access controls provided by Azure Active Directory and EMS, can automatically block the user or offer suggestions that include password resets and multi-factor authentication enforcement.
 
 ![Azure AD Identity Protection][3]
 
-## 条件付きアクセス
+## <a name="conditional-access"></a>Conditional access
 
-Azure Active Directory は、条件付きアクセス制御によって、ユーザー認証時にアプリケーションへのアクセスを許可する前に、選択されている特定の条件を確認します。条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
-
-
-![MFA による条件付きアクセス規則の設定][4]
+With conditional access control, Azure Active Directory checks the specific conditions you choose when authenticating a user, before allowing access to an application. Once those conditions are met, the user is authenticated and allowed access to the application.
 
 
-## 関連記事:
-
-- [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md) を有効にする
-- [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md) を有効にする
-- [Azure AD Identity Protection](active-directory-identityprotection.md) を有効にする
-- [条件付きアクセス制御](active-directory-conditional-access.md)を有効にする
+![Setting conditional access rules with MFA][4]
 
 
-包括的なセキュリティ ロードマップの構築に関する詳細については、ドキュメント「[Microsoft Cloud Security for Enterprise Architects (エンタープライズ アーキテクト向けの Microsoft クラウド セキュリティ)](http://aka.ms/securecustomer)」の「Customer responsibilities and roadmap (お客様の責任範囲とロードマップ)」のセクションを参照してください。Microsoft サービスと連携して、これらのトピックについて支援を受ける方法の詳細については、Microsoft の担当者に問い合わせていただくか、[サイバーセキュリティ ソリューションに関するページ](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx)を参照してください。
+## <a name="related-articles"></a>Related articles
+
+- Enable [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)
+- Enable [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
+- Enable [Azure AD Identity Protection](active-directory-identityprotection.md)
+- Enable [conditional access controls](active-directory-conditional-access.md)
+
+
+For more information on building a complete security roadmap, see the “Customer responsibilities and roadmap” section of the [Microsoft Cloud Security for Enterprise Architects](http://aka.ms/securecustomer) document. For more information on engaging Microsoft services to assist with any of these topics, contact your Microsoft representative or visit our [Cybersecurity solutions page](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 <!--Image references-->
 [1]: ./media/active-directory-privileged-identity-management-configure/Search_PIM.png
@@ -79,4 +80,8 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 [3]: ./media/active-directory-identityprotection/29.png
 [4]: ./media/active-directory-conditional-access/conditionalaccess-saas-apps.png
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,50 +1,55 @@
 <properties
-	pageTitle="Azure SQL Database におけるデータベース パフォーマンスの監視 | Microsoft Azure"
-	description="Azure ツールと動的管理ビューを使用してデータベースを監視するためのオプションについて説明します。"
-	keywords="データベースの監視, クラウドのデータベース パフォーマンス"
-	services="sql-database"
-	documentationCenter=""
-	authors="CarlRabeler"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Monitoring database performance in Azure SQL Database | Microsoft Azure"
+    description="Learn about the options for monitoring your database with Azure tools and dynamic management views."
+    keywords="database monitoring, cloud database performance"
+    services="sql-database"
+    documentationCenter=""
+    authors="CarlRabeler"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.workload="data-management"
-	ms.date="09/27/2016"
-	ms.author="carlrab"/>
+    ms.service="sql-database"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="data-management"
+    ms.date="09/27/2016"
+    ms.author="carlrab"/>
 
-# Azure SQL Database におけるデータベース パフォーマンスの監視
-Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対するリソース使用率を監視することから始めます。監視することで、データベースに余分な容量があるかどうかや、リソースが上限に達したことで問題が発生しているかどうかを判断できます。また、データベースのパフォーマンス レベルと[サービス階層](sql-database-service-tiers.md)を調整する必要があるかどうかを判断することもできます。データベースの監視には、[Azure ポータル](https://portal.azure.com)のグラフィカル ツールや SQL の[動的管理ビュー](https://msdn.microsoft.com/library/ms188754.aspx)を使用できます。
 
-## Azure ポータルを使用したデータベースの監視
+# <a name="monitoring-database-performance-in-azure-sql-database"></a>Monitoring database performance in Azure SQL Database
+Monitoring the performance of a SQL database in Azure starts with monitoring the resource utilization relative to the level of database performance you choose. Monitoring helps you  determine whether your database has excess capacity or is having trouble because resources are maxed out, and then decide whether it's time to adjust the performance level and [service tier](sql-database-service-tiers.md) of your database. You can monitor your database using graphical tools in the [Azure portal](https://portal.azure.com) or using SQL [dynamic management views](https://msdn.microsoft.com/library/ms188754.aspx).
 
-[Azure ポータル](https://portal.azure.com/)では、データベースを選択して **[監視]** グラフをクリックすると、単一のデータベースの使用率を監視することができます。これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。次のメトリックを追加します。
+## <a name="monitor-databases-using-the-azure-portal"></a>Monitor databases using the Azure portal
 
-- CPU の割合
-- DTU の割合
-- データ IO の割合
-- データベース サイズの割合
+In the [Azure portal](https://portal.azure.com/), you can monitor a single database’s utilization by selecting your database and clicking the **Monitoring** chart. This brings up a **Metric** window that you can change by clicking the **Edit chart** button. Add the following metrics:
 
-これらのメトリックを追加すると、**[メトリック]** ウインドウに示される詳細と共に、**[監視]** グラフでこれらを継続的に確認できます。4 つのメトリックはいずれも、データベースの **DTU** を基準とする平均使用率を示しています。DTU の詳細については、[サービス階層](sql-database-service-tiers.md)に関する記事を参照してください。
+- CPU percentage
+- DTU percentage
+- Data IO percentage
+- Database size percentage
 
-![データベース パフォーマンスのサービス階層の監視](./media/sql-database-service-tiers/sqldb_service_tier_monitoring.png)
+Once you’ve added these metrics, you can continue to view them in the **Monitoring** chart with more details on the **Metric** window. All four metrics show the average utilization percentage relative to the **DTU** of your database. See the [service tiers](sql-database-service-tiers.md) article for details about DTUs.
 
-また、パフォーマンス メトリックに対してアラートを構成することができます。**[メトリック]** ウィンドウの **[アラートの追加]** ボタンをクリックします。ウィザードの指示に従ってアラートを構成します。メトリックが特定のしきい値を超えた場合、またはメトリックが特定のしきい値を下回った場合に警告するオプションがあります。
+![Service tier monitoring of database performance.](./media/sql-database-service-tiers/sqldb_service_tier_monitoring.png)
 
-たとえば、データベースのワークロードが増加する見込みの場合、データベースのいずれかのパフォーマンス メトリックが 80% に達すると電子メールのアラートを送信するように構成できます。このアラートは、1 つ上位のパフォーマンス レベルに切り替えるタイミングを示す早期の警告として使用できます。
+You can also configure alerts on the performance metrics. Click the **Add alert** button in the **Metric** window. Follow the wizard to configure your alert. You have the option to alert if the metrics exceed a certain threshold or if the metric falls below a certain threshold.
 
-下位のパフォーマンス レベルにダウングレードできるかどうかを判断するために、パフォーマンス メトリックを利用することもできます。たとえば、Standard S2 データベースを使用していて、すべてのパフォーマンス メトリックは、どの時点でもデータベースの平均的な使用率が 10% を超えないとします。この場合、データベースは Standard S1 で快適に動作します。ただし、下位のパフォーマンス レベルへの移行を決定する前に、急上昇や変動するワークロードに注意してください。
+For example, if you expect the workload on your database to grow, you can choose to configure an email alert whenever your database reaches 80% on any of the performance metrics. You can use this as an early warning to figure out when you might have to switch to the next higher performance level.
 
-## DMV を使用したデータベースの監視
+The performance metrics can also help you determine if you are able to downgrade to a lower performance level. Assume you are using a Standard S2 database and all performance metrics show that the database on average does not use more than 10% at any given time. It is likely that the database will work well in Standard S1. However, be aware of workloads that spike or fluctuate before making the decision to move to a lower performance level.
 
-ポータルで公開されているのと同じメトリックは、システム ビューからも利用できます。それは、サーバーの論理 **master** データベースの [sys.resource\_stats](https://msdn.microsoft.com/library/dn269979.aspx) と、ユーザー データベースの [sys.dm\_db\_resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) です。詳細度の低いデータをより長い期間で監視する必要がある場合は、**sys.resource\_stats** を使用します。詳細度の高いデータをより短い期間で監視する必要がある場合は、**sys.dm\_db\_resource\_stats** を使用します。詳細については、「[Azure SQL データベースのパフォーマンス ガイダンス](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats)」を参照してください。
+## <a name="monitor-databases-using-dmvs"></a>Monitor databases using DMVs
 
->[AZURE.NOTE] **sys.dm\_db\_resource\_stats** は、提供終了になった Web および Business Edition データベースで使用された場合、空の結果セットを返します。
+The same metrics that are exposed in the portal are also available through system views: [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in the logical **master** database of your server, and [sys.dm_db_resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) in the user database. Use **sys.resource_stats** if you need to monitor less granular data across a longer period of time. Use **sys.dm_db_resource_stats** if you need to monitor more granular data within a smaller time frame. For more information, see [Azure SQL Database Performance Guidance](sql-database-performance-guidance.md#monitoring-resource-use-with-sysresourcestats).
 
-エラスティック データベース プールでは、このセクションで説明した手法を使用して、プール内の個々のデータベースを監視することができます。ただし、プールを全体として監視することもできます。詳細については、「[エラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)」を参照してください。
+>[AZURE.NOTE] **sys.dm_db_resource_stats** returns an empty result set when used in Web and Business edition databases, which are retired.
 
-<!---HONumber=AcomDC_0928_2016-->
+For elastic database pools, you can monitor individual databases in the pool with the techniques described in this section. But you can also monitor the pool as a whole. For information, see [Monitor and manage an elastic database pool](sql-database-elastic-pool-manage-portal.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

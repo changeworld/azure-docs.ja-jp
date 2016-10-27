@@ -1,55 +1,60 @@
-<properties 
-   pageTitle="Traffic Manager のフェールオーバーによるトラフィック ルーティング方法の構成 | Microsoft Azure"
-   description="この記事では、Traffic Manager でフェールオーバーによるトラフィック ルーティング方法を構成する方法について説明します。"
+<properties
+   pageTitle="Configure Traffic Manager failover traffic routing method | Microsoft Azure"
+   description="This article will help you configure failover traffic routing method in Traffic Manager"
    services="traffic-manager"
    documentationCenter=""
    authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="traffic-manager"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="06/10/2016"
+   ms.date="10/18/2016"
    ms.author="sewhee" />
 
-# フェールオーバーのルーティング方法の構成
+<!-- repub for nofollow -->
 
-多くの場合、組織ではサービスの信頼性を維持する必要があります。そのために、会社のプライマリ サービスがダウンした場合に備えてバックアップ サービスを提供します。サービスのフェールオーバーの一般的なパターンでは、同一サービスのセットを用意し、プライマリ サービスにトラフィックを送信しながら、1 つ以上のバックアップ サービスで構成したリストを維持します。この種類のバックアップは、以下の手順に従って、Azure Cloud Services および Azure Websites を使用して構成できます。
+# <a name="configure-failover-routing-method"></a>Configure Failover routing method
 
-Azure Websites では、Web サイトのモードに関係なく、データセンター (「リージョン」と呼びます) 内の Web サイト用に、フェールオーバーによるトラフィック ルーティング方法があらかじめ用意されています。Traffic Manager を使用すると、異なるデータセンター内の Web サイトに対して、フェールオーバーによるトラフィック ルーティング方法を指定できます。
+Often an organization wants to provide reliability for its services. It does this by providing backup services in case their primary service goes down. A common pattern for service failover is to provide a set of identical services and send traffic to a primary service, while maintaining a configured list of one or more backup services. You can configure this type of backup with Azure cloud services and websites by following the procedures below.
 
-## フェールオーバーによるトラフィック ルーティング方法の構成
+Note that Azure Websites already provides failover traffic routing method functionality for websites within a datacenter (also known as a region), regardless of the website mode. Traffic Manager allows you to specify failover traffic routing method for websites in different datacenters.
 
-1. Azure クラシック ポータルの左側のウィンドウで、**[Traffic Manager]** アイコンをクリックして [Traffic Manager] ウィンドウを開きます。まだ Traffic Manager プロファイルを作成していない場合は、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」に記載された手順に従って、基本的な Traffic Manager プロファイルを作成してください。
-2. Azure クラシック ポータルの Traffic Manager ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけて、そのプロファイル名の右側にある矢印をクリックします。これにより、プロファイルの設定ページが開きます。
-3. プロファイル ページで、ページの上部にある **[エンドポイント]** をクリックし、構成に含めるクラウド サービスと Web サイトの両方 (エンドポイント) が存在することを確認します。エンドポイントを追加または削除する手順については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
-4. プロファイル ページで、上部にある **[構成]** をクリックし、構成ページを開きます。
-5. **[トラフィック ルーティング方法の設定]** で、トラフィック ルーティング方法が **[フェールオーバー]** に設定されていることを確認します。他の方法に設定されている場合は、ドロップダウン リストから **[フェールオーバー]** をクリックします。
-6. **[フェールオーバー優先度リスト]** で、エンドポイントのフェールオーバー順序を調整します。**フェールオーバー**によるトラフィック ルーティング方法を選択する場合、選択したエンドポイントの順序が重要です。最上位のエンドポイントがプライマリ エンドポイントになります。上下の矢印を使用して、必要に応じて順序を変更します。Windows PowerShell を使用してフェールオーバーの優先度を設定する方法については、[Set-AzureTrafficManagerProfile](http://go.microsoft.com/fwlink/p/?LinkId=400880) に関するページを参照してください。
-7. **[監視の設定]** が適切に構成されていることを確認します。監視を構成することで、オフラインになっているエンドポイントにトラフィックが送信されなくなります。エンドポイントを監視するには、パスとファイル名を指定する必要があります。スラッシュ "/" は、相対パスの有効な入力値で、ファイルがルート ディレクトリ (既定のディレクトリ) にあることを意味します。監視の詳細については、「[Traffic Manager の監視](traffic-manager-monitoring.md)」を参照してください。
-8. 構成の変更が完了したら、ページの下部にある **[保存]** をクリックします。
-9. 構成の変更をテストします。詳細については、「[Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)」を参照してください。
-10. Traffic Manager プロファイルが設定されて機能したら、権限のある DNS サーバー上の DNS レコードを編集して、会社のドメイン名が Traffic Manager ドメイン名を参照するようにします。これを行う方法の詳細については、「[会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](traffic-manager-point-internet-domain.md)」を参照してください。
+## <a name="to-configure-failover-traffic-routing-method:"></a>To configure failover traffic routing method:
 
-## 次のステップ
+1. In the Azure classic portal, in the left pane, click the **Traffic Manager** icon to open the Traffic Manager pane. If you have not yet created your Traffic Manager profile, see [Manage Traffic Manager Profiles](traffic-manager-manage-profiles.md) for steps to create a basic Traffic Manager profile.
+2. On the Traffic Manager pane in the Azure classic portal, locate the Traffic Manager profile that contains the settings that you want to modify, and then click the arrow to the right of the profile name. This will open the settings page for the profile.
+3. On your profile page, click **Endpoints** at the top of the page and verify that the both cloud services and websites (endpoints) that you want to include in your configuration are present. For steps to add or remove endpoints, see [Manage Endpoints in Traffic Manager](traffic-manager-endpoints.md).
+4. On your profile page, click **Configure** at the top to open the configuration page.
+5. For **traffic routing method settings**, verify that the traffic routing method is **Failover**. If it is not, click **Failover** from the dropdown list.
+6. For **Failover Priority List**, adjust the failover order for your endpoints. When you select the **Failover** traffic routing method, the order of the selected endpoints matters. The primary endpoint is on top. Use the up and down arrows to change the order as needed. For information about how to set the failover priority by using Windows PowerShell, see [Set-AzureTrafficManagerProfile](http://go.microsoft.com/fwlink/p/?LinkId=400880).
+7. Verify that the **Monitoring Settings** are configured appropriately. Monitoring ensures that endpoints that are offline are not sent traffic. In order to monitor endpoints, you must specify a path and filename. Note that a forward slash “/“ is a valid entry for the relative path and implies that the file is in the root directory (default). For more information about monitoring, see [Traffic Manager Monitoring](traffic-manager-monitoring.md).
+8. After you complete your configuration changes, click **Save** at the bottom of the page.
+9. Test the changes in your configuration. See [Testing Traffic Manager Settings](traffic-manager-testing-settings.md) for more information.
+10. Once your Traffic Manager profile is setup and working, edit the DNS record on your authoritative DNS server to point your company domain name to the Traffic Manager domain name. For more information about how to do this, see [Point a company Internet domain to a Traffic Manager domain](traffic-manager-point-internet-domain.md).
 
-[会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](traffic-manager-point-internet-domain.md)
+## <a name="next-steps"></a>Next steps
 
-[Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)
+[Point a company Internet domain to a Traffic Manager domain](traffic-manager-point-internet-domain.md)
 
-[ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-routing-method.md)
+[Traffic Manager routing methods](traffic-manager-routing-methods.md)
 
-[パフォーマンスによるトラフィック ルーティング方法の構成](traffic-manager-configure-performance-routing-method.md)
+[Configure round robin routing method](traffic-manager-configure-round-robin-routing-method.md)
 
-[Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
+[Configure performance routing method](traffic-manager-configure-performance-routing-method.md)
 
-[Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
+[Troubleshooting Traffic Manager degraded state](traffic-manager-troubleshooting-degraded.md)
 
-[Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
+[Traffic Manager - Disable, enable or delete a profile](disable-enable-or-delete-a-profile.md)
 
- 
+[Traffic Manager - Disable or enable an endpoint](disable-or-enable-an-endpoint.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

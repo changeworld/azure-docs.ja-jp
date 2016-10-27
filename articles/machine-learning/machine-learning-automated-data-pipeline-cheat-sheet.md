@@ -1,44 +1,50 @@
 <properties
-	pageTitle="Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート |Microsoft Azure"
-	description="データがオンプレミスであるか、ストリーミングであるか、Azure 内にあるか、サード パーティのクラウド サービス内にあるかに応じて自動化されたデータ パイプラインを Azure Machine Learning Web サービスに対して設定する方法を示す印刷可能なチート シートです。"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Cheat sheet for an automated data pipeline for Azure Machine Learning predictions | Microsoft Azure"
+    description="A printable cheat sheet that shows you how to set up an automated data pipeline to your Azure Machine Learning web service whether your data is on-premise, streaming, in Azure, or in a third-party cloud service."
+    services="machine-learning"
+    documentationCenter=""
+    authors="garyericson"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/19/2016"
-	ms.author="mithal;garye" />
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/19/2016"
+    ms.author="mithal;garye" />
 
-# Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
 
-**Microsoft Azure Machine Learning 自動化データ パイプライン チート シート**は、予測分析モデルによってデータをスコア付けできる Machine Learning Web サービスに対してデータを送信するために使用できるテクノロジを確認するのに役立ちます。
+# <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Cheat sheet for an automated data pipeline for Azure Machine Learning predictions
 
-データがオンプレミスにあるか、クラウド内にあるか、リアルタイムでストリーミングするかに応じて、スコア付けする Web サービス エンドポイントにデータを移動するために利用できる複数のメカニズムがあります。このチート シートは、何を決定する必要があるかについて紹介し、ソリューションを開発するために役立つ記事を示します。
+The **Microsoft Azure Machine Learning automated data pipeline cheat sheet** helps you navigate through the technology you can use to get your data to your Machine Learning web service where it can be scored by your predictive analytics model.
 
-## Machine Learning 自動化データ パイプライン チート シートをダウンロードする
+Depending on whether your data is on-premises, in the cloud, or streaming real-time, there are different mechanisms available to move the data to your web service endpoint for scoring.
+This cheat sheet walks you through the decisions you'll need to make and offers links to articles that will help you develop your solution.
 
-ダウンロードしたチート シートは、タブロイド サイズ (11 x 17 インチ) で印刷できます。
+## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Download the Machine Learning automated data pipeline cheat sheet
 
-チート シートをダウンロードする: **[Microsoft Azure Machine Learning 自動化データ パイプライン チート シート](http://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Once you download the cheat sheet, you can print it in tabloid size (11 x 17 in.).
 
-![Microsoft Azure Machine Learning Studio 機能の概要][op-cheat-sheet]
+Download the cheat sheet here: **[Microsoft Azure Machine Learning automated data pipeline cheat sheet](http://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+
+![Microsoft Azure Machine Learning Studio Capabilities Overview][op-cheat-sheet]
 
 [op-cheat-sheet]: ./media/machine-learning-automated-data-pipeline-cheat-sheet/machine-learning-automated-data-pipeline-cheat-sheet_v1.1.png
 
 
-## Machine Learning Studio に役立つその他の情報
+## <a name="more-help-with-machine-learning-studio"></a>More help with Machine Learning Studio
 
-* Microsoft Azure Machine Learning の概要については、「[Microsoft Azure での機械学習の概要](machine-learning-what-is-machine-learning.md)」を参照してください。
-* スコアリング Web サービスをデプロイする方法については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
-* スコアリング Web サービスを使用する方法については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
+* For an overview of Microsoft Azure Machine Learning, see [Introduction to machine learning on Microsoft Azure](machine-learning-what-is-machine-learning.md).
+* For an explanation of how to deploy a scoring web service, see [Deploy an Azure Machine Learning web service](machine-learning-publish-a-machine-learning-web-service.md).
+* For a discussion of how to consume a scoring web service, see [How to consume an Azure Machine Learning web service that has been deployed from a Machine Learning experiment](machine-learning-consume-web-services.md).
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

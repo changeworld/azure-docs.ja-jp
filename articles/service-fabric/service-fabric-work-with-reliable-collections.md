@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Reliable Collection での作業 | Microsoft Azure"
-    description="Reliable Collection で作業するためのベスト プラクティスについて説明します。"
+    pageTitle="Working with Reliable Collections | Microsoft Azure"
+    description="Learn the best practices for working with Reliable Collections."
     services="service-fabric"
     documentationCenter=".net"
     authors="JeffreyRichter"
@@ -16,9 +16,10 @@
     ms.date="03/28/2016"
     ms.author="jeffreyr" />
 
-# Reliable Collection での作業
 
-Service Fabric は、Reliable Collection を使用して .NET 開発者が利用できるステートフルなプログラミング モデルを提供します。具体的には、Service Fabric は Reliable Dictionary と Reliable Queue のクラスを提供します。これらのクラスを使用すると、状態がパーティション分割され (拡張性のため)、レプリケートされ (可用性のため)、パーティション内でトランザクションが行われます (ACID セマンティックのため)。Reliable Dictionary オブジェクトの一般的な使い方と、実際の動作を見てみましょう。
+# <a name="working-with-reliable-collections"></a>Working with Reliable Collections
+
+Service Fabric offers a stateful programming model available to .NET developers via Reliable Collections. Specifically, Service Fabric provides reliable dictionary and reliable queue classes. When you use these classes, your state is partitioned (for scalability), replicated (for availability), and transacted within a partition (for ACID semantics). Let’s look at a typical usage of a reliable dictionary object and see what its actually doing.
 
 ~~~
 retry:
@@ -43,20 +44,20 @@ catch (TimeoutException) {
 }
 ~~~
 
-Reliable Dictionary オブジェクト (取り消しができない ClearAsync を除く) に対するすべての操作で、ITransaction オブジェクトが必要です。このオブジェクトは 1 つのパーティション内の Reliable Dictionary や Reliable Queue オブジェクトに対して試みているすべての変更に関連付けられています。ITransaction オブジェクトを取得するには、そのパーティションの StateManager の CreateTransaction メソッドを呼び出します。
+All operations on reliable dictionary objects (except for ClearAsync which is not undoable), require an ITransaction object. This object has associated with it any and all changes you’re attempting to make to any reliable dictionary and/or reliable queue objects within a single partition. You acquire an ITransaction object by calling the partition’s StateManager’s CreateTransaction method.
  
-上記のコードでは、ITransaction オブジェクトは、Reliable Dictionary の AddAsync メソッドに渡されます。内部的には、キーを受け付けるディクショナリのメソッドは、そのキーに関連付けられている読み取り/書き込みロックを受け取ります。メソッドがキーの値を変更する場合、メソッドはキーの書き込みロックを受け取り、メソッドがキーの値を読み取るだけである場合は、キーの読み取りロックを受け取ります。AddAsync はキーの値を新しく渡された値に変更するため、キーの書き込みロックを受け取ります。そのため、2 つ (またはそれ以上) のスレッドが同じキーを使用して同時に値を追加しようとすると、1 つのスレッドで書き込みロックを取得し、もう 1 つのスレッドがブロックします。既定では、メソッドはロックの取得のため最大 4 秒間ブロックします。4 秒後に、メソッドは、TimeoutException をスローします。メソッドのオーバー ロードが存在する場合は、必要に応じて明示的なタイムアウト値を渡すことができます。
+In the code above, the ITransaction object is passed to a reliable dictionary’s AddAsync method. Internally, dictionary methods that accepts a key take a reader/writer lock associated with the key. If the method modifies the key’s value, the method takes a write lock on the key and if the method only reads from the key’s value, then a read lock is taken on the key. Since AddAsync modifies the key’s value to the new, passed-in value, the key’s write lock is taken. So, if 2 (or more) threads attempt to add values with the same key at the same time, one thread will acquire the write lock and the other threads will block. By default, methods block for up to 4 seconds to acquire the lock; after 4 seconds, the methods throw a TimeoutException. Method overloads exist allowing you to pass an explicit timeout value if you’d prefer.
  
-通常は、TimeoutException に応答するコードを記述します。このコードは、TimeoutException を取得して操作全体を (上記のコードのように) やり直します。今回の単純なコードでは、毎回 100 ミリ秒を渡す Task.Delay を呼び出しています。しかし、実際には、ある種の指数バックオフ遅延を代わりに使用する方がいい場合もあります。
+Usually, you write your code to react to a TimeoutException by catching it and retrying the entire operation (as shown in the code above). In my simple code, I’m just calling Task.Delay passing 100 milliseconds each time. But, in reality, you might be better off using some kind of exponential back-off delay instead.
  
-ロックが取得されると、AddAsync はキーと値のオブジェクト参照を ITransaction オブジェクトに関連付けられた内部一時ディクショナリに追加します。これは、read-your-own-writes セマンティクスを提供するためです。つまり、AddAsync を呼び出した後で TryGetValueAsync を (同じ ITransaction オブジェクトを使用して) 呼び出すと、トランザクションをまだコミットしていなくても値を返します。次に、AddAsync はキーと値のオブジェクトをバイト配列にシリアル化し、そのバイト配列をローカル ノードのログ ファイルに追加します。最後に、AddAsync はすべてのセカンダリ レプリカに同じキー/値の情報が含まれるように、バイト配列を送信します。キー/値の情報がログ ファイルに書き込まれていても、関連付けられているトランザクションがコミットされるまではその情報がディクショナリの一部と見なされません。
+Once the lock is acquired, AddAsync adds the key and value object references to an internal temporary dictionary associated with the ITransaction object. This is done to provide you with read-your-own-writes semantics. That is, after you call AddAsync, a later call to TryGetValueAsync (using the same ITransaction object) will return the value even if you have not yet committed the transaction. Next, AddAsync serializes your key and value objects to byte arrays and appends these byte arrays to a log file on the local node. Finally, AddAsync sends the byte arrays to all the secondary replicas so they have the same key/value information. Even though the key/value information has been written to a log file, the information is not considered part of the dictionary until the transaction that they are associated with has been committed. 
 
-上記のコードでは、CommitAsync への呼び出しによって、トランザクションのすべての操作がコミットされます。具体的には、ローカル ノードのログ ファイルにコミットの情報が追加され、さらにコミット レコードがすべてのセカンダリ レプリカに送信されます。レプリカのクォーラム (大多数) が応答すると、すべてのデータ変更が永続的と見なされ、ITransaction オブジェクトによって操作されたキーに関連付けられたすべてのロックがリリースされるため、他のスレッド/トランザクションで同じキーとその値を操作できるようになります。
+In the code above, the call to CommitAsync commits all of the transaction’s operations. Specifically, it appends commit information to the log file on the local node and also sends the commit record to all the secondary replicas. Once a quorum (majority) of the replicas has replied, all data changes are considered permanent and any locks associated with keys that were manipulated via the ITransaction object are released so other threads/transactions can manipulate the same keys and their values.
 
-CommitAsync が呼び出されない場合 (通常はスローされている例外が原因です)、ITransaction オブジェクトは破棄されます。 コミットされていない ITransaction オブジェクトを破棄すると、Service Fabric は中断情報をローカル ノードのログ ファイルに追加するため、セカンダリ レプリカには何も送信する必要はありません。その後、トランザクションによって操作されたキーに関連付けられたすべてのロックがリリースされます。
+If CommitAsync is not called (usually due to an exception being thrown), then the ITransaction object gets disposed. When disposing an uncommitted ITransaction object, Service Fabric appends abort information to the local node’s log file and nothing needs to be sent to any of the secondary replicas. And then, any locks associated with keys that were manipulated via the transaction are released.
 
-## 一般的な落とし穴とその回避方法
-Reliable Collection の内部での動作を理解したところで、それらの間違った使い方の一般的な例を見てみましょう。次のコードをご覧ください。
+## <a name="common-pitfalls-and-how-to-avoid-them"></a>Common pitfalls and how to avoid them
+Now that you understand how the reliable collections work internally, let’s take a look at some common misuses of them. See the code below:
 
 ~~~
 using (ITransaction tx = StateManager.CreateTransaction()) {
@@ -72,9 +73,9 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ~~~
 
-標準の .NET ディクショナリを使用すると、キー/値をディクショナリに追加して、(LastLogin などの) プロパティの値を変更できます。ただし、このコードは Reliable Dictionary では正しく動作しません。AddAsync への呼び出しによってキー/値のオブジェクトがバイト配列にシリアル化され、その配列がローカル ファイルに保存され、さらにセカンダリ レプリカにも送信されることを先ほど説明しました。後からプロパティの値を変更すると、メモリのプロパティの値しか変更されず、ローカルファイルやレプリカに送信されたデータは影響を受けません。プロセスがクラッシュすると、メモリの中身は破棄されます。新しいプロセスの開始時、または別のレプリカがプライマリになった場合は、古いプロパティ値が使用されます。
+When working with a regular .NET dictionary, you can add a key/value to the dictionary and then change the value of a property (such as LastLogin). However, this code will not work correctly with a reliable dictionary. Remember from the earlier discussion, the call to AddAsync serializes the key/value objects to byte arrays and then saves the arrays to a local file and also sends them to the secondary replicas. If you later change a property, this changes the property’s value in memory only; it does not impact the local file or the data sent to the replicas. If the process crashes, what’s in memory is thrown away. When a new process starts or if another replica becomes primary, then the old property value is what is available. 
 
-上記のような間違いは非常によくあることです。そして、プロセスが実際に停止しないと、間違いに気付きにくいものです。コードを正しく記述するには、2 つの行を逆にします。
+I cannot stress enough how easy it is to make the kind of mistake shown above. And, you will only learn about the mistake if/when the process goes down. The correct way to write the code is simply to reverse the two lines:
 
 ~~~
 using (ITransaction tx = StateManager.CreateTransaction()) {
@@ -84,7 +85,7 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ~~~
 
-よくある間違いの例をもう 1 つ示します。
+Here is another example showing a common mistake:
 
 ~~~
 using (ITransaction tx = StateManager.CreateTransaction()) {
@@ -102,11 +103,11 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ~~~
 
-やはり、標準の .NET ディクショナリの場合、上記のコードは問題なく動作します。開発者がキーを使って値を検索するという一般的なパターンです。値が存在する場合、開発者はプロパティの値を変更します。しかし、Reliable Collection の場合、このコードによって先ほどと同じ問題が発生します。__オブジェクトを Reliable Collection に指定した後は、変更してはいけません。__
+Again, with regular .NET dictionaries, the code above works fine and is a common pattern: the developer uses a key to look up a value. If the value exists, the developer changes a property’s value. However, with reliable collections, this code exhibits the same problem as already discussed: __you MUST not modify an object once you have given it to a reliable collection.__
  
-Reliable Collection で値を更新する正しい方法は、既存の値への参照を取得して、これにより参照されるオブジェクトを変更不可と見なすことです。次に、元のオブジェクトの正確なコピーである新しいオブジェクトを作成します。これで、この新しいオブジェクトの状態を変更し、新しいオブジェクトをコレクションに書き込むことができます。オブジェクトはバイト配列にシリアル化され、ローカル ファイルに追加され、レプリカに送信されます。変更をコミットすると、メモリ内オブジェクト、ローカル ファイル、すべてのレプリカの状態が同じになります。これで問題なしです。
+The correct way to update a value in a reliable collection, is to get a reference to the existing value and consider the object referred to by this reference immutable. Then, create a new object which is an exact copy of the original object. Now, you can modify the state of this new object and write the new object into the collection so that it gets serialized to byte arrays, appended to the local file and sent to the replicas. After committing the change(s), the in-memory objects, the local file, and all the replicas have the same exact state. All is good!
 
-次のコードは、Reliable Collection の値を更新する正しい方法を示しています。
+The code below shows the correct way to update a value in a reliable collection:
 
 ~~~
 using (ITransaction tx = StateManager.CreateTransaction()) {
@@ -132,11 +133,11 @@ using (ITransaction tx = StateManager.CreateTransaction()) {
 }
 ~~~
 
-## 変更不可のデータ型を定義してプログラマ エラーを防ぐ
+## <a name="define-immutable-data-types-to-prevent-programmer-error"></a>Define immutable data types to prevent programmer error
 
-変更不可と見なすオブジェクトの状態を変更するコードを誤って生成してしまった場合にエラーを報告するコンパイラがあると便利です。しかし、C# コンパイラには、このような機能はありません。プログラマのバグが発生する可能性を避けるため、Reliable Collection で使用する型を変更不可の型として定義することを強くお勧めします。つまり、核となる値の型 (Int32、UInt64 のような数値型、DateTime、Guid、TimeSpan など) に従うということです。もちろん、文字列を使用することもできます。コレクション プロパティをシリアル化/逆シリアル化すると、パフォーマンスへの影響が頻繁に発生するので、コレクション プロパティは避けることが賢明です。ただし、コレクション プロパティを使用する場合は、.NET の変更不可コレクション ライブラリ (System.Collections.Immutable) を使用することを強くお勧めします。このライブラリは http://nuget.org からダウンロードすることができます。クラスをシールして、なるべくフィールドを読み取り専用にすることもお勧めします。
+Ideally, we’d like the compiler to report errors when you accidentally produce code that mutates state of an object that you are supposed to consider immutable. But, the C# compiler does not have the ability to do this. So, to avoid potential programmer bugs, we highly recommend that you define the types you use with reliable collections to be immutable types. Specifically, this means that you stick to core value types (such as numbers [Int32, UInt64, etc.], DateTime, Guid, TimeSpan, and the like). And, of course, you can also use String. It is best to avoid collection properties as serializing and deserializing them can frequently can hurt performance. However, if you want to use collection properties, we highly recommend the use of .NET’s immutable collections library (System.Collections.Immutable). This library is available for download from http://nuget.org. We also recommend sealing your classes and making fields read-only whenever possible.
 
-下記の UserInfo 型は、前述の推奨事項を利用して変更不可の型を定義する方法を示しています。
+The UserInfo type below demonstrates how to define an immutable type taking advantage of aforementioned recommendations.
 
 ~~~
 [DataContract]
@@ -171,7 +172,7 @@ public sealed class UserInfo {
 }
 ~~~
 
-次に示すように、ItemId 型も変更不可の型です。
+The ItemId type is also an immutable type as shown here:
 
 ~~~
 [DataContract]
@@ -186,23 +187,27 @@ public struct ItemId {
 }
 ~~~
 
-## スキーマのバージョン管理 (アップグレード)
+## <a name="schema-versioning-(upgrades)"></a>Schema versioning (upgrades)
 
-Reliable Collection は、内部で .NET の DataContractSerializer を使用してオブジェクトをシリアル化します。シリアル化されたオブジェクトは、プライマリ レプリカのローカル ディスクに対して永続化し、セカンダリ レプリカにも転送されます。サービスが高度になると、サービスが必要とするデータ (スキーマ) の種類を変更したくなる場合があります。データのバージョン管理は十分に注意して行う必要があります。何よりも、古いデータを常に逆シリアル化できるようにする必要があります。具体的には、逆シリアル化コードが無限の下位互換性を持っている必要があります。つまり、バージョン 333 のサービス コードが、5 年前のバージョン 1 のサービス コードによる Reliable Collection のデータを操作できる必要があります。
+Internally, Reliable Collections serialize your objects using .NET’s DataContractSerializer. The serialized objects are persisted to the primary replica’s local disk and are also transmitted to the secondary replicas. As your service matures, it’s likely you’ll want to change the kind of data (schema) your service requires. You must approach versioning of your data with great care. First and foremost, you must always be able to deserialize old data. Specifically, this means your deserialization code must be infinitely backward compatible: Version 333 of your service code must be able to operate on data placed in a reliable collection by version 1 of your service code 5 years ago.
 
-さらに、アップグレード ドメインのサービス コードは一度に 1 つアップグレードされます。そのため、アップグレード中は、バージョンが異なる 2 つのサービス コードが同時に実行されます。古いバージョンのサービス コードでは新しいスキーマを処理できない場合があるため、新しいバージョンのサービス コードで新しいスキーマを使用することは避けてください。可能であれば、サービスのバージョンが 1 バージョンごとに上位互換するように設計する必要があります。つまり、V1 のサービス コードが明らかに処理しないスキーマ要素を単純に無視できるようにする必要があります。ただし、明らかに理解できないデータはすべて保存して、ディクショナリのキーまたは値を更新する際に単純に書き戻せるようにする必要があります。
+Furthermore, service code is upgraded one upgrade domain at a time. So, during an upgrade, you have two different versions of your service code running simultaneously. You must avoid having the new version of your service code use the new schema as old versions of your service code might not be able to handle the new schema. When possible, you should design each version of your service to be forward compatible by 1 version. Specifically, this means that V1 of your service code should be able to simply ignore any schema elements it does not explicitly handle. However, it must be able to save any data it doesn’t explicitly know about and simply write it back out when updating a dictionary key or value. 
 
->[AZURE.WARNING] キーのスキーマは変更できますが、キーのハッシュ コードと等号アルゴリズムは変更できないようにしてください。これらのいずれかのアルゴリズムの動作を変更すると、以後 Reliable Dictionary 内のキーを検索することができなくなります。
+>[AZURE.WARNING] While you can modify the schema of a key, you must ensure that your key’s hash code and equals algorithms are stable. If you change how either of these algorithms operate, you will not be able to look up the key within the reliable dictionary ever again.
   
-または、いわゆる 2 段階アップグレードを実行することができます。2 段階アップグレードでは、V1 から V2 にサービスをアップグレードします。V2 には新しいスキーマの変更を処理できるコードが含まれていますが、このコードは実行しません。V2 コードが V1 のデータを読み取ると、V1 に対する操作を行い、V1 のデータを書き込みます。次に、すべてのアップグレード ドメインでアップグレードが完了したら、アップグレードが完了したことを実行中の V2 のインスタンスに何らかの方法で通知できます。(1 つの通知方法として、構成のアップグレードのロールアウトがあります。これにより 2 段階アップグレードが行われます。) これで、V2 のインスタンスが V1 のデータを読み取り、V2 のデータに変換し、処理を行って、V2 のデータとして書き出すことができます。他のインスタンスが V2 のデータを読み取るときに、変換の必要はありません。インスタンスは操作を行い、V2 のデータを書き出すだけです。
+Alternatively, you can perform what is typically referred to as a 2-phase upgrade. With a 2-phase upgrade, you upgrade your service from V1 to V2: V2 contains the code that knows how to deal with the new schema change but this code doesn’t execute. When the V2 code reads V1 data, it operates on it and writes V1 data. Then, after the upgrade is complete across all upgrade domains, you can somehow signal to the running V2 instances that the upgrade is complete. (One way to signal this is to roll out a configuration upgrade; this is what makes this a 2-phase upgrade.) Now, the V2 instances can read V1 data, convert it to V2 data, operate on it, and write it out as V2 data. When other instances read V2 data, they do not need to convert it, they just operate on it, and write out V2 data.
 
-## 次のステップ
-上位互換性のあるデータ コントラクトを作成する方法については、「[上位互換性のあるデータ コントラクト](https://msdn.microsoft.com/library/ms731083.aspx)」を参照してください。
+## <a name="next-steps"></a>Next Steps
+To learn about creating forward compatible data contracts, see [Forward-Compatible Data Contracts](https://msdn.microsoft.com/library/ms731083.aspx).
 
-データ コントラクトのバージョン管理のベスト プラクティスについては、「[データ コントラクトのバージョン管理](https://msdn.microsoft.com/library/ms731138.aspx)」を参照してください。
+To learn best practices on versioning data contracts, see [Data Contract Versioning](https://msdn.microsoft.com/library/ms731138.aspx). 
 
-バージョン トレラントなデータ コントラクトを実装する方法については、「[バージョン トレラントなシリアル化コールバック](https://msdn.microsoft.com/library/ms733734.aspx)」を参照してください。
+To learn how to implement version tolerant data contracts, see [Version-Tolerant Serialization Callbacks](https://msdn.microsoft.com/library/ms733734.aspx). 
 
-複数のバージョンで相互運用できるデータ構造を提供する方法については、「[IExtensibleDataObject インターフェイス](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)」を参照してください。
+To learn how to provide a data structure that can interoperate across multiple versions, see [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx).
 
-<!---HONumber=AcomDC_0406_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

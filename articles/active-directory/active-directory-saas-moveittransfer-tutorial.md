@@ -1,302 +1,303 @@
 <properties
-	pageTitle="チュートリアル: Azure Active Directory と MOVEit Transfer の統合 | Microsoft Azure"
-	description="Azure Active Directory と MOVEit Transfer の間でシングル サインオンを構成する方法について確認します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with MOVEit Transfer | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and MOVEit Transfer."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/04/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/18/2016"
+    ms.author="jeedes"/>
 
 
-# チュートリアル: Azure Active Directory と MOVEit Transfer の統合
 
-このチュートリアルの目的は、MOVEit Transfer と Azure Active Directory (Azure AD) を統合する方法を説明することです。
+# <a name="tutorial:-azure-active-directory-integration-with-moveit-transfer"></a>Tutorial: Azure Active Directory integration with MOVEit Transfer
 
-MOVEit Transfer と Azure AD の統合には、次の利点があります。
+The objective of this tutorial is to show you how to integrate MOVEit Transfer with Azure Active Directory (Azure AD).
 
-- MOVEit Transfer にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで MOVEit Transfer に自動的にサインオン (シングル サインオン) できるように、設定が可能です。
-- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+Integrating MOVEit Transfer with Azure AD provides you with the following benefits:
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+- You can control in Azure AD who has access to MOVEit Transfer
+- You can enable your users to automatically get signed-on to MOVEit Transfer (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## 前提条件
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Azure AD と MOVEit Transfer の統合を構成するには、次のものが必要です。
+## <a name="prerequisites"></a>Prerequisites
 
-- Azure AD サブスクリプション
-- MOVEit Transfer でのシングル サインオンが有効なサブスクリプション
+To configure Azure AD integration with MOVEit Transfer, you need the following items:
 
-
-> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+- An Azure AD subscription
+- A MOVEit Transfer single-sign on enabled subscription
 
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
 
-## シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
+To test the steps in this tutorial, you should follow these recommendations:
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
-
-1. ギャラリーからの MOVEit Transfer の追加
-2. Azure AD シングル サインオンの構成とテスト
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## ギャラリーからの MOVEit Transfer の追加
-Azure AD への MOVEit Transfer の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に MOVEit Transfer を追加する必要があります。
+## <a name="scenario-description"></a>Scenario description
+The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.
 
-**ギャラリーから MOVEit Transfer を追加するには、次の手順を実行します。**
+The scenario outlined in this tutorial consists of two main building blocks:
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. Adding MOVEit Transfer from the gallery
+2. Configuring and testing Azure AD single sign-on
 
-	![Active Directory][1]
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+## <a name="adding-moveit-transfer-from-the-gallery"></a>Adding MOVEit Transfer from the gallery
+To configure the integration of MOVEit Transfer into Azure AD, you need to add MOVEit Transfer from the gallery to your list of managed SaaS apps.
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-	
-	![アプリケーション][2]
+**To add MOVEit Transfer from the gallery, perform the following steps:**
 
-4. ページの下部にある **[追加]** をクリックします。
-	
-	![アプリケーション][3]
+1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**. 
 
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+    ![Active Directory][1]
 
-	![アプリケーション][4]
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-6. 検索ボックスに「**MOVEit Transfer**」と入力します。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_01.png)
-
-7. 結果ウィンドウで **[MOVEit Transfer]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-
-	![ギャラリーでアプリを選択する](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_0001.png)
-
-##  Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、MOVEit Transfer で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する MOVEit Transfer ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと MOVEit Transfer の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-このリンク関係は、Azure AD の **[ユーザー名]** の値を、MOVEit Transfer の **[Username (ユーザー名)]** の値として割り当てることで確立されます。
-
-MOVEit Transfer で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[MOVEit Transfer のテスト ユーザーの作成](#creating-a-moveit-transfer-test-user)** - MOVEit Transfer で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### Azure AD シングル サインオンの構成
-
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、MOVEit Transfer アプリケーションでシングル サインオンを構成します。
-
-**MOVEit Transfer で Azure AD シングル サインオンを構成するには、次の手順に従います。**
-
-1. クラシック ポータルの **MOVEit Transfer** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
-	 
-	![Configure Single Sign-On][6]
-
-2. **[ユーザーの MOVEit Transfer へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
     
-	![Configure Single Sign-On](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_03.png)
+    ![Applications][2]
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
+4. Click **Add** at the bottom of the page.
+    
+    ![Applications][3]
+
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+
+    ![Applications][4]
+
+6. In the search box, type **MOVEit Transfer**.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_01.png)
+
+7. In the results panel, select **MOVEit Transfer**, and then click **Complete** to add the application.
+
+    ![Selecting the app in the gallery](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_0001.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+The objective of this section is to show you how to configure and test Azure AD single sign-on with MOVEit Transfer based on a test user called "Britta Simon".
+
+For single sign-on to work, Azure AD needs to know what the counterpart user in MOVEit Transfer to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in MOVEit Transfer needs to be established.
+
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in MOVEit Transfer.
+
+To configure and test Azure AD single sign-on with MOVEit Transfer, you need to complete the following building blocks:
+
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Creating a MOVEit Transfer test user](#creating-a-moveit-transfer-test-user)** - to have a counterpart of Britta Simon in MOVEit Transfer that is linked to the Azure AD representation of her.
+4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+
+In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your MOVEit Transfer application.
+
+**To configure Azure AD single sign-on with MOVEit Transfer, perform the following steps:**
+
+1. In the classic portal, on the **MOVEit Transfer** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+     
+    ![Configure Single Sign-On][6] 
+
+2. On the **How would you like users to sign on to MOVEit Transfer** page, select **Azure AD Single Sign-On**, and then click **Next**.
+    
+    ![Configure Single Sign-On](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_03.png)
+
+3. On the **Configure App Settings** dialog page, perform the following steps and click **Next**:
 
     ![Configure Single Sign-On](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_04.png)
 
-	a.**[サインオン URL]** ボックスに、独自のドメインのサインイン URL を入力します。
+    a. In the **Sign On URL** textbox, type sign in URL with your own domain.
 
-    b.**[識別子]** ボックスに、エンティティ ID URL を入力します。
+    b. In the **Identifier** textbox, type a entity ID URL.
 
-    c.**[応答 URL]** ボックスに、有効なアサーション コンシューマー インターフェイス URL を入力します。
+    c. In the **REPLY URL** textbox, type a enebled Assertion Consumer Interface URL.
 
-	d.**[次へ]** をクリックします。
+    d. Click **Next**
 
-	> [AZURE.NOTE] 実際のサインオン URL と識別子でこれらの値を更新する必要があることに注意してください。これらの値を取得するには、手順 8. で詳細を参照するか、[MOVEit Transfer](https://www.ipswitch.com/support/technical-support) にお問い合わせください。
+    > [AZURE.NOTE] Please note that you have to update these values with the actual Sign On URL and Identifier. To get these values, you can refer step 8 for more details or contact [MOVEit Transfer](https://www.ipswitch.com/support/technical-support).
 
-4. **[MOVEit Transfer でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
+4. On the **Configure single sign-on at MOVEit Transfer** page, perform the following steps and click **Next**:
 
-	![Configure Single Sign-On](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_05.png)
 
-    a.**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. Click **Download metadata**, and then save the file on your computer.
 
-    b.**[次へ]** をクリックします。
+    b. Click **Next**.
 
-5. MOVEit Transfer テナントに管理者としてサインオンします。
+5. Sign-on to your MOVEit Transfer tenant as an administrator.
 
-6. 左側のナビゲーション ウィンドウで、**[Settings (設定)]** をクリックします。
+6. On the left navigation pane, click **Settings**.
 
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_000.png)
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_000.png)
 
-7. **[Security Policies (セキュリティ ポリシー)] の [User Auth (ユーザー認証)]** にある、**[Single Signon (シングル サインオン)]** リンクをクリックします。
+7. Click **Single Signon** link which is under **Security Policies -> User Auth**.
 
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_001.png)
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_001.png)
 
-8. メタデータ URL リンクをクリックし、メタデータ ドキュメントをダウンロードします。
+8. Click the Metadata URL link to download the metadata document.
 
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_002.png)
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_002.png)
 
-	- **entityID** が手順 3. の **[識別子]** と一致していることを確認します。
-	
-	- **AssertionConsumerService** の場所 URL が手順 3. の **[応答 URL]** の値と一致していることを確認します。
-
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_007.png)
-
-9. **[Add Identity Provider (ID プロバイダーの追加)]** ボタンをクリックして新しいフェデレーション ID プロバイダーを追加します。
-
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_003.png)
-
-10. **[Browse... (参照)]** をクリックし、手順 4. でダウンロードしたメタデータ ファイルを選択します。次に、**[Add Identity Provider (ID プロバイダーの追加)]** をクリックし、ダウンロードしたファイルをアップロードします。
-
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_004.png)
-
-11. **[Edit Federated Identity Provider Settings... (フェデレーション ID プロバイダーの設定の編集)]** ページの **[Enabled (有効)]** で **[Yes (はい)]** を選択し、**[Save (保存)]** をクリックします。
-
-	 ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_005.png)
-
-12. **[Edit Federated Identity Provider User Settings (フェデレーション ID プロバイダー ユーザーの設定の編集)]** ページで次の操作を実行し、**[Save (保存)]** をクリックします。
-
-	a.**[Login name (ログイン名)]** として **[SAML NameID]** を選択します。
-
-	b.**[Full name (氏名)]** として **[Other (その他)]** を選択し、**[Attribute name (属性名)]** ボックスに値「http://schemas.microsoft.com/identity/claims/displayname」を入力します。
-
-	c.**[Email (電子メール)]** として **[Other (その他)]** を選択し、**[Attribute name (属性名)]** ボックスに値「http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress」を入力します。
-
-	d.**[Auto-create account on signon (サインオンのアカウントを自動作成する)]** で **[Yes (はい)]** を選択します。
-
-	e.**[保存]** ボタンをクリックします。
-
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_006.png)
-
-13. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+    - Verify **entityID** matches **Identifier** in step3.
     
-	![Azure AD Single Sign-On][10]
+    - Verify **AssertionConsumerService** Location URL matches **REPLY URL** in step3.
 
-14. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_007.png)
+
+9. Click **Add Identity Provider** button to add a new Federated Identity Provider.
+
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_003.png)
+
+10. Click **Browse...** to select the metadata file which you downloaded in step 4,then click **Add Identity Provider** to upload the downloaded file. 
+
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_004.png)
+
+11. Select "**Yes**" as **Enabled** in the **Edit Federated Identity Provider Settings...** page and click **Save**.
+
+     ![Configure Single Sign-On On App side](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_005.png)
+
+12. In the **Edit Federated Identity Provider User Settings** page perform the following actions and click **Save**.
+
+    a. Select **SAML NameID** as **Login name**.
+
+    b. Select **Other** as **Full name** and in the **Attribute name** textbox put the value: http://schemas.microsoft.com/identity/claims/displayname.
+
+    c. Select **Other** as **Email** and in the **Attribute name** textbox put the value: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress.
+
+    d. Select **Yes** as **Auto-create account on signon**.
+
+    e. Click **Save** button.
+
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_006.png)
+
+13. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
     
-	![Azure AD Single Sign-On][11]
+    ![Azure AD Single Sign-On][10]
 
-
-
-### Azure AD のテスト ユーザーの作成
-このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
-
-![Azure AD ユーザーの作成][20]
-
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
-
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
-
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_09.png)
-
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
+14. On the **Single sign-on confirmation** page, click **Complete**.  
     
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_03.png)
+    ![Azure AD Single Sign-On][11]
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+The objective of this section is to create a test user in the classic portal called Britta Simon.
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_05.png)
+![Create Azure AD User][20]
 
-    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+**To create a test user in Azure AD, perform the following steps:**
 
-    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.
 
-    c.**[次へ]** をクリックします。
+    ![Creating an Azure AD test user](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_09.png)
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
+
+3. To display the list of users, in the menu on the top, click **Users**.
     
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_06.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_03.png)
 
-    a.**[名]** ボックスに「**Britta**」と入力します。
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-    b.**[姓]** ボックスに「**Simon**」と入力します。
+    ![Creating an Azure AD test user](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_04.png)
 
-    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
+5. On the **Tell us about this user** dialog page, perform the following steps:
 
-    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
+    ![Creating an Azure AD test user](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_05.png)
 
-    e.**[次へ]** をクリックします。
+    a. As Type Of User, select New user in your organization.
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
+    b. In the User Name **textbox**, type **BrittaSimon**.
+
+    c. Click **Next**.
+
+6.  On the **User Profile** dialog page, perform the following steps:
     
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_06.png)
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+    a. In the **First Name** textbox, type **Britta**.  
+
+    b. In the **Last Name** textbox, type, **Simon**.
+
+    c. In the **Display Name** textbox, type **Britta Simon**.
+
+    d. In the **Role** list, select **User**.
+
+    e. Click **Next**.
+
+7. On the **Get temporary password** dialog page, click **create**.
     
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_07.png)
 
-    a.**[新しいパスワード]** の値を書き留めます。
-
-    b.**[完了]** をクリックします。
-
-
-
-### MOVEit Transfer テスト ユーザーの作成
-
-このセクションの目的は、MOVEit Transfer で Britta Simon というユーザーを作成することです。MOVEit Transfer では、Just-In-Time プロビジョニングがサポートされています。この設定は有効になっています。
-
-このセクションでは、ユーザー側で必要な操作はありません。ユーザーが存在しない場合は、MOVEit Transfer へのアクセスを試みたときに、新しいユーザーが自動的に作成されます。
-
-> [AZURE.NOTE] ユーザーを手動で作成する必要がある場合は、MOVEit Transfer のサポート チームにお問い合わせください。
-
-
-### Azure AD テスト ユーザーの割り当て
-
-このセクションの目的は、Britta Simon に MOVEit Transfer へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
-	
-![ユーザーの割り当て][200]
-
-**MOVEit Transfer に Britta Simon を割り当てるには、次の手順を実行します。**
-
-1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+8. On the **Get temporary password** dialog page, perform the following steps:
     
-	![ユーザーの割り当て][201]
+    ![Creating an Azure AD test user](./media/active-directory-saas-moveittransfer-tutorial/create_aaduser_08.png)
 
-2. アプリケーションの一覧で **[MOVEit Transfer]** を選択します。
+    a. Write down the value of the **New Password**.
+
+    b. Click **Complete**.   
+
+
+
+### <a name="creating-a-moveit-transfer-test-user"></a>Creating a MOVEit Transfer test user
+
+The objective of this section is to create a user called Britta Simon in MOVEit Transfer. MOVEit Transfer supports just-in-time provisioning, which you have enabled.
+
+There is no action item for you in this section. A new user will be created during an attempt to access MOVEit Transfer if it doesn't exist yet.
+
+> [AZURE.NOTE] If you need to create an user manually, you need to contact the MOVEit Transfer support team.
+
+
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+
+The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to MOVEit Transfer.
     
-	![Configure Single Sign-On](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_50.png)
+![Assign User][200]
 
-3. 上部のメニューで **[ユーザー]** をクリックします。
+**To assign Britta Simon to MOVEit Transfer, perform the following steps:**
+
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
     
-	![ユーザーの割り当て][203]
+    ![Assign User][201]
 
-4. ユーザーの一覧で **[Britta Simon]** を選択します。
-
-5. 下部にあるツール バーで **[割り当て]** をクリックします。
+2. In the applications list, select **MOVEit Transfer**.
     
-	![ユーザーの割り当て][205]
+    ![Configure Single Sign-On](./media/active-directory-saas-moveittransfer-tutorial/tutorial_moveittransfer_50.png)
 
-### シングル サインオンのテスト
+3. In the menu on the top, click **Users**.
+    
+    ![Assign User][203]
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+4. In the Users list, select **Britta Simon**.
+
+5. In the toolbar on the bottom, click **Assign**.
+    
+    ![Assign User][205]
+
+### <a name="testing-single-sign-on"></a>Testing single sign-on
+
+The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
  
-アクセス パネルで MOVEit Transfer のタイルをクリックすると、自動的に MOVEit Transfer アプリケーションにサインオンします。
+When you click the MOVEit Transfer tile in the Access Panel, you should get automatically signed-on to your MOVEit Transfer application.
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -318,4 +319,8 @@ MOVEit Transfer で Azure AD のシングル サインオンを構成してテ�
 [204]: ./media/active-directory-saas-moveittransfer-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-moveittransfer-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

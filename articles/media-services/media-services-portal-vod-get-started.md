@@ -1,233 +1,240 @@
 <properties
-	pageTitle=" Azure ポータルを使用したオンデマンド コンテンツ配信の概要 | Microsoft Azure"
-	description="このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。"
-	services="media-services"
-	documentationCenter=""
-	authors="Juliako"
-	manager="erikre"
-	editor=""/>
+    pageTitle=" Get started with delivering content on demand using the Azure portal | Microsoft Azure"
+    description="This tutorial walks you through the steps of implementing a basic Video-on-Demand (VoD) content delivery service with Azure Media Services (AMS) application using the Azure portal."
+    services="media-services"
+    documentationCenter=""
+    authors="Juliako"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/30/2016"
-	ms.author="juliako"/>
+    ms.service="media-services"
+    ms.workload="media"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/30/2016"
+    ms.author="juliako"/>
 
 
-# Azure ポータルを使用したオンデマンド コンテンツ配信の概要
+
+# <a name="get-started-with-delivering-content-on-demand-using-the-azure-portal"></a>Get started with delivering content on demand using the Azure portal
 
 [AZURE.INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
+This tutorial walks you through the steps of implementing a basic Video-on-Demand (VoD) content delivery service with Azure Media Services (AMS) application using the Azure portal.
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+> [AZURE.NOTE] To complete this tutorial, you need an Azure account. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/). 
 
-このチュートリアルに含まれるタスクは次のとおりです。
+This tutorial includes the following tasks:
 
-1.  Azure Media Services アカウントを作成する
-2.  ストリーミング エンドポイントを構成する
-1.  ビデオ ファイルをアップロードする
-1.  一連のアダプティブ ビットレート MP4 ファイルにソース ファイルをエンコードします。
-1.  資産を発行してストリーミング URL とプログレッシブ ダウンロード URL を取得する
-1.  コンテンツの再生
+1.  Create an Azure Media Services account.
+2.  Configure streaming endpoint.
+1.  Upload a video file.
+1.  Encode the source file into a set of adaptive bitrate MP4 files.
+1.  Publish the asset and get streaming and progressive download URLs.  
+1.  Play your content.
 
 
-## Azure Media Services アカウントの作成
+## <a name="create-an-azure-media-services-account"></a>Create an Azure Media Services account
 
-このセクションでは、AMS アカウントを作成する方法について説明します。
+The steps in this section show how to create an AMS account.
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
-2. **[+新規]**、**[メディア + CDN]**、**[Media Services]** の順にクリックします。
+1. Log in at the [Azure portal](https://portal.azure.com/).
+2. Click **+New** > **Media + CDN** > **Media Services**.
 
-	![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new1.png)
+    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new1.png)
 
-3. **[CREATE MEDIA SERVICES ACCOUNT (Media Services アカウントの作成)]** に必要な値を入力します。
+3. In **CREATE MEDIA SERVICES ACCOUNT** enter required values.
 
-	![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new3.png)
-	
-	1. **[アカウント名]** に新しい AMS アカウントの名前を入力します。Media Services アカウント名に使用できる文字は、小文字または数字のみで、空白を含めることはできません。長さは 3 ～ 24 文字です。
-	2. [サブスクリプション] ボックスで、アクセス権のある別の Azure サブスクリプションを選択します。
-	
-	2. **[リソース グループ]** ボックスで、新規または既存のリソースを選択します。リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。[こちら](resource-group-overview.md#resource-groups)を参照してください。
-	3. **[場所]** ボックスで、この Media Services アカウントのメディアとメタデータのレコードを保存するリージョンを選択します。このリージョンでメディアの処理とストリーミングが行われます。ドロップダウン リストのボックスには、利用可能な Media Services リージョンのみが表示されます。
-	
-	3. **[ストレージ アカウント]** ボックスで、Media Services アカウントのメディア コンテンツの BLOB ストレージとなるストレージ アカウントを選択します。Media Services アカウントと同じリージョンにある既存のストレージ アカウントを選択することも、ストレージ アカウントを作成することもできます。新しいストレージ アカウントは同じリージョンに作成されます。ストレージ アカウントの命名規則は、Media Services アカウントと同じです。
+    ![Media Services Create](./media/media-services-portal-vod-get-started/media-services-new3.png)
+    
+    1. In **Account Name**, enter the name of the new AMS account. A Media Services account name is all lowercase numbers or letters with no spaces, and is 3 to 24 characters in length.
+    2. In Subscription, select among the different Azure subscriptions that you have access to.
+    
+    2. In **Resource Group**, select the new or existing resource.  A resource group is a collection of resources that share lifecycle, permissions, and policies. Learn more [here](resource-group-overview.md#resource-groups).
+    3. In **Location**,  select the geographic region is used to store the media and metadata records for your Media Services account. This  region is used to process and stream your media. Only the available Media Services regions appear in the drop-down list box. 
+    
+    3. In **Storage Account**, select a storage account to provide blob storage of the media content from your Media Services account. You can select an existing storage account in the same geographic region as your Media Services account, or you can create a storage account. A new storage account is created in the same region. The rules for storage account names are the same as for Media Services accounts.
 
-		ストレージの詳細については、[こちら](storage-introduction.md)を参照してください。
+        Learn more about storage [here](storage-introduction.md).
 
-	4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、アカウントのデプロイの進行状況を確認します。
-	
-7. フォームの下部にある **[作成]** をクリックします。
+    4. Select **Pin to dashboard** to see the progress of the account deployment.
+    
+7. Click **Create** at the bottom of the form.
 
-	アカウントの作成に成功すると、ステータスが **[実行中]** に変化します。
+    Once the account is successfully created, the status changes to **Running**. 
 
-	![Media Services settings](./media/media-services-portal-vod-get-started/media-services-settings.png)
+    ![Media Services settings](./media/media-services-portal-vod-get-started/media-services-settings.png)
 
-	AMS アカウントを管理するには (ビデオのアップロード、資産のエンコード、ジョブの進行の監視など)、**[設定]** ウィンドウを使用します。
+    To manage your AMS account (for example, upload videos, encode assets, monitor job progress) use the **Settings** window.
 
-## Manage Keys
+## <a name="manage-keys"></a>Manage Keys
 
-Media Services アカウントにプログラムからアクセスするには、アカウント名とプライマリ キーの情報が必要です。
+You need the account name and the primary key information to programmatically access the Media Services account.
 
-1. Azure ポータルで、自分のアカウントを選択します。
+1. In the Azure portal, select your account. 
 
-	**[設定]** ウィンドウが右側に表示されます。
+    The **Settings** window appears on the right. 
 
-2. **[設定]** ウィンドウで、**[キー]** を選択します。
+2. In the **Settings** window, select **Keys**. 
 
-	**[キーの管理]** ウィンドウに、アカウント名、プライマリ キー、セカンダリ キーが表示されます。
-3. コピー ボタンをクリックして値をコピーします。
-	
-	![Media Services Keys](./media/media-services-portal-vod-get-started/media-services-keys.png)
+    The **Manage keys** windows shows the account name and the primary and secondary keys is displayed. 
+3. Press the copy button to copy the values.
+    
+    ![Media Services Keys](./media/media-services-portal-vod-get-started/media-services-keys.png)
 
-## ストリーミング エンドポイントの構成
+## <a name="configure-streaming-endpoints"></a>Configure streaming endpoints
 
-クライアントに対するアダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
+When working with Azure Media Services one of the most common scenarios is delivering video via adaptive bitrate streaming to your clients. Media Services supports the following adaptive bitrate streaming technologies: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH, and HDS (for Adobe PrimeTime/Access licensees only).
 
-Media Services にはダイナミック パッケージが用意されており、アダプティブ ビットレート MP4 でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、スムーズ ストリーミング、HDS) でそのまますぐに配信することができます。つまり、事前にパッケージされたこれらのストリーミング形式のバージョンを保存しておく必要がありません。
+Media Services provides dynamic packaging, which allows you to deliver your adaptive bitrate MP4  encoded content in streaming formats supported by Media Services (MPEG DASH, HLS, Smooth Streaming, HDS) just-in-time, without you having to store pre-packaged versions of each of these streaming formats.
 
-動的パッケージ化機能を利用するには、次の作業が必要となります。
+To take advantage of dynamic packaging, you need to do the following:
 
-- メザニン (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルにエンコードする (エンコードの手順は、このチュートリアルで後ほど説明します)。
-- コンテンツ配信元となる "*ストリーミング エンドポイント*" のストリーミング ユニットを少なくとも 1 つ作成する。以下の手順で、ストリーミング ユニットの数を変更する方法を示します。
+- Encode your mezzanine (source) file into a set of adaptive bitrate MP4 files (the encoding steps are demonstrated later in this tutorial).  
+- Create at least one streaming unit for the *streaming endpoint* from which you plan to delivery your content. The steps below show how to change the number of streaming units.
 
-ダイナミック パッケージを使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
+With dynamic packaging, you only need to store and pay for the files in single storage format and Media Services builds and serves the appropriate response based on requests from a client.
 
-ストリーミング予約ユニットを作成したり、数を変更したりするには、以下の手順を実行します。
+To create and change the number of streaming reserved units, do the following:
 
 
-1. **[設定]** ウィンドウで **[ストリーミング エンドポイント]** をクリックします。
+1. In the **Settings** window, click **Streaming endpoints**. 
 
-2. 既定のストリーミング エンドポイントをクリックします。
+2. Click the default streaming endpoint. 
 
-	**[DEFAULT STREAMING ENDPOINT DETAILS (既定のストリーミング エンドポイントの詳細)]** ウィンドウが表示されます。
+    The **DEFAULT STREAMING ENDPOINT DETAILS** window appears.
 
-3. ストリーミング ユニットの数を指定するには、**[ストリーミング ユニット]** のスライダーを動かします。
+3. To specify the number of streaming units, slide the **Streaming units** slider.
 
-	![ストリーミング ユニット](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
+    ![Streaming units](./media/media-services-portal-vod-get-started/media-services-streaming-units.png)
 
-4. **[保存]** をクリックして、変更を保存します。
+4. Click the **Save** button to save your changes.
 
-	>[AZURE.NOTE]新しいユニットの割り当てが完了するまでに最大 20 分かかる場合があります。
+    >[AZURE.NOTE]The allocation of any new units can take up to 20 minutes to complete.
 
-## ファイルのアップロード
+## <a name="upload-files"></a>Upload files
 
-Azure Media Services を使用してビデオをストリーミングするには、ソース ビデオをアップロードし、複数のビットレートにエンコードして発行する必要があります。このセクションで最初の手順を説明します。
+To stream videos using Azure Media Services, you need to upload the source videos, encode them into multiple bitrates, and publish the result. The first step is covered in this section. 
 
-1. **[設定]** ウィンドウで、**[資産]** をクリックします。
+1. In the **Setting** window, click **Assets**.
 
-	![ファイルのアップロード](./media/media-services-portal-vod-get-started/media-services-upload.png)
+    ![Upload files](./media/media-services-portal-vod-get-started/media-services-upload.png)
 
-3. **[アップロード]** ボタンをクリックします。
+3. Click the **Upload** button.
 
-	**[Upload a video asset (ビデオ資産をアップロード)]** ウィンドウが表示されます。
+    The **Upload a video asset** window appears.
 
-	>[AZURE.NOTE] ファイル サイズの制限はありません。
-	
-4. コンピューターで目的のビデオを参照して選択し、[OK] をクリックします。
+    >[AZURE.NOTE] There is no file size limitation.
+    
+4. Browse to the desired video on your computer, select it, and hit OK.  
 
-	アップロードが開始され、ファイル名の下に進行状況が表示されます。
+    The upload starts and you can see the progress under the file name.  
 
-アップロードが完了すると、**[資産]** ウィンドウの一覧に新しい資産が表示されます。
+Once the upload completes, you see the new asset listed in the **Assets** window. 
 
-## Encode assets
+## <a name="encode-assets"></a>Encode assets
 
-クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の 1 つです。Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。アダプティブ ビットレート ストリーミング用にビデオを準備するには、ソース ビデオをマルチビットレートのファイルにエンコードする必要があります。ビデオのエンコードには **Media Encoder Standard** エンコーダーを使用する必要があります。
+When working with Azure Media Services one of the most common scenarios is delivering adaptive bitrate streaming to your clients. Media Services supports the following adaptive bitrate streaming technologies: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH, and HDS (for Adobe PrimeTime/Access licensees only). To prepare your videos for adaptive bitrate streaming, you need to encode your source video into multi-bitrate files. You should use the **Media Encoder Standard** encoder to encode your videos.  
 
-また、Media Services にはダイナミック パッケージが用意されており、マルチビットレート MP4 でエンコードされたコンテンツを、MPEG DASH、HLS、スムーズ ストリーミング、HDS のストリーミング形式でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。ダイナミック パッケージを使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
+Media Services also provides dynamic packaging, which allows you to deliver your multi-bitrate MP4s in the following streaming formats: MPEG DASH, HLS, Smooth Streaming, or HDS, without you having to repackage into these streaming formats. With dynamic packaging, you only need to store and pay for the files in single storage format and Media Services builds and serves the appropriate response based on requests from a client.
 
-動的パッケージ化機能を利用するには、次の作業が必要となります。
+To take advantage of dynamic packaging, you need to do the following:
 
-- ソース ファイルを一連のマルチビットレート MP4 ファイルにエンコードする (エンコードの手順はこのセクションで後ほど説明します)。
-- コンテンツ配信元となるストリーミング エンドポイントのストリーミング ユニットを少なくとも 1 つ取得する。詳細については、「[ストリーミング エンドポイントの構成](media-services-portal-vod-get-started.md#configure-streaming-endpoints)」セクションを参照してください。
+- Encode your source file into a set of multi-bitrate MP4 files (the encoding steps are demonstrated later in this section).
+- Get at least one streaming unit for the streaming endpoint from which you plan to delivery your content. For more information, see [configuring streaming endpoints](media-services-portal-vod-get-started.md#configure-streaming-endpoints). 
 
-### ポータルを使用してエンコードするには
+### <a name="to-use-the-portal-to-encode"></a>To use the portal to encode
 
-ここでは、Media Encoder Standard でコンテンツをエンコードする手順について説明します。
+This section describes the steps you can take to encode your content with Media Encoder Standard.
 
-1.  **[設定]** ウィンドウで、**[資産]** を選択します。
-2.  **[資産]** ウィンドウで、エンコードする資産を選択します。
-3.  **[エンコード]** ボタンをクリックします。
-4.  **[Encode an asset (資産のエンコード)]** ウィンドウで、"Media Encoder Standard" プロセッサとプリセットを選択します。たとえば、入力ビデオの解像度が 1920 x 1080 ピクセルであるとわかっている場合は、"H264 Multiple Bitrate 1080p" のプリセットを使用できます。プリセットの詳細については、[こちら](https://msdn.microsoft.com/library/azure/mt269960.aspx)の記事を参照してください。重要なのは、入力ビデオに最適なプリセットを選択することです。低解像度 (640 x 360) のビデオの場合は、既定の "H264 Multiple Bitrate 1080p" のプリセットは使用しないでください。
-	
-	出力資産とジョブの名前を編集するオプションを利用すると、効率よく管理を行えます。
-		
-	![Encode assets](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. **[作成]** をクリックします。
+1.  In the **Settings** window, select **Assets**.  
+2.  In the **Assets** window, select the asset that you would like to encode.
+3.  Press the **Encode** button.
+4.  In the **Encode an asset** window, select the "Media Encoder Standard" processor and a preset. For example, if you know your input video has a resolution of 1920x1080 pixels, then you could use the "H264 Multiple Bitrate 1080p" preset. For more information about presets, see [this](https://msdn.microsoft.com/library/azure/mt269960.aspx) article – it is important to select the preset that is most appropriate for your input video. If you have a low resolution (640x360) video, then you should not be using the default "H264 Multiple Bitrate 1080p" preset.
+    
+    For easier management, you have an option of editing the name of the output asset, and the name of the job.
+        
+    ![Encode assets](./media/media-services-portal-vod-get-started/media-services-encode1.png)
+5. Press **Create**.
 
-### エンコード ジョブの進行状況の監視
+### <a name="monitor-encoding-job-progress"></a>Monitor encoding job progress
 
-エンコード ジョブの進行状況を監視するには、ページの上部にある **[設定]** をクリックし、**[ジョブ]** を選択します。
+To monitor the progress of the encoding job, click **Settings** (at the top of the page) and then select **Jobs**.
 
-![ジョブ](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![Jobs](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-## コンテンツを発行する
+## <a name="publish-content"></a>Publish content
 
-ストリーミングかダウンロードに使用できる URL を提供するには、まず、ロケーターを作成して資産を "発行" する必要があります。資産に含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。
+To provide your user with a  URL that can be used to stream or download your content, you first need to "publish" your asset by creating a locator. Locators provide access to files contained in the asset. Media Services supports two types of locators: 
 
-- ストリーミング (OnDemandOrigin) ロケーター。アダプティブ ストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなどでのストリーミング) に使用します。ストリーミング ロケーターを作成する場合、資産に .ism ファイルが含まれている必要があります。
-- プログレッシブ (SAS) ロケーター。プログレッシブ ダウンロードを使用してビデオを配信する場合に使用します。
+- Streaming (OnDemandOrigin) locators, used for adaptive streaming (for example, to stream MPEG DASH, HLS, or Smooth Streaming). To create a streaming locator your asset must contain an .ism file. 
+- Progressive (SAS) locators, used for delivery of video via progressive download.
 
 
-ストリーミング URL には次の形式があり、スムーズ ストリーミング資産の再生に使用できます。
+A streaming URL has the following format and you can use it to play Smooth Streaming assets.
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
-HLS ストリーミング URL を作成するには、(format=m3u8-aapl) を URL に追加します。
+To build an HLS streaming URL, append (format=m3u8-aapl) to the URL.
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf) を URL に追加します。
+To build an  MPEG DASH streaming URL, append (format=mpd-time-csf) to the URL.
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
 
-SAS URL には次の形式があります。
+A SAS URL has the following format.
 
-	{blob container name}/{asset name}/{file name}/{SAS signature}
+    {blob container name}/{asset name}/{file name}/{SAS signature}
 
->[AZURE.NOTE] 2015 年 3 月より前にポータルを使用してロケーターを作成した場合、有効期限が 2 年のロケーターが作成されています。
+>[AZURE.NOTE] If you used the portal to create locators before March 2015, locators with a two-year expiration date were created.  
 
-ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されます。
+To update an expiration date on a locator, use [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator ) or [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) APIs. When you update the expiration date of a SAS locator, the URL changes.
 
-### ポータルを使用して資産を発行するには
+### <a name="to-use-the-portal-to-publish-an-asset"></a>To use the portal to publish an asset
 
-ポータルを使用して資産を発行するには、次の操作を行います。
+To use the portal to publish an asset, do the following:
 
-1. **[設定]**、**[資産]** の順にクリックします。
-1. 発行する資産を選択します。
-1. **[発行]** ボタンをクリックします。
-1. ロケーターの種類を選択します。
-2. **[追加]** をクリックします。
+1. Select **Settings** > **Assets**.
+1. Select the asset that you want to publish.
+1. Click the **Publish** button.
+1. Select the locator type.
+2. Press **Add**.
 
-	![Publish](./media/media-services-portal-vod-get-started/media-services-publish1.png)
+    ![Publish](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
-URL が **[発行された URL]** の一覧に追加されます。
+The URL is added to the list of **Published URLs**.
 
-## ポータルでコンテンツを再生する
+## <a name="play-content-from-the-portal"></a>Play content from the portal
 
-ビデオは、Azure ポータルにあるコンテンツ プレーヤーを使用してテストできます。
+The Azure portal provides a content player that you can use to test your video.
 
-目的のビデオをクリックし、**[再生]** ボタンをクリックします。
+Click the desired video and then click the **Play** button.
 
 ![Publish](./media/media-services-portal-vod-get-started/media-services-play.png)
 
-いくつかの考慮事項が適用されます。
+Some considerations apply:
 
-- ビデオが発行されたことを確認します。
-- この**メディア プレイヤー**は既定のストリーミング エンドポイントから再生を行います。既定以外のストリーミング エンドポイントから再生する場合は、URL をクリックしてコピーし、別のプレーヤーを使用します。([Azure Media Services プレーヤーなど](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
+- Make sure the video has been published.
+- This **Media player** plays from the default streaming endpoint. If you want to play from a non-default streaming endpoint, click to copy the URL and use another player. For example, [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-Media Services のラーニング パスを確認します。
+Review Media Services learning paths.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##フィードバックの提供
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

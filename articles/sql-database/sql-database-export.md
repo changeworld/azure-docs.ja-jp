@@ -1,95 +1,96 @@
 <properties
-	pageTitle="Azure ポータルを使用して BACPAC ファイルに Azure SQL Database をアーカイブする"
-	description="Azure ポータルを使用して BACPAC ファイルに Azure SQL Database をアーカイブする"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Archive an Azure SQL database to a BACPAC file using the Azure Portal"
+    description="Archive an Azure SQL database to a BACPAC file  using the Azure Portal"
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="NA"
-	ms.date="08/15/2016"
-	ms.author="sstein"
-	ms.workload="data-management"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"/>
+    ms.service="sql-database"
+    ms.devlang="NA"
+    ms.date="08/15/2016"
+    ms.author="sstein"
+    ms.workload="data-management"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"/>
 
 
-# Azure ポータルを使用して BACPAC ファイルに Azure SQL Database をアーカイブする
+
+# <a name="archive-an-azure-sql-database-to-a-bacpac-file-using-the-azure-portal"></a>Archive an Azure SQL database to a BACPAC file using the Azure Portal
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](sql-database-export.md)
+- [Azure portal](sql-database-export.md)
 - [PowerShell](sql-database-export-powershell.md)
 
-この記事では、[Azure ポータル](https://portal.azure.com)を使用して、(Azure BLOB ストレージに格納されている) BACPAC ファイルに Azure SQL Database をアーカイブする方法について説明します。
+This article provides directions for archiving your Azure SQL database to a BACPAC file (stored in Azure blob storage) using the [Azure portal](https://portal.azure.com).
 
-Azure SQL Database のアーカイブを作成する必要がある場合は、BACPAC ファイルにデータベース スキーマとデータをエクスポートできます。BACPAC ファイルは、単に BACPAC の拡張子を持つ ZIP ファイルです。BACPAC ファイルは、後で Azure Blob Storage またはオンプレミスの場所にあるローカル ストレージに格納することや、後で Azure SQL Database またはオンプレミス SQL Server インストールに戻ってインポートすることができます。
+When you need to create an archive of an Azure SQL database, you can export the database schema and data to a BACPAC file. A BACPAC file is simply a ZIP file with an extension of BACPAC. A BACPAC file can later be stored in Azure blob storage or in local storage in an on-premises location and later imported back into Azure SQL Database or into a SQL Server on-premises installation. 
 
-***考慮事項***
+***Considerations***
 
-- アーカイブにトランザクション一貫性を持たせるために、書き込みアクティビティがエクスポート中に行われないようにするか、または Azure SQL Database の[トランザクション一貫性のあるコピー](sql-database-copy.md)からエクスポートする必要があります。
-- Azure Blob Storage にアーカイブできる BACPAC ファイルの最大サイズは 200 GB です。より大きな BACPAC ファイルをローカル ストレージにアーカイブするには、[SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンドプロンプト ユーティリティを使用します。このユーティリティは、Visual Studio と SQL Server の両方に含まれます。SQL Server Data Tools の最新版を[ダウンロード](https://msdn.microsoft.com/library/mt204009.aspx)し、このユーティリティを入手することもできます。
-- BACPAC ファイルを使用した Azure Premium Storage へのアーカイブはサポートされていません。
-- エクスポート操作が 20 時間を超える場合は取り消されることがあります。エクスポート中にパフォーマンスを向上させるには、次の操作を実行します。
- - サービス レベルを一時的に上げる。
- - エクスポート中のすべての読み取りアクティビティと書き込みアクティビティを中止する。
- - すべての大きなテーブルに null 以外の値を持つ[クラスター化インデックス](https://msdn.microsoft.com/library/ms190457.aspx)を使用する。クラスター化インデックスがないと、エクスポートが 6 ～ 12 時間よりも時間が長くかかる場合には失敗することがあります。これは、エクスポート サービスがテーブル スキャンを実行してテーブル全体をエクスポートしようとする必要があることが原因です。テーブルがエクスポート向けに最適化されているかを判断するための適切な方法として、**DBCC SHOW\_STATISTICS** を実行し、*RANGE\_HI\_KEY* が null 以外の値であり、分布が適切であることを確認する方法があります。詳細については、「[DBCC SHOW\_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)」を参照してください。
+- For an archive to be transactionally consistent, you must ensure either that no write activity is occurring during the export, or that you are exporting from a [transactionally consistent copy](sql-database-copy.md) of your Azure SQL database.
+- The maximum size of a BACPAC file archived to Azure Blob storage is 200 GB. To archive a larger BACPAC file to local storage, use the [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) command-prompt utility. This utility ships with both Visual Studio and SQL Server. You can also [download](https://msdn.microsoft.com/library/mt204009.aspx) the latest version of SQL Server Data Tools to get this utility.
+- Archiving to Azure premium storage by using a BACPAC file is not supported.
+- If the export operation exceeds 20 hours, it may be canceled. To increase performance during export, you can:
+ - Temporarily increase your service level.
+ - Cease all read and write activity during the export.
+ - Use a [clustered index](https://msdn.microsoft.com/library/ms190457.aspx) with non-null values on all large tables. Without clustered indexes, an export may fail if it takes longer than 6-12 hours. This is because the export service needs to complete a table scan to try to export entire table. A good way to determine if your tables are optimized for export is to run **DBCC SHOW_STATISTICS** and make sure that the *RANGE_HI_KEY* is not null and its value has good distribution. For details, see [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
 
 
-> [AZURE.NOTE] BACPAC はバックアップおよび復元操作に使用するためのものでありません。Azure SQL Database では、すべてのユーザー データベースのバックアップが自動的に作成されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
+> [AZURE.NOTE] BACPACs are not intended to be used for backup and restore operations. Azure SQL Database automatically creates backups for every user database. For details, see [Business Continuity Overview](sql-database-business-continuity.md).
 
-この記事を完了するには、以下が必要です。
+To complete this article you need the following:
 
-- Azure サブスクリプション。
-- Azure SQL Database。
-- [Azure Standard Storage アカウント](../storage/storage-create-storage-account.md) (標準的なストレージに BACPAC を格納する BLOB コンテナーを含む)。
+- An Azure subscription.
+- An Azure SQL Database. 
+- An [Azure Standard Storage account](../storage/storage-create-storage-account.md) with a blob container to store the BACPAC in standard storage.
 
-## データベースのエクスポート
+## <a name="export-your-database"></a>Export your database
 
-エクスポートするデータベースの [SQL Database] ブレードを開きます。
+Open the SQL Database blade for the database you want to export.
 
-> [AZURE.IMPORTANT] トランザクションに関する BACPAC ファイルの一貫性を保証するには、最初に[データベースのコピーを作成](sql-database-copy.md)してエクスポートする必要があります。
+> [AZURE.IMPORTANT] To guarantee a transactionally consistent BACPAC file you should first [create a copy of your database](sql-database-copy.md) and then export the database copy. 
 
-1.	[Azure ポータル](https://portal.azure.com)にアクセスします。
-2.	**[SQL Database]** をクリックします。
-3.	アーカイブするデータベースをクリックします。
-4.	[SQL Database] ブレードで、**[エクスポート]** をクリックして **[データベースのエクスポート]** ブレードを開きます。
+1.  Go to the [Azure portal](https://portal.azure.com).
+2.  Click **SQL databases**.
+3.  Click the database to archive.
+4.  In the SQL Database blade, click **Export** to open the **Export database** blade:
 
-    ![[エクスポート] ボタン][1]
+    ![export button][1]
 
-5.  **[Storage]** をクリックし、ストレージ アカウントと BACPAC が格納される BLOB コンテナーを選択します。
+5.  Click **Storage** and select your storage account and blob container where the BACPAC will be stored:
 
-    ![データベースのエクスポート][2]
+    ![export database][2]
 
-6. 認証の種類を選択します。
-7.  エクスポートするデータベースを含む Azure SQL Server の適切な認証資格情報を入力します。
-8.  **[OK]** をクリックしてデータベースをアーカイブします。**[OK]** をクリックすると、データベースのエクスポート要求が作成され、それがサービスに送信されます。エクスポートの所要時間の長さは、サイズ、データベースの複雑さ、およびサービス レベルによって異なります。通知を受信します。
+6. Select your authentication type. 
+7.  Enter the appropriate authentication credentials for the Azure SQL server containing the database you are exporting.
+8.  Click **OK** to archive the database. Clicking **OK** creates an export database request and submits it to the service. The length of time the export will take depends on the size and complexity of your database, and your service level. You will receive a notification.
 
-    ![通知のエクスポート][3]
+    ![export notification][3]
 
-## エクスポート操作の進行状況の監視
+## <a name="monitor-the-progress-of-the-export-operation"></a>Monitor the progress of the export operation
 
-1.	**[SQL Server]** をクリックします。
-2.	アーカイブした元 (ソース) のデータベースを含むサーバーをクリックします。
-3.  下にスクロールして、[操作] に移動します。
-4.	[SQL Server] ブレードで、**[インポート/エクスポート履歴]** をクリックします。
+1.  Click **SQL servers**.
+2.  Click the server containing the original (source) database you just archived.
+3.  Scroll down to Operations.
+4.  In the SQL server blade click **Import/Export history**:
 
-    ![インポート/エクスポート履歴][4]
+    ![import export history][4]
 
-## BACPAC がストレージ コンテナーにあることの確認
+## <a name="verify-the-bacpac-is-in-your-storage-container"></a>Verify the BACPAC is in your storage container
 
-1.	**[ストレージ アカウント]** をクリックします。
-2.	BACPAC アーカイブを格納したストレージ アカウントをクリックします。
-3.	**[コンテナー]** をクリックし、データベースをエクスポートしたコンテナーを選択して詳細を参照します (ここから BACPAC をダウンロードして保存できます)。
+1.  Click **Storage accounts**.
+2.  Click the storage account where you stored the BACPAC archive.
+3.  Click **Containers** and select the container you exported the database into for details (you can download and save the BACPAC from here).
 
-    ![.bacpac ファイルの詳細][5]
+    ![.bacpac file details][5]  
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- Azure SQL Database への BACPAC のインポートについては、[Azure SQL Database への BACPAC のインポート](sql-database-import.md)に関するページをご覧ください
-- SQL Server データベースへの BACPAC のインポートについては、[SQL Server データベースへの BACPAC のインポート](https://msdn.microsoft.com/library/hh710052.aspx)に関するページをご覧ください
+- To learn about importing a BACPAC to an Azure SQL Database, see [Import a BACPCAC to an Azure SQL database](sql-database-import.md)
+- To learn about importing a BACPAC to a SQL Server database, see [Import a BACPCAC to a SQL Server database](https://msdn.microsoft.com/library/hh710052.aspx)
 
 
 
@@ -100,4 +101,9 @@ Azure SQL Database のアーカイブを作成する必要がある場合は、B
 [4]: ./media/sql-database-export/export-history.png
 [5]: ./media/sql-database-export/bacpac-archive.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

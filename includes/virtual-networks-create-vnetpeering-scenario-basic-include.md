@@ -1,9 +1,11 @@
-## 同じサブスクリプションのピアリング VNet
+## <a name="peering-vnets-in-the-same-subscription"></a>Peering VNets in the same subscription
 
-このシナリオでは、同じサブスクリプションに属している **VNet1** と **VNet2** という 2 つの VNet 間にピアリングを作成します。
+In this scenario you will create a peering between two VNets named **VNet1** and **VNet2** belonging to the same subscription. 
 
-![基本的なシナリオ](./media/virtual-networks-create-vnetpeering-scenario-basic-include/figure01.PNG)
+![Basic scenario](./media/virtual-networks-create-vnetpeering-scenario-basic-include/figure01.PNG)
 
-VNet ピアリングを使用すると、ピアリングされた仮想ネットワークのアドレス空間全体で完全な接続が確立されます。
+VNet peering will allow full connectivity between the entire address space of peered virtual networks.    
 
-<!---HONumber=AcomDC_0803_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

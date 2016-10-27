@@ -1,5 +1,7 @@
-> [AZURE.TIP] **Microsoft Azure ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理**
+> [AZURE.TIP] **Manage Azure Blob Storage resources with Microsoft Azure Storage Explorer**
 > 
-> Microsoft Azure ストレージ エクスプローラーを使用すると、[Azure Blob Storage のリソースを管理](../articles/vs-azure-tools-storage-explorer-blobs.md)できます。たとえば、BLOB コンテナーおよび BLOB を視覚的に作成、読み取り、更新、削除できるほか、BLOB コンテナーおよび BLOB へのアクセスを管理できます。
+> Microsoft Azure Storage Explorer enables you to [manage Azure Blob Storage resources](../articles/vs-azure-tools-storage-explorer-blobs.md), including the ability to visually create, read, update, and delete blob containers and blobs, as well as manage access to your blobs containers and blobs.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

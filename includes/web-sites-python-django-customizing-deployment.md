@@ -1,36 +1,39 @@
-Azure は、**次の両方の条件に当てはまる場合**、アプリケーションで Python を使用していると判断します。
+Azure will determine that your application uses Python **if both of these conditions are true**:
 
-- requirements.txt ファイルがルート フォルダーにある
-- ルート フォルダー内の .py ファイル、または runtime.txt で、python を指定している
+- requirements.txt file in the root folder
+- any .py file in the root folder OR a runtime.txt that specifies python
 
-両方に当てはまる場合は、Python 固有のデプロイメント スクリプトが使用されます。スクリプトによって、ファイルの標準の同期と、次のような追加の Python 操作が実行されます。
+When that's the case, it will use a Python specific deployment script, which performs the standard synchronization of files, as well as additional Python operations such as:
 
-- 仮想環境の自動管理
-- requirements.txt に示されているパッケージの、pip を使用したインストール
-- 選択された Python バージョンに基づく適切な web.config の作成
-- Django アプリケーション用の静的なファイルの収集
+- Automatic management of virtual environment
+- Installation of packages listed in requirements.txt using pip
+- Creation of the appropriate web.config based on the selected Python version.
+- Collect static files for Django applications
 
-スクリプトをカスタマイズすることなく、既定デプロイメント手順の特定の側面を制御できます。
+You can control certain aspects of the default deployment steps without having to customize the script.
 
-Python 固有のすべてのデプロイメント手順をスキップする場合は、空のファイルを作成します。
+If you want to skip all Python specific deployment steps, you can create this empty file:
 
     \.skipPythonDeployment
 
-Django アプリケーションで静的なファイルの収集をスキップする場合は、次のようにします。
+If you want to skip collection of static files for your Django application:
 
     \.skipDjango 
 
-デプロイメントをより密接に制御するために、次のファイルを作成して、既定のデプロイメント スクリプトをオーバーライドできます。
+For more control over deployment, you can override the default deployment script by creating the following files:
 
     \.deployment
     \deploy.cmd
 
-ファイルの作成には、[Azure コマンド ライン インターフェイス][]を使用できます。プロジェクト フォルダーからこのコマンドを使用します。
+You can use the [Azure command-line interface][] to create the files.  Use this command from your project folder:
 
     azure site deploymentscript --python
 
-これらのファイルが存在しない場合、Azure によって一時的なデプロイメント スクリプトが作成され、それが実行されます。スクリプトは上記のコマンドで作成したのと同じです。
+When these files don't exist, Azure creates a temporary deployment script and runs it.  It is identical to the one you create with the command above.
 
-[Azure コマンド ライン インターフェイス]: http://azure.microsoft.com/downloads/
+[Azure command-line interface]: http://azure.microsoft.com/downloads/
 
-<!---HONumber=AcomDC_0224_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

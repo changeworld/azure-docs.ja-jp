@@ -1,157 +1,162 @@
 <properties
-	pageTitle="SQL Server のパフォーマンスに関するベスト プラクティス | Microsoft Azure"
-	description="Microsoft Azure VM で SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。"
-	services="virtual-machines-windows"
-	documentationCenter="na"
-	authors="rothja"
-	manager="jhubbard"
-	editor=""
-	tags="azure-service-management" />
+    pageTitle="Performance best practices for SQL Server | Microsoft Azure"
+    description="Provides best practices for optimizing SQL Server performance in Microsoft Azure VMs."
+    services="virtual-machines-windows"
+    documentationCenter="na"
+    authors="rothja"
+    manager="jhubbard"
+    editor=""
+    tags="azure-service-management" />
 
 <tags
-	ms.service="virtual-machines-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-windows-sql-server"
-	ms.workload="infrastructure-services"
-	ms.date="09/07/2016"
-	ms.author="jroth" />
+    ms.service="virtual-machines-windows"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="vm-windows-sql-server"
+    ms.workload="infrastructure-services"
+    ms.date="09/07/2016"
+    ms.author="jroth" />
 
-# Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
 
-## Overview
+# <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Performance best practices for SQL Server in Azure Virtual Machines
 
-このトピックでは、Microsoft Azure Virtual Machine で SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。Azure Virtual Machines で SQL Server を実行するときは、オンプレミスのサーバー環境で SQL Server に適用されるデータベース パフォーマンス チューニング オプションと同じものを引き続き使用することをお勧めします。ただし、パブリック クラウド内のリレーショナル データベースのパフォーマンスは、仮想マシンのサイズやデータ ディスクの構成などのさまざまな要素に左右されます。
+## <a name="overview"></a>Overview
 
-SQL Server イメージを作成するときは、[VM を Azure ポータルにプロビジョニングすることを検討してください](virtual-machines-windows-portal-sql-server-provision.md)。Resource Manager を使用してポータルにプロビジョニングされた SQL Server VM は、ストレージの構成を含むすべてのベスト プラクティスを実装します。
+This topic provides best practices for optimizing SQL Server performance in Microsoft Azure Virtual Machine. While running SQL Server in Azure Virtual Machines, we recommend that you continue using the same database performance tuning options that are applicable to SQL Server in on-premises server environment. However, the performance of a relational database in a public cloud depends on many factors such as the size of a virtual machine, and the configuration of the data disks.
 
-この記事は、Azure VM で SQL Server の*最適な*パフォーマンスを得ることに重点を置いています。ワークロードの要求が厳しくない場合は、以下に示す最適化がすべて必要になるわけではありません。各推奨事項を評価するときに、パフォーマンスのニーズとワークロードのパターンを考慮してください。
+When creating SQL Server images, [consider provisioning your VMs in the Azure portal](virtual-machines-windows-portal-sql-server-provision.md). SQL Server VMs provisioned in the Portal with Resource Manager implement all these best practices, including the storage configuration.
+
+This article is focused on getting the *best* performance for SQL Server on Azure VMs. If your workload is less demanding, you might not require every optimization listed below. Consider your performance needs and workload patterns as you evaluate these recommendations.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## クイック チェック リスト
+## <a name="quick-check-list"></a>Quick check list
 
-Azure Virtual Machines で SQL Server の最適なパフォーマンスを実現するためのクイック チェック リストを次に示します。
+The following is a quick check list for optimal performance of SQL Server on Azure Virtual Machines:
 
-|領域|最適化|
+|Area|Optimizations|
 |---|---|
-|[VM サイズ](#vm-size-guidance)|[DS3](virtual-machines-windows-sizes.md#standard-tier-ds-series) 以上 (SQL Enterprise Edition の場合)。<br/><br/>[DS2](virtual-machines-windows-sizes.md#standard-tier-ds-series) 以上 (SQL Standard Edition および Web Edition の場合)。|
-|[Storage](#storage-guidance)|[Premium Storage](../storage/storage-premium-storage.md) を使用します。標準ストレージは dev/test に対してのみ推奨されます。<br/><br/>[ストレージ アカウント](../storage/storage-create-storage-account.md)と SQL Server VM を同じリージョンに保持します。<br/><br/>ストレージ アカウントで Azure geo [冗長ストレージ](../storage/storage-redundancy.md) (geo レプリケーション) を無効にします。|
-|[ディスク](#disks-guidance)|少なくとも 2 つの [P30 ディスク](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage) (ログ ファイル用に 1 つ、データ ファイルと TempDB 用に 1 つ) を使用します。<br/><br/>データベースの保存またはログ記録にオペレーティング システム ディスクまたは一時ディスクを使用することは避けます。<br/><br/>データ ファイルと TempDB をホストするディスクで読み取りキャッシュを有効にします。<br/><br/>ログ ファイルをホストするディスクでは、キャッシュを有効にしないでください。<br/><br/>重要: Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。<br/><br/>複数の Azure データ ディスクをストライプして、IO スループットを向上させます。<br/><br/>ドキュメントに記載されている割り当てサイズでフォーマットします。|
-|[I/O](#io-guidance)|データベース ページの圧縮を有効にします。<br/><br/>データ ファイルの瞬時初期化を有効にします。<br/><br/>データベースで自動拡張を制限するか、無効にします。<br/><br/>データベースで自動圧縮を無効にします。<br/><br/>システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。<br/><br/>SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。<br/><br/>既定のバックアップ ファイルとデータベース ファイルの場所を設定します。<br/><br/>ロックされたページを有効にします。<br/><br/>SQL Server パフォーマンス修正プログラムを適用します。|
-|[機能固有](#feature-specific-guidance)|BLOB ストレージに直接バックアップします。|
+|[VM size](#vm-size-guidance)|[DS3](virtual-machines-windows-sizes.md#standard-tier-ds-series) or higher for SQL Enterprise edition.<br/><br/>[DS2](virtual-machines-windows-sizes.md#standard-tier-ds-series) or higher for SQL Standard and Web editions.|
+|[Storage](#storage-guidance)|Use [Premium Storage](../storage/storage-premium-storage.md). Standard storage is only recommended for dev/test.<br/><br/>Keep the [storage account](../storage/storage-create-storage-account.md) and SQL Server VM in the same region.<br/><br/>Disable Azure [geo-redundant storage](../storage/storage-redundancy.md) (geo-replication) on the storage account.|
+|[Disks](#disks-guidance)|Use a minimum of 2 [P30 disks](../storage/storage-premium-storage.md#scalability-and-performance-targets-when-using-premium-storage) (1 for log files; 1 for data files and TempDB).<br/><br/>Avoid using operating system or temporary disks for database storage or logging.<br/><br/>Enable read caching on the disk(s) hosting the data files and TempDB.<br/><br/>Do not enable caching on disk(s) hosting the log file.<br/><br/>Important: Stop the SQL Server service when changing the cache settings for an Azure VM disk.<br/><br/>Stripe multiple Azure data disks to get increased IO throughput.<br/><br/>Format with documented allocation sizes.|
+|[I/O](#io-guidance)|Enable database page compression.<br/><br/>Enable instant file initialization for data files.<br/><br/>Limit or disable autogrow on the database.<br/><br/>Disable autoshrink on the database.<br/><br/>Move all databases to data disks, including system databases.<br/><br/>Move SQL Server error log and trace file directories to data disks.<br/><br/>Setup default backup and database file locations.<br/><br/>Enable locked pages.<br/><br/>Apply SQL Server performance fixes.|
+|[Feature specific](#feature-specific-guidance)|Back up directly to blob storage.|
 
-これらの最適化を行う*方法*と*理由*については、以下のセクションに記載されている詳細とガイダンスを確認してください。
+For more information on *how* and *why* to make these optimizations, please review the details and guidance provided in following sections.
 
-## VM サイズのガイダンス
+## <a name="vm-size-guidance"></a>VM size guidance
 
-パフォーマンス重視のアプリケーションでは、次の[仮想マシン サイズ](virtual-machines-windows-sizes.md)を使用することをお勧めします。
+For performance sensitive applications, it’s recommended that you use the following [virtual machines sizes](virtual-machines-windows-sizes.md):
 
-- **SQL Server Enterprise Edition**: DS3 以上
+- **SQL Server Enterprise Edition**: DS3 or higher
 
-- **SQL Server Standard Edition または Web Edition**: DS2 以上
+- **SQL Server Standard and Web Editions**: DS2 or higher
 
 
-## ストレージのガイダンス
+## <a name="storage-guidance"></a>Storage guidance
 
-(DSv2 シリーズおよび GS シリーズと共に) DS シリーズの VM は、[Premium Storage](../storage/storage-premium-storage.md) をサポートしています。すべての運用環境のワークロードには Premium Storage をお勧めします。
+DS-series (along with DSv2-series and GS-series) VMs support [Premium Storage](../storage/storage-premium-storage.md). Premium Storage is recommended for all production workloads.
 
-> [AZURE.WARNING] Standard Storage には、さまざまな待機時間や帯域幅があり、開発/テスト ワークロードにのみ推奨されます。運用環境のワークロードでは、Premium Storage を使用する必要があります。
+> [AZURE.WARNING] Standard Storage has varying latencies and bandwidth and is only recommended for dev/test workloads. Production workloads should use Premium Storage.
 
-さらに、転送遅延を低減するために、SQL Server 仮想マシンと同じデータ センターで Azure ストレージ アカウントを作成することをお勧めします。ストレージ アカウントの作成時に、geo レプリケーションを無効にします。複数のディスクでの一貫性のある書き込み順序が保証されないためです。代わりに、2 つの Azure データ センター間で SQL Server 障害復旧テクノロジを構成することを検討します。詳細については、「[Azure Virtual Machines における SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
+In addition, we recommend that you create your Azure storage account in the same data center as your SQL Server virtual machines to reduce transfer delays. When creating a storage account, disable geo-replication as consistent write order across multiple disks is not guaranteed. Instead, consider configuring a SQL Server disaster recovery technology between two Azure data centers. For more information, see [High Availability and Disaster Recovery for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-high-availability-dr.md).
 
-## ディスクのガイダンス
+## <a name="disks-guidance"></a>Disks guidance
 
-Azure VM には、次の 3 種類のメイン ディスクがあります。
+There are three main disk types on an Azure VM:
 
-- **OS ディスク**: Azure Virtual Machine を作成すると、プラットフォームによって、オペレーティング システム ディスク用に少なくとも 1 つのディスク (**C** ドライブとしてラベル付けされる) が VM に接続されます。このディスクは、ページ BLOB としてストレージに格納されている VHD です。
-- **一時ディスク**: Azure Virtual Machines には、一時ディスクと呼ばれる別のディスク (**D**: ドライブとしてラベル付けされる) が含まれています。これは、スクラッチ領域に使用できるノード上のディスクです。
-- **データ ディスク**: 追加のディスクをデータ ディスクとして仮想マシンに接続することもできます。これらのディスクは、ページ BLOB としてストレージに格納されます。
+- **OS disk**: When you create an Azure Virtual Machine, the platform will attach at least one disk (labeled as the **C** drive) to the VM for your operating system disk. This disk is a VHD stored as a page blob in storage.
+- **Temporary disk**: Azure Virtual Machines contain another disk called the temporary disk (labeled as the **D**: drive). This is a disk on the node that can be used for scratch space.
+- **Data disks**: You can also attach additional disks to your virtual machine as data disks, and these will be stored in storage as page blobs.
 
-次のセクションでは、これらの異なるディスクの使用に関する推奨事項について説明します。
+The following sections describe recommendations for using these different disks.
 
-### オペレーティング システム ディスク
+### <a name="operating-system-disk"></a>Operating system disk
 
-オペレーティング システム ディスクは、実行中のバージョンのオペレーティング システムとして起動およびマウントできる VHD であり、**C** ドライブとしてラベル付けされます。
+An operating system disk is a VHD that you can boot and mount as a running version of an operating system and is labeled as **C** drive.
 
-オペレーティング システム ディスクの既定のキャッシュ ポリシーは、**読み取り/書き込み**です。パフォーマンス重視のアプリケーションでは、オペレーティング システム ディスクではなく、データ ディスクを使用することをお勧めします。下記のデータ ディスクに関するセクションをご覧ください。
+Default caching policy on the operating system disk is **Read/Write**. For performance sensitive applications, we recommend that you use data disks instead of the operating system disk. See the section on Data Disks below.
 
-### 一時ディスク
+### <a name="temporary-disk"></a>Temporary disk
 
-**D**: ドライブとしてラベル付けされる一時ストレージ ドライブは、Azure BLOB ストレージに保持されません。ユーザー データベース ファイルやユーザー トランザクション ログ ファイルを **D**: ドライブに保存しないでください。
+The temporary storage drive, labeled as the **D**: drive, is not persisted to Azure blob storage. Do not store your user database files or user transaction log files on the **D**: drive.
 
-D シリーズ、Dv2 シリーズ、および G シリーズの VM では、これらの VM 上の一時ドライブは SSD ベースです。一時オブジェクトや複雑な結合などのワークロードで TempDB が多用される場合、TempDB を **D** ドライブに格納すると、TempDB のスループットが向上し、TempDB の遅延時間が短縮される可能性があります。
+For D-series, Dv2-series, and G-series VMs, the temporary drive on these VMs is SSD-based. If your workload makes heavy use of TempDB (e.g. for temporary objects or complex joins), storing TempDB on the **D** drive could result in higher TempDB throughput and lower TempDB latency.
 
-Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ) をサポートする VM の場合は、Premium Storage をサポートし、読み取りキャッシングが有効なディスクに TempDB とバッファー プール拡張機能を格納することをお勧めします。この推奨事項には例外が 1 つあります。TempDB の使用が書き込み重視である場合は、TempDB をローカル **D** ドライブに格納することで、パフォーマンスを向上させることができます。これも、マシン サイズに基づく SSD ベースです。
+For VMs that support Premium Storage (DS-series, DSv2-series, and GS-series), we recommend storing TempDB and/or Buffer Pool Extensions on a disk that supports Premium Storage with read caching enabled. There is one exception to this recommendation; if your TempDB usage is write-intensive, you can achieve higher performance by storing TempDB on the local **D** drive, which is also SSD-based on these machine sizes.
 
-### データ ディスク
+### <a name="data-disks"></a>Data disks
 
-- **データ ファイルとログ ファイル用のデータ ディスクの使用**: 少なくとも、2 つの Premium Storage [P30 ディスク](../storage/storage-premium-storage.md#scalability-and-performance-targets-whja-JPing-premium-storage)を使用し、一方のディスクにログ ファイル、もう一方にデータ ファイルと TempDB を格納します。
+- **Use data disks for data and log files**: At a minimum, use 2 Premium Storage [P30 disks](../storage/storage-premium-storage.md#scalability-and-performance-targets-when-using-premium-storage) where one disk contains the log file(s) and the other contains the data file(s) and TempDB.
 
-- **ディスク ストライピング**: スループットを向上させるには、データ ディスクをさらに追加して、ディスク ストライピングを使用します。データ ディスクの数を決定するには、データおよびログ ディスクで使用可能な IOPS の数を分析する必要があります。詳細については、[ディスクへの Premium Storage の使用](../storage/storage-premium-storage.md)に関する記事で [VM サイズ](virtual-machines-windows-sizes.md)およびディスク サイズごとの IOPS を示す表をご覧ください。次のガイドラインに従ってください。
+- **Disk Striping**: For more throughput, you can add additional data disks and use Disk Striping. To determine the number of data disks, you need to analyze the number of IOPS available for your data and log disk(s). For that information, see the tables on IOPS per [VM size](virtual-machines-windows-sizes.md) and disk size in the following article: [Using Premium Storage for Disks](../storage/storage-premium-storage.md). Use the following these guidelines:
 
-	- Windows 8 と Windows Server 2012 以降では、[記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)を使用します。ストライプ サイズを、OLTP ワークロードでは 64 KB、データ ウェアハウス ワークロードでは 256 KB にそれぞれ設定して、パーティションの不適切な配置に起因するパフォーマンスの低下を防ぎます。また、列数を物理ディスクの数に設定します。8 個以上のディスクで記憶域スペースを構成するには、(サーバー マネージャーの UI ではなく) PowerShell を使用して、ディスクの数に一致する列数を明示的に設定する必要があります。[記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)の構成方法の詳細については、[Windows PowerShell の記憶域スペース コマンドレット](https://technet.microsoft.com/library/jj851254.aspx)に関するページをご覧ください。
+    - For Windows 8/Windows Server 2012 or later, use [Storage Spaces](https://technet.microsoft.com/library/hh831739.aspx). Set stripe size to 64 KB for OLTP workloads and 256 KB for data warehousing workloads to avoid performance impact due to partition misalignment. In addition, set column count = number of physical disks. To configure a Storage Space with more than 8 disks you must use PowerShell (not Server Manager UI) to explicitly set the number of columns to match the number of disks. For more information on how to configure [Storage Spaces](https://technet.microsoft.com/library/hh831739.aspx), see [Storage Spaces Cmdlets in Windows PowerShell](https://technet.microsoft.com/library/jj851254.aspx)
 
-	- Windows 2008 R2 以前では、ダイナミック ディスク (OS ストライプ ボリューム) を使用できます。ストライプ サイズは常に 64 KB です。Windows 8 および Windows Server 2012 の時点で、このオプションは使用されていません。詳細については、[Windows Storage Management API に移行しつつある仮想ディスク サービス](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)に関するページでサポートに関する声明をご覧ください。
+    - For Windows 2008 R2 or earlier, you can use dynamic disks (OS striped volumes) and the stripe size is always 64 KB. Note that this option is deprecated as of Windows 8/Windows Server 2012. For information, see the support statement at [Virtual Disk Service is transitioning to Windows Storage Management API](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx).
 
-	- ワークロードで大量のログが発生するわけではなく、専用の IOPS を必要としない場合は、記憶域プールを 1 つだけ構成します。それ以外の場合は、記憶域プールを 2 つ作成して、1 つをログ ファイルに使用し、もう 1 つをデータ ファイルと TempDB に使用します。負荷予測に基づいて、各記憶域プールに関連付けるディスクの数を決定します。接続できるデータ ディスクの数は VM サイズによって異なることに注意してください。詳細については、「[Virtual Machines のサイズ](virtual-machines-windows-sizes.md)」を参照してください。
+    - If your workload is not log intensive and does not need dedicated IOPs, you can configure just one storage pool. Otherwise, create two storage pools, one for the log file(s) and another storage pool for the data file(s) and TempDB. Determine the number of disks associated with each storage pool based on your load expectations. Keep in mind that different VM sizes allow different numbers of attached data disks. For more information, see [Sizes for Virtual Machines](virtual-machines-windows-sizes.md).
 
-	- Premium Storage (開発/テスト シナリオ) を使用しない場合は、ご使用の [VM サイズ](virtual-machines-windows-sizes.md)でサポートされる最大数のデータ ディスクを追加し、ディスク ストライピングを使用することをお勧めします。
+    - If you are not using Premium Storage (dev/test scenarios), the recommendation is to add the maximum number of data disks supported by your [VM size](virtual-machines-windows-sizes.md) and use Disk Striping.
 
-- **キャッシュ ポリシー**: Premium Storage データ ディスクの場合は、データ ファイルと TempDB のみをホストするデータ ディスクで読み取りキャッシュを有効にします。Premium Storage を使用していない場合は、どのデータ ディスクでもキャッシュを有効にしないでください。ディスクのキャッシュを構成する手順については、「[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847)」および「[Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx)」をご覧ください。
+- **Caching policy**: For Premium Storage data disks, enable read caching on the data disks hosting your data files and TempDB only. If you are not using Premium Storage, do not enable any caching on any data disks. For instructions on configuring disk caching, see the following topics: [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) and [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx).
 
-	>[AZURE.WARNING] データベースの破損の可能性を回避するために、Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。
+    >[AZURE.WARNING] Stop the SQL Server service when changing the cache setting of Azure VM disks to avoid the possibility of any database corruption.
 
-- **NTFS アロケーション ユニット サイズ**: データ ディスクをフォーマットするときは、データ ファイルとログ ファイルに加えて TempDB にも 64 KB アロケーション ユニット サイズを使用することをお勧めします。
+- **NTFS allocation unit size**: When formatting the data disk, it is recommended that you use a 64-KB allocation unit size for data and log files as well as TempDB.
 
-- **ディスク管理のベスト プラクティス**: データ ディスクの削除またはキャッシュの種類の変更を行う場合、変更中は SQL Server サービスを停止します。OS ディスクでキャッシュ設定が変更されると、Azure は VM を停止し、キャッシュの種類を変更して、VM を再起動します。データ ディスクのキャッシュ設定が変更されても VM は停止されませんが、変更中、データ ディスクが VM から切断され、その後再接続されます。
+- **Disk management best practices**: When removing a data disk or changing its cache type, stop the SQL Server service during the change. When the caching settings are changed on the OS disk, Azure stops the VM, changes the cache type, and restarts the VM. When the cache settings of a data disk are changed, the VM is not stopped, but the data disk is detached from the VM during the change and then reattached.
 
-	>[AZURE.WARNING] これらの操作中に、SQL Server サービスの停止を怠ると、データベースが破損するおそれがあります。
+    >[AZURE.WARNING] Failure to stop the SQL Server service during these operations can cause database corruption.
 
-## I/O のガイダンス
+## <a name="i/o-guidance"></a>I/O guidance
 
-- Premium Storage では、アプリケーションと要求の並列処理を実行するときに最良の結果が得られます。Premium Storage は、IO キューの深さが 1 より大きいシナリオ向けに設計されているので、シングル スレッド シリアル要求では (ストレージを集中的に使用する場合でも)、パフォーマンスの向上はほとんどまたはまったくありません。たとえば、これは、パフォーマンス分析ツール (SQLIO など) のシングル スレッド テストの結果に影響する可能性があります。
+- The best results with Premium Storage are achieved when you parallelize your application and requests. Premium Storage is designed for scenarios where the IO queue depth is greater than 1, so you will see little or no performance gains for single-threaded serial requests (even if they are storage intensive). For example, this could impact the single-threaded test results of performance analysis tools, such as SQLIO.
 
-- I/O 集中型ワークロードのパフォーマンスを向上させるために、[データベース ページの圧縮](https://msdn.microsoft.com/library/cc280449.aspx)を使用することを検討します。ただし、データ圧縮を使用すると、データベース サーバーでの CPU 消費量が増加する場合があります。
+- Consider using [database page compression](https://msdn.microsoft.com/library/cc280449.aspx) as it can help improve performance of I/O intensive workloads. However, the data compression might increase the CPU consumption on the database server.
 
-- 初期ファイル割り当てに必要な時間を短縮するために、ファイルの瞬時初期化を有効にすることを検討します。ファイルの瞬時初期化を利用するには、SQL Server (MSSQLSERVER) サービス アカウントに SE\_MANAGE\_VOLUME\_NAME を付与し、**[ボリュームの保守タスクを実行]** セキュリティ ポリシーにそのサービス アカウントを追加します。Azure の SQL Server プラットフォーム イメージを使用している場合、既定のサービス アカウント (NT Service\\MSSQLSERVER) は、**[ボリュームの保守タスクを実行]** セキュリティ ポリシーに追加されません。つまり、SQL Server Azure プラットフォーム イメージでは、ファイルの瞬時初期化は有効になりません。**[ボリュームの保守タスクを実行]** セキュリティ ポリシーに SQL Server サービス アカウントを追加したら、SQL Server サービスを再起動します。この機能を使用する場合、セキュリティに関する考慮事項があります。詳細については、「[データベース ファイルの初期化](https://msdn.microsoft.com/library/ms175935.aspx)」をご覧ください。
+- Consider enabling instant file initialization to reduce the time that is required for initial file allocation. To take advantage of instant file initialization, you grant the SQL Server (MSSQLSERVER) service account with SE_MANAGE_VOLUME_NAME and add it to the **Perform Volume Maintenance Tasks** security policy. If you are using a SQL Server platform image for Azure, the default service account (NT Service\MSSQLSERVER) isn’t added to the **Perform Volume Maintenance Tasks** security policy. In other words, instant file initialization is not enabled in a SQL Server Azure platform image. After adding the SQL Server service account to the **Perform Volume Maintenance Tasks** security policy, restart the SQL Server service. There could be security considerations for using this feature. For more information, see [Database File Initialization](https://msdn.microsoft.com/library/ms175935.aspx).
 
-- **自動拡張**は、予想外の増加に付随するものと見なされています。自動拡張を使用して、データやログの増加に日常的に対処しないでください。自動拡張を使用する場合は、Size スイッチを使用してファイルを事前に拡張します。
+- **autogrow** is considered to be merely a contingency for unexpected growth. Do not manage your data and log growth on a day-to-day basis with autogrow. If autogrow is used, pre-grow the file using the Size switch.
 
-- パフォーマンスに悪影響を及ぼすおそれのある不要なオーバーヘッドを回避するために、**自動圧縮**が無効になっていることを確認します。
+- Make sure **autoshrink** is disabled to avoid unnecessary overhead that can negatively affect performance.
 
-- システム データベースも含め、すべてのデータベースをデータ ディスクに移動します。詳細については、「[システム データベースの移動](https://msdn.microsoft.com/library/ms345408.aspx)」をご覧ください。
+- Move all databases to data disks, including system databases. For more information, see [Move System Databases](https://msdn.microsoft.com/library/ms345408.aspx).
 
-- SQL Server エラー ログとトレース ファイルのディレクトリをデータ ディスクに移動します。これは、SQL Server インスタンスを右クリックしてプロパティを選択することにより、SQL Server 構成マネージャーで実行できます。エラー ログとトレース ファイルの設定は、**[起動時のパラメーター]** タブで変更できます。ダンプ ディレクトリは、**[詳細設定]** タブで指定します。次のスクリーンショットでは、エラー ログの起動時のパラメーターを検索する場所を示します。
+- Move SQL Server error log and trace file directories to data disks. This can be done in SQL Server Configuration Manager by right-clicking your SQL Server instance and selecting properties. The error log and trace file settings can be changed in the **Startup Parameters** tab. The Dump Directory is specified in the **Advanced** tab. The following screenshot shows where to look for the error log startup parameter.
 
-	![SQL ErrorLog のスクリーンショット](./media/virtual-machines-windows-sql-performance/sql_server_error_log_location.png)
+    ![SQL ErrorLog Screenshot](./media/virtual-machines-windows-sql-performance/sql_server_error_log_location.png)
 
-- 既定のバックアップ ファイルとデータベース ファイルの場所を設定します。このトピックでは、推奨事項を使用し、[サーバーのプロパティ] ウィンドウで変更を行います。手順については、「[データ ファイルとログ ファイルの既定の場所の表示または変更 (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx)」をご覧ください。次のスクリーンショットでは、これらの変更を行う場所を示します。
+- Setup default backup and database file locations. Use the recommendations in this topic, and make the changes in the Server properties window. For instructions, see [View or Change the Default Locations for Data and Log Files (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx). The following screenshot demonstrates where to make these changes.
 
-	![SQL データのログおよびバックアップ ファイル](./media/virtual-machines-windows-sql-performance/sql_server_default_data_log_backup_locations.png)
+    ![SQL Data Log and Backup files](./media/virtual-machines-windows-sql-performance/sql_server_default_data_log_backup_locations.png)
 
-- ロックされたページを有効にして、IO とページング アクティビティを減らします。詳細については、「[Lock Pages in Memory オプションの有効化 (Windows)](https://msdn.microsoft.com/library/ms190730.aspx)」をご覧ください。
+- Enable locked pages to reduce IO and any paging activities. For more information, see [Enable the Lock Pages in Memory Option (Windows)](https://msdn.microsoft.com/library/ms190730.aspx).
 
-- SQL Server 2012 を実行している場合は、Service Pack 1 Cumulative Update 10 をインストールします。この更新プログラムには、SQL Server 2012 で一時テーブルに対して SELECT INTO ステートメントを実行したときに I/O のパフォーマンスが低下する問題に対処するための修正プログラムが含まれています。詳細については、この[サポート技術情報の記事](http://support.microsoft.com/kb/2958012)をご覧ください。
+- If you are running SQL Server 2012, install Service Pack 1 Cumulative Update 10. This update contains the fix for poor performance on I/O when you execute select into temporary table statement in SQL Server 2012. For information, see this [knowledge base article](http://support.microsoft.com/kb/2958012).
 
-- Azure との間での転送時にデータ ファイルを圧縮することを検討します。
+- Consider compressing any data files when transferring in/out of Azure.
 
-## 機能固有のガイダンス
+## <a name="feature-specific-guidance"></a>Feature specific guidance
 
-一部のデプロイでは、より高度な構成手法を使用することで、パフォーマンスがさらに向上する場合があります。パフォーマンスの向上を実現する際に役立つ SQL Server の機能を次に示します。
+Some deployments may achieve additional performance benefits using more advanced configuration techniques. The following list highlights some SQL Server features that can help you to achieve better performance:
 
-- **Azure Storage へのバックアップ**: Azure 仮想マシンで実行される SQL Server のバックアップを実行する際は、[SQL Server Backup to URL](https://msdn.microsoft.com/library/dn435916.aspx) を使用できます。SQL Server 2012 SP1 CU2 以降で使用できるこの機能は、接続されているデータ ディスクにバックアップする場合に推奨されます。Azure Storage との間でバックアップと復元を行うときは、「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」に記載されている推奨事項に従ってください。[Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-classic-sql-automated-backup.md)を使用して、バックアップを自動化することもできます。
+- **Backup to Azure storage**: When performing backups for SQL Server running in Azure virtual machines, you can use [SQL Server Backup to URL](https://msdn.microsoft.com/library/dn435916.aspx). This feature is available starting with SQL Server 2012 SP1 CU2 and recommended for backing up to the attached data disks. When you backup/restore to/from Azure storage, follow the recommendations provided at [SQL Server Backup to URL Best Practices and Troubleshooting and Restoring from Backups Stored in Azure Storage](https://msdn.microsoft.com/library/jj919149.aspx). You can also automate these backups using [Automated Backup for SQL Server in Azure Virtual Machines](virtual-machines-windows-classic-sql-automated-backup.md).
 
-	SQL Server 2012 より前のバージョンでは、[SQL Server Backup to Azure Tool](https://www.microsoft.com/download/details.aspx?id=40740) を使用できます。このツールでは、複数のバックアップ ストライプ ターゲットを使用することで、バックアップ スループットを向上させることができます。
+    Prior to SQL Server 2012, you can use [SQL Server Backup to Azure Tool](https://www.microsoft.com/download/details.aspx?id=40740). This tool can help to increase backup throughput using multiple backup stripe targets.
 
-- **Azure 内の SQL Server データ ファイル**: [Azure 内の SQL Server データ ファイル](https://msdn.microsoft.com/library/dn385720.aspx)は、SQL Server 2014 以降で使用できる新機能です。Azure 内のデータ ファイルを使用して SQL Server を実行すると、Azure データ ディスクを使用する場合と同等のパフォーマンス特性が得られます。
+- **SQL Server Data Files in Azure**: This new feature, [SQL Server Data Files in Azure](https://msdn.microsoft.com/library/dn385720.aspx), is available starting with SQL Server 2014. Running SQL Server with data files in Azure demonstrates comparable performance characteristics as using Azure data disks.
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-SQL Server と Premium Storage についてさらに詳しく調べたい場合は、「[Virtual Machines 上での Azure Premium Storage と SQL Server の使用](virtual-machines-windows-classic-sql-server-premium-storage.md)」をご覧ください。
+If you are interested in exploring SQL Server and Premium Storage in more depth, see the article [Use Azure Premium Storage with SQL Server on Virtual Machines](virtual-machines-windows-classic-sql-server-premium-storage.md).
 
-セキュリティのベスト プラクティスについては、[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)に関するページをご覧ください。
+For security best practices, see [Security Considerations for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-security.md).
 
-SQL Server Virtual Machines に関する他のトピックについては、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページを参照してください。
+Review other SQL Server Virtual Machine topics at [SQL Server on Azure Virtual Machines Overview](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

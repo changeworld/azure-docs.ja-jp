@@ -1,6 +1,6 @@
 <properties
-   pageTitle="クラウド データベースにまたがる分散トランザクション"
-   description="Azure SQL Database を使用した Elastic Database トランザクションの概要"
+   pageTitle="Distributed transactions across cloud databases"
+   description="Overview of Elastic Database Transactions with Azure SQL Database"
    services="sql-database"
    documentationCenter=""
    authors="torsteng"
@@ -16,146 +16,156 @@
    ms.date="05/27/2016"
    ms.author="torsteng"/>
 
-# クラウド データベースにまたがる分散トランザクション
 
-Azure SQL Database (SQL DB) のエラスティック データベース トランザクションは、SQL DB 内の複数のデータベースにまたがるトランザクションを実行する機能です。SQL DB のエラスティック データベース トランザクションは、.NET アプリケーションから ADO .NET を介して利用できます。[System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) を参照してください。
+# <a name="distributed-transactions-across-cloud-databases"></a>Distributed transactions across cloud databases
 
-従来、このようなシナリオをオンプレミスで実現するためには通常、Microsoft 分散トランザクション コーディネーター (MSDTC) が必要でした。Azure における PaaS (Platform-as-a-Service) アプリケーションでは MSDTC が利用できないため、分散トランザクションの調整機能が SQL DB に直接統合されました。アプリケーションは、任意の SQL Database に接続して分散トランザクションを開始できます。すると、いずれかのデータベースによって分散トランザクションが透過的に調整されます。そのようすを示したのが次の図です。
+Elastic database transactions for Azure SQL Database (SQL DB) allow you to run transactions that span several databases in SQL DB. Elastic database transactions for SQL DB are available for .NET applications using ADO .NET and integrate with the familiar programming experience using the [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) classes. To get the library, see [.NET Framework 4.6.1 (Web Installer)](https://www.microsoft.com/download/details.aspx?id=49981).
 
-  ![エラスティック データベース トランザクションを使用した Azure SQL Database での分散トランザクション][1]
+On premises, such a scenario usually required running Microsoft Distributed Transaction Coordinator (MSDTC). Since MSDTC is not available for Platform-as-a-Service application in Azure, the ability to coordinate distributed transactions has now been directly integrated into SQL DB. Applications can connect to any SQL Database to launch distributed transactions, and one of the databases will transparently coordinate the distributed transaction, as shown in the following figure. 
 
-## 一般的なシナリオ
+  ![Distributed transactions with Azure SQL Database using elastic database transactions ][1]
 
-SQL DB のエラスティック データベース トランザクションの特長は、複数の異なる SQL Database に格納されているデータに対して不可分な変更をアプリケーションから実行できることです。プレビュー版では、C# と .NET によるクライアント側の開発に重点が置かれています。T-SQL を使用したサーバー側の開発も今後予定されています。エラスティック データベース トランザクションが想定しているシナリオは次のとおりです。
+## <a name="common-scenarios"></a>Common scenarios
 
-* Azure におけるマルチデータベース アプリケーション: このシナリオでは、データが垂直にパーティション分割され、SQL DB 内の複数のデータベースに格納されます (各データベースに異なる種類のデータが格納されます)。場合によっては、特定の操作で変更対象となるデータが複数のデータベースにまたがって保存されていることがあります。そこでアプリケーションからエラスティック データベース トランザクションを使用し、複数のデータベースに対する変更を調整し、原子性 (不可分な状態) を維持します。
+Elastic database transactions for SQL DB enable applications to make atomic changes to data stored in several different SQL Databases. The preview focuses on client-side development experiences in C# and .NET. A server-side experience using T-SQL is planned for a later time.  
+Elastic database transactions targets the following scenarios:
 
-* Azure におけるシャード化されたデータベース アプリケーション: このシナリオでは、データ層で [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)または自己シャーディングを使用して、SQL DB 内の複数のデータベースに対して水平にデータをパーティション分割します。シャーディングされたマルチテナント アプリケーションで、不可分な変更を複数のテナントにまたがって実行しなければならないケースはその代表的な事例です。たとえば、異なるデータベースに存在している 2 つのテナント間の転送が考えられます。もう 1 つの事例としては、大規模なテナントの容量のニーズに応えるために、きめ細かなシャーディングを行うケースです。当然、同じテナント用の複数のデータベースに、不可分な操作を分散させる必要があります。また、複数のデータベースにレプリケートされた参照データに対して不可分な更新を行うケースもあります。こうした境界に沿って複数のデータベースに対して行う不可分なトランザクション操作が、このプレビュー機能によって調整できるようになりました。エラスティック データベース トランザクションは、2 フェーズ コミットを使用することで、データベース間のトランザクションの原子性を確保しています。1 回のトランザクションの中で同時に扱うデータベースが 100 個未満のトランザクションには、この方法が適しています。これらの制限に強制力はありませんが、制限を超えたときにエラスティック データベース トランザクションのパフォーマンスと成功率に生じる影響を見込んでおくことが必要です。
+* Multi-database applications in Azure: With this scenario, data is vertically partitioned across several databases in SQL DB such that different kinds of data reside on different databases. Some operations require changes to data which is kept in two or more databases. The application uses elastic database transactions to coordinate the changes across databases and ensure atomicity.
+
+* Sharded database applications in Azure: With this scenario, the data tier uses the [Elastic Database client library](sql-database-elastic-database-client-library.md) or self-sharding to horizontally partition the data across many databases in SQL DB. One prominent use case is the need to perform atomic changes for a sharded multi-tenant application when changes span tenants. Think for instance of a transfer from one tenant to another, both residing on different databases. A second case is fine-grained sharding to accommodate capacity needs for a large tenant which in turn typically implies that some atomic operations needs to stretch across several databases used for the same tenant. A third case is atomic updates to reference data that are replicated across databases. Atomic, transacted, operations along these lines can now be coordinated across several databases using the preview.
+Elastic database transactions use two-phase commit to ensure transaction atomicity across databases. It is a good fit for transactions that involve less than 100 databases at a time within a single transaction. These limits are not enforced, but one should expect performance and success rates for elastic database transactions to suffer when exceeding these limits.
 
 
-## インストールと移行
+## <a name="installation-and-migration"></a>Installation and migration
 
-SQL DB のエラスティック データベース トランザクションに必要な機能は、.NET ライブラリ System.Data.dll と System.Transactions.dll に対する更新プログラムを通じて提供されます。これらの DLL によって、必要なときに確実に 2 フェーズ コミットが適用され、原子性が確保されます。エラスティック データベース トランザクションを使ったアプリケーションを開発するには、[.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) 以降のバージョンをインストールしてください。それより前のバージョンの .NET framework を実行していると、分散トランザクションへの昇格に失敗して例外が発生します。
+The capabilities for elastic database transactions in SQL DB are provided through updates to the .NET libraries System.Data.dll and System.Transactions.dll. The DLLs ensure that two-phase commit is used where necessary to ensure atomicity. To start developing applications using elastic database transactions, install [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) or a later version. When running on an earlier version of the .NET framework, transactions will fail to promote to a distributed transaction and an exception will be raised.
 
-インストール作業が完了すると、System.Transactions の分散トランザクション API と SQL DB への接続を使用できるようになります。これらの API を使った MSDTC アプリケーションが既に存在する場合は、4.6.1 Framework のインストール後、単に .NET 4.6 の既存のアプリケーションを再ビルドしてください。プロジェクトのターゲット フレームワークが .NET 4.6 である場合は、新しい Framework バージョンの最新の DLL が自動的に使用され、分散トランザクション API 呼び出しと SQL DB への接続に成功します。
+After installation, you can use the distributed transaction APIs in System.Transactions with connections to SQL DB. If you have existing MSDTC applications using these APIs, simply rebuild your existing applications for .NET 4.6 after installing the 4.6.1 Framework. If your projects target .NET 4.6, they will automatically use the updated DLLs from the new Framework version and distributed transaction API calls in combination with connections to SQL DB will now succeed.
 
-エラスティック データベース トランザクションを使用するために MSDTC をインストールする必要はありません。エラスティック データベース トランザクションは、SQL DB 内で直接管理されます。SQL DB での分散トランザクションには MSDTC のデプロイが不要であるため、クラウドのシナリオが大幅に単純化されます。エラスティック データベース トランザクションと必須の .NET Framework をクラウド アプリケーションと併せて Azure にデプロイする方法については、セクション 4 で詳しく説明しています。
+Remember that elastic database transactions do not require installing MSDTC. Instead, elastic database transactions are directly managed by and within SQL DB. This significantly simplifies cloud scenarios since a deployment of MSDTC is not necessary to use distributed transactions with SQL DB. Section 4 explains in more detail how to deploy elastic database transactions and the required .NET framework together with your cloud applications to Azure.
 
-## 開発環境
+## <a name="development-experience"></a>Development experience
 
-###	マルチデータベース アプリケーション
+### <a name="multi-database-applications"></a>Multi-database applications
 
-次のサンプル コードは、.NET System.Transactions を使ったなじみ深いプログラミング技法によって記述しています。TransactionScope クラスは、.NET でアンビエント トランザクションを確立するものです。("アンビエント トランザクション" とは現在のスレッドで実行されているトランザクションです。) TransactionScope 内で開かれたすべての接続はトランザクションに参加します。複数の異なるデータベースが参加した場合、そのトランザクションは自動的に分散トランザクションに昇格されます。トランザクションの最終的な結果は、スコープの完了 (コミットを意味する) を設定することによって制御します。
+The following sample code uses the familiar programming experience with .NET System.Transactions. The TransactionScope class establishes an ambient transaction in .NET. (An “ambient transaction” is one that lives in the current thread.) All connections opened within the TransactionScope participate in the transaction. If different databases participate, the transaction is automatically elevated to a distributed transaction. The outcome of the transaction is controlled by setting the scope to complete to indicate a commit.
 
-	using (var scope = new TransactionScope())
-	{
-		using (var conn1 = new SqlConnection(connStrDb1))
-		{
-			conn1.Open();
-			SqlCommand cmd1 = conn1.CreateCommand();
-			cmd1.CommandText = string.Format("insert into T1 values(1)");
-			cmd1.ExecuteNonQuery();
-		}
+    using (var scope = new TransactionScope())
+    {
+        using (var conn1 = new SqlConnection(connStrDb1))
+        {
+            conn1.Open();
+            SqlCommand cmd1 = conn1.CreateCommand();
+            cmd1.CommandText = string.Format("insert into T1 values(1)");
+            cmd1.ExecuteNonQuery();
+        }
 
-		using (var conn2 = new SqlConnection(connStrDb2))
-		{
-			conn2.Open();
-			var cmd2 = conn2.CreateCommand();
-			cmd2.CommandText = string.Format("insert into T2 values(2)");
-			cmd2.ExecuteNonQuery();
-		}
+        using (var conn2 = new SqlConnection(connStrDb2))
+        {
+            conn2.Open();
+            var cmd2 = conn2.CreateCommand();
+            cmd2.CommandText = string.Format("insert into T2 values(2)");
+            cmd2.ExecuteNonQuery();
+        }
 
-		scope.Complete();
-	}
+        scope.Complete();
+    }
 
-### シャード化されたデータベース アプリケーション
+### <a name="sharded-database-applications"></a>Sharded database applications
  
-SQL DB のエラスティック データベース トランザクションで、分散トランザクションの調整を行うこともできます。この場合、スケール アウトされたデータ層に使用する接続は、エラスティック データベース クライアント ライブラリの OpenConnectionForKey メソッドを使用して開きます。たとえば、複数の異なるシャーディング キー値に対する変更で、トランザクションの一貫性を保証するとします。異なるシャーディング キー値を持ったシャードに対する接続は、OpenConnectionForKey を使って取得することができます。一般に、トランザクションの保証に分散トランザクションが伴うように、異なるシャードへの接続が取得されます。次のコード サンプルに、この方法を示します。ここでは、エラスティック データベース クライアント ライブラリのシャード マップを shardmap という変数で表しています。
+Elastic database transactions for SQL DB also support coordinating distributed transactions where you use the OpenConnectionForKey method of the elastic database client library to open connections for a scaled out data tier. Consider cases where you need to guarantee transactional consistency for changes across several different sharding key values. Connections to the shards hosting the different sharding key values are brokered using OpenConnectionForKey. In the general case, the connections can be to different shards such that ensuring transactional guarantees requires a distributed transaction. The following code sample illustrates this approach. It assumes that a variable called shardmap is used to represent a shard map from the elastic database client library:
 
-	using (var scope = new TransactionScope())
-	{
-		using (var conn1 = shardmap.OpenConnectionForKey(tenantId1, credentialsStr))
-		{
-			conn1.Open();
-			SqlCommand cmd1 = conn1.CreateCommand();
-			cmd1.CommandText = string.Format("insert into T1 values(1)");
-			cmd1.ExecuteNonQuery();
-		}
-		
-		using (var conn2 = shardmap.OpenConnectionForKey(tenantId2, credentialsStr))
-		{
-			conn2.Open();
-			var cmd2 = conn2.CreateCommand();
-			cmd2.CommandText = string.Format("insert into T1 values(2)");
-			cmd2.ExecuteNonQuery();
-		}
+    using (var scope = new TransactionScope())
+    {
+        using (var conn1 = shardmap.OpenConnectionForKey(tenantId1, credentialsStr))
+        {
+            conn1.Open();
+            SqlCommand cmd1 = conn1.CreateCommand();
+            cmd1.CommandText = string.Format("insert into T1 values(1)");
+            cmd1.ExecuteNonQuery();
+        }
+        
+        using (var conn2 = shardmap.OpenConnectionForKey(tenantId2, credentialsStr))
+        {
+            conn2.Open();
+            var cmd2 = conn2.CreateCommand();
+            cmd2.CommandText = string.Format("insert into T1 values(2)");
+            cmd2.ExecuteNonQuery();
+        }
 
-		scope.Complete();
-	}
-
-
-## Azure Cloud Services の .NET インストール
-
-Azure には、.NET アプリケーションをホストするためのいくつかのサービスが用意されています。さまざまなサービスを比較するには、「[Azure App Service、Cloud Services、および Virtual Machines の比較](../app-service-web/choose-web-site-cloud-service-vm.md)」をご覧ください。サービスのゲスト OS がエラスティック トランザクションに必要な .NET 4.6.1 より小さい場合は、ゲスト OS を 4.6.1 にアップグレードする必要があります。
-
-Azure App Services では、ゲスト OS のアップグレードは現在サポートされていません。Azure Virtual Machines では、単に VM にログインし、最新の .NET Framework のインストーラーを実行します。Azure Cloud Services では、新しいバージョンの .NET のインストールをデプロイのスタートアップ タスクに含める必要があります。その概念と手順については、「[クラウド サービスのロールに .NET をインストールする](../cloud-services/cloud-services-dotnet-install-dotnet.md)」を参照してください。
-
-.NET 4.6.1 のインストーラーは、Azure クラウド サービスでのブートストラップ プロセス中に、.NET 4.6 のインストーラーよりも一時的なストレージを多く必要とする場合があることに注意してください。正常かつ確実にインストールするには、次の例に示すように、ServiceDefinition.csdef ファイルの LocalResources セクションと、スタートアップ タスクの環境設定で、Azure クラウド サービスの一時的なストレージを増やす必要があります。
-
-	<LocalResources>
-	...
-		<LocalStorage name="TEMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
-		<LocalStorage name="TMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
-	</LocalResources>
-	<Startup>
-		<Task commandLine="install.cmd" executionContext="elevated" taskType="simple">
-			<Environment>
-		...
-				<Variable name="TEMP">
-					<RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='TEMP']/@path" />
-				</Variable>
-				<Variable name="TMP">
-					<RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='TMP']/@path" />
-				</Variable>
-			</Environment>
-		</Task>
-	</Startup>
-	
-## 複数のサーバーにまたがるトランザクション
-
-エラスティック データベース トランザクションは、Azure SQL Database の複数の論理サーバーに対して実行できます。トランザクションが論理サーバーの境界を超えた場合、参加するサーバーが最初に双方向の通信リレーションシップに入る必要があります。通信リレーションシップが確立されると、2 つのサーバーのいずれのデータベースも、もう一方のサーバーのデータベースを使用してエラスティック トランザクションに参加できます。2 つの論理サーバーにまたがるトランザクションでは、論理サーバーの任意のペア用に通信リレーションシップが用意されている必要があります。
-
-次の PowerShell コマンドレットを使って、エラスティック データベースのトランザクション用のサーバー間通信リレーションシップを管理できます。
-
-* **New-AzureRmSqlServerCommunicationLink**: Azure SQL DB において 2 つの論理サーバー間に新しい通信リレーションシップを構築できます。リレーションシップは対象です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
-* **Get-AzureRmSqlServerCommunicationLink**: 既存の通信リレーションシップとそのプロパティを取得します。
-* **Remove-AzureRmSqlServerCommunicationLink**: 既存の通信リレーションシップを削除します。 
+        scope.Complete();
+    }
 
 
-## トランザクションの状態の監視
+## <a name=".net-installation-for-azure-cloud-services"></a>.NET installation for Azure Cloud Services
 
-現在実行されているエラスティック データベース トランザクションの状態と進行状況は、SQL DB の動的管理ビュー (DMV) を使用して監視します。トランザクションに関連したすべての DMV は、SQL DB の分散トランザクションにとって重要となります。対応する DMV の一覧については、[トランザクション関連の動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx) を参照してください。
+Azure provides several offerings to host .NET applications. A comparison of the different offerings is available in [Azure App Service, Cloud Services, and Virtual Machines comparison](../app-service-web/choose-web-site-cloud-service-vm.md). If the guest OS of the offering is smaller than .NET 4.6.1 required for elastic transactions, you need to upgrade the guest OS to 4.6.1. 
+
+For Azure App Services, upgrades to the guest OS are currently not supported. For Azure Virtual Machines, simply log into the VM and run the installer for the latest .NET framework. For Azure Cloud Services, you need to include the installation of a newer .NET version into the startup tasks of your deployment. The concepts and steps are documented in [Install .NET on a Cloud Service Role](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
+
+Note that the installer for .NET 4.6.1 may require more temporary storage during the bootstrapping process on Azure cloud services than the installer for .NET 4.6. To ensure a successful installation, you need to increase temporary storage for your Azure cloud service in your ServiceDefinition.csdef file in the LocalResources section and the environment settings of your startup task, as shown in the following sample:
+
+    <LocalResources>
+    ...
+        <LocalStorage name="TEMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
+        <LocalStorage name="TMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
+    </LocalResources>
+    <Startup>
+        <Task commandLine="install.cmd" executionContext="elevated" taskType="simple">
+            <Environment>
+        ...
+                <Variable name="TEMP">
+                    <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='TEMP']/@path" />
+                </Variable>
+                <Variable name="TMP">
+                    <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='TMP']/@path" />
+                </Variable>
+            </Environment>
+        </Task>
+    </Startup>
+    
+## <a name="transactions-across-multiple-servers"></a>Transactions across multiple servers
+
+Elastic database transactions are supported across different logical servers in Azure SQL Database. When transactions cross logical server boundaries, the participating servers first need to be entered into a mutual communication relationship. Once the communication relationship has been established, any database in any of the two servers can participate in elastic transactions with databases from the other server. With transactions spanning more than two logical servers, a communication relationship needs to be in place for any pair of logical servers.
+
+Use the following PowerShell cmdlets to manage cross-server communication relationships for elastic database transactions:
+
+* **New-AzureRmSqlServerCommunicationLink**: Use this cmdlet to create a new communication relationship between two logical servers in Azure SQL DB. The relationship is symmetric which means both servers can initiate transactions with the other server.
+* **Get-AzureRmSqlServerCommunicationLink**: Use this cmdlet to retrieve existing communication relationships and their properties.
+* **Remove-AzureRmSqlServerCommunicationLink**: Use this cmdlet to remove an existing communication relationship. 
+
+
+## <a name="monitoring-transaction-status"></a>Monitoring transaction status
+
+Use Dynamic Management Views (DMVs) in SQL DB to monitor status and progress of your ongoing elastic database transactions. All DMVs related to transactions are relevant for distributed transactions in SQL DB. You can find the corresponding list of DMVs here: [Transaction Related Dynamic Management Views and Functions (Transact-SQL)](https://msdn.microsoft.com/library/ms178621.aspx).
  
-次の DMV が特に重要となります。
+These DMVs are particularly useful:
 
-* **sys.dm\_tran\_active\_transactions**: 現在アクティブなトランザクションとその状態を一覧表示します。同じ分散トランザクションに属している子トランザクションは、UOW (Unit Of Work: 作業単位) 列で確認できます。同じ分散トランザクションに属しているトランザクションはすべて同じ UOW 値を共有します。詳細については、[DMV のドキュメント](https://msdn.microsoft.com/library/ms174302.aspx)を参照してください。
-* **sys.dm\_tran\_database\_transactions**: トランザクションに関する追加情報 (ログにおけるトランザクションの位置など) が表示されます。詳細については、[DMV のドキュメント](https://msdn.microsoft.com/library/ms186957.aspx)を参照してください。
-* **sys.dm\_tran\_locks**: 現在実行中のトランザクションによって保持されているロックの情報が表示されます。詳細については、[DMV のドキュメント](https://msdn.microsoft.com/library/ms190345.aspx)を参照してください。
+* **sys.dm\_tran\_active\_transactions**: Lists currently active transactions and their status. The UOW (Unit Of Work) column can identify the different child transactions that belong to the same distributed transaction. All transactions within the same distributed transaction carry the same UOW value. See the [DMV documentation](https://msdn.microsoft.com/library/ms174302.aspx) for more details.
+* **sys.dm\_tran\_database\_transactions**: Provides additional information about transactions, such as placement of the transaction in the log. See the [DMV documentation](https://msdn.microsoft.com/library/ms186957.aspx) for more details.
+* **sys.dm\_tran\_locks**: Provides information about the locks that are currently held by ongoing transactions. See the [DMV documentation](https://msdn.microsoft.com/library/ms190345.aspx) for more details.
 
-## 制限事項 
+## <a name="limitations"></a>Limitations 
 
-SQL DB のエラスティック データベース トランザクションには現在、次の制限が適用されます。
+The following limitations currently apply to elastic database transactions in SQL DB:
 
-* サポートされるトランザクションの対象は、SQL DB 内のデータベースに限られます。その他の [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) リソース プロバイダーや SQL DB 以外のデータベースがエラスティック データベース トランザクションに参加することはできません。つまり、オンプレミス SQL Server と Azure SQL Database にまたがってエラスティック データベース トランザクションを実行することはできません。オンプレミスの分散トランザクションについては、引き続き MSDTC をご利用ください。 
-* サポートされるのは、.NET アプリケーションからクライアント側で調整されるトランザクションだけです。将来的には、サーバー側の T-SQL サポート (BEGIN DISTRIBUTED TRANSACTION など) が予定されていますが、現時点では利用できません。 
-* Azure SQL DB V12 上のデータベースのみサポートされます。
-* WCF サービスをまたがるトランザクションはサポートされません。たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。トランザクション スコープ内にこの呼び出しを囲い込むと、[System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception) として失敗します。
+* Only transactions across databases in SQL DB are supported. Other [X/Open XA](https://en.wikipedia.org/wiki/X/Open_XA) resource providers and databases outside of SQL DB cannot participate in elastic database transactions. That means that elastic database transactions cannot stretch across on premises SQL Server and Azure SQL Databases. For distributed transactions on premises, continue to use MSDTC. 
+* Only client-coordinated transactions from a .NET application are supported. Server-side support for T-SQL such as BEGIN DISTRIBUTED TRANSACTION is planned, but not yet available. 
+* Only databases on Azure SQL DB V12 are supported.
+* Transactions across WCF services are not supported. For example, you have a WCF service method that executes a transaction. Enclosing the call within a transaction scope will fail as a [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-Azure アプリケーションでエラスティック データベースの機能を使ったことがないという方は、 [ドキュメント マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)を参照してください。質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
+Not yet using elastic database capabilities for your Azure applications? Check out our [Documentation Map](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/). For questions, please reach out to us on the [SQL Database forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) and for feature requests, please add them to the [SQL Database feedback forum](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-transactions-overview/distributed-transactions.png
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

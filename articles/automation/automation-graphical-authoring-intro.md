@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Azure Automation でのグラフィカル作成 | Microsoft Azure"
-    description="グラフィカル作成では、コードを操作せずに Azure Automation の Runbook を作成することができます。この記事では、グラフィカル作成の概要と、グラフィカル Runbook の作成を開始するうえで必要なすべての詳細情報を示します。"
+    pageTitle="Graphical Authoring in Azure Automation | Microsoft Azure"
+    description="Graphical authoring allows you to create runbooks for Azure Automation without working with code. This article provides an introduction to graphical authoring and all the details needed to start creating a graphical runbook."
     services="automation"   
     documentationCenter=""
     authors="mgoedtel"
@@ -15,214 +15,216 @@
     ms.date="06/03/2016"
     ms.author="magoedte;bwren" />
 
-# Azure Automation でのグラフィカル作成
 
-## はじめに
+# <a name="graphical-authoring-in-azure-automation"></a>Graphical authoring in Azure Automation
 
-グラフィカル作成では、基になる Windows PowerShell または PowerShell Workflow の複雑なコードを使用しなくても、Azure Automation の Runbook を作成することができます。コマンドレットや Runbook のライブラリからキャンバスにアクティビティを追加し、そのアクティビティどうしをリンクして、ワークフローを形成するように構成します。これまでに System Center Orchestrator または Service Management Automation (SMA) で作業したことがあれば、これは見覚えがあるはずです。
+## <a name="introduction"></a>Introduction
 
-この記事では、グラフィカル作成の概要と、グラフィカル Runbook の作成を開始するうえで必要な概念について説明します。
+Graphical Authoring allows you to create runbooks for Azure Automation without the complexities of the underlying Windows PowerShell or PowerShell Workflow code. You add activities to the canvas from a library of cmdlets and runbooks, link them together and configure to form a workflow.  If you have ever worked with System Center Orchestrator or Service Management Automation (SMA), then this should look familiar to you.   
 
-## グラフィック Runbook
+This article provides an introduction to graphical authoring and the concepts you need to get started in creating a graphical runbook.
 
-Azure Automation の Runbook はすべて Windows PowerShell ワークフローです。グラフィカル Runbook とグラフィカル PowerShell ワークフロー Runbook は、Automation ワーカーによって実行される PowerShell コードを生成しますが、ユーザーがそのコードを表示したり、直接変更したりすることはできません。グラフィカル Runbook はグラフィカル PowerShell ワークフロー Runbook に変換でき、その逆も可能ですが、これらをテキスト形式の Runbook に変換することはできません。既存のテキスト形式の Runbook は、グラフィカル エディターにインポートできません。
+## <a name="graphical-runbooks"></a>Graphical runbooks
 
-
-## グラフィカル エディターの概要
-
-Azure ポータルでグラフィカル Runbook を作成または編集することで、グラフィカル エディターを開くことができます。
-
-![グラフィカル ワークスペース](media/automation-graphical-authoring-intro/runbook-graphical-editor.png)
+All runbooks in Azure Automation are Windows PowerShell Workflows.  Graphical and Graphical PowerShell Workflow runbooks generate PowerShell code that is run by the Automation workers, but you are not able to view it or directly modify it.  A Graphical runbook can be converted to a Graphical PowerShell Workflow runbook and vice-versa, but they cannot be converted to a textual runbook. An existing textual runbook cannot be imported into the graphical editor.  
 
 
-次のセクションでは、グラフィカル エディターのコントロールについて説明します。
+## <a name="overview-of-graphical-editor"></a>Overview of graphical editor
+
+You can open the graphical editor in the Azure portal by creating or editing a graphical runbook.
+
+![Graphical workspace](media/automation-graphical-authoring-intro/runbook-graphical-editor.png)
 
 
-### キャンバス
-キャンバスは Runbook を設計する場所です。ライブラリ コントロールのノードから Runbook にアクティビティを追加し、リンクで接続して Runbook のロジックを定義します。
+The following sections describe the controls in the graphical editor.
 
-キャンバスの下部にあるコントロールを使用して、拡大または縮小できます。
 
-![グラフィカル ワークスペース](media/automation-graphical-authoring-intro/runbook-canvas-controls.png)
+### <a name="canvas"></a>Canvas
+The Canvas is where you design your runbook.  You add activities from the nodes in the Library control to the runbook and connect them with links to define the logic of the runbook.
 
-### ライブラリ コントロール
+You can use the controls at the bottom of the canvas to zoom in and out.
 
-ライブラリ コントロールは、Runbook に追加する[アクティビティ](#activities)を選択する場所です。アクティビティをキャンバスに追加し、そこで他のアクティビティに接続します。これには、以下の表で説明する次の 4 つのセクションが含まれます。
+![Graphical workspace](media/automation-graphical-authoring-intro/runbook-canvas-controls.png)
 
-| セクション | 説明 |
+### <a name="library-control"></a>Library control
+
+The Library control is where you select [activities](#activities) to add to your runbook.  You add them to the canvas where you connect them to other activities.  It includes four sections described in the following table.
+
+| Section | Description |
 |:---|:---|
-| コマンドレット | Runbook で使用できるすべてのコマンドレットが含まれています。コマンドレットはモジュールごとに整理されます。オートメーション アカウントにインストールしたモジュールをすべて使用できます。 |
-| Runbook | お使いの Automation アカウントの Runbook が含まれています。これらの Runbook は、子 Runbook として使用するためにキャンバスに追加できます。表示されるのは、編集中の Runbook と同じコアの種類の Runbook のみです。つまり、グラフィカル Runbook の場合は、PowerShell ベースの Runbook のみが表示されるのに対し、グラフィカル PowerShell ワークフロー Runbook の場合は、PowerShell ワークフロー ベースの Runbook のみが表示されます。
-| 資産 | Runbook で使用できるオートメーション アカウントに[オートメーション資産](http://msdn.microsoft.com/library/dn939988.aspx)が含まれています。Runbook に資産を追加すると、選択した資産を取得するワークフロー アクティビティが追加されます。変数資産の場合は、変数を取得するアクティビティを追加するか、変数を設定するアクティビティを追加するかを選択できます。
-| Runbook コントロール | 現在の Runbook で使用できる Runbook コントロール アクティビティが含まれています。*ジャンクション*では複数の入力を受け取り、すべてが完了するまで待機してから、ワークフローを続行します。*コード* アクティビティは、グラフィカル Runbook の種類に応じて、PowerShell または PowerShell Workflow の 1 行以上のコードを実行します。このアクティビティは、カスタム コードや、他のアクティビティでの実現が難しい機能に使用できます。|
+| Cmdlets | Includes all the cmdlets that can be used in your runbook.  Cmdlets are organized by module.  All of the modules that you have installed in your automation account will be available.  |
+| Runbooks |  Includes the runbooks in your automation account. These runbooks can be added to the canvas to be used as child runbooks. Only runbooks of the same core type as the runbook being edited are shown; for Graphical runbooks only PowerShell-based runbooks are shown, while for Graphical PowerShell Workflow runbooks only PowerShell-Workflow-based runbooks are shown.
+| Assets | Includes the [automation assets](http://msdn.microsoft.com/library/dn939988.aspx) in your automation account that can be used in your runbook.  When you add an asset to a runbook, it will add a workflow activity that gets the selected asset.  In the case of variable assets, you can select whether to add an activity to get the variable or set the variable.
+| Runbook Control | Includes runbook control activities that can be used in your current runbook. A *Junction* takes multiple inputs and waits until all have completed before continuing the workflow. A *Code* activity runs one or more lines of PowerShell or PowerShell Workflow code depending on the graphical runbook type.  You can use this activity for custom code or for functionality that is difficult to achieve with other activities.|
 
-### 構成コントロール
+### <a name="configuration-control"></a>Configuration control
 
-構成コントロールは、キャンバスで選択したオブジェクトの詳細を指定する場所です。このコントロールで使用できるプロパティは、選択したオブジェクトの種類によって異なります。構成コントロールでオプションを選択すると、追加情報を提供するための追加のブレードが開きます。
+The Configuration control is where you provide details for an object selected on the canvas. The properties available in this control will depend on the type of object selected.  When you select an option in the Configuration control, it will open additional blades in order to provide additional information.
 
-### テスト コントロール
+### <a name="test-control"></a>Test control
 
-グラフィカル エディターが初めて起動された場合、テスト コントロールは表示されません。対話形式で[グラフィカル Runbook をテスト](#graphical-runbook-procedures)する際に開きます。
+The Test control is not displayed when the graphical editor is first started. It is opened when you interactively [test a graphical runbook](#graphical-runbook-procedures).  
 
-## グラフィカル Runbook の手順 
+## <a name="graphical-runbook-procedures"></a>Graphical runbook procedures 
 
-### グラフィカル Runbook のエクスポートとインポート
+### <a name="exporting-and-importing-a-graphical-runbook"></a>Exporting and importing a graphical runbook
 
-グラフィカル Runbook は、発行済みのバージョンのみエクスポートできます。Runbook がまだ発行されていない場合、**[発行済み分のエクスポート]** ボタンは無効になります。**[発行済み分のエクスポート]** ボタンをクリックすると、Runbook がローカル コンピューターにダウンロードされます。ファイル名は、Runbook の名前に *graphrunbook* 拡張子が付いたものになります。
+You can only export the published version of a graphical runbook.  If the runbook has not yet been published, then the **Export published** button will be disabled.  When you click the **Export published** button, the runbook is downloaded to your local computer.  The name of the file matches the name of the runbook with a *graphrunbook* extension.
 
-![発行済み分のエクスポート](media/automation-graphical-authoring-intro/runbook-export.png)
+![Export published](media/automation-graphical-authoring-intro/runbook-export.png)
 
-グラフィカル Runbook ファイルまたはグラフィカル PowerShell ワークフロー Runbook ファイルは、Runbook の追加時に **[インポート]** オプションを選択するとインポートできます。インポートするファイルを選択したときは、同じ**名前**を保持するか、新しい名前を指定できます。[Runbook の種類] フィールドには、選択したファイルが評価された後に Runbook の種類が表示されます。また、適切ではない別の種類を選択しようとすると、競合する可能性があることを示すメッセージが表示され、変換中に構文エラーが発生することがあります。
+You can import a Graphical or Graphical PowerShell Workflow runbook file by selecting the **Import** option when adding a runbook.   When you select the file to import, you can keep the same **Name** or provide a new one.  The Runbook Type field will display the type of runbook after it assesses the file selected and if you attempt to select a different type that is not correct, a message will be presented noting there are potential conflicts and during conversion, there could be syntax errors.  
 
-![Runbook のインポート](media/automation-graphical-authoring-intro/runbook-import-revised20165.png)
-
-
-### グラフィカル Runbook のテスト
-
-発行バージョンの Runbook を変更せずに、ドラフト バージョンの Runbook を Azure ポータルでテストしたり、新しい Runbook を発行前にテストしたりすることができます。これにより、発行バージョンを置き換える前に、Runbook が正常に機能していることを確認することができます。Runbook のテスト時に、ドラフトの Runbook が実行され、行われたすべての操作が完了します。ジョブ履歴は作成されませんが、出力がテスト出力ペインに表示されます。
-
-Runbook のテスト コントロールを開くには、編集対象の Runbook を開いてから [**テスト ペイン**] ボタンをクリックします。
-
-![[テスト ペイン] ボタン](media/automation-graphical-authoring-intro/runbook-edit-test-pane.png)
-
-テスト コントロールは入力パラメーターに関するプロンプトを出します。Runbook は、[**開始**] ボタンをクリックすることで開始できます。
-
-![テスト コントロールのボタン](media/automation-graphical-authoring-intro/runbook-test-start.png)
-
-### グラフィカル Runbook の発行
-
-Azure Automation の各 Runbook には、ドラフト バージョンと発行バージョンがあります。実行できるのは発行バージョンのみで、編集できるのはドラフト バージョンのみです。ドラフト バージョンを変更しても発行バージョンに影響はありません。ドラフト バージョンを使用する準備ができたら、それを発行します。これにより、発行バージョンがドラフト バージョンで上書きされます。
-
-グラフィカル Runbook は、編集対象の Runbook を開いてから [**発行**] ボタンをクリックすることで発行できます。
-
-![[発行] ボタン](media/automation-graphical-authoring-intro/runbook-edit-publish.png)
-
-Runbook がまだ発行されていない場合、状態は [**新規**] です。発行されている場合、状態は [**発行済み**] です。Runbook を発行後に編集する際に、ドラフトと発行のバージョンが異なる場合、Runbook の状態は [**編集**] になります。
-
-![Runbook のステータス](media/automation-graphical-authoring-intro/runbook-statuses-revised20165.png)
-
-また、発行バージョンの Runbook に戻すこともできます。これにより、Runbook が最後に発行されてから加えられた変更が破棄され、ドラフト バージョンの Runbook が発行バージョンに置き換えられます。
-
-![発行済みに戻すボタン](media/automation-graphical-authoring-intro/runbook-edit-revert-published.png)
+![Import runbook](media/automation-graphical-authoring-intro/runbook-import-revised20165.png)
 
 
-## アクティビティ
+### <a name="testing-a-graphical-runbook"></a>Testing a graphical runbook
 
-アクティビティは Runbook の構成要素です。アクティビティは、PowerShell コマンドレット、子 Runbook、またはワークフロー アクティビティである場合があります。Runbook にアクティビティを追加する場合は、ライブラリ　コントロールを右クリックして、[**キャンバスに追加**] を選択します。その後、アクティビティをクリックしてドラッグし、キャンバス上の任意の場所に配置できます。キャンバス上のアクティビティの場所が、Runbook の操作に影響することは決してありません。Runbook をレイアウトできますが、その操作を視覚化するために最適なレイアウトを見つけてください。
+You can test the Draft version of a runbook in the Azure portal while leaving the published version of the runbook unchanged, or you can test a new runbook before it has been published. This allows you to verify that the runbook is working correctly before replacing the published version. When you test a runbook, the Draft runbook is executed and any actions that it performs are completed. No job history is created, but output is displayed in the Test Output Pane. 
 
-![キャンバスに追加](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
+Open the Test control for a runbook by opening the runbook for edit and then click on the **Test pane** button.
 
-構成ブレードでプロパティとパラメーターを構成するには、キャンバス上でアクティビティを選択します。アクティビティの**ラベル**は、わかりやすいものに変更することができます。元のコマンドレットは引き続き実行されるため、グラフィカル エディターで使用される表示名を変更するだけです。ラベルは、Runbook 内で一意である必要があります。
+![Test pane button](media/automation-graphical-authoring-intro/runbook-edit-test-pane.png)
 
-### パラメーター セット
+The Test control will prompt for any input parameters, and you can start the runbook by clicking on the **Start** button.
 
-パラメーター セットは、特定のコマンドレットの値を受け入れる必須および省略可能なパラメーターを定義します。すべてのコマンドレットには 1 つ以上のパラメーター セットがあり、複数存在する場合があります。コマンドレットに複数のパラメーター セットがある場合は、使用するものを選択してからパラメーターを構成する必要があります。構成可能なパラメーターは、選択するパラメーター セットによって異なります。アクティビティで使用されるパラメーター セットは、[**パラメーター セット**] を選択してから別のセットを選択することで変更できます。この場合、構成したパラメーター値はすべて失われます。
+![Test control buttons](media/automation-graphical-authoring-intro/runbook-test-start.png)
 
-次の例では、Get-AzureRmVM コマンドレットに 3 つのパラメーター セットがあります。パラメーター セットのいずれかを選択するまでは、パラメーター値を構成することはできません。ListVirtualMachineInResourceGroupParamSet パラメーター セットは、リソース グループ内のすべての仮想マシンを返すためのものであり、1 つの省略可能なパラメーターがあります。GetVirtualMachineInResourceGroupParamSet は、返される仮想マシンを指定するためのものであり、2 つの必須パラメーターと 1 つの省略可能なパラメーターがあります。
+### <a name="publishing-a-graphical-runbook"></a>Publishing a graphical runbook
 
-![パラメーター セット](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
+Each runbook in Azure Automation has a Draft and a Published version. Only the Published version is available to be run, and only the Draft version can be edited. The Published version is unaffected by any changes to the Draft version. When the Draft version is ready to be available, then you publish it which overwrites the Published version with the Draft version.
 
-#### パラメーターの値
+You can publish a graphical runbook by opening the runbook for editing and then clicking on the **Publish** button.
 
-パラメーターの値を指定する場合は、データ ソースを選択して値の指定方法を決定します。特定のパラメーターに使用できるデータ ソースは、そのパラメーターの有効な値によって異なります。たとえば、null 値が許可されていないパラメーターに対するオプションとして Null を使用することはできません。
+![Publish button](media/automation-graphical-authoring-intro/runbook-edit-publish.png)
 
-| データ ソース | 説明 |
+When a runbook has not yet been published, it has a status of **New**.  When it is published, it has a status of **Published**.  If you edit the runbook after it has been published, and the Draft and Published versions are different, the runbook has a status of **In edit**.
+
+![Runbook statuses](media/automation-graphical-authoring-intro/runbook-statuses-revised20165.png) 
+
+You also have the option to revert to the Published version of a runbook.  This throws away any changes made since the runbook was last published and replaces the Draft version of the runbook with the Published version.
+
+![Revert to published button](media/automation-graphical-authoring-intro/runbook-edit-revert-published.png)
+
+
+## <a name="activities"></a>Activities
+
+Activities are the building blocks of a runbook.  An activity can be a PowerShell cmdlet, a child runbook, or a workflow activity.  You add an activity to the runbook by right clicking it in the Library control and selecting **Add to canvas**.  You can then click and drag the activity to place it anywhere on the canvas that you like.  The location of the of the activity on the canvas does not effect the operation of the runbook in any way.  You can layout your runbook however you find it most suitable to visualize its operation. 
+
+![Add to canvas](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
+
+Select the activity on the canvas to configure its properties and parameters in the Configuration blade.  You can change the **Label** of the activity to something that is descriptive to you.  The original cmdlet is still being run, you are simply changing its display name that will be used in the graphical editor.  The label must be unique within the runbook. 
+
+### <a name="parameter-sets"></a>Parameter sets
+
+A parameter set defines the mandatory and optional parameters that will accept values for a particular cmdlet.  All cmdlets have at least one parameter set, and some have multiple.  If a cmdlet has multiple parameter sets, then you must select which one you will use before you can configure parameters.  The parameters that you can configure will depend on the parameter set that you choose.  You can change the parameter set used by an activity by selecting **Parameter Set** and selecting another set.  In this case, any parameter values that you configured are lost.
+
+In the following example, the Get-AzureRmVM cmdlet has three parameter sets.  You cannot configure parameter values until you select one of the parameter sets.  The ListVirtualMachineInResourceGroupParamSet parameter set is for returning all virtual machines in a resource group and has a single optional parameter.  The GetVirtualMachineInResourceGroupParamSet is for specifying the virtual machine you want to return and has two mandatory and one optional parameter.
+
+![Parameter set](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
+
+#### <a name="parameter-values"></a>Parameter values
+
+When you specify a value for a parameter, you select a data source to determine how the value will be specified.  The data sources that are available for a particular parameter will depend on the valid values for that parameter.  For example, Null will not be an available option for a parameter that does not allow null values.
+
+| Data Source | Description |
 |:---|:---|
-|定数値|パラメーターの値を入力します。これを使用できるのは、Int32、Int64、String、Boolean、DateTime、Switch というデータ型の場合のみです。 |
-|アクティビティの出力|ワークフローの現在のアクティビティより前のアクティビティからの出力です。有効なすべてのアクティビティが一覧表示されます。パラメーター値にその出力を使用するアクティビティだけを選択します。アクティビティが複数のプロパティを持つオブジェクトを出力する場合は、アクティビティを選択してからプロパティの名前を入力できます。|
-|Runbook の入力 |Runbook の入力パラメーターをアクティビティ パラメーターへの入力として選択します。|  
-|変数資産|Automation の変数を入力として選択します。|  
-|資格情報資産|Automation の資格情報を入力として選択します。|  
-|証明書資産|Automation の証明書を入力として選択します。|  
-|接続資産|Automation の接続を入力として選択します。| 
-|PowerShell 式|簡単な [PowerShell](#powershell-expressions) 式を指定します。式は、アクティビティとパラメーター値に使用される結果の前に評価されます。変数を使用すれば、アクティビティの出力または Runbook の入力パラメーターを参照することができます。|
-|未構成|以前に構成された値をクリアします。|
+|Constant Value|Type in a value for the parameter.  This is only available for the following data types: Int32,Int64,String,Boolean,DateTime,Switch. |
+|Activity Output|Output from an activity that precedes the current activity in the workflow.  All valid activities will be listed.  Select just the activity to use its output for the parameter value.  If the activity outputs an object with multiple properties, then you can type in the name of the property after selecting the activity.|
+|Runbook Input |Select a runbook input parameter as input to the activity parameter.|  
+|Variable Asset|Select an Automation Variable as input.|  
+|Credential Asset|Select an Automation Credential as input.|  
+|Certificate Asset|Select an Automation Certificate as input.|  
+|Connection Asset|Select an Automation Connection as input.| 
+|PowerShell Expression|Specify simple [PowerShell expression](#powershell-expressions).  The expression will be evaluated before the activity and the result used for the parameter value.  You can use variables to refer to the output of an activity or a runbook input parameter.|
+|Not configured|Clears any value that was previously configured.|
 
 
-#### 省略可能な追加パラメーター
+#### <a name="optional-additional-parameters"></a>Optional additional parameters
 
-すべてのコマンドレットで、追加のパラメーターを指定することができます。これらは、PowerShell の共通パラメーターまたはその他のカスタム パラメーターです。PowerShell 構文を使用してパラメーターを指定できるテキスト ボックスが表示されます。たとえば、**Verbose** 共通パラメーターを使用する場合は、**"-Verbose: $True"** を指定します。
+All cmdlets will have the option to provide additional parameters.  These are PowerShell common parameters or other custom parameters.  You are presented with a text box where you can provide parameters using PowerShell syntax.  For example, to use the **Verbose** common parameter, you would specify **"-Verbose:$True"**.
 
-### 再試行アクティビティ
+### <a name="retry-activity"></a>Retry activity
 
-**再試行動作**を使用すると、ループのように、特定の条件を満たすまで、アクティビティを複数回実行できます。この機能は、複数回実行する必要があるアクティビティ、エラーが発生しやすく、成功までに複数回の試行が必要になる可能性があるアクティビティ、またはアクティビティの出力情報が有効なデータかどうかをテストするアクティビティに使用できます。
+**Retry Behavior** allows an activity to be run multiple times until a particular condition is met, much like a loop.  You can use this feature for activities that should run multiple times, are error prone and may need more than one attempt for success, or test the output information of the activity for valid data.    
 
-アクティビティの再試行を有効にするときに、遅延と条件を設定できます。遅延とは、アクティビティを次回実行するまでに Runbook が待機する時間 (秒単位または分単位) です。遅延を指定しない場合、アクティビティの完了後すぐに再実行されます。
+When you enable retry for an activity, you can set a delay and a condition.  The delay is the time (measured in seconds or minutes) that the runbook will wait before it runs the activity again.  If no delay is specified, then the activity will run again immediately after it completes. 
 
-![アクティビティ再試行の遅延](media/automation-graphical-authoring-intro/retry-delay.png)
+![Activity retry delay](media/automation-graphical-authoring-intro/retry-delay.png)
 
-再試行の条件とは、アクティビティの実行後のたびに評価される PowerShell 式です。式が True に解決されると、アクティビティは再実行されます。式が False に解決されると、アクティビティは再実行されず、Runbook は次のアクティビティに移ります。
+The retry condition is a PowerShell expression that is evaluated after each time the activity runs.  If the expression resolves to True, then the activity runs again.  If the expression resolves to False then the activity does not run again, and the runbook moves on to the next activity. 
 
-![アクティビティ再試行の遅延](media/automation-graphical-authoring-intro/retry-condition.png)
+![Activity retry delay](media/automation-graphical-authoring-intro/retry-condition.png)
 
-再試行の条件は、アクティビティの再試行に関する情報にアクセスできる $RetryData という変数を使用できます。この変数には、次の表のプロパティがあります。
+The retry condition can use a variable called $RetryData that provides access to information about the activity retries.  This variable has the properties in the following table.
 
-| プロパティ | 説明 |
+| Property | Description |
 |:--|:--|
-| NumberOfAttempts | アクティビティが実行された回数。 |
-| 出力 | 最後に実行されたアクティビティの出力。 |
-| TotalDuration | 初回のアクティビティが開始されてからの経過時間。 |
-| StartedAt | 初回のアクティビティが開始された時刻 (UTC 形式)。 |
+| NumberOfAttempts | Number of times that the activity has been run.              |
+| Output           | Output from the last run of the activity.                    |
+| TotalDuration    | Timed elapsed since the activity was started the first time. |
+| StartedAt        | Time in UTC format the activity was first started.           |
 
-次に、アクティビティの再試行条件の例を示します。
+Following are examples of activity retry conditions.
 
-	# Run the activity exactly 10 times.
-	$RetryData.NumberOfAttempts -ge 10 
+    # Run the activity exactly 10 times.
+    $RetryData.NumberOfAttempts -ge 10 
 
-	# Run the activity repeatedly until it produces any output.
-	$RetryData.Output.Count -ge 1 
+    # Run the activity repeatedly until it produces any output.
+    $RetryData.Output.Count -ge 1 
 
-	# Run the activity repeatedly until 2 minutes has elapsed. 
-	$RetryData.TotalDuration.TotalMinutes -ge 2
+    # Run the activity repeatedly until 2 minutes has elapsed. 
+    $RetryData.TotalDuration.TotalMinutes -ge 2
 
-アクティビティの再試行条件を構成すると、そのアクティビティには、通知用に 2 つの視覚的な合図が含まれます。1 つはアクティビティ内に表示され、もう 1 つは、アクティビティの構成を確認するときに表示されます。
+After you configure a retry condition for an activity, the activity includes two visual cues to remind you.  One is presented in the activity and the other is when you review the configuration of the activity.
 
 ![Activity Retry Visual Indicators](media/automation-graphical-authoring-intro/runbook-activity-retry-visual-cue.png)
 
 
-### ワークフロー スクリプト コントロール
+### <a name="workflow-script-control"></a>Workflow Script control
 
-コード コントロールは特別なアクティビティで、機能を提供する (そうしないと使用できない場合がある) ために、作成するグラフィカル Runbook の種類に応じて、PowerShell スクリプトか PowerShell Workflow スクリプトを受け入れます。これはパラメーターを受け入れることはできませんが、アクティビティの出力と Runbook の入力パラメーターで変数を使用できます。発信リンクがない (Runbook の出力に追加される) 場合を除き、アクティビティの出力はデータバスに追加されます。
+A Code control is a special activity that accepts PowerShell or PowerShell Workflow script depending on the type of graphical runbook being authored in order to provide functionality that may otherwise not be available.  It cannot accept parameters, but it can use variables for activity output and runbook input parameters.  Any output of the activity is added to the databus unless it has no outgoing link in which case it is added to the output of the runbook.
 
-たとえば、次のコードでは $NumberOfDays という Runbook 入力変数を使用して、日付の計算を実行します。次に、計算した日時が出力として送信され、Runbook の後続のアクティビティで使用されます。
+For example the following code performs date calculations using a runbook input variable called $NumberOfDays.  It then sends a calculated date time as output to be used by subsequent activities in the runbook.
 
     $DateTimeNow = (Get-Date).ToUniversalTime()
     $DateTimeStart = ($DateTimeNow).AddDays(-$NumberOfDays)}
     $DateTimeStart
 
 
-## リンクとワークフロー
+## <a name="links-and-workflow"></a>Links and workflow
 
-グラフィカル Runbook の**リンク**は 2 つのアクティビティを接続します。キャンバスでは、ソース アクティビティから接続先アクティビティを指す矢印として表示されます。アクティビティは矢印の方向に実行され、ソース アクティビティが完了すると接続先アクティビティが開始されます。
+A **link** in a graphical runbook connects two activities.  It is displayed on the canvas as an arrow pointing from the source activity to the destination activity.  The activities run in the direction of the arrow with the destination activity starting after the source activity completes.  
 
-### リンクの作成
+### <a name="create-a-link"></a>Create a link
 
-ソース アクティビティを選択し、図形の下部にある円をクリックして、2 つのアクティビティ間のリンクを作成します。接続先アクティビティまで矢印をドラッグして離します。
+Create a link between two activities by selecting the source activity and clicking the circle at the bottom of the shape.  Drag the arrow to the destination activity and release.
 
-![リンクの作成](media/automation-graphical-authoring-intro/create-link-revised20165.png)
+![Create a link](media/automation-graphical-authoring-intro/create-link-revised20165.png)
 
-リンクを選択して、構成ブレードでそのプロパティを構成します。これには、次の表で説明されているリンクの種類が含まれます。
+Select the link to configure its properties in the Configuration blade.  This will include the link type which is described in the following table.
 
-| リンクの種類 | 説明 |
+| Link Type | Description |
 |:---|:---|
-| パイプライン | ソース アクティビティからのオブジェクト出力ごとに 1 回、接続先アクティビティが実行されます。ソース アクティビティからの出力がない場合、接続先アクティビティは実行されません。ソース アクティビティからの出力はオブジェクトとして使用できます。 |
-| シーケンス | 接続先アクティビティは 1 回だけ実行されます。ソース アクティビティからのオブジェクトの配列を受け取ります。ソース アクティビティからの出力は、オブジェクトの配列として使用できます。 |
+| Pipeline | The destination activity is run once for each object output from the source activity.  The destination activity does not run if the source activity results in no output.  Output from the source activity is available as an object.  |
+| Sequence | The destination activity runs only once.  It receives an array of objects from the source activity.  Output from the source activity is available as an array of objects. |
 
-### アクティビティの開始
+### <a name="starting-activity"></a>Starting activity
 
-グラフィカル Runbook は、受信リンクのないすべてのアクティビティから開始します。多くの場合、Runbook の開始アクティビティとして動作するアクティビティは 1 つだけです。複数のアクティビティに受信リンクがない場合、Runbook は並列で実行して開始します。その後、リンクに従って、各アクティビティの完了時に別のアクティビティを実行します。
+A graphical runbook will start with any activities that do not have an incoming link.  This will often be only one activity which would act as the starting activity for the runbook.  If multiple activities do not have an incoming link, then the runbook will start by running them in parallel.  It will then follow the links to run other activities as each completes.
 
-### 条件
+### <a name="conditions"></a>Conditions
 
-リンクに条件を指定すると、その条件が true に解決された場合にのみ、接続先アクティビティが実行されます。ソース アクティビティからの出力を取得する場合、通常は条件に $ActivityOutput 変数を使用します。
+When you specify a condition on a link, the destination activity is only run if the condition resolves to true.  You will typically use an $ActivityOutput variable in a condition to retrieve the output from the source activity.  
 
-パイプライン リンクの場合は、1 つのオブジェクトに対して条件を指定します。この条件は、ソース アクティビティによってオブジェクトの出力ごとに評価されます。その後、条件を満たす各オブジェクトに対して、接続先アクティビティが実行されます。たとえば、Get-AzureRmVm のソース アクティビティでは、条件付きパイプライン リンクに次の構文を使用すると、*Group1* という名前のリソース グループ内の仮想マシンのみを取得できます。
+For a pipeline link, you specify a condition for a single object, and the condition is evaluated for each object output by the source activity.  The destination activity is then run for each object that satisfies the condition.  For example, with a source activity of Get-AzureRmVm, the following syntax could be used for a conditional pipeline link to retrieve only virtual machines in the resource group named *Group1*.  
 
-	$ActivityOutput['Get Azure VMs'].Name -match "Group1"
+    $ActivityOutput['Get Azure VMs'].Name -match "Group1"
 
-シーケンス リンクの場合は、ソース アクティビティからのオブジェクト出力をすべて含む 1 つの配列が返されるため、条件は一度だけ評価されます。そのため、シーケンス リンクをパイプライン リンクのようにフィルター処理に使用することはできませんが、次のアクティビティが実行されるかどうかは簡単に判別されます。たとえば、この Start VM Runbook では次のアクティビティのセットを使用します。<br> ![Conditional Link with Sequences](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)<br> 3 つの異なるシーケンス リンクがあり、実行する適切なアクション (1 つの VM を開始する、リソース グループ内のすべての VM を開始する、サブスクリプション内のすべての VM を開始する) を判別するために、VM 名とリソース グループ名を表す 2 つの Runbook 入力パラメーターに値が指定されたことを検証しています。Connect to Azure と Get single VM の間のシーケンス リンクの場合、条件のロジックは次のとおりです。
+For a sequence link, the condition is only evaluated once since a single array is returned containing all objects output from the source activity.  Because of this, a sequence link cannot be used for filtering like a pipeline link but will simply determine whether or not the next activity is run. Take for example the following set of activities in our Start VM runbook.<br> ![Conditional Link with Sequences](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)<br>
+There are three different sequence links that are verifying values were provided to two runbook input parameters representing VM name and Resource Group name in order to determine which is the appropriate action to take - start a single VM, start all VMs in the resouce group, or all VMs in a subscription.  For the sequence link between Connect to Azure and Get single VM, here is the condition logic:
 
-	<# 
+    <# 
     Both VMName and ResourceGroupName runbook input parameters have values 
     #>
     (
@@ -231,192 +233,201 @@ Runbook がまだ発行されていない場合、状態は [**新規**] です�
     (($ResourceGroupName -ne $null) -and ($ResourceGroupName.Length -gt 0))
     )
 
-条件付きリンクを使用する場合は、その分岐でソース アクティビティから他のアクティビティまでの使用可能なデータが、条件によってフィルター処理されます。アクティビティが複数のリンクに対するソースの場合、各分岐のアクティビティで使用できるデータは、その分岐に接続するリンクの条件によって異なります。
+When you use a conditional link, the data available from the source activity to other activities in that branch will be filtered by the condition.  If an activity is the source to multiple links, then the data available to activities in each branch will depend on the condition in the link connecting to that branch.
 
-たとえば、以下の Runbook の **Start-AzureRmVm** アクティビティはすべての仮想マシンを開始します。このアクティビティには 2 つの条件付きリンクがあります。最初の条件付きリンクでは、式 *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true* を使用して、Start-AzureRmVm アクティビティが正常に完了した場合にフィルター処理します。2 つ目の条件付きリンクでは、式 *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true* を使用して、Start-AzureRmVm アクティビティが仮想マシンを開始できなかった場合にフィルター処理します。
+For example, the **Start-AzureRmVm** activity in the runbook below starts all virtual machines.  It has two conditional links.  The first conditional link uses the expression *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -eq $true* to filter if the Start-AzureRmVm activity completed successfully.  The second uses the expression *$ActivityOutput['Start-AzureRmVM'].IsSuccessStatusCode -ne $true* to filter if the Start-AzureRmVm activity failed to start the virtual machine.  
 
-![条件付きリンクの例](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
+![Conditional link example](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
 
-最初のリンクに従って、Get-azurevm からのアクティビティ出力を使用するアクティビティでは、Get-AzureVM の実行時に開始された仮想マシンのみを取得します。2 番目のリンクに従うアクティビティでは、Get-AzureVM の実行時に停止された仮想マシンのみを取得します。3 番目のリンクに従うアクティビティでは、実行状態に関係なく、すべての仮想マシンを取得します。
+Any activity that follows the first link and uses the activity output from Get-AzureVM will only get the virtual machines that were started at the time that Get-AzureVM was run.  Any activity that follows the second link will only get the the virtual machines that were stopped at the time that Get-AzureVM was run.  Any activity following the third link will get all virtual machines regardless of their running state.
 
-### 接合
+### <a name="junctions"></a>Junctions
 
-接合は特別なアクティビティで、受信分岐がすべて完了するまで待機します。これにより、複数のアクティビティを並列で実行し、次に進む前にすべて完了したことを確認することができます。
+A junction is a special activity that will wait until all incoming branches have completed.  This allows you to run multiple activities in parallel and ensure that all have completed before moving on.
 
-接合できる受信リンクの数に制限はありませんが、パイプラインにすることができるのはこれらのリンクのうち 1 つだけです。受信シーケンス リンクの数に制限はありません。複数の受信パイプライン リンクを受け入れる接合点を作成し、Runbook を保存することはできますが、実行した場合は失敗します。
+While a junction can have an unlimited number of incoming links, not more than one of those links can be a pipeline.  The number of incoming sequence links is not constrained.  You will be allowed to create the junction with multiple incoming pipeline links and save the runbook, but it will fail when it is run.
 
-次の例は、一連の仮想マシンに同時に修正プログラムをダウンロードする間に、それらのマシンを開始する Runbook の一部です。接合点を使用して、Runbook を続行する前に両方のプロセスが完了したことを確認します。
+The example below is part of a runbook that starts a set of virtual machines while simultaneously downloading patches to be applied to those machines.  A junction is used to ensure that both processes are completed before the runbook continues.
 
-![接合](media/automation-graphical-authoring-intro/runbook-junction.png)
+![Junction](media/automation-graphical-authoring-intro/runbook-junction.png)
 
-### サイクル
+### <a name="cycles"></a>Cycles
 
-サイクルとは、接続先アクティビティがリンクに従ってそのソース アクティビティ、または最終的にソースに戻る別のアクティビティに戻ることです。現在、グラフィカル作成ではサイクルを使用することはできません。Runbook にサイクルがある場合、保存は正常に行われますが、実行時にエラーが発生します。
+A cycle is when a destination activity links back to its source activity or to another activity that eventually links back to its source.  Cycles are currently not allowed in graphical authoring.  If your runbook has a cycle, it will save properly but will receive an error when it runs.
 
-![サイクル](media/automation-graphical-authoring-intro/runbook-cycle.png)
-
-
-### アクティビティ間のデータの共有
-
-発信リンクがあるアクティビティで出力されるデータは、Runbook の*データバス*に書き込まれます。Runbook のすべてのアクティビティはデータバスのデータを使用して、パラメーターの値を設定したり、スクリプト コードに含めたりすることができます。アクティビティは、ワークフロー内の前のアクティビティの出力にアクセスできます。
-
-データバスにデータが書き込まれる方法は、アクティビティのリンクの種類によって異なります。**パイプライン**の場合、データは複数のオブジェクトとして出力されます。**シーケンス** リンクの場合、データは配列として出力されます。値が 1 つだけある場合、1 つの要素配列として出力されます。
-
-2 つの方法のいずれかを使用して、データバス上のデータにアクセスできます。1 つは、**アクティビティの出力**データ ソースを使用して、別のアクティビティのパラメーターを設定する方法です。出力がオブジェクトの場合は、1 つのプロパティを指定できます。
-
-![アクティビティの出力](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
-
-**PowerShell 式**データ ソースでアクティビティの出力を取得することも、ActivityOutput 変数を使用して**ワークフロー スクリプト** アクティビティから取得することもできます。出力がオブジェクトの場合は、1 つのプロパティを指定できます。ActivityOutput 変数には次の構文を使用します。
-
-	$ActivityOutput['Activity Label']
-	$ActivityOutput['Activity Label'].PropertyName 
-
-### チェックポイント
-
-任意のアクティビティで *Runbook チェックポイント*を選択することで、グラフィカル PowerShell ワークフロー Runbook の[チェックポイント](automation-powershell-workflow.md#checkpoints)を設定できます。この場合、アクティビティの実行後にチェックポイントが設定されます。
-
-![チェックポイント](media/automation-graphical-authoring-intro/set-checkpoint.png)
-
-チェックポイントは、グラフィカル PowerShell ワークフロー Runbook のみで有効で、グラフィカル Runbook では使用できません。Runbook で Azure コマンドレットを使用する場合、Runbook が一時停止され、別のワーカーでこのチェックポイントから再起動するときは、Add-AzureRMAccount を使用してチェックポイントを設定したアクティビティに従います。
+![Cycle](media/automation-graphical-authoring-intro/runbook-cycle.png)
 
 
-## Azure リソースの認証
+### <a name="sharing-data-between-activities"></a>Sharing data between activities
 
-Azure リソースを管理する、Azure Automation の Runbook は、Azure に対する認証が必要になります。新しい[実行アカウント](automation-sec-configure-azure-runas-account.md)機能 (サービス プリンシパルとも呼ばれます) は、サブスクリプション内の Azure Resource Manager リソースに Automation Runbook でアクセスするための既定の方法です。この機能をグラフィカル Runbook に追加するには、**AzureRunAsConnection** 接続資産を追加します。これは、PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) コマンドレットと、キャンバスに対する [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) コマンドレットを使用しています。これを次の例に示します。<br>![Run As Authentication Activities](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br> Get Run As Connection アクティビティ (つまり Get-AutomationConnection) は、AzureRunAsConnection という名前の定数値データ ソースで構成されています。<br>![Run As Connection Configuration](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)<br> 次のアクティビティ Add-AzureRmAccount は、Runbook で使用する認証済み実行アカウントを追加します｡<br> ![Add-AzureRmAccount Parameter Set](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)<br> **APPLICATIONID**、**CERTIFICATETHUMBPRINT**、**TENANTID** パラメーターでは、[フィールド パス] にプロパティの名前を指定する必要があります。これは、アクティビティが複数のプロパティを持つオブジェクトを出力するためです。指定しなかった場合は、Runbook を実行するときに、認証しようとして失敗します。これは、実行アカウントで Runbook を認証するために最低限必要なことです。
+Any data that is output by an activity with an outgoing link is written to the *databus* for the runbook.  Any activity in the runbook can use data on the databus to populate parameter values or include in script code.  An activity can access the output of any previous activity in the workflow.     
 
-Azure サービス管理 (ASM) または Azure Resource Manager のリソースを管理するために [Azure AD ユーザー アカウント](automation-sec-configure-aduser-account.md)を使用して Automation アカウントを作成したサブスクライバーのために下位互換性を維持するには、認証方法として、Azure アカウントへのアクセス権を持つ Active Directory ユーザーを表す[資格情報資産](http://msdn.microsoft.com/library/dn940015.aspx)を指定した Add-AzureAccount コマンドレットがあります。
+How the data is written to the databus depends on the type of link on the activity.  For a **pipeline**, the data is output as multiples objects.  For a **sequence** link, the data is output as an array.  If there is only one value, it will be output as a single element array.
 
-グラフィカル Runbook にこの機能を追加するには、キャンバスに資格情報資産を追加します。この後に Add-AzureAccount アクティビティが続きます。Add-AzureAccount では、資格情報アクティビティを使用して入力します。これを次の例に示します。
+You can access data on the databus using one of two methods.  First is using an **Activity Output** data source to populate a parameter of another activity.  If the output is an object, you can specify a single property.
 
-![認証アクティビティ](media/automation-graphical-authoring-intro/authentication-activities.png)
+![Activity output](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
 
-Runbook の開始時と各チェックポイント後に認証を行う必要があります。つまり、すべての Checkpoint-Workflow アクティビティの後に Add-AzureAccount アクティビティを追加します。資格情報アクティビティは同じものを使用できるため、追加する必要はありません。
+You can also retrieve the output of an activity in a **PowerShell Expression** data source or from a **Workflow Script** activity with an ActivityOutput variable.  If the output is an object, you can specify a single property.  ActivityOutput variables use the following syntax.
 
-![アクティビティの出力](media/automation-graphical-authoring-intro/authentication-activity-output.png)
+    $ActivityOutput['Activity Label']
+    $ActivityOutput['Activity Label'].PropertyName 
 
-## Runbook の入力と出力
+### <a name="checkpoints"></a>Checkpoints
 
-### Runbook の入力
+You can set [checkpoints](automation-powershell-workflow.md#checkpoints) in a Graphical PowerShell Workflow runbook by selecting *Checkpoint runbook* on any activity.  This causes a checkpoint to be set after the activity runs.
 
-Runbook では、Azure ポータルで Runbook を開始する場合はユーザーから、現在の Runbook が子として使用されている場合は別の Runbook からの入力が必要になる可能性があります。たとえば、仮想マシンを作成する Runbook がある場合、Runbook を開始するたびに仮想マシンの名前や他のプロパティなどの情報提供が必要になることがあります。
+![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
-Runbook の入力を受け入れる場合は、1 つ以上の入力パラメーターを定義します。Runbook が開始されるたびに、これらのパラメーターの値を指定します。Azure ポータルで Runbook を開始すると、Runbook の入力パラメーターのそれぞれの値を指定するように求められます。
+Checkpoints are only enabled in Graphical PowerShell Workflow runbooks, it is not available in Graphical runbooks.  If the runbook uses Azure cmdlets, you should follow any checkpointed activity with an Add-AzureRMAccount in case the runbook is suspended and restarts from this checkpoint on a different worker. 
 
-Runbook の入力パラメーターには、Runbook ツールバーの [**入力と出力**] ボタンをクリックしてアクセスできます。
 
-![Runbook の入出力](media/automation-graphical-authoring-intro/runbook-edit-input-output.png)
+## <a name="authenticating-to-azure-resources"></a>Authenticating to Azure resources
 
-これにより、[**入力と出力**] コントロールが開き、そこで既存の入力パラメーターを編集したり、[**入力の追加**] をクリックして新しいものを作成したりできます。
+Runbooks in Azure Automation that manage Azure resources will require authentication to Azure.  The new [Run As account](automation-sec-configure-azure-runas-account.md) feature (also referred to as a service principal) is the default method to access Azure Resource Manager resources in your subscription with Automation runbooks.  You can add this functionality to a graphical runbook by adding the **AzureRunAsConnection** Connection asset, which is using the PowerShell [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) cmdlet, and [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet to the canvas. This is illustrated in the following example.<br>![Run As Authentication Activities](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)<br>
+The Get Run As Connection activity (i.e. Get-AutomationConnection), is configured with a constant value data source named AzureRunAsConnection.<br>![Run As Connection Configuration](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)<br>
+The next activity, Add-AzureRmAccount, adds the authenticated Run As account for use in the runbook.<br>
+![Add-AzureRmAccount Parameter Set](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)<br>
+For the parameters **APPLICATIONID**, **CERTIFICATETHUMBPRINT**, and **TENANTID** you will need to specify the name of the property for the Field path because the activity outputs an object with multiple properties.  Otherwise when you execute the runbook, it will fail attempting to authenticate.  This is what you need at a minimum to authenticate your runbook with the Run As account.
 
-![入力の追加](media/automation-graphical-authoring-intro/runbook-edit-add-input.png)
+To maintain backwards compatibility for subscribers who have created an Automation account using an [Azure AD User account](automation-sec-configure-aduser-account.md) to manage Azure Service Management (ASM) or Azure Resource Manager resources, the method to authenticate is the Add-AzureAccount cmdlet with a [credential asset](http://msdn.microsoft.com/library/dn940015.aspx) that represents an Active Directory user with access to the Azure account.
 
-各入力パラメーターは、次の表のプロパティで定義されます。
+You can add this functionality to a graphical runbook by adding a credential asset to the canvas followed by an Add-AzureAccount activity.  Add-AzureAccount uses the credential activity for its input.  This is illustrated in the following example.
 
-|プロパティ|説明|
+![Authentication activities](media/automation-graphical-authoring-intro/authentication-activities.png)
+
+You have to authenticate at the start of the runbook and after each checkpoint.  This means adding an addition Add-AzureAccount activity after any Checkpoint-Workflow activity. You do not need an addition credential activity since you can use the same 
+
+![Activity output](media/automation-graphical-authoring-intro/authentication-activity-output.png)
+
+## <a name="runbook-input-and-output"></a>Runbook input and output
+
+### <a name="runbook-input"></a>Runbook input
+
+A runbook may require input either from a user when they start the runbook through the Azure portal or from another runbook if the current one is used as a child.
+For example, if you have a runbook that creates a virtual machine, you may need to provide information such as the name of the virtual machine and other properties each time you start the runbook.  
+
+You accept input for a runbook by defining one or more input parameters.  You provide values for these parameters each time the runbook is started.  When you start a runbook with the Azure portal, it will prompt you to provide values for the each of the runbook's input parameters.
+
+You can access input parameters for a runbook by clicking the **Input and output** button on the runbook toolbar.  
+
+![Runbook Input Output](media/automation-graphical-authoring-intro/runbook-edit-input-output.png) 
+
+This opens the **Input and Output** control where you can edit an existing input parameter or create a new one by clicking **Add input**. 
+
+![Add input](media/automation-graphical-authoring-intro/runbook-edit-add-input.png)
+
+Each input parameter is defined by the properties in the following table.
+
+|Property|Description|
 |:---|:---|
-| 名前 | パラメーターの一意の名前です。これに含めることができるのは英数字のみです。スペースを含めることはできません。 |
-| 説明 | 入力パラメーターのオプションの説明です。 |
-| 型 | パラメーター値に必要なデータ型です。Azure ポータルでは、入力を求められた場合に各パラメーターのデータ型に適したコントロールが提供されます。 |
-| 必須 | パラメーターの値を指定する必要があるかどうかを示します。既定値が定義されていない各必須パラメーターの値を指定しないと、Runbook を開始できません。 |
-| 既定値 | パラメーターに値が指定されていない場合は、使用する値を指定します。Null または特定の値を指定できます。 |
+| Name | The unique name of the parameter.  This can only contain alpha numeric characters and cannot contain a space. |
+| Description | An optional description for the input parameter.  |
+| Type | Data type expected for the parameter value.  The Azure portal will provide an appropriate control for the data type for each parameter when prompting for input. |
+| Mandatory | Specifies whether a value must be provided for the parameter.  The runbook cannot be started if you do not provide a value for each mandatory parameter that does not have a default value defined. |
+| Default Value | Specifies what value is used for the parameter if one is not provided.  This can either be Null or a specific value. |
 
 
-### Runbook の出力
+### <a name="runbook-output"></a>Runbook output
 
-発信リンクがない任意のアクティビティによって作成されたデータは、[Runbook の出力](http://msdn.microsoft.com/library/azure/dn879148.aspx)に追加されます。出力は Runbook ジョブと共に保存され、Runbook を子として使用する場合に親 Runbook で使用できます。
-
-
-## PowerShell の式
-
-グラフィカル作成の利点の 1 つは、PowerShell の最小限の知識があれば Runbook を作成できることです。とはいっても、現時点では、特定の[パラメーター値](#activities)の設定および[リンク条件](#links-and-workflow)の設定に関して PowerShell の若干の知識が必要です。ここでは、PowerShell の式のことをよく知らないユーザーのためにその概要について簡単に説明します。PowerShell の詳細については、「[Windows PowerShell を使用したスクリプト](http://technet.microsoft.com/library/bb978526.aspx)」を参照してください。
+Data created by any activity that does not have an outgoing link will be added to the [output of the runbook](http://msdn.microsoft.com/library/azure/dn879148.aspx).  The output is saved with the runbook job and is available to a parent runbook when the runbook is used as a child.  
 
 
-### PowerShell 式のデータ ソース
+## <a name="powershell-expressions"></a>PowerShell expressions
 
-PowerShell 式をデータ ソースとして使用し、[アクティビティ パラメーター](#activities)の値に PowerShell コードの結果を設定できます。簡単な関数を実行する 1 行のコードでも、複雑なロジックを実行する複数行のコードでもかまいません。変数に割り当てられていないコマンドからの出力は、パラメーター値に出力されます。
+One of the advantages of graphical authoring is providing you with the ability to build a runbook with minimal knowledge of PowerShell.  Currently, you do need to know a bit of PowerShell though for populating certain [parameter values](#activities) and for setting [link conditions](#links-and-workflow).  This section provides a quick introduction to PowerShell expressions for those users who may not be familiar with it.  Full details of PowerShell are available at [Scripting with Windows PowerShell](http://technet.microsoft.com/library/bb978526.aspx). 
 
-たとえば、次のコマンドは現在の日付を出力します。
 
-	Get-Date
+### <a name="powershell-expression-data-source"></a>PowerShell expression data source
 
-次のコマンドは、現在の日付から文字列を作成し、変数に割り当てます。その後、変数の内容は出力に送られます。
+You can use a PowerShell expression as a data source to populate the value of an [activity parameter](#activities) with the results of some PowerShell code.  This could be a single line of code that performs some simple function or multiple lines that perform some complex logic.  Any output from a command that is not assigned to a variable is output to the parameter value. 
 
-	$string = "The current date is " + (Get-Date)
-	$string
+For example, the following command would output the current date. 
 
-次のコマンドは、現在の日付を評価し、現在の日付が週末か平日かを示す文字列を返します。
+    Get-Date
 
-	$date = Get-Date
-	if (($date.DayOfWeek = "Saturday") -or ($date.DayOfWeek = "Sunday")) { "Weekend" }
-	else { "Weekday" }
-	
+The following commands build a string from the current date and assign it to a variable.  The contents of the variable are then sent to the output 
+
+    $string = "The current date is " + (Get-Date)
+    $string
+
+The following commands evaluate the current date and return a string indicating whether the current day is a weekend or weekday. 
+
+    $date = Get-Date
+    if (($date.DayOfWeek = "Saturday") -or ($date.DayOfWeek = "Sunday")) { "Weekend" }
+    else { "Weekday" }
+    
  
-### アクティビティの出力
+### <a name="activity-output"></a>Activity output
 
-前のアクティビティからの出力を Runbook で使用するには、次の構文で $ActivityOutput 変数を使用します。
+To use the output from a previous activity in the runbook, use the $ActivityOutput variable with the following syntax.
 
-	$ActivityOutput['Activity Label'].PropertyName
+    $ActivityOutput['Activity Label'].PropertyName
 
-たとえば、仮想マシンの名前を必要とするプロパティを持つアクティビティがある場合、次の式を使用します。
+For example, you may have an activity with a property that requires the name of a virtual machine in which case you could use the following expression.
 
-	$ActivityOutput['Get-AzureVm'].Name
+    $ActivityOutput['Get-AzureVm'].Name
 
-プロパティだけでなく仮想マシン オブジェクトを必要とするプロパティの場合は、次の構文を使用してオブジェクト全体を返します。
+If the property that required the virtual machine object instead of just a property, then you would return the entire object using the following syntax.
 
-	$ActivityOutput['Get-AzureVm']
+    $ActivityOutput['Get-AzureVm']
 
-テキストを仮想マシン名に連結する次のようなさらに複雑な式で、アクティビティの出力を使用することもできます。
+You can also use the output of an activity in a more complex expression such as the following that concatenates text to the virtual machine name.
 
-	"The computer name is " + $ActivityOutput['Get-AzureVm'].Name
-
-
-### 条件
-
-値を比較する場合、または値が指定したパターンに一致するかどうかを判定する場合は、[比較演算子](https://technet.microsoft.com/library/hh847759.aspx)を使います。比較からは、値 $true または $false が返ります。
-
-たとえば、次の条件は、*Get-AzureVM* という名前のアクティビティの仮想マシンが現在*停止済み*かどうかを判定します。
-
-	$ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
-
-次の条件は、同じ仮想マシンが*停止済み*以外の状態かどうかを調べます。
-
-	$ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
-
-**-and** や **-or** などの[論理演算子](https://technet.microsoft.com/library/hh847789.aspx)を使用して、複数の条件を結合できます。たとえば、次の条件は、前の例と同じ仮想マシンの状態が*停止済み*または*停止中*かどうかをチェックします。
-
-	($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping") 
+    "The computer name is " + $ActivityOutput['Get-AzureVm'].Name
 
 
-### ハッシュテーブル
+### <a name="conditions"></a>Conditions
 
-[ハッシュテーブル](http://technet.microsoft.com/library/hh847780.aspx)は、値のセットを返すのに便利な名前と値のペアです。一部のアクティビティのプロパティでは、単純な値ではなくハッシュテーブルが想定されている場合があります。ハッシュテーブルはディクショナリと考えることもできます。
+Use [comparison operators](https://technet.microsoft.com/library/hh847759.aspx) to compare values or determine if a value matches a specified pattern.  A comparison returns a value of either $true or $false.
 
-ハッシュテーブルは次の構文で作成します。ハッシュテーブルは任意の数のエントリを含むことができますが、エントリごとに名前と値によって定義されます。
+For example, the following condition determines whether the virtual machine from an activity named *Get-AzureVM* is currently *stopped*. 
 
-	@{ <name> = <value>; [<name> = <value> ] ...}
+    $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
 
-たとえば、次の式は、インターネット検索用の値のハッシュテーブルを期待するアクティビティ パラメーターに対するデータ ソースで使用されるハッシュテーブルを作成します。
+The following condition checks whether the same virtual machine is in any state other than *stopped*.
 
-	$query = "Azure Automation"
-	$count = 10
-	$h = @{'q'=$query; 'lr'='lang_ja';  'count'=$Count}
-	$h
+    $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 
-次の例は、*Get Twitter Connection* という名前のアクティビティからの出力を使用して、ハッシュテーブルを設定します。
+You can join multiple conditions using a [logical operator](https://technet.microsoft.com/library/hh847789.aspx) such as **-and** or **-or**.  For example, the following condition checks whether the same virtual machine in the previous example is in a state of *stopped* or *stopping*.
 
-	@{'ApiKey'=$ActivityOutput['Get Twitter Connection'].ConsumerAPIKey;
-	  'ApiSecret'=$ActivityOutput['Get Twitter Connection'].ConsumerAPISecret;
-	  'AccessToken'=$ActivityOutput['Get Twitter Connection'].AccessToken;
-	  'AccessTokenSecret'=$ActivityOutput['Get Twitter Connection'].AccessTokenSecret}
+    ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping") 
 
 
+### <a name="hashtables"></a>Hashtables
 
-## 次のステップ
+[Hashtables](http://technet.microsoft.com/library/hh847780.aspx) are name/value pairs that are useful for returning a set of values.  Properties for certain activities may expect a hashtable instead of a simple value.  You may also see as hashtable referred to as a dictionary. 
 
-- PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。 
-- グラフィカルな Runbook の使用を開始するには、「[初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)」を参照してください。
-- Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
-- Automation の実行アカウントを使った認証方法を理解するには、[Azure 実行アカウントの構成](automation-sec-configure-azure-runas-account.md)に関するページを参照してください。
+You create a hashtable with the following syntax.  A hashtable can contain any number of entries but each is defined by a name and value.
+
+    @{ <name> = <value>; [<name> = <value> ] ...}
+
+For example, the following expression creates a hashtable to be used in the data source for an activity parameter that expected a hashtable with values for an internet search.
+
+    $query = "Azure Automation"
+    $count = 10
+    $h = @{'q'=$query; 'lr'='lang_ja';  'count'=$Count}
+    $h
+
+The following example uses output from an activity called *Get Twitter Connection* to populate a hashtable.
+
+    @{'ApiKey'=$ActivityOutput['Get Twitter Connection'].ConsumerAPIKey;
+      'ApiSecret'=$ActivityOutput['Get Twitter Connection'].ConsumerAPISecret;
+      'AccessToken'=$ActivityOutput['Get Twitter Connection'].AccessToken;
+      'AccessTokenSecret'=$ActivityOutput['Get Twitter Connection'].AccessTokenSecret}
+
+
+
+## <a name="next-steps"></a>Next Steps
+
+- To get started with PowerShell workflow runbooks, see [My first PowerShell workflow runbook](automation-first-runbook-textual.md) 
+- To get started with Graphical runbooks, see [My first graphical runbook](automation-first-runbook-graphical.md)
+- To know more about runbook types, their advantages and limitations, see [Azure Automation runbook types](automation-runbook-types.md)
+- To understand how to authenticate using the Automation Run As account, see [Configure Azure Run As Account](automation-sec-configure-azure-runas-account.md)
  
 
-<!---HONumber=AcomDC_0608_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

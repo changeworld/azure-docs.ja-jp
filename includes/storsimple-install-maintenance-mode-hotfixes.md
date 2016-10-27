@@ -1,21 +1,24 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### StorSimple 用 Windows PowerShell を使用してメンテナンス モードの修正プログラムをインストールするには
+#### <a name="to-install-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a>To install Maintenance mode hotfixes via Windows PowerShell for StorSimple
 
-> [AZURE.IMPORTANT]メンテナンス モードでは、1 つのコントローラーに最初に修正プログラムを適用してから、その他のコントローラーに適用する必要があります。
+> [AZURE.IMPORTANT] In Maintenance mode, you need to apply the hotfix first on one controller and then on the other controller.
 
-1. デバイスをメンテナンス モードにします。メンテナンス モードを開始する方法については、「[手順 2: メンテナンス モードを開始する](storsimple-update-device.md#step2)」を参照してください。
+1. Place the device into Maintenance mode. See [Step 2: Enter Maintenance mode](storsimple-update-device.md#step2) for instructions on how to enter Maintenance mode.
 
-2. 修正プログラムを適用するには、次のように入力します。
+2. To apply the hotfix, type:
 
-     `Start-HcsHotfix`
+     `Start-HcsHotfix` 
 
-3. メッセージが表示されたら、修正プログラムのファイルが含まれているネットワーク共有フォルダーへのパスを入力します。
+3. When prompted, supply the path to the network shared folder that contains the hotfix files.
 
-4. 確認を求められます。「**Y**」と入力して修正プログラムのインストールを続行します。
+4. You will be prompted for confirmation. Type **Y** to proceed with the hotfix installation.
 
-5. 1 つのコントローラーで修正プログラムを適用した後、別のコントローラーにログオンします。前のコントローラーと同様に修正プログラムを適用します。
+5. After you have applied the hotfix on one controller, log on to the other controller. Apply the hotfix as you did for the previous controller.
 
-6. 修正プログラムが適用されたら、メンテナンス モードを終了します。手順については、「[手順 4: メンテナンス モードを終了する](storsimple-update-device.md#step4)」を参照してください。
+6. After the hotfixes are applied, exit Maintenance mode. See [Step 4: Exit Maintenance mode](storsimple-update-device.md#step4) for instructions.
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

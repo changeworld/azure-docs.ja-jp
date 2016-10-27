@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Logic Apps に Office 365 ユーザー コネクタを追加する | Microsoft Azure"
-    description="Office 365 Users コネクタと REST API パラメーターの概要"
+    pageTitle="Add the Office 365 Users connector in Logic Apps | Microsoft Azure"
+    description="Overview of Office 365 Users connector with REST API parameters"
     services=""    
     documentationCenter=""     
     authors="msftman"    
@@ -17,170 +17,176 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
-# Office 365 Users コネクタの使用
 
-Office 365 ユーザーに接続して、プロファイルの取得、ユーザーの検索などを行います。
+# <a name="get-started-with-the-office-365-users-connector"></a>Get started with the Office 365 Users connector
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+Connect to Office 365 Users to get profiles, search users, and more. 
 
-Office 365 ユーザーは、次のことを行えます。
+>[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version.
 
-- Office 365 ユーザーから取得したデータに基づいてビジネス フローを構築できます。
-- 直属の部下の取得、上司のユーザーのプロファイルの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、ユーザーの直属の部下を取得し、この情報を利用して、SQL Azure Database を更新します。
+With Office 365 Users, you can:
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+- Build your business flow based on the data you get from Office 365 Users. 
+- Use actions that get direct reports, get a manager's user profile, and more. These actions get a response, and then make the output available for other actions. For example, get a person's direct reports, and then take this information and update a SQL Azure database. 
 
-## トリガーとアクション
+To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Office 365 Users コネクタでは、次のアクションを使用できます。トリガーはありません。
+## <a name="triggers-and-actions"></a>Triggers and actions
 
-| トリガー | アクション|
+The Office 365 Users connector has the following actions available. There are no triggers.
+
+| Triggers | Actions|
 | --- | --- |
-|なし | <ul><li>上司の取得</li><li>自分のプロファイルを取得</li><li>直属の部下を取得</li><li>ユーザー プロファイルの取得</li><li>ユーザーの検索</li></ul>|
+|None | <ul><li>Get manager</li><li>Get my profile</li><li>Get direct reports</li><li>Get user profile</li><li>Search for users</li></ul>|
 
-すべてのコネクタは、JSON および XML 形式のデータに対応します。
-
-
-## Office 365 Users への接続を作成します
-
-このコネクタをロジック アプリに追加する場合は、Office 365 ユーザー アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
-
->[AZURE.INCLUDE [Office 365 Users への接続を作成する手順](../../includes/connectors-create-api-office365users.md)]
-
-接続を作成したら、ユーザー ID など、Office 365 ユーザー プロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
-
->[AZURE.TIP] 他のロジック アプリでも、前述の Office 365 ユーザー接続を使用できます。
+All connectors support data in JSON and XML formats. 
 
 
-## Office 365 Users REST API リファレンス
-適用されるバージョン: 1.0。
+## <a name="create-a-connection-to-office-365-users"></a>Create a connection to Office 365 Users
 
-### 自分のプロファイルを取得 
-現在のユーザーのプロファイルを取得します。```GET: /users/me```
+When you add this connector to your logic apps, you must sign-in to your Office 365 Users account and allow logic apps to connect to your account.
 
-この呼び出しには、パラメーターはありません。
+>[AZURE.INCLUDE [Steps to create a connection to Office 365 Users](../../includes/connectors-create-api-office365users.md)]
 
-#### 応答
+After you create the connection, you enter the Office 365 Users properties, like the user ID. The **REST API reference** in this topic describes these properties.
 
-|名前|説明|
+>[AZURE.TIP] You can use this same Office 365 Users connection in other logic apps.
+
+
+## <a name="office-365-users-rest-api-reference"></a>Office 365 Users REST API reference
+Applies to version: 1.0.
+
+### <a name="get-my-profile"></a>Get my profile 
+Retrieves the profile for the current user.  
+```GET: /users/me``` 
+
+There are no parameters for this call.
+
+#### <a name="response"></a>Response
+
+|Name|Description|
 |---|---|
-|200|操作に成功しました|
-|202|操作に成功しました|
+|200|Operation was successful|
+|202|Operation was successful|
 |400|BadRequest|
-|401|権限がありません|
-|403|許可されていません|
-|500|内部サーバー エラー|
-|default|操作に失敗しました。|
+|401|Unauthorized|
+|403|Forbidden|
+|500|Internal Server Error|
+|default|Operation Failed.|
 
 
-### ユーザー プロファイルの取得 
-特定のユーザー プロファイルを取得します。```GET: /users/{userId}```
+### <a name="get-user-profile"></a>Get user profile 
+Retrieves a specific user profile.  
+```GET: /users/{userId}``` 
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|userId|string|○|path|なし|ユーザー プリンシパル名または電子メール ID|
+|userId|string|yes|path|none|User principal name or email id|
 
-#### 応答
+#### <a name="response"></a>Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
-|200|操作に成功しました|
-|202|操作に成功しました|
+|200|Operation was successful|
+|202|Operation was successful|
 |400|BadRequest|
-|401|権限がありません|
-|403|許可されていません|
-|500|内部サーバー エラー|
-|default|操作に失敗しました。|
+|401|Unauthorized|
+|403|Forbidden|
+|500|Internal Server Error|
+|default|Operation Failed.|
 
 
-### 上司の取得 
-指定されたユーザーの上司のユーザー プロファイルを取得します。```GET: /users/{userId}/manager```
+### <a name="get-manager"></a>Get manager 
+Retrieves user profile for the manager of the specified user.  
+```GET: /users/{userId}/manager``` 
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|userId|string|○|path|なし|ユーザー プリンシパル名または電子メール ID|
+|userId|string|yes|path|none|User principal name or email id|
 
-#### 応答
+#### <a name="response"></a>Response
 
-|Name|説明|
+|Name|Description|
 |---|---|
-|200|操作に成功しました|
-|202|操作に成功しました|
+|200|Operation was successful|
+|202|Operation was successful|
 |400|BadRequest|
-|401|権限がありません|
-|403|許可されていません|
-|500|内部サーバー エラー|
-|default|操作に失敗しました。|
+|401|Unauthorized|
+|403|Forbidden|
+|500|Internal Server Error|
+|default|Operation Failed.|
 
 
 
-### 直接の部下を取得 
-直接の部下を取得します。```GET: /users/{userId}/directReports```
+### <a name="get-direct-reports"></a>Get direct reports 
+Get direct reports.  
+```GET: /users/{userId}/directReports``` 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|userId|string|○|path|なし|ユーザー プリンシパル名または電子メール ID|
+|userId|string|yes|path|none|User principal name or email id|
 
-#### 応答
+#### <a name="response"></a>Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
-|200|操作に成功しました|
-|202|操作に成功しました|
+|200|Operation was successful|
+|202|Operation was successful|
 |400|BadRequest|
-|401|権限がありません|
-|403|許可されていません|
-|500|内部サーバー エラー|
-|default|操作に失敗しました。|
+|401|Unauthorized|
+|403|Forbidden|
+|500|Internal Server Error|
+|default|Operation Failed.|
 
 
 
-### ユーザーの検索 
-ユーザー プロファイルの検索結果を取得します。```GET: /users```
+### <a name="search-for-users"></a>Search for users 
+Retrieves search results of user profiles.  
+```GET: /users``` 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|searchTerm|string|×|query|なし|検索文字列 (以下に適用されます: 表示名、姓を含まない名前、姓、電子メール、メールのニックネーム、ユーザー プリンシパル名)|
+|searchTerm|string|no|query|none|Search string (applies to: display name, given name, surname, mail, mail nickname and user principal name)|
 
-#### 応答
+#### <a name="response"></a>Response
 
-|Name|説明|
+|Name|Description|
 |---|---|
-|200|操作に成功しました|
-|202|操作に成功しました|
+|200|Operation was successful|
+|202|Operation was successful|
 |400|BadRequest|
-|401|権限がありません|
-|403|許可されていません|
-|500|内部サーバー エラー|
-|default|操作に失敗しました。|
+|401|Unauthorized|
+|403|Forbidden|
+|500|Internal Server Error|
+|default|Operation Failed.|
 
 
 
-## オブジェクト定義
+## <a name="object-definitions"></a>Object definitions
 
-#### ユーザー: ユーザー モデル クラス
+#### <a name="user:-user-model-class"></a>User: User model class
 
-|プロパティ名 | データ型 |必須
+|Property Name | Data Type |Required
 |---|---|---|
-|DisplayName|string|×|
-|GivenName|string|×|
-|Surname|string|×|
-|Mail|string|×|
-|MailNickname|string|×|
-|TelephoneNumber|string|×|
-|AccountEnabled|boolean|×|
-|ID|string|○
-|UserPrincipalName|string|×|
-|学科|string|×|
-|JobTitle|string|×|
-|MobilePhone|string|×|
+|DisplayName|string|no|
+|GivenName|string|no|
+|Surname|string|no|
+|Mail|string|no|
+|MailNickname|string|no|
+|TelephoneNumber|string|no|
+|AccountEnabled|boolean|no|
+|Id|string|yes
+|UserPrincipalName|string|no|
+|Department|string|no|
+|JobTitle|string|no|
+|mobilePhone|string|no|
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-[API リスト](apis-list.md)に戻ります。
+Go back to the [APIs list](apis-list.md).
 
 <!--References-->
 [5]: https://portal.azure.com
@@ -190,4 +196,8 @@ Office 365 Users コネクタでは、次のアクションを使用できます
 [10]: ./media/connectors-create-api-office365-users/contoso-aad-app.PNG
 [11]: ./media/connectors-create-api-office365-users/contoso-aad-app-configure.PNG
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

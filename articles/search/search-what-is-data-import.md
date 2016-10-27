@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure Search でのデータのアップロード | Microsoft Azure | ホステッド クラウド検索サービス"
-    description="Azure Search のインデックスにデータをアップロードする方法について説明します。"
+    pageTitle="Data upload in Azure Search | Microsoft Azure | Hosted cloud search service"
+    description="Learn how to upload data to an index in Azure Search."
     services="search"
     documentationCenter=""
     authors="ashmaka"
@@ -17,32 +17,37 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"/>
 
-# Azure Search へのデータのアップロード
+
+# <a name="upload-data-to-azure-search"></a>Upload data to Azure Search
 > [AZURE.SELECTOR]
-- [概要](search-what-is-data-import.md)
+- [Overview](search-what-is-data-import.md)
 - [.NET](search-import-data-dotnet.md)
-- [REST ()](search-import-data-rest-api.md)
+- [REST](search-import-data-rest-api.md)
 
 
-## Azure Search のデータ アップロード モデル
-Azure Search インデックスにデータを設定する方法は 2 とおりあります。1 つ目は、Azure Search [REST API](search-import-data-rest-api.md) または [.NET SDK](search-import-data-dotnet.md) を使用して、手動でデータをインデックスにプッシュする方法です。2 つ目は、Azure Search に[サポートされているデータ ソースを指定](search-indexer-overview.md)し、Azure Search によってデータが検索サービスに自動的にプルされるようにする方法です。
+## <a name="data-upload-models-in-azure-search"></a>Data upload models in Azure search
+There are two ways to populate your Azure Search index with your data. The first option is manually pushing your data into the index using the Azure Search [REST API](search-import-data-rest-api.md) or [.NET SDK](search-import-data-dotnet.md). The second option is to [point a supported data source](search-indexer-overview.md) to your Azure Search index and let Azure Search automatically pull your data into the search service.
 
-このガイドでは、データ アップロードのプッシュ モデル ([REST API](search-import-data-rest-api.md) と [.NET SDK](search-import-data-dotnet.md) でのみサポート) の使用手順のみを取り上げますが、以下でプル モデルの詳細も確認できます。
+This guide will only cover instructions on using the push model of data upload (which is supported only in the [REST API](search-import-data-rest-api.md) and [.NET SDK](search-import-data-dotnet.md)), but you can still learn more about the pull model below.
 
-## インデックスにデータをプッシュする
+### <a name="push-data-to-an-index"></a>Push data to an index
 
-このアプローチでは、データを Azure Search にプログラムで送信し、検索に利用できるようにします。待機時間の要件が非常に厳しいアプリケーションの場合 (たとえば、検索操作を動的な在庫データベースと同期する必要がある場合) は、プッシュ モデルしか利用できません。
+This approach refers to programmatically sending your data to Azure Search to make it available for searching. For applications having very low latency requirements (e.g. if you need search operations to be in sync with dynamic inventory databases), the push model is your only option.
 
-インデックスにデータをプッシュするには、[REST API](https://msdn.microsoft.com/library/azure/dn798930.aspx) または [.NET SDK](search-import-data-dotnet.md) を使用することができます。現在では、ポータルを使用してデータをプッシュするためのツール サポートはありません。
+You can use the [REST API](https://msdn.microsoft.com/library/azure/dn798930.aspx) or [.NET SDK](search-import-data-dotnet.md) to push data to an index. There is currently no tool support for pushing data via the portal.
 
-このアプローチでは、ドキュメントを個別に、またはバッチでアップロードできるため、プル モデルよりも柔軟です ("バッチごとに最大 1,000 個" と "16 MB" のうち、どちらか先に達した制限が適用されます)。プッシュ モデルでは、データのある場所にかかわらず、ドキュメントを Azure Search にアップロードすることもできます。
+This approach is more flexible than the pull model because you can upload documents individually or in batches (up to 1000 per batch or 16 MB, whichever limit comes first). The push model also allows you to upload documents to Azure Search regardless of where your data is.
 
-## インデックスへのデータのプル
+### <a name="pull-data-into-an-index"></a>Pull data into an index
 
-プル モデルでは、サポートされているデータ ソースをクロールし、データを Azure Search に自動的にアップロードします。インデクサーは、新しいドキュメントを認識するだけでなく、既存のドキュメントの変更と削除を追跡するため、インデックス内のデータをアクティブに管理する必要がありません。
+The pull model crawls a supported data source and automatically uploads the data into you Azure Search index for you. By tracking changes and deletes to existing documents in addition to recognizing new documents, indexers remove the need to actively manage the data in your index.
 
-Azure Search では、この機能は*インデクサー*によって実装され、現時点では [Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)、[DocumentDB](http://aka.ms/documentdb-search-indexer)、[Azure SQL Database、Azure VM 上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md) で利用可能です。
+In Azure Search, this capability is implemented through *indexers*, currently available for [Blob storage (preview)](search-howto-indexing-azure-blob-storage.md), [DocumentDB](http://aka.ms/documentdb-search-indexer), [Azure SQL database, and SQL Server on Azure VMs](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md).
 
-インデクサーの機能は、[REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx) に加えて [Azure ポータル](search-import-data-portal.md)でも公開されています。
+The indexer functionality is exposed in the [Azure Portal](search-import-data-portal.md) as well as in the [REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx).
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,23 +1,29 @@
 <!--author=SharS last changed: 9/17/15-->
 
 
-#### 新しいサービスを作成するには
+#### <a name="to-create-a-new-service"></a>To create a new service
 
-1. Microsoft アカウントの資格情報を使用して、[Microsoft Azure Government ポータル](https://manage.windowsazure.us/)にログオンします。
+1. Use your Microsoft account credentials to log on to the [Microsoft Azure Government Portal](https://manage.windowsazure.us/).
 
-2. Government ポータルで、**[新規]**、**[Data Services]**、**[StorSimple Manager]**、**[簡易作成]** の順にクリックします。
+2. In the Government Portal, click **New** > **Data Services** > **StorSimple Manager** > **Quick Create**.
 
-3. 表示されるフォームで、次の手順を実行します。
-  1. サービスの一意の **[名前]** を指定します。これは、サービスの識別に使用できるフレンドリ名です。名前の長さは 2 ～ 50 文字とし、文字、数字、ハイフンを含めることができます。名前の最初と最後は、文字か数字とする必要があります。
-  2. サービスの **[場所]** を指定します。場所は、デバイスをデプロイする地理的領域です。**[米国政府アイオワ州]** または **[米国政府バージニア州]** を選択します。
-  3. **[サブスクリプション]** ボックスの一覧で、サブスクリプションを選択します。サブスクリプションは、課金アカウントにリンクされます。このフィールドは、保有するサブスクリプションが 1 つだけの場合は表示されません。
-  4. **[新しいストレージ アカウントを作成する]** をオンにすると、サービスの作成時にストレージ アカウントが自動的に作成されます。このストレージ アカウントは、"storsimplebwv8c6dcnf" などの特別な名前になります。
-  5. **[StorSimple Manager の作成]** をクリックしてサービスを作成します。
+3. In the form that is displayed, do the following:
+  1. Supply a unique **Name** for your service. This is a friendly name that can be used to identify the service. The name can have between 2 and 50 characters that can be letters, numbers, and hyphens. The name must start and end with a letter or a number.
+  2. Supply a **Location** for your service. Location refers to the geographical region where you want to deploy your device. Select **US Govt Iowa** or **US Govt Virgina**.
+  3. Choose a **Subscription** from the drop-down list. The subscription is linked to your billing account. This field is not present if you have only one subscription.
+  4. Select **Create a new storage account** to automatically create a storage account with the service. This storage account will have a special name such as "storsimplebwv8c6dcnf."
+  5. Click **Create StorSimple Manager** to create the service.
 
-       ![サービスの作成](./media/storsimple-create-new-service-gov/HCS_CreateAService-gov-include.png)
+       ![create a service](./media/storsimple-create-new-service-gov/HCS_CreateAService-gov-include.png)
 
-     **[サービス]** ランディング ページが表示されます。サービスの作成には数分かかります。サービスが正常に作成されると、適宜、通知が表示され、サービスの状態が **"アクティブ"** に変わります。
+     You will be directed to the **Service** landing page. The service creation will take a few minutes. After the service is successfully created, you will be notified appropriately and the status of the service will change to **Active**.
  
-       ![サービスの作成](./media/storsimple-create-new-service-gov/HCS_StorSimpleManagerServicePage-gov-include.png)
+       ![service creation](./media/storsimple-create-new-service-gov/HCS_StorSimpleManagerServicePage-gov-include.png)
 
-<!---HONumber=Oct15_HO3-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

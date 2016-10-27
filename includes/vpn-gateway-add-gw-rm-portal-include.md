@@ -1,34 +1,40 @@
-1. ポータルの **[新規]** に移動します。検索キーワードとして「仮想ネットワーク ゲートウェイ」と入力します。検索結果から**仮想ネットワーク ゲートウェイ**を探してその項目をクリックします。**[仮想ネットワーク ゲートウェイの作成]** ブレードが開きます。
-2. **[仮想ネットワーク ゲートウェイ]** ブレードの一番下にある **[作成]** をクリックします。**[仮想ネットワーク ゲートウェイの作成]** ブレードが表示されます。実際の仮想ネットワーク ゲートウェイの値を入力します。
+1. In the portal, go to **New**. Type "Virtual Network Gateway" in search. Locate **Virtual network gateway** in the search return and click the entry. This opens the **Create virtual network gateway** blade.
+2. Click **Create** at the bottom of the **Virtual network gateway** blade. The **Create virtual network gateway** blade will open. Fill in the values for your virtual network gateway.
 
-	![Create virtual network gateway blade fields](./media/vpn-gateway-add-gw-rm-portal-include/createvnetgw300.png "Create virtual network gateway blade fields")
+    ![Create virtual network gateway blade fields](./media/vpn-gateway-add-gw-rm-portal-include/createvnetgw300.png "Create virtual network gateway blade fields")
 
-3. **[名前]**: ゲートウェイに名前を付けます。これは、ゲートウェイ サブネットの名前付けと同じではありません。作成するゲートウェイ オブジェクトの名前です。
+3. **Name**: Name your gateway. This is not the same as naming a gateway subnet. It's the name of the gateway object you are creating.
 
-4. **[ゲートウェイの種類]**: **[VPN]** を選択します。VPN Gateway では、Virtual Network ゲートウェイの種類として **VPN** を使用します。
+4. **Gateway type**: Select **VPN**. VPN gateways use the virtual network gateway type **VPN**. 
 
-5. **[VPN の種類]**: 構成に指定されている VPN の種類を選択します。ほとんどの構成で [VPN の種類] は [ルート ベース] にする必要があります。
+5. **VPN type**: Select the VPN type that is specified for your configuration. Most configurations require a Route-based VPN type.
 
-6. **[SKU]**: ゲートウェイの SKU をドロップダウン リストから選択します。ドロップダウン リストに表示される SKU は、選択した VPN の種類によって異なります。
+6. **SKU**: Select the gateway SKU from the dropdown. The SKUs listed in the dropdown depend on the VPN type you select.
 
-7. **[場所]**: 仮想ネットワークの場所を指すように、**[場所]** フィールドを調整します。
+7. **Location**: Adjust the **Location** field to point to the location where your virtual network is located.
  
-8. このゲートウェイの追加先の仮想ネットワークを選択します。**[仮想ネットワーク]** をクリックして **[仮想ネットワークの選択]** ブレードを開きます。VNet を選択します。VNet が表示されない場合、実際の仮想ネットワークがあるリージョンが **[場所]** フィールドに指定されていることを確認してください。
+8. Choose the virtual network to which you want to add this gateway. Click **Virtual network** to open the **Choose a virtual network** blade. Select the VNet. If you don't see your VNet, make sure the **Location** field is pointing to the region in which your virtual network is located.
 
-9. パブリック IP アドレスを選択します。**[パブリック IP アドレス]** をクリックして、**[パブリック IP アドレスの選択]** ブレードを開きます。**[+新規作成]** をクリックして、**[パブリック IP アドレスの作成]** ブレードを開きます。パブリック IP アドレスの名前を入力します。パブリック IP アドレスが動的に割り当てられるパブリック IP アドレス オブジェクトは、このブレードで作成します。<br>このブレードで行った変更を保存するには、**[OK]** をクリックしてください。
+9. Choose a public IP address. Click **Public IP address** to open the **Choose public IP address** blade. Click **+Create New** to open the **Create public IP address blade**. Input a name for your public IP address. This blade creates a public IP address object to which a public IP address will be dynamically assigned.<br>Click **OK** to save your changes to this blade.
 
-10. **[サブスクリプション]**: 正しいサブスクリプションが選択されていることを確認します。
+10. **Subscription**: Verify that the correct subscription is selected.
 
-11. **[リソース グループ]**: この設定は、選択した仮想ネットワークによって決定されます。
+11. **Resource group**: This setting is determined by the Virtual Network that you select. 
 
-12. 上記の設定を指定した後に **[場所]** を調整しないでください。
+12. Don't adjust the **Location** after you've specified the previous settings.
 
-13. 設定を確認します。ダッシュボードにゲートウェイが表示されるようにするには、ブレードの下部にある **[ダッシュボードにピン留めする]** を選択します。
+13. Verify the settings. You can select **Pin to dashboard** at the bottom of the blade if you want your gateway to appear on the dashboard.
 
-14. **[作成]** をクリックして、ゲートウェイの作成を開始します。設定が検証され、ダッシュボードに [Deploying Virtual network gateway (仮想ネットワーク ゲートウェイのデプロイ)] タイルが表示されます。ゲートウェイの作成には、最大で 45 分かかる場合があります。完了状態を確認するために、ポータル ページの更新が必要な場合があります。
+14. Click **Create** to begin creating the gateway. The settings will be validated and you'll see the "Deploying Virtual network gateway" tile on the dashboard. Creating a gateway can take up to 45 minutes. You may need to refresh your portal page to see the completed status.
 
-	![Deploying Virtual network gateway](./media/vpn-gateway-add-gw-rm-portal-include/deployvnetgw150.png "Deploying Virtual network gateway")
+    ![Deploying Virtual network gateway](./media/vpn-gateway-add-gw-rm-portal-include/deployvnetgw150.png "Deploying Virtual network gateway")
 
-11. ゲートウェイの作成後は、ポータルの仮想ネットワークを調べることで、ゲートウェイに割り当てられている IP アドレスを確認できます。ゲートウェイは、接続されたデバイスとして表示されます。詳細を表示するには、接続したデバイス (仮想ネットワーク ゲートウェイ) をクリックします。
+11. After the gateway is created, you can view the IP address that has been assigned to it by looking at the virtual network in the portal. The gateway will appear as a connected device. You can click the connected device (your virtual network gateway) to view more information.
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Data Warehouse に対するクエリ (sqlcmd) | Microsoft Azure"
-   description="sqlcmd コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に対してクエリを実行します。"
+   pageTitle="Query Azure SQL Data Warehouse (sqlcmd)| Microsoft Azure"
+   description="Querying Azure SQL Data Warehouse with the sqlcmd Command-line Utility."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -16,50 +16,51 @@
    ms.date="09/06/2016"
    ms.author="barbkess;sonyama"/>
 
-# Azure SQL Data Warehouse に対するクエリ (sqlcmd)
+
+# <a name="query-azure-sql-data-warehouse-(sqlcmd)"></a>Query Azure SQL Data Warehouse (sqlcmd)
 
 > [AZURE.SELECTOR]
 - [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 - [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 - [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
 
-このチュートリアルでは、[sqlcmd][] コマンド ライン ユーティリティを使用して Azure SQL Data Warehouse に対してクエリを実行します。
+This walkthrough uses the [sqlcmd][] command-line utility to query an Azure SQL Data Warehouse.  
 
-## 1\.接続
+## <a name="1.-connect"></a>1. Connect
 
-[sqlcmd][] の使用を開始するには、コマンド プロンプトを開いて「**sqlcmd**」と入力し、続けて SQL Data Warehouse データベースの接続文字列を入力します。接続文字列では、次のパラメーターが必要になります。
+To get started with [sqlcmd][], open the command prompt and enter **sqlcmd** followed by the connection string for your SQL Data Warehouse database. The connection string requires the following parameters:
 
-+ **サーバー (-S):** サーバー。`<`Server Name`>`.database.windows.net の形式で指定します
-+ **データベース (-d):** データベース名。
-+ **引用符で囲まれた ID の有効化 (-I):** SQL Data Warehouse インスタンスに接続するには、引用符で囲まれた ID を有効にする必要があります。
++ **Server (-S):** Server in the form `<`Server Name`>`.database.windows.net
++ **Database (-d):** Database name.
++ **Enable Quoted Identifiers (-I):** Quoted identifiers must be enabled to connect to a SQL Data Warehouse instance.
 
-SQL Server 認証を使用するには、ユーザー名とパスワードのパラメーターを追加する必要があります。
+To use SQL Server Authentication, you need to add the username/password parameters:
 
-+ **ユーザー (-U):** サーバーのユーザー。`<`User`>` の形式で指定します
-+ **パスワード (-P):** ユーザーに関連付けられているパスワード。
++ **User (-U):** Server user in the form `<`User`>`
++ **Password (-P):** Password associated with the user.
 
-たとえば、接続文字列は次のようになります。
+For example, your connection string might look like the following:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-Azure Active Directory 統合認証を使用するには、Azure Active Directory パラメーターを追加する必要があります。
+To use Azure Active Directory Integrated authentication, you need to add the Azure Active Directory parameters:
 
-+ **Azure Active Directory Authentication (-G):** Azure Active Directory を認証に使用します。
++ **Azure Active Directory Authentication (-G):** use Azure Active Directory for authentication
 
-たとえば、接続文字列は次のようになります。
+For example, your connection string might look like the following:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
-> [AZURE.NOTE] Active Directory を使用して認証を行うには、[Azure Active Directory 認証を有効にする](sql-data-warehouse-authentication.md)必要があります。
+> [AZURE.NOTE] You need to [enable Azure Active Directory Authentication](sql-data-warehouse-authentication.md) to authenticate using Active Directory.
 
-## 手順 2.クエリ
+## <a name="2.-query"></a>2. Query
 
-接続後、インスタンスに対してサポートされているすべての Transact-SQL ステートメントを発行できます。この例では、クエリは対話モードで送信されます。
+After connection, you can issue any supported Transact-SQL statements against the instance.  In this example, queries are submitted in interactive mode.
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -68,7 +69,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-以下の例は、-Q オプションを使用する方法または SQL を sqlcmd にパイプ処理で渡す方法を使用して、バッチ モードでクエリを実行する方法を示しています。
+These next examples show how you can run your queries in batch mode using the -Q option or piping your SQL to sqlcmd.
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -78,9 +79,9 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 "SELECT name FROM sys.tables;" | sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I > .\tables.out
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-sqlcmd で使用可能なオプションの詳細については、[sqlcmd に関するドキュメント][sqlcmd]を参照してください。
+See [sqlcmd documentation][sqlcmd] for more about details about the options available in sqlcmd.
 
 <!--Image references-->
 
@@ -92,4 +93,8 @@ sqlcmd で使用可能なオプションの詳細については、[sqlcmd に�
 
 <!--Other Web references-->
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

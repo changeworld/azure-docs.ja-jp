@@ -1,6 +1,6 @@
 <properties
- pageTitle="仮想マシン拡張機能の管理 | Microsoft Azure"
- description="クラシック デプロイ モデルで、Azure 仮想マシンの拡張機能を追加、検索、更新、および削除する方法について説明します。"
+ pageTitle="Manage virtual machine extensions | Microsoft Azure"
+ description="Describes how to add, find, update, and remove extensions for Azure virtual machines, in the classic deployment model."
  services="virtual-machines-linux"
  documentationCenter=""
  authors="squillace"
@@ -16,12 +16,17 @@
  ms.date="08/29/2016"
  ms.author="rasquill"/>
 
-#仮想マシン拡張機能の管理
 
-Azure の Windows 仮想マシンまたは Linux 仮想マシンのいずれかで VM 拡張機能を検索、追加、変更、削除する方法について説明します。
+#<a name="manage-virtual-machine-extensions"></a>Manage virtual machine extensions
+
+Describes how to find, add, modify, or remove VM Extensions with either Windows or Linux Virtual Machines on Azure.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-manage-extensions](../../includes/virtual-machines-common-classic-manage-extensions.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

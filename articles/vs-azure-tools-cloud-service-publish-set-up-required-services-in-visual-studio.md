@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Visual Studio からの Azure アプリケーションの発行またはデプロイの準備 | Microsoft Azure"
-   description="クラウド サービスとストレージ アカウント サービスを設定し、Azure アプリケーションを構成する手順を説明します。"
+   pageTitle="Prepare to publish or deploy an Azure application from Visual Studio | Microsoft Azure"
+   description="Learn the procedures to set up cloud and storage account services and configure your Azure application."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,142 +15,148 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Visual Studio からの Azure アプリケーションの発行またはデプロイの準備
 
-## Overview
+# <a name="prepare-to-publish-or-deploy-an-azure-application-from-visual-studio"></a>Prepare to Publish or Deploy an Azure Application from Visual Studio
 
-クラウド サービス プロジェクトを発行可能にするには、次のサービスを設定する必要があります。
+## <a name="overview"></a>Overview
 
-- Azure 環境でロールを実行する**クラウド サービス**
+Before you can publish a cloud service project, you must set up the following services:
 
-- BLOB サービス、Queue サービス、および Table サービスへのアクセスを提供する**ストレージ アカウント**
+- A **cloud service** to run your roles in the Azure environment
 
-これらのサービスを設定し、アプリケーションを構成するには、次の手順を使用します。
+- A **storage account** that provides access to the Blob, Queue, and Table services.
+
+Use the following procedures to set up these services and configure your application
 
 
-## クラウド サービスを作成する
+## <a name="create-a-cloud-service"></a>Create a cloud service
 
-Azure にクラウド サービスを発行するには、まず、Azure 環境でロールを実行するクラウド サービスを作成する必要があります。このトピックの「**Azure クラシック ポータルを使用してクラウド サービスを作成するには**」で後述するように、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)でクラウド サービスを作成できます。クラウド サービスは、発行ウィザードを使用して Visual Studio を作成することもできます。
+To publish a cloud service to Azure, you must first create a cloud service, which runs your roles in the Azure environment. You can create a cloud service in the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), as described in the section **To create a cloud service by using the Azure classic portal**, later in this topic. You can also create a cloud service in Visual Studio by using the publishing wizard.
 
-### Visual Studio を使用してクラウド サービスを作成するには
+### <a name="to-create-a-cloud-service-by-using-visual-studio"></a>To create a cloud service by using Visual Studio
 
-1. Azure プロジェクトのショートカット メニューを開き、**[発行]** をクリックします。
+1. Open the shortcut menu for the Azure project, and choose **Publish**.
 
-    ![VST\_PublishMenu](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/vst-publish-menu.png)
+    ![VST_PublishMenu](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/vst-publish-menu.png)
 
-1. サインインしていない場合は、Azure サブスクリプションに関連付けられている Microsoft アカウントまたは組織アカウントのユーザー名とパスワードを使用してサインインします。
+1. If you haven't signed in, sign in with your username and password for the Microsoft account or organizational account that's associated with your Azure subscription.
 
-1. **[次へ]** をクリックし、**[設定]** ページに進みます。
+1. Choose the **Next** button to advance to the **Settings** page.
 
     ![Publishing Wizard Common Settings](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/publish-settings-page.png)
 
-1. **[クラウド サービス]** 一覧で、**[新規作成]** をクリックします。**[Azure サービスの作成]** ダイアログが表示されます。
+1. In the **Cloud Services** list, choose **Create New**. The **Create Azure Services** dialog appears.
 
-1. クラウド サービスの名前を入力します。この名前はサービスの URL の一部として使用されるため、グローバルに一意であることが必要です。この名前では、大文字小文字が区別されません。
+1. Enter the name of your cloud service. The name forms part of the URL for your service and therefore must be globally unique. The name is not case-sensitive.
 
-### Azure クラシック ポータルを使用してクラウド サービスを作成するには
+### <a name="to-create-a-cloud-service-by-using-the-azure-classic-portal"></a>To create a cloud service by using the Azure classic portal
 
-1. Microsoft Web サイトの [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkId=253103)にサインインします。
+1. Sign in to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkId=253103) on the Microsoft website.
 
-1. (省略可能) 既に作成したクラウド サービスの一覧を表示するには、ページの左側にある [Cloud Services] リンクを選択します。
+1. (optional) To display a list of cloud services that you've already created, choose the Cloud Services link on the left side of the page.
 
-1. 左下隅にある **[+]** アイコンを選択し、表示されるメニューで **[クラウド サービス]** を選択します。**[簡易作成]** と **[カスタム作成]** という 2 つのオプションがある別の画面が表示されます。**[簡易作成]** を選択した場合、URL と物理的にホストするリージョンを指定するだけで、クラウド サービスを作成できます。**[カスタム作成]** を選択した場合、パッケージ (.cspkg ファイル)、構成 (.cscfg) ファイル、および証明書を指定することで、クラウド サービスをすぐに発行できます。Azure プロジェクトの **[発行]** コマンドを使用してクラウド サービスを発行する場合、カスタム作成は必須ではありません。**[発行]** コマンドは、Azure プロジェクトのショートカット メニューで使用できます。
+1. Choose the **+** icon in the lower-left corner, and then choose **Cloud Service** on the menu that appears. Another screen with two options, **Quick Create** and **Custom Create**, appears. If you choose **Quick Create**, you can create a cloud service just by specifying its URL and the region where it will be physically hosted. If you choose **Custom Create**, you can immediately publish a cloud service by specifying a package (.cspkg file), a configuration (.cscfg) file, and a certificate. Custom Create isn’t required if you intend to publish your cloud service by using the **Publish** command in an Azure project. The **Publish** command is available on the shortcut menu for an Azure project.
 
-1. 後で Visual Studio を使用してクラウド サービスを発行する場合は、**[簡易作成]** を選択します。
+1. Choose **Quick Create** to later publish your cloud service by using Visual Studio.
 
-1. クラウド サービスの名前を指定します。名前の隣に完全な URL が表示されます。
+1. Specify a name for your cloud service.The complete URL appears next to the name.
 
-1. 一覧で、ユーザーが主に配置されているリージョンを選択します。
+1. In the list, choose the region where most of your users are located.
 
-1. ウィンドウの下部にある **[クラウド サービスの作成]** リンクを選択します。
+1. At the bottom of the window, choose the **Create Cloud Service** link.
 
-## ストレージ アカウントの作成
+## <a name="create-a-storage-account"></a>Create a storage account
 
-ストレージ アカウントを使用すると、BLOB サービス、Queue サービス、および Table サービスにアクセスできます。ストレージ アカウントは、Visual Studio または [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkId=253103)を使用して作成できます。
+A storage account provides access to the Blob, Queue, and Table services. You can create a storage account by using Visual Studio or the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkId=253103).
 
-### Visual Studio を使用して、ストレージ アカウントを作成するには
+### <a name="to-create-a-storage-account-by-using-visual-studio"></a>To create a storage account by using Visual Studio
 
-1. **ソリューション エクスプローラー**で **[Storage]** ノードのショートカット メニューを開き、**[ストレージ アカウントの作成]** を選択します。
+1. In **Solution Explorer**, open the shortcut menu for the **Storage** node, and then choose **Create Storage Account**.
 
     ![Create a new Azure storage account](./media/vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio/IC744166.png)
 
-1. **[ストレージ アカウントの作成]** ダイアログ ボックスで、新しいストレージ アカウントの次の情報を選択または入力します。
-    - ストレージ アカウントを追加する Azure サブスクリプション。
-    - 新しいストレージ アカウントに使用する名前。
-    - リージョンまたはアフィニティ グループ (米国西部や東アジアなど)。
-    - geo 冗長など、ストレージ アカウントで使用するレプリケーションの種類。
+1. Select or enter the following information for the new storage account in the **Create Storage Account** dialog box.
+    - The Azure subscription to which you want to add the storage account.
+    - The name you want to use for the new storage account.
+    - The region or affinity group (such as West US or East Asia).
+    - The type of replication you want to use for the storage account, such as Geo-Redundant.
 
-1. 終了したら **[作成]** を選択します。**サーバー エクスプローラー**の **[ストレージ]** 一覧に新しいストレージ アカウントが表示されます。
+1. When you’re done, choose **Create**.The new storage account appears in the **Storage** list in **Server Explorer**.
 
-### Azure クラシック ポータルを使用して、ストレージ アカウントを作成するには
+### <a name="to-create-a-storage-account-by-using-the-azure-classic-portal"></a>To create a storage account by using the Azure classic portal
 
-1. Microsoft Web サイトの [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkId=253103)にサインインします。
+1. Sign in to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkId=253103) on the Microsoft website.
 
-1. (省略可能) ストレージ アカウントを表示するには、ページの左側のパネルで **[Storage]** リンクを選択します。
+1. (Optional) To view your storage accounts, choose the **Storage** link in the panel on the left side of the page.
 
-1. ページの左下隅にある **[+]** アイコンをクリックします。
+1. In the lower-left corner of the page, choose the **+** icon.
 
-1. 表示されるメニューで、**[ストレージ]**、**[簡易作成]** の順にクリックします。
+1. In the menu that appears, choose **Storage**, and then choose **Quick Create**.
 
-1. ストレージ アカウントに一意の URL となる名前を付けます。
+1. Give the storage account a name that will result in a unique url.
 
-1. クラウド サービスに名前を付けます。名前の隣に完全な URL が表示されます。
+1. Give your cloud service a name. The complete URL appears next to the name.
 
-1. リージョンの一覧で、ユーザーが主に配置されているリージョンを選択します。
+1. In the list of regions, choose a region where most of your users are located.
 
-1. geo レプリケーションを有効にするかどうかを指定します。geo レプリケーションを有効にした場合は、データは複数の物理的な場所に保存され、損失の可能性が低減します。この機能ではストレージは高価になりますが、機能を後で追加するのではなく、ストレージ アカウントを作成するときに geo ロケーションを有効にすると、コストを削減することができます。詳細については、[geo レプリケーション](http://go.microsoft.com/fwlink/?LinkId=253108)に関するページを参照してください。
+1. Specify whether you want to enable geo-replication. If you enable geo-replication, your data will be saved in multiple physical locations to reduce the chance of loss. This feature makes storage more expensive, but you can reduce the cost by enabling geo-location when you create the storage account instead of adding the feature later. For more information, see [Geo-replication](http://go.microsoft.com/fwlink/?LinkId=253108).
 
-1. ウィンドウの下部にある **[ストレージ アカウントの作成]** リンクをクリックします。
+1. At the bottom of the window, choose the **Create Storage Account** link.
 
-ストレージ アカウントを作成したら、各 Azure Storage サービスのリソースにアクセスするために使用できる URL が表示されます。また、アカウントのプライマリ アクセス キーとセカンダリ アクセス キーも表示されます。これらのキーは、ストレージ サービスに対する要求を認証するために使用します。
+After you create your storage account, you will see the URLs that you can use to access resources in each of the Azure storage services, and also the primary and secondary access keys for your account. You use these keys to authenticate requests made against the storage services.
 
->[AZURE.NOTE] セカンダリ アクセス キーは、プライマリ アクセス キーと同じようにストレージ アカウントにアクセスでき、プライマリ アクセス キーが侵害された場合の予備として生成されます。また、定期的にアクセスのキーを再生成することをお勧めします。プライマリ キーの再生成時にセカンダリ キーを使用するように接続文字列の設定を変更した後で、セカンダリ キーの再生成時に再生成したプライマリ キーを使用するように接続文字列の設定を変更できます。
+>[AZURE.NOTE] The secondary access key provides the same access to your storage account as the primary access key and is generated as a backup should your primary access key be compromised. Additionally, it is recommended that you regenerate your access keys on a regular basis. You can modify a connection string setting to use the secondary key while you regenerate the primary key, then you can modify it to use the regenerated primary key while you regenerate the secondary key.
 
-## ストレージ アカウントによって提供されるサービスを使用するようアプリケーションを構成する
+## <a name="configure-your-app-to-use-services-provided-by-the-storage-account"></a>Configure your app to use services provided by the storage account
 
-作成した Azure Storage サービスを使用するには、Storage サービスにアクセスするロールを構成する必要があります。これを行うために、Azure プロジェクトの複数のサービス構成を使用できます。既定では、Azure プロジェクトに 2 つのサービス構成が作成されます。複数のサービス構成を使用すると、コード内では同じ接続文字列を使用しつつ、各サービス構成で定めた接続文字列に別の値を適用することができます。たとえば、Azure ストレージ エミュレーターを使用してアプリケーションをローカルで実行およびデバッグするサービス構成と、Azure にアプリケーションを発行する別のサービス構成を使用できます。サービス構成ファイルの詳細については、「[複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)」を参照してください。
+You must configure any role that accesses storage services to use the Azure storage services that you have created. To do this, you can use multiple service configurations for your Azure project. By default, two are created in your Azure project. By using multiple service configurations, you can use the same connection string in your code, but have a different value for a connection string in each service configuration. For example, you can use one service configuration to run and debug your application locally using the Azure storage emulator and a different service configuration to publish your application to Azure. For more information about service configurations, see [Configuring Your Azure Project Using Multiple Service Configurations](vs-azure-tools-multiple-services-project-configurations.md).
 
-### ストレージ アカウントが提供するサービスを使用するようアプリケーションを構成するには
+### <a name="to-configure-your-application-to-use-services-that-the-storage-account-provides"></a>To configure your application to use services that the storage account provides
 
-1. Visual Studio で Azure ソリューションを開きます。ソリューション エクスプローラーで、ストレージ サービスにアクセスする Azure プロジェクトの各ロールのショートカット メニューを開き、**[プロパティ]** をクリックします。ロールの名前のページが、Visual Studio エディターに表示されます。ページには、**[構成]** タブのフィールドが表示されます。
+1. In Visual Studio open your Azure solution. In Solution Explorer, open the shortcut menu for each role in your Azure project that accesses the storage services and choose **Properties**. A page with the name of the role is displayed in the Visual Studio editor. The page displays the fields for the **Configuration** tab.
 
-1. ロールのプロパティ ページで **[設定]** を選択します。
+1. In the property pages for the role, choose **Settings**.
 
-1. **[サービスの構成]** ボックスの一覧で、編集するサービス構成の名前を選択します。このロールのすべてのサービス構成を変更する場合は、**[すべての構成]** を選択できます。サービス構成の更新の方法については、「[Visual Studio で Azure クラウド サービスのロールを構成する](vs-azure-tools-configure-roles-for-cloud-service.md)」トピックの「**ストレージ アカウント用の接続文字列の管理**」セクションを参照してください。
+1. In the **Service Configuration** list, choose the name of the service configuration that you want to edit. If you want to make changes to all of the service configurations for this role, you can choose **All Configurations**.  For more information about how to update service configurations, see the section **Manage Connection Strings for Storage Accounts** in the topic [Configure the Roles for an Azure Cloud Service with Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
 
-1. 接続文字列の設定を変更するには、設定の隣にある **[...]** ボタンをクリックします。**[ストレージ接続文字列の作成]** ダイアログ ボックスが表示されます。
+1. To modify any connection string settings, choose the **…** button next to the setting. The **Create Storage Connection String** dialog box appears.
 
-1. **[接続方法]** で **[サブスクリプション]** オプションをクリックします。
+1. Under **Connect using**, choose the **Your subscription** option.
 
-1. **[サブスクリプション]** 一覧で、目的のサブスクリプションを選択します。目的のサブスクリプションが一覧に含まれていない場合は、**[発行設定のダウンロード]** リンクを選択します。
+1. In the **Subscription** list, choose your subscription. If the list of subscriptions doesn't include the one that you want, choose the **Download Publish Settings** link.
 
-1. **[アカウント名]** 一覧で、ストレージ アカウント名を選択します。Azure Tools は .publishsettings ファイルを使用して、自動的にストレージ アカウントの資格情報を取得します。ストレージ アカウントの資格情報を手動で指定するには、**[手動で入力された資格情報]** オプションを選択し、この手順を続行します。ストレージ アカウント名とプライマリ キーは、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)から取得できます。ストレージ アカウントの設定を手動で指定しない場合は、**[OK]** をクリックし、ダイアログ ボックスを閉じます。
+1. In the **Account name** list, choose your storage account name. Azure Tools obtains storage account credentials automatically by using the .publishsettings file. To specify your storage account credentials manually, choose the **Manually entered credentials** option, and then continue with this procedure. You can get your storage account name and primary key from the [Azure classic portal](http://go.microsoft.com/fwlink/p/?LinkID=213885). If you don’t want to specify your storage account settings manually, choose the **OK** button to close the dialog box.
 
-1. **[ストレージ アカウントの資格情報の入力]** リンクをクリックします。
+1. Choose the **Enter storage account** credentials link.
 
-1. ストレージ アカウントの名前を **[アカウント名]** に入力します。
+1. In the **Account name** box, enter the name of your storage account.
 
-    >[AZURE.NOTE] [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にログインし、**[ストレージ]** ボタンをクリックします。ポータルでは、ストレージ アカウントの一覧が表示されます。アカウントを選択すると、アカウント用のページが開きます。このページからストレージ アカウントの名前をコピーできます。以前のバージョンのクラシック ポータルを使用している場合は、**[ストレージ アカウント]** ビューにストレージ アカウントの名前が表示されます。この名前をコピーするには、このビューの **[プロパティ]** ウィンドウで強調表示し、Ctrl キーを押しながら C キーを押します。Visual Studio に名前を貼り付けるには、**[アカウント名]** ボックスを選択し、Ctrl キーを押しながら V キーを押します。
+    >[AZURE.NOTE] Log into the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), and then choose the **Storage** button. The portal shows a list of storage accounts. If you choose an account, a page for it opens. You can copy the name of the storage account from this page. If you are using a previous version of the classic portal, the name of your storage account appears in the **Storage Accounts** view. To copy this name, highlight it in the **Properties** window of this view, and then choose the Ctrl-C keys. To paste the name into Visual Studio, choose the **Account name** text box, and then choose the Ctrl+V keys.
 
-1. **[アカウント キー]** ボックスで、プライマリ キーを入力するか、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)からコピーして貼り付けます。このキーをコピーするには、次の手順に従います。
+1. In the **Account key** box, enter your primary key, or copy and paste it from the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
+    To copy this key:
 
-    1. 該当するストレージ アカウントのページの下部で、**[キーの管理]** をクリックします。
+    1. At the bottom of the page for the appropriate storage account, choose the **Manage Keys** button.
 
-    1. **[キーのアクセスを管理]** ページで、プライマリ アクセス キーのテキストを選択し、Ctrl キーを押しながら C キーを押します。
+    1. On the **Manage Keys Access** page, select the text of the primary access key, and then choose the Ctrl+C keys.
 
-    1. Azure Tools で、**[アカウント キー]** ボックスにキーを貼り付けます。
+    1. In Azure Tools, paste the key into the **Account key** box.
 
-    1. サービスがストレージ アカウントにアクセスする方法を決定するには、次のオプションのいずれかを選択する必要があります。
-        - **[HTTP を使用する]**。これは、標準的なオプションです。たとえば、「`http://<account name>.blob.core.windows.net`」のように入力します。
-        - **[HTTPS を使用する]**。これは、セキュリティで保護された接続に使用します。たとえば、「`https://<accountname>.blob.core.windows.net`」のように入力します。
-        - **[カスタム エンドポイントを指定する]**。これは、3 つのサービスそれぞれに対してエンドポイントを指定するときに使用します。このオプションを選択すると、特定のサービスのフィールドにエンドポイントを入力できます。
+    1. You must select one of the following options to determine how the service will access the storage account:
+        - **Use HTTP**. This is the standard option. For example, `http://<account name>.blob.core.windows.net`.
+        - **Use HTTPS** for a secure connection. For example, `https://<accountname>.blob.core.windows.net`.
+        - **Specify custom endpoints** for each of the three services. You can then type these endpoints into the field for the specific service.
 
-        >[AZURE.NOTE] カスタム エンドポイントを作成する場合は、より複雑な接続文字列を作成できます。この文字列形式を使用する場合は、ストレージ アカウント用に BLOB サービスに登録したカスタム ドメイン名を含むストレージ サービス　エンドポイントを指定できます。また、Shared Access Signature を介して単一コンテナーの BLOB リソースにのみアクセスを許可できます。カスタム エンドポイントの作成方法の詳細については、「[Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)」を参照してください。
+        >[AZURE.NOTE] If you create custom endpoints, you can create a more complex connection string. When you use this string format, you can specify storage service endpoints that include a custom domain name that you have registered for your storage account with the Blob service. Also you can grant access only to blob resources in a single container through a shared access signature. For more information about how to create custom endpoints, see [Configure Azure Storage Connection Strings](storage-configure-connection-string.md).
 
-1. これらの接続文字列の変更を保存するには、**[OK]** をクリックし、ツール バーの **[保存]** ボタンをクリックします。これらの変更を保存すると、[GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) を使用して、コード内のこの接続文字列の値を取得できるようになります。Azure にアプリケーションを発行するときに、接続文字列用の Azure ストレージ アカウントを含むサービス構成を選択します。アプリケーションを発行した後、アプリケーションが Azure Storage サービスに対して期待どおりに動作することを確認します。
+1. To save these connection string changes, choose the **OK** button and then choose the **Save** button on the toolbar. After you save these changes, you can get the value of this connection string in your code by using [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx). When you publish your application to Azure, choose the service configuration that contains the Azure storage account for the connection string. After your application is published, verify that the application works as expected against the Azure storage services
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-Visural Studio からの Azure へのアプリ発行の詳細については、「[Azure Tools を使用したクラウド サービスの発行](vs-azure-tools-publishing-a-cloud-service.md)」を参照してください。
+To learn more about publishing apps to Azure from Visual Studio, see [Publishing a Cloud Service using the Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

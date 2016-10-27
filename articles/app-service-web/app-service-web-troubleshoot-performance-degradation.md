@@ -1,190 +1,195 @@
 <properties
-	pageTitle="App Service での Web アプリのパフォーマンスの低下 | Microsoft Azure"
-	description="この記事は、Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。"
-	services="app-service\web"
-	documentationCenter=""
-	authors="cephalin"
-	manager="wpickett"
-	editor=""
-	tags="top-support-issue"
-	keywords="Web アプリのパフォーマンス、低速なアプリ、アプリが低速"/>
+    pageTitle="Slow web app performance in App Service | Microsoft Azure"
+    description="This article helps you troubleshoot slow web app performance issues in Azure App Service."
+    services="app-service\web"
+    documentationCenter=""
+    authors="cephalin"
+    manager="wpickett"
+    editor=""
+    tags="top-support-issue"
+    keywords="web app performance, slow app, app slow"/>
 
 <tags
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="cephalin"/>
+    ms.service="app-service-web"
+    ms.workload="web"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/06/2016"
+    ms.author="cephalin"/>
 
-# Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティング
 
-この記事は、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
+# <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Troubleshoot slow web app performance issues in Azure App Service
 
-この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
+This article helps you troubleshoot slow web app performance issues in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
 
-## 症状
+If you need more help at any point in this article, you can contact the Azure experts on [the MSDN Azure and the Stack Overflow forums](https://azure.microsoft.com/support/forums/). Alternatively, you can also file an Azure support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/) and click on **Get Support**.
 
-ブラウザーで Web アプリにアクセスしたときのページの読み込みが遅く、タイムアウトすることもある
+## <a name="symptom"></a>Symptom
 
-## 原因
+When you browse the web app, the pages load slowly and sometimes timeout.
 
-この症状は多くの場合、アプリケーション レベルの問題が原因で発生します。その例を次に示します。
+## <a name="cause"></a>Cause
 
--	要求に時間がかかっている
--	アプリケーションのメモリ/CPU 使用率が高い
--	例外が発生してアプリケーションがクラッシュする
+This problem is often caused by application level issues, such as:
 
-## トラブルシューティングの手順
+-   requests taking a long time
+-   application using high memory/CPU
+-   application crashing due to an exception.
 
-トラブルシューティングは、大きく次の 3 つのタスクに分けられます。この 3 つのタスクを上から順に行います。
+## <a name="troubleshooting-steps"></a>Troubleshooting steps
 
-1.	[アプリケーションの動作を観察、監視する](#observe)
-2.	[データを収集する](#collect)
-3.	[問題を緩和する](#mitigate)
+Troubleshooting can be divided into three distinct tasks, in sequential order:
 
-これらの手順には、[App Service Web Apps](/services/app-service/web/) を活用できます。
+1.  [Observe and monitor application behavior](#observe)
+2.  [Collect data](#collect)
+3.  [Mitigate the issue](#mitigate)
+
+[App Service Web Apps](/services/app-service/web/) gives you various options at each step.
 
 <a name="observe" />
-### 1\.アプリケーションの動作を観察、監視する
+### <a name="1.-observe-and-monitor-application-behavior"></a>1. Observe and monitor application behavior
 
-#### サービス正常性を追跡する
+#### <a name="track-service-health"></a>Track Service health
 
-Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。サービスの正常性は、[Azure ポータル](https://portal.azure.com/)で追跡できます。詳細については、[サービスの正常性の追跡](../azure-portal/insights-service-health.md)に関するページを参照してください。
+Microsoft Azure publicizes each time there is a service interruption or performance degradation. You can track the health of the service on the [Azure Portal](https://portal.azure.com/). For more information, see [Track service health](../azure-portal/insights-service-health.md).
 
-#### Web アプリを監視する
+#### <a name="monitor-your-web-app"></a>Monitor your web app
 
-Web アプリに問題が発生しているかどうかは、アプリを監視することによって確認することができます。Web アプリのブレードで **[要求とエラー]** タイルをクリックします。**[メトリック]** ブレードには、追加できるすべてのメトリックが表示されます。
+This option enables you to find out if your application is having any issues. In your web app’s blade, click the **Requests and errors** tile. The **Metric** blade will show you all the metrics you can add.
 
-Web アプリに関しては、次のメトリックを監視するようお勧めします。
+Some of the metrics that you might want to monitor for your web app are
 
--	平均メモリ ワーキング セット
--	平均応答時間
--	CPU 時間
--	メモリ ワーキング セット
--	要求数
+-   Average memory working set
+-   Average response time
+-   CPU time
+-   Memory working set
+-   Requests
 
-![Web アプリのパフォーマンスを監視する](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
+![monitor web app performance](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-詳細については、次を参照してください。
+For more information, see:
 
--	[Azure App Service の Web Apps の監視](web-sites-monitor.md)
--	[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)
+-   [Monitor Web Apps in Azure App Service](web-sites-monitor.md)
+-   [Receive alert notifications](../azure-portal/insights-receive-alert-notifications.md)
 
-#### Web エンドポイントの状態を監視する
+#### <a name="monitor-web-endpoint-status"></a>Monitor web endpoint status
 
-Web アプリを **Standard** 価格レベルで実行している場合、Web Apps で 3 つの地域から 2 つのエンドポイントを監視することができます。
+If you are running your web app in the **Standard** pricing tier, Web Apps lets you monitor 2 endpoints from 3 geographic locations.
 
-エンドポイント監視では、地理的に分散した場所から Web URL の応答時間とアップタイムをテストする Web テストを構成します。このテストでは、Web URL に対して HTTP get 操作を実行し、各場所から応答時間とアップタイムを測定します。構成された各場所では、テストを 5 分ごとに実行します。
+Endpoint monitoring configures web tests from geo-distributed locations that test response time and uptime of web URLs. The test performs an HTTP GET operation on the web URL to determine the response time and uptime from each location. Each configured location runs a test every five minutes.
 
-アップタイムは HTTP 応答コードを使用して監視され、応答時間はミリ秒単位で測定されます。HTTP 応答コードが 400 以上である場合、または、応答に 30 秒以上かかる場合、監視テストは失敗します。すべての指定した場所から監視テストが成功した場合、エンドポイントは利用可能と見なされます。
+Uptime is monitored using HTTP response codes, and response time is measured in milliseconds. A monitoring test fails if the HTTP response code is greater than or equal to 400 or if the response takes more than 30 seconds. An endpoint is considered available if its monitoring tests succeed from all the specified locations.
 
-セットアップ方法については、「[方法: Web エンドポイントの状態の監視](web-sites-monitor.md#webendpointstatus)」を参照してください。
+To set it up, see [How to: Monitor web endpoint status](web-sites-monitor.md#webendpointstatus).
 
-また、「[Keeping Azure Web Sites up plus Endpoint Monitoring with Stefan Schackow (Azure の Web サイトの保持とエンドポイントの監視 - Stefan Schackow 共演)](/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/)」で、エンドポイント監視に関するビデオをご覧いただけます。
+Also, see [Keeping Azure Web Sites up plus Endpoint Monitoring - with Stefan Schackow](/documentation/videos/azure-web-sites-endpoint-monitoring-and-staying-up/) for a video on endpoint monitoring.
 
-#### 拡張機能を使用したアプリケーション パフォーマンスの監視
+#### <a name="application-performance-monitoring-using-extensions"></a>Application performance monitoring using Extensions
 
-アプリケーションのパフォーマンス監視には、_サイト拡張機能_を利用することもできます。
+You can also monitor your application performance by leveraging _site extensions_.
 
-App Service Web アプリにはそれぞれ拡張可能な管理エンド ポイントが用意されており、サイト拡張機能としてデプロイされている強力なツール一式を利用することができます。たとえば、[Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx) などのソース コード エディターや、接続されたリソース (Web アプリに接続されている MySQL データベースなど) 用の管理ツールなど、その種類は多岐にわたります。
+Each App Service web app provides an extensible management end point that allows you to leverage a powerful set of tools deployed as site extensions. These tools range from source code editors like [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx) to management tools for connected resources such as a MySQL database connected to a web app.
 
-パフォーマンス監視を目的としたサイト拡張機能としては、[Azure Application Insights](/services/application-insights/) と [New Relic](/marketplace/partners/newrelic/newrelic/) の 2 つがあります。New Relic を使用するには、実行時にエージェントをインストールします。Azure Application Insights を使用するには、SDK でコードを再ビルドします。また、追加データにアクセスできる拡張機能もインストールできます。SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。
+[Azure Application Insights](/services/application-insights/) and [New Relic](/marketplace/partners/newrelic/newrelic/) are two of the performance monitoring site extensions that are available. To use New Relic, you install an agent at runtime. To use Azure Application Insights, you rebuild your code with an SDK, and you can also install an extension that provides access to additional data. The SDK lets you write code to monitor the usage and performance of your app in more detail.
 
-Application Insights の使用については、「[Web アプリケーションのパフォーマンスを監視する](../application-insights/app-insights-web-monitor-performance.md)」を参照してください。
+To use Application Insights, see [Monitor performance in web applications](../application-insights/app-insights-web-monitor-performance.md).
 
-New Relic の使用については、「[Azure の New Relic によるアプリケーション パフォーマンス管理](../store-new-relic-cloud-services-dotnet-application-performance-management.md)」を参照してください。
+To use New Relic, see [New Relic Application Performance Management on Azure](../store-new-relic-cloud-services-dotnet-application-performance-management.md).
 
 <a name="collect" />
-### 手順 2.データを収集する
+### <a name="2.-collect-data"></a>2. Collect data
 
-####	Web アプリに対して診断ログを有効にする
+####    <a name="enable-diagnostics-logging-for-your-web-app"></a>Enable diagnostics logging for your web app
 
-Web Apps 環境は、Web サーバーと Web アプリケーションの両方のログ情報を診断する機能を備えています。これらは論理的に Web サーバー診断とアプリケーション診断に分けられます。
+The Web Apps environment provides diagnostic functionality for logging information from both the web server and the web application. These are logically separated into web server diagnostics and application diagnostics.
 
-##### Web サーバー診断
+##### <a name="web-server-diagnostics"></a>Web server diagnostics
 
-次の種類のログを有効または無効にできます。
+You can enable or disable the following kinds of logs:
 
--	**詳細なエラー ログ** - 障害 (状態コード 400 以上) を示す HTTP 状態コードの詳細なエラー情報。このログには、サーバーがエラー コードを返した理由を特定するために役立つ情報が記録されている場合があります。
--	**失敗した要求トレース** - 要求の処理に使用された IIS コンポーネントのトレースや各コンポーネントにかかった時間など、失敗した要求の詳細情報。これは、Web アプリのパフォーマンスを向上させたり、特定の HTTP エラーの原因を分離しようとする場合に役立ちます。
--	**Web サーバーのログ記録** - W3C 拡張ログ ファイル形式を使用した、HTTP トランザクションに関する情報。これは、サイトで処理された要求の数や特定の IP アドレスからの要求の数などの Web アプリの全体的なメトリックを特定するときに役立ちます。
+-   **Detailed Error Logging** - Detailed error information for HTTP status codes that indicate a failure (status code 400 or greater). This may contain information that can help determine why the server returned the error code.
+-   **Failed Request Tracing** - Detailed information on failed requests, including a trace of the IIS components used to process the request and the time taken in each component. This can be useful if you are attempting to improve web app performance or isolate what is causing a specific HTTP error.
+-   **Web Server Logging** - Information about HTTP transactions using the W3C extended log file format. This is useful when determining overall web app metrics, such as the number of requests handled or how many requests are from a specific IP address.
 
-##### アプリケーション診断
+##### <a name="application-diagnostics"></a>Application diagnostics
 
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。ASP.NET アプリケーションは、`System.Diagnostics.Trace` クラスを使用してアプリケーション診断ログに情報を記録できます。
+Application diagnostics enables you to capture information produced by a web application. ASP.NET applications can use the `System.Diagnostics.Trace` class to log information to the application diagnostics log.
 
-アプリケーションのログを構成する詳細な手順については、「[Azure App Service の Web アプリの診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
+For detailed instructions on how to configure your application for logging, see [Enable diagnostics logging for web apps in Azure App Service](web-sites-enable-diagnostic-log.md).
 
-#### リモート プロファイリングの使用
+#### <a name="use-remote-profiling"></a>Use Remote Profiling
 
-Azure App Service では、Web Apps、API Apps、WebJobs のプロファイリングをリモートから実行できます。プロセスの実行に予想以上に時間がかかる場合や、HTTP 要求の待機時間が通常よりも長く、かつプロセスの CPU 使用率も高い場合、対象プロセスをリモートからプロファイリングし、CPU サンプリング呼び出し履歴を取得して、プロセスのアクティビティとコードのホット パスを分析することができます。
+In Azure App Service, Web Apps, API Apps, and WebJobs can be remotely profiled. If your process is running slower than expected, or the latency of HTTP requests are higher than normal and the CPU usage of the process is also high, you can remotely profile your process and get the CPU sampling call stacks to analyze the process activity and code hot paths.
 
-詳細については、[Azure App Service におけるリモート プロファイリングのサポート](/blog/remote-profiling-support-in-azure-app-service)に関するページを参照してください。
-
-
-#### Azure App Service サポート ポータルを使用する
-
-Web Apps には、HTTP ログ、イベント ログ、処理ダンプなどを参照することによって、Web アプリに関連した問題をトラブルシューティングする機能があります。その情報はすべて、**http://&lt;your app name>.scm.azurewebsites.net/Support** のサポート ポータルで提供されます。
-
-一般的なトラブルシューティングの状況に合わせて、Azure App Service サポート ポータルには、3 つのタブが用意されています。次の 3 つの手順が想定されています。
-
-1.	現在の動作を観察する
-2.	診断情報を集め、組み込みのアナライザーを実行して分析する
-3.	緩和する
-
-現時点で問題が発生している場合は、**[分析]**、**[診断]**、**[今すぐ診断]** の順にクリックして診断セッションを作成します。これで、HTTP ログ、イベント ビューアー ログ、メモリ ダンプ、PHP エラー ログ、および PHP プロセス レポートが収集されます。
-
-データの収集後にも、データに対する分析が実行され、HTML レポートが出力されます。
-
-そのデータをダウンロードすることもできます。D:\\home\\data\\DaaS フォルダーが既定の保存先となります。
-
-Azure App Service サポート ポータルの詳細については、[Azure Websites のサポート サイト拡張機能で新たに行われた更新](/blog/new-updates-to-support-site-extension-for-azure-websites)に関するページを参照してください。
-
-#### Kudu デバッグ コンソールを使用する
-
-Web Apps には、ファイルのデバッグ、調査、アップロード用のデバッグ コンソールのほか、ご利用の環境についての情報を入手するための JSON エンドポイントが用意されています。このコンソールは、Web アプリの _Kudu コンソール_または _SCM ダッシュボード_と呼ばれます。
-
-ダッシュボードには、**https://&lt;Your app name>.scm.azurewebsites.net/** リンクからアクセスできます。
-
-Kudu には次のような機能があります。
-
--	アプリケーションの環境設定
--	ログ ストリーム
--	診断ダンプ
--	デバッグ コンソール (Powershell のコマンドレットや基本的な DOS コマンドを実行可能)
+For more information on, see [Remote Profiling support in Azure App Service](/blog/remote-profiling-support-in-azure-app-service).
 
 
-Kudu にはもう 1 つ便利な機能があり、アプリケーションからファーストチャンス例外がスローされた場合に、Kudu と SysInternals ツール Procdump を使用してメモリ ダンプを作成することができます。このメモリ ダンプはプロセスのスナップショットです。Web アプリに関して、通常より複雑な問題をトラブルシューティングできる場合も少なくありません。
+#### <a name="use-the-azure-app-service-support-portal"></a>Use the Azure App Service Support Portal
 
-Kudu で利用できる機能の詳細については、[知っておくべき Azure Websites Team Services ツール](/blog/windows-azure-websites-online-tools-you-should-know-about/)に関するページを参照してください。
+Web Apps provides you with the ability to troubleshoot issues related to your web app by looking at HTTP logs, event logs, process dumps, and more. You can access all this information using our Support portal at **http://&lt;your app name>.scm.azurewebsites.net/Support**
+
+The Azure App Service Support portal provides you with three separate tabs to support the three steps of a common troubleshooting scenario:
+
+1.  Observe current behavior
+2.  Analyze by collecting diagnostics information and running the built-in analyzers
+3.  Mitigate
+
+If the issue is happening right now, click **Analyze** > **Diagnostics** > **Diagnose Now** to create a diagnostic session for you, which will collect HTTP logs, event viewer logs, memory dumps, PHP error logs and PHP process report.
+
+Once the data is collected, it will also run an analysis on the data and provide you with an HTML report.
+
+In case you want to download the data, by default, it would be stored in the D:\home\data\DaaS folder.
+
+For more information on the Azure App Service Support portal, see [New Updates to Support Site Extension for Azure Websites](/blog/new-updates-to-support-site-extension-for-azure-websites).
+
+#### <a name="use-the-kudu-debug-console"></a>Use the Kudu Debug Console
+
+Web Apps comes with a debug console that you can use for debugging, exploring, uploading files, as well as JSON endpoints for getting information about your environment. This is called the _Kudu Console_ or the _SCM Dashboard_ for your web app.
+
+You can access this dashboard by going to the link **https://&lt;Your app name>.scm.azurewebsites.net/**.
+
+Some of the things that Kudu provides are:
+
+-   environment settings for your application
+-   log stream
+-   diagnostic dump
+-   debug console in which you can run Powershell cmdlets and basic DOS commands.
+
+
+Another useful feature of Kudu is that, in case your application is throwing first-chance exceptions, you can use Kudu and the SysInternals tool Procdump to create memory dumps. These memory dumps are snapshots of the process and can often help you troubleshoot more complicated issues with your web app.
+
+For more information on features available in Kudu, see [Azure Websites Team Services tools you should know about](/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
-### 3\.問題を緩和する
+### <a name="3.-mitigate-the-issue"></a>3. Mitigate the issue
 
-####	Web アプリをスケーリングする
+####    <a name="scale-the-web-app"></a>Scale the web app
 
-Azure App Service では、アプリケーションが実行されるスケールを調整することによって、パフォーマンスとスループットを高めることができます。Web アプリのスケール アップには、2 つの関連する措置が伴います。1 つは、App Service プランの価格レベルを引き上げること、もう 1 つは、価格レベルを引き上げた後に特定の設定を構成することです。
+In Azure App Service, for increased performance and throughput,  you can adjust the scale at which you are running your application. Scaling up a web app involves two related actions: changing your App Service plan to a higher pricing tier, and configuring certain settings after you have switched to the higher pricing tier.
 
-スケーリングの詳細については、「[Azure App Service の Web アプリをスケーリングする](web-sites-scale.md)」を参照してください。
+For more information on scaling, see [Scale a web app in Azure App Service](web-sites-scale.md).
 
-加えて、アプリケーションを複数のインスタンスで実行することもできます。処理能力がアップするだけでなく、ある程度の耐障害性を確保することができます。この場合、1 つのインスタンスでプロセスがダウンしても、他のインスタンスが要求の処理を続行します。
+Additionally, you can choose to run your application on more than one instance . This not only provides you with more processing capability, but also gives you some amount of fault tolerance. If the process goes down on one instance, the other instance will still continue serving requests.
 
-スケーリングは、[手動] または [自動] に設定することができます。
+You can set the scaling to be Manual or Automatic.
 
-####	AutoHeal を使用する
+####    <a name="use-autoheal"></a>Use AutoHeal
 
-AutoHeal は、選択された設定 (構成の変更、要求、メモリに基づく制限、要求の実行に必要な時間など) に従って、アプリのワーカー プロセスをリサイクルします。ほとんどの場合、問題を回復するための一番の近道は、プロセスをリサイクルすることです。Web アプリはいつでも、Azure ポータル内から直接、再起動できますが、AutoHeal はユーザーの介入なしでそれを自動的に実行します。必要な作業は、Web アプリのルート web.config にいくつかのトリガーを追加することだけです。.Net アプリケーション以外でも、これらの設定は同じように作用します。
+AutoHeal recycles the worker process for your app based on settings you choose (like configuration changes, requests, memory-based limits, or the time needed to execute a request). Most of the time, recycle the process is the fastest way to recover from a problem. Though you can always restart the web app from directly within the Azure Portal, AutoHeal will do it automatically for you. All you need to do is add some triggers in the root web.config for your web app. Note that these settings would work in the same way even if your application is not a .Net one.
 
-詳細については、[Azure Web Sites の自動復旧](/blog/auto-healing-windows-azure-web-sites/)に関するページを参照してください。
+For more information, see [Auto-Healing Azure Web Sites](/blog/auto-healing-windows-azure-web-sites/).
 
-####	Web アプリを再起動する
+####    <a name="restart-the-web-app"></a>Restart the web app
 
-1 回限りの問題であれば、通常これが最も簡単な復旧方法です。アプリを停止または再起動するためのオプションは、[Azure ポータル](https://portal.azure.com/)の Web アプリ ブレードにあります。
+This is often the simplest way to recover from one-time issues. On the [Azure Portal](https://portal.azure.com/), on your web app’s blade, you have the options to stop or restart your app.
 
- ![パフォーマンスの問題を解決するために Web アプリを再起動する](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
+ ![restart web app to solve performance issues](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Web アプリの管理には、Azure PowerShell を使用することもできます。詳細については、[リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
+You can also manage your web app using Azure Powershell. For more information, see [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

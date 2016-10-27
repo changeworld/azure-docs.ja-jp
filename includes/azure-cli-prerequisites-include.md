@@ -1,7 +1,10 @@
-## 前提条件: Azure CLI のインストール
+## <a name="prerequisite:-install-the-azure-cli"></a>Prerequisite: Install the Azure CLI
 
-この記事の手順を実行するには、[Mac、Linux、および Windows 用の Azure コマンド ライン インターフェイス (Azure CLI) をインストールし](../articles/xplat-cli-install.md)、[Azure にログオン](../articles/xplat-cli-connect.md)する必要があります。
+To perform the steps in this article, you need to [install the Azure Command-Line Interface for Mac, Linux, and Windows (Azure CLI)](../articles/xplat-cli-install.md) and you need to [log on to Azure](../articles/xplat-cli-connect.md). 
 
-> [AZURE.NOTE] Azure アカウントをお持ちでない場合は、取得する必要があります。[ここで無料試用版](../articles/active-directory/sign-up-organization.md)にサインアップしてください。さらに、完全に理解するために、[jq](https://stedolan.github.io/jq/) または他のいくつかの JSON 解析ツールまたはライブラリをインストールする必要があります。
+> [AZURE.NOTE] If you don't have an Azure account, you need one. Go sign up for a [free trial here](../articles/active-directory/sign-up-organization.md). In addition, to follow along completely you need to have either [jq](https://stedolan.github.io/jq/) or some other JSON parsing tool or library installed.
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

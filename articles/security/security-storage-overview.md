@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Storage のセキュリティの概要 | Microsoft Azure"
-   description=" Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。この記事では、Azure Storage で使用できる Azure のコア セキュリティ機能の概要について説明します。"
+   pageTitle="Azure Storage Security Overview | Microsoft Azure"
+   description=" Azure Storage is the cloud storage solution for modern applications that rely on durability, availability, and scalability to meet the needs of their customers. This article provides an overview of the core Azure security features that can be used with Azure Storage. "
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,89 +16,94 @@
    ms.date="09/16/2016"
    ms.author="terrylan"/>
 
-# Azure Storage のセキュリティの概要
 
-Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。Azure Storage には、包括的な一連のセキュリティ機能が用意されています。
+# <a name="azure-storage-security-overview"></a>Azure storage security overview
 
-- ストレージ アカウントを、ロールベースのアクセス制御と Azure Active Directory を使用して保護できます。
-- アプリケーションと Azure の間で送信されるデータを、クライアント側暗号化、HTTPS、または SMB 3.0 使用して保護できます。
-- Storage Service Encryption を使用して Azure Storage に書き込むときに、データが自動的に暗号化されるように設定することができます。
-- 仮想マシンに使用する OS とデータ ディスクを、Azure Disk Encryption を使用して暗号化されるように設定できます。
-- Shared Access Signature を使用して、Azure Storage 内のデータ オブジェクトに対する委任されたアクセス権を付与できます。
-- Storage Analytics を使用して、ユーザーがストレージにアクセスするときに使用した認証方法を追跡できます。
+Azure Storage is the cloud storage solution for modern applications that rely on durability, availability, and scalability to meet the needs of their customers. Azure Storage provides a comprehensive set of security capabilities:
 
-Azure Storage でのセキュリティの詳細については、「[Azure Storage セキュリティ ガイド](../storage/storage-security-guide.md)」を参照してください。このガイドには、ストレージ アカウント キー、転送中および保存時のデータ暗号化、Storage Analytics など、Azure Storage のセキュリティ機能が詳しく説明されています。
+- The storage account can be secured using Role-Based Access Control and Azure Active Directory.
+- Data can be secured in transit between an application and Azure by using Client-Side Encryption, HTTPS, or SMB 3.0.
+- Data can be set to be automatically encrypted when written to Azure Storage using Storage Service Encryption.
+- OS and Data disks used by virtual machines can be set to be encrypted using Azure Disk Encryption.
+- Delegated access to the data objects in Azure Storage can be granted using Shared Access Signatures.
+- The authentication method used by someone when they access storage can be tracked using Storage analytics.
 
-この記事では、Azure Storage で使用できる Azure のセキュリティ機能の概要について説明します。各機能の詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
+For a more detailed look at security in Azure Storage, see the [Azure Storage security guide](../storage/storage-security-guide.md). This guide provides a deep dive into the security features of Azure Storage such as storage account keys, data encryption in transit and at rest, and storage analytics.
 
-この記事では、以下の主要機能について扱います。
+This article provides an overview of Azure security features that can be used with Azure Storage. Links are provided to articles that give details of each feature so you can learn more.
 
-- ロールベースのアクセス制御
-- ストレージ オブジェクトへの委任されたアクセス
-- 転送中の暗号化
-- 保存時の暗号化/Storage Service Encryption
+Here are the core features to be covered in this article:
+
+- Role-Based Access Control
+- Delegated access to storage objects
+- Encryption in transit
+- Encryption at rest/Storage Service Encryption
 - Azure Disk Encryption
 - Azure Key Vault
 
-## ロール ベースのアクセス制御 (RBAC)
+## <a name="role-based-access-control-(rbac)"></a>Role-Based Access Control (RBAC)
 
-ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。[組み込み RBAC ロール](../active-directory/role-based-access-built-in-roles.md) (ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。
+You can secure your storage account with Role-Based Access Control (RBAC). Restricting access based on the [need to know](https://en.wikipedia.org/wiki/Need_to_know) and [least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) security principles is imperative for organizations that want to enforce security policies for data access. These access rights are granted by assigning the appropriate RBAC role to groups and applications at a certain scope. You can use [built-in RBAC roles](../active-directory/role-based-access-built-in-roles.md), such as Storage Account Contributor, to assign privileges to users.
 
-詳細情報:
+Learn more:
 
-- [Azure Active Directory のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
+- [Azure Active Directory Role-based Access Control](../active-directory/role-based-access-control-configure.md)
 
-## ストレージ オブジェクトへの委任されたアクセス
+## <a name="delegated-access-to-storage-objects"></a>Delegated access to storage objects
 
-Shared Access Signature (SAS) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。SAS により、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。この制限付きアクセス許可を付与するとき、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。
+A shared access signature (SAS) provides delegated access to resources in your storage account. The SAS means that you can grant a client limited permissions to objects in your storage account for a specified period of time and with a specified set of permissions. You can grant these limited permissions without having to share your account access keys. The SAS is a URI that encompasses in its query parameters all the information necessary for authenticated access to a storage resource. To access storage resources with the SAS, the client only needs to pass in the SAS to the appropriate constructor or method.
 
-詳細情報:
+Learn more:
 
-- [SAS モデルについて](../storage/storage-dotnet-shared-access-signature-part-1.md)
-- [BLOB ストレージでの SAS の作成と使用](../storage/storage-dotnet-shared-access-signature-part-2.md)
+- [Understanding the SAS model](../storage/storage-dotnet-shared-access-signature-part-1.md)
+- [Create and use a SAS with Blob storage](../storage/storage-dotnet-shared-access-signature-part-2.md)
 
-## 転送中の暗号化
-転送中の暗号化は、ネットワーク間でデータを転送するときにデータを保護するメカニズムです。Azure Storage では、以下を使用してデータをセキュリティ保護できます。
+## <a name="encryption-in-transit"></a>Encryption in transit
+Encryption in transit is a mechanism of protecting data when it is transmitted across networks. With Azure Storage you can secure data using:
 
-- [トランスポートレベルの暗号化](../storage/storage-security-guide.md#encryption-in-transit) (Azure Storage の内外にデータを転送する場合の HTTPS など)。
-- [ワイヤ暗号化](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (Azure ファイル共有の SMB 3.0 暗号化など)。
-- [クライアント側の暗号化](../storage/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage) (Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
+- [Transport-level encryption](../storage/storage-security-guide.md#encryption-in-transit), such as HTTPS when you transfer data into or out of Azure Storage.
+- [Wire encryption](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares), such as SMB 3.0 encryption for Azure File Shares.
+- [Client-side encryption](../storage/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage), to encrypt the data before it is transferred into storage and to decrypt the data after it is transferred out of storage.
 
-クライアント側の暗号化の詳細:
+Learn more about client-side encryption:
 
-- [Client-Side Encryption for Microsoft Azure Storage (Microsoft Azure Storage のクライアント側の暗号化)](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-- [Cloud security controls series: Encrypting Data in Transit (クラウドのセキュリティ管理シリーズ: 転送中のデータの暗号化)](http://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+- [Client-Side Encryption for Microsoft Azure Storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
+- [Cloud security controls series: Encrypting Data in Transit](http://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
-## 保存時の暗号化
+## <a name="encryption-at-rest"></a>Encryption at rest
 
-多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで[保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)は欠かせません。Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
+For many organizations, [data encryption at rest](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) is a mandatory step towards data privacy, compliance, and data sovereignty. There are three Azure features that provide encryption of data that is “at rest”:
 
-- [Storage Service Encryption](../storage/storage-security-guide.md#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
-- [クライアント側の暗号化](../storage/storage-security-guide.md#client-side-encryption)には、保存時の暗号化機能もあります。
-- [Azure Disk Encryption](../storage/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
+- [Storage Service Encryption](../storage/storage-security-guide.md#encryption-at-rest) allows you to request that the storage service automatically encrypt data when writing it to Azure Storage.
+- [Client-side Encryption](../storage/storage-security-guide.md#client-side-encryption) also provides the feature of encryption at rest.
+- [Azure Disk Encryption](../storage/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) allows you to encrypt the OS disks and data disks used by an IaaS virtual machine.
 
-Storage Service Encryption の詳細:
+Learn more about Storage Service Encryption:
 
-- [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) は、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) で使用できます。他の Azure Storage の種類の詳細については、[File Storage](https://azure.microsoft.com/services/storage/files/)、[ディスク (Premium Storage)](https://azure.microsoft.com/services/storage/premium-storage/)、[Table Storage](https://azure.microsoft.com/services/storage/tables/)、および [Queue Storage](https://azure.microsoft.com/services/storage/queues/) に関するページをそれぞれ参照してください。
+- [Azure Storage Service Encryption](https://azure.microsoft.com/services/storage/) is available for [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/). For details on other Azure storage types, see [File](https://azure.microsoft.com/services/storage/files/), [Disk (Premium Storage)](https://azure.microsoft.com/services/storage/premium-storage/), [Table](https://azure.microsoft.com/services/storage/tables/), and [Queue](https://azure.microsoft.com/services/storage/queues/).
 - [Azure Storage Service Encryption for Data at Rest](../storage/storage-service-encryption.md)
 
-## Azure Disk Encryption
+## <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-仮想マシン (VM) 向けの Azure Disk Encryption は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) で管理するキーとポリシーを使用して VM ディスク (ブート ディスクとデータ ディスクを含む) を暗号化するソリューションです。組織のセキュリティとコンプライアンスの要件に対処する際に大きな効果を発揮します。
+Azure Disk Encryption for virtual machines (VMs) helps you address organizational security and compliance requirements by encrypting your VM disks (including boot and data disks) with keys and policies you control in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
-Linux および Windows オペレーティング システムに対して機能します。Key Vault により、ディスク暗号化キーの保護、管理、および監査を行うこともできます。VM ディスク内のすべてのデータは、Azure Storage アカウントでの保存中に、業界標準の暗号化技術を使用して暗号化されます。Windows 向けの Disk Encryption ソリューションのベースは [Microsoft BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)であり、Linux 向けソリューションは [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) がベースになっています。
+Disk Encryption for VMs works for Linux and Windows operating systems. It also uses Key Vault to help you safeguard, manage, and audit use of your disk encryption keys. All the data in your VM disks is encrypted at rest by using industry-standard encryption technology in your Azure Storage accounts. The Disk Encryption solution for Windows is based on [Microsoft BitLocker Drive Encryption](https://technet.microsoft.com/library/cc732774.aspx), and the Linux solution is based on [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
-詳細情報:
+Learn more:
 
-- [Azure Disk Encryption for Windows and Linux IaaS Virtual Machines (Windows と Linux IaaS Virtual Machines の Azure Disk Encryption)](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+- [Azure Disk Encryption for Windows and Linux IaaS Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
-## Azure Key Vault
+## <a name="azure-key-vault"></a>Azure Key Vault
 
-Azure Disk Encryption では [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を利用してディスク暗号化キーとシークレットを Key Vault サブスクリプションで制御および管理でき、Azure Storage に保存されている仮想マシン ディスク内のすべてのデータを確実に暗号化できます。Azure Key Vault を使用して、キーとポリシーの使用状況を監査する必要があります。
+Azure Disk Encryption uses [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) to help you control and manage disk encryption keys and secrets in your key vault subscription, while ensuring that all data in the virtual machine disks are encrypted at rest in your Azure Storage. You should use Key Vault to audit keys and policy usage.
 
-詳細情報:
+Learn more:
 
-- [Azure Key Vault とは](../key-vault/key-vault-whatis.md)
-- [Azure Key Vault の概要](../key-vault/key-vault-get-started.md)
+- [What is Azure Key Vault?](../key-vault/key-vault-whatis.md)
+- [Get started with Azure Key Vault](../key-vault/key-vault-get-started.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

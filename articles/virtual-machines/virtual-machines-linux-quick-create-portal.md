@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure ポータルを使用した Linux VM の作成 | Microsoft Azure"
-    description="Azure ポータルを使用して Linux VM を作成します。"
+    pageTitle="Create a Linux VM using the Azure Portal | Microsoft Azure"
+    description="Create a Linux VM using the Azure Portal."
     services="virtual-machines-linux"
     documentationCenter=""
     authors="vlivech"
@@ -19,63 +19,68 @@
     ms.author="v-livech"
 />
 
-# ポータルを使用して Azure に Linux VM を作成する
+
+# <a name="create-a-linux-vm-on-azure-using-the-portal"></a>Create a Linux VM on Azure using the Portal
 
 
-この記事では、[Azure ポータル](https://portal.azure.com/)を使用して Linux 仮想マシンを簡単に作成する方法について説明します。唯一の要件は、[Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)および [SSH 公開キーと秘密キーのファイル](virtual-machines-linux-mac-create-ssh-keys.md)です。
+This article shows how to use the [Azure portal](https://portal.azure.com/) to create a Linux Virtual Machine quickly. The only requirements are [an Azure account](https://azure.microsoft.com/pricing/free-trial/) and [SSH public and private key files](virtual-machines-linux-mac-create-ssh-keys.md).
 
 
-1. Azure アカウント ID で Azure ポータルにサインインしたうえで、左上隅にある **[+ 新規]** をクリックします。
+1. Signed into the Azure portal with your Azure account identity, click **+ New** in the upper left corner:
 
     ![screen1](../media/virtual-machines-linux-quick-create-portal/screen1.png)
 
-2. **[Marketplace]** で **[Virtual Machines]** をクリックし、**[おすすめアプリ]** イメージ リストから **[Ubuntu Server 14.04 LTS]** をクリックします。下部でデプロイメント モデルとして `Resource Manager` が選択されていることを確認してから、**[作成]** をクリックします。
+2. Click **Virtual Machines** in the **Marketplace** then **Ubuntu Server 14.04 LTS** from the **Featured Apps** images list.  Verify at the bottom that the deployment model is `Resource Manager` and then click **Create**.
 
     ![screen2](../media/virtual-machines-linux-quick-create-portal/screen2.png)
 
-3. **[基本]** ページで、以下の項目を入力します。
-    - VM の名前
-    - 管理者ユーザーのユーザー名
-    - 認証の種類 (**[SSH 公開キー]** に設定)
-    - 文字列で表された SSH 公開キー (`~/.ssh/` ディレクトリから取得)
-    - リソース グループ名 (または既存のグループを選択)
+3. On the **Basics** page, enter:
+    - a name for the VM
+    - a username for the Admin User
+    - the Authentication Type set to **SSH public key**
+    - your SSH public Key as a string (from your `~/.ssh/` directory)
+    - a resource group name or select an existing group
 
-    **[OK]** をクリックして続行し、VM サイズを選択すると、以下のように表示されます。
+    and Click **OK** to continue and choose the VM size; it should look something like the following:
 
     ![screen3](../media/virtual-machines-linux-quick-create-portal/screen3.png)
 
-4. **DS1** サイズを選び (Premium SSD に Ubuntu をインストールする場合)、**[選択]** をクリックして設定を構成します。
+4. Choose the **DS1** size, which installs Ubuntu on a Premium SSD, and click **Select** to configure settings.
 
     ![screen4](../media/virtual-machines-linux-quick-create-portal/screen4.png)
 
-5. **[設定]** の [ストレージ] と [ネットワーク] の値は既定値のままにし、**[OK]** をクリックして概要を表示します。DS1 を選択するとディスクの種類が Premium SSD に設定されることに注意してください。**S** は SSD を示します。
+5. In **Settings**, leave the defaults for Storage and Network values, and click **OK** to view the summary.  Notice the disk type has been set to Premium SSD by choosing DS1, the **S** notates SSD.
 
     ![screen5](../media/virtual-machines-linux-quick-create-portal/screen5.png)
 
-6. 新しい Ubuntu VM の設定を確認し、**[OK]** をクリックします。
+6. Confirm the settings for your new Ubuntu VM, and click **OK**.
 
     ![screen6](../media/virtual-machines-linux-quick-create-portal/screen6.png)
 
-7. ポータルのダッシュボードを開き、**[ネットワーク インターフェイス]** で NIC を選択します。
+7. Open the Portal Dashboard and in **Network interfaces** choose your NIC
 
     ![screen7](../media/virtual-machines-linux-quick-create-portal/screen7.png)
 
-8. NIC 設定でパブリック IP アドレスのメニューを開きます。
+8. Open the Public IP addresses menu under the NIC settings
 
     ![screen8](../media/virtual-machines-linux-quick-create-portal/screen8.png)
 
-9. SSH 公開キーを使用して、パブリック IP に SSH 接続します。
+9. SSH into the public IP using your SSH public key
 
 ```
 ssh -i ~/.ssh/azure_id_rsa ubuntu@13.91.99.206
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-テストまたはデモンストレーション用の Linux VM を迅速に作成しました。インフラストラクチャに合わせてカスタマイズした Linux VM を作成する方法については、次の記事を参照してください。
+Now you've created a Linux VM quickly to use for testing or demonstration purposes. To create a Linux VM customized for your infrastructure, you can follow any of these articles.
 
-- [テンプレートを使用して Azure に Linux VM を作成する](virtual-machines-linux-cli-deploy-templates.md)
-- [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
-- [Azure CLI を使用して新しく Linux VM を作成する](virtual-machines-linux-create-cli-complete.md)
+- [Create a Linux VM on Azure using Templates](virtual-machines-linux-cli-deploy-templates.md)
+- [Create an SSH Secured Linux VM on Azure using Templates](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+- [Create a Linux VM using the Azure CLI](virtual-machines-linux-create-cli-complete.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

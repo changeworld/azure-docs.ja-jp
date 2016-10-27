@@ -1,134 +1,143 @@
 <properties
-	pageTitle="エラスティック データベース プールの使用に適した状況"
-	description="弾力性データベース プールは、弾力性データベースのグループで共有される使用可能なリソースのコレクションです。このドキュメントは、データベースのグループに対して、エラスティック データベース プールを使用することが適切であるか評価するガイダンスです。"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="When should an elastic database pool be used?"
+    description="An elastic database pool is a collection of available resources that are shared by a group of elastic databases. This document provides guidance to help assess the suitability of using an elastic database pool for a group of databases."
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="NA"
-	ms.date="08/08/2016"
-	ms.author="sstein"
-	ms.workload="data-management"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"/>
+    ms.service="sql-database"
+    ms.devlang="NA"
+    ms.date="08/08/2016"
+    ms.author="sstein"
+    ms.workload="data-management"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"/>
 
 
-# エラスティック データベース プールの使用に適した状況
-エラスティック データベース プールを使用することにより、それに見合うコスト効率が得られるかどうかについて、データベースの使用パターン、およびエラスティック データベース プールと Single Database 間の価格差に基づいて評価します。既存の SQL データベースのセットに必要な現在のプール サイズを決定するためのガイダンスも含まれています。
 
-- プールの概要については、「[リソースを共有するエラスティック データベース プールを使用して SQL データベースの爆発的な成長に対処する](sql-database-elastic-pool.md)」を参照してください。
+# <a name="when-should-an-elastic-database-pool-be-used?"></a>When should an elastic database pool be used?
+Assess whether using an elastic database pool is cost efficient based on database usage patterns and pricing differences between an elastic database pool and single databases. Additional guidance is also provided to assist in determining the current pool size required for an existing set of SQL databases.  
 
-> [AZURE.NOTE] エラスティック プールは、現在プレビュー段階にある米国中北部とインド西部を除くすべての Azure リージョンで一般公開 (GA) されています。プレビュー段階のリージョンでも、できるだけ早く一般公開される予定です。
+- For an overview of pools, see [SQL Database elastic database pools](sql-database-elastic-pool.md).
 
-## エラスティック データベース プール
+> [AZURE.NOTE] Elastic pools are generally available (GA) in all Azure regions except West India where it is currently in preview.  GA of elastic pools in this region will be provided as soon as possible.
 
-SaaS 開発者は、複数のデータベースで構成される大規模なデータ層の上にアプリケーションを構築します。アプリケーションの一般的なパターンでは、顧客ごとに Single Database をプロビジョニングします。しかし、各顧客の使用パターンは変動して予測不可能な場合が多く、各データベース ユーザーのそれぞれについてリソース要件を予測することも困難です。したがって、開発者は、すべてのデータベースのスループットと応答時間を改善するために、かなりのコストを費やしてリソースを過剰にプロビジョニングする場合があります。一方で、開発者があまりコストをかけず、顧客がパフォーマンスの低下に見舞われる場合もあります。エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
+## <a name="elastic-database-pools"></a>Elastic database pools
 
-Azure SQL Database のエラスティック プールを使用すると、SaaS 開発者は、各データベースのパフォーマンスに弾力性を提供しながら、データベース グループの価格に対するパフォーマンスを所定の予算内で最適化できます。また、開発者は、複数のデータベースで共有されるプールのエラスティック データベース トランザクション ユニット (eDTU) を購入することで、個々のデータベースの使用期間が予測しづらい場合にも対応できます。プールの eDTU 要件は、そのデータベースの使用量の合計によって決まります。プールで使用可能な eDTU の量は、開発者の予算に応じて決められます。プールを利用すれば、開発者は、使用するプールに関して予算がパフォーマンスに与える影響、またはパフォーマンスが予算に与える影響を検討しやすくなります。開発者は、単純にプールにデータベースを追加し、データベースに対する最小および最大の eDTU を設定し、予算に基づいてプールの eDTU を設定します。開発者はプールを使用することで、リーン スタートアップの段階から成熟企業の段階に至るまで、サービスをシームレスに拡大し続けることができます。
-## プールを検討すべき状況
+SaaS developers build applications on top of large scale data-tiers consisting of multiple databases. A common application pattern is to provision a single database for each customer. But different customers often have varying and unpredictable usage patterns, and it is difficult to predict the resource requirements of each individual database user. So the developer may overprovision resources at considerable expense to ensure favorable throughput and response times for all databases. Or, the developer can spend less and risk a poor performance experience for their customers. To learn more about design patterns for SaaS applications using elastic pools, see [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
-プールは、多数のデータベースが特定の使用パターンで使用されている場合に適しています。あるデータベースは、使用が急増することはあまりなく、平均使用量が低いパターンの特徴を持っています。
+Elastic pools in Azure SQL Database enable SaaS developers to optimize the price performance for a group of databases within a prescribed budget while delivering performance elasticity for each database. Pools enable the developer to purchase elastic Database Transaction Units (eDTUs) for a pool shared by multiple databases to accommodate unpredictable periods of usage by individual databases. The eDTU requirement for a pool is determined by the aggregate utilization of its databases. The amount of eDTUs available to the pool is controlled by the developer budget. Pools make it easy for the developer to reason over the impact of budget on performance and vice versa for their pool. The developer simply adds databases to the pool, sets the minimum and maximum eDTUs  for the databases, and then sets the eDTU of the pool based on their budget. A developer can use pools  to seamlessly grow their service from a lean startup to a mature business at ever-increasing scale.  
+## <a name="when-to-consider-a-pool"></a>When to consider a pool
 
-プールに追加できるデータベースが多ければ多いほど、節約量も多くなります。アプリケーションの使用パターンにもよりますが、S3 データベースが 2 つあれば節約を実現できます。
+Pools are well suited for a large number of databases with specific utilization patterns. For a given database, this pattern is characterized by low average utilization with relatively infrequent utilization spikes.
 
-以下のセクションでは、特定のデータベースのコレクションをプールに追加した場合にメリットがあるかどうかを評価する方法を確認できます。この例では Standard プールを使用していますが、同じ原則は Basic プールと Premium プールにも当てはまります。
+The more databases you can add to a pool the greater your savings become. Depending on your application utilization pattern, it is possible to see savings with as few as two S3 databases.  
 
-### データベースの使用パターンの評価
+The following sections help you understand how to assess if your specific collection of databases will benefit from being in a pool. The examples use Standard pools but the same principles also apply to Basic and Premium pools.
 
-次の図では、アイドル時間は長いが、定期的にアクティビティが急増するデータベースを示しています。このような使用パターンは、プールに適しています。
+### <a name="assessing-database-utilization-patterns"></a>Assessing database utilization patterns
+
+The following figure shows an example of a database that spends much time idle, but also periodically spikes with activity. This is a utilization pattern that is well suited for a pool:
 
    ![a single database suitable for a pool](./media/sql-database-elastic-pool-guidance/one-database.png)
 
-上に示した DB1 の 5 分間のピークは 90 DTU ですが、全体的な平均使用量は 5 DTU 未満です。Single Database でこのワークロードを実行するためには S3 パフォーマンス レベルが必要ですが、このパフォーマンスを確保すると、アクティビティの少ない時間帯にほとんどのリソースが使用されなくなります。
+For the five-minute period illustrated above, DB1 peaks up to 90 DTUs, but its overall average usage is less than five DTUs. An S3 performance level is required to run this workload in a single database, but this leaves most of the resources unused during periods of low activity.
 
-プールを利用すれば、これらの未使用の DTU を複数のデータベースで共有できるので、必要な DTU の総量と全体的なコストを削減できます。
+A pool allows these unused DTUs to be shared across multiple databases, and so reduces the total amount of DTUs needed and overall cost.
 
-DB1 と類似する使用パターンを持つデータベースが他にもあると仮定し、前の例に追加しています。次に示す 2 つの図では、時間が経過しても使用量のパターンが重ならないことを示すために、4 つのデータベースと 20 個のデータベースの使用量が同じグラフに重ねられています。
+Building on the previous example, suppose there are additional databases with similar utilization patterns as DB1. In the next two figures below, the utilization of four databases and 20 databases are layered onto the same graph to illustrate the non-overlapping nature of their utilization over time:
 
    ![four databases with a utilization pattern suitable for a pool](./media/sql-database-elastic-pool-guidance/four-databases.png)
 
    ![twenty databases with a utilization pattern suitable for a pool](./media/sql-database-elastic-pool-guidance/twenty-databases.png)
 
-全 20 のデータベースの DTU 使用量合計は、上図では黒線で示されています。これは、DTU の合計使用量が 100 DTU を超えることはなく、20 のデータベースでこの期間にわたって 100 eDTU を共有することが可能であることを示しています。これは、Single Database のそれぞれのパフォーマンス レベルが S3 であるときと比較した場合、DTU を 20 倍削減し価格を 13 倍下げます。
+The aggregate DTU utilization across all 20 databases is illustrated by the black line in the above figure. This shows that the aggregate DTU utilization never exceeds 100 DTUs, and indicates that the 20 databases can share 100 eDTUs over this time period. This results in a 20x reduction in DTUs and a 13x price reduction compared to placing each of the databases in S3 performance levels for single databases.
 
 
-次の理由からこの例は理想的です。
+This example is ideal for the following reasons:
 
-- 各データベースのピーク時の使用量と、平均使用量に大きな差があります。
-- 各データベースのピーク使用時間が異なります。
-- eDTU が多数のデータベースで共有されています。
+- There are large differences between peak utilization and average utilization per database.  
+- The peak utilization for each database occurs at different points in time.
+- eDTUs are shared between a large number of databases.
 
-プールの価格は、プール eDTU の機能を表します。プールの eDTU 単価は Single Database の DTU 単価の 1.5 倍ですが、**プール eDTU は、多数のデータベースで共有できるので、多くの場合合計 eDTU は少なくて済みます**。これらの価格と eDTU 共有の特徴が、プールで節約を可能にするベースとなります。
+The price of a pool is a function of the pool eDTUs. While the eDTU unit price for a pool is 1.5x greater than the DTU unit price for a single database, **pool eDTUs can be shared by many databases and so in many cases fewer total eDTUs are needed**. These distinctions in pricing and eDTU sharing are the basis of the price savings potential that pools can provide.  
 
-データベース数とデータベースの使用量に関連する次の経験則から、Single Database でのパフォーマンス レベルを使用した場合と比べて、プールがコスト削減に繋がることがわかります。
+The following rules of thumb related to database count and database utilization help to ensure that a pool delivers reduced cost compared to using performance levels for single databases.
 
-### 最小数のデータベース
+### <a name="minimum-number-of-databases"></a>Minimum number of databases
 
-Single Database のパフォーマンス レベルの DTU 合計が、プールに必要な eDTU の 1.5 倍を超える場合、エラスティック プールのコスト効率の方が高くなります。可能なサイズの詳細については、「[エラスティック データベース プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
+If the sum of the DTUs of performance levels for single databases is more than 1.5x the eDTUs needed for the pool, then an elastic pool is more cost effective. For available sizes, see [eDTU and storage limits for elastic database pools and elastic databases](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
 
-***例***<br> Single Database のパフォーマンス レベルを使用した場合と比較して、100 eDTU のプールのコスト効果の方が高くなるようにするには、最低 2 個の S3 データベースまたは最低 15 個の S0 データベースが必要です。
+***Example***<br>
+At least two S3 databases or at least 15 S0 databases are needed for a 100 eDTU pool to be more cost-effective than using performance levels for single databases.
 
-### 同時にピークとなるデータベースの最大数
+### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maximum number of concurrently peaking databases
 
-eDTU を共有する場合は、プール内のすべてのデータベースが、単一のデータベースのパフォーマンス レベルを使用している場合の eDTU を上限まで同時に使用できるわけではありません。同時にピークになるデータベース数が少ないほど、プール eDTU を低く設定してよりプールのコスト効果を高めることができます。一般的に、その eDTU の上限まで同時にピークとなることができるのは、プールの 2/3 (67%) 以下のデータベースです。
+By sharing eDTUs, not all databases in a pool can simultaneously use eDTUs up to the limit available when using performance levels for single databases. The fewer databases that concurrently peak, the  lower the pool eDTU can be set and the more cost-effective the pool becomes. In general, not more than 2/3 (or 67%) of the databases in the pool should simultaneously peak to their eDTU limit.
 
-***例***<br> 200 eDTU のプール内の 3 つの S3 データベースのコストを削減する場合、同時にピークになることが許容されるのは、これらのデータベースのうちの 2 つまでです。これら 4 つの S3 データベースの 3 つ以上が同時にピークとなる場合、プール サイズを 200 eDTU よりも大きくする必要があります。プール サイズを 200 eDTU よりも大きく変更した場合、Single Database のパフォーマンス レベルを使用した場合よりもコストを低く抑えるには、プールの S3 データベース数を増やす必要があります。
+***Example***<br>
+To reduce costs for three S3 databases in a 200 eDTU pool, at most two of these databases can simultaneously peak in their utilization.  Otherwise, if more than two of these four S3 databases simultaneously peak, the pool would have to be sized to more than 200 eDTUs.  And if the pool is resized to more than 200 eDTUs, more S3 databases would need to be added to the pool to keep costs lower than performance levels for single databases.  
 
-この例では、プール内の他のデータベースの使用は考慮されていないことに注意してください。すべてのデータベースがある特定の時間にいくらか使用されている場合、同時にピークとなることができるのは、2/3 (67%) 未満のデータベースです。
+Note this example does not consider utilization of other databases in the pool. If all databases have some utilization at any given point in time, then less than 2/3 (or 67%) of the databases can peak simultaneously.
 
-### 各データベースの DTU の使用量
+### <a name="dtu-utilization-per-database"></a>DTU utilization per database
 
-データベースのピーク時と平均使用時の差が大きいということは、使用量が低い時間が長く、使用量が高い時間が短いことを示します。使用量がこのようなパターンになっている場合、リソースを複数のデータベースで共有するのが適しています。データベースのピーク時の使用量が平均使用量よりも約 1.5 倍多い場合、プールを使用することを検討した方がよいでしょう。
+A large difference between the peak and average utilization of a database indicates prolonged periods of low utilization and short periods of high utilization. This utilization pattern is ideal for sharing resources across databases. A database should be considered for a pool when its peak utilization is about 1.5 times greater than its average utilization.
 
-***例***<br> S3 データベースが、ピーク時には 100 DTU を使用し、平均では 67 DTU 以下を使用する場合、eDTU をプールで共有するのが適しています。または、S1 データベースがピーク時には 20 DTU を使用し、平均では 13 DTU 以下を使用する場合、プールが適しています。
+***Example***<br>
+An S3 database that peaks to 100 DTUs and on average uses 67 DTUs or less is a good candidate for sharing eDTUs in a pool.  Alternatively, an S1 database that peaks to 20 DTUs and on average uses 13 DTUs or less is a good candidate for a pool.
 
-## エラスティック プールのサイズ設定
+## <a name="sizing-an-elastic-pool"></a>Sizing an elastic pool
 
-プールに最適なサイズは、eDTU の合計とプール内のすべてのデータベースに必要なストレージ リソースに左右されます。これには、次の値のうちの大きい方を特定する必要があります。
+The best size for a pool depends on the aggregate eDTUs and storage resources needed for all databases in the pool. This involves determining the larger of the following:
 
-* プール内のすべてのデータベースに使用される DTU の最大値。
-* プール内のすべてのデータベースに使用される記憶域の最大バイト数。
+* Maximum DTUs utilized by all databases in the pool.
+* Maximum storage bytes utilized by all databases in the pool.
 
-可能なサイズの詳細については、「[エラスティック データベース プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
+For available sizes, see [eDTU and storage limits for elastic database pools and elastic databases](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
 
-SQL Database は、既存の SQL Database サーバー内にあるデータベースのリソース使用量の履歴を自動的に評価し、Azure ポータルでのプールの適切な構成を推奨します。構成を推奨するだけでなく、サーバー上にあるデータベースのカスタム グループの eDTU 使用量の見積もりが、組み込み済みの機能によって実施されます。対話形式でのプールへのデータベースの追加やデータベースの削除を行い、変更をコミットする前にリソース使用状況分析やサイズ設定のアドバイスを入手できるため、"what-if" 分析が可能です。その方法については、[エラスティック プールの監視、管理、およびサイズ設定に関する記事](sql-database-elastic-pool-manage-portal.md)を参照してください。
+SQL Database automatically evaluates the historical resource usage of databases in an existing SQL Database server and recommends the appropriate pool configuration in the Azure portal. In addition to the recommendations, a built-in experience estimates the eDTU usage for a custom group of databases on the server. This enables you to do a "what-if" analysis by interactively adding databases to the pool and removing them to get resource usage analysis and sizing advice before committing your changes. For a how-to, see [Monitor, manage, and size an elastic pool](sql-database-elastic-pool-manage-portal.md).
 
-柔軟性の高いリソース使用状況評価によって、V12 より前のサーバーに対するアドホックなサイズの見積もりと、さまざまなサーバーのデータベース サイズの見積もりを可能にする方法については、「[エラスティック データベース プールに適したデータベースを識別する PowerShell スクリプト](sql-database-elastic-pool-database-assessment-powershell.md)」を参照してください。
+For more flexible resource usage assessments that allow ad hoc sizing estimates for servers earlier than V12, as well as sizing estimates for databases in different servers, see the [Powershell script for identifying databases suitable for an elastic database pool](sql-database-elastic-pool-database-assessment-powershell.md).
 
-| 機能 | ポータルでの操作|	PowerShell スクリプト|
+| Capability     | Portal experience|   PowerShell script|
 |:---------------|:----------|:----------|
-| 粒度 | 15 秒 | 15 秒
-| プールの場合と Single Database のパフォーマンス レベルの場合の価格差を検討| はい| いいえ
-| 分析対象のデータベースの一覧をカスタマイズ可能| はい| はい
-| 分析で使用される期間をカスタマイズ可能| いいえ| はい
-| サーバーをまたいで、分析対象のデータベースの一覧をカスタマイズ可能| いいえ| はい
-| v11 サーバーにある分析対象のデータベースの一覧をカスタマイズ可能| いいえ| はい
+| Granularity    | 15 seconds | 15 seconds
+| Considers pricing differences between a pool and performance levels for single databases| Yes| No
+| Allows customizing the list of the databases analyzed| Yes| Yes
+| Allows customizing the period of time used in the analysis| No| Yes
+| Allows customizing the list of databases analyzed across different servers| No| Yes
+| Allows customizing the list of databases analyzed on v11 servers| No| Yes
 
-ツールを使用できない場合、プールのコスト効果が Single Database よりも高いかどうかを確認するには、次の手順が役立ちます。
+In cases where you can't use tooling, the following step-by-step can help you estimate whether a pool is more cost-effective than single databases:
 
-1.	プールに必要な eDTU は、次のように評価します。
+1.  Estimate the eDTUs needed for the pool as follows:
 
-    MAX(<*DB の合計数* X *DB ごとの平均 DTU 使用量*> <br> <*同時にピークとなる DB 数* X *DB ごとの DTU 使用量のピーク*)
+    MAX(<*Total number of DBs* X *average DTU utilization per DB*>,<br>
+    <*Number of concurrently peaking DBs* X *Peak DTU utilization per DB*)
 
-2.	プール内のすべてのデータベースに必要なバイト数を追加することで、プールに必要なストレージ領域を見積もります。次に、このストレージの容量を提供する eDTU プール サイズを決定します。eDTU プール サイズに基づくプール ストレージの制限については、「[エラスティック データベース プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
-3.	手順 1. と手順 2. の eDTU の見積もりのうち、大きい方を使用します。
-4.	「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」を参照し、手順 3. の見積もりを超える最小の eDTU プール サイズを探します。
-5.	手順 5. のプールの価格と、Single Database の適切なパフォーマンス レベルを使用した場合の価格を比較します。
+2.  Estimate the storage space needed for the pool by adding the number of bytes needed for all the databases in the pool.  Then determine the eDTU pool size that provides this amount of storage.  For pool storage limits based on eDTU pool size, see [eDTU and storage limits for elastic database pools and elastic databases](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases).
+3.  Take the larger of the eDTU estimates from Step 1 and Step 2.
+4.  See the [SQL Database pricing page](https://azure.microsoft.com/pricing/details/sql-database/) and find the smallest eDTU pool size that is greater than the estimate from Step 3.
+5.  Compare the pool price from Step 5 to the price of using the appropriate performance levels for single databases.
 
 
-## まとめ
+## <a name="summary"></a>Summary
 
-すべての Single Database がプールに適するとは限りません。平均使用量が少なく、使用率の急上昇が比較的少ないデータベースが、候補として適しています。アプリケーションの使用パターンは動的であるため、この記事で説明した情報とツールを使用して初期評価を行い、使用しているデータベースの一部または全部にプールが適しているかどうかを確認してください。この記事は、エラスティック プールが適しているかどうかを判断するための開始点にすぎません。リソースの使用状況の履歴は継続的に監視し、すべてのデータベースのパフォーマンス レベルを常に再評価する必要があることに注意してください。データベースは簡単にエラスティック プールから出し入れできます。また、データベースが大量にある場合、データベースを割り振ることのできるさまざまなサイズのプールを複数持つことが可能であることを念頭に置いてください。
+Not all single databases are optimum candidates for pools. Databases with usage patterns that are characterized by low average utilization and relatively infrequent utilization spikes are excellent candidates. Application usage patterns are dynamic, so use the information and tools described in this article to make an initial assessment to see if a pool is a good choice for some or all of your databases. This article is just a starting point to help with your decision as to whether or not an elastic pool is a good fit. Remember that you should continually monitor historical resource usage and constantly reassess the performance levels of all of your databases. Keep in mind that you can easily move databases in and out of elastic pools, and if you have a very large number of databases you can have multiple pools of varying sizes that you can divide your databases into.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [エラスティック データベース プールを作成します](sql-database-elastic-pool-create-portal.md)
-- [エラスティック データベース プールの監視、管理、およびサイズ設定](sql-database-elastic-pool-manage-portal.md)
-- [SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md)
-- [エラスティック データベース プールに適したデータベースを識別する Powershell スクリプト](sql-database-elastic-pool-database-assessment-powershell.md)
+- [Create an elastic database pool](sql-database-elastic-pool-create-portal.md)
+- [Monitor, manage, and size an elastic database pool](sql-database-elastic-pool-manage-portal.md)
+- [SQL Database options and performance: understand what's available in each service tier](sql-database-service-tiers.md)
+- [PowerShell script for identifying databases suitable for an elastic database pool](sql-database-elastic-pool-database-assessment-powershell.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

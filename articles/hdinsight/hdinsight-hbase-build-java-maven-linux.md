@@ -1,83 +1,84 @@
 <properties
-	pageTitle="Maven と Java を使用した HBase アプリケーションのビルドと、Linux ベースの HDInsight へのデプロイ | Microsoft Azure"
-	description="Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure クラウドの Linux ベースの HDInsight にデプロイする方法について説明します。"
-	services="hdinsight"
-	documentationCenter=""
-	authors="Blackmist"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Build an HBase application using Maven and Java, then deploy to Linux-based HDInsight | Microsoft Azure"
+    description="Learn how to use Apache Maven to build a Java-based Apache HBase application, then deploy it to Linux-based HDInsight in the Azure cloud."
+    services="hdinsight"
+    documentationCenter=""
+    authors="Blackmist"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="hdinsight"
-	ms.workload="big-data"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/14/2016"
-	ms.author="larryfr"/>
+    ms.service="hdinsight"
+    ms.workload="big-data"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/03/2016"
+    ms.author="larryfr"/>
 
-#Linux ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する
 
-Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。その後、Linux ベースの HDInsight クラスターでアプリケーションを使用します。
+#<a name="use-maven-to-build-java-applications-that-use-hbase-with-linux-based-hdinsight-(hadoop)"></a>Use Maven to build Java applications that use HBase with Linux-based HDInsight (Hadoop)
 
-[Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。この記事では、このツールを使用して、Linux ベースの HDInsight クラスターで HBase テーブルの作成、クエリ、削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
+Learn how to create and build an [Apache HBase](http://hbase.apache.org/) application in Java by using Apache Maven. Then use the application with a Linux-based HDInsight cluster.
 
-> [AZURE.NOTE] このドキュメントの手順は、Linux ベースの HDInsight クラスターを使用することを前提としています。Windows ベースの HDInsight クラスターを使用する方法の詳細については、「[Windows ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する](hdinsight-hbase-build-java-maven.md)」を参照してください。
+[Maven](http://maven.apache.org/) is a software project management and comprehension tool that allows you to build software, documentation, and reports for Java projects. In this article, you will learn how to use it to create a basic Java application that that creates, queries, and deletes an HBase table on a Linux-based HDInsight cluster.
 
-##必要条件
+> [AZURE.NOTE] The steps in this document assume that you are using a Linux-based HDInsight cluster. For information on using a Windows-based HDInsight cluster, see [Use Maven to build Java applications that use HBase with Windows-based HDInsight](hdinsight-hbase-build-java-maven.md)
 
-* [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以降
+##<a name="requirements"></a>Requirements
+
+* [Java platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 or later
 
 * [Maven](http://maven.apache.org/)
 
-* [Linux ベースの Azure HDInsight クラスターと HBase](../hdinsight-hbase-get-started-linux.md#create-hbase-cluster)
+* [An Linux-based Azure HDInsight cluster with HBase](../hdinsight-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
 
-    > [AZURE.NOTE] このドキュメントの手順は、HDInsight クラスター バージョン 3.2、3.3、3.4 でテスト済みです。例で指定される既定値は、HDInsight 3.4 クラスターに対応しています。
+    > [AZURE.NOTE] The steps in this document have been tested with HDInsight cluster versions 3.2, 3.3, and 3.4. The default values provided in examples are for a HDInsight 3.4 cluster.
 
-* **SSH と SCP を熟知していること**HDInsight での SSH と SCP の使用方法の詳細については、次の記事をご覧ください。
+* **Familiarity with SSH and SCP**. For more information on using SSH and SCP with HDInsight, see the following:
 
-    * **Linux、Unix、または OS X クライアント**: 「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
+    * **Linux, Unix or OS X clients**: See [Use SSH with Linux-based Hadoop on HDInsight from Linux, OS X or Unix](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-    * **Windows クライアント**: 「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する (プレビュー)](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+    * **Windows clients**: See [Use SSH with Linux-based Hadoop on HDInsight from Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-##プロジェクトを作成する
+##<a name="create-the-project"></a>Create the project
 
-1. 開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します。例: `cd code/hdinsight`
+1. From the command-line in your development environment, change directories to the location where you want to create the project, for example, `cd code/hdinsight`.
 
-2. Maven でインストールされた __mvn__ コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
+2. Use the __mvn__ command, which is installed with Maven, to generate the scaffolding for the project.
 
-		mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+        mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
-	これにより、__artifactID__ パラメーターで指定した名前 (この例では **hbaseapp**) で、新しいディレクトリが現在のディレクトリに作成されます。 このディレクトリには、次の項目が含まれます。
+    This creates a new directory in the current directory, with the name specified by the __artifactID__ parameter (**hbaseapp** in this example.) This directory will contain the following items:
 
-	* __pom.xml__: プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
+    * __pom.xml__:  The Project Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) contains information and configuration details used to build the project.
 
-	* __src__: アプリケーションを作成する __main\\java\\com\\microsoft\\examples__ ディレクトリに含まれるディレクトリです。
+    * __src__: The directory that contains the __main/java/com/microsoft/examples__ directory, where you will author the application.
 
-3. __src\\test\\java\\com\\microsoft\\examples\\apptest.java__ ファイルはこの例では使用しないため、削除します。
+3. Delete the __src/test/java/com/microsoft/examples/apptest.java__ file because it will not be used in this example.
 
-##プロジェクト オブジェクト モデルを更新する
+##<a name="update-the-project-object-model"></a>Update the Project Object Model
 
-1. __pom.xml__ ファイルを編集し、`<dependencies>` セクション内に次のコードを追加します。
+1. Edit the __pom.xml__ file and add the following code inside the `<dependencies>` section:
 
-		<dependency>
-      	  <groupId>org.apache.hbase</groupId>
+        <dependency>
+          <groupId>org.apache.hbase</groupId>
           <artifactId>hbase-client</artifactId>
           <version>1.1.2</version>
         </dependency>
 
-	これは Maven に対して、__hbase-client__ のバージョン __1.1.2__ がプロジェクトに必要であることを伝えます。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)を使用して、この依存関係についての詳細を確認できます。
+    This tells Maven that the project requires __hbase-client__ version __1.1.2__. At compile time, this will be downloaded from the default Maven repository. You can use the [Maven Central Repository Search](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) to learn more about this dependency.
 
-    > [AZURE.IMPORTANT] バージョン番号は、HDInsight クラスターに付属の HBase のバージョンと一致する必要があります。次の表を使用して、正しいバージョン番号を調べてください。
+    > [AZURE.IMPORTANT] The version number must match the version of HBase that is provided with your HDInsight cluster. Use the following table to find the correct version number.
 
-    | HDInsight クラスターのバージョン | 使用する HBase のバージョン |
-    | ----- | ----- |
-    | 3\.2 | 0\.98.4-hadoop2 |
-    | 3\.3 および 3.4 | 1\.1.2 |
+  	| HDInsight cluster version | HBase version to use |
+  	| ----- | ----- |
+  	| 3.2 | 0.98.4-hadoop2 |
+  	| 3.3 and 3.4 | 1.1.2 |
 
-    HDInsight のバージョンとコンポーネントの詳細については、「[HDInsight で使用できる Hadoop コンポーネントの種類を教えてください](hdinsight-component-versioning.md)」を参照してください。
+    For more information on HDInsight versions and components, see [What are the different Hadoop components available with HDInsight](hdinsight-component-versioning.md).
 
-2. HDInsight 3.3 または 3.4 クラスターを使用している場合は、`<dependencies>` セクションに次のコードも追加する必要があります。
+2. If you are using an HDInsight 3.3 or 3.4 cluster, you must also add the following to the `<dependencies>` section:
 
         <dependency>
             <groupId>org.apache.phoenix</groupId>
@@ -85,78 +86,78 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
             <version>4.4.0-HBase-1.1</version>
         </dependency>
     
-    これにより、Hbase Version 1.1.x で必要な phoenix コア コンポーネントが読み込まれます。
+    This will load the phoenix-core components, which are needed with Hbase version 1.1.x.
 
-2. __pom.xml__ ファイルに次のコードを追加します。これは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
+2. Add the following code to the __pom.xml__ file. This must be inside the `<project>...</project>` tags in the file, for example, between `</dependencies>` and `</project>`.
 
-		<build>
-		  <sourceDirectory>src</sourceDirectory>
-		  <resources>
-	        <resource>
-	          <directory>${basedir}/conf</directory>
-	          <filtering>false</filtering>
-	          <includes>
-	            <include>hbase-site.xml</include>
-	          </includes>
-	        </resource>
-	      </resources>
-		  <plugins>
-		    <plugin>
-        	  <groupId>org.apache.maven.plugins</groupId>
-        	  <artifactId>maven-compiler-plugin</artifactId>
-						<version>3.3</version>
-        	  <configuration>
-          	    <source>1.7</source>
-          	    <target>1.7</target>
-        	  </configuration>
-      		</plugin>
-		    <plugin>
-		      <groupId>org.apache.maven.plugins</groupId>
-		      <artifactId>maven-shade-plugin</artifactId>
-		      <version>2.3</version>
-		      <configuration>
-		        <transformers>
-		          <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
-	              </transformer>
-	            </transformers>
-		      </configuration>
-		      <executions>
-		        <execution>
-		          <phase>package</phase>
-		          <goals>
-		            <goal>shade</goal>
-		          </goals>
-		        </execution>
-		      </executions>
-		    </plugin>
-		  </plugins>
-		</build>
+        <build>
+          <sourceDirectory>src</sourceDirectory>
+          <resources>
+            <resource>
+              <directory>${basedir}/conf</directory>
+              <filtering>false</filtering>
+              <includes>
+                <include>hbase-site.xml</include>
+              </includes>
+            </resource>
+          </resources>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.3</version>
+              <configuration>
+                <source>1.7</source>
+                <target>1.7</target>
+              </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-shade-plugin</artifactId>
+              <version>2.3</version>
+              <configuration>
+                <transformers>
+                  <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
+                  </transformer>
+                </transformers>
+              </configuration>
+              <executions>
+                <execution>
+                  <phase>package</phase>
+                  <goals>
+                    <goal>shade</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </build>
 
-	これにより、HBase の構成情報が含まれたリソース (__conf\\hbase-site.xml__) が構成されます。
+    This configures a resource (__conf/hbase-site.xml__,) that contains configuration information for HBase.
 
-	> [AZURE.NOTE] コードを介して構成値を設定することもできます。その方法については、__CreateTable__ サンプル内のコメントをご覧ください。
+    > [AZURE.NOTE] You can also set configuration values via code. See the comments in the __CreateTable__ example that follows for how to do this.
 
-	これによって、[Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。トポロジのコンパイルにはコンパイラ プラグインが使用されます。シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
+    This also configures the [Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) and [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/). The compiler plug-in is used to compile the topology. The shade plug-in is used to prevent license duplication in the JAR package that is built by Maven. The reason this is used is that the duplicate license files cause an error at run time on the HDInsight cluster. Using maven-shade-plugin with the `ApacheLicenseResourceTransformer` implementation prevents this error.
 
-	また、maven-shade-plugin は、アプリケーションで必要とされるすべての依存関係を含む uberjar (または fatjar) も生成します。
+    The maven-shade-plugin also produces an uber jar (or fat jar,) that contains all the dependencies required by the application.
 
-3. __pom.xml__ ファイルを保存します。
+3. Save the __pom.xml__ file.
 
-4. __conf__ という名前の新しいディレクトリを __hbaseapp__ ディレクトリ内に作成します。このディレクトリを使用して、HBase に接続するための構成情報を保持します。
+4. Create a new directory named __conf__ in the __hbaseapp__ directory. This will be used to hold configuration information for connecting to HBase.
 
-5. 次のコマンドを使用して、HDInsight サーバーから __conf__ ディレクトリに HBase の構成をコピーします。**USERNAME** には、SSH ログイン名を指定します。**CLUSTERNAME** には、HDInsight クラスター名を指定します。
+5. Use the following command to copy the HBase configuration from the HDInsight server to the __conf__ directory. Replace **USERNAME** the the name of your SSH login. Replace **CLUSTERNAME** with your HDInsight cluster name:
 
-		scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
+        scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
 
-	> [AZURE.NOTE] SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合は、`-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。次の例は、`~/.ssh/id_rsa` から秘密キーを読み込みます。
-	>
-	> `scp -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml`
+    > [AZURE.NOTE] If you used a password for your SSH account, you will be prompted to enter the password. If you used an SSH key with the account, you may need to use the `-i` parameter to specify the path to the key file. The following example will load the private key from `~/.ssh/id_rsa`:
+    >
+    > `scp -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml`
 
-##アプリケーションを作成する
+##<a name="create-the-application"></a>Create the application
 
-1. __hbaseapp\\src\\main\\java\\com\\microsoft\\examples__ ディレクトリに移動し、app.java ファイルの名前を __CreateTable.java__ に変更します。
+1. Go to the __hbaseapp/src/main/java/com/microsoft/examples__ directory and rename the app.java file to __CreateTable.java__.
 
-2. __CreateTable.java__ ファイルを開き、既存の内容を次のコードで置き換えます。
+2. Open the __CreateTable.java__ file and replace the existing contents with the following:
 
         package com.microsoft.examples;
         import java.io.IOException;
@@ -226,168 +227,173 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
           }
         }
 
-	これは、__people__ という名前のテーブルを作成して定義済みユーザーを設定する __CreateTable__ クラスです。
+    This is the __CreateTable__ class, which will create a table named __people__ and populate it with some predefined users.
 
-3. __CreateTable.java__ ファイルを保存します。
+3. Save the __CreateTable.java__ file.
 
-4. __hbaseapp\\src\\main\\java\\com\\microsoft\\examples__ ディレクトリに、__SearchByEmail.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+4. In the __hbaseapp/src/main/java/com/microsoft/examples__ directory, create a new file named __SearchByEmail.java__. Use the following as the contents of this file:
 
-		package com.microsoft.examples;
-		import java.io.IOException;
+        package com.microsoft.examples;
+        import java.io.IOException;
 
-		import org.apache.hadoop.conf.Configuration;
-		import org.apache.hadoop.hbase.HBaseConfiguration;
-		import org.apache.hadoop.hbase.client.HTable;
-		import org.apache.hadoop.hbase.client.Scan;
-		import org.apache.hadoop.hbase.client.ResultScanner;
-		import org.apache.hadoop.hbase.client.Result;
-		import org.apache.hadoop.hbase.filter.RegexStringComparator;
-		import org.apache.hadoop.hbase.filter.SingleColumnValueFilter;
-		import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp;
-		import org.apache.hadoop.hbase.util.Bytes;
-		import org.apache.hadoop.util.GenericOptionsParser;
+        import org.apache.hadoop.conf.Configuration;
+        import org.apache.hadoop.hbase.HBaseConfiguration;
+        import org.apache.hadoop.hbase.client.HTable;
+        import org.apache.hadoop.hbase.client.Scan;
+        import org.apache.hadoop.hbase.client.ResultScanner;
+        import org.apache.hadoop.hbase.client.Result;
+        import org.apache.hadoop.hbase.filter.RegexStringComparator;
+        import org.apache.hadoop.hbase.filter.SingleColumnValueFilter;
+        import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp;
+        import org.apache.hadoop.hbase.util.Bytes;
+        import org.apache.hadoop.util.GenericOptionsParser;
 
-		public class SearchByEmail {
-		  public static void main(String[] args) throws IOException {
-		    Configuration config = HBaseConfiguration.create();
+        public class SearchByEmail {
+          public static void main(String[] args) throws IOException {
+            Configuration config = HBaseConfiguration.create();
 
-		    // Use GenericOptionsParser to get only the parameters to the class
-		    // and not all the parameters passed (when using WebHCat for example)
-		    String[] otherArgs = new GenericOptionsParser(config, args).getRemainingArgs();
-		    if (otherArgs.length != 1) {
-		      System.out.println("usage: [regular expression]");
-		      System.exit(-1);
-		    }
+            // Use GenericOptionsParser to get only the parameters to the class
+            // and not all the parameters passed (when using WebHCat for example)
+            String[] otherArgs = new GenericOptionsParser(config, args).getRemainingArgs();
+            if (otherArgs.length != 1) {
+              System.out.println("usage: [regular expression]");
+              System.exit(-1);
+            }
 
-			// Open the table
-		    HTable table = new HTable(config, "people");
+            // Open the table
+            HTable table = new HTable(config, "people");
 
-			// Define the family and qualifiers to be used
-		    byte[] contactFamily = Bytes.toBytes("contactinfo");
-		    byte[] emailQualifier = Bytes.toBytes("email");
-		    byte[] nameFamily = Bytes.toBytes("name");
-		    byte[] firstNameQualifier = Bytes.toBytes("first");
-		    byte[] lastNameQualifier = Bytes.toBytes("last");
+            // Define the family and qualifiers to be used
+            byte[] contactFamily = Bytes.toBytes("contactinfo");
+            byte[] emailQualifier = Bytes.toBytes("email");
+            byte[] nameFamily = Bytes.toBytes("name");
+            byte[] firstNameQualifier = Bytes.toBytes("first");
+            byte[] lastNameQualifier = Bytes.toBytes("last");
 
-			// Create a new regex filter
-		    RegexStringComparator emailFilter = new RegexStringComparator(otherArgs[0]);
-			// Attach the regex filter to a filter
-			//   for the email column
-		    SingleColumnValueFilter filter = new SingleColumnValueFilter(
-		      contactFamily,
-		      emailQualifier,
-		      CompareOp.EQUAL,
-		      emailFilter
-		    );
+            // Create a new regex filter
+            RegexStringComparator emailFilter = new RegexStringComparator(otherArgs[0]);
+            // Attach the regex filter to a filter
+            //   for the email column
+            SingleColumnValueFilter filter = new SingleColumnValueFilter(
+              contactFamily,
+              emailQualifier,
+              CompareOp.EQUAL,
+              emailFilter
+            );
 
-			// Create a scan and set the filter
-		    Scan scan = new Scan();
-		    scan.setFilter(filter);
+            // Create a scan and set the filter
+            Scan scan = new Scan();
+            scan.setFilter(filter);
 
-			// Get the results
-		    ResultScanner results = table.getScanner(scan);
-			// Iterate over results and print  values
-		    for (Result result : results ) {
-		      String id = new String(result.getRow());
-		      byte[] firstNameObj = result.getValue(nameFamily, firstNameQualifier);
-		      String firstName = new String(firstNameObj);
-		      byte[] lastNameObj = result.getValue(nameFamily, lastNameQualifier);
-		      String lastName = new String(lastNameObj);
-		      System.out.println(firstName + " " + lastName + " - ID: " + id);
-			  byte[] emailObj = result.getValue(contactFamily, emailQualifier);
-		      String email = new String(emailObj);
-			  System.out.println(firstName + " " + lastName + " - " + email + " - ID: " + id);
-		    }
-		    results.close();
-			table.close();
-		  }
-		}
+            // Get the results
+            ResultScanner results = table.getScanner(scan);
+            // Iterate over results and print  values
+            for (Result result : results ) {
+              String id = new String(result.getRow());
+              byte[] firstNameObj = result.getValue(nameFamily, firstNameQualifier);
+              String firstName = new String(firstNameObj);
+              byte[] lastNameObj = result.getValue(nameFamily, lastNameQualifier);
+              String lastName = new String(lastNameObj);
+              System.out.println(firstName + " " + lastName + " - ID: " + id);
+              byte[] emailObj = result.getValue(contactFamily, emailQualifier);
+              String email = new String(emailObj);
+              System.out.println(firstName + " " + lastName + " - " + email + " - ID: " + id);
+            }
+            results.close();
+            table.close();
+          }
+        }
 
-	__SearchByEmail__ クラスを使用し、電子メール アドレスによって行を照会できます。正規表現フィルターが使用されるため、このクラスを使用するときに文字列または正規表現を指定できます。
+    The __SearchByEmail__ class can be used to query for rows by email address. Because it uses a regular expression filter, you can provide either a string or a regular expression when using the class.
 
-5. __SearchByEmail.java__ ファイルを保存します。
+5. Save the __SearchByEmail.java__ file.
 
-6. __hbaseapp\\src\\main\\hava\\com\\microsoft\\examples__ ディレクトリに、__DeleteTable.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
+6. In the __hbaseapp/src/main/hava/com/microsoft/examples__ directory, create a new file named __DeleteTable.java__. Use the following as the contents of this file:
 
-		package com.microsoft.examples;
-		import java.io.IOException;
+        package com.microsoft.examples;
+        import java.io.IOException;
 
-		import org.apache.hadoop.conf.Configuration;
-		import org.apache.hadoop.hbase.HBaseConfiguration;
-		import org.apache.hadoop.hbase.client.HBaseAdmin;
+        import org.apache.hadoop.conf.Configuration;
+        import org.apache.hadoop.hbase.HBaseConfiguration;
+        import org.apache.hadoop.hbase.client.HBaseAdmin;
 
-		public class DeleteTable {
-		  public static void main(String[] args) throws IOException {
-		    Configuration config = HBaseConfiguration.create();
+        public class DeleteTable {
+          public static void main(String[] args) throws IOException {
+            Configuration config = HBaseConfiguration.create();
 
-		    // Create an admin object using the config
-		    HBaseAdmin admin = new HBaseAdmin(config);
+            // Create an admin object using the config
+            HBaseAdmin admin = new HBaseAdmin(config);
 
-		    // Disable, and then delete the table
-		    admin.disableTable("people");
-		    admin.deleteTable("people");
-		  }
-		}
+            // Disable, and then delete the table
+            admin.disableTable("people");
+            admin.deleteTable("people");
+          }
+        }
 
-	このクラスは、このサンプルのクリーンアップに使用するため、最初に __CreateTable__ クラスで作成されたテーブルを無効にし、次にそれを削除します。
+    This class is for cleaning up this example by disabling and dropping the table created by the __CreateTable__ class.
 
-7. __DeleteTable.java__ ファイルを保存します。
+7. Save the __DeleteTable.java__ file.
 
-##アプリケーションをビルドおよびパッケージ化する
+##<a name="build-and-package-the-application"></a>Build and package the application
 
-2. __hbaseapp__ ディレクトリで次のコマンドを使用して、アプリケーションが含まれた JAR ファイルをビルドします。
+2. From the __hbaseapp__ directory, use the following command to build a JAR file that contains the application:
 
-		mvn clean package
+        mvn clean package
 
-	これにより、前のビルド アーティファクトを整理し、まだインストールされていない依存関係をダウンロードして、アプリケーションをビルドしてパッケージ化します。
+    This cleans any previous build artifacts, downloads any dependencies that have not already been installed, then builds and packages the application.
 
-3. コマンドが完了すると、__hbaseapp\\target__ ディレクトリに __hbaseapp-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
+3. When the command completes, the __hbaseapp/target__ directory will contain a file named __hbaseapp-1.0-SNAPSHOT.jar__.
 
-	> [AZURE.NOTE] __hbaseapp-1.0-SNAPSHOT.jar__ ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uberjar (fatjar とも呼ばれる) です。
+    > [AZURE.NOTE] The __hbaseapp-1.0-SNAPSHOT.jar__ file is an uber jar (sometimes called a fat jar,) which contains all the dependencies required to run the application.
 
-##JAR ファイルをアップロードしてジョブを実行する
+##<a name="upload-the-jar-file-and-run-jobs"></a>Upload the JAR file and run jobs
 
-1. 次のコマンドを使用して、HDInsight クラスターに jar をアップロードします。**USERNAME** には、SSH ログイン名を指定します。**CLUSTERNAME** には、HDInsight クラスター名を指定します。
+1. Use the following to upload the jar to the HDInsight cluster. Replace **USERNAME** the the name of your SSH login. Replace **CLUSTERNAME** with your HDInsight cluster name:
 
-		scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
+        scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.
 
-	これにより、SSH ユーザー アカウントのホーム ディレクトリにファイルがアップロードされます。
+    This will upload the file to the home directory for your SSH user account.
 
-	> [AZURE.NOTE] SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合は、`-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。次の例は、`~/.ssh/id_rsa` から秘密キーを読み込みます。
-	>
-	> `scp -i ~/.ssh/id_rsa ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
+    > [AZURE.NOTE] If you used a password for your SSH account, you will be prompted to enter the password. If you used an SSH key with the account, you may need to use the `-i` parameter to specify the path to the key file. The following example will load the private key from `~/.ssh/id_rsa`:
+    >
+    > `scp -i ~/.ssh/id_rsa ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:.`
 
-2. SSH を使用して、HDInsight クラスターに接続します。**USERNAME** には、SSH ログイン名を指定します。**CLUSTERNAME** には、HDInsight クラスター名を指定します。
+2. Use SSH to connect to the HDInsight cluster. Replace **USERNAME** the the name of your SSH login. Replace **CLUSTERNAME** with your HDInsight cluster name:
 
-		ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+        ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-	> [AZURE.NOTE] SSH アカウントにパスワードを使用した場合は、そのパスワードの入力を求められます。アカウントで SSH キーを使用した場合は、`-i` パラメーターを使用してキー ファイルのパスを指定することが必要な場合があります。次の例は、`~/.ssh/id_rsa` から秘密キーを読み込みます。
-	>
-	> `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`
+    > [AZURE.NOTE] If you used a password for your SSH account, you will be prompted to enter the password. If you used an SSH key with the account, you may need to use the `-i` parameter to specify the path to the key file. The following example will load the private key from `~/.ssh/id_rsa`:
+    >
+    > `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`
 
-3. 接続したら、次のコマンドを使用して、Java アプリケーションを使用する新しい HBase テーブルを作成します。
+3. Once connected, use the following to create a new HBase table using the Java application:
 
-		hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
+        hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
 
-	これにより、__people__ という名前の新しい HBase テーブルが作成され、データが設定されます。
+    This will create a new HBase table named __people__, and populate it with data.
 
-4. 次に、次のコマンドを使用して、テーブルに格納されている電子メール アドレスを検索します。
+4. Next, use the following to search for email addresses stored in the table:
 
-		hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.SearchByEmail contoso.com
+        hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.SearchByEmail contoso.com
 
-	次の結果が表示されます。
+    You should receive the following results:
 
-		Franklin Holtz - ID: 2
-		Franklin Holtz - franklin@contoso.com - ID: 2
-		Rae Schroeder - ID: 4
-		Rae Schroeder - rae@contoso.com - ID: 4
-		Gabriela Ingram - ID: 6
-		Gabriela Ingram - gabriela@contoso.com - ID: 6
+        Franklin Holtz - ID: 2
+        Franklin Holtz - franklin@contoso.com - ID: 2
+        Rae Schroeder - ID: 4
+        Rae Schroeder - rae@contoso.com - ID: 4
+        Gabriela Ingram - ID: 6
+        Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-##テーブルを削除する
+##<a name="delete-the-table"></a>Delete the table
 
-サンプルの操作が終了したら、Azure PowerShell セッションから次のコマンドを使用し、このサンプルで使用された __people__ テーブルを削除します。
+When you are done with the example, use the following command from the Azure PowerShell session to delete the __people__ table used in this example:
 
-	hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
+    hadoop jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

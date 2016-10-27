@@ -1,64 +1,67 @@
 
-# Azure とモノのインターネット
+# <a name="azure-and-internet-of-things"></a>Azure and Internet of Things
 
-Microsoft Azure とモノのインターネット (IoT) にようこそこの記事では、Azure のサービスを使用してデプロイする IoT ソリューションの一般的な特性を記述する IoT ソリューション アーキテクチャについて説明します。IoT ソリューションでは、数百万に達する可能性があるデバイスと、ソリューション バックエンドとの間にセキュリティで保護された双方向通信が必要です。たとえばソリューション バックエンドでは、自動化された予測分析を使用して、デバイスとクラウドとの間でやり取りされるイベント ストリームから知見を得ることが考えられます。
+Welcome to Microsoft Azure and the Internet of Things (IoT). This article introduces an IoT solution architecture that describes the common characteristics of an IoT solution you might deploy using Azure services. IoT solutions require secure, bidirectional communication between devices, possibly numbering in the millions, and a solution back end. For example, a solution back end might use automated, predictive analytics to uncover insights from your device-to-cloud event stream.
 
-この IoT ソリューション アーキテクチャを Azure サービスを使って実装するうえで主要な構成要素となるのが Azure IoT Hub です。IoT Suite を利用すれば、特定の IoT シナリオに対して、このアーキテクチャをエンド ツー エンドで包括的に実装することができます。次に例を示します。
+Azure IoT Hub is a key building block when you implement this IoT solution architecture using Azure services. IoT Suite provides complete, end-to-end, implementations of this architecture for specific IoT scenarios. For example: 
 
-- 自動販売機などのデバイスの状態を "*リモート監視*" ソリューションで監視することができます。
-- 遠隔地にあるポンプ場の揚水機など、装置に対する保守の必要性を "*予測メンテナンス*" ソリューションで予測することによって予定外のダウンタイムを防ぐことができます。
+- The *remote monitoring* solution enables you to monitor the status of devices such as vending machines. 
+- The *predictive maintenance* solution helps you to anticipate maintenance needs of devices such as pumps in remote pumping stations and to avoid unscheduled downtime.
 
-## IoT ソリューションのアーキテクチャ
+## <a name="iot-solution-architecture"></a>IoT solution architecture
 
-次の図は、一般的な IoT ソリューションのアーキテクチャを示しています。この図には、特定の Azure サービス名は含まれず、一般的な IoT ソリューションのアーキテクチャの主な要素が記されています。このアーキテクチャでは、IoT デバイスはクラウド ゲートウェイに送信するデータを収集します。クラウド ゲートウェイは、データを他のバックエンド サービスが処理できるようにします。データはバックエンド サービスから他の基幹業務アプリケーション、またはダッシュ ボードやその他のプレゼンテーション デバイスを通じて人間のオペレーターに送られます。
+The following diagram shows a typical IoT solution architecture. The diagram does not include the names of any specific Azure services, but describes the key elements in a generic IoT solution architecture. In this architecture, IoT devices collect data that they send to a cloud gateway. The cloud gateway makes the data available for processing by other back-end services from where data is delivered to other line-of-business applications or to human operators through a dashboard or other presentation device.
 
-![IoT ソリューションのアーキテクチャ][img-solution-architecture]
+![IoT solution architecture][img-solution-architecture]
 
-> [AZURE.NOTE] IoT アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)][lnk-refarch]」を参照してください。
+> [AZURE.NOTE] For an in-depth discussion of IoT architecture, see the [Microsoft Azure IoT Reference Architecture][lnk-refarch].
 
-### デバイスの接続性
+### <a name="device-connectivity"></a>Device connectivity
 
-この IoT ソリューション アーキテクチャでは、デバイスが、テレメトリ (ポンプ場のセンサー測定値など) を格納と処理のためにクラウド エンドポイントに送信します。予測メンテナンスのシナリオでは、バック エンドでセンサー データのストリームを使用して、特定のポンプのメンテナンスが必要な時期を判断することがあります。デバイスは、クラウドからデバイスへのコマンドを受信し、クラウド エンドポイントからのメッセージを読み取り、コマンドに応答することもできます。たとえば、予測メンテナンスのシナリオでは、メンテナンス エンジニアが到着してすぐにメンテナンスを開始できるように、ソリューションのバック エンドでポンプ場のその他のポンプにコマンドを送信してメンテナンスの開始予定直前にフローの再ルーティングを開始することがあります。
+In this IoT solution architecture, devices send telemetry, such as sensor readings from a pumping station, to a cloud endpoint for storage and processing. In a predictive maintenance scenario, the back end might use the stream of sensor data to determine when a specific pump requires maintenance. Devices can also receive and respond to cloud-to-device commands by reading messages from a cloud endpoint. For example, in the predictive maintenance scenario the solution back end might send commands to other pumps in the pumping station to begin rerouting flows just before maintenance is due to start to make sure the maintenance engineer can get started when she arrives.
 
-IoT プロジェクトが直面する最も大きな課題の 1 つは、ソリューション バック エンドにデバイスを確実かつ安全に接続する方法です。IoT デバイスには、ブラウザーやモバイル アプリなどの他のクライアントとは異なる特性があります。IoT デバイスの特性は次のとおりです。
+One of the biggest challenges facing IoT projects is how to reliably and securely connect devices to the solution back end. IoT devices have different characteristics as compared to other clients such as browsers and mobile apps. IoT devices:
 
-- 多くの場合、人間が操作することのない組み込みシステムです。
-- 物理アクセスに大きなコストがかかる離れた場所にデプロイされている場合があります。
-- ソリューション バック エンド経由でしか到達できない場合があります。デバイスとやり取りする他の方法はありません。
-- 電源や処理リソースが限られている場合があります。
-- ネットワーク接続が断続的に切れたり、遅かったり、高コストである場合があります。
-- 専用、カスタム、または業界固有のアプリケーション プロトコルを使用することが必要になる場合があります。
-- 一般的なハードウェアおよびソフトウェア プラットフォームを多数使用して作成できます。
+- Are often embedded systems with no human operator.
+- Can be deployed in remote locations, where physical access is expensive.
+- May only be reachable through the solution back end. There is no other way to interact with the device.
+- May have limited power and processing resources.
+- May have intermittent, slow, or expensive network connectivity.
+- May need to use proprietary, custom, or industry-specific application protocols.
+- Can be created using a large set of popular hardware and software platforms.
 
-上記の要件に加え、IoT ソリューションはスケール、セキュリティ、および信頼性を提供する必要もあります。そのため、一連の接続要件は、Web コンテナーやメッセージング ブローカーなどの従来のテクノロジを使用して実装するのが難しく、時間がかかります。Azure IoT Hub と IoT Device SDK を利用すると、これらの要件を満たすソリューションの実装が簡単になります。
+In addition to the requirements above, any IoT solution must also deliver scale, security, and reliability. The resulting set of connectivity requirements is hard and time-consuming to implement using traditional technologies such as web containers and messaging brokers. Azure IoT Hub and the IoT Device SDKs make it easier to implement solutions that meet these requirements.
 
-デバイスは、クラウド ゲートウェイ エンドポイントと直接通信できます。または、クラウド ゲートウェイがサポートする通信プロトコルをデバイスが使用できない場合は、中間ゲートウェイを介して接続できます。たとえば、IoT Hub でサポートされるいずれのプロセスにもデバイスが対応していない場合、[IoT Hub プロトコル ゲートウェイ][lnk-protocol-gateway]でプロトコル変換を実行することができます。
+A device can communicate directly with a cloud gateway endpoint, or if the device cannot use any of the communications protocols that the cloud gateway supports, it can connect through an intermediate gateway. For example, the [IoT Hub protocol gateway][lnk-protocol-gateway] can perform protocol translation if devices cannot use any of the protocols that IoT Hub supports.
 
-### データ処理と分析
+### <a name="data-processing-and-analytics"></a>Data processing and analytics
 
-クラウドでは、IoT ソリューション バックエンドでデータ処理のほとんど (テレメトリのフィルター処理と集計、テレメトリの他のサービスへのルーティング) が行われます。IoT ソリューション バックエンドでは以下が行われます。
+In the cloud, an IoT solution back end is where most of the data processing occurs, such as filtering and aggregating telemetry and routing it to other services. The IoT solution back end:
 
-- デバイスから大量のテレメトリを受信し、そのデータを処理および格納する方法を決定します。
-- クラウドから特定のデバイスにコマンドを送信できることもあります。
-- デバイスをプロビジョニングし、インフラストラクチャへの接続が許可されるデバイスを制御できるようにする、デバイス登録機能を提供します。
-- デバイスの状態を追跡し、そのアクティビティを監視できます。
+- Receives telemetry at scale from your devices and determines how to process and store that data. 
+- May enable you to send commands from the cloud to specific device.
+- Provides device registration capabilities that enable you to provision devices and to control which devices are permitted to connect to your infrastructure.
+- Enables you to track the state of your devices and monitor their activities.
 
-予測メンテナンスのシナリオでは、テレメトリ データ履歴がソリューション バックエンドで保存されます。バックエンドでは、このデータから、特定の揚水機のメンテナンスが必要であることを示すパターンを見極めることができます。
+In the predictive maintenance scenario, the solution back end stores historical telemetry data. The back end can use this data to use to identify patterns that indicate maintenance is due on a specific pump.
 
-IoT ソリューションには、自動フィードバックのループが含まれる場合があります。たとえば、バックエンドの分析モジュールは、テレメトリから特定のデバイスの温度が通常の運用レベルを超過していることを判別します。その後ソリューションが、そのデバイスにコマンドを送信して是正措置を実行するよう指示します。
+IoT solutions can include automatic feedback loops. For example, an analytics module in the back end can identify from telemetry that the temperature of a specific device is above normal operating levels. The solution can then send a command to the device, instructing it to take corrective action.
 
-### プレゼンテーションおよびビジネスの接続性
+### <a name="presentation-and-business-connectivity"></a>Presentation and business connectivity
 
-プレゼンテーションおよびビジネスの接続性レイヤーでは、エンド ユーザーが IoT ソリューションおよびデバイスとやり取りできます。このレイヤーによって、ユーザーが、デバイスから収集されたデータを表示して分析することができます。これらのビューは、履歴データとほぼリアルタイムのデータの両方を表示できる、ダッシュボードまたは BI レポートの形式をとることができます。たとえば、オペレーターは、特定のポンプ場の状態を確認し、システムによって生成されるアラートを参照できます。また、このレイヤーによって、IoT ソリューション バックエンドと既存の基幹業務アプリケーションの統合が可能になり、企業のビジネス プロセスやワークフローと結びつけることができます。たとえば、予測メンテナンス ソリューションは、ソリューションでメンテナンスを必要とするポンプ が特定されたときに、エンジニアのポンプ場訪問を予約するスケジューリング システムと統合することができます。
+The presentation and business connectivity layer allows end users to interact with the IoT solution and the devices. It enables users to view and analyze the data collected from their devices. These views can take the form of dashboards or BI reports that can display both historical data or near real-time data. For example, an operator can check on the status of particular pumping station and see any alerts raised by the system. This layer also allows integration of the IoT solution back end with existing line-of-business applications to tie into enterprise business processes or workflows. For example, the predictive maintenance solution can integrate with a scheduling system that books an engineer to visit a pumping station when the solution identifies a pump in need of maintenance.
 
-![IoT ソリューションのダッシュボード][img-dashboard]
+![IoT solution dashboard][img-dashboard]
 
 [img-solution-architecture]: ./media/iot-azure-and-iot/iot-reference-architecture.png
 [img-dashboard]: ./media/iot-azure-and-iot/iot-suite.png
 
 [lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
 [Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
-[lnk-protocol-gateway]: ../articles/iot-hub/iot-hub-protocol-gateway.md
+[lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
-<!---HONumber=AcomDC_1005_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

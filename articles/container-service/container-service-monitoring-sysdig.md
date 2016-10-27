@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Sysdig による Azure コンテナー サービス クラスターの監視 | Microsoft Azure"
-   description="Sysdig を使って Azure コンテナー サービス クラスターを監視します。"
+   pageTitle="Monitor an Azure Container Service cluster with Sysdig | Microsoft Azure"
+   description="Monitor an Azure Container Service cluster with Sysdig."
    services="container-service"
    documentationCenter=""
    authors="rbitia"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="コンテナー, DC/OS, Azure"/>
+   keywords="Containers, DC/OS, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -18,40 +18,44 @@
    ms.date="08/08/2016"
    ms.author="t-ribhat"/>
 
-# Sysdig による Azure コンテナー サービス クラスターの監視
 
-この記事では、Azure コンテナー サービス クラスター内のすべてのエージェント ノードに Sysdig エージェントをデプロイします。この構成を行うためには、Sysdig のアカウントが必要です。
+# <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Monitor an Azure Container Service cluster with Sysdig
 
-## 前提条件 
+In this article, we will deploy Sysdig agents to all the agent nodes in your Azure Container Service cluster. You need an account with Sysdig for this configuration. 
 
-Azure コンテナー サービスによって構成されたクラスターを[デプロイ](container-service-deployment.md)して[接続](container-service-connect.md)してください。[Marathon UI](container-service-mesos-marathon-ui.md) についての知識が必要です。[http://app.sysdigcloud.com](http://app.sysdigcloud.com) にアクセスして Sysdig クラウド アカウントをセットアップしてください。
+## <a name="prerequisites"></a>Prerequisites 
 
-## Sysdig
+[Deploy](container-service-deployment.md) and [connect](container-service-connect.md) a cluster configured by Azure Container Service. Explore the [Marathon UI](container-service-mesos-marathon-ui.md). Go to [http://app.sysdigcloud.com](http://app.sysdigcloud.com) to set up a Sysdig cloud account. 
 
-Sysdig は監視サービスです。クラスター内のコンテナーを監視することができます。Sysdig は、トラブルシューティングに役立つことで知られていますが、その一方で CPU やネットワーク、メモリ、I/O の基本的な監視メトリックも備えています。Sysdig を利用することで、負荷の最も高い (基本的にメモリと CPU の使用率が最も高い) コンテナーを簡単に見分けることができます。次の画面は [Overview (概要)] セクションにあります (現在はベータ版)。
+## <a name="sysdig"></a>Sysdig
 
-![Sysdig UI](./media/container-service-monitoring-sysdig/sysdig6.png)
+Sysdig is a monitoring service that allows you to monitor your containers within your cluster. Sysdig is known to help with troubleshooting but it also has your basic monitoring metrics for CPU, Networking, Memory, and I/O. Sysdig makes it easy to see which containers are working the hardest or essentially using the most memory and CPU. This view is in the “Overview” section, which is currently in beta. 
 
-## Marathon を使用した Sysdig のデプロイの構成
+![Sysdig UI](./media/container-service-monitoring-sysdig/sysdig6.png) 
 
-以降、Marathon を使用して Sysdig アプリケーションを構成し、クラスターにデプロイする方法について説明します。
+## <a name="configure-a-sysdig-deployment-with-marathon"></a>Configure a Sysdig deployment with Marathon
 
-[http://localhost:80/](http://localhost:80/) を使用して DC/OS の UI にアクセスします。DC/OS の UI が表示されたら、左下にある "Universe" に移動し、"Sysdig" を探します。
+These steps will show you how to configure and deploy Sysdig applications to your cluster with Marathon. 
+
+Access your DC/OS UI via [http://localhost:80/](http://localhost:80/) Once in the DC/OS UI navigate to the "Universe", which is on the bottom left and then search for "Sysdig."
 
 ![Sysdig in DC/OS Universe](./media/container-service-monitoring-sysdig/sysdig1.png)
 
-この構成作業には、Sysdig クラウド アカウントまたは無料試用版アカウントが必要です。Sysdig クラウドの Web サイトへのログイン後に自分のユーザー名をクリックすると、該当する "アクセス キー" がそのページに表示されます。
+Now to complete the configuration you need a Sysdig cloud account or a free trial account. Once you're logged in to the Sysdig cloud website, click on your user name, and on the page you should see your "Access Key." 
 
-![Sysdig API key](./media/container-service-monitoring-sysdig/sysdig2.png)
+![Sysdig API key](./media/container-service-monitoring-sysdig/sysdig2.png) 
 
-次に、DC/OS Universe の Sysdig 構成に自分のアクセス キーを入力します。
+Next enter your Access Key into the Sysdig configuration within the DC/OS Universe. 
 
 ![Sysdig configuration in the DC/OS Universe](./media/container-service-monitoring-sysdig/sysdig3.png)
 
-インスタンス数は「10000000」に設定してください。これでクラスターに新しいノードが追加されると、その新しいノードに対し、Sysdig によって自動的にエージェントがデプロイされます。これは、クラスターに新しく追加されたすべてのエージェントを確実にデプロイ対象とするための暫定的な措置です。
+Now set the instances to 10000000 so whenever a new node is added to the cluster Sysdig will automatically deploy an agent to that new node. This is an interim solution to make sure Sysdig will deploy to all new agents within the cluster. 
 
 ![Sysdig configuration in the DC/OS Universe-instances](./media/container-service-monitoring-sysdig/sysdig4.png)
 
-パッケージをインストールしたら、Sysdig の UI に戻ります。クラスター内のコンテナーの使用状況に関する各種メトリックを詳しく調査できる状態になっています。
+Once you've installed the package navigate back to the Sysdig UI and you'll be able to explore the different usage metrics for the containers within your cluster. 
 
-<!-------HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

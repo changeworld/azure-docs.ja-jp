@@ -1,38 +1,43 @@
 <properties
-	pageTitle="Azure Mobile Engagement Web SDK のリリース ノート | Microsoft Azure"
-	description="Web SDK for Azure Mobile Engagement の最新の情報と手順"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="erikre"
-	editor="" />
+    pageTitle="Azure Mobile Engagement Web SDK Release notes | Microsoft Azure"
+    description="The latest updates and procedures for Web SDK for Azure Mobile Engagement"
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager="erikre"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="web"
-	ms.devlang="js"
-	ms.topic="article"
-	ms.date="06/07/2016"
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="web"
+    ms.devlang="js"
+    ms.topic="article"
+    ms.date="06/07/2016"
+    ms.author="piyushjo" />
 
 
-#Azure Mobile Engagement Web SDK のリリース ノート
 
-##リリース 2.0.1 (2016/6/10)
+#<a name="azure-mobile-engagement-web-sdk-release-notes"></a>Azure Mobile Engagement Web SDK release notes
 
--   Internet Explorer 8 と Internet Explorer 9 で SDK が無効になりました。
--   Opera Web ブラウザーの検出を修正しました。
+##<a name="release-2.0.1-(6/10/2016)"></a>Release 2.0.1 (6/10/2016)
 
-##リリース 2.0.0 (2016/6/7)
+-   Disabled the SDK in Internet Explorer 8 and Internet Explorer 9.
+-   Fixed Opera web browser detection.
 
--   Azure Mobile Engagement をリリースしました。
--   `appId` 構成が接続文字列構成に置き換えられて更新されました。
--   エージェントを有効/無効にする API が追加されました。
--   セキュリティが強化されました。
--   ブラウザーのネイティブ JSON API を使用するように更新されました。
--   デバイス間でメッセージを送受信する API が削除されました。
--   推奨されない XMPP 接続に関連したコールバックを削除しました。
--   Reach 機能がサポートされなくなりました。
+##<a name="release-2.0.0-(6/7/2016)"></a>Release 2.0.0 (6/7/2016)
 
-<!---HONumber=AcomDC_0713_2016-->
+-   Released Azure Mobile Engagement.
+-   Updated so that the `appId` configuration is replaced by a connection string configuration.
+-   Added APIs to enable and disable the agent.
+-   Made security improvements.
+-   Updated to use native JSON APIs from browsers.
+-   Removed the API that sends and receives messages between devices.
+-   Removed callbacks related to the deprecated XMPP connection.
+-   Removed support for the Reach feature.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

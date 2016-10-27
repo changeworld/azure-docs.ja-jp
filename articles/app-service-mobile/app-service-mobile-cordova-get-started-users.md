@@ -1,67 +1,68 @@
 <properties
-	pageTitle="Mobile Apps を使用した Apache Cordova での認証の追加 | Azure App Service"
-	description="Azure App Service で Mobile Apps を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Apache Cordova アプリのユーザーを認証する方法について説明します。"
-	services="app-service\mobile"
-	documentationCenter="javascript"
-	authors="adrianhall"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Add authentication on Apache Cordova with Mobile Apps | Azure App Service"
+    description="Learn how to use Mobile Apps in Azure App Service to authenticate users of your Apache Cordova app through a variety of identity providers, including Google, Facebook, Twitter, and Microsoft."
+    services="app-service\mobile"
+    documentationCenter="javascript"
+    authors="adrianhall"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="na"
-	ms.tgt_pltfrm="mobile-html"
-	ms.devlang="javascript"
-	ms.topic="article"
-	ms.date="08/11/2016"
-	ms.author="glenga"/>
+    ms.service="app-service-mobile"
+    ms.workload="na"
+    ms.tgt_pltfrm="mobile-html"
+    ms.devlang="javascript"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="adrianha"/>
 
-# Apache Cordova アプリへの認証の追加
+
+# <a name="add-authentication-to-your-apache-cordova-app"></a>Add authentication to your Apache Cordova app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
+    
+## <a name="summary"></a>Summary
 
-## まとめ
+In this tutorial, you add authentication to the todolist quickstart project on Apache Cordova using a supported identity provider. This tutorial is based on the [Get started with Mobile Apps] tutorial, which you must complete first.
 
-このチュートリアルでは、サポートされている ID プロバイダーを使用して、Apache Cordova で todolist クイック スタート プロジェクトに認証を追加します。最初に、このチュートリアルの基になっている [Mobile Apps の使用]チュートリアルを完了しておく必要があります。
-
-##<a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
+##<a name="<a-name="register"></a>register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Register your app for authentication and configure the App Service
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
+[Watch a video showing similar steps](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+##<a name="<a-name="permissions"></a>restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Restrict permissions to authenticated users
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-これで、バックエンドへの匿名アクセスが無効になっていることを確認できます。Visual Studio で、[Mobile Apps の使用]に関するチュートリアルを実行したときに作成したプロジェクトを開いて、**Google Android エミュレーター**でアプリケーションを実行し、アプリケーションの起動後に、予期しない接続エラーが表示されることを確認します。
+Now, you can verify that anonymous access to your backend has been disabled. In Visual Studio, open the project that you created when you completed the tutorial [Get started with Mobile Apps], then run your application in the **Google Android Emulator** and verify that an Unexpected Connection Failure is shown after the app starts.
 
-次に、Mobile App バックエンドのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
+Next, you will update the app to authenticate users before requesting resources from the Mobile App backend.
 
-##<a name="add-authentication"></a>アプリケーションに認証を追加する
+##<a name="<a-name="add-authentication"></a>add-authentication-to-the-app"></a><a name="add-authentication"></a>Add authentication to the app
 
-1. **Visual Studio** でプロジェクトを開き、編集する `www/index.html` ファイルを開きます。
+1. Open your project in **Visual Studio**, then open the `www/index.html` file for editing.
 
-2. head セクションで `Content-Security-Policy` メタ タグを見つけます。許可されているソースの一覧に OAuth ホストを追加する必要があります。
+2. Locate the `Content-Security-Policy` meta tag in the head section.  You will need to add the OAuth host to the list of allowed sources.
 
-    | プロバイダー | SDK プロバイダー名 | OAuth ホスト |
-    | :--------------------- | :---------------- | :-------------------------- |
-    | Azure Active Directory | aad | https://login.windows.net |
-    | Facebook | facebook | https://www.facebook.com |
-    | Google | google | https://accounts.google.com |
-    | Microsoft | microsoftaccount | https://login.live.com |
-    | Twitter | twitter | https://api.twitter.com |
+  	| Provider               | SDK Provider Name | OAuth Host                  |
+  	| :--------------------- | :---------------- | :-------------------------- |
+  	| Azure Active Directory | aad               | https://login.windows.net   |
+  	| Facebook               | facebook          | https://www.facebook.com    |
+  	| Google                 | google            | https://accounts.google.com |
+  	| Microsoft              | microsoftaccount  | https://login.live.com      |
+  	| Twitter                | twitter           | https://api.twitter.com     |
 
-    サンプルの Content-Security-Policy (Azure Active Directory に実装されている) は次のようになっています。
+    An example Content-Security-Policy (implemented for Azure Active Directory) is as follows:
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
-			data: gap: https://login.windows.net https://yourapp.azurewebsites.net; style-src 'self'">
+            data: gap: https://login.windows.net https://yourapp.azurewebsites.net; style-src 'self'">
 
-    `https://login.windows.net` を上の表の OAuth ホストに置き換える必要があります。このメタ タグの詳細については、[Content-Security-Policy に関するドキュメント]をご覧ください。
+    You should replace `https://login.windows.net` with the OAuth host from the table above.  Consult the [Content-Security-Policy documentation] for more information about this meta tag.
 
-    一部の認証プロバイダーについては、適切なモバイル デバイスで使用する場合、Content-Security-Policy を変更する必要がありません。たとえば、Android デバイスで Google 認証を使用する場合は、Content-Security-Policy を変更する必要はありません。
+    Note that some authentication providers do not require Content-Security-Policy changes when used on appropriate mobile devices.  For example, no Content-Security-Policy changes are required when using Google authentication on an Android device.
 
-3. 編集する `www/js/index.js` ファイルを開き、`onDeviceReady()` メソッドを見つけて、クライアント作成コードの下に次のコードを追加します。
+3. Open the `www/js/index.js` file for editing, locate the `onDeviceReady()` method, and under the client creation code add the following:
 
         // Login to the service
         client.login('SDK_Provider_Name')
@@ -83,32 +84,36 @@
 
             }, handleError);
 
-    テーブル参照を作成し、UI を更新する既存のコードはこのコードで置き換えられることに注意してください。
+    Note that this code replace the existing code that creates the table reference and refreshes the UI.
 
-    login() メソッドは、プロバイダーでの認証を開始します。login() メソッドは、JavaScript Promise を返す非同期関数です。初期化の残りの部分は promise の応答内に配置されているため、login() メソッドが完了するまで実行されません。
+    The login() method starts authentication with the provider. The login() method is an async function that returns a JavaScript Promise.  The rest of the initialization is placed inside the promise response so that it is not executed until the login() method completes.
 
-4. 先ほど追加したコードで、`SDK_Provider_Name` を実際のログイン プロバイダーの名前に置き換えます。たとえば、Azure Active Directory の場合、`client.login('aad')` を使用します。
+4. In the code that you just added, replace `SDK_Provider_Name` with the name of your login provider. For example, for Azure Active Directory, use `client.login('aad')`.
 
-4. プロジェクトを実行します。プロジェクトの初期化が終了すると、アプリケーションにより、選択した認証プロバイダーの OAuth ログイン ページが表示されます。
+4. Run your project.  When the project has finished initializing, your application will show the OAuth login page for the chosen authentication provider.
 
-##<a name="next-steps"></a>次のステップ
+##<a name="<a-name="next-steps"></a>next-steps"></a><a name="next-steps"></a>Next Steps
 
-* Azure App Service を使用した[認証の詳細]を確認します。
-* このチュートリアルの続きとして、Apache Cordova アプリに[プッシュ通知]を追加します。
+* Learn more [About Authentication] with Azure App Service.
+* Continue the tutorial by adding [Push Notifications] to your Apache Cordova app.
 
-SDK の使用方法を確認してください。
+Learn how to use the SDKs.
 
 * [Apache Cordova SDK]
-* [ASP.NET サーバー SDK]
-* [Node.js サーバー SDK]
+* [ASP.NET Server SDK]
+* [Node.js Server SDK]
 
 <!-- URLs. -->
-[Mobile Apps の使用]: app-service-mobile-cordova-get-started.md
-[Content-Security-Policy に関するドキュメント]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
-[プッシュ通知]: app-service-mobile-cordova-get-started-push.md
-[認証の詳細]: app-service-mobile-auth.md
-[Apache Cordova SDK]: app-service-mobile-codova-how-to-use-client-library.md
-[ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
+[Get started with Mobile Apps]: app-service-mobile-cordova-get-started.md
+[Content-Security-Policy documentation]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
+[Push Notifications]: app-service-mobile-cordova-get-started-push.md
+[About Authentication]: app-service-mobile-auth.md
+[Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md 
+[ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

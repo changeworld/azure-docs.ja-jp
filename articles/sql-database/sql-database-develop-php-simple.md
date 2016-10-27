@@ -1,60 +1,65 @@
 <properties
-	pageTitle="Windows 上で PHP を使用して SQL Database に接続する | Microsoft Azure"
-	description="Windows クライアントから、Azure SQL Database に接続して、クライアントが必要とするソフトウェア コンポーネントへのリンクを提供するサンプル PHP プログラムを示します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="meet-bhagdev"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Connect to SQL Database by using PHP on Windows | Microsoft Azure"
+    description="Presents a sample PHP program that connects to Azure SQL Database from a Windows client, and provides links to the necessary software components needed by the client."
+    services="sql-database"
+    documentationCenter=""
+    authors="meet-bhagdev"
+    manager="jhubbard"
+    editor=""/>
 
 
 <tags
-	ms.service="sql-database"
-	ms.workload="drivers"
-	ms.tgt_pltfrm="na"
-	ms.devlang="php"
-	ms.topic="article"
-	ms.date="06/16/2016"
-	ms.author="meetb"/>
+    ms.service="sql-database"
+    ms.workload="drivers"
+    ms.tgt_pltfrm="na"
+    ms.devlang="php"
+    ms.topic="article"
+    ms.date="10/03/2016"
+    ms.author="meetb"/>
 
 
-# Windows 上で PHP を使用して SQL Database に接続する
+
+# <a name="connect-to-sql-database-by-using-php-on-windows"></a>Connect to SQL Database by using PHP on Windows
 
 
-[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)] 
 
 
-このトピックでは、Windows 上で実行される PHP で記述されたクライアント アプリケーションから Azure SQL Database に接続する方法について説明します。
+This topic illustrates how you can connect to Azure SQL Database from a client application written in PHP that runs on Windows.
 
-## 手順 1: 開発環境を設定する
+## <a name="step-1:-configure-development-environment"></a>Step 1:  Configure Development Environment
 
-[PHP 開発用の開発環境を構成する](https://msdn.microsoft.com/library/mt720663.aspx)
+[Configure development environment for PHP development](https://msdn.microsoft.com/library/mt720663.aspx)
 
-## 手順 2: SQL Database を作成する
+## <a name="step-2:-create-a-sql-database"></a>Step 2: Create a SQL database
 
-「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
+See the [getting started page](sql-database-get-started.md) to learn how to create a sample database.  It is important you follow the guide to create an **AdventureWorks database template**. The samples shown below only work with the **AdventureWorks schema**.
 
 
-## 手順 3: 接続の詳細を取得する
+## <a name="step-3:-get-connection-details"></a>Step 3: Get Connection Details
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
 
-## 手順 4: サンプル コードを実行する
+## <a name="step-4:-run-sample-code"></a>Step 4: Run sample code
 
-* [PHP を使用した SQL 接続の概念実証](https://msdn.microsoft.com/library/mt720665.aspx)
-* [PHP を使用して SQL に弾性的に接続する](https://msdn.microsoft.com/library/mt720667.aspx)
+* [Proof of concept connecting to SQL using PHP](https://msdn.microsoft.com/library/mt720665.aspx)
+* [Connect resiliently to SQL with PHP](https://msdn.microsoft.com/library/mt720667.aspx)
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-* 「[SQL Database の開発: 概要](sql-database-develop-overview.md)」の確認
-* [Microsoft PHP Driver for SQL Server](https://msdn.microsoft.com/library/dn865013.aspx) の詳細
-* PHP のインストールと使用に関する詳細については、「[Accessing SQL Server Databases with PHP (PHP を使用して SQL Server のデータベースにアクセスする)](http://social.technet.microsoft.com/wiki/contents/articles/1258.accessing-sql-server-databases-from-php.aspx)」をご覧ください。
+* Review the [SQL Database Development Overview](sql-database-develop-overview.md)
+* More information on the [Microsoft PHP Driver for SQL Server](https://msdn.microsoft.com/library/dn865013.aspx)
+* For more information regarding PHP installation and usage, see [Accessing SQL Server Databases with PHP](http://social.technet.microsoft.com/wiki/contents/articles/1258.accessing-sql-server-databases-from-php.aspx).
 
-## その他のリソース 
+## <a name="additional-resources"></a>Additional resources 
 
-* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべての確認
+* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

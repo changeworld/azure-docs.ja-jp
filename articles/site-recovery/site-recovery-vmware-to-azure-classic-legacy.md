@@ -1,829 +1,834 @@
 <properties
-	pageTitle="Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする (旧) | Microsoft Azure" 
-	description="クラシック ポータルの従来のデプロイにおいて、Azure Site Recovery を使用してオンプレミスの VM と Windows/Linux の物理サーバーを Azure にレプリケートする方法について説明します。" 
-	services="site-recovery"
-	documentationCenter=""
-	authors="rayne-wiselman"
-	manager="jwhit"
-	editor=""/>
+    pageTitle="Replicate VMware virtual machines and physical servers to Azure with Azure Site Recovery (legacy) | Microsoft Azure" 
+    description="Describes how to replicate on-premises VMs and Windows/Linux physical servers to Azure using Azure Site Recovery in a legacy deployment in the classic portal." 
+    services="site-recovery"
+    documentationCenter=""
+    authors="rayne-wiselman"
+    manager="jwhit"
+    editor=""/>
 
 <tags
-	ms.service="site-recovery"
-	ms.workload="backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/22/2016"
-	ms.author="raynew"/>
+    ms.service="site-recovery"
+    ms.workload="backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/29/2016"
+    ms.author="raynew"/>
 
-# クラシック ポータル (レガシ) を使用して Azure Site Recovery で VMware 仮想マシンと物理サーバーを Azure にレプリケートする
+
+# <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-(legacy)"></a>Replicate VMware virtual machines and physical servers to Azure with Azure Site Recovery using the classic portal (legacy)
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](site-recovery-vmware-to-azure.md)
-- [クラシック ポータル](site-recovery-vmware-to-azure-classic.md)
-- [クラシック ポータル (レガシ)](site-recovery-vmware-to-azure-classic-legacy.md)
+- [Azure Portal](site-recovery-vmware-to-azure.md)
+- [Classic Portal](site-recovery-vmware-to-azure-classic.md)
+- [Classic Portal (legacy)](site-recovery-vmware-to-azure-classic-legacy.md)
 
 
-Azure Site Recovery へようこそ。 この記事では、クラシック ポータルで Azure Site Recovery を使用して、オンプレミスの VMware 仮想マシンまたは Windows/Linux 物理サーバーを Azure にレプリケートするための従来のデプロイ方法について説明します。
+Welcome to Azure Site Recovery! This article describes a legacy deployment for replicating on-premises VMware virtual machines or Windows/Linux physical servers to Azure using Azure Site Recovery in the classic portal.
 
-## Overview
+## <a name="overview"></a>Overview
 
-組織には、予定されたダウンタイムおよび予定外のダウンタイム時にアプリ、ワークロード、およびデータの実行と利用可能な状態を維持し、できるだけ早く通常の動作状態に復旧させる方法を決定する BCDR の戦略が必要です。BCDR 戦略は、災害発生時にビジネス データを安全かつ回復可能な状態に維持し、ワークロードが継続的に利用可能な状態に保たれるようなものである必要があります。
+Organizations need a BCDR strategy that determines how apps, workloads, and data stay running and available during planned and unplanned downtime, and recover to normal working conditions as soon as possible. Your BCDR strategy should keep business data safe and recoverable, and ensure that workloads remain continuously available when disaster occurs.
 
-Site Recovery とは、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび仮想マシンのレプリケーションを統制することで BCDR 戦略を支援する Azure サービスです。プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリとワークロードの可用性を維持します。プライマリの場所が通常の動作に戻ると、その場所にフェールバックします。詳細については、「[Site Recovery とは](site-recovery-overview.md)」をご覧ください。
-
-
->[AZURE.WARNING] この記事には、**レガシの手順**が含まれています。新しいデプロイでは、この手順を使用しないでください。代わりに、[この手順に従って](site-recovery-vmware-to-azure.md) Azure ポータルで Site Recovery をデプロイするか、または[この手順に従って](site-recovery-vmware-to-azure-classic.md)クラシック ポータルで強化されたデプロイを構成してください。既に、この記事で説明されている方法でデプロイした場合は、クラシック ポータルで強化されたデプロイに移行することをお勧めします。
+Site Recovery is an Azure service that contributes to your BCDR strategy by orchestrating replication of on-premises physical servers and virtual machines to the cloud (Azure) or to a secondary datacenter. When outages occur in your primary location, you fail over to the secondary location to keep apps and workloads available. You fail back to your primary location when it returns to normal operations. Learn more in [What is Azure Site Recovery?](site-recovery-overview.md)
 
 
-## 強化されたデプロイへの移行
-
-このセクションは、この記事の手順に従って、Site Recovery を既にデプロイした場合にのみ該当します。
-
-既存のデプロイを移行するには、以下の操作が必要です。
-
-1. ご使用のオンプレミス サイトに新しい Site Recovery コンポーネントをデプロイします。
-2. 新しい構成サーバーで、VMware VM の自動検出のための資格情報を構成します。
-3. 新しい構成サーバーで、VMware サーバーを検出します。
-3. 新しい構成サーバーで、新しい保護グループを作成します。
+>[AZURE.WARNING] This article contains **legacy instructions**. Don't use it for new deployments. Instead, [follow these instructions](site-recovery-vmware-to-azure.md) to deploy Site Recovery in the Azure portal, or [use these instructions](site-recovery-vmware-to-azure-classic.md) to configure the enhanced deployment in the classic portal. If you've already deployed using the method described in this article, we recommend that you migrate to the enhanced deployment in the classic portal.
 
 
-開始する前に次の操作を実行してください。
+## <a name="migrate-to-the-enhanced-deployment"></a>Migrate to the enhanced deployment
 
-- 移行のためのメンテナンス期間を設定することをお勧めします。
-- **[コンピューターの移行]** オプションは、従来のデプロイ時に作成された既存の保護グループがある場合にのみ使用できます。
-- 移行手順の完了後、資格情報の更新と、保護グループに追加するための仮想マシンの検出および更新に、15 分以上かかることがあります。待機する代わりに、手動で更新することもできます。
+This section is only relevant if you've already deployed Site Recovery using the instructions in this article.
 
-移行手順は、次のとおりです。
+To migrate your existing deployment you'll need to:
 
-1. [クラシック ポータルで強化されたデプロイ](site-recovery-vmware-to-azure-classic.md#enhanced-deployment)について読みます。強化された[アーキテクチャ](site-recovery-vmware-to-azure-classic.md#scenario-architecture)、および[前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment)を確認します。
-2. 現在レプリケートているマシンからモビリティ サービスをアンインストールします。新しい保護グループにマシンを追加すると、そのマシンに新しいバージョンのサービスがインストールされます。
-3. [コンテナー登録キー](site-recovery-vmware-to-azure-classic.md#step-4-download-a-vault-registration-key)をダウンロードし、[統合セットアップ ウィザードを実行](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server)して、構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーのコンポーネントをインストールします。[容量計画](site-recovery-vmware-to-azure-classic.md#capacity-planning)についての詳細情報をお読みください。
-4. VMware VM を自動的に検出するために Site Recovery が VMware サーバーへのアクセスに使用できる[資格情報をセットアップ](site-recovery-vmware-to-azure-classic.md#step-6-set-up-credentials-for-the-vcenter-server)します。[必要なアクセス許可](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)についてお読みください。
-5. [vCenter サーバーまたは vSphere ホスト](site-recovery-vmware-to-azure-classic.md#step-7-add-vcenter-servers-and-esxi-hosts)を追加します。Site Recovery ポータルにサーバーが表示されるまで 15 分以上かかる場合があります。
-6. [新しい保護グループ](site-recovery-vmware-to-azure-classic.md#step-8-create-a-protection-group)を作成します。ポータルを更新し、仮想マシンを検出して表示するまでに、最大で 15 分かかる場合があります。待機しない場合は、管理サーバー名を強調表示し (クリックせずに)、**[更新]** を選択します。
-7. 新しい保護グループの下の **[コンピューターの移行]** をクリックします。
-
-	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration1.png)
-
-8. **[コンピューターの選択]** で、移行元の保護グループと、移行するマシンを選択します。
-
-	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration2.png)
-
-9. **[ターゲット設定の構成]** で、すべてのマシンに同じ設定を使用するかどうかを指定し、プロセス サーバーと Azure ストレージ アカウントを選択します。別のプロセス サーバーがない場合、これが構成サーバーの IP アドレスになります。
+1. Deploy new Site Recovery components in your on-premises site.
+2. Configure credentials for automatic discovery of VMware VMs on the new configuration server.
+3. Discover the VMware servers with the new configuration server.
+3. Create a new protection group with the new configuration server.
 
 
-	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration3.png)
+Before you start:
 
-	> [AZURE.NOTE] Site Recovery のデプロイ用のストレージ アカウントでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ストレージ アカウントの移行](../resource-group-move-resources.md)はサポートされていません。
+- We recommend that you set up a maintenance window for migration.
+- The **Migrate Machines** option is available only if you have existing protection groups that were created during a legacy deployment.
+- After you've completed the migration steps it can take 15 minutes or longer to refresh the credentials, and to discover and refresh virtual machines so that you can add them to a protection group. You can refresh manually instead of waiting. 
 
-10. **[アカウントの指定]** で、モビリティ サービスの新しいバージョンをプッシュするため、マシンへのアクセス用にプロセス サーバーに対して作成したアカウントを選択します。
+Migrate as follows:
 
-	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration4.png)
+1. Read about [enhanced deployment in the classic portal](site-recovery-vmware-to-azure-classic.md#enhanced-deployment). Review the enhanced [architecture](site-recovery-vmware-to-azure-classic.md#scenario-architecture), and [prerequisites](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment).
+2. Uninstall the Mobility service from machines you're currently replicating. A new version of the service will be installed on the machines when you add them to the new protection group.
+3. Download a [vault registration key](site-recovery-vmware-to-azure-classic.md#step-4-download-a-vault-registration-key) and [run the unified setup wizard](site-recovery-vmware-to-azure-classic.md#step-5-install-the-management-server) to install the configuration server, process server, and master target server components. Read more about [capacity planning](site-recovery-vmware-to-azure-classic.md#capacity-planning).
+4. [Set up credentials](site-recovery-vmware-to-azure-classic.md#step-6-set-up-credentials-for-the-vcenter-server) that Site Recovery can use to access VMware server to automatically discover VMware VMs. Learn about [required permissions](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access).
+5. Add [vCenter servers or vSphere hosts](site-recovery-vmware-to-azure-classic.md#step-7-add-vcenter-servers-and-esxi-hosts). It can take 15 minutes for more for servers to appear in the Site Recovery portal.
+6. Create a [new protection group](site-recovery-vmware-to-azure-classic.md#step-8-create-a-protection-group). It can take up to 15 minutes for the portal to refresh so that the virtual machines are discovered and appear. If you don't want to wait you can highlight the management server name (don't click it) > **Refresh**.
+7. Under the new protection group click **Migrate Machines**.
 
-11. Site Recovery は、レプリケートされたデータを、指定された Azure ストレージ アカウントに移行します。オプションで、旧式のデプロイで使用したストレージ アカウントを再利用することができます。
-12. ジョブの終了後、仮想マシンは自動的に同期されます。同期の完了後、旧式の保護グループから仮想マシンを削除できます。
-13. すべてのマシンの移行後、旧式の保護グループを削除できます。
-14. 同期の完了後、マシンのフェールオーバーのプロパティと Azure ネットワーク設定を指定してください。
-15. 既存の復旧計画がある場合は、**[復旧計画の移行]** オプションを使うと、強化されたデプロイに移行できます。この操作は、すべての保護されたマシンが移行された後で行う必要があります。
+    ![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration1.png)
 
-	![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration5.png)
+8. In **Select Machines** select the protection group you want to migrate from, and the machines you want to migrate.
 
->[AZURE.NOTE] 移行が完了したら、[強化されたデプロイに関する記事](site-recovery-vmware-to-azure-classic.md)に進んでください。この記事の残りの部分を読む必要はありません。また、この記事でこれ以降に説明している手順に従う必要もありません**。
+    ![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration2.png)
+
+9. In **Configure Target Settings** specify whether you want to use the same settings for all machines and select the process server and Azure storage account. If you don't have a separate process server this will be the the IP address of the configuration server server.
 
 
+    ![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration3.png)
+
+    > [AZURE.NOTE] [Migration of storage accounts](../resource-group-move-resources.md) across resource groups within the same subscription or across subscriptions is not supported for storage accounts used for deploying Site Recovery.
+
+10. In **Specify Accounts**, select the account you created for the process server to access the machine to push the new version of the Mobility service.
+
+    ![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration4.png)
+
+11. Site Recovery will migrate your replicated data to the Azure storage account that you provided. Optionally you can reuse the storage account you used in the legacy deployment.
+12. After the job finishes virtual machines will automatically synchronize. After synchronization completes you can delete the virtual machines from the legacy protection group.
+13. After all machines have migrated you can delete the legacy protection group.
+14. Remember to specify the failover properties for machines, and the Azure network settings after synchronization is complete.
+15. If you have existing recovery plans, you can migrate them to the enhanced deployment with the **Migrate Recovery Plan** option. You should only do this after all protected machines have been migrated. 
+
+    ![Add account](./media/site-recovery-vmware-to-azure-classic-legacy/legacy-migration5.png)
+
+>[AZURE.NOTE] After you've finished migration continue with the [enhanced article](site-recovery-vmware-to-azure-classic.md). The rest of this legacy article will no longer be relevant and you don't need to follow any more of the steps described in it**.
 
 
-## 必要なもの
 
-次の図は、デプロイの各種コンポーネントを示しています。
 
-![新しいコンテナー](./media/site-recovery-vmware-to-azure-classic-legacy/architecture.png)
+## <a name="what-do-i-need?"></a>What do I need?
 
-次のものが必要です。
+This diagram shows the deployment components.
 
-**コンポーネント** | **デプロイ** | **詳細**
+![New vault](./media/site-recovery-vmware-to-azure-classic-legacy/architecture.png)
+
+Here's what you'll need:
+
+**Component** | **Deployment** | **Details**
 --- | --- | ---
-**構成サーバー** | Site Recovery と同じサブスクリプションの Azure Standard A3 仮想マシン。 | この構成サーバーは、保護されたマシン、プロセス サーバー、および Azure のマスター ターゲット サーバー間のやり取りを調整します。レプリケーションを設定し、フェールオーバーが発生した場合に Azure での復旧を調整します。
-**マスター ターゲット サーバー** | Azure 仮想マシン。Windows マシンを保護する場合は Windows Server 2012 R2 ギャラリー イメージに基づく Windows サーバー、Linux マシンを保護する場合は OpenLogic CentOS 6.6 ギャラリー イメージに基づく Linux サーバー。<br/><br/> このサーバーには、Standard A4 と Standard D14、および Standard DS4 の 3 つのサイズを利用できます。<br/><br/> サーバーは、構成サーバーと同じ Azure ネットワークに接続されます。<br/><br/> Site Recovery ポータルでセットアップします。 | Azure ストレージ アカウントの BLOB ストレージに作成された接続済みの VHD を使用して、保護されたマシンからレプリケートされたデータを受け取って保持します。<br/><br/> Premium Storage アカウントを使用して一貫性のある高パフォーマンスおよび短い待機時間を必要とするワークロードの保護を構成する場合は特に、Standard DS4 を選択します。
-**プロセス サーバー** | Windows Server 2012 R2 を実行するオンプレミスの仮想サーバーまたは物理サーバー<br/><br/>保護するマシンと同じネットワークおよび LAN セグメントにプロセス サーバーを配置することをお勧めします。ただし、保護されたマシンがプロセス サーバーに対する L3 ネットワーク可視性を持っている場合は、プロセス サーバーを異なるネットワーク上で実行することもできます。<br/><br/> セットアップして Site Recovery ポータルの構成サーバーに登録します。 | 保護されたマシンは、オンプレミスのプロセス サーバーにレプリケーション データを送信します。ディスク ベースのキャッシュを使用して受信したレプリケーション データをキャッシュします。プロセス サーバーはこのデータを使用してさまざまな操作を実行します。<br/><br/> マスター ターゲット サーバーにデータを送信する前に、キャッシュ、圧縮、および暗号化することによってデータを最適化します。<br/><br/> モビリティ サービスのプッシュ インストールを処理します。<br/><br/> VMware 仮想マシンの自動検出を実行します。
-**オンプレミスのマシン** | オンプレミスの VMware 仮想マシン、または Windows や Linux を実行している物理サーバー。 | 1 つまたは複数のマシンに適用されるレプリケーション設定を構成します。マシンを個別にフェールオーバーすることもできますが、より一般的には、復旧計画にまとめる複数のマシンをフェールオーバーします。 
-**モビリティ サービス** | 保護する個々の仮想マシンまたは物理サーバーにインストールされます。<br/><br/>手動でインストールすることも、マシンに対してレプリケーションを有効にしたときにプロセス サーバーによって自動的にプッシュしてインストールすることもできます。 | モビリティ サービスは、初期レプリケーション (再同期) 時に、プロセス サーバーにデータを送信します。マシンが保護された状態 (再同期が終了した後) で、モビリティ サービスはメモリ内のディスクへの書き込みをキャプチャして、プロセス サーバーに送信します。Windows Server のアプリケーションの整合性は、VSS を使って実現されます。
-**Azure Site Recovery コンテナー** | Azure サブスクリプションを使用して Site Recovery コンテナーを作成し、そのコンテナーにサーバーを登録します。 | コンテナーは、オンプレミスのサイトと Azure 間でのデータ レプリケーション、フェールオーバー、および復旧を調整およびオーケストレーションします。
-**レプリケーション メカニズム** | **インターネット経由** — インターネットを介してセキュリティで保護された SSL/TLS チャネルを使用して、保護されたオンプレミスのサーバーから Azure へのデータを通信およびレプリケートします。これが既定のオプションです。<br/><br/> **VPN/ExpressRoute** — オンプレミスのサーバーと Azure の通信およびデータ レプリケーションを VPN 接続を介して実行します。オンプレミスのサイトと Azure ネットワークとの間にサイト間 VPN 接続または ExpressRoute 接続を設定する必要があります。<br/><br/> Site Recovery のデプロイの間にレプリケートする方法を選択します。構成が済んだ後では、既存のマシンのレプリケーションに影響を与えずにメカニズムを変更することはできません。 | どちらのオプションでも、保護されたマシン上で受信ネットワーク ポートを開く必要があります。すべてのネットワーク通信は、オンプレミスのサイトから開始されます。 
+**Configuration server** | An Azure standard A3 virtual machine in the same subscription as Site Recovery. | The configuration server coordinates communication between protected machines, the process server, and master target servers in Azure. It sets up replication and coordinates recovery in Azure when failover occurs.
+**Master target server** | An Azure virtual machine — Either a Windows server based on a Windows Server 2012 R2 gallery image (to protect Windows machines) or as a Linux server based on a OpenLogic CentOS 6.6 gallery image (to protect Linux machines).<br/><br/> Three sizing options are available – Standard A4, Standard D14 and Standard DS4.<br/><br/> The server is connected to the same Azure network as the configuration server.<br/><br/> You set up in the Site Recovery portal | It receives and retains replicated data from your protected machines using attached VHDs created on blob storage in your Azure storage account.<br/><br/> Select Standard DS4 specifically for configuring protection for workloads requiring consistent high performance and low latency using Premium Storage Account.
+**Process server** | An on-premises virtual or physical server running Windows Server 2012 R2<br/><br/> We recommend it's placed on the same network and LAN segment as the machines that you want to protect, but it can run on a different network as long as protected machines have L3 network visibility to it.<br/><br/> You set it up and register it to the configuration server in the Site Recovery portal. | Protected machines send replication data to the on-premises process server. It has a disk-based cache to cache replication data that it receives. It performs a number of actions on that data.<br/><br/> It optimizes data by caching, compressing, and encrypting it before sending it on to the master target server.<br/><br/> It handles push installation of the Mobility Service.<br/><br/> It performs automatic discovery of VMware virtual machines.
+**On-premises machines** | On-premises VMware virtual machines, or physical servers running Windows or Linux. | You configure replication settings that apply one or more machines. You can fail over an individual machine or more commonly, multiple machines that you gather together into a recovery plan. 
+**Mobility service** | Installed on each virtual machine or physical server you want to protect<br/><br/> Can be installed manually or pushed and installed automatically by the process server when you enable replication for a machine. | The Mobility service sends data to the process server during initial replication (resync). After the machine is in a protected state (after resync finishes) the Mobility service captures writes to disk in-memory and sends them to the process server. Applicationconsistency for Windows servers is achieved using VSS.
+**Azure Site Recovery vault** | You create a Site Recovery  vault with an Azure subscription and register servers in the vault. | The vault coordinates and orchestrates data replication, failover, and recovery between your on-premises site and Azure.
+**Replication mechanism** | **Over the Internet**—Communicates and replicates data from protected on-premises servers to Azure using secure SSL/TLS channel over the internet. This is the default option.<br/><br/> **VPN/ExpressRoute**—Communicates and replicates data between on-premises servers and Azure over a VPN connection. You'll need to set up a site-to-site VPN or an ExpressRoute connection between your on-premises site and Azure network.<br/><br/> You'll select how you want to replicate during Site Recovery deployment. You can't change the mechanism after it's configured without impacting replication of existing machines. | Neither option requires you to open any inbound network ports on protected machines. All network communication is initiated from the on-premises site. 
 
-## 容量計画
+## <a name="capacity-planning"></a>Capacity planning
 
-次の主な領域を考慮する必要があります。
+The main areas you'll need to consider:
 
-- **ソースの環境** — VMware インフラストラクチャ、ソース マシンの設定、要件
-- **コンポーネント サーバー** — プロセス サーバー、構成サーバー、マスター ターゲット サーバー
+- **Source environment**—The VMware infrastructure, source machine settings and requirements.
+- **Component servers**—The process server, configuration server, and master target server 
 
-### ソース環境に関する考慮事項
+### <a name="considerations-for-the-source-environment"></a>Considerations for the source environment
 
-- **最大ディスク サイズ** — 仮想マシンに接続するディスクの現在の最大サイズは 1 TB です。したがって、レプリケート可能なソース ディスクの最大サイズも 1 TB に制限されます。
-- **ソースあたりの最大サイズ** — 1 つのソース マシンの最大サイズは 31 TB (31 個のディスク) であり、マスター ターゲット サーバーに D14 インスタンスをプロビジョニングできます。
-- **マスター ターゲット サーバーごとのソース数** — 1 台のマスター ターゲット サーバーで複数のソース コンピューターを保護できます。ただし、1 台のソース マシンを複数のマスター ターゲット サーバーで保護することはできません。これは、ディスクのレプリケート時に、このディスクのサイズをミラーリングする VHD が Azure の Blob Storage に作成され、データ ディスクとしてマスター ターゲット サーバーに接続されるためです。
-- **ソースごとの 1 日の最大変更率** — ソースごとの推奨される変更率を検討するときは、3 つの要因を考慮する必要があります。ターゲット ベースの考慮の場合、ソースでの操作ごとにターゲット ディスクでは 2 IOPS が必要です。これは、ターゲット ディスクでは古いデータが読み取られて、新しいデータが書き込まれるためです。
-	- **プロセス サーバーによってサポートされる 1 日あたりの変更率** — 1 台のソース マシンを複数のプロセス サーバーでサポートすることはできません。1 台のプロセス サーバーでは、1 日あたり最大 1 TB の変更率をサポートできます。したがって、ソース マシンごとにサポートされる最大の変化量は 1 TB です。
-	- **ターゲット ディスクでサポートされる最大のスループット** — ソース ディスクあたりの最大変化量は、144 GB/日を超えることはできません (8 K の書き込みサイズの場合)。さまざまな書き込みサイズでのターゲットのスループットと IOPS については、マスター ターゲット セクションの表を参照してください。各ソース IOPS によってターゲット ディスクでは 2 IOPS が生成されるので、この値を 2 で割る必要があります。Premium Storage アカウントのターゲットの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)」を参照してください。
-	- **ストレージ アカウントでサポートされる最大スループット** — 1 つのソースで複数のストレージ アカウントに対応することはできません。ストレージ アカウントが 1 秒間に最大で 20,000 の要求を受け取り、各ソース IOPS によってマスター ターゲット サーバーでは 2 IOPS が生成されることから、ソースの IOPS 数を 10,000 に維持することをお勧めします。Premium Storage アカウントのソースの構成時には、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)」を参照してください。
+- **Maximum disk size**—The current maximum size of the disk that can be attached to a virtual machine is 1 TB. Thus the maximum size of a source disk that can be replicated is also limited to 1 TB.
+- **Maximum size per source**—The maximum size of a single source machine is 31 TB (with 31 disks) and with a D14 instance provisioned for the master target server. 
+- **Number of sources per master target server**—Multiple source machines can be protected with a single master target server. However, a single source machine can’t be protected across multiple master target servers, because as disks replicate, a VHD that mirrors the size of the disk is created on Azure blob storage and attached as a data disk to the master target server.  
+- **Maximum daily change rate per source**—There are three factors that need to be considered when considering the recommended change rate per source. For the target based considerations two IOPS are required on the target disk for each operation on the source. This is because a read of old data and a write of the new data will happen on the target disk. 
+    - **Daily change rate supported by the process server**—A source machine can't span multiple process servers. A single process server can support up to 1 TB of daily change rate. Hence 1 TB is the maximum daily data change rate supported for a source machine. 
+    - **Maximum throughput supported by the target disk**—Maximum churn per source disk can't be more than 144 GB/day (with 8K write size). See the table in the master target section for the throughput and IOPs of the target for various write sizes. This number must be divided by two because each source IOP generates 2 IOPS on the target disk. Read about [Azure scalability and performance targets](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts) when configuring the target for premium storage accounts.
+    - **Maximum throughput supported by the storage account**—A source can't span multiple storage accounts. Given that a storage account takes a maximum of 20,000 requests per second and that each source IOP generates 2 IOPS at the master target server, we recommend you keep the number of IOPS across the source to 10,000. Read about [Azure scalability and performance targets](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts) when configuring the source for premium storage accounts.
 
-### コンポーネント サーバーに関する考慮事項
+### <a name="considerations-for-component-servers"></a>Considerations for component servers
 
-表 1 は、構成サーバーとマスター ターゲット サーバーの仮想マシンのサイズをまとめたものです。
+Table 1 summarizes the virtual machine sizes for the configuration and master target servers.
 
-**コンポーネント** | **デプロイされた Azure インスタンス** | **コア** | **メモリ** | **ディスクの最大数** | **ディスク サイズ**
+**Component** | **Deployed Azure instances** | **Cores** | **Memory** | **Max disks** | **Disk size**
 --- | --- | --- | --- | --- | ---
-構成サーバー | Standard A3 | 4 | 7 GB | 8 | 1023 GB
-マスター ターゲット サーバー | Standard A4 | 8 | 14 GB | 16 | 1023 GB
+Configuration server | Standard A3 | 4 | 7 GB | 8 | 1023 GB
+Master target server | Standard A4 | 8 | 14 GB | 16 | 1023 GB
  | Standard D14 | 16 | 112 GB | 32 | 1023 GB
  | Standard DS4 | 8 | 28 GB | 16 | 1023 GB
 
-**表 1**
+**Table 1**
 
-#### プロセス サーバーに関する考慮事項
+#### <a name="process-server-considerations"></a>Process server considerations
 
-通常、プロセス サーバーのサイズは、保護されているすべてのワークロードに対する 1 日の変更率に依存します。
+Generally process server sizing depends on the daily change rate across all protected workloads.
 
 
-- インライン圧縮や暗号化などのタスクを実行するのに十分なコンピューティング能力が必要です。
-- プロセス サーバーは、ディスク ベースのキャッシュを使用します。ネットワークでボトルネックや障害が発生したときに格納されるデータ変更を促進するため、推奨されるキャッシュ容量およびディスク スループットを利用できることを確認します。
-- プロセス サーバーがマスター ターゲット サーバーにデータをアップロードして継続的にデータを保護できるよう、帯域幅が十分であることを確認します。
+- You need sufficient compute to perform tasks such as inline compression and encryption.
+- The process server uses disk based cache. Make sure the recommended cache space and disk throughput is available to facilitate the data changes stored in the event of network bottleneck or outage. 
+- Ensure sufficient bandwidth  so that the process server can upload the data to the master target server to provide continuous data protection. 
 
-表 2 では、プロセス サーバーのガイドラインの概要を示します。
+Table 2 provides a summary of the process server guidelines.
 
-**データの変更率** | **CPU** | **メモリ** | **キャッシュ ディスク サイズ**| **キャッシュ ディスク スループット** | **帯域幅の受信/送信**
+**Data change rate** | **CPU** | **Memory** | **Cache disk size**| **Cache disk throughput** | **Bandwidth ingress/egress**
 --- | --- | --- | --- | --- | ---
-< 300 GB | 4 vCPU (2 ソケット * 2 コア @ 2.5 GHz) | 4 GB | 600 GB | 7 ～ 10 MB/秒 | 30 Mbps/21 Mbps
-300 ～ 600 GB | 8 vCPU (2 ソケット * 4 コア @ 2.5 GHz) | 6 GB | 600 GB | 11 ～ 15 MB/秒 | 60 Mbps/42 Mbps
-600 GB ～ 1 TB | 12 vCPU (2 ソケット * 6 コア @ 2.5 GHz) | 8 GB | 600 GB | 16 ～ 20 MB/秒 | 100 Mbps/70 Mbps
-> 1 TB | 別のプロセス サーバーをデプロイします | | | | 
+< 300 GB | 4 vCPUs (2 sockets * 2 cores @ 2.5GHz) | 4 GB | 600 GB | 7 to 10 MB per second | 30 Mbps/21 Mbps
+300 to 600 GB | 8 vCPUs (2 sockets * 4 cores @ 2.5GHz) | 6 GB | 600 GB | 11 to 15 MB per second | 60 Mbps/42 Mbps
+600 GB to 1 TB | 12 vCPUs (2 sockets * 6 cores @ 2.5GHz) | 8 GB | 600 GB | 16 to 20 MB per second | 100 Mbps/70 Mbps
+> 1 TB | Deploy another process server | | | | 
 
-**表 2**
+**Table 2**
 
-各値の説明:
+Where: 
 
-- 受信はダウンロードの帯域幅です (ソースとプロセス サーバー間のイントラネット)。
-- 送信はアップロードの帯域幅です (プロセス サーバーとマスター ターゲット サーバーの間のインターネット)。送信の値は、プロセス サーバーの圧縮を平均 30% と仮定したものです。
-- キャッシュ ディスクの場合、すべてのプロセス サーバーで別に 128 GB 以上の OS ディスクを使用することをお勧めします。
-- キャッシュ ディスクのスループットでは、次のストレージをベンチマークに使用しました: 10 K RPM の SAS ドライブ 8 台を RAID 10 構成にしたもの。
+- Ingress is download bandwidth (intranet between the source and process server).
+- Egress is upload bandwidth (internet between the process server and master target server). Egress numbers presume average 30% process server compression.
+- For cache disk a separate OS disk of minimum 128 GB is recommended for all process servers.
+- For cache disk throughput the following storage was used for benchmarking: 8 SAS drives of 10 K RPM with RAID 10 configuration.
 
-#### 構成サーバーに関する考慮事項
+#### <a name="configuration-server-considerations"></a>Configuration server considerations
 
-各構成サーバーは、3 ～ 4 個のボリュームで最大 100 個のソース マシンをサポートできます。デプロイがこれよりも大規模な場合は、別の構成サーバーをデプロイすることをお勧めします。構成サーバーの仮想マシンの既定のプロパティについては、表 1 を参照してください。
+Each configuration server can support up to 100 source machines with 3-4 volumes. If your deployment is larger we recommend you deploy another configuration server. See Table 1 for the default virtual machine properties of the configuration server. 
 
-#### マスター ターゲット サーバーおよびストレージ アカウントに関する考慮事項
+#### <a name="master-target-server-and-storage-account-considerations"></a>Master target server and storage account considerations
 
-各マスター ターゲット サーバーのストレージには、OS ディスク、保持ボリューム、およびデータ ディスクが含まれます。保持ドライブは、Site Recovery ポータルで定義されている保有期間の間、ディスク変更のジャーナルを保持します。マスター ターゲット サーバーの仮想マシンのプロパティは、表 1 を参照してください。表 3 では、A4 のディスクの使用方法を示します。
+The storage for each master target server includes an OS disk, a retention volume, and data disks. The retention drive maintains the journal of disk changes for the duration of the retention window defined in the Site Recovery portal.  Refer to Table 1 for the virtual machine properties of the master target server. Table 3 shows how the disks of A4 are used.
 
-**インスタンス** | **OS ディスク** | **保持** | **データ ディスク**
+**Instance** | **OS disk** | **Retention** | **Data disks**
 --- | --- | --- | ---
- | | **保持** | **データ ディスク**
-Standard A4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 ディスク (15 * 1023 GB)
-Standard D14 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 31 ディスク (15 * 1023 GB)
-Standard DS4 | 1 ディスク (1 * 1023 GB) | 1 ディスク (1 * 1023 GB) | 15 ディスク (15 * 1023 GB)
+ | | **Retention** | **Data disks**
+Standard A4 | 1 disk (1 * 1023 GB) | 1 disk ( 1 * 1023 GB) | 15 disks (15 * 1023 GB)
+Standard D14 |  1 disk (1 * 1023 GB) | 1 disk ( 1 * 1023 GB) | 31 disks (15 * 1023 GB)
+Standard DS4 |  1 disk (1 * 1023 GB) | 1 disk ( 1 * 1023 GB) | 15 disks (15 * 1023 GB)
 
-**表 3**
+**Table 3**
 
-マスター ターゲット サーバーの容量計画は以下のことに依存します。
+Capacity planning for the master target server depends on:
 
-- Azure Storage のパフォーマンスと制限
-	- 使用率の高いディスクの最大数は、Standard レベルの VM では、1 つのストレージ アカウントで約 40 (ディスクあたり IOPS 20,000/500) です。[Standard Storage アカウント](../storage/storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts)および [Premium Storage アカウント](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts)の各スケーラビリティ ターゲットについてご確認ください。
--	1 日の変更率
--	保持ボリュームのストレージ
+- Azure storage performance and limitations
+    - The maximum number of highly utilized disks for a Standard Tier VM, is about 40 (20,000/500 IOPS per disk) in a single storage account. Read about [scalability targets for standard storage sccounts](../storage/storage-scalability-targets.md#scalability-targets-for-standard-storage-accounts) and for [premium storage sccounts](../storage/storage-scalability-targets.md#scalability-targets-for-premium-storage-accounts).
+-   Daily change rate 
+-   Retention volume storage.
 
-以下の点に注意してください。
+Note that:
 
-- 1 つのソースで複数のストレージ アカウントを使用することはできません。これは、保護を構成するときに選択したストレージ アカウントに対するデータ ディスクに適用されます。OS ディスクと保持ディスクは、通常、自動的にデプロイされるストレージ アカウントに割り当てられます。
-- 必要な保持ストレージ ボリュームは、1 日の変更率および保持日数に依存します。マスター ターゲット サーバーごとに必要な保持ストレージ = 1 日あたりのソースからの合計変更数 * 保持日数。
-- 各マスター ターゲット サーバーは、保持ボリュームを 1 つだけ持ちます。保持ボリュームは、マスター ターゲット サーバーに接続されたディスク間で共有されます。次に例を示します。
-	- ソース マシンに 5 台のディスクがあり、ソースで各ディスクが 120 IOPS (8K サイズ) を生成する場合、ディスクあたり 240 IOPS になります (ソースでの IO ごとにターゲット ディスクでは 2 操作)。240 IOPS は、Azure でのディスクごとの IOPS 制限である 500 の範囲内です。
-	- 保持ボリュームでは、これは 120 * 5 = 600 IOPS になり、ボトルネックになる可能性があります。このシナリオでの適切な戦略は、保持ボリュームにディスクを追加し、RAID ストライプ構成として全体で共有することです。このようにすると、IOPS が複数のドライブに分散されるため、パフォーマンスが向上します。保持ボリュームに追加するドライブの数は次のようになります。
-		- ソース環境からの合計 IOPS / 500
-		- 1 日あたりのソース環境からの合計変更量 (非圧縮) / 287 GB。287 GB は、ターゲット ディスクがサポートする 1 日あたりの最大スループットです。このケースでは 8 K が想定される書き込みサイズなので、このメトリックは 8 K 単位の書き込みサイズによって異なります。たとえば、書き込みサイズが 4 K の場合、スループットは 287/2 になります。また、書き込みサイズが 16 K の場合、スループットは 287*2 になります。
-- 必要なストレージ アカウントの数 = 合計ソース IOPS/10000。
+- One source can't span multiple storage accounts. This applies to the data disk that go to the storage accounts selected when you configure protection. The OS and the retention disks usually go to the automatically deployed storage account.
+- The retention storage volume required depends on the daily change rate and the number of retention days. The retention storage required per master target server = total churn from source per day * number of retention days. 
+- Each master target server has only one retention volume. The retention volume is shared across the disks attached to the master target server. For example:
+    - If there's a source machine with 5 disks and each disk generates 120 IOPS (8K size) on the source, this translates to 240 IOPS per disk (2 operations on the target disk per source IO). 240 IOPS is within the Azure per disk IOPS limit of 500.
+    - On the retention volume, this becomes 120 * 5 = 600 IOPS and this can become a bottle neck. In this scenario, a good strategy would be to add more disks to the retention volume and span it across, as a RAID stripe configuration. This will improve performance because the IOPS are distributed across multiple drives. The number of drives to be added to the retention volume will be as follows:
+        - Total IOPS from source environment / 500
+        - Total churn per day from source environment (uncompressed) / 287 GB. 287 GB is the maximum throughput supported by a target disk per day. This metric will vary based on the write size with a factor of 8K, because in this case 8K is thee assumed write size. For example, if the write size is 4K then throughput will be 287/2. And if the write size is 16K then throughput will be 287*2.
+- The number of storage accounts required = total source IOPs/10000.
 
 
-## 開始する前に
+## <a name="before-you-start"></a>Before you start
 
-**コンポーネント** | **要件** | **詳細**
+**Component** | **Requirements** | **Details**
 --- | --- | --- 
-**Azure アカウント** | [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。
-**Azure Storage** | レプリケートされたデータを格納するには Azure ストレージ アカウントが必要になります。<br/><br/>アカウントは [Standard 地理冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)または [Premium Storage アカウント](../storage/storage-premium-storage.md)のいずれかとする必要があります。<br/><br/> アカウントは Azure Site Recovery サービスと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。[新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。<br/><br/> 詳細については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。
-**Azure Virtual Network** | 構成サーバーとターゲット マスター サーバーのデプロイ先となる Azure 仮想ネットワークが必要になります。Azure 仮想ネットワークは、Azure Site Recovery コンテナーと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。ExpressRoute 接続または VPN 接続でデータをレプリケートする場合、Azure Virtual Network が、ExpressRoute 接続またはサイト間 VPN を介してオンプレミス ネットワークに接続されている必要があります。
-**Azure リソース** | すべてのコンポーネントをデプロイできるだけの十分な Azure リソースがあることを確認してください。詳細については、「[Azure サブスクリプションの制限](../azure-subscription-service-limits.md)」をご覧ください。
-**Azure Virtual Machines** | 保護する仮想マシンは、[Azure の前提条件](site-recovery-best-practices.md)に従う必要があります。<br/><br/> **ディスクの数** — 1 台の保護されたサーバーでサポートできるディスク数は最大 31 です。<br/><br/> **ディスク サイズ** — 個々のディスク容量は 1023 GB 以下である必要があります。<br/><br/> **クラスタリング** — クラスター化されたサーバーはサポートされません。<br/><br/> **ブート** — Unified Extensible Firmware Interface (UEFI) ブートまたは拡張ファームウェア インターフェイス (EFI) ブートはサポートされません。<br/><br/> **ボリューム** — Bitlocker 暗号化ボリュームはサポートされません。<br/><br/> **サーバー名** — 名前は 1 ～ 63 文字 (文字、数字、ハイフン) である必要があります。文字または数字で始まり、文字または数字で終わる必要があります。マシンが保護された後で、Azure の名前を変更することができます。
-**構成サーバー** | Azure Site Recovery Windows Server 2012 R2 ギャラリー イメージに基づいた構成サーバー用の Standard A3 仮想マシンがサブスクリプションに作成されます。新しいクラウド サービスの最初のインスタンスとして作成されます。構成サーバーの接続の種類としてパブリック インターネットを選択した場合、予約済みのパブリック IP アドレスでクラウド サービスが作成されます。<br/><br/> インストール パスは英語文字のみで構成される必要があります。
-**マスター ターゲット サーバー** | Azure 仮想マシン、Standard A4、D14 または DS4。<br/><br/> インストール パスは英語文字のみで構成される必要があります。たとえば、Linux を実行するマスター ターゲット サーバーのパスは、**/usr/local/ASR** のようにする必要があります。
-**プロセス サーバー** | プロセス サーバーは、最新の更新プログラムがインストールされている Windows Server 2012 R2 を実行している物理マシンまたは仮想マシンにデプロイできます。C:/ にインストールします。<br/><br/> プロセス サーバーは、保護するマシンと同じネットワークおよびサブネット上に配置することをお勧めします。<br/><br/> VMware vSphere CLI 5.5.0 をプロセス サーバーにインストールします。vCenter サーバーによって管理される仮想マシンまたは ESXi ホストで実行する仮想マシンを検出するには、プロセス サーバー上に VMware vSphere CLI コンポーネントが必要です。<br/><br/> インストール パスは英語文字のみの構成にする必要があります。<br/><br/> ReFS ファイル システムはサポートされていません。
-**VMware** | VMware vSphere ハイパーバイザーを管理する VMWare vCenter サーバー。最新の更新プログラムがインストールされた vCenter バージョン 5.1 または 5.5 を実行している必要があります。<br/><br/> 保護する VMware 仮想マシンを含む、1 つまたは複数の vSphere ハイパーバイザー。ハイパーバイザーは、最新の更新プログラムがインストールされた ESX/ESXi バージョン 5.1 または 5.5 を実行している必要があります。<br/><br/> VMware 仮想マシンでは、VMware ツールがインストールされ、実行されている必要があります。 
-**Windows マシン** | Windows を実行する保護された物理サーバーまたは VMware 仮想マシンには、以下のいくつかの要件がありす。<br/><br/> サポートされる 64 ビット オペレーティング システム: **Windows Server 2012 R2**、**Windows Server 2012**、または **Windows Server 2008 R2 SP1 以上**。<br/><br/> ホスト名、マウント ポイント、デバイス名、Windows のシステム パス (例: C:\\Windows) に使用できるのは英語のみです。<br/><br/> オペレーティング システムは C:\\ ドライブにインストールする必要があります。<br/><br/> 基本ディスクのみがサポートされます。ダイナミック ディスクはサポートされません。<br/><br/> 保護されたマシンのファイアウォール規則は、保護されたマシンから Azure の構成サーバーおよびマスター ターゲット サーバーにアクセスできるように設定する必要があります。<p>Windows サーバーにモビリティ サービスをプッシュ インストールするには、管理者アカウントを提供する必要があります (Windows マシン上のローカル管理者)。提供するアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。アクセス制御の詳細については[こちら](https://msdn.microsoft.com/library/aa826699.aspx)をご覧ください。<br/><br/> フェールオーバー後に、Azure の Windows 仮想マシンにリモート デスクトップを使用して接続する場合、オンプレミスのマシンでリモート デスクトップが有効になっていることを確認してください。VPN 経由で接続していない場合、ファイアウォール規則でインターネット経由のリモート デスクトップ接続を許可する必要があります。
-**Linux マシン** | サポートされる 64 ビット オペレーティング システム: **Centos 6.4、6.5、6.6**、**Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5**、**SUSE Linux Enterprise Server 11 SP3**。<br/><br/> 保護されたマシンのファイアウォール規則は、保護されたマシンから Azure の構成サーバーおよびマスター ターゲット サーバーにアクセスできるように設定する必要があります。<br/><br/>保護対象マシン上の /etc/hosts ファイルには、ローカル ホスト名をすべての NIC と関連付けられた IP アドレスにマップするエントリが含まれる必要があります。<br/><br/>フェールオーバー後に、Linux を実行する Azure 仮想マシンに Secure Shell クライアント (ssh) を使用して接続する場合、保護されたマシンのシステム ブート時に Secure Shell サービスが自動的に起動し、ファイアウォールの規則で仮想マシンへの ssh 接続が許可されるように設定していることを確認してください。<br/><br/> ホスト名、マウント ポイント、デバイス名、および Linux システム パスとファイル名 (例: /etc/、/usr) に使用できるのは英語のみです。<br/><br/> オンプレミスのマシンに対する保護は、以下のストレージで有効にできます。<br>ファイル システム: EXT3、ETX4、ReiserFS、XFS<br>マルチパス ソフトウェア デバイス マッパー (multipath)<br>ボリューム マネージャー: LVM2<br>HP CCISS コントローラー ストレージを使用する物理サーバーはサポートされていません。
-**サードパーティ** | このシナリオでは、正しく機能するためにサード パーティのソフトウェアに依存している、一部のデプロイ コンポーネントがあります。すべてを一覧表示するには、「[Third Party Software Notices and Information](#third-party)」を参照してください。
+**Azure account** | You'll need a [Microsoft Azure](https://azure.microsoft.com/) account. You can start with a [free trial](https://azure.microsoft.com/pricing/free-trial/).
+**Azure storage** | You'll need an Azure storage account to store replicated data<br/><br/> Either the account should be a [Standard Geo-redundant Storage Account](../storage/storage-redundancy.md#geo-redundant-storage) or [Premium Storage Account](../storage/storage-premium-storage.md).<br/><br/> It must in the same region as the Azure Site Recovery service, and be associated with the same subscription. We do not support the move of Storage accounts created using the [new Azure portal](../storage/storage-create-storage-account.md) across resource groups.<br/><br/> To learn more read [Introduction to Microsoft Azure Storage](../storage/storage-introduction.md)
+**Azure virtual network** | You'll need an Azure virtual network on which the configuration server and master target server will be deployed. It should be in the same subscription and region as the Azure Site Recovery vault. If you wish to replicate data over an ExpressRoute or VPN connection the Azure virtual network must be connected to your on-premises network over an ExpressRoute connection or a Site-to-Site VPN.
+**Azure resources** | Make sure you have enough Azure resources to deploy all components. Read more in [Azure Subscription Limits](../azure-subscription-service-limits.md).
+**Azure virtual machines** | Virtual machines you want to protect should conform with [Azure prerequisites](site-recovery-best-practices.md).<br/><br/> **Disk count**—A maximum of 31 disks can be supported on a single protected server<br/><br/> **Disk sizes**—Individual disk capacity shouldn't be more than 1023 GB<br/><br/> **Clustering**—Clustered servers aren't supported<br/><br/> **Boot**—Unified Extensible Firmware Interface(UEFI)/Extensible Firmware Interface(EFI) boot isn't supported<br/><br/> **Volumes**—Bitlocker encrypted volumes aren't supported<br/><br/> **Server names**—Names should contain between 1 and 63 characters (letters, numbers and hyphens). The name must start with a letter or number and end with a letter or number. After a machine is protected you can modify the Azure name.
+**Configuration server** | Standard A3 virtual machine based on an Azure Site Recovery Windows Server 2012 R2 gallery image will be created in your subscription for the configuration server. It's created as the first instance in a new cloud service. If you select Public Internet as the connectivity type for the configuration server the cloud service will be created with a reserved public IP address.<br/><br/> The installation path should be in English characters only.
+**Master target server** | Azure virtual machine, standard A4, D14 or DS4.<br/><br/> The installation path  should be in English characters only. For example the path should be **/usr/local/ASR** for a master target server running Linux.
+**Process server** | You can deploy the process server on physical or virtual machine running Windows Server 2012 R2 with the latest updates. Install on C:/.<br/><br/> We recommend you place the server on the same network and subnet as the machines you want to protect.<br/><br/> Install VMware vSphere CLI 5.5.0 on the process server. The VMware vSphere CLI component is required on the process server in order to discover virtual machines managed by a vCenter server or virtual machines running on an ESXi host.<br/><br/> The installation path should be in English characters only.<br/><br/> ReFS File System is not supported.
+**VMware** | A VMware vCenter server managing your VMware vSphere hypervisors. It should be running vCenter version 5.1 or 5.5 with the latest updates.<br/><br/> One or more vSphere hypervisors containing VMware virtual machines you want to protect. The hypervisor should be running ESX/ESXi version 5.1 or 5.5 with the latest updates.<br/><br/> VMware virtual machines should have VMware tools installed and running. 
+**Windows machines** | Protected physical servers or VMware virtual machines running Windows have a number of requirements.<br/><br/> A supported 64-bit operating system: **Windows Server 2012 R2**, **Windows Server 2012**, or **Windows Server 2008 R2 with at least SP1**.<br/><br/> The host name, mount points, device names, Windows system path (eg: C:\Windows) should be in English only.<br/><br/> The operating system should be installed on C:\ drive.<br/><br/> Only basic disks are supported. Dynamic disks aren't supported.<br/><br/> Firewall rules on protected machines should allow them to reach the configuration and master target servers in Azure.p><p>You'll need to provide an administrator account (must be a local administrator on the Windows machine) to push install the Mobility Service on Windows servers. If the provided account is a non-domain account you'll need to disable Remote User Access control on the local machine. To do this add the LocalAccountTokenFilterPolicy DWORD registry entry with a value of 1 under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System. To add the registry entry from a CLI open cmd or powershell and enter **`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**. [Learn more](https://msdn.microsoft.com/library/aa826699.aspx) about access control.<br/><br/> After failover, if you want connect to Windows virtual machines in Azure with Remote Desktop make sure that Remote Desktop is enabled for the on-premises machine. If you're not connecting over VPN, firewall rules should allow Remote Desktop connections over the internet.
+**Linux machines** | A supported 64 bit operating system: **Centos 6.4, 6.5, 6.6**; **Oracle Enterprise Linux 6.4, 6.5 running either the Red Hat compatible kernel or Unbreakable Enterprise Kernel Release 3 (UEK3)**, **SUSE Linux Enterprise Server 11 SP3**.<br/><br/> Firewall rules on protected machines should allow them to reach the configuration and master target servers in Azure.<br/><br/> /etc/hosts files on protected machines should  contain entries that map the local host name to IP addresses associated with all NICs <br/><br/> If you want to connect to an Azure virtual machine running Linux after failover using a Secure Shell client (ssh), ensure that the Secure Shell service on the protected machine is set to start automatically on system boot, and that firewall rules allow an ssh connection to it.<br/><br/> The host name, mount points, device names, and Linux system paths and file names (eg /etc/; /usr) should be in English only.<br/><br/> Protection can be enabled for on-premises machines with the following storage:-<br>File system: EXT3, ETX4, ReiserFS, XFS<br>Multipath software-Device Mapper (multipath)<br>Volume manager: LVM2<br>Physical servers with HP CCISS controller storage are not supported.
+**Third-party** | Some deployment components in this scenario depend on third-party software to function properly. For a complete list see [Third-party software notices and information](#third-party)
 
 
-### ネットワーク接続
+### <a name="network-connectivity"></a>Network connectivity
 
-インフラストラクチャ コンポーネント (構成サーバー、マスター ターゲット サーバー) のデプロイ先となる Azure Virtual Network とオンプレミス サイト間のネットワーク接続を構成する場合、2 つの選択肢があります。構成サーバーをデプロイするには、どちらのネットワーク接続を使用するかを決めておく必要があります。デプロイメント時にはこの設定を選択する必要があります。後から変更することはできません。
+You have two options when configuring network connectivity between your on-premises site and the Azure virtual network on which the infrastructure components (configuration server, master target servers) are deployed. You'll need to decide which network connectivity option to use before you can deploy your configuration server. You'll need to choose this setting at the time of deployment. It can't be changed later.
 
-**インターネット:** オンプレミスのサーバー (プロセス サーバー、保護されたマシン) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間での通信とデータのレプリケーションは、オンプレミスから、構成サーバーとマスター ターゲット サーバー上のパブリック エンドポイントへのセキュリティで保護された SSL/TLS 接続経由で行われます。(唯一の例外は、プロセス サーバーとマスター ターゲット サーバー間の TCP ポート 9080 上の接続です。この接続は暗号化されません。レプリケーション プロトコルに関連して、レプリケーションのセットアップに使用される制御情報だけがこの接続でやり取りされます。)
+**Internet :** Communication and replication of data between the on-premises servers (process server, protected machines) and the Azure infrastructure component servers (configuration server, master target server) happens over a secure SSL/TLS connection from on-premises to the public endpoints on the configuration and master target servers. (The only exception is the connection between the process server and the master target server on TCP port 9080 which is unencrypted. Only control information related to the replication protocol for replication setup is exchanged on this connection.)
 
-![インターネットのデプロイ図](./media/site-recovery-vmware-to-azure-classic-legacy/internet-deployment.png)
+![Deployment diagram internet](./media/site-recovery-vmware-to-azure-classic-legacy/internet-deployment.png)
 
-**VPN:** オンプレミスのサーバー (プロセス サーバー、保護されたマシン) と Azure インフラストラクチャ コンポーネントのサーバー (構成サーバー、マスター ターゲット サーバー) 間での通信とデータのレプリケーションは、オンプレミス ネットワークと、構成サーバーおよびマスター ターゲット サーバーがデプロイされている Azure 仮想ネットワーク間の VPN 接続経由で行われます。オンプレミス ネットワークが、ExpressRoute 接続またはサイト間 VPN 接続で Azure Virtual Network に接続されていることを確認してください。
+**VPN**: Communication and replication of data between the on-premises servers (process server, protected machines) and the Azure infrastructure component servers (configuration server, master target server) happens over a VPN connection between your on-premises network and the Azure virtual network on which the configuration server and master target servers are deployed. Ensure that your on-premises network is connected to the Azure virtual network by an ExpressRoute connection or a site-to-site VPN connection.
 
-![VPN のデプロイ図](./media/site-recovery-vmware-to-azure-classic-legacy/vpn-deployment.png)
+![Deployment diagram VPN](./media/site-recovery-vmware-to-azure-classic-legacy/vpn-deployment.png)
 
 
-## ステップ 1: コンテナーの作成
+## <a name="step-1:-create-a-vault"></a>Step 1: Create a vault
 
-1. [管理ポータル](https://portal.azure.com)にサインインします。
+1. Sign in to the [Management Portal](https://portal.azure.com).
 
 
-2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
+2. Expand **Data Services** > **Recovery Services** and click **Site Recovery Vault**.
 
 
-3. **[新規作成]**、**[簡易作成]** の順にクリックします。
+3. Click **Create New** > **Quick Create**.
 
-4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
+4. In **Name**, enter a friendly name to identify the vault.
 
-5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の価格の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域を参照してください。
+5. In **Region**, select the geographic region for the vault. To check supported regions see Geographic Availability in [Azure Site Recovery Pricing Details](https://azure.microsoft.com/pricing/details/site-recovery/)
 
-6. **[コンテナーの作成]** をクリックします。
+6. Click **Create vault**.
 
-	![新しいコンテナー](./media/site-recovery-vmware-to-azure-classic-legacy/quick-start-create-vault.png)
+    ![New vault](./media/site-recovery-vmware-to-azure-classic-legacy/quick-start-create-vault.png)
 
-ステータス バーを確認して、コンテナーが正常に作成されたことを確かめます。**Recovery Services** のメイン ページでは、資格情報コンテナーは **[アクティブ]** と表示されます。
+Check the status bar to confirm that the vault was successfully created. The vault will be listed as **Active** on the main **Recovery Services** page.
 
-## ステップ 2: 構成サーバーのデプロイ
+## <a name="step-2:-deploy-a-configuration-server"></a>Step 2: Deploy a configuration server
 
-### サーバー設定の構成
+### <a name="configure-server-settings"></a>Configure server settings
 
-1. **[復旧サービス]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
+1. In the **Recovery Services** page, click the vault to open the Quick Start page. Quick Start can also be opened at any time using the icon.
 
-	![[クイック スタート] アイコン](./media/site-recovery-vmware-to-azure-classic-legacy/quick-start-icon.png)
+    ![Quick Start Icon](./media/site-recovery-vmware-to-azure-classic-legacy/quick-start-icon.png)
 
-2. ドロップダウン リストで、**[オンプレミスのサイトと VMware 間/物理サーバーと Azure 間]** を選択します。
-3. **[ターゲット (Azure) リソースの準備]** で、**[構成サーバーのデプロイ]** をクリックします。
+2. In the dropdown list, select **Between an on-premises site with VMware/physical servers and Azure**.
+3. In **Prepare Target(Azure) Resources** click **Deploy Configuration Server**.
 
-	![構成サーバーのデプロイ](./media/site-recovery-vmware-to-azure-classic-legacy/deploy-cs2.png)
+    ![Deploy configuration server](./media/site-recovery-vmware-to-azure-classic-legacy/deploy-cs2.png)
 
-4. **[新しい構成サーバーの詳細]** で以下を指定します。
+4. In **New Configuration Server Details** specify:
 
-	- 接続先の構成サーバーの名前と資格情報。
-	- ネットワーク接続タイプのボックスの一覧から、**[パブリック インターネット]** または **[VPN]** を選択します。この設定は、適用された後に変更できないことに注意してください。
-	- サーバーを配置する必要がある Azure ネットワークを選択します。VPN を使用している場合は、Azure ネットワークが想定どおりオンプレミスのネットワークに接続されていることを確認してください。
-	- サーバーに割り当てる内部 IP アドレスとサブネットを指定します。サブネットの最初の 4 つの IP アドレスは Azure 内部用に確保されていることに注意してください。その他の利用可能な IP アドレスを使用します。
-	
-	![構成サーバーのデプロイ](./media/site-recovery-vmware-to-azure-classic-legacy/cs-details.png)
+    - A name for the configuration server and credentials to connect to it.
+    - In the network connectivity type drop down select **Public Internet** or **VPN**. Note that you can't modify this setting after it's applied.
+    - Select the Azure network on which the server should be located. If you're using VPN make sure the Azure network is connected to your on-premises network as expected. 
+    - Specify the internal IP address and subnet that will be assigned to the server. Note that the first four IP addresses in any subnet are reserved for internal Azure usage. Use any other available IP address.
+    
+    ![Deploy configuration server](./media/site-recovery-vmware-to-azure-classic-legacy/cs-details.png)
 
-5. **[OK]** をクリックすると、Azure Site Recovery Windows Server 2012 R2 ギャラリー イメージに基づいた構成サーバー用の Standard A3 仮想マシンが、サブスクリプションに作成されます。新しいクラウド サービスの最初のインスタンスとして作成されます。インターネット経由での接続を選択した場合は、予約されたパブリック IP アドレスでクラウド サービスが作成されます。ジョブの進捗状況は **[ジョブ]** タブで監視できます。
+5. When you click **OK** a standard A3 virtual machine based on an Azure Site Recovery Windows Server 2012 R2 gallery image will be created in your subscription for the configuration server. It's created as the first instance in a new cloud service. If you selected to connect over the internet the cloud service is created with a reserved public IP address. You can monitor progress in the **Jobs** tab.
 
-	![進行状況の監視](./media/site-recovery-vmware-to-azure-classic-legacy/monitor-cs.png)
+    ![Monitor progress](./media/site-recovery-vmware-to-azure-classic-legacy/monitor-cs.png)
 
-6.  インターネット経由で接続する場合は、構成サーバーのデプロイ後に Azure ポータルの **[Virtual Machines]** ページで、構成サーバーに割り当てられたパブリック IP アドレスを書き留めます。さらに、**[エンドポイント]** タブで、プライベート ポート 443 にマップされたパブリック HTTPS ポートを書き留めます。この情報は、後で、マスター ターゲット サーバーとプロセス サーバーを構成サーバーに登録するときに必要になります。構成サーバーは、次のエンドポイントでデプロイされます。
+6.  If you're connecting over the internet, after the configuration server is deployed note the public IP address assigned to it on the **Virtual Machines** page in the Azure portal. Then on the **Endpoints** tab note the public HTTPS port mapped to private port 443. You'll need this information later when you register the master target and process servers with the configuration server. The configuration server is deployed with these endpoints:
 
-	- HTTPS: パブリック ポートは、インターネット経由でコンポーネント サーバーと Azure 間の通信を調整するために使用されます。プライベート ポート 443 は、VPN 経由のコンポーネント サーバーと Azure 間の通信を調整するために使用されます。
-	- カスタム: パブリック ポートは、インターネット経由のフェールバック ツールの通信に使用されますプライベート ポート 9443 は、VPN 経由のフェールバック ツールの通信に使用されます。
-	- PowerShell: プライベート ポート 5986
-	- リモート デスクトップ: プライベート ポート 3389
-	
-	![VM エンドポイント](./media/site-recovery-vmware-to-azure-classic-legacy/vm-endpoints.png)
+    - HTTPS: A public port is used to coordinate communication between component servers and Azure over the internet. Private port 443 is used to coordinate communication between component servers and Azure over VPN.
+    - Custom: A public port is used for failback tool communication over the internet. Private port 9443 is used for failback tool communication over VPN.
+    - PowerShell: Private port 5986
+    - Remote desktop: Private port 3389
+    
+    ![VM endpoints](./media/site-recovery-vmware-to-azure-classic-legacy/vm-endpoints.png)
 
-    >[AZURE.WARNING] 構成サーバーのデプロイ中に作成されたエンドポイントのパブリック ポート番号またはプライベート ポート番号は削除または変更しないでください。
+    >[AZURE.WARNING] Don't delete or change the public or private port number of any endpoints created during configuration server deployment.
 
-構成サーバーは、予約済み IP アドレスで自動的に作成される Azure クラウド サービスにデプロイされます。予約されたアドレスは、クラウド サービスで仮想マシン (構成サーバーを含む) の再起動の間に構成サーバーのクラウド サービスの IP アドレスが変わらないために必要です。構成サーバーを使用停止するときは予約されたパブリック IP アドレスを手動で予約解除する必要があります。そうしないと、予約されたまま残ります。既定では、サブスクリプションごとの予約済みパブリック IP アドレスは 20 個までに制限されています。予約済み IP アドレスの詳細については、[こちら](../virtual-network/virtual-networks-reserved-private-ip.md)を参照してください。
+The configuration server is deployed in an automatically created Azure cloud service with a reserved IP address. The reserved address is needed to ensure that the configuration server cloud service IP address remains the same across reboots of the virtual machines (including the configuration server) on the cloud service. The reserved public IP address will need to be manually unreserved when the configuration server is decommissioned or it'll remain reserved. There's a default limit of 20 reserved public IP addresses per subscription. [Learn more](../virtual-network/virtual-networks-reserved-private-ip.md) about reserved IP addresses. 
 
-### 構成サーバーのコンテナーへの登録
+### <a name="register-the-configuration-server-in-the-vault"></a>Register the configuration server in the vault
 
-1. **[クイック スタート]** ページで、**[ターゲット リソースの準備]**、**[登録キーのダウンロード]** の順にクリックします。キー ファイルが自動的に生成されます。キーは生成後 5 日間有効です。それを構成サーバーにコピーします。
-2. **[Virtual Machines]** で、仮想マシンの一覧から構成サーバーを選択します。**[ダッシュボード]** タブを開いて **[接続]** をクリックします。ダウンロードした RDP ファイルを**開き**、リモート デスクトップを使用して構成サーバーにログオンします。VPN を使用している場合は、オンプレミス サイトからのリモート デスクトップ接続に対して、内部 IP アドレス (構成サーバーをデプロイしたときに指定したアドレス) を使用します。初回ログオン時は、Azure Site Recovery 構成サーバー セットアップ ウィザードが自動的に実行されます。
+1. In the **Quick Start** page click **Prepare Target Resources** > **Download a registration key**. The key file is generated automatically. It's valid for 5 days after it's generated. Copy it to the configuration server.
+2. In **Virtual Machines** select the configuration server from the virtual machines list. Open the **Dashboard** tab and click **Connect**. **Open** the downloaded RDP file to log onto the configuration server using Remote Desktop. If you're using VPN, use the internal IP address (the address you specified when you deployed the configuration server) for a Remote Desktop connection from the on-premises site. The Azure Site Recovery Configuration Server Setup Wizard runs automatically when you log on for the first time.
 
-	![登録](./media/site-recovery-vmware-to-azure-classic-legacy/splash.png)
+    ![Registration](./media/site-recovery-vmware-to-azure-classic-legacy/splash.png)
 
-3. **[サードパーティ製ソフトウェアのインストール]** で **[同意する]** をクリックして MySQL をダウンロードしてインストールします。
+3. In **Third-Party Software Installation** click **I Accept** to download and install MySQL.
 
-	![MySQL のインストール](./media/site-recovery-vmware-to-azure-classic-legacy/sql-eula.png)
+    ![MySQL install](./media/site-recovery-vmware-to-azure-classic-legacy/sql-eula.png)
 
-4. **[MySQL サーバーの詳細]** で、MySQL サーバー インスタンスにログオンするための資格情報を作成します。
+4. In **MySQL Server Details** create credentials to log onto the MySQL server instance.
 
-	![MySQL の資格情報](./media/site-recovery-vmware-to-azure-classic-legacy/sql-password.png)
+    ![MySQL credentials](./media/site-recovery-vmware-to-azure-classic-legacy/sql-password.png)
 
-5. **[インターネットの設定]** で、構成サーバーがインターネットに接続する方法を指定します。以下の点に注意してください。
+5. In **Internet Settings** specify how the configuration server will connect to the internet. Note that:
 
-	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。
-	- **[次へ]** をクリックすると、プロキシの接続を確認するテストが実行されます。
-	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、アドレス、ポート、資格情報などの詳細を入力する必要があります。
-	- 次の URL にプロキシ経由でアクセスできる必要があります。
-		- *.hypervrecoverymanager.windowsazure.com
-		- *.accesscontrol.windows.net
-		- *.backup.windowsazure.com
-		- *.blob.core.windows.net
-		- *.store.core.windows.net
-	- IP アドレス ベースのファイアウォール ルールがある場合は、構成サーバーから「[Azure Datacenter の IP 範囲](https://msdn.microsoft.com/library/azure/dn175718.aspx)」で説明されている IP アドレスへの通信および HTTPS (443) プロトコルを許可するようにルールが設定されていることを確認します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+    - If you want to use a custom proxy you should set it up before you install the Provider.
+    - When you click **Next** a test will run to check the proxy connection.
+    - If you do use a custom proxy, or your default proxy requires authentication you'll need to enter the proxy details, including the address, port, and credentials.
+    - The following URLs should be accessible via the proxy:
+        - *.hypervrecoverymanager.windowsazure.com
+        - *.accesscontrol.windows.net
+        - *.backup.windowsazure.com
+        - *.blob.core.windows.net
+        - *.store.core.windows.net
+    - If you have IP address-based firewall rules ensure that the rules are set to allow communication from the configuration server to the IP addresses described in [Azure Datacenter IP Ranges](https://msdn.microsoft.com/library/azure/dn175718.aspx) and HTTPS (443) protocol. You would have to white-list IP ranges of the Azure region that you plan to use, and that of West US.
 
-	![プロキシの登録](./media/site-recovery-vmware-to-azure-classic-legacy/register-proxy.png)
+    ![Proxy registration](./media/site-recovery-vmware-to-azure-classic-legacy/register-proxy.png)
 
-6. **[プロバイダー エラー メッセージ ローカライズ設定]** で、エラー メッセージを表示する言語を指定します。
+6. In **Provider Error Message Localization Settings** specify in which language you want error messages to appear.
 
-	![エラー メッセージの登録](./media/site-recovery-vmware-to-azure-classic-legacy/register-locale.png)
+    ![Error message registration](./media/site-recovery-vmware-to-azure-classic-legacy/register-locale.png)
 
-7. **[Azure Site Recovery の登録]** で、サーバーにコピーしたキー ファイルを参照して選択します。
+7. In **Azure Site Recovery Registration** browse and select the key file you copied to the server.
 
-	![キー ファイルの登録](./media/site-recovery-vmware-to-azure-classic-legacy/register-vault.png)
+    ![Key file registration](./media/site-recovery-vmware-to-azure-classic-legacy/register-vault.png)
 
-8. ウィザードの完了ページで、以下のオプションを選択します。
+8. On the completion page of the wizard select these options:
 
-	- **[アカウント管理ダイアログの起動]** を選択し、ウィザード終了後に [アカウントの管理] ダイアログを開くことを指定します。
-	- **[Cspsconfigtool のデスクトップ アイコンを作成する]** を選択し、ウィザードに戻らずにいつでも **[アカウントの管理]** ダイアログを開くことができるように、構成サーバーへのデスクトップ ショートカットを追加します。
+    - Select **Launch Account Management Dialog** to specify that the Manage Accounts dialog should open after you finish the wizard.
+    - Select **Create a desktop icon for Cspsconfigtool** to add a desktop shortcut on the  configuration server so that you can open the **Manage Accounts** dialog at any time without needing to rerun the wizard.
 
-	![登録の完了](./media/site-recovery-vmware-to-azure-classic-legacy/register-final.png)
+    ![Complete registration](./media/site-recovery-vmware-to-azure-classic-legacy/register-final.png)
 
-9. **[完了]** をクリックしてウィザードを完了します。パスフレーズが生成されます。パスフレーズを安全な場所にコピーしてください。このパスフレーズは、プロセス サーバーとマスター ターゲット サーバーを構成サーバーに認証および登録するときに必要になります。また、構成サーバーの通信におけるチャネルの整合性を確保するためにも使用されます。パスフレーズは再生成できますが、その新しいパスフレーズを使用してマスター ターゲット サーバーとプロセス サーバーを再登録する必要があります。
+9. Click **Finish** to complete the wizard. A passphrase is generated. Copy it to a secure location. You'll need it to authenticate and register the process and master target servers with the configuration server. It's also used to ensure channel integrity in configuration server communications. You can regenerate the passphrase but then you'll need to re-register the master target and process servers using the new passphrase.
 
-	![パスフレーズ](./media/site-recovery-vmware-to-azure-classic-legacy/passphrase.png)
+    ![Passphrase](./media/site-recovery-vmware-to-azure-classic-legacy/passphrase.png)
 
-登録後、コンテナーの **[構成サーバー]** ページに構成サーバーが一覧されます。
+After registration the configuration server will be listed on the **Configuration Servers** page in the vault.
 
-### アカウントの設定と管理
+### <a name="set-up-and-manage-accounts"></a>Set up and manage accounts
 
-デプロイの間に、Site Recovery は以下のアクションに資格情報を要求します。
+During deployment Site Recovery requests credentials for the following actions:
 
-- VMware アカウント (Site Recovery がvCenter サーバーまたは vSphere ホストで VM を自動的に検出できるように)。
-- マシンを保護に追加するとき、Site Recovery がモビリティ サービスをそれらにインストールできるように。
+- A VMware account so thatSite Recovery can automatically discovery VMs on vCenter servers or vSphere hosts. 
+- When you add machines for protection, so that Site Recovery can install the Mobility service on them.
 
-構成サーバーを登録した後は、**[アカウントの管理]** ダイアログを開き、これらのアクションに使用するアカウントを追加および管理できます。これを行うには 2 つの方法があります。
+After you've registered the configuration server you can open the **Manage Accounts** dialog to add and manage accounts that should be used for these actions. There are a couple of ways to do this:
 
-- 構成サーバーのセットアップの最後のページでダイアログに作成したショートカットを開きます (cspsconfigtool)。
-- 構成サーバーのセットアップの終了時にダイアログを開きます。
+- Open the shortcut you opted to created for the dialog on the last page of setup for the configuration server (cspsconfigtool).
+- Open the dialog on finish of configuration server setup.
 
-1. **[アカウントの管理]** で **[アカウントの追加]** をクリックします。既存のアカウントを変更および削除することもできます。
+1. In **Manage Accounts** click **Add Account**. You can also modify and delete existing accounts.
 
-	![アカウントの管理](./media/site-recovery-vmware-to-azure-classic-legacy/manage-account.png)
+    ![Manage accounts](./media/site-recovery-vmware-to-azure-classic-legacy/manage-account.png)
 
-2. **[アカウントの詳細]** で、Azure および資格情報で使用するアカウント名を指定します (ドメイン/ユーザー名)。
+2. In **Account Details** specify an account name to use in Azure and credentials (Domain/user name). 
 
-	![アカウントの管理](./media/site-recovery-vmware-to-azure-classic-legacy/account-details.png)
+    ![Manage accounts](./media/site-recovery-vmware-to-azure-classic-legacy/account-details.png)
 
-### 構成サーバーに接続します。 
+### <a name="connect-to-the-configuration-server"></a>Connect to the configuration server 
 
-構成サーバーに接続するには 2 つの方法があります。
+There are two ways to connect to the configuration server:
 
-- VPN サイト間または ExpressRoute 接続経由
-- インターネット経由
+- Over a VPN site-to-site or ExpressRoute connection
+- Over the internet 
 
-以下の点に注意してください。
+Note that:
 
-- インターネット接続では、仮想マシンのエンドポイントと、サーバーのパブリック仮想 IP アドレスを使用します。
-- VPN 接続では、サーバーの内部 IP アドレスと、エンドポイントのプライベート ポートを使用します。
-- オンプレミス サーバーから Azure で実行しているさまざまなコンポーネント サーバー (構成サーバー、マスター ターゲット サーバー) に、VPN 接続またはインターネットのどちらで接続する (制御およびレプリケーション データ) かを決定するのは、1 回だけの決定です。その後、この設定を変更することはできません。変更する場合は、シナリオを再デプロイし、マシンを再保護する必要があります。
+- An internet connection uses the endpoints of the virtual machine in conjunction with the public virtual IP address of the server.
+- A VPN connection uses the internal IP address of the server together with the endpoint private ports.
+- It's a one-time decision to decide whether to connect (control and replication data) from your on-premises servers to the various component servers (configuration server, master target server) running in Azure over a VPN connection or the internet. You can't change this setting afterwards. If you do you'll need to redeploy the scenario and reprotect your machines.  
 
 
-## ステップ 3: マスター ターゲット サーバーのデプロイ
+## <a name="step-3:-deploy-the-master-target-server"></a>Step 3: Deploy the master target server
 
-1. **[ターゲット (Azure) リソースの準備]** で、**[マスター ターゲット サーバーのデプロイ]** をクリックします。
-2. マスター ターゲット サーバーの詳細情報と資格情報を指定します。サーバーは、構成サーバーと同じ Azure ネットワークにデプロイされます。クリックして完了すると、Windows または Linux のギャラリー イメージを使用して Azure 仮想マシンが作成されます。
+1. Click **Prepare Target(Azure) Resources** > **Deploy master target server**.
+2. Specify the master target server details and credentials. The server will be deployed in the same Azure network as the configuration server. When you click to complete an Azure virtual machine will be created with a Windows or Linux gallery image.
 
-	![ターゲット サーバーの設定](./media/site-recovery-vmware-to-azure-classic-legacy/target-details.png)
+    ![Target server settings](./media/site-recovery-vmware-to-azure-classic-legacy/target-details.png)
 
-サブネットの最初の 4 つの IP アドレスは Azure 内部用に確保されていることに注意してください。その他の利用可能な IP アドレスを指定します。
+Note that the first four IP addresses in any subnet are reserved for internal Azure usage. Specify any other available IP address.
 
->[AZURE.NOTE] [Premium Storage アカウント](../storage/storage-premium-storage.md)を使用して I/O 量が多いワークロードをホストするために一貫性のある高 I/O パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、Standard DS4 を選択します。
+>[AZURE.NOTE] Select Standard DS4 when configuring protection for workloads which require consistent high I/O performance and low latency in order to host I/O intensive workloads using [Premium Storage Account](../storage/storage-premium-storage.md).
 
 
-3. Windows マスター ターゲット サーバー VM は、以下のエンドポイントで作成されます。インターネット経由で接続している場合にのみ、パブリック エンドポイントが作成されることに注意してください。
+3. A Windows master target server VM is created with these endpoints. Note that public endpoints are created only if your connecting over the internet.
 
-	- Custom: レプリケーション データをインターネット経由で送信するためにプロセス サーバーによって使用されるパブリック ポート。プライベート ポート 9443 は、プロセス サーバーがマスター ターゲット サーバーに VPN を介してレプリケーション データを送信するために使用されます。
-	- Custom1: メタデータをインターネット経由で送信するためにプロセス サーバーによって使用されるパブリック ポート。プライベート ポート 9080 は、プロセス サーバーがマスター ターゲット サーバーに VPN を介してメタデータを送信するために使用されます。
-	- PowerShell: プライベート ポート 5986
-	- リモート デスクトップ: プライベート ポート 3389
+    - Custom: Public port used by the process server to send replication data over the internet. Private port 9443 is used by the process server to send replication data to the master target server over VPN.
+    - Custom1: Public port used by the process server to send metadata over the internet. Private port 9080 is used by the process server to send metadata to the master target server over VPN.
+    - PowerShell: Private port 5986
+    - Remote desktop: Private port 3389
 
-4. Linux マスター ターゲット サーバー VM は、以下のエンドポイントで作成されます。インターネット経由で接続している場合にのみ、パブリック エンドポイントが作成されることに注意してください。
+4. A Linux master target server VM is created with these endpoints. Note that public endpoints are created only if you're connecting over the internet.
 
-	- Custom: レプリケーション データをインターネット経由で送信するためにプロセス サーバーによって使用されるパブリック ポート。プライベート ポート 9443 は、プロセス サーバーがマスター ターゲット サーバーに VPN を介してレプリケーション データを送信するために使用されます。
-	- Custom1: パブリック ポートは、メタデータをインターネット経由で送信するためにプロセス サーバーによって使用されます。プライベート ポート 9080 は、プロセス サーバーがマスター ターゲット サーバーに VPN を介してメタデータを送信するために使用されます。
-	- SSH: プライベート ポート 22
+    - Custom: Public port used by process server to send replication data over the internet. Private port 9443 is used by the process server to send replication data to the master target server over VPN.
+    - Custom1: Public port is used by the process server to send metadata over the internet. Private port 9080 is used by the process server to send metadata to the master target server over VPN
+    - SSH: Private port 22
 
-    >[AZURE.WARNING] マスター ターゲット サーバーのデプロイ中に作成されたエンドポイントのパブリック ポート番号またはプライベート ポート番号は削除または変更しないでください。
+    >[AZURE.WARNING] Don't delete or change the public or private port number of any of the endpoints created during the master target server deployment.
 
-5. **[Virtual Machines]** で、仮想マシンが起動するまで待機します。
+5. In **Virtual Machines** wait for the virtual machine to start.
 
-	- Windows Server の場合は、リモート デスクトップの詳細情報をメモしておきます。
-	- Linux サーバーで、VPN 経由で接続している場合は、仮想マシンの内部 IP アドレスをメモしておきます。インターネット経由で接続している場合は、パブリック IP アドレスをメモしておきます。
+    - If it's a Windows server note down the remote desktop details.
+    - If it's a Linux server and you're connecting over VPN note the internal IP address of the virtual machine. If you're connecting over the internet note the public IP address.
 
-6.  サーバーにログオンしてインストールを完了し、構成サーバーに登録します。
-7.  Windows を実行している場合は以下のようにします。
+6.  Log onto the server to complete installation and register it with the configuration server. 
+7.  If you're running Windows:
 
-	1. 仮想マシンへのリモート デスクトップ接続を開始します。初回ログオン時は、PowerShell ウィンドウでスクリプトが実行されます。このウィンドウは閉じないでください。終了すると、ホスト エージェントの構成ツールが自動的に開いてサーバーが登録されます。
-	2. **[ホスト エージェントの構成]** で、構成サーバーの内部 IP アドレスとポート番号の 443 を指定します。VPN 経由で接続していなくても、内部アドレスとプライベート ポート 443 を使用することができます。これは、仮想マシンが構成サーバーと同じ Azure ネットワークに接続しているためです。**[HTTPS を使用する]** は、有効のままにします。先ほどメモしておいた構成サーバーのパスフレーズを入力します。**[OK]** をクリックしてこのサーバーを登録します。NAT オプションは無視しても差し支えありません。これらは使用されません。
-	3. 必要な保持ドライブが 1 TB 以上と予想される場合は、仮想ディスクおよび[ストレージ スペース](http://blogs.technet.com/b/askpfeplat/archive/2013/10/21/storage-spaces-how-to-configure-storage-tiers-with-windows-server-2012-r2.aspx)を使用して保持ボリューム (R:) を構成することができます。
-	
-	![Windows のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure-classic-legacy/target-register.png)
+    1. Initiate a remote desktop connection to the virtual machine. The first time you log on a script will run in a PowerShell window. Don't close it. When it finishes the Host Agent Config tool opens automatically to register the server.
+    2. In **Host Agent Config** specify the internal IP address of the configuration server and port 443. You can use the internal address and private port 443 even if you're not connecting over VPN because the virtual machine is attached to the same Azure network as the configuration server. Leave **Use HTTPS** enabled. Enter the passphrase for the configuration server that you noted earlier. Click **OK** to register the server. You can ignore the NAT options. They're not used.
+    3. If your estimated retention drive requirement is more than 1 TB you can configure the retention volume (R:) using a virtual disk and [storage spaces](http://blogs.technet.com/b/askpfeplat/archive/2013/10/21/storage-spaces-how-to-configure-storage-tiers-with-windows-server-2012-r2.aspx)
+    
+    ![Windows master target server](./media/site-recovery-vmware-to-azure-classic-legacy/target-register.png)
 
-8. Linux を実行している場合は以下のようにします。
-	1. マスター ターゲット サーバー ソフトウェアをインストールする前に、最新の Linux Integration Services (LIS) がインストールされていることを確認します。最新バージョンの LIS とインストール手順は、[ここ](https://www.microsoft.com/download/details.aspx?id=46842)で確認できます。LIS をインストールした後、コンピューターを再起動します。
-	2. **[ターゲット (Azure) リソースの準備]** で、**[追加ソフトウェアのダウンロードとインストール (Linux マスター ターゲット サーバーのみ)]** をクリックします。ダウンロードした tar ファイルを、sftp クライアントを使用して仮想マシンにコピーします。または、デプロイ済みの Linux マスター ターゲット サーバーにログオンし、*wget http://go.microsoft.com/fwlink/?LinkID=529757&clcid=0x409* を使用してファイルをダウンロードしてもかまいません。
-	2. Secure Shell クライアントを使用してサーバーにログオンします。VPN 経由で Azure ネットワークに接続している場合は、内部 IP アドレスを使用します。それ以外の場合は、外部 IP アドレスと SSH パブリック エンドポイントを使用します。
-	3. 次を実行して gzipped インストーラーからファイルを抽出します。**tar –xvzf Microsoft-ASR\_UA\_8.4.0.0\_RHEL6-64***
-	![Linux のマスター ターゲット サーバー](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)
-	4. tar ファイルの内容を抽出したディレクトリで操作していることを確認します。
-	5. **echo *`<passphrase>`* >passphrase.txt** コマンドを使用して、構成サーバーのパスフレーズをローカル ファイルにコピーします。
-	6. コマンド “**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**” を実行します。
+8. If you're running Linux:
+    1. Make sure you've installed the latest Linux Integration Services (LIS) installed before you install the master target server. You can find the latest version of LIS along with instructions on how to install [here](https://www.microsoft.com/download/details.aspx?id=46842). Restart the machine after the LIS install.
+    2. In **Prepare Target (Azure) Resources** click **Download and Install additional software (only for Linux Master Target Server)**. Copy the downloaded tar file to the virtual machine using an sftp client. Alternatively you can log on to the deployed linux master target server and use *wget http://go.microsoft.com/fwlink/?LinkID=529757&clcid=0x409* to download the the file.
+    2. Log on to the server using a Secure Shell client. If you're connected to the Azure network over VPN use the internal IP address. Otherwise use the external IP address and the SSH public endpoint.
+    3. Extract the files from the gzipped installer by running: **tar –xvzf Microsoft-ASR_UA_8.4.0.0_RHEL6-64***
+    ![Linux master target server](./media/site-recovery-vmware-to-azure-classic-legacy/linux-tar.png)
+    4. Make sure you're in the directory to which you extracted the contents of the tar file.
+    5. Copy the configuration server passphrase to a local file using the command **echo *`<passphrase>`* >passphrase.txt**
+    6. Run the command “**sudo ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i *`<Configuration server internal IP address>`* -p 443 -s y -c https -P passphrase.txt**”.
 
-	![ターゲット サーバーの登録](./media/site-recovery-vmware-to-azure-classic-legacy/linux-mt-install.png)
+    ![Register target server](./media/site-recovery-vmware-to-azure-classic-legacy/linux-mt-install.png)
 
-9. 10 ～ 15 分間待機してから、**[サーバー]**、**[構成サーバー]** ページの **[サーバーの詳細]** タブでマスター ターゲット サーバーが登録済みとして表示されていることを確認します。Linux を実行していて、登録されていない場合は、/usr/local/ASR/Vx/bin/hostconfigcli からホストの構成ツールをもう一度実行してください。root として chmod を実行し、アクセス許可を設定する必要があります。
+9. Wait for a few minutes (10-15) and on the  page check that the master target server is listed as registered in **Servers** > **Configuration Servers** **Server Details** tab. If you're running Linux and  it didn't register run the host config tool again from /usr/local/ASR/Vx/bin/hostconfigcli. You'll need to set access permissions by running chmod as root.
 
-	![ターゲット サーバーの検証](./media/site-recovery-vmware-to-azure-classic-legacy/target-server-list.png)
+    ![Verify target server](./media/site-recovery-vmware-to-azure-classic-legacy/target-server-list.png)
 
->[AZURE.NOTE] 登録が完了してからマスター ターゲット サーバーがポータルにリストされるまでに最大 15 分かかることがあります。すぐに更新するには、**[構成サーバー]** ページの **[更新]** をクリックします。
+>[AZURE.NOTE] It can take up to 15 minutes after registration is complete for the master target server to be listed in the portal. To update immediately, click **Refresh** on the **Configuration Servers** page.
 
-## ステップ 4: オンプレミスのプロセス サーバーのデプロイ
+## <a name="step-4:-deploy-the-on-premises-process-server"></a>Step 4: Deploy the on-premises process server
 
-開始する前に、再起動後も保持されるように、プロセス サーバーに静的 IP アドレスを構成することをお勧めします。
+Before you start we recommend that you configure a static IP address on the process server so that it's guaranteed to be persistent across reboots.
 
-1. [クイック スタート] で、**[オンプレミスのプロセス サーバーのインストール]**、**[プロセス サーバーをダウンロードしてインストールする]** の順にクリックします。
+1. Click Quick Start > **Install Process Server on-premises** > **Download and install the process server**.
 
-	![プロセス サーバーのインストール](./media/site-recovery-vmware-to-azure-classic-legacy/ps-deploy.png)
+    ![Install process server](./media/site-recovery-vmware-to-azure-classic-legacy/ps-deploy.png)
 
-2.  ダウンロードした zip ファイルを、プロセス サーバーのインストール先となるサーバーにコピーします。この zip ファイルには、次の 2 つのインストール ファイルが含まれています。
+2.  Copy the downloaded zip file to the server on which you're going to install the process server. The zip file contains two installation files:
 
-	- Microsoft-ASR\_CX\_TP\_8.4.0.0\_Windows*
-	- Microsoft-ASR\_CX\_8.4.0.0\_Windows*
+    - Microsoft-ASR_CX_TP_8.4.0.0_Windows*
+    - Microsoft-ASR_CX_8.4.0.0_Windows*
 
-3. アーカイブを解凍し、インストール ファイルをサーバー上の場所にコピーします。
-4. インストール ファイルの **Microsoft-ASR\_CX\_TP\_8.4.0.0\_Windows*** を実行して、指示に従います。これでデプロイに必要なサード パーティのコンポーネントがインストールされます。
-5. 次に、**Microsoft-ASR\_CX\_8.4.0.0\_Windows*** を実行します。
-6. **[サーバー モード]** ページで、**[プロセス サーバー]** を選択します。
-7. **[環境の詳細]** ページで、次の操作を行います。
+3. Unzip the archive and copy the installation files to a location on the server.
+4. Run the **Microsoft-ASR_CX_TP_8.4.0.0_Windows*** installation file and follow the instructions. This installs third-party components needed for the deployment.
+5. Then run **Microsoft-ASR_CX_8.4.0.0_Windows***.
+6. On the **Server Mode** page select **Process Server**.
+7. On the **Environment Details** page do the following:
 
 
-	- VMware 仮想マシンを保護する場合は、**[はい]** をクリックします。
-	- 保護する必要があるのは物理サーバーだけであり、VMware vCLI をプロセス サーバーにインストールする必要がない場合は、**[いいえ]** をクリックして続行します。
+    - If you want to protect VMware virtual machines click **Yes**
+    - If  you only want to protect physical servers and thus don't need VMware vCLI installed on the process server. Click **No** and continue.
 
-8. VMware vCLI をインストールするときは、次のことに注意してください。
+8. Note the following when installing VMware vCLI:
 
-	- **サポートされるのは VMware vSphere CLI 5.5.0 だけです**。プロセス サーバーは、他のバージョンまたは更新プログラムの vSphere CLI では動作しません。
-	- VSphere CLI 5.5.0 を[ここ](https://my.vmware.com/web/vmware/details?downloadGroup=VCLI550&productId=352)からダウンロードします。
-	- プロセス サーバーのインストールを開始する直前に vSphere CLI をインストールし、セットアップによって検出されない場合は、最大 5 分間待機してからセットアップを再試行してください。これにより、vSphere CLI の検出に必要なすべての環境変数が正しく初期化されます。
+    - **Only VMware vSphere CLI 5.5.0 is supported**. The process server doesn't work with other versions or updates of vSphere CLI.
+    - Download vSphere CLI 5.5.0 from [here.](https://my.vmware.com/web/vmware/details?downloadGroup=VCLI550&productId=352)
+    - If you installed vSphere CLI just before you started installing the process server, and setup doesn't detect it, wait up to five minutes before you try setup again. This ensures that all the environment variables needed for vSphere CLI detection have been initialized correctly.
 
-9.	**[プロセス サーバーの NIC の選択]** で、プロセス サーバーが使用するネットワーク アダプターを選択します。
+9.  In **NIC Selection for Process Server** select the network adapter that the process server should use.
 
-	![アダプターの選択](./media/site-recovery-vmware-to-azure-classic-legacy/ps-nic.png)
+    ![Select adapter](./media/site-recovery-vmware-to-azure-classic-legacy/ps-nic.png)
 
-10.	**[構成サーバーの詳細]** で次のようにします。
+10. In **Configuration Server Details**:
 
-	- IP アドレスとポートについては、VPN 経由で接続している場合は、構成サーバーの内部 IP アドレスとポート番号に 443 を指定します。それ以外の場合は、パブリック仮想 IP アドレスとマップされたパブリック HTTP エンドポイントを指定します。
-	- 構成サーバーのパスフレーズを入力します。
-	- 自動プッシュを使用してサービスをインストールする際に検証を無効にする場合は、**[モビリティ サービスのソフトウェア署名を検証する]** をクリアします。署名の検証には、プロセス サーバーからのインターネット接続が必要です。
-	- **[次へ]** をクリックします。
+    - For the IP address and port, if you're connecting over VPN specify the internal IP address of the configuration server and 443 for the port. Otherwise specify the public virtual IP address and mapped public HTTP endpoint.
+    - Type in the passphrase of the configuration server.
+    - Clear **Verify Mobility service software signature** if you want to disable verification when you use automatic push to install the service. Signature verification needs internet connectivity from the process server.
+    - Click **Next**.
 
-	![構成サーバーの登録](./media/site-recovery-vmware-to-azure-classic-legacy/ps-cs.png)
+    ![Register configuration server](./media/site-recovery-vmware-to-azure-classic-legacy/ps-cs.png)
 
 
-11. **[インストール ドライブの選択]** で、キャッシュ ドライブを選択します。プロセス サーバーには、600 GB 以上の空き領域があるキャッシュ ドライブが必要です。その後、**[インストール]** をクリックします。
+11. In **Select Installation Drive** select a cache drive. The process server needs a cache drive with at least 600 GB of free space. Then click **Install**. 
 
-	![構成サーバーの登録](./media/site-recovery-vmware-to-azure-classic-legacy/ps-cache.png)
+    ![Register configuration server](./media/site-recovery-vmware-to-azure-classic-legacy/ps-cache.png)
 
-12. インストールを完了するために、サーバーを再起動する必要がある場合があることに注意してください。**[構成サーバー]**、**[サーバーの詳細]** で、プロセス サーバーがコンテナーに正常に登録されたことを確認します。
+12. Note that you might need to restart the server to complete the installation. In **Configuration Server** > **Server Details** check that the process server appears and is registered successfully in the vault.
 
->[AZURE.NOTE]登録が完了してからプロセス サーバーが構成サーバーにリストされるまでに最大 15 分かかります。すぐに更新するには、構成サーバー ページの下部にある更新ボタンをクリックして、構成サーバーを更新します。
+>[AZURE.NOTE]It can take up to 15 minutes after registration is complete for the process server to appear as listed under the configuration server. To update immediately, refresh the configuration server by clicking on the refresh button at the bottom of the configuration server page
  
-![プロセス サーバーの検証](./media/site-recovery-vmware-to-azure-classic-legacy/ps-register.png)
+![Validate process server](./media/site-recovery-vmware-to-azure-classic-legacy/ps-register.png)
 
-プロセス サーバーを登録したときにモビリティ サービスの署名の検証を無効にしなかった場合、以下のように実行すると後でも無効にできます。
+If you didn't disable signature verification for the Mobility service when you registered the process server you can do it later as follows:
 
-1. プロセス サーバーに管理者としてログオンし、編集のために C:\\pushinstallsvc\\pushinstaller.conf ファイルを開きます。**[PushInstaller.transport]** セクションに、**SignatureVerificationChecks=”0”** という行を追加します。ファイルを保存して閉じます。
-2. InMage PushInstall サービスを再起動します。
-
-
-## ステップ 5: Site Recovery コンポーネントの更新
-
-Site Recovery コンポーネントは随時更新されます。新しい更新プログラムが利用可能な場合は、次の順序でインストールする必要があります。
-
-1. 構成サーバー
-2. プロセス サーバー
-3. マスター ターゲット サーバー
-4. フェールバック ツール (vContinuum)
-
-### 更新プログラムの取得とインストール
+1. Log onto the process server as an administrator and open the file C:\pushinstallsvc\pushinstaller.conf for editing. Under the section **[PushInstaller.transport]** add this line: **SignatureVerificationChecks=”0”**. Save and close the file.
+2. Restart the InMage PushInstall service.
 
 
-1. Site Recovery **ダッシュボード**から、構成サーバー、プロセス サーバー、およびマスター ターゲット サーバー用の更新プログラムを入手できます。Linux のインストールの場合は、gzip 圧縮されたインストーラーからファイルを抽出し、コマンド “sudo ./install” を実行して更新プログラムをインストールします。
-2. フェールバック ツール (vContinuum) の最新の更新プログラムを[ダウンロード](http://go.microsoft.com/fwlink/?LinkID=533813)します。
-3. モビリティ サービスが既にインストールされている仮想マシンまたは物理サーバーを実行している場合は、次のようにしてサービスの更新プログラムを入手できます。
+## <a name="step-5:-update-site-recovery-components"></a>Step 5: Update Site Recovery components
 
-	- **オプション 1**: 各更新プログラムをダウンロードする。
-		- [Windows Server (64 ビットのみ)](http://download.microsoft.com/download/8/4/8/8487F25A-E7D9-4810-99E4-6C18DF13A6D3/Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe)
-		- [CentOS 6.4、6.5、6.6 (64 ビットのみ)](http://download.microsoft.com/download/7/E/D/7ED50614-1FE1-41F8-B4D2-25D73F623E9B/Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz)
-		- [Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ)](http://download.microsoft.com/download/5/2/6/526AFE4B-7280-4DC6-B10B-BA3FD18B8091/Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz)
-		- [SUSE Linux Enterprise Server SP3 (64 ビットのみ)](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
-		- プロセス サーバーを更新した後は、更新済みバージョンのモビリティ サービスをプロセス サーバーの C:\\pushinstallsvc\\repository フォルダーで利用できるようになります。
-	- **オプション 2**: 以前のバージョンのモビリティ サービスがインストールされたマシンが存在する場合、マシン上のモビリティ サービスを管理ポータルから自動的にアップグレードすることができます。
+Site Recovery components are updated from time to time. When new updates are available you should install them in the following order:
 
-		1. プロセス サーバーが更新されていることを確認します。
-		2. 更新プログラムが予期したとおりに動作するように、保護対象マシンが、モビリティ サービスを自動的にプッシュするための[前提条件](#install-the-mobility-service-automatically)に準拠していることを確認します。
-		2. 保護グループを選択し、保護対象マシンを強調表示して **[Mobility Service を更新する]** をクリックします。このボタンは、モビリティ サービスの新しいバージョンがある場合にのみ使用できます。
+1. Configuration server
+2. Process server
+3. Master target server
+4. Failback tool (vContinuum)
 
-			![vCenter サーバーの選択](./media/site-recovery-vmware-to-azure-classic-legacy/update-mobility.png)
-
-[アカウントの選択] で、保護対象サーバー上のモビリティ サービスの更新に使用する管理者アカウントを指定します。[OK] をクリックして、トリガーされたジョブの完了を待ちます。
+### <a name="obtain-and-install-the-updates"></a>Obtain and install the updates
 
 
-## ステップ 6: vCenter サーバーまたは vSphere ホストの追加
+1. You can obtain updates for the configuration, process, and master target servers from the Site Recovery **Dashboard**. For Linux installation extract the files from the gzipped installer and run the command “sudo ./install” to install the update.
+2. [Download](http://go.microsoft.com/fwlink/?LinkID=533813) the latest update for the Failback tool(vContinuum).
+3. If you are running virtual machines or physical servers that already have the Mobility service installed, you can get updates for the service as follows:
 
-1. **[サーバー]**、**[構成サーバー]** の順にクリックして構成サーバーを選択し、**[vCenter サーバーの追加]** をクリックして、vCenter サーバーまたは vSphere ホストを追加します。
+    - **Option 1**: Download updates:
+        - [Windows Server (64 bit only)](http://download.microsoft.com/download/8/4/8/8487F25A-E7D9-4810-99E4-6C18DF13A6D3/Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe)
+        - [CentOS 6.4,6.5,6.6 (64 bit only)](http://download.microsoft.com/download/7/E/D/7ED50614-1FE1-41F8-B4D2-25D73F623E9B/Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz)
+        - [Oracle Enterprise Linux 6.4,6.5 (64 bit only)](http://download.microsoft.com/download/5/2/6/526AFE4B-7280-4DC6-B10B-BA3FD18B8091/Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz)
+        - [SUSE Linux Enterprise Server SP3 (64 bit only)](http://download.microsoft.com/download/B/4/2/B4229162-C25C-4DB2-AD40-D0AE90F92305/Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz)
+        - After updating the process server the updated version of the Mobility service will be available in the C:\pushinstallsvc\repository folder on the process server.
+    - **Option 2**: If you have a machine with an older version of the Mobility service installed, you can automatically upgrade the Mobility service on the machine from the management portal.
 
-	![vCenter サーバーの選択](./media/site-recovery-vmware-to-azure-classic-legacy/add-vcenter.png)
+        1. Ensure that the process server is updated.
+        2. Make sure that the protected machine complies with the [prerequisites](#install-the-mobility-service-automatically) for automatically pushing the Mobility service, so that the update works as expected.
+        2. Select the protection group, highlight the protected machine and click **Update Mobility service**. This button is only available if there's a newer version of the Mobility service. 
 
-2. サーバーまたはホストの詳細を指定して、このサーバーまたはホストの検出に使用されるプロセス サーバーを選択します。
+            ![Select vCenter server](./media/site-recovery-vmware-to-azure-classic-legacy/update-mobility.png)
 
-	- VCenter サーバーが既定のポート 443 で実行していない場合は、vCenter サーバーが実行しているポート番号を指定します。
-	- このプロセス サーバーは、vCenter サーバー/vSphere ホストと同じネットワークに配置されており、VMware vSphere CLI 5.5.0 がインストールされている必要もあります。
-
-	![vCenter サーバーの設定](./media/site-recovery-vmware-to-azure-classic-legacy/add-vcenter4.png)
-
-
-3. 検出が終了すると、構成サーバーの詳細の下に vCenter サーバーが表示されます。
-
-	![vCenter サーバーの設定](./media/site-recovery-vmware-to-azure-classic-legacy/add-vcenter2.png)
-
-4. 管理者以外のアカウントを使用してサーバーまたはホストを追加している場合、アカウントに次の特権があることを確認します。
-
-	- vCenter アカウントでは、データセンター、データストア、フォルダー、ホスト、ネットワーク、リソース、ストレージ ビュー、仮想マシン、および vSphere Distributed Switch の特権が有効になっている必要があります。
-	- vSphere ホスト アカウントでは、データセンター、データストア、フォルダー、ホスト、ネットワーク、リソース、仮想マシン、および vSphere Distributed Switch の特権が有効になっている必要があります。
+In Select accounts specify the administrator account to be used to update the mobility service on the protected server. Click OK and wait for the triggered job to complete.
 
 
+## <a name="step-6:-add-vcenter-servers-or-vsphere-hosts"></a>Step 6: Add vCenter servers or vSphere hosts
 
-## ステップ 7: 保護グループの作成
+1. Click **Servers** > **Configuration Servers** > configuration server >**Add vCenter Server** to add a vCenter server or vSphere host.
 
-1. **[保護された項目]**、**[保護グループ]**、**[保護グループの作成]** の順に開きます。
+    ![Select vCenter server](./media/site-recovery-vmware-to-azure-classic-legacy/add-vcenter.png)
 
-	![保護グループの作成](./media/site-recovery-vmware-to-azure-classic-legacy/create-pg1.png)
+2. Specify details for the server or host and select the process server that will be used to discover it.
 
-2. **[保護グループの設定を指定する]** ページで、グループの名前を指定し、グループを作成する構成サーバーを選択します。
+    - If the vCenter server isn't running on the default 443 port specify the port number on which the vCenter server is running.
+    - The process server must be on the same network as the vCenter server/vSphere host and should have VMware vSphere CLI 5.5.0 installed.
 
-	![保護グループの設定](./media/site-recovery-vmware-to-azure-classic-legacy/create-pg2.png)
+    ![vCenter server settings](./media/site-recovery-vmware-to-azure-classic-legacy/add-vcenter4.png)
 
-3. **[レプリケーションの設定を指定する]** ページで、グループのすべてのマシンで使用するレプリケーションの設定を構成します。
 
-	![保護グループのレプリケーション](./media/site-recovery-vmware-to-azure-classic-legacy/create-pg3.png)
+3. After discovery finishes the vCenter server will be listed under the configuration server details.
 
-4. 以下のように設定します。
-	- **[複数 VM の整合性]**: これをオンにすると、保護グループに属する複数のアプリケーションで共有されるアプリケーション整合性復旧ポイントが作成されます。この設定は、保護グループ内のすべてのマシンが同じワークロードを実行している場合に最も適しています。すべてのマシンは同じデータ ポイントに復旧されます。この機能は Windows サーバーのみ利用できます。
-	- **[RPO しきい値]**: 構成された RPO しきい値を継続的なデータ保護レプリケーションの RPO が超過すると、警告が生成されます。
-	- **[復旧ポイントのリテンション期間]**: リテンション期間を指定します。保護されたマシンはこのウィンドウ内のどのポイントにも復旧できます。
-	- **[アプリケーション整合性スナップショットの頻度]**: アプリケーション整合性スナップショットを含む復旧ポイントを作成する頻度を指定します。
+    ![vCenter server settings](./media/site-recovery-vmware-to-azure-classic-legacy/add-vcenter2.png)
 
-保護グループの作成は、**[保護された項目]** ページで監視することができます。
+4. If you're using a non-administrator account to add the server or host, make sure the account has the following privileges:
 
-## ステップ 8: 保護するマシンの設定
+    - vCenter accounts should have Datacenter, Datastore, Folder, Host, Network, Resource, Storage views, Virtual machine and vSphere Distributed Switch privileges enabled.
+    - vSphere host accounts should have the Datacenter, Datastore, Folder, Host, Network, Resource, Virtual machine and vSphere Distributed Switch privileges enabled
 
-保護する仮想マシンおよび物理サーバーにモビリティ サービスをインストールする必要があります。次の 2 つの方法で行います。
 
-- プロセス サーバーから各マシンにサービスを自動的にプッシュしてインストールします。
-- サービスを手動でインストールします。
 
-### モビリティ サービスを自動的にインストールする
+## <a name="step-7:-create-a-protection-group"></a>Step 7: Create a protection group
 
-保護グループにマシンを追加すると、プロセス サーバーによってモビリティ サービスが自動的にプッシュされ、各マシンにインストールされます。
+1. Open **Protected Items** > **Protection Group** > **Create protection group**.
 
-**Windows サーバーにモビリティ サービスを自動的にプッシュ インストールします。**
+    ![Create protection group](./media/site-recovery-vmware-to-azure-classic-legacy/create-pg1.png)
 
-1. 「[ステップ 5: 最新の更新プログラムのインストール](#step-5-install-latest-updates)」の説明に従ってプロセス サーバーの最新の更新プログラムをインストールし、プロセス サーバーが利用可能であることを確認します。
-2. ソース マシンとプロセス サーバーの間にネットワーク接続があること、およびソース マシンにプロセス サーバーからアクセスできることを確認します。
-3. Windows ファイアウォールで**ファイルとプリンターの共有**および **Windows Management Instrumentation** を許可するように構成します。[Windows ファイアウォールの設定] で [Windows ファイアウォールを介したアプリまたは機能を許可] オプションを選択し、次の図に示すようにアプリケーションを選択します。マシンがドメインに属している場合は、GPO を使用してファイアウォール ポリシーを構成できます。
+2. On the **Specify Protection Group Settings** page specify a name for the group and select the configuration server on which you want to create the group.
 
-	![ファイアウォールの設定](./media/site-recovery-vmware-to-azure-classic-legacy/push-firewall.png)
+    ![Protection group settings](./media/site-recovery-vmware-to-azure-classic-legacy/create-pg2.png)
 
-4. プッシュ インストールを実行するために使用するアカウントは、保護するマシンの管理グループに属している必要があります。これらの資格情報はモビリティ サービスのプッシュ インストールにのみ使用され、保護グループにマシンを追加するときに指定します。
-5. 指定したアカウントがドメイン アカウントでない場合、ローカル マシンでのリモート ユーザーのアクセス制御を無効にする必要があります。そのためには、LocalAccountTokenFilterPolicy DWORD レジストリ エントリ (値は 1) を HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System に追加します。CLI からレジストリ エントリを追加するには、cmd または powershell を開き、「**`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**」と入力します。
+3. On the **Specify Replication Settings** page configure the replication settings that will be used for all the machines in the group.
 
-**Linux サーバーにモビリティ サービスを自動的にプッシュ インストールします。**
+    ![Protection group replication](./media/site-recovery-vmware-to-azure-classic-legacy/create-pg3.png)
 
-1. 「[ステップ 5: 最新の更新プログラムのインストール](#step-5-install-latest-updates)」の説明に従ってプロセス サーバーの最新の更新プログラムをインストールし、プロセス サーバーが利用可能であることを確認します。
-2. ソース マシンとプロセス サーバーの間にネットワーク接続があること、およびソース マシンにプロセス サーバーからアクセスできることを確認します。
-3. アカウントがソース Linux サーバーの root ユーザーであることを確認します。
-4. ソース Linux サーバーの /etc/hosts ファイルに、ローカル ホスト名を、すべての NIC に関連付けられた IP アドレスにマップするエントリが含まれることを確認します。
-5. 保護するマシンに最新の openssh、openssh-server、openssl の各パッケージをインストールします。
-6. SSH がポート 22 で有効であり実行中であることを確認します。
-7. 以下の手順で、sshd\_config ファイルで SFTP サブシステムとパスワード認証を有効にします。
+4. Settings:
+    - **Multi VM consistency**: If you turn this on it creates shared application-consistent recovery points across the machines in the protection group. This setting is most relevant when all of the machines in the protection group are running the same workload. All machines will be recovered to the same data point. Only available for Windows servers.
+    - **RPO threshold**: Alerts will be generated when the continuous data protection replication RPO exceeds the configured RPO threshold value.
+    - **Recovery point retention**: Specifies the retention window. Protected machines can be recovered to any point within this window.
+    - **Application-consistent snapshot frequency**: Specifies how frequently recovery points containing application-consistent snapshots will be created.
 
-	- a) root としてログインします。
-	- b) /etc/ssh/sshd\_config ファイルで、**PasswordAuthentication** で始まる行を見つけます。
-	- c) この行のコメントを解除し、値 "no" を "yes" に変更します。
+You can monitor the protection group as they're created on the **Protected Items** page.
 
-		![Linux のモビリティ](./media/site-recovery-vmware-to-azure-classic-legacy/linux-push.png)
+## <a name="step-8:-set-up-machines-you-want-to-protect"></a>Step 8: Set up machines you want to protect
 
-	- d) Subsystem で始まる行を見つけ、この行のコメントを解除します。
-	
-		![Linux のプッシュ モビリティ](./media/site-recovery-vmware-to-azure-classic-legacy/linux-push2.png)
+You'll need to install the Mobility service on virtual machines and physical servers you want to protect. You can do this in two ways:
 
-8. ソース マシンの Linux バリエーションがサポートされていることを確認します。
+- Automatically push and install the service on each machine from the process server.
+- Manually install the service. 
+
+### <a name="install-the-mobility-service-automatically"></a>Install the Mobility service automatically
+
+When you add machines to a protection group the Mobility service is automatically pushed and installed on each machine by the process server. 
+
+**Automatically push install the mobility service on Windows servers:** 
+
+1. Install the latest updates for the process server as described in [Step 5: Install latest updates](#step-5-install-latest-updates), and make sure that the process server is available. 
+2. Ensure there's network connectivity between the source machine and the process server, and that the source machine is accessible from the process server.  
+3. Configure the Windows firewall to allow **File and Printer Sharing** and **Windows Management Instrumentation**. Under Windows Firewall settings, select the option “Allow an app or feature through Firewall” and select the applications as shown in the picture below. For machines that belong to a domain you can configure the firewall policy with a GPO.
+
+    ![Firewall settings](./media/site-recovery-vmware-to-azure-classic-legacy/push-firewall.png)
+
+4. The account used to perform the push installation must be in the Administrators group on the machine you want to protect. These credentials are only used for push installation of the Mobility service and you'll provide them when you add a machine to a protection group.
+5. If the provided account isn't a domain account you'll need to disable Remote User Access control on the local machine. To do this add the LocalAccountTokenFilterPolicy DWORD registry entry with a value of 1 under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System. To add the registry entry from a CLI open cmd or powershell and enter **`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`**. 
+
+**Automatically push install the mobility service on Linux servers:**
+
+1. Install the latest updates for the process server as described in [Step 5: Install latest updates](#step-5-install-latest-updates), and make sure that the process server is available.
+2. Ensure there's network connectivity between the source machine and the process server, and that the source machine is accessible from the process server.  
+3. Make sure the account is a root user on the source Linux server.
+4. Ensure that the /etc/hosts file on the source Linux server contains entries that map the local host name to IP addresses associated with all NICs.
+5. Install the latest openssh, openssh-server, openssl packages on the machine you want to protect.
+6. Ensure SSH is enabled and running on port 22. 
+7. Enable SFTP subsystem and password authentication in the sshd_config file as follows: 
+
+    - a) Log in as root.
+    - b) In the file /etc/ssh/sshd_config file, find the line that begins with **PasswordAuthentication**.
+    - c) Uncomment the line and change the value from “no” to “yes”.
+
+        ![Linux mobility](./media/site-recovery-vmware-to-azure-classic-legacy/linux-push.png)
+
+    - d) Find the line that begins with Subsystem and uncomment the line.
+    
+        ![Linux push mobility](./media/site-recovery-vmware-to-azure-classic-legacy/linux-push2.png)    
+
+8. Ensure the source machine Linux variant is supported. 
  
-### モビリティ サービスを手動でインストールする
+### <a name="install-the-mobility-service-manually"></a>Install the Mobility service manually
 
-モビリティ サービスのインストールに使用するソフトウェア パッケージは、プロセス サーバーの C:\\pushinstallsvc\\repository にあります。プロセス サーバーにログオンし、次の表に基づいて適切なインストール パッケージをソース マシンにコピーします。
+The software packages used to install the Mobility service are on the process server in C:\pushinstallsvc\repository. Log onto the process server and copy the appropriate installation package to the source machine based on the table below:-
 
-| ソース オペレーティング システム | プロセス サーバー上のモビリティ サービス パッケージ |
-|---------------------------------------------------	|------------------------------------------------------------------------------------------------------	|
-| Windows Server (64 ビットのみ) | `C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe` |
-| CentOS 6.4、6.5、6.6 (64 ビットのみ) | `C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz` |
-| SUSE Linux Enterprise Server 11 SP3 (64 ビットのみ) | `C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz`|
-| Oracle Enterprise Linux 6.4、6.5 (64 ビットのみ) | `C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz` |
+| Source operating system                               | Mobility service package on process server                                                            |
+|---------------------------------------------------    |------------------------------------------------------------------------------------------------------ |
+| Windows Server (64 bit only)                          | `C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe`         |
+| CentOS 6.4, 6.5, 6.6 (64 bit only)                    | `C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_RHEL6-64_GA_28Jul2015_release.tar.gz`     |
+| SUSE Linux Enterprise Server 11 SP3 (64 bit only)     | `C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_SLES11-SP3-64_GA_28Jul2015_release.tar.gz`|
+| Oracle Enterprise Linux 6.4, 6.5 (64 bit only)        | `C:\pushinstallsvc\repository\Microsoft-ASR_UA_8.4.0.0_OL6-64_GA_28Jul2015_release.tar.gz`       |
 
 
-**Windows サーバーにモビリティ サービスを手動でインストールするには**、次のようにします。
+**To install the Mobility service manually on a Windows server**, do the following:
 
-1. **Microsoft-ASR\_UA\_8.4.0.0_Windows\_GA_28Jul2015\_release.exe** パッケージを、前記の表のプロセス サーバーのディレクトリ パスからソース マシンにコピーします。
-2. ソース マシンで実行可能ファイルを実行して、モビリティ サービスをインストールします。
-3. 次の手順のようにします。
-4. ロールとして **[モビリティ サービス]** を選択し、**[次へ]** をクリックします。
-	
-	![モビリティ サービスのインストール](./media/site-recovery-vmware-to-azure-classic-legacy/ms-install.png)
+1. Copy the **Microsoft-ASR_UA_8.4.0.0_Windows_GA_28Jul2015_release.exe** package from the process server directory path listed in the table above to the source machine.
+2. Install the Mobility service by running the executable on the source machine.
+3. Follow the installer instructions.
+4. Select **Mobility service** as the role and click **Next**.
+    
+    ![Install mobility service](./media/site-recovery-vmware-to-azure-classic-legacy/ms-install.png)
 
-5. インストール ディレクトリは既定のインストール パスのままにして、**[インストール]** をクリックします。
-6. **[Host Agent Config (ホスト エージェントの構成)]** で、構成サーバーの IP アドレスと HTTPS ポートを指定します。
+5. Leave the installation directory as the default installation path and click **Install**.
+6. In **Host Agent Config** specify the IP address and HTTPS port of the configuration server.
 
-	- インターネット経由で接続している場合は、パブリック仮想 IP アドレスおよびポートとしてパブリック HTTPS エンドポイントを指定します。
-	- VPN 経由で接続している場合は、内部 IP アドレスおよびポート 443 を指定します。**[HTTPS を使用する]** はオンのままにします。
+    - If you're connecting over the internet specify the public virtual IP address and public HTTPS endpoint as the port.
+    - If you're connecting over VPN specify the internal IP address and 443 for the port. Leave **Use HTTPS** checked.
 
-	![モビリティ サービスのインストール](./media/site-recovery-vmware-to-azure-classic-legacy/ms-install2.png)
+    ![Install mobility service](./media/site-recovery-vmware-to-azure-classic-legacy/ms-install2.png)
 
-7. 構成サーバーのパスフレーズを指定し、**[OK]** をクリックしてモビリティ サービスを構成サーバーに登録します。
+7. Specify the configuration server passphrase and click **OK** to register the Mobility service with the configuration server.
 
-**コマンド ラインから実行するには:**
+**To run from the command line:**
 
-1. パスフレーズを CX からサーバーのファイル "C:\\connection.passphrase" にコピーして、このコマンドを実行します。この例では、CX は 104.40.75.37、HTTPS ポートは 62519です。
+1. Copy the passphrase from the CX to the file "C:\connection.passphrase" on the server and run this command. In our example CX i 104.40.75.37 and the HTTPS port is 62519:
 
     `C:\Microsoft-ASR_UA_8.2.0.0_Windows_PREVIEW_20Mar2015_Release.exe" -ip 104.40.75.37 -port 62519 -mode UA /LOG="C:\stdout.txt" /DIR="C:\Program Files (x86)\Microsoft Azure Site Recovery" /VERYSILENT  /SUPPRESSMSGBOXES /norestart  -usesysvolumes  /CommunicationMode https /PassphrasePath "C:\connection.passphrase"`
 
-**Linux サーバーでモビリティ サービスを手動でインストールする**:
+**Install the Mobility service manually on a Linux server**:
 
-1. 前記の表に基づいて、適切な tar アーカイブをプロセス サーバーからソース マシンにコピーします。
-2. シェル プログラムを開き、`tar -xvzf Microsoft-ASR_UA_8.2.0.0*` を実行して、zip 形式の tar アーカイブをローカル パスに抽出します。
-3. シェルから「*`echo <passphrase> >passphrase.txt`*」と入力して、tar アーカイブの内容を抽出したローカル ディレクトリに passphrase.txt ファイルを作成します。
-4. 「*`sudo ./install -t both -a host -R Agent -d /usr/local/ASR -i <IP address> -p <port> -s y -c https -P passphrase.txt`*」と入力して、モビリティ サービスをインストールします。
-5. IP アドレスとポートを指定します。
+1. Copy the appropriate tar archive based on the table above, from the process server to the source machine.
+2. Open a shell program and extract the zipped tar archive to a local path by executing `tar -xvzf Microsoft-ASR_UA_8.2.0.0*`
+3. Create a passphrase.txt file in the local directory to which you extracted the contents of the tar archive by entering *`echo <passphrase> >passphrase.txt`* from shell.
+4. Install the Mobility service by entering *`sudo ./install -t both -a host -R Agent -d /usr/local/ASR -i <IP address> -p <port> -s y -c https -P passphrase.txt`*.
+5. Specify the IP address and port:
 
-	- インターネット経由で構成サーバーに接続している場合は、構成サーバーの仮想パブリック IP アドレスとパブリック HTTPS エンドポイントを `<IP address>` および `<port>` で指定します。
-	- VPN 接続経由で接続している場合は、内部 IP アドレスおよび 443 を指定します。
+    - If you are connecting to the configuration server over the internet specify the configuration server virtual public IP address and public HTTPS endpoint in `<IP address>` and `<port>`.
+    - If you're connecting over a VPN connection specify the internal IP address and 443.
 
-**コマンド ラインから実行するには**:
+**To run from the command line**:
 
-1. パスフレーズを CX からサーバーのファイル "passphrase.txt" にコピーして、このコマンドを実行します。この例では、CX は 104.40.75.37、HTTPS ポートは 62519です。
+1. Copy the passphrase from the CX to the file "passphrase.txt" on the server and run this commands. In our example CX i 104.40.75.37 and the HTTPS port is 62519:
 
-運用サーバーにインストールするには:
+To install on a production server:
 
     ./install -t both -a host -R Agent -d /usr/local/ASR -i 104.40.75.37 -p 62519 -s y -c https -P passphrase.txt
  
-ターゲット サーバーにインストールするには:
+To install on the target server:
 
 
     ./install -t both -a host -R MasterTarget -d /usr/local/ASR -i 104.40.75.37 -p 62519 -s y -c https -P passphrase.txt
 
->[AZURE.NOTE] 適切なバージョンのモビリティ サービスを既に実行しているマシンを保護グループに追加する場合は、プッシュ インストールはスキップされます。
+>[AZURE.NOTE] When you add machines to a protection group that are already running an appropriate version of the Mobility service then the push installation is skipped.
 
 
-## ステップ 9: 保護の有効化
+## <a name="step-9:-enable-protection"></a>Step 9: Enable protection
 
-保護を有効にするには、仮想マシンと物理サーバーを保護グループに追加します。開始する前に、次のことに注意してください。
+To enable protection you add virtual machines and physical servers to a protection group. Before you start,note that:
 
-- 仮想マシンは 15 分ごとに検出されるので、検出後に Azure Site Recovery に表示されるまでに最大で 15 分かかります。
-- 仮想マシンでの環境の変化 (VMware ツールのインストールなど) も、Site Recovery で更新されるまでに最大 15 分かかります。
-- **[構成サーバー]** ページの vCenter サーバー/ESXi ホストの **[前回のアクセス]** フィールドで最終検出時刻を確認できます。
-- 保護グループを既に作成してあり、その後で vCenter サーバーまたは ESXi ホストを追加した場合、Azure Site Recovery ポータルが更新されて仮想マシンが **[保護グループへのマシンの追加]** ダイアログのリストに表示されるまでに 15 分かかります。
-- マシンを保護グループに追加したら、定期検出を待たずにすぐに先に進みたい場合は、構成サーバーを強調表示にして (クリックしないでください)、**[更新]** ボタンをクリックします。
-- 仮想マシンまたは物理マシンを保護グループに追加すると、モビリティ サービスがまだインストールされていない場合、プロセス サーバーは自動的にモビリティ サービスをソース サーバーにプッシュしてインストールします。
-- 自動プッシュ メカニズムが機能するように、保護マシンを前の手順どおりに設定していることを確認してください。
+- Virtual machines are discovered every 15 minutes and it can take up to 15 minutes for them to appear in Azure Site Recovery after discovery.
+- Environment changes on the virtual machine (such as VMware tools installation) can also take up to 15 minutes to be updated in Site Recovery.
+- You can check the last discovered time in the **LAST CONTACT AT** field for the vCenter server/ESXi host on the **Configuration Servers** page.
+- If you have a protection group already created and add a vCenter Server or ESXi host after that, it takes fifteen minutes for the Azure Site Recovery portal to refresh and for virtual machines to be listed in the **Add machines to a protection group** dialog.
+- If you would like to proceed immediately with adding machines to protection group without waiting for the scheduled discovery, highlight the configuration server (don’t click it) and click the **Refresh** button.
+- When you add virtual machines or physical machines to a protection group, the process server automatically pushes and installs the Mobility service on the source server if the it isn't already installed.
+- For the automatic push mechanism to work make sure you've set up your protected machines as described in the previous step.
 
-次のようにマシンを追加します。
+Add machines as follows:
 
-1. **[保護された項目]**、**[保護グループ]**、**[コンピューター]**、**[コンピューターの追加]** の順にクリックします。ベスト プラクティスとして、保護グループでワークロードをミラーリングすることをお勧めします。これによって特定のアプリケーションを実行しているマシンを同じグループに追加できます。
-2. **[仮想マシンの選択]** で物理サーバーを保護している場合は、**[物理マシンの追加]** ウィザードで IP アドレスとフレンドリ名を指定します。次に、オペレーティング システム ファミリを選択します。
+1. Click **Protected Items** > **Protection Group** > **Machines** > **Add Machines**. As a best practice we recommend that protection groups should mirror your workloads so that you add machines running a specific application to the same group.
+2. In **Select Virtual Machines** if you're protecting physical servers, in the **Add Physical Machines** wizard provide the IP address and friendly name. Then select the operating system family.
 
-	![vCenter サーバーの追加](./media/site-recovery-vmware-to-azure-classic-legacy/physical-protect.png)
+    ![Add V-Center server](./media/site-recovery-vmware-to-azure-classic-legacy/physical-protect.png)
 
-3. **[仮想マシンの選択]** で VMware 仮想マシンを保護している場合は、仮想マシンを管理している vCenter サーバー (または仮想マシンが実行している EXSi ホスト) を選択し、マシンを選択します。
+3. In **Select Virtual Machines** if you're protecting VMware virtual machines, select a vCenter server that's managing your virtual machines (or the EXSi host on which they're running), and then select the machines.
 
-	![vCenter サーバーの追加](./media/site-recovery-vmware-to-azure-classic-legacy/select-vms.png)
-4. **[ターゲット リソースの指定]** で、マスター ターゲット サーバーおよびレプリケーションに使用するストレージを選択し、その設定をすべてのワークロードに使用するかどうかを選択します。IO 量が多いワークロードをホストするために一貫性のある高 IO パフォーマンスと短い待機時間を必要とするワークロードの保護を構成するときには、[Premium Storage アカウント](../storage/storage-premium-storage.md)を選択します。ワークロード ディスクで Premium Storage アカウントを使用する場合は、DS シリーズの Master Target を使用する必要があります。DS シリーズ以外の Master Target では Premium Storage ディスクを使用できません。
+    ![Add V-Center server](./media/site-recovery-vmware-to-azure-classic-legacy/select-vms.png) 
+4. In **Specify Target Resources** select the master target servers and storage to use for replication and select whether the settings should be used for all workloads. Select [Premium Storage Account](../storage/storage-premium-storage.md) while configuring protection for workloads which require consistent high IO performance and low latency in order to host IO intensive workloads. If you want to use a Premium Storage account for your workload disks, you need to use the Master Target of DS-series. You cannot use Premium Storage disks with Master Target of non-DS-series.
 
-	>[AZURE.NOTE] [新しい Azure ポータル](../storage/storage-create-storage-account.md)を使用して作成したストレージ アカウントをリソース グループ間で移動する操作はサポートされていません。
+    >[AZURE.NOTE] We do not support the move of Storage accounts created using the [new Azure portal](../storage/storage-create-storage-account.md) across resource groups.
 
-	![vCenter サーバー](./media/site-recovery-vmware-to-azure-classic-legacy/machine-resources.png)
+    ![vCenter server](./media/site-recovery-vmware-to-azure-classic-legacy/machine-resources.png)
 
-5. **[アカウントの指定]** で、保護されたマシンへのモビリティ サービスのインストールに使用するアカウントを選択します。モビリティ サービスの自動インストールには、アカウントの資格情報が必要です。アカウントを選択できない場合は、ステップ 2 で説明されているようにアカウントを設定したことを確認してください。このアカウントには Azure ではアクセスできないことに注意してください。Windows サーバーでは、アカウントはソース サーバーに対する管理者権限を持っている必要があります。Linux の場合、アカウントは root である必要があります。
+5. In **Specify Accounts** select the account you want to use for installing the Mobility service on protected machines. The account credentials are needed for automatic installation of the Mobility service. If you can't select an account make sure you set one up as described in Step 2. Note that this account can't be accessed by Azure. For Windows server the account should have administrator privileges on the source server. For Linux the account must be root.
 
-	![Linux の資格情報](./media/site-recovery-vmware-to-azure-classic-legacy/mobility-account.png)
+    ![Linux credentials](./media/site-recovery-vmware-to-azure-classic-legacy/mobility-account.png)
 
-6. チェック マークをクリックして、保護グループへのマシンの追加を完了し、各マシンの初期レプリケーションを開始します。**[ジョブ]** ページで状態を監視できます。
+6. Click the check mark to finish adding machines to the protection group and to start initial replication for each machine. You can monitor status on the **Jobs** page.
 
-	![vCenter サーバーの追加](./media/site-recovery-vmware-to-azure-classic-legacy/pg-jobs2.png)
+    ![Add V-Center server](./media/site-recovery-vmware-to-azure-classic-legacy/pg-jobs2.png)
 
-7. また、**[保護された項目]**、保護グループ名、**[Virtual Machines]** の順にクリックすることで、保護のステータスを監視できます。初期レプリケーションが完了してマシンのデータが同期されると、状態 **[保護されています]** が表示されます。
+7. In addition you can monitor protection status by clicking **Protected Items** > protection group name > **Virtual Machines** . After initial replication completes and the machines are synchronizing data they will show **Protected** status.
 
-	![仮想マシンのジョブ](./media/site-recovery-vmware-to-azure-classic-legacy/pg-jobs.png)
-
-
-### 保護されたマシンのプロパティの設定
-
-1. マシンの状態が **[保護されています]** になると、マシンのフェールオーバーのプロパティを構成できます。保護グループの詳細で、マシンを選択し、**[構成]** タブを開きます。
-2. フェールオーバー後に Azure のマシンに付けられる名前と Azure 仮想マシンのサイズを変更できます。フェールオーバー後にマシンが接続する Azure ネットワークを選択することもできます。
-
-	> [AZURE.NOTE] Site Recovery のデプロイ用のネットワークでは、同じサブスクリプション内のリソース グループ間またはサブスクリプション間での[ネットワークの移行](../resource-group-move-resources.md)はサポートされていません。
-
-	![仮想マシンのプロパティの設定](./media/site-recovery-vmware-to-azure-classic-legacy/vm-props.png)
-
-以下の点に注意してください。
-
-- Azure マシンの名前は、Azure の要件を満たしている必要があります。
-- 既定では、レプリケートされた Azure の仮想マシンは、Azure ネットワークに接続しません。レプリケートした仮想マシンが通信する必要がある場合は、それらのマシンに同じ Azure ネットワークを設定していることを確認してください。
-- VMware 仮想マシンまたは物理サーバー上のボリュームのサイズを変更する場合は、重大な状態になります。サイズの変更が必要な場合は、次のようにします。
-
-	- a) サイズの設定を変更します。
-	- b) **[Virtual Machines]** タブで、仮想マシンを選択して **[削除]** をクリックします。
-	- c) **[仮想マシンの削除]** で、オプション **[保護を無効にする (復旧ドリルとボリューム サイズ変更に使用)]** オプションを選択します。このオプションは、保護を無効にしますが、Azure の回復ポイントは維持します。
-
-		![仮想マシンのプロパティの設定](./media/site-recovery-vmware-to-azure-classic-legacy/remove-vm.png)
-
-	- d) 仮想マシンの保護を再び有効にします。保護を再度有効にすると、サイズが変更されたボリュームのデータが Azure に転送されます。
-
-	
-
-## ステップ 10: フェールオーバーの実行
-
-現在は、保護された VMware 仮想マシンと物理サーバーの非計画的フェールオーバーのみを実行できます。以下の点に注意してください。
+    ![Virtual machine jobs](./media/site-recovery-vmware-to-azure-classic-legacy/pg-jobs.png)
 
 
+### <a name="set-protected-machine-properties"></a>Set protected machine properties
 
-- フェールオーバーを開始する前に、構成サーバーとマスター ターゲット サーバーが正常に実行していることを確認します。そうでない場合、フェールオーバーは失敗します。
-- 計画外のフェールオーバーでは、ソース マシンはシャット ダウンされません。計画外のフェールオーバーを実行すると、保護されたサーバーのデータ レプリケーションは停止します。計画外のフェールオーバーが完了した後、マシンの保護を再び開始するには、保護グループからマシンを削除して再度追加する必要があります。
-- データを損失せずにフェールオーバーする場合は、フェールオーバーを開始する前に、プライマリ サイトの仮想マシンがオフになっていることを確認します。
+1. After a machine has a **Protected** status you can configure its failover properties. In the protection group details select the machine and open the **Configure** tab.
+2. You can modify the name that will be given to the machine in Azure after failover and the Azure virtual machine size. You can also select the Azure network to which the machine will be connected after failover.
 
-1. **[復旧計画]** ページで、復旧計画を追加します。計画の詳細を指定し、ターゲットに **Azure** を選択します。
+    > [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md) across resource groups within the same subscription or across subscriptions is not supported for networks used for deploying Site Recovery.
 
-	![復旧計画の構成](./media/site-recovery-vmware-to-azure-classic-legacy/rplan1.png)
+    ![Set virtual machine properties](./media/site-recovery-vmware-to-azure-classic-legacy/vm-props.png)
 
-2. **[仮想マシンの選択]** で、保護グループを選択してから、復旧計画に追加するグループ内のマシンを選択します。復旧計画については、[こちら](site-recovery-create-recovery-plans.md)を参照してください。
+Note that:
 
-	![仮想マシンを追加](./media/site-recovery-vmware-to-azure-classic-legacy/rplan2.png)
+- The name of the Azure machine must comply with Azure requirements.
+- By default replicated virtual machines in Azure aren't connected to an Azure network. If you want replicated virtual machines to communicate make sure to set the same Azure network for them.
+- If you resize a volume on a VMware virtual machine or physical server it goes into a critical state. If you do need to modify the size, do the following:
 
-3. 必要な場合は、計画をカスタマイズして、復旧計画でフェールオーバーするマシンのグループを作成し、その実行順序を指定できます。手動の操作とスクリプトのためのプロンプトを追加することもできます。Azure に復旧するとき、[Azure Automation Runbook](site-recovery-runbook-automation.md) を使用してスクリプトを追加できます。
+    - a) Change the size setting.
+    - b) In the **Virtual Machines** tab, select the virtual machine and click **Remove**.
+    - c) In **Remove Virtual Machine** select the option **Disable protection (use for recovery drill and volume resize)**. This option disables protection but retains the recovery points in Azure.
 
-4. **[復旧計画]** ページで計画を選択し、**[計画外のフェールオーバー]** をクリックします。
-5. **[フェールオーバーの確認]** で、フェールオーバーの方向 (Azure に) を確認します。次に、フェールオーバーする復旧ポイントを選択します。
-6. フェールオーバー ジョブが完了するまで待機します。その後、フェールオーバーが予期したとおりに実行され、レプリケートされた仮想マシンが Azure で正常に起動することを確認します。
+        ![Set virtual machine properties](./media/site-recovery-vmware-to-azure-classic-legacy/remove-vm.png)
+
+    - d) Reenable protection for the virtual machine. When you reenable protection the data for the resized volume will be transferred to Azure.
+
+    
+
+## <a name="step-10:-run-a-failover"></a>Step 10: Run a failover
+
+Currently you can only run unplanned failovers for protected VMware virtual machines and physical servers. Note the following:
 
 
 
+- Before you initiate a failover, ensure that the configuration and master target servers are running and healthy. Otherwise failover will fail.
+- Source machines aren't shut down as part of an unplanned failover. Performing an unplanned failover stops data replication for the protected servers. You'll need to delete the machines from the protection group and add them again in order to start protecting machines again after the unplanned failover completes.
+- If you want to fail over without losing any data, make sure that the primary site virtual machines are turned off before you initiate the failover.
 
-## ステップ 11: フェールオーバーされたマシンの Azure からのフェールバック
+1. On the **Recovery Plans** page and add a recovery plan. Specify details for the plan and select **Azure** as the target.
 
-Azure で実行しているフェールオーバーされたマシンをオンプレミス環境に戻す方法の[詳細についてはここ](site-recovery-failback-azure-to-vmware-classic-legacy.md)を参照してください。
+    ![Configure recovery plan](./media/site-recovery-vmware-to-azure-classic-legacy/rplan1.png)
 
+2. In **Select Virtual Machine** select a protection group and then select machines in the group to add to the recovery plan. [Read more](site-recovery-create-recovery-plans.md) about recovery plans.
 
-## プロセス サーバーを管理する
+    ![Add virtual machines](./media/site-recovery-vmware-to-azure-classic-legacy/rplan2.png)
 
-プロセス サーバーは、レプリケーション データを Azure のマスター ターゲット サーバーに送信し、vCenter サーバーに追加された新しい VMware 仮想マシンを検出します。次のような状況では、デプロイ内のプロセス サーバーを変更する場合があります。
+3. If needed you can customize the plan to create groups and sequence the order in which machines in the recovery plan are failed over. You can also add prompts for manual actions and scripts. The scripts when recovering to Azure can be added by using [Azure Automation Runbooks](site-recovery-runbook-automation.md).
 
-- 現在のプロセス サーバーがダウンした場合
-- 目標復旧時点 (RPO) が組織で許容できないレベルに上がった場合。
-
-必要な場合、オンプレミスの VMware 仮想マシンおよび物理サーバーの一部または全部のレプリケーションを、異なるプロセス サーバーに移動できます。次に例を示します。
-
-- **エラー** — プロセス サーバーがエラーの場合、または使用できない場合は、保護されたマシンのレプリケーションを別のプロセス サーバーに移動できます。ソース マシンとレプリカ マシンのメタデータが新しいプロセス サーバーに移動されて、データが再同期されます。新しいプロセス サーバーは、vCenter サーバーに自動的に接続して自動検出を実行します。Site Recovery ダッシュボードでプロセス サーバーの状態を監視できます。
-- **RPO を調整するための負荷分散** — 負荷分散を改善するため、Site Recovery ポータルで別のプロセス サーバーを選択し、手動負荷分散のために 1 つまたは複数のマシンのレプリケーションを移動できます。この場合、選択したソース マシンとレプリカ マシンのメタデータは、新しいプロセス サーバーに移動されます。元のプロセス サーバーは、vCenter サーバーに接続されたままです。
-
-### プロセス サーバーを監視する
-
-プロセス サーバーが重大な状態の場合、Site Recovery ダッシュボードにステータスの警告が表示されます。ステータスをクリックして [イベント] タブを開き、[ジョブ] タブで特定のジョブにドリルダウンできます。
-
-### レプリケーションに使用されるプロセス サーバーを変更する
-
-1. **[サーバー]**、**[構成サーバー]** を開き、構成サーバーを選択して、**[サーバーの詳細]** を開きます。
-2. **[プロセス サーバー]** で、変更するサーバーの横の **[プロセス サーバーの変更]** をクリックします。
-
-	![Change Process Server 1](./media/site-recovery-vmware-to-azure-classic-legacy/change-ps1.png)
-
-3. **[プロセス サーバーの変更]** の **[ターゲット プロセス サーバー]** で使用する新しいプロセス サーバーを選択してから、新しいサーバーにレプリケートする仮想マシンを選択します。サーバー名の横にある情報アイコンをクリックすると、空き領域とメモリ使用量の詳細が表示されます。負荷の決定に役立つように、選択されている各仮想マシンを新しいプロセス サーバーにレプリケートするために必要な平均容量が表示されます。
-
-	![Change Process Server 2](./media/site-recovery-vmware-to-azure-classic-legacy/change-ps2.png)
-
-4. チェック マークをクリックして、新しいプロセス サーバーへのレプリケーションを開始します。重要な状態になったプロセス サーバーからすべての仮想マシンを削除すると、重大な警告はダッシュボードに表示されなくなることに注意してください。
+4. In the **Recovery Plans** page select the plan and click **Unplanned Failover**.
+5. In **Confirm Failover** verify the failover direction (To Azure) and select the recovery point to fail over to.
+6. Wait for the failover job to complete and then verify that the failover worked as expected and that the replicated virtual machines start successfully in Azure.
 
 
-## サード パーティ製ソフトウェアに関する通知および情報
+
+
+## <a name="step-11:-fail-back-failed-over-machines-from-azure"></a>Step 11: Fail back failed over machines from Azure
+
+[Learn more](site-recovery-failback-azure-to-vmware-classic-legacy.md) about how to bring your failed over machines running in Azure back to your on-premises environment.
+
+
+## <a name="manage-your-process-servers"></a>Manage your process servers
+
+The process server sends replication data to the master target server in Azure, and discovers new VMware virtual machines added to a vCenter server. In the following circumstances you might want to change the process server in your deployment:
+
+- If the current process server goes down
+- If your recovery point objective (RPO) rises to an unacceptable level for your organization.
+
+If required you can move the replication of some or all of your on-premises VMware virtual machines and physical servers to a different process server. For example:
+
+- **Failure**—If a process server fails or isn't available you can move protected machine replication to another process server. Metadata of the source machine and replica machine will be moved to the new process server and data is resynchronized. The new process server will automatically connect to the vCenter server to perform automatic discovery. You can monitor the state of process servers on the Site Recovery dashboard.
+- **Load balancing to adjust RPO**—For improved load balancing you can select a different process server in the Site Recovery portal, and move replication of one or more machines to it for manual load balancing. In this case metadata of the selected source and replica machines is moved to the new process server. The original process server remains connected to the vCenter server. 
+
+### <a name="monitor-the-process-server"></a>Monitor the process server
+
+If a process server is in a critical state a status warning will be displayed on the Site Recovery Dashboard. You can click on the status to open the Events tab and then drill down to specific jobs on the Jobs tab. 
+
+### <a name="modify-the-process-server-used-for-replication"></a>Modify the process server used for replication
+
+1. Open **Servers** > **Configuration Servers** > configuration server > **Server Details**.
+2. Click **Process Servers** > **Change Process Server** next to the server you want to modify.
+
+    ![Change Process Server 1](./media/site-recovery-vmware-to-azure-classic-legacy/change-ps1.png)
+
+3. In **Change Process Server** > **Target Process Server** select the new server you want to use and then select the virtual machines that you want to replicate to the new server. Click the information icon next to the server name for details of free space and used memory. The average space that will be required to replicate each selected virtual machine to the new process server is displayed to help you make load decisions.
+
+    ![Change Process Server 2](./media/site-recovery-vmware-to-azure-classic-legacy/change-ps2.png)
+
+4. Click the check mark to begin replicating to the new process server. Note that if you remove all virtual machines from a process server that was critical it should no longer display a critical warning in the dashboard.
+
+
+## <a name="third-party-software-notices-and-information"></a>Third-party software notices and information
 
 Do Not Translate or Localize
 
-The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).Microsoft is the not original author of the Third Party Code.The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.
+The software and firmware running in the Microsoft product or service is based on or incorporates material from the projects listed below (collectively, “Third Party Code”).  Microsoft is the not original author of the Third Party Code.  The original copyright notice and license, under which Microsoft received such Third Party Code, are set forth below.
 
-The information in Section A is regarding Third Party Code components from the projects listed below.Such licenses and information are provided for informational purposes only.This Third Party Code is being relicensed to you by Microsoft under Microsoft's software licensing terms for the Microsoft product or service.
+The information in Section A is regarding Third Party Code components from the projects listed below. Such licenses and information are provided for informational purposes only.  This Third Party Code is being relicensed to you by Microsoft under Microsoft's software licensing terms for the Microsoft product or service.  
 
 The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
-The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428).Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
+The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

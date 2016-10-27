@@ -1,83 +1,84 @@
 <properties 
-	pageTitle="Azure Machine Learning Web サービスのパラメーターの使用 | Microsoft Azure" 
-	description="Azure Machine Learning Web サービスを使用して、Web サービス アクセス時のモデルの動作を変更する方法です。" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="raymondlaghaeian" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+    pageTitle="Use Azure Machine Learning Web Service Parameters | Microsoft Azure" 
+    description="How to use Azure Machine Learning Web Service Parameters to modify the behavior of your model when the web service is accessed." 
+    services="machine-learning" 
+    documentationCenter="" 
+    authors="raymondlaghaeian" 
+    manager="jhubbard" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/06/2016" 
-	ms.author="raymondl;garye"/>
+    ms.service="machine-learning" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/10/2016" 
+    ms.author="raymondl;garye"/>
 
-#Azure Machine Learning Web サービスのパラメーターの使用
 
-Azure Machine Learning Web サービスは、変更可能なパラメーターを持つモジュールを含む実験を発行すると作成されます。状況によっては、Web サービスの実行中にモジュールの動作変更が必要になる場合がありますが、*Web サービスのパラメーター*を使えば変更できます。
+#<a name="use-azure-machine-learning-web-service-parameters"></a>Use Azure Machine Learning Web Service Parameters
 
-一般的な例として、発行された Web サービスのユーザーが、Web サービスにアクセスしたときに別のデータ ソースを指定できるように[データのインポート][reader] モジュールを設定する場合があります。または、別の宛先を指定できるように[データのインポート][writer] モジュールを構成します。その他の例としては、[特徴ハッシュ][feature-hashing] モジュールのビット数の変更や、[フィルターに基づく特徴の選択][filter-based-feature-selection]モジュールにおける目的の特徴の数の変更があります。
+An Azure Machine Learning web service is created by publishing an experiment that contains modules with configurable parameters. In some cases, you may want to change the module behavior while the web service is running. *Web Service Parameters* allow you to do this task. 
 
-Web サービスのパラメーターを設定し、実験の 1 つまたは複数のモジュール パラメーターに関連付けて、必須か任意かを指定することができます。Web サービスのユーザーは、Web サービスの呼び出し時にこれらのパラメーターの値を指定できます。
+A common example is setting up the [Import Data][reader] module so that the user of the published web service can specify a different data source when the web service is accessed. Or configuring the [Export Data][writer] module so that a different destination can be specified. Some other examples include changing the number of bits for the [Feature Hashing][feature-hashing] module or the number of desired features for the [Filter-Based Feature Selection][filter-based-feature-selection] module. 
+
+You can set Web Service Parameters and associate them with one or more module parameters in your experiment, and you can specify whether they are required or optional. The user of the web service can then provide values for these parameters when they call the web service. 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 
-##Web サービスのパラメーターを設定して使用する方法
+##<a name="how-to-set-and-use-web-service-parameters"></a>How to set and use Web Service Parameters
 
-Web サービスのパラメーターを定義するには、モジュールのパラメーターの横にあるアイコンをクリックして、[Set as web service parameter] を選択します。すると、新しい Web サービスのパラメーターが作成されて、モジュール パラメーターにつながります。これで、Web サービスにアクセスしたときにユーザーが Web サービスのパラメーターの値を指定できるようになり、それがモジュール パラメーターに適用されます。
+You define a Web Service Parameter by clicking the icon next to the parameter for a module and selecting "Set as web service parameter". This creates a new Web Service Parameter and connects it to that module parameter. Then, when the web service is accessed, the user can specify a value for the Web Service Parameter and it is applied to the module parameter.
 
-Web サービスのパラメーターを 1 回定義すれば、その実験の他のモジュール パラメーターでも使用できます。1 つのモジュールのパラメーターに関連付けられている Web サービスのパラメーターを定義する場合、Web サービスのパラメーターに同じ種類の値が想定されるのであれば、その同じパラメーターを他のモジュールでも使用できます。たとえば、Web サービスのパラメーターが数値の場合、数値が想定されるモジュール パラメーターでのみ使用できます。Web サービスのパラメーターの値を設定すると、すべての関連付けられたモジュール パラメーターに適用されます。
+Once you define a Web Service Parameter, it's available to any other module parameter in the experiment. If you define a Web Service Parameter associated with a parameter for one module, you can use that same Web Service Parameter for any other module, as long as the parameter expects the same type of value. For example, if the Web Service Parameter is a numeric value, then it can only be used for module parameters that expect a numeric value. When the user sets a value for the Web Service Parameter, it will be applied to all associated module parameters.
 
-Web サービスのパラメーターの既定値を指定するかどうかを設定できます。指定した場合、Web サービスのユーザー向けのパラメーターはオプションとなります。既定値を指定しない場合、ユーザーは Web サービスにアクセスしたときに値の入力を求められます。
+You can decide whether to provide a default value for the Web Service Parameter. If you do, then the parameter is optional for the user of the web service. If you don't provide a default value, then the user is required to enter a value when the web service is accessed.
 
-Web サービスの API ドキュメントには、Web サービス アクセス時にプログラムで Web サービスのパラメーターを指定する方法に関する Web サービス ユーザー向けの情報が含まれます。
+The API documentation for the web service includes information for the web service user on how to specify the Web Service Parameter programmatically when accessing the web service.
 
->[AZURE.NOTE] 従来の Web サービスの API ドキュメントは、Machine Learning Studio の Web サービス **ダッシュボード**にある **API ヘルプ ページ** リンクから入手できます。新しい Web サービスの API ドキュメントは、Web サービスの **[Consume (使用)]** ページと **[Swagger API]** ページにある [Azure Machine Learning Web サービス](https://services.azureml.net/Quickstart) ポータルから入手できます。
+>[AZURE.NOTE] The API documentation for a classic web service is provided through the **API help page** link in the web service **DASHBOARD** in Machine Learning Studio. The API documentation for a new web service is provided through the [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart) portal on the **Consume** and **Swagger API** pages for your web service.
 
 
-##例
+##<a name="example"></a>Example
 
-たとえば、Azure BLOB ストレージに情報を送信する[データのエクスポート][writer] モジュールの実験があるとします。Web サービスのユーザーがサービスにアクセスしたときに BLOB ストレージへのパスを変更できるようにする "Blob path" という名前の Web サービスのパラメーターを定義しましょう。
+As an example, let's assume we have an experiment with an [Export Data][writer] module that sends information to Azure blob storage. We'll define a Web Service Parameter named "Blob path" that allows the web service user to change the path to the blob storage when the service is accessed.
 
-1.	Machine Learning Studio で[データのエクスポート][writer] モジュールをクリックして選択します。実験キャンバスの右側の [プロパティ] ウィンドウにプロパティが表示されます。
+1.  In Machine Learning Studio, click the [Export Data][writer] module to select it. Its properties are shown in the Properties pane to the right of the experiment canvas.
 
-2.	ストレージの種類を指定します。
+2.  Specify the storage type:
 
-    - **[Please specify data destination]** で [Azure Blob Storage] を選択します。
-    - **[Please specify authentication type]** の下の [アカウント] を選択します。
-    - Azure BLOB ストレージのアカウント情報を入力します。
+    - Under **Please specify data destination**, select "Azure Blob Storage".
+    - Under **Please specify authentication type**, select "Account".
+    - Enter the account information for the Azure blob storage. 
     <p />
 
-3.	**[Path to blob beginning with container parameter]** の右にあるアイコンをクリックします。次のように表示されています。
+3.  Click the icon to the right of the **Path to blob beginning with container parameter**. It looks like this:
 
-	![Web サービスのパラメーター アイコン][icon]
+    ![Web Service Parameter icon][icon]
 
-    [Set as web service parameter] を選択します。
+    Select "Set as web service parameter".
 
-    [プロパティ] ウィンドウの下部にある **[Web Service Parameters]** の下に [Path to blob beginning with container] という名前のエントリが追加されます。これは、この[データのエクスポート][writer] モジュール パラメーターに現在関連付けられている Web サービスのパラメーターです。
+    An entry is added under **Web Service Parameters** at the bottom of the Properties pane with the name "Path to blob beginning with container". This is the Web Service Parameter that is now associated with this [Export Data][writer] module parameter.
 
-4.	Web サービスのパラメーターの名前を変更するには、名前をクリックし、「Blob path」と入力して **Enter** キーを押します。
+4.  To rename the Web Service Parameter, click the name, enter "Blob path", and press the **Enter** key. 
  
-5.	Web サービスのパラメーターの既定値を指定するには、名前の右側にあるアイコンをクリックして、[Provide default value] を選択して値を入力し (たとえば 「container1/output1.csv」)、**Enter** キーを押します。
+5.  To provide a default value for the Web Service Parameter, click the icon to the right of the name, select "Provide default value", enter a value (for example, "container1/output1.csv"), and press the **Enter** key.
 
-	![Web サービスのパラメーター][parameter]
+    ![Web Service Parameter][parameter]
 
-6.	**[実行]** をクリックします。
+6.  Click **Run**. 
 
-7.	**[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic]\(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New]\(Web サービスのデプロイ [新規])]** を選択して、Web サービスをデプロイします。
+7.  Click **Deploy Web Service** and select **Deploy Web Service [Classic]** or **Deploy Web Service [New]** to deploy the web service.
 
-これで Web サービスのユーザーが Web サービス アクセス時に[データのエクスポート][writer] モジュールの新しい宛先を指定できるようになります。
+The user of the web service can now specify a new destination for the [Export Data][writer] module when accessing the web service.
 
-##詳細情報
+##<a name="more-information"></a>More information
 
-詳細については、[Machine Learning Blog (Machine Learning ブログ)](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) の[「Web サービスのパラメーター (ブログの投稿)」](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)をご覧ください。
+For a more detailed example, see the [Web Service Parameters](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) entry in the [Machine Learning Blog](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
-Machine Learning Web サービスへのアクセスの詳細については、[「発行済みの Machine Learning Web サービスを使用する方法」](machine-learning-consume-web-services.md)をご覧ください。
+For more information on accessing a Machine Learning web service, see [How to consume a published machine learning web service](machine-learning-consume-web-services.md).
 
 
 
@@ -93,4 +94,8 @@ Machine Learning Web サービスへのアクセスの詳細については、[�
 [writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
  
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

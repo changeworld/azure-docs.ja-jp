@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する | Microsoft Azure"
-    description="Transact-SQL を使用した Azure SQL Database の geo レプリケーションの構成"
+    pageTitle="Configure Geo-Replication for Azure SQL Database with Transact-SQL | Microsoft Azure"
+    description="Configure Geo-Replication for Azure SQL Database using Transact-SQL"
     services="sql-database"
     documentationCenter=""
     authors="CarlRabeler"
@@ -13,169 +13,170 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="NA"
-    ms.date="07/18/2016"
+    ms.date="10/13/2016"
     ms.author="carlrab"/>
 
-# Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する
+
+# <a name="configure-geo-replication-for-azure-sql-database-with-transact-sql"></a>Configure Geo-Replication for Azure SQL Database with Transact-SQL
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-geo-replication-overview.md)
-- [Azure ポータル](sql-database-geo-replication-portal.md)
+- [Overview](sql-database-geo-replication-overview.md)
+- [Azure Portal](sql-database-geo-replication-portal.md)
 - [PowerShell](sql-database-geo-replication-powershell.md)
 - [T-SQL](sql-database-geo-replication-transact-sql.md)
 
-この記事では、Transact-SQL を使用して Azure SQL Database のアクティブ geo レプリケーションを構成する方法について説明します。
+This article shows you how to configure Active Geo-Replication for an Azure SQL Database with Transact-SQL.
 
-Transact-SQL を使用してフェールオーバーを開始するには、「[Transact-SQL を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-transact-sql.md)」を参照してください。
+To initiate failover using Transact-SQL, see [Initiate a planned or unplanned failover for Azure SQL Database with Transact-SQL](sql-database-geo-replication-failover-transact-sql.md).
 
->[AZURE.NOTE] すべてのサービス レベルのすべてのデータベースでアクティブ geo レプリケーション (読み取り可能なセカンダリ) を使用できるようになりました。2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。
+>[AZURE.NOTE] Active Geo-Replication (readable secondaries) is now available for all databases in all service tiers. In April 2017 the non-readable secondary type will be retired and existing non-readable databases will automatically be upgraded to readable secondaries.
 
-Transact-SQL を使用してアクティブ geo レプリケーションを構成するには、次のものが必要です。
+To configure Active Geo-Replication using Transact-SQL, you need the following:
 
-- Azure サブスクリプション。
-- Azure SQL Database 論理サーバー <MyLocalServer> と SQL データベース <MyDB> - レプリケートするプライマリ データベースです。
-- 1 つ以上の Azure SQL Database 論理サーバー <MySecondaryServer(n)> - セカンダリ データベースの作成先であるパートナー サーバーとなる論理サーバーです。
-- プライマリ上の DBManager であるログイン。geo レプリケートするローカル データベースの db\_ownership を所有し、geo レプリケーションを構成するパートナー サーバー上の DBManager になります。
+- An Azure subscription.
+- A logical Azure SQL Database server <MyLocalServer> and a SQL database <MyDB> - The primary database that you want to replicate.
+- One or more logical Azure SQL Database servers <MySecondaryServer(n)> - The logical servers that will be the partner servers in which you will create secondary databases.
+- A login that is DBManager on the primary, have db_ownership of the local database that you will geo-replicate, and be DBManager on the partner server(s) to which you will configure Geo-Replication.
 - SQL Server Management Studio (SSMS)
 
-> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+> [AZURE.IMPORTANT] It is recommended that you always use the latest version of Management Studio to remain synchronized with updates to Microsoft Azure and SQL Database. [Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
 
-## セカンダリ データベースの追加
+## <a name="add-secondary-database"></a>Add secondary database
 
-**ALTER DATABASE** ステートメントを使用して、geo レプリケートされたセカンダリ データベースをパートナー サーバー上に作成できます。このステートメントは、レプリケートされるデータベースが含まれているサーバーの master データベースに対して実行します。geo レプリケートされたデータベース ("プライマリ データベース") は、レプリケートされているデータベースと同じ名前になります。また、既定では、サービス レベルがプライマリ データベースと同じになります。セカンダリ データベースは、読み取り可能または読み取り不可とすることができるほか、単一データベースまたはエラスティック データベースとすることができます。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
-セカンダリ データベースが作成され、シード処理が行われると、データはプライマリ データベースから非同期にレプリケートを開始します。以下の手順では、Management Studio を使用して geo レプリケーションを構成する方法について説明します。単一データベースまたはエラスティック データベースとして、読み取り不可のセカンダリと読み取り可能なセカンダリを作成する手順について説明します。
+You can use the **ALTER DATABASE** statement to create a geo-replicated secondary database on a partner server. You execute this statement on the master database of the server containing the database to be replicated. The geo-replicated database (the "primary database") will have the same name as the database being replicated and will, by default, have the same service level as the primary database. The secondary database can be readable or non-readable, and can be a single database or an elastic databbase. For more information, see [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) and [Service Tiers](sql-database-service-tiers.md).
+After the secondary database is created and seeded, data will begin replicating asynchronously from the primary database. The steps below describe how to configure Geo-Replication using Management Studio. Steps to create non-readable and readable secondaries, either with a single database or an elastic database, are provided.
 
-> [AZURE.NOTE] 指定したパートナー サーバーにプライマリ データベースと同じ名前のデータベースが存在する場合、コマンドは失敗します。
-
-
-### 読み取り不可のセカンダリ (単一データベース) の追加
-
-読み取り不可のセカンダリを単一データベースとして作成するには、次の手順に従います。
-
-1. バージョン 13.0.600.65 以降の SQL Server Management Studio を使用します。
-
- 	 > [AZURE.IMPORTANT] [最新](https://msdn.microsoft.com/library/mt238290.aspx)バージョンの SQL Server Management Studio をダウンロードします。常に最新バージョンの Management Studio を使用して、Azure ポータルの更新プログラムとの同期を維持することをお勧めします。
+> [AZURE.NOTE] If a database exists on the specified partner server with the same name as the primary database the command will fail.
 
 
-2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
+### <a name="add-non-readable-secondary-(single-database)"></a>Add non-readable secondary (single database)
 
-3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、MySecondaryServer1 上に読み取り不可のセカンダリ データベースを持つ geo レプリケーション プライマリにします (MySecondaryServer1 は、サーバーのフレンドリ名です)。
+Use the following steps to create a non-readable secondary as a single database.
+
+1. Using version 13.0.600.65 or later of SQL Server Management Studio.
+
+     > [AZURE.IMPORTANT] Download the [latest](https://msdn.microsoft.com/library/mt238290.aspx) version of SQL Server Management Studio. It is recommended that you always use the latest version of Management Studio to remain in sync with updates to the Azure portal.
+
+
+2. Open the Databases folder, expand the **System Databases** folder, right-click on **master**, and then click **New Query**.
+
+3. Use the following **ALTER DATABASE** statement to make a local database into a Geo-Replication primary with a non-readable secondary database on MySecondaryServer1 where MySecondaryServer1 is your friendly server name.
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer1> WITH (ALLOW_CONNECTIONS = NO);
 
-4. **[実行]** をクリックしてクエリを実行します。
+4. Click **Execute** to run the query.
 
 
-### 読み取り可能なセカンダリ (単一データベース) の追加
-読み取り可能なセカンダリを単一データベースとして作成するには、次の手順に従います。
+### <a name="add-readable-secondary-(single-database)"></a>Add readable secondary (single database)
+Use the following steps to create a readable secondary as a single database.
 
-1. Management Studio で Azure SQL Database 論理サーバーに接続します。
+1. In Management Studio, connect to your Azure SQL Database logical server.
 
-2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
+2. Open the Databases folder, expand the **System Databases** folder, right-click on **master**, and then click **New Query**.
 
-3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、セカンダリ サーバー上に読み取り可能なセカンダリ データベースを持つ geo レプリケーション プライマリにします。
+3. Use the following **ALTER DATABASE** statement to make a local database into a Geo-Replication primary with a readable secondary database on a secondary server.
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer2> WITH (ALLOW_CONNECTIONS = ALL);
 
-4. **[実行]** をクリックしてクエリを実行します。
+4. Click **Execute** to run the query.
 
 
 
-### 読み取り不可のセカンダリ (エラスティック データベース) の追加
+### <a name="add-non-readable-secondary-(elastic-database)"></a>Add non-readable secondary (elastic database)
 
-読み取り不可のセカンダリをエラスティック データベースとして作成するには、次の手順に従います。
+Use the following steps to create a non-readable secondary as an elastic database.
 
-1. Management Studio で Azure SQL Database 論理サーバーに接続します。
+1. In Management Studio, connect to your Azure SQL Database logical server.
 
-2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
+2. Open the Databases folder, expand the **System Databases** folder, right-click on **master**, and then click **New Query**.
 
-3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、セカンダリ サーバー上のエラスティック プール内に読み取り不可のセカンダリ データベースを持つ geo レプリケーション プライマリにします。
+3. Use the following **ALTER DATABASE** statement to make a local database into a Geo-Replication primary with a non-readable secondary database on a secondary server in an elastic pool.
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer3> WITH (ALLOW_CONNECTIONS = NO
            , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool1));
 
-4. **[実行]** をクリックしてクエリを実行します。
+4. Click **Execute** to run the query.
 
 
 
-### 読み取り可能なセカンダリ (エラスティック データベース) の追加
-読み取り可能なセカンダリをエラスティック データベースとして作成するには、次の手順に従います。
+### <a name="add-readable-secondary-(elastic-database)"></a>Add readable secondary (elastic database)
+Use the following steps to create a readable secondary as an elastic database.
 
-1. Management Studio で Azure SQL Database 論理サーバーに接続します。
+1. In Management Studio, connect to your Azure SQL Database logical server.
 
-2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
+2. Open the Databases folder, expand the **System Databases** folder, right-click on **master**, and then click **New Query**.
 
-3. 次の **ALTER DATABASE** ステートメントを使用して、ローカル データベースを、セカンダリ サーバー上のエラスティック プール内に読み取り可能なセカンダリ データベースを持つ geo レプリケーション プライマリにします。
+3. Use the following **ALTER DATABASE** statement to make a local database into a Geo-Replication primary with a readable secondary database on a secondary server in an elastic pool.
 
         ALTER DATABASE <MyDB>
            ADD SECONDARY ON SERVER <MySecondaryServer4> WITH (ALLOW_CONNECTIONS = ALL
            , SERVICE_OBJECTIVE = ELASTIC_POOL (name = MyElasticPool2));
 
-4. **[実行]** をクリックしてクエリを実行します。
+4. Click **Execute** to run the query.
 
 
 
-## セカンダリ データベースを削除する
+## <a name="remove-secondary-database"></a>Remove secondary database
 
-**ALTER DATABASE** を使用して、セカンダリ データベースとそのプライマリの間のレプリケーション パートナーシップを完全に終了させることができます。このステートメントは、プライマリ データベースが存在する master データベースに対して実行されます。リレーションシップの終了後、セカンダリ データベースは通常の読み取り/書き込みデータベースになります。セカンダリ データベースへの接続が切断された場合、コマンドは成功します。ただし、接続が復元されると、セカンダリ データベースは読み取り/書き込みデータベースになります。詳細については、[ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) に関するページと[サービス階層](sql-database-service-tiers.md)に関するページを参照してください。
+You can use the **ALTER DATABASE** statement to permanently terminate the replication partnership between a secondary database and its primary. This statement is executed on the master database on which the primary database resides. After the relationship termination, the secondary database becomes a regular read-write database. If the connectivity to secondary database is broken the command succeeds but the secondary will become read-write after connectivity is restored. For more information, see [ALTER DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/mt574871.aspx) and [Service Tiers](sql-database-service-tiers.md).
 
-geo レプリケートされたセカンダリを geo レプリケーション パートナーシップから削除するには、次の手順に従います。
+Use the following steps to remove geo-replicated secondary from a Geo-Replication partnership.
 
-1. Management Studio で Azure SQL Database 論理サーバーに接続します。
+1. In Management Studio, connect to your Azure SQL Database logical server.
 
-2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
+2. Open the Databases folder, expand the **System Databases** folder, right-click on **master**, and then click **New Query**.
 
-3. 次の **ALTER DATABASE** ステートメントを使用して、geo レプリケートされたセカンダリを削除します。
+3. Use the following **ALTER DATABASE** statement to remove a geo-replicated secondary.
 
         ALTER DATABASE <MyDB>
            REMOVE SECONDARY ON SERVER <MySecondaryServer1>;
 
-4. **[実行]** をクリックしてクエリを実行します。
+4. Click **Execute** to run the query.
 
-## geo レプリケーションの構成と正常性を監視する
+## <a name="monitor-geo-replication-configuration-and-health"></a>Monitor Geo-Replication configuration and health
 
-監視タスクには、geo レプリケーションの構成に関する監視と、データ レプリケーションの正常性に関する監視が含まれます。master データベースの **sys.dm\_geo\_replication\_links** 動的管理ビューを使用すると、Azure SQL Database 論理サーバー上の各データベースについて、既存のレプリケーション リンクすべてに関する情報が返されます。このビューでは、プライマリ データベースとセカンダリ データベースの間の各レプリケーション リンクについて 1 行表示されます。**sys.dm\_replication\_status** 動的管理ビューを使用すると、レプリケーション リンクに現在関係している Azure SQL Database ごとに行が返されます。これには、プライマリ データベースとセカンダリ データベースの両方が含まれます。特定のプライマリ データベースについて複数の連続レプリケーション リンクが存在する場合、このテーブルには、各リレーションシップについて 1 行が含まれます。このビューは、すべてのデータベース (論理 master データベースを含む) で作成されます。ただし、論理 master データベースでこのビューにクエリを実行しても、空のセットが返されます。**sys.dm\_operation\_status** 動的管理ビューを使用すると、レプリケーション リンクの状態など、すべてのデータベース操作の状態を表示できます。詳細については、[sys.geo\_replication\_links (Azure SQL Database)](https://msdn.microsoft.com/library/mt575501.aspx)、[sys.dm\_geo\_replication\_link\_status (Azure SQL Database)](https://msdn.microsoft.com/library/mt575504.aspx)、[sys.dm\_operation\_status (Azure SQL Database)](https://msdn.microsoft.com/library/dn270022.aspx) に関するページを参照してください。
+Monitoring tasks include monitoring of the Geo-Replication configuration and monitoring data replication health.  You can use the **sys.dm_geo_replication_links** dynamic management view in the master database to return information about all exiting replication links for each database on the Azure SQL Database logical server. This view contains a row for each of the replication link between primary and secondary databases. You can use the **sys.dm_replication_link_status** dynamic management view to return a row for each Azure SQL Database that is currently engaged in a replication replication link. This includes both primary and secondary databases. If more than one continuous replication link exists for a given primary database, this table contains a row for each of the relationships. The view is created in all databases, including the logical master. However, querying this view in the logical master returns an empty set. You can use the **sys.dm_operation_status** dynamic management view to show the status for all database operations including the status of the replication links. For more information, see [sys.geo_replication_links (Azure SQL Database)](https://msdn.microsoft.com/library/mt575501.aspx), [sys.dm_geo_replication_link_status (Azure SQL Database)](https://msdn.microsoft.com/library/mt575504.aspx), and [sys.dm_operation_status (Azure SQL Database)](https://msdn.microsoft.com/library/dn270022.aspx).
 
-geo レプリケーション パートナーシップを監視するには、次の手順に従います。
+Use the following steps to monitor a Geo-Replication partnership.
 
-1. Management Studio で Azure SQL Database 論理サーバーに接続します。
+1. In Management Studio, connect to your Azure SQL Database logical server.
 
-2. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[master]** を右クリックして、**[新しいクエリ]** をクリックします。
+2. Open the Databases folder, expand the **System Databases** folder, right-click on **master**, and then click **New Query**.
 
-3. 次のステートメントを使用して、geo レプリケーション リンクと共にすべてのデータベースを表示します。
+3. Use the following statement to show all databases with Geo-Replication links.
 
         SELECT database_id, start_date, modify_date, partner_server, partner_database, replication_state_desc, role, secondary_allow_connections_desc FROM [sys].geo_replication_links;
 
-4. **[実行]** をクリックしてクエリを実行します。
-5. [データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開し、**[MyDB]** を右クリックして、**[新しいクエリ]** をクリックします。
-6. 次のステートメントを使用して、MyDB のセカンダリ データベースのレプリケーション ラグと前回のレプリケーション時刻を表示します。
+4. Click **Execute** to run the query.
+5. Open the Databases folder, expand the **System Databases** folder, right-click on **MyDB**, and then click **New Query**.
+6. Use the following statement to show the replication lags and last replication time of my secondary databases of MyDB.
 
         SELECT link_guid, partner_server, last_replication, replication_lag_sec FROM sys.dm_geo_replication_link_status
 
-7. **[実行]** をクリックしてクエリを実行します。
-8. 次のステートメントを使用して、MyDB データベースに関連付けられた最近の geo レプリケーション操作を表示します。
+7. Click **Execute** to run the query.
+8. Use the following statement to show the most recent geo-replication operations associated with database MyDB.
 
         SELECT * FROM sys.dm_operation_status where major_resource_id = 'MyDB'
         ORDER BY start_time DESC
 
-9. **[実行]** をクリックしてクエリを実行します。
+9. Click **Execute** to run the query.
 
-## 読み取り可能なセカンダリへの読み取り不能なセカンダリのアップグレード
+## <a name="upgrade-a-non-readable-secondary-to-readable"></a>Upgrade a non-readable secondary to readable
 
-2017 年 4 月に、読み取り不能なタイプのセカンダリが廃止され、既存の読み取り不能なデータベースは読み取り可能なセカンダリに自動的にアップグレードされます。読み取り不能なセカンダリを使用している場合、読み取り可能なセカンダリにアップグレードするには、各セカンダリで次の簡単な手順を実行します。
+In April 2017 the non-readable secondary type will be retired and existing non-readable databases will automatically be upgraded to readable secondaries. If you are using non-readable secondaries today and want to upgrade them to be readable, you can use the following simple steps for each secondary.
 
-> [AZURE.IMPORTANT] 読み取り不能なセカンダリを読み取り可能なセカンダリにアップグレードする、インプレース アップグレードのセルフ サービスは用意されていません。セカンダリだけを削除した場合、新しいセカンダリが完全に同期されるまで、プライマリ データベースは保護されていない状態で残ります。アプリケーションの SLA によりプライマリを常に保護することが求められている場合は、上記のアップグレード手順を適用する前に、別のサーバーで並列セカンダリを作成することを検討してください。各プライマリで使用できるセカンダリ データベースの数は最大 4 つです。
+> [AZURE.IMPORTANT] There is no self-service method of in-place upgrading of a non-readable secondary to readable. If you drop your only secondary, then the primary database will remain unprotected until the new secondary is fully synchronized. If your application’s SLA requires that the primary is always protected, you should consider creating a parallel secondary in a different server before applying the upgrade steps above. Note each primary can have up to 4 secondary databases.
 
 
-1. 最初に、"セカンダリ" サーバーに接続し、読み取り不能なセカンダリ データベースを削除します。
+1. First, connect to the *secondary* server and drop the non-readable secondary database:  
         
         DROP DATABASE <MyNonReadableSecondaryDB>;
 
-2. これで、"プライマリ" サーバーに接続して、新しい読み取り可能なセカンダリを追加できます
+2. Now connect to the *primary* server and add a new readable secondary
 
         ALTER DATABASE <MyDB>
             ADD SECONDARY ON SERVER <MySecondaryServer> WITH (ALLOW_CONNECTIONS = ALL);
@@ -183,9 +184,13 @@ geo レプリケーション パートナーシップを監視するには、次
 
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- アクティブ geo レプリケーションの詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事をご覧ください
-- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- To learn more about Active Geo-Replication, see - [Active Geo-Replication](sql-database-geo-replication-overview.md)
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

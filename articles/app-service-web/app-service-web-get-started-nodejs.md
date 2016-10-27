@@ -1,139 +1,146 @@
 <properties 
-	pageTitle="Node.js Web アプリを Azure に 5 分でデプロイする | Microsoft Azure" 
-	description="サンプル アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。実際の開発を速やかに開始し、すぐに成果を確認できます。" 
-	services="app-service\web"
-	documentationCenter=""
-	authors="cephalin"
-	manager="wpickett"
-	editor=""
+    pageTitle="Deploy your Node.js web app to Azure in five minutes | Microsoft Azure" 
+    description="Learn how easy it is to run web apps in App Service by deploying a sample app. Start doing real development quickly and see results immediately." 
+    services="app-service\web"
+    documentationCenter=""
+    authors="cephalin"
+    manager="wpickett"
+    editor=""
 />
 
 <tags
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="09/16/2016" 
-	ms.author="cephalin"
+    ms.service="app-service-web"
+    ms.workload="web"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="09/16/2016" 
+    ms.author="cephalin"
 />
-	
-# 初めての Node.js Web アプリを Azure に 5 分でデプロイする
+    
 
-このチュートリアルでは、初めての Node.js Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイします。App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
+# <a name="deploy-your-first-node.js-web-app-to-azure-in-five-minutes"></a>Deploy your first Node.js web app to Azure in five minutes
 
-このチュートリアルの内容は次のとおりです。
+This tutorial helps you deploy your first Node.js web app to [Azure App Service](../app-service/app-service-value-prop-what-is.md).
+You can use App Service to create web apps, [mobile app back ends](/documentation/learning-paths/appservice-mobileapps/), and [API apps](../app-service-api/app-service-api-apps-why-best-platform.md).
 
-- Azure App Service で Web アプリを作成する。
-- Node.js のサンプル コードをデプロイする。
-- 運用環境でライブ実行されているコードを確認する。
-- [Git コミットをプッシュする](https://git-scm.com/docs/git-push)ときと同じ方法で Web アプリを更新する。
+You will: 
 
-## 前提条件
+- Create a web app in Azure App Service.
+- Deploy sample Node.js code.
+- See your code running live in production.
+- Update your web app the same way you would [push Git commits](https://git-scm.com/docs/git-push).
 
-- [Git をインストールします](http://www.git-scm.com/downloads)。新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルから `git --version` を実行して、インストールが正常に完了したことを確認します。
-- Microsoft Azure アカウントを取得します。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/?WT.mc_id=A261C142F)か [Visual Studio サブスクライバー特典を有効](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
+## <a name="prerequisites"></a>Prerequisites
 
->[AZURE.NOTE] Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
+- [Install Git](http://www.git-scm.com/downloads). Verify that your installation is successful by running `git --version` from a new Windows command prompt, PowerShell window, Linux shell, or OS X terminal.
+- Get a Microsoft Azure account. If you don't have an account, you can [sign up for a free trial](/pricing/free-trial/?WT.mc_id=A261C142F) or [activate your Visual Studio subscriber benefits](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+
+>[AZURE.NOTE] You can [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751) without an Azure account. Create a starter app and play with it for up to an hour--no credit card required, no commitments.
 
 <a name="create"></a>
-## Web アプリを作成する
+## <a name="create-a-web-app"></a>Create a web app
 
-1. Azure アカウントで [Azure Portal](https://portal.azure.com) にサインインします。
+1. Sign in to the [Azure portal](https://portal.azure.com) with your Azure account.
 
-2. 左側のメニューで、**[新規]**、**[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
+2. From the left menu, click **New** > **Web + Mobile** > **Web App**.
 
     ![](./media/app-service-web-get-started-languages/create-web-app-portal.png)
 
-3. アプリ作成ブレードでは、新しいアプリに次の設定を使用します。
+3. In the app creation blade, use the following settings for your new app:
 
-    - **[アプリ名]**: 一意の名前を入力します。
-    - **[リソース グループ]**: **[新規作成]** を選択し、リソース グループに名前を付けます。
-    - **[App Service プラン/場所]**: このオプションをクリックし、**[新規作成]** をクリックして、App Service プランの名前、場所、価格レベルを設定します。**Free** 価格レベルを自由に使用してください。
+    - **App name**: Type a unique name.
+    - **Resource group**: Select **Create new** and give the resource group a name.
+    - **App Service plan/Location**: Click it to configure, then click **Create New** to set the name, location, and pricing tier of the App Service plan. Feel free to use the **Free** pricing tier.
 
-    設定が完了すると、アプリ作成ブレードは次のようになります。
+    When you're done, your app creation blade should look like this:
 
     ![](./media/app-service-web-get-started-languages/create-web-app-settings.png)
 
-3. 下部にある **[作成]** をクリックします。上部にある **[通知]** アイコンをクリックすると、進行状況を確認できます。
+3. Click **Create** at the bottom. You can click the **Notification** icon at the top to see the progress.
 
     ![](./media/app-service-web-get-started-languages/create-web-app-started.png)
 
-4. デプロイが完了すると、次の通知メッセージが表示されます。メッセージをクリックして、デプロイのブレードを開きます。
+4. When deployment is finished, you should see this notification message. Click the message to open your deployment's blade.
 
     ![](./media/app-service-web-get-started-languages/create-web-app-finished.png)
 
-5. **[デプロイメントに成功しました]** ブレードで、**[リソース]** のリンクをクリックして、新しい Web アプリのブレードを開きます。
+5. In the **Deployment succeeded** blade, click the **Resource** link to open your new web app's blade.
 
     ![](./media/app-service-web-get-started-languages/create-web-app-resource.png)
 
-## Web アプリにコードをデプロイする
+## <a name="deploy-code-to-your-web-app"></a>Deploy code to your web app
 
-次に、Git を使用して Azure にコードをデプロイしましょう。
+Now, let's deploy some code to Azure using Git.
 
-5. [Web アプリ] ブレードで、下にスクロールして **[デプロイ オプション]** を表示するかこれを探してクリックします。
+5. In the web app blade, scroll down to **Deployment options** or search for it, then click it. 
 
     ![](./media/app-service-web-get-started-languages/deploy-web-app-deployment-options.png)
 
-6. **[ソースの選択]**、**[ローカル Git リポジトリ]**、**[OK]** の順にクリックします。
+6. Click **Choose Source** > **Local Git Repository** > **OK**.
 
-7. [Web アプリ] ブレードに戻り、**[デプロイ資格情報]** をクリックします。
+7. Back in the web app blade, click **Deployment credentials**.
 
-8. デプロイ資格情報を設定し、**[保存]** をクリックします。
+8. Set your deployment credentials and click **Save**.
 
-7. [Web アプリ] ブレードに戻り、下にスクロールして **[プロパティ]** を表示するかこれを探してクリックします。**[Git URL]** の横の **[コピー]** ボタンをクリックします。
+7. Back in the web app blade, scroll down to **Properties** or search for it, then click it. Next to **Git URL**, click the **Copy** button.
 
     ![](./media/app-service-web-get-started-languages/deploy-web-app-properties.png)
 
-    これで Git を使用してコードをデプロイする準備ができました。
+    You're now ready to deploy your code with Git.
 
-1. コマンド ライン端末で、作業ディレクトリに移動し (`CD`)、次のようにサンプル アプリを複製します。
+1. In your command-line terminal, change to a working directory (`CD`) and clone the sample app like this:
 
         git clone https://github.com/Azure-Samples/app-service-web-nodejs-get-started.git
 
     ![Clone the app sample code for your first web app in Azure](./media/app-service-web-get-started-languages/node-git-clone.png)
 
-    *&lt;github\_sample\_url>* には、好みのフレームワークに応じて次の URL のいずれかを使用します。
+    For *&lt;github_sample_url>*, use one of the following URLs, depending on the framework that you like:
 
-2. サンプル アプリのリポジトリに移動します。たとえば、次のように入力します。
+2. Change to the repository of your sample app. For example, 
 
         cd app-service-web-nodejs-get-started
 
-3. いくつか前の手順でポータルからコピーした Azure アプリの Git URL に対応する Git リモートを構成します。
+3. Configure the Git remote for your Azure app its Git URL, which you copied from the Portal a few steps ago.
 
         git remote add azure <giturlfromportal>
 
-4. Git でコードをプッシュする場合と同様に、サンプル コードを Azure アプリにデプロイします。
+4. Deploy your sample code to your Azure app like you would push any code with Git:
 
         git push azure master
 
-    ![Push code to your first web app in Azure](./media/app-service-web-get-started-languages/node-git-push.png)
+    ![Push code to your first web app in Azure](./media/app-service-web-get-started-languages/node-git-push.png)    
 
-    いずれかの言語フレームワークを使用した場合は、別の出力が表示されます。`git push` を実行すると、Azure にコードが配置されるだけでなく、デプロイ エンジンのデプロイ タスクがトリガーされるためです。プロジェクト (リポジトリ) ルートに何らかの package.json がある場合は、デプロイ スクリプトが必要なパッケージを復元します。
+    If you used one of the language frameworks, you'll see different output. This is because `git push` not only puts code in Azure, but also triggers deployment tasks in the deployment engine. If you have any package.json in your project (repository) root, the deployment script restores the required packages for you. 
 
-これで完了です。 Azure でコードがライブ実行されています。ブラウザーで http://*&lt;appname>*.azurewebsites.net に移動して、実行中のコードを確認します。
+That's it! Your code is now running live in Azure. In your browser, navigate to http://*&lt;appname>*.azurewebsites.net to see it in action. 
 
-## アプリを更新する
+## <a name="make-updates-to-your-app"></a>Make updates to your app
 
-Git を使用してプロジェクト (リポジトリ) のルートからプッシュして、いつでもライブ サイトを更新することができるようになりました。これは、初めてコードをデプロイしたときと同様に行います。たとえば、ローカルでテストした新しい変更をプッシュする場合は、プロジェクト (リポジトリ) のルートから次のコマンドを実行するだけで済みます。
+You can now use Git to push from your project (repository) root anytime to make an update to the live site. You do it the same way as when you deployed your code the first time. For example, every time you want to push a new change that you've tested locally, just run the following commands from your project (repository) root:
 
     git add .
     git commit -m "<your_message>"
     git push azure master
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[Node.js Express Web アプリを作成および構成して、Azure にデプロイします](app-service-web-nodejs-get-started.md)。このチュートリアルでは、Azure で任意の Node.js を実行するのに必要となる、以下のような基本的なスキルを学習します。
+[Create, configure, and deploy a Node.js Express web app to Azure](app-service-web-nodejs-get-started.md). By following this tutorial, you will learn the basic skills you need to run any Node.js web app in Azure, such as:
 
-- PowerShell/Bash から Azure でアプリを作成および構成する。
-- Node.js のバージョンを設定する。
-- ルート アプリケーション ディレクトリに存在しないスタート ファイルを使用する。
-- NPM で自動化する。
-- エラー ログと出力ログを取得する。
+- Create and configure apps in Azure from PowerShell/Bash.
+- Set Node.js version.
+- Use a start file that is not in the root application directory.
+- Automate with NPM.
+- Get error and output logs.
 
-または、最初の Web アプリを活用します。次に例を示します。
+Or, do more with your first web app. For example:
 
-- [Azure にコードをデプロイする他の方法](../app-service-web/web-sites-deploy.md)を試してみます。たとえば、GitHub リポジトリのいずれかからデプロイする場合、**[デプロイ オプション]** の **[ローカル Git リポジトリ]** ではなく、**[GitHub]** を選択します。
-- Azure アプリを次のレベルに進めます。ユーザーを認証します。必要に応じてスケールを変更したり、パフォーマンスのアラートを設定したりできます。いずれも、数回のクリックで実現できます。「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
+- Try out [other ways to deploy your code to Azure](../app-service-web/web-sites-deploy.md). For example, to deploy from one of your GitHub repositories, simply select **GitHub** instead of **Local Git Repository** in **Deployment options**.
+- Take your Azure app to the next level. Authenticate your users. Scale it based on demand. Set up some performance alerts. All with a few clicks. See [Add functionality to your first web app](app-service-web-get-started-2.md).
 
-<!-----HONumber=AcomDC_0920_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center での OS の脆弱性の修復 | Microsoft Azure"
-   description="このドキュメントでは、";OS の脆弱性の修復"; という Azure Security Center の推奨事項を実装する方法について説明します。"
+   pageTitle="Remediate OS vulnerabilities in Azure Security Center | Microsoft Azure"
+   description="This document shows you how to implement the Azure Security Center recommendation **Remediate OS vulnerabilities**."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,66 +16,72 @@
    ms.date="07/20/2016"
    ms.author="terrylan"/>
 
-# Azure Security Center での OS の脆弱性の修復
 
-Azure Security Center では、仮想マシン (VM) のオペレーティング システム (OS) を日々分析して、攻撃に対する VM の脆弱性を高める可能性のある構成を特定し、これらの脆弱性に対処するための構成の変更を推奨しています。監視対象の具体的な構成の詳細については、[推奨される構成規則の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)をご覧ください。Security Center では、VM の OS 構成が推奨される構成規則に適合していない場合に脆弱性を解決するよう推奨します。
+# <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>Remediate OS vulnerabilities in Azure Security Center
 
-> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+Azure Security Center analyzes daily your virtual machine (VM) operating system (OS) for configurations that could make the VM more vulnerable to attack and recommends configuration changes to address these vulnerabilities. See the [list of recommended configuration rules](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) for more information on the specific configurations being monitored. Security Center will recommend that you resolve vulnerabilities when your VM’s OS configuration does not match the recommended configuration rules.
 
-## 推奨事項の実装
+> [AZURE.NOTE] This document introduces the service by using an example deployment.  This is not a step-by-step guide.
 
-1. **[推奨事項]** ブレードで、**[Remediate OS vulnerabilities (OS の脆弱性の修復)]** を選択します。**[Remediate OS vulnerabilities (OS の脆弱性の修復)]** ブレードが開きます。![OS の脆弱性の修復][1]
+## <a name="implement-the-recommendation"></a>Implement the recommendation
 
-2. **[Remediate OS vulnerabilities (OS の脆弱性の修復)]** ブレードには、OS 構成が推奨される構成規則に適合していない VM の一覧が表示されます。ブレードには、各 VM について次の項目が示されます。
+1. In the **Recommendations** blade, select **Remediate OS vulnerabilities**. This opens the **Remediate OS vulnerabilities** blade.
+![Remediate OS vulnerabilities][1]
 
- - **[失敗した規則]** -- VM の OS 構成が失敗した規則の数。
- - **[最終スキャン時刻]** -- Security Center で VM の OS 構成が最後にスキャンされた日時。
- - **[状態]** -- 脆弱性の現在の状態。
+2. The **Remediate OS vulnerabilities** blade lists your VMs with OS configurations that do not match the recommended configuration rules.  For each VM, the blade identifies:
 
-      - [オープン]: 脆弱性にまだ対処していません。
-      - [処理中]: 現在、脆弱性への対処を進めており、ユーザーのアクションは不要です。
-      - [解決済み]: 脆弱性への対処は既に完了しています (問題が解決されると、エントリは淡色表示になります)。
- - **[重大度]** -- すべての脆弱性の重大度が [低] に設定されています。これは、脆弱性に対処する必要はあっても、早急な注意は必要としないことを意味します。
+ - **FAILED RULES** -- The number of rules that the VM's OS configuration failed.
+ - **LAST SCAN TIME** -- The date and time that Security Center last scanned the VM’s OS configuration.
+ - **STATE** -- The current state of the vulnerability:
 
-   VM を選択します。その VM の **[Remediate OS vulnerabilities (OS の脆弱性の修復)]** ブレードが開き、失敗した規則が表示されます。
+      - Open: The vulnerability has not been addressed yet
+      - In Progress: The vulnerability is currently being applied, no action is required by you
+      - Resolved: The vulnerability was already addressed (when the issue has been resolved, the entry is grayed out)
+ - **SEVERITY** -- All vulnerabilities are set to a severity of Low, meaning a vulnerability should be addressed but does not require immediate attention.
 
-   ![失敗した構成規則][2]
+   Select a VM. This opens the **Remediate OS vulnerabilities** blade for that VM and displays the rules that have failed.
 
-規則を選択します。この例では、**[Password must meet complexity requirements (パスワードは複雑さの要件を満たす必要がある)]** を選択します。失敗した規則と影響について説明するブレードが開きます。詳細を確認し、オペレーティング システムの構成を適用する方法を検討します。
+   ![Configuration rules that have failed][2]
 
-  ![失敗した規則の説明][3]
+Select a rule. In this example, lets select **Password must meet complexity requirements**. A blade opens describing the failed rule and the impact. Review the details and consider how operating system configurations will be applied.
 
-  Security Center では、Common Configuration Enumeration (CCE) を使用して構成規則に一意の識別子を割り当てます。このブレードでは次の情報が提供されます。
+  ![Description for the failed rule][3]
 
-  - [名前] -- 規則の名前
-  - [重大度] -- CCE の重大度の値 (重大、重要、または警告)
-  - [CCIED] -- 規則の一意の CCE 識別子
-  - [説明] -- 規則の説明
-  - [脆弱性] -- 脆弱性、または規則が適用されていない場合のリスクの説明
-  - [影響] -- 規則を適用したときのビジネスへの影響
-  - [期待される値] -- Security Center が規則と照らし合わせて VM の OS 構成を分析したときに求められる値
-  - [規則の操作] -- 規則と照らし合わせた VM の OS 構成の分析中に Security Center で使用された規則の操作
-  - [実際の値] -- 規則と照らし合わせた VM の OS 構成の分析後に返された値
-  - [評価の結果] -- 分析の結果 (合格、不合格)
+  Security Center uses Common Configuration Enumeration (CCE) to assign unique identifiers for configuration rules. The following information is provided on this blade:
+
+  - NAME -- Name of rule
+  - SEVERITY -- CCE severity value of critical, important, or warning
+  - CCIED -- CCE unique identifier for the rule
+  - DESCRIPTION -- Description of rule
+  - VULNERABILITY -- Explanation of vulnerability or risk if rule is not applied
+  - IMPACT -- Business impact when rule is applied
+  - EXPECTED VALUE -- Value expected when Security Center analyzes your VM OS configuration against the rule
+  - RULE OPERATION -- Rule operation used by Security Center during analysis of your VM OS configuration against the rule
+  - ACTUAL VALUE -- Value returned after analysis of your VM OS configuration against the rule
+  - EVALUATION RESULT –- Result of analysis: Pass, Fail
 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-この記事では、"OS の脆弱性の修復" という Security Center の推奨事項を実装する方法について説明しました。 構成規則のセットは[こちら](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)で確認できます。Security Center では、CCE (Common Configuration Enumeration) を使用して構成規則に一意の識別子を割り当てます。詳細については、[CCE](http://cce.mitre.org) サイトをご覧ください。
+This article showed you how to implement the Security Center recommendation "Remediate OS vulnerabilities." You can review the set of configuration rules [here](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Security Center uses CCE (Common Configuration Enumeration) to assign unique identifiers for configuration rules. Visit the [CCE](http://cce.mitre.org) site for more information.
 
-セキュリティ センターの詳細については、次を参照してください。
+To learn more about Security Center, see the following:
 
-- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
+- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Find blog posts about Azure security and compliance.
 
 <!--Image references-->
 [1]: ./media/security-center-remediate-os-vulnerabilities/recommendation.png
-[2]: ./media/security-center-remediate-os-vulnerabilities/vm-remediate-os-vulnerabilities.png
+[2]:./media/security-center-remediate-os-vulnerabilities/vm-remediate-os-vulnerabilities.png
 [3]: ./media/security-center-remediate-os-vulnerabilities/vulnerability-details.png
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="デプロイ済みの StorSimple デバイスのトラブルシューティング | Microsoft Azure"
-   description="デプロイし、現在運用している StorSimple デバイスに発生するエラーを診断して修正する方法について説明します。"
+   pageTitle="Troubleshoot a deployed StorSimple device | Microsoft Azure"
+   description="Describes how to diagnose and fix errors that occur on a StorSimple device that is currently deployed and operational."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,56 +15,61 @@
    ms.date="05/16/2016"
    ms.author="v-sharos" />
 
-# StorSimple 運用デバイスのトラブルシューティング
 
-## 概要
+# <a name="troubleshoot-an-operational-storsimple-device"></a>Troubleshoot an operational StorSimple device
 
-この記事は、デプロイした StorSimple デバイスの運用開始後に発生する可能性のある構成の問題を解決するための有益なトラブルシューティング ガイダンスです。Microsoft Azure StorSimple の利用時に起こることがある問題の解決に役立つ、一般的な問題、考えられる原因、推奨手順について説明します。この情報は、StorSimple のオンプレミスの物理デバイスと StorSimple 仮想デバイスの両方に当てはまります。
+## <a name="overview"></a>Overview
 
-この記事の最後には、Microsoft Azure StorSimple の操作中に発生する可能性のあるエラー コードの一覧と、エラーを解決するための手順が示されています。
+This article provides helpful troubleshooting guidance for resolving configuration issues that you might encounter after your StorSimple device is deployed and operational. It describes common issues, possible causes, and recommended steps to help you resolve problems that you might experience when you run Microsoft Azure StorSimple. This information applies to both the StorSimple on-premises physical device and the StorSimple virtual device.
 
-## 運用デバイスのセットアップ ウィザードのプロセス
+At the end of this article you can find a list of error codes that you might encounter during Microsoft Azure StorSimple operation, as well as steps you can take to resolve the errors. 
 
-セットアップ ウィザード ([Invoke-HcsSetupWizard][1]) を使用して、デバイスの構成を確認し、必要に応じて修正します。
+## <a name="setup-wizard-process-for-operational-devices"></a>Setup wizard process for operational devices
 
-以前に構成し、運用しているデバイスでセットアップ ウィザードを実行する場合、プロセス フローが異なります。次のエントリのみを変更することができます。
+You use the setup wizard ([Invoke-HcsSetupWizard][1]) to check the device configuration and take corrective action if necessary.
 
-- IP アドレス、サブネット マスク、ゲートウェイ
-- プライマリ DNS サーバー
-- プライマリ NTP サーバー
-- Web プロキシ構成 (省略可能)
+When you run the setup wizard on a previously configured and operational device, the process flow is different. You can change only the following entries:
 
-セットアップ ウィザードでは、パスワードの収集やデバイスの登録に関連する操作は実行されません。
+- IP address, subnet mask, and gateway
+- Primary DNS server
+- Primary NTP server
+- Optional web proxy configuration
 
-## セットアップ ウィザードを 2 回以上実行したときに発生するエラー
+The setup wizard does not perform the operations related to password collection and device registration.
 
-次の表では、運用しているデバイスでセットアップ ウィザードを実行した場合に発生する可能性のあるエラー、エラーの考えられる原因、エラーを解決するための推奨される操作について説明します。
+## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>Errors that occur during subsequent runs of the setup wizard
 
-| 番号 | エラー メッセージまたは条件 | 考えられる原因 | 推奨される操作 |
+The following table describes the errors that you might encounter when you run the setup wizard on an operational device, possible causes for the errors, and recommended actions to resolve them. 
+
+| No. | Error message or condition | Possible causes | Recommended action |
 |:--- |:-------------------------- |:--------------- |:------------------ |
-| 1 | エラー 350032: このデバイスは既に非アクティブ化されています。 | 非アクティブ化されたデバイスでセットアップ ウィザードを実行すると、このエラーが表示されます。 | [Microsoft サポート](storsimple-contact-microsoft-support.md)に対処法をお問い合わせください。非アクティブ化されているデバイスを利用することはできません。デバイスを再アクティブ化する前に、出荷時の設定に戻す必要があります。 |
-| 2 | Invoke-HcsSetupWizard : ERROR\_INVALID\_FUNCTION (HRESULT からの例外: 0x80070001) | DNS サーバーの更新に失敗しました。DNS の設定はグローバル設定であるため、有効なすべてのネットワーク インターフェイスに適用されます。 | インターフェイスを有効にし、再度、DNS の設定を適用します。これらの設定はグローバルであるため、有効になっている他のインターフェイスのネットワークが中断される可能性があります。 |
-| 3 | StorSimple Manager サービスのポータルではデバイスがオンラインであると表示されますが、最小のセットアップを完了して構成を保存しようとすると、操作に失敗します。 | 実際のプロキシ サーバーがあるにもかかわらず、初期セットアップ時に、Web プロキシが構成されませんでした。 | [Test-HcsmConnection コマンドレット][2]を使用して、エラーを特定します。問題を解決できない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。 |
-| 4 | Invoke-HcsSetupWizard: 値が期待される範囲内にありません。 | 不適切なサブネット マスクがこのエラーの原因です。次の原因が考えられます。<ul><li>サブネット マスクが存在しないか空である。</li><li>IPv6 プレフィックスの形式が正しくない。</li><li>インターフェイスはクラウドに対応しているが、ゲートウェイが見つからないか、正しくない。</li></ul>DATA 0 は、セットアップ ウィザードを使用して構成した場合は自動的にクラウド対応になります。 | 問題を特定するには、サブネット 0.0.0.0 または 256.256.256.256 を使用して出力を確認します。必要に応じて、サブネット マスク、ゲートウェイ、および IPv6 プレフィックスの正しい値を入力します。 |
+|  1  | Error 350032: This device has already been deactivated. | You will see this error if you run the setup wizard on a device that is deactivated. | [Contact Microsoft Support](storsimple-contact-microsoft-support.md) for next steps. A deactivated device cannot be put in service. A factory reset may be required before the device can be activated again. |
+|  2  | Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION(Exception from HRESULT: 0x80070001) | The DNS server update is failing. DNS settings are global settings and are applied across all the enabled network interfaces. | Enable the interface and apply the DNS settings again. This may disrupt the network for other enabled interfaces because these settings are global. |
+|  3  | The device appears to be online in the StorSimple Manager service portal, but when you try to complete the minimum setup and save the configuration, the operation fails. | During initial setup, the web proxy was not configured, even though there was an actual proxy server in place. | Use the [Test-HcsmConnection cmdlet][2] to locate the error. [Contact Microsoft Support](storsimple-contact-microsoft-support.md) if you are unable to correct the problem. |
+|  4  | Invoke-HcsSetupWizard: Value does not fall within the expected range. | An incorrect subnet mask produces this error. Possible causes are: <ul><li> The subnet mask is missing or empty.</li><li>The Ipv6 prefix format is incorrect.</li><li>The interface is cloud-enabled, but the gateway is missing or incorrect.</li></ul>Note that DATA 0 is automatically cloud-enabled if configured through the setup wizard. | To determine the problem, use subnet 0.0.0.0 or 256.256.256.256, and then look at the output. Enter correct values for the subnet mask, gateway, and Ipv6 prefix, as needed. |
  
-## エラー コード
+## <a name="error-codes"></a>Error codes
 
-エラーは番号順に示されています。
+Errors are listed in numeric order.
 
-|エラー番号|エラー テキストまたは説明|推奨されるユーザー アクション|
+|Error Number|Error text or description|Recommended user action|
 |:---|:---|:---|
-|10502|ストレージ アカウントへのアクセス中にエラーが発生しました。|数分待ってから操作をやり直してください。引き続きエラーが発生する場合は、Microsoft サポートに対処法をお問い合わせください。|
-|40017|バックアップ セット内の 1 つのディスクを解決できません。|引き続きエラーが発生する場合は、Microsoft サポートに対処法をお問い合わせください。|
-|40018|バックアップ セット内のすべてのディスクを解決できません。|引き続きエラーが発生する場合は、Microsoft サポートに対処法をお問い合わせください。|
-|390061|システムは、ビジー状態か利用できない状態です。|数分待ってから操作をやり直してください。引き続きエラーが発生する場合は、Microsoft サポートに対処法をお問い合わせください。|
-|390143|エラー コード 390143 でエラーが発生しました (不明なエラー)。|引き続きエラーが発生する場合は、Microsoft サポートに対処法をお問い合わせください。|
+|10502|An error was encountered while accessing your storage account.|Wait for a few minutes and then try again. If the error persists, please Contact Microsoft Support for next steps.|
+|40017|Unable to resolve a disk in a backup set.|If the error persists, please Contact Microsoft Support for next steps.|
+|40018|Unable to resolve any of the disks in  backup set.|If the error persists, please Contact Microsoft Support for next steps.|
+|390061|The system is busy or unavailable.|Wait for a few minutes and then try again. If the error persists, please Contact Microsoft Support for next steps.|
+|390143|An error has occurred with error code 390143. (Unknown error.)|If the error persists, please contact Microsoft Support for next steps.|
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-問題を解決できない場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
+If you are unable to resolve the problem, [contact Microsoft Support](storsimple-contact-microsoft-support.md) for assistance. 
 
 
-[1]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/ja-JP/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: https://technet.microsoft.com/en-us/%5Clibrary/Dn688135(v=WPS.630).aspx
+[2]: https://technet.microsoft.com/en-us/%5Clibrary/Dn715782(v=WPS.630).aspx
 
-<!---HONumber=AcomDC_0518_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

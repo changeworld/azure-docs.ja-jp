@@ -1,98 +1,103 @@
 <properties
-	pageTitle="マルチテナント Web アプリケーションのパターン | Microsoft Azure"
-	description="Azure 上でマルチテナント Web アプリケーションを実装する方法を示す、アーキテクチャの概要と設計パターンを紹介します。"
-	services=""
-	documentationCenter=".net"
-	authors="wadepickett" 
-	manager="wpickett"
-	editor=""/>
+    pageTitle="Multi-Tenant Web Application Pattern | Microsoft Azure"
+    description="Find architectural overviews and design patterns that describe how to implement a multi-tenant web application on Azure."
+    services=""
+    documentationCenter=".net"
+    authors="wadepickett" 
+    manager="wpickett"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="06/05/2015"
-	ms.author="wpickett"/>
-
-# Azure 上のマルチテナント アプリケーション
-
-マルチテナント アプリケーションは共有リソースであり、個別のユーザーつまり "テナント" からは独自のアプリケーションであるかのように見えます。マルチテナント アプリケーションに適した一般的なシナリオは、アプリケーションのすべてのユーザーがユーザー エクスペリエンスをカスタマイズしたいと考えているが、基本的なビジネス要件は同じというものです。大規模なマルチテナント アプリケーションの例は、Office 365、Outlook.com、visualstudio.com です。
-
-アプリケーション プロバイダーの観点から、マルチテナント方式の主なメリットは運用とコストの効率にあります。アプリケーションの 1 つのバージョンで、多くのテナント/顧客のニーズを満たすことができるため、監視、パフォーマンスのチューニング、ソフトウェアのメンテナンス、データのバックアップなどのシステム管理タスクを統合することが可能です。
-
-次に挙げるのは、プロバイダーの観点から最も重要な目標と要件です。
-
-- **プロビジョニング**: アプリケーション用に新しいテナントをプロビジョニングできる必要があります。テナントが多数あるマルチテナント アプリケーションでは通常、セルフサービス プロビジョニングを可能にすることで、このプロセスを自動化する必要があります。
-- **保守容易性**: アプリケーションのアップグレードおよびその他の保守作業は、複数のテナントによるそのアプリケーションの使用中に実行できる必要があります。
-- **監視**: アプリケーションを常時監視することで、問題をすべて特定してトラブルシューティングできる必要があります。各テナントによるアプリケーションの使用状況も監視できる必要があります。
-
-適切に実装されたマルチテナント アプリケーションでは、ユーザーに次のようなメリットがあります。
-
-- **分離**: 個々のテナントの活動は他のテナントによるアプリケーションの使用には影響しません。テナント間で相互のデータにアクセスすることはできません。各テナントからはアプリケーションを排他的に使用しているように見えます。
-- **可能性**: 個々のテナントにとって、多くの場合、SLA に定義されている保証の下で、アプリケーションが常時使用可能になっている必要があります。同様に、他のテナントの活動がアプリケーションの可用性に影響することはありません。
-- **拡張性**: アプリケーションの規模は個々のテナントのニーズに合わせて調整されます。他のテナントの存在と活動がアプリケーションのパフォーマンスに影響することはありません。
-- **コスト**: コストは専用のシングルテナント アプリケーションを実行するよりも低くなります。これは、マルチテナント方式ではリソースを共有できるためです。
-- **カスタマイズ性**:個々のテナントに合わせてアプリケーションをさまざまな方法でカスタマイズできます。機能の追加や削除、色やロゴの変更、独自のコードやスクリプトの追加などが可能です。
-
-要するに、拡張性の高いサービスを提供するための考慮事項が多数ありながら、多くのマルチテナント アプリケーション間に共通する目標と要件も多数あります。一部の目標と要件はシナリオに固有のものではなく、それらの重要性がシナリオによって変わります。マルチテナント アプリケーションのプロバイダーとして、そのほかにも目標と要件が生じます。たとえば、テナントの目標と要件の達成、収益性、課金、複数のサービス レベル、プロビジョニング、保守容易性の監視、自動化などです。
-
-マルチテナント アプリケーションのその他の設計上の考慮事項の詳細については、「[Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)][]」を参照してください。マルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの一般的なデータ アーキテクチャ パターンについては、「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](./sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
-
-Azure には、マルチテナント システムの設計時に発生する主要な問題に対処できる、多数の機能が用意されています。
-
-**分離**
-
-- ホスト ヘッダー内の SSL 通信の有無で Web サイト テナントを分割する。
-- クエリ パラメーター別に Web サイト テナントを分割する。
-- worker ロールで Web サービスを実行する。
-	- ワーカー ロールは通常、アプリケーションのバックエンドでデータを処理します。
-	- Web ロールは通常、アプリケーションのフロントエンドとして動作します。
-
-**ストレージ**
-
-Azure SQL Database や Azure Storage サービスのようなデータ管理。たとえば、大量の非構造化データを保存するための Table サービスがあります。また、大量の非構造化テキストまたはバイナリ データ (ビデオ、オーディオ、画像など) を保存するための BLOB サービスもあります。
-
-- SQL Database 内のマルチテナント データをセキュリティで保護する。SQL Server へのテナント単位のログインに適しています。
-- Azure テーブルをアプリケーション リソース用に使用する。コンテナー レベルのアクセス ポリシーを指定することでアクセス許可を調整できます。共有のアクセス署名で保護されたリソース用に新しい URL を発行する必要はありません。
-- Azure キューをアプリケーション リソース用に使用する。Azure キューは、テナントの処理を扱うために一般的に使用するだけでなく、プロビジョニングまたは管理に必要な処理を分散させるためにも使用できます。
-- Service Bus キューをアプリケーション リソース用に使用して、処理を共有サービスにプッシュする。1 つのキューを使用して、各テナントのサービスの送り側には、データをそのキューにプッシュするアクセス許可 (ACS から発行されるクレームから派生) のみ与え、サービスの受け側には、複数のテナントからのデータをキューからプルするアクセス許可のみ与えることができます。
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="06/05/2015"
+    ms.author="wpickett"/>
 
 
-**接続とセキュリティ サービス**
+# <a name="multitenant-applications-in-azure"></a>Multitenant Applications in Azure
 
-- Azure Service Bus は、アプリケーション間のメッセージ インフラストラクチャで、拡張性および復元性を向上させるために疎結合方式でメッセージ交換を行います。
+A multitenant application is a shared resource that allows separate users, or "tenants," to view the application as though it was their own. A typical scenario that lends itself to a multitenant application is one in which all users of the application may wish to customize the user experience but otherwise have the same basic business requirements. Examples of large multitenant applications are Office 365, Outlook.com, and visualstudio.com.
 
-**ネットワーク サービス**
+From an application provider's perspective, the benefits of multitenancy mostly relate to operational and cost efficiencies. One version of your application can meet the needs of many tenants/customers, allowing consolidation of system administration tasks such as monitoring, performance tuning, software maintenance, and data backups.
 
-Azure には、認証をサポートし、ホステッド アプリケーションの管理性を向上させる、複数のネットワーク サービスが用意されています。それらのサービスは次のとおりです。
+The following provides a list of the most significant goals and requirements from a provider's perspective.
 
-- Azure 仮想ネットワークでは、Azure 上で仮想プライベート ネットワーク (VPN) をプロビジョニングして管理でき、VPN を内部設置型の IT インフラストラクチャにセキュリティで保護された方法で接続することもできます。
-- Virtual Network Traffic Manager を使用すると、(同一データセンターで実行されているか、世界各地に点在するデータセンターで実行されているかに関係なく) 複数の Azure ホステッド サービス間で着信トラフィックを負荷分散できます。
-- Azure Active Directory (Azure AD) は、クラウド アプリケーションに ID 管理機能およびアクセス制御機能を提供する最新の REST ベースのサービスです。Azure AD をアプリケーション リソース用に使用すると、コードから認証および承認の機能を除外しつつ、Web アプリケーションおよびサービスにアクセスするユーザーの認証および権限承認を簡単に行えるようになります。
-- Azure Service Bus では、分散型およびハイブリッド型アプリケーション用に、セキュリティで保護されたメッセージングおよびデータ フローの機能が用意されています。たとえば、複雑なファイアウォールやセキュリティ インフラストラクチャを使用することなく、Azure ホスト型アプリケーションと内部設置型アプリケーションおよびサービスとのセキュリティで保護された通信が可能です。Service Bus Relay をアプリケーション リソース用に使用すると、サービスをテナントに属するエンドポイントとして公開できます (たとえば、内部設置型のようにシステム外でのホストが可能です)。または、サービスをテナント専用にプロビジョニングできます (テナント固有の機密データをサービス間で移動するためです)。
+- **Provisioning**: You must be able to provision new tenants for the application.  For multitenant applications with a large number of tenants, it is usually necessary to automate this process by enabling self-service provisioning.
+- **Maintainability**: You must be able to upgrade the application and perform other maintenance tasks while multiple tenants are using it.
+- **Monitoring**: You must be able to monitor the application at all times to identify any problems and to troubleshoot them. This includes monitoring how each tenant is using the application.
+
+A properly implemented multitenant application provides the following benefits to users.
+
+- **Isolation**: The activities of individual tenants do not affect the use of the application by other tenants. Tenants cannot access each other's data. It appears to the tenant as though they have exclusive use of the application.
+- **Availability**: Individual tenants want the application to be constantly available, perhaps with guarantees defined in an SLA. Again, the activities of other tenants should not affect the availability of the application.
+- **Scalability**: The application scales to meet the demand of individual tenants. The presence and actions of other tenants should not affect the performance of the application.
+- **Costs**: Costs are lower than running a dedicated, single-tenant application because multi-tenancy enables the sharing of resources.
+- **Customizability**. The ability to customize the application for an individual tenant in various ways such as adding or removing features, changing colors and logos, or even adding their own code or script.
+
+In short, while there are many considerations that you must take into account to provide a highly scalable service, there are also a number of the goals and requirements that are common to many multitenant applications. Some may not be relevant in specific scenarios, and the importance of individual goals and requirements will differ in each scenario. As a provider of the multitenant application, you will also have goals and requirements such as, meeting the tenants' goals and requirements, profitability, billing, multiple service levels, provisioning, maintainability monitoring, and automation.
+
+For more information on additional design considerations of a multitenant application, see [Hosting a Multi-Tenant Application on Azure][]. For information on common data architecture patterns of multi-tenant software-as-a-service (SaaS) database applications, see [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](./sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
+
+Azure provides many features that allow you to address the key problems encountered when designing a multitenant system.
+
+**Isolation**
+
+- Segment Website Tenants by Host Headers with or without SSL communication
+- Segment Website Tenants by Query Parameters
+- Web Services in Worker Roles
+    - Worker Roles. that typically process data on the backend of an application.
+    - Web Roles that typically act as the frontend for applications.
+
+**Storage**
+
+Data management such as Azure SQL Database or Azure Storage services such as the Table service which provides services for storage of large amounts of unstructured data and the Blob service which provides services to store large amounts of unstructured text or binary data such as video, audio and images.
+
+- Securing Multitenant Data in SQL Database appropriate per-tenant SQL Server logins.
+- Using Azure Tables for Application Resources By specifying a container level access policy, you can the ability to adjust permissions without having to issue new URL's for the resources protected with shared access signatures.
+- Azure Queues for Application Resources Azure queues are commonly used to drive processing on behalf of tenants, but may also be used to distribute work required for provisioning or management.
+- Service Bus Queues for Application Resources that pushes work to a shared a service, you can use a single queue where each tenant sender only has permissions (as derived from claims issued from ACS) to push to that queue, while only the receivers from the service have permission to pull from the queue the data coming from multiple tenants.
+
+
+**Connection and Security Services**
+
+- Azure Service Bus, a messaging infrastructure that sits between applications allowing them to exchange messages in a loosely coupled way for improved scale and resiliency.
+
+**Networking Services**
+
+Azure provides several networking services that support authentication, and improve manageability of your hosted applications. These services include the following:
+
+- Azure Virtual Network lets you provision and manage virtual private networks (VPNs) in Azure as well as securely link these with on-premises IT infrastructure.
+- Virtual Network Traffic Manager allows you to load balance incoming traffic across multiple hosted Azure services whether they're running in the same datacenter or across different datacenters around the world.
+- Azure Active Directory (Azure AD) is a modern, REST-based service that provides identity management and access control capabilities for your cloud applications. Using Azure AD for Application Resources Azure AD to provides an easy way of authenticating and authorizing users to gain access to your web applications and services while allowing the features of authentication and authorization to be factored out of your code.
+- Azure Service Bus provides a secure messaging and data flow capability for distributed and hybrid applications, such as communication between Azure hosted applications and on-premises applications and services, without requiring complex firewall and security infrastructures. Using Service Bus Relay for Application Resources to The services that are exposed as endpoints may belong to the tenant (for example, hosted outside of the system, such as on-premise), or they may be services provisioned specifically for the tenant (because sensitive, tenant-specific data travels across them).
 
 
 
-**リソースのプロビジョニング**
+**Provisioning Resources**
 
-Azure には、アプリケーション用に新しいテナントをプロビジョニングするための、多数の方法が用意されています。テナントが多数あるマルチテナント アプリケーションでは通常、セルフサービス プロビジョニングを可能にすることで、このプロセスを自動化する必要があります。
+Azure provides a number of ways provision new tenants for the application. For multitenant applications with a large number of tenants, it is usually necessary to automate this process by enabling self-service provisioning.
 
-- worker ロールを使用すると、テナント リソースごとにプロビジョニングおよびプロビジョニング解除したり (新しいテナントのサインアップやキャンセル時など)、計測用にメトリックを収集したりできます。さらに、一定のスケジュールに従ったスケーリングや、主要業績評価指標のしきい値の超過に応じたスケーリングを管理することもできます。この同じロールは、ソリューションへの更新とアップグレードのプッシュにも使用できます。
-- Azure BLOB を使用すると、新しいテナント用にコンピューティングまたは事前初期化済みのストレージ リソースをプロビジョニングできます。同時に、コンピューティング サービス パッケージ、VHD イメージなどのリソースを保護するための、コンテナー レベルのアクセス ポリシーを設定することもできます。
-- テナント用に SQL データベース リソースをプロビジョニングする方法は次のとおりです。
+- Worker roles allow you to provision and de-provision per tenant resources (such as when a new tenant signs-up or cancels), collect metrics for metering use, and manage scale following a certain schedule or in response to the crossing of thresholds of key performance indicators. This same role may also be used to push out updates and upgrades to the solution.
+- Azure Blobs can be used to provision compute or pre-initialized storage resources for new tenants while providing container level access policies to protect the compute service Packages, VHD images and other resources.
+- Options for provisioning SQL Database resources for a tenant include:
 
-	- 	スクリプト内の DDL、またはアセンブリ内のリソースとして埋め込まれた DLL
-	- 	プログラムでデプロイする SQL Server 2008 R2 DAC パッケージ
-	- 	マスター参照データベースからのコピー
-	- 	データベースのインポートとエクスポートによるファイルからの新しいデータベースのプロビジョニング
+    -   DDL in scripts or embedded as resources within assemblies
+    -   SQL Server 2008 R2 DAC Packages deployed programmatically.
+    -   Copying from a master reference database
+    -   Using database Import and Export to provision new databases from a file.
 
 
 
 <!--links-->
 
-[Hosting a Multi-Tenant Application on Azure (Azure 上のマルチテナント アプリケーションのホスト)]: http://msdn.microsoft.com/library/hh534480.aspx
+[Hosting a Multi-Tenant Application on Azure]: http://msdn.microsoft.com/library/hh534480.aspx
 [Designing Multitenant Applications on Azure]: http://msdn.microsoft.com/library/windowsazure/hh689716
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

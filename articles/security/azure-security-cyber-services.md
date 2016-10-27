@@ -1,6 +1,6 @@
 <properties
-   pageTitle="サイバーセキュリティの Microsoft サービス | Microsoft Azure"
-   description="この記事では、サイバーセキュリティに関連する Microsoft サービスの概要と、これらのサービスに関する詳細情報を取得する方法を示します。"
+   pageTitle="Microsoft Services in Cybersecurity | Microsoft Azure"
+   description="The article provides an introduction about Microsoft services related to cybersecurity and how to obtain more information about these services."
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -13,28 +13,33 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/09/2016"
+   ms.date="10/25/2016"
    ms.author="yurid"/>
 
-# サイバーセキュリティの Microsoft サービス
 
-Microsoft サービスでは、セキュリティ、ID およびサイバー セキュリティに対して包括的なアプローチを提供します。Microsoft サービスは、エンタープライズのお客様が戦略的な目標に合致する包括的なセキュリティ ソリューションを実装できるように、戦略、計画、実装、および継続的なサポートにわたって、セキュリティと ID サービスの配列を提供します。
+# <a name="microsoft-services-in-cybersecurity"></a>Microsoft Services in Cybersecurity
 
-製品開発チームに直接アクセスすることで、Microsoft は、お客様のビジネスを保護し、革新を推進できるように、製品の最新のセキュリティと ID 機能を統合および強化するソリューションを作成できます。
+Microsoft Services provides a comprehensive approach to security, identity and cybersecurity. Microsoft Services provides an array of Security and Identity services across strategy, planning, implementation, and ongoing support which can help our Enterprise customers implement holistic security solutions that align with their strategic goals.
 
-世界最大規模の組織を保護および有効にするために役立つ任務を委託された Microsoft の技術者はすべて、豊富なセキュリティと ID エクスペリエンスを提供できる、高度な訓練を受けた専門家で構成されます。
+With direct access to product development teams, we can create solutions that integrate, and enhance the latest security and identity capabilities of our products to help protect our customer’s business and drive innovation.
 
-Microsoft サービスで提供されるサービスについては、次をご覧ください。
+Entrusted with helping protect and enable the world’s largest organizations, our diverse group of technical professionals consists of highly trained experts who offer a wealth of security and identity experience.
 
-- [Security Risk Assessment (セキュリティ リスクの評価)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
-- [Dynamic Identity Framework Assessment (動的 ID フレームワークの評価)](http://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
-- [Offline Assessment for Active Directory Services (Active Directory Services のオフライン評価)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
-- [Enhanced Security Administration Environment (セキュリティ管理環境の強化)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
-- [Azure AD Implementation Services (Azure AD の実装サービス)](http://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-- [Securing Against Lateral Account Movement (アカウントの横移動に対するセキュリティ保護)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-- [Microsoft Threat Detection Services (Microsoft 脅威検出サービス)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-threat-detection-services-solution-brief.pdf)
-- [Incident Response and Recovery (インシデントの対応と回復)](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
+Learn more about services provided by Microsoft Services:
 
-Microsoft サービス セキュリティ コンサルティング サービスについては、[こちら](https://aka.ms/cyberserv)をご覧ください。
+- [Security Risk Assessment](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
+- [Dynamic Identity Framework Assessment](http://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
+- [Offline Assessment for Active Directory Services](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
+- [Enhanced Security Administration Environment](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
+- [Azure AD Implementation Services](http://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
+- [Securing Against Lateral Account Movement](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
+- [Microsoft Threat Detection Services](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-threat-detection-services-solution-brief.pdf)
+- [Incident Response and Recovery](http://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
 
-<!---HONumber=AcomDC_0810_2016-->
+[Learn more](https://aka.ms/cyberserv) about Microsoft Services Security consulting services.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

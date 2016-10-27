@@ -1,6 +1,6 @@
 <properties
-   pageTitle="方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行 | Microsoft Azure"
-   description="Visual Studio を使用して、Azure クラウド サービスに Web アプリケーションを移行および発行する方法について説明します。"
+   pageTitle="How to Migrate and Publish a Web Application to an Azure Cloud Service from Visual Studio | Microsoft Azure"
+   description="Learn how to migrate and publish your web application to an Azure cloud service by using Visual Studio."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,197 +15,203 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# 方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行
 
-Azure のホスティング サービスとスケーラビリティを利用するために、Azure クラウド サービスに Web アプリケーションを移行し、発行できます。既存のアプリケーションに最小限の変更を加えることで、Azure で Web アプリケーションを実行できます。
+# <a name="how-to:-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>How to: Migrate and Publish a Web Application to an Azure Cloud Service from Visual Studio
 
->[AZURE.NOTE] このトピックでは Web サイトではなくクラウド サービスへのデプロイについて説明します。Web サイトへのデプロイの詳細については、「[Azure App Service での Web アプリのデプロイ](./app-service-web/web-sites-deploy.md)」を参照してください。
+To take advantage of the hosting services and scalability of Azure, you might want to migrate and publish your web application to an Azure cloud service. You can run a web application in Azure with minimal changes to your existing application.
 
-Visual C# と Visual Basic の両方でサポートされているテンプレートの一覧については、このトピックで後述する「**サポートされているプロジェクト テンプレート**」をご覧ください。
+>[AZURE.NOTE] This topic is about deploying to cloud services, not to web sites. For information about deploying to web sites, see [Deploy a web app in Azure App Service](./app-service-web/web-sites-deploy.md).
 
-まず、Visual Studio から Web アプリケーションを Azure で有効にする必要があります。次の図は、デプロイメントに使用する Azure プロジェクトを追加して既存の Web アプリケーションを発行する際の主な手順を示しています。このプロセスでは、必要な Web ロールを含む Azure プロジェクトをソリューションに追加します。Web プロジェクトの種類に基づいて、デプロイメントのためにサービス パッケージに他のアセンブリが必要な場合は、アセンブリのプロジェクト プロパティも更新されます。
+For a list of specific templates that are supported for both Visual C# and Visual Basic, see the section **Supported Project Templates** later in this topic.
 
-![Microsft Azure への Web アプリケーションの発行](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC748917.png)
+You must first enable your web application for Azure from Visual Studio. The following illustration shows the key steps to publish your existing web application by adding an Azure project to use for deployment. This process adds an Azure project with the required web role to your solution. Based on the type of web project that you have, the project properties for assemblies are also updated if the service package requires additional assemblies for deployment.
 
->[AZURE.NOTE] **[変換]** - **[Microsoft Azure クラウド サービス プロジェクトに変換]** コマンドは、ソリューションの Web プロジェクトにのみ表示されます。たとえば、このコマンドはソリューションの Silverlight プロジェクトでは使用できません。サービス パッケージの作成時や Azure へのアプリケーションの発行時に、警告またはエラーが発生することがあります。これらの警告とエラーにより、Azure にデプロイする前に問題を解決できます。たとえば、アセンブリが見つからないことを示す警告が表示される場合があります。警告をエラーとして処理する方法の詳細については、「[Visual Studio を使用した Azure クラウド サービス プロジェクトの構成](vs-azure-tools-configuring-an-azure-project.md)」を参照してください。アプリケーションをビルドし、コンピューティング エミュレーターを使用してローカルで実行するか、Azure に発行すると、**[エラー一覧]** ウィンドウに、**指定されたパス、ファイル名、またはその両方が長すぎます**というエラーが表示される場合があります。このエラーは、Azure プロジェクトの完全修飾名が長すぎるために発生します。プロジェクト名の長さは、完全なパスを含めて、146 文字以下にする必要があります。たとえば、`c:\users<user name>\documents\visual studio 2015\Projects\SilverlightApplication4\SilverlightApplication4.Web.Azure.ccproj` は、Silverlight アプリケーション用に作成された Azure プロジェクトのファイル パスを含む完全なプロジェクト名です。プロジェクトの完全修飾名を短くするために、ソリューションを短いパスの別のディレクトリに移動することが必要な場合があります。
+![Publish a Web application to Microsft Azure](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC748917.png)
 
-Visual Studio から Azure に Web アプリケーションを移行および発行するには、次の手順に従います。
+>[AZURE.NOTE] The **Convert**, **Convert to Azure Cloud Service Project** command is displayed only for the web project in your solution. For example, the command is not available for a Silverlight project in your solution.
+When you create a service package or publish your application to Azure, warnings or errors might occur. These warnings and errors can help you fix issues before you deploy to Azure. For example, you might receive a warning about a missing assembly. For more information about how to treat any warnings as errors, see [Configure an Azure Cloud Service Project with Visual Studio](vs-azure-tools-configuring-an-azure-project.md). If you build your application, run it locally using the compute emulator, or publish it to Azure, you might see the following error in the **Error List** window: **The specified path, file name, or both are too long**. This error occurs because the length of the fully qualified Azure project name is too long. The length of the project name, including the full path, cannot be more than 146 characters. For example, this is the full project name including file path for an Azure project that is created for a Silverlight application: `c:\users\<user name>\documents\visual studio 2015\Projects\SilverlightApplication4\SilverlightApplication4.Web.Azure.ccproj`. You might have to move your solution to a different directory that has a shorter path to reduce the length of the fully qualified project name.
 
-## Azure への Web アプリケーションのデプロイメントの有効化
+To migrate and publish a web application to Azure from Visual Studio, follow these steps.
 
-### Azure への Web アプリケーションのデプロイメントを有効にするには
+## <a name="enable-a-web-application-for-deployment-to-azure"></a>Enable a Web Application for Deployment to Azure
 
-1. Azure への Web アプリケーションのデプロイメントを有効にするには、ソリューションの Web プロジェクトのショートカット メニューを開き、[Azure デプロイメント プロジェクトの追加] を選択します。
+### <a name="to-enable-a-web-application-for-deployment-to-azure"></a>To enable a web application for deployment to Azure
 
-    次のアクションが発生します。
+1. To enable your web application for deployment to Azure, open the shortcut menu for a web project in your solution and choose Add Azure Deployment Project.
 
-    - `<name of the web project>.Azure` という Azure プロジェクトがアプリケーションのソリューションに追加されます。
+    The following actions occur:
 
-    - Web プロジェクトの Web ロールがこの Azure プロジェクトに追加されます。
+    - An Azure project called `<name of the web project>.Azure` is added to the solution for your application.
 
-    - MVC 2、MVC 3、MVC 4、Silverlight の各ビジネス アプリケーションに必要なアセンブリの **[ローカルにコピー]** プロパティが true に設定されます。これにより、デプロイメントに使用されるサービス パッケージにこれらのアセンブリが追加されます。
+    - A web role for the web project is added to this Azure project.
 
-  >[AZURE.IMPORTANT]この Web アプリケーションに必要な他のアセンブリまたはファイルがある場合は、それらのファイルのプロパティを手動で設定する必要があります。これらのプロパティを設定する方法については、この記事で後述する「**サービス パッケージにファイルを含める**」を参照してください。  
+    - The **Copy Local** property is set to true for any assemblies that are required for MVC 2, MVC 3, MVC 4, and Silverlight Business Applications. This adds these assemblies to the service package that is used for deployment.
 
-  >[AZURE.NOTE] 特定の Web プロジェクトの Web ロールがソリューションの Azure プロジェクトに既に存在する場合、この Web プロジェクトのショートカット メニューに **[変換]** - **[Microsoft Azure クラウド サービス プロジェクトに変換]** は表示されません。
+  >[AZURE.IMPORTANT] If you have other assemblies or files that are required for this web application, you must manually set the properties for these files. For information about how to set these properties, see the section **Include Files in the Service Package** later in this article.
 
-  Web アプリケーションに複数の Web プロジェクトがあり、各 Web プロジェクトの Web ロールを作成する場合は、Web プロジェクトごとにこの手順を実行する必要があります。これにより、Web ロールごとに個別の Azure プロジェクトが作成されます。各 Web プロジェクトは個別に発行できます。また、Web アプリケーションの既存の Azure プロジェクトに別の Web ロールを手動で追加することもできます。そのためには、Azure プロジェクトの **[ロール]** フォルダーのショートカット メニューを開き、**[追加]**、**[ソリューション内の Web ロール プロジェクト]** の順にクリックし、Web ロールとして追加するプロジェクトを選択して、**[OK]** ボタンをクリックします。
+  >[AZURE.NOTE] If a web role for a specific web project already exists in an Azure project in the solution, **Convert**, **Convert to Azure Cloud Service Project** is not displayed on the shortcut menu for this web project.
 
-## アプリケーションでの Azure SQL Database の使用
+  If you have multiple web projects in your web application and you want to create web roles for each web project, you must perform the steps in this procedure for each web project. This creates separate Azure projects for each web role. Each web project can be published separately. Alternatively, you can manually add another web role to an existing Azure project in your web application. To do this, open the shortcut menu for the **Roles** folder in your Azure project, choose **Add**, then **Web Role Project in solution**, choose the project to add as a web role, and then choose the **OK** button.
 
-オンプレミスの SQL Server データベースを使用する Web アプリケーションの接続文字列がある場合、Azure でホストされる SQL Database のインスタンスを代わりに使用するために、この接続文字列を変更する必要があります。
+## <a name="use-an-azure-sql-database-for-your-application"></a>Use an Azure SQL Database for Your Application
 
->[AZURE.IMPORTANT] サブスクリプションで SQL Database を使用できるようにする必要があります。[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)からサブスクリプションにアクセスすると、サブスクリプションで提供されるサービスを確認できます。次の手順は、リリース済みの [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)に適用されます。[Azure ポータル](http://portal.microsoft.com)を使用している場合は、この次の手順に進んでください。
+If you have a connection string for your web application that uses a SQL Server database that's on the premises, you must change this connection string to use an instance of SQL Database that Azure hosts instead.
 
-### Web ロールで接続文字列に SQL Database インスタンスを使用するには
+>[AZURE.IMPORTANT] Your subscription must enable you to use SQL Database. If you access your subscription from the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), you can determine what services your subscription provides. The following instructions apply to the released [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885). If you are using the [Azure portal](http://portal.microsoft.com), skip to the next procedure.
 
-1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で SQL Database のインスタンスを作成するには、[SQL Database サーバーの作成](http://go.microsoft.com/fwlink/?LinkId=225109)に関する記事の手順に従います。
+### <a name="to-use-a-sql-database-instance-in-your-web-role-for-your-connection-string"></a>To use a SQL Database instance in your web role for your connection string
 
-    >[AZURE.NOTE] SQL Database インスタンスのファイアウォール規則を設定するときに、**[Microsoft Azure サービスにサーバーへのアクセスを許可します]** チェック ボックスをオンにする必要があります。
+1. To create an instance of SQL Database in the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), follow the steps in the following article: [Create a SQL Database Server](http://go.microsoft.com/fwlink/?LinkId=225109).
 
-1. 接続文字列に使用する SQL Database インスタンスを作成するには、「[SQL Database の作成](http://go.microsoft.com/fwlink/?LinkId=225110)」に関する記事の次のセクションの手順に従います。
+    >[AZURE.NOTE] When you set up the firewall rules for your instance of SQL Database, you must select the **Allow other Azure services to access this server** check box.
 
-1. 接続文字列に使用する ADO.NET 接続文字列をコピーするには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で次の手順を実行します。
+1. To create an instance of SQL Database to use for your connection string, follow the steps in the next section in the following article: [Create a SQL Database](http://go.microsoft.com/fwlink/?LinkId=225110).
 
-  1. **[データベース]** ボタンをクリックし、SQL Database インスタンスを作成する際に使用したサブスクリプションのノードを開きます。
+1. To copy the ADO.NET connection string to use for your connection string, perform the following steps in the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).  
 
-  1. SQL Database の使用可能なインスタンスを表示するには、**[SQL Database]** ノードを選択します。
+  1. Choose the **Database** button, and then open the node for the subscription that you used to create your instance of SQL Database.
 
-  1. データベースのプロパティを表示するには、データベースを選択します。**[プロパティ]** ビューが表示されます。
+  1. To display the available instances of SQL Database, choose the **SQL Databases** node.
 
-      >[AZURE.NOTE] **[プロパティ]** ビューが表示されない場合は、分割バーを使用してビューを開く必要があります。
+  1. To display the properties for the database, choose the database. The **Properties** view appears.
 
-  1. 接続文字列を表示するには、[表示] の横にある省略記号 (...) ボタンをクリックします。
+      >[AZURE.NOTE] If the **Properties** view doesn't appear, you might need to open it by using the divider.
 
-    **[接続文字列]** ダイアログ ボックスが表示されます。
+  1. To display the connection strings, choose the ellipsis (...) button next to View.
 
-  1. ADO.NET 接続文字列をコピーするには、テキストを強調表示し、Ctrl キーを押しながら C キーを押します。
+    The **Connection Strings** dialog box appears.
 
-  1. ダイアログ ボックスを閉じるには、**[閉じる]** ボタンをクリックします。
+  1. To copy the ADO.NET connection string, highlight the text, and choose the Ctrl+C keys.
 
-1. SQL Database のこのインスタンスを使用するために、web.config ファイルで接続文字列を置き換えるには、web.config ファイルを開き、既存の接続文字列エントリを強調表示して、Ctrl キーを押しながら V キーを押します。既存の接続文字列が、SQL Database インスタンスの ADO.NET 接続文字列で置き換えられます。
+  1. To close the dialog box, choose the **Close** button.
 
-1. 接続文字列に `MultipleActiveResultSets=True` パラメーターを追加することも必要です。接続文字列は、次の形式にする必要があります。
+1. To replace the connection string in the web.config file to use this instance of SQL Database, open the web.config file, highlight the existing connection string entry, and then choose the Ctrl+V keys. The ADO.NET connection string for the instance of SQL Database replaces the existing connection string.
+
+1. You must also add the parameter `MultipleActiveResultSets=True` to the connection string. The connection string should have the following format:
 
     ```
     connectionString=”Server=tcp:<database_server>.database.windows.net,1433;Database=<database_name>;User ID=<user_name>@<database_server>;Password=<myPassword>;Trusted_Connection=False;Encrypt=True;MultipleActiveResultSets=True"
     ```
 
-1. (省略可能) web.config ファイルで接続文字列を直接変更する代わりに、サービス パッケージを作成する際に使用するビルド構成に応じて、いずれかの web.config 変換ファイルにセクションを追加することもできます。Web.Debug.Config ファイルまたは Web.Release.Config ファイルを開きます。このファイルに次のセクションを追加します。
+1. (Optional) An alternative method to changing the connection string directly in the web.config file is to add a section into one of the web.config transformation files, depending on the build configuration that you use to create your service package. Open either the Web.Debug.Config file or the Web.Release.Config file. Add the following section into this file:
 
     ```
     XMLCopy<connectionStrings><addname="DefaultConnection"connectionString="Server=tcp:<database_server>.database.windows.net,1433;Database=<database_name>;User ID=<user_name>@<database_server>;Password=<myPassword>;Trusted_Connection=False;Encrypt=True;MultipleActiveResultSets=True"xdt:Transform="SetAttributes"xdt:Locator="Match(name)"/></connectionStrings>
     ```
 
-1. 変更したファイルを保存し、アプリケーションを再発行します。
+1. Save the file that you modified and republish your application.
 
-### Azure クラシック ポータルを使用して SQL Database のインスタンスを使用するには
+### <a name="to-use-an-instance-of-sql-database-by-using-the-azure-classic-portal"></a>To use an instance of SQL Database by using the Azure classic portal
 
-1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で [SQL Database] ノードを選択します。
+1. In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), choose the SQL Databases node.
 
-  - 使用する SQL Database インスタンスが表示されたら、インスタンスを選択して開きます。
+  - If the instance of SQL Database that you want to use appears, choose to open it.
 
-  - インスタンスをまだ作成していない場合は、該当するリンクをクリックし、インスタンスを作成します。
+  - If you haven't created any instances, choose the appropriate link, and then create an instance.
 
-1. データベース インスタンスを開くか、インスタンスを作成したら、**[接続文字列]** リンクを選択します。
+1. After you open or create a database instance, choose the **Connection Strings** link.
 
-1. ページの下部にある、ファイアウォール設定を構成するためのリンクをクリックし、既定値をそのまま使用するか、必要な値を構成します。
+1. At the bottom of the page, choose the link to configure firewall settings, and accept the default values or configure the values that you need.
 
-1. ADO.NET 接続文字列をコピーし、web.config ファイルに貼り付けて、オンプレミス データベースの古い接続文字列を上書きします。また、`MultipleActiveResultSets=True` を必ず追加します。
+1. Copy the ADO.NET connection string, paste it into your web.config file over the old connection string for the on-premises database, and be sure to add `MultipleActiveResultSets=True`.
 
-## Azure への Web アプリケーションの発行
+## <a name="publish-a-web-application-to-azure"></a>Publish a Web Application to Azure
 
-### Azure に Web アプリケーションを発行するには
+### <a name="to-publish-a-web-application-to-azure"></a>To publish a Web application to Azure
 
-1. Azure コンピューティング エミュレーターを使用して、ローカル開発環境でアプリケーションをテストするには、Web ロールの Azure プロジェクトのショートカット メニューを開き、**[スタートアップ プロジェクトに設定]** を選択します。次に、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。
+1. To test the application in the local development environment using the Azure compute emulator, open the shortcut menu for the Azure project for the web role and choose **Set as Startup Project**. Then choose **Debug**, **Start Debugging** (Keyboard: **F5**).
 
-    **[Azure デバッグ環境の起動]** ダイアログ ボックスが開き、ブラウザーでアプリケーションが起動します。コンピューティング エミュレーターで各種 Web アプリケーションを起動する方法の詳細については、このセクションの表をご覧ください。
+    The **Start the Azure Debugging Environment** dialog box opens and the application starts in the browser. For specific details about how to start each type of web application in the compute emulator, see the table in this section.
 
-1. Azure に発行するアプリケーションのサービスを設定するには、Microsoft アカウントと Azure サブスクリプションが必要です。「[Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」の手順に従って、サービスを設定します。
+1. To set up the services for your application to publish to Azure, you must have a Microsoft account and an Azure subscription. Use the steps in the following topic to set up your services: [Prepare to publish or deploy an Azure application from Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md).
 
-1. Web アプリケーションを Azure に発行するには、Web プロジェクトのショートカット メニューを開き、**[Azure への発行]** を選択します。
+1. To publish the web application to Azure, open the shortcut menu for the web project and choose **Publish to Azure**.
 
-    **[Azure アプリケーションの公開]** ダイアログ ボックスが開き、Visual Studio でデプロイメント プロセスが開始されます。アプリケーションを発行する方法の詳細については、「[Azure Tools を使用したクラウド サービスの発行](vs-azure-tools-publishing-a-cloud-service.md)」の**Visual Studio からの Azure アプリケーションの発行**に関するセクションを参照してください。
+    The **Publish Azure Application** dialog box opens and Visual Studio starts the deployment process. For more information about how to publish the application, see the section **Publish an Azure Application from Visual Studio** in [Publishing a Cloud Service using the Azure Tools](vs-azure-tools-publishing-a-cloud-service.md).
 
-    >[AZURE.NOTE] Web アプリケーションは Azure プロジェクトから発行することもできます。そのためには、Azure プロジェクトのショートカット メニューを開き、**[発行]** を選択します。
+    >[AZURE.NOTE] You can also publish the web application from the Azure project. To do this, open the shortcut menu for the Azure project and choose **Publish**.
 
-1. デプロイメントの進行状況は、**[Microsoft Azure のアクティビティ ログ]** ウィンドウで確認できます。このログは、デプロイメント プロセスの開始時に自動的に表示されます。次の図に示すように、アクティビティ ログの行項目を展開して詳細情報を表示できます。
+1. To see the progress of the deployment, you can view the **Azure Activity Log** window. This log is automatically displayed when the deployment process starts. You can expand the line item in the activity log to show detailed information, as shown in the following illustration:
 
-    ![VST\_AzureActivityLog](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744149.png)
+    ![VST_AzureActivityLog](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744149.png)
 
-1. (省略可能) デプロイメント プロセスをキャンセルするには、アクティビティ ログの行項目のショートカット メニューを開き、**[取り消して削除]** を選択します。これにより、デプロイ プロセスが停止し、Azure からデプロイ環境が削除されます。
+1. (Optional) To cancel the deployment process, open the shortcut menu for the line item in the activity log and choose **Cancel and remove**. This stops the deployment process and deletes the deployment environment from Azure.
 
-    >[AZURE.NOTE] このデプロイ環境をデプロイ後に削除するには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用する必要があります。
+    >[AZURE.NOTE] To remove this deployment environment after it has been deployed, you must use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-1. (省略可能) ロール インスタンスが起動すると、Visual Studio の **Cloud Explorer** または**サーバー エクスプローラー**の **[Azure Compute]** ノードにデプロイメント環境が自動的に表示されます。ここから、個々のロール インスタンスの状態を確認できます。
+1. (Optional) After your role instances have started, Visual Studio automatically shows the deployment environment in the **Azure Compute** node in **Cloud Explorer** or **Server Explorer**. From here you can view the status of the individual role instances.
 
-    次の図は、まだ初期化中の状態である**サーバー エクスプローラー**内のロール インスタンスを示しています。
+    The following illustration shows the role instances in **Server Explorer** while they are still in the Initializing state:
 
-    ![VST\_DeployComputeNode](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744134.png)
+    ![VST_DeployComputeNode](./media/vs-azure-tools-migrate-publish-web-app-to-cloud-service/IC744134.png)
 
-1. デプロイメント後、アプリケーションにアクセスするには、**[Microsoft Azure のアクティビティ ログ]** に **[完了]** 状態が表示されているときに、デプロイメントの横の矢印をクリックします。これにより、Azure での Web アプリケーションの URL が表示されます。Azure から特定の種類の Web アプリケーションを起動する方法の詳細については、次の表をご覧ください。
+1. To access your application after deployment, choose the arrow next to your deployment when a status of **Completed** appears in the **Azure Activity log**. This displays the URL for your web application in Azure. See the following table for the details about how to start a specific type of web application from Azure.
 
-    Azure から特定の Web アプリケーションを起動する方法、または Azure コンピューティング エミュレーターを使用して Web アプリケーションをローカルで実行またはデバッグする方法の詳細を次の表に示します。
+    The following table lists the details about how to start specific web applications from Azure or to run or debug a web application locally using the Azure Compute Emulator:
 
-    |Web アプリケーションの種類|コンピューティング エミュレーターを使用したローカルでの実行/デバッグ|Azure での実行|
-    |---|---|---|
-    |ASP.NET Web アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択して、ブラウザーでスタート ページを読み込みます。|
-    |ASP.NET MVC 2 Web アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択して、ブラウザーでスタート ページを読み込みます。|
-    |ASP.NET MVC 3 Web アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順にクリックします (または、キーボードの **F5** キーを押します)。|**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択して、ブラウザーでスタート ページを読み込みます。|
-    |ASP.NET MVC 4 Web アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択して、ブラウザーでスタート ページを読み込みます。|
-    |空の ASP.NET Web アプリケーション|Web プロジェクトのスタート ページとして設定したアプリケーションに .aspx ページを追加する必要があります。次にメニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|アプリケーションで既定の .aspx ページを使用している場合は、**[Microsoft Azure のアクティビティ ログ]** の **[デプロイメント]** タブに表示される URL ハイパーリンクを選択すると、ブラウザーでそのページが読み込まれます。別の .aspx ページを使用している場合は、`<url for deployment>/<name of page>.aspx` 形式の URL を使用して、そのページに移動する必要があります。|
-    |Silverlight アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|`<url for deployment>/<name of page>.aspx` 形式の URL を使用して、アプリケーションの特定のページに移動する必要があります。|
-    |Silverlight ビジネス アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|`<url for deployment>/<name of page>.aspx` 形式の URL を使用して、アプリケーションの特定のページに移動する必要があります。|
-    |Silverlight ナビゲーション アプリケーション|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|`<url for deployment>/<name of page>.aspx` 形式の URL を使用して、アプリケーションの特定のページに移動する必要があります。|
-    |WCF サービス アプリケーション|.svc ファイルを WCF サービス プロジェクトのスタート ページとして設定する必要があります。次にメニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|`<url for deployment>/<name of service file>.svc` 形式の URL を使用して、アプリケーションの svc ファイルに移動する必要があります。|
-    |WCF ワークフロー サービス アプリケーション|.svc ファイルを WCF サービス プロジェクトのスタート ページとして設定する必要があります。次にメニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|`<url for deployment>/<name of service file>.svc` 形式の URL を使用して、アプリケーションの svc ファイルに移動する必要があります。|
-    |ASP.NET 動的エンティティ|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|接続文字列を更新する必要があります (次のセクションを参照)。また、`<url for deployment>/<name of page>.aspx` 形式の URL を使用して、アプリケーションの特定のページに移動する必要があります。|
-    |ASP.NET 動的データ LINQ to SQL|メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択します (または、キーボードの **F5** キーを押します)。|「アプリケーションでの Azure SQL Database の使用」の手順に従う必要があります (このトピックの前のセクションを参照)。また、`<url for deployment>/<name of page>.aspx` 形式の URL を使用して、アプリケーションの特定のページに移動する必要があります。|
+  	|Web Application Type|Run/Debug Locally Using the Compute Emulator|Running in Azure|
+  	|---|---|---|
+  	|ASP.NET Web Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|Choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** to load the start page in the browser.|
+  	|ASP.NET MVC 2 Web Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|Choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** to load the start page in the browser.|
+  	|ASP.NET MVC 3 Web Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|Choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** to load the start page in the browser.|
+  	|ASP.NET MVC 4 Web Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|Choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** to load the start page in the browser.|
+  	|ASP.NET Empty Web Application|You must add an .aspx page in your application that you set as the start page for your web project. Then on the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|If you have a default .aspx page in your application, choose the URL hyperlink displayed in the **Deployment** tab for the **Azure Activity log** and this page is loaded in the browser. If you have a different .aspx page, you need to navigate to this specific page using the following format for your url: `<url for deployment>/<name of page>.aspx`|
+  	|Silverlight Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the specific page for your application using the following format for your url: `<url for deployment>/<name of page>.aspx`|
+  	|Silverlight Business Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the specific page for your application using the following format for your url: `<url for deployment>/<name of page>.aspx`|
+  	|Silverlight Navigation Application|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the specific page for your application using the following format for your url:`<url for deployment>/<name of page>.aspx`|
+  	|WCF Service Application|You must set the .svc file as the start page for your WCF Service project. Then on the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the svc file for your application using the following format for your url: `<url for deployment>/<name of service file>.svc`|
+  	|WCF Workflow Service Application|You must set the .svc file as the start page for your WCF Service project. Then on the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You need to navigate to the svc file for your application using the following format for your url: `<url for deployment>/<name of service file>.svc`|
+  	|ASP.NET Dynamic Entities|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You must update the connection string (see next section). You also need to navigate to the specific page for your application using the following format for your url: `<url for deployment>/<name of page>.aspx`|
+  	|ASP.NET Dynamic Data Linq to SQL|On the menu bar, choose **Debug**, **Start Debugging** (Keyboard: Choose the **F5** key.).|You must follow the steps in this procedure: Use a SQL Azure database for your application (see earlier section in this topic). You also need to navigate to the specific page for your application using the following format for your url: `<url for deployment>/<name of page>.aspx`|
 
-## ASP.NET 動的エンティティの接続文字列の更新
+## <a name="update-a-connection-string-for-asp.net-dynamic-entities"></a>Update a Connection String for ASP.NET Dynamic Entities
 
-### ASP.NET 動的エンティティの接続文字列を更新するには
+### <a name="to-update-a-connection-string-for-asp.net-dynamic-entities"></a>To Update a Connection String for ASP.NET Dynamic Entities
 
-1. ASP.NET 動的エンティティ Web アプリケーションで使用できる SQL Azure データベースを作成するには、前述の「**アプリケーションでの Azure SQL Database の使用**」の手順に従います。
+1. To create a SQL Azure database that can be used for a ASP.NET Dynamic Entities web application, follow the steps in the procedure **Use a SQL Azure database for your application** earlier in this topic.
 
-1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)からこのデータベースに必要なテーブルとフィールドを追加します。
+1. Add the tables and fields that you need for this database from the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-1. この種類のアプリケーションの接続文字列は、web.config ファイルで次の形式になっています。
-
-    ```
-    <addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=";data source=<server name>\SQLEXPRESS;initial catalog=<database name>;integrated security=True;multipleactiveresultsets=True;App=EntityFramework";"providerName="System.Data.EntityClient"/>
-    ```
-
-    SQL Azure データベースの ADO.NET 接続文字列の *connectionString* 値を次のように更新します。
+1. The connection string for this type of application has the following format in the web.config file:  
 
     ```
-    XMLCopy<addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=";Server=tcp:<SQL Azure server name>.database.windows.net,1433;Database=<database name>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;multipleactiveresultsets=True;App=EntityFramework";"providerName="System.Data.EntityClient"/>
+    <addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=<server name>\SQLEXPRESS;initial catalog=<database name>;integrated security=True;multipleactiveresultsets=True;App=EntityFramework&quot;"providerName="System.Data.EntityClient"/>
     ```
 
-1. 接続文字列を変更した web.config ファイルを保存するには、メニュー バーで **[ファイル]**、**[web.config の保存]** の順に選択します。
+    Update the *connectionString* value with the ADO.NET connection string for your SQL Azure database as follows:
 
-## サポートされているプロジェクト テンプレート
+    ```
+    XMLCopy<addname="tempdbEntities"connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;Server=tcp:<SQL Azure server name>.database.windows.net,1433;Database=<database name>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;multipleactiveresultsets=True;App=EntityFramework&quot;"providerName="System.Data.EntityClient"/>
+    ```
 
-Azure に Web アプリケーションを発行するには、次の表に記載されている C# または Visual Basic のプロジェクト テンプレートのいずれかをアプリケーションで使用する必要があります。
+1. To save the web.config file with the changes that you have made to the connection string, on the menu bar choose **File**, **Save web.config**.
 
-|プロジェクト テンプレート グループ|プロジェクト テンプレート|
+## <a name="supported-project-templates"></a>Supported Project Templates
+
+To publish a web application to Azure, the application must use one of the project templates for C# or Visual Basic that is listed in the table below.
+
+|Project Template Group|Project Template|
 |---|---|
-|Web|ASP.NET Web アプリケーション|
-|Web|ASP.NET MVC 2 Web アプリケーション|
-|Web|ASP.NET MVC 3 Web アプリケーション|
-|Web|ASP.NET MVC 4 Web アプリケーション|
-|Web|空の ASP.NET Web アプリケーション|
-|Web|空の ASP.NET MVC 2 Web アプリケーション|
-|Web|ASP.NET 動的データ エンティティ Web アプリケーション|
-|Web|ASP.NET 動的データ LINQ to SQL Web アプリケーション|
-|Silverlight|Silverlight アプリケーション|
-|Silverlight|Silverlight ビジネス アプリケーション|
-|Silverlight|Silverlight ナビゲーション アプリケーション|
-|WCF|WCF サービス アプリケーション|
-|WCF|WCF ワークフロー サービス アプリケーション|
-|ワークフロー|WCF ワークフロー サービス アプリケーション|
+|Web|ASP.NET Web Application|
+|Web|ASP.NET MVC 2 Web Application|
+|Web|ASP.NET MVC 3 Web Application|
+|Web|ASP.NET MVC4 Web Application|
+|Web|ASP.NET Empty Web Application|
+|Web|ASP.NET MVC 2 Empty Web Application|
+|Web|ASP.NET Dynamic Data Entities Web Application|
+|Web|ASP.NET Dynamic Data Linq to SQL Web Application|
+|Silverlight|Silverlight Application|
+|Silverlight|Silverlight Business Application|
+|Silverlight|Silverlight Navigation Application|
+|WCF|WCF Service Application|
+|WCF|WCF Workflow Service Application|
+|Workflow|WCF Workflow Service Application|
 
-## 次のステップ
-発行の詳細については、「[Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」を参照してください。また、「[名前付き認証資格情報の設定](vs-azure-tools-setting-up-named-authentication-credentials.md)」も確認してください。
+## <a name="next-steps"></a>Next Steps
+For more information on publishing, see [Prepare to Publish or Deploy an Azure Application from Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md). Also check out [Setting Up Named Authentication Credentials](vs-azure-tools-setting-up-named-authentication-credentials.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

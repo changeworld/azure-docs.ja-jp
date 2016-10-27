@@ -1,6 +1,6 @@
 <properties
-   pageTitle="クラシック デプロイメント モデルで VNet 対 VNet 接続を構成する | Microsoft Azure"
-   description="PowerShell と Azure クラシック ポータルを使用して複数の Azure 仮想ネットワークを接続する方法。"
+   pageTitle="Configure a VNet-to-VNet connection for the classic deployment model| Microsoft Azure"
+   description="How to connect Azure virtual networks together using PowerShell and the Azure classic portal."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -18,225 +18,227 @@
    ms.author="cherylmc"/>
 
 
-# クラシック デプロイ モデルで VNet 対 VNet 接続を構成する
+
+# <a name="configure-a-vnet-to-vnet-connection-for-the-classic-deployment-model"></a>Configure a VNet-to-VNet connection for the classic deployment model
 
 > [AZURE.SELECTOR]
-- [Azure クラシック ポータル](virtual-networks-configure-vnet-to-vnet-connection.md)
-- [PowerShell - Azure リソース マネージャー](vpn-gateway-vnet-vnet-rm-ps.md)
+- [Resource Manager - PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+- [Classic - Classic Portal](virtual-networks-configure-vnet-to-vnet-connection.md)
 
 
-この記事では、クラシック デプロイメント モデル (サービス管理とも呼ばれる) を使用して、仮想ネットワークを作成し、仮想ネットワークを相互に接続する手順を説明します。次の手順では、Azure クラシック ポータルを使用し、VNet とゲートウェイ、PowerShell を作成して、VNet 間接続を構成します。ポータルで接続を構成することはできません。
 
-![VNet 間接続の図](./media/virtual-networks-configure-vnet-to-vnet-connection/v2vclassic.png)
+This article walks you through the steps to create and connect virtual networks together using the classic deployment model (also known as Service Management). The following steps use the Azure classic portal to create the VNets and gateways, and PowerShell to configure the VNet-to-VNet connection. You cannot configure the connection in the portal.
+
+![VNet to VNet Connectivity Diagram](./media/virtual-networks-configure-vnet-to-vnet-connection/v2vclassic.png)
 
 
-### VNet 対 VNet 用のデプロイ モデルとツール
+### <a name="deployment-models-and-methods-for-vnet-to-vnet"></a>Deployment models and methods for VNet-to-VNet
 
 
 [AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-両方のデプロイ モデルで、さまざまなツールを利用し、VNet 間の接続を構成できます。詳細については後の表を参照してください。この表は、この構成について新しい記事、新しいデプロイメント モデル、追加のツールが利用できるようになったら更新されるものです。記事が利用できるようになったら、表から直接リンクできるようにします。
+A VNet-to-VNet connection can be configured in both deployment models and by using several different tools. We update the following table as new articles and additional tools become available for this configuration. When an article is available, we link directly to it from the table.<br><br>
 
 [AZURE.INCLUDE [vpn-gateway-table-vnet-to-vnet](../../includes/vpn-gateway-table-vnet-to-vnet-include.md)]
 
-## VNet 間接続の概要
+## <a name="about-vnet-to-vnet-connections"></a>About VNet-to-VNet connections
 
-仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することと似ています。どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。
+Connecting a virtual network to another virtual network (VNet-to-VNet) is similar to connecting a virtual network to an on-premises site location. Both connectivity types use a VPN gateway to provide a secure tunnel using IPsec/IKE. 
 
-接続する VNet は、サブスクリプションやリージョンが異なっていてもかまいません。マルチサイト構成と VNet 対 VNet 通信を組み合わせることができます。そのため、クロスプレミス接続と仮想ネットワーク間接続とを組み合わせたネットワーク トポロジを確立することができます。
-
-
-### 仮想ネットワークを接続する理由
-
-仮想ネットワークを接続するのは次のような場合です。
-
-- **リージョン間の geo 冗長性および geo プレゼンス**
-	- インターネット接続エンドポイントを介さず、安全な接続を使って独自の geo レプリケーションや geo 同期をセットアップすることができます。
-	- Azure Load Balancer と Microsoft (またはサード パーティ) のクラスタリング テクノロジを使用し、複数の Azure リージョンをまたぐ geo 冗長性を備えた、可用性に優れたワークロードをセットアップすることができます。たとえば、複数の Azure リージョンにまたがる SQL AlwaysOn 可用性グループをセットアップすることができます。
-
-- **特定の地域内で強固な分離境界を備えた多層アプリケーション**
-	- 同じリージョン内の相互に接続された複数の VNet を使って多層アプリケーションをセットアップすることができます。それぞれの層のアプリケーションが強固に分離され、安全な層間通信を実現することができます。
-
-- **サブスクリプションや組織の境界を越えた通信を Azure 内で実現**
-	- Azure サブスクリプションを複数所有している場合、異なるサブスクリプションからのワークロードを仮想ネットワークを介して安全に接続することができます。
-	- 企業やサービス プロバイダーが、安全な VPN テクノロジを使用した組織間の通信を Azure 内で実現できます。
-
-### クラシック VNet の VNet 対 VNet 通信に関する FAQ
-
-- 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。
-
-- 仮想ネットワークが属している Azure リージョン (場所) は異なっていてもかまいません。
-
-- クラウド サービスや負荷分散エンドポイントは、仮にそれらが相互に接続されていたとしても、仮想ネットワークの境界を越えることはできません。
-
-- 複数の仮想ネットワークを接続する場合は、VPN デバイスは必要ありません。
-
-- VNet 間接続でサポートされるのは、Azure Virtual Network の接続です。仮想ネットワークにデプロイされていない仮想マシンやクラウド サービスを接続することはできません。
-
-- VNet 対 VNet 通信には、動的ルーティング ゲートウェイが必要です。Azure 静的ルーティング ゲートウェイはサポートされません。
-
-- 仮想ネットワーク接続は、マルチサイト VPN と同時に使用することができます。1 つの仮想ネットワーク VPN ゲートウェイに最大 10 本の VPN トンネルを確立し、他の仮想ネットワークまたはオンプレミス サイトに接続することが可能です。
-
-- 仮想ネットワークのアドレス空間とオンプレミスのローカル ネットワーク サイトのアドレス空間とが重複しないようにする必要があります。アドレス空間が重複していると、仮想ネットワークの作成または netcfg 構成ファイルのアップロードに失敗します。
-
-- 一対の仮想ネットワーク間に冗長トンネルを確立することはできません。
-
-- VNet のすべての VPN トンネル (P2S VPN を含む) は、VPN ゲートウェイ上の使用可能な帯域幅を共有し、Azure 内の同じ VPN ゲートウェイ アップタイム SLA を共有します。
-
-- VNet 間のトラフィックは、Azure バックボーン経由で送信できます。
+The VNets you connect can be in different subscriptions and different regions. You can combine VNet to VNet communication with multi-site configurations. This lets you establish network topologies that combine cross-premises connectivity with inter-virtual network connectivity.
 
 
-## <a name="step1"></a>手順 1 - IP アドレス範囲を決める
+### <a name="why-connect-virtual-networks?"></a>Why connect virtual networks?
 
-仮想ネットワークの構成に使用する範囲を決めることは重要です。この構成では、VNet のアドレス範囲が、互いにまたは接続先のすべてのローカル ネットワークと重複していないことを確認する必要があります。
+You may want to connect virtual networks for the following reasons:
 
-VNet の定義の例を下表に示します。範囲はあくまでも参考です。仮想ネットワークの範囲をメモしておいてください。この情報は後続の手順で必要になります。
+- **Cross region geo-redundancy and geo-presence**
+    - You can set up your own geo-replication or synchronization with secure connectivity without going over Internet-facing endpoints.
+    - With Azure Load Balancer and Microsoft or third-party clustering technology, you can set up highly available workload with geo-redundancy across multiple Azure regions. One important example is to set up SQL Always On with Availability Groups spreading across multiple Azure regions.
 
-**設定例**
+- **Regional multi-tier applications with strong isolation boundary**
+    - Within the same region, you can set up multi-tier applications with multiple VNets connected together with strong isolation and secure inter-tier communication.
 
-|仮想ネットワーク |アドレス空間 |リージョン |ローカル ネットワーク サイトへの接続|
+- **Cross subscription, inter-organization communication in Azure**
+    - If you have multiple Azure subscriptions, you can connect workloads from different subscriptions together securely between virtual networks.
+    - For enterprises or service providers, you can enable cross-organization communication with secure VPN technology within Azure.
+
+### <a name="vnet-to-vnet-faq-for-classic-vnets"></a>VNet-to-VNet FAQ for classic VNets
+
+- The virtual networks can be in the same or different subscriptions.
+
+- The virtual networks can be in the same or different Azure regions (locations).
+
+- A cloud service or a load balancing endpoint can't span across virtual networks, even if they are connected together.
+
+- Connecting multiple virtual networks together doesn't require any VPN devices.
+
+- VNet-to-VNet supports connecting Azure Virtual Networks. It does not support connecting virtual machines or cloud services that are not deployed to a virtual network.
+
+- VNet-to-VNet requires dynamic routing gateways. Azure static routing gateways are not supported.
+
+- Virtual network connectivity can be used simultaneously with multi-site VPNs. There is a maximum of 10 VPN tunnels for a virtual network VPN gateway connecting to either other virtual networks, or on-premises sites.
+
+- The address spaces of the virtual networks and on-premises local network sites must not overlap. Overlapping address spaces will cause the creation of virtual networks or uploading netcfg configuration files to fail.
+
+- Redundant tunnels between a pair of virtual networks are not supported.
+
+- All VPN tunnels for the VNet, including P2S VPNs, share the available bandwidth for the VPN gateway, and the same VPN gateway uptime SLA in Azure.
+
+- VNet-to-VNet traffic travels across the Azure backbone.
+
+
+## <a name="<a-name="step1"></a>step-1---plan-your-ip-address-ranges"></a><a name="step1"></a>Step 1 - Plan your IP address ranges
+
+It’s important to decide the ranges that you’ll use to configure your virtual networks. For this configuration, you must make sure that none of your VNet ranges overlap with each other, or with any of the local networks that they connect to.
+
+The following table shows an example of how to define your VNets. Use the ranges as a guideline only. Write down the ranges for your virtual networks. You need this information for later steps.
+
+**Example settings**
+
+|Virtual Network  |Address Space               |Region      |Connects to local network site|
 |:----------------|:---------------------------|:-----------|:-----------------------------|
-|VNet1 |VNet1 (10.1.0.0/16) |米国西部 |VNet2Local (10.2.0.0/16) |
-|VNet2 |VNet2 (10.2.0.0/16) |東日本 |VNet1Local (10.1.0.0/16) |
+|VNet1            |VNet1 (10.1.0.0/16)         |US West     |VNet2Local (10.2.0.0/16)      |
+|VNet2            |VNet2 (10.2.0.0/16)         |Japan East  |VNet1Local (10.1.0.0/16)      |
   
-## 手順 2 - VNet1 を作成する
+## <a name="step-2---create-vnet1"></a>Step 2 - Create VNet1
 
-この手順では、VNet1 を作成します。例のいずれかを使用するときは、必ず実際の値に置き換えてください。VNet が既に存在する場合は、この手順を実行する必要はありません。ただし、2 つ目の VNet や接続先とする他の VNet と IP アドレスの範囲が重複していないことを確認する必要があります。
+In this step, we create VNet1. When using any of the examples, be sure to substitute your own values. If your VNet already exists, you don't need to do this step. But, you do need to verify that the IP address ranges don't overlap with the ranges for your second VNet, or with any of the other VNets to which you want to connect.
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)にログインします。Azure ポータルでは必要な構成設定の一部がまだ利用できないため、この記事ではクラシック ポータルを使用します。
+1. Log in to the [Azure classic portal](https://manage.windowsazure.com). In this article, we use the classic portal because some of the required configuration settings are not yet available in the Azure portal.
 
-2. 画面の左下隅で、**[新規]**、**[ネットワーク サービス]**、**[仮想ネットワーク]**、**[カスタム作成]** の順にクリックして構成ウィザードを開始します。ウィザードを移動しながら、指定された値を各ページに追加します。
+2. In the lower left-hand corner of the screen, click **New** > **Network Services** > **Virtual Network** > **Custom Create** to begin the configuration wizard. As you navigate through the wizard, add the specified values to each page.
 
-### Virtual Network Details
+### <a name="virtual-network-details"></a>Virtual Network Details
 
-[仮想ネットワークの詳細] ページで、次の情報を入力します。
+On the Virtual Network Details page, enter the following information:
 
   ![Virtual Network Details](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736055.png)
 
-  - **名前**: 仮想ネットワークの名前です(例: VNet1)。
-  - **[場所]**: 仮想ネットワークを作成するとき、仮想ネットワークを Azure の場所 (リージョン) に関連付けます。たとえば、仮想ネットワークにデプロイされた VM を物理的に米国西部に配置する場合は、その場所を選択します。仮想ネットワークを作成した後で、その仮想ネットワークに関連付けられた場所を変更することはできません。
+  - **Name** - Name your virtual network. For example, VNet1.
+  - **Location** – When you create a virtual network, you associate it with an Azure location (region). For example, if you want your VMs that are deployed to your virtual network to be physically located in West US, select that location. You can’t change the location associated with your virtual network after you create it.
 
-### DNS サーバーと VPN 接続
+### <a name="dns-servers-and-vpn-connectivity"></a>DNS Servers and VPN Connectivity
 
-[DNS サーバーおよび VPN 接続] ページで、次の情報を入力し、右下にある次へ進む矢印をクリックします。
+On the DNS Servers and VPN Connectivity page, enter the following information, and then click the next arrow on the lower right.
 
-  ![DNS サーバーと VPN 接続](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736056.jpg)
+  ![DNS Servers and VPN Connectivity](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736056.jpg)  
 
-- **DNS サーバー**: DNS サーバー名と IP アドレスを入力するか、以前登録した DNS サーバーをドロップダウンから選択します。この設定で、DNS サーバーは作成されません。この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。仮想ネットワーク間で名前解決を使用する場合は、Azure で提供される名前解決を使用するのでなく、独自の DNS サーバーを構成する必要があります。
-- P2S または S2S 接続用のチェック ボックスはなにも選択しないでください。右下にある矢印をクリックし、次の画面に移動します。
+- **DNS Servers** - Enter the DNS server name and IP address, or select a previously registered DNS server from the dropdown. This setting does not create a DNS server. It allows you to specify the DNS servers that you want to use for name resolution for this virtual network. If you want to have name resolution between your virtual networks, you have to configure your own DNS server, rather than using the name resolution that is provided by Azure.
+- Don’t select any of the checkboxes for P2S or S2S connectivity. Click the arrow on the lower right to move to the next screen.
 
-### Virtual Network アドレス空間
+### <a name="virtual-network-address-spaces"></a>Virtual Network Address Spaces
 
-[仮想ネットワーク アドレス空間] ページで、仮想ネットワークに使用するアドレス範囲を指定します。これらが動的 IP アドレス (DIPS) として、この仮想ネットワークにデプロイする VM や各種ロール インスタンスに割り当てられます。
+On the Virtual Network Address Spaces page, specify the address range that you want to use for your virtual network. These are the dynamic IP addresses (DIPS) that will be assigned to the VMs and other role instances that you deploy to this virtual network. 
 
-オンプレミス ネットワークにも接続する VNet を作成する場合は、オンプレミス ネットワーク用に使用しているあらゆる範囲と重複しない範囲を選択することが、特に重要です。この場合、ネットワーク管理者と相談して調整する必要があります。ネットワーク管理者は、場合によっては VNet で使用する IP アドレス範囲をオンプレミス ネットワークのアドレス空間の中から確保する必要があるため、ネットワーク管理者との調整が必要です。
+If you are creating a VNet that will also have a connection to your on-premises network, it's especially important to select a range that does not overlap with any of the ranges that are used for your on-premises network. In that case, you need to coordinate with your network administrator. Your network administrator may need to carve out a range of IP addresses from your on-premises network address space for you to use for your VNet.
 
-  ![[仮想ネットワーク アドレス空間] ページ](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736057.jpg)
+  ![Virtual Network Address Spaces page](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736057.jpg)
 
-  - **[アドレス空間]**: 開始 IP とアドレス数を指定します。指定したアドレス空間がオンプレミス ネットワーク内に存在するあらゆるアドレス空間と重複していないことを確認します。この例では、VNet1 に 10.1.0.0/16 を使用します。
-  - **[サブネットの追加]**: 開始 IP とアドレス数を指定します。追加サブネットは必須ではありませんが、VM 用に静的 DIP を持つ別のサブネットを作成することをお勧めします。または、他のロール インスタンスとは分離したサブネットに VM を配置することができます。
+  - **Address Space** - including Starting IP and Address Count. Verify that the address spaces you specify don’t overlap with any of the address spaces that you have on your on-premises network. For this example, we use 10.1.0.0/16 for VNet1.
+  - **Add subnet** - including Starting IP and Address Count. Additional subnets are not required, but you may want to create a separate subnet for VMs that will have static DIPS. Or you might want to have your VMs in a subnet that is separate from your other role instances.
  
-ページの右下にある**チェックマークをクリック**すると、仮想ネットワークの作成が開始されます。完了すると、[ネットワーク] ページにある [状態] に [作成済み] と表示されます。
+**Click the checkmark** on the lower right of the page and your virtual network will begin to create. When it completes, you will see "Created" listed under Status on the Networks page.
 
-## 手順 3 - VNet2 を作成する
+## <a name="step-3---create-vnet2"></a>Step 3 - Create VNet2
 
-次に、上記の手順を繰り返して VNet をもう 1 つ作成します。後でこれら 2 つの VNet を接続します。手順 1 の[設定例](#step1)を参照できます。VNet が既に存在する場合は、この手順を実行する必要はありません。ただし、接続先とするオンプレミス ネットワークや他のすべての VNet と IP アドレスの範囲が重複していないことを確認する必要があります。
+Next, repeat the preceding steps to create another VNet. In later steps, you will connect the two VNets. You can refer to the [example settings](#step1) in Step 1. If your VNet already exists, you don't need to do this step. However, you need to verify that the IP address ranges don't overlap with any of the other VNets or on-premises networks that you want to connect to.
 
-## 手順 4 - ローカル ネットワーク サイトを追加する
+## <a name="step-4---add-the-local-network-sites"></a>Step 4 - Add the local network sites
 
-VNet 間構成を作成するときは、ローカル ネットワーク サイトを構成する必要があります。構成したサイトは、ポータルの **[ローカル ネットワーク]** ページに表示されます。Azure では、各ローカル ネットワーク サイトで指定されている設定を使用して、VNet 間でトラフィックをルーティングする方法を決定します。各ローカル ネットワーク サイトの参照に使用する名前を指定します。この値は後でドロップダウン リストから選択するので、わかりやすい名前を使用することをお勧めします。
+When you create a VNet-to-VNet configuration, you need to configure local network sites, which are shown in the **Local Networks** page of the portal. Azure uses the settings specified in each local network site to determine how to route traffic between the VNets. You determine the name you want to use to refer to each local network site. It's best to use something descriptive, as you select the value from a dropdown list in later steps.
 
-たとえば、VNet1 は、"VNet2Local" という名前で作成するローカル ネットワーク サイトに接続します。VNet2Local の設定には、VNet2 のアドレス プレフィックスと、VNet2 ゲートウェイのパブリック IP アドレスが含まれます。VNet2 は、"VNet1Local" という名前で作成したローカル ネットワーク サイトに接続します。このサイトには、VNet1 のアドレス プレフィックスと VNet1 ゲートウェイのパブリック IP アドレスが含まれます。
+For example, VNet1 connects to a local network site that you create named "VNet2Local". The settings for VNet2Local contain the address prefixes for VNet2, and a public IP address for the VNet2 gateway. VNet2 connects to a local network site you create named "VNet1Local" that contains the address prefixes for VNet1 and the public IP address for the VNet1 gateway.
 
-### <a name="localnet"></a>ローカル ネットワーク サイト VNet1Local を追加する
+### <a name="<a-name="localnet"></a>add-the-local-network-site-vnet1local"></a><a name="localnet"></a>Add the local network site VNet1Local
 
-1. 画面の左下隅で、**[新規]**、**[ネットワーク サービス]**、**[仮想ネットワーク]**、**[ローカル ネットワークの追加]** の順にクリックします。
+1. In the lower left-hand corner of the screen, click **New** > **Network Services** > **Virtual Network** > **Add Local Network**.
 
-2. **[ローカル ネットワークの詳細を指定する]** ページの **[名前]** に、接続先とするネットワークを表すのに使用する名前を入力します。この例では、VNet1 のゲートウェイと IP アドレスの範囲を参照する "VNet1Local" を使用することができます。
+2. On the **Specify your local network details** page, for **Name**, enter a name that you want to use to represent the network that you want to connect to. In this example, you can use "VNet1Local" to refer to the IP address ranges and gateway for VNet1.
 
-3. **[VPN デバイス IP アドレス (オプション)] **で、任意の有効なパブリック IP アドレスを入力します。通常は、VPN デバイスの実際の外部 IP アドレスを使用します。VNet 間構成では、VNet のゲートウェイに割り当てられているパブリック IP アドレスを使用します。ただし、ゲートウェイをまだ作成していない場合は、プレース ホルダーとして任意の有効なパブリック IP アドレスを指定できます。この項目を空白のままにしないでください。この構成では省略可能ではありません。Azure によってゲートウェイが生成されたら、後でこれらの設定に戻り、対応するゲートウェイ IP アドレスを使用して設定を構成します。矢印をクリックして、次の画面に進みます。
+3. For **VPN Device IP address (optional)**, specify any valid public IP address. Typically, you’d use the actual external IP address for a VPN device. For VNet-to-VNet configurations, you use the public IP address that is assigned to the gateway for your VNet. But, given that you’ve not yet created the gateway, you can specify any valid public IP address as a placeholder. Don't leave this blank - it's not optional for this configuration. In a later step, you go back into these settings and configure them with the corresponding gateway IP addresses once Azure generates it. Click the arrow to advance to the next screen.
 
-4. **[アドレスの指定]** ページで、VNet1 の IP アドレス範囲とアドレス数を入力します。この入力値は、VNet1 に対して構成した範囲と厳密に対応する必要があります。Azure では、ここで指定された IP アドレスの範囲を使用して、VNet1 向けのトラフィックをルーティングします。チェックマークをクリックしてローカル ネットワークを作成します。
+4. On the **Specify the address page**, enter the IP address range and address count for VNet1. This must correspond exactly to the range that is configured for VNet1. Azure uses the IP address ranges that you specify to route the traffic intended for VNet1. Click the checkmark to create the local network.
 
-### ローカル ネットワーク サイト VNet2Local を追加する
+### <a name="add-the-local-network-site-vnet2local"></a>Add the local network site VNet2Local
 
-上記の手順を使用して、ローカル ネットワーク サイト "VNet2Local" を作成します。必要に応じて、手順 1 の[設定例](#step1)の値を参照できます。
+Use the steps above to create the local network site "VNet2Local". You can refer to the values in the [example settings](#step1) in Step 1, if necessary.
 
-### ローカル ネットワークをポイントするように各 VNet を構成する
+### <a name="configure-each-vnet-to-point-to-a-local-network"></a>Configure each VNet to point to a local network
 
-各 VNet は、トラフィックのルーティング先とする対応するローカル ネットワークをポイントする必要があります。
+Each VNet must point to the respective local network that you want to route traffic to. 
 
-#### VNet1 の場合
+#### <a name="for-vnet1"></a>For VNet1
 
-1. 仮想ネットワーク **VNet1** の **[構成]** ページに移動します。
-2. [サイト間接続] で [ローカル ネットワークに接続する] を選択し、ローカル ネットワークとしてドロップダウンから **[VNet2Local]** を選択します。
-3. 設定を保存します。
+1. Navigate to the **Configure** page for virtual network **VNet1**. 
+2. Under site-to-site connectivity, select "Connect to the local network", and then select **VNet2Local** as the local network from the dropdown. 
+3. Save your settings.
 
-#### VNet2 の場合
+#### <a name="for-vnet2"></a>For VNet2
 
-1. 仮想ネットワーク **VNet2** の **[構成]** ページに移動します。
-2. [サイト間接続] で [ローカル ネットワークに接続する] を選択し、ローカル ネットワークとしてドロップダウンから **[VNet1Local]** を選択します。
-3. 設定を保存します。
+1. Navigate to the **Configure** page for virtual network **VNet2**. 
+2. Under site-to-site connectivity, select "Connect to the local network", then select **VNet1Local** from the dropdown as the local network. 
+3. Save your settings.
 
-## 手順 5 - 各 VNet のゲートウェイを構成する
+## <a name="step-5---configure-a-gateway-for-each-vnet"></a>Step 5 - Configure a gateway for each VNet
 
-各仮想ネットワークの動的ルーティング ゲートウェイを構成します。この構成は、静的ルーティング ゲートウェイをサポートしていません。以前に構成し、動的ルーティング ゲートウェイが既にある VNet を使用している場合は、この手順を実行する必要はありません。ゲートウェイが静的ルーティングである場合は、それらを削除し、動的ルーティング ゲートウェイとして作成し直す必要があります。ゲートウェイを削除した場合は、そのゲートウェイに割り当てていたパブリック IP アドレスがリリースされるので、すべてのローカル ネットワークと VPN デバイスを、新しいゲートウェイの新しいパブリック IP アドレスを使用するように再構成する必要があります。
+Configure a Dynamic Routing gateway for each virtual network. This configuration does not support Static Routing gateways. If you are using VNets that were previously configured and that already have Dynamic Routing gateways, you don't need to do this step. If your gateways are Static Routing, you need to delete them and recreate them as Dynamic Routing gateways. If you delete a gateway, the public IP address assigned to it gets released, and you need to go back and reconfigure any of your local networks and VPN devices with the new public IP address for the new gateway.
 
-1. **[ネットワーク]** ページで、仮想ネットワークの状態列が **[作成済み]** であることを確認します。
+1. On the **Networks** page, verify that the status column for your virtual network is **Created**.
 
-2. **[名前]** 列で、仮想ネットワークの名前をクリックします。この例では、"VNet1" を使用します。
+2. In the **Name** column, click the name of your virtual network. For this example, we use "VNet1".
 
-3. **[ダッシュボード]** ページでは、この VNet に対してゲートウェイが構成されていないことがわかります。この状態はゲートウェイを構成するための手順を進めると変化します。
+3. On the **Dashboard** page, notice that this VNet doesn’t have a gateway configured yet. You’ll see this status change as you go through the steps to configure your gateway.
 
-4. ページの下部にある **[ゲートウェイの作成]** と **[動的ルーティング]** をクリックします。ゲートウェイを作成するかどうかを確認するように求められたら、[はい] をクリックします。
+4. At the bottom of the page, click **Create Gateway** and **Dynamic Routing**. When the system prompts you to confirm that you want the gateway created, click Yes.
 
-  	![ゲートウェイの種類](./media/virtual-networks-configure-vnet-to-vnet-connection/IC717026.png)
+    ![Gateway type](./media/virtual-networks-configure-vnet-to-vnet-connection/IC717026.png)  
 
-5. ゲートウェイの作成中は、ページに表示されているゲートウェイの図が黄色に変わり、"ゲートウェイを作成しています" と表示されます。ゲートウェイが作成されるまでに、通常、30 分ぐらいかかります。
+5. When your gateway is creating, notice the gateway graphic on the page changes to yellow and says "Creating Gateway". It typically takes about 30 minutes for the gateway to create.
 
-6. VNet2 について、同じ手順を実行します。最初の VNet ゲートウェイの完了を待たずに他方の VNet 用のゲートウェイの作成を開始してかまいません。
+6. Repeat the same steps for VNet2. You don’t need the first VNet gateway to complete before you begin to create the gateway for your other VNet.
 
-7. ゲートウェイの状態が "接続中" に変化すると、各ゲートウェイのパブリック IP アドレスがダッシュボードに表示されます。各 VNet に対応する IP アドレスを書き留めます。混同しないように注意してください。先ほど各ローカル ネットワーク の [VPN デバイスの IP アドレス] に指定した仮のアドレスを編集する際は、これらの IP アドレスを使用します。
+7. When the gateway status changes to "Connecting", the public IP address for each gateway is visible in the Dashboard. Write down the IP address that corresponds to each VNet, taking care not to mix them up. These are the IP addresses that are used when you edit your placeholder IP addresses for the VPN Device for each local network.
 
-## 手順 6 - ローカル ネットワークを編集する
+## <a name="step-6---edit-the-local-network"></a>Step 6 - Edit the local network
 
-1. **[ローカル ネットワーク]** ページで、編集するローカル ネットワークの名前をクリックし、ページの下部にある **[編集]** をクリックします。**[VPN デバイスの IP アドレス]** で、VNet に対応するゲートウェイの IP アドレスを入力します。たとえば、VNet1Local の場合は、VNet1 に割り当てられたゲートウェイ IP アドレスを入力します。ページの下部にある矢印をクリックします。
+1. On the **Local Networks** page, click the name of the Local Network name that you want to edit, then click **Edit** at the bottom of the page. For **VPN Device IP address**, input the IP address of the gateway that corresponds to the VNet. For example, for VNet1Local, put in the gateway IP address assigned to VNet1. Then click the arrow at the bottom of the page.
 
-2. **[アドレス空間の指定]** ページで、変更を何も行わずに右下にあるチェックマークをクリックします。
+2. On the **Specify the address space** page, click the checkmark on the lower right without making any changes.
 
-## 手順 7 - VPN 接続を作成する
+## <a name="step-7---create-the-vpn-connection"></a>Step 7 - Create the VPN connection
 
-以上の手順がすべて完了したら、IPsec/IKE 事前共有キーを設定して接続を作成します。この一連の手順には、PowerShell を使用します。ポータルで構成することはできません。Azure PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。かならず、最新バージョンのサービス管理 (SM) コマンドレットをダウンロードしてください。
+When all the previous steps have been completed, set the IPsec/IKE pre-shared keys and create the connection. This set of steps uses PowerShell and cannot be configured in the portal. See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for more information about installing the Azure PowerShell cmdlets. Make sure to download the latest version of the Service Management (SM) cmdlets. 
 
-1. Windows PowerShell 開いてログインします。
+1. Open Windows PowerShell and log in.
 
-		Add-AzureAccount
+        Add-AzureAccount
 
-2. VNet が配置されているサブスクリプションを選択します。
+2. Select the subscription that your VNets reside in.
 
-		Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
-		Select-AzureSubscription -SubscriptionName "<Subscription Name>"
+        Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
+        Select-AzureSubscription -SubscriptionName "<Subscription Name>"
 
-3. 接続を作成します。次の例では、共有キーがまったく同じであることに注目してください。共有キーは常に一致する必要があります。
+3. Create the connections. In the examples, notice that the shared key is exactly the same. The shared key must always match.
 
 
-	VNet1 から VNet2 への接続
+    VNet1 to VNet2 connection
 
-		Set-AzureVNetGatewayKey -VNetName VNet1 -LocalNetworkSiteName VNet2Local -SharedKey A1b2C3D4
+        Set-AzureVNetGatewayKey -VNetName VNet1 -LocalNetworkSiteName VNet2Local -SharedKey A1b2C3D4
 
-	VNet2 から VNet1 への接続
+    VNet2 to VNet1 connection
 
-		Set-AzureVNetGatewayKey -VNetName VNet2 -LocalNetworkSiteName VNet1Local -SharedKey A1b2C3D4
+        Set-AzureVNetGatewayKey -VNetName VNet2 -LocalNetworkSiteName VNet1Local -SharedKey A1b2C3D4
 
-4. 接続が初期化されるのを待ちます。ゲートウェイが初期化されると、ゲートウェイは、下図のようになります。
+4. Wait for the connections to initialize. Once the gateway has initialized, the gateway looks like the following graphic.
 
-	![ゲートウェイの状態 - 接続済み](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736059.jpg)
+    ![Gateway Status - Connected](./media/virtual-networks-configure-vnet-to-vnet-connection/IC736059.jpg)  
 
-	[AZURE.INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
+    [AZURE.INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)] 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-仮想ネットワークに仮想マシンを追加できます。詳細については、[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
+You can add virtual machines to your virtual networks. See the [Virtual Machines documentation](https://azure.microsoft.com/documentation/services/virtual-machines/) for more information.
 
 
 
@@ -244,4 +246,8 @@ VNet 間構成を作成するときは、ローカル ネットワーク サイ�
 [2]: http://channel9.msdn.com/Series/Getting-started-with-Windows-Azure-HDInsight-Service/Configure-the-VPN-connectivity-between-two-Azure-virtual-networks
  
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

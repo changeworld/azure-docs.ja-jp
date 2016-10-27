@@ -1,47 +1,52 @@
 <properties
-	pageTitle="Media Services Extension での CDN キャッシュ ポリシー"
-	description="このトピックでは、Media Services Extension での CDN キャッシュ ポリシーの概要について説明します。"
-	services="media-services,cdn"
-	documentationCenter=".NET"
-	authors="juliako"
-	manager="erikre"
-	editor=""/>
+    pageTitle="CDN Caching Policy in Media Services Extension"
+    description="This topic gives an overview of a CDN caching policy in Media Services Extension."
+    services="media-services,cdn"
+    documentationCenter=".NET"
+    authors="juliako"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="media-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/19/2016"
-	ms.author="juliako"/>
+    ms.service="media-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/19/2016"
+    ms.author="juliako"/>
  
-#Media Services Extension での CDN キャッシュ ポリシー
 
-Azure Media Services では、HTTP ベースのアダプティブ ストリーミングとプログレッシブ ダウンロードが提供されます。HTTP ベースのストリーミングは、プロキシと CDN レイヤーにおけるキャッシュだけでなくクライアント側のキャッシュの利点もあり、高い拡張性を備えています。ストリーミング エンドポイントは、一般的なストリーミング機能と、HTTP キャッシュ ヘッダーの構成も提供します。ストリーミング エンドポイントは、HTTP Cache-Control: max-age および Expires ヘッダーを設定します。HTTP キャッシュ ヘッダーの詳細については、[W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html) を参照してください。
+#<a name="cdn-caching-policy-in-media-services-extension"></a>CDN Caching Policy in Media Services Extension
 
-##既定のキャッシュ ヘッダー
+Azure Media Services provides HTTP based Adaptive Streaming and progressive download. HTTP based streaming is highly scalable with benefits of caching in proxy and CDN layers as well as client side caching. Streaming endpoints provides general streaming capabilities and also configuration for HTTP cache headers. Streaming endpoints sets HTTP Cache-Control: max-age and Expires headers. You can get more information for HTTP cache headers from [W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
 
-既定では、ストリーミング エンドポイントは、オンデマンド ストリーミング データ (実際のメディア フラグメント/チャンク) および マニフェスト (プレイリスト) に対して 3 日間有効なキャッシュ ヘッダーを適用します。ライブ ストリーミングの場合は、ストリーミング エンドポイントは、データ (実際のメディア フラグメント/チャンク) に対しては 3 日間有効なキャッシュ ヘッダーを、マニフェスト (プレイリスト) 要求には 2 秒間有効なキャッシュ ヘッダーを適用します。ライブ プログラムがオンデマンド (ライブ アーカイブ) に変わると、オンデマンド ストリーミング キャッシュ ヘッダーが適用されます。
+##<a name="default-caching-headers"></a>Default Caching headers
 
-##Azure CDN 統合
+By default streaming-endpoints apply 3 day cache headers for on-demand streaming data (actual media fragments/chunks) and manifest(playlist). For live streaming, streaming endpoints apply 3 day cache headers for data (actual media fragments/chunks) and 2 seconds cache header for manifest(playlist) requests. When live program turns to on-demand (live archive) then on-demand streaming cache headers apply.
 
-Azure Media services は、ストリーミング エンドポイントに対して[統合 CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) を提供します。キャッシュ制御ヘッダーは、ストリーミング エンドポイントと同じ方法で CDN が有効なストリーミング エンドポイントに適用されます。Azure CDN は、ストリーミング エンドポイントで構成されたキャッシュ値を使用して内部キャッシュされるオブジェクトの有効期間を定義し、配信キャッシュ ヘッダーもこの値を使用して設定します。CDN 対応のストリーミング エンドポイントを使用するときは、小さいキャッシュ値を設定することは推奨されません。小さい値を設定すると、パフォーマンスが低下し、CDN のメリットが小さくなります。CDN が有効なストリーミング エンドポイントの場合、600 秒未満にキャッシュ ヘッダーを設定することは許可されません。
+##<a name="azure-cdn-integration"></a>Azure CDN integration
 
->[AZURE.IMPORTANT] Azure CDN と統合された Azure Media Services は、**Azure CDN from Verizon** に実装されています。Azure Media Services に **Azure CDN from Akamai** を使用する場合、[エンドポイントを手動で構成する](cdn-create-new-endpoint.md)必要があります。Azure CDN 機能の詳細については、「[CDN の概要](cdn-overview.md)」を参照してください。
+Azure Media Services provides [integrated CDN](https://azure.microsoft.com/updates/azure-media-services-now-fully-integrated-with-azure-cdn/) for streaming-endpoints. Cache-control headers applies in the same way as streaming endpoints to CDN enabled streaming endpoints. Azure CDN uses streaming endpoint configured cache values to define the life time of the internally cached objects and also uses this value to set the delivery cache headers. When using CDN enabled streaming endpoints it is not recommended to set small cache values. Setting small values will decrease the performance and reduce the benefit of CDN. It is not allowed to set cache headers smaller than 600 seconds for CDN enabled streaming endpoints.
 
-##Azure Media Services でのキャッシュ ヘッダーの構成
+>[AZURE.IMPORTANT] Azure Media Services integration with Azure CDN is implemented on **Azure CDN from Verizon**.  If you wish to use **Azure CDN from Akamai** for Azure Media Services, you must [configure the endpoint manually](cdn-create-new-endpoint.md).  For more information about Azure CDN features, see the [CDN overview](cdn-overview.md).
 
-Azure 管理ポータルまたは Azure Media Services API を使用して、キャッシュ ヘッダーの値を構成できます。
+##<a name="configuring-cache-headers-with-azure-media-services"></a>Configuring cache headers with Azure Media Services
 
-1. 管理ポータルを使用してキャッシュ ヘッダーを構成する方法については、「[Media Services アカウントでストリーミング エンドポイントを管理する方法](../media-services/media-services-portal-manage-streaming-endpoints.md)」の「ストリーミング エンドポイントの構成」セクションを参照してください。
-2. Azure Media Services REST API の「[StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl)」。
-3. Azure Media Services .NET SDK の「[StreamingEndpointCacheControl プロパティ](http://go.microsoft.com/fwlink/?LinkId=615302)」。
+You can use Azure Management portal or Azure Media Services APIs to configure cache header values.
 
-##キャッシュの構成の優先順位
+1. To configure cache headers using management portal please refer to [How to Manage Streaming Endpoints](../media-services/media-services-portal-manage-streaming-endpoints.md) section Configuring the Streaming Endpoint.
+2. Azure Media Services REST API, [StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl).
+3. Azure Media Services .NET SDK, [StreamingEndpointCacheControl Properties](http://go.microsoft.com/fwlink/?LinkId=615302).
 
-1. Azure Media Services で構成されたキャッシュ値は、既定値を上書きします。
-2. 手動による構成がない場合は既定値が適用されます。
-3. 既定では、Azure Media または Azure Storage の構成に関係なく 2 秒のキャッシュ ヘッダーがライブ ストリーミング マニフェスト (プレイリスト) に適用され、この値の上書きは使用できません。
+##<a name="cache-configuration-precedence-order"></a>Cache configuration precedence order
 
-<!---HONumber=AcomDC_0921_2016-->
+1. Azure Media Services configured cache value overrides default value.
+2. If there is no manual configuration, default values applies.
+3. By default 2 seconds cache headers applies to live streaming manifest(playlist) regardless of Azure Media or Azure Storage configuration and overriding of this value is not available.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

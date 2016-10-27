@@ -1,68 +1,73 @@
 <properties
-	pageTitle="Azure アカウントのプロファイル情報を変更する方法 | Microsoft Azure"
-	description="Azure アカウントのプロファイルを変更する方法と、一般的な質問に対する回答 (Azure アカウント センターで国を変更できない理由など) を掲載しています。"
-	services=""
-	documentationCenter=""
-	authors="genlin"
-	manager="mbaldwin"
-	editor=""
-	tags="billing"
-	/>
+    pageTitle="How to change profile information of your Azure account| Microsoft Azure"
+    description="Describes how to change the profile of your Azure account, and answers the common questions such as why cannot change country in the Azure Account Center"
+    services=""
+    documentationCenter=""
+    authors="genlin"
+    manager="mbaldwin"
+    editor=""
+    tags="billing"
+    />
 
 <tags
-	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2016"
-	ms.author="genli"/>
+    ms.service="billing"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/17/2016"
+    ms.author="genli"/>
 
-# Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する方法
 
-## まとめ
+# <a name="how-to-change-profile-information-of-your-azure-account-such-as-contact-email,-address-and-phone-number"></a>How to change profile information of your Azure account such as contact email, address and phone number
 
-Azure からの重要な電子メールが見つかりませんか? プロファイル内の連絡先情報を更新する必要がありますか? この記事では、次のことについて説明します。
+## <a name="summary"></a>Summary
 
--	[プロファイル情報の変更方法](#how-to-change-your-profile-information)
--	[お問い合わせの多い問題および質問に対する回答](#frequently-asked-questions)
+Missed an important email from Azure? Want to update other contact information in your profile? In this article you will learn:
 
-> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+-   [How to change your profile information](#how-to-change-your-profile-information)
+-   [Answers to common issues and questions](#frequently-asked-questions)
 
-## プロファイルの電子メール アドレスに関する重要な情報
+> [AZURE.NOTE] If you need more help at any point in this article, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
 
-マイクロソフトは、アカウント管理者のプロファイル内の電子メール アドレスを使用して、お客様にサブスクリプションに関する重要な請求に関する更新情報をお知らせしています。このため、定期的にチェックする連絡先の電子メール アドレスを指定することをお勧めします。
+## <a name="important-information-about-your-profile-email-address"></a>Important information about your profile email address
 
-## プロファイル情報の変更方法
+The email address in the Account Administrator’s profile is used by Microsoft to notify you about important billing-related updates about the subscription. We recommend that you specify a contact email address that you check regularly.
 
-1.	アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/)にサインインし、**[プロファイル]** をクリックします。または、https://account.windowsazure.com/Profile にアクセスします。
+## <a name="how-to-change-your-profile-information"></a>How to change your profile information
 
-2.	**[詳細の編集]** ボタンを選択し、**[プロファイル]** 情報を更新します。
+1.  Sign in to the [Azure Account Center](https://account.windowsazure.com/) as the account administrator and then click **Profile**. Or go to https://account.windowsazure.com/Profile.
 
-	![profile](./media/billing-how-to-change-azure-account-profile/profile.png)
+2.  Select the **Edit details** button, and then update the **Profile** information.
 
-## よく寄せられる質問
+    ![profile](./media/billing-how-to-change-azure-account-profile/profile.png)
 
-### プロファイルのアカウント管理者の電子メール アドレスを変更することはできますか?
+## <a name="frequently-asked-questions"></a>Frequently asked questions
 
-はい。アカウント管理者は Azure アカウントを設定する人で、またアカウント内のすべてのサブスクリプションに関する重要な電子メール通知を受信します。このため、アカウント管理者が定期的にチェックする電子メール アドレスを連絡先のメール アドレスとして指定することをお勧めします。
+### <a name="can-i-change-the-account-administrator-email-address-in-my-profile?"></a>Can I change the Account Administrator email address in my profile?
 
-### プロファイルの電子メールを更新すると、ログインの電子メール アドレスも更新されますか?
+Yes. The Account Administrator is the person who set up the Azure account and who receives important email notifications about all the subscriptions under the account. We recommend that you specify a contact email address that the Account Administrator checks regularly.
 
-いいえ。プロファイルの電子メールを更新しても、ログインの電子メール アドレスは更新されません。ログインの電子メール アドレスを変更するには、アカウントの所有権を譲渡する必要があります。
+### <a name="does-updating-my-profile-email-also-update-my-login-email-address?"></a>Does updating my profile email also update my login email address?
 
-### プロファイルの住所を更新すると、クレジット カードの請求先の住所も更新されますか?
+No. Updating the profile email address does not update your login email address. To change your login email address, you have to transfer ownership of the account.
 
-いいえ。クレジット カードに関連付けられている請求先住所を更新するには、Azure アカウント センターの[サブスクリプション ページ](https://account.windowsazure.com/subscriptions)に移動します。
+### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address?"></a>Does updating my profile address also update my credit card billing address?
 
-### 国を更新できません。なぜですか?
+No. You can update the billing address associated with your credit card by going to the [subscription page](https://account.windowsazure.com/subscriptions) in the Azure Account Center.
 
-技術上の制約により、既存のアカウントの国を変更することはできません。ただし、目的の国で新しいアカウントを作成し、Azure サポートに連絡して、サービスをそのアカウントに移行することができます。
+### <a name="why-can’t-i-update-the-country?"></a>Why can’t I update the country?
 
-### Azure 課金アラートのプレビュー機能ではどの電子メール アドレスが使用されますか?
+Because of technical constraints, we cannot change the country on an existing account. However, you can create a new account in the desired country and then contact Azure support to migrate your services to that account.
 
-新しい Azure 課金アラートのプレビュー機能にサインアップすると、アカウント管理者の電子メール アドレスを変更しているかどうかにかかわらず、指定したアドレスに Azure 課金アラートの電子メールが届きます。
+### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use?"></a>What email address does the Azure Billing Alerts preview feature use?
 
-> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+If you sign up for the new Azure Billing Alerts preview feature, you will receive Azure Billing Alerts email at the address you specify, regardless of whether you have changed the Account Administrator email address.
 
-<!---HONumber=AcomDC_0824_2016-->
+> [AZURE.NOTE] If you still have further questions, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Reliable Services の WCF 通信スタック | Microsoft Azure"
-   description="Service Fabric の組み込み WCF 通信スタックは、Reliable Services にクライアント サービス WCF 通信を提供します。"
+   pageTitle="Reliable Services WCF communication stack | Microsoft Azure"
+   description="The built-in WCF communication stack in Service Fabric provides client-service WCF communication for Reliable Services."
    services="service-fabric"
    documentationCenter=".net"
    authors="BharatNarasimman"
@@ -16,13 +16,14 @@
    ms.date="07/26/2016"
    ms.author="bharatn"/>
 
-# Reliable Services の WCF ベースの通信スタック
-Reliable Services フレームワークにより、サービスの作成者はサービスに使用する通信スタックを選択できます。[CreateServiceReplicaListeners または CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) メソッドから返された **ICommunicationListener** を介し、選択した通信スタックをプラグインできます。フレームワークでは、Windows Communication Foundation (WCF) ベースの通信を使用したいと考えるサービス作成者に、WCF に基づいた通信スタックの実装を提供します。
 
-## WCF 通信リスナー
-**ICommunicationListener** の WCF 固有の実装は、**Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** クラスによって提供されます。
+# <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-based communication stack for Reliable Services
+The Reliable Services framework allows service authors to choose the communication stack that they want to use for their service. They can plug in the communication stack of their choice via the **ICommunicationListener** returned from the [CreateServiceReplicaListeners or CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) methods. The framework provides an implementation of the communication stack based on the Windows Communication Foundation (WCF) for service authors who want to use WCF-based communication.
 
-`ICalculator` 型のサービス コントラクトがあるものとします。
+## <a name="wcf-communication-listener"></a>WCF Communication Listener
+The WCF-specific implementation of **ICommunicationListener** is provided by the **Microsoft.ServiceFabric.Services.Communication.Wcf.Runtime.WcfCommunicationListener** class.
+
+Lest say we have a service contract of type `ICalculator`
 
 ```csharp
 [ServiceContract]
@@ -33,7 +34,7 @@ public interface ICalculator
 }
 ```
 
-次のようにして、サービスの WCF 通信リスナーを作成できます。
+We can create a WCF communication listener in the service the following manner.
 
 ```csharp
 
@@ -59,8 +60,8 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 
 ```
 
-## WCF の通信スタック用のクライアントの作成
-WCF を使用して、サービスと通信するクライアントを作成する場合、フレームワークには [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md) の WCF 固有の実装である **WcfClientCommunicationFactory** があります。
+## <a name="writing-clients-for-the-wcf-communication-stack"></a>Writing clients for the WCF communication stack
+For writing clients to communicate with services by using WCF, the framework provides **WcfClientCommunicationFactory**, which is the WCF-specific implementation of [ClientCommunicationFactoryBase](service-fabric-reliable-services-communication.md).
 
 ```csharp
 
@@ -72,7 +73,7 @@ public WcfCommunicationClientFactory(
     object callback = null);
 ```
 
-WCF 通信チャネルは **WcfCommunicationClientFactory** よって作成された **WcfCommunicationClient** からアクセスできます。
+The WCF communication channel can be accessed from the **WcfCommunicationClient** created by the **WcfCommunicationClientFactory**.
 
 ```csharp
 
@@ -86,7 +87,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-クライアント コードでは、**ServicePartitionClient** を実装する **WcfCommunicationClient** と共に **WcfCommunicationClientFactory** を使用して、サービス エンドポイントを特定し、サービスと通信できます。
+Client code can use the **WcfCommunicationClientFactory** along with the **WcfCommunicationClient** which implements **ServicePartitionClient** to determine the service endpoint and communicate with the service.
 
 ```csharp
 // Create binding
@@ -113,13 +114,17 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
                 client => client.Channel.Add(2, 3)).Result;
 
 ```
->[AZURE.NOTE] 既定の ServicePartitionResolver は、クライアントがサービスと同じクラスターで実行されているものと想定します。そうでない場合は、ServicePartitionResolver オブジェクトを作成して、クラスター接続エンドポイントを渡します。
+>[AZURE.NOTE] The default ServicePartitionResolver assumes that the client is running in same cluster as the service. If that is not the case, create a ServicePartitionResolver object and pass in the cluster connection endpoints.
 
-## 次のステップ
-* [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
+## <a name="next-steps"></a>Next steps
+* [Remote procedure call with Reliable Services remoting](service-fabric-reliable-services-communication-remoting.md)
 
-* [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
+* [Web API with OWIN in Reliable Services](service-fabric-reliable-services-communication-webapi.md)
 
-* [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
+* [Securing communication for Reliable Services](service-fabric-reliable-services-secure-communication.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,9 +1,15 @@
-| **デプロイメント モデル/方法** | **Azure ポータル** | **クラシック ポータル** | **PowerShell** |
+| **Deployment Model/Method** | **Azure Portal** | **Classic Portal** | **PowerShell** |
 |---|---|---|---|
-|**クラシック** | サポートされていません | [記事](../articles/vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) | サポートされています |
-|**リソース マネージャー** | サポートされていません |サポートされています+ | [記事](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)|
-|**異なるデプロイメント モデル間の接続** | [記事*](../articles/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) | [記事*](../articles/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) |[記事](../articles/vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)|
+|**Classic** | Not Supported | [Article](../articles/vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) | Supported |
+|**Resource Manager** | Not Supported |Supported+ | [Article](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)|
+|**Connections between different deployment models** | [Article*](../articles/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) | [Article*](../articles/vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) |[Article](../articles/vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)|
 
-"+" は、このデプロイ方法が同じサブスクリプションの VNet でのみ利用できることを示します。<br> "*" は、PowerShell を必要とするデプロイ方法を表します。
+(+) denotes this deployment method is available only for VNets in the same subscription.<br>
+(*) denotes that this deployment method also requires PowerShell.
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

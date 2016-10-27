@@ -1,6 +1,6 @@
 <properties
-    pageTitle="ロジック アプリに Bing Search コネクタを追加する | Microsoft Azure"
-    description="Bing Search コネクタと REST API パラメーターの概要"
+    pageTitle="Add the Bing Search connector logic apps | Microsoft Azure"
+    description="Overview of the Bing Search connector with REST API parameters"
     services=""
     suite=""
     documentationCenter="" 
@@ -18,271 +18,283 @@
    ms.date="08/18/2016"
    ms.author="mandia"/>
 
-# Bing Search コネクタの概要 
-Bing Search に接続すると、ニュース、動画など検索できます。Bing Search では、次の操作を実行できます。
 
-- 検索から取得したデータに基づいてビジネス フローを構築することができます。
-- 画像、ニュースなどを検索するアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、動画を検索し、Twitter を使用して Twitter フィードに動画を投稿することができます。
+# <a name="get-started-with-the-bing-search-connector"></a>Get started with the Bing Search connector 
+Connect to Bing Search to search news, search videos, and more. With Bing Search, you can: 
 
-ロジック アプリに操作を追加する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページを参照してください。
+- Build your business flow based on the data you get from your search. 
+- Use actions to search images, search the news, and more. These actions get a response, and then make the output available for other actions. For example, you can search for a video, and then use Twitter to post that video to a Twitter feed.
 
-## トリガーとアクション
-Bing Search には、次のアクションがあります。トリガーはありません。
+To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-トリガー | アクション
+## <a name="triggers-and-actions"></a>Triggers and actions
+Bing Search includes the following actions. There are no triggers. 
+
+Triggers | Actions
 --- | ---
-なし | <ul><li>Web を検索する</li><li>動画を検索する</li><li>画像を検索する</li><li>ニュースを検索する</li><li>関連項目を検索する</li><li>候補を検索する</li><li>すべてを検索する</li></ul>
+None | <ul><li>Search web</li><li>Search videos</li><li>Search images</li><li>Search news</li><li>Search related</li><li>Search spellings</li><li>Search all</li></ul>
 
-すべてのコネクタは、JSON および XML 形式のデータに対応します。
+All connectors support data in JSON and XML formats.
 
 
-## Swagger REST API リファレンス
-適用されるバージョン: 1.0。
+## <a name="swagger-rest-api-reference"></a>Swagger REST API reference
+Applies to version: 1.0.
 
-### Web を検索する 
-Bing Search から Web サイトを取得します。```GET: /Web```
+### <a name="search-web"></a>Search web 
+Retrieves web sites from a Bing search.  
+```GET: /Web```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|query|string|○|query|なし |検索するテキスト (例: 'xbox')|
-|maxResult|integer|×|query|なし |返される結果の最大数|
-|startOffset|integer|×|query| なし|スキップする結果の数|
-|adultContent|string|×|query|なし |成人向けコンテンツ フィルター。有効な値は次のとおりです。<ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
-|market|string|×|query|なし |検索を絞り込む市場または地域 (例: ja-JP)|
-|longitude|number|×|query| なし|検索を絞り込む経度 (東西の座標、例: 47.603450)|
-|latitude|number|×|query| なし|検索を絞り込む緯度 (南北の座標、例: -122.329696)|
-|webFileType|string|×|query|なし |検索を絞り込むファイルの種類 (例: 'DOC')|
+|query|string|yes|query|none |Text to search for (example: 'xbox')|
+|maxResult|integer|no|query|none |Maximum number of results to return|
+|startOffset|integer|no|query| none|Number of results to skip|
+|adultContent|string|no|query|none |Adult content filter. Valid values: <ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
+|market|string|no|query|none |Market or region to narrow the search (example: en-US)|
+|longitude|number|no|query| none|Longitude (east/west coordinate) to narrow the search (example: 47.603450)|
+|latitude|number|no|query| none|Latitude (north/south coordinate) to narrow the search (example: -122.329696)|
+|webFileType|string|no|query|none |File type to narrow the search (example: 'DOC')|
 
-#### 応答
-|Name|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### 動画を検索する 
-Bing Search から動画を取得します。```GET: /Video```
+### <a name="search-videos"></a>Search videos 
+Retrieves videos from a Bing search.  
+```GET: /Video```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|query|string|○|query|なし |検索するテキスト (例: 'xbox')|
-|maxResult|integer|×|query| なし|返される結果の最大数|
-|startOffset|integer|×|query|なし |スキップする結果の数|
-|adultContent|string|×|query|なし |成人向けコンテンツ フィルター。有効な値は次のとおりです。<ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
-|market|string|×|query|なし |検索を絞り込む市場または地域 (例: ja-JP)|
-|longitude|number|×|query|なし |検索を絞り込む経度 (東西の座標、例: 47.603450)|
-|latitude|number|×|query|なし |検索を絞り込む緯度 (南北の座標、例: -122.329696)|
-|videoFilters|string|×|query|なし |サイズ、縦横比、イベント ログ、スタイル、向き、またはそれらの組み合わせに基づいて検索をフィルター処理します。有効な値は次のとおりです。<ul><li>Duration:Short</li><li>Duration:Medium</li><li>Duration:Long</li><li>Aspect:Standard</li><li>Aspect:Widescreen</li><li>Resolution:Low</li><li>Resolution:Medium</li><li>Resolution:High</li></ul> <br/>例: 'Duration:Short+Resolution:High'<br/>|
-|videoSortBy|string|×|query|なし |結果の並べ替え順。有効な値は次のとおりです。<ul><li>Date</li><li>Relevance</li></ul> <p>日付の並べ替え順序は降順です。</p>|
+|query|string|yes|query|none |Text to search for (example: 'xbox')|
+|maxResult|integer|no|query| none|Maximum number of results to return|
+|startOffset|integer|no|query|none |Number of results to skip|
+|adultContent|string|no|query|none |Adult content filter. Valid values: <ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
+|market|string|no|query|none |Market or region to narrow the search (example: en-US)|
+|longitude|number|no|query|none |Longitude (east/west coordinate) to narrow the search (example: 47.603450)|
+|latitude|number|no|query|none |Latitude (north/south coordinate) to narrow the search (example: -122.329696)|
+|videoFilters|string|no|query|none |Filter search based on size, aspect, color, style, face or any combination thereof.  Valid values: <ul><li>Duration:Short</li><li>Duration:Medium</li><li>Duration:Long</li><li>Aspect:Standard</li><li>Aspect:Widescreen</li><li>Resolution:Low</li><li>Resolution:Medium</li><li>Resolution:High</li></ul> <br/><br/>For example: 'Duration:Short+Resolution:High'|
+|videoSortBy|string|no|query|none |Sort order for results. Valid values: <ul><li>Date</li><li>Relevance</li></ul> <p>Date sort order implies descending.</p>|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### 画像を検索する    
-Bing Search から画像を取得します。```GET: /Image```
+### <a name="search-images"></a>Search images    
+Retrieves images from a Bing search.  
+```GET: /Image```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|query|string|○|query|なし |検索するテキスト (例: 'xbox')|
-|maxResult|integer|×|query|なし |返される結果の最大数|
-|startOffset|integer|×|query|なし |スキップする結果の数|
-|adultContent|string|×|query|なし |成人向けコンテンツ フィルター。有効な値は次のとおりです。<ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
-|market|string|×|query|なし |検索を絞り込む市場または地域 (例: ja-JP)|
-|longitude|number|×|query| なし|検索を絞り込む経度 (東西の座標、例: 47.603450)|
-|latitude|number|×|query|なし |検索を絞り込む緯度 (南北の座標、例: -122.329696)|
-|imageFilters|string|×|query|なし |サイズ、縦横比、イベント ログ、スタイル、向き、またはそれらの組み合わせに基づいて検索をフィルター処理します。有効な値は次のとおりです。<ul><li>Size:Small</li><li>Size:Medium</li><li>Size:Large</li><li>Size:Width:[Width]</li><li>Size:Height:[Height]</li><li>Aspect:Square</li><li>Aspect:Wide</li><li>Aspect:Tall</li><li>Color:Color</li><li>Color:Monochrome</li><li>Style:Photo</li><li>Style:Graphics</li><li>Face:Face</li><li>Face:Portrait</li><li>Face:Other</li></ul><br/>例: 'Size:Small+Aspect:Square'<br/>|
+|query|string|yes|query|none |Text to search for (example: 'xbox')|
+|maxResult|integer|no|query|none |Maximum number of results to return|
+|startOffset|integer|no|query|none |Number of results to skip|
+|adultContent|string|no|query|none |Adult content filter. Valid values: <ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
+|market|string|no|query|none |Market or region to narrow the search (example: en-US)|
+|longitude|number|no|query| none|Longitude (east/west coordinate) to narrow the search (example: 47.603450)|
+|latitude|number|no|query|none |Latitude (north/south coordinate) to narrow the search (example: -122.329696)|
+|imageFilters|string|no|query|none |Filter search based on size, aspect, color, style, face or any combination thereof. Valid values: <ul><li>Size:Small</li><li>Size:Medium</li><li>Size:Large</li><li>Size:Width:[Width]</li><li>Size:Height:[Height]</li><li>Aspect:Square</li><li>Aspect:Wide</li><li>Aspect:Tall</li><li>Color:Color</li><li>Color:Monochrome</li><li>Style:Photo</li><li>Style:Graphics</li><li>Face:Face</li><li>Face:Portrait</li><li>Face:Other</li></ul><br/><br/>For example: 'Size:Small+Aspect:Square'|
 
-#### 応答
-|Name|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### ニュースを検索する    
-Bing Search からニュースの検索結果を取得します。```GET: /News```
+### <a name="search-news"></a>Search news    
+Retrieves news results from a Bing search.  
+```GET: /News```
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|query|string|○|query|なし |検索するテキスト (例: 'xbox')|
-|maxResult|integer|×|query|なし |返される結果の最大数|
-|startOffset|integer|×|query| なし|スキップする結果の数|
-|adultContent|string|×|query|なし |成人向けコンテンツ フィルター。有効な値は次のとおりです。<ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
-|market|string|×|query|なし |検索を絞り込む市場または地域 (例: ja-JP)|
-|longitude|number|×|query|なし |検索を絞り込む経度 (東西の座標、例: 47.603450)|
-|latitude|number|×|query|なし |検索を絞り込む緯度 (南北の座標、例: -122.329696)|
-|newsSortBy|string|×|query| なし|結果の並べ替え順。有効な値は次のとおりです。<ul><li>Date</li><li>Relevance</li></ul> <p>日付の並べ替え順序は降順です。</p>|
-|newsCategory|string|×|query| |検索を絞り込むニュースのカテゴリ (例: 'rt\_Business')|
-|newsLocationOverride|string|×|query|なし |Bing の場所検出を上書きします。このパラメーターは、ja-JP 市場でのみ使用できます。入力形式は、US./<州/> (例: 'US.WA') です。|
+|query|string|yes|query|none |Text to search for (example: 'xbox')|
+|maxResult|integer|no|query|none |Maximum number of results to return|
+|startOffset|integer|no|query| none|Number of results to skip|
+|adultContent|string|no|query|none |Adult content filter. Valid values: <ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
+|market|string|no|query|none |Market or region to narrow the search (example: en-US)|
+|longitude|number|no|query|none |Longitude (east/west coordinate) to narrow the search (example: 47.603450)|
+|latitude|number|no|query|none |Latitude (north/south coordinate) to narrow the search (example: -122.329696)|
+|newsSortBy|string|no|query| none|Sort order for results. Valid values: <ul><li>Date</li><li>Relevance</li></ul> <p>Date sort order implies descending.</p>|
+|newsCategory|string|no|query| |Category of news to narrow the search (example: 'rt_Business')|
+|newsLocationOverride|string|no|query|none |Override for Bing location detection. This parameter is only applicable in en-US market. The format for input is US./<state /> (example: 'US.WA')|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### 候補を検索する    
-検索候補を取得します。```GET: /SpellingSuggestions```
+### <a name="search-spellings"></a>Search spellings    
+Retrieves spelling suggestions.  
+```GET: /SpellingSuggestions```
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|query|string|○|query| なし|検索するテキスト (例: 'xbox')|
-|maxResult|integer|×|query|なし |返される結果の最大数|
-|startOffset|integer|×|query| なし|スキップする結果の数|
-|adultContent|string|×|query|なし |成人向けコンテンツ フィルター。有効な値は次のとおりです。<ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
-|market|string|×|query| なし|検索を絞り込む市場または地域 (例: ja-JP)|
-|longitude|number|×|query|なし |検索を絞り込む経度 (東西の座標、例: 47.603450)|
-|latitude|number|×|query|なし |検索を絞り込む緯度 (南北の座標、例: -122.329696)|
+|query|string|yes|query| none|Text to search for (example: 'xbox')|
+|maxResult|integer|no|query|none |Maximum number of results to return|
+|startOffset|integer|no|query| none|Number of results to skip|
+|adultContent|string|no|query|none |Adult content filter. Valid values: <ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
+|market|string|no|query| none|Market or region to narrow the search (example: en-US)|
+|longitude|number|no|query|none |Longitude (east/west coordinate) to narrow the search (example: 47.603450)|
+|latitude|number|no|query|none |Latitude (north/south coordinate) to narrow the search (example: -122.329696)|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### 関連項目を検索する    
-Bing Search から関連する検索結果を取得します。```GET: /RelatedSearch```
+### <a name="search-related"></a>Search related    
+Retrieves related search results from a Bing search.  
+```GET: /RelatedSearch```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|query|string|○|query|なし |検索するテキスト (例: 'xbox')|
-|maxResult|integer|×|query|なし |返される結果の最大数|
-|startOffset|integer|×|query| なし|スキップする結果の数|
-|adultContent|string|×|query|なし |成人向けコンテンツ フィルター。有効な値は次のとおりです。<ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
-|market|string|×|query|なし |検索を絞り込む市場または地域 (例: ja-JP)|
-|longitude|number|×|query|なし |検索を絞り込む経度 (東西の座標、例: 47.603450)|
-|latitude|number|×|query| なし|検索を絞り込む緯度 (南北の座標、例: -122.329696)|
+|query|string|yes|query|none |Text to search for (example: 'xbox')|
+|maxResult|integer|no|query|none |Maximum number of results to return|
+|startOffset|integer|no|query| none|Number of results to skip|
+|adultContent|string|no|query|none |Adult content filter. Valid values: <ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
+|market|string|no|query|none |Market or region to narrow the search (example: en-US)|
+|longitude|number|no|query|none |Longitude (east/west coordinate) to narrow the search (example: 47.603450)|
+|latitude|number|no|query| none|Latitude (north/south coordinate) to narrow the search (example: -122.329696)|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### すべてを検索する    
-Bing Search から Web サイト、動画、画像など、すべてを取得します。```GET: /CompositeSearch```
+### <a name="search-all"></a>Search all    
+Retrieves all web sites, videos, images, etc. from a Bing search.  
+```GET: /CompositeSearch```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|query|string|○|query|なし |検索するテキスト (例: 'xbox')|
-|maxResult|integer|×|query|なし |返される結果の最大数|
-|startOffset|integer|×|query|なし |スキップする結果の数|
-|adultContent|string|×|query|なし |成人向けコンテンツ フィルター。有効な値は次のとおりです。<ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
-|market|string|×|query|なし |検索を絞り込む市場または地域 (例: ja-JP)|
-|longitude|number|×|query|なし |検索を絞り込む経度 (東西の座標、例: 47.603450)|
-|latitude|number|×|query|なし |検索を絞り込む緯度 (南北の座標、例: -122.329696)|
-|webFileType|string|×|query|なし |検索を絞り込むファイルの種類 (例: 'DOC')|
-|videoFilters|string|×|query|なし |サイズ、縦横比、イベント ログ、スタイル、向き、またはそれらの組み合わせに基づいて検索をフィルター処理します。有効な値は次のとおりです。<ul><li>Duration:Short</li><li>Duration:Medium</li><li>Duration:Long</li><li>Aspect:Standard</li><li>Aspect:Widescreen</li><li>Resolution:Low</li><li>Resolution:Medium</li><li>Resolution:High</li></ul> <br/>例: 'Duration:Short+Resolution:High'<br/>|
-|videoSortBy|string|×|query|なし |結果の並べ替え順。有効な値は次のとおりです。<ul><li>Date</li><li>Relevance</li></ul> <p>日付の並べ替え順序は降順です。</p>|
-|imageFilters|string|×|query|なし |サイズ、縦横比、イベント ログ、スタイル、向き、またはそれらの組み合わせに基づいて検索をフィルター処理します。有効な値は次のとおりです。<ul><li>Size:Small</li><li>Size:Medium</li><li>Size:Large</li><li>Size:Width:[Width]</li><li>Size:Height:[Height]</li><li>Aspect:Square</li><li>Aspect:Wide</li><li>Aspect:Tall</li><li>Color:Color</li><li>Color:Monochrome</li><li>Style:Photo</li><li>Style:Graphics</li><li>Face:Face</li><li>Face:Portrait</li><li>Face:Other</li></ul><br/>例: 'Size:Small+Aspect:Square'<br/>|
-|newsSortBy|string|×|query|なし |結果の並べ替え順。有効な値は次のとおりです。<ul><li>Date</li><li>Relevance</li></ul> <p>日付の並べ替え順序は降順です。</p>|
-|newsCategory|string|×|query|なし |検索を絞り込むニュースのカテゴリ (例: 'rt\_Business')|
-|newsLocationOverride|string|×|query|なし |Bing の場所検出を上書きします。このパラメーターは、ja-JP 市場でのみ使用できます。入力形式は、US./<州/> (例: 'US.WA') です。|
+|query|string|yes|query|none |Text to search for (example: 'xbox')|
+|maxResult|integer|no|query|none |Maximum number of results to return|
+|startOffset|integer|no|query|none |Number of results to skip|
+|adultContent|string|no|query|none |Adult content filter. Valid values: <ul><li>Off</li><li>Moderate</li><li>Strict</li></ul>|
+|market|string|no|query|none |Market or region to narrow the search (example: en-US)|
+|longitude|number|no|query|none |Longitude (east/west coordinate) to narrow the search (example: 47.603450)|
+|latitude|number|no|query|none |Latitude (north/south coordinate) to narrow the search (example: -122.329696)|
+|webFileType|string|no|query|none |File type to narrow the search (example: 'DOC')|
+|videoFilters|string|no|query|none |Filter search based on size, aspect, color, style, face or any combination thereof.  Valid values: <ul><li>Duration:Short</li><li>Duration:Medium</li><li>Duration:Long</li><li>Aspect:Standard</li><li>Aspect:Widescreen</li><li>Resolution:Low</li><li>Resolution:Medium</li><li>Resolution:High</li></ul> <br/><br/>For example: 'Duration:Short+Resolution:High'|
+|videoSortBy|string|no|query|none |Sort order for results. Valid values: <ul><li>Date</li><li>Relevance</li></ul> <p>Date sort order implies descending.</p>|
+|imageFilters|string|no|query|none |Filter search based on size, aspect, color, style, face or any combination thereof. Valid values: <ul><li>Size:Small</li><li>Size:Medium</li><li>Size:Large</li><li>Size:Width:[Width]</li><li>Size:Height:[Height]</li><li>Aspect:Square</li><li>Aspect:Wide</li><li>Aspect:Tall</li><li>Color:Color</li><li>Color:Monochrome</li><li>Style:Photo</li><li>Style:Graphics</li><li>Face:Face</li><li>Face:Portrait</li><li>Face:Other</li></ul><br/><br/>For example: 'Size:Small+Aspect:Square'|
+|newsSortBy|string|no|query|none |Sort order for results. Valid values: <ul><li>Date</li><li>Relevance</li></ul> <p>Date sort order implies descending.</p>|
+|newsCategory|string|no|query|none |Category of news to narrow the search (example: 'rt_Business')|
+|newsLocationOverride|string|no|query|none |Override for Bing location detection. This parameter is only applicable in en-US market. The format for input is US./<state /> (example: 'US.WA')|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-## オブジェクト定義
+## <a name="object-definitions"></a>Object definitions
 
-#### WebResultModel: Bing の Web 検索結果
+#### <a name="webresultmodel:-bing-web-search-results"></a>WebResultModel: Bing web search results
 
-|プロパティ名 | データ型 | 必須 |
+|Property Name | Data Type | Required |
 |---|---|---|
-|タイトル|string|×|
-|Description|string|×|
-|DisplayUrl|string|×|
-|ID|string|×|
-|FullUrl|string|×|
+|Title|string|no|
+|Description|string|no|
+|DisplayUrl|string|no|
+|Id|string|no|
+|FullUrl|string|no|
 
-#### VideoResultModel: Bing の動画検索結果
+#### <a name="videoresultmodel:-bing-video-search-results"></a>VideoResultModel: Bing video search results
 
-|プロパティ名 | データ型 |必須 |
+|Property Name | Data Type |Required |
 |---|---|---|
-|タイトル|string|×|
-|DisplayUrl|string|×|
-|ID|string|×|
-|MediaUrl|string|×|
-|ランタイム|integer|×|
-|サムネイル|未定義|×|
+|Title|string|no|
+|DisplayUrl|string|no|
+|Id|string|no|
+|MediaUrl|string|no|
+|Runtime|integer|no|
+|Thumbnail|not defined|no|
 
-#### ThumbnailModel: マルチメディア要素のサムネイルのプロパティ
+#### <a name="thumbnailmodel:-thumbnail-properties-of-the-multimedia-element"></a>ThumbnailModel: Thumbnail properties of the multimedia element
 
-|プロパティ名 | データ型 |必須 |
+|Property Name | Data Type |Required |
 |---|---|---|
-|MediaUrl|string|×|
-|ContentType|string|×|
-|幅|integer|×|
-|高さ|integer|×|
-|FileSize|integer|×|
+|MediaUrl|string|no|
+|ContentType|string|no|
+|Width|integer|no|
+|Height|integer|no|
+|FileSize|integer|no|
 
-#### ImageResultModel: Bing の画像検索結果
+#### <a name="imageresultmodel:-bing-image-search-results"></a>ImageResultModel: Bing image search results
 
-|プロパティ名 | データ型 |必須 |
+|Property Name | Data Type |Required |
 |---|---|---|
-|タイトル|string|×|
-|DisplayUrl|string|×|
-|ID|string|×|
-|MediaUrl|string|×|
-|SourceUrl|string|×|
-|サムネイル|未定義|×|
+|Title|string|no|
+|DisplayUrl|string|no|
+|Id|string|no|
+|MediaUrl|string|no|
+|SourceUrl|string|no|
+|Thumbnail|not defined|no|
 
-#### NewsResultModel: Bing のニュース検索結果
+#### <a name="newsresultmodel:-bing-news-search-results"></a>NewsResultModel: Bing news search results
 
-|プロパティ名 | データ型 |必須 |
+|Property Name | Data Type |Required |
 |---|---|---|
-|タイトル|string|×|
-|Description|string|×|
-|DisplayUrl|string|×|
-|ID|string|×|
-|から|string|×|
-|Date|string|×|
+|Title|string|no|
+|Description|string|no|
+|DisplayUrl|string|no|
+|Id|string|no|
+|Source|string|no|
+|Date|string|no|
 
-#### SpellResultModel: Bing の候補の検索結果
+#### <a name="spellresultmodel:-bing-spelling-suggestions-results"></a>SpellResultModel: Bing spelling suggestions results
 
-|プロパティ名 | データ型 |必須 |
+|Property Name | Data Type |Required |
 |---|---|---|
-|ID|string|×|
-|値|string|×|
+|Id|string|no|
+|Value|string|no|
 
-#### RelatedSearchResultModel: Bing の関連項目の検索結果
+#### <a name="relatedsearchresultmodel:-bing-related-search-results"></a>RelatedSearchResultModel: Bing related search results
 
-|プロパティ名 | データ型 |必須 |
+|Property Name | Data Type |Required |
 |---|---|---|
-|タイトル|string|×|
-|ID|string|×|
-|BingUrl|string|×|
+|Title|string|no|
+|Id|string|no|
+|BingUrl|string|no|
 
-#### CompositeSearchResultModel: Bing の複合検索結果
+#### <a name="compositesearchresultmodel:-bing-composite-search-results"></a>CompositeSearchResultModel: Bing composite search results
 
-|プロパティ名 | データ型 |必須 |
+|Property Name | Data Type |Required |
 |---|---|---|
-|WebResultsTotal|integer|×|
-|ImageResultsTotal|integer|×|
-|VideoResultsTotal|integer|×|
-|NewsResultsTotal|integer|×|
-|SpellSuggestionsTotal|integer|×|
-|WebResults|array|×|
-|ImageResults|array|×|
-|VideoResults|array|×|
-|NewsResults|array|×|
-|SpellSuggestionResults|array|×|
-|RelatedSearchResults|array|×|
+|WebResultsTotal|integer|no|
+|ImageResultsTotal|integer|no|
+|VideoResultsTotal|integer|no|
+|NewsResultsTotal|integer|no|
+|SpellSuggestionsTotal|integer|no|
+|WebResults|array|no|
+|ImageResults|array|no|
+|VideoResults|array|no|
+|NewsResults|array|no|
+|SpellSuggestionResults|array|no|
+|RelatedSearchResults|array|no|
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-[API リスト](apis-list.md)に戻ります。
+Go back to the [APIs list](apis-list.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

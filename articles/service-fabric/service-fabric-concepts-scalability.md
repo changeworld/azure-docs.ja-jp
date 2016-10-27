@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric サービスの拡張性 | Microsoft Azure"
-   description="Service Fabric サービスの拡張方法を説明する"
+   pageTitle="Scalability of Service Fabric services | Microsoft Azure"
+   description="Describes how to scale Service Fabric services"
    services="service-fabric"
    documentationCenter=".net"
    authors="appi101"
@@ -16,48 +16,53 @@
    ms.date="08/10/2016"
    ms.author="aprameyr"/>
 
-# Service Fabric アプリケーションのスケーリング
-Azure Service Fabric により、クラスターのすべてのノードのサービス、パーティション、およびレプリカの負荷分散を実施することにより、スケーラブルなアプリケーションを簡単に構築できます。これにより、リソースを最大限活用できます。
 
-Service Fabric アプリケーションの高い拡張性は、次の 2 つの方法で実現できます。
+# <a name="scaling-service-fabric-applications"></a>Scaling Service Fabric applications
+Azure Service Fabric makes it easy to build scalable applications by load-balancing services, partitions, and replicas on all the nodes in a cluster. This enables maximum resource utilization.
 
-1. パーティション レベルでのスケーリング
+High scale for Service Fabric applications can be achieved in two ways:
 
-2. サービス名レベルでのスケーリング
+1. Scaling at the partition level
 
-## パーティション レベルでのスケーリング
-Service Fabric では、個々 のサービスを複数の小さいパーティションにパーティション分割することをサポートします。「[パーティション分割の概要](service-fabric-concepts-partitioning.md)」では、サポートされているパーティション構成の種類に関する情報を提供します。各パーティションのレプリカが、クラスター内のノードに分散します。低値キー 0、高値キー 99、および 4 つのパーティションを持つ、範囲指定されたパーティション分割構成を使用したサービスを検討してください。3 ノード クラスターでは、サービスを次に示すように、各ノード上のリソースを共有する 4 つのレプリカでレイアウトする可能性があります。
+2. Scaling at the service name level
 
-![3 つのノードでのパーティション レイアウト](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
+## <a name="scaling-at-the-partition-level"></a>Scaling at the partition level
+Service Fabric supports partitioning an individual service into multiple smaller partitions. The [partitioning overview](service-fabric-concepts-partitioning.md) provides information on the types of partitioning schemes that are supported. The replicas of each partition are spread across the nodes in a cluster. Consider a service that uses a ranged partitioning scheme with a low key of 0, a high key of 99, and four partitions. In a three-node cluster, the service might be laid out with four replicas that share the resources on each node as shown here:
 
-ノードの数を増やすと、レプリカの一部を空のノードに移動して、Service Fabric が新しいノード上のリソースを利用できるようになります。ノードの数を 4 つに増やすと、サービスには (別のパーティションの) 各ノードで実行されている 3 つのレプリカがあり、リソース使用率とパフォーマンスを向上できます。
+![Partition layout with three nodes](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 
-![4 つのノードでのパーティション レイアウト](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+Increasing the number of nodes allows Service Fabric to utilize the resources on the new nodes by moving some of the replicas to empty nodes. By increasing the number of nodes to four, the service now has three replicas running on each node (of different partitions), allowing for better resource utilization and performance.
 
-## サービス名レベルでのスケーリング
-サービス インスタンスとは、アプリケーション名とサービスの種類名の特定のインスタンスです (「[Service Fabric アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)」を参照)。サービスの作成時に使用するパーティション構成を指定します (「[Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)」を参照)。
+![Partition layout with four nodes](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
 
-スケーリングの最初のレベルは、サービス名です。古いサービス インスタンスがビジー状態になったら、さまざまなレベルのパーティション分割を使用して、サービスの新しいインスタンスを作成できます。これにより、新しいサービス コンシューマーは、ビジー状態のサービス インスタンスよりも、ビジー状態でないものを使用することができます。
+## <a name="scaling-at-the-service-name-level"></a>Scaling at the service name level
+A service instance is a specific instance of an application name and a service type name (see [Service Fabric application life cycle](service-fabric-application-lifecycle.md)). During the creation of a service, you specify the partition scheme (see [Partitioning Service Fabric services](service-fabric-concepts-partitioning.md)) to be used.
 
-容量を増やすか、パーティションの数を増減するオプションにより、新しいパーティション構成で新しいサービス インスタンスを作成します。使用中のクライアントが、別の名前のサービスを使用するタイミングと方法を知る必要がある場合は、作業が複雑になります。
+The first level of scaling is by service name. You can create new instances of a service, with different levels of partitioning, as your older service instances become busy. This allows new service consumers to use less-busy service instances, rather than busier ones.
 
-### シナリオの例: 埋め込みの日付
-可能性のあるシナリオの 1 つとして、サービス名の一部としての日付の情報を使用する場合があります。たとえば、2013 年に参加したすべての顧客に対して特定の名前のサービス インスタンスを使用し、2014 年に参加した顧客に対して別の名前のサービス インスタンスを使用できます。この名前付けスキームでは、日付に応じてプログラムによって名前を増やすことができます (2014 年の方法では、2014 年のサービス インスタンスを要求に応じて作成できます)。
+One option for increasing capacity, as well as increasing or decreasing partition counts, is to create a new service instance with a new partition scheme. This adds complexity, though, as any consuming clients need to know when and how to use the differently named service.
 
-ただし、この方法は、Service Fabric の知識の範囲外にあるアプリケーション固有の名前付け情報を使用するクライアントに基づきます。
+### <a name="example-scenario:-embedded-dates"></a>Example scenario: Embedded dates
+One possible scenario would be to use date information as part of the service name. For example, you could use a service instance with a specific name for all customers who joined in 2013 and another name for customers who joined in 2014. This naming scheme allows for programmatically increasing the names depending on the date (as 2014 approaches, the service instance for 2014 can be created on demand).
 
-- *名前付けの規則を使用する*: 2013 年のアプリケーション運用時に、fabric:/app/service2013 という 1 つのサービスを作成します。2013 年の第 2 四半期に近づくと、fabric:/app/service2014 という別のサービスを作成します。これらの両方のサービスは、同じサービス型です。この方法では、クライアントは、年に基づいて適切なサービス名を構築するロジックを使用する必要があります。
+However, this approach is based on the clients using application-specific naming information that is outside the scope of Service Fabric knowledge.
 
-- *検索サービスを使用する*: 別のパターンでは、必要なキーに対してサービス名を提供できるようにするセカンダリ参照サービスを提供します。新しいサービス インスタンスは、参照サービスによって作成できます。参照サービス自体では、アプリケーション データは保持せず、作成するサービス名についてのデータのみ保持します。そのため、上記の年ベースの例では、クライアントは最初に参照サービスに問い合わせて、特定の年のデータを処理するサービスの名前を確認し、次にそのサービス名を使用して、実際の操作を実行します。最初の参照の結果は、キャッシュすることができます。
+- *Using a naming convention*: In 2013, when your application goes live, you create a service called fabric:/app/service2013. Near the second quarter of 2013, you create another service, called fabric:/app/service2014. Both of these services are of the same service type. In this approach, your client will need to employ logic to construct the appropriate service name based on the year.
 
-## 次のステップ
+- *Using a lookup service*: Another pattern is to provide a secondary lookup service, which can provide the name of the service for a desired key. New service instances can then be created by the lookup service. The lookup service itself doesn't retain any application data, only data about the service names that it creates. Thus, for the year-based example above, the client would first contact the lookup service to find out the name of the service handling data for a given year, and then use that service name for performing the actual operation. The result of the first lookup can be cached.
 
-Service Fabric の概念の詳細については、次を参照してください。
+## <a name="next-steps"></a>Next steps
 
-- [Service Fabric サービスの可用性](service-fabric-availability-services.md)
+For more information on Service Fabric concepts, see the following:
 
-- [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
+- [Availability of Service Fabric services](service-fabric-availability-services.md)
 
-- [状態の定義と管理](service-fabric-concepts-state.md)
+- [Partitioning Service Fabric services](service-fabric-concepts-partitioning.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+- [Defining and managing state](service-fabric-concepts-state.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

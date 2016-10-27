@@ -1,67 +1,72 @@
 <properties
-	pageTitle="Azure Active Directory プレビューで自分のグループが属するグループを管理する | Microsoft Azure"
-	description="Azure Active Directory でグループに他のグループを含めることができます。ここでは、これらのメンバーシップを管理する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="femila"
-	editor=""/>
+    pageTitle="Manage the groups your group is a member of in Azure Active Directory preview | Microsoft Azure"
+    description="Groups can contain other groups in Azure Active Directory. Here's how to manage those memberships."
+    services="active-directory"
+    documentationCenter=""
+    authors="curtand"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/12/2016"
-	ms.author="curtand"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/12/2016"
+    ms.author="curtand"/>
 
 
-# Azure Active Directory プレビューで自分のグループが属するグループを管理する
 
-Azure Active Directory プレビューでグループに他のグループを含めることができます。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 ここでは、これらのメンバーシップを管理する方法について説明します。
+# <a name="manage-the-groups-your-group-is-a-member-of-in-azure-active-directory-preview"></a>Manage the groups your group is a member of in Azure Active Directory preview
 
-## 自分のグループが属するグループを見つける方法
+Groups can contain other groups in Azure Active Directory preview. [What's in the preview?](active-directory-preview-explainer.md) Here's how to manage those memberships.
 
-1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
+## <a name="how-do-i-find-the-groups-my-group-is-a-member-of?"></a>How do I find the groups my group is a member of?
 
-2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
+1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
 
-  ![ユーザー管理を開く](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
+2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
 
-3.  **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
+  ![Opening user management](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
 
-  ![グループ ブレードを開く](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
+3.  On the **Users and groups** blade, select **All groups**.
 
-4. **[ユーザーとグループ - すべてのグループ]** ブレードで、グループを選択します。
+  ![Opening the groups blade](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
 
-5. **[グループ - *グループ名*]** ブレードで、**[グループ メンバーシップ]** を選択します。
+4. On the **Users and groups - All groups** blade, select a group.
 
-  ![グループ メンバーシップ ブレードを開く](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
+5. On the **Group - *groupname*** blade, select **Group memberships**.
 
-6. グループを別のグループのメンバーとして追加するには、**[グループ - グループ メンバーシップ]** ブレードで、**[追加]** をクリックします。
+  ![Opening the group memberships blade](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
 
-7. **[グループの選択]** ブレードでグループを選択し、ブレードの下部にある **[選択]** をクリックします。グループは、一度に 1 つのグループにのみ追加できます。**[ユーザー]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。このボックスではワイルドカード文字は使用できません。
+6. To add your group as a member of another group, on the **Group - Group memberships** blade, select the **Add** command.
 
-  ![グループ メンバーシップを追加する](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
+7. Select a group from the **Select Group** blade, and then select the **Select** button at the bottom of the blade. You can add your group to only one group at a time. The **User** box filters the display based on matching your entry to any part of a user or device name. No wildcard characters are accepted in that box.
 
-8. 別のグループのメンバーであるグループを削除するには、**[グループ - グループ メンバーシップ]** ブレードでグループを選択します。
+  ![Add a group membership](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
 
-9. **[*グループ名*]** ブレードで **[削除]** をクリックし、表示されたメッセージで削除を確定します。
+8. To remove your group as a member of another group, on the **Group - Group memberships** blade, select a group.
 
-  ![メンバーシップの [削除] コマンド](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
+9. On the ***groupname*** blade, select the **Remove** command, and confirm your choice at the prompt.
 
-9. グループのグループ メンバーシップの変更が完了したら、**[保存]** をクリックします。
+  ![remove membership command](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
+
+9. When you finish changing group memberships for your group, select **Save**.
 
 
-## 追加情報
+## <a name="additional-information"></a>Additional information
 
-次の記事は、Azure Active Directory に関する追加情報を示します。
+These articles provide additional information on Azure Active Directory.
 
-* [既存のグループの表示](active-directory-groups-view-azure-portal.md)
-* [新しいグループの作成とメンバーの追加](active-directory-groups-create-azure-portal.md)
-* [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
-* [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
-* [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
+* [See existing groups](active-directory-groups-view-azure-portal.md)
+* [Create a new group and adding members](active-directory-groups-create-azure-portal.md)
+* [Manage settings of a group](active-directory-groups-settings-azure-portal.md)
+* [Manage members of a group](active-directory-groups-members-azure-portal.md)
+* [Manage dynamic rules for users in a group](active-directory-groups-dynamic-membership-azure-portal.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,86 +1,91 @@
 <properties
-	pageTitle="Azure Search とは | Microsoft Azure | ホスト型クラウド検索サービス"
-	description="Azure Search は完全に管理されたホスト型クラウド検索サービスです。この機能の概要で詳しく説明します。"
-	services="search"
-	authors="ashmaka"
-	documentationCenter=""/>
+    pageTitle="What is Azure Search | Microsoft Azure | Hosted cloud search service"
+    description="Azure Search is a fully-managed hosted cloud search service. Learn more in this feature overview."
+    services="search"
+    authors="ashmaka"
+    documentationCenter=""/>
 
 <tags
-	ms.service="search"
-	ms.devlang="NA"
-	ms.workload="search"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.date="08/29/2016"
-	ms.author="ashmaka"/>
+    ms.service="search"
+    ms.devlang="NA"
+    ms.workload="search"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.date="08/29/2016"
+    ms.author="ashmaka"/>
 
-# Azure Search とは
 
-Azure Search は、サーバーとインフラストラクチャの管理を Microsoft に委任するクラウドの Search-as-a-service (サービスとしての検索) ソリューションです。データを取り込んだら、Web サイトやモバイル アプリケーションに検索機能を追加して、すぐに利用を開始できます。簡単な [REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) または [.NET SDK](search-howto-dotnet-sdk.md) を使用してアプリケーションに強力な検索エクスペリエンスを簡単に追加できるので、検索インフラストラクチャを管理する必要も、検索のエキスパートになる必要もありません。
+# <a name="what-is-azure-search?"></a>What is Azure Search?
 
-## ユーザーに強力な検索エクスペリエンスを提供する
+Azure Search is a cloud search-as-a-service solution that delegates server and infrastructure management to Microsoft, leaving you with a ready-to-use service that you can populate with your data and then use to add search to your web or mobile application. Azure Search allows you to easily add a robust search experience to your applications using a simple [REST API](https://msdn.microsoft.com/library/azure/dn798935.aspx) or [.NET SDK](search-howto-dotnet-sdk.md) without managing search infrastructure or becoming an expert in search.
 
-論理演算子、語句検索演算子、後置演算子、優先順位の演算子などを使用した**強力なクエリ** を[簡単なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)で作成できます。さらに、[Lucene クエリ構文](https://msdn.microsoft.com/library/azure/mt589323.aspx)では、あいまい検索、近接検索、項目ブースト、および正規表現を有効にすることができます。さらに、Azure Search は、アプリケーションで発音照合と正規表現を使用して、複雑な検索クエリを処理できるカスタム字句アナライザーもサポートしています。
+## <a name="give-your-users-a-powerful-search-experience"></a>Give your users a powerful search experience
 
-56 種類の言語について、**言語サポート**が[含まれています](https://msdn.microsoft.com/library/azure/dn879793.aspx)。Lucene アナライザーと Microsoft アナライザー (Office および Bing での長年にわたる自然言語処理により改良されています) の両方を使用することで、Azure Search はアプリケーションの検索ボックス内のテキストを分析し、動詞の時制や名詞の性、不規則な複数形の名詞 (例: 'mouse' と 'mice')、二重複合語、(スペースを使用しない言語の) 改行などをインテリジェントに処理できます。
+**Powerful queries** can be formulated using the [simple query syntax](https://msdn.microsoft.com/library/azure/dn798920.aspx), which offers logical operators, phrase search operators, suffix operators, precedence operators. Additionally, the [Lucene query syntax](https://msdn.microsoft.com/library/azure/mt589323.aspx) can enable fuzzy search, proximity search, term boosting, and regular expressions. Azure Search also supports custom lexical analyzers to allow your application to handle complex search queries using phonetic matching and regular expressions.
 
-オートコンプリート入力検索バーおよび先行入力クエリで、**検索候補**を有効にすることができます。ユーザーが検索入力の一部を入力すると、[インデックス内の実際のドキュメントが提案されます。](https://msdn.microsoft.com/library/azure/dn798936.aspx)
+**Language support** is [included for 56 different languages](https://msdn.microsoft.com/library/azure/dn879793.aspx). Using both Lucene analyzers and Microsoft analyzers (refined by years of natural language processing in Office and Bing), Azure Search can analyze text in your application's search box to intelligently handle language-specific linguistics including verb tenses, gender, irregular plural nouns (e.g. 'mouse' vs. 'mice'), word de-compounding, word-breaking (for languages with no spaces), and more.
 
-**ヒットの強調表示**[により](https://msdn.microsoft.com/library/azure/dn798927.aspx)、ユーザーに各結果内のクエリとの一致を含むテキストのスニペットが表示されます。強調表示されるスニペットを返すフィールドを選択できます。
+**Search suggestions** can be enabled for autocompleted search bars and type-ahead queries. [Actual documents in your index are suggested](https://msdn.microsoft.com/library/azure/dn798936.aspx) as users enter partial search input.
 
-Azure Search では、**ファセット ナビゲーション**を検索結果ページに簡単に追加できます。Azure Search では、[1 つのクエリ パラメーター](https://msdn.microsoft.com/library/azure/dn798927.aspx)を使用するだけで、アプリケーションの UI にファセット検索エクスペリエンスを構築するために必要なすべての情報が返されるので、ユーザーはドリル ダウンして、検索結果をフィルター処理 (提供価格やブランドによってカタログ項目をフィルター処理するなど) できます。
+**Hit highlighting** [allows](https://msdn.microsoft.com/library/azure/dn798927.aspx) users to see the snippet of text in each result that contains the matches for their query. You can pick and choose which fields return highlighted snippets.
 
-**地理空間**サポートにより、地理的な位置をインテリジェントに処理、フィルター、および表示できます。Azure Search により、ユーザーは指定した場所との検索結果の近接度に基づいて、または特定のリージョンに基づいて、データを探索できます。「[チャンネル 9: Azure Search と地理空間データ](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data)」という動画でそのしくみが説明されています。
+**Faceted navigation** is easily added to your search results page with Azure Search. Using [just a single query parameter](https://msdn.microsoft.com/library/azure/dn798927.aspx), Azure Search will return all the necessary information to construct a faceted search experience in your app's UI to allow your users to drill-down and filter search results  (e.g. filter catalog items by price-range or brand).
 
-**フィルター**を使用することで、ファセット ナビゲーションをアプリケーションの UI に簡単に組み込み、クエリ形成を拡張し、ユーザーまたは開発者が指定した条件に基づいてフィルター処理することができます。強力なフィルターを作成するには、[OData 構文](https://msdn.microsoft.com/library/azure/dn798921.aspx)を使用します。
+**Geo-spatial** support allows you to intelligently process, filter, and display geographic locations. Azure Search enables your users to explore data based on the proximity of a search result to a specified location or based on a specific geographic region. This video explains how it works: [Channel 9: Azure Search and Geospatial data](https://channel9.msdn.com/Shows/Data-Exposed/Azure-Search-and-Geospatial-Data).
 
-## 使いやすいサービスにより開発者の生産性を高める
+**Filters** can be used to easily incorporate faceted navigation into your application's UI, enhance query formulation, and filter based on user- or developer-specified criteria. Create powerful filters using the [OData syntax](https://msdn.microsoft.com/library/azure/dn798921.aspx).
 
-**高可用性**により、極めて信頼性の高い検索サービス エクスペリエンスを確保します。適切に拡張された場合に、[Azure Search は 99.9% の SLA を実現](https://azure.microsoft.com/support/legal/sla/search/v1_0/)します。
+## <a name="empower-your-developers-with-an-easy-to-use-service"></a>Empower your developers with an easy-to-use service
 
-エンド ツー エンド ソリューションとして**完全に管理**された Azure Search ではインフラストラクチャ管理をまったく必要としません。サービスは 2 次元での拡張によって、ニーズに合わせて簡単にカスタマイズでき、より大きなドキュメント ストレージ、より高いクエリ負荷、またはその両方を処理できます。
+**High availability** ensures an extremely reliable search service experience. When scaled properly, [Azure Search offers a 99.9% SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-Azure Search では、[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を使用した**データ統合**により、Azure SQL Database、Azure DocumentDB または [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) を自動的にクロールし、検索インデックスの内容とプライマリ データ ストアを同期できます。
+**Fully managed** as an end-to-end solution, Azure Search requires absolutely no infrastructure management. Your service can be easily tailored to your needs by scaling in two dimensions to handle more document storage, higher query loads, or both.
 
-**ドキュメント クラッキング** (現時点ではプレビュー) を使用して、Microsoft Office のほか PDF や HTML ドキュメントなどの[主要なファイル形式を読み取り、インデックスを作成する](search-howto-indexing-azure-blob-storage.md)ことができます。
+**Data integration** using [indexers](https://msdn.microsoft.com/library/azure/dn946891.aspx) allows Azure Search to automatically crawl Azure SQL Database, Azure DocumentDB, or [Azure Blob storage](search-howto-indexing-azure-blob-storage.md) to sync your search index's content with your primary data store.
 
-**検索トラフィック分析**を[簡単に収集し、分析して](search-traffic-analytics.md)、ユーザーが検索ボックスに入力した内容からインサイトを明らかにします。
+**Document cracking** is available (currently in preview) [to read and index major file formats](search-howto-indexing-azure-blob-storage.md) including Microsoft Office as well as PDF and HTML documents.
 
-**簡単なスコアリング**は Azure Search の主な利点です。[スコアリング プロファイル](https://msdn.microsoft.com/library/azure/dn798928.aspx)を使用して、組織はドキュメント自体の値の関数として、関連性をモデル化できます。たとえば、新しい製品や割り引き製品を検索結果の上位に表示することが望ましい場合があります。あるいは、追跡記録し、個別に保存しておいた顧客の検索傾向に基づいてパーソナライズされたスコアリングのタグを利用し、スコアリング プロファイルを作成できます。
+**Search traffic analytics** are [easily collected and analyzed](search-traffic-analytics.md) to unlock insights from what users are typing into the search box.
 
-**並べ替え**は、インデックス スキーマを介して、複数のフィールドで利用でき、クエリ時に 1 つの検索パラメーターで切り替えることができます。
+**Simple scoring** is a key benefit of Azure Search. [Scoring profiles](https://msdn.microsoft.com/library/azure/dn798928.aspx) are used to allow organizations to model relevance as a function of values in the documents themselves. For example, you might want newer products or discounted products to appear higher in the search results. You can also build scoring profiles using tags for personalized scoring based on customer search preferences you've tracked and stored separately.
 
-検索結果の**ページング**とスロットルは、Azure Search が検索結果に適用する[微調整された制御によって簡単に行うことができます](search-pagination-page-layout.md)。
+**Sorting** is offered for multiple fields via the index schema and then toggled at query-time with a single search parameter.
 
-**検索エクスプローラー**を使用して、アカウントの Azure ポータルから、すべてのインデックスに対してクエリを発行できるため、簡単にクエリをテストし、スコアリング プロファイルを改善できます。
+**Paging** and throttling your search results is [straightforward with the finely tuned control](search-pagination-page-layout.md) that Azure Search offers over your search results.  
 
-## 動作のしくみ
+**Search explorer** allows you to issue queries against all of your indexes right from your account's Azure portal so you can easily test queries and refine scoring profiles.
 
-### 1\.サービスのプロビジョニング
-[Azure ポータル](https://portal.azure.com/)または [Azure リソース管理 API](https://msdn.microsoft.com/library/azure/dn832684.aspx) を使用して、Azure Search サービスを高速化できます。
+## <a name="how-it-works"></a>How it works
 
-検索サービスの構成方法に応じて、他の Azure Search サブスクライバーとサービスを共有する Free レベル、またはリソースを独自のサービス専用にする[価格レベル](https://azure.microsoft.com/pricing/details/search/)を利用します。サービスをプロビジョニングするときに、サービスをホストするデータ センターのリージョンも選択します。
+### <a name="1.-provision-service"></a>1. Provision service
+You can spin up an Azure Search service using either the [Azure Portal](https://portal.azure.com/) or the [Azure Resource Management API](https://msdn.microsoft.com/library/azure/dn832684.aspx).
 
-選択したサービスのレベルに応じて、2 つの次元でサービスを拡張できます。1) クエリの大きな負荷を処理するために、レプリカを追加して容量を増やし、2) ドキュメントの増加に備えて、パーティションを追加して記憶域を追加します。ドキュメントの記憶域とクエリのスループットを別々に処理することによって、特定のニーズに応じて検索サービスをカスタマイズできます。
+Depending on how you configure the search service, you'll use either the free tier of service that is shared with other Azure Search subscribers, or a [paid tier](https://azure.microsoft.com/pricing/details/search/) that dedicates resources to be used only by your service. When provisioning your service, you also choose the region of the data center that hosts your service.
 
-### 手順 2.インデックスの作成
-コンテンツを Azure Search サービスにアップロードする前に、まず Azure Search インデックスを定義する必要があります。インデックスは、データを保持し、検索クエリを受け付けることができるデータベース テーブルに似ています。データベースのフィールドに似た、検索するドキュメントの構造にマップするインデックス スキーマを定義します。
+Depending on which tier of service you choose, you can scale your service in two dimensions: 1) Add Replicas to grow your capacity to handle heavy query loads and 2) add Partitions to add storage for more documents. By handling document storage and query throughput separately, you can customize your search service for your specific needs.
 
-このようなインデックスのスキーマは Azure ポータルで作成するか、[.NET SDK](search-howto-dotnet-sdk.md) または [REST API](https://msdn.microsoft.com/library/azure/dn798941.aspx) を使用して、プログラムによって作成できます。インデックスが定義されたら、データを Azure Search サービスにアップロードできます。データには順番にインデックスが付けられます。
+### <a name="2.-create-index"></a>2. Create index
+Before you can upload your content to your Azure Search service, you must first define an Azure Search index. An index is like a database table that holds your data and can accept search queries. You define the index schema to map to the structure of the documents you wish to search, similar to fields in a database.
 
-### 3\.データのインデックス付け
-フィールドとインデックスの属性を定義した後は、コンテンツをインデックスにアップロードする準備ができます。インデックスにデータをアップロードするには、プッシュ モデルまたはプル モデルを使用できます。
+The schema of these indexes can either be created in the Azure Portal, or programmatically [using the .NET SDK](search-howto-dotnet-sdk.md) or [REST API](https://msdn.microsoft.com/library/azure/dn798941.aspx). Once the index is defined, you can then upload your data to the Azure Search service where it is subsequently indexed.
 
-プル モデルは、オンデマンドまたは定期的な更新用に構成可能なインデクサーによって提供され (「[インデクサー操作 (Azure Search Service REST API)](https://msdn.microsoft.com/library/azure/dn946891.aspx)」を参照)、Azure DocumentDB、Azure SQL Database、Azure Blob Storage、または Azure VM でホストされている SQL Server から簡単にデータとデータ変更を取り込むことができます。
+### <a name="3.-index-data"></a>3. Index data
+Once you have defined the fields and attributes of your index, you're ready to upload your content into the index. You can use either a push or pull model to upload data to the index.
 
-プッシュ モデルは SDK または REST API によって提供され、更新したドキュメントをインデックスに送信するために使用されます。JSON 形式を使用して、事実上すべてのデータセットからデータをプッシュできます。データの読み込み方法については、「[ドキュメントの追加、更新、削除](https://msdn.microsoft.com/library/azure/dn798930.aspx)」または「[.NET SDK の使用方法](search-howto-dotnet-sdk.md)」を参照してください。
+The pull model is provided through indexers that can be configured for on demand or scheduled updates (see [Indexer operations (Azure Search Service REST API)](https://msdn.microsoft.com/library/azure/dn946891.aspx)), allowing you to easily ingest data and data changes from an Azure DocumentDB, Azure SQL Database, Azure Blob Storage, or SQL Server hosted in an Azure VM.
 
-### 4\.Search
-Azure Search インデックスを入力したら、REST API または .NET SDK によって簡単な HTTP 要求を使用して、サービス エンドポイントに[検索クエリを発行](https://msdn.microsoft.com/library/azure/dn798927.aspx)できます。
+The push model is provided through the SDK or REST APIs used for sending updated documents to an index. You can push data from virtually any dataset using the JSON format. See [Add, update, or delete Documents](https://msdn.microsoft.com/library/azure/dn798930.aspx) or [How to use the .NET SDK)](search-howto-dotnet-sdk.md) for guidance on loading data.
 
-## 今すぐお試しください (無料)
-今すぐ、Azure Search をお試しいただけます。 既に Azure アカウントをお持ちの場合は、[Free レベルでサービスをプロビジョニング](search-create-service-portal.md)できます。
+### <a name="4.-search"></a>4. Search
+Once you have populated your Azure Search index, you can now [issue search queries](https://msdn.microsoft.com/library/azure/dn798927.aspx) to your service endpoint using simple HTTP requests with REST API or the .NET SDK.
 
-Azure アカウントがない場合は、サインアップ不要で 60 分の無料のセッションをお試しいただけます。「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/p/?LinkId=618214)」に移動し、[Web App] を選択します。 次に、[ASP.NET + Azure Search] テンプレートを選択して開始します。
+## <a name="try-it-now-(for-free!)"></a>Try it now (for free!)
+You can try Azure Search today! If you already have an Azure account, you can [provision a service in the Free tier](search-create-service-portal.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+If you don't have an Azure account you can try a free, 60-minute session with no sign up required. Go to the [Try Azure App Service](http://go.microsoft.com/fwlink/p/?LinkId=618214) and select "Web App." Then select the "ASP.NET + Azure Search" template to get started.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

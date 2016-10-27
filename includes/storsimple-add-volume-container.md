@@ -1,25 +1,28 @@
 <!--author=SharS last changed: 1/7/2016-->
 
-#### ボリューム コンテナーを追加するには
+#### <a name="to-add-a-volume-container"></a>To add a volume container
 
-1. **[デバイス]** ページで、デバイスを選択してダブルクリックし、**[ボリューム コンテナー]** タブをクリックします。
+1. On the **Devices** page, select the device, double-click it, and then click the **Volume containers** tab.
 
-2. ページの下部にある **[追加]** をクリックします。**[ボリューム コンテナーの作成]** ダイアログ ボックスで、次の操作を行います。
+2. Click **Add** at the bottom of the page. In the **Create volume container** dialog box, do the following:
 
-  1. ボリューム コンテナーの一意の **[名前]** を指定します。この名前には、最大 32 文字を含めることができます。
-  2. このボリューム コンテナーに関連付ける **[ストレージ アカウント]** を選択します。同じサブスクリプション内の既存のストレージ アカウントから選択するか、または **[さらに追加]** を選択して別のサブスクリプションからストレージ アカウントを選択することができます。また、サービスが作成されたときに最初に生成されたストレージ アカウントを選択することもできます。
-  3. **[無制限]** を選択して使用可能なすべての帯域幅を使用するか、または **[カスタム]** を選択して帯域幅を制御します。カスタム帯域幅の場合は、1 ～ 1,000 Mbps の値を指定します。スケジュールに基づいて帯域幅を割り当てるには、**帯域幅テンプレート**を選択します。
-  4. **[クラウド ストレージの暗号化を有効にする]** をオンのままにして、クラウドに送信されるデータを暗号化することをお勧めします。暗号化を無効にするのは、他の手段でデータを暗号化する場合に限定してください。ボリューム コンテナーを作成した後で、暗号化設定を変更することはできません。
-  5. **[クラウド ストレージ暗号化キー]** に 8 ～ 32 文字を指定します。このキーは、暗号化されたデータにアクセスするために、デバイスが使用します。確認のため、**[クラウド ストレージ暗号化キーの確認]** フィールドに同じ値を再度入力します。 
-  6. 矢印をクリックして次のページに進みます。
+  1. Supply a unique **Name** for your volume container. This name can contain a maximum of 32 characters.
+  2. Select a **Storage Account** to be associated with this volume container. You can choose from an existing storage account within the same subscription or select **Add more** to select a storage account from another subscription. You can also choose the storage account that was first generated when the service was created.
+  3. Specify bandwidth as **Unlimited** if you want to consume all available bandwidth, or **Custom** to employ bandwidth controls. For a custom bandwidth, supply a value between 1 and 1000 Mbps. To allocate bandwidth based on a schedule, you can **Select a bandwidth template**.
+  4. We recommend that you keep **Enable Cloud Storage Encryption** selected to encrypt the data that is going to the cloud. Disable encryption only if you are employing other means to encrypt your data. You cannot modify the encryption setting once the volume container has been created.
+  5. Provide a **Cloud Storage Encryption Key** that contains between 8 and 32 characters. The device uses this key to access the encrypted data. In the **Confirm Cloud Storage Encryption Key** field, enter the cloud storage encryption key again to confirm it. 
+  6. Click the arrow to proceed to the next page.
 
-    ![Create volume container with bandwidth template 1](./media/storsimple-add-volume-container/HCS_CreateVCBT1-include.png)
+    ![Create volume container with bandwidth template 1](./media/storsimple-add-volume-container/HCS_CreateVCBT1-include.png) 
 
-3. **[帯域幅テンプレートを選択]** を指定した場合、既存の帯域幅テンプレートのドロップダウン リストから選択します。スケジュール設定を確認して、チェック アイコン ![チェック マーク アイコン](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png) をクリックします。
+3. If you specified **Select a bandwidth template**, choose from the dropdown list of existing bandwidth templates. Review the schedule settings and click the check icon ![check icon](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png).
 
-    ![Create volume container with bandwidth template 2](./media/storsimple-add-volume-container/HCS_CreateVCBT2-include.png)
+    ![Create volume container with bandwidth template 2](./media/storsimple-add-volume-container/HCS_CreateVCBT2-include.png) 
 
-ボリューム コンテナーが保存され、この新規作成されたボリューム コンテナーが **[ボリューム コンテナー]** ページに表示されます。
+The volume container will be saved and the newly created volume container will be listed on the **Volume container** page.
  
 
-<!---HONumber=AcomDC_0114_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

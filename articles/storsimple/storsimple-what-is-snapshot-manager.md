@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager について | Microsoft Azure"
-   description="StorSimple Snapshot Manager の概要、アーキテクチャ、および機能について説明します。"
+   pageTitle="What is StorSimple Snapshot Manager? | Microsoft Azure"
+   description="Describes the StorSimple Snapshot Manager, its architecture, and its features."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,145 +15,150 @@
    ms.date="05/24/2016"
    ms.author="v-sharos" />
 
-# StorSimple Snapshot Manager について
 
-## 概要
+# <a name="what-is-storsimple-snapshot-manager?"></a>What is StorSimple Snapshot Manager?
 
-StorSimple Snapshot Manager は、Microsoft Azure StorSimple 環境でのデータ保護とバックアップ管理を簡素化する、Microsoft 管理コンソール (MMC) スナップインです。StorSimple Snapshot Manager では、データ センター内やクラウド内の Microsoft Azure StorSimple データを 1 つの統合ストレージ ソリューションとして管理できるため、バックアップ プロセスが簡素化され、コストが削減されます。
+## <a name="overview"></a>Overview
 
-ここでは、StorSimple Snapshot Manager の概要、機能、Microsoft Azure StorSimple における役割について説明します。
+StorSimple Snapshot Manager is a Microsoft Management Console (MMC) snap-in that simplifies data protection and backup management in a Microsoft Azure StorSimple environment. With StorSimple Snapshot Manager, you can manage Microsoft Azure StorSimple data in the data center and in the cloud as a single integrated storage solution, thus simplifying backup processes and reducing costs.
 
-StorSimple デバイス、StorSimple Manager サービス、StorSimple Snapshot Manager、SharePoint 用 StorSimple アダプターを含む Microsoft Azure StorSimple システム全体の概要については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」を参照してください。
+This overview introduces the StorSimple Snapshot Manager, describes its features, and explains its role in Microsoft Azure StorSimple. 
+
+For an overview of the entire Microsoft Azure StorSimple system, including the StorSimple device, StorSimple Manager service, StorSimple Snapshot Manager, and StorSimple Adapter for SharePoint, see [StorSimple 8000 series: a hybrid cloud storage solution](storsimple-overview.md). 
  
 >[AZURE.NOTE] 
 >
->- StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
+>- You cannot use StorSimple Snapshot Manager to manage Microsoft Azure StorSimple Virtual Arrays (also known as StorSimple on-premises virtual devices).
 >
->- StorSimple デバイスに StorSimple Update 2 をインストールする場合は、**StorSimple Update 2 をインストールする前に**、最新バージョンの StorSimple Snapshot Manager をダウンロードしてインストールする必要があります。最新バージョンの StorSimple Snapshot Manager には下位互換性があり、製品版のすべての Microsoft Azure StorSimple で動作します。以前のバージョンの StorSimple Snapshot Manager を使用している場合は更新する必要があります (新しいバージョンをインストールする前に、以前のバージョンをアンインストールする必要はありません)。
+>- If you plan to install StorSimple Update 2 on your StorSimple device, be sure to download the latest version of StorSimple Snapshot Manager and install it **before you install StorSimple Update 2**. The latest version of StorSimple Snapshot Manager is backward compatible and works with all released versions of Microsoft Azure StorSimple. If you are using the previous version of StorSimple Snapshot Manager, you will need to update it (you do not need to uninstall the previous version before you install the new version).
 
-## StorSimple Snapshot Manager の目的とアーキテクチャ
+## <a name="storsimple-snapshot-manager-purpose-and-architecture"></a>StorSimple Snapshot Manager purpose and architecture
 
-StorSimple Snapshot Manager は、ローカルとクラウドのデータについて、特定の時点の整合性のあるバックアップ コピーを作成できる中央管理コンソールです。たとえば、このコンソールを使用して次の操作を実行できます。
+StorSimple Snapshot Manager provides a central management console that you can use to create consistent, point-in-time backup copies of local and cloud data. For example, you can use the console to:
 
-- ボリュームを構成、バックアップ、削除する。
-- ボリューム グループを構成してバックアップ データのアプリケーション整合性を確保する。
-- 事前に指定されたスケジュールでデータがバックアップされるようにバックアップ ポリシーを管理する。
-- クラウドに保存して障害復旧に使用できる、ローカルとクラウドのスナップショットを作成する。
+- Configure, back up, and delete volumes.
+- Configure volume groups to ensure that backed up data is application-consistent.
+- Manage backup policies so that data is backed up on a predetermined schedule.
+- Create local and cloud snapshots, which can be stored in the cloud and used for disaster recovery.
 
-StorSimple Snapshot Manager によって、ホスト上の VSS プロバイダーに登録されているアプリケーションの一覧が取得されます。次に、アプリケーション整合性バックアップを作成するために、アプリケーションが使用するボリュームがチェックされ、構成するボリューム グループが提案されます。StorSimple Snapshot Manager では、これらのボリューム グループを使用して、アプリケーション整合性のあるバックアップ コピーを生成します ("アプリケーション整合性" とは、関連するすべてのファイルとデータベースが同期されており、特定の時点におけるアプリケーションの正確な状態が反映されていることをいいます)。
+The StorSimple Snapshot Manager fetches the list of applications registered with the VSS provider on the host. Then, to create application-consistent backups, it checks the volumes used by an application and suggests volume groups to configure. StorSimple Snapshot Manager uses these volume groups to generate backup copies that are application-consistent. (Application consistency exists when all related files and databases are synchronized and represent the true state of the application at a specific point in time.) 
 
-StorSimple Snapshot Manager のバックアップの形式は増分スナップショットであり、前回のバックアップ以降の変更部分だけがキャプチャされます。そのため、バックアップに必要なストレージが減り、バックアップの作成と復元を短時間で実行できます。StorSimple Snapshot Manager では、スナップショットでキャプチャされるデータのアプリケーション整合性を確保するために、Windows ボリューム シャドウ コピー サービス (VSS) を使用します (詳細については、「Windows ボリューム シャドウ コピー サービスとの統合」をご覧ください)。 StorSimple Snapshot Manager では、バックアップ スケジュールを作成することも、必要に応じて即時バックアップを作成することもできます。バックアップからデータを復元する必要がある場合は、StorSimple Snapshot Manager を使用してローカル スナップショットまたはクラウド スナップショットのカタログから選択できます。Azure StorSimple は、必要なときに必要なデータだけを復元するので、復元操作の実行中にデータの可用性が長時間損なわれることはありません。
+StorSimple Snapshot Manager backups take the form of incremental snapshots, which capture only the changes since the last backup. As a result, backups require less storage and can be created and restored quickly. StorSimple Snapshot Manager uses the Windows Volume Shadow Copy Service (VSS) to ensure that snapshots capture application-consistent data. (For more information, go to the Integration with Windows Volume Shadow Copy Service section.) With StorSimple Snapshot Manager, you can create backup schedules or take immediate backups as needed. If you need to restore data from a backup, StorSimple Snapshot Manager lets you select from a catalog of local or cloud snapshots. Azure StorSimple restores only the data that is needed as it is needed, which prevents delays in data availability during restore operations.)
 
-![StorSimple Snapshot Manager のアーキテクチャ](./media/storsimple-what-is-snapshot-manager/HCS_SSM_Overview.png)
+![StorSimple Snapshot Manager architecture](./media/storsimple-what-is-snapshot-manager/HCS_SSM_Overview.png)
 
-**StorSimple Snapshot Manager のアーキテクチャ**
+**StorSimple Snapshot Manager architecture** 
 
-## 各種ボリュームのサポート
+## <a name="support-for-multiple-volume-types"></a>Support for multiple volume types
 
-StorSimple Snapshot Manager を使用して構成およびバックアップできるボリュームの種類は次のとおりです。
+You can use the StorSimple Snapshot Manager to configure and back up the following types of volumes: 
 
-- **ベーシック ボリューム** - ベーシック ボリュームは、ベーシック ディスク上の単一のパーティションです。 
+- **Basic volumes** – A basic volume is a single partition on a basic disk. 
 
-- **シンプル ボリューム** - シンプル ボリュームは、1 つのダイナミック ディスクのディスク領域を含むダイナミック ボリュームです。シンプル ボリュームは、ディスク上の 1 つの領域、または同じディスク上の連結された複数の領域で構成されます (シンプル ボリュームは、ダイナミック ディスク上にのみ作成できます)。 シンプル ボリュームはフォールト トレラントではありません。
+- **Simple volumes** – A simple volume is a dynamic volume that contains disk space from a single dynamic disk. A simple volume consists of a single region on a disk or multiple regions that are linked together on the same disk. (You can create simple volumes only on dynamic disks.) Simple volumes are not fault tolerant.
 
-- **ダイナミック ボリューム** - ダイナミック ボリュームは、ダイナミック ディスク上に作成されるボリュームです。ダイナミック ディスクでは、データベースを使用して、コンピューターのダイナミック ディスクに含まれているボリュームの情報を追跡します。
+- **Dynamic volumes** – A dynamic volume is a volume created on a dynamic disk. Dynamic disks use a database to track information about volumes that are contained on dynamic disks in a computer. 
 
-- **ダイナミック ボリューム + ミラーリング** - ダイナミック ボリューム + ミラーリングは、RAID 1 アーキテクチャを基盤としています。RAID 1 では、まったく同じデータを複数のディスクに書き込むことで、ミラー セットを生成します。これにより、要求されたデータを格納するどのディスクでも読み取り要求に対応できます。
+- **Dynamic volumes with mirroring** – Dynamic volumes with mirroring are built on the RAID 1 architecture. With RAID 1, identical data is written on two or more disk, producing a mirrored set. A read request can then be handled by any disk that contains the requested data.
 
-- **クラスターの共有ボリューム** - クラスターの共有ボリューム (CSV) では、フェールオーバー クラスター内の複数のノードが同じディスクに対して同時に読み取り/書き込みを実行できます。ドライブの所有権の変更や、マウント、マウントの解除、ボリュームの削除を行わずに、ノード間でのフェールオーバーを迅速に実行できます。
+- **Cluster-shared volumes** – With cluster-shared volumes (CSVs), multiple nodes in a failover cluster can simultaneously read or write to the same disk. Failover from one node to another node can occur quickly, without requiring a change in drive ownership or mounting, dismounting, and removing a volume. 
 
->[AZURE.IMPORTANT] 同じスナップショット内で CSV と非 CSV を混在させないでください。1 つのスナップショット内での CSV と非 CSV の混在はサポートされていません。
+>[AZURE.IMPORTANT] Do not mix CSVs and non-CSVs in the same snapshot. Mixing CSVs and non-CSVs in a snapshot is not supported. 
  
-StorSimple Snapshot Manager を使用すると、ボリューム グループ全体を復元したり、個々のボリュームを複製して個々のファイルを回復したりできます。
+You can use StorSimple Snapshot Manager to restore entire volume groups or clone individual volumes and recover individual files.
 
-- [ボリュームとボリューム グループ](#volumes-and-volume-groups) 
-- [バックアップの種類とバックアップ ポリシー](#backup-types-and-backup-policies) 
+- [Volumes and volume groups](#volumes-and-volume-groups) 
+- [Backup types and backup policies](#backup-types-and-backup-policies) 
 
-StorSimple Snapshot Manager の機能とその使用方法の詳細については、「[StorSimple Snapshot Manager のユーザー インターフェイス](storsimple-use-snapshot-manager.md)」をご覧ください。
+For more information about StorSimple Snapshot Manager features and how to use them, see [StorSimple Snapshot Manager user interface](storsimple-use-snapshot-manager.md).
 
-## ボリュームとボリューム グループ
+## <a name="volumes-and-volume-groups"></a>Volumes and volume groups
 
-StorSimple Snapshot Manager を使用して、ボリュームを作成し、それらのボリュームをボリューム グループとして構成します。
+With StorSimple Snapshot Manager, you create volumes and then configure them into volume groups. 
 
-StorSimple Snapshot Manager では、ボリューム グループを使用して、アプリケーション整合性のあるバックアップ コピーを作成します。"アプリケーション整合性" とは、関連するすべてのファイルとデータベースが同期されており、特定の時点におけるアプリケーションの正確な状態が反映されていることをいいます。ボリューム グループ ("コンシステンシー グループ" とも呼ばれます) は、バックアップ/復元ジョブの基礎となります。
+StorSimple Snapshot Manager uses volume groups to create backup copies that are application-consistent. Application consistency exists when all related files and databases are synchronized and represent the true state of an application at a specific point in time. Volume groups (which are also known as *consistency groups*) form the basis of a backup or restore job.
 
-ボリューム グループはボリューム コンテナーとは異なります。ボリューム コンテナーには、クラウド ストレージ アカウントと他の属性 (暗号化や帯域幅消費量など) を共有する 1 つ以上のボリュームが含まれます。1 つのボリューム コンテナーに、仮想プロビジョニングされた最大 256 個の StorSimple ボリュームを含めることができます。ボリューム コンテナーの詳細については、「[StorSimple ボリューム コンテナーの管理](storsimple-manage-volume-containers.md)」をご覧ください。ボリューム グループは、バックアップ操作を容易にするために構成するボリュームの集まりです。異なるボリューム コンテナーに属する 2 つのボリュームを選択し、それらを同じボリューム グループに配置して、そのボリューム グループのバックアップ ポリシーを作成すると、適切なストレージ アカウントを使用して、適切なボリューム コンテナーで各ボリュームがバックアップされます。
+Volume groups are not the same as volume containers. A volume container contains one or more volumes that share a cloud storage account and other attributes, such as encryption and bandwidth consumption. A single volume container can contain up to 256 thinly provisioned StorSimple volumes. For more information about volume containers, go to [Manage your volume containers](storsimple-manage-volume-containers.md). Volume groups are collections of volumes that you configure to facilitate backup operations. If you select two volumes that belong to different volume containers, place them in a single volume group, and then create a backup policy for that volume group, each volume will be backed up in the appropriate volume container, using the appropriate storage account.
 
->[AZURE.NOTE] ボリューム グループ内のすべてのボリュームは、1 つのクラウド サービス プロバイダーから取得する必要があります。
+>[AZURE.NOTE] All volumes in a volume group must come from a single cloud service provider.
 
-## Windows ボリューム シャドウ コピー サービスとの統合
+## <a name="integration-with-windows-volume-shadow-copy-service"></a>Integration with Windows Volume Shadow Copy Service
 
-StorSimple Snapshot Manager では、Windows ボリューム シャドウ コピー サービス (VSS) を使用して、アプリケーション整合性のあるデータをキャプチャします。VSS は、VSS 対応アプリケーションとやり取りして増分スナップショットの作成を調整することで、アプリケーション整合性を促進します。VSS は、スナップショットの作成時に、アプリケーションが一時的に非アクティブ状態 (休止状態) になるようにします。
+StorSimple Snapshot Manager uses the Windows Volume Shadow Copy Service (VSS) to capture application-consistent data. VSS facilitates application consistency by communicating with VSS-aware applications to coordinate the creation of incremental snapshots. VSS ensures that the applications are temporarily inactive, or quiescent, when snapshots are taken. 
 
-StorSimple Snapshot Manager における VSS の実装は、SQL Server および汎用の NTFS ボリュームと連携します。このプロセスは次のとおりです。
+The StorSimple Snapshot Manager implementation of VSS works with SQL Server and generic NTFS volumes. The process is as follows: 
 
-1. 要求元が VSS を呼び出し、ターゲット アプリケーション内のライター ソフトウェアから情報を収集するよう VSS に要求します。通常、要求元は、データ管理/保護ソリューション (StorSimple Snapshot Manager など) またはバックアップ アプリケーションです。
+1. A requestor, which is typically a data management and protection solution (such as StorSimple Snapshot Manager) or a backup application, invokes VSS and asks it to gather information from the writer software in the target application.
 
-2. VSS は、データの説明を取得するためにライター コンポーネントに問い合わせます。ライターは、バックアップ対象となるデータの説明を返します。
+2. VSS contacts the writer component to retrieve a description of the data. The writer returns the description of the data to be backed up. 
 
-3. VSS は、バックアップに備えてアプリケーションを準備するようライターに合図を送ります。ライターは、開いているトランザクションを完了し、トランザクション ログを更新するなどして、バックアップ用のデータを準備し、VSS に通知します。
+3. VSS signals the writer to prepare the application for backup. The writer prepares the data for backup by completing open transactions, updating transaction logs, and so on, and then notifies VSS.
 
-4. VSS は、アプリケーションのデータ ストアを一時的に停止するようライターに指示し、シャドウ コピーの作成中にデータがボリュームに書き込まれないようにします。このステップにより、データ整合性が確保されます。所要時間は 60 秒程度です。
+4. VSS instructs the writer to temporarily stop the application's data stores and make sure that no data is written to the volume while the shadow copy is created. This step ensures data consistency, and takes no more than 60 seconds.
 
-5. VSS は、シャドウ コピーを作成するようプロバイダーに指示します。プロバイダー (ソフトウェア ベースまたはハードウェア ベース) は、現在稼働しているボリュームを適切に操作し、要求に応じてボリュームのシャドウ コピーを作成します。プロバイダーは、シャドウ コピーの作成が完了すると、VSS に通知します。
+5. VSS instructs the provider to create the shadow copy. Providers, which can be software- or hardware-based, manage the volumes that are currently running and create shadow copies of them on demand. The provider creates the shadow copy, and notifies VSS when it is completed.
 
-6. VSS は、ライターを介して、I/O を再開できることをアプリケーションに通知すると共に、シャドウ コピーの作成中に I/O が正常に一時停止されていたことを確認します。
+6. VSS contacts the writer to notify the application that I/O can resume and also to confirm that I/O was paused successfully during shadow copy creation. 
 
-7. コピーが正常に完了していた場合、VSS はコピーの場所を要求元に返します。
+7. If the copy was successful, VSS returns the copy's location to the requestor. 
 
-8. シャドウ コピーの作成中にデータが書き込まれていた場合、バックアップに整合性がなくなります。VSS はシャドウ コピーを削除し、要求元に通知します。要求元は、バックアップ プロセスを自動的に繰り返すことも、後で再試行するよう管理者に通知することもできます。
+8. If data was written while the shadow copy was created, then the backup will be inconsistent. VSS deletes the shadow copy and notifies the requestor. The requestor can either repeat the backup process automatically or notify the administrator to retry it at a later time.
 
-次の図を参照してください。
+See the following illustration.
 
-![VSS のプロセス](./media/storsimple-what-is-snapshot-manager/HCS_SSM_VSS_process.png)
+![VSS process](./media/storsimple-what-is-snapshot-manager/HCS_SSM_VSS_process.png)
 
-**Windows ボリューム シャドウ コピー サービスのプロセス**
+**Windows Volume Shadow Copy Service process** 
 
-## バックアップの種類とバックアップ ポリシー
+## <a name="backup-types-and-backup-policies"></a>Backup types and backup policies
 
-StorSimple Snapshot Manager では、データをバックアップし、ローカルとクラウドに保存できます。StorSimple Snapshot Manager を使用してデータをすぐにバックアップすることも、バックアップ ポリシーを使用して、自動バックアップのスケジュールを作成することもできます。バックアップ ポリシーでは、保持するスナップショットの数を指定することもできます。
+With StorSimple Snapshot Manager, you can back up data and store it locally and in the cloud. You can use StorSimple Snapshot Manager to back up data immediately, or you can use a backup policy to create a schedule for taking backups automatically. Backup policies also enable you to specify how many snapshots will be retained. 
 
-### バックアップの種類
+### <a name="backup-types"></a>Backup types
 
-StorSimple Snapshot Manager を使用して作成できるバックアップの種類は次のとおりです。
+You can use StorSimple Snapshot Manager to create the following types of backups:
 
-- **ローカル スナップショット** - ローカル スナップショットは、StorSimple デバイスに保存されているボリューム データの特定の時点のコピーです。通常、この種のバックアップの作成と復元は短時間で実行できます。ローカル スナップショットは、ローカル バックアップ コピーと同様に使用できます。
+- **Local snapshots** – Local snapshots are point-in-time copies of volume data that are stored on the StorSimple device. Typically, this type of backup can be created and restored quickly. You can use a local snapshot as you would a local backup copy.
 
-- **クラウド スナップショット** - クラウド スナップショットは、クラウドに保存されているボリューム データの特定の時点のコピーです。クラウド スナップショットは、別のオフサイト ストレージ システムにレプリケートされたスナップショットに相当します。クラウド スナップショットは、障害復旧シナリオで特に役立ちます。
+- **Cloud snapshots** – Cloud snapshots are point-in-time copies of volume data that are stored in the cloud. A cloud snapshot is equivalent to a snapshot replicated on a different, off-site storage system. Cloud snapshots are particularly useful in disaster recovery scenarios.
 
-### オンデマンド バックアップとスケジュールされたバックアップ
+### <a name="on-demand-and-scheduled-backups"></a>On-demand and scheduled backups
 
-StorSimple Snapshot Manager では、すぐに作成される 1 回限りのバックアップを開始することも、バックアップ ポリシーを使用して、定期的なバックアップ操作をスケジュールすることもできます。
+With StorSimple Snapshot Manager, you can initiate a one-time backup to be created immediately, or you can use a backup policy to schedule recurring backup operations.
 
-バックアップ ポリシーとは、定期的なバックアップをスケジュールするために使用できる一連の自動化されたルールです。バックアップ ポリシーでは、特定のボリューム グループのスナップショットを作成する頻度やパラメーターを定義できます。ポリシーを使用して、ローカル スナップショットとクラウド スナップショットの両方について、開始日と有効期限、時刻、頻度、保持要件などを指定できます。ポリシーは定義した直後に適用されます。
+A backup policy is a set of automated rules that you can use to schedule regular backups. A backup policy allows you to define the frequency and parameters for taking snapshots of a specific volume group. You can use policies to specify start and expiration dates, times, frequencies, and retention requirements, for both local and cloud snapshots. A policy is applied immediately after you define it. 
 
-StorSimple Snapshot Manager を使用して、必要に応じてバックアップ ポリシーを構成または再構成できます。
+You can use StorSimple Snapshot Manager to configure or reconfigure backup policies whenever necessary. 
 
-作成するバックアップ ポリシーごとに、次の情報を構成します。
+You configure the following information for each backup policy that you create:
 
-- **名前** - 選択したバックアップ ポリシーの一意の名前。
+- **Name** – The unique name of the selected backup policy.
 
-- **種類** - バックアップ ポリシーの種類 (ローカル スナップショットまたはクラウド スナップショット)。
+- **Type** – The type of backup policy; either local snapshot or cloud snapshot.
 
-- **ボリューム グループ** - 選択したバックアップ ポリシーの割り当て先となるボリューム グループ。
+- **Volume group** – The volume group to which the selected backup policy is assigned.
 
-- **保持** - 保持するバックアップ コピーの数。**[すべて]** チェック ボックスをオンにした場合、ボリュームあたりの最大バックアップ コピー数に達するまで、すべてのバックアップ コピーが保持されます。最大数に達した時点でポリシーがエラーになり、エラー メッセージが生成されます。保持するバックアップの数 (1 ～ 64) を指定することもできます。
+- **Retention** – The number of backup copies to retain. If you check the **All** box, all backup copies are retained until the maximum number of backup copies per volume is reached, at which point the policy will fail and generate an error message. Alternatively, you can specify a number of backups to retain (between 1 and 64).
 
-- **日付** - バックアップ ポリシーの作成日。
+- **Date** – The date when the backup policy was created.
 
-バックアップ ポリシーの構成については、「[StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理](storsimple-snapshot-manager-manage-backup-policies.md)」をご覧ください。
+For information about configuring backup policies, go to [Use StorSimple Snapshot Manager to create and manage backup policies](storsimple-snapshot-manager-manage-backup-policies.md).
 
-### バックアップ ジョブの監視と管理
+### <a name="backup-job-monitoring-and-management"></a>Backup job monitoring and management
 
-StorSimple Snapshot Manager を使用して、今後予定されているバックアップ ジョブや完了したバックアップ ジョブの監視と管理を行うことができます。さらに、StorSimple Snapshot Manager では、最大 64 個の完了したバックアップのカタログが提供されます。このカタログを使用して、ボリュームまたは個々のファイルを検索し、復元できます。
+You can use the StorSimple Snapshot Manager to monitor and manage upcoming, scheduled, and completed backup jobs. Additionally, StorSimple Snapshot Manager provides a catalog of up to 64 completed backups. You can use the catalog to find and restore volumes or individual files. 
 
-バックアップ ジョブの監視については、「[StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理](storsimple-snapshot-manager-manage-backup-jobs.md)」をご覧ください。
+For information about monitoring backup jobs, go to [Use StorSimple Snapshot Manager to view and manage backup jobs](storsimple-snapshot-manager-manage-backup-jobs.md).
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)の詳細を確認する。
+- Learn more about [using StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
 
-- [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) をダウンロードする。
+- Download [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
 
-<!---HONumber=AcomDC_0525_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,95 +1,100 @@
 <properties
-	pageTitle="Azure Data Catalog | Microsoft Azure"
-	description="この記事では、Azure Data Catalog 用のキーボード ショートカットについて説明します。"
-	services="data-catalog"
-	documentationCenter=""
-	authors="spelluru"
-	manager="NA"
-	editor=""
-	tags=""/>
+    pageTitle="Azure Data Catalog  | Microsoft Azure"
+    description="This article shows the Keyboard shortcuts for Azure Data Catalog."
+    services="data-catalog"
+    documentationCenter=""
+    authors="spelluru"
+    manager="NA"
+    editor=""
+    tags=""/>
 <tags
-	ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="09/13/2016"
-	ms.author="spelluru"/>
+    ms.service="data-catalog"
+    ms.devlang="NA"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"
+    ms.workload="data-catalog"
+    ms.date="09/13/2016"
+    ms.author="spelluru"/>
 
-# Azure Data Catalog 用のキーボード ショートカット
 
-## Data Catalog データ ソース登録ツール用のキーボード ショートカット
+# <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Keyboard shortcuts for Azure Data Catalog
 
-### 一般的なキーボード ショートカット
+## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Keyboard shortcuts for the Data Catalog data source registration tool
 
-|操作|押すキー
+### <a name="general-keyboard-shortcuts"></a>General keyboard shortcuts
+
+|Operation|Press
 |---|---
-|ページ上の各コントロールにタブ移動する。|Tab
-|オプションを選択する。|Enter または Space
-|ページを最大化する。|Windows キー + ↑
-|ページを復元または最小化する。 | Windows キー + ↓
-|ページのメニューを開く。| Alt ＋ Space
+|Tab to each control on a page|Tab
+|Choose an option|Enter or Spacebar
+|Maximize page|WIN+UP
+|Restore/minimize page | WIN+DOWN
+|Open page menu| ALT+SPACEBAR
 
 
-### [認証] ページ
+### <a name="authentication-page"></a>Authentication page
 
-|操作|押すキー
+|Operation|Press
 |---|---
-|サービスにサインインする。|Alt + S
+|Sign into service|ALT+S
 
-### [データ ソースの選択] ページ
+### <a name="data-source-selection-page"></a>Data source selection page
 
-|操作|押すキー
+|Operation|Press
 |---|---
-|次のページに移動する (有効な場合)。|Alt + N
-|タイルにフォーカスがある場合、選択した種類を変更する。|左方向、上方向、右方向、下方向キー
+|Go to next page (if enabled)|ALT+N
+|Change selected type when the focus is on a tile|LEFT, UP, RIGHT, or DOWN ARROW
 
-### [データ ソースの接続] ページ
+### <a name="data-source-connection-page"></a>Data source connection page
 
-|操作|押すキー
+|Operation|Press
 |---|---
-|前のページに移動する (有効な場合)。|Alt + P
-|[接続] ボタンを選択する。| Alt + C
+|Go to previous page (if enabled)|ALT+P
+|Choose Connect button.| ALT+C
 
-### [接続コンテキスト] ページ
+### <a name="connection-context-page"></a>Connection context page
 
-|操作|押すキー
+|Operation|Press
 |---|---
-|[登録] ボタン (有効な場合)。| Alt + R
-|[プレビューを含める] チェック ボックス (使用可能な場合)。|Alt + P
-|[データ プロファイルを含める] チェック ボックス (使用可能な場合)。|Alt + D
-|各リスト項目に移動する。|上方向または下方向キー
-| サーバーの階層で、ツリー ビューのノードを展開する。 |右方向キー
-| **[使用可能なオブジェクト]** または **[登録するオブジェクト]** に選択された項目を移動する。 | Space
+|Register button (if enabled)| ALT+R
+|Include Preview checkbox (if available)|ALT+P
+|Include Data Profile checkbox (if available)|ALT+D
+|Navigate to each list item|UP or DOWN ARROW
+| Server Hierarchy, expand a tree view's node |RIGHT ARROW
+| Move selected items for **Available Objects** or **Objects to be registered** | SPACEBAR
 
-### [発行の進行状況] ページ
+### <a name="publish-progress-page"></a>Publish progress page
 
-|操作|押すキー
+|Operation|Press
 |---|---
-|[キャンセル] ボタン|Alt + C
-|[オブジェクトをさらに登録] ボタン| Alt + R
-|[ポータルの表示] ボタン | Alt + V
+|Cancel button|ALT+C
+|Register More Objects button| ALT+R
+|View Portal button  | ALT+V
 
-### [発行の進行状況] ページ
+### <a name="publish-progress-page"></a>Publish progress page
 
-|操作|押すキー
+|Operation|Press
 |---|---
-|[保存] ボタン (有効な場合)| Alt + S
-|[キャンセル] ボタン|Alt + C
+|Save button (if enabled)| ALT+S
+|Cancel button|ALT+C
 
-## Data Catalog ポータル用のキーボード ショートカット
+## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Keyboard shortcuts for the Data Catalog portal
 
-|操作|押すキー
+|Operation|Press
 |---|---
-|移動する。| TAB と SHIFT + TAB
-|項目をクリックする。| スペースまたは ENTER
-|セクションにドリルダウンする。| スペースまたは ENTER
-|セクションから抜ける。| ESC
-|資産を固定する/固定解除する。| Alt + P
-|[探索] ページで、資産にフォーカスがある場合、資産を選択する。| スペースまたは ENTER
-|複数選択に資産を追加する/複数選択から資産を削除する。| CTRL + スペースまたは ENTER
-|[検索の一致] メニューを切り替える。| Alt + S
-|**[開く]** メニューを切り替える。 | Alt + O
-|資産がコンテナーの場合、コンテナーを探索する。 | ALT + L
+|Navigate| TAB and SHIFT+TAB
+|Click an item| SPACE or ENTER
+|Drill down into a section| SPACE or ENTER
+|Exit out of a section| ESC
+|Pin/unpin an asset| ALT+P
+|On the discover page, when an asset has focus, select asset| SPACE or ENTER
+|Adds/remove asset from multi-select| CTRL+SPACE or ENTER
+|Toggle the search matches menu| ALT+S
+|Toggle **Open In** menu | ALT+O
+|Explore container, if the asset is a container | ALT+L
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

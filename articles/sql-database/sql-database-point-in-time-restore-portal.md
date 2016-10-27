@@ -1,54 +1,59 @@
 <properties
-	pageTitle="以前の時点への Azure SQL Database の復元 (Azure ポータル) | Microsoft Azure"
-	description="以前の時点に Azure SQL Database を復元します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Restore an Azure SQL Database to a previous point in time (Azure Portal) | Microsoft Azure"
+    description="Restore an Azure SQL Database to a previous point in time."
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="NA"
-	ms.date="07/17/2016"
-	ms.author="sstein"
-	ms.workload="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"/>
+    ms.service="sql-database"
+    ms.devlang="NA"
+    ms.date="07/17/2016"
+    ms.author="sstein"
+    ms.workload="NA"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"/>
 
 
-# Azure ポータルで以前の時点に Azure SQL Database を復元する
+
+# <a name="restore-an-azure-sql-database-to-a-previous-point-in-time-with-the-azure-portal"></a>Restore an Azure SQL Database to a previous point in time with the Azure Portal
 
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-recovery-using-backups.md)
-- [ポイントインタイム リストア: PowerShell](sql-database-point-in-time-restore-powershell.md)
+- [Overview](sql-database-recovery-using-backups.md)
+- [Point-In-Time Restore: PowerShell](sql-database-point-in-time-restore-powershell.md)
 
-この記事では、Azure ポータルを使用して、[SQL Database 自動バックアップ](sql-database-automated-backups.md)から以前の時点にデータベースを復元する方法について説明します。
+This article shows you how to restore your database to an earlier point in time from [SQL Database automated backups](sql-database-automated-backups.md) using the Azure Portal.
 
-## 以前の時点に復元するデータベースの選択
+## <a name="select-a-database-to-restore-to-a-previous-point-in-time"></a>Select a database to restore to a previous point in time
 
-Azure ポータルでデータベースを復元するには、次の手順を実行します。
+To restore a database in the Azure Portal do the following:
 
-1.	[Azure ポータル](https://portal.azure.com) を開きます。
-2.  画面の左側で、**[参照]**、**[SQL データベース]** の順に選択します。
-3.  復元するデータベースに移動して、選択します。
-4.  データベースのブレードの上部で **[復元]** を選択します。
+1.  Open the [Azure Portal](https://portal.azure.com).
+2.  On the left side of the screen select **BROWSE** > **SQL databases**.
+3.  Navigate to the database you want to restore and select it.
+4.  At the top of your database's blade, select **Restore**:
 
-    ![Azure SQL データベースの復元](./media/sql-database-point-in-time-restore-portal/restore.png)
+    ![Restore an Azure SQL database](./media/sql-database-point-in-time-restore-portal/restore.png)
 
-5.  データベース名と復元ポイントを指定して [OK] をクリックします。
+5.  Specify a database name, point in time and then click Ok:
 
-    ![Azure SQL データベースの復元](./media/sql-database-point-in-time-restore-portal/restore-details.png)
+    ![Restore an Azure SQL database](./media/sql-database-point-in-time-restore-portal/restore-details.png)
 
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
-- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
-- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
-- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
-- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
+- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md)
+- To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](sql-database-recovery-using-backups.md)
+- To learn about faster recovery options, see [Active-Geo-Replication](sql-database-geo-replication-overview.md)  
+- To learn about using automated backups for archiving, see [database copy](sql-database-copy.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

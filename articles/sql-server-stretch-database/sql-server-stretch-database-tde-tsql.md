@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure TSQL での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化 | Microsoft Azure"
-   description="Azure TSQL での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化"
+   pageTitle="Enable Transparent Data Encryption (TDE) for SQL Server Stretch Database on Azure TSQL | Microsoft Azure"
+   description="Enable Transparent Data Encryption (TDE) for SQL Server Stretch Database on Azure TSQL"
    services="sql-server-stretch-database"
    documentationCenter=""
    authors="douglaslMS"
@@ -16,61 +16,66 @@
    ms.date="06/14/2016"
    ms.author="douglaslMS"/>
 
-# Azure (Transact-SQL) での Stretch Database に対する Transparent Data Encryption (TDE) の有効化
+
+# <a name="enable-transparent-data-encryption-(tde)-for-stretch-database-on-azure-(transact-sql)"></a>Enable Transparent Data Encryption (TDE) for Stretch Database on Azure (Transact-SQL)
 > [AZURE.SELECTOR]
-- [Azure ポータル](sql-server-stretch-database-encryption-tde.md)
+- [Azure portal](sql-server-stretch-database-encryption-tde.md)
 - [TSQL](sql-server-stretch-database-tde-tsql.md)
 
-Transparent Data Encryption (TDE) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。
+Transparent Data Encryption (TDE) helps protect against the threat of malicious activity by performing real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
 
-TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。組み込みのサーバー証明書は、Azure サーバーごとに一意です。Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。TDE の一般的な説明については、「[透過的なデータ暗号化 (TDE)]」を参照してください。
+TDE encrypts the storage of an entire database by using a symmetric key called the database encryption key. The database encryption key is protected by a built-in server certificate. The built-in server certificate is unique for each Azure server. Microsoft automatically rotates these certificates at least every 90 days. For a general description of TDE, see [Transparent Data Encryption (TDE)].
 
-##暗号化の有効化
+##<a name="enabling-encryption"></a>Enabling Encryption
 
-Stretch 対応 SQL Server データベースから移行したデータを格納している Azure データベースの TDE を有効にするには、次の操作を行います。
+To enable TDE for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:
 
-1. 管理者のログインまたは master データベースの **dbmanager** ロールのメンバーであるログインを使用して、データベースをホストしている Azure サーバーの *master* データベースに接続します
-2. データベースの暗号化するには、次のステートメントを実行します。
+1. Connect to the *master* database on the Azure server hosting the database using a login that is an administrator or a member of the **dbmanager** role in the master database
+2. Execute the following statement to encrypt the database.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION ON;
 ```
 
-##暗号化の無効化
+##<a name="disabling-encryption"></a>Disabling Encryption
 
-Stretch 対応 SQL Server データベースから移行したデータを格納している Azure データベースの TDE を無効にするには、次の操作を行います。
+To disable TDE for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:
 
-1. 管理者のログインまたは master データベースの **dbmanager** ロールのメンバーであるログインを使用して、*master* データベースに接続します
-2. データベースの暗号化するには、次のステートメントを実行します。
+1. Connect to the *master* database using a login that is an administrator or a member of the **dbmanager** role in the master database
+2. Execute the following statement to encrypt the database.
 
 ```sql
 ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ```
 
-##暗号化の検証
+##<a name="verifying-encryption"></a>Verifying Encryption
 
-Stretch 対応 SQL Server データベースから移行したデータを格納している Azure データベースの暗号化ステータスを確認するには、次の操作を行います。
+To verify encryption status for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:
 
-1. 管理者のログインまたは master データベースの **dbmanager** ロールのメンバーであるログインを使用して、*master* データベースまたはインスタンス データベースに接続します
-2. データベースの暗号化するには、次のステートメントを実行します。
+1. Connect to the *master* or instance database using a login that is an administrator or a member of the **dbmanager** role in the master database
+2. Execute the following statement to encrypt the database.
 
 ```sql
 SELECT
-	[name],
-	[is_encrypted]
+    [name],
+    [is_encrypted]
 FROM
-	sys.databases;
+    sys.databases;
 ```
 
-結果が ```1``` の場合はデータベースが暗号化されていることを示し、```0``` の場合は暗号化されていないことを示します。
+A result of ```1``` indicates an encrypted database, ```0``` indicates a non-encrypted database.
 
 
 <!--Anchors-->
-[透過的なデータ暗号化 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

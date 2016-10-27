@@ -18,7 +18,7 @@ NSG あたりの NSG ルール数 | 200 | 400
 エンドポイント アクセス制御リスト (ACL) | 50 | 50
 
 
-#### <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
+#### <a name="<a-name="azure-resource-manager-virtual-networking-limits"></a>networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 
 次の制限は、サブスクリプションごとにリージョン単位で Azure Resource Manager デプロイメント モデルを通して管理されるネットワーク リソースにのみ適用されます。
 
@@ -40,7 +40,11 @@ NSG あたりの NSG ルール数 | 200 | 500
 ロード バランサーごとのパブリック フロント エンド IP | 5 | サポートにお問い合わせください
 ロード バランサーごとのプライベート フロント エンド IP | 30 | サポートにお問い合わせください
 アプリケーション ゲートウェイ | 50 | 50
+仮想ネットワークあたりの VNet ピアリング | 10 | 50
 
 制限値を既定値から引き上げる必要がある場合は、サポートにお問い合せください。
 
-<!---HONumber=AcomDC_0928_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

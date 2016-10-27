@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager によってデプロイされた仮想マシン バックアップの監視 | Microsoft Azure"
-   description="Resource Manager によってデプロイされた仮想マシンのバックアップのイベントとアラートを監視します。アラートに基づいて電子メールを送信します。"
+   pageTitle="Monitor Resource Manager-deployed virtual machine backups | Microsoft Azure"
+   description="Monitor events and alerts from Resource Manager-deployed virtual machine backups. Send email based on alerts."
    services="backup"
    documentationCenter="dev-center-name"
    authors="markgalioto"
@@ -16,178 +16,179 @@ ms.topic="article"
 ms.date="08/25/2016"
 ms.author="trinadhk; giridham;"/>
 
-# Azure 仮想マシンのバックアップ アラートの監視
 
-アラートはサービスから返され、イベントのしきい値が満たされていること、またはしきい値を超えたことを示します。ビジネス コストを抑えるには、問題が発生したときに、それを把握することが重要です。通常、アラートはスケジュールに基づいて発生するわけではないため、発生後にできるだけ早く通知されると便利です。たとえば、バックアップ ジョブまたは復元ジョブが失敗した場合、エラーの発生後 5 分以内にアラートが発生します。コンテナーのダッシュボードの [バックアップ アラート] タイルには、重大なアラートと警告レベルのアラートが発生しているイベントが表示されます。[バックアップ アラート] 設定では、すべてのイベントを確認することができますが、別の問題に対応しているときに、アラートが発生したらどうでしょう。 アラートが発生したことを知らなくても、大きな問題にはならないかもしれませんが、データのセキュリティ侵害につながることもあります。アラートが発生したことを、適切なユーザーに確実に知らせるには、アラート通知を電子メールで送信するようにサービスを構成します。電子メール通知の設定の詳細については、「[通知の構成](backup-azure-monitor-vms.md#configure-notifications)」を参照してください。
+# <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Monitor alerts for Azure virtual machine backups
 
-## アラートに関する情報の見つけ方
+Alerts are responses from the service that an event threshold has been met or surpassed. Knowing when problems start can be critical to keeping business costs down. Alerts typically do not occur on a schedule, and so it is helpful to know as soon as possible after alerts occur. For example, when a backup or restore job fails, an alert occurs within five minutes of the failure. In the vault dashboard, the Backup Alerts tile displays Critical and Warning-level events. In the Backup Alerts settings, you can view all events. But what do you do if an alert occurs when you are working on a separate issue? If you don't know when the alert happens, it could be a minor inconvenience, or it could compromise data. To make sure the correct people are aware of an alert - when it occurs, configure the service to send alert notifications via email. For details on setting up email notifications, see [Configure notifications](backup-azure-monitor-vms.md#configure-notifications).
 
-アラートが生成されたイベントに関する情報を表示するには、[バックアップ アラート] ブレードを開く必要があります。[バックアップ アラート] ブレードは、コンテナーのダッシュボードの [バックアップ アラート] タイルから開くか、[アラートとイベント] ブレードから開きます。
+## <a name="how-do-i-find-information-about-the-alerts?"></a>How do I find information about the alerts?
 
-[バックアップ アラート] タイルから [バックアップ アラート] ブレードを開くには:
+To view information about the event that threw an alert, you must open the Backup Alerts blade. There are two ways to open the Backup Alerts blade: either from the Backup Alerts tile in the vault dashboard, or from the Alerts and Events blade.
 
-- ダッシュボードの **[バックアップ アラート]** タイルで **[重大]** または **[警告]** をクリックして、その重大度レベルの操作イベントを表示します。
+To open the Backup Alerts blade from Backup Alerts tile:
 
-    ![[バックアップ アラート] タイル](./media/backup-azure-monitor-vms/backup-alerts-tile.png)
+- On the **Backup Alerts** tile on the vault dashboard, click **Critical** or **Warning** to view the operational events for that severity level.
+
+    ![Backup Alerts tile](./media/backup-azure-monitor-vms/backup-alerts-tile.png)
 
 
-[アラートとイベント] ブレードから [バックアップ アラート] ブレードを開くには:
+To open the Backup Alerts blade from the Alerts and Events blade:
 
-1. コンテナーのダッシュボードから、**[すべての設定]** をクリックします。![[すべての設定] ボタン](./media/backup-azure-monitor-vms/all-settings-button.png)
+1. From the vault dashboard, click **All Settings**. ![All Settings button](./media/backup-azure-monitor-vms/all-settings-button.png)
 
-2. **[設定]** ブレードで **[アラートとイベント]** をクリックします。![[アラートとイベント] ボタン](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
+2. On the **Settings** blade, click **Alerts and Events**. ![Alerts and Events button](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
 
-3. **[アラートとイベント]** ブレードで、**[バックアップ アラート]** をクリックします。![[バックアップ アラート] ボタン](./media/backup-azure-monitor-vms/backup-alerts.png)
+3. On the **Alerts and Events** blade, click **Backup Alerts**. ![Backup Alerts button](./media/backup-azure-monitor-vms/backup-alerts.png)
 
-    **[バックアップ アラート]** ブレードが開き、フィルター処理されたアラートが表示されます。
+    The **Backup Alerts** blade opens and displays the filtered alerts.
 
-    ![[バックアップ アラート] タイル](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
+    ![Backup Alerts tile](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
 
-4. 特定のアラートに関する詳しい情報を表示するには、イベントの一覧から目的のアラートをクリックして、その **[詳細]** ブレードを開きます。
+4. To view detailed information about a particular alert, from the list of events, click the alert to open its **Details** blade.
 
-    ![イベントの詳細](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
+    ![Event Detail](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
-    一覧に表示される属性をカスタマイズするには、「[追加のイベント属性の表示](backup-azure-monitor-vms.md#view-additional-event-attributes)」を参照してください
+    To customize the attributes displayed in the list, see [View additional event attributes](backup-azure-monitor-vms.md#view-additional-event-attributes)
 
-## 通知の構成
+## <a name="configure-notifications"></a>Configure notifications
 
- 過去 1 時間に発生したアラート、または特定の種類のイベントの発生時に生成されたアラートに対して、電子メール通知を送信するようにサービスを構成できます。
+ You can configure the service to send email notifications for the alerts that occurred over the past hour, or when particular types of events occur.
 
-アラートの電子メール通知を設定するには
+To set up email notifications for alerts
 
-1. [バックアップ アラート] メニューで、**[通知の構成]** をクリックします
+1. On the Backup Alerts menu, click **Configure notifications**
 
-    ![[バックアップ アラート] メニュー](./media/backup-azure-monitor-vms/backup-alerts-menu.png)
+    ![Backup Alerts menu](./media/backup-azure-monitor-vms/backup-alerts-menu.png)
 
-    [通知の構成] ブレードが開きます。
+    The Configure notifications blade opens.
 
-    ![[構成の通知] ブレード](./media/backup-azure-monitor-vms/configure-notifications.png)
+    ![Configure notifications blade](./media/backup-azure-monitor-vms/configure-notifications.png)
 
-2. [通知の構成] ブレードで、電子メール通知に対して **[オン]** をクリックします。
+2. On the Configure notifications blade, for Email notifications, click **On**.
 
-    受信者と重大度は必須情報であるため、そのダイアログの横には星マークが付いています。1 つ以上の電子メール アドレスを指定し、1 つ以上の重大度を選択します。
+    The Recipients and Severity dialogs have a star next to them because that information is required. Provide at least one email address, and select at least one Severity.
 
-3. **[受信者 (メール)]** ダイアログ ボックスに、通知を受け取る電子メール アドレスを、username@domainname.com の形式で入力します。複数の電子メール アドレスを入力する場合は、セミコロン (;) で区切ります。
+3. In the **Recipients (Email)** dialog, type the email addresses for who receive the notifications. Use the format: username@domainname.com. Separate multiple email addresses with a semicolon (;).
 
-4. 指定したアラートの発生時に通知を送信するには、**[通知]** 領域で **[アラートごと]** を選択します。過去 1 時間の概要を送信するには、**[1 時間ごとのダイジェスト]** を選択します。
+4. In the **Notify** area, choose **Per Alert** to send notification when the specified alert occurs, or **Hourly Digest** to send a summary for the past hour.
 
-5. **[重大度]** ダイアログ ボックスで、電子メール通知をトリガーする 1 つ以上のレベルを選択します。
+5. In the **Severity** dialog, choose one or more levels that you want to trigger email notification.
 
-6. [**Save**] をクリックします。
-### Azure IaaS VM のバックアップに使用できるアラートの種類
-| アラート レベル | 送信されるアラート |
+6. Click **Save**.
+### <a name="what-alert-types-are-available-for-azure-iaas-vm-backup?"></a>What alert types are available for Azure IaaS VM backup?
+| Alert Level  | Alerts sent |
 | ------------- | ------------- |
-| 重大 | バックアップの失敗、回復エラー |
-| 警告 | なし |
-| 情報 | なし | 
+| Critical | Backup failure, recovery failure  |
+| Warning  | None |
+| Informational  | None  | 
 
-### 通知が構成されていても電子メールが送信されない場合はあるか
+### <a name="are-there-situations-where-email-isn't-sent-even-if-notifications-are-configured?"></a>Are there situations where email isn't sent even if notifications are configured?
 
-通知が正しく構成されているにもかかわらずアラートが送信されないことがあります。アラートのノイズを回避する目的で、次のような状況では電子メール通知は送信されません。
+There are situations where an alert is not sent, even though the notifications have been properly configured. In the following situations email notifications are not sent to avoid alert noise:
 
-- 通知頻度が [1 時間ごとのダイジェスト] に設定されており、アラートが発生してから 1 時間以内に解決した。
-- ジョブが取り消された。
-- バックアップ ジョブがトリガーされ失敗した後、別のバックアップ ジョブが進行中である。
-- Resource Manager に対応する VM のスケジュールされたバックアップ ジョブが開始されたが、VM が存在しない。
+- If notifications are configured to Hourly Digest, and an alert is raised and resolved within the hour.
+- The job is canceled.
+- A backup job is triggered and then fails, and another backup job is in progress.
+- A scheduled backup job for a Resource Manager-enabled VM starts, but the VM no longer exists.
 
-## イベントのビューのカスタマイズ
+## <a name="customize-your-view-of-events"></a>Customize your view of events
 
-**[監査ログ]** 設定には、操作イベント情報を示す事前定義済みの一連のフィルターと列が用意されています。イベントのビューは、**[イベント]** ブレードを開いたときに必要な情報が表示されるように、カスタマイズすることができます。
+The **Audit logs** setting comes with a pre-defined set of filters and columns showing operational event information. You can customize the view so that when the **Events** blade opens, it shows you the information you want.
 
-1. [コンテナーのダッシュボード](./backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard)で **[監査ログ]** に移動してクリックし、**[イベント]** ブレードを開きます。
-
-    ![Audit Logs](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
-
-    **[イベント]** ブレードには、現在のコンテナーに該当する操作イベントのみが表示されます。
-
-    ![Audit Logs Filter](./media/backup-azure-monitor-vms/audit-logs-filter.png)
-
-    このブレードには、過去 1 週間に発生した重大イベント、エラー イベント、警告イベント、情報イベントが一覧表示されます。この期間は、**[フィルター]** に設定されている既定値です。**[イベント]** ブレードには、イベントがいつ発生したかを追跡する棒グラフも表示されます。棒グラフを非表示にするには、**[イベント]** メニューの **[グラフの非表示]** をクリックしてグラフをオフに切り替えます。イベントの既定のビューには、操作、レベル、状態、リソース、および時刻の情報が表示されます。追加のイベント属性の表示については、[イベント情報の展開](backup-azure-monitor-vms.md#view-additional-event-attributes)に関するセクションをご覧ください。
-
-2. 操作イベントの詳細については、**[操作]** 列で操作イベントをクリックして、ブレードを開きます。ブレードにはイベントに関する詳細情報が含まれています。イベントは、関連付け ID によってグループ化されています。また、特定の期間に発生したイベントの一覧も表示されます。
-
-    ![操作の詳細](./media/backup-azure-monitor-vms/audit-logs-details-window.png)
-
-3. 特定のイベントに関する詳しい情報を表示するには、イベントの一覧から目的のイベントをクリックして、その **[詳細]** ブレードを開きます。
-
-    ![イベントの詳細](./media/backup-azure-monitor-vms/audit-logs-details-window-deep.png)
-
-    イベント レベルの情報は、得られた内容がそのままの詳細度で表示されます。各イベントに関するこの大量の情報を確認し、その詳細情報を **[イベント]** ブレードに追加する必要がある場合は、[イベント情報の展開](backup-azure-monitor-vms.md#view-additional-event-attributes)に関するセクションをご覧ください。
-
-
-## イベント フィルターのカスタマイズ
-**フィルター**を使用して、特定のブレードに表示される情報を調整または選択します。イベント情報をフィルター処理するには:
-
-1. [コンテナーのダッシュボード](./backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard)で **[監査ログ]** に移動してクリックし、**[イベント]** ブレードを開きます。
+1. In the [vault dashboard](./backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard), browse to and click **Audit Logs** to open the **Events** blade.
 
     ![Audit Logs](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
 
-    **[イベント]** ブレードには、現在のコンテナーに該当する操作イベントのみが表示されます。
+    The **Events** blade opens to the operational events filtered just for the current vault.
 
     ![Audit Logs Filter](./media/backup-azure-monitor-vms/audit-logs-filter.png)
 
-2. **[イベント]** メニューで、**[フィルター]** をクリックして、そのブレードを開きます。
+    The blade shows the list of Critical, Error, Warning, and Informational events that occurred in the past week. The time span is a default value set in the **Filter**. The **Events** blade also shows a bar chart tracking when the events occurred. If you don't want to see the bar chart, in the **Events** menu, click **Hide chart** to toggle off the chart. The default view of Events shows Operation, Level, Status, Resource, and Time information. For information about exposing additional Event attributes, see the section [expanding Event information](backup-azure-monitor-vms.md#view-additional-event-attributes).
+
+2. For additional information on an operational event, in the **Operation** column, click an operational event to open its blade. The blade contains detailed information about the events. Events are grouped by their correlation ID and a list of the events that occurred in the Time span.
+
+    ![Operation Details](./media/backup-azure-monitor-vms/audit-logs-details-window.png)
+
+3. To view detailed information about a particular event, from the list of events, click the event to open its **Details** blade.
+
+    ![Event Detail](./media/backup-azure-monitor-vms/audit-logs-details-window-deep.png)
+
+    The Event-level information is as detailed as the information gets. If you prefer seeing this much information about each event, and would like to add this much detail to the **Events** blade, see the section [expanding Event information](backup-azure-monitor-vms.md#view-additional-event-attributes).
+
+
+## <a name="customize-the-event-filter"></a>Customize the event filter
+Use the **Filter** to adjust or choose the information that appears in a particular blade. To filter the event information:
+
+1. In the [vault dashboard](./backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard), browse to and click **Audit Logs** to open the **Events** blade.
+
+    ![Audit Logs](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
+
+    The **Events** blade opens to the operational events filtered just for the current vault.
+
+    ![Audit Logs Filter](./media/backup-azure-monitor-vms/audit-logs-filter.png)
+
+2. On the **Events** menu, click **Filter** to open that blade.
 
     ![open filter blade](./media/backup-azure-monitor-vms/audit-logs-filter-button.png)
 
-3. **[フィルター]** ブレードで、**[レベル]**、**[期間]**、**[呼び出し元]** の各フィルターを調整します。その他のフィルターは、現在の Recovery Services コンテナーの情報を提供するように設定されているため利用できません。
+3. On the **Filter** blade, adjust the **Level**, **Time span**, and **Caller** filters. The other filters are not available since they were set to provide the current information for the Recovery Services vault.
 
     ![Audit Logs-query details](./media/backup-azure-monitor-vms/filter-blade.png)
 
-    イベントの**レベル**には、重大、エラー、警告、情報のいずれかを指定できます。イベントのレベルは複数選んで組み合わせることができますが、少なくとも 1 つは選択する必要があります。目的のレベルのオン/オフを指定してください。イベントの収集対象期間は、**[期間]** フィルターで指定できます。カスタムの期間を使用する場合は、開始と終了のタイミングを設定できます。
+    You can specify the **Level** of event: Critical, Error, Warning, or Informational. You can choose any combination of event Levels, but you must have at least one Level selected. Toggle the Level on or off. The **Time span** filter allows you to specify the length of time for capturing events. If you use a custom Time span, you can set the start and end times.
 
-4. フィルターを使って操作ログを照会する準備が整ったら、**[更新]** をクリックします。その結果が **[イベント]** ブレードに表示されます。
+4. Once you are ready to query the operations logs using your filter, click **Update**. The results display in the **Events** blade.
 
-    ![操作の詳細](./media/backup-azure-monitor-vms/edited-list-of-events.png)
+    ![Operation Details](./media/backup-azure-monitor-vms/edited-list-of-events.png)
 
 
-### 追加のイベント属性の表示
-**[列]** ボタンを使用して、**[イベント]** ブレード上の一覧に追加のイベント属性を表示できます。イベントの既定の一覧には、操作、レベル、状態、リソース、および時刻の情報が表示されます。追加の属性を有効にするには:
+### <a name="view-additional-event-attributes"></a>View additional event attributes
+Using the **Columns** button, you can enable additional event attributes to appear in the list on the **Events** blade. The default list of events displays information for Operation, Level, Status, Resource, and Time. To enable additional attributes:
 
-1. **[イベント]** ブレードで、**[列]** をクリックします。
+1. On the **Events** blade, click **Columns**.
 
-    ![列を開く](./media/backup-azure-monitor-vms/audi-logs-column-button.png)
+    ![Open Columns](./media/backup-azure-monitor-vms/audi-logs-column-button.png)
 
-    **[列の選択]** ブレードが開きます。
+    The **Choose columns** blade opens.
 
-    ![[列] ブレード](./media/backup-azure-monitor-vms/columns-blade.png)
+    ![Columns blade](./media/backup-azure-monitor-vms/columns-blade.png)
 
-2. 属性を選択するには、チェック ボックスをクリックします。属性のチェック ボックスのオンとオフを切り替えます。
+2. To select the attribute, click the checkbox. The attribute checkbox toggles on and off.
 
-3. **[イベント]** ブレードで、**[リセット]** をクリックして属性の一覧をリセットします。一覧で属性を追加または削除したら、**[リセット]** を使用して、新しいイベント属性の一覧を表示します。
+3. Click **Reset** to reset the list of attributes in the **Events** blade. After adding or removing attributes from the list, use **Reset** to view the new list of Event attributes.
 
-4. **[更新]** をクリックして、イベント属性のデータを更新します。次の表は、各属性の情報を示しています。
+4. Click **Update** to update the data in the Event attributes. The following table provides information about each attribute.
 
-| 列名 |Description|
+| Column name      |Description|
 | -----------------|-----------|
-| 操作|操作の名前|
-| Level|操作のレベル。値は、情報、警告、エラー、重大のいずれかです|
-|状態|操作の状態の説明|
-|リソース|リソースを識別する URL。リソース ID とも呼ばれます|
-|Time|イベントが発生した時間。現在の時間から測定します|
-|Caller|イベントを呼び出した、またトリガーしたシステムまたはユーザー|
-|Timestamp|イベントがトリガーされた時間|
-|リソース グループ|関連付けられているリソース グループ|
-|リソースの種類|Resource Manager によって使用される内部リソースの種類|
-|サブスクリプション ID|関連付けられているサブスクリプション ID|
-|カテゴリ|イベントのカテゴリ|
-|関連付け ID|関連するイベントの共通の ID|
+| Operation|The name of the operation|
+| Level|The level of the operation, values can be: Informational, Warning, Error, or Critical|
+|Status|Descriptive state of the operation|
+|Resource|URL that identifies the resource; also known as the resource ID|
+|Time|Time, measured from the current time, when the event occurred|
+|Caller|Who or what called or triggered the event; can be the system, or a user|
+|Timestamp|The time when the event was triggered|
+|Resource Group|The associated resource group|
+|Resource Type|The internal resource type used by Resource Manager|
+|Subscription ID|The associated subscription ID|
+|Category|Category of the event|
+|Correlation ID|Common ID for related events|
 
 
 
-## PowerShell を使用したアラートのカスタマイズ
-ポータルで、ジョブのカスタム アラート通知を受け取ることができます。ジョブの通知を受け取るには、操作ログ イベントに対して PowerShell ベースのアラート ルールを定義します。"*PowerShell Version 1.3.0 以降*" を使用します。
+## <a name="use-powershell-to-customize-alerts"></a>Use PowerShell to customize alerts
+You can get custom alert notifications for the jobs in the portal. To get these jobs, define PowerShell-based alert rules on the operational logs events. Use *PowerShell version 1.3.0 or later*.
 
-バックアップに失敗した場合に警告するカスタム通知を定義するには、次のスクリプトのようなコマンドを使用します。
+To define a custom notification to alert for backup failures, use a command like the following script:
 
 ```
 PS C:\> $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail contoso@microsoft.com
 PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -OperationName Microsoft.Backup/RecoveryServicesVault/Backup -Status Failed -TargetResourceId /subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/microsoft.backupbvtd2/RecoveryServicesVault/trinadhVault -Actions $actionEmail
 ```
 
-**ResourceId**: ResourceId は監査ログから取得できます。ResourceId は操作ログの Resource 列に記録されている URL です。
+**ResourceId** : You can get ResourceId from the Audit logs. The ResourceId is a URL provided in the Resource column of the Operation logs.
 
-**OperationName**: OperationName の形式は "Microsoft.RecoveryServices/recoveryServicesVault/*EventName*" です。ここで、*EventName* は次のいずれかです:<br/>
+**OperationName** : OperationName is in the format "Microsoft.RecoveryServices/recoveryServicesVault/*EventName*" where *EventName* can be:<br/>
 - Register <br/>
 - Unregister <br/>
 - ConfigureProtection <br/>
@@ -199,42 +200,46 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 - DeleteProtectionPolicy <br/>
 - UpdateProtectionPolicy <br/>
 
-**Status**: サポートされる値は、Started、Succeeded、または Failed です。
+**Status** : Supported values are Started, Succeeded, or Failed.
 
-**ResourceGroup**: 対象リソースが属しているリソース グループです。生成するログに Resource Group 列を追加することができます。リソース グループは、入手できるイベント情報の種類の 1 つです。
+**ResourceGroup** : This is the Resource Group to which the resource belongs. You can add the Resource Group column to the generated logs. Resource Group is one of the available types of event information.
 
-**Name**: アラート ルールの名前です。
+**Name** : Name of the Alert Rule.
 
-**CustomEmail**: アラート通知を送信する先のカスタム電子メール アドレスを指定します
+**CustomEmail** : Specify the custom email address to which you want to send an alert notification
 
-**SendToServiceOwners**: このオプションを指定すると、サブスクリプションの管理者と共同管理者すべてにアラート通知が送信されます。これは、**New-AzureRmAlertRuleEmail** コマンドレットで使用できます
+**SendToServiceOwners** : This option sends alert notifications to all administrators and co-administrators of the subscription. It can be used in **New-AzureRmAlertRuleEmail** cmdlet
 
-### アラートに関する制限事項
-イベント ベースのアラートには、次の制限事項が適用されます。
+### <a name="limitations-on-alerts"></a>Limitations on Alerts
+Event-based alerts are subject to the following limitations:
 
-1. アラートは、Recovery Services コンテナー内のすべての仮想マシン上でトリガーされます。Recovery Services コンテナーの仮想マシンのサブセットに対して、アラートをカスタマイズすることはできません。
-2. この機能はプレビュー段階にあります。[詳細情報](../azure-portal/insights-powershell-samples.md#create-alert-rules)
-3. アラートは、"alerts-noreply@mail.windowsazure.com" から送信されます。現時点で、電子メールの送信者を変更することはできません。
+1. Alerts are triggered on all virtual machines in the Recovery Services vault. You cannot customize the alert for a subset of virtual machines in a Recovery Services vault.
+2. This feature is in Preview. [Learn more](../azure-portal/insights-powershell-samples.md#create-alert-rules)
+3. Alerts are sent from "alerts-noreply@mail.windowsazure.com". Currently you can't modify the email sender.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-イベント ログは、バックアップ操作の事後分析や監査を行うのに役立ちます。次の操作が記録されます。
+Event logs enable great post-mortem and audit support for the backup operations. The following operations are logged:
 
-- 登録
-- 登録解除
-- 保護の構成
-- バックアップ (オンデマンド バックアップとスケジュールされたバックアップの両方)
-- 復元
-- 保護の停止
-- バックアップ データの削除
-- ポリシーの追加
-- ポリシーの削除
-- ポリシーの更新
-- ジョブの取り消し
+- Register
+- Unregister
+- Configure protection
+- Backup (Both scheduled as well as on-demand backup)
+- Restore
+- Stop protection
+- Delete backup data
+- Add policy
+- Delete policy
+- Update policy
+- Cancel job
 
-Azure サービスにわたるイベント、操作、および監査ログの概要については、「[イベントと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」を参照してください。
+For a broad explanation of events, operations, and audit logs across the Azure services, see the article, [View events and audit logs](../azure-portal/insights-debugging-with-events.md).
 
-復旧ポイントからの仮想マシンの再作成については、[Azure VM の復元](backup-azure-restore-vms.md)に関するページをご覧ください。仮想マシンの保護については、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。VM バックアップの管理タスクについては、[Azure 仮想マシンのバックアップの管理](backup-azure-manage-vms.md)に関するページをご覧ください。
+For information on re-creating a virtual machine from a recovery point, check out [Restore Azure VMs](backup-azure-restore-vms.md). If you need information on protecting your virtual machines, see [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md). Learn about the management tasks for VM backups in the article, [Manage Azure virtual machine backups](backup-azure-manage-vms.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

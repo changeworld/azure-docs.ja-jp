@@ -1,84 +1,85 @@
 <properties
-	pageTitle="SQL インメモリの使用 | Microsoft Azure"
-	description="SQL インメモリは、トランザクション ワークロードと分析ワークロードのパフォーマンスを大幅に向上するテクノロジです。これらのテクノロジを活用する方法について説明します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="jodebrui"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="SQL In-Memory, Get started | Microsoft Azure"
+    description="SQL In-Memory technologies greatly improve the performance of transactional and analytics workloads. Learn how to take advantage of these technologies."
+    services="sql-database"
+    documentationCenter=""
+    authors="jodebrui"
+    manager="jhubbard"
+    editor=""/>
 
 
 <tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/29/2016"
-	ms.author="jodebrui"/>
+    ms.service="sql-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/29/2016"
+    ms.author="jodebrui"/>
 
 
-# SQL Database でのインメモリ (プレビュー) の使用
 
-インメモリ機能は、適切な状況でトランザクション ワークロードと分析ワークロードのパフォーマンスを大幅に向上させます。
+# <a name="get-started-with-in-memory-(preview)-in-sql-database"></a>Get started with In-Memory (Preview) in SQL Database
 
-このトピックでは、2 つのデモンストレーションに重点を置きます。1 つはインメモリ OLTP のデモ、もう 1 つはインメモリ分析のデモです。各デモでは、デモを実行するのに必要となる手順とコードを詳しく説明します。次のいずれかを実行できます。
+In-Memory features greatly improve the performance of transactional and analytics workloads in the right situations.
 
-- バリエーションをテストするコードを使用して、パフォーマンスの結果の違いを確認します。
-- コードを読んで、シナリオを把握し、インメモリ オブジェクトの作成および利用の方法を確認します。
+This topic emphasizes two demonstrations, one for In-Memory OLTP, and one for In-Memory Analytics. Each demo comes complete with the steps and code you would need to run the demo. You can either:
+
+- Use the code to test variations to see differences in performance results; or
+- Read the code to understand the scenario, and to see how to create and utilize the In-Memory objects.
 
 > [AZURE.VIDEO azure-sql-database-in-memory-technologies]
 
-- 「[クイック スタート 1: T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](http://msdn.microsoft.com/library/mt694156.aspx)」は、作業の開始に役立つ記事です。
+- [Quick Start 1: In-Memory OLTP Technologies for Faster T-SQL Performance](http://msdn.microsoft.com/library/mt694156.aspx) - is another article to help you get started.
 
-#### インメモリ OLTP
+#### <a name="in-memory-oltp"></a>In-Memory OLTP
 
-インメモリ [OLTP](#install_oltp_manuallink) (オンライン トランザクション処理) の機能は次のとおりです。
+The features of In-Memory [OLTP](#install_oltp_manuallink) (online transaction processing) are:
 
-- メモリが最適化されたテーブル。
-- ネイティブでコンパイルされたストアド プロシージャ。
-
-
-メモリ最適化テーブルは、ハード ドライブ上の標準的な表現に加えて、アクティブ メモリ内にそれ自体の表現を持っています。ビジネス トランザクションはアクティブ メモリ内の表現のみと直接やり取りするので、テーブルに対するビジネス トランザクションの実行はより速くなります。
-
-インメモリ OLTP を使用すると、ワークロードの詳細にもよりますが、トランザクションのスループットを最大で 30 倍向上させることができます。
+- Memory-optimized tables.
+- Natively compiled stored procedures.
 
 
-ネイティブ コンパイル ストアド プロシージャでは、従来の解釈ストアド プロシージャより、実行時に必要とするマシン語命令の数が少なくて済みます。解釈期間の 1/100 である期間内にネイティブ コンパイルの結果を確認できました。
+A memory-optimized table has one representation of itself in active memory, in addition to the standard representation on a hard drive. Business transactions against the table run faster because they directly interact with only the representation that is in active memory.
+
+With In-Memory OLTP, you can achieve up to 30 times gain in transaction throughput, depending on the specifics of the workload.
 
 
-#### インメモリ分析 
-
-インメモリ[分析](#install_analytics_manuallink)の機能は次のとおりです。
-
-列ストア インデックスにより、分析およびレポート作成クエリのパフォーマンスが向上します。
+Natively compiled stored procedures require fewer machine instructions during run time than traditional interpreted stored procedures. We have seen native compilation result in durations that are 1/100th of the interpreted duration.
 
 
-#### リアルタイム分析
+#### <a name="in-memory-analytics"></a>In-Memory Analytics 
 
-[リアルタイム分析](http://msdn.microsoft.com/library/dn817827.aspx)の場合は、インメモリ OLTP とインメモリ分析を組み合わせることで、次のことを可能にします。
+The feature of In-Memory [Analytics](#install_analytics_manuallink) is:
 
-- 運用データに基づくリアルタイムのビジネスの把握。
-
-
-#### 可用性
+Columnstore indexes improve the performance of analytics and reporting queries. 
 
 
-完全一般公開 (GA)
+#### <a name="real-time-analytics"></a>Real-Time Analytics
 
-- *ディスク上*の[列ストア インデックス](http://msdn.microsoft.com/library/dn817827.aspx)。
+For [Real-Time Analytics](http://msdn.microsoft.com/library/dn817827.aspx) you combine In-Memory OLTP and Analytics to get:
 
-
-更新:
-
-- インメモリ OLTP
-- リアルタイム運用分析
+- Real-time business insight based on operational data.
 
 
-プレビュー段階のインメモリ機能に関する考慮事項を、[このトピックの後の方で](#preview_considerations_for_in_memory)説明します。
+#### <a name="availability"></a>Availability
 
 
-> [AZURE.NOTE] このようなプレビュー段階の機能は [*Premium*](sql-database-service-tiers.md) Azure SQL データベースでのみ使用可能であり、Standard または Basic サービス レベルのデータベースでは使用できません。
+GA, General Availability:
+
+- [Columnstore indexes](http://msdn.microsoft.com/library/dn817827.aspx) that are *on-disk*.
+
+
+Preview:
+
+- In-Memory OLTP
+- Real-Time Operational Analytics
+
+
+Considerations while the In-Memory features are in Preview are described [later in this topic](#preview_considerations_for_in_memory).
+
+
+> [AZURE.NOTE] These in-Preview features are available only for [*Premium*](sql-database-service-tiers.md) Azure SQL databases, not for databases on the Standard or Basic service tier.
 
 
 
@@ -86,40 +87,40 @@
 
 &nbsp;
 
-## A.インメモリ OLTP のサンプルをインストールする
+## <a name="a.-install-the-in-memory-oltp-sample"></a>A. Install the In-Memory OLTP sample
 
-[Azure ポータル](https://portal.azure.com/)で数回クリックするだけで、AdventureWorksLT [V12] のサンプル データベースを作成できます。このセクションの手順では、以下を使用して AdventureWorksLT データベースを強化する方法について説明します。
+You can create the AdventureWorksLT [V12] sample database by a few clicks in the [Azure portal](https://portal.azure.com/). Then the steps in this section explain how you can enrich your AdventureWorksLT database with:
 
-- インメモリ テーブル。
-- ネイティブでコンパイルされたストアド プロシージャ。
+- In-Memory tables.
+- A natively compiled stored procedure.
 
 
-#### インストール手順
+#### <a name="installation-steps"></a>Installation steps
 
-1. [Azure ポータル](https://portal.azure.com/)で、V12 サーバー上に Premium データベースを作成します。**ソース**を AdventureWorksLT [V12] サンプル データベースに設定します。
- - 詳細な手順については、[最初の Azure SQL Database の作成](sql-database-get-started.md)に関する記事を参照してください。
+1. In the [Azure portal](https://portal.azure.com/), create a Premium database on a V12 server. Set the **Source** to the AdventureWorksLT [V12] sample database.
+ - For detailed instructions, you can see [Create your first Azure SQL database](sql-database-get-started.md).
 
-2. SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx) を使用して、データベースに接続します。
+2. Connect to the database with SQL Server Management Studio [(SSMS.exe)](http://msdn.microsoft.com/library/mt238290.aspx).
 
-3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql)をクリップボードにコピーします。
- - この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
+3. Copy the [In-Memory OLTP Transact-SQL script](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) to your clipboard.
+ - The T-SQL script creates the necessary In-Memory objects in the AdventureWorksLT sample database you created in step 1.
 
-4. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。
- - 次のように、`MEMORY_OPTIMIZED = ON` 句の CREATE TABLE ステートメントが重要です。
+4. Paste the T-SQL script into SSMS, and then execute the script.
+ - Crucial is the `MEMORY_OPTIMIZED = ON` clause CREATE TABLE statements, as in:
 
 
 ```
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
-	[SalesOrderID] int IDENTITY NOT NULL PRIMARY KEY NONCLUSTERED ...,
-	...
+    [SalesOrderID] int IDENTITY NOT NULL PRIMARY KEY NONCLUSTERED ...,
+    ...
 ) WITH (MEMORY_OPTIMIZED = ON);
 ```
 
 
-#### エラー 40536
+#### <a name="error-40536"></a>Error 40536
 
 
-T-SQL スクリプトを実行するときにエラー 40536 が発生する場合は、次の T-SQL スクリプトを実行し、データベースがインメモリをサポートしているかどうかを確認します。
+If you get error 40536 when you run the T-SQL script, run the following T-SQL script to verify whether the database supports In-Memory:
 
 
 ```
@@ -127,120 +128,120 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-結果が **0** の場合、インメモリがサポートされていないことを示します。1 の場合はサポートされています。問題を診断するには
+A result of **0** means In-Memory is not supported, and 1 means it is supported. To diagnose the problem:
 
-- インメモリ OLTP 機能がプレビューとしてアクティブになった後にデータベースが作成されていることを確認します。
-- データベースが Premium サービス レベルにあることを確認します。
+- Ensure the database was created after the In-Memory OLTP features became active for Preview.
+- Ensure the database is at the Premium service tier.
 
 
-#### 作成されるメモリ最適化項目の概要
+#### <a name="about-the-created-memory-optimized-items"></a>About the created memory-optimized items
 
-**テーブル**: このサンプルには、次のメモリ最適化テーブルが含まれています。
+**Tables**: The sample contains the following memory-optimized tables:
 
-- SalesLT.Product\_inmem
-- SalesLT.SalesOrderHeader\_inmem
-- SalesLT.SalesOrderDetail\_inmem
+- SalesLT.Product_inmem
+- SalesLT.SalesOrderHeader_inmem
+- SalesLT.SalesOrderDetail_inmem
 - Demo.DemoSalesOrderHeaderSeed
 - Demo.DemoSalesOrderDetailSeed
 
 
-SSMS で**オブジェクト エクスプローラー**を使用してメモリ最適化テーブルを確認できます。
+You can inspect memory-optimized tables through the **Object Explorer** in SSMS by:
 
-- **[テーブル]** を右クリックし、**[フィルター]** > **[フィルターの設定]** > **[メモリ最適化]** が 1 であることを確認します。
+- Right-click **Tables** > **Filter** > **Filter Settings** > **Is Memory Optimized** equals 1.
 
 
-または、次のようにカタログ ビューをクエリすることができます。
+Or you can query the catalog views such as:
 
 
 ```
 SELECT is_memory_optimized, name, type_desc, durability_desc
-	FROM sys.tables
-	WHERE is_memory_optimized = 1;
+    FROM sys.tables
+    WHERE is_memory_optimized = 1;
 ```
 
 
-**ネイティブ コンパイル ストアド プロシージャ**: SalesLT.usp\_InsertSalesOrder\_inmem は、カタログ ビューのクエリを使用して確認できます。
+**Natively compiled stored procedure**: SalesLT.usp_InsertSalesOrder_inmem can be inspected through a catalog view query:
 
 
 ```
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
-	FROM sys.sql_modules
-	WHERE uses_native_compilation = 1;
+    FROM sys.sql_modules
+    WHERE uses_native_compilation = 1;
 ```
 
 
 &nbsp;
 
-## サンプルの OLTP ワークロードを実行する
+## <a name="run-the-sample-oltp-workload"></a>Run the sample OLTP workload
 
-次の 2 つの*ストアド プロシージャ*の違いは、1 つ目のプロシージャはメモリ最適化バージョンのテーブルを使用し、2 つ目のプロシージャは通常のディスク上のテーブルを使用している点です。
+The only difference between the following two *stored procedures* is that the first procedure uses memory-optimized versions of the tables, while the second procedure uses the regular on-disk tables:
 
-- SalesLT**.**usp\_InsertSalesOrder**\_inmem**
-- SalesLT**.**usp\_InsertSalesOrder**\_ondisk**
-
-
-このセクションでは、便利な **ostress.exe** ユーティリティを使用して、負荷が高い状態で 2 つのストアド プロシージャを実行する方法について説明します。2 つのストレス実行が完了するまでの時間を比較することができます。
+- SalesLT**.**usp_InsertSalesOrder**_inmem**
+- SalesLT**.**usp_InsertSalesOrder**_ondisk**
 
 
-ostress.exe を実行する場合、指定したパラメーター値を両方に渡すことをお勧めします。
-
-- 多数の同時接続を実行するには、-n100 を使用します。
-- 各接続を数百回ループさせるには、-r500 を使用します。
+In this section, you see how to use the handy **ostress.exe** utility to execute the two stored procedures at stressful levels. You can compare how long it takes the two stress runs to complete.
 
 
-一方、すべてが適切に動作するようにするには、-n10、-r50 などの小さな値から始めることもできます。
+When you run ostress.exe, we recommend that you pass parameter values designed to both:
+
+- Run a large number of concurrent connections, by using -n100.
+- Have each connection loop hundreds of times, by using -r500.
 
 
-### ostress.exe のスクリプト
+However, you might want to start with much smaller values like -n10 and -r50 to ensure the everything is working.
 
 
-このセクションでは、ostress.exe コマンド ラインに埋め込まれた T-SQL スクリプトを示します。このスクリプトでは、インストールした T-SQL スクリプトで作成されたアイテムを使用します。
+### <a name="script-for-ostress.exe"></a>Script for ostress.exe
 
 
-次のスクリプトでは、5 行のアイテムがあるサンプルの販売注文を、次のメモリ最適化*テーブル*に挿入します。
+This section displays the T-SQL script that is embedded in our ostress.exe command line. The script uses items that were created by the T-SQL script you installed earlier.
 
-- SalesLT.SalesOrderHeader\_inmem
-- SalesLT.SalesOrderDetail\_inmem
+
+The following script inserts a sample sales order with five line items into the following memory-optimized *tables*:
+
+- SalesLT.SalesOrderHeader_inmem
+- SalesLT.SalesOrderDetail_inmem
 
 
 ```
 DECLARE
-	@i int = 0,
-	@od SalesLT.SalesOrderDetailType_inmem,
-	@SalesOrderID int,
-	@DueDate datetime2 = sysdatetime(),
-	@CustomerID int = rand() * 8000,
-	@BillToAddressID int = rand() * 10000,
-	@ShipToAddressID int = rand() * 10000;
-	
+    @i int = 0,
+    @od SalesLT.SalesOrderDetailType_inmem,
+    @SalesOrderID int,
+    @DueDate datetime2 = sysdatetime(),
+    @CustomerID int = rand() * 8000,
+    @BillToAddressID int = rand() * 10000,
+    @ShipToAddressID int = rand() * 10000;
+    
 INSERT INTO @od
-	SELECT OrderQty, ProductID
-	FROM Demo.DemoSalesOrderDetailSeed
-	WHERE OrderID= cast((rand()*60) as int);
-	
+    SELECT OrderQty, ProductID
+    FROM Demo.DemoSalesOrderDetailSeed
+    WHERE OrderID= cast((rand()*60) as int);
+    
 WHILE (@i < 20)
 begin;
-	EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT,
-		@DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od;
-	SET @i = @i + 1;
+    EXECUTE SalesLT.usp_InsertSalesOrder_inmem @SalesOrderID OUTPUT,
+        @DueDate, @CustomerID, @BillToAddressID, @ShipToAddressID, @od;
+    SET @i = @i + 1;
 end
 ```
 
 
-前述した ostress.exe の T-SQL の \_ondisk バージョンを作成するには、両方の *\_inmem* サブストリングを *\_ondisk* に置き換えます。この置換は、テーブルとストアド プロシージャの名前に影響があります。
+To make the _ondisk version of the preceding T-SQL for ostress.exe, you would simply replace both occurrences of the *_inmem* substring with *_ondisk*. These replaces affect the names of tables and stored procedures.
 
 
-### RML ユーティリティと ostress をインストールする
+### <a name="install-rml-utilities-and-ostress"></a>Install RML utilities and ostress
 
 
-Azure VM で ostress.exe を実行する計画を立てるのが理想的です。AdventureWorksLT データベースがある Azure リージョンと同じリージョンに [Azure 仮想マシン](https://azure.microsoft.com/documentation/services/virtual-machines/)を作成します。代わりにノートパソコンで ostress.exe を実行することもできます。
+Ideally you would plan to run ostress.exe on an Azure VM. You would create an [Azure Virtual Machine](https://azure.microsoft.com/documentation/services/virtual-machines/) in the same Azure geographic region where your AdventureWorksLT database resides. But you can run ostress.exe on your laptop instead.
 
 
-VM または選択した任意のホストに、ostress.exe を含む Replay Markup Language (RML) ユーティリティをインストールします。
+On the VM, or on whatever host you choose, install the Replay Markup Language (RML) utilities, which include ostress.exe.
 
-- [インメモリ OLTP のサンプル データベース](http://msdn.microsoft.com/library/mt465764.aspx)に関するページにある ostress.exe の説明を参照してください。
- - または、[インメモリ OLTP のサンプル データベース](http://msdn.microsoft.com/library/mt465764.aspx)に関するページを参照してください。
- - または、[ostress.exe のインストールに関するブログ](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)を参照してください。
+- See the ostress.exe discussion in [Sample Database for In-Memory OLTP](http://msdn.microsoft.com/library/mt465764.aspx).
+ - Or see [Sample Database for In-Memory OLTP](http://msdn.microsoft.com/library/mt465764.aspx).
+ - Or see [Blog for installing ostress.exe](http://blogs.msdn.com/b/psssql/archive/2013/10/29/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)
 
 
 
@@ -256,13 +257,13 @@ whereas for SQL 2016+
 
 
 
-### 最初に \_inmem stress ワークロードを実行する
+### <a name="run-the-_inmem-stress-workload-first"></a>Run the _inmem stress workload first
 
 
-*RML コマンド プロンプト* ウィンドウを使用して、ostress.exe コマンド ラインを実行できます。コマンド ライン パラメーターは ostress に次のことを行うように求めます。
+You can use an *RML Cmd Prompt* window to run our ostress.exe command line. The command line parameters direct ostress to:
 
-- 100 個の接続を同時に実行する (-n100)。
-- 各接続に T-SQL スクリプトを 50 回実行させる (-r50)。
+- Run 100 connections concurrently (-n100).
+- Have each connection run the T-SQL script 50 times (-r50).
 
 
 ```
@@ -270,50 +271,50 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 ```
 
 
-前述の ostress.exe コマンド ラインを実行するには:
+To run the preceding ostress.exe command line:
 
 
-1. SSMS で次のコマンドを実行してデータベースのデータ コンテンツをリセットし、前回の実行で挿入されたすべてのデータを削除します。
+1. Reset the database data content by running the following command in SSMS, to delete all the data that was inserted by any previous runs:
 ```
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. 上記の ostress.exe コマンドラインのテキストをクリップボードにコピーします。
+2. Copy the text of the preceding ostress.exe command line to your clipboard.
 
-3. パラメーター -S -U -P -d の `<placeholders>` を実際の正しい値に置き換えます。
+3. Replace the `<placeholders>` for the parameters -S -U -P -d with the correct real values.
 
-4. 編集したコマンドラインを RML コマンド ウィンドウで実行します。
-
-
-#### 結果は期間
+4. Run your edited command line in an RML Cmd window.
 
 
-ostress.exe が完了すると、RML コマンド ウィンドウに表示される出力の最終行に実行時間が出力されます。たとえば、短いテストの場合、約 1.5 分かかります。
+#### <a name="result-is-a-duration"></a>Result is a duration
+
+
+When ostress.exe completes, it writes the run duration as its final line of output in the RML Cmd window. For example, a shorter test run lasted about 1.5 minutes:
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### リセット、\_ondisk の編集、再実行
+#### <a name="reset,-edit-for-_ondisk,-then-rerun"></a>Reset, edit for _ondisk, then rerun
 
 
-\_inmem 実行の結果を取得したら、\_ondisk 実行に次の手順を実行します。
+After you have the result from the _inmem run, perform the following steps for the _ondisk run:
 
 
-1. SSMS で次のコマンドを実行してデータベースをリセットし、前回の実行で挿入されたすべてのデータを削除します。
+1. Reset the database by running the following command in SSMS, to delete all the data that was inserted by the previous run:
 ```
 EXECUTE Demo.usp_DemoReset;
 ```
 
-2. ostress.exe コマンド ラインを編集して、すべての *\_inmem* を *\_ondisk* に置き換えます。
+2. Edit the ostress.exe command line to replace all *_inmem* with *_ondisk*.
 
-3. ostress.exe を再び実行し、期間の結果を取得します。
+3. Rerun ostress.exe for the second time, and capture the duration result.
 
-4. 大量のテスト データとなる可能性があるデータを確実に削除するために、もう一度データベースをリセットします。
+4. Again reset the database, for responsible deletion of what can be a large amount of test data.
 
 
-#### 予想される比較結果
+#### <a name="expected-comparison-results"></a>Expected comparison results
 
-インメモリ テストの結果、ostress をデータベースと同じ Azure リージョンにある Azure VM で実行した場合、この単純なワークロードではパフォーマンスが **9 倍**向上することがわかりました。
+Our In-Memory tests have shown a **9 times** performance improvement for this simplistic workload, with ostress running on an Azure VM in the same Azure region as the database.
 
 
 
@@ -322,56 +323,56 @@ EXECUTE Demo.usp_DemoReset;
 &nbsp;
 
 
-## B.インメモリ分析のサンプルをインストールする
+## <a name="b.-install-the-in-memory-analytics-sample"></a>B. Install the In-Memory Analytics sample
 
 
-このセクションでは、列ストア インデックスと従来の B ツリー インデックスを使用した場合の IO と統計情報の結果を比較します。
+In this section, you compare the IO and Statistics results when using a columnstore index versus a traditional b-tree index.
 
 
-OLTP ワークロードのリアルタイム分析では、多くの場合、クラスター化されていない列ストア インデックスを使用するのが最適です。詳細については、「[列ストア インデックスの説明](http://msdn.microsoft.com/library/gg492088.aspx)」を参照してください。
+For real-time analytics on an OLTP workload, it is often best to use a NONclustered columnstore index. For details see [Columnstore Indexes Described](http://msdn.microsoft.com/library/gg492088.aspx).
 
 
 
-### 列ストア分析テストを準備する
+### <a name="prepare-the-columnstore-analytics-test"></a>Prepare the columnstore analytics test
 
 
-1. Azure ポータルを使用して、サンプルから最新の AdventureWorksLT データベースを作成します。
- - 正確な名前を使用します。
- - 任意の Premium サービス階層を選択します。
+1. Use the Azure portal to create a fresh AdventureWorksLT database from the sample.
+ - Use that exact name.
+ - Choose any Premium service tier.
 
-2. [sql\_in-memory\_analytics\_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) をクリップボードにコピーします。
- - この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
- - このスクリプトでは、Dimension テーブルと 2 つの fact テーブルを作成します。fact テーブルには、それぞれ 350 万行のデータが設定されています。
- - スクリプトが完了するには約 15 分かかります。
+2. Copy the [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) to your clipboard.
+ - The T-SQL script creates the necessary In-Memory objects in the AdventureWorksLT sample database you created in step 1.
+ - The script creates the Dimension table, and two fact tables. The fact tables are populated with 3.5 million rows each.
+ - The script might take 15 minutes to complete.
 
-3. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。
- - 次のように、**CREATE INDEX** ステートメントの **COLUMNSTORE** キーワードが重要です。<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
+3. Paste the T-SQL script into SSMS, and then execute the script.
+ - Crucial is the **COLUMNSTORE** keyword on a **CREATE INDEX** statement, as in:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 
-4. AdventureWorksLT を互換性レベル 130 に設定します。<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
- - レベル 130 はインメモリ機能に直接、関係ありません。しかし、レベル 130 は一般に、120 の場合よりも高いクエリ パフォーマンスを提供します。
-
-
-#### 重要なテーブルと列ストア インデックス
+4. Set AdventureWorksLT to compatibility level 130:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
+ - Level 130 is not directly related to In-Memory features. But level 130 generally provides faster query performance than does 120.
 
 
-- dbo.FactResellerSalesXL\_CCI は、クラスター化された**列ストア** インデックスがあるテーブルで、*データ* レベルで高度に圧縮されます。
-
-- dbo.FactResellerSalesXL\_PageCompressed は、同等の標準のクラスター化されたインデックスがあるテーブルで、*ページ* レベルでのみ圧縮されます。
+#### <a name="crucial-tables-and-columnstore-indexes"></a>Crucial tables and columnstore indexes
 
 
-#### 列ストア インデックスを比較する重要なクエリ
+- dbo.FactResellerSalesXL_CCI is a table that has a clustered **columnstore** index, which has advanced compression at the *data* level.
+
+- dbo.FactResellerSalesXL_PageCompressed is a table that has an equivalent regular clustered index, which is compressed only at the *page* level.
 
 
-パフォーマンスの改善を確認できるいくつかの T-SQL クエリの種類については、[こちら](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql)を参照してください。T-SQL スクリプトの手順 2 には、直接関係がある 1 組のクエリがあります。2 つのクエリの違いは、次の 1 行のみです。
+#### <a name="crucial-queries-to-compare-the-columnstore-index"></a>Crucial queries to compare the columnstore index
+
+
+[Here](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql) are several T-SQL query types you can run to see performance improvements. From Step 2 in the T-SQL script, there is a pair of queries that are of direct interest. The two queries differ only on one line:
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`
 - `FROM FactResellerSalesXL_CCI a`
 
 
-クラスター化された列ストア インデックスは FactResellerSalesXL**\_CCI** テーブルにあります。
+A clustered columnstore index is on the FactResellerSalesXL**_CCI** table.
 
-次の T-SQL スクリプトの抜粋では、各テーブルのクエリの IO と TIME の統計情報を出力します。
+The following T-SQL script excerpt prints statistics for IO and TIME for the query of each table.
 
 
 ```
@@ -391,20 +392,20 @@ SET STATISTICS TIME ON
 GO
 
 SELECT c.Year
-	,e.ProductCategoryKey
-	,FirstName + ' ' + LastName AS FullName
-	,count(SalesOrderNumber) AS NumSales
-	,sum(SalesAmount) AS TotalSalesAmt
-	,Avg(SalesAmount) AS AvgSalesAmt
-	,count(DISTINCT SalesOrderNumber) AS NumOrders
-	,count(DISTINCT a.CustomerKey) AS CountCustomers
+    ,e.ProductCategoryKey
+    ,FirstName + ' ' + LastName AS FullName
+    ,count(SalesOrderNumber) AS NumSales
+    ,sum(SalesAmount) AS TotalSalesAmt
+    ,Avg(SalesAmount) AS AvgSalesAmt
+    ,count(DISTINCT SalesOrderNumber) AS NumOrders
+    ,count(DISTINCT a.CustomerKey) AS CountCustomers
 FROM FactResellerSalesXL_PageCompressed a
 INNER JOIN DimProduct b ON b.ProductKey = a.ProductKey
 INNER JOIN DimCustomer d ON d.CustomerKey = a.CustomerKey
 Inner JOIN DimProductSubCategory e on e.ProductSubcategoryKey = b.ProductSubcategoryKey
 INNER JOIN DimDate c ON c.DateKey = a.OrderDateKey
 WHERE e.ProductCategoryKey =2
-	AND c.FullDateAlternateKey BETWEEN '1/1/2014' AND '1/1/2015'
+    AND c.FullDateAlternateKey BETWEEN '1/1/2014' AND '1/1/2015'
 GROUP BY e.ProductCategoryKey,c.Year,d.CustomerKey,d.FirstName,d.LastName
 GO
 SET STATISTICS IO OFF
@@ -418,20 +419,20 @@ SET STATISTICS IO ON
 SET STATISTICS TIME ON
 GO
 SELECT c.Year
-	,e.ProductCategoryKey
-	,FirstName + ' ' + LastName AS FullName
-	,count(SalesOrderNumber) AS NumSales
-	,sum(SalesAmount) AS TotalSalesAmt
-	,Avg(SalesAmount) AS AvgSalesAmt
-	,count(DISTINCT SalesOrderNumber) AS NumOrders
-	,count(DISTINCT a.CustomerKey) AS CountCustomers
+    ,e.ProductCategoryKey
+    ,FirstName + ' ' + LastName AS FullName
+    ,count(SalesOrderNumber) AS NumSales
+    ,sum(SalesAmount) AS TotalSalesAmt
+    ,Avg(SalesAmount) AS AvgSalesAmt
+    ,count(DISTINCT SalesOrderNumber) AS NumOrders
+    ,count(DISTINCT a.CustomerKey) AS CountCustomers
 FROM FactResellerSalesXL_CCI a
 INNER JOIN DimProduct b ON b.ProductKey = a.ProductKey
 INNER JOIN DimCustomer d ON d.CustomerKey = a.CustomerKey
 Inner JOIN DimProductSubCategory e on e.ProductSubcategoryKey = b.ProductSubcategoryKey
 INNER JOIN DimDate c ON c.DateKey = a.OrderDateKey
 WHERE e.ProductCategoryKey =2
-	AND c.FullDateAlternateKey BETWEEN '1/1/2014' AND '1/1/2015'
+    AND c.FullDateAlternateKey BETWEEN '1/1/2014' AND '1/1/2015'
 GROUP BY e.ProductCategoryKey,c.Year,d.CustomerKey,d.FirstName,d.LastName
 GO
 
@@ -445,87 +446,92 @@ GO
 <a id="preview_considerations_for_in_memory" name="preview_considerations_for_in_memory"></a>
 
 
-## インメモリ OLTP のプレビューの考慮事項
+## <a name="preview-considerations-for-in-memory-oltp"></a>Preview considerations for In-Memory OLTP
 
 
-Azure SQL Database のインメモリ OLTP 機能は、[2015 年 10 月 28 日にプレビュー段階になりました](https://azure.microsoft.com/updates/public-preview-in-memory-oltp-and-real-time-operational-analytics-for-azure-sql-database/)。
+The In-Memory OLTP features in Azure SQL Database became [active for preview on October 28, 2015](https://azure.microsoft.com/updates/public-preview-in-memory-oltp-and-real-time-operational-analytics-for-azure-sql-database/).
 
 
-現在のプレビューでは、インメモリ OLTP は以下に対してのみサポートされています。
+In the current preview, In-Memory OLTP is supported only for:
 
-- *Premium* サービス レベルのデータベース。
+- Databases that are at a *Premium* service tier.
 
-- インメモリ OLTP 機能が有効になった後に作成されたデータベース。
- - インメモリ OLTP 機能がアクティブになる前に作成されたデータベースから復元された新しいデータベースは、インメモリ OLTP をサポートできません。
+- Databases that were created after the In-Memory OLTP features became active.
+ - A new database cannot support In-Memory OLTP if it is restored from a database that was created before the In-Memory OLTP features became active.
 
 
-不明な場合は、次の T-SQL SELECT を実行して、データベースがインメモリ OLTP をサポートしているかどうかを確認することができます。結果が **1** の場合、データベースがインメモリ OLTP をサポートしていることを示します。
+When in doubt, you can always run the following T-SQL SELECT to ascertain whether your database supports In-Memory OLTP. A result of **1** means the database does support In-Memory OLTP:
 
 ```
 SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 ```
 
 
-クエリで **1** が返された場合、そのデータベースではインメモリ OLTP がサポートされており、このデータベースに基づいて作成されたデータベース コピーとデータベースの復元でもサポートされます。
+If the query returns **1**, In-Memory OLTP is supported in this database, and any database copy and database restore created based on this database.
 
 
-#### Premium でのみ使用できるオブジェクト
+#### <a name="objects-allowed-only-at-premium"></a>Objects allowed only at Premium
 
 
-データベースに次の種類のインメモリ OLTP オブジェクトまたは型のいずれかが含まれている場合、データベースのサービス階層を Premium から Basic または Standard にダウングレードすることはできません。データベースをダウングレードするには、まずこれらのオブジェクトを削除します。
+If a database contains any of the following kinds of In-Memory OLTP objects or types, downgrading the service tier of the database from Premium to either Basic or Standard is not supported. To downgrade the database, first drop these objects:
 
-- メモリ最適化テーブル
-- メモリ最適化テーブル型
-- ネイティブでコンパイルされたモジュール
-
-
-#### その他のリレーションシップ
+- Memory-optimized tables
+- Memory-optimized table types
+- Natively compiled modules
 
 
-- プレビュー段階では、エラスティック プール内のデータベースでインメモリ OLTP 機能を使用することはできません。
- - インメモリ OLTP オブジェクトを保有しているまたは保有していたデータベースをエラスティック プールに移動するには、次の手順を実行します。
-  - 1. データベース内で、メモリ最適化テーブル、テーブル型、およびネイティブ コンパイルの T-SQL モジュールを削除する
-  - 2. データベースのサービス層を標準に変更する
-  - 3. データベースをエラスティック プールに移動する
-
-- SQL Data Warehouse でインメモリ OLTP を使用することはサポートされていません。
- - インメモリ分析の列ストア インデックス機能は、SQL Data Warehouse でサポートされています。
-
-- クエリ ストアでは、ネイティブ コンパイル モジュール内のクエリをキャプチャしません。
-
-- Transact-SQL の機能の一部はインメモリ OLTP でサポートされません。これは Microsoft SQL Server と Azure SQL Database の両方に適用されます。詳細については、次のリンクを参照してください。
- - [Transact-SQL によるインメモリ OLTP のサポート](http://msdn.microsoft.com/library/dn133180.aspx)
- - [インメモリ OLTP でサポートされていない Transact-SQL の構造](http://msdn.microsoft.com/library/dn246937.aspx)
+#### <a name="other-relationships"></a>Other relationships
 
 
-## 次のステップ
+- Using In-Memory OLTP features with databases in elastic pools is not supported during Preview.
+ - To move a database that has or has had In-Memory OLTP objects to an elastic pool, follow these steps:
+  - 1. Drop any memory-optimized tables, table types, and natively compiled T-SQL modules in the database
+  - 2. Change the service tier of the database to standard
+  - 3. Move the database into the elastic pool
+
+- Using In-Memory OLTP with SQL Data Warehouse is not supported.
+ - The columnstore index feature of In-Memory Analytics is supported in SQL Data Warehouse.
+
+- The Query Store does not capture queries inside natively compiled modules.
+
+- Some Transact-SQL features are not supported with In-Memory OLTP. This applies to both Microsoft SQL Server and Azure SQL Database. For details, see:
+ - [Transact-SQL Support for In-Memory OLTP](http://msdn.microsoft.com/library/dn133180.aspx)
+ - [Transact-SQL Constructs Not Supported by In-Memory OLTP](http://msdn.microsoft.com/library/dn246937.aspx)
 
 
-- [既存の Azure SQL アプリケーションでインメモリ OLTP](sql-database-in-memory-oltp-migration.md) を試します。
+## <a name="next-steps"></a>Next steps
 
 
-## その他のリソース
+- Try [Use In-Memory OLTP in an existing Azure SQL Application.](sql-database-in-memory-oltp-migration.md)
 
-#### 詳細情報
 
-- [インメモリ OLTP の概要 (Microsoft SQL Server と Azure SQL Database の両方に適用されます)](http://msdn.microsoft.com/library/dn133186.aspx)
+## <a name="additional-resources"></a>Additional resources
 
-- [MSDN のリアルタイム運用分析に関する記事](http://msdn.microsoft.com/library/dn817827.aspx)
+#### <a name="deeper-information"></a>Deeper information
 
-- [一般的なワークロード パターンと移行の考慮事項に関するホワイト ペーパー](http://msdn.microsoft.com/library/dn673538.aspx)。インメモリ OLTP によってパフォーマンスが大幅に向上する一般的なワークロード パターンが記載されています。
+- [Learn about In-Memory OLTP, which applies to both Microsoft SQL Server and Azure SQL Database](http://msdn.microsoft.com/library/dn133186.aspx)
 
-#### アプリケーションの設計
+- [Learn about Real-Time Operational Analytics on MSDN](http://msdn.microsoft.com/library/dn817827.aspx)
 
-- [インメモリ OLTP (インメモリ最適化)](http://msdn.microsoft.com/library/dn133186.aspx)
+- White paper on [Common Workload Patterns and Migration Considerations](http://msdn.microsoft.com/library/dn673538.aspx), which describes workload patterns where In-Memory OLTP commonly provides significant performance gains.
 
-- [既存の Azure SQL アプリケーションでインメモリ OLTP を使用する。](sql-database-in-memory-oltp-migration.md)
+#### <a name="application-design"></a>Application design
 
-#### ツール
+- [In-Memory OLTP (In-Memory Optimization)](http://msdn.microsoft.com/library/dn133186.aspx)
 
-- [SQL Server Data Tools プレビュー (SSDT)](http://msdn.microsoft.com/library/mt204009.aspx) (最新月バージョン)
+- [Use In-Memory OLTP in an existing Azure SQL Application.](sql-database-in-memory-oltp-migration.md)
 
-- [SQL Server の Replay Markup Language (RML) ユーティリティの説明](http://support.microsoft.com/ja-JP/kb/944837)
+#### <a name="tools"></a>Tools
 
-- インメモリ OLTP のために[インメモリ ストレージを監視する](sql-database-in-memory-oltp-monitoring.md)
+- [SQL Server Data Tools Preview (SSDT)](http://msdn.microsoft.com/library/mt204009.aspx), for the latest monthly version.
 
-<!---HONumber=AcomDC_0831_2016-->
+- [Description of the Replay Markup Language (RML) Utilities for SQL Server](http://support.microsoft.com/en-us/kb/944837)
+
+- [Monitor In-Memory Storage](sql-database-in-memory-oltp-monitoring.md) for In-Memory OLTP.
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

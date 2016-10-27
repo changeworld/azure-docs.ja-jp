@@ -1,61 +1,63 @@
-## ARM テンプレートのダウンロードおよび理解
+## <a name="download-and-understand-the-arm-template"></a>Download and understand the ARM template
 
-Github から既存の ARM テンプレートをダウンロードして VNet と 2 つのサブネットを作成し、そのテンプレートに変更を加えて再利用することができます。再利用するには、次の手順に従ってください。
+You can download the existing ARM template for creating a VNet and two subnets from github, make any changes you might want, and reuse it. To do so, follow the steps below.
 
-1. [サンプル テンプレート ページ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)に移動します。
-2. **[azuredeploy.json]**、**[RAW]** の順にクリックします。
-3. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
-4. ARM テンプレートを使用したことがある場合は、手順 7. に進みます。
-5. 保存したファイルを開き、 5 行目にある **parameters** の内容を参照します。ARM テンプレートのパラメーターでは、デプロイ中に入力できる、値のプレース ホルダーが用意されています。
+1. Navigate to [the sample template page](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
+2. Click **azuredeploy.json**, and then click **RAW**.
+3. Save the file to a a local folder on your computer.
+4. If you are familiar with ARM templates, skip to step 7.
+5. Open the file you just saved and look at the contents under **parameters** in line 5. ARM template parameters provide a placeholder for values that can be filled out during deployment.
 
-	| パラメーター | 説明 |
-	|---|---|
-	| **location** | VNet が作成される Azure リージョン |
-	| **vnetName** | 新しい VNet の名前 |
-	| **addressPrefix** | VNet のアドレス空間 (CIDR 形式) |
-	| **subnet1Name** | 最初の VNet の名前 |
-	| **subnet1Prefix** | 最初のサブネットの CIDR ブロック |
-	| **subnet2Name** | 2 番目の VNet の名前 |
-	| **subnet2Prefix** | 2 番目のサブネットの CIDR ブロック |
+    | Parameter | Description |
+    |---|---|
+    | **location** | Azure region where the VNet will be created |
+    | **vnetName** | Name for the new VNet |
+    | **addressPrefix** | Address space for the VNet, in CIDR format |
+    | **subnet1Name** | Name for the first VNet |
+    | **subnet1Prefix** | CIDR block for the first subnet |
+    | **subnet2Name** | Name for the second VNet |
+    | **subnet2Prefix** | CIDR block for the second subnet |
 
-	>[AZURE.IMPORTANT] Github で管理される ARM テンプレートは、今後変更される可能性があります。使用する前に、必ずテンプレートを確認してください。
-	
-6. **リソース** の内容を確認し、次を参照します。
+    >[AZURE.IMPORTANT] ARM templates maintained in github can change over time. Make sure you check the template before using it.
+    
+6. Check the content under **resources** and notice the following:
 
-	- **type**。テンプレートによって作成されるリソースのタイプ。この場合は **Microsoft.Network/virtualNetworks** にあたり、VNet を指しています。
-	- **name**。リソースの名前です。**[parameters('vnetName')]** が使用されているため、名前はデプロイ中にユーザーまたはパラメーター ファイルによって入力されます。
-	- **properties**。リソースのプロパティの一覧です。VNet の作成中、このテンプレートではアドレス空間とサブネットのプロパティが使用されます。
+    - **type**. Type of resource being created by the template. In this case, **Microsoft.Network/virtualNetworks**, which represent a VNet.
+    - **name**. Name for the resource. Notice the use of **[parameters('vnetName')]**, which means the name will provided as input by the user or a parameter file during deployment.
+    - **properties**. List of properties for the resource. This template uses the address space and subnet properties during VNet creation.
 
-7. [サンプル テンプレート ページ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)に戻ります。
-8. **[azuredeploy-paremeters.json]**、**[RAW]** の順にクリックします。
-9. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
-10. 保存したファイルを開き、パラメーターの値を編集します。次の値を使用して、このシナリオで説明した VNet をデプロイします。
+7. Navigate back to [the sample template page](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
+8. Click **azuredeploy-paremeters.json**, and then click **RAW**.
+9. Save the file to a a local folder on your computer.
+10. Open the file you just saved and edit the values for the parameters. Use the values below to deploy the VNet described in our scenario.
 
-		{
-		  "location": {
-		    "value": "Central US"
-		  },
-		  "vnetName": {
-		      "value": "TestVNet"
-		  },
-		  "addressPrefix": {
-		      "value": "192.168.0.0/16"
-		  },
-		  "subnet1Name": {
-		      "value": "FrontEnd"
-		  },
-		  "subnet1Prefix": {
-		    "value": "192.168.1.0/24"
-		  },
-		  "subnet2Name": {
-		      "value": "BackEnd"
-		  },
-		  "subnet2Prefix": {
-		      "value": "192.168.2.0/24"
-		  }
-		}
+        {
+          "location": {
+            "value": "Central US"
+          },
+          "vnetName": {
+              "value": "TestVNet"
+          },
+          "addressPrefix": {
+              "value": "192.168.0.0/16"
+          },
+          "subnet1Name": {
+              "value": "FrontEnd"
+          },
+          "subnet1Prefix": {
+            "value": "192.168.1.0/24"
+          },
+          "subnet2Name": {
+              "value": "BackEnd"
+          },
+          "subnet2Prefix": {
+              "value": "192.168.2.0/24"
+          }
+        }
 
-11. ファイルを保存します。
+11. Save the file.
   
 
-<!---HONumber=AcomDC_0211_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

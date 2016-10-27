@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric クラスターでの混乱の誘発 | Microsoft Azure"
-   description="フォールト挿入とクラスター分析サービス API を使用して、クラスター内の混乱を管理します。"
+   pageTitle="Induce Chaos in Service Fabric Clusters | Microsoft Azure"
+   description="Using Fault Injection and Cluster Analysis Service APIs to manage Chaos in the cluster."
    services="service-fabric"
    documentationCenter=".net"
    authors="motanv"
@@ -16,41 +16,42 @@
    ms.date="09/19/2016"
    ms.author="motanv"/>
 
-# Service Fabric クラスターでの制御された混乱の誘発
-クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。Azure Service Fabric を使用すると、開発者が、信頼性の低いインフラストラクチャ上で信頼できるサービスのコードを記述できます。堅牢なサービスを記述するには、開発者はこのような信頼性の低いインフラストラクチャに対して障害を誘発して、サービスの安定性をテストできる必要があります。
 
-フォールト挿入とクラスター分析サービス (FAS) によって、開発者が、障害アクションを誘発してサービスをテストできます。ただし、ターゲットを特定した障害のシミュレーションには限界があります。さらにテストを実行するには、混乱を使用します。混乱により、長時間にわたり、クラスター全体で、グレースフルと非グレースフルの両方が交互に配置された連続した障害がシミュレートされます。障害の発生率と種類によって構成された混乱は、C# API または PowerShell を使用して開始または停止し、クラスターとサービスに障害を生成できます。混乱の実行中は、その時点での実行状態をキャプチャするさまざまなイベントが生成されます。たとえば、ExecutingFaultsEvent には、その反復で実行されているすべてのエラーが含まれます。また、ValidationFailedEvent には、クラスターの検証中に見つかったエラーの詳細が含まれます。GetChaosReportAsync API を呼び出すと、混乱実行のレポートを取得することができます。
+# <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Induce Controlled Chaos in Service Fabric Clusters
+Large-scale distributed systems like cloud infrastructures are inherently unreliable. Azure Service Fabric enables developers to write reliable services on top of an unreliable infrastructure. To write robust services, developers need to be able to induce faults against such unreliable infrastructure to test the stability of their services.
 
-## 混乱で誘発される障害
-混乱により、Service Fabric クラスター全体で数か月または数年の間に発生する障害が、数時間に圧縮され生成されます。障害率の高い交互に配置された障害の組み合わせにより、通常は見過ごされるめったに発生しないケースが検出されます。この混乱を実施することで、サービスのコードの品質が大幅に向上します。混乱によって誘発される障害のカテゴリは次のとおりです。
+The Fault Injection and Cluster Analysis Service (aka FAS) gives developers the ability to induce fault actions to test services. However, targeted simulated faults get you only so far. To take the testing further, one can use Chaos. Chaos simulates continuous interleaved faults, both graceful and ungraceful, throughout the cluster over extended periods of time. Once Chaos is configured with the rate and the kind of faults, it can be started or stopped through either C# APIs or PowerShell, to generate faults in the cluster and your service. While Chaos is running, it produces different events that capture the state of the run at the moment. For example, an ExecutingFaultsEvent contains all the faults that are being executed in that iteration; a ValidationFailedEvent contains the details of a failure found during cluster validation. GetChaosReportAsync API can be invoked to get the report of Chaos runs.
 
- - ノードの再起動
- - デプロイされたコード パッケージの再起動
- - レプリカの削除
- - レプリカの再起動
- - プライマリ レプリカの移動 (構成可能)
- - セカンダリ レプリカの移動 (構成可能)
+## <a name="faults-induced-in-chaos"></a>Faults induced in Chaos
+Chaos generates faults across the entire Service Fabric cluster and compresses faults seen in months or years into a few hours. The combination of interleaved faults with the high fault rate finds corner cases that are otherwise missed. This exercise of Chaos leads to a significant improvement in the code quality of the service. Chaos induces faults from the following categories:
 
-混乱は複数回反復され、反復それぞれが、一定の期間にわたる障害とクラスター検証で構成されています。クラスターが安定し、検証が成功するまでの時間は設定できます。クラスター検証で 1 つの障害が見つかると、混乱により、ValidationFailedEvent が UTC タイムスタンプと障害の詳細と共に生成され、保持されます。
+ - Restart a node
+ - Restart a deployed code package
+ - Remove a replica
+ - Restart a replica
+ - Move a primary replica (configurable)
+ - Move a secondary replica (configurable)
 
-たとえば、1 時間実行して、最大 3 つの障害が同時に発生するように設定された混乱のインスタンスを考えてみます。混乱は 3 つの障害を誘発してから、クラスターの正常性を検証し、StopChaosAsync API によって明示的に停止されるまで、または 1 時間が経過するまで、前述の手順で反復処理されます。反復処理中に、クラスターの状態が異常になると (つまり、設定時間内に安定した状態にならないと)、混乱によって ValidationFailedEvent が生成されます。これは、問題が発生し、さらに調査が必要になる場合があることを示します。
+Chaos runs in multiple iterations; each iteration consists of faults and cluster validation for the specified period. The time spent for the cluster to stabilize and for validation to succeed is configurable. If a failure is found in cluster validation, Chaos generates and persists a ValidationFailedEvent with the UTC timestamp and the failure details.
 
-現在の形式では、混乱から誘発されるのは安全な障害だけです。これは、外部障害が発生しなければ、クォーラム損失またはデータ損失が起こらないことを意味します。
+For example, consider an instance of Chaos, set to run for an hour with a maximum of three concurrent faults. Chaos induces three faults, and then validates the cluster health and it iterates through the previous step until it is explicitly stopped through the StopChaosAsync API or one-hour passes. If the cluster becomes unhealthy in any iteration, that is, it does not stabilize within a configured time, Chaos generates a ValidationFailedEvent, which indicates that something has gone wrong and may need further investigation.
 
-## 重要な構成オプション
- - **TimeToRun**: 混乱が正常に完了するまでの実行時間の合計。実行中の混乱は、TimeToRun で指定された期間が経過する前に、StopChaos API で停止できます。
- - **MaxClusterStabilizationTimeout**: 再度チェックが実行される前に、クラスターが正常になるのを待機する最大時間。この待機により、復旧中のクラスターにおける負荷が軽減します。次のチェックが実行されます
-    - クラスターの正常性に問題がないかどうか
-    - サービスの正常性に問題がないかどうか
-    - サービス パーティションの対象となるレプリカ セットのサイズに達しているかどうか
-    - InBuild レプリカが存在しないかどうか
- - **MaxConcurrentFaults**: 各イテレーションで誘発される同時実行のエラーの最大数。数値が大きいほど、より積極的な混乱となり、結果的に、より複雑なフェールオーバーと遷移の組み合わせになります。混乱により、外部エラーが存在しない場合に、この構成の値がどれだけ高くても、クォーラム損失またはデータ損失が発生しないことが保証されます。
- - **EnableMoveReplicaFaults**: プライマリ レプリカまたはセカンダリ レプリカの移動を発生させる障害を有効または無効にします。このようなエラーは、既定で無効になっています。
- - **WaitTimeBetweenIterations**: イテレーション間、つまり、障害とそれに対応する検証が一巡した後の待機時間。
- - **WaitTimeBetweenFaults**: イテレーションの 2 つの連続する障害間の待機時間。
+In its current form, Chaos induces only safe faults, which implies that in the absence of external faults, a quorum loss, or data loss never occurs.
 
-## 混乱を実行する方法
-C# のサンプル
+## <a name="important-configuration-options"></a>Important configuration options
+ - **TimeToRun**: Total time that Chaos runs before finishing with success. Chaos can be stopped before it has run for TimeToRun period through the StopChaos API.
+ - **MaxClusterStabilizationTimeout**: Maximum amount of time to wait for the cluster to become healthy before checking on again, this wait is to reduce load on the cluster while it is recovering. The checks performed are 
+    - If the cluster health is OK 
+    - The service health is OK 
+    - The target replica set size is achieved for the service partition 
+    - No InBuild replicas exist
+ - **MaxConcurrentFaults**: Maximum number of concurrent faults induced in each iteration. The higher the number, the more aggressive the Chaos, hence resulting in more complex failovers and transition combinations. Chaos guarantees that in the absence of external faults there is no quorum loss or data loss, irrespective of how high a value this configuration has.
+ - **EnableMoveReplicaFaults**: Enables or disables the faults that cause the move of the primary or secondary replicas. These faults are disabled by default.
+ - **WaitTimeBetweenIterations**: Amount of time to wait between iterations, that is, after a round of faults and corresponding validation.
+ - **WaitTimeBetweenFaults**: Amount of time to wait between two consecutive faults in an iteration.
+
+## <a name="how-to-run-chaos"></a>How to run Chaos
+C# sample
 
 ```csharp
 using System;
@@ -185,4 +186,7 @@ while($true)
 Stop-ServiceFabricChaos
 ```
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

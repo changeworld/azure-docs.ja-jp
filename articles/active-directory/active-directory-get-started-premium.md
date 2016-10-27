@@ -1,150 +1,153 @@
 <properties
-	pageTitle="Azure Active Directory Premium の概要"
-	description="このトピックでは、ボリューム ライセンスの Web サイトを通じて Azure Active Directory Premium Edition にサインアップする方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="markusvi"
-	manager="femila" 
-	editor=""/>
+    pageTitle="Getting started with Azure Active Directory Premium"
+    description="A topic that explains how to sign up for Azure Active Directory Premium edition through the Volume Licensing web site."
+    services="active-directory"
+    documentationCenter=""
+    authors="markusvi"
+    manager="femila" 
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/16/2016"
-	ms.author="markvi"/>
-
-# Azure Active Directory Premium の概要
+    ms.service="active-directory"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/16/2016"
+    ms.author="markvi"/>
 
 
-Active Directory Premium にはいくつかの方法でサインアップできます。
-
-**Azure または Office 365** - Azure または Office 365 のサブスクライバーである場合、Active Directory Premium をオンラインで購入できます。詳細な手順については、「[How to Purchase Azure Active Directory Premium - Existing Customers (Azure Active Directory Premium を購入する方法 - 既存のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)」または「[How to Purchase Azure Active Directory Premium - New Customers (Azure Active Directory Premium を購入する方法 - 新規のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)」をご覧ください。
-
-**Enterprise Mobility + Security** - Enterprise Mobility + Security (以前の Enterprise Mobility Suite) は、Active Directory Premium、Azure Rights Management、および Microsoft Intune のサービスを 1 つのライセンス プランでまとめて使用できる、組織にとってコスト効果の高い方法です。詳細については、[Enterprise Mobility + Security](https://www.microsoft.com/ja-JP/server-cloud/enterprise-mobility/overview.aspx) の Web サイトをご覧ください。30 日間の無料試用を開始するには、[こちら](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0)をクリックしてください。
+# <a name="getting-started-with-azure-active-directory-premium"></a>Getting started with Azure Active Directory Premium
 
 
-**マイクロソフト ボリューム ライセンス** - Azure Active Directory Premium は、[Microsoft エンタープライズ契約](https://www.microsoft.com/ja-JP/licensing/licensing-programs/enterprise.aspx) (250 個以上のライセンス) または [Open Volume License](https://www.microsoft.com/ja-JP/licensing/licensing-programs/open-license.aspx) (5 ～ 250 個のライセンス) プログラムで購入できます。
+To sign up for Active Directory Premium, you have several options: 
+
+**Azure or Office 365** - As an Azure or Office 365 subscriber, you can buy Active Directory Premium online. For detailed steps, see [How to Purchase Azure Active Directory Premium - Existing Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer) or [How to Purchase Azure Active Directory Premium - New Customers](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers).  
+
+**Enterprise Mobility + Security** - Enterprise Mobility + Security (formerly Enterprise Mobility Suite) is a cost effective way for organizations to use the following services together under one licensing plan: Active Directory Premium, Azure Rights Management, Microsoft Intune. For more information, see the [Enterprise Mobility + Security](https://www.microsoft.com/en-us/server-cloud/enterprise-mobility/overview.aspx) web site. To get e free 30-day trial, click [here](https://portal.office.com/Signup/Signup.aspx?OfferId=2E63A04D-BE0B-4A0F-A8CF-407C1C299221&dl=EMS&ali=1#0).
 
 
-このトピックでは、ボリューム ライセンス プログラムで購入した Azure Active Directory Premium の使用を開始する方法について説明します。Azure Active Directory のエディションの違いについてまだよくご存知でない方は、「[Azure Active Directory のエディション](active-directory-editions.md)」を参照してください。
+**Microsoft Volume Licensing** - Azure Active Directory Premium is available through a [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 or more licenses) or the [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5–250 licenses) program.
+
+
+This topic shows you how to get started with an Azure Active Directory Premium you have purchased through the Volume Licensing program. If you are not yet familiar with the different editions of Azure Active Directory, see [Azure Active Directory editions](active-directory-editions.md).  
 
 > [AZURE.NOTE]
-中国のお客様は、Azure Active Directory の世界中のインスタンスを使用して、Azure Active Directory Premium および Basic エディションを利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
+Azure Active Directory Premium and Basic editions are available for customers in China using the worldwide instance of Azure Active Directory. Azure Active Directory Premium and Basic editions are not currently supported in the Microsoft Azure service operated by 21Vianet in China. For more information, contact us at the [Azure Active Directory Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
 
 
 
-## 手順 1: Active Directory Premium にサインアップする
+## <a name="step-1:-sign-up-for-active-directory-premium"></a>Step 1: Sign up for Active Directory Premium
 
-サインアップするには、[ボリューム ライセンスを通じて購入する方法](http://www.microsoft.com/ja-JP/licensing/how-to-buy/how-to-buy.aspx)に関するページをご覧ください。
-
-
-
-## 手順 2: ライセンス プランをアクティブ化する
-
-Microsoft から Enterprise Volume Licensing プログラムを通じてライセンス プランを購入するのが初めての場合、 購入が完了したら確認メールが届きます。最初のライセンス プランをアクティベートするにはそのメールが必要になります。
-
-このディレクトリでの 2 回目以降の購入では、ライセンスは同じディレクトリで自動的にアクティブ化されます。
+To sign up, see [How to purchase through Volume Licensing](http://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
 
 
 
-**ライセンス プランをアクティブ化するには、次の手順のいずれかを行います。**
+## <a name="step-2:-activate-your-license-plan"></a>Step 2: Activate your license plan
+
+Is this your first license plan purchase through the Enterprise Volume Licensing program from Microsoft?
+In this case, you get a confirmation email when your purchase has been completed.
+You need this email to activate your first license plan.
+
+On any subsequent purchase for this directory, the licenses are automatically activated in the same directory.
 
 
-1. アクティブ化を開始するには、**[サインイン]** または **[サインアップ]** をクリックします。
 
-    ![サインイン][1]
-
+**To activate your license plan, perform one of the following steps:**
 
 
-    - 既存のテナントがある場合は、**[サインイン]** をクリックし、既存の管理者アカウントでサインインします。ライセンスをアクティブ化する必要があるディレクトリからグローバル管理者の資格情報でサインインする必要があります。
+1. To start the activation, click either **Sign In** or **Sign Up**.
 
-    - 自分のライセンス プランで使用する新しい Azure Active Directory テナントを作成する場合、**[サインアップ]** をクリックし、**[アカウント プロファイルの作成]** ダイアログを開きます。
+    ![Sign in][1]
+
+
+
+    - If you have an existing tenant, click **Sign In** to sign in with your existing administrator account. You need to sign in with the global administrator credentials from the directory where the licenses must be activated.
+
+    - If you want to create a new Azure Active Directory tenant to use with your licensing plan, click **Sign Up** to open the **Create Account Profile** dialog.
 
         ![Create account profile][2]
 
-完了すると、テナントのライセンス プランのアクティベーションの確定として次のダイアログが表示されます。
+When you are done, the following dialog shows up as confirmation for the activation of the license plan for your tenant.
 
-![確認][3]
+![Confirmation][3]
 
-## 手順 3: Azure Active Directory のアクセスをアクティブ化する
+## <a name="step-3:-activate-your-azure-active-directory-access"></a>Step 3: Activate your Azure Active Directory access
 
-以前に Microsoft Azure を使用したことがある場合は、[手順 4.](#step-4-assign-license-to-user-accounts) に進みます。
+If you have used Microsoft Azure before, you can proceed to [Step 4](#step-4-assign-license-to-user-accounts). 
 
-ライセンスがディレクトリにプロビジョニングされると、**ウェルカム メール**が届きます。そのメールで、Azure Active Directory Premium または Enterprise Mobility Suite のライセンスと機能の管理を開始できることが確認されます。
+When the licenses are provisioned to your directory, a **Welcome email** is sent to you. The email confirms that you can start managing your Azure Active Directory Premium or Enterprise Mobility Suite licenses and features. 
 
-ウェルカム メールを受け取る前に Azure Active Directory へのアクセスをアクティブ化しようとすると、次のエラー メッセージが表示されます。
+If you make an attempt to activate your access to Azure Active Directory prior to receiving the Welcome email, you get the following error message. 
 
 ![Access is not available][9]
 
-電子メールを受け取った後、少ししてからもう一度やり直してください。
+If you Please try again in a few minutes once you have received the email.
 
-サブスクリプションの新しい管理者も、このリンクを介して Azure クラシック ポータルへのアクセスをアクティブ化できます。
-
-
+New administrators in your subscription can also activate their access to the Azure classic portal through this link.
 
 
 
 
-**Azure Active Directory へのアクセスをアクティブ化するには、次の手順を行います。**
 
-1. **ウェルカム メール**の **[サインイン]** をクリックします。
+
+**To activate your Azure Active Directory access, perform the following steps:**
+
+1. In your **Welcome email**, click **Sign In**. 
     
     ![Welcome email][4]
 
-2. サインインできたら、携帯電話確認のフォームで第 2 の要素の認証を完了する必要があります。
+2. When you have signed in successfully, you need to complete a second factor authentication in form of a mobile verification:
 
     ![Mobile verification][5]
 
-アクティベーションには数分かかることがあります。アクセスがアクティブになると、茶色のバーが消え、**[ポータル]** をクリックできます。
+The activation can take a few minutes. Once your access is active, the brown bar disappears and you are able to click **Portal**.
 
 ![Please wait while we set up][6]
 
-この例では、Azure へのアクセスは Azure Active Directory に制限されています。
+In this case, your Azure access is limited to Azure Active Directory.
 
 ![Azure capabilities][7]
 
-以前の使用により、Azure に既にアクセスできる状態である場合があります。さらに、追加の Azure サブスクリプションをアクティブ化することによって、Azure Active Directory へのアクセスを完全な Azure アクセスにアップグレードできます。このような場合、Azure クラシック ポータルで使用できる機能が増えます。
+You may already have had access to Azure from prior usage; in addition, you can upgrade your Access Azure Active Directory to full Azure access by activating additional Azure subscriptions. In these cases, the Azure classic portal has more capabilities.
 
 ![Azure capabilities][8]
 
 
 
-## 手順 4: ユーザー アカウントにライセンスを割り当てる
+## <a name="step-4:-assign-license-to-user-accounts"></a>Step 4: Assign license to user accounts
 
-購入したプランの使用を開始する前に、組織内のユーザーが Premium で提供される豊富な機能を使用できるように、ユーザー アカウントにライセンスを手動で割り当てる必要があります。以下の手順を使用して、ユーザーにライセンスを割り当て、ユーザーが Azure Active Directory Premium の機能を使用できるようにします。
+Before you can start using the plan you purchased, you need to manually assign licenses to user accounts within your organization so that they can use the rich features provided with Premium. Use the following steps to assign licenses to users so they can use Azure Active Directory Premium features.
 
-**ユーザーにライセンスを割り当てるには、次の手順を実行します。**
+**To assign licenses to users, perform the following steps:**
 
-1. カスタマイズするディレクトリのグローバル管理者として、Azure クラシック ポータルにサインインします。
-2. **[Active Directory]** をクリックし、ライセンスを割り当てるディレクトリを選択します。
-3. **[ライセンス]** タブを選択し、**[Active Directory Premium]** または **[Enterprise Mobility Suite]** を選択して、**[割り当て]** をクリックします。
+1. Sign into the Azure classic portal as the global administrator of the directory you wish to customize.
+2. Click **Active Directory**, and then select the directory where you want to assign licenses.
+3. Select the **Licenses** tab, select **Active Directory Premium** or **Enterprise Mobility Suite**, and then click **Assign**.
 
     ![License plans][10]
 
-4. ダイアログ ボックスで、ライセンスを割り当てるユーザーを選択し、チェック マーク アイコンをクリックして変更を保存します。
+4. In the dialog box, select the users you want to assign licenses to, and then click the check mark icon to save the changes.
 
-    ![ライセンスを割り当てる][11]
+    ![Assign licenses][11]
 
-### ライセンスの制限
+### <a name="license-restrictions"></a>License restrictions
 
-一部のライセンス プランは、他のライセンス プランのサブセットまたはスーパーセットです。通常、ユーザーに既に割り当てられているライセンス プランをユーザーに割り当てることはできません。スーパーセットであるライセンス プランを割り当てる場合は、先にサブセットのライセンス プランを削除する必要があります。
+Some license plans are subsets or supersets of other license plans. Typically, a user cannot be assigned a license plan that has already been assigned to them. If it is your intention to assign a license plan that is a superset, you need to first remove the subset license plan.
 
-### ライセンスの要件
+### <a name="license-requirements"></a>License requirements
 
-ユーザーにライセンスを割り当てるときは、アカウントのプロパティで主な利用場所を指定できます。利用場所を指定しないと、テナントの場所が自動的にユーザーに割り当てられます。
+When you assign a license to a user, you can specify a primary usage location in the properties of their account. If a usage location is not specified, the tenant’s location is automatically assigned to the user.
 
-![ユーザーの配置][12]
+![User location][12]
 
-Microsoft クラウド サービスで利用できるサービスと機能は、国または地域によって異なります。Voice over Internet Protocol (VoIP) などのサービスは、ある国または地域では利用できても、他の国または地域では利用できないことがあります。サービスに含まれる機能は、法的な理由から特定の国や地域では制限される場合があります。サービスまたは機能を利用するときの制限の有無を確認するには、サービスのライセンス制限サイトで国または地域を検索してください。
+The availability of services and features for a Microsoft cloud service varies by country or region. A service, such as Voice over Internet Protocol (VoIP), may be available in one country or region, and not available in another. Features within a service can be restricted for legal reasons in certain countries or regions. To see if a service or feature is available with or without restrictions, look for your country or region on license restrictions site of a service.
 
-## 参照トピック
+## <a name="what's-next"></a>What's next
 
-- [サインイン ページとアクセス パネル ページに対する会社のブランドの追加](active-directory-add-company-branding.md)
-- [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
+- [Add company branding to your Sign In and Access Panel pages](active-directory-add-company-branding.md)
+- [View your access and usage reports](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-get-started-premium/MOLSEmail.png
@@ -160,4 +163,8 @@ Microsoft クラウド サービスで利用できるサービスと機能は、
 [11]: ./media/active-directory-get-started-premium/Assignlicensespicker.png
 [12]: ./media/active-directory-get-started-premium/Usagelocation.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

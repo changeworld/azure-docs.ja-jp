@@ -1,5 +1,8 @@
-NSG を使用して、仮想ネットワーク内の 1 つまたは複数の仮想マシン (VM)、ロール インスタンス、ネットワーク アダプター (NIC)、またはサブネットに対するトラフィックを制御できます。NSG には、トラフィックの方向、プロトコル、ソース アドレスとポート、および送信先アドレスとポートに基づいて、トラフィックを許可または拒否するアクセス制御ルールが含まれています。NSG のルールは、いつでも変更でき、変更は関連付けられているすべてのインスタンスに適用されます。
+You can use an NSG to control traffic to one or more virtual machines (VMs), role instances, network adapters (NICs), or subnets in your virtual network. An NSG contains access control rules that allow or deny traffic based on traffic direction, protocol, source address and port, and destination address and port. The rules of an NSG can be changed at any time, and changes are applied to all associated instances.
 
-NSG の詳細については、「[what is an NSG (NSG の概要)](../articles/virtual-network/virtual-networks-nsg.md)」を参照してください。
+For more information about NSGs, visit [what is an NSG](../articles/virtual-network/virtual-networks-nsg.md).
 
-<!---HONumber=AcomDC_0323_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

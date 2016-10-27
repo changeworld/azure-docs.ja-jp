@@ -1,36 +1,38 @@
-<properties 
-   pageTitle="Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発 | Azure" 
-   description="Data Lake Tools for Visual Studio のインストール方法と、U-SQL スクリプトの開発およびテスト方法について説明します。" 
-   services="data-lake-analytics" 
-   documentationCenter="" 
-   authors="edmacauley" 
-   manager="jhubbard" 
+<properties
+   pageTitle="Develop U-SQL scripts using Data Lake Tools for Visual Studio | Azure"
+   description="Learn how to install Data Lake Tools for Visual Studio, how to develop and test U-SQL scripts. "
+   services="data-lake-analytics"
+   documentationCenter=""
+   authors="edmacauley"
+   manager="jhubbard"
    editor="cgronlun"/>
- 
+
 <tags
    ms.service="data-lake-analytics"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="big-data" 
+   ms.workload="big-data"
    ms.date="05/16/2016"
    ms.author="edmaca"/>
 
-# チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用
 
-U-SQL は、SQL のメリットと、任意の規模ですべてのデータを処理する独自のコードの表現力を融合した言語です。U-SQL のスケーラブルな分散クエリ機能を使用することで、ストアおよび Azure SQL Database などのリレーショナル ストアのデータを効率的に分析できます。読み取り時にスキーマを適用して非構造化データを処理し、カスタム ロジックと UDF を挿入できます。また、規模に応じて実行する方法を細かく制御できる拡張性もあります。U-SQL の背景にある設計理念の詳細については、この [Visual Studio ブログの投稿](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)を参照してください。
+# <a name="tutorial:-get-started-with-azure-data-lake-analytics-u-sql-language"></a>Tutorial: Get started with Azure Data Lake Analytics U-SQL language
 
-ANSI SQL や T-SQL とは異なる点がいくつかあります。たとえば、SELECT などのキーワードは大文字である必要があります。
+U-SQL is a language that unifies the benefits of SQL with the expressive power of your own code to process all data at any scale. U-SQL’s scalable distributed query capability enables you to efficiently analyze data in the store and across relational stores such as Azure SQL Database.  It enables you to process unstructured data by applying schema on read, insert custom logic and UDF's, and includes extensibility to enable fine grained control over how to execute at scale. To learn more about the design philosophy behind U-SQL, please refer to this [Visual Studio blog post](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
-select 句、where 述語などの型システムと式言語は C# です。これは、データ型が C# 型であり、そのデータ型で C# NULL セマンティクスを使用し、述語内の比較演算子が C# 構文に従うことを意味します (たとえば、a == "foo")。また、値が完全な .NET オブジェクトであるため、任意のメソッドを使用してオブジェクトを簡単に操作できることも意味します (たとえば、"f o o o".Split(' ') )。
+There are some differences from ANSI SQL or T-SQL. For example, its keywords such as SELECT have to be in UPPERCASE.
 
-詳細については、[U-SQL リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)に関するページを参照してください。
+It’s type system and expression language inside select clauses, where predicates etc are in C#.
+This means the data types are the C# types and the data types use C# NULL semantics, and the comparison operations inside a predicate follow C# syntax (e.g., a == "foo").  This also means, that the values are full .NET objects, allowing you to easily use any method to operate on the object (eg "f o o o".Split(' ')  ).
 
-###前提条件
+For more information, see [U-SQL Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348).
 
-先に「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を完了しておく必要があります。
+###<a name="prerequisites"></a>Prerequisites
 
-このチュートリアルでは、次の U-SQL スクリプトを使用して Data Lake Analytics ジョブを実行しました。
+You must complete [Tutorial: develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+
+In the tutorial, you ran a Data Lake Analytics job with the following U-SQL script:
 
     @searchlog =
         EXTRACT UserId          int,
@@ -42,37 +44,38 @@ select 句、where 述語などの型システムと式言語は C# です。こ
                 ClickedUrls     string
         FROM "/Samples/Data/SearchLog.tsv"
         USING Extractors.Tsv();
-    
+
     OUTPUT @searchlog   
         TO "/output/SearchLog-first-u-sql.csv"
     USING Outputters.Csv();
 
-このスクリプトに変換手順は含まれていません。**SearchLog.tsv** というソース ファイルから読み取り、体系化して、**SearchLog-first-u-sql.csv** というファイルに行セットを出力し直します。
+This script doesn't have any transformation steps. It reads from the source file called **SearchLog.tsv**, schematizes it, and outputs the rowset back into a file called **SearchLog-first-u-sql.csv**.
 
-Duration フィールドのデータ型の横にある疑問符に注目してください。これは、Duration フィールドを null にできることを意味します。
+Notice the question mark next to the data type of the Duration field. That means the Duration field could be null.
 
-スクリプトには以下のいくつかの概念とキーワードがあります。
+Some concepts and keywords found in the script:
 
-- **行セットの変数**: 行セットを生成する各クエリ式を変数に割り当てることができます。U-SQL は、スクリプトでは **@searchlog** などの T-SQL 変数命名パターンに従います。この割り当ては実行を強制するものではないことに注意してください。単に式に名前を付け、より複雑な式を構築できるようにするためのものです。
-- **EXTRACT** では、読み取り時にスキーマを定義できます。スキーマは、列名と列ごとの C# 型名のペアで指定できます。いわゆる**エクストラクター**を使用します。たとえば、tsv ファイルを抽出する場合は、**Extractors.Tsv()** を使用します。カスタムのエクストラクターを開発することができます。
-- **OUTPUT** では行セットを使用し、それをシリアル化します。Outputters.Csv() は、指定した場所にコンマ区切りファイルを出力します。また、カスタムのアウトプッターを作成することもできます。
-- 次の 2 つのパスは相対パスであることに注意してください。絶対パスを使用することもできます。たとえば、次のように入力します。
-    
+- **Rowset variables**: Each query expression that produces a rowset can be assigned to a variable. U-SQL follows the T-SQL variable naming pattern, for example, **@searchlog** in the script.
+    Note the assignment does not force execution. It merely names the expression and gives you the ability to build-up more complex expressions.
+- **EXTRACT** gives you the ability to define a schema on read. The schema is specified by a column name and C# type name pair per column. It uses a so-called **Extractor**, for example, **Extractors.Tsv()** to extract tsv files. You can develop custom extractors.
+- **OUTPUT** takes a rowset and serializes it. The Outputters.Csv() output a comma-separated file into the specified location. You can also develop custom Outputters.
+- Notice the two paths are relative paths. You can also use absolute paths.  For example
+
         adl://<ADLStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
-        
-    リンクされたストレージ アカウント内のファイルへのアクセスには、絶対パスを使用する必要があります。リンクされた Azure Storage アカウントに格納されているファイルの構文は以下のとおりです。
-    
+
+    You must use absolute path to access the files in the linked Storage accounts.  The syntax for files stored in linked Azure Storage account is:
+
         wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Data/SearchLog.tsv
 
-    >[AZURE.NOTE] パブリック BLOB またはパブリック コンテナーのアクセス許可を持つ Azure BLOB コンテナーは、現在サポートされていません。
+    >[AZURE.NOTE] Azure Blob container with public blobs or public containers access permissions are not currently supported.
 
-## スカラー変数の使用
+## <a name="use-scalar-variables"></a>Use scalar variables
 
-スカラー変数も使用して、スクリプトのメンテナンスを容易にすることができます。次のように、前の U-SQL スクリプトを記述することもできます。
+You can use scalar variables as well to make your script maintenance easier. The previous U-SQL script can also be written as the following:
 
     DECLARE @in  string = "/Samples/Data/SearchLog.tsv";
     DECLARE @out string = "/output/SearchLog-scalar-variables.csv";
-    
+
     @searchlog =
         EXTRACT UserId          int,
                 Start           DateTime,
@@ -83,14 +86,14 @@ Duration フィールドのデータ型の横にある疑問符に注目して�
                 ClickedUrls     string
         FROM @in
         USING Extractors.Tsv();
-    
+
     OUTPUT @searchlog   
         TO @out
         USING Outputters.Csv();
-      
-## 行セットの変換
 
-以下のように、**SELECT** を使用して行セットを変換します。
+## <a name="transform-rowsets"></a>Transform rowsets
+
+Use **SELECT** to transform rowsets:
 
     @searchlog =
         EXTRACT UserId          int,
@@ -102,19 +105,19 @@ Duration フィールドのデータ型の横にある疑問符に注目して�
                 ClickedUrls     string
         FROM "/Samples/Data/SearchLog.tsv"
         USING Extractors.Tsv();
-    
+
     @rs1 =
         SELECT Start, Region, Duration
         FROM @searchlog
     WHERE Region == "en-gb";
-    
+
     OUTPUT @rs1   
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-WHERE 句では [C# ブール式](https://msdn.microsoft.com/library/6a71f45d.aspx)を使用します。C# 式言語を使用して、独自の式と関数を実行することができます。論理積 (AND) および論理和 (OR) と組み合わせることによって、より複雑なフィルター処理を実行することもできます。
+The WHERE clause uses [C# boolean expression](https://msdn.microsoft.com/library/6a71f45d.aspx). You can use the C# expression language to do your own expressions and functions. You can even perform more complex filtering by combining them with logical conjunctions (ANDs) and disjunctions (ORs).
 
-次のスクリプトでは、DateTime.Parse() メソッドと論理積を使用します。
+The following script uses the DateTime.Parse() method and a conjunction.
 
     @searchlog =
         EXTRACT UserId          int,
@@ -126,35 +129,35 @@ WHERE 句では [C# ブール式](https://msdn.microsoft.com/library/6a71f45d.as
                 ClickedUrls     string
         FROM "/Samples/Data/SearchLog.tsv"
         USING Extractors.Tsv();
-    
+
     @rs1 =
         SELECT Start, Region, Duration
         FROM @searchlog
     WHERE Region == "en-gb";
-    
+
     @rs1 =
         SELECT Start, Region, Duration
         FROM @rs1
         WHERE Start >= DateTime.Parse("2012/02/16") AND Start <= DateTime.Parse("2012/02/17");
-    
+
     OUTPUT @rs1   
         TO "/output/SearchLog-transform-datatime.csv"
         USING Outputters.Csv();
-        
-2 番目のクエリは最初の行セットの結果で動作するため、結果は 2 つのフィルターを組み合わせたものになることに注意してださい。また、変数名を再利用することもできます。その場合、名前は字句単位でスコープされます。
 
-## 行セットの集計
+Notice that the second query is operating on the result of the first rowset and thus the result is a composition of the two filters. You can also reuse a variable name and the names are scoped lexically.
 
-U-SQL では、使い慣れた **ORDER BY**、**GROUP BY** および集計が提供されます。
+## <a name="aggregate-rowsets"></a>Aggregate rowsets
 
-次のクエリでは、リージョンごとの合計期間を検索してから、上位 5 つの期間を順に出力します。
+U-SQL provides you with the familiar **ORDER BY**, **GROUP BY** and aggregations.
 
-次のクエリの場合、U-SQL 行セットの順序は保持されません。そのため、出力を順序付けるには、次のように OUTPUT ステートメントに ORDER BY を追加する必要があります。
+The following query finds the total duration per region, and then outputs the top 5 durations in order.
+
+U-SQL rowsets do not preserve their order for the next query. Thus, to order an output, you need to add ORDER BY to the OUTPUT statement as shown below:
 
     DECLARE @outpref string = "/output/Searchlog-aggregation";
     DECLARE @out1    string = @outpref+"_agg.csv";
     DECLARE @out2    string = @outpref+"_top5agg.csv";
-    
+
     @searchlog =
         EXTRACT UserId          int,
                 Start           DateTime,
@@ -165,32 +168,32 @@ U-SQL では、使い慣れた **ORDER BY**、**GROUP BY** および集計が提
                 ClickedUrls     string
         FROM "/Samples/Data/SearchLog.tsv"
         USING Extractors.Tsv();
-    
+
     @rs1 =
         SELECT
             Region,
             SUM(Duration) AS TotalDuration
         FROM @searchlog
     GROUP BY Region;
-    
+
     @res =
     SELECT *
     FROM @rs1
     ORDER BY TotalDuration DESC
     FETCH 5 ROWS;
-    
+
     OUTPUT @rs1
         TO @out1
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
     OUTPUT @res
-        TO @out2 
+        TO @out2
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
-        
-U-SQL の ORDER BY 句は、SELECT 式では FETCH 句と組み合わせる必要があります。
 
-以下のように、U-SQL の HAVING 句を使用して、HAVING 条件を満たすグループに出力を制限することができます。
+U-SQL ORDER BY clause has to be combined with the FETCH clause in a SELECT expression.
+
+U-SQL HAVING clause can be used to restrict the output to groups that satisfy the HAVING condition:
 
     @searchlog =
         EXTRACT UserId          int,
@@ -202,7 +205,7 @@ U-SQL の ORDER BY 句は、SELECT 式では FETCH 句と組み合わせる必�
                 ClickedUrls     string
         FROM "/Samples/Data/SearchLog.tsv"
         USING Extractors.Tsv();
-    
+
     @res =
         SELECT
             Region,
@@ -210,17 +213,17 @@ U-SQL の ORDER BY 句は、SELECT 式では FETCH 句と組み合わせる必�
         FROM @searchlog
     GROUP BY Region
     HAVING SUM(Duration) > 200;
-    
+
     OUTPUT @res
         TO "/output/Searchlog-having.csv"
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-## データの結合
+## <a name="join-data"></a>Join data
 
-U-SQL ではテーブルだけでなく、すべての行セット (ファイルから生成されたものでも) を結合するために、INNER JOIN、LEFT/RIGHT/FULL OUTER JOIN、SEMI JOIN などの一般的な結合演算子が提供されます。
+U-SQL provides common join operators such as INNER JOIN, LEFT/RIGHT/FULL OUTER JOIN, SEMI JOIN, to join not only tables but any rowsets (even those produced from files).
 
-次のスクリプトでは、検索ログと広告インプレッション ログを結合し、指定日のクエリ文字列の広告を示します。
+The following script joins the searchlog with an advertisement impression log and gives us the advertisements for the query string for a given date.
 
     @adlog =
         EXTRACT UserId int,
@@ -228,37 +231,38 @@ U-SQL ではテーブルだけでなく、すべての行セット (ファイル
                 Clicked int
         FROM "/Samples/Data/AdsLog.tsv"
         USING Extractors.Tsv();
-    
+
     @join =
         SELECT a.Ad, s.Query, s.Start AS Date
-        FROM @adlog AS a JOIN <insert your DB name>.dbo.SearchLog1 AS s 
+        FROM @adlog AS a JOIN <insert your DB name>.dbo.SearchLog1 AS s
                         ON a.UserId == s.UserId
         WHERE a.Clicked == 1;
-    
+
     OUTPUT @join   
         TO "/output/Searchlog-join.csv"
         USING Outputters.Csv();
 
 
-U-SQL でサポートされるのは、ANSI 準拠の結合構文である Rowset1 JOIN Rowset2 ON 述語のみです。FROM Rowset1, Rowset2 WHERE 述語の古い構文はサポートされていません。JOIN の述語は、式のない等価結合である必要があります。式を使用する場合は、前述の行セットの select 句に追加します。別の比較を実行する場合は、WHERE 句に移動できます。
-
-        
-## データベース、テーブル値関数、ビュー、およびテーブルの作成
-
-U-SQL では、データベースおよびスキーマのコンテキストでデータを使用することができます。そのため、ファイルに対して常に読み取りまたは書き込みを行う必要はありません。
-
-すべての U-SQL スクリプトが、その既定のコンテキストとして、既定のデータベース (master) と既定のスキーマ (DBO) で実行されます。独自のデータベースやスキーマを作成することができます。コンテキストを変更する場合は、**USE** ステートメントを使用してコンテキストを変更します。
+U-SQL only supports the ANSI compliant join syntax: Rowset1 JOIN Rowset2 ON predicate. The old syntax of FROM Rowset1, Rowset2 WHERE predicate is NOT supported.
+The predicate in a JOIN has to be an equality join and no expression. If you want to use an expression, add it to a previous rowset's select clause. If you want to do a different comparison, you can move it into the WHERE clause.
 
 
-### テーブル値関数 (TVF) の作成
+## <a name="create-databases,-table-valued-functions,-views,-and-tables"></a>Create databases, table-valued functions, views, and tables
 
-前述の U-SQL スクリプトでは、同じソース ファイルからの読み取りで EXTRACT の使用を繰り返しました。U-SQL のテーブル値関数では、後で再利用するためにデータをカプセル化することができます。
+U-SQL allows you to use data in the context of a database and schema. So you don't have to always read from or write to files.
 
-次のスクリプトでは、既定のデータベースとスキーマで *Searchlog()* という TVF を作成します。
+Every U-SQL script runs with a default database (master) and default schema (DBO) as its default context. You can create your own database and/or schema. To change the context, use the **USE** statement to change the context.
+
+
+### <a name="create-a-table-valued-function-(tvf)"></a>Create a table-valued function (TVF)
+
+In the previous U-SQL script, you repeated using EXTRACT reading from the same source file. U-SQL table-valued function enables you to encapsulate the data for future reuse.   
+
+The following script creates a TVF called *Searchlog()* in the default database and schema:
 
     DROP FUNCTION IF EXISTS Searchlog;
-    
-    CREATE FUNCTION Searchlog() 
+
+    CREATE FUNCTION Searchlog()
     RETURNS @searchlog TABLE
     (
                 UserId          int,
@@ -269,7 +273,7 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
                 Urls            string,
                 ClickedUrls     string
     )
-    AS BEGIN 
+    AS BEGIN
     @searchlog =
         EXTRACT UserId          int,
                 Start           DateTime,
@@ -282,8 +286,8 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
     USING Extractors.Tsv();
     RETURN;
     END;
-    
-次のスクリプトは、前述のスクリプトで定義された TVF を使用する方法を示しています。
+
+The following script shows you how to use the TVF defined in the previous script:
 
     @res =
         SELECT
@@ -292,20 +296,20 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
         FROM Searchlog() AS S
     GROUP BY Region
     HAVING SUM(Duration) > 200;
-    
+
     OUTPUT @res
         TO "/output/SerachLog-use-tvf.csv"
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
-        
-### ビューの作成
 
-抽象化するものの、パラメーター化しないクエリ式が 1 つだけある場合は、テーブル値関数ではなく、ビューを作成できます。
+### <a name="create-views"></a>Create views
 
-次のスクリプトでは、既定のデータベースとスキーマで *SearchlogView* というビューを作成します。
+If you only have one query expression that you want to abstract and do not want to parameterize it, you can create a view instead of a table-valued function.
+
+The following script creates a view called *SearchlogView* in the default database and schema:
 
     DROP VIEW IF EXISTS SearchlogView;
-    
+
     CREATE VIEW SearchlogView AS  
         EXTRACT UserId          int,
                 Start           DateTime,
@@ -316,8 +320,8 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
                 ClickedUrls     string
         FROM "/Samples/Data/SearchLog.tsv"
     USING Extractors.Tsv();
-    
-次のスクリプトは定義されたビューの使用方法を示しています。
+
+The following script demonstrates using the defined view:
 
     @res =
         SELECT
@@ -326,25 +330,25 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
         FROM SearchlogView
     GROUP BY Region
     HAVING SUM(Duration) > 200;
-    
+
     OUTPUT @res
         TO "/output/Searchlog-use-view.csv"
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-### テーブルの作成 
+### <a name="create-tables"></a>Create tables
 
-リレーショナル データベースのテーブルと同様に、U-SQL では、定義済みのスキーマでテーブルを作成したり、テーブルを作成して、そのテーブルを設定するクエリからスキーマを推測したりすることができます (CREATE TABLE AS SELECT または CTAS ともいう)。
+Similar to relational database table, U-SQL allows you to create a table with a predefined schema or create a table and infer the schema from the query that populates the table (also known as CREATE TABLE AS SELECT or CTAS).
 
-次のスクリプトでは、1 つのデータベースと 2 つのテーブルを作成します。
+The following script create a database and two tables:
 
     DROP DATABASE IF EXISTS SearchLogDb;
     CREATE DATABASE SeachLogDb
     USE DATABASE SearchLogDb;
-    
+
     DROP TABLE IF EXISTS SearchLog1;
     DROP TABLE IF EXISTS SearchLog2;
-    
+
     CREATE TABLE SearchLog1 (
                 UserId          int,
                 Start           DateTime,
@@ -353,24 +357,24 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
                 Duration        int?,
                 Urls            string,
                 ClickedUrls     string,
-    
-                INDEX sl_idx CLUSTERED (UserId ASC) 
+
+                INDEX sl_idx CLUSTERED (UserId ASC)
                     PARTITIONED BY HASH (UserId)
     );
-    
+
     INSERT INTO SearchLog1 SELECT * FROM master.dbo.Searchlog() AS s;
-    
+
     CREATE TABLE SearchLog2(
-        INDEX sl_idx CLUSTERED (UserId ASC) 
+        INDEX sl_idx CLUSTERED (UserId ASC)
                 PARTITIONED BY HASH (UserId)
     ) AS SELECT * FROM master.dbo.Searchlog() AS S; // You can use EXTRACT or SELECT here
 
 
-### テーブルの照会
+### <a name="query-tables"></a>Query tables
 
-データ ファイルの照会と同じ方法で、テーブル (前述のスクリプトで作成されたもの) を照会できます。EXTRACT を使用して行セットを作成する代わりに、テーブル名のみを参照できるようになりました。
+You can query the tables (created in the previous script) in the same way as you query over the data files. Instead of creating a rowset using EXTRACT, you now can just refer to the table name.
 
-テーブルから読み取る場合、前に使用した変換スクリプトは以下のように変更されます。
+The transform script you used previously is modified to read from the tables:
 
     @rs1 =
         SELECT
@@ -378,45 +382,48 @@ U-SQL では、データベースおよびスキーマのコンテキストで�
             SUM(Duration) AS TotalDuration
         FROM SearchLogDb.dbo.SearchLog2
     GROUP BY Region;
-    
+
     @res =
         SELECT *
         FROM @rs1
         ORDER BY TotalDuration DESC
         FETCH 5 ROWS;
-    
+
     OUTPUT @res
         TO "/output/Searchlog-query-table.csv"
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-現時点では、テーブルを作成する場合と同じスクリプトで、テーブルに対して SELECT を実行できないことに注意してください。
+Note that you currently cannot run a SELECT on a table in the same script as the script where you create that table.
 
 
-##まとめ
+##<a name="conclusion"></a>Conclusion
 
-このチュートリアルの内容は U-SQL のほんの一部です。このチュートリアルには適用範囲があるため、以下を含むすべてを説明することはできません。
+What is covered in the tutorial is only a small part of U-SQL. Because of the scope of this tutorial, it can't cover everything, such as:
 
-- CROSS APPLY を使用して、文字列、配列およびマップの部分を行にアンパックする。
-- データのパーティション セット (ファイル セットおよびパーティション テーブル) を操作する。
-- エクストラクター、アウトプッター、プロセッサー、ユーザー定義のアグリゲーターなどのユーザー定義演算子を C# で開発する。
-- U-SQL ウィンドウ化関数を使用する。
-- U-SQL コードをビュー、テーブル値関数およびストアド プロシージャで管理する。
-- 処理ノードで任意のカスタム コードを実行する。
-- Azure SQL Database に接続し、それらと U-SQL および Azure Data Lake データ間のクエリを統合する。
+- Use CROSS APPLY to unpack parts of strings, arrays and maps into rows.
+- Operate partitioned sets of data (file sets and partitioned tables).
+- Develop user defined operators such as extractors, outputters, processors, user-defined aggregators in C#.
+- Use U-SQL windowing functions.
+- Manage U-SQL code with views, table-valued functions and stored procedures.
+- Run arbitrary custom code on your processing nodes.
+- Connect to Azure SQL Databases and federate queries across them and your U-SQL and Azure Data Lake data.
 
-## 関連項目 
+## <a name="see-also"></a>See also
 
-- [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-- [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
-- [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)
-- [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+- [Overview of Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
+- [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+- [Using U-SQL window functions for Azure Data Lake Analytics jobs](data-lake-analytics-use-window-functions.md)
+- [Monitor and troubleshoot Azure Data Lake Analytics jobs using Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-## 意見の投稿
+## <a name="let-us-know-what-you-think"></a>Let us know what you think
 
-- [新しいドキュメント バックログの提案](data-lake-analytics-documentation-backlog.md)
-- [機能要求の送信](http://aka.ms/adlafeedback)
-- [フォーラムでサポートを受ける](http://aka.ms/adlaforums)
-- [U-SQL に関するフィードバックの提供](http://aka.ms/usqldiscuss)
+- [Submit a feature request](http://aka.ms/adlafeedback)
+- [Get help in the forums](http://aka.ms/adlaforums)
+- [Provide feedback on U-SQL](http://aka.ms/usqldiscuss)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

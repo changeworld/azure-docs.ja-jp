@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Visual Studio の Azure リソース グループ プロジェクト | Microsoft Azure"
-   description="Visual Studio を使用して、Azure リソース グループ プロジェクトを作成し、リソースを Azure にデプロイします。"
+   pageTitle="Azure Resource Group Visual Studio projects | Microsoft Azure"
+   description="Use Visual Studio to create a Azure resource group project and deploy the resources to Azure."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -15,75 +15,76 @@
    ms.date="09/20/2016"
    ms.author="tomfitz" />
 
-# Visual Studio での Azure リソース グループの作成とデプロイ
 
-Visual Studio および [Azure SDK](https://azure.microsoft.com/downloads/) では、インフラストラクチャとコードを Azure にデプロイするプロジェクトを作成することができます。たとえば、アプリ用に Web ホスト、Web サイト、およびデータベースを定義し、そのインフラストラクチャをコードと共にデプロイできます。または、仮想マシン、仮想ネットワーク、およびストレージ アカウントを定義し、そのインフラストラクチャを、仮想マシンで実行するスクリプトと共にデプロイすることができます。**Azure リソース グループ** デプロイ プロジェクトでは、必要なすべてのリソースを反復可能な単一の操作でデプロイできます。リソースのデプロイと管理の詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+# <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Creating and deploying Azure resource groups through Visual Studio
 
-Azure リソース グループ プロジェクトには、Azure にデプロイされるリソースを定義する Azure Resource Manager JSON テンプレートが含まれています。リソース マネージャーのテンプレートの要素の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。Visual Studio では、これらのテンプレートを編集することができ、テンプレートの操作を容易にするツールがサポートされています。
+With Visual Studio and the [Azure SDK](https://azure.microsoft.com/downloads/), you can create a project that deploys your infrastructure and code to Azure. For example, you can define the web host, web site, and database for your app, and deploy that infrastructure along with the code. Or, you can define a Virtual Machine, Virtual Network and Storage Account, and deploy that infrastructure along with a script that is executed on Virtual Machine. The **Azure Resource Group** deployment project enables you to deploy all the needed resources in a single, repeatable operation. For more information about deploying and managing your resources, see [Azure Resource Manager overview](resource-group-overview.md).
 
-このトピックでは、Web アプリと SQL Database をデプロイします。ただし手順は、リソースの種類に関係なくほぼ同じです。仮想マシンおよびそれに関連するリソースも同じように簡単にデプロイできます。Visual Studio では、一般的なシナリオのデプロイに適したさまざまなスターター テンプレートを多数用意しています。
+Azure Resource Group projects contain Azure Resource Manager JSON templates, which define the resources that you deploy to Azure. To learn about the elements of the Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md). Visual Studio enables you to edit these templates, and provides tools that simplify working with templates.
 
-この記事では、Visual Studio 2015 Update 2 と Microsoft Azure SDK for .NET 2.9 を使用しています。Visual Studio 2013 と Azure SDK 2.9 を使用しても、手順はほとんど同じです。Azure SDK 2.6 以降のバージョンを使用できますが、この記事で説明しているユーザー インターフェイスとは操作が異なる場合があります。手順を開始する前に、[Azure SDK](https://azure.microsoft.com/downloads/) の最新バージョンをインストールすることを強くお勧めします。
+In this topic, you deploy a web app and SQL Database. However, the steps are almost the same for any type resource. You can as easily deploy a Virtual Machine and its related resources. Visual Studio provides many different starter templates for deploying common scenarios.
 
-## Azure リソース グループ プロジェクトを作成する
+This article shows Visual Studio 2015 Update 2 and Microsoft Azure SDK for .NET 2.9. If you use Visual Studio 2013 with Azure SDK 2.9, your experience is largely the same. You can use versions of the Azure SDK from 2.6 or later; however, your experience of the user interface may be different than the user interface shown in this article. We strongly recommend that you install the latest version of the [Azure SDK](https://azure.microsoft.com/downloads/) before starting the steps. 
 
-この手順では、**[Web アプリ + SQL]** テンプレートを使用して Azure リソース グループ プロジェクトを作成します。
+## <a name="create-azure-resource-group-project"></a>Create Azure Resource Group project
 
-1. Visual Studio で、**[ファイル]**、**[新しいプロジェクト]** の順に選択し、**[C#]** または **[Visual Basic]** を選択します。次に **[Cloud]** を選択し、**[Azure リソース グループ]** プロジェクトを選択します。
+In this procedure, you create an Azure Resource Group project with a **Web app + SQL** template.
 
-    ![Cloud Deployment プロジェクト](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
+1. In Visual Studio, choose **File**, **New Project**, choose **C#** or **Visual Basic**. Then choose **Cloud**, and then choose **Azure Resource Group** project.
 
-1. Azure リソース マネージャーにデプロイするテンプレートを選択します。デプロイするプロジェクトの種類に応じて、さまざまなオプションがあります。このトピックでは、**[Web アプリ + SQL]** テンプレートを選択します。
+    ![Cloud Deployment Project](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 
-    ![テンプレートの選択](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
+1. Choose the template that you want to deploy to Azure Resource Manager. Notice there are many different options based on the type of project you wish to deploy. For this topic, choose the **Web app + SQL** template.
 
-    選択したテンプレートは出発点にすぎません。リソースを追加したり削除したりしてシナリオの要件を満たすことができます。
+    ![Choose a template](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-project.png)
 
-    >[AZURE.NOTE] 使用できる一連のテンプレートが Visual Studio によってオンラインで取得されます。その内容は変わる場合があります。
+    The template you pick is just a starting point; you can add and remove resources to fulfill your scenario.
 
-    Visual Studio では、Web アプリと SQL データベース用のリソース グループ デプロイ プロジェクトが作成されます。
+    >[AZURE.NOTE] Visual Studio retrieves a list of available templates online. The list may change.
 
-1. 作成された内容を確認するには、デプロイ プロジェクト内のノードを展開します。
+    Visual Studio creates a resource group deployment project for the web app and SQL database.
 
-    ![ノードの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
+1. To see what you created, expand the nodes in the deployment project.
 
-    この例では [Web アプリ + SQL] テンプレートを選択したため、次のファイルが表示されます。
+    ![show nodes](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-items.png)
 
-    |ファイル名|Description|
-    |---|---|
-    |Deploy-AzureResourceGroup.ps1|Azure Resource Manager にデプロイするための PowerShell コマンドを呼び出す PowerShell スクリプト。<br />**注** この PowerShell スクリプトは、テンプレートをデプロイするために Visual Studio によって使用されます。このスクリプトに変更を加えると Visual Studio でのデプロイに影響するため、注意が必要です。|
-    |WebSiteSQLDatabase.json|Azure にデプロイするインフラストラクチャと、デプロイ中に指定できるパラメーターを定義した Resource Manager テンプレートです。Resource Manager によってリソースが正しい順序でデプロイされるように、リソース間の依存性も定義されます。|
-    |WebSiteSQLDatabase.parameters.json|テンプレートで必要な値を含むパラメーター ファイルです。パラメーターの値を渡すことによって各デプロイをカスタマイズします。|
+    Since we chose the Web app + SQL template for this example, you see the following files: 
 
-    すべてのリソース グループ デプロイ プロジェクトに、上記の基本的なファイルが含まれます。他のプロジェクトには、他の機能をサポートするために追加のファイルが含まれることがあります。
+  	|File name|Description|
+  	|---|---|
+  	|Deploy-AzureResourceGroup.ps1|A PowerShell script that invokes PowerShell commands to deploy to Azure Resource Manager.<br />**Note** Visual Studio uses this PowerShell script to deploy your template. Any changes you make to this script affect deployment in Visual Studio, so be careful.|
+  	|WebSiteSQLDatabase.json|The Resource Manager template that defines the infrastructure you want deploy to Azure, and the parameters you can provide during deployment. It also defines the dependencies between the resources so Resource Manager deploys the resources in the correct order.|
+  	|WebSiteSQLDatabase.parameters.json|A parameters file that contains values needed by the template. You pass in parameter values to customize each deployment.|
 
-## リソース マネージャーのテンプレートをカスタマイズする
+    All resource group deployment projects contain these basic files. Other projects may contain additional files to support other functionality.
 
-デプロイするリソースが記述されている JSON テンプレートを変更すると、デプロイ プロジェクトをカスタマイズできます。JSON とは JavaScript Object Notation の略であり、操作が簡単なシリアル化されたデータ形式です。JSON ファイルでは、各ファイルの上部で参照されているスキーマが使用されます。スキーマに関する理解を深めるには、スキーマをダウンロードして分析してください。スキーマでは、有効な要素、フィールドの種類と形式、列挙値に使用できる値などが定義されています。Resource Manager テンプレートの要素の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+## <a name="customize-the-resource-manager-template"></a>Customize the Resource Manager template
 
-テンプレートで作業するには、**WebSiteSQLDatabase.json** を開きます。
+You can customize a deployment project by modifying the JSON templates that describe the resources you want to deploy. JSON stands for JavaScript Object Notation, and is a serialized data format that is easy to work with. The JSON files use a schema that you reference at the top of each file. If you want to understand the schema, you can download and analyze it. The schema defines what elements are valid, the types and formats of fields, the possible values of enumerated values, and so on. To learn about the elements of the Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
 
-Visual Studio エディターでは、Resource Manager テンプレートの編集に役立つツールを提供しています。**[JSON アウトライン]** ウィンドウを使用すると、テンプレートで定義されている要素を簡単に確認できます。
+To work on your template, open **WebSiteSQLDatabase.json**.
 
-![JSON アウトラインの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-json-outline.png)
+The Visual Studio editor provides tools to assist you with editing the Resource Manager template. The **JSON Outline** window makes it easy to see the elements defined in your template.
 
-アウトライン内の任意の要素を選択すると、テンプレートの該当部分に移動し、対応する JSON が強調表示されます。
+![show JSON outline](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-json-outline.png)
 
-![JSON の移動](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/navigate-json.png)
+Selecting any of the elements in the outline takes you to that part of the template and highlights the corresponding JSON.
 
-リソースを追加するには、[JSON アウトライン] ウィンドウの上部にある **[リソースの追加]** ボタンを選択するか、または **[リソース]** を右クリックし **[新しいリソースの追加]** を選択します。
+![navigate JSON](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/navigate-json.png)
 
-![リソースの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource.png)
+You can add a resource by either selecting the **Add Resource** button at the top of the JSON Outline window, or by right-clicking **resources** and selecting **Add New Resource**.
 
-このチュートリアルでは、**[ストレージ アカウント]** を選択し、それに名前を付けます。数字と小文字のみで構成された 11 文字未満の名前を指定します。
+![add resource](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource.png)
 
-![ストレージの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
+For this tutorial, select **Storage Account** and give it a name. Provide a name that is no more than 11 characters, and only contains numbers and lower-case letters.
 
-リソースだけでなく、ストレージ アカウントの種類を示すパラメーターとストレージ アカウントの名前を示す変数も追加されています。
+![add storage](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-storage.png)
 
-![アウトラインの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-new-items.png)
+Notice that not only was the resource added, but also a parameter for the type storage account, and a variable for the name of the storage account.
 
-**storageType** パラメーターでは、許可する種類と既定の種類があらかじめ定義されています。これらの値は、そのまま使用することも、シナリオに合わせて編集することもできます。このテンプレートを使用して **Premium\_LRS** ストレージ アカウントをデプロイするのをどのユーザーにも許可しない場合は、許可する種類からそれを削除します。
+![show outline](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-new-items.png)
+
+The **storageType** parameter is pre-defined with allowed types and a default type. You can leave these values or edit them for your scenario. If you do not want anyone to deploy a **Premium_LRS** storage account through this template, remove it from the allowed types. 
 
     "storageType": {
       "type": "string",
@@ -96,140 +97,144 @@ Visual Studio エディターでは、Resource Manager テンプレートの編�
       ]
     }
 
-Visual Studio では、テンプレートの編集時にどんなプロパティが使用できるのかを容易に理解できるように intellisense を提供しています。たとえば、App Service プランのプロパティを編集するには、**HostingPlan** リソースに移動し、**properties** の値を追加します。Intellisense では、使用できる値を示し、その値に関する説明を提供します。
+Visual Studio also provides intellisense to help you understand what properties are available when editing the template. For example, to edit the properties for your App Service plan, navigate to the **HostingPlan** resource, and add a value for the **properties**. Notice that intellisense shows the available values and provides a description of that value.
 
-![IntelliSense の表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
+![show intellisense](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-intellisense.png)
 
-**numberOfWorkers** は 1 に設定することができます。
+You can set **numberOfWorkers** to 1.
 
     "properties": {
       "name": "[parameters('hostingPlanName')]",
       "numberOfWorkers": 1
     }
 
-## リソース グループ プロジェクトを Azure にデプロイする
+## <a name="deploy-the-resource-group-project-to-azure"></a>Deploy the Resource Group project to Azure
 
-これでプロジェクトをデプロイする準備が整いました。Azure リソース グループ プロジェクトをデプロイするとき、そのデプロイ先は Azure リソース グループとなります。リソース グループとは、共通のライフサイクルを持ったリソースの論理上のまとまりです。
+You are now ready to deploy your project. When you deploy an Azure Resource Group project, you deploy it to an Azure resource group. The resource group is a logical grouping of resources that share a common lifecycle.
 
-1. デプロイ プロジェクト ノードのショートカット メニューで、**[デプロイ]**、**[新しい配置]** の順に選択します。
+1. On the shortcut menu of the deployment project node, choose **Deploy** > **New Deployment**.
 
-    ![メニュー項目 [配置]、[新しい配置]](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/deploy.png)
+    ![Deploy, New Deployment menu item](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/deploy.png)
 
-    **[リソース グループに配置する]** ダイアログ ボックスが表示されます。
+    The **Deploy to Resource Group** dialog box appears.
 
-    ![[リソース グループに配置する] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployment.png)
+    ![Deploy To Resource Group Dialog Box](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployment.png)
 
-1. **[リソース グループ]** ボックスの一覧で、既存のリソース グループを選択するか、新しいリソース グループを作成します。リソース グループを作成するには、**[リソース グループ]** ボックスの一覧を開き、**[新規作成]** を選択します。
+1. In the **Resource group** dropdown box, choose an existing resource group or create a new one. To create a resource group, open the **Resource Group** dropdown box and choose **Create New**.
 
-    ![[リソース グループに配置する] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-new-group.png)
+    ![Deploy To Resource Group Dialog Box](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-new-group.png)
 
-    **[リソース グループの作成]** ダイアログ ボックスが表示されます。グループの名前と場所を指定し、**[作成]** ボタンを選択します。
+    The **Create Resource Group** dialog box appears. Give your group a name and location, and select the **Create** button.
 
-    ![[リソース グループの作成] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-resource-group.png)
+    ![Create Resource Group Dialog Box](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-resource-group.png)
    
-1. **[パラメーターの編集]** ボタンを選択すると、デプロイ用のパラメーターを編集できます。
+1. Edit the parameters for the deployment by selecting the **Edit Parameters** button.
 
     ![Edit Parameters button](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/edit-parameters.png)
 
-1. 空のパラメーターの値を指定し、**[保存]** ボタンを選択します。対象となる空のパラメーターは、**hostingPlanName**、**administratorLogin**、**administratorLoginPassword**、**databaseName** です。
+1. Provide values for the empty parameters and select the **Save** button. The empty parameters are **hostingPlanName**, **administratorLogin**, **administratorLoginPassword**, and **databaseName**.
 
-    **hostingPlanName** には、作成する [App Service プラン](./app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)の名前を指定します。
+    **hostingPlanName** specifies a name for the [App Service plan](./app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) to create. 
     
-    **administratorLogin** には、SQL Server 管理者のユーザー名を指定します。**sa** や **admin** などの一般的な管理者名は使用しないようにしてください。
+    **administratorLogin** specifies the user name for the SQL Server administrator. Do not use common admin names like **sa** or **admin**. 
     
-    **administratorLoginPassword** には、SQL Server 管理者のパスワードを指定します。**[パスワードをプレーンテキストとしてパラメーター ファイルに保存する]** オプションは安全ではないため、選択しないでください。パスワードはプレーン テキストで保存されないため、デプロイ中にもう一度このパスワードを入力する必要があります。
+    The **administratorLoginPassword** specifies a password for SQL Server administrator. The **Save passwords as plain text in the parameters file** option is not secure; therefore, do not select this option. Since the password is not saved as plain text, you will need to provide this password again during deployment. 
     
-    **databaseName** には、作成するデータベースの名前を指定します。
+    **databaseName** specifies a name for the database to create. 
 
-    ![[パラメーターの編集] ダイアログ ボックス](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/provide-parameters.png)
+    ![Edit Parameters Dialog Box](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/provide-parameters.png)
     
-1. **[デプロイ]** をクリックして、プロジェクトを Azure にデプロイします。PowerShell コンソールが、Visual Studio インスタンスの外部で開きます。PowerShell コンソールで SQL Server 管理者のパスワードの入力を求められた場合は、入力します。**PowerShell コンソールが、他のアイテムの後ろに隠れていたり、タスクバーに最小化されたりしていることがあります。** その場合は、コンソールを見つけて選択し、パスワードを入力してください。
+1. Choose the **Deploy** button to deploy the project to Azure. A PowerShell console opens outside of the Visual Studio instance. Enter the SQL Server administrator password in the PowerShell console when prompted. **Your PowerShell console may be hidden behind other items or minimized in the task bar.** Look for this console and select it to provide the password.
 
-    >[AZURE.NOTE] Azure PowerShell コマンドレットのインストールを求められる場合があります。リソース グループを正しくデプロイするには、Azure PowerShell のコマンドレットが必要です。メッセージが表示されたら、それらをインストールしてください。
+    >[AZURE.NOTE] Visual Studio may ask you to install the Azure PowerShell cmdlets. You need the Azure PowerShell cmdlets to successfully deploy resource groups. If prompted, install them.
     
-1. デプロイには数分かかる場合があります。**出力**ウィンドウに、デプロイの進行状況が表示されます。デプロイが完了すると、最後に、デプロイが成功したことを示す次のようなメッセージが表示されます。
+1. The deployment may take a few minutes. In the **Output** windows, you see the status of the deployment. When the deployment has finished, the last message indicates a successful deployment with something similar to:
 
         ... 
         18:00:58 - Successfully deployed template 'c:\users\user\documents\visual studio 2015\projects\azureresourcegroup1\azureresourcegroup1\templates\websitesqldatabase.json' to resource group 'DemoSiteGroup'.
 
 
-1. ブラウザーで、[Azure Portal](https://portal.azure.com/) を開き、アカウントにサインインします。リソース グループの内容を確認するには、**[リソース グループ]** を選択し、デプロイしたリソース グループを選択します。
+1. In a browser, open the [Azure portal](https://portal.azure.com/) and sign in to your account. To see the resource group, select **Resource groups** and the resource group you deployed to.
 
-    ![グループの選択](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-group.png)
+    ![select group](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-group.png)
 
-1. デプロイ済みのすべてのリソースが表示されます。ストレージ アカウントの名前が、そのリソースを追加したときに指定したものとまったく同じにはならないことに注意してください。ストレージ アカウントは一意である必要があります。一意の名前を設定するために、指定した名前に文字列が自動的に追加されます。
+1. You see all the deployed resources. Notice that the name of the storage account is not exactly what you specified when adding that resource. The storage account must be unique. The template automatically adds a string of characters to the name you provided to provide a unique name. 
 
-    ![リソースの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-resources.png)
+    ![show resources](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-resources.png)
 
-1. 変更を加えたうえでプロジェクトを再デプロイする場合は、Azure リソース グループ プロジェクトのショートカット メニューから既存のリソース グループを選択します。ショートカット メニューの **[デプロイ]** を選択してから、デプロイしたリソース グループを選択します。
+1. If you make changes and want to redeploy your project, choose the existing resource group from the shortcut menu of Azure resource group project. On the shortcut menu, choose **Deploy**, and then choose the resource group you deployed.
 
-    ![デプロイされた Azure リソース グループ](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
+    ![Azure resource group deployed](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/redeploy.png)
 
-## インフラストラクチャでコードをデプロイする
+## <a name="deploy-code-with-your-infrastructure"></a>Deploy code with your infrastructure
 
-この時点で、アプリ用のインフラストラクチャはデプロイ済みですが、実際のコードはプロジェクトでデプロイされていません。このトピックでは、デプロイ時に Web アプリと SQL Database テーブルをデプロイする方法について説明します。Web アプリではなく仮想マシンをデプロイする場合は、デプロイの一環としてマシン上で何らかのコードを実行します。Web アプリのコードをデプロイするプロセスまたは仮想マシンを設定するプロセスは、ほぼ同じです。
+At this point, you have deployed the infrastructure for your app, but there is no actual code deployed with the project. This topic shows how to deploy a web app and SQL Database tables during deployment. If you are deploying a Virtual Machine instead of a web app, you want to run some code on the machine as part of deployment. The process for deploying code for a web app or for setting up a Virtual Machine is almost the same.
 
-1. Visual Studio ソリューションにプロジェクトを追加します。ソリューションを右クリックして、**[追加]**、**[新しいプロジェクト]** の順に選択します。
+1. Add a project to your Visual Studio solution. Right-click the solution, and select **Add** > **New Project**.
 
     ![add project](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-project.png)
 
-1. **ASP.NET Web アプリケーション**を追加します。
+1. Add an **ASP.NET Web Application**. 
 
-    ![Web アプリの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
+    ![add web app](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-app.png)
     
-1. **[MVC]** を選択し、**[クラウドにホストする]** チェック ボックスをオフにします。そのタスクはリソース グループ プロジェクトで実行されるためです。
+1. Select **MVC** and clear the field for **Host in the cloud** because the resource group project performs that task.
 
-    ![MVC の選択](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-mvc.png)
+    ![select MVC](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/select-mvc.png)
     
-1. Visual Studio によって Web アプリが作成されると、ソリューションに両方のプロジェクトが表示されます。
+1. After Visual Studio creates your web app, you see both projects in the solution.
 
     ![show projects](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-projects.png)
 
-1. 次に、リソース グループ プロジェクトで新しいプロジェクトが認識されていることを確認する必要があります。リソース グループ プロジェクト (AzureResourceGroup1) に戻ります。**[参照]** を右クリックし、**[参照の追加]** を選択します。
+1. Now, you need to make sure your resource group project is aware of the new project. Go back to your resource group project (AzureResourceGroup1). Right-click **References** and select **Add Reference**.
 
-    ![参照の追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
+    ![add reference](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-new-reference.png)
 
-1. 作成した Web アプリ プロジェクトを選択します。
+1. Select the web app project that you created.
 
-    ![参照の追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
+    ![add reference](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-reference.png)
     
-    参照を追加することで、リソース グループ プロジェクトに Web アプリ プロジェクトをリンクし、3 つのキー プロパティを自動的に設定します。これらのプロパティはその参照の **[プロパティ]** ウィンドウに表示されます。
+    By adding a reference, you link the web app project to the resource group project, and automatically set three key properties. You see these properties in the **Properties** window for the reference.
 
-      ![参照の表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
+      ![see reference](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/see-reference.png)
     
-    プロパティは次のとおりです。
+    The properties are:
 
-    - **[追加のプロパティ]** には Azure Storage にプッシュされる Web デプロイ パッケージのステージングの場所が含まれます。フォルダー (ExampleApp) とファイル (package.zip) をメモします。これらの値は、アプリをデプロイする際にパラメーターとして指定します。
-    - **[Include File Path (ファイル パスを含める)]** にはパッケージを作成するパスが含まれます。**[Include Targets (ターゲットを含める)]** にはデプロイで実行するコマンドが含まれます。
-    - **Build;Package** の既定値を使用すると、デプロイでは、Web デプロイ パッケージ (package.zip) がビルドおよび作成されます。
+    - The **Additional Properties** contains the web deployment package staging location that is pushed to the Azure Storage. Note the folder (ExampleApp) and file (package.zip). You will provide these values as parameters when deploying the app. 
+    - The **Include File Path** contains the path where the package is created. The **Include Targets** contains the command that deployment executes. 
+    - The default value of **Build;Package** enables the deployment to build and create a web deployment package (package.zip).  
     
-    パッケージを作成するのに必要な情報はプロパティから取得するので、デプロイで発行プロファイルは必要ありません。
+    You do not need a publish profile as the deployment gets the necessary information from the properties to create the package.
       
-1. テンプレートにリソースを追加します。
+1. Add a resource to the template.
 
-    ![リソースの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
+    ![add resource](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
 
-1. 今回は **[Web App の Web 配置]** を選択します。
+1. This time select **Web Deploy for Web Apps**. 
 
-    ![Web デプロイの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-web-deploy.png)
+    ![add web deploy](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-web-deploy.png)
     
-1. リソース グループにリソース グループ プロジェクトを再デプロイします。今回は、新しいパラメーターがいくつか存在します。**\_artifactsLocation** または **\_artifactsLocationSasToken** の値は自動的に生成されるので、指定する必要はありません。ただし、デプロイ パッケージが含まれているパスにフォルダーとファイル名を設定します (次の図の **ExampleAppPackageFolder** と **ExampleAppPackageFileName**)。事前にメモしておいた値を参照プロパティに指定します (**ExampleApp** と **package.zip**)。
+1. Redeploy your resource group project to the resource group. This time there are some new parameters. You do not need to provide values for **_artifactsLocation** or **_artifactsLocationSasToken** because Visual Studio automatically generates those values. However, you have to set the folder and file name to the path that contains the deployment package (shown as **ExampleAppPackageFolder** and **ExampleAppPackageFileName** in the following image). Provide the values you saw earlier in the reference properties (**ExampleApp** and **package.zip**).
 
-    ![Web デプロイの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/set-new-parameters.png)
+    ![add web deploy](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/set-new-parameters.png)
     
-    **[成果物のストレージ アカウント]** には、このリソース グループでデプロイしたものを選択できます。
+    For the **Artifact storage account**, select the one deployed with this resource group.
     
-1. デプロイが完了したら、ポータルで Web アプリを選択します。URL を選択して新しいサイトを参照します。
+1. After the deployment has finished, select your web app in the portal. Select the URL to browse to the site.
 
     ![browse site](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/browse-site.png)
 
-1. 既定の ASP.NET アプリが正しくデプロイされていることがわかります。
+1. Notice that you have successfully deployed the default ASP.NET app.
 
-    ![デプロイされたアプリの表示](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
+    ![show deployed app](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/show-deployed-app.png)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- ポータルを使用したリソース管理の詳細については、[Azure Portal を使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)に関するページを参照してください。
-- テンプレートの詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+- To learn about managing your resources through the portal, see [Using the Azure portal to manage your Azure resources](./azure-portal/resource-group-portal.md).
+- To learn more about templates, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

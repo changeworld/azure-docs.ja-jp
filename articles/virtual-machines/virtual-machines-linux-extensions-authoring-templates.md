@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Linux VM の拡張機能を使用したテンプレートの作成 |Microsoft Azure"
-   description="Linux VM の拡張機能を使用した Azure Resource Manager テンプレートの作成について説明します。"
+   pageTitle="Authoring templates with Linux VM extensions | Microsoft Azure"
+   description="Learn about authoring Azure Resource Manager templates with extensions for Linux VMs"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="kundanap"
@@ -17,34 +17,39 @@
    ms.date="03/29/2016"
    ms.author="kundanap"/>
 
-# Linux VM 拡張機能を使用した Azure Resource Manager テンプレートの作成
+
+# <a name="authoring-azure-resource-manager-templates-with-linux-vm-extensions"></a>Authoring Azure Resource Manager templates with Linux VM extensions
 
 [AZURE.INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
 
-Azure CLI から次のコマンドを実行します。
+From Azure CLI, run the following commnad:
 
       Azure VM extension list
 
-このコマンドによって、発行元の名前、拡張機能名、バージョンが次のように返されます。
+This command returns the publisher name, extension name and version as following:
 
       Publisher                   : Microsoft.Azure.Extensions  
       ExtensionName               : DockerExtension
       Version                     : 1.0
 
-これら 3 つのプロパティはそれぞれ、前述のテンプレート スニペットに含まれる "publisher"、"type"、"typeHandlerVersion" に対応しています。
+These three properties map to "publisher", "type", and "typeHandlerVersion" respectively in the above template snippet.
 
->[AZURE.NOTE]常に拡張機能の最新バージョンを使用して最新機能を取得することをお勧めします。
+>[AZURE.NOTE]It's always recommended to use the latest extension version to get the most updated functionality.
 
-## 拡張機能構成パラメーターのスキーマの識別
+## <a name="identifying-the-schema-for-the-extension-configuration-parameters"></a>Identifying the schema for the extension configuration parameters
 
-拡張機能のテンプレートを作成する次の手順では、構成パラメーターを指定するための形式を特定します。それぞれの拡張機能では、独自のパラメーター セットがサポートされています。
+The next step with authoring an extension template is to identify the format for providing configuration parameters. Each extension supports its own set of parameters.
 
-Linux 拡張機能のサンプル構成については、[Linux 拡張機能のサンプル](virtual-machines-linux-extensions-configuration-samples.md)に関するドキュメントをクリックして参照してください。
+To look at sample configurations for Linux extensions, click the documentation for see [Linux eExtensions samples](virtual-machines-linux-extensions-configuration-samples.md).
 
-VM の拡張機能を使用して完成したテンプレートを取得するには、以下を参照してください。
+Please refer to the following to get a fully complete template with VM Extensions.
 
-[Linux VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
+[Custom script extension on a Linux VM](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/mongodb-on-ubuntu/azuredeploy.json/)
 
-テンプレートを作成したら、Azure CLI を使用してそのテンプレートをデプロイできます。
+After authoring the template, you can deploy it using the Azure CLI.
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

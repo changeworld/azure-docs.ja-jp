@@ -1,86 +1,91 @@
 <properties
-	pageTitle="Azure Active Directory B2C: トークン、セッション、シングル サインオンの構成 | Microsoft Azure"
-	description="Azure Active Directory B2C でのトークン、セッション、シングル サインオンの構成"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="swkrish"
-	manager="msmbaldwin"
-	editor="bryanla"/>
+    pageTitle="Azure Active Directory B2C: Token, session and single sign-on configuration | Microsoft Azure"
+    description="Token, session and single sign-on configuration in Azure Active Directory B2C"
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="swkrish"
+    manager="mbaldwin"
+    editor="bryanla"/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/24/2016"
-	ms.author="swkrish"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/24/2016"
+    ms.author="swkrish"/>
 
-# Azure Active Directory B2C: トークン、セッション、シングル サインオンの構成
 
-この機能を使用すると、[個別のポリシーに基づいて](active-directory-b2c-reference-policies.md)、以下の対象をきめ細かく制御することができます。
+# <a name="azure-active-directory-b2c:-token,-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: Token, session and single sign-on configuration
+
+This feature gives you fine-grained control, on a [per-policy basis](active-directory-b2c-reference-policies.md), of:
  
-1. Azure Active Directory (Azure AD) B2C が出力するセキュリティ トークンの有効期間。
-2. Azure AD B2C によって管理される Web アプリケーションのセッションの有効期間。
-3. B2C テナントに含まれる複数のアプリケーションとポリシーの間でのシングル サインオン (SSO) の動作。
+1. Lifetimes of security tokens emitted by Azure Active Directory (Azure AD) B2C.
+2. Lifetimes of web application sessions managed by Azure AD B2C.
+3. Single sign-on (SSO) behavior across multiple apps and policies in your B2C tenant.
 
-B2C テナントでこの機能を使用する手順は、以下のとおりです。
+You can use this feature in your B2C tenant as follows:
 
-1. この手順に従って、Azure ポータルで [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)します。
-2. **[サインイン ポリシー]** をクリックします。"*注: この機能は **[サインイン ポリシー]** に限らず、あらゆるポリシー タイプで使用できます*"。
-3. ポリシーをクリックして開きます。たとえば、**[B2C\_1\_SiIn]** をクリックします。
-4. ブレードの上部にある **[編集]** をクリックします。
-5. **[トークン、セッション、シングル サインオンの構成]** をクリックします。
-6. 必要な変更を施します。後のセクションに、利用できるプロパティの説明があります。
-7. **[OK]** をクリックします。
-8. ブレードの上部で **[保存]** をクリックします。
+1. Follow these steps to [navigate to the B2C features blade](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) on the Azure portal.
+2. Click **Sign-in policies**. *Note: You can use this feature on any policy type, not just on **Sign-in policies***.
+3. Open a policy by clicking it. For example, click on **B2C_1_SiIn**.
+4. Click **Edit** at the top of the blade.
+5. Click **Token, session & single sign-on config**.
+6. Make your desired changes. Learn about available properties in subsequent sections.
+7. Click **OK**.
+8. Click **Save** on the top of the blade.
 
 ![Screenshot of token, session and single sign-on config](./media/active-directory-b2c-token-session-sso/token-session-sso.png)
 
-## トークンの有効期間の構成
+## <a name="token-lifetimes-configuration"></a>Token lifetimes configuration
 
-Azure AD B2C は保護されたリソースへの安全なアクセスを実現する [OAuth 2.0 認証プロトコル](active-directory-b2c-reference-protocols.md)をサポートしています。このサポートを実施するために、Azure AD B2C は各種の[セキュリティ トークン](active-directory-b2c-reference-tokens.md)を発行します。Azure AD B2C は以下のプロパティを使用して、セキュリティ トークンの有効期間を管理することができます。
+Azure AD B2C supports the [OAuth 2.0 authorization protocol](active-directory-b2c-reference-protocols.md) for enabling secure access to protected resources. To implement this support, Azure AD B2C emits various [security tokens](active-directory-b2c-reference-tokens.md). These are the properties you can use to manage lifetimes of security tokens emitted by Azure AD B2C:
 
-- **[Access & ID token lifetimes (minutes) (アクセス & ID トークンの有効期間 (分))]**: 保護されたリソースへのアクセスに使用する OAuth 2.0 ベアラー トークンの有効期間。現在、Azure AD B2C は ID トークンのみを発行します。アクセス トークンのサポートが開始されたら、このプロパティの値がアクセス トークンにも適用されます。
-   - 既定値 = 60 分。
-   - 最小値 (この値を含む) = 5 分。
-   - 最大値 (この値を含む) = 1,440 分。
-- **[Refresh token lifetime (days) (更新トークン有効期間 (日))]**: 更新トークンで新しいアクセスや ID トークン (および使用するアプリケーションで `offline_access` スコープが与えられている場合は、新しい更新トークン) を取得できる最長期間。
-   - 既定値 = 14 日。
-   - 最小値 (この値を含む) = 1 日。
-   - 最大値 (この値を含む) = 90 日。
-- **[Refresh token sliding window lifetime (days) (更新トークン スライディング ウィンドウの有効期間 (日))]**: この期間の経過後は、アプリケーションが取得した最新の更新トークンの有効期間にかかわらず、強制的にユーザーを再認証します。スイッチが **[制限あり]** の場合にのみ、この設定が可能です。**[Refresh token lifetime (days) (更新トークン有効期間 (日))]** の値以上であることが必要です。スイッチが **[制限なし]** の場合は、特定の値を設定できません。
-   - 既定値 = 90 日。
-   - 最小値 (この値を含む) = 1 日。
-   - 最大値 (この値を含む) = 365 日。
+- **Access & ID token lifetimes (minutes)**: The lifetime of the OAuth 2.0 bearer token used to gain access to a protected resource. Azure AD B2C issues only ID tokens at this time. This value would apply to access tokens as well, when we add support for them.
+   - Default = 60 minutes.
+   - Minimum (inclusive) = 5 minutes.
+   - Maximum (inclusive) = 1440 minutes.
+- **Refresh token lifetime (days)**: The maximum time period before which a refresh token can be used to acquire a new access or ID token (and optionally, a new refresh token, if your application had been granted the `offline_access` scope).
+   - Default = 14 days.
+   - Minimum (inclusive) = 1 day.
+   - Maximum (inclusive) = 90 days.
+- **Refresh token sliding window lifetime (days)**: After this time period elapses the user is forced to re-authenticate, irrespective of the validity period of the most recent refresh token acquired by the application. It can only be provided if the switch is set to **Bounded**. It needs to be greater than or equal to the **Refresh token lifetime (days)** value. If the switch is set to **Unbounded**, you cannot provide a specific value.
+   - Default = 90 days.
+   - Minimum (inclusive) = 1 day.
+   - Maximum (inclusive) = 365 days.
 
-次の 2 つのユース ケースは、これらのプロパティを使用して実現できます。
+These are a couple of use cases that you can enable using these properties:
 
-- ユーザーがモバイル アプリケーションでアクティブな状態を継続している限り、そのアプリケーションへのサインインを無制限に持続することができます。そのためには、サインイン ポリシーで **[Refresh token sliding window lifetime (days) (更新トークン スライディング ウィンドウの有効期間 (日))]** スイッチを **[Unbounded (制限なし)]** に設定します。
-- 適切なアクセス トークン有効期間を設定して、業界のセキュリティ要件やコンプライアンス要件を満たすことができます。
+- Allow a user to stay signed into a mobile application indefinitely, as long as he or she is continually active on the application. You can do this by setting the **Refresh token sliding window lifetime (days)** switch to **Unbounded** in your sign-in policy.
+- Meet your industry's security and compliance requirements by setting the appropriate access token lifetimes.
 
-## セッションの構成
+## <a name="session-configuration"></a>Session configuration
 
-Azure AD B2C がサポートしている [OpenID Connect 認証プロトコル](active-directory-b2c-reference-oidc.md)を使用して、Web アプリケーションへの安全なサインインを実現できます。次のプロパティを使用して、Web アプリケーション セッションを管理できます。
+Azure AD B2C supports the [OpenID Connect authentication protocol](active-directory-b2c-reference-oidc.md) for enabling secure sign-in to web applications. These are the properties you can use to manage web application sessions:
 
-- **[Web app session lifetime (minutes) (Web アプリ セッション有効期間 (分))]**: ユーザーのブラウザーに保存した Azure AD B2C のセッション Cookie が正常に認証される有効期間。
-   - 既定値 = 1,440 分。
-   - 最小値 (この値を含む) = 15 分。
-   - 最大値 (この値を含む) = 1,440 分。
-- **[Web app session timeout (Web アプリ セッションのタイムアウト)]**: このスイッチを **[絶対]** に設定すると、**[Web app session lifetime (minutes) (Web アプリ セッション有効期間 (分))]** で指定した期間の経過後に、強制的にユーザーを再認証します。このスイッチを **[ローリング]** (既定値) に設定すると、ユーザーが Web アプリケーションでアクティブな状態を継続している限り、そのユーザーのサインインは継続されます。
+- **Web app session lifetime (minutes)**: The lifetime of Azure AD B2C's session cookie stored on the user's browser upon successful authentication.
+   - Default = 1440 minutes.
+   - Minimum (inclusive) = 15 minutes.
+   - Maximum (inclusive) = 1440 minutes.
+- **Web app session timeout**: If this switch is set to **Absolute**, the user is forced to re-authenticate after the time period specified by **Web app session lifetime (minutes)** elapses. If this switch is set to **Rolling** (the default setting), the user remains signed in as long as the user is continually active in your web application.
 
-次の 2 つのユース ケースは、これらのプロパティを使用して実現できます。
+These are a couple of use cases that you can enable using these properties:
 
-- 適切な Web アプリケーション セッション有効期間を設定して、業界のセキュリティ要件やコンプライアンス要件を満たすことができます。
-- ユーザーが Web アプリケーションの高セキュリティ部分を操作しているときに、設定期間が過ぎると、強制的に再認証を実施できます。
+- Meet your industry's security and compliance requirements by setting the appropriate web application session lifetimes.
+- Force re-authentication after a set time period during a user's interaction with a high-security part of your web application. 
 
-## シングル サインオン (SSO) の構成
+## <a name="single-sign-on-(sso)-configuration"></a>Single sign-on (SSO) configuration
 
-B2C テナントで複数のアプリケーションやポリシーを運用している場合は、**シングル サインオン構成**プロパティを使用して、アプリケーションやポリシー間でのユーザーの操作を管理できます。以下のいずれかのプロパティを設定することができます。
+If you have multiple applications and policies in your B2C tenant, you can manage user interactions across them using the **Single sign-on configuration** property. You can set the property to one of the following settings:
 
-- **[テナント]**: これは既定の設定です。この設定を使用すると、B2C テナント内の複数のアプリケーションとポリシーで同じユーザー セッションを共有できます。たとえば、ユーザーが Contoso Shopping というアプリケーションにサインインすると、そのユーザーは別のアプリケーション Contoso Pharmacy にもシームレスにアクセスできます。
-- **[アプリケーション]**: この設定を行うと、ユーザー セッションは、特定のアプリケーション専用として、他のアプリケーションから独立して維持されます。たとえば、ユーザーが既に Contoso Shopping にサインインしている場合でも、同じ B2C テナントの別のアプリケーションである Contoso Pharmacy に (同じ資格情報で) サインインするように指定できます。
-- **[ポリシー]**: この設定を行うと、ユーザー セッションは、アプリケーションにかかわらず、特定のポリシー専用として維持されます。たとえば、ユーザーがサインインを済ませ、Multi-Factor Authentication (MFA) ステップを完了すると、ポリシーに関連付けられたセッションが期限切れになるまで、ユーザーは複数のアプリケーションの高セキュリティ部分にアクセスできます。
-- **[無効]**: この設定は、ポリシーの実行時に毎回、ユーザーの完全な手続きを必要とします。これにより、たとえば (共有デスクトップのシナリオで)、1 人のユーザーがアプリケーションへのサインインを終始継続していても、複数のユーザーがそのアプリケーションにサインインすることができます。
+- **Tenant**: This is the default setting. Using this setting allows multiple applications and policies in your B2C tenant to share the same user session. For example, once a user signs into an application, Contoso Shopping, he or she can also seamlessly sign into another one, Contoso Pharmacy, upon accessing it.
+- **Application**: This allows you to maintain a user session exclusively for an application, independent of other applications. For example, if you want the user to sign in to Contoso Pharmacy (with the same credentials), even if he or she is already signed into Contoso Shopping, another application on the same B2C tenant. 
+- **Policy**: This allows you to maintain a user session exclusively for a policy, independent of the applications using it. For example, if the user has already signed in and completed a multi factor authentication (MFA) step, he or she can be given access to higher-security parts of multiple applications as long as the session tied to the policy doesn't expire.
+- **Disabled**: This forces the user to run through the entire user journey on every execution of the policy. For example, this will allow multiple users to sign up to your application (in a shared desktop scenario), even while a single user remains signed in during the whole time.
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

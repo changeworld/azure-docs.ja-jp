@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure App Service のロジック アプリで B2B メッセージを追跡する | Microsoft Azure" 
-   description="このトピックでは、B2B 処理の追跡について説明します。" 
+   pageTitle="Track B2B messages in your logic apps in Azure App Service | Microsoft Azure" 
+   description="This topic covers tracking of B2B processing" 
    services="logic-apps" 
    documentationCenter=".net,nodejs,java" 
    authors="rajram" 
@@ -17,34 +17,39 @@
    ms.author="rajram"/>
 
 
-# B2B メッセージを追跡する
+
+# <a name="track-b2b-messages"></a>Track B2B messages
 
 [AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
-## B2B 追跡情報
-B2B 通信には取引先間のメッセージ処理が関係します。リレーションシップは、取引先との 2 者間の契約として定義されます。通信が確立されると、期待どおりに通信が行われているかどうかを監視する手段が必要になります。
+## <a name="b2b-tracking-information"></a>B2B Tracking Information
+B2B communication involves message processing between trading partners. The relationships are defined as agreements between two trading partners. Once the communication is established, there needs to be a way to monitor if the communication is happening as expected. 
 
-AS2、EDIFACT、および X12 の B2B シナリオ用にメッセージ追跡が実装されています。
+We've implemented message tracking for the following B2B scenarios: AS2, EDIFACT, and X12.
 
-## AS2
-AS2 API アプリのインスタンスを作成したら、このインスタンスを参照して **[追跡]** を選択します。ここでは AS2 のすべての追跡情報を表示して、フィルタリングできます。
+## <a name="as2"></a>AS2
+Once you have created an instance of an AS2 API App, browse to that instance, and select **Tracking**. Herein you can view and filter all the AS2 tracking information:  
 
-![][1]
+![][1]  
 
-## EDIFACT
-EDIFACT API アプリのインスタンスを作成したら、このインスタンスを参照して **[追跡]** を選択します。ここでは EDIFACT のすべての追跡情報を表示して、フィルタリングできます。さらに、インターチェンジ レベル、グループ レベル、トランザクション セット レベルのデータをすべて 1 つのビューに表示することができます。
+## <a name="edifact"></a>EDIFACT
+Once you have created an instance of an EDIFACT API App, browse to that instance, and select **Tracking**. Herein you can view and filter all the EDIFACT tracking information. Additionally, you can view the interchange level, group level, and transaction set level data, all in a single view. 
 
-関連付けられている取引先管理 API アプリの EDIFACT 契約の一部としてバッチが作成された場合、バッチ処理セクションにこれらのすべてのバッチが一覧表示されます。バッチを選択し、アクティブなメッセージ (存在する場合) や、完了したものの情報も表示することができます。
+If batches are created as part of EDIFACT agreements in the associated Trading Partner Management API app, then the Batching section lists all these batches. You can select a batch to see the active message (if any) and also the information for the completed:  
 
-![][2]
+![][2]      
 
-## X12
-X12 API アプリのインスタンスを作成したら、このインスタンスを参照して **[追跡]** を選択します。ここでは X12 のすべての追跡情報を表示して、フィルタリングできます。さらに、インターチェンジ レベル、グループ レベル、トランザクション セット レベルのデータをすべて 1 つのビューに表示することができます。
+## <a name="x12"></a>X12
+Once you have created an instance of an X12 API App, browse to that instance, and select **Tracking**. Herein you can view and filter all the X12 tracking information. Additionally, you can view the interchange level, group level, and transaction set level data, all in a single view.
 
-関連付けられている取引先管理 API アプリの X12 契約の一部としてバッチが作成された場合、バッチ処理セクションにこれらのすべてのバッチが一覧表示されます。バッチを選択し、アクティブなメッセージ (存在する場合) や、完了したバッチの情報も表示することができます。
+If batches are created as part of X12 agreements in the associated Trading Partner Management API app, then the Batching section lists all these batches. You can select a batch to see the active message (if any) and also the information for the completed batches.
 
 <!--Image references-->
 [1]: ./media/app-service-logic-track-b2b-messages/AS2Tracking.png
 [2]: ./media/app-service-logic-track-b2b-messages/EDIFACTTracking.png
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,7 +1,7 @@
 
 <properties
-   pageTitle="Service Fabric クラスターのセキュリティ: クライアント ロール | Microsoft Azure"
-   description="この記事では、2 つのクライアント ロールと、ロールに提供されるアクセス許可について説明します。"
+   pageTitle="Service Fabric cluster security: client roles | Microsoft Azure"
+   description="This article describes the two client roles and the permissions provided to the roles."
    services="service-fabric"
    documentationCenter=".net"
    authors="mani-ramaswamy"
@@ -19,100 +19,105 @@
 
 
 
-# ロール ベースのアクセス制御 (Service Fabric クライアント用)
 
-Azure Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の 2 つの異なるアクセス コントロールの種類がサポートされています。アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。
+# <a name="role-based-access-control-for-service-fabric-clients"></a>Role-based access control for Service Fabric clients
 
-**管理者**には、管理機能へのフル アクセス権 (読み取り/書き込み機能など) が付与されています。**ユーザー**には、管理機能 (クエリ機能など) と、アプリケーションとサービスを解決する機能への読み取りアクセス権のみが既定で付与されています。
+Azure Service Fabric supports two different access control types for clients that are connected to a Service Fabric cluster: administrator and user. Access control allows the cluster administrator to limit access to certain cluster operations for different groups of users, making the cluster more secure.  
 
-クラスターの作成時に、2 つのクライアント ロール (管理者とクライアント) を指定し、それぞれに個別の証明書を設定します。セキュリティで保護された Service Fabric クラスターのセットアップの詳細については、[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)に関するページをご覧ください。
+**Administrators** have full access to management capabilities (including read/write capabilities). By default, **users** only have read access to management capabilities (for example, query capabilities), and the ability to resolve applications and services.
 
-
-## 既定のアクセス制御の設定
+You specify the two client roles (administrator and client) at the time of cluster creation by providing separate certificates for each. See [Service Fabric cluster security](service-fabric-cluster-security.md) for details on setting up a secure Service Fabric cluster.
 
 
-管理者のアクセス制御の種類は、すべての FabricClient API へのフル アクセスを持ちます。Service Fabric クラスターに対して、次のような任意の読み取りおよび書き込み操作を実行できます。
+## <a name="default-access-control-settings"></a>Default access control settings
 
 
-### アプリケーションおよびサービスの操作
-* **CreateService**: サービスの作成
-* **CreateServiceFromTemplate**: テンプレートからのサービスの作成
-* **UpdateService**: サービスの更新
-* **DeleteService**: サービスの削除
-* **ProvisionApplicationType**: アプリケーションの種類のプロビジョニング
-* **CreateApplication**: アプリケーションの作成
-* **DeleteApplication**: アプリケーションの削除
-* **UpgradeApplication**: アプリケーションのアップグレードの開始または中断
-* **UnprovisionApplicationType**: アプリケーションの種類のプロビジョニング解除
-* **MoveNextUpgradeDomain**: 明示的な更新ドメインでのアプリケーションのアップグレードの再開
-* **ReportUpgradeHealth**: 現在のアップグレードの進行状況でのアプリケーションのアップグレードの再開
-* **ReportHealth**: 正常性のレポート
-* **PredeployPackageToNode**: デプロイメント前の API
-* **CodePackageControl**: コード パッケージの再開
-* **RecoverPartition**: パーティションの復旧
-* **RecoverPartitions**: 複数のパーティションの復旧
-* **RecoverServicePartitions**: サービス パーティションの復旧
-* **RecoverSystemPartitions**: システム サービス パーティションの復旧
+The administrator access control type has full access to all the FabricClient APIs. It can perform any reads and writes on the Service Fabric cluster, including the following operations:
 
 
-### クラスターの操作
-* **ProvisionFabric**: MSI やクラスター マニフェストのプロビジョニング
-* **UpgradeFabric**: クラスターのアップグレードの開始
-* **UnprovisionFabric**: MSI やクラスター マニフェストのプロビジョニング解除
-* **MoveNextFabricUpgradeDomain**: 明示的な更新ドメインを使用したクラスターのアップグレードの再開
-* **ReportFabricUpgradeHealth**: 現在のアップグレードの進行状況でのクラスターのアップグレードの再開
-* **StartInfrastructureTask**: インフラストラクチャのタスクの開始
-* **FinishInfrastructureTask**: インフラストラクチャのタスクの終了
-* **InvokeInfrastructureCommand**: インフラストラクチャのタスクの管理コマンド
-* **ActivateNode**: ノードのアクティブ化
-* **DeactivateNode**: ノードの非アクティブ化
-* **DeactivateNodesBatch**: 複数のノードの非アクティブ化
-* **RemoveNodeDeactivations**: 複数のノードでの非アクティブ化の取り消し
-* **GetNodeDeactivationStatus**: 非アクティブ化の状態の確認
-* **NodeStateRemoved**: 削除済みノード状態のレポート
-* **ReportFault**: 障害のレポート
-* **FileContent**: イメージ ストア クライアント ファイルの転送 (クラスターの外部へ)
-* **FileDownload**: イメージ ストア クライアント ファイルのダウンロードの開始 (クラスターの外部へ)
-* **InternalList**: イメージ ストア クライアント ファイルの一覧操作 (内部)
-* **Delete**: イメージ ストア クライアントの削除操作
-* **Upload**: イメージ ストア クライアントのアップロード操作
-* **NodeControl**: ノードの開始、停止、および再開
-* **MoveReplicaControl**: ノードから別のノードへのレプリカの移動
-
-### その他の操作
-* **Ping**: クライアントの ping
-* **Query**: 許可されるすべてのクエリ
-* **NameExists**: 名前付け URI の存在確認
+### <a name="application-and-service-operations"></a>Application and service operations
+* **CreateService**: service creation                           
+* **CreateServiceFromTemplate**: service creation from template                             
+* **UpdateService**: service updates                            
+* **DeleteService**: service deletion                           
+* **ProvisionApplicationType**: application type provisioning                           
+* **CreateApplication**: application creation                               
+* **DeleteApplication**: application deletion                           
+* **UpgradeApplication**: starting or interrupting application upgrades                             
+* **UnprovisionApplicationType**: application type unprovisioning                           
+* **MoveNextUpgradeDomain**: resuming application upgrades with an explicit update domain                           
+* **ReportUpgradeHealth**: resuming application upgrades with the current upgrade progress                          
+* **ReportHealth**: reporting health                            
+* **PredeployPackageToNode**: predeployment API                         
+* **CodePackageControl**: restarting code packages                          
+* **RecoverPartition**: recovering a partition                          
+* **RecoverPartitions**: recovering partitions                          
+* **RecoverServicePartitions**: recovering service partitions                           
+* **RecoverSystemPartitions**: recovering system service partitions                             
 
 
+### <a name="cluster-operations"></a>Cluster operations
+* **ProvisionFabric**: MSI and/or cluster manifest provisioning                             
+* **UpgradeFabric**: starting cluster upgrades                          
+* **UnprovisionFabric**: MSI and/or cluster manifest unprovisioning                         
+* **MoveNextFabricUpgradeDomain**: resuming cluster upgrades with an explicit update domain                             
+* **ReportFabricUpgradeHealth**: resuming cluster upgrades with the current upgrade progress                            
+* **StartInfrastructureTask**: starting infrastructure tasks                            
+* **FinishInfrastructureTask**: finishing infrastructure tasks                          
+* **InvokeInfrastructureCommand**: infrastructure task management commands                              
+* **ActivateNode**: activating a node                           
+* **DeactivateNode**: deactivating a node                           
+* **DeactivateNodesBatch**: deactivating multiple nodes                             
+* **RemoveNodeDeactivations**: reverting deactivation on multiple nodes                             
+* **GetNodeDeactivationStatus**: checking deactivation status                           
+* **NodeStateRemoved**: reporting node state removed                            
+* **ReportFault**: reporting fault                          
+* **FileContent**: image store client file transfer (external to cluster)                           
+* **FileDownload**: image store client file download initiation (external to cluster)                           
+* **InternalList**: image store client file list operation (internal)                           
+* **Delete**: image store client delete operation                           
+* **Upload**: image store client upload operation                           
+* **NodeControl**: starting, stopping, and restarting nodes                             
+* **MoveReplicaControl**: moving replicas from one node to another                          
 
-ユーザー アクセス制御の種類は既定で次の操作に制限されています。
+### <a name="miscellaneous-operations"></a>Miscellaneous operations
+* **Ping**: client pings                            
+* **Query**: all queries allowed
+* **NameExists**: naming URI existence checks                           
 
-* **EnumerateSubnames**: 名前付け URI の列挙
-* **EnumerateProperties**: 名前付けプロパティの列挙
-* **PropertyReadBatch**: 名前付けプロパティの読み取り操作
-* **GetServiceDescription**: 長いポーリングのサービス通知と読み取りサービスの説明
-* **ResolveService**: クレーム ベースのサービス解決
-* **ResolveNameOwner**: 名前付け URI の所有者の解決
-* **ResolvePartition**: システム サービスの解決
-* **ServiceNotifications**: イベント ベースのサービスの通知
-* **GetUpgradeStatus**: アプリケーションのアップグレード状態のポーリング
-* **GetFabricUpgradeStatus**: クラスターのアップグレード状態のポーリング
-* **InvokeInfrastructureQuery**: インフラストラクチャ タスクのクエリ
-* **List**: イメージ ストア クライアント ファイルのリスト操作
-* **ResetPartitionLoad**: フェールオーバー ユニットの負荷の再設定
-* **ToggleVerboseServicePlacementHealthReporting**: 詳細なサービス配置正常性レポートの切り替え
 
-管理者アクセス制御も、前述の操作にアクセスできます。
 
-## クライアント ロールの既定の設定の変更
+The user access control type is, by default, limited to the following operations: 
 
-クラスター マニフェスト ファイルでは、必要であれば、クライアントに管理者機能を提供できます。既定の設定を変更するには、[クラスターの作成](service-fabric-cluster-creation-via-portal.md)中に **[Fabric の設定]** オプションに移動し、**name**、**admin**、**user**、**value** の各フィールドに前述の設定を入力します。
+* **EnumerateSubnames**: naming URI enumeration                             
+* **EnumerateProperties**: naming property enumeration                          
+* **PropertyReadBatch**: naming property read operations                            
+* **GetServiceDescription**: long-poll service notifications and reading service descriptions                           
+* **ResolveService**: complaint-based service resolution                            
+* **ResolveNameOwner**: resolving naming URI owner                          
+* **ResolvePartition**: resolving system services                           
+* **ServiceNotifications**: event-based service notifications                           
+* **GetUpgradeStatus**: polling application upgrade status                          
+* **GetFabricUpgradeStatus**: polling cluster upgrade status                            
+* **InvokeInfrastructureQuery**: querying infrastructure tasks                          
+* **List**: image store client file list operation                          
+* **ResetPartitionLoad**: resetting load for a failover unit                            
+* **ToggleVerboseServicePlacementHealthReporting**: toggling verbose service placement health reporting                             
 
-## 次のステップ
+The admin access control also has access to the preceding operations.
 
-[Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)
+## <a name="changing-default-settings-for-client-roles"></a>Changing default settings for client roles
 
-[Service Fabric クラスターの作成](service-fabric-cluster-creation-via-portal.md)
+In the cluster manifest file, you can provide admin capabilities to the client if needed. You can change the defaults by going to the **Fabric Settings** option during [cluster creation](service-fabric-cluster-creation-via-portal.md), and providing the preceding settings in the **name**, **admin**, **user**, and **value** fields.
 
-<!---HONumber=AcomDC_0921_2016-->
+## <a name="next-steps"></a>Next steps
+
+[Service Fabric cluster security](service-fabric-cluster-security.md)
+
+[Service Fabric cluster creation](service-fabric-cluster-creation-via-portal.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,201 +1,206 @@
 <properties
-	pageTitle="Azure CDN の詳細な HTTP レポート | Microsoft Azure"
-	description="Microsoft Azure CDN の詳細な HTTP レポートです。これらのレポートでは、CDN アクティビティの詳細情報が提供されます。"
-	services="cdn"
-	documentationCenter=""
-	authors="camsoper"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Azure CDN Advanced HTTP Reports | Microsoft Azure"
+    description="Advanced HTTP reports in Microsoft Azure CDN. These reports provide detailed information on CDN activity."
+    services="cdn"
+    documentationCenter=""
+    authors="camsoper"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/28/2016"
-	ms.author="casoper"/>
+    ms.service="cdn"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/28/2016"
+    ms.author="casoper"/>
 
-# Microsoft Azure CDN の詳細な HTTP レポート
 
-## 概要
+# <a name="advanced-http-reports-in-microsoft-azure-cdn"></a>Advanced HTTP reports in Microsoft Azure CDN
 
-このドキュメントでは、Microsoft Azure CDN の高度な HTTP レポート機能について説明します。これらのレポートでは、CDN アクティビティの詳細情報が提供されます。
+## <a name="overview"></a>Overview
+
+This document explains advanced HTTP reporting in Microsoft Azure CDN. These reports provide detailed information on CDN activity.
 
 [AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## 詳細な HTTP レポートへのアクセス
+## <a name="accessing-advanced-http-reports"></a>Accessing advanced HTTP reports
 
-1. CDN プロファイル ブレードで、**[管理]** をクリックします。
+1. From the CDN profile blade, click the **Manage** button.
 
-	![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
+    ![CDN profile blade manage button](./media/cdn-advanced-http-reports/cdn-manage-btn.png)
 
-	CDN 管理ポータルが開きます。
+    The CDN management portal opens.
 
-2. **[分析]** タブにマウス ポインターを合わせ、次に **[詳細な HTTP レポート]** フライアウトにポインターを合わせます。**[HTTP ラージ プラットフォーム]** をクリックします。
+2. Hover over the **Analytics** tab, then hover over the **Advanced HTTP Reports** flyout.  Click on **HTTP Large Platform**.
 
-	![CDN management portal - Advanced Reports menu](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
+    ![CDN management portal - Advanced Reports menu](./media/cdn-advanced-http-reports/cdn-advanced-reports.png)
 
-	レポートのオプションが表示されます。
+    Report options are displayed.
 
-## 地理的レポート (地図ベース)
+## <a name="geography-reports-(map-based)"></a>Geography Reports (Map-Based)
 
-コンテンツの要求元である地域を示すために地図を利用するレポートは 5 つあります。これらのレポートとは、世界、米国、カナダ、ヨーロッパ、アジア太平洋の各地図です。
+There are five reports that take advantage of a map to indicate the regions from which your content is being requested. These reports are World Map, United States Map, Canada Map, Europe Map, and Asia Pacific Map.
 
-地図ベースの各レポートでは、地理的なエンティティ (国、州、県) を、その地域で発生したヒットの割合に従って順位付けします。また、コンテンツの要求元である場所を視覚化するのに役立つ地図が用意されています。視覚化できるようにするには、各地域で発生した要求の量に従ってその地域を色分けします。地域の色が薄い場合はコンテンツの要求量が少ないことを表し、濃い場合は要求量がより多いことを表します。
+Each map-based report ranks geographic entities (i.e., countries, states, and provinces) according to the percentage of hits that originated from that region. Additionally, a map is provided to help you visualize the locations from which your content is being requested. It is able to do so by color-coding each region according to the amount of demand experienced in that region. Lighter shaded regions indicate lower demand for your content, while darker regions indicate higher levels of demand for your content.
 
-各地域のトラフィックや帯域幅の詳細情報は、地図のすぐ下に示されます。これにより、各地域のヒット総数、ヒットの割合、転送データの総量 (GB)、転送データの割合を確認できます。これらの各メトリックについては、説明を参照してください。最後に、地域 (国、州、県) にマウス ポインターを合わせると、その地域の名前とその地域で発生したヒットの割合がヒントとして表示されます。
+Detailed traffic and bandwidth information for each region is provided directly below the map. This allows you to view the total number of hits, the percentage of hits, the total amount of data transferred (in gigabytes), and the percentage of data transferred for each region. View a description for each of these metrics. Finally, when you hover over a region (i.e., country, state, or province), the name and the percentage of hits that occurred in the region will be displayed as a tooltip.
 
-地図ベースの地理的レポートの各種類について、簡単な説明を以下に示します。
+A brief description is provided below for each type of map-based geography report.
 
-レポート名 | 説明
+Report Name | Description
 ------------|------------
-世界地図 | このレポートでは、CDN コンテンツの世界全体での要求を表示できます。世界地図上では、その地域で発生したヒットの割合を示すために各国が色分けされています。
-米国地図 | このレポートでは、米国における CDN コンテンツの要求を表示できます。この地図上では、その地域で発生したヒットの割合を示すために各州が色分けされています。
-カナダ地図 | このレポートでは、カナダにおける CDN コンテンツの要求を表示できます。この地図上では、その地域で発生したヒットの割合を示すために各州が色分けされています。
-ヨーロッパ地図 | このレポートでは、ヨーロッパにおける CDN コンテンツの要求を表示できます。この地図上では、その地域で発生したヒットの割合を示すために各国が色分けされています。
-アジア太平洋地図 | このレポートでは、アジアにおける CDN コンテンツの要求を表示できます。この地図上では、その地域で発生したヒットの割合を示すために各国が色分けされています。
+World Map | This report allows you to view the worldwide demand for your CDN content. Each country is color-coded on the world map to indicate the percentage of hits that originated from that region.
+United States Map | This report allows you to view the demand for your CDN content in the United States. Each state is color-coded on this map to indicate the percentage of hits that originated from that region.
+Canada Map | This report allows you to view the demand for your CDN content in Canada. Each province is color-coded on this map to indicate the percentage of hits that originated from that region.
+Europe Map | This report allows you to view the demand for your CDN content in Europe. Each country is color-coded on this map to indicate the percentage of hits that originated from that region.
+Asia Pacific Map | This report allows you to view the demand for your CDN content in Asia. Each country is color-coded on this map to indicate the percentage of hits that originated from that region.
 
-## 地理的レポート (棒グラフ)
+## <a name="geography-reports-(bar-charts)"></a>Geography Reports (Bar Charts)
 
-地理に従って統計情報を提供するその他のレポートとして、上位都市と上位国の 2 つがあります。これらのレポートでは、都市と国を、それらの地域で発生したヒット数に従って、それぞれ順位付けしています。このようなレポートを生成すると、特定のプラットフォームを介してコンテンツを要求した都市または国の上位 10 件が棒グラフで示されます。この棒グラフを使用すると、コンテンツの要求が最も多く生成される地域をすばやく評価できます。
+There are two additional reports that provide statistical information according to geography, which are Top Cities and Top Countries. These reports rank cities and countries, respectively, according to the number of hits that originated from those regions. Upon generating this type of report, a bar chart will indicate the top 10 cities or countries that requested content over a specific platform. This bar chart allows you to quickly assess the regions that generate the highest number of requests for your content.
 
-グラフの左側 (Y 軸) は、指定した地域で発生したヒット数を示します。グラフのすぐ下 (X 軸) には、上位 10 件の各地域のラベルが表示されます。
+The left-hand side of the graph (y-axis) indicates how many hits occurred in the specified region. Directly below the graph (x-axis), you will find a label for each of the top 10 regions.
 
-### 棒グラフの使用
+### <a name="using-the-bar-charts"></a>Using the bar charts
 
-* 棒の上にマウス ポインターを合わせると、名前と、その地域で発生したヒット総数がヒントとして表示されます。
-* 上位都市のレポートのヒントでは、都市がその名前、州、および国の略名で示されます。
-* 要求の発生元である都市や地域 (州) を特定できない場合は、不明であることが示されます。国が不明な場合は、2 つの疑問符 ("??") が表示されます。
-* レポートには、"ヨーロッパ" や "アジア/太平洋地域" のメトリックが含まれる場合があります。 これらの項目は、その地域内のすべての IP アドレスに関する統計情報を提供するものではありません。むしろ、特定の都市や国ではなく、ヨーロッパやアジア/太平洋地域に分散している IP アドレスから送信される要求のみに適用されます。
+* If you hover over a bar, the name and the total number of hits that occurred in the region will be displayed as a tooltip.
+* The tooltip for the Top Cities report identifies a city by its name, state/province, and country abbreviation.
+* If the city or region (i.e., state/province) from which a request originated could not be determined, then it will indicate that they are unknown. If the country is unknown, then two question marks (i.e., ??) will be displayed.
+* A report may include metrics for "Europe" or the "Asia/Pacific Region." Those items are not meant to provide statistical information on all IP addresses in those regions. Rather, they only apply to requests that originate from IP addresses that are spread out over Europe or Asia/Pacific instead of to a specific city or country.
 
-棒グラフの生成に使用されたデータはグラフの下に表示されます。そこでは、上位 250 件の地域について、ヒット総数、ヒットの割合、転送データの量 (GB)、転送データの割合を確認できます。これらの各メトリックについては、説明を参照してください。
+The data that was used to generate the bar chart can be viewed below it. There you will find the total number of hits, the percentage of hits, the amount of data transferred (in gigabytes), and the percentage of data transferred for the top 250 regions. View a description for each of these metrics.
 
-この 2 種類のレポートの簡単な説明を以下に示します。
+A brief description is provided for both types of reports below.
 
-レポート名 | 説明
+Report Name | Description
 ------------|------------
-上位都市 | このレポートでは、各地域で発生したヒット数に従って都市を順位付けします。
-上位国 | このレポートでは、各地域で発生したヒット数に従って国を順位付けします。
+Top Cities | This report ranks cities according to the number of hits that originated from that region.
+Top Countries | This report ranks countries according to the number of hits that originated from that region.
 
-## 概要 (日単位)
+## <a name="daily-summary"></a>Daily Summary
 
-"概要 (日単位)" レポートでは、特定のプラットフォーム経由のヒット総数と転送されたデータを 1 日単位で表示できます。この情報を使用すると、CDN アクティビティのパターンをすばやく識別できます。たとえば、予想されたトラフィックを上回るか下回る日を検出する場合にこのレポートが役立ちます。
+The Daily Summary report allows you to view the total number of hits and data transferred over a particular platform on a daily basis. This information can be used to quickly discern CDN activity patterns. For example, this report can help you detect which days experienced higher or lower than expected traffic.
 
-この種類のレポートを生成すると、レポート対象期間の 1 日ごとに発生したプラットフォーム固有の要求量について棒グラフで視覚的に示すことができます。それには、1 日ごとに 1 つの棒がレポートに表示されます。たとえば、"先週" という期間を選択すると、7 つの棒を含む棒グラフが生成されます。各棒は、その日に発生したヒットの総数を示します。
+Upon generating this type of report, a bar chart will provide a visual indication as to the amount of platform-specific demand experienced on a daily basis over the time period covered by the report. It will do so by displaying a bar for each day in the report. For example, selecting the time period called "Last Week" will generate a bar chart with seven bars. Each bar will indicate the total number of hits experienced on that day.
 
-グラフの左側 (Y 軸) は、指定した日に発生したヒット数を示します。グラフのすぐ下 (X 軸) には、レポートに含まれる各日付を示すラベル (YYYY-MM-DD 形式) が表示されます。
+The left-hand side of the graph (y-axis) indicates how many hits occurred on the specified date. Directly below the graph (x-axis), you will find a label that indicates the date (Format: YYYY-MM-DD) for each day included in the report.
 
-> [AZURE.TIP] 棒の上にマウス ポインターを合わせると、その日に発生したヒット総数がヒントとして表示されます。
+> [AZURE.TIP] If you hover over a bar, the total number of hits that occurred on that date will be displayed as a tooltip.
 
-棒グラフの生成に使用されたデータはグラフの下に表示されます。そこでは、レポート対象期間の 1 日ごとのヒット総数と転送データの量 (GB) を確認できます。
+The data that was used to generate the bar chart can be viewed below it. There you will find the total number of hits and the amount of data transferred (in gigabytes) for each day covered by the report.
 
-## 時間別
+## <a name="by-hour"></a>By Hour
 
-"時間別" レポートでは、特定のプラットフォーム経由のヒット総数と転送データを 1 時間単位で表示できます。この情報を使用すると、CDN アクティビティのパターンをすばやく識別できます。たとえば、予想されるトラフィックを上回るか下回る時間帯を検出する場合にこのレポートが役立ちます。
+The By Hour report allows you to view the total number of hits and data transferred over a particular platform on an hourly basis. This information can be used to quickly discern CDN activity patterns. For example, this report can help you detect the time periods during the day that experience higher or lower than expected traffic.
 
-この種類のレポートを生成すると、レポート対象期間の 1 時間ごとに発生したプラットフォーム固有の要求量について棒グラフで視覚的に示すことができます。それには、レポートの対象となる 1 時間ごとに 1 つの棒が表示されます。たとえば、期間として 24 時間を選択すると、24 個の棒を含む棒グラフが生成されます。各棒は、その時間に発生したヒットの総数を示します。
+Upon generating this type of report, a bar chart will provide a visual indication as to the amount of platform-specific demand experienced on an hourly basis over the time period covered by the report. It will do so by displaying a bar for each hour covered by the report. For example, selecting a 24 hour time period will generate a bar chart with twenty four bars. Each bar will indicate the total number of hits experienced during that hour.
 
-グラフの左側 (Y 軸) は、指定した時間に発生したヒット数を示します。グラフのすぐ下 (X 軸) には、レポートに含まれる各時間の日時を示すラベル (YYYY-MM-DD hh:mm 形式) が表示されます。時間の報告には 24 時間形式が使用され、時間は UTC/GMT タイム ゾーンを使用して指定されます。
+The left-hand side of the graph (y-axis) indicates how many hits occurred on the specified hour. Directly below the graph (x-axis), you will find a label that indicates the date/time (Format: YYYY-MM-DD hh:mm) for each hour included in the report. Time is reported using 24 hour format and it is specified using the UTC/GMT time zone.
 
-> [AZURE.TIP] 棒の上にマウス ポインターを合わせると、その時間に発生したヒット総数がヒントとして表示されます。
+> [AZURE.TIP] If you hover over a bar, the total number of hits that occurred during that hour will be displayed as a tooltip.
 
-棒グラフの生成に使用されたデータはグラフの下に表示されます。そこでは、レポート対象期間の 1 時間ごとのヒット総数と転送データの量 (GB 単位) を確認できます。
+The data that was used to generate the bar chart can be viewed below it. There you will find the total number of hits and the amount of data transferred (in gigabytes) for each hour covered by the report.
 
-## ファイル別
+## <a name="by-file"></a>By File
 
-"ファイル別" レポートでは、最も要求の多かった資産について特定のプラットフォーム経由で発生した要求とトラフィックの量を確認できます。この種類のレポートを生成すると、指定した期間に最も多く要求された資産の上位 10 件について棒グラフが生成されます。
+The By File report allows you to view the amount of demand and the traffic incurred over a particular platform for the most requested assets. Upon generating this type of report, a bar chart will be generated on the top 10 most requested assets over the specified time period.
 
-> [AZURE.NOTE] このレポートの目的として、エッジ CNAME URL は同等の CDN URL に変換されます。これにより、資産の要求に使用されるのが CDN URL とエッジ CNAME URL のどちらであるかに関係なく、その資産に関連付けられたヒット総数を正確に把握できます。
+> [AZURE.NOTE] For the purposes of this report, edge CNAME URLs are converted to their equivalent CDN URLs. This allows an accurate tally for the total number of hits associated with an asset regardless of the CDN or edge CNAME URL used to request it.
 
-グラフの左側 (Y 軸) は、指定した期間内の各資産に対する要求の数を示します。グラフのすぐ下 (X 軸) には、要求された資産の上位 10 件それぞれのファイル名を示すラベルが表示されます。
+The left-hand side of the graph (y-axis) indicates the number of requests for each asset over the specified time period. Directly below the graph (x-axis), you will find a label that indicates the file name for each of the top 10 requested assets.
 
-棒グラフの生成に使用されたデータはグラフの下に表示されます。そこでは、要求された資産の上位 250 件それぞれについて、相対パス、ヒット総数、ヒットの割合、転送データの量 (GB)、転送データの割合を確認できます。
+The data that was used to generate the bar chart can be viewed below it. There you will find the following information for each of the top 250 requested assets: relative path, the total number of hits, the percentage of hits, the amount of data transferred (in gigabytes), and the percentage of data transferred.
 
-## ファイルの詳細別
+## <a name="by-file-detail"></a>By File Detail
 
-"ファイルの詳細別" レポートでは、特定の資産の特定のプラットフォーム経由で発生した要求とトラフィックの量を確認できます。このレポートの最上部には、[ファイルの詳細] オプションがあります。このオプションを使用すると、選択したプラットフォームで最も多く要求された資産の一覧が示されます。"ファイルの詳細別" レポートを生成するには、[ファイルの詳細] から目的の資産を選択する必要があります。選択すると、指定した期間に生成された日々の要求量を示す棒グラフが表示されます。
+The By File Detail report allows you to view the amount of demand and the traffic incurred over a particular platform for a specific asset. At the very top of this report is the File Details For option. This option provides a list of your most requested assets on the selected platform. In order to generate a By File Detail report, you will need to select the desired asset from the File Details For option. After which, a bar chart will indicate the amount of daily demand that it generated over the specified time period.
 
-グラフの左側 (Y 軸) は、特定の日に発生した資産に対する要求の総数を示します。グラフのすぐ下 (X 軸) には、資産に対する CDN 要求が報告された日付を示すラベル (YYYY-MM-DD 形式) が表示されます。
+The left-hand side of the graph (y-axis) indicates the total number of requests that an asset experienced on a particular day. Directly below the graph (x-axis), you will find a label that indicates the date (Format: YYYY-MM-DD) for which CDN demand for the asset was reported.
 
-棒グラフの生成に使用されたデータはグラフの下に表示されます。そこでは、レポート対象期間の 1 日ごとのヒット総数と転送データの量 (GB) を確認できます。
+The data that was used to generate the bar chart can be viewed below it. There you will find the total number of hits and the amount of data transferred (in gigabytes) for each day covered by the report.
 
-## ファイルの種類別
+## <a name="by-file-type"></a>By File Type
 
-"ファイルの種類別" レポートでは、ファイルの種類別に発生した要求とトラフィックの量を確認できます。この種類のレポートを生成すると、上位 10 件のファイルの種類で生成されたヒットの割合がドーナツ グラフで示されます。
+The By File Type report allows you to view the amount of demand and the traffic incurred by file type. Upon generating this type of report, a donut chart will indicate the percentage of hits generated by the top 10 file types.
 
-> [AZURE.TIP] ドーナツ グラフのスライスにマウス ポインターを合わせると、そのファイルの種類のインターネット メディアの種類がヒントとして表示されます。
+> [AZURE.TIP] If you hover over a slice in the donut chart, the Internet media type of that file type will be displayed as a tooltip.
 
-ドーナツ グラフの生成に使用されたデータはグラフの下に表示されます。そこでは、上位 250 件のファイルの種類それぞれについて、ファイル名拡張子/インターネット メディアの種類、ヒット総数、ヒットの割合、転送データの量 (GB)、転送データの割合を確認できます。
+The data that was used to generate the donut chart can be viewed below it. There you will find the file name extension/Internet media type, the total number of hits, the percentage of hits, the amount of data transferred (in gigabytes), and the percentage of data transferred for each of the top 250 file types.
 
-## ディレクトリ別
+## <a name="by-directory"></a>By Directory
 
-"ディレクトリ別" レポートでは、特定のディレクトリのコンテンツに関して、特定のプラットフォーム経由で発生した要求とトラフィックの量を表示できます。この種類のレポートを生成すると、上位 10 個のディレクトリのコンテンツで生成されたヒット総数が棒グラフに示されます。
+The By Directory report allows you to view the amount of demand and the traffic incurred over a particular platform for content from a specific directory. Upon generating this type of report, a bar chart will indicate the total number of hits generated by content in the top 10 directories.
 
-### 棒グラフの使用
+### <a name="using-the-bar-chart"></a>Using the bar chart
 
-* 棒の上にマウス ポインターを合わせると、対応するディレクトリへの相対パスが表示されます。
-* ディレクトリのサブフォルダーに格納されているコンテンツは、ディレクトリ別の要求の計算時にはカウントされません。この計算には、実際のディレクトリに格納されているコンテンツに対して生成された要求の数のみが使用されます。
-* このレポートの目的として、エッジ CNAME URL は同等の CDN URL に変換されます。これにより、資産の要求に使用されるのが CDN URL とエッジ CNAME URL のどちらであるかに関係なく、その資産に関連付けられたすべての統計情報を正確に把握できます。
+* Hover over a bar to view the relative path to the corresponding directory.
+* Content stored in a subfolder of a directory does not count when calculating demand by directory. This calculation relies solely on the number of requests generated for content stored in the actual directory.
+* For the purposes of this report, edge CNAME URLs are converted to their equivalent CDN URLs. This allows an accurate tally for all statistics associated with an asset regardless of the CDN or edge CNAME URL used to request it.
 
-グラフの左側 (Y 軸) は、上位 10 個のディレクトリに格納されているコンテンツに対する要求の総数を示します。グラフの棒はそれぞれ、1 つのディレクトリを表します。色分け手法を使用して、上位 250 個の全ディレクトリ セクションに表示されている 1 つのディレクトリに 1 つの棒を対応させます。
+The left-hand side of the graph (y-axis) indicates the total number of requests for the content stored in your top 10 directories. Each bar on the chart represents a directory. Use the color-coding scheme to match up a bar to a directory listed in the Top 250 Full Directories section.
 
-棒グラフの生成に使用されたデータはグラフの下に表示されます。そこでは、上位 250 個のディレクトリそれぞれについて、相対パス、ヒット総数、ヒットの割合、転送データの量 (GB)、転送データの割合を確認できます。
+The data that was used to generate the bar chart can be viewed below it. There you will find the following information for each of the top 250 directories: relative path, the total number of hits, the percentage of hits, the amount of data transferred (in gigabytes), and the percentage of data transferred.
 
-## ブラウザー別
+## <a name="by-browser"></a>By Browser
 
-"ブラウザー別" レポートでは、コンテンツの要求に使用されたブラウザーを表示できます。この種類のレポートを生成すると、上位 10 件のブラウザーで処理された要求の割合が円グラフに示されます。
+The By Browser report allows you to view which browsers were used to request content. Upon generating this type of report, a pie chart will indicate the percentage of requests handled by the top 10 browsers.
 
-### 円グラフの使用
+### <a name="using-the-pie-chart"></a>Using the pie chart
 
-* 円グラフのスライスにマウス ポインターを合わせると、ブラウザーの名前とバージョンが表示されます。
-* このレポートでは、一意のブラウザーとバージョンの組み合わせはそれぞれ、別のブラウザーと見なされます。
-* "その他" というスライスは、その他すべてのブラウザーとバージョンで処理された要求の割合を示します。
+* Hover over a slice in the pie chart to view a browser's name and version.
+* For the purposes of this report, each unique browser/version combination is considered a different browser.
+* The slice called "Other" indicates the percentage of requests handled by all other browsers and versions.
 
-円グラフの生成に使用されたデータはグラフの下に表示されます。そこでは、上位 250 件のブラウザーそれぞれについて、ブラウザーの種類/バージョン番号、ヒット総数、ヒットの割合を確認できます。
+The data that was used to generate the pie chart can be viewed below it. There you will find the browser type/version number, the total number of hits and the percentage of hits for each of the top 250 browsers.
 
-## 参照元別
+## <a name="by-referrer"></a>By Referrer
 
-"参照元別" レポートでは、選択したプラットフォーム上のコンテンツに対する上位の参照元を表示できます。参照元は、要求が生成されたホスト名を示します。この種類のレポートを生成すると、上位 10 件の参照元によって生成された要求 (ヒット) の量が棒グラフに示されます。
+The By Referrer report allows you to view the top referrers to content on the selected platform. A referrer indicates the hostname from which a request was generated. Upon generating this type of report, a bar chart will indicate the amount of demand (i.e., hits) generated by the top 10 referrers.
 
-グラフの左側 (Y 軸) は、各参照元で発生した資産に対する要求の総数を示します。グラフの棒はそれぞれ、1 つの参照元を表します。色分け手法を使用して、上位 250 件の参照元セクションに表示されている 1 つの参照元に 1 つの棒を対応させます。
+The left-hand side of the graph (y-axis) indicates the total number of requests that an asset experienced for each referrer. Each bar on the chart represents a referrer. Use the color-coding scheme to match up a bar to a referrer listed in the Top 250 Referrer section.
 
-棒グラフの生成に使用されたデータはグラフの下に表示されます。そこでは、上位 250 件の参照元それぞれについて、URL、生成されたヒット総数、ヒットの割合を確認できます。
+The data that was used to generate the bar chart can be viewed below it. There you will find the URL, the total number of hits, and the percentage of hits generated from each of the top 250 referrers.
 
-## ダウンロード別
+## <a name="by-download"></a>By Download
 
-"ダウンロード別" レポートでは、最も多く要求されたコンテンツのダウンロード パターンを分析できます。レポートの上部には、要求された資産の上位 10 件について、ダウンロードの試行回数と完了数を比較した棒グラフが含まれます。各棒は、ダウンロードが完了したかどうかによって色分けされます。試行されたダウンロードは青、完了したダウンロードは緑になります。
+The By Download report allows you to analyze download patterns for your most requested content. The top of the report contains a bar chart that compares attempted downloads with completed downloads for the top 10 requested assets. Each bar is color-coded according to whether it is an attempted download (blue) or a completed download (green).
 
-> [AZURE.NOTE] このレポートの目的として、エッジ CNAME URL は同等の CDN URL に変換されます。これにより、資産の要求に使用されるのが CDN URL とエッジ CNAME URL のどちらであるかに関係なく、その資産に関連付けられたすべての統計情報を正確に把握できます。
+> [AZURE.NOTE] For the purposes of this report, edge CNAME URLs are converted to their equivalent CDN URLs. This allows an accurate tally for all statistics associated with an asset regardless of the CDN or edge CNAME URL used to request it.
 
-グラフの左側 (Y 軸) は、要求された資産の上位 10 件それぞれのファイル名を示します。グラフのすぐ下 (X 軸) には、ダウンロードの試行/完了回数の総数を示すラベルが表示されます。
+The left-hand side of the graph (y-axis) indicates the file name for each of the top 10 requested assets. Directly below the graph (x-axis), you will find labels that indicate the total number of attempted/completed downloads.
 
-棒グラフのすぐ下には、要求された資産の上位 250 件について、相対パス (ファイル名を含む)、ダウンロードが完了した回数、要求された回数、ダウンロードが完了した要求の割合という情報が表示されます。
+Directly below the bar chart, the following information will be listed for the top 250 requested assets: relative path (including file name), the number of times that it was downloaded to completion, the number of times that it was requested, and the percentage of requests that resulted in a complete download.
 
-> [AZURE.TIP] 資産のダウンロードが完了した際、HTTP クライアント (ブラウザー) から CDN には通知されません。そのため、資産のダウンロードが完了したかどうかを状態コードとバイト範囲要求に従って計算する必要があります。この計算を行う場合、最初に、要求が状態コード "200 OK" になっているかどうかを確認します。状態コードが "200 OK" の場合は、バイト範囲要求を参照して、資産全体が対象になっていることを確認します。最後に、転送されたデータの量と要求された資産のサイズを比較します。転送されたデータの量がファイルのサイズ以上で、バイト範囲要求がその資産に対して適切である場合、ヒットは完了したダウンロードとしてカウントされます。
+> [AZURE.TIP] Our CDN is not informed by an HTTP client (i.e. browser) when an asset has been completely downloaded. As a result, we have to calculate whether an asset has been completely downloaded according to status codes and byte-range requests. The first thing we look for when making this calculation is whether the request results in a 200 OK status code. If so, then we look at byte-range requests to ensure that they cover the entire asset. Finally, we compare the amount of data transferred to the size of the requested asset. If the data transferred is equal to or greater than the file size and the byte-range requests are appropriate for that asset, then the hit will be counted as a complete download.
 >
->このレポートは説明的であるため、レポートの一貫性や正確性を変える可能性がある以下の点に留意する必要があります。
+>Due to the interpretive nature of this report, you should keep in mind the following points that may alter the consistency and accuracy of this report.
 >
->* ユーザー エージェントの動作が異なる場合は、トラフィック パターンを正確に予測することはできません。このため、完了したダウンロードの結果が 100% を超える可能性があります。
->* HTTP プログレッシブ ダウンロードを利用する資産は、このレポートで正確に示されない可能性があります。これは、ユーザーがビデオの別の場所をシークするためです。
+>* Traffic patterns cannot be accurately predicted when user-agents behave differently. This may produce completed download results that are greater than 100%.
+>* Assets that take advantage of HTTP Progressive Download may not be accurately represented by this report. This is due to users seeking to different positions in a video.
 
-## 404 エラー別
+## <a name="by-404-errors"></a>By 404 Errors
 
-"404 エラー別" レポートでは、状態コード "404 未検出" が最も多く生成されるコンテンツの種類を識別できます。レポートの上部には、状態コード "404 未検出" が返された上位 10 件の資産を示す棒グラフが含まれます。この棒グラフは、これらの資産に対する要求の総数と、結果として状態コード "404 未検出" になった要求の数を比較しています。各棒は色分けされています。黄色の棒は、結果として状態コード "404 未検出" になった要求を示します。赤色の棒は、資産に対する要求の総数を示します。
+The By 404 Errors report allows you to identify the type of content that generates the most number of 404 Not Found status codes. The top of the report contains a bar chart for the top 10 assets for which a 404 Not Found status code was returned. This bar chart compares the total number of requests with requests that resulted in a 404 Not Found status code for those assets. Each bar is color-coded. A yellow bar is used to indicate that the request resulted in a 404 Not Found status code. A red bar is used to indicate the total number of requests for the asset.
 
-> [AZURE.NOTE] このレポートでは、以下の点に注意してください。
+> [AZURE.NOTE] For the purposes of this report, note the following:
 >
->* ヒットは、状態コードに関係なく、資産に対するすべての要求を表します。
->* エッジ CNAME URL は同等の CDN URL に変換されます。これにより、資産の要求に使用されるのが CDN URL とエッジ CNAME URL のどちらであるかに関係なく、その資産に関連付けられたすべての統計情報を正確に把握できます。
+>* A hit represents any request for an asset regardless of status code.
+>* Edge CNAME URLs are converted to their equivalent CDN URLs. This allows an accurate tally for all statistics associated with an asset regardless of the CDN or edge CNAME URL used to request it.
 
-グラフの左側 (Y 軸) は、結果として状態コード "404 未検出" になった、要求された資産の上位 10 件それぞれのファイル名を示します。グラフのすぐ下 (X 軸) には、要求の総数と、状態コード "404 未検出" になった要求の数を示すラベルが表示されます。
+The left-hand side of the graph (y-axis) indicates the file name for each of the top 10 requested assets that resulted in a 404 Not Found status code. Directly below the graph (x-axis), you will find labels that indicate the total number of requests and the number of requests that resulted in a 404 Not Found status code.
 
-棒グラフのすぐ下には、要求された資産の上位 250 件について、相対パス (ファイル名を含む)、状態コード "404 未検出" になった要求の数、資産が要求された合計回数、状態コード "404 未検出" になった要求の割合という情報が表示されます。
+Directly below the bar chart, the following information will be listed for the top 250 requested assets: relative path (including file name), the number of requests that resulted in a 404 Not Found status code, the total number of times that the asset was requested, and the percentage of requests that resulted in a 404 Not Found status code.
 
-## 関連項目
-* [Azure CDN の概要](cdn-overview.md)
-* [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
-* [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
-* [Edge のパフォーマンスの分析](cdn-edge-performance.md)
+## <a name="see-also"></a>See also
+* [Azure CDN Overview](cdn-overview.md)
+* [Real-time stats in Microsoft Azure CDN](cdn-real-time-stats.md)
+* [Overriding default HTTP behavior using the rules engine](cdn-rules-engine.md)
+* [Analyze Edge Performance](cdn-edge-performance.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,44 +1,68 @@
 <properties
-	pageTitle="Azure PowerShell のインストールおよび構成方法"
-	description="Azure PowerShell のインストールと構成の方法について説明します。"
-	editor="tysonn"
-	manager="dongill"
-	documentationCenter=""
-	services=""
-	authors="coreyp-at-msft"/>
+    pageTitle="How to install and configure Azure PowerShell"
+    description="Learn how to install and configure Azure PowerShell."
+    editor="tysonn"
+    manager="dongill"
+    documentationCenter=""
+    services=""
+    authors="coreyp-at-msft"/>
 
 <tags
-	ms.service="multiple"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="powershell"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="04/22/2016"
-	ms.author="coreyp"/>
+    ms.service="multiple"
+    ms.workload="multiple"
+    ms.tgt_pltfrm="powershell"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/30/2016"
+    ms.author="coreyp"/>
 
-# Azure PowerShell のインストールおよび構成方法
 
-<div class="dev-center-tutorial-selector sublanding"><a href="/manage/install-and-configure-windows-powershell/" title="PowerShell" class="current">PowerShell</a><a href="/manage/install-and-configure-cli/" title="Azure CLI">Azure CLI</a></div>
+# <a name="how-to-install-and-configure-azure-powershell"></a>How to install and configure Azure PowerShell
 
-##Azure PowerShell とは
-Azure PowerShell は、Windows PowerShell を使用して Azure を管理するためのコマンドレットを提供するモジュールです。このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。ほとんどの場合、コマンドレットを使用して Microsoft Azure 管理ポータルと同じタスク (クラウド サービス、仮想マシン、仮想ネットワーク、Web アプリの作成や構成など) を実行できます。
+<div class="dev-center-tutorial-selector sublanding"><a href="/manage/install-and-configure-windows-powershell/" title="PowerShell" class="current">PowerShell</a><a href="/manage/install-and-configure-cli/" title="Azure CLI">Azure  CLI</a></div>
+
+##<a name="what-is-azure-powershell?"></a>What is Azure PowerShell?
+Azure PowerShell is a set of modules that provide cmdlets to manage Azure with Windows PowerShell. You can use the cmdlets to create, test, deploy, and manage solutions and services delivered through the Azure platform. In most cases, the cmdlets can be used for the same tasks as the Azure Portal, such as creating and configuring cloud services, virtual machines, virtual networks, and web apps.
+
+## <a name="how-versioning-works"></a>How versioning works
+
+Azure PowerShell uses Semantic Versioning, which means that if version A > version B, then version A has the most up-to-date APIs. Also, it means that changes in the major version mean a breaking change in one or more cmdlets.  So, for example, version 1.7.0 is a hotfix to address a breaking change in the 1.x versions of Azure PowerShell.
+
+For more information about Semantic Versioning practices in Azure PowerShell, see the Semantic Versioning Specification at: http://semver.org
+ 
+To get the latest APIs, you should use version 2.x. But if you have scripts written against version 1.x and you don’t want to absorb the breaking changes in version 2.x described in the 2.x [Release Notes](https://github.com/Azure/azure-powershell/blob/dev/documentation/release-notes/migration-guide.2.0.0.md), then you should install 1.7.0.
+
+A version mismatch can result if the latest version of the profile module is installed, and an earlier version of a module that depends on it is subsequently loaded. The simplest way to resolve this is to install from the latest .msi. The .msi automatically cleans up older versions of the modules.
+ 
+###<a name="installing-module-versions-side-by-side"></a>Installing module versions side-by-side
+
+Version 2.1.0 (and version 1.2.6 for AzureStack) are the first module versions designed to be installed and used side-by-side. Because Azure PowerShell uses binary modules, you must open a new PowerShell window and use **Import-Module** to import a specific version of the AzureRM cmdlets:
+
+**Import-Module AzureRM – RequiredVersion 2.1.0**
+
+Versions before 2.1.0 (other than 1.2.6) do not work well side-by-side with other Azure PowerShell module versions. When loading an earlier version of the Azure PowerShell modules using a command like the one above, incompatible versions of the **AzureRM.Profile** module will be loaded, resulting in the cmdlets asking you to log in whenever you execute a cmdlet, even after you have logged in.
+
+The easiest way to resolve this is to install the latest Azure PowerShell from the WebPI feed or .msi – this removes earlier versions of the modules installed from the gallery. 
+
+Note that both Azure and AzureRM modules have dependencies in common, so if you use both modules, when updating one, you should update both. Earlier versions of the Azure module have the same issue with side-by-side module loading that earlier versions of the AzureRM module have.
+
 
 <a id="Install"></a>
-## 手順 1: インストール
+## <a name="step-1:-install"></a>Step 1: Install
 
-Azure PowerShell は、以下に示す 2 つの方法でインストールできます。WebPI からインストールする方法と PowerShell ギャラリーからインストールする方法です。
+Following are the two methods by which you can install Azure PowerShell. You can install it either from WebPI, or the PowerShell Gallery:
 
-###WebPI から Azure PowerShell をインストールする
+###<a name="installing-azure-powershell-from-webpi"></a>Installing Azure PowerShell from WebPI
 
-Azure PowerShell 1.0 以降は、0.9.x までと同じ方法で WebPI からインストールすることができます。[Azure Powershell](http://aka.ms/webpi-azps) をダウンロードして、インストールを開始します。Azure PowerShell 0.9.x がインストールされている場合は、アップグレードの一環としてバージョン 0.9.x がアンインストールされます。Azure PowerShell モジュールが PowerShell ギャラリーからインストールされた場合は、Azure PowerShell 環境の整合性を確保するために、インストール前にモジュールが自動的に削除されます。
+Installing Azure PowerShell 1.0 and greater from WebPI is the same as it was for 0.9.x. Download [Azure PowerShell](http://aka.ms/webpi-azps) and start the install. If you have Azure PowerShell 0.9.x installed, version 0.9.x will be uninstalled as part of the upgrade. If you installed Azure PowerShell modules from PowerShell Gallery, the installer automatically removes the modules before installation to ensure a consistent Azure PowerShell environment.
 
-> [AZURE.NOTE] PowerShell ギャラリーから以前にインストールされた Azure モジュールは、自動的に削除されます。これは、インストールしたモジュールとその場所に関して混乱を防ぐための措置です。PowerShell ギャラリーのモジュールは通常では **%ProgramFiles%\WindowsPowerShell\Modules** にインストールされます。これに対し、WebPI インストーラーを使用した場合、Azure モジュールは **%ProgramFiles(x86)%\Microsoft SDKs\Azure\PowerShell** にインストールされます。インストール中にエラーが発生した場合は、**%ProgramFiles%\WindowsPowerShell\Modules** フォルダーから Azure* フォルダーを手動で削除してから、インストールをもう一度試みます。
+> [AZURE.NOTE] If you have previously installed Azure modules from the PowerShell Gallery, the installer will automatically remove them. This prevents confusion about which module versions you have installed and where they are located. PowerShell Gallery modules will normally install in **%ProgramFiles%\WindowsPowerShell\Modules**. In contrast, the WebPI installer will install the Azure modules in **%ProgramFiles(x86)%\Microsoft SDKs\Azure\PowerShell\**. If an error occurs during install, you can manually remove the Azure* folders in your **%ProgramFiles%\WindowsPowerShell\Modules** folder, and try the installation again.
 
-インストールが完了したら、Azure PowerShell コマンドレットを含むディレクトリが ```$env:PSModulePath``` の設定に含まれている必要があります。
+Once the installation completes, your ```$env:PSModulePath``` setting should include the directories containing the Azure PowerShell cmdlets.
 
-> [AZURE.NOTE] PowerShell **$env:PSModulePath** には、WebPI からのインストール時に生じる可能性がある既知の問題があります。システムの更新やその他のインストールでコンピューターの再起動が必要になった場合、Azure PowerShell のインストール パスが **$env:PSModulePath** の更新に含まれない場合があります。このような場合は、インストールまたはアップグレード後に Azure PowerShell コマンドレットを使用しようとすると、「コマンドレットは認識されません」というメッセージが表示されることがあります。このような場合は、コンピューターを再起動すると問題が解決します。
+> [AZURE.NOTE] There is a known issue with PowerShell **$env:PSModulePath** that can occur when installing from WebPI. If your computer requires a restart due to system updates or other installations, it may cause updates **$env:PSModulePath** to not include the path where Azure PowerShell is installed. If this occurs, you may see a 'cmdlet not recognized' message when attempting to use Azure PowerShell cmdlets after the installation or upgrade. If this occurs, restarting the machine should fix the problem.
 
-コマンドレットを読み込もうとしたとき、または実行しようとしたときに、次のようなメッセージが表示される場合:
+If you receive a message like the following when attempting to load or execute cmdlets:
 
 ```
     PS C:\> Get-AzureRmResource
@@ -52,15 +76,15 @@ Azure PowerShell 1.0 以降は、0.9.x までと同じ方法で WebPI からイ�
         + FullyQualifiedErrorId : CommandNotFoundException
 ```
 
-この問題は、コンピューターを再起動するか、次のように C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\ (XXXX はインストールされている PowerShell のバージョン) からコマンドレットをインポートすることによって修正できます。
+This can be corrected by restarting the machine or importing the cmdlets from C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\ as following (where XXXX is the version of PowerShell installed:
 ```
 import-module "C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\azure.psd1"
 import-module "C:\Program Files\WindowsPowerShell\Modules\Azure\XXXX\expressroute\expressroute.psd1"
 ```
 
-###PowerShell ギャラリーから Azure PowerShell をインストールする
+###<a name="installing-azure-powershell-from-the-powershell-gallery"></a>Installing Azure PowerShell from the PowerShell Gallery
 
-PowerShell ギャラリーから、管理者特権の Windows PowerShell または PowerShell Integrated Scripting Environment (ISE) プロンプトを使用して、次のコマンドで Azure PowerShell 1.3.0 以上をインストールします。
+Install Azure PowerShell 1.3.0 or greater from the PowerShell Gallery using an elevated Windows PowerShell or PowerShell Integrated Scripting Environment (ISE) prompt using the following commands:
 
     # Install the Azure Resource Manager modules from the PowerShell Gallery
     Install-Module AzureRM
@@ -68,29 +92,31 @@ PowerShell ギャラリーから、管理者特権の Windows PowerShell また�
     # Install the Azure Service Management module from the PowerShell Gallery
     Install-Module Azure
 
-####前述のコマンドの詳細
+####<a name="more-about-these-commands"></a>More about these commands
 
-- **Install-Module AzureRM** は、Azure Resource Manager のコマンドレットのロールアップ モジュールをインストールします。AzureRM モジュールは、Azure Resource Manager の各モジュールの特定のバージョン範囲に依存します。バージョン範囲が含まれていることにより、同じメジャー バージョンの AzureRM モジュールをインストールするときに、互換性を破るモジュール変更は含まれません。AzureRM モジュールをインストールするときには、以前にインストールしていない Azure Resource Manager モジュールをダウンロードして、PowerShell ギャラリーからインストールします。Azure PowerShell モジュールで使用されるセマンティック バージョニングの詳細については、[semver.org](http://semver.org) を参照してください。 
-- **Install-Module Azure** は、Azure モジュールをインストールします。これは、Azure PowerShell 0.9.x のサービス管理モジュールとなります。大きな変更はなく、以前のバージョンの Azure モジュールと互換性があります。
+- **Install-Module AzureRM** installs a rollup module for the Azure Resource Manager cmdlets. The AzureRM module depends on 
+- a particular version range for each Azure Resource Manager module. The included version range assures that no breaking module changes can be included when installing AzureRM modules with the same major version. When you install the AzureRM module, any Azure Resource Manager module that has not previously been installed will be downloaded and installed from the PowerShell Gallery. For more information on the semantic versioning used by Azure PowerShell modules, see [semver.org](http://semver.org). 
+- **Install-Module Azure** installs the Azure module. This module is the Service Management module from Azure PowerShell 0.9.x. This should have no major changes and be interchangeable for the previous version of the Azure module.
 
-## 手順 2: 起動
-コマンドレットは、標準の Windows PowerShell コンソールまたは PowerShell Integrated Scripting Environment (ISE) から実行できます。どちらのコンソールでも、開く方法は、実行している Windows のバージョンによって異なります。
+## <a name="step-2:-start"></a>Step 2: Start
+You can run the cmdlets from the standard Windows PowerShell console, or from PowerShell Integrated Scripting Environment (ISE).
+The method you use to open either console depends on the version of Windows you're running:
 
-- Windows 8 または Windows Server 2012 以降を実行しているコンピューターでは、組み込みの検索機能を使用できます。**スタート**画面で「power」と入力します。Windows PowerShell が名前に含まれているすべてのアプリケーションが一覧表示されます。コンソールを開くには、いずれかのアプリケーションをクリックします。(アプリを**スタート**画面にピン留めするには、そのアイコンを右クリックします。)
+- On a computer running at least Windows 8 or Windows Server 2012, you can use the built-in Search. From the **Start** screen, begin typing power. This returns a scoped list of apps that includes Windows PowerShell. To open the console, click either app. (To pin the app to the **Start** screen, right-click the icon.)
 
-- Windows 8 または Windows Server 2012 より前のバージョンを実行しているコンピューターでは、**[スタート]** メニューを使用します。**[スタート]** メニューから、**[すべてのプログラム]**、**[アクセサリ]**、**[Windows PowerShell]** フォルダー、**[Windows PowerShell]** の順にクリックします。
+- On a computer running a version earlier than Windows 8 or Windows Server 2012, use the **Start menu**. From the **Start** menu, click **All Programs**, click  **Accessories**, click the **Windows PowerShell** folder, and then click **Windows PowerShell**.
 
-Windows PowerShell コンソールで行う作業の多くは、**Windows PowerShell ISE** からメニュー項目とキーボード ショートカットを使用して実行することもできます。ISE を使用するには、Windows PowerShell コンソール、Cmd.exe、または **[ファイル名を指定して実行]** ボックスに「**powershell\_ise.exe**」と入力します。
+You can also run the **Windows PowerShell ISE** to use menu items and keyboard shortcuts to perform many of the same tasks that you would perform in the Windows PowerShell console. To use the ISE, in the Windows PowerShell console, Cmd.exe, or in the **Run** box, type, **powershell_ise.exe**.
 
-###基本的なコマンド
+###<a name="commands-to-help-you-get-started"></a>Commands to help you get started
 
     # To make sure the Azure PowerShell module is available after you install
     Get-Module –ListAvailable 
-	
-    # To login to Azure Resource Manager
+    
+    # To log in to Azure Resource Manager
     Login-AzureRmAccount
 
-    # You can also use a specific Tenant if you would like a faster login experience
+    # You can also use a specific Tenant if you would like a faster log in experience
     # Login-AzureRmAccount -TenantId xxxx
 
     # To view all subscriptions for your account
@@ -114,69 +140,74 @@ Windows PowerShell コンソールで行う作業の多くは、**Windows PowerS
     Get-AzureRmStorageAccount | Get-AzureStorageContainer | Get-AzureStorageBlob
 
 
-## 手順 3: 接続
-コマンドレットでサービスを管理するには、サブスクリプションが必要です。サブスクリプションがまだない場合は、Azure サブスクリプションを購入できます。手順については、「[Azure の購入方法](http://go.microsoft.com/fwlink/p/?LinkId=320795)」を参照してください。
+## <a name="step-3:-connect"></a>Step 3: Connect
+The cmdlets need your subscription so they can manage your services. You can purchase an Azure subscription if you don't already have one. For instructions, see [How to buy Azure](http://go.microsoft.com/fwlink/p/?LinkId=320795).
 
-1. 「**Login-AzureRmAccount**」と入力します。
+1. Type **Login-AzureRmAccount**
 
-2. アカウントに関連付けられている電子メール アドレスとパスワードを入力します。Azure により資格情報が認証および保存され、ウィンドウが閉じます。
+2. Type the email address and password associated with your account. Azure authenticates and saves the credential information, and then closes the window.
 
-または
+--OR--
 
-職場または学校のアカウントにサインインします。
+Sign into your work or school account:
 
     $cred = Get-Credential
     Login-AzureRmAccount -Credential $cred
-> [AZURE.NOTE] 組織アカウントに複数のテナントが関連付けられている場合、TenantId パラメーターを指定します。
+> [AZURE.NOTE] If you have more than one tenant associated with your organizational account, specify the TenantId parameter:
 
     $loadersubscription = Get-AzureRmSubscription -SubscriptionName $YourSubscriptionName -TenantId $YourAssociatedSubscriptionTenantId
 
 
-> [AZURE.NOTE] この非対話型のログイン方法は、職場または学校のアカウントでのみ機能します。職場または学校のアカウントは、職場または学校によって管理されているユーザーで、職場または学校の Azure Active Directory インスタンスで定義されています。現在、職場または学校のアカウントがなく、Microsoft アカウントを使用して Azure サブスクリプションにログインしている場合は、次の手順を使用して簡単に職場または学校のアカウントを作成できます。
+> [AZURE.NOTE] This non-interactive log in method only works with a work or school account. A work or school account is a user that is managed by your work or school, and defined in the Azure Active Directory instance for your work or school. If you do not currently have a work or school account, and are using a Microsoft account to log in to your Azure subscription, you can easily create one using the following steps.
 
-> 1. [Azure クラシック ポータル](https://manage.windowsazure.com)にログインし、**[Active Directory]** をクリックします。
+> 1. Log in to the [Azure classic portal](https://manage.windowsazure.com), and click on **Active Directory**.
 
-> 2. ディレクトリがない場合は、**[ディレクトリの作成]** を選択し、求められる情報を入力します。
+> 2. If no directory exists, select **Create your directory** and provide the requested information.
 
-> 3. ディレクトリを選択し、新しいユーザーを追加します。この新しいユーザーは、職場または学校のアカウントを使用してサインインできます。ユーザーの作成時、ユーザーの電子メール アドレスと仮パスワードの両方が通知されます。この情報は、以降の手順 5. で使用するため保管しておいてください。
+> 3. Select your directory and add a new user. This new user can sign in using a work or school account. During the creation of the user, you will be supplied with both an e-mail address for the user and a temporary password. Save this information, as it is used in step 5 below.
 
-> 4. Azure クラシック ポータルで **[設定]**、**[管理者]** の順に選択します。**[追加]** を選択し、共同管理者として新しいユーザーを追加します。これにより、職場または学校のアカウントで Azure サブスクリプションを管理できるようになります。
+> 4. From the Azure classic portal, select **Settings** and then select **Administrators**. Select **Add**, and add the new user as a co-administrator. This allows the work or school account to manage your Azure subscription.
 
-> 5. 最後に、Azure クラシック ポータルからログアウトし、職場または学校のアカウントを使用してログインし直します。初めてこのアカウントを使用してログインする場合は、パスワードを変更するように求められます。
+> 5. Finally, log out of the Azure classic portal and then log back in using the work or school account. If this is the first time logging in with this account, you will be prompted to change the password.
 
-> 職場または学校のアカウントを使用して Microsoft Azure にサインアップする方法の詳細については、[組織としての Microsoft Azure へのサインアップに関するページ](./active-directory/sign-up-organization.md)を参照してください。
+> For more information on signing up for Microsoft Azure with a work or school account, see [Sign up for Microsoft Azure as an Organization](./active-directory/sign-up-organization.md).
 
-> Azure の認証とサブスクリプション管理の詳細については、「[アカウント、サブスクリプション、管理者ロールを管理する](http://go.microsoft.com/fwlink/?LinkId=324796)」を参照してください。
+> For more information about authentication and subscription management in Azure, see [Manage Accounts, Subscriptions, and Administrative Roles](http://go.microsoft.com/fwlink/?LinkId=324796).
 
-### アカウントおよびサブスクリプションの詳細を表示する
+### <a name="view-account-and-subscription-details"></a>View account and subscription details
 
-Azure PowerShell で使用するためのアカウントとサブスクリプションは、複数所有することができます。**Add-AzureRmAccount** を繰り返し実行することで、複数のアカウントを追加できます。
+You can have multiple accounts and subscriptions available for use by Azure PowerShell. You can add multiple accounts by running **Add-AzureRmAccount** more than once.
 
-使用可能な Azure アカウントを表示するには、「**Get-AzureAccount**」と入力します。
+To display the available Azure accounts, type **Get-AzureAccount**.
 
-Azure サブスクリプションを表示するには、「**Get-AzureRmSubscription**」と入力します。
+To display your Azure subscriptions, type **Get-AzureRmSubscription**.
 
-##<a id="Help"></a>ヘルプの表示##
+##<a name="<a-id="help"></a>getting-help##"></a><a id="Help"></a>Getting help##
 
-これらのリソースは、特定のコマンドレットに関するヘルプ情報を提供します。
-
-
--   コンソールから、組み込みのヘルプ システムを使用できます。**Get-Help** コマンドレットを実行すると、ヘルプ システムにアクセスできます。 
-
-- コミュニティの情報を参照する場合は、以下の人気フォーラムもご覧ください。
-
- - [MSDN 上の Azure フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=320212)
- - [StackOverflow](http://go.microsoft.com/fwlink/?LinkId=320213)
-
-##詳細情報
+These resources provide help for specific cmdlets:
 
 
-コマンドレットの使用方法の詳細については、次のリソースを参照してください。
+-   From within the console, you can use the built-in Help system. The **Get-Help** cmdlet provides access to this system. 
 
-Windows PowerShell の基本的な使用手順については、「[Windows PowerShell を使用する](http://go.microsoft.com/fwlink/p/?LinkId=321939)」を参照してください。
+- For help from the community, try these popular forums:
 
-コマンドレットのリファレンスについては、「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/windowsazure/jj554330.aspx)」を参照してください。
+ - [Azure forum on MSDN]( http://go.microsoft.com/fwlink/p/?LinkId=320212)
+ - [Stackoverflow](http://go.microsoft.com/fwlink/?LinkId=320213)
 
-スクリプトを使用した Azure の管理に役立つサンプル スクリプトと手順については、「[スクリプト センター](http://go.microsoft.com/fwlink/p/?LinkId=321940)」を参照してください。
+##<a name="learn-more"></a>Learn More
 
-<!---HONumber=AcomDC_0518_2016-->
+
+See the following resources to learn more about using the cmdlets:
+
+For basic instructions about using Windows PowerShell, see [Using Windows PowerShell](http://go.microsoft.com/fwlink/p/?LinkId=321939).
+
+For reference information about the cmdlets, see [Azure Cmdlet Reference](https://msdn.microsoft.com/library/windowsazure/jj554330.aspx).
+
+For sample scripts and instructions to help you learn to use scripting to manage Azure, see the [Script Center](http://go.microsoft.com/fwlink/p/?LinkId=321940).
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

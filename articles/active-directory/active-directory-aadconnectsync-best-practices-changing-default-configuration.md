@@ -1,67 +1,74 @@
 <properties
-	pageTitle="Azure AD Connect Sync: 既定の構成を変更するためのベスト プラクティス | Microsoft Azure"
-	description="Azure AD Connect Sync の既定の構成を変更するためのベスト プラクティスを紹介します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure AD Connect sync: Best practices for changing the default configuration | Microsoft Azure"
+    description="Provides best practices for changing the default configuration of Azure AD Connect sync."
+    services="active-directory"
+    documentationCenter=""
+    authors="andkjell"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/22/2016"
-	ms.author="markvi;andkjell"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/22/2016"
+    ms.author="markvi;andkjell"/>
 
 
-# Azure AD Connect Sync: 既定の構成を変更するためのベスト プラクティス
-このトピックの目的は、Azure AD Connect Sync に対する、サポートされている変更とサポートされていない変更について説明することです。
 
-Azure AD Connect で作成された構成は、オンプレミスの Active Directory を Azure AD と同期するほとんどの環境において "そのままで" 動作します。ただし、場合によっては、特定のニーズや要件を満たすために構成にいくつか変更を適用する必要があります。
+# <a name="azure-ad-connect-sync:-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect sync: Best practices for changing the default configuration
+The purpose of this topic is to describe supported and unsupported changes to Azure AD Connect sync.
 
-## サービス アカウントに対する変更
-Azure AD Connect Sync は、インストール ウィザードによって作成されたサービス アカウントで実行されます。このサービス アカウントは、同期で使用されるデータベースの暗号化キーを保持します。アカウントの作成には 127 文字の長いパスワードが使用され、そのパスワードは無期限に設定されています。
+The configuration created by Azure AD Connect works “as is” for most environments that synchronize on-premises Active Directory with Azure AD. However, in some cases, it is necessary to apply some changes to a configuration to satisfy a particular need or requirement.
 
-- サービス アカウントのパスワードの変更またはリセットは、**サポートされていません**。サービス アカウントのパスワードを変更またはリセットすると、暗号化キーが破棄され、サービスはデータベースにアクセスすることも、開始することもできません。
+## <a name="changes-to-the-service-account"></a>Changes to the service account
+Azure AD Connect sync is running under a service account created by the installation wizard. This service account holds the encryption keys to the database used by sync. It is created with a 127 characters long password and the password is set to not expire.
 
-## スケジューラに対する変更
-ビルド 1.1 (2016 年 2 月) のリリース以降では、既定の 30 分の同期サイクルとは異なる同期サイクルで[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)を構成できます。
+- It is **unsupported** to change or reset the password of the service account. Doing so destroys the encryption keys and the service is not able to access the database and is not able to start.
 
-## 同期規則に対する変更
-インストール ウィザードには、最も一般的なシナリオに対応できる構成が用意されています。構成を変更する必要がある場合、サポートされる構成を維持するには、次の規則に従う必要があります。
+## <a name="changes-to-the-scheduler"></a>Changes to the scheduler
+Starting with the releases from build 1.1 (February 2016) you can configure the [scheduler](active-directory-aadconnectsync-feature-scheduler.md) to have a different sync cycle than the default 30 minutes.
 
-- 既定の "直接" 属性フローが自分の所属している組織に適さない場合は、[属性フローを変更](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes)できます。
-- [属性をフローしない](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute)ように設定したうえで、Azure AD に既にある属性値を削除する必要がある場合は、このシナリオ用に規則を作成する必要があります。
-- [不要な同期規則は削除するのではなく無効](#disable-an-unwanted-sync-rule)にしてください。削除した規則は、アップグレード時に再作成されます。
-- [標準の規則を変更](#change-an-out-of-box-rule)するには、元の規則のコピーを作成し、標準の規則を無効にする必要があります。同期規則エディターが役に立ちます。
-- 同期規則エディターを使用して、カスタムの同期規則をエクスポートします。このエディターには、障害復旧シナリオにおいて同期規則を簡単に再作成をするために使用できる PowerShell スクリプトが用意されています。
+## <a name="changes-to-synchronization-rules"></a>Changes to Synchronization Rules
+The installation wizard provides a configuration that is supposed to work for the most common scenarios. In case you need to make changes to the configuration, then you must follow these rules to still have a supported configuration.
 
->[AZURE.WARNING] 標準の同期規則には拇印があります。これらの規則に変更を加えた場合、拇印が一致しなくなります。その後、Azure AD Connect の新しいリリースを適用しようとすると、問題が発生する可能性があります。変更する場合は、この記事の方法に従ってください。
+- You can [change attribute flows](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) if the default direct attribute flows are not suitable for your organization.
+- If you want to [not flow an attribute](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) and remove any existing attribute values in Azure AD, then you need to create a rule for this scenario.
+- [Disable an unwanted Sync Rule](#disable-an-unwanted-sync-rule) rather than deleting it. A deleted rule is recreated during an upgrade.
+- To [change an out-of-box rule](#change-an-out-of-box-rule), you should make a copy of the original rule and disable the out-of-box rule. The Sync Rule Editor prompts and helps you.
+- Export your custom synchronization rules using the Synchronization Rules Editor. The editor provides you with a PowerShell script you can use to easily recreate them in a disaster recovery scenario.
 
-### 不要な同期規則の無効化
-標準の同期規則を削除しないでください。これは、次回アップグレード時に再作成されます。
+>[AZURE.WARNING] The out-of-box sync rules have a thumbprint. If you make a change to these rules, the thumbprint is no longer matching. You might have problems in the future when you try to apply a new release of Azure AD Connect. Only make changes the way it is described in this article.
 
-場合によっては、インストール ウィザードで生成された構成がトポロジで動作していないことがあります。たとえば、アカウント リソース フォレスト トポロジがあり、アカウント フォレストのスキーマを Exchange スキーマで拡張している場合、Exchange の規則は、アカウント フォレスト用とリソース フォレスト用の両方が作成されます。この場合、Exchange 用の同期規則を無効にする必要があります。
+### <a name="disable-an-unwanted-sync-rule"></a>Disable an unwanted Sync Rule
+Do not delete an out-of-box sync rule. It is recreated during next upgrade.
 
-![無効な同期規則](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/exchangedisabledrule.png)
+In some cases, the installation wizard has produced a configuration that is not working for your topology. For example, if you have an account-resource forest topology but you have extended the schema in the account forest with the Exchange schema, then rules for Exchange are created for the account forest and the resource forest. In this case, you need to disable the Sync Rule for Exchange.
 
-上の図では、インストール ウィザードによって、アカウント フォレスト内にある古い Exchange 2003 スキーマが検出されています。このスキーマ拡張が追加されてから、リソース フォレストが Fabrikam の環境に導入されました。古い Exchange 実装の属性が同期されないようにするには、図のように同期規則を無効にする必要があります。
+![Disabled sync rule](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/exchangedisabledrule.png)
 
-### 標準の規則の変更
-標準の規則を変更する必要がある場合は、標準の規則のコピーを作成し、元の規則を無効にする必要があります。そして、コピーした規則を変更します。同期規則エディターは、この手順で役立ちます。標準の規則を開くと、次のダイアログ ボックスが表示されます。![標準の規則の警告](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
+In the picture above, the installation wizard has found an old Exchange 2003 schema in the account forest. This schema extension was added before the resource forest was introduced in Fabrikam's environment. To ensure no attributes from the old Exchange implementation are synchronized, the sync rule should be disabled as shown.
 
-**[はい]** を選択して規則のコピーを作成します。複製した規則を開きます。![コピーした規則](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/clonedrule.png)
+### <a name="change-an-out-of-box-rule"></a>Change an out-of-box rule
+If you need to make changes to an out-of-box rule, then you should make a copy of the out-of-box rule and disable the original rule. Then make the changes to the cloned rule. The Sync Rule Editor is helping you with those steps. When you open an out-of-box rule, you are presented with this dialog box:  
+![Warning out of box rule](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
-このコピーした規則のスコープ、結合、変換について必要な変更を加えます。
+Select **Yes** to create a copy of the rule. The cloned rule is then opened.  
+![Cloned rule](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/clonedrule.png)
 
-## 次のステップ
+On this cloned rule, make any necessary changes to scope, join, and transformations.
 
-**概要トピック**
+## <a name="next-steps"></a>Next steps
 
-- [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)
-- [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+**Overview topics**
 
-<!---HONumber=AcomDC_0907_2016-->
+- [Azure AD Connect sync: Understand and customize synchronization](active-directory-aadconnectsync-whatis.md)
+- [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

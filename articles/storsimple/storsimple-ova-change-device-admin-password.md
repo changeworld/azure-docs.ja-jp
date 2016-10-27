@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple 仮想デバイスの管理者パスワードを変更する |Microsoft Azure"
-   description="Azure クラシック ポータルまたは StorSimple Virtual Array の Web UI を使用して、デバイス管理者のパスワードを変更する方法について説明します。"
+   pageTitle="Change the StorSimple virtual device admin password | Microsoft Azure"
+   description="Describes how to use either the Azure classic portal or the StorSimple Virtual Array web UI to change the device administrator password."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,58 +15,63 @@
    ms.date="06/17/2016"
    ms.author="alkohli" />
 
-# StorSimple Virtual Array デバイス管理者パスワードを変更する
 
-## 概要
+# <a name="change-the-storsimple-virtual-array-device-administrator-password"></a>Change the StorSimple Virtual Array device administrator password
 
-Windows PowerShell インターフェイスを使用して StorSimple 仮想デバイスにアクセスする際、デバイス管理者のパスワードの入力が求められます。StorSimple デバイスを初めてプロビジョニングして起動したときの既定のパスワードは *Password1* です。データのセキュリティ上、既定のパスワードは初回サインイン時にリセットされ、パスワードを変更するよう求められます。
+## <a name="overview"></a>Overview
 
-デバイスを運用環境にデプロイした後は、ローカル Web UI または Azure クラシック ポータルを使用して、いつでもデバイス管理者のパスワードを変更できます。それぞれの手順については、この記事で説明します。
+When you use the Windows PowerShell interface to access the StorSimple virtual device, you are required to enter a device administrator password. When the StorSimple device is first provisioned and started, the default password is *Password1*. For the security of your data, the default password expires the first time that you sign in and you are required to change this password.
 
-## Azure クラシック ポータルを使用してパスワードを変更する
+You can also use either the local web UI or the Azure classic portal to change the device administrator password at any time after the device is deployed in  your production environment. Each of these procedures is described in this article.
 
-Azure クラシック ポータルを使用してデバイス管理者のパスワードを変更するには、以下の手順を実行します。
+## <a name="use-the-azure-classic-portal-to-change-the-password"></a>Use the Azure classic portal to change the password
 
-#### Azure クラシック ポータルを使用してデバイス管理者のパスワードを変更するには
+Perform the following steps to change the device administrator password through the Azure classic portal.
 
-1. ポータルで、デバイスの **[デバイス]**、**[構成]** の順にクリックします。
+#### <a name="to-change-the-device-administrator-password-via-the-azure-classic-portal"></a>To change the device administrator password via the Azure classic portal
 
-2. **[デバイス管理者パスワード]** セクションまでスクロールします。管理者のパスワードは、8 ～ 15 文字で指定してください。大文字、小文字、数字、および特殊文字を組み合わせたパスワードを使用する必要があります。
+1. In the portal, click **Devices** > **Configuration** for your device.
 
-3. パスワードを確認入力します。
+2. Scroll down to the **Device Administrator Password** section. Provide an administrator password that contains from 8 to 15 characters. The password must be a combination of uppercase, lowercase, numeric, and special characters.
 
-4. ページの下部にある **[保存]** をクリックします。
+3. Confirm the password.
 
-これでデバイス管理者のパスワードが更新されました。この変更されたパスワードを使用して、デバイスにローカルにアクセスすることができます。
+4. Click **Save** at the bottom of the page.
 
-## StorSimple Virtual Array の Web UI を使用してパスワードを変更する
+The device administrator password should now be updated. You can use this modified password to access the device locally.
 
-ローカル Web UI を使用してデバイス管理者のパスワードを変更するには、以下の手順を実行します。
+## <a name="use-the-storsimple-virtual-array-web-ui-to-change-the-password"></a>Use the StorSimple Virtual Array web UI to change the password
 
-#### ローカル Web UI を使用してデバイス管理者のパスワードを変更するには
+Perform the following steps to change the device administrator password through the local web UI.
 
-1. ローカル Web UI で、デバイスの **[メンテナンス]**、**[パスワードの変更]** の順にクリックします。
+#### <a name="to-change-the-device-administrator-password-via-the-local-web-ui"></a>To change the device administrator password via the local web UI
 
-    ![password1 の変更](./media/storsimple-ova-change-device-admin-password/image40.png)
+1. In the local web UI, click **Maintenance** > **Password change** for your device.
 
-2. **現在のパスワード**を入力します。
+    ![change password1](./media/storsimple-ova-change-device-admin-password/image40.png)
 
-3. **新しいパスワード**を入力します。パスワードは 8 文字以上で、大文字、小文字、数字、および特殊文字の 4 種類の文字のうち 3 種類の文字を含める必要があります。
+2. Enter the **Current password**.
 
-    直近 24 個のパスワードは使用できません。
+3. Provide a **New Password**. The password must be at least 8 characters long. It must contain 3 of 4 of the following: uppercase, lowercase, numeric, and special characters.
 
-3. 確認のためにパスワードを再入力します。
+    Note that your password cannot be the same as the last 24 passwords.
 
-    ![password2 の変更](./media/storsimple-ova-change-device-admin-password/image41.png)
+3. Reenter the password to confirm it.
 
-4. ページの下部にある **[適用]** をクリックします。新しいパスワードが適用されます。パスワードの変更が失敗した場合は、次のエラーが表示されます。
+    ![change password2](./media/storsimple-ova-change-device-admin-password/image41.png)
 
-    ![パスワード エラー](./media/storsimple-ova-change-device-admin-password/image42.png)
+4. At the bottom of the page, click **Apply**. The new password will then be applied. If the password change is not successful, you will see the following error.
 
-    パスワードが正常に更新されると、通知が表示されます。この変更されたパスワードを使用して、デバイスにローカルにアクセスすることができます。
+    ![password error](./media/storsimple-ova-change-device-admin-password/image42.png)
 
-## 次のステップ
+    After the password is successfully updated, you will be notified. You can then use this modified password to access the device locally.
 
-[StorSimple Virtual Array 管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0622_2016-->
+Learn more about [administering your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

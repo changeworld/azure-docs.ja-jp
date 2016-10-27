@@ -1,94 +1,98 @@
 <properties 
-	pageTitle="Logic Apps 向けの API の作成" 
-	description="Logic Apps で使用するカスタム API の作成" 
-	authors="jeffhollan" 
-	manager="dwrede" 
-	editor="" 
-	services="logic-apps" 
-	documentationCenter=""/>
+    pageTitle="Create an API for Logic Apps" 
+    description="Creating a custom API to use with Logic Apps" 
+    authors="jeffhollan" 
+    manager="dwrede" 
+    editor="" 
+    services="logic-apps" 
+    documentationCenter=""/>
 
 <tags
-	ms.service="logic-apps"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"	
-	ms.topic="article"
-	ms.date="07/25/2016"
-	ms.author="jehollan"/>
+    ms.service="logic-apps"
+    ms.workload="integration"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na" 
+    ms.topic="article"
+    ms.date="10/18/2016"
+    ms.author="jehollan"/>
     
-# Logic Apps で使用するカスタム API の作成
 
-Logic Apps プラットフォームを拡張する際は、多数ある標準搭載コネクタには含まれていない API やシステムをさまざまな方法で呼び出すことができます。そのような方法の 1 つに、ロジック アプリ ワークフロー内から呼び出せる API アプリの作成があります。
+# <a name="creating-a-custom-api-to-use-with-logic-apps"></a>Creating a custom API to use with Logic Apps
 
-## 便利なツール
+If you want to extend the Logic Apps platform, there are many ways you can call into APIs or systems that aren't available as one of our many out-of-the-box connectors.  One of those ways to create an API App you can call from within a Logic App workflow.
 
-作成した API が Logic Apps とうまく連携するように、API でサポートされる操作とパラメーターを記述した [swagger](http://swagger.io) ドキュメントを作成することをお勧めします。swagger を自動的に生成するライブラリが ([Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) など) 豊富に用意されています。また、[TRex](https://github.com/nihaue/TRex) を使用して、Logic Apps でうまく機能するように swagger に注釈 (表示名、プロパティの型など) を付けることもできますLogic Apps 向けに作成された API Apps のサンプルが [GitHub リポジトリ](http://github.com/logicappsio)と[ブログ](http://aka.ms/logicappsblog)で公開されていますので、ぜひご覧ください。
+## <a name="helpful-tools"></a>Helpful Tools
 
-## アクション
+For APIs to work best with Logic Apps, we recommend generating a [swagger](http://swagger.io) doc detailing the supported operations and parameters for your API.  There are many libraries (like [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle)) that will automatically generate the swagger for you.  You can also use [TRex](https://github.com/nihaue/TRex) to help annotate the swagger to work well with Logic Apps (display names, property types, etc.).  For some samples of API Apps built for Logic Apps, be sure to check out our [GitHub repository](http://github.com/logicappsio) or [blog](http://aka.ms/logicappsblog).
 
-ロジック アプリの基本的なアクションは、HTTP 要求を受け取って応答 (通常は 200) を返すコントローラーですが、さまざまなパターンを使用して、ニーズに合わせてアクションを拡張できます。
+## <a name="actions"></a>Actions
 
-ロジック アプリのエンジンでは、要求は既定で 1 分後にタイムアウトになります。ただし、後で詳しく説明する非同期パターンか Webhook パターンを使用して、もっと時間のかかるアクションを API で実行したり、アクションが完了するまでエンジンを待機させたりすることもできます。
+The basic action for a Logic App is a controller that will accept an HTTP Request and return a response (usually 200).  However there are different patterns you can follow to extend actions based on your needs.
 
-標準的なアクションであれば、swagger で公開する API に HTTP 要求メソッドを記述するだけです。Logic Apps と連携する API Apps のサンプルは、[GitHub リポジトリ](https://github.com/logicappsio)でご覧いただけます。以降、カスタム コネクタを使用した一般的なパターンの実現方法を紹介します。
+By default the Logic App engine will timeout a request after 1 minute.  However, you can have your API execute on actions that take longer, and have the engine wait for completion, by following either an async or webhook pattern detailed below.
 
-### 実行時間の長いアクション - 非同期パターン
+For standard actions, simply write an HTTP request method in your API which is exposed via swagger.  You can see samples of API apps that work with Logic Apps in our [GitHub repository](https://github.com/logicappsio).  Below are ways to accomplish common patterns with a custom connector.
 
-時間のかかるステップやタスクを実行する際は、まず、タイムアウトしたことをエンジンが認識できるようにする必要があります。また、タスクが完了したことを認識する方法をエンジンに伝える必要もあります。さらに、エンジンがワークフローを続行できるように関連データをエンジンに返す必要もあります。このような操作は、API を使用して、次のフローに沿って実行することができます。以下の手順は、カスタム API の視点で記述しています。
+### <a name="long-running-actions---async-pattern"></a>Long Running Actions - Async Pattern
 
-1. 要求を受信したら、(作業を実行する前に) すぐに応答を返します。この応答は `202 ACCEPTED` 応答で、データを取得し、ペイロードを受け取り、現在処理中であることをエンジンに知らせます。202 応答には、次のヘッダーを含める必要があります。
- * `location` ヘッダー (必須): これは、Logic Apps がジョブの状態を確認するために使用する URL への絶対パスです。
- * `retry-after` (省略可能。アクションの既定値は 20)。これは、エンジンが状態を確認するために location ヘッダーの URL をポーリングする前に待機する秒数です。
+When running a long step or task, the first thing you need to do is make sure the engine knows you haven’t timed out. You also need to communicate with the engine how it will know when you are finished with the task, and finally, you need to return relevant data to the engine so it can continue with the workflow. You can complete that via an API by following the flow below. These steps are from the point-of-view of the custom API:
 
-2. ジョブの状態が確認されたら、次の確認を実行します。
- * ジョブが完了している場合: `200 OK` 応答を応答ペイロードと共に返します。
- * ジョブがまだ処理中の場合: もう一度 `202 ACCEPTED` 応答を、初回の応答と同じヘッダーで返します。
+1. When a request is received, immediately return a response (before work is done). This response will be a `202 ACCEPTED` response, letting the engine know you got the data, accepted the payload, and are now processing. The 202 response should contain the following headers: 
+ * `location` header (required): This is an absolute path to the URL Logic Apps can use to check the status of the job.
+ * `retry-after` (optional, will default to 20 for actions). This is the number of seconds the engine should wait before polling the location header URL to check status.
 
-このパターンでは、カスタム API のスレッド内で極端に長いタスクでも実行でき、Logic Apps エンジンでアクティブな接続が持続されて、作業が完了するまでタイムアウトにならずに続行されます。このパターンをロジック アプリに追加する際は、ロジック アプリの定義に何もしなくても、ポーリングが継続され、状態が確認されることに注意が必要です。有効な location ヘッダーを持つ 202 ACCEPTED 応答をエンジンが受け取ると、すぐに非同期パターンが実行され、202 以外の応答が返されるまで location ヘッダーのポーリングが継続されます。
+2. When a job status is checked, perform the following checks: 
+ * If the job is done: return a `200 OK` response, with the response payload.
+ * If the job is still processing: return another `202 ACCEPTED` response, with the same headers as the initial response
 
-[こちら](https://github.com/jeffhollan/LogicAppsAsyncResponseSample)の GitHub で、このパターンのサンプルを確認できます。
+This pattern allows you to run extremely long tasks within a thread of your custom API, but keep an active connection alive with the Logic Apps engine so it doesn’t timeout or continue before work is completed. When adding this into your Logic App, it’s important to note you do not need do anything in your definition for the Logic App to continue to poll and check the status. As soon as the engine sees a 202 ACCEPTED response with a valid location header, it will honor the async pattern and continue to poll the location header until a non-202 is returned.
 
-### Webhook アクション
+You can see a sample of this pattern in GitHub [here](https://github.com/jeffhollan/LogicAppsAsyncResponseSample)
 
-ワークフロー中に、ロジック アプリを一時停止し、"コールバック" が続くのを待機させることができます。このコールバックは、HTTP POST の形式をとります。このパターンを実装するには、サブスクライブとサブスクライブ解除という 2 つのエンドポイントをコントローラーに提供する必要があります。
+### <a name="webhook-actions"></a>Webhook Actions
 
-"サブスクライブ" では、ロジック アプリがコールバック URL を作成して登録します。API は、それを HTTP POST として準備された状態で格納してコールバックできます。コンテンツやヘッダーがあればロジック アプリに渡され、ワークフローの残りの部分で使用できます。ロジック アプリ エンジンは、実行時にそのステップに到達すると、すぐに "サブスクライブ" エンドポイントを呼び出します。
+During your workflow, you can have the Logic App pause and wait for a "callback" to continue.  This callback comes in the form of an HTTP POST.  To implement this pattern, you need to provide two endpoints on your controller: subscribe and unsubscribe.
 
-実行がキャンセルされた場合、ロジック アプリ エンジンは "サブスクライブ解除" エンドポイントを呼び出します。これを受けて、API は必要に応じてコールバック URL の登録を解除できます。
+On 'subscribe', the Logic App will create and register a callback URL which your API can store and callback with ready as an HTTP POST.  Any content/headers will be passed into the Logic App and can be used within the remainder of the workflow.  The Logic App engine will call the subscribe point on execution as soon as it hits that step.
 
-現在、ロジック アプリ デザイナーでは、swagger による Webhook エンドポイントの検出をサポートしていないため、この種類のアクションを使用するには、"Webhook" アクションを追加し、要求の URL、ヘッダー、および本文を指定する必要があります。必要に応じて、これらのフィールドのいずれかでワークフロー関数 `@listCallbackUrl()` を使用して、コールバック URL を渡すことができます。
+If the run was cancelled, the Logic App engine will make a call to the 'unsubscribe' endpoint.  Your API can then unregister the callback URL as needed.
 
-[こちら](https://github.com/jeffhollan/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)の GitHub で、Webhook パターンのサンプルを確認できます。
+Currently the Logic App Designer doesn't support discovering a webhook endpoint through swagger, so to use this type of action you must add the "Webhook" action and specify the URL, headers, and body of your request.  You can use the `@listCallbackUrl()` workflow function in any of those fields as needed to pass in the callback URL.
 
-## トリガー
+You can see a sample of a webhook pattern in GitHub [here](https://github.com/jeffhollan/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)
 
-アクションに加えて、カスタム API をロジック アプリのトリガーとして機能させることができます。ロジック アプリをトリガーするパターンには、次の 2 つがあります。
+## <a name="triggers"></a>Triggers
 
-### ポーリング トリガー
+In addition to actions, you can have your custom API act as a trigger to a Logic App.  There are two patterns you can follow below to trigger a Logic App:
 
-ポーリング トリガーの動作は、上記の実行時間の長い非同期アクションに似ています。ロジック アプリ エンジンは、一定の時間が経過した後に (Premium は 15 秒、Standard は1 分、Free は 1 時間など、SKU によって異なります)、トリガー エンドポイントを呼び出します。
+### <a name="polling-triggers"></a>Polling Triggers
 
-使用できるデータがない場合、トリガーは `202 ACCEPTED` 応答で `location` と `retry-after` をヘッダーに設定して返します。ただし、トリガーの場合、`location` ヘッダーには `triggerState` というクエリ パラメーターを含めることが推奨されます。これは、ロジック アプリが前回いつ起動したかを API が把握するための識別子です。使用できるデータがある場合、トリガーは `200 OK` 応答をコンテンツ ペイロードと共に返します。これにより、ロジック アプリが起動されます。
+Polling triggers act much like the Long Running Async actions above.  The Logic App engine will call the trigger endpoint after a certain period of time elapsed (dependent on SKU, 15 seconds for Premium, 1 minute for Standard, and 1 hour for Free).
 
-たとえば、ファイルが使用できるかどうかを私がポーリングした場合、皆さんは次の操作を実行するポーリング トリガーを作成できます。
+If there is no data available, the trigger returns a `202 ACCEPTED` response, with a `location` and `retry-after` header.  However, for triggers it is recommended the `location` header contains a query parameter of `triggerState`.  This is some identifier for your API to know when the last time the Logic App fired.  If there is data available, the trigger returns a `200 OK` response with the content payload.  This will fire the Logic App.
 
-* triggerState のない要求を受け取った場合、API は `202 ACCEPTED` を `location` ヘッダーと共に返します。このヘッダーには、triggerState に現在の時刻が、`retry-after` には 15 が設定されます。
-* triggerState のある要求を受け取った場合は次の操作を実行します。
- * triggerState の日時の後に追加されたファイルがあるかどうかを確認します。
-  * ファイルが 1 つある場合は、`200 OK` 応答をコンテンツ ペイロードと共に返し、私が返したファイルの日時まで triggerState をインクリメントして、`retry-after` を 15 に設定します。
-  * 複数のファイルがある場合、私は一度に 1 つのファイルを `200 OK` 応答と共に返し、`location` ヘッダーの triggerState をインクリメントして、`retry-after` を 0 に設定します。こうすることで、使用可能なデータが他にもあることをエンジンに知らせることができます。エンジンはすぐに、指定された `location` ヘッダーで残りのデータを要求します。
-  * ファイルがない場合は、`202 ACCEPTED` 応答を返し、`location` triggerState はそのままにしておきます。`retry-after` は 15 に設定します。
+For example if I was polling to see if a file was available, you could build a polling trigger that would do the following:
 
-[こちら](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers)の GitHub で、ポーリング トリガーのサンプルを確認できます。
+* If a request was received with no triggerState the API would return a `202 ACCEPTED` with a `location` header that has a triggerState of the current time and a `retry-after` of 15.
+* If a request was received with a triggerState:
+ * Check to see if any files were added after the triggerState DateTime. 
+  * If there is 1 file, return a `200 OK` response with the content payload, increment the triggerState to the DateTime of the file I returned, and set the `retry-after` to 15.
+  * If there are multiple files, I can return 1 at a time with a `200 OK`, increment my triggerState in the `location` header, and set `retry-after` to 0.  This will let the engine know there is more data available and it will immediately request it at the `location` header specified.
+  * If there are no files available, return a `202 ACCEPTED` response, and leave the `location` triggerState the same.  Set `retry-after` to 15.
 
-### WebHook トリガー
+You can see a sample of a polling trigger in GitHub [here](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers)
 
-Webhook トリガーの動作は、上記の Webhook アクションに似ています。Webhook トリガーが追加されて保存されるたびに、ロジック アプリ エンジンは "サブスクライブ" エンドポイントを呼び出します。API は Webhook の URL を登録し、データがあるときに HTTP POST を介して呼び出すことができます。ロジック アプリの実行には、コンテンツ ペイロードとヘッダーが渡されます。
+### <a name="webhook-triggers"></a>Webhook Triggers
 
-Webhook トリガー (ロジック アプリ全体または Webhook トリガーのみ) が削除されると、エンジンは "サブスクライブ解除" URL を呼び出ます。API はこの URL を使用して、コールバック URL の登録を解除し、必要に応じてプロセスを停止できます。
+Webhook triggers act much like Webhook Actions above.  The Logic App engine will call the 'subscribe' endpoint whenever a webhook trigger is added and saved.  Your API can register the webhook URL and call it via HTTP POST whenever data is available.  The content payload and headers will be passed into the Logic App run.
 
-現在、ロジック アプリ デザイナーでは、swagger による Webhook トリガーの検出をサポートしていないため、この種類のアクションを使用するには、"Webhook" トリガーを追加し、要求の URL、ヘッダー、および本文を指定する必要があります。必要に応じて、これらのフィールドのいずれかでワークフロー関数 `@listCallbackUrl()` を使用して、コールバック URL を渡すことができます。
+If a webhook trigger is ever deleted (either the Logic App entirely, or just the webhook trigger), the engine will make a call to the 'unsubscribe' URL where your API can unregister the callback URL and stop any processes as needed.
 
-[こちら](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers)の GitHub で、Webhook トリガーのサンプルを確認できます。
+Currently the Logic App Designer doesn't support discovering a webhook trigger through swagger, so to use this type of action you must add the "Webhook" trigger and specify the URL, headers, and body of your request.  You can use the `@listCallbackUrl()` workflow function in any of those fields as needed to pass in the callback URL.
 
-<!---HONumber=AcomDC_0803_2016-->
+You can see a sample of a webhook trigger in GitHub [here](https://github.com/jeffhollan/LogicAppTriggersExample/tree/master/LogicAppTriggers)
+
+
+<!--HONumber=Oct16_HO2-->
+
+

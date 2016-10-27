@@ -1,3 +1,6 @@
-可用性グループ リスナーを作成すると、リスナー リソース用に **RegisterAllProvidersIP** と **HostRecordTTL** のクラスター パラメーターを調整する必要がある場合があります。これらのパラメーターは、フェールオーバー後の再接続時間を短縮して、接続のタイムアウトを防ぐことができます。これらのパラメーターに関する詳細とサンプル コードについては、「[可用性グループ リスナーを作成または構成する](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)」を参照してください。
+After the availability group listener is created, it may be necessary to adjust the **RegisterAllProvidersIP** and **HostRecordTTL** cluster parameters for the listener resource.  These parameters may reduce reconnection time after a failover which may prevent connection timeouts. For more information on these parameters, as well as sample code, see [Create or Configure an Availability Group Listener](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover).
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

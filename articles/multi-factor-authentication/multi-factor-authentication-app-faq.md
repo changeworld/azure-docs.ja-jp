@@ -1,49 +1,86 @@
 <properties
-	pageTitle="Microsoft Authenticator アプリに関する FAQ"
-	description="Microsoft 認証アプリと Multi-factor Authentication に関してよく寄せられる質問の一覧を提供します。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="pblachar, librown"/>
+    pageTitle="Microsoft Authenticator app FAQ"
+    description="Provides a list of frequently asked questions and answers related to the Microsoft Authentication app and Azure Multi-Factor Authentication."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor="pblachar, librown"/>
 
 <tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/20/2016"
-	ms.author="kgremban"/>
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/13/2016"
+    ms.author="kgremban"/>
 
-# Microsoft Authenticator アプリケーションに関する FAQ
 
-Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換わり、Azure 多要素認証を使用するときに推奨されるアプリです。このアプリは、Windows Phone、Android、iOS で利用できます。
+# <a name="microsoft-authenticator-application-faq"></a>Microsoft Authenticator application FAQ
 
-## よく寄せられる質問
+The Microsoft Authenticator app replaced the Azure Authenticator app, and is the recommended app when you use Azure Multi-Factor Authentication. This app is available for Windows Phone, Android, and iOS.
 
-- **セキュリティ コードに Microsoft Authenticator アプリケーションを既に使用しています。ワンクリック プッシュ通知に切り替えるにはどうすればよいですか。**
+## <a name="frequently-asked-questions"></a>Frequently asked questions
 
-	Microsoft アカウントを個人のアカウントに使用していて、プッシュ通知に切り替える必要がある場合は、自分のアカウントをもう一度追加する必要があります。これは、このアプリではワンタイム パスワードを使用しているためです。デバイスを自分のアカウントで再登録し、プッシュ通知を設定します。
+- **What happened to the Azure Authenticator, Multi-Factor Auth, and Microsoft account apps?**
 
-	自分のアカウントで 2 段階認証が有効になっていない場合は、「[2 段階認証について](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)」を参照して、2 段階認証が目的に合っているかどうかを判断してください。
+    The Microsoft Authenticator app replaces each other these apps. Azure Authenticator upgraded to Microsoft Authenticator. If you use the Multi-Factor Auth or Microsoft account apps, install Microsoft Authenticator and add your accounts again. Make sure to finish adding your accounts to the new app before deleting the old ones.
 
-- **iPhone または iPad でワンクリック プッシュ通知を使用できるようになるのはいつですか。**
+- **I'm already using the Microsoft Authenticator application for verification codes. How do I switch to one-click push notifications?**  
 
-	この機能は、Microsoft アカウントに一般提供される 8 月末までベータ版です。ベータ プログラムに参加するには、msauthenticator@microsoft.com にメールを送信してください。名、姓、および Apple ID をメッセージに含めてください。
+    Approving a sign-in through push notification is only available for Microsoft accounts, not for third-party accounts like Google or Facebook. For work or school Microsoft accounts, your organization can choose to disable this option, though.
 
-- **ワンクリック プッシュ通知は Microsoft 以外のアカウントでも機能しますか。**
+    If you use a Microsoft account for your personal account, and want to switch over to push notifications, you need to add your account again. Re-register the device with your account, and set up push notifications.  
 
-	残念ですが、プッシュ通知は、Microsoft アカウントと Azure Active Directory アカウントでのみ機能します。職場または学校で Azure AD アカウントを使用している場合は、この機能を無効にしている可能性があります。
+    If your account does not have two-step verification enabled, see [About two-step verification](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) to decide if it's right for you.  
 
-- **デバイスをバックアップから復元しましたが、アカウント コードが見つからないか、機能していません。なぜでしょうか。**
+- **When will I be able to use one-click push notifications on iPhone or iPad?**  
 
-	セキュリティのため、現時点ではアプリのバックアップからアカウントは復元されません。iOS アプリをバックアップから復元した場合、アカウントは引き続き表示されますが、サインインの検証を受け取ることも、セキュリティ コードを生成することもできません。アプリケーションを復元したら、アカウントを削除し、もう一度追加してください。
+    This feature is in beta until the end of August, when it becomes broadly available for Microsoft accounts. If you want to join our beta program, send email to msauthenticator@microsoft.com. Include your first name, last name, and Apple ID in your message.  
 
-## 関連トピック
+- **Do one-click push notifications work for non-Microsoft accounts?**  
 
-- [Azure Multi-Factor Authentication についてよく寄せられる質問 (FAQ)](multi-factor-authentication-faq.md)
-- Microsoft アカウントの [2 段階認証について](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification)
-- [認証アプリに関する FAQ](https://support.microsoft.com/help/12414/microsoft-account-identity-verification-apps-faq)
+    No, push notifications only work with Microsoft accounts and Azure Active Directory accounts. If your work or school uses Azure AD accounts, they may disable this feature.  
 
-<!---HONumber=AcomDC_0921_2016-->
+- **I restored my device from a backup, and my account codes are missing or not working. What happened?**  
+
+    For security purposes, we don't restore accounts from app backups. If you restore the iOS app from a backup, your accounts are still displayed but they don't work to receive sign-in verifications or generate security codes. After you restore the app, delete your accounts and add them again.
+
+- **I got a new device. How do I remove the Microsoft Authenticator app from my old device and move to the new one?**
+
+    Adding the Microsoft Authenticator app to a new device does not automatically remove it from any other devices. To manage which devices are configured for your account, visit the same website that you use to manage two-step verification, and choose to remove old apps.
+
+    For personal Microsoft accounts, this website is your [account security](https://account.microsoft.com/security) page. For work or school Microsoft accounts, this website may be either [MyApps](https://myapps.microsoft.com) or a custom portal that your organization has set up.
+
+## <a name="contact-us"></a>Contact us
+
+If your question wasn't answered here, leave a comment at the bottom of the page. Or, [contact support](https://support.microsoft.com/contactus) and we'll respond to your problem as soon as we can.
+
+If you contact support, include as much of the following information as you can:
+
+- **User ID** – What's the email address you tried to sign in with?
+- **General description of the error** – what exact error message did you see?  If there was no error message, describe the unexpected behavior you noticed, in detail.
+- **Page** – what page were you on when you saw the error (include the URL)?
+- **ErrorCode** - the specific error code you are receiving.
+- **SessionId** - the specific session id you are receiving.
+- **Correlation ID** – what was the correlation id code generated when the user saw the error.
+- **Timestamp** – what was the precise date and time you saw the error (include the timezone)?
+
+Much of this information can be found on your sign-in page. When you don't verify your sign-in in time, select **View details**.
+
+![Sign in error details](./media/multi-factor-authentication-end-user-troubleshoot/view_details.png)
+
+Including this information helps us to solve your problem as quickly as possible.
+
+## <a name="related-topics"></a>Related topics
+
+- [Azure Multi-Factor Authentication FAQ](multi-factor-authentication-faq.md)  
+- [About two-step verification](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) for Microsoft accounts
+- [Having trouble with two-step verification?](multi-factor-authentication-end-user-troubleshoot.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

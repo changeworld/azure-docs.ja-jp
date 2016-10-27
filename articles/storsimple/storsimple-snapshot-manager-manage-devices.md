@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager を使用したデバイス管理 | Microsoft Azure"
-   description="StorSimple Snapshot Manager MMC スナップインを使用して、StorSimple デバイスを接続および管理する方法について説明します。"
+   pageTitle="Manage devices with StorSimple Snapshot Manager | Microsoft Azure"
+   description="Describes how to use the StorSimple Snapshot Manager MMC snap-in to connect and manage StorSimple devices."
    services="storsimple"
    documentationCenter=""
    authors="SharS"
@@ -15,252 +15,258 @@
    ms.date="04/18/2016"
    ms.author="v-sharos" />
 
-# StorSimple Snapshot Manager を使用した StorSimple デバイスの接続と管理
 
-## 概要
+# <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Use StorSimple Snapshot Manager to connect and manage StorSimple devices
 
-StorSimple Snapshot Manager の **[スコープ]** ウィンドウのノードを使用して、インポートされた StorSimple デバイスのデータを確認し、接続されたストレージ デバイスを更新できます。また、**[デバイス]** ノードをクリックして、接続されているデバイスと、それに対応するステータス情報の一覧を **[結果]** ウィンドウに表示できます。
+## <a name="overview"></a>Overview
 
-![接続されているデバイス](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
+You can use nodes in the StorSimple Snapshot Manager **Scope** pane to verify imported StorSimple device data and refresh connected storage devices. Additionally, when you click the **Devices** node, you can see a list of connected devices and corresponding status information in the **Results** pane.
 
-**図 1: StorSimple Snapshot Manager が接続されたデバイス**
+![Connected devices](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
-**[表示]** での選択内容に従って、**[結果]** ウィンドウには各デバイスに関する次の情報が表示されます (表示の構成の詳細については、「[[表示] メニュー](storsimple-use-snapshot-manager.md#view-menu)」を確認してください)。
+**Figure 1: StorSimple Snapshot Manager connected device** 
+
+Depending on your **View** selections, the **Results** pane shows the following information about each device. (For more information about configuring a view, go to [View menu](storsimple-use-snapshot-manager.md#view-menu).
 
 
-| 結果の列 |説明 |
+| Results column  |Description          |
 |:----------------|:--------------------| 
-| 名前 | Azure クラシック ポータルで構成されているデバイスの名前|
-| モデル | デバイスのモデル番号|
-| バージョン | デバイスにインストールされているソフトウェアのバージョン |
-| 状態 | デバイスが使用できるかどうか |
-| 最後の同期時刻 | デバイスが最後に同期された日時 |
-| シリアル番号 | デバイスのシリアル番号 |
+| Name            | The name of the device as configured in the Azure classic portal|
+| Model           | The model number of the device|
+| Version         | The version of the software installed on the device |
+| Status          | Whether the device is available |
+| Last Synced     | Date and time when the device was last synchronized |
+| Serial No.      | The serial number for the device |
  
-**[スコープ]** ウィンドウで **[デバイス]** ノードを右クリックすると、次の操作を選択できます。
+If you right-click the **Devices** node in the **Scope** pane, you can select from the following actions:
 
-- デバイスの追加または置き換え 
-- デバイスの接続、およびインポートの検証 
-- 接続されたデバイスの更新 
+- Add or replace a device 
+- Connect a device and verify imports 
+- Refresh connected devices 
 
-**[結果]** ウィンドウで **[デバイス]** ノードをクリックし、デバイス名を右クリックすると、次の操作を選択できます。
+If you click the **Devices** node and then right-click a device name in the **Results** pane, you can select from the following actions:
 
-- デバイスの認証 
-- デバイスの詳細の表示 
-- デバイスの更新 
-- デバイスの構成の削除 
-- デバイスのパスワードの変更
+- Authenticate a device 
+- View device details 
+- Refresh a device 
+- Delete a device configuration 
+- Change a device password
 
->[AZURE.NOTE] これらの操作は、**[操作]** ウィンドウでも使用できます。
+>[AZURE.NOTE] All of these actions are also available in the **Actions** pane.
  
-このチュートリアルでは、StorSimple Snapshot Manager を使用してデバイスの接続および管理を行い、次のタスクを実行する方法について説明します。
+This tutorial explains how to use StorSimple Snapshot Manager to connect and manage devices and perform the following tasks:
 
-- デバイスの追加または置き換え 
-- デバイスの接続、およびインポートの検証 
-- 接続されたデバイスの更新 
-- デバイスの認証 
-- デバイスの詳細の表示 
-- 個々のデバイスの更新 
-- デバイスの構成の削除 
-- 有効期限が切れたデバイス パスワードの変更
-- 障害が発生したデバイスの置き換え
+- Add or replace a device 
+- Connect a device and verify imports 
+- Refresh connected devices 
+- Authenticate a device 
+- View device details 
+- Refresh an individual device 
+- Delete a device configuration 
+- Change an expired device password
+- Replace a failed device
 
->[AZURE.NOTE] StorSimple Snapshot Manager のインターフェイスの使用に関する一般的な情報については、「[StorSimple Snapshot Manager ユーザー インターフェイス](storsimple-use-snapshot-manager.md)」をご確認ください。
+>[AZURE.NOTE] For general information about using the StorSimple Snapshot Manager interface, go to [StorSimple Snapshot Manager user interface](storsimple-use-snapshot-manager.md).
 
 
-## デバイスの追加または置き換え
+## <a name="add-or-replace-a-device"></a>Add or replace a device
 
-StorSimple デバイスを追加または置き換えるには、以下の手順を実行します。
+Use the following procedure to add or replace a StorSimple device.
 
-#### デバイスを追加または置き換えるには
+#### <a name="to-add-or-replace-a-device"></a>To add or replace a device
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
+1. Click the desktop icon to start StorSimple Snapshot Manager.
 
-2. **[スコープ]** ウィンドウで **[デバイス]** ノードを右クリックし、**[デバイスの構成]** をクリックします。**[デバイスの構成]** ダイアログ ボックスが表示されます。
+2. In the **Scope** pane, right-click the **Devices** node, and then click **Configure a device**. The **Configure a Device** dialog box appears.
 
-    ![StorSimple デバイスの構成](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png)
+    ![Configure a StorSimple device](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
 
-3. **[デバイス]** ドロップダウン ボックスで、デバイスまたは仮想デバイスの IP アドレスを選択します。
+3. In the **Device** drop-down box, select the IP address of the device or virtual device. 
 
-4. **[パスワード]** テキスト ボックスに、Azure クラシック ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。StorSimple Snapshot Manager により、指定したデバイスが検索されます。
+4. In the **Password** text box, type the StorSimple Snapshot Manager password that you created for the device in the Azure classic portal. Click **OK**. StorSimple Snapshot Manager searches for the device that you identified. 
 
-    - デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。 
+    - If the device is available, StorSimple Snapshot Manager adds a connection. 
 
-    - 何かの理由でデバイスを使用できない場合は、StorSimple Snapshot Manager によってエラー メッセージが返されます。**[OK]** をクリックしてエラー メッセージを閉じ、**[キャンセル]** をクリックして **[デバイスの構成]** ダイアログ ボックスを閉じます。
+    - If the device is unavailable for any reason, StorSimple Snapshot Manager returns an error message. Click **OK** to close the error message, and then click **Cancel** to close the **Configure a Device** dialog box.
 
-## デバイスの接続、およびインポートの検証
+## <a name="connect-a-device-and-verify-imports"></a>Connect a device and verify imports
 
-次の手順に従って StorSimple デバイスを接続し、関連するバックアップが含まれた既存のボリュームがインポートされていることを確認します。
+Use the following procedure to connect a StorSimple device and verify that any existing volume groups that have associated backups are imported.
 
-#### デバイスを接続し、インポートを検証するには
+#### <a name="to-connect-a-device-and-verify-imports"></a>To connect a device and verify imports
 
-1. デバイスを StorSimple Snapshot Manager に接続するには、デバイスの追加または置き換えに関する指示に従ってください。デバイスに接続されると、StorSimple Snapshot Manager は次のように応答します。
+1. To connect a device to StorSimple Snapshot Manager, follow the instructions in Add or replace a device. When it connects to a device, StorSimple Snapshot Manager responds as follows:
 
-    - 何かの理由でデバイスを使用できない場合は、StorSimple Snapshot Manager によってエラー メッセージが返されます。 
+    - If the device is unavailable for any reason, StorSimple Snapshot Manager returns an error message. 
 
-   - デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。デバイスを選択すると、**[結果]** ウィンドウに表示され、状態フィールドにそのデバイスが **[使用可能]** であることが示されます。StorSimple Snapshot Manager は、ボリューム グループに関連するバックアップがある場合、デバイス用に構成されたすべてのボリューム グループをインポートします。バックアップ ポリシーはインポートされません。関連付けられているバックアップがないボリューム グループはインポートされません。
+   - If the device is available, StorSimple Snapshot Manager adds a connection. When you select the device, it appears in the **Results** pane, and the status field indicates that the device is **Available**. StorSimple Snapshot Manager imports any volume groups configured for the device, provided that the volume groups have associated backups. Backup policies are not imported. Volume groups that do not have associated backups are not imported.
 
-2. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
+2. Click the desktop icon to start StorSimple Snapshot Manager.
 
-3. **[スコープ]** ウィンドウで最上位のノードを右クリックし、**[インポートの表示の切り替え]** をクリックします。
+3. Right-click the top node in the **Scope** pane, and then click **Toggle Imports Display**.
 
-    ![[インポートの表示の切り替え] の選択](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png)
+    ![Select Toggle Imports Display](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
 
-4. **[インポートの表示の切り替え]** ダイアログ ボックスが表示され、インポートされたボリューム グループとバックアップの状態が示されます。**[OK]** をクリックします。
+4. The **Toggle Imports Display** dialog box appears, showing the status of the imported volume groups and backups. Click **OK**. 
 
-ボリューム グループおよびバックアップが正常にインポートされたら、StorSimple Snapshot Manager を使用して作成および構成したボリューム グループやバックアップを管理する場合と同様に、StorSimple Snapshot Manager を使用してそれらを管理できます。
+After the volume groups and backups are successfully imported, you can use StorSimple Snapshot Manager to manage them, just as you would manage volume groups and backups that you created and configured with StorSimple Snapshot Manager. 
 
-## 接続されたデバイスの更新
+## <a name="refresh-connected-devices"></a>Refresh connected devices
 
-接続された StorSimple デバイスを StorSimple Snapshot Manager と同期するには、以下の手順を実行します。
+Use the following procedure to synchronize the connected StorSimple devices with StorSimple Snapshot Manager.
 
-####接続されているデバイスを更新するには
+####<a name="to-refresh-connected-devices"></a>To refresh connected devices
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
+1. Click the desktop icon to start StorSimple Snapshot Manager.
 
-2. **[スコープ**] ウィンドウで **[デバイス]** を右クリックし、**[デバイスの更新]** をクリックします。これにより、接続されたデバイスと StorSimple Snapshot Manager が同期されるため、最近追加したものを含め、ボリューム グループとバックアップを表示できるようになります。
+2. In the **Scope** pane, right-click **Devices**, and then click **Refresh Devices**. This synchronizes the connected devices with StorSimple Snapshot Manager so that you can view the volume groups and backups, including any recent additions. 
 
-    ![StorSimple デバイスの更新](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
+    ![Refresh the StorSimple devices](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
  
-**[デバイスの更新]** 操作では、接続されているデバイスからすべての新しいボリューム グループと、関連付けられているすべてのバックアップが取得されます。**[ボリューム]** ノードで使用可能な **[ボリュームの再スキャン]** 操作とは異なり、**[デバイスの更新]** ではバックアップ レジストリは復元されません。
+The **Refresh Devices** action retrieves any new volume groups and any associated backups from connected devices. Unlike the **Rescan volumes** action available for the **Volumes** node, **Refresh Devices** does not restore the backup registry.
 
-## デバイスの認証
+## <a name="authenticate-a-device"></a>Authenticate a device
 
-次の手順に従って、StorSimple Snapshot Manager で StorSimple デバイスを認証します。
+Use the following procedure to authenticate a StorSimple device with StorSimple Snapshot Manager.
 
-#### デバイスの認証するには
+#### <a name="to-authenticate-a-device"></a>To authenticate a device
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
+1. Click the desktop icon to start StorSimple Snapshot Manager.
 
-2. **[スコープ]** ウィンドウで、**[デバイス]** をクリックします。
+2. In the **Scope** pane, click **Devices**.
 
-3. **[結果]** ウィンドウで、デバイスの名前を右クリックしてから **[認証]** をクリックします。
+3. In the **Results** pane, right-click the name of the device, and then click **Authenticate**.
 
-4. **[認証]** ダイアログ ボックスが表示されます。デバイスのパスワードを入力し、**[OK]** をクリックします。
+4. The **Authenticate** dialog box appears. Type the device password, and then click **OK**.
 
-    ![ダイアログ ボックスの認証](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Authenticate.png)
+    ![Authenticate dialog box](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Authenticate.png) 
  
-## デバイスの詳細の表示
+## <a name="view-device-details"></a>View device details
 
-次の手順に従って、StorSimple デバイスの詳細を表示し、必要に応じてデバイスと StorSimple Snapshot Manager を再同期します。
+Use the following procedure to view the details of a StorSimple device and, if necessary, resynchronize the device with StorSimple Snapshot Manager.
 
-#### デバイスの詳細を表示し、再同期するには
+#### <a name="to-view-and-resynchronize-device-details"></a>To view and resynchronize device details
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
+1. Click the desktop icon to start StorSimple Snapshot Manager.
 
-2. **[スコープ]** ウィンドウで、**[デバイス]** をクリックします。
+2. In the **Scope** pane, click **Devices**.
 
-3. **[結果]** ウィンドウで、デバイスの名前を右クリックしてから **[詳細]** をクリックします。
+3. In the **Results** pane, right-click the name of the device, and then click **Details**. 
 
-4\. **[デバイスの詳細]** ダイアログ ボックスが表示されます。このボックスには、名前、モデル、バージョン、シリアル番号、状態、対象の iSCSI 修飾名 (IQN)、および最終同期の日時が表示されます。
+4.The **Device Details** dialog box appears. This box shows the name, model, version, serial number, status, target iSCSI Qualified Name (IQN), and last synchronization date and time. 
 
-   - **[再同期]** をクリックして、デバイスを同期します。
+   - Click **Resync** to synchronize the device.
 
-   - **[OK]** または **[キャンセル]** をクリックして、ダイアログ ボックスを閉じます。
+   - Click **OK** or **Cancel** to close the dialog box.
 
-    ![デバイスの詳細](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png)
+    ![Device details](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
  
-## 個々のデバイスの更新
+## <a name="refresh-an-individual-device"></a>Refresh an individual device
 
-次の手順に従って、個々 の StorSimple デバイスを StorSimple Snapshot Manager と再同期します。
+Use the following procedure to resynchronize an individual StorSimple device with StorSimple Snapshot Manager.
 
-#### デバイスを更新するには
+#### <a name="to-refresh-a-device"></a>To refresh a device
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
+1. Click the desktop icon to start StorSimple Snapshot Manager. 
 
-2. **[スコープ]** ウィンドウで、**[デバイス]** をクリックします。
+2. In the **Scope** pane, click **Devices**. 
 
-3. **[結果]** ウィンドウで、デバイスの名前を右クリックしてから **[デバイスの更新]** をクリックします。これにより、デバイスが StorSimple Snapshot Manager と同期されます。
+3. In the **Results** pane, right-click the name of the device, and then click **Refresh Device**. This synchronizes the device with StorSimple Snapshot Manager. 
 
-## デバイスの構成の削除
+## <a name="delete-a-device-configuration"></a>Delete a device configuration
 
-次の手順に従って、StorSimple Snapshot Manager から個々の StorSimple デバイスの構成を削除します。
+Use the following procedure to delete an individual StorSimple device configuration from StorSimple Snapshot Manager.
 
-#### デバイス構成を削除するには
+#### <a name="to-delete-a-device-configuration"></a>To delete a device configuration
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
+1. Click the desktop icon to start StorSimple Snapshot Manager. 
 
-2. **[スコープ]** ウィンドウで、**[デバイス]** をクリックします。
+2. In the **Scope** pane, click **Devices**. 
 
-3. **[結果]** ウィンドウで、デバイスの名前を右クリックしてから **[削除]** をクリックします。
+3. In the **Results** pane, right-click the name of the device, and then click **Delete**. 
 
-4. 次のメッセージが表示されます。**[はい]** をクリックして構成を削除するか、**[いいえ]** をクリックして削除をキャンセルします。
+4. The following message appears. Click **Yes** to delete the configuration or click **No** to cancel the deletion.
 
-    ![デバイスの構成の削除](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_DeleteDevice.png)
+    ![Delete device configuration](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_DeleteDevice.png)
 
-## 有効期限が切れたデバイス パスワードの変更
+## <a name="change-an-expired-device-password"></a>Change an expired device password
 
-パスワードを入力して、StorSimple Snapshot Manager で StorSimple デバイスを認証する必要があります。このパスワードは、Windows PowerShell インターフェイスを使用してデバイスを設定するときに構成します。ただし、パスワードは期限切れになる場合があります。この場合、Azure クラシック ポータルを使用してパスワードを変更することができます。次に、デバイスはパスワードが期限切れになる前に StorSimple Snapshot Manager で構成されていたため、デバイスを StorSimple Snapshot Manager で再認証する必要があります。
+You must enter a password to authenticate a StorSimple device with StorSimple Snapshot Manager. You configure this password when you use the Windows PowerShell interface to set up the device. However, the password can expire. If this happens, you can use the Azure classic portal to change the password. Then, because the device was configured in StorSimple Snapshot Manager before the password expired, you must re-authenticate the device in StorSimple Snapshot Manager. 
 
-#### 有効期限が切れたパスワードを変更するには
+#### <a name="to-change-the-expired-password"></a>To change the expired password
 
-1. Azure クラシック ポータルで StorSimple Manager サービスを開始します。
+1. In the Azure classic portal, start the StorSimple Manager service.
 
-2. **[デバイス]**、**[デバイスの構成]** の順にクリックします。
+2. Click **Devices** > **Configure** for the device.
 
-3. StorSimple Snapshot Manager のセクションまでスクロールします。14 から 15 文字のパスワードを入力します。大文字、小文字、数字、および特殊文字を含むパスワードを使用してください。
+3. Scroll down to the StorSimple Snapshot Manager section. Enter a password that is 14-15 characters. Make sure that the password contains a mix of uppercase, lowercase, numeric, and special characters.
 
-4. 確認のためにパスワードを再入力します。
+4. Re-enter the password to confirm it.
 
-5. ページの下部にある **[保存]** をクリックします。
+5. Click **Save** at the bottom of the page.
 
-#### デバイスを再認証するには
+#### <a name="to-re-authenticate-the-device"></a>To re-authenticate the device
 
-1. StorSimple Snapshot Manager を開始します。
+1. Start StorSimple Snapshot Manager.
 
-2. **[スコープ]** ウィンドウで、**[デバイス]** をクリックします。構成されているデバイスの一覧が **[結果]** ウィンドウに表示されます。
+2. In the **Scope** pane, click **Devices**. A list of configured devices appears in the **Results** pane. 
 
-3. デバイスを選択して、右クリックし、**[認証]** をクリックします。
+3. Select the device, right-click, and then click **Authenticate**.
 
-4. **[認証]** ウィンドウに、新しいパスワードを入力します。
+4. In the **Authenticate** window, enter the new password. 
 
-5. デバイスを選択して、右クリックし、**[デバイスの更新]** を選択します。これにより、デバイスが StorSimple Snapshot Manager と同期されます。
+5. Select the device, right-click, and select **Refresh device**. This synchronizes the device with StorSimple Snapshot Manager. 
 
-## 障害が発生したデバイスの置き換え
+## <a name="replace-a-failed-device"></a>Replace a failed device
 
-StorSimple device に障害が発生し、スタンバイ (フェールオーバー) デバイスによって置き換えられている場合は、次の手順に従って新しいデバイスに接続し、関連するバックアップを表示します。
+If a StorSimple device fails and is replaced by a standby (failover) device, use the following steps to connect to the new device and view the associated backups.
 
-#### フェールオーバー後に新しいデバイスに接続するには
+#### <a name="to-connect-to-a-new-device-after-failover"></a>To connect to a new device after failover
 
-1. 新しいデバイスへの iSCSI 接続を再構成します。手順については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)」にある「手順 7: ボリュームをマウント、初期化、フォーマットする」をご覧ください。 
+1. Reconfigure the iSCSI connection to the new device. For instructions, go to "Step 7: Mount, initialize, and format a volume" in [Deploy your on-premises StorSimple device](storsimple-deployment-walkthrough-u2.md). 
 
->[AZURE.NOTE] 新しい StorSimple デバイスの IP アドレスが古いものと同じ IP アドレスである場合は、古い構成を接続できる可能性があります。
+>[AZURE.NOTE] If the new StorSimple device has the same IP address as the old one, you might be able to connect the old configuration. 
 
-2. Microsoft StorSimple Management Service を停止します。
+2. Stop the Microsoft StorSimple Management Service:
 
-    1. Server Manager を起動します。
+    1. Start Server Manager.
 
-    2. Server Manager ダッシュボードの **[ツール]** メニューで、**[サービス]** を選択します。
+    2. On the Server Manager Dashboard, on the **Tools** menu, select **Services**. 
 
-    3. **[サービス]** ウィンドウで、**[Microsoft StorSimple Management Service]** を選択します。
+    3. On the **Services** window, select the **Microsoft StorSimple Management Service**. 
 
-    4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
+    4. In the right pane, under **Microsoft StorSimple Management Service**, click **Stop the service**. 
 
-3. 古いデバイスに関連する構成情報を削除します。
+3. Remove the configuration information related to the old device: 
 
-    1. File Explorer で、C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。 
+    1. In File Explorer, browse to C:\ProgramData\Microsoft\StorSimple\BACatalog. 
 
-    2. BACatalog フォルダーでファイルを削除します。
+    2. Delete the files in the BACatalog folder. 
 
-4. Microsoft StorSimple Management Service を再起動します。
+4. Restart the Microsoft StorSimple Management Service: 
 
-    1. Server Manager ダッシュボードの **[ツール]** メニューで、**[サービス]** を選択します。 
+    1. On the Server Manager Dashboard, on the **Tools** menu, select **Services**. 
 
-    2. **[サービス]** ウィンドウで、**[Microsoft StorSimple Management Service]** を選択します。
+    2. On the **Services** window, select the **Microsoft StorSimple Management Service**. 
 
-    3. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。
+    3. In the right pane, under **Microsoft StorSimple Management Service**, click **Restart the service**. 
 
-5. StorSimple Snapshot Manager を開始します。
+5. Start StorSimple Snapshot Manager. 
 
-6. 新しい StorSimple デバイスを構成するには、「[StorSimple Snapshot Manager のデプロイ](storsimple-snapshot-manager-deployment.md)」にある「手順 2: StorSimple Snapshot Manager をデバイスに接続します」の手順に従ってください。
+6. To configure the new StorSimple device, complete the steps in Step 2: Connect a StorSimple device in [Deploy StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md). 
 
-7. **[スコープ]** ウィンドウの最上位ノード (StorSimple Snapshot Manager など) を右クリックし、**[インポートの表示の切り替え]** をクリックします。
+7. Right-click the top-level node in the **Scope** pane (StorSimple Snapshot Manager in the example), and then click **Toggle Imports Display**. 
 
-8. インポートされたボリューム グループとバックアップが StorSimple Snapshot Manager に表示されると、メッセージが表示されます。**[OK]** をクリックします。
+8. A message appears when the imported volume groups and backups are visible in StorSimple Snapshot Manager. Click **OK**. 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
-- [StorSimple Snapshot Manager を使用したボリュームの表示と管理方法](storsimple-snapshot-manager-manage-volumes.md)
+- Learn how to [use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
+- Learn how to [use StorSimple Snapshot Manager to view and manage volumes](storsimple-snapshot-manager-manage-volumes.md).
 
-<!---HONumber=AcomDC_0427_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

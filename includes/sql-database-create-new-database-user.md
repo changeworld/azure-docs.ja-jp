@@ -1,24 +1,30 @@
 
 
-## SSMS を使用して新しいデータベース ユーザーを作成する
+## <a name="create-new-database-user-using-ssms"></a>Create new database user using SSMS
 
-SSMS を使用して既存のデータベースに新しいデータベース ユーザーを作成するには、以下の手順に従います。
+Use the following steps to create a new database user in an existing database using SSMS. 
 
-これらの手順は、SSMS のオブジェクト エクスプローラーで SQL Database に接続していること、また、サーバー レベルのプリンシパル管理者として、または新規ユーザーの作成権限を持つユーザー アカウントで SQL Database 論理サーバーに接続していることを前提としています。
+These steps assume that you are connected to SQL Database in Object Explorer using SSMS and are connected to your SQL Database logical server as a server-level principal administrator or with a user account with permissions to create a new user. 
 
-1. オブジェクト エクスプローラーで [データベース] ノードを展開し、新しいユーザー アカウントを作成するデータベースを選択します。
+1. In Object Explorer, expand the Databases node and select the database in which you wish to create a new user account.
 
-     ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-1.png)
+     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-1.png)
 
-2. 選択したデータベースを右クリックし、**[クエリ]** をクリックします。
+2. Right-click the selected database and then click **Query**.
 
-     ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-2.png)
+     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-2.png)
 
-3. クエリ ウィンドウで、次の Transact-SQL ステートメントを編集して使用し、ユーザー データベースに含まれるユーザーを作成します。
+3. In the query window, edit and use the following Transact-SQL statement to create a contained user in your user database. 
 
     ```CREATE USER user1 WITH PASSWORD ='p@ssw0rd1';
     ```
 
-     ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-3.png)
+     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-3.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

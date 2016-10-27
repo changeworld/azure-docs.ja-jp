@@ -1,72 +1,74 @@
 <properties 
-	pageTitle="GitHub リポジトリにリンクされる Web アプリのデプロイ" 
-	description="GitHub リポジトリのプロジェクトを含む Web アプリをデプロイするには、Azure Resource Manager テンプレートを使用します。" 
-	services="app-service" 
-	documentationCenter="" 
-	authors="cephalin" 
-	manager="wpickett" 
-	editor=""/>
+    pageTitle="Deploy a web app that is linked to a GitHub repository" 
+    description="Use an Azure Resource Manager template to deploy a web app that contains a project from a GitHub repository." 
+    services="app-service" 
+    documentationCenter="" 
+    authors="cephalin" 
+    manager="wpickett" 
+    editor=""/>
 
 <tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/27/2016" 
-	ms.author="cephalin"/>
+    ms.service="app-service" 
+    ms.workload="na" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="04/27/2016" 
+    ms.author="cephalin"/>
 
-# GitHub リポジトリにリンクされる Web アプリのデプロイ
 
-このトピックでは、GitHub リポジトリ内のプロジェクトにリンクされる Web アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+# <a name="deploy-a-web-app-linked-to-a-github-repository"></a>Deploy a web app linked to a GitHub repository
 
-テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
+In this topic, you will learn how to create an Azure Resource Manager template that deploys a web app that is linked to a project in a GitHub repository. You will learn how to define which resources are deployed and how to define parameters that are specified when the deployment is executed. You can use this template for your own deployments, or customize it to meet your requirements.
 
-完全なテンプレートについては、「[Web App Linked to GitHub template (GitHub にリンクされる Web アプリ用のテンプレート)](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json)」を参照してください。
+For more information about creating templates, see [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md).
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+For the complete template, see [Web App Linked to GitHub template](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json).
 
-## デプロイ対象
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
-このテンプレートを使用して、GitHub 内のプロジェクトのコードを含む Web アプリケーションをデプロイします。
+## <a name="what-you-will-deploy"></a>What you will deploy
 
-デプロイメントを自動的に実行するには、次のボタンをクリックします。
+With this template, you will deploy a web app that contains the code from a project in GitHub.
 
-[![Azure へのデプロイ](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
+To run the deployment automatically, click the following button:
 
-## パラメーター
+[![Deploy to Azure](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
+
+## <a name="parameters"></a>Parameters
 
 [AZURE.INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
-### repoURL
+### <a name="repourl"></a>repoURL
 
-デプロイするプロジェクトを含む GitHub リポジトリの URL。このパラメーターは既定値を含みますが、この値は、リポジトリに URL を指定する方法を示すことのみを目的としています。この値はテンプレートのテスト時に使用できますが、テンプレートを使用する場合には、独自のリポジトリに URL を指定します。
+The URL for GitHub repository that contains the project to deploy. This parameter contains a default value but this value is only intended to show you how to provide the URL for repository. You can use this value when testing the template but you will want to provide the URL your own repository when working with the template.
 
     "repoURL": {
         "type": "string",
         "defaultValue": "https://github.com/davidebbo-test/Mvc52Application.git"
     }
 
-### 分岐
+### <a name="branch"></a>branch
 
-アプリケーションのデプロイ時に使用するリポジトリの分岐。既定値は master ですが、デプロイするリポジトリ内のいずれかの分岐の名前を指定することもできます。
+The branch of the repository to use when deploying the application. The default value is master, but you can provide the name of any branch in the repository that you wish to deploy.
 
     "branch": {
         "type": "string",
         "defaultValue": "master"
     }
     
-## デプロイ対象のリソース
+## <a name="resources-to-deploy"></a>Resources to deploy
 
 [AZURE.INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### Web アプリ
+### <a name="web-app"></a>Web app
 
-GitHub 内のプロジェクトにリンクされる Web アプリを作成します。
+Creates the web app that is linked to the project in GitHub. 
 
-**siteName** パラメーターに Web アプリの名前を、**siteLocation** パラメーターに Web アプリの場所を指定します。テンプレートの **DependsOn** 要素に、Web アプリをサービス ホスティング プランに依存するものとして定義します。ホスティング プランに依存するため、ホスティング プランの作成が完了するまで、Web アプリは作成されません。**DependsOn** 要素は、デプロイの順序を指定するためにのみ使用されます。Web アプリがホスティング プランに依存するとマークしない場合、Azure Resource Mananger は両方のリソースを同時に作成しようとします。このとき、ホスティング プランの前に Web アプリが作成された場合はエラーが発生することがあります。
+You specify the name of the web app through the **siteName** parameter, and the location of the web app through the **siteLocation** parameter. In the **dependsOn** element, the template defines the web app as dependent on the service hosting plan. Because it is dependent on the hosting plan, the web app is not created until the hosting plan has finished being created. The **dependsOn** element is only used to specify deployment order. If you do not mark the web app as dependent on the hosting plan, Azure Resource Mananger will attempt to create both resources at the same time and you may receive an error if the web app is created before the hosting plan.
 
-また、Web アプリには **resources** セクションに定義される子リソースがあります。この子リソースは、Web アプリと共にデプロイされるプロジェクトのソース管理を定義します。このテンプレートでは、ソース管理は、特定の GitHub リポジトリにリンクされます。GitHub リポジトリは、**"RepoUrl":"https://github.com/davidebbo-test/Mvc52Application.git"** コードによって定義されます。繰り返しデプロイされる単一のプロジェクトを、最小数のパラメーターを使用して作成する場合は、リポジトリの URL をハードコーディングできます。リポジトリの URL をハードコーディングする代わりに、リポジトリの URL 用のパラメーターを追加し、その値を **RepoUrl** プロパティで使用できます。
+The web app also has a child resource which is defined in **resources** section below. This child resource defines source control for the project deployed with the web app. In this template, the source control is linked to a particular GitHub repository. The GitHub repository is defined with the code **"RepoUrl":"https://github.com/davidebbo-test/Mvc52Application.git"** You might hard-code the repository URL when you want to create a template that repeatedly deploys a single project while requiring the minimum number of parameters.
+Instead of hard-coding the repository URL, you can add a parameter for the repository URL and use that value for the **RepoUrl** property.
 
     {
       "apiVersion": "2015-08-01",
@@ -96,19 +98,23 @@ GitHub 内のプロジェクトにリンクされる Web アプリを作成し�
       ]
     }
 
-## デプロイを実行するコマンド
+## <a name="commands-to-run-deployment"></a>Commands to run deployment
 
 [AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### PowerShell
+### <a name="powershell"></a>PowerShell
 
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json -siteName ExampleSite -hostingPlanName ExamplePlan -siteLocation "West US" -ResourceGroupName ExampleDeployGroup
 
-### Azure CLI
+### <a name="azure-cli"></a>Azure CLI
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json
 
 
  
 
-<!---HONumber=AcomDC_0504_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array への更新プログラムのインストール | Microsoft Azure"
-   description="ポータルと修正プログラムを使用して更新プログラムを適用するために、StorSimple Virtual Array の Web UI をどのように使用するかについて説明します"
+   pageTitle="Install Updates on a StorSimple Virtual Array | Microsoft Azure"
+   description="Describes how to use the StorSimple Virtual Array web UI to apply updates using the portal and hotfix method"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,97 +15,102 @@
    ms.date="09/07/2016"
    ms.author="alkohli" />
 
-# StorSimple Virtual Array に更新プログラムをインストールします
 
-## Overview
+# <a name="install-updates-on-your-storsimple-virtual-array"></a>Install Updates on your StorSimple Virtual Array
 
-この記事では、ローカル Web UI および Azure クラシック ポータルを使用して、StorSimple Virtual Array に更新プログラムをインストールする手順について説明します。StorSimple Virtual Array を最新の状態に保つために、ソフトウェアの更新プログラムまたは修正プログラムを適用することが必要な場合があります。
+## <a name="overview"></a>Overview
 
-更新プログラムまたは修正プログラムをインストールすると、デバイスが再起動されることに注意してください。StorSimple Virtual Array は単一ノード デバイスであることから、実行中のすべての IO が中断され、デバイスでダウンタイムが発生します。
+This article describes the steps required to install updates on your StorSimple Virtual Array via the local web UI and via the Azure classic portal. You need to apply software updates or hotfixes to keep your StorSimple Virtual Array up-to-date. 
 
-更新プログラムを適用する前に、最初にホストで、次にデバイスで、ボリュームまたは共有をオフラインにすることをお勧めします。これにより、データ破損の可能性を最小限に抑えられます。
+Keep in mind that installing an update or hotfix restarts your device. Given that the StorSimple Virtual Array is a single node device, any I/O in progress is disrupted and your device experiences downtime. 
 
-> [AZURE.IMPORTANT] Update 0.1 または GA ソフトウェア バージョンを実行している場合は、ローカル Web UI で修正プログラムを使用する方法で、Update 0.3 をインストールする必要があります。Update 0.2 を実行している場合、更新プログラムのインストールには Azure クラシック ポータルを使用することをお勧めします。
+Before you apply an update, we recommend that you take the volumes or shares offline on the host first and then the device. This minimizes any possibility of data corruption.
 
-## ローカル Web UI を使用する 
+> [AZURE.IMPORTANT] If you are running Update 0.1 or GA software versions, you must use the hotfix method via the local web UI to install update 0.3. If you are running Update 0.2, we recommend that you install the updates via the Azure classic portal.
+
+## <a name="use-the-local-web-ui"></a>Use the local web UI 
  
-ローカル Web UI を使用するときは、2 つの手順があります。
+There are two steps when using the local web UI:
 
-- 更新プログラムまたは修正プログラムをダウンロードする
-- 更新プログラムまたは修正プログラムをインストールする
+- Download the update or the hotfix
+- Install the update or the hotfix
 
-### 更新プログラムまたは修正プログラムをダウンロードする
+### <a name="download-the-update-or-the-hotfix"></a>Download the update or the hotfix
 
-次の手順を実行して、Microsoft Update カタログからソフトウェア更新プログラムをダウンロードします。
+Perform the following steps to download the software update from the Microsoft Update Catalog.
 
-#### 更新プログラムまたは修正プログラムをダウンロードするには
+#### <a name="to-download-the-update-or-the-hotfix"></a>To download the update or the hotfix
 
-1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com) に移動します。
+1. Start Internet Explorer and navigate to [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
 
-2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、**[インストール]** をクリックします。
+2. If this is your first time using the Microsoft Update Catalog on this computer, click **Install** when prompted to install the Microsoft Update Catalog add-on.
   
-3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号を入力します。Update 0.3 については、「**3182061**」を入力して、**[検索]** をクリックします。
+3. In the search box of the Microsoft Update Catalog, enter the Knowledge Base (KB) number of the hotfix you want to download. Enter **3182061** for Update 0.3, and then click **Search**.
 
-    **StorSimple Virtual Array Update 0.3** など、修正プログラムの一覧が表示されます。
+    The hotfix listing appears, for example, **StorSimple Virtual Array Update 0.3**.
 
-    ![カタログの検索](./media/storsimple-ova-install-update-01/download1.png)
+    ![Search catalog](./media/storsimple-ova-install-update-01/download1.png)
 
-4. **[追加]** をクリックします。更新プログラムがバスケットに追加されます。
+4. Click **Add**. The update is added to the basket.
 
-5. **[バスケットの表示]** をクリックします。
+5. Click **View Basket**.
 
-6. **[Download]** をクリックします。ダウンロード先となるローカルの場所を指定または**参照**します。更新プログラムが指定した場所にダウンロードされて、更新プログラムと同じ名前のサブフォルダーに配置されます。デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
+6. Click **Download**. Specify or **Browse** to a local location where you want the downloads to appear. The updates are downloaded to the specified location and placed in a subfolder with the same name as the update. The folder can also be copied to a network share that is reachable from the device.
 
-7. コピーしたフォルダーを開くと、Microsoft 更新プログラムのスタンドアロン パッケージ ファイル `WindowsTH-KB3011067-x64` があります。このファイルを使用して、更新プログラムまたは修正プログラムをインストールします。
-
-
-### 更新プログラムまたは修正プログラムをインストールする
-
-更新プログラムまたは修正プログラムをインストールする前に、更新プログラムまたは修正プログラムがローカルでホストにダウンロードされているか、ネットワーク共有を介してアクセス可能であることを確認してください。
-
-次の手順を実行して、更新プログラムを、GA または Update 0.1 ソフトウェア バージョンが実行されているデバイスにインストールします。各更新手順の所要時間は 2 分未満です。次の手順を実行して、更新プログラムまたは修正プログラムをインストールします。
+7. Open the copied folder, you should see a Microsoft Update Standalone Package file `WindowsTH-KB3011067-x64`. This file is used to install the update or hotfix.
 
 
-#### 更新プログラムまたは修正プログラムをインストールするには
+### <a name="install-the-update-or-the-hotfix"></a>Install the update or the hotfix
 
-1. ローカル Web UI で、**[メンテナンス]**、**[ソフトウェア更新プログラム]** の順に移動します。
+Prior to the update or hotfix installation, make sure that you have the update or the hotfix downloaded either locally on your host or accessible via a network share. 
 
-    ![デバイスの更新](./media/storsimple-ova-install-update-01/update1m.png)
-
-2. **[Update file path (更新プログラムのファイル パス)]** に、更新プログラムまたは修正プログラムのファイル名を入力します。更新プログラムまたは修正プログラムのインストール ファイルがネットワーク共有にある場合は、ファイルを参照することもできます。**[適用]** をクリックします。
-
-	![デバイスの更新](./media/storsimple-ova-install-update-01/update2m.png)
-
-3.  警告が表示されます。これは単一ノード デバイスであることから、更新プログラムが適用された後にデバイスが再起動され、ダウンタイムが発生します。チェック マーク アイコンをクリックします。
-
-	![デバイスの更新](./media/storsimple-ova-install-update-01/update3m.png)
-
-4. 更新プログラムが開始します。デバイスが正常に更新されると、再起動されます。この期間は、ローカル UI にはアクセスできません。
-
-    ![デバイスの更新](./media/storsimple-ova-install-update-01/update5m.png)
-
-5. 再起動が完了したら、**サインイン** ページが表示されます。デバイス ソフトウェアが更新されたことを確認するには、ローカル Web UI で、**[メンテナンス]**、**[ソフトウェア更新プログラム]** の順に移動します。表示されるソフトウェアのバージョンは、Update 0.3 では **10.0.0.0.0.10288.0** です。
-
-	> [AZURE.NOTE] ローカル Web UI と Azure クラシック ポータルでは、ソフトウェアのバージョンの表示方法が少し異なります。たとえば、同じバージョンの場合、ローカル Web UI では **10.0.0.0.0.10288** と表示され、Azure クラシック ポータルでは **10.0.10288.0** と表示されます。
-
-	![デバイスの更新](./media/storsimple-ova-install-update-01/update6m.png)
+Use this method to install updates on a device running GA or Update 0.1 software versions. This procedure takes less than 2 minutes to complete. Perform the following steps to install the update or hotfix.
 
 
+#### <a name="to-install-the-update-or-the-hotfix"></a>To install the update or the hotfix
+
+1. In the local web UI, go to **Maintenance** > **Software Update**.
+
+    ![update device](./media/storsimple-ova-install-update-01/update1m.png)
+
+2. In **Update file path**, enter the file name for the update or the hotfix. You can also browse to the update or hotfix installation file if placed on a network share. Click **Apply**.
+
+    ![update device](./media/storsimple-ova-install-update-01/update2m.png)
+
+3.  A warning is displayed. Given this is a single node device, after the update is applied, the device restarts and there is downtime. Click the check icon.
+
+    ![update device](./media/storsimple-ova-install-update-01/update3m.png)
+
+4. The update starts. After the device is successfully updated, it restarts. The local UI is not accessible in this duration.
+
+    ![update device](./media/storsimple-ova-install-update-01/update5m.png)
+
+5. After the restart is complete, you are taken to the **Sign in** page. To verify that the device software has updated, in the local web UI, go to **Maintenance** > **Software Update**. The displayed software version should be **10.0.0.0.0.10288.0** for Update 0.3.
+
+    > [AZURE.NOTE] We report the software versions in a slightly different way in the local web UI and the Azure classic portal. For example, the local web UI reports **10.0.0.0.0.10288** and the Azure classic portal reports **10.0.10288.0** for the same version. 
+
+    ![update device](./media/storsimple-ova-install-update-01/update6m.png)
 
 
 
-## Azure クラシック ポータルを使用する
 
-Update 0.2 を実行している場合は、Azure クラシック ポータルから更新プログラムをインストールすることをお勧めします。ポータルの手順では、ユーザーは更新プログラムをスキャン、ダウンロード、およびインストールする必要があります。この手順の所要時間は約 7 分です。次の手順を実行して、更新プログラムまたは修正プログラムをインストールします。
+
+## <a name="use-the-azure-classic-portal"></a>Use the Azure classic portal
+
+If running Update 0.2, we recommend that you install updates through the Azure classic portal. The portal procedure requires the user to scan, download, and then install the updates. This procedure takes around 7 minutes to complete. Perform the following steps to install the update or hotfix.
 
 [AZURE.INCLUDE [storsimple-ova-install-update-via-portal](../../includes/storsimple-ova-install-update-via-portal.md)]
 
-インストールが完了したら (ジョブの状態が 100% と示されます)、**[デバイス]、[メンテナンス]、[ソフトウェア更新プログラム]** の順に移動します。表示されるソフトウェアのバージョンは 10.0.10288.0 です。
+After the installation is complete (as indicated by job status at 100 %), go to **Devices > Maintenance > Software Updates**. The displayed software version should be 10.0.10288.0.
 
-![デバイスの更新](./media/storsimple-ova-install-update-01/azupdate12m.png)
+![update device](./media/storsimple-ova-install-update-01/azupdate12m.png)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
+Learn more about [administering your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,36 +1,36 @@
 <!--author=SharS last changed: 9/17/15-->
 
-ここでは、次の操作を行います。
+In this procedure, you will:
 
-1. [Maintainer の実行可能ファイルを実行する準備をします](#to-prepare-to-run-the-maintainer)。
+1. [Prepare to run the Maintainer executable](#to-prepare-to-run-the-maintainer) .
 
-2. [孤立した BLOB をすぐに削除するようにコンテンツ データベースとごみ箱を準備します](#to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs)。
+2. [Prepare the content database and Recycle Bin for immediate deletion of orphaned BLOBs](#to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs).
 
-3. [Maintainer.exe を実行します](#to-run-the-maintainer)。
+3. [Run Maintainer.exe](#to-run-the-maintainer).
 
-4. [コンテンツ データベースとごみ箱の設定を元に戻します](#to-revert-the-content-database-and-recycle-bin-settings)。
+4. [Revert the content database and Recycle Bin settings](#to-revert-the-content-database-and-recycle-bin-settings).
 
-#### Maintainer の実行を準備するには
+#### <a name="to-prepare-to-run-the-maintainer"></a>To prepare to run the Maintainer
 
-1. Web フロントエンド サーバーで、SharePoint 2013 管理シェルを管理者として開きます。
+1. On the Web front-end server, open the SharePoint 2013 Management Shell as an administrator.
 
-2. *ブート ドライブ*:\\Program Files\\Microsoft SQL Remote Blob Storage 10.50\\Maintainer フォルダーに移動します。
+2. Navigate to the folder *boot drive*:\Program Files\Microsoft SQL Remote Blob Storage 10.50\Maintainer\.
 
-3. **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** の名前を **web.config** に変更します。
+3. Rename **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** to **web.config**.
 
-4. `aspnet_regiis -pdf connectionStrings` を使用して、web.config ファイルの暗号化を解除します。
+4. Use `aspnet_regiis -pdf connectionStrings` to decrypt the web.config file.
 
-5. 暗号化が解除された web.config ファイルで、`connectionStrings` ノードの下に、SQL Server インスタンスの接続文字列とコンテンツ データベース名を追加します。次の例を参照してください。
+5. In the decrypted web.config file, under the `connectionStrings` node, add the connection string for your SQL server instance and the content database name. See the following example.
 
-    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=";Remote Blob Storage Maintainer for WSS_Content";" providerName="System.Data.SqlClient" />`
+    `<add name=”RBSMaintainerConnectionWSSContent” connectionString="Data Source=SHRPT13-SQL12\SHRPT13;Initial Catalog=WSS_Content;Integrated Security=True;Application Name=&quot;Remote Blob Storage Maintainer for WSS_Content&quot;" providerName="System.Data.SqlClient" />`
 
-6. `aspnet_regiis –pef connectionStrings` を使用して、web.config ファイルを再び暗号化します。
+6. Use `aspnet_regiis –pef connectionStrings` to re-encrypt the web.config file. 
 
-7. web.config の名前を Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config に変更します。
+7. Rename web.config to Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config. 
 
-#### 孤立した BLOB をすぐに削除するようにコンテンツ データベースとごみ箱を準備するには
+#### <a name="to-prepare-the-content-database-and-recycle-bin-to-immediately-delete-orphaned-blobs"></a>To prepare the content database and Recycle Bin to immediately delete orphaned BLOBs
 
-1. SQL Server の SQL Management Studio で、対象のコンテンツ データベースに対して次の更新クエリを実行します。 
+1. On the SQL Server, in SQL Management Studio, run the following update queries for the target content database: 
 
        `use WSS_Content`
 
@@ -38,21 +38,21 @@
 
        `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
 
-2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、一時的にごみ箱を無効にします。この操作を実行すると、関連するすべてのサイト コレクションのごみ箱も空になります。そのためには、**[サーバーの全体管理]**、**[アプリケーション管理]**、**[Web アプリケーション (Web アプリケーションの管理)]**、**[SharePoint - 80]**、**[アプリケーションの全般設定]** の順にクリックします。**[ごみ箱の状態]** を **[オフ]** に設定します。
+2. On the web front-end server, under **Central Administration**, edit the **Web Application General Settings** for the desired content database to temporarily disable the Recycle Bin. This action will also empty the Recycle Bin for any related site collections. To do this, click **Central Administration** -> **Application Management** -> **Web Applications (Manage web applications)** -> **SharePoint - 80** -> **General Application Settings**. Set the **Recycle Bin Status** to **OFF**.
 
     ![Web Application General Settings](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
-#### Maintainer を実行するには
+#### <a name="to-run-the-maintainer"></a>To run the Maintainer
 
-- Web フロントエンド サーバーの SharePoint 2013 管理シェルで、次のように Maintainer を実行します。
+- On the web front-end server, in the SharePoint 2013 Management Shell, run the Maintainer as follows:
 
       `Microsoft.Data.SqlRemoteBlobs.Maintainer.exe -ConnectionStringName RBSMaintainerConnectionWSSContent -Operation GarbageCollection -GarbageCollectionPhases rdo`
 
-    >[AZURE.NOTE]現時点では、StorSimple でサポートされているのは `GarbageCollection` 操作のみです。また、Microsoft.Data.SqlRemoteBlobs.Maintainer.exe に対して発行されたパラメーターでは大文字と小文字が区別されることにも注意してください。
+    >[AZURE.NOTE] Only the `GarbageCollection` operation is supported for StorSimple at this time. Also note that the parameters issued for Microsoft.Data.SqlRemoteBlobs.Maintainer.exe are case sensitive. 
  
-#### コンテンツ データベースとごみ箱の設定を元に戻すには
+#### <a name="to-revert-the-content-database-and-recycle-bin-settings"></a>To revert the content database and Recycle Bin settings
 
-1. SQL Server の SQL Management Studio で、対象のコンテンツ データベースに対して次の更新クエリを実行します。
+1. On the SQL Server, in SQL Management Studio, run the following update queries for the target content database:
 
       `use WSS_Content`
 
@@ -62,6 +62,9 @@
 
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
 
-2. Web フロントエンド サーバーの **[サーバーの全体管理]** で、目的のコンテンツ データベースの **[Web アプリケーションの全般設定]** を編集して、ごみ箱を再び有効にします。そのためには、**[サーバーの全体管理]**、**[アプリケーション管理]**、**[Web アプリケーション (Web アプリケーションの管理)]**、**[SharePoint - 80]**、**[アプリケーションの全般設定]** の順にクリックします。[ごみ箱の状態] を **[オン]** に設定します。
+2. On the web front-end server, in **Central Administration**, edit the **Web Application General Settings** for the desired content database to re-enable the Recycle Bin. To do this, click **Central Administration** -> **Application Management** -> **Web Applications (Manage web applications)** -> **SharePoint - 80** -> **General Application Settings**. Set the Recycle Bin Status to **ON**.
 
-<!---HONumber=AcomDC_0107_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,43 +1,44 @@
 <properties
-	pageTitle="Azure リソース グループ プロジェクトのデプロイメント スクリプトの概要 | Microsoft Azure"
-	description="Azure リソース グループのデプロイメント プロジェクトの PowerShell スクリプトの動作について説明します。"
-	services="visual-studio-online"
-	documentationCenter="na"
-	authors="tfitzmac"
-	manager="timlt"
-	editor="" />
+    pageTitle="Overview of the Azure Resource Group project deployment script  | Microsoft Azure"
+    description="Describes how the PowerShell script in the Azure Resource Group deployment project works."
+    services="visual-studio-online"
+    documentationCenter="na"
+    authors="tfitzmac"
+    manager="timlt"
+    editor="" />
 
  <tags
-	ms.service="azure-resource-manager"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="na"
-	ms.date="07/26/2016"
-	ms.author="tomfitz" />
+    ms.service="azure-resource-manager"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="na"
+    ms.date="07/26/2016"
+    ms.author="tomfitz" />
 
-# Azure リソース グループ プロジェクトのデプロイメント スクリプトの概要
 
-Azure リソース グループのデプロイメント プロジェクトは、ファイルとその他のアーティファクトを Azure にステージングおよびデプロイする作業を支援します。Visual Studio で Azure リソース マネージャーのデプロイメント プロジェクトを作成するときは、**Deploy-AzureResourceGroup.ps1** と呼ばれる PowerShell スクリプトがプロジェクトに追加されます。このトピックでは、このスクリプトで実行される操作と、Visual Studio の内部と外部の両方でのスクリプトの実行方法について説明します。
+# <a name="overview-of-the-azure-resource-group-project-deployment-script"></a>Overview of the Azure Resource Group project deployment script
 
-## このスクリプトで実行される操作
+Azure Resource Group deployment projects help you stage and deploy files and other artifacts to Azure. When you create an Azure Resource Manager deployment project in Visual Studio, a PowerShell script called **Deploy-AzureResourceGroup.ps1** is added to the project. This topic provides details about what this script does and how to execute it both within and outside of Visual Studio.
 
-Deploy-AzureResourceGroup.ps1 スクリプトは、デプロイメント ワークフローで重要な次の 2 つの操作を実行します。
+## <a name="what-does-the-script-do?"></a>What does the script do?
 
-- テンプレートのデプロイメントに必要なファイルまたはアーティファクトのアップロード
-- テンプレートのデプロイ
+The Deploy-AzureResourceGroup.ps1 script does two things that are important to the deployment workflow.
 
-スクリプトの最初の部分では、デプロイメント用のファイルとアーティファクトをアップロードし、スクリプト内の最後のコマンドレットで実際にテンプレートをデプロイします。たとえば、スクリプトを使用して仮想マシンを構成する必要がある場合、デプロイメント スクリプトは最初に構成スクリプトを Azure ストレージ アカウントへセキュリティで保護された方法でアップロードします。これにより、プロビジョニング中に仮想マシンを構成するために Azure リソース マネージャーで構成スクリプトを使用できるようになります。
+- Upload any files or artifacts needed for the template deployment
+- Deploy the template
 
-アップロードする必要がある追加のアーティファクトは、すべてのテンプレート デプロイメントで必要なわけではないため、*uploadArtifacts* と呼ばれるスイッチ パラメーターが評価されます。アーティファクトをアップロードする必要がある場合は、スクリプトの呼び出し時に *uploadArtifacts* スイッチを設定します。メインのテンプレート ファイルとパラメーター ファイルはアップロードする必要がないことに注意してください。構成スクリプト、ネストしたデプロイメント テンプレート、およびアプリケーション ファイルなど、その他のファイルのみをアップロードする必要があります。
+The first portion of the script uploads the files and artifacts for deployment, and the last cmdlet in the script actually deploy the template. For example, if a virtual machine needs to be configured with a script, the deployment script first securely uploads the configuration script to an Azure storage account. This makes it available to Azure Resource Manager for configuring the virtual machine during provisioning.
 
-## スクリプトの詳細な説明
+Because not all template deployments need have extra artifacts that need to be uploaded, a switch parameter called *uploadArtifacts* is evaluated. If any artifacts need to be uploaded, set the *uploadArtifacts* switch when calling the script. Note that the main template file and parameters file don’t need to be uploaded. Only other files, such as configuration scripts, nested deployment templates, and application files need to be uploaded.
 
-Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセクションでの実行内容について、次に説明します。
+## <a name="detailed-script-description"></a>Detailed script description
 
->[AZURE.NOTE] ここでは、バージョン 1.0 の Deploy-AzureResourceGroup.ps1 スクリプトについて説明します。
+Following is a description of what select sections of the Deploy-AzureResourceGroup.ps1 Azure PowerShell script do.
 
-1.	Azure リソース マネージャーのデプロイメント プロジェクトに必要なパラメーターを宣言します。いくつかのパラメーターには、プロジェクトの作成時に設定された既定値があります。スクリプト内でこれらの既定値を変更したり、スクリプトを実行する前に異なるパラメーター値を追加したりすることができます。
+>[AZURE.NOTE] This describes version 1.0 of the Deploy-AzureResourceGroup.ps1 script.
+
+1.  Declare parameters needed by Azure Resource Manager deployment project. Some parameters have default values that were set when the project was created. You can change these default values in the script or add different parameter values before you execute the script.
 
     ```
     Param(
@@ -55,32 +56,32 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
     )
     ```
 
-    |パラメーター|説明|
-    |---|---|
-    |$ResourceGroupLocation|**米国西部**や**東アジア**など、リソース グループに対するリージョンまたはデータ センターの場所。|
-    |$ResourceGroupName|Azure リソース グループの名前。|
-    |$UploadArtifacts|アーティファクトをシステムから Azure にアップロードする必要があるかどうかを示すバイナリ値。|
-    |$StorageAccountName|アーティファクトがアップロードされる Azure ストレージ アカウントの名前。|
-    |$StorageAccountResourceGroupName|ストレージ アカウントを含む Azure リソース グループの名前。|
-    |$StorageContainerName|アーティファクトをアップロードするために使用するストレージ コンテナーの名前。|
-    |$TemplateFile|Azure リソース グループ プロジェクト内のデプロイメント ファイル (`<app name>.json`) へのパス。|
-    |$TemplateParametersFile|Azure リソース グループ プロジェクト内のパラメーター ファイル (`<app name>.parameters.json`) へのパス。|
-    |$ArtifactStagingDirectory|PowerShell スクリプトのルート フォルダーを含む、アーティファクトがローカルにアップロードされているシステム上のパス。このパスには、絶対パス、またはスクリプトの場所に対する相対パスを指定できます。|
-    |$AzCopyPath|PowerShell スクリプトのルート フォルダーを含む、AzCopy.exe ツールがその .zip ファイルをコピーするパス。このパスには、絶対パス、またはスクリプトの場所に対する相対パスを指定できます。|
-    |$DSCSourceFolder|PowerShell スクリプトのルート フォルダーを含む、DSC (Desired State Configuration) ソース フォルダーへのパス。このパスには、絶対パス、またはスクリプトの場所に対する相対パスを指定できます。該当する場合、詳細については、「[Azure PowerShell DSC (Desired State Configuration) 拡張機能の概要](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx)」を参照してください。|
+  	|Parameter|Description|
+  	|---|---|
+  	|$ResourceGroupLocation|The region or data center location for the resource group, such as **West US** or **East Asia**.|
+  	|$ResourceGroupName|The name of the Azure resource group.|
+  	|$UploadArtifacts|A binary value that indicates whether artifacts need to be uploaded to Azure from your system.|
+  	|$StorageAccountName|The name of your Azure storage account where your artifacts are uploaded.|
+  	|$StorageAccountResourceGroupName|The name of the Azure resource group that contains the storage account.|
+  	|$StorageContainerName|The name of the storage container used for uploading artifacts.|
+  	|$TemplateFile|The path to the deployment file (`<app name>.json`) in your Azure Resource Group project.|
+  	|$TemplateParametersFile|The path to the parameters file (`<app name>.parameters.json`) in your Azure Resource Group project.|
+  	|$ArtifactStagingDirectory|The path on your system where artifacts are locally uploaded, including the PowerShell script root folder. This path can be absolute or relative to the script location.|
+  	|$AzCopyPath|The path where the AzCopy.exe tool copies its .zip files, including the PowerShell script root folder. This path can be absolute or relative to the script location.|
+  	|$DSCSourceFolder|The path to the DSC (Desired State Configuration) source folder, including the PowerShell script root folder. This path can be absolute or relative to the script location. See [Introducing the Azure PowerShell DSC (Desired State Configuration) extension](http://blogs.msdn.com/b/powershell/archive/2014/08/07/introducing-the-azure-powershell-dsc-desired-state-configuration-extension.aspx), if applicable, for more information.|
 
-1.	アーティファクトを Azure にアップロードする必要があるかどうかを確認します。必要ない場合は、手順 11 に進みます。それ以外の場合は、次の手順を実行します。
+1.  Check to see whether artifacts need to be uploaded to Azure. If not, skip to step 11. Otherwise, perform the following steps.
 
-1.	相対パスを含むすべての変数を絶対パスに変換します。たとえば、`..\Tools\AzCopy.exe` のようなパスを `C:\YourFolder\Tools\AzCopy.exe` に変更します。また、変数 *ArtifactsLocationName* と *ArtifactsLocationSasTokenName* を null に初期化します。*ArtifactsLocation* と *SaSToken* はテンプレートに対するパラメーターである可能性があります。パラメーター ファイル内を読み取った後にそれらの値が null の場合、スクリプトは、それらの値を生成します。
+1.  Convert any variables with relative paths to absolute paths. For example, change a path such as `..\Tools\AzCopy.exe` to `C:\YourFolder\Tools\AzCopy.exe`. Also, initialize the variables *ArtifactsLocationName* and *ArtifactsLocationSasTokenName* to null. *ArtifactsLocation* and *SaSToken* may be parameters to the template. If their values are null after reading in the parameters file, the script generates values for them.
 
-    Azure Tools では、アーティファクトを管理するために、テンプレート内でパラメーター値 *\_artifactsLocation* と *\_artifactsLocationSasToken* を使用します。PowerShell スクリプトが、これらの名前を持つパラメーターを見つけて、パラメーターの値が指定されていない場合、スクリプトはアーティファクトをアップロードして、これらのパラメーターの適切な値を返します。その後、`@OptionsParameters` を通じてコマンドレットにそれらの値を渡します。
+    The Azure Tools use the parameter values *_artifactsLocation* and *_artifactsLocationSasToken* in the template to manage artifacts. If the PowerShell script finds parameters with those names, but the parameter values are not provided, the script uploads the artifacts and returns appropriate values for those parameters. It then passes them to the cmdlet via `@OptionsParameters`.
 
-	|変数|説明|
-    |---|---|
-    |ArtifactsLocationName|Azure アーティファクトが配置されている場所のパス。|
-    |ArtifactsLocationSasTokenName|Service Bus を認証するためにスクリプトによって使用される SAS (Shared Access Signature) トークン名。詳細については、「[Service Bus での Shared Access Signature 認証](service-bus-shared-access-signature-authentication.md)」を参照してください。|
+  	|Variable|Description|
+  	|---|---|
+  	|ArtifactsLocationName|The path to where the Azure artifacts are located.|
+  	|ArtifactsLocationSasTokenName|The SAS (Shared Access Signature) token name that’s used by the script to authenticate to Service Bus. See [Shared Access Signature Authentication with Service Bus](service-bus-shared-access-signature-authentication.md) for more information.|
 
-	```
+    ```
     if ($UploadArtifacts) {
     # Convert relative paths to absolute paths if needed
     $AzCopyPath = [System.IO.Path]::Combine($PSScriptRoot, $AzCopyPath)
@@ -94,9 +95,9 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
     $OptionalParameters.Add($ArtifactsLocationSasTokenName, $null)
     ```
 
-1.	このセクションでは、<アプリ名>.parameters.json ファイル ("パラメーター ファイル" と呼ばれます) に **parameters** という名前の親ノードが (`else` ブロック内に) あるかどうかを確認します。それ以外の場合、親ノードはありません。いずれの形式も受け入れられます。
+1.  This section checks whether the <app name>.parameters.json file (referred to as the “Parameters file”) has a parent node named **parameters** (in the `else` block). Otherwise, it has no parent node. Either format is acceptable.
     
-	```
+    ```
     if ($JsonParameters -eq $null) {
             $JsonParameters = $JsonContent
         }
@@ -105,7 +106,7 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
         }
     ```
 
-1.	JSON パラメーターのコレクションを反復処理します。パラメーター値が *\_artifactsLocation* または *\_artifactsLocationSasToken* に割り当てられている場合、変数 *$OptionalParameters* にそれらの値を設定します。これにより、指定されたパラメーター値をスクリプトが誤って上書きすることを防止できます。
+1.  Iterate through the collection of JSON parameters. If a parameter value has been assigned to *_artifactsLocation* or *_artifactsLocationSasToken*, then set the variable *$OptionalParameters* with those values. This prevents the script from inadvertently overwriting any parameter values you provide.
 
     ```
     $JsonParameters | Get-Member -Type NoteProperty | ForEach-Object {
@@ -117,7 +118,7 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
     }
     ```
 
-1.	デプロイメント用のアーティファクトを保持するために使用されるストレージ アカウント リソースのストレージ アカウント キーとコンテキストを取得します。
+1.  Get the Storage account key and context for the Storage account resource used to hold the artifacts for deployment.
 
     ```
     $StorageAccountKey = (Get-AzureRMStorageAccountKey -ResourceGroupName $StorageAccountResourceGroupName -Name $StorageAccountName).Key1
@@ -125,7 +126,7 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
     $StorageAccountContext = (Get-AzureRmStorageAccount -ResourceGroupName $StorageAccountResourceGroupName -Name $StorageAccountName).Context
     ```
 
-1.	仮想マシンを構成するために PowerShell DSC を使用している場合、DSC 拡張機能では、アーティファクトが 1 つの zip ファイル内に含まれている必要があります。そのため、DSC 構成用の .zip アーカイブ ファイルを作成します。これを行うには、$DSCSourceFolder が存在するかどうかを確認します。DSC 構成が存在する場合は、それを削除して、dsc.zip という名前の新しい圧縮ファイルを作成します。
+1.  If you're using PowerShell DSC to configure a virtual machine, the DSC extension requires the artifacts to be in a single zip file. So, create a .zip archive file for the DSC configuration. To do this, check to see if $DSCSourceFolder exists. If a DSC configuration exists, remove it and then create a new compressed file called dsc.zip.
 
     ```
     # Create DSC configuration archive
@@ -137,7 +138,7 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
     }
     ```
 
-1.	Azure アーティファクトのパスがパラメーター ファイルに指定されていない場合は、アーティファクトをアップロードするときに使用する PowerShell スクリプトのパスを設定します。これを行うには、ストレージ アカウントのエンドポイント パスとストレージ コンテナー名の組み合わせを使用して、パスを作成します。次に、この新しいパスでパラメーター ファイルを更新します。
+1.  If no path for Azure artifacts is provided in the Parameters file, set a path for the PowerShell script to use when uploading artifacts. To do this, create a path using a combination of the Storage account’s endpoint path plus the Storage container name. Then, update the Parameters file with this new path.
 
     ```
     # Generate the value for artifacts location if it is not provided in the parameter file
@@ -148,7 +149,7 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
     }
     ```
 
-1.	**AzCopy** ユーティリティ (Azure リソース グループ デプロイメント プロジェクトの **Tools** フォルダーに含まれます) を使用して、ローカル ストレージのドロップ パスから、オンラインの Azure ストレージ アカウントにファイルをコピーします。この手順に失敗した場合、必要なアーティファクトがないとデプロイメントは成功しないため、スクリプトを終了します。
+1.  Use the **AzCopy** utility (included in the **Tools** folder of your Azure Resource Group deployment project) to copy any files from your local Storage drop path into your online Azure Storage account. If this step fails, exit the script since the deployment is not likely to succeed without the required artifacts.
 
     ```
     # Use AzCopy to copy files from the local storage drop path to the storage account container
@@ -156,7 +157,7 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
     if ($LASTEXITCODE -ne 0) { return }
     ```
 
-1.	アーティファクトの場所に対する SAS トークンがパラメーター ファイルに指定されていない場合は、その値を作成して、オンライン ストレージ コンテナーへの一時的な読み取り専用アクセスを提供します。次に、その SAS トークンを "optionalParameter" としてコマンドラインに渡します。 コマンドラインで渡されるパラメーターは、パラメーター ファイルに指定された値より優先されることに注意してください。
+1.  If an SAS token for the artifacts location isn’t provided in the Parameters file, create one to provide temporary read-only access to the online Storage container. Then, pass that SAS token on to the cmdline as an “optionalParameter.” Note that any parameters passed on the cmdline will take precedence over values provided in the parameters file.
 
     ```
     # Generate the value for artifacts location SAS token if it is not provided in the parameter file
@@ -169,16 +170,16 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
     }
     ```
 
-1.  リソース グループがまだ存在していない場合は作成し、デプロイメントの成功を妨げる検証エラーがないか、テンプレートおよびパラメーター ファイルを確認します。
+1.  Create the resource group if it does not already exist and check the template and parameters file for any validation errors that will prevent the deployment from succeeding.
 
     ```
-	# Create or update the resource group using the specified template file and template parameters file
+    # Create or update the resource group using the specified template file and template parameters file
     New-AzureRMResourceGroup -Name $ResourceGroupName -Location $ResourceGroupLocation -Verbose -Force -ErrorAction Stop
 
-	Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile @OptionalParameters -ErrorAction Stop
+    Test-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -TemplateFile $TemplateFile -TemplateParameterFile $TemplateParametersFile @OptionalParameters -ErrorAction Stop
     ```
 
-1. 最後に、テンプレートをデプロイします。このコードでは、タイムスタンプを使用してデプロイメントの一意の名前が作成されます。
+1. Finally, deploy the template. This code creates a unique name for the deployment using a timestamp.
 
     ```
     New-AzureRMResourceGroupDeployment -Name ((Get-ChildItem $TemplateFile).BaseName + '-' + ((Get-Date).ToUniversalTime()).ToString('MMdd-HHmm')) `
@@ -189,75 +190,75 @@ Azure PowerShell スクリプト Deploy-AzureResourceGroup.ps1 の特定のセ�
         -Force -Verbose
     ```
 
-## リソース グループのデプロイ
+## <a name="deploy-the-resource-group"></a>Deploy the resource group
 
-### Visual Studio でリソース グループをデプロイするには
+### <a name="to-deploy-the-resource-group-in-visual-studio"></a>To deploy the resource group in Visual Studio
 
-1. Azure リソース グループ プロジェクトのショートカット メニューで **[デプロイ]** > **[新しい配置]** を選択します。
+1. On the shortcut menu of the Azure Resource Group project, choose **Deploy** > **New Deployment**.
 
     ![][0]
 
-1. **[リソース グループに配置する]** ダイアログ ボックスで、配置先となる既存のリソース グループをドロップダウン リスト ボックスで選択するか、または **[&lt;新規作成…&gt;]** を選択して新しいリソース グループを作成します。
+1. In the **Deploy to Resource Group** dialog box, either choose an existing resource group in the dropdown list box to deploy to or choose **&lt;Create New…&gt;** to create a new resource group.
 
     ![][1]
 
-1. 求められた場合は、**[リソース グループの作成]** ダイアログ ボックスにリソース グループの名前と場所を入力し、**[作成]** ボタンをクリックします。
+1. If prompted, enter a resource group name and location in the **Create Resource Group** dialog box and then choose the **Create** button.
 
     ![][2]
 
-1. **[パラメーターの編集]** ボタンをクリックして、**[パラメーターの編集]** ダイアログ ボックスを表示し、不足しているパラメーターの値を入力します。
+1. Choose the **Edit Parameters** button to view the **Edit Parameters** dialog box and then enter any missing parameter values.
 
     ![][3]
 
-	>[AZURE.NOTE] 必須パラメーターの値が必要な場合、デプロイ時に、このダイアログ ボックスが自動的に表示されます。
+    >[AZURE.NOTE] If any required parameters need values, this dialog automatically appears when you deploy.
 
     ![][4]
 
-1. パラメーター値の入力が完了したら、**[保存]** ボタンをクリックして、次に **[デプロイ]** ボタンをクリックします。
+1. When you’re done enter parameter values, choose the **Save** button, and then choose the **Deploy** button.
 
-    デプロイメント スクリプト (Deploy-AzureResourceGroup.ps1) が実行され、テンプレートがすべてのアーティファクトと共に Azure にデプロイされます。
+    The deployment script (Deploy-AzureResourceGroup.ps1) runs and your template, along with any artifacts, deploys to Azure.
 
-### PowerShell を使用してリソース グループをデプロイするには
+### <a name="to-deploy-the-resource-group-by-using-powershell"></a>To deploy the resource group by using PowerShell
 
-Visual Studio の [デプロイ] コマンドと UI を使用せずにスクリプトを実行する場合、スクリプトのショートカット メニューで **[PowerShell ISE で開く]** を選択します。
+If you want to run the script without using the Visual Studio Deploy command and UI, on the shortcut menu for the script, choose **Open with PowerShell ISE**.
 
 ![][5]
 
 
-## コマンド デプロイメントの例
+## <a name="command-deployment-examples"></a>Command deployment examples
 
-### 既定値を使用したデプロイ
+### <a name="deploy-using-default-values"></a>Deploy using default values
 
-この例では、既定のパラメーター値を使用してスクリプトを実行する方法を示します。(場所のパラメーターには既定値がないため、明示的に指定する必要があります。)
+This example shows how to run the script using the default parameter values. (Because the location parameter does not have a default value, you have to provide one.)
 
 `.\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation eastus`
 
-### 既定値をオーバーライドするデプロイ
+### <a name="deploy-overriding-the-default-values"></a>Deploy overriding the default values
 
-この例では、既定値とは異なるテンプレートおよびパラメーター ファイルをデプロイするスクリプトの実行方法を示します。
+This example shows how to run the script to deploy template and parameters files that differ from the default values.
 
 ```
 .\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation eastus –TemplateFile ..\templates\AnotherTemplate.json –TemplateParametersFile ..\templates\AnotherTemplate.parameters.json
 ```
 
-### ステージング用の UploadArtifacts を使用したデプロイ
+### <a name="deploy-using-uploadartifacts-for-staging"></a>Deploy using UploadArtifacts for staging
 
-この例では、リリース フォルダーからアーティファクトをアップロードして、既定以外のテンプレートをデプロイするスクリプトの実行方法を示します。
+This example shows how to run the script to upload artifacts from the release folder and deploy non-default templates.
 
 ```
 .\Deploy-AzureResourceGroup.ps1 -StorageAccountName 'mystorage' -StorageAccountResourceGroupName 'Default-Storage-EastUS' -ResourceGroupName 'myResourceGroup' -ResourceGroupLocation 'eastus' -TemplateFile '..\templates\windowsvirtualmachine.json' -TemplateParametersFile '..\templates\windowsvirtualmachine.parameters.json' -UploadArtifacts -ArtifactStagingDirectory ..\bin\release\staging
 ```
 
-この例では、Visual Studio Online の Azure PowerShell タスク内のスクリプトを実行する方法を示します。
+This example shows how to run the script in an Azure PowerShell task in Visual Studio Online.
 
 ```
 $(Build.StagingDirectory)/AzureResourceGroup1/Scripts/Deploy-AzureResourceGroup.ps1 -StorageAccountName 'mystorage' -StorageAccountResourceGroupName 'Default-Storage-EastUS' -ResourceGroupName 'myResourceGroup' -ResourceGroupLocation 'eastus' -TemplateFile '..\templates\windowsvirtualmachine.json' -TemplateParametersFile '..\templates\windowsvirtualmachine.parameters.json' -UploadArtifacts -ArtifactStagingDirectory $(Build.StagingDirectory)
 ```
 
-## 次のステップ
-Azure リソース マネージャーの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+Learn more about Azure Resource Manager by reading [Azure Resource Manager overview](resource-group-overview.md).
 
-Azure リソース グループ プロジェクトを使用した作業の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Deploy and manage Azure resources (Azure リソースのデプロイと管理)](https://github.com/Microsoft/HealthClinic.biz/wiki/Deploy-and-manage-Azure-resources)」を参照してください。HealthClinic.biz のデモに関連する他のクイック スタートについては、「[Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
+For more examples of working with Azure Resource Group projects, see [Deploy and manage Azure resources](https://github.com/Microsoft/HealthClinic.biz/wiki/Deploy-and-manage-Azure-resources) from the [HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect [demo](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/). For more quickstarts from the HealthClinic.biz demo, see [Azure Developer Tools Quickstarts](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts).
 
 [0]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy1c.png
 [1]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy2bc.png
@@ -266,4 +267,8 @@ Azure リソース グループ プロジェクトを使用した作業の例に
 [4]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy5c.png
 [5]: ./media/vs-azure-tools-resource-groups-how-script-works/deploy6c.png
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,132 +1,133 @@
 <properties
-	pageTitle="Azure AD v2.0 エンドポイントへの変更 | Microsoft Azure"
-	description="アプリ モデル v2.0 パブリック プレビュー プロトコルに対して行われた変更について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+    pageTitle="Changes to the Azure AD v2.0 endpoint | Microsoft Azure"
+    description="A description of changes that are being made to the app model v2.0 public preview protocols."
+    services="active-directory"
+    documentationCenter=""
+    authors="dstrockis"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="dastrock"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/16/2016"
+    ms.author="dastrock"/>
 
-# v2.0 の認証プロトコルに対する重要な更新
-開発者を対象としています。 これからの 2 週間、プレビュー期間中に作成したすべてのアプリを大きく変える可能性があるいくつかの変更を v2.0 認証プロトコルに対して行います。
 
-## 何に影響がありますか?
-次の v2.0 集約型認証エンドポイントを使用するよう記述されたすべてのアプリです。
+# <a name="important-updates-to-the-v2.0-authentication-protocols"></a>Important Updates to the v2.0 Authentication Protocols
+Attention developers! Over the next two weeks, we will be making a few updates to our v2.0 authentication protocols that may mean breaking changes for any apps you have written during our preview period.  
+
+## <a name="who-does-this-affect?"></a>Who does this affect?
+Any apps that have been written to use the v2.0 converged authentication endpoint,
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
 ```
 
-v2.0 エンドポイントの詳細については、[ここ](active-directory-appmodel-v2-overview.md)を参照してください。
+More information on the v2.0 endpoint can be found [here](active-directory-appmodel-v2-overview.md).
 
-OpenID Connect または OAuth Web ミドルウェアのいずれかを使用したり、その他のサード パーティ製のライブラリを使用したりしてまたは認証を行い、v2.0 プロトコルを直接コーディングし、v2.0 のエンドポイントを使用するアプリを構築した場合、プロジェクトをテストする準備をし、必要に応じてそれを変更する必要があります。
+If you have built an app using the v2.0 endpoint by coding directly to the v2.0 protocol, using any of our OpenID Connect or OAuth web middlewares, or using other 3rd party libraries to perform authentication, you should be prepared to test your projects and make changes if necessary.
 
-## 何が影響を受けませんか?
-次の実稼働の Azure AD 認証エンドポイントに対して記述されたすべてのアプリです。
+## <a name="who-doesn`t-this-affect?"></a>Who doesn`t this affect?
+Any apps that have been written against the production Azure AD authentication endpoint,
 
 ```
 https://login.microsoftonline.com/common/oauth2/authorize
 ```
 
-このプロトコルには変更はなく、変更はありません。
+This protocol is set in stone and will not be experiencing any changes.
 
-さらに、アプリで ADAL ライブラリ**のみ**を使用して認証を行っている場合、何も変更する必要はありません。ADAL によりアプリは変更の影響を受けません。
+Furthermore, if your app **only** uses our ADAL library to perform authentication, you won`t have to change anything.  ADAL has shielded your app from the changes.  
 
-## どのような変更があったのですか?
-### JWT ヘッダーから x5t 値を削除する
-v2.0 エンドポイントは、トークンに関連するメタデータを含むヘッダー パラメーター セクションを含む JWT トークンを広範に使用します。現在の JWT のいずれかのヘッダーをデコードすると、以下のようなものがあるはずです。
+## <a name="what-are-the-changes?"></a>What are the changes?
+### <a name="removing-the-x5t-value-from-jwt-headers"></a>Removing the x5t value from JWT headers
+The v2.0 endpoint uses JWT tokens extensively, which contain a header parameters section with relevant metadata about the token.  If you decode the header of one of our current JWTs, you would find something like:
 
 ```
 { 
-	"type": "JWT",
-	"alg": "RS256",
-	"x5t": "MnC_VZcATfM5pOYiJHMba9goEKY",
-	"kid": "MnC_VZcATfM5pOYiJHMba9goEKY"
+    "type": "JWT",
+    "alg": "RS256",
+    "x5t": "MnC_VZcATfM5pOYiJHMba9goEKY",
+    "kid": "MnC_VZcATfM5pOYiJHMba9goEKY"
 }
 ```
 
-ここで "x5t" と "kid" の両プロパティは、OpenID Connect メタデータ エンドポイントから取得されたトークンの署名の検証に使用される公開キーを識別します。
+Where both the "x5t" and "kid" properties identify the public key that should be used to validate the token`s signature, as retrieved from the OpenID Connect metadata endpoint.
 
-ここで行う変更は、"x5t" プロパティの削除です。トークンの検証には同じメカニズムを使用し続けることができますが、正しい公開キーを取得するには、OpenID Connect プロトコルで指定されている、"kid" プロパティにのみ依存する必要があります。
+The change we are making here is to remove the "x5t" property.  You may continue to use the same mechanisms to validate tokens, but should rely only on the "kid" property to retrieve the correct public key, as specified in the OpenID Connect protocol. 
 
-> [AZURE.IMPORTANT] **確認事項: アプリが x5t 値の存在に依存していないことを確認してください。**
+> [AZURE.IMPORTANT] **Your job: Make sure your app does not depend on the existence of the x5t value.**
 
-### profile\_info を削除する
-今まで、v2.0 エンドポイントでは、`profile_info` というトークンの応答で、base64 でエンコードされた JSON オブジェクトを返していました。次に要求を送信することによって、v2.0 エンドポイントからアクセス トークンを要求すると、
+### <a name="removing-profile_info"></a>Removing profile_info
+Previously, the v2.0 endpoint has been returning a base64 encoded JSON object in token responses called `profile_info`.  When requesting an access token from the v2.0 endpoint by sending a request to:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/token
 ```
 
-応答は、次の JSON オブジェクトのようになります。
+The response would look like the following JSON object:
 ```
 { 
-	"token_type": "Bearer",
-	"expires_in": 3599,
-	"scope": "https://outlook.office.com/mail.read",
-	"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
-	"refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
-	"profile_info": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "token_type": "Bearer",
+    "expires_in": 3599,
+    "scope": "https://outlook.office.com/mail.read",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
+    "profile_info": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
 }
 ```
 
-`profile_info` 値には、表示名、名、姓、電子メール アドレス、ID など、そのアプリにサインインしているユーザーの情報が含まれます。`profile_info` は主に、トークンのキャッシュと表示目的で使用されていました。
+The `profile_info` value contained information about the user who signed into the app - their display name, first name, surname, email address, identifier, and so on.  Primarily, the `profile_info` was used for token caching and display purposes.
 
-今後 `profile_info` 値は削除されますが、この情報は若干異なる場所で開発者用に提供しますので心配はしないでください。`profile_info` の代わりに、v2.0 エンドポイントは各トークンの応答に `id_token` を返すようになります。
+We are now removing the `profile_info` value – but don't worry, we are still providing this information to developers in a slightly different place.  Instead of `profile_info`, the v2.0 endpoint will now return an `id_token` in each token response:
 
 ```
 { 
-	"token_type": "Bearer",
-	"expires_in": 3599,
-	"scope": "https://outlook.office.com/mail.read",
-	"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
-	"refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
-	"id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "token_type": "Bearer",
+    "expires_in": 3599,
+    "scope": "https://outlook.office.com/mail.read",
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
 }
 ```
 
-profile\_info から受け取ったのと同じ情報を取得するために、id\_token をデコードおよび解析することができます。この id\_token は、OpenID Connect で指定された内容の JSON Web Token (JWT) です。これを行うコードは非常に似ています。id\_token の中央部分 (本文) を抽出すると、base64 によってデコードされ、その中の JSON オブジェクトにアクセスできるようになります。
+You may decode and parse the id_token to retrieve the same information that you received from profile_info.  The id_token is a JSON Web Token (JWT), with contents as specified by OpenID Connect.  The code for doing so should be very similar – you simply need to extract the middle segment (the body) of the id_token and base64 decode it to access the JSON object within.
 
-これから 2 週間は、存在している `id_token` または `profile_info` のいずれかから、ユーザー情報を取得するようアプリをコーディングしてください。このようにすれば、変更があっても、アプリは `profile_info` から `id_token` への切り替えをシームレスに処理できます。
+Over the next two weeks, you should code your app to retrieve the user information from either the `id_token` or `profile_info`; whichever is present.  That way when the change is made, your app can seamlessly handle the transition from `profile_info` to `id_token` without interruption.
 
-> [AZURE.IMPORTANT] **確認事項: アプリが `profile_info` 値**の存在に依存していないことを確認してください。
+> [AZURE.IMPORTANT] **Your job: Make sure your app does not depend on the existence of the `profile_info` value.**
 
-### id\_token\_expires\_in を削除する
-`profile_info` と同様に、応答から `id_token_expires_in` パラメーターも削除します。今まで、v2.0 エンドポイントは、各 id\_token の応答と共に `id_token_expires_in` 値を返していました。承認応答の例を次に示します。
+### <a name="removing-id_token_expires_in"></a>Removing id_token_expires_in
+Similar to `profile_info`, we are also removing the `id_token_expires_in` parameter from responses.  Previously, the v2.0 endpoint would return a value for `id_token_expires_in` along with each id_token response, for instance in an authorize response:
 
 ```
 https://myapp.com?id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...&id_token_expires_in=3599...
 ```
 
-またはトークン応答の例を次に示します。
+Or in a token response:
 
 ```
 { 
-	"token_type": "Bearer",
-	"id_token_expires_in": 3599,
-	"scope": "openid",
-	"id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
-	"refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
-	"profile_info": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "token_type": "Bearer",
+    "id_token_expires_in": 3599,
+    "scope": "openid",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
+    "refresh_token": "OAAABAAAAiL9Kn2Z27UubvWFPbm0gL...",
+    "profile_info": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsI...",
 }
 ```
 
-`id_token_expires_in` 値は、id\_token が有効である秒数を示します。今後 `id_token_expires_in` 値は完全に削除します。代わりに、OpenID Connect 標準の `nbf` と `exp` 要求を使用し、id\_token の有効性を確認できます。これらの要求の詳細については、「[v2.0 トークンのリファレンス](active-directory-v2-tokens.md)」を参照してください。
+The `id_token_expires_in` value would indicate the number of seconds the id_token would remain valid for.  Now, we are removing the `id_token_expires_in` value completely.  Instead, you may use the OpenID Connect standard `nbf` and `exp` claims to examine the validity of an id_token.  See the [v2.0 token reference](active-directory-v2-tokens.md) for more information on these claims.
 
-> [AZURE.IMPORTANT] **確認事項: アプリが `id_token_expires_in` 値**の存在に依存していないことを確認してください。
+> [AZURE.IMPORTANT] **Your job: Make sure your app does not depend on the existence of the `id_token_expires_in` value.**
 
 
-### scope=openid で返される要求を変更する
-この変更が最も大きなものになります。実際、v2.0 エンドポイントを使用するほぼすべてのアプリに影響します。多くのアプリケーションは、次のように `openid` スコープを使用し v2.0 エンドポイントに要求を送信します。
+### <a name="changing-the-claims-returned-by-scope=openid"></a>Changing the claims returned by scope=openid
+This change will be the most significant – in fact, it will affect almost every app that uses the v2.0 endpoint.  Many applications send requests to the v2.0 endpoint using the `openid` scope, like:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -137,30 +138,30 @@ client_id=...
 &scope=openid offline_access https://outlook.office.com/mail.read
 ```
 
-現在、ユーザーが `openid` スコープに同意すると、アプリでは、結果の id\_token のユーザーに関する情報を多数取得できます。これらの要求には、ユーザー名、推奨ユーザー名、電子メール アドレス、オブジェクト ID などが含まれます。
+Today, when the user grants consent for the `openid` scope, your app receives a wealth of information about the user in the resulting id_token.  These claims can include their name, preferred username, email address, object ID, and more.
 
-この更新では、OpenID Connect の仕様により適合するよう `openid` スコープがアプリにアクセスを許可する情報を変更します。`openid` スコープでは、id\_token の `sub` 要求でアプリに、ユーザーのサインインの許可と、ユーザーのアプリ固有の ID の受信のみを許可します。`openid` スコープのみが付与された id\_token の要求には、個人を特定できる情報は含まれません。id\_token 要求の例を次に示します。
+In this update, we are changing the information that the `openid` scope affords your app access to, to better comform with the OpenID Connect specification.  The `openid` scope will only allow your app to sign the user in, and receive an app-specific identifier for the user in the `sub` claim of the id_token.  The claims in an id_token with only the `openid` scope granted will be devoid of any personally identifiable information.  Example id_token claims are:
 
 ```
 { 
-	"aud": "580e250c-8f26-49d0-bee8-1c078add1609",
-	"iss": "https://login.microsoftonline.com/b9410318-09af-49c2-b0c3-653adc1f376e/v2.0 ",
-	"iat": 1449520283,
-	"nbf": 1449520283,
-	"exp": 1449524183,
-	"nonce": "12345",
-	"sub": "MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q",
-	"tid": "b9410318-09af-49c2-b0c3-653adc1f376e",
-	"ver": "2.0",
+    "aud": "580e250c-8f26-49d0-bee8-1c078add1609",
+    "iss": "https://login.microsoftonline.com/b9410318-09af-49c2-b0c3-653adc1f376e/v2.0 ",
+    "iat": 1449520283,
+    "nbf": 1449520283,
+    "exp": 1449524183,
+    "nonce": "12345",
+    "sub": "MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q",
+    "tid": "b9410318-09af-49c2-b0c3-653adc1f376e",
+    "ver": "2.0",
 }
 ```
 
-アプリ内のユーザーの個人を特定できる情報 (PII) を取得するには、アプリからユーザーに追加のアクセス許可を要求する必要があります。これを実行できる OpenID Connect 仕様の 2 つの新しいスコープ、`email` スコープと `profile` スコープのサポートが導入されました。
+If you want to obtain personally identifiable information (PII) about the user in your app, your app will need to request additional permissions from the user.  We are introducing support for two new scopes from the OpenID Connect spec – the `email` and `profile` scopes – which allow you to do so.
 
-- `email` スコープは非常に明解です。id\_token の `email` 要求を使用すると、アプリでユーザーのプライマリ電子メール アドレスにアクセスできます。なお、`email` 要求は id\_tokens には必ずしもあるわけではありません。ユーザーのプロファイルにある場合のみ含まれます。
-- `profile` スコープでは、アプリに名前、推奨ユーザー名、オブジェクト ID など、ユーザーに関するその他のすべての基本的な情報へのアクセスを許可します。
+- The `email` scope is very straightforward – it allows your app access to the user's primary email address via the `email` claim in the id_token.  Note that the `email` claim will not always be present in id_tokens – it will only be included if available in the user's profile.
+- The `profile` scope affords your app access to all other basic information about the user – their name, preferred username, object ID, and so on.
 
-これにより、最小限の公開でアプリをコーディングできます。アプリがそのジョブを実行するために必要な情報セットのみをユーザーに要求できます。アプリが現在受け取っているユーザー情報をすべて受け取り続けたい場合、承認要求に次の 3 つのスコープすべてを含める必要があります。
+This allows you to code your app in a minimal-disclosure fashion – you can ask the user for just the set of information that your app requires to do its job.  If you want to continue getting the full set of user information that your app is currently receiving, you should include all three scopes in your authorization requests:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -171,50 +172,54 @@ client_id=...
 &scope=openid profile email offline_access https://outlook.office.com/mail.read
 ```
 
-即座にアプリで、`email` と `profile` のスコープは送信でき、v2.0 エンドポイントでそれら 2 つのスコープを受け取ると、必要に応じてユーザーからアクセス許可が求められ始めます。ただし、`openid` のスコープの解釈の変更は数週間実行されません。
+Your app can begin sending the `email` and `profile` scopes immediately, and the v2.0 endpoint will accept these two scopes and begin requesting permissions from users as necessary.  However, the change in the interpretation of the `openid` scope will not take effect for a few weeks.
 
-> [AZURE.IMPORTANT] **確認事項: アプリでユーザーの情報が必要な場合、`profile` と `email` のスコープを追加します。** ADAL には、既定で要求にこれらのアクセス許可が含まれることに注意してください。
+> [AZURE.IMPORTANT] **Your job: Add the `profile` and `email` scopes if your app requires information about the user.**  Note that ADAL will include both of these permissions in requests by default. 
 
-### issuer の末尾のスラッシュを削除する
-今まで、v2.0 エンドポイントからのトークンに示される issuer 値は次の形式になっていました。
+### <a name="removing-the-issuer-trailing-slash."></a>Removing the issuer trailing slash.
+Previously, the issuer value that appears in tokens from the v2.0 endpoint took the form
 
 ```
 https://login.microsoftonline.com/{some-guid}/v2.0/
 ```
 
-ここでの guid は、トークンを発行した Azure AD テナントの tenantId でした。これらの変更により、issuer 値は、両方のトークンおよび OpenID Connect 検出ドキュメントで
+Where the guid was the tenantId of the Azure AD tenant which issued the token.  With these changes, the issuer value becomes
 
 ```
 https://login.microsoftonline.com/{some-guid}/v2.0 
 ```
 
-次のようになります。
+in both tokens and in the OpenID Connect discovery document.
 
-> [AZURE.IMPORTANT] **確認事項: issuer 値の検証時、アプリで末尾のスラッシュの有無にかかわらず、issuer 値が受け入れられることを確認してください。**
+> [AZURE.IMPORTANT] **Your job: Make sure your app accepts the issuer value both with and without a trailing slash during issuer validation.**
 
-## なぜ変更するのか?
-これらの変更を導入する主な目的は、OpenID Connect 標準の仕様に準拠するためです。OpenID Connect に準拠することにより、Microsoft ID サービスおよびその他の業界の ID サービスと統合することの違いを最小限に抑えたいと考えています。開発者が Microsoft での違いのために、ライブラリを変更することがなく自分の好みのオープン ソースの認証ライブラリを使用できるようにすることが目的です。
+## <a name="why-change?"></a>Why change?
+The primary motivation for introducing these changes is to be compliant with the OpenID Connect standard specification.  By being OpenID Connect compliant, we hope to minimize differences between integrating with Microsoft identity services and with other identity services in the industry.  We want to enable developers to use their favorite open source authentication libraries without having to alter the libraries to accommodate Microsoft differences.
 
-## 何ができますか?
-現時点では、上記のすべての変更の適用を開始できます。即座に次を実行する必要があります。
+## <a name="what-can-you-do?"></a>What can you do?
+As of today, you can begin making all of the changes described above.  You should immediately:
 
-1.	**`x5t` ヘッダー パラメーターの依存関係をすべて削除します。**
-2.	**トークン応答で、適切に `profile_info` から `id_token` に移行できるようにします。**
-3.  **`id_token_expires_in` 応答パラメーターの依存関係をすべて削除します。**
-3.	**アプリにユーザーの基本情報が必要な場合、アプリに `profile` スコープと `email` スコープを追加します。**
-4.	**トークンで issuer 値が末尾のスラッシュの有無にかかわらず受け入れられるようにします。**
+1.  **Remove any dependencies on the `x5t` header parameter.**
+2.  **Gracefully handle the transition from `profile_info` to `id_token` in token responses.**
+3.  **Remove any dependencies on the `id_token_expires_in` response parameter.**
+3.  **Add the `profile` and `email` scopes to your app if your app needs basic user information.**
+4.  **Accept issuer values in tokens both with and without a trailing slash.**
 
-[v2.0 プロトコルに関するドキュメント](active-directory-v2-protocols.md)では、これらの変更を反映するよう既に更新されているので、コードの更新時の参照として使用することができます。
+Our [v2.0 protocol documentation](active-directory-v2-protocols.md) has already been updated to reflect these changes, so you may use it as reference in helping update your code.
 
-変更の範囲に関して他に質問がある場合、Twitter の @AzureAD までお問い合わせください。
+If you have any further questions on the scope of the changes, please feel free to reach out to us on Twitter at @AzureAD.
 
-## プロトコルの変更はどれくらいの頻度で発生するのですか?
-今後、認証プロトコルには大きな変更はないと予測しています。近いうちにこの種の更新を行わなくて済むよう、意図的にこれらの変更を 1 つのリリースにバンドルしています。もちろん、集中型の v2.0 認証サービスにユーザーが利用できる機能は追加し続けますが、それらは追加型の変更で、既存のコードは壊さないものにします。
+## <a name="how-often-will-protocol-changes-occur?"></a>How often will protocol changes occur?
+We do not foresee any further breaking changes to the authentication protocols.  We are intentionally bundling these changes into one release so that you won`t have to go through this type of update process again any time soon.  Of course, we will continue to add features to the converged v2.0 authentication service that you can take advantage of, but those changes should be additive and not break existing code.
 
-最後に、プレビュー期間中にお試しいただいたことに感謝したいと思います。これまで、早期に採用していただいた方々の洞察および体験は非常に貴重でした。今後も引き続きご意見やアイディアを共有していただけると幸いです。
+Lastly, we would like to say thank you for trying things out during the preview period.  The insights and experiences of our early adopters have been invaluable thus far, and we hope you`ll continue to share your opinions and ideas.
 
-コーディングをお楽しみください!
+Happy coding!
 
-Microsoft ID 部門
+The Microsoft Identity Division
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

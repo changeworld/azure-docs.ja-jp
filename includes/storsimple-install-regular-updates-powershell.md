@@ -1,24 +1,27 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### StorSimple 用 Windows PowerShell を使用して通常の更新プログラムをインストールするには
+#### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>To install regular updates via Windows PowerShell for StorSimple
 
-1. デバイスのシリアル コンソールを開き、オプション 1 の **[フル アクセスによるログイン]** を選択します。パスワードを入力します。既定のパスワードは *Password1* です。 
+1. Open the device serial console and select option 1, **Log in with full access**. Type the password. The default password is *Password1*. 
 
-2. コマンド プロンプトに、次のコマンドを入力します。
+2. At the command prompt, type:
 
      `Get-HcsUpdateAvailability`
     
-    更新プログラムが利用可能かどうかと、更新プログラムが中断を伴うものであるかどうかが通知されます。
+    You will be notified if updates are available and whether the updates are disruptive or non-disruptive.
 
-3. コマンド プロンプトに、次のコマンドを入力します。
+3. At the command prompt, type:
 
      `Start-HcsUpdate`
 
-    更新プロセスが開始します。
+    The update process will start.
 
 > [AZURE.IMPORTANT]
 >
-> - このコマンドは通常の更新プログラムのみに適用されます。このコマンドは 1 つのコントローラーでのみ実行しますが、両方のコントローラーが更新されます。 
-> - 更新プロセス中にコントローラーのフェールオーバーが行われても、システムの可用性または処理には影響しません。
+> - This command applies only to regular updates. You run this command on only one controller, but both controllers will be updated. 
+> - You may notice a controller failover during the update process; however, the failover will not affect system availability or operation.
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

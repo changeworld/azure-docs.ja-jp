@@ -1,111 +1,117 @@
 <properties
-	pageTitle="トレーニングでの Azure DevTest Labs の使用 | Microsoft Azure"
-	description="トレーニングの各種シナリオを実現するために Azure DevTest Labs を使用する方法について説明します。"
-	services="devtest-lab,virtual-machines"
-	documentationCenter="na"
-	authors="steved0x"
-	manager="douge"
-	editor=""/>
+    pageTitle="Use Azure DevTest Labs for training | Microsoft Azure"
+    description="Learn how to use Azure DevTest Labs for training scenarios."
+    services="devtest-lab,virtual-machines"
+    documentationCenter="na"
+    authors="steved0x"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="devtest-lab"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/12/2016"
-	ms.author="sdanie"/>
+    ms.service="devtest-lab"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/12/2016"
+    ms.author="sdanie"/>
 
-# トレーニングでの Azure DevTest Labs の使用
 
-Azure DevTest Labs を使用すると、開発とテストのみならず、さまざまな主要シナリオを実現できます。そのようなシナリオの 1 つが、トレーニング用のラボのセットアップです。Azure DevTest Labs を使用すると、ラボを作成し、各受講者がトレーニング用に同じ分離環境を作成するために使用できるカスタム テンプレートを提供できます。各受講者が必要としている場合にのみトレーニング環境を利用できるようにし、トレーニング環境にトレーニングに必要なリソース (仮想マシンなど) が十分に含まれるようにすることが可能です。さらに、ワンクリックでアクセスできるラボを受講者と簡単に共有することもできます。
+# <a name="use-azure-devtest-labs-for-training"></a>Use Azure DevTest Labs for training
+
+Azure DevTest Labs can be used to implement many key scenarios in addition to dev/test. One of those scenarios is to set up a lab for training. Azure DevTest Labs allows you to create a lab where you can provide custom templates that each trainee can use to create identical and isolated environments for training. You can ensure that training environments are available to each trainee only when they need them and contain enough resources - such as virtual machines - required for the training. Finally, you can easily share the lab with trainees, which they can access in one click.   
 
 ![Use DevTest Labs for training](./media/devtest-lab-training-lab/devtest-lab-training.png)
 
-Azure DevTest Labs は、任意の仮想環境でトレーニングを実施するうえで必要な、次の要件を満たしています。
+Azure DevTest Labs meets the following requirements that are required to conduct training in any virtual environment: 
 
 
--	受講者は、他の受講者によって作成された VM を見ることができない。
--	すべてのトレーニング マシンが同じである。
--	受講者が各自のトレーニング環境を迅速にプロビジョニングできる。
--	受講者がトレーニングに必要な数以上の VM を使用できないようにし、コストを管理できる。また、受講者が使用していない VM をシャットダウンできる。
--	トレーニング ラボを各受講者と簡単に共有できる。
--	トレーニング ラボを繰り返し再利用できる。
+-   Trainees cannot see VMs created by other trainees
+-   Every training machine should be identical
+-   Trainees can quickly provision their training environments
+-   Control cost by ensuring that trainees cannot get more VMs than they need for the training and also shutdown VMs when they are not using them
+-   Easily share the training lab with each trainee
+-   Reuse the training lab again and again
 
 
-この記事では、先ほど説明したトレーニング要件を満たすために使用できる各種 Azure DevTest Labs 機能のほか、トレーニング用のラボをセットアップするための詳細な手順について説明します。
+In this article, you learn about various Azure DevTest Labs features that can be used to meet the previously described training requirements and detailed steps that you can follow to set up a lab for training.  
 
 
-## Azure DevTest Labs でのトレーニングの実現
+## <a name="implementing-training-with-azure-devtest-labs"></a>Implementing training with Azure DevTest Labs
 
-1. **ラボを作成する**
+1. **Create the lab** 
 
-    ラボは Azure DevTest Labs における開始点です。ラボを作成したら、ラボへのユーザー (受講者) の追加、コストを管理するためのポリシーの設定、迅速に作成可能な VM イメージの定義など、各種タスクを実行できます。
+    Labs are the starting point in Azure DevTest Labs. Once you create a lab, you can perform tasks such as add users (trainees) to the lab, set policies to control costs, define VM images that can create quickly, and more.   
 
-    次の表のリンクをクリックして詳細を確認してください。
+    Learn more by clicking on the links in the following table:
 
-	| タスク | 学習内容 |
+  	| Task                                                            | What you learn                                                    |
 |-----------------------------------------------------------------|----------------------------------------------------------------------|
-| [Azure DevTest Labs でのラボの作成](devtest-lab-create-lab.md) | Azure Portal で Azure DevTest Labs のラボを作成する方法について学びます。 |
+| [Create a lab in Azure DevTest Labs](devtest-lab-create-lab.md) | Learn how to create a lab in Azure DevTest Labs in the Azure portal. |
 
-2. **既製の Marketplace イメージとカスタム イメージを使用してトレーニング用の VM を数分で作成する**
+2. **Create training VMs in minutes using ready-made marketplace images and custom images** 
     
-    Azure Marketplace にあるさまざまなイメージから既製のイメージを選択し、ラボの受講者が利用できるようにすることが可能です。既製のイメージで要件を満たすことができない場合は、カスタム イメージを作成できます。それには、Azure Marketplace の既製のイメージを使用してラボ VM を作成し、トレーニングに必要なすべてのソフトウェアをインストールしてから、VM をラボにカスタム イメージとして保存します。
+    You can pick ready-made images from a wide variety of images in the Azure Marketplace and make them available for the trainees in the lab. If the ready-made images don't meet your requirements, you can create a custom image by creating a lab VM using a ready-made image from Azure Marketplace, installing all the software that you need for the training, and saving the VM as custom image in the lab. 
 
-    次の表のリンクをクリックして詳細を確認してください。
+    Learn more by clicking on the links in the following table:
 
-	| タスク | 学習内容 |
+  	| Task                                                                              | What you learn                                                                                                                                  |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Azure Marketplace のイメージの構成](devtest-lab-configure-marketplace-images.md) | Azure Marketplace イメージをホワイトリストに登録し、トレーニングに必要なイメージのみを利用できるようにする方法について学びます。 |
-| [カスタム イメージの作成](devtest-lab-create-template.md) | トレーニングに必要なソフトウェアを事前にインストールしてカスタム イメージを作成し、受講者がそのカスタム イメージを使用して VM を迅速に作成できるようにします。 |
+| [Configure Azure Marketplace images](devtest-lab-configure-marketplace-images.md) | Learn how you can whitelist Azure Marketplace images; making available for selection only the images you want for the training.                 |
+| [Create a custom image](devtest-lab-create-template.md)                           | Create a custom image by pre-installing the software you need for the training so that trainees can quickly create a VM using the custom image. |
 
-3. **トレーニング マシン用に、再利用可能なテンプレートを作成する**
+3. **Create reusable templates for training machines** 
 
-    Azure DevTest Labs における数式とは、VM の作成に使用できる既定のプロパティ値の一覧です。ラボで数式を作成するには、イメージ、VM サイズ (CPU と RAM の組み合わせ)、仮想ネットワークを選択します。各受講者は、ラボの数式を確認して、VM の作成に使用することができます。
+    A formula in Azure DevTest Labs is a list of default property values used to create a VM. You can create a formula in the lab by picking an image, a VM size (a combination of CPU and RAM), and a virtual network. Each trainee can see the formula in the lab and use it to create a VM. 
 
-    次の表のリンクをクリックして詳細を確認してください。
+    Learn more by clicking on the links in the following table:
 
-	| タスク | 学習内容 |
+  	| Task                                                                         | What you learn                                                                                                          |
 |------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| [VM を作成するための DevTest ラボの数式の管理](devtest-lab-manage-formulas.md) | イメージ、VM サイズ (CPU と RAM の組み合わせ)、仮想ネットワークを選択して数式を作成する方法について学びます。 |
+| [Manage DevTest Labs formulas to create VMs](devtest-lab-manage-formulas.md) | Learn how you can create a formula by picking up an image, VM size (combination of CPU and RAM), and a virtual network. |
 
-4. **コストを管理する**
+4. **Control costs**
 
-    Azure DevTest Labs では、ラボでポリシーを設定して、ラボで受講者が作成できる VM の最大数を指定できます。
+    Azure DevTest Labs allows you to set a policy in the lab to specify the maximum number of VMs that can be created by a trainee in the lab. 
 
-    複数日のトレーニングを実施しているときに、特定の時間にすべての VM を停止し、次の日に自動的に再起動させる必要がある場合は、ラボで自動シャットダウンと自動起動のポリシーを設定すれば簡単です。
+    If you are conducting multi-day training and want to stop all the VMs at a particular time of the day and then automatically restart them the following day, you can easily accomplish that by setting auto-shutdown and auto-start policies in the lab. 
 
-    さらに、トレーニングが終了したときに、単一の PowerShell スクリプトを実行して、すべての VM を一度に削除することもできます。
+    Finally, when training is complete you can delete all the VMs at once by running a single PowerShell script. 
 
-    次の表のリンクをクリックして詳細を確認してください。
+    Learn more by clicking on the links in the following table:
 
-	| タスク | 学習内容 |
+  	| Task                                                                                                                                    | What you learn                                                      |
 |-----------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-| [ラボのポリシーの定義](devtest-lab-set-lab-policy.md) | ラボでポリシーを設定してコストを管理します。 |
-| [PowerShell スクリプトを使用したすべてのラボ VM の削除](devtest-lab-faq.md#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) | トレーニングが完了したときに、1 回の操作ですべてのラボを削除します。 |
+| [Define lab policies](devtest-lab-set-lab-policy.md)                                                                                    | Control costs by setting policies in the lab.                       |
+| [Delete all the lab VMs using a PowerShell script](devtest-lab-faq.md#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) | Delete all the labs in one operation when the training is complete. |
 
-5. **各受講者とラボを共有する**
+5. **Share the lab with each trainee**
 
-	受講者と共有したリンクを使用すれば、ラボに直接アクセスできます。受講者は [Microsoft アカウント](devtest-lab-faq.md#what-is-a-microsoft-account)さえ持っていれば、Azure アカウントすら必要ありません。受講者は他の受講者によって作成された VM を見るこはできません。
+    Labs can be directly accessed using a link that you share with your trainees. Your trainees don't even have to have an Azure account, as long as they have a [Microsoft account](devtest-lab-faq.md#what-is-a-microsoft-account). Trainees cannot see VMs created by other trainees.  
 
-    次の表のリンクをクリックして詳細を確認してください。
+    Learn more by clicking on the links in the following table:
 
-	| タスク | 学習内容 |
+  	| Task                                                                                                                                | What you learn                                                   |
 |-------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
-| [Azure DevTest Labs でのラボへの受講者の追加](devtest-lab-add-devtest-user.md) | Azure Portal を使用してトレーニング ラボに受講者を追加します。 |
-| [PowerShell スクリプトを使用した、ラボへの受講者の追加](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) | PowerShell を使用してトレーニング ラボへの受講者の追加を自動化します。 |
-| [ラボへのリンクの取得](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) | ハイパーリンクを通じてラボに直接アクセスする方法について学びます。 |
+| [Add a trainee to a lab in Azure DevTest Labs](devtest-lab-add-devtest-user.md)                                                     | Use the Azure portal to add trainees to your training lab.       |
+| [Add trainees to the lab using a PowerShell script](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) | Use PowerShell to automate adding trainees to your training lab. |
+| [Get a link to the lab](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab)                                                  | Learn how a lab can be directly accessed via a hyperlink.        |
 
-6. **ラボを繰り返し再利用する**
+6. **Reuse the lab again and again** 
 
-    カスタム設定も含め、ラボの作成は自動化できます。それには、Resource Manager テンプレートを作成し、それを使って同一のラボを繰り返し作成します。
+    You can automate lab creation, including custom settings, by creating a Resource Manager template and using it to create identical labs again and again. 
 
-    次の表のリンクをクリックして詳細を確認してください。
+    Learn more by clicking on the links in the following table:
 
-	| タスク | 学習内容 |
+  	| Task                                                                                                                               | What you learn                                                      |
 |------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-| [Resource Manager テンプレートを使用したラボの作成](devtest-lab-faq.md#how-do-i-create-a-lab-from-an-azure-resource-manager-template) | Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
+| [Create a lab using a Resource Manager template](devtest-lab-faq.md#how-do-i-create-a-lab-from-an-azure-resource-manager-template) | Create labs in Azure DevTest Labs using Resource Manager templates. |
 
-[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+[AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]  
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

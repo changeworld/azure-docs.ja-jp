@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Azure SQL Database FAQ" 
-   description="クラウド データベースと Azure SQL Database、Microsoft のリレーショナル データベース管理システム (RDBMS)、およびクラウド内のサービスとしてのデータベースのよくある質問に対する回答です。" 
+   description="Answers to common questions customers ask about cloud databases and Azure SQL Database, Microsoft's relational database management system (RDBMS) and database as a service in the cloud." 
    services="sql-database" 
    documentationCenter="" 
    authors="CarlRabeler" 
@@ -16,77 +16,82 @@
    ms.date="08/16/2016"
    ms.author="sashan;carlrab"/>
 
-# SQL Database に関する FAQ
 
-## SQL Database の使用量は請求書にどのように表示されますか。 
-SQL Database では、予測可能な 1 時間単位のレートで、サービス階層と、Single Database の場合はパフォーマンス レベル、エラスティック データベース プールの場合は eDTU の両方に基づいて請求が行われます。実際の使用量は時間単位でコンピューティングされるため、表示される請求額は 1 時間分に満たない場合があります。たとえば、1 か月間にデータベースが存在したのが 12 時間だった場合、請求書には半日分の使用が示されます。また、請求書にはサービス階層とパフォーマンス レベルおよびプールあたりの eDTU の内訳が記載されるため、それぞれが 1 か月間に発生したデータベース日数を簡単に把握できます。
+# <a name="sql-database-faq"></a>SQL Database FAQ
 
-## Single Database がアクティブであったのが 1 時間に満たない場合や上位のサービス階層の使用が 1 時間に満たない場合はどうなりますか。
-使用状況やデータベースがアクティブであったのが 1 時間未満であったことに関係なく、データベースが存在していた 1 時間単位で、その時間に使用された最上位のサービス階層とパフォーマンス レベルで課金は行われます。たとえば、Single Database を作成し、それを 5 分後に削除した場合、請求書にはデータベース時間として 1 時間の請求が表示されます。
+## <a name="how-does-the-usage-of-sql-database-show-up-on-my-bill?"></a>How does the usage of SQL Database show up on my bill? 
+SQL Database bills on a predictable hourly rate based on both the service tier + performance level for single databases or eDTUs per elastic database pool. Actual usage is computed and pro-rated hourly, so your bill might show fractions of an hour. For example, if a database exists for 12 hours in a month, your bill shows usage of 0.5 days. Additionally, service tiers + performance level and eDTUs per pool are broken out in the bill to make it easier to see the number of database days you used for each in a single month.
 
-例
-	
-- Basic データベースを作成し、それをすぐに Standard S1 にアップグレードした場合、最初の 1 時間分として Standard S1 のレートが課金されます。
+## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour?"></a>What if a single database is active for less than an hour or uses a higher service tier for less than an hour?
+You are billed for each hour a database exists using the highest service tier + performance level that applied during that hour, regardless of usage or whether the database was active for less than an hour. For example, if you create a single database and delete it five minutes later your bill reflects a charge for one database hour. 
 
-- たとえば、午後 10 時にデータベースを Basic から Premium にアップグレードし始めて、次の日の午前 1 時 35 分にアップグレードが完了した場合、Premium の料金が課金されるのは、午前 1 時からです。
+Examples
+    
+- If you create a Basic database and then immediately upgrade it to Standard S1, you are charged at the Standard S1 rate for the first hour.
 
-- 午前 11 時に、データベースを Premium から Basic にダウングレードし始めて、午後 2 時 15 分に完了した場合、Premium の料金が課金されるのは午後 3 時までで、それ以降は Basic の料金が課金されます。
+- If you upgrade a database from Basic to Premium at 10:00 p.m. and upgrade completes at 1:35 a.m. on the following day, you are charged at the Premium rate starting at 1:00 a.m. 
 
-## エラスティック データベース プールの使用量は請求書にどのように表示されますか。プールあたりの eDTU を変更した場合どうなりますか。
-エラスティック データベース プールの料金は、[価格ページ](https://azure.microsoft.com/pricing/details/sql-database/)のプールあたりの eDTU 下の単位に従い請求書に Elastic DTU (eDTU) として表示されます。エラスティック データベース プールでは、データベース単位の請求はありません。課金は、使用量やプールがアクティブであったのが 1 時間に満たないということに関係なく、プールが存在していた時間の最上位の eDTU を使用して 1 時間単位で行われます。
+- If you downgrade a database from Premium to Basic at 11:00 a.m. and it completes at 2:15 p.m., then the database is charged at the Premium rate until 3:00 p.m., after which it is charged at the Basic rates.
 
-例
+## <a name="how-does-elastic-database-pool-usage-show-up-on-my-bill-and-what-happens-when-i-change-edtus-per-pool?"></a>How does elastic database pool usage show up on my bill and what happens when I change eDTUs per pool?
+Elastic database pool charges show up on your bill as Elastic DTUs (eDTUs) in the increments shown under eDTUs per pool on [the pricing page](https://azure.microsoft.com/pricing/details/sql-database/). There is no per-database charge for elastic database pools. You are billed for each hour a pool exists at the highest eDTU, regardless of usage or whether the pool was active for less than an hour. 
 
-- 午前 11 時 18 分に 200 eDTU の Standard エラスティック データベース プールを作成し、プールに 5 つのデータベースを追加した場合、午前 11 時から始まって、その日中は 1 時間 200 eDTU が課金されます。
-- 2 日目には、データベース 1 が午前 5 時 5 分から 50 eDTU の消費を開始し、その日はそれが維持されます。データベース 2 ～ 5 は、0 ～ 80 eDTU の間で変動します。その日、その 1 日間異なる eDTU を消費するデータベースが他に 5 つ追加されました。2 日目は、丸 1 日 200 eDTU が課金されます。
-- 3 日目の午前 5 時に、さらにデータベースが 15 追加されました。1 日中データベースの使用量は増え、午後 8 時 5 分にプールの eDTU を 200 から 400 に増やすことに決めました。午後 8 時まで 200 eDTU レベルで課金され、残りの 4 時間は 400 eDTU に増やされました。
+Examples
 
-## エラスティック データベース プールでアクティブ geo レプリケーションを使用した場合、請求書にはどのように表示されますか。
-Elastic Database で[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用した場合、Single Database とは異なり、請求書には直接の影響はありません。各プール (プライマリ プールおよびセカンダリ プール) にプロビジョニングされた eDTU に対してのみ課金されます。
+- If you create a Standard elastic database pool with 200 eDTUs at 11:18 a.m., adding five databases to the pool, you are charged for 200 eDTUs for the whole hour, beginning at 11 a.m. through the remainder of the day.
+- On Day 2, at 5:05 a.m., Database 1 begins consuming 50 eDTUs and holds steady through the day. Databases 2-5 fluctuate between 0 and 80 eDTUs. During the day, you add five other databases that consume varying eDTUs throughout the day. Day 2 is a full day billed at 200 eDTU. 
+- On Day 3, at 5 a.m. you add another 15 databases. Database usage increases throughout the day to the point where you decide to increase eDTUs for the pool from 200 to 400 at 8:05 p.m. Charges at the 200 eDTU level were in effect until 8 pm and increases to 400 eDTUs for the remaining four hours. 
 
-## 監査機能を使用すると請求書にどのような影響がありますか。 
-監査機能は、追加料金なしで SQL Database サービスに組み込まれており、Basic、Standard、Premium データベースで利用可能です。ただし、監査ログを保存する場合、監査機能は Azure Storage アカウントを使用するので、監査ログのサイズに応じて Azure Storage のテーブルとキューの料金が課されます。
+## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-database-pool-show-up-on-my-bill?"></a>How does the use of Active Geo-Replication in an elastic database pool show up on my bill?
+Unlike single databases, using [Active Geo-Replication](sql-database-geo-replication-overview.md) with elastic databases doesn't have a direct billing impact.  You are only charged for the eDTUs provisioned for each of the pools (primary pool and secondary pool)
 
-## Single Database とエラスティック データベース プールに適したサービス階層とパフォーマンス レベルはどのように調べることができますか。 
-使用できるツールが少数あります。
+## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill?"></a>How does the use of the auditing feature impact my bill? 
+Auditing is built into the SQL Database service at no extra cost and is available to Basic, Standard, and Premium databases. However, to store the audit logs, the auditing feature uses an Azure Storage account, and rates for tables and queues in Azure Storage apply based on the size of your audit log.
 
-- オンプレミスのデータベースの場合、必要なデータベースと DTU の推奨を行い、エラスティック データベース プール用の複数のデータベースを評価する、[DTU サイズ設定サポート ツール](http://dtucalculator.azurewebsites.net/)を使用できます。
-- 使用履歴からプールの Single Database に利点があると判断された場合、Azure インテリジェント エンジンはエラスティック データベース プールを推奨します。「[Azure ポータルを使用したエラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)」を参照してください。自分で計算する方法については、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照してください。
-- Single Database の調整については、「[Single Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)」を参照してください。
+## <a name="how-do-i-find-the-right-service-tier-and-performance-level-for-single-databases-and-elastic-database-pools?"></a>How do I find the right service tier and performance level for single databases and elastic database pools? 
+There are a few tools available to you. 
 
-## Single Database のサービス階層またはパフォーマンス レベルは何回変更できますか。 
-V12 データベースでは、サービス階層 (Basic、Standard、および Premium) または (S1 から S2 などの) サービス階層のパフォーマンス レベルは、必要な回数だけ変更できます。以前のバージョンのデータベースでは、サービス階層またはパフォーマンス レベルは、24 時間で合計 4 回変更できます。
+- For on-premises databases, use the [DTU sizing advisor](http://dtucalculator.azurewebsites.net/) to recommend the databases and DTUs required, and evaluate multiple databases for elastic database pools.
+- If a single database would benefit from being in a pool, Azure's intelligent engine recommends an elastic database pool if it sees a historical usage pattern that warrants it. See [Monitor and manage an elastic database pool with the Azure portal](sql-database-elastic-pool-manage-portal.md). For details about how to do the math yourself, see [Price and performance considerations for an elastic database pool](sql-database-elastic-pool-guidance.md)
+- To see whether you need to dial a single database up or down, see [performance guidance for single databases](sql-database-performance-guidance.md).
 
-##各プールの eDTU はどのくらいの頻度で調整できますか。 
-頻度に制限はありません。必要なだけ調整できます。
+## <a name="how-often-can-i-change-the-service-tier-or-performance-level-of-a-single-database?"></a>How often can I change the service tier or performance level of a single database? 
+With V12 databases, you can change the service tier (between Basic, Standard, and Premium) or the performance level within a service tier (for example, S1 to S2) as often as you want. For earlier version databases, you can change the service tier or performance level a total of four times in a 24-hour period.
 
-## Single Database のサービス階層またはパフォーマンス レベルの変更や、エラスティック データベース プールからのデータベースの出し入れには、どれくらいの時間がかかりますか。 
-データベースのサービス階層の変更やそれのプールからの出し入れでは、バック グラウンド操作でプラットフォームにデータベースをコピーする必要があります。サービス階層の変更は、データベースのサイズに応じて数分から数時間かかることがあります。いずれの場合も、データベースはオンラインを維持し、移動中も使用できます。Single Database の変更の詳細については、「[データベースのサービス階層の変更](sql-database-scale-up.md)」を参照してください。
+##<a name="how-often-can-i-adjust-the-edtus-per-pool?"></a>How often can I adjust the eDTUs per pool? 
+As often as you want.
 
-## Single Database と Elastic Database はどのように使い分けできますか。 
-一般に、エラスティック データベース プールは、典型的な[サービスとしてのソフトウェア (SaaS) アプリケーションのパターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)用に設計されており、データベースは顧客またはテナントごとに 1 つです。個々のデータベースを購入し、さまざまな、またはピーク時の需要に合わせてオーバープロビジョニングすることはコスト効率がよくありません。プールを使用すると、プールでパフォーマンスは全体的に管理され、データベースは自動的にスケールアップおよびダウンされます。
+## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-database-pool?"></a>How long does it take to change the service tier or performance level of a single database or move a database in and out of an elastic database pool? 
+Changing the service tier of a database and moving in and out of a pool requires the database to be copied on the platform as a background operation. Changing the service tier can take from a few minutes to several hours depending on the size of the databases. In both cases, the databases remain online and available during the move. For details on changing single databases, see [Change the service tier of a database](sql-database-scale-up.md). 
 
-使用パターンから利益があると判断される場合、Azure インテリジェント エンジンはデータベースにプールを推奨します。詳細については、「[SQL Database の価格レベルの提案](sql-database-service-tier-advisor.md)」を参照してください。Single Database と Elastic Database を選択する際の詳細なガイダンスについては、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照してください。
+## <a name="when-should-i-use-a-single-database-vs.-elastic-databases?"></a>When should I use a single database vs. elastic databases? 
+In general, elastic database pools are designed for a typical [software-as-a-service (SaaS) application pattern](sql-database-design-patterns-multi-tenancy-saas-applications.md), where there is one database per customer or tenant. Purchasing individual databases and overprovisioning to meet the variable and peak demand for each database is often not cost efficient. With pools, you manage the collective performance of the pool, and the databases scale up and down automatically. 
 
-## バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までが提供されるというのはどういう意味ですか。 
-バックアップ ストレージは、[ポイントインタイム リストア](sql-database-recovery-using-backups.md#-point-in-time-restore)と [geo リストア](sql-database-recovery-using-backups.md#geo-restore)に使用される自動化されたデータベース バックアップに関連付けられたストレージです。Microsoft Azure SQL Database は、バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までを追加のコストなしで提供します。たとえば、プロビジョニングされたデータベース サイズが 250 GB の Standard データベース インスタンスの場合、500 GB のバックアップ ストレージが追加のコストなしで提供されます。提供されるバックアップ ストレージをデータベースが超過している場合は、Azure サポートに連絡して保有期間を短縮するか、または読み取りアクセスのジオ (主要地域) 冗長ストレージ (RA-GRS) の標準料金をお支払いいただいてバックアップ ストレージを追加することができます。RA-GRS の請求の詳細については、「Storage の料金詳細」を参照してください。
+Azure's intelligent engine recommends a pool for databases when a usage pattern warrants it. For details, see [SQL Database pricing tier recommendations](sql-database-service-tier-advisor.md). For detailed guidance about choosing between single and elastic databases, see [Price and performance considerations for elastic database pools](sql-database-elastic-pool-guidance.md).
 
-## Web または Business を新しいサービス階層に移行する際に何を理解しておけばよいでしょうか。
-Azure SQL Web データベースおよび Business データベースは提供終了になりました。Basic、Standard、Premium、および Elastic 階層は、提供終了になった Web データベースおよび Business データベースの代わりです。別途、この移行期間に役立つ FAQ を用意しています。[Web および Business Edition の終了に関する FAQ](sql-database-web-business-sunset-faq.md)
+## <a name="what-does-it-mean-to-have-up-to-200%-of-your-maximum-provisioned-database-storage-for-backup-storage?"></a>What does it mean to have up to 200% of your maximum provisioned database storage for backup storage? 
+Backup storage is the storage associated with your automated database backups that are used for [Point-In-Time-Restore](sql-database-recovery-using-backups.md#-point-in-time-restore) and [Geo-Restore](sql-database-recovery-using-backups.md#geo-restore). Microsoft Azure SQL Database provides up to 200% of your maximum provisioned database storage of backup storage at no additional cost. For example, if you have a Standard DB instance with a provisioned DB size of 250 GB, you are provided with 500 GB of backup storage at no additional charge. If your database exceeds the provided backup storage, you can choose to reduce the retention period by contacting Azure Support or pay for the extra backup storage billed at standard Read-Access Geographically Redundant Storage (RA-GRS) rate. For more information on RA-GRS billing, see Storage Pricing Details.
 
-## 同じ Azure 地理的条件内で 2 つのリージョン間のデータベースを geo レプリケートする場合に予想されるレプリケーションの遅延はどのくらいですか。  
-現在、5 秒間の RPO をサポートしているため、geo セカンダリが Azure 推奨のペアになっているリージョンでホストされ、同じサービス レベルである限り、レプリケーションの遅延はそれより短くなっています。
+## <a name="i'm-moving-from-web/business-to-the-new-service-tiers,-what-do-i-need-to-know?"></a>I'm moving from Web/Business to the new service tiers, what do I need to know?
+Azure SQL Web and Business databases are now retired. The Basic, Standard, Premium, and Elastic tiers replace the retiring Web and Business databases. We've additional FAQ that should help you in this transition period. [Web and Business Edition sunset FAQ](sql-database-web-business-sunset-faq.md)
 
-## geo セカンダリをプライマリ データベースと同じリージョンに作成する場合に予想されるレプリケーションの遅延はどのくらいですか。  
-実験データによれば、Azure 推奨のペアになっているリージョンが使用されている場合は、リージョン内およびリージョン間のレプリケーションの遅延に大きな差はありません。
+## <a name="what-is-an-expected-replication-lag-when-geo-replicating-a-database-between-two-regions-within-the-same-azure-geography?"></a>What is an expected replication lag when geo-replicating a database between two regions within the same Azure geography?  
+We are currently supporting an RPO of five seconds and the replication lag has been less than that when the geo-secondary is hosted in the Azure recommended paired region and at the same service tier.
 
-## geo レプリケーションが設定されている場合、2 つのリージョン間にネットワーク エラーが発生すると、再試行ロジックはどのように動作しますか。  
-接続が切断されると、接続を再確立するために 10 秒ごとに再試行します。
+## <a name="what-is-an-expected-replication-lag-when-geo-secondary-is-created-in-the-same-region-as-the-primary-database?"></a>What is an expected replication lag when geo-secondary is created in the same region as the primary database?  
+Based on empirical data, there is not too much difference between intra-region and inter-region replication lag when the Azure recommended paired region is used. 
 
-## プライマリ データベースでの重要な変更がレプリケートされていることを保証するには、どうすればよいでしょうか。
-geo セカンダリは非同期レプリカであり、プライマリとの完全な同期を維持しようとはしていません。ただし、重要な変更 (パスワードの更新など) を確実にレプリケートするために、強制同期を行う方法が用意されています。強制同期を実行すると、コミットされたトランザクションがすべてレプリケートされるまで呼び出しスレッドがブロックされるため、パフォーマンスに影響します。詳細については、[sp\_wait\_for\_database\_copy\_sync](https://msdn.microsoft.com/library/dn467644.aspx) に関するページを参照してください。
+## <a name="if-there-is-a-network-failure-between-two-regions,-how-does-the-retry-logic-work-when-geo-replication-is-set-up?"></a>If there is a network failure between two regions, how does the retry logic work when Geo-Replication is set up?  
+If there is a disconnect, we retry every 10 seconds to re-establish connections.
 
-## プライマリ データベースと geo セカンダリの間のレプリケーションの遅延を監視するために、どのツールを使用できますか。
-DMV を使ってプライマリ データベースと geo セカンダリの間のリアルタイムのレプリケーションの遅延を公開しています。詳細については、[sys.dm\_geo\_replication\_link\_status](https://msdn.microsoft.com/library/mt575504.aspx) に関するページを参照してください。
+## <a name="what-can-i-do-to-guarantee-that-a-critical-change-on-the-primary-database-is-replicated?"></a>What can I do to guarantee that a critical change on the primary database is replicated?
+The geo-secondary is an async replica and we do not try to keep it in full sync with the primary. But we provide a method to force synchronization to ensure the replication of critical changes (for example, password updates). Forced synchronization impacts performance because it blocks the calling thread until all committed transactions are replicated. For details, see [sp_wait_for_database_copy_sync](https://msdn.microsoft.com/library/dn467644.aspx). 
 
-<!---HONumber=AcomDC_0817_2016-->
+## <a name="what-tools-are-available-to-monitor-the-replication-lag-between-the-primary-database-and-geo-secondary?"></a>What tools are available to monitor the replication lag between the primary database and geo-secondary?
+We expose the real-time replication lag between the primary database and geo-secondary through a DMV. For details, see [sys.dm_geo_replication_link_status](https://msdn.microsoft.com/library/mt575504.aspx).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

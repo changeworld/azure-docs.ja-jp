@@ -1,110 +1,111 @@
 <properties 
-	pageTitle="Premium Azure Redis Cache のデータ永続化の構成方法" 
-	description="Premium レベルの Azure Redis Cache インスタンス用にデータの永続化を構成して管理する方法について説明します" 
-	services="redis-cache" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="douge" 
-	editor=""/>
+    pageTitle="How to configure data persistence for a Premium Azure Redis Cache" 
+    description="Learn how to configure and manage data persistence your Premium tier Azure Redis Cache instances" 
+    services="redis-cache" 
+    documentationCenter="" 
+    authors="steved0x" 
+    manager="douge" 
+    editor=""/>
 
 <tags 
-	ms.service="cache" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="cache-redis" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/15/2016" 
-	ms.author="sdanie"/>
-
-# Premium Azure Redis Cache のデータ永続化の構成方法
-
-Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
-
-Azure Redis Cache の Premium レベルには、クラスタリング、永続化、仮想ネットワークのサポートなどの機能が含まれています。この記事では、Premium Azure Redis Cache インスタンスで永続化を構成する方法について説明します。
-
-Premium キャッシュのその他の機能の詳細については、「[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
-
-## データの永続化とは
-Redis の永続化を使用すると、Redis に格納されたデータを保持できます。また、スナップショットを取得したりデータをバックアップしたりして、ハードウェア障害のときに読み込むことができます。これは、Basic レベルや Standard レベルにはない大きな利点です。Basic/Standard レベルでは、すべてのデータはメモリに格納され、Cache ノードがダウンするような障害時にはデータが失われる可能性があります。
-
-Azure Redis Cache の Redis 永続化では、[RDB モデル](http://redis.io/topics/persistence)を使用してデータを Azure ストレージ アカウントに格納します。永続化を構成すると、Azure Redis Cache は、Redis Cache のスナップショットを構成可能なバックアップ頻度に基づいて Redis バイナリ形式でディスクに保存します。プライマリとレプリカの両方のキャッシュが無効になるような致命的なイベントが発生した場合、最新のスナップショットを使用してキャッシュが再構築されます。
-
-永続化は、キャッシュの作成中に **[新規 Redis Cache]** ブレードから、また既存の Premium キャッシュ用の **[設定]** ブレードで構成できます。
-
-## Premium キャッシュの作成
-
-キャッシュを作成し、永続化を構成するには、[Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
-
-![Redis Cache の作成][redis-cache-new-cache-menu]
-
-永続化を構成するには、まず **[料金レベルの選択]** ブレードで **[Premium]** キャッシュのいずれかを選択します。
-
-![価格レベルの選択][redis-cache-premium-pricing-tier]
-
-Premium 価格レベルを選択した後、**[Redis の永続化]** をクリックします。
-
-![Redis の永続化][redis-cache-persistence]
-
-次のセクションの手順は、新しい Premium キャッシュに Redis の永続化を構成する方法を示します。Redis の永続化が構成されたら、**[作成]** をクリックして、Redis の永続化で新規 Premium キャッシュを作成します。
-
-## Redis の永続化を構成する
-
-Redis の永続化は、**[Redis データ永続化]** ブレードで構成します。新規キャッシュでは、前のセクションで説明したように、このブレードにはキャッシュの作成プロセス中にアクセスします。既存のキャッシュでは、**[Redis データ永続化]** ブレードには、キャッシュの **[設定]** ブレードからアクセスします。
-
-![Redis の設定][redis-cache-settings]
-
-Redis の永続化を有効にするには、**[有効]** をクリックして RDB (Redis データベース) のバックアップを有効にします。以前に有効にされた Premium キャッシュの Redis 永続化を無効にするには、**[無効]** をクリックします。
-
-バックアップの間隔を構成するには、ドロップダウン リストから **[バックアップの頻度]** を選択します。選択肢は、**15 分**、**30 分**、**60 分**、**6 時間**、**12 時間**、**24 時間**です。前のバックアップ操作が正常に完了するとこの間隔のカウントダウンが開始し、期間が経過すると新しいバックアップが開始されます。
-
-**[ストレージ アカウント]** をクリックして使用するストレージ アカウントを選択し、**[ストレージ キー]** ドロップダウンから使用する**プライマリ キー**または**セカンダリ キー**を選択します。Cache と同じリージョンのストレージ アカウントを選択する必要があり、また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。
-
->[AZURE.IMPORTANT] 永続化アカウントのストレージ キーを再生成した場合、**[ストレージ キー]** ドロップダウンから目的のキーを再選択する必要があります。
-
-![Redis の永続化][redis-cache-persistence-selected]
-
-**[OK]** をクリックして永続化の構成を保存します。
-
-バックアップ間隔が経過すると、次のバックアップ (または新しいキャッシュの最初のバックアップ) が開始されます。
+    ms.service="cache" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="cache-redis" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/30/2016" 
+    ms.author="sdanie"/>
 
 
+# <a name="how-to-configure-data-persistence-for-a-premium-azure-redis-cache"></a>How to configure data persistence for a Premium Azure Redis Cache
 
-## 永続化の FAQ
+Azure Redis Cache has different cache offerings which provide flexibility in the choice of cache size and features, including the new Premium tier.
 
-次の一覧は、Azure Redis Cache の永続化に関するよく寄せられる質問への回答です。
+The Azure Redis Cache premium tier includes features such as clustering, persistence, and virtual network support. This article describes how to configure persistence in a premium Azure Redis Cache instance.
 
--	[以前に作成したキャッシュで永続化を有効にできますか](#can-i-enable-persistence-on-a-previously-created-cache)
--	[キャッシュの作成後にバックアップ頻度を変更できますか](#can-i-change-the-backup-frequency-after-i-create-the-cache)
--	[バックアップ間隔を 60 分に設定した場合、バックアップの間隔が 60 分より長くなるのはなぜですか](#why-if-i-have-a-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
--	[新しいバックアップが作成されると、古いバックアップはどうなりますか](#what-happens-to-the-old-backups-when-a-new-backup-is-made)
--	[別のサイズにスケーリングしていて、スケーリング操作の前に作成したバックアップを復元したらどうなりますか](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+For information on other premium cache features, see [Introduction to the Azure Redis Cache Premium tier](cache-premium-tier-intro.md).
 
-### 以前に作成したキャッシュで永続化を有効にできますか
+## <a name="what-is-data-persistence?"></a>What is data persistence?
+Redis persistence allows you to persist data stored in Redis. You can also take snapshots and back up the data, which you can load in case of a hardware failure. This is a huge advantage over Basic or Standard tier where all the data is stored in memory and there can be potential data loss in case of a failure where Cache nodes are down. 
 
-はい、Redis の永続化はキャッシュの作成時と、既存の Premium キャッシュの両方に構成できます。
+Azure Redis Cache offers Redis persistence using the [RDB model](http://redis.io/topics/persistence), where the data is stored in an Azure storage account. When persistence is configured, Azure Redis Cache persists a snapshot of the Redis cache in a Redis binary format to disk based on a configurable backup frequency. If a catastrophic event occurs that disables both the primary and replica cache, the cache is reconstructed using the most recent snapshot.
 
-### キャッシュの作成後にバックアップ頻度を変更できますか
+Persistence can be configured from the **New Redis Cache** blade during cache creation and on the **Settings** blade for existing premium caches.
 
-はい、**[Redis データ永続化]** ブレードでバックアップの頻度を変更できます。手順については、「[Redis の永続化を構成する](#configure-redis-persistence)」をご覧ください。
+## <a name="create-a-premium-cache"></a>Create a premium cache
 
-### バックアップ間隔を 60 分に設定した場合、バックアップの間隔が 60 分より長くなるのはなぜですか
+To create a cache and configure persistence, sign-in to the [Azure portal](https://portal.azure.com) and click **New**->**Data + Storage**>**Redis Cache**.
 
-バックアップ間隔は、前のバックアップ プロセスが正常に完了するまでは開始しません。バックアップ間隔を 60 分に設定し、バックアップ プロセスが正常に完了するのに 15 分かかる場合、次のバックアップは、前回のバックアップの開始時刻から 75 分経つまで開始しません。
+![Create a Redis Cache][redis-cache-new-cache-menu]
 
-### 新しいバックアップが作成されると、古いバックアップはどうなりますか
+To configure persistence, first select one of the **Premium** caches in the **Choose your pricing Tier** blade.
 
-最新のものを除くすべてのバックアップは自動的に削除されます。この削除はすぐに行われないことがありますが、古いバックアップは無期限には保持されません。
+![Choose your pricing tier][redis-cache-premium-pricing-tier]
 
-### 別のサイズにスケーリングしていて、スケーリング操作の前に作成したバックアップを復元したらどうなりますか
+Once a premium pricing tier is selected, click **Redis persistence**.
 
--	大きいサイズにスケーリングした場合、影響はありません。
--	小さいサイズにスケーリングした場合、新しいサイズの[データベースの制限](cache-configure.md#databases)より大きなカスタムの[データベース](cache-configure.md#databases)設定が存在すると、そのデータベースのデータは復元されません。詳細については、「[スケーリング中に影響を受けるカスタム データベース](#is-my-custom-databases-setting-affected-during-scaling)」をご覧ください。
--	小さいサイズにスケーリングしていて、最新のバックアップからのデータをすべて保持するにはサイズが小さいためスペースが足りない場合、キーは復元プロセス中に削除されます。通常は [allkeys-lru](http://redis.io/topics/lru-cache) 削除ポリシーを使用します。
+![Redis persistence][redis-cache-persistence]
 
-## 次のステップ
-Premium キャッシュ機能をさらに使用する方法を学習します。
+The steps in the following section describe how to configure Redis persistence on your new premium cache. Once Redis persistence is configured, click **Create** to create your new premium cache with Redis persistence.
 
--	[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)
+## <a name="configure-redis-persistence"></a>Configure Redis persistence
+
+Redis persistence is configured on the **Redis data persistence** blade. For new caches, this blade is accessed during the cache creation process, as described in the previous section. For existing caches, the **Redis data persistence** blade is accessed from the **Settings** blade for your cache.
+
+![Redis settings][redis-cache-settings]
+
+To enable Redis persistence, click **Enabled** to enable RDB (Redis database) backup. To disable Redis persistence on a previously enabled premium cache, click **Disabled**.
+
+To configure the backup interval, select a **Backup Frequency** from the drop-down list. Choices include **15 Minutes**, **30 minutes**, **60 minutes**, **6 hours**, **12 hours**, and **24 hours**. This interval starts counting down after the previous backup operation successfully completes and when it elapses a new backup is initiated.
+
+Click **Storage Account** to select the storage account to use, and choose either the **Primary key** or **Secondary key** to use from the **Storage Key** drop-down. You must choose a storage account in the same region as the cache, and a **Premium Storage** account is recommended because premium storage has higher throughput. 
+
+>[AZURE.IMPORTANT] If the storage key for your persistence account is regenerated, you must rechoose the desired key from the **Storage Key** drop-down.
+
+![Redis persistence][redis-cache-persistence-selected]
+
+Click **OK** to save the persistence configuration.
+
+The next backup (or first backup for new caches) is initiated once the backup frequency interval elapses.
+
+
+
+## <a name="persistence-faq"></a>Persistence FAQ
+
+The following list contains answers to commonly asked questions about Azure Redis Cache persistence.
+
+-   [Can I enable persistence on a previously created cache?](#can-i-enable-persistence-on-a-previously-created-cache)
+-   [Can I change the backup frequency after I create the cache?](#can-i-change-the-backup-frequency-after-i-create-the-cache)
+-   [Why if I have a backup frequency of 60 minutes there is more than 60 minutes between backups?](#why-if-i-have-a-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
+-   [What happens to the old backups when a new backup is made?](#what-happens-to-the-old-backups-when-a-new-backup-is-made)
+-   [What happens if I have scaled to a different size and a backup is restored that was made before the scaling operation?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+
+### <a name="can-i-enable-persistence-on-a-previously-created-cache?"></a>Can I enable persistence on a previously created cache?
+
+Yes, Redis persistence can be configured both at cache creation and on existing premium caches.
+
+### <a name="can-i-change-the-backup-frequency-after-i-create-the-cache?"></a>Can I change the backup frequency after I create the cache?
+
+Yes, you can change the backup frequency on the **Redis data persistence** blade. For instructions, see [Configure Redis persistence](#configure-redis-persistence).
+
+### <a name="why-if-i-have-a-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups?"></a>Why if I have a backup frequency of 60 minutes there is more than 60 minutes between backups?
+
+The backup frequency interval does not start until the previous backup process has completed successfully. If the backup frequency is 60 minutes and it takes a backup process 15 minutes to successfully complete, the next backup won't start until 75 minutes after the start time of the previous backup.
+
+### <a name="what-happens-to-the-old-backups-when-a-new-backup-is-made?"></a>What happens to the old backups when a new backup is made?
+
+All backups except for the most recent one are automatically deleted. This deletion may not happen immediately but older backups are not persisted indefinitely.
+
+### <a name="what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation?"></a>What happens if I have scaled to a different size and a backup is restored that was made before the scaling operation?
+
+-   If you have scaled to a larger size, there is no impact.
+-   If you have scaled to a smaller size, and you have a custom [databases](cache-configure.md#databases) setting that is greater than the [databases limit](cache-configure.md#databases) for your new size, data in those databases isn't be restored. For more information, see [Is my custom databases setting affected during scaling?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
+-   If you have scaled to a smaller size, and there isn't enough room in the smaller size to hold all of the data from the last backup, keys will be evicted during the restore process, typically using the [allkeys-lru](http://redis.io/topics/lru-cache) eviction policy.
+
+## <a name="next-steps"></a>Next steps
+Learn how to use more premium cache features.
+
+-   [Introduction to the Azure Redis Cache Premium tier](cache-premium-tier-intro.md)
   
 <!-- IMAGES -->
 
@@ -118,4 +119,8 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-settings]: ./media/cache-how-to-premium-persistence/redis-cache-settings.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

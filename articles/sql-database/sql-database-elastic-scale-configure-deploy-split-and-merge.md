@@ -1,74 +1,75 @@
 <properties
-	pageTitle="Split-Merge サービスのデプロイ | Microsoft Azure"
-	description="エラスティック データベース ツールによる分割とマージ"
-	services="sql-database"  
-	documentationCenter=""
-	authors="ddove"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Deploy a split-merge service | Microsoft Azure"
+    description="Splitting and Merging with elastic database tools"
+    services="sql-database"  
+    documentationCenter=""
+    authors="ddove"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.workload="sql-database"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/27/2016"
-	ms.author="ddove" />
-
-# split-merge サービスのデプロイ 
-
-split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。「[スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください。
-
-## 分割-結合パッケージのダウンロード
-
-1. [NuGet](http://docs.nuget.org/docs/start-here/installing-nuget) から最新の NuGet バージョンをダウンロードします。
-2. コマンド プロンプトを開き、nuget.exe をダウンロードしたディレクトリに移動します。ダウンロードには、PowerShell コマンドが含まれています。
-3. 次のコマンドを使用して、最新の Split-Merge パッケージを現在のディレクトリにダウンロードします。`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge`  
-
-ファイルは、**Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。*x.x.xxx.x* はバージョン番号です。**content\\splitmerge\\service** サブディレクトリに Split-Merge サービス ファイル、**content\\splitmerge\\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要なクライアント .dll) が格納されています。
-
-## 前提条件
-
-1. Split-Merge ステータス データベースとして使用する Azure SQL DB を作成します。[Azure ポータル](https://portal.azure.com)にアクセスします。新しい **SQL Database** を作成します。データベースに名前を付けて、新しい管理者とパスワードを作成します。今後の使用のために、パスワードと名前を必ず記録しておいてください。
-
-2. Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。ポータルの **[ファイアウォール設定]** で、**[Azure サービスへのアクセスを許可する]** 設定が **[オン]** に設定されていることを確認してください。[保存] アイコンをクリックします。
-
-    ![使用できるサービス][1]
-
-3. 診断の出力に使用する Azure Storage アカウントを作成します。Azure ポータルにアクセスします。左側のバーで、**[新規]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
-
-4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。Azure ポータルにアクセスします。左側のバーで、**[新規]** をクリックした後に、**[コンピューティング]**、**[クラウド サービス]**、および **[作成]** の順にクリックします。
+    ms.service="sql-database"
+    ms.workload="sql-database"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="05/27/2016"
+    ms.author="ddove" />
 
 
-## Split-Merge サービスの構成
+# <a name="deploy-a-split-merge-service"></a>Deploy a split-merge service 
 
-### Split-Merge サービスの構成
+The split-merge tool lets you move data between sharded databases. See [Moving data between scaled-out cloud databases](sql-database-elastic-scale-overview-split-and-merge.md)
 
-1. Split-Merge アセンブリをダウンロードしたフォルダーで、**SplitMergeService.cspkg** に付属の **ServiceConfiguration.Template.cscfg** ファイルのコピーを作成し、**ServiceConfiguration.cscfg** という名前に変更します。
+## <a name="download-the-split-merge-packages"></a>Download the Split-Merge packages
 
-2. 証明書の拇印の形式などの入力値を検証する Visual Studio などのテキスト エディターで、**ServiceConfiguration.cscfg** を開きます。
+1. Download the latest NuGet version from [NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).
+2. Open a command prompt and navigate to the directory where you downloaded nuget.exe. The download includes PowerShell commmands.
+3. Download the latest Split-Merge package into the current directory with the below command: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge`  
 
-3. 新しいデータベースを作成するか、または Split-Merge 操作用のステータス データベースとして使用する既存のデータベースを選択し、そのデータベースの接続文字列を取得します。
+The files are placed in a directory named **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** where *x.x.xxx.x* reflects the version number. Find the split-merge Service files in the **content\splitmerge\service** sub-directory, and the Split-Merge PowerShell scripts (and required client .dlls) in the **content\splitmerge\powershell** sub-directory.
 
-	**重要**: 現時点では、状態データベースでラテン語の照合順序 (SQL\_Latin1\_General\_CP1\_CI\_AS) を使用する必要があります。詳細については、「[Windows 照合順序名 (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)」をご覧ください。
+## <a name="prerequisites"></a>Prerequisites
 
-	Azure SQL DB では、通常、接続文字列の形式は次のようになります。
+1. Create an Azure SQL DB database that will be used as the split-merge status database. Go to the [Azure portal](https://portal.azure.com). Create a new **SQL Database**. Give the database a name and create a new administrator and password. Be sure to record the name and password for later use.
+
+2. Ensure that your Azure SQL DB server allows Azure Services to connect to it. In the portal, in the **Firewall Settings**, ensure that the **Allow access to Azure Services** setting is set to **On**. Click the "save" icon.
+
+    ![Allowed services][1]
+
+3. Create an Azure Storage account that will be used for diagnostics output. Go to the Azure Portal. In the left bar, click **New**, click **Data + Storage**, then **Storage**.
+
+4. Create an Azure Cloud Service that will contain your Split-Merge service.  Go to the Azure Portal. In the left bar, click **New**, then **Compute**, **Cloud Service**, and **Create**. 
+
+
+## <a name="configure-your-split-merge-service"></a>Configure your Split-Merge service
+
+### <a name="split-merge-service-configuration"></a>Split-Merge service configuration
+
+1. In the folder where you downloaded the Split-Merge assemblies, create a copy of the **ServiceConfiguration.Template.cscfg** file that shipped alongside **SplitMergeService.cspkg** and rename it **ServiceConfiguration.cscfg**.
+
+2. Open **ServiceConfiguration.cscfg** in a text editor such as Visual Studio that validates inputs such as the format of certificate thumbprints.
+
+3. Create a new database or choose an existing database to serve as the status database for Split-Merge operations and retrieve the connection string of that database. 
+
+    **Important** At this time, the status database must use the Latin  collation (SQL\_Latin1\_General\_CP1\_CI\_AS). For more information, see [Windows Collation Name (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+
+    With Azure SQL DB, the connection string typically is of the form:
 
         "Server=myservername.database.windows.net; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30" .
-4.    ElasticScaleMetadata 設定の **SplitMergeWeb** ロールと **SplitMergeWorker** ロールの両方のセクションに cscfg ファイルの接続文字列を入力します。
+4.    Enter this connection string in the cscfg file in both the **SplitMergeWeb** and **SplitMergeWorker** role sections in the ElasticScaleMetadata setting.
 
-5.    **SplitMergeWorker** ロールの場合は、**WorkerRoleSynchronizationStorageAccountConnectionString** 設定として Azure ストレージへの有効な接続文字列を入力します。
+5.    For the **SplitMergeWorker** role, enter a valid connection string to Azure storage for the **WorkerRoleSynchronizationStorageAccountConnectionString** setting.
         
-### セキュリティを構成する
+### <a name="configure-security"></a>Configure security
 
-サービスのセキュリティを構成する詳細な手順については、「[Split-Merge セキュリティ構成](sql-database-elastic-scale-split-merge-security-configuration.md)」を参照してください。
+For detailed instructions to configure the security of the service, refer to the [Split-Merge security configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-このチュートリアルの簡単なテスト デプロイのため、最小限の構成の手順セットを行ってサービスを起動および実行します。以下の手順では、サービスを実行する 1 つのコンピューター/アカウントのみがサービスと通信できます。
+For the purposes of a simple test deployment for this tutorial, a minimal set of configuration steps will be performed to get the service up and running. These steps enable only the one machine/account executing them to communicate with the service.
 
-### 自己署名証明書の作成
+### <a name="create-a-self-signed-certificate"></a>Create a self-signed certificate
 
-新しいディレクトリを作成し、そのディレクトリから [[Visual Studio 開発者コマンド プロンプト]](http://msdn.microsoft.com/library/ms229859.aspx) ウィンドウを使用して次のコマンドを実行します。
+Create a new directory and from this directory execute the following command using a [Developer Command Prompt for Visual Studio](http://msdn.microsoft.com/library/ms229859.aspx) window:
 
     makecert ^
     -n "CN=*.cloudapp.net" ^
@@ -77,41 +78,42 @@ split-merge ツールを使用すると、シャード化されたデータベ�
     -sr currentuser -ss root ^
     -sv MyCert.pvk MyCert.cer
 
-秘密キーを保護するパスワードの入力を求められます。強力なパスワードを入力し、確定します。その後、パスワードをもう一度使用するよう求められます。最後に **[はい]** をクリックして、信頼されたルート証明機関ストアにインポートします。
+You are asked for a password to protect the private key. Enter a strong password and confirm it. You are then prompted for the password to be used once more after that. Click **Yes** at the end to import it to the Trusted Certification Authorities Root store.
 
-### PFX ファイルの作成
+### <a name="create-a-pfx-file"></a>Create a PFX file
 
-makecert を実行した同じウィンドウから次のコマンドを実行します。証明書の作成に使用したものと同じパスワードを使用します。
+Execute the following command from the same window where makecert was executed; use the same password that you used to create the certificate:
 
     pvk2pfx -pvk MyCert.pvk -spc MyCert.cer -pfx MyCert.pfx -pi <password>
 
-### 個人用ストアへのクライアント証明書のインポート
-1. Windows エクスプローラーで、**MyCert.pfx** をダブルクリックします。
-2. **証明書のインポート ウィザード**で **[現在のユーザー]** を選択し、**[次へ]** をクリックします。
-3. ファイルのパスを確認し、**[次へ]** をクリックします。
-4. パスワードを入力します。**[すべての拡張プロパティを含める]** はオンのままにして **[次へ]** をクリックします。
-5. **[自動的に証明書ストアを選択する]** をオンのままにして、**[次へ]** をクリックします。
-6. **[完了]**、**[OK]** の順にクリックします。
+### <a name="import-the-client-certificate-into-the-personal-store"></a>Import the client certificate into the personal store
+1. In Windows Explorer, double-click **MyCert.pfx**.
+2. In the **Certificate Import Wizard** select **Current User** and click **Next**.
+3. Confirm the file path and click **Next**.
+4. Type the password, leave **Include all extended properties** checked and click **Next**.
+5. Leave **Automatically select the certificate store[…]** checked and click **Next**.
+6. Click **Finish** and **OK**.
 
-### クラウド サービスへの PFX ファイルのアップロード
+### <a name="upload-the-pfx-file-to-the-cloud-service"></a>Upload the PFX file to the cloud service
 
-[Azure ポータル](https://portal.azure.com)にアクセスします。
+Go to the [Azure Portal](https://portal.azure.com).
 
-1. **[クラウド サービス]** を選択します。
-2. 分割/結合サービス用に上で作成したクラウド サービスを選択します。
-3. 上部メニューで **[証明書]** をクリックします。
-4. 下部のバーで **[アップロード]** をクリックします。
-5. PFX ファイルを選択し、前述と同じパスワードを入力します。
-6. 完了したら、一覧内の新しいエントリから証明書の拇印をコピーします。
+1. Select **Cloud Services**.
+2. Select the cloud service you created above for the Split/Merge service.
+3. Click **Certificates** on the top menu.
+4. Click **Upload** in the bottom bar.
+5. Select the PFX file and enter the same password as above.
+6. Once completed, copy the certificate thumbprint from the new entry in the list.
 
-### サービス構成ファイルの更新
+### <a name="update-the-service-configuration-file"></a>Update the service configuration file
 
-上記でコピーした証明書の拇印を、次の設定で、サムプリントと属性値に貼り付けます。worker ロール:
+Paste the certificate thumbprint copied above into the thumbprint/value attribute of these settings.
+For the worker role:
 
     <Setting name="DataEncryptionPrimaryCertificateThumbprint" value="" />
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
 
-Web ロール:
+For the web role:
 
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
     <Setting name="AllowedClientCertificateThumbprints" value="" />
@@ -121,213 +123,193 @@ Web ロール:
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
 
 
-運用デプロイメントでは、CA、暗号化、サーバー証明書、クライアント証明書のそれぞれに異なる証明書を使用する必要があることに注意してください。この詳細な手順については、[セキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)に関するページを参照してください。
+Please note that for production deployments separate certificates should be used for the CA, for encryption, the Server certificate and client certificates. For detailed instructions on this, see [Security Configuration](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-## サービスのデプロイ
+## <a name="deploy-your-service"></a>Deploy your service
 
-1. [Azure ポータル](https://manage.windowsazure.com)にアクセスします。
-2. 左側の **[クラウド サービス]** タブをクリックし、先ほど作成したクラウド サービスを選択します。
-3. **[ダッシュボード]** をクリックします。
-4. ステージング環境を選択し、**[新しいステージング環境のデプロイをアップロードします]** をクリックします。
+1. Go to the [Azure portal](https://manage.windowsazure.com).
+2. Click the **Cloud Services** tab on the left, and select the cloud service that you created earlier.
+3. Click **Dashboard**.
+4. Choose the staging environment, then click **Upload a new staging deployment**.
 
-    ![ステージング][3]
+    ![Staging][3]
 
-5. ダイアログ ボックスにデプロイ ラベルを入力します。[パッケージ] と [構成] の両方で [ローカルから] をクリックし、**SplitMergeService.cspkg** ファイルと、先ほど構成した .cscfg ファイルを選択します。
-6. **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします。]** チェック ボックスがオンになっていることを確認します。
-7. 右下のチェック マークをクリックしてデプロイを開始します。完了には数分かかります。
+5. In the dialog box, enter a deployment label. For both 'Package' and 'Configuration', click 'From Local' and choose the **SplitMergeService.cspkg** file and your .cscfg file that you configured earlier.
+6. Ensure that the checkbox labeled **Deploy even if one or more roles contain a single instance** is checked.
+7. Hit the tick button in the bottom right to begin the deployment. Expect it to take a few minutes to complete.
 
-![アップロード][4]
+![Upload][4]
 
 
-## デプロイのトラブルシューティング
+## <a name="troubleshoot-the-deployment"></a>Troubleshoot the deployment
 
-Web ロールのオンライン化に失敗した場合は、セキュリティの構成に問題があると考えられます。SSL が前の説明どおりに構成されていることをご確認ください。
+If your web role fails to come online, it is likely a problem with the security configuration. Check that the SSL is configured as described above.
 
-worker ロールのオンライン化に失敗した場合に最も考えられるのは、先に作成した状態データベースへの接続に問題があることです。
+If your worker role fails to come online, but your web role succeeds, it is most likely a problem connecting to the status database that you created earlier.
 
-* 使用する .cscfg の接続文字列が正確であることをご確認ください。
-* サーバーとデータベースが存在し、ユーザー ID とパスワードが正しいことを確認します。
-* Azure SQL DB の場合、接続文字列の形式は次のようにする必要があります。
+* Make sure that the connection string in your .cscfg is accurate.
+* Check that the server and database exist, and that the user id and password are correct.
+* For Azure SQL DB, the connection string should be of the form:
 
         "Server=myservername.database.windows.net; Database=mydatabasename;User ID=myuserID; Password=mypassword; Encrypt=True; Connection Timeout=30" .
 
-* サーバー名が **https://** で始まっていないことを確認します。
-* Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。確認するには、https://manage.windowsazure.com を開き、左側の [SQL Databases] をクリックし、上部の [サーバー] をクリックしてサーバーを選択します。上部の **[構成]** をクリックし、**[Azure サービス]** の値が [はい] に設定されていることを確認します(この記事の冒頭にある前提条件をご覧ください)。
+* Ensure that the server name does not begin with **https://**.
+* Ensure that your Azure SQL DB server allows Azure Services to connect to it. To do this, open https://manage.windowsazure.com, click “SQL Databases” on the left, click “Servers” at the top, and select your server. Click **Configure** at the top and ensure that the **Azure Services** setting is set to “Yes”. (See the Prerequisites section at the top of this article).
 
-## サービス デプロイのテスト
+## <a name="test-the-service-deployment"></a>Test the service deployment
 
-### Web ブラウザーへの接続
+### <a name="connect-with-a-web-browser"></a>Connect with a web browser
 
-Split-Merge サービスの Web エンドポイントを決定します。エンドポイントを見つけるには、Azure クラシック ポータルでクラウド サービスの **[ダッシュ ボード]** に移動し、右側の **[サイトの URL]** を検索します。既定のセキュリティ設定では HTTP エンドポイントは無効なため、**http://** を **https://** で置き換えます。この URL のページをブラウザーに読み込みます。
+Determine the web endpoint of your Split-Merge service. You can find this in the Azure Classic Portal by going to the **Dashboard** of your cloud service and looking under **Site URL** on the right side. Replace **http://** with **https://** since the default security settings disable the HTTP endpoint. Load the page for this URL into your browser.
 
-### PowerShell スクリプトでのテスト
+### <a name="test-with-powershell-scripts"></a>Test with PowerShell scripts
 
-付属の PowerShell スクリプト サンプルを実行して、デプロイメントと環境をテストできます。
+The deployment and your environment can be tested by running the included sample PowerShell scripts.
 
-付属のスクリプト ファイルは、次のとおりです。
+The script files included are:
 
-1. **SetupSampleSplitMergeEnvironment.ps1** - Split/Merge のテスト データ層を設定します (詳細については、次の表を参照してください)
-2. **ExecuteSampleSplitMerge.ps1** - テスト データ層でテスト操作を実行します (詳細については、次の表を参照してください)
-3. **GetMappings.ps1** – シャード マッピングの現在の状態を出力する最上位のサンプル スクリプトです
-4. **ShardManagement.psm1** – ShardManagement API をラップするヘルパー スクリプトです
-5. **SqlDatabaseHelpers.psm1** – SQL データベースを作成および管理するためのヘルパー スクリプトです
+1. **SetupSampleSplitMergeEnvironment.ps1** - sets up a test data tier for Split/Merge (see table below for detailed description)
+2. **ExecuteSampleSplitMerge.ps1** - executes test operations on the test data tier (see table below for detailed description)
+3. **GetMappings.ps1** – top-level sample script that prints out the current state of the shard mappings.
+4. **ShardManagement.psm1**  – helper script that wraps the ShardManagement API
+5. **SqlDatabaseHelpers.psm1** – helper script for creating and managing SQL databases
 
 <table style="width:100%">
   <tr>
-    <th>PowerShell ファイル</th>
-    <th>手順</th>
+    <th>PowerShell file</th>
+    <th>Steps</th>
   </tr>
   <tr>
     <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
-    <td>1.シャードのマップ マネージャー データベースを作成します。</td>
+    <td>1.    Creates a shard map manager database</td>
   </tr>
   <tr>
-    <td>2.2 つのシャード データベースを作成します。
+    <td>2.    Creates 2 shard databases.
   </tr>
   <tr>
-    <td>3.これらのデータベース用のシャード マップを作成します (これらのデータベースに関する既存のシャード マップを削除します)。</td>
+    <td>3.    Creates a shard map for those database (deletes any existing shard maps on those databases). </td>
   </tr>
   <tr>
-    <td>4.両シャード上に小さいサンプル テーブルを作成し、いずれかのシャードで、このテーブルにデータを読み込みます。</td>
+    <td>4.    Creates a small sample table in both the shards, and populates the table in one of the shards.</td>
   </tr>
   <tr>
-    <td>5.シャード化したテーブルの SchemaInfo を宣言します。</td>
+    <td>5.    Declares the SchemaInfo for the sharded table.</td>
   </tr>
 
 </table>
 
 <table style="width:100%">
   <tr>
-    <th>PowerShell ファイル</th>
-    <th>手順</th>
+    <th>PowerShell file</th>
+    <th>Steps</th>
   </tr>
 <tr>
     <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
-    <td>1.データを半分に分割して最初のシャードから 2 番目のシャードに渡す分割要求を Split-Merge サービスの Web フロントエンドに送信します。</td>
+    <td>1.    Sends a split request to the Split-Merge Service web frontend, which splits half the data from the first shard to the second shard.</td>
   </tr>
   <tr>
-    <td>2.分割要求の状態を Web フロントエンドに対してポーリングし、要求が完了するまで待機します。</td>
+    <td>2.    Polls the web frontend for the split request status and waits until the request completes.</td>
   </tr>
   <tr>
-    <td>3.2 番目のシャードから最初のシャードにデータを戻すための移動を求めるマージ要求を、Split-Merge サービスの Web フロントエンドに送信します。</td>
+    <td>3.    Sends a merge request to the Split-Merge Service web frontend, which moves the data from the second shard back to the first shard.</td>
   </tr>
   <tr>
-    <td>4.マージ要求の状態を Web フロントエンドに対してポーリングし、要求が完了するまで待機します。</td>
+    <td>4.    Polls the web frontend for the merge request status and waits until the request completes.</td>
   </tr>
 </table>
 
-## PowerShell でのデプロイの確認
+## <a name="use-powershell-to-verify-your-deployment"></a>Use PowerShell to verify your deployment
 
-1.    新しい PowerShell ウィンドウを開き、分割-結合パッケージをダウンロードしたディレクトリに移動し、"powershell" ディレクトリに移動します。
-2.    Azure SQL データベース サーバーを作成 (または既存のサーバーを選択) します。ここでシャード マップ マネージャーとシャードが作成されます。
+1.    Open a new PowerShell window and navigate to the directory where you downloaded the Split-Merge package, and then navigate into the “powershell” directory.
+2.    Create an Azure SQL database server (or choose an existing server) where the shard map manager and shards will be created.
 
-    注: スクリプトを簡潔にするため、SetupSampleSplitMergeEnvironment.ps1 スクリプトでは、これらのデータベースが既定ですべて同じサーバーに作成されます。Split-Merge サービス自体の制約ではありません。
+    Note: The SetupSampleSplitMergeEnvironment.ps1 script creates all these databases on the same server by default to keep the script simple. This is not a restriction of the Split-Merge Service itself.
 
-    Split-Merge サービスでデータを移動してシャード マップを更新するためには、DB への読み取りと書き込みのアクセス権のある SQL 認証ログインが必要になります。Split-Merge サービスはクラウドで実行するため、現時点では統合認証はサポートしていません。
+    A SQL authentication login with read/write access to the DBs will be needed for the Split-Merge service to move data and update the shard map. Since the Split-Merge Service runs in the cloud, it does not currently support Integrated Authentication.
 
-    これらのスクリプトを実行するマシンの IP アドレスからのアクセスを許可するように Azure SQL サーバーが構成されていることをご確認ください。この設定は、Azure SQL サーバーから [構成]、[使用できる IP アドレス] で検索できます。
+    Make sure the Azure SQL server is configured to allow access from the IP address of the machine running these scripts. You can find this setting under the Azure SQL server / configuration / allowed IP addresses.
 
-3.    SetupSampleSplitMergeEnvironment.ps1 スクリプトを実行してサンプル環境を作成します。
+3.    Execute the SetupSampleSplitMergeEnvironment.ps1 script to create the sample environment.
 
-    このスクリプトを実行すると、シャード マップ マネージャー データベース上にある既存のシャード マップ管理データ構造とシャードはすべて消去されます。これは、シャード マップやシャードの再初期化を希望する場合、スクリプトを再実行するのに便利です。
+    Running this script will wipe out any existing shard map management data structures on the shard map manager database and the shards. It may be useful to rerun the script if you wish to re-initialize the shard map or shards.
 
-    サンプルのコマンド ライン:
+    Sample command line:
 
         .\SetupSampleSplitMergeEnvironment.ps1 `
             -UserName 'mysqluser' `
-            -Password 'MySqlPassw0rd' `
-            -ShardMapManagerServerName 'abcdefghij.database.windows.net'
+            -Password 'MySqlPassw0rd' `       -ShardMapManagerServerName 'abcdefghij.database.windows.net'
 
-4.    サンプル環境に現在あるマッピングを表示するには、Getmappings.ps1 スクリプトを実行します。
+4.    Execute the Getmappings.ps1 script to view the mappings that currently exist in the sample environment.
 
         .\GetMappings.ps1 `
             -UserName 'mysqluser' `
-            -Password 'MySqlPassw0rd' `
-            -ShardMapManagerServerName 'abcdefghij.database.windows.net'
+            -Password 'MySqlPassw0rd' `       -ShardMapManagerServerName 'abcdefghij.database.windows.net'
 
-5.    ExecuteSampleSplitMerge.ps1 スクリプトを実行して、分割操作を実行 (データの半分を最初のシャードから 2 番目のシャードに移動) し、次にマージ操作を実行 (データを最初のシャードに戻すために移動) します。SSL が構成済みで、http エンドポイントが無効のままになっている場合は、代わりに https:// のエンドポイントを使用します。
+5.    Execute the ExecuteSampleSplitMerge.ps1 script to execute a split operation (moving half the data on the first shard to the second shard) and then a merge operation (moving the data back onto the first shard). If you configured SSL and left the http endpoint disabled, ensure that you use the https:// endpoint instead.
 
-    サンプルのコマンド ライン:
+    Sample command line:
 
         .\ExecuteSampleSplitMerge.ps1 `
             -UserName 'mysqluser' `
             -Password 'MySqlPassw0rd' `
             -ShardMapManagerServerName 'abcdefghij.database.windows.net' `
-            -SplitMergeServiceEndpoint 'https://mysplitmergeservice.cloudapp.net' `
-            -CertificateThumbprint '0123456789abcdef0123456789abcdef01234567'
+            -SplitMergeServiceEndpoint 'https://mysplitmergeservice.cloudapp.net' `       -CertificateThumbprint '0123456789abcdef0123456789abcdef01234567'
 
-    下記のエラーが表示された場合に最も考えられるのは、Web エンドポイントの証明書に問題があることす。任意の Web ブラウザーを使用して Web エンドポイントに接続を試み、証明書エラーになるかご確認ください。
+    If you receive the below error, it is most likely a problem with your Web endpoint’s certificate. Try connecting to the Web endpoint with your favorite Web browser and check if there is a certificate error.
 
         Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLSsecure channel.
 
-    成功した場合、出力は次のようになります。
+    If it succeeded, the output should look like the below:
 
-        > .\ExecuteSampleSplitMerge.ps1 -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net' -SplitMergeServiceEndpoint 'http://mysplitmergeservice.cloudapp.net' –CertificateThumbprint 0123456789abcdef0123456789abcdef01234567
-        Sending split request
-        Began split operation with id dc68dfa0-e22b-4823-886a-9bdc903c80f3
-        Polling split-merge request status. Press Ctrl-C to end
-        Progress: 0% | Status: Queued | Details: [Informational] Queued request
-        Progress: 5% | Status: Starting | Details: [Informational] Starting split-merge state machine for request.
-        Progress: 5% | Status: Starting | Details: [Informational] Performing data consistency checks on target     shards.
-        Progress: 20% | Status: CopyingReferenceTables | Details: [Informational] Moving reference tables from     source to target shard.
-        Progress: 20% | Status: CopyingReferenceTables | Details: [Informational] Waiting for reference tables copy     completion.
-        Progress: 20% | Status: CopyingReferenceTables | Details: [Informational] Moving reference tables from     source to target shard.
-        Progress: 44% | Status: CopyingShardedTables | Details: [Informational] Moving key range [100:110) of     Sharded tables
-        Progress: 44% | Status: CopyingShardedTables | Details: [Informational] Successfully copied key range     [100:110) for table [dbo].[MyShardedTable]
-        ...
-        ...
-        Progress: 90% | Status: Completing | Details: [Informational] Successfully deleted shardlets in table     [dbo].[MyShardedTable].
-        Progress: 90% | Status: Completing | Details: [Informational] Deleting any temp tables that were created     while processing the request.
-        Progress: 100% | Status: Succeeded | Details: [Informational] Successfully processed request.
-        Sending merge request
-        Began merge operation with id 6ffc308f-d006-466b-b24e-857242ec5f66
-        Polling request status. Press Ctrl-C to end
-        Progress: 0% | Status: Queued | Details: [Informational] Queued request
-        Progress: 5% | Status: Starting | Details: [Informational] Starting split-merge state machine for request.
-        Progress: 5% | Status: Starting | Details: [Informational] Performing data consistency checks on target     shards.
-        Progress: 20% | Status: CopyingReferenceTables | Details: [Informational] Moving reference tables from     source to target shard.
-        Progress: 44% | Status: CopyingShardedTables | Details: [Informational] Moving key range [100:110) of     Sharded tables
-        Progress: 44% | Status: CopyingShardedTables | Details: [Informational] Successfully copied key range     [100:110) for table [dbo].[MyShardedTable]
-        ...
-        ...
-        Progress: 90% | Status: Completing | Details: [Informational] Successfully deleted shardlets in table     [dbo].[MyShardedTable].
-        Progress: 90% | Status: Completing | Details: [Informational] Deleting any temp tables that were created     while processing the request.
-        Progress: 100% | Status: Succeeded | Details: [Informational] Successfully processed request.
+        > .\ExecuteSampleSplitMerge.ps1 -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net' -SplitMergeServiceEndpoint 'http://mysplitmergeservice.cloudapp.net' –CertificateThumbprint 0123456789abcdef0123456789abcdef01234567 Sending split request Began split operation with id dc68dfa0-e22b-4823-886a-9bdc903c80f3 Polling split-merge request status. Press Ctrl-C to end Progress: 0% | Status: Queued | Details: [Informational] Queued request Progress: 5% | Status: Starting | Details: [Informational] Starting split-merge state machine for request.
+Progress: 5% | Status: Starting | Details: [Informational] Performing data consistency checks on target     shards.
+Progress: 20% | Status: CopyingReferenceTables | Details: [Informational] Moving reference tables from     source to target shard.
+Progress: 20% | Status: CopyingReferenceTables | Details: [Informational] Waiting for reference tables copy     completion.
+Progress: 20% | Status: CopyingReferenceTables | Details: [Informational] Moving reference tables from     source to target shard.
+Progress: 44% | Status: CopyingShardedTables | Details: [Informational] Moving key range [100:110) of     Sharded tables Progress: 44% | Status: CopyingShardedTables | Details: [Informational] Successfully copied key range     [100:110) for table [dbo].[MyShardedTable] ... ... Progress: 90% | Status: Completing | Details: [Informational] Successfully deleted shardlets in table     [dbo].[MyShardedTable].
+Progress: 90% | Status: Completing | Details: [Informational] Deleting any temp tables that were created     while processing the request.
+Progress: 100% | Status: Succeeded | Details: [Informational] Successfully processed request.
+Sending merge request Began merge operation with id 6ffc308f-d006-466b-b24e-857242ec5f66 Polling request status. Press Ctrl-C to end Progress: 0% | Status: Queued | Details: [Informational] Queued request Progress: 5% | Status: Starting | Details: [Informational] Starting split-merge state machine for request.
+Progress: 5% | Status: Starting | Details: [Informational] Performing data consistency checks on target     shards.
+Progress: 20% | Status: CopyingReferenceTables | Details: [Informational] Moving reference tables from     source to target shard.
+Progress: 44% | Status: CopyingShardedTables | Details: [Informational] Moving key range [100:110) of     Sharded tables Progress: 44% | Status: CopyingShardedTables | Details: [Informational] Successfully copied key range     [100:110) for table [dbo].[MyShardedTable] ... ... Progress: 90% | Status: Completing | Details: [Informational] Successfully deleted shardlets in table     [dbo].[MyShardedTable].
+Progress: 90% | Status: Completing | Details: [Informational] Deleting any temp tables that were created     while processing the request.
+Progress: 100% | Status: Succeeded | Details: [Informational] Successfully processed request.
 
-6.    他のデータ型も試してみてください。 これらのすべてのスクリプトでは、オプションの -ShardKeyType パラメーターを使用してキーの種類を指定することができます。既定値は Int32 ですが、Int64、Guid、またはバイナリも指定できます。
+6.    Experiment with other data types! All of these scripts take an optional -ShardKeyType parameter that allows you to specify the key type. The default is Int32, but you can also specify Int64, Guid, or Binary.
 
-## 要求の作成
+## <a name="create-requests"></a>Create requests
 
-サービスは、Web UI を使用するか、インポートするか、Web ロールで要求を送信する SplitMerge.psm1 PowerShell モジュールを使用する方法のいずれかで利用できます。
+The service can be used either by using the web UI or by importing and using the SplitMerge.psm1 PowerShell module which will submit your requests through the web role.
 
-サービスは、シャード化したテーブルと参照テーブルの両方にデータを移動できます。シャード テーブルには、シャード キー列があり、シャードごとに異なる行データを保持します。参照テーブルはシャードされないため、すべてのシャードに同じ行データが含まれています。データを頻繁には変更しない場合に参照テーブルを使用すると便利です。また、これをクエリに使用してシャード化されたテーブルとの JOIN を行います。
+The service can move data in both sharded tables and reference tables. A sharded table has a sharding key column and has different row data on each shard. A reference table is not sharded so it contains the same row data on every shard. Reference tables are useful for data that does not change often and is used to JOIN with sharded tables in queries.
 
-分割やマージの操作を実行するには、移動の対象となるシャード化したテーブルと参照テーブルを宣言する必要があります。これは **SchemaInfo** API で行います。この API は、**Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** 名前空間にあります。
+In order to perform a split-merge operation, you must declare the sharded tables and reference tables that you want to have moved. This is accomplished with the **SchemaInfo** API. This API is in the **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** namespace.
 
-1.    シャード テーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo")、テーブル名、およびシャード キーが含まれているテーブル内の列名を記述する **ShardedTableInfo** オブジェクトを作成します。
-2.    参照テーブルごとに、テーブルの親のスキーマ名 (オプション、既定値は "dbo") とテーブル名を記述する **ReferenceTableInfo** オブジェクトを作成します。
-3.    新しい **SchemaInfo** オブジェクトに、前の TableInfo オブジェクトを追加します。
-4.    **ShardMapManager** オブジェクトへの参照を取得し、**GetSchemaInfoCollection** を呼び出します。
-5.    **SchemaInfoCollection** に **SchemaInfo** を追加し、シャード マップ名を入力します。
+1.    For each sharded table, create a **ShardedTableInfo** object describing the table’s parent schema name (optional, defaults to “dbo”), the table name, and the column name in that table that contains the sharding key.
+2.    For each reference table, create a **ReferenceTableInfo** object describing the table’s parent schema name (optional, defaults to “dbo”) and the table name.
+3.    Add the above TableInfo objects to a new **SchemaInfo** object.
+4.    Get a reference to a **ShardMapManager** object, and call **GetSchemaInfoCollection**.
+5.    Add the **SchemaInfo** to the **SchemaInfoCollection**, providing the shard map name.
 
-この例は、SetupSampleSplitMergeEnvironment.ps1 スクリプトで確認できます。
+An example of this can be seen in the SetupSampleSplitMergeEnvironment.ps1 script.
 
-Split-Merge サービスはターゲット データベース (またはデータベースにある任意のテーブル用のスキーマ) を作成しないことに注意してください。サービスに要求を送信する前に作成しておく必要があります。
+Note that the Split-Merge service does not create the target database (or schema for any tables in the database) for you. They must be pre-created before sending a request to the service.
 
 
-## トラブルシューティング
+## <a name="troubleshooting"></a>Troubleshooting
 
-サンプル Powershell スクリプトの実行中に、次のメッセージが表示されることがあります。
+You may see the below message when running the sample powershell scripts:
 
     Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.
 
-このエラーは、SSL 証明書が正しく構成されていないことを意味しています。「Web ブラウザーを使って接続する」のセクションの手順に従ってください。
+This error means that your SSL certificate is not configured correctly. Please follow the instructions in section 'Connecting with a web browser'.
 
-要求を送信できない場合、次の内容が表示される可能性があります。
+If you cannot submit requests you may see this:
 
- [Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'.
+ [Exception] System.Data.SqlClient.SqlException (0x80131904): Could not find stored procedure 'dbo.InsertRequest'. 
 
-この例外が表示された場合は、構成ファイルの、特に、**WorkerRoleSynchronizationStorageAccountConnectionString** の設定値が適切であるか確認してください。このエラーは、通常、Worker ロールがメタデータ データベースを初回使用時に正常に初期化できなかったことを示しています。
+In this case, check your configuration file, in particular the setting for **WorkerRoleSynchronizationStorageAccountConnectionString**. This error typically indicates that the worker role could not successfully initialize the metadata database on first use. 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -339,4 +321,8 @@ Split-Merge サービスはターゲット データベース (またはデー�
 [5]: ./media/sql-database-elastic-scale-configure-deploy-split-and-merge/storage.png
  
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

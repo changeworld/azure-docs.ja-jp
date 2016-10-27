@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Visual Studio Code を使用した ASP.NET 5 Web アプリの作成"
-   description="このチュートリアルでは、Visual Studio Code を使用して ASP.NET 5 Web アプリを作成する方法について説明します。"
+   pageTitle="Create an ASP.NET 5 web app in Visual Studio Code"
+   description="This tutorial illustrates how to create an ASP.NET 5 web app using Visual Studio Code."
    services="app-service\web"
    documentationCenter=".net"
    authors="erikre"
@@ -8,258 +8,264 @@
    editor="jimbe"/>
 
 <tags
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="dotnet" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/26/2016" 
-	ms.author="cephalin"/>
+    ms.service="app-service-web" 
+    ms.workload="web" 
+    ms.tgt_pltfrm="dotnet" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="02/26/2016" 
+    ms.author="cephalin"/>
 
-# Visual Studio Code を使用した ASP.NET 5 Web アプリの作成
 
-## 概要
+# <a name="create-an-asp.net-5-web-app-in-visual-studio-code"></a>Create an ASP.NET 5 web app in Visual Studio Code
 
-このチュートリアルでは、[Visual Studio コード (VS コード)](http://code.visualstudio.com//Docs/whyvscode) を使用して ASP.NET 5 Web アプリを作成したり、それを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイしたりする方法について説明します。
+## <a name="overview"></a>Overview
 
-> [AZURE.NOTE] この記事は、Web アプリについて言及していますが、API アプリとモバイル アプリにも適用されます。
+This tutorial shows you how to create an ASP.NET 5 web app using [Visual Studio Code (VS Code)](http://code.visualstudio.com//Docs/whyvscode) and deploy it to [Azure App Service](../app-service/app-service-value-prop-what-is.md). 
 
-ASP.NET 5 は、ASP.NET の刷新版です。ASP.NET 5 は、.NET を使用して最新のクラウドベースの Web アプリを構築するための、新しいオープン ソースのクロスプラットフォーム フレームワークです。詳細については、[ASP.NET 5 の概要](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html)に関するページを参照してください。Azure App Service Web Apps については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
+> [AZURE.NOTE] Although this article refers to web apps, it also applies to API apps and mobile apps. 
+
+ASP.NET 5 is a significant redesign of ASP.NET. ASP.NET 5 is a new open-source and cross-platform framework for building modern cloud-based web apps using .NET. For more information, see [Introduction to ASP.NET 5](http://docs.asp.net/en/latest/conceptual-overview/aspnet.html). For information about Azure App Service web apps, see [Web Apps Overview](app-service-web-overview.md).
 
 [AZURE.INCLUDE [app-service-web-try-app-service.md](../../includes/app-service-web-try-app-service.md)]
 
-## 前提条件  
+## <a name="prerequisites"></a>Prerequisites  
 
-* [VS コード](http://code.visualstudio.com/Docs/setup)をインストールします。
-* [Node.js](http://nodejs.org) をインストールします。Node.js は、JavaScript を使用して高速かつスケーラブルなサーバー アプリケーションを構築するためのプラットフォームです。Node はランタイム (ノード) であり、[npm](http://www.npmjs.com/) は Node モジュールのパッケージ マネージャーです。このチュートリアルでは、npm を使用して、ASP.NET 5 Web アプリをスキャフォールディングします。
-* Git をインストールします。これは、[Chocolatey](https://chocolatey.org/packages/git) または [git-scm.com](http://git-scm.com/downloads) のいずれかの場所からインストールできます。Git を初めて使う場合は、[git-scm.com](http://git-scm.com/downloads) を選択し、**Windows コマンド プロンプトから Git を使用する**オプションを選択します。Git をインストールした後、(VS コードからコミットを実行する場合に) チュートリアルの後半で必要になるため、Git のユーザー名と電子メールも設定する必要があります。
+* Install [VS Code](http://code.visualstudio.com/Docs/setup).
+* Install [Node.js](http://nodejs.org) - Node.js is a platform for building fast and scalable server applications using JavaScript. Node is the runtime (Node), and [npm](http://www.npmjs.com/) is the Package Manager for Node modules. You will use npm to scaffold an ASP.NET 5 web app in this tutorial.
+* Install Git - You can install it from either of these locations: [Chocolatey](https://chocolatey.org/packages/git) or [git-scm.com](http://git-scm.com/downloads). If you are new to Git, choose [git-scm.com](http://git-scm.com/downloads) and select the option to **Use Git from the Windows Command Prompt**. Once you install Git, you'll also need to set the Git user name and email as it's required later in the tutorial (when performing a commit from VS Code).  
 
-## ASP.NET 5 と DNX のインストール
-ASP.NET 5 と DNX (.NET Execution Environment) は、OS X、Linux、Windows 上で動作する最新のクラウドや Web アプリを構築するための、効率の優れた .NET スタックです。ASP.NET 5 および DNX は、一から設計し直され、クラウドにデプロイされるアプリまたはオンプレミスで実行されるアプリ用に最適化された開発フレームワークを提供します。オーバーヘッドを最小に抑えたモジュラー コンポーネントから構成されるため、ソリューションを構築するときに柔軟性を保つことができます。
+## <a name="install-asp.net-5-and-dnx"></a>Install ASP.NET 5 and DNX
+ASP.NET 5/DNX (the .NET Execution Environment) is a lean .NET stack for building modern cloud and web apps that run on OS X, Linux, and Windows. It has been built from the ground up to provide an optimized development framework for apps that are either deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain flexibility while constructing your solutions.
 
-このチュートリアルでは、最新の開発バージョンの ASP.NET 5 と DNX を使用してアプリケーションの構築を開始する方法について説明します。次の手順は、Windows に固有の手順です。OS X、Linux、および Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。
+This tutorial is designed to get you started building applications with the latest development versions of ASP.NET 5 and DNX. The following instructions are specific to Windows. For more detailed installation instructions for OS X, Linux, and Windows, see [Installing ASP.NET 5 and DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx). 
 
-1. .NET Version Manager (DNVM) をインストールするには、コマンド プロンプトを開き、次のコマンドを実行します。
+1. To install .NET Version Manager (DNVM) in Windows, open a command prompt, and run the following command.
 
-		@powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
+        @powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
 
-	DNVM スクリプトがダウンロードされ、ユーザー プロファイル ディレクトリに配置されます。
+    This will download the DNVM script and put it in your user profile directory. 
 
-2. DNVM のインストールを完了するには、**Windows を再起動**します。
+2. **Restart Windows** to complete the DNVM installation. 
 
-	Windows を再起動した後、コマンド プロンプトを開き、以下を入力して、DNVM の場所を確認できます。
+    After you have restarted Windows, you can open the command prompt to verify the location of DNVM by entering the following:
 
-		where dnvm
+        where dnvm
 
-	コマンド プロンプトで、パスは次のように表示されます。
+    The command prompt will show a path similar to the following.
 
-	![dnvm の場所](./media/web-sites-create-web-app-using-vscode/00-where-dnvm.png)
+    ![dnvm location](./media/web-sites-create-web-app-using-vscode/00-where-dnvm.png)
 
-3. これで、DNVM を利用できるようになりました。アプリケーションを実行するには、これを使って DNX をダウンロードする必要があります。コマンド プロンプトで、次のコマンドを実行します。
+3. Now that you have DNVM, you must use it to download DNX to run your applications. Run the following at the command prompt:
 
-		dnvm upgrade
+        dnvm upgrade
 
-	コマンド プロンプトで次のコマンドを実行して、DNVM を確認し、アクティブなランタイムを表示します。
+    Verify your DNVM, and view the active runtime by entering the following at the command prompt:
 
-		dnvm list
+        dnvm list
 
-	コマンド プロンプトに、アクティブなランタイムの詳細が表示されます。
+    The command prompt will show the details of the active runtime.
 
-	![DNVM の場所](./media/web-sites-create-web-app-using-vscode/00b-dnvm-list.png)
+    ![DNVM location](./media/web-sites-create-web-app-using-vscode/00b-dnvm-list.png)
 
-	複数の DNX ランタイムが表示されている場合は、コマンド プロンプトで以下 (またはこれ以降のバージョン) を入力してアクティブな DNX ランタイムを設定することを選択できます。このチュートリアルの後半で Web アプリを作成するときに、ASP.NET 5 ジェネレーターによって使用される同じバージョンに設定します。*最新バージョンに設定されている場合は、アクティブなランタイムを変更する必要はありません。*
+    If more than one DNX runtime is listed, you can choose to enter the following (or a more recent version) at the command prompt to set the active DNX runtime. Set it to the same version that is used by the ASP.NET 5 generator when you create your web app later in this tutorial. *You may not need to change the active runtime if it is set to the latest available.*
 
-		dnvm use 1.0.0-update1 –p
+        dnvm use 1.0.0-update1 –p
 
-> [AZURE.NOTE] OS X、Linux、および Windows 用の詳細なインストール手順については、[ASP.NET 5 と DNX のインストール](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx)に関するページを参照してください。
+> [AZURE.NOTE] For more detailed installation instructions for OS X, Linux, and Windows, see [Installing ASP.NET 5 and DNX](https://code.visualstudio.com/Docs/ASPnet5#_installing-aspnet-5-and-dnx). 
 
-## Web アプリの作成 
+## <a name="create-the-web-app"></a>Create the web app 
 
-このセクションでは、新しい ASP.NET Web アプリをスキャフォールディングする方法について説明します。ノード パッケージ マネージャー (npm) を使用して、[Yeoman](http://yeoman.io/) (アプリケーション スキャフォールディング ツール - Visual Studio での **[ファイル] > [新しいプロジェクト]** 操作に相当する VS コード)、[Grunt](http://gruntjs.com/) (JavaScript タスク ランナー)、および [Bower](http://bower.io/) (クライアント側のパッケージ マネージャー) をインストールします。
+This section shows you how to scaffold a new app ASP.NET web app. You will use the node package manager (npm) to install [Yeoman](http://yeoman.io/) (application scaffolding tool - the VS Code equivalent of the Visual Studio **File > New Project** operation), [Grunt](http://gruntjs.com/) (JavaScript task runner), and [Bower](http://bower.io/) (client side package manager). 
 
-1. 管理者権限でコマンド プロンプトを開き、ASP.NET プロジェクトを作成する場所に移動します。たとえば、C: のルートに *vscodeprojects* ディレクトリを作成します。
+1. Open a command prompt with Administrator rights and navigate to the location where you want to create your ASP.NET project. For instance, create a *vscodeprojects* directory at the root of C:\.
 
-2. コマンド プロンプトで次のコマンドを入力して、Yeoman とサポート ツールをインストールします。
+2. Enter the following at the command prompt to install Yeoman and the supporting tools.
 
-		npm install -g yo grunt-cli generator-aspnet bower
+        npm install -g yo grunt-cli generator-aspnet bower
 
-	> [AZURE.NOTE] npm バージョンが古くなっていること示す警告が表示される場合があります。この警告は、このチュートリアルには影響しません。
+    > [AZURE.NOTE] You may get a warning suggesting that your npm version is out of date. This warning should not affect this tutorial.
 
-3. コマンド プロンプトで次のコマンドを入力して、プロジェクト フォルダーを作成し、アプリをスキャフォールディングします。
+3. Enter the following at the command prompt to create the project folder and scaffold the app.
 
-		yo aspnet
+        yo aspnet
 
-4. 方向キーを使用して、ASP.NET 5 ジェネレーター メニューから種類として **Web アプリケーション Basic** を選択し、**Enter** キーを押します。
+4. Use the arrow keys to select the **Web Application Basic** type from the ASP.NET 5 generator menu, and press **&lt;Enter>**.
 
-	![Yeoman - ASP.NET 5 ジェネレーター](./media/web-sites-create-web-app-using-vscode/01-yo-aspnet.png)
+    ![Yeoman - ASP.NET 5 generator](./media/web-sites-create-web-app-using-vscode/01-yo-aspnet.png)
 
-5. 新しい ASP.NET Web アプリの名前を **SampleWebApp** に設定します。この名前はチュートリアル全体で使用されるため、別の名前を選択する場合は、**SampleWebApp** をすべてその名前に置き換える必要があります。**Enter** キーを押すと、Yeoman によって、**SampleWebApp** という名前の新しいフォルダーと新しいアプリに必要なファイルが作成されます。
+5. Set the name of your new ASP.NET web app to **SampleWebApp**. As this name is used throughout the tutorial, if you select a different name, you'll need to substitute it for each occurrence of **SampleWebApp**. When you press **&lt;Enter>**, Yeoman will create a new folder named **SampleWebApp** and the necessary files for your new app.
 
-6. コマンド プロンプトで、ディレクトリを新しいプロジェクト フォルダーに変更します。
+6. At the command prompt, change directories to your new project folder:
 
-		cd SampleWebApp
+        cd SampleWebApp
 
-7. また、コマンド プロンプトで、必要な NuGet パッケージをインストールしてアプリケーションを実行し、次のコマンドを入力します。
+7. Also at the command prompt, to install the necessary NuGet packages to run the application, enter the following command:
 
-		dnu restore
+        dnu restore
 
-8. コマンド プロンプトで次のコマンドを入力して、VS コードを開きます。
+8. Open VS Code by entering the following at the command prompt:
 
-		code .
+        code .
 
-## ローカルでの Web アプリの実行
+## <a name="run-the-web-app-locally"></a>Run the web app locally
 
-Web アプリが作成され、アプリのすべての NuGet パッケージが取得されたため、Web アプリをローカルで実行できます。
+Now that you have created the web app and retrieved all the NuGet packages for the app, you can run the web app locally.
 
-1. VS コードの**コマンド パレット**で、次のコマンドを入力して使用可能な実行コマンド オプションを表示します。
+1. From the **Command Palette** in VS Code, enter the following to show the available run command options:
 
-		dnx: Run Command
+        dnx: Run Command
 
-	> [AZURE.NOTE] Omnisharp サーバーが実行されていない場合は、起動されます。上のコマンドを再入力します。
+    > [AZURE.NOTE] If the Omnisharp server is not currently running, it will start up. Re-enter the above command.
 
-	次に、次のコマンドを選択して Web アプリを実行します。
-		
-		dnx web - (SampleWebApp)
+    Next, select the following command to run your web app:
+        
+        dnx web - (SampleWebApp)
 
-	コマンド ウィンドウに、アプリケーションが起動したことが示されます。コマンド ウィンドウにこのメッセージが表示されない場合は、VS コードの左下隅にプロジェクトのエラーが示されていないかどうかを確認します。
-	
-	> [AZURE.NOTE] **コマンド パレット**からコマンドを発行するには、コマンド ラインの先頭に **>** 文字が必要です。**web** コマンドに関する詳細は *project.json* ファイルで確認できます。コマンドが表示されない場合または使用できない場合、C# の拡張機能をインストールする必要があります。`>Extensions: Install Extension` と `ext install c#` を実行して、C# の拡張機能をインストールしてください。
+    The command window will display that the application has started. If the command window doesn't display this message, check the lower left corning of VS Code for errors in your project.
+    
+    > [AZURE.NOTE] Issuing a command from the **Command Palette** requires a **>** character at the beginning of the command line. You can view the details related to the **web** command in the *project.json* file.   
+    > If the command does not appear or is not available, you may need to install the C# extension. Run  `>Extensions: Install Extension` and `ext install c#` to install the C# extensions.
 
-2. ブラウザーを開き、次の URL に移動します。
+2. Open a browser and navigate to the following URL.
 
-	**http://localhost:5000**
+    **http://localhost:5000**
 
-	Web アプリの既定のページが次のように表示されます。
+    The default page of the web app will appear as follows.
 
-	![ブラウザーでのローカル Web アプリ](./media/web-sites-create-web-app-using-vscode/08-web-app.png)
+    ![Local web app in a browser](./media/web-sites-create-web-app-using-vscode/08-web-app.png)
 
-3. ブラウザーを閉じます。**コマンド ウィンドウ**で、**Ctrl+C** キーを押してアプリケーションをシャットダウンするか、**コマンド ウィンドウ**を閉じます。
+3. Close your browser. In the **Command Window**, press **Ctrl+C** to shut down the application and close the **Command Window**. 
 
-## Azure ポータルで Web アプリを作成する
+## <a name="create-a-web-app-in-the-azure-portal"></a>Create a web app in the Azure Portal
 
-次の手順では、Azure ポータルでの Web アプリの作成について説明します。
+The following steps will guide you through creating a web app in the Azure Portal.
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。
+1. Log in to the [Azure Portal](https://portal.azure.com).
 
-2. ポータルの左上にある **[新規]** をクリックします。
+2. Click **NEW** at the top left of the Portal.
 
-3. **[Web アプリ] > [Web アプリ]** をクリックします。
+3. Click **Web Apps > Web App**.
 
-	![Azure の新しい Web アプリ](./media/web-sites-create-web-app-using-vscode/09-azure-newwebapp.png)
+    ![Azure new web app](./media/web-sites-create-web-app-using-vscode/09-azure-newwebapp.png)
 
-4. **[名前]** に **SampleWebAppDemo** などの値を入力します。この名前は、一意にする必要があります。ポータルで名前を入力しようとするときに、この一意性が要求されます。したがって、別の値を選択する場合は、このチュートリアルに表示されるすべての **SampleWebAppDemo** をこの値に置き換える必要があります。
+4. Enter a value for **Name**, such as **SampleWebAppDemo**. Note that this name needs to be unique, and the portal will enforce that when you attempt to enter the name. Therefore, if you select a enter a different value, you'll need to substitute that value for each occurrence of **SampleWebAppDemo** that you see in this tutorial. 
 
-5. 既存の **App Service プラン**を選択するか、新しいプランを作成します。新しいプランを作成する場合は、価格レベル、および場所などのオプションを選択します。App Service プランの詳細については、「[Azure App Service プランの詳細](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」の記事を参照してください。
+5. Select an existing **App Service Plan** or create a new one. If you create a new plan, select the pricing tier, location, and other options. For more information on App Service plans, see the article, [Azure App Service plans in-depth overview](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
-	![Azure の新しい Web アプリ ブレード](./media/web-sites-create-web-app-using-vscode/10-azure-newappblade.png)
+    ![Azure new web app blade](./media/web-sites-create-web-app-using-vscode/10-azure-newappblade.png)
 
-6. **[作成]** をクリックします。
+6. Click **Create**.
 
-	![Web アプリ ブレード](./media/web-sites-create-web-app-using-vscode/11-azure-webappblade.png)
+    ![web app blade](./media/web-sites-create-web-app-using-vscode/11-azure-webappblade.png)
 
-## 新しい Web アプリの Git 発行の有効化
+## <a name="enable-git-publishing-for-the-new-web-app"></a>Enable Git publishing for the new web app
 
-Git は、Azure App Service の Web アプリをデプロイするために使用できる分散型バージョン コントロール システムです。Web アプリ用に記述したコードはローカルの Git リポジトリに格納されます。このコードをリモート リポジトリにプッシュして Azure にデプロイします。
+Git is a distributed version control system that you can use to deploy your Azure App Service web app. You'll store the code you write for your web app in a local Git repository, and you'll deploy your code to Azure by pushing to a remote repository.   
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。
+1. Log into the [Azure Portal](https://portal.azure.com).
 
-2. **[参照]** をクリックします。
+2. Click **Browse**.
 
-3. **[Web アプリ]** をクリックして 、Azure サブスクリプションに関連付けられている Web アプリの一覧を表示します。
+3. Click **Web Apps** to view a list of the web apps associated with your Azure subscription.
 
-4. このチュートリアルで作成した Web アプリを選択します。
+4. Select the web app you created in this tutorial.
 
-5. Web アプリのブレードで、**[設定]**、**[継続的なデプロイ]** の順にクリックします。
+5. In the web app blade, click **Settings** > **Continuous deployment**. 
 
-	![Azure Web アプリ ホスト](./media/web-sites-create-web-app-using-vscode/14-azure-deployment.png)
+    ![Azure web app host](./media/web-sites-create-web-app-using-vscode/14-azure-deployment.png)
 
-6. **[ソースの選択]、[ローカル Git リポジトリ]** の順にクリックします。
+6. Click **Choose Source > Local Git Repository**.
 
-7. **[OK]** をクリックします。
+7. Click **OK**.
 
-	![Azure のローカル Git リポジトリ](./media/web-sites-create-web-app-using-vscode/15-azure-localrepository.png)
+    ![Azure Local Git Respository](./media/web-sites-create-web-app-using-vscode/15-azure-localrepository.png)
 
-8. Web アプリまたはその他の App Service アプリを発行するためのデプロイメント資格情報をまだ設定していない場合は、ここで設定します。
+8. If you have not previously set up deployment credentials for publishing a web app or other App Service app, set them up now:
 
-	* **[設定]**、**[デプロイ資格情報]** の順にクリックします。**[デプロイ資格情報の設定]** ブレードが表示されます。
+    * Click **Settings** > **Deployment credentials**. The **Set deployment credentials** blade will be displayed.
 
-	* ユーザー名とパスワードを作成します。このパスワードは、後で Git をセットアップするときに必要になります。
+    * Create a user name and password.  You'll need this password later when setting up Git.
 
-	* **[保存]** をクリックします。
+    * Click **Save**.
 
-9. Web アプリのブレードで、**[設定]、[プロパティ]** の順にクリックします。デプロイ先のリモート Git リポジトリの URL は、**[GIT URL]** の下に表示されます。
+9. In your web app's blade, click **Settings > Properties**. The URL of the remote Git repository that you'll deploy to is shown under **GIT URL**.
 
-10. チュートリアルで後で使用するために、**GIT URL** の値をコピーします。
+10. Copy the **GIT URL** value for later use in the tutorial.
 
-	![Azure Git の URL](./media/web-sites-create-web-app-using-vscode/17-azure-giturl.png)
+    ![Azure Git URL](./media/web-sites-create-web-app-using-vscode/17-azure-giturl.png)
 
-## Azure App Service への Web アプリの発行
+## <a name="publish-your-web-app-to-azure-app-service"></a>Publish your web app to Azure App Service
 
-このセクションでは、ローカル Git リポジトリを作成し、そのリポジトリから Azure にプッシュして、Web アプリを Azure にデプロイします。
+In this section, you will create a local Git repository and push from that repository to Azure to deploy your web app to Azure.
 
-1. VS コードの左側のナビゲーション バーで、**[Git]** オプションを選択します。
+1. In VS Code, select the **Git** option in the left navigation bar.
 
-	![VS コードでの Git アイコン](./media/web-sites-create-web-app-using-vscode/git-icon.png)
+    ![Git icon in VS Code](./media/web-sites-create-web-app-using-vscode/git-icon.png)
 
-2. **[Git リポジトリの初期化]** を選択して、ワークスペースが Git によるソース管理の対象になるように設定します。
+2. Select **Initialize git repository** to make sure your workspace is under git source control. 
 
-	![Git の初期化](./media/web-sites-create-web-app-using-vscode/19-initgit.png)
+    ![Initialize Git](./media/web-sites-create-web-app-using-vscode/19-initgit.png)
 
-3. コマンド ウィンドウを開き、ディレクトリを Web アプリのディレクトリに変更します。次のコマンドを入力します。
+3. Open the Command Window and change directories to the directory of your web app. Then, enter the following command:
 
-		git config core.autocrlf false
+        git config core.autocrlf false
 
-	このコマンドは、末尾に CRLF と LF が含まれているテキストに関する問題を防ぎます。
+    This command prevents an issue about text where CRLF endings and LF endings are involved.
 
-4. VS コードで、コミット メッセージを追加し、**[すべてコミット]** チェック アイコンをクリックします。
+4. In VS Code, add a commit message and click the **Commit All** check icon.
 
-	![Git すべてコミット](./media/web-sites-create-web-app-using-vscode/20-git-commit.png)
+    ![Git Commit All](./media/web-sites-create-web-app-using-vscode/20-git-commit.png)
 
-5. Git の処理が完了した後には、[Git] ウィンドウの **[変更]** の下にいかなるファイルも表示されません。
+5. After Git has completed processing, you'll see that there are no files listed in the Git window under **Changes**. 
 
-	![Git 変更なし](./media/web-sites-create-web-app-using-vscode/no-changes.png)
+    ![Git no changes](./media/web-sites-create-web-app-using-vscode/no-changes.png)
 
-6. コマンド プロンプトが Web アプリがあるディレクトリを指しているコマンド ウィンドウに戻します。
+6. Change back to the Command Window where the command prompt points to the directory where your web app is located.
 
-7. コピーしておいた (".git" で終わる) Git URL を使用して、Web アプリに更新をプッシュするためのリモート参照を作成します。
+7. Create a remote reference for pushing updates to your web app by using the Git URL (ending in ".git") that you copied earlier.
 
-		git remote add azure [URL for remote repository]
+        git remote add azure [URL for remote repository]
 
-8. 資格情報をローカルに保存するように Git を構成して、VS コードから生成される push コマンドに資格情報が自動的に追加されるようにします。
+8. Configure Git to save your credentials locally so that they will be automatically appended to your push commands generated from VS Code.
 
-		git config credential.helper store
+        git config credential.helper store
 
-9. 次のコマンドを入力して、変更内容を Azure にプッシュします。この Azure への初回の push を実行した後、VS コードからすべての push コマンドを実行できます。
+9. Push your changes to Azure by entering the following command. After this initial push to Azure, you will be able to do all the push commands from VS Code. 
 
-		git push -u azure master
+        git push -u azure master
 
-	Azure で以前に作成したパスワードを入力するように求められます。**注: パスワードは表示されません。**
+    You are prompted for the password you created earlier in Azure. **Note: Your password will not be visible.**
 
-	このコマンドからは、デプロイメントが成功したというメッセージが最後に出力されます。
+    The output from the above command ends with a message that deployment is successful.
 
-		remote: Deployment successful.
-		To https://user@testsite.scm.azurewebsites.net/testsite.git
-		[new branch]      master -> master
+        remote: Deployment successful.
+        To https://user@testsite.scm.azurewebsites.net/testsite.git
+        [new branch]      master -> master
 
-> [AZURE.NOTE] アプリを変更した場合は、組み込み Git 機能を使用して VS コードに直接再パブリッシュできます。これを行うには、**[すべてコミット]** オプションに続けて **[プッシュ]** オプションを選択します。**[プッシュ]** オプションは、**[すべてコミット]** ボタンと **[更新]** ボタンの隣のドロップダウン メニューに含まれています。
+> [AZURE.NOTE] If you make changes to your app, you can republish directly in VS Code using the built-in Git functionality by selecting the **Commit All** option followed by the **Push** option. You will find the **Push** option available in the drop-down menu next to the **Commit All** and **Refresh** buttons.
 
-プロジェクトで共同作業を行う必要がある場合は、Azure へのプッシュの間に GitHub へのプッシュを実行することを考慮してください。
+If you need to collaborate on a project, you should consider pushing to GitHub in between pushing to Azure.
 
-## Azure でのアプリの実行
-これで Web アプリがデプロイされたため、Azure でホストされているアプリを実行してみましょう。
+## <a name="run-the-app-in-azure"></a>Run the app in Azure
+Now that you have deployed your web app, let's run the app while hosted in Azure. 
 
-これは、2 つの方法で実行できます。
+This can be done in two ways:
 
-* ブラウザーを開き、次のように、Web アプリの名前を入力します。
+* Open a browser and enter the name of your web app as follows.   
 
-		http://SampleWebAppDemo.azurewebsites.net
+        http://SampleWebAppDemo.azurewebsites.net
  
-* Azure ポータルで、Web アプリの Web アプリ ブレードを見つけ、**[参照]** をクリックして、既定のブラウザーで
-* アプリを表示します。
+* In the Azure Portal, locate the web app blade for your web app, and click **Browse** to view your app 
+* in your default browser.
 
-![Azure の Web アプリ](./media/web-sites-create-web-app-using-vscode/21-azurewebapp.png)
+![Azure web app](./media/web-sites-create-web-app-using-vscode/21-azurewebapp.png)
 
-## 概要
-このチュートリアルでは、VS コードで、Web アプリを作成し、Azure にデプロイする方法を学習しました。VS コードの詳細については、[Visual Studio Code を使用する理由](https://code.visualstudio.com/Docs/)に関する記事をご覧ください。 App Service Web Apps の詳細については、[Web Apps の概要](app-service-web-overview.md)に関するページを参照してください。
+## <a name="summary"></a>Summary
+In this tutorial, you learned how to create a web app in VS Code and deploy it to Azure. For more information about VS Code, see the article, [Why Visual Studio Code?](https://code.visualstudio.com/Docs/) For information about App Service web apps, see [Web Apps Overview](app-service-web-overview.md). 
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

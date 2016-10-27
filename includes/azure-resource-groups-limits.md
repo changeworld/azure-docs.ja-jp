@@ -1,11 +1,14 @@
-リソース|既定の制限|上限
+Resource|Default Limit|Maximum Limit
 ---|---|---
-[リソース グループ](../articles/resource-group-overview.md#resource-groups) (リソースの種類) あたりのリソース数|800|800
-リソース グループあたりのデプロイ数|800|800
-デプロイあたりのリソース数|800|800
-管理ロック数 (一意のスコープあたり)|20|20
-タグ数 (リソースまたはリソース グループごと)|15|15
-タグ キーの長さ|512|512
-タグ値の長さ|256|256
+Resources per [resource group](../articles/resource-group-overview.md#resource-groups) (per resource type)|800|800
+Deployments per resource group|800|800
+Resources per deployment|800|800
+Management Locks (per unique scope)|20|20
+Number of Tags (per resource or resource group)|15|15
+Tag key length|512|512
+Tag value length|256|256
 
-<!---HONumber=AcomDC_0211_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

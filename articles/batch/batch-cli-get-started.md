@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Batch CLI の使用 | Microsoft Azure"
-   description="Azure Batch サービスのリソースを管理するために使用できる Azure CLI の Batch コマンドの概要を簡単に説明します。"
+   pageTitle="Get started with Azure Batch CLI | Microsoft Azure"
+   description="Get a quick introduction to the Batch commands in Azure CLI for managing Azure Batch service resources"
    services="batch"
    documentationCenter=""
    authors="mmacy"
@@ -16,262 +16,266 @@
    ms.date="09/30/2016"
    ms.author="marsma"/>
 
-# Azure Batch CLI の使用
 
-クロスプラットフォームの Azure コマンド ライン インターフェイス (Azure CLI) を使用すると、Linux、Mac、Windows のコマンド シェルで Batch アカウントや各種リソース (プール、ジョブ、タスクなど) を管理できます。Batch API、Azure Portal、Batch PowerShell コマンドレットを使用して実行するタスクの多くは、Azure CLI で実行したりスクリプト化したりできます。
+# <a name="get-started-with-azure-batch-cli"></a>Get started with Azure Batch CLI
 
-この記事は、Azure CLI バージョン 0.10.5 に基づいています。
+The cross-platform Azure Command-Line Interface (Azure CLI) enables you to manage your Batch accounts and resources such as pools, jobs, and tasks in Linux, Mac, and Windows command shells. With the Azure CLI, you can perform and script many of the same tasks you carry out with the Batch APIs, Azure portal, and Batch PowerShell cmdlets.
 
-## 前提条件
+This article is based on Azure CLI version 0.10.5.
 
-* [Azure CLI のインストール](../xplat-cli-install.md)
+## <a name="prerequisites"></a>Prerequisites
 
-* [Azure サブスクリプションへの Azure CLI の接続](../xplat-cli-connect.md)
+* [Install the Azure CLI](../xplat-cli-install.md)
 
-* **Resource Manager モード**への切り替え: `azure config mode arm`
+* [Connect the Azure CLI to your Azure subscription](../xplat-cli-connect.md)
 
->[AZURE.TIP] 最新のサービスや機能強化を活かすためにも、Azure CLI のインストールを定期的に更新することをお勧めします。
+* Switch to **Resource Manager mode**: `azure config mode arm`
 
-## コマンドのヘルプ
+>[AZURE.TIP] We recommend that you update your Azure CLI installation frequently to take advantage of service updates and enhancements.
 
-Azure CLI では、すべてのコマンドでヘルプ テキストを表示できます。ヘルプを表示するには、コマンドの後ろに `-h` オプションのみを追加します。次に例を示します。
+## <a name="command-help"></a>Command help
 
-* `azure` コマンドのヘルプを表示するには、「`azure -h`」と入力します。
-* CLI のすべての Batch コマンドの一覧を取得するには、「`azure batch -h`」と入力します。
-* Batch アカウントの作成に関するヘルプを表示するには、「`azure batch account create -h`」と入力します。
+You can display help text for every command in the Azure CLI by appending `-h` as the only option after the command. For example:
 
-確信が持てない場合は、コマンド ライン オプション `-h` を使用して、任意の Azure CLI コマンドのヘルプを表示してください。
+* To get help for the `azure` command, enter: `azure -h`
+* To get a list of all Batch commands in the CLI, use: `azure batch -h`
+* To get help on creating a Batch account, enter: `azure batch account create -h`
 
-## Batch アカウントを作成する
+When in doubt, use the `-h` command-line option to get help on any Azure CLI command.
 
-用途:
+## <a name="create-a-batch-account"></a>Create a Batch account
+
+Usage:
 
     azure batch account create [options] <name>
 
-例:
+Example:
 
-	azure batch account create --location "West US"  --resource-group "resgroup001" "batchaccount001"
+    azure batch account create --location "West US"  --resource-group "resgroup001" "batchaccount001"
 
-指定したパラメーターを使用して、新しい Batch アカウントを作成します。少なくとも、場所、リソース グループ、アカウント名を指定する必要があります。リソース グループがない場合は、`azure group create` を実行してリソース グループを作成します。`--location` オプションには Azure リージョンのいずれか ("West US" など) を指定します。次に例を示します。
+Creates a new Batch account with the specified parameters. You must specify at least a location, resource group, and account name. If you don't already have a resource group, create one by running `azure group create`, and specify one of the Azure regions (such as "West US") for the `--location` option. For example:
 
-	azure group create --name "resgroup001" --location "West US"
+    azure group create --name "resgroup001" --location "West US"
 
-> [AZURE.NOTE] Batch アカウント名は、アカウントが作成される Azure リージョン内で一意である必要があります。アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。Batch アカウント名に `-` や `_` のような特殊文字は使用できません。
+> [AZURE.NOTE] The Batch account name must be unique within the Azure region the account is created. It may contain only lowercase alphanumeric characters, and must be 3-24 characters in length. You can't use special characters like `-` or `_` in Batch account names.
 
-### リンクされたストレージ アカウント (autostorage)
+### <a name="linked-storage-account-(autostorage)"></a>Linked storage account (autostorage)
 
-Batch アカウントの作成時に、(必要に応じて) **汎用**のストレージ アカウントを Batch アカウントにリンクすることができます。Batch の[アプリケーション パッケージ](batch-application-packages.md)機能では、[Batch File Conventions .NET](batch-task-output.md) ライブラリの場合と同様に、リンクされた汎用の Storage アカウント内の BLOB ストレージを使用します。これらのオプション機能は、Batch タスクで実行するアプリケーションのデプロイや、そのアプリケーションによって生成されるデータの保持に役立ちます。
+You can (optionally) link a **General purpose** Storage account to your Batch account when you create it. The [application packages](batch-application-packages.md) feature of Batch uses blob storage in a linked General purpose Storage account, as does the [Batch File Conventions .NET](batch-task-output.md) library. These optional features assist you in deploying the applications your Batch tasks run, and persisting the data they produce.
 
-Batch アカウントの作成時に、既存の Azure ストレージ アカウントを新しい Batch アカウントにリンクするには、`--autostorage-account-id` オプションを指定します。このオプションでは、ストレージ アカウントの完全修飾リソース ID が必要です。
+To link an existing Azure Storage account to a new Batch account when you create it, specify the `--autostorage-account-id` option. This option requires the fully qualified resource ID of the storage account.
 
-初めに、ストレージ アカウントの詳細を表示します。
+First, show your storage account's details:
 
     azure storage account show --resource-group "resgroup001" "storageaccount001"
 
-次に、`--autostorage-account-id` オプションの **Url** 値を使用します。Url 値は "/subscriptions/" で始まり、サブスクリプション ID とストレージ アカウントのリソース パスが含まれています。
+Then use the **Url** value for the `--autostorage-account-id` option. The Url value starts with "/subscriptions/" and contains your subscription ID and resource path to the Storage account:
 
     azure batch account create --location "West US"  --resource-group "resgroup001" --autostorage-account-id "/subscriptions/8ffffff8-4444-4444-bfbf-8ffffff84444/resourceGroups/resgroup001/providers/Microsoft.Storage/storageAccounts/storageaccount001" "batchaccount001"
 
-## Batch アカウントを削除する
+## <a name="delete-a-batch-account"></a>Delete a Batch account
 
-用途:
+Usage:
 
     azure batch account delete [options] <name>
 
-例:
+Example:
 
-	azure batch account delete --resource-group "resgroup001" "batchaccount001"
+    azure batch account delete --resource-group "resgroup001" "batchaccount001"
 
-指定した Batch アカウントを削除します。プロンプトが表示されたら、アカウントの削除を確定します (アカウントの削除は完了するまでに時間がかかる場合があります)。
+Deletes the specified Batch account. When prompted, confirm you want to remove the account (account removal can take some time to complete).
 
-## アカウントのアクセス キーを管理する
+## <a name="manage-account-access-keys"></a>Manage account access keys
 
-Batch アカウントで[リソースを作成および変更する](#create-and-modify-batch-resources)には、アクセス キーが必要です。
+You need an access key to [create and modify resources](#create-and-modify-batch-resources) in your Batch account.
 
-### アクセス キーを一覧表示する
+### <a name="list-access-keys"></a>List access keys
 
-用途:
+Usage:
 
-	azure batch account keys list [options] <name>
+    azure batch account keys list [options] <name>
 
-例:
+Example:
 
-	azure batch account keys list --resource-group "resgroup001" "batchaccount001"
+    azure batch account keys list --resource-group "resgroup001" "batchaccount001"
 
-指定された Batch アカウントのアカウント キーを一覧表示します。
+Lists the account keys for the given Batch account.
 
-### 新しいアクセス キーを生成する
+### <a name="generate-a-new-access-key"></a>Generate a new access key
 
-用途:
+Usage:
 
     azure batch account keys renew [options] --<primary|secondary> <name>
 
-例:
+Example:
 
-	azure batch account keys renew --resource-group "resgroup001" --primary "batchaccount001"
+    azure batch account keys renew --resource-group "resgroup001" --primary "batchaccount001"
 
-指定された Batch アカウントの指定されたアカウント キーを再生成します。
+Regenerates the specified account key for the given Batch account.
 
-## Batch リソースを作成および変更する
+## <a name="create-and-modify-batch-resources"></a>Create and modify Batch resources
 
-Azure CLI を使用して、プール、計算ノード、ジョブ、タスクなどの Batch リソースを作成、読み取り、更新、削除 (CRUD) することができます。これらの CRUD 操作には、Batch アカウント名、アクセス キー、エンドポイントが必要です。これらを指定するには、`-a`、`-k`、`-u` の各オプションを使用するか、(設定されている場合に) CLI が自動的に使用する[環境変数](#credential-environment-variables)を設定します。
+You can use the Azure CLI to create, read, update, and delete (CRUD) Batch resources like pools, compute nodes, jobs, and tasks. These CRUD operations require your Batch account name, access key, and endpoint. You can specify these with the `-a`, `-k`, and `-u` options, or set [environment variables](#credential-environment-variables) which the CLI uses automatically (if populated).
 
-### 資格情報の環境変数
+### <a name="credential-environment-variables"></a>Credential environment variables
 
-実行する各コマンドのコマンド ラインで `-a`、`-k`、`-u` オプションを指定する代わりに、環境変数 `AZURE_BATCH_ACCOUNT`、`AZURE_BATCH_ACCESS_KEY`、`AZURE_BATCH_ENDPOINT` を設定できます。Batch CLI はこれらの変数 (設定されている場合) を使用するため、`-a`、`-k`、`-u` オプションを省略できます。以降の説明では、これらの環境変数の使用を想定しています。
+You can set `AZURE_BATCH_ACCOUNT`, `AZURE_BATCH_ACCESS_KEY`, and `AZURE_BATCH_ENDPOINT` environment variables instead of specifying `-a`, `-k`, and `-u` options on the command line for every command you execute. The Batch CLI uses these variables (if set) so that you can omit the `-a`, `-k`, and `-u` options. The remainder of this article assumes use of these environment variables.
 
->[AZURE.TIP] `azure batch account keys list` でキーの一覧を表示し、`azure batch account show` でアカウントのエンドポイントを表示します。
+>[AZURE.TIP] List your keys with `azure batch account keys list`, and display the account's endpoint with `azure batch account show`.
 
-### JSON ファイル
+### <a name="json-files"></a>JSON files
 
-プールやジョブなどの Batch リソースを作成する際、コマンド ライン オプションとしてパラメーターを渡す代わりに、新しいリソースの構成を含む JSON ファイルを指定できます。For example:
+When you create Batch resources like pools and jobs, you can specify a JSON file containing the new resource's configuration instead of passing its parameters as command-line options. For example:
 
 `azure batch pool create my_batch_pool.json`
 
-多くのリソース作成操作をコマンド ライン オプションのみを使用して実行できますが、一部の機能では、リソースの詳細を含む JSON 形式のファイルが必要です。たとえば、開始タスクのリソース ファイルを指定する場合は、JSON ファイルを使用する必要があります。
+While you can perform many resource creation operations using only command-line options, some features require a JSON-formatted file containing the resource details. For example, you must use a JSON file if you want to specify resource files for a start task.
 
-リソースの作成に必要な JSON を確認するには、MSDN の [Batch の REST API リファレンス][rest_api]のドキュメントを参照してください。「"*リソースの種類*" の追加」の各トピックには、リソース作成用の JSON の例が含まれていて、JSON ファイルのテンプレートとして使用できます。たとえば、プール作成用の JSON は、「[Add a pool to an account (アカウントへのプールの追加)][rest_add_pool]」に含まれています。
+To find the JSON required to create a resource, refer to the [Batch REST API reference][rest_api] documentation on MSDN. Each "Add *resource type*" topic contains example JSON for creating the resource, which you can use as templates for your JSON files. For example, JSON for pool creation can be found in [Add a pool to an account][rest_add_pool].
 
->[AZURE.NOTE] リソースの作成時に JSON ファイルを指定すると、そのリソースに対してコマンド ラインで指定したその他すべてのパラメーターが無視されます。
+>[AZURE.NOTE] If you specify a JSON file when you create a resource, all other parameters that you specify on the command line for that resource are ignored.
 
-## プールを作成する
+## <a name="create-a-pool"></a>Create a pool
 
-用途:
+Usage:
 
     azure batch pool create [options] [json-file]
 
-例 (仮想マシンの構成):
+Example (Virtual Machine Configuration):
 
     azure batch pool create --id "pool001" --target-dedicated 1 --vm-size "STANDARD_A1" --image-publisher "Canonical" --image-offer "UbuntuServer" --image-sku "14.04.2-LTS" --node-agent-id "batch.node.ubuntu 14.04"
 
-例 (Cloud Services の構成):
+Example (Cloud Services Configuration):
 
-	azure batch pool create --id "pool002" --target-dedicated 1 --vm-size "small" --os-family "4"
+    azure batch pool create --id "pool002" --target-dedicated 1 --vm-size "small" --os-family "4"
 
-Batch サービスに計算ノードのプールを作成します。
+Creates a pool of compute nodes in the Batch service.
 
-[Batch 機能の概要](batch-api-basics.md#pool)のページで説明したように、プール内のノードに使用するオペレーティング システムには、**仮想マシンの構成**と **Cloud Services の構成** という 2 つのオプションがあります。仮想マシンの構成のプールを作成するには `--image-*` オプション、Cloud Services の構成のプールを作成するには `--os-family` オプションを使用します。`--os-family` オプションと `--image-*` オプションの両方を指定することはできません。
+As mentioned in the [Batch feature overview](batch-api-basics.md#pool), you have two options when you select an operating system for the nodes in your pool: **Virtual Machine Configuration** and **Cloud Services Configuration**. Use the `--image-*` options to create Virtual Machine Configuration pools, and `--os-family` to create Cloud Services Configuration pools. You can't specify both `--os-family` and `--image-*` options.
 
-プールの[アプリケーション パッケージ](batch-application-packages.md)と、[開始タスク](batch-api-basics.md#start-task)のコマンド ラインを指定できます。ただし、開始タスクのリソース ファイルを指定するには、代わりに [JSON ファイル](#json-files)を使用する必要があります。
+You can specify pool [application packages](batch-application-packages.md) and the command line for a [start task](batch-api-basics.md#start-task). To specify resource files for the start task, however, you must instead use a [JSON file](#json-files).
 
-次のコマンドを使用してプールを削除します。
+Delete a pool with:
 
     azure batch pool delete [pool-id]
 
->[AZURE.TIP] [仮想マシン イメージの一覧](batch-linux-nodes.md#list-of-virtual-machine-images)で、`--image-*` オプションの適切な値を確認してください。
+>[AZURE.TIP] Check the [list of virtual machine images](batch-linux-nodes.md#list-of-virtual-machine-images) for values appropriate for the `--image-*` options.
 
-## ジョブを作成する
+## <a name="create-a-job"></a>Create a job
 
-用途:
+Usage:
 
     azure batch job create [options] [json-file]
 
-例:
+Example:
 
     azure batch job create --id "job001" --pool-id "pool001"
 
-Batch アカウントにジョブを追加して、そのタスクを実行するプールを指定します。
+Adds a job to the Batch account and specifies the pool on which its tasks execute.
 
-次のコマンドを使用してジョブを削除します。
+Delete a job with:
 
     azure batch job delete [job-id]
 
-## プール、ジョブ、タスク、その他のリソースを一覧表示する
+## <a name="list-pools,-jobs,-tasks,-and-other-resources"></a>List pools, jobs, tasks, and other resources
 
-各バッチ リソースの種類で `list` コマンドがサポートされています。このコマンドは Batch アカウントを照会し、その種類のリソースを一覧表示します。たとえば、アカウント内のプールやジョブ内のタスクを一覧表示することができます。
+Each Batch resource type supports a `list` command that queries your Batch account and lists resources of that type. For example, you can list the pools in your account and the tasks in a job:
 
     azure batch pool list
     azure batch task list --job-id "job001"
 
-### リソースを効率的に一覧表示する
+### <a name="listing-resources-efficiently"></a>Listing resources efficiently
 
-`list` 操作に **select**、**filter**、**expand** の句オプションを指定して、クエリを高速化できます。これらのオプションを使用すると、Batch サービスが返すデータの量が制限されます。フィルター処理はすべてサーバー側で行われるので、送信されるのは関心のあるデータのみになります。これらの句を使用して、一覧表示操作の実行時に帯域幅を節約できます (それに伴って時間も節約できます)。
+For faster querying, you can specify **select**, **filter**, and **expand** clause options for `list` operations. Use these options to limit the amount of data returned by the Batch service. Because all filtering occurs server-side, only the data you are interested in crosses the wire. Use these clauses to save bandwidth (and therefore time) when you perform list operations.
 
-たとえば、次のコマンドは ID が "renderTask" で始まるプールのみを返します。
+For example, this will return only pools whose ids start with "renderTask":
 
     azure batch task list --job-id "job001" --filter-clause "startswith(id, 'renderTask')"
 
-Batch CLI は、Batch サービスがサポートしている 3 つの句すべてをサポートします。
+The Batch CLI supports all three clauses supported by the Batch service:
 
-* `--select-clause [select-clause]` 各エンティティのプロパティのサブセットを返します。
-* `--filter-clause [filter-clause]` 指定した OData 式に一致するエンティティのみを返します。
-* `--expand-clause [expand-clause]` 基になる 1 つの REST 呼び出しのエンティティ情報を取得します。現時点では、expand 句は `stats` プロパティのみをサポートしています。
+* `--select-clause [select-clause]`  Return a subset of properties for each entity
+* `--filter-clause [filter-clause]`  Return only entities that match the specified OData expression
+* `--expand-clause [expand-clause]`  Obtain the entity information in a single underlying REST call. The expand clause supports only the `stats` property at this time.
 
-3 つの句とこれらを使用したリスト クエリの詳細については、「[効率的な Azure Batch サービスのクエリ](batch-efficient-list-queries.md)」を参照してください。
+For details on the three clauses and performing list queries with them, see [Query the Azure Batch service efficiently](batch-efficient-list-queries.md).
 
-## アプリケーション パッケージの管理
+## <a name="application-package-management"></a>Application package management
 
-アプリケーション パッケージを利用すると、プール内の計算ノードにアプリケーションを簡単にデプロイできます。Azure CLI を使用して、アプリケーション パッケージのアップロード、パッケージのバージョンの管理、パッケージの削除を実行できます。
+Application packages provide a simplified way to deploy applications to the compute nodes in your pools. With the Azure CLI, you can upload application packages, manage package versions, and delete packages.
 
-新しいアプリケーションを作成してパッケージのバージョンを追加する手順は、以下のとおりです。
+To create a new application and add a package version:
 
-アプリケーションを**作成**する:
+**Create** an application:
 
     azure batch application create "resgroup001" "batchaccount001" "MyTaskApplication"
 
-アプリケーション パッケージを**追加**する:
+**Add** an application package:
 
     azure batch application package create "resgroup001" "batchaccount001" "MyTaskApplication" "1.10-beta3" package001.zip
 
-パッケージを**アクティブ化**する:
+**Activate** the package:
 
     azure batch application package activate "resgroup001" "batchaccount001" "MyTaskApplication" "1.10-beta3" zip
 
-アプリケーションの**既定のバージョン**を設定する:
+Set the **default version** for the application:
 
     azure batch application set "resgroup001" "batchaccount001" "MyTaskApplication" --default-version "1.10-beta3"
 
-### アプリケーション パッケージをデプロイする
+### <a name="deploy-an-application-package"></a>Deploy an application package
 
-新しいプールの作成時に、デプロイ用の 1 つ以上のアプリケーション パッケージを指定できます。プールの作成時にパッケージを指定すると、ノードがプールに参加する際にパッケージが各ノードにデプロイされます。ノードが再起動または再イメージ化されるときにも、パッケージがデプロイされます。
+You can specify one or more application packages for deployment when you create a new pool. When you specify a package at pool creation time, it is deployed to each node as the node joins pool. Packages are also deployed when a node is rebooted or reimaged.
 
-プールのノードがそこに参加するタイミングでアプリケーション パッケージをデプロイするには、`--app-package-ref` オプションを指定してプールを作成します。`--app-package-ref` オプションには、コンピューティング ノードにデプロイする一連のアプリケーションの ID をセミコロン区切りで指定できます。
+Specify the `--app-package-ref` option when creating a pool to deploy an application package to the pool's nodes as they join the pool. The `--app-package-ref` option accepts a semicolon-delimited list of application ids to deploy to the compute nodes.
 
     azure batch pool create --pool-id "pool001" --target-dedicated 1 --vm-size "small" --os-family "4" --app-package-ref "MyTaskApplication"
 
-現時点では、コマンド ライン オプションを使ってプールを作成するとき、コンピューティング ノードにデプロイするアプリケーション パッケージの*バージョン*を指定することができません ("1.10-beta3" など)。そのため先にアプリケーションの既定のバージョンを `azure batch application set [options] --default-version <version-id>` で指定してから、プールを作成するようにしてください (前出のセクションを参照)。ただし、プールの作成時にコマンド ライン オプションではなく [JSON ファイル](#json-files)を使用している場合は、プールに使用するパッケージのバージョンを指定することができます。
+When you create a pool by using command-line options, you cannot currently specify *which* application package version to deploy to the compute nodes, for example "1.10-beta3". Therefore, you must first specify a default version for the application with `azure batch application set [options] --default-version <version-id>` before you create the pool (see previous section). You can, however, specify a package version for the pool if you use a [JSON file](#json-files) instead of command line options when you create the pool.
 
-アプリケーション パッケージについて詳しくは、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
+You can find more information on application packages in [Application deployment with Azure Batch application packages](batch-application-packages.md).
 
->[AZURE.IMPORTANT] アプリケーション パッケージを使用するには、お使いの Batch アカウントに [Azure ストレージ アカウントをリンクする](#linked-storage-account-autostorage)必要があります。
+>[AZURE.IMPORTANT] You must [link an Azure Storage account](#linked-storage-account-autostorage) to your Batch account to use application packages.
 
-### プールに含まれるアプリケーション パッケージの更新
+### <a name="update-a-pool's-application-packages"></a>Update a pool's application packages
 
-既存のプールに割り当てられたアプリケーションを更新するには、`--app-package-ref` オプションを指定して `azure batch pool set` コマンドを実行します。
+To update the applications assigned to an existing pool, issue the `azure batch pool set` command with the `--app-package-ref` option:
 
     azure batch pool set --pool-id "pool001" --app-package-ref "MyTaskApplication2"
 
-既存のプールに元から存在するコンピューティング ノードに対して新しいアプリケーション パッケージをデプロイするには、それらのノードを再起動するか、再イメージ化する必要があります。
+To deploy the new application package to compute nodes already in an existing pool, you must restart or reimage those nodes:
 
     azure batch node reboot --pool-id "pool001" --node-id "tvm-3105992504_1-20160930t164509z"
 
->[AZURE.TIP] `azure batch node list` を使用すると、プール内の一連のノードとそのノード ID を取得できます。
+>[AZURE.TIP] You can obtain a list of the nodes in a pool, along with their node ids, with `azure batch node list`.
 
-デプロイする前に、あらかじめアプリケーションの既定のバージョンを設定しておくことを忘れないでください (`azure batch application set [options] --default-version <version-id>`)。
+Keep in mind that you must already have configured the application with a default version prior to deployment (`azure batch application set [options] --default-version <version-id>`).
 
-## トラブルシューティングのヒント
+## <a name="troubleshooting-tips"></a>Troubleshooting tips
 
-このセクションは、Azure CLI の問題のトラブルシューティングに使用できるリソースを提供することを目的としています。すべての問題を解決できるとは限りませんが、原因を絞り込み、ヘルプ リソースを示すうえで役立ちます。
+This section is intended to provide you with resources to use when troubleshooting Azure CLI issues. It won't necessarily solve all problems, but it may help you narrow down the cause and point you to help resources.
 
-* `-h` を使用して、任意の CLI コマンドの**ヘルプ テキスト**を取得します。
+* Use `-h` to get **help text** for any CLI command
 
-* `-v` と `-vv` を使用して、コマンドの**詳細な**出力を表示します。`-vv` は "特に" 詳細で、実際の REST 要求と応答を表示します。これらのスイッチは、完全なエラー出力を表示する場合に便利です。
+* Use `-v` and `-vv` to display **verbose** command output; `-vv` is "extra" verbose and displays the actual REST requests and responses. These switches are handy for displaying full error output.
 
-* `--json` オプションを使用すると、**コマンド出力を JSON として**表示できます。たとえば、`azure batch pool show "pool001" --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。この出力をコピーして変更し、`--json-file` で使用できます (この記事の前半で説明した [JSON ファイル](#json-files)の項目を参照してください)。
+* You can view **command output as JSON** with the `--json` option. For example, `azure batch pool show "pool001" --json` displays pool001's properties in JSON format. You can then copy and modify this output to use in a `--json-file` (see [JSON files](#json-files) earlier in this article).
 
-* [MSDN の Batch フォーラム][batch_forum]は、非常に役立つヘルプ リソースであり、Batch チームのメンバーが入念にチェックしています。問題が発生した場合や、特定の操作についてアドバイスが欲しい場合は、質問を投稿してください。
+* The [Batch forum on MSDN][batch_forum] is a great help resource, and is monitored closely by Batch team members. Be sure to post your questions there if you run into issues or would like help with a specific operation.
 
-* 現在、すべての Batch リソース操作が Azure CLI でサポートされているわけではありません。たとえば、現時点ではプールのアプリケーション パッケージで指定できるのはパッケージ ID のみで、パッケージの "*バージョン*" は指定できません。このような場合は、コマンド ライン オプションを使用する代わりに、コマンドに `--json-file` を指定する必要があります。CLI のバージョンを常に最新の状態に保ち、今後の拡張機能を必ず取り入れてください。
+* Not every Batch resource operation is currently supported by the Azure CLI. For example, you can't currently specify an application package *version* for a pool, only the package ID. In such cases, you may need to supply a `--json-file` for your command instead of using command-line options. Be sure to stay up-to-date with the latest CLI version to pick up future enhancements.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-*  Batch 計算ノードで実行するアプリケーションをこの機能を使用して管理およびデプロイする方法については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」を参照してください。
+*  See [Application deployment with Azure Batch application packages](batch-application-packages.md) to find out how to use this feature to manage and deploy the applications you execute on Batch compute nodes.
 
-* Batch に対してクエリから返される情報の項目数と種類を制限する方法の詳細については、[効率的な Batch サービスのクエリ](batch-efficient-list-queries.md)に関する記事を参照してください。
+* See [Query the Batch service efficiently](batch-efficient-list-queries.md) for more about reducing the number of items and the type of information that is returned for queries to Batch.
 
-[batch_forum]: https://social.msdn.microsoft.com/forums/azure/ja-JP/home?forum=azurebatch
+[batch_forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 
-<!---HONumber=AcomDC_1005_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

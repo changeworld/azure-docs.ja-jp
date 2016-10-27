@@ -1,69 +1,74 @@
 <properties
-	pageTitle="Azure Active Directory B2C: 概要 | Microsoft Azure"
-	description="Azure Active Directory B2C によるコンシューマー向けアプリケーションの開発"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="swkrish"
-	manager="msmbaldwin"
-	editor="bryanla"/>
+    pageTitle="Azure Active Directory B2C: Overview | Microsoft Azure"
+    description="Developing consumer-facing applications with Azure Active Directory B2C"
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="swkrish"
+    manager="mbaldwin"
+    editor="bryanla"/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="07/24/2016"
-	ms.author="swkrish"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="07/24/2016"
+    ms.author="swkrish"/>
 
-# Azure Active Directory B2C: アプリケーションでコンシューマーのサインアップおよびサインインを実行する
 
-Azure Active Directory B2C は、コンシューマー向け Web アプリケーションおよびモバイル アプリケーション用の包括的なクラウド ID 管理ソリューションです。億単位のコンシューマー ID まで拡張可能な高可用性のグローバル サービスです。エンタープライズ レベルのセキュリティ保護されたプラットフォームに構築された Azure Active Directory B2C は、アプリケーション、ビジネス、およびコンシューマーを保護された状態に保ちます。
+# <a name="azure-active-directory-b2c:-sign-up-and-sign-in-consumers-in-your-applications"></a>Azure Active Directory B2C: Sign up and sign in consumers in your applications
 
-これまで、開発したアプリケーションにコンシューマーがサインアップおよびサインインすることを望むアプリケーション開発者は、独自のコードを記述していました。開発者は、オンプレミスのデータベースまたはシステムを使用して、ユーザー名とパスワードを保存していました。Azure Active Directory B2C では、セキュリティ保護された標準ベースのプラットフォームと機能豊富で拡張可能なポリシーのセットを使用して、より簡単にコンシューマーの ID 管理をアプリケーションに統合できます。Azure Active Directory B2C を使用すると、コンシューマーは、既存のソーシャル アカウント (Facebook、Google、Amazon、LinkedIn) を使用するか、または新しい資格情報 (電子メール アドレスとパスワードまたはユーザー名とパスワード) を作成することによって、アプリケーションにサインアップできます。後者は "ローカル アカウント" と呼ばれます。
+Azure Active Directory B2C is a comprehensive cloud identity management solution for your consumer-facing web and mobile applications. It is a highly available global service that scales to hundreds of millions of consumer identities. Built on an enterprise-grade secure platform, Azure Active Directory B2C keeps your applications, your business, and your consumers protected.
 
-## 作業開始
+In the past, application developers who wanted to sign up and sign in consumers into their applications would have written their own code. And they would have used on-premises databases or systems to store usernames and passwords. Azure Active Directory B2C offers developers a better way to integrate consumer identity management into their applications with the help of a secure, standards-based platform and a rich set of extensible policies. When you use Azure Active Directory B2C, your consumers can sign up for your applications by using their existing social accounts (Facebook, Google, Amazon, LinkedIn) or by creating new credentials (email address and password, or username and password); we call the latter "local accounts."
 
-コンシューマーのサインアップおよびサインインを受け付けるアプリケーションを作成するには、最初にアプリケーションを Azure Active Directory B2C テナントに登録する必要があります。「[Azure AD B2C テナントを作成する](active-directory-b2c-get-started.md)」に書かれている手順に従って独自のテナントを取得してください。
+## <a name="get-started"></a>Get started
 
-Azure Active Directory B2C サービス対応のアプリケーションを作成するには、プロトコル メッセージを直接送信する方法、[OAuth 2.0](active-directory-b2c-reference-protocols.md#oauth2-authorization-code-flow) または [Open ID Connect](active-directory-b2c-reference-protocols.md#openid-connect-sign-in-flow) を使用する方法、またはライブラリを使用する方法があります。次の表で好みのプラットフォームを選択して開始してください。
+To build an application that accepts consumer sign up and sign in, you'll first need to register the application with an Azure Active Directory B2C tenant. Get your own tenant by using the steps outlined in [Create an Azure AD B2C tenant](active-directory-b2c-get-started.md).
+
+You can write your application against the Azure Active Directory B2C service either by choosing to send protocol messages directly, using [OAuth 2.0](active-directory-b2c-reference-protocols.md#oauth2-authorization-code-flow) or [Open ID Connect](active-directory-b2c-reference-protocols.md#openid-connect-sign-in-flow), or by using our libraries to do the work for you. Choose your favorite platform in the following table and get started.
 
 [AZURE.INCLUDE [active-directory-b2c-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
-## 新機能
+## <a name="what's-new"></a>What's new
 
-今後の Azure Active Directory B2C の変更点については、このページを頻繁に確認してください。また @AzureAD で最新情報をツイートしていきます。
+Check back here often to learn about future changes to the Azure Active Directory B2C. We'll also tweet about any updates by using @AzureAD.
 
-- [拡張可能ポリシー フレームワーク](active-directory-b2c-reference-policies.md)と、アプリケーションで作成および使用できるポリシーの種類について理解してください。
-- サービスに関する軽微な問題、更新情報、状態、対応策についての通知を確認できるように、[サービス ブログ](https://blogs.msdn.microsoft.com/azureadb2c/)をブックマークしてください。[Azure の状態ダッシュボード](https://azure.microsoft.com/status/)も継続的にチェックしてください。
-- 現在の[サービスの制限事項および制約事項](active-directory-b2c-limitations.md)を参照してください。
-- 最後に、Azure AD B2C と ASP.NET Core を使用した[コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c)を参照してください。
+- Learn about our [extensible policy framework](active-directory-b2c-reference-policies.md) and about the types of policies that you can create and use in your applications.
+- Bookmark our [service blog](https://blogs.msdn.microsoft.com/azureadb2c/) for notifications on minor service issues, updates, status and mitigations. Continue to monitor the [Azure status dashboard](https://azure.microsoft.com/status/) as well.
+- Current [service limitations, restrictions, and constraints](active-directory-b2c-limitations.md).
+- Finally, a [code sample](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c) using Azure AD B2C & ASP.NET Core.
 
-## ハウツー記事
+## <a name="how-to-articles"></a>How-to articles
 
-以下に示す Azure Active Directory B2C の各機能の使用方法について確認してください。
+Learn how to use specific Azure Active Directory B2C features:
 
-- コンシューマー向けアプリケーションで使用するアカウント ([Facebook](active-directory-b2c-setup-fb-app.md)、[Google+](active-directory-b2c-setup-goog-app.md)、[Microsoft アカウント](active-directory-b2c-setup-msa-app.md)、[Amazon](active-directory-b2c-setup-amzn-app.md)、[LinkedIn](active-directory-b2c-setup-li-app.md)) を構成する。
-- [カスタム属性を使用してコンシューマーに関する情報を収集する](active-directory-b2c-reference-custom-attr.md)。
-- [コンシューマー向けアプリケーションで Azure Multi-Factor Authentication を有効にする](active-directory-b2c-reference-mfa.md)。
-- [コンシューマー向けにセルフサービス パスワードのリセットをセットアップする](active-directory-b2c-reference-sspr.md)。
-- Azure Active Directory B2C によって提供される[サインアップ、サインイン、その他のコンシューマー向けページをカスタマイズする](active-directory-b2c-reference-ui-customization.md)。
-- Azure Active Directory B2C テナントで [Azure Active Directory Graph API を使用してプログラムによりコンシューマーを作成、読み取り、更新、削除する](active-directory-b2c-devquickstarts-graph-dotnet.md)。
+- Configure [Facebook](active-directory-b2c-setup-fb-app.md), [Google+](active-directory-b2c-setup-goog-app.md), [Microsoft account](active-directory-b2c-setup-msa-app.md), [Amazon](active-directory-b2c-setup-amzn-app.md), and [LinkedIn](active-directory-b2c-setup-li-app.md) accounts for use in your consumer-facing applications.
+- [Use custom attributes to collect information about your consumers](active-directory-b2c-reference-custom-attr.md).
+- [Enable Azure Multi-Factor Authentication in your consumer-facing applications](active-directory-b2c-reference-mfa.md).
+- [Set up self-service password reset for your consumers](active-directory-b2c-reference-sspr.md).
+- [Customize the look and feel of sign up, sign in, and other consumer-facing pages](active-directory-b2c-reference-ui-customization.md) that are served by Azure Active Directory B2C.
+- [Use the Azure Active Directory Graph API to programmatically create, read, update, and delete consumers](active-directory-b2c-devquickstarts-graph-dotnet.md) in your Azure Active Directory B2C tenant.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-以下のリンクは、サービスの詳細を調べるのに役立ちます。
+These links will be useful for exploring the service in depth:
 
-- 「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」をご覧ください。
-- [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) または [adal](http://stackoverflow.com/questions/tagged/adal) タグを使用した Stack Overflow への対処法についてのヒントが得られます。
-- [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/) を利用して、サービスについての感想をお寄せください。皆様からのご意見をお待ちしております。 識別しやすいように、投稿のタイトルに "AzureADB2C:" という言葉を入れてください。
-- [Azure AD B2C プロトコル リファレンス](active-directory-b2c-reference-protocols.md)を確認してください。
-- [Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を確認してください。
-- [Azure Active Directory B2C の FAQ](active-directory-b2c-faqs.md) をご覧ください。
-- [Azure Active Directory B2C のサポート要求を提出する方法](active-directory-b2c-support.md)を確認してください。
+- See the [Azure Active Directory B2C pricing information](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+- Get help on Stack Overflow by using the [azure-active-directory](http://stackoverflow.com/questions/tagged/azure-active-directory) or [adal](http://stackoverflow.com/questions/tagged/adal) tags.
+- Give us your thoughts by using [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/)--we want to hear them! Use the phrase "AzureADB2C:" in the title of your post so we can find it.
+- Review the [Azure AD B2C Protocol Reference](active-directory-b2c-reference-protocols.md).
+- Review the [Azure AD B2C Token Reference](active-directory-b2c-reference-tokens.md).
+- Read the [Azure Active Directory B2C FAQs](active-directory-b2c-faqs.md).
+- [File support requests for Azure Active Directory B2C](active-directory-b2c-support.md).
 
-## Microsoft 製品のセキュリティ更新プログラムの取得
+## <a name="get-security-updates-for-our-products"></a>Get security updates for our products
 
-セキュリティの問題が発生した日時に関する通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
+We encourage you to get notifications of when security incidents occur by visiting [this page](https://technet.microsoft.com/security/dd252948) and subscribing to Security Advisory Alerts.
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

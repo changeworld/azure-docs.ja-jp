@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Automation の Runbook をスケジュール設定する | Microsoft Azure"
-   description="特定の時刻または定期的なスケジュールで自動的に Runbook を開始できるように Azure Automation でスケジュールを作成する方法について説明します。"
+   pageTitle="Scheduling a runbook in Azure Automation | Microsoft Azure"
+   description="Describes how to create a schedule in Azure Automation so that you can automatically start a runbook at a particular time or on a recurring schedule."
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
@@ -15,140 +15,144 @@
    ms.date="08/05/2016"
    ms.author="bwren" />
 
-# Azure Automation の Runbook をスケジュール設定する
 
-指定の時刻に開始するように Azure Automation の Runbook をスケジュール設定するには、Runbook を 1 つ以上のスケジュールにリンクします。スケジュールは、1 回だけ実行するようにも、複数回実行するようにも構成できます。Azure クラシック ポータルの Runbook では、時間または日単位で繰り返すスケジュールを指定でき、Azure ポータルの Runbook ではさらに週単位、月単位、特定の曜日や日にち、または月の特定の日のスケジュールも指定できます。1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。
+# <a name="scheduling-a-runbook-in-azure-automation"></a>Scheduling a runbook in Azure Automation
+
+To schedule a runbook in Azure Automation to start at a specified time, you link it to one or more schedules. A schedule can be configured to either run once or on a reoccurring hourly or daily schedule for runbooks in the Azure classic portal and for runbooks in the Azure portal,  you can additionally schedule them for weekly, monthly, specific days of the week or days of the month, or a particular day of the month.  A runbook can be linked to multiple schedules, and a schedule can have multiple runbooks linked to it.
 
 
-## スケジュールを作成する
+## <a name="creating-a-schedule"></a>Creating a schedule
 
-Runbook の新しいスケジュールは、Azure ポータル、クラシック ポータル、または Windows PowerShell で作成することができます。Azure クラシック ポータルまたは Azure ポータルを使用して Runbook をスケジュールにリンクするときに新しいスケジュールを作成するというオプションもあります。
+You can create a new schedule for runbooks in the Azure portal, in the classic portal, or with Windows PowerShell. You also have the option of creating a new schedule when you link a runbook to a schedule using the Azure classic or Azure portal.
 
->[AZURE.NOTE] スケジュールを Runbook に関連付けると、アカウントのモジュールの現在のバージョンが保存され、スケジュールにリンクされます。つまり、スケジュールを作成したときにアカウントのモジュールのバージョンが 1.0 だった場合は、そのモジュールをバージョン 2.0 に更新しても、スケジュールでは引き続きバージョン 1.0 が使用されます。更新後のバージョンを使用するには、新しいスケジュールを作成する必要があります。
+>[AZURE.NOTE] When you associate a schedule with a runbook, Automation stores the current versions of the modules in your account and links them to that schedule.  This means that if you had a module with version 1.0 in your account when you created a schedule and then update the module to version 2.0, the schedule will continue to use 1.0.  In order to use the updated module version, you must create a new schedule. 
 
-### Azure クラシック ポータルで新しいスケジュールを作成するには
+### <a name="to-create-a-new-schedule-in-the-azure-classic-portal"></a>To create a new schedule in the Azure classic portal
 
-1. Azure クラシック ポータルで、[Automation] を選択し、次に Automation アカウントの名前を選択します。
-1. **[資産]** タブを選択します。
-1. ウィンドウの下部にある **[設定の追加]** をクリックします。
-1. **[スケジュールの追加]** をクリックします。
-1. 新しいスケジュールの**名前**と、必要に応じて**説明**を入力します。スケジュールは、**1 回限り**、**時間単位**、**日単位**、**週単位**、**月単位**で実行できます。
-1. **[開始時刻]** やその他のオプションを、選択したスケジュールの種類に応じて指定します。
+1. In the Azure classic portal, select Automation and then then select the name of an automation account.
+1. Select the **Assets** tab.
+1. At the bottom of the window, click **Add Setting**.
+1. Click **Add Schedule**.
+1. Type a **Name** and optionally a **Description** for the new schedule.your schedule will run **One Time**, **Hourly**, **Daily**, **Weekly**, or **Monthly**.
+1. Specify a **Start Time** and other options depending on the type of schedule that you selected.
 
-### Azure ポータルで新しいスケジュールを作成するには
+### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>To create a new schedule in the Azure portal
 
-1. Azure ポータルで、Automation アカウントから **[資産]** タイルをクリックして、**[資産]** ブレードを開きます。
-2. **[スケジュール]** タイルをクリックして、**[スケジュール]** ブレードを開きます。
-3. ブレード上部の **[スケジュールの追加]** をクリックします。
-4. **[新しいスケジュール]** ブレードで、新しいスケジュールの**名前**と、必要に応じて**説明**を入力します。
-5. スケジュールを 1 回だけ実行するか、繰り返し実行するかを、**[1 回]** または **[繰り返し]** から選択します。**[1 回]** を選択した場合は、**[開始時刻]** を指定し、**[作成]** をクリックします。**[繰り返し]** を選択した場合は、**[開始時刻]** を指定し、Runbook を繰り返す頻度を **[時間]**、**[日]**、**[週]**、または **[月]** から選択します。ドロップダウン リストで **[週]** または **[月]** を選択した場合は、ブレードに **[Recurrence option (繰り返しのオプション)]** が表示されます。選択すると **[Recurrence option (繰り返しのオプション)]** ブレードが表示され、**[週]** を選択した場合は曜日を選択できます。**[月]** を選択した場合は、**[平日]** を選択するか、カレンダーで月の特定の日を選択できます。最後に、月の最終日に実行するかどうかを選択し、**[OK]** をクリックします。
+1. In the Azure portal, from your automation account, click the **Assets** tile to open the **Assets** blade.
+2. Click the **Schedules** tile to open the **Schedules** blade.
+3. Click **Add a schedule** at the top of the blade.
+4. On the **New schedule** blade, type a **Name** and optionally a **Description** for the new schedule.
+5. Select whether the schedule will run one time, or on a reoccurring schedule by selecting **Once** or **Recurrence**.  If you select **Once** specify a **Start time** and then click **Create**.  If you select **Recurrence**, specify a **Start time** and the frequency for how often you want the runbook to repeat - by **hour**, **day**, **week**, or by **month**.  If you select **week** or **month** from the drop-down list, the **Recurrence option** will appear in the blade and upon selection, the **Recurrence option** blade will be presented and you can select the day of week if you selected **week**.  If you selected **month**, you can choose by **week days** or specific days of the month on the calendar and finally, do you want to run it on the last day of the month or not and then click **OK**.   
 
-### Windows PowerShell で新しいスケジュールを作成するには
+### <a name="to-create-a-new-schedule-with-windows-powershell"></a>To create a new schedule with Windows PowerShell
 
-クラシック Runbook 用に Azure Automation の新しいスケジュールを作成するには、[New-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690271.aspx) コマンドレットを使用します。Azure ポータルの Runbook 用には、[New-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603577.aspx) コマンドレットを使用します。スケジュールの開始時刻と実行の頻度を指定する必要があります。
+You can use the [New-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690271.aspx) cmdlet to create a new schedule in Azure Automation for classic runbooks, or [New-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603577.aspx) cmdlet for runbooks in the Azure portal. You must specify the start time for the schedule and the frequency it should run.
 
-次のサンプル コマンドは、2015 年 1 月 20 日から毎日午後 3 時 30 分に実行される新しいスケジュールを Azure サービス管理コマンドレットで作成する方法を示しています。
-
-	$automationAccountName = "MyAutomationAccount"
-	$scheduleName = "Sample-DailySchedule"
-	New-AzureAutomationSchedule –AutomationAccountName $automationAccountName –Name `
-    $scheduleName –StartTime "1/20/2016 15:30:00" –DayInterval 1
-
-次のサンプル コマンドは、毎月 15 日と 30 日に実行されるスケジュールを Azure Resource Manager コマンドレットで作成する方法を示しています。
+The following sample commands show how to create a new schedule that runs each day at 3:30 PM starting on January 20, 2015 with an Azure Service Management cmdlet.
 
     $automationAccountName = "MyAutomationAccount"
-	$scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
+    $scheduleName = "Sample-DailySchedule"
+    New-AzureAutomationSchedule –AutomationAccountName $automationAccountName –Name `
+    $scheduleName –StartTime "1/20/2016 15:30:00" –DayInterval 1
+
+The following sample commands shows how to create a schedule for the 15th and 30th of every month using an Azure Resource Manager cmdlet.
+
+    $automationAccountName = "MyAutomationAccount"
+    $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
     New-AzureRMAutomationSchedule –AutomationAccountName $automationAccountName –Name `
     $scheduleName -StartTime "7/01/2016 15:30:00" -MonthInterval 1 `
     -DaysOfMonth Fifteenth,Thirtieth -ResourceGroupName "ResourceGroup01"
     
 
-## スケジュールを Runbook にリンクする
+## <a name="linking-a-schedule-to-a-runbook"></a>Linking a schedule to a runbook
 
-1 つの Runbook を複数のスケジュールにリンクし、1 つのスケジュールを複数の Runbook にリンクすることができます。Runbook にパラメーターがある場合は、その値を指定できます。必須のパラメーターについては必ず値を指定してください。オプションのパラメーターについては値の指定は任意です。このスケジュールで Runbook が開始されるたびに、これらの値が使用されます。同じ Runbook を別のスケジュールに関連付けて、異なるパラメーター値を指定することができます。
+A runbook can be linked to multiple schedules, and a schedule can have multiple runbooks linked to it. If a runbook has parameters, then you can provide values for them. You must provide values for any mandatory parameters and may provide values for any optional parameters.  These values will be used each time the runbook is started by this schedule.  You can attach the same runbook to another schedule and specify different parameter values.
 
 
-### Azure クラシック ポータルで Runbook にスケジュールをリンクするには
+### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-classic-portal"></a>To link a schedule to a runbook with the Azure classic portal
 
-1. Azure クラシック ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
-2. **[Runbook]** タブを選択します。
-3. Runbook の名前をクリックして、スケジュールを設定します。
-4. **[スケジュール]** タブをクリックします。
-5. 現在、Runbook がスケジュールにリンクされていない場合、**[新しいスケジュールへのリンク]** または **[既存のスケジュールへのリンク]** というオプションが表示されます。現在、Runbook がスケジュールにリンクされている場合、ウィンドウの下部にある **[リンク]** をクリックし、これらのオプションにアクセスします。
-6. Runbook がパラメーターを持っている場合は、その値を入力するように求められます。
+1. In the Azure classic portal, select **Automation** and then then click the name of an automation account.
+2. Select the **Runbooks** tab.
+3. Click on the name of the runbook to schedule.
+4. Click the **Schedule** tab.
+5. If the runbook is not currently linked to a schedule, then you will be given the option to **Link to a New Schedule** or **Link to an Existing Schedule**.  If the runbook is currently linked to a schedule, click **Link** at the bottom of the window to access these options.
+6. If the runbook has parameters, you will be prompted for their values.  
 
-### Azure ポータルで Runbook にスケジュールをリンクするには
+### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>To link a schedule to a runbook with the Azure portal
 
-1. Azure ポータルで、Automation アカウントから **[Runbook]** タイルをクリックして、**[Runbook]** ブレードを開きます。
-2. Runbook の名前をクリックして、スケジュールを設定します。
-3. 現在、Runbook がスケジュールにリンクされていない場合は、新しいスケジュールの作成、または既存のスケジュールへのリンクというオプションが表示されます。
-4. Runbook にパラメーターがある場合は、**[実行設定を変更する (既定: Azure)]** オプションを選択すると **[パラメーター]** ブレードが表示されるので、必要に応じて情報を入力することができます。
+1. In the Azure portal, from your automation account, click the **Runbooks** tile to open the **Runbooks** blade.
+2. Click on the name of the runbook to schedule.
+3. If the runbook is not currently linked to a schedule, then you will be given the option to create a new schedule or link to an existing schedule.  
+4. If the runbook has parameters, you can select the option **Modify run settings (Default:Azure)** and the **Parameters** blade is presented where you can enter the information accordingly.  
 
-### Windows PowerShell で Runbook にスケジュールをリンクするには
+### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>To link a schedule to a runbook with Windows PowerShell
 
-クラシック Runbook にスケジュールをリンクするには [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/library/azure/dn690265.aspx) を使用します。Azure ポータルの Runbook の場合は、[Register-AzureRmAutomationScheduledRunbook](https://msdn.microsoft.com/library/mt603575.aspx) コマンドレットを使用します。Parameters パラメーターを使用して、Runbook のパラメーターに値を指定できます。パラメーター値を指定する方法の詳細については、「[Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)」をご覧ください。
+You can use the [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/library/azure/dn690265.aspx) to link a schedule to a classic runbook or [Register-AzureRmAutomationScheduledRunbook](https://msdn.microsoft.com/library/mt603575.aspx) cmdlet for runbooks in the Azure portal.  You can specify values for the runbook’s parameters with the Parameters parameter. See [Starting a Runbook in Azure Automation](automation-starting-a-runbook.md) for more information on specifying parameter values.
 
-次のサンプル コマンドは、パラメーターを使用して Azure サービス管理コマンドレットでスケジュールをリンクする方法を示しています。
-
-	$automationAccountName = "MyAutomationAccount"
-	$runbookName = "Test-Runbook"
-	$scheduleName = "Sample-DailySchedule"
-	$params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-	Register-AzureAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
-    –Name $runbookName –ScheduleName $scheduleName –Parameters $params
-
-次のサンプル コマンドは、パラメーターを使用して Azure Resource Manager コマンドレットでスケジュールを Runbook にリンクする方法を示しています。
+The following sample commands show how to link a schedule using an Azure Service Management cmdlet with parameters.
 
     $automationAccountName = "MyAutomationAccount"
-	$runbookName = "Test-Runbook"
-	$scheduleName = "Sample-DailySchedule"
-	$params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-	Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
+    $runbookName = "Test-Runbook"
+    $scheduleName = "Sample-DailySchedule"
+    $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
+    Register-AzureAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
+    –Name $runbookName –ScheduleName $scheduleName –Parameters $params
+
+The following sample commands show how to link a schedule to a runbook using an Azure Resource Manager cmdlet with parameters.
+
+    $automationAccountName = "MyAutomationAccount"
+    $runbookName = "Test-Runbook"
+    $scheduleName = "Sample-DailySchedule"
+    $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
+    Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
     –Name $runbookName –ScheduleName $scheduleName –Parameters $params `
     -ResourceGroupName "ResourceGroup01"
 
-## スケジュールを無効にする
+## <a name="disabling-a-schedule"></a>Disabling a schedule
 
-スケジュールを無効にすると、そのスケジュールにリンクされた Runbook はいずれもそのスケジュールに基づいて実行できなくなります。スケジュールは手動で無効にしたり、頻度が指定されているスケジュールの有効期限を、作成時に設定したりすることができます。有効期限の時刻に達すると、スケジュールが無効になります。
+When you disable a schedule, any runbooks linked to it will no longer run on that schedule. You can manually disable a schedule or set an expiration time for schedules with a frequency when you create them. When the expiration time is reached, the schedule will be disabled.
 
-### Azure クラシック ポータルからスケジュールを無効にするには
+### <a name="to-disable-a-schedule-from-the-azure-classic-portal"></a>To disable a schedule from the Azure classic portal
 
-Azure クラシック ポータルで、スケジュール用の [スケジュールの詳細] ページからスケジュールを無効にすることができます。
+You can disable a schedule in the Azure classic portal from the Schedule Details page for the schedule.
 
-1. Azure クラシック ポータルで、[Automation] を選択し、次に Automation アカウントの名前をクリックします。
+1. In the Azure classic portal, select Automation and then then click the name of an automation account.
 1. Select the Assets tab.
-1. スケジュールの名前をクリックして、その詳細ページを開きます。
-2. **[有効]** を **[いいえ]** に変更します。
+1. Click the name of a schedule to open its detail page.
+2. Change **Enabled** to **No**.
 
-### Azure ポータルからスケジュールを無効にするには
+### <a name="to-disable-a-schedule-from-the-azure-portal"></a>To disable a schedule from the Azure portal
 
-1. Azure ポータルで、Automation アカウントから **[資産]** タイルをクリックして、**[資産]** ブレードを開きます。
-2. **[スケジュール]** タイルをクリックして、**[スケジュール]** ブレードを開きます。
-2. スケジュールの名前をクリックして、その詳細ブレードを開きます。
-3. **[有効]** を **[いいえ]** に変更します。
+1. In the Azure portal, from your automation account, click the **Assets** tile to open the **Assets** blade.
+2. Click the **Schedules** tile to open the **Schedules** blade.
+2. Click the name of a schedule to open the details blade.
+3. Change **Enabled** to **No**.
 
-### Windows PowerShell でスケジュールを無効にするには
+### <a name="to-disable-a-schedule-with-windows-powershell"></a>To disable a schedule with Windows PowerShell
 
-クラシック Runbook 用の既存のスケジュールのプロパティを変更するには、[Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx) コマンドレットを使用します。Azure ポータルの Runbook 用には、[Set-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603566.aspx) コマンドレットを使用します。スケジュールを無効にするには、**IsEnabled** パラメーターに **false** を指定します。
+You can use the [Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx) cmdlet to change the properties of an existing schedule for a classic runbook or [Set-AzureRmAutomationSchedule](https://msdn.microsoft.com/library/mt603566.aspx) cmdlet for runbooks in the Azure portal. To disable the schedule, specify **false** for the **IsEnabled** parameter.
 
-次のサンプル コマンドは、Azure サービス管理コマンドレットでスケジュールを無効にする方法を示しています。
+The following sample commands show how to disable a schedule using the Azure Service Management cmdlet.
 
-	$automationAccountName = "MyAutomationAccount"
-	$scheduleName = "Sample-DailySchedule"
-	Set-AzureAutomationSchedule –AutomationAccountName $automationAccountName `
+    $automationAccountName = "MyAutomationAccount"
+    $scheduleName = "Sample-DailySchedule"
+    Set-AzureAutomationSchedule –AutomationAccountName $automationAccountName `
     –Name $scheduleName –IsEnabled $false
 
-次のサンプル コマンドは、Azure Resource Manager コマンドレットで Runbook のスケジュールを無効にする方法を示しています。
+The following sample commands show how to disable a schedule for a runbook using an Azure Resource Manager cmdlet.
 
-	$automationAccountName = "MyAutomationAccount"
-	$scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
-	Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
+    $automationAccountName = "MyAutomationAccount"
+    $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
+    Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
     –Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- スケジュールの操作に関する詳細については、「[Azure Automation のスケジュール資産](http://msdn.microsoft.com/library/azure/dn940016.aspx)」を参照してください。
-- Azure Automation の Runbook の使用を開始するには、「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
+- To learn more about working with schedules, see [Schedule Assets in Azure Automation](http://msdn.microsoft.com/library/azure/dn940016.aspx)
+- To get started with runbooks in Azure Automation, see [Starting a Runbook in Azure Automation](automation-starting-a-runbook.md) 
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

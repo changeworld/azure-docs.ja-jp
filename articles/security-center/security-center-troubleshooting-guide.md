@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center トラブルシューティング ガイド | Microsoft Azure"
-   description="このドキュメントは、Azure Security Center で問題をトラブルシューティングするのに役立ちます。"
+   pageTitle="Azure Security Center Troubleshooting Guide | Microsoft Azure"
+   description="This document helps to troubleshoot issues in Azure Security Center."
    services="security-center"
    documentationCenter="na"
    authors="YuriDio"
@@ -13,71 +13,76 @@
    ms.topic="hero-article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="07/21/2016"
+   ms.date="10/18/2016"
    ms.author="yurid"/>
 
-# Azure Security Center トラブルシューティング ガイド
-このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
 
-## トラブルシューティング ガイド
-このガイドでは、Security Center に関連する問題のトラブルシューティングの方法について説明します。Security Center で行われるトラブルシューティングのほとんどは、問題の生じたコンポーネントの[監査ログ](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/) レコードを確認することから始まります。監査ログを使用すると、次の内容を判断することができます。
+# <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center Troubleshooting Guide
+This guide is for information technology (IT) professionals, information security analysts and cloud administrators whose organizations are using Azure Security Center and need to troubleshoot Security Center related issues.
 
-- 実行された操作
-- 操作を開始したユーザー
-- 操作が発生した時間
-- 操作の状態
-- 操作の調査に役立つ可能性のあるその他のプロパティの値
+## <a name="troubleshooting-guide"></a>Troubleshooting guide
+This guide explains how to troubleshoot Security Center related issues. Most of the troubleshooting done in Security Center will take place by first looking at the [Audit Log](https://azure.microsoft.com/updates/audit-logs-in-azure-preview-portal/) records for the failed component. Through audit logs, you can determine:
 
-監査ログには、リソースで実行されたすべての書き込み操作 (PUT、POST、DELETE) が含まれます。ただし、読み取り操作 (GET) は含まれません。
+- Which operations were taken place
+- Who initiated the operation
+- When the operation occurred
+- The status of the operation
+- The values of other properties that might help you research the operation
 
-## Windows における監視エージェントのインストールのトラブルシューティング
+The audit log contains all write operations (PUT, POST, DELETE) performed on your resources, however it does not include read operations (GET).
 
-Security Center 監視エージェントは、データ収集を実行するために使用されます。データ収集が有効になり、ターゲット コンピューターにエージェントが正常にインストールされた後には、次のプロセスが実行されています。
+## <a name="troubleshooting-monitoring-agent-installation-in-windows"></a>Troubleshooting monitoring agent installation in Windows
 
-- ASMAgentLauncher.exe - Azure 監視エージェント
-- ASMMonitoringAgent.exe - Azure セキュリティ監視拡張機能
-- ASMSoftwareScanner.exe – Azure スキャン マネージャー
+The Security Center monitoring agent is used to perform data collection. After data collection is enabled and the agent is correctly installed in the target machine, these processes should be in execution:
 
-Azure セキュリティ監視拡張機能では、さまざまなセキュリティ関連の構成がスキャンされ、仮想マシンからセキュリティ ログが収集されます。スキャン マネージャーは、パッチ スキャナーとして使用されます。
+- ASMAgentLauncher.exe - Azure Monitoring Agent 
+- ASMMonitoringAgent.exe - Azure Security Monitoring extension
+- ASMSoftwareScanner.exe – Azure Scan Manager
 
-インストールが正常に実行されている場合は、ターゲット VM の監査ログに次のようなエントリが示されます。
+The Azure Security Monitoring extension scans for various security relevant configuration and collects security logs from the virtual machine. The scan manager will be used as a patch scanner.
+
+If the installation is successfully performed you should see an entry similar to the one below in the Audit Logs for the target VM:
 
 ![Audit Logs](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig1.png)
 
-*%systemdrive%\\windowsazure\\logs* (C:\\WindowsAzure\\Logs など) にあるエージェント ログを確認して、インストール プロセスに関する詳しい情報を入手することもできます。
+You can also obtain more information about the installation process by reading the agent logs, located at *%systemdrive%\windowsazure\logs* (example: C:\WindowsAzure\Logs).
 
-> [AZURE.NOTE] Azure Security Center エージェントが正常に動作していない場合、ターゲット VM を再起動する必要があります。これは、エージェントの停止と開始のコマンドがないためです。
+> [AZURE.NOTE] If the Azure Security Center Agent is misbehaving, you will need to restart the target VM since there is no command to stop and start the agent.
 
-## Linux における監視エージェントのインストールのトラブルシューティング
-Linux システムでの VM エージェントのインストールをトラブルシューティングする場合、必ず /var/lib/waagent/ に拡張機能をダウンロードしておく必要があります。次のコマンドを実行すると、拡張機能がインストールされているかどうかを確認できます。
+## <a name="troubleshooting-monitoring-agent-installation-in-linux"></a>Troubleshooting monitoring agent installation in Linux
+When troubleshooting VM Agent installation in a Linux system you should ensure that the extension was downloaded to /var/lib/waagent/. You can run the command below to verify if it was installed:
 
-`cat /var/log/waagent.log`
+`cat /var/log/waagent.log` 
 
-トラブルシューティングの目的で確認できるその他のログ ファイルには、次のものがあります。
+The other log files that you can review for troubleshooting purpose are: 
 
 - /var/log/mdsd.err
 - /var/log/azure/
 
-動作中のシステムでは、TCP 29130 での mdsd プロセスへの接続が表示されます。これは、mdsd プロセスと通信している syslog です。この動作は、次のコマンドを実行することで検証できます。
+In a working system you should see a connection to the mdsd process on TCP 29130. This is the syslog communicating with the mdsd process. You can validate this behavior by running the command below:
 
 `netstat -plantu | grep 29130`
 
-## Microsoft サポートへの問い合わせ
+## <a name="contacting-microsoft-support"></a>Contacting Microsoft Support
 
-一部の問題は、この記事で提供されているガイドラインを基に特定できます。その他の問題についてのドキュメントも Security Center パブリック [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)で確認できます。ただし、トラブルシューティングがさらに必要な場合は、次に示すように Azure ポータルを使用して新しいサポート要求を開くことができます。
+Some issues can be identified using the guidelines provided in this article, others you can also find documented at the Security Center public [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter). However if you need further troubleshooting, you can open a new support request using Azure Portal as shown below: 
 
 ![Microsoft Support](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-このドキュメントでは、Azure セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
+In this document, you learned how to configure security policies in Azure Security Center. To learn more about Azure Security Center, see the following:
 
-- 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 -- Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
-- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+- [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) — Learn how to plan and understand the design considerations to adopt Azure Security Center.
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md) — Learn how to monitor the health of your Azure resources
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) — Learn how to manage and respond to security alerts
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) — Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) — Find blog posts about Azure security and compliance
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -16,36 +16,37 @@
     ms.date="09/14/2016"
     ms.author="ShubhaVijayasarathy"/>
 
-# Azure Resource Manager テンプレートでイベント ハブを含んだ Event Hubs 名前空間を作成してアーカイブを有効にする
 
-この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブを含んだ Event Hubs 名前空間を作成して、イベント ハブのアーカイブを有効にする方法について説明します。デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+# <a name="create-an-event-hubs-namespace-with-event-hub-and-enable-archive-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでイベント ハブを含んだ Event Hubs 名前空間を作成してアーカイブを有効にする
 
-テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][]」を参照してください。
+この記事では、Azure Resource Manager テンプレートを使用し、イベント ハブを含んだ Event Hubs 名前空間を作成して、イベント ハブのアーカイブを有効にする方法について説明します。 デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-Azure リソースの名前付け規則のプラクティスとパターンの詳細については、[Azure リソースの名前付け規則][]に関するページを参照してください。
+テンプレートの作成の詳細については、「 [Azure Resource Manager のテンプレートの作成][]」を参照してください。
 
-完全なテンプレートについては、GitHub にアクセスし、[イベント ハブと、アーカイブ テンプレートの有効化][]に関する記事をご覧ください。
+Azure リソースの名前付け規則のプラクティスとパターンの詳細については、 [Azure リソースの名前付け規則][]に関するページを参照してください。
+
+完全なテンプレートについては、GitHub にアクセスし、 [イベント ハブと、アーカイブ テンプレートの有効化][] に関する記事をご覧ください。
 
 >[AZURE.NOTE]
-最新のテンプレートを確認する場合は、「[Azure クイックスタート テンプレート][]」ギャラリーで "Event Hubs" を検索してください。
+>最新のテンプレートを確認する場合は、「 [Azure クイックスタート テンプレート][] 」ギャラリーで "Event Hubs" を検索してください。
 
-## デプロイの対象
+## <a name="what-you-deploy?"></a>デプロイの対象
 
 このテンプレートを使用して、イベント ハブを含んだ Event Hubs 名前空間をデプロイし、アーカイブを有効にします。
 
-[Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) は、Azure への大規模なイベントとテレメトリ受信をわずかな待機時間と高い信頼性で提供するために使用される、イベント処理サービスです。Event Hubs Archive を使用すると、指定した時間またはサイズの間隔で、Event Hubs のストリーミング データを任意の Azure BLOB ストレージに自動的に配信できます。
+[Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) は、Azure への大規模なイベントとテレメトリ受信をわずかな待機時間と高い信頼性で提供するために使用される、イベント処理サービスです。 Event Hubs Archive を使用すると、指定した時間またはサイズの間隔で、Event Hubs のストリーミング データを任意の Azure BLOB ストレージに自動的に配信できます。
 
 デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
 [![Azure へのデプロイ](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-archive%2Fazuredeploy.json)
 
-## パラメーター
+## <a name="parameters"></a>パラメーター
 
-Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。常に同じ値に対してはパラメーターを定義しないでください。テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
+Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
 このテンプレートでは、次のパラメーターを定義します。
 
-### eventHubNamespaceName
+### <a name="eventhubnamespacename"></a>eventHubNamespaceName
 
 作成する Event Hubs 名前空間の名前。
 
@@ -58,7 +59,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 }
 ```
 
-### eventHubName
+### <a name="eventhubname"></a>eventHubName
 
 Event Hubs 名前空間に作成するイベント ハブの名前。
 
@@ -71,130 +72,130 @@ Event Hubs 名前空間に作成するイベント ハブの名前。
 }
 ```
 
-### messageRetentionInDays
+### <a name="messageretentionindays"></a>messageRetentionInDays
 
-イベント ハブでメッセージを保持する日数。
+イベント ハブでメッセージを保持する日数。 
 
 ```
 "messageRetentionInDays":{
-	"type":"int",
-	"defaultValue": 1,
-	"minValue":"1",
-	"maxValue":"7",
-	"metadata":{
-	   "description":"How long to retain the data in Event Hub"
-	 }
+    "type":"int",
+    "defaultValue": 1,
+    "minValue":"1",
+    "maxValue":"7",
+    "metadata":{
+       "description":"How long to retain the data in Event Hub"
+     }
  }
 ```
 
-### partitionCount
+### <a name="partitioncount"></a>partitionCount
 
 イベント ハブに作成するパーティションの数。
 
 ```
 "partitionCount":{
-	"type":"int",
-	"defaultValue":2,
-	"minValue":2,
-	"maxValue":32,
-	"metadata":{
-		"description":"Number of partitions chosen"
-	}
+    "type":"int",
+    "defaultValue":2,
+    "minValue":2,
+    "maxValue":32,
+    "metadata":{
+        "description":"Number of partitions chosen"
+    }
  }
 ```
 
-### archiveEnabled
+### <a name="archiveenabled"></a>archiveEnabled
 
 イベント ハブ上のアーカイブを有効にします。
 
 ```
 "archiveEnabled":{
-	"type":"string",
-	"defaultValue":"true",
-	"allowedValues": [
-	"false",
-	"true"],
-	"metadata":{
-		"description":"Enable or disable the Archive for your Event Hub"
-	}
+    "type":"string",
+    "defaultValue":"true",
+    "allowedValues": [
+    "false",
+    "true"],
+    "metadata":{
+        "description":"Enable or disable the Archive for your Event Hub"
+    }
  }
 ```
-### archiveEncodingFormat
+### <a name="archiveencodingformat"></a>archiveEncodingFormat
 
 イベント データのシリアル化に使用するエンコード形式。
 
 ```
 "archiveEncodingFormat":{
-	"type":"string",
-	"defaultValue":"Avro",
-	"allowedValues":[
-	"Avro"],
-	"metadata":{
-		"description":"The encoding format Archive serializes the EventData"
-	}
+    "type":"string",
+    "defaultValue":"Avro",
+    "allowedValues":[
+    "Avro"],
+    "metadata":{
+        "description":"The encoding format Archive serializes the EventData"
+    }
 }
 ```
 
-### archiveTime
+### <a name="archivetime"></a>archiveTime
 
 Azure BLOB ストレージへのデータのアーカイブが開始される時間間隔。
 
 ```
 "archiveTime":{
-	"type":"int",
-	"defaultValue":300,
-	"minValue":60,
-	"maxValue":900,
-	"metadata":{
-		 "description":"the time window in seconds for the archival"
-	}
+    "type":"int",
+    "defaultValue":300,
+    "minValue":60,
+    "maxValue":900,
+    "metadata":{
+         "description":"the time window in seconds for the archival"
+    }
 }
 ```
 
-### archiveSize
+### <a name="archivesize"></a>archiveSize
 
 Azure BLOB ストレージへのデータのアーカイブが開始されるサイズの間隔。
 
 ```
 "archiveSize":{
-	"type":"int",
-	"defaultValue":314572800,
-	"minValue":10485760,
-	"maxValue":524288000,
-	"metadata":{
-		"description":"the size window in bytes for archival"
-	}
+    "type":"int",
+    "defaultValue":314572800,
+    "minValue":10485760,
+    "maxValue":524288000,
+    "metadata":{
+        "description":"the size window in bytes for archival"
+    }
 }
 ```
 
-### destinationStorageAccountResourceId
+### <a name="destinationstorageaccountresourceid"></a>destinationStorageAccountResourceId
 
 目的の Azure Storage へのアーカイブを有効にするには、ストレージ アカウントのリソース ID が必要になります。
 
 ```
  "destinationStorageAccountResourceId":{
-	"type":"string",
-	"metadata":{
-		"description":"Your existing storage Account resource id where you want the blobs be archived"
-	}
+    "type":"string",
+    "metadata":{
+        "description":"Your existing storage Account resource id where you want the blobs be archived"
+    }
  }
 ```
 
-### blobContainerName
+### <a name="blobcontainername"></a>blobContainerName
 
 イベント データのアーカイブ先の BLOB コンテナー。
 
 ```
  "blobContainerName":{
-	"type":"string",
-	"metadata":{
-		"description":"Your existing storage Container that you want the blobs archived in"
-	}
+    "type":"string",
+    "metadata":{
+        "description":"Your existing storage Container that you want the blobs archived in"
+    }
 }
 ```
 
 
-### apiVersion
+### <a name="apiversion"></a>apiVersion
 
 テンプレートの API バージョン。
 
@@ -208,9 +209,9 @@ Azure BLOB ストレージへのデータのアーカイブが開始されるサ
  }
 ```
 
-## デプロイ対象のリソース
+## <a name="resources-to-deploy"></a>デプロイ対象のリソース
 
-イベント ハブを含んだ、**EventHubs** タイプの名前空間を作成し、アーカイブを有効にします。
+イベント ハブを含んだ、 **EventHubs**タイプの名前空間を作成し、アーカイブを有効にします。
 
 ```
 "resources":[  
@@ -233,22 +234,22 @@ Azure BLOB ストレージへのデータのアーカイブが開始されるサ
                ],
                "properties":{  
                   "path":"[parameters('eventHubName')]",
-				  "MessageRetentionInDays":"[parameters('messageRetentionInDays')]",
-				  "PartitionCount":"[parameters('partitionCount')]",
-				  "ArchiveDescription":{
-						"enabled":"[parameters('archiveEnabled')]",
-						"encoding":"[parameters('archiveEncodingFormat')]",
-						"intervalInSeconds":"[parameters('archiveTime')]",
-						"sizeLimitInBytes":"[parameters('archiveSize')]",
-						"destination":{
-							"name":"EventHubArchive.AzureBlockBlob",
-							"properties":{
-								"StorageAccountResourceId":"[parameters('destinationStorageAccountResourceId')]",
-								"BlobContainer":"[parameters('blobContainerName')]"
-							}
-						} 
-				  }
-				  
+                  "MessageRetentionInDays":"[parameters('messageRetentionInDays')]",
+                  "PartitionCount":"[parameters('partitionCount')]",
+                  "ArchiveDescription":{
+                        "enabled":"[parameters('archiveEnabled')]",
+                        "encoding":"[parameters('archiveEncodingFormat')]",
+                        "intervalInSeconds":"[parameters('archiveTime')]",
+                        "sizeLimitInBytes":"[parameters('archiveSize')]",
+                        "destination":{
+                            "name":"EventHubArchive.AzureBlockBlob",
+                            "properties":{
+                                "StorageAccountResourceId":"[parameters('destinationStorageAccountResourceId')]",
+                                "BlobContainer":"[parameters('blobContainerName')]"
+                            }
+                        } 
+                  }
+                  
                }
                
             }
@@ -257,36 +258,34 @@ Azure BLOB ストレージへのデータのアーカイブが開始されるサ
    ]
 ```
 
-## デプロイを実行するコマンド
+## <a name="commands-to-run-deployment"></a>デプロイを実行するコマンド
 
 [AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-## PowerShell
+## <a name="powershell"></a>PowerShell
 
 ```
-New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json
+New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json
 ```
 
-## Azure CLI
+## <a name="azure-cli"></a>Azure CLI
 
 ```
 azure config mode arm
 
-azure group deployment create <my-resource-group> <my-deployment-name> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json][]
+azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-archive/azuredeploy.json][]
 ```
 
-## 次のステップ
+[Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
+[Azure クイックスタート テンプレート]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
+[Azure Resource Manager での Azure PowerShell の使用]: ../powershell-azure-resource-manager.md
+[Azure リソース管理での、Mac、Linux、および Windows 用 Azure CLI の使用]: ../xplat-cli-azure-resource-manager.md
+[イベント ハブとコンシューマー グループを作成するためのテンプレート]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
+[Azure リソースの名前付け規則]: https://azure.microsoft.com/en-us/documentation/articles/guidance-naming-conventions/
+[イベント ハブと、アーカイブ テンプレートの有効化]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
 
-Azure Resource Manager を使ってリソースを作成、デプロイしたら、それらのリソースを管理する方法を次の記事で確認しましょう。
 
-- [Service Bus Explorer を使用した Event Hubs リソースの管理](https://code.msdn.microsoft.com/Service-Bus-Explorer-f2abca5a)
 
-  [Azure Resource Manager のテンプレートの作成]: ../resource-group-authoring-templates.md
-  [Azure クイックスタート テンプレート]: https://azure.microsoft.com/documentation/templates/?term=event+hubs
-  [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
-  [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
-  [Event Hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-eventhubs-create-namespace-and-enable-archive/
-  [Azure リソースの名前付け規則]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
-  [イベント ハブと、アーカイブ テンプレートの有効化]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-archive
+<!--HONumber=Oct16_HO2-->
 
-<!---HONumber=AcomDC_0921_2016-->
+

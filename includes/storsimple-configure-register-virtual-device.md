@@ -1,24 +1,25 @@
 <!---author: alkohli, last updated: 11/05/2015 --->
 
-#### 仮想デバイスを構成および登録するには
+#### <a name="to-configure-and-register-the-virtual-device"></a>To configure and register the virtual device
 
-1. **[デバイス]** ページで、先ほど作成した StorSimple 仮想デバイスを選択します。 
+1. Select the StorSimple virtual device you just created in the **Devices** page. 
 
-2. **[デバイスのセットアップの完了]** をクリックします。デバイスの構成ウィザードが起動します。
+2. Click **complete device setup**. This starts the Configure device wizard.
 
-    ![StorSimple [デバイス] ページにてデバイスのセットアップの完了](./media/storsimple-configure-register-virtual-device/StorSimple_CompleteDeviceSetupSVA1M.png)
+    ![StorSimple complete device setup in Devices page](./media/storsimple-configure-register-virtual-device/StorSimple_CompleteDeviceSetupSVA1M.png)
 
-3. 所定の場所に **[サービス データ暗号化キー]** を入力します。
+3. Enter the **Service Data Encryption Key** in the space provided.
 
-4. 指定された長さおよび設定の Snapshot Manager のパスワードとデバイス管理者パスワードを入力します。
+4. Enter the Snapshot Manager and Device Administrator passwords of the length and settings specified.
 
-5. チェック マークをクリックして、仮想デバイスの初期構成と登録を完了します。
+5. Click the check mark to finish the initial configuration and registration of the virtual device. 
 
-    ![StorSimple 仮想デバイスの設定](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceSettings1.png)
+    ![StorSimple virtual device settings](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceSettings1.png)
 
-構成と登録が完了したら、デバイスがオンラインになります。デバイスがオンラインになるまでに数分かかる場合があります。
+After the configuration and registration is complete, the device will come online. (It may take several minutes for the device to come online.)
 
-![StorSimple 仮想デバイス オンライン ステージ  
-](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
+![StorSimple virtual device online stage](./media/storsimple-configure-register-virtual-device/StorSimple_VirtualDeviceOnline1M.png)
 
-<!---HONumber=AcomDC_1217_2015-->
+<!--HONumber=Oct16_HO2-->
+
+

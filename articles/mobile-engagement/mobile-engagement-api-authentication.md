@@ -1,153 +1,154 @@
 <properties 
-	pageTitle="Mobile Engagement REST API での認証"
-	description="Azure Mobile Engagement REST API を使用して認証を行う方法について説明します" 
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Authenticate with Mobile Engagement REST APIs"
+    description="Describes how to authenticate with Azure Mobile Engagement REST APIs" 
+    services="mobile-engagement" 
+    documentationCenter="mobile" 
+    authors="piyushjo"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="mobile-engagement"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="mobile-multiple"
-	ms.workload="mobile" 
-	ms.date="07/08/2016"
-	ms.author="wesmc;ricksal"/>
+    ms.service="mobile-engagement"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="mobile-multiple"
+    ms.workload="mobile" 
+    ms.date="10/05/2016"
+    ms.author="wesmc;ricksal"/>
 
-# Mobile Engagement REST API での認証
 
-## 概要
+# <a name="authenticate-with-mobile-engagement-rest-apis"></a>Authenticate with Mobile Engagement REST APIs
 
-このドキュメントでは、有効な AAD Oauth トークンを取得して Mobile Engagement REST API で認証を行う方法について説明します。
+## <a name="overview"></a>Overview
 
-有効な Azure サブスクリプションを持っており、いずれかの[開発者チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)を使用して Mobile Engagement アプリを作成してあることが前提です。
+This document describes how to get a valid AAD Oauth token to authenticate with the Mobile Engagement REST APIs. 
 
-## 認証
+It is assumed that you have a valid Azure subscription and you have created a Mobile Engagement app using one of our [Developer Tutorials](mobile-engagement-windows-store-dotnet-get-started.md).
 
-認証には、Microsoft Azure Active Directory ベースの OAuth トークンを使用します。
+## <a name="authentication"></a>Authentication
 
-API の要求を認証するには、すべての要求に Authorization ヘッダーが追加されている必要があります。次のような形式です。
+A Microsoft Azure Active Directory based OAuth token is used for authentication. 
 
-	Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGmJlNmV2ZWJPamg2TTNXR1E...
+In order to authentication an API request, an authorization header must be added to every request which is of the following form:
 
->[AZURE.NOTE] Azure Active Directory のトークンは 1 時間で有効期限が切れます。
+    Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGmJlNmV2ZWJPamg2TTNXR1E...
 
-トークンを入手するにはいくつかの方法があります。API は一般にクラウド サービスから呼び出されるので、API キーを使用します。Azure の用語では、API キーはサービス プリンシパル パスワードと呼ばれます。次の手順では、手動で設定する方法について説明します。
+>[AZURE.NOTE] Azure Active Directory tokens expire in 1 hour.
 
-### 1 回限りのセットアップ (スクリプトを使用)
+There are several ways to get a token. Since the APIs are generally called from a cloud service, you want to use an API key. An API key in Azure terminology is called a Service principal password. The following procedure describes one way to setting it up manually.
 
-以下の説明に従って PowerShell スクリプトを使用してセットアップを実行するとセットアップにかかる時間は最短になりますが、許容できるほとんどの既定値を使用することになります。あるいは、[手動セットアップ](mobile-engagement-api-authentication-manual.md)の手順に従って Azure ポータルから直接行えば、さらにきめ細かく構成できます。
+### <a name="one-time-setup-(using-script)"></a>One-time setup (using script)
 
-1. Azure PowerShell の最新バージョンを[こちら](http://aka.ms/webpi-azps)から入手します。ダウンロードの手順の詳細については、この[リンク](../powershell-install-configure.md)を参照してください。
+You should follow the set of instructions below to perform the setup using a PowerShell script which takes the minimum time for setup but uses the most permissible defaults. Optionally, you can also follow the instructions in the [manual setup](mobile-engagement-api-authentication-manual.md) for doing this from the Azure portal directly and do finer configuration. 
 
-2. Azure PowerShell をインストールした後は、次のコマンドを使用して、**Azure モジュール**がインストールされていることを確認します。
+1. Get the latest version of Azure PowerShell from [here](http://aka.ms/webpi-azps). For more information on the download instructions, you can see this [link](../powershell-install-configure.md).  
 
-    a.使用可能なモジュールのリストで Azure PowerShell モジュールが使用可能であることを確認します。
+2. Once Azure PowerShell is installed, use the following commands to ensure that you have the **Azure module** installed:
+
+    a. Make sure the Azure PowerShell module is available in the list of available modules. 
     
-		Get-Module –ListAvailable 
+        Get-Module –ListAvailable 
 
-	![利用可能な Azure モジュール][1]
-    	
-    b.上のリストで Azure PowerShell モジュールが見つからない場合は、次を実行する必要があります。
-    	
-		Import-Module Azure 
-    	
-3. PowerShell で次のコマンドを実行し、Azure アカウントのユーザー名とパスワードを指定して、Azure Resource Manager にログインします。
-    	
-		Login-AzureRmAccount
+    ![Available Azure Modules][1]
+        
+    b. If you do not find the Azure PowerShell module in the above list then you need to run the following:
+        
+        Import-Module Azure 
+        
+3. Login to the Azure Resource Manager from PowerShell by running the following command and providing your user name and password for your Azure account: 
+        
+        Login-AzureRmAccount
 
-4. 複数のサブスクリプションがある場合は、次を実行する必要があります。
+4. If you have multiple subscriptions then you should run the following:
 
-	a.すべてのサブスクリプションのリストを取得し、使用するサブスクリプションの SubscriptionId をコピーします。このサブスクリプションが、API を使用して対話する Mobile Engagement アプリのものと同じであることを確認します。
+    a. Get a list of all your subscriptions and copy the SubscriptionId of the subscription you want to use. Make sure this subscription is the same one which has the Mobile Engagement App which you are going to interact with using the APIs. 
 
-		Get-AzureRmSubscription
+        Get-AzureRmSubscription
 
-	b.SubscriptionId を指定して次のコマンドを実行し、使用するサブスクリプションを構成します。
+    b. Run the following command providing the SubscriptionId to configure the subscription to be used.
 
-		Select-AzureRmSubscription –SubscriptionId <subscriptionId>
+        Select-AzureRmSubscription –SubscriptionId <subscriptionId>
 
-5. [New-AzureRmServicePrincipalOwner.ps1](https://raw.githubusercontent.com/matt-gibbs/azbits/master/src/New-AzureRmServicePrincipalOwner.ps1) スクリプトのテキストをローカル コンピューターにコピーし、PowerShell コマンドレットとして (例: `APIAuth.ps1`) 保存して、`.\APIAuth.ps1` を実行します。
-	
-6. **principalName** の入力を求められます。Active Directory アプリケーションの作成に使用する適切な名前を指定します (例: APIAuth)。
+5. Copy the text for the [New-AzureRmServicePrincipalOwner.ps1](https://raw.githubusercontent.com/matt-gibbs/azbits/master/src/New-AzureRmServicePrincipalOwner.ps1) script to your local machine and save it as a PowerShell cmdlet (e.g. `APIAuth.ps1`) and execute it `.\APIAuth.ps1`. 
+    
+6. The script will ask you to provide an input for **principalName**. Provide a suitable name here that you want to use to create your Active Directory application (e.g. APIAuth). 
 
-7. スクリプトが完了すると、プログラムを使用して AD で認証を行うために必要な次の 4 つの値が表示されるので、それらをコピーしておきます。
-		
-	**TenantId**、**SubscriptionId**、**ApplicationId**、**Secret** です。
+7. After the script completes, it will display the following four values that you will need to authenticate programmatically with AD so make sure to copy them. 
+        
+    **TenantId**, **SubscriptionId**, **ApplicationId**, and **Secret**.
 
-	`{TENANT_ID}` として TenantId を、`{CLIENT_ID}` として ApplicationId を、`{CLIENT_SECRET}` として Secret を使用します。
+    You will use TenantId as `{TENANT_ID}`, ApplicationId as `{CLIENT_ID}` and Secret as `{CLIENT_SECRET}`.
 
-	> [AZURE.NOTE] 既定のセキュリティ ポリシーにより、PowerShell スクリプトの実行がブロックされる可能性があります。その場合は、次のコマンドを使用してスクリプトの実行を許可する実行ポリシーを一時的に構成します。
+    > [AZURE.NOTE] Your default security policy may block you from running a PowerShell scripts. If so, you temporarily configure your execution policy to allow script execution using the following command:
 
-    	> Set-ExecutionPolicy RemoteSigned
+        > Set-ExecutionPolicy RemoteSigned
 
-8. PS コマンドレットは次のようになります。
+8. Here is how the set of PS cmdlets would look like. 
 
-	![][3]
+    ![][3]
 
-9. Microsoft Azure 管理ポータルの **[表示 - 自分の会社が所有するアプリケーション]** で、スクリプトの **principalName** に入力した名前で新しい AD アプリケーションが作成されたことを確認します。
+9. Check in the Azure Management portal that a new AD application was created with the name you provided to the script called **principalName** under **Show Applications my company owns**.
 
-	![][4]
+    ![][4]
 
-#### 有効なトークンを取得する手順
+#### <a name="steps-to-get-a-valid-token"></a>Steps to get a valid token
 
-1. 次のパラメーターで API を呼び出します。TENANT\_ID、CLIENT\_ID、CLIENT\_SECRET を実際の値に置き換えます。
+1. Call the API with the following parameters and make sure to replace the TENANT\_ID, CLIENT\_ID and CLIENT\_SECRET:
 
-	- **要求 URL**: *https://login.microsoftonline.com/{TENANT\_ID}/oauth2/token*
-	- **HTTP Content-Type ヘッダー**: *application/x-www-form-urlencoded*
-	- **HTTP 要求本文**: *grant\_type=client\_credentials&client\_id={CLIENT\_ID}&client\_secret={CLIENT\_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F*
+    - **Request URL** as *https://login.microsoftonline.com/{TENANT\_ID}/oauth2/token*
+    - **HTTP Content-Type header** as *application/x-www-form-urlencoded*
+    - **HTTP Request Body** as *grant\_type=client\_credentials&client_id={CLIENT\_ID}&client_secret={CLIENT\_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F*
 
-	要求の例を次に示します。
+    The following is an example request:
 
-		POST /{TENANT_ID}/oauth2/token HTTP/1.1
-		Host: login.microsoftonline.com
-		Content-Type: application/x-www-form-urlencoded
-		grant_type=client_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&reso
-		urce=https%3A%2F%2Fmanagement.core.windows.net%2F
+        POST /{TENANT_ID}/oauth2/token HTTP/1.1
+        Host: login.microsoftonline.com
+        Content-Type: application/x-www-form-urlencoded
+        grant_type=client_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&reso
+        urce=https%3A%2F%2Fmanagement.core.windows.net%2F
 
-	次は応答の例です。
+    Here is an example response:
 
-		HTTP/1.1 200 OK
-		Content-Type: application/json; charset=utf-8
-		Content-Length: 1234
-	
-		{"token_type":"Bearer","expires_in":"3599","expires_on":"1445395811","not_before":"144
-		5391911","resource":"https://management.core.windows.net/","access_token":{ACCESS_TOKEN}}
+        HTTP/1.1 200 OK
+        Content-Type: application/json; charset=utf-8
+        Content-Length: 1234
+    
+        {"token_type":"Bearer","expires_in":"3599","expires_on":"1445395811","not_before":"144
+        5391911","resource":"https://management.core.windows.net/","access_token":{ACCESS_TOKEN}}
 
-	この例に含まれている POST パラメーターの URL エンコードの `resource` 値は、実際には `https://management.core.windows.net/` です。URL エンコード `{CLIENT_SECRET}` にも注意してください。特殊文字が含まれていることがあります。
+    This example included URL encoding of the POST parameters, `resource` value is actually `https://management.core.windows.net/`. Be careful to also URL encode `{CLIENT_SECRET}` as it may contain special characters.
 
-	> [AZURE.NOTE] テストとしては、[Fiddler](http://www.telerik.com/fiddler) や [Chrome Postman extension](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) などの HTTP クライアント ツールを使用できます。
+    > [AZURE.NOTE] For testing, you can use an HTTP client tool like [Fiddler](http://www.telerik.com/fiddler) or [Chrome Postman extension](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) 
 
-2. すべての API 呼び出しに、次の Authorization 要求ヘッダーを含めます。
+2. Now in every API call, include the authorization request header:
 
-		Authorization: Bearer {ACCESS_TOKEN}
+        Authorization: Bearer {ACCESS_TOKEN}
 
-	401 ステータス コードが返される場合は、応答本文を確認します。トークンの有効期限が切れている可能性があります。その場合は、新しいトークンを取得します。
+    If you get a 401 status code returned, check the response body, it might tell you the token is expired. In that case, get a new token.
 
-##API の使用
+##<a name="using-the-apis"></a>Using the APIs
 
-有効なトークンが手に入ったので、API 呼び出しを行う準備ができました。
+Now that you have a valid token, you are ready to make the API calls.
 
-1. 各 API 要求では、前のセクションで取得した有効な期限が切れていないトークンを渡す必要があります。
+1. In each API request, you will need to pass a valid, unexpired token which you obtained in the previous section.
 
-2. アプリケーションを示す URI にいくつかのパラメーターを組み込む必要があります。要求 URI は次のようになります。
+2. You will need to plug in some parameters into the request URI which identifies your application. The request URI looks like the following
 
-		https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/
-		providers/Microsoft.MobileEngagement/appcollections/{app-collection}/apps/{app-resource-name}/
+        https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/
+        providers/Microsoft.MobileEngagement/appcollections/{app-collection}/apps/{app-resource-name}/
 
-	パラメーターを取得するには、アプリケーション名をクリックして [ダッシュボード] をクリックすると、次のようなページに 3 つのパラメーターがすべて表示されます。
+    To get the parameters, click on your application name and click Dashboard and you will see a page like the following with all the 3 parameters.
 
-	- **1** `{subscription-id}`
-	- **2** `{app-collection}`
-	- **3** `{app-resource-name}`
-	- **4** リソース グループ名は、新しく作成したのでない限り **MobileEngagement** です。
+    - **1** `{subscription-id}`
+    - **2** `{app-collection}`
+    - **3** `{app-resource-name}`
+    - **4** Your Resource Group name is going to be **MobileEngagement** unless you created a new one. 
 
-	![Mobile Engagement API の URI パラメーター][2]
+    ![Mobile Engagement API URI parameters][2]
 
 >[AZURE.NOTE] <br/>
->1. API ルート アドレスは以前の API 用であるため、無視してください。<br/>
->2. Azure クラシック ポータルを使用してアプリを作成した場合は、アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。Azure ポータルでアプリを作成した場合は、アプリ名自体を使用する必要があります (アプリケーション リソース名と、新しいポータルで作成したアプリのアプリ名に違いはありません)。
+>1. Ignore the API Root Address as this was for the previous APIs.<br/>
+>2. If you created the app using Azure Classic portal then you need to use the Application Resource name which is different than the Application name itself. If you created the app in the Azure Portal then you should use the App Name itself (there is no differentiation between Application Resource Name and App Name for apps created in the new portal).  
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-api-authentication/azure-module.png
@@ -155,4 +156,11 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 [3]: ./media/mobile-engagement-api-authentication/ps-cmdlets.png
 [4]: ./media/mobile-engagement-api-authentication/ad-app-creation.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

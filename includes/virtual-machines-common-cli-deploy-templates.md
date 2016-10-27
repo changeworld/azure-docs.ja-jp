@@ -1,42 +1,42 @@
 
-- [Azure での仮想マシンの簡易作成](#quick-create-a-vm-in-azure)
-- [テンプレートから Azure への仮想マシンのデプロイ](#deploy-a-vm-in-azure-from-a-template)
-- [カスタム イメージからの仮想マシンの作成](#create-a-custom-vm-image)
-- [仮想ネットワークおよびロード バランサーを使用する仮想マシンのデプロイ](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
-- [リソース グループの削除](#remove-a-resource-group)
-- [リソース グループ デプロイのログの表示](#show-the-log-for-a-resource-group-deployment)
-- [仮想マシンに関する情報の表示](#display-information-about-a-virtual-machine)
-- [Linux ベースの仮想マシンへの接続](#log-on-to-a-linux-based-virtual-machine)
-- [仮想マシンの停止](#stop-a-virtual-machine)
-- [仮想マシンの起動](#start-a-virtual-machine)
-- [データ ディスクの接続](#attach-a-data-disk)
+- [Quick-create a virtual machine in Azure](#quick-create-a-vm-in-azure)
+- [Deploy a virtual machine in Azure from a template](#deploy-a-vm-in-azure-from-a-template)
+- [Create a virtual machine from a custom image](#create-a-custom-vm-image)
+- [Deploy a virtual machine that uses a virtual network and a load balancer](#deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer)
+- [Remove a resource group](#remove-a-resource-group)
+- [Show the log for a resource group deployment](#show-the-log-for-a-resource-group-deployment)
+- [Display information about a virtual machine](#display-information-about-a-virtual-machine)
+- [Connect to a Linux-based virtual machine](#log-on-to-a-linux-based-virtual-machine)
+- [Stop a virtual machine](#stop-a-virtual-machine)
+- [Start a virtual machine](#start-a-virtual-machine)
+- [Attach a data disk](#attach-a-data-disk)
 
-## 準備
+## <a name="getting-ready"></a>Getting ready
 
-Azure リソース グループで Azure CLI を使用するには、適切な Azure CLI のバージョンと Azure アカウントを用意する必要があります。Azure CLI がない場合は、[インストールします](../articles/xplat-cli-install.md)。
+Before you can use the Azure CLI with Azure resource groups, you need to have the right Azure CLI version and an Azure account. If you don't have the Azure CLI, [install it](../articles/xplat-cli-install.md).
 
-### Azure CLI のバージョンを 0.9.0 以降に更新する
+### <a name="update-your-azure-cli-version-to-0.9.0-or-later"></a>Update your Azure CLI version to 0.9.0 or later
 
-「`azure --version`」と入力し、バージョン 0.9.0 以降が既にインストールされているかどうかを確認します。
+Type `azure --version` to see whether you have already installed version 0.9.0 or later. 
 
-	azure --version
+    azure --version
     0.9.0 (node: 0.10.25)
 
-バージョンが 0.9.0 以降ではない場合、いずれかのネイティブ インストーラーまたは **npm** コマンド (「`npm update -g azure-cli`」と入力) を使って更新する必要があります。
+If your version is not 0.9.0 or later, you need to update it by using one of the native installers or through **npm** by typing `npm update -g azure-cli`.
 
-また、次の [Docker イメージ](https://registry.hub.docker.com/u/microsoft/azure-cli/)を使用して、Azure CLI を Docker コンテナーとして実行することもできます。Docker ホストから次のコマンドを実行します。
+You can also run Azure CLI as a Docker container by using the following [Docker image](https://registry.hub.docker.com/u/microsoft/azure-cli/). From a Docker host, run the following command:
 
-	docker run -it microsoft/azure-cli
+    docker run -it microsoft/azure-cli
 
-### Azure アカウントとサブスクリプションを設定する
+### <a name="set-your-azure-account-and-subscription"></a>Set your Azure account and subscription
 
-Azure サブスクリプションをまだ持っていない場合でも、MSDN サブスクリプションがあれば、[MSDN サブスクライバー向けの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)をアクティブ化できます。または、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+If you don't already have an Azure subscription but you do have an MSDN subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Or you can sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).
 
-「`azure login`」と入力し、Azure アカウントへの対話型ログイン エクスペリエンスのプロンプトに従って、[Azure アカウントに対話形式でログイン](../articles/xplat-cli-connect.md#use-the-log-in-method)します。
+Now [log in to your Azure account interactively](../articles/xplat-cli-connect.md#use-the-log-in-method) by typing `azure login` and following the prompts for an interactive login experience to your Azure account. 
 
-> [AZURE.NOTE] 職場または学校の ID を所有していて、2 要素認証が有効になっていないことがわかっている場合は、職場または学校の ID と共に `azure login -u` を使うと、対話型セッションを*使わずに*ログインすること**も**できます。職場または学校の ID がない場合は、[個人の Microsoft アカウントから職場または学校の ID を作成](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md)して同じ方法でログインできます。
+> [AZURE.NOTE] If you have a work or school ID and you know you do not have two-factor authentication enabled, you can **also** use `azure login -u` along with the work or school ID to log in *without* an interactive session. If you don't have a work or school ID, you can [create a work or school id from your personal Microsoft account](../articles/virtual-machines/virtual-machines-windows-create-aad-work-id.md) to log in the same way.
 
-アカウントには、複数のサブスクリプションが含まれる場合があります。`azure account list` と入力することで、次のようにサブスクリプションの一覧を表示できます。
+Your account may have more than one subscription. You can list your subscriptions by typing `azure account list`, which might look something like this:
 
     azure account list
     info:    Executing command account list
@@ -47,38 +47,38 @@ Azure サブスクリプションをまだ持っていない場合でも、MSDN 
     data:    Fabrikam test                     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
     data:    Contoso production                xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx  false  
 
-以下を入力すると、現在の Azure サブスクリプションを設定できます。管理するリソースを含むサブスクリプション名または ID を使用します。
+You can set the current Azure subscription by typing the following. Use the subscription name or the ID that has the resources you want to manage.
 
-	azure account set <subscription name or ID> true
+    azure account set <subscription name or ID> true
 
 
 
-### Azure CLI リソース グループ モードに切り替える
+### <a name="switch-to-the-azure-cli-resource-group-mode"></a>Switch to the Azure CLI resource group mode
 
-既定では、Azure CLI はサービス管理モード (**asm** モード) で起動します。以下を入力してリソース グループ モードに切り替えます。
+By default, the Azure CLI starts in the service management mode (**asm** mode). Type the following to switch to resource group mode.
 
-	azure config mode arm
+    azure config mode arm
 
-## Azure リソース テンプレートおよびリソース グループについて
+## <a name="understanding-azure-resource-templates-and-resource-groups"></a>Understanding Azure resource templates and resource groups
 
-大部分のアプリケーションは、異なる種類のリソースの組み合わせ (1 つ以上の VM やストレージ アカウント、SQL データベース、仮想ネットワーク、コンテンツ配信ネットワークなど) から構築されます。既定の Azure サービス管理 API と Azure クラシック ポータルでは、サービス単位のアプローチを使用してこれらの項目を表していました。この方法では、個々のサービスを 1 つの論理的なデプロイ単位としてではなく、個別にデプロイ、管理 (またはこのことを実行するその他のツールを検索) する必要があります。
+Most applications are built from a combination of different resource types (such as one or more VMs and storage accounts, a SQL database, a virtual network, or a content delivery network). The default Azure service management API and the Azure classic portal represented these items by using a service-by-service approach. This approach requires you to deploy and manage the individual services individually (or find other tools that do so), and not as a single logical unit of deployment.
 
-ただし、*Azure リソース マネージャー テンプレート*では、これらの異なるリソースを 1 つの論理的なデプロイ単位として、宣言型の方法でデプロイし、管理することが可能になります。何をデプロイするのかを Azure に 1 コマンドずつ命令するのではなく、JSON ファイル内にデプロイメント全体、つまりすべてのリソースと、関連する構成およびデプロイメント パラメーターを記述し、Azure にそれらのリソースを 1 つのグループとしてデプロイするよう指示します。
+*Azure Resource Manager templates*, however, make it possible for you to deploy and manage these different resources as one logical deployment unit in a declarative fashion. Instead of imperatively telling Azure what to deploy one command after another, you describe your entire deployment in a JSON file -- all of the resources and associated configuration and deployment parameters -- and tell Azure to deploy those resources as one group.
 
-その後は、Azure CLI リソース管理コマンドを使用して以下を実行することで、そのグループのリソースのライフ サイクル全体を管理できます。
+You can then manage the overall life cycle of the group's resources by using Azure CLI resource management commands to:
 
-- グループ内のすべてのリソースを一度に停止、開始、または削除する。
-- ロールベースの Access Control (RBAC) ルールを適用し、リソースへのセキュリティ アクセス許可をロック ダウンする。
-- 操作を監査する。
-- 追跡機能を向上させるために追加のメタデータでリソースのタグ付けを行う。
+- Stop, start, or delete all of the resources within the group at once.
+- Apply Role-Based Access Control (RBAC) rules to lock down security permissions on them.
+- Audit operations.
+- Tag resources with additional metadata for better tracking.
 
-Azure リソース グループとその機能の詳細については、「[Azure リソース マネージャーの概要](../articles/resource-group-overview.md)」を参照してください。テンプレートの作成に興味がある場合は、「[Azure リソース マネージャーのテンプレートの作成](../articles/resource-group-authoring-templates.md)」を参照してください。
+You can learn lots more about Azure resource groups and what they can do for you in the [Azure Resource Manager overview](../articles/resource-group-overview.md). If you're interested in authoring templates, see [Authoring Azure Resource Manager templates](../articles/resource-group-authoring-templates.md).
 
-## <a id="quick-create-a-vm-in-azure"></a>タスク: Azure での VM の簡易作成
+## <a name="<a-id="quick-create-a-vm-in-azure"></a>task:-quick-create-a-vm-in-azure"></a><a id="quick-create-a-vm-in-azure"></a>Task: Quick-create a VM in Azure
 
-どのようなイメージが必要か理解していて、今すぐそのイメージの VM が必要で、しかもインフラストラクチャにはそれほどこだわらないという場合があります。たとえばクリーンな VM で何かをテストする必要があるような場合です。そのようなときは、`azure vm quick-create` コマンドを使用し、VM とそのインフラストラクチャの作成に必要な引数を渡します。
+Sometimes you know what image you need, and you need a VM from that image right now and you don't care too much about the infrastructure -- maybe you have to test something on a clean VM. That's when you want to use the `azure vm quick-create` command, and pass the arguments necessary to create a VM and its infrastructure.
 
-まずは、リソース グループを作成します。
+First, create your resource group.
 
     azure group create coreos-quick westus
     info:    Executing command group create
@@ -94,31 +94,31 @@ Azure リソース グループとその機能の詳細については、「[Azu
     info:    group create command OK
 
 
-次に、イメージが必要になります。Azure CLI でイメージを検索するには、[PowerShell と Azure CLI による Azure 仮想マシン イメージのナビゲーションと選択](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md)に関するページを参照してください。ただし、この記事については、一般的なイメージの簡単な一覧を用意しています。この簡易作成には、CoreOS の安定版イメージを使用します。
+Second, you'll need an image. To find an image with the Azure CLI, see [Navigating and selecting Azure virtual machine images with PowerShell and the Azure CLI](../articles/virtual-machines/virtual-machines-linux-cli-ps-findimage.md). But for this article, here's a short list of popular images. We'll use CoreOS's Stable image for this quick-create.
 
-> [AZURE.NOTE] ComputeImageVersion では、テンプレートの言語と Azure CLI の両方のパラメーターとして "latest" を指定することもできます。こうすることで、スクリプトやテンプレートを変更しなくても、常にパッチが適用された最新バージョンのイメージを使用できます。一般的なイメージを以下に示します。
+> [AZURE.NOTE] For ComputeImageVersion, you can also simply supply 'latest' as the parameter in both the template language and in the Azure CLI. This will allow you to always use the latest and patched version of the image without having to modify your scripts or templates. This is shown below.
 
-| 発行元 | プラン | SKU | バージョン |
+| PublisherName                        | Offer                                 | Sku                         | Version |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
-| OpenLogic | CentOS | 7 | 7\.0.201503 |
-| OpenLogic | CentOS | 7\.1 | 7\.1.201504 |
-| CoreOS | CoreOS | Beta | 647\.0.0 |
-| CoreOS | CoreOS | Stable | 633\.1.0 |
-| MicrosoftDynamicsNAV | DynamicsNAV | 2015 | 8\.0.40459 |
-| MicrosoftSharePoint | MicrosoftSharePointServer | 2013 | 1\.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Standard | 1\.0.0 |
-| msopentech | Oracle-Database-12c-Weblogic-Server-12c | Enterprise | 1\.0.0 |
-| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW | 12\.0.2430 |
-| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP | 12\.0.2430 |
-| Canonical | UbuntuServer | 12\.04.5-LTS | 12\.04.201504230 |
-| Canonical | UbuntuServer | 14\.04.2-LTS | 14\.04.201503090 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | 3\.0.201503 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | 4\.0.201503 |
-| MicrosoftWindowsServer | WindowsServer | Windows-Server-Technical-Preview | 5\.0.201504 |
-| MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials | 1\.0.141204 |
-| MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 | 4\.3.4665 |
+| OpenLogic                        | CentOS                                     | 7                                | 7.0.201503          |
+| OpenLogic                        | CentOS                                     | 7.1                              | 7.1.201504          |
+| CoreOS                           | CoreOS                                     | Beta                             | 647.0.0             |
+| CoreOS                           | CoreOS                                     | Stable                           | 633.1.0             |
+| MicrosoftDynamicsNAV             | DynamicsNAV                                | 2015                             | 8.0.40459           |
+| MicrosoftSharePoint              | MicrosoftSharePointServer                  | 2013                             | 1.0.0               |
+| msopentech                       | Oracle-Database-12c-Weblogic-Server-12c    | Standard                         | 1.0.0               |
+| msopentech                       | Oracle-Database-12c-Weblogic-Server-12c    | Enterprise                       | 1.0.0               |
+| MicrosoftSQLServer               | SQL2014-WS2012R2                           | Enterprise-Optimized-for-DW      | 12.0.2430           |
+| MicrosoftSQLServer               | SQL2014-WS2012R2                           | Enterprise-Optimized-for-OLTP    | 12.0.2430           |
+| Canonical                        | UbuntuServer                               | 12.04.5-LTS                      | 12.04.201504230     |
+| Canonical                        | UbuntuServer                               | 14.04.2-LTS                      | 14.04.201503090     |
+| MicrosoftWindowsServer           | WindowsServer                              | 2012-Datacenter                  | 3.0.201503          |
+| MicrosoftWindowsServer           | WindowsServer                              | 2012-R2-Datacenter               | 4.0.201503          |
+| MicrosoftWindowsServer           | WindowsServer                              | Windows-Server-Technical-Preview | 5.0.201504          |
+| MicrosoftWindowsServerEssentials | WindowsServerEssentials                    | WindowsServerEssentials          | 1.0.141204          |
+| MicrosoftWindowsServerHPCPack    | WindowsServerHPCPack                       | 2012R2                           | 4.3.4665            |
 
-VM を作成するために、`azure vm quick-create` コマンドを入力して、メッセージが表示されるのを待ちます。これは、次のようになります。
+Just create your VM by entering the `azure vm quick-create` command and being ready for the prompts. It should look something like this:
 
     azure vm quick-create
     info:    Executing command vm quick-create
@@ -201,31 +201,31 @@ VM を作成するために、`azure vm quick-create` コマンドを入力し�
     data:            FQDN                    :coreo-westu-1430261891570-pip.westus.cloudapp.azure.com
     info:    vm quick-create command OK
 
-これで新しい VM が作成されました。
+And away you go with your new VM.
 
-## <a id="deploy-a-vm-in-azure-from-a-template"></a>タスク: テンプレートから Azure への VM のデプロイ
+## <a name="<a-id="deploy-a-vm-in-azure-from-a-template"></a>task:-deploy-a-vm-in-azure-from-a-template"></a><a id="deploy-a-vm-in-azure-from-a-template"></a>Task: Deploy a VM in Azure from a template
 
-Azure CLI でテンプレートを使用して新しい Azure VM をデプロイするには、以下のセクションの手順に従います。このテンプレートは、1 つのサブネットを持つ新しい仮想ネットワークに単一の仮想マシンを作成しますが、`azure vm quick-create` とは異なり、何が必要かを正確に記述し、エラーなしでそれを繰り返すことができます。このテンプレートによって作成されるものを次に示します。
+Use the instructions in these sections to deploy a new Azure VM by using a template with the Azure CLI. This template creates a single virtual machine in a new virtual network with a single subnet, and unlike `azure vm quick-create`, enables you to describe what you want precisely and repeat it without errors. Here's what this template creates:
 
 ![](./media/virtual-machines-common-cli-deploy-templates/new-vm.png)
 
-### 手順 1. テンプレート パラメーターの JSON ファイルを確認する
+### <a name="step-1:-examine-the-json-file-for-the-template-parameters"></a>Step 1: Examine the JSON file for the template parameters
 
-テンプレートの JSON ファイルの内容を次に示します。(テンプレートは [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json) にもあります)。
+Here are the contents of the JSON file for the template. (The template is also located in [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json).)
 
-テンプレートは柔軟性が高いことから、デザイナーはテンプレートで多くのパラメーターを提供することがあります。逆に、比較的固定的なテンプレートを作成し、ごく少数のパラメーターだけを提供していることもあります。テンプレートをパラメーターとして渡すために必要な情報を収集するには、テンプレート ファイル (このトピックでは、以下にインラインのテンプレートが含まれています) を開き、**parameters** の値を確認する必要があります。
+Templates are flexible, so the designer may have chosen to give you lots of parameters or chosen to offer only a few by creating a template that is more fixed. In order to collect the information you need to pass the template as parameters, open the template file (this topic has a template inline, below) and examine the **parameters** values.
 
-この場合、下記のテンプレートから次の情報を求められます。
+In this case, the template below will ask for:
 
-- 一意のストレージ アカウント名。
-- VM の管理者ユーザー名。
-- パスワード。
-- 外部で使用されるドメイン名。
-- Ubuntu Server のバージョン番号。ただし、リストのうち 1 つだけを許可します。
+- A unique storage account name.
+- An admin user name for the VM.
+- A password.
+- A domain name for the outside world to use.
+- An Ubuntu Server version number -- but it will accept only one of a list.
 
-[ユーザー名とパスワードの要件](virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm)に関するページで詳細を確認してください。
+See more about [username and password requirements](virtual-machines-linux-faq.md#what-are-the-username-requirements-when-creating-a-vm).
 
-これらの値が決まると、グループを作成し、Azure サブスクリプションにこのテンプレートをデプロイする準備が整います。
+Once you decide on these values, you're ready to create a group for and deploy this template into your Azure subscription.
 
     {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -403,11 +403,11 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
     }
 
 
-### 手順 2. テンプレートを使用して仮想マシンを作成する
+### <a name="step-2:-create-the-virtual-machine-by-using-the-template"></a>Step 2: Create the virtual machine by using the template
 
-パラメーター値を用意したら、テンプレートのデプロイ用のリソース グループを作成し、テンプレートをデプロイする必要があります。
+Once you have your parameter values ready, you must create a resource group for your template deployment and then deploy the template.
 
-リソース グループを作成するには、使用するグループ名とデプロイ先のデータセンターの場所を指定して、「`azure group create <group name> <location>`」を入力します。この作成はすばやく実行されます。
+To create the resource group, type `azure group create <group name> <location>` with the name of the group you want and the datacenter location into which you want to deploy. This happens quickly:
 
     azure group create myResourceGroup westus
     info:    Executing command group create
@@ -423,16 +423,16 @@ Azure CLI でテンプレートを使用して新しい Azure VM をデプロイ
     info:    group create command OK
 
 
-デプロイを作成するには、`azure group deployment create` を呼び出し、次の情報を渡します。
+Now to create the deployment, call `azure group deployment create` and pass:
 
-- テンプレート ファイル (上記の JSON テンプレートをローカル ファイルに保存した場合)
-- テンプレートの URI (GitHub や他の Web アドレスにあるファイルをポイントする場合)
-- デプロイ先のリソース グループ
-- デプロイ名 (省略可能)
+- The template file (if you saved the above JSON template to a local file).
+- A template URI (if you want to point at the file in GitHub or some other web address).
+- The resource group into which you want to deploy.
+- An optional deployment name.
 
-JSON ファイルの "parameters" セクションのパラメーター値を指定するよう求められます。すべてのパラメーター値を指定すると、デプロイが開始されます。
+You will be prompted to supply the values of parameters in the "parameters" section of the JSON file. When you have specified all the parameter values, your deployment will begin.
 
-たとえば次のようになります。
+Here is an example:
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-linux/azuredeploy.json myResourceGroup firstDeployment
     info:    Executing command group deployment create
@@ -442,43 +442,24 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
     adminPassword: password
     dnsNameForPublicIP: newdomainname
 
-次の種類の情報が表示されます。
+You will receive the following type of information:
 
     + Initializing template configurations and parameters
-    + Creating a deployment
-    info:    Created template deployment "firstDeployment"
-    + Registering providers
-    info:    Registering provider microsoft.storage
-    info:    Registering provider microsoft.network
-    info:    Registering provider microsoft.compute
-    + Waiting for deployment to complete
-    data:    DeploymentName     : firstDeployment
-    data:    ResourceGroupName  : myResourceGroup
-    data:    ProvisioningState  : Succeeded
-    data:    Timestamp          : 2015-04-28T07:53:55.1828878Z
-    data:    Mode               : Incremental
-    data:    TemplateLink       : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json
-    data:    ContentVersion     : 1.0.0.0
-    data:    Name                   Type          Value
-    data:    ---------------------  ------------  -------------
-    data:    newStorageAccountName  String        storageaccount
-    data:    adminUsername          String        ops
-    data:    adminPassword          SecureString  undefined
-    data:    dnsNameForPublicIP     String        newdomainname
-    data:    ubuntuOSVersion        String        14.10
-    info:    group deployment create command OK
+    + Creating a deployment info:    Created template deployment "firstDeployment"
+    + Registering providers info:    Registering provider microsoft.storage info:    Registering provider microsoft.network info:    Registering provider microsoft.compute
+    + Waiting for deployment to complete data:    DeploymentName     : firstDeployment data:    ResourceGroupName  : myResourceGroup data:    ProvisioningState  : Succeeded data:    Timestamp          : 2015-04-28T07:53:55.1828878Z data:    Mode               : Incremental data:    TemplateLink       : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-simple-linux-vm/azuredeploy.json data:    ContentVersion     : 1.0.0.0 data:    Name                   Type          Value data:    ---------------------  ------------  ------------- data:    newStorageAccountName  String        storageaccount data:    adminUsername          String        ops data:    adminPassword          SecureString  undefined data:    dnsNameForPublicIP     String        newdomainname data:    ubuntuOSVersion        String        14.10 info:    group deployment create command OK
 
 
 
-## <a id="create-a-custom-vm-image"></a>タスク: カスタム VM イメージの作成
+## <a name="<a-id="create-a-custom-vm-image"></a>task:-create-a-custom-vm-image"></a><a id="create-a-custom-vm-image"></a>Task: Create a custom VM image
 
-テンプレートの基本的な使用方法は前述したので、同様の手順に従うことで、Azure CLI でテンプレートを使用して、Azure にある特定の .vhd ファイルからカスタム VM を作成できます。このテンプレートは、指定した仮想ハード ディスク (VHD) から単一の仮想マシンを作成するという点が異なります。
+You've seen the basic usage of templates above, so now we can use similar instructions to create a custom VM from a specific .vhd file in Azure by using a template via the Azure CLI. The difference here is that this template creates a single virtual machine from a specified virtual hard disk (VHD).
 
-### 手順 1. テンプレートの JSON ファイルを確認する
+### <a name="step-1:-examine-the-json-file-for-the-template"></a>Step 1: Examine the JSON file for the template
 
-以下は、このセクションで例として使用するテンプレートの JSON ファイルの内容です。(テンプレートは [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json) にもあります)。
+Here are the contents of the JSON file for the template that this section uses as an example. (The template is also located in [GitHub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json).)
 
-ここでも、既定値がないパラメーター用に入力する値を見つける必要があります。`azure group deployment create` コマンドを実行すると、Azure CLI からその値を入力するよう求められます。
+Again, you will need to find the values you want to enter for the parameters that do not have default values. When you run the `azure group deployment create` command, the Azure CLI will prompt you to enter those values.
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
@@ -661,17 +642,17 @@ JSON ファイルの "parameters" セクションのパラメーター値を指�
         ]
     }
 
-### 手順 2. VHD を取得する
+### <a name="step-2:-obtain-the-vhd"></a>Step 2: Obtain the VHD
 
-当然ながら、これには .vhd が必要になります。既に Azure にあるものを使用するか、アップロードすることができます。
+Obviously, you'll need a .vhd for this. You can use one you already have in Azure, or you can upload one.
 
-Windows ベースの仮想マシンについては、「[Windows Server VHD の作成と Azure へのアップロード](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md)」を参照してください。
+For a Windows-based virtual machine, see [Create and upload a Windows Server VHD to Azure](../articles/virtual-machines/virtual-machines-windows-classic-createupload-vhd.md).
 
-Linux ベースの仮想マシンについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md)」を参照してください。
+For a Linux-based virtual machine, see [Creating and uploading a virtual hard disk that contains the Linux operating system](../articles/virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md).
 
-### 手順 3. テンプレートを使用して仮想マシンを作成する
+### <a name="step-3:-create-the-virtual-machine-by-using-the-template"></a>Step 3: Create the virtual machine by using the template
 
-これで、.vhd に基づく新しい仮想マシンを作成する準備が整いました。デプロイ先のグループを作成するには、次のように `azure group create <location>` を使用します。
+Now you're ready to create a new virtual machine based on the .vhd. Create a group to deploy into, by using `azure group create <location>`:
 
     azure group create myResourceGroupUser eastus
     info:    Executing command group create
@@ -686,7 +667,7 @@ Linux ベースの仮想マシンについては、「[Linux オペレーティ�
     data:
     info:    group create command OK
 
-次に、テンプレートを直接呼び出す `--template-uri` オプションを使用してデプロイを作成します (または `--template-file` オプションを使用してローカルに保存したファイルを使用することもできます)。テンプレートは既定値を指定されているため、求められる入力値は少数です。さまざまな場所にテンプレートをデプロイする場合、既定値 (特に、作成する DNS 名) との名前付けの競合が発生する場合があります。
+Then create the deployment by using the `--template-uri` option to call in the template directly (or you can use the `--template-file` option to use a file that you have saved locally). Note that because the template has defaults specified, you are prompted for only a few things. If you deploy the template in different places, you may find that some naming collisions occur with the default values (particularly the DNS name you create).
 
     azure group deployment create \
     > --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json \
@@ -699,53 +680,25 @@ Linux ベースの仮想マシンについては、「[Linux オペレーティ�
     osType: linux
     subscriptionId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
-出力は次のようになります。
+Output looks something like the following:
 
     + Initializing template configurations and parameters
-    + Creating a deployment
-    info:    Created template deployment "customVhdDeployment"
-    + Registering providers
-    info:    Registering provider microsoft.network
-    info:    Registering provider microsoft.compute
-    + Waiting for deployment to complete
-    error:   Deployment provisioning state was not successful
-    data:    DeploymentName     : customVhdDeployment
-    data:    ResourceGroupName  : myResourceGroupUser
-    data:    ProvisioningState  : Succeeded
-    data:    Timestamp          : 2015-04-28T14:55:48.0963829Z
-    data:    Mode               : Incremental
-    data:    TemplateLink       : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json
-    data:    ContentVersion     : 1.0.0.0
-    data:    Name                           Type          Value
-    data:    -----------------------------  ------------  ------------------------------------
-    data:    userImageStorageAccountName    String        userImageStorageAccountName
-    data:    userImageStorageContainerName  String        userImageStorageContainerName
-    data:    userImageVhdName               String        userImageVhdName
-    data:    dnsNameForPublicIP             String        uniqueDnsNameForPublicIP
-    data:    adminUserName                  String        ops
-    data:    adminPassword                  SecureString  undefined
-    data:    osType                         String        linux
-    data:    subscriptionId                 String        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-    data:    location                       String        West US
-    data:    vmSize                         String        Standard_A2
-    data:    publicIPAddressName            String        myPublicIP
-    data:    vmName                         String        myVM
-    data:    virtualNetworkName             String        myVNET
-    data:    nicName                        String        myNIC
-    info:    group deployment create command OK
+    + Creating a deployment info:    Created template deployment "customVhdDeployment"
+    + Registering providers info:    Registering provider microsoft.network info:    Registering provider microsoft.compute
+    + Waiting for deployment to complete error:   Deployment provisioning state was not successful data:    DeploymentName     : customVhdDeployment data:    ResourceGroupName  : myResourceGroupUser data:    ProvisioningState  : Succeeded data:    Timestamp          : 2015-04-28T14:55:48.0963829Z data:    Mode               : Incremental data:    TemplateLink       : https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-from-user-image/azuredeploy.json data:    ContentVersion     : 1.0.0.0 data:    Name                           Type          Value data:    -----------------------------  ------------  ------------------------------------ data:    userImageStorageAccountName    String        userImageStorageAccountName data:    userImageStorageContainerName  String        userImageStorageContainerName data:    userImageVhdName               String        userImageVhdName data:    dnsNameForPublicIP             String        uniqueDnsNameForPublicIP data:    adminUserName                  String        ops data:    adminPassword                  SecureString  undefined data:    osType                         String        linux data:    subscriptionId                 String        xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx data:    location                       String        West US data:    vmSize                         String        Standard_A2 data:    publicIPAddressName            String        myPublicIP data:    vmName                         String        myVM data:    virtualNetworkName             String        myVNET data:    nicName                        String        myNIC info:    group deployment create command OK
 
 
-## <a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>タスク: 仮想ネットワークと外部ロード バランサーを使用する複数 VM アプリケーションのデプロイ
+## <a name="<a-id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>task:-deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a><a id="deploy-a-multi-vm-application-that-uses-a-virtual-network-and-an-external-load-balancer"></a>Task: Deploy a multi-VM application that uses a virtual network and an external load balancer
 
-このテンプレートでは、ロード バランサーの下に 2 つの仮想マシンを作成し、ポート 80 の負荷分散ルールを構成することができます。このテンプレートは、ストレージ アカウント、仮想ネットワーク、パブリック IP アドレス、可用性セット、ネットワーク インターフェイスもデプロイします。
+This template allows you to create two virtual machines under a load balancer and configure a load-balancing rule on Port 80. This template also deploys a storage account, virtual network, public IP address, availability set, and network interfaces.
 
 ![](./media/virtual-machines-common-cli-deploy-templates/multivmextlb.png)
 
-Azure PowerShell コマンドで GitHub テンプレート リポジトリのリソース マネージャー テンプレートを使用して、仮想ネットワークとロード バランサーを使用する複数 VM アプリケーションをデプロイするには、次の手順に従います。
+Follow these steps to deploy a multi-VM application that uses a virtual network and a load balancer by using a Resource Manager template in the GitHub template repository via Azure PowerShell commands.
 
-### 手順 1. テンプレートの JSON ファイルを確認する
+### <a name="step-1:-examine-the-json-file-for-the-template"></a>Step 1: Examine the JSON file for the template
 
-テンプレートの JSON ファイルの内容を次に示します。最新のバージョンについては、[Github リポジトリのテンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json)をご覧ください。このトピックでは、テンプレートの呼び出しに `--template-uri` スイッチを使用しますが、ローカル バージョンを渡すために `--template-file` スイッチを使用することもできます。
+Here are the contents of the JSON file for the template. If you want the most recent version, it's located [at the Github repository for templates](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json). This topic uses the `--template-uri` switch to call in the template, but you can also use the `--template-file` switch to pass a local version.
 
 
     {
@@ -1079,9 +1032,9 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
         ]
     }
 
-### 手順 2. テンプレートを使用してデプロイを作成する
+### <a name="step-2:-create-the-deployment-by-using-the-template"></a>Step 2: Create the deployment by using the template
 
-`azure group create <location>` を使用して、テンプレートのリソース グループを作成します。`azure group deployment create` を使用してそのリソース グループへのデプロイを作成し、リソース グループを渡します。デプロイ名を渡して、既定値がないテンプレートのパラメーターに関するプロンプトに答えます。
+Create a resource group for the template by using `azure group create <location>`. Then, create a deployment into that resource group by using `azure group deployment create` and passing the resource group, passing a deployment name, and answering the prompts for parameters in the template that did not have default values.
 
 
     azure group create lbgroup westus
@@ -1098,7 +1051,7 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
     info:    group create command OK
 
 
-次に、`azure group deployment create` コマンドと `--template-uri` オプションを使用してテンプレートをデプロイします。以下に示すように入力を求められた場合に備えてパラメーター値を用意しておいてください。
+Now use the `azure group deployment create` command and the `--template-uri` option to deploy the template. Be ready with your parameter values when it prompts you, as shown below.
 
     azure group deployment create \
     > --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json \
@@ -1145,11 +1098,11 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
     data:    vmSize                 String        Standard_A1
     info:    group deployment create command OK
 
-このテンプレートでは Windows Server イメージをデプロイしますが、Linux イメージに簡単に置き換えることができます。複数の Swarm マネージャーを備えた Docker クラスターを作成する必要がある場合には、 [こちらから作成できます](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/)。
+Note that this template deploys a Windows Server image; however, it could easily be replaced by any Linux image. Want to create a Docker cluster with multiple swarm managers? [You can do it](https://azure.microsoft.com/documentation/templates/docker-swarm-cluster/).
 
-## <a id="remove-a-resource-group"></a>タスク: リソース グループの削除
+## <a name="<a-id="remove-a-resource-group"></a>task:-remove-a-resource-group"></a><a id="remove-a-resource-group"></a>Task: Remove a resource group
 
-リソース グループへの再デプロイは可能ですが、実行した場合は `azure group delete <group name>` を使用してリソース グループを削除できることに注意してください。
+Remember that you can redeploy to a resource group, but if you are done with one, you can delete it by using `azure group delete <group name>`.
 
     azure group delete myResourceGroup
     info:    Executing command group delete
@@ -1157,25 +1110,25 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
     + Deleting resource group myResourceGroup
     info:    group delete command OK
 
-## <a id="show-the-log-for-a-resource-group-deployment"></a>タスク: リソース グループ デプロイのログの表示
+## <a name="<a-id="show-the-log-for-a-resource-group-deployment"></a>task:-show-the-log-for-a-resource-group-deployment"></a><a id="show-the-log-for-a-resource-group-deployment"></a>Task: Show the log for a resource group deployment
 
-これは、テンプレートの作成時や使用時によく行われます。グループのデプロイ ログを表示するための呼び出しは `azure group log show <groupname>` ですが、これにより、何かが発生した場合、または発生しなかった場合、その理由を把握するのに役立つ大量の情報が表示されます (デプロイのトラブルシューティングの詳細、および問題に関するその他の情報については、「[Azure でのリソース グループのデプロイのトラブルシューティング](../articles/resource-manager-troubleshoot-deployments-cli.md)」を参照してください)。
+This one is common while you're creating or using templates. The call to display the deployment logs for a group is `azure group log show <groupname>`, which displays quite a bit of information that's useful for understanding why something happened -- or didn't. (For more information on troubleshooting your deployments, as well as other information about issues, see [Troubleshooting resource group deployments in Azure](../articles/resource-manager-troubleshoot-deployments-cli.md).)
 
-特定のエラーを対象にするには、たとえば **jq** のようなツールを使用すると、個々のエラーのうちどれを修正する必要があるかなど、もう少し的確な照会ができます。次の例では、**jq** を使用して **lbgroup** のデプロイ ログを解析し、エラーを探しています。
+To target specific failures, for example, you might use tools like **jq** to query things a bit more precisely, such as which individual failures you need to correct. The following example uses **jq** to parse a deployment log for **lbgroup**, looking for failures.
 
     azure group log show lbgroup -l --json | jq '.[] | select(.status.value == "Failed") | .properties'
 
-発生している問題をすばやく見つけて、修正し、やり直すことができます。次のケースでは、テンプレートによって 2 つの VM が同時に作成されたため、.vhd にロックがかけられています。(テンプレートの修正後、デプロイは速やかに正常終了しました)。
+You can discover very quickly what went wrong, fix, and retry. In the following case, the template had been creating two VMs at the same time, which created a lock on the .vhd. (After we modified the template, the deployment succeeded quickly.)
 
     {
       "statusCode": "Conflict",
-      "statusMessage": "{"status":"Failed","error":{"code":"ResourceDeploymentFailure","message":"The resource operation completed with terminal provisioning state 'Failed'.","details":[{"code":"AcquireDiskLeaseFailed","message":"Failed to acquire lease while creating disk 'osdisk' using blob with URI http://storage.blob.core.windows.net/vhds/osdisk.vhd."}]}}"
+      "statusMessage": "{\"status\":\"Failed\",\"error\":{\"code\":\"ResourceDeploymentFailure\",\"message\":\"The resource operation completed with terminal provisioning state 'Failed'.\",\"details\":[{\"code\":\"AcquireDiskLeaseFailed\",\"message\":\"Failed to acquire lease while creating disk 'osdisk' using blob with URI http://storage.blob.core.windows.net/vhds/osdisk.vhd.\"}]}}"
     }
 
 
-## <a id="display-information-about-a-virtual-machine"></a>タスク: 仮想マシンに関する情報の表示
+## <a name="<a-id="display-information-about-a-virtual-machine"></a>task:-display-information-about-a-virtual-machine"></a><a id="display-information-about-a-virtual-machine"></a>Task: Display information about a virtual machine
 
-`azure vm show <groupname> <vmname>` コマンドを使用して、リソース グループ内の特定の VM に関する情報を表示できます。複数の VM がある場合、まずは `azure vm list <groupname>` を使用してグループ内の VM を一覧表示する必要があります。
+You can see information about specific VMs in your resource group by using the `azure vm show <groupname> <vmname>` command. If you have more than one VM in your group, you might first need to list the VMs in a group by using `azure vm list <groupname>`.
 
     azure vm list zoo
     info:    Executing command vm list
@@ -1185,7 +1138,7 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
     data:    myVM0  Succeeded          westus    Standard_A1
     data:    myVM1  Failed             westus    Standard_A1
 
-その後、次のように myVM1 を検索します。
+And then, looking up myVM1:
 
     azure vm show zoo myVM1
     info:    Executing command vm show
@@ -1238,46 +1191,50 @@ Azure PowerShell コマンドで GitHub テンプレート リポジトリのリ
     info:    vm show command OK
 
 
-> [AZURE.NOTE] プログラムによってコンソール コマンドの出力を格納および操作する場合は、**[jq](https://github.com/stedolan/jq)**、**[jsawk](https://github.com/micha/jsawk)** などの JSON 解析ツール、またはそのタスクに適した言語ライブラリを使用することをお勧めします。
+> [AZURE.NOTE] If you want to programmatically store and manipulate the output of your console commands, you may want to use a JSON parsing tool such as **[jq](https://github.com/stedolan/jq)** or **[jsawk](https://github.com/micha/jsawk)**, or language libraries that are good for the task.
 
-## <a id="log-on-to-a-linux-based-virtual-machine"></a>タスク: Linux ベースの仮想マシンへのログオン
+## <a name="<a-id="log-on-to-a-linux-based-virtual-machine"></a>task:-log-on-to-a-linux-based-virtual-machine"></a><a id="log-on-to-a-linux-based-virtual-machine"></a>Task: Log on to a Linux-based virtual machine
 
-通常、Linux マシンは SSH によって接続されます。詳細については、「[Azure 上の Linux における SSH の使用方法](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)」をご覧ください。
+Typically Linux machines are connected to through SSH. For more information, see [How to use SSH with Linux on Azure](../articles/virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md).
 
-## <a id="stop-a-virtual-machine"></a>タスク: VM の停止
+## <a name="<a-id="stop-a-virtual-machine"></a>task:-stop-a-vm"></a><a id="stop-a-virtual-machine"></a>Task: Stop a VM
 
-次のコマンドを実行します。
+Run this command:
 
     azure vm stop <group name> <virtual machine name>
 
->[AZURE.IMPORTANT] このパラメーターは、VM が VNET 内の最後の VM である場合に、その VNET の仮想 IP (VIP) を保持するために使用します。<br><br> `StayProvisioned` パラメーターを使用する場合、その VM に対して引き続き課金されます。
+>[AZURE.IMPORTANT] Use this parameter to keep the virtual IP (VIP) of the vnet in case it's the last VM in that vnet. <br><br> If you use the `StayProvisioned` parameter, you'll still be billed for the VM.
 
-## <a id="start-a-virtual-machine"></a>タスク: VM の起動
+## <a name="<a-id="start-a-virtual-machine"></a>task:-start-a-vm"></a><a id="start-a-virtual-machine"></a>Task: Start a VM
 
-次のコマンドを実行します。
+Run this command:
 
     azure vm start <group name> <virtual machine name>
 
-## <a id="attach-a-data-disk"></a>タスク: データ ディスクの接続
+## <a name="<a-id="attach-a-data-disk"></a>task:-attach-a-data-disk"></a><a id="attach-a-data-disk"></a>Task: Attach a data disk
 
-新しいディスクとデータを含むディスクのどちらを接続するかについても決める必要があります。新しいディスクの場合、コマンドによって .vhd ファイルが作成され、それが同じコマンドで接続されます。
+You'll also need to decide whether to attach a new disk or one that contains data. For a new disk, the command creates the .vhd file and attaches it in the same command.
 
-新しいディスクを接続するには、次のコマンドを実行します。
+To attach a new disk, run this command:
 
      azure vm disk attach-new <resource-group> <vm-name> <size-in-gb>
 
-既存のデータ ディスクを接続するには、次のコマンドを実行します。
+To attach an existing data disk, run this command:
 
     azure vm disk attach <resource-group> <vm-name> [vhd-url]
 
-その後、Linux で通常行うように、ディスクをマウントする必要があります。
+Then you'll need to mount the disk, as you normally would in Linux.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-**arm** モードでの Azure CLI のその他の使用例については、「[Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)」を参照してください。Azure リソースとその概念の詳細については、「[Azure リソース マネージャーの概要](../articles/resource-group-overview.md)」を参照してください。
+For far more examples of Azure CLI usage with the **arm** mode, see [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](../articles/xplat-cli-azure-resource-manager.md). To learn more about Azure resources and their concepts, see [Azure Resource Manager overview](../articles/resource-group-overview.md).
 
 
-使用できる他のテンプレートについては、「[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」と、[テンプレートを使用したアプリケーション フレームワーク](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md)に関するページを参照してください。
+For more templates you can use, see [Azure Quickstart templates](https://azure.microsoft.com/documentation/templates/) and [Application frameworks using templates](../articles/virtual-machines/virtual-machines-linux-app-frameworks.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

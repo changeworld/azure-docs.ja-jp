@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Database へ移行する前に SQL Server データベースの互換性に関する問題を修正する | Microsoft Azure"
-   description="Microsoft Azure SQL Database、データベースの移行、互換性、SQL Azure の移行ウィザード、SSDT"
+   pageTitle="Fix SQL Server database compatibility issues before migration to SQL Database | Microsoft Azure"
+   description="Microsoft Azure SQL Database, database migration, compatibility, SQL Azure Migration Wizard, SSDT"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -16,7 +16,8 @@
    ms.date="08/24/2016"
    ms.author="carlrab"/>
 
-# Visual Studio 用の SQL Server Data Tools を使用して Azure SQL Database に SQL Server データベースを移行する 
+
+# <a name="migrate-a-sql-server-database-to-azure-sql-database-using-sql-server-data-tools-for-visual-studio"></a>Migrate a SQL Server Database to Azure SQL Database Using SQL Server Data Tools for Visual Studio 
 
 > [AZURE.SELECTOR]
 - [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
@@ -25,77 +26,83 @@
 - [Upgrade Advisor](http://www.microsoft.com/download/details.aspx?id=48119)
 - [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
 
-この記事では、Azure SQL Database に移行する前に Visual Studio 用の SQL Server Data Tools を使用して SQL Server データベースの互換性問題を検出し修正する方法について説明します。
+In this article, you learn to detect and fix SQL Server database compatibility issues using the SQL Server Data Tools for Visual Studio before migration to Azure SQL Database.
 
-## Visual Studio 用の SQL Server Data Tools を使用する
+## <a name="using-sql-server-data-tools-for-visual-studio"></a>Using SQL Server Data Tools for Visual Studio
 
-Visual Studio 用の SQL Server Data Tools ("SSDT") を使用すると、データベース スキーマを Visual Studio データベース プロジェクトにインポートして分析できます。分析するには、SQL Database V12 にプロジェクトのターゲット プラットフォームを指定し、プロジェクトを構築します。構築に成功した場合は、データベースには互換性があります。構築に失敗した場合、SSDT (またはこのトピックで説明したその他のツールのいずれか) を使用してエラーを解決できます。プロジェクトが正常に構築されると、それをソース データベースのコピーとして発行できます。その後、SSDT のデータ比較機能を使用して、ソース データベースから Azure SQL V12 互換のデータベースにデータをコピーできます。その後、更新されたこのデータベースを移行できます。このオプションを使用するには、[最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx) をダウンロードします。
+Use SQL Server Data Tools for Visual Studio ("SSDT") to import the database schema into a Visual Studio database project for analysis. To analyze, you specify the target platform for the project as SQL Database V12 and then build the project. If the build is successful, the database is compatible. If the build fails, you can resolve the errors in SSDT (or one of the other tools discussed in this topic). Once the project builds successfully, you can publish it back as a copy of the source database. You can then use the data compare feature in SSDT to copy the data from the source database to the Azure SQL V12 compatible database. You can then migrate this updated database. To use this option, download the [newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx).
 
-  ![VSSSDT の移行ダイアグラム](./media/sql-database-cloud-migrate/03VSSSDTDiagram.png)
+  ![VSSSDT migration diagram](./media/sql-database-cloud-migrate/03VSSSDTDiagram.png)
 
-  > [AZURE.NOTE] スキーマのみの移行が必要な場合は、Visual Studio から Azure SQL Database に直接、発行することができます。この方法は移行ウィザードのみで処理できる変更よりも多数の変更を、データベース スキーマで行う必要がある場合に使用します。
+  > [AZURE.NOTE] If schema-only migration is required, the schema can be published directly from Visual Studio directly to Azure SQL Database. Use this method when the database schema requires more changes than can be handled by the migration wizard alone.
 
-## Visual Studio 用の SQL Server Data Tools を使用して互換性に関する問題を検出する
+## <a name="detecting-compatibility-issues-using-sql-server-data-tools-for-visual-studio"></a>Detecting Compatibility Issues Using SQL Server Data Tools for Visual Studio
    
-1.	Visual Studio で **SQL Server オブジェクト エクスプローラー**を開きます。**[SQL Server の追加]** を使用して、移行されるデータベースを含む SQL Server インスタンスに接続します。オブジェクト エクスプローラーでデータベースを選択して右クリックし、**[新しいプロジェクトの作成]** をクリックします。
+1.  Open the **SQL Server Object Explorer** in Visual Studio. Use **Add SQL Server** to connect to the SQL Server instance containing the database being migrated. Locate the database in Object Explorer, right-click the database, and select **Create New Project…**     
     
-	![新しいプロジェクト](./media/sql-database-migrate-visualstudio-ssdt/02MigrateSSDT.png)
+    ![New Project](./media/sql-database-migrate-visualstudio-ssdt/02MigrateSSDT.png)    
    
-2.	インポート設定を構成し、**[アプリケーション スコープのオブジェクトのみをインポートする]** チェック ボックスをオンにします。参照先のログイン、アクセス許可、データベースの設定をインポートするためのオプションの選択を解除します。
+2.  Configure the import settings to **Import application-scoped objects only**. Uncheck the options to import the following: referenced logins, permissions, and database settings.    
 
-    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/03MigrateSSDT.png)
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/03MigrateSSDT.png)    
 
-3.	**[開始]** をクリックしてデータベースをインポートし、データベース内の各オブジェクトの T-SQL スクリプト ファイルが含まれるプロジェクトを作成します。スクリプト ファイルは、プロジェクト内のフォルダーに入れ子になっています。
+3.  Click **Start** to import the database and create the project containing a T-SQL script file for each object in the database. The script files are nested in folders within the project.    
 
-    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/04MigrateSSDT.png)
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/04MigrateSSDT.png)    
 
-4.	Visual Studio のソリューション エクスプローラーで、データベース プロジェクトを右クリックして [プロパティ] を選択します。**[プロジェクトの設定]** ページで、[ターゲット プラットフォーム] を [Microsoft Azure SQL Database V12] に設定します。
+4.  In the Visual Studio Solution Explorer, right-click the database project and select Properties. On the **Project Settings** page,  configure the Target Platform to Microsoft Azure SQL Database V12.    
     
-    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/05MigrateSSDT.png)
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/05MigrateSSDT.png)    
     
-5.	プロジェクトを右クリックして **[ビルド]** をクリックし、プロジェクトを構築します。
+5.  Right-click the project and select **Build** to build the project.    
     
-	![alt text](./media/sql-database-migrate-visualstudio-ssdt/06MigrateSSDT.png)
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/06MigrateSSDT.png)    
     
-6.	**[エラー一覧]** には、各非互換性が表示されます。この場合、ユーザー名 NT AUTHORITY\\NETWORK SERVICE は互換性がありません。互換性がないため、これをコメント アウトまたは削除できます (このログインとロールをデータベース ソリューションから削除することによる影響に対応できます)。
+6.  The **Error List** displays each incompatibility. In this case, the user name NT AUTHORITY\NETWORK SERVICE is incompatible. Since it is incompatible, you can comment it out or remove it (and address the implications of removing this login and role from the database solution).     
     
-	![alt text](./media/sql-database-migrate-visualstudio-ssdt/07MigrateSSDT.png)
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/07MigrateSSDT.png)    
     
-## Visual Studio 用の SQL Server Data Tools を使用して互換性に関する問題を修正する
+## <a name="fixing-compatibility-issues-using-sql-server-data-tools-for-visual-studio"></a>Fixing Compatibility Issues Using SQL Server Data Tools for Visual Studio
 
-1.	最初のスクリプトをダブルクリックしてクエリ ウィンドウでスクリプトを開き、スクリプトをコメント アウトし、スクリプトを実行します。![alt text](./media/sql-database-migrate-visualstudio-ssdt/08MigrateSSDT.png)
+1.  Double-click the first script to open the script in a query window and comment out the script, and then execute the script.     
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/08MigrateSSDT.png)
 
-2.	このプロセスを互換性のない各スクリプトに対して、エラーがなくなるまで繰り返します。![alt text](./media/sql-database-migrate-visualstudio-ssdt/09MigrateSSDT.png)
+2.  Repeat this process for each script containing incompatibilities until no error remain.    
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/09MigrateSSDT.png)
     
-3.	データベースのエラーがなくなったら、プロジェクトを右クリックし、**[発行]** をクリックします。ソース データベースのコピーが作成され、発行されます (少なくとも最初のうちは、コピーを使用することを強くお勧めします)。
- - 発行前に、ソースの SQL Server のバージョン (SQL Server 2014 より前) に応じて、プロジェクトのターゲット プラットフォームをリセットしてデプロイメントを有効にすることが必要になる場合があります。
- - 古い SQL Server データベースを移行する場合は、データベースを新しいバージョンの SQL Server に移行するまで、ソースの SQL Server でサポートされていない機能をプロジェクトに導入しないでください。
+3.  When the database is free of errors, right-click the project and select **Publish**. A copy of the source database is built and published (it is highly recommended to use a copy, at least initially).     
+ - Before you publish, depending on the source SQL Server version (earlier than SQL Server 2014), you may need to reset the project’s target platform to enable deployment.     
+ - If you are migrating an older SQL Server database, do not introduce any features into the project that are not supported in the source SQL Server until migrate the database to a newer version of SQL Server.     
 
-    	![alt text](./media/sql-database-migrate-visualstudio-ssdt/10MigrateSSDT.png)    
+        ![alt text](./media/sql-database-migrate-visualstudio-ssdt/10MigrateSSDT.png)    
     
-    	![alt text](./media/sql-database-migrate-visualstudio-ssdt/11MigrateSSDT.png)    
-    	
-4.	SQL Server オブジェクト エクスプローラーでソース データベースを右クリックし、**[データ比較]** をクリックします。プロジェクトを元のデータベースと比較すると、ウィザードによってどのような変更が加えられたかを把握できます。Azure SQL V12 バージョンのデータベースを選択し、**[完了]** をクリックします。
+        ![alt text](./media/sql-database-migrate-visualstudio-ssdt/11MigrateSSDT.png)    
+        
+4.  In SQL Server Object Explorer, right-click your source database and click **Data Comparison**. Comparing the project to the original database helps you understand what changes have been made by the wizard. Select your Azure SQL V12 version of the database and then click **Finish**.    
     
-	![alt text](./media/sql-database-migrate-visualstudio-ssdt/12MigrateSSDT.png)
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/12MigrateSSDT.png)    
     
-	![alt text](./media/sql-database-migrate-visualstudio-ssdt/13MigrateSSDT.png)
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/13MigrateSSDT.png)    
 
-5.	検出された相違点を確認し、**[Update Target]** をクリックしてデータをソース データベースから Azure SQL V12 データベースに移行します。
+5.  Review the differences detected and then click **Update Target** to migrate data from the source database into the Azure SQL V12 database.     
     
-	![alt text](./media/sql-database-migrate-visualstudio-ssdt/14MigrateSSDT.png)
+    ![alt text](./media/sql-database-migrate-visualstudio-ssdt/14MigrateSSDT.png)    
     
-6.	デプロイメント方法を選択します。[互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
+6.  Choose a deployment method. See [Migrate a compatible SQL Server database to SQL Database.](sql-database-cloud-migrate.md)  
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
 - [SQL Database V12](sql-database-v12-whats-new.md)
-- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
-- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+- [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

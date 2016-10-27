@@ -1,190 +1,195 @@
 <properties 
-	pageTitle="Azure Multi-Factor Authentication Server のユーザー ポータルのデプロイ"
-	description="Azure MFA およびユーザー ポータルを開始する方法について説明する Azure Multi-Factor Authentication のページです。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtand"/>
+    pageTitle="Deploying the user portal for the Azure Multi-Factor Authentication Server"
+    description="This is the Azure Multi-factor authentication page that describes how to get started with Azure MFA and the user portal."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor="curtand"/>
 
 <tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/15/2016"
-	ms.author="kgremban"/>
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/15/2016"
+    ms.author="kgremban"/>
 
-# Azure Multi-Factor Authentication Server のユーザー ポータルのデプロイ
 
-ユーザー ポータルにより、管理者は、Azure Multi-factor Authentication ユーザー ポータルをインストールおよび構成することができます。ユーザー ポータルは、ユーザーが Azure Multi-Factor Authentication に登録を行い、アカウントを保守するための IIS Web サイトです。ユーザーは、次のサインオン時に、電話番号の変更、PIN の変更、または Azure Multi-factor Authentication のバイパスを行うことができます。
+# <a name="deploying-the-user-portal-for-the-azure-multi-factor-authentication-server"></a>Deploying the user portal for the Azure Multi-Factor Authentication Server
 
-ユーザーは、通常のユーザー名とパスワードを使用してユーザー ポータルにログインします。Azure Multi-Factor Authentication 呼び出しを完了するかセキュリティーに関する質問に答えて、その認証を完了します。ユーザー登録が許可されている場合、ユーザー ポータルに最初にログインする際にユーザーは電話番号と PIN を構成します。
+The User Portal allows the administrator to install and configure the Azure Multi-Factor Authentication User Portal. The User Portal is an IIS web site which allows users to enroll in Azure Multi-Factor Authentication and maintain their accounts. A user may change their phone number, change their PIN, or bypass Azure Multi-Factor Authentication during their next sign on.
 
-ユーザー ポータルの管理者をセットアップして、新しいユーザーを追加する権限と既存のユーザーを更新する権限を付与することができます。
+Users will log in to the User Portal using their normal username and password and will either complete a Azure Multi-Factor Authentication call or answer security questions to complete their authentication. If user enrollment is allowed, a user will configure their phone number and PIN the first time they log in to the User Portal.
+
+User Portal Administrators may be set up and granted permission to add new users and update existing users.
 
 <center>![Setup](./media/multi-factor-authentication-get-started-portal/install.png)</center>
 
-## Azure Multi-Factor Authentication Server と同じサーバーでのユーザー ポータルのデプロイ
+## <a name="deploying-the-user-portal-on-the-same-server-as-the-azure-multi-factor-authentication-server"></a>Deploying the user portal on the same server as the Azure Multi-Factor Authentication Server
 
-Azure Multi-factor Authentication Server と同じサーバーにユーザー ポータルをインストールするには、次の前提条件が必要です。
+The following pre-requisites are required for installing the Users Portal on the same server as the Azure Multi-Factor Authentication Server:
 
-- asp.net および IIS 6 メタ ベース互換性を含め、IIS をインストールする必要があります(IIS 7 以降の場合)。
-- ログインしているユーザーに、コンピューターとドメイン (該当する場合) に対する管理者権限が必要です。このアカウントには Active Directory セキュリティ グループを作成するためのアクセス許可が必要だからです。
+- IIS needs to be installed including asp.net and IIS 6 meta base compatibility (for IIS 7 or higher)
+- Logged in user must have admin rights for the computer and Domain if applicable.  This is because the account needs permissions to create Active Directory security groups.
 
-### Azure Multi-Factor Authentication Server のユーザー ポータルをデプロイするには
+### <a name="to-deploy-the-user-portal-for-the-azure-multi-factor-authentication-server"></a>To deploy the user portal for the Azure Multi-Factor Authentication Server
 
-1. Azure Multi-Factor Authentication Server 内で: 左側のメニューの [ユーザー ポータル] アイコンをクリックし、[ユーザー ポータルのインストール] ボタンをクリックします。
-1. [次へ] をクリックします。
-1. [次へ] をクリックします。
-1. コンピューターがドメインに参加しており、ユーザー ポータルと Azure Multi-Factor Authentication サービスの間の通信をセキュア保護するための Active Directory 構成が完了していない場合、Active Directory の手順が表示されます。[次へ] ボタンをクリックし、この構成を自動的に完了します。
-1. [次へ] をクリックします。
-1. [次へ] をクリックします。
-1. [閉じる] をクリックします。
-1. 任意のコンピューターから Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (例: https://www.publicwebsite.com/MultiFactorAuth)。証明書の警告およびエラーが表示されないことを確認してください。
+1. Within the Azure Multi-Factor Authentication Server: click User Portal icon in the left menu, click Install User Portal button.
+1. Click Next.
+1. Click Next.
+1. If the computer is joined to a domain and the Active Directory configuration for securing communication between the User Portal and the Azure Multi-Factor Authentication service is incomplete, the Active Directory step will be displayed. Click the Next button to automatically complete this configuration.
+1. Click Next.
+1. Click Next.
+1. Click Close.
+1. Open a web browser from any computer and navigate to the URL where User Portal was installed (e.g. https://www.publicwebsite.com/MultiFactorAuth ). Ensure that no certificate warnings or errors are displayed.
 
 <center>![Setup](./media/multi-factor-authentication-get-started-portal/portal.png)</center>
 
-## 別のサーバーへの Azure Multi-Factor Authentication Server ユーザー ポータルのデプロイ
+## <a name="deploying-the-azure-multi-factor-authentication-server-user-portal-on-a-separate-server"></a>Deploying the Azure Multi-Factor Authentication Server User Portal on a Separate Server
 
-Azure Multi-Factor Authentication アプリを使用するには、アプリがユーザー ポータルと正常に通信できるよう以下のことが必要です。
+In order to use the Azure Multi-Factor Authentication App, the following are required so that the app can successfully communicate with User Portal:
 
-ハードウェアおよびソフトウェアの要件については、「ハードウェアとソフトウェアの要件」を参照してください。
+Please see Hardware and Software Requirements for hardware and software requirements:
 
-- Azure Multi-Factor Authentication Server の V6.0 以降を使用している必要があります。
-- ユーザー ポータルが、Microsoft® Internet Information Services (IIS) 6.x、IIS 7.x 以降を実行している、インターネットに接続された Web サーバーにインストールされている必要があります。
-- IIS 6.x を使用している場合は、ASP.NET v2.0.50727 がインストールおよび登録され、[許可] に設定します。
-- IIS 7.x 以降を使用するときに必要な役割サービスには、ASP.NET および IIS 6 メタベース互換が含まれます。
-- ユーザー ポータルは、SSL 証明書で保護する必要があります。
-- Azure Multi-Factor Authentication Web サービス SDK が、Azure Multi-Factor Authentication Server がインストールされているサーバー上の IIS 6.x または IIS 7.x 以降にインストールされている必要があります
-- Azure Multi-Factor Authentication Web サービス SDK は、SSL 証明書で保護されている必要があります。
-- ユーザー ポータルは SSL 経由で Azure Multi-Factor Authentication Web サービス SDK に接続できる必要があります
-- ユーザー ポータルは、「PhoneFactor Admins」と呼ばれるセキュリティ グループのメンバーであるサービス アカウントの資格情報を使用して Azure Multi-Factor Authentication Web サービス SDK で認証できる必要があります。このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加しているサーバーで実行されている場合は、Active Directory に存在します。このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加していない場合、Azure Multi-Factor Authentication Server のローカルに存在します。
+- You must be using v6.0 or higher of the Azure Multi-Factor Authentication Server.
+- User Portal must be installed on an Internet-facing web server running Microsoft® Internet Information Services (IIS) 6.x, IIS 7.x or higher.
+- When using IIS 6.x, ensure ASP.NET v2.0.50727 is installed, registered and set to Allowed.
+- Required role services when using IIS 7.x or higher include ASP.NET and IIS 6 Metabase Compatibility.
+- User Portal should be secured with an SSL certificate.
+- The Azure Multi-Factor Authentication Web Service SDK must be installed in IIS 6.x, IIS 7.x or higher on the server that the Azure Multi-Factor Authentication Server is installed on.
+- The Azure Multi-Factor Authentication Web Service SDK must be secured with an SSL certificate.
+- User Portal must be able to connect to the Azure Multi-Factor Authentication Web Service SDK over SSL.
+- User Portal must be able to authenticate to the Azure Multi-Factor Authentication Web Service SDK using the credentials of a service account that is a member of a security group called “PhoneFactor Admins”. This service account and group exist in Active Directory if the Azure Multi-Factor Authentication Server is running on a domain-joined server. This service account and group exist locally on the Azure Multi-Factor Authentication Server if it is not joined to a domain.
 
-Azure Multi-Factor Authentication Server 以外のサーバーでユーザー ポータルをインストールするには、次の 3 つの手順が必要です。
+Installing the user portal on a server other than the Azure Multi-Factor Authentication Server requires the following three steps:
 
-1. Web サービス SDK のインストール
-2. ユーザー ポータルのインストール
-3. Azure Multi-Factor Authentication Server のユーザー ポータル設定の構成
+1. Install the web service SDK
+2. Install the user portal
+3. Configure the User Portal Settings in the Azure Multi-Factor Authentication Server
 
 
-### Web サービス SDK のインストール
+### <a name="install-the-web-service-sdk"></a>Install the web service SDK
 
-Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication Web サービス SDK がまだインストールされていない場合、そのサーバーに移動し、Azure Multi-Factor Authentication Server を開きます。[Web サービス SDK] アイコン、[Web サービス SDK のインストール...] ボタンを順にクリックし、表示された指示に従います。Web サービス SDK は、SSL 証明書で保護されている必要があります。この目的で自己署名証明書を使用できますが、ユーザー ポータル Web サーバー上のローカル コンピューター アカウントの「信頼されたルート証明機関」ストアにインポートすることで、SSL 接続を開始するときにこの証明書が信頼されます。
+If the Azure Multi-Factor Authentication Web Service SDK is not already installed on the Azure Multi-Factor Authentication Server, go to that server and open the Azure Multi-Factor Authentication Server. Click the Web Service SDK icon, click the Install Web Service SDK… button and follow the instructions presented. The Web Service SDK must be secured with an SSL certificate. A self-signed certificate is okay for this purpose, but it has to be imported into the “Trusted Root Certification Authorities” store of the Local Computer account on the User Portal web server so that it will trust that certificate when initiating the SSL connection.
 
 <center>![Setup](./media/multi-factor-authentication-get-started-portal/sdk.png)</center>
 
-### ユーザー ポータルのインストール
+### <a name="install-the-user-portal"></a>Install the user portal
 
-別のサーバーにユーザー ポータルをインストールする前に、以下の点に留意してください。
+Before installing the user portal on a seperate server, be aware of the following:
 
-- インターネットに接続された Web サーバーで Web ブラウザーを開き、web.config ファイルに入力された Web サービス SDK の URL に移動することをお勧めします。ブラウザーが Web サービスを正常に取得できる場合、資格情報が求められます。web.config ファイルに入力したユーザー名とパスワードを、ファイルに表示されているとおりに入力します。証明書の警告およびエラーが表示されないことを確認してください。
-- リバース プロキシまたはファイアウォールがユーザー ポータル Web サーバーの前面に配置され SSL オフロードを実行している場合、ユーザー ポータルの web.config ファイルを編集し、<add key="SSL\_REQUIRED" value="false"/> キーを <appSettings> セクションに追加することで、ユーザー ポータルで https ではなく http を使用できるようにします。
+- It is helpful to open a web browser on the Internet-facing web server and navigate to the URL of the Web Service SDK that was entered into the web.config file. If the browser can get to the web service successfully, it should prompt you for credentials. Enter the username and password that were entered into the web.config file exactly as it appears in the file. Ensure that no certificate warnings or errors are displayed.
+- If a reverse proxy or firewall is sitting in front of the User Portal web server and performing SSL offloading, you can edit the User Portal web.config file and add the following key to the <appSettings> section so that the User Portal can use http instead of https. <add key="SSL_REQUIRED" value="false"/>
 
-#### ユーザー ポータルをインストールするには
+#### <a name="to-install-the-user-portal"></a>To install the user portal
 
-1. Azure Multi-Factor Authentication Server サーバーで Windows エクスプ ローラーを開き、Azure Multi-Factor Authentication Server がインストールされているフォルダーに移動します (C:\\Program Files\\Multi-Factor Authentication Server など)。ユーザー ポータルがインストールされるサーバーに応じて、MultiFactorAuthenticationUserPortalSetup インストール ファイルの 32 ビットまたは 64 ビット バージョンを選択します。インターネットに接続されたサーバーにインストール ファイルをコピーします。
-2. インターネットに接続された Web サーバーで、セットアップ ファイルを管理者権限で実行する必要があります。これを最も簡単に行うには、管理者としてコマンド プロンプトを開き、インストール ファイルがコピーされた場所に移動します。
-3. MultiFactorAuthenticationUserPortalSetup64 のインストール ファイルを実行し、必要に応じて、サイトと仮想ディレクトリの名前を変更します。
-4. ユーザー ポータルのインストールを完了したら、C:\\inetpub\\wwwroot\\MultiFactorAuth (または仮想ディレクトリ名に基づく適切なディレクトリ) に移動し、web.config ファイルを編集します。
-5. USE\_WEB\_SERVICE\_SDK キーを見つけて、値を false から true に変更します。WEB\_SERVICE\_SDK\_AUTHENTICATION\_USERNAME および WEB\_SERVICE\_SDK\_AUTHENTICATION\_PASSWORD キーを見つけ、PhoneFactor Admins セキュリティ グループのメンバーであるサービス アカウントのユーザー名およびパスワードに値を設定します (上記の「要件」セクションを参照)。行末尾 (value=””/>) の引用符の間にユーザー名およびパスワードを入力するようにしてください。修飾されたユーザー名 (domain\\username や machine\\username など) を使用することをお勧めします。
-6. pfup\_pfwssdk\_PfWsSdk 設定を見つけ、値を "http://localhost:4898/PfWsSdk.asmx" から Azure Multi-Factor Authentication Server で実行されている Web Service SDK の URL に変更します (例: https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx)。この接続では SSL が使用されているため、IP アドレスではなくサーバー名で Web サービス SDK を参照する必要があります。これは、SSL 証明書がサーバー名に対して発行され、使用される URL が証明書の名前に一致する必要があるためです。サーバー名がインターネットに接続されているサーバーで IP アドレスに解決されない場合、そのサーバーの hosts ファイルにエントリを追加し、Azure Multi-Factor Authentication Server の名前を IP アドレスにマッピングします。変更を行ったら、web.config ファイルを保存します。
-7. 既定の Web サイトの直下などにユーザー ポータルがインストールされた Web サイトがまだ公的署名証明書にバインドされていない場合、証明書がまだインストールされていないならサーバーにインストールし、IIS マネージャーを開き証明書を Web サイトにバインドします。
-8. 任意のコンピューターから Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (例: https://www.publicwebsite.com/MultiFactorAuth)。証明書の警告およびエラーが表示されないことを確認してください。
+1. Open Windows Explorer on the Azure Multi-Factor Authentication Server server and navigate to the folder where the Azure Multi-Factor Authentication Server is installed (e.g. C:\Program Files\Multi-Factor Authentication Server). Choose the 32-bit or 64-bit version of the MultiFactorAuthenticationUserPortalSetup installation file as appropriate for the server that User Portal will be installed on. Copy the installation file to the Internet-facing server.
+2. On the Internet-facing web server, the setup file must be run with administrator rights. The easiest way to do this is to open a command prompt as an administrator and navigate to the location where the installation file was copied.
+3. Run the MultiFactorAuthenticationUserPortalSetup64 install file, change the Site and Virtual Directory name if desired.
+4. After finishing the install of the User Portal, browse to C:\inetpub\wwwroot\MultiFactorAuth (or appropriate directory based on the virtual directory name) and edit the web.config file.
+5. Locate the USE_WEB_SERVICE_SDK key and change the value from false to true. Locate the WEB_SERVICE_SDK_AUTHENTICATION_USERNAME and WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD keys and set the values to the username and password of the service account that is a member of the PhoneFactor Admins security group (see the Requirements section above). Be sure to enter the Username and Password in between the quotation marks at the end of the line, (value=””/>). It is recommended to use a qualified username (e.g. domain\username or machine\username)
+6. Locate the pfup_pfwssdk_PfWsSdk setting and change the value from “http://localhost:4898/PfWsSdk.asmx” to the URL of the Web Service SDK that is running on the Azure Multi-Factor Authentication Server (e.g. https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx). Since SSL is used for this connection, you must reference the Web Service SDK by server name and not IP address since the SSL certificate will have been issued for the server name and the URL used must match the name on the certificate. If the server name does not resolve to an IP address from the Internet-facing server, add an entry to the hosts file on that server to map the name of the Azure Multi-Factor Authentication Server to its IP address. Save the web.config file after changes have been made.
+7. If the website that User Portal was installed under (e.g. Default Web Site) has not already been binded with a publicly-signed certificate, install the certificate on the server if not already installed, open IIS Manager and bind the certificate to the website.
+8. Open a web browser from any computer and navigate to the URL where User Portal was installed (e.g. https://www.publicwebsite.com/MultiFactorAuth ). Ensure that no certificate warnings or errors are displayed.
 
 
 
-## Azure Multi-Factor Authentication Server のユーザー ポータル設定の構成
-ポータルがインストールされたため、Azure Multi-Factor Authentication Server を構成してポータルと連携させる必要があります。
+## <a name="configure-the-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Configure the user portal settings in the Azure Multi-Factor Authentication Server
+Now that the portal is installed, you need to configure the Azure Multi-Factor Authentication Server to work with the portal.
 
-Azure Multi-Factor Authentication Server にはユーザー ポータル用のさまざまなオプションがあります。次の表に、これらのオプションとそれぞれの使用目的を示します。
+Azure Multi-Factor Authentication server provides several options for the user portal.  The following table provides a list of these options and an explaination of what they are used for.
 
-ユーザー ポータル設定|Description|
+User Portal Settings|Description|
 :------------- | :------------- |
-ユーザー ポータル URL| ポータルがホストされる場所の URL を入力できます。
-プライマリ認証| ポータルにサインインするときに使用する認証の種類を指定できます。Windows 認証、Radius 認証または LDAP 認証のいずれかです。
-ユーザーにログインを許可する|ユーザーが、ユーザー ポータルのサインイン ページにユーザー名とパスワードを入力できるようにします。これが選択されていない場合、ボックスは淡色表示されます。
-ユーザー登録を許可する|ユーザーを電話番号などの追加情報の入力を求める設定画面に移動して、多要素認証に登録できるようにします。予備の電話番号には、補助的な電話番号を指定できます。サード パーティの OATH トークンには、サード パーティ の OATH トークンを指定できます。
-ワンタイム バイパスの開始をユーザーに許可する| ワンタイム バイパスの開始をユーザーに許可できます。ユーザーがこの設定を有効にした場合は、ユーザーの次回のサインインで有効になります。プロンプトのバイパス秒を指定するボックスが表示され、ユーザーは既定値である 300 秒を変更できます。変更しなかった場合、ワンタイム バイパスは 300 秒間のみ有効です。
-ユーザーに認証方法の選択を許可する| ユーザーが主要な連絡方法を指定できるようにします。電話、テキスト メッセージ、モバイル アプリ、または OATH トークンを指定できます。
-ユーザーに言語の選択を許可する| 電話、テキスト メッセージ、モバイル アプリ、または OATH トークンで使用される言語をユーザーが変更できるようにします。
-ユーザーにモバイル アプリのアクティブ化を許可する| サーバーで使用されるモバイル アプリのアクティブ化プロセスを完了するためのアクティブ化コードをユーザーが生成できるようにします。アクティブ化できるデバイスの数を設定することもできます (1 ～ 10 の範囲)。
-代替認証にセキュリティの質問を使用する|多要素認証が失敗した場合に、セキュリティの質問を使用できます。正解する必要があるセキュリティの質問の数を指定できます。
-ユーザーにサード パーティ製の OATH トークンの関連付けを許可する| ユーザーがサード パーティの OATH トークンを指定できるようにします。
-代替認証に OATH トークンを使用する|多要素認証が失敗した場合に、OATH トークンを使用できます。セッションのタイムアウトを分単位で指定することもできます。
-ログの有効化|ユーザー ポータルでログを有効にします。ログ ファイルは C:\\Program Files\\Multi-Factor Authentication Server\\Logs に配置されます。
+User Portal URL| Allows you to enter the URL of where the portal is being hosted.
+Primary authentication| Allows you to specify the type of authentication to use when signing in to the portal.  Either Windows, Radius, or LDAP authentication.
+Allow users to log in|Allows users to enter a username and password on the sign in page for the User portal.  If this is not selected, the boxes will be greyed out.
+Allow user enrollment|Allows user to enroll in multi-factor authentication by taking them to a setup screen that prompts them for additional information such as telephone number.  Prompt for backup phone allows users to specify a secondary phone number.  Prompt for third-party OATH token allows users to specify a 3rd party OATH token.
+Allow users to initiate One-Time Bypass| This allows users to initiate a one-time bypass.  If a user sets this up it will take affect the next time the user signs in.  Prompt for bypass seconds provides the user with a box so they can change the default of 300 seconds.  Otherwise, the one-time bypass is only good for 300 seconds.
+Allow users to select method| Allows users to specify their primary contact method.  This can be phone call, text message, mobile app, or OATH token.
+Allow users to select language|  Allows the user to change the language that is used for the phone call, text message, mobile app, or OATH token.
+Allow users to activate mobile app| Allows the users to generate an activation code to complete the mobile app activation process that is used with the server.  You can also set the number of devices they can activate this on.  Between 1 and 10.
+Use security questions for fallback|Allows you to use security questions in case multi-factor authentication fails.  You can specify the number of security questions that must be successfully answered.
+Allow users to associate third-party OATH token| Allows users to specify a third-party OATH token.
+Use OATH token for fallback|Allows for the use of an OATH token in the event that multi-factor authentication is not successful.  You can also specify the session timeout in minutes.
+Enable logging|Enables logging on the user portal.  The log files are located at: C:\Program Files\Multi-Factor Authentication Server\Logs.
 
-これらの設定の大部分は、有効になったユーザーがユーザー ポータルにサインインするときに表示されます。
+The majority of these settings are visible to the user once they are enabled and the user signs into the user portal.
 
-![ユーザー ポータル設定](./media/multi-factor-authentication-get-started-portal/portalsettings.png)
-
-
-
-### Azure Multi-Factor Authentication Server のユーザー ポータル設定を構成するには
+![User portal settings](./media/multi-factor-authentication-get-started-portal/portalsettings.png)
 
 
 
+### <a name="to-configure-the-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>To configure the user portal settings in the Azure Multi-Factor Authentication Server
 
-1. Azure Multi-Factor Authentication Server で [ユーザー ポータル] アイコンをクリックします。[設定] タブで、ユーザー ポータルへの URL を [ユーザー ポータルの URL] テキスト ボックスに入力します。電子メール機能が有効な場合、この URL は、Azure Multi-Factor Authentication Server にインポートされるときにユーザーに送信される電子メールに挿入されます。
-2. ユーザー ポータルで使用する設定を選択します。たとえば、ユーザーによる認証方法の制御を許可する場合は、ユーザーが選択できる方法と [ユーザーに認証方法の選択を許可する] にチェックマークを付けます。
-3. 表示される設定について理解するには、ヘルプの右上隅の [ヘルプ] リンクをクリックします。
+
+
+
+1. In the Azure Multi-Factor Authentication Server, click on the User Portal icon. On the Settings tab, enter the URL to the User Portal in the User Portal URL textbox. This URL will be inserted into emails that are sent to users when they are imported into the Azure Multi-Factor Authentication Server if the email functionality has been enabled.
+2. Choose the settings that you want to use in the User Portal. For example, if users are allowed to control their authentication methods, ensure that Allow users to select method is checked along with the methods they can choose from.
+3. Click the Help link in the top right corner for help understanding any of the settings displayed.
 
 <center>![Setup](./media/multi-factor-authentication-get-started-portal/config.png)</center>
 
 
-## [管理者] タブ
-このタブでは、管理者特権を持つユーザーを追加できます。管理者を追加するときに、管理者が受け取るアクセス許可を微調整できます。これにより、管理者に対して必要な権限のみを確実に付与できます。[追加] ボタンをクリックした後、ユーザーとアクセス許可を選択し、[追加] をクリックします。
+## <a name="administrators-tab"></a>Administrators tab
+This tab simply allows you to add users who will have administrative privileges.  When adding an administrator, you can fine tune the permissions that they receive.  This way, you can be sure to only grant the needed permissions to the administrator.  Simply click the Add button and then select and user and their permissions and then click Add.
 
-![ユーザー ポータル管理者](./media/multi-factor-authentication-get-started-portal/admin.png)
-
-
-## セキュリティの質問
-このタブでは、[代替認証にセキュリティの質問を使用する] オプションが選択されている場合にユーザーが回答する必要があるセキュリティの質問を指定できます。Azure Multi-Factor Authenticaton Server には、既定の質問が用意されています。質問の順序を変更したり、独自の質問を追加したりできます。独自の質問を追加する場合は、質問を表示するために使用する言語も指定できます。
-
-![ユーザー ポータルのセキュリティの質問](./media/multi-factor-authentication-get-started-portal/secquestion.png)
+![User portal administrators](./media/multi-factor-authentication-get-started-portal/admin.png)
 
 
-## 渡されたセッション
+## <a name="security-questions"></a>Security Questions
+This tab allows you to specify the security questions that users will need to provide answers to if the Use security questions for fallback option is selected.  Azure Multi-Factor Authenticaton Server comes with default questions that you can use.  You can also change the order or add your own questions.  When adding your own questions, you can specify the language you would like those question to appear in as well.
 
-## SAML
-SAML を使用する ID プロバイダーからの要求を受け入れるようにユーザー ポータルを設定できます。タイムアウト セッション、検証証明書、およびログアウト リダイレクト URL を指定できます。
+![User portal security questions](./media/multi-factor-authentication-get-started-portal/secquestion.png)
+
+
+## <a name="passed-sessions"></a>Passed Sessions
+
+## <a name="saml"></a>SAML
+Allows you to setup the user portal to accept claims from an identity provider using SAML.  You can specify the timeout session, specify the verification certificate and the Log out redirect URL.
 
 ![SAML](./media/multi-factor-authentication-get-started-portal/saml.png)
 
-## 信頼される IP
-このタブでは、1 つの IP アドレスまたは IP アドレス範囲を指定し、指定したいずれかの IP アドレスからユーザーがサインインした場合に多要素認証がバイパスされるように設定できます。
+## <a name="trusted-ips"></a>Trusted IPs
+This tab allows you to specify either single IP addresses or IP address ranges that can be added so that if a user is signing in from one of these IP addresses, then multi-factor authentication is bypassed.
 
-![ユーザー ポータルの信頼できる IP](./media/multi-factor-authentication-get-started-portal/trusted.png)
+![User portal trusted IPs](./media/multi-factor-authentication-get-started-portal/trusted.png)
 
-## セルフサービス ユーザー登録
-ユーザーにサインインと登録を許可するには、[ユーザーにログインを許可する] オプションと [ユーザー登録を許可する] オプションを選択する必要があります。選択した設定は、ユーザーのサインイン エクスペリエンスに影響することに注意してください。
+## <a name="self-service-user-enrollment"></a>Self-Service User Enrollment
+If you want your users to sign in and enroll you must select the Allow users to login in and Allow user enrollment options. Remember that the settings you select will affect the user sign-in experience.
 
-たとえば、ユーザーがユーザー ポータルにログインし、[ログイン] ボタンをクリックすると、[Multi-Factor Authentication ユーザー設定] ページが表示されます。Azure Multi-factor Authentication の構成方法によっては、ユーザーは自分の認証方法を選択できる場合があります。
+For example, when a user logs in to the User Portal and clicks the Log In button, they are then taken to the Azure Multi-Factor Authentication User Setup page.  Depending on how you have configured Azure Multi-Factor Authentication, the user may be able to select their authentication method.  
 
-ユーザーが認証方法として音声通話を選択した場合、またはその方法を使用するように事前に構成されている場合は、ページに代表電話番号と内線番号 (該当する場合) を入力します。予備の電話番号を入力できる場合もあります。
+If they select the Voice Call authentication method or have been pre-configured to use that method, the page will prompt the user to enter their primary phone number and extension if applicable.  They may also be allowed to enter a backup phone number.  
 
-![ユーザー ポータルの信頼できる IP](./media/multi-factor-authentication-get-started-portal/backupphone.png)
+![User portal trusted IPs](./media/multi-factor-authentication-get-started-portal/backupphone.png)
 
-ユーザーの認証時に PIN を使用する必要がある場合は、PIN も入力します。電話番号と PIN (該当する場合) を入力した後、ユーザーは、[今すぐ電話で認証] ボタンをクリックします。Azure Multi-factor Authentication が、ユーザーの代表電話番号に対して電話による認証を実行します。ユーザーは、自己登録プロセスの次の手順に進むには、電話に応答し、PINを入力する (該当する場合) 必要があります。
+If the user is required to use a PIN when they authenticate, the page will also prompt them to enter a PIN.  After entering their phone number(s) and PIN (if applicable), the user clicks the Call Me Now to Authenticate button.  Azure Multi-Factor Authentication will perform a phone call authentication to the user’s primary phone number.  The user must answer the phone call and enter their PIN (if applicable) and press # to move on to the next step of the self-enrollment process.   
 
-ユーザーが認証方法として SMS テキストを選択した場合、またはその方法を使用するように事前に構成されている場合は、ページに自分の携帯電話の番号を入力します。ユーザーの認証時に PIN を使用する必要がある場合は、PIN も入力します。電話番号と PIN (該当する場合) を入力した後、ユーザーは、[今すぐテキスト メッセージで認証] ボタンをクリックします。Azure Multi-factor Authentication が、ユーザーの携帯電話に対して SMS 認証を実行します。ユーザーは、自己登録プロセスの次の手順に進むには、ワンタイム パスコード (OTP) を含む SMS を受け取り、その OTP と PIN (該当する場合) を使用してメッセージに応答する必要があります。
+If the user selects the SMS Text authentication method or has been pre-configured to use that method, the page will prompt the user for their mobile phone number.  If the user is required to use a PIN when they authenticate, the page will also prompt them to enter a PIN.  After entering their phone number and PIN (if applicable), the user clicks the Text Me Now to Authenticate button.  Azure Multi-Factor Authentication will perform an SMS authentication to the user’s mobile phone.  The user must receive the SMS which contains a one- time-passcode (OTP) and reply to the message with that OTP plus their PIN if applicable) to move on to the next step of the self-enrollment process.
 
-![ユーザー ポータルの SMS](./media/multi-factor-authentication-get-started-portal/text.png)
+![User portal SMS](./media/multi-factor-authentication-get-started-portal/text.png)   
 
-ユーザーが認証方法としてモバイル アプリを選択した場合、またはその方法を使用するように事前に構成されている場合は、ユーザーのデバイスに Azure Multi-Factor Authentication アプリのインストールとアクティブ化コードの生成を求めるメッセージがページに表示されます。ユーザーは、Multi-Factor Authentication アプリをインストールした後、[アクティブ化コードの生成] ボタンをクリックします。
+If the user selects the Mobile app authentication method or has been pre-configured to use that method, the page will prompt the user to install the Azure Multi-Factor Authentication app on their device and generate an activation code.  After installing the Azure Multi-Factor Authentication app, the user clicks the Generate Activation Code button.    
 
->[AZURE.NOTE]Azure Multi-Factor Authentication アプリを使用するためには、ユーザーは各自のデバイスのプッシュ通知を有効にする必要があります。
+>[AZURE.NOTE]In order to use the Azure Multi-Factor Authentication app, the user must enable push notifications for their device.
 
-アクティブ化コード、URL、およびバーコード画像がページに表示されます。ユーザーの認証時に PIN を使用する必要がある場合は、PIN も入力します。ユーザーは、Azure Multi-Factor Authentication アプリにアクティブ化コードと URL を入力するか、バーコード スキャナーを使用してバーコード画像をスキャンした後、[アクティブにする] ボタンをクリックします。
+The page then displays an activation code and a URL along with a barcode picture.  If the user is required to use a PIN when they authenticate, the page will also prompt them to enter a PIN.  The user enters the activation code and URL into the Azure Multi-Factor Authentication app or uses the barcode scanner to scan the barcode picture and clicks the Activate button.    
 
-アクティブ化が完了したら、[今すぐ認証] ボタンをクリックします。Azure Multi-factor Authentication がユーザーのモバイル アプリに対して認証を実行します。ユーザーは、自己登録プロセスの次の手順に進むには、モバイル アプリに PINを入力し (該当する場合)、[認証] ボタンを押す必要があります。
+After the activation is complete, the user clicks the Authenticate Me Now button.  Azure Multi-Factor Authentication will perform an authentication to the user’s mobile app.  The user must enter their PIN (if applicable) and press the Authenticate button in their mobile app to move on to the next step of the self-enrollment process.  
 
 
-管理者がセキュリティの質問と回答を収集するように Azure Multi-factor Authentication Server を構成している場合は [セキュリティの質問] ページが表示されます。ユーザーは、4 つのセキュリティの質問を選択し、選択した質問への回答を入力する必要があります。
+If the administrators have configured the Azure Multi-Factor Authentication Server to collect security questions and answers, the user is then taken to the Security Questions page.  The user must select four security questions and provide answers to their selected questions.    
 
-![ユーザー ポータルのセキュリティの質問](./media/multi-factor-authentication-get-started-portal/secq.png)
+![User portal security questions](./media/multi-factor-authentication-get-started-portal/secq.png)  
 
-これで、ユーザーの自己登録が完了し、ユーザーはユーザー ポータルにログインします。管理者によって許可されている場合、ユーザーは、今後いつでもユーザー ポータルに戻って、電話番号、PIN、認証方法、およびセキュリティの質問を変更できます。
+The user self-enrollment is now complete and the user is logged in to the User Portal.  Users can log back in to the User Portal at any time in the future to change their phone numbers, PINs, authentication methods and security questions if allowed by their administrators.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

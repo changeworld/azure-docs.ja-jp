@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="Azure RemoteApp - ネットワーク帯域幅とエクスペリエンスの質はどのような関係にあるのか | Microsoft Azure"
-	description="Azure RemoteApp でネットワーク帯域幅がユーザー エクスペリエンスの質に与える影響について説明します。"
-	services="remoteapp"
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" />
+    pageTitle="Azure RemoteApp - how do network bandwidth and quality of experience work together? | Microsoft Azure"
+    description="Learn how network bandwidth in Azure RemoteApp can impact your user's quality of experience."
+    services="remoteapp"
+    documentationCenter="" 
+    authors="lizap" 
+    manager="mbaldwin" />
 
 <tags 
     ms.service="remoteapp" 
@@ -15,27 +15,31 @@
     ms.date="08/15/2016" 
     ms.author="elizapo" />
 
-# Azure RemoteApp - ネットワーク帯域幅とエクスペリエンスの質はどのような関係にあるのか
+
+# <a name="azure-remoteapp---how-do-network-bandwidth-and-quality-of-experience-work-together?"></a>Azure RemoteApp - how do network bandwidth and quality of experience work together?
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Azure RemoteApp に必要な[全体的なネットワーク帯域幅](remoteapp-bandwidth.md)を調べる場合は、以下の点を念頭に置いてください。これらはすべて動的なシステムの一部であり、全体的なユーザー エクスペリエンスに影響します。
+When you are looking at the [overall network bandwidth](remoteapp-bandwidth.md) required for Azure RemoteApp, keep in mind the following factors - these are all part of a dynamic system that impacts the overall user experience. 
 
-- **利用可能なネットワーク帯域幅と現在のネットワークの状態** - ある時点における同一ネットワーク上の一連のパラメーター (損失、遅延、ジッター) はアプリケーションのストリーミングに影響を与える可能性がありますが、これは全体的なユーザー エクスペリエンスの低下を意味します。ネットワークで利用可能な帯域幅は、輻輳の状態、ランダムな損失、遅延と相関関係にあります。これは、それらのパラメーターが輻輳制御メカニズムに影響を与えた結果、競合を避けて伝送速度が制御されるためです。たとえば、帯域幅が 1000 MB のネットワーク上でも、損失の多いネットワークや遅延の大きいネットワークではユーザー エクスペリエンスの質が低下します。損失と遅延は同じネットワーク上のユーザー数とそれらのユーザーが行う操作に応じて変わります (ビデオの視聴、サイズの大きいファイルのダウンロードやアップロード、印刷など)。
-- **使用シナリオ** - ユーザー エクスペリエンスは、同じネットワーク上でユーザーが個人またはグループでどのような操作を行うかに応じて変わります。たとえば、1 枚のスライドを表示する場合は 1 つのフレームの更新だけで済みますが、テキスト ドキュメントをスクロールしながら流し読みする場合は、更新が必要な 1 秒あたりのフレーム数が増加します。このシナリオではサーバーとのやり取りが行われた結果、より多くのネットワーク帯域幅が消費されます。また、極端な例としては、複数のユーザーによる (4K 解像度などの) 高解像度ビデオの視聴、HD 電話会議の開催、3D ビデオ ゲームの再生、CAD システムでの作業などがあります。高帯域幅のネットワークでも、これらの要因が実質的な操作性の低下につながる場合があります。
-- **画面の解像度や画面の数** - 大きい画面で全画面を更新する場合は、小さい画面よりも必要なネットワーク帯域幅が増加します。基になるテクノロジの優れた性能により、画面内の更新された領域のみがエンコードおよび転送されますが、以前は画面全体を更新する必要がありました。高解像度の画面 (4K 解像度など) の場合、更新に必要なネットワーク帯域幅は低解像度の画面 (1024x768px) よりも増加します。リダイレクトに複数の画面を使用する場合にも同じことが言えます。画面の数に応じて帯域幅を増やす必要があります。
-- **クリップボードとデバイス リダイレクト** - これはあまり明白な問題ではありませんが、多くの場合、ユーザーがクリップボードに大きなデータを格納すると、リモート デスクトップ クライアントからサーバーへのデータ転送に一定の時間がかかります。ダウンストリームのエクスペリエンスは、クリップボードの内容のアップストリーム送信により影響を受ける場合があります。デバイス リダイレクトでも同様です。たとえば、スキャナーや Web カメラが生成された大量のデータをアップストリームのサーバーに送信する必要がある場合、プリンターで大きいドキュメントを受信する必要がある場合、またはクラウドで実行中のアプリがローカル ストレージに大きいファイルをコピーする必要がある場合は、デバイス リダイレクトに必要なデータによってネットワーク帯域幅のニーズが増加するため、ユーザーがフレームの欠落や一時的に "固まった" ビデオに気づく場合があります。
+- **Available network bandwidth and current network conditions** - A set of parameters (loss, latency, jitter) on the same network at a given time can impact the application streaming experience, meaning a lowered overall user experience. The bandwidth available in your network is a function of congestion, random loss, latency because all these parameters affect the congestion control mechanism, which in turn controls the transmission speed to avoid collisions.  For example, a lossy network or network with high latency will make the user experience bad even on a network with 1000 MB bandwidth. The loss and latency vary based on the number of users that are on the same network and what those users are doing (for example, watching videos, downloading or uploading large files, printing).
+- **Usage scenario** - The experience depends on what the users are doing as individuals and as a group on the same network. For example, reading one slide requires only a single frame to be updated; if the user skims and scrolls over the content of a text document, they need a higher number of frames to be updated per second. The communication back and forth to the server in this scenario will eventually consume more network bandwidth. Also consider an extreme example: multiple users are watching high-definition videos (like 4K resolution), holding HD conference calls, playing 3D video games, or working on CAD systems. All of these can make even a really high bandwidth network practically unusable.
+- **Screen resolution and the number of screens** - More network bandwidth is required to full update bigger screens than smaller screens. The underlying technology does a pretty good job of encoding and transmitting only the regions of the screens that have been updated, but once in a while, the whole screen needs to be updated. When the user has a higher resolution screen (for example 4K resolution), that update requires more network bandwidth than a screen with lower resolution (like 1024x768px). This same logic applies if you use more than one screen for redirection. Bandwidth needs to increase with the number of screens.
+- **Clipboard and device redirection** - This is a not very obvious issue, but in many cases if a user stores a large chunk of data to the clipboard, it takes a bit of time for that information to transfer from the Remote Desktop client to the server. The downstream experience can be impacted by the experience of sending the clipboard content upstream. The same applies for device redirection - if a scanner or web cam produces a lot of data that needs to be sent upstream to the server, or a printer needs to receive a large document, or local storage needs to be available to an app running in the cloud to copy a large file, users might notice dropped frames or temporarily "frozen" video because the data needed for the device redirection is increasing the network bandwidth needs. 
 
-ネットワーク帯域幅のニーズを評価する場合は、必ずシステムの一部である上記の要素を考慮してください。
+When you evaluate your network bandwidth needs, make sure to consider all of these factors working as a system.
 
-[ネットワーク帯域幅に関するメインの記事](remoteapp-bandwidth.md)に戻るか、[ネットワーク帯域幅](remoteapp-bandwidthtests.md)のテストに進んでください。
+Now, go back to the [main network bandwidth article](remoteapp-bandwidth.md), or move on to testing your [network bandwidth](remoteapp-bandwidthtests.md).
 
-## 詳細情報
-- [Azure RemoteApp で使用されるネットワーク帯域幅を推定する](remoteapp-bandwidth.md)
+## <a name="learn-more"></a>Learn more
+- [Estimate Azure RemoteApp network bandwidth usage](remoteapp-bandwidth.md)
 
-- [Azure RemoteApp - testing your network bandwidth usage with some common scenarios (Azure RemoteApp - 一般的なシナリオでのネットワークの使用帯域幅をテストする)](remoteapp-bandwidthtests.md)
+- [Azure RemoteApp - testing your network bandwidth usage with some common scenarios](remoteapp-bandwidthtests.md)
 
-- [Azure RemoteApp network bandwidth - general guidelines (if you can't test your own) (Azure RemoteApp のネットワーク帯域幅に関する一般的なガイドライン (自分でテストできない場合))](remoteapp-bandwidthguidelines.md)
+- [Azure RemoteApp network bandwidth - general guidelines (if you can't test your own)](remoteapp-bandwidthguidelines.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

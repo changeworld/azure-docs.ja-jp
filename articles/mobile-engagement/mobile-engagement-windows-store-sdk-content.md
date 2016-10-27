@@ -1,50 +1,55 @@
 <properties 
-	pageTitle="Windows ユニバーサル アプリ SDK コンテンツ" 
-	description="Azure Mobile Engagement 向け Windows ユニバーサル アプリ SDK の内容詳細" 					
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
-	editor="" />
+    pageTitle="Windows Universal Apps SDK content" 
+    description="Learn about the contents of the Windows Universal Apps SDK for Azure Mobile Engagement"                    
+    services="mobile-engagement" 
+    documentationCenter="mobile" 
+    authors="piyushjo" 
+    manager="dwrede" 
+    editor="" />
 
 <tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="08/19/2016" 
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement" 
+    ms.workload="mobile" 
+    ms.tgt_pltfrm="mobile-windows-store" 
+    ms.devlang="dotnet" 
+    ms.topic="article" 
+    ms.date="08/19/2016" 
+    ms.author="piyushjo" />
 
-#Windows ユニバーサル アプリ SDK コンテンツ
 
-このドキュメントでは、アプリケーションで SDK により展開されるコンテンツについて説明します。
+#<a name="windows-universal-apps-sdk-content"></a>Windows Universal Apps SDK content
 
-##`/Resources` フォルダー
+This document lists and describes the content deployed by the SDK in your application.
 
-このフォルダーには、Mobile Engagement が必要とするすべてのリソースが含まれています。アプリに適合するように、これらをカスタマイズすることもできます。
+##<a name="the-`/resources`-folder"></a>The `/Resources` folder
 
-- `EngagementConfiguration.xml`: Mobile Engagement の構成ファイルであり、エンゲージメントの設定をカスタマイズできます (Mobile Engagement 接続文字列、クラッシュ レポートなど)。
+This folder contains all the resources that Mobile Engagement needs. You can also customize them to fit your app.
 
-### /html フォルダー
+- `EngagementConfiguration.xml` : The Mobile Engagement's configuration file, this is where you can customize Mobile Engagement settings (Mobile Engagement connection string, report crash...).
 
-- `EngagementNotification.html`: アプリ内バナー用の `Notification` Web ビュー html デザイン。
+### <a name="/html-folder"></a>/html folder
 
-- `EngagementAnnouncement.html`: アプリ内スポット ビュー用の `Announcement` Web ビュー html デザイン。
+- `EngagementNotification.html` : The `Notification` web view html design for in-app banners.
 
-### /images フォルダー
+- `EngagementAnnouncement.html` : The `Announcement` web view html design for in-app interstitial views.
 
-- `EngagementIconNotification.png`: 通知の左側に表示されるブランド アイコン。これは自分のブランド アイコンに換えます。
+### <a name="/images-folder"></a>/images folder
 
-- `EngagementIconOk.png` : Reach コンテンツ ページの [`Ok`] アイコン (アクション ボタンまたは検証ボタンとして使用)。
+- `EngagementIconNotification.png` : The brand icon displayed at the left of a notification, replace this one by your brand icon.
 
-- `EngagementIconNOK.png` : Reach コンテンツ ページの検証ボタンが無効の場合に使用する [`NOK`] アイコン。
+- `EngagementIconOk.png` : The `Ok` icon of the reach content pages for the action or validation button.
+
+- `EngagementIconNOK.png` : The `NOK` icon used when the validation button of the reach content pages is disabled.
  
-- `EngagementIconClose.png` : Reach 通知やコンテンツの [`Close`] アイコン (閉じるボタンとして使用)。
+- `EngagementIconClose.png` : The `Close` icon of the reach notifications and contents for the dismiss button.
 
-### /overlay フォルダー
+### <a name="/overlay-folder"></a>/overlay folder
 
-- `EngagementPageOverlay.cs`: Engagement Reach アプリ内 UI を子に追加するためのオーバーレイ ページ。
+- `EngagementPageOverlay.cs` : The overlay page responsible for adding the Engagement reach in-app UI to its child.
   
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

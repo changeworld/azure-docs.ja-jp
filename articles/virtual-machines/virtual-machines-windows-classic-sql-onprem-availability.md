@@ -1,106 +1,111 @@
 <properties
-	pageTitle="オンプレミスの AlwaysOn 可用性グループの Azure への拡張 | Microsoft Azure"
-	description="このチュートリアルでは、クラシック デプロイメント モデルを使用して作成されたリソースを使用し、SQL Server Management Studio (SSMS) のレプリカの追加ウィザードを使用して、Azure に AlwaysOn 可用性グループ レプリカを追加する方法について説明します。"
-	services="virtual-machines-windows"
-	documentationCenter="na"
-	authors="MikeRayMSFT"
-	manager="jhubbard"
-	editor=""
-	tags="azure-service-management"/>
+    pageTitle="Extend on-premises Always On Availability Groups to Azure | Microsoft Azure"
+    description="This tutorial uses resources created with the classic deployment model, and describes how to use the Add Replica wizard in SQL Server Management Studio (SSMS) to add an Always On Availability Group replica in Azure."
+    services="virtual-machines-windows"
+    documentationCenter="na"
+    authors="MikeRayMSFT"
+    manager="jhubbard"
+    editor=""
+    tags="azure-service-management"/>
 
 <tags
-	ms.service="virtual-machines-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-windows-sql-server"
-	ms.workload="infrastructure-services"
-	ms.date="07/12/2016"
-	ms.author="MikeRayMSFT" />
+    ms.service="virtual-machines-windows"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="vm-windows-sql-server"
+    ms.workload="infrastructure-services"
+    ms.date="07/12/2016"
+    ms.author="MikeRayMSFT" />
 
-# オンプレミスの AlwaysOn 可用性グループの Azure への拡張
 
-AlwaysOn 可用性グループは、セカンダリ レプリカを追加することで、データベースのグループの高可用性を実現します。これらのレプリカを使用すると、障害発生時にデータベースをフェールオーバーできます。また、読み取りワークロードやバックアップ タスクをオフロードすることもできます。
+# <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Extend on-premises Always On Availability Groups to Azure
 
-SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニングし、その VM をレプリカとしてオンプレミスの可用性グループに追加することで、オンプレミスの可用性グループを Microsoft Azure に拡張できます。
+Always On Availability Groups provide high availability for groups of database by adding secondary replicas. These replicas allow failing over databases in case of a failure. In addition they can be used to offload read workloads or backup tasks.
 
-このチュートリアルでは、以下があることを前提としています。
+You can extend on-premises Availability Groups to Microsoft Azure by provisioning one or more Azure VMs with SQL Server and then adding them as replicas to your on-premises Availability Groups.
 
-- 有効な Azure サブスクリプション[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+This tutorial assumes you have the following:
 
-- 既存のオンプレミスの AlwaysOn 可用性グループ。可用性グループの詳細については、「[AlwaysOn 可用性グループ (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)」をご覧ください。
+- An active Azure subscription. You can [sign up for a free trial](https://azure.microsoft.com/pricing/free-trial/).
 
-- オンプレミスのネットワークと、Azure Virtual Network 間の接続。この仮想ネットワークを作成する方法の詳細については、「[Azure クラシック ポータルでのサイト間 VPN の構成](../vpn-gateway/vpn-gateway-site-to-site-create.md)」を参照してください。
+- An existing Always On Availability Group on-premises. For more information on Availability Groups, see [Always On Availability Groups](https://msdn.microsoft.com/library/hh510230.aspx).
+
+- Connectivity between the on-premises network and your Azure virtual network. For more information about creating this virtual network, see [Configure a Site-to-Site VPN in the Azure classic portal](../vpn-gateway/vpn-gateway-site-to-site-create.md).
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-## Azure レプリカ ウィザードの追加
+## <a name="add-azure-replica-wizard"></a>Add Azure Replica Wizard
 
-このセクションでは、**Azure レプリカの追加ウィザード**を使用して、AlwaysOn 可用性グループ ソリューションを拡張し、Azure レプリカを含める方法について説明します。
+This section shows you how to use the **Add Azure Replica Wizard** to extend your Always On Availability Group solution to include Azure replicas.
 
-1. SQL Server Management Studio で、**[AlwaysOn 高可用性]**、**[可用性グループ]**、**[<可用性グループの名前>]** の順に展開します。
+1. From within SQL Server Management Studio, expand **Always On High Availability** > **Availability Groups** > **[Name of your Availability Group]**.
 
-1. **[可用性レプリカ]** を右クリックし、**[レプリカの追加]** をクリックします。
+1. Right-click **Availability Replicas**, then click **Add Replica**.
 
-1. 既定では、**可用性グループへのレプリカの追加ウィザード**が表示されます。**[次へ]** をクリックします。このウィザードを以前に起動したときにページの下部にある **[次回からこのページを表示しない]** チェック ボックスをオンにした場合は、この画面は表示されません。
+1. By default, the **Add Replica to Availability Group Wizard** is displayed. Click **Next**.  If you have selected the **Do not show this page again** option at the bottom of the page during a previous launch of this wizard, this screen will not be displayed.
 
-	![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
+    ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
 
-1. 既存のすべてのセカンダリ レプリカに接続する必要があります。各レプリカの横にある **[接続]** をクリックするか、画面の下部にある **[すべての接続]** をクリックできます。認証後、**[次へ]** をクリックして、次の画面に進みます。
+1. You will be required to connect to all existing secondary replicas. You can click on **Connect…** beside each replica or you can click **Connect All…** at the bottom of the screen. After authentication, click **Next** to advance to the next screen.
 
-1. **[レプリカの指定]** ページの上部には、いくつかのタブ (**[レプリカ]**、**[エンドポイント]**、**[バックアップの設定]**、および **[リスナー]**) が表示されます。**[レプリカ]** タブの **[Azure レプリカの追加]** をクリックして、Azure レプリカの追加ウィザードを起動します。
+1. On the **Specify Replicas** page, multiple tabs are listed across the top: **Replicas**, **Endpoints**, **Backup Preferences**, and **Listener**. From the **Replicas** tab, click **Add Azure Replica…** to launch the Add Azure Replica Wizard.
 
-	![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
+    ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
 
-1. 以前に Azure 管理証明書をインストールしている場合は、ローカルの Windows 証明書ストアから既存の Azure 管理証明書を選択します。以前に Azure サブスクリプションを利用したことがある場合は、Azure サブスクリプションの ID を選択するか入力します。[ダウンロード] をクリックすると、Azure 管理証明書をダウンロードしてインストールし、Azure アカウントを使用しているサブスクリプションの一覧をダウンロードすることができます。
+1. Select an existing Azure Management Certificate from the local Windows certificate store if you have installed one before. Select or enter the id of an Azure subscription if you have used one before. You can click Download to download and install an Azure Management Certificate and download the list of subscriptions using an Azure account.
 
-	![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
+    ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
 
-1. ページの各フィールドに、レプリカをホストする Azure 仮想マシン (VM) を作成するために使用する値を入力します。
+1. You will populate each field on the page with values that will be used to create the Azure Virtual Machine (VM) that will host the replica.
 
-	|設定|説明|
+  	|Setting|Description|
 |---|---|
-|**イメージ**|OS と SQL Server の目的の組み合わせを選択します。|
-|**VM サイズ**|ビジネス ニーズに最も適した VM のサイズを選択します。|
-|**VM 名**|新しい VM の一意の名前を指定します。名前は、3 ～ 15 文字で指定する必要があります。文字、数字、およびハイフンのみ使用でき、文字で始まり、文字または数字で終わる必要があります。|
-|**VM ユーザー名**|VM の管理者アカウントになるユーザー名を指定します。|
-|**VM 管理者パスワード**|新しいアカウントのパスワードを指定します。|
-|**パスワードの確認**|確認のためにもう一度新しいアカウントのパスワードを入力します。|
-|**Virtual Network**|新しい VM で使用する Azure Virtual Network を指定します。仮想ネットワークの詳細については、「[Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。|
-|**Virtual Network サブネット**|新しい VM で使用する仮想ネットワーク サブネットを指定します。|
-|**ドメイン**|あらかじめ入力されているドメインの値が正しいことを確認します。|
-|**ドメイン ユーザー名**|ローカル クラスター ノード上のローカルの Administrators グループに属しているアカウントを指定します。|
-|**パスワード**|ドメイン ユーザー名のパスワードを指定します。|
+|**Image**|Select the desired combination of OS and SQL Server|
+|**VM Size**|Select the size of VM that best suits your business needs|
+|**VM Name**|Specify a unique name for the new VM. The name must contain between 3 and 15 characters, can contain only letters, numbers, and hyphens, and must start with a letter and end with either a letter or number.|
+|**VM Username**|Specify a user name that will become the administrator account on the VM|
+|**VM Administrator Password**|Specify a password for the new account|
+|**Confirm Password**|Confirm the password of the new account|
+|**Virtual Network**|Specify the Azure virtual network that the new VM should use. For more information on virtual networks, see [Virtual Network Overview](../virtual-network/virtual-networks-overview.md).|
+|**Virtual Network Subnet**|Specify the virtual network subnet that the new VM should use|
+|**Domain**|Confirm the pre-populated value for the domain is correct|
+|**Domain User Name**|Specify an account that is in the local administrators group on the local cluster nodes|
+|**Password**|Specify the password for the domain user name|
 
-1. **[OK]** をクリックして、デプロイ設定を検証します。
+1. Click **OK** to validate the deployment settings.
 
-1. 次に、法律条項が表示されます。これらの条項を読み、同意する場合は **[OK]** をクリックします。
+1. Legal terms are displayed next. Read and click **OK** if you agree to these terms.
 
-1. **[レプリカの指定]** ページが再び表示されます。**[レプリカ]**、**[エンドポイント]**、および **[バックアップの設定]** の各タブで新しい Azure レプリカの設定を確認します。ビジネス要件に合わせて設定を変更します。これらのタブに表示されるパラメーターの詳細については、「[[レプリカの指定] ページ (新しい可用性グループ ウィザード/レプリカの追加ウィザード)](https://msdn.microsoft.com/library/hh213088.aspx)」を参照してください。Azure レプリカを含む可用性グループのリスナーは [リスナー] タブを使用して作成できないことに注意してください。また、ウィザードを起動する前にリスナーを既に作成している場合は、そのリスナーが Azure ではサポートされないことを示すメッセージが表示されます。リスナーを作成する方法については、「**可用性グループ リスナーの作成**」セクションで説明します。
+1. The **Specify Replicas** page is displayed again. Verify the settings for the new Azure replica on the **Replicas**, **Endpoints**, and **Backup Preferences** tabs. Modify settings to meet your business requirements.  For more information on the parameters contained on these tabs, see [Specify Replicas Page (New Availability Group Wizard/Add Replica Wizard)](https://msdn.microsoft.com/library/hh213088.aspx).Note that listeners cannot be created using the Listener tab for Availability Groups that contain Azure replicas. In addition, if a listener has already been created prior to launching the Wizard, you will receive a message indicating that it is not supported in Azure. We will look at how to create listeners in the **Create an Availability Group Listener** section.
 
-	![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
+    ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742865.png)
 
-1. **[次へ]** をクリックします。
+1. Click **Next**.
 
-1. **[最初のデータの同期を選択]** ページで、使用するデータの同期方法を選択し、**[次へ]** をクリックします。ほとんどのシナリオでは、**[完全データ同期]** を選択します。データ同期方法の詳細については、「[[最初のデータの同期を選択] ページ (AlwaysOn 可用性グループ ウィザード)](https://msdn.microsoft.com/library/hh231021.aspx)」をご覧ください。
+1. Select the data synchronization method you want to use on the **Select Initial Data Synchronization** page and click **Next**. For most scenarios, select **Full Data Synchronization**. For more information on data synchronization methods, see [Select Initial Data Synchronization Page (Always On Availability Group Wizards)](https://msdn.microsoft.com/library/hh231021.aspx).
 
-1. **[検証]** ページで結果を確認します。未解決の問題を修正し、必要に応じて、検証を再実行します。**[次へ]** をクリックします。
+1. Review the results on the **Validation** page. Correct outstanding issues and re-run the validation if necessary. Click **Next**.
 
-	![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
+    ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742866.png)
 
-1. **[概要]** ページで設定を確認し、**[完了]** をクリックします。
+1. Review the settings on the **Summary** page, then click **Finish**.
 
-1. プロビジョニング プロセスが開始されます。ウィザードが正常に完了したら、**[閉じる]** をクリックして、ウィザードを終了します。
+1. The provisioning process begins. When the wizard completes successfully, click **Close** to exit out of the wizard.
 
->[AZURE.NOTE] Azure レプリカの追加ウィザードでは、Users\\User Name\\AppData\\Local\\SQL Server\\AddReplicaWizard にログ ファイルが作成されます。このログ ファイルは、障害が発生した Azure レプリカのデプロイのトラブルシューティングに使用できます。ウィザードで操作の実行に失敗すると、プロビジョニングされた VM が削除されるなど、前のすべての操作がロールバックされます。
+>[AZURE.NOTE] The Add Azure Replica Wizard creates a log file in Users\User Name\AppData\Local\SQL Server\AddReplicaWizard. This log file can be used to troubleshoot failed Azure replica deployments. If the Wizard fails executing any action, all previous operations are rolled back, including deleting the provisioned VM.
 
-## 可用性グループ リスナーの作成
+## <a name="create-an-availability-group-listener"></a>Create an availability group listener
 
-可用性グループを作成したら、レプリカに接続するクライアントのリスナーを作成する必要があります。リスナーは、着信接続をプライマリ レプリカまたは読み取り専用のセカンダリ レプリカに転送します。リスナーの詳細については、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](virtual-machines-windows-classic-ps-sql-int-listener.md)」をご覧ください。
+After the availability group has been created, you should create a listener for clients to connect to the replicas. Listeners direct incoming connections to either the primary or a read-only secondary replica. For more information on listeners, see [Configure an ILB listener for Always On Availability Groups in Azure](virtual-machines-windows-classic-ps-sql-int-listener.md).
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-**Azure レプリカの追加ウィザード**を使用して AlwaysOn 可用性グループを Azure に拡張するだけでなく、一部の SQL Server ワークロードを完全に Azure に移行することもできます。最初に、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
+In addition to using the **Add Azure Replica Wizard** to extend your Always On Availability Group to Azure, you might also move some SQL Server workloads completely to Azure. To get started, see [Provisioning a SQL Server Virtual Machine on Azure](virtual-machines-windows-portal-sql-server-provision.md).
 
-Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+For other topics related to running SQL Server in Azure VMs, see [SQL Server on Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

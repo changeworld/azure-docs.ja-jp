@@ -1,255 +1,260 @@
 <properties
-	pageTitle="Resource Manager デプロイメント モデルで Azure Backup を使用して Windows Server または Windows クライアントを Azure にバックアップする | Microsoft Azure"
-	description="バックアップ コンテナーの作成、資格情報のダウンロード、Backup エージェントのインストール、およびファイルとフォルダーの初回バックアップの完了によって、Windows サーバーまたはクライアントを Azure にバックアップします。"
-	services="backup"
-	documentationCenter=""
-	authors="markgalioto"
-	manager="cfreeman"
-	editor=""
-	keywords="バックアップ コンテナー; Windows サーバーのバックアップ; Windows のバックアップ;"/>
+    pageTitle="Back up a Windows Server or client to Azure with Azure Backup using the Resource Manager deployment model | Microsoft Azure"
+    description="Backup Windows servers or clients to Azure by creating a backup vault, downloading credentials, installing the backup agent, and completing an initial backup of your files and folders."
+    services="backup"
+    documentationCenter=""
+    authors="markgalioto"
+    manager="cfreeman"
+    editor=""
+    keywords="backup vault; back up a Windows server; backup windows;"/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/10/2016"
-	ms.author="jimpark; trinadhk; markgal"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/10/2016"
+    ms.author="jimpark; trinadhk; markgal"/>
 
-# Resource Manager デプロイメント モデルで Windows Server または Windows クライアントを Azure にバックアップする
+
+# <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Back up a Windows Server or client to Azure using the Resource Manager deployment model
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](backup-configure-vault.md)
-- [クラシック ポータル](backup-configure-vault-classic.md)
+- [Azure portal](backup-configure-vault.md)
+- [Classic portal](backup-configure-vault-classic.md)
 
-この記事では、Resource Manager デプロイメント モデルを使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。
+This article explains how to back up your Windows Server (or Windows client) files and folders to Azure with Azure Backup using the Resource Manager deployment model.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/backup-deployment-models.md)]
 
-![バックアップ プロセスの手順](./media/backup-configure-vault/initial-backup-process.png)
+![Backup process steps](./media/backup-configure-vault/initial-backup-process.png)
 
 
-## 開始する前に
-サーバー (またはクライアント) を Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
+## <a name="before-you-start"></a>Before you start
+To back up a server or client to Azure, you need an Azure account. If you don't have one, you can create a [free account](https://azure.microsoft.com/free/) in just a couple of minutes.
 
-## 手順 1: Recovery Services コンテナーを作成する
+## <a name="step-1:-create-a-recovery-services-vault"></a>Step 1: Create a Recovery Services vault
 
-Recovery Services コンテナーは、経時的に作成されたすべてのバックアップと回復ポイントを格納するエンティティです。Recovery Services コンテナーには、保護対象のファイルとフォルダーに適用されるバックアップ ポリシーも含まれます。Recovery Services コンテナーを作成するときは、適切なストレージ冗長オプションも選択することをお勧めします。
+A Recovery Services vault is an entity that stores all the backups and recovery points you create over time. The Recovery Services vault also contains the backup policy applied to the protected files and folders. When you create a Recovery Services vault, you should also select the appropriate storage redundancy option.
 
-### Recovery Services コンテナーを作成するには
+### <a name="to-create-a-recovery-services-vault"></a>To create a Recovery Services vault
 
-1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. If you haven't already done so, sign in to the [Azure Portal](https://portal.azure.com/) using your Azure subscription.
 
-2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** をクリックします。
+2. On the Hub menu, click **Browse** and in the list of resources, type **Recovery Services**. As you begin typing, the list will filter based on your input. Click **Recovery Services vaults**.
 
     ![Create Recovery Services Vault step 1](./media/backup-configure-vault/browse-to-rs-vaults.png) <br/>
 
-    Recovery Services コンテナーの一覧が表示されます。
+    The list of Recovery Services vaults is displayed.
 
-3. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
+3. On the **Recovery Services vaults** menu, click **Add**.
 
     ![Create Recovery Services Vault step 2](./media/backup-configure-vault/rs-vault-menu.png)
 
-    Recovery Services コンテナー ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、および **[場所]** を指定するように求められます。
+    The Recovery Services vault blade opens, prompting you to provide a **Name**, **Subscription**, **Resource group**, and **Location**.
 
     ![Create Recovery Services vault step 5](./media/backup-configure-vault/rs-vault-attributes.png)
 
-4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。名前は Azure サブスクリプションに対して一意である必要があります。2 ～ 50 文字の名前を入力します。名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+4. For **Name**, enter a friendly name to identify the vault. The name needs to be unique for the Azure subscription. Type a name that contains between 2 and 50 characters. It must start with a letter, and can contain only letters, numbers, and hyphens.
 
-5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
+5. Click **Subscription** to see the available list of subscriptions. If you are not sure which subscription to use, use the default (or suggested) subscription. There will be multiple choices only if your organizational account is associated with multiple Azure subscriptions.
 
-6. **[リソース グループ]** をクリックして使用可能なリソース グループを表示するか、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
+6. Click **Resource group** to see the available list of Resource groups, or click **New** to create a new Resource group. For complete information on Resource groups, see [Azure Resource Manager overview](../resource-group-overview.md)
 
-7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。この選択により、バックアップ データの送信先となるリージョンが決まります。自分の場所から近いリージョンを選択することによって、Azure にバックアップする際のネットワーク待機時間を短縮できます。
+7. Click **Location** to select the geographic region for the vault. This choice determines the geographic region where your backup data is sent. By choosing a geographic region that's close to your location, you can reduce network latency when backing up to Azure.
 
-8. **[作成]** をクリックします。Recovery Services コンテナーの作成に時間がかかることがあります。ポータルの右上隅で、状態の通知を監視します。コンテナーが作成されると、ポータルで開かれます。完了した後に、コンテナーが一覧に表示されない場合は、**[最新の情報に更新]** をクリックします。一覧が更新されたら、コンテナーの名前をクリックします。
+8. Click **Create**. It can take a while for the Recovery Services vault to be created. Monitor the status notifications in the upper right-hand area in the portal. Once your vault is created, it should open in the portal. If you don't see your vault listed after it has been completed, click **Refresh**. When the list refreshes, click the name of the vault.
 
-### ストレージの冗長性を確認するには
-初めて Recovery Services コンテナーを作成するときに、ストレージのレプリケーション方法を決定します。
+### <a name="to-determine-storage-redundancy"></a>To determine storage redundancy
+When you first create a Recovery Services vault you determine how storage is replicated.
 
-1. コンテナーのダッシュボードと一緒に自動的に開く **[設定]** ブレードで、**[Backup Infrastructure]** をクリックします。
+1. In the **Settings** blade, which opens automatically with your vault dashboard, click **Backup Infrastructure**.
 
-2. [Backup Infrastructure] ブレードで **[Backup Configuration]** をクリックして、**[Storage replication type]** を表示します。
+2. In the Backup Infrastructure blade, click **Backup Configuration** to view the **Storage replication type**.
 
     ![Create Recovery Services vault step 5](./media/backup-configure-vault/backup-infrastructure.png)
 
-3. コンテナーのストレージ レプリケーション オプションを選択します。
+3. Choose the storage replication option for your vault.
 
     ![List of recovery services vaults](./media/backup-configure-vault/choose-storage-configuration.png)
 
-    既定では、コンテナーには geo 冗長ストレージがあります。プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き geo 冗長ストレージを使用します。プライマリ以外のバックアップ ストレージ エンドポイントとして Azure を使用している場合は、ローカル冗長ストレージを選択します。ローカル冗長ストレージを選択すると、Azure にデータを格納するコストが削減されます。[geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細については、こちらの[概要](../storage/storage-redundancy.md)を参照してください。
+    By default, your vault has geo-redundant storage. If you are using Azure as a primary backup storage endpoint, continue using geo-redundant storage. If you are using Azure as a non-primary backup storage endpoint, then choose locally redundant storage, which will reduce the cost of storing data in Azure. Read more about [geo-redundant](../storage/storage-redundancy.md#geo-redundant-storage) and [locally redundant](../storage/storage-redundancy.md#locally-redundant-storage) storage options in this [overview](../storage/storage-redundancy.md).
 
-    コンテナーのストレージ オプションを選択したら、ファイルとフォルダーをコンテナーに関連付けることができます。
+    After choosing the storage option for your vault, you are ready to associate your files and folders with the vault.
 
-コンテナーを作成したら、Microsoft Azure Recovery Services エージェントをダウンロードしてインストールし、コンテナーの資格情報をダウンロードし、その資格情報を使用してエージェントをコンテナーに登録して、ファイルとフォルダーをバックアップするインフラストラクチャを準備します。
+Now that you've created a vault, you prepare your infrastructure to back up files and folders by downloading and installing the Microsoft Azure Recovery Services agent, downloading vault credentials, and then using those credentials to register the agent with the vault.
 
-## 手順 2: ファイルをダウンロードする
+## <a name="step-2---download-files"></a>Step 2 - Download files
 
->[AZURE.NOTE] 間もなく、Azure ポータルからバックアップを有効にできるようになります。現時点では、オンプレミスの Microsoft Azure Recovery Services エージェントを使用して、ファイルやフォルダーをバックアップします。
+>[AZURE.NOTE] Enabling backup through the Azure portal is coming soon. At this time, you use the Microsoft Azure Recovery Services Agent on-premises to back up your files and folders.
 
-1. Recovery Services コンテナーのダッシュボードで、**[設定]** をクリックします。
+1. Click **Settings** on the Recovery Services vault dashboard.
 
     ![Open backup goal blade](./media/backup-configure-vault/settings-button.png)
 
-2. [設定] ブレードで、**[作業の開始]、[Backup]** の順にクリックします。
+2. Click **Getting Started > Backup** on the Settings blade.
 
     ![Open backup goal blade](./media/backup-configure-vault/getting-started-backup.png)
 
-3. [Backup] ブレードで、**[Backup goal]** をクリックします。
+3. Click **Backup goal** on the Backup blade.
 
     ![Open backup goal blade](./media/backup-configure-vault/backup-goal.png)
 
-4. [Where is your workload running] メニューの **[オンプレミス]** を選択します。
+4. Select **On-premises** from the Where is your workload running? menu.
 
-5. [What do you want to backup] メニューの **[Files and folders]** を選択し、**[OK]** をクリックします。
+5. Select **Files and folders** from the What do you want to backup? menu, and click **OK**.
 
-#### Recovery Services エージェントのダウンロード
+#### <a name="download-the-recovery-services-agent"></a>Download the Recovery Services agent
 
-1. **[Prepare infrastructure]** ブレードで、**[Download Agent for Windows Server or Windows Client]** をクリックします。
+1. Click **Download Agent for Windows Server or Windows Client** in the **Prepare infrastructure** blade.
 
     ![prepare infrastructure](./media/backup-configure-vault/prepare-infrastructure-short.png)
 
-2. ダウンロードのポップアップ ウィンドウで、**[保存]** をクリックします。既定では、**MARSagentinstaller.exe** ファイルがダウンロード フォルダーに保存されます。
+2. Click **Save** in the download pop-up. By default, the **MARSagentinstaller.exe** file is saved to your Downloads folder.
 
-#### コンテナー資格情報のダウンロード
+#### <a name="download-vault-credentials"></a>Download vault credentials
 
-1. [Prepare infrastructure] ブレードで、**[ダウンロード]、[保存]** の順にクリックします。
+1. Click **Download > Save** on the Prepare infrastructure blade.
 
     ![prepare infrastructure](./media/backup-configure-vault/prepare-infrastructure-download.png)
 
-## 手順 3: エージェントをインストールして登録する
+## <a name="step-3--install-and-register-the-agent"></a>Step 3 -Install and register the agent
 
-1. ダウンロード フォルダー (または他の保存場所) で **MARSagentinstaller.exe** を見つけて、ダブルクリックします。
+1. Locate and double click the **MARSagentinstaller.exe** from the Downloads folder (or other saved location).
 
-2. Microsoft Azure Recovery Services エージェント セットアップ ウィザードを実行します。ウィザードでは以下のことを行う必要があります。
+2. Complete the Microsoft Azure Recovery Services Agent Setup Wizard. To complete the wizard, you need to:
 
-    - インストールとキャッシュ フォルダーの場所を選択します。
-    - プロキシ サーバーを使用してインターネットに接続する場合は、プロキシ サーバーの情報を指定します。
-    - 認証済みのプロキシを使用する場合は、ユーザー名とパスワードの詳細を入力します。
-    - ダウンロードしたコンテナーの資格情報を指定します。
-    - 暗号化パスフレーズを安全な場所に保存します。
+    - Choose a location for the installation and cache folder.
+    - Provide your proxy server info if you use a proxy server to connect to the internet.
+    - Provide your user name and password details if you use an authenticated proxy.
+    - Provide the downloaded vault credentials
+    - Save the encryption passphrase in a secure location.
 
-    >[AZURE.NOTE] パスフレーズを紛失または忘れた場合、Microsoft はバックアップ データの回復を支援することはできません。安全な場所にファイルを保存してください。バックアップを復元するために必要です。
+    >[AZURE.NOTE] If you lose or forget the passphrase, Microsoft cannot help recover the backup data. Please save the file in a secure location. It is required to restore a backup.
 
-エージェントがインストールされ、コンピューターがコンテナーに登録されました。バックアップを構成してスケジュールする準備ができました。
+The agent is now installed and your machine is registered to the vault. You're ready to configure and schedule your backup.
 
-### インストールの構成
+### <a name="confirm-the-installation"></a>Confirm the installation
 
-エージェントが適切にインストールおよび登録されていることを確認するには、管理ポータルの **[実稼働サーバー]** セクションでバックアップした項目をチェックします。これを行うには、次の手順を実行します。
+To confirm that the agent was installed and registered correctly, you can check for the items you backed up in the **Production Server** section of the management portal. To do this:
 
-1. Azure サブスクリプションを使用して、[Azure ポータル](https://portal.azure.com/)にサインインします。
+1. Sign in to the [Azure Portal](https://portal.azure.com/) using your Azure subscription.
 
-2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** をクリックします。
+2. On the Hub menu, click **Browse** and in the list of resources, type **Recovery Services**. As you begin typing, the list will filter based on your input. Click **Recovery Services vaults**.
 
     ![Create Recovery Services Vault step 1](./media/backup-configure-vault/browse-to-rs-vaults.png) <br/>
 
-    Recovery Services コンテナーの一覧が表示されます。
+    The list of Recovery Services vaults is displayed.
 
-2. 作成したコンテナーの名前を選択します。
+2. Select the name of the vault you created.
 
-    Recovery Services コンテナーのダッシュボード ブレードが開きます。
+    The Recovery Services vault dashboard blade opens.
 
-    ![Recovery Services コンテナーのダッシュボード](./media/backup-configure-vault/rs-vault-dashboard.png) <br/>
+    ![recovery services vault dashboard](./media/backup-configure-vault/rs-vault-dashboard.png) <br/>
 
-3. ページの上部にある **[設定]** ボタンをクリックします。
+3. Click the **Settings** button at the top of the page.
 
-4. **[バックアップ インフラストラクチャ]、[実稼働サーバー]** の順にクリックします。
+4. Click **Backup Infrastructure > Production Servers**.
 
-    ![実稼働サーバー](./media/backup-configure-vault/production-server-verification.png)
+    ![Production servers](./media/backup-configure-vault/production-server-verification.png)
 
-サーバーが一覧に示されている場合は、エージェントは正しくインストールおよび登録されています。
+If you see your servers in the list, you have confirmation that the agent has been installed and registered correctly.
 
-## 手順 4: 初回バックアップを完了する
+## <a name="step-4:-complete-the-initial-backup"></a>Step 4: Complete the initial backup
 
-初回バックアップには、次の 2 つの主要なタスクが含まれています。
+The initial backup includes two key tasks:
 
-- バックアップのスケジュール
-- 初回のファイルとフォルダーのバックアップ
+- Schedule the backup
+- Back up files and folders for the first time
 
-初回バックアップを実行するには、Microsoft Azure Backup エージェントを使用します。
+To complete the initial backup, you use the Microsoft Azure backup agent.
 
-### バックアップのスケジュールを設定するには
+### <a name="to-schedule-the-backup"></a>To schedule the backup
 
-1. Microsoft Azure Backup エージェントを開きます エージェントは、コンピューターで **Microsoft Azure Backup** を検索すると見つかります。
+1. Open the Microsoft Azure Backup agent. You can find it by searching your machine for **Microsoft Azure Backup**.
 
     ![Launch the Azure Backup agent](./media/backup-configure-vault/snap-in-search.png)
 
-2. Backup エージェントで、**[バックアップのスケジュール]** をクリックします。
+2. In the Backup agent, click **Schedule Backup**.
 
     ![Schedule a Windows Server backup](./media/backup-configure-vault/schedule-first-backup.png)
 
-3. バックアップのスケジュール ウィザードの [作業の開始] ページで、**[次へ]** をクリックします。
+3. On the Getting started page of the Schedule Backup Wizard, click **Next**.
 
-4. [バックアップする項目の選択] 画面で、**[項目の追加]** をクリックします。
+4. On the Select Items to Backup page, click **Add Items**.
 
-5. バックアップするファイルとフォルダーを選択し、**[OK]** をクリックします。
+5. Select the files and folders that you want to back up, and then click **Okay**.
 
-6. **[次へ]** をクリックします。
+6. Click **Next**.
 
-7. **[バックアップ スケジュールの選択]** ページで**バックアップ スケジュール**を指定し、**[次へ]** をクリックします。
+7. On the **Specify Backup Schedule** page, specify the **backup schedule** and click **Next**.
 
-    毎日 (1 日に最大 3 回) または毎週のバックアップをスケジュールすることができます。
+    You can schedule daily (at a maximum rate of three times per day) or weekly backups.
 
-    ![Windows Server のバックアップ項目](./media/backup-configure-vault/specify-backup-schedule-close.png)
+    ![Items for Windows Server Backup](./media/backup-configure-vault/specify-backup-schedule-close.png)
 
-    >[AZURE.NOTE] バックアップ スケジュールを指定する方法の詳細については、「[Azure Backup を使用してテープのインフラストラクチャを置換する](backup-azure-backup-cloud-as-tape.md)」を参照してください。
+    >[AZURE.NOTE] For more information about how to specify the backup schedule, see the article [Use Azure Backup to replace your tape infrastructure](backup-azure-backup-cloud-as-tape.md).
 
-8. **[保持ポリシーの選択]** ページで、バックアップ コピーの**保持ポリシー**を選択します。
+8. On the **Select Retention Policy** page, select the **Retention Policy** for the backup copy.
 
-    保有ポリシーは、バックアップを格納する必要がある期間を指定します。すべてのバックアップ ポイントに "同じポリシー" を指定するのでなく、バックアップが実行されるタイミングに基づいて異なる保持ポリシーを指定できます。必要に応じて、日、週、月、および年単位で保有ポリシーを変更できます。
+    The retention policy specifies the duration for which the backup will be stored. Rather than just specifying a “flat policy” for all backup points, you can specify different retention policies based on when the backup occurs. You can modify the daily, weekly, monthly, and yearly retention policies to meet your needs.
 
-9. [初期バックアップの種類の選択] ページで、初期バックアップの種類を選択します。**[自動でネットワーク経由]** オプションが選択された状態のままにし、**[次へ]** をクリックします。
+9. On the Choose Initial Backup Type page, choose the initial backup type. Leave the option **Automatically over the network** selected, and then click **Next**.
 
-    ネットワーク経由で自動的にバックアップことも、オフラインでバックアップすることもできます。この記事の残りの部分では、自動バックアップのプロセスについて説明します。オフライン バックアップを実行する場合は、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」で詳細を確認してください。
+    You can back up automatically over the network, or you can back up offline. The remainder of this article describes the process for backing up automatically. If you prefer to do an offline backup, review the article [Offline backup workflow in Azure Backup](backup-azure-backup-import-export.md) for additional information.
 
-10. [確認] ページで情報を確認し、**[完了]** をクリックします。
+10. On the Confirmation page, review the information, and then click **Finish**.
 
-11. ウィザードでバックアップ スケジュールの作成が完了したら、**[閉じる]** をクリックします。
+11. After the wizard finishes creating the backup schedule, click **Close**.
 
-### ネットワーク調整の有効化 (オプション)
+### <a name="enable-network-throttling-(optional)"></a>Enable network throttling (optional)
 
-Backup エージェントは、ネットワーク スロットルを提供します。調整では、データ転送中にネットワーク帯域幅をどのように使用するかを制御します。データのバックアップを業務時間中に行う必要があり、バックアップ処理が他のインターネット トラフィックに影響を与えないようにする場合などに、この制御は便利です。調整はバックアップと復元のアクティビティに適用されます。
+The backup agent provides network throttling. Throttling controls how network bandwidth is used during data transfer. This control can be helpful if you need to back up data during work hours but do not want the backup process to interfere with other Internet traffic. Throttling applies to back up and restore activities.
 
->[AZURE.NOTE] ネットワーク スロットルは、Windows Server 2008 R2 SP1、Windows Server 2008 SP2、Windows 7 (Service Pack を含む) では使用できません。Azure Backup のネットワーク スロットル機能は、ローカル オペレーティング システムのサービス品質 (QoS) を利用します。Azure Backup で上記のオペレーティング システムを保護することはできますが、これらのプラットフォームで使用できる QoS のバージョンでは、Azure Backup のネットワーク スロットルが機能しません。ネットワーク スロットルは、上記以外の[サポートされているすべてのオペレーティング システム](backup-azure-backup-faq.md#installation-amp-configuration)で使用できます。
+>[AZURE.NOTE] Network throttling is not available on Windows Server 2008 R2 SP1, Windows Server 2008 SP2, or Windows 7 (with service packs). The Azure Backup network throttling feature engages Quality of Service (QoS) on the local operating system. Though Azure Backup can protect these operating systems, the version of QoS available on these platforms doesn't work with Azure Backup network throttling. Network throttling can be used on all other [supported operating systems](backup-azure-backup-faq.md#installation-amp-configuration).
 
-**ネットワーク調整を有効にするには**
+**To enable network throttling**
 
-1. Backup エージェントで、**[プロパティの変更]** をクリックします。
+1. In the backup agent, click **Change Properties**.
 
     ![Change properties](./media/backup-configure-vault/change-properties.png)
 
-2. **[スロットル]** タブで、**[バックアップ操作用のインターネット使用帯域幅のスロットルを有効にする]** チェック ボックスをオンにします。
+2. On the **Throttling** tab, select the **Enable internet bandwidth usage throttling for backup operations** check box.
 
-    ![ネットワークのスロットル](./media/backup-configure-vault/throttling-dialog.png)
+    ![Network throttling](./media/backup-configure-vault/throttling-dialog.png)
 
-3. スロットルを有効にした後、**[作業時間]** と **[作業時間外]** で、バックアップ データ転送のために許可される帯域幅を指定します。
+3. After you have enabled throttling, specify the allowed bandwidth for backup data transfer during **Work hours** and **Non-work hours**.
 
-    帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。また、**[作業時間]** の開始および終了時刻や、作業日と見なされる曜日も指定できます。指定した作業時間以外の時間は、作業時間外と見なされます。
+    The bandwidth values begin at 512 kilobits per second (Kbps) and can go up to 1,023 megabytes per second (MBps). You can also designate the start and finish for **Work hours**, and which days of the week are considered work days. Hours outside of designated work hours are considered non-work hours.
 
-4. **[OK]** をクリックします。
+4. Click **OK**.
 
-### 初回のファイルとフォルダーをバックアップするには
+### <a name="to-back-up-files-and-folders-for-the-first-time"></a>To back up files and folders for the first time
 
-1. Backup エージェントで **[今すぐバックアップ]** をクリックして、ネットワーク経由での最初のシード処理を完了します。
+1. In the backup agent, click **Back Up Now** to complete the initial seeding over the network.
 
-    ![Windows Server を今すぐバックアップする](./media/backup-configure-vault/backup-now.png)
+    ![Windows Server backup now](./media/backup-configure-vault/backup-now.png)
 
-2. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。次に、**[バックアップ]** をクリックします。
+2. On the Confirmation page, review the settings that the Back Up Now Wizard will use to back up the machine. Then click **Back Up**.
 
-3. **[閉じる]** をクリックしてウィザードを閉じます。バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
+3. Click **Close** to close the wizard. If you do this before the backup process finishes, the wizard continues to run in the background.
 
-初回バックアップが完了すると、**[ジョブは完了しました]** 状態が Backup コンソールに表示されます。
+After the initial backup is completed, the **Job completed** status appears in the Backup console.
 
 ![IR complete](./media/backup-configure-vault/ircomplete.png)
 
-## 疑問がある場合
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
+## <a name="questions?"></a>Questions?
+If you have questions, or if there is any feature that you would like to see included, [send us feedback](http://aka.ms/azurebackup_feedback).
 
-## 次のステップ
-VM や他のワークロードのバックアップの詳細については、以下を参照してください。
+## <a name="next-steps"></a>Next steps
+For additional information about backing up VMs or other workloads, see:
 
-- ファイルとフォルダーをバックアップしたので、[コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
-- バックアップを復元する必要がある場合は、[Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。
+- Now that you've backed up your files and folders, you can [manage your vaults and servers](backup-azure-manage-windows-server.md).
+- If you need to restore a backup, use this article to [restore files to a Windows machine](backup-azure-restore-windows-server.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,11 +1,11 @@
 
 <properties 
-    pageTitle="Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法 | Microsoft Azure"
-	description="Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法について説明します"
-	services="remoteapp"
-	documentationCenter="" 
-	authors="piotrci" 
-	manager="mbaldwin" />
+    pageTitle="How to use Azure RemoteApp with Office 365 user accounts | Microsoft Azure"
+    description="Learn how to use Azure RemoteApp with my Office 365 user accounts"
+    services="remoteapp"
+    documentationCenter="" 
+    authors="piotrci" 
+    manager="mbaldwin" />
 
 <tags 
     ms.service="remoteapp" 
@@ -18,35 +18,45 @@
 
 
 
-# Office 365 ユーザー アカウントで Azure RemoteApp を使用する方法
+
+# <a name="how-to-use-azure-remoteapp-with-office-365-user-accounts"></a>How to use Azure RemoteApp with Office 365 user accounts
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Office 365 サブスクリプションがある場合、Office 365 サービスへのアクセスに使用されているユーザー名とパスワードが格納された Azure Active Directory もあります。たとえば、ユーザーが Office 365 ProPlus をアクティブ化した場合、Azure AD に対して認証してライセンスを確認します。ほとんどのユーザーは、Azure RemoteApp と同じディレクトリを使用したいと考えます。
+If you have an Office 365 subscription you have an Azure Active Directory that stores your user names and passwords used to access Office 365 services. For example, when your users activate Office 365 ProPlus they authenticate against Azure AD to check for licenses. Most customers would like to use the same directory with Azure RemoteApp.
 
-Azure RemoteApp をデプロイするとき、多くの場合、別の Azure AD と関連付けられた Azure サブスクリプションを使用しています。Office 365 ディレクトリを使用するには、Azure サブスクリプションをそのディレクトリに移動する必要があります。
+If you are deploying Azure RemoteApp you are most likely using an Azure subscription that is associated with a different Azure AD. In order to use your Office 365 directory, you will need to move the Azure subscription into that directory.
 
-Office 365 クライアント アプリケーションをデプロイする方法については、「[Azure RemoteApp で Office 365 サブスクリプションを使用する方法](remoteapp-officesubscription.md)」を参照してください。
+For info on how to deploy Office 365 client applications, see [How to use your Office 365 subscription with Azure RemoteApp](remoteapp-officesubscription.md).
  
-## フェーズ 1: 無料の Office 365 Azure Active Directory サブスクリプションを登録する
-Azure クラシック ポータルを使用している場合は、「[無料の Azure Active Directory サブスクリプションの登録](https://technet.microsoft.com/library/dn832618.aspx)」の手順に従って、Microsoft Azure 管理ポータルから Azure AD への管理アクセスを取得します。このプロセスを実行すると、Azure ポータルにログインし、ディレクトリを確認できるようになります。この時点では、Azure RemoteApp に使用している完全な Azure サブスクリプションは別のディレクトリにあるので、あまり情報が表示されません。
+## <a name="phase-1:-register-your-free-office-365-azure-active-directory-subscription"></a>Phase 1: Register your free Office 365 Azure Active Directory subscription
+If you are using the Azure classic portal, use the steps in [Register your free Azure Active Directory subscription](https://technet.microsoft.com/library/dn832618.aspx) to get administrative access to your Azure AD via the Azure Management Portal. As the result of this process you should be able to log into the Azure portal and see your directory there – at this point you won’t see much more since the full Azure subscription you are using with Azure RemoteApp is in a different directory.
 
-この手順で作成した管理者アカウントの名前とパスワードを記憶しておきます。これらの情報はフェーズ 2 で必要になります。
+Remember the name and password of the administrator account you created in this step – they will be needed in Phase 2.
 
-Azure ポータルを使用している場合は、「[How to register and activate a free Azure Active Directory using Office 365 portal](http://azureblogger.com/2016/01/how-to-register-and-activate-a-free-azure-active-directory-using-office-365-portal/)」を確認します。
+If you are using the Azure portal, check out [How to register and activate a free Azure Active Directory using Office 365 portal](http://azureblogger.com/2016/01/how-to-register-and-activate-a-free-azure-active-directory-using-office-365-portal/).
 
-## フェーズ 2: Azure サブスクリプションに関連付けられている Azure AD を変更する
-Azure サブスクリプションを、現在のディレクトリから、フェーズ 1 で操作した Office 365 ディレクトリに変更します。
+## <a name="phase-2:-change-the-azure-ad-associated-with-your-azure-subscription."></a>Phase 2: Change the Azure AD associated with your Azure subscription.
+We are going to change your Azure subscription from its current directory into the Office 365 directory we worked with in Phase 1.
 
-「[Azure RemoteApp で Azure Active Directory テナントを変更する](remoteapp-changetenant.md)」の手順に従って操作してください。特に次の手順に気を付けてください。
+Follow the instructions described in [Change the Azure Active Directory tenant in Azure RemoteApp](remoteapp-changetenant.md). Pay particular attention to the following steps:
 
-- 手順 1: このサブスクリプションで Azure RemoteApp (ARA) をデプロイした場合、すべての ARA コレクションからすべての Azure AD ユーザー アカウントを削除してから、他の処理を実行してください。または、既存のコレクションをすべて削除する方法もあります。
-- 手順 2: これは重要な手順です。Microsoft アカウント (@outlook.com など) をサブスクリプションのサービス管理者として使用する必要があります。これは、サブスクリプションに関連付けられている既存の Azure AD のユーザー アカウントは使用できないためです。使用すると、別の Azure AD に移動できなくなります。
-- 手順 4: 既存のディレクトリを追加すると、そのディレクトリの管理者アカウントでサインインするように求められます。このとき、必ずフェーズ 1 の管理者アカウントを使用してください。
-- 手順 5: サブスクリプションの親ディレクトリを Office 365 ディレクトリに変更します。最終的に、[設定] -> [サブスクリプション] に、Office 365 ディレクトリの一覧が表示されます。![サブスクリプションの親ディレクトリを変更します](./media/remoteapp-o365user/settings.png)
+- Step #1: If you have deployed Azure RemoteApp (ARA) in this subscription, make sure you remove all Azure AD user accounts from any ARA collections first, before trying anything else. Alternatively, you can consider deleting any existing collections.
+- Step #2: This is a critical step. You need to use a Microsoft account (e.g. @outlook.com) as a Service Administrator on the subscription; this is because we cannot have any user accounts from the existing Azure AD attached to the subscription – if we do, we won’t be able to move it to a different Azure AD.
+- Step #4: When adding an existing directory, the system will ask you to sign in with the administrator account for that directory. Make sure to use the administrator account from Phase 1.
+- Step #5: Change the parent directory of the subscription to your Office 365 directory. The end result should be that under Settings -> Subscriptions your subscription lists the Office 365 directory. 
+![Change the parent directory of the subscription](./media/remoteapp-o365user/settings.png)
  
 
-この時点で、Azure RemoteApp サブスクリプションは Office 365 Azure AD に関連付けられているので、Azure RemoteApp に既存の Office 365 ユーザー アカウントを使用できます。
+At this point your Azure RemoteApp subscription is associated with your Office 365 Azure AD; you can use the existing Office 365 user accounts with Azure RemoteApp!
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,7 +1,11 @@
-## シナリオ
+## <a name="scenario"></a>Scenario
 
-ここでは、VM で複数の NIC を使用するデプロイメントについて、具体的なシナリオを使って説明します。このシナリオでは、Azure でホストされる 2 層の IaaS ワークロードを使用します。各層は、仮想ネットワーク (VNet) の専用サブネットにデプロイされています。フロントエンド層は複数の Web サーバーで構成されていて、Web サーバーは高可用性のために 1 つのロード バランサー セットにグループ化されています。バックエンド層は、複数のデータベース サーバーで構成されています。これらのデータベース サーバーは、それぞれ 2 つの NIC を使用してデプロイされています。1 つはデータベース アクセス用、もう 1 つは管理用です。また、各サブネットおよびデプロイメント内の NIC に対して許可されるトラフィックを制御するためのネットワーク セキュリティ グループ (NSG) も含まれます。次の図では、このシナリオの基本的なアーキテクチャを示します。
+This document will walk through a deployment that uses multiple NICs in VMs in a specific scenario. In this scenario, you have a two-tiered IaaS workload hosted in Azure. Each tier is deployed in its own subnet in a virtual network (VNet). The front end tier is composed of several web servers, grouped together in a load balancer set for high availability. The back end tier is composed of several database servers. These database servers will be deployed with two NICs each, one for database access, the other for management. The scenario also includes Network Security Groups (NSGs) to control what traffic is allowed to each subnet, and NIC in the deployment. The figure below shows the basic architecture of this scenario.  
 
-![MultiNIC シナリオ](./media/virtual-network-deploy-multinic-scenario-include/Figure1.png)
+![MultiNIC scenario](./media/virtual-network-deploy-multinic-scenario-include/Figure1.png)
 
-<!---HONumber=Nov15_HO4-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

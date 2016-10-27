@@ -1,63 +1,67 @@
 <properties 
-	pageTitle="Azure App Service Web Apps で io.js を使用する方法" 
-	description="io.js を使用して Azure App Service で Web アプリを使用する方法について説明します。" 
-	services="app-service\web" 
-	documentationCenter="nodejs" 
-	authors="rmcmurray" 
-	manager="wpickett" 
-	editor=""/>
+    pageTitle="How to use io.js with Azure App Service Web Apps" 
+    description="Learn how to use a web app in Azure App Service with io.js." 
+    services="app-service\web" 
+    documentationCenter="nodejs" 
+    authors="rmcmurray" 
+    manager="wpickett" 
+    editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs" 
-	ms.topic="article" 
-	ms.date="08/11/2016"
-	ms.author="robmcm" />
+    ms.service="app-service-web" 
+    ms.workload="web" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="nodejs" 
+    ms.topic="article" 
+    ms.date="08/11/2016"
+    ms.author="robmcm" />
 
-# Azure App Service Web Apps で io.js を使用する方法
 
-広く普及している Node フォークの [io.js] には、よりオープンなガバナンス モデル、より迅速なリリース サイクル、新しく実験的な JavaScript 機能のより迅速な導入など、Joyent の Node.js とはさまざまな違いがあります。
+# <a name="how-to-use-io.js-with-azure-app-service-web-apps"></a>How to use io.js with Azure App Service Web Apps
 
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps には多くの Node.js バージョンがプレインストールされていますが、ユーザー指定の Node.js バイナリを使用することもできます。この記事では、App Service Web Apps で io.js を使用できるようにする 2 つの方法を紹介します。1 つは、拡張デプロイメント スクリプトを使用して、利用可能な最新の io.js バージョンを使用するよう Azure を自動的に構成する方法です。もう 1 つは、io.js バイナリを手動でアップロードする方法です。
+The popular Node fork [io.js] features various differences to Joyent's Node.js project, including a more open governance model, a faster release cycle and a faster adoption of new and experimental JavaScript features.
+
+While [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps has many Node.js versions preinstalled, it also allows for an user-provided Node.js binary. This article discusses two methods enabling the use of io.js on App Service Web Apps: The use of an extended deployment script, which automatically configures Azure to use the latest available io.js version, as well as the manual upload of a io.js binary. 
 
 <a id="deploymentscript"></a>
-## デプロイメント スクリプトの使用
+## <a name="using-a-deployment-script"></a>Using a Deployment Script
 
-Node.js アプリケーションをデプロイすると、App Service Web Apps は小さなコマンドをたくさん実行して、環境が適切に構成されるようにします。デプロイメント スクリプトを使うと、このプロセスをカスタマイズして、io.js のダウンロードと構成を含めることができます。
+Upon deployment of a Node.js app, App Service Web Apps runs a number of small commands to ensure that the environment is configured properly. Using a deployment script, this process can be customized to include the download and configuration of io.js.
 
-[io.js デプロイメント スクリプト](https://github.com/felixrieseberg/iojs-azure)は GitHub で入手できます。Web アプリで io.js を有効にするには、**.deployment**、**deploy.cmd**、および **IISNode.yml** をアプリケーション フォルダーのルートにコピーして、Web Apps にデプロイするだけです。
+The [io.js Deployment Script](https://github.com/felixrieseberg/iojs-azure) is available on GitHub. To enable io.js on your web app, simply copy **.deployment**, **deploy.cmd** and **IISNode.yml** to the root of your application folder and deploy to Web Apps.  
 
-1 つ目のファイルの **.deployment** は、デプロイ時に **deploy.cmd** を実行するよう Web Apps に指示します。このスクリプトは Node.js アプリケーションの通常の手順をすべて実行しますが、io.js の最新バージョンもダウンロードします。最後に、**IISNode.yml** が、プレインストールされている Node.js バイナリの代わりに、ダウンロードしたばかりの io.js バイナリを使用するよう Web Apps を構成します。
+The first file, **.deployment**, instructs Web Apps to run **deploy.cmd** upon deployment. This script runs all the usual steps for a Node.js application, but also downloads the latest version of io.js. Finally, **IISNode.yml** configures Web Apps to use just the downloaded io.js binary instead of a pre-installed Node.js binary.
 
-> [AZURE.NOTE] 使用中の io.js バイナリを更新するには、アプリケーションを再デプロイするだけです。アプリケーションをデプロイするたびに、スクリプトによって io.js の新しいバージョンがダウンロードされます。
+> [AZURE.NOTE] To update the used io.js binary, just redeploy your application - the script will download a new version of io.js every single time the application is deployed.
 
 <a id="manualinstallation"></a>
-## 手動インストールの使用
+## <a name="using-manual-installation"></a>Using Manual Installation
 
-カスタム io.js バージョンを手動でインストールする手順は 2 つだけです。まずは、**win-x64** バイナリを [io.js の配布]ページから直接ダウンロードします。必要なのは、**iojs.exe** と **iojs.lib** の 2 つのファイルです。両方のファイルを Web アプリ内のフォルダー (例: **bin/iojs**) に保存します。
+The manual installation of a custom io.js version includes only two steps. First, download the **win-x64** binary directly from the [io.js distribution]. Required are two files - **iojs.exe** and **iojs.lib**. Save both files to a folder inside your web app, for example in **bin/iojs**.
 
-プレインストールされている Node バージョンの代わりに **iojs.exe** を使用するよう Web Apps を構成する場合は、アプリケーションのルートに **IISNode.yml** ファイルを作成して、以下の行を追加します。
+To configure Web Apps to use **iojs.exe** instead of a pre-installed Node version, create a **IISNode.yml** file at the root of your application and add the following line.
 
     nodeProcessCommandLine: "D:\home\site\wwwroot\bin\iojs\iojs.exe"
 
 <a id="nextsteps"></a>
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-この記事では、App Service Web Apps で io.js を使用する方法として、提供されているデプロイメント スクリプトと手動インストールの 2 つについて説明しました。
+In this article you learned how to use io.js with App Service Web Apps, using both provided deployment scripts as well as manual installation. 
 
-> [AZURE.NOTE] io.js は開発途上のもので、Node.js に比べて、より頻繁に更新されます。多くの Node.js モジュールが io.js で動作しない可能性があります。トラブルシューティングについては、[GitHub の io.js] に関するページを参照してください。
+> [AZURE.NOTE] io.js is in heavy development and updated more frequently than Node.js. A number of Node.js modules might not work with io.js - please consult [io.js on GitHub] for troubleshooting.
 
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+## <a name="what's-changed"></a>What's changed
+* For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
 
 [io.js]: https://iojs.org
-[io.js の配布]: https://iojs.org/dist/
-[GitHub の io.js]: https://github.com/iojs/io.js
+[io.js distribution]: https://iojs.org/dist/
+[io.js on GitHub]: https://github.com/iojs/io.js
 [io.js Deployment Script]: https://github.com/felixrieseberg/iojs-azure
  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

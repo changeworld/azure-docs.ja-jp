@@ -1,107 +1,109 @@
 <properties
-	pageTitle="Azure AD NodeJS の概要 | Microsoft Azure"
-	description="認証のために Azure AD と連携する Node.js REST Web API を構築する方法"
-	services="active-directory"
-	documentationCenter="nodejs"
-	authors="brandwe"
-	manager="mbaldwin"
-	editor=""/>
+    pageTitle="Azure AD NodeJS Getting Started | Microsoft Azure"
+    description="How to build a Node.js REST Web API that integrates with Azure AD for authentication."
+    services="active-directory"
+    documentationCenter="nodejs"
+    authors="brandwe"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="javascript"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="brandwe"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="javascript"
+    ms.topic="article"
+    ms.date="09/16/2016"
+    ms.author="brandwe"/>
 
-# ノード用の Web API の概要
+
+# <a name="getting-started-with-web-api-for-node"></a>Getting Started With WEB-API for Node
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-**Passport** は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。Microsoft Azure Active Directory 用の戦略が開発されています。ここでは、このモジュールをインストールした後、Microsoft Azure Active Directory `passport-azure-ad` プラグインを追加します。
+**Passport** is authentication middleware for Node.js. Extremely flexible and modular, Passport can be unobtrusively dropped in to any Express-based or Resitify web application. A comprehensive set of strategies support authentication using a username and password, Facebook, Twitter, and more. We have developed a strategy for Microsoft Azure Active Directory. We will install this module and then add the Microsoft Azure Active Directory `passport-azure-ad` plug-in.
 
-これを行うには、次の手順を実行する必要があります。
+In order to do this, you’ll need to:
 
-1. アプリケーションを Azure AD に登録する
-2. Passport の azure-ad-passport プラグインを使用するようにアプリをセットアップする
-3. To Do List Web API を呼び出すように、クライアント アプリケーションを構成する
+1. Register an application with Azure AD
+2. Set up your app to use Passport's azure-ad-passport plug-in.
+3. Configure a client application to call the To Do List Web API
 
-このチュートリアルのコードは、[GitHub](https://github.com/Azure-Samples/active-directory-node-webapi) で管理されています。
+The code for this tutorial is maintained [on GitHub](https://github.com/Azure-Samples/active-directory-node-webapi). 
 
-> [AZURE.NOTE] この記事では、Azure AD B2C でサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。Azure Active Directory の基本についてまだ確認していない場合は、まず「[How to integrate with Azure Active Directory document (Azure Active Directory ドキュメントと統合する方法)](active-directory-how-to-integrate.md)」を確認してください。
-
-
-この実稼働するサンプルに関連するすべてのソース コードが、MIT ライセンスの下で、GitHub で提供されています。自由にクローン (できれば、フォーク) 操作を行って、フィードバックおよびプル リクエストを提供してください。
-
-## Node.js モジュールとは
-
-このチュートリアルでは、Node.js を使用します。モジュールは、アプリケーションに対して特定の機能を提供する読み込み可能な JavaScript パッケージです。モジュールは、通常、Node.js NPM コマンド ライン ツールを使用して NPM インストール ディレクトリにインストールされますが、HTTP モジュールなどの一部のモジュールは、コア Node.js パッケージに含まれています。インストールされたモジュールは、Node.js インストール ディレクトリのルートにある node\_modules ディレクトリに保存されます。node\_modules ディレクトリの各モジュールは、それが依存関係を持つすべてのモジュールを含む独自の node\_modules ディレクトリを維持し、各必須モジュールは node\_modules ディレクトリを持ちます。この再帰的なディレクトリ構造は、依存関係チェーンを表します。
-
-この依存関係チェーンにより、アプリケーションのフットプリントは大きくなりますが、すべての依存関係が満たされ、開発で使用されるモジュールのバージョンが運用で使用されることが保証されます。このため、運用アプリの動作がより期待どおりになり、ユーザーに悪影響を及ぼすバージョン管理の問題を防ぐことができます。
-
-## 1\.Azure AD テナントを登録する
-
-このサンプルを使用するには、Azure Active Directory テナントが必要です。テナントについて不明な場合、または取得方法が不明な場合は、「[How to get an Azure Active Directory tenant (Azure Active Directory テナントを取得する方法)](active-directory-howto-tenant.md)」を参照してください。
-
-## 2\.アプリケーションを作成する
-
-ここで、ディレクトリにアプリを作成する必要があります。このディレクトリによって、アプリと安全に通信するために必要ないくつかの情報が Azure AD に提供されます。ここでは、クライアント アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-how-applications-are-added.md)に従います。基幹業務アプリケーションを作成する場合、[この追加手順が役に立つ場合があります](active-directory-applications-guiding-developers-for-lob-applications.md)。
-
-次を行ってください。
-
-- Microsoft Azure の管理ポータルにサインインします。
-- 左側のナビゲーションで **[Active Directory]** をクリックします。
-- アプリケーションの登録先となるテナントを選択します。
-- **[アプリケーション]** タブをクリックし、下部のドロアーで [追加] をクリックします。
-- 画面の指示に従い、新しい **Web アプリケーションまたは WebAPI** を作成します。
-    - アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
-    - **[サインオン URL]** は、アプリのベース URL です。サンプル コードの既定値は `https://localhost:8080` です。
-    - **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。形式は、`https://<tenant-domain>/<app-name>` (たとえば、`https://contoso.onmicrosoft.com/my-first-aad-app`) です。
-- 登録が完了すると、AAD により、アプリケーションに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、[構成] タブからコピーします。
-
-- リマインダー: アプリケーション用の**アプリケーション シークレット**を作成し、それをメモしておきます。このプロジェクトはすぐに必要になります。
-- リマインダー: アプリケーションに割り当てられた**アプリケーション ID** をメモしておきます。こちらもすぐに必要になります。
+> [AZURE.NOTE] This article does not cover how to implement sign-in, sign-up and profile management with Azure AD B2C.  It focuses on calling web APIs after the user is already authenticated.  If you haven't already, you should start with the [How to integrate with Azure Active Directory document](active-directory-how-to-integrate.md) to learn about the basics of Azure Active Directory.
 
 
-## 手順 3.プラットフォーム用の Node.js をダウンロードする
-このサンプルを正常に使用するには、Node.js の実稼働するインストール環境が必要になります。
+We've released all of the source code for this running example in GitHub under an MIT license, so feel free to clone (or even better, fork!) and provide feedback and pull requests.
 
-Node.js を [http://nodejs.org](http://nodejs.org) からインストールします。
+## <a name="about-node.js-modules"></a>About Node.js Modules
 
-## 4\.プラットフォームに MongoDB をインストールする
+We will be using Node.js modules in this walkthrough. Modules are loadable JavaScript packages that provide specific functionality for your application. You usually install modules by using the Node.js NPM command-line tool in the NPM installation directory, but some modules, such as the HTTP module, are included the core Node.js package.
+Installed modules are saved in the node_modules directory at the root of your Node.js installation directory. Each module in the node_modules directory maintains its own node_modules directory that contains any modules that it depends on, and each required module has a node_modules directory. This recursive directory structure represents the dependency chain.
 
-このサンプルを正常に使用するには、MongoDB の実稼働するインストール環境が必要になります。MongoDB を使用して、REST API がサーバー インスタンス間で持続されるようにします。
+This dependency chain structure results in a larger application footprint, but it guarantees that all dependencies are met and that the version of the modules used in development will also be used in production. This makes the production app behavior more predictable and prevents versioning problems that might affect users.
 
-MongoDB を [http://mongodb.org](http://www.mongodb.org) からインストールします。
+## <a name="1.-register-a-azure-ad-tenant"></a>1. Register a Azure AD Tenant
 
-> [AZURE.NOTE] このチュートリアルでは、MongoDB の既定のインストール環境およびサーバー エンドポイント (チュートリアルの記述時点では mongodb://localhost) が使用されることを想定しています。
+To use this sample you will need a Azure Active Directory Tenant. If you're not sure what a tenant is or how you would get one, see  [How to get an Azure AD tenant](active-directory-howto-tenant.md).
+
+## <a name="2.-create-an-application"></a>2. Create an application
+
+Now you need to create an app in your directory, which gives Azure AD some information that it needs to securely communicate with your app.  Both the client app and web API will be represented by a single **Application ID** in this case, since they comprise one logical app.  To create an app, follow [these instructions](active-directory-how-applications-are-added.md). If you are building a Line of Business app [these additional instructions may be useful](active-directory-applications-guiding-developers-for-lob-applications.md).
+
+Be sure to:
+
+- Sign into the Azure Management Portal.
+- In the left hand nav, click on **Active Directory**.
+- Select the tenant where you wish to register the application.
+- Click the **Applications** tab, and click add in the bottom drawer.
+- Follow the prompts and create a new **Web Application and/or WebAPI**.
+    - The **name** of the application will describe your application to end-users
+    - The **Sign-On URL** is the base URL of your app.  The sample code's default is `https://localhost:8080`.
+    - The **App ID URI** is a unique identifier for your application.  The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`
+- Once you’ve completed registration, AAD will assign your app a unique client identifier.  You’ll need this value in the next sections, so copy it from the Configure tab.
+
+- REMINDER:Create an **Application Secret** for your application and copy it down.  You will need it shortly.
+- REMINDER: Copy down the **Application ID** that is assigned to your app.  You will also need it shortly.
 
 
-## 5\.Web API に Restify モジュールをインストールする
+## <a name="3.-download-node.js-for-your-platform"></a>3. Download node.js for your platform
+To successfully use this sample, you must have a working installation of Node.js.
 
-Resitfy を使用して REST API を構築します。Resitfy は最小で柔軟性のある Node.js アプリケーション フレームワークで、Connect 上に REST API を構築するための一連の堅牢な機能を備えた Express から派生しています。
+Install Node.js from [http://nodejs.org](http://nodejs.org).
 
-### Restify をインストールする
+## <a name="4.-install-mongodb-on-to-your-platform"></a>4. Install MongoDB on to your platform
 
-コマンド ラインで、azuread ディレクトリに移動します。**azuread** ディレクトリが存在しない場合は、作成します。
+To successfully use this sample, you must have a working installation of MongoDB. We will use MongoDB to make our REST API persistant across server instances.
+
+Install MongoDB from [http://mongodb.org](http://www.mongodb.org).
+
+> [AZURE.NOTE] This walkthrough assumes that you use the default installation and server endpoints for MongoDB, which at the time of this writing is: mongodb://localhost
+
+
+## <a name="5.-install-the-restify-modules-in-to-your-web-api"></a>5. Install the Restify modules in to your Web API
+
+We will be using Resitfy to build our REST API. Restify is a minimal and flexible Node.js application framework derived from Express that has a robust set of features for building REST APIs on top of Connect.
+
+### <a name="install-restify"></a>Install Restify
+
+From the command-line, change directories to the azuread directory. If the **azuread** directory does not exist, create it.
 
 `cd azuread - or- mkdir azuread; cd azuread`
 
-次のコマンドを入力します。
+Type the following command:
 
 `npm install restify`
 
-このコマンドにより、Restify がインストールされます。
+This command installs Restify.
 
-#### エラーが発生した場合
+#### <a name="did-you-get-an-error?"></a>DID YOU GET AN ERROR?
 
-一部のオペレーティング システムで npm を使用すると、エラー メッセージ「Error: EPERM, chmod '/usr/local/bin/..'」が表示され、管理者のアカウントを使用して再実行するように要求されることがあります。このような場合は、sudo コマンドを使用して、より高い権限レベルで npm を実行します。
+When using npm on some operating systems, you may receive an error of Error: EPERM, chmod '/usr/local/bin/..' and a request to try running the account as an administrator. If this occurs, use the sudo command to run npm at a higher privilege level.
 
-#### Dtrace に関するエラーが表示された場合
+#### <a name="did-you-get-an-error-regarding-dtrace?"></a>DID YOU GET AN ERROR REGARDING DTRACE?
 
-Restify をインストールするときに、次のようなメッセージが表示されることがあります。
+You may see something like this when installing Restify:
 
 ```Shell
 clang: error: no such file or directory: 'HD/azuread/node_modules/restify/node_modules/dtrace-provider/libusdt'
@@ -121,145 +123,145 @@ npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 ```
 
 
-Restify は、DTrace を使用して REST 呼び出しをトレースする強力なメカニズムを備えています。ただし、多くのオペレーティング システムで DTrace は使用できません。これらのエラーは無視してかまいません。
+Restify provides a powerful mechanism to trace REST calls using DTrace. However, many operating systems do not have DTrace available. You can safely ignore these errors.
 
 
-このコマンドの出力は次のように表示されます。
+The output of this command should appear similar to the following:
 
 
-	restify@2.6.1 node_modules/restify
-	├── assert-plus@0.1.4
-	├── once@1.3.0
-	├── deep-equal@0.0.0
-	├── escape-regexp-component@1.0.2
-	├── qs@0.6.5
-	├── tunnel-agent@0.3.0
-	├── keep-alive-agent@0.0.1
-	├── lru-cache@2.3.1
-	├── node-uuid@1.4.0
-	├── negotiator@0.3.0
-	├── mime@1.2.11
-	├── semver@2.2.1
-	├── spdy@1.14.12
-	├── backoff@2.3.0
-	├── formidable@1.0.14
-	├── verror@1.3.6 (extsprintf@1.0.2)
-	├── csv@0.3.6
-	├── http-signature@0.10.0 (assert-plus@0.1.2, asn1@0.1.11, ctype@0.5.2)
-	└── bunyan@0.22.0 (mv@0.0.5)
+    restify@2.6.1 node_modules/restify
+    ├── assert-plus@0.1.4
+    ├── once@1.3.0
+    ├── deep-equal@0.0.0
+    ├── escape-regexp-component@1.0.2
+    ├── qs@0.6.5
+    ├── tunnel-agent@0.3.0
+    ├── keep-alive-agent@0.0.1
+    ├── lru-cache@2.3.1
+    ├── node-uuid@1.4.0
+    ├── negotiator@0.3.0
+    ├── mime@1.2.11
+    ├── semver@2.2.1
+    ├── spdy@1.14.12
+    ├── backoff@2.3.0
+    ├── formidable@1.0.14
+    ├── verror@1.3.6 (extsprintf@1.0.2)
+    ├── csv@0.3.6
+    ├── http-signature@0.10.0 (assert-plus@0.1.2, asn1@0.1.11, ctype@0.5.2)
+    └── bunyan@0.22.0 (mv@0.0.5)
 
 
-## 6\.Passport.js を Web API にインストールする
+## <a name="6.-install-passport.js-in-to-your-web-api"></a>6. Install Passport.js in to your Web API
 
-[Passport](http://passportjs.org/) は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。Azure Active Directory 用の認証手法を開発しました。このモジュールをインストールし、Azure Active Directory 認証手法プラグインを追加します。
+[Passport](http://passportjs.org/) is authentication middleware for Node.js. Extremely flexible and modular, Passport can be unobtrusively dropped in to any Express-based or Resitify web application. A comprehensive set of strategies support authentication using a username and password, Facebook, Twitter, and more. We have developed a strategy for Azure Active Directory. We will install this module and then add the Azure Active Directory strategy plug-in.
 
-コマンド ラインで、azuread ディレクトリに移動します。
+From the command-line, change directories to the azuread directory.
 
-次のコマンドを入力して、Passport.js をインストールします。
+Enter the following command to install passport.js
 
 `npm install passport`
 
-コマンドの出力は次のように表示されます。
+The output of the commadn should appear similar to the following:
 
-	passport@0.1.17 node_modules\passport
-	├── pause@0.0.1
-	└── pkginfo@0.2.3
+    passport@0.1.17 node_modules\passport
+    ├── pause@0.0.1
+    └── pkginfo@0.2.3
 
-## 7\.Passport-Azure-AD を Web API に追加する
+## <a name="7.-add-passport-azure-ad-to-your-web-api"></a>7. Add Passport-Azure-AD to your Web API
 
-次に、Azure Active Directory を Passport に追加する一連の戦略である passport-azure-ad を使用する OAuth 戦略を追加します。この Rest API の例では、ベアラー トークン用の戦略を使用します。
+Next, we will add the OAuth strategy, using passport-azuread, a suite of strategies that connect Azure Active Directory with  Passport. We will use this strategy for Bearer Tokens in this Rest API sample.
 
-> [AZURE.NOTE] OAuth2 は、任意の既知のトークン タイプを発行できるフレームワークを提供しますが、一部のトークン タイプのみが広範に使用されています。エンドポイントを保護するために、ベアラー トークンが広く使用されるようになっています。ベアラー トークンは、OAuth2 の最も広く発行されるタイプのトークンで、多くの実装では、発行されるトークンのタイプとしてベアラー トークンのみを想定しています。
+> [AZURE.NOTE] Although OAuth2 provides a framework in which any known token type can be issued, only certain token types have gained wide-spread use. For protecting endpoints, that has turned out to be Bearer Tokens. Bearer tokens are the most widely issued type of token in OAuth2, and many implementations assume that bearer tokens are the only type of token issued.
 
-コマンド ラインで、azuread ディレクトリに移動します。
+From the command-line, change directories to the azuread directory
 
-次のコマンドを入力して、Passport.js の passport-azure-ad モジュールをインストールします。
+Type the following command to install Passport.js passport-azure-ad module:
 
 `npm install passport-azure-ad`
 
-コマンドの出力は次のように表示されます。
+The output of the command should appear similar to the following:
 
-	``
-	passport-azure-ad@1.0.0 node_modules/passport-azure-ad
-	├── xtend@4.0.0
-	├── xmldom@0.1.19
-	├── passport-http-bearer@1.0.1 (passport-strategy@1.0.0)
-	├── underscore@1.8.3
-	├── async@1.3.0
-	├── jsonwebtoken@5.0.2
-	├── xml-crypto@0.5.27 (xpath.js@1.0.6)
-	├── ursa@0.8.5 (bindings@1.2.1, nan@1.8.4)
-	├── jws@3.0.0 (jwa@1.0.1, base64url@1.0.4)
-	├── request@2.58.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, tunnel-agent@0.4.1, oauth-sign@0.8.0, isstream@0.1.2, extend@2.0.1, json-stringify-safe@5.0.1, node-uuid@1.4.3, qs@3.1.0, combined-stream@1.0.5, mime-types@2.0.14, form-data@1.0.0-rc1, http-signature@0.11.0, bl@0.9.4, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
-	└── xml2js@0.4.9 (sax@0.6.1, xmlbuilder@2.6.4)
+    ``
+    passport-azure-ad@1.0.0 node_modules/passport-azure-ad
+    ├── xtend@4.0.0
+    ├── xmldom@0.1.19
+    ├── passport-http-bearer@1.0.1 (passport-strategy@1.0.0)
+    ├── underscore@1.8.3
+    ├── async@1.3.0
+    ├── jsonwebtoken@5.0.2
+    ├── xml-crypto@0.5.27 (xpath.js@1.0.6)
+    ├── ursa@0.8.5 (bindings@1.2.1, nan@1.8.4)
+    ├── jws@3.0.0 (jwa@1.0.1, base64url@1.0.4)
+    ├── request@2.58.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, tunnel-agent@0.4.1, oauth-sign@0.8.0, isstream@0.1.2, extend@2.0.1, json-stringify-safe@5.0.1, node-uuid@1.4.3, qs@3.1.0, combined-stream@1.0.5, mime-types@2.0.14, form-data@1.0.0-rc1, http-signature@0.11.0, bl@0.9.4, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
+    └── xml2js@0.4.9 (sax@0.6.1, xmlbuilder@2.6.4)
 
 
 
-## 8\.MongoDB モジュールを Web API に追加する
+## <a name="8.-add-mongodb-modules-to-your-web-api"></a>8. Add MongoDB modules to your Web API
 
-データ ストアとして MongoDB を使用します。そのため、どちらも広く使用されている、Mongoose と呼ばれるモデルおよびスキーマを管理するためのプラグインと、MongoDB という名前の MongoDB 用のデータベース ドライバーの両方をインストールする必要があります。
+We will be using MongoDB as our datastore For that reason, we need to install both the widely used plug-in to manage models and schemas called Mongoose, as well as the database driver for MongoDB, also called MongoDB.
 
 
 * `npm install mongoose`
 
-## 9\.追加モジュールをインストールする
+## <a name="9.-install-additional-modules"></a>9.  Install additional modules
 
-次に、その他の必須モジュールをインストールします。
+Next, we'll install the remaining required modules.
 
 
-コマンド ラインで、**azuread** フォルダーに移動します (現在のディレクトリがこのディレクトリではない場合)。
+From the command-line, change directories to the **azuread** folder if not already there:
 
 `cd azuread`
 
 
-次のコマンドを入力して、次のモジュールを node\_modules ディレクトリにインストールします。
+Enter the following commands to install the following modules in your node_modules directory:
 
 * `npm install assert-plus`
 * `npm install bunyan`
 * `npm update`
 
 
-## 10\.依存関係を持つ server.js を作成する
+## <a name="10.-create-a-server.js-with-your-dependencies"></a>10. Create a server.js with your dependencies
 
-server.js ファイルは、Web API サーバーの機能の多くを提供します。このため、ほとんどのコードをこのファイルに追加します。運用環境では、ルートとコントローラーを分割するなどして、機能をより小さなファイルに分散します。このデモでは、その目的に沿って、この機能用に server.js を使用します。
+The server.js file will be providing the majority of our functionality for our Web API server. We will be adding most of our code to this file. For production purposes you would refactor the functionality in to smaller files, such as separate routes and controllers. For the purpose of this demo we will use server.js for this functionality.
 
-コマンド ラインで、**azuread** フォルダーに移動します (現在のディレクトリがこのディレクトリではない場合)。
+From the command-line, change directories to the **azuread** folder if not already there:
 
 `cd azuread`
 
-お気に入りのエディターを使用して `server.js` ファイルを作成し、次の情報を追加します。
+Create a `server.js` file in our favorite editor and add the following information:
 
 ```Javascript
-	'use strict';
+    'use strict';
 
-	/**
- 	* Module dependencies.
- 	*/
+    /**
+    * Module dependencies.
+    */
 
-	var fs = require('fs');
-	var path = require('path');
-	var util = require('util');
-	var assert = require('assert-plus');
-	var bunyan = require('bunyan');
-	var getopt = require('posix-getopt');
-	var mongoose = require('mongoose/');
-	var restify = require('restify');
-	var passport = require('passport');
+    var fs = require('fs');
+    var path = require('path');
+    var util = require('util');
+    var assert = require('assert-plus');
+    var bunyan = require('bunyan');
+    var getopt = require('posix-getopt');
+    var mongoose = require('mongoose/');
+    var restify = require('restify');
+    var passport = require('passport');
   var BearerStrategy = require('passport-azure-ad').BearerStrategy;
 ```
 
-ファイルを保存します。この後すぐに、このファイルを使用します。
+Save the file. We will return to it shortly.
 
-## 11\.Azure AD の設定を保存する構成ファイルを作成する
+## <a name="11:.-create-a-config-file-to-store-your-azure-ad-settings"></a>11:. Create a config file to store your Azure AD settings
 
-このコード ファイルは、構成パラメーターを Azure Active Directory ポータルから Passport.js に渡します。これらの構成値は、チュートリアルの初期の手順で Web API をポータルに追加したときに作成されています。ここでは、コードをコピーした後に、これらのパラメーターにどのような値を設定するかについて説明します。
+This code file passes the configuration parameters from your Azure Active Directory Portal to Passport.js. You created these configuration values when you added the Web API to the portal in the first part of the walkthrough. We will explain what to put in the values of these parameters after you've copied the code.
 
 
-コマンド ラインで、**azuread** フォルダーに移動します (現在のディレクトリがこのディレクトリではない場合)。
+From the command-line, change directories to the **azuread** folder if not already there:
 
 `cd azuread`
 
-お気に入りのエディターを使用して `config.js` ファイルを作成し、次の情報を追加します。
+Create a `config.js` file in our favorite editor and add the following information:
 
 ```Javascript
  exports.creds = {
@@ -277,22 +279,22 @@ server.js ファイルは、Web API サーバーの機能の多くを提供し�
 
 
 ```
-ファイルを保存します。
+Save the file. 
 
-## 12\.構成を server.js ファイルに追加する
+## <a name="12.-add-configuration-to-your-server.js-file"></a>12. Add configuration to your server.js file
 
-これらの値は、アプリケーション全体で、作成した構成ファイルから読み込む必要があります。これを行うには、.config ファイルを必須リソースとしてアプリケーションに追加し、グローバル変数を config.js ドキュメントに設定するだけです。
+We need to read these values from the Config file you just created across our application. To do this, we simply add the .config file as a required resource in our application and then set the global variables to those in the config.js document
 
-コマンド ラインで、**azuread** フォルダーに移動します (現在のディレクトリがこのディレクトリではない場合)。
+From the command-line, change directories to the **azuread** folder if not already there:
 
 `cd azuread`
 
-お気に入りのエディターを使用して `server.js` ファイルを開き、次の情報を追加します。
+Open your `server.js` file in our favorite editor and add the following information:
 
 ```Javascript
 var config = require('./config');
 ```
-次に、`server.js` に新しいセクションを追加して、次のコードを記述します。
+Then, add a new section to `server.js` with the following code:
 
 ```Javascript
 var options = {
@@ -335,40 +337,40 @@ var serverPort = process.env.PORT || 8080;
 var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config.creds.mongoose_auth_local;
 ```
 
-ファイルを保存します。
+Save the file. 
 
 
 
-## 13\.Moongoose を使用して MongoDB モデルとスキーマ情報を追加する
+## <a name="13.-add-the-mongodb-model-and-schema-information-using-moongoose"></a>13. Add The MongoDB Model and Schema Information using Moongoose
 
-これまでの準備が報われるときが来ました。これら 3 つのファイルを一緒に REST API サービスに取り込みます。
+Now all this preparation is going to start paying off as we wind these three files together in to a REST API service.
 
-このチュートリアルでは、***手順 4.*** で説明しているように、MongoDB を使用してタスクを格納します。
+For this walkthrough we will be using MongoDB to store our Tasks as discussed in ***Step 4***.
 
-***手順 11.*** で作成した `config.js` ファイルは、mogoose\_auth\_local 接続 URL の末尾に配置されているので、このファイルから再呼び出しを行うと、データベース `tasklist` が呼び出されました。このデータベースを MongoDB で事前に作成する必要はありません。存在しない場合、サーバー アプリケーションの初回実行時に作成されます。
+If you recall from the `config.js` file we created in ***Step 11*** we called our database `tasklist` as that was what we put at the end of our mogoose_auth_local connection URL. You don't need to create this database beforehand in MongoDB, it will create this for us on first run of our server application (assuming it does not already exist).
 
-これで、使用する MongoDB データベースについて、事前にサーバーに通知したことになります。次に、サーバーのタスク用のモデルとスキーマを作成する追加コードを記述する必要があります。
+Now that we've told the server what MongoDB database we'd like to use, we need to write some additional code to create the model and schema for our server's Tasks.
 
-#### モデルについて
+#### <a name="discussion-of-the-model"></a>Discussion of the model
 
-使用するスキーマ モデルは非常に単純で、必要に応じて拡張できます。
+Our Schema model is very simple, and you expand it as required.
 
-NAME - タスクに割り当てられているモデルの名前。***String***
+NAME - The name of who is assigned to the task. A ***String***
 
-TASK - タスク自体。***String***
+TASK - The task itself. A ***String***
 
-DATE - タスクの期限日。***DATETIME***
+DATE - The date that the task is due. A ***DATETIME***
 
-COMPLETED - タスクが完了したかどうかを示します。***BOOLEAN***
+COMPLETED - If the Task is completed or not. A ***BOOLEAN***
 
-#### スキーマをコードで作成する
+#### <a name="creating-the-schema-in-the-code"></a>Creating the schema in the code
 
 
-コマンド ラインで、**azuread** フォルダーに移動します (現在のディレクトリがこのディレクトリではない場合)。
+From the command-line, change directories to the **azuread** folder if not already there:
 
 `cd azuread`
 
-お気に入りのエディターを使用して `server.js` ファイルを開き、次の情報を構成エントリの下に追加します。
+Open your `server.js` file in our favorite editor and add the following information below the configuration entry:
 
 ```Javascript
 // Connect to MongoDB
@@ -388,17 +390,17 @@ var TaskSchema = new Schema({
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-コードからわかるように、Schema を作成し、次に、***ルート*** を定義する際に、データを格納するためにコード全体で使用するモデル オブジェクトを作成します。
+As you can tell from the code, we create our Schema and then create a model object we will use to store our data throughout the code when we define our ***Routes***.
 
-## 14\.Task REST API サーバー用ルートを追加する
+## <a name="14.-add-our-routes-for-our-task-rest-api-server"></a>14. Add our Routes for our Task REST API server
 
-これで、操作対象のデータベース モデルが作成されたので、REST API サーバー用に使用するルートを追加します。
+Now that we have a database model to work with, let's add the routes we will use for our REST API server.
 
-### Restify 内のルートについて
+### <a name="about-routes-in-restify"></a>About Routes in Restify
 
-ルートは、Express スタックを使用する場合とまったく同じ方法で Restify 内で動作します。ルートは、クライアント アプリが呼び出すことが想定される URI を使用して定義されます。通常、ルートは個別のファイルで定義されますが、デモの目的に沿って、すべてのルートを server.js ファイルに格納します。運用環境では、それぞれ独自のファイルに格納することをお勧めします。
+Routes work in Restify in the exact same way they do using the Express stack. You define routes using the URI that you expect the client applicaitons to call. Usually, you define your routes in a separate file. For our purposes, we will put our routes in the server.js file. We recommend you factor these in to their own file for production use.
 
-Restify ルートの典型的なパターンを次に示します。
+A typical pattern for a Restify Route is:
 
 ```Javascript
 function createObject(req, res, next) {
@@ -419,17 +421,17 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
 ```
 
 
-これは、最も基本的なレベルのパターンです。Resitfy (および Express) では、アプリケーション タイプの定義、異なるエンドポイントにまたがる複雑なルーティングなどのより高度な機能が提供されますが、デモの目的に沿って、これらのルートを非常に単純に維持します。
+This is the pattern at the most basic level. Resitfy (and Express) provide much deeper functionaltiy such as defining application types and doing complex routing across different endpoints. For our purposes, we will keep these routes very simply.
 
-### 1\.既定のルートをサーバーに追加する
+### <a name="1.-add-default-routes-to-our-server"></a>1. Add default routes to our server
 
-Create、Retrieve、Update、および Delete の基本的な CRUD ルートを追加します。
+We will now add the basic CRUD routes of Create, Retrieve, Update, and Delete.
 
-コマンド ラインで、**azuread** フォルダーに移動します (現在のディレクトリがこのディレクトリではない場合)。
+From the command-line, change directories to the **azuread** folder if not already there:
 
 `cd azuread`
 
-お気に入りのエディターを使用して `server.js` ファイルを開き、これまでに作成したデータベース エントリの下に次の情報を追加します。
+Open your `server.js` file in our favorite editor and add the following information below the database entries you made above:
 
 ```Javascript
 
@@ -567,7 +569,7 @@ function listTasks(req, res, next) {
 
 ```
 
-### 2\.次に、いくつかのエラー処理を API に追加する
+### <a name="2.-next,-let's-add-some-error-handling-in-our-apis:"></a>2. Next, let's add some Error handling in our APIs:
 
 ```
 
@@ -618,11 +620,11 @@ util.inherits(TaskNotFoundError, restify.RestError);
 ```
 
 
-## 15\.サーバーを作成する
+## <a name="15.-create-your-server!"></a>15. Create your Server!
 
-データベースの定義およびルートの配置が完了したので、最後に、呼び出しを管理するサーバー インスタンスを追加します。
+We have our database defined, we have our routes in place, and the last thing to do is add our server instance that will manage our calls.
 
-Restify (および Express) では、REST API サーバーに対してより高度なカスタマイズを実行できますが、デモの目的に沿って、最も基本的なセットアップを使用します。
+Restify (and Express) have a lot of deep customization you can do for a REST API server, but again we will use the most basic setup for our purposes.
 
 ```Javascript
 /**
@@ -664,7 +666,7 @@ server.use(restify.bodyParser({
 })); // Allows for JSON mapping to REST
 ```
 
-## 16\.サーバーにルートを追加する (まだ認証は行われません)
+## <a name="16.-adding-the-routes-to-the-server-(without-authentication-for-now)"></a>16. Adding the routes to the server (without authentication for now)
 
 ```Javascript
 /// Now the real handlers. Here we just CRUD
@@ -716,23 +718,24 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 });
 ```
 
-## 17\.OAuth サポートを追加する前にサーバーを実行する
+## <a name="17.-before-we-add-oauth-support,-let's-run-the-server."></a>17. Before we add OAuth support, let's run the server.
 
-認証を追加する前に、サーバーをテストします。
+Test out your server before we add authentication
 
-これを行うための最も簡単な方法は、コマンド ラインで curl を使用することです。これを行うには、出力を JSON として解析することを可能にする単純なユーティリティが必要です。このため、以降のすべての例で使用する json ツールをインストールします。
+The easiest way to do this is by using curl in a command line. Before we do that, we need a simple utility that allows us to parse output as JSON. To do that, install the json tool as all the examples below use that.
 
 `$npm install -g jsontool`
 
-これにより、JSON ツールがグローバルにインストールされます。ツールがインストールされたので、サーバーの操作を開始します。
+This installs the JSON tool globally. Now that we’ve accomplished that – let’s play with the server:
 
-まず、monogoDB インスタンスが動作していることを確認します。
+First, make sure that your monogoDB isntance is running..
 
 `$sudo mongod`
 
-次に、ディレクトリを変更し、curl コマンドを実行してコンテンツを取得します。
+Then, change to the directory and start curling..
 
-`$ cd azuread` `$ node server.js`
+`$ cd azuread`
+`$ node server.js`
 
 `$ curl -isS http://127.0.0.1:8080 | json`
 
@@ -753,11 +756,11 @@ Date: Tue, 14 Jul 2015 05:43:38 GMT
 ]
 ```
 
-最後に、タスクを次のように追加します。
+Then, we can add a task this way:
 
 `$ curl -isS -X POST http://127.0.0.1:8080/tasks/brandon/Hello`
 
-次のような応答が返ります。
+The response should be:
 
 ```Shell
 HTTP/1.1 201 Created
@@ -769,28 +772,28 @@ Content-Length: 5
 Date: Tue, 04 Feb 2014 01:02:26 GMT
 Hello
 ```
-Brandon 用のタスクを次の方法でリストできます。
+And we can list tasks for Brandon this way:
 
 `$ curl -isS http://127.0.0.1:8080/tasks/brandon/`
 
-これらのすべてが正常に機能した場合、OAuth を REST API サーバーに追加できます。
+If all this works out, we are ready to add OAuth to the REST API server.
 
-**これで、MongoDB がある REST API サーバーが用意できました。**
+**You have a REST API server with MongoDB!**
 
 
-## 18\.REST API サーバーに認証を追加する
+## <a name="18.-add-authentication-to-our-rest-api-server"></a>18. Add Authentication to our REST API Server
 
-実稼働する REST API を作成できたので、次に、Azure AD に対して使用できるようにします。
+Now that we have a running REST API (congrats, btw!) let's get to making it useful against Azure AD.
 
-コマンド ラインで、**azuread** フォルダーに移動します (現在のディレクトリがこのディレクトリではない場合)。
+From the command-line, change directories to the **azuread** folder if not already there:
 
 `cd azuread`
 
-### 1: passport-azure-ad に含まれている OIDCBearerStrategy を使用する
+### <a name="1:-use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a>1: Use the OIDCBearerStrategy that is included with passport-azure-ad
 
-ここまで、認証がまったく行われない REST TODO サーバーを構築してきました。ここから、認証を配置する手順を開始します。
+So far we have built a typical REST TODO server without any kind of authorization. This is where we start putting that together.
 
-最初に、Passport を使用することを指定する必要があります。次のコードを、他のサーバー構成の直後に配置します。
+First, we need to indicate that we want to use Passport. Put this right after your other server configuration:
 
 ```Javascript
 // Let's start using Passport.js
@@ -800,9 +803,9 @@ server.use(passport.session()); // Provides session support
 ```
 
 > [AZURE.TIP]
-API を記述するときは、ユーザーがなりすますことができないトークンの一意の情報に常にデータをリンクする必要があります。このサーバーは、TODO 項目を保存するときに、“owner” フィールドに配置される (token.oid を通して呼び出される) トークン内のユーザーのオブジェクト ID に基づいてそれらを保存します。これにより、そのユーザーだけが自分の TODO にアクセスでき、他のユーザーは入力された TODO にアクセスすることはできません。API 内で “owner” が公開されることはないため、外部ユーザーは、認証された場合でも、他のユーザーの TODO を要求することができます。
+When writing APIs you should always link the data to something unique from the token that the user can’t spoof. When this server stores TODO items, it stores them based on the object ID of the user in the token (called through token.oid) which we put in the “owner” field. This ensures that only that user can access his TODOs and no one else can access the TODOs entered. There is no exposure in the API of “owner” so an external user can request other’s TODOs even if they are authenticated.
 
-次に、passport-azure-ad に含まれるべアラー戦略を使用します。今はコードをざっと見てください。内容は後で説明します。このコードを、上述のコードの後ろに置きます。
+Next, let’s use the Bearer strategy that comes with passport-azure-ad. Just look at the code for now, I’ll explain it shortly. Put this after what you pated above:
 
 ```Javascript
 /**
@@ -851,16 +854,16 @@ var bearerStrategy = new BearerStrategy(options,
 passport.use(bearerStrategy);
 ```
 
-Passport は、すべての戦略ライターが従うすべての戦略 (Twitter や Facebook など) に対して類似するパターンを使用します。戦略を調べると、それは、パラメーターとして token と done を持つ function() が渡されることがわかります。戦略は、その処理をすべて終えると、必ず戻ってきます。戻ったら、再度要求しなくてもいいように、ユーザーを保存し、トークンを隠します。
+Passport uses a similar pattern for all it’s Strategies (Twitter, Facebook, etc.) that all Strategy writers adhere to. Looking at the strategy you see we pass it a function() that has a token and a done as the parameters. The strategy will dutifully come back to us once it does all it’s work. Once it does we’ll want to store the user and stash the token so we won’t need to ask for it again.
 
 > [AZURE.IMPORTANT]
-上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがコマンド ライン プログラムでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
+The code above takes any user that happens to authenticate to our server. This is known as auto registration. In production servers you wouldn’t want to let anyone in without first having them go through a registration process you decide. This is usually the pattern you see in consumer apps who allow you to register with Facebook but then ask you to fill out additional information. If this wasn’t a command line program, we could have just extracted the email from the token object that is returned and then asked them to fill out additional information. Since this is a test server we simply add them to the in-memory database.
 
-### 2\.最後にいくつかのエンドポイントを保護する
+### <a name="2.-finally,-protect-some-endpoints"></a>2. Finally, protect some endpoints
 
-エンドポイントを保護するには、使用するプロトコルをパラメーターとして、`passport.authenticate()` 呼び出しを指定します。
+You protect endpoints by specifying the `passport.authenticate()` call with the protocol you wish to use.
 
-さらに興味深いことを行うためにサーバー コードのルートを編集します。
+Let’s edit our route in our server code to do something more interesting:
 
 ```Javascript
 server.get('/tasks', passport.authenticate('oauth-bearer', {
@@ -898,19 +901,19 @@ next();
 });
 ```
 
-## 19\.サーバー アプリケーションを再度実行して自分が拒否されることを確認する
+## <a name="19.-run-your-server-application-again-and-ensure-it-rejects-you"></a>19. Run your server application again and ensure it rejects you
 
-再び `curl` を使用して、エンドポイントに対して OAuth2 保護が有効になっていることを確認します。この操作は、このエンドポイントに対して、クライアント SDK のいずれかを実行する前に行います。返されるヘッダーは、正しいパスに沿っていることを確認するのに十分である必要があります。
+Let's use `curl` again to see if we now have OAuth2 protection against our endpoints. We will do this before runnning any of our client SDKs against this endpoint. The headers returned should be enough to tell us we are down the right path.
 
-まず、monogoDB インスタンスが実行されていることを確認します。
+First, make sure that your monogoDB instance is running:
 
   $sudo mongod
 
-次に、ディレクトリを変更し、curl コマンドを実行してコンテンツを取得します。
+Then, change to the directory and start curling..
 
   $ cd azuread $ node server.js
 
-基本的な POST を試してください。
+Try a basic POST:
 
 `$ curl -isS -X POST http://127.0.0.1:8080/tasks/brandon/Hello`
 
@@ -922,17 +925,17 @@ Date: Tue, 14 Jul 2015 05:45:03 GMT
 Transfer-Encoding: chunked
 ```
 
-ここで期待される応答は、Passport レイヤーが認証エンドポイントへのリダイレクトを試みていることを示す 401 です。期待どおりの応答が返っています。
+A 401 is the response you are looking for here, as that indicates that the Passport layer is trying to redirect to the authorize endpoint, which is exactly what you want.
 
-## お疲れさまでした。 OAuth2 を使用する REST API サービスが完成しました。
+## <a name="congratulations!-you-have-a-rest-api-service-using-oauth2!"></a>Congratulations! You have a REST API Service using OAuth2!
 
-OAuth2 互換のクライアントを使用することなく、このサーバーを使用して最大限のことを実現できました。別のチュートリアルに進むことが必要になります。
+You've went as far as you can with this server without using an OAuth2 compatible client. You will need to go through an additional walkthrough.
 
-Restify と OAuth2 を使用して REST API を実装する方法についての情報のみを探している場合は、サービスの開発を継続し、このサンプルで構築方法を習得するのに十分過ぎるコードを既に所有しています。
+If you were just looking for information on how to implement a REST API using Restify and OAuth2, you have more than enough code to keep developing your service and learning how to build on this example.
 
-ADAL に関連するさらに高度な手順に興味がある場合は、学習を継続するために推奨される、サポートされる ADAL クライアントをいくつか次に示します。
+If you are interested in the next steps in your ADAL journey, here are some supported ADAL clients we recommend for you to keep working:
 
-開発マシンに複製するかダウンロードして、チュートリアルで説明されているように構成するだけで動作します。
+Simply clone down to your developer machine and configure as stated in the Walkthrough.
 
 [ADAL for iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios)
 
@@ -941,4 +944,8 @@ ADAL に関連するさらに高度な手順に興味がある場合は、学習
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO4-->
+
+

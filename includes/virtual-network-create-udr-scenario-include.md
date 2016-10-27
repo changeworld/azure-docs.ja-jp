@@ -1,16 +1,19 @@
-## シナリオ
+## <a name="scenario"></a>Scenario
 
-UDR の作成方法をわかりやすく説明するために、このドキュメントでは次のシナリオを使用します。
+To better illustrate how to create UDRs, this document will use the scenario below.
 
-![イメージの説明](./media/virtual-network-create-udr-scenario-include/figure1.png)
+![IMAGE DESCRIPTION](./media/virtual-network-create-udr-scenario-include/figure1.png)
 
-このシナリオでは、以下に示すように、*フロントエンドのサブネット*用に UDR を 1 つ作成し、*バックエンドのサブネット*用に UDR をもう 1 つ作成します。
+In this scenario you will create one UDR for the *Front end subnet* and another UDR for the *Back end subnet* , as described below: 
 
-- **UDR-FrontEnd**。次のルートを 1 つ含むフロントエンド UDR が *FrontEnd* サブネットに適用されます。	
-	- **RouteToBackend**。このルートは、バックエンドのサブネットへのすべてのトラフィックを **FW1** 仮想マシンに送信します。
-- **UDR-BackEnd**。次のルートを 1 つ含むバックエンド UDR が *BackEnd* サブネットに適用されます。	
-	- **RouteToFrontend**。このルートは、フロントエンドのサブネットへのすべてのトラフィックを **FW1** 仮想マシンに送信します。
+- **UDR-FrontEnd**. The front end UDR will be applied to the *FrontEnd* subnet, and contain one route:  
+    - **RouteToBackend**. This route will send all traffic to the back end subnet to the **FW1** virtual machine.
+- **UDR-BackEnd**. The back end UDR will be applied to the *BackEnd* subnet, and contain one route: 
+    - **RouteToFrontend**. This route will send all traffic to the front end subnet to the **FW1** virtual machine.
 
-これらのルートの組み合わせにより、あるサブネットから別のサブネットに宛てたすべてのトラフィックが確実に **FW1** 仮想マシン (仮想アプライアンスとして使用されている) にルーティングされます。また、その VM の IP 転送を有効にして、他の VM 宛てのトラフィックを確実に受信できるようにする必要があります。
+The combination of these routes will ensure that all traffic destined from one subnet to another will be routed to the **FW1** virtual machine, which is being used as a virtual appliance. You also need to turn on IP forwarding for that VM, to ensure it can receive traffic destined to other VMs.
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

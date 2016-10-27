@@ -1,190 +1,191 @@
 <properties
-	pageTitle="Node.js 概要ガイド | Microsoft Azure"
-	description="簡単な Node.js Web アプリケーションを作成して、Azure のクラウド サービスにデプロイする方法について説明します。"
-	services="cloud-services"
-	documentationCenter="nodejs"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor=""/>
+    pageTitle="Node.js Getting Started Guide | Microsoft Azure"
+    description="Learn how to create a simple Node.js web application and deploy it to an Azure cloud service."
+    services="cloud-services"
+    documentationCenter="nodejs"
+    authors="rmcmurray"
+    manager="wpickett"
+    editor=""/>
 
 <tags
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na" 
-	ms.devlang="nodejs"
-	ms.topic="hero-article"
-	ms.date="08/11/2016" 
-	ms.author="robmcm"/>
+    ms.service="cloud-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na" 
+    ms.devlang="nodejs"
+    ms.topic="hero-article"
+    ms.date="08/11/2016" 
+    ms.author="robmcm"/>
 
-# Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
+
+# <a name="build-and-deploy-a-node.js-application-to-an-azure-cloud-service"></a>Build and deploy a Node.js application to an Azure Cloud Service
 
 > [AZURE.SELECTOR]
-- [Node.JS](cloud-services-nodejs-develop-deploy-app.md)
+- [Node.js](cloud-services-nodejs-develop-deploy-app.md)
 - [.NET](cloud-services-dotnet-get-started.md)
 
-このガイドでは、Azure のクラウド サービスで実行される簡単な Node.js アプリケーションを作成します。Cloud Services は、Azure のスケーラブルなクラウド アプリケーションの構成要素です。クラウド サービスによって、アプリケーションのフロントエンド コンポーネントとバックエンド コンポーネントの分離および独立した管理とスケールアウトを実現できます。Cloud Services は、各ロールを信頼性の高い方法でホストするための堅牢な専用仮想マシンを提供します。
+This tutorial shows how to create a simple Node.js application running in an Azure Cloud Service. Cloud Services are the building blocks of scalable cloud applications in Azure. They allow the separation and independent management and scale-out of front-end and back-end components of your application.  Cloud Services provide a robust dedicated virtual machine for hosting each role reliably.
 
-Cloud Services の詳細と Azure の Web サイトおよび仮想マシンとの違いについては、[Azure Websites、Cloud Services、および Virtual Machines の比較]に関するページを参照してください。
+For more information on Cloud Services, and how they compare to Azure Websites and Virtual machines, see [Azure Websites, Cloud Services and Virtual Machines comparison].
 
->[AZURE.TIP] 単純な Web サイトを構築する場合 シナリオが、単純な Web サイトのフロントエンドにのみ関係している場合は、[軽量の Web アプリを使用する]ことを検討してください。Web アプリの規模が増大し、要件が変化したときには、容易にクラウド サービスにアップグレードできます。
+>[AZURE.TIP] Looking to build a simple website? If your scenario involves just a simple website front-end, consider [using a lightweight web app]. You can easily upgrade to a Cloud Service as your web app grows and your requirements change.
 
-このチュートリアルでは、Web ロールでホストされる単純な Web アプリケーションを作成します。コンピューティング エミュレーターを使用してアプリケーションをローケルでテストし、PowerShell コマンド ライン ツールを使用してアプリケーションをデプロイします。
+By following this tutorial, you will build a simple web application hosted inside a web role. You will use the compute emulator to test your application locally, then deploy it using PowerShell command-line tools.
 
-このアプリケーションは簡単な "hello world" アプリケーションです。
+The application is a simple "hello world" application:
 
-![Hello World Web ページを表示している Web ブラウザー][A web browser displaying the Hello World web page]
+![A web browser displaying the Hello World web page][A web browser displaying the Hello World web page]
 
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-> [AZURE.NOTE] このチュートリアルは、Windows 上の Azure PowerShell を使用します。
+> [AZURE.NOTE] This tutorial uses Azure PowerShell, which requires Windows.
 
-- [Azure Powershell] のインストールおよび構成。
-- [Azure SDK for .NET 2.7] のダウンロードとインストール。インストールのセットアップ時に、次のいずれかを選択します。
+- Install and configure [Azure Powershell].
+- Download and install the [Azure SDK for .NET 2.7]. In the install setup, select:
     - MicrosoftAzureAuthoringTools
     - MicrosoftAzureComputeEmulator
 
 
-## Azure クラウド サービス プロジェクトの作成
+## <a name="create-an-azure-cloud-service-project"></a>Create an Azure Cloud Service project
 
-新しい Azure クラウド サービス プロジェクトおよび基本的な Node.js スキャフォールディングを作成するには、次のタスクを実行します。
+Perform the following tasks to create a new Azure Cloud Service project, along with basic Node.js scaffolding:
 
-1. **Windows PowerShell** を管理者として実行します。**[スタート] メニュー**または**スタート画面**で、「**Windows PowerShell**」を検索します。
+1. Run **Windows PowerShell** as Administrator; from the **Start Menu** or **Start Screen**, search for **Windows PowerShell**.
 
-2. サブスクリプションに [PowerShell を接続します]。
+2. [Connect PowerShell] to your subscription.
 
-3. 次の PowerShell コマンドレットを入力してプロジェクトを作成します。
+3. Enter the following PowerShell cmdlet to create to create the project:
 
         New-AzureServiceProject helloworld
 
-	![New-AzureService helloworld コマンドの結果][The result of the New-AzureService helloworld command]
+    ![The result of the New-AzureService helloworld command][The result of the New-AzureService helloworld command]
 
-	**New-AzureServiceProject** コマンドレットは、クラウド サービスに Node.js アプリケーションを発行するための基本的な構造を生成します。これには、Azure への発行に必要な構成ファイルが含まれています。また、このコマンドレットにより、作業ディレクトリがこのサービス用のディレクトリに変更されます。
+    The **New-AzureServiceProject** cmdlet generates a basic structure for publishing a Node.js application to a Cloud Service. It contains configuration files necessary for publishing to Azure. The cmdlet also changes your working directory to the directory for the service.
 
-	このコマンドレットによって作成されるファイルは、次のとおりです。
+    The cmdlet creates the following files:
 
-	-   **ServiceConfiguration.Cloud.cscfg**、**ServiceConfiguration.Local.cscfg** および **ServiceDefinition.csdef**: アプリケーションの発行に必要な Azure 固有のファイルです。詳細については、「[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]」を参照してください。
+    -   **ServiceConfiguration.Cloud.cscfg**, **ServiceConfiguration.Local.cscfg** and **ServiceDefinition.csdef**: Azure-specific files necessary for publishing your application. For more information, see [Overview of Creating a Hosted Service for Azure].
 
-	-   **deploymentSettings.json**: Azure PowerShell デプロイ コマンドレットによって使用されるローカル設定が格納されます。
+    -   **deploymentSettings.json**: Stores local settings that are used by the Azure PowerShell deployment cmdlets.
 
-4.  次のコマンドを入力して、新しい Web ロールを追加します。
+4.  Enter the following command to add a new web role:
 
         Add-AzureNodeWebRole
 
-	![The output of the Add-AzureNodeWebRole command][The output of the Add-AzureNodeWebRole command]
+    ![The output of the Add-AzureNodeWebRole command][The output of the Add-AzureNodeWebRole command]
 
-	**Add-azurenodewebrole** コマンドレットは、基本的な Node.js アプリケーションを作成します。**.csfg** ファイルおよび **.csdef** ファイルも変更され、新しいロールの構成エントリが追加されます。
+    The **Add-AzureNodeWebRole** cmdlet creates a basic Node.js application. It also modifies the **.csfg** and **.csdef** files to add configuration entries for the new role.
 
-	> [AZURE.NOTE] ロール名を指定しない場合は、既定の名前が使用されます。名前は、`Add-AzureNodeWebRole MyRole` のように、最初のコマンドレットのパラメーターとして指定できます。
+    > [AZURE.NOTE] If you do not specify a role name, a default name is used. You can provide a name as the first cmdlet parameter: `Add-AzureNodeWebRole MyRole`
 
-Node.js アプリは **server.js** ファイルで定義されます。このファイルは Web ロール用のディレクトリ (既定では **WebRole1**) に配置されます。次にコードを示します。
+The Node.js app is defined in the file **server.js**, located in the directory for the web role (**WebRole1** by default). Here is the code:
 
-	var http = require('http');
-	var port = process.env.port || 1337;
-	http.createServer(function (req, res) {
-	    res.writeHead(200, { 'Content-Type': 'text/plain' });
-	    res.end('Hello World\n');
-	}).listen(port);
+    var http = require('http');
+    var port = process.env.port || 1337;
+    http.createServer(function (req, res) {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Hello World\n');
+    }).listen(port);
 
-このコードは、クラウド環境に割り当てられたポート番号を使用する点を除いて、基本的に [nodejs.org] Web サイトの "Hello World" サンプルと同じです。
+This code is essentially the same as the "Hello World" sample on the [nodejs.org] website, except it uses the port number assigned by the cloud environment.
 
-## Azure にアプリケーションをデプロイする
+## <a name="deploy-the-application-to-azure"></a>Deploy the application to Azure
 
-	[AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
+    [AZURE.INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-### Azure 発行設定のダウンロード
+### <a name="download-the-azure-publishing-settings"></a>Download the Azure publishing settings
 
-アプリケーションを Azure に展開するには、まず Azure サブスクリプションの発行設定をダウンロードする必要があります。
+To deploy your application to Azure, you must first download the publishing settings for your Azure subscription.
 
-1.  次の Azure PowerShell コマンドレットを実行します。
+1.  Run the following Azure PowerShell cmdlet:
 
         Get-AzurePublishSettingsFile
 
-	ブラウザーで、発行設定のダウンロード ページが表示されます。Microsoft アカウントによるログインを求められる場合があります。その場合は、Azure サブスクリプションに関連付けられたアカウントを使用します。
+    This will use your browser to navigate to the publish settings download page. You may be prompted to log in with a Microsoft Account. If so, use the account associated with your Azure subscription.
 
-	ダウンロードしたプロファイルを、簡単にアクセスできるファイルの保存場所に保存します。
+    Save the downloaded profile to a file location you can easily access.
 
-2.  次のコマンドレットを実行して、ダウンロードした発行プロファイルをインポートします。
+2.  Run following cmdlet to import the publishing profile you downloaded:
 
         Import-AzurePublishSettingsFile [path to file]
 
 
-	> [AZURE.NOTE] 発行設定をインポートしたら、ダウンロードした .publishSettings ファイルには他のユーザーがアカウントにアクセスできる情報が含まれているので、削除することを検討してください。
+    > [AZURE.NOTE] After importing the publish settings, consider deleting the downloaded .publishSettings file, because it contains information that could allow someone to access your account.
 
-### アプリケーションの発行
+### <a name="publish-the-application"></a>Publish the application
 
-発行するには、次のコマンドを実行します。
+To publish, run the following commands:
 
-  	$ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))   
-	Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
+    $ServiceName = "NodeHelloWorld" + $(Get-Date -Format ('ddhhmm'))   
+    Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Launch
 
-- **- ServiceName** は、このデプロイに使用する名前を指定します。必ず一意の名前を使用してください。一意でない場合は発行が失敗します。**Get-Date** コマンドは、名前を一意にする日付/時刻文字列を追加します。
+- **-ServiceName** specifies the name for the deployment. This must be a unique name, otherwise the publish process will fail. The **Get-Date** command tacks on a date/time string that should make the name unique.
 
-- **-Location** は、アプリケーションがホストされるデータ センターを指定します。使用可能なデータ センターの一覧を表示するには、**Get-azurelocation** コマンドレットを使用してください。
+- **-Location** specifies the datacenter that the application will be hosted in. To see a list of available datacenters, use the **Get-AzureLocation** cmdlet.
 
-- **-Launch** は、デプロイの完了後に、ブラウザー ウィンドウの起動とホストされるサービスへの移動を行います。
+- **-Launch** opens a browser window and navigates to the hosted service after deployment has completed.
 
-発行が成功すると、次のような応答が表示されます。
+After publishing succeeds, you will see a response similar to the following:
 
-![Publish-AzureService コマンドの出力][The output of the Publish-AzureService command]
+![The output of the Publish-AzureService command][The output of the Publish-AzureService command]
 
 > [AZURE.NOTE]
-初めてアプリケーションを発行する場合、アプリケーションがデプロイされ、利用可能になるまでに数分かかることがあります。
+> It can take several minutes for the application to deploy and become available when first published.
 
-デプロイが完了すると、ブラウザー ウィンドウが開き、クラウド サービスに移動します。
+Once the deployment has completed, a browser window will open and navigate to the cloud service.
 
 ![A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.][A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]
 
-これで、アプリケーションが Azure 上で実行されました。
+Your application is now running on Azure.
 
-**Publish-AzureServiceProject** コマンドレットによって行われる処理は次のとおりです。
+The **Publish-AzureServiceProject** cmdlet performs the following steps:
 
-1.  デプロイするためのパッケージを作成します。このパッケージには、アプリケーション フォルダー内のすべてのファイルが含まれます。
+1.  Creates a package to deploy. The package contains all the files in your application folder.
 
-2.  **ストレージ アカウント**が存在しない場合は、新たに作成します。Azure ストレージ アカウントは、デプロイ中にアプリケーション パッケージを格納するために使用されます。デプロイが完了したら、ストレージ アカウントを削除してかまいません。
+2.  Creates a new **storage account** if one does not exist. The Azure storage account is used to store the application package during deployment. You can safely delete the storage account after deployment is done.
 
-3.  **クラウド サービス**が存在しない場合は、新たに作成します。**クラウド サービス**は、Azure に展開したアプリケーションがホストされるコンテナーです。詳細については、「[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]」を参照してください。
+3.  Creates a new **cloud service** if one does not already exist. A **cloud service** is the container in which your application is hosted when it is deployed to Azure. For more information, see [Overview of Creating a Hosted Service for Azure].
 
-4.  デプロイ パッケージを Azure に発行します。
+4.  Publishes the deployment package to Azure.
 
 
-## アプリケーションの停止と削除
+## <a name="stopping-and-deleting-your-application"></a>Stopping and deleting your application
 
-アプリケーションをデプロイした後、余分なコストを回避するためにアプリケーションを無効にすることができます。Azure では、消費されたサーバー時間の 1 時間単位の料金が Web ロール インスタンスに課金されます。インスタンスが実行されていない場合や停止状態の場合でも、アプリケーションを展開した直後からサーバー時間が消費されます。
+After deploying your application, you may want to disable it so you can avoid extra costs. Azure bills web role instances per hour of server time consumed. Server time is consumed once your application is deployed, even if the instances are not running and are in the stopped state.
 
-1.  Windows PowerShell ウィンドウで次のコマンドレットを実行し、前のセクションで作成したサービスのデプロイを停止します。
+1.  In the Windows PowerShell window, stop the service deployment created in the previous section with the following cmdlet:
 
         Stop-AzureService
 
-	サービスの停止には、数分間かかる場合があります。サービスが停止すると、停止したことを知らせるメッセージが表示されます。
+    Stopping the service may take several minutes. When the service is stopped, you receive a message indicating that it has stopped.
 
-	![Stop-AzureService コマンドの状態][The status of the Stop-AzureService command]
+    ![The status of the Stop-AzureService command][The status of the Stop-AzureService command]
 
-2.  サービスを削除するには、次のコマンドレットを呼び出します。
+2.  To delete the service, call the following cmdlet:
 
         Remove-AzureService
 
-	確認を求めるメッセージが表示されたら、「**Y**」と入力して、サービスを削除します。
+    When prompted, enter **Y** to delete the service.
 
-	サービスの削除には、数分間かかる場合があります。サービスが削除されると、削除されたことを知らせるメッセージが表示されます。
+    Deleting the service may take several minutes. After the service has been deleted you receive a message indicating that the service was deleted.
 
-	![Remove-AzureService コマンドの状態][The status of the Remove-AzureService command]
+    ![The status of the Remove-AzureService command][The status of the Remove-AzureService command]
 
-	> [AZURE.NOTE] サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。他の用途に使用しているのでなければ、ストレージを削除してください。
+    > [AZURE.NOTE] Deleting the service does not delete the storage account that was created when the service was initially published, and you will continue to be billed for storage used. If nothing else is using the storage, you may want to delete it.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-詳細については、[Node.js デベロッパー センター]を参照してください。
+For more information, see the [Node.js Developer Center].
 
 <!-- URL List -->
 
-[Azure Websites、Cloud Services、および Virtual Machines の比較]: ../app-service-web/choose-web-site-cloud-service-vm.md
-[軽量の Web アプリを使用する]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md">
+[Azure Websites, Cloud Services and Virtual Machines comparison]: ../app-service-web/choose-web-site-cloud-service-vm.md
+[using a lightweight web app]: ../app-service-web/web-sites-nodejs-develop-deploy-mac.md">
 [Azure Powershell]: ../powershell-install-configure.md
-[Azure SDK for .NET 2.7]: http://www.microsoft.com/ja-JP/download/details.aspx?id=48178
-[PowerShell を接続します]: ../powershell-install-configure.md#how-to-connect-to-your-subscription
+[Azure SDK for .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178
+[Connect PowerShell]: ../powershell-install-configure.md#how-to-connect-to-your-subscription
 [nodejs.org]: http://nodejs.org/
-[Overview of Creating a Hosted Service for Azure (Azure 対応のホステッド サービスの作成の概要)]: https://azure.microsoft.com/documentation/services/cloud-services/
-[Node.js デベロッパー センター]: https://azure.microsoft.com/develop/nodejs/
+[Overview of Creating a Hosted Service for Azure]: https://azure.microsoft.com/documentation/services/cloud-services/
+[Node.js Developer Center]: https://azure.microsoft.com/develop/nodejs/
 
 <!-- IMG List -->
 
@@ -196,4 +197,8 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,12 +1,12 @@
 <properties
-	pageTitle="構成済みソリューションの使用 | Microsoft Azure"
-	description="このチュートリアルに従って、Azure IoT Suite 事前構成済みソリューションのデプロイ方法について学習します。"
-	services=""
+    pageTitle="Get started with preconfigured solutions | Microsoft Azure"
+    description="Follow this tutorial to learn how to deploy an Azure IoT Suite preconfigured solution."
+    services=""
     suite="iot-suite"
-	documentationCenter=""
-	authors="dominicbetts"
-	manager="timlt"
-	editor=""/>
+    documentationCenter=""
+    authors="dominicbetts"
+    manager="timlt"
+    editor=""/>
 
 <tags
      ms.service="iot-suite"
@@ -17,201 +17,202 @@
      ms.date="08/16/2016"
      ms.author="dobett"/>
 
-# チュートリアル: 事前構成済みソリューションの使用
 
-## はじめに
+# <a name="tutorial:-get-started-with-the-preconfigured-solutions"></a>Tutorial: Get started with the preconfigured solutions
 
-Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-solutions]は、さまざまな Azure IoT サービスを組み合わせて、IoT のビジネス シナリオを満たすエンド ツー エンド ソリューションを提供します。"*リモート監視*" は、対象のデバイスに接続して監視する事前構成済みソリューションです。このソリューションを使用して、対象デバイスから流れてくるデータのストリームを分析し、そのデータのストリームに対してプロセスから自動的に応答が得られるようにすることで、ビジネスの成果を高めることができます。
+## <a name="introduction"></a>Introduction
 
-このチュートリアルでは、リモート監視の事前構成済みソリューションをプロビジョニングする方法について説明します。また、リモート監視ソリューションの基本機能についても詳しく説明します。こうした機能の多くには、事前構成済みソリューションと一緒にデプロイされるソリューション ダッシュボードを通じてアクセスできます。
+Azure IoT Suite [preconfigured solutions][lnk-preconfigured-solutions] combine multiple Azure IoT services to deliver end-to-end solutions that implement common IoT business scenarios. The *remote monitoring* preconfigured solution connects to and monitors your devices. You can use the solution to analyze the stream of data from your devices and to improve business outcomes by making processes respond automatically to that stream of data.
+
+This tutorial shows you how to provision the remote monitoring preconfigured solution. It also walks you through the basic features of the remote monitoring solution. You can access many of these features through the solution dashboard that deploys along with the preconfigured solution:
 
 ![Remote monitoring preconfigured solution dashboard][img-dashboard]
 
-このチュートリアルを完了するには、アクティブな Azure サブスクリプションが必要になります。
+To complete this tutorial, you need an active Azure subscription.
 
-> [AZURE.NOTE]  アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk_free_trial]を参照してください。
+> [AZURE.NOTE]  If you don’t have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][lnk_free_trial].
 
 [AZURE.INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
-## ソリューション ダッシュボードの表示
+## <a name="view-the-solution-dashboard"></a>View the solution dashboard
 
-ソリューションのダッシュボードでは、デプロイされたソリューションを管理できます。テレメトリの表示、デバイスの追加、ルールの構成などを行えます。
+The solution dashboard enables you to manage the deployed solution. For example, you can view telemetry, add devices, and configure rules.
 
-1.  プロビジョニングが完了し、事前構成済みソリューションのタイルに **[準備完了]** が表示されたら、**[起動]** をクリックし、新しいタブでリモート監視ソリューション ポータルを開きます。
+1.  When the provisioning is complete and the tile for your preconfigured solution indicates **Ready**, click **Launch** to open your remote monitoring solution portal in a new tab.
 
     ![Launch the preconfigured solution][img-launch-solution]
 
-2.  既定では、ソリューション ポータルに*ソリューション ダッシュボード*が表示されます。左側のメニューを使用して、他のビューを選択できます。
+2.  By default, the solution portal shows the *solution dashboard*. You can select other views using the left-hand menu.
 
     ![Remote monitoring preconfigured solution dashboard][img-dashboard]
 
-ダッシュボードには次の情報が表示されます。
+The dashboard displays the following information:
 
-- マップには、ソリューションに接続されている各デバイスの場所が表示されます。初めてサンプルを実行すると、シミュレートされた 4 つのデバイスがあります。シミュレートされたデバイスは、Azure WebJobs として実装されています。ソリューションは Bing Maps API を使用して、マップに情報をプロットします。
-- **[テレメトリ履歴]** パネルには、選択したデバイスからの湿度と温度のテレメトリがほぼリアルタイムでプロットされ、最大値、最小値、平均湿度などの集計データが表示されます。
-- **[アラーム履歴]** パネルには、テレメトリ値がしきい値を超えたときの最新のアラーム イベントが表示されます。構成済みソリューションによって作成された例に加えて、独自のアラームを定義することもできます。
+- The map displays the location of each device connected to the solution. When you first run the solution, there are four simulated devices. The simulated devices are implemented as Azure WebJobs, and the solution uses the Bing Maps API to plot information on the map.
+- The **Telemetry History** panel plots humidity and temperature telemetry from a selected device in near real time and displays aggregate data such as maximum, minimum, and average humidity.
+- The **Alarm History** panel shows recent alarm events when a telemetry value has exceeded a threshold. You can define your own alarms in addition to the examples created by the preconfigured solution.
 
-## デバイス一覧の表示
+## <a name="view-the-device-list"></a>View the device list
 
-デバイス一覧には、ソリューションの登録されたすべてのデバイスが表示されます。デバイス メタデータを表示、編集したり、デバイスを追加または取り外したり、コマンドをデバイスに送信したりできます。
+The device list shows all the registered devices in the solution. You view and edit device metadata, add or remove devices, and send commands to devices.
 
-1.  左側のメニューで **[デバイス]** をクリックし、このソリューションの*デバイス一覧*を表示します。
+1.  Click **Devices** in the left-hand menu to show the *device list* for this solution.
 
     ![Device list in dashboard][img-devicelist]
 
-2.  デバイス一覧には、プロビジョニング プロセスで作成された 4 つのシミュレートされたデバイスが表示されています。
+2.  The device list shows that there are four simulated devices created by the provisioning process.
 
-3.  デバイス一覧で任意のデバイスをクリックすると、デバイスの詳細が表示されます。
+3.  Click a device in the device list to view the device details.
 
     ![Device details in dashboard][img-devicedetails]
 
-**[デバイスの詳細]** パネルには、3 つのセクションが含まれています。
+The **Device Details** panel contains three sections:
 
-- **[アクション]** セクションには、デバイスに対して実行できるアクションが一覧表示されます。デバイスを無効にした場合、そのデバイスはテレメトリの送信やコマンドの受信ができなくなります。デバイスを無効にした場合は、再度有効にすることができます。テレメトリ値がしきい値を超えた場合にアラームをトリガーする、デバイスに関連付けられたルールを追加することができます。デバイスにコマンドを送信することもできます。デバイスは初めてソリューションに接続したときに、応答できるコマンドをソリューションに伝えます。
-- **[デバイスのプロパティ]** セクションには、デバイス メタデータが一覧表示されます。このメタデータにはデバイス自体から生成されたもの (製造元など) と、ソリューションによって生成されたもの (作成日時など) があります。ここからデバイスのメタデータを編集できます。
-- **[認証キー]** セクションには、デバイスがソリューションで認証に使用できるキーが一覧表示されます。
+- The **Actions** section lists the actions you can perform on the device. If you disable the device, it is no longer allowed to send telemetry or receive commands. If you disable a device, you can then enable it again. You can add a rule associated with the device that triggers an alarm when a telemetry value exceeds a threshold. You can also send a command to a device. When a device first connects, it tells the solution the commands it can respond to.
+- The **Device Properties** section lists the device metadata. Some of this metadata comes from the device itself (such as the manufacturer) and some is generated by the solution (such as the created time). You can edit the device metadata from here.
+- The **Authentication Keys** section lists the keys the device can use to authenticate with the solution.
 
-## デバイスへのコマンドの送信
+## <a name="send-a-command-to-a-device"></a>Send a command to a device
 
-[デバイスの詳細] ペインには、特定のデバイスがサポートしているすべてのコマンドが表示されます。また、デバイスにコマンドを送信することもできます。デバイスは初めて起動したときに、ソリューションに対してサポートしているコマンドに関する情報を送信します。
+The device details pane shows all the commands that a specific device supports and enables you to send commands to a device. When a device first starts, it sends information about the commands it supports to the solution.
 
-1.  選択したデバイスの [デバイスの詳細] ペインで **[コマンド]** をクリックします。
+1.  Click **Commands** in the device details pane for the selected device.
 
     ![Device commands in dashboard][img-devicecommands]
 
-2.  コマンドの一覧から **[PingDevice]** を選択します。
+2.  Select **PingDevice** from the command list.
 
-3.  **[コマンドの送信]** をクリックします。
+3.  Click **Send Command**.
 
-4.  [コマンドの履歴] にコマンドの状態が表示されます。
+4.  You can see the status of the command in the command history.
 
     ![Command status in dashboard][img-pingcommand]
 
-ソリューションは、送信した各コマンドの状態を追跡します。最初は結果が **[保留中]** になっています。コマンドを実行したことがデバイスから報告されると、結果が **[成功]** に設定されます。
+The solution tracks the status of each command it sends. Initially the result is **Pending**. When the device reports that it has executed the command, the result is set to **Success**.
 
-## 新しいシミュレートされたデバイスの追加
+## <a name="add-a-new-simulated-device"></a>Add a new simulated device
 
-事前構成済みソリューションをデプロイすると、4 つのサンプル デバイスが自動的にプロビジョニングされ、デバイス一覧に表示されます。これらは "*シミュレーション デバイス* "であり、Azure WebJob で実行されています。シミュレーション デバイスを使用することで、事前構成済みソリューションを簡単にテストすることができます。実際に物理デバイスをデプロイする必要はありません。実際のデバイスをソリューションに接続する方法については、[リモート監視の事前構成済みソリューションへのデバイスの接続][lnk-connect-rm]に関するチュートリアルを参照してください。
+When you deploy the preconfigured solution, you automatically provision the four sample devices you can see in the device list. These devices are *simulated devices* running in an Azure WebJob. Simulated devices make it easy for you to experiment with the preconfigured solution without the need to deploy real, physical devices. If you do want to connect a real device to the solution, see the [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm] tutorial.
 
-次の手順は、シミュレートされたデバイスをソリューションに追加する方法を示しています。
+The following steps show you how to add a simulated device to the solution:
 
-1.  デバイス一覧に戻ります。
+1.  Navigate back to the device list.
 
-2.  左下隅の **[+ デバイスの追加]** をクリックし、デバイスを追加します。
+2.  Click **+ Add A Device** in the bottom left corner to add a device.
 
     ![Add a device to the preconfigured solution][img-adddevice]
 
-3.  **[シミュレートされたデバイス]** タイルで **[新規追加]** をクリックします。
+3.  Click **Add New** on the **Simulated Device** tile.
 
     ![Set new device details in dashboard][img-addnew]
     
-    新しいシミュレートされたデバイスを作成することに加えて、**カスタム デバイス**を作成することを選択した場合、物理デバイスを追加することもできます。ソリューションへの物理デバイスの接続に関する詳細については、[IoT Suite リモート監視構成済みソリューションへのデバイスの接続][lnk-connect-rm]に関する記事を参照してください。
+    In addition to creating a new simulated device, you can also add a physical device if you choose to create a **Custom Device**. To learn more about connecting physical devices to the solution, see [Connect your device to the IoT Suite remote monitoring preconfigured solution][lnk-connect-rm].
 
-4.  **[自分で自分のデバイス ID を定義する]** を選択し、**mydevice\_01** など一意のデバイス ID 名を追加します。
+4.  Select **Let me define my own Device ID**, and enter a unique device ID name such as **mydevice_01**.
 
-5.  **[作成]** をクリックします。
+5.  Click **Create**.
 
     ![Save a new device][img-definedevice]
 
-6. 「**新しいシミュレートされたデバイスの追加**」の手順 3. で **[完了]** をクリックすると、デバイス一覧に戻ります。
+6. In step 3 of **Add a simulated device**, click **Done** to return to the device list.
 
-7. デバイス一覧でデバイスが **[実行中]** であることを確認できます。
+7. You can view your device **Running** in the device list.
 
     ![View new device in device list][img-runningnew]
 
-8. 新しいデバイスからシミュレートされたテレメトリをダッシュボードに表示することもできます。
+8. You can also view the simulated telemetry from your new device on the dashboard:
 
     ![View telemetry from new device][img-runningnew-2]
 
-## デバイス メタデータの編集
+## <a name="edit-the-device-metadata"></a>Edit the device metadata
 
-デバイスは、初めてソリューションに接続するとき、そのメタデータをソリューションに送信します。ソリューション ダッシュボードを通じてデバイス メタデータを編集すると、新しいメタデータ値がデバイスに送信され、ソリューションの DocumentDB データベースに新しい値が格納されます。詳細については、「[デバイス ID レジストリと DocumentDB][lnk-devicemetadata]」を参照してください。
+When a device first connects to the solution, it sends its metadata to the solution. When you edit the device metadata through the solution dashboard, it sends the new metadata values to the device and stores the new values in the solution DocumentDB database. For more information, see [Device identity registry and DocumentDB][lnk-devicemetadata].
 
-1.  デバイス一覧に戻ります。
+1.  Navigate back to the device list.
 
-2.  **[Devices List (デバイスの一覧)]** で新しいデバイスを選択し、**[編集]** をクリックして、**[デバイスのプロパティ]** を編集します。
+2.  Select your new device in the **Devices List**, and then click **Edit** to edit the **Device Properties**:
 
     ![Edit device metadata][img-editdevice]
 
-3. 下へスクロールし、緯度と経度の値を変更します。**[変更をデバイス レジストリに保存]** をクリックします。
+3. Scroll down and make a change to the latitude and longitude vales. Then click **Save changes to device registry**.
 
     ![Edit device metadata][img-editdevice2]
 
-4. ダッシュボードに戻ると、マップのデバイスの場所が変更されています。
+4. Navigate back to the dashboard, the location of device has changed on the map:
 
     ![Edit device metadata][img-editdevice3]
 
-## 新しいデバイスのルールの追加
+## <a name="add-a-rule-for-the-new-device"></a>Add a rule for the new device
 
-追加した新しいデバイスにはルールがありません。このセクションでは、新しいデバイスによって報告された温度が 47 度を超えるとアラームをトリガーするルールを追加します。始める前に、ダッシュボードで新しいデバイスのテレメトリ履歴に、デバイスの温度が 45 度を超えたことがないと示されていることに注意します。
+There are no rules for the new device you just added. In this section, you add a rule that triggers an alarm when the temperature reported by the new device exceeds 47 degrees. Before you start, notice that the telemetry history for the new device on the dashboard shows the device temperature never exceeds 45 degrees.
 
-1.  デバイス一覧に戻ります。
+1.  Navigate back to the device list.
 
-2.  **[Devices List (デバイスの一覧)]** で新しいデバイスを選択し、**[Add rule (ルールの追加)]** をクリックして、デバイスのルールを追加します。
+2.  Select your new device in the **Devices List**, and then click **Add rule** to add a rule for the device.
 
-3. データ フィールドとして **[温度]** を使用し、温度が 47 度を超えたときの出力として **[AlarmTemp]** を使用するルールを作成します。
+3. Create a rule that uses **Temperature** as the data field and uses **AlarmTemp** as the output when the temperature exceeds 47 degrees:
 
     ![Add a device rule][img-adddevicerule]
 
-4. **[ルールを保存して表示]** をクリックして変更を保存します。
+4. Click **Save and View Rules** to save your changes.
 
-5.  新しいデバイスの [デバイスの詳細] ペインで **[コマンド]** をクリックします。
+5.  Click **Commands** in the device details pane for the new device.
 
     ![Add a device rule][img-adddevicerule2]
 
-6.  コマンド リストから **[ChangeSetPointTemp]** を選択し、**[SetPointTemp]** を 45 に設定します。**[コマンドの送信]** をクリックします。
+6.  Select **ChangeSetPointTemp** from the command list and set **SetPointTemp** to 45. Then click **Send Command**:
 
     ![Add a device rule][img-adddevicerule3]
 
-7.  ソリューションのダッシュボードに戻ります。しばらくして、新しいデバイスによって報告される温度が 47 度のしきい値を超えると、**[アラーム履歴]** ペインに新しいエントリが表示されます。
+7.  Navigate back to the solution dashboard. After a short time, you will see a new entry in the **Alarm History** pane when the temperature reported by your new device exceeds the 47-degree threshold:
 
     ![Add a device rule][img-adddevicerule4]
 
-8. ダッシュボードの **[ルール]** ページですべてのルールを確認して編集できます。
+8. You can review and edit all your rules on the **Rules** page of the dashboard:
 
     ![List device rules][img-rules]
 
-9. ダッシュボードの **[アクション]** ページで、ルールへの対応として実行可能なすべてのアクションを確認して編集できます。
+9. You can review and edit all the actions that can be taken in response to a rule on the **Actions** page of the dashboard:
 
     ![List device actions][img-actions]
 
-> [AZURE.NOTE] ルールへの対応として電子メール メッセージや SMS を送信したり、[ロジック アプリ][lnk-logic-apps]経由で基幹業務システムに統合したりするアクションを定義できます。詳細については、「[ロジック アプリを Azure IoT Suite リモート監視構成済みソリューションに接続する][lnk-logicapptutorial]」を参照してください。
+> [AZURE.NOTE] It is possible to define actions that can send an email message or SMS in response to a rule or integrate with a line-of-business system through a [Logic App][lnk-logic-apps]. For more information, see the [Connect Logic App to your Azure IoT Suite Remote Monitoring preconfigured solution][lnk-logicapptutorial].
 
-## その他の機能
+## <a name="other-features"></a>Other features
 
-ソリューション ポータルを使用すると、モデル番号などの具体的な特性でデバイスを検索できます。
+Using the solution portal you can search for devices with specific characteristics such as a model number:
 
 ![Search for a device][img-search]
 
-デバイスを無効にし、無効になったデバイスを削除することができます。
+You can disable a device, and after it is disabled you can remove it:
 
 ![Disable and remove a device][img-disable]
 
-## バックグラウンド処理
+## <a name="behind-the-scenes"></a>Behind the scenes
 
-事前構成済みソリューションをデプロイすると、デプロイ プロセスにより、選択した Azure サブスクリプションに複数のリソースが作成されます。これらのリソースを Azure [ポータル][lnk-portal]で表示できます。デプロイ プロセスにより、事前構成済みソリューション用に選択した名前に基づいた名前で、**リソース グループ**が作成されます。
+When you deploy a preconfigured solution, the deployment process creates multiple resources in the Azure subscription you selected. You can view these resources in the Azure [portal][lnk-portal]. The deployment process creates a **resource group** with a name based on the name you choose for your preconfigured solution:
 
 ![Preconfigured solution in the Azure portal][img-portal]
 
-各リソースの設定を表示するには、リソース グループ内のリソースのリストでそれを選択します。
+You can view the settings of each resource by selecting it in the list of resources in the resource group.
 
-また、事前構成済みソリューションのソース コードを表示することもできます。リモート監視の事前構成済みソリューションのソース コードは、[azure-iot-remote-monitoring][lnk-rmgithub] GitHub リポジトリにあります。
+You can also view the source code for the preconfigured solution. The remote monitoring preconfigured solution source code is in the [azure-iot-remote-monitoring][lnk-rmgithub] GitHub repository:
 
-- **DeviceAdministration** フォルダーには、ダッシュボードのソース コードが格納されています。
-- **Simulator** フォルダーには、シミュレートされたデバイスのソース コードが格納されています。
-- **EventProcessor** フォルダーには、受信テレメトリを処理するバックエンド プロセスのソース コードが格納されています。
+- The **DeviceAdministration** folder contains the source code for the dashboard.
+- The **Simulator** folder contains the source code for the simulated device.
+- The **EventProcessor** folder contains the source code for the back-end process that handles the incoming telemetry.
 
-完了したら、[azureiotsuite.com][lnk-azureiotsuite] で事前構成済みソリューションを Azure サブスクリプションから削除できます。このサイトでは、構成済みのソリューションを作成したときにプロビジョニングされていたすべてのリソースを簡単に削除することができます。
+When you are done, you can delete the preconfigured solution from your Azure subscription on the [azureiotsuite.com][lnk-azureiotsuite] site. This site enables you to easily delete all the resources that were provisioned when you created the preconfigured solution.
 
-> [AZURE.NOTE] 事前構成済みソリューションに関連するすべてのものを確実に削除するには、ポータルでリソース グループを単に削除するのではなく、[azureiotsuite.com][lnk-azureiotsuite] サイトで事前構成済みソリューションを削除してください。
+> [AZURE.NOTE] To ensure that you delete everything related to the preconfigured solution, delete it on the [azureiotsuite.com][lnk-azureiotsuite] site and do not simply delete the resource group in the portal.
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-これで、事前構成済みの実際のソリューションをデプロイできました。引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
+Now that you’ve deployed a working preconfigured solution, you can continue getting started with IoT Suite by reading the following articles:
 
-- [リモート監視の事前構成済みソリューションのチュートリアル][lnk-rm-walkthrough]
-- [デバイスをリモート監視の事前構成済みソリューションに接続する][lnk-connect-rm]
-- [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
+- [Remote monitoring preconfigured solution walkthrough][lnk-rm-walkthrough]
+- [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm]
+- [Permissions on the azureiotsuite.com site][lnk-permissions]
 
 [img-launch-solution]: media/iot-suite-getstarted-preconfigured-solutions/launch.png
 [img-dashboard]: media/iot-suite-getstarted-preconfigured-solutions/dashboard.png
@@ -249,4 +250,8 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 [lnk-connect-rm]: iot-suite-connecting-devices.md
 [lnk-permissions]: iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

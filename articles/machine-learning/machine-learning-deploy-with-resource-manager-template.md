@@ -1,30 +1,32 @@
 <properties
-	pageTitle="Azure Resource Manager テンプレートを使用した Machine Learning ワークスペースのデプロイ | Microsoft Azure"
-	description="Azure Resource Manager テンプレートを使用して Azure Machine Learning ワークスペースをデプロイする方法"
-	services="machine-learning"
-	documentationCenter=""
-	authors="ahgyger"
-	manager="haining"
-	editor="garye"/>
+    pageTitle="Deploy Machine Learning Workspace Using Azure Resource Manager Template | Microsoft Azure"
+    description="How to deploy a workspace for Azure Machine Learning using Azure Resource Manager template"
+    services="machine-learning"
+    documentationCenter=""
+    authors="ahgyger"
+    manager="haining"
+    editor="garye"/>
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/23/2016"
-	ms.author="ahgyger"/>
-# Azure Resource Manager を使用した Machine Learning ワークスペースのデプロイ
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/23/2016"
+    ms.author="ahgyger"/>
 
-## はじめに
-Azure Resource Manager デプロイ テンプレートは、検証および再試行メカニズムで相互接続されたコンポーネントをデプロイできるように、スケーラブルな方法を提供し、時間を節約します。Azure Machine Learning ワークスペースを設定するには、たとえば、Azure ストレージ アカウントを構成してから、ワークスペースをデプロイする必要があります。この作業を何百ものワークスペースに対して手動で行うことを想像してください。代わりに Azure Resource Manager テンプレートを使用すれば、もっと簡単に Azure Machine Learning ワークスペースとそのすべての依存関係をデプロイできます。この記事では、このプロセスを順を追って説明します。Azure Resource Manager の概要については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。
+# <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Deploy Machine Learning Workspace Using Azure Resource Manager
 
-## 詳細な手順: Machine Learning ワークスペースの作成
-Azure リソース グループを作成し、Resource Manager テンプレートを使用して、新しい Azure ストレージ アカウントと新しい Azure Machine Learning ワークスペースをデプロイします。デプロイが完了したら、作成されたワークスペースに関する重要な情報 (プライマリ キー、workspaceID、およびワークスペースへの URL) を出力します。
+## <a name="introduction"></a>Introduction
+Using an Azure Resource Manager deployment template saves you time by giving you a scalable way to deploy interconnected components with a validation and retry mechanism. To set up Azure Machine Learning Workspaces, for example, you need to first configure an Azure storage account and then deploy your workspace. Imagine doing this manually for hundreds of workspaces. An easier alternative is to use an Azure Resource Manager template to deploy an Azure Machine Learning Workspace and all its dependencies. This article takes you through this process step-by-step. For a great overview of Azure Resource Manager, see [Azure Resource Manager overview](../resource-group-overview.md).
 
-### Azure Resource Manager テンプレートの作成
-Machine Learning ワークスペースには Azure ストレージ アカウントが必要です。このアカウントには、自身にリンクされているデータセットが格納されます。次のテンプレートでは、リソース グループの名前を使用して、ストレージ アカウント名とワークスペース名を生成します。また、ワークスペースを作成するときに、ストレージ アカウント名をプロパティとして使用します。
+## <a name="step-by-step:-create-a-machine-learning-workspace"></a>Step-by-step: create a Machine Learning Workspace
+We will create an Azure resource group, then deploy a new Azure storage account and a new Azure Machine Learning Workspace using a Resource Manager template. Once the deployment is complete, we will print out important information about the workspaces that were created (the primary key, the workspaceID, and the URL to the workspace).
+
+### <a name="create-an-azure-resource-manager-template"></a>Create an Azure Resource Manager template
+A Machine Learning Workspace requires an Azure storage account to store the dataset linked to it.
+The following template uses the name of the resource group to generate the storage account name and the workspace name.  It also uses the storage account name as a property when creating the workspace.
 
 ```
 {
@@ -71,11 +73,11 @@ Machine Learning ワークスペースには Azure ストレージ アカウン�
 }
 
 ```
-このテンプレートを mlworkspace.json ファイルとして c:\\temp に保存します。
+Save this template as mlworkspace.json file under c:\temp\.
 
-### テンプレートに基づいてリソース グループをデプロイ
-* PowerShell を開きます
-* Azure Resource Manager と Azure サービス管理をインストールします
+### <a name="deploy-the-resource-group,-based-on-the-template"></a>Deploy the resource group, based on the template
+* Open PowerShell
+* Install modules for Azure Resource Manager and Azure Service Management  
 
 ```
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
@@ -85,57 +87,58 @@ Install-Module AzureRM -Scope CurrentUser
 Install-Module Azure -Scope CurrentUser
 ```
 
-   この手順では、残りの手順を完了するのに必要なモジュールをダウンロードしてインストールします。これは、PowerShell コマンドを実行している環境で一度だけ実行する必要があります。
+   These steps download and install the modules necessary to complete the remaining steps. This only needs to be done once in the environment where you are executing the PowerShell commands.   
 
-* Azure に対して認証します
+* Authenticate to Azure  
 
 ```
 # Authenticate (enter your credentials in the pop-up window)
 Add-AzureRmAccount
 ```
-この手順は、セッションごとに繰り返し実行する必要があります。認証されると、サブスクリプション情報が表示されます。
+This step needs to be repeated for each session. Once authenticated, your subscription information should be displayed.
 
-![Azure アカウント][1]
+![Azure Account][1]
 
-これで Azure にアクセスできました。次はリソース グループを作成します。
+Now that we have access to Azure, we can create the resource group.
 
-* リソース グループの作成
+* Create a resource group
 
 ```
 $rg = New-AzureRmResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
 $rg
 ```
 
-リソース グループが正しくプロビジョニングされていることを確認します。**ProvisioningState** が "Succeeded" になっているはずです。 リソース グループ名は、ストレージ アカウント名を生成するときにテンプレートによって使用されます。ストレージ アカウント名の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。
+Verify that the resource group is correctly provisioned. **ProvisioningState** should be “Succeeded.”
+The resource group name is used by the template to generate the storage account name. The storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only.
 
-![リソース グループ][2]
+![Resource Group][2]
 
-* リソース グループのデプロイメントを使用して、新しい Machine Learning ワークスペースをデプロイします。
+* Using the resource group deployment, deploy a new Machine Learning Workspace.
 
 ```
 # Create a Resource Group, TemplateFile is the location of the JSON template.
 $rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
 ```
 
-デプロイが完了すると、デプロイしたワークスペースのプロパティに簡単にアクセスできます。たとえば、プライマリ キー トークンにアクセスできます。
+Once the deployment is completed, it is straightforward to access properties of the workspace you deployed. For example, you can access the Primary Key Token.
 
 ```
 # Access Azure ML Workspace Token after its deployment.
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-既存のワークスペースのトークンを取得するもう 1 つの方法として、Invoke-AzureRmResourceAction コマンドを使用します。たとえば、すべてのワークスペースのプライマリ トークンとセカンダリ トークンを一覧表示できます。
+Another way to retrieve tokens of existing workspace is to use the Invoke-AzureRmResourceAction command. For example, you can list the primary and secondary tokens of all workspaces.
 
 ```  
 # List the primary and secondary tokens of all workspaces
 Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}  
 ```
-ワークスペースをプロビジョニングしたら、[Azure Machine Learning の PowerShell モジュール](http://aka.ms/amlps)を使用して、Azure Machine Learning Studio タスクを自動化することもできます。
+After the workspace is provisioned, you can also automate many Azure Machine Learning Studio tasks using the [PowerShell Module for Azure Machine Learning](http://aka.ms/amlps).
 
-## 次のステップ 
-* [Azure Resource Manager テンプレートの作成](../resource-group-authoring-templates.md)について確認します。
-* [Azure クイックスタート テンプレート リポジトリ](https://github.com/Azure/azure-quickstart-templates)を確認します。
-* [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39) のビデオを見ます。
+## <a name="next-steps"></a>Next Steps 
+* Learn more about [authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md). 
+* Have a look at the [Azure Quickstart Templates Repository](https://github.com/Azure/azure-quickstart-templates). 
+* Watch this video about [Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39). 
  
 <!--Image references-->
 [1]: ../media/machine-learning-deploy-with-resource-manager-template/azuresubscription.png
@@ -144,4 +147,8 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 
 <!--Link references-->
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

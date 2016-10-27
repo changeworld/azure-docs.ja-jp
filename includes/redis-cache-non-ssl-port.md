@@ -1,5 +1,9 @@
-非 SSL ポートを有効にするには、[Azure ポータル](https://portal.azure.com)でキャッシュを[参照](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings)し、**[設定]、[詳細設定]** の順にクリックします。**[詳細設定]** ブレードにある **[SSL によるアクセスのみ許可する]** で **[いいえ]** をクリックしてから、**[保存]** をクリックします。
+To enable the non-SSL port, [browse](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) to your cache in the [Azure portal](https://portal.azure.com) and click **Settings > Advanced settings**. Click **No** for **Allow access only via SSL** on the **Advanced settings blade** and then click **Save**.
 
 ![Redis cache settings](media/redis-cache-non-ssl-port/redis-cache-non-ssl-port.png)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

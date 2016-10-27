@@ -1,82 +1,88 @@
 <properties
-	pageTitle="ロジック アプリ でのファイル コネクタの使用 | Microsoft Azure App Service"
-	description="ファイル コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
-	authors="rajeshramabathiran"
-	manager="erikre"
-	editor=""
-	services="logic-apps"
-	documentationCenter=""/>
+    pageTitle="Using the File connector in Logic apps | Microsoft Azure App Service"
+    description="How to create and configure the file connector or API app and use it in a Logic app in Azure App Service"
+    authors="rajeshramabathiran"
+    manager="erikre"
+    editor=""
+    services="logic-apps"
+    documentationCenter=""/>
 
 <tags
-	ms.service="logic-apps"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2016"
-	ms.author="rajram"/>
+    ms.service="logic-apps"
+    ms.workload="integration"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/01/2016"
+    ms.author="rajram"/>
 
-# ファイル コネクタの使用開始とロジック アプリへの追加
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
-ファイル システムに接続して、アップロードやダウンロードなど、ホスト コンピューター上のファイルの操作を行います。ロジック アプリはさまざまなデータ ソースを基にトリガーでき、データの取得と処理のためのコネクタを提供します。このファイル コネクタをビジネス ワークフローに追加し、ロジック アプリ内のそのワークフローの一部としてデータを処理できます。
+# <a name="get-started-with-the-file-connector-and-add-it-to-your-logic-app"></a>Get started with the file connector and add it to your Logic app
+>[AZURE.NOTE] This version of the article applies to Logic apps 2014-12-01-preview schema version.
 
-ファイル コネクタは、ホスト ファイル システムへのハイブリッド接続にハイブリッド接続マネージャーを使用します。
+Connect to a file system to upload, download, and more to your files on a host machine. Logic apps can trigger based on a variety of data sources and offer connectors to get and process data. You can add the file connector to your business workflow and process data as part of this workflow within a Logic app. 
 
-## Logic App 用のファイル コネクタを作成する ##
-ファイル コネクタを使用するには、まずファイル コネクタ API アプリのインスタンスを作成する必要があります。そのためには、次の手順に従います。
+The file connector uses the Hybrid Connection Manager for hybrid connectivity to the host file system.
 
-1.	Azure ポータルの左側にある [+ 新規] を使用して Azure Marketplace を開きます。
-2.	"ファイル コネクタ" を検索します。
-3.	検索結果から **[File Connector (preview) (ファイル コネクタ (プレビュー))]** を選択します。
-4.	**[作成]** ボタンを選択します。
-5.	次のように、ファイル コネクタを構成します。![][1]
+## <a name="creating-a-file-connector-for-your-logic-app"></a>Creating a file connector for your Logic app ##
+To use the file connector, you need to first create an instance of the file connector API app. This can be done as follows:
 
-	- **[名前]** - ファイル コネクタの名前を指定します。
-	- **[パッケージの設定]**
-		- **[ルート フォルダー]** - ホスト コンピューター上のルート フォルダーのパスを指定します。例: D:\\FileConnectorTest
-		- **[Service Bus の接続文字列]** - Service Bus の接続文字列を指定します。Service Bus 名前空間の種類が、Basic ではなく Standard になっていることを確認し、Service Bus Relay を使用できるようにします。Service Bus Relay はハイブリッド接続マネージャーへの接続に使用されます。
-	- **[App Service プラン]** - App Service プランを選択または作成します。
-	- **[価格レベル]** - コネクタの価格レベルを選択します。
-	- **[リソース グループ]** - コネクタを格納するリソース グループを選択するか、作成します。
-	- **[サブスクリプション]** - コネクタを作成するサブスクリプションを選択します。
-	- **[場所]** - コネクタをデプロイする地域を選択します。
+1.  Open the Azure Marketplace using the + NEW option on the left side of the Azure Portal.
+2.  Search for “file connector”.
+3.  Select **File Connector (preview)** from the search results.
+4.  Select the **Create** button
+5.  Configure the file connector as follows:  
+![][1]
 
-4. [作成] をクリックします。新しいファイル コネクタが作成されます。
+    - **Name** - give a name for your file connector
+    - **Package Settings**
+        - **Root Folder** - Specify the root folder path on your host machine. Eg. D:\FileConnectorTest
+        - **Service Bus Connection String** - Provide a Service Bus Connection String. Make sure that the service bus namespace is of type Standard and NOT Basic to allow for use of Service Bus Relays.  Service Bus Relay is used to connect to the Hybrid Connection Manager.
+    - **App Service plan** - select or create a App Service plan
+    - **Pricing tier** - choose a pricing tier for the connector
+    - **Resource group** - select or create a resource group where the connector should reside
+    - **Subscription** - choose a subscription you want this connector to be created in
+    - **Location** - choose the geographic location where you would like the connector to be deployed
 
-## ハイブリッド接続マネージャーの構成 ##
-API App のインスタンスを作成したら、このダッシュボードに移動します。[参照]、[API Apps]、[ファイル コネクタの API Apps の選択] の順にクリックします。ここから、ハイブリッド接続マネージャーを構成する必要があります。ハイブリッド接続マネージャーの構成とトラブルシューティングの詳細については、「[ハイブリッド接続マネージャーの使用]」を参照してください。
+4. Click on Create. A new file connector will be created
 
-## Logic App でファイル コネクタを使用する ##
-API アプリが作成されたら、Logic App のアクションとしてファイル コネクタを使用できます。そのためには、次の手順を実行する必要があります。
+## <a name="configure-hybrid-connection-manager"></a>Configure Hybrid Connection Manager ##
+Once the API App instance is created, browse to its dashboard.  This can be done by clicking on Browse > API Apps > select your file connector API App.  From here the Hybrid Connection Manager needs to be configured.
+For more information on configuring and trouble shooting the Hybrid Connection Manager see [Using the Hybrid Connection Manager].
 
-1.	新しい Logic App を作成し、ファイル コネクタと同じリソース グループを選択します。詳細については、[新しいロジック アプリの作成]に関するページを参照してください。
+## <a name="using-the-file-connector-in-your-logic-app"></a>Using the file connector in your Logic app ##
+Once your API app is created, you can now use the file connector as an action for your Logic app. To do this, you need to:
 
-2.	作成した Logic App で [トリガーとアクション] を選択してロジック アプリ デザイナーを開き、フローを構成します。
+1.  Create a new Logic app and choose the same resource group which has the file connector. Follow instructions to [Create a new Logic app].
 
-3.	ファイル コネクタが右側のギャラリーの [API Apps in this resource group (このリソース グループの API Apps)] セクションに表示されます。
+2.  Open “Triggers and Actions” within the created Logic app to open the Logic apps Designer and configure your flow.
 
-4.	[ファイル コネクタ] をクリックして、ファイル コネクタの API アプリをエディターにドロップできます。ファイル コネクタでは、1 つのトリガーと 4 つのアクションが表示されます。![][5]
+3.  The file connector would appear in the “API Apps in this resource group” section in the gallery on the right hand side.
 
-6.	それぞれに特定のプロパティが表示されます。次の画像は、トリガーのプロパティと Get File アクションのプロパティを示しています。![][6]
+4.  You can drop the file connector API app into the editor by clicking on the “file connector”. file connector exposes one trigger and 4 Actions:  
+![][5]
 
-7. これらを構成すると、フローでトリガーとアクションを使用できるようになります。同様に、他のアクションも構成できます。
+6.  Each one of these exposes certain properties. The image below lists the properties for the trigger and Get file Action:  
+![][6]
 
-> [AZURE.NOTE] ファイル トリガーは、ファイルをフォルダーから正常に読み取った後、そのファイルを削除します。
+7. Once these are configured, the Trigger and Action can be used in your flow. Similarly, other actions can be configured as well.
 
-## ファイル コネクタの REST API ##
-ロジック アプリの外部のコネクタを使用するには、そのコネクタで公開されている REST API を活用できます。[参照]、[API App]、[ファイル コネクタ] の順に選択して、この API 定義を表示できます。[概要] セクションの [API の定義] レンズをクリックすると、このコネクタで公開されているすべての API が表示されます。![][7]
+> [AZURE.NOTE] The file trigger will delete the file after it is successfully read from the folder.
 
-API の詳細については、[ファイル コネクタの API の定義]に関するページを参照してください。
+## <a name="file-connector-rest-apis"></a>File connector REST APIs ##
+To use the connector outside of a Logic app, the REST APIs exposed by the connector can be leveraged. You can view this API Definitions using Browse->Api App->file connector. Now click on the API Definition lens under the Summary Section to view all the APIs exposed by this connector:  
+![][7]
 
-## コネクタでできること
-コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
+Details of the APIs can be found at [file connector API definition].
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure Logic Apps の使用を開始する場合は、[ロジック アプリの作成](https://tryappservice.azure.com/?appservice=logic)に関するページを参照してください。App Service で有効期間の短いスターター ロジック アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+## <a name="do-more-with-your-connector"></a>Do more with your connector
+Now that the connector is created, you can add it to a business workflow using a Logic app. See [What are Logic apps?](app-service-logic-what-are-logic-apps.md).
 
-「[Connectors and API Apps Reference (コネクタと API Apps のリファレンス)](http://go.microsoft.com/fwlink/p/?LinkId=529766)」で Swagger REST API のリファレンスを参照してください。
+>[AZURE.NOTE] If you want to get started with Azure Logic apps before signing up for an Azure account, go to [Try Logic app](https://tryappservice.azure.com/?appservice=logic), where you can immediately create a short-lived starter Logic app in App Service. No credit cards required; no commitments.
 
-パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。「[組み込み API Apps とコネクタの管理と監視を実行する](app-service-logic-monitor-your-connectors.md)」を参照してください。
+View the Swagger REST API reference at [Connectors and API Apps Reference](http://go.microsoft.com/fwlink/p/?LinkId=529766).
+
+You can also review performance statistics and control security to the connector. See [Manage and Monitor your built-in API Apps and connector](app-service-logic-monitor-your-connectors.md).
 
 <!-- Image reference -->
 [1]: ./media/app-service-logic-connector-file/img1.PNG
@@ -85,8 +91,12 @@ API の詳細については、[ファイル コネクタの API の定義]に�
 [7]: ./media/app-service-logic-connector-file/img7.PNG
 
 <!-- Links -->
-[新しいロジック アプリの作成]: app-service-logic-create-a-logic-app.md
-[ファイル コネクタの API の定義]: https://msdn.microsoft.com/library/dn936296.aspx
-[ハイブリッド接続マネージャーの使用]: app-service-logic-hybrid-connection-manager.md
+[Create a new Logic app]: app-service-logic-create-a-logic-app.md
+[File connector API definition]: https://msdn.microsoft.com/library/dn936296.aspx
+[Using the Hybrid Connection Manager]: app-service-logic-hybrid-connection-manager.md
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

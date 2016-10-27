@@ -1,10 +1,10 @@
 <properties
- pageTitle="Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)"
- description="Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)"
+ pageTitle="Scheduler PowerShell Cmdlets Reference"
+ description="Scheduler PowerShell Cmdlets Reference"
  services="scheduler"
  documentationCenter=".NET"
- authors="krisragh"
- manager="dwrede"
+ authors="derek1ee"
+ manager="kevinlam1"
  editor=""/>
 <tags
  ms.service="scheduler"
@@ -13,37 +13,38 @@
  ms.devlang="dotnet"
  ms.topic="article"
  ms.date="08/18/2016"
- ms.author="krisragh"/>
+ ms.author="deli"/>
 
-# Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)
 
-次のテーブルでは、Azure Scheduler の主なコマンドレットを説明し、各コマンドレットのリファレンス ページへのリンクを示します。
+# <a name="scheduler-powershell-cmdlets-reference"></a>Scheduler PowerShell Cmdlets Reference
 
-Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+The following table describes and links to the reference page of each of the major cmdlets in Azure Scheduler.
 
-[Azure Resource Manager コマンドレット](../powershell-azure-resource-manager.md)の詳細については、「[Azure Resource Manager での Azure PowerShell の使用](https://msdn.microsoft.com/library/mt125356(v=azure.200).aspx)」を参照してください。
+To install Azure PowerShell and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](../powershell-install-configure.md). 
 
-|コマンドレット|コマンドレットの説明|
+For more information about [Azure Resource Manager cmdlets](https://msdn.microsoft.com/library/mt125356\(v=azure.200\).aspx), see [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md).
+
+|Cmdlet|Cmdlet Description|
 |---|---|
-[Disable-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490133(v=azure.200).aspx) |ジョブ コレクションを無効にします。 
-[Enable-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490135(v=azure.200).aspx) |ジョブ コレクションを有効にします。
-[Get-AzureRmSchedulerJob](https://msdn.microsoft.com/library/mt490125(v=azure.200).aspx) |Scheduler ジョブを取得します。
-[Get-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490132(v=azure.200).aspx) |ジョブ コレクションを取得します。
-[Get-AzureRmSchedulerJobHistory](https://msdn.microsoft.com/library/mt490126(v=azure.200).aspx) |ジョブ履歴を取得します。
-[New-AzureRmSchedulerHttpJob](https://msdn.microsoft.com/library/mt490136(v=azure.200).aspx) |HTTP ジョブを作成します。
-[New-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490141(v=azure.200).aspx) |ジョブ コレクションを作成します。
-[New-AzureRmSchedulerServiceBusQueueJob](https://msdn.microsoft.com/library/mt490134(v=azure.200).aspx) |Service Bus キュー ジョブを作成します。
-[New-AzureRmSchedulerServiceBusTopicJob](https://msdn.microsoft.com/library/mt490142(v=azure.200).aspx) |Service Bus トピック ジョブを作成します。
-[New-AzureRmSchedulerStorageQueueJob](https://msdn.microsoft.com/library/mt490127(v=azure.200).aspx) |ストレージ キュー ジョブを作成します。 
-[Remove-AzureRmSchedulerJob](https://msdn.microsoft.com/library/mt490140(v=azure.200).aspx) |Scheduler ジョブを削除します。  
-[Remove-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490131(v=azure.200).aspx) |ジョブ コレクションを削除します。 
-[Set-AzureRmSchedulerHttpJob](https://msdn.microsoft.com/library/mt490130(v=azure.200).aspx) |Scheduler HTTP ジョブを変更します。
-[Set-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490129(v=azure.200).aspx) |ジョブ コレクションを変更します。 
-[Set-AzureRmSchedulerServiceBusQueueJob](https://msdn.microsoft.com/library/mt490143(v=azure.200).aspx) |Service Bus キュー ジョブを変更します。  
-[Set-AzureRmSchedulerServiceBusTopicJob](https://msdn.microsoft.com/library/mt490137(v=azure.200).aspx) |Service Bus トピック ジョブを変更します。 
-[Set-AzureRmSchedulerStorageQueueJob](https://msdn.microsoft.com/library/mt490128(v=azure.200).aspx) |ストレージ キュー ジョブを変更します。   
+[Disable-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490133\(v=azure.200\).aspx) |Disables a job collection. 
+[Enable-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490135\(v=azure.200\).aspx) |Enables a job collection.
+[Get-AzureRmSchedulerJob](https://msdn.microsoft.com/library/mt490125\(v=azure.200\).aspx) |Gets Scheduler jobs.
+[Get-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490132\(v=azure.200\).aspx) |Gets job collections.
+[Get-AzureRmSchedulerJobHistory](https://msdn.microsoft.com/library/mt490126\(v=azure.200\).aspx) |Gets job history.
+[New-AzureRmSchedulerHttpJob](https://msdn.microsoft.com/library/mt490136\(v=azure.200\).aspx) |Creates an HTTP job.
+[New-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490141\(v=azure.200\).aspx) |Creates a job collection.
+[New-AzureRmSchedulerServiceBusQueueJob](https://msdn.microsoft.com/library/mt490134\(v=azure.200\).aspx) |Creates a service bus queue job.
+[New-AzureRmSchedulerServiceBusTopicJob](https://msdn.microsoft.com/library/mt490142\(v=azure.200\).aspx) |Creates a service bus topic job.
+[New-AzureRmSchedulerStorageQueueJob](https://msdn.microsoft.com/library/mt490127\(v=azure.200\).aspx) |Creates a storage queue job. 
+[Remove-AzureRmSchedulerJob](https://msdn.microsoft.com/library/mt490140\(v=azure.200\).aspx) |Removes a Scheduler job.  
+[Remove-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490131\(v=azure.200\).aspx) |Removes a job collection. 
+[Set-AzureRmSchedulerHttpJob](https://msdn.microsoft.com/library/mt490130\(v=azure.200\).aspx) |Modifies a Scheduler HTTP job.
+[Set-AzureRmSchedulerJobCollection](https://msdn.microsoft.com/library/mt490129\(v=azure.200\).aspx) |Modifies a job collection. 
+[Set-AzureRmSchedulerServiceBusQueueJob](https://msdn.microsoft.com/library/mt490143\(v=azure.200\).aspx) |Modifies a service bus queue job.  
+[Set-AzureRmSchedulerServiceBusTopicJob](https://msdn.microsoft.com/library/mt490137\(v=azure.200\).aspx) |Modifies a service bus topic job. 
+[Set-AzureRmSchedulerStorageQueueJob](https://msdn.microsoft.com/library/mt490128\(v=azure.200\).aspx) |Modifies a storage queue job.   
 
-詳細については、次のいずれかのコマンドレットを実行してください。
+For more detailed information, you can run any of the following cmdlets: 
 
 ```
 Get-Help <cmdlet name> -Detailed
@@ -55,23 +56,27 @@ Get-Help <cmdlet name> -Examples
 Get-Help <cmdlet name> -Full
 ```
 
-## 関連項目
+## <a name="see-also"></a>See Also
 
 
- [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
+ [What is Scheduler?](scheduler-intro.md)
 
- [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+ [Azure Scheduler concepts, terminology, and entity hierarchy](scheduler-concepts-terms.md)
 
- [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
+ [Get started using Scheduler in the Azure portal](scheduler-get-started-portal.md)
 
- [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
+ [Plans and billing in Azure Scheduler](scheduler-plans-billing.md)
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
+ [Azure Scheduler REST API reference](https://msdn.microsoft.com/library/mt629143)
 
- [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
+ [Azure Scheduler high-availability and reliability](scheduler-high-availability-reliability.md)
 
- [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
+ [Azure Scheduler limits, defaults, and error codes](scheduler-limits-defaults-errors.md)
 
- [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
+ [Azure Scheduler outbound authentication](scheduler-outbound-authentication.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

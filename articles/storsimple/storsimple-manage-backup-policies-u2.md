@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple バックアップ ポリシーの管理 | Microsoft Azure"
-   description="StorSimple Manager サービスを使用して、手動バックアップ、バックアップのスケジュールを作成して、バックアップのリテンション期間を管理する方法について説明します。"
+   pageTitle="Manage your StorSimple backup policies | Microsoft Azure"
+   description="Explains how you can use the StorSimple Manager service to create and manage manual backups, backup schedules, and backup retention."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,85 +15,90 @@
    ms.date="05/10/2016"
    ms.author="v-sharos"/>
 
-# StorSimple Manager サービスを使用してバックアップ ポリシーを管理する (Update 2)
+
+# <a name="use-the-storsimple-manager-service-to-manage-backup-policies-(update-2)"></a>Use the StorSimple Manager service to manage backup policies (Update 2)
 
 [AZURE.INCLUDE [storsimple-version-selector-manage-backup-policies](../../includes/storsimple-version-selector-manage-backup-policies.md)]
 
-## 概要
+## <a name="overview"></a>Overview
 
-このチュートリアルでは、StorSimple Manager サービスの **[バックアップ ポリシー]** ページを使用して、StorSimple ボリュームのバックアップ プロセスとバックアップのリテンション期間を制御する方法について説明します。また、手動バックアップを完了する方法についても説明します。
+This tutorial explains how to use the StorSimple Manager service **Backup Policies** page to control backup processes and backup retention for your StorSimple volumes. It also describes how to complete a manual backup.
 
-ボリュームをバックアップする場合は、ローカル スナップショットとクラウド スナップショットのどちらを作成するかを選択できます。ローカル固定ボリュームをバックアップする場合は、クラウド スナップショットを指定することをお勧めします。離反要因が多いデータ セットに加えて、ローカル固定ボリュームの多数のローカル スナップショットを作成すると、ローカル領域が急激に減少する状態が発生します。ローカル スナップショットの作成を選択した場合は、最新の状態をバックアップするための毎日のスナップショットの作成回数を少なくし、それらを 1 日間保持した後で削除することをお勧めします。
+When you back up a volume, you can choose to create a local snapshot or a cloud snapshot. If you are backing up a locally pinned volume, we recommend that you specify a cloud snapshot. Taking a large number of local snapshots of a locally pinned volume coupled with a data set that has a lot of churn will result in a situation in which you could rapidly run out of local space. If you choose to take local snapshots, we recommend that you take fewer daily snapshots to back up the most recent state, retain them for a day, and then delete them.
 
-ローカル固定ボリュームのクラウド スナップショットを作成すると、変更されたデータのみがクラウドにコピーされ、クラウドで重複除去と圧縮が行われます。
+When you take a cloud snapshot of a locally pinned volume, you copy only the changed data to the cloud, where it is deduplicated and compressed. 
 
-## [バックアップ ポリシー] ページ
+## <a name="the-backup-policies-page"></a>The Backup Policies page
 
-**[バックアップ ポリシー]** ページでは、バックアップ ポリシーを管理して、ローカル スナップショットとクラウド スナップショットのスケジュールを設定できます (バックアップ ポリシーは、ボリュームのコレクションに対するバックアップのスケジュールとバックアップのリテンション期間の構成に使用します)。 バックアップ ポリシーを使用すると、複数のボリュームのスナップショットを同時に取得できます。これは、バックアップ ポリシーによって作成されたバックアップがクラッシュ整合コピーになることを意味します。**[バックアップ ポリシー]** ページには、バックアップ ポリシーとその種類、関連付けられているボリューム、保持されているバックアップの数、およびこれらのポリシーを有効にするオプションが一覧表示されます。
+The **Backup Policies** page allows you to manage backup policies and schedule local and cloud snapshots. (Backup policies are used to configure backup schedules and backup retention for a collection of volumes.) Backup policies enable you to take a snapshot of multiple volumes simultaneously. This means that the backups created by a backup policy will be crash-consistent copies. The **Backup Policies** page lists the backup policies, their types, the associated volumes, the number of backups retained, and the option to enable these policies.
 
-また **[バックアップ ポリシー]** ページでは、次の 1 つ以上のフィールドで既存のバックアップ ポリシーをフィルター処理することもできます。
+The **Backup Policies** page also allows you to filter the existing backup policies by one or more of the following fields:
 
-- **ポリシー名** – ポリシーに関連付けられた名前。次の種類のポリシーがあります。
+- **Policy name** – The name associated with the policy. The different types of policies include:
 
-   - スケジュールされたポリシー。ユーザーが明示的に作成します。
-   - 自動ポリシー。ボリュームの作成時にこのボリュームのオプションの既定のバックアップが有効になっている場合に作成されます。これらのポリシーの名前は、*VolumeName*\_Default という形式で指定されます。*VolumeName* は、ユーザーが Azure クラシック ポータルで構成する StorSimple ボリュームの名前です。自動ポリシーにより、デバイス時刻の 22 時 30分を起点として、1 日のクラウド スナップショットを取得します。
-   - インポートされたポリシー。作成元は StorSimple Snapshot Manager です。このポリシーには、インポート元の StorSimple Snapshot Manager ホストについて説明するタグが付いています。
+   - Scheduled policies, which are explicitly created by the user.
+   - Automatic policies, which are created when the default backup for this volume option was enabled at the time of volume creation. These policies are named as *VolumeName*_Default where *VolumeName* refers to the name of the StorSimple volume configured by the user in the Azure classic portal. The automatic policies result in daily cloud snapshots beginning at 22:30 device time.
+   - Imported policies, which were originally created in the StorSimple Snapshot Manager. These have a tag that describes the StorSimple Snapshot Manager host that the policies were imported from.
 
-- **ボリューム** – ポリシーに関連付けられているボリューム。バックアップ ポリシーに関連付けられているボリュームは、すべてバックアップの作成時にグループ化されます。
+- **Volumes** – The volumes associated with the policy. All the volumes associated with a backup policy are grouped together when backups are created.
 
-- **前回の正常なバックアップ** – このポリシーで取得した、最後の正常なバックアップの日時。
+- **Last successful backup** – The date and time of the last successful backup that was taken with this policy.
 
-- **次回のバックアップ** – このポリシーによって開始される、次のスケジュールされたバックアップの日時。
+- **Next backup** – The date and time of the next scheduled backup that will be initiated by this policy.
 
-- **スケジュール** – バックアップ ポリシーに関連付けられているスケジュールの数。
+- **Schedules** – The number of schedules associated with the backup policy.
 
-このページから実行できる、頻繁に使用される操作は次のとおりです。
+The frequently used operations that you can perform from this page are:
 
-- バックアップ ポリシーの追加 
-- スケジュールの追加または変更 
-- バックアップ ポリシーの削除 
-- 手動バックアップの取得 
-- 複数のボリュームとスケジュールによるカスタム バックアップ ポリシーの作成 
+- Add a backup policy 
+- Add or modify a schedule 
+- Delete a backup policy 
+- Take a manual backup 
+- Create a custom backup policy with multiple volumes and schedules 
 
-## バックアップ ポリシーの追加
+## <a name="add-a-backup-policy"></a>Add a backup policy
 
-自動的にバックアップをスケジュールするためのバックアップ ポリシーを追加します。StorSimple デバイスのバックアップ ポリシーを追加するには、Azure クラシック ポータルで次の手順を実行します。ポリシーを追加した後は、スケジュールを定義できます (「[スケジュールの追加または変更](#add-or-modify-a-schedule)」を参照してください)。
+Add a backup policy to automatically schedule your backups. Perform the following steps in the Azure classic portal to add a backup policy for your StorSimple device. After you add the policy, you can define a schedule (see [Add or modify a schedule](#add-or-modify-a-schedule)).
 
 [AZURE.INCLUDE [storsimple-add-backup-policy-u2](../../includes/storsimple-add-backup-policy-u2.md)]
 
-![ビデオ](./media/storsimple-manage-backup-policies-u2/Video_icon.png) **ビデオ**
+![Video available](./media/storsimple-manage-backup-policies-u2/Video_icon.png) **Video available**
 
-ローカルまたはクラウドのバックアップ ポリシーを作成する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/)を参照してください。
+To watch a video that demonstrates how to create a local or cloud backup policy, click [here](https://azure.microsoft.com/documentation/videos/create-storsimple-backup-policies/).
 
 
-## スケジュールの追加または変更
+## <a name="add-or-modify-a-schedule"></a>Add or modify a schedule
 
-StorSimple デバイスで、既存のバックアップ ポリシーに関連付けられるスケジュールを追加または変更できます。スケジュールを追加または変更するには、Azure クラシック ポータルで次の手順を実行します。
+You can add or modify a schedule that is attached to an existing backup policy on your StorSimple device. Perform the following steps in the Azure classic portal to add or modify a schedule.
 
 [AZURE.INCLUDE [storsimple-add-modify-backup-schedule](../../includes/storsimple-add-modify-backup-schedule-u2.md)]
 
-## バックアップ ポリシーの削除
+## <a name="delete-a-backup-policy"></a>Delete a backup policy
 
-StorSimple デバイスからバックアップ ポリシーを削除するには、Azure クラシック ポータルで次の手順を実行します。
+Perform the following steps in the Azure classic portal to delete a backup policy on your StorSimple device.
 
 [AZURE.INCLUDE [storsimple-delete-backup-policy](../../includes/storsimple-delete-backup-policy.md)]
 
 
-## 手動バックアップの取得
+## <a name="take-a-manual-backup"></a>Take a manual backup
 
-1 つのボリュームに対し、オンデマンドの (手動) バックアップを作成するには、Azure クラシック ポータルで次の手順を実行します。
+Perform the following steps in the Azure classic portal to create an on-demand (manual) backup for a single volume.
 
 [AZURE.INCLUDE [storsimple-create-manual-backup](../../includes/storsimple-create-manual-backup.md)]
 
-## 複数のボリュームとスケジュールによるカスタム バックアップ ポリシーの作成
+## <a name="create-a-custom-backup-policy-with-multiple-volumes-and-schedules"></a>Create a custom backup policy with multiple volumes and schedules
 
-複数のボリュームとスケジュールを含むカスタム バックアップ ポリシーを作成するには、Azure クラシック ポータルで次の手順を実行します。
+Perform the following steps in the Azure classic portal to create a custom backup policy that has multiple volumes and schedules.
 
 [AZURE.INCLUDE [storsimple-create-custom-backup-policy](../../includes/storsimple-create-custom-backup-policy-u2.md)]
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
+Learn more about [using the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -5,4 +5,7 @@
 - [HDInsight (Hadoop) cluster](../articles/machine-learning/machine-learning-data-science-customize-hadoop-cluster.md)
 - [Azure Machine Learning workspace](../articles/machine-learning/machine-learning-create-workspace.md)
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

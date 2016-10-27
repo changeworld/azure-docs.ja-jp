@@ -1,15 +1,17 @@
-Azure Storage のどの BLOB もコンテナーに格納する必要があります。コンテナーは、BLOB 名の一部を形成しています。たとえば、次の BLOB の URI のサンプルでは、`mycontainer` がコンテナーの名前です。
+Every blob in Azure storage must reside in a container. The container forms part of the blob name. For example, `mycontainer` is the name of the container in these sample blob URIs:
 
-	https://storagesample.blob.core.windows.net/mycontainer/blob1.txt
-	https://storagesample.blob.core.windows.net/mycontainer/photos/myphoto.jpg
+    https://storagesample.blob.core.windows.net/mycontainer/blob1.txt
+    https://storagesample.blob.core.windows.net/mycontainer/photos/myphoto.jpg
 
-コンテナー名は有効な DNS 名で、次の名前規則に準拠している必要があります。
+A container name must be a valid DNS name, conforming to the following naming rules:
 
-1. コンテナー名は英文字または数字で始まり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。
-1. すべてのダッシュ (-) 文字は、その直前または直後に文字または数字が使用されている必要があります。連続するダッシュ文字は、コンテナー名では使用できません。
-1. コンテナー名の文字はすべて小文字である必要があります。
-1. コンテナー名の長さは、3 ～ 63 文字にする必要があります。
+1. Container names must start with a letter or number, and can contain only letters, numbers, and the dash (-) character.
+1. Every dash (-) character must be immediately preceded and followed by a letter or number; consecutive dashes are not permitted in container names.
+1. All letters in a container name must be lowercase.
+1. Container names must be from 3 through 63 characters long.
 
-> [AZURE.IMPORTANT]コンテナーの名前は、常に小文字にする必要があります。コンテナー名に大文字が含まれている場合や、コンテナーの名前付け規則の他の違反がある場合、400 エラー (無効な要求) が発生することがあります。
+> [AZURE.IMPORTANT] Note that the name of a container must always be lowercase. If you include an upper-case letter in a container name, or otherwise violate the container naming rules, you may receive a 400 error (Bad Request). 
 
-<!---HONumber=Oct15_HO3-->
+<!--HONumber=Oct16_HO2-->
+
+

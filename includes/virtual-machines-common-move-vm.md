@@ -1,35 +1,42 @@
 
 
-## ポータルを使用して、VM を他のサブスクリプションに移動する
+## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>Use the portal to move a VM to a different subscription
 
-ポータルを使用して、VM とその関連リソースを他のサブスクリプションに移動できます。
+You can move a VM and it's associated resources to a different subscription using the portal.
 
-1. [Azure ポータル](https://portal.azure.com) を開きます。
-2. **[参照]**、**[仮想マシン]** の順にクリックし、移動する VM を一覧から選択します。
-	
-	![[リソースの移動] ブレードを開くための鉛筆アイコンがある [要点] セクションのスクリーンショット。](./media/virtual-machines-common-move-vm/move-button.png)
-	
-3. **[要点]** セクションで、サブスクリプション名の横にある **[サブスクリプションの変更]** 鉛筆アイコンをクリックします。**[リソースの移動]** ブレードが開きます。
-	
-	![[リソースの移動] ブレードのスクリーンショット。](./media/virtual-machines-common-move-vm/move.png)
-	
-4. 移動するリソースを選択します。ほとんどの場合、表示されている省略可能なすべてのリソースを移動する必要があります。
-5. 移動する VM の**サブスクリプション**を選択します。
-6. 既存の**リソース グループ**を選択するか、名前を入力して、新しいリソース グループを作成します。
-7. この操作が完了したら、新しいリソース ID が作成されること、および移動した VM でその ID を使用する必要がある旨を理解したことを選択し、**[OK]** をクリックします。
+1. Open the [Azure portal](https://portal.azure.com).
+2. Click **Browse** > **Virtual machines** and select the VM you would like to move from the list.
+    
+    ![Screenshot of the Essentials section where you click the pencil icon to open the Move resources blade.](./media/virtual-machines-common-move-vm/move-button.png)
+    
+3. In the **Essentials** section, click on the **Change subscription** pencil icon next to the subscription name. The **Move resources** blade will open.
+    
+    ![Screenshot of the Move resources blade.](./media/virtual-machines-common-move-vm/move.png)
+    
+4. Select each of the resources to move. In most cases, you should move all of the listed optional resources.
+5. Select the **Subscription** where you want the VM to be moved.
+6. Select an existing **Resource group** or type a name to have a new resource group created.
+7. When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**.
 
-## ポータルを使用して、VM を他のリソース グループに移動する
+## <a name="use-the-portal-to-move-a-vm-to-another-resource-group"></a>Use the portal to move a VM to another resource group
 
-ポータルを使用して、VM とその関連リソースを他のリソース グループに移動できます。
+You can move a VM and it's associated resources to another resource group using the portal.
 
-1. [Azure ポータル](https://portal.azure.com) を開きます。
-2. **[参照]**、**[リソース グループ]** の順にクリックし、VM を含むリソース グループを選択します。
-3. **[リソース グループ]** ブレードで、メニューから **[追加]** を選択します。
-	
-	![[リソース グループ] メニューの [移動] ボタンのスクリーン ショット。](./media/virtual-machines-common-move-vm/move-rg.png)
-	
-3. **[リソースの移動]** ブレードで、移動するリソースを選択し、既存のリソース グループ名を入力するか、新しいリソース グループの作成を選択します。この操作が完了したら、新しいリソース ID が作成されること、および移動した VM でその ID を使用する必要がある旨を理解したことを選択し、**[OK]** をクリックします
-	
-	![[リソースの移動] ブレードのスクリーンショット。](./media/virtual-machines-common-move-vm/move-rg-list.png)
+1. Open the [Azure portal](https://portal.azure.com).
+2. Click **Browse** > **Resource groups** and select the resource group that contains the VM.
+3. In the **Resource group** blade, select **Move** from the menu.
+    
+    ![Screenshot of the Move button on the Resource groups menu.](./media/virtual-machines-common-move-vm/move-rg.png)
+    
+3. In the **Move resources** blade, select the resources to be moved and then either type an existing resource group name or choose to create a new resource group. When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**
+    
+    ![Screenshot of the Move resources blade.](./media/virtual-machines-common-move-vm/move-rg-list.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

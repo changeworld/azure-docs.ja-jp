@@ -1,123 +1,128 @@
 <properties
-	pageTitle="Azure DevTest Labs でラボに Git アーティファクト リポジトリを追加する | Microsoft Azure"
-	description="Azure DevTest Labs でカスタム アーティファクト ソースに GitHub または Visual Studio Team Services Git リポジトリを追加する"
-	services="devtest-lab,virtual-machines,visual-studio-online"
-	documentationCenter="na"
-	authors="tomarcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Add a Git artifact repository to a lab in Azure DevTest Labs | Microsoft Azure"
+    description="Add a GitHub or Visual Studio Team Services Git repository for your custom artifacts source in Azure DevTest Labs"
+    services="devtest-lab,virtual-machines,visual-studio-online"
+    documentationCenter="na"
+    authors="tomarcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="devtest-lab"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/06/2016"
-	ms.author="tarcher"/>
+    ms.service="devtest-lab"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/06/2016"
+    ms.author="tarcher"/>
 
-# Azure DevTest Labs でラボに Git アーティファクト リポジトリを追加する
+
+# <a name="add-a-git-artifact-repository-to-a-lab-in-azure-devtest-labs"></a>Add a Git artifact repository to a lab in Azure DevTest Labs
 
 > [AZURE.VIDEO how-to-add-your-private-artifacts-repository-in-a-devtest-lab]
 
-Azure DevTest Labs で、アーティファクトに *アクション* を選択します。 - VM 作成時に、ソフトウェアをインストールしたり、スクリプトやコマンドを実行します。既定では、公式の Azure DevTest Labs アーティファクト リポジトリからのアーティファクトがラボに含まれます。ラボに Git アーティファクト リポジトリを追加することで、チームが作成したアーティファクトを含めることができます。リポジトリは、[GitHub](https://github.com) または [Visual Studio Team Services (VSTS)](https://visualstudio.com) 上にホストできます。
+In Azure DevTest Labs, artifacts are *actions* - such as installing software or running scripts and commands - when a VM is created. By default, a lab includes artifacts from the official Azure DevTest Labs artifact repository. You can add a Git artifact repository to your lab to include the artifacts that your team creates. The repository can be hosted on [GitHub](https://github.com) or on [Visual Studio Team Services (VSTS)](https://visualstudio.com).
 
-- GitHub リポジトリを作成する方法については、「[GitHub Bootcamp (GitHub ブートキャンプ)](https://help.github.com/categories/bootcamp/)」を参照してください。
-- Git リポジトリを使用して、Team Services プロジェクトを作成する方法については、「[Connect to Visual Studio Team Services (Visual Studio Team Services への接続)](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)」を参照してください。
+- To learn how to create a GitHub repository, see [GitHub Bootcamp](https://help.github.com/categories/bootcamp/).
+- To learn how to create a Team Services project with a Git Repository, see [Connect to Visual Studio Team Services](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online).
 
-次のスクリーン ショットでは、GitHub でアーティファクトを含むリポジトリがどのように表示されるかの例を示します。 ![GitHub アーティファクト リポジトリのサンプル](./media/devtest-lab-add-artifact-repo/devtestlab-github-artifact-repo-home.png)
+The following screen shot shows an example of how a repository containing artifacts might look in GitHub:  
+![Sample GitHub artifacts repo](./media/devtest-lab-add-artifact-repo/devtestlab-github-artifact-repo-home.png)
 
 
-## リポジトリ情報および資格情報を取得する
+## <a name="get-the-repository-information-and-credentials"></a>Get the repository information and credentials
 
-アーティファクト リポジトリをラボに追加するには、最初にリポジトリから特定の情報を取得する必要があります。次のセクションでは、GitHub および Visual Studio Team Services 上にホストされたアーティファクト レポジトリの情報取得について説明します。
+To add an artifact repository to your lab, you must first get certain information from your repository. The following sections guide you through getting this information for artifact repositories hosted on GitHub and Visual Studio Team Services.
 
-### GitHub リポジトリのクローン URL と個人用アクセス トークンの取得
+### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>Get the GitHub repository clone URL and personal access token
 
-GitHub リポジトリのクローン URL と個人用アクセス トークンを取得するには、次の手順に従います:
+To get the GitHub repository clone URL and personal access token, follow these steps:
 
-1. チームのアーティファクトを含む GitHub リポジトリのホーム ページを参照します。
+1. Browse to the home page of the GitHub repository that contains the artifact definitions.
 
-1. **[複製またはダウンロード]**を選択します。
+1. Select **Clone or download**.
 
-1. ボタンを選択して **HTTPS クローンの URL** をクリップボードにコピーし、後で使用するために URL を保存します。
+1. Select the button to copy the **HTTPS clone url** to the clipboard, and save the URL for later use.
 
-1. GitHub の右上隅にあるプロファイルの画像を選択し、**[設定]** を選択します。
+1. Select the profile image in the upper-right corner of GitHub, and select **Settings**.
 
-1. **[個人設定]** メニューの左側で、**[個人用アクセス トークン]** を選択します。
+1. In the **Personal settings** menu on the left, select **Personal access tokens**.
 
-1. **[新しいトークンの生成]** を選択します。
+1. Select **Generate new token**.
 
-1. **新しい個人用アクセス トークン**ページで、**トークンの説明**を入力し、**[範囲の選択]** で既定の項目をそのまま使用します。次に **[Generate Token]** を選択します。
+1. On the **New personal access token** page, enter a **Token description**, accept the default items in the **Select scopes**, and then choose **Generate Token**.
 
-1. 後で必要となるため、生成されたトークンを保存します。
+1. Save the generated token as you need it later.
 
-1. これで、GitHub を閉じることができます。
+1. You can close GitHub now.   
 
-1. [アーティファクト リポジトリにラボを接続する](#connect-your-lab-to-the-artifact-repository) のセクションに続きます。
+1. Continue to the [Connect your lab to the artifact repository](#connect-your-lab-to-the-artifact-repository) section.
 
-### Visual Studio Team Services リポジトリのクローン URL と個人用アクセス トークンの取得
+### <a name="get-the-visual-studio-team-services-repository-clone-url-and-personal-access-token"></a>Get the Visual Studio Team Services repository clone URL and personal access token
 
-Visual Studio Team Services リポジトリのクローン URL と個人用アクセス トークンを取得するには、次の手順に従います:
+To get the Visual Studio Team Services repository clone URL and personal access token, follow these steps:
 
-1. チーム コレクションのホーム ページ (例: `https://contoso-web-team.visualstudio.com`) を開き、アーティファクト プロジェクトを選択します。
+1. Open the home page of your team collection (for example, `https://contoso-web-team.visualstudio.com`), and then select the artifact project.
 
-1. プロジェクトのホーム ページで、**[コード]** を選択します。
+1. On the project home page, select **Code**.
 
-1. クローン URL を表示するには、プロジェクト **[コード]** ページで、**[クローン]** を選択します。
+1. To view the clone URL, on the project **Code** page, select **Clone**.
 
-1. このチュートリアルで後ほど必要になるため、URL を保存します。
+1. Save the URL as you need it later in this tutorial.
 
-1. 個人用アクセス トークンを作成するには、ユーザー アカウントのドロップダウン メニューから **[マイ プロファイル]** を選択します。
+1. To create a Personal Access Token, select **My profile** from the user account drop-down menu.
 
-1. プロファイル情報ページで、**[セキュリティ]** を選択します。
+1. On the profile information page, select **Security**.
 
-1. **[セキュリティ]** タブで **[追加]** を選択します。
+1. On the **Security** tab, select **Add**.
 
-1. **[個人用アクセス トークンの作成]** ページで、次を実行します。
+1. In the **Create a personal access token** page:
 
-    - トークンの**説明**を入力します。
-    - **[Expires In]** の一覧から **[180 日]** を選択します。
-    - **[アカウント]** の一覧から **[アクセス可能なすべてのアカウント]** を選択します。
-    - **[All scopes]** オプションを選択します。
-    - **[トークンの作成]** を選択します。
+    - Enter a **Description** for the token.
+    - Select **180 days** from the **Expires In** list.
+    - Choose **All accessible accounts** from the **Accounts** list.
+    - Choose the **All scopes** option.
+    - Choose **Create Token**.
 
-1. 完了すると、新しいトークンが **[個人用アクセス トークン]** の一覧に表示されます。**[トークンのコピー]** を選択し、後ほど必要になるため、トークンの値を保存します。
+1. When finished, the new token appears in the **Personal Access Tokens** list. Select **Copy Token**, and then save the token value for later use.
 
-1. [アーティファクト リポジトリにラボを接続する](#connect-your-lab-to-the-artifact-repository) のセクションに続きます。
+1. Continue to the [Connect your lab to the artifact repository](#connect-your-lab-to-the-artifact-repository) section.
 
-##アーティファクト リポジトリに、ラボを接続する
+##<a name="connect-your-lab-to-the-artifact-repository"></a>Connect your lab to the artifact repository
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
+1. Select **More Services**, and then select **DevTest Labs** from the list.
 
-1. ラボの一覧で目的のラボを選択します。
+1. From the list of labs, select the desired lab.   
 
-1. ラボのブレードで、**[構成]** を選択します。
+1. On the lab's blade, select **Configuration**.
 
-1. ラボの **[構成]** ブレードで、**[アーティファクト リポジトリ]** を選択します。
+1. On the lab's **Configuration** blade, select **Artifacts Repositories**.
 
-1. **[アーティファクト リポジトリ]** ブレードで、**[+ 追加]** を選択します。
+1. On the **Artifacts Repositories** blade, select **+ Add**.
 
-	![アーティファクト リポジトリ ボタンを追加する](./media/devtest-lab-add-artifact-repo/add-artifact-repo.png)
+    ![Add artifact repository button](./media/devtest-lab-add-artifact-repo/add-artifact-repo.png)
  
-1. **[アーティファクト リポジトリ]** ブレードで、次の値を指定します:
+1. On the second **Artifacts Repositories** blade, specify the following:
 
-    - **名前** - リポジトリの名前を入力します。
-    - **Git クローン URL** - 先ほど GitHub または Visual Studio Team Services からコピーした Git HTTPS クローン URL を入力します。
-    - **フォルダー パス** - アーティファクト定義ファイルを含むクローン URL に相対フォルダー パスを入力します。
-    - **ブランチ** - アイテム定義ファイルを取得する分岐を入力します。
-    - **個人用アクセス トークン** - 先ほど GitHub、または Visual Studio Team Services で取得した個人用アクセス トークンを入力します。
+    - **Name** - Enter a name for the repository.
+    - **Git Clone Url** - Enter the Git HTTPS clone URL that you copied earlier from either GitHub or Visual Studio Team Services. 
+    - **Folder Path** - Enter the folder path relative to the clone URL that contains your artifact definitions.
+    - **Branch** - Enter the branch to get your artifact definitions.
+    - **Personal Access Token** - Enter the personal access token you obtained earlier from either GitHub or Visual Studio Team Services. 
      
-	![アーティファクト リポジトリのブレード](./media/devtest-lab-add-artifact-repo/artifact-repo-blade.png)
+    ![Artifact repo blade](./media/devtest-lab-add-artifact-repo/artifact-repo-blade.png)
 
-1. [**保存**] を選択します。
+1. Select **Save**.
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## 関連するブログ記事
-- [How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs でアーティファクトの失敗をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
-- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab (Azure Dev Test Lab で ARM テンプレートを使用して既存の AD ドメインに VM を参加させる)](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+## <a name="related-blog-posts"></a>Related blog posts
+- [How to troubleshoot failing Artifacts in AzureDevTestLabs](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
+- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

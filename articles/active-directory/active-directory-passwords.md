@@ -1,255 +1,249 @@
 <properties
-	pageTitle="Azure AD でのパスワード リセット | Microsoft Azure"
-	description="パスワードのリセット、変更、パスワード管理のレポート、ローカルのオンプレミスの Active Directory へのライトバックなど、Azure AD のパスワード管理機能の説明。"
-	services="active-directory"
-	documentationCenter=""
-	authors="asteen"
-	manager="femila"
-	editor="curtand"/>
+    pageTitle="Azure AD Password Reset | Microsoft Azure"
+    description="Description of password management capabilities in Azure AD, including password reset, change, password management reporting, and writeback to your local on-premises Active Directory."
+    services="active-directory"
+    documentationCenter=""
+    authors="asteen"
+    manager="femila"
+    editor="curtand"/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/12/2016"
-	ms.author="asteen"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/13/2016"
+    ms.author="asteen"/>
 
 
-# ユーザーおよび管理者の Azure AD のパスワード リセット
 
-  >[AZURE.IMPORTANT] Azure または O365 のパスワードをリセットをしたいとお考えですか。 その場合は、[このセクション](#users-how-to-manage-your-own-password)にお進みください。
+# <a name="azure-ad-password-reset-for-it-administrators"></a>Azure AD Password Reset for IT Administrators
 
-セルフ サービスの実現は、コストを削減し労力を節約する手段として、世界中の IT 部門が長年目指してきた大きな目標です。実際、市場はクラウドまたはオンプレミスから、オンプレミスのグループや、パスワード、ユーザー プロファイルを管理できるようにする製品であふれています。Azure AD は、現在利用可能な機能の中でも、最も使いやすく強力なセルフ サービス機能を提供することで、これらの製品とは一線を画しています。
+  >[AZURE.IMPORTANT] Are you here because you want to reset your Azure or O365 password?  If so, please [skip to this section](#users-how-to-manage-your-own-password).
 
-**Azure AD パスワード管理**は、定義するセキュリティ ポリシーに準拠したままで、ユーザーが任意のデバイスで、時間と場所に関係なくパスワードを管理できる一連の機能です。
+Self-service has long been a key goal for IT departments across the world as a cost-reduction and labor-saving measure.  Indeed, the market is flooded with products that let you manage your on-premises groups, passwords, or user profiles from the cloud or on-premises. Azure AD sets itself apart from these offerings by providing some of the easiest to use and most powerful self-service capabilities available today.
 
-##ユーザー: 自分のパスワードを管理する方法
-職場のリソースへのアクセスに Office 365 または Microsoft アカウントを使用している (管理者ではない) ユーザーは、以下のリンクをクリックして、パスワードでよく発生する問題を解決する方法を学習してください。
+**Azure AD Password Management** is a set of capabilities that allow your users to manage any password from any device, at any time, from any location, while remaining in compliance with the security policies you define.
 
-| トピック | |
+
+##<a name="admins:-learn-about-how-to-get-started-with-azure-ad-password-reset"></a>ADMINS: Learn about how to get started with Azure AD Password Reset
+If you're an admin who wants to enable Azure AD Password Reset, or just learn more about it, start with the links below to get to what you're interested in.
+
+| Topic |  |
 | --------- | --------- |
-| パスワードのリセット登録を行う方法 | [パスワードのリセット登録を行う](active-directory-passwords-update-your-own-password.md#how-to-register-for-password-reset) |
-| O365 の自分のパスワードを変更する方法 | [Office365 の自分のパスワードを変更する](active-directory-passwords-update-your-own-password.md#how-to-change-your-password-from-o365) |
-| Myapps.microsoft.com の自分のパスワードを変更する方法 | [アクセス パネルからパスワードを変更する](active-directory-passwords-update-your-own-password.md#how-to-change-your-password-from-the-access-panel) |
-| 忘れたパスワードをリセットする方法 | [パスワードをリセットする](active-directory-passwords-update-your-own-password.md#how-to-reset-your-password) |
-| サインインができない自分のアカウントをロック解除する方法 | [オンプレミスのアカウントをロック解除する](active-directory-passwords-update-your-own-password.md#how-to-unlock-your-account) |
-| パスワードのリセットの失敗のトラブルシューティングを支援する方法 | [一般的な問題とその解決方法](active-directory-passwords-update-your-own-password.md#common-problems-and-their-solutions) |
+| Supported scenarios | [What is possible with Azure AD Password Reset?](#what-is-possible-with-azure-ad-password-reset) |
+| Why use it? | [Why use Azure AD Password Reset?](#why-use-azure-ad-password-reset) |
+| Pricing and availability | [Pricing and availability](#pricing-and-availability) |
+| Enable password reset  | [Enable password reset for your users](#enable-password-reset-for-your-users) |
+| Customize how it works | [Customize password reset behavior](#customize-password-reset-behavior) |
+| Roll it out to my users | [Configure your users to use password reset](#configure-your-users-to-use-password-reset) |
+| View reports  | [View password reset activity with integrated reports](#view-password-reset-activity-with-integrated-reports) |
+| Reset a user's password  | [Manage your users' passwords](#manage-your-users-passwords) |
+| Set my organization's password policies | [Set password policies](#set-password-policies) |
+| Troubleshoot a problem  | [Troubleshoot a problem](#troubleshoot-a-problem) |
+| FAQ | [Read a FAQ](#read-a-faq) |
+| Technical details | [Understand the technical details](#understand-the-technical-details) |
+| Newly released features | [Recent service updates](#recent-service-updates) |
+| Links to other documentation | [Links to password reset documentation](#links-to-password-reset-documentation) |
 
-##管理者: Azure AD のパスワード リセットの概要について学習する
-Azure AD のパスワード リセットを行いたい、またはそれについてさらに学習したい管理者は、以下のリンクの関心のある項目をお読みください。
+### <a name="what-is-possible-with-azure-ad-password-reset?"></a>What is possible with Azure AD Password Reset?
+Here are some of the things you can do with Azure AD's password management capabilities.
 
-| トピック | |
+- **Self-service password change** allows end users or administrators to change their expired or non-expired passwords without calling an administrator or helpdesk for support.
+- **Self-service password reset** allows end users or administrators to reset their passwords automatically without calling an administrator or helpdesk for support. Self-service password reset requires Azure AD Premium or Basic. For more information, see Azure Active Directory Editions.
+- **Administrator-initiated password reset** allows an administrator to reset an end user’s or another administrator’s password from within the [Azure Management Portal](https://manage.windowsazure.com).
+- **Password management activity reports** give administrators insights into password reset and registration activity occurring in their organization.
+- **Password Writeback** allows management of on-premises passwords from the cloud so all of the above scenarios can be performed by, or on the behalf of, federated or password synchronized users. Password Writeback requires Azure AD Premium. For more information, see Getting started with Azure AD Premium.
+
+### <a name="why-use-azure-ad-password-reset?"></a>Why use Azure AD Password Reset?
+Here are some of the reasons you should use Azure AD's password management capabilities
+
+- **Reduce costs** - support-assisted password reset is typically 20% of organization's IT spend
+- **Improve user experiences** - users don't want to call helpdesk and spend an hour on the phone every time they forget their passwords
+- **Lower helpdesk volumes** - password management is the single largest helpdesk driver for most organizations
+- **Enable mobility** - users can reset their passwords from wherever they are
+
+### <a name="pricing-and-availability"></a>Pricing and availability
+Azure AD Password Reset is available in 3 tiers, depending on which subscription you have:
+
+- **Azure AD Free** - cloud-only administrators can reset their own passwords
+- **Azure AD Basic or any Paid O365 Subscription** - cloud-only users and cloud-only administrators can reset their own passwords
+- **Azure AD Premium** - any user or administrator, including cloud-only, federated, or password synced users, can reset their own passwords (requires [password writeback to be enabled](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords))
+
+For more information on Azure AD Premium or Basic pricing, visit the [Active Directory Pricing Details](https://azure.microsoft.com/pricing/details/active-directory/) page.
+
+##<a name="enable-password-reset-for-your-users"></a>Enable password reset for your users
+| Topic |  |
 | --------- | --------- |
-| サポートされるシナリオ | [Azure AD のパスワード リセットでできること](#what-is-possible-with-azure-ad-password-reset) |
-| 使用する理由 | [Azure AD のパスワード リセットを使用する理由](#why-use-azure-ad-password-reset) |
-| 価格と可用性 | [価格と可用性](#pricing-and-availability) |
-| パスワード リセットを有効にする | [ユーザーのパスワード リセットの有効化](#enable-password-reset-for-your-users) |
-| 動作をカスタマイズする | [パスワードのリセット動作のカスタマイズ](#customize-password-reset-behavior) |
-| ユーザーに展開する | [パスワードのリセットを使用できるようにするためのユーザーの構成](#configure-your-users-to-use-password-reset) |
-| レポートを表示する | [パスワード リセット アクティビティの統合レポートでの表示](#view-password-reset-activity-with-integrated-reports) |
-| ユーザーのパスワードのリセット | [ユーザーのパスワードの管理](#manage-your-users-passwords) |
-| 自分の組織のパスワード ポリシーを設定する | [パスワード ポリシーの設定](#set-password-policies) |
-| 問題をトラブルシューティングする | [問題をトラブルシューティングする](#troubleshoot-a-problem) |
-| FAQ | [FAQ を読む](#read-a-faq) |
-| 技術的な詳細 | [技術的な詳細の理解](#understand-the-technical-details) |
-| 新たにリリースされた機能 | [最新のサービス更新内容](#recent-service-updates) |
-| その他のドキュメントへのリンク | [パスワードのリセットに関するドキュメントへのリンク](#links-to-password-reset-documentation) |
+| How do I enable password reset for cloud users? | [Enable users to reset their cloud Azure Active Directory passwords](active-directory-passwords-getting-started.md#enable-users-to-reset-their-azure-ad-passwords) |
+| How do I enable password reset and change for on-premises users? | [Enable users to reset or change their on-premises Active Directory passwords](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) |
+| How do I scope password reset to a specific set of users? | [Restrict password reset to specific users](active-directory-passwords-customize.md#restrict-access-to-password-reset) |
+| How do I test cloud password reset? | [Reset your Azure AD password as a user](active-directory-passwords-getting-started.md#step-3-reset-your-azure-ad-password-as-a-user) |
+| How do I test on-premises password reset? | [Reset your on-premises AD password as a user](active-directory-passwords-getting-started.md#step-5-reset-your-ad-password-as-a-user) |
+| How do I disable password reset at a later time? | [Setting: users enabled for password reset](active-directory-passwords-customize.md#users-enabled-for-password-reset) |
 
-### Azure AD のパスワード リセットでできること
-ここでは、Azure AD のパスワード管理機能を使用して実行できることをいくつか示します。
 
-- **セルフ サービスによるパスワードの変更**では、エンド ユーザーまたは管理者は、管理者またはヘルプ デスクにサポートを依頼することなく、有効期限が切れた、または有効期限が切れていないパスワードを変更できます。
-- **セルフ サービスによるパスワードのリセット**では、エンド ユーザーまたは管理者は、管理者またはヘルプ デスクにサポートを依頼することなく、パスワードを自動的にリセットできます。セルフ サービスのパスワード リセットには、Azure AD Premium または Basic が必要です。詳細については、「Azure Active Directory のエディション」をご覧ください。
-- **管理者によるパスワードのリセット**では、管理者は、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)内からエンド ユーザーまたは別の管理者のパスワードをリセットできます。
-- **パスワード管理アクティビティ レポート**では、組織内で発生したパスワードのリセットおよび登録アクティビティの詳細が管理者に提供されます。
-- **パスワード ライトバック**では、クラウドからオンプレミスのパスワードを管理できるので、フェデレーション ユーザーまたはパスワード同期済みユーザーは、またはこれらのユーザーに代わって、上記のシナリオをすべて実行できます。パスワード ライトバックには Azure AD Premium が必要です。詳細については、「Azure AD Premium の概要」を参照してください。
-
-### Azure AD のパスワード リセットを使用する理由
-ここでは、Azure AD のパスワード管理機能を使用すべき理由をいくつか示します。
-
-- **コストを削減する** -サポート部門によるパスワードのリセットは、通常、組織の IT 支出の 20% を占めます。
-- **ユーザー エクスペリエンスを向上させる** -ユーザーは、パスワードを忘れるたびにヘルプデスクに電話して、時間を費やしたくはありません。
-- **ヘルプデスクの負荷を低減する** -パスワード管理は、ほとんどの組織のヘルプデスクにおいて、それひとつに最も負担のかかる仕事です。
-- **モビリティを高める** -ユーザーが任意の場所からパスワードをリセットできます。
-
-### 価格と可用性
-Azure AD のパスワード リセットは所持しているサブスクリプションに応じて、3 つのレベルで利用できます。
-
-- **Azure AD Free** - クラウドのみの管理者が、自分のパスワードをリセットできます
-- **Azure AD Basic または O365 のすべての有料サブスクリプション** - クラウドのみのユーザーおよびクラウドのみの管理者が、自分のパスワードをリセットできます
-- **Azure AD Premium** - クラウドのみ、フェデレーション、パスワード同期ユーザーを含むすべてのユーザーまたは管理者が、自分のパスワードをリセットできます ([パスワード ライトバックの有効化が](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords)必要です)
-
-Azure AD Premium または Basic 料金の詳細については、「[Active Directory の料金詳細](https://azure.microsoft.com/pricing/details/active-directory/)」ページを参照してください。
-
-##ユーザーのパスワード リセットの有効化
-| トピック | |
+##<a name="customize-password-reset-behavior"></a>Customize password reset behavior
+| Topic |  |
 | --------- | --------- |
-| クラウド ユーザーのパスワードをリセットする方法 | [クラウドの Azure Active Directory パスワードをユーザーがリセットできるようにする](active-directory-passwords-getting-started.md#enable-users-to-reset-their-azure-ad-passwords) |
-| オンプレミスのユーザーのパスワード リセットおよび変更を有効にする方法 | [オンプレミス Active Directory パスワードをユーザーがリセットまたは変更できるようにする](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) |
-| パスワードのリセットを一連の特定のユーザーに適用する方法 | [パスワードのリセットを特定のユーザーに制限する](active-directory-passwords-customize.md#restrict-access-to-password-reset) |
-| クラウドのパスワードのリセットをテストする方法 | [ユーザーが Azure AD パスワードをリセットする](active-directory-passwords-getting-started.md#step-3-reset-your-azure-ad-password-as-a-user) |
-| オンプレミスのパスワードのリセットをテストする方法 | [ユーザーがオンプレミスの AD パスワード ポリシーをリセットする](active-directory-passwords-getting-started.md#step-5-reset-your-ad-password-as-a-user) |
-| 後でパスワード リセットを無効化する方法 | [設定: パスワードのリセットが有効になっているユーザー](active-directory-passwords-customize.md#users-enabled-for-password-reset) |
+| How do I change what authentication methods are supported? | [Setting: authentication methods available to users](active-directory-passwords-customize.md#authentication-methods-available-to-users) |
+| How do I change number of authentication methods required? | [Setting: number of authentication methods required](active-directory-passwords-customize.md#number-of-authentication-methods-required) |
+| How do I set up custom security questions? | [Setting: custom security questions](active-directory-passwords-customize.md#custom-security-questions) |
+| How do I set up pre-canned localized security questions? | [Setting: knowledge-based security questions](active-directory-passwords-customize.md#knowledge-based-security-questions) |
+| How can I change how many security questions are required? | [Setting: number of security questions for registration or reset](active-directory-passwords-customize.md#number-of-questions-required-to-register) |
+| How can I customize how a user gets in touch with an admin? | [Setting: customize the "contact your administrator" link](active-directory-passwords-customize.md#customize-the-contact-your-administrator-link) |
+| How can I allow users to unlock AD accounts without resetting a password? | [Setting: enable users to unlock their AD accounts without resetting a password](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password) |
+| How can I enable password reset notifications for users? | [Setting: notify users when their passwords have been reset](active-directory-passwords-customize.md#notify-users-and-admins-when-their-own-password-has-been-reset) |
+| How can I enable password reset notifications for admins? | [Setting: notify other admins when an admin reset their own password](active-directory-passwords-customize.md#notify-admins-when-other-admins-reset-their-own-passwords) |
+| How can I customize password reset look and feel? | [Setting: company name, branding, and logo ](active-directory-passwords-customize.md#password-management-look-and-feel) |
 
 
-##パスワードのリセット動作のカスタマイズ
-| トピック | |
+##<a name="configure-your-users-to-use-password-reset"></a>Configure your users to use password reset
+| Topic |  |
 | --------- | --------- |
-| サポートされる認証方法を変更する方法 | [設定: ユーザーが使用できる認証方法](active-directory-passwords-customize.md#authentication-methods-available-to-users) |
-| 必要な認証方法の数を変更する方法 | [設定: 必要な認証方法の数](active-directory-passwords-customize.md#number-of-authentication-methods-required) |
-| カスタムの秘密の質問を設定する方法 | [設定: カスタムの秘密の質問](active-directory-passwords-customize.md#custom-security-questions) |
-| 既定のローカライズされた秘密の質問を設定する方法 | [設定: ナレッジ ベースの秘密の質問](active-directory-passwords-customize.md#knowledge-based-security-questions) |
-| 必要な秘密の質問の数を変更する方法 | [設定: 登録またはリセット用の秘密の質問の数](active-directory-passwords-customize.md#number-of-questions-required-to-register) |
-| ユーザーが管理者に連絡する方法をカスタマイズする方法 | [設定: "管理者に問い合わせてください" リンクをカスタマイズする](active-directory-passwords-customize.md#customize-the-contact-your-administrator-link) |
-| パスワードをリセットせずに AD アカウントのロックを解除することをユーザーに許可する方法 | [設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password) |
-| ユーザーのパスワード リセット通知を有効にする方法 | [設定: パスワードがリセットされたときにユーザーに通知する](active-directory-passwords-customize.md#notify-users-and-admins-when-their-own-password-has-been-reset) |
-| 管理者のパスワード リセット通知を有効にする方法 | [設定: 管理者が自分のパスワードをリセットしたときに他の管理者に通知する](active-directory-passwords-customize.md#notify-admins-when-other-admins-reset-their-own-passwords) |
-| パスワード リセットの外観をカスタマイズする方法 | [設定: 会社名、ブランド、ロゴ](active-directory-passwords-customize.md#password-management-look-and-feel) |
+| How do I know if an account is configured for password reset? | [What makes an account configured for password reset?](active-directory-passwords-best-practices.md#what-makes-an-account-configured) |
+| How do I get my users configured for password reset? | [Ways to populate password reset authentication data for your users](active-directory-passwords-best-practices.md#ways-to-populate-authentication-data) |
+| How do I manually upload data for my users? | [Uploading password reset data yourself](active-directory-passwords-best-practices.md#uploading-data-yourself) |
+| How do I use PowerShell to read or set data for my users? | [How to access password reset data for your users](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users) |
+| How can I synchronize password reset data from on-premises? | [What data is used by password reset](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) |
+| How can I use an email campaign to get my users to register for and use password reset? | [Email-based rollout of password reset](active-directory-passwords-best-practices.md#email-based-rollout) |
+| How can I force my users to register when signing in? | [Enforced registration-based rollout of password reset](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) |
+| How can I force my users to re-confirm their registered periodically? | [Setting: number of days before users must re-confirm their authentication data](active-directory-passwords-customize.md#number-of-days-before-users-must-confirm-their-contact-data) |
+| What are best practices around communicating password reset to end users? | [Creating your own password portal for your users to use](active-directory-passwords-best-practices.md#creating-your-own-password-portal) |
 
 
-##パスワードのリセットを使用できるようにするためのユーザーの構成
-| トピック | |
+##<a name="view-password-reset-activity-with-integrated-reports"></a>View password reset activity with integrated reports
+| Topic |  |
 | --------- | --------- |
-| アカウントがパスワード リセット用に構成されているか確認する方法 | [アカウントがパスワード リセット用に構成されている状態とは](active-directory-passwords-best-practices.md#what-makes-an-account-configured) |
-| パスワード リセットをユーザーに構成する方法 | [ユーザーのパスワードのリセット認証データを設定する方法](active-directory-passwords-best-practices.md#ways-to-populate-authentication-data) |
-| ユーザーのデータを手動でアップロードする方法 | [自分でパスワード リセット データをアップロードする](active-directory-passwords-best-practices.md#uploading-data-yourself) |
-| PowerShell を使用してユーザーのデータを読み取ったり設定したりする方法 | [ユーザーのパスワード リセット データにアクセスする](active-directory-passwords-learn-more.md#how-to-access-password-reset-data-for-your-users) |
-| オンプレミスでパスワード リセット データを同期する方法 | [パスワードのリセットで使用されるデータ](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) |
-| ユーザーにパスワードのリセットを登録し実行してもらうための電子メール キャンペーンの使用方法 | [電子メール ベースのパスワード リセットの展開](active-directory-passwords-best-practices.md#email-based-rollout) |
-| サインイン時にユーザーに登録を強制する方法 | [パスワード リセットの登録ベースのロールアウトの適用](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) |
-| 登録内容の定期的な再確認をユーザーに強制する方法 | [設定: ユーザーに認証データの再確認を強制するまでの日数](active-directory-passwords-customize.md#number-of-days-before-users-must-confirm-their-contact-data) |
-| パスワード リセットをエンドユーザーに連絡する際のベスト プラクティス | [ユーザーが使用する独自のパスワード ポータルの作成](active-directory-passwords-best-practices.md#creating-your-own-password-portal) |
+| Where do I go to see password reset reports? | [Overview of password management reports](active-directory-passwords-get-insights.md#overview-of-password-management-reports) |
+| Where can I see how users are using password reset in my organization? | [View password reset activity](active-directory-passwords-get-insights.md#view-password-reset-activity) |
+| Where can I see how many users are registering, and what they are registering for? | [View password reset registration activity](active-directory-passwords-get-insights.md#view-password-reset-registration-activity) |
+| How can I get password reset reports from an API? | [Creating an azure ad application to access the reporting API](active-directory-reporting-api-getting-started.md#creating-an-azure-ad-application-to-access-the-api) |
+| What kind of password reset reporting information is available through an API? | [Password reset and registration events available in the reporting API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview#SsprActivityEvent) |
 
 
-##パスワード リセット アクティビティの統合レポートでの表示
-| トピック | |
+##<a name="manage-your-users'-passwords"></a>Manage your users' passwords
+| Topic |  |
 | --------- | --------- |
-| パスワード リセット レポートを確認できる場所へのアクセス方法 | [パスワード管理レポートの概要](active-directory-passwords-get-insights.md#overview-of-password-management-reports) |
-| 組織でのユーザーのパスワード リセットの使用の確認方法 | [パスワード リセット アクティビティの表示](active-directory-passwords-get-insights.md#view-password-reset-activity) |
-| 登録ユーザー数、および登録対象を確認できる場所へのアクセス方法 | [パスワード リセット登録アクティビティの表示](active-directory-passwords-get-insights.md#view-password-reset-registration-activity) |
-| API を使用したパスワード リセット レポートの取得方法 | [レポート API にアクセスする Azure AD アプリケーションの作成](active-directory-reporting-api-getting-started.md#creating-an-azure-ad-application-to-access-the-api) |
-| API で入手できるパスワード リセット レポート情報の種類 | [レポート API で使用できるパスワード リセットと登録イベント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview#SsprActivityEvent) |
+| How do I reset a user's password from the O365 management portal? | [Reset a user's password in Office 365](https://support.office.com/article/Reset-a-user-s-password-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C) |
+| How do I reset a user's password using PowerShell? | [Reset a user's password with Set-MsolUserPassword](https://msdn.microsoft.com/library/azure/dn194140.aspx) |
 
 
-##ユーザーのパスワードの管理
-| トピック | |
+##<a name="set-password-policies"></a>Set password policies
+| Topic |  |
 | --------- | --------- |
-| O365 管理ポータルからユーザーのパスワードをリセットする方法 | [Office 365 でのユーザーのパスワードのリセット](https://support.office.com/article/Reset-a-user-s-password-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C) |
-| PowerShell を使用してユーザーのパスワードをリセットする方法 | [Set-MsolUserPassword を使用したユーザーのパスワードのリセット](https://msdn.microsoft.com/library/azure/dn194140.aspx) |
+| How do I set organization password expiration policy from Office 365? | [Set password expiration policy](https://support.office.com/article/Set-a-user-s-password-expiration-policy-0f54736f-eb22-414c-8273-498a0918678f) |
+| How do I set a specific user's passwords to never expire with PowerShell? | [Set individual user's password to never expire using PowerShell](https://support.office.com/article/Set-an-individual-user-s-password-to-never-expire-f493e3af-e1d8-4668-9211-230c245a0466) |
+| How do I find out whether a user's password is set to never expire using PowerShell | [Check individual user's password expiration status using PowerShell](https://support.office.com/article/Set-an-individual-user-s-password-to-never-expire-f493e3af-e1d8-4668-9211-230c245a0466#__toc378845827) |
 
 
-##パスワード ポリシーの設定
-| トピック | |
+##<a name="troubleshoot-a-problem"></a>Troubleshoot a problem
+| Topic |  |
 | --------- | --------- |
-| Office 365 から組織のパスワードの有効期限ポリシーを設定する方法 | [パスワードの有効期限のポリシーの設定](https://support.office.com/article/Set-a-user-s-password-expiration-policy-0f54736f-eb22-414c-8273-498a0918678f) |
-| PowerShell で特定のユーザーのパスワードが期限切れにならないように設定する方法 | [特定のユーザーのパスワードが期限切れにならないようにする PowerShell での設定](https://support.office.com/article/Set-an-individual-user-s-password-to-never-expire-f493e3af-e1d8-4668-9211-230c245a0466) |
-| ユーザーのパスワードが期限切れにならないように設定されていることを PowerShell で確認する方法 | [PowerShell を使用した個々のユーザーのパスワード有効期限の状態の確認](https://support.office.com/article/Set-an-individual-user-s-password-to-never-expire-f493e3af-e1d8-4668-9211-230c245a0466#__toc378845827) |
+| What information should I provide to support if I need help? | [Information to include when you need help](active-directory-passwords-troubleshoot.md#information-to-include-when-you-need-help) |
+| How can I fix a problem with password reset | [Troubleshoot the password reset portal](active-directory-passwords-troubleshoot.md#troubleshoot-the-password-reset-portal) |
+| How can I fix a problem with password writeback | [Troubleshoot password writeback](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
+| How can I fix a problem with password writeback connectivity | [Troubleshoot password writeback connectivity](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) |
+| How can I fix a problem with password reset configuration | [Troubleshoot password reset configuration in the azure management portal](active-directory-passwords-troubleshoot.md#troubleshoot-password-reset-configuration-in-the-azure-management-portal) |
+| How can I fix a problem with password reset reports | [Troubleshoot password management reports in the azure management portal](active-directory-passwords-troubleshoot.md#troubleshoot-password-management-reports-in-the-azure-management-portal) |
+| How can I fix a problem with password reset registration | [Troubleshoot the password reset registration portal](active-directory-passwords-troubleshoot.md#troubleshoot-the-password-reset-registration-portal) |
+| Password writeback event log error codes | [Password writeback event log error codes](active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes) |
 
 
-##問題をトラブルシューティングする
-| トピック | |
+##<a name="read-a-faq"></a>Read a FAQ
+| Topic |  |
 | --------- | --------- |
-| ヘルプが必要である場合にサポートに提供する情報 | [ヘルプが必要な場合に含める情報](active-directory-passwords-troubleshoot.md#information-to-include-when-you-need-help) |
-| パスワードのリセットの問題を解決する方法 | [パスワード リセット ポータルのトラブルシューティング](active-directory-passwords-troubleshoot.md#troubleshoot-the-password-reset-portal) |
-| パスワード ライトバックの問題を解決する方法 | [パスワード ライトバックのトラブルシューティング](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
-| パスワード ライトバックの接続の問題を解決する方法 | [パスワード ライトバックの接続のトラブルシューティング](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) |
-| パスワードのリセット構成の問題を解決する方法 | [Microsoft Azure 管理ポータルでのパスワード リセット構成のトラブルシューティング](active-directory-passwords-troubleshoot.md#troubleshoot-password-reset-configuration-in-the-azure-management-portal) |
-| パスワード リセット レポートの問題を解決する方法 | [Microsoft Azure 管理ポータルでのパスワード管理レポートのトラブルシューティング](active-directory-passwords-troubleshoot.md#troubleshoot-password-management-reports-in-the-azure-management-portal) |
-| パスワード リセット登録の問題を解決する方法 | [パスワード リセット登録ポータルのトラブルシューティング](active-directory-passwords-troubleshoot.md#troubleshoot-the-password-reset-registration-portal) |
-| パスワード ライトバックのイベント ログのエラー コード | [パスワード ライトバックのイベント ログのエラー コード](active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes) |
+| I want to read a FAQ about password reset registration | [Password reset registration FAQ](active-directory-passwords-faq.md#password-reset-registration) |
+| I want to read a FAQ about password reset | [Password reset FAQ](active-directory-passwords-faq.md#password-reset) |
+| I want to read a FAQ about password reset reports | [Password management reports FAQ](active-directory-passwords-faq.md#password-management-reports) |
+| I want to read a FAQ about password writeback | [Password writeback FAQ](active-directory-passwords-faq.md#password-writeback) |
 
 
-##FAQ を読む
-| トピック | |
+##<a name="understand-the-technical-details"></a>Understand the technical details
+
+| Topic |  |
 | --------- | --------- |
-| パスワード リセット登録に関する FAQ を参照する | [パスワード リセット登録の FAQ](active-directory-passwords-faq.md#password-reset-registration) |
-| パスワード リセットに関する FAQ を参照する | [パスワード リセットの FAQ](active-directory-passwords-faq.md#password-reset) |
-| パスワード リセット レポートに関する FAQ を参照する | [パスワード管理レポートの FAQ](active-directory-passwords-faq.md#password-management-reports) |
-| パスワード ライトバックに関する FAQ を参照する | [パスワード ライトバックの FAQ](active-directory-passwords-faq.md#password-writeback) |
+| I want to learn about what password writeback is | [Password writeback overview](active-directory-passwords-learn-more.md#password-writeback-overview) |
+| I want to learn about how password writeback works | [How does password writeback work?](active-directory-passwords-learn-more.md#how-password-writeback-works) |
+| I want to learn about what scenarios are supported by password writeback | [Scenarios supported for password writeback](active-directory-passwords-learn-more.md#scenarios-supported-for-password-writeback) |
+| I want to learn about how password writeback is secured | [Password writeback security model](active-directory-passwords-learn-more.md#password-writeback-security-model) |
+| I want to learn about how the password reset portal works | [How does the password reset portal work?](active-directory-passwords-learn-more.md#how-does-the-password-reset-portal-work) |
+| I want to learn about what data is used by password reset | [What data is used by password reset?](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) |
+
+## <a name="recent-service-updates"></a>Recent service updates
+
+####<a name="enforce-password-reset-registration-at-sign-in-to-office-365-apps---november-2015"></a>Enforce Password Reset Registration at Sign-In to Office 365 Apps - November 2015
+
+- Now, after enabling the [enforced registration](active-directory-passwords-customize.md#require-users-to-register-when-signing-in) feature, your users will be required to register from anywhere they sign in with a work or school account.  This dramatically increases the speed at which many organizations can onboard to password reset.  With this new feature we've seen large organizations onboarding in as little as 2 weeks!
+
+####<a name="support-for-unlocking-active-directory-accounts-without-resetting-a-password---november-2015"></a>Support for Unlocking Active Directory Accounts without Resetting a Password - November 2015
+
+- Unlock only (without reset) is a huge helpdesk driver these days.  In fact, many organizations spend up to 70% of their password reset budget unlocking accounts!  To meet this demand, now with Azure AD Password reset, you can enable a feature to let your users unlock AD accounts separately from password reset.  Check out how to turn it on here: [Setting: enable users to unlock their AD accounts without resetting a password](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password).
+
+####<a name="usability-updates-to-registration-page---october-2015"></a>Usability updates to Registration Page - October 2015
+
+- Now, when a user has data already registered, he or she can just click "looks good" to update the data without needing to re-send the email or phone call.
+
+####<a name="improved-reliability-of-password-writeback---september-2015"></a>Improved Reliability of Password Writeback - September 2015
+
+- As of the September release of Azure AD Connect, the password writeback agent will now more aggressively retry connections and additional, more robust, failover capabilities.
+
+####<a name="api-for-retrieving-password-reset-reporting-data---august-2015"></a>API for Retrieving Password Reset Reporting Data - August 2015
+
+- Now, the data behind the password reset reports can be retrieved directly from the [Azure AD Reports and Events API](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+
+####<a name="support-for-azure-ad-password-reset-during-cloud-domain-join---august-2015"></a>Support for Azure AD Password Reset During Cloud Domain Join - August 2015
+
+- Now, any cloud user can reset his or her password right from the Windows 10 sign in screen during the cloud domain join onboarding experience.  Note, this is not yet exposed on the Windows 10 sign in screen.
+
+####<a name="enforce-password-reset-registration-at-sign-in-to-azure-and-federated-apps---july-2015"></a>Enforce Password Reset Registration at Sign-In to Azure and Federated Apps - July 2015
+
+- In addition to enforcing registration when signing into myapps.microsoft.com, we now support enforcing registration during sign ins to the Azure Management Portal and any of your federated single-sign on applications
+
+####<a name="security-question-localization-support---may-2015"></a>Security Question Localization Support - May 2015
+
+- Now, you have the option to select pre-defined security questions which are localized in the full O365 language set when configuring Security Questions for password reset.
+
+####<a name="account-unlock-support-during-password-reset---june-2015"></a>Account Unlock Support during Password Reset - June 2015
+
+- If you're using password writeback and you reset your password when your account is locked, we'll automatically unlock your Active Directory account!
+
+####<a name="branded-sspr-registration---april-2015"></a>Branded SSPR Registration - April 2015
+
+- The password reset registration page is now branded with your company logo!
+
+####<a name="security-questions---march-2015"></a>Security Questions - March 2015
+
+- We released security questions to GA!
+
+####<a name="account-unlock---march-2015"></a>Account Unlock - March 2015
+
+- Now users can unlock their accounts when password reset occurs
+
+## <a name="coming-soon"></a>Coming soon
+
+Below are some of the cool features we're working on right now!
+
+**Support for Reminding Users to Update their Registered Data During Sign-in** - Work in progress
+
+- Today, we support reminding users to update their registered data when accessing myapps.microsoft.com, but we're working on the ability to do so for all sign ins.
+
+## <a name="links-to-password-reset-documentation"></a>Links to password reset documentation
+Below are links to all of the Azure AD Password Reset documentation pages:
+
+* **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+* [**How it works**](active-directory-passwords-how-it-works.md) - learn about the six different components of the service and what each does
+* [**Getting started**](active-directory-passwords-getting-started.md) - learn how to allow you users to reset and change their cloud or on-premises passwords
+* [**Customize**](active-directory-passwords-customize.md) - learn how to customize the look & feel and behavior of the service to your organization's needs
+* [**Best practices**](active-directory-passwords-best-practices.md) - learn how to quickly deploy and effectively manage passwords in your organization
+* [**Get insights**](active-directory-passwords-get-insights.md) - learn about our integrated reporting capabilities
+* [**FAQ**](active-directory-passwords-faq.md) - get answers to frequently asked questions
+* [**Troubleshooting**](active-directory-passwords-troubleshoot.md) - learn how to quickly troubleshoot problems with the service
+* [**Learn more**](active-directory-passwords-learn-more.md) - go deep into the technical details of how the service works
 
 
-##技術的な詳細の理解
 
-| トピック | |
-| --------- | --------- |
-| パスワード ライトバックについて学習する | [パスワード ライトバックの概要](active-directory-passwords-learn-more.md#password-writeback-overview) |
-| パスワード ライトバックのしくみについて学習する | [パスワード ライトバックのしくみ](active-directory-passwords-learn-more.md#how-password-writeback-works) |
-| パスワード ライトバックがサポートするシナリオを学習する | [パスワード ライトバックでサポートされているシナリオ](active-directory-passwords-learn-more.md#scenarios-supported-for-password-writeback) |
-| パスワード ライトバックのセキュリティ保護のしくみについて学習する | [パスワード ライトバックのセキュリティ モデル](active-directory-passwords-learn-more.md#password-writeback-security-model) |
-| パスワード リセット ポータルのしくみを学習する | [パスワード リセット ポータルのしくみ](active-directory-passwords-learn-more.md#how-does-the-password-reset-portal-work) |
-| パスワード リセットで使用されるデータについて学習する | [パスワードのリセットで使用されるデータ](active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset) |
+<!--HONumber=Oct16_HO2-->
 
-## 最新のサービス更新内容
 
-####Office 365 アプリへのサインイン時にパスワード リセット登録を実施する - 2015 年 11 月
-
-- [強制登録](active-directory-passwords-customize.md#require-users-to-register-when-signing-in)機能を有効にすることにより、職場または学校のアカウントを使用してサインインした任意の場所で登録を求めることができるようになりました。これにより、多くの組織がパスワード リセットを使用開始する速度が大幅に上昇します。この新しい機能により、大規模な組織がわずか 2 週間で利用開始したこともありました。
-
-####パスワードをリセットすることなく Active Directory アカウントのロックを解除する機能をサポート - 2015 年 11 月
-
-- (リセットせずに) ロックのみを解除できることは、今日のヘルプデスクにとっては大きな推進力となります。実際、多くの組織で、アカウントのロック解除にパスワードのリセット予算を最大 70% 使用しています。 Azure AD のパスワード リセットでは、この需要に対応するために、ユーザーが AD アカウントのロックを解除できる (パスワード リセットからは独立した) 機能を有効にできるようになりました。これをオンにするには、「[設定: ユーザーがパスワードをリセットせずに AD アカウントのロックを解除できるようにする](active-directory-passwords-customize.md#allow-users-to-unlock-accounts-without-resetting-their-password)」を参照してください。
-
-####登録ページでの使いやすさの更新 - 2015 年 10 月
-
-- ユーザーは既に登録されたデータがある場合、電子メールを送信したり電話をかけたりしなくても、[問題なし] をクリックするだけでデータを更新できるようになりました。
-
-####パスワード ライトバックの信頼性が向上 - 2015 年 9 月
-
-- Azure AD Connect の 9 月リリースの時点で、パスワード ライトバック エージェントは接続と、より堅牢な追加のフェールオーバー機能とを積極的に再試行するようになります。
-
-####パスワード リセット レポート データを取得するための API - 2015 年 8 月
-
-- パスワード リセット レポートの背後にあるデータを [Azure AD レポートおよびイベント API](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) で直接取得できるようになりました。
-
-####クラウド ドメインへの参加中に Azure AD のパスワード リセットをサポート - 2015 年 8 月
-
-- クラウド ユーザーは、クラウド ドメインへの参加のためのオンボード作業中に Windows 10 サインイン画面から自身のパスワードをリセットできるようになりました。この機能は Windows 10 のサインイン画面ではまだ公開されていません。
-
-####Azure およびフェデレーション アプリへのサインイン時にパスワード リセット登録を強制 - 2015 年 7 月
-
-- myapps.microsoft.com へのサインイン時の登録の実施に加えて、Microsoft Azure 管理ポータルおよび任意のフェデレーション シングル サインオン アプリケーションへのサインイン時の登録の実施もサポートするようになりました。
-
-####セキュリティに関する質問のローカライズ サポート - 2015 年 5 月
-
-- パスワード リセットに対してセキュリティの質問を構成する場合に、完全な O365 言語セットでローカライズされた定義済みのセキュリティの質問を選択できるようになりました。
-
-####パスワード リセット中のアカウントのロック解除をサポート - 2015 年 6 月
-
-- パスワード ライトバックを使用している場合、アカウントがロックされている状態でパスワードをリセットすると、Active Directory アカウントが自動的にロック解除されます。
-
-####SSPR 登録のブランド化 - 2015 年 4 月
-
-- パスワードのリセットの登録ページは、会社のロゴでブランド化されるようになりました。
-
-####セキュリティの質問 - 2015 年 3 月
-
-- セキュリティの質問を、一般に公開しました。
-
-####アカウントのロックの解除 - 2015 年 3 月
-
-- パスワードのリセットが発生した場合に、ユーザーがロックを解除できるようになりました。
-
-## 近日対応予定
-
-現在作業中の優れた機能の一部を次に示します。
-
-**サインイン時に登録済みデータを更新するようユーザーに喚起する機能** - 開発中
-
-- 現在、myapps.microsoft.com へのアクセス時に登録済みデータを更新するようユーザーに喚起する機能をサポートしていますが、すべてのサインインでこれを行う機能を開発中です。
-
-## パスワードのリセットに関するドキュメントへのリンク
-Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
-
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
-* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
-* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
-* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
-* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
-* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
-
-<!---HONumber=AcomDC_0727_2016-->

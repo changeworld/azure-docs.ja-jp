@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Microsoft Azure IaaS でのソフトウェアの更新のためのベスト プラクティス | Microsoft Azure"
-   description="この記事では、Microsoft Azure IaaS 環境でのソフトウェアの更新に関するさまざまなベスト プラクティスについて説明します。組織のセキュリティ担当者やコンプライアンス担当者など、日常的に変更管理、ソフトウェアの更新、および資産管理に携わる IT プロフェッショナルとセキュリティ アナリストを対象とした内容です。"
+   pageTitle="Best Practices for Software Updates on Microsoft Azure IaaS | Microsoft Azure"
+   description="Article provides a collection of best practices for software updates in an Microsoft Azure IaaS environment.  It is intended for IT professionals and security analysts who deal with change control, software update and asset management on a daily basis, including those responsible for their organization's security and compliance efforts."
    services="security"
    documentationCenter="na"
    authors="YuriDio"
@@ -13,113 +13,118 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/02/2016"
+   ms.date="10/18/2016"
    ms.author="yurid"/>
 
-# Microsoft Azure IaaS でのソフトウェアの更新のためのベスト プラクティス
 
-Azure [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) 環境のベスト プラクティスについて検討する前に、ソフトウェアの更新やその責任を管理するシナリオについて理解しておくことが重要です。責任の範囲については、次の図を参考にしてください。
+# <a name="best-practices-for-software-updates-on-microsoft-azure-iaas"></a>Best practices for software updates on Microsoft Azure IaaS
 
-![クラウド モデルと義務](./media/azure-security-best-practices-software-updates-iaas/sec-cloudstack-new.png)
+Before diving into any kind of discussion on best practices for an Azure [IaaS](https://azure.microsoft.com/overview/what-is-iaas/) environment, it is important to understand what the scenarios are that will have you managing software updates and the responsibilities. The diagram below should help you understand these boundaries:
 
-一番左の列は、組織で検討する必要がある 7 つの役割 (後のセクションで定義しています) を示しています。これらはすべて、コンピューティング環境のセキュリティとプライバシーに関与します。
+![Cloud models and responsabilities](./media/azure-security-best-practices-software-updates-iaas/sec-cloudstack-new.png)
+
+The left-most column shows seven responsibilities (defined in the sections that follow) that organizations should consider, all of which contribute to the security and privacy of a computing environment.
  
-データの分類と説明責任、およびクライアントとエンドポイントの保護の全責任は、お客様にあります。物理的なセキュリティ、ホスト、およびネットワークについては、PaaS および SaaS モデルではクラウド サービス プロバイダーの責任となります。
+Data classification & accountability and Client & end-point protection are the responsibilities that are solely in the domain of customers, and Physical, Host, and Network responsibilities are in the domain of cloud service providers in the PaaS and SaaS models. 
 
-残りの項目については、お客様とクラウド サービス プロバイダーとで分担します。一部の役割については、ドメインの監査も含めて、クラウド サービス プロバイダーとお客様とで管理を行う必要があります。たとえば、Azure Active Directory サービスを使用する場合の ID とアクセスの管理を例に取ると、多要素認証などのサービスの構成はお客様の責任になりますが、機能の有効性の確保については Microsoft Azure がその役目を果たします。
+The remaining responsibilities are shared between customers and cloud service providers. Some responsibilities require the CSP and customer to manage and administer the responsibility together, including auditing of their domains. For example, consider Identity & access management when using Azure Active Directory Services; the configuration of services such as multi-factor authentication is up to the customer, but ensuring effective functionality is the responsibility of Microsoft Azure.
 
-> [AZURE.NOTE] クラウド内の役割分担の詳細については、「[Shared Responsibilities for Cloud Computing (クラウド コンピューティングの役割分担)](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)」をお読みください。
+> [AZURE.NOTE] For more information about shared responsibilities in the cloud, read [Shared Responsibilities for Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf) 
 
-次の図に示すように、Azure IaaS VM を使用してオンプレミスのリソースと通信するハイブリッド シナリオに関して、これらの同じ原則が適用されます。
+These same principles apply in a hybrid scenario where your company is using Azure IaaS VMs that communicate with on-premises resources as shown in the diagram below.
 
-![Microsoft Azure での一般的なハイブリッド シナリオ](./media/azure-security-best-practices-software-updates-iaas/sec-azconnectonpre.png)
+![Typical hybrid scenario with Microsoft Azure](./media/azure-security-best-practices-software-updates-iaas/sec-azconnectonpre.png)
 
-## 最初の評価
+## <a name="initial-assessment"></a>Initial assessment
 
-会社が既に更新管理システムを使用し、所定のソフトウェア更新ポリシーを保持している場合でも、頻繁に以前のポリシーの評価を見直して現在の要件に基づいて更新することが重要です。つまり、社内のリソースの現在の状態について理解しておく必要があります。そのためには以下の情報が必要です。
+Even if your company is already using an update management system and you already have software update policies in place, it is important to frequently revisit previous policy assessments and update them based on your current requirements. This means that you need to be familiar with the current state of the resources in your company. To reach this state, you have to know:
 
--   社内の物理コンピューターと仮想コンピューター
+-   The physical and virtual computers in your enterprise.
 
--   各物理/仮想コンピューターで実行されているオペレーティング システムとバージョン
+-   Operating systems and versions running on each of these physical and virtual computers.
 
--   各コンピューターに現在インストールされているソフトウェアの更新プログラム (Service Pack バージョン、ソフトウェア更新プログラム、およびその他の変更)
+-   Software updates currently installed on each computer (service pack versions, software updates, and other modifications).
 
--   社内の各コンピューターで実行される機能
+-   The function each computer performs in your enterprise.
 
--   各コンピューターで実行されるアプリケーションとプログラム
+-   The applications and programs running on each computer.
 
--   各コンピューターの所有権と連絡先の情報
+-   Ownership and contact information for each computer.
 
--   環境内に存在する資産と、最も注意して保護する必要のある領域を特定するための相対的な価値
+-   The assets present in your environment and their relative value to determine which areas need the most attention and protection.
 
--   既知のセキュリティ問題と、新しいセキュリティ問題またはセキュリティ レベルの変更を識別するための会社の所定のプロセス
+-   Known security problems and the processes your enterprise has in place for identifying new security issues or changes in security level.
 
--   使用している環境をセキュリティで保護するためにデプロイされた対処法
+-   Countermeasures that have been deployed to secure your environment.
 
-この情報は定期的に更新する必要があり、ソフトウェア更新管理プロセスに関係するユーザーがすぐに利用できるようにしておく必要があります。
+You should update this information regularly, and it should be readily available to those involved in your software update management process.
 
-## ベースラインの確立
+## <a name="establish-a-baseline"></a>Establish a Baseline
 
-ソフトウェア更新管理プロセスの重要な部分は、社内のコンピューターのオペレーティング システムのバージョン、アプリケーション、およびハードウェアの初期の標準インストールを作成することです。これらはベースラインと呼ばれます。ベースラインは、特定の時点で確立された製品またはシステムの構成です。たとえば、アプリケーションまたはオペレーティング システムのベースラインは、コンピューターまたはサービスを特定の状態に再構築する機能を提供します。
+An important part of the software update management process is creating initial standard installations of operating system versions, applications, and hardware for computers in your enterprise; these are called baselines. A baseline is the configuration of a product or system established at a specific point in time. An application or operating system baseline, for example, provides the ability to rebuild a computer or service to a specific state.
 
-ベースラインは潜在的な問題を見つけて修正するための基盤となるだけでなく、社内でデプロイする必要のあるソフトウェア更新プログラムの数を削減し、コンプライアンスを監視する機能を強化することにより、ソフトウェア更新管理プロセスを簡略化します。
+Baselines provide the basis for finding and fixing potential problems and simplify the software update management process, both by reducing the number of software updates you must deploy in your enterprise and by increasing your ability to monitor compliance.
 
-自社の最初の監査を実行した後で、その監査で得られた情報を使用して、運用環境内の IT コンポーネントのための運用ベースラインを定義する必要があります。運用環境にデプロイされている各種ハードウェアとソフトウェアに応じて、さまざまなベースラインが必要となる可能性があります。
+After performing the initial audit of your enterprise, you should use the information that is obtained from the audit to define an operational baseline for the IT components within your production environment. A number of baselines might be required, depending on the different types of hardware and software deployed into production.
 
-たとえば一部のサーバーでは、Windows Server 2012 でシャットダウン プロセスに移行したときに処理が停止しないようにするためのソフトウェア更新プログラムが必要です。これらのサーバーのベースラインには、このソフトウェア更新プログラムを含める必要があります。
+For example, some servers require a software update to prevent them from hanging when they enter the shutdown process when running Windows Server 2012. A baseline for these servers should include this software update.
 
-多くの場合、大規模な組織では、社内のコンピューターを資産のカテゴリに分割して、各カテゴリを標準ベースラインで保持するために同じバージョンのソフトウェアとソフトウェア更新プログラムを使用することが有用です。これらの資産カテゴリを使用して、ソフトウェア更新プログラムの配布に優先順位を付けることができます。
+In large organizations, it is often helpful to divide the computers in your enterprise into asset categories and keep each category at a standard baseline by using the same versions of software and software updates. You can then use these asset categories in prioritizing a software update distribution.
 
-## 適切なソフトウェア更新プログラム通知サービスのサブスクライブ
+## <a name="subscribe-to-the-appropriate-software-update-notification-services"></a>Subscribe to the appropriate software update notification services
 
-社内で使用されているソフトウェアの最初の監査を実行後、ソフトウェア製品およびバージョンごとに新しいソフトウェア更新プログラムの通知を受け取るための最適な方法を決定する必要があります。電子メール通知、Web サイト、コンピューター パブリケーションなど、ソフトウェア製品に応じて最適な通知方法があります。
+After you perform an initial audit of the software in use in your enterprise, you should determine the best method for receiving notifications of new software updates for each software product and version. Depending on the software product, the best notification method might be e-mail notifications, Web sites, or computer publications.
 
-たとえば、Microsoft セキュリティ レスポンス センター (MSRC) は、Microsoft 製品に関するすべてのセキュリティ関連の問題に対応し、マイクロソフト セキュリティ情報サービス (新たに特定された脆弱性を伝える無料の電子メール通知) と、これらの脆弱性に対処するソフトウェア更新プログラムを提供します。http://www.microsoft.com/technet/security/bulletin/notify.mspx で、このサービスをサブスクライブできます。
+For example, the Microsoft Security Response Center (MSRC) responds to all security-related concerns about Microsoft products and provides the Microsoft Security Bulletin Service, a free e-mail notification of newly identified vulnerabilities and software updates that are released to address these vulnerabilities. You can subscribe to this service at http://www.microsoft.com/technet/security/bulletin/notify.mspx.
 
-## ソフトウェアの更新に関する注意点
+## <a name="software-update-considerations"></a>Software update considerations
 
-社内で使用されているソフトウェアの最初の監査を実行後、ソフトウェア更新管理システムをセットアップするための要件を決定する必要があります。これは、使用しているソフトウェアの更新管理システムに依存します。WSUS については「[Windows Server Update Services を使用したベスト プラクティス](https://technet.microsoft.com/library/Cc708536)」、System Center については「[Configuration Manager でのソフトウェア更新プログラムの計画](https://technet.microsoft.com/library/gg712696)」を参照してください。
+After you perform an initial audit of the software in use in your enterprise, you should determine the requirements to setup you software update management system, which depends on the software update management system that you are using. For WSUS read [Best Practices with Windows Server Update Services](https://technet.microsoft.com/library/Cc708536), for System Center read [Planning for Software Updates in Configuration Manager](https://technet.microsoft.com/library/gg712696).
 
-ただし、以下のセクションで示しているように、使用しているソリューションに関係なく適用できる一般的な考慮事項およびベスト プラクティスがあります。
+However, there are some general considerations and best practices that you can apply regardless of the solution that you are using as shown in the sections that follows.
 
-### 環境のセットアップ
+### <a name="setting-up-the-environment"></a>Setting up the environment
 
-ソフトウェア更新管理環境をセットアップする計画を作成する場合は、次の方法を検討してください。
+Consider the following practices when planning to setup the software update management environment:
 
--   **安定した条件に基づいた、運用ソフトウェア更新プログラム コレクションの作成**: 一般的に、安定した条件を使用してソフトウェア更新プログラムのインベントリと配布のコレクションを作成すると、ソフトウェア更新管理プロセスのすべてのステージを簡略化できます。安定した条件には、インストールされたクライアント オペレーティング システムのバージョンと Service Pack レベル、システム ロール、またはターゲット組織を含めることができます。
+-   **Create production software update collections based on stable criteria**: In general, using stable criteria to create collections for your software update inventory and distribution will help to simplify all stages of the software update management process. The stable criteria can include the installed client operating system version and service pack level, system role, or target organization.
 
--   **参照コンピューターを含む実稼働前のコレクションの作成**: 実稼働前のコレクションには、オペレーティング システムのバージョン、基幹業務ソフトウェア、社内で実行されているその他のソフトウェアの典型的な構成を含む必要があります。
+-   **Create pre-production collections that include reference computers**: The pre-production collection should include representative configurations of the operating system versions, line of business software, and other software running in your enterprise.
 
-ソフトウェア更新サーバーを設置する場所をクラウド内の Azure IaaS インフラストラクチャにするか、またはオンプレミスにするかについても検討する必要があります。オンプレミス リソースと Azure インフラストラクチャの間のトラフィックの量を評価する必要があるため、これは重要な決定です。オンプレミスのインフラストラクチャを Azure に接続する方法の詳細については、「[オンプレミス ネットワークを Microsoft Azure 仮想ネットワークに接続する](https://technet.microsoft.com/library/Dn786406.aspx)」を参照してください。
+You should also consider where the software update server will be located, if it will be in the Azure IaaS infrastructure in the cloud or if it will be on-premises. This is an important decision because you need to evaluate the amount of traffic between on-premises resources and Azure infrastructure. Read [Connect an on-premises network to a Microsoft Azure virtual network](https://technet.microsoft.com/library/Dn786406.aspx) for more information on how to connect your on-premises infrastructure to Azure.
 
-更新サーバーが設置される場所を決定する設計オプションは、現在のインフラストラクチャや現在使用しているソフトウェア更新システムによっても異なります。WSUS については「[Windows Server Update Services を組織にデプロイする](https://technet.microsoft.com/library/hh852340.aspx)」、System Center Configuration Manager については「[Configuration Manager のサイトと階層の計画](https://technet.microsoft.com/library/Gg712681.aspx)」を参照してください。
+The design options that will determine where the update server will be located will also vary according to your current infrastructure and the software update system that you are currently using. For WSUS read [Deploy Windows Server Update Services in Your Organization](https://technet.microsoft.com/library/hh852340.aspx) and for System Center Configuration Manager read [Planning for Sites and Hierarchies in Configuration Manager](https://technet.microsoft.com/library/Gg712681.aspx).
 
-### Backup
+### <a name="backup"></a>Backup
 
-ソフトウェア更新管理のプラットフォームだけでなく、更新対象のサーバーにおいても定期的なバックアップは重要です。所定の[変更管理プロセス](https://technet.microsoft.com/library/cc543216.aspx)を持つ組織では、サーバーを更新する必要がある理由、推定ダウンタイム、および考えられる影響について IT 部門が正当性を示す必要があります。更新が失敗した場合のロールバック用構成を確保できるように、必ずシステムを定期的にバックアップしてください。
+Regular backups are important not only for the software update management platform itself but also for the servers that will be updated. Organizations that have a [change management process](https://technet.microsoft.com/library/cc543216.aspx) in place will require IT to justify the reasons for why the server needs to be updated, the estimated downtime and possible impact. To ensure that you have a rollback configuration in place in case an update fails, make sure to back up the system regularly.
 
-次のような Azure IaaS のバックアップ オプションがあります。
+Some backup options for Azure IaaS include:
 
--   [Data Protection Manager を使用した Azure IaaS ワークロード保護](https://azure.microsoft.com/blog/2014/09/08/azure-iaas-workload-protection-using-data-protection-manager/)
+-   [Azure IaaS workload protection using Data Protection Manager](https://azure.microsoft.com/blog/2014/09/08/azure-iaas-workload-protection-using-data-protection-manager/)
 
--   [Azure virtual machines のバックアップ](../backup/backup-azure-vms.md)
+-   [Back up Azure virtual machines](../backup/backup-azure-vms.md)
 
-### Monitoring
+### <a name="monitoring"></a>Monitoring
 
-承認された各ソフトウェア更新プログラムに対して定期的なレポートを実行し、適用されていない更新プログラムやインストール済みの更新プログラム、未完了状態の更新プログラムを監視する必要があります。同様に、まだ承認されていないソフトウェア更新プログラムのレポートを実行すると、デプロイメントを容易に決定できるようになります。
+You should run regular reports to monitor the number of missing or installed updates, or updates with incomplete status, for each software update that is authorized. Similarly, reporting for software updates that are not yet authorized can facilitate easier deployment decisions.
 
-次のタスクも考慮する必要があります。
+You should also consider the following tasks:
 
--   社内のすべてのコンピューターについて、適用可能およびインストール済みのセキュリティ更新プログラムの監査を実施する。
+-   Conduct an audit of applicable and installed security updates for all the computers in your company.
 
--   該当するコンピューターに対して更新プログラムを承認し、デプロイする。
+-   Authorize and deploy the updates to the appropriate computers.
 
--   社内のすべてのコンピューターのインベントリを追跡し、インストールの状態と進行状況を更新する。
+-   Track the inventory and update installation status and progress for all the computers in your company.
 
-この記事で説明してきた一般的な考慮事項に加えて、各製品のベスト プラクティスについても考慮する必要があります。たとえば、Azure の VM で SQL Server を保持している場合は、その製品のソフトウェア更新プログラムの推奨事項に従っていることを確認してください。
+In addition to general considerations that were explained in this article, you should also consider each product’s best practice, for example: if you have a VM in Azure with SQL Server, make sure that you are following the software updates recommendation for that product.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-この記事で示されているガイドラインを使用して、Azure IaaS 内の仮想マシンに対してソフトウェア更新プログラムの最適なオプションを決定できます。ソフトウェア更新プログラムのベスト プラクティスについては、従来のデータセンター内と Azure IaaS 内で多数の類似点があります。したがって、現在のソフトウェア更新ポリシーを評価して、全体的なソフトウェア更新プロセスに Azure VM を含め、この記事内の関連するベスト プラクティスを含めることをお勧めします。
+Use the guidelines described in this article to assist you in determining the best options for software updates for virtual machines within Azure IaaS. There are many similarities between software update best practices in a traditional datacenter versus Azure IaaS, therefore it is recommended that you evaluate your current software update policies to include Azure VMs and include the relevant best practices from this article in your overall software update process.
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,17 +1,24 @@
-## Outlook.com に接続する
+## <a name="connect-to-outlook.com"></a>Connect to Outlook.com
 
-### 前提条件
-- Outlook.com アカウント
+### <a name="prerequisites"></a>Prerequisites
+- An Outlook.com account
 
-ロジック アプリで Outlook.com アカウントを使用するには、Outlook.com アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
+Before you can use your Outlook.com account in a Logic app, you must authorize the Logic app to connect to your Outlook.com account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
 
-次に、Outlook.com アカウントに接続するロジック アプリを承認する手順を示します。
+Here are the steps to authorize your Logic app to connect to your Outlook.com account:
 
-1. すべてのロジック アプリはトリガーによって起動する必要があるため、ロジック アプリを作成すると、デザイナーが開いて、ロジック アプリの起動に使用できるトリガーの一覧が表示されます。
+1. All Logic apps need to be started by a trigger so after you create your Logic app, the designer opens and displays a list of triggers that you can use to start your Logic app:
 
   ![](./media/connectors-create-api-outlook/office365-outlook-0.png)
-2. 検索ボックスに「outlook」と入力します。一覧にフィルターが適用されて、「Outlook」という名前のすべてのトリガーが表示されます。 ![](./media/connectors-create-api-outlook/office365-outlook-0-5.png)
-3. **[Office 365 Outlook - On new email]** (Office 365 Outlook - 新着メール) を選択します。これまでに Outlook への接続を作成していない場合は、Outlook.com の資格情報を指定するよう求められます。この資格情報を使用して、接続するロジック アプリの承認と、Outlook.com アカウントのデータへのアクセスが行われます。 ![](./media/connectors-create-api-outlook/office365-outlook-1.png)
-4. Outlook の資格情報を入力して、サインインします。 ![](./media/connectors-create-api-outlook/office365-outlook-2.png) これで操作は完了です。Outlook への接続が作成されました。この接続は、作成するロジック アプリで使用可能になります。
+2. Enter "outlook" in the search box. Notice the list is filtered to list all the triggers with "Outlook" in the name: ![](./media/connectors-create-api-outlook/office365-outlook-0-5.png)
+3. Select **Office 365 Outlook - On new email**.   
+  If you haven't created any connections to Outlook before, you'll get prompted to provide your Outlook.com credentials. These credentials will be used to authorize your Logic app to connect to, and access your Outlook.com account's data: ![](./media/connectors-create-api-outlook/office365-outlook-1.png)
+4. Provide your credentials for Outlook and sign in: ![](./media/connectors-create-api-outlook/office365-outlook-2.png)  
+  That's it. You've now created a connection to Outlook. This connection will be available for use in any other Logic app that you create.
+
+
+
+
+<!--HONumber=Oct16_HO2-->
 
 

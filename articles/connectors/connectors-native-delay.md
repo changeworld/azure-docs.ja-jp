@@ -1,12 +1,12 @@
 <properties
-	pageTitle="ロジック アプリに遅延を追加する |Microsoft Azure"
-	description="遅延アクションおよび延期期限アクションの概要と、Azure ロジック アプリでの使用方法"
-	services=""
-	documentationCenter=""
-	authors="jeffhollan"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Add a delay in logic apps | Microsoft Azure"
+    description="Overview of the delay and delay-until actions, and how to use them with an Azure logic app."
+    services=""
+    documentationCenter=""
+    authors="jeffhollan"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,63 +17,70 @@
    ms.date="07/18/2016"
    ms.author="jehollan"/>
 
-# 遅延アクションと延期期限アクションの概要
 
-遅延アクションと "延期期限" アクションを使用すると、さまざまなワークフロー シナリオに対応できます。
+# <a name="get-started-with-the-delay-and-delay-until-actions"></a>Get started with the delay and delay-until actions
 
-たとえば、次のようなことができます。
+By using the delay and "delay-until" actions, you can complete workflow scenarios.
 
-- 電子メールで状態の更新情報を送信するのを平日まで待つ。
-- HTTP 呼び出しが終了するまでワークフローを遅らせてから、再開して結果を取得する。
+For example, you can:
 
-ロジック アプリで遅延アクションの使用を開始する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
+- Wait until a weekday to send a status update over email.
+- Delay the workflow until an HTTP call has time to finish before resuming and retrieving the result.
 
-## 遅延アクションの使用
+To get started using the delay action in a logic app, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください](connectors-overview.md)。
+## <a name="use-the-delay-actions"></a>Use the delay actions
 
-ロジック アプリで遅延ステップを使用する方法の例を次に示します。
+An action is an operation that is carried out by the workflow that is defined in a logic app. [Learn more about actions](connectors-overview.md).
 
-1. トリガーを追加したら、**[新しいステップ]** をクリックしてアクションを追加します。
-2. 「**遅延**」を検索して、遅延アクションを表示します。この例では、**[遅延]** を選択します。
+Here’s an example sequence of how to use a delay step in a logic app:
 
-	![Delay actions](./media/connectors-native-delay/using-action-1.png)
+1. After adding a trigger, click **New Step** to add an action.
+2. Search for **delay** to bring up the delay actions. In this example, we will select **Delay**.
 
-3. 遅延を構成するアクション プロパティをすべて設定します。
+    ![Delay actions](./media/connectors-native-delay/using-action-1.png)
 
-	![Delay config](./media/connectors-native-delay/using-action-2.png)
+3. Complete any of the action properties to configure the delay.
 
-4. **[保存]** をクリックし、ロジック アプリを発行してアクティブ化します。
+    ![Delay config](./media/connectors-native-delay/using-action-2.png)
+
+4. Click **Save** to publish and activate the logic app.
 
 
-## アクションの詳細
+## <a name="action-details"></a>Action details
 
-定期実行のトリガーには、構成可能な次のプロパティがあります。
+The recurrence trigger has the following properties that can be configured.
 
-### 遅延アクション
+### <a name="delay-action"></a>Delay action
 
-一定期間、実行を遅延します。* は、必須フィールドであることを示しています。
+This action delays the run for a certain time interval.
+A * means that it is a required field.
 
-|表示名|プロパティ名|Description|
+|Display name|Property name|Description|
 |---|---|---|
-|カウント*|count|遅延する時間の単位数|
-|単位*|unit|時間の単位: `Second`、`Minute`、`Hour`、`Day` のいずれか|
+|Count*|count|The number of time units to delay|
+|Unit*|unit|The unit of time: `Second`, `Minute`, `Hour`, or `Day`|
 <br>
 
-### 延期期限アクション
+### <a name="delay-until-action"></a>Delay-until action
 
-指定した日付/時刻まで実行を遅延します。* は、必須フィールドであることを示しています。
+This action delays the run until a specified date/time.
+A * means that it is a required field.
 
-|表示名|プロパティ名|Description|
+|Display name|Property name|Description|
 |---|---|---|
-|年*|timestamp|遅延後の年 (GMT)|
-|月*|timestamp|遅延後の月 (GMT)|
-|日*|timestamp|遅延後の日 (GMT)|
+|Year*|timestamp|The year to delay until (GMT)|
+|Month*|timestamp|The month to delay until (GMT)|
+|Day*|timestamp|The day to delay until (GMT)|
 <br>
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-プラットフォームを試用し、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。[API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
+Now, try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

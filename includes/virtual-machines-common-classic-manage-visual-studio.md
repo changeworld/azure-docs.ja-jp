@@ -1,161 +1,164 @@
-Azure への仮想マシンの作成は、Visual Studio のサーバー エクスプローラーを使って行うことができます。
+You can create virtual machines in Azure by using Server Explorer in Visual Studio.
 
-## サーバー エクスプローラーで Azure 仮想マシンを作成する
+## <a name="create-an-azure-virtual-machine-in-server-explorer"></a>Create an Azure virtual machine in Server Explorer
 
-仮想マシンは [Microsoft Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=253103)で作成できますが、サーバー エクスプローラーからコマンドを使用して Azure に仮想マシンを作成することもできます。仮想マシンは、負荷分散された共通のパブリック エンドポイントの内側に置くフロント エンドなどとして使用できます。
+While you can create a virtual machine in the [Azure Management Portal](http://go.microsoft.com/fwlink/?LinkID=253103), you can also create a virtual machine in Azure by using commands in Server Explorer. Virtual machines can be used, for example, to provide a front end behind a common load-balanced public endpoint.
 
-### 新しい仮想マシンを作成するには
+### <a name="to-create-a-new-virtual-machine"></a>To create a new virtual machine
 
-1. サーバー エクスプローラーで **[Azure]** ノードを開き、**[Virtual Machines]** をクリックします。
+1. In Server Explorer, open the **Azure** node and click **Virtual Machines**.
 
-1. コンテキスト メニューの **[仮想マシンの作成]** をクリックします。
+1. On the context menu, click **Create Virtual Machine**.
 
-    **仮想マシンの新規作成**ウィザードが表示されます。
+    The **Create a New Virtual Machine** wizard appears.
 
-    ![[仮想マシンの作成] コマンド](./media/virtual-machines-common-classic-create-manage-visual-studio/IC718342.png)
+    ![The Create Virtual Machine command](./media/virtual-machines-common-classic-create-manage-visual-studio/IC718342.png)
 
-1. **[サブスクリプションの選択]** ページで、仮想マシンを作成するときに使用するサブスクリプションを選択し、**[次へ]** をクリックします。
+1. On the **Choose a Subscription** page, select a subscription to use when creating the virtual machine and then click **Next**.
 
-    Azure にサインインしていない場合は、**[サインイン]** をクリックしてサインインします。ご利用の Azure サブスクリプションをまだ選択していない場合は、ドロップダウン ボックスから選択します。
+    If you aren’t signed in to Azure, click **Sign In** to sign in. Then, select your Azure subscription in the dropdown list box if it’s not already selected.
 
-1. **[仮想マシン イメージの選択]** ページの **[イメージの種類]** ドロップダウン ボックスでイメージの種類を選択し、**[イメージ名]** ボックスの一覧から仮想マシン イメージを選択します。終了したら **[次へ]** をクリックします。
+1. On the **Select a Virtual Machine Image** page, select an image type in the **Image type** dropdown list box, and then select a virtual machine images in the **Image name** list box. When you're done, click **Next**.
 
-    ![[仮想マシン イメージの選択] ページ](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744137.png)
+    ![Select a virtual machine image page](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744137.png)
 
-    以下の種類から選ぶことができます。
+    You can choose the following image types.
 
-    - **[公開イメージ]** には、オペレーティング システムの仮想マシン イメージと、Windows Server や SQL Server などのサーバー ソフトウェアが一覧表示されます。
+    - **Public Images** lists virtual machine images of operating systems and server software such as Windows Server and SQL Server.
 
-    - **[MSDN イメージ]** には、Visual Studio や Microsoft Dynamics など、MSDN のサブスクライバーが利用できるソフトウェアの仮想マシン イメージが一覧表示されます。
+    - **MSDN Images** lists virtual machine images of software available to MSDN subscribers, such as Visual Studio and Microsoft Dynamics.
 
-    - **[プライベート イメージ]** には、ある目的に特化して作成した仮想マシン イメージや汎用的な目的で作成した仮想マシン イメージが一覧表示されます。
+    - **Private Images** lists specialized and generalized virtual machine images that you've created.
 
-    特殊化および一般化された仮想マシンについては、[VM イメージ](https://azure.microsoft.com/blog/2014/04/14/vm-image-blog-post/)に関するページを参照してください。構成済みの新しい仮想マシンをすばやく作成できるよう、仮想マシンをテンプレートに変換する方法については、「[イメージとして使用する Windows 仮想マシンのキャプチャ方法](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/)」を参照してください。
+    To learn about specialized and generalized virtual machines, see [VM Image](https://azure.microsoft.com/blog/2014/04/14/vm-image-blog-post/). See [How to Capture a Windows Virtual Machine to Use as a Template](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/) for information about how to turn a virtual machine into a template that you can use to quickly create new pre-configured virtual machines.
 
-    仮想マシン イメージ名をクリックすると、ページの右側にイメージに関する情報が表示されます。
+    You can click a virtual machine image name to see information about the image on the right side of the page.
 
-    >[AZURE.NOTE] **[公開イメージ]** または **[MSDN イメージ]** の一覧は読み取り専用なので、仮想マシン イメージを追加することはできません。作成した仮想マシンはすべて **[プライベート イメージ]** の一覧に追加されます。
+    >[AZURE.NOTE] You can't add virtual machine images to the **Public Images** or **MSDN Images** lists because they are read-only. All virtual machines that you create are added to the **Private Images** list.
 
-    Visual Studio レベルのサブスクリプションを持つ MSDN サブスクライバーの場合、Visual Studio と他のいくつかのイメージを含む事前に構築された Azure 仮想マシンを作成できます。詳細については、[Visual Studio でのイメージを使用した仮想マシン作成、MSDN サブスクライバー向け Visual Studio 2013 ギャラリー イメージ](http://visualstudio2013msdngalleryimage.azurewebsites.net)、[MSDN サブスクリプション](https://www.visualstudio.com/products/msdn-subscriptions-vs)の各ページを参照してください。
+    If you're an MSDN subscriber with a Visual Studio-level subscription, you can create a pre-built Azure virtual machine that contains Visual Studio, as well as several other images. For more information, see [Create a Virtual Machine in Visual Studio by Using Images Visual Studio 2013 Gallery image for MSDN subscribers](http://visualstudio2013msdngalleryimage.azurewebsites.net) and [MSDN subscriptions](https://www.visualstudio.com/products/msdn-subscriptions-vs).|
 
-1. **[仮想マシンの基本設定]** ページにマシン名を入力し、サイズ、ユーザー名、パスワードなど、仮想マシンの仕様を追加します。終了したら **[次へ]** をクリックします。
+1. On the **Virtual Machine Basic Settings** page, enter a machine name and then add the specifications for the virtual machine, including the size, and a user name and password. When you're done, click **Next**.
 
-    リモート デスクトップを使用するマシンにログインするときに、この新しい名前とパスワードを使用するので、忘れた場合に備えて書き留めておくことをお勧めします。Visual Studio で Azure 仮想マシンを作成した後、[Microsoft Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=253103)でサイズなどの設定を変更できます。
+    You’ll use the new name and password to log into the machine using remote desktop, so it’s a good idea to write them down in case you forget. After you create an Azure virtual machine in Visual Studio, you can change its size and other settings in the [Azure Management Portal](http://go.microsoft.com/fwlink/?LinkID=253103).
 
-    >[AZURE.NOTE] 選択する仮想マシンのサイズが大きいほど、適用される料金も大きくなります。詳細については、[Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)のページを参照してください。
+    >[AZURE.NOTE] If you choose larger sizes for the virtual machine, extra charges may apply. See [Virtual Machines Pricing Details](https://azure.microsoft.com/pricing/details/virtual-machines/) for more information.
 
-1. Visual Studio で作成した仮想マシンの場合、クラウド サービスが必要です。**[クラウド サービス設定]** ページで、仮想マシン用のクラウド サービスを選択します。まだクラウド サービスを持っていないか、新規作成する場合は、ドロップダウン リストの **[<新規作成>]** をクリックします。また、ストレージ アカウントも必要になるため、**[ストレージ アカウント]** ボックスの一覧からストレージ アカウントを選択します (または新しいストレージ アカウントを作成します)。詳細については、「[Microsoft Azure Storage の概要](../articles/storage/storage-introduction.md)」をご覧ください。
+1. Virtual machines created in Visual Studio require a cloud service. On the **Cloud Service Settings** page, select a cloud service for the virtual machine, or click **<Create New…>** in the dropdown list if you don’t already have a cloud service or want to use a new one. A storage account is also required, so choose a storage account (or create a new storage account) in the **Storage account** dropdown list box. See [Introduction to Microsoft Azure Storage](../articles/storage/storage-introduction.md) for more information.
 
-1. 仮想ネットワーク (省略可能) を指定する場合、[Virtual Network] ボックスと [サブネット] ボックスの一覧から選択します。
+1. If you want to specify a virtual network (which is optional), select it in the Virtual Network and Subnet dropdown list boxes.
 
-    仮想マシンが可用性セットのメンバーである場合、その仮想マシンは別の障害ドメインにデプロイされます。詳細については、[Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) のページをご覧ください。
+    Virtual machines that are members of an availability set are deployed to different fault domains. See [Azure Virtual Network](https://azure.microsoft.com/services/virtual-network/) for more information.
 
-1. 仮想マシンを可用性セットに登録する場合 (これも省略可能)、**[可用性セットの指定]** チェック ボックスをオンにし、ドロップダウン ボックスで可用性セットを選択します。終了したら **[次へ]** をクリックします。
+1. If you want your virtual machine to belong to an availability set (also optional), select the **Specify an availability set** check box and then choose an availability set in the dropdown list box. When you're done, choose the **Next** button.
 
-    可用性セットに仮想マシンを追加しておくと、ネットワークの障害時やローカル ハード ディスクの障害時、予定されたシステム停止時にもアプリケーションを使用できます。[Microsoft Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=253103)を使用して、仮想ネットワーク、サブネット、可用性セットを作成する必要があります。詳細については、「[Virtual Machines の可用性管理](https://azure.microsoft.com/documentation/articles/manage-availability-virtual-machines/)」をご覧ください。
+    Adding your virtual machine to an availability set helps your application stay available during network failures, local disk hardware failures, and any planned downtime. You need to use the [Azure Management Portal](http://go.microsoft.com/fwlink/?LinkID=253103) to create virtual networks, subnets, and availability sets. See [Manage the Availability of Virtual Machines](https://azure.microsoft.com/documentation/articles/manage-availability-virtual-machines/) for more information.
 
-1. **[エンドポイント]** ページで、仮想マシンのユーザーに公開するパブリック エンドポイントを指定します。たとえば、既定で有効になるリモート デスクトップ エンドポイントと PowerShell エンドポイントに加えて、HTTP (ポート 80) を有効にすることができます。エンドポイントを追加するには、**[ポート名]** ボックスの一覧からいずれかを選択し、**[追加]** をクリックします。エンドポイントを削除するには、エンドポイント リストの名前の横にある赤色の **[X]** を選択します。
+1. On the **Endpoints** page, specify the public endpoints that you want available to users of your virtual machine. For example, you might choose to enable HTTP (Port 80) in addition to the Remote Desktop and PowerShell endpoints, which are enabled by default. To add an endpoint, choose one in the **Port Name** dropdown list box and then choose the **Add** button. To remove an endpoint, choose the red **X** next to the name in the endpoints list.
 
-    ![仮想マシン ウィザードの [エンドポイント] ページ。](./media/virtual-machines-common-classic-create-manage-visual-studio/IC718351.png)
+    ![The Endpoints page in the virtual machines wizard.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC718351.png)
 
-    使用できるエンドポイントは、仮想マシン用に選択したクラウド サービスによって変わります。詳細については、[Azure サービスのエンドポイント](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/)に関するページをご覧ください。
+    The endpoints that are available depend on the cloud service you selected for your virtual machine. See [Azure Service Endpoints](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/) for more information.
 
-    >[AZURE.NOTE] パブリック エンドポイントを有効にすると、仮想マシン上のサービスがインターネットから使用できる状態となります。仮想マシンにエンドポイントとサービスをインストールしたら、エンドポイントのアクセス制御リスト (ACL) を設定するなど、適切な構成を行ってください。詳細については、「[仮想マシンに対してエンドポイントを設定する方法](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/)」をご覧ください。
+    >[AZURE.NOTE] Enabling public endpoints makes services on your virtual machine available to the internet. Be sure to install and properly configure the endpoints and services on your virtual machine, such as setting access control lists (ACLs) for the endpoints. See [How to Set Up Endpoints to a Virtual Machine](https://azure.microsoft.com/documentation/articles/virtual-machines-set-up-endpoints/) for more information.
 
-1. 仮想マシンの設定が完了したら、**[作成]** ボタンをクリックして仮想マシンを作成します。
+1. After you’re done configuring the virtual machine settings, choose the **Create** button to create the virtual machine.
 
-    Azure で仮想マシンが作成されると、**[Azure のアクティビティ ログ]** には仮想マシンの作成操作の進行状況が表示されます。
+    As Azure creates the virtual machine, the **Azure Activity Log** shows the progress of the virtual machine creation operation.
 
-    ![仮想マシンのアクティビティ ログ - 進行中。](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744138.png)
+    ![Virtual machine activity log - in progress.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744138.png)
 
-    仮想マシン情報のみを表示するには、**[Azure のアクティビティ ログ]** で **[Virtual Machines]** タブを選択します。
+    To view only virtual machine information, choose the **Virtual Machines** tab in the **Azure Activity Log**.
 
-    ![仮想マシンのアクティビティ ログ - 完了。](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744139.png)
+    ![Virtual machine activity log - completed.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744139.png)
 
-    操作が正常に完了すると、サーバー エクスプローラーの **[Virtual Machines]** ノードに新しい仮想マシンが表示されます。**[リモート デスクトップを使用して接続]** ショートカットをクリックしてログインできます。
+    If the operation completes successfully, the new virtual machine appears under the **Virtual Machines** node in Server Explorer. You can log into it by clicking the **Connect using Remote Desktop** shortcut.
 
-    ![サーバー エクスプ ローラーに表示された仮想マシン。](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744140.png)
+    ![Virtual machine appearing in Server Explorer.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744140.png)
 
-## 仮想マシンの管理
+## <a name="manage-your-virtual-machines"></a>Manage your virtual machines
 
-仮想マシンの構成ページでは、選択した仮想マシンに関してシャットダウン、接続、更新、チェックポイントの追加を実行できるほか、仮想マシンの設定を表示または変更することもできます。そのための方法は次のとおりです。
+On the virtual machine configuration page, in addition to shutting down, connecting, refreshing, and adding checkpoints to the selected virtual machine, you can also view or change settings for the virtual machine. You can:
 
-- 仮想マシンのサイズを変更する。
+- Change the virtual machine size.
 
-- 仮想マシンで使用する可用性セットを選択する。
+- Select the availability set to use with the virtual machine.
 
-- パブリック エンドポイントの設定を追加、削除、変更する。
+- Add, remove, or change settings for public endpoints.
 
-- 仮想マシンの拡張機能を追加、削除、構成する。
+- Add, remove, or configure virtual machine extensions.
 
-- 仮想マシンに関連付けられているディスクの情報を表示する。
+- View information about the disks associated with the virtual machine.
 
-### 仮想マシンの設定の表示と変更
+### <a name="view-or-change-virtual-machine-settings"></a>View or change virtual machine settings
 
-1. サーバー エクスプローラーの **Azure Virtual Machines** ノードで目的の仮想マシンを選択します。
+1. In Server Explorer, choose your virtual machine in the **Azure Virtual Machines** node.
 
-1. ショートカット メニューで **[構成]** を選択し、仮想マシンの構成ページを表示します。
+1. On the shortcut menu, choose **Configure** to view the virtual machine configuration page.
 
-    ![Azure の仮想マシンの構成ページ](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744141.png)
+    ![The Azure virtual machine configuration page](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744141.png)
 
-1. 仮想マシンの情報を表示または変更します。
+1. View the virtual machine information or change it.
 
-### 仮想マシンの状態の保存と復元
+### <a name="save-or-restore-the-status-of-your-virtual-machine"></a>Save or restore the status of your virtual machine
 
-仮想マシンを構成し、ソフトウェアをインストールする際は、仮想マシンにチェックポイントを作成することによって定期的に進捗を保存しておくことをお勧めします。チェックポイントは、仮想マシンの現在の状態のスナップショット、つまりイメージです。仮想マシンに問題が発生したとき、または仮想マシンを再構成するときに、最初からやり直すのではなく以前のチェックポイントの状態に復元することにより時間を節約できます。
+As you configure your virtual machine and install software on it, it's a good idea to regularly save your progress by creating virtual machine checkpoints. A checkpoint is a snapshot, or image, of the current state of your virtual machine. If something goes wrong with the virtual machine, or you want to reconfigure the virtual machine, you can save time by restoring it to a previous checkpoint state rather than starting over from scratch.
 
-### 仮想マシンのチェックポイントを作成するには
+### <a name="to-create-a-virtual-machine-checkpoint"></a>To create a virtual machine checkpoint
 
-1. サーバー エクスプローラーの **Azure Virtual Machines** ノードで目的の仮想マシンを選択します。
+1. In Server Explorer, choose your virtual machine in the **Azure Virtual Machines** node.
 
-1. ショートカット メニューで **[構成]** を選択し、仮想マシンの構成ページを表示します。
+1. On the shortcut menu, choose **Configure** to view the virtual machine configuration page.
 
-1. 構成ページの **[イメージのキャプチャ]** をクリックします。
+1. On the configuration page, choose the **Capture Image** button.
 
-    ![Azure の構成ページのキャプチャ ボタン](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744142.png)
+    ![Azure configuration page capture button](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744142.png)
 
-    **[仮想マシンのキャプチャ]** ダイアログが表示されます。
+    The **Capture Virtual Machine** dialog appears.
 
-    ![Azure の仮想マシンのキャプチャ ダイアログ ボックス](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744143.png)
+    ![Azure capture virtual machine dialog box](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744143.png)
 
-1. イメージにラベルと説明を指定します。既定のラベルと説明が付けられていますが、必要に応じて上書きすることができます。
+1. Provide an image label and description. A default label and description are provided, but you can overwrite them with your own if you like.
 
-1. この仮想マシンで既に Sysprep が実行されている場合は、**[仮想マシンで Sysprep を実行しました]** をオンにします。
+1. If you have already run Sysprep on this virtual machine, select the **I have run Sysprep on the virtual machine** box.
 
-    Sysprep は、仮想マシンの Windows からシステム固有のデータを削除して、他の仮想マシンで利用できるテンプレートを作成することを主な目的としたツールです。詳細については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/)に関するページをご覧ください。Sysprep を実行する前に、VM をバックアップします。
+    Sysprep is a tool that, among other things, removes systems-specific data from the virtual machine’s version of Windows, making it template that others can use. See [How to Capture a Windows Virtual Machine to Use as a Template](https://azure.microsoft.com/documentation/articles/virtual-machines-capture-image-windows-server/) for more information. Back up the VM before running Sysprep.
 
-1. キャプチャの設定が完了したら、**[キャプチャ]** をクリックしてチェックポイントを作成します。
+1. After you’re done configuring the capture settings, choose the **Capture** button to create the checkpoint.
 
-    Azure でチェックポイントが作成される間、**[Azure のアクティビティ ログ]** に操作の進行状況が表示されます。
+    As Azure creates the checkpoint, the **Azure Activity Log** shows the progress of the operation.
 
-    ![仮想マシンのチェックポイントのキャプチャ](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744144.png)
+    ![Capturing a virtual machine checkpoint](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744144.png)
 
-    チェックポイント操作が完了すると、**[Azure のアクティビティ ログ]** に表示されます。
+    When the checkpoint operation completes, you’ll see it in the **Azure Activity Log**.
 
-    ![チェックポイント操作の完了](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744145.png)
+    ![Checkpoint operation completed](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744145.png)
 
-## 仮想マシンのチェックポイントを管理するには
+## <a name="to-manage-virtual-machine-checkpoints"></a>To manage virtual machine checkpoints
 
-### 以前に保存した状態に仮想マシンを復元するには
+### <a name="to-restore-a-virtual-machine-to-a-previously-saved-state"></a>To restore a virtual machine to a previously saved state
 
-- 「[Step-by-Step: Perform Cloud Restores of Microsoft Azure Virtual Machines using PowerShell - Part 2 (PowerShell で Microsoft Azure Virtual Machines のクラウド復元を実行する手順 - パート 2)](http://blogs.technet.com/b/keithmayer/archive/2014/02/04/step-by-step-perform-cloud-restores-of-windows-azure-virtual-machines-using-powershell-part-2.aspx)」のページで概説されている手順に従います。
+- Follow the steps outlined in [Step-by-Step: Perform Cloud Restores of Microsoft Azure Virtual Machines using PowerShell - Part 2](http://blogs.technet.com/b/keithmayer/archive/2014/02/04/step-by-step-perform-cloud-restores-of-windows-azure-virtual-machines-using-powershell-part-2.aspx).
 
-### チェックポイントを削除するには
+### <a name="to-delete-a-checkpoint"></a>To delete a checkpoint
 
-1. [Azure 管理ポータル](http://go.microsoft.com/fwlink/?LinkID=253103)に移動します。
+1. Go to the [Azure Management Portal](http://go.microsoft.com/fwlink/?LinkID=253103).
 
-1. 仮想マシンの構成ページの上部にある **[イメージ]** タブを選択します。
+1. On the virtual machine configuration page, choose the **Images** tab at the top of the page.
 
-1. 削除するチェックポイントを選択し、ページの下部にある **[削除]** をクリックします。
+1. Choose the checkpoint you want to delete, and then choose the **Delete**  button at the bottom of the page.
 
-## 仮想マシンのシャットダウン
+## <a name="shut-down-your-virtual-machine"></a>Shut down your virtual machine
 
-1. サーバー エクスプローラーの **Azure Virtual Machines** ノードで、シャットダウンする仮想マシンを選択します。
+1. In Server Explorer, choose the virtual machine you want to shut down in the **Azure Virtual Machines** node.
 
-1. ショートカット メニューで **[シャットダウン]** コマンドをクリックするか、**[構成]** をクリックして仮想マシンの構成ページを表示してから **[シャットダウン]** をクリックします。
+1. On the shortcut menu, either choose the **Shutdown** command, or choose **Configure** to view the virtual machine configuration page, and then choose the **Shutdown** button.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-仮想マシンの作成の詳細については、「[Linux を実行する仮想マシンの作成](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md)」および「[Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md)」をご覧ください。
+To learn more about creating virtual machines, see [Create a Virtual Machine Running Linux](../articles/virtual-machines/virtual-machines-linux-quick-create-cli.md) and [Create a virtual machine running Windows in the Azure preview portal](../articles/virtual-machines/virtual-machines-windows-hero-tutorial.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

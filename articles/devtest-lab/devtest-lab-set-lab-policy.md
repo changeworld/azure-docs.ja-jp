@@ -1,140 +1,146 @@
 <properties
-	pageTitle="Azure DevTest Labs でのラボのポリシーの定義 | Microsoft Azure"
-	description="VM サイズ、ユーザーごとの VM の最大数、シャットダウンの自動化など、ラボのポリシーを定義する方法について説明します。"
-	services="devtest-lab,virtual-machines"
-	documentationCenter="na"
-	authors="tomarcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Define lab policies in Azure DevTest Labs| Microsoft Azure"
+    description="Learn how to define lab policies such as VM sizes, maximum VMs per user, and shutdown automation."
+    services="devtest-lab,virtual-machines"
+    documentationCenter="na"
+    authors="tomarcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="devtest-lab"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/12/2016"
-	ms.author="tarcher"/>
+    ms.service="devtest-lab"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/12/2016"
+    ms.author="tarcher"/>
 
-# Azure DevTest Labs でのラボのポリシーの定義
+
+# <a name="define-lab-policies-in-azure-devtest-labs"></a>Define lab policies in Azure DevTest Labs
 
 > [AZURE.VIDEO how-to-set-vm-policies-in-a-devtest-lab]
 
-Azure DevTest Labs では、コストを制御し、ラボでの無駄を最小限にするためのキー ポリシーを指定できます。これらのラボ ポリシーには、ユーザーごとおよびラボごとに作成された VM の最大数、およびさまざまな自動シャット ダウンおよび自動起動オプションの最大数が含まれます。
+Azure DevTest Labs enables you to specify key policies that help you to control cost and minimize waste in your labs. These lab policies include the maximum number of VMs created per user and per lab, and various auto-shutdown and auto-start options. 
 
-## Azure DevTest Labs でのラボのポリシーへのアクセス
+## <a name="accessing-a-lab's-policies-in-azure-devtest-labs"></a>Accessing a lab's policies in Azure DevTest Labs
 
-次の手順は、Azure DevTest Labs でラボのポリシーを設定する方法を示します。
+The following steps guide you through setting up policies for a lab in Azure DevTest Labs:
 
-ラボのポリシーを表示 (および変更) するには、次の手順に従います。
+To view (and change) the policies for a lab, follow these steps:
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
+1. Select **More services**, and then select **DevTest Labs** from the list.
 
-1. ラボの一覧で目的のラボを選択します。
+1. From the list of labs, select the desired lab.   
 
-1. **[ポリシー設定]** を選択します。
+1. Select **Policy settings**.
 
-1. **[ポリシー設定]** ブレードには、指定できる設定のメニューが含まれています。
+1. The **Policy settings** blade contains a menu of settings that you can specify: 
 
-	![ポリシー設定ブレード](./media/devtest-lab-set-lab-policy/policies.png)
+    ![Policy settings blade](./media/devtest-lab-set-lab-policy/policies.png)
 
-	ポリシーの設定の詳細について確認するには、次の一覧から選択してください。
+    To learn more about setting a policy, select it from the following list:
 
-	- [許可される VM サイズ](#set-allowed-virtual-machine-sizes) - ラボで使用できる VM サイズの一覧を選択します。ユーザーは、この一覧からのみ VM を作成できます。
+    - [Allowed virtual machine sizes](#set-allowed-virtual-machine-sizes) - Select the list of VM sizes allowed in the lab. A user can create VMs only from this list.
 
-	- [ユーザーごとの VM 数](#set-virtual-machines-per-user) - ユーザーが作成できる VM の最大数を指定します。
+    - [Virtual machines per user](#set-virtual-machines-per-user) - Specify the maximum number of VMs that can be created by a user. 
 
-	- [ラボごとの VM 数](#set-virtual-machines-per-lab) - ラボに作成できる VM の最大数を指定します。
+    - [Virtual machines per lab](#set-virtual-machines-per-lab) - Specify the maximum number of VMs that can be created for a lab. 
 
-	- [自動シャットダウン](#set-auto-shutdown) - 現在のラボの VM を自動的にシャットダウンする時刻を指定します。
+    - [Auto-shutdown](#set-auto-shutdown) - Specify the time when the current lab's VMs automatically shut down.
 
-	- [自動開始](#set-auto-start) - 現在のラボの VM を自動的に開始する時刻を指定します。
+    - [Auto-start](#set-auto-start) - Specify the time when the current lab's VMs automatically start up.
 
-## 許可される仮想マシン サイズの設定
+## <a name="set-allowed-virtual-machine-sizes"></a>Set allowed virtual machine sizes
 
-許可される VM サイズを設定するポリシーでは、ラボで使用可能な VM サイズを指定できるので、ラボの無駄を最小限に抑えるのに役立ちます。このポリシーを有効にすると、この一覧の VM サイズだけを使用して VM を作成できます。
+The policy for setting the allowed VM sizes helps to minimize lab waste by enabling you to specify which VM sizes are allowed in the lab. If this policy is activated, only VM sizes from this list can be used to create VMs.
 
-1. ラボの **[ポリシー設定]** ブレードで、**[許可される仮想マシンのサイズ]** を選択します。
+1. On the lab's **Policy settings** blade, select **Allowed virtual machines sizes**.
 
-	![許可される仮想マシン サイズ](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
+    ![Allowed virtual machines sizes](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
  
-1. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
+1. Select **On** to enable this policy, and **Off** to disable it.
 
-1. このポリシーを有効にする場合は、ラボで作成できる 1 つ以上の VM サイズを選択します。
+1. If you enable this policy, select one or more VM sizes that can be created in your lab.
 
-1. [**保存**] を選択します。
+1. Select **Save**.
 
-## ユーザーごとの仮想マシンの設定
+## <a name="set-virtual-machines-per-user"></a>Set virtual machines per user
 
-**[ユーザーごとの VM 数]** のポリシーでは、各ユーザーが作成できる VM の最大数を指定できます。ユーザーの上限に達している場合、ユーザーが VM を作成しようとすると、VM を作成できないことを示すエラー メッセージが表示されます。
+The policy for **Virtual machines per user** allows you to specify the maximum number of VMs that can be created by an individual user. If a user attempts to create a VM when the user limit has been met, an error message indicates that the VM cannot be created. 
 
-1. ラボの **[ポリシー設定]** ブレードで、**[ユーザーごとの VM 数]** を選択します。
+1. On the lab's **Policy settings** blade, select **Virtual machines per user**.
 
-	![ユーザーごとの仮想マシン数](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
+    ![Virtual machines per user](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
 
-1. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
+1. Select **On** to enable this policy, and **Off** to disable it.
 
-1. このポリシーを有効にする場合は、ユーザーが作成できる VM の最大数を示す数値を入力します。無効な数値を入力すると、このフィールドに入力できる最大数が UI に表示されます。
+1. If you enable this policy, enter a numeric value indicating the maximum number of VMs that can be created by a user. If you enter a number that is not valid, the UI displays the maximum number allowed for this field.
 
-1. [**保存**] を選択します。
+1. Select **Save**.
 
-## ラボごとの仮想マシンの設定
+## <a name="set-virtual-machines-per-lab"></a>Set virtual machines per lab
 
-**ラボごとの VM 数**のポリシーでは、現在のラボで作成できる VM の最大数を指定することができます。ラボの上限に達している場合、ユーザーが VM を作成しようとすると、VM を作成できないことを示すエラー メッセージが表示されます。
+The policy for **Virtual machines per lab** allows you to specify the maximum number of VMs that can be created for the current lab. If a user attempts to create a VM when the lab limit has been met, an error message indicates that the VM cannot be created. 
 
-1. ラボの **[ポリシー設定]** ブレードで、**[ラボごとの VM 数]** を選択します。
+1. On the lab's **Policy settings** blade, select **Virtual machines per lab**.
 
-	![ラボごとの仮想マシン数](./media/devtest-lab-set-lab-policy/total-vms-allowed.png)
+    ![Virtual machines per lab](./media/devtest-lab-set-lab-policy/total-vms-allowed.png)
 
-1. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
+1. Select **On** to enable this policy, and **Off** to disable it.
 
-1. このポリシーを有効にする場合は、現在のラボに作成できる VM の最大数を示す数値を入力します。無効な数値を入力すると、このフィールドに入力できる最大数が UI に表示されます。
+1. If you enable this policy, enter a numeric value indicating the maximum number of VMs that can be created for the current lab. If you enter a number that is not valid, the UI displays the maximum number allowed for this field.
 
-1. [**保存**] を選択します。
+1. Select **Save**.
 
-## 自動シャットダウンの設定
+## <a name="set-auto-shutdown"></a>Set auto-shutdown
 
-自動シャットダウン ポリシーでは、このラボの VM をシャットダウンする時刻を指定できるので、ラボの無駄を最小限に抑えるのに役立ちます。
+The auto-shutdown policy helps to minimize lab waste by allowing you to specify the time that this lab's VMs shut down.
 
-1. ラボの **[ポリシー設定]** ブレードで、**[自動シャットダウン]** を選択します。
+1. On the lab's **Policy settings** blade, select **Auto-shutdown**.
 
-	![自動シャットダウン](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
+    ![Auto-shutdown](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
-1. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
+1. Select **On** to enable this policy, and **Off** to disable it.
 
-1. このポリシーを有効にする場合は、現在のラボのすべての VM をシャットダウンするローカル時刻を指定します。
+1. If you enable this policy, specify the local time to shut down all VMs in the current lab.
 
-1. [**保存**] を選択します。
+1. Select **Save**.
 
-1. このポリシーを有効にすると、既定では現在のラボのすべての VM にこのポリシーが適用されます。この設定を特定の VM から削除するには、その VM のブレードを開いて **[自動シャットダウン]** 設定を変更します。
+1. By default, once enabled, this policy applies to all VMs in the current lab. To remove this setting from a specific VM, open the VM's blade and change its **Auto-shutdown** setting 
 
-## 自動開始の設定
+## <a name="set-auto-start"></a>Set auto-start
 
-自動開始のポリシーでは、現在のラボにある VM をいつ開始するか指定することができます。
+The auto-start policy allows you to specify when the VMs in the current lab should be started.  
 
-1. ラボの **[ポリシー設定]** ブレードで、**[自動開始]** を選択します。
+1. On the lab's **Policy settings** blade, select **Auto-start**.
 
-	![自動開始](./media/devtest-lab-set-lab-policy/auto-start.png)
+    ![Auto-start](./media/devtest-lab-set-lab-policy/auto-start.png)
 
-1. このポリシーを有効にするには **[オン]** を選択し、無効にするには **[オフ]** を選択します。
+1. Select **On** to enable this policy, and **Off** to disable it.
 
-1. このポリシーを有効にする場合は、ローカルにスケジュール設定した開始時間と、それを適用する曜日を指定します。
+1. If you enable this policy, specify the local scheduled start time and the days of the week for which the time applies. 
 
-1. [**保存**] を選択します。
+1. Select **Save**.
 
-1. このポリシーを有効にしても、現在のラボの VM に自動的に適用されることはありません。この設定を特定の VM に適用するには、その VM のブレードを開いて **[自動開始]** 設定を変更します。
+1. Once enabled, this policy is not automatically applied to any VMs in the current lab. To apply this setting to a specific VM, open the VM's blade and change its **Auto-start** setting 
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-ラボに対して各種の VM ポリシー設定を定義および適用した後は、次に示すいくつかの操作を試してみてください。
+Once you've defined and applied the various VM policy settings for your lab, here are some things to try next:
 
-- [コスト管理を構成する](./devtest-lab-configure-cost-management.md) - **月間推定コスト傾向**グラフを使用し、現在のカレンダー月の現時点までの推定コストと月末の予測コストを表示する方法を示します。
-- [カスタム イメージを作成する](./devtest-lab-create-template.md) - VM を作成する場合は、ベースとしてカスタム イメージまたは Marketplace イメージを指定します。この記事では、VHD ファイルからカスタム イメージを作成する方法について説明します。
-- [Marketplace イメージを構成する](./devtest-lab-configure-marketplace-images.md) - Azure DevTest Labs では、Azure Marketplace イメージを基にした VM を作成することができます。この記事では、ラボで VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
-- [ラボで VM を作成する](./devtest-lab-add-vm-with-artifacts.md) - 基本イメージ (カスタムまたは Marketplace) から VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
+- [Configure cost management](./devtest-lab-configure-cost-management.md) - Illustrates how to use the **Monthly Estimated Cost Trend** chart  
+to view the current month's estimated cost-to-date and the projected end-of-month cost.
+- [Create custom image](./devtest-lab-create-template.md) - When you create a VM, you specify a base, which can be either a custom image or a Marketplace image. This article illustrates how to create a custom image from a VHD file.
+- [Configure Marketplace images](./devtest-lab-configure-marketplace-images.md) - Azure DevTest Labs supports creating VMs based on Azure Marketplace images. This article illustrates how to specify which, if any, Azure Marketplace images can be used when creating VMs in a lab.
+- [Create a VM in a lab](./devtest-lab-add-vm-with-artifacts.md) - Illustrates how to create a VM from a base image (either custom or Marketplace), and how to work with artifacts in your VM.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

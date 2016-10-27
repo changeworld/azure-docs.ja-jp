@@ -1,15 +1,17 @@
-次の手順に従って、プッシュ通知に使用する新しい通知ハブを作成します。通知ハブが既にある場合は、それをモバイル アプリのバックエンドに接続することもできます。
+Follow these steps to create a new notification hub to use for push notifications. If you already have a notification hub, you can also connect it to your Mobile App backend. 
 
-1. [Azure ポータル]で、**[参照]**、**[App Services]** の順にクリックします。次に、モバイル アプリのバックエンド、**[すべての設定]** の順にクリックし、**[モバイル]** の **[プッシュ]**、**[通知ハブ]** の順にクリックします。
+1. In the [Azure Portal], click **Browse** > **App Services**, then click your Mobile App backend > **All settings**, then under **Mobile** click **Push** > **Notification Hub**.
 
-2. **[+通知ハブ]** をクリックし、新しい**通知ハブ**の名前を入力します。この名前は、モバイル アプリのバックエンドと同じものにすることができます。新しい名前空間の名前を入力するか、既存の名前を使用して **[OK]** をクリックし、最後に **[作成]** をクリックします。
+2. Click **+Notification Hub**, type a new **Notification Hub** name, which can be the same as your Mobile App backend, type a new namespace name or use an existing one, then click **OK** and finally **Create**.
 
-	![](./media/app-service-mobile-create-notification-hub/create-new-hub-flow.png)
+    ![](./media/app-service-mobile-create-notification-hub/create-new-hub-flow.png)
 
-	これにより、新しい通知ハブが作成され、それがモバイル アプリに接続されます。通知ハブが既にある場合は、新しい通知ハブを作成せずに、その既存の通知ハブをモバイル アプリに接続してもかまいません。
+    This creates a new notification hub and connects it to your mobile app. If you have an existing notification hub, you can choose to connect it to your Mobile App backend instead of creating a new one.
 
-これで、通知ハブがモバイル アプリのバックエンドに接続されました。後でこの通知ハブを構成して、ネイティブ デバイスにプッシュ通知を送信するプラットフォーム通知サービス (PNS) に接続します。
+Now you have connected a notification hub to your Mobile App backend. Later you will configure this notification hub to connect to a platform notification service (PNS) that sends push notifications to the native device.
 
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_1203_2015-->
+<!--HONumber=Oct16_HO2-->
+
+

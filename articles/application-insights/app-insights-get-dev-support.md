@@ -1,50 +1,51 @@
 <properties 
-	pageTitle="Application Insights 開発チームによるテクニカル サポートを利用する方法 | Microsoft Azure" 
-	description="Application Insights 開発チームからの特別なサポートが必要な問題が発生した場合に、詳細を送信してサポートを受ける方法を紹介します。" 
-	services="application-insights" 
+    pageTitle="How to get technical support from Application Insights development team | Microsoft Azure" 
+    description="When you have a case that requires special support from Application Insights development team, this is how you can submit the details to get support." 
+    services="application-insights" 
     documentationCenter=""
-	authors="alexbulankou" 
-	manager="douge"/>
+    authors="alexbulankou" 
+    manager="douge"/>
  
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="06/01/2016" 
-	ms.author="albulank"/>
-	
-# Application Insights 開発チームによるテクニカル サポートを利用する方法
-	
-[Visual Studio Application Insights](app-insights-overview.md) で技術的な問題が発生した場合、サポートを利用するためのオプションは次のとおりです。
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="06/01/2016" 
+    ms.author="albulank"/>
+    
 
-## 1\.ドキュメントを確認する
+# <a name="how-to-get-technical-support-from-application-insights-development-team"></a>How to get technical support from Application Insights development team
+    
+When you have a technical issue with [Visual Studio Application Insights](app-insights-overview.md), here are your options for getting help:
 
-* データが見つからない場合は、 [サンプリング](app-insights-sampling.md)、[クォータ、スロットル](app-insights-pricing.md)を確認してください。
-* トラブルシューティングの場合は、次のリンク先を確認してください: [ASP.NET](app-insights-troubleshoot-faq.md) | [Java](app-insights-java-troubleshoot.md)
+## <a name="1.-check-the-documents"></a>1. Check the documents
 
-## 2\.フォーラムを検索する
+* Missing data? Check: [sampling](app-insights-sampling.md), [quotas and throttling](app-insights-pricing.md).
+* Troubleshooting: [ASP.NET](app-insights-troubleshoot-faq.md) | [Java](app-insights-java-troubleshoot.md)
 
-* [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+## <a name="2.-search-the-forums"></a>2. Search the forums
+
+* [MSDN forum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
 
-## 3\.Azure サポート プランを確認する
+## <a name="3.-azure-support-plan?"></a>3. Azure Support Plan?
 
-開発者に自身の具体的な事例を調査してほしい場合もあります。
+There are situations where you would like developers to investigate your specific case. 
 
-[Microsoft Azure でサポート プラン](https://azure.microsoft.com/support/plans/)に加入している場合は、[サポート チケットを開く](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ことができます。
+If you have a [support plan with Microsoft Azure](https://azure.microsoft.com/support/plans/) you can [open a support ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## 4\.Application Insights チームに問い合わせる
+## <a name="4.-contact-the-application-insights-team"></a>4. Contact the Application Insights team
 
-サポート プランに加入していない場合でも、Microsoft の開発チームは、一般公開のマイルストーンに向けて準備する際に、Application Insights のお客様に対するサポート提供に最善を尽くします。Microsoft では**新しいサポート オプション**を導入しました。これにより、Azure ポータルでフィードバック フォームを送信することで問題を報告すると、Application Insights チームの開発者から問題解決のために連絡をもらうことができるようになりました。
+If you don't have a support plan, our development team is happy to offer best effort support to Application Insights customers as we prepare for the General Availability milestone. We are introducing **a new support option**: You can describe your case to us by submitting a feedback form on Azure portal and have a developer on the Application Insights team contact you back to help resolve your issue.
 
 
-1. [Application Insights ポータル](https://portal.azure.com)で、右上隅にあるスマイル アイコンをクリックします。  
+1. In the [Application Insights portal](https://portal.azure.com), click the smiley face at the top right corner:  
 
-    ![フィードバック ボタン](./media/app-insights-get-dev-support/01.png)
+    ![Feedback button](./media/app-insights-get-dev-support/01.png)   
 
-2. コメント ボックスで、最初の行に **AppInsights** を指定した後、次の情報を含めるようにしてください。
+2. In the comment box please make sure to specify **AppInsights** as the first line and then include the following information:   
 
     ```
 
@@ -55,12 +56,18 @@
 
     ```   
 
-    ![フィードバックのダイアログ](./media/app-insights-get-dev-support/02.png)
+    ![Feedback dialog](./media/app-insights-get-dev-support/02.png)   
 
-3. [はい、このフィードバックに関してメールをお送りいただいてもかまいません] チェック ボックスをオンにします。
+3. Check "Yes, it is ok to email you". 
 
-    ![送信セクション](./media/app-insights-get-dev-support/03.png)
+    ![Submit section](./media/app-insights-get-dev-support/03.png)  
 
-Application Insights チームのエンジニアからすぐに連絡が来ます。Microsoft では、このサービスの提供に最善を尽くしている最中のため、現時点では正式な SLA を提供できません。
+An engineer on the Application Insights team will get in touch with you soon. As we are providing this service on best effort basis, no formal SLA can be given at this point.
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,171 +1,179 @@
 <properties 
-	pageTitle="Application Insights のほぼリアルタイムのプロアクティブ診断 | Microsoft Azure" 
-	description="アプリ内での異常なエラー パターンについて警告し、診断分析を行います。構成は必要ありません。" 
-	services="application-insights" 
+    pageTitle="Near Real Time Proactive Diagnostics in Application Insights | Microsoft Azure" 
+    description="Alerts you to unusual failure patterns in your app, and provides diagnostic analysis. No configuration is needed." 
+    services="application-insights" 
     documentationCenter=""
-	authors="yorac" 
-	manager="douge"/>
+    authors="yorac" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/31/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/31/2016" 
+    ms.author="awills"/>
  
-# プロアクティブなエラー診断
 
-[Visual Studio Application Insights](app-insights-overview.md) では、Web アプリでエラーの異常な増加が検出されると、ほぼリアルタイムで自動的にユーザーに通知されます。具体的には、失敗として報告された HTTP 要求の割合が異常に上昇すると、それが検出されます。通知には、問題のトリアージと診断に役立つよう、失敗した要求の特性および関連するテレメトリの分析結果が記載されています。また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
+# <a name="proactive-failure-diagnostics"></a>Proactive Failure Diagnostics
 
-この機能は、クラウドまたは独自のサーバーでホストされている Java と ASP.NET の Web アプリで利用できます。また、要求の製品利用統計情報を生成するあらゆるアプリで利用できます。たとえば、[TrackRequest()](app-insights-api-custom-events-metrics.md#track-request) を呼び出す worker ロールです。
+[Visual Studio Application Insights](app-insights-overview.md) automatically notifies you in near real time if your web app experiences an abnormal rise in failures. It detects an unusual rise in the rate of HTTP requests reported as failed. To help you triage and diagnose the problem, an analysis of the characteristics of failed requests and related telemetry is provided in the notification. There are also links to the Application Insights portal for further diagnosis. The feature needs no set-up or configuration, as it uses machine learning algorithms to predict the normal failure rate.
 
-[プロジェクト用に Application Insights](app-insights-overview.md) を設定し、アプリケーションで特定の最少限のテレメトリを生成する場合、プロアクティブなエラー診断は、オンに切り替わり、アプリケーションの通常の動作を学習するため、アラートを送信できるようになるまでに 24 時間かかります。
+This feature works for Java and ASP.NET web apps, hosted in the cloud or on your own servers. It also works for any app that generates request telemetry - for example, if you have a worker role that calls [TrackRequest()](app-insights-api-custom-events-metrics.md#track-request). 
 
-アラートの例を次に示します。
+After setting up [Application Insights for your project](app-insights-overview.md), and provided your app generates a certain minimum amount of telemetry, Proactive failure diagnostics takes 24 hours to learn the normal behavior of your app, before it is switched on and can send alerts.
+
+Here's a sample alert. 
 
 ![Sample Intelligent Alert showing cluster analysis around failure](./media/app-insights-proactive-failure-diagnostics/010.png)
 
-> [AZURE.NOTE] 既定では、この例よりも短い形式のメールが返されますが、[この詳細な形式に切り替える](#configure-alerts)ことができます。
+> [AZURE.NOTE] By default, you get a shorter format mail than this example. But you can [switch to this detailed format](#configure-alerts).
 
-次の指標が提示されます。
+Notice that it tells you:
 
-* 通常のアプリケーションの動作と比較したエラー率。
-* 影響を受けるユーザーの数。アラートの重要度がわかります。
-* エラーに関連付けられている特徴的パターン。この例では、特定の応答コード、要求名 (操作)、およびアプリケーションのバージョンがあります。これにより、コードのどこから探すべきかすぐにわかります。他には特定のブラウザーやクライアント オペレーティング システムなどが想定されます。
-* 特徴付けられた要求の失敗に関連するように見える例外、ログ トレース、依存関係エラー (データベースやその他の外部コンポーネント)。
-* Application Insights の製品利用統計情報の関連検索に直接リンクします。
+* The failure rate compared to normal app behavior.
+* How many users are affected – so you know how much to worry.
+* A characteristic pattern associated with the failures. In this example, there’s a particular response code, request name (operation) and app version. That immediately tells you where to start looking in your code. Other possibilities could be a specific browser or client operating system.
+* The exception, log traces, and dependency failure (databases or other external components) that appear to be associated with the characterized failed requests.
+* Links directly to relevant searches on the telemetry in Application Insights.
 
-## プロアクティブなアラートの利点
+## <a name="benefits-of-proactive-alerts"></a>Benefits of proactive alerts
 
-通常の[メトリック アラート](app-insights-alerts.md)から、問題がある可能性がわかります。ただし、プロアクティブなエラー診断が自動的に診断作業を開始し、ユーザーの代わりにさまざまな分析を実行します。結果はわかりやすくまとめられるので、問題の原因をすぐに把握できます。
+Ordinary [metric alerts](app-insights-alerts.md) tell you there might be a problem. But proactive failure diagnostics starts the diagnostic work for you, performing a lot of the analysis you would otherwise have to do yourself. You get the results neatly packaged, helping you to get quickly to the root of the problem.
 
-## 動作のしくみ
+## <a name="how-it-works"></a>How it works
 
-ほぼリアルタイムのプロアクティブ診断では、アプリから受け取ったテレメトリ (特に要求失敗率) を監視します。このメトリックは、`Successful request` プロパティが false である要求の数をカウントします。既定で、`Successful request== (resultCode < 400)` ([フィルター](app-insights-api-filtering-sampling.md#filtering)にカスタム コードを記述した場合または独自の [TrackRequest](app-insights-api-custom-events-metrics.md#track-request) 呼び出しを生成する場合を除く)。
+Near Real Time Proactive Diagnostics monitors the telemetry received from your app, and in particular the failed request rate. This metric counts the number of requests for which the `Successful request` property is false. By default, `Successful request== (resultCode < 400)` (unless you have written custom code to [filter](app-insights-api-filtering-sampling.md#filtering) or generate your own [TrackRequest](app-insights-api-custom-events-metrics.md#track-request) calls). 
 
-アプリのパフォーマンスには、一般的な動作パターンがあります。他よりもエラーが発生しやすい要求があります。負荷が増えると、全体的なエラー率が上がります。プロアクティブなエラー診断は Machine Learning を使用し、これらの異常を検出します。
+Your app’s performance has a typical pattern of behavior. Some requests will be more prone to failure than others; and the overall failure rate may go up as load increases. Proactive failure diagnostics uses machine learning to find these anomalies. 
 
-テレメトリが Web アプリから Application Insights に送られます。プロアクティブなエラー診断は現在の動作と過去数日間に見られたパターンを比較します。以前のパフォーマンスと比べて失敗率の異常な上昇が検出された場合に、分析がトリガーされます。
+As telemetry comes into Application Insights from your web app, proactive failure diagnostics compares the current behavior with the patterns seen over the past few days. If an abnormal rise in failure rate is observed by comparison with previous performance, an analysis is triggered.
 
-分析がトリガーされると、サービスは失敗した要求のクラスター分析を実行して、失敗を特徴づける値のパターンの特定を試みます。上の例では、分析により、ほとんどの失敗が特定の結果コード、要求名、サーバー URL ホスト、およびロール インスタンスに関係していることが検出されました。これに対し、分析により、クライアント オペレーティング システムのプロパティが複数の値に分散していることが検出されたため、それはリストに表示されていません。
+When an analysis is triggered, the service performs a cluster analysis on the failed request, to try to identify a pattern of values that characterize the failures. In the example above, the analysis has discovered that most failures are about a specific result code, request name, Server URL host, and role instance. By contrast, the analysis has discovered that the client operating system property is distributed over multiple values, and so it is not listed.
 
-サービスがこれらの製品利用統計情報で計測される場合、アナライザーは特定されたクラスター内の要求に関連する例外と依存関係の失敗に加え、それらの要求に関連するすべてのトレース ログの例も検出します。
+When your service is instrumented with these telemetry, the analyser finds an exception and a dependency failure that are associated with requests in the cluster it has identified, together with an example of any trace logs associated with those requests.
 
-分析結果は、アラートとして電子メールで送信されます (送信しないように構成している場合を除きます)。
+The resulting analysis is sent to you as alert, unless you have configured it not to.
 
-[手動で設定したアラート](app-insights-alerts.md)と同じように、Application Insights リソースの [アラート] ブレードでアラートの状態を検査し、構成できます。ただし、その他のアラートとは異なり、プロアクティブなエラー診断を設定したり、構成したりする必要はありません。必要に応じて、無効にすることや、送信先の電子メール アドレスを変更することもできます。
-
-
-## アラートを構成する 
-
-プロアクティブ診断の無効化、電子メール受信者の変更、Webhook の作成、詳細なアラート メッセージの選択を実行できます。
-
-[アラート] ページを開きます。プロアクティブ診断が、手動で設定したすべてのアラートと共に含まれており、現在アラート状態にあるかどうかを確認できます。
-
-![On the Overview page, click Alerts tile.Or on any Metrics page, click Alerts button.](./media/app-insights-proactive-failure-diagnostics/021.png)
-
-アラートをクリックして構成します。
-
-![構成](./media/app-insights-proactive-failure-diagnostics/031.png)
+Like the [alerts you set manually](app-insights-alerts.md), you can inspect the state of the alert and configure it in the Alerts blade of your Application Insights resource. But unlike other alerts, you don't need to set up or configure Proactive failure diagnostics. If you want, you can disable it or change its target email addresses.
 
 
-プロアクティブ診断は無効にできますが、削除 (および別の診断を作成) することはできません。
+## <a name="configure-alerts"></a>Configure alerts 
 
-#### 詳細なアラート
+You can disable proactive diagnostics, change the email recipients, create a webhook, or opt in to more detailed alert messages.
 
-[Receive detailed analysis]\(詳細な分析を受信する) を選択すると、電子メールに多くの診断情報が記載されます。電子メール内のデータから問題を診断できる場合もあります。
+Open the Alerts page. Proactive Diagnostics is included along with any alerts that you have set manually, and you can see whether it is currently in the alert state.
 
-詳細なアラートには例外やトレース メッセージが含まれるため、機密情報が記載されるというリスクがわずかながらあります。ただし、このような状況が生じるのは、コードによってそれらのメッセージに機密情報を含めることが許可されている場合のみです。
+![On the Overview page, click Alerts tile. Or on any Metrics page, click Alerts button.](./media/app-insights-proactive-failure-diagnostics/021.png)
 
+Click the alert to configure it.
 
-## アラートのトリアージと診断
-
-アラートは、要求失敗率の異常な上昇が検出されたことを示します。アプリやその環境に何らかの問題があることが考えられます。
-
-要求の割合と影響を受けるユーザーの数から、問題の緊急度を判断できます。上の例では、22.5% という失敗率が通常の失敗率である 1% と比較され、異常事態が発生していることを示しています。一方、影響を受けたユーザー数は 11 人のみです。それが自分のアプリであれば、その深刻度を評価できます。
-
-多くの場合は、提供された要求名、例外、依存関係の失敗、トレース データからすばやく問題を診断することができます。
-
-その他にもヒントがあります。たとえば、この例では依存関係のエラー率が例外率 (89.3%) と同じです。これが示すところは、例外が依存関係のエラーから直接発生しているということです。それにより、コードのどこから探すべきかわかります。
-
-さらに詳しく調査する場合は、関連する要求、例外、依存関係、トレースで絞り込まれた[検索ページ](app-insights-diagnostic-search.md)に、各セクションのリンクから直接移動できます。また、[Azure ポータル](https://portal.azure.com)を開き、アプリケーションの Application Insights リソースに移動して、[エラー] ブレードを開くという方法もあります。
-
-この例では、’依存関係エラーの詳細を表示する’ リンクをクリックすると、SQL ステートメントについての Application Insights の検索ブレードが開き、根本原因 (必須フィールドに NULL が指定されており、保存操作時に検証に合格しなかった) が表示されます。
+![Configuration](./media/app-insights-proactive-failure-diagnostics/031.png)
 
 
-![診断検索](./media/app-insights-proactive-failure-diagnostics/051.png)
+Notice that you can disable Proactive Diagnostics, but you can't delete it (or create another one).
 
-## 最新のアラートを確認する
+#### <a name="detailed-alerts"></a>Detailed alerts
 
-ポータルでアラートを確認するには、**[設定] の [監査ログ]** を開きます。
+If you select "Receive detailed analysis" then the email will contain more diagnostic information. Sometimes you'll be able to diagnose the problem just from the data in the email. 
+
+There's a slight risk that the more detailed alert could contain sensitive information, because it includes exception and trace messages. However, this would only happen if your code could allow sensitive information into those messages. 
+
+
+## <a name="triaging-and-diagnosing-an-alert"></a>Triaging and diagnosing an alert
+
+An alert indicates that an abnormal rise in the failed request rate was detected. It's likely that there is some problem with your app or its environment.
+
+From the percentage of requests and number of users affected, you can decide how urgent the issue is. In the example above, the failure rate of 22.5% compares with a normal rate of 1%, indicates that something bad is going on. On the other hand, only 11 users were affected. If it were your app, you'd be able to assess how serious that is.
+
+In many cases, you will be able to diagnose the problem quickly from the request name, exception, dependency failure and trace data provided. 
+
+There are some other clues. For example, the dependency failure rate in this example is the same as the exception rate (89.3%). This suggests that the exception arises directly from the dependency failure - giving you a clear idea of where to start looking in your code.
+
+To investigate further, the links in each section will take you straight to a [search page](app-insights-diagnostic-search.md) filtered to the relevant requests, exception, dependency or traces. Or you can open the [Azure portal](https://portal.azure.com), navigate to the Application Insights resource for your app, and open the Failures blade.
+
+In this example, clicking the 'View dependency failures details' link opens Application Insights search blade on the SQL statement with the root cause: NULLs where provided at mandatory fields and did not pass validation during the save operation.
+
+
+![Diagnostic search](./media/app-insights-proactive-failure-diagnostics/051.png)
+
+## <a name="review-recent-alerts"></a>Review recent alerts
+
+To review alerts in the portal, open **Settings, Audit logs**.
 
 ![Alerts summary](./media/app-insights-proactive-failure-diagnostics/041.png)
 
 
-任意のアラートをクリックすると、その詳細情報がすべて表示されます。
+Click any alert to see its full detail.
 
-または、**[プロアクティブ検出]** をクリックして、最新のアラートに直接アクセスします。
+Or click **Proactive detection** to get straight to the most recent alert:
 
 ![Alerts summary](./media/app-insights-proactive-failure-diagnostics/070.png)
 
 
 
 
-## 違い...
+## <a name="what's-the-difference-..."></a>What's the difference ...
 
-プロアクティブなエラー診断は、Application Insights の類似しているが異なるその他の機能を補完します。
+Proactive failure diagnostics complements other similar but distinct features of Application Insights. 
 
-* [メトリック アラート](app-insights-alerts.md)は、ユーザーが設定するアラートであり、CPU 占有率、要求率、ページの読み込み時間など、広範なメトリックを監視できます。このアラートを使用すると、リソースを追加する必要がある場合などに自分に警告することができます。これに対し、プロアクティブなエラー診断は、重要な少数のメトリック (現在は要求失敗率のみ) を対象としており、Web アプリの要求失敗率が Web アプリの通常の動作と比較して大幅に増加すると、ほぼリアルタイムでユーザーに通知するよう設計されています。
+* [Metric Alerts](app-insights-alerts.md) are set by you and can monitor a wide range of metrics such as CPU occupancy, request rates,  page load times, and so on. You can use them to warn you, for example, if you need to add more resources. By contrast, proactive failure diagnostics cover a small range of critical metrics (currently only failed request rate), designed to notify you in near real time manner once your web app's failed request rate increases significantly compared to web app's normal behavior.
 
-    プロアクティブなエラー診断は、優勢な状態に合わせてそのしきい値を自動調整します。
+    Proactive failure diagnostics automatically adjusts its threshold in response to prevailing conditions.
 
-    プロアクティブなエラー診断は、ユーザーの代わりに診断作業を開始します。
-* また、[プロアクティブな異常診断](app-insights-proactive-anomaly-diagnostics.md)では、マシン インテリジェンスを使用して、メトリックの異常なパターンを検出します。ユーザーが構成する必要はありません。ただし、プロアクティブなエラー診断とは異なり、プロアクティブな異常診断の目的は、(たとえば、特定の種類のブラウザーの特定のページで) 適切に処理されない可能性のあるさまざまな使用量のセグメントを検出することです。分析は毎日実行され、見つかった結果はアラートよりも緊急度が大幅に低い可能性があります。これに対し、プロアクティブなエラー診断の分析は、受け取ったテレメトリに対して継続的に実行され、サーバーのエラー率が予想を超えると数分以内にユーザーに通知します。
+    Proactive failure diagnostics start the diagnostic work for you. 
+* [Proactive anomaly diagnostics](app-insights-proactive-anomaly-diagnostics.md) also uses machine intelligence to discover unusual patterns in your metrics, and no configuration by you is required. But unlike Proactive failure diagnostics, the purpose of proactive anomaly diagnostics is to find segments of your usage manifold that might be badly served - for example, by specific pages on a specific type of browser. The analysis is performed daily, and if any result is found, it's likely to be much less urgent than an alert. By contrast, the analysis for proactive failure diagnostics is performed continuously on incoming telemetry, and you will be notified within minutes if server failure rates are greater than expected.
 
-## プロアクティブなエラー診断アラートを受け取った場合
+## <a name="if-you-receive-an-proactive-failure-diagnostics-alert"></a>If you receive an Proactive failure diagnostics alert
 
-*このアラートを受け取った理由*
+*Why have I received this alert?*
 
-*	先行する期間の正常な基準値と比較し、要求失敗率の異常な上昇が検出されました。エラーと関連する製品利用統計情報を分析したところ、調査する必要のある問題があると思われます。
+*   We detected an abnormal rise in failed requests rate compared to the normal baseline of the preceding period. After analysis of the failures and associated telemetry, we think that there is a problem that you should look into. 
 
-*この通知は、明らかに問題があることを意味していますか。*
+*Does the notification mean I definitely have a problem?*
 
-*	アプリの中断や劣化に対してアラートを出すように試みますが、セマンティックスとアプリまたはユーザーに与える影響を完全に理解できるのは当人だけです。
+*   We try to alert on app disruption, or degradation, although only you can fully understand the semantics and the impact on the app or users.
 
-*私のデータはマイクロソフトからも見られるのですか。*
+*So, you guys look at my data?*
 
-*	いいえ。サービスは完全に自動化されています。通知を受け取るだけです。ユーザーのデータは[プライベート](app-insights-data-retention-privacy.md)です。
+*   No. The service is entirely automatic. Only you get the notifications. Your data is [private](app-insights-data-retention-privacy.md).
 
-*このアラートをサブスクライブする必要はありますか。*
+*Do I have to subscribe to this alert?* 
 
-*	いいえ。要求の製品利用統計情報を送信するすべてのアプリケーションにこのアラート ルールがあります。
+*   No. Every application sending request telemetry has this alert rule.
 
-*登録を解除できますか。または、代わりに同僚に通知が送信されるように設定できますか。*
+*Can I unsubscribe or get the notifications sent to my colleagues instead?*
 
-*	はい。[アラート ルール] で、プロアクティブ診断ルールをクリックし、設定します。アラートを無効にしたり、アラートの受信者を変更したりできます。
+*   Yes, In Alert rules, click Proactive Diagnostics rule to configure it. You can disable the alert, or change recipients for the alert. 
 
-*メールが消えました。どうしたらポータルで通知を見つけられますか。*
+*I lost the email. Where can I find the notifications in the portal?*
 
-*	監査ログで見つかります。[設定]、[監査ログ] をクリックすると、アラートの発生を確認できますが、詳細表示は制限されます。
+*   In the Audit logs. Click Settings, Audit logs, then any alert to see its occurrence, but with limited detailed view.
 
-*一部のアラートは既知の問題であり、受信を停止したいのですが。*
+*Some of the alerts are of known issues and I do not want to receive them.*
 
-*	バックログでアラートを非表示にできます。
+*   We have alert suppression on our backlog.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
+These diagnostic tools help you inspect the telemetry from your app:
 
-* [メトリックス エクスプローラー](app-insights-metrics-explorer.md)
-* [Search エクスプローラー](app-insights-diagnostic-search.md)
-* [Analytics - 強力なクエリ言語](app-insights-analytics-tour.md)
+* [Metric explorer](app-insights-metrics-explorer.md)
+* [Search explorer](app-insights-diagnostic-search.md)
+* [Analytics - powerful query language](app-insights-analytics-tour.md)
 
-プロアクティブ検出は、すべて自動化されています。ただし、アラートを追加で設定する機能が用意されています。
+Proactive detections are completely automatic. But maybe you'd like to set up some more alerts?
 
-* [手動で構成するメトリックのアラート](app-insights-alerts.md)
-* [可用性 Web テスト](app-insights-monitor-web-app-availability.md)
+* [Manually configured metric alerts](app-insights-alerts.md)
+* [Availability web tests](app-insights-monitor-web-app-availability.md) 
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

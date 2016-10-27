@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager での Azure ポータルを使用した内部ロード バランサーの作成の概要 | Microsoft Azure"
-   description="Azure ポータルを使用して Resource Manager で内部ロード バランサーを作成する方法について説明します"
+   pageTitle="Get started creating an Internal load balancer in Resource Manager using the Azure portal | Microsoft Azure"
+   description="Learn how to create an Internal load balancer in Resource Manager using the Azure portal"
    services="load-balancer"
    documentationCenter="na"
    authors="sdwheeler"
@@ -17,86 +17,92 @@
    ms.date="08/31/2016"
    ms.author="sewhee" />
 
-# Azure ポータルでの内部ロード バランサーの作成の概要
+
+# <a name="get-started-creating-an-internal-load-balancer-in-the-azure-portal"></a>Get started creating an Internal load balancer in the Azure portal
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-arm-selectors-include.md](../../includes/load-balancer-get-started-ilb-arm-selectors-include.md)]
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-ps.md)
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](load-balancer-get-started-ilb-classic-ps.md).
 
 [AZURE.INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
 
-## Azure ポータルを使用した内部ロード バランサーの作成の概要
+## <a name="get-started-creating-an-internal-load-balancer-using-azure-portal"></a>Get started creating an Internal load balancer using Azure portal
 
-Azure ポータルから内部ロード バランサーを作成するには、次の手順に従います。
+To create an internal load balancer from the Azure portal, follow the steps below.
 
-1. ブラウザーから [Azure ポータル](http://portal.azure.com)に移動します。必要であれば Azure アカウントでサインインします。
-2. 画面の左上で、**[新規]**、**[ネットワーク]**、**[ロード バランサー]** の順にクリックします。
-3. **[ロード バランサーの作成]** ブレードで、ロード バランサーの **名前** を入力します。
-4. **[スキーム]** の **[内部]** をクリックします。
-5. **[仮想ネットワーク]** をクリックし、ロード バランサーを作成する仮想ネットワークを選択します。
+1. From a browser, navigate to the [Azure Portal](http://portal.azure.com) and, if necessary, sign in with your Azure account.
+2. In the upper left hand side of the screen, click **New** > **Networking** > **Load balancer**.
+3. In the **Create load balancer** blade, type a **Name** for your load balancer.
+4. Under **Scheme**, click **Internal**.
+5. Click **Virtual network**, and then select the virtual network where you want to create the load balancer.
 
-    >[AZURE.NOTE] 使用する仮想ネットワークが表示されない場合は、ロード バランサーに使用する **[場所]** を確認し、それに従って変更します。
+    >[AZURE.NOTE] If you do not see the virtual network you want to use, check the **Location** you are using for the load balancer, and change it accordingly.
 
-6. **[サブネット]** をクリックし、ロード バランサーを作成するサブネットを選択します。
-7. **[IP アドレスの割り当て]** で、ロード バランサーの IP アドレスを固定 (静的) にするかどうかに応じて、**[動的]** または **[静的]** をクリックします。
+6. Click **Subnet**, and then select the subnet where you want to create the load balancer.
+7. Under **IP address assignment**, click either **Dynamic** or **Static**, depending on whether you want the IP address for the load balancer to be fixed (static) or not.
 
-    >[AZURE.NOTE] 静的 IP アドレスの使用を選択した場合は、ロード バランサーのアドレスを指定する必要があります。
+    >[AZURE.NOTE] If you select to use a static IP address, you will have to provide an address for the load balancer.
 
-8. **[リソース グループ]** で、ロード バランサーの新しいリソース グループの名前を指定するか、または **[既存のものを選択]** をクリックして既存のリソース グループを選択します。
-9. **[作成]** をクリックします。
+8. Under **Resource group** either specify the name of a new resource group for the load balancer, or click **select existing** and select an existing resource group.
+9. Click **Create**.
 
-## 負荷分散規則の構成
+## <a name="configure-load-balancing-rules"></a>Configure load balancing rules
 
-ロード バランサーを作成した後は、ロード バランサーのリソースに移動して構成します。負荷分散規則を構成する前に、バックエンド アドレス プールとプローブを構成する必要があります。
+After the load balancer creation, navigate to the load balancer resource to configure it.
+You need to configure first a back-end address pool and a probe before configuring a load balancing rule.
 
-### 手順 1
+### <a name="step-1"></a>Step 1
 
-バックエンド プールを構成します。
+Configure a back-end pool:
 
-1. Azure ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックし、上で作成したロード バランサーをクリックします。
-2. **[設定]** ブレードで **[バックエンド プール]** をクリックします。
-3. [**バックエンド アドレス プール**] ブレードで、[**追加**] をクリックします。
-4. **[バックエンド プールの追加]** ブレードで、バックエンド プールの **名前** を入力して、**[OK]** をクリックします。
+1. In the Azure portal, click **Browse** > **Load balancers**, and then click the load balancer you created above.
+2. In the **Settings** blade, click **Backend pools**.
+3. In the **Backend address pools** blade, click **Add**.
+4. In the **Add backend pool** blade, type a **Name** for the backend pool, and then click **OK**.
 
-### 手順 2.
+### <a name="step-2"></a>Step 2
 
-プローブを構成します。
+Configure a probe:
 
-1. Azure ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックし、上で作成したロード バランサーをクリックします。
-2. **[設定]** ブレードで **[プローブ]** をクリックします。
-3. **[プローブ]** ブレードで **[追加]** をクリックします。
-4. **[プローブの追加]** ブレードで、プローブの **名前** を入力します。
-5. **[プロトコル]** で、**[HTTP]** (Web サイトの場合) または **[TCP]** (その他の TCP ベース アプリケーションの場合) を選択します。
-6. **[ポート]** で、プローブにアクセスするときに使用するポートを指定します。
-7. (HTTP プローブの場合のみ) **[パス]** で、プローブとして使用するパスを指定します。
-8. **[間隔]** で、アプリケーションをプローブする頻度を指定します。
-9. **[異常しきい値]** で、バックエンド VM を異常としてマークする前に許容する試行失敗回数を指定します。
-10. **[OK]** をクリックしてプローブを作成します。
+1. In the Azure portal, click **Browse** > **Load balancers**, and then click the load balancer you created above.
+2. In the **Settings** blade, click **Probes**.
+3. In the **Probes**  blade, click **Add**.
+4. In the **Add probe** blade, type a **Name** for the probe.
+5. Under **Protocol**, select **HTTP** (for web sites) or **TCP** (for other TCP based applications).
+6. Under **Port**, specify the port to use when accessing the probe.
+7. Under **Path** (for HTTP probes only), specify the path to use as a probe.
+8. Under **Interval** specify how frequently to probe the application.
+9. Under **Unhealthy threshold**, specify how many attempts should fail before the backend VM is marked as unhealthy.
+10. Click **OK** to create probe.
 
-### 手順 3.
+### <a name="step-3"></a>Step 3
 
-負荷分散規則を構成します。
+Configure load balancing rules:
 
-1. Azure ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックし、上で作成したロード バランサーをクリックします。
-2. **[設定]** ブレードで、**[負荷分散規則]** をクリックします。
-3. **[負荷分散規則]** ブレードで、**[追加]** をクリックします。
-4. **[負荷分散規則の追加]** ブレードで、規則の **名前** を入力します。
-5. **[プロトコル]** で、**[HTTP]** (Web サイトの場合) または **[TCP]** (その他の TCP ベース アプリケーションの場合) を選択します。
-6. **[ポート]** で、クライアントが接続するロード バランサーのポートを指定します。
-7. **[バックエンド ポート]** で、バックエンド プールで使用するポートを指定します (通常、ロード バランサー ポートとバックエンド ポートは同じです)。
-8. **[バックエンド プール]** で、上で作成したバックエンド プールを選択します。
-9. **[セッション永続化]** で、セッションを永続化する方法を選択します。
-10. **[アイドル タイムアウト (分)]** で、アイドル状態のタイムアウトを指定します。
-11. **[フローティング IP (ダイレクト サーバー リターン)]** で、**[無効]** または **[有効]** をクリックします。
-12. **[OK]** をクリックします。
+1. In the Azure portal, click **Browse** > **Load balancers**, and then click the load balancer you created above.
+2. In the **Settings** blade, click **Load balancing rules**.
+3. In the **Load balancing rules** blade, click **Add**.
+4. In the **Add load balancing rule** blade, type a **Name** for the rule.
+5. Under **Protocol**, select **HTTP** (for web sites) or **TCP** (for other TCP based applications).
+6. Under **Port**, specify the port clients connect to int he load balancer.
+7. Under **Backend port**, specify the port to be used in the backend pool (usually, the load balancer port and the backend port are the same).
+8. Under **Backend pool**, select the backend pool you created above.
+9. Under **Session persistence**, select how you want sessions to persist.
+10. Under **Idle timeout (minutes)**, specify the idle timeout.
+11. Under **Floating IP (direct server return)**, click **Disabled** or **Enabled**.
+12. Click **OK**.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
+[Configure a load balancer distribution mode](load-balancer-distribution-mode.md)
 
-[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
+[Configure idle TCP timeout settings for your load balancer](load-balancer-tcp-idle-timeout.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

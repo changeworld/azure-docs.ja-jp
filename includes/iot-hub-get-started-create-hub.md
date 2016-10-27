@@ -1,31 +1,31 @@
-## IoT Hub の作成
+## <a name="create-an-iot-hub"></a>Create an IoT hub
 
-シミュレーション対象デバイスの接続先となる IoT Hub を作成します。次の手順では、この作業を Azure ポータルで行う方法を示しています。
+Create an IoT hub for your simulated device to connect to. The following steps show you how to complete this task by using the Azure portal.
 
-1. [Azure ポータル][lnk-portal]にサインインします。
+1. Sign in to the [Azure portal][lnk-portal].
 
-2. ジャンプバーで **[新規]**、**[モノのインターネット (IoT)]**、**[Azure IoT Hub]** の順にクリックします。
+2. In the Jumpbar, click **New** > **Internet of Things** > **Azure IoT Hub**.
 
     ![Azure portal Jumpbar][1]
 
-3. **[IoT Hub]** ブレードで、IoT Hub の構成を選択します。
+3. In the **IoT hub** blade, choose the configuration for your IoT hub.
 
     ![IoT hub blade][2]
 
-    * **[名前]** ボックスに IoT Hub の名前を入力します。その**名前**が有効で利用できる場合、**[名前]** ボックスに緑色のチェック マークが表示されます。
-    * [価格とスケール レベル][lnk-pricing]を選択します。このチュートリアルでは特定のレベルは必要ありません。このチュートリアルでは、無料の F1 レベルを使用します。
-    * **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、[リソース グループを使用した Azure リソースの管理][lnk-resource-groups]に関するページを参照してください。
-    * **[場所]** で、IoT Hub をホストする場所を選択します。このチュートリアルでは、最も近い場所を選択します。
+    * In the **Name** box, enter a name for your IoT hub. If the **Name** is valid and available, a green check mark appears in the **Name** box.
+    * Select a [pricing and scale tier][lnk-pricing]. This tutorial does not require a specific tier. For this tutorial, use the free F1 tier.
+    * In **Resource group**, create a new resource group, or select an existing one. For more information, see [Using resource groups to manage your Azure resources][lnk-resource-groups].
+    * In **Location**, select the location to host your IoT hub. For this tutorial, choose your nearest location.
 
-4. 必要な IoT Hub 構成オプションを選択したら、**[作成]** をクリックします。Azure が IoT Hub を作成するまでに数分かかる場合があります。状態を確認するには、スタート画面または通知パネルで進行状況を監視してください。
+4. When you have chosen your IoT hub configuration options, click **Create**.  It can take a few minutes for Azure to create your IoT hub. To check the status, you can monitor the progress on the Startboard or in the Notifications panel.
 
     ![New IoT hub status][3]
 
-5. IoT Hub が正常に作成されたら、ポータルで IoT Hub の新しいタイルをクリックし、新しい IoT Hub のブレードを開きます。**[ホスト名]** をメモして、**[共有アクセス ポリシー]** をクリックします。
+5. When the IoT hub has been created successfully, click the new tile for your IoT hub in the portal to open the blade for the new IoT hub. Make a note of the **Hostname**, and then click **Shared access policies**.
 
     ![New IoT hub blade][4]
 
-6. **[共有アクセス ポリシー]** ブレードで、**iothubowner** ポリシーをクリックし、**[iothubowner]** ブレードで接続文字列をコピーしてメモします。詳細については、「Azure IoT Hub 開発者ガイド」の「[アクセス制御][lnk-access-control]」を参照してください。
+6. In the **Shared access policies** blade, click the **iothubowner** policy, and then copy and make note of the connection string in the **iothubowner** blade. For more information, see [Access control][lnk-access-control] in the "Azure IoT Hub developer guide."
 
     ![Shared access policies blade][5]
 
@@ -43,4 +43,7 @@
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
 [lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
 
-<!---HONumber=AcomDC_1005_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

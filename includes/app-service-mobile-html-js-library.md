@@ -1,32 +1,33 @@
-##<a name="create-client"></a>クライアント接続の作成
+##<a name="<a-name="create-client"></a>create-a-client-connection"></a><a name="create-client"></a>Create a Client Connection
 
-`WindowsAzure.MobileServiceClient` オブジェクトを作成して、クライアント接続を作成します。`appUrl` を Mobile App の URL に置き換えます。
+Create a client connection by creating a `WindowsAzure.MobileServiceClient` object.  Replace `appUrl` with the URL to your Mobile App.
 
 ```
 var client = WindowsAzure.MobileServiceClient(appUrl);
 ```
 
-##<a name="table-reference"></a>テーブルの操作
+##<a name="<a-name="table-reference"></a>work-with-tables"></a><a name="table-reference"></a>Work with Tables
 
-データへのアクセスやデータの更新を行うには、バックエンド テーブルへの参照を作成します。`tableName` を実際のテーブルの名前に置き換えます。
+To access or update data, create a reference to the backend table. Replace `tableName` with the name of your table
 
 ```
 var table = client.getTable(tableName);
 ```
 
-テーブル参照を作成したら、テーブルで次の操作を行うことができます。
+Once you have a table reference, you can work further with your table:
 
-* [テーブルのクエリ](#querying)
-  * [データのフィルター処理](#table-filter)
-  * [データのページング](#table-paging)
-  * [データの並べ替え](#sorting-data)
-* [データの挿入](#inserting)
-* [データの変更](#modifying)
-* [データの削除](#deleting)
+* [Query a Table](#querying)
+  * [Filtering Data](#table-filter)
+  * [Paging through Data](#table-paging)
+  * [Sorting Data](#sorting-data)
+* [Inserting Data](#inserting)
+* [Modifying Data](#modifying)
+* [Deleting Data](#deleting)
 
-###<a name="querying"></a>方法: テーブル参照をクエリする
+###<a name="<a-name="querying"></a>how-to:-query-a-table-reference"></a><a name="querying"></a>How to: Query a Table Reference
 
-テーブル参照を作成したら、それを使用してサーバー上のデータのクエリを実行できます。クエリは "LINQ のような" 言語で作成します。テーブルからすべてのデータを返すには、次の手順に従います。
+Once you have a table reference, you can use it to query for data on the server.  Queries are made in a "LINQ-like" language.
+To return all data from the table, use the following:
 
 ```
 /**
@@ -54,13 +55,13 @@ table
     .then(success, failure);
 ```
 
-success 関数は results を指定して呼び出します。success 関数で `for (var i in results)` は使用しないでください。これを指定すると、その他のクエリ関数 (`.includeTotalCount()` など) を使用した場合に、results に含まれる情報が反復処理されるからです。
+The success function is called with the results.   Do not use `for (var i in results)` in the success function as that will iterate over information that is included in the results when other query functions (such as `.includeTotalCount()`) are used.
 
-クエリ構文の詳細については、[「query オブジェクト」](https://msdn.microsoft.com/library/azure/jj613353.aspx)を参照してください。
+For more information on the Query syntax, refer to the [Query object documentation].
 
-####<a name="table-filter"></a>サーバー上のデータのフィルター処理
+####<a name="<a-name="table-filter"></a>filtering-data-on-the-server"></a><a name="table-filter"></a>Filtering Data on the server
 
-テーブル参照に対して `where` 句を使用できます。
+You can use a `where` clause on the table reference:
 
 ```
 table
@@ -69,7 +70,7 @@ table
     .then(success, failure);
 ```
 
-オブジェクトをフィルター処理する関数を使用することもできます。この場合は、フィルター処理対象の現在のオブジェクトに `this` 変数を割り当てます。以下は、機能的に前の例と等価です。
+You can also use a function that filters the object.  In this case the `this` variable is assigned to the current object being filtered.  The following is functionally equivalent to the prior example:
 
 ```
 function filterByUserId(currentUserId) {
@@ -82,9 +83,9 @@ table
     .then(success, failure);
 ```
 
-####<a name="table-paging"></a>データのページング
+####<a name="<a-name="table-paging"></a>paging-through-data"></a><a name="table-paging"></a>Paging through data
 
-take() メソッドと skip() メソッドを利用します。たとえば、テーブルを 100 行のレコードに分割する場合:
+Utilize the take() and skip() methods.  For example, if you wish to split the table into 100-row records:
 
 ```
 var totalCount = 0, pages = 0;
@@ -107,14 +108,14 @@ function loadPage(pageNum) {
 }
 ```
 
-`.includeTotalCount()` メソッドを使用して、results オブジェクトに totalCount フィールドを追加します。totalCount フィールドには、ページングを使用しない場合に返されるレコード数の合計が入力されます。
+The `.includeTotalCount()` method is used to add a totalCount field to the results object.  The totalCount field is filled with the total number of records that would be returned if no paging is used.
 
-pages 変数と一部の UI ボタンを使用すると、ページ リストを指定できます。loadPage() を使用すると、ページごとに新しいレコードを読み込むことができます。既に読み込まれているレコードへのアクセス時間を短縮するには、何種類かのキャッシュを実装する必要があります。
+You can then use the pages variable and some UI buttons to provide a page list; use loadPage() to load the new records for each page.  You should implement some sort of caching to speed access to records that have already been loaded.
 
 
-####<a name="sorting-data"></a>方法: 並べ替えられたデータを返す
+####<a name="<a-name="sorting-data"></a>how-to:-return-data-sorted"></a><a name="sorting-data"></a>How to: Return data sorted
 
-.orderBy() または .orderByDescending() クエリ メソッドを次のように使用します。
+Use the .orderBy() or .orderByDescending() query methods:
 
 ```
 table
@@ -123,11 +124,11 @@ table
     .then(success, failure);
 ```
 
-query オブジェクトの詳細については、[「query オブジェクト」](https://msdn.microsoft.com/library/azure/jj613353.aspx)を参照してください。
+For more information on the Query object, refer to the [Query object documentation].
 
-###<a name="inserting"></a>方法: データを挿入する
+###<a name="<a-name="inserting"></a>how-to:-insert-data"></a><a name="inserting"></a>How to: Insert Data
 
-適切な日付を指定して JavaScript オブジェクトを作成し、table.insert() を非同期に呼び出します。
+Create a JavaScript object with the appropriate date and call table.insert() asynchronously:
 
 ```
 var newItem = {
@@ -142,13 +143,14 @@ table
     }, failure);
 ```
 
-挿入に成功すると、挿入された項目が、同期操作で必要な追加のフィールドで返されます。以降の更新に対しては、この情報を保持する独自のキャッシュを更新する必要があります。
+On successful insertion, the inserted item is returned with the additional fields that are required for sync operations.  You should update your own cache with this information for later updates.
 
-Azure Mobile Apps Node.js サーバー SDK では、開発用に動的なスキーマをサポートしています。動的スキーマの場合、テーブルのスキーマは即座に更新されます。このため、挿入操作または更新操作で列を指定するだけで、テーブルに列を追加できます。実稼働環境にアプリケーションを移行する前に、動的スキーマを無効にしておくことをお勧めします。
+Note that the Azure Mobile Apps Node.js Server SDK supports dynamic schema for development purposes.
+In the case of dynamic schema, the schema of the table is updated on the fly, allowing you to add columns to the table just by specifying them in an insert or update operation.  We recommend that you turn off dynamic schema before moving your application to production.
 
-###<a name="modifying"></a>方法: データを変更する
+###<a name="<a-name="modifying"></a>how-to:-modify-data"></a><a name="modifying"></a>How to: Modify Data
 
-.insert() メソッドの場合と同様に、update オブジェクトを作成して .update() を呼び出す必要があります。update オブジェクトには更新するレコードの ID を含める必要があります。この ID は、レコードの読み取り時または .insert() の呼び出し時に取得されます。
+Similar to the .insert() method, you should create an Update object and then call .update().  The update object must contain the ID of the record to be updated - this is obtained when reading the record or when calling .insert().
 
 ```
 var updateItem = {
@@ -163,9 +165,9 @@ table
     }, failure);
 ```
 
-###<a name="deleting"></a>方法: データを削除する
+###<a name="<a-name="deleting"></a>how-to:-delete-data"></a><a name="deleting"></a>How to: Delete Data
 
-レコードを削除するには .del() メソッドを呼び出します。オブジェクト参照に ID を渡します。
+Call the .del() method to delete a record.  Pass the ID in an object reference:
 
 ```
 table
@@ -175,4 +177,7 @@ table
     }, failure);
 ```
 
-<!------HONumber=AcomDC_0323_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

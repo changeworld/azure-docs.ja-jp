@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Database 脅威の検出の概要"
-   description="Azure ポータルでの SQL Database 脅威の検出の使用方法"
+   pageTitle="Get started with SQL Database Threat Detection"
+   description="How to get started with SQL Database Threat Detection in the Azure Portal"
    services="sql-database"
    documentationCenter=""
    authors="ronitr"
@@ -17,65 +17,69 @@
    ms.author="ronmat; ronitr"/>
 
 
-# SQL Database 脅威の検出の概要
 
-## 概要
+# <a name="get-started-with-sql-database-threat-detection"></a>Get started with SQL Database Threat Detection
 
-脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。脅威の検出はプレビュー状態であり、Azure SQL Database の V12 バージョンでサポートされます。
+## <a name="overview"></a>Overview
 
-脅威の検出で提供される新しいセキュリティ階層は、異常なアクティビティに対するセキュリティ アラートを提供することによって、発生する可能性のある脅威をユーザーが検出して対応できるようにします。ユーザーは、[Azure SQL Database の監査](sql-database-auditing-get-started.md)を使用して疑わしいイベントを調査し、データベース内のデータに対するアクセス、侵害、または悪用の試行による結果かどうかを判断できます。脅威の検出を使用するとデータベースに対する潜在的な脅威に簡単に対処でき、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要はありません。
+Threat Detection detects anomalous database activities indicating potential security threats to the database.  Threat Detection is in preview and is supported for the V12 version of Azure SQL Database.
 
-たとえば、脅威の検出は、SQL インジェクションの可能性を示す特定の異常なデータベース アクティビティを検出します。SQL インジェクションはインターネットでの一般的な Web アプリケーションのセキュリティの問題の 1 つであり、データ駆動型アプリケーションの攻撃に使用されます。攻撃者は、アプリケーションの脆弱性を利用してアプリケーションの入力フィールドに悪意のある SQL ステートメントを挿入し、データベースのデータを侵害または変更します。
+Threat Detection provides a new layer of security, which enables customers to detect and respond to potential threats as they occur by providing security alerts on anomalous activities.  Users can explore the suspicious events using [Azure SQL Database Auditing](sql-database-auditing-get-started.md) to determine if they result from an attempt to access, breach or exploit data in the database.
+Threat Detection makes it simple to address potential threats to the database without the need to be a security expert or manage advanced security monitoring systems.
 
-
-## データベースに対する脅威の検出の設定
-
-1. [https://portal.azure.com](https://portal.azure.com) で Azure ポータルを起動します。
-
-2. 監視する SQL Database の構成ブレードに移動します。[設定] ブレードで、**[監査と脅威の検出]** を選択します。
-
-	![ナビゲーション ウィンドウ][1]
-
-3. **[監査と脅威の検出]** 構成ブレードで、監査を **[ON]** にすると、脅威の検出の設定が表示されます。
-
-	![ナビゲーション ウィンドウ][2]
-
-4. 脅威の検出を **[ON]** にします。
-
-5. 異常なデータベース アクティビティが検出されたときにセキュリティ アラートを受け取る電子メールのリストを構成します。
-
-6. **[監査と脅威の検出]** 構成ブレードの **[保存]** をクリックして、新規または更新済みの監査と脅威の検出のポリシーを保存します。
-
-	![ナビゲーション ウィンドウ][3]
+For example, Threat Detection detects certain anomalous database activities indicating potential SQL injection attempts. SQL injection is one of the common Web application security issues on the Internet, used to attack data-driven applications. Attackers take advantage of application vulnerabilities to inject malicious SQL statements into application entry fields, for breaching or modifying data in the database.
 
 
-## 疑わしいイベントが検出されたときの異常なデータベース アクティビティの調査
+## <a name="set-up-threat-detection-for-your-database"></a>Set up threat detection for your database
 
-1. 異常なデータベース アクティビティが検出されると、電子メールで通知を受け取ります。<br/> 電子メールでは、異常なアクティビティの特徴、データベース名、サーバー名、イベントの時刻など、疑わしいセキュリティ イベントについての情報が提供されます。さらに、データベースへの潜在的な脅威の考えられる原因および調査や緩和のための推奨されるアクションについての情報も提供されます。<br/>
+1. Launch the Azure Portal at [https://portal.azure.com](https://portal.azure.com).
 
-	![ナビゲーション ウィンドウ][4]
+2. Navigate to the configuration blade of the SQL Database you want to monitor. In the Settings blade, select **Auditing & Threat Detection**.
 
-2. 電子メールの **[Azure SQL 監査ログ]** リンクをクリックすると、Azure ポータルが起動し、疑わしいイベントの時刻前後の関連する監査レコードが表示されます。
+    ![Navigation pane][1]
 
-	![ナビゲーション ウィンドウ][5]
+3. In the **Auditing & Threat Detection** configuration blade turn **ON** auditing, which will display the Threat detection settings.
 
-3. 監査レコードをクリックすると、SQL ステートメント、エラーの理由、クライアントの IP など、疑わしいデータベース アクティビティについての詳細が表示されます。
+    ![Navigation pane][2]
 
-	![ナビゲーション ウィンドウ][6]
+4. Turn **ON** Threat detection.
 
-4. [監査レコード] ブレードの **[Excel で開く]** をクリックすると、あらかじめ構成されている Excel テンプレートが開き、疑わしいイベントの時刻前後の監査ログがインポートされて詳細な分析が実行されます。<br/> **注:** Excel 2010 以降では、Power Query と**高速結合**の設定が必要です
+5. Configure the list of emails that will receive security alerts upon detection of anomalous database activities.
 
-	![ナビゲーション ウィンドウ][7]
+6. Click **Save** in the **Auditing & Threat detection** configuration blade to save the new or updated auditing and threat detection policy.
 
-5. **[高速結合]** の設定を構成するには、**[POWER QUERY]** リボン タブの **[オプション]** を選択して [オプション] ダイアログ ボックスを表示します。[プライバシー] セクションを選択し、2 番目のオプション [プライバシー レベルを無視し、可能であればパフォーマンスを向上させる] をオンにします。
+    ![Navigation pane][3]
 
-	![ナビゲーション ウィンドウ][8]
 
-6. SQL 監査ログをロードするには、[設定] タブのパラメーターが正しく設定されていることを確認してから、データのリボンを選択し、[すべて更新] ボタンをクリックします。
+## <a name="explore-anomalous-database-activities-upon-detection-of-a-suspicious-event"></a>Explore anomalous database activities upon detection of a suspicious event
 
-	![ナビゲーション ウィンドウ][9]
+1. You will receive an email notification upon detection of anomalous database activities. <br/>
+The email will provide information on the suspicious security event including the nature of the anomalous activities, database name, server name and the event time. In addition, it will provide information on possible causes and recommended actions to investigate and mitigate the potential threat to the database.<br/>
 
-7. **[SQL 監査ログ]** シートに結果が表示されます。このシートでは、検出された異常なアクティビティを詳細に分析し、アプリケーションでのセキュリティ イベントの影響を軽減できます。
+    ![Navigation pane][4]
+
+2. In the email, click on the **Azure SQL Auditing Log** link, which will launch the Azure portal and show the relevant Auditing records around the time of the suspicious event.
+
+    ![Navigation pane][5]
+
+3. Click on the audit records to view more details on the suspicious database activities such as SQL statement, failure reason and client IP.
+
+    ![Navigation pane][6]
+
+4. In the Auditing Records blade, click  **Open in Excel** to open a pre-configured excel template to import and run deeper analysis of the audit log around the time of the suspicious event.<br/>
+**Note:** In Excel 2010 or later, Power Query and the **Fast Combine** setting is required
+
+    ![Navigation pane][7]
+
+5. To configure the **Fast Combine** setting - In the **POWER QUERY** ribbon tab, select **Options** to display the Options dialog. Select the Privacy section and choose the second option - 'Ignore the Privacy Levels and potentially improve performance':
+
+    ![Navigation pane][8]
+
+6. To load SQL audit logs, ensure that the parameters in the settings tab are set correctly and then select the 'Data' ribbon and click the 'Refresh All' button.
+
+    ![Navigation pane][9]
+
+7. The results appear in the **SQL Audit Logs** sheet which enables you to run deeper analysis of the anomalous activities that were detected, and mitigate the impact of the security event in your application.
 
 
 <!--Image references-->
@@ -89,4 +93,8 @@
 [8]: ./media/sql-database-threat-detection-get-started/8_td_excel_fast_combine.png
 [9]: ./media/sql-database-threat-detection-get-started/9_td_excel_parameters.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

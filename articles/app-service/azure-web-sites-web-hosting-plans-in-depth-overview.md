@@ -1,106 +1,115 @@
 <properties
-	pageTitle="Azure App Service プランの詳細な概要 | Microsoft Azure"
-	description="Azure App Service の App Service プランのしくみと、それが管理機能にもたらすメリットについて説明します。"
-	keywords="App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
-	services="app-service"
-	documentationCenter=""
-	authors="btardif"
-	manager="wpickett"
-	editor=""/>
+    pageTitle="Azure App Service plans in-depth overview | Microsoft Azure"
+    description="Learn how App Service plans for Azure App Service work, and how they benefit your management experience."
+    keywords="app service, azure app service, scale, scalable, app service plan, app service cost"
+    services="app-service"
+    documentationCenter=""
+    authors="btardif"
+    manager="wpickett"
+    editor=""/>
 
 <tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/07/2016"
-	ms.author="byvinyal"/>
+    ms.service="app-service"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/13/2016"
+    ms.author="byvinyal"/>
 
-# Azure App Service プランの詳細な概要#
 
-App Service プランは、Web Apps、Mobile Apps、Logic Apps、API Apps を含む [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の複数のアプリで共有できる一連の機能と容量を表します。これらのプランは、*Free*、*Shared*、*Basic*、*Standard*、*Premium* の 5 つの価格レベルをサポートしています。提供される機能と容量は、レベルごとに異なります。サブスクリプションと地域が同じアプリ間では、プランを共有することができます。プランを共有するすべてのアプリで、そのプランのレベルによって定義されているすべての機能を利用できます。特定のプランに関連付けられているすべてのアプリは、そのプランによって定義されているリソース上で実行されます。
+# <a name="azure-app-service-plans-in-depth-overview#"></a>Azure App Service plans in-depth overview#
 
-たとえば、Standard サービス レベルで 2 つの "Small" インスタンスを使用するようにプランが構成されている場合、そのプランに関連付けられているすべてのアプリが両方のインスタンス上で実行され、また、Standard サービス レベルの機能にアクセスすることができます。アプリを実行するプランのインスタンスは、完全に管理され、高い可用性が確保されます。
+An App Service plan represents a set of features and capacity that you can share across multiple apps. Web Apps, Mobile Apps, Function Apps, or API Apps, in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) all run in an App Service plan. These plans support five pricing tiers: *Free*, *Shared*, *Basic*, *Standard*, and *Premium*. Each tier has its own capabilities and capacity. Apps in the same subscription and geographic location can share a plan. All the apps that share a plan can use all the capabilities and features that are defined by the plan's tier. All apps that are associated with a plan run on the resources that the plan defines.
 
-この記事では、App Service プランのレベルとスケール、アプリを管理する中でそれらがどのように作用するかなど、主な特徴を詳しく見ていきます。
+For example, if your plan is configured to use two "small" instances in the standard service tier, all apps that are associated with that plan run on both instances and have access to the standard service tier functionality. Plan instances on which apps are running are fully managed and highly available.
 
-## アプリと App Service プラン
+This article explores the key characteristics, such as tier and scale, of an App Service plan and how they come into play while managing your apps.
 
-App Service のアプリは、常時 1 つの App Service プランにのみ関連付けることができます。
+## <a name="apps-and-app-service-plans"></a>Apps and App Service plans
 
-アプリとプランは両方ともリソース グループに含まれます。リソース グループは、そのグループに含まれるすべてのリソースに対してライフサイクルの境界という機能を果たします。リソース グループを使用することによって、1 つのアプリケーションのすべての構成要素をまとめて管理できます。
+An app in App Service can be associated with only one App Service plan at any given time.
 
-App Service プランは 1 つのリソース グループに複数割り当てることができるため、複数のアプリをそれぞれ異なる物理リソースに割り当てることができます。たとえば開発、テスト、運用の各環境間でリソースを分離することができます。これは、専用のリソース セットを持つ 1 つのプランを運用環境のアプリ用に割り当て、もう 1 つのプランを開発およびテスト環境用に割り当てるような状況で役に立ちます。この方法なら、アプリの新しいバージョンに対する負荷テストによって、実際の顧客に提供している運用環境のアプリ用のリソースが使用されるようなことはありません。
+Both apps and plans are contained in a resource group. A resource group serves as the lifecycle boundary for every resource that's within it. You can use resource groups to manage all the pieces of an application together.
 
-また、1 つのリソース グループに複数のプランを割り当てることによって、複数の地理的リージョンにまたがるアプリケーションを定義することもできます。たとえば、1 つの高可用性アプリを 2 つのリージョンで実行する場合、2 つの プラン (リージョンごとに 1 つ) を追加したうえで、各プランにアプリを 1 つ関連付けます。このような場合は、アプリのすべてのコピーが 1 つのリソース グループに関連付けられます。複数のプランと複数のアプリを 1 つのリソース グループにまとめることで、アプリケーションの管理と統制がしやすくなり、正常性の確認も容易になります。
+Because a single resource group can have multiple App Service plans, you can allocate different apps to different physical resources. For example, you can separate resources among dev, test, and production environments. Having separate environments for production and dev/test lets you isolate resources. In this way, load testing against a new version of your apps does not compete for the same resources as your production apps, which are serving real customers.
 
-## 新しい App Service プランを作成する場合と、既存のプランを使用する場合
+When you have multiple plans in a single resource group, you can also define an application that spans geographical regions. For example, a highly available app running in two regions includes at least two plans, one for each region, and one app associated with each plan. In such a situation, all the copies of the app are then contained in a single resource group. Having a resource group with multiple plans and multiple apps makes it easy to manage, control, and view the health of the application.
 
-新しいアプリを作成する際には、新しいリソース グループの作成を検討する必要があります。もう一方で、作成しようとしているアプリがより大規模なアプリケーションのコンポーネントである場合、その大規模なアプリケーション用に割り当てられたリソース グループの内部にそのアプリを作成する必要があります。
+## <a name="create-an-app-service-plan-or-use-existing-one"></a>Create an App Service plan or use existing one
 
-新しいアプリが完全に新しいアプリケーションであっても、大規模なアプリケーションの一部であっても、それをホストするために既存の App Service プランを活用するか、新しいプランを作成するか選ぶことができます。これは、どちらかというと、容量と予想される負荷の問題です。
+When you create an  app, you should consider creating a resource group. On the other hand, if the app that you are about to create is a component for a larger application, this app should be created within the resource group that's allocated for that larger application.
 
-この新しいアプリが、リソースを大量に消費し、既存のプランでホストされている他のアプリとは異なるスケーリング要因を持つアプリになる場合は、専用のプランを用意してこのアプリを分離することをお勧めします。
+Whether the new app is an altogether new application or part of a larger one, you can choose to use an existing App Service plan to host it or create a new one. This decision is more a question of capacity and expected load.
 
-新しいプランを作成すると、アプリのリソース セットを新たに割り当てることができるため、より柔軟にリソースの割り当てを制御できます。これはプランごとに独立した一連のインスタンスが割り当てられるためです。
+If this new app is going to use many resources and have different scaling factors from the other apps hosted in an existing plan, we recommend that you isolate it in its own plan.
 
-アプリはプラン間で移動できるので、より大きなアプリケーションへのリソースの割り当て方を変更することができます。
+When you create a plan, you can allocate a new set of resources for your app and gain greater control over resource allocation because each plan gets its own set of instances.
 
-最後に、別のリージョンに新しいアプリを作成する必要が生じたものの、そのリージョンに既存のプランがない場合は、アプリをホストするための新しいプランを当該リージョンに作成する必要があります。
+Because you can move apps across plans, you can change the way that resources are allocated across the bigger application.
 
-## App Service プランを作成する
+Finally, if you want to create an app in a different region, and that region doesn't have an existing plan, create a plan in that region to be able to host your app there.
 
-空の App Service プランは、App Service プランの参照機能で作成するか、アプリ作成の一環として作成することができます。
+## <a name="create-an-app-service-plan"></a>Create an App Service plan
 
-[Azure ポータル](https://portal.azure.com)で **[新規]**、**[Web + モバイル]** の順にクリックし、**[Web アプリ]**、**[モバイル アプリ]**、**[API アプリ]**、**[ロジック アプリ]** のいずれかをクリックします。 ![Create an app in the Azure portal.][createWebApp]
+>[AZURE.TIP] If you have an App Service Environment you can review the documentation specific to App Service Environments here: [Create an App Service Plan in an App Service Environment](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)
 
-その後、新しいアプリのための App Service プランを選択または作成できます。
+You can create an empty App Service plan from the App Service plan browse experience or as part of app creation.
+
+In the [Azure portal](https://portal.azure.com), click **New** > **Web + mobile**, and then select **Web App** or other App Service app kind.
+![Create an app in the Azure portal.][createWebApp]
+
+You can then select or create the App Service plan for the new app.
 
  ![Create an App Service plan.][createASP]
 
-新しい App Service プランを作成するには、**[+ 新規作成]** をクリックし、**App Service プラン**名を入力して、適切な**場所**を選択します。**[価格レベル]** をクリックし、サービスに適切な価格レベルを選択します。**[すべて表示]** を選択して、**Free** や **Shared** などの価格オプションをさらに表示します。価格レベルを選択したら、**[選択]** をクリックします。
+To create a new App Service plan, click **[+] Create New**, type the **App Service plan** name, and then select an appropriate **Location**. Click **Pricing tier**, and then select an appropriate pricing tier for the service. Select **View all** to view more pricing options, such as **Free** and **Shared**. After you have selected the pricing tier, click the **Select** button.
 
-## アプリを別の App Service プランに移動する
+## <a name="move-an-app-to-a-different-app-service-plan"></a>Move an app to a different App Service plan
 
-別の App Service プランへのアプリの移動は、[Azure ポータル](https://portal.azure.com)で行うことができます。プラン間でのアプリの移動は、対象となるプランが同じリソース グループおよび同じ地理的リージョンに属している場合に限り可能です。
+You can move an app to a different app service plan in the [Azure portal](https://portal.azure.com). You can move apps between plans as long as the plans are in the same resource group and geographical region.
 
-アプリを別のプランに移動するには、移動するアプリを表示します。**[設定]** メニューで **[App Service プランの変更]** を選択します。
+To move an app to another plan, go to the app that you want to move. On the **Settings** menu, look for **Change App Service Plan**.
 
-すると、**[App Service プラン]** セレクターが表示されます。この時点で、既存のプランを選択するか、新しいプランを作成できます。有効なプラン (同じリソース グループおよび地理的な場所に属する) のみが表示されます。
+**Change App Service Plan** opens the **App Service plan** selector. At this point, you can either pick an existing plan or create a new one. Only valid plans (in the same resource group and geographical location) are shown.
 
 ![App Service plan selector.][change]
 
-各プランに価格レベルが割り当てられている点に注目してください。たとえば、Free レベルから Standard レベルにサイトを移動すると、Standard レベルのすべての機能とリソースをアプリで使用できるようになります。
+Each plan has its own pricing tier. For example, when you move a site from a Free tier to a Standard tier, your app now can use all the features and resources of the Standard tier.
 
-## アプリを別の App Service プランに複製する
-アプリを別のリージョンに移動する場合、アプリの複製を作成するという方法もあります。複製によって、新規または既存の App Service プランに、あるいは任意のリージョンの App Service 環境にアプリをコピーすることができます。
+## <a name="clone-an-app-to-a-different-app-service-plan"></a>Clone an app to a different App Service plan
+If you want to move the app to a different region, one alternative is app cloning. Cloning makes a copy of your app in a new or existing App Service plan or App Service environment in any region.
 
  ![Clone an app.][appclone]
 
-**[ツール]** メニューに **[アプリの複製]** があります。
+You can find **Clone App** on the **Tools** menu.
 
-複製にはいくつかの制限があります。これらの制限については、「[Azure ポータルを使用した Azure App Service アプリの複製](../app-service-web/app-service-web-app-cloning-portal.md)」をご覧ください。
+Cloning has some limitations that you can read about at [Azure App Service App cloning using Azure portal](../app-service-web/app-service-web-app-cloning-portal.md).
 
-## App Service プランのスケーリング
+## <a name="scale-an-app-service-plan"></a>Scale an App Service plan
 
-プランは 3 つの方法でスケールできます。
+There are three ways to scale a plan:
 
-- **プランの価格レベルを変更する**。たとえば、Basic レベルのプランは、Standard または Premium レベルへの変更が可能で、そのプランに関連付けられているすべてのアプリでは、新しいサービス レベルで提供される機能が利用できるようになります。
-- **プランのインスタンス サイズを変更する**。たとえば、Small インスタンスを使用する Basic レベルのプランを、Large インスタンスを使用するように変更できます。そのプランに関連付けられているすべてのアプリでは、より大きなサイズのインスタンスによって提供される追加のメモリおよび CPU リソースを利用できるようになります。
-- **プランのインスタンス数を変更する**。たとえば、3 インスタンスへのスケール アウトに対応した Standard プランを 10 インスタンスに拡張します。Premium プランは 20 インスタンスにスケール アウトすることができます (利用できる場合)。そのプランに関連付けられているすべてのアプリでは、インスタンス数の増加によって得られる追加のメモリおよび CPU リソースを利用できるようになります。
+- **Change the plan’s pricing tier**. For example, a plan in the Basic tier can be converted to a Standard or Premium tier, and all apps that are associated with that plan now can use the features that the new service tier offers.
+- **Change the plan’s instance size**. As an example, a plan in the Basic tier that uses small instances can be changed to use large instances. All apps that are associated with that plan now can use the additional memory and CPU resources that the larger instance size offers.
+- **Change the plan’s instance count**. For example, a Standard plan that's scaled out to three instances can be scaled to 10 instances. A Premium plan can be scaled out to 20 instances (subject to availability). All apps that are associated with that plan now can use the additional memory and CPU resources that the larger instance count offers.
 
-価格レベルとインスタンスのサイズを変更するには、アプリまたは App Service プランのどちらかの [設定] の **[スケール アップ]** 項目をクリックします。変更は、App Service プランに適用され、このプランによってホストされるすべてのアプリに影響を与えます。
+You can change the pricing tier and instance size by clicking the **Scale Up** item under settings for either the app or the App Service plan. Changes apply to the App Service plan and affect all apps that it hosts.
 
  ![Set values to scale up an app.][pricingtier]
 
-## まとめ
+## <a name="app-service-plan-cleanup"></a>App Service Plan cleanup
+**App Service plans** that have no apps associated to them still incur charges since they continue to reserve the compute capacity configured in the App Service plan scale properties.
+To avoid unexpected charges, when the last app hosted in an App Service plan is deleted, the resulting empty App Service plan is also deleted.
 
-App Service プランは、アプリ間で共有できる一連の機能と容量を表します。App Service プランによって、特定のアプリのリソース セットへの割り当てが柔軟に行えるようになり、最適な条件で Azure リソースが利用できるようになります。テスト環境でのコストを削減する必要がある場合、この方法によって複数のアプリでプランを共有することができます。また、複数のリージョンおよびプランにわたってスケーリングを行い、運用環境でのスループットを最大化させることもできます。
 
-## 変更内容
+## <a name="summary"></a>Summary
 
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+App Service plans represent a set of features and capacity that you can share across your apps. App Service plans give you the flexibility to allocate specific apps to a set of resources and further optimize your Azure resource utilization. This way, if you want to save money on your testing environment, you can share a plan across multiple apps. You can also maximize throughput for your production environment by scaling it across multiple regions and plans.
+
+## <a name="what's-changed"></a>What's changed
+
+* For a guide to the change from Websites to App Service, see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [pricingtier]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/appserviceplan-pricingtier.png
 [assign]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/assing-appserviceplan.png
@@ -109,4 +118,8 @@ App Service プランは、アプリ間で共有できる一連の機能と容�
 [createWebApp]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/create-web-app.png
 [appclone]: ./media/azure-web-sites-web-hosting-plans-in-depth-overview/app-clone.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

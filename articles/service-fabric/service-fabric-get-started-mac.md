@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Mac OS X での開発環境のセットアップ | Microsoft Azure"
-   description="ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。このセットアップを完了すると、Mac OS X でアプリケーションを構築する準備が整います。"
+   pageTitle="Set up your development environment on Mac OS X | Microsoft Azure"
+   description="Install the runtime, SDK, and tools and create a local development cluster. After completing this setup, you will be ready to build applications on Mac OS X."
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -16,89 +16,90 @@
    ms.date="09/25/2016"
    ms.author="seanmck"/>
 
-# Mac OS X で開発環境をセットアップする
+
+# <a name="set-up-your-development-environment-on-mac-os-x"></a>Set up your development environment on Mac OS X
 
 > [AZURE.SELECTOR]
 -[ Windows](service-fabric-get-started.md)
 - [Linux](service-fabric-get-started-linux.md)
 - [OSX](service-fabric-get-started-mac.md)
 
-Linux クラスターで実行される Service Fabric アプリケーションを Mac OS X を使用して構築できます。この記事では、開発用に Mac をセットアップする方法について説明します。
+You can build Service Fabric applications to run on Linux clusters using Mac OS X. This article covers how to set up your Mac for development.
 
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-Service Fabric は、OS X ではネイティブに実行されません。Microsoft では、ローカルの Service Fabric クラスターを実行できるように、Vagrant と VirtualBox を使用して事前に構成済みの Ubuntu 仮想マシンを用意しています。作業を開始する前に、以下を行う必要があります。
+Service Fabric does not run natively on OS X. To run a local Service Fabric cluster, we provide a pre-configured Ubuntu virtual machine using Vagrant and VirtualBox. Before you get started, you need:
 
-- [Vagrant (v1.8.4 以降)](http://wwww.vagrantup.com/downloads)
+- [Vagrant (v1.8.4 or later)](http://wwww.vagrantup.com/downloads)
 - [VirtualBox](http://www.virtualbox.org/wiki/Downloads)
 
-## ローカル VM を作成する
+## <a name="create-the-local-vm"></a>Create the local VM
 
-5 ノード構成の Service Fabric クラスターを保持するローカル VM を作成するには、次の手順に従います。
+To create the local VM containing a 5-node Service Fabric cluster, do the following:
 
-1. Vagrantfile リポジトリをクローンします。
+1. Clone the Vagrantfile repo
 
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
 
-2. リポジトリのローカル クローンに移動します。
+2. Navigate to the local clone of the repo
 
     ```bash
     cd service-fabric-linux-vagrant-onebox
     ```
 
-3. (省略可能) 既定の VM 設定を変更します。
+3. (Optional) Modify the default VM settings
 
-    既定では、ローカル VM は次のように構成されています。
+    By default, the local VM is configured as follows:
 
-    - メモリの割り当て 3 GB
-    - IP 192.168.50.50 で構成されたプライベート ホスト ネットワーク。Mac ホストからのトラフィックに対してパススルーが有効化されています。
+    - 3 GB of memory allocated
+    - Private host network configured at IP 192.168.50.50 enabling passthrough of traffic from the Mac host
 
-    この設定のどちらかを変更することも、Vagrantfile で VM に他の構成を追加することもできます。構成オプションの詳細な一覧については、[Vagrant のドキュメント](http://www.vagrantup.com/docs)をご覧ください。
+    You can change either of these settings or add other configuration to the VM in the Vagrantfile. See the [Vagrant documentation](http://www.vagrantup.com/docs) for the full list of configuration options.
 
-4. VM の作成
+4. Create the VM
 
     ```bash
     vagrant up
     ```
 
-    この手順を実行すると、事前構成済みの VM イメージがダウンロードされてローカルで起動され、ローカル Service Fabric クラスターがセットアップされます。この処理には数分かかります。セットアップが正常に完了すると、クラスターが開始されていることを示すメッセージが出力に表示されます。
+    This step downloads the preconfigured VM image, boot it locally, and then set up a local Service Fabric cluster in it. You should expect it to take a few minutes. If setup completes successfully, you will see a message in the output indicating that the cluster is starting up.
 
     ![Cluster setup starting following VM provisioning][cluster-setup-script]
 
-5. クラスターが正しくセットアップされていることをテストするために、Service Fabric Explorer (http://192.168.50.50:19080/Explorer) に移動します (プライベート ネットワーク IP アドレスが既定値のままであると仮定しています)。
+5. Test that the cluster has been set up correctly by navigating to Service Fabric Explorer at http://192.168.50.50:19080/Explorer (assuming you kept the default private network IP).
 
     ![Service Fabric Explorer viewed from the host Mac][sfx-mac]
 
 
-## Eclipse Neon 用の Service Fabric プラグインをインストールする (省略可能)
+## <a name="install-the-service-fabric-plugin-for-eclipse-neon-(optional)"></a>Install the Service Fabric plugin for Eclipse Neon (optional)
 
-Service Fabric には、Java サービスの構築とデプロイのプロセスを簡略化できる Eclipse Neon IDE 用プラグインが用意されています。
+Service Fabric provides a plugin for the Eclipse Neon IDE that can simplify the process of building and deploying Java services.
 
-1. Eclipse で、Buildship バージョン 1.0.17 以降がインストールされていることを確認します。**[Help (ヘルプ)]、[Installation Details (インストールの詳細)]** の順に選択して、インストールされたコンポーネントのバージョンを確認できます。Buildship は、[こちら][buildship-update]の手順に従って更新できます。
+1. In Eclipse, ensure that you have Buildship version 1.0.17 or later installed. You can check the versions of installed components by choosing **Help > Installation Details**. You can update Buildship using the instructions [here][buildship-update].
 
-2. **[Help (ヘルプ)]、[Install New Software (新しいソフトウェアのインストール)]** を選択して、Service Fabric プラグインをインストールします。
+2. To install the Service Fabric plugin, choose **Help > Install New Software...**
 
-3. [Work with (作業対象)] テキストボックスに、次のように入力します。http://dl.windowsazure.com/eclipse/servicefabric
+3. In the "Work with" textbox, enter: http://dl.windowsazure.com/eclipse/servicefabric.
 
-4. [追加] をクリックします。
+4. Click Add.
 
     ![Eclipse Neon plugin for Service Fabric][sf-eclipse-plugin-install]
 
-5. Service Fabric プラグインを選択し、[Next (次へ)] をクリックします。
+5. Choose the Service Fabric plugin and click next.
 
-6. 指示に従ってインストールを実行し、使用許諾契約書に同意します。
+6. Proceed through the installation and accept the end-user license agreement.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [最初の Linux 向け Service Fabric アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
+- [Create your first Service Fabric application for Linux](service-fabric-create-your-first-linux-application-with-java.md)
 
 <!-- Links -->
 
-- [Azure Portal で Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-portal.md)
-- [Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)
-- [Service Fabric アプリケーション モデルを理解する](service-fabric-application-model.md)
+- [Create a Service Fabric cluster in the Azure portal](service-fabric-cluster-creation-via-portal.md)
+- [Create a Service Fabric cluster using the Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
+- [Understand the Service Fabric application model](service-fabric-application-model.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png
@@ -106,4 +107,8 @@ Service Fabric には、Java サービスの構築とデプロイのプロセス
 [sf-eclipse-plugin-install]: ./media/service-fabric-get-started-mac/sf-eclipse-plugin-install.png
 [buildship-update]: https://projects.eclipse.org/projects/tools.buildship
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

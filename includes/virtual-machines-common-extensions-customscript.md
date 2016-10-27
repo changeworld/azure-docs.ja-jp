@@ -1,24 +1,27 @@
 
 
-カスタム スクリプト拡張機能は、導入以来、Windows VM と Linux VM でワークロードを構成するために広く使用されてきました。Azure リソース マネージャー テンプレートの導入により、VM をプロビジョニングするだけでなく、VM でワークロードも構成する単一のテンプレートを作成できるようになりました。
+Ever since its launch, the Custom Script extension has been used widely to configure workloads on both Windows and Linux VMs. With the introduction of Azure Resource Manager templates, users can now create a single template that not only provisions the VM but also configures the workloads on it.
 
-## Azure リソース マネージャーのテンプレートについて
+## <a name="about-azure-resource-manager-templates"></a>About Azure Resource manager templates
 
-Azure リソース マネージャー テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。Azure リソース マネージャー テンプレートの概要については、次の記事をご覧ください。
+Azure Resource Manager templates allow you to declaratively specify the Azure IaaS infrastructure in Json language by defining the dependencies between resources. For a detailed overview of Azure Resource Manager templates, see the following articles:
 
-- [リソース グループの概要](../articles/resource-group-overview.md)
-- [Azure Powershell を使用したテンプレートのデプロイ](../articles/virtual-machines/virtual-machines-windows-ps-manage.md)
+- [Resource Group Overview](../articles/resource-group-overview.md)
+- [Deploying Templates with Azure Powershell](../articles/virtual-machines/virtual-machines-windows-ps-manage.md)
 
-### 前提条件
+### <a name="prerequisites"></a>Prerequisites
 
-1. お使いのオペレーティング システムの Azure コマンド ライン ツールを[ここ](https://azure.microsoft.com/downloads/)からダウンロードします。
-2. スクリプトが既存の仮想マシンで実行される場合、VM で VM エージェントが有効になっていることを確認してください。そうでない場合、[Linux](../articles/virtual-machines/virtual-machines-linux-classic-manage extensions.md) または [Windows](../articles/virtual-machines/virtual-machines-windows-classic-manage extensions.md) のガイダンスに従って、VM エージェントをインストールしてください。
-3. VM で実行するスクリプトを Azure Storage にアップロードします。スクリプトは、1 つか複数のストレージ コンテナーから取得できます。
-4. スクリプトを GitHub アカウントにアップロードすることもできます。
-5. スクリプトは、拡張機能によって起動されるエントリ スクリプトが、他のスクリプトを順に起動するように記述されている必要があります。
+1. Download the Azure command line tools for your operating system from [here](https://azure.microsoft.com/downloads/).
+2. If the scripts will be run on an existing VM, make sure VM Agent is enabled on the VM, if not follow [the Linux](../articles/virtual-machines/virtual-machines-linux-classic-manage-extensions.md) or [Windows](../articles/virtual-machines/virtual-machines-windows-classic-manage-extensions.md) guidance to install one.
+3. Upload the scripts that you want to run on the VM to Azure Storage. The scripts can come from a single or multiple storage containers.
+4. Alternatively the scripts can also be uploaded to a GitHub account.
+5. The script should be authored in such a way that the entry script which is launched by the extension in turn launches other scripts.
 
-## カスタム スクリプト拡張機能の使用
+## <a name="using-the-custom-script-extension"></a>Using the custom script extension
 
-テンプレートを使用したデプロイでは、Azure サービス管理 API で使用できるバージョンと同じバージョンのカスタム スクリプト拡張機能を使用します。拡張機能では、同じパラメーターとシナリオ (Azure ストレージ アカウントまたは Github へのファイルのアップロードなど) をサポートします。テンプレートで使用する際の重要な違いは、拡張機能のバージョンを majorversion.* 形式で指定するのではなく、正確なバージョンを指定する必要があることです。
+For deploying with templates we use the same version of Custom Script extension that's available for Azure Service Management APIs. The extension supports the same parameters and scenarios like uploading files to Azure Storage account or Github location. The key difference while using with templates is the exact version of the extension should be specified, as opposed to specifying the version in majorversion.* format.
 
-<!---HONumber=AcomDC_0420_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,68 +1,73 @@
 <properties
-	pageTitle="Azure Active Directory B2C: Microsoft アカウントの構成 | Microsoft Azure"
-	description="Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、Microsoft アカウントを使用するコンシューマーにサインアップとサインインを提供します。"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="swkrish"
-	manager="msmbaldwin"
-	editor="bryanla"/>
+    pageTitle="Azure Active Directory B2C: Microsoft account configuration | Microsoft Azure"
+    description="Provide sign-up and sign-in to consumers with Microsoft accounts in your applications that are secured by Azure Active Directory B2C."
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="swkrish"
+    manager="msmbaldwin"
+    editor="bryanla"/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/24/2016"
-	ms.author="swkrish"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/24/2016"
+    ms.author="swkrish"/>
 
-# Azure Active Directory B2C: Microsoft アカウントでコンシューマーにサインアップおよびサインインを提供する
 
-## Microsoft アカウント アプリケーションを作成する
+# <a name="azure-active-directory-b2c:-provide-sign-up-and-sign-in-to-consumers-with-microsoft-accounts"></a>Azure Active Directory B2C: Provide sign-up and sign-in to consumers with Microsoft accounts
 
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microsoft アカウントを使用するには、Microsoft アカウント アプリケーションを作成し、適切なパラメーターを提供する必要があります。そのためには Microsoft アカウントが必要です。アカウントがない場合は、[https://www.live.com/](https://www.live.com/) で取得できます。
+## <a name="create-a-microsoft-account-application"></a>Create a Microsoft account application
 
-1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com)に移動し、Microsoft アカウントの資格情報でサインインします。
-2. **[アプリの追加]** をクリックします。
+To use Microsoft account as an identity provider in Azure Active Directory (Azure AD) B2C, you need to create a Microsoft account application and supply it with the right parameters. You need a Microsoft account to do this. If you don’t have one, you can get it at [https://www.live.com/](https://www.live.com/).
 
-    ![Microsoft アカウント - 新しいアプリケーションの追加](./media/active-directory-b2c-setup-msa-app/msa-add-new-app.png)
+1. Go to the [Microsoft Application Registration Portal](https://apps.dev.microsoft.com) and sign in with your Microsoft account credentials.
+2. Click **Add an app**.
 
-3. アプリケーションの**名前**を入力し、**[アプリケーションの作成]** をクリックします。
+    ![Microsoft account - Add a new app](./media/active-directory-b2c-setup-msa-app/msa-add-new-app.png)
 
-    ![Microsoft アカウント - アプリケーション名](./media/active-directory-b2c-setup-msa-app/msa-app-name.png)
+3. Provide a **Name** for your application and click **Create application**.
 
-4. **[アプリケーション ID]** の値をコピーします。この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために必要となります。
+    ![Microsoft account - App name](./media/active-directory-b2c-setup-msa-app/msa-app-name.png)
+
+4. Copy the value of **Application Id**. You will need it to configure Microsoft account as an identity provider in your tenant.
 
     ![Microsoft account - Application Id](./media/active-directory-b2c-setup-msa-app/msa-app-id.png)
 
-5. **[プラットフォームの追加]** をクリックし、**[Web]** を選択します。
+5. Click on **Add platform** and choose **Web**.
 
-	![Microsoft account - Add platform](./media/active-directory-b2c-setup-msa-app/msa-add-platform.png)
+    ![Microsoft account - Add platform](./media/active-directory-b2c-setup-msa-app/msa-add-platform.png)
 
-	![Microsoft account - Web](./media/active-directory-b2c-setup-msa-app/msa-web.png)
+    ![Microsoft account - Web](./media/active-directory-b2c-setup-msa-app/msa-web.png)
 
-6. **[リダイレクト URI]** フィールドに、「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contosob2c.onmicrosoft.com) に置き換えます。
+6. Enter `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` in the **Redirect URIs** field. Replace **{tenant}** with your tenant's name (for example, contosob2c.onmicrosoft.com).
 
-    ![Microsoft アカウント - リダイレクト URL](./media/active-directory-b2c-setup-msa-app/msa-redirect-url.png)
+    ![Microsoft account - Redirect URL](./media/active-directory-b2c-setup-msa-app/msa-redirect-url.png)
 
-7. **[アプリケーション シークレット]** セクションの **[新しいパスワードを生成]** をクリックします。画面に表示される新しいパスワードをコピーします。この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために必要となります。このパスワードは重要なセキュリティ資格情報です。
+7. Click on **Generate New Password** under the **Application Secrets** section. Copy the new password displayed on screen. You will need it to configure Microsoft account as an identity provider in your tenant. This password is an important security credential.
 
-	![Microsoft account - Generate new password](./media/active-directory-b2c-setup-msa-app/msa-generate-new-password.png)
+    ![Microsoft account - Generate new password](./media/active-directory-b2c-setup-msa-app/msa-generate-new-password.png)
 
-	![Microsoft account - New password](./media/active-directory-b2c-setup-msa-app/msa-new-password.png)
+    ![Microsoft account - New password](./media/active-directory-b2c-setup-msa-app/msa-new-password.png)
 
-8. **[詳細オプション]** セクションの **[Live SDK サポート]** というチェック ボックスをオンにします。**[保存]** をクリックします。
+8. Check the box that says **Live SDK support** under the **Advanced Options** section. Click **Save**.
 
     ![Microsoft account - Live SDK support](./media/active-directory-b2c-setup-msa-app/msa-live-sdk-support.png)
 
-## テナントで ID プロバイダーとして Microsoft アカウントを構成する
+## <a name="configure-microsoft-account-as-an-identity-provider-in-your-tenant"></a>Configure Microsoft account as an identity provider in your tenant
 
-1. この手順に従って、Azure ポータルで [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)します。
-2. B2C 機能ブレードで、**[ID プロバイダー]** をクリックします。
-3. ブレードの上部にある **[+追加]** をクリックします。
-4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。たとえば、「MSA」と入力します。
-5. **[ID プロバイダーの種類]** をクリックし、**[Microsoft アカウント]** を選択して、**[OK]** をクリックします。
-6. **[この ID プロバイダーを設定する]** をクリックし、前に作成した Microsoft アカウント アプリケーションのアプリケーション ID とパスワードを入力します。
-7. **[OK]** をクリックし、**[作成]** をクリックして Microsoft アカウントの構成を保存します。
+1. Follow these steps to [navigate to the B2C features blade](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) on the Azure portal.
+2. On the B2C features blade, click **Identity providers**.
+3. Click **+Add** at the top of the blade.
+4. Provide a friendly **Name** for the identity provider configuration. For example, enter "MSA".
+5. Click **Identity provider type**, select **Microsoft account**, and click **OK**.
+6. Click **Set up this identity provider** and enter the Application Id and password of the Microsoft account application that you created earlier.
+7. Click **OK** and then click **Create** to save your Microsoft account configuration.
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

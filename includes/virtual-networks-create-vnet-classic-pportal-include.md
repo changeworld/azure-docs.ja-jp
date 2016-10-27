@@ -1,38 +1,40 @@
-## Azure ポータルで従来の VNet を作成する方法
+## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>How to create a classic VNet in the Azure portal
 
-上記のシナリオに基づいて従来の VNet を作成するには、次の手順に従います。
+To create a classic VNet based on the scenario above, follow the steps below.
 
-1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. 次の図に示すように、[**新規**] > [**ネットワーク**] > [**仮想ネットワーク**] の順にクリックし、[**デプロイ モデルの選択**] の一覧にすでに [**従来型**] と表示されているのを確認してから [**作成**] をクリックします。
+1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
+2. Click **NEW** > **Networking** > **Virtual network**, notice that the **Select a deployment model** list already shows **Classic**, and then click **Create**, as seen in the figure below.
 
-	![Azure ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)
+    ![Create VNet in Azure portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)
 
-3. [**仮想ネットワーク**] ブレードで、VNet の [**名前**] を入力してから [**アドレス空間**] をクリックします。VNet と最初のサブネットのアドレス空間の設定を構成してから [**OK**] をクリックします。次の図では、このシナリオでの CIDR ブロック設定を示しています。
+3. On the **Virtual network** blade, type the **Name** of the VNet, and then click **Address space**. Configure your address space settings for the VNet and its first subnet, then click **OK**. The figure below shows the CIDR block settings for our scenario.
 
-	![アドレス空間のブレード](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
+    ![Address space blade](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
 
-4. [**リソース グループ**] をクリックし、VNet を追加するリソース グループを選択してから [**新しいリソース グループを作成する**] をクリックして VNet を新しいリソース グループに追加します。次の図は、**TestRG** という新しいリソース グループのリソース グループ設定を示しています。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../articles/virtual-network/resource-group-overview.md#resource-groups)」を参照してください。
+4. Click **Resource Group** and select a resource group to add the VNet to, or click **Create new resource group** to add the VNet to a new resource group. The figure below shows the resource group settings for a new resource group called **TestRG**. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/virtual-network/resource-group-overview.md#resource-groups).
 
-	![リソース グループ ブレードの作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
+    ![Create resource group blade](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
 
-5. 必要に応じて、VNet の [**サブスクリプション**] と [**場所**] の設定を変更してください。
+5. If necessary, change the **Subscription** and **Location** settings for your VNet. 
 
-6. VNet を**スタート 画面**にタイルとして表示させたくない場合は、[**スタート画面にピン留めする**] を無効にしてください。
+6. If you do not want to see the VNet as a tile in the **Startboard**, disable **Pin to Startboard**. 
 
-7. [**作成**] をクリックすると、次の図に示すような [**仮想ネットワークの作成**] という名前のタイルが表示されます。
+7. Click **Create** and notice the tile named **Creating Virtual network** as shown in the figure below.
 
-	![ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure4.png)
+    ![Create VNet in portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure4.png)
 
-8. VNet が作成されるのを待ち、以下のタイルが表示されたら、クリックしてサブネットを追加します。
+8. Wait for the VNet to be created, and when you see the tile below, click it to add more subnets.
 
-	![ポータルで VNet を作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure5.png)
+    ![Create VNet in portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure5.png)
 
-9. 次に示すように、VNet の [**構成**] が表示されます。
+9. You should see the **Configuration** for your VNet as shown below. 
 
-	![ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure6.png)
+    ![Create VNet in portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure6.png)
 
-10. [**サブネット**] > [**追加**] の順にクリックしてからサブネットの [**名前**] を入力し、[**アドレス範囲 (CIDR ブロック)**] を指定して [**OK**] をクリックします。次の図は、このシナリオの設定を示しています。
+10. Click **Subnets** > **Add**, then type a **Name** and specify an **Address range (CIDR block)** for your subnet, and then click **OK**. The figure below shows the settings for our current scenario.
 
-	![Create VNet in Azure portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure7.gif)
+    ![Create VNet in Azure portal](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure7.gif)
 
-<!---HONumber=AcomDC_0810_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,5 +1,8 @@
 > [AZURE.SELECTOR]
-- [ODBC](../articles/hdinsight/hdinsight-connect-excel-hive-ODBC-driver.md)
+- [ODBC](../articles/hdinsight/hdinsight-connect-excel-hive-odbc-driver.md)
 - [JDBC](../articles/hdinsight/hdinsight-connect-hive-jdbc-driver.md)
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

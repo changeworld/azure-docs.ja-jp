@@ -1,112 +1,113 @@
 <properties
-	pageTitle="Azure AD Privileged Identity Management |Microsoft Azure"
-	description="Azure AD Privileged Identity Management (PIM) の機能と、PIM を使用してクラウド セキュリティを向上させる方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure AD Privileged Identity Management | Microsoft Azure"
+    description="A topic that explains what Azure AD Privileged Identity Management is and how to use PIM to improve your cloud security."
+    services="active-directory"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="kgremban"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/16/2016"
+    ms.author="kgremban"/>
 
-# Azure AD Privileged Identity Management
 
-組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。その対象には、Azure AD をはじめとする Microsoft の各種オンライン サービス (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
+# <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-> [AZURE.NOTE] Privileged Identity Management は、Azure Active Directory の Premium P2 エディションでのみ使用できます。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+With Azure Active Directory (AD) Privileged Identity Management, you can manage, control, and monitor access within your organization. This includes access to resources in Azure AD and other Microsoft online services like Office 365 or Microsoft Intune.  
 
-組織では、セキュリティで保護された情報やリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。こうすることで、悪意のあるユーザーがこのようなアクセス権を手にする可能性が抑えられるためです。しかし一方で、ユーザーは、Azure、Office 365、または SaaS アプリケーションで特権操作を実行する必要があります。組織は、ユーザーが管理者特権で行う操作を監視することなく、Azure AD でユーザーに特権アクセスを与えます。Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
+> [AZURE.NOTE] Privileged Identity Management is available only with the Premium P2 edition of Azure Active Directory. For more information, see [Azure Active Directory editions](active-directory-editions.md).
 
-Azure AD Privileged Identity Management では、次のことが可能です。
+Organizations want to minimize the number of people who have access to secure information or resources, because that reduces the chance of a malicious user getting that access. However, users still need to carry out privileged operations in Azure, Office 365, or SaaS apps. Organizations give users privileged access in Azure AD without monitoring what those users are doing with their admin privileges. Azure AD Privileged Identity Management helps to resolve this risk.  
 
-- Azure AD の管理者であるユーザーを特定する
-- Office 365 や Intune などの Microsoft Online Services へのオンデマンドの "ジャスト イン タイム" な管理アクセスを可能にする
-- 管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する
-- 特権ロールへのアクセスに関するアラートを受け取る
+Azure AD Privileged Identity Management helps you:  
 
-Azure AD Privileged Identity Management では、次のような組み込みの Azure AD 組織ロールを管理できます。
+- See which users are Azure AD administrators
+- Enable on-demand, "just in time" administrative access to Microsoft Online Services like Office 365 and Intune
+- Get reports about administrator access history and changes in administrator assignments
+- Get alerts about access to a privileged role
 
-- グローバル管理者
-- 課金管理者
-- サービス管理者
-- ユーザー管理者
-- パスワード管理者
+Azure AD Privileged Identity Management can manage the built-in Azure AD organizational roles, including:  
 
-## ジャスト イン タイム管理者アクセス
+- Global Administrator
+- Billing Administrator
+- Service Administrator  
+- User Administrator
+- Password Administrator
 
-従来、管理者ロールへのユーザーの割り当てには、Azure クラシック ポータルまたは Windows PowerShell が使用されていました。その結果、そのユーザーは**永続的な管理者**になり、割り当てられたロールが常に有効になっています。Azure AD Privileged Identity Management では、**管理者候補**という概念が導入されています。管理者候補とは、常にではなく時折特権アクセスを必要とするユーザーのことです。このロールは、このユーザーがアクセス権を必要とするまで非アクティブ化されています。そして、ユーザーがアクティブ化プロセスを完了すると、所定の時間の間だけ有効な管理者になります。
+## <a name="just-in-time-administrator-access"></a>Just in time administrator access
 
-## ディレクトリで Privileged Identity Management を有効にする
+Historically, you could assign a user to an admin role through the Azure classic portal or Windows PowerShell. As a result, that user becomes a **permanent admin**, always active in the assigned role. Azure AD Privileged Identity Management introduces the concept of an **eligible admin**. Eligible admins should be users that need privileged access now and then, but not every day. The role is inactive until the user needs access, then they complete an activation process and become an active admin for a predetermined amount of time.
 
-Azure AD Privileged Identity Management の使用は、[Azure ポータル](https://portal.azure.com/) で開始できます。
+## <a name="enable-privileged-identity-management-for-your-directory"></a>Enable Privileged Identity Management for your directory
 
->[AZURE.NOTE] ディレクトリで Azure AD Privileged Identity Management を有効にする操作は、Microsoft アカウント (例: @outlook.com) ではなく組織アカウント (例: @yourdomain.com) を持つグローバル管理者が行う必要があります。
+You can start using Azure AD Privileged Identity Management in the [Azure portal](https://portal.azure.com/).
 
-1. ディレクトリのグローバル管理者として [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. 組織に複数のディレクトリがある場合は、Azure ポータルの右上隅に表示されているユーザー名を選択し、Azure AD Privileged Identity Management を使用するディレクトリを選択します。
-3. **[More services (その他のサービス)]** を選択し、[フィルター] ボックスを使用して "**Azure AD Privileged Identity Management**" を検索します。
-4. **[ダッシュボードにピン留めする]** チェックボックスをオンにして、**[作成]** をクリックします。Privileged Identity Management アプリケーションが起動します。
+>[AZURE.NOTE] You must be a global administrator with an organizational account (for example, @yourdomain.com), not a Microsoft account (for example, @outlook.com), to enable Azure AD Privileged Identity Management for a directory.
 
-ディレクトリ内で Azure AD Privileged Identity Management を使用する最初のユーザーには、[セキュリティ ウィザード](active-directory-privileged-identity-management-security-wizard.md)に最初の割り当て操作の手順が表示されます。手順を実行した後、ディレクトリの最初の**セキュリティ管理者**と**特権ロール管理者**に自動的に設定されます。
+1. Sign in to the [Azure portal](https://portal.azure.com/) as a global administrator of your directory.
+2. If your organization has more than one directory, select your username in the upper right-hand corner of the Azure portal. Select the directory where you will use Azure AD Privileged Identity Management.
+3. Select **More services** and use the Filter textbox to search for **Azure AD Privileged Identity Management**.
+4. Check **Pin to dashboard** and then click **Create**. The Privileged Identity Management application opens.
 
-他の管理者のアクセスを管理できるのは、特権ロール管理者のみです。特権ロール管理者は [PIM で管理する権限を他のユーザーに付与する](active-directory-privileged-identity-management-how-to-give-access-to-pim.md)ことができます。
+If you're the first person to use Azure AD Privileged Identity Management in your directory, then the [security wizard](active-directory-privileged-identity-management-security-wizard.md) walks you through the initial assignment experience. After that you automatically become the first **Security administrator** and **Privileged role administrator** of the directory.
 
-## Privileged Identity Management ダッシュボード
+Only a privileged role administrator can manage access for other administrators. You can [give other users the ability to manage in PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
 
-Azure AD Privileged Identity Manager には、次のような重要な情報を提供するダッシュボードがあります。
+## <a name="privileged-identity-management-dashboard"></a>Privileged Identity Management dashboard
 
-- セキュリティ強化の機会を知らせるアラート
-- 各特権ロールに割り当てられているユーザーの数
-- 管理者候補および永続的管理者の数
-- 実行中のアクセス レビュー
+Azure AD Privileged Identity Manager provides a dashboard that gives you important information such as:
+
+- Alerts that point out opportunities to improve security
+- The number of users who are assigned to each privileged role  
+- The number of eligible and permanent admins
+- Ongoing access reviews
 
 ![PIM dashboard - screenshot][2]
 
-## 特権ロールの管理
+## <a name="privileged-role-management"></a>Privileged role management
 
-Azure AD Privileged Identity Management では、各ロールに永続的管理者または管理者候補を追加または削除することによって、管理者を管理できます。
+With Azure AD Privileged Identity Management, you can manage the administrators by adding or removing permanent or eligible administrators to each role.
 
-![PIM の管理者の追加/削除 - スクリーンショット][3]
+![PIM add/remove administrators - screenshot][3]
 
-## ロール アクティブ化設定の構成
+## <a name="configure-the-role-activation-settings"></a>Configure the role activation settings
 
-[ロールの設定](active-directory-privileged-identity-management-how-to-change-default-settings.md)を使用して、次のような候補ロールのアクティブ化プロパティを構成できます。
+Using the [role settings](active-directory-privileged-identity-management-how-to-change-default-settings.md) you can configure the eligible role activation properties including:
 
-- ロールのアクティブ化の期間
-- ロールのアクティブ化の通知
-- ロール アクティブ化プロセス中にユーザーが提供する必要のある情報
+- The duration of the role activation period
+- The role activation notification
+- The information a user needs to provide during the role activation process  
 
-![PIM 設定 - 管理者アクティブ化 - スクリーンショット][4]
+![PIM settings - administrator activation - screenshot][4]
 
-上図で、**多要素認証**のボタンが無効化されていることに注意してください。特定の高い特権を持つロールでは、MFA を使用して保護を強化する必要があります。
+Note that in the image, the buttons for **Multi-Factor Authentication** are disabled. For certain, highly privileged roles, we require MFA for heightened protection.
 
-## ロールのアクティブ化  
+## <a name="role-activation"></a>Role activation  
 
-[ロールをアクティブ化する](active-directory-privileged-identity-management-how-to-activate-role.md)には、管理者候補は、ロールに対する時間制限付きの "アクティブ化" を要求します。アクティブ化の要求は、Azure AD Privileged Identity Management の **[ロールのアクティブ化]** オプションを使用して行うことができます。
+To [activate a role](active-directory-privileged-identity-management-how-to-activate-role.md), an eligible admin requests a time-bound "activation" for the role. The activation can be requested using the **Activate my role** option in Azure AD Privileged Identity Management.
 
-ロールのアクティブ化を要求する管理者は、Azure ポータルで Azure AD Privileged Identity Management を初期化する必要があります。
+An admin who wants to activate a role needs to initialize Azure AD Privileged Identity Management in the Azure portal.
 
-ロールのアクティブ化は、カスタマイズできます。PIM の設定では、アクティブ化の期間だけでなく、ロールをアクティブ化するために管理者が指定する必要がある情報を設定できます。
+Role activation is customizable. In the PIM settings, you can determine the length of the activation and what information the admin needs to provide to activate the role.
 
-![PIM 管理者のロール アクティブ化要求 - スクリーン ショット][5]
+![PIM administrator request role activation - screenshot][5]
 
-## ロール アクティビティの確認
+## <a name="review-role-activity"></a>Review role activity
 
-従業員および管理者がどのように特権ロールを使用しているかを追跡するには、2 つの方法があります。1 つ目の方法は、[監査履歴](active-directory-privileged-identity-management-how-to-use-audit-log.md)を使用する方法です。監査履歴ログは、特権ロールの割り当てとロールのアクティブ化の履歴における変更を追跡します。
+There are two ways to track how your employees and admins are using privileged roles. The first option is using [audit history](active-directory-privileged-identity-management-how-to-use-audit-log.md). The audit history logs track changes in privileged role assignments and role activation history.
 
-![PIM アクティブ化履歴 - スクリーンショット][6]
+![PIM activation history - screenshot][6]
 
-2 番目の方法は、標準的な[アクセス レビュー](active-directory-privileged-identity-management-how-to-start-security-review.md)を設定する方法です。これらのアクセス レビューは、割り当てられたレビュー担当者 (たとえば、チーム マネージャー) によって実行することも、従業員が自分自身の確認を行うこともできます。これは、アクセスを必要としているユーザーとアクセスを必要としなくなったユーザーを監視するための最善の方法です。
+The second option is to set up regular [access reviews](active-directory-privileged-identity-management-how-to-start-security-review.md). These access reviews can be performed by and assigned reviewer (like a team manager) or the employees can review themselves. This is the best way to monitor who still requires access, and who no longer does.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->
@@ -118,4 +119,8 @@ Azure AD Privileged Identity Management では、各ロールに永続的管理�
 [5]: ./media/active-directory-privileged-identity-management-configure/PIM_RequestActivation.png
 [6]: ./media/active-directory-privileged-identity-management-configure/PIM_ActivationHistory.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Data Catalog の用語集 | Microsoft Azure"
-   description="この記事では、Azure Data Catalog のドキュメントで使用される概念と用語について説明します。"
+   pageTitle="Azure Data Catalog terminology | Microsoft Azure"
+   description="This article provides an introduction to concepts and terms used in Azure Data Catalog documentation."
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -16,74 +16,80 @@
    ms.date="09/21/2016"
    ms.author="maroche"/>
 
-# Azure Data Catalog の用語集
 
-## カタログ
+# <a name="azure-data-catalog-terminology"></a>Azure Data Catalog terminology
 
-Azure Data Catalog は、データ ソースとデータ資産を登録できるクラウドベースのメタデータ リポジトリです。カタログは、データ ソースから抽出された構造メタデータとユーザーが追加した記述メタデータの一元的な保存場所です。
+## <a name="catalog"></a>Catalog
 
-## データ ソース
+The Azure Data Catalog is a cloud-based metadata repository in which data sources and data assets can be registered. The catalog serves as a central storage location for structural metadata extracted from data sources and for descriptive metadata added by users.
 
-データ ソースは、データ資産を管理するシステムまたはコンテナーです。たとえば、SQL Server データベース、Oracle データベース、SQL Server Analysis Services データベース (表形式または多次元)、SQL Server Reporting Services サーバーなどです。
+## <a name="data-source"></a>Data source
 
-## データ資産
+A data source is a system or container that manages data assets. Examples include SQL Server databases, Oracle databases, SQL Server Analysis Services databases (tabular or multidimensional) and SQL Server Reporting Services servers.
 
-データ資産は、カタログに登録することができるデータ ソース内のオブジェクトです。たとえば、SQL Server のテーブルとビュー、Oracle のテーブルとビュー、SQL Server Analysis Services のメジャー、次元と KPI、SQL Server Reporting Services のレポートなどです。
+## <a name="data-asset"></a>Data asset
 
-## データ資産の場所
+Data assets are objects contained within data sources that can be registered with the catalog. Examples include SQL Server tables and views, Oracle tables and views, SQL Server Analysis Services measures, dimensions and KPIs, and SQL Server Reporting Services reports.
 
-カタログには、データ ソースまたはデータ資産の場所が格納されています。クライアント アプリケーションから、この場所を使用してソースに接続できます。場所の形式と詳細は、データ ソースの種類によって変わります。たとえば、SQL Server テーブルは、サーバー名、データベース名、スキーマ名、オブジェクト名という 4 つの名前で識別できます。SQL Server Reporting Services のレポートは、URL で識別できます。
+## <a name="data-asset-location"></a>Data asset location
 
-## 構造メタデータ
+The catalog stores the location of a data source or data asset, which can be used to connect to the source using a client application. The format and details of the location vary based on the data source type. For example, a SQL Server table can be identified by its four part name – server name, database name, schema name, object name – while a SQL Server Reporting Services Report can be identified by its URL.
 
-構造メタデータは、データ ソースから抽出され、データ資産の構造を説明するメタデータです。資産の場所、オブジェクトの名前と種類、その他の種類に固有に特性などが含まれます。たとえば、テーブルとビューの構造メタデータには、オブジェクトの列の名前とデータ型が含まれます。
+## <a name="structural-metadata"></a>Structural metadata
 
-## 記述メタデータ
+Structural metadata is the metadata extracted from a data source that describes the structure of a data asset. This includes the assets location, its object name and type, and additional type-specific characteristics. For example, the structural metadata for tables and views includes the names and data types for the object’s columns.
 
-記述メタデータは、データ資産の目的または意図を説明するメタデータです。通常、記述メタデータは、カタログ ユーザーが Azure Data Catalog ポータルを使用して追加しますが、登録時にデータ ソースから抽出することもできます。たとえば、SQL Server Analysis Services と SQL Server Reporting Services の場合は Description プロパティ、SQL Server データベースの場合は [ms\_description 拡張プロパティ](https://technet.microsoft.com/library/ms190243.aspx)から、Azure Data Catalog 登録ツールで説明を抽出します (これらのプロパティに値が設定されている場合)。
+## <a name="descriptive-metadata"></a>Descriptive metadata
 
-## アクセスの要求
+Descriptive metadata is metadata that describes the purpose or intent of a data asset. Typically descriptive metadata is added by catalog users using the Azure Data Catalog portal, but it can also be extracted from the data source during registration. For example, the Azure Data Catalog registration tool will extract descriptions from the Description property in SQL Server Analysis Services and SQL Server Reporting Services, and from the [ms_description extended property](https://technet.microsoft.com/library/ms190243.aspx) in SQL Server databases, if these properties have been populated with values.
 
-データ資産の説明用のメタデータには、データ資産またはデータ ソースへのアクセスを要求する方法に関する情報を含めることができます。この情報にはデータ資産の場所が示され、次のオプションの 1 つ以上を含めることができます。
+## <a name="request-access"></a>Request access
 
-- データ ソースへのアクセス権の付与を担当するユーザーまたはチームの電子メール アドレス。
-- ユーザーがデータ ソースにアクセスするために従う必要があるプロセスを示すドキュメントの URL。
-- データ ソースにアクセスするために使用できる ID およびアクセス管理ツール (Microsoft Identity Manager など) の URL。
-- ユーザーがデータ ソースにアクセスする方法が示された自由書式のエントリ。
+A data asset's descriptive metadata can include information on how to request access to the data asset or data source. This information is presented with the data asset location, and can include one or more of the following options:
 
-## Preview
+- The email address of the user or team responsible for granting access to the data source.
+- The URL of the documented process that users must follow to gain access to the data source.
+- The URL of an identity and access management tool (such as Microsoft Identity Manager) that can be used to gain access to the data source.
+- A free-text entry that describes how users can gain access to the data source.
 
-Azure Data Catalog のプレビューは、最大 20 レコードのスナップショットです。登録時にデータ ソースから抽出し、データ資産メタデータと共にカタログに格納できます。プレビューを使用すると、データ資産の機能と目的を理解しやすくなります。言い換えると、列名とデータ型だけではなく、サンプル データも確認できるので、わかりやすくなります。テーブルとビューのプレビューのみがサポートされています。登録時にユーザーが明示的にプレビューを選択する必要があります。
+## <a name="preview"></a>Preview
 
-## データ プロファイル
+A preview in Azure Data Catalog is a snapshot of up to 20 records that can be extracted from the data source during registration, and stored in the catalog with the data asset metadata. The preview can help users who discover a data asset better understand its function and purpose. In other words, seeing sample data can be more valuable than seeing just the column names and data types.
+Previews are only supported for tables and views, and must be explicitly selected by the user during registration.
 
-Azure Data Catalog のデータ プロファイルとは、登録済みのデータ資産のテーブル レベルおよび列レベルのメタデータのスナップショットです。登録時にデータ ソースから抽出し、データ資産メタデータと共にカタログに格納できます。データ プロファイルを使用すると、データ資産の機能と目的を理解しやすくなります。データ プロファイルは、プレビューのように、登録時にユーザーから明示的に選択される必要があります。
+## <a name="data-profile"></a>Data Profile
 
-> [AZURE.NOTE] 大規模なテーブルおよびビューでデータ プロファイルを抽出する場合、リソースは大量に消費され、データ ソースの登録に必要な時間が大幅に増加する可能性があります。
+A data profile in Azure Data Catalog is a snapshot of table-level and column-level metadata about a registered data asset that can be extracted from the data source during registration, and stored in the catalog with the data asset metadata. The data profile can help users who discover a data asset better understand its function and purpose. Similar to previews, data profiles must be explicitly selected by the user during registration.
 
-## ユーザーの観点
+> [AZURE.NOTE] Extracting a data profile can be a costly operation for large tables and views, and may significantly increase the time required to register a data source.
 
-Azure Data Catalog では、登録されているデータ資産を説明するメタデータを指定できます。各ユーザーは、データとその使用方法について独自の観点を持っています。たとえば、サーバーを担当する管理者は、サービス レベル アグリーメント (SLA) またはバックアップの詳細情報を指定し、データ スチュワードは、データがサポートするビジネス プロセスに関するドキュメントのリンクを指定し、アナリストは、他の分析に最も関連性が高く、データを検索して理解する必要があるユーザーにとって最も価値がある用語で記述を指定することができます。
+## <a name="user-perspective"></a>User perspective
 
-このような各観点は本質的に価値があり、各ユーザーは Azure Data Catalog を使用して、自分にとって意味がある情報を指定できます。また、すべてのユーザーは、その情報を使用して、データとその用途を理解することができます。
+In Azure Data Catalog, any user can provide descriptive metadata for a registered data asset. Each user has a distinct perspective on the data and its use. For example, the administrator responsible for a server may provide the details of its service level agreement (SLA) or backup windows; a data steward may provide links to documentation for the business processes the data supports; and an analyst may provide a description in the terms that are most relevant to other analysts, and which can be most valuable to those users who need to discover and understand the data.
 
-## エキスパート
+Each of these perspectives are inherently valuable, and with Azure Data Catalog each user can provide the information that is meaningful to them, while all users can use that information to understand the data and its purpose.
 
-エキスパートとは、データ資産について知識がある "専門家" の観点を持つ人物と認められたユーザーです。すべてのユーザーは、自分または他のユーザーを資産のエキスパートとして追加することができます。エキスパートに登録された場合でも、Azure Data Catalog に追加の特権は付与されませんが、観点を簡単に特定できるようになります。たとえば、資産の記述メタデータを確認するときに役に立ちます。
+## <a name="expert"></a>Expert
 
-## 所有者
+An expert is a user who has been identified as having an informed “expert” perspective for a data asset. Any user can add themselves or another user as an expert for an asset. Being listed as an expert does not convey any additional privileges in Azure Data Catalog; it allows users to easily locate those perspectives that are most likely to be useful when reviewing an asset’s descriptive metadata.
 
-所有者は、Azure Data Catalog のデータ資産を管理する追加の特権を持つユーザーです。ユーザーは、登録したデータ資産の所有権を得ることができます。また、所有者は他のユーザーを共同所有者として追加することができます。詳細については、「[データ資産を管理する方法](data-catalog-how-to-manage.md)」を参照してください。
-> [AZURE.NOTE] 所有権と管理は、Azure Data Catalog の Standard Edition でのみ使用できます。
+## <a name="owner"></a>Owner
 
-## 登録
+An owner is a user who has additional privileges for managing a data asset in Azure Data Catalog. Users can take ownership of registered data assets, and owners can add other users as co-owners. For more information see  [How to manage data assets](data-catalog-how-to-manage.md)  
+> [AZURE.NOTE] Ownership and management are available only in the Standard Edition of Azure Data Catalog.
 
-登録は、データ資産メタデータをデータ ソースから抽出し、Azure Data Catalog サービスにコピーする操作です。登録されたデータ資産は、注釈を付けて検索することができます。
+## <a name="registration"></a>Registration
 
-## 関連項目
+Registration is the act of extracting data asset metadata from a data source and copying it to the Azure Data Catalog service. Data assets that have been registered can then be annotated and discovered.
 
-- [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md) - この記事では、Azure Data Catalog サービス、もたらされる価値、およびサポートしているシナリオの概要について説明します。
+## <a name="see-also"></a>See also
 
-- [GAzure Data Catalog の概要](data-catalog-get-started.md) - この記事は、データ ソースの検出に Azure Data Catalog を使用する方法を示す総合的なチュートリアルです。
+- [What is Azure Data Catalog?](data-catalog-what-is-data-catalog.md) - This article provides an overview of the Azure Data Catalog service, the value it provides, and the scenarios it supports.
 
-<!---HONumber=AcomDC_0921_2016-->
+- [Get started with Azure Data Catalog](data-catalog-get-started.md) - This article provides an end-to-end tutorial that shows you how to use Azure Data Catalog for data source discovery.  
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,117 +1,122 @@
 <properties
-	pageTitle="HDInsight で R を使用してクラスターをカスタマイズする | Microsoft Azure"
-	description="スクリプトの操作を使用して R をインストールする方法について説明し、HDInsight クラスターでの R を使用します。"
-	services="hdinsight"
-	documentationCenter=""
-	tags="azure-portal"
-	authors="mumian"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Use R in HDInsight to customize clusters | Microsoft Azure"
+    description="Learn how to install R using Script Action, and use R on HDInsight clusters."
+    services="hdinsight"
+    documentationCenter=""
+    tags="azure-portal"
+    authors="mumian"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.workload="big-data"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
+    ms.service="hdinsight"
+    ms.workload="big-data"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
     ms.date="09/14/2016"
-	ms.author="jgao"/>
+    ms.author="jgao"/>
 
-# HDInsight Hadoop クラスターに R をインストールして使用する
 
-Script Action を使用して Windows ベースの HDInsight クラスターを R でカスタマイズする方法と、HDInsight クラスターで R を使用する方法について説明します。HDInsight の [Premium レベル](https://azure.microsoft.com/pricing/details/hdinsight/) サービスには、HDInsight クラスタの一部として R Server が含まれています。これにより、R スクリプトで MapReduce と Spark を使用して、分散計算を実行することができます。詳細については、「[Get started using R Server on HDInsight (HDInsight で R Server を使ってみる)](hdinsight-hadoop-r-server-get-started.md)」をご覧ください。Linux ベースのクラスターでの R の操作については、「[HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)」を参照してください。
+# <a name="install-and-use-r-on-hdinsight-hadoop-clusters"></a>Install and use R on HDInsight Hadoop clusters
+
+Learn how to customize Windows based HDInsight cluster with R using Script Action, and how to use R on HDInsight clusters. The [premium tier](https://azure.microsoft.com/pricing/details/hdinsight/) offering for HDInsight includes R Server as part of your HDInsight cluster. This allows R scripts to use MapReduce and Spark to run distributed computations. For more information, see [Get started using R Server on HDInsight](hdinsight-hadoop-r-server-get-started.md). For information on using R with a Linux-based cluster, see [Install and use R on HDinsight Hadoop clusters (Linux)](hdinsight-hadoop-r-scripts-linux.md).
  
-*Script Action* を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に R をインストールできます。HDInsight クラスターに R をインストールするサンプル スクリプトは、[https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) の読み取り専用の Azure ストレージ BLOB から入手できます。
+You can install R on any type of cluster (Hadoop, Storm, HBase, Spark) on Azure HDInsight by using *Script Action*. A sample script to install R on an HDInsight cluster is available from a read-only Azure storage blob at [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1). 
 
-**関連記事:**
+**Related articles**
 
-- [HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)
-- [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
-- [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報。
-- [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions.md)
+- [Install and use R on HDinsight Hadoop clusters (Linux)](hdinsight-hadoop-r-scripts-linux.md)
+- [Create Hadoop clusters in HDInsight](hdinsight-provision-clusters.md): general information on creating HDInsight clusters
+- [Customize HDInsight cluster using Script Action][hdinsight-cluster-customize]: general information on customizing HDInsight clusters using Script Action
+- [Develop Script Action scripts for HDInsight](hdinsight-hadoop-script-actions.md)
 
-## R とは
+## <a name="what-is-r?"></a>What is R?
 
-<a href="http://www.r-project.org/" target="_blank">統計計算用 R プロジェクト</a>は、統計計算用のオープン ソースの言語と環境です。R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。また、広範なグラフィカル機能も提供します。R は、さまざまな分野におけるほぼすべての統計学専門家や科学者に推奨されるプログラミング環境です。
+The <a href="http://www.r-project.org/" target="_blank">R Project for Statistical Computing</a> is an open source language and environment for statistical computing. R provides hundreds of build-in statistical functions and its own programming language that combines aspects of functional and object-oriented programming. It also provides extensive graphical capabilities. R is the preferred programming environment for most professional statisticians and scientists in a wide variety of fields.
 
-R は Azure BLOB Storage (WASB) と互換性があるので、そこに格納されているデータは HDInsight 上の R を使用して処理できます。
+R is compatible with Azure Blob Storage (WASB) so that data that is stored there can be processed using R on HDInsight.  
 
-## R のインストール
+## <a name="install-r"></a>Install R
 
-HDInsight クラスターで R をインストールする[サンプル スクリプト](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1)は、Azure Storage の読み取り専用 BLOB から入手できます。このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
+A [sample script](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) to install R on an HDInsight cluster is available from a read-only blob in Azure Storage. This section provides instructions about how to use the sample script while creating the cluster using the Azure Portal.
 
-> [AZURE.NOTE] サンプル スクリプトは、HDInsight クラスター バージョン 3.1 で導入されました。HDInsight クラスター バージョンの詳細については、「[HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。
+> [AZURE.NOTE] The sample script was introduced with HDInsight cluster version 3.1. For more information about  HDInsight cluster versions, see [HDInsight cluster versions](hdinsight-component-versioning.md).
 
-1. HDInsight クラスターをポータルから作成する場合は、**[オプションの構成]**、**[スクリプト アクション]** の順にクリックします。
-2. **[スクリプト アクション]** ページで、次の値を入力します。
+1. When you create an HDInsight cluster from the Portal, click **Optional Configuration**, and then click **Script Actions**.
+2. On the **Script Actions** page, enter the following values:
 
-	![スクリプト アクションを使ってクラスターをカスタマイズする](./media/hdinsight-hadoop-r-scripts/hdi-r-script-action.png "スクリプト アクションを使ってクラスターをカスタマイズする")
+    ![Use Script Action to customize a cluster](./media/hdinsight-hadoop-r-scripts/hdi-r-script-action.png "Use Script Action to customize a cluster")
 
-	<table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>名前</td>
-			<td>「<b>R のインストール</b>」などスクリプト アクションの名前を指定します。</td></tr>
-		<tr><td>スクリプト URI</td>
-			<td>たとえば、<i>https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1</i> のように、クラスターをカスタマイズするために呼び出されるスクリプトへの URI を指定します。</td></tr>
-		<tr><td>ノードの種類</td>
-			<td>カスタマイズ スクリプトが実行されるノードを指定します。<b>[すべてのノード]</b>、<b>[ヘッド ノードのみ]</b>、<b>[ワーカー ノードのみ]</b> から選択できます。
-		<tr><td>パラメーター</td>
-			<td>スクリプトで必要な場合は、パラメーターを指定します。ただし、R をインストールするスクリプトではパラメーターが必要ないため、空白のままにすることができます。</td></tr>
-	</table>
+    <table border='1'>
+        <tr><th>Property</th><th>Value</th></tr>
+        <tr><td>Name</td>
+            <td>Specify a name for the script action, for example, <b>Install R</b>.</td></tr>
+        <tr><td>Script URI</td>
+            <td>Specify the URI to the script that is invoked to customize the cluster, for example, <i>https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1</i></td></tr>
+        <tr><td>Node Type</td>
+            <td>Specify the nodes on which the customization script is run. You can choose <b>All Nodes</b>, <b>Head nodes only</b>, or <b>Worker nodes</b> only.
+        <tr><td>Parameters</td>
+            <td>Specify the parameters, if required by the script. However, the script to install R does not require any parameters, so you can leave this blank.</td></tr>
+    </table>
 
-	複数のスクリプト操作を追加して、クラスターに複数のコンポーネントをインストールすることができます。スクリプトを追加した後、チェック マークをオンにして、クラスターの作成を開始します。
+    You can add more than one script action to install multiple components on the cluster. After you have added the scripts, click the check mark to start crating the cluster.
 
-Azure PowerShell や HDInsight .NET SDK を使用して、HDInsight に R をインストールするためにスクリプトを使用することもできます。これらの手順については、この記事の後半で説明します。
+You can also use the script to install R on HDInsight by using Azure PowerShell or the HDInsight .NET SDK. Instructions for these procedures are provided later in this article.
 
-## R スクリプトの実行
-このセクションでは、HDInsight で Hadoop クラスター上の R スクリプトを実行する方法について説明します。
+## <a name="run-r-scripts"></a>Run R scripts
+This section describes how to run an R script on the Hadoop cluster with HDInsight.
 
-1. **クラスターへのリモート デスクトップ接続の確立**: ポータルから、R をインストールして作成したクラスターに対してリモート デスクトップを有効にし、クラスターに接続します。手順については、「[RDP を使用した HDInsight クラスターへの接続](hdinsight-administer-use-management-portal.md#rdp)」をご覧ください。
+1. **Establish a Remote Desktop connection to the cluster**: From the Portal, enable Remote Desktop for the cluster you created with R installed, and then connect to the cluster. For instructions, see [Connect to HDInsight clusters using RDP](hdinsight-administer-use-management-portal.md#rdp).
 
-2. **Rコンソールを開く**: R をインストールすると、ヘッドノードのデスクトップに R コンソールへのリンクが設定されます。それをクリックして、R コンソールを開きます。
+2. **Open the R console**: The R installation puts a link to the R console on the desktop of the head node. Click on it to open the R console.
 
-3. **R スクリプトの実行**: R スクリプトは、R コンソールに貼り付け、選択して、ENTER を押すことで、直接実行できます。1 ～ 100 の数値を生成し、その結果に 2 を乗算する、単純なスクリプト例を示します。
+3. **Run the R script**: The R script can be run directly from the R console by pasting it, selecting it, and pressing ENTER. Here is a simple example script that generates the numbers 1 to 100 and then multiplies them by 2.
 
-		library(rmr2)
-		library(rhdfs)
-		ints = to.dfs(1:100)
-		calc = mapreduce(input = ints, map = function(k, v) cbind(v, 2*v))
-		from.dfs(calc)
+        library(rmr2)
+        library(rhdfs)
+        ints = to.dfs(1:100)
+        calc = mapreduce(input = ints, map = function(k, v) cbind(v, 2*v))
+        from.dfs(calc)
 
-最初の 2 行は、R と共にインストールされる RHadoop ライブラリを呼び出します。最後の行は、結果をコンソールに出力します。出力は次のようになります。
+The first two lines call the RHadoop libraries that are installed with R. The final line prints the results to the console. The output should look like this:
 
-	[1,]  1 2
-	[2,]  2 4
-	.
-	.
-	.
-	[98,]  98 196
-	[99,]  99 198
-	[100,] 100 200
-
-
-## Azure PowerShell を使用した R のインストール
-
-「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call_scripts_using_powershell)」を参照してください。このサンプルでは、Azure PowerShell を使用して Spark をインストールする方法を示します。スクリプトをカスタマイズし、[https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1) を使用する必要があります。
-
-## .NET SDK を使用した R のインストール
-
-「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md#call_scripts_using_azure_powershell)」を参照してください。このサンプルでは、.NET SDK を使用して Spark をインストールする方法を示します。スクリプトをカスタマイズし、[https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps11) を使用する必要があります。
+    [1,]  1 2
+    [2,]  2 4
+    .
+    .
+    .
+    [98,]  98 196
+    [99,]  99 198
+    [100,] 100 200
 
 
-## 関連項目
+## <a name="install-r-using-aure-powershell"></a>Install R using Aure PowerShell
 
-- [HDInsight Hadoop クラスターに R をインストールして使用する (Linux)](hdinsight-hadoop-r-scripts-linux.md)
-- [HDInsight で Hadoop クラスターを作成する](hdinsight-provision-clusters.md): HDInsight クラスターの作成に関する一般情報。
-- [Script Action を使用して HDInsight クラスターをカスタマイズする][hdinsight-cluster-customize]\: Script Action を使用した HDInsight クラスターのカスタマイズに関する一般情報。
-- [HDInsight 用の Script Action スクリプトの開発](hdinsight-hadoop-script-actions.md)
-- [HDInsight クラスターに Spark をインストールし、使用する][hdinsight-install-spark]\: Spark のインストールに関する Script Action サンプル。
-- [HDInsight クラスターに Giraph をインストールし、使用する](hdinsight-hadoop-giraph-install.md): Giraph のインストールに関する Script Action サンプル。
-- [HDInsight クラスターに Solr をインストールし、使用する](hdinsight-hadoop-solr-install-linux.md): Solr のインストールに関する Script Action サンプル。
+See [Customize HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster.md#call_scripts_using_powershell).  The sample demonstrates how to install Spark using Azure PowerShell. You need to customize the script to use [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1).
+
+## <a name="install-r-using-.net-sdk"></a>Install R using .NET SDK
+
+See [Customize HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster.md#call_scripts_using_azure_powershell). The sample demonstrates how to install Spark using the .NET SDK. You need to customize the script to use [https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps1](https://hdiconfigactions.blob.core.windows.net/rconfigactionv02/r-installer-v02.ps11).
+
+
+## <a name="see-also"></a>See also
+
+- [Install and use R on HDinsight Hadoop clusters (Linux)](hdinsight-hadoop-r-scripts-linux.md)
+- [Create Hadoop clusters in HDInsight](hdinsight-provision-clusters.md): general information on creating HDInsight clusters
+- [Customize HDInsight cluster using Script Action][hdinsight-cluster-customize]: general information on customizing HDInsight clusters using Script Action
+- [Develop Script Action scripts for HDInsight](hdinsight-hadoop-script-actions.md)
+- [Install and use Spark on HDInsight clusters][hdinsight-install-spark]: Script Action sample about installing Spark
+- [Install Giraph on HDInsight clusters](hdinsight-hadoop-giraph-install.md): Script Action sample about installing Giraph
+- [Install Solr on HDInsight clusters](hdinsight-hadoop-solr-install-linux.md): Script Action sample about installing Solr.
 
 [powershell-install-configure]: powershell-install-configure.md
 [hdinsight-provision]: ../hdinsight-provision-clusters/
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
 [hdinsight-install-spark]: hdinsight-apache-spark-jupyter-spark-sql.md
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

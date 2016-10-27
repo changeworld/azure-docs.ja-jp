@@ -1,107 +1,108 @@
 <properties
-	pageTitle="Xamarin.Forms アプリでの Mobile Apps の認証の使用 | Microsoft Azure"
-	description="Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Xamarin Forms アプリのユーザーを認証する方法について説明します。"
-	services="app-service\mobile"
-	documentationCenter="xamarin"
-	authors="wesmc7777"
-	manager="dwrede"
-	editor=""/>
+    pageTitle="Get Started with authentication for Mobile Apps in Xamarin.Forms app | Microsoft Azure"
+    description="Learn how to use Mobile Apps to authenticate users of your Xamarin Forms app through a variety of identity providers, including AAD, Google, Facebook, Twitter, and Microsoft."
+    services="app-service\mobile"
+    documentationCenter="xamarin"
+    authors="adrianhall"
+    manager="dwrede"
+    editor=""/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-xamarin"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="06/16/2016"
-	ms.author="wesmc"/>
+    ms.service="app-service-mobile"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-xamarin"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="adrianha"/>
 
-# Xamarin.Forms アプリに認証を追加する
+
+# <a name="add-authentication-to-your-xamarin.forms-app"></a>Add authentication to your Xamarin.Forms app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-##概要
+##<a name="overview"></a>Overview
 
-このトピックでは、クライアント アプリケーションから App Service モバイル アプリのユーザーを認証する方法について説明します。このチュートリアルでは、App Service でサポートされている ID プロバイダーを使用して、Xamarin.Forms クイック スタート プロジェクトに認証を追加します。モバイル アプリによって正常に認証、承認されると、ユーザー ID 値が表示され、制限付きのテーブル データにアクセスできます。
+This topic shows you how to authenticate users of an App Service Mobile App from your client application. In this tutorial, you add authentication to the Xamarin.Forms quickstart project using an identity provider that is supported by App Service. After being successfully authenticated and authorized by your Mobile App, the user ID value is displayed, and you will be able to access restricted table data.
 
-##前提条件
+##<a name="prerequisites"></a>Prerequisites
 
-このチュートリアルで最善の結果が得られるように、最初にチュートリアル「[Xamarin.Forms アプリの作成](app-service-mobile-xamarin-forms-get-started.md)」を完了しておくことをお勧めします。このチュートリアルを完了すると、マルチプラットフォーム TodoList アプリである Xamarin.Forms プロジェクトを作成できます。
+For the best result with this tutorial, we recommend that you first complete the [Create a Xamarin.Forms app](app-service-mobile-xamarin-forms-get-started.md) tutorial. After you complete this tutorial, you will have a Xamarin.Forms project that is a multi-platform TodoList app.
 
-ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、認証拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+If you do not use the downloaded quick start server project, you must add the authentication extension package to your project. For more information about server extension packages, see [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-##アプリケーションを認証に登録し、App Services を構成する
+##<a name="register-your-app-for-authentication-and-configure-app-services"></a>Register your app for authentication and configure App Services
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-##アクセス許可を、認証されたユーザーだけに制限する
+##<a name="restrict-permissions-to-authenticated-users"></a>Restrict permissions to authenticated users
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 
-##ポータブル クラス ライブラリに認証を追加する
+##<a name="add-authentication-to-the-portable-class-library"></a>Add authentication to the portable class library
 
-Mobile Apps では、App Service 認証を使用したユーザーのサインインに、[MobileServiceClient] の [LoginAsync] 拡張メソッドを使います。このサンプルでは、アプリにプロバイダーのサインイン インターフェイスが表示される、サーバー側管理認証フローを使用します。詳細については、「[サーバー側管理認証](app-service-mobile-dotnet-how-to-use-client-library.md#serverflow)」を参照してください。運用アプリのユーザー エクスペリエンスを向上させるためには、代わりに[クライアント側管理認証](app-service-mobile-dotnet-how-to-use-client-library.md#clientflow)を使用することを検討してください。
+Mobile Apps uses the [LoginAsync] extension method on the [MobileServiceClient] to sign-in a user with App Service authentication. This sample uses a server-managed authentication flow that displays the provider's sign-in interface in the app. For more information, see [Server-managed authentication](app-service-mobile-dotnet-how-to-use-client-library.md#serverflow). To provide a better user experience in your production app, you may consider instead using [Client-managed authentication](app-service-mobile-dotnet-how-to-use-client-library.md#clientflow). 
 
-Xamarin.Forms プロジェクトで認証するには、アプリのポータブル クラス ライブラリに **IAuthenticate** インターフェイスを定義します。また、ポータブル クラス ライブラリで定義したユーザー インターフェイスを更新して、認証を開始するためにユーザーがクリックする **[サインイン]** ボタンを追加します。認証が成功すると、モバイル アプリ バックエンドからデータが読み込まれます。
+To authenticate with a Xamarin.Forms project, you define an **IAuthenticate** interface in the Portable Class Library for the app. You also update the user interface defined in the Portable Class Library to add a **Sign-in** button, which the user clicks to start authentication. After successful authentication, data is loaded from the mobile app backend.
 
-アプリでサポートされているプラットフォームごとに **IAuthenticate** インターフェイスを実装する必要があります。
+You must implement the **IAuthenticate** interface for each platform supported by your app.
 
 
-1. Visual Studio または Xamarin Studio で、ポータブル クラス ライブラリ プロジェクトである **Portable** というプロジェクトから App.cs を開きます。その後で、次の `using` ステートメントを追加します。
+1. In Visual Studio or Xamarin Studio, open App.cs from the project with **Portable** in the name, which is Portable Class Library project, then add the following `using` statement:
 
-		using System.Threading.Tasks;
+        using System.Threading.Tasks;
 
-2. App.cs に、次の `IAuthenticate` インターフェイス定義を、`App` クラス定義の直前に追加します。
+2. In App.cs, add the following `IAuthenticate` interface definition immediately before the `App` class definition.
 
-	    public interface IAuthenticate
-	    {
-	        Task<bool> Authenticate();
-	    }
+        public interface IAuthenticate
+        {
+            Task<bool> Authenticate();
+        }
 
-3. インターフェイスをプラットフォーム固有の実装で初期化するように、次の静的メンバーを **App** クラスに追加します。
+3. Add the following static members to the **App** class to initialize the interface with a platform specific implementation.
 
-	    public static IAuthenticate Authenticator { get; private set; }
+        public static IAuthenticate Authenticator { get; private set; }
 
         public static void Init(IAuthenticate authenticator)
         {
             Authenticator = authenticator;
         }
 
-4. ポータブル クラス ライブラリ プロジェクトから TodoList.xaml を開き、既存のボタンの後ろに、*buttonsPanel* レイアウト要素の次の **Button** 要素を追加します。
+4. Open TodoList.xaml from the Portable Class Library project, add the following **Button** element in the *buttonsPanel* layout element, after the existing button: 
 
-      	<Button x:Name="loginButton" Text="Sign-in" MinimumHeightRequest="30" 
-			Clicked="loginButton_Clicked"/>
+        <Button x:Name="loginButton" Text="Sign-in" MinimumHeightRequest="30" 
+            Clicked="loginButton_Clicked"/>
 
-	このボタンは、モバイル アプリ バックエンドによるサーバー側管理認証をトリガーします。
+    This button triggers server-managed authentication with your mobile app backend.
 
-5. ポータブル クラス ライブラリ プロジェクトから TodoList.xaml.cs を開き、`TodoList` クラスに次のフィールドを追加します。
+5. Open TodoList.xaml.cs from the Portable Class Library project, then add the following field to the `TodoList` class:
 
-		// Track whether the user has authenticated. 
+        // Track whether the user has authenticated. 
         bool authenticated = false;
 
 
-6. **OnAppearing** メソッドを次のコードに置き換えます。
+6. Replace the **OnAppearing** method with the following code:
 
-	    protected override async void OnAppearing()
-	    {
-	        base.OnAppearing();
-	
-	        // Refresh items only when authenticated.
-	        if (authenticated == true)
-	        {
-	            // Set syncItems to true in order to synchronize the data 
-	            // on startup when running in offline mode.
-	            await RefreshItems(true, syncItems: false);
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+    
+            // Refresh items only when authenticated.
+            if (authenticated == true)
+            {
+                // Set syncItems to true in order to synchronize the data 
+                // on startup when running in offline mode.
+                await RefreshItems(true, syncItems: false);
 
-				// Hide the Sign-in button.
+                // Hide the Sign-in button.
                 this.loginButton.IsVisible = false;
-	        }
-	    }
+            }
+        }
 
-	これにより、ユーザー認証の完了後にのみ、データがサービスによって更新されるようになります。
+    This makes sure that data is only refreshed from the service after the user has been authenticated.
 
-7. **Clicked** イベントの次のハンドラーを **TodoList** クラスに追加します。
+7. Add the following handler for the **Clicked** event to the **TodoList** class:
 
         async void loginButton_Clicked(object sender, EventArgs e)
         {
@@ -113,28 +114,28 @@ Xamarin.Forms プロジェクトで認証するには、アプリのポータブ
                 await RefreshItems(true, syncItems: false);
         }
 
-8. 変更を保存し、ポータブル クラス ライブラリ プロジェクトをリビルドしてエラーがないことを確認します。
+8. Save your changes and rebuild the Portable Class Library project verifying no errors.
 
 
-##Android アプリに認証を追加する
+##<a name="add-authentication-to-the-android-app"></a>Add authentication to the Android app
 
-このセクションでは、Android アプリ プロジェクト内に **IAuthenticate** インターフェイスを実装する方法について説明します。Android デバイスをサポートしない場合、このセクションはスキップしてください。
+This section shows how to implement the **IAuthenticate** interface in the Android app project. Skip this section if you are not supporting Android devices.
 
-1. Visual Studio または Xamarin Studio で、**droid** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. In Visual Studio or Xamarin Studio, right-click the **droid** project, then **Set as StartUp Project**.
 
-2. F5 キーを押してデバッガーでプロジェクトを開始し、アプリの開始後に、状態コード 401 のハンドルされない例外 (許可されていません) が発生することを確認します。これは、バックエンドへのアクセスが承認済みのユーザーのみに制限されているために発生します。
+2. Press F5 to start the project in the debugger, then verify that an unhandled exception with a status code of 401 (Unauthorized) is raised after the app starts. This happens because access on the backend is restricted to authorized users only.
 
-3. Android プロジェクトの MainActivity.cs を開き、次の `using` ステートメントを追加します。
+3. Open MainActivity.cs in the Android project and add the following `using` statements:
 
-		using Microsoft.WindowsAzure.MobileServices;
-		using System.Threading.Tasks;
+        using Microsoft.WindowsAzure.MobileServices;
+        using System.Threading.Tasks;
 
-4. 次のように、**MainActivity** クラスを更新して **IAuthenticate** インターフェイスを実装します。
+4. Update the **MainActivity** class to implement the **IAuthenticate** interface, as follows:
 
-		public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IAuthenticate
+        public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IAuthenticate
 
 
-5. 次のように、**MobileServiceUser** フィールドのほか、**IAuthenticate** インターフェイスに必要な **Authenticate** メソッドを追加して、**MainActivity** クラスを更新します。
+5. Update the **MainActivity** class by adding a **MobileServiceUser** field and an **Authenticate** method, which is required by the **IAuthenticate** interface, as follows:
 
         // Define a authenticated user.
         private MobileServiceUser user;
@@ -170,35 +171,35 @@ Xamarin.Forms プロジェクトで認証するには、アプリのポータブ
         }
 
 
-	Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider] には別の値を選択してください。
+    If you are using an identity provider other than Facebook, choose a different value for [MobileServiceAuthenticationProvider].
 
-6. `LoadApplication()` の呼び出しの前にある **MainActivity** クラスの **OnCreate** メソッドに次のコードを追加します。
+6. Add the following code to the **OnCreate** method of the **MainActivity** class before the call to `LoadApplication()`:
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
 
-	これにより、アプリの読み込み前に Authenticator が初期化されるようになります。
+    This makes sure that the authenticator is initialized before the app loads.
 
-7. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
+7. Rebuild the app, run it, then sign-in with the authentication provider you chose and verify you are able to access data as an authenticated user.
 
-##iOS アプリに認証を追加する
+##<a name="add-authentication-to-the-ios-app"></a>Add authentication to the iOS app
 
-このセクションでは、iOS アプリ プロジェクト内に **IAuthenticate** インターフェイスを実装する方法について説明します。iOS デバイスをサポートしない場合、このセクションはスキップしてください。
+This section shows how to implement the **IAuthenticate** interface in the iOS app project. Skip this section if you are not supporting iOS devices.
 
-1. Visual Studio または Xamarin Studio で、**iOS** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. In Visual Studio or Xamarin Studio, right-click the **iOS** project, then **Set as StartUp Project**.
 
-2. F5 キーを押してデバッガーでプロジェクトを開始し、アプリの開始後に、状態コード 401 のハンドルされない例外 (許可されていません) が発生することを確認します。これは、バックエンドへのアクセスが承認済みのユーザーのみに制限されているために発生します。
+2. Press F5 to start the project in the debugger, then verify that an unhandled exception with a status code of 401 (Unauthorized) is raised after the app starts. This happens because access on the backend is restricted to authorized users only.
 
-4. iOS プロジェクトの AppDelegate.cs を開き、次の `using` ステートメントを追加します。
+4. Open AppDelegate.cs in the iOS project and add the following `using` statements:
 
-		using Microsoft.WindowsAzure.MobileServices;
-		using System.Threading.Tasks;
+        using Microsoft.WindowsAzure.MobileServices;
+        using System.Threading.Tasks;
 
-4. 次のように、**AppDelegate** クラスを更新して **IAuthenticate** インターフェイスを実装します。
+4. Update the **AppDelegate** class to implement the **IAuthenticate** interface, as follows:
 
-		public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
+        public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
 
-5. 次のように、**MobileServiceUser** フィールドのほか、**IAuthenticate** インターフェイスに必要な **Authenticate** メソッドを追加して、**AppDelegate** クラスを更新します。
+5. Update the **AppDelegate** class by adding a **MobileServiceUser** field and an **Authenticate** method, which is required by the **IAuthenticate** interface, as follows:
 
         // Define a authenticated user.
         private MobileServiceUser user;
@@ -234,40 +235,40 @@ Xamarin.Forms プロジェクトで認証するには、アプリのポータブ
             return success;
         }
 
-	Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider] には別の値を選択してください。
+    If you are using an identity provider other than Facebook, choose a different value for [MobileServiceAuthenticationProvider].
 
-6. `LoadApplication()` の呼び出しの前の **FinishedLaunching** メソッドに、次のコード行を追加します。
+6. Add the following line of code to the **FinishedLaunching** method before the call to `LoadApplication()`: 
 
         App.Init(this);
 
-	これにより、アプリの読み込み前に Authenticator が初期化されるようになります。
+    This makes sure that the authenticator is initialized before the app is loaded.
 
-7. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
-
-
-##Windows アプリ プロジェクトに認証を追加する
-
-このセクションでは、Windows 8.1 と Windows Phone 8.1 のアプリ プロジェクト内に **IAuthenticate** インターフェイスを実装する方法について説明します。ユニバーサル Windows プラットフォーム (UWP) プロジェクトには、同一の手順が適用されます。Windows デバイスをサポートしない場合、このセクションはスキップしてください。
-
-1. Visual Studio で、**WinApp** プロジェクトと **WinPhone81** プロジェクトのいずれかを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
-
-2. F5 キーを押してデバッガーでプロジェクトを開始し、アプリの開始後に、状態コード 401 のハンドルされない例外 (許可されていません) が発生することを確認します。これは、バックエンドへのアクセスが承認済みのユーザーのみに制限されているために発生します。
-
-3. Windows アプリ プロジェクトの MainPage.xaml.cs を開き、次の `using` ステートメントを追加します。
-
-		using Microsoft.WindowsAzure.MobileServices;
-		using System.Threading.Tasks;
-		using Windows.UI.Popups;
-		using <your_Portable_Class_Library_namespace>;
-
-	`<your_Portable_Class_Library_namespace>` を、ポータブル クラス ライブラリの名前空間に置き換えます。
-
-4. 次のように、**MainPage** クラスを更新して **IAuthenticate** インターフェイスを実装します。
-
-	    public sealed partial class MainPage : IAuthenticate
+7. Rebuild the app, run it, then sign-in with the authentication provider you chose and verify you are able to access data as an authenticated user.
 
 
-5. 次のように、**MobileServiceUser** フィールドのほか、**IAuthenticate** インターフェイスに必要な **Authenticate** メソッドを追加して、**MainPage** クラスを更新します。
+##<a name="add-authentication-to-windows-app-projects"></a>Add authentication to Windows app projects
+
+This section shows how to implement the **IAuthenticate** interface in the Windows 8.1 and Windows Phone 8.1 app projects. The same steps apply for Universal Windows Platform (UWP) projects. Skip this section if you are not supporting Windows devices.
+
+1. In Visual Studio, right-click either the **WinApp** or the **WinPhone81** project, then **Set as StartUp Project**.
+
+2. Press F5 to start the project in the debugger, then verify that an unhandled exception with a status code of 401 (Unauthorized) is raised after the app starts. This happens because access on the backend is restricted to authorized users only.
+
+3. Open MainPage.xaml.cs for the Windows app project and add the following `using` statements:
+
+        using Microsoft.WindowsAzure.MobileServices;
+        using System.Threading.Tasks;
+        using Windows.UI.Popups;
+        using <your_Portable_Class_Library_namespace>;
+
+    Replace `<your_Portable_Class_Library_namespace>` with the namespace for your portable class library.
+
+4. Update the **MainPage** class to implement the **IAuthenticate** interface, as follows:
+
+        public sealed partial class MainPage : IAuthenticate
+
+
+5. Update the **MainPage** class by adding a **MobileServiceUser** field and an **Authenticate** method, which is required by the **IAuthenticate** interface, as follows:
 
         // Define a authenticated user.
         private MobileServiceUser user;
@@ -286,7 +287,7 @@ Xamarin.Forms プロジェクトで認証するには、アプリのポータブ
                         .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
                     if (user != null)
                     {
-						success = true;
+                        success = true;
                         message = string.Format("You are now signed-in as {0}.", user.UserId);
                     }
                 }
@@ -297,55 +298,58 @@ Xamarin.Forms プロジェクトで認証するには、アプリのポータブ
                 message = string.Format("Authentication Failed: {0}", ex.Message);
             }
 
-			// Display the success or failure message.
+            // Display the success or failure message.
             await new MessageDialog(message, "Sign-in result").ShowAsync();
 
             return success;
         }
 
 
-	Facebook 以外の ID プロバイダーを使用している場合、[MobileServiceAuthenticationProvider] には別の値を選択してください。
+    If you are using an identity provider other than Facebook, choose a different value for [MobileServiceAuthenticationProvider].
 
-6. `LoadApplication()` の呼び出しの前にある **MainPage** クラスのコンストラクター内に次のコード行を追加します。
+6. Add the following line of code in the constructor for the **MainPage** class before the call to `LoadApplication()`:
 
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);
  
-    `<your_Portable_Class_Library_namespace>` を、ポータブル クラス ライブラリの名前空間に置き換えます。WinApp プロジェクトの場合、手順 8. に進むことができます。次の手順は、ログイン コールバックの完了が必要な WinPhone81 プロジェクトにのみ適用されます。
+    Replace `<your_Portable_Class_Library_namespace>` with the namespace for your portable class library.  
+    If this is the WinApp project, you can skip down to step 8. The next step applies only to the WinPhone81 project, where you need to complete the login callback.
 
-7. (省略可能) **WinPhone81** アプリ プロジェクトの App.xaml.cs を開き、次の `using` ステートメントを追加します。
+7. (Optional) In the **WinPhone81** app project, open App.xaml.cs and add the following `using` statements:
 
-		using Microsoft.WindowsAzure.MobileServices;
-		using <your_Portable_Class_Library_namespace>;
+        using Microsoft.WindowsAzure.MobileServices;
+        using <your_Portable_Class_Library_namespace>;
 
-	`<your_Portable_Class_Library_namespace>` を、ポータブル クラス ライブラリの名前空間に置き換えます。
+    Replace `<your_Portable_Class_Library_namespace>` with the namespace for your portable class library.
 
-8.  次の **OnActivated** メソッドのオーバーライドを **App** クラスに追加します。
+8.  Add the following **OnActivated** method override to the **App** class:
 
-		protected override void OnActivated(IActivatedEventArgs args)
-		{
-		    base.OnActivated(args);
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
 
-			// We just need to handle activation that occurs after web authentication. 
-		    if (args.Kind == ActivationKind.WebAuthenticationBrokerContinuation)
-		    {
-				// Get the client and call the LoginComplete method to complete authentication.
-		        var client = TodoItemManager.DefaultManager.CurrentClient as MobileServiceClient;
-		        client.LoginComplete(args as WebAuthenticationBrokerContinuationEventArgs);
-		    }
-		}
+            // We just need to handle activation that occurs after web authentication. 
+            if (args.Kind == ActivationKind.WebAuthenticationBrokerContinuation)
+            {
+                // Get the client and call the LoginComplete method to complete authentication.
+                var client = TodoItemManager.DefaultManager.CurrentClient as MobileServiceClient;
+                client.LoginComplete(args as WebAuthenticationBrokerContinuationEventArgs);
+            }
+        }
 
-	メソッドのオーバーライドが既に存在する場合は、上記のスニペットから条件付きコードのみ追加してください。
+    When the method override already exists, just add the conditional code from the above snippet.
 
-7. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
+7. Rebuild the app, run it, then sign-in with the authentication provider you chose and verify you are able to access data as an authenticated user.
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-これで基本的な認証チュートリアルは完了しましたので、引き続き次のいずれかのチュートリアルのご利用を検討してください。
+Now that you completed this basic authentication tutorial, consider continuing on to one of the following tutorials:
 
-+ [アプリへのプッシュ通知の追加](app-service-mobile-xamarin-forms-get-started-push.md) アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使用してプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
++ [Add push notifications to your app](app-service-mobile-xamarin-forms-get-started-push.md)  
+  Learn how to add push notifications support to your app and configure your Mobile App backend to use Azure Notification Hubs to send push notifications.
 
-+ [アプリのオフライン同期の有効化](app-service-mobile-xamarin-forms-get-started-offline-data.md) モバイル アプリ バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。
++ [Enable offline sync for your app](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
+  Learn how to add offline support your app using an Mobile App backend. Offline sync allows end-users to interact with a mobile app&mdash;viewing, adding, or modifying data&mdash;even when there is no network connection.
 
 <!-- Images. -->
 
@@ -355,4 +359,9 @@ Xamarin.Forms プロジェクトで認証するには、アプリのポータブ
 [MobileServiceClient]: https://msdn.microsoft.com/library/azure/JJ553674(v=azure.10).aspx
 [MobileServiceAuthenticationProvider]: https://msdn.microsoft.com/library/azure/jj730936(v=azure.10).aspx
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

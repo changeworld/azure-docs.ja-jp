@@ -1,82 +1,87 @@
 <properties
-	pageTitle="Xamarin.Android アプリへのプッシュ通知の追加 | Azure App Service"
-	description="Azure App Service と Azure Notification Hubs を使用して、Xamarin.Android アプリにプッシュ通知を送信する方法について説明します。"
-	services="app-service\mobile"
-	documentationCenter="xamarin"
-	authors="ggailey777"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Add push notifications to your Xamarin.Android app | Azure App Service"
+    description="Learn how to use Azure App Service and Azure Notification Hubs to send push notifications to your Xamarin.Android app"
+    services="app-service\mobile"
+    documentationCenter="xamarin"
+    authors="adrianhall"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-xamarin-android"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/12/2016"
-	ms.author="glenga"/>
+    ms.service="app-service-mobile"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-xamarin-android"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="adrianha"/>
 
-# Xamarin.Android アプリへのプッシュ通知の追加
+
+# <a name="add-push-notifications-to-your-xamarin.android-app"></a>Add push notifications to your Xamarin.Android app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-##Overview
+##<a name="overview"></a>Overview
 
-このチュートリアルでは、「[Xamarin.Android アプリの作成]」プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。このチュートリアルは、「[Xamarin.Android アプリの作成]」チュートリアルに基づいているので、先にそちらを完了する必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+In this tutorial, you add push notifications to the [Create a Xamarin.Android app] project so that every time a record is inserted, a push notification is sent. This tutorial is based on the [Create a Xamarin.Android app] tutorial, which you must complete first. If you do not use the downloaded quick start server project, you must add the push notification extension package to your project. For more information about server extension packages, see [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-##前提条件
+##<a name="prerequisites"></a>Prerequisites
 
-このチュートリアルには、次のものが必要です。
+This tutorial requires the following:
 
-+ アクティブな Google アカウント。[accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302) で、Google アカウントにサインアップできます。
++ An active Google account. You can sign up for a Google account at [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302).
 
-+ [Google Cloud Messaging のクライアント コンポーネント](http://components.xamarin.com/view/GCMClient/)。このコンポーネントは、チュートリアル中に追加します。
++ [Google Cloud Messaging Client Component](http://components.xamarin.com/view/GCMClient/). You will add this component during the tutorial.
 
-##<a name="create-hub"></a>通知ハブを作成する
+##<a name="<a-name="create-hub"></a>create-a-notification-hub"></a><a name="create-hub"></a>Create a Notification Hub
 
 [AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
 
-##<a id="register"></a>Google Cloud Messaging を有効にする
+##<a name="<a-id="register"></a>enable-google-cloud-messaging"></a><a id="register"></a>Enable Google Cloud Messaging
 
-[AZURE.INCLUDE [GCM を有効にする](../../includes/mobile-services-enable-google-cloud-messaging.md)]
+[AZURE.INCLUDE [Enable GCM](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-##プッシュ要求を送信するように Mobile App バックエンドを構成する
+##<a name="configure-the-mobile-app-backend-to-send-push-requests"></a>Configure the Mobile App backend to send push requests
 
 [AZURE.INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
-##<a id="update-server"></a>サーバー プロジェクトをプッシュ通知を送信するように更新する
+##<a name="<a-id="update-server"></a>update-the-server-project-to-send-push-notifications"></a><a id="update-server"></a>Update the server project to send push notifications
 
 [AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-##<a id="configure-app"></a>プッシュ通知のクライアント プロジェクトを構成する
+##<a name="<a-id="configure-app"></a>configure-the-client-project-for-push-notifications"></a><a id="configure-app"></a>Configure the client project for push notifications
 
 [AZURE.INCLUDE [mobile-services-xamarin-android-push-configure-project](../../includes/mobile-services-xamarin-android-push-configure-project.md)]
 
-##<a id="add-push"></a>アプリケーションにプッシュ通知コードを追加する
+##<a name="<a-id="add-push"></a>add-push-notifications-code-to-your-app"></a><a id="add-push"></a>Add push notifications code to your app
 
 [AZURE.INCLUDE [app-service-mobile-xamarin-android-push-add-to-app](../../includes/app-service-mobile-xamarin-android-push-add-to-app.md)]
 
-## <a name="test"></a>アプリケーションでプッシュ通知をテストする
+## <a name="<a-name="test"></a>test-push-notifications-in-your-app"></a><a name="test"></a>Test push notifications in your app
 
-エミュレーターで仮想デバイスを使用して、アプリをテストできます。エミュレーターで実行するときに必要な追加の構成手順があります。
+You can test the app by using a virtual device in the emulator. There are additional configuration steps required when running on an emulator.
 
-1. 次に示すように Android Virtual Device (AVD) Manager で Google API がターゲットとして設定された仮想デバイスに対してデプロイまたはデバッグする必要があります。
+1. Make sure that you are deploying to or debugging on a virtual device that has Google APIs set as the target, as shown below in the Android Virtual Device (AVD) manager.
 
-	![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
+    ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
-2. **[Apps]**、**[Settings]**、**[Add account]** の順にクリックして、Google アカウントを Android デバイスに追加し、プロンプトに従って既存の Google アカウントをデバイスに追加し、新しいアカウントを作成します。
+2. Add a Google account to the Android device by clicking **Apps** > **Settings** > **Add account**, then follow the prompts to use add an existing Google account to the device to create a new one.
 
-	![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
+    ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 
-3. これまでと同様に ToDoList アプリを実行し、新しい ToDo 項目を挿入します。今回は、通知領域に通知アイコンが表示されます。通知ドロアーを開いて、通知の全文を表示できます。
+3. Run the todolist app as before and insert a new todo item. This time, a notification icon is displayed in the notification area. You can open the notification drawer to view the full text of the notification.
 
-	![](./media/app-service-mobile-xamarin-android-get-started-push/android-notifications.png)
+    ![](./media/app-service-mobile-xamarin-android-get-started-push/android-notifications.png)
 
 
 <!-- URLs. -->
 [Xamarin.Android quickstart]: app-service-mobile-xamarin-android-get-started.md
-[Xamarin.Android アプリの作成]: app-service-mobile-xamarin-android-get-started.md
+[Create a Xamarin.Android app]: app-service-mobile-xamarin-android-get-started.md
 [Google Cloud Messaging Client Component]: http://components.xamarin.com/view/GCMClient/
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

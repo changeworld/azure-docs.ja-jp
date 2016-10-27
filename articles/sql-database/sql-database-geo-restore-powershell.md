@@ -1,6 +1,6 @@
 <properties
-    pageTitle="geo 冗長バックアップからの Azure SQL Database 復元 (PowerShell) | Microsoft Azure"
-    description="geo 冗長バックアップから新しいサーバーに Azure SQL Database を復元します"
+    pageTitle="Restore an Azure SQL Database from a geo-redundant backup (PowerShell) | Microsoft Azure"
+    description="Restore an Azure SQL Database into a new server from a geo-redundant backup"
     services="sql-database"
     documentationCenter=""
     authors="stevestein"
@@ -16,45 +16,50 @@
     ms.date="07/17/2016"
     ms.author="sstein"/>
 
-# PowerShell を使用した geo 冗長バックアップからの Azure SQL Database の復元
+
+# <a name="restore-an-azure-sql-database-from-a-geo-redundant-backup-by-using-powershell"></a>Restore an Azure SQL Database from a geo-redundant backup by using PowerShell
 
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-recovery-using-backups.md)
-- [geo リストア: Azure ポータル](sql-database-geo-restore-portal.md)
+- [Overview](sql-database-recovery-using-backups.md)
+- [Geo-Restore: Azure Portal](sql-database-geo-restore-portal.md)
 
-この記事では、geo リストアを使用して新しいサーバーにデータベースを復元する方法について説明します。これは、PowerShell を使って実行できます。
+This article shows you how to restore your database into a new server by using geo-restore. This can be done through PowerShell.
 
-[AZURE.INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
+[AZURE.INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
-## スタンドアロン データベースへのデータベースの geo リストア
+## <a name="geo-restore-your-database-into-a-standalone-database"></a>Geo-restore your database into a standalone database
 
-1. [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) コマンドレットを使用して、復元するデータベースの geo 冗長バックアップを取得します。
+1. Get the geo-redundant backup of your database that you want to restore by using the [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) cmdlet.
 
         $GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
-2. [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) コマンドレットを使用して、geo 冗長バックアップからの復元を開始します。
+2. Start the restore from the geo-redundant backup by using the [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) cmdlet.
 
         Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "TargetResourceGroup" -ServerName "TargetServer" -TargetDatabaseName "RestoredDatabase" –ResourceId $GeoBackup.ResourceID -Edition "Standard" -RequestedServiceObjectiveName "S2"
 
 
-## エラスティック データベース プールへのデータベースの geo リストア
+## <a name="geo-restore-your-database-into-an-elastic-database-pool"></a>Geo-restore your database into an elastic database pool
 
-1. [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) コマンドレットを使用して、復元するデータベースの geo 冗長バックアップを取得します。
+1. Get the geo-redundant backup of your database that you want to restore by using the [Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx) cmdlet.
 
         $GeoBackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
-2. [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) コマンドレットを使用して、geo 冗長バックアップからの復元を開始します。データベースの復元先プールの名前を指定します。
+2. Start the restore from the geo-redundant backup by using the [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) cmdlet. Specify the pool name you want to restore your database into.
 
         Restore-AzureRmSqlDatabase –FromGeoBackup -ResourceGroupName "TargetResourceGroup" -ServerName "TargetServer" -TargetDatabaseName "RestoredDatabase" –ResourceId $GeoBackup.ResourceID –ElasticPoolName "elasticpool01"  
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
-- Azure SQL Database 自動バックアップの詳細については、「[SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください
-- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関するページをご覧ください
-- より迅速な回復オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページをご覧ください
-- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関するページをご覧ください
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md).
+- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md).
+- To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](sql-database-recovery-using-backups.md).
+- To learn about faster recovery options, see [Active-Geo-Replication](sql-database-geo-replication-overview.md).  
+- To learn about using automated backups for archiving, see [database copy](sql-database-copy.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

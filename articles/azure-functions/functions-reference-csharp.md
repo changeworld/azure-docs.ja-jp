@@ -1,41 +1,42 @@
 <properties
-	pageTitle="Azure Functions 開発者向けリファレンス | Microsoft Azure"
-	description="C# を使用して Azure Functions を開発する方法について説明します。"
-	services="functions"
-	documentationCenter="na"
-	authors="christopheranderson"
-	manager="erikre"
-	editor=""
-	tags=""
-	keywords="Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
+    pageTitle="Azure Functions developer reference | Microsoft Azure"
+    description="Understand how to develop Azure Functions using C#."
+    services="functions"
+    documentationCenter="na"
+    authors="christopheranderson"
+    manager="erikre"
+    editor=""
+    tags=""
+    keywords="azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture"/>
 
 <tags
-	ms.service="functions"
-	ms.devlang="dotnet"
-	ms.topic="reference"
-	ms.tgt_pltfrm="multiple"
-	ms.workload="na"
-	ms.date="05/13/2016"
-	ms.author="chrande"/>
+    ms.service="functions"
+    ms.devlang="dotnet"
+    ms.topic="reference"
+    ms.tgt_pltfrm="multiple"
+    ms.workload="na"
+    ms.date="05/13/2016"
+    ms.author="chrande"/>
 
-# Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
+
+# <a name="azure-functions-c#-developer-reference"></a>Azure Functions C# developer reference
 
 > [AZURE.SELECTOR]
-- [C# スクリプト](../articles/azure-functions/functions-reference-csharp.md)
-- [F# スクリプト](../articles/azure-functions/functions-reference-fsharp.md)
-- [Node.JS](../articles/azure-functions/functions-reference-node.md)
+- [C# script](../articles/azure-functions/functions-reference-csharp.md)
+- [F# script](../articles/azure-functions/functions-reference-fsharp.md)
+- [Node.js](../articles/azure-functions/functions-reference-node.md)
  
-Azure Functions の C# エクスペリエンスは、Azure WebJobs SDK に基づいています。データは、メソッドの引数を使用して C# 関数に渡されます。引数名は `function.json` で指定され、関数のロガーやキャンセル トークンなどにアクセスするための定義済みの名前があります。
+The C# experience for Azure Functions is based on the Azure WebJobs SDK. Data flows into your C# function via method arguments. Argument names are specified in `function.json`, and there are predefined names for accessing things like the function logger and cancellation tokens.
 
-この記事では、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
+This article assumes that you've already read the [Azure Functions developer reference](functions-reference.md).
 
-## .csx のしくみ
+## <a name="how-.csx-works"></a>How .csx works
 
-`.csx` の形式では、"定型" の記述が少なく、C# 関数のみの記述に重点が置かれています。Azure Functions の場合、通常どおりに上部に表示する任意のアセンブリ参照と名前空間を含め、すべてを名前空間とクラスにラッピングする代わりに、`Run` メソッドの定義のみを行います。POCO オブジェクトを定義する場合など、クラスを含める必要がある場合は、同じファイル内にクラスを含めることができます。
+The `.csx` format allows to write less "boilerplate" and focus on writing just a C# function. For Azure Functions, you just include any assembly references and namespaces you need up top, as usual, and instead of wrapping everything in a namespace and class, you can just define your `Run` method. If you need to include any classes, for instance to define POCO objects, you can include a class inside the same file.
 
-## 引数へのバインド
+## <a name="binding-to-arguments"></a>Binding to arguments
 
-*function.json* 構成の `name` プロパティを通じて、さまざまなバインドが C# 関数にバインドされます。各バインドには、バンドごとに記述される、独自のサポートされている型があります。たとえば、blob のトリガーでは、文字列、POCO、その他いくつかの型がサポートされます。ニーズに合わせて最適な型を使用できます。
+The various bindings are bound to a C# function via the `name` property in the *function.json* configuration. Each binding has its own supported types which is documented per binding; for instance, a blob trigger can support a string, a POCO, or several other types. You can use the type which best suits your need. 
 
 ```csharp
 public static void Run(string myBlob, out MyClass myQueueItem)
@@ -50,9 +51,9 @@ public class MyClass
 }
 ```
 
-## ログの記録
+## <a name="logging"></a>Logging
 
-出力を C# のストリーミング ログにログ記録するために、`TraceWriter` 型の引数を含めることができます。これの名前を `log` にすることをお勧めします。Azure Functions の `Console.Write` は避けることをお勧めします。
+To log output to your streaming logs in C#, you can include a `TraceWriter` typed argument. We recommend that you name it `log`. We recommend you avoid `Console.Write` in Azure Functions.
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
@@ -61,9 +62,9 @@ public static void Run(string myBlob, TraceWriter log)
 }
 ```
 
-## 非同期
+## <a name="async"></a>Async
 
-関数を非同期にするには、`async` キーワードを使用して `Task` オブジェクトを返します。
+To make a function asynchronous, use the `async` keyword and return a `Task` object.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -75,9 +76,9 @@ public async static Task ProcessQueueMessageAsync(
     }
 ```
 
-## キャンセル トークン
+## <a name="cancellation-token"></a>Cancellation Token
 
-場合によっては、シャット ダウンに影響を受ける操作があります。クラッシュに対応するコードを記述するのが最善の方法ですが、グレースフル シャットダウンの要求を処理する場合は、[`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 型の引数を定義します。ホストのシャットダウンがトリガーされると、`CancellationToken` が提供されます。
+In certain cases, you may have operations which are sensitive to being shut down. While it's always best to write code which can handle crashing,  in cases where you want to handle graceful shutdown requests, you define a [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) typed argument.  A `CancellationToken` will be provided if a host shutdown is triggered. 
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -90,9 +91,9 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
     }
 ```
 
-## 名前空間のインポート
+## <a name="importing-namespaces"></a>Importing namespaces
 
-名前空間をインポートする必要がある場合は、`using` 句を使用して、通常どおりにインポートできます。
+If you need to import namespaces, you can do so as usual, with the `using` clause.
 
 ```csharp
 using System.Net;
@@ -101,7 +102,7 @@ using System.Threading.Tasks;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 ```
 
-次の名前空間は自動的にインポートされるため、オプションとなります。
+The following namespaces are automatically imported and are therefore optional:
 
 * `System`
 * `System.Collections.Generic`
@@ -110,11 +111,11 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`
+* `Microsoft.Azure.WebJobs.Host`.
 
-## 外部アセンブリの参照
+## <a name="referencing-external-assemblies"></a>Referencing External Assemblies
 
-フレームワークのアセンブリには、`#r "AssemblyName"` ディレクティブを使用して参照を追加します。
+For framework assemblies, add references by using the `#r "AssemblyName"` directive.
 
 ```csharp
 #r "System.Web.Http"
@@ -126,7 +127,7 @@ using System.Threading.Tasks;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 ```
 
-次のアセンブリは、Azure Functions をホストしている環境によって自動的に追加されます。
+The following assemblies are automatically added by the Azure Functions hosting environment:
 
 * `mscorlib`,
 * `System`
@@ -137,21 +138,21 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`
+* `System.Net.Http.Formatting`.
 
-さらに、次のアセンブリは特別扱いされ、simplename によって参照される場合があります (例: `#r "AssemblyName"`)。
+In addition, the following assemblies are special cased and may be referenced by simplename (e.g. `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`
+* `Microsoft.AspNEt.WebHooks.Common`.
 
-プライベート アセンブリを参照する必要がある場合は、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
+If you need to reference a private assembly, you can upload the assembly file into a `bin` folder relative to your function and reference it by using the file name (e.g.  `#r "MyAssembly.dll"`). For information on how to upload files to your function folder, see the following section on package management.
 
-## パッケージの管理
+## <a name="package-management"></a>Package management
 
-NuGet パッケージを C# 関数で使用するには、*project.json* ファイルを関数アプリのファイル システムにある関数のフォルダーにアップロードします。Microsoft.ProjectOxford.Face バージョン 1.1.0 への参照を追加する *project.json* ファイルの例を次に示します。
+To use NuGet packages in a C# function, upload a *project.json* file to the the function's folder in the function app's file system. Here is an example *project.json* file that adds a reference to Microsoft.ProjectOxford.Face version 1.1.0:
 
 ```json
 {
@@ -165,20 +166,20 @@ NuGet パッケージを C# 関数で使用するには、*project.json* ファ�
 }
 ```
 
-.NET Framework 4.6 のみがサポートされているので、次に示すように *project.json* ファイルが `net46` を指定していることを確認します。
+Only the .NET Framework 4.6 is supported, so make sure that your *project.json* file specifies `net46` as shown here.
 
-*project.json* ファイルをアップロードすると、ランタイムによってパッケージが取得され、パッケージ アセンブリに参照が自動的に追加されます。`#r "AssemblyName"` ディレクティブを追加する必要はありません。NuGet パッケージで定義されている型を使用するには、必要な `using` ステートメントを *run.csx* ファイルに追加するだけです。
+When you upload a *project.json* file, the runtime gets the packages and automatically adds references to the package assemblies. You don't need to add `#r "AssemblyName"` directives. Just add the required `using` statements to your *run.csx* file to use the types defined in the NuGet packages.
 
 
-### Project.json ファイルをアップロードする方法
+### <a name="how-to-upload-a-project.json-file"></a>How to upload a project.json file
 
-1. Azure ポータルで関数を開き、関数アプリが実行中であることを確認して開始します。
+1. Begin by making sure your function app is running, which you can do by opening your function in the Azure portal. 
 
-	これにより、パッケージのインストール出力が表示されるストリーミング ログへのアクセス権が付与されます。
+    This also gives access to the streaming logs where package installation output will be displayed. 
 
-2. project.json ファイルをアップロードするには、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md#fileupdate)」の「**関数アプリ ファイルを更新する方法**」セクションにあるいずれかの方法を利用してください。
+2. To upload a project.json file, use one of the methods described in the **How to update function app files** section of the [Azure Functions developer reference topic](functions-reference.md#fileupdate). 
 
-3. *project.json* ファイルがアップロードされた後、関数のストリーミング ログの出力は次の例のようになります。
+3. After the *project.json* file is uploaded, you see output like the following example in your function's streaming log:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -197,9 +198,9 @@ NuGet パッケージを C# 関数で使用するには、*project.json* ファ�
 2016-04-04T19:02:57.455 Packages restored.
 ```
 
-## 環境変数
+## <a name="environment-variables"></a>Environment variables
 
-環境変数またはアプリ設定値を取得するには、次のコード例のように、`System.Environment.GetEnvironmentVariable` を使用します。
+To get an environment variable or an app setting value, use `System.Environment.GetEnvironmentVariable`, as shown in the following code example:
 
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log)
@@ -216,11 +217,11 @@ public static string GetEnvironmentVariable(string name)
 }
 ```
 
-## .csx コードの再利用
+## <a name="reusing-.csx-code"></a>Reusing .csx code
 
-他の *.csx* ファイルで定義されたクラスとメソッドを、*run.csx* ファイルで使用できます。そのためには、次の例に示すように `#load` ディレクティブを *run.csx* ファイルで使用します。
+You can use classes and methods defined in other *.csx* files in your *run.csx* file. To do that, use `#load` directives in your *run.csx* file, as shown in the following example.
 
-*run.csx* の例:
+Example *run.csx*:
 
 ```csharp
 #load "mylogger.csx"
@@ -232,7 +233,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 }
 ```
 
-*mylogger.csx* の例:
+Example *mylogger.csx*:
 
 ```csharp
 public static void MyLogger(TraceWriter log, string logtext)
@@ -241,23 +242,28 @@ public static void MyLogger(TraceWriter log, string logtext)
 }
 ```
 
-`#load` ディレクティブで相対パスを使用できます。
+You can use a relative path with the `#load` directive:
 
-* `#load "mylogger.csx"` によって、関数フォルダーにあるファイルが読み込まれます。
+* `#load "mylogger.csx"` loads a file located in the function folder.
 
-* `#load "loadedfiles\mylogger.csx"` によって、関数フォルダー内のフォルダーにあるファイルが読み込まれます。
+* `#load "loadedfiles\mylogger.csx"` loads a file located in a folder in the function folder.
 
-* `#load "..\shared\mylogger.csx"` によって、関数フォルダーと同じレベル (*wwwroot* の直下) にあるフォルダーのファイルが読み込まれます。
+* `#load "..\shared\mylogger.csx"` loads a file located in a folder at the same level as the function folder, that is, directly under *wwwroot*.
  
-`#load` ディレクティブは、*.csx* (C# スクリプト) ファイルでのみ機能し、*.cs* ファイルでは機能しません。
+The `#load` directive works only with *.csx* (C# script) files, not with *.cs* files. 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-詳細については、次のリソースを参照してください。
+For more information, see the following resources:
 
-* [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
-* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-fsharp.md)
-* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
-* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+* [Azure Functions developer reference](functions-reference.md)
+* [Azure Functions NodeJS developer reference](functions-reference-fsharp.md)
+* [Azure Functions NodeJS developer reference](functions-reference-node.md)
+* [Azure Functions triggers and bindings](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

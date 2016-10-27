@@ -1,39 +1,40 @@
 <properties 
-	pageTitle="Java Web アプリでの依存関係、例外、および実行時間の監視" 
-	description="Extended monitoring of your Java website with Application Insights (Application Insights を使用した Java Web サイトの監視の拡張)" 
-	services="application-insights" 
+    pageTitle="Java Web アプリでの依存関係、例外、および実行時間の監視" 
+    description="Extended monitoring of your Java website with Application Insights (Application Insights を使用した Java Web サイトの監視の拡張)" 
+    services="application-insights" 
     documentationCenter="java"
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/24/2016" 
+    ms.author="awills"/>
  
-# Java Web アプリでの依存関係、例外、および実行時間の監視
+
+# <a name="monitor-dependencies,-exceptions-and-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、例外、および実行時間の監視
 
 *Application Insights はプレビュー段階です。*
 
-[Java Web アプリを Application Insights でインストルメント化][java]した場合、Java エージェントを使用して、コードを変更することなく、詳細な分析を行うことができます。
+[Java Web アプリを Application Insights][java] でインストルメント化した場合、Java エージェントを使用して、コードを変更することなく、詳細な分析を行うことができます。
 
 
 * **依存関係:** アプリケーションが他のコンポーネントに対して行った呼び出しについてのデータであり、次のものを含みます。
- * **REST 呼び出し**: HttpClient、OkHttp、および RestTemplate (Spring) 経由で行われた呼び出しです。
- * **Redis 呼び出し**: Jedis クライアント経由で行われた呼び出しです。呼び出しにかかる時間が 10 秒を超えた場合、エージェントは呼び出し引数も取得します。
- * **[JDBC 呼び出し](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**: MySQL、SQL Server、PostgreSQL、SQLite、Oracle DB、または Apache Derby DB の "executeBatch" 呼び出しがサポートされます。MySQL と PostgreSQL で呼び出しにかかる時間が 10 秒を超えた場合、エージェントはクエリ プランをレポートします。
+ * **REST 呼び出し** : HttpClient、OkHttp、および RestTemplate (Spring) 経由で行われた呼び出しです。
+ * **Redis 呼び出し** : Jedis クライアント経由で行われた呼び出しです。 呼び出しにかかる時間が 10 秒を超えた場合、エージェントは呼び出し引数も取得します。
+ * **[JDBC 呼び出し](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**: MySQL、SQL Server、PostgreSQL、SQLite、Oracle DB、または Apache Derby DB。 "executeBatch" 呼び出しがサポートされます。 MySQL と PostgreSQL で呼び出しにかかる時間が 10 秒を超えた場合、エージェントはクエリ プランをレポートします。 
 * **例外の検出:** コードで処理される例外に関するデータ。
 * **メソッドの実行時間:** 特定のメソッドの実行にかかる時間に関するデータ。
 
-Java エージェントを使用するには、これをサーバーにインストールします。Web アプリを [Application Insights Java SDK][java] を使用してインストルメント化する必要があります。
+Java エージェントを使用するには、これをサーバーにインストールします。 Web アプリを [Application Insights Java SDK][java] を使用してインストルメント化する必要があります。
 
-## Jave 用の Application Insights エージェントのインストール
+## <a name="install-the-application-insights-agent-for-java"></a>Jave 用の Application Insights エージェントのインストール
 
-1. Java サーバーを実行しているコンピューターで[エージェントをダウンロード](https://azuredownloads.blob.core.windows.net/applicationinsights/sdk.html)します。
+1. Java サーバーを実行しているコンピューターで [エージェントをダウンロード](https://aka.ms/aijavasdk)します。
 2. アプリケーション サーバーのスタートアップ スクリプトを編集し、次の JVM を追加します。
 
     `javaagent:`*エージェント JAR ファイルへの完全パス*
@@ -45,11 +46,11 @@ Java エージェントを使用するには、これをサーバーにインス
 
 3. アプリケーション サーバーを再起動します。
 
-## エージェントの構成
+## <a name="configure-the-agent"></a>エージェントの構成
 
 `AI-Agent.xml` という名前のファイルを作成し、エージェントの JAR ファイルの場所と同じフォルダーに配置します。
 
-xml ファイルの内容を設定します。次の例を編集して、必要に応じて、機能を含めるか省略します。
+xml ファイルの内容を設定します。 次の例を編集して、必要に応じて、機能を含めるか省略します。 
 
 ```XML
 
@@ -92,17 +93,17 @@ xml ファイルの内容を設定します。次の例を編集して、必要�
 
 既定では、`reportExecutionTime` は true、`reportCaughtExceptions` は false です。
 
-## データの表示
+## <a name="view-the-data"></a>データの表示
 
-Application Insights リソースでは、集計されたリモートの依存関係やメソッドの実行時間が [[パフォーマンス] タイルに][metrics]表示されます。
+Application Insights リソースでは、集計されたリモートの依存関係やメソッドの実行時間が [[パフォーマンス] タイル][メトリック]に表示されます。 
 
-依存関係、例外、メソッドのレポートの個々のインスタンスを検索するには、[[検索]][diagnostic] を開きます。
+依存関係、例外、メソッドのレポートの個々のインスタンスを検索するには、[[検索]][ 診断] を開きます。 
 
 「[依存関係の問題の診断](app-insights-dependencies.md#diagnosis)」を参照してください。
 
 
 
-## 疑問がある場合 問題が発生した場合
+## <a name="questions?-problems?"></a>疑問がある場合 問題が発生した場合
 
 * データが表示されない場合 [ファイアウォール例外の設定](app-insights-ip-addresses.md)
 * [Java のトラブルシューティング](app-insights-java-troubleshoot.md)
@@ -123,4 +124,8 @@ Application Insights リソースでは、集計されたリモートの依存�
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

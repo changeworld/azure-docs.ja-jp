@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Visual Studio で Windows VM を作成して管理する | Microsoft Azure"
-   description="Visual Studio を使用して、Windows を実行する Azure VM の作成および管理する方法"
+   pageTitle="Create and manage Windows VMs in Visual Studio | Microsoft Azure"
+   description="Learn to use Visual Studio to create and manage Azure VMs running Windows"
    services="visual-studio-online,virtual-machines-windows"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,10 +15,15 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Visual Studio で Windows 仮想マシンを作成して管理する
+
+# <a name="create-and-manage-windows-virtual-machines-in-visual-studio"></a>Create and manage Windows virtual machines in Visual Studio
 
 
 
 [AZURE.INCLUDE [virtual-machines-common-classic-manage-visual-studio](../../includes/virtual-machines-common-classic-manage-visual-studio.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

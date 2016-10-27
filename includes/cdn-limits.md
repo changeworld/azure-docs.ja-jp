@@ -1,10 +1,13 @@
 
-リソース | ソフト制限
+Resource | Soft limit
 ---------|-----------
-CDN のプロファイル数 | 8
-プロファイルあたりの CDN エンドポイント数 | 10
-エンドポイントあたりのカスタム ドメイン数 | 10 
+CDN profiles | 8
+CDN endpoints per profile | 10
+Custom domains per endpoint | 10 
 
-サブスクリプションのソフト制限を更新するように要求するには、サポート チケットを開きます。
+Request an update to your subscription's soft limits by opening a support ticket.
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

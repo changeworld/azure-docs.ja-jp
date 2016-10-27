@@ -1,15 +1,18 @@
 
-1. [Azure ポータル](https://azure.portal.com/) で、**[参照]**、**[App Services]** の順にクリックします。お使いのモバイル アプリ バックエンドを探してクリックした後、**[すべての設定]**、**[モバイル]**、**[プッシュ]** の順にクリックします。
+1. In the [Azure Portal]( https://azure.portal.com/), click **Browse** > **App Services**, locate and click your Mobile App backend > **All settings**, then under **Mobile** click **Push**.
 
-2. [プッシュ通知サービス] で、**[Google (GCM)]** をクリックし、前の手順で GCM から取得した **[API キー]** の値を入力し、**[保存]** をクリックします。
+2. In Push notification services, click **Google (GCM)**, enter the **API Key** value that you obtained from GCM in the previous procedure, then click **Save**.
 
-    ![ポータルで GCM API キーを設定する](./media/app-service-mobile-android-configure-push/mobile-push-api-key.png)
+    ![Set the GCM API key in the portal](./media/app-service-mobile-android-configure-push/mobile-push-api-key.png)
 
-これで、モバイル アプリ バックエンドは、通知ハブを使用している Android デバイスで実行中のアプリに GCM を使用してプッシュ通知を使用するように構成されました。
+The Mobile App backend is now configured to use GCM to send push notifications to your app running on an Android device using the notification hub.
 
 <!-- URLs. -->
 
 
 <!-- images -->
 
-<!---HONumber=AcomDC_1203_2015-->
+
+<!--HONumber=Oct16_HO2-->
+
+

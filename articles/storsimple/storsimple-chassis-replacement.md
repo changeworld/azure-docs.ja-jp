@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple デバイスのシャーシを交換する | Microsoft Azure"
-   description="StorSimple プライマリ エンクロージャまたは EBOD エンクロージャのシャーシを取り外して交換する方法について説明します。"
+   pageTitle="Replace the chassis on a StorSimple device | Microsoft Azure"
+   description="Describes how to remove and replace the chassis for your StorSimple primary enclosure or EBOD enclosure."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,52 +15,58 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
-# StorSimple デバイスのシャーシを交換する
 
-## Overview
+# <a name="replace-the-chassis-on-your-storsimple-device"></a>Replace the chassis on your StorSimple device
 
-このチュートリアルでは、StorSimple 8000 シリーズ デバイスのシャーシを取り外して交換する方法について説明します。StorSimple 8100 モデルはシングル エンクロージャ デバイス (1 つのシャーシ) で、8600 はデュアル エンクロージャ デバイス (2 つのシャーシ) です。8600 モデルでは、デバイスで故障する可能性があるシャーシが 2 つあります。主エンクロージャのシャーシと EBOD エンクロージャのシャーシです。
+## <a name="overview"></a>Overview
 
-どちらの場合も、Microsoft から出荷される交換用のシャーシは空です。電源および冷却モジュール (PCM)、コントローラー モジュール、ソリッド ステート ディスク ドライブ (SSD)、ハード ディスク ドライブ (HDD)、または EBOD モジュールは付属していません。
+This tutorial explains how to remove and replace a chassis in a StorSimple 8000 series device. The StorSimple 8100 model is a single enclosure device (one chassis), whereas the 8600 is a dual enclosure device (two chassis). For an 8600 model, there are potentially two chassis that could fail in the device: the chassis for the primary enclosure or the chassis for the EBOD enclosure.
 
->[AZURE.IMPORTANT] シャーシを取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
+In either case, the replacement chassis that is shipped by Microsoft is empty. No Power and Cooling Modules (PCMs), controller modules, solid state disk drives (SSDs), hard disk drives (HDDs), or EBOD modules will be included.
 
-## シャーシを取り外す
+>[AZURE.IMPORTANT] Before removing and replacing the chassis, review the safety information in [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
 
-次の手順を実行して、StorSimple デバイスのシャーシを取り外します。
+## <a name="remove-the-chassis"></a>Remove the chassis
 
-#### シャーシを取り外すには
+Perform the following steps to remove the chassis on your StorSimple device.
 
-1. StorSimple デバイスがシャットダウンされていて、すべての電源から切断されていることを確認します。
+#### <a name="to-remove-a-chassis"></a>To remove a chassis
 
-2. 該当する場合は、すべてのネットワーク ケーブルと SAS ケーブルを取り外します。
+1. Make sure that the StorSimple device is shut down and disconnected from all the power sources.
 
-3. ラックからユニットを取り外します。
+2. Remove all the network and SAS cables, if applicable.
 
-4. 各ドライブを取り外し、取り外したスロットを記録しておきます。詳細については、「[ディスク ドライブを取り外す](storsimple-disk-drive-replacement.md#remove-the-disk-drive)」を参照してください。
+3. Remove the unit from the rack.
 
-5. EBOD エンクロージャで (EBOD エンクロージャのシャーシが故障した場合)、EBOD コントローラー モジュールを取り外します。詳細については、「[EBOD コントローラーを取り外す](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller)」を参照してください。
+4. Remove each of the drives and note the slots from which they are removed. For more information, see [Remove the disk drive](storsimple-disk-drive-replacement.md#remove-the-disk-drive).
 
-    主エンクロージャで (主エンクロージャのシャーシが故障した場合)、コントローラーを取り外し、取り外したスロットを記録しておきます。詳細については、「[コントローラーを取り外す](storsimple-controller-replacement.md#remove-a-controller)」を参照してください。
+5. On the EBOD enclosure (if this is the chassis that failed), remove the EBOD controller modules. For more information, see [Remove an EBOD controller](storsimple-ebod-controller-replacement.md#remove-an-ebod-controller). 
 
-## シャーシを取り付ける
+    On the primary enclosure (if this is the chassis that failed), remove the controllers and note the slots from which they are removed. For more information, see [Remove a controller](storsimple-controller-replacement.md#remove-a-controller).
 
-次の手順を実行して、StorSimple デバイスのシャーシを取り付けます。
+## <a name="install-the-chassis"></a>Install the chassis
 
-#### シャーシを取り付けるには
+Perform the following steps to install the chassis on your StorSimple device.
 
-1. シャーシをラックに取り付けます。詳細については、「[StorSimple 8100 デバイスをラックに取り付ける](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device)」または「[StorSimple 8600 デバイスをラックに取り付ける](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device)」を参照してください。
+#### <a name="to-install-a-chassis"></a>To install a chassis
 
-2. シャーシをラックに取り付けた後、コントローラー モジュールを前に取り付けられていたのと同じ位置に取り付けます。
+1. Mount the chassis in the rack. For more information, see [Rack-mount your StorSimple 8100 device](storsimple-8100-hardware-installation.md#rack-mount-your-storsimple-8100-device) or [Rack-mount your StorSimple 8600 device](storsimple-8600-hardware-installation.md#rack-mount-your-storsimple-8600-device).
 
-3. ドライブを以前と同じ位置およびスロットに取り付けます。
+2. After the chassis is mounted in the rack, install the controller modules in the same positions that they were previously installed in.
 
-    >[AZURE.NOTE] 最初に SSD をスロットに取り付けて、その後で HDD を取り付けることをお勧めします。
+3. Install the drives in the same positions and slots that they were previously installed in.
 
-2. デバイスをラックに取り付け、コンポーネントを取り付けた状態で、デバイスを適切な電源に接続し、デバイスの電源を入れます。詳細については、「[StorSimple 8100 デバイスにケーブルを接続する](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device)」または「[StorSimple 8600 デバイスにケーブルを接続する](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)」を参照してください。
+    >[AZURE.NOTE] We recommend that you install the SSDs in the slots first, and then install the HDDs.
 
-## 次のステップ
+2. With the device mounted in the rack and the components installed, connect your device to the appropriate power sources, and turn on the device. For details, see [Cable your StorSimple 8100 device](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) or [Cable your StorSimple 8600 device](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
-「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0817_2016-->
+Learn more about [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

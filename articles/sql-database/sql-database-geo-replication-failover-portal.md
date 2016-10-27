@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Azure ポータルを使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始 | Microsoft Azure" 
-    description="Azure ポータルを使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始" 
+    pageTitle="Initiate a planned or unplanned failover for Azure SQL Database with the Azure portal | Microsoft Azure" 
+    description="Initiate a planned or unplanned failover for Azure SQL Database using the Azure portal" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
@@ -16,45 +16,46 @@
     ms.date="08/29/2016"
     ms.author="sstein"/>
 
-# Azure ポータルを使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始
+
+# <a name="initiate-a-planned-or-unplanned-failover-for-azure-sql-database-with-the-azure-portal"></a>Initiate a planned or unplanned failover for Azure SQL Database with the Azure portal
 
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](sql-database-geo-replication-failover-portal.md)
+- [Azure portal](sql-database-geo-replication-failover-portal.md)
 - [PowerShell](sql-database-geo-replication-failover-powershell.md)
 - [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
 
 
-この記事では、[Azure ポータル](http://portal.azure.com)を使用して、セカンダリ SQL Database へのフェールオーバーを開始する方法について説明します。geo レプリケーションを構成する場合は、[Azure SQL Database の geo レプリケーションの構成](sql-database-geo-replication-portal.md)に関するページをご覧ください。
+This article shows you how to initiate failover to a secondary SQL Database with the [Azure portal](http://portal.azure.com). To configure Geo-Replication, see [Configure Geo-Replication for Azure SQL Database](sql-database-geo-replication-portal.md).
 
 
-## フェールオーバーの開始
+## <a name="initiate-a-failover"></a>Initiate a failover
 
-セカンダリ データベースは、プライマリ データベースとして使用するように切り替えることができます。
+The secondary database can be switched to become the primary.  
 
-1. [Azure ポータル](http://portal.azure.com)で、geo レプリケーション パートナーシップのプライマリ データベースを参照します。
-2. [SQL Database] ブレードで、**[すべての設定]**、**[geo レプリケーション]** の順に選択します。
-3. **[セカンダリ]** ボックスの一覧で、新しいプライマリとして使用するデータベースを選択し、**[フェールオーバー]** をクリックします。
+1. In the [Azure portal](http://portal.azure.com) browse to the primary database in the Geo-Replication partnership.
+2. On the SQL Database blade, select **All settings** > **Geo-Replication**.
+3. In the **SECONDARIES** list, select the database you want to become the new primary and click **Failover**.
 
-    ![フェールオーバー][2]
+    ![failover][2]
 
-4. **[はい]** をクリックして、フェールオーバーを開始します。
+4. Click **Yes** to begin the failover.
 
-このコマンドは、セカンダリ データベースをプライマリ ロールに即座に切り替えます。
+The command will immediately switch the secondary database into the primary role. 
 
-ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。プライマリ データベースに複数のセカンダリ データベースがある場合は、コマンドによって、新しいプライマリに接続するように他のセカンダリが自動的に再構成されます。通常の状況では、操作全体が完了するのに 1 分かかりません。
+There is a short period during which both databases are unavailable (on the order of 0 to 25 seconds) while the roles are switched. If the primary database has multiple secondary databases, the command will automatically reconfigure the other secondaries to connect to the new primary. The entire operation should take less than a minute to complete under normal circumstances. 
 
->[AZURE.NOTE] コマンドが発行されたときに、プライマリがオンラインでトランザクションをコミット中の場合、一部のデータが失われる可能性があります。
+>[AZURE.NOTE] If the primary is online and committing transactions when the command is issued some data loss may occur.
 
 
-## 次のステップ   
+## <a name="next-steps"></a>Next steps   
 
-- フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
-- 復旧前後の手順や障害復旧訓練の実施など、アクティブ geo レプリケーションを使用した障害後の復旧については、[障害復旧の訓練](sql-database-disaster-recovery.md)に関するページをご覧ください。
-- アクティブ geo レプリケーションについては、Sasha Nosov の [geo レプリケーションの新機能](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)に関するブログ記事をご覧ください。
-- アクティブ geo レプリケーションを使用したクラウド アプリケーションの設計については、[geo レプリケーションを使用したビジネス継続性のためのクラウド アプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
-- エラスティック データベース プールでのアクティブ geo レプリケーションの使用については、[エラスティック プールの障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
-- ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをご覧ください。
+- After failover, ensure the authentication requirements for your server and database are configured on the new primary. For details, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).
+- To learn recovering after a disaster using Active Geo-Replication, including pre and post recovery steps and performing a disaster recovery drill, see [Disaster Recovery Drills](sql-database-disaster-recovery.md)
+- For a Sasha Nosov blog post about Active Geo-Replication, see [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
+- For information about designing cloud applications to use Active Geo-Replication, see [Designing cloud applications for business continuity using Geo-Replication](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- For information about using Active Geo-Replication with elastic database pools, see [Elastic Pool disaster recovery strategies](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+- For an overview of business continurity, see [Business Continuity Overview](sql-database-business-continuity.md)
 
 
 
@@ -63,4 +64,8 @@
 [1]: ./media/sql-database-geo-replication-failover-portal/failover.png
 [2]: ./media/sql-database-geo-replication-failover-portal/secondaries.png
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="仮想ネットワーク (VNet) で使用される DNS サーバーの管理"
-   description="仮想ネットワーク (VNet) の DNS サーバーを追加および削除する方法について説明します。"
+   pageTitle="Manage DNS servers used by a virtual network (VNet)"
+   description="Learn how to add and remove DNS servers in a virtual network (vnet)"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,46 +15,51 @@
    ms.date="03/15/2016"
    ms.author="jdial" />
 
-# 仮想ネットワーク (VNet) で使用される DNS サーバーの管理
 
-VNet で使用される DNS サーバーの一覧は、管理ポータルまたはネットワーク構成ファイルで管理できます。VNet ごとに最大 12 台の DNS サーバーを追加できます。DNS サーバーを指定する際に重要なのは、環境に適した順で DNS サーバーが一覧表示されていることを確認することです。DNS サーバーの一覧はラウンド ロビンに対応していません。指定した順序で使用されます。一覧の先頭にある DNS サーバーに到達できる場合は、DNS サーバーが正しく動作しているかどうかに関係なく、クライアントはその DNS サーバーを使用します。仮想ネットワーク用に DNS サーバーの順序を変更するには、DNS サーバーを一覧から削除して、希望の順序になるように再度追加します。
+# <a name="manage-dns-servers-used-by-a-virtual-network-(vnet)"></a>Manage DNS servers used by a virtual network (VNet)
 
->[AZURE.WARNING] DNS の一覧が更新された後は、新しい DNS サーバーの設定が取得されるように、仮想ネットワークにある仮想マシンを再起動する必要があります。仮想マシンは、再起動されるまで、現在の構成を引き続き使用します。
+You can manage the list of DNS servers used in a VNet in the Management Portal, or in the network configuration file. You can add up to 12 DNS servers for each VNet. When specifying DNS servers, it's important to verify that you list your DNS servers in the correct order for your environment. DNS server lists do not work round-robin. They are used in the order that they are specified. If the first DNS server on the list is able to be reached, the client will use that DNS server regardless of whether the DNS server is functioning properly or not. To change the DNS server order for your virtual network, remove the DNS servers from the list and add them back in the order that you want.
 
-## 管理ポータルによる仮想ネットワークの DNS サーバー一覧の編集
+>[AZURE.WARNING] After the DNS list has been updated, you must restart the virtual machines located in your virtual network so that they pick up the new DNS server settings. Virtual machines will continue to use their current configuration until they are restarted.
 
-1. **管理ポータル** にログオンします。
+## <a name="edit-a-dns-server-list-for-a-virtual-network-using-the-management-portal"></a>Edit a DNS server list for a virtual network using the Management Portal
 
-1. ナビゲーション ウィンドウで、**[ネットワーク]** をクリックし、**[名前]** 列の仮想ネットワーク名をクリックします。
+1. Log on to the **Management Portal**.
 
-1. **[構成]** をクリックします。
+1. In the navigation pane, click **Networks**, and then click the name of your virtual network in the **Name** column.
 
-1. **[DNS サーバー]** では、次の構成を行うことができます。
+1. Click **Configure**.
 
-	- **新しい DNS サーバーの登録 (追加)**: ボックスに名前と IP アドレスを入力するだけです。これにより、DNS サーバーは、仮想ネットワークの DNS サーバーの一覧に追加され、さらに Azure に登録されます。
+1. In **DNS Servers**, you can configure the following:
 
-	- **以前登録された DNS サーバーの追加**: DNS サーバーを既に Azure に登録している場合は、設定済みの一覧から選択できます。
+    - **To register (add) a new DNS server –** Simply type the name and IP address in the boxes. This adds a DNS server to your virtual network DNS Servers list and also registers the DNS server with Azure.
 
-	- **仮想ネットワークからの DNS サーバーの削除**: 削除するサーバーの横にある [x] をクリックします。この操作では、仮想ネットワークの一覧からサーバーが削除されるだけです。DNS サーバーは、他の仮想ネットワークで使用するために Azure に登録されたままになります。サブスクリプションから DNS サーバーを削除するには、**[ネットワーク]、[DNS サーバー]** ページの順に移動します。
+    - **To add a DNS server that was previously registered –** If you already registered a DNS server with Azure, you can select it from the pre-populated list.
 
-	- **DNS サーバーの順序変更**: 一覧表示されたすべての DNS サーバーを削除してから、希望する順序で再度追加します。ラウンド ロビン DNS の一覧ではないことに注意してください。
+    - **To remove a DNS server from your virtual network –** Click the X next to the server you want to remove. Note that this only removes the server from this virtual network list. The DNS server remains registered in Azure for your other virtual networks to use. To delete a DNS server from your subscription, go to the **Networks ->DNS Servers** page.
 
-	- **DNS サーバーの名前変更**: 一覧で DNS サーバーを強調表示し、新しい名前を入力します。これにより、新しい DNS サーバーが Azure に登録されると同時に、仮想ネットワークの DNS サーバーの一覧にも追加されます。古い DNS サーバーとその IP アドレスは Azure に登録されたままになります。他の仮想ネットワークで使用しない場合は、**[DNS サーバー]** ページで削除できます。
+    - **To re-order DNS servers –** Remove all of the DNS servers that are listed, and then add them back in in the order that you want. Remember that this is not a round-robin DNS list.
 
-1. ページの下部にある **[保存]** をクリックし、新しい DNS サーバーの構成を保存します。
+    - **To rename a DNS server –** Highlight the DNS server in the list, then type the new name. This will register a new DNS server in Azure, as well as add it to the DNS Servers list for your virtual network. The old DNS server and its IP address will remain registered with Azure. You can delete it on the **DNS Servers** page if you are not using it for any other virtual networks.
 
-1. 仮想ネットワークにある仮想マシンを再起動して、新しい DNS の設定を取得できるようにします。
+1. Click **Save** at the bottom of the page to save your new DNS servers configuration.
 
-## ネットワーク構成ファイルによる DNS サーバー一覧の編集
+1. Restart the virtual machines located in the virtual network to allow them to acquire the new DNS settings.
 
-ネットワーク構成ファイルを使用して DNS サーバーの一覧を編集するには、最初に管理ポータルから構成設定をエクスポートします。次に、ネットワーク構成ファイルを編集し、管理ポータルでもう一度インポートします。このプロセスを完了するための手順の概要は次のとおりです。
+## <a name="edit-a-dns-server-list-using-a-network-configuration-file"></a>Edit a DNS server list using a network configuration file
 
-1. 仮想ネットワークの設定をネットワーク構成ファイルにエクスポートします。ネットワーク構成設定のエクスポートの詳細と手順については、「[ネットワーク構成ファイルへの仮想ネットワーク設定のエクスポート](virtual-networks-using-network-configuration-file.md)」をご覧ください。
+To edit a DNS server list by using a network configuration file, you'll first export your configuration settings from the Management Portal. You'll then edit the network configuration file and import it back through the Management Portal. Below is a high-level list of steps to complete this process.
 
-1. 仮想ネットワークの DNS サーバーの情報を指定します。DNS サーバーの指定の詳細については、[仮想ネットワーク構成ファイルでの DNS サーバーの指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)に関するページをご覧ください。ネットワーク構成ファイルの詳細については、「[Azure Virtual Network の構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」と「[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)」をご覧ください。
+1. Export your virtual network settings to a network configuration file. For more information and steps to export your network configuration settings, see [Export Virtual Network Settings to a Network Configuration File](virtual-networks-using-network-configuration-file.md).
 
-1. ネットワーク構成ファイルをインポートします。ネットワーク構成ファイルのインポートの詳細と手順については、「[ネットワーク構成ファイルのインポート](virtual-networks-using-network-configuration-file.md)」をご覧ください。
+1. Specify the DNS server information for your virtual network. For more information about specifying a DNS server, see [Specifying a DNS Server in a Virtual Network Configuration File](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md). For additional information about network configuration files, see [Azure Virtual Network Configuration Schema](https://msdn.microsoft.com/library/azure/jj157100.aspx) and [Configure a Virtual Network Using a Network Configuration File](virtual-networks-using-network-configuration-file.md).
 
-1. 仮想ネットワークにある仮想マシンを再起動して、新しい DNS の設定を取得できるようにします。
+1. Import the network configuration file. For more information and steps to import your network configuration file, see [Import a Network Configuration File](virtual-networks-using-network-configuration-file.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+1. Restart the virtual machines located in the virtual network to allow them to acquire the new DNS settings.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

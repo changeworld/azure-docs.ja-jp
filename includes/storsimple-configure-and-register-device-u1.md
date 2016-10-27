@@ -1,71 +1,74 @@
 <!--author=alkohli last changed: 02/22/2016-->
 
 
-### デバイスを構成して登録するには
+### <a name="to-configure-and-register-the-device"></a>To configure and register the device
 
-1. StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイス にアクセスします。方法については、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](#use-putty-to-connect-to-the-device-serial-console)」を参照してください。**必ず手順を正確に実行してください。そうしないと、コンソールにアクセスできません。**
+1. Access the Windows PowerShell interface on your StorSimple device serial console. See [Use PuTTY to connect to the device serial console](#use-putty-to-connect-to-the-device-serial-console) for instructions. **Be sure to follow the procedure exactly or you will not be able to access the console.**
 
-2. 開いたセッションで、Enter キーを 1 回押して、コマンド プロンプトを開きます。
+2. In the session that opens up, press Enter one time to get a command prompt. 
 
-3. デバイスに設定する言語を選択するように求められます。言語を指定し、Enter キーを押します。
+3. You will be prompted to choose the language that you would like to set for your device. Specify the language, and then press Enter. 
 
-    ![StorSimple によるデバイスの構成および登録 1](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice1-U1-include.png)
+    ![StorSimple configure and register device 1](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice1-U1-include.png)
 
-4. 表示されるシリアル コンソール メニューで、オプション 1 を選択してフル アクセスでログインします。
+4. In the serial console menu that is presented, choose option 1 to log on with full access. 
 
-    ![StorSimple によるデバイスの登録 2](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice2_U1-include.png)
+    ![StorSimple register device 2](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice2_U1-include.png)
   
-     手順 5. ～ 12. に従って、デバイスで必要な最小のネットワーク設定を構成します。**これらの構成手順は、デバイスのアクティブ コントローラーで実行する必要があります。** シリアル コンソール メニューでは、バナー メッセージにコントローラーの状態が示されます。アクティブ コントローラーに接続されていない場合は、切断してアクティブ コントローラーに接続します。
+     Complete steps 5-12 to configure the minimum required network settings for your device. **These configuration steps need to be performed on the active controller of the device.** The serial console menu indicates the controller state in the banner message. If you are not connected to the active controller, disconnect and then connect to the active controller.
 
-5. コマンド プロンプトにパスワードを入力します。デバイスの既定のパスワードは **Password1** です。
+5. At the command prompt, type your password. The default device password is **Password1**.
 
-6. 次のコマンドを入力します。`Invoke-HcsSetupWizard`
+6. Type the following command: `Invoke-HcsSetupWizard`. 
 
-7. デバイスのネットワーク設定の構成に役立つセットアップ ウィザードが表示されます。次の情報を指定します。
-   - DATA 0 ネットワーク インターフェイスの IP アドレス
-   - サブネット マスク
-   - ゲートウェイ
-   - プライマリ DNS サーバーの IP アドレス
+7. A setup wizard will appear to help you configure the network settings for the device. Supply the the following information: 
+   - IP address for the DATA 0 network interface
+   - Subnet mask
+   - Gateway
+   - IP address for Primary DNS server
     
-	処理の各手順の後に、システムによってネットワーク設定が検証されることに注意してください。
-		   
-	> [AZURE.NOTE] サブネット マスクおよび DNS 設定が適用されるまでに数分かかる場合があります。"Data 0 へのネットワーク接続を確認してください" というエラー メッセージが表示された場合は、アクティブ コントローラーの DATA 0 ネットワーク インターフェイス上の物理ネットワーク接続を確認します。
-
-8. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、**Web プロキシを使用する場合は、ここでのみ構成できることに注意してください**。詳細については、「[デバイスの Web プロキシの構成](../articles/storsimple/storsimple-configure-web-proxy.md)」を参照してください。
-
-9. デバイスのプライマリ NTP サーバーを構成します。デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。このトラフィックが許可されない場合は、内部の NTP サーバーを指定します。
- 
-10. セキュリティ上の理由で、デバイス管理者のパスワードは最初のセッション後に期限が切れるため、今すぐパスワードを変更する必要があります。画面の指示に従って、デバイスの管理者パスワードを入力します。デバイス管理者の有効なパスワードの長さは、8 ～ 15 文字です。パスワードには、小文字、大文字、数字、および特殊文字のうち 3 種類の文字を組み合わせる必要があります。
-
-	<br/>![StorSimple register device 5](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice5_U1-include.png)
-
-11. セットアップ ウィザードの最後の手順では、お使いのデバイスを StorSimple Manager サービスに登録します。そのためには、手順 2. で取得したサービス登録キーが必要です。登録キーを指定したら、デバイスが登録されるまでに 2 ～ 3 分かかる場合があります。
-
-      > [AZURE.NOTE] Ctrl キーを押しながら C キーを押すことで、いつでもセットアップ ウィザードを終了できます。すべてのネットワーク設定 (Data 0、サブネット マスク、およびゲートウェイの IP アドレス) を入力した場合、エントリは保持されます。
-
-	![StorSimple によるデバイスの登録 6](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice6_U1-include.png)
-
-12. デバイスが登録されると、サービス データ暗号化キーが表示されます。このキーをコピーし、安全な場所に保存しておきます。**このキーは、StorSimple Manager サービスに追加のデバイスを登録するために、サービス登録キーと共に必要になります。** このキーの詳細については、「[StorSimple のセキュリティ](../articles/storsimple/storsimple-security.md)」を参照してください。
-	
-	![StorSimple によるデバイスの登録 7](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice7_U1-include.png)
-
-      > [AZURE.NOTE] シリアル コンソール ウィンドウからテキストをコピーするには、単にテキストを選択します。その状態で、クリップボードまたは任意のテキスト エディターに貼り付けることができます。サービス データ暗号化キーをコピーするときには、Ctrl キーを押しながら C キーを押さないでください。Ctrl キーを押しながら C キーを押すと、セットアップ ウィザードが終了します。その場合、デバイスの管理者パスワードは変更されず、デバイスは既定のパスワードに戻ります。
-
-13. シリアル コンソールを終了します。
-
-14. Azure クラシック ポータルに戻り、次の手順を実行します。
-  1. StorSimple Manager サービスをダブルクリックして **[クイック スタート]** ページにアクセスします。
-  2. **[接続されたデバイスの表示]** をクリックします。
-  3. **[デバイス]** ページで、状態を参照して、デバイスが正常にサービスに接続されていることを確認します。デバイスの状態は **"オンライン"** と表示されます。
+        Note that the system is validating network settings after each step in the process.
    
-	![StorSimple デバイス ページ](./media/storsimple-configure-and-register-device-u1/HCS_DevicesPageM_U1-include.png)
+      > [AZURE.NOTE] You may have to wait for a few minutes for the subnet mask and the DNS settings to be applied. If you get a "Check the network connectivity to Data 0" error message, check the physical network connection on the DATA 0 network interface of your active controller.
+
+8. (Optional) configure your web proxy server. Although web proxy configuration is optional, **be aware that if you use a web proxy, you can only configure it here**. For more information, go to [Configure web proxy for your device](../articles/storsimple/storsimple-configure-web-proxy.md).
+
+9. Configure a Primary NTP server for your device. NTP servers are required, as your device must synchronize time so that it can authenticate with your cloud service providers. Ensure that your network allows NTP traffic to pass from your datacenter to the Internet. If this is not possible, specify an internal NTP server. 
+ 
+10. For security reasons, the device administrator password expires after the first session, and you will need to change it now. When prompted, provide a device administrator password. A valid device administrator password must be between 8 and 15 characters. The password must contain three of the following: lowercase, uppercase, numeric, and special characters.
+
+    <br/>![StorSimple register device 5](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice5_U1-include.png)
+
+11. The final step in the setup wizard registers your device with the StorSimple Manager service. For this, you will need the service registration key that you obtained in step 2. After you supply the registration key, you may need to wait for 2-3 minutes before the device is registered.
+
+      > [AZURE.NOTE] You can press Ctrl + C at any time to exit the setup wizard. If you have entered all the network settings (IP address for Data 0, Subnet mask, and Gateway), your entries will be retained.
+
+    ![StorSimple register device 6](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice6_U1-include.png)
+
+12. After the device is registered, a Service Data Encryption key will appear. Copy this key and save it in a safe location. **This key will be required with the service registration key to register additional devices with the StorSimple Manager service.** Refer to [StorSimple security](../articles/storsimple/storsimple-security.md) for more information about this key.
+    
+    ![StorSimple register device 7](./media/storsimple-configure-and-register-device-u1/HCS_RegisterYourDevice7_U1-include.png)    
+
+      > [AZURE.NOTE] To copy the text from the serial console window, simply select the text. You should then be able to paste it in the clipboard or any text editor. DO NOT use Ctrl + C to copy the service data encryption key. Using Ctrl + C will cause you to exit the setup wizard. As a result, the device administrator password will not be changed and the device will revert to the default password.
+
+13. Exit the serial console.
+
+14. Return to the Azure classic portal, and complete the following steps:
+  1. Double-click your StorSimple Manager service to access the **Quick Start** page.
+  2. Click **View connected devices**.
+  3. On the **Devices** page, verify that the device has successfully connected to the service by looking up the status. The device status should be **Online**.
+   
+        ![StorSimple Devices page](./media/storsimple-configure-and-register-device-u1/HCS_DevicesPageM_U1-include.png) 
   
-	デバイスの状態が **"オフライン"** の場合は、デバイスがオンラインになるまで数分待ちます。
+        If the device status is **Offline**, wait for a couple of minutes for the device to come online. 
 
-	数分待ってもデバイスがまだオフラインである場合は、「[StorSimple ソフトウェア、高可用性、ネットワークの要件](../articles/storsimple/storsimple-system-requirements.md)」で説明されているとおりにファイアウォール ネットワークが構成されていることを確認する必要があります。
+        If the device is still offline after a few minutes, then you need to make sure that your firewall network was configured as described in [networking requirements for your StorSimple device](../articles/storsimple/storsimple-system-requirements.md). 
 
-	ポート 9354 は Service Bus によって StorSimple Manager のサービスとデバイス間の通信に使用されているため、このポートが送信用に開かれていることを確認してください。
+        Verify that port 9354 is open for outbound communication as this is used by the service bus for StorSimple Manager Service-to-device communication.
      
        
 
-<!---HONumber=AcomDC_0224_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -7,29 +7,29 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 -->
 
 
-### Azure ポータルから接続文字列を取得する
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Obtain the connection string from the Azure portal
 
 
-[Azure ポータル](https://portal.azure.com/)を使用して、クライアント プログラムが Azure SQL Database と対話するために必要な接続文字列を取得します。
+Use the [Azure portal](https://portal.azure.com/) to obtain the connection string necessary for your client program to interact with Azure SQL Database:
 
 
-1. **[参照]**、**[SQL データベース]** の順にクリックします。
+1. Click **BROWSE** > **SQL databases**.
 
     ![Select SQL][1-select-sql]
 
-2. **[SQL データベース]** ブレードの左上近辺にあるフィルター テキスト ボックスにデータベースの名前を入力します。
+2. Enter the name of your database into the filter text box near the upper-left of the **SQL databases** blade.
 
-    ![データベースを選択する][2-select-database]
+    ![Select Database][2-select-database]]
 
-3. データベースの行をクリックします。
+3. Click the row for your database.
 
-4. データベース用のブレードが表示されたら、画面を見やすくするために、標準的な最小化コントロールをクリックして、参照とデータベースのフィルター処理を行うために使用したブレードを折りたたむことができます。
+4. After the blade appears for your database, for visual convenience you can click the standard minimize controls to collapse the blades  you used for browsing and database filtering.
 
-5. **SQL データベース**の名前および**サーバー名**を書き留めます。ユーザー名は yourusername@yourserver になります。
+5. Make note of the **SQL database** name and the **Server name**.  The username will be yourusername@yourserver.
 
-	![接続の詳細を取得する][3-get-connection-details]
+    ![Get Connection Details][3-get-connection-details]
 
-7.  接続の詳細をクライアント プログラム コードに貼り付けます。{your\_password\_here} を実際のパスワードに置き換える必要があります。
+7.  Paste the connection details into your client program code.  You will need to replace the {your_password_here} with your real password.
 
 
 <!--
@@ -56,4 +56,7 @@ includes/sql-database-include-connection-string-30-compare.md
 includes/sql-database-include-connection-string-40-config.md
 -->
 
-<!---HONumber=AcomDC_0406_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

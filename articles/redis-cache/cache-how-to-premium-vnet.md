@@ -1,156 +1,157 @@
 <properties 
-	pageTitle="Premium Azure Redis Cache の Virtual Network のサポートを構成する方法 | Microsoft Azure" 
-	description="Premium レベル Azure Redis Cache インスタンスの Virtual Network のサポートを作成および管理する方法" 
-	services="redis-cache" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="douge" 
-	editor=""/>
+    pageTitle="How to configure Virtual Network support for a Premium Azure Redis Cache | Microsoft Azure" 
+    description="Learn how to create and manage Virtual Network support for your Premium tier Azure Redis Cache instances" 
+    services="redis-cache" 
+    documentationCenter="" 
+    authors="steved0x" 
+    manager="douge" 
+    editor=""/>
 
 <tags 
-	ms.service="cache" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="cache-redis" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/15/2016" 
-	ms.author="sdanie"/>
+    ms.service="cache" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="cache-redis" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/15/2016" 
+    ms.author="sdanie"/>
 
-# Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
-Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
 
-Azure Redis Cache の Premium レベルの機能には、クラスタリング、永続化、および仮想ネットワーク (VNet) のサポートが含まれています。VNet とは、クラウド内のプライベート ネットワークです。VNet を使用して Azure Redis Cache インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。この記事では、Premium Azure Redis Cache インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
+# <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>How to configure Virtual Network Support for a Premium Azure Redis Cache
+Azure Redis Cache has different cache offerings which provide flexibility in the choice of cache size and features, including the new Premium tier.
 
->[AZURE.NOTE] Azure Redis Cache では、クラシック VNet と ARM VNet の両方がサポートされています。
+The Azure Redis Cache premium tier features include clustering, persistence, and virtual network (VNet) support. A VNet is a private network in the cloud. When an Azure Redis Cache instance is configured with a VNet, it is not publicly addressable and can only be accessed from virtual machines and applications within the VNet. This article describes how to configure virtual network support for a premium Azure Redis Cache instance.
 
-Premium キャッシュのその他の機能の詳細については、「[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
+>[AZURE.NOTE] Azure Redis Cache supports both classic and ARM VNets.
 
-## VNet を選ぶ理由
-[Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、Azure Redis Cache のセキュリティと分離が強化されるとともに、サブネット、アクセス制御ポリシー、Azure Redis Cache へのアクセスをさらに制限する他の機能も提供されます。
+For information on other premium cache features, see [Introduction to the Azure Redis Cache Premium tier](cache-premium-tier-intro.md).
 
-## Virtual Network のサポート
-仮想ネットワーク (VNet) のサポートは、キャッシュの作成中に **[新規 Redis Cache]** ブレードで構成します。
+## <a name="why-vnet?"></a>Why VNet?
+[Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) deployment provides enhanced security and isolation for your Azure Redis Cache, as well as subnets, access control policies, and other features to further restrict access to Azure Redis Cache.
+
+## <a name="virtual-network-support"></a>Virtual network support
+Virtual Network (VNet) support is configured on the **New Redis Cache** blade during cache creation. 
 
 [AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Premium 価格レベルを選択すると、キャッシュと同じサブスクリプションと場所にある VNet を選択することで、Azure Redis Cache VNet 統合を構成できます。新しい VNet を使用するには、まず「[Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」または「[Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)」の手順に従って VNet を作成した後、**[新規 Redis Cache]** ブレードに戻り、Premium キャッシュを作成して構成します。
+Once you have selected a premium pricing tier, you can configure Azure Redis Cache VNet integration by selecting a VNet that is in the same subscription and location as your cache. To use a new VNet, create it first by following the steps in [Create a virtual network using the Azure portal](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) or [Create a virtual network (classic) by using the Azure portal](../virtual-network/virtual-networks-create-vnet-classic-portal.md) and then return to the **New Redis Cache** blade to create and configure your premium cache.
 
-新しいキャッシュ用に VNet を構成するには、**[新規 Redis Cache]** ブレードの **[仮想ネットワーク]** をクリックし、ドロップダウン リストから目的の VNet を選択します。
+To configure the VNet for your new cache, click **Virtual Network** on the **New Redis Cache** blade, and select the desired VNet from the drop-down list.
 
-![Virtual Network][redis-cache-vnet]
+![Virtual network][redis-cache-vnet]
 
-**[サブネット]** ボックスの一覧で目的のサブネットを選択し、必要な**静的 IP アドレス**を指定します。クラシック VNet を使用している場合、**[静的 IP アドレス]** フィールドは省略可能です。何も指定しないと、選択したサブネットから 1 つのアドレスが選択されます。
+Select the desired subnet from the **Subnet** drop-down list, and specify the desired **Static IP address**. If you are using a classic VNet the **Static IP address** field is optional, and if none is specified, one is chosen from the selected subnet.
 
->[AZURE.IMPORTANT] Azure Redis Cache を ARM VNet にデプロイする場合、キャッシュは、Azure Redis Cache インスタンス以外のリソースを含まない専用サブネット内に存在する必要があります。ARM VNet で他のリソースが含まれるサブネットに Azure Redis Cache をデプロイしようとすると、そのデプロイは失敗します。
+>[AZURE.IMPORTANT] When deploying an Azure Redis Cache to an ARM VNet, the cache must be in a dedicated subnet that contains no other resources except for Azure Redis Cache instances. If an attempt is made to deploy an Azure Redis Cache to an ARM VNet to a subnet that contains other resources, the deployment fails.
 
-![Virtual Network][redis-cache-vnet-ip]
+![Virtual network][redis-cache-vnet-ip]
 
->[AZURE.IMPORTANT] サブネットの最初の 4 つのアドレスは予約済みのため、使用できません。詳細については、「[これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)」を参照してください。
+>[AZURE.IMPORTANT] The first four addresses in a subnet are reserved and can't be used. For more information, see [Are there any restrictions on using IP addresses within these subnets?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
-キャッシュが作成されたら、**[設定]** ブレードの **[仮想ネットワーク]** をクリックすることで、VNet の構成を表示できます。
+After the cache is created, you can view the configuration for the VNet by clicking **Virtual Network** from the **Settings** blade.
 
-![Virtual Network][redis-cache-vnet-info]
-
-
-VNet の使用時に Azure Redis Cache インスタンスに接続するには、次の例に示すように、接続文字列でキャッシュのホスト名を指定します。
-
-	private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-	{
-	    return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
-	});
-	
-	public static ConnectionMultiplexer Connection
-	{
-	    get
-	    {
-	        return lazyConnection.Value;
-	    }
-	}
-
-## Azure Redis Cache VNet についてよく寄せられる質問 (FAQ)
-
-次の一覧は、Azure Redis Cache のスケーリングに関するよく寄せられる質問への回答です。
-
--	[Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
--	[Standard キャッシュまたは Basic キャッシュで VNet を使用できますか](#can-i-use-vnets-with-a-standard-or-basic-cache)
--	[Redis Cache の作成が失敗するサブネットと成功するサブネットがあるのはなぜですか](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
--	[VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+![Virtual network][redis-cache-vnet-info]
 
 
-## Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください
+To connect to your Azure Redis cache instance when using a VNet, specify the host name of your cache in the connection string as shown in the following example.
 
-Azure Redis Cache が VNet でホストされている場合は、次の表にあるポートが使用されます。これらのポートがブロックされている場合は、キャッシュが正しく機能しない可能性があります。VNet で Azure Redis Cache を使用する場合、構成の誤りに関する最も一般的な問題は、これらのポートのうち 1 つ以上がブロックされていることです。
+    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+    {
+        return ConnectionMultiplexer.Connect("contoso5premium.redis.cache.windows.net,abortConnect=false,ssl=true,password=password");
+    });
+    
+    public static ConnectionMultiplexer Connection
+    {
+        get
+        {
+            return lazyConnection.Value;
+        }
+    }
 
-| ポート | 方向 | トランスポート プロトコル | 目的 | リモート IP |
+## <a name="azure-redis-cache-vnet-faq"></a>Azure Redis Cache VNet FAQ
+
+The following list contains answers to commonly asked questions about the Azure Redis Cache scaling.
+
+-   [What are some common misconfiguration issues with Azure Redis Cache and VNets?](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
+-   [Can I use VNets with a standard or basic cache?](#can-i-use-vnets-with-a-standard-or-basic-cache)
+-   [Why does creating a Redis cache fail in some subnets but not others?](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
+-   [Do all cache features work when hosting a cache in a VNET?](#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+
+
+## <a name="what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets?"></a>What are some common misconfiguration issues with Azure Redis Cache and VNets?
+
+When Azure Redis Cache is hosted in a VNet, the ports in the following table are used. If these ports are blocked, the cache may not function correctly. Having one or more of these ports blocked is the most common misconfiguration issue when using Azure Redis Cache in a VNet.
+
+| Port(s)     | Direction        | Transport Protocol | Purpose                                                                           | Remote IP                           |
 |-------------|------------------|--------------------|-----------------------------------------------------------------------------------|-------------------------------------|
-| 80、443 | 送信 | TCP | Azure Storage/PKI (インターネット) に対する Redis の依存関係 | * |
-| 53 | 送信 | TCP/UDP | DNS (インターネット/VNet) に対する Redis の依存関係 | * |
-| 6379, 6380 | 受信 | TCP | Redis へのクライアント通信、Azure 負荷分散 | VIRTUAL\_NETWORK, AZURE\_LOADBALANCER |
-| 8443 | 受信/送信 | TCP | Redis の実装の詳細 | VIRTUAL\_NETWORK |
-| 8500 | 受信 | TCP/UDP | Azure 負荷分散 | AZURE\_LOADBALANCER |
-| 10221-10231 | 受信/送信 | TCP | Redis の実装の詳細 (リモート エンドポイントを VIRTUAL\_NETWORK に制限できます) | VIRTUAL\_NETWORK, AZURE\_LOADBALANCER |
-| 13000-13999 | 受信 | TCP | Redis クラスターへのクライアント通信、Azure 負荷分散 | VIRTUAL\_NETWORK, AZURE\_LOADBALANCER |
-| 15000-15999 | 受信 | TCP | Redis クラスターへのクライアント通信、Azure 負荷分散 | VIRTUAL\_NETWORK, AZURE\_LOADBALANCER |
-| 16001 | 受信 | TCP/UDP | Azure 負荷分散 | AZURE\_LOADBALANCER |
-| 20226 | 受信 + 送信 | TCP | Redis クラスターの実装の詳細 | VIRTUAL\_NETWORK |
+| 80, 443     | Outbound         | TCP                | Redis dependencies on Azure Storage/PKI (Internet)                                | *                                   |
+| 53          | Outbound         | TCP/UDP            | Redis dependencies on DNS (Internet/VNet)                                         | *                                   |
+| 6379, 6380  | Inbound          | TCP                | Client communication to Redis, Azure Load Balancing                               | VIRTUAL_NETWORK, AZURE_LOADBALANCER |
+| 8443        | Inbound/Outbound | TCP                | Implementation Detail for Redis                                                   | VIRTUAL_NETWORK                     |
+| 8500        | Inbound          | TCP/UDP            | Azure Load Balancing                                                              | AZURE_LOADBALANCER                  |
+| 10221-10231 | Inbound/Outbound | TCP                | Implementation Detail for Redis (can restrict remote endpoint to VIRTUAL_NETWORK) | VIRTUAL_NETWORK, AZURE_LOADBALANCER |
+| 13000-13999 | Inbound          | TCP                | Client communication to Redis Clusters, Azure Load Balancing                      | VIRTUAL_NETWORK, AZURE_LOADBALANCER |
+| 15000-15999 | Inbound          | TCP                | Client communication to Redis Clusters, Azure Load Balancing                      | VIRTUAL_NETWORK, AZURE_LOADBALANCER |
+| 16001       | Inbound          | TCP/UDP            | Azure Load Balancing                                                              | AZURE_LOADBALANCER                  |
+| 20226       | Inbound+Outbound | TCP                | Implementation Detail for Redis Clusters                                          | VIRTUAL_NETWORK                     |
 
 
-Azure Redis Cache のネットワーク接続要件には、仮想ネットワークで最初に満たされていないものがある可能性があります。仮想ネットワーク内で使用したときに正常に動作させるためには、Azure Redis Cache に次の項目すべてが必要になります。
+There are network connectivity requirements for Azure Redis Cache that may not be initially met in a virtual network. Azure Redis Cache requires all of the following items in order to function properly when used within a virtual network.
 
--  世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続これには、Azure Redis Cache インスタンスと同じリージョンにあるエンドポイントと、**他の** Azure リージョンにあるストレージ エンドポイントが含まれます。Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。
--  *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。この接続は、SSL 機能をサポートするために必要です。
--  仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
-
-
-
-### Standard キャッシュまたは Basic キャッシュで VNet を使用できますか
-
-VNet は Premium キャッシュでのみ使用できます。
-
-### Redis Cache の作成が失敗するサブネットと成功するサブネットがあるのはなぜですか
-
-Azure Redis Cache を ARM VNet にデプロイする場合、キャッシュは、他の種類のリソースが含まれない専用サブネット内に存在する必要があります。他のリソースが含まれる ARM VNet サブネットに Azure Redis Cache をデプロイしようとすると、そのデプロイは失敗します。新しい Redis Cache を作成する前に、サブネット内の既存のリソースを削除する必要があります。
-
-使用可能な IP アドレスが十分にあれば、複数の種類のリソースをクラシック VNet にデプロイできます。
-
-### VNET でキャッシュをホストしている場合、キャッシュ機能はすべて動作しますか
-
-キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。そのため、次のキャッシュ管理機能は現時点では動作しません。
-
--	Redis コンソール - Redis コンソールでは VNET に含まれていない VM でホストされている redis-cli.exe クライアントを使用するため、キャッシュには接続できません。
+-  Outbound network connectivity to Azure Storage endpoints worldwide. This includes endpoints located in the same region as the Azure Redis Cache instance, as well as storage endpoints located in **other** Azure regions. Azure Storage endpoints resolve under the following DNS domains: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net*, and *file.core.windows.net*. 
+-  Outbound network connectivity to *ocsp.msocsp.com*, *mscrl.microsoft.com* and *crl.microsoft.com*. This connectivity is needed to support SSL functionality.
+-  The DNS configuration for the virtual network must be capable of resolving all of the endpoints and domains mentioned in the earlier points. These DNS requirements can be met by ensuring a valid DNS infrastructure is configured and maintained for the virtual network.
 
 
-## Azure Redis Cache と ExpressRoute の使用
 
-顧客は、[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。
+### <a name="can-i-use-vnets-with-a-standard-or-basic-cache?"></a>Can I use VNets with a standard or basic cache?
 
-既定では、新しく作成された ExpressRoute 回線は、発信インターネット接続を許可する既定のルートをアドバタイズします。この構成を使用すると、クライアント アプリケーションは Azure Redis Cache を含む他の Azure エンドポイントに接続できます。
+VNets can only be used with premium caches.
 
-ただし、顧客の一般的な構成では、発信インターネット トラフィックを強制的にオンプレミスにフローさせる独自の既定のルート (0.0.0.0/0) を定義しています。このトラフィック フローでは、Azure Redis Cache を使用した接続は必ず切断されます。これは、発信トラフィックがオンプレミスでブロックされるか、さまざまな Azure エンドポイントで有効ではなくなった、認識できないアドレス セットに NAT 処理されることが原因です。
+### <a name="why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others?"></a>Why does creating a Redis cache fail in some subnets but not others?
 
-解決策は、Azure Redis Cache を含むサブネット上で 1 つ (以上) のユーザー定義ルート (UDR) を定義することです。UDR は、既定のルートに優先するサブネット固有のルートを定義します。
+If you are deploying an Azure Redis Cache to an ARM VNet, the cache must be in a dedicated subnet that contains no other resource type. If an attempt is made to deploy an Azure Redis Cache to an ARM VNet subnet that contains other resources, the deployment fails. You must delete the existing resources inside the subnet before you can create a new Redis cache.
 
-可能であれば、次の構成を使用することをお勧めします。
+You can deploy multiple types of resources to a classic VNet as long as you have enough IP addresses available.
 
-- ExpressRoute 構成は 0.0.0.0/0 をアドバタイズし、既定でオンプレミスのすべての発信トラフィックを強制的にトンネリングします。
-- Azure Redis Cache を含むサブネットに適用される UDR では、次ホップの種類がインターネットである 0.0.0.0/0 を定義します (例については、この記事の後半を参照してください)。
+### <a name="do-all-cache-features-work-when-hosting-a-cache-in-a-vnet?"></a>Do all cache features work when hosting a cache in a VNET?
 
-これらの手順を組み合わせた結果として、サブネット レベル UDR は ExpressRoute 強制トンネリングよりも優先されるので、Azure Redis Cache からの発信インターネット アクセスを確保できます。
+When your cache is part of a VNET, only clients in the VNET can access the cache. As a result, the following cache management features don't work at this time.
 
-ExpressRoute を使用したオンプレミス アプリケーションから Azure Redis Cache インスタンスへの接続は、パフォーマンス上の理由から一般的な使用シナリオではありません (最適なパフォーマンスを得るには、Azure Redis Cache クライアントを Azure Redis Cache と同じリージョンに配置する必要があります)。ただし、このシナリオでは、発信ネットワークの経路は、社内プロキシを経由したり、オンプレミスに強制的にトンネリングしたりすることができません。この処理を実行した場合、Azure Redis Cache からの発信ネットワーク トラフィックの実質的な NAT アドレスが変更されます。Azure Redis Cache インスタンスの発信ネットワーク トラフィックの NAT アドレスを変更すると、上記のエンドポイントの多くに対する接続エラーが発生します。その結果、Azure Redis Cache の作成が失敗します。
+-   Redis Console - Because Redis Console uses the redis-cli.exe client hosted on VMs that are not part of your VNET, it can't connect to your cache.
 
-**重要:** ExpressRoute 構成でアドバタイズされたルートよりも優先するには、UDR に定義されているルートを詳細にする**必要があります**。以下の例では、0.0.0.0/0 の広域なアドレス範囲を使用しているので、より詳細なアドレス範囲を使用するルート アドバタイズで誤って上書きされる可能性があります。
 
-**非常に重要:** Azure Redis Cache は、**パブリック ピアリング パスからプライベート ピアリング パスにルートを正しくクロスアドバタイズしていない** ExpressRoute 構成ではサポートされません。パブリック ピアリングが構成された ExpressRoute 構成は、大規模な Microsoft Azure の IP アドレス範囲について Microsoft からルート アドバタイズを受信します。これらのアドレス範囲がプライベート ピアリング パスで誤ってクロスアドバタイズされている場合、Azure Redis Cache インスタンスのサブネットからのすべての発信ネットワーク パケットは、誤って顧客のオンプレミス ネットワーク インフラストラクチャに強制的にトンネリングされます。このネットワーク フローでは、Azure Redis Cache が機能しません。この問題を解決するには、パブリック ピアリング パスからプライベート ピアリング パスへのルートのクロスアドバタイズを停止します。
+## <a name="use-expressroute-with-azure-redis-cache"></a>Use ExpressRoute with Azure Redis Cache
 
-ユーザー定義ルートの背景情報については、この[概要](../virtual-network/virtual-networks-udr-overview.md)を参照してください。
+Customers can connect an [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) circuit to their virtual network infrastructure, thus extending their on-premises network to Azure. 
 
-ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
+By default, a newly created ExpressRoute circuit advertises a default route that allows outbound Internet connectivity. With this configuration, client applications are able to connect to other Azure endpoints including Azure Redis Cache.
 
-## 次のステップ
-Premium キャッシュ機能をさらに使用する方法を学習します。
+However a common customer configuration is to define their own default route (0.0.0.0/0) which forces outbound Internet traffic to instead flow on-premises. This traffic flow invariably breaks connectivity with Azure Redis Cache because the outbound traffic is either blocked on-premises, or NAT'd to an unrecognizable set of addresses that no longer work with various Azure endpoints.
 
--	[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)
+The solution is to define one (or more) user-defined routes (UDRs) on the subnet that contains the Azure Redis Cache. A UDR defines subnet-specific routes that will be honored instead of the default route.
+
+If possible, it is recommended to use the following configuration:
+
+- The ExpressRoute configuration advertises 0.0.0.0/0 and by default force tunnels all outbound traffic on-premises.
+- The UDR applied to the subnet containing the Azure Redis Cache defines 0.0.0.0/0 with a next hop type of Internet (an example of this is farther down in this article).
+
+The combined effect of these steps is that the subnet level UDR takes precedence over the ExpressRoute forced tunneling, thus ensuring outbound Internet access from the Azure Redis Cache.
+
+Although connecting to an Azure Redis Cache instance from an on-premises application using ExpressRoute is not a typical usage scenario due to performance reasons (for best performance Azure Redis Cache clients should be in the same region as the Azure Redis Cache), in this scenario the outbound network path cannot travel through internal corporate proxies, nor can it be force tunneled to on-premises. Doing so changes the effective NAT address of outbound network traffic from the Azure Redis Cache. Changing the NAT address of an Azure Redis Cache instance's outbound network traffic causes connectivity failures to many of the endpoints listed above. This results in failed Azure Redis Cache creation attempts.
+
+**IMPORTANT:**  The routes defined in a UDR **must** be specific enough to take precedence over any routes advertised by the ExpressRoute configuration. The following example uses the broad 0.0.0.0/0 address range, and as such can potentially be accidentally overridden by route advertisements using more specific address ranges.
+
+**VERY IMPORTANT:**  Azure Redis Cache is not supported with ExpressRoute configurations that **incorrectly cross-advertise routes from the public peering path to the private peering path**. ExpressRoute configurations that have public peering configured, will receive route advertisements from Microsoft for a large set of Microsoft Azure IP address ranges. If these address ranges are incorrectly cross-advertised on the private peering path, the end result is that all outbound network packets from the Azure Redis Cache instance's subnet are incorrectly force-tunneled to a customer's on-premises network infrastructure. This network flow breaks Azure Redis Cache. The solution to this problem is to stop cross-advertising routes from the public peering path to the private peering path.
+
+Background information on user-defined routes is available in this [overview](../virtual-network/virtual-networks-udr-overview.md). 
+
+For more information about ExpressRoute, see [ExpressRoute technical overview](../expressroute/expressroute-introduction.md)
+
+## <a name="next-steps"></a>Next steps
+Learn how to use more premium cache features.
+
+-   [Introduction to the Azure Redis Cache Premium tier](cache-premium-tier-intro.md)
 
 
 
@@ -165,4 +166,9 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

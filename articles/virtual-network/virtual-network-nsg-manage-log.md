@@ -1,6 +1,6 @@
 <properties
-   pageTitle="NSG に関する操作、イベント、カウンターの監視 | Microsoft Azure"
-   description="NGS に関するカウンター、イベント、操作のログ記録を有効にする方法について説明します。"
+   pageTitle="Monitor operations, events, and counters for NSGs | Microsoft Azure"
+   description="Learn how to enable counters, events, and operational logging for NSGs"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -17,105 +17,110 @@
    ms.date="07/14/2016"
    ms.author="jdial" />
 
-#ネットワーク セキュリティ グループ (NSG) のためのログ分析
 
-Azure の各種ログを使用して NSG の管理やトラブルシューティングを行うことができます。これらのログの一部はポータルからアクセスできます。また、すべてのログは、Azure BLOB ストレージから抽出して、[Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)、Excel、PowerBI などのさまざまなツールで表示することができます。各種ログの詳細については、以下の一覧を参照してください。
+#<a name="log-analytics-for-network-security-groups-(nsgs)"></a>Log analytics for network security groups (NSGs)
 
-- **監査ログ:** [Azure 監査ログ](../azure-portal/insights-debugging-with-events.md) (以前の操作ログ) を使用すると、Azure サブスクリプションに送信されているすべての操作とその操作の状態を表示できます。監査ログは既定で有効になっており、Azure プレビュー ポータルで表示できます。
-- **イベント ログ:** このログを使用すると、MAC アドレスに基づいて VM とインスタンス ロールに適用される NSG ルールを表示できます。これらのルールの状態は 60 秒ごとに収集されます。
-- **カウンター ログ:** このログを使用すると、トラフィックを拒否または許可するために各 NSG ルールが適用された回数を表示できます。
+You can use different types of logs in Azure to manage and troubleshoot NSGs. Some of these logs can be accessed through the portal, and all logs can be extracted from an Azure blob storage, and viewed in different tools, such as [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Excel and PowerBI. You can learn more about the different types of logs from the list below.
 
->[AZURE.WARNING] ログは、リソース マネージャーのデプロイ モデルでデプロイされたリソースについてのみ使用できます。クラシック デプロイメント モデルのリソースには使用できません。2 つのモデルについて理解を深めるには、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
+- **Audit logs:** You can use [Azure Audit Logs](../azure-portal/insights-debugging-with-events.md) (formerly known as Operational Logs) to view all operations being submitted to your Azure subscription(s), and their status. Audit logs are enabled by default, and can be viewed in the Azure preview portal.
+- **Event logs:** You can use this log to view what NSG rules are applied to VMs and instance roles based on MAC address. The status for these rules is collected every 60 seconds.
+- **Counter logs:** You can use this log to view how many times each NSG rule was applied to deny or allow traffic.
 
-##ログの有効化
-監査ログは、リソース マネージャーのすべてのリソースで常に自動的に有効になります。イベント ログとカウンター ログは、それらのログで利用できるデータの収集を開始するために有効にする必要があります。ログを有効にするには、次の手順に従います。
+>[AZURE.WARNING] Logs are only available for resources deployed in the Resource Manager deployment model. You cannot use logs for resources in the classic deployment model. For a better understanding of the two models, reference the [Understanding Resource Manager deployment and classic deployment](../resource-manager-deployment-model.md) article.
 
-1.  [Azure ポータル](https://portal.azure.com)にサインインします。まだネットワーク セキュリティ グループがない場合は、続行する前に [NSG を作成](virtual-networks-create-nsg-arm-ps.md)します。
+##<a name="enable-logging"></a>Enable logging
+Audit logging is automatically enabled at all times for every Resource Manager resource. You need to enable event and counter logging to start collecting the data available through those logs. To enable logging, follow the steps below.
 
-2.  プレビュー ポータルで、**[参照]**、**[ネットワーク セキュリティ グループ]** の順にクリックします。
+1.  Sign-in to the [Azure portal](https://portal.azure.com). If you don't already have an existing network security group, [create an NSG](virtual-networks-create-nsg-arm-ps.md) before you continue.
 
-	![Preview portal - Network security groups](./media/virtual-network-nsg-manage-log/portal-enable1.png)
+2.  In the preview portal, click **Browse** >> **Network security groups**.
 
-3. 既存のネットワーク セキュリティ グループを選択します。
+    ![Preview portal - Network security groups](./media/virtual-network-nsg-manage-log/portal-enable1.png)
 
-	![Preview portal - Network security group settings](./media/virtual-network-nsg-manage-log/portal-enable2.png)
+3. Select an existing network security group.
 
-4. **[設定]** ブレードで **[診断]** をクリックし、**[診断]** ウィンドウで、**[状態]** の下の **[オン]** をクリックします。
-5. **[設定]** ブレードで、**[ストレージ アカウント]** をクリックし、既存のストレージ アカウントを選ぶか、新しいストレージ アカウントを作成します。
+    ![Preview portal - Network security group settings](./media/virtual-network-nsg-manage-log/portal-enable2.png)
 
->[AZURE.INFORMATION] 監査ログでは別のストレージ アカウントは必要ありません。イベントとルールのログ記録にストレージを使用すると、サービス料金が発生します。
+4. In the **Settings** blade, click **Diagnostics**, and then in the **Diagnostics** pane, next to **Status**, click **On**
+5. In the **Settings** blade, click **Storage Account**, and either select an existing storage account, or create a new one.  
 
-6. **[ストレージ アカウント]** の下にあるドロップダウン リストで、イベント、カウンター、またはその両方から記録するログを選択し、**[保存]** をクリックします。
+>[AZURE.INFORMATION] Audit logs do not require a separate storage account. The use of storage for event and rule logging will incur service charges.
 
-	![Preview portal - Diagnostics logs](./media/virtual-network-nsg-manage-log/portal-enable3.png)
+6. In the drop-down list just under **Storage Account**, select whether you want to log events, counters, or both, and then click **Save**.
 
-## 監査ログ
-監査ログ (以前の "操作ログ") は、既定では Azure によって生成されます。ログは、Azure のイベント ログ ストアに 90 日間保存されます。これらのログの詳細については、「[イベント ログと監査ログの表示](../azure-portal/insights-debugging-with-events.md)」を参照してください。
+    ![Preview portal - Diagnostics logs](./media/virtual-network-nsg-manage-log/portal-enable3.png)
 
-## カウンター ログ
-このログは、既に詳しく説明したように、NSG ごとにログを有効にした場合のみ生成されます。データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。次に示すように、リソースに適用された各ルールは、JSON 形式でログに記録されます。
+## <a name="audit-log"></a>Audit log
+This log (formerly known as the "operational log") is generated by Azure by default.  The logs are preserved for 90 days in Azure’s Event Logs store. Learn more about these logs by reading the [View events and audit logs](../azure-portal/insights-debugging-with-events.md) article.
 
-	{
-		"time": "2015-09-11T23:14:22.6940000Z",
-		"systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
-		"category": "NetworkSecurityGroupRuleCounter",
-		"resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
-		"operationName": "NetworkSecurityGroupCounters",
-		"properties": {
-			"vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
-			"subnetPrefix":"10.0.0.0/24",
-			"macAddress":"001517D9C43C",
-			"ruleName":"DenyAllOutBound",
-			"direction":"Out",
-			"type":"block",
-			"matchedConnections":0
-			}
-	}
+## <a name="counter-log"></a>Counter log
+This log is only generated if you've enabled it on a per NSG basis as detailed above. The data is stored in the storage account you specified when you enabled the logging. Each rule applied to resources is logged in JSON format, as seen below.
 
-## イベント ログ
-このログは、既に詳しく説明したように、NSG ごとにログを有効にした場合のみ生成されます。データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。次のデータがログに記録されます。
+    {
+        "time": "2015-09-11T23:14:22.6940000Z",
+        "systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
+        "category": "NetworkSecurityGroupRuleCounter",
+        "resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
+        "operationName": "NetworkSecurityGroupCounters",
+        "properties": {
+            "vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
+            "subnetPrefix":"10.0.0.0/24",
+            "macAddress":"001517D9C43C",
+            "ruleName":"DenyAllOutBound",
+            "direction":"Out",
+            "type":"block",
+            "matchedConnections":0
+            }
+    }
 
-	{
-		"time": "2015-09-11T23:05:22.6860000Z",
-		"systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
-		"category": "NetworkSecurityGroupEvent",
-		"resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
-		"operationName": "NetworkSecurityGroupEvents",
-		"properties": {
-			"vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
-			"subnetPrefix":"10.0.0.0/24",
-			"macAddress":"001517D9C43C",
-			"ruleName":"AllowVnetOutBound",
-			"direction":"Out",
-			"priority":65000,
-			"type":"allow",
-			"conditions":{
-				"destinationPortRange":"0-65535",
-				"sourcePortRange":"0-65535",
-				"destinationIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32",
-				"sourceIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32"
-			}
-		}
-	}
+## <a name="event-log"></a>Event log
+This log is only generated if you've enabled it on a per NSG basis as detailed above. The data is stored in the storage account you specified when you enabled the logging. The following data is logged:
 
-## 監査ログの表示と分析
-次のいずれかの方法を使用して、監査ログのデータを表示および分析できます。
+    {
+        "time": "2015-09-11T23:05:22.6860000Z",
+        "systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
+        "category": "NetworkSecurityGroupEvent",
+        "resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRP",
+        "operationName": "NetworkSecurityGroupEvents",
+        "properties": {
+            "vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
+            "subnetPrefix":"10.0.0.0/24",
+            "macAddress":"001517D9C43C",
+            "ruleName":"AllowVnetOutBound",
+            "direction":"Out",
+            "priority":65000,
+            "type":"allow",
+            "conditions":{
+                "destinationPortRange":"0-65535",
+                "sourcePortRange":"0-65535",
+                "destinationIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32",
+                "sourceIP":"10.0.0.0/8,172.16.0.0/12,169.254.0.0/16,192.168.0.0/16,168.63.129.16/32"
+            }
+        }
+    }
 
-- **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure プレビュー ポータルを使用して、監査ログから情報を取得します。それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../resource-group-audit.md)」を参照してください。
-- **Power BI:** [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。[Power BI 用 Azure 監査ログ コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
+## <a name="view-and-analyze-the-audit-log"></a>View and analyze the audit log
+You can view and analyze audit log data using any of the following methods:
 
-## カウンター ログとイベント ログの表示と分析
+- **Azure tools:** Retrieve information from the audit logs through Azure PowerShell, the Azure Command Line Interface (CLI), the Azure REST API, or the Azure preview portal.  Step-by-step instructions for each method are detailed in the [Audit operations with Resource Manager](../resource-group-audit.md) article.
+- **Power BI:** If you don't already have a [Power BI](https://powerbi.microsoft.com/pricing) account, you can try it for free. Using the [Azure Audit Logs content pack for Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/) you can analyze your data with pre-configured dashboards that you can use as-is, or customize.
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) は、BLOB ストレージ アカウントからカウンターとイベントのログ ファイルを収集でき、ログを分析するための視覚化と強力な検索機能が含まれています。
+## <a name="view-and-analyze-the-counter-and-event-log"></a>View and analyze the counter and event log
 
-イベント ログとカウンター ログについては、自身のストレージ アカウントに接続して JSON ログ エントリを取得することもできます。JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
+Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) can collect the counter and event log files from your Blob storage account and includes visualizations and powerful search capabilities to analyze your logs.
 
->[AZURE.TIP] Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、Github から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
+You can also connect to your storage account and retrieve the JSON log entries for event and counter logs. Once you download the JSON files, you can convert them to CSV and view in Excel, PowerBI, or any other data visualization tool.
 
-## 次のステップ
+>[AZURE.TIP] If you are familiar with Visual Studio and basic concepts of changing values for constants and variables in C#, you can use the [log converter tools](https://github.com/Azure-Samples/networking-dotnet-log-converter) available from Github.
 
-- [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) で、カウンター ログとイベント ログを視覚化します。
-- [Power BI を使用した Azure 監査ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ記事
-- [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ記事
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0810_2016-->
+- Visualize counter and event logs with [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)
+- [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blog post.
+- [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blog post.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

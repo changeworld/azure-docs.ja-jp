@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ポータルを使用した SSL オフロード用のアプリケーション ゲートウェイの構成 | Microsoft Azure"
-   description="このページでは、ポータルを使用して、SSL オフロード用のアプリケーション ゲートウェイを作成する方法について説明します。"
+   pageTitle="Configure an application gateway for SSL offload by using the portal | Microsoft Azure"
+   description="This page provides instructions to create an application gateway with SSL offload by using the portal"
    documentationCenter="na"
    services="application-gateway"
    authors="georgewallace"
@@ -15,78 +15,82 @@
    ms.date="09/09/2016"
    ms.author="gwallace"/>
 
-# ポータルを使用した SSL オフロード用のアプリケーション ゲートウェイの構成
+
+# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-portal"></a>Configure an application gateway for SSL offload by using the portal
 
 > [AZURE.SELECTOR]
 -[Azure portal](application-gateway-ssl-portal.md)
 -[Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 -[Azure Classic PowerShell](application-gateway-ssl.md)
 
-Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL) セッションを停止するように構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
+Azure Application Gateway can be configured to terminate the Secure Sockets Layer (SSL) session at the gateway to avoid costly SSL decryption tasks to happen at the web farm. SSL offload also simplifies the front-end server setup and management of the web application.
 
-## シナリオ
+## <a name="scenario"></a>Scenario
 
-次のシナリオでは、既存のアプリケーション ゲートウェイに、SSL オフロードを構成します。このシナリオでは、[アプリケーション ゲートウェイの作成](application-gateway-create-gateway-portal.md)に関する手順を既に実行したことを前提としています。
+The following scenario goes through configuring SSL offload on an existing application gateway. The scenario assumes that you have already followed the steps to [Create an Application Gateway](application-gateway-create-gateway-portal.md).
 
-## 開始する前に
+## <a name="before-you-begin"></a>Before you begin
 
-アプリケーション ゲートウェイで SSL オフロードを構成するには、証明書が必要です。この証明書は、アプリケーション ゲートウェイに読み込まれ、SSL 経由で送信されるトラフィックの暗号化と暗号化解除に使用されます。証明書は、Personal Information Exchange (pfx) 形式である必要があります。このファイル形式により、秘密キーをエクスポートすることができます。このキーは、アプリケーション ゲートウェイがトラフィックの暗号化および暗号化解除を実行する際に必要です。
+To configure SSL offload with an application gateway, a certificate is required. This certificate is loaded on the application gateway and used to encrypt and decrypt the traffic sent via SSL. The certificate needs to be in Personal Information Exchange (pfx) format. This file format allows for the private key to be exported which is required by the application gateway to perform the encryption and decryption of traffic.
 
-## HTTPS リスナーの追加
+## <a name="add-an-https-listener"></a>Add an HTTPS listener
 
-HTTPS リスナーは、構成に基づいてトラフィックを検出し、バックエンド プールへのトラフィックのルーティングをサポートします。
+The HTTPS listener looks for traffic based on its configuration and helps route the traffic to the backend pools.
 
-### 手順 1
+### <a name="step-1"></a>Step 1
 
-Azure Portal に移動し、既存のアプリケーション ゲートウェイを選択します。
+Navigate to the Azure portal and select an existing application gateway
 
 ![app gateway overview blade][1]
 
-### 手順 2.
+### <a name="step-2"></a>Step 2
 
-[リスナー] をクリックし、[追加] ボタンをクリックしてリスナーを追加します。
+Click Listeners and click the Add button to add a listener.
 
-### 手順 3.
+### <a name="step-3"></a>Step 3
 
-リスナーに必要な情報を入力し、.pfx 証明書をアップロードします。完了したら、[OK] をクリックします。
+Fill out the required information for the listener and upload the .pfx certificate, when complete click OK.
 
-**[名前]** - この値は、リスナーのフレンドリ名です。
+**Name** - This value is a friendly name of the listener.
 
-**[フロントエンド IP 構成]** - この値は、リスナー用に使用されるフロントエンド IP 構成です。
+**Frontend IP configuration** - This value is the frontend IP configuration that is used for the listener.
 
-**[フロントエンド ポート] \([名前]/[ポート])** - アプリケーション ゲートウェイのフロントエンドで使用されるポートのフレンドリ名と、実際に使用されるポートです。
+**Frontend port (Name/Port)** - A friendly name for the port used on the front end of the application gateway and the actual port used.
 
-**[プロトコル]** - フロントエンドに https と http のどちらを使用するかを決定するスイッチです。
+**Protocol** - A switch to determine if https or http is used for the front end.
 
-**[証明書] \([名前]/[パスワード])** - SSL オフロードを使用する場合、この設定に .pfx 証明書が必要で、フレンドリ名とパスワードも必要になります。
+**Certificate (Name/Password)** - If SSL offload is used, a .pfx certificate is required for this setting and a friendly name and password are required.
 
 ![add listener blade][2]
 
-## ルールの作成とリスナーへの関連付け
+## <a name="create-a-rule-and-associate-it-to-the-listener"></a>Create a rule and associate it to the listener
 
-ここまでで、リスナーが作成されました。今度は、リスナーからのトラフィックを処理するルールを作成します。
+The listener has now been created. It is time to create a rule to handle the traffic from the listener.
 
-### 手順 1
+### <a name="step-1"></a>Step 1
 
-アプリケーション ゲートウェイの **[ルール]** をクリックし、[追加] をクリックします。
+Click the **Rules** of the application gateway, and then click Add.
 
 ![app gateway rules blade][3]
 
-### 手順 2.
+### <a name="step-2"></a>Step 2
 
-**[基本規則の追加]** ブレードで、ルールのフレンドリ名を入力し、前の手順で作成したリスナーを選択します。適切なバックエンド プールと http 設定を選択し、**[OK]** をクリックします。
+On the **Add basic rule** blade, type in the friendly name for the rule and choose the listener created in the previous step. Choose the appropriate backend pool and http setting and click **OK**
 
 ![https settings window][4]
 
-これで、設定がアプリケーション ゲートウェイに保存されます。これらの設定の保存処理には時間がかかる場合があります。この処理が完了すると、これらの設定はポータルまたは PowerShell で表示できるようになます。保存後は、アプリケーション ゲートウェイがトラフィックの暗号化と暗号化解除を処理します。アプリケーション ゲートウェイとバックエンド Web サーバーの間のすべてのトラフィックは HTTP 経由で処理されます。クライアントに対する通信は、HTTPS 経由で開始された場合、暗号化されてクライアントに返されます。
+The settings are now saved to the application gateway. The save process for these settings may take a while before they are available to view through the portal or through PowerShell. Once saved the application gateway handles the encryption and decryption of traffic. All traffic between the application gateway and the backend web servers will be handled over http. Any communication back to the client if initiated over https will be returned to the client encrypted.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-Azure Application Gateway でカスタムの正常性プローブを構成する方法について学習するには、[カスタムの正常性プローブの作成](application-gateway-create-gateway-portal.md)に関するページを参照してください。
+To learn how to configure a custom health probe with Azure Application Gateway, see [Create a custom health probe](application-gateway-create-gateway-portal.md).
 
 [1]: ./media/application-gateway-ssl-portal/figure1.png
 [2]: ./media/application-gateway-ssl-portal/figure2.png
 [3]: ./media/application-gateway-ssl-portal/figure3.png
 [4]: ./media/application-gateway-ssl-portal/figure4.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,5 +1,10 @@
-## 問題: カスタム イメージ - プロビジョニング エラー
+## <a name="issue:-custom-image;-provisioning-errors"></a>Issue: Custom image; provisioning errors
 
-プロビジョニング エラーは、一般化された VM イメージを特殊化された VM イメージとしてアップロードまたはキャプチャした場合、あるいは特殊化された VM イメージを一般化された VM イメージとしてアップロードまたはキャプチャした場合に発生します。前者の場合はプロビジョニング タイムアウト エラーが発生し、後者の場合はプロビジョニングが失敗します。エラーを発生させずにカスタム イメージをデプロイするには、キャプチャ プロセス中にイメージの種類が変更されないようにする必要があります。
+Provisioning errors arise if you upload or capture a generalized VM image as a specialized VM image or vice versa. The former will cause a provisioning timeout error and the latter will cause a provisioning failure. To deploy your custom image without errors, you must ensure that the type of the image does not change during the capture process.
 
-次の表に、一般化されたイメージと特殊化されたイメージの考えられる組み合わせ、発生するエラーの種類、エラーを解決するために行う必要があることを示します。
+The following table lists the possible combinations of generalized and specialized images, the error type you will encounter and what you need to do to fix the errors.
+
+
+<!--HONumber=Oct16_HO2-->
+
+

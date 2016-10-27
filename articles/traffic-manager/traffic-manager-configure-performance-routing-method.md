@@ -1,52 +1,58 @@
-<properties 
-   pageTitle="パフォーマンスによるトラフィック ルーティング方法の構成 | Microsoft Azure"
-   description="この記事では、Traffic Manager でパフォーマンスによるトラフィック ルーティング方法を構成する方法について説明します。"
+<properties
+   pageTitle="Configure Performance traffic routing method | Microsoft Azure"
+   description="This article will help you configure performance traffic routing method in Traffic Manager"
    services="traffic-manager"
    documentationCenter=""
    authors="sdwheeler"
    manager="carmonm"
    editor="tysonn" />
-<tags 
+<tags
    ms.service="traffic-manager"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="03/17/2016"
+   ms.date="10/18/2016"
    ms.author="sewhee" />
 
-# パフォーマンスによるトラフィック ルーティング方法の構成
+<!-- repub for nofollow -->
 
-世界各地 (「リージョン」と呼びます) に配置されたさまざまなデータセンターにあるクラウド サービスと Web サイト (エンドポイント) に対するトラフィック ルーティングを行うために、要求元のクライアントから最も待機時間の短いエンドポイントに受信トラフィックを転送することができます。通常、待機時間が最も低いデータセンターは、地理的に最も近いエンドポイントと一致します。パフォーマンスによるトラフィック ルーティング方法を選択すると、トラフィックを最も短い待機時間に基づいて振り分けることができますが、振り分け時にネットワークの構成や負荷のリアルタイムの変化を考慮することはできません。Azure Traffic Manager に用意されているさまざまなトラフィック ルーティング方法の詳細については、[Traffic Manager でのトラフィック ルーティング方法について](traffic-manager-routing-methods.md)の記事を参照してください。
+# <a name="configure-performance-traffic-routing-method"></a>Configure Performance traffic routing method
 
-## 一連のエンドポイント間で、最も短い待機時間に基づいてトラフィック ルーティングを行う
+In order to route traffic for cloud services and websites (endpoints) that are located in different datacenters across the globe (also known as regions), you can direct incoming traffic to the endpoint with the lowest latency from the requesting client. Typically, the datacenter with the lowest latency corresponds to the closest in geographic distance. The Performance traffic routing method will allow you to distribute based on lowest latency, but cannot take into account real-time changes in network configuration or load. For more information on the different traffic routing methods that Azure Traffic Manager provides, see [About Traffic Manager traffic routing Methods](traffic-manager-routing-methods.md).
 
-1. Azure クラシック ポータルの左側のウィンドウで、**[Traffic Manager]** アイコンをクリックして [Traffic Manager] ウィンドウを開きます。まだ Traffic Manager プロファイルを作成していない場合は、「[Traffic Manager プロファイルの管理](traffic-manager-manage-profiles.md)」に記載された手順に従って、基本的な Traffic Manager プロファイルを作成してください。
-2. Azure クラシック ポータルの Traffic Manager ウィンドウで、変更対象のエンドポイント設定が保存されている Traffic Manager プロファイルを見つけて、そのプロファイル名の右側にある矢印をクリックします。これにより、プロファイルの設定ページが開きます。
-3. プロファイルのページで、ページの上部にある **[エンドポイント]** をクリックし、構成に含めるサービス エンドポイントが存在することを確認します。プロファイルにエンドポイントを追加または削除する手順については、「[Traffic Manager でのエンドポイントの管理](traffic-manager-endpoints.md)」を参照してください。
-4. プロファイルのページで、上部にある **[構成]** をクリックし、構成ページを開きます。
-5. **[トラフィック ルーティング方法の設定]** で、トラフィック ルーティング方法が **[パフォーマンス]* に設定されていることを確認します。他の方法に設定されている場合は、ドロップダウン リストから **[パフォーマンス]** をクリックします。
-6. **[監視の設定]** が適切に構成されていることを確認します。監視を構成することで、オフラインになっているエンドポイントにトラフィックが送信されなくなります。エンドポイントを監視するには、パスとファイル名を指定する必要があります。スラッシュ "/" は、相対パスの有効な入力値で、ファイルがルート ディレクトリ (既定のディレクトリ) にあることを意味します。監視の詳細については、「[Traffic Manager の監視について](traffic-manager-monitoring.md)」を参照してください。
-7. 構成の変更が完了したら、ページの下部にある **[保存]** をクリックします。
-8. 構成の変更をテストします。詳細については、「[Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)」を参照してください。
-9. Traffic Manager プロファイルが設定されて機能したら、権限のある DNS サーバー上の DNS レコードを編集して、会社のドメイン名が Traffic Manager ドメイン名を参照するようにします。これを行う方法の詳細については、「[会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](traffic-manager-point-internet-domain.md)」を参照してください。
+## <a name="route-traffic-based-on-lowest-latency-across-a-set-of-endpoints:"></a>Route traffic based on lowest latency across a set of endpoints:
 
-## 次のステップ
+1. In the Azure classic portal, in the left pane, click the **Traffic Manager** icon to open the Traffic Manager pane. If you have not yet created your Traffic Manager profile, see [Manage Traffic Manager Profiles](traffic-manager-manage-profiles.md) for the steps to create a basic Traffic Manager profile.
+2. In the Azure classic portal, on the Traffic Manager pane, locate the Traffic Manager profile that contains the settings that you want to modify, and then click the arrow to the right of the profile name. This will open the settings page for the profile.
+3. On the page for your profile, click **Endpoints** at the top of the page and verify that the service endpoints that you want to include in your configuration are present. For steps to add or remove endpoints from your profile, see [Manage Endpoints in Traffic Manager](traffic-manager-endpoints.md).
+4. On the page for your profile, click **Configure** at the top to open the configuration page.
+5. For **traffic routing method settings**, verify that the traffic routing method is **Performance*. If it’s not, click **Performance** in the dropdown list.
+6. Verify that the **Monitoring Settings** are configured appropriately. Monitoring ensures that endpoints that are offline are not sent traffic. In order to monitor endpoints, you must specify a path and filename. Note that a forward slash “/“ is a valid entry for the relative path and implies that the file is in the root directory (default). For more information about monitoring, see [About Traffic Manager Monitoring](traffic-manager-monitoring.md).
+7. After you complete your configuration changes, click **Save** at the bottom of the page.
+8. Test the changes in your configuration. For more information, see [Testing Traffic Manager Settings](traffic-manager-testing-settings.md).
+9. Once your Traffic Manager profile is setup and working, edit the DNS record on your authoritative DNS server to point your company domain name to the Traffic Manager domain name. For more information about how to do this, see [Point a Company Internet Domain to a Traffic Manager Domain](traffic-manager-point-internet-domain.md).
+
+## <a name="next-steps"></a>Next steps
 
 
-[会社のインターネット ドメインで Traffic Manager ドメインが参照されるようにする](traffic-manager-point-internet-domain.md)
+[Point a company Internet domain to a Traffic Manager domain](traffic-manager-point-internet-domain.md)
 
-[Traffic Manager のルーティング方法](traffic-manager-routing-methods.md)
+[Traffic Manager routing methods](traffic-manager-routing-methods.md)
 
-[フェールオーバーのルーティング方法の構成](traffic-manager-configure-failover-routing-method.md)
+[Configure failover routing method](traffic-manager-configure-failover-routing-method.md)
 
-[ラウンド ロビンによるトラフィック ルーティング方法の構成](traffic-manager-configure-round-robin-routing-method.md)
+[Configure round robin routing method](traffic-manager-configure-round-robin-routing-method.md)
 
-[Traffic Manager の機能低下状態のトラブルシューティング](traffic-manager-troubleshooting-degraded.md)
+[Troubleshooting Traffic Manager degraded state](traffic-manager-troubleshooting-degraded.md)
 
-[Traffic Manager - プロファイルの無効化、有効化、または削除](disable-enable-or-delete-a-profile.md)
+[Traffic Manager - Disable, enable or delete a profile](disable-enable-or-delete-a-profile.md)
 
-[Traffic Manager - エンドポイントの無効化または有効化](disable-or-enable-an-endpoint.md)
- 
+[Traffic Manager - Disable or enable an endpoint](disable-or-enable-an-endpoint.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

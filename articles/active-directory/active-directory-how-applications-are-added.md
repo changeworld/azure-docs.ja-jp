@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Active Directory にアプリケーションを追加する方法。"
-   description="この記事では、アプリケーションを Azure Active Directory のインスタンスに追加する方法について説明します。"
+   pageTitle="How applications are added to Azure Active Directory."
+   description="This article describes how applications are added to an instance of Azure Active Directory."
    services="active-directory"
    documentationCenter=""
    authors="shoatman"
@@ -16,138 +16,143 @@
       ms.date="02/09/2016"
       ms.author="shoatman"/>
 
-# アプリケーションを Azure AD に追加する方法と理由
 
-Azure Active Directory のインスタンスでアプリケーションの一覧を表示したときに最初に理解しにくいことの 1 つは、アプリケーションの元の場所と追加された理由を理解することです。この記事では、ディレクトリでのアプリケーションの表現方法と、アプリケーションがディレクトリに追加された方法を理解するのに役立つコンテキストについて説明します。
+# <a name="how-and-why-applications-are-added-to-azure-ad"></a>How and why applications are added to Azure AD
 
-## Azure AD がアプリケーションに提供するサービス
+One of the initially puzzling things when viewing a list of applications in your instance of Azure Active Directory is understanding where the applications came from and why they are there.  This article will provide a high level overview of how applications are represented in the directory and provide you with context that will assist you in understanding how an application came to be in your directory.
 
-アプリケーションは、Azure AD が提供するサービスを利用するために Azure AD に追加されます。次のようなサービスがあります。
+## <a name="what-services-does-azure-ad-provide-to-applications?"></a>What services does Azure AD provide to applications?
 
-* アプリの認証と承認
-* ユーザーの認証と承認
-* フェデレーションまたはパスワードを使用するシングル サインオン (SSO)
-* ユーザーのプロビジョニングと同期
-* ロール ベースのアクセス制御。ディレクトリを使用して、アプリ内でロールに基づく承認チェックを実行するためのアプリケーション ロールを定義します。
-* oAuth 承認サービス (Office 365 や他の Microsoft アプリによって API/リソースへのアクセスを承認するために使用されます)
-* アプリケーションの発行とプロキシ。プライベート ネットワークからインターネットにアプリを発行します。
+Applications are added to Azure AD to leverage one or more of the services it provides.  Those services include:
 
-## ディレクトリでのアプリケーションの表現方法
+* App authentication and authorization
+* User authentication & authorization
+* Single sign-on (SSO) using federation or password
+* User provisioning & synchronization
+* Role-based access control; Use the directory to define application roles to perform roles based authorization checks in an app.
+* oAuth authorization services (used by Office 365 and other Microsoft apps to authorize access to APIs/resources.)
+* Application publishing & proxy; Publish an app from a private network to the internet
 
-Azure AD では、アプリケーションはアプリケーション オブジェクトとサービス プリンシパル オブジェクトという 2 つのオブジェクトを使用して表されます。アプリケーション オブジェクトは 1 つで、"home"/"owner" または "publishing" ディレクトリにおいて登録されます。サービス プリンシパル オブジェクトは 1 つ以上あり、アプリケーションが動作するすべてのディレクトリを表します。
+## <a name="how-are-applications-represented-in-the-directory?"></a>How are applications represented in the directory?
 
-アプリケーション オブジェクトでは Azure AD に対してアプリが記述されており (マルチテナント サービス)、以下のものを含むことができます (*注*: この一覧がすべてではありません)。
+Applications are represented in the Azure AD using 2 objects: an application object and a service principal object.  There is one application object, registered in a "home"/"owner" or "publishing" directory and one or more service principal objects representing the application in every directory in which it acts.  
 
-* 名前、ロゴ、発行元
-* シークレット (アプリの認証に使用される対称キーまたは非対称キー)
-* API の依存関係 (oAuth)
-* 発行済みの API/リソース/スコープ (oAuth)
-* アプリのロール (RBAC)
-* SSO のメタデータと構成 (SSO)
-* ユーザー プロビジョニングのメタデータと構成
-* プロキシのメタデータと構成
+The application object describes the app to Azure AD (the multi-tenant service) and may include any of the following: (*Note*: This is not an exhaustive list.)
 
-サービス プリンシパルは、アプリケーションが機能するすべてのディレクトリ (ホーム ディレクトリを含みます) におけるアプリケーションの記録です。サービス プリンシパルには次のような特徴があります。
+* Name, Logo & Publisher
+* Secrets (symmetric and/or asymmetric keys used to authenticate the app)
+* API dependencies (oAuth)
+* APIs/resources/scopes published (oAuth)
+* App roles (RBAC)
+* SSO metadata and configuration (SSO)
+* User provisioning metadata and configuration
+* Proxy metadata and configuration
 
-* アプリ ID プロパティを介してアプリケーション オブジェクトを逆参照します
-* ローカル ユーザーとグループ アプリ ロールの割り当てを記録します
-* ローカル ユーザーとアプリに許可された管理アクセス許可を記録します
-    * 例: 特定のユーザーの電子メールにアクセスするためのアプリに対するアクセス許可
-* 条件付きアクセス ポリシーを含むローカル ポリシーを記録します
-* アプリのローカル代替ローカル設定を記録します
-    * 要求変換ルール
-    * 属性マッピング (ユーザーのプロビジョニング)
-    * テナント固有のアプリ ロール (アプリがカスタム ロールをサポートする場合)
-    * 名前/ロゴ
+The service principal is a record of the application in every directory, where the application acts including its home directory.  The service principal:
 
-### ディレクトリ間のアプリケーション オブジェクトとサービス プリンシパルの関係を示した図
+* Refers back to an application object via the app id property
+* Records local user and group app-role assignments
+* Records local user and admin permissions granted to the app
+    * For example: permission for the app to access a particular users email
+* Records local policies including conditional access policy
+* Records local alternate local settings for an app
+    * Claims transformation rules
+    * Attribute mappings (User provisioning)
+    * Tenant specific app roles (if the app supports custom roles)
+    * Name/Logo
 
-![アプリケーション オブジェクトおよびサービス プリンシパルが Azure AD インスタンスに存在する方法を示す図。][apps_service_principals_directory]
+### <a name="a-diagram-of-application-objects-and-service-principals-across-directories"></a>A diagram of application objects and service principals across directories
 
-上の図を見るとわかるように、マイクロソフトはアプリケーションを発行するために使用する 2 つのディレクトリを内部的に保持しています (左側)。
+![A diagram illustrating how application objects and service principals existing with Azure AD instances.][apps_service_principals_directory]
 
-* 1 つはマイクロソフトのアプリ用 (Microsoft サービス ディレクトリ)
-* 1 つは事前に統合されたサードパーティのアプリ用 (アプリ ギャラリー ディレクトリ)
+As you can see from the diagram above.  Microsoft maintains two directories internally (on the left) it uses to publish applications.
 
-Azure AD と統合するアプリケーションのパブリッシャー/ベンダーには、発行ディレクトリが必要です (SAAS ディレクトリ)。
+* One for Microsoft Apps (Microsoft services directory)
+* One for pre-integrated 3rd Party Apps (App Gallery directory)
 
-ユーザーが自分で追加するアプリケーションは次のとおりです。
+Application publishers/vendors who integrate with Azure AD are required to have a publishing directory.  (Some SAAS Directory).
 
-* ユーザーが開発したアプリ (AAD と統合)
-* シングル サインオン用に接続したアプリ
-* Azure AD アプリケーション プロキシを使用して発行したアプリ
+Applications that you add yourself include:
 
-### いくつかの注意事項と例外
+* Apps you developed (integrated with AAD)
+* Apps you connected for single-sign-on
+* Apps you published using the Azure AD application proxy.
 
-* すべてのサービス プリンシパルがアプリケーション オブジェクトを逆参照するわけではありません。どういうことでしょうか。 Azure AD が最初に構築された時点では、アプリケーションに提供されるサービスははるかに限定的であり、サービス プリンシパルはアプリ ID を確立するのに十分でした。元のサービス プリンシパルは、Windows Server Active Directory サービス アカウントとよく似ていました。このため、現在でも、先にアプリケーション オブジェクトを作成せずに、Azure AD PowerShell を使用してサービス プリンシパルを作成できます。Graph API では、サービス プリンシパルを作成する前に、アプリケーション オブジェクトが必要です。
-* 現在、このような情報の中にはプログラムによって公開されていないものがあります。次の情報は UI でのみ使用できます。
-    * 要求変換ルール
-    * 属性マッピング (ユーザーのプロビジョニング)
-* サービス プリンシパル オブジェクトおよびアプリケーション オブジェクトの詳細については、Azure AD Graph REST API のリファレンス ドキュメントを参照してください。*ヒント*: Azure AD Graph API のドキュメントは、現在手に入る Azure AD に関するスキーマ参照に最も近いものです。  
-    * [アプリケーション](https://msdn.microsoft.com/library/azure/dn151677.aspx)
-    * [サービス プリンシパル](https://msdn.microsoft.com/library/azure/dn194452.aspx)
+### <a name="a-couple-of-notes-and-exceptions"></a>A couple of notes and exceptions
+
+* Not all service principals point back to application objects.  Huh? When Azure AD was originally built the services provided to applications were much more limited and the service principal was sufficient for establishing an app identity.  The original service principal was closer in shape to the Windows Server Active Directory service account.  For this reason it's still possible to create service principals using the Azure AD PowerShell without first creating an application object.  The Graph API requires an app object before creating a service principal.
+* Not all of the information described above is currently exposed programmatically.  The following are only available in the UI:
+    * Claims transformation rules
+    * Attribute mappings (User provisioning)
+* For more detailed information on the service principal and application objects please refer to the Azure AD Graph REST API reference documentation.  *Hint*: The Azure AD Graph API documentation is the closest thing to a schema reference for Azure AD that's currently available.  
+    * [Application](https://msdn.microsoft.com/library/azure/dn151677.aspx)
+    * [Service Principal](https://msdn.microsoft.com/library/azure/dn194452.aspx)
 
 
-## Azure AD インスタンスへのアプリの追加方法
-Azure AD にアプリを追加するにはさまざまな方法があります。
+## <a name="how-are-apps-added-to-my-azure-ad-instance?"></a>How are apps added to my Azure AD instance?
+There are many ways an app can be added to Azure AD:
 
-* [Azure Active Directory アプリ ギャラリー](https://azure.microsoft.com/updates/azure-active-directory-over-1000-apps/)からアプリを追加します
-* Azure Active Directory に統合されているサードパーティのアプリにサインアップ/サインインします (例: [Smartsheet](https://app.smartsheet.com/b/home)、[DocuSign](https://www.docusign.net/member/MemberLogin.aspx))
-    * サインアップ/サインインの間に、ユーザーには、アプリに対してプロファイルにアクセスするためのアクセス許可および他のアクセス許可を与えることが求められます。最初のユーザーがそれに同意した時点で、アプリを表すサービス プリンシパルがディレクトリに追加されます。
-* [Office 365](http://products.office.com/) などの Microsoft オンライン サービスにサインアップ/サインインします
-    * Office 365 をサブスクライブするか、または試用を開始すると、Office 365 に関連するすべての機能を提供するために使用されるさまざまなサービスを表す 1 つまたは複数のサービス プリンシパルがディレクトリに作成されます。
-    * SharePoint などの一部の Office 365 サービスは、ワークフローを含むコンポーネント間で安全に通信できるように、実行中にサービス プリンシパルを作成します。
-* Azure 管理ポータルで開発中のアプリを追加します (https://msdn.microsoft.com/library/azure/dn132599.aspx を参照)
-* Visual Studio を使用して開発中のアプリを追加します。以下を参照してください。
-    * [ASP.Net の認証方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)
-    * [接続されたサービス](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
-* [Azure AD アプリケーション プロキシ](https://msdn.microsoft.com/library/azure/dn768219.aspx)を使用するためにアプリを追加します
-* SAML またはパスワード SSO を使用するシングル サインオンにアプリを接続します
-* Azure でのさまざまな開発者エクスペリエンスや、デベロッパー センターでの API エクスプローラー エクスペリエンスなど、その他多数
+* Add an app from the [Azure Active Directory App Gallery](https://azure.microsoft.com/updates/azure-active-directory-over-1000-apps/)
+* Sign up/into a 3rd Party App integrated with Azure Active Directory (For example: [Smartsheet](https://app.smartsheet.com/b/home) or [DocuSign](https://www.docusign.net/member/MemberLogin.aspx))
+    * During sign up/in users are asked to give permission to the app to access their profile and other permissions.  The first person to give consent causes a service principal representing the app to be added to the directory.
+* Sign up/into Microsoft online services like [Office 365](http://products.office.com/)
+    * When you subscribe to Office 365 or begin a trial one or more service principals are created in the directory representing the various services that are used to deliver all of the functionality associated with Office 365.
+    * Some Office 365 services like SharePoint create service principals on an on-going basis to allow secure communication between components including workflows.
+* Add an app you're developing in the Azure Management Portal see: https://msdn.microsoft.com/library/azure/dn132599.aspx
+* Add an app you're developing using Visual Studio see:
+    * [ASP.Net Authentication Methods](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)
+    * [Connected Services](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
+* Add an app to use to use the [Azure AD Application Proxy](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+* Connect an app for single sign on using SAML or Password SSO
+* Many others including various developer experiences in Azure and/in API explorer experiences across developer centers
 
-## Azure AD インスタンスにアプリケーションを追加する権限のあるユーザー
+## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance?"></a>Who has permission to add applications to my Azure AD instance?
 
-グローバル管理者のみが以下のことを実行できます。
+Only global administrators can:
 
-* Azure AD アプリ ギャラリー (事前に統合されたサード パーティのアプリ) からアプリを追加します
-* Azure AD アプリケーション プロキシを使用してアプリを発行します
+* Add apps from the Azure AD app gallery (pre-integrated 3rd Party Apps)
+* Publish an app using the Azure AD Application Proxy
 
-ディレクトリ内のすべてのユーザーは、開発しているアプリケーションを追加する権限を持ち、共有するアプリケーションまたは組織データにアクセスできるアプリケーションを決定できます。*ユーザーがアプリにサインアップ/サインインしてアクセス許可を付与すると、サービス プリンシパルが作成されることに注意してください。*
+All users in your directory have rights to add applications that they are developing and discretion over which applications they share/give access to their organizational data.  *Remember user sign up/in to an app and granting permissions may result in a service principal being created.*
 
-これは最初は重要なことのように思えますが、次の点に留意してください。
+This might initially sound concerning, but keep the following in mind:
 
-* アプリは、長い間、登録されたりディレクトリに記録されたりしなくても、ユーザー認証に Windows Server Active Directory を利用することができました。現在では、いくつのアプリがどのような目的でディレクトリを使用しているかを正確に認識できるようになっています。
-* 管理者主導によるアプリの発行および登録プロセスは必要はありません。Active Directory フェデレーション サービスでは、開発者に代わって管理者が証明書利用者としてアプリを追加することが必要な場合がありました。今では開発者がセルフ サービスできます。
-* ユーザーがビジネス目的で組織のアカウントを使用してアプリにサインイン/サインアップするのは良いことです。後でユーザーが組織を離れると、使用していたアプリケーションのアカウントにアクセスできなくなります。
-* どのようなデータがどのアプリケーションと共有されていたのかについての記録を残すのは良いことです。データはかつてより移動性が高くなっており、誰がどのデータをどのアプリケーションと共有したのかについての明確な記録は便利です。
-* Azure AD を oAuth に使用するアプリは、そのユーザーがアプリケーションに与えることができるアクセス許可および管理者が同意する必要があるアクセス許可を厳密に決定します。管理者のみがより広い範囲で重要なアクセス許可に同意できる必要があることは言うまでもありません。
-* ユーザーによるアプリの追加およびデータへのアクセスの許可は監査されるイベントなので、Azure 管理ポータルで監査レポートを見てアプリがディレクトリに追加された方法を判別できます。
+* Apps have been able to leverage Windows Server Active Directory for user authentication for many years without requiring the application to be registered/recorded in the directory.  Now the organization will have improved visibility to exactly how many apps are using the directory and what for.
+* No need for admin driven app publishing/registration process.  With Active Directory Federation Services it was likely that an admin had to add an app as a relying party on behalf of developers.  Now developers can self-service.
+* Users signing in/up to apps using their organization accounts for business purposes is a good thing.  If they subsequently leave the organization they will lose access to their account in the application they were using.
+* Having a record of what data was shared with which application is a good thing.  Data is more transportable than ever and having a clear record of who shared what data with which applications is useful.
+* Apps who use Azure AD for oAuth decide exactly what permissions that users are able to grant to applications and which permissions require an admin to agree to.  It should go without saying that only admins can consent to larger scopes and more significant permissions.
+* Users adding and allowing apps to access their data are audited events so you can view the Audit Reports within the Azure Managment portal to determine how an app was added to the directory.
 
-**注:** *Microsoft 自体が何か月も既定の構成を使用して運用しています*。
+**Note:** *Microsoft itself has been operating using the default configuration for many months now.*
 
-その結果、Azure 管理ポータルでディレクトリ構成を変更することにより、ディレクトリ内のユーザーがアプリケーションを追加したり、アプリケーションと共有する情報を決定したりできないようにすることが可能であることがわかっています。Azure 管理ポータルのディレクトリの [構成] タブで、以下の構成にアクセスできます。
+With all of that said it is possible to prevent users in your directory from adding applications and from exercising discretion over what information they share with applications by modifying Directory configuration in the Azure Management portal.  The following configuration can be accessed within the Azure Management portal on your Directory's "Configure" tab.
 
-![統合されたアプリの設定を構成するための UI のスクリーンショット][app_settings]
+![A screenshot of the UI for configuring integrated app settings][app_settings]
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-Azure AD にアプリケーションを追加する方法およびアプリ用にサービスを構成する方法の詳細について学習します。
+Learn more about how to add applications to Azure AD and how to configure services for apps.
 
-* 開発者: [Azure Active Directory にアプリケーションを統合する方法を学習します](https://msdn.microsoft.com/library/azure/dn151122.aspx)
-* 開発者: [Github で Azure Active Directory と統合されたアプリのサンプル コードを確認します](https://github.com/AzureADSamples)
-* 開発者および IT プロフェッショナル: [Azure Active Directory Graph API の REST API ドキュメントを確認します](https://msdn.microsoft.com/library/azure/hh974478.aspx)
-* IT プロフェッショナル: [アプリ ギャラリーから Azure Active Directory に事前に統合されたアプリケーションを使用する方法を学習します](https://msdn.microsoft.com/library/azure/dn308590.aspx)
-* IT プロフェッショナル: [特定の事前統合アプリの構成に関するチュートリアルを探します](https://msdn.microsoft.com/library/azure/dn893637.aspx)
-* IT プロフェッショナル: [Azure Active Directory アプリケーション プロキシを使用してアプリを発行する方法について学習します](https://msdn.microsoft.com/library/azure/dn768219.aspx)
+* Developers: [Learn how to integrate an application with AAD](https://msdn.microsoft.com/library/azure/dn151122.aspx)
+* Developers: [Review sample code for apps integrated with Azure Active Directory on Github](https://github.com/AzureADSamples)
+* Developers and IT Pros: [Review the REST API documentation for the Azure Active Directory Graph API](https://msdn.microsoft.com/library/azure/hh974478.aspx)
+* IT Pros: [Learn how to use Azure Active Directory pre-integrated applications from the App Gallery](https://msdn.microsoft.com/library/azure/dn308590.aspx)
+* IT Pros: [Find tutorials for configuring specific pre-integrated apps](https://msdn.microsoft.com/library/azure/dn893637.aspx)
+* IT Pros: [Learn how to publish an app using the Azure Active Directory Application Proxy](https://msdn.microsoft.com/library/azure/dn768219.aspx)
 
-## 関連項目
+## <a name="see-also"></a>See also
 
 - [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
 <!--Image references-->
-[apps_service_principals_directory]: media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
-[app_settings]: media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
+[apps_service_principals_directory]:media/active-directory-how-applications-are-added/HowAppsAreAddedToAAD.jpg
+[app_settings]:media/active-directory-how-applications-are-added/IntegratedAppSettings.jpg
 
-<!---HONumber=AcomDC_0211_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

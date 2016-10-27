@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Publisher サポートに関する一般的な問題をトラブルシューティングする方法 | Microsoft Azure"
-   description="Publisher サポートに関する一般的な問題をトラブルシューティングする方法、サポートを得る方法を説明します"
+   pageTitle="How to troubleshoot common publisher support issues | Microsoft Azure"
+   description="Understand how to troubleshoot common publisher support issues and how to get support"
    services="marketplace-publishing"
    documentationCenter="na"
    authors="v-jeana"
@@ -16,99 +16,100 @@
       ms.date="09/21/2016"
       ms.author="v-jeana; hascipio; v-dabosl"/>
 
-# Azure Marketplace Publisher に関する一般的な問題をトラブルシューティングする方法
-この記事では、いくつかの一般的な Marketplace のシナリオのサポートを得たり、これに関する問題を解決したりする方法を説明します。
 
-## クレジットと返金
+# <a name="how-to-troubleshoot-common-azure-marketplace-publisher-issues"></a>How to troubleshoot common Azure Marketplace publisher issues
+This article explains how to resolve or get support for some common Marketplace scenarios.
 
-状況によっては、顧客に代わるクレジットまたは返金の要求が必要になる場合があります。Microsoft サポートでは、貴社のお客様のクレジットまたは返金の要求が検討され、やがてその対応が提供されるよう支援します。
+## <a name="credits-and-refunds"></a>Credits and refunds
 
-顧客に代わりクレジットまたは返金を要求する方法を次に示します。
+In some circumstances, you may need to request a credit or a refund on behalf of a customer.  Microsoft Support can help ensure that your customer’s credit and refund requests are considered and that a response is provided to you in due course.
 
-> [AZURE.NOTE] 顧客または Azure リセラーから、返金またはクレジットの要求が Microsoft 宛になされた場合、Azure サービスの提供で使用するのと同じポリシーが適用されます。それらのポリシーで返金またはクレジットが指示される場合、弊社は事前に振り出して、発行元は Microsoft が発行元に代わって行う顧客または Azure リセラー宛ての返金またはクレジットを承認することになります。ポリシーで返金もクレジットも指示されない場合、顧客または Azure リセラーに対して、直接発行元に連絡を取るように通知する場合があります。
+The following shows you how to request a credit or refund on behalf of a customer.
 
-  ![1\_RequestRefund][1]
+> [AZURE.NOTE] If a customer or Azure reseller contacts Microsoft to request a refund or credit, we will apply the same policies that we use for our provision of Azure services. If our policies indicate that a refund or credit is due, we will proactively issue (and you authorize us to issue on your behalf) a refund or credit to the customer or Azure reseller, as applicable. If our policies do not indicate that a refund or credit is due, we may invite the customer or Azure reseller to contact you directly.
 
-  1. サポート ページ ([https://support.microsoft.com/ja-JP/getsupport?tenant=ClassicCommercial&locale=ja-JP&supportregion=ja-JP&pesid=15635&sd=&oaspworkflow=start\_1.0.0.0&wf=0&ccsid=635562546535117884](https://support.microsoft.com/ja-JP/getsupport?tenant=ClassicCommercial&locale=ja-JP&supportregion=ja-JP&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884)) に移動します。
-  2. **[問題の種類]** ボックスで、**[顧客の管理]** を選択します。
-  3. **[カテゴリ]** ボックスで、**[お客様への返金の承認または要求]** を選択します。
-  4. **[要求の開始]** をクリックします。
+  ![1_RequestRefund][1]
 
-  ![2\_RequestRefund][2]
+  1. Navigate to the support pages here: [https://support.microsoft.com/en-us/getsupport?tenant=ClassicCommercial&locale=en-us&supportregion=en-us&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884](https://support.microsoft.com/en-us/getsupport?tenant=ClassicCommercial&locale=en-us&supportregion=en-us&pesid=15635&sd=&oaspworkflow=start_1.0.0.0&wf=0&ccsid=635562546535117884).
+  2. In the **Problem type** box, select **Managing Customers**.
+  3. In the **Category** box, select **Approve or request a customer refund**.
+  4. Click **Start request**.
 
-5. 連絡先情報を提供する。
-6. **[どんな問題ですか?]** ボックスに、次の情報を入力します。
+  ![2_RequestRefund][2]
 
-    - 影響を受ける顧客のサブスクリプション ID
-    - 顧客名
-    - クレジットの合計金額
-    - クレジットの期間
-    - その期間の請求日
-    - クレジットの理由
+5. Provide contact information.
+6. In the **What is the issue?** box, enter the following information:
 
-その後 24 時間以内に、情報を受け取った旨の受信確認電子メールが届きます。要求に関する決定が下されたらすぐに、その結果が通知されます。
+    - The subscription ID of the impacted customer
+    - The customer name
+    - How much the credit should be for
+    - The period of the credit
+    - The bill date of that period
+    - The reason for the credit
 
-## 顧客サブスクリプションの検証
+You will then receive an acknowledgement email within 24 hours that we have received your information. After a decision has been made in relation to your request, you will be informed of the outcome.
 
-状況によっては、貴社のいずれかのお客様のサブスクリプション詳細を検証することが必要になる場合があります。この支援を受けるために、Microsoft サポートに問い合わせることができます。Microsoft サポートにより、サブスクリプション ID と請求先の住所が既知の顧客に属していることを確認できます。
+## <a name="customer-subscription-validation"></a>Customer subscription validation
+
+In some circumstances, you may need to validate the subscription details for one of your customers. You can contact Microsoft Support to help with this. Microsoft Support will help to confirm that a subscription ID and billing address belong to a known customer.
 
   ![subscriptionvalidation][3]
 
-- 顧客からサポートを要求する問い合わせを受けたとします。
-- 貴社に、その顧客がその申し出にふさわしい顧客であるか検証する術がないとします。
-- 顧客サブスクリプションの検証を要求するサポート要求をログに記録できます。
-- 顧客サブスクリプション ID と請求先住所を入力する必要があります。
-- マイクロソフトから、請求先住所とサブスクリプション ID がマイクロソフトで把握されているものであることを伝える連絡が届きます。
+- A customer may contact you requesting support.
+- You may not know how to validate that a customer is a genuine customer for an offer.
+- You can log a support request to request customer subscription validation.
+- You will need to provide a customer subscription ID and billing address.
+- Microsoft will contact you to provide confirmation that the billing address and subscription ID are known to us.
 
 
-## Publisher Profile を更新する方法を教えてください。
+## <a name="how-do-i-update-my-publisher-profile?"></a>How do I update my publisher profile?
 
-発行者プロファイルを更新するには、Microsoft デベロッパー センターを使用して以下を実行します。
+If you want to update your publisher profile, this can be done via the Microsoft Dev Center:
 
-**1.Windows デベロッパー センターにサインインします**。
+**1. Sign in to the Windows Dev Center**.
 
-- 新しい Chrome Incognito または Internet Explorer InPrivate ブラウズ セッションを開き、個人用アカウントにサインインしていないことを確認します。
-- [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure) に移動します。
+- Open a new Chrome Incognito or Internet Explorer InPrivate browsing session to ensure that you’re not signed in to a personal account.
+- Go to [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
 
 ![inprivate][4]
 
-**2.職場または学校のアカウント** (つまり AzureStore@yourcompany.com) を使用してサインインします。
+**2. Sign in with your company's work or school account** (that is, AzureStore@yourcompany.com).
 
 ![signin][5]
 
-**3.[アカウントの保護にご協力ください] 検証画面を完了します**。
+**3. Complete the “Help us protect your account” verification**.
 
-> [AZURE.NOTE] 電話番号または電子メール アドレスで検証できます。
+> [AZURE.NOTE] You can use your phone number or email address to verify.
 
 ![protectacct][6]
 
-**4.[アカウントの詳細] と [連絡先情報] に移動します**。
+**4. Navigate to Account Details and Contact info**.
 
 ![acctdetails][7]
 
-## 発行アカウントに管理者を追加、または発行アカウントから管理者を削除する方法を教えてください。
+## <a name="how-do-i-add-or-delete-an-administrator-from-my-publishing-account?"></a>How do I add or delete an administrator from my publishing account?
 
 ![manageadmins][8]
 
-1. 発行ポータルに移動します。
-2. **[発行元]** を選択します。
-3. **[管理者]** を選択します。
-4. 追加または削除する共同管理者の電子メール アドレスを追加します。
-5. [**保存**] を選択します。
+1. Navigate to the Publishing Portal.
+2. Select **Publishers**.
+3. Select **Administrators**.
+4. Add the email address of the co-admin that you want to add or remove.
+5. Select **Save**.
 
-## 次の手順: その他のサポート クエリ
+## <a name="next-steps:-other-support-queries"></a>Next steps:  Other support queries
 
-次の問題については、[https://portal.azure.com](https://portal.azure.com) に問題を記録してください。
+For the following issues, please log an issue at [https://portal.azure.com](https://portal.azure.com):
 
-- 課金エラーを報告する方法を教えてください。
-- 課金明細や使用状況明細に不一致があるのですが。
-- 課金明細の理解に役立つサポートはありますか。
+- How do I report a billing error?
+- I have noticed discrepancies in my billing or usage statements.
+- I need help understanding my billing statement.
 
 
-次の問題については、[http://go.microsoft.com/fwlink/?LinkId=272975](http://go.microsoft.com/fwlink/?LinkId=272975) でサポート要求を作成してください。
+For the following issues, please create a support request at [http://go.microsoft.com/fwlink/?LinkId=272975](http://go.microsoft.com/fwlink/?LinkId=272975):
 
-- Web サービスの管理に関する問題があります。
-- 自分の販売者のアカウントに関連付けられている Microsoft アカウントを変更する方法を教えてください。
+- I have issues managing web services.
+- How do I change the Microsoft account associated with my seller account?
 
 
 [1]: ./media/marketplace-publishing-support-common-issues/requestrefund1.png
@@ -120,4 +121,8 @@
 [7]: ./media/marketplace-publishing-support-common-issues/acctdetails.png
 [8]: ./media/marketplace-publishing-support-common-issues/manageadmins.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

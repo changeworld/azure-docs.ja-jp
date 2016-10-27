@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Windows VM 拡張機能のサンプル構成 | Microsoft Azure"
-   description="拡張機能を使用したテンプレート作成のサンプル構成"
+   pageTitle="Sample configuration for Windows VM extensions | Microsoft Azure"
+   description="Sample configuration for authoring templates with extensions"
    services="virtual-machines-windows"
    documentationCenter=""
    authors="kundanap"
@@ -17,24 +17,25 @@
    ms.date="03/29/2016"
    ms.author="kundanap"/>
 
-# Azure Windows VM 拡張機能の構成サンプル
+
+# <a name="azure-windows-vm-extension-configuration-samples"></a>Azure Windows VM Extension Configuration Samples
 
 > [AZURE.SELECTOR]
-- [PowerShell - テンプレート](virtual-machines-windows-extensions-configuration-samples.md)
-- [CLI - テンプレート](virtual-machines-linux-extensions-configuration-samples.md)
+- [PowerShell - Template](virtual-machines-windows-extensions-configuration-samples.md)
+- [CLI - Template](virtual-machines-linux-extensions-configuration-samples.md)
 
 <br>
 
-この記事には、Windows VM に対して Azure VM 拡張機能を構成する際の構成のサンプルが記載されています。
+This article provides sample configuration for configuring Azure VM Extensions for Windows VMs.
 
-これらの拡張機能の詳細については、「[Azure VM 拡張機能とその機能](virtual-machines-windows-extensions-features.md)」を参照してください。
+To learn more about these extensions, see [Azure VM Extensions Overview.](virtual-machines-windows-extensions-features.md)
 
-拡張機能テンプレートの作成の詳細については、「[拡張機能テンプレートの作成](virtual-machines-windows-extensions-authoring-templates.md)」を参照してください。
+To learn more about authoring extension templates, see [Authoring Extension Templates.](virtual-machines-windows-extensions-authoring-templates.md)
 
-この記事では、一部の Windows 拡張機能について、予測される構成値の一覧を示します。
+This article lists expected configuration values for some of the Windows Extensions.
 
-## IaaS VM による VM 拡張機能のサンプル テンプレート スニペット。
-拡張機能をデプロイするためのテンプレート スニペットは次のようになります。
+## <a name="sample-template-snippet-for-vm-extensions-with-iaas-vms."></a>Sample template snippet for VM Extensions with IaaS VMs.
+The template snippet for Deploying extensions looks as following:
 
       {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -54,7 +55,7 @@
       }
       }
 
-## VM スケール セットによる VM 拡張機能のサンプル テンプレート スニペット。
+## <a name="sample-template-snippet-for-vm-extensions-with-vm-scale-sets."></a>Sample template snippet for VM Extensions with VM Scale Sets.
 
     {
      "type":"Microsoft.Compute/virtualMachineScaleSets",
@@ -76,13 +77,13 @@
             }
           }
 
-拡張機能をデプロイする前に、拡張機能の最新バージョンを確認し、"typeHandlerVersion" を最新のバージョンに置き換えてください。
+Before deploying the extension please check the latest extension version and replace the "typeHandlerVersion" with the current latest version.
 
-以降では、Windows VM 拡張機能のサンプル構成を紹介します。
+Rest of the article provides sample configurations for Windows VM Extensions.
 
-拡張機能をデプロイする前に、拡張機能の最新バージョンを確認し、"typeHandlerVersion" を最新のバージョンに置き換えてください。
+Before deploying the extension please check the latest extension version and replace the "typeHandlerVersion" with the current latest version.
 
-### CustomScript 拡張機能 1.4
+### <a name="customscript-extension-1.4."></a>CustomScript Extension 1.4.
       {
           "publisher": "Microsoft.Compute",
           "type": "CustomScriptExtension",
@@ -99,16 +100,16 @@
           }
       }
 
-#### パラメーターの説明:
+#### <a name="parameter-description:"></a>Parameter description:
 
-- fileUris: 拡張機能によって VM にダウンロードされるファイルの URL のコンマ区切りリスト。何も指定しない場合、ファイルはダウンロードされません。ファイルが Azure Storage にある場合、fileURLs はプライベートとしてマークされ、これらのファイルにアクセスするために、対応する storageAccountName と storageAccountKey がプライベート パラメーターとして渡されます。
-- commandToExecute: [必須パラメーター]: 拡張機能によって実行されるコマンド。
-- storageAccountName: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント名。
-- storageAccountKey: [省略可能なパラメーター]: fileURLs がプライベートとしてマークされている場合は、fileURLs にアクセスするためのストレージ アカウント キー。
+- fileUris : Comma seperated list of urls of the files that will be downloaded on the VM by the Extension. No files are downloaded if nothing is specified. If the files are in Azure Storage, the fileURLs can be marked private and the correspoding storageAccountName and storageAccountKey can be passed as private parameters to access these files.
+- commandToExecute : [Mandatory Parameter] : This is the command that will be executed by the Extension.
+- storageAccountName : [Optional Parameter] : Storage Account Name for accessing the fileURLs, if they are marked as private.
+- storageAccountKey : [Optional Parameter] : Storage Account Key for accessing the fileURLs, if they are marked as private.
 
-### CustomScript 拡張機能 1.7
+### <a name="customscript-extension-1.7."></a>CustomScript Extension 1.7.
 
-パラメーターの説明については、CustomScript バージョン 1.4 を参照してください。バージョン 1.7 では、スクリプト パラメーター (commandToExecute) を protectedSettings として送信する機能がサポートされるようになりました。その場合、パラメーターは送信前に暗号化されます。"commandToExecute" パラメーターは、settings または protectedSettings で指定できますが、両方に指定することはできません。
+Please refer to CustomScript version 1.4 for parameter description. Version 1.7 introduces support for sending script parameters(commandToExecute) as protectedSettings, in which case they will be encrypted before sending. 'commandToExecute' parameter can be specified either in settings or protectedSettings but not in both.
 
         {
             "publisher": "Microsoft.Compute",
@@ -127,7 +128,7 @@
             }
         }
 
-### VMAccess 拡張機能
+### <a name="vmaccess-extension."></a>VMAccess Extension.
 
       {
           "publisher": "Microsoft.Compute",
@@ -141,7 +142,7 @@
           }
       }
 
-### DSC 拡張機能
+### <a name="dsc-extension."></a>DSC Extension.
       {
           "publisher": "Microsoft.Powershell",
           "type": "DSC",
@@ -173,7 +174,7 @@
       }
 
 
-### Symantec Endpoint Protection
+### <a name="symantec-endpoint-protection."></a>Symantec Endpoint Protection.
       {
         "publisher": "SymantecEndpointProtection",
         "type": "Symantec",
@@ -181,13 +182,13 @@
         "settings": {}
       }
 
-### Trend Micro Deep Security Agent
+### <a name="trend-micro-deep-security-agent."></a>Trend Micro Deep Security Agent.
       {
         "publisher": "TrendMicro.DeepSecurity",
         "type": "TrendMicroDSA",
         "typeHandlerVersion": "9.6",
         "settings": {
-          "ManagerAddress" : "Enter the externally accessible DNS name or IP address of the Deep Security Manager. Please enter "agents.deepsecurity.trendmicro.com" if using Deep Security as a Service",
+          "ManagerAddress" : "Enter the externally accessible DNS name or IP address of the Deep Security Manager. Please enter \"agents.deepsecurity.trendmicro.com\" if using Deep Security as a Service",
 
           "ActivationPort" : "Enter the port number of the Deep Security Manager, default value - 443",
 
@@ -199,7 +200,7 @@
         }
       }
 
-### Vormertric Transparent Encryption Agent
+### <a name="vormertric-transparent-encryption-agent."></a>Vormertric Transparent Encryption Agent.
             {
               "publisher": "Vormetric",
               "type": "VormetricTransparentEncryptionAgent",
@@ -208,7 +209,7 @@
               }
             }
 
-### Puppet Enterprise Agent
+### <a name="puppet-enterprise-agent."></a>Puppet Enterprise Agent.
             {
               "publisher": "PuppetLabs",
               "type": "PuppetEnterpriseAgent",
@@ -218,7 +219,7 @@
               }
             }  
 
-### Azure Operational Insights 向け Microsoft Monitoring Agent
+### <a name="microsoft-monitoring-agent-for-azure-operational-insights"></a>Microsoft Monitoring Agent for Azure Operational Insights
             {
               "publisher": "Microsoft.EnterpriseCloud.Monitoring",
               "type": "MicrosoftMonitoringAgent",
@@ -232,7 +233,7 @@
               }
             }
 
-### McAfee EndpointSecurity
+### <a name="mcafee-endpointsecurity"></a>McAfee EndpointSecurity
             {
               "publisher": "McAfee.EndpointSecurity",
               "type": "McAfeeEndpointSecurity",
@@ -246,7 +247,7 @@
               }
             }
 
-### Azure IaaS マルウェア対策
+### <a name="azure-iaas-antimalware"></a>Azure IaaS Antimalware
           {
             "publisher": "Microsoft.Azure.Security",
             "type": "IaaSAntimalware",
@@ -264,7 +265,7 @@
             }
           }
 
-### ESET File Security
+### <a name="eset-file-security"></a>ESET File Security
           {
             "publisher": "ESET",
             "type": "FileSecurity",
@@ -273,7 +274,7 @@
             }
           }
 
-### Datadog Agent
+### <a name="datadog-agent"></a>Datadog Agent
           {
             "publisher": "Datadog.Agent",
             "type": "DatadogWindowsAgent",
@@ -283,7 +284,7 @@
             }
           }
 
-### Confer の Azure 向けの Advanced Threat Prevention and Incident Response
+### <a name="confer-advanced-threat-prevention-and-incident-response-for-azure"></a>Confer Advanced Threat Prevention and Incident Response for Azure
           {
             "publisher": "Confer",
             "type": "ConferForAzure",
@@ -294,7 +295,7 @@
             }
           }
 
-### CloudLink SecureVM Agent
+### <a name="cloudlink-securevm-agent"></a>CloudLink SecureVM Agent
           {
             "publisher": "CloudLinkEMC.SecureVM",
             "type": "CloudLinkSecureVMWindowsAgent",
@@ -304,7 +305,7 @@
             }
           }
 
-### Microsoft Azure 用 Barracuda VPN Connectivity Agent
+### <a name="barracuda-vpn-connectivity-agent-for-microsoft-azure"></a>Barracuda VPN Connectivity Agent for Microsoft Azure
           {
             "publisher": "Barracuda.Azure.ConnectivityAgent",
             "type": "BarracudaConnectivityAgent",
@@ -317,7 +318,7 @@
             }
           }
 
-### Alert Logic Log Manager
+### <a name="alert-logic-log-manager"></a>Alert Logic Log Manager
           {
             "publisher": "AlertLogic.Extension",
             "type": "AlertLogicLM",
@@ -327,7 +328,7 @@
             }
           }
 
-### Chef Agent
+### <a name="chef-agent"></a>Chef Agent
           {
             "publisher": "Chef.Bootstrap.WindowsAzure",
             "type": "ChefClient",
@@ -339,15 +340,15 @@
             }
           }
 
-### Azure 診断
+### <a name="azure-diagnostics"></a>Azure Diagnostics
 
-診断を構成する方法の詳細については、「[Azure 診断の拡張機能](virtual-machines-windows-extensions-diagnostics-template.md)」を参照してください。
+For more details about how to configure diagnostics, see [Azure Diagnostics Extension](virtual-machines-windows-extensions-diagnostics-template.md)
 
           {
             "publisher": "Microsoft.Azure.Diagnostics",
             "type": "IaaSDiagnostics",
             "typeHandlerVersion": "1.5",
-			"autoUpgradeMinorVersion": true,
+            "autoUpgradeMinorVersion": true,
             "settings": {
               "xmlCfg": "[base64(variables('wadcfgx'))]",
               "storageAccount": "[parameters('diagnosticsStorageAccount')]"
@@ -359,10 +360,14 @@
           }
           }
 
-上記の例では、バージョン番号を最新のバージョン番号に置き換えます。
+In the examples above, replace the version number with the latest version number.
 
-カスタム スクリプト拡張機能を使用した完全な VM テンプレートの例については、次を参照してください。
+Here is an example of a full VM template with Custom Script Extension.
 
-[Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
+[Custom Script Extension on a Windows VM](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Web アプリのパフォーマンスをテストする | Microsoft Azure"
-   description="Azure Web アプリのパフォーマンスを実行して、アプリでユーザーの負荷がどのように処理されるかを確認します。応答時間を測定し、問題を示す可能性があるエラーを見つけます。"
+   pageTitle="Test your Azure web app's performance | Microsoft Azure"
+   description="Run Azure web app performance tests to check how your app handles user load. Measure response time and find failures that might indicate problems."
    services="app-service\web"
    documentationCenter=""
    authors="ecfan"
@@ -16,136 +16,147 @@
    ms.date="05/25/2016"
    ms.author="estfan; manasma; ahomer"/>
 
-# 負荷をかけた状態での Azure Web アプリのパフォーマンス テスト
 
-Web アプリを起動する前または更新プログラムを運用環境にデプロイする前に、パフォーマンスを確認しましょう。これにより、アプリをリリースする準備が整っているかどうかをより適切に評価できます。アプリの使用がピーク状態にあるときや次のマーケティング プッシュ時にアプリがトラフィックを処理できることを確認しましょう。
+# <a name="performance-test-your-azure-web-app-under-load"></a>Performance test your Azure web app under load
 
-パブリック プレビューの段階では、Azure ポータルでアプリのパフォーマンスを無料でテストできます。これらのテストでは、一定期間にわたってアプリのユーザー負荷をシミュレートし、アプリの応答を測定します。たとえば、一定の数のユーザーに対してアプリがどれだけすばやく応答したかがテスト結果に示されます。また、アプリに存在する問題を示す可能性がある失敗した要求の数も示されます。
+Check your web app's performance before you launch it or deploy updates to production. That way, you can better assess whether your app is ready for release. Feel more confident that your app can handle the traffic during peak use or at your next marketing push.
 
-![Web アプリのパフォーマンスの問題を見つける](./media/app-service-web-app-performance-test/azure-np-perf-test-overview.png)
+During public preview, you can performance test your app for free in the Azure Portal.
+These tests simulate user load on your app over a specific time period and measure your app's response. For example, your test results show how fast your app responds to a specific number of users. They also show how many requests failed, which might indicate problems with your app.      
 
-## 開始する前に
+![Find performance problems in your web app](./media/app-service-web-app-performance-test/azure-np-perf-test-overview.png)
 
-* [Azure サブスクリプション](https://account.windowsazure.com/subscriptions)が必要です (まだ取得していない場合)。[無料で Azure アカウントを開く方法については、このページを参照してください](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)。
+## <a name="before-you-start"></a>Before you start
 
-* パフォーマンス テストの履歴を保存するには、[Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs) アカウントが必要です。パフォーマンス テストを設定すると、適切なアカウントが自動的に作成されます。また、自分で新しいアカウントを作成することも、アカウント所有者である場合は既存のアカウントを使用することもできます。
+* You'll need an [Azure subscription](https://account.windowsazure.com/subscriptions), if you don't have one already. Learn how you can [open an Azure account for free](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 
-* 非運用環境にテストするアプリをデプロイします。運用環境で使用するプラン以外の App Service プランをアプリで使用するように設定します。これで、既存の顧客に影響が及んだり、運用環境のアプリの速度が低下したりすることがなくなります。
+* You'll need a [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs) account to keep your performance test history. A suitable account will be created automatically when you set up your performance test. Or you can create a new account or use an existing account if you're the account owner. 
 
-## パフォーマンス テストの設定と実行
+* Deploy your app for testing in a non-production environment. Have your app use an App Service plan other than the plan used in production. That way, you don't affect any existing customers or slow down your app in production. 
 
-0.  [Azure ポータル](https://portal.azure.com)にサインインします。所有している Visual Studio Team Services アカウントを使用するには、アカウント所有者としてサインインします。
+## <a name="set-up-and-run-your-performance-test"></a>Set up and run your performance test
 
-0.  Web アプリに移動します。
+0.  Sign in to the [Azure Portal](https://portal.azure.com). To use a Visual Studio Team Services account that you own, sign in as the account owner.
 
-    ![[すべてを参照] > [Web アプリ] > アプリを選択](./media/app-service-web-app-performance-test/azure-np-web-apps.png)
+0.  Go to your web app.
 
-0.  **[パフォーマンス テスト]** に移動します。
+    ![Go to Browse All, Web Apps, your web app](./media/app-service-web-app-performance-test/azure-np-web-apps.png)
 
-    ![[ツール] > [パフォーマンス テスト] を選択](./media/app-service-web-app-performance-test/azure-np-web-app-details-tools-expanded.png)
+0.  Go to **Performance Test**.
+
+    ![Go to Tools, Performance Test](./media/app-service-web-app-performance-test/azure-np-web-app-details-tools-expanded.png)
  
-0. 次に、パフォーマンス テストの履歴を保存するために、[Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs) アカウントをリンクします。
+0. Now you'll link a [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs) account to keep your performance test history.
 
-    使用できる Team Services アカウントがある場合は、そのアカウントを選択します。VSO アカウントを持っていない場合は、新しいアカウントを作成します。
+    If you have a Team Services account to use, select that account. If you don't, create a new account.
 
-    ![既存の Team Services アカウントを選択するか、新しいアカウントを作成します](./media/app-service-web-app-performance-test/azure-np-no-vso-account.png)
+    ![Select existing Team Services account, or create a new account](./media/app-service-web-app-performance-test/azure-np-no-vso-account.png)
 
-0.  パフォーマンス テストを作成します。詳細を設定し、テストを実行します。
+0.  Create your performance test. Set the details and run the test. 
 
-テストの実行中、リアルタイムで結果を確認できます。
+You can watch the results in real time while the test runs.
 
-たとえば、昨年の休日セールでクーポンを配布したアプリがあるとします。このイベントは、100 人の同時接続顧客数をピーク負荷として 15 分間にわたって続きました。今年は、顧客の数を 2 倍にしたいと考えています。さらに、ページの読み込み時間を 5 秒から 2 秒に短縮することにより、顧客満足度を高めたいと考えています。そこで、更新したアプリのパフォーマンスを 250 人のユーザーを想定して 15 分間にわたってテストします。
+For example, suppose we have an app that gave out coupons at last year's holiday sale. This event lasted 15 minutes with a peak load of 100 concurrent customers. We want to double the number of customers this year. We also want to improve customer satisfaction by reducing the page load time from 5 seconds to 2 seconds. So, we'll test our updated app's performance with 250 users for 15 minutes.
 
-Web サイトを同時に訪れる仮想ユーザー (顧客) を生成して、アプリに対する負荷をシミュレートします。これで、失敗した要求や応答が遅い要求の数がわかります。
+We'll simulate load on our app by generating virtual users (customers) who visit our web site at the same time. This will show us how many requests are failing or responding slowly.
 
-  ![パフォーマンス テストの作成、設定、実行](./media/app-service-web-app-performance-test/azure-np-new-performance-test.png)
+  ![Create, set up, and run your performance test](./media/app-service-web-app-performance-test/azure-np-new-performance-test.png)
 
-   *  Web アプリの既定の URL は自動的に追加されます。URL を変更して他のページ (HTTP GET 要求のみ) をテストすることができます。
+   *  Your web app's default URL is added automatically. 
+   You can change the URL to test other pages (HTTP GET requests only).
 
-   *  ローカル状態をシミュレートし、待機時間を短縮するには、最も近い場所のユーザーを選択して負荷を生成します。
+   *  To simulate local conditions and reduce latency, select a location closest to your users for generating load.
 
-  テストが実行されているときのようすを次に示します。最初の 1 分間は、ページの読み込みに予定よりも時間がかかっています。
+  Here's the test in progress. During the first minute, our page loads slower than we want.
 
-  ![実行中のパフォーマンス テストとリアルタイムのデータ](./media/app-service-web-app-performance-test/azure-np-running-perf-test.png)
+  ![Performance test in progress with real-time data](./media/app-service-web-app-performance-test/azure-np-running-perf-test.png)
 
-  テストが終了すると、最初の 1 分が経過した後はページの読み込みが高速化されていることがわかります。これは、問題のトラブルシューティングを始める場所を特定するのに役立ちます。
+  After the test is done, we learn that the page loads much faster after the first minute. This helps identify where we might want to start troubleshooting the problem.
 
-  ![パフォーマンス テスト完了、失敗したリクエストなどの結果がわかる](./media/app-service-web-app-performance-test/azure-np-perf-test-done.png)
+  ![Completed performance test shows results, including failed requests](./media/app-service-web-app-performance-test/azure-np-perf-test-done.png)
 
-## 複数の URL のテスト
+## <a name="test-multiple-urls"></a>Test multiple URLs
 
-Visual Studio Web テスト ファイルをアップロードして、エンド ツー エンドのユーザー シナリオを表す複数の URL を組み込んだパフォーマンス テストを実行することもできます。Visual Studio Web テスト ファイルを作成する方法のいくつかを次に示します。
+You can also run performance tests incorporating multiple URLs that represent an end-to-end user scenario by uploading a Visual Studio Web Test file. Some of the ways you can create a Visual Studio Web Test file are:
 
-* [Fiddler を使用してトラフィックをキャプチャし、Visual Studio Web テスト ファイルとしてエクスポートする](http://docs.telerik.com/fiddler/Save-And-Load-Traffic/Tasks/VSWebTest)
-* [Visual Studio でロード テスト ファイルを作成する](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release)
+* [Capture traffic using Fiddler and export as a Visual Studio Web Test file](http://docs.telerik.com/fiddler/Save-And-Load-Traffic/Tasks/VSWebTest)
+* [Create a load test file in Visual Studio](https://www.visualstudio.com/docs/test/performance-testing/run-performance-tests-app-before-release)
 
-Visual Studio Web テスト ファイルをアップロードして実行するには、次の手順に従います。
+To upload and run a Visual Studio Web Test file:
  
-0. 上記の手順に従って、**[新しいパフォーマンス テスト]** ブレードを開きます。このブレードで [CONFIGFURE TEST USING] \(テストの構成に使用する項目) オプションを選択して、**[Configure test using]** (テストの構成に使用する項目) ブレードを開きます。  
+0. Follow the steps above to open the **New performance test** blade.
+   In this blade, choose the CONFIGFURE TEST USING option to open the **Configure test using** blade.  
 
     ![Opening the Configure load testing blade](./media/app-service-web-app-performance-test/multiple-01-authoring-blade.png)
 
-0. [TEST TYPE] \(テストの種類) が **[Visual Studio Web Test]** (Visual Studio Web テスト) に設定されていることを確認し、HTTP アーカイブ ファイルを選択します。"フォルダー" アイコンを使用してファイル選択ダイアログを開きます。
+0. Check that the TEST TYPE is set to **Visual Studio Web Test** and select your HTTP Archive file.
+    Use the "folder" icon to open the file selector dialog.
 
     ![Uploading a multiple URL Visual Studio Web Test file](./media/app-service-web-app-performance-test/multiple-01-authoring-blade2.png)
 
-    ファイルがアップロードされると、テストで使用する URL の一覧が [URL DETAILS] \(URL の詳細) セクションに表示されます。
+    After the file has been uploaded, you see the list of URLs to be tested in the URL DETAILS section.
  
-0. ユーザー ロードとテスト期間を指定し、**[Run test]** (テストの実行) を選択します。
+0. Specify the user load and test duration, then choose **Run test**.
 
     ![Selecting the user load and duration](./media/app-service-web-app-performance-test/multiple-01-authoring-blade3.png)
 
-    テストが完了すると、2 つのウィンドウに結果が表示されます。左側のウィンドウには、パフォーマンス情報が一連のグラフとして表示されます。
+    After the test has finished, you see the results in two panes. The left pane shows the performnace information as a series of charts.
 
     ![The performance results pane](./media/app-service-web-app-performance-test/multiple-01a-results.png)
 
-    右側のウィンドウには、エラーの種類と発生回数と共に、失敗した要求の一覧が表示されます。
+    The right pane shows a list of failed requests, with the type of error and the number of times it occurred.
 
     ![The request failures pane](./media/app-service-web-app-performance-test/multiple-01b-results.png)
 
-0. 右側のウィンドウの上部にある **[再実行]** アイコンを選択して、テストを再実行します。
+0. Rerun the test by choosing the **Rerun** icon at the top of the right pane.
 
     ![Rerunning the test](./media/app-service-web-app-performance-test/multiple-rerun-test.png)
 
-##  Q & A
+##  <a name="q-&-a"></a>Q & A
 
-#### Q: テストの実行時間に関して制限はありますか? 
+#### <a name="q:-is-there-a-limit-on-how-long-i-can-run-a-test?"></a>Q: Is there a limit on how long I can run a test? 
 
-**A**: はい。Azure ポータルでは、最長 1 時間までテストを実行できます。
+**A**: Yes, you can run your test up to an hour in the Azure Portal.
 
-#### Q: パフォーマンス テストの実行に使用できる時間はどれだけユーザーに与えられますか。 
+#### <a name="q:-how-much-time-do-i-get-to-run-performance-tests?"></a>Q: How much time do I get to run performance tests? 
 
-**A**: パブリック プレビュー以降、Visual Studio Team Services アカウントに対して毎月 20,000 仮想ユーザー時間 (VUM) が無料で提供されます。VUM は、仮想ユーザー数にテスト時間 (分) を掛けた値です。この無料分を超える時間を使用する必要がある場合は、時間を購入し、使用した時間分のみ支払うことができます。
+**A**: After public preview, you get 20,000 virtual user minutes (VUMs) free each month with your Visual Studio Team Services account. A VUM is the number of virtual users multipled by the number of minutes in your test. If your needs exceed the free limit, you can purchase more time and pay only for what you use.
 
-#### Q: これまで使用した VUM はどこで確認できますか。
+#### <a name="q:-where-can-i-check-how-many-vums-i've-used-so-far?"></a>Q: Where can I check how many VUMs I've used so far?
 
-**A**: Azure ポータルでこの時間を確認できます。
+**A**: You can check this amount in the Azure Portal.
 
-![Team Services アカウントに移動します。](./media/app-service-web-app-performance-test/azure-np-vso-accounts.png)
+![Go to your Team Services account](./media/app-service-web-app-performance-test/azure-np-vso-accounts.png)
 
-![使用した VUM の確認](./media/app-service-web-app-performance-test/azure-np-vso-accounts-vum-summary.png)
+![Check VUMs used](./media/app-service-web-app-performance-test/azure-np-vso-accounts-vum-summary.png)
 
-#### Q: 既定のオプションは教えてください。既存のテストに影響がありますか。
+#### <a name="q:-what-is-the-default-option-and-are-my-existing-tests-impacted?"></a>Q: What is the default option and are my existing tests impacted?
 
-**A**: パフォーマンス ロード テストの既定のオプションは手動テストで、複数 URL テスト オプションがポータルに追加される前と同じです。既存のテストでは構成済みの URL が引き続き使用され、以前と同様に動作します。
+**A**: The default option for performance load tests is a manual test - the same as before the multiple URL test option was added to the portal.
+Your existing tests continue to use the configured URL and will work as before.
 
-#### Q: Visual Studio Web テスト ファイルでサポートされていない機能を教えてください。
+#### <a name="q:-what-features-not-supported-in-the-visual-studio-web-test-file?"></a>Q: What features not supported in the Visual Studio Web Test file?
 
-**A**: 現時点では、Web テストのプラグイン、データ ソース、および抽出規則がサポートされていません。Web テスト ファイルを編集してこれらを削除する必要があります。Microsoft では、将来の更新プログラムでこれらの機能のサポートを追加したいと考えています。
+**A**: At present this feature does not support Web Test plug-ins, data sources, and extraction rules. You must edit your Web Test file to remove these. We hope to add support for these features in future updates.
 
-#### Q: 他の Web テスト ファイル形式はサポートされていますか。
+#### <a name="q:-does-it-support-any-other-web-test-file-formats?"></a>Q: Does it support any other Web Test file formats?
   
-**A**: 現時点では、Visual Studio Web テスト形式ファイルのみがサポートされています。他のファイル形式のサポートが必要な場合は、ご意見をお寄せください。[vsoloadtest@microsoft.com](mailto:vsoloadtest@microsoft.com) までメールをお送りください。
+**A**: At present only Visual Studio Web Test format files are supported.
+We'd be pleased to hear from you if you need support for other file formats. Email us at [vsoloadtest@microsoft.com](mailto:vsoloadtest@microsoft.com).
 
-#### Q: Visual Studio Team Services アカウントでほかにできることは何ですか。
+#### <a name="q:-what-else-can-i-do-with-a-visual-studio-team-services-account?"></a>Q: What else can I do with a Visual Studio Team Services account?
 
-**A**: 新しいアカウントを見つけるには、```https://{accountname}.visualstudio.com``` にアクセスしてください。任意のツールまたは言語を使用して、コードの共有、ビルド、テスト、作業の追跡、ソフトウェアの出荷などの操作をすべてクラウドで実行できます。[Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs) の機能とサービスがどのようにチームの共同作業と継続的なデプロイを支援するかについて学習してください。
+**A**: To find your new account, go to ```https://{accountname}.visualstudio.com```. Share your code, build, test, track work, and ship software – all in the cloud using any tool or language. Learn more about how [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs) features and services help your team collaborate more easily and deploy continuously.
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-* [単純なクラウドのパフォーマンス テストの実行](https://www.visualstudio.com/docs/test/performance-testing/getting-started/get-started-simple-cloud-load-test)
-* [Apache Jmeter パフォーマンス テストの実行](https://www.visualstudio.com/docs/test/performance-testing/getting-started/get-started-jmeter-test)
-* [クラウド ベースのロード テストの記録と再生](https://www.visualstudio.com/docs/test/performance-testing/getting-started/record-and-replay-cloud-load-tests)
-* [クラウドでのアプリのパフォーマンス テスト](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing)
+* [Run simple cloud performance tests](https://www.visualstudio.com/docs/test/performance-testing/getting-started/get-started-simple-cloud-load-test)
+* [Run Apache Jmeter performance tests](https://www.visualstudio.com/docs/test/performance-testing/getting-started/get-started-jmeter-test)
+* [Record and replay cloud-based load tests](https://www.visualstudio.com/docs/test/performance-testing/getting-started/record-and-replay-cloud-load-tests)
+* [Performance test your app in the cloud](https://www.visualstudio.com/docs/test/performance-testing/getting-started/getting-started-with-performance-testing)
 
-<!---HONumber=AcomDC_0525_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

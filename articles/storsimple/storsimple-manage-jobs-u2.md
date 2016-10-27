@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple ジョブの表示と管理 | Microsoft Azure"
-   description="StorSimple Manager サービスの [ジョブ] ページと、最近のバックアップ ジョブ、現在のバックアップ ジョブ、スケジュールされたバックアップ ジョブを追跡する方法について説明します。"
+   pageTitle="View and manage StorSimple jobs | Microsoft Azure"
+   description="Describes the StorSimple Manager service Jobs page and how to use it to track recent, current, and scheduled backup jobs."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,82 +15,88 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
-# StorSimple Manager サービスを使用して StorSimple ジョブを表示および管理する (Update 2)
+
+# <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-jobs-(update-2)"></a>Use the StorSimple Manager service to view and manage StorSimple jobs (Update 2)
 
 [AZURE.INCLUDE [storsimple-version-selector-manage-jobs](../../includes/storsimple-version-selector-manage-jobs.md)]
 
-## Overview
+## <a name="overview"></a>Overview
 
-**[ジョブ]** ページには、StorSimple Manager サービスに接続されているデバイスで開始されたジョブを表示および管理するための一元的なポータルがあります。複数のデバイスについて、スケジュールされたジョブ、実行中のジョブ、完了したジョブ、取り消されたジョブ、失敗したジョブを表示できます。結果は表形式で表示されます。
+The **Jobs** page provides a single central portal for viewing and managing jobs that were started on devices connected to your StorSimple Manager service. You can view scheduled, running, completed, canceled, and failed jobs for multiple devices. Results are presented in a tabular format. 
 
-![[ジョブ] ページ](./media/storsimple-manage-jobs-u2/jobs.png)
+![Jobs page](./media/storsimple-manage-jobs-u2/jobs.png)
 
-以下のフィールドにフィルター処理を行うことで、関心のあるジョブを素早く見つけることができます。
+You can quickly find the jobs you are interested in by filtering on fields such as:
 
-- **状態** - ジョブの状態は、実行中、完了、取り消し済み、失敗、取り消し中、またはエラーありで完了が可能です。
-- **[開始日時] と [終了日時]** - ジョブには、日時の範囲に基づいてフィルターをかけることができます。
-- **種類** – ジョブの種類は、バックアップ、手動バックアップ、復元、複製、デバイスのフェールオーバー、ローカル固定ボリュームの作成、ボリュームの変更、更新、サポート パッケージ、仮想デバイスのプロビジョニングが可能です。
+- **Status** – Jobs can be running, completed, canceled, failed, canceling, or completed with errors.
+- **From and To** – Jobs can be filtered based on the date and time range.
+- **Type** – The job type can be backup, manual backup, restore, clone, device failover, create locally pinned volume, modify volume, update, support package, or virtual device provisioning.
 
-- **デバイス** - ジョブは、サービスに接続されている特定のデバイスで開始されます。フィルター選択されたジョブは、次の属性に基づいて表形式で表示されます。
+- **Devices** – Jobs are initiated on a certain device connected to your service.
+The filtered jobs are then tabulated on the basis of the following attributes:
 
-    - **種類** – バックアップ、手動バックアップ、復元、複製、デバイスのフェールオーバー、ローカル固定ボリュームの作成、ボリュームの変更、更新、サポート パッケージ、仮想デバイスのプロビジョニング。
+    - **Type** – backup, manual backup, restore, clone, device failover, create locally pinned volume, modify volume, update, support package, or virtual device provisioning.
 
-    - **状態** - 実行中、完了、取り消し済み、失敗、取り消し中、またはエラーありで完了。
+    - **Status** – running, completed, canceled, failed, canceling, or completed with errors.
 
-    - **エンティティ** - ジョブは、ボリューム、バックアップ ポリシー、デバイスに関連付けられます。たとえば、複製ジョブはボリュームに関連付けられますが、スケジュール済みのバックアップ ジョブはバックアップ ポリシーに関連付けられます。デバイス ジョブは、障害復旧 (DR) または復元操作の結果として作成されます。
+    - **Entity** – The jobs can be associated with a volume, a backup policy, or a device. For example, a clone job is associated with a volume, whereas a scheduled backup job is associated with a backup policy. A device job is created as a result of a disaster recovery (DR) or a restore operation.
 
-    - **デバイス** - ジョブが開始されたデバイスの名前。
+    - **Device** – The name of the device on which the job was started.
 
-    - **開始日** - ジョブが開始された日時。
+    - **Started on** – The time when the job was started.
 
-    - **進行状況**– 実行中のジョブの完了率。完了したジョブの場合、これは常に 100% です。
+    - **Progress** – The percentage completion of a running job. For a completed job, this should always be 100%.
 
-ジョブの一覧は 30 秒ごとに更新されます。
+The list of jobs is refreshed every 30 seconds.
 
-このページでは、以下のジョブ関連の操作を実行できます。
+You can perform the following job-related actions on this page:
 
-- ジョブの詳細を表示する
+- View job details
 
-- ジョブを取り消す
+- Cancel a job
 
-## ジョブの詳細を表示する
+## <a name="view-job-details"></a>View job details
 
-任意のジョブの詳細を表示するには、以下の手順を実行します。
+Perform the following steps to view the details of any job.
 
-#### ジョブの詳細を表示するには
+#### <a name="to-view-job-details"></a>To view job details
 
-1. **[ジョブ]** ページで適切なフィルターを使用してクエリを実行し、関心のあるジョブを表示します。完了済み、実行中、または取り消し済みのジョブを検索できます。
+1. On the **Jobs** page, display the job(s) you are interested in by running a query with appropriate filters. You can search for completed, running, or canceled jobs.
 
-2. ジョブを選択します。
+2. Select a job.
 
-3. ページの下部にある **[詳細]** をクリックします。
+3. At the bottom of the page, click **Details**.
 
-4. **[ジョブの詳細]** ダイアログ ボックスで、状態、詳細、時間統計、データ統計を確認できます。
+4. In the **Backup Job Details** dialog box, you can view the status, details, time statistics, and data statistics.
  
-    ![[ジョブの詳細] ページ](./media/storsimple-manage-jobs-u2/JobDetails.png)
+    ![Job details page](./media/storsimple-manage-jobs-u2/JobDetails.png)
 
-## ジョブを取り消す
+## <a name="cancel-a-job"></a>Cancel a job
 
-実行中のジョブを取り消すには、以下の手順を実行します。
+Perform the following steps to cancel a running job.
 
->[AZURE.NOTE] ボリュームの種類の変更やボリュームの拡張などの一部のジョブは取り消しできません。
+>[AZURE.NOTE] Some jobs, such as modifying a volume to change the volume type or expanding a volume, cannot be canceled.
 
-### ジョブを取り消すには
+### <a name="to-cancel-a-job"></a>To cancel a job
 
-1. **[ジョブ]** ページで適切なフィルターを使用してクエリを実行し、取り消しを行う実行中のジョブを表示します。
+1. On the **Jobs** page, display the running job(s) that you want to cancel by running a query with appropriate filters.
 
-1. 該当するジョブを選択します。
+1. Select the job.
 
-1. ページの下部にある **[キャンセル]** をクリックします。
+1. At the bottom of the page, click **Cancel**.
 
-1. 確認を求められたら、**[はい]** をクリックします。
+1. When prompted for confirmation, click **Yes**.
 
-このジョブが取り消されました。
+This job is now canceled.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [StorSimple バックアップ ポリシーの管理方法](storsimple-manage-backup-policies.md)。
+- Learn how to [manage your StorSimple backup policies](storsimple-manage-backup-policies.md).
 
-- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
+- Learn how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

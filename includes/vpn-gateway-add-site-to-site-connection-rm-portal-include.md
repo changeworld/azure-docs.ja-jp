@@ -1,25 +1,29 @@
-1. 仮想ネットワーク ゲートウェイを探し、**[すべての設定]** をクリックして、**[設定]** ブレードを開きます。
+1. Locate your virtual network gateway and click **All settings** to open the **Settings** blade.
 
-2. **[設定]** ブレードで **[接続]** をクリックし、ブレードの上部にある **[追加]** をクリックして、**[接続の追加]** ブレードを開きます。
+2. On the **Settings** blade, click **Connections**, and then click **Add** at the top of the blade to open the **Add connection** blade.
 
-	![Create Site-to-Site connection](./media/vpn-gateway-add-site-to-site-connection-rm-portal-include/addconnection250.png)
+    ![Create Site-to-Site connection](./media/vpn-gateway-add-site-to-site-connection-rm-portal-include/addconnection250.png)
 
-3. **[接続の追加]** ブレードで、接続に**名前**を付けます。
+3. On the **Add connection** blade, **Name** your connection. 
 
-4. **[接続の種類]** では、**[サイト間 (IPSec)]** を選択します。
+4. For **Connection type**, select **Site-to-site(IPSec)**.
 
-5. **[仮想ネットワーク ゲートウェイ]** の値は固定です。このゲートウェイから接続しているためです。
+5. For **Virtual network gateway**, the value is fixed because you are connecting from this gateway.
 
-6. **[ローカル ネットワーク ゲートウェイ]** では、**[ローカル ネットワーク ゲートウェイの選択]** をクリックし、使用するローカル ネットワーク ゲートウェイを選択します。
+6. For **Local network gateway**, click **Choose a local network gateway** and select the local network gateway that you want to use. 
 
-7. **[共有キー]** の値は、ローカル VPN デバイスに使用している値と一致する必要があります。ローカル ネットワーク上の VPN デバイスで共有キーが指定されていない場合は、共有キーを作成し、それをここと、ローカル デバイスに対して入力します。重要なことは、両者が一致することです。
+7. For **Shared Key**, the value here must match the value that you are using for your local VPN device. If your VPN device on your local network doesn't provide a shared key, you can make one up and input it here and on your local device. The important thing is that they both match.
 
-8. 残りの **[サブスクリプション]**、**[リソース グループ]**、および **[場所]** の値は固定されています。
+8. The remaining values for **Subscription**, **Resource Group**, and **Location** are fixed.
 
-9. **[OK]** をクリックして、接続を作成します。画面に *"接続を作成しています"* というメッセージが点滅表示されます。
+9. Click **OK** to create your connection. You'll see *Creating Connection* flash on the screen.
 
-10. 接続が完了すると、接続がゲートウェイの **[接続]** ブレードに表示されます。
+10. When the connection is complete, you'll see it appear in the **Connections** blade for your Gateway.
 
-	![Create Site-to-Site connection](./media/vpn-gateway-add-site-to-site-connection-rm-portal-include/connectionstatus450.png)
+    ![Create Site-to-Site connection](./media/vpn-gateway-add-site-to-site-connection-rm-portal-include/connectionstatus450.png)
 
-<!---------HONumber=AcomDC_0406_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

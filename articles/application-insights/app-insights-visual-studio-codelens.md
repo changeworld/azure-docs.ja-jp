@@ -1,73 +1,78 @@
 <properties 
-	pageTitle="Visual Studio の CodeLens における Application Insights テレメトリ | Microsoft Azure" 
-	description="Visual Studio の CodeLens を使用して Application Insights の要求と例外のテレメトリにすばやくアクセスします。" 
-	services="application-insights" 
+    pageTitle="Application Insights telemetry in Visual Studio CodeLens | Microsoft Azure" 
+    description="Quickly access your Application Insights request and exception telemetry with CodeLens in Visual Studio." 
+    services="application-insights" 
     documentationCenter=".net"
-	authors="numberbycolors" 
-	manager="douge"/>
+    authors="numberbycolors" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/30/2016" 
-	ms.author="daviste"/>
-	
-# Visual Studio の CodeLens における Application Insights テレメトリ
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="get-started-article" 
+    ms.date="08/30/2016" 
+    ms.author="daviste"/>
+    
 
-Web アプリのコード内のメソッドには、実行時の例外と要求の応答時間に関するテレメトリを注釈として付けることができます。[Visual Studio Application Insights](app-insights-overview.md) をアプリケーションにインストールすると、Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) にテレメトリが表示されます。CodeLens は、各関数の上部に表示される注記で、その関数を参照している場所の数や関数を最後に変更したユーザーなどの有用な情報が表示されます。
+# <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Application Insights telemetry in Visual Studio CodeLens
+
+Methods in the code of your web app can be annotated with telemetry about run-time exceptions and request response times. If you install [Visual Studio Application Insights](app-insights-overview.md) in your application, the telemetry appears in Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) - the notes at the top of each function where you're used to seeing useful information such as the number of places the function is referenced or the last person who edited it.
 
 ![CodeLens](./media/app-insights-visual-studio-codelens/codelens-overview.png)
 
-> [AZURE.NOTE] CodeLens の Application Insights は、Visual Studio 2015 Update 3 以降または [Developer Analytics Tools 拡張機能](https://visualstudiogallery.msdn.microsoft.com/82367b81-3f97-4de1-bbf1-eaf52ddc635a)の最新バージョンで利用できます。CodeLens は、Visual Studio の Enterprise Edition および Professional Edition で利用できます。
+> [AZURE.NOTE] Application Insights in CodeLens is available in Visual Studio 2015 Update 3 and later, or with the latest version of [Developer Analytics Tools extension](https://visualstudiogallery.msdn.microsoft.com/82367b81-3f97-4de1-bbf1-eaf52ddc635a). CodeLens is available in the Enterprise and Professional editions of Visual Studio.
 
-## Application Insights データの検索場所
+## <a name="where-to-find-application-insights-data"></a>Where to find Application Insights data
 
-Application Insights テレメトリは、Web アプリケーションのパブリック要求メソッドの CodeLens インジケーターで探します。CodeLens インジケーターは、C# および Visual Basic コード内のメソッドやその他の宣言の上に表示されます。メソッドに Application Insights データを利用できる場合は、要求と例外のインジケーターが表示されます (例: "100 requests, 1% failed (100 件の要求、1% 失敗)" または "10 exceptions (10 件の例外)")。 CodeLens インジケーターをクリックすると、詳細が表示されます。
+Look for Application Insights telemetry in the CodeLens indicators of the public request methods of your web application. CodeLens indicators are shown above method and other declarations in C# and Visual Basic code. If Application Insights data is available for a method, you'll see indicators for requests and exceptions such as "100 requests, 1% failed" or "10 exceptions." Click a CodeLens indicator for more details. 
 
-> [AZURE.TIP] Application Insights の要求インジケーターと例外インジケーターは、他の CodeLens インジケーターが表示された後に読み込まれますが、さらに数秒かかる場合があります。
+> [AZURE.TIP] Application Insights request and exception indicators may take a few extra seconds to load after other CodeLens indicators appear.
 
-## CodeLens における例外
+## <a name="exceptions-in-codelens"></a>Exceptions in CodeLens
 
 ![TBD](./media/app-insights-visual-studio-codelens/codelens-exceptions.png)
 
-例外 CodeLens インジケーターは、このメソッドから提供された要求の処理中に、過去 24 時間にアプリケーションで最も頻繁に発生した 15 の例外の発生回数を表示します。
+The exception CodeLens indicator shows the number of exceptions that have occurred in the past 24 hours from the 15 most frequently occurring exceptions in your application during that period, while processing the request served by the method.
 
-詳細を表示するには、例外 CodeLens インジケーターをクリックします。
+To see more details, click the exceptions CodeLens indicator:
 
-* 直近の 24 時間の例外の数について、その前の 24 時間と比較した変化 (割合)
-* 例外をスローしている関数のソース コードに移動するには、**[コードに移動]** を選択します。
-* 過去 24 時間に発生したこの例外のすべてのインスタンスを照会するには、**[検索]** を選択します。
-* 過去 24 時間におけるこの例外の発生に関する傾向の視覚化を表示するには、**[傾向]** を選択します。
-* 過去 24 時間に発生したすべての例外を照会するには、**[このアプリのすべての例外を表示する]** を選択します。
-* 過去 24 時間に発生したすべての例外に関する傾向の視覚化を表示するには、**[例外の傾向を調べる]** を選択します。
+* The percentage change in number of exceptions from the most recent 24 hours relative to the prior 24 hours
+* Choose **Go to code** to navigate to the source code for the function throwing the exception
+* Choose **Search** to query all instances of this exception that have occurred in the past 24 hours
+* Choose **Trend** to view a trend visualization for occurrences of this exception in the past 24 hours
+* Choose **View all exceptions in this app** to query all exceptions that have occurred in the past 24 hours
+* Choose **Explore exception trends** to view a trend visualization for all exceptions that have occurred in the past 24 hours. 
 
-> [AZURE.TIP] CodeLens で "0 exceptions (0 件の例外)" と表示されても、例外が発生していることがわかっている場合は、CodeLens で適切な Application Insights リソースが選択されていることを確認してください。他のリソースを選択するには、ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights]、[テレメトリのソースを選択]** の順に選択します。CodeLens は、過去 24 時間にアプリケーションで最も頻繁に発生している 15 の例外のみについて表示されるため、発生頻度が 16 番目以降の例外については "0 exceptions (0 件の例外)" と表示されます。 ASP.NET ビューからの例外は、そのビューを生成したコントローラー メソッドに表示されない場合があります。
+> [AZURE.TIP] If you see "0 exceptions" in CodeLens but you know there should be exceptions, check to make sure the right Application Insights resource is selected in CodeLens. To select another resource, right-click on your project in the Solution Explorer and choose **Application Insights > Choose Telemetry Source**. CodeLens is only shown for the 15 most frequently occurring exceptions in your application in the past 24 hours, so if an exception is the 16th most frequently or less, you'll see "0 exceptions." Exceptions from ASP.NET views may not appear on the controller methods that generated those views.
 
-> [AZURE.TIP] CodeLens に "? exceptions (? 件の例外)" と表示される場合は、Azure アカウントを Visual Studio に関連付ける必要があります。または、Azure アカウントの資格情報が期限切れになっている可能性があります。どちらの場合も、[? exceptions (? 件の例外)] をクリックし、**[アカウントの追加]** を選択して資格情報を入力します。
+> [AZURE.TIP] If you see "? exceptions" in CodeLens, you need to associate your Azure account with Visual Studio or your Azure account credential may have expired. In either case, click "? exceptions" and choose **Add an account...** to enter your credentials.
 
-## CodeLens における要求
+## <a name="requests-in-codelens"></a>Requests in CodeLens
 
 ![TBD](./media/app-insights-visual-studio-codelens/codelens-requests.png)
 
-要求 CodeLens インジケーターは、過去 24 時間にメソッドによって処理された HTTP 要求の数と、これらの要求が失敗した割合を示します。
+The request CodeLens indicator shows the number of HTTP requests that been serviced by a method in the past 24 hours, plus the percentage of those requests that failed.
 
-詳細を表示するには、要求 CodeLens インジケーターをクリックします。
+To see more details, click the requests CodeLens indicator:
 
-* 過去 24 時間における要求の数、失敗した要求、平均応答時間をその前の 24 時間と比較した場合の変化 (絶対値と割合)
-* メソッドの信頼性。過去 24 時間に失敗しなかった要求の割合として計算されます。
-* 過去 24 時間に発生したすべての (失敗した) 要求を照会するには、**[検索]** を選択して要求または失敗した要求を検索します。
-* 過去 24 時間における要求、失敗した要求、または平均応答時間の傾向の視覚化を表示するには、**[傾向]** を選択します。
-* CodeLens の詳細ビューの左上隅で Application Insights リソースの名前を選択して、CodeLens データのソースとなるリソースを変更します。
+* The absolute and percentage changes in number of requests, failed requests, and average response times over the past 24 hours compared to the prior 24 hours
+* The reliability of the method, calculated as the percentage of requests that did not fail in the past 24 hours
+* Choose **Search** for requests or failed requests to query all the (failed) requests that occurred in the past 24 hours
+* Choose **Trend** to view a trend visualization for requests, failed requests, or average response times in the past 24 hours.
+* Choose the name of the Application Insights resource in the upper left corner of the CodeLens details view to change which resource is the source for CodeLens data.
 
-## <a name="next"></a>次のステップ
+## <a name="<a-name="next"></a>next-steps"></a><a name="next"></a>Next steps
 
 ||
 |---|---
-|**[Visual Studio での Application Insights の操作](app-insights-visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/app-insights-visual-studio-trends/34.png)
-|**[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-visual-studio-trends/64.png)
-|**[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-visual-studio-trends/62.png)
+|**[Working with Application Insights in Visual Studio](app-insights-visual-studio.md)**<br/>Search telemetry, see data in CodeLens, and configure Application Insights. All within Visual Studio. |![Right-click the project and choose Application Insights, Search](./media/app-insights-visual-studio-codelens/34.png)
+|**[Add more data](app-insights-asp-net-more.md)**<br/>Monitor usage, availability, dependencies, exceptions. Integrate traces from logging frameworks. Write custom telemetry. | ![Visual studio](./media/app-insights-visual-studio-codelens/64.png)
+|**[Working with the Application Insights portal](app-insights-dashboards.md)**<br/>Dashboards, powerful diagnostic and analytic tools, alerts, a live dependency map of your application, and telemetry export. |![Visual studio](./media/app-insights-visual-studio-codelens/62.png)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

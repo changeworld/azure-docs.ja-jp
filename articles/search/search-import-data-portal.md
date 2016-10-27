@@ -1,122 +1,128 @@
 <properties
-	pageTitle="Azure ポータルでインデクサーを使用して Azure Search にデータをインポートする | Microsoft Azure | ホステッド クラウド検索サービス"
-	description="Azure Portal で Azure Search のデータのインポート ウィザードを使用して、Azure VM 上の Azure Blob Storage、Table Storage、SQL Database、SQL Server のデータをクロールします。"
-	services="search"
-	documentationCenter=""
-	authors="HeidiSteen"
-	manager="jhubbard"
-	editor=""
+    pageTitle="Import data to Azure Search using indexers in the Azure Portal | Microsoft Azure | Hosted cloud search service"
+    description="Use the Azure Search Import Data Wizard in the Azure Portal to crawl data from Azure Blob storage, table stroage, SQL Database, and SQL Server on Azure VMs."
+    services="search"
+    documentationCenter=""
+    authors="HeidiSteen"
+    manager="jhubbard"
+    editor=""
     tags="Azure Portal"/>
 
 <tags
-	ms.service="search"
-	ms.devlang="na"
-	ms.workload="search"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.date="08/29/2016"
-	ms.author="heidist"/>
+    ms.service="search"
+    ms.devlang="na"
+    ms.workload="search"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.date="08/29/2016"
+    ms.author="heidist"/>
 
-# ポータルを使用した Azure Search へのデータのインポート
 
-Azure Portal では、データをインデックスに読み込む**データのインポート** ウィザードが Azure Search ダッシュボードに用意されています。
+# <a name="import-data-to-azure-search-using-the-portal"></a>Import data to Azure Search using the portal
+
+The Azure portal provides an **Import Data** wizard on the Azure Search dashboard for loading data into an index. 
 
   ![Import Data on the command bar][1]
 
-内部的には、このウィザードが "*インデクサー*" を構成して起動し、次のようなインデックス作成プロセスのいくつかの手順を自動化します。
+Internally, the wizard configures and invokes an *indexer*, automating several steps of the indexing process: 
 
-- 現在の Azure サブスクリプションで外部のデータ ソースに接続する
-- ソースのデータ構造に基づいてインデックス スキーマを自動生成する
-- データ ソースから取得した行セットに基づいてドキュメントを作成する
-- Search サービス内のインデックスにドキュメントをアップロードする
+- Connect to an external data source in the current Azure subscription
+- Autogenerate an index schema based on the source data structure
+- Create documents based on a rowset retrieved from the data source
+- Upload documents to the index in your search service
 
-DocumentDB のサンプル データを使用して、このワークフローを試してみることができます。手順については、[Azure Portal での Azure Search の使用](search-get-started-portal.md)に関するページを参照してください。
+You can try out this workflow using sample data in DocumentDB. Visit [Get started with Azure Search in the Azure Portal](search-get-started-portal.md) for instructions.
 
-## データのインポート ウィザードでサポートされるデータ ソース
+## <a name="data-sources-supported-by-the-import-data-wizard"></a>Data sources supported by the Import Data Wizard
 
-データのインポート ウィザードでは、次のデータ ソースがサポートされています。
+The Import Data wizard supports the following data sources: 
 
 - Azure SQL Database
-- Azure VM 上の SQL Server のリレーショナル データ
+- SQL Server relational data on an Azure VM
 - Azure DocumentDB
-- Azure Blob Storage (プレビュー段階)
-- Azure Table Storage (プレビュー段階)
+- Azure Blob storage (in preview)
+- Azure Table storage (in preview)
 
-フラット化されたデータセットの入力が必要です。データは 1 つのテーブル、データベース ビュー、または同等のデータ構造からのみインポートできます。ウィザードを実行する前に、このデータ構造を作成する必要があります。
+A flattened dataset is a required input. You can only import from a single table, database view, or equivalent data structure. You should create this data structure before running the wizard.
 
-インデクサーのいくつかはまだプレビュー段階です。つまり、インデクサーの定義は API のプレビュー バージョンでサポートされます。詳細情報とリンクについては、[インデクサーの概要](search-indexer-overview.md)に関するページを参照してください。
+Note that a few of the indexers are still in preview, which means the indexer definition is backed by the preview version of the API. See [Indexer overview](search-indexer-overview.md) for more information and links.
 
-## データへの接続
+## <a name="connect-to-your-data"></a>Connect to your data
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、サービス ダッシュボードを開きます。ジャンプ バーの **[Search サービス]** をクリックすると、現在のサブスクリプションの既存のサービスを表示できます。
+1. Sign in to the [Azure Portal](https://portal.azure.com) and open service dashboard. You can click **Search services** in the jump bar to show the existing services in the current subscription. 
 
-2. コマンド バーの **[データのインポート]** をクリックして、[データのインポート] ブレードを開きます。
+2. Click **Import Data** on the command bar to slide open the Import Data blade.  
 
-3. **[データに接続します]** をクリックし、インデクサーで使用されるデータ ソースの定義を指定します。サブスクリプション内のデータ ソースの場合、ウィザードは通常、接続情報を検出して読み取ることができ、全体的な構成要件を最小限に抑えます。
+3. Click **Connect to your data** to specify a data source definition used by an indexer. For intra-subscription data sources, the wizard can usually detect and read connection information, minimizing overall configuration requirements.
 
 | | |
 |--------|------------|
-|**既存のデータ ソース** | Search サービスに定義済みのインデクサーが既にある場合は、別のインポート用に既存のデータ ソース定義を選択できます。|
-|**Azure SQL Database** | サービス名、読み取り権限を持つデータベース ユーザーの資格情報、データベース名は、このページで、または ADO.NET 接続文字列を使用して指定できます。接続文字列のオプションを選択して、プロパティを表示またはカスタマイズします。<br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。|
-|**Azure VM 上の SQL Server** | 接続文字列として、完全修飾サービス名、ユーザー ID とパスワード、データベースを指定します。このデータ ソースを使用するには、接続を暗号化する証明書をローカル ストアにあらかじめインストールしておく必要があります。<br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。
-|**DocumentDB** |要件には、アカウント、データベース、コレクションが含まれます。コレクション内のすべてのドキュメントはインデックスに含まれます。クエリを定義して、行セットをフラット化またはフィルター処理したり、以降のデータ更新操作のためにドキュメントの変更を検出したりできます。|
-|**Azure Blob Storage** | 要件には、ストレージ アカウントとコンテナーが含まれます。BLOB 名がグループ化のために仮想名前付け規則に従っている場合は、必要に応じて、コンテナーの下のフォルダーとして名前の仮想ディレクトリの部分を指定できます。詳細については、[Blob Storage (プレビュー) のインデックス作成](search-howto-indexing-azure-blob-storage.md)に関するページを参照してください。 |
-|**Azure Table Storage** | 要件には、ストレージ アカウントとテーブル名が含まれます。必要に応じて、クエリを指定してテーブルのサブセットを取得できます。詳細については、[Table Storage (プレビュー) のインデックス作成](search-howto-indexing-azure-tables.md)に関するページを参照してください。 |
+|**Existing data source** | If you already have indexers defined in your search service, you can select an existing data source definition for another import.|
+|**Azure SQL Database** | Service name, credentials for a database user with read permission, and a database name can be specified either on the page or via an ADO.NET connection string. Choose the connection string option to view or customize properties. <br/><br/>The table or view that provides the rowset must be specified on the page. This option appears after the connection succeeds, giving a drop-down list so that you can make a selection.|
+|**SQL Server on Azure VM** | Specify a fully-qualified service name, user ID and password, and database as a connection string. To use this data source, you must have previously installed a certificate in the local store that encrypts the connection. <br/><br/>The table or view that provides the rowset must be specified on the page. This option appears after the connection succeeds, giving a drop-down list so that you can make a selection.
+|**DocumentDB** |Requirements include the account, database, and collection. All documents in the collection will be included in the index. You can define a query to flatten or filter the rowset, or to detect changed documents for subsequent data refresh operations.|
+|**Azure Blob Storage** | Requirements include the storage account and a container. Optionally, if blob names follow a virtual naming convention for grouping purposes, you can specify the virtual directory portion of the name as a folder under container. See [Indexing Blob Storage (preview)](search-howto-indexing-azure-blob-storage.md) for more information. |
+|**Azure Table Storage** | Requirements include the storage account and a table name. Optionally, you can specify a query to retrieve a subset of the tables. See [Indexing Table Storage (preview)](search-howto-indexing-azure-tables.md) for more information. |
 
-## ターゲット インデックスのカスタマイズ
+## <a name="customize-target-index"></a>Customize target index
 
-通常、インデックスは事前にデータセットから推測されます。フィールドを追加、編集、削除してスキーマを完成させることができます。さらに、フィールド レベルで属性を設定して、以降の検索動作を決定します。
+A preliminary index is typically inferred from the dataset. Add, edit, or delete fields to complete the schema. Additionally, set attributes at the field level to determine its subsequent search behaviors.
 
-1. **[対象インデックスをカスタマイズします]** で、各ドキュメントを一意に識別するために使用する名前と**キー**を指定します。キーは文字列である必要があります。フィールドの値に空白またはダッシュが含まれる場合は、**[データのインポート]** の詳細オプションでこれらの文字の検証チェックを抑制するように設定してください。
+1. In **Customize target index**, specify the name and a **Key** used to uniquely identify each document. The Key must be a string. If field values include spaces or dashes be sure to set advanced options in **Import your data** to suppress the validation check for these characters.
 
-2. 残りのフィールドを確認して修正します。通常、フィールドの名前と型は既に設定されています。データ型は変更できます。
+2. Review and revise the remaining fields. Field name and type are typically filled in for you. You can change the data type.
 
-3. 各フィールドのインデックスの属性を設定します。
+3. Set index attributes for each field:
 
- - Retrievable は、検索結果にフィールドを返します。
- - Filterable は、フィルター式でフィールドを参照できるようにします。
- - Sortable は、並べ替えでフィールドを使用できるようにします。
- - Facetable は、ファセット ナビゲーションにフィールドを使用できるようにします。
- - Searchable は、全文検索を実行できるようにします。
+ - Retrievable returns the field in search results.
+ - Filterable allows the field to be referenced in filter expressions.
+ - Sortable allows the field to be used in a sort.
+ - Facetable enables the field for faceted navigation.
+ - Searchable enables full-text search.
   
-4. フィールド レベルで言語アナライザーを指定する場合は、**[アナライザー]** タブをクリックします。現時点では、言語アナライザーのみを指定できます。カスタム アナライザーや、キーワード、パターンなどの非言語アナライザーを使用する場合は、コードが必要になります。
+4. Click the **Analyzer** tab if you want to specify a language analyzer at the field level. Only language analyzers can be specified at this time. Using a custom analyzer or a non-language analyzer like Keyword, Pattern, and so forth, will require code.
 
- - **[検索可能]** をクリックしてフィールドにフルテキスト検索を指定し、アナライザーのドロップダウン リストを有効にします。
- - 使用するアナライザーを選択します。詳細については、[複数の言語によるドキュメントのインデックスの作成](search-language-support.md)に関するページを参照してください。
+ - Click **Searchable** to designate full-text search on the field and enable the Analyzer drop-down list.
+ - Choose the analyzer you want. See [Create an index for documents in multiple language](search-language-support.md) for details.
 
-5. **[提案者]** をクリックして、選択したフィールドに先行入力クエリによる検索候補を有効にします。
+5. Click the **Suggester** to enable type-ahead query suggestions on selected fields.
 
 
-## データのインポート
+## <a name="import-your-data"></a>Import your data
 
-1. **[データのインポート]** で、インデクサーの名前を指定します。データのインポート ウィザードの成果物がインデクサーであることを思い出してください。後でインデクサーの確認や編集を行う場合は、ウィザードを再実行するのではなく、ポータルから選択します。
+1. In **Import your data**, provide a name for the indexer. Recall that the product of the Import Data wizard is an indexer. Later, if you want to view or edit it, you'll select it from the portal rather than by rerunning the wizard. 
 
-2. サービスがプロビジョニングされている地域のタイム ゾーンに基づいて、スケジュールを指定します。
+2. Specify the schedule, which is based on the regional time zone in which the service is provisioned.
 
-3. 詳細オプションを設定して、ドキュメントが削除された場合にインデックス作成を継続できるかどうかを決めるしきい値を指定します。また、**[キー]** フィールドにスペースやスラッシュを含めることができるかどうかも指定できます。
+3. Set advanced options to specify thresholds on whether indexing can continue if a document is dropped. Additionally, you can specify whether **Key** fields are allowed to contain spaces and slashes.  
 
-## 既存のインデクサーを編集する
+## <a name="edit-an-existing-indexer"></a>Edit an existing indexer
 
-サービス ダッシュボードで [インデクサー] タイルをダブルクリックすると、サブスクリプションに作成されたすべてのインデクサーの一覧が表示されます。インデクサーのいずれかをダブルクリックして、実行、編集、削除できます。インデックスを既存の別のインデックスに置き換える、データ ソースを変更する、およびインデックス作成時のエラーのしきい値のオプションを設定することができます。
+In the service dashboard, double-click on the Indexer tile to slide out a list of all indexers created for your subscription. Double-click one of the indexers to run, edit or delete it. You can replace the index with another existing one, change the data source, and set options for error thresholds during indexing.
 
-## 既存のインデックスを編集する
+## <a name="edit-an-existing-index"></a>Edit an existing index
 
-Azure Search では、インデックスの構造を更新するには、そのインデックスを再構築する必要があります。再構築するには、インデックスを削除し、インデックスを再作成して、データを再読み込みします。構造の更新には、データ型の変更、フィールド名の変更、フィールドの削除があります。
+In Azure Search, structural updates to an index will require a rebuild of that index, which consists of deleting the index, recreating the index, and reloading data. Structural updates include changing a data type and renaming or deleting a field.
 
-再構築する必要のない編集には、新しいフィールドの追加、スコアリング プロファイルの変更、サジェスターの変更、言語アナライザーの変更があります。詳細については、[インデックスの更新](https://msdn.microsoft.com/library/azure/dn800964.aspx)に関するページを参照してください。
+Edits that don't require a rebuild include adding a new field, changing scoring profiles, changing suggesters, or changing language analyzers. See [Update Index](https://msdn.microsoft.com/library/azure/dn800964.aspx) for more information.
 
-## 次のステップ
+## <a name="next-step"></a>Next step
 
-インデクサーの詳細については、次のリンク先を参照してください。
+Review these links to learn more about indexers:
 
-- [Azure SQL Database のインデックス作成](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
-- [DocumentDB のインデックス作成](../documentdb/documentdb-search-indexer.md)
-- [Blob Storage (プレビュー) のインデックス作成](search-howto-indexing-azure-blob-storage.md)
-- [Table Storage (プレビュー) のインデックス作成](search-howto-indexing-azure-tables.md)
+- [Indexing Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
+- [Indexing DocumentDB](../documentdb/documentdb-search-indexer.md)
+- [Indexing Blob Storage (preview)](search-howto-indexing-azure-blob-storage.md)
+- [Indexing Table Storage (preview)](search-howto-indexing-azure-tables.md)
 
 
 
 <!--Image references-->
 [1]: ./media/search-import-data-portal/search-import-data-command.png
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

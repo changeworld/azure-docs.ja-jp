@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array アラートの表示と管理 | Microsoft Azure"
-   description="StorSimple Virtual Array アラートの状態と重大度について、また StorSimple Manager サービスを使用してアラートを管理する方法について説明します。"
+   pageTitle="View and manage StorSimple Virtual Array alerts | Microsoft Azure"
+   description="Describes StorSimple Virtual Array alert conditions and severity, and how to use the StorSimple Manager service to manage alerts."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,171 +15,178 @@
    ms.date="06/07/2016"
    ms.author="alkohli" />
 
-# StorSimple Manager サービスを使用して、StorSimple Virtual Array のアラートを表示および管理する
 
-## 概要
+# <a name="use-the-storsimple-manager-service-to-view-and-manage-alerts-for-the-storsimple-virtual-array"></a>Use the StorSimple Manager service to view and manage alerts for the StorSimple Virtual Array
 
-StorSimple Manager サービスの **[アラート]** タブでは、StorSimple Virtual Array 関連のアラートをリアルタイムで確認および解除できます。このタブでは、StorSimple Virtual Arrays (StorSimple オンプレミス仮想デバイスとも呼ばれる) と Microsoft Azure StorSimple ソリューション全体の正常性の問題を一元的に監視できます。
+## <a name="overview"></a>Overview
 
-このチュートリアルでは、アラートの通知、一般的なアラートの状態、およびアラートの重大度レベルを構成する方法、アラートを表示および追跡する方法について説明します。さらにアラートのクイック リファレンスの表もあります。この表を使用すると、アラートをすばやく特定して適切に応答できるようになります。
+The **Alerts** tab in the StorSimple Manager service provides a way for you to review and clear StorSimple Virtual Array–related alerts on a real-time basis. From this tab, you can centrally monitor the health issues of your StorSimple  Virtual Arrays (also known as StorSimple on-premises virtual devices) and the overall Microsoft Azure StorSimple solution.
+
+This tutorial describes how to configure alert notifications, common alert conditions, alert severity levels, and how to view and track alerts. Additionally, it includes alert quick reference tables, which enable you to quickly locate a specific alert and respond appropriately.
 
 ![Alerts page](./media/storsimple-ova-manage-alerts/alerts1.png)
 
-## アラート設定を構成する
+## <a name="configure-alert-settings"></a>Configure alert settings
 
-StorSimple 仮想デバイスごとに、アラート状態について電子メールで通知を受けるかどうかを選択できます。さらに、**[その他の電子メールの受信者]** ボックスに、セミコロンで区切って電子メール アドレスを入力することで、アラートの別の受信者を識別できます。
+You can choose whether you want to be notified by email of alert conditions for each of your StorSimple virtual devices. Additionally, you can identify other alert notification recipients by entering their email addresses in the **Other email recipients** box, separated by semicolons.
 
->[AZURE.NOTE] 1 つの仮想デバイスで入力できる電子メール アドレスは最大 20 件です。
+>[AZURE.NOTE] You can enter a maximum of 20 email addresses per virtual device.
 
-仮想デバイスの電子メール通知を有効にすると、重大なアラートが発生するたびにアラート リストのメンバーに電子メール メッセージが送信されます。メッセージは **storsimple-alerts-noreply@mail.windowsazure.com* から送信され、アラートの状態の詳細が示されます。受信者が自信を電子メール通知のリストから削除するには、**[受信登録の取り消し]** をクリックします。
+After you enable email notification for a virtual device, members of the notification list will receive an email message each time a critical alert occurs. The messages will be sent from *storsimple-alerts-noreply@mail.windowsazure.com* and will describe the alert condition. Recipients can click **Unsubscribe** to remove themselves from the email notification list.
 
-#### 仮想デバイスのアラートに関する電子メール通知を有効にするには
+#### <a name="to-enable-email-notification-of-alerts-for-a-virtual-device"></a>To enable email notification of alerts for a virtual device
 
-1. 仮想デバイスの **[デバイス]** > **[構成]** に移動します。**[アラートの設定]** セクションに移動します。
+1. Go to **Devices** > **Configuration** for the virtual device. Go to the **Alert settings** section.
 
-    ![アラートの設定](./media/storsimple-ova-manage-alerts/alerts2.png)
+    ![alert settings](./media/storsimple-ova-manage-alerts/alerts2.png)
 
-2. **[アラートの設定]** で、次のように設定します。
+2. Under **Alert settings**, set the following:
 
-    1. **[電子メール通知の送信]** フィールドで、**[はい]** を選択します。
+    1. In the **Send email notification** field, select **YES**.
 
-    2. サービス管理者とすべての共同管理者がアラートの通知を受信するように設定する場合は、**[電子メール サービスの管理者]** フィールドで **[はい]** を選択します。
+    2. In the **Email service administrators** field, select **YES** if you wish to have the service administrator and all co-administrators receive the alert notifications.
 
-    3. **[その他の電子メールの受信者]** フィールドに、アラートの通知を受信するその他すべての受信者の電子メール アドレスを入力します。名前は **someone@somewhere.com* の形式で入力します。電子メール アドレスはセミコロンで区切ります。1 つの仮想デバイスで構成できる電子メール アドレスは最大 20 件です。
+    3. In the **Other email recipients** field, enter the email addresses of all other recipients who should receive the alert notifications. Enter names in the format *someone@somewhere.com*. Use semicolons to separate the email addresses. You can configure a maximum of 20 email addresses per virtual device. 
 
-        ![アラート通知の構成](./media/storsimple-ova-manage-alerts/alerts3.png)
+        ![alerts notification configuration](./media/storsimple-ova-manage-alerts/alerts3.png)
 
-3. ページの下部の **[保存]** をクリックして構成内容を保存します。
+3. At the bottom of the page, click **Save** to save your configuration.
 
-4. 電子メールのテスト通知を送信するには、**[テスト電子メールの送信]** の隣にある矢印アイコンをクリックします。テスト通知を転送すると、StorSimple Manager サービスに状態メッセージが表示されます。
+4. To send a test email notification, click the arrow icon next to **Send test email**. The StorSimple Manager service will display status messages as it forwards the test notification. 
 
-5. 次のメッセージが表示されたら、**[OK]** をクリックします。
+5. When the following message appears, click **OK**. 
 
     ![Alerts test notification email sent](./media/storsimple-ova-manage-alerts/alerts4.png)
 
-    >[AZURE.NOTE] テスト通知のメッセージを送信できない場合、StorSimple Manager サービスにその旨のメッセージが表示されます。**[OK]** をクリックして数分待ってから、再度テスト通知のメッセージを送信してみてください。
+    >[AZURE.NOTE] If the test notification message can't be sent, the StorSimple Manager service will display an appropriate message. Click **OK**, wait a few minutes, and then try to send your test notification message again. 
 
-    テスト通知メッセージは、次のようになります。
+    The test notification message will be similar to the following.
 
-    ![アラートのテスト電子メールの例](./media/storsimple-ova-manage-alerts/alerts5.png)
+    ![Alerts test email example](./media/storsimple-ova-manage-alerts/alerts5.png)
 
-## 一般的なアラートの状態
+## <a name="common-alert-conditions"></a>Common alert conditions
 
-StorSimple Virtual Array では、さまざまな状態に応じてアラートを生成します。最も一般的な種類のアラート状態を次に示します。
+Your StorSimple Virtual Array generates alerts in response to a variety of conditions. The following are the most common types of alert conditions:
 
-- **接続の問題** – データ転送が困難な場合に、これらのアラートが生成されます。通信の問題は、Azure ストレージ アカウントとのデータの転送中に発生する可能性があるほか、仮想デバイスと StorSimple Manager サービスが接続されていないことが原因で発生する場合もあります。通信の問題は、障害点が多すぎることから、最も修正が困難な問題の 1 つです。常に、より高度なトラブルシューティングに進む前に、まずネットワーク接続とインターネット アクセスがあることを確認する必要があります。ポートとファイアウォールの設定については、「[StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。トラブルシューティングのヘルプについては、「[Test-Connection コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md)」を参照してください。
+- **Connectivity issues** – These alerts occur when there is difficulty in transferring data. Communication issues can occur during transfer of data to and from the Azure storage account or due to lack of connectivity between the virtual devices and the StorSimple Manager service. Communication issues are some of the hardest to fix because there are so many points of failure. You should always first verify that network connectivity and Internet access are available before continuing on to more advanced troubleshooting. For information about ports and firewall settings, go to [StorSimple Virtual Array system requirements](storsimple-ova-system-requirements.md). For help with troubleshooting, go to [Troubleshoot with the Test-Connection cmdlet](storsimple-troubleshoot-deployment.md).
 
-- **パフォーマンスの問題** – これらのアラートは、システムの負荷が高い場合など、システムが最適に実行されていない場合に発生します。
+- **Performance issues** – These alerts are caused when your system isn’t performing optimally, such as when it is under a heavy load.
 
-さらに、セキュリティ、更新、ジョブの失敗に関連するアラートが表示される場合もあります。
+In addition, you might see alerts related to security, updates, or job failures.
 
-## アラートの重大度レベル
+## <a name="alert-severity-levels"></a>Alert severity levels
 
-アラートの状況により受ける影響とアラートに対する応答の必要性に応じて、アラートにはさまざまな重大度レベルがあります。重大度レベルは次のとおりです。
+Alerts have different severity levels, depending on the impact that the alert situation will have and the need for a response to the alert. The severity levels are:
 
-- **重大** – このアラートは、システムの正常なパフォーマンスに影響する状態に対する応答として発生します。StorSimple サービスが中断されないように対策が必要です。
+- **Critical** – This alert is in response to a condition that is affecting the successful performance of your system. Action is required to ensure that the StorSimple service is not interrupted.
 
-- **警告** – この状態が解決しない場合、"重大" に発展する可能性があります。状況を調査し、問題を解決するのに必要な対処を行う必要があります。
+- **Warning** – This condition could become critical if not resolved. You should investigate the situation and take any action required to clear the issue.
 
-- **情報** – このアラートには、システムの追跡と管理に役立つ情報が含まれています。
+- **Information** – This alert contains information that can be useful in tracking and managing your system.
 
-## アラートの表示と追跡
+## <a name="view-and-track-alerts"></a>View and track alerts
 
-StorSimple Manager サービスのダッシュボードでは、アラートが重大度レベルごとに配置され、仮想デバイスで発生したアラートの数をひとめで確認できます。
+The StorSimple Manager service dashboard provides you with a quick glance at the number of alerts on your virtual devices, arranged by severity level.
 
 ![Alerts dashboard](./media/storsimple-ova-manage-alerts/alerts6.png)
 
-重大度レベルをクリックすると、**[アラート]** タブが開きます。結果には、その重大度レベルに一致するアラートのみが含まれます。
+Clicking the severity level opens the **Alerts** tab. The results include only the alerts that match that severity level.
 
 ![Alerts report scoped to alert type](./media/storsimple-ova-manage-alerts/alerts7.png)
 
-一覧にあるアラートをクリックすると、そのアラートが前回報告された日時、デバイスでそのアラートが発生した回数、推奨されるアラートの解決法など、追加の詳細情報が表示されます。
+Clicking an alert in the list provides you with additional details for the alert, including the last time the alert was reported, the number of occurrences of the alert on the device, and the recommended action to resolve the alert.
 
-情報を Microsoft サポートに送信する必要がある場合は、テキスト ファイルにアラートの詳細をコピーできます。推奨事項に従い、オンプレミスのアラートの状態が解決したら、**[アラート]** タブでアラートを選択してから **[クリア]** をクリックし、アラートをクリアする必要があります。複数のアラートをクリアするには、各アラートを選択し、**[アラート]** 列以外の任意の列をクリックします。クリアするアラートをすべて選択したら、**[クリア]** をクリックします。一部のアラートは、問題が解決した場合や、システムによりアラートが新しい情報に更新された場合に、自動的にクリアされます。
+You can copy the alert details to a text file if you need to send the information to Microsoft Support. After you have followed the recommendation and resolved the alert condition on-premises, you should clear the alert from by selecting the alert in the **Alerts** tab and clicking **Clear**. To clear multiple alerts, select each alert, click any column except the **Alert** column, and then click **Clear** after you have selected all the alerts to be cleared. Note that some alerts are automatically cleared when the issue is resolved or when the system updates the alert with new information.
 
-**[クリア]** をクリックした場合、問題を解決する際に実行した手順とアラートについてのコメントを追加できます。
+When you click **Clear**, you will have the opportunity to provide comments about the alert and the steps that you took to resolve the issue. 
 
-![アラートに関するコメント](./media/storsimple-ova-manage-alerts/clear-alert.png)
+![alert comments](./media/storsimple-ova-manage-alerts/clear-alert.png)
 
-チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-manage-alerts/check-icon.png) をクリックして、コメントを保存します。
+Click the check icon ![check-icon](./media/storsimple-ova-manage-alerts/check-icon.png) to save your comments.
 
-一部のイベントは、新しい情報で別のイベントがトリガーされると、システムによってクリアされます。その場合は、次のメッセージが表示されます。
+Some events will be cleared by the system if another event is triggered with new information. In that case, you will see the following message.
 
 ![Clear alert message](./media/storsimple-ova-manage-alerts/alerts8.png)
 
-## アラートの並べ替えと確認
+## <a name="sort-and-review-alerts"></a>Sort and review alerts
 
-**[アラート]** タブには、最大 250 個のアラートを表示できます。アラートがこの数を超えている場合、既定のビューに一部のアラートが表示されません。次のフィールドを組み合わせることで、どのアラートを表示するかをカスタマイズできます。
+The **Alerts** tab can display up to 250 alerts. If you have exceeded that number of alerts, not all alerts will be displayed in the default view. You can combine the following fields to customize which alerts are displayed:
 
-- **状態** – **[アクティブ]** または **[クリア]** 状態のアラートを表示できます。"アクティブ" のアラートは、引き続きシステムでトリガーされますが、"クリア" のアラートは、管理者によって手動でクリアされているか、プログラムによりクリアされています (システムで新しい情報によりアラートの状態が更新された場合)。
+- **Status** – You can display either **Active** or **Cleared** alerts. Active alerts are still being triggered on your system, while cleared alerts have been either manually cleared by an administrator or programmatically cleared because the system updated the alert condition with new information.
 
-- **重大度** – すべての重大度レベル (重大、警告、情報) のアラートか、特定の重大度のアラートのみ (重大なアラートのみなど) を表示できます。
+- **Severity** – You can display alerts of all severity levels (critical, warning, information), or just a certain severity, such as only critical alerts.
 
-- **ソース** – すべてのソースのアラートを表示できるほか、サービスに由来するアラートや、1 つまたはすべての仮想デバイスに由来するアラートのみを表示することもできます。
+- **Source** – You can display alerts from all sources, or limit the alerts to those that come from either the service or one or all the virtual devices.
 
-- **時間の範囲** – **[開始]** と **[終了]** の日時スタンプを指定すると、関心のある期間中のアラートを見ることができます。
+- **Time range** – By specifying the **From** and **To** dates and time stamps, you can look at alerts during the time period that you are interested in.
 
-## アラートのクイック リファレンス
+## <a name="alerts-quick-reference"></a>Alerts quick reference
 
-次の表に、発生する可能性がある Microsoft Azure StorSimple のアラートの一部と、追加情報および推奨事項 (提供されている場合) を一覧表示します。StorSimple 仮想デバイスのアラートは、次のいずれかのカテゴリに分けられます。
+The following tables list some of the Microsoft Azure StorSimple alerts that you might encounter, as well as additional information and recommendations where available. StorSimple virtual device alerts fall into one of the following categories:
 
-- [クラウドの接続のアラート](#cloud-connectivity-alerts)
+- [Cloud connectivity alerts](#cloud-connectivity-alerts)
 
-- [構成のアラート](#configuration-alerts)
+- [Configuration alerts](#configuration-alerts)
 
-- [ジョブの失敗のアラート](#job-failure-alerts)
+- [Job failure alerts](#job-failure-alerts)
 
-- [パフォーマンスのアラート](#performance-alerts)
+- [Performance alerts](#performance-alerts)
 
-- [セキュリティのアラート](#security-alerts)
+- [Security alerts](#security-alerts)
 
-- [更新のアラート](#update-alerts)
+- [Update alerts](#update-alerts)
 
-### クラウドの接続のアラート
+### <a name="cloud-connectivity-alerts"></a>Cloud connectivity alerts
 
-|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
+|Alert text|Event|More information / recommended actions|
 |:---|:---|:---|
-|デバイス*<device name>*はクラウドに接続されていません。|指定したデバイスがクラウドに接続できません。 |クラウドに接続できませんでした。次のいずれかの理由が考えられます。<ul><li>デバイスのネットワークの設定に問題があります。</li><li>ストレージ アカウントの資格情報に問題があります。</li></ul>接続の問題のトラブルシューティングの詳細については、デバイスの[ローカル Web UI](storsimple-ova-web-ui-admin.md) に関するページを参照してください。|
+|Device *<device name>* is not connected to the cloud.|The named device cannot connect to the cloud. |Could not connect to the cloud. This could be due to one of the following:<ul><li>There may be a problem with the network settings on your device.</li><li>There may be a problem with the storage account credentials.</li></ul>For more information on troubleshooting connectivity issues, go to the [local web UI](storsimple-ova-web-ui-admin.md) of the device.|
 
 
-### 構成のアラート
+### <a name="configuration-alerts"></a>Configuration alerts
 
-|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
+|Alert text|Event|More information / recommended actions|
 |:---|:---|:---|
-|オンプレミスの仮想デバイスの構成はサポートされていません。|低パフォーマンス。|現在の構成では、パフォーマンスが低下する可能性があります。サーバーが最低限の構成要件を満たしていることを確認します。詳細については、「[StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。 
-|<*デバイス名*> でプロビジョニング済みのディスク領域が不足しています。|ディスク領域に関する警告。|プロビジョニング済みのディスク領域が不足しています。領域を解放するために、ワークロードを別のボリュームまたは共有に移動するか、データを削除することを検討してください。
+|On-premises virtual device configuration unsupported.|Slow performance.|The current configuration may result in performance degradation. Ensure that your server meets the minimum configuration requirements. For more information, go to [StorSimple Virtual Array Requirements](storsimple-ova-system-requirements.md). 
+|You are running out of provisioned disk space on <*device name*>.|Disk space warning.|You are running low on provisioned disk space. To free up space, consider moving workloads to another volume or share or deleting data.
 
-### ジョブの失敗のアラート
+### <a name="job-failure-alerts"></a>Job failure alerts
 
-|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
+|Alert text|Event|More information / recommended actions|
 |:---|:---|:---|
-|<*デバイス名*> のバックアップを完了できませんでした。|バックアップ ジョブの失敗。|バックアップを作成できませんでした。次のいずれかを検討してください。<ul><li>接続の問題により、バックアップ操作が正常に完了できない可能性があります。接続の問題がないことを確認します。接続の問題のトラブルシューティングの詳細については、仮想デバイスの[ローカル Web UI](storsimple-ova-web-ui-admin.md) に関するページを参照してください。</li><li>使用可能なストレージの上限に達しました。領域を解放するために、不要になったバックアップの削除を検討してください。</li></ul> 問題を解決し、アラートをクリアし、バックアップ操作をもう一度試してください。|
-|<*デバイス名*> の復元を完了できませんでした。|復元ジョブの失敗。|バックアップから復元できませんでした。次のいずれかを検討してください。<ul><li>バックアップ リストが有効でない可能性があります。リストの更新を行い、まだ有効かどうかを確認します。</li><li>接続の問題により、復元操作が正常に完了できない可能性があります。接続の問題がないことを確認します。</li><li>使用可能なストレージの上限に達しました。領域を解放するために、不要になったバックアップの削除を検討してください。</li></ul>問題を解決し、アラートをクリアし、復元操作をもう一度試してください。|
-|<*デバイス名*> の複製を完了できませんでした。|複製ジョブの失敗。|複製を作成できませんでした。次のいずれかを検討してください。<ul><li>バックアップ リストが有効でない可能性があります。リストの更新を行い、まだ有効かどうかを確認します。</li><li>接続の問題により、複製操作が正常に完了できない可能性があります。接続の問題がないことを確認します。</li><li>使用可能なストレージの上限に達しました。領域を解放するために、不要になったバックアップの削除を検討してください。</li></ul>問題を解決し、アラートをクリアし、複製操作をもう一度試してください。|
+|Backup of <*device name*> couldn’t be completed.|Backup job failure.|Could not create a backup. Consider one of the following:<ul><li>Connectivity issues could be preventing the backup operation from successfully completing. Ensure that there are no connectivity issues. For more information on troubleshooting connectivity issues, go to the [local web UI](storsimple-ova-web-ui-admin.md) for your virtual device.</li><li>You have reached the available storage limit. To free up space, consider deleting any backups that are no longer needed.</li></ul> Resolve the issues, clear the alert and retry the operation.|
+|Restore of <*device name*> couldn’t be completed.|Restore job failure.|Could not restore from backup. Consider one of the following:<ul><li>Your backup list may not be valid. Refresh the list to verify it is still valid.</li><li>Connectivity issues could be preventing the restore operation from successfully completing. Ensure that there are no connectivity issues.</li><li>You have reached the available storage limit. To free up space, consider deleting any backups that are no longer needed.</li></ul>Resolve the issues, clear the alert and retry the restore operation.|
+|Clone of <*device name*> couldn’t be completed.|Clone job failure.|Could not create a clone. Consider one of the following:<ul><li>Your backup list may not be valid. Refresh the list to verify it is still valid.</li><li>Connectivity issues could be preventing the clone operation from successfully completing. Ensure that there are no connectivity issues.</li><li>You have reached the available storage limit. To free up space, consider deleting any backups that are no longer needed.</li></ul>Resolve the issues, clear the alert and retry the operation.|
 
-### パフォーマンスのアラート
+### <a name="performance-alerts"></a>Performance alerts
 
-|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
+|Alert text|Event|More information / recommended actions|
 |:---|:---|:---|
-|データ転送で予期しない遅延が発生します。|データ転送の速度が低い。|Storage サービスのスケーラビリティ ターゲットを超えると、調整エラーが生じます。このようにして Storage サービスは、1 つのクライアントやテナントがサービスを占有してしまうことがないようにします。Azure ストレージ アカウントのトラブルシューティングの詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください。
-|<*デバイス名*> のローカルの予約ディスク領域が不足しています。|低応答時間|<*デバイス名*> の総プロビジョニング済みサイズの 10% がローカル デバイスで予約されていますが、現在予約領域が不足しています。<*デバイス名*> のワークロードがチャーン率を高くしています。または最近大量のデータが移行された可能性があります。これはパフォーマンスの低下を招く場合があります。この問題を解決するには、次のいずれかを検討してください。<ul><li>このデバイスに対するクラウド帯域幅を拡大します。</li><li>ワークロードを別のボリュームまたは共有に移動します。</li></ul>
+|You are experiencing unexpected delays in data transfer.|Slow data transfer.|Throttling errors occur when you exceed the scalability targets of a storage service. The storage service does this to ensure that no single client or tenant can use the service at the expense of others. For more information on troubleshooting your Azure storage account, go to [Monitor, diagnose, and troubleshoot Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
+|You are running low on local reservation disk space on <*device name*>.|Slow response time.|10% of the total provisioned size for <*device name*> is reserved on the local device and you are now running low on the reserved space. The workload on <*device name*> is generating a higher rate of churn or you might have recently migrated a large amount of data. This may result in reduced performance. Consider one of the following actions to resolve this:<ul><li>Increase the cloud bandwidth to this device.</li><li>Reduce or move workloads to another volume or share.</li></ul>
 
-### セキュリティのアラート
+### <a name="security-alerts"></a>Security alerts
 
-|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
+|Alert text|Event|More information / recommended actions|
 |:---|:---|:---|
-|<*デバイス名*> のパスワードが <*数*> 日後に有効期限切れとなります。|パスワードの警告。| パスワードは <数> 日後に有効期限切れとなります。パスワードの変更を検討してください。詳細については、「[StorSimple Virtual Array デバイス管理者のパスワードを変更する](storsimple-ova-change-device-admin-password.md)」を参照してください。
+|Password for <*device name*> will expire in <*number*> days.|Password warning.| Your password will expire in <number< days. Consider changing your password. For more information, go to [Change the StorSimple Virtual Array device administrator password](storsimple-ova-change-device-admin-password.md).
 
-### 更新のアラート
+### <a name="update-alerts"></a>Update alerts
 
-|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
+|Alert text|Event|More information / recommended actions|
 |:---|:---|:---|
-|デバイスで新しい更新プログラムが利用できます。|StorSimple Virtual Array に対する更新プログラムが提供されています。|新しい更新プログラムは、**[メンテナンス]** ページからインストールできます。|
-|<*デバイス名*> で新しい更新プログラムをスキャンできませんでした。|更新エラー。 |新しい更新プログラムのインストール中にエラーが発生しました。更新プログラムは手動でインストールすることができます。問題が解決しない場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。|
+|New updates are available for your device.|Updates to the StorSimple Virtual Array are available.|You can install new updates from the **Maintenance** page.|
+|Could not scan for new updates on <*device name*>.|Update failure. |An error occurred while installing new updates. You can manually install the updates. If the problem persists, contact [Microsoft Support](storsimple-contact-microsoft-support.md).|
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [StorSimple Virtual Array の詳細](storsimple-ova-overview.md)
+- [Learn about the StorSimple Virtual Array](storsimple-ova-overview.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

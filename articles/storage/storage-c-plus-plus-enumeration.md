@@ -1,6 +1,6 @@
 <properties
-    pageTitle="C++ 用 Microsoft Azure Storage クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Azure"
-    description="C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。"
+    pageTitle="List Azure Storage Resources with the Microsoft Azure Storage Client Library for C++ | Microsoft Azure"
+    description="Learn how to use the listing APIs in Microsoft Azure Storage Client Library for C++ to enumerate containers, blobs, queues, tables, and entities."
     documentationCenter=".net"
     services="storage"
     authors="dineshmurthy"
@@ -12,176 +12,181 @@
     ms.tgt_pltfrm="na"
     ms.devlang="na"
     ms.topic="article"
-    ms.date="09/20/2016"
-    ms.author="dineshm;tamram"/>
+    ms.date="10/18/2016"
+    ms.author="dineshm"/>
 
-# C++ での Azure Storage のリソース一覧の取得
 
-一覧取得操作は、Azure Storage を使用する多くの開発シナリオで重要です。この記事では、C++ 用 Microsoft Azure Storage クライアント ライブラリで提供される一覧取得 API を使用して、Azure Storage 内のオブジェクトを最も効率的に列挙する方法について説明します。
+# <a name="list-azure-storage-resources-in-c++"></a>List Azure Storage Resources in C++
 
->[AZURE.NOTE] このガイドは、C++ 用 Azure Storage クライアント ライブラリのバージョン 2.x を対象としています。このライブラリは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp) から入手できます。
+Listing operations are key to many development scenarios with Azure Storage. This article describes how to most efficiently enumerate objects in Azure Storage using the listing APIs provided in the Microsoft Azure Storage Client Library for C++.
 
-ストレージ クライアント ライブラリを使用すると、Azure Storage 内のオブジェクトをさまざまな方法で一覧取得または照会することができます。この記事では、以下のシナリオを扱います。
+>[AZURE.NOTE] This guide targets the Azure Storage Client Library for C++ version 2.x, which is available via [NuGet](http://www.nuget.org/packages/wastorage) or [GitHub](https://github.com/Azure/azure-storage-cpp).
 
--	アカウント内のコンテナーを一覧取得する
--	コンテナーまたは仮想 BLOB ディレクトリ内の BLOB の一覧を取得する
--	アカウント内のキューの一覧を取得する
--	アカウント内のテーブルの一覧を取得する
--	テーブル内のエンティティを照会する
+The Storage Client Library provides a variety of methods to list or query objects in Azure Storage. This article addresses the following scenarios:
 
-これらの各方法については、シナリオごとに異なるオーバーロードを使用して示します。
+-   List containers in an account
+-   List blobs in a container or virtual blob directory
+-   List queues in an account
+-   List tables in an account
+-   Query entities in a table
 
-## 非同期と同期
+Each of these methods is shown using different overloads for different scenarios.
 
-C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。次に例を示します。
+## <a name="asynchronous-versus-synchronous"></a>Asynchronous versus synchronous
 
-	pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
+Because the Storage Client Library for C++ is built on top of the [C++ REST library](https://github.com/Microsoft/cpprestsdk), we inherently support asynchronous operations by using [pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). For example:
 
-同期操作は、対応する非同期操作をラップします。
+    pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
 
-	list_blob_item_segment list_blobs_segmented(const continuation_token& token) const
-	{
-	    return list_blobs_segmented_async(token).get();
-	}
+Synchronous operations wrap the corresponding asynchronous operations:
 
-マルチ スレッドのアプリケーションまたはサービスを使用している場合、同期 API を呼び出すスレッドを作成するとパフォーマンスに大きな影響を与えるため、非同期 API を直接使用することをお勧めします。
+    list_blob_item_segment list_blobs_segmented(const continuation_token& token) const
+    {
+        return list_blobs_segmented_async(token).get();
+    }
 
-## セグメント化された一覧取得
+If you are working with multiple threading applications or services, we recommend that you use the async APIs directly instead of creating a thread to call the sync APIs, which significantly impacts your performance.
 
-クラウド ストレージのスケールでは、一覧取得をセグメント化する必要があります。たとえば、Azure BLOB コンテナー内には 100 万以上の BLOB を、Azure テーブル内には 10 億以上のエンティティを保持することができます。こうした数値は仮定上のものではなく、実際の顧客の使用例に基づいています。
+## <a name="segmented-listing"></a>Segmented listing
 
-したがって、1 回の応答ですべてのオブジェクトの一覧を取得するのは非現実的です。代わりに、ページングを使用してオブジェクトの一覧を取得することができます。各一覧取得 API には、*セグメント化された*オーバーロードがあります。
+The scale of cloud storage requires segmented listing. For example, you can have over a million blobs in an Azure blob container or over a billion entities in an Azure Table. These are not theoretical numbers, but real customer usage cases.
 
-セグメント化された一覧取得操作に対する応答は次のとおりです。
+It is therefore impractical to list all objects in a single response. Instead, you can list objects using paging. Each of the listing APIs has a *segmented* overload.
 
--	<i>\_segment</i>: 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。
--	*continuation\_token*: 結果の次のページを取得するために、次の呼び出しに渡されます。返される結果がそれ以上無い場合、継続トークンは null になります。
+The response for a segmented listing operation includes:
 
-たとえば、コンテナー内のすべての BLOB を一覧表示する一般的な呼び出しは、次のコード スニペットのようになります。コードは、「[サンプル](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)」にあります。
+-   <i>_segment</i>, which contains the set of results returned for a single call to the listing API.
+-   *continuation_token*, which is passed to the next call in order to get the next page of results. When there are no more results to return, the continuation token is null.
 
-	// List blobs in the blob container
-	azure::storage::continuation_token token;
-	do
-	{
-	    azure::storage::list_blob_item_segment segment = container.list_blobs_segmented(token);
-	    for (auto it = segment.results().cbegin(); it != segment.results().cend(); ++it)
-	{
-	    if (it->is_blob())
-	    {
-	        process_blob(it->as_blob());
-	    }
-	    else
-	    {
-	        process_diretory(it->as_directory());
-	    }
-	}
+For example, a typical call to list all blobs in a container may look like the following code snippet. The code is available in our [samples](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
 
-	    token = segment.continuation_token();
-	}
-	while (!token.empty());
+    // List blobs in the blob container
+    azure::storage::continuation_token token;
+    do
+    {
+        azure::storage::list_blob_item_segment segment = container.list_blobs_segmented(token);
+        for (auto it = segment.results().cbegin(); it != segment.results().cend(); ++it)
+    {
+        if (it->is_blob())
+        {
+            process_blob(it->as_blob());
+        }
+        else
+        {
+            process_diretory(it->as_directory());
+        }
+    }
 
-1 ページで返される結果の数は、各 API のオーバーロードのパラメーター *max\_results* を使用して制御できることに注意してください。次に例を示します。
+        token = segment.continuation_token();
+    }
+    while (!token.empty());
 
-	list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
-		blob_listing_details::values includes, int max_results, const continuation_token& token,
-		const blob_request_options& options, operation_context context)
+Note that the number of results returned in a page can be controlled by the parameter *max_results* in the overload of each API, for example:
 
-*max\_results* パラメーターを指定しない場合、1 ページでは、既定の上限値である 5000 個までの結果が返されます。
+    list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, bool use_flat_blob_listing,
+        blob_listing_details::values includes, int max_results, const continuation_token& token,
+        const blob_request_options& options, operation_context context)
 
-また、Azure テーブル ストレージに対するクエリでは、継続トークンが空でないとしても、レコードが返されないか、指定した *max\_results* パラメーターの値より少ないレコードが返される場合があることにも注意してください。考えられる理由の 1 つは、クエリが 5 秒以内に完了しなかったためです。継続トークンが空でない限りクエリは継続されるため、コードでセグメント結果のサイズが推測されることはありません。
+If you do not specify the *max_results* parameter, the default maximum value of up to 5000 results is returned in a single page.
 
-ほとんどのシナリオで推奨されるコーディング パターンは、一覧取得のセグメント化です。これにより、一覧取得またはクエリ実行の進行状況が明示され、各要求に対するサービスの応答が指定されます。特に C++ のアプリケーションやサービスでは、一覧取得の進行状況を下位レベルで制御することで、メモリおよびパフォーマンスをコントロールしやすくなります。
+Also note that a query against Azure Table storage may return no records, or fewer records than the value of the *max_results* parameter that you specified, even if the continuation token is not empty. One reason might be that the query could not complete in five seconds. As long as the continuation token is not empty, the query should continue, and your code should not assume the size of segment results.
 
-## どん欲な一覧取得
+The recommended coding pattern for most scenarios is segmented listing, which provides explicit progress of listing or querying, and how the service responds to each request. Particularly for C++ applications or services, lower-level control of the listing progress may help control memory and performance.
 
-以前のバージョンの C++ 用ストレージ クライアント ライブラリ (バージョン 0.5.0 プレビューおよびそれ以前) には、以下の例に示すような、テーブルおよびキュー向けのセグメント化されていない一覧取得 API が含まれていました。
+## <a name="greedy-listing"></a>Greedy listing
 
-	std::vector<cloud_table> list_tables(const utility::string_t& prefix) const;
-	std::vector<table_entity> execute_query(const table_query& query) const;
-	std::vector<cloud_queue> list_queues() const;
+Earlier versions of the Storage Client Library for C++ (versions 0.5.0 Preview and earlier) included non-segmented listing APIs for tables and queues, as in the following example:
 
-これらのメソッドは、セグメント化された API のラッパーとして実装されていました。セグメント化された一覧取得の各応答では、コードはベクターに結果を追加し、コンテナー全体のスキャン後にすべての結果が返されていました。
+    std::vector<cloud_table> list_tables(const utility::string_t& prefix) const;
+    std::vector<table_entity> execute_query(const table_query& query) const;
+    std::vector<cloud_queue> list_queues() const;
 
-この方法は、ストレージ アカウントまたはテーブルに含まれるオブジェクトの数が少ない場合には機能します。ただし、すべての結果がメモリ内に残るため、オブジェクトの数が増加すると、必要なメモリの量が制限なく増大する可能性がありました。1 回の一覧取得操作に非常に長い時間がかかる可能性があり、この間に呼び出し元は進行状況に関する情報を得られません。
+These methods were implemented as wrappers of segmented APIs. For each response of segmented listing, the code appended the results to a vector and returned all results after the full containers were scanned.
 
-SDK のこのようにどん欲な一覧取得 API は、C#、Java、JavaScript Node.js 環境には存在しません。こうしたどん欲な API は、その使用で起こり得る問題を回避するためにバージョン 0.6.0 プレビューで削除されました。
+This approach might work when the storage account or table contains a small number of objects. However, with an increase in the number of objects, the memory required could increase without limit, because all results remained in memory. One listing operation can take a very long time, during which the caller had no information about its progress.
 
-これらのどん欲な API をコードで呼び出す場合:
+These greedy listing APIs in the SDK do not exist in C#, Java, or the JavaScript Node.js environment. To avoid the potential issues of using these greedy APIs, we removed them in version 0.6.0 Preview.
 
-	std::vector<azure::storage::table_entity> entities = table.execute_query(query);
-	for (auto it = entities.cbegin(); it != entities.cend(); ++it)
-	{
-	    process_entity(*it);
-	}
+If your code is calling these greedy APIs:
 
-セグメント化された一覧取得 API を使用するようにコードを修正してください。
+    std::vector<azure::storage::table_entity> entities = table.execute_query(query);
+    for (auto it = entities.cbegin(); it != entities.cend(); ++it)
+    {
+        process_entity(*it);
+    }
 
-	azure::storage::continuation_token token;
-	do
-	{
-	    azure::storage::table_query_segment segment = table.execute_query_segmented(query, token);
-	    for (auto it = segment.results().cbegin(); it != segment.results().cend(); ++it)
-	    {
-	        process_entity(*it);
-	    }
+Then you should modify your code to use the segmented listing APIs:
 
-	    token = segment.continuation_token();
-	} while (!token.empty());
+    azure::storage::continuation_token token;
+    do
+    {
+        azure::storage::table_query_segment segment = table.execute_query_segmented(query, token);
+        for (auto it = segment.results().cbegin(); it != segment.results().cend(); ++it)
+        {
+            process_entity(*it);
+        }
 
-セグメントの *max\_results* パラメーターを指定することで、要求の数とメモリ使用量のバランスをとって、アプリケーションのパフォーマンス上の考慮事項を満たすことができます。
+        token = segment.continuation_token();
+    } while (!token.empty());
 
-さらに、セグメント化された一覧取得 API を使用しているが、"どん欲な" やり方でローカル コレクションにデータを格納している場合、スケールに合わせて注意深くローカル コレクションにデータを格納するようにコードをリファクタリングすることもお勧めします。
+By specifying the *max_results* parameter of the segment, you can balance between the numbers of requests and memory usage to meet performance considerations for your application.
 
-## 限定的な一覧取得
+Additionally, if you’re using segmented listing APIs, but store the data in a local collection in a "greedy" style, we also strongly recommend that you refactor your code to handle storing data in a local collection carefully at scale.
 
-どん欲な一覧取得は問題が発生する可能性もありますが、コンテナー内のオブジェクトの数が多すぎない場合には便利です。
+## <a name="lazy-listing"></a>Lazy listing
 
-C# または Oracle Java SDK を使用しているのであれば、列挙型プログラミング モデルをご存知でしょう。このモデルでは、データを必要な場合に一定のオフセットでのみフェッチする、限定的な一覧取得が利用できます。C++ でも、反復子ベースのテンプレートにより同様の方法が提供されます。
+Although greedy listing raised potential issues, it is convenient if there are not too many objects in the container.
 
-たとえば、**list\_blobs** を使用した一般的な限定的一覧取得 API は次のようになります。
+If you’re also using C# or Oracle Java SDKs, you should be familiar with the Enumerable programming model, which offers a lazy-style listing, where the data at a certain offset is only fetched if it is required. In C++, the iterator-based template also provides a similar approach.
 
-	list_blob_item_iterator list_blobs() const;
+A typical lazy listing API, using **list_blobs** as an example, looks like this:
 
-限定的な一覧取得パターンを使用する一般的なコード スニペットは、次のようになります。
+    list_blob_item_iterator list_blobs() const;
 
-	// List blobs in the blob container
-	azure::storage::list_blob_item_iterator end_of_results;
-	for (auto it = container.list_blobs(); it != end_of_results; ++it)
-	{
-		if (it->is_blob())
-		{
-			process_blob(it->as_blob());
-		}
-		else
-		{
-			process_directory(it->as_directory());
-		}
-	}
+A typical code snippet that uses the lazy listing pattern might look like this:
 
-限定的な一覧取得は同期モードでのみ使用できることに注意してください。
+    // List blobs in the blob container
+    azure::storage::list_blob_item_iterator end_of_results;
+    for (auto it = container.list_blobs(); it != end_of_results; ++it)
+    {
+        if (it->is_blob())
+        {
+            process_blob(it->as_blob());
+        }
+        else
+        {
+            process_directory(it->as_directory());
+        }
+    }
 
-どん欲な一覧取得と比べて、限定的な一覧取得では必要な場合にのみデータをフェッチします。この一覧取得では、次の反復子が次のセグメントへと移動した場合にのみ、Azure Storage から秘密裏にデータをフェッチします。そのため、メモリ使用量は制限されたサイズに抑えられ、動作は高速になります。
+Note that lazy listing is only available in synchronous mode.
 
-限定的一覧取得 API は、バージョン 2.2.0 の C++ 用ストレージ クライアント ライブラリに含まれています。
+Compared with greedy listing, lazy listing fetches data only when necessary. Under the covers, it fetches data from Azure Storage only when the next iterator moves into next segment. Therefore, memory usage is controlled with a bounded size, and the operation is fast.
 
-## まとめ
+Lazy listing APIs are included in the Storage Client Library for C++ in version 2.2.0.
 
-この記事では、C++ 用ストレージ クライアント ライブラリの各種オブジェクト向けの一覧取得 API のオーバーロードごとに説明しました。まとめると次のようになります。
+## <a name="conclusion"></a>Conclusion
 
--	マルチスレッドのシナリオでは、非同期 API を強くお勧めします。
--	ほとんどのシナリオでは、セグメント化された一覧取得をお勧めします。
--	限定的な一覧取得は、同期シナリオの便利なラッパーとして、ライブラリで提供されます。
--	どん欲な一覧取得は推奨されないため、ライブラリから削除されました。
+In this article, we discussed different overloads for listing APIs for various objects in the Storage Client Library for C++ . To summarize:
 
-##次のステップ
+-   Async APIs are strongly recommended under multiple threading scenarios.
+-   Segmented listing is recommended for most scenarios.
+-   Lazy listing is provided in the library as a convenient wrapper in synchronous scenarios.
+-   Greedy listing is not recommended and has been removed from the library.
 
-Azure Storage および C++ 用クライアント ライブラリの詳細については、以下のリソースを参照してください。
+##<a name="next-steps"></a>Next steps
 
--	[C++ から BLOB ストレージを使用する方法](storage-c-plus-plus-how-to-use-blobs.md)
--	[C++ から Table ストレージを使用する方法](storage-c-plus-plus-how-to-use-tables.md)
--	[C++ から Queue ストレージを使用する方法](storage-c-plus-plus-how-to-use-queues.md)
--	[C++ 用 Azure Storage クライアント ライブラリのドキュメント](http://azure.github.io/azure-storage-cpp/)
--	[Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
--	[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
+For more information about Azure Storage and Client Library for C++, see the following resources.
 
-<!---HONumber=AcomDC_0921_2016-->
+-   [How to use Blob Storage from C++](storage-c-plus-plus-how-to-use-blobs.md)
+-   [How to use Table Storage from C++](storage-c-plus-plus-how-to-use-tables.md)
+-   [How to use Queue Storage from C++](storage-c-plus-plus-how-to-use-queues.md)
+-   [Azure Storage Client Library for C++ API documentation.](http://azure.github.io/azure-storage-cpp/)
+-   [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/)
+-   [Azure Storage Documentation](https://azure.microsoft.com/documentation/services/storage/)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

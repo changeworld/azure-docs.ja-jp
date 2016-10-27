@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager でのリンクされたテンプレート | Microsoft Azure"
-   description="Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。"
+   pageTitle="Linked templates with Resource Manager | Microsoft Azure"
+   description="Describes how to use linked templates in an Azure Resource Manager template to create a modular template solution. Shows how to pass parameters values, specify a parameter file, and dynamically created URLs."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,15 +16,16 @@
    ms.date="09/02/2016"
    ms.author="tomfitz"/>
 
-# Azure リソース マネージャーでのリンクされたテンプレートの使用
 
-1 つの Azure Resource Manager テンプレート内から別のテンプレートにリンクして、対象となる、目的に特化した一連のテンプレートにデプロイを分解することができます。アプリケーションを複数のコード クラスに分解する場合と同様に、分解すると、テスト、再利用、読みやすさの面でメリットがあります。
+# <a name="using-linked-templates-with-azure-resource-manager"></a>Using linked templates with Azure Resource Manager
 
-メイン テンプレートからリンクされたテンプレートにパラメーターを渡すことができます。それらのパラメーターは、呼び出し元のテンプレートによって公開されているパラメーターまたは変数に直接マップできます。リンクされたテンプレートからソース テンプレートに出力変数を渡すこともできます。そのため、テンプレート間で双方向のデータ交換を行うことができます。
+From within one Azure Resource Manager template, you can link to another template, which enables you to decompose your deployment into a set of targeted, purpose-specific templates. As with decomposing an application into several code classes, decomposition provides benefits in terms of testing, reuse, and readability.  
 
-## テンプレートへのリンク
+You can pass parameters from a main template to a linked template, and those parameters can directly map to parameters or variables exposed by the calling template. The linked template can also pass an output variable back to the source template, enabling a two-way data exchange between templates.
 
-2 つのテンプレート間のリンクを作成するには、リンク先のテンプレートを指すデプロイ リソースをメイン テンプレート内に追加します。**templateLink** プロパティを、リンク先のテンプレートの URI に設定します。リンクされたテンプレートのパラメーター値を指定するには、テンプレート内で値を直接指定するか、パラメーター ファイルにリンクします。次の例では、**parameters** プロパティを使用して、パラメーター値を直接指定しています。
+## <a name="linking-to-a-template"></a>Linking to a template
+
+You create a link between two templates by adding a deployment resource within the main template that points to the linked template. You set the **templateLink** property to the URI of the linked template. You can provide parameter values for the linked template either by specifying the values directly in your template or by linking to a parameter file. The following example uses the **parameters** property to specify a parameter value directly.
 
     "resources": [ 
       { 
@@ -44,16 +45,16 @@
       } 
     ] 
 
-Resource Manager サービスは、リンクされたテンプレートにアクセスできる必要があります。ローカル ファイルや、リンクされたテンプレートのローカル ネットワークだけで使用可能なファイルを指定することはできません。**http** または **https** のいずれかを含む URI 値のみを指定できます。オプションの 1 つとして、ストレージ アカウントにリンク先のテンプレートを配置し、次の例に示すように、その項目の URI を使用します。
+The Resource Manager service must be able to access the linked template. You cannot specify a local file or a file that is only available on your local network for the linked template. You can only provide a URI value that includes either **http** or **https**. One option is to place your linked template in a storage account, and use the URI for that item, such as shown in the following example.
 
     "templateLink": {
         "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
         "contentVersion": "1.0.0.0",
     }
 
-リンクされたテンプレートは外部から利用可能でなければなりませんが、一般公開する必要はありません。ストレージ アカウント所有者のみがアクセス可能なプライベート ストレージ アカウントに、テンプレートを追加できます。次に、デプロイ時にアクセスできるように、Shared Access Signature (SAS) トークンを作成します。リンクされたテンプレートの URI に SAS トークンを追加します。ストレージ アカウントにテンプレートを設定し SAS トークンを生成する手順については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](resource-group-template-deploy.md)」または「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)」を参照してください。
+Although the linked template must be externally available, it does not need to be generally available to the public. You can add your template to a private storage account that is accessible to only the storage account owner. Then, you create a shared access signature (SAS) token to enable access during deployment. You add that SAS token to the URI for the linked template. For steps on setting up a template in a storage account and generating a SAS token, see [Deploy resources with Resource Manager templates and Azure PowerShell](resource-group-template-deploy.md) or [Deploy resources with Resource Manager templates and Azure CLI](resource-group-template-deploy-cli.md). 
 
-次の例は、別のテンプレートにリンクしている親テンプレートを示しています。リンクされたテンプレートには、パラメーターとして渡された SAS トークンを使用してアクセスします。
+The following example shows a parent template that links to another template. The linked template is accessed with a SAS token that is passed in as a parameter.
 
     "parameters": {
         "sasToken": { "type": "securestring" }
@@ -73,11 +74,11 @@ Resource Manager サービスは、リンクされたテンプレートにアク
         }
     ],
 
-トークンがセキュリティで保護された文字列として渡された場合でも、SAS トークンを含むリンクされたテンプレートの URI が、リソース グループのデプロイ操作にログ記録されます。公開を制限するには、トークンの有効期限を設定します。
+Even though the token is passed in as a secure string, the URI of the linked template, including the SAS token, is logged in the deployment operations for that resource group. To limit exposure, set an expiration for the token.
 
-## パラメーター ファイルへのリンク
+## <a name="linking-to-a-parameter-file"></a>Linking to a parameter file
 
-次の例では、 **parametersLink** プロパティを使用して、パラメーター ファイルにリンク付けしています。
+The next example uses the **parametersLink** property to link to a parameter file.
 
     "resources": [ 
       { 
@@ -98,13 +99,13 @@ Resource Manager サービスは、リンクされたテンプレートにアク
       } 
     ] 
 
-リンクされたパラメーター ファイルの URI 値はローカル ファイルにすることはできず、**http** または **https** のいずれかを含む必要があります。パラメーター ファイルは SAS トークンを使ったアクセスに制限することができます。
+The URI value for the linked parameter file cannot be a local file, and must include either **http** or **https**. The parameter file can also be limited to access through a SAS token.
 
-## 変数を使用したテンプレートのリンク
+## <a name="using-variables-to-link-templates"></a>Using variables to link templates
 
-前の例では、URL の値をハード コーディングしてテンプレートをリンクする方法について説明しました。この方法は簡単なテンプレートには適していますが、モジュール構造の大規模な一連のテンプレートを使用する場合にはあまり適していません。その場合は、メイン テンプレートのベース URL を格納する静的変数を作成し、リンクされたテンプレートの URL をそのベース URL から動的に作成することができます。この方法の利点としては、テンプレートを簡単に移動したり、フォークしたりできることが挙げられます。メイン テンプレート内の静的変数を変更するだけで、正しい URI が、メイン テンプレートから、分解されたテンプレート全体に渡されます。
+The previous examples showed hard-coded URL values for the template links. This approach might work for a simple template but it does not work well when working with a large set of modular templates. Instead, you can create a static variable that stores a base URL for the main template and then dynamically create URLs for the linked templates from that base URL. The benefit of this approach is you can easily move or fork the template because you only need to change the static variable in the main template. The main template passes the correct URIs throughout the decomposed template.
 
-次の例では、ベース URL を使用して、リンクされたテンプレート (**sharedTemplateUrl** と **vmTemplate**) の 2 つの URL を作成する方法を示しています。
+The following example shows how to use a base URL to create two URLs for linked templates (**sharedTemplateUrl** and **vmTemplate**). 
 
     "variables": {
         "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
@@ -125,17 +126,17 @@ Resource Manager サービスは、リンクされたテンプレートにアク
         }
     }
 
-[deployment()](resource-group-template-functions.md#deployment) を使用して、現在のテンプレートのベース URL を取得したり、同じ場所にある他のテンプレートの URL を取得したりすることもできます。この方法は、テンプレートの場所が変更された場合 (バージョン管理などのため) や、テンプレート ファイルのハード コーディング URL を回避する必要がある場合に便利です。
+You can also use [deployment()](resource-group-template-functions.md#deployment) to get the base URL for the current template, and use that to get the URL for other templates in the same location. This approach is useful if your template location changes (maybe due to versioning) or you want to avoid hard coding URLs in the template file. 
 
     "variables": {
         "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
     }
 
-## テンプレートへの条件付きリンク
+## <a name="conditionally-linking-to-templates"></a>Conditionally linking to templates
 
-リンクされたテンプレートの URI の構築に使用されるパラメーター値を渡すことによって、別のテンプレートにリンクすることができます。この方法は、どのリンクされたテンプレートを使用するかをデプロイ中に指定する必要がある場合に適しています。たとえば、既存のストレージ アカウント用に 1 つのテンプレートと、新しいストレージ アカウント用にもう 1 つのテンプレートを指定できます。
+You can link to different templates by passing in a parameter value that is used to construct the URI of the linked template. This approach works well when you need to specify during deployment which linked template to use. For example, you can specify one template to use for an existing storage account, and another template to use for a new storage account.
 
-次の例では、ストレージ アカウント名のパラメーターと、ストレージ アカウントが新規か既存かを指定するためのパラメーターを示しています。
+The following example shows a parameter for a storage account name, and a parameter to specify whether the storage account is new or existing.
 
     "parameters": {
         "storageAccountName": {
@@ -150,13 +151,13 @@ Resource Manager サービスは、リンクされたテンプレートにアク
         }
     },
 
-新規または既存のパラメーターの値を含む、テンプレート URI の変数を作成します。
+You create a variable for the template URI that includes the value of the new or existing parameter.
 
     "variables": {
         "templatelink": "[concat('https://raw.githubusercontent.com/exampleuser/templates/master/',parameters('newOrExisting'),'StorageAccount.json')]"
     },
 
-この変数値をデプロイ リソースに指定します。
+You provide that variable value for the deployment resource.
 
     "resources": [
         {
@@ -178,9 +179,9 @@ Resource Manager サービスは、リンクされたテンプレートにアク
         }
     ],
 
-URI は、**existingStorageAccount.json** または **newStorageAccount.json** という名前のテンプレートに解決されます。これらの URI のためのテンプレートを作成します。
+The URI resolves to a template named either **existingStorageAccount.json** or **newStorageAccount.json**. Create templates for those URIs.
 
-次の例は、**existingStorageAccount.json** テンプレートを示しています。
+The following example shows the **existingStorageAccount.json** template.
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -200,7 +201,7 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
       }
     }
 
-次の例は、**newStorageAccount.json** テンプレートを示しています。既存のストレージ アカウント テンプレートの同様に、出力でストレージ アカウント オブジェクトが返されることに注意してください。マスター テンプレートは、リンクされたテンプレートにも対応しています。
+The next example shows the **newStorageAccount.json** template. Notice that like the existing storage account template the storage account object is returned in the outputs. The master template works with either linked template.
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -232,11 +233,11 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
       }
     }
 
-## 完全な例
+## <a name="complete-example"></a>Complete example
 
-次のサンプル テンプレートは、この記事で取り上げている概念を説明するために、リンクされたテンプレートの簡略化した配置を示しています。パブリック アクセスを無効にした状態で、テンプレートがストレージ アカウント内の同じコンテナーに追加されていることを前提としています。リンクされたテンプレートは **outputs** セクションのメイン テンプレートに値を渡します。
+The following example templates show a simplified arrangement of linked templates to illustrate several of the concepts in this article. It assumes the templates have been added to the same container in a storage account with public access turned off. The linked template passes a value back to the main template in the **outputs** section.
 
-**parent.json** ファイルの構成は次のとおりです。
+The **parent.json** file consists of:
 
     {
       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -266,38 +267,42 @@ URI は、**existingStorageAccount.json** または **newStorageAccount.json** �
       }
     }
 
-**helloworld.json** ファイルの構成は次のとおりです。
+The **helloworld.json** file consists of:
 
     {
-	  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-	  "contentVersion": "1.0.0.0",
-	  "parameters": {},
-	  "variables": {},
-	  "resources": [],
-	  "outputs": {
-		"result": {
-			"value": "Hello World",
-			"type" : "string"
-		}
-	  }
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {
+        "result": {
+            "value": "Hello World",
+            "type" : "string"
+        }
+      }
     }
     
-PowerShell では、コンテナーのトークンを取得し、以下を使用してテンプレートをデプロイします。
+In PowerShell, you get a token for the container and deploy the templates with:
 
     Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
     $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
     New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ("https://storagecontosotemplates.blob.core.windows.net/templates/parent.json" + $token) -containerSasToken $token
 
-Azure CLI では、コンテナーのトークンを取得し、次のコードを使用してテンプレートをデプロイします。現時点では、SAS トークンを含むテンプレート URI を使用する場合は、デプロイの名前を指定する必要があります。
+In Azure CLI, you get a token for the container and deploy the templates with the following code. Currently, you must provide a name for the deployment when using a template URI that includes a SAS token.  
 
     expiretime=$(date -I'minutes' --date "+30 minutes")  
     azure storage container sas create --container templates --permissions r --expiry $expiretime --json | jq ".sas" -r
     azure group deployment create -g ExampleGroup --template-uri "https://storagecontosotemplates.blob.core.windows.net/templates/parent.json?{token}" -n tokendeploy  
 
-パラメーターとして SAS トークンを指定するように求められます。トークンの前に **?** を付ける必要があります。
+You are prompted to provide the SAS token as a parameter. You need to preface the token with **?**.
 
-## 次のステップ
-- リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)」を参照してください。
-- リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+- To learn about the defining the deployment order for your resources, see [Defining dependencies in Azure Resource Manager templates](resource-group-define-dependencies.md)
+- To learn how to define one resource but create many instances of it, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-pageTitle="Azure Cloud Services でのスタートアップ タスクの実行 | Microsoft Azure" 
-description="スタートアップ タスクを使用すると、アプリ用にクラウド サービス環境を準備できます。スタートアップ タスクの動作のしくみおよびそれらを作成する方法について説明します" 
+pageTitle="Run Startup Tasks in Azure Cloud Services | Microsoft Azure" 
+description="Startup tasks help prepare your cloud service environment for your app. This teaches you how startup tasks work and how to make them" 
 services="cloud-services" 
 documentationCenter="" 
 authors="Thraka" 
@@ -17,51 +17,52 @@ ms.author="adegeo"/>
 
 
 
-# クラウド サービスのスタートアップ タスクを構成して実行する方法
 
-ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。
+# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>How to configure and run startup tasks for a cloud service
 
->[AZURE.NOTE] スタートアップ タスクを使用できるのはクラウド サービス Web ロールと worker ロールのみであり、Virtual Machines には使用できません。
+You can use startup tasks to perform operations before a role starts. Operations that you might want to perform include installing a component, registering COM components, setting registry keys, or starting a long running process.
 
-## スタートアップ タスクの動作方法
+>[AZURE.NOTE] Startup tasks are not applicable to Virtual Machines, only to Cloud Service Web and Worker roles.
 
-スタートアップ タスクはロールが開始する前に実行されるアクションであり、[ServiceDefinition.csdef] ファイルにおいて [Startup] 要素の [Task] 要素を使用して定義されます。多くの場合スタートアップ タスクはバッチ ファイルですが、コンソール アプリケーションまたは PowerShell スクリプトを開始するバッチ ファイルでもかまいません。
+## <a name="how-startup-tasks-work"></a>How startup tasks work
 
-スタートアップ タスクに情報を渡すには環境変数を使用し、スタートアップ タスクから情報を受け取るにはローカル ストレージを使用します。たとえば、環境変数を使用してインストールするプログラムへのパスを指定でき、ファイルをローカル ストレージに書き込んでおいて後からロールで読み取ることができます。
+Startup tasks are actions that are taken before your roles begin and are defined in the [ServiceDefinition.csdef] file by using the [Task] element within the [Startup] element. Frequently startup tasks are batch files, but they can also be console applications, or batch files that start PowerShell scripts.
 
-スタートアップ タスクでは、**TEMP** 環境変数によって指定されているディレクトリに情報およびエラーのログを記録できます。スタートアップ タスクがクラウドで実行すると、**TEMP** 環境変数は *C:\\Resources\\temp\\[GUID].[ロール名]\\RoleTemp* ディレクトリに解決されます。
+Environment variables pass information into a startup task, and local storage can be used to pass information out of a startup task. For example, an environment variable can specify the path to a program you want to install, and files can be written to local storage that can then be read later by your roles.
 
-再起動と再起動の間に、スタートアップ タスクを何回でも実行できます。たとえば、スタートアップ タスクはロールのリサイクルのたびに実行され、ロールのリサイクルには再起動が含まれない場合があります。複数回実行されても問題がないように、スタートアップ タスクを作成する必要があります。
+Your startup task can log information and errors to the directory specified by the **TEMP** environment variable. During the startup task, the **TEMP** environment variable resolves to the *C:\\Resources\\temp\\[guid].[rolename]\\RoleTemp* directory when running on the cloud.
 
-スタートアップ プロセスが完了するには、スタートアップ タスクが **errorlevel** (終了コード) ゼロで終了する必要があります。スタートアップ タスクがゼロ以外の **errorlevel** で終了すると、ロールは開始しません。
+Startup tasks can also be executed several times between reboots. For example, the startup task will be run each time the role recycles, and role recycles may not always include a reboot. Startup tasks should be written in a way that allows them to run several times without problems.
+
+Startup tasks must end with an **errorlevel** (or exit code) of zero for the startup process to complete. If a startup task ends with a non-zero **errorlevel**, the role will not start.
 
 
-## ロールのスタートアップ順序
+## <a name="role-startup-order"></a>Role startup order
 
-Azure でのロールのスタートアップ手順を次に示します。
+The following lists the role startup procedure in Azure:
 
-1. インスタンスは**開始中**とマークされ、トラフィックを受け取りません。
+1. The instance is marked as **Starting** and does not receive traffic.
 
-2. **taskType** 属性に従って、すべてのスタートアップ タスクが実行されます。
-    - **単純な**タスクは、一度に 1 つずつ同期的に実行されます。
-    - **バック グラウンド** タスクと**フォアグラウンド** タスクは、スタートアップ タスクと並列に非同期的に開始されます。
+2. All startup tasks are executed according to their **taskType** attribute.
+    - The **simple** tasks are executed synchronously, one at a time.
+    - The **background** and **foreground** tasks are started asynchronously, parallel to the startup task.  
        
-    > [AZURE.WARNING] IIS はスタートアップ プロセスのスタートアップ タスク ステージの間に完全に構成されない場合があるので、ロール固有のデータを使用できないことがあります。ロール固有のデータが必要なスタートアップ タスクは、[Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) を使用する必要があります。
+    > [AZURE.WARNING] IIS may not be fully configured during the startup task stage in the startup process, so role-specific data may not be available. Startup tasks that require role-specific data should use [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx).
 
-3. ロール ホスト プロセスが開始され、サイトが IIS に作成されます。
+3. The role host process is started and the site is created in IIS.
 
-4. [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) メソッドが呼び出されます。
+4. The [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) method is called.
 
-5. インスタンスは**準備完了**とマークされ、トラフィックがインスタンスにルーティングされるようになります。
+5. The instance is marked as **Ready** and traffic is routed to the instance.
 
-6. [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) メソッドが呼び出されます。
+6. The [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) method is called.
 
 
-## スタートアップ タスクの例
+## <a name="example-of-a-startup-task"></a>Example of a startup task
 
-スタートアップ タスクは、[ServiceDefinition.csdef] ファイルの **Task** 要素で定義されています。**commandLine** 属性では、スタートアップ バッチ ファイルまたはコンソール コマンドの名前とパラメーターを指定します。**executionContext** 属性では、スタートアップ タスクの特権レベルを指定します。**taskType** 属性では、タスクの実行方法を指定します。
+Startup tasks are defined in the [ServiceDefinition.csdef] file, in the **Task** element. The **commandLine** attribute specifies the name and parameters of the startup batch file or console command, the **executionContext** attribute specifies the privilege level of the startup task, and the **taskType** attribute specifies how the task will be executed.
 
-この例では、環境変数 **MyVersionNumber** をスタートアップ タスク用に作成し、値を "**1.0.0.0**" に設定しています。
+In this example, an environment variable, **MyVersionNumber**, is created for the startup task and set to the value "**1.0.0.0**".
 
 **ServiceDefinition.csdef**:
 
@@ -75,59 +76,64 @@ Azure でのロールのスタートアップ手順を次に示します。
 </Startup>
 ```
 
-次の例では、**Startup.cmd** バッチ ファイルは、TEMP 環境変数で指定されているディレクトリの StartupLog.txt ファイルに、"The current version is 1.0.0.0" という行を書き込みます。`EXIT /B 0` の行は、**errorlevel** が 0 でスタートアップ タスクが終了することを保証します。
+In the following example, the **Startup.cmd** batch file writes the line "The current version is 1.0.0.0" to the StartupLog.txt file in the directory specified by the TEMP environment variable. The `EXIT /B 0` line ensures that the startup task ends with an **errorlevel** of zero.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
 EXIT /B 0
 ```
 
-> [AZURE.NOTE] スタートアップ バッチ ファイルが Azure のプロジェクトに適切にデプロイされるようにするには (Web ロールの場合は **approot\\bin**、worker ロールの場合は **approot**)、Visual Studio で、スタートアップ バッチ ファイルの **[出力ディレクトリにコピー ]** プロパティを **[常にコピーする]** に設定する必要があります。
+> [AZURE.NOTE] In Visual Studio, the **Copy to Output Directory** property for your startup batch file should be set to **Copy Always** to be sure that your startup batch file is properly deployed to your project on Azure (**approot\\bin** for Web roles, and **approot** for worker roles).
 
-## タスクの属性の説明
+## <a name="description-of-task-attributes"></a>Description of task attributes
 
-次に、[ServiceDefinition.csdef] ファイルの **Task** 要素の属性について説明します。
+The following describes the attributes of the **Task** element in the [ServiceDefinition.csdef] file:
 
-**commandLine** -スタートアップ タスクのコマンド ラインを指定します。
+**commandLine** - Specifies the command line for the startup task:
 
-- スタートアップ タスクを開始するコマンドと、オプションのコマンド ライン パラメーターです。
-- 通常、これは .cmd または .bat バッチ ファイルのファイル名です。
-- タスクの位置は、デプロイメント用の AppRoot\\Bin フォルダーに対する相対パスです。環境変数は、タスクのパスとファイルを決定するときに展開されません。環境変数の展開が必要な場合は、スタートアップ タスクを呼び出す小さな .cmd スクリプトを作成できます。
-- [PowerShell スクリプト](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)を開始するコンソール アプリケーションまたはバッチ ファイルを指定できます。
+- The command, with optional command line parameters, which begins the startup task.
+- Frequently this is the filename of a .cmd or .bat batch file.
+- The task is relative to the AppRoot\\Bin folder for the deployment. Environment variables are not expanded in determining the path and file of the task. If environment expansion is required, you can create a small .cmd script that calls your startup task.
+- Can be a console application or a batch file that starts a [PowerShell script](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task).
 
-**executionContext** -スタートアップ タスクの特権レベルを指定します。指定できる特権レベルは limited または elevated です。
+**executionContext** - Specifies the privilege level for the startup task. The privilege level can be limited or elevated:
 
-- **limited** スタートアップ タスクは、ロールと同じ特権で実行します。[Runtime] 要素の **executionContext** 属性も **limited** である場合は、ユーザー特権が使用されます。
+- **limited**  
+The startup task runs with the same privileges as the role. When the **executionContext** attribute for the [Runtime] element is also **limited**, then user privileges are used.
 
-- **elevated** スタートアップ タスクは、管理者特権で実行します。これにより、ロール自体の特権レベルを上げることなく、プログラムのインストール、IIS の構成の変更、レジストリの変更、その他の管理者レベル タスクを実行できます。
+- **elevated**  
+The startup task runs with administrator privileges. This allows startup tasks to install programs, make IIS configuration changes, perform registry changes, and other administrator level tasks, without increasing the privilege level of the role itself.  
 
-> [AZURE.NOTE] スタートアップ タスクの特権レベルは、ロール自体と同じでなくてもかまいません。
+> [AZURE.NOTE] The privilege level of a startup task does not need to be the same as the role itself.
 
-**taskType** -スタートアップ タスクを実行する方法を指定します。
+**taskType** - Specifies the way a startup task is executed.
 
-- **simple** タスクは、[ServiceDefinition.csdef] ファイルで指定されている順序で、一度に 1 つずつ、同期的に実行されます。ある **simple** スタートアップ タスクが 0 の **errorlevel** で終了すると、次の **simple** スタートアップ タスクが実行されます。それ以上実行する **simple** スタートアップ タスクがない場合は、ロール自体が開始されます。
+- **simple**  
+Tasks are executed synchronously, one at a time, in the order specified in the [ServiceDefinition.csdef] file. When one **simple** startup task ends with an **errorlevel** of zero, the next **simple** startup task is executed. If there are no more **simple** startup tasks to execute, then the role itself will be started.   
 
-    > [AZURE.NOTE] **simple** タスクが 0 以外の **errorlevel** で終了した場合は、インスタンスがブロックされます。後続の **simple** スタートアップ タスクおよびロール自体は開始されません。
+    > [AZURE.NOTE] If the **simple** task ends with a non-zero **errorlevel**, the instance will be blocked. Subsequent **simple** startup tasks, and the role itself, will not start.
 
-    バッチ ファイルを 0 の **errorlevel** で確実に終了させるには、バッチ ファイル プロセスの最後で `EXIT /B 0` コマンドを実行します。
+    To ensure that your batch file ends with an **errorlevel** of zero, execute the command `EXIT /B 0` at the end of your batch file process.
 
-- **background** タスクは、ロールのスタートアップと並行して、非同期的に実行されます。
+- **background**  
+Tasks are executed asynchronously, in parallel with the startup of the role.
 
-- **foreground** タスクは、ロールのスタートアップと並行して、非同期的に実行されます。**foreground** タスクと **background** タスクの重要な違いは、**foreground** タスクではタスクが終了するまでロールがリサイクルまたはシャットダウンされなくなることです。**background** タスクにはこのような制限はありません。
+- **foreground**  
+Tasks are executed asynchronously, in parallel with the startup of the role. The key difference between a **foreground** and a **background** task is that a **foreground** task prevents the role from recycling or shutting down until the task has ended. The **background** tasks do not have this restriction.
 
-## 環境変数
+## <a name="environment-variables"></a>Environment variables
 
-環境変数は、スタートアップ タスクに情報を渡すための手段です。たとえば、インストールするプログラムを含む BLOB へのパス、ロールで使用するポート番号、スタートアップ タスクの機能を制御する設定などを設定できます。
+Environment variables are a way to pass information to a startup task. For example, you can put the path to a blob that contains a program to install, or port numbers that your role will use, or settings to control features of your startup task.
 
-スタートアップ タスクの環境変数には、静的環境変数と、[RoleEnvironment] クラスのメンバーに基づく環境変数の 2 種類があります。どちらも [ServiceDefinition.csdef] ファイルの [Environment] セクションにあり、[Variable] 要素と **name** 属性を使用します。
+There are two kinds of environment variables for startup tasks; static environment variables and environment variables based on members of the [RoleEnvironment] class. Both are in the [Environment] section of the [ServiceDefinition.csdef] file, and both use the [Variable] element and **name** attribute.
 
-静的環境変数は、[Variable] 要素の **value** 属性を使用します。上の例では、**MyVersionNumber** という名前の環境変数を作成し、静的な値 "**1.0.0.0**" を設定しています。もう 1 つの例として、**StagingOrProduction** という名前の環境変数を作成し、手動で値 "**staging**" または "**production**" を設定して、**StagingOrProduction** 環境変数の値に基づいて異なるスタートアップ アクションを実行できます。
+Static environment variables uses the **value** attribute of the [Variable] element. The example above creates the environment variable **MyVersionNumber** which has a static value of "**1.0.0.0**". Another example would be to create a **StagingOrProduction** environment variable which you can manually set to values of "**staging**" or "**production**" to perform different startup actions based on the value of the **StagingOrProduction** environment variable.
 
-RoleEnvironment クラスに基づく環境変数では、[Variable] 要素の **value** 属性は使用しません。代わりに [RoleInstanceValue] 子要素と適切な **xPath** 属性値を使用して、[RoleEnvironment] クラスの特定のメンバーに基づいて環境変数を作成します。さまざまな [RoleEnvironment] の値にアクセスするための **XPath** 属性の値については、[こちら](cloud-services-role-config-xpath.md)を参照してください。
+Environment variables based on members of the RoleEnvironment class do not use the **value** attribute of the [Variable] element. Instead, the [RoleInstanceValue] child element, with the appropriate **XPath** attribute value, are used to create an environment variable based on a specific member of the [RoleEnvironment] class. Values for the **XPath** attribute to access various [RoleEnvironment] values can be found [here](cloud-services-role-config-xpath.md).
 
 
 
-たとえば、インスタンスがコンピューティング エミュレーターで実行しているときは "**true**"、クラウドで実行しているときは "**false**" になる環境変数を作成するには、次の [Variable] 要素と [RoleInstanceValue] 要素を使用します。
+For example, to create an environment variable that is "**true**" when the instance is running in the compute emulator, and "**false**" when running in the cloud, use the following [Variable] and [RoleInstanceValue] elements:
 
 ```xml
 <Startup>
@@ -148,10 +154,10 @@ RoleEnvironment クラスに基づく環境変数では、[Variable] 要素の *
 </Startup>
 ```
 
-## 次のステップ
-Cloud Service で[一般的なスタートアップ タスク](cloud-services-startup-tasks-common.md)を実行する方法を学習します。
+## <a name="next-steps"></a>Next steps
+Learn how to perform some [common startup tasks](cloud-services-startup-tasks-common.md) with your Cloud Service.
 
-クラウド サービスを[パッケージ化](cloud-services-model-and-package.md)します。
+[Package](cloud-services-model-and-package.md) your Cloud Service.  
 
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
@@ -163,4 +169,7 @@ Cloud Service で[一般的なスタートアップ タスク](cloud-services-st
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

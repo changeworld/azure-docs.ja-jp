@@ -1,200 +1,201 @@
 <properties
-	pageTitle="Xamarin.Forms アプリへのプッシュ通知の追加 | Microsoft Azure"
-	description="Azure サービスを使用して Xamarin.Forms アプリにマルチプラットフォーム プッシュ通知を送信する方法について説明します。"
-	services="app-service\mobile"
-	documentationCenter="xamarin"
-	authors="wesmc7777"
-	manager="dwrede"
-	editor=""/>
+    pageTitle="Add push notifications to your Xamarin.Forms app | Microsoft Azure"
+    description="Learn how to use Azure services to send multi-platform push notifications to your Xamarin.Forms apps."
+    services="app-service\mobile"
+    documentationCenter="xamarin"
+    authors="adrianhall"
+    manager="dwrede"
+    editor=""/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-xamarin"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="07/17/2016"
-	ms.author="wesmc"/>
+    ms.service="app-service-mobile"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-xamarin"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="adrianha"/>
 
-# Xamarin.Forms アプリにプッシュ通知を追加する
+
+# <a name="add-push-notifications-to-your-xamarin.forms-app"></a>Add push notifications to your Xamarin.Forms app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-##概要
+##<a name="overview"></a>Overview
 
-このチュートリアルでは、Azure サービスを使用して、各種ネイティブ デバイス プラットフォーム (Android、iOS、Windows) で実行されている Xamarin.Forms アプリにプッシュ通知を送信する方法について説明します。プッシュ通知は、Azure Notification Hubs を使用して Azure Mobile Apps バックエンドから送信されます。さまざまなプッシュ通知サービス (PNS) を使用して、どのプラットフォームで実行されているデバイスにも同じメッセージを送信できるように、テンプレート登録が使用されます。クロスプラットフォーム プッシュ通知の送信の詳細については、[Azure Notification Hubs](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) のドキュメントを参照してください。
+This tutorial shows you how to use Azure services to send push notifications to a Xamarin.Forms apps running on the various native device platforms, Android, iOS and Windows. The push notifications are sent from an Azure Mobile Apps backend using Azure Notification Hubs. Template registrations are used so that the same message can be sent to devices running on all platforms using the various push notification services (PNS). For more information about sending cross-platform push notifications, see the [Azure Notification Hubs](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) documentation. 
 
-対象の Xamarin.Forms アプリでサポートされているすべてのプロジェクトにプッシュ通知を追加します。レコードがバックエンドに挿入されるたびに、プッシュ通知が送信されます。
+You add push notifications to every project that your Xamarin.Forms app supports. Every time a record is inserted in the backend, a push notification is sent.
 
-##前提条件
+##<a name="prerequisites"></a>Prerequisites
 
-このチュートリアルで最善の結果が得られるように、最初にチュートリアル「[Xamarin.Forms アプリの作成](app-service-mobile-xamarin-forms-get-started.md)」を完了しておくことをお勧めします。このチュートリアルを完了すると、マルチプラットフォーム TodoList アプリである Xamarin.Forms プロジェクトを作成できます。
+For the best result with this tutorial, we recommend that you first complete the [Create a Xamarin.Forms app](app-service-mobile-xamarin-forms-get-started.md) tutorial. After you complete this tutorial, you will have a Xamarin.Forms project that is a multi-platform TodoList app. 
 
-ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+If you do not use the downloaded quick start server project, you must add the push notification extension package to your project. For more information about server extension packages, see [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-プッシュ通知を iOS デバイスに送信するには、[Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)が必要です。また、[iOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、物理的な iOS デバイスを使用する必要があります。
+Sending push notifications to iOS devices requires [Apple Developer Program membership](https://developer.apple.com/programs/ios/). Also, you must use a physical iOS device because the [iOS simulator does not support push notifications](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
 
-##<a name="create-hub"></a>通知ハブを作成する
+##<a name="<a-name="create-hub"></a>create-a-notification-hub"></a><a name="create-hub"></a>Create a Notification Hub
 
 [AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
 
-##プッシュ通知を送信するようにサーバー プロジェクトを更新する
+##<a name="update-the-server-project-to-send-push-notifications"></a>Update the server project to send push notifications
 
 [AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
 
-##(省略可能) Android プロジェクトを構成して実行する
+##<a name="(optional)-configure-and-run-the-android-project"></a>(Optional) Configure and run the Android project
 
-このセクションを完了すると、Android 用の Xamarin.Forms Droid プロジェクトのプッシュ通知を有効にすることができます。
+Complete this section to enable push notifications for the Xamarin.Forms Droid project for Android.
 
 
-###Google Cloud Messaging (GCM) を有効にする
+###<a name="enable-google-cloud-messaging-(gcm)"></a>Enable Google Cloud Messaging (GCM)
 
 [AZURE.INCLUDE [mobile-services-enable-google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-###GCM を使用してプッシュ要求を送信するようにモバイル アプリ バックエンドを構成する
+###<a name="configure-the-mobile-app-backend-to-send-push-requests-using-gcm"></a>Configure the Mobile App backend to send push requests using GCM
 
 [AZURE.INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
-###Android プロジェクトにプッシュ通知を追加する
+###<a name="add-push-notifications-to-the-android-project"></a>Add push notifications to the Android project
 
-Google Cloud Messaging (GCM) を使用するようにバックエンドが構成されている場合は、GCM へのアプリの登録、モバイル アプリ バックエンドを介した Azure Notification Hubs によるプッシュ通知へのアプリの登録、アプリによる通知の受信を可能にするコンポーネントとコードをクライアントに追加できます。
+With the backend configured to use Google Cloud Messaging (GCM), we can add the components and the code to the client that enables the app to register with GCM, register for push notifications with Azure Notification Hubs through the mobile app backend, and receive notifications.
 
-1. **Droid** プロジェクトで **Components** フォルダーを右クリックし、**[Get More Components... (その他のコンポーネントを取得...)]** をクリックします。**Google Cloud Messaging Client** コンポーネントを検索し、それをプロジェクトに追加します。このコンポーネントは、Xamarin Android プロジェクトのプッシュ通知をサポートします。
-
-
-2. MainActivity.cs プロジェクト ファイルを開き、次の using ステートメントをファイルの先頭に追加します。
-
-		using Gcm.Client;
-
-3. **LoadApplication** の呼び出し後、次のコードを **OnCreate** メソッドに追加します。
-
-	    try
-	    {
-	        // Check to ensure everything's setup right
-	        GcmClient.CheckDevice(this);
-	        GcmClient.CheckManifest(this);
-
-	        // Register for push notifications
-	        System.Diagnostics.Debug.WriteLine("Registering...");
-	        GcmClient.Register(this, PushHandlerBroadcastReceiver.SENDER_IDS);
-	    }
-	    catch (Java.Net.MalformedURLException)
-	    {
-	        CreateAndShowDialog("There was an error creating the client. Verify the URL.", "Error");
-	    }
-	    catch (Exception e)
-	    {
-	        CreateAndShowDialog(e.Message, "Error");
-	    }
+1. In the **Droid** project, right-click the **Components** folder, click **Get More Components...**, search for the **Google Cloud Messaging Client** component and add it to the project. This component supports push notifications for a Xamarin Android project.
 
 
-4. 次のように、新しい **CreateAndShowDialog** ヘルパーを追加します。
+2. Open the MainActivity.cs project file and add the following using statement at the top of the file:
 
-		private void CreateAndShowDialog(String message, String title)
-		{
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        using Gcm.Client;
 
-			builder.SetMessage (message);
-			builder.SetTitle (title);
-			builder.Create().Show ();
-		}
+3. Add the following code to the **OnCreate** method after the call to **LoadApplication**:
 
+        try
+        {
+            // Check to ensure everything's setup right
+            GcmClient.CheckDevice(this);
+            GcmClient.CheckManifest(this);
 
-5. **MainActivity** クラスに次のコードを追加します。
-
-		// Create a new instance field for this activity.
-		static MainActivity instance = null;
-
-		// Return the current activity instance.
-		public static MainActivity CurrentActivity
-		{
-		    get
-		    {
-		        return instance;
-		    }
-		}
-
-	これにより、現在の **MainActivity** インスタンスが公開され、メイン UI スレッドで実行できるようになります。
-
-6. **OnCreate** メソッドの先頭にある変数 `instance` を次のように初期化します。
-
-		// Set the current instance of MainActivity.
-		instance = this;
-
-2. `GcmService.cs` という名前の **Droid** プロジェクトに新しいクラス ファイルを追加します。次の **using** ステートメントはファイルの先頭に配置してください。
-
-		using Android.App;
-		using Android.Content;
-		using Android.Media;
-		using Android.Support.V4.App;
-		using Android.Util;
-		using Gcm.Client;
-		using Microsoft.WindowsAzure.MobileServices;
-		using Newtonsoft.Json.Linq;
-		using System;
-		using System.Collections.Generic;
-		using System.Diagnostics;
-		using System.Text;
+            // Register for push notifications
+            System.Diagnostics.Debug.WriteLine("Registering...");
+            GcmClient.Register(this, PushHandlerBroadcastReceiver.SENDER_IDS);
+        }
+        catch (Java.Net.MalformedURLException)
+        {
+            CreateAndShowDialog("There was an error creating the client. Verify the URL.", "Error");
+        }
+        catch (Exception e)
+        {
+            CreateAndShowDialog(e.Message, "Error");
+        }
 
 
-9. ファイルの先頭の **using** ステートメントと **namespace** 宣言の間に、次のアクセス許可要求を追加します。
+4. Add a new **CreateAndShowDialog** helper method, as follows:
 
-		[assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-		[assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
-		[assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
-		[assembly: UsesPermission(Name = "android.permission.INTERNET")]
-		[assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-		//GET_ACCOUNTS is only needed for android versions 4.0.3 and below
-		[assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
+        private void CreateAndShowDialog(String message, String title)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-10. 名前空間に次のクラス定義を追加します。
-
-		[BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
-		[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "@PACKAGE_NAME@" })]
-		[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "@PACKAGE_NAME@" })]
-		[IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "@PACKAGE_NAME@" })]
-		public class PushHandlerBroadcastReceiver : GcmBroadcastReceiverBase<GcmService>
-		{
-		    public static string[] SENDER_IDS = new string[] { "<PROJECT_NUMBER>" };
-		}
-
-	>[AZURE.NOTE]**<PROJECT\_NUMBER>** を、前にメモしたプロジェクト番号に置き換えます。
-
-11. 空の **GcmService** クラスを、新しいブロードキャスト レシーバーを使用する次のコードに置き換えます。
-
-		 [Service]
-		 public class GcmService : GcmServiceBase
-		 {
-		     public static string RegistrationID { get; private set; }
-
-		     public GcmService()
-		         : base(PushHandlerBroadcastReceiver.SENDER_IDS){}
-		 }
+            builder.SetMessage (message);
+            builder.SetTitle (title);
+            builder.Create().Show ();
+        }
 
 
-12. **OnRegistered** イベント ハンドラーをオーバーライドし、**Register** メソッドを実装する次のコードを **GcmService** クラスに追加します。
+5. Add the following code to the **MainActivity** class:
 
-		protected override void OnRegistered(Context context, string registrationId)
-		{
-		    Log.Verbose("PushHandlerBroadcastReceiver", "GCM Registered: " + registrationId);
-		    RegistrationID = registrationId;
+        // Create a new instance field for this activity.
+        static MainActivity instance = null;
+
+        // Return the current activity instance.
+        public static MainActivity CurrentActivity
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+    This exposes the current **MainActivity** instance so we can execute on the main UI thread.
+
+6. Initialize the `instance`, variable at the beginning of the **OnCreate** method, as follows.
+
+        // Set the current instance of MainActivity.
+        instance = this;
+
+2. Add a new class file to the **Droid** project named `GcmService.cs`, and make sure the following **using** statements are present at the top of the file:
+
+        using Android.App;
+        using Android.Content;
+        using Android.Media;
+        using Android.Support.V4.App;
+        using Android.Util;
+        using Gcm.Client;
+        using Microsoft.WindowsAzure.MobileServices;
+        using Newtonsoft.Json.Linq;
+        using System;
+        using System.Collections.Generic;
+        using System.Diagnostics;
+        using System.Text;
+
+
+9. Add the following permission requests at the top of the file, after the **using** statements and before the **namespace** declaration.
+
+        [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
+        [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
+        [assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
+        [assembly: UsesPermission(Name = "android.permission.INTERNET")]
+        [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
+        //GET_ACCOUNTS is only needed for android versions 4.0.3 and below
+        [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
+
+10. Add the following class definition to the namespace. 
+
+        [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
+        [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new string[] { "@PACKAGE_NAME@" })]
+        [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories = new string[] { "@PACKAGE_NAME@" })]
+        [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories = new string[] { "@PACKAGE_NAME@" })]
+        public class PushHandlerBroadcastReceiver : GcmBroadcastReceiverBase<GcmService>
+        {
+            public static string[] SENDER_IDS = new string[] { "<PROJECT_NUMBER>" };
+        }
+
+    >[AZURE.NOTE]Replace **<PROJECT_NUMBER>** with your project number you noted earlier.   
+
+11. Replace the empty **GcmService** class with the following code, which uses the new broadcast receiver:
+
+         [Service]
+         public class GcmService : GcmServiceBase
+         {
+             public static string RegistrationID { get; private set; }
+
+             public GcmService()
+                 : base(PushHandlerBroadcastReceiver.SENDER_IDS){}
+         }
+
+
+12. Add the following code to the **GcmService** class that overrides the **OnRegistered** event handler and implements a **Register** method.
+
+        protected override void OnRegistered(Context context, string registrationId)
+        {
+            Log.Verbose("PushHandlerBroadcastReceiver", "GCM Registered: " + registrationId);
+            RegistrationID = registrationId;
 
             var push = TodoItemManager.DefaultManager.CurrentClient.GetPush();
 
-		    MainActivity.CurrentActivity.RunOnUiThread(() => Register(push, null));
-		}
+            MainActivity.CurrentActivity.RunOnUiThread(() => Register(push, null));
+        }
 
         public async void Register(Microsoft.WindowsAzure.MobileServices.Push push, IEnumerable<string> tags)
         {
             try
             {
-                const string templateBodyGCM = "{"data":{"message":"$(messageParam)"}}";
+                const string templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
 
                 JObject templates = new JObject();
                 templates["genericMessage"] = new JObject
                 {
-                	{"body", templateBodyGCM}
+                    {"body", templateBodyGCM}
                 };
 
                 await push.RegisterAsync(RegistrationID, templates);
@@ -207,44 +208,44 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
             }
         }
 
-		Note that this code uses the `messageParam` parameter in the template registration. 
+        Note that this code uses the `messageParam` parameter in the template registration. 
 
-13. **OnMessage** を実装する次のコードを追加します。
+13. Add the following code that implements **OnMessage**: 
 
-		protected override void OnMessage(Context context, Intent intent)
-		{
-		    Log.Info("PushHandlerBroadcastReceiver", "GCM Message Received!");
+        protected override void OnMessage(Context context, Intent intent)
+        {
+            Log.Info("PushHandlerBroadcastReceiver", "GCM Message Received!");
 
-		    var msg = new StringBuilder();
+            var msg = new StringBuilder();
 
-		    if (intent != null && intent.Extras != null)
-		    {
-		        foreach (var key in intent.Extras.KeySet())
-		            msg.AppendLine(key + "=" + intent.Extras.Get(key).ToString());
-		    }
+            if (intent != null && intent.Extras != null)
+            {
+                foreach (var key in intent.Extras.KeySet())
+                    msg.AppendLine(key + "=" + intent.Extras.Get(key).ToString());
+            }
 
-		    //Store the message
-		    var prefs = GetSharedPreferences(context.PackageName, FileCreationMode.Private);
-		    var edit = prefs.Edit();
-		    edit.PutString("last_msg", msg.ToString());
-		    edit.Commit();
+            //Store the message
+            var prefs = GetSharedPreferences(context.PackageName, FileCreationMode.Private);
+            var edit = prefs.Edit();
+            edit.PutString("last_msg", msg.ToString());
+            edit.Commit();
 
-		    string message = intent.Extras.GetString("message");
-		    if (!string.IsNullOrEmpty(message))
-		    {
-		        createNotification("New todo item!", "Todo item: " + message);
-		        return;
-		    }
+            string message = intent.Extras.GetString("message");
+            if (!string.IsNullOrEmpty(message))
+            {
+                createNotification("New todo item!", "Todo item: " + message);
+                return;
+            }
 
-		    string msg2 = intent.Extras.GetString("msg");
-		    if (!string.IsNullOrEmpty(msg2))
-		    {
-		        createNotification("New hub message!", msg2);
-		        return;
-		    }
+            string msg2 = intent.Extras.GetString("msg");
+            if (!string.IsNullOrEmpty(msg2))
+            {
+                createNotification("New hub message!", msg2);
+                return;
+            }
 
-		    createNotification("Unknown message details", msg.ToString());
-		}
+            createNotification("Unknown message details", msg.ToString());
+        }
 
         void createNotification(string title, string desc)
         {
@@ -276,70 +277,70 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
             notificationManager.Notify(1, notification);
         }
 
-	これにより、受信した通知が処理され、表示される通知マネージャーに送信されます。
+    This handles incoming notifications and send them to the notification manager to be displayed.
 
-14. また、**GcmServiceBase** では、**OnUnRegistered** および **OnError** ハンドラー メソッドを実装する必要があります。これらは、次のように実装できます。
+14. **GcmServiceBase** also requires you to implement the **OnUnRegistered** and **OnError** handler methods, which you can do as follows:
 
-		protected override void OnUnRegistered(Context context, string registrationId)
-		{
-			Log.Error("PushHandlerBroadcastReceiver", "Unregistered RegisterationId : " + registrationId);
-		}
+        protected override void OnUnRegistered(Context context, string registrationId)
+        {
+            Log.Error("PushHandlerBroadcastReceiver", "Unregistered RegisterationId : " + registrationId);
+        }
 
-		protected override void OnError(Context context, string errorId)
-		{
-			Log.Error("PushHandlerBroadcastReceiver", "GCM Error: " + errorId);
-		}
+        protected override void OnError(Context context, string errorId)
+        {
+            Log.Error("PushHandlerBroadcastReceiver", "GCM Error: " + errorId);
+        }
 
-これで、Android デバイスまたはエミュレーターで実行されているアプリでプッシュ通知をテストする準備が整いました。
+Now, you are ready test push notifications in the app running on an Android device or the emulator.
 
-###Android アプリでプッシュ通知をテストする
+###<a name="test-push-notifications-in-your-android-app"></a>Test push notifications in your Android app
 
-最初の 2 つの手順は、エミュレーターでテストする場合にのみ必要です。
+The first two steps are required only when testing on an emulator.
 
-1. 次に示すように Android Virtual Device (AVD) Manager で Google API がターゲットとして設定された仮想デバイスに対してデプロイまたはデバッグする必要があります。
+1. Make sure that you are deploying to or debugging on a virtual device that has Google APIs set as the target, as shown below in the Android Virtual Device (AVD) manager.
 
-2. **[Apps]**、**[Settings]**、**[Add account]** の順にクリックして、Google アカウントを Android デバイスに追加し、プロンプトに従って既存の Google アカウントをデバイスに追加し、新しいアカウントを作成します。
+2. Add a Google account to the Android device by clicking **Apps** > **Settings** > **Add account**, then follow the prompts to use add an existing Google account to the device to create a new one.
 
-1. Visual Studio または Xamarin Studio で、**Droid** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. In Visual Studio or Xamarin Studio, right click the **Droid** project and click **Set as startup project**.
 
-2. **[実行]** をクリックしてプロジェクトをビルドし、Android デバイスまたはエミュレーターでアプリを開始します。
+2. Press the **Run** button to build the project and start the app on your Android device or emulator.
 
-3. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
+3. In the app, type a task, and then click the plus (**+**) icon.
 
-4. 項目が追加されたときに、通知が受信されていることを確認します。
+4. Verify that a notification is received when an item is added.
 
 
-##(省略可能) iOS プロジェクトを構成して実行する
+##<a name="(optional)-configure-and-run-the-ios-project"></a>(Optional) Configure and run the iOS project
 
-このセクションでは、iOS デバイス用の Xamarin iOS プロジェクトを実行します。iOS デバイスを使用していない場合は、このセクションを省略できます。
+This section is for running the Xamarin iOS project for iOS devices. You can skip this section if you are not working with iOS devices.
 
 [AZURE.INCLUDE [notification-hubs-xamarin-enable-apple-push-notifications](../../includes/notification-hubs-xamarin-enable-apple-push-notifications.md)]
 
 
-####APNS 用に通知ハブを構成する
+####<a name="configure-the-notification-hub-for-apns"></a>Configure the notification hub for APNS
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。**[参照]**、**[Mobile Apps]**、作成したモバイル アプリ、**[設定]**、**[プッシュ]**、**[Apple (APNS)]**、**[証明書のアップロード]** の順にクリックします。以前にエクスポートした .p12 プッシュ証明書ファイルをアップロードします。開発とテスト用に開発プッシュ証明書を作成した場合は、**[サンドボックス]** を選択します。それ以外の場合は、**[運用]** を選択します。これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
+1. Log into the [Azure portal](https://portal.azure.com/). Click **Browse** > **Mobile Apps** > your Mobile App > **Settings** > **Push** > **Apple (APNS)** > **Upload Certificate**. Upload the .p12 push certificate file you exported earlier.  Make sure to select **Sandbox** if you created a development push certificate for development and testing.  Otherwise, choose **Production**. Your service is now configured to work with push notifications for iOS.
 
-	![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-upload-apns-cert.png)
+    ![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-upload-apns-cert.png)
 
 
-	次に、Xamarin Studio または Visual Studio で iOS のプロジェクト設定を構成します。
+    Next you will configure the iOS project setting in Xamarin Studio or Visual Studio.
 
 [AZURE.INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
 
-####iOS アプリへのプッシュ通知の追加
+####<a name="add-push-notifications-to-your-ios-app"></a>Add push notifications to your iOS app
 
-1. **iOS** プロジェクトで AppDelegate.cs を開き、次の **using** ステートメントをコード ファイルの先頭に追加します。
+1. In the **iOS** project, open AppDelegate.cs add the following **using** statement to the top of the code file.
 
         using Newtonsoft.Json.Linq;
 
-4. **AppDelegate** クラスで、通知に登録するために **RegisteredForRemoteNotifications** イベントのオーバーライドを追加します。
+4. In the **AppDelegate** class, add an override for the **RegisteredForRemoteNotifications** event to register for notifications:
 
         public override void RegisteredForRemoteNotifications(UIApplication application, 
-			NSData deviceToken)
+            NSData deviceToken)
         {
-            const string templateBodyAPNS = "{"aps":{"alert":"$(messageParam)"}}";
+            const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(messageParam)\"}}";
 
             JObject templates = new JObject();
             templates["genericMessage"] = new JObject
@@ -352,10 +353,10 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
             push.RegisterAsync(deviceToken, templates);
         }
 
-5. **AppDelegate** に次の **DidReceivedRemoteNotification** イベント ハンドラーのオーバーライドも追加します。
+5. In **AppDelegate**, also add the following override for the **DidReceivedRemoteNotification** event handler:
 
         public override void DidReceiveRemoteNotification(UIApplication application, 
-			NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+            NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
             NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
 
@@ -371,9 +372,9 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
             }
         }
 
-	このメソッドは、アプリの実行中に受信した通知を処理します。
+    This method handles incoming notifications while the app is running.
 
-2. **AppDelegate** クラスの **FinishedLaunching** メソッドに次のコードを追加します。
+2. In the **AppDelegate** class, add the following code to the **FinishedLaunching** method: 
 
         // Register for push notifications.
         var settings = UIUserNotificationSettings.GetSettingsForTypes(
@@ -385,52 +386,52 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
         UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
         UIApplication.SharedApplication.RegisterForRemoteNotifications();
 
-	これによってリモート通知のサポートが有効になり、プッシュ登録の要求が行われます。
+    This enables support for remote notifications and requests push registration.
 
-これで、アプリケーションがプッシュ通知をサポートするように更新されました。
+Your app is now updated to support push notifications.
 
-####iOS アプリでプッシュ通知をテストする
+####<a name="test-push-notifications-in-your-ios-app"></a>Test push notifications in your iOS app
 
-1. iOS プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. Right click the iOS project, and click **Set as StartPp Project**.
 
-2. Visual Studio で **[実行]** または **F5** キーを押してプロジェクトをビルドし、iOS デバイスでアプリを起動します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+2. Press the **Run** button or **F5** in Visual Studio to build the project and start the app in an iOS device, then click **OK** to accept push notifications.
 
-	> [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
+    > [AZURE.NOTE] You must explicitly accept push notifications from your app. This request only occurs the first time that the app runs.
 
-3. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
+3. In the app, type a task, and then click the plus (**+**) icon.
 
-4. 通知が受信されたことを確認し、**[OK]** をクリックして通知を破棄します。
-
-
-##(省略可能) Windows プロジェクトを構成して実行する
-
-このセクションでは、Windows デバイス用の Xamarin.Forms WinApp プロジェクトと Xamarin.Forms WinPhone81 プロジェクトを実行します。次の手順では、ユニバーサル Windows プラットフォーム (UWP) プロジェクトもサポートされています。Windows デバイスを使用していない場合は、このセクションを省略できます。
+4. Verify that a notification is received, then click **OK** to dismiss the notification.
 
 
-####WNS を使用して Windows アプリをプッシュ通知に登録する
+##<a name="(optional)-configure-and-run-the-windows-projects"></a>(Optional) Configure and run the Windows projects
+
+This section is for running the Xamarin.Forms WinApp and WinPhone81 projects for Windows devices. These steps also support Universal Windows Platform (UWP) projects. You can skip this section if you are not working with Windows devices.
+
+
+####<a name="register-your-windows-app-for-push-notifications-with-wns"></a>Register your Windows app for push notifications with WNS
 
 [AZURE.INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
 
-####WNS 用に通知ハブを構成する
+####<a name="configure-the-notification-hub-for-wns"></a>Configure the notification hub for WNS
 
 [AZURE.INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
 
-####Windows アプリにプッシュ通知を追加する
+####<a name="add-push-notifications-to-your-windows-app"></a>Add push notifications to your Windows app
 
-1. Visual Studio の Windows プロジェクトで **App.xaml.cs** を開き、次の **using** ステートメントを追加します。
+1. In Visual Studio, open **App.xaml.cs** in a Windows project and add the following **using** statements.
 
-		using Newtonsoft.Json.Linq;
-		using Microsoft.WindowsAzure.MobileServices;
-		using System.Threading.Tasks;
-		using Windows.Networking.PushNotifications;
-		using <your_TodoItemManager_portable_class_namespace>;
+        using Newtonsoft.Json.Linq;
+        using Microsoft.WindowsAzure.MobileServices;
+        using System.Threading.Tasks;
+        using Windows.Networking.PushNotifications;
+        using <your_TodoItemManager_portable_class_namespace>;
 
-	`<your_TodoItemManager_portable_class_namespace>` を、`TodoItemManager` クラスが含まれているポータブル プロジェクトの名前空間に置き換えます。
+    Replace `<your_TodoItemManager_portable_class_namespace>` with namespace of your portable project that contains the `TodoItemManager` class.
  
 
-2. App.xaml.cs で、次の **InitNotificationsAsync** メソッドを追加します。
+2. In App.xaml.cs add the following **InitNotificationsAsync** method: 
 
         private async Task InitNotificationsAsync()
         {
@@ -438,58 +439,62 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
                 .CreatePushNotificationChannelForApplicationAsync();
 
             const string templateBodyWNS = 
-				"<toast><visual><binding template="ToastText01"><text id="1">$(messageParam)</text></binding></visual></toast>";
+                "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(messageParam)</text></binding></visual></toast>";
 
             JObject headers = new JObject();
             headers["X-WNS-Type"] = "wns/toast";
 
             JObject templates = new JObject();
             templates["genericMessage"] = new JObject
-			{
-				{"body", templateBodyWNS},
-				{"headers", headers} // Needed for WNS.
-			};
+            {
+                {"body", templateBodyWNS},
+                {"headers", headers} // Needed for WNS.
+            };
 
             await TodoItemManager.DefaultManager.CurrentClient.GetPush()
-				.RegisterAsync(channel.Uri, templates);
+                .RegisterAsync(channel.Uri, templates);
         }
 
-	このメソッドによって、プッシュ通知チャネルが取得され、対象の通知ハブからテンプレート通知を受け取るためのテンプレートが登録されます。*messageParam* をサポートするテンプレート通知がこのクライアントに配信されるようになります。
+    This method gets the push notification channel and registers a template to receive template notifications from your notification hub. A template notification that supports *messageParam* will be delivered to this client.
 
-3. App.xaml.cs で、`async` 修飾子を追加して **OnLaunched** イベント ハンドラー メソッドの定義を更新します。その後で、メソッドの末尾に次のコード行を追加します。
+3. In App.xaml.cs, update the **OnLaunched** event handler method definition by adding the `async` modifier, then add the following line of code at the end of the method: 
 
         await InitNotificationsAsync();
 
-	これにより、アプリの起動時に毎回プッシュ通知登録が作成または更新されるようになります。これを行うことは、WNS プッシュ チャネルが常にアクティブであることを保証するために重要です。
+    This makes sure that the push notification registration is created or refreshed every time the app is launched. It's important to do this to guarantee that the WNS push channel is always active.  
 
-4. Visual Studio のソリューション エクスプローラーで、**Package.appxmanifest** ファイルを開き、**[通知]** で **[トースト対応]** を **[はい]** に設定します。
+4. In Solution Explorer for Visual Studio, open the **Package.appxmanifest** file and set **Toast Capable** to **Yes** under **Notifications**.
 
-5. アプリをビルドし、エラーがないことを確認します。これで、クライアント アプリケーションが、モバイル アプリ バックエンドから送信されるテンプレート通知に登録されました。ソリューションのすべての Windows プロジェクトについて、このセクションを繰り返します。
+5. Build the app and verify you have no errors.  You client app should now register for the template notifications from the Mobile App backend. Repeat this section for every Windows project in your solution.
 
 
-####Windows アプリでプッシュ通知をテストする
+####<a name="test-push-notifications-in-your-windows-app"></a>Test push notifications in your Windows app
 
-1. Visual Studio で、Windows プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
+1. In Visual Studio, right click a Windows project and click **Set as startup project**.
 
-2. **[実行]** ボタンを押してプロジェクトをビルドし、アプリケーションを開始します。
+2. Press the **Run** button to build the project and start the app.
 
-3. アプリで新しい todoitem の名前を入力し、プラス (**+**) アイコンをクリックして追加します。
+3. In the app, type a name for a new todoitem, and then click the plus (**+**) icon to add it.
 
-4. 項目が追加されたときに、通知が受信されていることを確認します。
+4. Verify that a notification is received when the item is added.
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-プッシュ通知についてさらに学習します。
+Learn more about push notifications:
 
-* [Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags) タグを利用して、プッシュ通知の対象となる顧客を絞り込むことができます。この記事では、タグをデバイス インストールに追加する方法について確認します。
+* [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-add-tags-to-a-device-installation-to-enable-push-to-tags)  
+Tags allow you to target segmented customers with pushes.  Learn how to add tags to a device installation.
 
-* [プッシュ通知の問題の診断](../notification-hubs/notification-hubs-push-notification-fixer.md) 通知が破棄されたり、デバイスに届かなかったりするのにはさまざまな原因があります。このトピックでは、プッシュ通知のエラーの根本原因を分析、解明する方法について説明しています。
+* [Diagnose push notification issues](../notification-hubs/notification-hubs-push-notification-fixer.md)  
+There are various reasons why notifications may get dropped or do not end up on devices. This topic shows you how to analyze and figure out the root cause of push notification failures. 
 
-次のチュートリアルのいずれかに進むことを検討してください。
+Consider continuing on to one of the following tutorials:
 
-* [アプリへの認証の追加](app-service-mobile-xamarin-forms-get-started-users.md) ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
+* [Add authentication to your app ](app-service-mobile-xamarin-forms-get-started-users.md)  
+Learn how to authenticate users of your app with an identity provider.
 
-* [アプリのオフライン同期の有効化](app-service-mobile-xamarin-forms-get-started-offline-data.md) モバイル アプリ バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。
+* [Enable offline sync for your app](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
+  Learn how to add offline support your app using an Mobile App backend. Offline sync allows end-users to interact with a mobile app&mdash;viewing, adding, or modifying data&mdash;even when there is no network connection.
 
 <!-- Images. -->
 
@@ -498,4 +503,9 @@ Google Cloud Messaging (GCM) を使用するようにバックエンドが構成
 [Xcode]: https://go.microsoft.com/fwLink/?LinkID=266532
 [apns object]: http://go.microsoft.com/fwlink/p/?LinkId=272333
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

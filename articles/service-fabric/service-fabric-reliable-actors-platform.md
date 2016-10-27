@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric の高信頼アクター | Microsoft Azure"
-   description="Reliable Actors と Reliable Services の階層的な関係と、Reliable Actors による Service Fabric プラットフォームの機能の使用方法について説明します。"
+   pageTitle="Reliable Actors on Service Fabric | Microsoft Azure"
+   description="Describes how Reliable Actors are layered on Reliable Services and use the features of the Service Fabric platform."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,37 +13,38 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/06/2016"
+   ms.date="10/19/2016"
    ms.author="vturecek"/>
 
-# 高信頼アクターの Service Fabric プラットフォームの使用方法
 
-この記事では、Reliable Actors による Service Fabric プラットフォームの使用方法について説明します。Reliable Actors は、*アクター サービス*と呼ばれるステートフル リライアブル サービスの実装にホストされるフレームワークで実行されます。アクター サービスには、アクターのライフサイクルとメッセージ ディスパッチを管理するうえで必要なコンポーネントがすべて含まれています。
+# <a name="how-reliable-actors-use-the-service-fabric-platform"></a>How Reliable Actors use the Service Fabric platform
 
- - アクター ランタイムはライフサイクルとガベージ コレクションを管理し、シングルスレッドのアクセスを強制します。
- - アクター サービス リモート処理リスナーはアクターに対するリモート アクセス呼び出しを受け取り、ディスパッチャに送信して、適切なアクター インスタンスにルーティングします。
- - アクター状態プロバイダーは各種状態プロバイダー (Reliable Collections 状態プロバイダーなど) をラップし、アクターの状態管理のためのアダプターを提供します。
+This article explains how Reliable Actors work on the Service Fabric platform. Reliable Actors run in a framework that is hosted in an implementation of a stateful Reliable Service called the *Actor Service*. The Actor Service contains all the components necessary to manage the lifecycle and message dispatching for your actors:
 
-これらのコンポーネントで Reliable Actors フレームワークが構成されます。
+ - The Actor Runtime manages lifecycle, garbage collection, and enforces single-threaded access.
+ - An actor service remoting listener accepts remote access calls to actors and sends them to a dispatcher to route to the appropriate actor instance.
+ - The Actor State Provider wraps state providers (such as the Reliable Collections state provider) and provides an adapter for actor state management.
 
-## サービスのレイヤー
+These components together form the Reliable Actor framework. 
 
-アクター サービス自体はリライアブル サービスであるため、Reliable Services の[アプリケーション モデル](service-fabric-application-model.md)、ライフサイクル、[パッケージング](service-fabric-application-model.md#package-an-application)、[デプロイ](service-fabric-deploy-remove-applications.md#deploy-an-application)、アップグレード、スケールの概念は、いずれもアクター サービスに当てはまります。
+## <a name="service-layering"></a>Service Layering
+
+Because the Actor Service itself is a Reliable Service, all of the [application model](service-fabric-application-model.md), lifecycle, [packaging](service-fabric-application-model.md#package-an-application), [deployment]((service-fabric-deploy-remove-applications.md#deploy-an-application), upgrade, and scaling concepts of Reliable Services apply the same way to Actor services. 
 
 ![Actor Service layering][1]
 
-上記の図は、Service Fabric アプリケーション フレームワークとユーザー コードの関係を示しています。青色の要素は Reliable Services アプリケーション フレームワークを表しています。また、オレンジ色の要素は Reliable Actors フレームワークを表し、緑色の要素はユーザー コードを表しています。
+The diagram above shows the relationship between the Service Fabric application frameworks and user code. Blue elements represent the Reliable Services application framework, orange represents the Reliable Actor framework, and green represents user code. 
 
 
-Reliable Services では、サービスは `StatefulService` クラスを継承します。これは、`StatefulServiceBase` (ステートレス サービスの場合は `StatelessService`) から派生したものです 。Reliable Actors では、アクターが実行されるアクター パターンを実装する `StatefulServiceBase` クラスの別の実装であるアクター サービスを使用します。アクター サービス自体は `StatefulServiceBase` の実装にすぎないため、`StatefulService` を継承したときと同様に、`ActorService` から派生した独自のサービスを記述し、サービスレベルの機能を実装できます。次にその例を示します。
+In Reliable Services, your service inherits the `StatefulService` class, which itself is derived from `StatefulServiceBase`. (or `StatelessService` for stateless services). In Reliable Actors, you use the Actor Service which is a different implementation of the `StatefulServiceBase` class that implements the actor pattern where your actors execute. Since the Actor Service itself is just an implementation of `StatefulServiceBase`, you can write your own service that derives from `ActorService` and implement service-level features the same way you would when inheriting `StatefulService`, such as:
 
- - サービスのバックアップと復元。
- - すべてのアクターで共有される機能 (サーキット ブレーカーなど)。
- - 個別のアクターだけでなく、アクター サービス自体でのリモート処理プロシージャの呼び出し。
+ - Service back-up and restore.
+ - Shared functionality for all Actors, for example, a circuit-breaker.
+ - Remoting procedure calls on the actor service itself, as well as on each individual actor. 
 
-### アクター サービスの使用
+### <a name="using-the-actor-service"></a>Using the Actor Service
 
-アクター インスタンスは、それが実行されるアクター サービスにアクセスできます。アクター インスタンスは、アクター サービスを通じて、パーティション ID、サービス名、アプリケーション名、その他 Service Fabric プラットフォームに固有の情報を含むサービス コンテキストをプログラムで取得できます。
+Actor instances have access to the Actor Service in which they are executing. Through the Actor Service, actor instances can programmatically obtain the Service Context which has the partition ID, service name, application name, and other Service Fabric platform-specific information:
 
 ```csharp
 Task MyActorMethod()
@@ -55,7 +56,7 @@ Task MyActorMethod()
 }
 ```
 
-アクター サービスは、すべての Reliable Services と同様に、Service Fabric ランタイムのサービスの種類に登録する必要があります。アクター サービスでアクター インスタンスを実行するには、アクターの種類もアクター サービスに登録する必要があります。`ActorRuntime` 登録メソッドは、アクターに対してこの処理を実行します。最も単純なケースでは、単にアクターの種類を登録するだけでかまいません。そうすれば、既定の設定のアクター サービスが暗黙的に使用されます。
+Like all Reliable Services, the Actor Service must be registered with a service type in the Service Fabric runtime. In order for the Actor Service to run your actor instances, your actor type must also be registered with the Actor Service. The `ActorRuntime` registration method performs this work for actors. In the simplest case, you can just register your actor type, and the Actor Service with default settings will implicitly be used:
 
 ```csharp
 static class Program
@@ -69,7 +70,7 @@ static class Program
 }
 ```  
 
-また、登録メソッドによって提供されるラムダを使ってアクター サービスを自分で構築することもできます。この場合は、アクター サービスを構成し、アクター インスタンスを明示的に構築できます。そのため、コンストラクターを通じてアクターに依存関係を挿入できます。
+Alternatively, you can use a lambda provided by the registration method to construct the Actor Service yourself. This allows you to configure the Actor Service as well as explicitly construct your actor instances, where you can inject dependencies to your actor through its constructor:
 
 ```csharp
 static class Program
@@ -85,14 +86,14 @@ static class Program
 }
 ```
 
-### アクター サービスのメソッド
+### <a name="actor-service-methods"></a>Actor Service methods
 
-アクター サービスは `IActorService` を実装し、それが `IService` を実装します。これは、Reliable Services リモート処理によって使用されるインターフェイスであり、サービス メソッドでのリモート プロシージャ呼び出しを可能にします。これには、サービスのリモート処理によってリモートで呼び出すことのできるサービスレベルのメソッドが含まれます。
+The Actor Service implements `IActorService` which in turn implements `IService`. This is the interface used by Reliable Services remoting, which allows remote procedure calls on service methods. It contains service-level methods that can be called remotely using service remoting.
 
 
-#### アクターの列挙
+#### <a name="enumerating-actors"></a>Enumerating actors
 
-アクター サービスにより、クライアントは、サービスによってホストされるアクターのメタデータを列挙できます。アクター サービスはパーティション分割されたステートフル サービスであるため、列挙はパーティションごとに実行されます。各パーティションには多数のアクターが含まれる可能性があるため、列挙はページングされた結果のセットとして返されます。ページはすべてのページが読み取られるまでループされます。次の例は、アクター サービスの 1 つのパーティションに含まれるすべてのアクティブ アクターのリストを作成する方法を示しています。
+The Actor Service allows a client to enumerate metadata about the actors being hosted by the service. Since the Actor Service is a partitioned stateful service, enumeration is performed per partition. Because each partition may contain a large number of actors, the enumeration is return as a set of paged results. The pages are looped over until all pages are read. The following example shows how to create a list of all active actors in one partition of an actor service:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -112,9 +113,9 @@ do
 while (continuationToken != null);
 ```
 
-#### アクターの削除
+#### <a name="deleting-actors"></a>Deleting actors
 
-アクター サービスは、アクターを削除する機能も提供します。
+The Actor Service also provides a function for deleting actors:
 
 ```csharp
 ActorId actorToDelete = new ActorId(id);
@@ -125,11 +126,11 @@ IActorService myActorServiceProxy = ActorServiceProxy.Create(
 await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
 ```
 
-アクターとその状態の削除の詳細については、[アクターのライフサイクルに関するドキュメント](service-fabric-reliable-actors-lifecycle.md)を参照してください。
+For more information on deleting actors and their state, refer to the [actor lifecycle documentation](service-fabric-reliable-actors-lifecycle.md).
 
-### カスタム アクター サービス
+### <a name="custom-actor-service"></a>Custom Actor Service
 
-アクター登録ラムダを使えば、`ActorService` から派生する独自のカスタム アクター サービス (独自のサービスレベルの機能を実装できる) を登録することもできます。そのためには、`ActorService` を継承するサービス クラスを記述します。カスタム アクター サービスは、`ActorService` からすべてのアクター ランタイム機能を継承します。カスタム アクター サービスを使えば、独自のサービス メソッドを実装できます。
+Using the actor registration lambda, you can also register your own custom actor service that derives from `ActorService` where you can implement your own service-level functionality. This is done by writing a service class that inherits `ActorService`. A custom actor service inherits all of the actor runtime functionality from `ActorService` and can be used to implement your own service methods.
 
 ```csharp
 class MyActorService : ActorService
@@ -155,9 +156,9 @@ static class Program
 ```
 
 
-#### アクターのバックアップと復元の実装
+#### <a name="implementing-actor-back-up-and-restore"></a>Implementing actor back-up and restore
 
- 次の例のカスタム アクター サービスは、既に `ActorService` に存在するリモート処理リスナーを活用して、アクター データをバックアップするメソッドを公開しています。
+ In the following example, the custom actor service exposes a method to back-up actor data by taking advantage of the remoting listener already present in `ActorService`:
 
 ```csharp
 public interface IMyActorService : IService
@@ -191,7 +192,7 @@ class MyActorService : ActorService, IMyActorService
 }
 ```
 
-この例では、`IMyActorService` は `IService` を実装し、`MyActorService` によって実装されるリモート処理コントラクトです。このリモート処理コントラクトを追加すれば、`IMyActorService` のメソッドは、`ActorServiceProxy` を使用してリモート処理プロキシを作成することにより、クライアントから利用できるようになります。
+In this example, `IMyActorService` is a remoting contract that implements `IService` and is then implemented by `MyActorService`. By adding this remoting contract, methods on `IMyActorService` are now also available to a client by creating a remoting proxy using `ActorServiceProxy`:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -201,43 +202,43 @@ await myActorServiceProxy.BackupActorsAsync();
 ```
 
 
-## アプリケーション モデル
+## <a name="application-model"></a>Application model
 
-アクター サービスは Reliable Services であるため、アプリケーション モデルは同じです。ただし、アクター フレームワーク ビルド ツールによって、アプリケーション モデル ファイルの多くが自動的に生成されます。
+Actor services are Reliable Services, so the application model is the same. However, the actor framework build tools generate much of the application model files for you.
 
-### サービス マニフェスト
+### <a name="service-manifest"></a>Service Manifest
  
-アクター サービスの ServiceManifest.xml の内容は、アクター フレームワーク ビルド ツールによって自動的に生成されます。次のトピックがあります。
+The contents of your actor service's ServiceManifest.xml are generated automatically by the actor framework build tools. This includes:
 
- - アクター サービスの種類。種類の名前は、アクター プロジェクトの名前に基づいて生成されます。アクターの永続化属性に応じて、HasPersistedState フラグも設定されます。
- - コード パッケージ。
- - 構成パッケージ。
- - リソースとエンドポイント
+ - The actor service type. The type name is generated based on your actor project name. Based on the persistence attribute on your actor, the HasPersistedState flag is also set accordingly.
+ - Code package.
+ - Config package.
+ - Resources and endpoints
 
-### アプリケーション マニフェスト
+### <a name="application-manifest"></a>Application Manifest
 
-アクター フレームワーク ビルド ツールによって、アクター サービスの既定のサービス定義が自動的に作成されます。また、ビルド ツールによって既定のサービス プロパティが設定されます。
+The actor framework build tools automatically create a default service definition for your actor service. The default service properties are populated by the build tools:
 
- - レプリカ セットの数は、アクターの永続化属性によって決まります。アクターの永続化属性が変更されるたびに、それに応じて既定のサービス定義のレプリカ セットの数がリセットされます。
- - パーティション構成と範囲は Uniform Int64 とフル Int64 キー範囲に設定されます。
+ - Replica set count is determined by the persistence attribute on your actor. Each time the persistence attribute on your actor is changed, the replica set count in the default service definition will be reset accordingly.
+ - Partition scheme and range is set to Uniform Int64 with the full Int64 key range.
 
-## アクターの Service Fabric のパーティションの概念
+## <a name="service-fabric-partition-concepts-for-actors"></a>Service Fabric partition concepts for actors
 
-アクター サービスはパーティション分割されたステートフル サービスです。アクター サービスの各パーティションには、アクターのセットが含まれています。サービス パーティションは、Service Fabric の複数のノードに自動的に分散されます。そのため、アクター インスタンスが分散されることになります。
+Actor services are partitioned stateful services. Each partition of an actor service contains a set of actors. Service partitions are automatically distributed over multiple nodes in Service Fabric. Thus, actor instances are distributed as a result.
 
 ![Actor partitioning and distribution][5]
 
-Reliable Services は、さまざまなパーティション構成とパーティション キー範囲で作成できます。アクター サービスは、Int64 パーティション構成とフル Int64 キー範囲でアクターをパーティションにマップします。
+Reliable Services can be created with different partition schemes and partition key ranges. The Actor Service uses the Int64 partitioning scheme with the full Int64 key range to map actors to partitions. 
 
-### アクター ID
+### <a name="actor-id"></a>Actor ID
 
-サービスで作成される各アクターには、`ActorId` クラスで表される一意の ID が関連付けられます。`ActorId` は、ランダム ID を生成することにより、サービス パーティション間での均一なアクターの分散に使用できるあいまいな ID 値です。
+Each actor that's created in the service has a unique ID associated with it, represented by the `ActorId` class. The `ActorId` is an opaque id value that can be used for uniform distribution of actors across the service partitions by generating random IDs:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
 ```
 
-`ActorId` はいずれも Int64 にハッシュされます。アクター サービスで Int64 パーティション構成とフル Int64 キー範囲を使用する必要があるのはこのためです。ただし、`ActorID` には、GUID、文字列、Int64 などのカスタム ID 値を使用できます。
+Every `ActorId` is hashed to an Int64, which is why the actor service must use an Int64 partitioning scheme with the full Int64 key range. However, custom ID values can be used for an `ActorID`, including GUIDs, strings, and Int64s. 
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -245,13 +246,13 @@ ActorProxy.Create<IMyActor>(new ActorId("myActorId"));
 ActorProxy.Create<IMyActor>(new ActorId(1234));
 ```
 
-GUID と文字列を使用した場合、値は Int64 にハッシュされます。ただし、Int64 を `ActorId` に明示的に指定した場合は、Int64 はハッシュされることなくパーティションに直接マップされます。これを使用して、アクターを配置するパーティションを制御できます。
+When using GUIDs and strings, the values are hashed to an Int64. However, when explicitly providing an Int64 to an `ActorId`, the Int64 will map directly to a partition without further hashing. This can be used to control which partition actors are placed in.
 
-## 次のステップ
- - [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
- - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
- - [アクターの API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+## <a name="next-steps"></a>Next steps
+ - [Actor state management](service-fabric-reliable-actors-state-management.md)
+ - [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md)
+ - [Actors API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [Sample code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 
  
 <!--Image references-->
@@ -261,4 +262,8 @@ GUID と文字列を使用した場合、値は Int64 にハッシュされま�
 [4]: ./media/service-fabric-reliable-actors-platform/actor-replica-role.png
 [5]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

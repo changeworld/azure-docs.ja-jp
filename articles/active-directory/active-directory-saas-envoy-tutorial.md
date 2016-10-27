@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Envoy の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Envoy を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Envoy | Microsoft Azure" 
+    description="Learn how to use Envoy with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,128 +11,137 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/09/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Envoy の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-envoy"></a>Tutorial: Azure Active Directory integration with Envoy
   
-このチュートリアルでは、Azure と Envoy の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and Envoy.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   Envoy テナント
+-   A valid Azure subscription
+-   A Envoy tenant
   
-このチュートリアルを完了すると、Envoy に割り当てた Azure AD ユーザーは、Envoy 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to Envoy will be able to single sign into the application at your Envoy company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Envoy のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for Envoy
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-envoy-tutorial/IC776759.png "シナリオ")
-##Envoy のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-envoy-tutorial/IC776759.png "Scenario")
+##<a name="enabling-the-application-integration-for-envoy"></a>Enabling the application integration for Envoy
   
-このセクションでは、Envoy のアプリケーション統合を有効にする方法について説明します。
+The objective of this section is to outline how to enable the application integration for Envoy.
 
-###Envoy のアプリケーション統合を有効にするには、次の手順を実行します。
+###<a name="to-enable-the-application-integration-for-envoy,-perform-the-following-steps:"></a>To enable the application integration for Envoy, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-envoy-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-envoy-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-envoy-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-envoy-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-envoy-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-envoy-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-envoy-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Envoy**」と入力します。
+6.  In the **search box**, type **Envoy**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-envoy-tutorial/IC776760.png "アプリケーション ギャラリー")
+    ![Application gallery](./media/active-directory-saas-envoy-tutorial/IC776760.png "Application gallery")
 
-7.  結果ウィンドウで **[Envoy]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Envoy**, and then click **Complete** to add the application.
 
     ![Envoy](./media/active-directory-saas-envoy-tutorial/IC776777.png "Envoy")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Envoy に対する認証を行うことができるようにする方法を説明します。Envoy のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+The objective of this section is to outline how to enable users to authenticate to Envoy with their account in Azure AD using federation based on the SAML protocol.  
+Configuring single sign-on for Envoy requires you to retrieve a thumbprint value from a certificate.  
+If you are not familiar with this procedure, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Envoy** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Envoy** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Enable single sign-on](./media/active-directory-saas-envoy-tutorial/IC776778.png "Enable single sign-on")
 
-2.  **[ユーザーの Envoy へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Envoy** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure single sign-on](./media/active-directory-saas-envoy-tutorial/IC776779.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[Envoy サインイン URL]** ボックスに、"*https://\<テナント名>.Envoy.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **Envoy Sign In URL** textbox, type your URL using the following pattern "*https://\<tenant-name\>.Envoy.com*", and then click **Next**.
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-envoy-tutorial/IC776780.png "アプリケーション URL の構成")
+    ![Configure app URL](./media/active-directory-saas-envoy-tutorial/IC776780.png "Configure app URL")
 
-4.  **[Envoy でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルを **c:\\Envoy.cer** としてローカルに保存します。
+4.  On the **Configure single sign-on at Envoy** page, to download your certificate, click **Download certificate**, and then save the certificate file locally as **c:\\Envoy.cer**.
 
     ![Configure single sign-on](./media/active-directory-saas-envoy-tutorial/IC776781.png "Configure single sign-on")
 
-5.  別の Web ブラウザー ウィンドウで、Envoy 企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your Envoy company site as an administrator.
 
-6.  上部のツールバーで **[設定]** をクリックします。
+6.  In the toolbar on the top, click **Settings**.
 
     ![Envoy](./media/active-directory-saas-envoy-tutorial/IC776782.png "Envoy")
 
-7.  **[会社]** をクリックします。
+7.  Click **Company**.
 
-    ![会社](./media/active-directory-saas-envoy-tutorial/IC776783.png "会社")
+    ![Company](./media/active-directory-saas-envoy-tutorial/IC776783.png "Company")
 
-8.  **[SAML]** をクリックします。
+8.  Click **SAML**.
 
     ![SAML](./media/active-directory-saas-envoy-tutorial/IC776784.png "SAML")
 
-9.  **[SAML 認証]** 構成セクションで、次の手順を実行します。
+9.  In the **SAML Authentication** configuration section, perform the following steps:
 
-    ![SAML 認証](./media/active-directory-saas-envoy-tutorial/IC776785.png "SAML 認証")
+    ![SAML authentication](./media/active-directory-saas-envoy-tutorial/IC776785.png "SAML authentication")
 
-    >[AZURE.NOTE] [HQ 場所 ID] の値は、アプリケーションによって自動的に生成されます。
+    >[AZURE.NOTE] The value for the HQ location ID is auto generated by the application.
 
-    1.  エクスポートした証明書から **[拇印]** の値をコピーし、**[指紋]** ボックスに貼り付けます。
+    1.  Copy the **Thumbprint** value from the exported certificate, and then paste it into the **Fingerprint** textbox.  
 
-        >[AZURE.TIP] 詳細については、「[How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (証明書のサムプリント値を取得する方法)」をご覧ください。
+        >[AZURE.TIP] For more details, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)
 
-    2.  Azure クラシック ポータルの **[Envoy でのシングル サインオンの構成]** ダイアログ ページで、**[SAML SSO URL]** の値をコピーし、**[ID プロバイダー HTTP SAML URL]** ボックスに貼り付けます。
-    3.  **[変更を保存]** をクリックします。
+    2.  In the Azure classic portal, on the **Configure single sign-on at Envoy** dialog page, copy the **SAML SSO URL** value, and then paste it into the **Identity Provider HTTP SAML URL** textbox.
+    3.  Click **Save changes**.
 
-10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-envoy-tutorial/IC776786.png "Configure single sign-on")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Envoy へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して Envoy にログインしようとすると、そのユーザーが存在するかどうかが Envoy によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは自動的に作成されます。
-##ユーザーの割り当て
+There is no action item for you to configure user provisioning to Envoy.  
+When an assigned user tries to log into Envoy using the access panel, Envoy checks whether the user exists.  
+If there is no user account available yet, it is automatically created by Envoy.
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Envoy に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-envoy,-perform-the-following-steps:"></a>To assign users to Envoy, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Envoy** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Envoy **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-envoy-tutorial/IC776787.png "ユーザーの割り当て")
+    ![Assign users](./media/active-directory-saas-envoy-tutorial/IC776787.png "Assign users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-envoy-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

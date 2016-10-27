@@ -1,114 +1,119 @@
 <properties 
-	pageTitle="Azure App Service におけるオペレーティング システムの機能" 
-	description="Azure App Service 上の Web アプリ、モバイル アプリ バックエンド、API アプリで使用できる OS の機能について説明します。" 
-	services="app-service" 
-	documentationCenter="" 
-	authors="cephalin" 
-	manager="wpickett" 
-	editor="mollybos"/>
+    pageTitle="Operating system functionality on Azure App Service" 
+    description="Learn about the OS functionality available to web apps, mobile app backends, and API apps on Azure App Service" 
+    services="app-service" 
+    documentationCenter="" 
+    authors="cephalin" 
+    manager="wpickett" 
+    editor="mollybos"/>
 
 <tags 
-	ms.service="app-service" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/01/2016" 
-	ms.author="cephalin"/>
+    ms.service="app-service" 
+    ms.workload="web" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/01/2016" 
+    ms.author="cephalin"/>
 
-# Azure App Service におけるオペレーティング システムの機能 #
 
-この記事では、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) 上で動作するすべてのアプリが利用できる基本的なオペレーティング システムの機能について説明します。これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。
+# <a name="operating-system-functionality-on-azure-app-service"></a>Operating system functionality on Azure App Service #
+
+This article describes the common baseline operating system functionality that is available to all apps running on [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). This functionality includes file, network, and registry access, and diagnostics logs and events. 
 
 <a id="tiers"></a>
-## App Service プランの階層
+## <a name="app-service-plan-tiers"></a>App Service plan tiers
 
-App Service は、マルチテナント ホスティング環境で顧客のアプリを実行します。**Free** レベルと **Shared** レベルでデプロイされたアプリは、共有仮想マシン上のワーカー プロセスで実行されます。一方、**Standard** レベルと **Premium** レベルでデプロイされたアプリは、単一の顧客に関連付けられたアプリ専用の仮想マシン上で実行されます。
+App Service runs customer apps in a multi-tenant hosting environment. Apps deployed in the **Free** and **Shared** tiers run in worker processes on shared virtual machines, while apps deployed in the **Standard** and **Premium** tiers run on virtual machine(s) dedicated specifically for the apps associated with a single customer.
 
-App Service はどのレベルでもシームレスにスケーリングされるので、App Service アプリのセキュリティ構成は選択するレベルに左右されません。これにより、App Service プランを別のレベルに切り替えたときにアプリの動作が突然変わって予期しないエラーが発生することはありません。
+Because App Service supports a seamless scaling experience between different tiers, the security configuration enforced for App Service apps remains the same. This ensures that apps don't suddenly behave differently, failing in unexpected ways, when App Service plan switches from one tier to another.
 
 <a id="developmentframeworks"></a>
-## 開発フレームワーク
+## <a name="development-frameworks"></a>Development frameworks
 
-アプリで使用できるコンピューティング リソース (CPU、ディスク ストレージ、メモリ、ネットワーク送信) は、App Service の価格レベルによって異なります。ただし、アプリで使用できるフレームワーク機能の幅はどのスケーリング レベルでも変わりません。
+App Service pricing tiers control the amount of compute resources (CPU, disk storage, memory, and network egress) available to apps. However, the breadth of framework functionality available to apps remains the same regardless of the scaling tiers.
 
-App Service は、ASP.NET、クラシック ASP、node.js、PHP、Python などの各種の開発フレームワークをサポートしています。これらはすべて、IIS 内で拡張機能として実行されます。セキュリティ構成を標準化して単純にするために、App Service アプリでは通常、各種の開発フレームワークが既定の設定で実行されます。App Service では、アプリを構成する方法として、API へのアクセスと機能を開発フレームワークごとにカスタマイズするのではなく、より汎用的なアプローチをとっています。つまり、アプリの開発フレームワークにかかわらず使用できる、共通の基本的なオペレーティング システム機能が用意されています。
+App Service supports a variety of development frameworks, including ASP.NET, classic ASP, node.js, PHP and Python - all of which run as extensions within IIS. In order to simplify and normalize security configuration, App Service apps typically run the various development frameworks with their default settings. One approach to configuring apps could have been to customize the API surface area and functionality for each individual development framework. App Service instead takes a more generic approach by enabling a common baseline of operating system functionality regardless of an app's development framework.
 
-この後の各セクションでは、App Service アプリで使用できる汎用オペレーティング システム機能について概説します。
+The following sections summarize the general kinds of operating system functionality available to App Service apps.
 
 <a id="FileAccess"></a>
-##ファイル アクセス
+##<a name="file-access"></a>File access
 
-App Service には、ローカル ドライブやネットワーク ドライブなど、さまざまなドライブが存在します。
+Various drives exist within App Service, including local drives and network drives.
 
 <a id="LocalDrives"></a>
-### ローカル ドライブ
+### <a name="local-drives"></a>Local drives
 
-根本的に、App Service は、Azure PaaS (Platform as a Service) インフラストラクチャ上で動作するサービスです。したがって、仮想マシンに "接続" されるローカル ドライブは、Azure 上の worker ロールで使用するドライブと同じ種類です。これには、オペレーティング システム ドライブ (D:\\ ドライブ)、App Service のみが使用する (顧客はアクセスできない) Azure パッケージ cspkg ファイルが保存されるアプリケーション ドライブ、"ユーザー" ドライブ (C:\\ ドライブ) があり、そのサイズは VM のサイズによって異なります。
+At its core, App Service is a service running on top of the Azure PaaS (platform as a service) infrastructure. As a result, the local drives that are "attached" to a virtual machine are the same drive types available to any worker role running in Azure. This includes an operating system drive (the D:\ drive), an application drive that contains Azure Package cspkg files used exclusively by App Service (and inaccessible to customers), and a "user" drive (the C:\ drive), whose size varies depending on the size of the VM.
 
 <a id="NetworkDrives"></a>
-### ネットワーク ドライブ ("UNC 共有" とも呼ばれます)
+### <a name="network-drives-(aka-unc-shares)"></a>Network drives (aka UNC shares)
 
-アプリのデプロイとメンテナンスを容易にする App Service の特長の 1 つは、すべてのユーザー コンテンツが一連の UNC 共有に保存されることです。このモデルは、複数の負荷分散サーバーを配したオンプレミス Web ホスティング環境で使用される共通のコンテンツ ストレージ パターンに対応します。
+One of the unique aspects of App Service that makes app deployment and maintenance straightforward is that all user content is stored on a set of UNC shares. This model maps very nicely to the common pattern of content storage used by on-premises web hosting environments that have multiple load-balanced servers. 
 
-App Service 内には、各データ センターに作成された複数の UNC 共有があります。データ センターごとに、すべての顧客のユーザーコンテンツの割合が各 UNC 共有に反映されます。さらに、個々の顧客のサブスクリプションのすべてのファイル コンテンツは、必ず同じ UNC 共有に配置されます。
+Within App Service, there are number of UNC shares created in each data center. A percentage of the user content for all customers in each data center is allocated to each UNC share. Furthermore, all of the file content for a single customer's subscription is always placed on the same UNC share. 
 
-クラウド サービスの性質上、UNC 共有をホストする仮想マシンはその時々で変わります。通常のクラウド運用で仮想マシンが起動または停止するたびに、必要な仮想マシンに UNC 共有が確実にマウントされます。したがって、UNC ファイル パスのマシン情報が常に変わらないことを前提としてアプリをハードコーディングしないでください。代わりに、App Service に用意されている*偽*の絶対パス **D:\\home\\site** を使用してください。この "偽" の絶対パスを使用すれば、アプリとユーザーが変わっても常に目的のアプリを表すことができます。つまり、**D:\\home\\site** を使用することで、共有ファイルを別のアプリへ移動するたびに新しい絶対パスを構成する必要がなくなります。
+Note that due to how cloud services work, the specific virtual machine responsible for hosting a UNC share will change over time. It is guaranteed that UNC shares will be mounted by different virtual machines as they are brought up and down during the normal course of cloud operations. For this reason, apps should never make hard-coded assumptions that the machine information in a UNC file path will remain stable over time. Instead, they should use the convenient *faux* absolute path **D:\home\site** that App Service provides. This faux absolute path provides a portable, app-and-user-agnostic method for referring to one's own app. By using **D:\home\site**, one can transfer shared files from app to app without having to configure a new absolute path for each transfer.
 
 <a id="TypesOfFileAccess"></a>
-### アプリに付与されるファイル アクセスの種類
+### <a name="types-of-file-access-granted-to-an-app"></a>Types of file access granted to an app
 
-顧客のサブスクリプションごとに、データ センター内の UNC 共有上にディレクトリ構造が確保されます。顧客が特定のデータ センター内に複数のアプリを作成している場合は、その顧客サブスクリプションに属するすべてのディレクトリが同じ UNC 共有上に作成されます。この共有には、コンテンツ ログ、エラー ログ、診断ログ用のディレクトリや、ソース管理によって作成された以前のバージョンのアプリのディレクトリなどが配置されます。もちろん、顧客のアプリのディレクトリは、実行時にアプリのアプリケーション コードから読み書きできます。
+Each customer's subscription has a reserved directory structure on a specific UNC share within a data center. A customer may have multiple apps created within a specific data center, so all of the directories belonging to a single customer subscription are created on the same UNC share. The share may include directories such as those for content, error and diagnostic logs, and earlier versions of the app created by source control. As expected, a customer's app directories are available for read and write access at runtime by the app's application code.
 
-App Service では、アプリを実行する仮想マシンに接続されたローカル ドライブ (C:\\ ドライブ) 上に、そのアプリ専用の一時的なローカル ストレージ領域が確保されます。アプリはこの一時的なローカル ストレージに自由に読み取り/書き込みアクセスできますが、アプリケーション コードからの直接アクセスは本来の使用方法ではありません。このストレージの目的は、IIS および Web アプリケーション フレームワークに一時的なファイル ストレージを提供することです。さらに、App Service では、各アプリで使用できる一時的なローカル ストレージの容量も制限されます。これは、それぞれのアプリでローカル ファイル ストレージが過度に消費されるのを防ぐためです。
+On the local drives attached to the virtual machine that runs an app, App Service reserves a chunk of space on the C:\ drive for app-specific temporary local storage. Although an app has full read/write access to its own temporary local storage, that storage really isn't intended to be used directly by the application code. Rather, the intent is to provide temporary file storage for IIS and web application frameworks. App Service also limits the amount of temporary local storage available to each app to prevent individual apps from consuming excessive amounts of local file storage.
 
-App Service での一時的なローカル ストレージの使用例として、ASP.NET 一時ファイルのディレクトリと IIS 圧縮ファイルのディレクトリがあります。ASP.NET コンパイル システムは、"Temporary ASP.NET Files" ディレクトリをコンパイルの一時的なキャッシュ場所として使用します。IIS は、"IIS Temporary Compressed Files" ディレクトリを使用して圧縮済みの応答出力を保存します。これらはいずれも、App Service ではアプリごとの一時的なローカル ストレージに再マッピングされます。この再マッピングにより、引き続き適切に機能させることができます。
+Two examples of how App Service uses temporary local storage are the directory for temporary ASP.NET files and the directory for IIS compressed files. The ASP.NET compilation system uses the "Temporary ASP.NET Files" directory as a temporary compilation cache location. IIS uses the "IIS Temporary Compressed Files" directory to store compressed response output. Both of these types of file usage (as well as others) are remapped in App Service to per-app temporary local storage. This remapping ensures that functionality continues as expected.
 
-App Service の各アプリは、"アプリケーション プール ID" と呼ばれる、ランダムな一意の低特権ワーカー プロセス ID として実行されます。詳細については、[http://www.iis.net/learn/manage/configuring-security/application-pool-identities](http://www.iis.net/learn/manage/configuring-security/application-pool-identities) を参照してください。アプリケーション コードはこの ID を使用し、オペレーティング システム ドライブ (D:\\ ドライブ) に読み取り専用でアクセスします。つまり、アプリケーション コードは、オペレーティング システム ドライブ上の共通ディレクトリ構造を参照し、共通ファイルを読み取ることができます。少々広範なアクセス レベルに思えるかもしれませんが、Azure でホストされるサービスに worker ロールをプロビジョニングしてドライブ コンテンツを読み取る場合も、同じディレクトリとファイルにアクセスできます。
+Each app in App Service runs as a random unique low-privileged worker process identity called the "application pool identity", described further here: [http://www.iis.net/learn/manage/configuring-security/application-pool-identities](http://www.iis.net/learn/manage/configuring-security/application-pool-identities). Application code uses this identity for basic read-only access to the operating system drive (the D:\ drive). This means application code can list common directory structures and read common files on operating system drive. Although this might appear to be a somewhat broad level of access, the same directories and files are accessible when you provision a worker role in an Azure hosted service and read the drive contents. 
 
 <a name="multipleinstances"></a>
-### 複数のインスタンス間でのファイル アクセス
+### <a name="file-access-across-multiple-instances"></a>File access across multiple instances
 
-ホーム ディレクトリにはアプリのコンテンツが含まれ、アプリケーション コードからの書き込みが可能です。アプリが複数のインスタンスで実行される場合、ホーム ディレクトリはすべてのインスタンスで共有されるため、すべてのインスタンスが同じディレクトリを参照することになります。たとえば、アップロードされたファイルをアプリがホーム ディレクトリに保存すると、それらのファイルはすぐにすべてのインスタンスから利用できるようになります。
+The home directory contains an app's content, and application code can write to it. If an app runs on multiple instances, the home directory is shared among all instances so that all instances see the same directory. So, for example, if an app saves uploaded files to the home directory, those files are immediately available to all instances. 
 
 <a id="NetworkAccess"></a>
-## ネットワーク アクセス
-アプリケーション コードは、TCP/IP ベースおよび UDP ベースのプロトコルを使用してインターネットに接続し、外部サービスを公開しているエンドポイントにアクセスできます。アプリでは、同じプロトコルを使用して Azure 内のサービスにも接続できます。たとえば、SQL Database への HTTPS 接続を確立できます。
+## <a name="network-access"></a>Network access
+Application code can use TCP/IP and UDP based protocols to make outbound network connections to Internet accessible endpoints that expose external services. Apps can use these same protocols to connect to services within Azure&#151;for example, by establishing HTTPS connections to SQL Database.
 
-アプリでローカル ループバック接続を確立し、そのローカル ループバック ソケットでリッスンするための機能も限定的に用意されています。主な目的は、アプリ機能の一環として、ローカル ループバック ソケットでリッスンできるようにすることです。ループバック接続はアプリごとに "非公開" である点に注意してください。つまり、アプリ "A" は、アプリ "B" が設定したローカル ループバック ソケットではリッスンできません。
+There is also a limited capability for apps to establish one local loopback connection, and have an app listen on that local loopback socket. This feature exists primarily to enable apps that listen on local loopback sockets as part of their functionality. Note that each app sees a "private" loopback connection; app "A" cannot listen to a local loopback socket established by app "B".
 
-1 つのアプリの実行に複数のプロセスがかかわっている場合、それらのプロセスが互いに通信する手段 (プロセス間通信: IPC) として、名前付きパイプもサポートされています。たとえば、IIS FastCGI モジュールは、名前付きパイプを利用して PHP ページを実行する複数のプロセスを調整します。
+Named pipes are also supported as an inter-process communication (IPC) mechanism between different processes that collectively run an app. For example, the IIS FastCGI module relies on named pipes to coordinate the individual processes that run PHP pages.
 
 
 <a id="Code"></a>
-## コードの実行、プロセス、メモリ
-既に説明したように、アプリは、ランダムなアプリケーション プール ID を使用して低特権のワーカー プロセス内で実行されます。アプリケーション コードは、ネットワーク プロセス、および CGI プロセスや他のアプリケーションが生成する子プロセスに関連付けられたメモリ空間にアクセスできます。ただし、あるアプリから別のアプリのメモリやデータにアクセスすることはできません。これは、別のアプリが同じ仮想マシン上に配置されている場合でも同じです。
+## <a name="code-execution,-processes-and-memory"></a>Code execution, processes and memory
+As noted earlier, apps run inside of low-privileged worker processes using a random application pool identity. Application code has access to the memory space associated with the worker process, as well as any child processes that may be spawned by CGI processes or other applications. However, one app cannot access the memory or data of another app even if it is on the same virtual machine.
 
-アプリは、サポート対象の Web 開発フレームワークで記述されたスクリプトやページを実行できます。App Service では、Web フレームワークの設定がより限定的なモードに構成されることはありません。たとえば、App Service 上で動作する ASP.NET アプリは、限定的な信頼モードではなく "完全信頼" で実行されます。Web フレームワークでは、クラシック ASP と ASP.NET も含めて、Windows オペレーティング システムに既定で登録されている ADO (ActiveX Data オブジェクト) などのインプロセス COM コンポーネントを呼び出すことができます (アウトプロセス COM コンポーネントは対象外)。
+Apps can run scripts or pages written with supported web development frameworks. App Service doesn't configure any web framework settings to more restricted modes. For example, ASP.NET apps running on App Service run in "full" trust as opposed to a more restricted trust mode. Web frameworks, including both classic ASP and ASP.NET, can call in-process COM components (but not out of process COM components) like ADO (ActiveX Data Objects) that are registered by default on the Windows operating system.
 
-アプリは任意のコードを生成して実行できます。たとえば、コマンド シェルの生成や PowerShell スクリプトの実行が許容されます。ただし、アプリで任意のコードとプロセスを生成できる場合でも、実行可能なプログラムやスクリプトは、親アプリケーション プールに与えられる特権に制限されます。たとえば、アプリは外部への HTTP 呼び出しを行う実行可能ファイルを生成できますが、その実行可能ファイルは、仮想マシンの IP アドレスを NIC から解除することはできません。外部へのネットワーク呼び出しは低権限のコードでも実行できますが、仮想マシンのネットワーク設定を再構成するには管理者権限が必要です。
+Apps can spawn and run arbitrary code. It is allowable for an app to do things like spawn a command shell or run a PowerShell script. However, even though arbitrary code and processes can be spawned from an app, executable programs and scripts are still restricted to the privileges granted to the parent application pool. For example, an app can spawn an executable that makes an outbound HTTP call, but that same executable cannot attempt to unbind the IP address of a virtual machine from its NIC. Making an outbound network call is allowed to low-privileged code, but attempting to reconfigure network settings on a virtual machine requires administrative privileges.
 
 
 <a id="Diagnostics"></a>
-## 診断ログとイベント
-一部のアプリは、ログ情報というデータ セットにアクセスします。App Service で実行されるコードが使用できるログ情報には、診断ログがあります。これは、アプリによって生成され、アプリから簡単にアクセスすることもできるログ情報です。
+## <a name="diagnostics-logs-and-events"></a>Diagnostics logs and events
+Log information is another set of data that some apps attempt to access. The types of log information available to code running in App Service includes diagnostic and log information generated by an app that is also easily accessible to the app. 
 
-たとえば、アクティブなアプリによって生成される W3C HTTP ログは、そのアプリ用に作成されたネットワーク共有場所にあるログ ディレクトリか、顧客がストレージへの W3C ログを設定している場合は Blob Storage に格納されます。Blob Storage を使用すると、ネットワーク共有のファイル ストレージ制限を気にすることなく大量のログを収集できます。
+For example, W3C HTTP logs generated by an active app are available either on a log directory in the network share location created for the app, or available in blob storage if a customer has set up W3C logging to storage. The latter option enables large quantities of logs to be gathered without the risk of exceeding the file storage limits associated with a network share.
 
-同様に、.NET のトレース/診断インフラストラクチャを使用すれば、.NET アプリの診断情報をリアルタイムに記録できます。その際、トレース情報をアプリのネットワーク共有に書き込むか、Blob Storage に書き込むかを選択できます。
+In a similar vein, real-time diagnostics information from .NET apps can also be logged using the .NET tracing and diagnostics infrastructure, with options to write the trace information to either the app's network share, or alternatively to a blob storage location.
 
-アプリが使用できない診断情報ログとトレースの領域は、Windows ETW イベントと一般的な Windows イベント ログ (システム ログ、アプリケーション ログ、セキュリティ イベント ログ) です。(適切な ACL があれば) マシン上で ETW トレース情報を参照できるので、ETW イベントへの読み取りアクセスと書き込みアクセスがブロックされます。アプリの開発時には、ETW イベントや一般的な Windows イベント ログを読み書きする API 呼び出しが機能するように見えるかもしれませんが、これは、App Service がそのように見せかけているにすぎません。実際には、アプリケーション コードはこれらのイベント データにアクセスできません。
+Areas of diagnostics logging and tracing that aren't available to apps are Windows ETW events and common Windows event logs (e.g. System, Application and Security event logs). Since ETW trace information can potentially be viewable machine-wide (with the right ACLs), read and write access to ETW events are blocked. Developers might notice that API calls to read and write ETW events and common Windows event logs appear to work, but that is because App Service is "faking" the calls so that they appear to succeed. In reality, the application code has no access to this event data.
 
 <a id="RegistryAccess"></a>
-## レジストリ アクセス
-アプリは、実行される仮想マシンの多くのレジストリ (すべてのレジストリではありません) に読み取り専用でアクセスできます。つまり、実際には、アプリは、ローカルの Users グループへの読み取り専用アクセスを許可するレジストリ キーにアクセスできることになります。現在、読み取りアクセスまたは書き込みアクセスがサポートされていないレジストリ領域の 1 つに、HKEY\_CURRENT\_USER ハイブがあります。
+## <a name="registry-access"></a>Registry access
+Apps have read-only access to much (though not all) of the registry of the virtual machine they are running on. In practice, this means registry keys that allow read-only access to the local Users group are accessible by apps. One area of the registry that is currently not supported for either read or write access is the HKEY\_CURRENT\_USER hive.
 
-レジストリへの書き込みアクセスはブロックされます。ユーザーごとのレジストリ キーにも一切アクセスできません。Azure 環境の場合、アプリが他の仮想マシンへ移行される可能性があるので、レジストリへの書き込みアクセスを前提にしてコードを開発しないでください。アプリで利用できる唯一の書き込み可能な永続ストレージは、App Service の UNC 共有に格納されるアプリ別のコンテンツ ディレクトリ構造です。
+Write-access to the registry is blocked, including access to any per-user registry keys. From the app's perspective, write access to the registry should never be relied upon in the Azure environment since apps can (and do) get migrated across different virtual machines. The only persistent writeable storage that can be depended on by an app is the per-app content directory structure stored on the App Service UNC shares. 
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
  
  
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

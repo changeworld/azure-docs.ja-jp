@@ -1,13 +1,15 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### メンテナンス モードを終了するには
+#### <a name="to-exit-maintenance-mode"></a>To exit Maintenance mode
 
-1. コマンド プロンプトで、次のコマンドを入力します。
+1. At the command prompt type:
 
      `Exit-HcsMaintenanceMode`
 
-2. 警告メッセージと確認メッセージが表示されます。メンテナンス モードを終了するには、「**Y**」と入力します。
+2. A warning message and a confirmation message will appear. Type **Y** to exit Maintenance mode.
 
-    両方のコントローラーが再起動します。再起動が完了すると、デバイスが標準モードであることを示すメッセージが表示されます。
+    Both controllers will restart. When the restart is complete, another message will appear indicating that the device is in Normal mode.
 
-<!---HONumber=Oct15_HO3-->
+<!--HONumber=Oct16_HO2-->
+
+

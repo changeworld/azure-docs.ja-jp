@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Web UI を使用した Azure コンテナー サービスのコンテナー管理| Microsoft Azure"
-   description="Marathon Web UI を使用して Azure コンテナー サービスのクラスター サービスにコンテナーをデプロイします。"
+   pageTitle="Azure Container Service container management through the web UI | Microsoft Azure"
+   description="Deploy containers to an Azure Container Service cluster service by using the Marathon web UI."
    services="container-service"
    documentationCenter=""
    authors="neilpeterson"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker、コンテナー、マイクロ サービス、Mesos、Azure"/>
+   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -16,40 +16,41 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="09/19/2016"
-   ms.author="nepeters"/>
+   ms.author="timlt"/>
 
-# Web UI 経由のコンテナー管理
 
-DC/OS はクラスター化されたワークロードをデプロイし、スケールするための環境を提供すると共に、基礎となるハードウェアを抽象化します。DC/OS に加え、コンピューティング ワークロードのスケジュールと実行を管理するフレームワークもあります。
+# <a name="container-management-through-the-web-ui"></a>Container management through the web UI
 
-一般的な各種ワークロードに対応したフレームワークがあるものの、このドキュメントでは、Marathon を使ってコンテナー デプロイを作成し、スケールする方法について説明します。これらの例を見ていく前に、Azure コンテナー サービスで構成された DC/OS クラスターが必要です。また、このクラスターへのリモート接続も必要です。これらの項目の詳細については、次の記事を参照してください。
+DC/OS provides an environment for deploying and scaling clustered workloads, while abstracting the underlying hardware. On top of DC/OS, there is a framework that manages scheduling and executing compute workloads.
 
-- [Azure コンテナー サービス クラスターのデプロイ](container-service-deployment.md)
-- [Azure コンテナー サービス クラスターに接続する](container-service-connect.md)
+While frameworks are available for many popular workloads, this document will describe how you can create and scale container deployments with Marathon. Before working through these examples, you will need a DC/OS cluster that is configured in Azure Container Service. You also need to have remote connectivity to this cluster. For more information on these items, see the following articles:
 
-## DC/OS UI を操作する
+- [Deploy an Azure Container Service cluster](container-service-deployment.md)
+- [Connect to an Azure Container Service cluster](container-service-connect.md)
 
-Secure Shell (SSH) トンネルを確立したら、http://localhost/ に移動します。DC/OS Web UI が読み込まれ、使用リソース、アクティブなエージェント、実行中のサービスなど、クラスターに関する情報が表示されます。
+## <a name="explore-the-dc/os-ui"></a>Explore the DC/OS UI
+
+With a Secure Shell (SSH) tunnel established, browse to http://localhost/. This loads the DC/OS web UI and shows information about the cluster, such as used resources, active agents, and running services.
 
 ![DC/OS UI](media/dcos/dcos2.png)
 
-## Marathon UI について知る
+## <a name="explore-the-marathon-ui"></a>Explore the Marathon UI
 
-Marathon UI を表示するには、http://localhost/Marathon に移動します。この画面から、Azure コンテナー サービス DC/OS クラスターで新しいコンテナーやその他のアプリケーションを開始できます。コンテナーとアプリケーションの実行に関する情報も確認できます。
+To see the Marathon UI, browse to http://localhost/Marathon. From this screen, you can start a new container or another application on the Azure Container Service DC/OS cluster. You can also see information about running containers and applications.  
 
 ![Marathon UI](media/dcos/dcos3.png)
 
-## Docker 形式のコンテナーのデプロイ
+## <a name="deploy-a-docker-formatted-container"></a>Deploy a Docker-formatted container
 
-Marathon を使用して新しいコンテナーをデプロイするには、**[Create Application (アプリケーションの作成)]** ボタンをクリックし、次の情報をフォームに入力します。
+To deploy a new container by using Marathon, click the **Create Application** button, and enter the following information into the form:
 
-フィールド | 値
+Field           | Value
 ----------------|-----------
-ID | nginx
-イメージ | nginx
-ネットワーク | ブリッジ
-ホスト ポート | 80
-プロトコル | TCP
+ID              | nginx
+Image           | nginx
+Network         | Bridged
+Host Port       | 80
+Protocol        | TCP
 
 ![New Application UI--General](media/dcos/dcos4.png)
 
@@ -57,7 +58,7 @@ ID | nginx
 
 ![New Application UI--Ports and Service Discovery](media/dcos/dcos6.png)
 
-コンテナー ポートをエージェント上のポートに対して静的にマップするには、JSON モードを使用する必要があります。トグル スイッチを使用して、New Application (新しいアプリケーション) ウィザードを [**JSON Mode (JSON モード)**] に切り替えてください。その後、アプリケーション定義の `portMappings` セクションに次のように入力します。この例では、コンテナーのポート 80 を DC/OS エージェントのポート 80 にバインドしています。JSON モードで変更が済んだらウィザードを元のモードに切り替えてかまいません。
+If you want to statically map the container port to a port on the agent, you need to use JSON Mode. To do so, switch the New Application wizard to **JSON Mode** by using the toggle. Then enter the following under the `portMappings` section of the application definition. This example binds port 80 of the container to port 80 of the DC/OS agent. You can switch this wizard out of JSON Mode after you make this change.
 
 ```none
 "hostPort": 80,
@@ -65,40 +66,44 @@ ID | nginx
 
 ![New Application UI--port 80 example](media/dcos/dcos13.png)
 
-DC/OS クラスターは、プライベート エージェントおよびパブリック エージェントのセットと共にデプロイされます。クラスターがインターネットからアプリケーションにアクセスできるようにするには、アプリケーションをパブリック エージェントにデプロイする必要があります。そのためには、New Application (新しいアプリケーション) ウィザードの **[Optional (オプション)]** タブを選択し、**[Accepted Resource Roles (承認されたリソース ロール)]** に「**slave\_public**」と入力します。
+The DC/OS cluster is deployed with set of private and public agents. For the cluster to be able to access applications from the Internet, you need to deploy the applications to a public agent. To do so, select the **Optional** tab of the New Application wizard and enter **slave_public** for the **Accepted Resource Roles**.
 
 ![New Application UI--public agent setting](media/dcos/dcos14.png)
 
-Marathon メイン ページに戻ると、コンテナーのデプロイの状態を確認できます。
+Back on the Marathon main page, you can see the deployment status for the container.
 
 ![Marathon main page UI--container deployment status](media/dcos/dcos7.png)
 
-DC/OS の Web UI (http://localhost/) に戻ると、タスク (この場合は Docker 形式のコンテナー) が DC/OS クラスターで実行されていることがわかります。
+When you switch back to the DC/OS web UI (http://localhost/), you will see that a task (in this case, a Docker-formatted container) is running on the DC/OS cluster.
 
 ![DC/OS web UI--task running on the cluster](media/dcos/dcos8.png)
 
-タスクが実行されているクラスター ノードを確認することもできます。
+You can also see the cluster node that the task is running on.
 
 ![DC/OS web UI--task cluster node](media/dcos/dcos9.png)
 
-## コンテナーのスケール
+## <a name="scale-your-containers"></a>Scale your containers
 
-Marathon UI では、コンテナーのインスタンス数をスケールすることができます。この操作を実行するには、**Marathon** ページに移動し、スケールするコンテナーを選択して、**[Scale (スケール)]** ボタンをクリックします。**[Scale Application (アプリケーションのスケール)]** ダイアログ ボックスで、任意のコンテナー インスタンス数を入力し、**[Scale Application (アプリケーションのスケール)]** を選択します。
+You can use the Marathon UI to scale the instance count of a container. To do so, navigate to the **Marathon** page, select the container that you want to scale, and click the **Scale** button. In the **Scale Application** dialog box, enter the number of container instances that you want, and select **Scale Application**.
 
 ![Marathon UI--Scale Application dialog box](media/dcos/dcos10.png)
 
-スケール操作が完了したら、同じタスクの複数のインスタンスが DC/OS エージェントに分散されているのを確認できます。
+After the scale operation finishes, you will see multiple instances of the same task spread across DC/OS agents.
 
 ![DC/OS web UI dashboard--task spread across agents](media/dcos/dcos11.png)
 
 ![DC/OS web UI--nodes](media/dcos/dcos12.png)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [DC/OS と Marathon API の使用](container-service-mesos-marathon-rest.md)
+- [Work with DC/OS and the Marathon API](container-service-mesos-marathon-rest.md)
 
-Mesos と共に Azure Container Service を使用する方法の詳細
+Deep dive on the Azure Container Service with Mesos
 
 > [AZURE.VIDEO] azurecon-2015-deep-dive-on-the-azure-container-service-with-mesos]
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

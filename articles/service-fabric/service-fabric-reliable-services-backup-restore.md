@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric のバックアップと復元 | Microsoft Azure"
-   description="Service Fabric のバックアップと復元の概念をまとめた文書"
+   pageTitle="Service Fabric Backup and Restore | Microsoft Azure"
+   description="Conceptual documentation for Service Fabric Backup and Restore"
    services="service-fabric"
    documentationCenter=".net"
    authors="mcoskun"
@@ -16,45 +16,54 @@
    ms.date="06/19/2016"
    ms.author="mcoskun"/>
 
-# Reliable Services と Reliable Actors のバックアップよび復元
 
-Azure Service Fabric は高可用性プラットフォームであり、複数のノードに状態を複製し、その高可用性を維持します。つまり、クラスター内の 1 つのノードに障害が発生した場合でも、サービスは引き続き利用できます。このプラットフォームに組み込まれている冗長性で十分と考えられますが、(外部ストアに) サービスのデータをバックアップすることが望ましい場合もあります。
+# <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Back up and restore Reliable Services and Reliable Actors
 
->[AZURE.NOTE] データ損失シナリオから回復できるように、データのバックアップと復元 (および期待どおりに動作することのテスト) は重要です。
+Azure Service Fabric is a high-availability platform that replicates the state across multiple nodes to maintain this high availability.  Thus, even if one node in the cluster fails, the services continue to be available. While this in-built redundancy provided by the platform may be sufficient for some, in certain cases it is desirable for the service to back up data (to an external store).
 
-たとえば、次のシナリオではサービスのデータをバックアップすることが望まれます。
+>[AZURE.NOTE] It is critical to backup and restore your data (and test that it works as expected) so you can recover from data loss scenarios.
 
-* Service Fabric クラスター全体または特定のパーティションを実行しているすべてのノードが永久に失われた場合。
+For example, a service may want to back up data in the following scenarios:
 
-* 状態が誤って削除されたり、破損したりするなどの管理エラー。これは、十分な権限を持つ管理者が誤ってサービスを削除した場合に起こる可能性があります。
+* In the event of the permanent loss of an entire Service Fabric cluster or all nodes that are running a given partition.
 
-* データの破損を引き起こすサービスのバグ。これは、サービス コードのアップグレードにより、Reliable Collection に不正なデータが書き込まれ始めると起こる可能性があります。このような場合は、コードとデータの両方を、以前の状態に復元する必要があります。
+* Administrative errors whereby the state accidentally gets deleted or corrupted. For example, this may happen if an administrator with sufficient privilege erroneously deletes the service.
 
-* オフライン データ処理データを生成するサービスと切り離されて行われるビジネス インテリジェンスのために、データのオフライン処理を用意しておけば便利です。
+* Bugs in the service that cause data corruption. For example, this may happen when a service code upgrade starts writing faulty data to a Reliable Collection. In such a case, both the code and the data may have to be reverted to an earlier state.
 
-バックアップ/復元機能では、 Reliable Services API を基盤とするサービスでバックアップを作成し、復元できます。このプラットフォームで提供されるバックアップ API では、読み書き操作をブロックせずに、サービス パーティションの状態をバックアップできます。復元 API では、選択したバックアップからサービス パーティションの状態を復元できます。
+* Offline data processing. It might be convenient to have offline processing of data for business intelligence that happens separately from the service that generates the data.
 
-## バックアップの種類
+The Backup/Restore feature allows services built on the Reliable Services API to create and restore backups. The backup APIs provided by the platform allow to take backup(s) of a service partition's state, without blocking read or write operations. The restore APIs allow a service partition's state to be restored from a chosen backup.
 
-バックアップには、完全と増分の 2 つの選択肢があります。完全バックアップは、レプリカの状態を再作成するために必要なすべてのデータ (チェックポイントとすべてのログ レコード) を含むバックアップです。チェックポイントとログが含まれるため、完全バックアップはそれだけで復元できます。
+## <a name="types-of-backup"></a>Types of Backup
 
-完全バックアップでは、チェックポイントが大きいと問題が発生します。たとえば、16 GB の状態が存在するレプリカでは、最大で約 16 GB のチェックポイントが追加されます。目標復旧時点が 5 分の場合、レプリカを 5 分ごとにバックアップする必要があります。バックアップを実行するたびに、50 MB (**CheckpointThresholdInMB** で構成可能) のログに加えて、16 GB のチェックポイントをコピーする必要があります。
+There are two backup options: Full and Incremental.
+A full backup is a backup that contains all the data required to recreate the state of the replica: checkpoints and all log records.
+Since it has the checkpoints and the log, a full backup can be restored by itself.
 
-![完全バックアップの例。](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
+The problem with full backups arises when the checkpoints are large.
+For example, a replica that has 16 GB of state will have checkpoints that add up approximately to 16 GB.
+If we have an Recovery Point Objective of 5 minutes, the replica needs to be backed up every 5 minutes.
+Each time it backs up it will need to copy 16 GB of checkpoints in addition to 50 MB (configurable using **CheckpointThresholdInMB**) worth of logs.
 
-この問題の対応策として、前回のバックアップ以降のログ レコードのみをバックアップする増分バックアップがあります。
+![Full Backup Example.](media/service-fabric-reliable-services-backup-restore/FullBackupExample.PNG)
 
-![増分バックアップの例。](media/service-fabric-reliable-services-backup-restore/IncrementalBackupExample.PNG)
+The solution to this problem is incremental backups, where only the log records since the last backup are backed up.
 
-増分バックアップに含まれるのは前回のバックアップ以降の変更だけなので (チェックポイントは含まれません)、処理は速くなる傾向がありますが、それだけでは復元できません。増分バックアップを復元するには、バックアップ チェーン全体が必要です。バックアップ チェーンは、完全バックアップから始まってそれ以降の連続する差分バックアップを含むバックアップのチェーンです。
+![Incremental Backup Example.](media/service-fabric-reliable-services-backup-restore/IncrementalBackupExample.PNG)
 
-## Reliable Services のバックアップ
+Since incremental backups are only changes since the last backup (does not include the checkpoints), they tend to be faster but they cannot be restored on their own.
+To restore an incremental backup, the entire backup chain is required.
+A backup chain is a chain of backups starting with a full backup and followed by a number of contiguous incremental backups.
 
-サービスの作成者は、バックアップのタイミングと保管場所を完全に制御できます。
+## <a name="backup-reliable-services"></a>Backup Reliable Services
 
-バックアップを開始するには、このサービスが継承済みメンバー関数 **BackupAsync** を呼び出す必要があります。バックアップはプライマリ レプリカ以外からは実行できず、書き込みステータスが付与されている必要があります。
+The service author has full control of when to make backups and where backups will be stored.
 
-次に示すように、**BackupAsync** は **BackupDescription** オブジェクトを取得します。このオブジェクトでは、完全バックアップまたは増分バックアップを指定できます。また、ローカルに作成されたバックアップ フォルダーを外部ストレージに移動する準備ができたら呼び出される、**Func<< BackupInfo, CancellationToken, Task<bool>>>** コールバック関数も指定できます。
+To start a backup, the service needs to invoke the inherited member function **BackupAsync**.  
+Backups can be made only from primary replicas, and they require write status to be granted.
+
+As shown below, **BackupAsync** takes in a **BackupDescription** object, where one can specify a full or incremental backup, as well as a callback function, **Func<< BackupInfo, CancellationToken, Task<bool>>>** which is invoked when the backup folder has been created locally and is ready to be moved out to some external storage.
 
 ```C#
 
@@ -64,11 +73,12 @@ await this.BackupAsync(myBackupDescription);
 
 ```
 
-増分バックアップを実行する要求は、**FabricMissingFullBackupException** で失敗する可能性があります。これは、レプリカが完全バックアップを取得していないか、または最後のバックアップ以降のログ レコードの一部が切り捨てられていることを示します。ユーザーは、**CheckpointThresholdInMB** を変更することによって切り捨て間隔を変更できます。
+Request to take an incremental backup can fail with **FabricMissingFullBackupException** which indicates that either the replica has never taken a full backup or some of the log records since that last back has been truncated.
+Users can modify the truncation rate by modifying the **CheckpointThresholdInMB**.
 
-**BackupInfo** は、バックアップに関する情報 (ランタイムでバックアップが保存されたフォルダー (**BackupInfo.Directory**) の場所など) を提供します。このコールバック関数では、**BackupInfo.Directory** を外部ストアまたは別の場所に移動できます。この関数はまた、バックアップ フォルダーがそのターゲット フォルダーに移動したかどうかを示すブール値を返します。
+**BackupInfo** provides information regarding the backup, including the location of the folder where the runtime saved the backup (**BackupInfo.Directory**). The callback function can move the **BackupInfo.Directory** to an external store or another location.  This function also returns a bool that indicates whether it was able to successfully move the backup folder to its target location.
 
-次のコードは、**BackupCallbackAsync** メソッドを使用してバックアップを Azure Storage にアップロードする方法を示しています。
+The following code demonstrates how the **BackupCallbackAsync** method can be used to upload the backup to Azure Storage:
 
 ```C#
 private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, CancellationToken cancellationToken)
@@ -81,43 +91,43 @@ private async Task<bool> BackupCallbackAsync(BackupInfo backupInfo, Cancellation
 }
 ```
 
-上記の例では、**ExternalBackupStore** は Azure BLOB ストレージとのインターフェイスとして使用されるサンプル クラスです。**UploadBackupFolderAsync** はフォルダーを圧縮して Azure BLOB ストアに配置するメソッドです。
+In the above example, **ExternalBackupStore** is the sample class that is used to interface with Azure Blob storage, and **UploadBackupFolderAsync** is the method that compresses the folder and places it in the Azure Blob store.
 
-以下の点に注意してください。
+Note that:
 
-- 1 つのレプリカあたり同時に実行できるバックアップ操作は 1 つに限られます。一度に複数の **BackupAsync** 呼び出しを行うと、**FabricBackupInProgressException** がスローされ、配信バックアップが 1 つに制限されます。
+- There can be only one backup operation in-flight per replica at any given time. More than one **BackupAsync** call at a time will throw **FabricBackupInProgressException** to limit inflight backups to one.
 
-- バックアップの途中でレプリカにエラーが発生した場合、バックアップは完了しないことがあります。そのため、フェールオーバーが完了すると、サービスが必要に応じて **BackupAsync** を呼び出して、バックアップを再開する必要があります。
+- If a replica fails over while a backup is in progress, the backup may not have been completed. Thus, once the failover finishes, it is the service's responsibility to restart the backup by invoking **BackupAsync** as necessary.
 
-## Reliable Services の復元
+## <a name="restore-reliable-services"></a>Restore Reliable Services
 
-通常、復元操作が必要になるケースは、次のカテゴリのいずれかに分類されます。
+In general, the cases when you might need to perform a restore operation fall into one of these categories:
 
-- サービス パーティションのデータが失われた場合。たとえば、パーティションの 3 つのレプリカのうちの 2 つのディスク (プライマリ レプリカを含む) が破損または消去された場合です。新しいプライマリに、バックアップからデータを復元する必要がある場合。
+- The service partition lost data. For example, the disk for two out of three replicas for a partition (including the primary replica) gets corrupted or wiped. The new primary may need to restore data from a backup.
 
-- サービス全体が失われた場合。たとえば、管理者がサービス全体を削除したため、サービスとデータを復元する必要がある場合です。
+- The entire service is lost. For example, an administrator removes the entire service and thus the service and the data need to be restored.
 
-- サービスが、(たとえば、アプリケーションのバグに起因する) 破損したアプリケーション データを複製した場合。その場合、サービスをアップグレードするか、元の状態に戻し、破損の原因を取り除き、破損していないデータを復元する必要があります。
+- The service replicated corrupt application data (e.g., because of an application bug). In this case, the service has to be upgraded or reverted to remove the cause of the corruption, and non-corrupt data has to be restored.
 
-さまざまな方法が可能ですが、ここでは **RestoreAsync** を使用して上記のシナリオから復元する例を紹介します。
+While many approaches are possible, we offer some examples on using **RestoreAsync** to recover from the above scenarios.
 
-## Reliable Services でのパーティション データの損失
+## <a name="partition-data-loss-in-reliable-services"></a>Partition data loss in Reliable Services
 
-この場合、ランタイムが自動的にデータ損失を検出し、**OnDataLossAsync** API を呼び出します。
+In this case, the runtime would automatically detect the data loss and invoke the **OnDataLossAsync** API.
 
-サービス作成者は、次を実行して回復する必要があります。
+The service author needs to perform the following to recover:
 
-- 仮想基本クラス メソッド **OnDataLossAsync** をオーバーライドします。
+- Override the virtual base class method **OnDataLossAsync**.
 
-- サービスのバックアップを含む外部の場所で最新のバックアップを見つけます。
+- Find the latest backup in the external location that contains the service's backups.
 
-- 最新のバックアップをダウンロードします (およびそれが圧縮されている場合は、バックアップ フォルダーにバックアップを解凍します)。
+- Download the latest backup (and uncompress the backup into the backup folder if it was compressed).
 
-- **OnDataLossAsync** メソッドは、**RestoreContext** を提供します。提供された **RestoreContext** で **RestoreAsync** API を呼び出します。
+- The **OnDataLossAsync** method provides a **RestoreContext**. Call the **RestoreAsync** API on the provided **RestoreContext**.
 
-- 復元が成功した場合は、true を返します。
+- Return true if the restoration was a success.
 
-**OnDataLossAsync** メソッドの実装例を次に示します。
+Following is an example implementation of the **OnDataLossAsync** method:
 
 ```C#
 
@@ -133,70 +143,90 @@ protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, C
 }
 ```
 
-**RestoreContext.RestoreAsync** の呼び出しに渡される **RestoreDescription** には、**BackupFolderPath** という名前のメンバーが含まれます。1 つの完全バックアップを復元するときは、この **BackupFolderPath** を完全バックアップが含まれるフォルダーのローカル パスに設定する必要があります。完全バックアップと複数の増分バックアップを復元するときは、**BackupFolderPath** を、完全バックアップだけでなく、すべての増分バックアップも含まれるフォルダーのローカル パスに設定する必要があります。提供された **BackupFolderPath** に完全バックアップが含まれていない場合、**RestoreAsync** の呼び出しで **FabricMissingFullBackupException** がスローされる可能性があります。**BackupFolderPath** の増分バックアップのチェーンが壊れていると、**ArgumentException** もスローされる場合があります。たとえば、完全バックアップと 1 番目および 3 番目の増分バックアップが含まれていて、2 番目の増分バックアップが含まれていないような場合です。
+**RestoreDescription** passed in to the **RestoreContext.RestoreAsync** call contains a member called **BackupFolderPath**.
+When restoring a single full backup, this **BackupFolderPath** should be set to the local path of the folder that contains your full backup.
+When restoring a full backup and a number of incremental backups, **BackupFolderPath** should be set to the local path of the folder that not only contains the full backup, but also all the incremental backups.
+**RestoreAsync** call can throw **FabricMissingFullBackupException** if the **BackupFolderPath** provided does not contain a full backup.
+It can also throw **ArgumentException** if **BackupFolderPath** has a broken chain of incremental backups.
+For example, if it contains the full backup, the first incremental and the third incremental backup but no the second incremental backup.
 
->[AZURE.NOTE] RestorePolicy は既定で「Safe」に設定されます。つまり、このレプリカに含まれている状態と同じか、またはそれより古い状態がバックアップ フォルダーに含まれていることが検出された場合、**RestoreAsync** API は ArgumentException で失敗します。**RestorePolicy.Force** を使用すると、この安全性チェックを省略できます。これは **RestoreDescription** の一部として指定されます。
+>[AZURE.NOTE] The RestorePolicy is set to Safe by default.  This means that the **RestoreAsync** API will fail with ArgumentException if it detects that the backup folder contains a state that is older than or equal to the state contained in this replica.  **RestorePolicy.Force** can be used to skip this safety check. This is specified as part of **RestoreDescription**.
 
-## サービスの削除または損失
+## <a name="deleted-or-lost-service"></a>Deleted or lost service
 
-サービスが削除された場合、先にサービスを作成し直さないとデータを復元できません。データを途切れなく復元するために、サービスを同じ構成 (パーティショニング スキームなど) で作成することが重要です。サービスが起動したら、そのサービスのあらゆるパーティションで、データを復元する API (上記の **OnDataLossAsync**) を呼び出す必要があります。その方法の 1 つは、すべてのパーティションで **[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)** を使用することです。
+If a service is removed, you must first re-create the service before the data can be restored.  It is important to create the service with the same configuration, e.g., partitioning scheme, so that the data can be restored seamlessly.  Once the service is up, the API to restore data (**OnDataLossAsync** above) has to be invoked on every partition of this service. One way of achieving this is by using **[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)** on every partition.  
 
-この点から、実装は上記のシナリオと同じになります。各パーティションで、外部ストアから最新の関連バックアップを復元する必要があります。ここで注意する点は、ランタイムが動的にパーティション ID を作成するため、パーティション ID が変更されている可能性があることです。そのため、各パーティションで復元する正しい最新のバックアップを識別するために、サービスでパーティション情報とサービス名を保存する必要があります。
+From this point, implementation is the same as the above scenario. Each partition needs to restore the latest relevant backup from the external store. One caveat is that the partition ID may have now changed, since the runtime creates partition IDs dynamically. Thus, the service needs to store the appropriate partition information and service name to identify the correct latest backup to restore from for each partition.
 
->[AZURE.NOTE] パーティションごとに **FabricClient.ServiceManager.InvokeDataLossAsync** を使用してサービス全体を復元することは、クラスターの状態が壊れる可能性があるので推奨されません。
+>[AZURE.NOTE] It is not recommended to use **FabricClient.ServiceManager.InvokeDataLossAsync** on each partition to restore the entire service, since that may corrupt your cluster state.
 
-## 破損したアプリケーション データの複製
+## <a name="replication-of-corrupt-application-data"></a>Replication of corrupt application data
 
-新しくデプロイされたアプリケーションのアップグレードにバグがある場合、データが破損することがあります。たとえば、アプリケーションのアップグレードによって、Reliable Dictionary にあるすべての電話番号レコードが無効な局番で更新されることがあります。そのような場合、Service Fabric は保存されるデータの性質を認識しないため、無効な電話番号が複製されます。
+If the newly deployed application upgrade has a bug, that may cause corruption of data. For example, an application upgrade may start to update every phone number record in a Reliable Dictionary with an invalid area code.  In this case, the invalid phone numbers will be replicated since Service Fabric is not aware of the nature of the data that is being stored.
 
-データを破損させるような重大なバグを検出した場合に最初にするべきことは、サービスをアプリケーション レベルで停止し、可能であれば、バグのないアプリケーション コードのバージョンにアップグレードします。しかしながら、サービス コードを修正しても、データは壊れたままであり、復元する必要があります。そのような場合、最新バックアップも壊れている可能性があるので、最新バックアップを復元するだけでは不十分です。そのため、データが破損する前に行われた最後のバックアップを見つける必要があります。
+The first thing to do after you detect such an egregious bug that causes data corruption is to freeze the service at the application level and, if possible, upgrade to the version of the application code that does not have the bug.  However, even after the service code is fixed, the data may still be corrupt and thus data may need to be restored.  In such cases, it may not be sufficient to restore the latest backup, since the latest backups may also be corrupt.  Thus, you have to find the last backup that was made before the data got corrupted.
 
-どのバックアップが破損しているかわからない場合は、新しい Service Fabric クラスターをデプロイして、上記の「サービスの削除または損失」のシナリオと同様に、影響を受けたパーティションのバックアップを復元できます。各パーティションで、最新から一番古いものの順でバックアップの復元を開始します。破損していないバックアップを見つけたら、このパーティションの (そのバックアップより) 新しいすべてのバックアップを移動、削除します。各パーティションでこの手順を繰り返します。ここで、運用クラスターのパーティションで **OnDataLossAsync** が呼び出されたら、外部ストアで見つかった最後のバックアップが上記の手順で選択されたバックアップとなります。
+If you are not sure which backups are corrupt, you could deploy a new Service Fabric cluster and restore the backups of affected partitions just like the above "Deleted or lost service" scenario.  For each partition, start restoring the backups from the most recent to the least. Once you find a backup that does not have the corruption, move/delete all backups of this partition that were more recent (than that backup). Repeat this process for each partition. Now, when **OnDataLossAsync** is called on the partition in the production cluster, the last backup found in the external store will be the one picked by the above process.
 
-ここで、「サービスの削除または損失」の手順を利用し、サービスの状態を、バグのあるコードが状態を破損させる前の状態に戻すことができます。
+Now, steps in the "Deleted or lost service" section can be used to restore the state of the service to the state before the buggy code corrupted the state.
 
-以下の点に注意してください。
+Note that:
 
-- 復元の際、復元されるバックアップがデータ損失前のパーティションの状態よりも古くなっている可能性があります。そのため、復元は、可能な限り多くのデータを回復するための最後の手段としてのみ実行すべきです。
+- When you restore, there is a chance that the backup being restored is older than the state of the partition before the data was lost. Because of this, you should restore only as a last resort to recover as much data as possible.
 
-- バックアップ フォルダー パスとバックアップ フォルダー内のファイルのパスを表す文字列は、FabricDataRoot パスや Application Type 名の長さによっては 255 文字を超える可能性があります。これにより、**Directory.Move** などの一部の .NET メソッドで **PathTooLongException** 例外がスローされることがあります。回避策の 1 つは、**CopyFile** などの kernel32 API を直接呼び出すことです。
+- The string that represents the backup folder path and the paths of files inside the backup folder can be greater than 255 characters, depending on the FabricDataRoot path and Application Type name's length. This can cause some .NET methods, like **Directory.Move**, to throw the **PathTooLongException** exception. One workaround is to directly call kernel32 APIs, like **CopyFile**.
 
-## Reliable Actors のバックアップと復元
+## <a name="backup-and-restore-reliable-actors"></a>Backup and restore Reliable Actors
 
-Reliable Actors のバックアップと復元は、Reliable Services で提供されるバックアップと復元の機能に基づいています。サービスの所有者は、**ActorService** (アクターをホストしている Service Fabric Reliable Service) から派生するカスタム アクター サービスを作成してから、前のセクションでの説明に従って Reliable Services と同様のバックアップ/復元を実行する必要があります。バックアップはパーティションごとに実行されるため、その特定のパーティション内のすべてのアクターがバックアップされます (復元も同様にパーティションごとに実行されます)。
-
-
-- カスタム アクター サービスを作成するときと、アクターを登録するときにも、カスタム アクター サービスを登録する必要があります。**ActorRuntime.RegistorActorAsync** をご覧ください。
-- **KvsActorStateProvider** では、現在、完全バックアップのみがサポートされます。また、オプションの **RestorePolicy.Safe** は **KvsActorStateProvider** によって無視されます。
-
->[AZURE.NOTE] 既定の ActorStateProvider (**KvsActorStateProvider**) では、バックアップ フォルダー (ICodePackageActivationContext.WorkDirectory によって取得されたアプリケーション作業フォルダーの下) は単独ではクリーンアップ**されません**。そのため、作業フォルダーがいっぱいになる可能性があります。バックアップを外部ストレージに移動した後、バックアップ コールバックの中で、バックアップ フォルダーを明示的にクリーンアップする必要があります。
+Backup and restore for Reliable Actors builds on the backup and restore functionality provided by reliable services. The service owner should create a custom Actor service that derives from **ActorService** (which is a Service Fabric reliable service hosting actors) and then do backup/restore similar to reliable services as described above in previous sections. Since backups will be taken on a per-partition basis, states for all actors in that particular partition will be backed up (and restoration is similar and will happen on a per-partition basis).
 
 
-## バックアップと復元のテスト
+- When you create a custom actor service, you will need to register the custom actor service as well while registering the actor. See **ActorRuntime.RegistorActorAsync**.
+- The **KvsActorStateProvider** currently only supports full backup. Also the option **RestorePolicy.Safe** is ignored by the **KvsActorStateProvider**.
 
-これは、重要なデータがバックアップされて復元できることを確認することは重要です。そのためには、PowerShell で **Invoke-ServiceFabricPartitionDataLoss** コマンドレットを呼び出します。このコマンドレットは、サービスのデータのバックアップと復元の機能が予想どおりに動作するかどうかをテストするために、特定のパーティションでデータ損失を発生させることができます。プログラムを使用してデータ損失を発生させし、そのイベントから復元することもできます。
+>[AZURE.NOTE] The default ActorStateProvider (i.e., **KvsActorStateProvider**) **does not** cleanup the backup folders by itself (under the application work folder obtained through ICodePackageActivationContext.WorkDirectory). This may cause your work folder to get filled up. You should explicitly cleanup the backup folder in the backup callback after you have moved the backup to an external storage.
 
->[AZURE.NOTE] Github で Web 参照アプリのバックアップおよび復元の機能の実装例を検索できます。詳細については、Inventory.Service サービスをご覧ください。
 
-## 具体的な内容: バックアップと復元の詳細
+## <a name="testing-backup-and-restore"></a>Testing Backup and Restore
 
-バックアップと復元の詳細を以下に示します。
+It is important to ensure that critical data is being backed up, and can be restored from. This can be done by invoking the **Invoke-ServiceFabricPartitionDataLoss** cmdlet in PowerShell that can induce data loss in a particular partition to test whether the data backup and restore functionality for your service is working as expected.  It is also possible to programmatically invoke data loss and restore from that event as well.
 
-### バックアップ
-Reliable State Manager には、読み書き操作を中断することなく、一貫性のあるバックアップを作成する機能があります。そのために、チェックポイントとログ永続化のメカニズムが活用されます。Reliable State Manager は特定の時点でファジー (簡易) チェックポイントを作成し、トランザクション ログからの負荷を軽減し、復元時間を早めます。**BackupAsync** が呼び出されると、最新のチェックポイント ファイルをローカル バックアップ フォルダーにコピーするように、Reliable State Manager がすべての Reliable Object に指示します。次に、Reliable State Manager は "開始ポインター" から最新のログ レコードまですべてのログ レコードをバックアップ フォルダーにコピーします。最新のログ レコードまでのすべてログ レコードがバックアップに含まれており、Reliable State Manager が先書きログを維持するため、コミットされた (**CommitAsync** が正常に制御を返した) すべてのトランザクションがバックアップに含まれていることが Reliable State Manager によって保証されます。
+>[AZURE.NOTE] You can find a sample implementation of backup and restore functionality in the Web Reference App on Github. Please look at the Inventory.Service service for more details.
 
-**BackupAsync** が呼び出された後にコミットするトランザクションは、バックアップに含まれていることもあれば、含まれていないこともあります。プラットフォームによりローカルのバックアップ フォルダーにデータが入力されると (すなわち、ローカルのバックアップがランタイムにより完了すると)、サービスのバックアップ コールバックが呼び出されます。このコールバックは、Azure Storage などの外部の場所にバックアップ フォルダーを移動する役割を担います。
+## <a name="under-the-hood:-more-details-on-backup-and-restore"></a>Under the hood: more details on backup and restore
 
-### 復元
+Here's some more details on backup and restore.
 
-Reliable State Manager には、**RestoreAsync** API を使用してバックアップから復元する機能があります。**RestoreContext** での **RestoreAsync** メソッドは、**OnDataLossAsync** メソッド内のみで呼び出すことができます。**OnDataLossAsync** により返されるブール値は、サービスの状態が外部ソースから復元されたかどうかを示すものです。**OnDataLossAsync** が true を返した場合、Service Fabric がこのプライマリから他のすべてのレプリカを再構築します。Service Fabric は、**OnDataLossAsync** 呼び出しを受信するレプリカが最初にプライマリ ロールに切り替わっても、読み取り状態または書き込み状態にはならないことを保証します。これは、StatefulService 実装側では、**OnDataLossAsync** が正常に完了するまで **RunAsync** が呼び出されないことを意味します。次に、新しいプライマリで **OnDataLossAsync** が呼び出されます。サービスが (true または false を返し) この API を完了し、関連再構成を完了するまで、API は 1 つずつ呼び出され続けます。
+### <a name="backup"></a>Backup
+The Reliable State Manager provides the ability to create consistent backups without blocking any read or write operations. To do so, it utilizes a checkpoint and log persistence mechanism.  The Reliable State Manager takes fuzzy (lightweight) checkpoints at certain points to relieve pressure from the transactional log and improve recovery times.  When **BackupAsync** is called, the Reliable State Manager instructs all Reliable objects to copy their latest checkpoint files to a local backup folder.  Then, the Reliable State Manager copies all log records, starting from the "start pointer" to the latest log record into the backup folder.  Since all the log records up to the latest log record are included in the backup and the Reliable State Manager preserves write-ahead logging, the Reliable State Manager guarantees that all transactions that are committed (**CommitAsync** has returned successfully) are included in the backup.
 
-**RestoreAsync** は、まず、このメソッドが呼び出されたプライマリ レプリカで、既存の状態をすべて削除します。次に、Reliable State Manager は、バックアップ フォルダーに存在するすべての Reliable Objects を作成します。次に、Reliable Objects はバックアップ フォルダーのチェックポイントから復元するように指示されます。最後に、Reliable State Manager はバックアップ フォルダー内のログ レコードからそれ自体の状態を復元し、復元を実行します。復元プロセスの一環として、バックアップ フォルダーにコミット ログ レコードがある "開始ポイント" から始まる操作が Reliable Objects に対して再生されます。この手順により、復元したステートに一貫性が与えられます。
+Any transaction that commits after **BackupAsync** has been called may or may not be in the backup.  Once the local backup folder has been populated by the platform (i.e., local backup is completed by the runtime), the service's backup callback is invoked.  This callback is responsible for moving the backup folder to an external location such as Azure Storage.
 
-## 次のステップ
+### <a name="restore"></a>Restore
 
-- [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
-- [Reliable Services の通知](service-fabric-reliable-services-notifications.md)
-- [Reliable Collection の開発者向けリファレンス](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+The Reliable State Manager provides the ability to restore from a backup by using the **RestoreAsync** API.  
+The **RestoreAsync** method on **RestoreContext** can be called only inside the **OnDataLossAsync** method.
+The bool returned by **OnDataLossAsync** indicates whether the service restored its state from an external source.
+If the **OnDataLossAsync** returns true, Service Fabric will rebuild all other replicas from this primary. Service Fabric ensures that replicas that will receive **OnDataLossAsync** call first transition to the primary role but are not granted read status or write status.
+This implies that for StatefulService implementers, **RunAsync** will not be called until **OnDataLossAsync** finishes successfully.
+Then, **OnDataLossAsync** will be invoked on the new primary.
+Until a service completes this API successfully (by returning true or false) and finishes the relevant reconfiguration, the API will keep being called one at a time.
 
-<!---HONumber=AcomDC_0629_2016-->
+**RestoreAsync** first drops all existing state in the primary replica that it was called on.  
+Then the Reliable State Manager creates all the Reliable objects that exist in the backup folder.  
+Next, the Reliable objects are instructed to restore from their checkpoints in the backup folder.  
+Finally, the Reliable State Manager recovers its own state from the log records in the backup folder and performs recovery.  
+As part of the recovery process, operations starting from the "starting point" that have commit log records in the backup folder are replayed to the Reliable objects.  
+This step ensures that the recovered state is consistent.
+
+## <a name="next-steps"></a>Next steps
+
+- [Reliable Services quick start](service-fabric-reliable-services-quick-start.md)
+- [Reliable Services notifications](service-fabric-reliable-services-notifications.md)
+- [Developer reference for Reliable Collections](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="クラウド サービスのパフォーマンスのテスト | Microsoft Azure"
-   description="Visual Studio プロファイラーを使用した、クラウド サービスのパフォーマンスのテスト"
+   pageTitle="Testing the performance of a cloud service | Microsoft Azure"
+   description="Test the performance of a cloud service using the Visual Studio profiler"
    services="visual-studio-online"
    documentationCenter="n/a"
    authors="TomArcher"
@@ -16,134 +16,140 @@
    ms.author="tarcher" />
 
 
-# クラウド サービスのパフォーマンスのテスト 
 
-##Overview
+# <a name="testing-the-performance-of-a-cloud-service"></a>Testing the performance of a cloud service 
 
-クラウド サービスのパフォーマンスは次の方法でテストすることができます。
+##<a name="overview"></a>Overview
 
-- Azure 診断を使用して、要求と接続に関する情報を収集し、顧客の観点からサービスを実行する方法を示すサイトの統計情報を確認します。開始するには、「[Azure Cloud Services および Virtual Machines 用の診断の構成](http://go.microsoft.com/fwlink/p/?LinkId=623009)」を参照してください。
+You can test the performance of a cloud service in the following ways:
 
-- Virtual Studio のプロファイラーを使用して、サービスの実行方法について計算的側面から詳細な分析を取得します。このトピックの説明のように、プロファイラーを使用して Azure で実行されるサービスのパフォーマンスを測定できます。計算エミュレーターでローカルに実行されるサービスのパフォーマンスをプロファイラーで測定する方法については、「[Visual Studio プロファイラーを使用した、Azure 計算エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト](http://go.microsoft.com/fwlink/p/?LinkId=262845)」を参照してください。
+- Use Azure Diagnostics to collect information about requests and connections, and to review site statistics that show how the service performs from a customer perspective. To get started with , see [Configuring diagnostics for Azure Cloud Services and Virtual Machines]( http://go.microsoft.com/fwlink/p/?LinkId=623009).
+
+- Use the Visual Studio profiler to get an in-depth analysis of the computational aspects of how the service runs. As this topic describes, you can use the profiler to measure performance as a service runs in Azure. For information about how to use the profiler to measure performance as a service runs locally in a compute emulator, see [Testing the Performance of an Azure Cloud Service Locally in the Compute Emulator Using the Visual Studio Profiler](http://go.microsoft.com/fwlink/p/?LinkId=262845).
 
 
 
-## パフォーマンスのテスト方法を選択する
+## <a name="choosing-a-performance-testing-method"></a>Choosing a performance testing method
 
-###Azure 診断を使用して収集するもの:###
+###<a name="use-azure-diagnostics-to-collect:###"></a>Use Azure Diagnostics to collect:###
 
-- 要求や接続などの Web ページまたはサービスの統計情報。
+- Statistics on web pages or services, such as requests and connections.
 
-- ロールの再起動の頻度などのロールの統計情報。
+- Statistics on roles, such as how often a role is restarted.
 
-- ガベージ コレクターにかかる時間の割合や実行中のロールのメモリ総量など、メモリの使用状況に関する全体的な情報。
+- Overall information about memory usage, such as the percentage of time that the garbage collector takes or the memory set of a running role.
 
-###Visual Studio プロファイラーを使用する目的:###
+###<a name="use-the-visual-studio-profiler-to:###"></a>Use the Visual Studio profiler to:###
 
-- 特に時間がかかる機能を決定する。
+- Determine which functions take the most time.
 
-- 負荷の高いプログラムの各部分にかかる時間を測定する。
+- Measure how much time each part of a computationally intensive program takes.
 
-- 詳細なパフォーマンス レポートをサービスの 2 つのバージョンで比較する。
+- Compare detailed performance reports for two versions of a service.
 
-- 個別のメモリ割り当てよりも詳細なレベルでメモリ割り当てを分析する。
+- Analyze memory allocation in more detail than the level of individual memory allocations.
 
-- マルチスレッド コードの同時実行の問題を分析する。
+- Analyze concurrency problems in multithreaded code.
 
-プロファイラーを使用すると、ローカルまたは Azure でクラウド サービスを実行する際にデータを収集できます。
+When you use the profiler, you can collect data when a cloud service runs locally or in Azure.
 
-###プロファイル データをローカルで収集する目的:###
+###<a name="collect-profiling-data-locally-to:###"></a>Collect profiling data locally to:###
 
-- 実際にシミュレートされた負荷を必要としない特定の worker ロールの実行など、クラウド サービスの一部のパフォーマンスをテストする。
+- Test the performance of a part of a cloud service, such as the execution of specific worker role, that doesn’t require a realistic simulated load.
 
-- 分離され、制御された条件下で、クラウド サービスのパフォーマンスをテストする。
+- Test the performance of a cloud service in isolation, under controlled conditions.
 
-- クラウド サービスを Azure にデプロイする前にパフォーマンスをテストする。
+- Test the performance of a cloud service before you deploy it to Azure.
 
-- 既存のデプロイに影響を及ぼすことなく、非公開でクラウド サービスのパフォーマンスをテストする。
+- Test the performance of a cloud service privately, without disturbing the existing deployments.
 
-- Azure で実行するための料金を発生させることなく、サービスのパフォーマンスをテストする。
+- Test the performance of the service without incurring charges for running in Azure.
 
-###プロファイル データを Azure で収集する目的:###
+###<a name="collect-profiling-data-in-azure-to:###"></a>Collect profiling data in Azure to:###
 
-- シミュレートされた、または実際の負荷でクラウド サービスのパフォーマンスをテストする。
+- Test the performance of a cloud service under a simulated or real load.
 
-- このトピックの後半で説明するように、プロファイル データの収集のインストルメンテーション メソッドを使用する。
+- Use the instrumentation method of collecting profiling data, as this topic describes later.
 
-- サービスの運用時と同じ環境で、サービスのパフォーマンスをテストする。
+- Test the performance of the service in the same environment as when the service runs in production.
 
-通常は、標準またはストレス条件でクラウド サービスをテストするための負荷をシミュレートします。
+You typically simulate a load to test cloud services under normal or stress conditions.
 
-## Azure でクラウド サービスをプロファイルする
+## <a name="profiling-a-cloud-service-in-azure"></a>Profiling a cloud service in Azure
 
-Visual Studio からクラウド サービスを発行すると、サービスをプロファイルし、必要な情報を提供するプロファイル設定を指定できます。プロファイル セッションは、ロールの各インスタンスで開始されます。Visual Studio からサービスを発行する方法の詳細については、「[Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)」を参照してください。
+When you publish your cloud service from Visual Studio, you can profile the service and specify the profiling settings that give you the information that you want. A profiling session is started for each instance of a role. For more information about how to publish your service from Visual Studio, see [Publishing to an Azure Cloud Service from Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx).
 
-Visual Studio でのパフォーマンスのプロファイルの詳細については、「[パフォーマンス プロファイルの初心者向けガイド](https://msdn.microsoft.com/library/azure/ms182372.aspx)」および「[プロファイル ツールを使用したアプリケーション パフォーマンスの分析](https://msdn.microsoft.com/library/azure/z9z62c29.aspx)」を参照してください。
+To understand more about performance profiling in Visual Studio, see [Beginners Guide to Performance Profiling](https://msdn.microsoft.com/library/azure/ms182372.aspx) and [Analyzing Application Performance by Using Profiling Tools](https://msdn.microsoft.com/library/azure/z9z62c29.aspx).
 
->[AZURE.NOTE] クラウド サービスを発行するときに、IntelliTrace またはプロファイルを有効にすることができます。両方を有効にすることはできません。
+>[AZURE.NOTE] You can enable either IntelliTrace or profiling when you publish your cloud service. You can't enable both.
 
-###プロファイラーの収集メソッド
+###<a name="profiler-collection-methods"></a>Profiler collection methods
 
-パフォーマンスの問題に基づいて、プロファイルのためのさまざまな収集メソッドを使用できます。
+You can use different collection methods for profiling, based on your performance issues:
 
-- **CPU サンプリング** - このメソッドでは、CPU 使用率の問題の初期分析に役立つアプリケーションの統計情報を収集します。CPU サンプリングは、ほとんどのパフォーマンス調査を開始するために推奨されるメソッドです。CPU のサンプリング データを収集する際に、プロファイルするアプリケーションにはあまり影響を与えません。
+- **CPU sampling** - This method collects application statistics that are useful for initial analysis of CPU utilization issues. CPU sampling is the suggested method for starting most performance investigations. There is a low impact on the application that you are profiling when you collect CPU sampling data.
 
-- **インストルメンテーション** - このメソッドでは、対象を絞った分析および入出力のパフォーマンスの問題の分析に役立つ詳細なタイミング データを収集します。インストルメンテーション メソッドはプロファイル実行中にモジュールで行われた関数の入力、終了、および関数呼び出しをすべて記録します。このメソッドは、コードのセクションに関する詳細なタイミング情報を収集したり、入出力操作がアプリケーションのパフォーマンスに与える影響を理解したりするのに便利です。このメソッドは、32 ビットのオペレーティング システムを実行するコンピューターでは無効です。このオプションは、クラウド サービスをコンピューティング エミュレーターでローカルにではなく、Azure で実行する場合にのみ有効です。
+- **Instrumentation** -This method collects detailed timing data that is useful for focused analysis and for analyzing input/output performance issues. The instrumentation method records each entry, exit, and function call of the functions in a module during a profiling run. This method is useful for gathering detailed timing information about a section of your code and for understanding the impact of input and output operations on application performance. This method is disabled for a computer running a 32-bit operating system. This option is available only when you run the cloud service in Azure, not locally in the compute emulator.
 
-- **.NET メモリ割り当て** - このメソッドは、サンプリング プロファイル メソッドを使用して .NET Framework メモリ割り当てデータを収集します。収集されたデータには割り当てられたオブジェクトの数とサイズが含まれています。
+- **.NET Memory Allocation** - This method collects .NET Framework memory allocation data by using the sampling profiling method. The collected data includes the number and size of allocated objects.
 
-- **同時実行** - このメソッドは、リソース競合データと、マルチスレッドおよびマルチプロセス アプリケーションの分析に役立つプロセスおよびスレッドの実行データを収集します。同時実行メソッドは、アプリケーション リソースへのアクセスのロックが解放されるのをスレッドが待機している場合などに、コードの実行をブロックする各イベントのデータを収集します。このメソッドはマルチスレッド アプリケーションを分析する場合に便利です。
+- **Concurrency** - This method collects resource contention data, and process and thread execution data that is useful in analyzing multi-threaded and multi-process applications. The concurrency method collects data for each event that blocks execution of your code, such as when a thread waits for locked access to an application resource to be freed. This method is useful for analyzing multi-threaded applications.
 
-- **階層の相互作用のプロファイル**を有効にすることもできます。これは、1 つまたは複数のデータベースと通信する多層アプリケーションの関数の ADO.NET 同期呼び出しの実行時間に関する追加情報を提供します。どのプロファイル メソッドでも階層の相互作用データを収集できます。階層の相互作用のプロファイルの詳細については、「[階層の相互作用ビュー](https://msdn.microsoft.com/library/azure/dd557764.aspx)」を参照してください。
+- You can also enable **Tier Interaction Profiling**, which provides additional information about the execution times of synchronous ADO.NET calls in functions of multi-tiered applications that communicate with one or more databases. You can collect tier interaction data with any of the profiling methods. For more information about tier interaction profiling, see [Tier Interactions View](https://msdn.microsoft.com/library/azure/dd557764.aspx).
 
-## プロファイル設定を構成する
+## <a name="configuring-profiling-settings"></a>Configuring profiling settings
 
-次の図は、[Azure アプリケーションの公開] ダイアログ ボックスからプロファイル設定を構成する方法を示します。
+The following illustration shows how to configure your profiling settings from the Publish Azure Application dialog box.
 
 ![Configure Profiling Settings](./media/vs-azure-tools-performance-profiling-cloud-services/IC526984.png)
 
->[AZURE.NOTE] **[プロファイルを有効にする]** チェック ボックスを有効にするには、クラウド サービスの発行に使用しているローカル コンピューターにプロファイラーがインストールされている必要があります。既定では、プロファイラーは Visual Studio のインストール時にインストールされます。
+>[AZURE.NOTE] To enable the **Enable profiling** check box, you must have the profiler installed on the local computer that you are using to publish your cloud service. By default, the profiler is installed when you install Visual Studio.
 
-### プロファイル設定を構成するには
+### <a name="to-configure-profiling-settings"></a>To configure profiling settings
 
-1. ソリューション エクスプローラーで Azure プロジェクトのショートカット メニューを開き、**[発行]** を選択します。クラウド サービスを発行する方法の詳細については、「[Azure Tools を使用したクラウド サービスの発行](http://go.microsoft.com/fwlink/p?LinkId=623012)」を参照してください。
+1. In Solution Explorer, open the shortcut menu for your Azure project, and then choose **Publish**. For detailed steps about how to publish a cloud service, see [Publishing a cloud service using the Azure tools](http://go.microsoft.com/fwlink/p?LinkId=623012).
 
-1. **[Azure アプリケーションの公開]** ダイアログ ボックスで、**[詳細設定]** タブを選択します。
+1. In the **Publish Azure Application** dialog box, chose the **Advanced Settings** tab.
 
-1. プロファイルを有効にするには、**[プロファイルを有効にする]** チェック ボックスをオンにします。
+1. To enable profiling, select the **Enable profiling** check box.
 
-1. プロファイル設定を構成するには、**[設定]** ハイパーリンクをクリックします。[プロファイル設定] ダイアログ ボックスが表示されます。
+1. To configure your profiling settings, choose the **Settings** hyperlink. The Profiling Settings dialog box appears.
 
-1. **[使用するプロファイル方法を指定してください]** オプションで、必要なプロファイルの種類を選択します。
+1. From the **What method of profiling would you like to use** option buttons, choose the type of profiling that you need.
 
-1. 階層の相互作用プロファイル データを収集するには、**[階層の相互作用のプロファイルを有効にする]** チェック ボックスをオンにします。
+1. To collect the tier interaction profiling data, select the **Enable Tier Interaction Profiling** check box.
 
-1. 設定を保存するには、**[OK]** をクリックします。
+1. To save the settings, choose the **OK** button.
 
-    このアプリケーションの発行時に、これらの設定を使用して各ロールのプロファイル セッションが作成されます。
+    When you publish this application, these settings are used to create the profiling session for each role.
 
-## プロファイル レポートの表示
+## <a name="viewing-profiling-reports"></a>Viewing Profiling Reports
 
-プロファイル セッションは、クラウド サービスのロールの各インスタンスに対して作成されます。Visual Studio から各セッションのプロファイル レポートを表示するには、[サーバー エクスプローラー] ウィンドウを表示し、Azure の計算ノードを選択することで、ロールのインスタンスを選択できます。これで、次の図に示すように、プロファイル レポートを表示できます。
+A profiling session is created for each instance of a role in your cloud service. To view your profiling reports of each session from Visual Studio, you can view the Server Explorer window and then choose the Azure Compute node to select an instance of a role. You can then view the profiling report as shown in the following illustration.
 
 ![View Profiling Report from Azure](./media/vs-azure-tools-performance-profiling-cloud-services/IC748914.png)
 
-### プロファイル レポートを表示するには
+### <a name="to-view-profiling-reports"></a>To view profiling reports
 
-1. Visual Studio でサーバー エクスプローラーを表示するには、メニュー バーの [表示] を選択して、[サーバー エクスプローラー] を選択します。
+1. To view the Server Explorer window in Visual Studio, on the menu bar choose View, Server Explorer.
 
-1. Azure の計算ノードを選択し、Visual Studio から発行したときにプロファイルに選択したクラウド サービスの Azure デプロイ ノードを選択します。
+1. Choose the Azure Compute node, and then choose the Azure deployment node for the cloud service that you selected to profile when you published from Visual Studio.
 
-1. インスタンスのプロファイル レポートを表示するには、サービスでロールを選択し、特定のインスタンスのショートカット メニューを開いて **[プロファイル レポートの表示]** を選択します。
+1. To view profiling reports for an instance, choose the role in the service, open the shortcut menu for a specific instance, and then choose **View Profiling Report**.
 
-    レポートの .vsp ファイルが Azure からダウンロードされ、ダウンロードの状態が Azure のアクティビティ ログに表示されます。ダウンロードが完了すると、<Role name>_<Instance Number>_<identifier>.vsp という名前のプロファイル レポートが Visual Studio のエディターのタブに表示されます。レポートの概要データが表示されます。
+    The report, a .vsp file, is now downloaded from Azure, and the status of the download appears in the  Azure Activity Log. When the download completes, the profiling report appears in a tab in the editor for Visual Studio named <Role name>_<Instance Number>_<identifier>.vsp. Summary data for the report appears.
 
-1. [現在のビュー] の一覧にレポートの異なるビューを表示するには、表示するビューの種類を選択します。詳細については、「[プロファイル ツールのレポート ビュー](https://msdn.microsoft.com/library/azure/bb385755.aspx)」を参照してください。
+1. To display different views of the report, in the Current View list, choose the type of view that you want. For more information, see [Profiling Tools Report Views](https://msdn.microsoft.com/library/azure/bb385755.aspx).
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[クラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
+[Debugging Cloud Services](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
-[Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)
+[Publishing to an Azure Cloud Service from Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

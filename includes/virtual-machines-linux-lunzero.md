@@ -1,19 +1,21 @@
-データ ディスクを Linux VM に追加するときに、LUN 0 にディスクが存在しないと、エラーが発生することがあります。`azure vm disk attach-new` コマンドを使用して手動でディスクを追加していて、Azure プラットフォームに適切な LUN を判定させるのではなく、LUN を指定する (`--lun`) 場合は、ディスクが既に存在するまたは LUN 0 に存在する予定であるようにしてください。
+When adding data disks to a Linux VM, you may encounter errors if a disk does not exist at LUN 0. If you are adding a disk manually using the `azure vm disk attach-new` command and you specify a LUN (`--lun`) rather than allowing the Azure platform to determine the appropriate LUN, take care that a disk already exists / will exist at LUN 0. 
 
-`lsscsi` からの出力のスニペットを示す次の例を考えてみましょう。
+Consider the following example showing a snippet of the output from `lsscsi`:
 
 ```bash
 [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc 
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-2 つのデータ ディスクは LUN 0 と LUN 1 に存在します (`lsscsi` の出力詳細の最初の列は `[host:channel:target:lun]` です)。両方のディスクには、VM 内からアクセスできる必要があります。LUN 1 で追加対象の最初のディスク、LUN 2 で 2 番目のディスクを手動で指定した場合は、VM 内からこれらのディスクを正しく見ることはできません。
+The two data disks exist at LUN 0 and LUN 1 (the first column in the `lsscsi` output details `[host:channel:target:lun]`). Both disks should be accessbile from within the VM. If you had manually specified the first disk to be added at LUN 1 and the second disk at LUN 2, you may not see the disks correctly from within your VM.
 
-> [AZURE.NOTE] これらの例では Azure の `host` 値は 5 ですが、選択したストレージの種類によっては変わる可能性があります。
+> [AZURE.NOTE] The Azure `host` value is 5 in these examples, but this may vary depending on the type of storage you select.
 
-このディスクの動作は Azure の問題ではなく、Linux カーネルが SCSI の仕様に従う仕組みです。Linux カーネルが接続されているデバイスの SCSI バスをスキャンするときに、デバイスが LUN 0 で検出される必要があります。システムが他のデバイスのスキャンを続行できるようにするためです。そのため、次のようにしてください。
+This disk behavior is not an Azure problem, but the way in which the Linux kernel follows the SCSI specifications. When the Linux kernel scans the SCSI bus for attached devices, a device must be found at LUN 0 in order for the system to continue scanning for additional devices. As such:
 
-- データ ディスクを追加した後に `lsscsi` の出力を確認し、LUN 0 にディスクがあることを確認します。
-- ディスクが VM 内に正しく表示されない場合は、ディスクが LUN 0 に存在することを確認します。
+- Review the output of `lsscsi` after adding a data disk to verify that you have a disk at LUN 0.
+- If your disk does not show up correctly within your VM, verify a disk exists at LUN 0.
 
-<!---HONumber=AcomDC_0803_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

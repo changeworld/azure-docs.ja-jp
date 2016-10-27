@@ -1,68 +1,73 @@
 <properties
-	pageTitle="ロールベースの Access Control | Microsoft Azure"
-	description="Azure ポータルで Azure のロールベースのアクセス制御を使用したアクセス管理を開始します。ロールの割り当てを使用して、ディレクトリ内でアクセス許可を割り当てます。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+    pageTitle="Role-Based Access Control | Microsoft Azure"
+    description="Get started in access management with Azure role-based access control in the Azure Portal. Use role assignments to assign permissions in your directory."
+    services="active-directory"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/03/2016"
-	ms.author="kgremban"/>
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+    ms.date="08/03/2016"
+    ms.author="kgremban"/>
 
-# Azure ポータルでのアクセス管理の概要
 
-セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。Azure のロールベースの Access Control (RBAC) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
+# <a name="get-started-with-access-management-in-the-azure-portal"></a>Get started with access management in the Azure portal
 
-RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。たとえば、RBAC を使用して、ある従業員にはサブスクリプションで仮想マシンを管理できるようにし、他の従業員にも同じサブスクリプション内で SQL データベースを管理できるようにします。
+Security-oriented companies should focus on giving employees the exact permissions they need. Too many permissions exposes an account to attackers. Too few permissions means that employees can't get their work done efficiently. Azure Role-Based Access Control (RBAC) helps address this problem by offering fine-grained access management for Azure.
 
-## Azure でのアクセス管理の基礎
-各 Azure サブスクリプションは、1 つの Azure Active Directory (AD) ディレクトリと関連付けられます。そのディレクトリに登録されたユーザー、グループ、およびアプリケーションのみが、Azure サブスクリプションでリソースを管理できます。このためのアクセス権は、Azure ポータル、Azure コマンドライン ツール、および Azure 管理 API を使用して割り当てます。
+Using RBAC, you can segregate duties within your team and grant only the amount of access to users that they need to perform their jobs. Instead of giving everybody unrestricted permissions in your Azure subscription or resources, you can allow only certain actions. For example, use RBAC to let one employee manage virtual machines in a subscription, while another can manage SQL databases within the same subscription.
 
-アクセス権を付与するには、ユーザー、グループ、およびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てます。ロール割り当てのスコープには、サブスクリプション、リソース グループ、または単独のリソースを指定できます。親スコープでロールが割り当てられると、その親に含まれる子へのアクセス権も付与されます。たとえば、リソース グループへのアクセス権を持つユーザーは、Web サイト、仮想マシン、サブネットなど、リソース グループに含まれるすべてのリソースを管理できます。
+## <a name="basics-of-access-management-in-azure"></a>Basics of access management in Azure
+Each Azure subscription is associated with one Azure Active Directory (AD) directory. Users, groups, and applications from that directory can manage resources in the Azure subscription. Assign these access rights using the Azure portal, Azure command-line tools, and Azure Management APIs.
+
+Grant access by assigning the appropriate RBAC role to users, groups, and applications at a certain scope. The scope of a role assignment can be a subscription, a resource group, or a single resource. A role assigned at a parent scope also grants access to the children contained within it. For example, a user with access to a resource group can manage all the resources it contains, like websites, virtual machines, and subnets.
 
 ![Relationship between Azure Active Directory elements - diagram](./media/role-based-access-control-what-is/rbac_aad.png)
 
-割り当てる RBAC ロールにより、そのスコープ内でユーザー、グループ、またはアプリケーションが管理できるリソースが決まります。
+The RBAC role that you assign dictates what resources the user, group, or application can manage within that scope.
 
-## 組み込みのロール
-Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロールがあります。
+## <a name="built-in-roles"></a>Built-in roles
+Azure RBAC has three basic roles that apply to all resource types:
 
-- **所有者**は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。
-- **作成協力者**は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。
-- **閲覧者**は、既存の Azure リソースを表示できます。
+- **Owner** has full access to all resources including the right to delegate access to others.
+- **Contributor** can create and manage all types of Azure resources but can’t grant access to others.
+- **Reader** can view existing Azure resources.
 
-残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。たとえば、仮想マシンの作成協力者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。その一方で、仮想マシンが接続する仮想ネットワークまたはサブネットへのアクセス権は付与されません。
+The rest of the RBAC roles in Azure allow management of specific Azure resources. For example, the Virtual Machine Contributor role allows the user to create and manage virtual machines. It does not give them access to the virtual network or the subnet that the virtual machine connects to.
 
-「[RBAC: 組み込みのロール](role-based-access-built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。各組み込みロールによってユーザーに付与される操作とスコープが説明されています。制御を強化するために独自のロールを定義する場合は、[Azure RBAC でカスタム ロール](role-based-access-control-custom-roles.md)を作成する方法を参照してください。
+[RBAC built-in roles](role-based-access-built-in-roles.md) lists the roles available in Azure. It specifies the operations and scope that each built-in role grants to users. If you're looking to define your own roles for even more control, see how to build [Custom roles in Azure RBAC](role-based-access-control-custom-roles.md).
 
-## リソース階層とアクセス権の継承
-- Azure 内の各**サブスクリプション**は、1 つのディレクトリのみに属しています。
-- 各**リソース グループ**は、1 つのサブスクリプションのみに属しています。
-- 各**リソース**は、1 つのリソース グループのみに属しています。
+## <a name="resource-hierarchy-and-access-inheritance"></a>Resource hierarchy and access inheritance
+- Each **subscription** in Azure belongs to only one directory.
+- Each **resource group** belongs to only one subscription.
+- Each **resource** belongs to only one resource group.
 
-親スコープで付与されたアクセス権は、子スコープに継承されます。For example:
+Access that you grant at parent scopes is inherited at child scopes. For example:
 
-- 閲覧者ロールをサブスクリプション スコープで Azure AD グループに割り当てると、そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとすべてのリソースを表示できるようになります。
-- 作成協力者ロールをリソース グループ スコープでアプリケーションに割り当てると、そのアプリケーションでは、そのリソース グループ内のすべてのタイプのリソースを管理できるようになりますが、サブスクリプション内の他のリソース グループは管理できません。
+- You assign the Reader role to an Azure AD group at the subscription scope. The members of that group can view every resource group and resource in the subscription.
+- You assign the Contributor role to an application at the resource group scope. It can manage resources of all types in that resource group, but not other resource groups in the subscription.
 
-## Azure RBAC と従来のサブスクリプションの管理者の比較
-従来のサブスクリプションの管理者と共同管理者には、Azure サブスクリプションへのフル アクセス権があります。リソースの管理には、[Azure ポータル](https://portal.azure.com)と Azure Resource Manager API の組み合わせ、または [Azure クラシック ポータル](https://manage.windowsazure.com)と Azure クラシック デプロイメント モデルの組み合わせを使用できます。RBAC モデルで、従来の管理者は、サブスクリプション スコープで所有者ロールを割り当てられます。
+## <a name="azure-rbac-vs.-classic-subscription-administrators"></a>Azure RBAC vs. classic subscription administrators
+Classic subscription administrators and co-admins have full access to the Azure subscription. They can manage resources using the [Azure portal](https://portal.azure.com) with Azure Resource Manager APIs, or the [Azure classic portal](https://manage.windowsazure.com) and Azure classic deployment model. In the RBAC model, classic administrators are assigned the Owner role at the subscription scope.
 
-Azure RBAC は Azure ポータルと新しい Azure Resource Manager API の組み合わせのみでサポートされています。RBAC ロールを割り当てられているユーザーとアプリケーションは、クラシック管理ポータルと Azure クラシック デプロイメント モデルを使用できません。
+Only the Azure portal and the new Azure Resource Manager APIs support Azure RBAC. Users and applications that are assigned RBAC roles cannot use the classic management portal and the Azure classic deployment model.
 
-## 管理操作とデータ操作の許可
-Azure RBAC は、Azure ポータルと Azure Resource Manager API での Azure リソースの管理操作のみに対応しています。Azure リソースのデータ レベルの操作の中には、許可されていないものもあります。たとえば、同じユーザーにストレージ アカウントを管理することを承認できますが、ストレージ アカウントでの BLOB またはテーブルの操作を許可することはできません。同様に、SQL データベースは管理できますが、その中のテーブルは管理できません。
+## <a name="authorization-for-management-vs.-data-operations"></a>Authorization for management vs. data operations
+Azure RBAC only supports management operations of the Azure resources in the Azure portal and Azure Resource Manager APIs. It cannot authorize all data level operations for Azure resources. For example, you can authorize someone to manage Storage Accounts, but not to the blobs or tables within a Storage Account cannot. Similarly, a SQL database can be managed, but not the tables within it.
 
-## 次のステップ
-- [Azure ポータルでのロールベースの Access Control](role-based-access-control-configure.md) の基礎を確認する
-- [RBAC の組み込みロール](role-based-access-built-in-roles.md)を確認する
-- 独自の [Azure RBAC カスタム ロール](role-based-access-control-custom-roles.md)を定義する
+## <a name="next-steps"></a>Next Steps
+- Get started with [Role-Based Access Control in the Azure portal](role-based-access-control-configure.md).
+- See the [RBAC built-in roles](role-based-access-built-in-roles.md)
+- Define your own [Custom roles in Azure RBAC](role-based-access-control-custom-roles.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

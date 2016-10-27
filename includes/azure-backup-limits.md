@@ -1,24 +1,35 @@
-<properties
-   pageTitle="Azure Backup に関する制限の表"
-   description="Azure Backup に関するシステムの制限について説明します。"
+ (backup vaults<properties
+   pageTitle="Azure Backup limits table"
+   description="Describes system limits for Azure Backup."
    services="backup"
    documentationCenter="NA"
    authors="Jim-Parker"
    manager="jwhit"
    editor="" />
-<tags  ms.service="backup" ms.devlang="NA" ms.topic="article" ms.tgt_pltfrm="NA" ms.workload="TBD" ms.date="10/05/2015" ms.author="trinadhk";"jimpark"; "aashishr" />
+<tags
+   ms.service="backup"
+   ms.devlang="NA"
+   ms.topic="article"
+   ms.tgt_pltfrm="NA"
+   ms.workload="TBD"
+   ms.date="10/05/2015"
+   ms.author="trinadhk";"jimpark"; "aashishr" />
 
 
-次の制限は、Azure Backup に適用されます。
+The following limits apply to Azure Backup.
 
-| 制限の種類 | 既定の制限 |
+| Limit Identifier | Default Limit |
 |---|---|
-|各資格情報コンテナーに登録できるサーバーやマシンの数|Windows Server/Client/SCDPM で 50 <br/> IaaS VM で 200|
-|Azure 資格情報コンテナー ストレージに格納されるデータのデータ ソースのサイズ|最大 54400 GB<sup>1</sup>|
-|各 Azure サブスクリプションで作成できるバックアップ資格情報コンテナー数|25|
-|1 日にバックアップをスケジュールできる回数|Windows Server/Client で 1 日 3 回<br/> SCDPM で 1 日 2 回<br/> IaaS VM で 1 日 1 回|
-|バックアップ用に Azure の仮想マシンに接続できるデータ ディスクの数|16|
+|Number of servers/machines that can be registered against each vault|50 for Windows Server/Client/SCDPM <br/> 200 for IaaS VMs|
+|Size of a data source for data stored in Azure vault storage|54400 GB max<sup>1</sup>|
+|Number of backup vaults that can be created in each Azure subscription|25(Backup vaults) <br/> 25 Recovery Services vault per region|
+|Number of times backup can be scheduled per day|3 per day for Windows Server/Client <br/> 2 per day for SCDPM <br/> Once a day for IaaS VMs|
+|Data disks attached to an Azure virtual machine for backup|16|
 
-- <sup>1</sup> 54400 GB の制限は、IaaS VM のバックアップには適用されません。
+- <sup>1</sup>The 54400 GB limit does not apply to IaaS VM backup.
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

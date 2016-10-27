@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Reliable Actors のイベント | Microsoft Azure"
-   description="Service Fabric Reliable Actors のイベントの概要"
+   pageTitle="Reliable Actors events | Microsoft Azure"
+   description="Introduction to events for Service Fabric Reliable Actors."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -17,12 +17,13 @@
    ms.author="amanbha"/>
 
 
-# アクター イベント
-アクター イベントは、アクターからクライアントにベスト エフォート通知を送信する方法を提供します。アクター イベントは、アクターとクライアントの通信用に設計されており、アクター間の通信には使用できません。
 
-次のコード スニペットは、アプリケーションでアクター イベントを使用する方法を示しています。
+# <a name="actor-events"></a>Actor events
+Actor events provide a way to send best-effort notifications from the actor to the clients. Actor events are designed for actor-to-client communication and should not be used for actor-to-actor communication.
 
-アクターによって発行されたイベントを表すインターフェイスを定義します。このインターフェイスは、`IActorEvents` インターフェイスから派生する必要があります。メソッドの引数は、[データ コントラクト シリアル化可能](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)である必要があります。イベント通知が一方向かつベスト エフォートであるため、メソッドは void を返す必要があります。
+The following code snippets show how to use actor events in your application.
+
+Define an interface that describes the events published by the actor. This interface must be derived from the `IActorEvents` interface. The arguments of the methods must be [data contract serializable](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). The methods must return void, as event notifications are one way and best effort.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -31,7 +32,7 @@ public interface IGameEvents : IActorEvents
 }
 ```
 
-アクター インターフェイスで、アクターによって発行されたイベントを宣言します。
+Declare the events published by the actor in the actor interface.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -42,7 +43,7 @@ public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
 }
 ```
 
-クライアント側で、イベント ハンドラーを実装します。
+On the client side, implement the event handler.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -54,7 +55,7 @@ class GameEventsHandler : IGameEvents
 }
 ```
 
-クライアント側で、イベントを発行するアクターに対してプロキシを作成し、そのイベントをサブスクライブします。
+On the client, create a proxy to the actor that publishes the event and subscribe to its events.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -63,19 +64,23 @@ var proxy = ActorProxy.Create<IGameActor>(
 await proxy.SubscribeAsync<IGameEvents>(new GameEventsHandler());
 ```
 
-フェールオーバーが発生した場合、アクターは別のプロセスまたはノードにフェールオーバーする可能性があります。アクター プロキシは、アクティブなサブスクリプションを管理し、自動的に再サブスクライブします。`ActorProxyEventExtensions.SubscribeAsync<TEvent>` API を介して、再サブスクリプションの間隔を制御できます。サブスクリプションを解除するには、`ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API を使用します。
+In the event of failovers, the actor may fail over to a different process or node. The actor proxy manages the active subscriptions and automatically re-subscribes them. You can control the re-subscription interval through the `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API. To unsubscribe, use the `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API.
 
-アクターで、イベントが発生したときに単純に発行します。イベントをサブスクライブしているユーザーがいる場合、アクター ランタイムはこれらのユーザーに通知を送信します。
+On the actor, simply publish the events as they happen. If there are subscribers to the event, the Actors runtime will send them the notification.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();
 ev.GameScoreUpdated(Id.GetGuidId(), score);
 ```
 
-## 次のステップ
- - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
- - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
- - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [コード サンプル](https://github.com/Azure/servicefabric-samples)
+## <a name="next-steps"></a>Next steps
+ - [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
+ - [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
+ - [Actor API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [Sample code](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

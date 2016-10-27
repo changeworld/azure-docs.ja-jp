@@ -1,418 +1,419 @@
 <properties
-	pageTitle="サービス管理 API の使用方法 (Python) - 機能ガイド"
-	description="Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。"
-	services="cloud-services"
-	documentationCenter="python"
-	authors="lmazuel"
-	manager="wpickett"
-	editor=""/>
+    pageTitle="How to use the service management API (Python) - feature guide"
+    description="Learn how to programmatically perform common service management tasks from Python."
+    services="cloud-services"
+    documentationCenter="python"
+    authors="lmazuel"
+    manager="wpickett"
+    editor=""/>
 
 <tags
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="python"
-	ms.topic="article"
-	ms.date="09/06/2016"
-	ms.author="lmazuel"/>
+    ms.service="cloud-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="python"
+    ms.topic="article"
+    ms.date="09/06/2016"
+    ms.author="lmazuel"/>
 
-# Python からサービス管理を使用する方法
 
-> [AZURE.NOTE] サービス管理 API は、新しいリソース管理 API (現在のところ、プレビュー リリースで使用できます) によって置き換えられます。Python から新しいリソース管理 API を使用する詳細については、「[Azure リソース管理ドキュメント](http://azure-sdk-for-python.readthedocs.org/)」を参照してください。
+# <a name="how-to-use-service-management-from-python"></a>How to use Service Management from Python
 
-このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。**Azure SDK for Python** の [ServiceManagementService](https://github.com/Azure/azure-sdk-for-python) クラスは、[Azure クラシック ポータル][management-portal]で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除**など) の多くへのプログラムによるアクセスをサポートしています。この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
+> [AZURE.NOTE] Service Management API is being replaced with the new Resource Management API, currently available in a preview release.  See the [Azure Resource Management documentation](http://azure-sdk-for-python.readthedocs.org/) for details on using the new Resource Management API from Python.
 
-## <a name="WhatIs"> </a>サービス管理とは
-サービス管理 API を使用すると、[Azure クラシック ポータル][management-portal]を通じて使用できるサービス管理機能の多くにプログラムでアクセスできます。Azure SDK for Python を使用すると、クラウド サービスとストレージ アカウントを管理できます。
+This guide shows you how to programmatically perform common service management tasks from Python. The **ServiceManagementService** class in the [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) supports programmatic access to much of the service management-related functionality that is available in the [Azure classic portal][management-portal] (such as **creating, updating, and deleting cloud services, deployments, data management services, and virtual machines**). This functionality can be useful in building applications that need programmatic access to service management.
 
-Service Management API を使用するには、[Azure アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)必要があります。
+## <a name="<a-name="whatis">-</a>what-is-service-management"></a><a name="WhatIs"> </a>What is Service Management
+The Service Management API provides programmatic access to much of the service management functionality available through the [Azure classic portal][management-portal]. The Azure SDK for Python allows you to manage your cloud services and storage accounts.
 
-## <a name="Concepts"> </a>概念
-Azure SDK for Python は、REST API である [Azure サービス管理 API][svc-mgmt-rest-api] をラップします。すべての API 操作は SSL 上で実行され、X.509 v3 証明書を使用して相互認証されます。管理サービスへのアクセスは、Azure で実行されているサービス内から行うことも、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット上で直接行うこともできます。
+To use the Service Management API, you need to [create an Azure account](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="Installation"> </a>インストール
+## <a name="<a-name="concepts">-</a>concepts"></a><a name="Concepts"> </a>Concepts
+The Azure SDK for Python wraps the [Azure Service Management API][svc-mgmt-rest-api], which is a REST API. All API operations are performed over SSL and mutually authenticated using X.509 v3 certificates. The management service may be accessed from within a service running in Azure, or directly over the Internet from any application that can send an HTTPS request and receive an HTTPS response.
 
-`azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。インストールの詳細については (たとえば、Python を初めて使用する場合)、[Python と Azure SDK のインストール](../python-how-to-install.md)に関する記事をご覧ください
+## <a name="<a-name="installation">-</a>installation"></a><a name="Installation"> </a>Installation
 
-## <a name="Connect"> </a>方法: サービス管理に接続する
-サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。サブスクリプション ID は [Azure クラシック ポータル][management-portal]から入手できます。
+All the features described in this article are available in the `azure-servicemanagement-legacy` package, which you can install using pip. For more details about installation (for example, if you are new to Python), consult this article: [Installing Python and the Azure SDK](../python-how-to-install.md)
 
-> [AZURE.NOTE] Azure SDK for Python v0.8.0 以降、Windows で実行中の OpenSSL で作成した証明書を使用できるようになりました。これには、Python 2.7.4 以降が必要です。.pfx 証明書のサポートは今後削除される可能性があるため、.pfx の代わりに OpenSSL を使用することをお勧めします。
+## <a name="<a-name="connect">-</a>how-to:-connect-to-service-management"></a><a name="Connect"> </a>How to: Connect to service management
+To connect to the Service Management endpoint, you need your Azure subscription ID and a valid management certificate. You can obtain your subscription ID through the [Azure classic portal][management-portal].
 
-### Windows、Mac または Linux での管理証明書 (OpenSSL)
-[OpenSSL](http://www.openssl.org/) を使用して管理証明書を作成できます。実際は 2 つの証明書を作成する必要があります。1 つはサーバー用 (`.cer` ファイル)、もう 1 つはクライアント用 (`.pem` ファイル) です。`.pem` ファイルを作成するには、次のコマンドを実行します。
+> [AZURE.NOTE] Since Azure SDK for Python v0.8.0, it is now possible to use certificates created with OpenSSL when running on Windows.  It requires Python 2.7.4 or later. We recommend users to use OpenSSL instead of .pfx, since support for .pfx certificates will likely be removed in the future.
+
+### <a name="management-certificates-on-windows/mac/linux-(openssl)"></a>Management certificates on Windows/Mac/Linux (OpenSSL)
+You can use [OpenSSL](http://www.openssl.org/) to create your management certificate.  You actually need to create two certificates, one for the server (a `.cer` file) and one for the client (a `.pem` file). To create the `.pem` file, execute:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-`.cer` 証明書を作成するには、次のコマンドを実行します。
+To create the `.cer` certificate, execute:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Azure 証明書の詳細については、「[Azure Cloud Services の証明書の概要](./cloud-services-certs-create.md)」を参照してください。OpenSSL のパラメーターの詳細については、[http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html) にあるドキュメントを参照してください。
+For more information about Azure certificates, see [Certificates Overview for Azure Cloud Services](./cloud-services-certs-create.md). For a complete description of OpenSSL parameters, see the documentation at [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
 
-これらのファイルを作成した後、[Azure クラシック ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。また、`.pem` ファイルを保存した場所を書き留めておいてください。
+After you have created these files, you need to upload the `.cer` file to Azure via the "Upload" action of the "Settings" tab of the [Azure classic portal][management-portal], and you need to make note of where you saved the `.pem` file.
 
-サブスクリプション ID を取得し、証明書を作成して、`.cer` ファイルを Azure にアップロードした後、サブスクリプション ID と `.pem` ファイルへのパスを **ServiceManagementService** に渡すことで、Azure の管理エンドポイントに接続できます。
+After you have obtained your subscription ID, created a certificate, and uploaded the `.cer` file to Azure, you can connect to the Azure management endpoint by passing the subscription id and the path to the `.pem` file to **ServiceManagementService**:
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	subscription_id = '<your_subscription_id>'
-	certificate_path = '<path_to_.pem_certificate>'
+    subscription_id = '<your_subscription_id>'
+    certificate_path = '<path_to_.pem_certificate>'
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-前の例では、`sms` は **ServiceManagementService** オブジェクトです。**ServiceManagementService** クラスは、Azure サービスを管理するときに使用する主要なクラスです。
+In the preceding example, `sms` is a **ServiceManagementService** object. The **ServiceManagementService** class is the primary class used to manage Azure services.
 
-### Windows での管理証明書 (MakeCert)
+### <a name="management-certificates-on-windows-(makecert)"></a>Management certificates on Windows (MakeCert)
 
-`makecert.exe` を使用して、マシン上で自己署名管理証明書を作成できます。**管理者**として **Visual Studio コマンド プロンプト**を開き、次のコマンドを使用して、*AzureCertificate* を、使用する証明書の名前に置き換えます。
+You can create a self-signed management certificate on your machine using `makecert.exe`.  Open a **Visual Studio command prompt** as an **administrator** and use the following command, replacing *AzureCertificate* with the certificate name you would like to use.
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
-このコマンドにより、`.cer` ファイルが作成され、**個人用**証明書ストアにインストールされます。詳細については、「[Azure Cloud Services の証明書の概要](./cloud-services-certs-create.md)」を参照してください。
+The command creates the `.cer` file, and installs it in the **Personal** certificate store. For more details, see [Certificates Overview for Azure Cloud Services](./cloud-services-certs-create.md).
 
-証明書を作成した後、[Azure クラシック ポータル][management-portal]の [設定] タブで [アップロード] をクリックして、`.cer` ファイルを Azure にアップロードする必要があります。
+After you have created the certificate, you need to upload the `.cer` file to Azure via the "Upload" action of the "Settings" tab of the [Azure classic portal][management-portal].
 
-サブスクリプション ID を取得し、証明書を作成して、`.cer` ファイルを Azure にアップロードした後、サブスクリプション ID と**個人用**証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、Azure の管理エンドポイントに接続できます (再度、*AzureCertificate* を証明書の名前に置き換えます)。
+After you have obtained your subscription ID, created a certificate, and uploaded the `.cer` file to Azure, you can connect to the Azure management endpoint by passing the subscription id and the location of the certificate in your **Personal** certificate store to **ServiceManagementService** (again, replace *AzureCertificate* with the name of your certificate):
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	subscription_id = '<your_subscription_id>'
-	certificate_path = 'CURRENT_USER\\my\\AzureCertificate'
+    subscription_id = '<your_subscription_id>'
+    certificate_path = 'CURRENT_USER\\my\\AzureCertificate'
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-前の例では、`sms` は **ServiceManagementService** オブジェクトです。**ServiceManagementService** クラスは、Azure サービスを管理するときに使用する主要なクラスです。
+In the preceding example, `sms` is a **ServiceManagementService** object. The **ServiceManagementService** class is the primary class used to manage Azure services.
 
-## <a name="ListAvailableLocations"> </a>方法: 利用可能な場所を列挙する
+## <a name="<a-name="listavailablelocations">-</a>how-to:-list-available-locations"></a><a name="ListAvailableLocations"> </a>How to: List available locations
 
-ホスティング サービスに利用できる場所を列挙するには、**list\_locations** メソッドを使用します。
+To list the locations that are available for hosting services, use the **list\_locations** method:
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	result = sms.list_locations()
-	for location in result:
-		print(location.name)
+    result = sms.list_locations()
+    for location in result:
+        print(location.name)
 
-クラウド サービスやストレージ サービスを作成するときは、有効な場所を指定する必要があります。**list\_locations** メソッドでは常に、現在利用可能な場所の最新のリストが返されます。この記事の執筆時点で利用可能な場所は次のとおりです。
+When you create a cloud service or storage service you need to provide a valid location. The **list\_locations** method always returns an up-to-date list of the currently available locations. As of this writing, the available locations are:
 
-- 西ヨーロッパ
-- 北ヨーロッパ
-- 東南アジア
-- 東アジア
-- 米国中央部
-- 米国中北部
-- 米国中南部
-- 米国西部
-- 米国東部
-- 東日本
-- 西日本
-- ブラジル南部
-- オーストラリア東部
-- オーストラリア南東部
+- West Europe
+- North Europe
+- Southeast Asia
+- East Asia
+- Central US
+- North Central US
+- South Central US
+- West US
+- East US
+- Japan East
+- Japan West
+- Brazil South
+- Australia East
+- Australia Southeast
 
-## <a name="CreateCloudService"> </a>方法: クラウド サービスを作成する
+## <a name="<a-name="createcloudservice">-</a>how-to:-create-a-cloud-service"></a><a name="CreateCloudService"> </a>How to: Create a cloud service
 
-アプリケーションを作成して、それを Azure で実行するときは、そのコードと構成をあわせて Azure [クラウド サービス]と呼びます (以前にリリースした Azure では*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホストされるサービスを作成できます。そのためには、このメソッドに、ホストされるサービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
+When you create an application and run it in Azure, the code and configuration together are called an Azure [cloud service][] (known as a *hosted service* in earlier Azure releases). The **create\_hosted\_service** method allows you to create a new hosted service by providing a hosted service name (which must be unique in Azure), a label (automatically encoded to base64), a description, and a location.
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	name = 'myhostedservice'
-	label = 'myhostedservice'
-	desc = 'my hosted service'
-	location = 'West US'
+    name = 'myhostedservice'
+    label = 'myhostedservice'
+    desc = 'my hosted service'
+    location = 'West US'
 
-	sms.create_hosted_service(name, label, desc, location)
+    sms.create_hosted_service(name, label, desc, location)
 
-**list\_hosted\_services** メソッドを使用して、サブスクリプションのすべてのホストされるサービスを列挙できます。
+You can list all the hosted services for your subscription with the **list\_hosted\_services** method:
 
-	result = sms.list_hosted_services()
+    result = sms.list_hosted_services()
 
-	for hosted_service in result:
-		print('Service name: ' + hosted_service.service_name)
-		print('Management URL: ' + hosted_service.url)
-		print('Location: ' + hosted_service.hosted_service_properties.location)
-		print('')
+    for hosted_service in result:
+        print('Service name: ' + hosted_service.service_name)
+        print('Management URL: ' + hosted_service.url)
+        print('Location: ' + hosted_service.hosted_service_properties.location)
+        print('')
 
-特定のホストされるサービスに関する情報を取得する場合は、ホストされるサービス名を **get\_hosted\_service\_properties** メソッドに渡します。
+If you want to get information about a particular hosted service, you can do so by passing the hosted service name to the **get\_hosted\_service\_properties** method:
 
-	hosted_service = sms.get_hosted_service_properties('myhostedservice')
+    hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
-	print('Service name: ' + hosted_service.service_name)
-	print('Management URL: ' + hosted_service.url)
-	print('Location: ' + hosted_service.hosted_service_properties.location)
+    print('Service name: ' + hosted_service.service_name)
+    print('Management URL: ' + hosted_service.url)
+    print('Location: ' + hosted_service.hosted_service_properties.location)
 
-クラウド サービスを作成した後、**create\_deployment** メソッドを使用してコードをサービスにデプロイできます。
+After you have created a cloud service, you can deploy your code to the service with the **create\_deployment** method.
 
-## <a name="DeleteCloudService"> </a>方法: クラウド サービスを削除する
+## <a name="<a-name="deletecloudservice">-</a>how-to:-delete-a-cloud-service"></a><a name="DeleteCloudService"> </a>How to: Delete a cloud service
 
-クラウド サービスを削除するには、そのサービス名を **delete\_hosted\_service** メソッドに渡します。
+You can delete a cloud service by passing the service name to the **delete\_hosted\_service** method:
 
-	sms.delete_hosted_service('myhostedservice')
+    sms.delete_hosted_service('myhostedservice')
 
-サービスを削除する前に、そのサービスのすべてのデプロイを最初に削除する必要があります。(詳細については「[方法: デプロイの削除](#DeleteDeployment)」を参照)。
+Before you can delete a service, all deployments for the service must first be deleted. (See [How to: Delete a deployment](#DeleteDeployment) for details.)
 
-## <a name="DeleteDeployment"> </a>方法: デプロイの削除
+## <a name="<a-name="deletedeployment">-</a>how-to:-delete-a-deployment"></a><a name="DeleteDeployment"> </a>How to: Delete a deployment
 
-デプロイメントを削除するには、**delete\_deployment** メソッドを使用します。次の例では、`v1` という名前のデプロイメントを削除する方法を示しています。
+To delete a deployment, use the **delete\_deployment** method. The following example shows how to delete a deployment named `v1`.
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	sms.delete_deployment('myhostedservice', 'v1')
+    sms.delete_deployment('myhostedservice', 'v1')
 
-## <a name="CreateStorageService"> </a>方法: ストレージ サービスを作成する
+## <a name="<a-name="createstorageservice">-</a>how-to:-create-a-storage-service"></a><a name="CreateStorageService"> </a>How to: Create a storage service
 
-[ストレージ サービス](../storage/storage-create-storage-account.md) を使用すると、Azure の [BLOB](../storage/storage-python-how-to-use-blob-storage.md)、[テーブル](../storage/storage-python-how-to-use-table-storage.md)、[キュー](../storage/storage-python-how-to-use-queue-storage.md) にアクセスできます。ストレージ サービスを作成するには、サービスの名前 (Azure 内で一意の 3 〜 24 文字の小文字)、説明、ラベル (最大 100 文字、Base64 に自動的にエンコードされます)、場所が必要です。次の例では、場所を指定してストレージ サービスを作成する方法を示しています。
+A [storage service](../storage/storage-create-storage-account.md) gives you access to Azure [Blobs](../storage/storage-python-how-to-use-blob-storage.md), [Tables](../storage/storage-python-how-to-use-table-storage.md), and [Queues](../storage/storage-python-how-to-use-queue-storage.md). To create a storage service, you need a name for the service (between 3 and 24 lowercase characters and unique within Azure), a description, a label (up to 100 characters, automatically encoded to base64), and a location. The following example shows how to create a storage service by specifying a location.
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	name = 'mystorageaccount'
-	label = 'mystorageaccount'
-	location = 'West US'
-	desc = 'My storage account description.'
+    name = 'mystorageaccount'
+    label = 'mystorageaccount'
+    location = 'West US'
+    desc = 'My storage account description.'
 
-	result = sms.create_storage_account(name, desc, label, location=location)
+    result = sms.create_storage_account(name, desc, label, location=location)
 
-	operation_result = sms.get_operation_status(result.request_id)
-	print('Operation status: ' + operation_result.status)
+    operation_result = sms.get_operation_status(result.request_id)
+    print('Operation status: ' + operation_result.status)
 
-前の例では、**create\_storage\_account** 処理のステータスを取得するため、**create\_storage\_account** から返された結果を **get\_operation\_status** メソッドに渡しています。
+Note in the preceding example that the status of the **create\_storage\_account** operation can be retrieved by passing the result returned by **create\_storage\_account** to the **get\_operation\_status** method.  
 
-ストレージ アカウントとそのプロパティを列挙するには、**list\_storage\_accounts** メソッドを使用します。
+You can list your storage accounts and their properties with the **list\_storage\_accounts** method:
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	result = sms.list_storage_accounts()
-	for account in result:
-		print('Service name: ' + account.service_name)
-		print('Location: ' + account.storage_service_properties.location)
-		print('')
+    result = sms.list_storage_accounts()
+    for account in result:
+        print('Service name: ' + account.service_name)
+        print('Location: ' + account.storage_service_properties.location)
+        print('')
 
-## <a name="DeleteStorageService"> </a>方法: ストレージ サービスを削除する
+## <a name="<a-name="deletestorageservice">-</a>how-to:-delete-a-storage-service"></a><a name="DeleteStorageService"> </a>How to: Delete a storage service
 
-ストレージ サービスを削除するには、そのサービス名を **delete\_storage\_account** メソッドに渡します。ストレージ サービスを削除すると、サービスに格納されているすべてのデータ (BLOB、テーブル、キュー) が削除されます。
+You can delete a storage service by passing the storage service name to the **delete\_storage\_account** method. Deleting a storage service deletes all data stored in the service (blobs, tables, and queues).
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	sms.delete_storage_account('mystorageaccount')
+    sms.delete_storage_account('mystorageaccount')
 
-## <a name="ListOperatingSystems"> </a>方法: 利用可能なオペレーティング システムを列挙する
+## <a name="<a-name="listoperatingsystems">-</a>how-to:-list-available-operating-systems"></a><a name="ListOperatingSystems"> </a>How to: List available operating systems
 
-ホスティング サービスに利用できるオペレーティング システムを列挙するには、**list\_operating\_systems** メソッドを使用します。
+To list the operating systems that are available for hosting services, use the **list\_operating\_systems** method:
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	result = sms.list_operating_systems()
+    result = sms.list_operating_systems()
 
-	for os in result:
-		print('OS: ' + os.label)
-		print('Family: ' + os.family_label)
-		print('Active: ' + str(os.is_active))
+    for os in result:
+        print('OS: ' + os.label)
+        print('Family: ' + os.family_label)
+        print('Active: ' + str(os.is_active))
 
-または、**list\_operating\_system\_families** メソッドを使用することもできます。このメソッドでは、オペレーティング システムがファミリにグループ化されます。
+Alternatively, you can use the **list\_operating\_system\_families** method, which groups the operating systems by family:
 
-	result = sms.list_operating_system_families()
+    result = sms.list_operating_system_families()
 
-	for family in result:
-		print('Family: ' + family.label)
-		for os in family.operating_systems:
-			if os.is_active:
-				print('OS: ' + os.label)
-				print('Version: ' + os.version)
-		print('')
+    for family in result:
+        print('Family: ' + family.label)
+        for os in family.operating_systems:
+            if os.is_active:
+                print('OS: ' + os.label)
+                print('Version: ' + os.version)
+        print('')
 
-## <a name="CreateVMImage"> </a>方法: オペレーティング システム イメージを作成する
+## <a name="<a-name="createvmimage">-</a>how-to:-create-an-operating-system-image"></a><a name="CreateVMImage"> </a>How to: Create an operating system image
 
-オペレーティング システム イメージをイメージ リポジトリに追加するには、**add\_os\_image** メソッドを使用します。
+To add an operating system image to the image repository, use the **add\_os\_image** method:
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	name = 'mycentos'
-	label = 'mycentos'
-	os = 'Linux' # Linux or Windows
-	media_link = 'url_to_storage_blob_for_source_image_vhd'
+    name = 'mycentos'
+    label = 'mycentos'
+    os = 'Linux' # Linux or Windows
+    media_link = 'url_to_storage_blob_for_source_image_vhd'
 
-	result = sms.add_os_image(label, media_link, name, os)
+    result = sms.add_os_image(label, media_link, name, os)
 
-	operation_result = sms.get_operation_status(result.request_id)
-	print('Operation status: ' + operation_result.status)
+    operation_result = sms.get_operation_status(result.request_id)
+    print('Operation status: ' + operation_result.status)
 
-利用できるオペレーティング システム イメージを列挙するには、**list\_os\_images** メソッドを使用します。このメソッドでは、すべてのプラットフォーム イメージとユーザー イメージが対象となります。
+To list the operating system images that are available, use the **list\_os\_images** method. It includes all platform images and user images:
 
-	result = sms.list_os_images()
+    result = sms.list_os_images()
 
-	for image in result:
-		print('Name: ' + image.name)
-		print('Label: ' + image.label)
-		print('OS: ' + image.os)
-		print('Category: ' + image.category)
-		print('Description: ' + image.description)
-		print('Location: ' + image.location)
-		print('Media link: ' + image.media_link)
-		print('')
+    for image in result:
+        print('Name: ' + image.name)
+        print('Label: ' + image.label)
+        print('OS: ' + image.os)
+        print('Category: ' + image.category)
+        print('Description: ' + image.description)
+        print('Location: ' + image.location)
+        print('Media link: ' + image.media_link)
+        print('')
 
-## <a name="DeleteVMImage"> </a>方法: オペレーティング システム イメージを削除する
+## <a name="<a-name="deletevmimage">-</a>how-to:-delete-an-operating-system-image"></a><a name="DeleteVMImage"> </a>How to: Delete an operating system image
 
-ユーザー イメージを削除するには、**delete\_os\_image** メソッドを使用します。
+To delete a user image, use the **delete\_os\_image** method:
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	result = sms.delete_os_image('mycentos')
+    result = sms.delete_os_image('mycentos')
 
-	operation_result = sms.get_operation_status(result.request_id)
-	print('Operation status: ' + operation_result.status)
+    operation_result = sms.get_operation_status(result.request_id)
+    print('Operation status: ' + operation_result.status)
 
-## <a name="CreateVM"> </a>方法: 仮想マシンを作成する
+## <a name="<a-name="createvm">-</a>how-to:-create-a-virtual-machine"></a><a name="CreateVM"> </a>How to: Create a virtual machine
 
-仮想マシンを作成するには、最初に[クラウド サービス](#CreateCloudService)を作成する必要があります。その後で、**create\_virtual\_machine\_deployment** メソッドを使用して、仮想マシンのデプロイメントを作成します。
+To create a virtual machine, you first need to create a [cloud service](#CreateCloudService).  Then create the virtual machine deployment using the **create\_virtual\_machine\_deployment** method:
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	name = 'myvm'
-	location = 'West US'
+    name = 'myvm'
+    location = 'West US'
 
-	#Set the location
-	sms.create_hosted_service(service_name=name,
-		label=name,
-		location=location)
+    #Set the location
+    sms.create_hosted_service(service_name=name,
+        label=name,
+        location=location)
 
-	# Name of an os image as returned by list_os_images
-	image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-ja-JP-30GB.vhd'
+    # Name of an os image as returned by list_os_images
+    image_name = 'OpenLogic__OpenLogic-CentOS-62-20120531-en-us-30GB.vhd'
 
-	# Destination storage account container/blob where the VM disk
-	# will be created
-	media_link = 'url_to_target_storage_blob_for_vm_hd'
+    # Destination storage account container/blob where the VM disk
+    # will be created
+    media_link = 'url_to_target_storage_blob_for_vm_hd'
 
-	# Linux VM configuration, you can use WindowsConfigurationSet
-	# for a Windows VM instead
-	linux_config = LinuxConfigurationSet('myhostname', 'myuser', 'mypassword', True)
+    # Linux VM configuration, you can use WindowsConfigurationSet
+    # for a Windows VM instead
+    linux_config = LinuxConfigurationSet('myhostname', 'myuser', 'mypassword', True)
 
-	os_hd = OSVirtualHardDisk(image_name, media_link)
+    os_hd = OSVirtualHardDisk(image_name, media_link)
 
-	sms.create_virtual_machine_deployment(service_name=name,
-		deployment_name=name,
-		deployment_slot='production',
-		label=name,
-		role_name=name,
-		system_config=linux_config,
-		os_virtual_hard_disk=os_hd,
-		role_size='Small')
+    sms.create_virtual_machine_deployment(service_name=name,
+        deployment_name=name,
+        deployment_slot='production',
+        label=name,
+        role_name=name,
+        system_config=linux_config,
+        os_virtual_hard_disk=os_hd,
+        role_size='Small')
 
-## <a name="DeleteVM"> </a>方法: 仮想マシンを削除する
+## <a name="<a-name="deletevm">-</a>how-to:-delete-a-virtual-machine"></a><a name="DeleteVM"> </a>How to: Delete a virtual machine
 
-仮想マシンを削除するには、最初に **delete\_deployment** メソッドを使用してデプロイメントを削除します。
+To delete a virtual machine, you first delete the deployment using the **delete\_deployment** method:
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	sms.delete_deployment(service_name='myvm',
-		deployment_name='myvm')
+    sms.delete_deployment(service_name='myvm',
+        deployment_name='myvm')
 
-その後で、**delete\_hosted\_service** メソッドを使用して、クラウド サービスを削除することができます。
+The cloud service can then be deleted using the **delete\_hosted\_service** method:
 
-	sms.delete_hosted_service(service_name='myvm')
+    sms.delete_hosted_service(service_name='myvm')
 
-##方法: キャプチャした仮想マシン イメージから仮想マシンを作成する
+##<a name="how-to:-create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>How To: Create a Virtual Machine from a Captured Virtual Machine Image
 
-VM イメージをキャプチャするには、まず、**capture\_vm\_image** メソッドを呼び出します。
+To capture a VM image, you first call the **capture\_vm\_image** method:
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	# replace the below three parameters with actual values
-	hosted_service_name = 'hs1'
-	deployment_name = 'dep1'
-	vm_name = 'vm1'
+    # replace the below three parameters with actual values
+    hosted_service_name = 'hs1'
+    deployment_name = 'dep1'
+    vm_name = 'vm1'
 
-	image_name = vm_name + 'image'
-	image = CaptureRoleAsVMImage	('Specialized',
-		image_name,
-		image_name + 'label',
-		image_name + 'description',
-		'english',
-		'mygroup')
+    image_name = vm_name + 'image'
+    image = CaptureRoleAsVMImage    ('Specialized',
+        image_name,
+        image_name + 'label',
+        image_name + 'description',
+        'english',
+        'mygroup')
 
-	result = sms.capture_vm_image(
-			hosted_service_name,
-			deployment_name,
-			vm_name,
-			image
-		)
+    result = sms.capture_vm_image(
+            hosted_service_name,
+            deployment_name,
+            vm_name,
+            image
+        )
 
-次に、イメージが正常にキャプチャされたことを確認するには、**list\_vm\_images** API を使用して、イメージが結果に表示されていることを確認します。
+Next, to make sure that you have successfully captured the image, use the **list\_vm\_images** api, and make sure your image is displayed in the results:
 
-	images = sms.list_vm_images()
+    images = sms.list_vm_images()
 
-キャプチャしたイメージを使用して仮想マシンを作成するために、前の手順と同様に、**create\_virtual\_machine\_deployment** メソッドを使用しますが、今回は vm\_image\_name を渡します。
+To finally create the virtual machine using the captured image, use the **create\_virtual\_machine\_deployment** method as before, but this time pass in the vm_image_name instead
 
-	from azure import *
-	from azure.servicemanagement import *
+    from azure import *
+    from azure.servicemanagement import *
 
-	sms = ServiceManagementService(subscription_id, certificate_path)
+    sms = ServiceManagementService(subscription_id, certificate_path)
 
-	name = 'myvm'
-	location = 'West US'
+    name = 'myvm'
+    location = 'West US'
 
-	#Set the location
-	sms.create_hosted_service(service_name=name,
-		label=name,
-		location=location)
+    #Set the location
+    sms.create_hosted_service(service_name=name,
+        label=name,
+        location=location)
 
-	sms.create_virtual_machine_deployment(service_name=name,
-		deployment_name=name,
-		deployment_slot='production',
-		label=name,
-		role_name=name,
-		system_config=linux_config,
-		os_virtual_hard_disk=None,
-		role_size='Small',
-		vm_image_name = image_name)
+    sms.create_virtual_machine_deployment(service_name=name,
+        deployment_name=name,
+        deployment_slot='production',
+        label=name,
+        role_name=name,
+        system_config=linux_config,
+        os_virtual_hard_disk=None,
+        role_size='Small',
+        vm_image_name = image_name)
 
-Linux 仮想マシンをキャプチャする方法についての詳細は、[Linux 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-linux-classic-capture-image.md)に関するページを参照してください。
+To learn more about how to capture a Linux Virtual Machine, see [How to Capture a Linux Virtual Machine.](../virtual-machines/virtual-machines-linux-classic-capture-image.md)
 
-Windows 仮想マシンをキャプチャする方法についての詳細は、[Windows 仮想マシンをキャプチャする方法](../virtual-machines/virtual-machines-windows-classic-capture-image.md)に関するページを参照してください。
+To learn more about how to capture a Windows Virtual Machine, see [How to Capture a Windows Virtual Machine.](../virtual-machines/virtual-machines-windows-classic-capture-image.md)
 
-## <a name="What's Next"> </a>次のステップ
+## <a name="<a-name="what's-next">-</a>next-steps"></a><a name="What's Next"> </a>Next Steps
 
-これで、サービス管理の基本を学習できました。[Azure Python SDK の完全な API のリファレンス ドキュメント](http://azure-sdk-for-python.readthedocs.org/)にアクセスして、複雑なタスクを簡単に実行することにより、Python アプリケーションを管理できます。
+Now that you've learned the basics of service management, you can access the [Complete API reference documentation for the Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) and perform complex tasks easily to manage your python application.
 
-詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
+For more information, see the [Python Developer Center](/develop/python/).
 
 [What is Service Management]: #WhatIs
 [Concepts]: #Concepts
@@ -436,6 +437,11 @@ Windows 仮想マシンをキャプチャする方法についての詳細は、
 [svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
-[クラウド サービス]: https://azure.microsoft.com/documentation/services/cloud-services/
+[cloud service]:/services/cloud-services/
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

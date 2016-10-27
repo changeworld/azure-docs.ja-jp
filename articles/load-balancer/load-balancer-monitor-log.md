@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Load Balancer に関する操作、イベント、カウンターの監視 | Microsoft Azure"
-   description="Azure Load Balancer でアラート イベントとプローブの正常性状態のログを有効にする方法について説明します。"
+   pageTitle="Monitor operations, events, and counters for Load Balancer | Microsoft Azure"
+   description="Learn how to enable alert events, and probe health status logging for Azure Load Balancer"
    services="load-balancer"
    documentationCenter="na"
    authors="sdwheeler"
@@ -17,47 +17,50 @@
    ms.date="04/05/2016"
    ms.author="sewhee" />
 
-# Azure Load Balancer のログ分析 (プレビュー)
-Azure の各種ログを使用して、ロード バランサーの管理やトラブルシューティングを行うことができます。これらのログの一部はポータルからアクセスできます。また、すべてのログは、Azure BLOB ストレージから抽出して Excel や PowerBI などのさまざまなツールで表示することができます。各種ログの詳細については、以下の一覧を参照してください。
+
+# <a name="log-analytics-for-azure-load-balancer-(preview)"></a>Log analytics for Azure Load Balancer (Preview)
+You can use different types of logs in Azure to manage and troubleshoot load balancers. Some of these logs can be accessed through the portal, and all logs can be extracted from an Azure blob storage, and viewed in different tools, such as Excel and PowerBI. You can learn more about the different types of logs from the list below.
 
 
-- **監査ログ:** [Azure 監査ログ](../../articles/azure-portal/insights-debugging-with-events.md) (以前の操作ログ) を使用すると、Azure サブスクリプションに送信されているすべての操作とその操作の状態を表示できます。監査ログは既定で有効になっており、Azure ポータルで表示できます。
-- **アラート イベント ログ:** ロード バランサーで発生したアラートを確認できます。ロード バランサーの状態は 5 分ごとに収集されます。このログは、ロード バランサーのアラート イベントが発生した場合にのみ書き込まれます。
-- **正常性プローブ ログ:** プローブの正常性チェックの状態を確認し、ロード バランサーのバックエンドでオンラインになっているインスタンスの数や、ロード バランサーからネットワーク トラフィックを受信している仮想マシンの割合を調べることができます。このログは、プローブ状態イベントの変更時に書き込まれます。
+- **Audit logs:** You can use [Azure Audit Logs](../../articles/azure-portal/insights-debugging-with-events.md) (formerly known as Operational Logs) to view all operations being submitted to your Azure subscription(s), and their status. Audit logs are enabled by default, and can be viewed in the Azure portal.
+- **Alert event logs:** You can use this log to view what alerts for load balancer are raised. The status for the load balancer is collected every five minutes. This log is only written if a load balancer alert event is raised.  
+- **Health probe logs:** You can use this log to check for probe health check status, how many instances are online in the load balancer back-end and percentage of virtual machines receiving network traffic from the load balancer. This log is written on probe status event change.
 
->[AZURE.WARNING] ログは、リソース マネージャーのデプロイメント モデルでデプロイされたリソースについてのみ使用できます。クラシック デプロイメント モデルのリソースには使用できません。2 つのモデルについて理解を深めるには、「[リソース マネージャー デプロイと従来のデプロイを理解する](../../articles/resource-manager-deployment-model.md)」を参照してください。<BR> ログ分析は現在、インターネットに接続するロード バランサーに対してのみ機能します。この制限は一時的なものであり、いつでも変更される可能性があります。今後の変更を確認するには、このページに再度アクセスしてください。
+>[AZURE.WARNING] Logs are only available for resources deployed in the Resource Manager deployment model. You cannot use logs for resources in the classic deployment model. For a better understanding of the two models, reference the [Understanding Resource Manager deployment and classic deployment](../../articles/resource-manager-deployment-model.md) article. <BR>
+>Log analytics currently works only for Internet facing load balancers. This limitation is temporary, and may change at any time. Make sure to revisit this page to verify future changes.
 
-## ログの有効化
-監査ログは、リソース マネージャーのすべてのリソースで常に自動的に有効になります。イベント ログと正常性プローブ ログでデータの収集を開始するには、ログを有効にする必要があります。ログを有効にするには、次の手順に従います。
+## <a name="enable-logging"></a>Enable logging
+Audit logging is automatically enabled at all times for every Resource Manager resource. You need to enable event and health probe logging to start collecting the data available through those logs. To enable logging, follow the steps below. 
 
-[Azure ポータル](http://portal.azure.com)にサインインします。ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](load-balancer-get-started-internet-arm-ps.md)します。
+Sign-in to the [Azure portal](http://portal.azure.com). If you don't already have a load balancer, [create a load balancer](load-balancer-get-started-internet-arm-ps.md) before you continue. 
 
-ポータルで、**[参照]**、**[ロード バランサー]** の順にクリックします。
+In the portal, click **Browse** >> **Load Balancers**.
 
 ![portal - load-balancer](./media/load-balancer-monitor-log/load-balancer-browse.png)
 
-既存のロード バランサーを選択し、**[すべての設定]** をクリックします。
+Select an existing load balancer >> **All Settings**.
 
-![portal - load-balancer-settings](./media/load-balancer-monitor-log/load-balancer-settings.png) <BR>
+![portal - load-balancer-settings](./media/load-balancer-monitor-log/load-balancer-settings.png)
+<BR>
 
-**[設定]** ブレードで **[診断]** をクリックし、**[診断]** ウィンドウで **[状態]** の横の **[オン]** をクリックします。**[設定]** ブレードで **[ストレージ アカウント]** をクリックし、既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。
+In the **Settings** blade, click **Diagnostics**, and then in the **Diagnostics** pane, next to **Status**, click **On** In the **Settings** blade, click **Storage Account**, and either select an existing storage account, or create a new one.
 
-**[ストレージ アカウント]** の下にあるドロップダウン リストで、アラート イベント、プローブの正常性状態、またはその両方から記録するログを選択し、**[保存]** をクリックします。
+In the drop-down list just under **Storage Account**, select whether you want to log alert events, probe health status or both and then click **Save**.
 
 ![Preview portal - Diagnostics logs](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
 
->[AZURE.INFORMATION] 監査ログでは別のストレージ アカウントは必要ありません。イベントと正常性プローブのログ記録にストレージを使用すると、サービス料金が発生します。
+>[AZURE.INFORMATION] Audit logs do not require a separate storage account. The use of storage for event and health probe logging will incur service charges.
 
-## 監査ログ
-監査ログ (以前の "操作ログ") は、既定では Azure によって生成されます。ログは、Azure のイベント ログ ストアに 90 日間保存されます。これらのログの詳細については、「[イベント ログと監査ログの表示](../../articles/azure-portal/insights-debugging-with-events.md)」を参照してください。
+## <a name="audit-log"></a>Audit log
+This log (formerly known as the "operational log") is generated by Azure by default.  The logs are preserved for 90 days in Azure’s Event Logs store. Learn more about these logs by reading the [View events and audit logs](../../articles/azure-portal/insights-debugging-with-events.md) article.
 
-## アラート イベント ログ
-このログは、既に詳しく説明したように、ロード バランサーごとにログを有効にした場合にのみ生成されます。データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。次に示すように、JSON 形式で情報が記録されます。
+## <a name="alert-event-log"></a>Alert event log
+This log is only generated if you've enabled it on a per load balancer basis as detailed above. The data is stored in the storage account you specified when you enabled the logging. The information is logged in JSON format, as seen below.
 
-	
-	{
+    
+    {
     "time": "2016-01-26T10:37:46.6024215Z",
-	"systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
+    "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
     "category": "LoadBalancerAlertEvent",
     "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
     "operationName": "LoadBalancerProbeHealthStatus",
@@ -68,64 +71,68 @@ Azure の各種ログを使用して、ロード バランサーの管理やト�
             "public ip address": "40.117.227.32"
         }
     }
-	
+    
 
-JSON 形式の出力で *eventname* プロパティを見ると、ロード バランサーでアラートが生成された理由がわかります。この例では、アラートが生成された理由は、ソース IP NAT (SNAT) の制限により TCP ポートが枯渇したことです。
+The JSON output shows the *eventname* property which will describe the reason for the load balancer created an alert. In this case, the alert generated was due to TCP port exhaustion caused by source IP NAT limits (SNAT).
 
-## 正常性プローブ ログ
-このログは、既に詳しく説明したように、ロード バランサーごとにログを有効にした場合にのみ生成されます。データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。'insights-logs-loadbalancerprobehealthstatus' という名前のコンテナーが作成され、次のデータがログに記録されます。
+## <a name="health-probe-log"></a>Health probe log
+This log is only generated if you've enabled it on a per load balancer basis as detailed above. The data is stored in the storage account you specified when you enabled the logging.  A container named 'insights-logs-loadbalancerprobehealthstatus' is created and the following data is logged:
 
-		{
-	    "records":
+        {
+        "records":
 
-	    {
-	   		"time": "2016-01-26T10:37:46.6024215Z",
-	        "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-	        "category": "LoadBalancerProbeHealthStatus",
-	        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-	        "operationName": "LoadBalancerProbeHealthStatus",
-	        "properties": {
-	            "publicIpAddress": "40.83.190.158",
-	            "port": "81",
-	            "totalDipCount": 2,
-	            "dipDownCount": 1,
-	            "healthPercentage": 50.000000
-	        }
-	    },
-	    {
-	        "time": "2016-01-26T10:37:46.6024215Z",
-			"systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
-	        "category": "LoadBalancerProbeHealthStatus",
-	        "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
-	        "operationName": "LoadBalancerProbeHealthStatus",
-	        "properties": {
-	            "publicIpAddress": "40.83.190.158",
-	            "port": "81",
-	            "totalDipCount": 2,
-	            "dipDownCount": 0,
-	            "healthPercentage": 100.000000
-	        }
-	    }
+        {
+            "time": "2016-01-26T10:37:46.6024215Z",
+            "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
+            "category": "LoadBalancerProbeHealthStatus",
+            "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
+            "operationName": "LoadBalancerProbeHealthStatus",
+            "properties": {
+                "publicIpAddress": "40.83.190.158",
+                "port": "81",
+                "totalDipCount": 2,
+                "dipDownCount": 1,
+                "healthPercentage": 50.000000
+            }
+        },
+        {
+            "time": "2016-01-26T10:37:46.6024215Z",
+            "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
+            "category": "LoadBalancerProbeHealthStatus",
+            "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
+            "operationName": "LoadBalancerProbeHealthStatus",
+            "properties": {
+                "publicIpAddress": "40.83.190.158",
+                "port": "81",
+                "totalDipCount": 2,
+                "dipDownCount": 0,
+                "healthPercentage": 100.000000
+            }
+        }
 
-	]
-	}
+    ]
+    }
 
-JSON 形式の出力でプロパティ フィールドを見れば、プローブの正常性状態の基本的な情報がわかります。*DipDownCount* プロパティは、プローブの応答の失敗によりネットワーク トラフィックを受信していないバックエンド上のインスタンスの合計数を示します。
+The JSON output shows in the properties field the basic information for the probe health status. The *dipDownCount* property shows the total number of instances on the back-end which are not receiving network traffic due to failed probe responses. 
 
-## 監査ログの表示と分析
-次のいずれかの方法を使用して、監査ログのデータを表示および分析できます。
+## <a name="view-and-analyze-the-audit-log"></a>View and analyze the audit log
+You can view and analyze audit log data using any of the following methods:
 
-- **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure プレビュー ポータルを使用して、監査ログから情報を取得します。それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../../articles/resource-group-audit.md)」を参照してください。
-- **Power BI:** [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。[Power BI 用 Azure 監査ログ コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
+- **Azure tools:** Retrieve information from the audit logs through Azure PowerShell, the Azure Command Line Interface (CLI), the Azure REST API, or the Azure preview portal.  Step-by-step instructions for each method are detailed in the [Audit operations with Resource Manager](../../articles/resource-group-audit.md) article.
+- **Power BI:** If you don't already have a [Power BI](https://powerbi.microsoft.com/pricing) account, you can try it for free. Using the [Azure Audit Logs content pack for Power BI](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs) you can analyze your data with pre-configured dashboards that you can use as-is, or customize.
 
-## 正常性プローブ ログとイベント ログの表示と分析 
-イベント ログと正常性プローブ ログの場合は、自身のストレージ アカウントに接続して JSON ログ エントリを取得する必要があります。JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
+## <a name="view-and-analyze-the-health-probe-and-event-log"></a>View and analyze the health probe and event log 
+You need to connect to your storage account and retrieve the JSON log entries for event and health probe logs. Once you download the JSON files, you can convert them to CSV and view in Excel, PowerBI, or any other data visualization tool.
 
->[AZURE.TIP] Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、Github から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
+>[AZURE.TIP] If you are familiar with Visual Studio and basic concepts of changing values for constants and variables in C#, you can use the [log converter tools](https://github.com/Azure-Samples/networking-dotnet-log-converter) available from Github.
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-- [Power BI を使用した Azure 監査ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ記事
-- [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関するブログ記事
+- [Visualize your Azure Audit Logs with Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blog post.
+- [View and analyze Azure Audit Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blog post.
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

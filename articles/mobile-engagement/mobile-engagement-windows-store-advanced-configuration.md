@@ -1,75 +1,80 @@
 <properties
-	pageTitle="Windows ユニバーサル アプリ Engagement SDK の詳細な構成"
-	description="Windows ユニバーサル アプリを使用した Azure Mobile Engagement SDK の詳細構成オプション" 					
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="erikre"
-	editor="" />
+    pageTitle="Advanced Configuration for Windows Universal Apps Engagement SDK"
+    description="Advanced Configuration options for Azure Mobile Engagement with Windows Universal Apps"                    
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager="erikre"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-windows-store"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/12/2016"
-	ms.author="piyushjo;ricksal" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-windows-store"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="10/04/2016"
+    ms.author="piyushjo;ricksal" />
 
-# Windows ユニバーサル アプリ Engagement SDK の詳細な構成
+
+# <a name="advanced-configuration-for-windows-universal-apps-engagement-sdk"></a>Advanced Configuration for Windows Universal Apps Engagement SDK
 
 > [AZURE.SELECTOR]
-- [ユニバーサル Windows](mobile-engagement-windows-store-advanced-configuration.md)
+- [Universal Windows](mobile-engagement-windows-store-advanced-configuration.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
 - [iOS](mobile-engagement-ios-integrate-engagement.md)
-- [Android](mobile-engagement-android-advan.mdced-configuration.md)
+- [Android](mobile-engagement-android-advanced-configuration.md)
 
-この手順では、Azure Mobile Engagement Android アプリ向けのさまざまな構成オプションを構成する方法について説明します。
+This procedure describes how to configure various configuration options for Azure Mobile Engagement Android apps.
 
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-[AZURE.INCLUDE [前提条件](../../includes/mobile-engagement-windows-store-prereqs.md)]
+[AZURE.INCLUDE [Prereqs](../../includes/mobile-engagement-windows-store-prereqs.md)]
 
-##詳細な構成
+##<a name="advanced-configuration"></a>Advanced configuration
 
-### 自動クラッシュ レポートを無効にする
+### <a name="disable-automatic-crash-reporting"></a>Disable automatic crash reporting
 
-Engagement の自動クラッシュ レポート機能を無効にできます。ハンドルされない例外が発生すると、Engagement は何も実行しません。
+You can disable the automatic crash reporting feature of Engagement. Then, when an unhandled exception occurs, Engagement does nothing.
 
-> [AZURE.WARNING] この機能を無効にすると、アプリでハンドルされない例外が発生しても、Engagement はクラッシュを報告せず、**さらに**セッションとジョブを終了しません。
+> [AZURE.WARNING] If you disable this feature, then when an unhandled crash occurs in your app, Engagement does not send the crash **AND** does not close the session and jobs.
 
-自動クラッシュ レポートを無効にするには、宣言されている方法に基づいて構成をカスタマイズします。
+To disable automatic crash reporting, customize your configuration depending on the way you declared it:
 
-#### `EngagementConfiguration.xml` ファイルを使用する場合
+#### <a name="from-`engagementconfiguration.xml`-file"></a>From `EngagementConfiguration.xml` file
 
-`<reportCrash>` タグと `</reportCrash>` タグの間で、report crash を `false` に設定します。
+Set report crash to `false` between `<reportCrash>` and `</reportCrash>` tags.
 
-#### 実行時に `EngagementConfiguration` オブジェクトを使用する場合
+#### <a name="from-`engagementconfiguration`-object-at-run-time"></a>From `EngagementConfiguration` object at run time
 
-EngagementConfiguration オブジェクトを使用して、report crash を false に設定します。
+Set report crash to false using your EngagementConfiguration object.
 
-		/* Engagement configuration. */
-		EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
-		engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
+        /* Engagement configuration. */
+        EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+        engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
 
-		/* Disable Engagement crash reporting. */
-		engagementConfiguration.Agent.ReportCrash = false;
+        /* Disable Engagement crash reporting. */
+        engagementConfiguration.Agent.ReportCrash = false;
 
-### リアルタイムのレポートを無効にする
+### <a name="disable-real-time-reporting"></a>Disable real time reporting
 
-既定では、エンゲージメント サービスはログをリアルタイムで報告します。アプリケーションがログを送信する回数が多い場合は、ログをバッファーに格納して、一定時間ごとにまとめて報告することをお勧めします。これは、"バースト モード" と呼ばれます。
+By default, the Engagement service reports logs in real time. If your application reports logs frequently, it is better to buffer the logs and to report them all at once on a regular time basis. This is called “burst mode”.
 
-そのためには、次のメソッドを呼び出します。
+To do so, call the method:
 
-		EngagementAgent.Instance.SetBurstThreshold(int everyMs);
+        EngagementAgent.Instance.SetBurstThreshold(int everyMs);
 
-引数の値は**ミリ秒**単位です。リアルタイムのログ報告を再度有効にする場合は常に、パラメーターを指定しないか、値 0 を指定して、このメソッドを呼び出します。
+The argument is a value in **milliseconds**. Whenever you want to reactivate the real-time logging, call the method without any parameter, or with the 0 value.
 
-バースト モードではわずかにバッテリーの寿命が延びますが、Engagement の監視に影響を与えます。すべてのセッションとジョブの実行時間は、バーストのしきい値に丸められます (つまり、バーストのしきい値よりも短いセッションとジョブは、認識されない場合があります)。バーストのしきい値は、30000 (30 秒) よりも長くしないことをお勧めします。保存されるログは 300 項目に制限されます。送信時間が長すぎる場合は、ログがいくつか失われる可能性があります。
+Burst mode slightly increases the battery life but has an impact on the Engagement Monitor: all sessions and jobs duration are rounded to the burst threshold (thus, sessions and jobs shorter than the burst threshold may not be visible). We recommend using a burst threshold no longer than 30000 (30s). Saved logs are limited to 300 items. If sending is too long, you can lose some logs.
 
-> [AZURE.WARNING] バーストのしきい値を 1 秒よりも短くすることはできません。1 秒より短くすると、SDK はエラーのトレースを表示し、自動的に既定値 (0 秒) に再設定します。これにより、SDK はログをリアルタイムで報告するようになります。
+> [AZURE.WARNING] The burst threshold cannot be configured to a period less than one second. If you do so, the SDK shows a trace with the error and automatically resets to the default value, zero seconds. This triggers the SDK to report the logs in real-time.
 
-[here]: http://www.nuget.org/packages/Capptain.WindowsCS
-[NuGet website]: http://docs.nuget.org/docs/start-here/overview
+[here]:http://www.nuget.org/packages/Capptain.WindowsCS
+[NuGet website]:http://docs.nuget.org/docs/start-here/overview
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

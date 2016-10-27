@@ -1,6 +1,6 @@
 <properties
-   pageTitle="状態の定義と管理 | Microsoft Azure"
-   description="Service Fabric でサービスの状態を定義し管理する方法"
+   pageTitle="Defining and managing state | Microsoft Azure"
+   description="How to define and manage service state in Service Fabric"
    services="service-fabric"
    documentationCenter=".net"
    authors="appi101"
@@ -16,28 +16,33 @@
    ms.date="08/10/2016"
    ms.author="aprameyr"/>
 
-# サービスの状態
-**サービスの状態** とは、サービスが機能するために必要とするデータのことです。これには、サービスが機能するために読み取りや書き込みをする、データ構造および変数が含まれます。
 
-例として、簡単な電卓サービスを考えてみましょう。このサービスは、2 つの数値を受け取り、その合計を返します。これは、関連付けられているデータを持たない純粋なステートレス サービスです。
+# <a name="service-state"></a>Service state
+**Service state** refers to the data that the service requires in order to function. It includes the data structures and variables that the service reads and writes to do work.
 
-ここで、同じ電卓が、合計を返すだけでなく、計算した最終合計を返すメソッドも持っているとしましょう。このサービスは、ステートフルなサービスです。このサービスには、書き込みをする状態 (新しい合計を計算する場合) と読み取りをする状態 (計算の最終合計を返す場合) とを含むからです。
+Consider a simple calculator service, for example. This service takes two numbers and returns their sum. This is a purely stateless service that has no data associated with it.
 
-Azure Service Fabric の場合、前者のサービスはステートレス サービスと呼ばれます。後者のサービスは、ステートフル サービスと呼ばれます。
+Now consider the same calculator, but in addition to computing sum, it also has a method for returning the last sum it has computed. This service is now stateful--it contains some state that it writes to (when it computes a new sum) and reads from (when it returns the last computed sum).
 
-## サービスの状態の格納
-状態は、外部化するか、状態を操作するコードと同じ場所に配置できます。状態の外部化は、通常、外部データベースまたはストアを使用してなされます。電卓の例では、現在の結果がテーブルに格納される SQL データベースなどが該当します。合計値の計算要求ごとに、この行の更新が実行されます。
+In Azure Service Fabric, the first service is called a stateless service. The second service is called a stateful service.
 
-状態は、このコードを操作するコードと同じ場所に配置することもできます。Service Fabric のステートフル サービスは、このモデルを使用して構築されます。Service Fabric は、可用性が高く、障害発生時のフォールト トレランスの高い状態を実現するインフラストラクチャを提供します。
+## <a name="storing-service-state"></a>Storing service state
+State can be either externalized or co-located with the code that is manipulating the state. Externalization of state is typically done by using an external database or store. In our calculator example, this could be a SQL database in which the current result is stored in a table. Every request to compute the sum performs an update on this row.
 
-## 次のステップ
+State can also be co-located with the code that manipulates this code. Stateful services in Service Fabric are built using this model. Service Fabric provides the infrastructure to ensure that this state is highly available and fault tolerant in the event of a failure.
 
-Service Fabric の概念の詳細については、次を参照してください。
+## <a name="next-steps"></a>Next steps
 
-- [Service Fabric サービスの可用性](service-fabric-availability-services.md)
+For more information on Service Fabric concepts, see the following:
 
-- [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
+- [Availability of Service Fabric services](service-fabric-availability-services.md)
 
-- [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
+- [Scalability of Service Fabric services](service-fabric-concepts-scalability.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+- [Partitioning Service Fabric services](service-fabric-concepts-partitioning.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

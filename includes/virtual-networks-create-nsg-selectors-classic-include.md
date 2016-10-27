@@ -2,4 +2,6 @@
 - [PowerShell](../articles/virtual-network/virtual-networks-create-nsg-classic-ps.md)
 - [Azure CLI](../articles/virtual-network/virtual-networks-create-nsg-classic-cli.md)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

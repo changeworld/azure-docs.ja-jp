@@ -1,87 +1,89 @@
 <properties
-	pageTitle="Windows Phone での Azure Notification Hubs を使用したプッシュ通知の送信 | Microsoft Azure"
-	description="このチュートリアルでは、Azure Notification Hubs を使用して Windows Phone 8 または Windows Phone 8.1 Silverlight アプリケーションにプッシュ通知を送信する方法について説明します。"
-	services="notification-hubs"
-	documentationCenter="windows"
-    keywords="プッシュ通知,プッシュ通知,Windows Phone プッシュ通知"
-	authors="wesmc7777"
-	manager="erikre"
-	editor="erikre"/>
+    pageTitle="Sending push notifications with Azure Notification Hubs on Windows Phone | Microsoft Azure"
+    description="In this tutorial, you learn how to use Azure Notification Hubs to push notifications to a Windows Phone 8 or Windows Phone 8.1 Silverlight application."
+    services="notification-hubs"
+    documentationCenter="windows"
+    keywords="push notification,push notification,windows phone push"
+    authors="wesmc7777"
+    manager="erikre"
+    editor="erikre"/>
 
 <tags
-	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-windows-phone"
-	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="10/03/2016"
-	ms.author="wesmc"/>
+    ms.service="notification-hubs"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-windows-phone"
+    ms.devlang="dotnet"
+    ms.topic="hero-article"
+    ms.date="10/03/2016"
+    ms.author="wesmc"/>
 
-# Windows Phone での Azure Notification Hubs を使用したプッシュ通知の送信
+
+# <a name="sending-push-notifications-with-azure-notification-hubs-on-windows-phone"></a>Sending push notifications with Azure Notification Hubs on Windows Phone
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-##Overview
+##<a name="overview"></a>Overview
 
-> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-phone-get-started%2F)を参照してください。
+> [AZURE.NOTE] To complete this tutorial, you must have an active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-phone-get-started%2F).
 
-このチュートリアルでは、Azure Notification Hubs を使用して Windows Phone 8 または Windows Phone 8.1 Silverlight アプリケーションにプッシュ通知を送信する方法について説明します。Windows Phone 8.1 (Silverlight 以外) を対象としている場合は、[Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) バージョンを参照してください。このチュートリアルでは、Microsoft プッシュ通知サービス (MPNS) を使用してプッシュ通知を受信する空の Windows Phone 8 アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。
+This tutorial shows you how to use Azure Notification Hubs to send push notifications to a Windows Phone 8 or Windows Phone 8.1 Silverlight application. If you are targeting Windows Phone 8.1 (non-Silverlight), then refer to the [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) version.
+In this tutorial, you create a blank Windows Phone 8 app that receives push notifications by using the Microsoft Push Notification Service (MPNS). When you're finished, you'll be able to use your notification hub to broadcast push notifications to all the devices running your app.
 
-> [AZURE.NOTE] Notification Hubs Windows Phone SDK では、Windows Phone 8.1 Silverlight アプリで Windows プッシュ通知サービス (WNS) を使用できません。Windows Phone 8.1 Silverlight アプリで (MPNS ではなく) WNS を使用する場合は、REST API を使用する [Notification Hubs - Windows Phone Silverlight チュートリアル]の手順に従ってください。
+> [AZURE.NOTE] The Notification Hubs Windows Phone SDK does not support using the Windows Push Notification Service (WNS) with Windows Phone 8.1 Silverlight apps. To use WNS (instead of MPNS) with Windows Phone 8.1 Silverlight apps, follow the [Notification Hubs - Windows Phone Silverlight tutorial], which uses REST APIs.
 
-このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。
+The tutorial demonstrates the simple broadcast scenario in using Notification Hubs.
 
-##前提条件
+##<a name="prerequisites"></a>Prerequisites
 
-このチュートリアルには、次のものが必要です。
+This tutorial requires the following:
 
-+ [Visual Studio 2012 Express for Windows Phone] 以降のバージョン
++ [Visual Studio 2012 Express for Windows Phone], or a later version.
 
-このチュートリアルを完了することは、Windows Phone 8 アプリケーションの他のすべての Notification Hubs チュートリアルの前提条件です。
+Completing this tutorial is a prerequisite for all other Notification Hubs tutorials for Windows Phone 8 apps.
 
-##通知ハブを作成する
+##<a name="create-your-notification-hub"></a>Create your notification hub
 
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="6">
-<li><p><b>[Notification Services]</b> セクション (<i>[設定]</i> 内にあります)、<b>[Windows Phone (MPNS)]</b> の順にクリックし、<b>[非認証プッシュを有効にする]</b> チェック ボックスをオンにします。</p>
+<li><p>Click the <b>Notification Services</b> section (within <i>Settings</i>), click on <b>Windows Phone (MPNS)</b> and then click the <b>Enable unauthenticated push</b> check box.</p>
 </li>
 </ol>
 
 &emsp;&emsp;![Azure Portal - Enable unathenticated push notifications](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
-これでハブが作成され、Windows Phone に向けて非認証通知を送信するように構成されました。
+Your hub is now created and configured to send unauthenticated notification for Windows Phone.
 
-> [AZURE.NOTE] このチュートリアルでは、非認証モードで MPNS を使用します。MPNS 非認証モードでは、各チャネルに送信できる通知に制限があります。Notification Hubs では、証明書のアップロードを可能にすることで、[MPNS 認証モード](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) をサポートします。
+> [AZURE.NOTE] This tutorial uses MPNS in unauthenticated mode. MPNS unauthenticated mode comes with restrictions on notifications that you can send to each channel. Notification Hubs supports [MPNS authenticated mode](http://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx) by allowing you to upload your certificate.
 
-##Notification Hub にアプリを接続する
+##<a name="connecting-your-app-to-the-notification-hub"></a>Connecting your app to the notification hub
 
-1. Visual Studio で、新しい Windows Phone 8 アプリケーションを作成します。
+1. In Visual Studio, create a new Windows Phone 8 application.
 
-   	![Visual Studio - New Project - Windows Phone App][13]
+    ![Visual Studio - New Project - Windows Phone App][13]
 
-	Visual Studio 2013 Update 2 以降では、代わりに Windows Phone Silverlight アプリケーションを作成します。
+    In Visual Studio 2013 Update 2 or later, you instead create a Windows Phone Silverlight application.
 
-	![Visual Studio - New Project - Blank App - Windows Phone Silverlight][11]
+    ![Visual Studio - New Project - Blank App - Windows Phone Silverlight][11]
 
-2. Visual Studio でソリューションを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+2. In Visual Studio, right-click the solution, and then click **Manage NuGet Packages**.
 
-	**[NuGet パッケージの管理]** ダイアログ ボックスが表示されます。
+    This displays the **Manage NuGet Packages** dialog box.
 
-3. `WindowsAzure.Messaging.Managed` を検索し、**[インストール]** をクリックして、使用条件に同意します。
+3. Search for `WindowsAzure.Messaging.Managed` and click **Install**, and then accept the terms of use.
 
-	![Visual Studio - NuGet Package Manager][20]
+    ![Visual Studio - NuGet Package Manager][20]
 
-	<a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet パッケージ</a>を使用して、Windows の Azure メッセージング ライブラリに参照がダウンロードされ、インストールされ、追加されます。
+    This downloads, installs, and adds a reference to the Azure Messaging library for Windows by using the <a href="http://nuget.org/packages/WindowsAzure.Messaging.Managed/">WindowsAzure.Messaging.Managed NuGet package</a>.
 
-4. App.xaml.cs ファイルを開き、次の `using` ステートメントを追加します。
+4. Open the file App.xaml.cs and add the following `using` statements:
 
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
 
-5. App.xaml.cs 内の **Application\_Launching** メソッドの先頭に次のコードを追加します。
+5. Add the following code at the top of **Application_Launching** method in App.xaml.cs:
 
-	    var channel = HttpNotificationChannel.Find("MyPushChannel");
+        var channel = HttpNotificationChannel.Find("MyPushChannel");
         if (channel == null)
         {
             channel = new HttpNotificationChannel("MyPushChannel");
@@ -100,62 +102,63 @@
             });
         });
 
-    >[AZURE.NOTE] 値 **MyPushChannel** は、[HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) コレクションで既存のチャネルを参照するために使用されるインデックスです。ない場合は、その名前で新しいエントリを作成します。
+    >[AZURE.NOTE] The value **MyPushChannel** is an index that is used to lookup an existing channel in the [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) collection. If there isn't one there, create a new entry with that name.
     
-    必ず、ハブの名前と、前のセクションで取得した **DefaultListenSharedAccessSignature** という接続文字列を挿入してください。このコードにより、MPNS からアプリケーションのチャネル URI が取得され、そのチャネル URI が通知ハブに登録されます。これにより、アプリケーションが起動するたびに必ずチャネル URI も通知ハブに登録されます。
+    Make sure to insert the name of your hub and the connection string called **DefaultListenSharedAccessSignature** that you obtained in the previous section.
+    This code retrieves the channel URI for the app from MPNS, and then registers that channel URI with your notification hub. It also guarantees that the channel URI is registered in your notification hub each time the application is launched.
 
-	>[AZURE.NOTE]このチュートリアルでは、トースト通知がデバイスに送信されます。タイル通知を送信する場合は、チャネルの **BindToShellTile** メソッドを呼び出す必要があります。トースト通知とタイル通知の両方をサポートするには、**BindToShellTile** と **BindToShellToast** の両方を呼び出します。
+    >[AZURE.NOTE]This tutorial sends a toast notification to the device. When you send a tile notification, you must instead call the **BindToShellTile** method on the channel. To support both toast and tile notifications, call both **BindToShellTile** and  **BindToShellToast**.
 
-6. ソリューション エクスプローラーで **[プロパティ]** を展開して `WMAppManifest.xml` ファイルを開き、**[機能]** タブで **ID\_CAP\_PUSH\_NOTIFICATION** 機能がオンであることを確認します。
+6. In Solution Explorer, expand **Properties**, open the `WMAppManifest.xml` file, click the **Capabilities** tab, and make sure that the **ID_CAP_PUSH_NOTIFICATION** capability is checked.
 
-   	![Visual Studio - Windows Phone App Capabilities][14]
+    ![Visual Studio - Windows Phone App Capabilities][14]
 
-   	これにより、アプリケーションでプッシュ通知の受信が有効になります。オンになっていないと、アプリへのプッシュ通知の送信が失敗します。
+    This ensures that your app can receive push notifications. Without it, any attempt to send a push notification to the app will fail.
 
-7. `F5` キーを押してアプリケーションを実行します。
+7. Press the `F5` key to run the app.
 
-	登録メッセージがアプリに表示されます。
+    A registration message is displayed in the app.
 
-8. アプリケーションを閉じます。
+8. Close the app.  
 
-   >[AZURE.NOTE] トースト プッシュ通知を受信するには、アプリケーションがフォアグラウンドで実行されていない必要があります。
+   >[AZURE.NOTE] To receive a toast push notification, the application must not be running in the foreground.
 
-##バックエンドからプッシュ通知を送信する
+##<a name="send-push-notifications-from-your-backend"></a>Send push notifications from your backend
 
-プッシュ通知は、パブリック <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST インターフェイス</a>を介してどのバックエンドからでも Notification Hubs を使用して送信できます。このチュートリアルでは、.NET コンソール アプリケーションを使用してプッシュ通知を送信します。
+You can send push notifications by using Notification Hubs from any backend via the public <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST interface</a>. In this tutorial, you send push notifications using a .NET console application. 
 
-Notification Hubs に統合されている ASP.NET WebAPI バックエンドからプッシュ通知を送信する方法の例については、「[Azure Notification Hubs Notify Users with .NET backend (Azure Notification Hubs と .NET バックエンドによるユーザーへの通知)](./notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)」を参照してください。
+For an example of how to send push notifications from an ASP.NET WebAPI backend that's integrated with Notification Hubs, see [Azure Notification Hubs Notify Users with .NET backend](./notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md).  
 
-[REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) を使用したプッシュ通知の送信方法の例については、「[How to use Notification Hubs from Java (Java から Notification Hubs を使用する方法)](./notification-hubs-java-push-notification-tutorial.md)」と「[How to use Notification Hubs from PHP (PHP から Notification Hubs を使用する方法)](./notification-hubs-php-push-notification-tutorial.md)」を参照してください。
+For an example of how to send push notifications by using the [REST APIs](https://msdn.microsoft.com/library/azure/dn223264.aspx), check out [How to use Notification Hubs from Java](./notification-hubs-java-push-notification-tutorial.md) and [How to use Notification Hubs from PHP](./notification-hubs-php-push-notification-tutorial.md).
 
-1. ソリューションを右クリックして **[追加]**、**[新しいプロジェクト]** の順に選択し、**[Visual C#]** で **[Windows]**、**[コンソール アプリケーション]** の順にクリックして、**[OK]** をクリックします。
+1. Right-click the solution, select **Add** and **New Project...**, and then under **Visual C#**, click **Windows** and **Console Application**, and click **OK**.
 
-   	![Visual Studio - New Project - Console Application][6]
+    ![Visual Studio - New Project - Console Application][6]
 
-	これにより、Visual C# の新しいコンソール アプリケーションがソリューションに追加されます。個別のソリューションでこの操作を行うこともできます。
+    This adds a new Visual C# console application to the solution. You can also do this in a separate solution.
 
-4. **[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+4. Click **Tools**, click **Library Package Manager**, and then click **Package Manager Console**.
 
-	これにより、パッケージ マネージャー コンソールが開きます。
+    This displays the Package Manager Console.
 
-5.  **[パッケージ マネージャー コンソール]** ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
+5.  In the **Package Manager Console** window, set the **Default project** to your new console application project, and then in the console window, execute the following command:
 
         Install-Package Microsoft.Azure.NotificationHubs
 
-	これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
+    This adds a reference to the Azure Notification Hubs SDK using the <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet package</a>.
 
-6. `Program.cs` ファイルを開き、次の `using` ステートメントを追加します。
+6. Open the `Program.cs` file and add the following `using` statement:
 
         using Microsoft.Azure.NotificationHubs;
 
-6. `Program` クラスで、次のメソッドを追加します。
+6. In the `Program` class, add the following method:
 
         private static async void SendNotificationAsync()
         {
             NotificationHubClient hub = NotificationHubClient
-				.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            string toast = "<?xml version="1.0" encoding="utf-8"?>" +
-                "<wp:Notification xmlns:wp="WPNotification">" +
+                .CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
+            string toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                "<wp:Notification xmlns:wp=\"WPNotification\">" +
                    "<wp:Toast>" +
                         "<wp:Text1>Hello from a .NET App!</wp:Text1>" +
                    "</wp:Toast> " +
@@ -163,30 +166,30 @@ Notification Hubs に統合されている ASP.NET WebAPI バックエンドか�
             await hub.SendMpnsNativeNotificationAsync(toast);
         }
 
-	`<hub name>` プレースホルダーは、ポータルに表示される通知ハブの名前に置き換えてください。また、接続文字列プレースホルダーを、「通知ハブを構成する」で取得した **DefaultFullSharedAccessSignature** という接続文字列に置き換えます。
+    Make sure to replace the `<hub name>` placeholder with the name of the notification hub that appears in the portal. Also, replace the connection string placeholder with the connection string called **DefaultFullSharedAccessSignature** that you obtained in the section "Configure your notification hub."
 
-	>[AZURE.NOTE]**リッスン** アクセスではなく**フル** アクセスを持つ接続文字列を使用してください。リッスン アクセス文字列にはプッシュ通知を送信するアクセス許可はありません。
+    >[AZURE.NOTE]Make sure that you use the connection string with **Full** access, not **Listen** access. The listen-access string does not have permissions to send push notifications.
 
-4. `Main` メソッドに次の行を追加します。
+4. Add the following line in your `Main` method:
 
          SendNotificationAsync();
-		 Console.ReadLine();
+         Console.ReadLine();
 
-5. Windows Phone エミュレーターを実行し、アプリを閉じて、コンソール アプリケーション プロジェクトを既定のスタートアップ プロジェクトとして設定します。次に、`F5` キーを押して、アプリを実行します。
+5. With your Windows Phone emulator running and your app closed, set the console application project as the default startup project, and then press the `F5` key to run the app.
 
-	トースト プッシュ通知を受信します。トースト バナーをタップすると、アプリが読み込まれます。
+    You will receive a toast push notification. Tapping the toast banner loads the app.
 
-MSDN の[トースト カタログ]および[タイル カタログ]に関するトピックに、使用できるすべてのペイロードが記載されています。
+You can find all the possible payloads in the [toast catalog] and [tile catalog] topics on MSDN.
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-この簡単な例では、すべての Windows Phone 8 デバイスにプッシュ通知をブロードキャストしました。
+In this simple example, you broadcasted push notifications to all your Windows Phone 8 devices. 
 
-特定のユーザーをターゲットにする方法については、[Notification Hubs を利用したユーザーへのプッシュ通知]に関するチュートリアルを参照してください。
+In order to target specific users, refer to the [Use Notification Hubs to push notifications to users] tutorial. 
 
-対象グループごとにユーザーを区分する場合は、「[通知ハブを使用したニュース速報の送信]」を参照してください。
+If you want to segment your users by interest groups, you can read [Use Notification Hubs to send breaking news]. 
 
-通知ハブの使用方法の詳細については、「[Microsoft Azure 通知ハブの概要]」を参照してください。
+Learn more about how to use Notification Hubs in [Notification Hubs Guidance].
 
 
 
@@ -211,12 +214,17 @@ MSDN の[トースト カタログ]および[タイル カタログ]に関する
 
 <!-- URLs. -->
 [Visual Studio 2012 Express for Windows Phone]: https://go.microsoft.com/fwLink/p/?LinkID=268374
-[Microsoft Azure 通知ハブの概要]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [MPNS authenticated mode]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
-[Notification Hubs を利用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[通知ハブを使用したニュース速報の送信]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[トースト カタログ]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[タイル カタログ]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
-[Notification Hubs - Windows Phone Silverlight チュートリアル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
+[Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
+[toast catalog]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
+[tile catalog]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[Notification Hubs - Windows Phone Silverlight tutorial]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

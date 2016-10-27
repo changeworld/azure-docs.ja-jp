@@ -1,26 +1,28 @@
 <properties
-	pageTitle="ASP.NET プロジェクトの変更点 | Microsoft Azure | Visual Studio 接続済みサービス"
-	description="Visual Studio 接続済みサービスを使用して ASP.NET プロジェクトに Azure Storage を追加した後の変更点について説明します。"
-	services="storage"
-	documentationCenter=""
-	authors="TomArcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="What happened to my ASP.NET project? | Microsoft Azure | Visual Studio connected services"
+    description="Describes what happens after adding Azure Storage to a ASP.NET project using Visual Studio connected services"
+    services="storage"
+    documentationCenter=""
+    authors="TomArcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="storage"
-	ms.workload="web"
-	ms.tgt_pltfrm="vs-what-happened"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/15/2016"
-	ms.author="tarcher"/>
+    ms.service="storage"
+    ms.workload="web"
+    ms.tgt_pltfrm="vs-what-happened"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/15/2016"
+    ms.author="tarcher"/>
 
-# ASP.NET プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
 
-## リファレンスの追加
+# <a name="what-happened-to-my-asp.net-project-(visual-studio-azure-storage-connected-service)?"></a>What happened to my ASP.NET project (Visual Studio Azure Storage connected service)?
 
-Visual Studio プロジェクトに Azure Storage の NuGet パッケージが追加されました。このパッケージは、次の .NET 参照を追加します。
+## <a name="references-added"></a>References added
+
+The Azure Storage NuGet package was added to your Visual Studio project.  
+This package adds the following .NET references:
 
 - **Microsoft.Data.Edm**
 - **Microsoft.Data.OData**
@@ -31,9 +33,13 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 - **System.Data**
 - **System.Spatial**
 
-##Azure Storage の接続文字列の追加
-選択されたストレージ アカウントの接続文字列とキーを使用して、プロジェクトの web.config ファイル内に要素が作成されました。
+##<a name="connection-string-for-azure-storage-added"></a>Connection string for Azure Storage added
+In the web.config file of your project, an element was created with the selected storage account's connection string and key.
 
-詳細については、「[ASP.NET](http://www.asp.net)」を参照してください。
+For more information, see [ASP.NET](http://www.asp.net).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

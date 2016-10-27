@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Cloud Services のデバッグ | Microsoft Azure"
-   description="Azure Cloud Services のデバッグ"
+   pageTitle="Debugging Azure Cloud Services | Microsoft Azure"
+   description="Debugging Azure Cloud Services"
    services="visual-studio-online"
    documentationCenter="n/a"
    authors="TomArcher"
@@ -15,16 +15,24 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# クラウド サービスのデバッグ
 
-Azure Tools for Microsoft Visual Studio および Azure SDK を使用すれば、以下のさまざまな方法で Azure アプリケーションをデバッグすることができます。
+# <a name="debugging-cloud-services"></a>Debugging cloud services
 
-- Visual C# または Visual Basic アプリケーションの場合と同様に、Azure アプリケーションを開発しながら、Visual Studio から Azure アプリケーションをデバッグすることができます。詳細については、「[ローカル コンピューターでクラウド サービスをデバッグする](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-your-cloud-service-on-your-local-computer)」を参照してください。
+You can use different approaches to debug an Azure application by using the Azure Tools for Microsoft Visual Studio and the Azure SDK:
 
-- Azure 診断を使用すると、ロールが開発環境または Azure のどちらで実行されているかにかかわらず、ロール内で実行されているコードから詳細な情報をログに記録できます。詳細については、「[Azure 診断を使用したログ データの収集](http://go.microsoft.com/fwlink/p/?LinkId=400450)」を参照してください。
+- You can debug an Azure application from Visual Studio when you are developing it, just as you would any Visual C# or Visual Basic application. For more information, see [Debug your cloud service on your local computer](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-your-cloud-service-on-your-local-computer).
 
-- Visual Studio Enterprise を使用して .NET Framework 4 または .NET Framework 4.5 を対象とするロールを作成する場合は、Visual Studio から Azure クラウド サービスをデプロイする時点で IntelliTrace を有効にすることができます。IntelliTrace が提供するログを使用すると、Azure で実行しているかのようにアプリケーションを Visual Studio でデバッグすることができます。詳細については、「[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](http://go.microsoft.com/fwlink/p/?LinkId=623016)」を参照してください。
+- You can use Azure Diagnostics to log detailed information from code running within roles, whether the roles are running in the development environment or in Azure. For more information, see [Collecting logging data by using Azure Diagnostics](http://go.microsoft.com/fwlink/p/?LinkId=400450).
 
-- Visual Studio からクラウド サービスをデプロイするときに、そのリモート デバッグを有効にできます。デプロイメントのリモート デバッグを有効にすると、各ロール インスタンスを実行する仮想マシンにリモート デバッグ サービスがインストールされます。msvsmon.exe をはじめとするこれらのサービスは、パフォーマンスに影響せず、追加コストも発生しません。詳細については、「[Azure でクラウド サービスをデバッグする](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-a-cloud-service-in-azure)」を参照してください。
+- If you are using Visual Studio Enterprise to write roles targeted at the .NET Framework 4 or the .NET Framework 4.5, you can enable IntelliTrace at the time that you deploy an Azure cloud service from Visual Studio. IntelliTrace provides a log that you can use with Visual Studio to debug your application as if it were running in Azure. For more information, see [Debugging a published cloud service with IntelliTrace and Visual Studio]( http://go.microsoft.com/fwlink/p/?LinkId=623016).
 
-<!---HONumber=AcomDC_0817_2016-->
+- You can enable remote debugging on your cloud services at the time when you deploy the cloud service from Visual Studio. If you choose to enable remote debugging for a deployment, remote debugging services are installed on the virtual machines that run each role instance. These services, such as msvsmon.exe, do not affect performance or result in extra costs. For more information, see [Debug a cloud service in Azure](vs-azure-tools-debug-cloud-services-virtual-machines.md#debug-a-cloud-service-in-azure).
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="キーコンテナー内のシークレットのためのリソース マネージャーのテンプレート | Microsoft Azure"
-   description="テンプレートを使って Key Vault のシークレットをデプロイするためのリソース マネージャー スキーマを示します。"
+   pageTitle="Resource Manager template for a secret in a key vault | Microsoft Azure"
+   description="Shows the Resource Manager schema for deploying key vault secrets through a template."
    services="azure-resource-manager,key-vault"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,13 +16,14 @@
    ms.date="06/23/2016"
    ms.author="tomfitz"/>
 
-# キー コンテナーのシークレットのテンプレート スキーマ
 
-キー コンテナーに格納されるシークレットを作成します。多くの場合、このリソースの種類が[キー コンテナー](resource-manager-template-keyvault.md)の子リソースとしてデプロイされます。
+# <a name="key-vault-secret-template-schema"></a>Key vault secret template schema
 
-## スキーマの形式
+Creates a secret that is stored in a key vault. This resource type is frequently deployed as a child resource of [key vault](resource-manager-template-keyvault.md).
 
-キー コンテナーのシークレットを作成するには、次のスキーマをテンプレートに追加します。シークレットは、キー コンテナーの子リソースまたは最上位リソースとして定義できます。キー コンテナーが同じテンプレートにデプロイされる場合、シークレットは子リソースとして定義できます。キー コンテナーが同じテンプレートにデプロイされない場合、またはリソースの種類でループすることで複数のシークレットを作成する必要がある場合、シークレットは最上位リソースとして定義する必要があります。
+## <a name="schema-format"></a>Schema format
+
+To create a key vault secret, add the following schema to your template. The secret can be defined as either a child resource of a key vault or as top-level resource. You can define it as a child resource when the key vault is deployed in the same template. You will need to define the secret as a top-level resource when the key vault is not deployed in the same template, or when you need to create multiple secrets by looping on the resource type. 
 
     {
         "type": enum,
@@ -34,29 +35,29 @@
         "dependsOn": [ array values ]
     }
 
-## 値
+## <a name="values"></a>Values
 
-次の表では、スキーマに設定する必要がある値について説明します。
+The following tables describe the values you need to set in the schema.
 
-| 名前 | 値 |
+| Name | Value |
 | ---- | ---- | 
-| type | 列挙型<br />必須<br />Key Vault の子リソースとしてデプロイする場合は **secrets**。最上位リソースとしてデプロイする場合は <br />**Microsoft.KeyVault/vaults/secrets**。<br /><br />作成するリソースの種類。 |
-| apiVersion | 列挙型<br />必須<br />**2015-06-01** または **2014-12-19-preview**<br /><br />リソースの作成に使用する API バージョン。 | 
-| name | 文字列<br />必須<br />Key Vault の子リソースとしてデプロイする場合は 1 つの単語。既存の Key Vault に追加する最上位リソースとしてデプロイする場合は **{key-vault-name}/{secret-name}** 形式。<br /><br />作成するシークレットの名前。 |
-| properties | オブジェクト<br />必須<br />[プロパティ オブジェクト](#properties)<br /><br />作成するシークレットの値を指定するオブジェクト。 |
-| dependsOn | 配列<br />省略可能<br />リソース名またはリソースの一意識別子のコンマ区切りリスト。<br /><br />このリンクが依存するリソースのコレクション。シークレットがデプロイされるキー コンテナーが同じテンプレートにデプロイされる場合は、キー コンテナーの名前をこの要素に含めて、キー コンテナーが先にデプロイされるようにします。 |
+| type | Enum<br />Required<br />**secrets** (when deployed as a child resource of key vault) or<br /> **Microsoft.KeyVault/vaults/secrets** (when deployed as a top-level resource)<br /><br />The resource type to create. |
+| apiVersion | Enum<br />Required<br />**2015-06-01** or **2014-12-19-preview**<br /><br />The API version to use for creating the resource. | 
+| name | String<br />Required<br />A single word when deployed as a child resource of a key vault, or in the format **{key-vault-name}/{secret-name}** when deployed as a top-level resource to be added to an existing key vault.<br /><br />The name of the secret to create. |
+| properties | Object<br />Required<br />[properties object](#properties)<br /><br />An object that specifies the value of the secret to create. |
+| dependsOn | Array<br />Optional<br />A comma-separated list of a resource names or resource unique identifiers.<br /><br />The collection of resources this link depends on. If the key vault for the secret is deployed in the same template, include the name of the key vault in this element to ensure it is deployed first. |
 
 <a id="properties" />
-### プロパティ オブジェクト
+### <a name="properties-object"></a>properties object
 
-| 名前 | 値 |
+| Name | Value |
 | ---- | ---- | 
-| 値 | 文字列<br />必須<br /><br />Key Vault に格納するシークレット値。このプロパティの値を渡すときは、**securestring** 型のパラメーターを使用します。 |
+| value | String<br />Required<br /><br />The secret value to store in the key vault. When passing in a value for this property, use a parameter of type **securestring**.  |
 
-	
-## 例
+    
+## <a name="examples"></a>Examples
 
-最初の例では、シークレットをキー コンテナーの子リソースとしてデプロイします。
+The first example deploys a secret as a child resource of a key vault.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -182,7 +183,7 @@
         }]
     }
 
-2 番目の例では、シークレットを既存のキー コンテナーに格納される最上位リソースとしてデプロイします。
+The second example deploys the secret as a top-level resource that is stored in an existing key vault.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -222,9 +223,15 @@
     }
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- Key Vault の全般的な情報については、「[Azure Key Vault の概要](./key-vault/key-vault-get-started.md)」を参照してください。
-- テンプレートをデプロイするときにキー コンテナーのシークレットを参照する例については、[デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)ことに関する記事を参照してください。
+- For general information about key vaults, see [Get started with Azure Key Vault](./key-vault/key-vault-get-started.md).
+- For an example of referencing a key vault secret when deploying templates, see [Pass secure values during deployment](resource-manager-keyvault-parameter.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

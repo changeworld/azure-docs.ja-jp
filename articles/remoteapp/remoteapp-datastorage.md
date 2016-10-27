@@ -1,7 +1,7 @@
 
 <properties
-    pageTitle="カスタム イメージに Azure RemoteApp の機密データを格納しない | Microsoft Azure"
-    description="Azure RemoteApp のカスタム イメージにデータを格納するためのガイドラインについて説明します。"
+    pageTitle="Never store sensitive data on custom images for Azure RemoteApp | Microsoft Azure"
+    description="Learn about the guidelines for storing data in custom images in Azure RemoteApp"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -17,32 +17,39 @@
     ms.author="elizapo" />
 
 
-# カスタム イメージに機密データを格納しない
+
+# <a name="never-store-sensitive-data-on-custom-images"></a>Never store sensitive data on custom images
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Azure RemoteApp で独自のアプリケーションをホストする場合、最初の手順はカスタム イメージの作成です。ここではカスタム イメージを使用して VM インスタンスを作成し、ユーザーにアプリを提供します。カスタム イメージには、SQL データベース、人事ファイル、QuickBooks 会社ファイルなどの特殊なデータ ファイルなど、失っても構わないアプリケーション データ、機密ではないデータなどのみが含まれます。すべての機密データは、ファイル サーバー、別の Azure VM、または SQL Azure 上の Azure RemoteApp とは別の場所に配置する必要があります。イメージは、データ ソースに接続してデータを提示するアプリケーションをホストする作業のみを行います。詳細については、「[Azure RemoteApp イメージの要件](remoteapp-imagereqs.md)」を参照してください。
+When you host your own application in Azure RemoteApp, the first step is to create a custom image. We use that custom image to create VM instances that serve your apps to your users. The custom image should contain ONLY applications and never sensitive data that can be lost, such as SQL databases, personnel files, or special data files like QuickBooks company files. All sensitive data should reside external to Azure RemoteApp on a file server, another Azure VM, or in SQL Azure. The image should just host the application that connects to the data source and presents the data. Review [Requirements for Azure RemoteApp images](remoteapp-imagereqs.md) for more information. 
 
-機密データを格納すべきではない理由を理解するには、Azure RemoteApp のしくみを理解する必要があります。コレクションが作成または更新されると、背後でイメージの複数の複製またはコピーが作成されます。これらすべての VM インスタンスは、カスタム イメージの正確なレプリカです。ユーザーがアプリケーションを起動すると、それらの VM インスタンスのいずれかに接続されます。ただし、同じインスタンスは保証されておらず、永続的ではないため、問題にはなりません。アプリケーションをホストする VM インスタンスは永続的ではなく、たとえば、コレクションの更新中などに破棄または削除される可能性があります。
+To understand why you should not store sensitive data, you need to understand how Azure RemoteApp works. When a collection is created or updated, behind the scenes multiple clones or copies of the image are created. All these VM instances are exact replicas of the custom image; when users launch applications they are connected to one of these VM instances. But the same instance is not guaranteed and should not matter because they are non-persistent. The VM instances hosting the applications are non-persistent and can be destroyed or deleted based, for example, during collection update. 
 
-コレクションがプロビジョニングされ、ユーザーが VM への接続を開始すると、ユーザー データは、[ユーザー プロファイル ディスク (UPD)](remoteapp-upd.md) (c:\\users<userprofile> 内のユーザー プロファイル) を呼び出す VHD 内の別の記憶域に保存されているため、維持および保護されます。アプリケーションが起動すると、オペレーティング システムによって UPD はマウントされ、ローカル ユーザー プロファイルと同様に扱われます。詳細については、「[Azure RemoteApp によるユーザー データと設定の保存方法](remoteapp-upd.md)」を参照してください。
+Once the collection is provisioned and users start connecting to the VMs, user data is persistent and protected because it is saved on separate storage within a VHD that we call a [user profile disk (UPD)](remoteapp-upd.md), which is the user profile in c:\users\<userprofile>. When an application starts, the UPD is mounted and treated just like a local user profile by the operating system. Read more about how [Azure RemoteApp saves user data and settings](remoteapp-upd.md).
 
-イメージ内に格納しない方がよいデータの例:
+Example data that should not reside in the image:
 
-- アクセスするユーザーの共有データ
-- SQL DB または QuickBooks DB
-- D:\\ 内のすべてのデータ
+- Shared data for users to access
+- SQL DB or QuickBooks DB
+- Any data in D:\
 
-すべてのユーザーの UPD にコピーする既定のプロファイル内に配置できるデータの例:
+Example data that can reside in the default profile to be copied into every users’ UPD:
 
-- ユーザーごとの構成ファイル
-- ユーザーが UPD に保存する必要があるスクリプト
+- Configuration files per user
+- Scripts that users would need preserved in their UPD
 
-重要なポイント:
+Key points:
 
-- カスタム イメージの作成時には、機密データをイメージに格納しないでください。データが失われる可能性があります。
-- 機密データは、常に別のファイル サーバー、別の Azure VM、クラウドに格納し、Azure RemoteApp 内のアプリケーションをホストする VM インスタンスとは常に別に格納することをお勧めします。
-- ユーザー データはユーザー プロファイル ディスク (UPD) に保存され、維持されます
+- Never store sensitive data that can be lost on the image when creating a custom image.
+- Sensitive data should always reside on a separate file server, separate Azure VM, on the cloud, and always external to the VM instances hosting your applications within Azure RemoteApp. 
+- User data is saved and persists in the user profile disk (UPD)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

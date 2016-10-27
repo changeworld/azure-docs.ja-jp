@@ -1,30 +1,32 @@
-## [デプロイ] をクリックして ARM テンプレートをデプロイする
+## <a name="deploy-the-arm-template-by-using-click-to-deploy"></a>Deploy the ARM template by using click to deploy
 
-Microsoft によって管理され、コミュニティにも公開されている Github リポジトリにアップロードされた定義済み ARM テンプレートは、再利用できます。これらのテンプレートは、Github から直接デプロイすることもできるほか、ダウンロードしてユーザーのニーズに合わせて変更することもできます。2 つのサブネットを含む VNet を作成するテンプレートをデプロイするには、次の手順に従います。
+You can reuse pre-defined ARM templates upload to a github repository maintained by Microsoft and open to the community. THese templates can be deployed straight out of github, or downloaded and modified to fit your needs. To deploy a template that creates a VNet with two subnets, follow the steps below.
 
-1. ブラウザーから [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates) に移動します。
-2. テンプレートの一覧を下へスクロールし、**101-vnet-two-subnets** をクリックします。次のように **README.md** ファイルを参照します。
+1. From a browser, navigate to [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates).
+2. Scroll down the list of templates, and click **101-vnet-two-subnets**. Check the **README.md** file, as shown below.
 
-	![Github の READEME.md ファイル](./media/virtual-networks-create-vnet-arm-template-click-include/figure1.png)
+    ![READEME.md file in github](./media/virtual-networks-create-vnet-arm-template-click-include/figure1.png)
 
-3. [**Azure へのデプロイ**] をクリックします。必要な場合は、Azure ログイン資格情報を入力します。
-4. [**パラメーター**] ブレードで、新しい VNet の作成時に使用する値を入力して、[**OK**] をクリックします。次の図で、このシナリオの値を示します。
+3. Click **Deploy to Azure**. If necessary, enter your Azure login credentials. 
+4. In the **Parameters** blade, enter the values you want to use to create your new VNet, and then click **OK**. The figure below shows the values for our scenario.
 
-	![ARM テンプレートのパラメーター](./media/virtual-networks-create-vnet-arm-template-click-include/figure2.png)
+    ![ARM template parameters](./media/virtual-networks-create-vnet-arm-template-click-include/figure2.png)
 
-4. [**リソース グループ**] をクリックし、VNet を追加するリソース グループを選択してから [**新規作成**] をクリックして VNet を新しいリソース グループに追加します。次の図は、**TestRG** という新しいリソース グループのリソース グループ設定を示しています。
+4. Click **Resource group** and select a resource group to add the VNet to, or click **Create new** to add the VNet to a new resource group. The figure below shows the resource group settings for a new resource group called **TestRG**.
 
-	![リソース グループ](./media/virtual-networks-create-vnet-arm-template-click-include/figure3.png)
+    ![Resource group](./media/virtual-networks-create-vnet-arm-template-click-include/figure3.png)
 
-5. 必要に応じて、VNet の [**サブスクリプション**] と [**場所**] の設定を変更してください。
-6. VNet を**スタート 画面**にタイルとして表示させたくない場合は、[**スタート画面にピン留めする**] を無効にしてください。
-5. [**法律条項**] をクリックして条件を読み、[**購入**] をクリックして同意します。 
-6. [**作成**] をクリックして VNet を作成します。
+5. If necessary, change the **Subscription** and **Location** settings for your VNet.
+6. If you do not want to see the VNet as a tile in the **Startboard**, disable **Pin to Startboard**.
+5. Click **Leagl terms**, read the terms, and click **Buy** to agree. 
+6. Click **Create** to create the VNet.
 
-	![プレビュー ポータルでのデプロイ タイルの送信](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
+    ![Submitting deployment tile in preview portal](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
 
-7. デプロイが完了したら、次に示すように [**TestVNet**] > [**すべての設定**] > [**サブネット**] の順にクリックして、サブネットのプロパティを参照してください。
+7. Once the deployment is done, click **TestVNet** > **All settings** > **Subnets** to see the subnet properties, as shown below.
 
-	![プレビュー ポータルでの VNet の作成](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
+    ![Create VNet in preview portal](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.gif)
 
-<!---HONumber=AcomDC_0323_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

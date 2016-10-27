@@ -1,50 +1,54 @@
 <properties
-	pageTitle="Notification Hubs のセキュリティ"
-	description="このトピックでは、Azure Notification Hubs のセキュリティについて説明します。"
-	services="notification-hubs"
-	documentationCenter=".net"
-	authors="wesmc7777"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Security for Notification Hubs"
+    description="This topic explains security for Azure notification hubs."
+    services="notification-hubs"
+    documentationCenter=".net"
+    authors="wesmc7777"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-multiple"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="06/29/2016"
-	ms.author="wesmc"/>
+    ms.service="notification-hubs"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-multiple"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.date="06/29/2016"
+    ms.author="wesmc"/>
 
-#セキュリティ
 
-##概要
+#<a name="security"></a>Security
 
-このトピックでは、Azure Notification Hubs のセキュリティ モデルについて説明します。Notification Hubs は Service Bus エンティティなので、Service Bus と同じセキュリティ モデルを実装しています。詳細については、「[Service Bus Authentication （Service Bus の認証）](https://msdn.microsoft.com/library/azure/dn155925.aspx)」のトピックを参照してください。
+##<a name="overview"></a>Overview
 
-##Shared Access Signature セキュリティ (SAS) 
+This topic describes the security model of Azure Notification Hubs. Because Notification Hubs are a Service Bus entity, they implement the same security model as Service Bus. For more information, see the [Service Bus Authentication](https://msdn.microsoft.com/library/azure/dn155925.aspx) topics.
 
-Notification Hubs は、SAS (Shared Access Signature) と呼ばれるエンティティ レベルのセキュリティ方式を実装しています。この方式では、メッセージング エンティティは最大 12 個の承認規則を記述で宣言し、そのエンティティに対する権限を付与できます。
+##<a name="shared-access-signature-security-(sas)"></a>Shared Access Signature Security (SAS) 
 
-各規則には、名前、キーの値 (共有シークレット)、および「セキュリティ要求」セクションで説明されている権限のセットが含まれます。 Notification Hub を作成すると、2 つの規則が自動的に作成されます。1 つは Listen 権限を持ち (クライアント アプリが使用するもの)、もう 1 つはすべてのすべての権限を持ちます (アプリ バックエンドが使用するもの)。
+Notification Hubs implements an entity-level security scheme called SAS (Shared Access Signature). This scheme enables messaging entities to declare up to 12 authorization rules in their description that grant rights on that entity.
 
-クライアント アプリから登録管理を実行するとき、通知で送信される情報が機密性のものではない場合の (たとえば、最新の気象情報)、Notification Hub への一般的なアクセス方法は、クライアント アプリには Listen のみのアクセス規則のキー値を渡し、アプリ バックエンドにはフル アクセス規則のキー値を渡すというものです。
+Each rule contains a name, a key value (shared secret), and a set of rights, as explained in the section “Security Claims.” When creating a Notification Hub, two rules are automatically created: one with Listen rights (that the client app uses) and one with all rights (that the app backend uses).
 
-Windows ストア クライアント アプリにキーの値を埋め込むことは推奨されません。キー値を埋め込まなくて済むようにするには、クライアント アプリの起動時にアプリ バックエンドからキーを取得します。
+When performing registration management from client apps, if the information sent via notifications is not sensitive (for example, weather updates), a common way to access a Notification Hub is to give the key value of the rule Listen-only access to the client app, and to give the key value of the rule full access to the app backend.
 
-Listen アクセス権を持つキーを使用するとクライアント アプリは任意のタグに登録できるということを理解しておく必要があります。アプリで特定のタグへの登録を特定のクライアントに制限する必要がある場合は (たとえば、タグがユーザー ID を表す場合)、アプリ バックエンドが登録を実行する必要があります。詳細については、「登録管理」を参照してください。この方法ではクライアント アプリは Notification Hubs に直接アクセスしないことに注意してください。
+It is not recommended that you embed the key value in Windows Store client apps. A way to avoid embedding the key value is to have the client app retrieve it from the app backend at startup.
 
-##セキュリティ要求
+It is important to understand that the key with Listen access allows a client app to register for any tag. If your app must restrict registrations to specific tags to specific clients (for example, when tags represent user IDs), then your app backend must perform the registrations. For more information, see Registration Management. Note that in this way, the client app will not have direct access to Notification Hubs.
 
-他のエンティティと同様に、Notification Hub の操作は 3 つのセキュリティ要求 Listen、Send、Manage に対して許可されます。
+##<a name="security-claims"></a>Security claims
 
-| 要求 | 説明 | 許可される操作 |
+Similar to other entities, Notification Hub operations are allowed for three security claims: Listen, Send, and Manage.
+
+| Claim | Description | Operations allowed |
 |-------|-------------|--------------------|
-| Listen | 単一の登録の作成/更新、読み取り、削除を行います | 登録を作成/更新する<br><br>登録を読み取る<br><br>ハンドルのすべての登録を読み取る<br><br>登録を削除する |
-| Send | Notification Hubs にメッセージを送信します | メッセージを送信する |
-| Manage | Notification Hubs に対する CRUD (PNS 資格情報およびセキュリティ キーの更新を含む) およびタグに基づく登録の読み取りを行います | Notification Hubs を作成/更新/読み取り/削除する<br><br>タグで登録を読み取る |
+| Listen | Create/Update, Read, and Delete single registrations | Create/Update registration<br><br>Read registration<br><br>Read all registrations for a handle<br><br>Delete registration |
+| Send | Send messages to the notification hub | Send message |
+| Manage | CRUDs on Notification Hubs (including updating PNS credentials, and security keys), and read registrations based on tags | Create/Update/Read/Delete notification hubs<br><br>Read registrations by tag |
 
 
-Notification Hubs は、Microsoft Azure Access Control トークンによって許可された要求、および Notification Hubs に直接構成された共有キーを使用して生成された署名トークンによって許可された要求を受け付けます。
+Notification Hubs accept claims granted by Microsoft Azure Access Control tokens, and by signature tokens generated with shared keys configured directly on the Notification Hub.
 
-<!---HONumber=AcomDC_0706_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

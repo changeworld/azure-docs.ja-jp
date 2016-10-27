@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ローカル Service Fabric クラスター セットアップのトラブルシューティング | Microsoft Azure"
-   description="この記事には、ローカル開発クラスターのトラブルシューティングに関する推奨事項が記載されています。"
+   pageTitle="Troubleshoot your local Service Fabric cluster setup | Microsoft Azure"
+   description="This article covers a set of suggestions for troubleshooting your local development cluster"
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -16,17 +16,18 @@
    ms.date="07/08/2016"
    ms.author="seanmck"/>
 
-# ローカル開発クラスターのセットアップをトラブルシューティングする
 
-Azure Service Fabric のローカル開発クラスターとの対話中に問題が発生した場合は、次の推奨事項を確認して解決の参考にしてください。
+# <a name="troubleshoot-your-local-development-cluster-setup"></a>Troubleshoot your local development cluster setup
 
-## クラスターのセットアップに関するエラー
+If you run into an issue while interacting with your local Azure Service Fabric development cluster, review the following suggestions for potential solutions.
 
-### Service Fabric のログをクリーンアップできない
+## <a name="cluster-setup-failures"></a>Cluster setup failures
 
-#### 問題点
+### <a name="cannot-clean-up-service-fabric-logs"></a>Cannot clean up Service Fabric logs
 
-DevClusterSetup スクリプトの実行中に、次のようなエラーが発生します。
+#### <a name="problem"></a>Problem
+
+While running the DevClusterSetup script, you see an error like this:
 
     Cannot clean up C:\SfDevCluster\Log fully as references are likely being held to items in it. Please remove those and run this script again.
     At line:1 char:1 + .\DevClusterSetup.ps1
@@ -35,39 +36,39 @@ DevClusterSetup スクリプトの実行中に、次のようなエラーが発�
     + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,DevClusterSetup.ps1
 
 
-#### 解決策
+#### <a name="solution"></a>Solution
 
-現在開いている PowerShell ウィンドウを閉じ、新しい PowerShell ウィンドウを管理者として開きます。これでスクリプトを正常に実行できるようになります。
+Close the current PowerShell window and open a new PowerShell window as an administrator. You should now be able to successfully run the script.
 
-## クラスターの接続に関するエラー
+## <a name="cluster-connection-failures"></a>Cluster connection failures
 
-### Service Fabric PowerShell コマンドレットが Azure PowerShell で認識されない
+### <a name="service-fabric-powershell-cmdlets-are-not-recognized-in-azure-powershell"></a>Service Fabric PowerShell cmdlets are not recognized in Azure PowerShell
 
-#### 問題点
+#### <a name="problem"></a>Problem
 
-Azure PowerShell ウィンドウで `Connect-ServiceFabricCluster` などの Service Fabric PowerShell コマンドレットを実行しようとすると失敗し、コマンドレットが認識されないというエラーが表示されます。これは、Azure PowerShell は (OS が 64 ビット版の場合でも) 32 ビット版の Windows PowerShell を使用するのに対し、Service Fabric コマンドレットは 64 ビット環境でしか機能しないためです。
+If you try to run any of the Service Fabric PowerShell cmdlets, such as `Connect-ServiceFabricCluster` in an Azure PowerShell window, it fails, saying that the cmdlet is not recognized. The reason for this is that Azure PowerShell uses the 32-bit version of Windows PowerShell (even on 64-bit OS versions), whereas the Service Fabric cmdlets only work in 64-bit environments.
 
-#### 解決策
+#### <a name="solution"></a>Solution
 
-Service Fabric コマンドレットは常に Windows PowerShell から直接実行します。
+Always run Service Fabric cmdlets directly from Windows PowerShell.
 
->[AZURE.NOTE] Azure PowerShell の最新バージョンでは特別なショートカットが作成されないため、このエラーは発生しなくなります。
+>[AZURE.NOTE] The latest version of Azure PowerShell does not create a special shortcut, so this should no longer occur.
 
-### 型の初期化で例外が発生する
+### <a name="type-initialization-exception"></a>Type Initialization exception
 
-#### 問題点
+#### <a name="problem"></a>Problem
 
-PowerShell でクラスターに接続する際に、System.Fabric.Common.AppTrace で TypeInitializationException エラーが発生します。
+When you are connecting to the cluster in PowerShell, you see the error TypeInitializationException for System.Fabric.Common.AppTrace.
 
-#### 解決策
+#### <a name="solution"></a>Solution
 
-インストール時に Path 変数が正しく設定されませんでした。Windows からサインアウトし、再びサインインしてください。これでパスが最新の状態に更新されます。
+Your path variable was not correctly set during installation. Please sign out of Windows and sign back in. This will fully refresh your path.
 
-### "object is closed" のエラーが発生してクラスターの接続が失敗する
+### <a name="cluster-connection-fails-with-"object-is-closed""></a>Cluster connection fails with "Object is closed"
 
-#### 問題点
+#### <a name="problem"></a>Problem
 
-次のようなエラーが発生して、Connect-ServiceFabricCluster の呼び出しが失敗します。
+A call to Connect-ServiceFabricCluster fails with an error like this:
 
     Connect-ServiceFabricCluster : The object is closed.
     At line:1 char:1
@@ -76,27 +77,31 @@ PowerShell でクラスターに接続する際に、System.Fabric.Common.AppTra
     + CategoryInfo : InvalidOperation: (:) [Connect-ServiceFabricCluster], FabricObjectClosedException
     + FullyQualifiedErrorId : CreateClusterConnectionErrorId,Microsoft.ServiceFabric.Powershell.ConnectCluster
 
-#### 解決策
+#### <a name="solution"></a>Solution
 
-現在開いている PowerShell ウィンドウを閉じ、新しい PowerShell ウィンドウを管理者として開きます。これで正常に接続できるようになります。
+Close the current PowerShell window and open a new PowerShell window as an administrator. You should now be able to successfully connect.
 
-### FabricConnectionDeniedException が発生する
+### <a name="fabric-connection-denied-exception"></a>Fabric Connection Denied exception
 
-#### 問題点
+#### <a name="problem"></a>Problem
 
-Visual Studio を使用してデバッグしている際に、FabricConnectionDeniedException エラーが発生します。
+When debugging from Visual Studio, you get a FabricConnectionDeniedException error.
 
-#### 解決策
+#### <a name="solution"></a>Solution
 
-このエラーは通常、ランタイムサービス ホスト プロセスを Service Fabric からではなく手動で開始すると発生します。
+This error usually occurs when you try to try to start a service host process manually, rather than allowing the Service Fabric runtime to start it for you.
 
-お使いのソリューションでサービス プロジェクトがスタートアップ プロジェクトに設定されていないことを確認します。スタートアップ プロジェクトに設定できるプロジェクトは、Service Fabric アプリケーションのプロジェクトのみです。
+Ensure that you do not have any service projects set as startup projects in your solution. Only Service Fabric application projects should be set as startup projects.
 
->[AZURE.TIP] セットアップに従った結果、ローカル クラスターが正常に動作しなくなった場合は、ローカル クラスター マネージャーのシステム トレイ アプリケーションを使用してクラスターをリセットできます。これにより、既存のクラスターは削除され、新しいクラスターがセットアップされます。デプロイ済みのアプリケーションと関連付けられたデータがすべて削除されることに注意してください。
+>[AZURE.TIP] If, following setup, your local cluster begins to behave abnormally, you can reset it using the local cluster manager system tray application. This will remove the existing cluster and set up a new one. Please note that all deployed applications and associated data will be removed.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [システム正常性レポートでクラスターを理解してトラブルシューティングする](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-- [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
+- [Understand and troubleshoot your cluster with system health reports](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+- [Visualize your cluster with Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

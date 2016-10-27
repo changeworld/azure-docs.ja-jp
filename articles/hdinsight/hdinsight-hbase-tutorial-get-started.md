@@ -1,221 +1,226 @@
 <properties
-	pageTitle="HBase のチュートリアル: Hadoop での HBase の使用 | Microsoft Azure"
-	description="HDInsight の Hadoop で Apache HBase を使用するには、この HBase チュートリアルの手順に従ってください。HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。"
-	keywords="Apache HBase, HBase, HBase シェル, HBase チュートリアル"
-	services="hdinsight"
-	documentationCenter=""
-	authors="mumian"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="HBase tutorial: Get started with HBase in Hadoop | Microsoft Azure"
+    description="Follow this HBase tutorial to get started using Apache HBase with Hadoop in HDInsight. Create tables from the HBase shell and query them using Hive."
+    keywords="apache hbase,hbase,hbase shell,hbase tutorial"
+    services="hdinsight"
+    documentationCenter=""
+    authors="mumian"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.workload="big-data"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/25/2016"
-	ms.author="jgao"/>
+    ms.service="hdinsight"
+    ms.workload="big-data"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/25/2016"
+    ms.author="jgao"/>
 
 
 
-# HBase チュートリアル: HDInsight の Windows ベースの Hadoop で Apache HBase を使用する
+
+# <a name="hbase-tutorial:-get-started-using-apache-hbase-with-windows-based-hadoop-in-hdinsight"></a>HBase tutorial: Get started using Apache HBase with Windows-based Hadoop in HDInsight
 
 [AZURE.INCLUDE [hbase-selector](../../includes/hdinsight-hbase-selector.md)]
 
-HDInsight で HBase クラスターを作成する方法、HBase テーブルを作成する方法、Apache Hive を使用してテーブルを照会する方法について説明します。HBase の概要については、[HDInsight HBase の概要][hdinsight-hbase-overview]に関するページを参照してください。
+Learn how to create HBase clusters in HDInsight, create HBase tables, and query the tables by using Apache Hive. For general HBase information, see [HDInsight HBase overview][hdinsight-hbase-overview].
 
-このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターの情報を参照する場合は、ページ上部にあるタブ セレクターを使用して切り替えてください。
+The information in this document is specific to Windows-based HDInsight clusters. For information on Windows-based clusters, use the tab selector on the top of the page to switch.
 
-> [AZURE.NOTE] Linux ベースの HDInsight クラスター上の HBase (バージョン 0.98.0) は、(Apache Hadoop と YARN 2.4.0 を基盤とする) HDInsight 3.1 クラスターでのみ使用できます。バージョン情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
+> [AZURE.NOTE] HBase (version 0.98.0) on Windows-based HDInsight is only available for use with HDInsight 3.1 clusters (based on Apache Hadoop and YARN 2.4.0). For version information, see [What's new in the Hadoop cluster versions provided by HDInsight?][hdinsight-versions]
 
-###開始する前に
+## <a name="before-you-begin"></a>Before you begin
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-この HBase のチュートリアルを読み始める前に、次の項目を用意する必要があります。
+Before you begin this HBase tutorial, you must have the following:
 
-- **Microsoft Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- Visual Studio 2013 以降がインストールされている**ワークステーション**: 手順については、「[Visual Studio のインストール](http://msdn.microsoft.com/library/e2h7fzkw.aspx)」を参照してください。
+- **A Microsoft Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+- **A workstation** with Visual Studio 2013 or greater: For instructions, see [Install Visual Studio](http://msdn.microsoft.com/library/e2h7fzkw.aspx).
 
-## HBase クラスターの作成
+### <a name="access-control-requirements"></a>Access control requirements
+
+[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+
+## <a name="create-hbase-cluster"></a>Create HBase cluster
 
 [AZURE.INCLUDE [provisioningnote](../../includes/hdinsight-provisioning.md)]
 
-**Azure ポータルを使用して HBase クラスターを作成するには**
+**To create an HBase cluster by using the Azure portal**
 
-1. [Azure ポータル][azure-management-portal]にサインインします。
-2. 左上隅の **[新規]** または **+** をクリックし、**[データ + 分析]**、**[HDInsight]** の順にクリックします。
-3. 次の値を入力します。
+1. Sign in to the [Azure portal][azure-management-portal].
+2. Click **New** or **+** in the upper left corner, and then click **Data + Analytics**, **HDInsight**.
+3. Enter the following values:
 
-	- **クラスター名** - このクラスターを識別するための名前を入力します。
-	- **クラスターの種類** - **[HBase]** を選択します。
-	- **クラスターのオペレーティング システム** - **[Windows]** を選択します。Linux ベースのクラスターを作成する場合は、「[HBase チュートリアル: HDInsight の Hadoop で Apache HBase を使用する (Linux)](hdinsight-hbase-tutorial-get-started-linux.md)」を参照してください。
-	- **バージョン** - HBase のバージョンを選択します。
-	- **サブスクリプション**: このクラスターを作成するために使用する Azure サブスクリプションを選択します。
-	- **リソース グループ** - 新しいリソース グループを作成するか、既存のリソース グループを選択します。詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」をご覧ください。
-	- **資格情報** - Windows ベースのクラスターでは、クラスター ユーザー (別名 HTTP ユーザー、HTTP Web サービス ユーザー) とリモート デスクトップ ユーザーを作成できます。リモート デスクトップ ユーザーの資格情報を追加するには、**[リモート デスクトップを有効にする]** をクリックします。次のセクションでは、RDP が必要になります。
-	- **データ ソース** - クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。既定のストレージ アカウントの場所によってクラスターの場所が決まります。既定のストレージ アカウントとクラスターは、同じデータ センター内に配置されている必要があります。
-	- **ノード価格レベル**: HBase クラスター用のリージョン サーバーの数を選択します。
+    - **Cluster Name** - Enter a name to identify this cluster.
+    - **Cluster Type** - Select **HBase**.
+    - **Cluster Operating System** - Select **Windows**.  For creating Linux-based HBase cluster, see  [HBase tutorial: Get started using Apache HBase with Hadoop in HDInsight (Linux)](hdinsight-hbase-tutorial-get-started-linux.md).
+    - **Version** - Select an HBase version.
+    - **Subscription** - Select your Azure subscription used for creating this cluster.
+    - **Resource Group** -  Create a new Azure resource group or select an existing one. For more information, see [Azure Resource Manager Overview](resource-group-overview.md)
+    - **Credentials** - For Windows based cluster, you can create a cluster user (a.k.a HTTP user, HTTP web service user) and a Remote Desktop user. Click **Enable Remote Desktop** to add the remote desktop user credentials. The next section requires RDP.
+    - **Data Source** - create a new Azure storage account or select an existing Azure storage account to be used as the default file system for the cluster. The default storage account location determines the location of the cluster location. The default storage account and the cluster must co-locate in the same data center.
+    - **Node Pricing Tiers** - Select the number of region servers for the HBase cluster
 
-		> [AZURE.WARNING] HBase サービスの高可用性を実現するには、最低 **3 つ**のノードを含むクラスターを作成する必要があります。これで 1 つのノードがダウンしても、HBase データ領域は他のノードで利用できます。
+        > [AZURE.WARNING] For high availability of HBase services, you must create a cluster that contains at least **three** nodes. This ensures that, if one node goes down, the HBase data regions are available on other nodes.
 
-		> 学習目的で HBase を使用する場合は、コスト削減のため、クラスター サイズには必ず 1 を選択し、クラスターの使用後にクラスターを削除してください。
+        > If you are learning HBase, always choose 1 for the cluster size, and delete the cluster after each use to reduce the cost.
 
-	- **省略可能な構成** - Azure 仮想ネットワークの構成、スクリプト アクションの構成、および追加ストレージ アカウントの追加を行います。
+    - **Optional Configuration** - Configure Azure virtual network, configure Script actions, and add additional storage accounts.
 
-4. **[作成]** をクリックします。
+4. Click **Create**.
 
->[AZURE.NOTE] HBase クラスターを削除したら、同じ既定のストレージ アカウントと既定の BLOB コンテナーを使用して、別の HBase クラスターを作成できます。新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。
+>[AZURE.NOTE] After an HBase cluster is deleted, you can create another HBase cluster by using the same default storage account and the default blob container. The new cluster will pick up the HBase tables you created in the original cluster. To avoid inconsistencies, we recommend that you disable the HBase tables before you delete the cluster.
 
-## テーブルを作成してデータを挿入する
+## <a name="create-tables-and-insert-data"></a>Create tables and insert data
 
-現在、2 つの方法で HBase にアクセスできます。このセクションでは、HBase シェルを使用する方法について説明します。次のセクションでは、.NET SDK を使用する方法について説明します。
+Currently, there are two way to access HBase. This section covers using the HBase shell. The next section covers using the .NET SDK.
 
-多くの場合、データは次のような表形式で表示されます。
+For most people, data appears in the tabular format:
 
 ![hdinsight hbase tabular data][img-hbase-sample-data-tabular]
 
-BigTable の実装である HBase では、同じデータが次のように表示されます。
+In HBase which is an implementation of BigTable, the same data looks like:
 
 ![hdinsight hbase bigtable data][img-hbase-sample-data-bigtable]
 
-次の手順を完了すると、この操作をよく理解できます。
+It'll make more sense after you finish the next procedure.  
 
-**HBase シェルを使用するには**
+**To use the HBase shell**
 
-1. RDP を使用して、HDInsight の HBase クラスターに接続します。RDP の手順については、[Azure ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]に関するページを参照してください。
-2. RDP セッション内で、デスクトップにある **[Hadoop コマンド ライン]** ショートカットをクリックします。
-3. 次のように HBase シェルを開きます。
+1. Use RDP to connect to your HBase cluster in HDInsight. For the RDP instructions, see [Manage Hadoop clusters in HDInsight using the Azure Portal][hdinsight-manage-portal].
+2. Within your RDP session, click the **Hadoop Command Line** shortcut located on the desktop.
+3. Open the HBase shell:
 
-		cd %HBASE_HOME%\bin
-		hbase shell
+        cd %HBASE_HOME%\bin
+        hbase shell
 
-4. 2 つの列ファミリを持つ HBase を作成します。
+4. Create an HBase with two column families:
 
-		create 'Contacts', 'Personal', 'Office'
-		list
-5. いくつかのデータを挿入します。
+        create 'Contacts', 'Personal', 'Office'
+        list
+5. Insert some data:
 
-		put 'Contacts', '1000', 'Personal:Name', 'John Dole'
-		put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
-		put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
-		put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
-		scan 'Contacts'
+        put 'Contacts', '1000', 'Personal:Name', 'John Dole'
+        put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
+        put 'Contacts', '1000', 'Office:Phone', '1-425-000-0002'
+        put 'Contacts', '1000', 'Office:Address', '1111 San Gabriel Dr.'
+        scan 'Contacts'
 
-	![hdinsight hadoop hbase shell][img-hbase-shell]
+    ![hdinsight hadoop hbase shell][img-hbase-shell]
 
-6. 1 つの行を取得します。
+6. Get a single row
 
-		get 'Contacts', '1000'
+        get 'Contacts', '1000'
 
-	行は 1 行のみのため、スキャン コマンドを使用した場合と同じ結果が得られます。
+    You'll see the same results as using the scan command because there is only one row.
 
-	Hbase テーブル スキーマの詳細については、「[Introduction to HBase Schema Design (HBase スキーマの設計の概要)][hbase-schema]」を参照してください。HBase コマンドについての詳細は、「[Apache HBase reference guide (Apache HBase リファレンス ガイド)][hbase-quick-start]」をご覧ください。
-
-
-6. シェルを終了します。
-
-		exit
-
-**Contacts HBase テーブルにデータを一括で読み込むには**
-
-HBase では、いくつかの方法でテーブルにデータを読み込ことができます。詳細については、[一括読み込み](http://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
+    For more information about the Hbase table schema, see [Introduction to HBase Schema Design][hbase-schema]. For more HBase commands, see [Apache HBase reference guide][hbase-quick-start].
 
 
-サンプルのデータ ファイルがパブリック BLOB コンテナー wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt にアップロードされています。このデータ ファイルの内容は次のとおりです。
+6. Exit the shell
 
-	8396	Calvin Raji		230-555-0191	230-555-0191	5415 San Gabriel Dr.
-	16600	Karen Wu		646-555-0113	230-555-0192	9265 La Paz
-	4324	Karl Xie		508-555-0163	230-555-0193	4912 La Vuelta
-	16891	Jonn Jackson	674-555-0110	230-555-0194	40 Ellis St.
-	3273	Miguel Miller	397-555-0155	230-555-0195	6696 Anchor Drive
-	3588	Osa Agbonile	592-555-0152	230-555-0196	1873 Lion Circle
-	10272	Julia Lee		870-555-0110	230-555-0197	3148 Rose Street
-	4868	Jose Hayes		599-555-0171	230-555-0198	793 Crawford Street
-	4761	Caleb Alexander	670-555-0141	230-555-0199	4775 Kentucky Dr.
-	16443	Terry Chander	998-555-0171	230-555-0200	771 Northridge Drive
+        exit
 
-必要に応じて、自分でテキスト ファイルを作成し、そのファイルを自分のストレージ アカウントにアップロードできます。手順については、「[HDInsight での Hadoop ジョブ用データのアップロード][hdinsight-upload-data]」をご覧ください。
+**To bulk load data into the contacts HBase table**
 
-> [AZURE.NOTE] この手順では、前回の手順で作成した Contacts HBase テーブルを使用します。
-
-1. RDP セッション内で、デスクトップにある **[Hadoop コマンド ライン]** ショートカットをクリックします。
-2. ディレクトリを変更します。
-
-		cd %HBASE_HOME%\bin
-
-3. 次のコマンドを実行して、データ ファイルをストア ファイルに変換し、Dimporttsv.bulk.output で指定された相対パスに格納します。
-
-		hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
-
-4. 次のコマンドを実行して、/example/data/storeDataFileOutput から HBase テーブルにデータをアップロードします。
-
-		hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
-
-5. HBase シェルを開き、スキャン コマンドを使用して、テーブルの内容の一覧を表示することができます。
+HBase includes several methods of loading data into tables. For more information, see [Bulk loading](http://hbase.apache.org/book.html#arch.bulk.load).
 
 
+A sample data file has been uploaded to a public blob container, wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt. The content of the data file is:
 
-## Hive を使用して HBase テーブルを照会する
+    8396    Calvin Raji     230-555-0191    230-555-0191    5415 San Gabriel Dr.
+    16600   Karen Wu        646-555-0113    230-555-0192    9265 La Paz
+    4324    Karl Xie        508-555-0163    230-555-0193    4912 La Vuelta
+    16891   Jonn Jackson    674-555-0110    230-555-0194    40 Ellis St.
+    3273    Miguel Miller   397-555-0155    230-555-0195    6696 Anchor Drive
+    3588    Osa Agbonile    592-555-0152    230-555-0196    1873 Lion Circle
+    10272   Julia Lee       870-555-0110    230-555-0197    3148 Rose Street
+    4868    Jose Hayes      599-555-0171    230-555-0198    793 Crawford Street
+    4761    Caleb Alexander 670-555-0141    230-555-0199    4775 Kentucky Dr.
+    16443   Terry Chander   998-555-0171    230-555-0200    771 Northridge Drive
 
-Hive を使用することで、HBase に格納されたデータを照会できます。このセクションでは、HBase テーブルにマッピングする Hive テーブルを作成し、作成した Hive テーブルを使用して HBase テーブルのデータを照会します。
+You can create a text file and upload the file to your own storage account if you want. For the instructions, see [Upload data for Hadoop jobs in HDInsight][hdinsight-upload-data].
 
-**クラスターのダッシュボードを開くには**
+> [AZURE.NOTE] This procedure uses the Contacts HBase table you created in the last procedure.
 
-1. ブラウザーで **https://<HDInsight Cluster Name>.azurehdinsight.net/** を開きます。
-5. Hadoop ユーザー アカウントとパスワードを入力します。既定のユーザー名は **admin** で、パスワードは作成処理中に入力したパスワードです。新しいブラウザーのタブが開きます。
-6. ページ上部の **[Hive エディター]** をクリックします。次のような Hive エディターが開きます。
+1. Within your RDP session, click the **Hadoop Command Line** shortcut located on the desktop.
+2. Change directory:
 
-	![HDInsight クラスターのダッシュボード][img-hdinsight-hbase-hive-editor]
+        cd %HBASE_HOME%\bin
 
-**Hive クエリを実行するには**
+3. Run the following command to transform the data file to StoreFiles and store at a relative path specified by Dimporttsv.bulk.output:
 
-1. 次の HiveQL スクリプトを Hive エディターに入力し、**[送信]** をクリックして、HBase テーブルへの Hive テーブル マッピングを作成します。ここで、HBase シェルを使用して、先ほど参照したサンプル テーブルが HBase に作成されたことを確認してから、このステートメントを実行してください。
+        hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name, Personal:Phone, Office:Phone, Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasbs://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
 
-		CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
-		STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
-		WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,Personal:Name,Personal:Phone,Office:Phone,Office:Address')
-		TBLPROPERTIES ('hbase.table.name' = 'Contacts');
+4. Run the following command to upload the data from /example/data/storeDataFileOutput to the HBase table:
 
-	**[状態]** が **[完了]** に更新されるまで待機します。
+        hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
 
-2. 次の HiveQL スクリプトを Hive エディターに入力してから、**[送信]** をクリックします。次のように Hive クエリが HBase テーブル内のデータを照会します。
-
-     	SELECT count(*) FROM hbasecontacts;
-
-4. Hive クエリの結果を取得するには、ジョブが実行を終了するときに、**[ジョブ セッション]** ウィンドウで **[詳細の表示**] リンクをクリックします。HBase テーブルに挿入したレコードは 1 つなので、ジョブの出力ファイルは 1 つだけになります。
+5. You can open the HBase shell, and use the scan command to list the table content.
 
 
 
+## <a name="use-hive-to-query-hbase-tables"></a>Use Hive to query HBase tables
 
-**出力ファイルを参照するには**
+You can query data stored in HBase by using Hive. This section creates a Hive table that maps to the HBase table and uses it to query the data in your HBase table.
 
-1. クエリ コンソールで **[ファイル ブラウザー**] をクリックします。
-2. HBase クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントをクリックします。
-3. HBase クラスター名をクリックします。既定の Azure ストレージ アカウントのコンテナーでこのクラスター名が使用されます。
-4. **[ユーザー]**、**[Admin]** と順にクリックします (これが Hadoop ユーザー名です)。
-6. Hive クエリ SELECT が実行された時刻と **[最終更新]** の時刻が一致しているジョブ名をクリックします。
-4. **[stdout]** をクリックします。ファイルを保存し、メモ帳でファイルを開きます。出力ファイルは 1 つになります。
+**To open the cluster dashboard**
 
-	![HDInsight HBase Hive エディター ファイル ブラウザー][img-hdinsight-hbase-file-browser]
+1. Browse to **https://<HDInsight Cluster Name>.azurehdinsight.net/**.
+5. Enter the Hadoop user account user name and password. The default user name is **admin** and the password is what you entered during the creation process. A new browser tab opens.
+6. Click **Hive Editor** at the top of the page. The Hive Editor looks like this:
 
-## .NET HBase REST API クライアント ライブラリの使用
+    ![HDInsight cluster dashboard.][img-hdinsight-hbase-hive-editor]
 
-GitHub から HBase REST API Client Library for .NET をダウンロードして HBase .NET SDK が使用できるように、プロジェクトをビルドする必要があります。このタスクを実行する手順は、次のとおりです。
+**To run Hive queries**
 
-1. 新しい C# Visual Studio Windows デスクトップ コンソール アプリケーションを作成します。
-2. **[ツール]** メニュー、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックして NuGet のパッケージ マネージャー コンソールを開きます。
-3. コンソールで次の NuGet コマンドを実行します。
+1. Enter the following HiveQL script into Hive Editor and click **Submit** to create a Hive Table that maps to the HBase table. Make sure that you created the sample table referenced earlier in this tutorial by using the HBase shell before you run this statement.
 
-		Install-Package Microsoft.HBase.Client
+        CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
+        STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler'
+        WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key,Personal:Name,Personal:Phone,Office:Phone,Office:Address')
+        TBLPROPERTIES ('hbase.table.name' = 'Contacts');
 
-5. 次の **using** ステートメントをファイルの先頭に追加します。
+    Wait until the **Status** updates to **Completed**.
 
-		using Microsoft.HBase.Client;
-		using org.apache.hadoop.hbase.rest.protobuf.generated;
+2. Enter the following HiveQL script into Hive Editor, and then click **Submit**. The Hive query queries the data in the HBase table:
 
-6. **Main** 関数を次のコードに置き換えます。
+        SELECT count(*) FROM hbasecontacts;
+
+4. To retrieve the results of the Hive query, click the **View Details** link in the **Job Session** window when the job finishes running. There will be only one job output file because you put one record into the HBase table.
+
+
+
+
+**To browse the output file**
+
+1. In the Query Console, click **File Browser**.
+2. Click the Azure storage account that is used as the default file system for the HBase cluster.
+3. Click the HBase cluster name. The default Azure storage account container uses the cluster name.
+4. Click **User**, and then click **Admin**. (This is the Hadoop user name.)
+6. Click the job name with the **Last Modified** time that matches the time when the SELECT Hive query ran.
+4. Click **stdout**. Save the file and open the file with Notepad. There will be one output file.
+
+    ![HDInsight HBase Hive Editor File Browser][img-hdinsight-hbase-file-browser]
+
+## <a name="use-the-.net-hbase-rest-api-client-library"></a>Use the .NET HBase REST API client library
+
+You must download the HBase REST API client library for .NET from GitHub and build the project so that you can use the HBase .NET SDK. The following procedure includes the instructions for this task.
+
+1. Create a new C# Visual Studio Windows Desktop Console application.
+2. Open the NuGet Package Manager Console by clicking **Tools** > **NuGet Package Manager** > **Package Manager Console**.
+3. Run the following NuGet command in the console:
+
+        Install-Package Microsoft.HBase.Client
+
+5. Add the following **using** statements at the top of the file:
+
+        using Microsoft.HBase.Client;
+        using org.apache.hadoop.hbase.rest.protobuf.generated;
+
+6. Replace the **Main** function with the following:
 
         static void Main(string[] args)
         {
@@ -256,56 +261,60 @@ GitHub から HBase REST API Client Library for .NET をダウンロードして
             Console.WriteLine("The data with the key '" + testKey + "' is: " + Encoding.UTF8.GetString(cellSet.rows[0].values[0].data));
             // with the previous insert, it should yield: "the force is strong in this column"
 
-		    //Scan over rows in a table. Assume the table has integer keys and you want data between keys 25 and 35.
-		    Scanner scanSettings = new Scanner()
-		    {
-    		    batch = 10,
-    		    startRow = BitConverter.GetBytes(25),
-    		    endRow = BitConverter.GetBytes(35)
-		    };
+            //Scan over rows in a table. Assume the table has integer keys and you want data between keys 25 and 35.
+            Scanner scanSettings = new Scanner()
+            {
+                batch = 10,
+                startRow = BitConverter.GetBytes(25),
+                endRow = BitConverter.GetBytes(35)
+            };
 
-		    ScannerInformation scannerInfo = hbaseClient.CreateScanner(hbaseTableName, scanSettings);
-		    CellSet next = null;
+            ScannerInformation scannerInfo = hbaseClient.CreateScanner(hbaseTableName, scanSettings);
+            CellSet next = null;
             Console.WriteLine("Scan results");
 
             while ((next = hbaseClient.ScannerGetNext(scannerInfo)) != null)
-		    {
-    		    foreach (CellSet.Row row in next.rows)
-    		    {
+            {
+                foreach (CellSet.Row row in next.rows)
+                {
                     Console.WriteLine(row.key + " : " + Encoding.UTF8.GetString(row.values[0].data));
-    		    }
-		    }
+                }
+            }
 
             Console.WriteLine("Press ENTER to continue ...");
             Console.ReadLine();
         }
 
-7. **Main** 関数の最初の 3 つの変数を設定します。
-8. **F5** キーを押してアプリケーションを実行します。
+7. Set the first three variables in the **Main** function.
+8. Press **F5** to run the application.
 
-## クラスターの状態の確認
+## <a name="check-cluster-status"></a>Check cluster status
 
-HDInsight の HBase には、クラスターを監視するための Web UI が付属します。この Web UI を使用すると、統計情報やリージョンに関する情報を要求できます。
+HBase in HDInsight ships with a Web UI for monitoring clusters. Using the Web UI, you can request statistics or information about regions.
 
-Web UI を開くには、RDP を使用してクラスターに接続した後、デスクトップ上の HMaster Info Web UI のショートカットをクリックするか、Web ブラウザーで次の URL を使用します。
+To open the Web UI, you must RDP into the cluster, and then click the HMaster Info Web UI shortcut on your desktop, or use the following URL in a web browser:
 
-	http://zookeeper[0-2]:60010/master-status
+    http://zookeeper[0-2]:60010/master-status
 
-高可用性クラスターの場合は、Web UI をホストしている現在アクティブな HBase マスター ノードへのリンクがあります。
+In a high availability cluster, you'll find a link to the current active HBase master node that is hosting the Web UI.
 
-##クラスターを削除する
-不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+##<a name="delete-the-cluster"></a>Delete the cluster
+To avoid inconsistencies, we recommend that you disable the HBase tables before you delete the cluster.
+[AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
-## 次の手順
-この HDInsight の HBase のチュートリアルでは、HBase クラスターの作成方法と、テーブルを作成してそのテーブルのデータを HBase シェルから表示する方法について学習しました。また、Hive を使用して HBase テーブルのデータを照会する方法、HBase C# REST API を使用して HBase テーブルを作成し、テーブルからデータを取得する方法についても学習しました。
+## <a name="what's-next?"></a>What's next?
+In this HBase tutorial for HDInsight, you learned how to create an HBase cluster and how to create tables and view the data in those tables from the HBase shell. You also learned how use a Hive query on data in HBase tables and how to use the HBase C# REST APIs to create an HBase table and retrieve data from the table.
 
-詳細については、次を参照してください。
+For more information, see:
 
-- [HDInsight HBase の概要][hdinsight-hbase-overview]。HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
-- [Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]。アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
-- [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-geo-replication.md)。2 つの Azure データ センター間に HBase レプリケーションを構成する方法について説明します。
-- [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する][hbase-twitter-sentiment]。HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析](http://en.wikipedia.org/wiki/Sentiment_analysis)する方法について学習します。
+- [HDInsight HBase overview][hdinsight-hbase-overview].
+HBase is an Apache, open-source, NoSQL database built on Hadoop that provides random access and strong consistency for large amounts of unstructured and semistructured data.
+- [Create HBase clusters on Azure Virtual Network][hdinsight-hbase-provision-vnet].
+With virtual network integration, HBase clusters can be deployed to the same virtual network as your applications so that applications can communicate with HBase directly.
+- [Configure HBase replication in HDInsight](hdinsight-hbase-geo-replication.md). Learn how to configure HBase replication across two Azure datacenters.
+- [Analyze Twitter sentiment with HBase in HDInsight][hbase-twitter-sentiment].
+Learn how to do real-time [sentiment analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) of big data by using HBase in a Hadoop cluster in HDInsight.
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
@@ -334,4 +343,8 @@ Web UI を開くには、RDP を使用してクラスターに接続した後、
 [img-hbase-sample-data-tabular]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-tabular.png
 [img-hbase-sample-data-bigtable]: ./media/hdinsight-hbase-tutorial-get-started/hdinsight-hbase-contacts-bigtable.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

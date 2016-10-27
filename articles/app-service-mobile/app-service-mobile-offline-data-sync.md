@@ -1,109 +1,117 @@
 <properties
-	pageTitle="Azure モバイル アプリ でのオフライン データ同期 | Microsoft Azure"
-	description="Azure モバイル アプリのオフライン データ同期機能の概念リファレンスと概要"
-	documentationCenter="windows"
-	authors="wesmc7777"
-	manager="dwrede"
-	editor=""
-	services="app-service\mobile"/>
+    pageTitle="Offline Data Sync in Azure Mobile Apps | Microsoft Azure"
+    description="Conceptual reference and overview of the offline data sync feature for Azure Mobile Apps"
+    documentationCenter="windows"
+    authors="adrianhall"
+    manager="dwrede"
+    editor=""
+    services="app-service\mobile"/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="06/28/2016"
-	ms.author="wesmc"/>
+    ms.service="app-service-mobile"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="na"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="adrianha"/>
 
-# Azure モバイル アプリでのオフライン データ同期
 
-## オフライン データ同期について
+# <a name="offline-data-sync-in-azure-mobile-apps"></a>Offline Data Sync in Azure Mobile Apps
 
-オフライン データ同期は、ネットワーク接続なしで機能するアプリを開発者が作成しやすくする、Azure モバイル アプリのクライアントおよびサーバーの SDK 機能です。
+## <a name="what-is-offline-data-sync?"></a>What is offline data sync?
 
-アプリがオフライン モードの場合でもユーザーはデータを作成および変更できますが、それらのデータはローカル ストアに保存されます。アプリは、オンラインに復帰するとローカルの変更内容を Azure モバイル アプリ バックエンドと同期します。この機能には、クライアントとバックエンドの両方で同じレコードが変更された場合の競合検出のサポートも含まれています。検出された競合は、サーバーまたはクライアントのどちらでも処理することができます。
+Offline data sync is a client and server SDK feature of Azure Mobile Apps that makes it easy for developers to create apps that are functional without a network connection.
 
-オフライン同期にはさまざまな利点があります。
+When your app is in offline mode, users can still create and modify data, which will be saved to a local store. When the app is back online, it can synchronize local changes with your Azure Mobile App backend. The feature also includes support for detecting conflicts when the same record is changed on both the client and the backend. Conflicts can then be handled either on the server or the client.
 
-* サーバー データをデバイスにローカルでキャッシュすることにより、アプリケーションの応答性を向上させる。
-* ネットワークの問題がある場合でも使用可能な信頼性の高いアプリを作成する。
-* エンド ユーザーがネットワークにアクセスできなくてもデータを作成および変更できるようにすることで、接続がほとんどまたはまったく得られないような状況をサポートする。
-* 複数のデバイス間でデータを同期させ、同じレコードが 2 つのデバイスによって変更されたときに競合を検出する。
-* 待ち時間の長いネットワークや従量制ネットワークの使用を制限する。
+Offline sync has a number of benefits:
 
-以下のチュートリアルで、Azure モバイル アプリ を使用してモバイル アプリにオフライン同期を追加する方法について説明しています。
+* Improve app responsiveness by caching server data locally on the device
+* Create robust apps that remain useful when there are network issues
+* Allow end-users to create and modify data even when there is no network access, supporting scenarios with little or no connectivity
+* Sync data across multiple devices and detect conflicts when the same record is modified by two devices
+* Limit network use on high-latency or metered networks
 
-* [Android: オフライン同期を有効にする]
-* [iOS: オフライン同期を有効にする]
-* [Xamarin iOS: オフライン同期を有効にする]
-* [Xamarin Android: オフライン同期を有効にする]
-* [Xamarin.Forms: オフライン同期を有効にする](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]
+The following tutorials show how to add offline sync to your mobile clients using Azure Mobile Apps:
 
-## 同期テーブルについて
+* [Android: Enable offline sync]
+* [iOS: Enable offline sync]
+* [Xamarin iOS: Enable offline sync]
+* [Xamarin Android: Enable offline sync]
+* [Xamarin.Forms: Enable offline sync](app-service-mobile-xamarin-forms-get-started-offline-data.md)
+* [Universal Windows Platform: Enable offline sync]
 
-Azure Mobile クライアント SDK では、"/tables" エンドポイントにアクセスするために `IMobileServiceTable` (.NET クライアント SDK) や `MSTable` (iOS クライアント) などのインターフェイスを提供しています。これらの API は Azure モバイル アプリ バックエンドに直接接続しているため、クライアント デバイスのネットワーク接続がなくなると機能しなくなります。
+## <a name="what-is-a-sync-table?"></a>What is a sync table?
 
-オフラインでの使用をサポートするには、代わりに `IMobileServiceSyncTable` (.NET クライアント SDK) や `MSSyncTable` (iOS クライアント) などの*同期テーブル* API をアプリで使用する必要があります。通常の CRUD 操作 (作成、読み取り、更新、削除) はすべて同期テーブル API に対して行われますが、読み取りまたは書き込みを*ローカル ストア*に対して行うようになる点だけが異なります。同期テーブル操作を実行する前に、ローカル ストアを初期化する必要があります。
+To access the "/tables" endpoint, the Azure Mobile client SDKs provide interfaces such as `IMobileServiceTable` (.NET client SDK) or `MSTable` (iOS client). These APIs connect directly to the Azure Mobile App backend and will fail if the client device does not have a network connection.
 
-## ローカル ストアについて
+To support offline use, your app should instead use the *sync table* APIs, such as `IMobileServiceSyncTable` (.NET client SDK) or `MSSyncTable` (iOS client). All the same CRUD operations (Create, Read, Update, Delete) work against sync table APIs, except now they will read from or write to a *local store*. Before any sync table operations can be performed, the local store must be initialized.
 
-ローカル ストアは、クライアント デバイス上のデータ永続化レイヤーです。Azure モバイル アプリ クライアントの SDK では、既定のローカル ストアの実装を提供します。ローカル ストアのベースは、Windows、Xamarin、および Android では SQLite ですが、iOS では Core Data です。
+## <a name="what-is-a-local-store?"></a>What is a local store?
 
-Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用するには、SQLite の拡張機能をインストールする必要があります。詳細については、[ユニバーサル Windows プラットフォームでオフライン同期を有効にする]方法に関するページを参照してください。Android と iOS では、デバイスのオペレーティング システム自体にあるバージョンの SQLite が同梱されているので、独自のバージョンの SQLite を参照する必要はありません。
+A local store is the data persistence layer on the client device. The Azure Mobile Apps client SDKs provide a default local store implementation. On Windows, Xamarin and Android, it is based on SQLite; on iOS, it is based on Core Data.
 
-開発者は、独自のローカル ストアを実装することもできます。たとえば、データを暗号化された形式でモバイル クライアント上に保存する必要がある場合は、SQLCipher を使用して暗号化を行うローカル ストアを定義できます。
+To use the SQLite-based implementation on Windows Phone or Windows Store 8.1, you need to install a SQLite extension. For more details, see [Universal Windows Platform: Enable offline sync]. Android and iOS ship with a version of SQLite in the device operating system itself, so it is not necessary to reference your own version of SQLite.
 
-## 同期コンテキストについて
+Developers can also implement their own local store. For instance, if you wish to store data in an encrypted format on the mobile client, you can define a local store that uses SQLCipher for encryption.
 
-*同期コンテキスト*はモバイル クライアント オブジェクト (`IMobileServiceClient` や `MSClient` など) に関連付けられており、同期テーブルに対して行われた変更を追跡します。同期コンテキストにより、後でサーバーに送信される CUD 操作 (作成、更新、削除) の順序付きリストを保持する*操作のキュー*が維持されます。
+## <a name="what-is-a-sync-context?"></a>What is a sync context?
 
-同期コンテキストへのローカル ストアの関連付けは、initialize メソッド ([.NET クライアント SDK] の `IMobileServicesSyncContext.InitializeAsync(localstore)` など) を使用して行います。
+A *sync context* is associated with a mobile client object (such as `IMobileServiceClient` or `MSClient`) and tracks changes that are made with sync tables. The sync context maintains an *operation queue* which keeps an ordered list of CUD operations (Create, Update, Delete)  that will later be sent to the server.
 
-## <a name="how-sync-works"></a>オフライン同期のしくみ
+A local store is associated with the sync context using an initialize method such as `IMobileServicesSyncContext.InitializeAsync(localstore)` in the [.NET client SDK].
 
-同期テーブルを使用する場合、クライアント コードによって、ローカルの変更内容が Azure モバイル アプリ バックエンドと同期される時期が制御されます。ローカルの変更を*プッシュする*呼び出しが行われるまで、バックエンドには何も送信されません。同様に、ローカル ストアに新しいデータが入力されるのは、データを*プルする*呼び出しが行われる場合のみです。
+## <a name="<a-name="how-sync-works"></a>how-offline-synchronization-works"></a><a name="how-sync-works"></a>How offline synchronization works
 
-* **プッシュ**: プッシュは同期コンテキストに対する操作であり、最後のプッシュ以降の CUD に関するすべての変更を送信します。個々のテーブルの変更だけを送信すると操作の順番が間違って送信される可能性があるため、このような送信を行うことができないことに注意してください。プッシュは Azure モバイル アプリ バックエンドに対して一連の REST 呼び出しを実行し、呼び出しを受けたバックエンドがサーバー データベースを変更します。
+When using sync tables, your client code controls when local changes will be synchronized with an Azure Mobile App backend. Nothing is sent to the backend until there is a call to *push* local changes. Similarly, the local store is populated with new data only when there is a call to *pull* data.
 
-* **プル**: プルはテーブルごとに実行され、クエリを使用してサーバー データのサブセットのみを取得するようにカスタマイズできます。その後、Azure Mobile クライアント SDK が結果のデータをローカル ストアに挿入します。
+* **Push**: Push is an operation on the sync context and sends all CUD changes since the last push. Note that it is not possible to send only an individual table's changes, because otherwise operations could be sent out of order. Push executes a series of REST calls to your Azure Mobile App backend, which in turn will modify your server database.
 
-* **暗黙的なプッシュ**: 保留中のローカルの更新があるテーブルに対してプルが実行された場合、プルはまず同期コンテキストに対してプッシュを実行します。これにより、キュー済みの変更とサーバーの新規データとの競合が最小限に抑えられます。
+* **Pull**: Pull is performed on a per-table basis and can be customized with a query to retrieve only a subset of the server data. The Azure Mobile client SDKs then insert the resulting data into the local store.
 
-* **増分同期**: プル操作の最初のパラメーターは*クエリ名*であり、これはクライアントでのみ使用されます。null 以外のクエリ名を使用する場合、Azure Mobile SDK は*増分同期*を実行します。プル操作で結果のセットが返されるたびに、その結果セットから最新の `updatedAt` タイムスタンプが SDK ローカル システム テーブルに格納されます。それ以降のプル操作では、そのタイムスタンプより後のレコードだけが取得されます。
+* **Implicit Pushes**: If a pull is executed against a table that has pending local updates, the pull will first execute a push on the sync context. This helps minimize conflicts between changes that are already queued and new data from the server.
 
-  増分同期を使用するには、サーバーが意味のある `updatedAt` 値を返すとともに、このフィールドでの並べ替えをサポートしている必要があります。ただし、SDK はupdatedAt フィールドに独自の並べ替えを追加するため、固有の `$orderBy$` 句を含むプル クエリは使用できません。
+* **Incremental Sync**: the first parameter to the pull operation is a *query name* that is used only on the client. If you use a non-null query name, the Azure Mobile SDK will perform an *incremental sync*.
+  Each time a pull operation returns a set of results, the latest `updatedAt` timestamp from that result set is stored in the SDK local system tables. Subsequent pull operations will only retrieve records after that timestamp.
 
-  クエリ名は任意の文字列にすることができますが、アプリ内の論理クエリごとに一意である必要があります。一意でない場合、異なるプル操作によって同じ増分同期のタイムスタンプが上書きされて、クエリが誤った結果を返す可能性があります。
+  To use incremental sync, your server must return meaningful `updatedAt` values and must also support sorting by this field. However, since the SDK adds its own sort on the updatedAt field, you cannot use a pull query that has its own `$orderBy$` clause.
 
-  クエリでパラメーターを使用する場合、一意のクエリ名を作成する 1 つの方法はパラメーター値を組み込むことです。たとえば、userid でフィルター処理をする場合、クエリ名は次のようにすることができます (C# を使用)。
+  The query name can be any string you choose, but it must be unique for each logical query in your app.
+  Otherwise, different pull operations could overwrite the same incremental sync timestamp and your queries can return incorrect results.
 
-		await todoTable.PullAsync("todoItems" + userid,
-			syncTable.Where(u => u.UserId == userid));
+  If the query has a parameter, one way to create a unique query name is to incorporate the parameter value.
+  For instance, if you are filtering on userid, your query name could be as follows (in C#):
 
-  増分同期を無効にする場合は、`null` をクエリ ID として渡します。この場合、`PullAsync` への呼び出しごとにすべてのレコードが再取得されるため、場合によっては非効率となります。
+        await todoTable.PullAsync("todoItems" + userid,
+            syncTable.Where(u => u.UserId == userid));
 
-* **消去**: ローカル ストアのコンテンツは `IMobileServiceSyncTable.PurgeAsync` を使用して削除できます。消去は、クライアント データベースに古くなったデータがある場合、または保留中の変更をすべて破棄する場合に行う必要があります。
+  If you want to opt out of incremental sync, pass `null` as the query ID. In this case, all records will be retrieved on every call to `PullAsync`, which is potentially inefficient.
 
-  消去により、ローカル ストアからテーブルがクリアされます。サーバー データベースとの同期待ちの操作がある場合、*force purge* パラメーターを設定しない限り消去では例外がスローされます。
+* **Purging**: You can clear the contents of the local store using `IMobileServiceSyncTable.PurgeAsync`.
+  This may be necessary if you have stale data in the client database, or if you wish to discard all pending changes.
 
-  クライアント上の古くなったデータの例として、"todo list" サンプルでデバイス 1 が未完了のアイテムだけを取得するとします。次に、別のデバイスによって、サーバー上の TodoItem "Buy milk" が完了とマークされたとします。ただし、デバイス 1 は完了とマークされていないアイテムだけをプルするので、デバイス 1 はローカル ストアに "Buy milk" TodoItem を残しています。消去によってこの古くなったアイテムがクリアされます。
+  A purge will clear a table from the local store. If there are operations pending synchronization with the server database, the purge will throw an exception unless the *force purge* parameter is set.
 
-## 次のステップ
+  As an example of stale data on the client, suppose in the "todo list" example, Device1 only pulls items that are not completed. Then, a todoitem "Buy milk" is marked completed on the server by another device. However, Device1 will still have the "Buy milk" todoitem in local store because it is only pulling items that are not marked complete. A purge will clear this stale item.
 
-* [iOS: オフライン同期を有効にする]
-* [Xamarin iOS: オフライン同期を有効にする]
-* [Xamarin Android: オフライン同期を有効にする]
-* [ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]
+## <a name="next-steps"></a>Next steps
+
+* [iOS: Enable offline sync]
+* [Xamarin iOS: Enable offline sync]
+* [Xamarin Android: Enable offline sync]
+* [Universal Windows Platform: Enable offline sync]
 
 <!-- Links -->
-[.NET クライアント SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
-[Android: オフライン同期を有効にする]: app-service-mobile-android-get-started-offline-data.md
-[iOS: オフライン同期を有効にする]: app-service-mobile-ios-get-started-offline-data.md
-[Xamarin iOS: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Xamarin Android: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
-[ユニバーサル Windows プラットフォーム: オフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
-[ユニバーサル Windows プラットフォームでオフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[.NET client SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
+[Android: Enable offline sync]: app-service-mobile-android-get-started-offline-data.md
+[iOS: Enable offline sync]: app-service-mobile-ios-get-started-offline-data.md
+[Xamarin iOS: Enable offline sync]: app-service-mobile-xamarin-ios-get-started-offline-data.md
+[Xamarin Android: Enable offline sync]: app-service-mobile-xamarin-ios-get-started-offline-data.md
+[Universal Windows Platform: Enable offline sync]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

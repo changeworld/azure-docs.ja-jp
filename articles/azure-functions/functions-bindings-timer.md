@@ -1,34 +1,35 @@
 <properties
-	pageTitle="Azure Functions におけるタイマー トリガー | Microsoft Azure"
-	description="Azure Functions でタイマー トリガーを使用する方法について説明します。"
-	services="functions"
-	documentationCenter="na"
-	authors="christopheranderson"
-	manager="erikre"
-	editor=""
-	tags=""
-	keywords="Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
+    pageTitle="Azure Functions timer trigger | Microsoft Azure"
+    description="Understand how to use timer triggers in Azure Functions."
+    services="functions"
+    documentationCenter="na"
+    authors="christopheranderson"
+    manager="erikre"
+    editor=""
+    tags=""
+    keywords="azure functions, functions, event processing, dynamic compute, serverless architecture"/>
 
 <tags
-	ms.service="functions"
-	ms.devlang="multiple"
-	ms.topic="reference"
-	ms.tgt_pltfrm="multiple"
-	ms.workload="na"
-	ms.date="08/22/2016"
-	ms.author="chrande; glenga"/>
+    ms.service="functions"
+    ms.devlang="multiple"
+    ms.topic="reference"
+    ms.tgt_pltfrm="multiple"
+    ms.workload="na"
+    ms.date="08/22/2016"
+    ms.author="chrande; glenga"/>
 
-# Azure Functions におけるタイマー トリガー
+
+# <a name="azure-functions-timer-trigger"></a>Azure Functions timer trigger
 
 [AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions でタイマー トリガーを構成する方法について説明します。タイマー トリガーでは、スケジュールに従って関数が 1 回または定期的に呼び出されます。
+This article explains how to configure timer triggers in Azure Functions. Timer triggers call functions based on a schedule, one time or recurring.  
 
-[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)] 
 
-## タイマー トリガーの function.json
+## <a name="function.json-for-timer-trigger"></a>function.json for timer trigger
 
-*function.json* ファイルには、スケジュールの式が記述されています。たとえば、次のスケジュールでは、関数は毎分実行されます。
+The *function.json* file provides a schedule expression. For example, the following schedule runs the function every minute:
 
 ```json
 {
@@ -44,55 +45,55 @@
 }
 ```
 
-タイマー トリガーは、マルチインスタンスのスケールアウトを自動的に処理します。すべてのインスタンスで特定のタイマー関数の 1 つのインタンスだけが実行されます。
+The timer trigger handles multi-instance scale-out automatically: only a single instance of a particular timer function will be running across all instances.
 
-## スケジュール式の形式
+## <a name="format-of-schedule-expression"></a>Format of schedule expression
 
-スケジュール式は、[CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)で、次の 6 個のフィールドが含まれます: `{second} {minute} {hour} {day} {month} {day of the week}`。
+The schedule expression is a [CRON expression](http://en.wikipedia.org/wiki/Cron#CRON_expression) that includes 6 fields:  `{second} {minute} {hour} {day} {month} {day of the week}`. 
 
-オンラインで見つかる CRON 式の多くは、{second} フィールドが省略されているため、これらのいずれかからコピーする場合は、この追加フィールドを調整する必要があることに注意してください。
+Note that many of the cron expressions you find online omit the {second} field, so if you copy from one of those you'll have to adjust for the extra field. 
 
-スケジュール式の他の例を以下に示します。
+Here are some other schedule expression examples:
 
-5 分に 1 回トリガーするには、次のように指定します。
+To trigger once every 5 minutes:
 
 ```json
 "schedule": "0 */5 * * * *"
 ```
 
-毎正時に 1 回トリガーするには、次のように指定します。
+To trigger once at the top of every hour:
 
 ```json
 "schedule": "0 0 * * * *",
 ```
 
-2 時間に 1 回トリガーするには、次のように指定します。
+To trigger once every two hours:
 
 ```json
 "schedule": "0 0 */2 * * *",
 ```
 
-午前 9 時から午後 5 時まで 1 時間ごとにトリガーするには、次のように指定します。
+To trigger once every hour from 9 AM to 5 PM:
 
 ```json
 "schedule": "0 0 9-17 * * *",
 ```
 
-毎日の午前 9 時 30 分にトリガーするには、次のように指定します。
+To trigger At 9:30 AM every day:
 
 ```json
 "schedule": "0 30 9 * * *",
 ```
 
-平日の午前 9 時 30 分にトリガーするには、次のように指定します。
+To trigger At 9:30 AM every weekday:
 
 ```json
 "schedule": "0 30 9 * * 1-5",
 ```
 
-## タイマー トリガーの C# コードの例
+## <a name="timer-trigger-c#-code-example"></a>Timer trigger C# code example
 
-この C# コードの例では、関数がトリガーされるたびにログを 1 つだけ書き込みます。
+This C# code example writes a single log each time the function is triggered.
 
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log)
@@ -101,8 +102,12 @@ public static void Run(TimerInfo myTimer, TraceWriter log)
 }
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
+[AZURE.INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)] 
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

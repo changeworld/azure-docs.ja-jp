@@ -1,79 +1,85 @@
 <properties
-	pageTitle="Azure Search のインデクサー | Microsoft Azure | ホステッド クラウド検索サービス"
-	description="Azure SQL Database、DocumentDB、または Azure Storage をクロールして検索可能なデータを抽出し、Azure Search インデックスを作成します。"
-	services="search"
-	documentationCenter=""
-	authors="HeidiSteen"
-	manager="jhubbard"
-	editor=""
+    pageTitle="Indexers in Azure Search | Microsoft Azure | Hosted cloud search service"
+    description="Crawl Azure SQL database, DocumentDB, or Azure storage to extract searchable data and populate an Azure Search index."
+    services="search"
+    documentationCenter=""
+    authors="HeidiSteen"
+    manager="jhubbard"
+    editor=""
     tags="azure-portal"/>
 
 <tags
-	ms.service="search"
-	ms.devlang="na"
-	ms.workload="search"
-	ms.topic="get-started-article"
-	ms.tgt_pltfrm="na"
-	ms.date="08/08/2016"
-	ms.author="heidist"/>
+    ms.service="search"
+    ms.devlang="na"
+    ms.workload="search"
+    ms.topic="get-started-article"
+    ms.tgt_pltfrm="na"
+    ms.date="10/17/2016"
+    ms.author="heidist"/>
 
-# Azure Search のインデクサー
+
+# <a name="indexers-in-azure-search"></a>Indexers in Azure Search
 > [AZURE.SELECTOR]
-- [概要](search-indexer-overview.md)
-- [ポータル](search-import-data-portal.md)
+- [Overview](search-indexer-overview.md)
+- [Portal](search-import-data-portal.md)
 - [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 - [DocumentDB](../documentdb/documentdb-search-indexer.md)
-- [Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)
-- [Table Storage (プレビュー)](search-howto-indexing-azure-tables.md)
+- [Blob Storage (preview)](search-howto-indexing-azure-blob-storage.md)
+- [Table Storage (preview)](search-howto-indexing-azure-tables.md)
 
-Azure Search の**インデクサー**は、検索可能なデータとメタデータを外部データ ソースから抽出し、インデックスとデータ ソース間のフィールドのマッピングに基づいてインデックスを作成するクローラーです。この方法は、インデックスにデータをプッシュするコードを記述することなく、サービスがデータをプルするため、「プル モデル」と呼ばれることもあります。
+An **indexer** in Azure Search is a crawler that extracts searchable data and metadata from an external data source and populates an index based on field-to-field mappings between the index and your data source. This approach is sometimes referred to as a 'pull model' because the service pulls data in without you having to write any code that pushes data to an index.
 
-データ取り込みの唯一の手段としてインデクサーを使用したり、インデクサーの使用を含む手法を組み合わせて使用したりして、インデックス内のフィールドの一部だけを読み込むことができます。
+You can use an indexer as the sole means for data ingestion, or use a combination of techniques that include the use of an indexer for loading just some of the fields in your index.
 
-インデクサーは、オンデマンドで実行することも、または 15 分ごとに実行される定期的なデータ更新スケジュールで実行することもできます。より頻繁に更新するには、Azure Search と外部データ ソースの両方のデータを同時に更新するプッシュ モデルが必要です。
+You can run indexers on demand or on a recurring data refresh schedule that runs as often as every fifteen minutes. More frequent updates require a push model that simultaneously updates data in both Azure Search and your external data source.
 
-## インデクサーの作成と管理の方法
+## <a name="approaches-for-creating-and-managing-indexers"></a>Approaches for creating and managing indexers
 
-Azure SQL や DocumentDB のように広く提供されているインデクサーでは、次の方法でインデクサーを作成したり管理したりすることができます。
+For generally available indexers like Azure SQL or DocumentDB, you can create and manage indexers using these approaches:
 
-- [ポータルのデータのインポート ウィザード ](search-get-started-portal.md)
-- [サービス REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
+- [Portal > Import Data Wizard ](search-get-started-portal.md)
+- [Service REST API](https://msdn.microsoft.com/library/azure/dn946891.aspx)
 - [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.search.iindexersoperations.aspx)
 
-Azure Blob Storage、Azure Table Storage といったプレビュー版のインデクサーでは、コードとプレビュー版の API ([インデクサー用の Azure Search Preview REST API](search-api-indexers-2015-02-28-preview.md) など) が必要となります。ポータルのツールは通常、プレビュー版の機能では利用できません。
+Preview indexers, such as Azure Blob or Table storage, require code and preview APIs such [Azure Search Preview REST API for indexers](search-api-indexers-2015-02-28-preview.md). Portal tooling is typically not available for preview features.
 
-## 基本的な構成手順
+## <a name="basic-configuration-steps"></a>Basic configuration steps
 
-インデクサーで実行できる機能は、データ ソースごとに異なります。そのためインデクサーやデータ ソースの構成には、インデクサーの種類ごとに異なる点があります。しかし基本的な成り立ちと要件は、すべてのインデクサーに共通です。以降、すべてのインデクサーに共通の手順について取り上げます。
+Indexers can offer features that are unique to the data source. In this respect, some aspects of indexer or data source configuration will vary by indexer type. However, all indexers share the same basic composition and requirements. Steps that are common to all indexers are covered below.
 
-### 手順 1. インデックスを作成する
+### <a name="step-1:-create-an-index"></a>Step 1: Create an index
 
-インデクサーは、データの取り込みに関連したいくつかのタスクを自動化しますが、そこにはインデックスの作成は含まれていません。前提条件として、定義済みのインデックスが必要です。加えてそのフィールドは、外部データ ソース内のフィールドと一致している必要があります。インデックス構築の詳細については、「[Create an Index (Azure Search REST API) (インデックスの作成 (Azure Search REST API))](https://msdn.microsoft.com/library/azure/dn798941.aspx)」を参照してください。
+An indexer will automate some tasks related to data ingestion, but creating an index is not one of them. As a prerequisite, you must have a predefined index with fields that match those in your external data source. For more information about structuring an index, see [Create an Index (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn798941.aspx).
 
-### 手順 2. データ ソースを作成する
+### <a name="step-2:-create-a-data-source"></a>Step 2: Create a data source
 
-インデクサーは、接続文字列などの情報を保持している**データ ソース**からデータをプルします。現在、次のデータ ソースがサポートされています。
+An indexer pulls data from a **data source** which holds information such as a connection string. Currently the following data sources are supported:
 
-- [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
+- [Azure SQL Database or SQL Server on an Azure virtual machine](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 - [DocumentDB](../documentdb/documentdb-search-indexer.md)
-- [Azure Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)。PDF や Office ドキュメント、HTML、XML からテキストを抽出するために使用されます。
-- [Azure Table Storage (プレビュー)](search-howto-indexing-azure-tables.md)
+- [Azure Blob storage (Preview)](search-howto-indexing-azure-blob-storage.md), used to extract text from PDF, Office documents, HTML, or XML
+- [Azure Table Storage (Preview)](search-howto-indexing-azure-tables.md)
 
-データ ソースは、それを使用するインデクサーとは別に構成および管理されます。これは、1 つのデータ ソースを複数のインデクサーで使用して、一度に複数のインデックスを読み込めることを意味します。
+Data sources are configured and managed independently of the indexers that use them, which means a data source can be used by multiple indexers to load more than one index at a time. 
 
-### 手順 3. インデクサーを作成してスケジュールを設定する
+### <a name="step-3:create-and-schedule-the-indexer"></a>Step 3:Create and schedule the indexer
 
-インデクサーの定義とは、インデックスやデータ ソース、スケジュールを指定する構文です。インデクサーは、データ ソースが同じサブスクリプションに属していれば、他のサービスのデータ ソースであっても参照できます。インデクサー構築の詳細については、「[Create Indexer (Azure Search REST API) (インデクサーの作成 (Azure Search REST API))](https://msdn.microsoft.com/library/azure/dn946899.aspx)」を参照してください。
+The indexer definition is a construct specifying the index, data source, and a schedule. An indexer can reference a data source from another service, as long as that data source is from the same subscription. For more information about structuring an indexer, see [Create Indexer (Azure Search REST API)](https://msdn.microsoft.com/library/azure/dn946899.aspx).
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-基本的な概念の説明は以上です。次のステップとしてデータ ソースの種類ごとの要件とタスクを確認してください。
+Now that you have the basic idea, the next step is to review requirements and tasks specific to each data source type.
 
-- [Azure SQL Database または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
+- [Azure SQL Database or SQL Server on an Azure virtual machine](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers-2015-02-28.md)
 - [DocumentDB](../documentdb/documentdb-search-indexer.md)
-- [Azure Blob Storage (プレビュー)](search-howto-indexing-azure-blob-storage.md)。PDF や Office ドキュメント、HTML、XML からテキストを抽出するために使用されます。
-- [Azure Table Storage (プレビュー)](search-howto-indexing-azure-tables.md)
-- [Azure Search BLOB インデクサー (プレビュー) を使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
-- [Azure Search BLOB インデクサー (プレビュー) を使用した JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)
+- [Azure Blob storage (Preview)](search-howto-indexing-azure-blob-storage.md), used to extract text from PDF, Office documents, HTML, or XML
+- [Azure Table Storage (Preview)](search-howto-indexing-azure-tables.md)
+- [Indexing CSV blobs using the Azure Search Blob indexer (Preview)](search-howto-index-csv-blobs.md)
+- [Indexing JSON blobs with Azure Search Blob indexer (Preview)](search-howto-index-json-blobs.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

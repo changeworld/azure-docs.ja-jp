@@ -1,6 +1,6 @@
 <properties
-   pageTitle="現行バージョンの Azure Tools にプロジェクトをアップグレードする方法 | Microsoft Azure"
-   description="Visual Studio の Azure プロジェクトを現行バージョンの Azure Tools にアップグレードする方法について説明します。"
+   pageTitle="How to upgrade projects to the current version of the Azure tools | Microsoft Azure"
+   description="Learn how to upgrade an Azure project in Visual Studio to the current version of the Azure tools"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,40 +15,45 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# 現行バージョンの Azure Tools for Visual Studio にプロジェクトをアップグレードする方法
 
-## Overview
+# <a name="how-to-upgrade-projects-to-the-current-version-of-the-azure-tools-for-visual-studio"></a>How to upgrade projects to the current version of the Azure Tools for Visual Studio
 
-現行 (1.6 より後の) バージョン の Azure Tools をインストールすると、バージョン 1.6 (2011 年 11 月) より前の Azure Tools を使用して作成されたプロジェクトはすべて、プロジェクトを開いた際に自動的にアップグレードされます。バージョン 1.6 (2011 年 11 月) を使用してプロジェクトを作成し、まだそのバージョンがインストールされている場合は、バージョンの低い方でプロジェクトを開けば、アップグレードするかどうかの判断を先延ばしすることができます。
+## <a name="overview"></a>Overview
 
-## アップグレードしたときのプロジェクトの変化
+After you install the current release of the Azure Tools (or a previous release that's newer than 1.6), any projects that were created by using a Azure Tools release before 1.6 (November 2011) will be automatically upgraded as soon as you open them. If you created projects by using the 1.6 (November 2011) release of those tools and you still have that release installed, you can open those projects in the older release and decide later whether to upgrade them.
 
-プロジェクトが自動的にアップグレードされた場合、またはアップグレードすることを明示的に指定した場合、特定のアセンブリの現行バージョンで動作するようにプロジェクトに変更が加えられます。また、このセクションでも説明していますが、いくつかのプロパティも変更されます。既にあるプロジェクトと新しいバージョンのツールとの互換性を確保するために、他の変更が必要になる場合は、それらの変更を手動で行う必要があります。
+## <a name="how-your-project-changes-when-you-upgrade-it"></a>How your project changes when you upgrade it
 
-- 新しいバージョンの Microsoft.WindowsAzure.Diagnostics.DiagnosticMonitoirTraceListener.dll を参照するように、Web ロールの web.config ファイルと worker ロールの app.config ファイルがアップグレードされます。
+If a project is automatically upgraded or you specify that you want to upgrade it, your project is modified to work with current versions of certain assemblies, and some properties are also changed as this section describes. If your project requires other changes to be compatible with the newer version of the tools, you must make those changes manually.
 
-- Microsoft.WindowsAzure.StorageClient.dll、Microsoft.WindowsAzure.Diagnostics.dll、Microsoft.WindowsAzure.ServiceRuntime.dll の各アセンブリが新しいバージョンにアップグレードされます。
+- The web.config file for web roles and the app.config file for worker roles are updated to reference the newer version of Microsoft.WindowsAzure.Diagnostics.DiagnosticMonitoirTraceListener.dll.
 
-- Azure のプロジェクト ファイル (.ccproj) に格納された発行プロファイルは、.azurePubXml という拡張子で **Publish** サブディレクトリ内の別のファイルに移されます。
+- The Microsoft.WindowsAzure.StorageClient.dll, Microsoft.WindowsAzure.Diagnostics.dll, and Microsoft.WindowsAzure.ServiceRuntime.dll assemblies are upgraded to the new versions.
 
-- 新機能と変更された機能をサポートするために、発行プロファイルのいくつかのプロパティが更新されます。デプロイされたクラウド サービスを同時にまたは段階的に更新できるため、**[AllowUpgrade]** は **[DeploymentReplacementMethod]** に置き換えられます。
+- Publish profiles that were stored in the Azure project file (.ccproj) are moved to a separate file, with the extension .azurePubXml, in the **Publish** subdirectory.
 
-- **UseIISExpressByDefault** プロパティが追加され、false に設定されます。これは、デバッグに使用する Web サーバーがインターネット インフォメーション サービス (IIS) から IIS Express に自動的に変更されることがないようにするためです。最近のバージョンのツールで作成したプロジェクトの Web サーバーは、既定では IIS Express になります。
+- Some properties in the publish profile are updated to support new and changed features. **AllowUpgrade** is replaced by **DeploymentReplacementMethod** because you can update a deployed cloud service simultaneously or incrementally.
 
-- 既にあるプロジェクトのロールで Azure のキャッシュ機能がホストされている場合、プロジェクトをアップグレードするときにサービス構成 (.cscfg ファイル) とサービス定義 (.csdef ファイル) 内の一部のプロパティが変更されます。プロジェクトで使用されている Azure のキャッシュ機能が NuGet パッケージである場合、プロジェクトは最新バージョンのパッケージにアップグレードされます。web.config ファイルを開き、クライアントの構成がアップグレード処理後も適切に維持されていることを確認する必要があります。NuGet パッケージを使用せずに、クライアント アセンブリへの参照として Azure のキャッシュ機能を追加した場合は、アセンブリが更新されません。アセンブリへの参照を新しいバージョンに手動で更新する必要があります。
+- The property **UseIISExpressByDefault** is added and set to false so that the web server that’s used for debugging won’t automatically change from Internet Information Services (IIS) to IIS Express. IIS Express is the default web server for projects that are created with the newer releases of the tools.
 
->[AZURE.IMPORTANT] F# プロジェクトでは、Azure アセンブリへの参照を手動で更新して、これらのアセンブリの新しいバージョンを参照する必要があります。
+- If Azure Caching is hosted in one or more of your project’s roles, some properties in the service configuration (.cscfg file) and service definition (.csdef file) are changed when a project is upgraded. If the project uses the Azure Caching NuGet package, the project is upgraded to the most recent version of the package. You should open the web.config file and verify that the client configuration was maintained properly during the upgrade process. If you added the references to Azure Caching client assemblies without using the NuGet package, these assemblies won't be updated; you must manually update these references to the new versions.
 
-### Azure プロジェクトを現行リリースにアップグレードする方法
+>[AZURE.IMPORTANT] For F# projects, you must manually update references to Azure assemblies so that they reference the newer versions of those assemblies.
 
-1. アップグレード後のプロジェクトに使用する Visual Studio 環境に、新しいバージョンの Azure Tools をインストールして、アップグレード対象のプロジェクトを開きます。プロジェクトが 1.6 (2011 年 11 月) リリース未満の Azure Tools で作成されている場合、プロジェクトは新しいバージョンに自動的にアップグレードされます。2011 年 11 月リリースでプロジェクトが作成され、そのバージョンがまだインストールされている場合、プロジェクトはそのバージョンで開きます。
+### <a name="how-to-upgrade-an-azure-project-to-the-current-release"></a>How to upgrade an Azure project to the current release
 
-1. [ソリューション エクスプ ローラー] で、プロジェクト ノードのショートカット メニューを開き、**[プロパティ]** を選択し、表示されるダイアログ ボックスの **[アプリケーション]** タブを選択します。
+1. Install the current version of the Azure Tools into the installation of Visual Studio that you want to use for the upgraded project, and then open the project that you want to upgrade. If the project was created with a Azure Tools release before 1.6 (November 2011), the project is automatically upgraded to the current version. If the project was created with the November 2011 release and that release is still installed, the project opens in that release.
 
-    そのプロジェクトに関連付けられているツールのバージョンが **[アプリケーション]** タブに表示されます。新しいバージョンの Azure Tools が表示された場合、そのプロジェクトは既にアップグレードされています。タブに表示されたバージョンよりも新しいツールがインストールされている場合は、**[アップグレード]** ボタンが表示されます。
+1. In Solution Explorer, open the shortcut menu for the project node, choose **Properties**, and then choose the **Application** tab of the dialog box that appears.
 
-1. **[アップグレード]** ボタンをクリックして、プロジェクトを新しいバージョンのツールにアップグレードします。
+    The **Application** tab shows the tools version that’s associated with the project. If the current version of Azure Tools appears, the project has already been upgraded. If you've installed a newer version of the tools than what the tab shows, an **Upgrade** button appears.
 
-1. プロジェクトをビルドし、API の変更に起因するエラーがあれば解決してください。新しいバージョンのコードを変更する方法については、特定の API に関するドキュメントを参照してください。
+1. Choose the **Upgrade** button to upgrade a project to the current version of the tools.
 
-<!---HONumber=AcomDC_0817_2016-->
+1. Build the project, and then address any errors that result from API changes. For information about how to modify your code for the new version, see the documentation for the specific API.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ポータルを使用して Azure Data Lake Store で HDInsight クラスターを作成する | Azure"
-   description="Azure ポータルを使用して、Azure Data Lake Store で HDInsight クラスターを作成し、使用します"
+   pageTitle="Create HDInsight clusters with Azure Data Lake Store using the portal | Azure"
+   description="Use Azure Portal to create and use HDInsight clusters with Azure Data Lake Store"
    services="data-lake-store,hdinsight" 
    documentationCenter=""
    authors="nitinme"
@@ -13,352 +13,360 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="08/29/2016"
+   ms.date="10/04/2016"
    ms.author="nitinme"/>
 
-# Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する
+
+# <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-portal"></a>Create an HDInsight cluster with Data Lake Store using Azure Portal
 
 > [AZURE.SELECTOR]
-- [ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
-- [PowerShell の使用](data-lake-store-hdinsight-hadoop-use-powershell.md)
+- [Using Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Using PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+- [Using Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 
-Azure ポータルを使用して、Azure Data Lake Store にアクセスするように HDInsight クラスター (Hadoop、HBase、Spark、または Storm) を作成する方法について説明します。このリリースに関する重要な考慮事項をいくつか以下に示します。
+Learn how to use Azure Portal to create an HDInsight cluster (Hadoop, HBase, Spark, or Storm) with access to Azure Data Lake Store. Some important considerations for this release:
 
-* **Spark クラスター (Linux) と Hadoop クラスター (Windows および Linux) の場合**、Data Lake Store は、追加のストレージ アカウントとしてのみ使用できます。このようなクラスターの既定のストレージ アカウントは、Azure Storage BLOB (WASB) のままです。
+* **For Spark clusters (Linux) and Hadoop clusters (Windows and Linux)**, the Data Lake Store can only be used as an additional storage account. The default storage account for the such clusters will still be Azure Storage Blobs (WASB).
 
-* **Storm クラスター (Windows および Linux) の場合**、Data Lake Store は、Storm トポロジからデータを書き込むために使用できます。Data Lake Store は、Storm トポロジから読み取ることができる、参照データを格納するために使用することもできます。詳細については、「[Storm トポロジで Data Lake Store を使用する](#use-data-lake-store-in-a-storm-topology)」を参照してください。
+* **For Storm clusters (Windows and Linux)**, the Data Lake Store can be used to write data from a Storm topology. Data Lake Store can also be used to store reference data that can then be read by a Storm topology. For more information, see [Use Data Lake Store in a Storm topology](#use-data-lake-store-in-a-storm-topology).
 
-* **HBase クラスター (Windows および Linux) の場合**、Data Lake Store を既定のストレージおよび追加ストレージとして使用できます。詳細については、「[HBase クラスターで Data Lake Store を使用する](#use-data-lake-store-with-hbase-clusters)」を参照してください。
+* **For HBase clusters (Windows and Linux)**, the Data Lake Store can be used as a default storage as well as additional storage. For more information, see [Use Data Lake Store with HBase clusters](#use-data-lake-store-with-hbase-clusters).
 
-> [AZURE.NOTE] 注意すべき重要な点がいくつかあります。
+> [AZURE.NOTE] Some important points to note. 
 > 
-> * Data Lake Store にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.2 と 3.4 でのみ使用できます (Windows と Linux の Hadoop、HBase、および Storm クラスターの場合)。Linux の Spark クラスターの場合、このオプションは HDInsight 3.4 クラスターでのみ使用できます。
+> * Option to create HDInsight clusters with access to Data Lake Store is available only for HDInsight versions 3.2 and 3.4 (for Hadoop, HBase, and Storm clusters on Windows as well as Linux). For Spark clusters on Linux, this option is only available on HDInsight 3.4 clusters.
 >
-> * 前述のように、Data Lake Store は、HBase タイプのクラスターでは既定のストレージとして、Hadoop、Spark、Storm タイプのクラスターでは追加のストレージとして使用できます。Data Lake Store を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。Data Lake Store を追加のストレージとして使用した場合、クラスター関連のファイル (ログなど) は既定のストレージ (Azure BLOB) に書き込まれますが、処理対象のデータは、Data Lake Store アカウントに格納することができます。
+> * As mentioned above, Data Lake Store is available as default storage for some cluster types (HBase) and additional storage for other cluster types (Hadoop, Spark, Storm). Using Data Lake Store as an additional storage account does not impact performance or the ability to read/write to the storage from the cluster. In a scenario where Data Lake Store is used as additional storage, cluster-related files (such as logs, etc.) are written to the default storage (Azure Blobs), while the data that you want to process can be stored in a Data Lake Store account.
 
 
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+Before you begin this tutorial, you must have the following:
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-- Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
-- **Azure Data Lake Store アカウント**。「[Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。アカウントを作成したら、次のタスクを実行しいくつかサンプル データをアップロードします。このデータは、チュートリアルの後半で Data Lake Store 内のデータにアクセスする HDInsight クラスターからジョブを実行するために必要です。
+- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
 
-	* [Data Lake Store にフォルダーを作成する](data-lake-store-get-started-portal.md#createfolder)。
-	* [Data Lake Store にファイルをアップロードする](data-lake-store-get-started-portal.md#uploaddata)。アップロードするサンプル データを探している場合は、[Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)から **Ambulance Data** フォルダーを取得できます。
+- **Azure Data Lake Store account**. Follow the instructions at [Get started with Azure Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md). 
 
-## ビデオで速習する
+- **Upload some sample data to your Azure Data Lake Store account**. Once you have created the account, perform the following tasks to upload some sample data. You'll need this data later in the tutorial to run jobs from an HDInsight cluster that access data in the Data Lake Store.
 
-以下のビデオをご覧になり、Data Lake Store にアクセスできる HDInsight クラスターをプロビジョニングする方法を理解してください。
+    * [Create a folder in your Data Lake Store](data-lake-store-get-started-portal.md#createfolder).
+    * [Upload a file to your Data Lake Store](data-lake-store-get-started-portal.md#uploaddata). If you are looking for some sample data to upload, you can get the **Ambulance Data** folder from the [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData).
 
-* [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](https://mix.office.com/watch/l93xri2yhtp2)
-* クラスターがセットアップされたら、[Hive および Pig スクリプトを使用して Data Lake Store のデータにアクセス](https://mix.office.com/watch/1n9g5w0fiqv1q)します。
+## <a name="do-you-learn-faster-with-videos?"></a>Do you learn faster with videos?
 
-## Azure Data Lake Store にアクセスできる HDInsight クラスターを作成する
+Watch the following videos to understand how to provision HDInsight clusters with access to Data Lake Store.
 
-このセクションでは、Data Lake Store を追加のストレージとして使用する HDInsight Hadoop クラスターを作成します。このリリースでは、Hadoop クラスターの場合、Data Lake Store はクラスターの追加のストレージとしてのみ使用できます。既定のストレージは、Azure Storage BLOB (WASB) のままです。そのため、クラスターに必要なストレージ アカウントとストレージ コンテナーを最初に作成します。
+* [Create an HDInsight cluster with access to Data Lake Store](https://mix.office.com/watch/l93xri2yhtp2)
+* Once the cluster is set up, [Access data in Data Lake Store using Hive and Pig scripts](https://mix.office.com/watch/1n9g5w0fiqv1q)
 
-1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
+## <a name="create-an-hdinsight-cluster-with-access-to-azure-data-lake-store"></a>Create an HDInsight cluster with access to Azure Data Lake Store
 
-2. 「[HDInsight で Hadoop クラスターを作成する](../hdinsight/hdinsight-provision-clusters.md#create-using-the-preview-portal)」の手順に従って、HDInsight クラスターのプロビジョニングを開始します。
+In this section, you create an HDInsight Hadoop cluster that uses the Data Lake Store as an additional storage. In this release, for a Hadoop cluster, Data Lake Store can only be used as an additional storage for the cluster. The default storage will still be the Azure storage blobs (WASB). So, we'll first create the storage account and storage containers required for the cluster.
 
-3. **[オプションの構成]** ブレードで、**[データ ソース]** をクリックします。**[データ ソース]** ブレードでストレージ アカウントおよびストレージ コンテナーの詳細を指定し、**[場所]** を **[East US 2]** として指定して、**[クラスター AAD ID]** をクリックします。
+1. Sign on to the new [Azure Portal](https://portal.azure.com).
 
-	![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "HDInsight クラスターにサービス プリンシパルを追加する")
+2. Follow the steps at [Create Hadoop clusters in HDInsight](../hdinsight/hdinsight-provision-clusters.md#create-using-the-preview-portal) to start provisioning an HDInsight cluster.
 
-4. **[クラスター AAD ID]** ブレードで、既存のサービス プリンシパルを選択するか、または新しいサービス プリンシパルを作成することができます。
+3. On the **Optional Configuration** blade, click **Data Source**. In the **Data Source** blade, specify the details for the storage account and storage container, specify **Location** as **East US 2**, and then click **Cluster AAD Identity**.
 
-	* **新しいサービス プリンシパルを作成する**
+    ![Add service principal to HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png "Add service principal to HDInsight cluster")
 
-		* **[クラスター AAD ID]** ブレードで **[新規作成]**、**[サービス プリンシパル]** の順にクリックし、**[サービス プリンシパルの作成]** ブレードで、新しいサービス プリンシパルを作成するための値を指定します。その一環として、証明書と Azure Active Directory アプリケーションも作成されます。**[作成]** をクリックします。
+4. On the **Cluster AAD Identity** blade, you can choose to select an existing Service Principal or create a new one.
 
-			![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png "HDInsight クラスターにサービス プリンシパルを追加する")
+    * **Create a new Service Principal**
 
-		* **[クラスター AAD ID]** ブレードで、**[ADLS アクセスを管理する]** をクリックします。ウィンドウに、サブスクリプションに関連付けられている Data Lake Store アカウントが表示されます。ただし、権限を設定できるのは作成したアカウントのみです。HDInsight クラスターに関連付けるアカウントの READ/WRITE/EXECUTE アクセス許可を選択し、**[アクセス許可の保存]** をクリックします。
+        * In the **Cluster AAD Identity** blade, click **Create new**, click **Service Principal**, and then in the **Create a Service Principal** blade, provide values to create a new service principal. As part of that, a certificate and an Azure Active Directory application is also created. Click **Create**.
 
-			![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "HDInsight クラスターにサービス プリンシパルを追加する")
+            ![Add service principal to HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.2.png "Add service principal to HDInsight cluster")
 
-		* **[クラスター AAD ID]** ブレードで、**[証明書のダウンロード]** をクリックして、作成したサービス プリンシパルに関連付けられている証明書をダウンロードします。これは、HDInsight クラスターを他にも作成しているが、後でその同じサービス プリンシパルを使用したい場合に役立ちます。**[選択]** をクリックします。
+        * On the **Cluster AAD Identity** blade, click **Manage ADLS Access**. The pane shows the Data Lake Store accounts associated with the subscription. However, you can set the permissions only for the account that you created. Select READ/WRITE/EXECUTE permissions for the account you want to associate with the HDInsight cluster and then click **Save Permissions**.
 
-			![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.4.png "HDInsight クラスターにサービス プリンシパルを追加する")
+            ![Add service principal to HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "Add service principal to HDInsight cluster")
+
+        * On the **Cluster AAD Identity** blade, click **Download Certificate** to download the certificate associated with the service principal you created. This is useful if you want to use the same service principal in the future, while creating additional HDInsight clusters. Click **Select**.
+
+            ![Add service principal to HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.4.png "Add service principal to HDInsight cluster")
 
 
-	* **既存のサービス プリンシパルを選択する**
+    * **Choose an existing Service Principal**
 
-		* **[クラスター AAD ID]** ブレードで、**[既存のものを使用]**、**[サービス プリンシパル]** の順にクリックし、**[サービス プリンシパルの選択]** ブレードで既存のサービス プリンシパルを探します。サービス プリンシパルの名前をクリックし、**[選択]** をクリックします。
+        * In the **Cluster AAD Identity** blade, click **Use existing**, click **Service Principal**, and then in the **Select a Service Principal** blade, search for an existing service principal. Click a service principal name and then click **Select**.
 
-			![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "HDInsight クラスターにサービス プリンシパルを追加する")
+            ![Add service principal to HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.png "Add service principal to HDInsight cluster")
 
-		* **[クラスター AAD ID]** ブレードで、選択したサービス プリンシパルに関連付けられている証明書 (.pfx) をアップロードし、証明書のパスワードを指定します。
+        * On the **Cluster AAD Identity** blade, upload the certificate (.pfx) associated with the service principal you selected, and then provide the certificate password.
 
-5. **[ADLS アクセスを管理する]** をクリックし、**[ファイル アクセス許可の選択]** をクリックします。
+5. Click **Manage ADLS Access** and then click **Select file permissions**. 
 
-	![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.existing.save.png "HDInsight クラスターにサービス プリンシパルを追加する")
+    ![Add service principal to HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.5.existing.save.png "Add service principal to HDInsight cluster")
 
-6. **[ファイル アクセス許可の選択]** ブレードの **[アカウント]** ドロップダウン リストで、HDInsight クラスターに関連付ける Data Lake Store アカウントを選択します。ブレードに、選択した Data Lake Store アカウントで利用できるファイルとフォルダーが一覧表示されます。
+6. In the **Select file permissions** blade, from the **Account** drop-down, select the Data Lake Store account that you want to associated with the HDInsight cluster. The blade lists the files and folders available in the selected Data Lake Store account. 
  
-	![Data Lake Store へのアクセスを提供する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi-adl-permission-1.png "Data Lake Store へのアクセスを提供する")
+    ![Provide access to Data Lake Store](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi-adl-permission-1.png "Provide access to Data Lake Store")
 
-	その後、選択したファイルとフォルダーに与えるアクセス許可を決定します。フォルダーについては、アクセス許可をフォルダーのみに適用するのか、フォルダーとフォルダー内のすべての子項目に適用するのかを指定します。選択するには、**[適用対象]** ドロップダウンから該当する値を選択します。アクセス許可を削除するには、**[削除]** アイコンをクリックします。
+    After that, determine the permissions to be provided for the the selected files and folders. For folders, also specify whether the permissions apply to the folder only or to the folder and all the child items in the folder. You can make this selection by selecting the appropriate value from the **Apply To** drop-down. To remove a permission, click the **Delete** icon
 
-	![Data Lake Store へのアクセスを提供する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi-adl-permission-2.png "Data Lake Store へのアクセスを提供する")
+    ![Provide access to Data Lake Store](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi-adl-permission-2.png "Provide access to Data Lake Store")
 
-	その他の Data Lake Store アカウントに関連付けられているファイルとフォルダーにも、以上の手順を繰り返します。アクセス許可の割り当てが完了したら、ブレードの下部にある **[選択]** をクリックします。
+    Repeat these steps to associated files and folders from other Data Lake Store accounts as well. When you have completed assigning the permissions, click **Select** at the bottom of the blade.
 
-7. **[選択したアクセス許可の割り当て]** ブレードで、指定したアクセス許可を確認し、**[実行]** をクリックしてアクセス許可を付与します。
+7. In the **Assign selected permissions** blade, review the permissions that you provided and then click **Run** to grant those permissions.
 
-	![Data Lake Store へのアクセスを提供する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi-adl-permission-3.png "Data Lake Store へのアクセスを提供する")
+    ![Provide access to Data Lake Store](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi-adl-permission-3.png "Provide access to Data Lake Store")
 
-	[状態] 列に進行状況が表示されます。すべてのアクセス許可を正常に割り当てたら、**[完了]** をクリックします。
+    The status column displays the progress. Once all the permissions are successfully assigned, click **Done**. 
 
-6. **[クラスター AAD ID]** ブレードと **[データ ソース]** ブレードで **[選択]** をクリックし、[HDInsight での Hadoop クラスターの作成](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)に関するページの説明に従ってクラスターの作成に進みます。
+6. Click **Select** on the **Cluster AAD Identity** and **Data Source** blades and then continue with cluster creations as described at [Create Hadoop clusters in HDInsight](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md).
 
-7. クラスターがプロビジョニングされたら、サービス プリンシパルが HDInsight クラスターに関連付けられていることを確認できます。そのためには、クラスター ブレードで **[クラスター AAD ID]** をクリックし、関連付けられているサービス プリンシパルを確認します。
+7. Once the cluster is provisioned, you can verify that the Service Principal is associated with the HDInsight cluster. To do so, from the cluster blade, click **Cluster AAD Identity** to see the associated Service Principal.
 
-	![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png "HDInsight クラスターにサービス プリンシパルを追加する")
+    ![Add service principal to HDInsight cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.6.png "Add service principal to HDInsight cluster")
 
-## Azure Data Lake Store を使用する HDInsight クラスターでテスト ジョブを実行する
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-azure-data-lake-store"></a>Run test jobs on the HDInsight cluster to use the Azure Data Lake Store
 
-HDInsight クラスターを構成したら、クラスターでテスト ジョブを実行して、HDInsight クラスターが Azure Data Lake Store のデータにアクセス可能であるかどうかをテストできます。そのためには、Data Lake Store を対象とするいくつかの Hive クエリを実行します。
+After you have configured an HDInsight cluster, you can run test jobs on the cluster to test that the HDInsight cluster can access data in Azure Data Lake Store. To do so, we will run some hive queries that target the Data Lake Store.
 
-### Linux クラスターの場合
+### <a name="for-a-linux-cluster"></a>For a Linux cluster
 
-1. プロビジョニングしたクラスターのクラスター ブレードを開き、**[ダッシュボード]** をクリックします。これにより、Linux クラスターの Ambari が開きます。Ambari にアクセスすると、サイトに対する認証が求められます。クラスターを作成するときに使用した管理者アカウント名 (既定値は admin) とパスワードを入力します。
+1. Open the cluster blade for the cluster that you just provisioned and then click **Dashboard**. This opens Ambari for the Linux cluster. When accessing Ambari, you will be prompted to authenticate to the site. Enter the admin (default admin,) account name and password you used when creating the cluster.
 
-	![クラスター ダッシュボードの起動](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster1.png "クラスター ダッシュボードの起動")
+    ![Launch cluster dashboard](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster1.png "Launch cluster dashboard")
 
-	Web ブラウザーで https://CLUSTERNAME.azurehdinsight.net にアクセスして Ambari に直接移動することもできます (**CLUSTERNAME** は HDInsight クラスターの名前です)。
+    You can also navigate directly to Ambari by going to https://CLUSTERNAME.azurehdinsight.net in a web browser (where **CLUSTERNAME** is the name of your HDInsight cluster).
 
-2. Hive ビューを開きます。ページ メニュー (ページの右側にある **[管理者]** リンク ボタンの横) から四角形のセットを選択して使用可能なビューの一覧を表示します。**[Hive ビュー]** を選択します。
+2. Open the Hive view. Select the set of squares from the page menu (next to the **Admin** link and button on the right of the page,) to list available views. Select the **Hive** view.
 
-	![Selecting ambari views](./media/data-lake-store-hdinsight-hadoop-use-portal/selecthiveview.png)
+    ![Selecting ambari views](./media/data-lake-store-hdinsight-hadoop-use-portal/selecthiveview.png)
 
-3. 次のようなページが表示されます。
+3. You should see a page similar to the following:
 
-	![Image of the hive view page, containing a query editor section](./media/data-lake-store-hdinsight-hadoop-use-portal/hiveview.png)
+    ![Image of the hive view page, containing a query editor section](./media/data-lake-store-hdinsight-hadoop-use-portal/hiveview.png)
 
-4. ページの **[クエリ エディター]** セクションで、次の HiveQL ステートメントをワークシートに貼り付けます。
+4. In the **Query Editor** section of the page, paste the following HiveQL statement into the worksheet:
 
-		CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder'
+        CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder'
 
-5. **クエリ エディター**の下部にある **[実行]** ボタンをクリックしてクエリを開始します。**クエリ エディター**の下に **[Query Process Results (クエリ処理結果)]** セクションが表示され、ジョブに関する情報が表示されます。
+5. Click the **Execute** button at the bottom of the **Query Editor** to start the query. A **Query Process Results** section should appear beneath the **Query Editor** and display information about the job.
 
-6. クエリが完了すると、**[Query Process Results (クエリ処理結果)]** セクションに操作の結果が表示されます。**[Results]** タブには次の情報が表示されます。
+6. Once the query has finished, the **Query Process Results** section will display the results of the operation. The **Results** tab should contain the following information:
 
-7. 次のクエリを実行して、テーブルが作成されたことを確認します。
+7. Run the following query to verify that the table was created.
 
-		SHOW TABLES;
+        SHOW TABLES;
 
-	**[結果]** タブに次のように表示されます。
+    The **Results** tab should show the following:
 
-		hivesampletable
-		vehicles
+        hivesampletable
+        vehicles
 
-	**vehicles** は、前に作成したテーブルです。**hivesampletable** は、既定ですべての HDInsight クラスターで使用できるサンプル テーブルです。
+    **vehicles** is the table you created earlier. **hivesampletable** is a sample table available in all HDInsight clusters by default.
 
-8. **vehicles** テーブルからデータを取得するクエリを実行することもできます。
+8. You can also run a query to retrieve data from the **vehicles** table.
 
-		SELECT * FROM vehicles LIMIT 5;
+        SELECT * FROM vehicles LIMIT 5;
 
-### Windows クラスターの場合
+### <a name="for-a-windows-cluster"></a>For a Windows cluster
 
-1. プロビジョニングしたクラスターのクラスター ブレードを開き、**[ダッシュボード]** をクリックします。
+1. Open the cluster blade for the cluster that you just provisioned and then click **Dashboard**.
 
-	![クラスター ダッシュボードの起動](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster1.png "クラスター ダッシュボードの起動")
+    ![Launch cluster dashboard](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster1.png "Launch cluster dashboard")
 
-	入力を求められたら、クラスターの管理者資格情報を入力します。
+    When prompted, enter the administrator credentials for the cluster.
 
-2. これにより、Microsoft Azure HDInsight クエリ コンソールが開きます。**[Hive エディター]** をクリックします。
+2. This opens the Microsoft Azure HDInsight Query Console. Click **Hive Editor**.
 
-	![Hive エディターを開く](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster2.png "Hive エディターを開く")
+    ![Open Hive editor](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster2.png "Open Hive editor")
 
-3. Hive エディターで次のクエリを入力し、**[送信]** をクリックします。
+3. In the Hive Editor, enter the following query and then click **Submit**.
 
-		CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder'
+        CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder'
 
-	この Hive クエリで、`adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder` の Data Lake Store に格納されているデータからテーブルを作成します。この場所には、前にアップロードしたサンプル データ ファイルが含まれます。
+    In this Hive query, we create a table from data stored in Data Lake Store at `adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder`. This location has a sample data file that you should have uploaded earlier.
 
-	下部にある **[ジョブ セッション]** テーブルに、ジョブの状態が **[初期化中]** から **[実行中]**、**[完了]** へと変化していくのが示されます。また、**[詳細の表示]** をクリックして、完了したジョブの詳細を確認することもできます。
+    The **Job Session** table at the bottom shows the status of the job changing from **Initializing**, to **Running**, to **Completed**. You can also click **View Details** to see more information about the completed job.
 
-	![テーブルを作成する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster3.png "テーブルを作成する")
+    ![Create table](./media/data-lake-store-hdinsight-hadoop-use-portal/hdiadlcluster3.png "Create table")
 
-4. 次のクエリを実行して、テーブルが作成されたことを確認します。
+4. Run the following query to verify that the table was created.
 
-		SHOW TABLES;
+        SHOW TABLES;
 
-	このクエリに対応する **[詳細の表示]** をクリックすると、出力が次のように表示されます。
+    Click **View Details** corresponding to this query and the output should show the following:
 
-		hivesampletable
-		vehicles
+        hivesampletable
+        vehicles
 
-	**vehicles** は、前に作成したテーブルです。**hivesampletable** は、既定ですべての HDInsight クラスターで使用できるサンプル テーブルです。
+    **vehicles** is the table you created earlier. **hivesampletable** is a sample table available in all HDInsight clusters by default.
 
-5. **vehicles** テーブルからデータを取得するクエリを実行することもできます。
+5. You can also run a query to retrieve data from the **vehicles** table.
 
-		SELECT * FROM vehicles LIMIT 5;
+        SELECT * FROM vehicles LIMIT 5;
 
 
-## HDFS コマンドを使用して Data Lake Store にアクセスする
+## <a name="access-data-lake-store-using-hdfs-commands"></a>Access Data Lake Store using HDFS commands
 
-Data Lake Store を使用するように HDInsight クラスターを構成したら、HDFS シェル コマンドを使用してストアにアクセスできます。
+Once you have configured the HDInsight cluster to use Data Lake Store, you can use the HDFS shell commands to access the store.
 
-### Linux クラスターの場合
+### <a name="for-a-linux-cluster"></a>For a Linux cluster
 
-このセクションでは、SSH をクラスターに入れて、HDFS コマンドを実行します。Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
+In this section you will SSH into the cluster and run the HDFS commands. Windows does not provide a built-in SSH client. We recommend using **PuTTY**, which can be downloaded from [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
-PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
+For more information on using PuTTY, see [Use SSH with Linux-based Hadoop on HDInsight from Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
-接続されたら、次の HDFS ファイル システム コマンドを使用して、Data Lake Store 内のファイルを一覧表示します。
+Once connected, use the following HDFS filesystem command to list the files in the Data Lake Store.
 
-	hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
+    hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
 
-これにより、以前に Data Lake Store にアップロードしたファイルが一覧表示されます。
+This should list the file that you uploaded earlier to the Data Lake Store.
 
-	15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
-	Found 1 items
-	-rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
+    15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
+    Found 1 items
+    -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
 
-`hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
+You can also use the `hdfs dfs -put` command to upload some files to the Data Lake Store, and then use `hdfs dfs -ls` to verify whether the files were successfully uploaded.
 
 
-### Windows クラスターの場合
+### <a name="for-a-windows-cluster"></a>For a Windows cluster
 
-1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. Sign on to the new [Azure Portal](https://portal.azure.com).
 
-2. **[参照]**、**[HDInsight クラスター]** の順にクリックし、作成した HDInsight クラスターをクリックします。
+2. Click **Browse**, click **HDInsight clusters**, and then click the HDInsight cluster that you created.
 
-3. クラスター ブレードで **[リモート デスクトップ]** をクリックし、**[リモート デスクトップ]** ブレードで **[接続]** をクリックします。
+3. In the cluster blade, click **Remote Desktop**, and then in the **Remote Desktop** blade, click **Connect**.
 
-	![HDI クラスターにリモートから接続する](./media/data-lake-store-hdinsight-hadoop-use-portal/ADL.HDI.PS.Remote.Desktop.png "Azure リソース グループを作成する")
+    ![Remote into HDI cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/ADL.HDI.PS.Remote.Desktop.png "Create an Azure Resource Group")
 
-	メッセージが表示されたら、リモート デスクトップ ユーザーに対して指定した資格情報を入力します。
+    When prompted, enter the credentials you provided for the remote desktop user.
 
-4. リモート セッションで、Windows PowerShell を起動し、HDFS ファイル システムのコマンドを使用して、Azure Data Lake Store のファイルを一覧表示します。
+4. In the remote session, start Windows PowerShell, and use the HDFS filesystem commands to list the files in the Azure Data Lake Store.
 
-	 	hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
+        hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
 
-	これにより、以前に Data Lake Store にアップロードしたファイルが一覧表示されます。
+    This should list the file that you uploaded earlier to the Data Lake Store.
 
-		15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
-		Found 1 items
-		-rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
+        15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
+        Found 1 items
+        -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
 
-	`hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
+    You can also use the `hdfs dfs -put` command to upload some files to the Data Lake Store, and then use `hdfs dfs -ls` to verify whether the files were successfully uploaded.
 
-## Spark クラスターで Data Lake Store を使用する
+## <a name="use-data-lake-store-with-spark-cluster"></a>Use Data Lake Store with Spark cluster
 
-このセクションでは、HDInsight Spark クラスターで使用できる Jupyter Notebook を使用して、既定の Azure Storage BLOB アカウントの代わりに、HDInsight Spark クラスターに関連付けた Data Lake Store アカウントからデータを読み取るジョブを実行します。
+In this section, you use Jupyter notebook available with HDInsight Spark clusters to run a job that reads data from a Data Lake Store account that you associated with an HDInsight Spark cluster, instead of the default Azure Storage Blob account.
 
-1. Spark クラスターに関連付けられている既定のストレージ アカウント (WASB) から、クラスターに関連付けられている Azure Data Lake Store アカウントにサンプル データの一部をコピーします。この操作には、[ADLCopy ツール](http://aka.ms/downloadadlcopy)を使用できます。リンク先からツールをダウンロードしてインストールします。
+1. Copy over some sample data from the default storage account (WASB) associated with the Spark cluster to the Azure Data Lake store account associated with the cluster. You can use the [ADLCopy tool](http://aka.ms/downloadadlcopy) to do so. Download and install the tool from the link.
 
-2. コマンド プロンプトを開き、AdlCopy がインストールされているディレクトリ (通常は `%HOMEPATH%\Documents\adlcopy`) に移動します。
+2. Open a command prompt and navigate to the directory where AdlCopy is installed, typically `%HOMEPATH%\Documents\adlcopy`.
 
-3. 次のコマンドを実行して、ソース コンテナーの特定の BLOB を Data Lake Store にコピーします。
+3. Run the following command to copy a specific blob from the source container to a Data Lake Store:
 
-		AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
+        AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-	このチュートリアルでは、**/HdiSamples/HdiSamples/SensorSampleData/hvac/** にある **HVAC.csv** サンプル データ ファイルを Azure Data Lake Store アカウントにコピーします。コード スニペットを次に示します。
+    For this tutorial, copy the **HVAC.csv** sample data file at **/HdiSamples/HdiSamples/SensorSampleData/hvac/** to the Azure Data Lake Store account. The code snippet should look like:
 
-		AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
+        AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-	>[AZURE.WARNING] ファイル名とパス名の大文字/小文字が正しいことを確認します。
+    >[AZURE.WARNING] Make sure you the file and path names are in the proper case.
 
-4. Data Lake Store アカウントがある Azure サブスクリプションの資格情報を入力するように求められます。次のような出力が表示されます。
+4. You will be prompted to enter the credentials for the Azure subscription under which you have your Data Lake Store account. You will see an output similar to the following:
 
-		Initializing Copy.
-		Copy Started.
-		100% data copied.
-		Copy Completed. 1 file copied.
+        Initializing Copy.
+        Copy Started.
+        100% data copied.
+        Copy Completed. 1 file copied.
 
-	データ ファイル (**HVAC.csv**) が Data Lake Store アカウントの **/hvac** フォルダーにコピーされます。
+    The data file (**HVAC.csv**) will be copied under a folder **/hvac** in the Data Lake Store account.
 
-4. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
+4. From the [Azure Portal](https://portal.azure.com/), from the startboard, click the tile for your Spark cluster (if you pinned it to the startboard). You can also navigate to your cluster under **Browse All** > **HDInsight Clusters**.   
 
-2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
+2. From the Spark cluster blade, click **Quick Links**, and then from the **Cluster Dashboard** blade, click **Jupyter Notebook**. If prompted, enter the admin credentials for the cluster.
 
-	> [AZURE.NOTE] ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
-	>
-	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
+    > [AZURE.NOTE] You may also reach the Jupyter Notebook for your cluster by opening the following URL in your browser. Replace __CLUSTERNAME__ with the name of your cluster:
+    >
+    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-2. 新しい Notebook を作成します。**[新規]** をクリックし、**[PySpark]** をクリックします。
+2. Create a new notebook. Click **New**, and then click **PySpark**.
 
-	![新しい Jupyter Notebook を作成します](./media/data-lake-store-hdinsight-hadoop-use-portal/hdispark.note.jupyter.createnotebook.png "新しい Jupyter Notebook を作成します")
+    ![Create a new Jupyter notebook](./media/data-lake-store-hdinsight-hadoop-use-portal/hdispark.note.jupyter.createnotebook.png "Create a new Jupyter notebook")
 
-3. **Untitled.pynb** という名前の新しい Notebook が作成されて開かれます。
+3. A new notebook is created and opened with the name **Untitled.pynb**. 
 
-4. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。このシナリオに必要な種類をインポートすることから始めることができます。このためには、次のコード スニペットをセルに貼り付けて、**Shift + Enter** キーを押します。
+4. Because you created a notebook using the PySpark kernel, you do not need to create any contexts explicitly. The Spark and Hive contexts will be automatically created for you when you run the first code cell. You can start by importing the types required for this scenario. To do so, paste the following code snippet in a cell and press **SHIFT + ENTER**.
 
-		from pyspark.sql.types import *
-		
-	Jupyter でジョブを実行するたびに、Web ブラウザー ウィンドウのタイトルに **[(ビジー)]** ステータスと Notebook のタイトルが表示されます。また、右上隅にある **PySpark** というテキストの横に塗りつぶされた円も表示されます。ジョブが完了すると、白抜きの円に変化します。
+        from pyspark.sql.types import *
+        
+    Every time you run a job in Jupyter, your web browser window title will show a **(Busy)** status along with the notebook title. You will also see a solid circle next to the **PySpark** text in the top-right corner. After the job is completed, this will change to a hollow circle.
 
-	 ![Jupyter Notebook ジョブのステータス](./media/data-lake-store-hdinsight-hadoop-use-portal/hdispark.jupyter.job.status.png "Jupyter Notebook ジョブのステータス")
+     ![Status of a Jupyter notebook job](./media/data-lake-store-hdinsight-hadoop-use-portal/hdispark.jupyter.job.status.png "Status of a Jupyter notebook job")
 
-4. Data Lake Store アカウントにコピーした **HVAC.csv** ファイルを使用して、サンプル データを一時テーブルに読み込みます。Data Lake Store アカウントのデータにアクセスするには、次の URL パターンを使用します。
+4. Load sample data into a temporary table using the **HVAC.csv** file you copied to the Data Lake Store account. You can access the data in the Data Lake Store account using the following URL pattern.
 
-		adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
+        adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
 
-	空のセルに次のコード例を貼り付けます。**MYDATALAKESTORE** を Data Lake Store アカウント名に置き換え、**Shift + Enter** キーを押します。このコード サンプルは、**hvac** という一時テーブルにデータを登録します。
+    In an empty cell, paste the following code example, replace **MYDATALAKESTORE** with your Data Lake Store account name, and press **SHIFT + ENTER**. This code example registers the data into a temporary table called **hvac**.
 
-		# Load the data
-		hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/hvac/HVAC.csv")
-		
-		# Create the schema
-		hvacSchema = StructType([StructField("date", StringType(), False),StructField("time", StringType(), False),StructField("targettemp", IntegerType(), False),StructField("actualtemp", IntegerType(), False),StructField("buildingID", StringType(), False)])
-		
-		# Parse the data in hvacText
-		hvac = hvacText.map(lambda s: s.split(",")).filter(lambda s: s[0] != "Date").map(lambda s:(str(s[0]), str(s[1]), int(s[2]), int(s[3]), str(s[6]) ))
-		
-		# Create a data frame
-		hvacdf = sqlContext.createDataFrame(hvac,hvacSchema)
-		
-		# Register the data fram as a table to run queries against
-		hvacdf.registerTempTable("hvac")
+        # Load the data
+        hvacText = sc.textFile("adl://MYDATALAKESTORE.azuredatalakestore.net/hvac/HVAC.csv")
+        
+        # Create the schema
+        hvacSchema = StructType([StructField("date", StringType(), False),StructField("time", StringType(), False),StructField("targettemp", IntegerType(), False),StructField("actualtemp", IntegerType(), False),StructField("buildingID", StringType(), False)])
+        
+        # Parse the data in hvacText
+        hvac = hvacText.map(lambda s: s.split(",")).filter(lambda s: s[0] != "Date").map(lambda s:(str(s[0]), str(s[1]), int(s[2]), int(s[3]), str(s[6]) ))
+        
+        # Create a data frame
+        hvacdf = sqlContext.createDataFrame(hvac,hvacSchema)
+        
+        # Register the data fram as a table to run queries against
+        hvacdf.registerTempTable("hvac")
 
-5. PySpark カーネルを使用しているため、`%%sql` マジックを使用して作成した一時テーブル **hvac** で SQL クエリを直接実行できます。`%%sql` マジックの詳細と、PySpark カーネルで使用できるその他のマジックの詳細については、[Spark HDInsight クラスターと Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels)に関する記事を参照してください。
-		
-		%%sql
-		SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = "6/1/13"
+5. Because you are using a PySpark kernel, you can now directly run a SQL query on the temporary table **hvac** that you just created by using the `%%sql` magic. For more information about the `%%sql` magic, as well as other magics available with the PySpark kernel, see [Kernels available on Jupyter notebooks with Spark HDInsight clusters](hdinsight-apache-spark-jupyter-notebook-kernels.md#why-should-i-use-the-new-kernels).
+        
+        %%sql
+        SELECT buildingID, (targettemp - actualtemp) AS temp_diff, date FROM hvac WHERE date = \"6/1/13\"
 
-5. ジョブが正常に完了すると、既定で次の出力が表示されます。
+5. Once the job is completed successfully, the following tabular output is displayed by default.
 
- 	![クエリ結果のテーブル出力](./media/data-lake-store-hdinsight-hadoop-use-portal/tabular.output.png "クエリ結果のテーブル出力")
+    ![Table output of query result](./media/data-lake-store-hdinsight-hadoop-use-portal/tabular.output.png "Table output of query result")
 
-	他の視覚化でも結果を表示できます。たとえば、ある出力の領域グラフは次のようになります。
+    You can also see the results in other visualizations as well. For example, an area graph for the same output would look like the following.
 
-	![クエリ結果の領域グラフ](./media/data-lake-store-hdinsight-hadoop-use-portal/area.output.png "クエリ結果の領域グラフ")
+    ![Area graph of query result](./media/data-lake-store-hdinsight-hadoop-use-portal/area.output.png "Area graph of query result")
 
 
-6. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。そのためには、Notebook の **[ファイル]** メニューの **[閉じて停止]** をクリックします。これにより、Notebook がシャットダウンされ、閉じられます。
+6. After you have finished running the application, you should shutdown the notebook to release the resources. To do so, from the **File** menu on the notebook, click **Close and Halt**. This will shutdown and close the notebook.
 
-## Storm トポロジで Data Lake Store を使用する
+## <a name="use-data-lake-store-in-a-storm-topology"></a>Use Data Lake Store in a Storm topology
 
-Data Lake Store を使用して、Storm トポロジからデータを書き込むことができます。このシナリオを実現する方法については、「[HDInsight で Apache Storm によって Azure Data Lake Store を使用する](../hdinsight/hdinsight-storm-write-data-lake-store.md)」をご覧ください。
+You can use the Data Lake Store to write data from a Storm topology. For instructions on how to achieve this scenario, see [Use Azure Data Lake Store with Apache Storm with HDInsight](../hdinsight/hdinsight-storm-write-data-lake-store.md).
 
-## HBase クラスターで Data Lake Store を使用する
+## <a name="use-data-lake-store-with-hbase-clusters"></a>Use Data Lake Store with HBase clusters
 
-HBase クラスターでは、Data Lake Store を既定のストレージとして、また追加のストレージとして使用できます。そのためには、次の操作を実行します。
+With HBase clusters, you can use Data Lake Store as a default storage as well as additional storage. To do so:
 
-1.  **[データ ソース]** ブレードの **[HBase データの場所]** で **[Data Lake Store]** を選択します。
-2.  使用する Data Lake Store の名前を選択するか、または新しい Data Lake Store を作成します。
-3.  最後に、Data Lake Store 内の **[HBase ルート フォルダー]** を指定します。Data Lake Store アカウントにルート フォルダーが含まれていない場合は、新規に作成してください。
+1.  In the **Data Source** blade, for **HBase Data Location**, select **Data Lake Store** .
+2.  Select the name of the Data Lake Store that you want to use, or create a new one.
+3.  Finally, specify the **HBase Root Folder** within the Data Lake Store. If the Data Lake Store account does not have a root folder, create a new one.
 
-	![Data Lake Store を使用した HBase](./media/data-lake-store-hdinsight-hadoop-use-portal/hbase-data-lake-store.png "Azure リソース グループを作成する")
+    ![HBase with Data Lake Store](./media/data-lake-store-hdinsight-hadoop-use-portal/hbase-data-lake-store.png "Create an Azure Resource Group")
 
-### Data Lake Store を HBase クラスターの既定のストレージとして使用する場合の考慮事項
+### <a name="considerations-when-using-data-lake-store-as-default-storage-for-hbase-clusters"></a>Considerations when using Data Lake Store as default storage for HBase clusters
 
-* 複数の HBase クラスターに対して同じ Data Lake Store アカウントを使用することができます。ただし、クラスターに指定する **HBase ルート フォルダー** (上の画面キャプチャの手順 4) は一意である必要があります。2 つの異なる HBase クラスターに同じルート フォルダーを使用**しないでください**。
-* 既定のストレージとして Data Lake Store アカウントを使用したとしても、HBase クラスターのログ ファイルが保存されるのは、そのクラスターに関連付けられた Azure Storage BLOB (WASB) となります。上の画面キャプチャでは、青のボックスで強調表示されています。
+* You can use the same Data Lake Store account for more than one HBase cluster. However, the **HBase Root Folder** that you provide for the cluster (step # 4 in the screen capture above) must be unique. You **must not** use the same root folder across two different HBase clusters.
+* Even though you use Data Lake Store account as default storage, the HBase cluster log files are still stored in the Azure Storage Blobs (WASB) associated with the cluster. This is highlighted in the blue box in the screen capture above.
 
 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-* [Azure PowerShell を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [PowerShell: Create an HDInsight cluster to use Data Lake Store](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

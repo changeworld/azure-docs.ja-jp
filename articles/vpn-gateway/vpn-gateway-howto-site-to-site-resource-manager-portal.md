@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Resource Manager と Azure ポータルを使用してサイト間 VPN 接続を持つ仮想ネットワークを作成する | Microsoft Azure"
-   description="Resource Manager デプロイメント モデルを使用して VNet を作成し、S2S VPN ゲートウェイ接続を使用してローカルのオンプレミス ネットワークにこれを接続する方法について説明します。"
+   pageTitle="Create a virtual network with a Site-to-Site VPN connection using Azure Resource Manager and the Azure Portal | Microsoft Azure"
+   description="How to create VNet using the Resource Manager deployment model and connect it to your local on-premises network using a S2S VPN gateway connection."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -17,135 +17,140 @@
    ms.date="10/03/2016"
    ms.author="cherylmc"/>
 
-# Azure Portal を使用してサイト間接続を持つ VNet を作成する
+
+# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-azure-portal"></a>Create a VNet with a Site-to-Site connection using the Azure portal
 
 > [AZURE.SELECTOR]
 - [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 - [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
-- [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
+- [Classic - Classic Portal](vpn-gateway-site-to-site-create.md)
 
 
-この記事では、**Azure Resource Manager デプロイメント モデル**と Azure Portal を使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。
+This article walks you through creating a virtual network and a Site-to-Site VPN connection to your on-premises network using the **Azure Resource Manager deployment model** and the Azure portal. Site-to-Site connections can be used for cross-premises and hybrid configurations.
 
-![ダイアグラム](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/s2srmportal.png)
-
-
-
-### サイト間接続のデプロイ モデルとデプロイ ツール
-
-[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
-
-[AZURE.INCLUDE [vpn-gateway-table-site-to-site-table](../../includes/vpn-gateway-table-site-to-site-include.md)]
-
-VNet どうしは接続しても、オンプレミスへの接続は作成しない場合は、[VNet 間の接続の構成](vpn-gateway-vnet-vnet-rm-ps.md)に関するページを参照してください。
-
-## 開始する前に
-
-構成を開始する前に、以下が揃っていることを確認します。
-
-- 互換性のある VPN デバイスおよびデバイスを構成できる人員。「[VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
-
-- VPN デバイスの外部接続用パブリック IP アドレス。この IP アドレスを NAT の内側に割り当てることはできません。
-	
-- Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](http://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-
-### <a name="values"></a>この演習のサンプル構成値
+![Diagram](./media/vpn-gateway-howto-site-to-site-resource-manager-portal/s2srmportal.png)
 
 
-以下の手順を練習として使用する場合は、次のサンプル構成値を使用してください。
 
-- **VNet の名前:** TestVNet1
-- **アドレス空間:** 10.11.0.0/16 および 10.12.0.0/16
-- **サブネット:**
-	- FrontEnd: 10.11.0.0/24
-	- BackEnd: 10.12.0.0/24
-	- GatewaySubnet: 10.12.255.0/27
-- **リソース グループ:** TestRG1
-- **場所:** 米国東部
-- **DNS サーバー:** 8.8.8.8
-- **ゲートウェイ名:** VNet1GW
-- **パブリック IP:** VNet1GWIP
-- **VPN の種類:** ルート ベース
-- **接続の種類:** サイト間 (IPsec)
-- **ゲートウェイの種類:** VPN
-- **ローカル ネットワーク ゲートウェイ名:** Site2
-- **接続名:** VNet1toSite2
+### <a name="deployment-models-and-tools-for-site-to-site-connections"></a>Deployment models and tools for Site-to-Site connections
+
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
+
+[AZURE.INCLUDE [vpn-gateway-table-site-to-site-table](../../includes/vpn-gateway-table-site-to-site-include.md)] 
+
+If you want to connect VNets together, but are not creating a connection to an on-premises location, see [Configure a VNet-to-VNet connection](vpn-gateway-vnet-vnet-rm-ps.md).
+
+## <a name="before-you-begin"></a>Before you begin
+
+Verify that you have the following items before beginning your configuration:
+
+- A compatible VPN device and someone who is able to configure it. See [About VPN Devices](vpn-gateway-about-vpn-devices.md). If you aren't familiar with configuring your VPN device, or are unfamiliar with the IP address ranges located in your on-premises network configuration, you need to coordinate with someone who can provide those details for you.
+
+- An externally facing public IP address for your VPN device. This IP address cannot be located behind a NAT.
+    
+- An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](http://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) or sign up for a [free account](http://azure.microsoft.com/pricing/free-trial/).
+
+### <a name="<a-name="values"></a>sample-configuration-values-for-this-exercise"></a><a name="values"></a>Sample configuration values for this exercise
 
 
-## 1\.仮想ネットワークの作成 
+When using these steps as an exercise, you can use the sample configuration values:
 
-既に VNet がある場合は、設定が VPN ゲートウェイの設計に適合していることを確認します。特に、他のネットワークと重複している可能性のあるサブネットに注意してください。サブネットの重複があると、接続が適切に動作しません。VNet が正しい設定で構成されていたら、「[DNS サーバーの指定](#dns)」セクションの手順に進んでください。
+- **VNet Name:** TestVNet1
+- **Address Space:** 10.11.0.0/16 and 10.12.0.0/16
+- **Subnets:**
+    - FrontEnd: 10.11.0.0/24
+    - BackEnd: 10.12.0.0/24
+    - GatewaySubnet: 10.12.255.0/27
+- **Resource Group:** TestRG1
+- **Location:** East US
+- **DNS Server:** 8.8.8.8
+- **Gateway Name:** VNet1GW
+- **Public IP:** VNet1GWIP
+- **VPN Type:** Route-based
+- **Connection Type:** Site-to-site (IPsec)
+- **Gateway Type:** VPN
+- **Local Network Gateway Name:** Site2
+- **Connection Name:** VNet1toSite2
 
-### 仮想ネットワークを作成するには
 
-[AZURE.INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
+## <a name="1.-create-a-virtual-network"></a>1. Create a virtual network 
 
-## 手順 2.アドレス空間とサブネットの追加
+If you already have a VNet, verify that the settings are compatible with your VPN gateway design. Pay particular attention to any subnets that may overlap with other networks. If you have overlapping subnets, your connection won't work properly. If your VNet is configured with the correct settings, you can begin the steps in the [Specify a DNS server](#dns) section.
 
-VNet が作成されたら、アドレス空間とサブネットをさらに追加できます。
+### <a name="to-create-a-virtual-network"></a>To create a virtual network
 
-[AZURE.INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
+[AZURE.INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]  
 
-## <a name="dns"></a>3.DNS サーバーの指定
+## <a name="2.-add-additional-address-space-and-subnets"></a>2. Add additional address space and subnets
 
-### DNS サーバーを指定するには
+You can add additional address space and subnets to your VNet once it has been created.
+
+[AZURE.INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)] 
+
+## <a name="<a-name="dns"></a>3.-specify-a-dns-server"></a><a name="dns"></a>3. Specify a DNS server
+
+### <a name="to-specify-a-dns-server"></a>To specify a DNS server
 
 [AZURE.INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
-## 4\.ゲートウェイ サブネットの作成
+## <a name="4.-create-a-gateway-subnet"></a>4. Create a gateway subnet
 
-仮想ネットワークをゲートウェイに接続する前に、まず、接続先の仮想ネットワークのゲートウェイ サブネットを作成する必要があります。将来的な構成要件も見越して十分な IP アドレスを確保するために、可能であれば、/28 または /27 の CIDR ブロックを使用してゲートウェイ サブネットを作成することをお勧めします。
+Before connecting your virtual network to a gateway, you first need to create the gateway subnet for the virtual network to which you want to connect. If possible, it's best to create a gateway subnet using a CIDR block of /28 or /27 in order to provide enough IP addresses to accommodate additional future configuration requirements.
 
-練習としてこの構成を作成する場合は、ゲートウェイ サブネットの作成時に、上記の[値](#values)を参照してください。
+If you are creating this configuration as an exercise, refer to these [values](#values) when creating your gateway subnet.
 
-### ゲートウェイ サブネットを作成するには
+### <a name="to-create-a-gateway-subnet"></a>To create a gateway subnet
 
 
 [AZURE.INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
-## 5\.仮想ネットワーク ゲートウェイの作成
+## <a name="5.-create-a-virtual-network-gateway"></a>5. Create a virtual network gateway
 
-練習としてこの構成を作成する場合は、[サンプル構成値](#values)を参照してください。
+If you are creating this configuration as an exercise, you can refer to the [sample configuration values](#values).
 
-### 仮想ネットワーク ゲートウェイを作成するには
+### <a name="to-create-a-virtual-network-gateway"></a>To create a virtual network gateway
 
 [AZURE.INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
-## 6\.ローカル ネットワーク ゲートウェイの作成
+## <a name="6.-create-a-local-network-gateway"></a>6. Create a local network gateway
 
-"ローカル ネットワーク ゲートウェイ" は、オンプレミスの場所を指します。Azure から参照できるように、ローカル ネットワーク ゲートウェイに名前を付けます。
+The 'local network gateway' refers to your on-premises location. Give the local network gateway a name by which Azure can refer to it. 
 
-練習としてこの構成を作成する場合は、[サンプル構成値](#values)を参照してください。
+If you are creating this configuration as an exercise, you can refer to the [sample configuration values](#values).
 
-### ローカル ネットワーク ゲートウェイを作成するには
+### <a name="to-create-a-local-network-gateway"></a>To create a local network gateway
 
 [AZURE.INCLUDE [vpn-gateway-add-lng-rm-portal](../../includes/vpn-gateway-add-lng-rm-portal-include.md)]
 
-## 7\.VPN デバイスの構成
+## <a name="7.-configure-your-vpn-device"></a>7. Configure your VPN device
 
 [AZURE.INCLUDE [vpn-gateway-configure-vpn-device-rm](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
-## 8\.サイト間 VPN 接続の作成
+## <a name="8.-create-a-site-to-site-vpn-connection"></a>8. Create a Site-to-Site VPN connection
 
-仮想ネットワーク ゲートウェイと VPN デバイスの間にサイト間 VPN 接続を作成します。サンプルの値は必ず実際の値に変更してください。共有キーは、VPN デバイスの構成に使用したものと同じ値にする必要があります。
+Create the Site-to-Site VPN connection between your virtual network gateway and your VPN device. Be sure to replace the values with your own. The shared key must match the value you used for your VPN device configuration. 
 
-このセクションを開始する前に、仮想ネットワーク ゲートウェイとローカル ネットワーク ゲートウェイの作成が完了していることを確認してください。練習としてこの構成を作成する場合は、接続の作成時に、上記の[値](#values)を参照してください。
+Before beginning this section, verify that your virtual network gateway and local network gateways have finished creating. If you are creating this configuration as an exercise, refer to these [values](#values) when creating your connection.
 
-### VPN 接続を作成するには
+### <a name="to-create-the-vpn-connection"></a>To create the VPN connection
 
 
 [AZURE.INCLUDE [vpn-gateway-add-site-to-site-connection-rm-portal](../../includes/vpn-gateway-add-site-to-site-connection-rm-portal-include.md)]
 
-## 9\.VPN 接続の確認
+## <a name="9.-verify-the-vpn-connection"></a>9. Verify the VPN connection
 
-VPN 接続の確認はポータルで行えるほか、PowerShell を使って確認することもできます。
+You can verify your VPN connection either in the portal, or by using PowerShell.
 
 [AZURE.INCLUDE [vpn-gateway-verify-connection-rm](../../includes/vpn-gateway-verify-connection-rm-include.md)]
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。詳細については、仮想マシンの[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines)を参照してください。
+- Once your connection is complete, you can add virtual machines to your virtual networks. See the virtual machines [learning path](https://azure.microsoft.com/documentation/learning-paths/virtual-machines) for more information.
 
-- BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
+- For information about BGP, see the [BGP Overview](vpn-gateway-bgp-overview.md) and [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md).
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

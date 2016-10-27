@@ -1,186 +1,191 @@
 <properties
-	pageTitle="SQL Database V12 の新機能 |Microsoft Azure"
-	description="クラウドで Azure SQL Database を使用しているビジネス システムが今すぐ V12 にアップグレードでメリットを得られる理由を説明します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="MightyPen"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="What's new in SQL Database V12 | Microsoft Azure"
+    description="Describes why business systems that are using Azure SQL Database in the cloud will benefit by upgrading to version V12 now."
+    services="sql-database"
+    documentationCenter=""
+    authors="MightyPen"
+    manager="jhubbard"
+    editor=""/>
 
 
 <tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/15/2016"
-	ms.author="genemi"/>
+    ms.service="sql-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/15/2016"
+    ms.author="genemi"/>
 
 
-# SQL Database V12 の新機能
+
+# <a name="what's-new-in-sql-database-v12"></a>What's new in SQL Database V12
 
 
-このトピックでは、Azure SQL Database の新しい V12 バージョンを V11 バージョンと比べたときの多くのメリットについて説明します。
+This topic describes the many advantages that the new V12 version of Azure SQL Database has over version V11.
 
 
-V12 には継続的に機能が追加されます。したがって、Azure のサービス更新情報に関する Web ページにアクセスし、次のフィルターを使用することをお勧めします。
+We continue to add features to V12. So we encourage you to visit our Service Updates webpage for Azure, and to use its filters:
 
 
-- サービスを [[SQL Database]](https://azure.microsoft.com/updates/?service=sql-database) でフィルター処理します。
-- SQL Database の機能について、[General Availability] [(GA) のアナウンス](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability)でフィルター処理します。
+- Filtered to the [SQL Database service](https://azure.microsoft.com/updates/?service=sql-database).
+- Filtered to General Availability [(GA) announcements](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) for SQL Database features.
 
 
-Azure SQL Database のリソース制限に関する最新情報は「<br/>[Azure SQL Database のリソース制限](sql-database-resource-limits.md)」にあります。
+The latest information about resource limits for SQL Database is documented at:<br/>[Azure SQL Database Resource Limits](sql-database-resource-limits.md).
 
 
-## SQL Server との強化されたアプリケーションの互換性
+## <a name="increased-application-compatibility-with-sql-server"></a>Increased application compatibility with SQL Server
 
 
-SQL Database V12 の主な目標は、Microsoft SQL Server 2014 との互換性を改善し、新しいバージョンの SQL Server がリリースされた場合にも互換性を維持することです。その他の領域では、V12 はプログラミングの重要な領域で SQL Server との対応を実現しました。次に例を示します。
+A key goal for SQL Database V12 was to improve the compatibility with Microsoft SQL Server 2014, and to maintain the compatibility as new versions of SQL Server are released. Among other areas, V12 achieves parity with SQL Server in the important area of programmability. For example:
 
-- [組み込みの JSON のサポート](https://msdn.microsoft.com/library/dn921897.aspx)
+- [Built-in JSON support](https://msdn.microsoft.com/library/dn921897.aspx)
 
-- [ウィンドウ関数](http://msdn.microsoft.com/library/ms189798.aspx)と [OVER](http://msdn.microsoft.com/library/ms189461.aspx)
+- [Window functions](http://msdn.microsoft.com/library/ms189798.aspx), with [OVER](http://msdn.microsoft.com/library/ms189461.aspx)
 
-- [XML インデックス](http://msdn.microsoft.com/library/bb934097.aspx)と[選択的 XML インデックス](http://msdn.microsoft.com/library/jj670104.aspx)
+- [XML indexes](http://msdn.microsoft.com/library/bb934097.aspx) and [selective XML indexes](http://msdn.microsoft.com/library/jj670104.aspx)
 
-- [変更の追跡](http://msdn.microsoft.com/library/bb933875.aspx)
+- [Change tracking](http://msdn.microsoft.com/library/bb933875.aspx)
 
 - [SELECT...INTO](http://msdn.microsoft.com/library/ms188029.aspx)
 
-- [フルテキスト検索](http://msdn.microsoft.com/library/ms142571.aspx)
+- [Full-text search](http://msdn.microsoft.com/library/ms142571.aspx)
 
 - [ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](http://msdn.microsoft.com/library/mt629158.aspx)
 
-SQL Database でまだサポートされていない一部の機能については、[ここ](sql-database-transact-sql-information.md)を参照してください。
+See [here](sql-database-transact-sql-information.md) for the small set of features not yet supported in SQL Database.
 
 
-### 互換性レベル 130
+### <a name="compatibility-level-130"></a>Compatibility level 130
 
 
-> [AZURE.IMPORTANT] **2016 年 6 月**以降、Azure SQL Database V12 で*新しく*作成されるデータベースでは、その互換性レベルが 130 で始まります。これは Microsoft SQL Server 2016 GA と一致します。
+> [AZURE.IMPORTANT] Starting in **June 2016**, *newly* created databases on Azure SQL Database V12 have their compatibility level start at 130, which matches Microsoft SQL Server 2016 GA.
 > 
-> 必要に応じて `ALTER DATABASE YourDatabase SET COMPATIBILITY_LEVEL = 120` を使用することもできます。
+> You can use `ALTER DATABASE YourDatabase SET COMPATIBILITY_LEVEL = 120` if you prefer.
 > 
-> この既定の設定の変更によって、2016 年 6 月より前に作成されたデータベースの互換性レベルが変更されることはありません。V11 から V12 へのアップグレードによってデータベースのレベルが変更されることもありません。
+> Databases created before June 2016 do not have their compatibility level changed by this change of default. Nor is the level of a database changed by upgrading it from V11 to V12.
 
 
 
-最新の互換性レベルと前の互換性レベル間で重要なクエリを比較する方法については、
+For an explanation of how you can compare your most important queries between the latest versus previous compatibility level, see:
 
-- 「[SQL Database での互換性レベル 130 によるクエリ パフォーマンスの向上](sql-database-compatibility-level-query-performance-130.md)」を参照してください。
-
-
-
-## Premium のパフォーマンスの向上、新しいパフォーマンス レベル
+- [Improved Query Performance with Compatibility Level 130 in Azure SQL Database](sql-database-compatibility-level-query-performance-130.md)
 
 
-V12 では、すべての Premium パフォーマンス レベルに割り当てられているデータベース トランザクション ユニット (DTU) を追加料金なしで 25% 引き上げました。さらに大きなパフォーマンスの向上は、次のような新機能で実現できます。
+
+## <a name="more-premium-performance,-new-performance-levels"></a>More premium performance, new performance levels
 
 
-- メモリ内[列ストア インデックス](http://msdn.microsoft.com/library/gg492153.aspx)のサポート
-- [行によるテーブル パーティション](http://msdn.microsoft.com/library/ms187802.aspx)と、関連する [TRUNCATE TABLE](http://msdn.microsoft.com/library/ms177570.aspx) の機能強化。
-- パフォーマンスの監視と調整に役立つ動的管理ビュー [(DMV)](http://msdn.microsoft.com/library/ms188754.aspx) の利用。
+In V12, we increased the Database Transaction Units (DTUs) allocated to all Premium performance levels by 25% at no additional cost. Even greater performance gains can be achieved with new features like:
 
 
-### 信頼性の高いパフォーマンス
+- Support for in-memory [columnstore indexes](http://msdn.microsoft.com/library/gg492153.aspx).
+- [Table partitioning by rows](http://msdn.microsoft.com/library/ms187802.aspx) with related enhancements to [TRUNCATE TABLE](http://msdn.microsoft.com/library/ms177570.aspx).
+- The availability of dynamic management views [(DMVs)](http://msdn.microsoft.com/library/ms188754.aspx) to help monitor and tune performance.
 
 
-クライアントが Azure 仮想マシン (VM) で実行されるとき、クライアント プログラムが SQL Database V12 に接続する場合、VM で次のポート範囲を開く必要があります。
-
-- 11000 ～ 11999
-- 14000 ～ 14999
+### <a name="reliable-performance"></a>Reliable performance
 
 
-SQL Database V12 のポートの詳細については、[こちら](sql-database-develop-direct-route-ports-adonet-v12.md)を参照してください。これらのポートは、SQL Database V12 のパフォーマンスの強化に必要です。
+If your client program connects to SQL Database V12 while your client runs on an Azure virtual machine (VM), you must open the following port ranges on the VM:
+
+- 11000-11999
+- 14000-14999
 
 
-## クラウド SaaS ベンダーのサポートの充実
+Click [here](sql-database-develop-direct-route-ports-adonet-v12.md) for details about the ports for SQL Database V12. The ports are needed by performance enhancements in SQL Database V12.
 
 
-V12 でのみ、新しい Standard パフォーマンス レベルの S3 と、[エラスティック データベース プール](sql-database-elastic-pool.md)のパブリック プレビューをリリースしました。エラスティック データベース プールは、クラウド SaaS ベンダー向けに設計されたソリューションです。エラスティック データベース プールには次のメリットがあります。
+## <a name="better-support-for-cloud-saas-vendors"></a>Better support for cloud SaaS vendors
 
 
-- DTU をデータベース間で共有して、多数のデータベースのコストを削減できます。
-- [エラスティック データベース ジョブ](sql-database-elastic-jobs-overview.md)を実行して、大規模にデータベースを管理できます。
+Only in V12, we released the new Standard performance level S3 and the public preview of [elastic database pools](sql-database-elastic-pool.md). Elastic database pools is a solution designed for cloud SaaS vendors.  With elastic database pools, you can:
 
 
-## セキュリティの強化
+- Share DTUs among databases to reduce costs for large numbers of databases.
+- Execute [elastic database jobs](sql-database-elastic-jobs-overview.md) to manage databases at scale.
 
 
-セキュリティは、ビジネスをクラウドで遂行しているユーザーにとっての主要な懸案事項です。V12 でリリースされた最新のセキュリティ機能は、次のとおりです。
+## <a name="security-enhancements"></a>Security enhancements
 
 
-- [行レベル セキュリティ](http://msdn.microsoft.com/library/dn765131.aspx) (RLS)
-- [動的データ マスク](sql-database-dynamic-data-masking-get-started.md)
-- [包含データベース](http://msdn.microsoft.com/library/ff929188.aspx)
-- GRANT、DENY、REVOKE を使用して管理される[アプリケーション ロール](http://msdn.microsoft.com/library/ms190998.aspx)
-- [透過的なデータ暗号化](http://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx) (TDE)
-- [Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md)
- - SQL Database は、Azure Active Directory の認証をサポートするようになりました。この認証は、Azure Active Directory (Azure AD) の ID を使用して SQL Database に接続するメカニズムです。Azure Active Directory 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。
-- [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) (プレビュー) は、暗号化をアプリケーションに対して透過的にし、クライアントが SQL Database と暗号化キーを共有することなくクライアント アプリケーション内で機密データを暗号化できるようにします。
+Security is a primary concern for anyone who runs their business in the cloud. The latest security features released in V12 include:
 
 
-## 復旧が必要なときのビジネス継続性の向上
+- [Row-level security](http://msdn.microsoft.com/library/dn765131.aspx) (RLS)
+- [Dynamic Data Masking](sql-database-dynamic-data-masking-get-started.md)
+- [Contained databases](http://msdn.microsoft.com/library/ff929188.aspx)
+- [Application roles](http://msdn.microsoft.com/library/ms190998.aspx) managed with GRANT, DENY, REVOKE
+- [Transparent Data Encryption](http://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx) (TDE)
+- [Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md)
+ - SQL Database now supports Azure Active Directory authentication, a mechanism of connecting to SQL Database by using identities in Azure Active Directory (Azure AD). With Azure Active Directory authentication you can centrally manage the identities of database users and other Microsoft services in one central location.
+- [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) (in preview) makes encryption transparent to applications and allows clients to encrypt sensitive data inside client applications without sharing the encryption keys with SQL Database.
 
 
-V12 では、目標復旧時点 (PRO) と推定復旧時間 (ERT) が向上しています。
+## <a name="increased-business-continuity-when-recovery-is-needed"></a>Increased business continuity when recovery is needed
 
 
-| ビジネス継続性に関係する機能 | 以前のバージョン | V12 |
+V12 offers improved recovery point objectives (RPOs) and estimated recovery times (ERTs):
+
+
+| Business continuity feature | Earlier version | V12 |
 | :-- | :-- | :-- |
-| geo リストア | • RPO は 24 時間未満。<br/>• ERT は 12 時間未満。 | • RPO は 1 時間未満。<br/>• ERT は 12 時間未満。 |
-| アクティブ geo レプリケーションを選択するとき | • RPO は 5 分未満。<br/>• ERT は 1 時間未満。 | • RPO は 5 秒未満。<br/>• ERT は 30 秒未満。 |
+| Geo-restore | • RPO < 24 hours.<br/>• ERT <  12 hours. | • RPO < 1 hour.<br/>• ERT < 12 hours. |
+| Active Geo-Replication | • RPO < 5 minutes.<br/>• ERT < 1 hour. | • RPO < 5 seconds.<br/>• ERT < 30 seconds. |
 
 
-詳細については、[SQL Database のビジネス継続性](sql-database-business-continuity.md)に関するページを参照してください。
+See [SQL Database business continuity](sql-database-business-continuity.md) for more information.
 
 
-## 今すぐアップグレードすることをお勧めするその他の理由
+## <a name="more-reasons-to-upgrade-now"></a>More reasons to upgrade now
 
 
-Azure SQL Database を今すぐ V11 から V12 にアップグレードすることをお勧めする理由は多数あります。
+There are many good reasons why customers should upgrade now to Azure SQL Database V12 from V11:
 
 
-- SQL Database V12 には、V11 にない機能が多数あります。
-- V12 には新しい機能を追加していくものの、V11 に新機能は追加されません。
-- ほとんどの新機能は、Microsoft SQL Server 向けにリリースされる前に、SQL Database V12 でリリースされます。
+- SQL Database V12 has a long list of features beyond the features of V11.
+- We continue to add new features to V12, but no new features will be added to V11.
+- Most new features are released on SQL Database V12 before they are being released for Microsoft SQL Server.
 
 
-## V12 を既に使っている場合
+## <a name="are-you-using-v12-already?"></a>Are you using V12 already?
 
 
-以前のバージョンの SQL Database サービスでデータベースまたは論理サーバーが実行されているかどうかは、次の方法で簡単に確認できます。
+One easy way to see if you have a database or logical server running on an earlier version of the SQL Database service is to do the following:
 
 
-1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
-2. **[参照]** をクリックします。
-3. **[SQL Server]** をクリックします。
-4. サーバーまたはデータベースの隣のアイコンから、現在の状態がわかります。
- - ![Icon for a v12 server](./media/sql-database-v12-whats-new/v12_icon.png) **V12 の論理サーバー**
- - ![以前のバージョンのサーバーのアイコン](./media/sql-database-v12-whats-new/earlier_icon.png) **以前のバージョンの論理サーバー**
+1. Go to the [Azure Portal](https://portal.azure.com/).
+2. Click **Browse**.
+3. Click **SQL Servers**.
+4. The icon next to your server or database tells the story:
+ - ![Icon for a v12 server](./media/sql-database-v12-whats-new/v12_icon.png) **V12 logical server**
+ - ![Icon for earlier version server](./media/sql-database-v12-whats-new/earlier_icon.png) **Earlier version logical server**
 
 
-データベースで `SELECT @@version;` ステートメントを実行し、次のような結果を確認することで、バージョンを確認することもできます。
+Another technique to ascertain the version is to run the `SELECT @@version;` statement in your database, and view the results similar to:
 
 
-- **12**.0.2000.10 &nbsp; *(バージョン V12)*
-- **11**.0.9228.18 &nbsp; *(バージョン V11)*
+- **12**.0.2000.10 &nbsp; *(version V12)*
+- **11**.0.9228.18 &nbsp; *(version V11)*
 
 
-V12 の論理サーバーでのみ、V12 データベースをホストできます。V12 サーバーは V12 データベースのみをホストできます。
+A V12 database can be hosted only on a V12 logical server. And a V12 server can host only V12 databases.
 
 
-まだ V12 で実行していない場合は、[SQL Database V12 へのインプレース アップグレード](sql-database-v12-plan-prepare-upgrade.md)の手順に従って、論理サーバーをアップグレードできます。
+If you are not yet running on V12, you can upgrade your logical server by following the steps in [Upgrade to SQL Database V12 in place](sql-database-v12-plan-prepare-upgrade.md).
 
 
-## <a name="V12AzureSqlDbPreviewGaTable"></a> 一般公開リージョン
+## <a name="<a-name="v12azuresqldbpreviewgatable"></a>-general-availability-regions"></a><a name="V12AzureSqlDbPreviewGaTable"></a> General Availability regions
 
 
-- 2015 年 7 月 31 日までにすべてのリージョンが完全一般公開 (GA) に昇格しました。
-- V12 は 2014 年 12 月にリリースされましたが、プレビューの段階でした。
+- By July 31, 2015, all regions had been promoted to General Availability (GA).
+- V12 was released in December 2014, but only at the status of Preview.
 
-[Microsoft Azure プレビューの使用条件に関する補足](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+[Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="PowerShell とテンプレートを使用してリソースをデプロイする |Microsoft Azure"
-   description="Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。リソースは Resource Manager テンプレートで定義されます。"
+   pageTitle="Deploy resources with PowerShell and template | Microsoft Azure"
+   description="Use Azure Resource Manager and Azure PowerShell to deploy a resources to Azure. The resources are defined in a Resource Manager template."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,57 +16,58 @@
    ms.date="08/15/2016"
    ms.author="tomfitz"/>
 
-# Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ
+
+# <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Deploy resources with Resource Manager templates and Azure PowerShell
 
 > [AZURE.SELECTOR]
 - [PowerShell](resource-group-template-deploy.md)
 - [Azure CLI](resource-group-template-deploy-cli.md)
-- [ポータル](resource-group-template-deploy-portal.md)
+- [Portal](resource-group-template-deploy-portal.md)
 - [REST API](resource-group-template-deploy-rest.md)
 
-このトピックでは、Azure PowerShell と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法について説明します。
+This topic explains how to use Azure PowerShell with Resource Manager templates to deploy your resources to Azure.  
 
-> [AZURE.TIP] デプロイ時のエラーのデバッグについては、以下を参照してください。
+> [AZURE.TIP] For help with debugging an error during deployment, see:
 >
-> - エラーのトラブルシューティングに役立つ情報を入手するためには、「[Azure PowerShell でのデプロイ操作の表示](resource-manager-troubleshoot-deployments-powershell.md)」
-> - 一般的なデプロイ エラーを解決するためには、「[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーをトラブルシューティングする](resource-manager-common-deployment-errors.md)」
+> - [View deployment operations with Azure PowerShell](resource-manager-troubleshoot-deployments-powershell.md) to learn about getting information that helps you troubleshoot your error
+> - [Troubleshoot common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md) to learn how to resolve common deployment errors
 
-テンプレートは、ローカル ファイルまたは URI を通じて利用できる外部ファイルのいずれも使用できます。テンプレートがストレージ アカウントに存在する場合は、テンプレートへのアクセスを制限し、デプロイ時に Shared Access Signature (SAS) トークンを設定できます。
+Your template can be either a local file or an external file that is available through a URI. When your template resides in a storage account, you can restrict access to the template and provide a shared access signature (SAS) token during deployment.
 
-## 簡単なデプロイ手順
+## <a name="quick-steps-to-deployment"></a>Quick steps to deployment
 
-この記事では、デプロイ時に使用できるさまざまなオプションをすべて説明します。ただし、多くの場合、必要なのは 2 つの簡単なコマンドのみです。デプロイを簡単に開始するには、次のコマンドを使用します。
+This article describes all the different options available to you during deployment. However, often you only need two simple commands. To quickly get started with deployment, use the following commands:
 
     New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
     New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -TemplateParameterFile <PathToParameterFile>
 
-ご使用のシナリオにさらに適したデプロイのオプションについて詳しく知るには、この記事を読み進めてください。
+To learn more about options for deployment that might be better suited to your scenario, continue reading this article.
 
 [AZURE.INCLUDE [resource-manager-deployments](../includes/resource-manager-deployments.md)]
 
-## PowerShell でデプロイする
+## <a name="deploy-with-powershell"></a>Deploy with PowerShell
 
-1. Azure アカウントにログインします。
+1. Log in to your Azure account.
 
         Add-AzureRmAccount
 
-     アカウントの概要が返されます。
+     A summary of your account is returned.
 
         Environment : AzureCloud
         Account     : someone@example.com
         ...
 
-2. 複数のサブスクリプションがある場合、**Set-AzureRmContext** コマンドで、デプロイに使用するサブスクリプション ID を指定します。
+2. If you have multiple subscriptions, provide the subscription ID you wish to use for deployment with the **Set-AzureRmContext** command. 
 
         Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 
-3. 通常、新しいテンプレートをデプロイする場合は、リソースを格納するためのリソース グループを作成します。デプロイする既存のリソース グループがある場合は、この手順をスキップしてそのリソース グループを使用することができます。
+3. Typically, when deploying a new template, you want to create a resource group to contain the resources. If you have an existing resource group that you wish to deploy to, you can skip this step and use that resource group. 
 
-     リソース グループを作成するには、リソース グループの名前と場所を指定します。リソース グループにはリソースに関するメタデータが格納されるため、リソース グループの場所を入力する必要があります。場合によっては、コンプライアンス上の理由から、そのメタデータが格納される場所を指定する必要があります。一般に、ほとんどのリソースが存在する場所を指定することをお勧めします。同じ場所を使用することで、テンプレートを簡素化できます。
+     To create a resource group, provide a name and location for your resource group. You need to provide a location for the resource group because the resource group stores metadata about the resources. For compliance reasons, you may want to specify where that metadata is stored. In general, we recommend that you specify a location where most of your resources will reside. Using the same location can simplify your template.
 
         New-AzureRmResourceGroup -Name ExampleResourceGroup -Location "West US"
    
-     新しいリソース グループの概要が返されます。
+     A summary of the new resource group is returned.
    
         ResourceGroupName : ExampleResourceGroup
         Location          : westus
@@ -78,42 +79,42 @@
              *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
-4. デプロイを実行する前に、デプロイの設定を検証できます。**Test-AzureRmResourceGroupDeployment** コマンドレットを使用すると、実際のリソースを作成する前に問題を検出することができます。次の例では、デプロイを検証する方法を示しています。
+4. Before executing your deployment, you can validate your deployment settings. The **Test-AzureRmResourceGroupDeployment** cmdlet enables you to find problems before creating actual resources. The following example shows how to validate a deployment.
 
         Test-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate>
 
-5. リソース グループにリソースをデプロイするには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。パラメーターには、デプロイの名前、リソース グループの名前、作成したテンプレートへのパスや URL、シナリオに必要なその他のパラメーターが含まれます。**Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。完全デプロイメントを実行するには、**[モード]** を **[完全]** に設定します。テンプレートにないリソースを誤って削除する可能性があるため、完全モードを使用する際は注意してください。
+5. To deploy resources to your resource group, run the **New-AzureRmResourceGroupDeployment** command and provide the necessary parameters. The parameters include a name for your deployment, the name of your resource group, the path or URL to the template you created, and any other parameters needed for your scenario. If the **Mode** parameter is not specified, the default value of **Incremental** is used. To run a complete deployment, set **Mode** to **Complete**. Be careful when using the complete mode as you can inadvertently delete resources that are not in your template.
 
-     ローカル テンプレートをデプロイするには、**TemplateFile** パラメーターを使用します。
+     To deploy a local template, use the **TemplateFile** parameter:
 
         New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate>
 
-     外部テンプレートをデプロイするには、**TemplateUri** パラメーターを使用します。
+     To deploy an external template, use **TemplateUri** parameter:
 
         New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri <LinkToTemplate>
    
-     次のオプションを使用してパラメーターの値を提供できます。
+     You have the following options for providing parameter values: 
    
-     1. インライン パラメーターを使用する
+     1. Use inline parameters.
 
             New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -myParameterName "parameterValue"
 
-     2. パラメーター オブジェクトを使用する
+     2. Use a parameter object.
 
             $parameters = @{"<ParameterName>"="<Parameter Value>"}
             New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -TemplateParameterObject $parameters
 
-     3. ローカル パラメーター ファイルを使用する。テンプレート ファイルについては、「[パラメーター ファイル](#parameter-file)」を参照してください。
+     3. Use a local parameter file. For information about the template file, see [Parameter file](#parameter-file).
 
             New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateFile <PathToTemplate> -TemplateParameterFile <PathToParameterFile>
 
-     4. 外部パラメーター ファイルを使用する。テンプレート ファイルについては、「[パラメーター ファイル](#parameter-file)」を参照してください。
+     4. Use an external parameter file. For information about the template file, see [Parameter file](#parameter-file). 
 
             New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri <LinkToTemplate> -TemplateParameterUri <LinkToParameterFile>
 
-        外部パラメーター ファイルを使用する場合、他の値をインラインまたはローカル ファイルから渡すことはできません。詳細については、「[パラメーターの優先順位](#parameter-precendence)」を参照してください。
+        When you use an external parameter file, you cannot pass other values either inline or from a local file. For more information, see [Parameter precedence](#parameter-precendence).
 
-     リソースがデプロイされると、デプロイの概要が表示されます。
+     After the resources have been deployed, you will see a summary of the deployment.
 
         DeploymentName    : ExampleDeployment
         ResourceGroupName : ExampleResourceGroup
@@ -122,75 +123,80 @@
         Mode              : Incremental
         ...
 
-     PowerShell コマンドのパラメーターのいずれかと名前が同じであるパラメーターがテンプレートに含まれている場合、そのパラメーターに値を指定するように求められます。テンプレートのパラメーターには、接尾辞 **FromTemplate** が含まれます。たとえば、テンプレート内の **ResourceGroupName** という名前のパラメーターは、[New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) コマンドレットの **ResourceGroupName** パラメーターと競合します。**ResourceGroupNameFromTemplate** に値を指定するように求められます。一般的に、このような混乱を防ぐために、デプロイ処理に使用したパラメーターと同じ名前をパラメーターに付けないことが推奨されます。
+     If your template includes a parameter with the same name as one of the parameters in the PowerShell command, you are prompted to provide a value for that parameter. The parameter from your template will include the postfix **FromTemplate**. For example, a parameter named **ResourceGroupName** in your template conflicts with the **ResourceGroupName** parameter in the [New-AzureRmResourceGroupDeployment](https://msdn.microsoft.com/library/azure/mt679003.aspx) cmdlet. You are prompted to provide a value for **ResourceGroupNameFromTemplate**. In general, you should avoid this confusion by not naming parameters with the same name as parameters used for deployment operations.
 
-6. デプロイ エラーのトラブルシューティングに役立つ可能性がある追加情報を記録する場合は、**DeploymentDebugLogLevel** パラメーターを使用します。デプロイ操作と共に要求の内容、応答の内容、またはその両方を記録するように指定できます。
+6. If you want to log additional information about the deployment that may help you troubleshoot any deployment errors, use the **DeploymentDebugLogLevel** parameter. You can specify that request content, response content, or both be logged with the deployment operation.
 
         New-AzureRmResourceGroupDeployment -Name ExampleDeployment -DeploymentDebugLogLevel All -ResourceGroupName ExampleResourceGroup -TemplateFile <PathOrLinkToTemplate>
         
-     このデバッグの内容を使用したデプロイのトラブルシューティングの詳細については、[Azure PowerShell によるリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-powershell.md)に関するページを参照してください。
+     For more information about using this debugging content to troubleshoot deployments, see [Troubleshooting resource group deployments with Azure PowerShell](resource-manager-troubleshoot-deployments-powershell.md).
 
-## SAS トークンを使用してストレージからテンプレートをデプロイする
+## <a name="deploy-template-from-storage-with-sas-token"></a>Deploy template from storage with SAS token
 
-SAS トークンを使用したデプロイの際に、テンプレートをストレージ アカウントに追加し、リンクできます。
+You can add your templates to a storage account and link to them during deployment with a SAS token.
 
-> [AZURE.IMPORTANT] 次の手順に従うことにより、テンプレートを含む BLOB はアカウントの所有者だけがアクセスできるようになります。ただし、BLOB の SAS トークンを作成すると、その URI を持つ誰もが BLOB にアクセスできるようになります。もし別のユーザーが URI を傍受した場合、そのユーザーは、テンプレートにアクセスできます。SAS トークンの使用はテンプレートへのアクセスを制限する有効な方法ですが、パスワードのような機密データをテンプレートに直接含めないでください。
+> [AZURE.IMPORTANT] By following the steps below, the blob containing the template is accessible to only the account owner. However, when you create a SAS token for the blob, the blob is accessible to anyone with that URI. If another user intercepts the URI, that user is able to access the template. Using a SAS token is a good way of limiting access to your templates, but you should not include sensitive data like passwords directly in the template.
 
-### ストレージ アカウントにプライベートのテンプレートを追加する
+### <a name="add-private-template-to-storage-account"></a>Add private template to storage account
 
-次の手順で、テンプレートのストレージ アカウントをセットアップします。
+The following steps set up a storage account for templates:
 
-1. リソース グループを作成します。
+1. Create a resource group.
 
         New-AzureRmResourceGroup -Name ManageGroup -Location "West US"
 
-2. ストレージ アカウントを作成します。ストレージ アカウント名は、 Azure 内で一意である必要があるため、独自の名前を入力してください。
+2. Create a storage account. The storage account name must be unique across Azure, so provide your own name for the account.
 
         New-AzureRmStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates -Type Standard_LRS -Location "West US"
 
-3. 現在のストレージ アカウントを設定します。
+3. Set the current storage account.
 
         Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 
-4. コンテナーを作成します。アクセス許可は **Off** に設定します。これは所有者だけがコンテナーにアクセスできることを表します。
+4. Create a container. The permission is set to **Off** which means the container is only accessible to the owner.
 
         New-AzureStorageContainer -Name templates -Permission Off
         
-5. コンテナーに、テンプレートを追加します。
+5. Add your template to the container.
 
         Set-AzureStorageBlobContent -Container templates -File c:\Azure\Templates\azuredeploy.json
         
-### デプロイ時に SAS トークンを指定する
+### <a name="provide-sas-token-during-deployment"></a>Provide SAS token during deployment
 
-ストレージ アカウントにプライベートのテンプレートをデプロイするため、SAS トークンを取得しテンプレートの URI に含めます。
+To deploy a private template in a storage account, retrieve a SAS token and include it in the URI for the template.
 
-1. 現在のストレージ アカウントを変更した場合は、現在のストレージ アカウントをテンプレートが含まれるストレージ アカウントに設定します。
+1. If you have changed the current storage account, set the current storage account to the one containing your templates.
 
         Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 
-2. アクセスを制限するため、読み取りアクセス許可と有効期限を持つ SAS トークンを作成します。SAS トークンを含むテンプレートの完全な URI を取得します。
+2. Create a SAS token with read permissions and an expiry time to limit access. Retrieve the full URI of the template including the SAS token.
 
         $templateuri = New-AzureStorageBlobSASToken -Container templates -Blob azuredeploy.json -Permission r -ExpiryTime (Get-Date).AddHours(2.0) -FullUri
 
-3. SAS トークンを含む URI を指定することにより、テンプレートをデプロイします。
+3. Deploy the template by providing the URI that includes the SAS token.
 
         New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -TemplateUri $templateuri
 
-リンクされたテンプレートでの SAS トークン使用例については、「[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
+For an example of using a SAS token with linked templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).
 
 [AZURE.INCLUDE [resource-manager-parameter-file](../includes/resource-manager-parameter-file.md)]
 
-## パラメーターの優先順位
+## <a name="parameter-precedence"></a>Parameter precedence
 
-同じデプロイ操作で、インライン パラメーターとローカル パラメーター ファイルを使用することができます。たとえば、一部の値をローカル パラメーター ファイルで指定し、その他の値をデプロイ中にインラインで追加します。ローカル パラメーター ファイルとインラインの両方でパラメーターの値を指定すると、インラインの値が優先されます。
+You can use inline parameters and a local parameter file in the same deployment operation. For example, you can specify some values in the local parameter file and add other values inline during deployment. If you provide values for a parameter in both the local parameter file and inline, the inline value takes precedence.
 
-ただし、インライン パラメーターを外部パラメーター ファイルと共に使用することはできません。**TemplateParameterUri** パラメーターでパラメーター ファイルを指定すると、すべてのインライン パラメーターが無視されます。すべてのパラメーター値を外部ファイル内で指定する必要があります。パラメーター ファイルに含めることができない機密性の高い値がテンプレートに含まれている場合は、その値をキー コンテナーに追加して外部パラメーター ファイルでそのキー コンテナーを参照するか、すべてのパラメーター値をインラインで動的に指定してください。
+However, you cannot use inline parameters with an external parameter file. When you specify a parameter file in the **TemplateParameterUri** parameter, all inline parameters are ignored. You must provide all parameter values in the external file. If your template includes a sensitive value that you cannot include in the parameter file, either add that value to a key vault and reference the key vault in your external parameter file, or dynamically provide all parameter values inline.
 
-セキュリティで保護された値を渡すために KeyVault 参照を使用する方法の詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
+For details about using a KeyVault reference to pass secure values, see [Pass secure values during deployment](resource-manager-keyvault-parameter.md).
 
-## 次のステップ
-- .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリとテンプレートを使用したリソースのデプロイ](virtual-machines/virtual-machines-windows-csharp-template.md)に関する記事を参照してください。
-- テンプレートのパラメーターの定義については、[テンプレートの作成](resource-group-authoring-templates.md#parameters)に関する記事を参照してください。
-- ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+- For an example of deploying resources through the .NET client library, see [Deploy resources using .NET libraries and a template](virtual-machines/virtual-machines-windows-csharp-template.md).
+- To define parameters in template, see [Authoring templates](resource-group-authoring-templates.md#parameters).
+- For guidance on deploying your solution to different environments, see [Development and test environments in Microsoft Azure](solution-dev-test-environments.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

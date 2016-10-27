@@ -1,36 +1,44 @@
 <properties
-	pageTitle="クラウド サービスで Linux VM を接続する | Microsoft Azure"
-	description="クラシック デプロイ モデルで作成された Linux 仮想マシンを、Azure クラウド サービスまたは仮想ネットワークに接続します。"
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="cynthn"
-	manager="timlt"
-	editor=""
-	tags="azure-service-management"/>
+    pageTitle="Connect Linux VMs in a cloud service | Microsoft Azure"
+    description="Connect Linux virtual machines created with the classic deployment model to an Azure cloud service or virtual network."
+    services="virtual-machines-linux"
+    documentationCenter=""
+    authors="cynthn"
+    manager="timlt"
+    editor=""
+    tags="azure-service-management"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="cynthn"/>
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/06/2016"
+    ms.author="cynthn"/>
 
-# 仮想ネットワークまたはクラウド サービスで構成されるクラシック デプロイ モデルで作成された Linux 仮想マシンに接続します。
+
+# <a name="connect-linux-virtual-machines-created-with-the-classic-deployment-model-with-a-virtual-network-or-cloud-service"></a>Connect Linux virtual machines created with the classic deployment model with a virtual network or cloud service
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
-クラシック デプロイ モデルで作成された Linux 仮想マシンは、常にクラウド サービス内に配置されます。クラウド サービスはコンテナーとして機能し、インターネット経由で仮想マシンにアクセスするために、一意のパブリック DNS 名、パブリック IP アドレス、一連のエンドポイントを提供します。クラウド サービスは仮想ネットワークに配置できますが、必須ではありません。[Windows 仮想マシンを仮想ネットワークまたはクラウド サービスと接続する](virtual-machines-windows-classic-connect-vms.md)こともできます。
+Linux virtual machines created with the classic deployment model are always placed in a cloud service. The cloud service acts as a container and provides a unique public DNS name, a public IP address, and a set of endpoints to access the virtual machine over the Internet. The cloud service can be in a virtual network, but that's not a requirement. You can also [connect Windows virtual machines with a virtual network or cloud service](virtual-machines-windows-classic-connect-vms.md).
 
-クラウド サービスが仮想ネットワーク内に含まれていない場合は、*スタンドアロン* クラウド サービスといいます。スタンドアロン クラウド サービス内にある仮想マシンが他の仮想マシンと通信するには、他の仮想マシンのパブリック DNS 名を使用する必要があり、そのトラフィックはインターネットを介して送信されます。クラウド サービスが仮想ネットワークにある場合、そのクラウド サービス内にある仮想マシンは、トラフィックをインターネットに送信することなく、仮想ネットワーク内の他のすべての仮想マシンと通信できます。
+If a cloud service isn't in a virtual network, it's called a *standalone* cloud service. The virtual machines in a standalone cloud service can only communicate with other virtual machines by using the other virtual machines’ public DNS names, and the traffic travels over the Internet. If a cloud service is in a virtual network, the virtual machines in that cloud service can communicate with all other virtual machines in the virtual network without sending any traffic over the Internet.
 
-同じスタンドアロン クラウド サービスに仮想マシンを配置する場合は、負荷分散と可用性セットを引き続き使用できます。詳細については、[仮想マシンの負荷分散](virtual-machines-linux-load-balance.md)に関するページと、「[仮想マシンの可用性管理](virtual-machines-linux-manage-availability.md)」を参照してください。ただし、仮想マシンをサブネットでまとめることや、スタンドアロン クラウド サービスをオンプレミスのネットワークに接続することはできません。次に例を示します。
+If you place your virtual machines in the same standalone cloud service, you can still use load balancing and availability sets. For details, see [Load balancing virtual machines](virtual-machines-linux-load-balance.md) and [Manage the availability of virtual machines](virtual-machines-linux-manage-availability.md). However, you can't organize the virtual machines on subnets or connect a standalone cloud service to your on-premises network. Here's an example:
 
 [AZURE.INCLUDE [virtual-machines-common-classic-connect-vms](../../includes/virtual-machines-common-classic-connect-vms.md)]
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-仮想マシンを作成したら、サービスやワークロードがデータを格納するための場所として、[データ ディスクを追加する](virtual-machines-linux-classic-attach-disk.md)ことをお勧めします。
+After you create a virtual machine, it's a good idea to [add a data disk](virtual-machines-linux-classic-attach-disk.md) so your services and workloads have a location to store data. 
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,67 +1,73 @@
 <properties writer="cynthn" editor="tysonn" manager="timlt" />
 
-1. [Azure クラシック ポータル](http://manage.windowsazure.com)にサインインします。  
 
-2. ウィンドウの下部にあるコマンド バーで、**[新規]** をクリックします。
+1. Sign in to the [Azure classic portal](http://manage.windowsazure.com).  
 
-3. **[Compute]** で、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
+2. On the command bar at the bottom of the window, click **New**.
 
-	![新しい仮想マシンの作成][Image1]
+3. Under **Compute**, click **Virtual Machine**, and then click **From Gallery**.
 
-4. **[SUSE]** グループで OpenSUSE 仮想マシン イメージを選択し、矢印をクリックして次に進みます。
+    ![Create a New Virtual Machine][Image1]
 
-5. 最初の **[仮想マシンの構成]** ページで次の作業を行います。
+4. Under the **SUSE** group, select an OpenSUSE virtual machine image, and then click the arrow to continue.
 
-	- "testlinuxvm" など、**[仮想マシン名]** を入力します。名前は、3 ～ 15 文字で指定する必要があります。文字、数字、およびハイフンのみ使用でき、文字で始まり、文字または数字で終わる必要があります。
+5. On the first **Virtual machine configuration** page:
 
-	- **[階層]** を確認し、**[サイズ]** を指定します。階層により選択するサイズが決まります。仮想マシンのサイズによって、使用料金や、構成オプション (接続できるデータ ディスクの数など) が変わります。詳細については、「[仮想マシンのサイズ](../articles/virtual-machines-linux-sizes.md)」をご覧ください。
-	- **新しいユーザー名**を入力するか、既定値 (**azureuser**) を使用します。この名前が、Sudoers リスト ファイルに追加されます。
-	- 使用する **[認証]** の種類を決定します。一般的なパスワードのガイドラインについては、「[強力なパスワード](http://msdn.microsoft.com/library/ms161962.aspx)」を参照してください。
+    - Type a **Virtual Machine Name**, such as "testlinuxvm". The name must contain between 3 and 15 characters, can contain only letters, numbers, and hyphens, and must start with a letter and end with either a letter or number.
 
-6. 次の **[仮想マシンの構成]** ページで次の作業を行います。
+    - Verify the **Tier** and pick a **Size**. The tier determines the sizes you can choose from. The size affects the cost of using it, as well as configuration options such as how many data disks you can attach. For details, see [Sizes for virtual machines](../articles/virtual-machines-linux-sizes.md).
+    - Type a **New User Name**, or accept the default, **azureuser**. This name is added to the Sudoers list file.
+    - Decide which type of **Authentication** to use. For general password guidelines, see [Strong passwords](http://msdn.microsoft.com/library/ms161962.aspx).
 
-	- 既定の **[新しいクラウド サービスの作成]** を使用します。
-	- **[DNS 名]** ボックスに、アドレスの一部として使用する一意の DNS 名 ("testlinuxvm" など) を入力します。
-	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、この仮想イメージをホストするリージョンを選択します。
-	- **[エンドポイント]** で SSH エンドポイントを保持します。この時点で他のエンドポイントを追加できます。また、仮想マシンの作成後にエンドポイントを追加、変更、削除できます。
+6. On the next **Virtual machine configuration** page:
 
-	>[AZURE.NOTE] 仮想マシンで仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する**必要があります**。作成後に仮想マシンを仮想ネットワークに参加させることはできません。詳細については、「[Virtual Network の概要](virtual-networks-overview.md)」を参照してください。
+    - Use the default **Create a new cloud service**.
+    - In the **DNS Name** box, type a unique DNS name to use as part of the address, such as "testlinuxvm".
+    - In the **Region/Affinity Group/Virtual Network** box, select a region where this virtual image will be hosted.
+    - Under **Endpoints**, keep the SSH endpoint. You can add others now, or add, change, or delete them after the virtual machine is created.
 
-7.	最後の **[仮想マシンの構成]** ページでは、既定の設定のままにして、チェック マークをクリックして完了します。
+    >[AZURE.NOTE] If you want a virtual machine to use a virtual network, you **must** specify the virtual network when you create the virtual machine. You can't add a virtual machine to a virtual network after you create the virtual machine. For more information, see [Virtual Network Overview](virtual-networks-overview.md).
 
-ポータルの **[仮想マシン]** に新しい仮想マシンが一覧表示されます。状態が **[(プロビジョニング中)]** となっている仮想マシンは、セットアップ中です。状態が **[実行中]** になったら、次の手順に進むことができます。
+7.  On the last **Virtual machine configuration** page, keep the default settings and then click the check mark to finish.
 
-##仮想マシンへの接続
+The portal lists the new virtual machine under **Virtual Machines**. While the status is reported as **(Provisioning)**, the virtual machine is being set up. When the status is reported as **Running**, you can move on to the next step.
 
-接続元コンピューターのオペレーティング システムに応じて、SSH または PuTTY を使用して仮想マシンと接続します。
+##<a name="connect-to-the-virtual-machine"></a>Connect to the Virtual Machine
 
-- Linux を実行しているコンピューターでは、SSH を使用します。コマンド プロンプトに、次のコマンドを入力します。
+You'll use SSH or PuTTY to connect to the virtual machine, depending on the operating system on the computer you'll connect from:
 
-	`$ ssh newuser@testlinuxvm.cloudapp.net -o ServerAliveInterval=180`
+- From a computer running Linux, use SSH. At the command prompt, type:
 
-	ユーザーのパスワードを入力します。
+    `$ ssh newuser@testlinuxvm.cloudapp.net -o ServerAliveInterval=180`
 
-- Windows を実行しているコンピューターでは、PuTTY を使用します。インストールしていない場合は、[PuTTY のダウンロード ページ][PuTTYDownload]からダウンロードします。
+    Type the user's password.
 
-	**putty.exe** をコンピューター上のディレクトリに保存します。コマンド プロンプトを開き、保存先フォルダーに移動して **putty.exe** を実行します。
+- From a computer running Windows, use PuTTY. If you don't have it installed, download it from the [PuTTY Download Page][PuTTYDownload].
 
-	"testlinuxvm.cloudapp.net" などのホスト名を入力し、**[ポート]** に「22」と入力します。
+    Save **putty.exe** to a directory on your computer. Open a command prompt, navigate to that folder, and run **putty.exe**.
 
-	![PuTTY の画面][Image6]
+    Type the host name, such as "testlinuxvm.cloudapp.net", and type "22" for the **Port**.
 
-##仮想マシンの更新 (オプション)
+    ![PuTTY Screen][Image6]  
 
-1. 仮想マシンに接続したら、必要に応じてシステムの更新プログラムとパッチをインストールできます。更新プログラムを実行するには、次のように入力します。
+##<a name="update-the-virtual-machine-(optional)"></a>Update the Virtual Machine (optional)
 
-	`$ sudo zypper update`
+1. After you're connected to the virtual machine, you can optionally install system updates and patches. To run the update, type:
 
-2. **[ソフトウェア]**、**[オンライン更新]** を順に選択すると、使用可能な更新が表示されます。**[同意する]** を選択し、現在システムで利用可能なすべての新しいパッチ (オプションのパッチを除く) をインストールして適用します。
+    `$ sudo zypper update`
 
-3. インストールが完了したら、**[完了]** を選択します。これでシステムが最新の状態になりました。
+2. Select **Software**, then **Online Update** to list available updates. Select **Accept** to start the installation and apply all new available patches (except the optional ones).
+
+3. After installation is done, select **Finish**.  Your system is now up to date.
 
 [PuTTYDownload]: http://www.puttyssh.org/download.html
 
 [Image1]: ./media/create-and-configure-opensuse-vm-in-portal/CreateVM.png
 
 [Image6]: ./media/create-and-configure-opensuse-vm-in-portal/putty.png
+
+
+
+<!--HONumber=Oct16_HO2-->
+
 

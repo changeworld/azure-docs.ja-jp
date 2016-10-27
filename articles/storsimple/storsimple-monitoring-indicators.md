@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="StorSimple モニタリング インジケーター | Microsoft Azure" 
-    description="StorSimple デバイスの状態を監視するための発光ダイオード (LED) と可聴アラームについて説明します。"
+    pageTitle="StorSimple monitoring indicators | Microsoft Azure" 
+    description="Describes the light-emitting diodes (LEDs) and audible alarms used to monitor the status of the StorSimple device."
     services="storsimple"
     documentationCenter="NA"
     authors="alkohli"
@@ -15,243 +15,244 @@
     ms.date="08/18/2016"
     ms.author="alkohli" />
 
-# StorSimple モニタリング インジケーターを使用してデバイスを管理する   
 
-## Overview
+# <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Use StorSimple monitoring indicators to manage your device   
 
-StorSimple デバイスには、StorSimple デバイスの各モジュールおよび全体的な状態を監視するための発光ダイオード (LED) とアラームが用意されています。監視インジケーターは、デバイスの主エンクロージャと EBOD エンクロージャのハードウェア コンポーネントにあります。監視インジケーターには、LED と可聴アラームがあります。
+## <a name="overview"></a>Overview
 
-モジュールの状態を示す LED 状態には、緑、緑からレッドアンバーへの点滅、レッドアンバーの 3 つがあります。
+Your StorSimple device includes light-emitting diodes (LEDs) and alarms that you can use to monitor the modules and overall status of the StorSimple device. The monitoring indicators can be found on the hardware components of the device's primary enclosure and the EBOD enclosure. The monitoring indicators can be either LEDs or audible alarms.
 
-- 緑色の LED は、正常な動作状態を表します。
-- 緑からレッドアンバーに点滅する LED は、重大ではない、ユーザーの介入を要する可能性のある状況が生じていることを表します。
-- レッドアンバーの LED は、モジュール内に重大な障害が存在することを示します。
+There are three LED states used to indicate the status of a module: green, flashing green to red-amber, or red-amber.  
 
-この記事の残りの部分では、各種監視インジケーター LED、StorSimple デバイス上の LED の位置、LED の状態に基づくデバイス状態、関連する可聴アラームについて説明します。
+- Green LEDs represent a healthy operating status.  
+- Flashing green to red-amber LEDs represent the presence of non-critical conditions that might require user intervention.  
+- Red-amber LEDs indicate that there is a critical fault present within the module.  
 
-## 前面パネル インジケーター LED
+The remainder of this article describes the various monitoring indicator LEDs, their locations on the StorSimple device, the device status based on the LED states, and any associated audible alarms.
 
-前面パネルは*操作パネル* (*OPS パネル*) とも呼ばれ、システム内のすべてのモジュールの情報を集約した状態を表示します。StorSimple プライマリと EBOD エンクロージャの前面パネルはまったく同じです。次の図に前面パネルを示します。
+## <a name="front-panel-indicator-leds"></a>Front panel indicator LEDs
 
-   ![デバイスのフロント パネル][1]
+The front panel, also known as the *operations panel* or *ops panel*, displays the aggregate status of all the modules in the system. The front panel is identical on the StorSimple primary and the EBOD enclosure, and is illustrated below.  
+
+   ![Device front panel][1]
  
-前面パネルには、次のインジケーターがあります。
+The front panel contains the following indicators:  
 
-1. ミュート ボタン
-2. 電源インジケーター LED (緑/レッドアンバー)
-3. モジュール障害インジケーター LED (オン - レッドアンバー/オフ)
-4. 論理的な障害のインジケーター LED (オン - レッドアンバー/オフ)
-5. ユニット ID ディスプレイ
+1. Mute button
+2. Power indicator LED (green/red-amber)
+3. Module fault indicator LED (ON red-amber/OFF)
+4. Logical fault indicator LED (ON red-amber/OFF
+5. Unit ID display  
 
-デバイスと EBOD エンクロージャにおける前面パネルの LED の大きな違いは、LED ディスプレイに表示される**システム ユニット識別番号**です。デバイスに表示される既定のユニット ID が **00** であるのに対し、EBOD エンクロージャに表示される既定のユニット ID は **01** です。これにより、デバイスの電源をオンにしたときに、デバイスと EBOD エンクロージャをすぐに見分けることができます。デバイスの電源が入っていないときにデバイスと EBOD エンクロージャを見分ける方法については、「[新しいデバイスの電源投入](storsimple-turn-device-on-or-off.md#turn-on-a-new-device)」をご覧ください。
+The major difference between the front panel LEDs for the device and those for the EBOD enclosure is the **System Unit Identification Number** shown on the LED display. The default unit ID displayed on the device is **00**, whereas the default unit ID displayed on the EBOD enclosure is **01**. This allows you to quickly differentiate between the device and the EBOD enclosure when the device is turned on. If your device is turned off, use the information provided in [Turn on a new device](storsimple-turn-device-on-or-off.md#turn-on-a-new-device) to differentiate the device from the EBOD enclosure.  
 
-## 前面パネルの LED の状態  
+## <a name="front-panel-led-status"></a>Front panel LED status  
 
-次の表を参考にして、デバイスまたは EBOD エンクロージャの前面パネルの LED が示す状態を判断してください。
+Use the following table to identify the status indicated by the LEDs on the front panel for the device or the EBOD enclosure.  
 
-|システム電源 | モジュール障害 | 論理的な障害 | アラーム | 状態|
+|System power | Module fault | Logical fault | Alarm | Status|
 |-------------|---------------|-----------------|-------|-------|
-|レッドアンバー | OFF | OFF | 該当なし | AC 電源が喪失し、バックアップ電源で動作しているか、または AC 電源がオンで、コントローラー モジュールが取り外されています。|
-|緑 | ON | ON | 該当なし | OPS パネル パワー オン (5s) テスト状態|
-|緑 | OFF | OFF | 該当なし | 電源オン、すべての機能が正常|
-|緑 | ON |該当なし | PCM 障害 LED、ファン障害 LED | PCM 障害、ファン障害、温度の上限または下限を超過|
-| 緑 | ON | 該当なし | I/O モジュール LED | コントローラー モジュールの障害|
-| 緑 | ON | 該当なし | 該当なし | エンクロージャ ロジック障害|
-| 緑 | 点滅 | 該当なし | モジュール状態 LED (コントローラー モジュール上)。PCM 障害 LED、ファン障害 LED | 不明なタイプのコントローラー モジュールの設置、I2C バス障害、コントローラー モジュールの重要製品データ (VPD) の構成エラー |
+|Red-amber | OFF     | OFF | N/A | AC power lost, operating on backup power, or AC power ON and the controller modules were removed.|
+|Green | ON | ON | N/A | Ops panel power on (5s) test state|
+|Green | OFF | OFF | N/A | Power on, all functions good|
+|Green | ON |N/A | PCM fault LEDs, fan fault LEDs | Any PCM fault, fan fault, over or under temperature|
+| Green | ON | N/A | I/O module LEDs  | Any controller module fault|
+| Green | ON | N/A | N/A | Enclosure logic fault|
+| Green | Flash | N/A | Module status LED on controller module. PCM fault LEDs, fan fault LEDs | Unknown controller module type installed, I2C bus failure, controller module vital product data (VPD) configuration error |
 
-## 電源冷却モジュール (PCM) インジケーター LED   
+## <a name="power-cooling-module-(pcm)-indicator-leds"></a>Power cooling module (PCM) indicator LEDs   
 
-電源冷却モジュール (PCM) インジケーターの LED は、各 PCM モジュール上の主エンクロージャまたは EBOD エンクロージャの背面にあります。このトピックでは、次の LED を使用して、StorSimple デバイスの状態を監視する方法について説明します。
+Power cooling module (PCM) indicator LEDs can be found on the back of the primary enclosure or EBOD enclosure on each PCM module. This topic discusses how to use the following LEDs to monitor the status of your StorSimple device.  
 
-- 主エンクロージャの PCM LED
-- EBOD エンクロージャの PCM LED
+- PCM LEDs for the primary enclosure
+- PCM LEDs for the EBOD enclosure
 
-## 主エンクロージャの PCM LED  
+## <a name="pcm-leds-for-the-primary-enclosure"></a>PCM LEDs for the primary enclosure  
 
-StorSimple デバイスには、予備のバッテリを備えた 764W PCM モジュールが搭載されています。次の図に、デバイスの LED パネルを示します。
+The StorSimple device has a 764W PCM module with an additional battery. The following illustration shows the LED panel for the device.  
 
-   ![主エンクロージャの PCM LED][2]
+   ![PCM LEDs on the primary enclosure][2]
 
-LED の凡例:
+LED legend:
 
-1. AC 電源障害
-2. ファン障害
-3. バッテリ障害
+1. AC power failure
+2. Fan failure
+3. Battery fault
 4. PCM OK
-5. DC 障害
-6. バッテリ良好
+5. DC failure
+6. Battery good  
 
-PCM の状態は、LED パネルに表示されます。デバイスの PCM LED パネルには、6 つの LED があります。そのうち 4 つの LED は、電源とファンの状態を示します。残りの 2 つの LED は、PCM 内のバックアップ バッテリ モジュールの状態を示します。次の表を参考にして、PCM の状態を判断してください。
+The status of the PCM is indicated on the LED panel. The device PCM LED panel has six LEDs. Four of these LEDs display the status of the power supply and the fan. The remaining two LEDs indicate the status of the backup battery module in the PCM. You can use the following tables to determine the status of the PCM.  
 
-### 電源とファンの PCM インジケーター LED
-| 状態 | PCM OK (緑) | AC 障害 (アンバー) | ファン障害 (アンバー) | DC 障害 (アンバー) |
+### <a name="pcm-indicator-leds-for-power-supply-and-fan"></a>PCM indicator LEDs for power supply and fan
+| Status | PCM OK (green) | AC fail (amber) | Fan fail (amber) | DC fail (amber) |
 |--------|----------------|-----------------------|------------------|----------------------|
-| AC 電源なし (対エンクロージャ) | OFF | OFF | OFF | OFF|
-| AC 電源なし (この PCM のみ) | OFF | ON | OFF | ON |
-| AC あり PCM ON - OK | ON | OFF | OFF | OFF |
-| PCM 障害 (ファンの障害) | OFF | OFF | ON | 該当なし |
-| PCM 障害 (過増幅、過電圧、過電流) | OFF | ON | ON | ON |
-| PCM (ファン許容範囲超過) | ON | OFF | OFF | ON |
-| スタンバイ モード | 点滅 | OFF | OFF | OFF |
-| PCM ファームウェアのダウンロード | OFF | 点滅 | 点滅 | 点滅 |
+| No AC power (to enclosure) | OFF | OFF | OFF | OFF|
+| No AC power (this PCM only) | OFF | ON | OFF | ON |
+| AC present PCM ON - OK     | ON | OFF | OFF | OFF |
+| PCM fail (fan fail) | OFF | OFF | ON | N/A |
+| PCM fault (over amp, over voltage, over current) | OFF | ON | ON | ON |
+| PCM (fan out of tolerance) | ON | OFF | OFF | ON |
+| Standby mode | Flashing | OFF | OFF | OFF |
+| PCM firmware download | OFF | Flashing | Flashing | Flashing |
 
-### バックアップ バッテリの PCM インジケーター LED  
+### <a name="pcm-indicator-leds-for-the-backup-battery"></a>PCM indicator LEDs for the backup battery  
 
-| 状態 | バッテリ良好 (緑) | バッテリ障害 (アンバー) |
+| Status | Battery good (green) | Battery fault (amber) |
 |--------|----------------------|-----------------------|
-| バッテリなし | OFF | OFF |
-| バッテリあり、充電済み | ON | OFF |
-| バッテリの充電中またはメンテナンス放電中 | 点滅 | OFF |
-| バッテリ "軽度" 障害 (復旧可能) | OFF | 点滅 |
-| バッテリ "重度" 障害 (復旧不能) | OFF | ON |
-| バッテリ接続解除 | 点滅 | OFF |
+| Battery not present | OFF | OFF |
+| Battery present and charged | ON | OFF |
+| Battery charging or maintenance discharge | Flashing | OFF |
+| Battery “soft” fault (recoverable) | OFF | Flashing |
+| Battery “hard” fault (non-recoverable) | OFF | ON |
+| Battery disarmed | Flashing | OFF |
 
-## EBOD エンクロージャの PCM LED  
+## <a name="pcm-leds-for-the-ebod-enclosure"></a>PCM LEDs for the EBOD enclosure  
 
-EBOD エンクロージャには、580W PCM が搭載されています。予備のバッテリはありません。EBOD エンクロージャの PCM パネルには、電源とファンに関してのみ、インジケーター LED があります。これらの LED を次の図に示します。
+The EBOD enclosure has a 580W PCM and no additional battery. The PCM panel for the EBOD enclosure has indicator LEDs only for the power supplies and the fan. The following illustration shows these LEDs.
 
-   ![EBOD エンクロージャの PCM LED][3]
+   ![PCM LEDs on the EBOD enclosure][3] 
  
-次の表を参考にして、PCM の状態を判断してください。
+You can use the following table to determine the status of the PCM.  
 
-| 状態 | PCM OK (緑) | AC 障害 (アンバー) | ファン障害 (アンバー) | DC 障害 (アンバー) |
+| Status | PCM OK (green) | AC fail (amber) | Fan fail (amber) | DC fail (amber) |
 |--------|---------------|------------------------|------------------|----------------------|
-| AC 電源なし (対エンクロージャ) | OFF | OFF | OFF | OFF |
-| AC 電源なし (この PCM のみ) | OFF | ON | OFF | ON |
-| AC あり PCM ON - OK | ON | OFF | OFF | OFF |
-| PCM 障害 (ファンの障害) | OFF | OFF | ON | ○ |
-| PCM 障害 (過増幅、過電圧、過電流) | OFF | ON | ON | ON |
-| PCM (ファン許容範囲超過) | ON | OFF | OFF | ON |
-| スタンバイ モード | 点滅 | OFF | OFF | OFF |
-| PCM ファームウェアのダウンロード | OFF | 点滅 | 点滅 | 点滅 |
+| No AC power (to enclosure) | OFF | OFF | OFF | OFF |
+| No AC power (this PCM only) | OFF | ON | OFF | ON |
+| AC present PCM ON – OK | ON | OFF | OFF | OFF |
+| PCM fail (fan fail) | OFF | OFF | ON | X |
+| PCM fault (over amp, over voltage, over current | OFF | ON | ON | ON |
+| PCM (fan out of tolerance) | ON | OFF | OFF | ON |
+| Standby model | Flashing | OFF | OFF | OFF |
+| PCM firmware download | OFF | Flashing | Flashing | Flashing |
 
-## コントローラー モジュール インジケーター LED  
+## <a name="controller-module-indicator-leds"></a>Controller module indicator LEDs  
 
-StorSimple デバイスは、StorSimple デバイスのプライマリ コントローラーおよび EBOD コントローラー モジュールの LED を備えています。
+The StorSimple device contains LEDs for the primary controller and the EBOD controller modules.   
 
-### プライマリ コントローラーの監視 LED
-次の図を参考にして、プライマリ コントローラーの LED を識別してください (位置を把握できるようにすべてのコンポーネントが示されています)。
+### <a name="monitoring-leds-for-the-primary-controller"></a>Monitoring LEDs for the primary controller
+The following illustration helps you identify the LEDs on the primary controller. (All of the components are listed to aid in orientation.)  
 
-   ![LED の監視 - プライマリ コントローラー][4]
+   ![Monitoring LEDs - primary controller][4]
  
-次の表を使用して、コントローラー モジュールが正常に動作しているかどうかを判断してください。
+Use the following table to determine whether the controller module is operating correctly.  
 
-### コントローラー インジケーター LED  
+### <a name="controller-indicator-leds"></a>Controller indicator LEDs  
 
 | LED | Description                                                                            
 |---- | ----------- |
-| ID LED (青) | モジュールが識別されていることを示します。青色の LED が動作中のコントローラーで点滅している場合、そのコントローラーがアクティブ コントローラーで、もう一方がスタンバイ コントローラーです。詳細については、「[デバイスでのアクティブなコントローラーの識別](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」をご覧ください。 |
-| 障害 LED (アンバー) | コントローラー内の障害を示します。        
-| OK LED (緑) | 緑色の点灯は、コントローラーが OK であることを示します。緑色の点滅は、コントローラーの VPD 構成エラーを示します。 |
-| SAS アクティビティ LED (緑) | 緑色の点灯は、現時点でのアクティビティがない接続を示します。緑色の点滅は、現在進行中のアクティビティがある接続を示します。 |
-| イーサネット状態 LED | 右側の LED は、リンク/ネットワーク アクティビティを示します。緑色の点灯は、リンクがアクティブであることを示し、緑色の点滅は、ネットワーク アクティビティを示します。左側の LED は、ネットワーク速度を示します (黄 - 1000 Mb/秒、緑 - 100 Mb/秒、消灯 - 10 Mb/秒)。コンポーネントのモデルによっては、ネットワーク インターフェイスが有効になっていない場合にもこの LED が点滅することがあります。 |
-| POST LED | コントローラーの電源を入れたときの起動の進行状況を示します。StorSimple デバイスが起動に失敗した場合、この LED は、Microsoft サポートが起動プロセスで障害が発生したポイントを識別するのに役立ちます。 |
+| ID LED (blue) | Indicates that the module is being identified. If the blue LED is blinking on a running controller, then the controller is the active controller and the other one is the standby controller. For more information, see [Identify the active controller on your device](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device). |
+| Fault LED (amber) | Indicates a fault in the controller.        
+| OK LED (green) | Steady green indicates that the controller is OK. Flashing green indicates a controller VPD configuration error. |
+| SAS activity LEDs (green) | Steady green indicates a connection with no current activity. Flashing green indicates the connection has ongoing activity. |
+| Ethernet status LEDs | Right side indicates link/network activity: (steady green) link active, (flashing green) network activity. Left side indicates network speed: (yellow) 1000 Mb/s, (green) 100 Mb/s, and (OFF) 10 Mb/s. Depending on the component model, this light might blink even if the network interface is not enabled. |
+| POST LEDs | Indicates the boot progress when the controller is turned on. If the StorSimple device fails to boot, this LED will help Microsoft Support identify the point in the boot process at which the failure occurred. |
 
 >[AZURE.IMPORTANT] 
-障害 LED が点灯した場合は、コントローラー モジュールに問題があります。この場合、コントローラーを再起動することによって問題が解決する場合があります。コントローラーを再起動してもこの問題が解決しない場合は、Microsoft サポートにお問い合わせください。
+If the fault LED is lit, there is a problem with the controller module that might be resolved by restarting the controller. Please contact Microsoft Support if restarting the controller does not resolve this issue.  
 
 
-### EBOD (EBOD エンクロージャ) の監視 LED  
+### <a name="monitoring-leds-for-the-ebod-(ebod-enclosure)"></a>Monitoring LEDs for the EBOD (EBOD enclosure)  
 
-各 6 Gb/秒 SAS EBOD コントローラーは、次の図に示すように、状態を示す LED を備えています。
+Each of the 6 Gb/s SAS EBOD controllers has LEDs that indicate its status as shown in the following illustration.  
 
-  ![LED の監視 - EBOD エンクロージャ][5]
+  ![Monitoring LEDs - EBOD enclosure][5]
 
-次の表を使用して、EBOD コントローラー モジュールが正常に動作しているかどうかを判断してください。
+Use the following table to determine whether the EBOD controller module is operating normally.  
 
-### EBOD コントローラー モジュール インジケーター LED  
+### <a name="ebod-controller-module-indicator-leds"></a>EBOD controller module indicator LEDs  
 
-|状態 | I/O モジュール OK (緑) | I/O モジュール障害 (アンバー) | ホスト ポート アクティビティ (緑) |
+|Status | I/O module OK (green) | I/O module fault (amber) | Host port activity (green) |
 |-------|----------------------|-------------------------------|----------------------------|
-| コントローラー モジュール OK | ON | OFF | - | 
-| コントローラー モジュール障害 | OFF | ON | - | 
-| 外部ホスト ポート接続なし | - | - | OFF | 
-| 外部ホスト ポート接続 - アクティビティなし | - | - | ON | 
-| 外部ホスト ポート接続 - アクティビティ | - | - | 点滅 | 
-| コントローラー モジュール メタデータ エラー | 点滅 | - | - |
+| Controller module OK | ON | OFF | - |
+| Controller module fault | OFF | ON | - |
+| No external host port connection | - | - | OFF |
+| External host port connection – no activity | - | - | ON |
+| External host port connection - activity | - | - | Flashing |
+| Controller module metadata error | Flashing | - | - |
 
-## 主エンクロージャと EBOD エンクロージャのディスク ドライブ インジケーター LED
+## <a name="disk-drive-indicator-leds-for-the-primary-enclosure-and-ebod-enclosure"></a>Disk drive indicator LEDs for the primary enclosure and EBOD enclosure
 
-StorSimple デバイスには、主エンクロージャと EBOD エンクロージャの両方にディスク ドライブがあります。各ディスク ドライブは、このセクションで説明するように、監視インジケーター LED を備えています。
+The StorSimple device has disk drives located in both the primary enclosure and the EBOD enclosure. Each disk drive contains monitoring indicator LEDs, as described in this section. 
 
-それぞれのディスク ドライブのドライブ状態は、各ドライブ キャリア モジュールの前面に取り付けられた緑色の LED とレッドアンバー色の LED で示されます。これらの LED を次の図に示します。
+For the disk drives, the drive status is indicated by a green LED and a red-amber LED mounted on the front of each drive carrier module. The following illustration shows these LEDs.
 
-  ![ディスク ドライブの LED][6]
+  ![Disk drive LEDs][6]
  
-次の表を参考にして、各ディスク ドライブの状態を判断してください。ディスク ドライブの状態は、前面パネルの全体の LED の状態に影響を及ぼします。
+Use the following table to determine the state of each disk drive, which in turn affects the overall front panel LED status.  
 
-### EBOD エンクロージャのディスク ドライブ インジケーター LED  
+### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Disk drive indicator LEDs for the EBOD enclosure  
 
-| 状態 | アクティビティ OK LED (緑) | 障害 LED (レッドアンバー) | 関連する OPS パネル LED |
+| Status | Activity OK LED (green) | Fault LED (red-amber) | Associated ops panel LED |
 |-------|--------------------------|----------------------|-------------------------|
-| ドライブが取り付けられていない | OFF | OFF | なし |
-| ドライブが取り付けられており、動作可能である | アクティビティ状態に応じて点滅のオン/オフ | ○ | なし |
-| SES (SCSI エンクロージャ サービス) デバイス ID が設定されている | ON | 1 秒点灯/1 秒消灯の点滅 | なし |
-| SES デバイス障害ビットが設定されている | ON | ON | 論理的な障害 (赤) |
-| 電源制御回路の障害 | OFF | ON | モジュール障害 (赤) |
+| No drive installed | OFF | OFF | None |
+| Drive installed and operational | Flashing on/off with activity | X | None |
+| SCSI Enclosure Services (SES) device identity set | ON | Flashing 1 second on/1 second off | None |
+| SES device fault bit set | ON | ON | Logical fault (red) |
+| Power control circuit failure | OFF | ON | Module fault (red) |
 
-## 可聴アラーム  
+## <a name="audible-alarms"></a>Audible alarms  
 
-StorSimple デバイスは、主エンクロージャと EBOD エンクロージャの両方に関連付けられた可聴アラームを備えています。可聴アラームは、両方のエンクロージャのフロント パネル (OPS パネルとも呼ばれます) にあります。可聴アラームは、エラー状態が存在することを示します。アラームは、次の状況が発生するとアクティブになります。
+A StorSimple device contains audible alarms associated with both the primary enclosure and the EBOD enclosure. An audible alarm is located on the front panel (also known as the ops panel) of both enclosures. The audible alarm indicates when a fault condition is present. The following conditions will activate the alarm:  
 
-- ファンの障害または異常
-- 電圧が範囲外
-- 温度の上限または下限を超過した状態
-- サーマル オーバーラン
-- システム障害
-- 論理的な障害
-- 電源障害
-- 電源冷却モジュールの取り外し (PCM)
+- Fan fault or failure
+- Voltage out of range
+- Over or under temperature condition
+- Thermal overrun
+- System fault
+- Logical fault
+- Power supply fault
+- Removal of a power cooling module (PCM)  
 
-次の表に、各種のアラーム状態を説明します。
+The following table describes the various alarm states.  
 
-### アラーム状態  
+### <a name="alarm-states"></a>Alarm states  
 
-| アラーム状態 | アクション | ミュート ボタンが押された場合のアクション |
+| Alarm state | Action | Action with mute button pressed |
 |------------|---------|---------------------------------|
-| S0 | 通常モード: サイレント | ビープ音が 2 度鳴る |
-| S1 | 障害モード: 1 秒点灯、1 秒消灯 | S2 または S3 への移行 (注を参照) |
-| S2 | 通知モード: 断続的にビープ音が鳴る | なし |
-| S3 | ミュート モード: サイレント | なし |
-| S4 | 重大な障害モード: 連続的なアラーム | 利用不可: ミュートがアクティブでない |
+| S0 | Normal mode: silent | Beep twice |
+| S1 | Fault mode: 1 second on/1 second off | Transition to S2 or S3 (see notes) |
+| S2 | Remind mode: intermittent beep | None |
+| S3 | Muted mode: silent | None |
+| S4 | Critical fault mode: continuous alarm | Not available: mute not active |
 
 > [AZURE.NOTE] 
 
->  - アラーム状態 S1 の場合、ミュート ボタンを押さないでいると、2 分後に状態が S2 または S3 に自動的に移行します。
->  - アラーム状態 S1 ～ S4 は、障害状態が解消された後に S0 に戻ります。
->  - 他のどの状態からも重大な障害状態 S4 に移行する可能性があります。
+>  - In alarm state S1, if you do not press mute within 2 minutes, the state automatically transitions to S2 or S3.  
+>  - Alarm states S1 to S4 return to S0 after the fault condition is cleared.  
+>  - Critical fault state S4 can be entered from any other state.  
 
-可聴アラームは OPS パネルのミュート ボタンを押すことでミュート状態にすることができます。ミュート スイッチが手動で操作されなかった場合は、2 分後に自動ミュート機能が作動します。アラームはミュート状態になっても、引き続き、短い断続的なビープ音を鳴らして問題がまだ存在することを示します。すべての問題が解消されると、アラーム音は消えます。
+You can mute the audible alarm by pressing the mute button on the ops panel. Automatic muting will occur after two minutes if the mute switch is not manually operated. When the alarm is muted, it will continue to sound with short intermittent beeps to indicate that a problem still exists. The alarm will be silent when all the problems are cleared.  
 
-次の表に、各種のアラーム状態を説明します。
+The following table describes the various alarm conditions.  
 
-### アラーム状態  
+### <a name="alarm-conditions"></a>Alarm conditions  
 
-| 状態 | 重大度 | アラーム | OPS パネル LED |
+| Status | Severity | Alarm | Ops panel LED |
 |--------|---------|--------|----------------|
-| PCM アラート - 1 つの PCM の DC 電源の喪失 | 障害 - 冗長性は失われていない | S1 | モジュール障害|
-|PCM アラート - 1 つの PCM の DC 電源の喪失 | 障害 - 冗長性損失 | S1 | モジュール障害 |
-| PCM ファンの障害 | 障害 - 冗長性損失 | S1 | モジュール障害 |
-| SBB モジュールが PCM 障害を検出した | 障害 | S1 | モジュール障害 |
-| PCM が取り外されている | 構成エラー | なし | モジュール障害 |
-| エンクロージャ構成エラー | 障害 - 重大 | S1 | モジュール障害 |
-| 温度が低いことを警告するアラート | 警告 | S1 | モジュール障害 |
-| 温度が高いことを警告するアラート | 警告 | S1 | モジュール障害 |
-| 温度が限界を超えたことを示すアラーム | 障害 - 重大 | S1 | モジュール障害 |
-| I2C バス障害 | 障害 - 冗長性損失 | S1 | モジュール障害 |
-| OPS パネル通信エラー (I2C) | 障害 - 重大 | S1 | モジュール障害 |
-| コントローラー エラー | 障害 - 重大 | S1 | モジュール障害 |
-| SBB インターフェイス モジュールの障害 | 障害 - 重大 | S1 | モジュール障害 |
-| SBB インターフェイス モジュールの障害 - 機能するモジュールが残っていない | 障害 - 重大 | S4 | モジュール障害 |
-| SBB インターフェイス モジュールが取り外されている | 警告 | なし | モジュール障害 |
-| ドライブの電源制御障害 | 警告 - ドライブの電源は失われていない | S1 | モジュール障害 |
-| ドライブの電源制御障害 | 障害 - 重大 - ドライブの電源が失われている | S1 | モジュール障害 |
-| ドライブが取り外されている | 警告 | なし | モジュール障害 |
-| 電力供給が不十分である | 警告 | なし | モジュール障害 |
+| PCM alert – loss of DC power from a single PCM | Fault – no loss of redundancy | S1 | Module fault|
+|PCM alert – loss of DC power from a single PCM | Fault – loss of redundancy | S1 | Module fault |
+| PCM fan fail | Fault – loss of redundancy | S1 | Module fault |
+| SBB module detected PCM fault | Fault | S1 | Module fault |
+| PCM removed | Configuration error | None | Module fault |
+| Enclosure configuration error | Fault – critical | S1 | Module fault |
+| Low warning temperature alert | Warning | S1 | Module fault |
+| High warning temperature alert | Warning | S1 | Module fault |
+| Over temperature alarm | Fault – critical | S1 | Module fault |
+| I2C bus failure | Fault – loss of redundancy | S1 | Module fault |
+| Ops panel communication error (I2C) | Fault – critical     | S1 | Module fault |
+| Controller error | Fault – critical | S1 | Module fault |
+| SBB interface module fault | Fault – critical | S1 | Module fault |
+| SBB interface module fault – No functioning modules remaining | Fault – critical | S4 | Module fault |
+| SBB interface module removed | Warning | None | Module fault |
+| Drive power control fault | Warning – no loss of drive power | S1 | Module fault |
+| Drive power control fault | Fault – critical; loss of drive power | S1 | Module fault |
+| Drive removed | Warning | None | Module fault |
+| Insufficient power available | Warning | none | Module fault |
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[StorSimple ハードウェア コンポーネントと状態](storsimple-monitor-hardware-status.md)の詳細を確認します。
+Learn more about [StorSimple hardware components and status](storsimple-monitor-hardware-status.md).
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png
 [2]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE02.png
@@ -262,4 +263,8 @@ StorSimple デバイスは、主エンクロージャと EBOD エンクロージ
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

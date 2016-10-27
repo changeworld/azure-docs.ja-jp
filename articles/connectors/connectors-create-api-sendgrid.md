@@ -1,10 +1,10 @@
 <properties
 pageTitle="SendGrid | Microsoft Azure"
-description="Azure App Service を使用してロジック アプリを作成します。SendGrid 接続プロバイダーを使用して、電子メールを送信し、受信者リストを管理できます。"
-services="logic-apps"	
-documentationCenter=".net,nodejs,java" 	
-authors="msftman"	
-manager="erikre"	
+description="Create Logic apps with Azure App service. SendGrid Connection Provider lets you send email and manage recipient lists."
+services="logic-apps"   
+documentationCenter=".net,nodejs,java"  
+authors="msftman"   
+manager="erikre"    
 editor=""
 tags="connectors" />
 
@@ -17,168 +17,172 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
-# SendGrid コネクタの使用
 
-SendGrid 接続プロバイダーを使用して、電子メールを送信し、受信者リストを管理できます。
+# <a name="get-started-with-the-sendgrid-connector"></a>Get started with the SendGrid connector
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+SendGrid Connection Provider lets you send email and manage recipient lists.
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
+>[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
 
-## トリガーとアクション
+You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-SendGrid コネクタは、アクションとして使用できます。SendGrid コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
+## <a name="triggers-and-actions"></a>Triggers and actions
 
- SendGrid コネクタで使用可能なアクションは次のとおりです。トリガーはありません。
+The SendGrid connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
 
-### SendGrid のアクション
-実行できるアクションは以下のとおりです。
+ The SendGrid connector has the following actions available. There are no triggers.
 
-|アクション|Description|
+### <a name="sendgrid-actions"></a>SendGrid actions
+You can take these action(s):
+
+|Action|Description|
 |--- | ---|
-|[SendEmail](connectors-create-api-sendgrid.md#sendemail)|SendGrid API を使用して電子メールを送信します (受信者は 10,000 に制限)。|
-|[AddRecipientToList](connectors-create-api-sendgrid.md#addrecipienttolist)|個々の受信者を受信者リストに追加します。|
+|[SendEmail](connectors-create-api-sendgrid.md#sendemail)|Sends an email using SendGrid API (Limited to 10,000 recipients)|
+|[AddRecipientToList](connectors-create-api-sendgrid.md#addrecipienttolist)|Add an individual recipient to a recipient list|
 
 
-## SendGrid への接続の作成
-SendGrid を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
+## <a name="create-a-connection-to-sendgrid"></a>Create a connection to SendGrid
+To create Logic apps with SendGrid, you must first create a **connection** then provide the details for the following properties: 
 
-|プロパティ| 必須|Description|
+|Property| Required|Description|
 | ---|---|---|
-|ApiKey|はい|SendGrid API キーを指定します。|
+|ApiKey|Yes|Provide Your SendGrid Api Key|
  
 
->[AZURE.INCLUDE [SendGrid への接続を作成する手順](../../includes/connectors-create-api-sendgrid.md)]
+>[AZURE.INCLUDE [Steps to create a connection to SendGrid](../../includes/connectors-create-api-sendgrid.md)]
 
->[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
+>[AZURE.TIP] You can use this connection in other logic apps.
 
-接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
+After you create the connection, you can use it to execute the actions and listen for the triggers described in this article.
 
-## SendGrid のリファレンス
-適用されるバージョン: 1.0
+## <a name="reference-for-sendgrid"></a>Reference for SendGrid
+Applies to version: 1.0
 
-## SendEmail
-電子メールの送信: SendGrid API を使用して電子メールを送信します (受信者は 10,000 に制限)。
+## <a name="sendemail"></a>SendEmail
+Send email: Sends an email using SendGrid API (Limited to 10,000 recipients) 
 
-```POST: /api/mail.send.json```
+```POST: /api/mail.send.json``` 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|request| |○|body|なし|送信する電子メール メッセージ|
+|request| |yes|body|none|Email message to send|
 
-#### 応答
+#### <a name="response"></a>Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|429|要求が多すぎます|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|default|操作に失敗しました。|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|429|Too Many Request|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## AddRecipientToList
-リストへの受信者の追加: 個々の受信者を受信者リストに追加します。
+## <a name="addrecipienttolist"></a>AddRecipientToList
+Add recipient to list: Add an individual recipient to a recipient list 
 
-```POST: /v3/contactdb/lists/{listId}/recipients/{recipientId}```
+```POST: /v3/contactdb/lists/{listId}/recipients/{recipientId}``` 
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|listId|string|○|path|なし|受信者リストの一意の ID|
-|recipientId|string|○|path|なし|受信者の一意の ID|
+|listId|string|yes|path|none|Unique id of the recipient list|
+|recipientId|string|yes|path|none|Unique id of the recipient|
 
-#### 応答
+#### <a name="response"></a>Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|default|操作に失敗しました。|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## オブジェクト定義 
+## <a name="object-definitions"></a>Object definitions 
 
-### EmailRequest
+### <a name="emailrequest"></a>EmailRequest
 
 
-| プロパティ名 | データ型 | 必須 |
+| Property Name | Data Type | Required |
 |---|---|---|
-|from|string|はい |
-|fromname|string|なし |
-|to|string|はい |
-|toname|string|なし |
-|subject|string|はい |
-|body|string|はい |
-|ishtml|boolean|なし |
-|cc|string|なし |
-|ccname|string|なし |
-|bcc|string|なし |
-|bccname|string|なし |
-|replyto|string|なし |
-|date|string|なし |
-|headers|string|なし |
-|ファイルのアップロード|array|なし |
-|filenames|array|なし |
+|from|string|Yes |
+|fromname|string|No |
+|to|string|Yes |
+|toname|string|No |
+|subject|string|Yes |
+|body|string|Yes |
+|ishtml|boolean|No |
+|cc|string|No |
+|ccname|string|No |
+|bcc|string|No |
+|bccname|string|No |
+|replyto|string|No |
+|date|string|No |
+|headers|string|No |
+|files|array|No |
+|filenames|array|No |
 
 
 
-### EmailResponse
+### <a name="emailresponse"></a>EmailResponse
 
 
-| プロパティ名 | データ型 | 必須 |
+| Property Name | Data Type | Required |
 |---|---|---|
-|message|string|なし |
+|message|string|No |
 
 
 
-### RecipientLists
+### <a name="recipientlists"></a>RecipientLists
 
 
-| プロパティ名 | データ型 | 必須 |
+| Property Name | Data Type | Required |
 |---|---|---|
-|lists|array|なし |
+|lists|array|No |
 
 
 
-### RecipientList
+### <a name="recipientlist"></a>RecipientList
 
 
-| プロパティ名 | データ型 | 必須 |
+| Property Name | Data Type | Required |
 |---|---|---|
-|id|integer|なし |
-|name|string|なし |
-|recipient\_count|integer|なし |
+|id|integer|No |
+|name|string|No |
+|recipient_count|integer|No |
 
 
 
-### Recipients
+### <a name="recipients"></a>Recipients
 
 
-| プロパティ名 | データ型 | 必須 |
+| Property Name | Data Type | Required |
 |---|---|---|
-|recipients|array|なし |
+|recipients|array|No |
 
 
 
-### Recipient
+### <a name="recipient"></a>Recipient
 
 
-| プロパティ名 | データ型 | 必須 |
+| Property Name | Data Type | Required |
 |---|---|---|
-|電子メール|string|なし |
-|last\_name|string|なし |
-|first\_name|string|なし |
-|id|string|なし |
+|email|string|No |
+|last_name|string|No |
+|first_name|string|No |
+|id|string|No |
 
 
-## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

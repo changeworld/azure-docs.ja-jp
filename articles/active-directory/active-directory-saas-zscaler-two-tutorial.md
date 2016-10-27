@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Zscaler Two の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Zscaler Two を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory Integration with Zscaler Two | Microsoft Azure" 
+    description="Learn how to use Zscaler Two with Azure Active Directory to enable single sign-on, automated provisioning, and more!." 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,191 +14,199 @@
     ms.date="08/16/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Zscaler Two の統合
 
-このチュートリアルでは、Azure と ZScaler Two の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+#<a name="tutorial:-azure-active-directory-integration-with-zscaler-two"></a>Tutorial: Azure Active Directory Integration with Zscaler Two
 
--   有効な Azure サブスクリプション
--   ZScaler Two でのシングル サインオンが有効なサブスクリプション
+The objective of this tutorial is to show the integration of Azure and ZScaler Two.  
+The scenario outlined in this tutorial assumes that you already have the following items:
+
+-   A valid Azure subscription
+-   A ZScaler Two single sign-on enabled subscription
   
-このチュートリアルを完了すると、ZScaler Two に割り当てた Azure AD ユーザーは、ZScaler Two 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to ZScaler Two will be able to single sign into the application at your ZScaler Two company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md)
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  ZScaler Two のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  プロキシ設定の構成
-4.  ユーザー プロビジョニングの構成
-5.  ユーザーの割り当て
+1.  Enabling the application integration for ZScaler Two
+2.  Configuring single sign-on
+3.  Configuring proxy settings
+4.  Configuring user provisioning
+5.  Assigning users
 
 ![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800199.png "Configure Single Sign-On")
 
-##ZScaler Two のアプリケーション統合の有効化
+##<a name="enabling-the-application-integration-for-zscaler-two"></a>Enabling the application integration for ZScaler Two
   
-このセクションでは、ZScaler Two のアプリケーション統合を有効にする方法を説明します。
+The objective of this section is to outline how to enable the application integration for ZScaler Two.
 
-###ZScaler Two のアプリケーション統合を有効にするには、次の手順を実行します。
+###<a name="to-enable-the-application-integration-for-zscaler-two,-perform-the-following-steps:"></a>To enable the application integration for ZScaler Two, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-zscaler-two-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-zscaler-two-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-zscaler-two-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-zscaler-two-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-zscaler-two-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-zscaler-two-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-zscaler-two-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**ZScaler Two**」と入力します。
+6.  In the **search box**, type **ZScaler Two**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-zscaler-two-tutorial/IC800200.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-zscaler-two-tutorial/IC800200.png "Application Gallery")
 
-7.  結果ウィンドウで **[ZScaler Two]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **ZScaler Two**, and then click **Complete** to add the application.
 
     ![ZScaler Two](./media/active-directory-saas-zscaler-two-tutorial/IC800201.png "ZScaler Two")
 
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで ZScaler Two に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書を ZScaler Two テナントにアップロードする必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+The objective of this section is to outline how to enable users to authenticate to ZScaler Two with their account in Azure AD using federation based on the SAML protocol.  
+As part of this procedure, you are required to upload a base-64 encoded certificate to your ZScaler Two tenant.  
+If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 
-###シングル サインオンを構成するには、次の手順を実行します。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **ZScaler Two** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **ZScaler Two** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800202.png "Configure Single Sign-On")
 
-2.  **[ユーザーの ZScaler Two へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to ZScaler Two** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800203.png "Configure Single Sign-On")
 
-3.  **[アプリの URL を構成する]** ページの **[ZScaler Two サインオン URL]** テキスト ボックスに、ユーザーが ZScaler Two アプリケーションのサインオンに使用する URL を入力して、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **ZScaler Two Sign On URL** textbox, type the URL used by your users to sign-on to your ZScaler Two application, and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-zscaler-two-tutorial/IC800204.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-zscaler-two-tutorial/IC800204.png "Configure App URL")
 
-    >[AZURE.NOTE] ご使用の環境の実際の値は、ZScaler Two サポート チームから入手できます。
+    >[AZURE.NOTE] You can get the actual value for your environment from your ZScaler Two support team if you need it.
 
-4.  **[ZScaler Two でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
+4.  On the **Configure single sign-on at ZScaler Two** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800205.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザー ウィンドウで、ZScaler Two 企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your ZScaler Two company site as an administrator.
 
-6.  上部のメニューで **[管理]** をクリックします。
+6.  In the menu on the top, click **Administration**.
 
-    ![管理](./media/active-directory-saas-zscaler-two-tutorial/IC800206.png "管理")
+    ![Administration](./media/active-directory-saas-zscaler-two-tutorial/IC800206.png "Administration")
 
-7.  **[管理者とロールの管理]** をクリックし、**[ユーザーと認証の管理]** をクリックします。
+7.  Under **Manage Administrators & Roles**, click **Manage Users & Authentication**.
 
-    ![ユーザーと認証の管理](./media/active-directory-saas-zscaler-two-tutorial/IC800207.png "ユーザーと認証の管理")
+    ![Manage Users & Authentication](./media/active-directory-saas-zscaler-two-tutorial/IC800207.png "Manage Users & Authentication")
 
-8.  **[組織の認証オプションの選択]** セクションで、次の手順を実行します。
+8.  In the **Choose Authentication Options for your Organization** section, perform the following steps:
 
-    ![認証](./media/active-directory-saas-zscaler-two-tutorial/IC800208.png "認証")
+    ![Authentication](./media/active-directory-saas-zscaler-two-tutorial/IC800208.png "Authentication")
 
-    1.  **[SAML シングル サインオンを使用した認証]** を選択します。
-    2.  **[SAML シングル サインオン パラメーターの構成]** をクリックします。
+    1.  Select **Authenticate using SAML Single Sign-On**.
+    2.  Click **Configure SAML Single Sign-On Parameters**.
 
-9.  **[SAML シングル サインオン パラメーターの構成]** ダイアログ ページで、次の手順に従い、**[完了]** をクリックします。
+9.  On the **Configure SAML Single Sign-On Parameters** dialog page, perform the following steps, and then click **Done**:
 
-    ![シングル サインオン](./media/active-directory-saas-zscaler-two-tutorial/IC800209.png "シングル サインオン")
+    ![Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800209.png "Single Sign-On")
 
-    1.  Azure クラシック ポータルの **[ZScaler Two でのシングル サインオンの構成]** ダイアログ ページで、**[認証要求 URL]** の値をコピーし、**[URL of the SAML Portal to which users are sent for authentication (認証のためにユーザーに表示される SAML ポータルの URL)]** ボックスに貼り付けます。
-    2.  **[ログイン名を含む属性]** テキスト ボックスに「**NameID**」と入力します。
-    3.  ダウンロードした証明書をアップロードするには、**[Zscaler pem]** をクリックします。
-    4.  **[SAML 自動プロビジョニングを有効にする]** を選択します。
+    1.  In the Azure classic portal, on the **Configure single sign-on at ZScaler Two** dialog page, copy the **Authentication Request URL** value, and then paste it into the **URL of the SAML Portal to which users are sent for authentication** textbox.
+    2.  In the **Attribute containing Login Name** textbox, type **NameID**.
+    3.  To upload your downloaded certificate, click **Zscaler pem**.
+    4.  Select **Enable SAML Auto-Provisioning**.
 
-10. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
+10. On the **Configure User Authentication** dialog page, perform the following steps:
 
-    ![管理](./media/active-directory-saas-zscaler-two-tutorial/IC800210.png "管理")
+    ![Administration](./media/active-directory-saas-zscaler-two-tutorial/IC800210.png "Administration")
 
-    1.  **[保存]** をクリックします。
-    2.  **[今すぐ認証する]** をクリックします。
+    1.  Click **Save**.
+    2.  Click **Activate Now**.
 
-11. Azure クラシック ポータルの **[ZScaler Two でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
+11. In the Azure classic portal, on the **Configure single sign-on at ZScaler Two** dialog page, select the single sign-on configuration confirmation, and then click **Complete**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-zscaler-two-tutorial/IC800211.png "Configure Single Sign-On")
 
-##プロキシ設定の構成
+##<a name="configuring-proxy-settings"></a>Configuring proxy settings
 
-###Internet Explorer でプロキシ設定を構成するには
+###<a name="to-configure-the-proxy-settings-in-internet-explorer"></a>To configure the proxy settings in Internet Explorer
 
-1.  **Internet Explorer** を開始します。
+1.  Start **Internet Explorer**.
 
-2.  **[ツール]** メニューの **[インターネット オプション]** を選択し、**[インターネット オプション]** ダイアログを開きます。
+2.  Select **Internet options** from the **Tools** menu to open the **Internet Options** dialog.
 
-    ![を開き](./media/active-directory-saas-zscaler-two-tutorial/IC769492.png "を開き")
+    ![Internet Options](./media/active-directory-saas-zscaler-two-tutorial/IC769492.png "Internet Options")
 
-3.  **[接続]** タブをクリックします。
+3.  Click the **Connections** tab.
 
-    ![接続](./media/active-directory-saas-zscaler-two-tutorial/IC769493.png "接続")
+    ![Connections](./media/active-directory-saas-zscaler-two-tutorial/IC769493.png "Connections")
 
-4.  **[LAN の設定]** をクリックして **[LAN の設定]** ダイアログを開きます。
+4.  Click **LAN settings** to open the **LAN Settings** dialog.
 
-5.  [プロキシ サーバー] セクションで、次の手順を実行します。
+5.  In the Proxy server section, perform the following steps:
 
-    ![プロキシ サーバー](./media/active-directory-saas-zscaler-two-tutorial/IC769494.png "プロキシ サーバー")
+    ![Proxy server](./media/active-directory-saas-zscaler-two-tutorial/IC769494.png "Proxy server")
 
-    1.  [LAN にプロキシ サーバーを使用する] をオンにします。
-    2.  [アドレス] ボックスに「**gateway.zscalerone.net**」と入力します。
-    3.  [ポート] ボックスに「**80**」と入力します。
-    4.  **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
-    5.  **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
+    1.  Select Use a proxy server for your LAN.
+    2.  In the Address textbox, type **gateway.zscalerone.net**.
+    3.  In the Port textbox, type **80**.
+    4.  Select **Bypass proxy server for local addresses**.
+    5.  Click **OK** to close the **Local Area Network (LAN) Settings** dialog.
 
-6.  **[OK]** をクリックして **[インターネット オプション]** ダイアログを閉じます。
+6.  Click **OK** to close the **Internet Options** dialog.
 
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが ZScaler Two にログインできるようにするには、そのユーザーを ZScaler Two にプロビジョニングする必要があります。ZScaler Two の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into ZScaler Two, they must be provisioned to ZScaler Two.  
+In the case of ZScaler Two, provisioning is a manual task.
 
-###ユーザー プロビジョニングを構成するには、次の手順に従います。
+###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
 
-1.  **Zscaler** テナントにログインします。
+1.  Log in to your **Zscaler** tenant.
 
-2.  **[管理]** をクリックします。
+2.  Click **Administration**.
 
-    ![管理](./media/active-directory-saas-zscaler-two-tutorial/IC781035.png "管理")
+    ![Administration](./media/active-directory-saas-zscaler-two-tutorial/IC781035.png "Administration")
 
-3.  **[ユーザー管理]** をクリックします。
+3.  Click **User Management**.
 
     ![Add](./media/active-directory-saas-zscaler-two-tutorial/IC781037.png "Add")
 
-4.  **[ユーザー]** タブで、**[追加]**.をクリックします。
+4.  In the **Users** tab, click **Add**.
 
-    ![Add](./media/active-directory-saas-zscaler-two-tutorial/IC781037.png "[追加] のいずれかを")
+    ![Add](./media/active-directory-saas-zscaler-two-tutorial/IC781037.png "Add")
 
-5.  [ユーザーの追加] セクションで、次の手順を実行します。
+5.  In the Add User section, perform the following steps:
 
-    ![ユーザーの追加](./media/active-directory-saas-zscaler-two-tutorial/IC781038.png "ユーザーの追加")
+    ![Add User](./media/active-directory-saas-zscaler-two-tutorial/IC781038.png "Add User")
 
-    1.  プロビジョニングする有効な AAD アカウントの **[ユーザー ID]**、**[ユーザー表示名]**、**[パスワード]**、**[パスワードの確認]** に入力し、**[グループ]** と **[部署]** を選択します。
-    2.  [**Save**] をクリックします。
+    1.  Type the **UserID**, **User Display Name**, **Password**, **Confirm Password**, and then select **Groups** and the **Department** of a valid AAD account you want to provision.
+    2.  Click **Save**.
 
->[AZURE.NOTE] ZScaler Two から提供されている他の ZScaler Two ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other ZScaler Two user account creation tools or APIs provided by ZScaler Two to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを ZScaler Two に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-zscaler-two,-perform-the-following-steps:"></a>To assign users to ZScaler Two, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **ZScaler Two** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **ZScaler Two** application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-zscaler-two-tutorial/IC800212.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-zscaler-two-tutorial/IC800212.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-zscaler-two-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

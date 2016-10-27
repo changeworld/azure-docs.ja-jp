@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric クラスター リソース マネージャーのスロットル | Microsoft Azure"
-   description="Service Fabric クラスター リソース マネージャーで使用可能なスロットルの構成について説明します。"
+   pageTitle="Throttling in the Service Fabric cluster resource manager | Microsoft Azure"
+   description="Learn to configure the throttles provided by the Service Fabric Cluster Resource Manager."
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -17,16 +17,17 @@
    ms.author="masnider"/>
 
 
-# Service Fabric クラスター リソース マネージャーの動作を調整する
-クラスター リソース マネージャーを正しく構成している場合でも、クラスターが中断する場合があります。たとえば、同時ノードまたは障害ドメインのエラーが考えられます。このようなことがアップグレードの実行中に発生したとしたらどうなるでしょうか。 リソース マネージャーは最善を尽くしてすべての修正を試みますが、このような場合、クラスター自体を安定させるように補強を検討することもできます (復帰しようとしているノードによる実行、ネットワーク状態の自動修復機能、修正済みのビットのデプロイなど)。このような状況を支援するため、Service Fabric クラスター リソース マネージャーにはいくつかのスロットルが含まれています。これらのスロットルではかなりの中断が発生するため、クラスターで実行できる並列処理量について十分な計算を行っていない場合や、予期しない巨視的な再構成イベント (別名: “最悪な日”) に対応する必要が頻繁に発生するのでない場合、通常は使用しないでください。
 
-一般的には、クラスターが問題解決を行うときにリソースを使わないようにスロットルを行うよりも、通常のコード更新やクラスターの開始スケジュールの過密を避けるなどの他のオプションを使って最悪な日を回避することをお勧めします。スロットルには、経験から機能すると判断された既定値が設定されていますが、予想される実際の負荷に応じてこれらの値を確認し、調整することをお勧めします。クラスターを過度に制限したり、読み込んだりしないことがベスト プラクティスである一方で、クラスターが安定するまでに時間がかかる場合でも、(解決するまでに) 1 組のスロットルを用意する必要があるケースがあることを判断することができます。
+# <a name="throttling-the-behavior-of-the-service-fabric-cluster-resource-manager"></a>Throttling the behavior of the Service Fabric Cluster Resource Manager
+Even if you’ve configured the Cluster Resource Manager correctly, the cluster can get disrupted. For example there could be simultaneous node or fault domain failures - what would happen if that occurred during an upgrade? The Resource Manager will try its best to fix everything, but in times like this you may want to consider a backstop so that the cluster itself has a chance to stabilize (the nodes which are going to come back do, the network conditions heal themselves, corrected bits get deployed). To help with these sorts of situations, the Service Fabric Cluster Resource Manager does include several throttles. Note that these throttles are fairly disruptive and generally shouldn’t be used unless there’s been some careful math done around the amount of parallel work that can actually be done in the cluster, as well as a frequent need to respond to these sorts of (ahem) unplanned macroscopic reconfiguration events (AKA: “Very Bad Days”).
 
-##スロットルの構成
-既定で含まれているスロットルには、次のようなものがあります。
+Generally, we recommend avoiding very bad days through other options (like regular code updates and avoiding overscheduling the cluster to begin with) rather than throttling your cluster to prevent it from using resources when it is trying to fix itself). The throttles do have default values that we've found through experience to be ok defaults, but you should probably take a look and tune them to your expected actual load. While not overly constraining or loading the cluster is a best practice you may determine that there are cases which (until you can remedy them) where you need to have a couple of throttles in place, even if it means the cluster will take longer to stabilize.
 
--	GlobalMovementThrottleThreshold - これは (GlobalMovementThrottleCountingInterval で秒単位で定義した) 一定の期間にわたるクラスターの移動の合計数を制御します
--	MovementPerPartitionThrottleThreshold – これは (MovementPerPartitionThrottleCountingInterval で秒単位で定義した) 一定の期間にわたるサービス パーティションの移動の合計数を制御します
+##<a name="configuring-the-throttles"></a>Configuring the throttles
+The throttles that are included by default are:
+
+-   GlobalMovementThrottleThreshold – this controls the total number of movements in the cluster over some time (defined as the GlobalMovementThrottleCountingInterval, value in seconds)
+-   MovementPerPartitionThrottleThreshold – this controls the total number of movements for any service partition over some time (the MovementPerPartitionThrottleCountingInterval, value in seconds)
 
 ``` xml
 <Section Name="PlacementAndLoadBalancing">
@@ -37,10 +38,14 @@
 </Section>
 ```
 
-これまで観察してきたところ、お客様がこれらのスロットルを使用した大半のケースで、お客様は既に (ネットワーク帯域幅が、これらに配置される並列のレプリカのビルドの要件に満たないノードまたはディスクごとに制限されているなどの) リソースが制限された環境にあり、いずれにしても操作が成功しなかったか、操作に長い時間を要していました。そのため、お客様はクラスターが安定した状態になるまでに時間がかかる可能性があるとわかっても不安を感じることはありませんでした。これには、スロットルの実行中は全体的な信頼性が低下した状態になることも含まれていました。
+Be aware that most of the time we’ve seen customers use these throttles it has been because they were already in a resource constrained environment (such as limited network bandwidth into individual nodes or disks which weren't up to the requirements of parallel replica builds which were being placed on them) which meant that such operations wouldn’t succeed or would be slow anyway.  In these situations customers were comfortable knowing that they were potentially extending the amount of time it would take the cluster to reach a stable state, including knowing that they could end up running at lower overall reliability while they were throttled.
 
-## 次のステップ
-- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
-- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
+## <a name="next-steps"></a>Next steps
+- To find out about how the Cluster Resource Manager manages and balances load in the cluster, check out the article on [balancing load](service-fabric-cluster-resource-manager-balancing.md)
+- The Cluster Resource Manager has a lot of options for describing the cluster. To find out more about them check out this article on [describing a Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

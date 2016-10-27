@@ -1,11 +1,11 @@
 <properties
-	pageTitle="IoT Hub Gateway SDK の使用 | Microsoft Azure"
-	description="このチュートリアルでは、Azure IoT Hub Gateway SDK を使用する場合に理解する必要のある主な概念を Linux を使用して説明します。"
-	services="iot-hub"
-	documentationCenter=""
-	authors="chipalost"
-	manager="timlt"
-	editor=""/>
+    pageTitle="Get started with the IoT Hub Gateway SDK | Microsoft Azure"
+    description="This Azure IoT Hub Gateway SDK walkthrough uses Linux to illustrate key concepts you should understand when you use the Azure IoT Hub Gateway SDK."
+    services="iot-hub"
+    documentationCenter=""
+    authors="chipalost"
+    manager="timlt"
+    editor=""/>
 
 <tags
      ms.service="iot-hub"
@@ -17,31 +17,32 @@
      ms.author="andbuc"/>
 
 
-# IoT Gateway SDK (Beta) – Linux の使用
+
+# <a name="iot-gateway-sdk-(beta)---get-started-using-linux"></a>IoT Gateway SDK (beta) - Get started using Linux
 
 [AZURE.INCLUDE [iot-hub-gateway-sdk-getstarted-selector](../../includes/iot-hub-gateway-sdk-getstarted-selector.md)]
 
-## サンプルをビルドする方法
+## <a name="how-to-build-the-sample"></a>How to build the sample
 
-作業を開始する前に、Linux で SDK を使用するための[開発環境を設定][lnk-setupdevbox]する必要があります。
+Before you get started, you must [set up your development environment][lnk-setupdevbox] for working with the SDK on Linux.
 
-1. シェルを開きます。
-2. **azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに移動します。
-3. **tools\\build.sh** スクリプトを実行します。このスクリプトでは、**cmake** ユーティリティを使用して、**azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに **ビルド** という名前のフォルダーを作成し、メイクファイルを生成します。スクリプトは、次にソリューションをビルドし、テストを実行します。
+1. Open a shell.
+2. Navigate to the root folder in your local copy of the **azure-iot-gateway-sdk** repository.
+3. Run the **tools/build.sh** script. This script uses the **cmake** utility to create a folder called **build** in the root folder of your local copy of the **azure-iot-gateway-sdk** repository and generate a makefile. The script then builds the solution and runs the tests.
 
-> [AZURE.NOTE]  **build.sh** スクリプトを実行するたびに **ビルド** フォルダーが削除され、**azure-iot-gateway-sdk** リポジトリのローカル コピーのルート フォルダーに再作成されます。
+> [AZURE.NOTE]  Every time you run the **build.sh** script, it deletes and then recreates the **build** folder in the root folder of your local copy of the **azure-iot-gateway-sdk** repository.
 
-## サンプルを実行する方法
+## <a name="how-to-run-the-sample"></a>How to run the sample
 
-1. **build.sh** スクリプトは、**azure-iot-gateway-sdk** リポジトリのローカル コピーの **ビルド** フォルダーに出力を生成します。ここには、このサンプルで使用する 2 つのモジュールが含まれています。
+1. The **build.sh** script generates its output in the **build** folder in your local copy of the **azure-iot-gateway-sdk** repository. This includes the two modules used in this sample.
 
-    この ビルドスクリプトにより、**liblogger\_hl.so** が **build/modules/logger/** フォルダーに配置され、**libhello\_world\_hl.so** が **build/modules/hello\_world/** フォルダーに配置されます。次の JSON 設定ファイルに示すように、**モジュール パス** の値にはこれらのパスを使用します。
+    The build script places **liblogger_hl.so** in the **build/modules/logger/** folder and **libhello_world_hl.so** in  the **build/modules/hello_world/** folder. Use these paths for the **module path** value as shown in the JSON settings file below.
 
-2. **samples/hello\_world/src** フォルダーの **hello\_world\_lin.json** ファイルは、サンプルの実行に使用できる Linux の JSON 設定ファイルの例です。次に示す JSON 設定の例は、**azure-iot-gateway-sdk** リポジトリのローカル コピーのルートからサンプルを実行することを前提としています。
+2. The file **hello_world_lin.json** in the **samples/hello_world/src** folder is an example JSON settings file for Linux that you can use to run the sample. The example JSON settings shown below assumes that you will run the sample from the root of your local copy of the **azure-iot-gateway-sdk** repository.
 
-3. **args** セクションの **logger\_hl** モジュールでは、**ファイル名** の値をログ データを格納するファイルの名前とパスに設定します。
+3. For the **logger_hl** module, in the **args** section, set the **filename** value to the name and path of the file that will contain the log data.
 
-    これは、サンプルを実行するフォルダーに **log.txt** を書き込む Linux の JSON 設定ファイルの例です。
+    This is an example of a JSON settings file for Linux that will write to the **log.txt** to the folder where you run the sample.
 
     ```
     {
@@ -71,8 +72,8 @@
     }
     ```
 
-3. シェル内で **azure-iot-gateway-sdk** フォルダーに移動します。
-4. 次のコマンドを実行します。
+3. In your shell, navigate to **azure-iot-gateway-sdk** folder.
+4. Run the following command:
   
   ```
   ./build/samples/hello_world/hello_world_sample ./samples/hello_world/src/hello_world_lin.json
@@ -83,4 +84,8 @@
 <!-- Links -->
 [lnk-setupdevbox]: https://github.com/Azure/azure-iot-gateway-sdk/blob/master/doc/devbox_setup.md
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー"
-   description="StorSimple Virtual Array をフェールオーバーする方法の詳細を確認します。"
+   pageTitle="Disaster recovery and device failover for your StorSimple Virtual Array"
+   description="Learn more about how to failover your StorSimple Virtual Array."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,163 +16,169 @@
    ms.date="06/07/2016"
    ms.author="alkohli"/>
 
-# StorSimple Virtual Array の障害復旧とデバイスのフェールオーバー
+
+# <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array"></a>Disaster recovery and device failover for your StorSimple Virtual Array
 
 
-## 概要
+## <a name="overview"></a>Overview
 
-この記事では、Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスとも呼ばれます) の障害復旧について説明します。また、障害が発生した場合に別の仮想デバイスにフェールオーバーするための詳細な手順も紹介します。フェールオーバーにより、データをデータセンターの*ソース* デバイスから、同じ場所または別の場所にある*ターゲット* デバイスに移行できます。デバイスのフェールオーバーは、デバイス全体に対して行われます。フェールオーバーの間、ソース デバイスのクラウド データの所有権はターゲット デバイスに移ります。
+This article describes the disaster recovery for your Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device) including the detailed steps required to fail over to another virtual device in the event of a disaster. A failover allows you to migrate your data from a *source* device in the datacenter to another *target* device located in the same or a different geographical location. The device failover is for the entire device. During failover, the cloud data for the source device changes ownership to that of the target device.
 
-デバイスのフェールオーバーは障害復旧 (DR) 機能によって調整され、**[デバイス]** ページから開始されます。このページには、StorSimple Manager サービスに接続されているすべての StorSimple デバイスの一覧が表示されます。デバイスごとに、表示名、状態、プロビジョニング容量と最大容量、種類、およびモデルが表示されます。
+Device failover is orchestrated via the disaster recovery (DR) feature and is initiated from the **Devices** page. This page tabulates all the StorSimple devices connected to your StorSimple Manager service. For each device, the friendly name, status, provisioned and maximum capacity, type, and model are displayed.
 
 ![](./media/storsimple-ova-failover-dr/image15.png)
 
-この記事は、StorSimple Virtual Array にのみ適用されます。8000 シリーズのデバイスのフェールオーバーについては、「[StorSimple デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)」を参照してください。
+This article is applicable to StorSimple Virtual Arrays only. To fail over an 8000 series device, go to [Failover and Disaster Recovery of your StorSimple device](storsimple-device-failover-disaster-recovery.md).
 
 
-## 障害復旧とは
+## <a name="what-is-disaster-recovery?"></a>What is disaster recovery?
 
-障害復旧 (DR) シナリオでは、プライマリ デバイスの機能が停止します。この場合、プライマリ デバイスを*ソース*として使用し、別のデバイスを*ターゲット*に指定することにより、障害が発生したデバイスに関連付けられているクラウドのデータを別のデバイスに移動できます。このプロセスを*フェールオーバー*といいます。フェールオーバー時には、ソース デバイスのすべてのボリュームまたは共有の所有権がターゲット デバイスに移ります。データのフィルター処理はできません。
+In a disaster recovery (DR) scenario, the primary device stops functioning. In this situation, you can move the cloud data associated with the failed device to another device by using the primary device as the *source* and specifying another device as the *target*. This process is referred to as the *failover*. During failover, all the volumes or the shares from the source device change ownership and are transferred to the target device. No filtering of the data is allowed.
 
-DR は、ヒート マップをベースとした階層化と追跡を使用して、デバイスの完全な復元としてモデル化されます。ヒート マップは、読み取りと書き込みのパターンに基づいてデータにヒート値を割り当てることで定義されます。ヒート マップによって、まずヒート値が最も低いデータ チャンクがクラウドに階層化され、ヒート値が高い (よく使用される) データ チャンクはローカル層に保持されます。DR 時には、このヒート マップを使ってクラウドからデータを復元します。デバイスが (内部で決められたとおりに) 最新のバックアップ内のボリューム/共有をすべてフェッチし、そのバックアップからの復元を実行します。DR の全プロセスはデバイスによって調整されます。
-
-
-## デバイスのフェールオーバーに関する前提条件
+DR is modeled as a full device restore using the heat map–based tiering and tracking. A heat map is defined by assigning a heat value to the data based on read and write patterns. This heat map then tiers the lowest heat data chunks to the cloud first while keeping the high heat (most used) data chunks in the local tier. During a DR, the heat map is used to restore and rehydrate the data from the cloud. The device fetches all the volumes/shares in the last recent backup (as determined internally) and performs a restore from that backup. The entire DR process is orchestrated by the device.
 
 
-### 前提条件
+## <a name="prerequisites-for-device-failover"></a>Prerequisites for device failover
 
-デバイスのフェールオーバーでは、次の前提条件が満たされている必要があります。
 
-- ソース デバイスが **"非アクティブ"** の状態にある必要があります。
+### <a name="prerequisites"></a>Prerequisites
 
-- Azure クラシック ポータルでターゲット デバイスが **"アクティブ"** として表示されている必要があります。ソース デバイスと同等以上の容量を持つターゲット仮想デバイスをプロビジョニングした後、ローカル Web UI を使用してその仮想デバイスを構成し、正常に登録する必要があります。
+For any device failover, the following prerequisites should be satisfied:
 
-	> [AZURE.IMPORTANT] 登録した仮想デバイスをサービスによって (**[デバイスのセットアップの完了]** をクリックして) 構成しないでください。デバイスの構成はサービスによって行うべきではありません。
+- The source device needs to be in a **Deactivated** state.
 
-- ソース デバイスとターゲット デバイスの種類が同じである必要があります。ファイル サーバーとして構成されている仮想デバイスは、別のファイル サーバーにしかフェールオーバーできません。これは iSCSI サーバーの場合も同様です。
+- The target device needs to show up as **Active** in the Azure classic portal. You will need to provision a target virtual device of the same or higher capacity. You should then use the local web UI to configure and successfully register the virtual device.
 
-- ファイル サーバーの DR の場合は、共有のアクセス許可が自動的に解決されるよう、ソース デバイスと同じドメインにターゲット デバイスを参加させることをお勧めします。このリリースでは、同じドメイン内のターゲット デバイスへのフェールオーバーのみがサポートされます。
+    > [AZURE.IMPORTANT] Do not attempt to configure the registered virtual device through the service by clicking **complete device setup**. No device configuration should be performed through the service.
 
-### その他の考慮事項
+- The source and target device have to be the same type. You can only fail over a virtual device configured as a file server to another file server. The same is true for an iSCSI server.
 
-- ソース デバイスのすべてのボリューム/共有をオフラインにすることをお勧めします。
+- For a file server DR, we recommend that you join the target device to the same domain as that of the source so that the share permissions are automatically resolved. Only the failover to a target device in the same domain is supported in this release.
 
-- 計画的なフェールオーバーの場合は、データの損失を最小限に抑えるため、デバイスのバックアップを作成してからフェールオーバーすることをお勧めします。計画外のフェールオーバーの場合、デバイスの復元には最新のバックアップが使用されます。
+### <a name="other-considerations"></a>Other considerations
 
-- DR に使用できるターゲット デバイスは、ソース デバイスと同等以上の容量があるデバイスです。サービスに接続されていても、十分な空き領域の条件を満たしていないデバイスは、ターゲット デバイスとして使用できません。
+- We recommend that you take all the volumes or shares on the source device offline.
 
-### DR 事前チェック
+- If it is a planned failover, we recommend that you take a backup of the device and then proceed with the failover to minimize data loss. If it is an unplanned failover, the most recent backup will be used to restore the device.
 
-DR が始まる前に、デバイスの事前チェックが実行されます。事前チェックによって、DR 開始後のエラーを防ぐことができます。事前チェックの内容:
+- The available target devices for DR are devices that have the same or larger capacity compared to the source device. The devices that are connected to your service but do not meet the criteria of sufficient space will not be available as target devices.
 
-- ストレージ アカウントを検証する
+### <a name="dr-prechecks"></a>DR prechecks
 
-- Azure へのクラウド接続を確認する
+Before the DR begins, prechecks are performed on the device. These checks help ensure that no errors will occur when DR commences. The prechecks include:
 
-- ターゲット デバイスの空き領域を確認する
+- Validating the storage account
 
-- iSCSI サーバーのソース デバイスでボリュームに有効な ACR 名、IQN (最大 220 文字)、および CHAP パスワード (12 ～ 16 文字) が関連付けられていることを確認する
+- Checking the cloud connectivity to Azure
 
-上記の事前チェックのいずれかに問題があった場合、DR は続行できません。問題を解決してから DR を再試行してください。
+- Checking available space on the target device
 
-DR が正常に完了すると、ソース デバイスのクラウド データの所有権がターゲット デバイスに移ります。また、ソース デバイスはポータルで使用できなくなります。ソース デバイスのすべてのボリューム/共有へのアクセスがブロックされ、ターゲット デバイスがアクティブになります。
+- Checking if an iSCSI server source device has valid ACR names, IQN (not exceeding 220 characters in length), and CHAP password (12 and 16 characters in length) associated with the volumes
 
-> [AZURE.IMPORTANT]
-> 
-> デバイスは使用できなくなりますが、ホスト システムにプロビジョニングした仮想マシンは引き続きリソースを消費します。DR が正常に完了したら、ホスト システムからこの仮想マシンを削除できます。
+If any of the above prechecks fail, you cannot proceed with the DR. You need to resolve those issues and then retry DR.
 
-## 仮想アレイへのフェールオーバー
-
-この手順を実行する前に、ローカル Web UI を使用して他の StorSimple 仮想アレイをプロビジョニングして構成し、StorSimple Manager サービスに登録しておくことをお勧めします。
-
+After the DR is successfully completed, the ownership of the cloud data on the source device is transferred to the target device. The source device is then no longer available in the portal. Access to all the volumes/shares on the source device is blocked and the target device becomes active.
 
 > [AZURE.IMPORTANT]
 > 
-> - StorSimple 8000 シリーズのデバイスから 1200 仮想デバイスにフェールオーバーすることはできません。
-> - Government ポータルでデプロイした連邦情報処理標準 (FIPS) が有効な仮想デバイスから、Azure クラシック ポータルの仮想デバイスにフェールオーバーすることはできます。その逆のフェールオーバーも可能です。
+> Though the device is no longer available, the virtual machine that you provisioned on the host system is still consuming resources. Once the DR is successfully complete, you can delete this virtual machine from your host system.
 
-ターゲットの StorSimple 仮想デバイスにデバイスを復元するには、次の手順を実行します。
+## <a name="fail-over-to-a-virtual-array"></a>Fail over to a virtual array
 
-1. ホスト上のボリューム/共有をオフラインにします。ホスト上のボリューム/共有をオフラインにする方法については、オペレーティング システムに固有の手順を参照してください。まだオフラインにしていない場合は、**[デバイス] > [共有]** (または **[デバイス] > [ボリューム]**) に移動して、デバイスのすべてのボリューム/共有をオフラインにする必要があります。ページの下部で共有またはボリュームを選択し、**[オフラインにする]** をクリックします。確認を求められたら、**[はい]** をクリックします。デバイスのすべての共有/ボリュームでこの手順を繰り返します。
-
-2. **[デバイス]** ページでフェールオーバーするソース デバイスを選択し、**[非アクティブ化]** をクリックします。![](./media/storsimple-ova-failover-dr/image16.png)
-
-3. 確認を求められます。デバイスの非アクティブ化は永続的な操作であるため、元に戻すことはできません。ホスト上の共有/ボリュームもオフラインにするよう通知されます。
-
-	![](./media/storsimple-ova-failover-dr/image18.png)
-
-3. 確認が完了したら、非アクティブ化が開始されます。非アクティブ化が正常に完了すると、通知が表示されます。
-
-	![](./media/storsimple-ova-failover-dr/image19.png)
-
-4. **[デバイス]** ページで、デバイスの状態が **"非アクティブ"** に変わります。
-
-	![](./media/storsimple-ova-failover-dr/image20.png)
-
-5. 非アクティブ化されたデバイスを選択し、ページの下部で **[フェールオーバー]** をクリックします。
-
-6. [フェールオーバーの確認] が表示されたら、次の操作を行います。
-
-    1. 使用可能なデバイスの一覧で、**ターゲット デバイス**を選択します。 十分な容量があるデバイスのみが一覧に表示されます。
-
-    2. デバイス名、合計容量、フェールオーバーされる共有の名前など、ソース デバイスに関連付けられている詳細を確認します。
-
-		![](./media/storsimple-ova-failover-dr/image21.png)
-
-7. **[フェールオーバーが恒久的な操作であり、フェールオーバーが正常に完了するとソース デバイスが削除されることに同意します]** チェック ボックスをオンにします。
-
-8. チェック マーク アイコン ![](./media/storsimple-ova-failover-dr/image1.png) をクリックします。
+We recommend that you have another StorSimple Virtual Array provisioned, configured via the local web UI, and registered with the StorSimple Manager service prior to running this procedure.
 
 
-9. フェールオーバー ジョブが開始され、通知が表示されます。**[ジョブの表示]** をクリックすると、フェールオーバーを監視できます。
+> [AZURE.IMPORTANT]
+> 
+> - You are not allowed to fail over from a StorSimple 8000 series device to a 1200 virtual device.
+> - You can fail over from a Federal Information Processing Standard (FIPS) enabled virtual device deployed in Government portal to a virtual device in Azure classic portal. The reverse is also true.
 
-	![](./media/storsimple-ova-failover-dr/image22.png)
+Perform the following steps to restore the device to a target StorSimple virtual device.
 
-10. **[ジョブ]** ページに、ソース デバイス用に作成されたフェールオーバー ジョブが表示されます。このジョブによって DR 事前チェックが実行されます。
+1. Take volumes/shares offline on the host. Refer to the operating system–specific instructions on the host to take the volumes/shares offline. If not already offline, you will need to take all the volumes/shares offline on the device by going to **Devices > Shares** (or **Device > Volumes**). Select a share/volume and click **Take offline** on the bottom of the page. When prompted for confirmation, click **Yes**. Repeat this process for all the shares/volumes on the device.
 
-	![](./media/storsimple-ova-failover-dr/image23.png)
+2. On the **Devices** page, select the source device for failover and click **Deactivate**. 
+    ![](./media/storsimple-ova-failover-dr/image16.png)
 
- 	DR 事前チェックが正常に完了したら、フェールオーバー ジョブによって、ソース デバイス上に存在する各共有またはボリュームの復元ジョブが生成されます。
+3. You will be prompted for confirmation. Device deactivation is a permanent process that cannot be undone. You will also be reminded to take your shares/volumes offline on the host.
 
-	![](./media/storsimple-ova-failover-dr/image24.png)
+    ![](./media/storsimple-ova-failover-dr/image18.png)
 
-11. フェールオーバーが完了したら、**[デバイス]** ページに移動します。
+3. Upon confirmation, the deactivation will start. After the deactivation is successfully completed, you will be notified.
 
-	a.フェールオーバー プロセスのターゲット デバイスとして使用された StorSimple 仮想デバイスを選択します。
+    ![](./media/storsimple-ova-failover-dr/image19.png)
 
-	b.**[共有]** (iSCSI サーバーの場合は **[ボリューム]**) ページに移動します。古いデバイス上のすべての共有 (ボリューム) が表示されます。
- 	
-	![](./media/storsimple-ova-failover-dr/image25.png)
+4. On the **Devices** page, the device state will now change to **Deactivated**.
 
-![](./media/storsimple-ova-failover-dr/video_icon.png) **ビデオ**
+    ![](./media/storsimple-ova-failover-dr/image20.png)
 
-このビデオでは、StorSimple オンプレミス仮想デバイスを別の仮想デバイスにフェールオーバーする方法について説明しています。
+5. Select the deactivated device and at the bottom of the page, click **Failover**.
+
+6. In the Confirm failover wizard that opens up, do the following:
+
+    1. From the dropdown list of available devices, choose a **Target device.** Only the devices that have sufficient capacity are displayed in the dropdown list.
+
+    2. Review the details associated with the source device such as device name, total capacity, and the names of the shares that will be failed over.
+
+        ![](./media/storsimple-ova-failover-dr/image21.png)
+
+7. Check **I agree that failover is a permanent operation and once the failover is successfully completed, the source device will be deleted**.
+
+8. Click the check icon ![](./media/storsimple-ova-failover-dr/image1.png).
+
+
+9. A failover job will be initiated and you will be notified. Click **View job** to monitor the failover.
+
+    ![](./media/storsimple-ova-failover-dr/image22.png)
+
+10. In the **Jobs** page, you will see a failover job created for the source device. This job performs the DR prechecks.
+
+    ![](./media/storsimple-ova-failover-dr/image23.png)
+
+    After the DR prechecks are successful, the failover job will spawn restore jobs for each share/volume that exists on your source device.
+
+    ![](./media/storsimple-ova-failover-dr/image24.png)
+
+11. After the failover is completed, go to the **Devices** page.
+
+    a. Select the StorSimple virtual device that was used as the target device for the failover process.
+
+    b. Go to **Shares** page (or **Volumes** if iSCSI server). All the shares (volumes) from the old device should now be listed.
+    
+    ![](./media/storsimple-ova-failover-dr/image25.png)
+
+![](./media/storsimple-ova-failover-dr/video_icon.png) **Video available**
+
+This video demonstrates how you can fail over a StorSimple on-premises virtual device to another virtual device.
 
 > [AZURE.VIDEO storsimple-virtual-array-disaster-recovery]
 
-## ビジネス継続性障害復旧 (BCDR)
+## <a name="business-continuity-disaster-recovery-(bcdr)"></a>Business continuity disaster recovery (BCDR)
 
-ビジネス継続性障害復旧 (BCDR) シナリオは、Azure データセンター全体が機能を停止したときに発生します。このような状況が発生すると、StorSimple Manager サービスと関連する StorSimple デバイスに影響が及ぶ可能性があります。
+A business continuity disaster recovery (BCDR) scenario occurs when the entire Azure datacenter stops functioning. This can affect your StorSimple Manager service and the associated StorSimple devices.
 
-障害が発生する直前に登録された StorSimple デバイスがある場合は、これらの StorSimple デバイスの削除が必要になることがあります。障害復旧後、これらのデバイスを再作成して構成できます。
+If there are StorSimple devices that were registered just before a disaster occurred, then these StorSimple devices may need to be deleted. After the disaster, you can recreate and configure those devices.
 
-## DR 時のエラー
+## <a name="errors-during-dr"></a>Errors during DR
 
-**DR 時にクラウドの接続が切断される**
+**Cloud connectivity outage during DR**
 
-DR が開始された後、デバイスの復元が完了する前にクラウドの接続が切断されると、DR が失敗して通知が表示されます。DR に使用されたターゲット デバイスは *"使用不可"* としてマークされます。 同じターゲット デバイスを今後の DR に使用することはできません。
+If the cloud connectivity is disrupted after DR has started and before the device restore is complete, the DR will fail and you will be notified. The target device that was used for DR is then marked as *unusable.* The same target device cannot be then used for future DRs.
 
-**互換性のあるターゲット デバイスがない**
+**No compatible target devices**
 
-使用可能なターゲット デバイスに十分な空き領域がない場合は、互換性のあるターゲット デバイスがないというエラーが表示されます。
+If the available target devices do not have sufficient space, you will see an error to the effect that there are no compatible target devices.
 
-**事前チェックの失敗**
+**Precheck failures**
 
-事前チェックのいずれかに問題があると、エラーが表示されます。
+If one of the prechecks is not satisfied, then you will see precheck failures.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[ローカル Web UI を使用して StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
+Learn more about how to [administer your StorSimple Virtual Array using the local web UI](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

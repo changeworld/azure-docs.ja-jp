@@ -1,75 +1,76 @@
 <properties 
-	pageTitle="Azure Marketplace に Machine Learning Web service の公開と使用に関する FAQ | Microsoft Azure" 
-	description="よく寄せられる質問" 
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="bharaths" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+    pageTitle="FAQ: Publish and use Machine Learning apps in Azure Marketplace | Microsoft Azure" 
+    description="Frequently Asked Questions" 
+    services="machine-learning" 
+    documentationCenter="" 
+    authors="bharaths" 
+    manager="jhubbard" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/11/2016" 
-	ms.author="bharaths"/>
-
-#Azure Marketplace での Machine Learning アプリケーションの公開と使用に関する FAQ
-
-##Marketplace から使用する場合
+    ms.service="machine-learning" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/11/2016" 
+    ms.author="bharaths"/> 
 
 
-**1.Web サービスの入力を入力した後に、なぜ次のエラー メッセージが表示されるのですか。**
+#<a name="publishing-and-using-machine-learning-apps-in-the-azure-marketplace:-faq"></a>Publishing and using Machine Learning apps in the Azure Marketplace: FAQ
 
-**要求がバックエンドでタイムアウトかエラーになっています。チームでは現在この問題を調査中です。ご不便をおかけして申し訳ありません。(500)**
+##<a name="questions-about-consuming-from-marketplace"></a>Questions about consuming from Marketplace
 
-入力パラメーターが特定の Web サービスの所定の形式に準拠していない可能性があります。入力パラメーターの正しい形式およびこの Web サービスの制限事項については、対応するドキュメントのリンクを参照してください。
+
+**1. Why do I get the following error message after I enter input for the web service:**
+
+**The request resulted in a back-end time out or back-end error. The team is investigating the issue. We are sorry for the inconvenience. (500)**
+
+Your input parameter(s) may not conform to the required format for the specific web service. Please refer to the corresponding documentation link to find the correct format for input parameters and the limitations of this web service.
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-**2.[このデータセットの参照] ページに表示されている Web サービスの API リンクをコピーして、別のブラウザー ウィンドウかタブに貼り付けた場合、結果にアクセスするにはどのような資格情報が必要で、結果はどのように表示されるでしょうか。**
+**2. If I copy the API link for the web service that I see on the "Explore this dataset" page and paste it into another browser window, what credentials should I use to access the results, and how do I see them?**
 
-ユーザー名として Marketplace アカウントを使用し、パスワードとしてプライマリ アカウント キーを使用する必要があります。プライマリ アカウント キーは、**[このデータセットの参照]** ページの Web サービスの説明の下に表示されています (**[表示]** ボタンをクリック)。使用しているブラウザーによって、結果がブラウザーに表示されるか、ダウンロードできるようになります。
+You should use your Marketplace account as the username and the primary account key as the password. The primary account key can be found on the **Explore this dataset** page under the description of the web service (click the **show** button). The result may display in the browser or it may be available to  download, depending on which browser you are using.
 
-**3.[このデータセットの参照] ページのWeb サービスの入力を入力した後に、なぜ次のエラー メッセージが表示されるのですか。**
+**3. Why do I get the following error message after I enter the input for the web service on the "Explore this dataset" page:** 
 
-**要求の処理中に予期しないエラーが発生しました。もう一度実行してください。**
+**An unexpected error occurred while processing your request. Please try again.**
 
-Marketplace の **[このデータセットの参照]** ページで Web サービスを使用するときに、Web サービスの 1 つ以上の入力パラメーターが長さの制限を超過した可能性があります。HTTP POST メソッドを使用して、より長い入力文字列でサービスを呼び出すことができます。例については、「[Azure ML で R を使用して構築され、Marketplace に発行されたサンプル Web サービス](machine-learning-r-csharp-web-service-examples.md)」をご覧ください。
+One or more input parameters of your web service may have exceeded the length limit when consuming the web service on the marketplace **Explore this dataset** page. The services can be called with a longer input length by using HTTP POST methods. For examples, see [Sample solutions using R on Machine Learning and published to Marketplace](machine-learning-r-csharp-web-service-examples.md).
 
-**4.なぜ Azure クラシック ポータルのストアの [API エクスプローラー] タブに何も表示されないのでしょうか。**
+**4. Why do I not see anything in the "API EXPLORER" tab int the Store in the Azure Classic Portal?** 
 
-これは、Azure クラシック ポータルの Marketplace の既知の問題です。チームではこの問題を解決するために作業中です。
+This is a known issue with the Azure Classic Portal Marketplace. The team is working to resolve this issue. 
 
 
-##Marketplace の Azure Machine Learning からの発行に関する質問
+##<a name="questions-about-publishing-from-azure-machine-learning-on-marketplace"></a>Questions about publishing from Azure Machine Learning on Marketplace
 
-**1.ロゴ、イメージのトランザクション数が Web サービスに対して更新されないのはなぜでしょうか。**
+**1. Why are my transactions of logos or images not refreshing for my web service?** 
 
-ロゴとイメージは公開ポータルでキャッシュされ、ポータルで新しいロゴとイメージに更新されるまで最大 10 日間かかる場合があります。
+Logos and images are cached in the publishing portal, and it may take up to 10 days for the new logo or image to update on the portal.
 
-**2.Marketplace で Web サービスの [詳細] タブにエラー メッセージが表示されているのはなぜですか。**
+**2. Why is the “Detail" tab of my web service on Marketplace showing an error message?**
 
-Marketplace では、サービスの詳細情報を取得するために Azure Machine Learning にアクセスする場合の既知の問題があります。チームではこの問題を解決するために作業中です。
+There is a known Marketplace issue when connecting to Azure Machine Learning for service details. The team is working to resolve this issue.
 
-**3.Azure Machine Learning Web サービスの R サンプル コードが Marketplace で Web サービスを使用するときに機能しないのはなぜですか。**
+**3. Why does the R sample code in the Azure Machine Learning web services not work for consuming the web services in Marketplace?**
 
-Azure Machine Learning Web サービスに直接接続するときと、これらの Web サービスに Marketplace を通じて接続するときとでは、認証システムが異なります。Marketplace のサービスは OData サービスであり、GET か POST メソッドで呼び出すことができます。
+The authentication systems are different when connecting to Azure Machine Learning web services directly compared to connecting to these web services through the Marketplace. The services in Marketplace are OData services, and they can be called with GET or POST methods. 
 
-**4.Web サービスのサポート リンクがいくつかのプランで正しく更新されていないのはなぜですか。**
+**4. Why are the support links of my web service offers not updating correctly for some of my offers?**
 
-サポート リンクは、プランごとにではなく発行者ごとにグローバルです。
+The support links are global per publisher, not per offer. 
 
-**5.Marketplace でバッチ入力モードを使用して Web サービスを発行するにはどうすればよいですか。**
+**5. How do I publish a web service with batch input mode in Marketplace?**
 
-バッチ入力モードは、現在 Marketplace Web サービスでサポートされていません。
+The batch input mode is currently not supported in Marketplace web services.
 
-**6.データ発行者になる方法や、発行時に発生した問題について質問がある場合は、どこに問い合わせればよいでしょうか。**
+**6. Who should I contact to get help if I have questions about becoming a data publisher, or if I have issues during publishing?**
 
-詳細については、<datamarketbd@microsoft.com> のAzure Marketplace チームにお問い合わせください。
+Please contact the Azure Marketplace team at <datamarketbd@microsoft.com> for more information.
 
 
 
@@ -77,4 +78,8 @@ Azure Machine Learning Web サービスに直接接続するときと、これ�
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

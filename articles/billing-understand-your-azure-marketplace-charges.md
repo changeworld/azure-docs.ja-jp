@@ -1,105 +1,115 @@
 <properties
-	pageTitle="Azure Marketplace の料金について | Microsoft Azure"
-	description="Marketplace 注文に関連した料金を確認する方法について説明します。"
-	services=""
-	documentationCenter=""
-	authors="JiangChen79"
-	manager="felixwu"
-	editor=""
-	tags="billing"
-	/>
+    pageTitle="Azure 外部サービスの課金について | Microsoft Azure"
+    description="Azure 外部サービス (旧称 Marketplace) の課金について説明します。"
+    services=""
+    documentationCenter=""
+    authors="adpick"
+    manager="felixwu"
+    editor=""
+    tags="billing"
+    />
 
 <tags
-	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2016"
-	ms.author="cjiang"/>
+    ms.service="billing"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/12/2016"
+    ms.author="adpick"/>
 
-# Azure Marketplace の料金について
-この記事では、Marketplace での注文に関連した料金を確認する方法の概要を説明します。課金内容を確認する際のいくつかの注意点として、さまざまな価格の種類 (基本のみ、使用量のみ、基本 + 使用量) があります。Marketplace で行う注文ごとに月単位の請求サイクルが発生することに注意してください。これらのトピックについては、以下で詳しく説明します。
 
-> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+# <a name="understand-your-azure-external-service-charges"></a>Azure 外部サービスの課金について
 
-## Marketplace の課金内容を確認する
-[Azure アカウント ポータル](https://account.windowsazure.com/subscriptions/)にログインすると、現在の課金情報と過去の課金情報を確認したりダウンロードしたりすることができます。
+この記事では、Azure 外部サービスの課金について説明します。 外部サービスは、以前は Marketplace と呼ばれていました。 外部サービスは、独立系サービス ベンダーによって提供されますが、Azure エコシステムに完全に統合されます。 以下の項目について説明します。
 
-課金内容を表示またはダウンロードするには、次の手順を実行します。
+- 外部サービスを識別する
+- 他の Azure リソースとの課金方法の違いを理解する
+- 外部サービスの使用から発生するコストを追跡して表示する
+- 外部サービスの注文を管理して支払いを行う
 
-1. 組織 ID を使用して Azure アカウント ポータルにサインインします。
-2. **[Marketplace]** をクリックします。表示される一覧には、Azure アカウントで行われた Marketplace でのすべての注文が含まれます。親の Azure サブスクリプションの名前と ID で注文がグループ化されていることがわかります。
+## <a name="what-are-azure-external-services?"></a>Azure 外部サービスとは
 
-    ![Marketplace orders](./media/billing-understand-your-azure-marketplace-charges/marketplace-orders.png)
+外部サービスは、以前は Azure Marketplace と呼ばれていました。 通常、外部サービスは、サードパーティが公開している Azure で使用できるサービスです。 たとえば、ClearDB と SendGrid は、Azure で購入できる外部サービスですが、これらはマイクロソフトが公開したものではありません。
 
-3. 表示された注文のいずれかをクリックすると、その注文の現在の請求サイクルの概要が表示されます。さまざまな価格モデルの説明については、「[Marketplace FAQ](https://azure.microsoft.com/marketplace/faq/)」をご覧ください。
+### <a name="identify-external-services"></a>外部サービスを識別する
 
-    ![Order summary](./media/billing-understand-your-azure-marketplace-charges/order-summary.png)
+新しい外部サービスまたはリソースをプロビジョニングすると、警告が表示されます。
 
-概要ビューには、各注文に関する次の情報が含まれています。
-- 料金
-- 請求サイクル
-- 購入日
-- 関連する親サブスクリプション
-- 請求通貨
+![Marketplace 購入警告](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
-この情報の表示方法にはいくつか変更が加えられたことに注意してください。以前は、注文の価格が税込みで表示されていました。この点が更新され、お住まいの国に応じて、表示価格を外税方式または内税方式にできるようになりました。また、価格の位置は、右側のナビゲーションから中央に移動されました。このような料金が関連付けられている Azure サブスクリプションを見つけやすくするために、Azure サブスクリプションの名前と ID も **[支払い方法の変更]** オプションと共に右側のナビゲーションに追加されました。
+>[AZURE.NOTE] 外部サービスは Microsoft 以外の会社によって公開されますが、Microsoft 製品が外部サービスとして分類される場合があります。
 
-## 支払い方法と注文管理を更新する
-概要ページにはユーザー アクションが表示されており、これを使用すると、支払いモデルと注文管理の機能を更新できます。
+### <a name="external-services-are-billed-separately"></a>外部サービスは個別に請求されます
 
-> [AZURE.NOTE] 組織 ID を使用して個人情報を変更する場合は、サポート付きのチケットを記録する必要があります。
+外部サービスは、Azure サブスクリプションの中で個別の注文として扱われます。 各サービスの請求期間は、サービスの購入時に設定されます。 サービスの請求期間とサービスを購入するために使用したサブスクリプションの請求期間を混同しないでください。 また、請求書は個別に発行され、クレジット カードの決済も個別に行われます。
 
-支払い方法を更新するには、ページの右側にある **[支払い方法の変更]** リンクをクリックします。
+### <a name="each-external-service-has-a-different-billing-model"></a>外部サービスの課金モデルはサービスごとに異なります
 
-![Order summary](./media/billing-understand-your-azure-marketplace-charges/order-summary.png)
+一部のサービスは従量課金制で請求され、一部のサービスは月単位で課金されます。 Azure 外部サービスにはクレジット カードが必要であり、請求書による支払いで外部サービスを購入することはできません。
 
-このリンクをクリックすると別のポータルが表示されます。ここで、希望する支払い方法に変更できます。
+### <a name="you-can't-use-monthly-free-credits-for-external-services"></a>外部サービスでは月々の無料クレジットは使用できません
 
-支払い方法を変更するには、次の手順に従います。
+[無料クレジット](https://azure.microsoft.com/pricing/spending-limits/)付きの Azure サブスクリプションを使用している場合でも、外部サービスの請求に対して無料クレジットを適用することはできません。 外部サービスを購入する際は、クレジット カードをご使用ください。
 
-1. **[支払い方法の変更]** をクリックします。
+## <a name="view-external-service-spending-and-history"></a>外部サービスの支払い履歴を表示する
 
-    ![サブスクリプション](./media/billing-understand-your-azure-marketplace-charges/subscriptions.jpg)
+サブスクライブ中の外部サービスの一覧を [Azure ポータル](https://portal.azure.com/)に表示できます。 
 
-2. 変更後の支払い方法を選択します。**[Pay with (支払い方法)]** オプションを使用すると、クレジット カードを選択できます。**[支払い方法を追加する]** オプションを使用すると、新しいクレジット カードを追加できます。
+1. [Azure ポータル](https://portal.azure.com/)にサインインし、[**[課金]** ブレードに移動](https://portal.azure.com/?flight=1#blade/Microsoft_Azure_Billing/BillingBlade)します。
 
-    ![Change payment method](./media/billing-understand-your-azure-marketplace-charges/change-payment-method.jpg)
+    ![ハブ メニューの [課金] を選択](./media/billing-understand-your-azure-marketplace-charges/billing-button.png) 
+  
+2. **[Subscription costs (サブスクリプション コスト)]** セクションで、表示するサブスクリプションを選択します。 
+   
+    ![[課金] ブレードでサブスクリプションを選択](./media/billing-understand-your-azure-marketplace-charges/select-sub.png)
 
-## 注文管理
-概要ページには、**[注文の管理]** リンクが表示されます。このリンクをクリックすると、ポータルが表示されます。ここでは、Marketplace でのすべての注文の表示、サービス正常性の確認、サポートの要求を行うことができます。
+3. **[外部サービス]** をクリックします。
 
-![ポータル](./media/billing-understand-your-azure-marketplace-charges/portal.jpg)
+    ![サブスクリプション ブレードで [外部サービス] をクリック](./media/billing-understand-your-azure-marketplace-charges/external-service-blade.png)
 
-サポートを要求するには、**[ヘルプとサポート]** タイルをクリックします。次のような **[ヘルプとサポート]** ページが表示されます。このページでは、次の操作を実行できます。
-- 新しいサポート要求を送信します。
-- 既存のサポート要求を管理します。
-- リソース ヘルスを管理します。
+4. 外部サービスについて、公開元の名前、購入したサービス レベル、リソースに付けた名前、および現在の注文状態が注文ごとに表示されます。 過去の課金情報を表示する外部サービスを選択します。
 
-![サポートの要求](./media/billing-understand-your-azure-marketplace-charges/request-support.jpg)
+    ![外部サービスを選択](./media/billing-understand-your-azure-marketplace-charges/external-service-blade2.png)
 
-## 請求履歴
-概要ページの新機能として、仮想マシンなど、使用量ベースのプランを表示できます。請求サイクルに基づき、現在の期間と終了した期間両方の使用量をダウンロードできるようになりました。使用量を表示するには、表示する期間ごとに、**[使用量のダウンロード]** をクリックします。
+5. ここから、過去の請求金額について、税金を含む内訳を表示できます。
 
-実際の料金を確認する場合は、**[請求金額の表示]** をクリックします。これにより、別のポータルにリダイレクトされます。ここでは、すべての料金を税込みで表示できます。組織 ID を使用している場合、**[請求金額の表示]** ボタンを使用できないため、サポート チケットを送信して料金の概要を求める必要があります。
+    ![外部サービスの請求履歴の表示](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png)
 
-![Billing history](./media/billing-understand-your-azure-marketplace-charges/billing-history.png)
+## <a name="manage-payment-methods-for-external-service-orders"></a>外部サービスに対する支払い方法を管理する
 
-実際の料金を表示するには、次の手順に従います。
+外部サービスに対する支払い方法の更新は[アカウント センター](https://account.windowsazure.com/)で行ってください。
 
-1. **[請求履歴]** ページで **[請求金額の表示]** をクリックします。
+> [AZURE.NOTE] 職場または学校のアカウントを使用してサブスクリプションを購入しているときに支払い方法を変更する場合は、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-	新しいタブが開いて、[注文履歴](https://account.microsoft.com/billing/orders#/)が表示されます。
+1. [アカウント センター](https://account.windowsazure.com/)にサインインし、[**[marketplace]** タブに移動](https://account.windowsazure.com/Store)します。
 
-    課金およびアカウント管理ポータルで未処理の利用状況データにアクセスする場合は、ページの下部にあるサポート リンクをクリックしてサポートに問い合わせる必要があることに注意してください。
+    ![アカウント センターで [marketplace] を選択](./media/billing-understand-your-azure-marketplace-charges/select-marketplace.png)
 
-    ![Order history](./media/billing-understand-your-azure-marketplace-charges/order-history.jpg)
+2. 管理する外部サービスを選択します。
 
-2. 確認する注文を特定して **[詳細]** をクリックし、料金の内訳を表示します。この内訳には、小計、税、合計料金が含まれます。
+    ![管理する外部サービスを選択](./media/billing-understand-your-azure-marketplace-charges/select-ext-service.png)
 
-    ![Order details](./media/billing-understand-your-azure-marketplace-charges/order-details.jpg)
+3. ページの右側にある **[支払い方法の変更]** をクリックします。 このリンクをクリックすると、支払い方法を管理する別のポータルに移動します。
+    
+    ![Order summary](./media/billing-understand-your-azure-marketplace-charges/change-payment.PNG)
 
-> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+4. **[情報の編集]** をクリックし、指示に従って支払い情報を更新します。
 
-<!---HONumber=AcomDC_0928_2016-->
+    ![[情報の編集] を選択](./media/billing-understand-your-azure-marketplace-charges/edit-info.png)
+    
+## <a name="cancel-an-external-service-order"></a>外部サービスの注文をキャンセルする
+
+外部サービスの注文をキャンセルする場合は、[Azure ポータル](https://portal.azure.com)でリソースを削除する必要があります。
+
+![リソースを削除](./media/billing-understand-your-azure-marketplace-charges/deleteMarketplaceOrder.PNG)
+
+## <a name="need-help?-contact-support."></a>お困りの際は、 サポートにお問い合せください。
+
+まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

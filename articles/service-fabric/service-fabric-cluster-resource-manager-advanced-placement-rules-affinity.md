@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric クラスター リソース マネージャー - アフィニティ | Microsoft Azure"
-   description="Service Fabric サービスのアフィニティ設定の概要"
+   pageTitle="Service Fabric Cluster Resource Manager - Affinity | Microsoft Azure"
+   description="Overview of configuring affinity for Service Fabric Services"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,24 +16,25 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
-# Service Fabric でアフィニティを構成し、使用する
 
-アフィニティは主に、大規模なモノリシック アプリケーションをクラウドとマイクロサービスの世界に移行しやすくするために提供されるコントロールです。特定のケースでは、アフィニティをサービスのパフォーマンスを向上させるための正当な最適化として使用できますが、副作用が伴う場合があります。
+# <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Configuring and using service affinity in Service Fabric
 
-たとえば、大規模なアプリや、マイクロサービスでの使用を想定していないアプリを Service Fabric に移行するとしましょう。実際、このような状況は多く、これまでに複数の顧客 (内部、外部とも) が経験してきました。まずは、アプリ全体を環境に移行し、パッケージ化して実行するところから始めます。次に、すべてが相互に通信する小規模なサービスにアプリを分解します。
+Affinity is a control that is provided mainly to help ease the transition of larger monolithic applications into the cloud and microservices world. That said it can also be used in certain cases as a legitimate optimization for improving the performance of services, though this can have side effects.
 
-ここで、困ったことが起こります。“困ったこと” は、通常、次のいずれかに分類されます。
+Let’s say you’re bringing a larger app, or one that just wasn’t designed with microservices in mind, to Service Fabric. This transition is actually common, and we’ve had several customers (both internal and external) in this situation. You start by lifting up the entire app into the environment, getting it packaged and running. Then you start breaking it down into different smaller services that all talk to each other.
 
-1. モノリシック アプリのコンポーネント X とコンポーネント Y の間にドキュメントに未記載の依存関係があることが判明したが、これらを複数のサービスに分解したばかりです。これらは現在、クラスター内の個々のノードで実行されているため壊れてしまいました。
-2.	通信は (ローカルの名前付きパイプ | 共有メモリー | ディスク上のファイル) を介して行われるが、処理スピードを速めるため、個別に更新できるようにしたい。ハードの依存関係は後で削除します。
-3.	すべて問題ないが、これら 2 つのコンポーネント間の通信が非常に多いこと、またパフォーマンスに影響しやすいことが判明しました。別々のサービスに分解すると、アプリケーション パフォーマンス全体が低下し、また待機時間が増大しました。その結果、アプリケーション全体で要件を満たせなくなりました。
+Then there’s an “Oops...”. The “Oops” usually falls into one of these categories:
 
-これらのケースでは、リファクタリング作業を断念することや、モノリシックに戻すことは望ましくありません。しかし、あたかもローカルであると感じられるようにする必要があると考えています。サービスとして自然に動作するようにコンポーネントを再設計するか、可能な場合、他の何らかの方法でパフォーマンス予測値を解決できるまで、この問題は解決されません。
+1. Some component X in the monolithic app had an undocumented dependency on component Y, and we just turned those into separate services. Since these are now running on different nodes in the cluster, they're broken.
+2.  These things communicate via (local named pipes | shared memory | files on disk) but I really need to be able to update it independently to speed things up a bit. I'll remove the hard dependency later.
+3.  Everything is fine, but it turns out that these two components are actually very chatty/performance sensitive. When they moved them into separate services overall application performance tanked or latency increased. As a result, the overall application is not meeting expectations.
 
-どうすればよいでしょうか。 そこで、アフィニティを有効にします。
+In these cases we don’t want to lose our refactoring work, and don’t want to go back to the monolith, but we do need some sense of locality. This will persist either until we can redesign the components to work naturally as services, or until we can solve the performance expectations some other way, if possible.
 
-## アフィニティの構成方法
-アフィニティを設定するには、2 つのサービスの間にアフィニティの関係を定義します。アフィニティは一方のサービスから別のサービスを “ポイント” し、“このサービスはそのサービスの実行中にだけ実行できる“ と示すことと考えることができます。 アフィニティを親子関係と呼ぶ場合もあります (親から子をポイントする)。アフィニティでは、サービスのレプリカまたはインスタンスが、別のレプリカまたはインスタンスと同じノード上に配置されるようになります。
+What to do? Well you could try turning on affinity.
+
+## <a name="how-to-configure-affinity"></a>How to configure affinity
+To set up affinity, you define an affinity relationship between two different services. You can think of affinity as “pointing” one service at another and saying “This service can only run where that service is running.” Sometimes we refer to affinity as a parent/child relationship (where you point the child at the parent). Affinity ensures that the replicas or instances of one service are placed on the same nodes as the replicas or instances of another.
 
 ``` csharp
 ServiceCorrelationDescription affinityDescription = new ServiceCorrelationDescription();
@@ -43,29 +44,33 @@ serviceDescription.Correlations.Add(affinityDescription);
 await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-## アフィニティのさまざまなオプション
-アフィニティは、いくつかの相関スキームのいずれかで表され、2 種類のモードがあります。アフィニティの最も一般的なモードは、NonAlignedAffinity と呼ばれるものです。NonAlignedAffinity では、異なるサービスのレプリカまたはインスタンスが同じノード上に配置されます。もう 1 つのモードは、AlignedAffinity です。Aligned Affinity を使用できるのはステートフル サービスのみです。2 つのステートフル サービスを整列したアフィニティが含まれるように構成すると、これらのサービスのプライマリがペアで同じノード上に配置されます。また、これらのサービスのセカンダリの各ペアも同じノードに配置されます。ステートフル サービスに対して NonAlignedAffinity を構成することもできます (ただし、あまり一般的ではありません)。NonAlignedAffinity では、2 つのステートフル サービスの異なるレプリカが同じノード上に配置されますが、プライマリまたはセカンダリの整列は試行されません。
+## <a name="different-affinity-options"></a>Different affinity options
+Affinity is represented via one of several correlation schemes, and has two different modes. The most common mode of affinity is what we call NonAlignedAffinity. In NonAlignedAffinity the replicas or instances of the different services are placed on the same nodes. The other mode is AlignedAffinity. Aligned Affinity is useful only with stateful services. Configuring two stateful services to have aligned affinity ensures that the primaries of those services are placed on the same nodes as each other. It also causes each pair of secondaries for those services to be placed on the same nodes. It is also possible (though less common) to configure NonAlignedAffinity for stateful services. For NonAlignedAffinity the different replicas of the two stateful services would be collocated on the same nodes, but no attempt would be made to align their primaries or secondaries.
 
-![アフィニティのモードとその影響][Image1]
+![Affinity Modes and Their Effects][Image1]
 
-### ベスト エフォートの望まれる状態
-アフィニティとモノリシックなアーキテクチャにはいくつかの違いがあります。これらの多くは、アフィニティの関係がベスト エフォートであることに起因します。アフィニティの関係内のサービスは根本的に、失敗し、個別に移動する可能性のある異なるエンティティです。また、アフィニティの関係が損なわれるのにも原因があります。たとえば、アフィニティ関係の一部のサービス オブジェクトのみを特定のノードに配置できる場合の容量制限が挙げられます。このような場合、アフィニティの関係が存在する場合でも、その他の制約によりその関係を適用できません。後でその他のすべての制約とのアフィニティを適用することが可能になっている場合、アフィニティ制約違反は自動的に修正されます。
+### <a name="best-effort-desired-state"></a>Best effort desired state
+There are a few differences between affinity and monolithic architectures. Many of them are because an affinity relationship is best effort. The services in an affinity relationship are fundamentally different entities that can fail and be moved independently. There are also causes for why an affinity relationship could break. For example, capacity limitations where only some of the service objects in the affinity relationship can fit on a given node. In these cases even though there's an affinity relationship in place, it can't be enforced due to the other constraints. If it is possible to enforce all the other constraints and affinity at a later time the violation of the affinity constraint will be automatically corrected.  
 
-### チェーンと星
-現在、アフィニティの関係のチェーンをモデル化することはできません。これは、あるアフィニティの関係で子になっているサービスは、別のアフィニティの関係では親になれないことを意味します。この種の関係をモデル化するには、実質的にはチェーンではなく、星としてモデル化する必要があります。これを行うには、最下位の子を子の "中央" にいる親にします。サービスの配置によっては、複数の子要素の親として機能する "プレースホルダー" サービスを作成する必要がある場合があります。
+### <a name="chains-vs.-stars"></a>Chains vs. stars
+Today we aren’t able to model chains of affinity relationships. What this means is that a service that is a child in one affinity relationship can’t be a parent in another affinity relationship. If you want to model this type of relationship, you effectively have to model it as a star, rather than a chain. In order to do this, the bottommost child would be parented to the “middle” child’s parent instead. Depending on the arrangement of your services, this may require creating a "placeholder" service to serve as the parent for multiple children.
 
-![アフィニティの関係のコンテキストにおけるチェーンと星][Image2]
+![Chains vs. Stars in the Context of Affinity Relationships][Image2]
 
-アフィニティの関係について注目すべきもう 1 つの点は、方向があるということです。これは、"アフィニティ" ルールでは、子が親と同じ場所にあるということのみが強制されることを意味します。たとえば、親が突然別のノードにフェール オーバーした場合、クラスター リソース マネージャーは子が親と同じ場所にないことが通知されるまで、異常に気付きません。つまり、関係はすぐには適用されません。
+Another thing to note about affinity relationships today is that they are directional. This means that the “affinity” rule only enforces that the child is where the parent is. If for example the parent suddenly fails over to another node then the Cluster Resource Manager doesn’t actually think there’s anything wrong until it notices that the child is not located with a parent; the relationship is not immediately enforced.
 
-### パーティション分割のサポート
-アフィニティについて注目すべき最後の点は、親がパーティション分割されている場合、アフィニティの関係がサポートされないということです。これは、最終的にはサポートされる可能性がありますが、今のところ許可されていません。
+### <a name="partitioning-support"></a>Partitioning support
+The final thing to notice about affinity is that affinity relationships aren’t supported where the parent is partitioned. This is something that we may support eventually, but today it is not allowed.
 
-## 次のステップ
-- サービスの構成に利用できるその他のオプションの詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
-- サービスを少数のマシンに制限してサービスのコレクションの負荷を集約する場合など、アフィニティを使おうとする理由の多くは、アプリケーション グループによってより強力にサポートされます。詳しくは、「[アプリケーション グループ](service-fabric-cluster-resource-manager-application-groups.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+- For more information about the other options available for configuring services check out the topic on the other Cluster Resource Manager configurations available [Learn about configuring Services](service-fabric-cluster-resource-manager-configure-services.md)
+- Many reasons where people use affinity, such as limiting services to a small set of machines and trying to aggregate the load of a collection of services, are better supported through Application Groups. Check out [Application Groups](service-fabric-cluster-resource-manager-application-groups.md)
 
-[Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
-[Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png
+[Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resrouce-manager-affinity-modes.png
+[Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-affinity/cluster-resource-manager-chains-vs-stars.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

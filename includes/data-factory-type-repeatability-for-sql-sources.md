@@ -1,72 +1,75 @@
-## コピー中の再現性
+## <a name="repeatability-during-copy"></a>Repeatability during Copy
 
-他のデータ ストアから Azure SQL/SQL Server にデータをコピーする場合、意図しない結果を回避するために、再現性の維持を考慮する必要があります。
+When copying data to Azure SQL/SQL Server from other data stores one needs to keep repeatability in mind to avoid unintended outcomes. 
 
-Azure SQL/SQL Server Database にデータをコピーすると、コピー アクティビティの既定では、シンク テーブルにデータ セットが付加されます。たとえば、2 つのレコードを含む CSV (コンマ区切り値データ) ファイル ソースのデータを Azure SQL/SQL Server データベースにコピーすると、テーブルは次のようになります。
-	
-	ID	Product		Quantity	ModifiedDate
-	...	...			...			...
-	6	Flat Washer	3			2015-05-01 00:00:00
-	7 	Down Tube	2			2015-05-01 00:00:00
+When copying data to Azure SQL/SQL Server Database, copy activity will by default APPEND the data set to the sink table by default. For example, when copying data from a CSV (comma separated values data) file source containing two records to Azure SQL/SQL Server Database, this is what the table looks like:
+    
+    ID  Product     Quantity    ModifiedDate
+    ... ...         ...         ...
+    6   Flat Washer 3           2015-05-01 00:00:00
+    7   Down Tube   2           2015-05-01 00:00:00
 
-たとえば、ソース ファイルにエラーが見つかり、ソース ファイルで Down Tube の数を 2 から 4 に更新したとします。その期間のデータ スライスを再実行すると、Azure SQL/SQL Server データベースに 2 つの新しいレコードが付加されます。以下の例では、テーブルには主キーの制約がある列がないと想定しています。
-	
-	ID	Product		Quantity	ModifiedDate
-	...	...			...			...
-	6	Flat Washer	3			2015-05-01 00:00:00
-	7 	Down Tube	2			2015-05-01 00:00:00
-	6	Flat Washer	3			2015-05-01 00:00:00
-	7 	Down Tube	4			2015-05-01 00:00:00
+Suppose you found errors in source file and updated the quantity of Down Tube from 2 to 4 in the source file. If you re-run the data slice for that period, you’ll find two new records appended to Azure SQL/SQL Server Database. The below assumes none of the columns in the table have the primary key constraint.
+    
+    ID  Product     Quantity    ModifiedDate
+    ... ...         ...         ...
+    6   Flat Washer 3           2015-05-01 00:00:00
+    7   Down Tube   2           2015-05-01 00:00:00
+    6   Flat Washer 3           2015-05-01 00:00:00
+    7   Down Tube   4           2015-05-01 00:00:00
 
-この問題を回避するために、以下に示す 2 つのメカニズムのいずれかを使用して、UPSERT セマンティクスを指定する必要があります。
+To avoid this, you will need to specify UPSERT semantics by leveraging one of the below 2 mechanisms stated below.
 
-> [AZURE.NOTE] スライスは、再試行ポリシーで指定された回数、Azure Data Factory 内で自動的に再実行することができます。
+> [AZURE.NOTE] A slice can be re-run automatically in Azure Data Factory as per the retry policy specified.
 
-### メカニズム 1
+### <a name="mechanism-1"></a>Mechanism 1
 
-スライスの実行時にまずクリーンアップ アクションを実行するには、**sqlWriterCleanupScript** プロパティを利用できます。
+You can leverage **sqlWriterCleanupScript** property to first perform cleanup action when a slice is run. 
 
-	"sink":  
-	{ 
-	  "type": "SqlSink", 
-	  "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM table WHERE ModifiedDate >= \\'{0:yyyy-MM-dd HH:mm}\\' AND ModifiedDate < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
-	}
+    "sink":  
+    { 
+      "type": "SqlSink", 
+      "sqlWriterCleanupScript": "$$Text.Format('DELETE FROM table WHERE ModifiedDate >= \\'{0:yyyy-MM-dd HH:mm}\\' AND ModifiedDate < \\'{1:yyyy-MM-dd HH:mm}\\'', WindowStart, WindowEnd)"
+    }
 
-クリーンアップ スクリプトは、指定したスライスのコピー中に最初に実行されます。このとき、SQL テーブルからそのスライスに対応するデータが削除されます。次に、アクティビティで、SQL テーブルにデータが挿入されます。
+The cleanup script would be executed first during copy for a given slice which would delete the data from the SQL Table corresponding to that slice. The activity will subsequently insert the data into the SQL Table. 
 
-次にスライスを実行すると、目的の数に更新されます。
-	
-	ID	Product		Quantity	ModifiedDate
-	...	...			...			...
-	6	Flat Washer	3			2015-05-01 00:00:00
-	7 	Down Tube	4			2015-05-01 00:00:00
+If the slice is now re-run, then you will find the quantity is updated as desired.
+    
+    ID  Product     Quantity    ModifiedDate
+    ... ...         ...         ...
+    6   Flat Washer 3           2015-05-01 00:00:00
+    7   Down Tube   4           2015-05-01 00:00:00
 
-たとえば、Flat Washer レコードを元の csv から削除するとします。次にスライスを再実行すると、以下の結果が生成されます。
-	
-	ID	Product		Quantity	ModifiedDate
-	...	...			...			...
-	7 	Down Tube	4			2015-05-01 00:00:00
+Suppose the Flat Washer record is removed from the original csv. Then re-running the slice would produce the following result: 
+    
+    ID  Product     Quantity    ModifiedDate
+    ... ...         ...         ...
+    7   Down Tube   4           2015-05-01 00:00:00
 
-新しい処理は何も実行されていません。コピー アクティビティでクリーンアップ スクリプトが実行され、そのスライスに対応するデータが削除されました。次に、csv から入力が読み込まれ (今度は 1 レコードのみが含まれます)、テーブルに挿入されます。
+Nothing new had to be done. The copy activity ran the cleanup script to delete the corresponding data for that slice. Then it read the input from the csv (which then contained only 1 record) and inserted it into the Table. 
 
-### メカニズム 2
-> [AZURE.IMPORTANT] 現在、Azure SQL Data Warehouse では sliceIdentifierColumnName はサポートされていません。
+### <a name="mechanism-2"></a>Mechanism 2
+> [AZURE.IMPORTANT] sliceIdentifierColumnName is not supported for Azure SQL Data Warehouse at this time. 
 
-再現性を実現するためのもう 1 つのメカニズムは、対象のテーブルに専用の列 (**sliceIdentifierColumnName**) を用意する方法です。この列は、Azure Data Factory がソースと対象の同期状態を保つために使用されます。この手法は、対象の SQL テーブル スキーマを変更または定義する際に柔軟性がある場合に機能します。
+Another mechanism to achieve repeatability is by having a dedicated column (**sliceIdentifierColumnName**) in the target Table. This column would be used by Azure Data Factory to ensure the source and destination stay synchronized. This approach works when there is flexibility in changing or defining the destination SQL Table schema. 
 
-この列は、再現性のために Azure Data Factory で使用されます。このプロセスで、Azure Data Factory はテーブルのスキーマを変更しません。この手法を使用する方法:
+This column would be used by Azure Data Factory for repeatability purposes and in the process Azure Data Factory will not make any schema changes to the Table. Way to use this approach:
 
-1.	対象 SQL テーブルで binary (32) 型の列を定義します。この列に制約は設定しないでください。この例では、この列に 'ColumnForADFuseOnly' という名前を付けます。
-2.	コピー アクティビティで、次のように使用します。
+1.  Define a column of type binary (32) in the destination SQL Table. There should be no constraints on this column. Let's name this column as ‘ColumnForADFuseOnly’ for this example.
+2.  Use it in the copy activity as follows:
 
-		"sink":  
-		{ 
-		  "type": "SqlSink", 
-		  "sliceIdentifierColumnName": "ColumnForADFuseOnly"
-		}
+        "sink":  
+        { 
+          "type": "SqlSink", 
+          "sliceIdentifierColumnName": "ColumnForADFuseOnly"
+        }
 
-ソースと対象の同期状態を維持するために必要なので、Azure Data Factory でこの列が設定されます。この列の値は、この状況以外でユーザーから使用されることはありません。
+Azure Data Factory will populate this column as per its need to ensure the source and destination stay synchronized. The values of this column should not be used outside of this context by the user. 
 
-メカニズム 1 と同様に、まず指定したスライスのデータがコピー アクティビティで対象 SQL テーブルからクリーンアップされます。通常、次にコピー アクティビティが実行され、そのスライスのソースのデータが対象に挿入されます。
+Similar to mechanism 1, Copy Activity will automatically first clean up the data for the given slice from the destination SQL Table and then run the copy activity normally to insert the data from source to destination for that slice. 
 
-<!---HONumber=AcomDC_0330_2016------>
+
+<!--HONumber=Oct16_HO2-->
+
+

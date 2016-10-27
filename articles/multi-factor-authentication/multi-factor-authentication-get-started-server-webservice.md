@@ -1,92 +1,97 @@
 <properties 
-	pageTitle="MFA Server モバイル アプリ Web サービスの概要"
-	description="Azure Multi-Factor Authentication アプリでは、他にもアウトオブバンドの認証オプションが提供されています。これにより MFA Server で、ユーザーへのプッシュ通知を許可できます。"
-	services="multi-factor-authentication"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor="curtland"/>
+    pageTitle="Getting started the MFA Server Mobile App Web Service"
+    description="The Azure Multi-Factor Authentication App offers an additional out-of-band authentication option.  It allows the MFA server to use push notifications to users."
+    services="multi-factor-authentication"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor="curtland"/>
 
 <tags
-	ms.service="multi-factor-authentication"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/04/2016"
-	ms.author="kgremban"/>
-
-# MFA Server モバイル アプリ Web サービスの概要
-
-Azure Multi-Factor Authentication アプリでは、他にもアウトオブバンドの認証オプションが提供されています。Azure Multi-Factor Authentication は、ログインするときにユーザーに自動音声通話または SMS 送信を行うのではなく、ユーザーのスマート フォンまたはタブレットの Azure Multi-Factor Authentication アプリにプッシュ通知を行います。ユーザーはアプリで [認証] をタップ (または PIN を入力し、[認証] をタップ) するだけでログインできます。
-
-Azure Multi-Factor Authentication アプリを使用するには、アプリがモバイル アプリ Web サービスと正常に通信できるように以下が必要です。
-
-- ハードウェアおよびソフトウェアの要件については、「ハードウェアとソフトウェアの要件」を参照してください。
-- Azure Multi-Factor Authentication Server の V6.0 以降を使用している必要があります
-- モバイル アプリ Web サービスが、Microsoft® インターネット インフォメーション サービス (IIS) の IIS 7.x 以降を実行している、インターネットに接続された Web サーバーにインストールされている必要があります。IIS の詳細については、[IIS.NET](http://www.iis.net/) に関するページを参照してください。
-- ASP.NET v4.0.30319 がインストールおよび登録され、[許可] に設定されていることを確認します
-- 必要なロール サービスには、ASP.NET および IIS 6 メタベース互換が含まれます
-- モバイル アプリ Web サービスにパブリック URL よりアクセスできる必要があります
-- モバイル アプリ Web サービスは、SSL 証明書で保護されている必要があります。
-- Azure Multi-Factor Authentication Server がインストールされているサーバー上の IIS 7.x 以降に、Azure Multi-Factor Authentication Web サービス SDK がインストールされている必要があります。
-- Azure Multi-Factor Authentication Web サービス SDK は、SSL 証明書で保護されている必要があります。
-- モバイル アプリ Web サービスは SSL 経由で Azure Multi-Factor Authentication Web サービス SDK に接続できる必要があります
-- モバイル アプリ Web サービスは、「PhoneFactor Admins」と呼ばれるセキュリティ グループのメンバーであるサービス アカウントの資格情報を使用して Azure Multi-Factor Authentication Web サービス SDK で認証できる必要があります。このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加しているサーバーで実行されている場合は、Active Directory に存在します。このサービス アカウントとグループは、Azure Multi-Factor Authentication Server がドメインに参加していない場合、Azure Multi-Factor Authentication Server のローカルに存在します。
+    ms.service="multi-factor-authentication"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/04/2016"
+    ms.author="kgremban"/>
 
 
-Azure Multi-Factor Authentication Server 以外のサーバーでユーザー ポータルをインストールするには、次の 3 つの手順が必要です。
+# <a name="getting-started-the-mfa-server-mobile-app-web-service"></a>Getting started the MFA Server Mobile App Web Service
 
-1. Web サービス SDK のインストール
-2. モバイル アプリ Web サービスのインストール
-3. Azure Multi-Factor Authentication Server でモバイル アプリ設定を構成する
-4. エンドユーザー向けに Azure Multi-Factor Authentication アプリをアクティブ化します
+The Azure Multi-Factor Authentication App offers an additional out-of-band authentication option. Instead of placing an automated phone call or SMS to the user during login, Azure Multi-Factor Authentication pushes a notification to the Azure Multi-Factor Authentication App on the user’s smartphone or tablet. The user simply taps “Authenticate” (or enters a PIN and taps “Authenticate”) in the app to log in.
 
-## Web サービス SDK のインストール
+In order to use the Azure Multi-Factor Authentication App, the following are required so that the app can successfully communicate with Mobile App Web Service:
 
-Azure Multi-Factor Authentication Server に Azure Multi-Factor Authentication Web サービス SDK がまだインストールされていない場合、そのサーバーに移動し、Azure Multi-Factor Authentication Server を開きます。[Web サービス SDK] アイコン、[Web サービス SDK のインストール...] ボタンを順にクリックし、表示された指示に従います。Web サービス SDK は、SSL 証明書で保護されている必要があります。この目的で自己署名証明書を使用できますが、ユーザー ポータル Web サーバー上のローカル コンピューター アカウントの「信頼されたルート証明機関」ストアにインポートすることで、SSL 接続を開始するときにこの証明書が信頼されます。
+- Please see Hardware and Software Requirements for hardware and software requirements
+- You must be using v6.0 or higher of the Azure Multi-Factor Authentication Server
+- Mobile App Web Service must be installed on an Internet-facing web server running Microsoft® Internet Information Services (IIS) IIS 7.x or higher.  For more information on IIS see [IIS.NET](http://www.iis.net/).
+- Ensure ASP.NET v4.0.30319 is installed, registered and set to Allowed
+- Required role services include ASP.NET and IIS 6 Metabase Compatibility
+- Mobile App Web Service must be accessible via a public URL
+- Mobile App Web Service must be secured with an SSL certificate.
+- The Azure Multi-Factor Authentication Web Service SDK must be installed in IIS 7.x or higher on the server that the Azure Multi-Factor Authentication Server
+- The Azure Multi-Factor Authentication Web Service SDK must be secured with an SSL certificate.
+- Mobile App Web Service must be able to connect to the Azure Multi-Factor Authentication Web Service SDK over SSL
+- Mobile App Web Service must be able to authenticate to the Azure Multi-Factor Authentication Web Service SDK using the credentials of a service account that is a member of a security group called “PhoneFactor Admins”. This service account and group exist in Active Directory if the Azure Multi-Factor Authentication Server is running on a domain-joined server. This service account and group exist locally on the Azure Multi-Factor Authentication Server if it is not joined to a domain.
+
+
+Installing the user portal on a server other than the Azure Multi-Factor Authentication Server requires the following three steps:
+
+1. Install the web service SDK
+2. Install the mobile app web service
+3. Configure the mobile app settings in the Azure Multi-Factor Authentication Server
+4. Activate the Azure Multi-Factor Authentication App for end users
+
+## <a name="install-the-web-service-sdk"></a>Install the web service SDK
+
+If the Azure Multi-Factor Authentication Web Service SDK is not already installed on the Azure Multi-Factor Authentication Server, go to that server and open the Azure Multi-Factor Authentication Server. Click the Web Service SDK icon, click the Install Web Service SDK… button and follow the instructions presented. The Web Service SDK must be secured with an SSL certificate. A self-signed certificate is okay for this purpose, but it has to be imported into the “Trusted Root Certification Authorities” store of the Local Computer account on the User Portal web server so that it will trust that certificate when initiating the SSL connection.
 
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/sdk.png)</center>
 
-## モバイル アプリ Web サービスのインストール
-モバイル アプリ Web サービスをインストールする前に、次の点に留意してください。
+## <a name="install-the-mobile-app-web-service"></a>Install the mobile app web service
+Before installing the mobile app web service, be aware of the following:
 
-- Azure Multi-Factor Authentication ユーザー ポータルが、インターネットに接続されたサーバー上に既にインストールされている場合、Web サービス SDK のユーザー名、パスワード、および URL は、ユーザー ポータルの web.config ファイルからコピーできます。
-- インターネットに接続された Web サーバーで Web ブラウザーを開き、web.config ファイルに入力された Web サービス SDK の URL に移動することをお勧めします。ブラウザーが Web サービスを正常に取得できる場合、資格情報が求められます。web.config ファイルに入力したユーザー名とパスワードを、ファイルに表示されているとおりに入力します。証明書の警告およびエラーが表示されないことを確認してください。
-- リバース プロキシまたはファイアウォールがモバイル アプリ Web サービス Web サーバーの前に配置され、SSL オフロードを実行している場合、モバイル アプリ Web サービスの web.config ファイルを編集し、<add key="SSL\_REQUIRED" value="false"/> キーを <appSettings> セクションに追加することで、モバイル アプリ Web サービスで https ではなく http を使用できるようにします。とはいえ、モバイル アプリからファイアウォール/リバース プロキシへの SSL も必要です。
+- If the Azure Multi-Factor Authentication User Portal is already installed on the Internet-facing server, the username, password and URL to the Web Service SDK can be copied from the User Portal’s web.config file.
+- It is helpful to open a web browser on the Internet-facing web server and navigate to the URL of the Web Service SDK that was entered into the web.config file. If the browser can get to the web service successfully, it should prompt you for credentials. Enter the username and password that were entered into the web.config file exactly as it appears in the file. Ensure that no certificate warnings or errors are displayed.
+- If a reverse proxy or firewall is sitting in front of the Mobile App Web Service web server and performing SSL offloading, you can edit the Mobile App Web Service web.config file and add the following key to the <appSettings> section so that the Mobile App Web Service can use http instead of https. However SSL is still required from the Mobile App to the firewall/reverse proxy. <add key="SSL_REQUIRED" value="false"/>
 
-### モバイル アプリ Web サービスをインストールするには
+### <a name="to-install-the-mobile-app-web-service"></a>To install the mobile app web service
 
 <ol>
-<li>Azure Multi-Factor Authentication Server で Windows エクスプローラーを開き、Azure Multi-Factor Authentication Server がインストールされているフォルダーに移動します (C:\Program Files\Azure Multi-Factor Authentication など)。モバイル アプリ Web サービスをインストールするサーバーに対し、必要に応じて Azure Multi-Factor AuthenticationPhoneAppWebServiceSetup インストール ファイルの 32 ビットまたは 64 ビット バージョンを選択します。インターネットに接続されたサーバーにインストール ファイルをコピーします。</li>
+<li>Open Windows Explorer on the Azure Multi-Factor Authentication Server and navigate to the folder where the Azure Multi-Factor Authentication Server is installed (e.g. C:\Program Files\Azure Multi-Factor Authentication). Choose the 32-bit or 64-bit version of the Azure Multi-Factor AuthenticationPhoneAppWebServiceSetup installation file as appropriate for the server that Mobile App Web Service will be installed on. Copy the installation file to the Internet-facing server.</li>
 
-<li>インターネットに接続された Web サーバーで、セットアップ ファイルを管理者権限で実行する必要があります。これを最も簡単に行うには、管理者としてコマンド プロンプトを開き、インストール ファイルがコピーされた場所に移動します。</li>  
+<li>On the Internet-facing web server, the setup file must be run with administrator rights. The easiest way to do this is to open a command prompt as an administrator and navigate to the location where the installation file was copied.</li>  
 
-<li>Multi-Factor AuthenticationMobileAppWebServiceSetup インストール ファイルを実行し、必要な場合はサイトを変更し、仮想ディレクトリを「PA」などの短い名前に変更します。ユーザーはアクティブ化の際にモバイル アプリ Web サービス URL をモバイル デバイスに入力する必要があるため、短い仮想ディレクトリ名をお勧めします。</li>
+<li>Run the Multi-Factor AuthenticationMobileAppWebServiceSetup install file, change the Site if desired and change the Virtual directory to a short name such as “PA”. A short virtual directory name is recommended since users must enter the Mobile App Web Service URL into the mobile device during activation.</li>
 
-<li>Azure Multi-Factor AuthenticationMobileAppWebServiceSetup のインストールを完了したら、C:\inetpub\wwwroot\PA (または仮想ディレクトリ名に基づく適切なディレクトリ) に移動し、web.config ファイルを編集します。</li>  
+<li>After finishing the install of the Azure Multi-Factor AuthenticationMobileAppWebServiceSetup, browse to C:\inetpub\wwwroot\PA (or appropriate directory based on the virtual directory name) and edit the web.config file.</li>  
 
-<li>WEB_SERVICE_SDK_AUTHENTICATION_USERNAME および WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD キーを見つけ、PhoneFactor Admins セキュリティ グループのメンバーであるサービス アカウントのユーザー名およびパスワードに値を設定します (上記の「要件」セクションを参照)。既にインストールされている場合は、Azure Multi-Factor Authentication ユーザー ポータルの ID として使用されるのと同じアカウントである可能性があります。行末尾 (value=””/>) の引用符の間にユーザー名およびパスワードを入力するようにしてください。修飾されたユーザー名 (domain\username または machine\username など) を使用することをお勧めします。</li>  
+<li>Locate the WEB_SERVICE_SDK_AUTHENTICATION_USERNAME and WEB_SERVICE_SDK_AUTHENTICATION_PASSWORD keys and set the values to the username and password of the service account that is a member of the PhoneFactor Admins security group (see the Requirements section above). This may be the same account being used as the Identity of the Azure Multi-Factor Authentication User Portal if that has been previously installed. Be sure to enter the Username and Password in between the quotation marks at the end of the line, (value=””/>). It is recommended to use a qualified username (e.g. domain\username or machine\username).</li>  
 
-<li>pfMobile App Web Service_pfwssdk_PfWsSdk 設定を見つけ、値を「http://localhost:4898/PfWsSdk.asmx」から Azure Multi-Factor Authentication Server で実行している Web サービス SDK の URL に変更します (https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx など)。この接続では SSL が使用されているため、IP アドレスではなくサーバー名で Web サービス SDK を参照する必要があります。これは、SSL 証明書がサーバー名に対して発行され、使用される URL が証明書の名前に一致する必要があるためです。サーバー名がインターネットに接続されているサーバーで IP アドレスに解決されない場合、そのサーバーの hosts ファイルにエントリを追加し、Azure Multi-Factor Authentication Server の名前を IP アドレスにマッピングします。変更を行ったら、web.config ファイルを保存します。</li>  
+<li>Locate the pfMobile App Web Service_pfwssdk_PfWsSdk setting and change the value from “http://localhost:4898/PfWsSdk.asmx” to the URL of the Web Service SDK that is running on the Azure Multi-Factor Authentication Server (e.g. https://computer1.domain.local/MultiFactorAuthWebServiceSdk/PfWsSdk.asmx). Since SSL is used for this connection, you must reference the Web Service SDK by server name and not IP address since the SSL certificate will have been issued for the server name and the URL used must match the name on the certificate. If the server name does not resolve to an IP address from the Internet-facing server, add an entry to the hosts file on that server to map the name of the Azure Multi-Factor Authentication Server to its IP address. Save the web.config file after changes have been made.</li>  
 
-<li>既定の Web サイトの直下などにモバイル アプリ Web サービスがインストールされた Web サイトがまだ公的署名証明書にバインドされていない場合、証明書がまだインストールされていないならサーバーにインストールし、IIS マネージャーを開き、証明書を Web サイトにバインドします。</li>  
+<li>If the website that Mobile App Web Service was installed under (e.g. Default Web Site) has not already been binded with a publicly-signed certificate, install the certificate on the server if not already installed, open IIS Manager and bind the certificate to the website.</li>  
 
-<li>任意のコンピューターで Web ブラウザーを開き、モバイル アプリ Web サービスがインストールされた URL に移動します (https://www.publicwebsite.com/PA など)。証明書の警告およびエラーが表示されないことを確認してください。</li>
+<li>Open a web browser from any computer and navigate to the URL where Mobile App Web Service was installed (e.g. https://www.publicwebsite.com/PA ). Ensure that no certificate warnings or errors are displayed.</li>
 
-### Azure Multi-Factor Authentication Server でモバイル アプリ設定を構成する
-モバイル アプリ Web サービスがインストールされたため、ポータルから Azure Multi-Factor Authentication Server を構成する必要があります。
+### <a name="configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>Configure the mobile app settings in the Azure Multi-Factor Authentication Server
+Now that the mobile app web service is installed, you need to configure the Azure Multi-Factor Authentication Server to work with the portal.
 
-#### Azure Multi-Factor Authentication Server のモバイル アプリ設定を構成するには
+#### <a name="to-configure-the-mobile-app-settings-in-the-azure-multi-factor-authentication-server"></a>To configure the mobile app settings in the Azure Multi-Factor Authentication Server
 
-1. Azure Multi-Factor Authentication Server で [ユーザー ポータル] アイコンをクリックします。ユーザーによる認証方法の制御が許可される場合は、[設定] タブの [ユーザーに認証方法の選択を許可する] の下にある [モバイル アプリ] を確認します。この機能が有効になっていないと、エンドユーザーはモバイル アプリのアクティブ化を完了するために、ヘルプ デスクに連絡する必要があります。
-2. [ユーザーにモバイル アプリのアクティブ化を許可する] ボックスを確認します。
-3. [ユーザー登録を許可する] ボックスを確認します。
-4. [モバイル アプリ] アイコンをクリックします。
-5. Azure Multi-Factor AuthenticationMobileAppWebServiceSetup をインストールするときに作成された仮想ディレクトリで使用される URL を入力します。所定の場所にアカウント名を入力することがあります。この会社名はモバイル アプリケーションに表示されます。空欄のままにすると、Azure 管理ポータルで作成された Multi-Factor Auth Provider の名前が表示されます。
+1. In the Azure Multi-Factor Authentication Server, click on the User Portal icon. If users are allowed to control their authentication methods, on the Settings tab, under Allow users to select method , check Mobile App . Without this feature enabled, end users will be required to contact your Help Desk to complete activation for the Mobile App.
+2. Check the Allow users to activate Mobile App box.
+3. Check the Allow User Enrollment box.
+4. Click the Mobile App icon.
+5. Enter the URL being used with the virtual directory which was created when installing the Azure Multi-Factor AuthenticationMobileAppWebServiceSetup. An Account Name may be entered in the space provided. This company name will display in the mobile application. If left blank, the name of your Multi-Factor Auth Provider created in the Azure Management Portal will be displayed.
 
 
 
 <center>![Setup](./media/multi-factor-authentication-get-started-server-webservice/mobile.png)</center>
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

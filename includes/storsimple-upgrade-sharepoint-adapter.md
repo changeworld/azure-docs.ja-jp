@@ -1,36 +1,39 @@
 <!--author=SharS last changed: 9/17/15-->
 
-### SharePoint 2010 を SharePoint 2013 にアップグレードして SharePoint 用 StorSimple アダプターをインストールする
+### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Upgrade SharePoint 2010 to SharePoint 2013 and then install the StorSomple Adapter for SharePoint
 
->[AZURE.IMPORTANT]以前に RBS 経由で外部ストレージに移動されたファイルは、アップグレードが完了し、RBS 機能を再び有効にするまでは使用できません。ユーザーへの影響を限定するために、計画されたメンテナンス期間にアップグレードまたは再インストールを実行してください。
+>[AZURE.IMPORTANT] Any files that were previously moved to external storage via RBS will not be available until the upgrade is finished and the RBS feature is enabled again. To limit user impact, perform any upgrade or reinstallation during a planned maintenance window.
 
-#### SharePoint 2010 を SharePoint 2013 にアップグレードしてアダプターをインストールするには
+#### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>To upgrade SharePoint 2010 to SharePoint 2013 and then install the adapter
 
-1. SharePoint 2010 ファームで、外部化された BLOB の BLOB ストア パスと RBS が有効にされているコンテンツ データベースをメモします。 
+1. In the SharePoint 2010 farm, note the BLOB store path for the externalized BLOBs and the content databases for which RBS is enabled. 
 
-2. 新しい SharePoint 2013 ファームをインストールして構成します。
+2. Install and configure the new SharePoint 2013 farm. 
 
-3. データベース、アプリケーション、およびサイト コレクションを SharePoint 2010 ファームから新しい SharePoint 2013 ファームに移動します。手順については、「[SharePoint 2013 へのアップグレード プロセスの概要](https://technet.microsoft.com/library/cc262483.aspx)」を参照してください。
+3. Move databases, applications, and site collections from the SharePoint 2010 farm to the new SharePoint 2013 farm. For instructions, go to [Overview of the upgrade process to SharePoint 2013](https://technet.microsoft.com/library/cc262483.aspx).
 
-4. 新しいファームに SharePoint 用 StorSimple アダプターをインストールします。手順については、「[SharePoint 用 StorSimple アダプターをインストールする](#install-the-storsimple-adapter-for-sharepoint)」を参照してください。
+4. Install the StorSimple Adapter for SharePoint on the new farm. Go to [Install the StorSimple Adapter for SharePoint](#install-the-storsimple-adapter-for-sharepoint) for procedures.
 
-5. 手順 1. でメモした情報を使用して、同じコンテンツ データベース セットの RBS を有効にし、SharePoint 2010 のインストール時に使用したのと同じ BLOB ストア パスを指定します。手順については、「[RBS の構成](#configure-rbs)」を参照してください。この手順を完了すると、あらかじめ外部化されているファイルが新しいファームからアクセス可能になります。
+5. Using the information that you noted in step 1, enable RBS for the same set of content databases and provide the same BLOB store path that was used in the SharePoint 2010 installation. Go to [Configure RBS](#configure-rbs) for procedures. After you complete this step, previously externalized files should be accessible from the new farm. 
 
-### SharePoint 用 StorSimple アダプターをアップグレードする
+### <a name="upgrade-the-storsimple-adapter-for-sharepoint"></a>Upgrade the StorSimple Adapter for SharePoint
 
->[AZURE.IMPORTANT]このアップグレードは、以下の理由で、計画的なメンテナンス期間中に実行されるようスケジュールする必要があります。
+>[AZURE.IMPORTANT] You should schedule this upgrade to occur during a planned maintenance window for the following reasons:
 >
->- あらかじめ外部化されているコンテンツは、アダプターを再インストールするまで使用できません。
+>- Previously externalized content will not be available until the adapter is reinstalled.
 >
->- SharePoint 用 StorSimple アダプターの以前のバージョンをアンインストールしてから新しいバージョンをインストールするまでにサイトにアップロードされたコンテンツは、コンテンツ データベースに格納されます。そのコンテンツは、新しいアダプターをインストールした後、StorSimple デバイスに移動する必要があります。コンテンツの移行は、SharePoint に用意されている Microsoft ` RBS Migrate()` PowerShell コマンドレットを使用して行うことができます。詳細については、「[コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx)」を参照してください。
+>- Any content uploaded to the site after you uninstall the previous version of the StorSimple Adapter for SharePoint, but before you install the new version, will be stored in the content database. You will need to move that content to the StorSimple device after you install the new adapter. You can use the Microsoft` RBS Migrate()` PowerShell cmdlet included with SharePoint to migrate the content. For more information, see [Migrate content into or out of RBS](https://technet.microsoft.com/library/ff628255.aspx). 
 
 
-#### SharePoint 用 StorSimple アダプターをアップグレードするには 
+#### <a name="to-upgrade-the-storsimple-adapter-for-sharepoint"></a>To upgrade the StorSimple Adapter for SharePoint 
 
-1. SharePoint 用 StorSimple アダプターの以前のバージョンをアンインストールします。
+1. Uninstall the previous version of StorSimple Adapter for SharePoint.
 
-    >[AZURE.NOTE]これにより、コンテンツ データベースの RBS が自動的に無効になります。ただし、既存の BLOB は StorSimple デバイスに残ります。RBS は無効になり、BLOB はコンテンツ データベースに移行されていないため、これらの BLOB に対する要求はいずれも失敗します。
+    >[AZURE.NOTE] This will automatically disable RBS on the content databases. However, existing BLOBs will remain on the StorSimple device. Because RBS is disabled and the BLOBs have not been migrated back to the content databases, any requests for those BLOBs will fail. 
  
-2. 新しい SharePoint 用 StorSimple アダプターをインストールします。新しいアダプターは、以前 RBS に対して有効または無効にされたコンテンツ データベースを自動的に認識し、以前の設定を使用します。
+2. Install the new StorSimple Adapter for SharePoint. The new adapter will automatically recognize the content databases that were previously enabled or disabled for RBS and will use the previous settings.
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

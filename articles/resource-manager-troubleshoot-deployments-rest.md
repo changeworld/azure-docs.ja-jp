@@ -1,6 +1,6 @@
 <properties
-   pageTitle="REST API でのデプロイ操作の表示 | Microsoft Azure"
-   description="Azure Resource Manager REST API を使用して、リソース マネージャーのデプロイからの問題を検出する方法について説明します。"
+   pageTitle="View deployment operations with REST API | Microsoft Azure"
+   description="Describes how to use the Azure Resource Manager REST API to detect issues from Resource Manager deployment."
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
    tags="top-support-issue"
@@ -17,23 +17,24 @@
    ms.date="06/13/2016"
    ms.author="tomfitz"/>
 
-# Azure Resource Manager REST API でのデプロイ操作の表示
+
+# <a name="view-deployment-operations-with-azure-resource-manager-rest-api"></a>View deployment operations with Azure Resource Manager REST API
 
 > [AZURE.SELECTOR]
-- [ポータル](resource-manager-troubleshoot-deployments-portal.md)
+- [Portal](resource-manager-troubleshoot-deployments-portal.md)
 - [PowerShell](resource-manager-troubleshoot-deployments-powershell.md)
 - [Azure CLI](resource-manager-troubleshoot-deployments-cli.md)
 - [REST API](resource-manager-troubleshoot-deployments-rest.md)
 
-Azure にリソースをデプロイするときにエラーが発生した場合、実行したデプロイ操作に関して、より詳しい情報が必要になることがあります。REST API では、エラーを見つけて、可能性のある修正を確認できるように、操作を提供します。
+If you've received an error when deploying resources to Azure, you may want to see more details about the deployment operations that were executed. The REST API provides operations that enable you to find the errors and determine potential fixes.
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
-デプロイの前にテンプレートおよびインフラストラクチャを検証して、いくつかのエラーを回避できます。後からトラブルシューティングに役立つと思われるデプロイメント中の追加の要求および応答の情報を記録することもできます。検証、 ログ記録の要求および応答の情報については、「[Azure リソース マネージャーのテンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy-rest.md)」を参照してください。
+You can avoid some errors by validating your template and infrastructure prior to deployment. You can also log additional request and response information during deployment that may be helpful later for troubleshooting. To learn about validating, and logging request and response information, see [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy-rest.md).
 
-## REST API を使用したトラブルシューティング
+## <a name="troubleshoot-with-rest-api"></a>Troubleshoot with REST API
 
-1. [テンプレート デプロイを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)操作でリソースをデプロイします。デバッグに役立つ可能性のある情報を保持するには、JSON 要求の **debugSetting** プロパティを **requestContent** および/または **responseContent** に設定します。 
+1. Deploy your resources with the [Create a template deployment](https://msdn.microsoft.com/library/azure/dn790564.aspx) operation. To retain information that may be helpful for debugging, set the **debugSetting** property in JSON request to **requestContent** and/or **responseContent**. 
 
         PUT https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
           <common headers>
@@ -54,13 +55,13 @@ Azure にリソースをデプロイするときにエラーが発生した場�
             }
           }
 
-    既定では、**debugSetting** の値は、**none** に設定されます。**debugSetting** の値を指定する場合、デプロイ時に渡している情報の種類を慎重に検討します。要求または応答に関する情報をログ記録すると、デプロイ操作で取得される重要なデータを公開する可能性があります。
+    By default, the **debugSetting** value is set to **none**. When specifying the **debugSetting** value, carefully consider the type of information you are passing in during deployment. By logging information about the request or response, you could potentially expose sensitive data that is retrieved through the deployment operations. 
 
-2. [テンプレート デプロイに関する情報を取得する](https://msdn.microsoft.com/library/azure/dn790565.aspx)操作を行って、デプロイに関する情報を取得します。
+2. Get information about a deployment with the [Get information about a template deployment](https://msdn.microsoft.com/library/azure/dn790565.aspx) operation.
 
         GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
 
-    応答では、特に **provisioningState**、**correlationId**、および **error** 要素に注意してください。**correlationId** は、関連するイベントを追跡するために使用されます。また、問題のトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときにも、役立つ場合があります。
+    In the response, note in particular the **provisioningState** , **correlationId** and **error** elements. The **correlationId** is used to track related events, and can be helpful when working with technical support to troubleshoot an issue.
     
         { 
           ...
@@ -70,16 +71,16 @@ Azure にリソースをデプロイするときにエラーが発生した場�
             ...
             "error":{
               "code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see http://aka.ms/arm-debug for usage details.",
-              "details":[{"code":"Conflict","message":"{\r\n  "error": {\r\n    "message": "Conflict",\r\n    "code": "Conflict"\r\n  }\r\n}"}]
+              "details":[{"code":"Conflict","message":"{\r\n  \"error\": {\r\n    \"message\": \"Conflict\",\r\n    \"code\": \"Conflict\"\r\n  }\r\n}"}]
             }  
           }
         }
 
-3. [すべてのテンプレート デプロイ操作を一覧表示する](https://msdn.microsoft.com/library/azure/dn790518.aspx)操作を行って、デプロイ操作に関する情報を取得します。
+3. Get information about deployment operations with the [List all template deployment operations](https://msdn.microsoft.com/library/azure/dn790518.aspx) operation. 
 
         GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
 
-    応答には、デプロイ時に **debugSetting** プロパティで指定した内容に基づいて、要求または応答の情報が含まれます。
+    The response will include request and/or response information based on what you specified in the **debugSetting** property during deployment.
     
         {
           ...
@@ -104,15 +105,19 @@ Azure にリソースをデプロイするときにエラーが発生した場�
           }
         }
 
-4. [サブスクリプションの管理イベントを一覧表示する](https://msdn.microsoft.com/library/azure/dn931934.aspx)操作を行って、デプロイに関する監査情報からイベントを取得します。
+4. Get events from the audit logs for the deployment with the [List the management events in a subscription](https://msdn.microsoft.com/library/azure/dn931934.aspx) operation.
 
         GET https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft.insights/eventtypes/management/values?api-version={api-version}&$filter={filter-expression}&$select={comma-separated-property-names}
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- 特定のデプロイ エラーの解決については、[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
-- 他の種類のアクションを監視するために監査ログを使用する方法については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
-- デプロイを実行する前に検証するには、「[Azure Resource Manager のテンプレートを使用したリソースのデプロイ](resource-group-template-deploy.md)」を参照してください。
+- For help with resolving particular deployment errors, see [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md).
+- To learn about using the audit logs to monitor other types of actions, see [Audit operations with Resource Manager](resource-group-audit.md).
+- To validate your deployment prior to executing it, see [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,43 +1,44 @@
 <properties
-	pageTitle="Azure SQL Database の JSON 機能 | Microsoft Azure"
-	description="Azure SQL Database では、JavaScript Object Notation (JSON) 表記法でデータを解析、照会および書式設定できます。"
-	services="sql-database"
-	documentationCenter=""
-	authors="jovanpop-msft"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Azure SQL Database JSON features | Microsoft Azure"
+    description="Azure SQL Database enables you to parse, query, and format data in JavaScript Object Notation (JSON) notation."
+    services="sql-database"
+    documentationCenter=""
+    authors="jovanpop-msft"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="NA"
-	ms.date="08/17/2016"
-	ms.author="jovanpop"
+    ms.service="sql-database"
+    ms.devlang="NA"
+    ms.date="08/17/2016"
+    ms.author="jovanpop"
    ms.workload="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"/>
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"/>
 
 
 
-# Azure SQL Database の JSON 機能の概要
 
-Azure SQL Database では、JavaScript Object Notation [(JSON)](http://www.json.org/) 形式で表されたデータを解析およびクエリし、リレーショナル データを JSON テキストとしてエクスポートすることができます。
+# <a name="getting-started-with-json-features-in-azure-sql-database"></a>Getting started with JSON features in Azure SQL Database
 
-JSON は、最新の Web およびモバイル アプリケーションのデータを交換するために使用される一般的なデータ形式です。また、JSON は、ログ ファイルや [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) のような NoSQL データベースに半構造化データを格納するためにも使用されます。多くの REST Web サービスは、JSON テキストとして書式設定された結果を返したり、JSON 形式のデータを受け入れたりします。[Azure Search](https://azure.microsoft.com/services/search/)、[Azure Storage](https://azure.microsoft.com/services/storage/)、および [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) などの多くの Azure サービスには、JSON を返したり、使用したりする REST エンドポイントがあります。
+Azure SQL Database lets you parse and query data represented in JavaScript Object Notation [(JSON)](http://www.json.org/) format, and export your relational data as JSON text.
 
-Azure SQL Database では、JSON データを簡単に操作し、データベースを最新のサービスと統合することができます。
+JSON is a popular data format used for exchanging data in modern web and mobile applications. JSON is also used for storing semi-structured data in log files or in NoSQL databases like [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/). Many REST web services return results formatted as JSON text or accept data formatted as JSON. Most Azure services such as [Azure Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/), and [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) have REST endpoints that return or consume JSON.
 
-## Overview
+Azure SQL Database lets you work with JSON data easily and integrate your database with modern services.
 
-Azure SQL Database には、JSON データを操作するために、次の関数が用意されています。
+## <a name="overview"></a>Overview
 
-![JSON 関数](./media/sql-database-json-features/image_1.png)
+Azure SQL Database provides the following functions for working with JSON data:
 
-JSON テキストがある場合、組み込み関数 [JSON\_VALUE](https://msdn.microsoft.com/library/dn921898.aspx)、[JSON\_QUERY](https://msdn.microsoft.com/library/dn921884.aspx)、および [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx) を使用して、JSON からデータを抽出したり、JSON が適切に書式設定されていることを確認したりすることができます。[JSON\_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) 関数では、JSON テキスト内の値を更新することができます。高度なクエリと分析には、[OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) 関数を使用して、JSON オブジェクトの配列を行セットに変換できます。すべての SQL クエリを返された結果セットで実行することができます。最後に、JSON テキストとしてリレーショナル テーブルに格納されたデータを書式設定できる、[FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) 句があります。
+![JSON Functions](./media/sql-database-json-features/image_1.png)
 
-## JSON 形式でのリレーショナル データの書式設定
-データベース層からデータを取得し、JSON 形式で応答を提供する Web サービスがある場合、またはクライアント側の JavaScript フレームワークまたはライブラリが JSON 形式のデータを受け入れる場合、SQL クエリに直接 JSON としてデータベースの内容を書式設定することができます。Azure SQL Database からの結果を JSON 形式にするように、アプリケーション コードを書き込んだり、表形式のクエリの結果に変換して、オブジェクトを JSON 形式にシリアル化するために JSON シリアル化ライブラリを含めたりする必要がなくなりました。代わりに、FOR JSON 句を使用して、SQL クエリの結果を Azure SQL Database で JSON として書式設定し、アプリケーションで直接これを使用できます。
+If you have JSON text, you can extract data from JSON or verify that JSON is properly formatted by using the built-in functions [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx), and [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx). The [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) function lets you update value inside JSON text. For more advanced querying and analysis, [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) function can transform an array of JSON objects into a set of rows. Any SQL query can be executed on the returned result set. Finally, there is a [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) clause that lets you format data stored in your relational tables as JSON text.
 
-次の例では、FOR JSON 句を使用して、Sales.Customer テーブルの行を JSON 形式にしています。
+## <a name="formatting-relational-data-in-json-format"></a>Formatting relational data in JSON format
+If you have a web service that takes data from the database layer and provides a response in JSON format, or client-side JavaScript frameworks or libraries that accept data formatted as JSON, you can format your database content as JSON directly in a SQL query. You no longer have to write application code that formats results from Azure SQL Database as JSON, or include some JSON serialization library to convert tabular query results and then serialize objects to JSON format. Instead, you can use the FOR JSON clause to format SQL query results as JSON in Azure SQL Database and use it directly in your application.
+
+In the following example, rows from the Sales.Customer table are formatted as JSON by using the FOR JSON clause:
 
 ```
 select CustomerName, PhoneNumber, FaxNumber
@@ -45,7 +46,7 @@ from Sales.Customers
 FOR JSON PATH
 ```
 
-FOR JSON PATH 句は、クエリの結果を JSON テキストとして書式設定します。次のように、セルの値が JSON 値として生成される場合、列名はキーとして使用されます。
+The FOR JSON PATH clause formats the results of the query as JSON text. Column names are used as keys, while the cell values are generated as JSON values:
 
 ```
 [
@@ -55,9 +56,9 @@ FOR JSON PATH 句は、クエリの結果を JSON テキストとして書式設
 ]
 ```
 
-結果セットは、JSON 配列として書式設定され、各行は個別の JSON オブジェクトとして書式設定されます。
+The result set is formatted as a JSON array where each row is formatted as a separate JSON object.
 
-PATH は、列の別名にドット表記を使用して、JSON の結果の出力形式をカスタマイズできることを示します。次のクエリでは、JSON 形式の出力で "CustomerName" キーの名前を変更し、電話番号と FAX 番号を "Contact" サブオブジェクトに入力します。
+PATH indicates that you can customize the output format of your JSON result by using dot notation in column aliases. The following query changes the name of the "CustomerName" key in the output JSON format, and puts phone and fax numbers in the "Contact" sub-object:
 
 ```
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
@@ -66,7 +67,7 @@ where CustomerID = 931
 FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 ```
 
-このクエリの出力は次のようになります。
+The output of this query looks like this:
 
 ```
 {
@@ -78,22 +79,22 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 }
 ```
 
-この例では、[WITHOUT\_ARRAY\_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) オプションを指定することで、配列ではなく、1 つの JSON オブジェクトを返しています。クエリの結果として 1 つのオブジェクトを返すことがわかっている場合は、このオプションを使用することができます。
+In this example we returned a single JSON object instead of an array by specifying the [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) option. You can use this option if you know that you are returning a single object as a result of query.
 
-FOR JSON 句の主な値を使用すると、入れ子になった JSON オブジェクトまたは配列として書式設定されたデータベースから複雑な階層データを返すことができます。次の例では、Orders の入れ子になった配列として、Customer に属する Orders を含める方法を示します。
+The main value of the FOR JSON clause is that it lets you return complex hierarchical data from your database formatted as nested JSON objects or arrays. The following example shows how to include Orders that belong to the Customer as a nested array of Orders:
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
-		Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
+        Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
 from Sales.Customers Customer
-	join Sales.Orders Orders
-		on Customer.CustomerID = Orders.CustomerID
+    join Sales.Orders Orders
+        on Customer.CustomerID = Orders.CustomerID
 where Customer.CustomerID = 931
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
 
 ```
 
-Customer データを取得して、関連する Orders のリストを取得するために、個別のクエリを送信する代わりに、次の出力例のように、1 つのクエリで必要なデータをすべて取得することができます。
+Instead of sending separate queries to get Customer data and then to fetch a list of related Orders, you can get all the necessary data with a single query, as shown in the following sample output:
 
 ```
 {
@@ -108,11 +109,11 @@ Customer データを取得して、関連する Orders のリストを取得す
 }
 ```
 
-## JSON データの使用
+## <a name="working-with-json-data"></a>Working with JSON data
 
-厳密に構造化されたデータがない場合、複雑なサブオブジェクト、配列、または階層データがある場合、またはデータ構造が時間と共に進化する場合、JSON 形式を使うと、すべての複雑なデータ構造を表すことができます。
+If you don’t have strictly structured data, if you have complex sub-objects, arrays, or hierarchical data, or if your data structures evolve over time, the JSON format can help you to represent any complex data structure.
 
-JSON は、Azure SQL Database の他の文字列型のように使用できるテキスト形式です。JSON データは、標準の NVARCHAR として送信または格納することができます。
+JSON is a textual format that can be used like any other string type in Azure SQL Database. You can send or store JSON data as a standard NVARCHAR:
 
 ```
 CREATE TABLE Products (
@@ -123,24 +124,24 @@ CREATE TABLE Products (
 go
 CREATE PROCEDURE InsertProduct(@title nvarchar(200), @json nvarchar(max))
 AS BEGIN
-	insert into Products(Title, Data)
-	values(@title, @json)
+    insert into Products(Title, Data)
+    values(@title, @json)
 END
 ```
 
-この例で使用される JSON データは、NVARCHAR(MAX) 型を使用して表されます。JSON は、次の例のように標準の Transact-SQL 構文を使用して、このテーブルに挿入したり、格納されたプロシージャの引数として指定したりすることができます。
+The JSON data used in this example is represented by using the NVARCHAR(MAX) type. JSON can be inserted into this table or provided as an argument of the stored procedure using standard Transact-SQL syntax as shown in the following example:
 
 ```
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
-また、Azure SQL Database の文字列データを操作する任意のクライアント側の言語またはライブラリも、JSON データを操作することができます。JSON は、メモリ最適化テーブルやシステム バージョン管理されたテーブルなど、NVARCHAR 型をサポートする任意のテーブルに格納できます。JSON は、クライアント側のコードまたはデータベース層のいずれにも、既存の制約を導入しません。
+Any client-side language or library that works with string data in Azure SQL Database will also work with JSON data. JSON can be stored in any table that supports the NVARCHAR type, such as a Memory-optimized table or a System-versioned table. JSON does not introduce any constraint either in the client-side code or in the database layer.
 
-## JSON データをクエリする
+## <a name="querying-json-data"></a>Querying JSON data
 
-Azure SQL テーブルに格納された JSON 形式のデータがある場合、JSON 関数では、このデータを任意の SQL クエリで使用できます。
+If you have data formatted as JSON stored in Azure SQL tables, JSON functions let you use this data in any SQL query.
 
-Azure SQL Database で使用可能な JSON 関数を使用すると、JSON 形式のデータを他の SQL データ型として処理できます。JSON テキストから簡単に値を抽出し、任意のクエリで JSON データを使用できます。
+JSON functions that are available in Azure SQL database let you treat data formatted as JSON as any other SQL data type. You can easily extract values from the JSON text, and use JSON data in any query:
 
 ```
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
@@ -152,60 +153,64 @@ set Data = JSON_MODIFY(Data, '$.Price', 60)
 where Id = 1
 ```
 
-JSON\_VALUE 関数は、Data 列に格納された JSON テキストから値を抽出します。この関数では、JavaScript のようなパスを使用して、抽出する JSON テキストの値を参照します。抽出された値は、SQL クエリの任意の部分で使用できます。
+The JSON_VALUE function extracts a value from JSON text stored in the Data column. This function uses a JavaScript-like path to reference a value in JSON text to extract. The extracted value can be used in any part of SQL query.
 
-JSON\_QUERY 関数は、JSON\_VALUE と同様です。JSON\_VALUE とは異なり、この関数は JSON テキストに配置されている配列やオブジェクトなどの複雑なサブオブジェクトを抽出します。
+The JSON_QUERY function is similar to JSON_VALUE. Unlike JSON_VALUE, this function extracts complex sub-object such as arrays or objects that are placed in JSON text.
 
-JSON\_MODIFY 関数は、更新する必要がある JSON テキストの値だけでなく、古い値を上書きする新しい値のパスを指定することができます。この方法では、構造全体を再解析することなく、JSON テキストを簡単に更新できます。
+The JSON_MODIFY function lets you specify the path of the value in the JSON text that should be updated, as well as a new value that will overwrite the old one. This way you can easily update JSON text without reparsing the entire structure.
 
-JSON は標準テキストで格納されるため、値が適切に書式設定されたテキスト列に格納される保証はありません。標準の Azure SQL Database の CHECK 制約および ISJSON 関数を使用すると、JSON 列に格納されたテキストが適切に書式設定されていることを確認できます。
+Since JSON is stored in a standard text, there are no guarantees that the values stored in text columns are properly formatted. You can verify that text stored in JSON column is properly formatted by using standard Azure SQL Database check constraints and the ISJSON function:
 
 ```
 ALTER TABLE Products
     ADD CONSTRAINT [Data should be formatted as JSON]
-		CHECK (ISJSON(Data) > 0)
+        CHECK (ISJSON(Data) > 0)
 ```
 
-入力テキストが適切な JSON 形式である場合、ISJSON 関数は値 1 を返します。JSON 列を挿入または更新するたびに、この制約は新しいテキスト値が無効な形式の JSON ではないことを確認します。
+If the input text is properly formatted JSON, the ISJSON function returns the value 1. On every insert or update of JSON column, this constraint will verify that new text value is not malformed JSON.
 
-## JSON を表形式に変換する
+## <a name="transforming-json-into-tabular-format"></a>Transforming JSON into tabular format
 
-Azure SQL Database では、JSON コレクションを表形式の書式設定に変換し、JSON データの読み込みまたはクエリを行うこともできます。
+Azure SQL Database also lets you transform JSON collections into tabular format and load or query JSON data.
 
-OPENJSON は、テーブル値関数です。この関数は、JSON テキストの解析、JSON オブジェクトの配列の検索、配列の要素の反復処理、および配列の各要素の出力結果に 1 行を返す操作を行うことができます。
+OPENJSON is a table-value function that parses JSON text, locates an array of JSON objects, iterates through the elements of the array, and returns one row in the output result for each element of the array.
 
-![JSON 表形式](./media/sql-database-json-features/image_2.png)
+![JSON tabular](./media/sql-database-json-features/image_2.png)
 
-上記の例では、開く必要がある JSON 配列を検索する場所 ($.Orders パス)、結果として返される列、およびセルとして返される JSON 値を検索する場所を指定できます。
+In the example above, we can specify where to locate the JSON array that should be opened (in the $.Orders path), what columns should be returned as result, and where to find the JSON values that will be returned as cells.
 
-@orders 変数の JSON 配列を行セットに変換したり、この結果セットを分析したり、標準テーブルに行を挿入したりすることができます。
+We can transform a JSON array in the @orders variable into a set of rows, analyze this result set, or insert rows into a standard table:
 
 ```
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
 AS BEGIN
 
-	insert into Orders(Number, Date, Customer, Quantity)
-	select Number, Date, Customer, Quantity
-	OPENJSON (@orders)
-	 WITH (
-			Number varchar(200),
-			Date datetime,
-			Customer varchar(200),
-			Quantity int
-	 )
+    insert into Orders(Number, Date, Customer, Quantity)
+    select Number, Date, Customer, Quantity
+    OPENJSON (@orders)
+     WITH (
+            Number varchar(200),
+            Date datetime,
+            Customer varchar(200),
+            Quantity int
+     )
 
 END
 ```
-JSON 配列として書式設定され、ストアド プロシージャにパラメーターとして指定される orders のコレクションは、解析され、Orders テーブルに挿入することができます。
+The collection of orders formatted as a JSON array and provided as a parameter to the stored procedure can be parsed and inserted into the Orders table.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-アプリケーションに JSON を統合する方法については、次のリソースを確認してください。
+To learn how to integrate JSON into your application, check out these resources:
 
-- [TechNet のブログ](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/05/json-in-sql-server-2016-part-1-of-4/)
-- [MSDN のドキュメント](https://msdn.microsoft.com/library/dn921897.aspx)
-- [Channel 9 のビデオ](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
+- [TechNet Blog](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/05/json-in-sql-server-2016-part-1-of-4/)
+- [MSDN documentation](https://msdn.microsoft.com/library/dn921897.aspx)
+- [Channel 9 video](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-JSON をアプリケーションに統合するためのさまざまなシナリオの詳細については、この [Channel 9 のビデオ](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds)のデモを参照するか、[JSON のブログの投稿](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/)でお客様のユース ケースに一致するシナリオを見つけてください。
+To learn about various scenarios for integrating JSON into your application, see the demos in this [Channel 9 video](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) or find a scenario that matches your use case in [JSON Blog posts](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

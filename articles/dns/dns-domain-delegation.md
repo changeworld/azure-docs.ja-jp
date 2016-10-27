@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure DNS へのドメインの委任 |Microsoft Azure"
-   description="ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。"
+   pageTitle="Delegate your domain to Azure DNS | Microsoft Azure"
+   description="Understand how to change domain delegation and use Azure DNS name servers to provide domain hosting."
    services="dns"
    documentationCenter="na"
    authors="sdwheeler"
@@ -17,192 +17,198 @@
    ms.author="sewhee"/>
 
 
-# Azure DNS へのドメインの委任
 
-Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメインの DNS レコードを管理できます。ドメインに対する DNS クエリを Azure DNS に到達させるには、ドメインを親ドメインから Azure DNS に委任する必要があります。Azure DNS はドメイン レジストラーではないことに注意してください。この記事では、ドメインの委任のしくみとドメインを Azure DNS に委任する方法について説明します。
+# <a name="delegate-a-domain-to-azure-dns"></a>Delegate a domain to Azure DNS
+
+Azure DNS allows you to host a DNS zone and manage the DNS records for a domain in Azure. In order for DNS queries for a domain to reach Azure DNS, the domain has to be delegated to Azure DNS from the parent domain. Keep in mind Azure DNS is not the domain registrar. This article explains how domain delegation works and how to delegate domains to Azure DNS.
 
 
 
 
-## DNS 委任のしくみ
+## <a name="how-dns-delegation-works"></a>How DNS delegation works
 
-### ドメインとゾーン
+### <a name="domains-and-zones"></a>Domains and zones
 
-ドメイン ネーム システムはドメインの階層構造です。階層は、"**.**" という名前の "root" ドメインから始まります。その下には "com"、"net"、"org"、"uk"、"jp" などのトップ レベル ドメインがあります。さらに、これらの下には "org.uk" や "co.jp" などの第 2 レベル ドメインがあります。同様に続きます。DNS 階層内のドメインのホストには、個別の DNS ゾーンを使用します。これらのゾーンはグローバルに分散していて、世界中の DNS ネーム サーバーでホストされています。
+The Domain Name System is a hierarchy of domains. The hierarchy starts from the ‘root’ domain, whose name is simply ‘**.**’.  Below this come top-level domains, such as ‘com’, ‘net’, ‘org’, ‘uk’ or ‘jp’.  Below these are second-level domains, such as ‘org.uk’ or ‘co.jp’.  And so on. The domains in the DNS hierarchy are hosted using separate DNS zones. These zones are globally distributed, hosted by DNS name servers around the world.
 
-**DNS ゾーン**
+**DNS zone**
 
-ドメインとは、"contoso.com" など、ドメイン ネーム システム内で一意の名前です。DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。たとえば、ドメイン "contoso.com" には、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、多数の DNS レコードが含まれている場合があります。
+A domain is a unique name in the Domain Name System, for example ‘contoso.com’. A DNS zone is used to host the DNS records for a particular domain. For example, the domain ‘contoso.com’ may contain a number of DNS records such as ‘mail.contoso.com’ (for a mail server) and ‘www.contoso.com’ (for a website).
 
-**ドメイン レジストラー**
+**Domain registrar**
 
-ドメイン レジストラーは、インターネット ドメイン名を提供できる企業です。ドメイン レジストラーは、ユーザーが希望するインターネット ドメインが使用可能かどうかを確認し、購入を許可します。ドメイン名が登録されると、そのユーザーはドメイン名の法律上の所有者になります。既にインターネット ドメインを所有している場合は、現在のドメイン レジストラーを使用して、Azure DNS に委任します。
+A domain registrar is a company who can provide Internet domain names. They will verify if the Internet domain you want to use is available and allow you to purchase it. Once the domain name is registered, you will be the legal owner for the domain name. If you already have an Internet domain, you will use the current domain registrar to delegate to Azure DNS.
 
->[AZURE.NOTE] 特定のドメイン名の所有者の詳細や、ドメインの購入方法の詳細については、「[Internet domain management in Azure AD (Azure AD でのインターネット ドメイン管理)](https://msdn.microsoft.com/library/azure/hh969248.aspx)」を参照してください。
+>[AZURE.NOTE] To find out more information on who owns a given domain name, or for information on how to buy a domain, see [Internet domain management in Azure AD](https://msdn.microsoft.com/library/azure/hh969248.aspx).
 
-### 解決と委任
+### <a name="resolution-and-delegation"></a>Resolution and delegation
 
-DNS サーバーには次の 2 種類があります。
+There are two types of DNS servers:
 
-- _権限のある_ DNS サーバーは、DNS ゾーンをホストします。このサーバーは、これらのゾーン内のレコードに対する DNS クエリのみに応答します。
-- _再帰_ DNS サーバーは、DNS ゾーンをホストしません。このサーバーは、権限のある DNS サーバーを呼び出して必要なデータを収集することで、すべての DNS クエリに応答します。
+- An _authoritative_ DNS server hosts DNS zones. It answers DNS queries for records in those zones only.
+- A _recursive_ DNS server does not host DNS zones. It answers all DNS queries by calling authoritative DNS servers to gather the data it needs.
 
->[AZURE.NOTE] Azure DNS は、権限のある DNS サービスを提供します。再帰 DNS サービスは提供しません。
+>[AZURE.NOTE] Azure DNS provides an authoritative DNS service.  It does not provide a recursive DNS service.
 
-> Azure の Cloud Services と VM は、Azure のインフラストラクチャの一部として個別に提供されている再帰 DNS サービスを使用するように自動的に構成されます。これらの DNS 設定を変更する方法については、[Azure での名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)に関するページを参照してください。
+> Cloud Services and VMs in Azure are automatically configured to use a recursive DNS services that is provided separately as part of Azure's infrastructure.  For information on how to change these DNS settings, please see [Name Resolution in Azure](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
 
-PC やモバイル デバイスの DNS クライアントは、通常、クライアント アプリケーションが必要とする DNS クエリを実行するために、再帰 DNS サーバーを呼び出します。
+DNS clients in PCs or mobile devices typically call a recursive DNS server to perform any DNS queries the client applications need.
 
-再帰 DNS サーバーは、"www.contoso.com" などの DNS レコードに対するクエリを受け取ると、まず、"contoso.com" ドメインのゾーンをホストするネーム サーバーを検索する必要があります。そのためには、ルート名サーバーから開始し、そこから、"com" ゾーンをホストするネーム サーバーを見つけます。次に、"com" ネーム サーバーを照会し、"contoso.com" ゾーンをホストするネーム サーバーを見つけます。最後に、"www.contoso.com" についてこれらのネーム サーバーを照会できます。
+When a recursive DNS server receives a query for a DNS record such as ‘www.contoso.com’, it first needs to find the name server hosting the zone for the ‘contoso.com’ domain. To do this, it starts at the root name servers, and from there finds the name servers hosting the ‘com’ zone. It then queries the ‘com’ name servers to find the name servers hosting the ‘contoso.com’ zone.  Finally, it is able to query these name servers for ‘www.contoso.com’.
 
-これを、DNS 名の解決と呼びます。厳密に言えば、DNS 解決には、次の CNAME などのその他の手順が含まれますが、DNS の委任のしくみを理解するうえでは重要ではありません。
+This is called resolving the DNS name. Strictly speaking, DNS resolution includes additional steps such as following CNAMEs, but that’s not important to understanding how DNS delegation works.
 
-親ゾーンが子ゾーンのネーム サーバーを "指す" には、 NS レコード (NS は "ネーム サーバー" の略) と呼ばれる特殊な種類の DNS レコードを使用します。たとえば、root ゾーンには "com" の NS レコードが格納され、"com" ゾーンのネーム サーバーが示されます。同様に、"com" ゾーンには "contoso.com" の NS レコードが格納されます。このレコードは "contoso.com" ゾーンのネーム サーバーを示します。親ゾーンで子ゾーンの NS レコードを設定することを、ドメインの委任と呼びます。
+How does a parent zone ‘point’ to the name servers for a child zone? It does this using a special type of DNS record called an NS record (NS stands for ‘name server’). For example, the root zone contains NS records for 'com' and shows the name servers for the ‘com’ zone. In turn, the ‘com’ zone contains NS records for ‘contoso.com’, which shows the name servers for the ‘contoso.com’ zone. Setting up the NS records for a child zone in a parent zone is called delegating the domain.
 
 
 ![Dns-nameserver](./media/dns-domain-delegation/image1.png)
 
-実際に、各委任には、NS レコードの 2 つのコピーがあります。1 つは親ゾーン内で子ゾーンを指すレコード、もう 1 つは子ゾーン自体にあるレコードです。"contoso.com" ゾーンには、("com" 内の NS レコードだけでなく) "contoso.com" の NS レコードも格納されています。これらは権限のある NS レコードと呼ばれ、子ゾーンの頂点に配置されます。
+Each delegation actually has two copies of the NS records; one in the parent zone pointing to the child, and another in the child zone itself. The ‘contoso.com’ zone contains the NS records for ‘contoso.com’ (in addition to the NS records in ‘com’). These are called authoritative NS records and they sit at the apex of the child zone.
 
 
-## Azure DNS へのドメインの委任
+## <a name="delegating-a-domain-to-azure-dns"></a>Delegating a domain to Azure DNS
 
-Azure DNS 内に DNS ゾーンを作成した後は、Azure DNS がゾーンの名前解決のための権限のあるソースになるように、親ゾーン内の NS レコードを設定する必要があります。レジストラーから購入したドメインの場合は、レジストラーから、これらの NS レコードを設定するオプションが提供されます。
+Once you create your DNS zone in Azure DNS, you need to set up NS records in the parent zone to make Azure DNS the authoritative source for name resolution for your zone. For domains purchased from a registrar, your registrar will offer the option to set up these NS records.
 
->[AZURE.NOTE] Azure DNS 内にそのドメイン名で DNS ゾーンを作成するには、ドメインを所有する必要はありません。ただし、レジストラーを使用して Azure DNS への委任を設定するには、ドメインを所有する必要があります。
+>[AZURE.NOTE] You do not have to own a domain in order to create a DNS zone with that domain name in Azure DNS. However, you do need to own the domain to set up the delegation to Azure DNS with the registrar.
 
-たとえば、ドメイン "contoso.com" を購入し、Azure DNS に "contoso.com" という名前のゾーンを作成するとします。レジストラーは、ドメインの所有者として、ドメインのネーム サーバー アドレス (つまり、NS レコード) を構成するオプションを提供します。レジストラーはこれらの NS レコードを親ドメイン (この場合は ".com") に格納します。その後、世界中のクライアントは、"contoso.com" 内の DNS レコードを解決しようとすると、Azure DNS ゾーン内のドメインに転送されます。
+For example, suppose you purchase the domain ‘contoso.com’ and create a zone with the name ‘contoso.com’ in Azure DNS. As the owner of the domain, your registrar will offer you the option to configure the name server addresses (that is, the NS records) for your domain. The registrar will store these NS records in the parent domain, in this case ‘.com’. Clients around the world will then be directed to your domain in Azure DNS zone when trying to resolve DNS records in ‘contoso.com’.
 
-### ネーム サーバー名の特定
+### <a name="finding-the-name-server-names"></a>Finding the name server names
 
-DNS ゾーンを Azure DNS に委任するには、事前にゾーンのネーム サーバー名を把握する必要があります。Azure DNS は、ゾーンが作成されるたびに、プールからネーム サーバーを割り当てます。
+Before you can delegate your DNS zone to Azure DNS, you first need to know the name server names for your zone. Azure DNS allocates name servers from a pool each time a zone is created.
 
-ゾーンに割り当てられたネーム サーバーを把握する最も簡単な方法は、Azure ポータルの表示を確認することです。この例では、ゾーン "contoso.net" に、ネーム サーバー "ns1-01.azure-dns.com"、"ns2-01.azure-dns.net"、"ns3-01.azure-dns.org"、"ns4-01.azure-dns.info" が割り当てられています。
+The easiest way to see the name servers assigned to your zone is via the Azure portal.  In this example, the zone ‘contoso.net’ has been assigned name servers ‘ns1-01.azure-dns.com’, ‘ns2-01.azure-dns.net’, ‘ns3-01.azure-dns.org’, and ‘ns4-01.azure-dns.info’:
 
  ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
 
-割り当てられたネーム サーバーが含まれたゾーンに、権限のある NS レコードが自動的に作成されます。Azure PowerShell または Azure CLI を使用してネーム サーバー名を確認する際は、これらのレコードを取得するだけで済みます。
+Azure DNS automatically creates authoritative NS records in your zone containing the assigned name servers.  To see the name server names via Azure PowerShell or Azure CLI, you simply need to retrieve these records.
 
-Azure PowerShell を使用して、次のようにして権限のある NS レコードを取得できます。レコード名 "@" を使用して、ゾーンの頂点にあるレコードを参照することに注意してください。
+Using Azure PowerShell, the authoritative NS records can be retrieved as follows. Note that the record name “@” is used to refer to records at the apex of the zone.
 
-	PS> $zone = Get-AzureRmDnsZone –Name contoso.net –ResourceGroupName MyResourceGroup
-	PS> Get-AzureRmDnsRecordSet –Name “@” –RecordType NS –Zone $zone
+    PS> $zone = Get-AzureRmDnsZone –Name contoso.net –ResourceGroupName MyResourceGroup
+    PS> Get-AzureRmDnsRecordSet –Name “@” –RecordType NS –Zone $zone
 
-	Name              : @
-	ZoneName          : contoso.net
-	ResourceGroupName : MyResourceGroup
-	Ttl               : 3600
-	Etag              : 5fe92e48-cc76-4912-a78c-7652d362ca18
-	RecordType        : NS
-	Records           : {ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org,
+    Name              : @
+    ZoneName          : contoso.net
+    ResourceGroupName : MyResourceGroup
+    Ttl               : 3600
+    Etag              : 5fe92e48-cc76-4912-a78c-7652d362ca18
+    RecordType        : NS
+    Records           : {ns1-01.azure-dns.com, ns2-01.azure-dns.net, ns3-01.azure-dns.org,
                         ns4-01.azure-dns.info}
-	Tags              : {}
+    Tags              : {}
 
-また、クロスプラット フォームの Azure CLI を使用して、権限のある NS レコードを取得し、ゾーンに割り当てられたネーム サーバーを検出することができます。
+You can also use the cross-platform Azure CLI to retrieve the authoritative NS records and hence discover the name servers assigned to your zone:
 
-	C:\> azure network dns record-set show MyResourceGroup contoso.net @ NS
-	info:    Executing command network dns record-set show
-		+ Looking up the DNS Record Set "@" of type "NS"
-	data:    Id                              : /subscriptions/.../resourceGroups/MyResourceGroup/providers/Microsoft.Network/dnszones/contoso.net/NS/@
-	data:    Name                            : @
-	data:    Type                            : Microsoft.Network/dnszones/NS
-	data:    Location                        : global
-	data:    TTL                             : 172800
-	data:    NS records
-	data:        Name server domain name     : ns1-01.azure-dns.com.
-	data:        Name server domain name     : ns2-01.azure-dns.net.
-	data:        Name server domain name     : ns3-01.azure-dns.org.
-	data:        Name server domain name     : ns4-01.azure-dns.info.
-	data:
-	info:    network dns record-set show command OK
+    C:\> azure network dns record-set show MyResourceGroup contoso.net @ NS
+    info:    Executing command network dns record-set show
+        + Looking up the DNS Record Set "@" of type "NS"
+    data:    Id                              : /subscriptions/.../resourceGroups/MyResourceGroup/providers/Microsoft.Network/dnszones/contoso.net/NS/@
+    data:    Name                            : @
+    data:    Type                            : Microsoft.Network/dnszones/NS
+    data:    Location                        : global
+    data:    TTL                             : 172800
+    data:    NS records
+    data:        Name server domain name     : ns1-01.azure-dns.com.
+    data:        Name server domain name     : ns2-01.azure-dns.net.
+    data:        Name server domain name     : ns3-01.azure-dns.org.
+    data:        Name server domain name     : ns4-01.azure-dns.info.
+    data:
+    info:    network dns record-set show command OK
 
-### 委任を設定するには
+### <a name="to-set-up-delegation"></a>To set up delegation
 
-各レジストラーは独自の DNS 管理ツールを所有していて、ドメインのネーム サーバー レコードを変更します。レジストラーの DNS 管理ページで、NS レコードを編集し、その NS レコードを、Azure DNS で作成されたレコードに置き換えます。
+Each registrar has their own DNS management tools to change the name server records for a domain. In the registrar’s DNS management page, edit the NS records and replace the NS records with the ones Azure DNS created.
 
-ドメインを Azure DNS に委任する場合は、Azure DNS によって提供されるネーム サーバー名を使用する必要があります。対象のドメインの名前に関係なく、常に 4 つのネーム サーバー名すべてを使用する必要があります。ドメインの委任では、対象のドメインと同じトップレベル ドメインがネーム サーバー名に使用される必要はありません。
+When delegating a domain to Azure DNS, you must use the name server names provided by Azure DNS.  You should always use all 4 name server names, regardless of the name of your domain.  Domain delegation does not require the name server name to use the same top-level domain as your domain.
 
-Azure DNS ネーム サーバーの IP アドレスは後で変更される可能性があるため、これらの IP アドレスを指すために "グルー レコード" を使用しないでください。独自のゾーンのネーム サーバー名 ("バニティ ネーム サーバー" と呼ばれることもあります) を使用した委任は、現在、Azure DNS ではサポートされていません。
+You should not use 'glue records' to point to the Azure DNS name server IP addresses, since these IP addresses may change in future. Delegations using name server names in your own zone, sometimes called 'vanity name servers', are not currently supported in Azure DNS.
 
-### 名前解決が動作していることを確認するには
+### <a name="to-verify-name-resolution-is-working"></a>To verify name resolution is working
 
-委任が完了したら、"nslookup" などのツールを使用してゾーンの SOA レコードを照会することで、名前解決が動作していることを確認できます (SOA レコードは、ゾーンの作成時にも自動的に作成されます)。
+After completing the delegation, you can verify that name resolution is working by using a tool such as ‘nslookup’ to query the SOA record for your zone (which is also automatically created when the zone is created).
 
-委任が正しく設定されている場合は、通常の DNS 解決プロセスでネーム サーバーが自動的に検出されるため、Azure DNS ネーム サーバーを指定する必要はありません。
+Note that you do not have to specify the Azure DNS name servers, since the normal DNS resolution process will find the name servers automatically if the delegation has been set up correctly.
 
-	nslookup –type=SOA contoso.com
+    nslookup –type=SOA contoso.com
 
-	Server: ns1-04.azure-dns.com
-	Address: 208.76.47.4
+    Server: ns1-04.azure-dns.com
+    Address: 208.76.47.4
 
-	contoso.com
-	primary name server = ns1-04.azure-dns.com
-	responsible mail addr = msnhst.microsoft.com
-	serial = 1
-	refresh = 900 (15 mins)
-	retry = 300 (5 mins)
-	expire = 604800 (7 days)
-	default TTL = 300 (5 mins)
+    contoso.com
+    primary name server = ns1-04.azure-dns.com
+    responsible mail addr = msnhst.microsoft.com
+    serial = 1
+    refresh = 900 (15 mins)
+    retry = 300 (5 mins)
+    expire = 604800 (7 days)
+    default TTL = 300 (5 mins)
 
-## Azure DNS サブドメインの委任
+## <a name="delegating-sub-domains-in-azure-dns"></a>Delegating sub-domains in Azure DNS
 
-別の子ゾーンを設定する必要がある場合は、Azure DNS でサブドメインを委任できます。たとえば、Azure DNS で "contoso.com" を設定して委任した後、別の子ゾーン "partners.contoso.com" を設定するとします。
+If you want to set up a separate child zone, you can delegate a sub-domain in Azure DNS. For example, having set up and delegated ‘contoso.com’ in Azure DNS, suppose you would like to set up a separate child zone, ‘partners.contoso.com’.
 
-通常の委任と同様の手順で、サブドメインを設定します。唯一異なる点は、手順 3. で、ドメイン レジストラーを使用して NS レコードを設定するのではなく、Azure DNS の親ゾーン "contoso.com" に NS レコードを作成する必要があることです。
-
-
-1. Azure DNS で子ゾーン "partners.contoso.com" を作成します。
-2. 子ゾーンで権限のある NS レコードを検索し、Azure DNS で子ゾーンをホストするネーム サーバーを取得します。
-3. 子ゾーンを指す親ゾーンで NS レコードを構成することで、子ゾーンを委任します。
+Setting up a sub-domain follows a similar process as a normal delegation. The only difference is that in step 3 the NS records must be created in the parent zone ‘contoso.com’ in Azure DNS, rather than being set up via a domain registrar.
 
 
-### サブドメインを委任するには
+1. Create the child zone ‘partners.contoso.com’ in Azure DNS.
+2. Look up the authoritative NS records in the child zone to obtain the name servers hosting the child zone in Azure DNS.
+3. Delegate the child zone by configuring NS records in the parent zone pointing to the child zone.
 
-これを PowerShell で行う例を次に示します。同じ手順を、Azure ポータルまたはクロスプラットフォームの Azure CLI を使用して実行できます。
 
-#### 手順 1.親ゾーンと子ゾーンを作成する
+### <a name="to-delegate-a-sub-domain"></a>To delegate a sub-domain
 
-最初に、親ゾーンと子ゾーンを作成します。どちらも同じリソース グループに含めることも、別々のリソース グループに含めることもできます。
+The following PowerShell example demonstrates how this works. The same steps can be executed via the Azure Portal, or via the cross-platform Azure CLI.
 
-	$parent = New-AzureRmDnsZone -Name contoso.com -ResourceGroupName RG1
-	$child = New-AzureRmDnsZone -Name partners.contoso.com -ResourceGroupName RG1
+#### <a name="step-1.-create-the-parent-and-child-zones"></a>Step 1. Create the parent and child zones
 
-#### 手順 2.NS レコードを取得する
+First, we create the parent and child zones. These can be in same resource group or different resource groups.
 
-次に、次の例で示すように、子ゾーンから権限のある NS レコードを取得します。このレコードに、子ゾーンに割り当てられたネーム サーバーが記載されています。
+    $parent = New-AzureRmDnsZone -Name contoso.com -ResourceGroupName RG1
+    $child = New-AzureRmDnsZone -Name partners.contoso.com -ResourceGroupName RG1
 
-	$child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
+#### <a name="step-2.-retrieve-ns-records"></a>Step 2. Retrieve NS records
 
-#### 手順 3.子ゾーンを委任する
+Next, we retrieve the authoritative NS records from child zone as shown in the next example.  This contains the name servers assigned to the child zone.
 
-対応する NS レコード セットを親ゾーンに作成して、委任を完了します。親ゾーン内のレコード セットの名前が、子ゾーンの名前と一致していることに注意してください。この例では "partners" です。
+    $child_ns_recordset = Get-AzureRmDnsRecordSet -Zone $child -Name "@" -RecordType NS
 
-	$parent_ns_recordset = New-AzureRmDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
-	$parent_ns_recordset.Records = $child_ns_recordset.Records
-	Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
+#### <a name="step-3.-delegate-the-child-zone"></a>Step 3. Delegate the child zone
 
-### 名前解決が動作していることを確認するには
+Create corresponding NS record set in the parent zone to complete the delegation. Note that the record set name in the parent zone matches the child zone name, in this case "partners".
 
-子ゾーンの SOA レコードを検索することで、すべてが正しく設定されていることを確認できます。
+    $parent_ns_recordset = New-AzureRmDnsRecordSet -Zone $parent -Name "partners" -RecordType NS -Ttl 3600
+    $parent_ns_recordset.Records = $child_ns_recordset.Records
+    Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
 
-	nslookup –type=SOA partners.contoso.com
+### <a name="to-verify-name-resolution-is-working"></a>To verify name resolution is working
 
-	Server: ns1-08.azure-dns.com
-	Address: 208.76.47.8
+You can verify that everything is set up correctly by looking up the SOA record of the child zone.
 
-	partners.contoso.com
-		primary name server = ns1-08.azure-dns.com
-		responsible mail addr = msnhst.microsoft.com
-		serial = 1
-		refresh = 900 (15 mins)
-		retry = 300 (5 mins)
-		expire = 604800 (7 days)
-		default TTL = 300 (5 mins)
+    nslookup –type=SOA partners.contoso.com
 
-## 次のステップ
+    Server: ns1-08.azure-dns.com
+    Address: 208.76.47.8
 
-[DNS ゾーンの管理](dns-operations-dnszones.md)
+    partners.contoso.com
+        primary name server = ns1-08.azure-dns.com
+        responsible mail addr = msnhst.microsoft.com
+        serial = 1
+        refresh = 900 (15 mins)
+        retry = 300 (5 mins)
+        expire = 604800 (7 days)
+        default TTL = 300 (5 mins)
 
-[DNS レコードの管理](dns-operations-recordsets.md)
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_1005_2016-->
+[Manage DNS zones](dns-operations-dnszones.md)
+
+[Manage DNS records](dns-operations-recordsets.md)
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

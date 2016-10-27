@@ -1,49 +1,56 @@
 <properties
-	pageTitle="許可されていない使用に関するレポート | Microsoft Azure"
-	description="許可されていない使用に関するレポートを使用すると、有料の Azure AD 機能を使用しているライセンスのないユーザーを特定できます。"
-	services="active-directory"
-	documentationCenter=""
-	authors="markusvi"
-	manager="femila"
-	editor=""/>
+    pageTitle="Unlicensed Usage Report | Microsoft Azure"
+    description="The unlicensed usage report helps you identify unlicensed users that are using paid Azure AD features."
+    services="active-directory"
+    documentationCenter=""
+    authors="MarkusVi"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/25/2016"
-	ms.author="markvi"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/20/2016"
+    ms.author="markvi"/>
 
-# 許可されていない使用に関するレポート
 
-許可されていない使用に関するレポートを使用すると、有料の Azure AD 機能を使用しているライセンスのないユーザーを特定できます。これにより、購入したライセンスの使用をより適切に管理できるほか、ライセンスを追加する必要があるタイミングがわかります。
+# <a name="unlicensed-usage-report"></a>Unlicensed usage report
 
-レポートには、過去 30 日間にわたって有料機能のアクティブな使用状況が示されます。
+The unlicensed usage report helps you identify unlicensed users that are using paid Azure AD features. This allows you to make better use of licenses that you have purchased and to identify you know when you may need additional licenses. 
 
-## レポートの構造
+The report shows active usage of the paid features in the last 30 days. 
+
+## <a name="report-structure"></a>Report structure
  
-| 列名 |	説明 |
+| Column name          |    Description |
 | :--                  | :--         |
-| ライセンスのないユーザー |	ユーザーの名前 |
-| 機能 | 機能名。例: 条件付きアクセス |
-| アクセスしたアプリケーション | 機能によってアクセスされているアプリケーションの名前。例: Office 365 SharePoint Online |
+| Unlicensed User      |    Name of the user |
+| Feature              | The feature name. For example: conditional access |
+| Application Accessed | The name of the application that is being accessed with the feature. For example: Office 365 SharePoint Online |
 
  
-> [AZURE.NOTE] ユーザー アカウントが削除されている場合、[ライセンスのないユーザー] 列には 1003000090D8B285 のような ID が示されます。
+> [AZURE.NOTE] If a user account has been deleted the ‘Unlicensed User’ column will be populated with an ID, like 1003000090D8B285
 
 
-## 条件付きアクセス機能
+## <a name="conditional-access-feature"></a>Conditional access feature
 
-条件付きアクセス ポリシーが適用されているサービスに Azure AD Premium ライセンスを持たないユーザーがアクセスすると、ライセンスを持たないユーザーであることを示すフラグが設定されます。
+Unlicensed users will be flagged when they access a service that has conditional access policy applied if they do not have an Azure AD Premium license. 
 
-これは、Intune を使用するデバイス ポリシーに加えて、MFA ポリシーや場所ポリシーにも適用されます。
+This applies to MFA / Location policies as well as device polices that use Intune.
  
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-- [Office 365 およびその他の Azure Active Directory 接続アプリでの条件付きアクセスの使用](active-directory-conditional-access.md)
-- [Azure AD への条件付きアクセスの基本](active-directory-conditional-access-azuread-connected-apps.md)
+- [Using Conditional Access with Office 365 and other Azure Active Directory connected apps](active-directory-conditional-access.md)
+- [Getting started with conditional access to Azure AD](active-directory-conditional-access-azuread-connected-apps.md) 
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

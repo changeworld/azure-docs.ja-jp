@@ -1,167 +1,173 @@
 <properties
-	pageTitle="オンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする | Microsoft Azure"
-	description="VMware VM または Windows/Linux 物理サーバーを Azure Site Recovery を使用してセカンダリ サイトにレプリケートする場合は、この記事を参照してください。"
-	services="site-recovery"
-	documentationCenter=""
-	authors="nsoneji"
-	manager="jwhit"
-	editor=""/>
+    pageTitle="Replicate on-premises VMware virtual machines or physical servers to a secondary site | Microsoft Azure"
+    description="Use this article to replicate VMware VMs or Windows/Linux physical servers to a secondary site with Azure Site Recovery."
+    services="site-recovery"
+    documentationCenter=""
+    authors="nsoneji"
+    manager="jwhit"
+    editor=""/>
 
 <tags
-	ms.service="site-recovery"
-	ms.workload="backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="nisoneji"/>
+    ms.service="site-recovery"
+    ms.workload="backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/16/2016"
+    ms.author="nisoneji"/>
 
 
-# オンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする
+
+# <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Replicate on-premises VMware virtual machines or physical servers to a secondary site
 
 
-## Overview
+## <a name="overview"></a>Overview
 
-Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイト間のリアルタイムのレプリケーションを実現します。InMage Scout は、Azure Site Recovery サービスのサブスクリプションに含まれています。
-
-
-## 前提条件
-
-**Azure アカウント**: [Microsoft Azure](https://azure.microsoft.com/) アカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)をご覧ください。
+InMage Scout in Azure Site Recovery provides real-time replication between on-premises VMware sites. InMage Scout is included in Azure Site Recovery service subscriptions.
 
 
-## ステップ 1: コンテナーの作成
+## <a name="prerequisites"></a>Prerequisites
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
-3. **[新規作成]**、**[簡易作成]** の順にクリックします。
-4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
-5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンについては、「[Azure Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」をご覧ください。
-
-ステータス バーを確認して、コンテナーが正常に作成されたことを確かめます。**Recovery Services** のメイン ページでは、資格情報コンテナーは **[アクティブ]** と表示されます。
-
-## 手順 2: コンテナーの構成および InMage Scout コンポーネントのダウンロード
-
-1. **[コンテナーの作成]** をクリックします。
-2. **[Recovery Services]** ページで、コンテナーをクリックして **[クイック スタート]** ページを開きます。
-3. ドロップダウン リストで、**[2 つのオンプレミス VMWare サイト間]** を選択します。
-4. InMage Scout をダウンロードします。必要なすべてのコンポーネントのセットアップ ファイルは、ダウンロードした .zip ファイルに含まれています。
+**Azure account**: You'll need a [Microsoft Azure](https://azure.microsoft.com/) account. You can start with a [free trial](https://azure.microsoft.com/pricing/free-trial/). [Learn more](https://azure.microsoft.com/pricing/details/site-recovery/) about Site Recovery pricing.
 
 
-## 手順 3: コンポーネント更新プログラムのインストール
+## <a name="step-1:-create-a-vault"></a>Step 1: Create a vault
 
-最新の[更新プログラム](#updates)について確認します。更新プログラムのファイルを、次の順序でサーバーにインストールします。
+1. Sign in to the [Azure portal](https://portal.azure.com).
+2. Click **Data Services** > **Recovery Services** > **Site Recovery Vault**.
+3. Click **Create New** > **Quick Create**.
+4. In **Name**, enter a friendly name to identify the vault.
+5. In **Region**, select the geographic region for the vault. To check supported regions, see [Azure Site Recovery Pricing](https://azure.microsoft.com/pricing/details/site-recovery/).
 
-1. RX サーバー (存在する場合)
-2. 構成サーバー
-3. プロセス サーバー
-3. マスター ターゲット サーバー
-4. vContinuum サーバー
-5. ソース サーバー (Windows サーバーの場合のみ)
+Check the status bar to confirm that the vault was successfully created. The vault will be listed as **Active** on the main **Recovery Services** page.
 
-次のように、更新プログラムをインストールします。
+## <a name="step-2:-configure-the-vault-and-download-inmage-scout-components"></a>Step 2: Configure the vault and download InMage Scout components
 
-1. [更新プログラム](https://aka.ms/asr-scout-update3)の .zip ファイルをダウンロードします。この .zip ファイルには、次のファイルが含まれています。
-
-	-  RX_8.0.3.0_GA\_Update_3_6684045\_17Mar16.tar.gz
-	-  CX\_Windows_8.0.3.0_GA\_Update_3_5048668\_16Mar16.exe
-	-  UA\_Windows_8.0.3.0_GA\_Update_3_7101745\_04Apr16.exe
-	-  UA\_RHEL6-64_8.0.3.0_GA\_Update_3_7101745\_04Apr16.zip
-	-  vCon\_Windows_8.0.3.0_GA\_Update_3_6873369\_16Mar16.exe
-
-2. .zip ファイルを抽出します。
-3. **RX サーバー**: **RX_8.0.3.0_GA\_Update_3_6684045\_17Mar16.tar.gz** を RX サーバーにコピーし、抽出します。抽出先のフォルダーで、**/Install** を実行します。
-4. **構成サーバー/プロセス サーバー**: **CX\_Windows_8.0.3.0_GA\_Update_3_5048668\_16Mar16.exe** を構成サーバーとプロセス サーバーにコピーします。ファイルをダブルクリックして実行します。
-5. **Windows マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_Windows_8.0.3.0_GA\_Update_3_7101745\_04Apr16.exe** をマスター ターゲット サーバーにコピーします。ファイルをダブルクリックして実行します。統合エージェントはソース サーバーにも適用できます。後で説明する手順に従って、ソース サーバーにも統合エージェントをインストールしてください。
-6. **Linux マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA\_RHEL6-64_8.0.3.0_GA\_Update_3_7101745\_04Apr16.zip** をマスター ターゲット サーバーにコピーし、抽出します。抽出先のフォルダーで、**/Install** を実行します。
-7. **vContinuum サーバー**: **vCon\_Windows_8.0.3.0_GA\_Update_3_6873369\_16Mar16.exe** を vContinuum サーバーにコピーします。vContinuum ウィザードを閉じたことを確認してください。ファイルをダブルクリックして実行します。
-8. **Windows ソース サーバー**: 統合エージェントを更新するには、**UA\_Windows_8.0.3.0_GA\_Update_3_7101745\_04Apr16.exe** をソース サーバーにコピーします。ファイルをダブルクリックして実行します。
-
-## 手順 4: レプリケーションの設定
-1. ソースとターゲットの VMware サイト間にレプリケーションを設定します。
-2. 手順については、製品と共にダウンロードされる InMage Scout の資料をご覧ください。または、次の資料をご覧ください。
-
-	- [リリース ノート](https://aka.ms/asr-scout-release-notes)
-	- [互換性対応表](https://aka.ms/asr-scout-cm)
-	- [ユーザー ガイド](https://aka.ms/asr-scout-user-guide)
-	- [RX ユーザー ガイド](https://aka.ms/asr-scout-rx-user-guide)
-	- [クイック インストール ガイド](https://aka.ms/asr-scout-quick-install-guide)
+1. Click **Create vault**.
+2. On the **Recovery Services** page, click the vault to open the **Quick Start** page.
+3. In the dropdown list, select **Between two on-premises VMware sites**.
+4. Download InMage Scout. The setup files for all of the required components are in the downloaded .zip file.
 
 
-## 更新プログラム
+## <a name="step-3:-install-component-updates"></a>Step 3: Install component updates
 
-### Azure Site Recovery Scout 8.0.1 更新プログラム 3
-更新プログラム 3 には、以下のバグの修正と機能強化が含まれています。
+Read about the latest [updates](#updates). You'll install the update files on servers in the following order:
 
-- プロキシを経由する場合、構成サーバーと RX が Site Recovery コンテナーへの登録に失敗します。
-- 正常性レポートで、目標復旧時点 (RPO) が満たされていない時間数が更新されません。
-- ESX ハードウェアの詳細またはネットワークの詳細に UTF-8 文字が含まれている場合、構成サーバーが RX と同期しません。
-- 復旧後、Windows Server 2008 R2 ドメイン コント ローラーの起動が失敗します。
-- オフライン同期が正常に動作しません。
-- 仮想マシン (VM) のフェールオーバー後に、 レプリケーション ペアの削除処理が CX UI で長時間停止状態となり、ユーザーがフェールバックを完了することも、操作を再開することもできなくなります。
-- SQL クライアントなどのアプリケーション接続の切断を減らすことを目的に、整合性ジョブによって行われるスナップショット操作が全体的に最適化されました。
-- Windows でのスナップショット作成に必要なメモリ使用量を減らすことで、整合性ツール (VACP.exe) のパフォーマンスが改善されました。
-- パスワードが 16 文字を超える場合、プッシュ インストール サービスがクラッシュします。
-- 資格情報が変更された場合、vContinuum が新しい vCenter 資格情報を確認せず、入力も求めません。
-- Linux で、マスター ターゲットのキャッシュ マネージャー (cachemgr) がプロセス サーバーからファイルをダウンロードしないため、レプリケーション ペアの調整が発生します。
-- 物理フェールオーバー クラスター (MSCS) ディスクの順序がノード間で統一されていない場合、一部のクラスター ボリュームにレプリケーションが設定されません。<br/>この修正を適用するには、クラスターを再保護する必要があることに注意してください。
-- RX が Scout 7.1 から Scout 8.0.1 にアップグレードされた後、SMTP 機能が正常に動作しません。
-- ロールバック操作の完了までの時間を追跡するために、より多くの統計がロールバック操作ログに追加されました。
-- ソース サーバーの Linux オペレーティング システムに追加されたサポートは次のとおりです。
-	- Red Hat Enterprise Linux (RHEL) 6 update 7
-	- CentOS 6 update 7
-- CX および RX の UI に、ビットマップ モードに移行するペアについての通知が表示されるようになりました。
-- 次のセキュリティ修正プログラムが RX に追加されました。
+1. RX server if there is one
+2. Configuration servers
+3. Process servers
+3. Master target servers
+4. vContinuum servers
+5. Source server (only for Windows Server)
 
-**問題の説明**|**実装手順**
+Install the updates as follows:
+
+1. Download the [update](https://aka.ms/asr-scout-update3) .zip file. This .zip file contains the following files:
+
+    -  RX_8.0.3.0_GA_Update_3_6684045_17Mar16.tar.gz
+    -  CX_Windows_8.0.3.0_GA_Update_3_5048668_16Mar16.exe
+    -  UA_Windows_8.0.3.0_GA_Update_3_7101745_04Apr16.exe
+    -  UA_RHEL6-64_8.0.3.0_GA_Update_3_7101745_04Apr16.zip
+    -  vCon_Windows_8.0.3.0_GA_Update_3_6873369_16Mar16.exe
+
+2. Extract the .zip files.
+3. **For the RX server**: Copy **RX_8.0.3.0_GA_Update_3_6684045_17Mar16.tar.gz** to the RX server and extract it. In the extracted folder, run **/Install**.
+4. **For the configuration server/process server**: Copy **CX_Windows_8.0.3.0_GA_Update_3_5048668_16Mar16.exe** to the configuration server and process server. Double-click to run it.
+5. **For the Windows master target server**: To update the unified agent, copy **UA_Windows_8.0.3.0_GA_Update_3_7101745_04Apr16.exe** to the master target server. Double-click it to run it. Note that the unified agent is also applicable to the source server. You should install it on the source server as well, as mentioned later in this list.
+6. **For the Linux master target server**: To update the unified agent, copy **UA_RHEL6-64_8.0.3.0_GA_Update_3_7101745_04Apr16.zip** to the master target server and extract it. In the extracted folder, run **/Install**.
+7. **For the vContinuum server**: Copy **vCon_Windows_8.0.3.0_GA_Update_3_6873369_16Mar16.exe** to the vContinuum server. Make sure that you've closed the vContinuum wizard. Double-click on the file to run it.
+8. **For the Windows source server**: To update the unified agent, copy **UA_Windows_8.0.3.0_GA_Update_3_7101745_04Apr16.exe** to the source server. Double-click it to run it.
+
+## <a name="step-4:-set-up-replication"></a>Step 4: Set up replication
+1. Set up replication between the source and target VMware sites.
+2. For guidance, use the InMage Scout documentation that's downloaded with the product. Alternatively, you can access the documentation as follows:
+
+    - [Release notes](https://aka.ms/asr-scout-release-notes)
+    - [Compatibility matrix](https://aka.ms/asr-scout-cm)
+    - [User guide](https://aka.ms/asr-scout-user-guide)
+    - [RX user guide](https://aka.ms/asr-scout-rx-user-guide)
+    - [Quick installation guide](https://aka.ms/asr-scout-quick-install-guide)
+
+
+## <a name="updates"></a>Updates
+
+### <a name="azure-site-recovery-scout-8.0.1-update-3"></a>Azure Site Recovery Scout 8.0.1 Update 3
+Update 3 includes the following bug fixes and enhancements:
+
+- The configuration server and RX fail to register to the Site Recovery vault when they're behind the proxy.
+- The number of hours that the recovery point objective (RPO) is not met is not getting updated in the health report.
+- The configuration server is not syncing with RX when the ESX hardware details or network details contain any UTF-8 characters.
+- Windows Server 2008 R2 domain controllers fail to boot after recovery.
+- Offline sync is not working as expected.
+- After virtual machine (VM) failover, replication-pair deletion gets stuck in the CX UI for a long time, and users cannot complete the failback or resume operation.
+- Overall snapshot operations that are done by the consistency job have been optimized to help reduce application disconnects like SQL clients.
+- The performance of the consistency tool (VACP.exe) has been improved by reducing the memory usage that is required for creating snapshots on Windows.
+- The push install service crashes when the password is greater than 16 characters.
+- vContinuum is not checking and prompting for new vCenter credentials when the credentials are changed.
+- On Linux, the master target cache manager (cachemgr) is not downloading files from the process server, which results in replication pair throttling.
+- When the physical failover cluster (MSCS) disk order is not the same on all the nodes, replication is not set for some of the cluster volumes.
+<br/>Note that the cluster needs to be reprotected to take advantage of this fix.  
+- SMTP functionality is not working as expected after RX is upgraded from Scout 7.1 to Scout 8.0.1.
+- More stats have been added in the log for the rollback operation to track the time it has taken to complete it.
+- Support has been added for Linux operating systems on the source server:
+    - Red Hat Enterprise Linux (RHEL) 6 update 7
+    - CentOS 6 update 7
+- The CX and RX UI can now show the notification for the pair, which goes into bitmap mode.
+- The following security fixes have been added in RX:
+
+**Issue description**|**Implementation procedures**
 ---|---
-パラメーターの改ざんによる承認のバイパス|未承認ユーザーのアクセスを制限。
-クロスサイト リクエスト フォージェリ|ページごとにランダムに生成されるページ トークンの概念を導入。<br/>この修正の結果: <li> 1 人のユーザーに対して 1 つのサインイン インスタンスのみが存在。</li><li>ページ更新が機能しなくなり、ダッシュボードにリダイレクトされる。</li>
-安全でないファイルのアップロード|特定の拡張子にファイルを限定。許可される拡張子: 7z、aiff、asf、avi、bmp、csv、doc、docx、fla、flv、gif、gz、gzip、jpeg、jpg、log、mid、mov、mp3、mp4、mpc、mpeg、mpg、ods、odt、pdf、png、ppt、pptx、pxd、qt、ram、rar、rm、rmi、rmvb、rtf、sdc、sitd、swf、sxc、sxw、tar、tgz、tif、tiff、txt、vsd、wav、wma、wmv、xls、xlsx、xml、zip
-永続的なクロスサイト スクリプティング | 入力検証を追加。
+Authorization bypass via parameter tampering|Restricted access to non-applicable users.
+Cross-site request forgery|Implemented the page-token concept, which generates randomly for every page. <br/>With this, you will see: <li> There is only a single sign-in instance for the same user.</li><li>Page refresh does not work--it will redirect to the dashboard.</li>
+Malicious file upload|Restricted files to certain extensions. Allowed extensions are: 7z, aiff, asf, avi, bmp, csv, doc, docx, fla, flv, gif, gz, gzip, jpeg, jpg, log, mid, mov, mp3, mp4, mpc, mpeg, mpg, ods, odt, pdf, png, ppt, pptx, pxd, qt, ram, rar, rm, rmi, rmvb, rtf, sdc, sitd, swf, sxc, sxw, tar, tgz, tif, tiff, txt, vsd, wav, wma, wmv, xls, xlsx, xml, and zip.
+Persistent cross-site scripting | Added input validations.
 
 
 >[AZURE.NOTE]
 >
->-	Site Recovery の更新プログラムはすべて累積的です。更新プログラム 3 には、更新プログラム 1 と更新プログラム 2 のすべての修正点が含まれています。更新プログラム 3 は、8.0.1 GA に直接適用できます。
->-	構成サーバーと RX の更新プログラムは、適用後にロールバックすることはできません。
+>-  All Site Recovery updates are cumulative. Update 3 has all the fixes of Update 1 and Update 2. Update 3 can be directly applied on 8.0.1 GA.
+>-  The configuration server and RX updates can’t be rolled back after they're applied on the system.
 
-### Azure Site Recovery Scout 8.0.1 更新プログラム 2 (2015 年 12 月 3 日)
+### <a name="azure-site-recovery-scout-8.0.1-update-2-(update-03dec15)"></a>Azure Site Recovery Scout 8.0.1 Update 2 (Update 03Dec15)
 
-更新プログラム 2 の修正内容は次のとおりです。
+Fixes in Update 2 include:
 
-- **構成サーバー**: 構成サーバーが Site Recovery に登録される際に、31 日間の無料計測機能が予期どおりに動作しない問題が修正されます。
-- **統合エージェント**: マスター ターゲット サーバーをバージョン 8.0 から 8.0.1 にアップグレードする際に更新プログラムがインストールされないという、更新プログラム 1 の問題が修正されます。
+- **Configuration server**: Fix for an issue that prevented the 31-day free metering feature from working as expected when the configuration server was registered in Site Recovery.
+- **Unified agent**: Fix for an issue in Update 1 that resulted in the update not being installed on the master target server when it was upgraded from version 8.0 to 8.0.1.
 
 
-### Azure Site Recovery Scout 8.0.1 更新プログラム 1
+### <a name="azure-site-recovery-scout-8.0.1-update-1"></a>Azure Site Recovery Scout 8.0.1 Update 1
 
-更新プログラム 1 には、以下のバグの修正と新機能が含まれています。
+Update 1 includes the following bug fixes and new features:
 
-- 各サーバー インスタンスについて 31 日間の無料保護が提供されます。これにより、機能をテストしたり、概念実証を設定したりすることができます。
-	- Site Recovery Scout によるサーバーの保護が初めて開始された時点から 31 日間、フェールオーバーとフェールバックを含むサーバーへのすべての操作が無料となります。
-	- 32 日目以降は、お客様が所有するサイトに対する Azure Site Recovery 保護について、各保護対象サーバーに Standard インスタンスの料金が請求されます。
-	- 現在課金されている保護対象サーバーの数は、いつでも Azure Site Recovery コンテナーのダッシュボード ページで確認できます。
-- vSphere コマンド ライン インターフェイス (vCLI) 5.5 更新プログラム 2 のサポートが追加されました。
-- ソース サーバーの Linux オペレーティング システムに追加されたサポートは次のとおりです。
-	- RHEL 6 Update 6
-	- RHEL 5 Update 11
-	- CentOS 6 Update 6
-	- CentOS 5 Update 11
-- 次の問題に対処するバグの修正が提供されます。
-	- 構成サーバーまたは RX サーバーに対するコンテナー登録に失敗する。
-	- クラスター化された仮想マシンを再開時に再保護すると、クラスターのボリュームが適切に表示されない。
-	- マスター ターゲット サーバーがオンプレミスの運用仮想マシンとは異なる ESXi サーバーでホストされている場合、フェールバックが失敗する。
-	- 8\.0.1 にアップグレードすると構成ファイルのアクセス許可が変更され、保護や操作に影響が出る。
-	- 再同期のしきい値が適切に適用されないため、レプリケーションの動作に不整合が生じる。
-	- 構成サーバーのインターフェイスに、RPO 設定が正しく表示されない。圧縮されないデータ値に、誤って圧縮された値が表示される。
-	-  vContinuum ウィザードで削除操作を行っても適切に削除されず、レプリケーションが構成サーバーのインターフェイスから削除されない。
-	-  vContinuum ウィザードで、MSCS 仮想マシンの保護中にディスク ビューで **[詳細]** をクリックするとディスクの選択が解除される。
-	- 物理 - 仮想 (P2V) シナリオで、仮想マシンの復旧中に CIMnotify や CqMgHost などの必須 HP サービスが手動に移行しない。これにより、起動時間が長くなる。
-	- マスター ターゲット サーバーに 27 個以上のディスクがある場合、Linux 仮想マシンの保護が失敗する。
+- 31 days of free protection per server instance. This enables you to test functionality or set up a proof-of-concept.
+    - All operations on the server, including failover and failback, are free for the first 31 days, starting from the time that a server is first protected with Site Recovery Scout.
+    - From the 32nd day onwards, each protected server will be charged at the standard instance rate for Azure Site Recovery protection to a customer-owned site.
+    - At any time, the number of protected servers that are currently being charged is available on the Dashboard page of the Azure Site Recovery vault.
+- Support added for vSphere Command-Line Interface (vCLI) 5.5 Update 2.
+- Support added for Linux operating systems on the source server:
+    - RHEL 6 Update 6
+    - RHEL 5 Update 11
+    - CentOS 6 Update 6
+    - CentOS 5 Update 11
+- Bug fixes to address the following issues:
+    - Vault registration fails for the configuration server or RX server.
+    - Cluster volumes don't appear as expected when clustered virtual machines are reprotected when they resume.
+    - Failback fails when the master target server is hosted on a different ESXi server from the on-premises production virtual machines.
+    - Configuration file permissions are changed when you upgrade to 8.0.1, which affects protection and operations.
+    - The resynchronization threshold isn't enforced as expected, which leads to inconsistent replication behavior.
+    - The RPO settings are not appearing correctly in the configuration server interface. The uncompressed data value incorrectly shows the compressed value.
+    -  The Remove operation doesn't delete as expected in the vContinuum wizard, and replication isn't deleted from the configuration server interface.
+    -  In the vContinuum wizard, the disk is automatically unselected when you click **Details** in the disk view during protection of MSCS virtual machines.
+    - During the physical-to-virtual (P2V) scenario, required HP services, such as CIMnotify and CqMgHost, aren't moved to manual in virtual machine recovery. This results in additional boot time.
+    - Linux virtual machine protection fails when there are more than 26 disks on the master target server.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-疑問点がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿して質問してください。
+Post any questions that you have on the [Azure Recovery Services forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

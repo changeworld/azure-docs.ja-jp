@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Slack の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Slack を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Slack | Microsoft Azure" 
+    description="Learn how to use Slack with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,130 +14,138 @@
     ms.date="09/19/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Slack の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-slack"></a>Tutorial: Azure Active Directory integration with Slack
   
-このチュートリアルでは、Azure と Slack の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and Slack.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   Slack でのシングル サインオンが有効なサブスクリプション
+-   A valid Azure subscription
+-   A Slack single sign-on enabled subscription
   
-このチュートリアルを完了すると、Slack に割り当てた Azure AD ユーザーは、Slack 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to Slack will be able to single sign into the application at your Slack company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Slack のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for Slack
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-slack-tutorial/IC794980.png "シナリオ")
+![Scenario](./media/active-directory-saas-slack-tutorial/IC794980.png "Scenario")
 
-##Slack のアプリケーション統合の有効化
+##<a name="enabling-the-application-integration-for-slack"></a>Enabling the application integration for Slack
   
-このセクションでは、Slack のアプリケーション統合を有効にする方法について説明します。
+The objective of this section is to outline how to enable the application integration for Slack.
 
-###Slack のアプリケーション統合を有効にするには、次の手順を実行します。
+###<a name="to-enable-the-application-integration-for-slack,-perform-the-following-steps:"></a>To enable the application integration for Slack, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-slack-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-slack-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-slack-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-slack-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-slack-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-slack-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-slack-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Slack**」と入力します。
+6.  In the **search box**, type **Slack**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-slack-tutorial/IC794981.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-slack-tutorial/IC794981.png "Application Gallery")
 
-7.  結果ウィンドウで **[Slack]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Slack**, and then click **Complete** to add the application.
 
-    ![シナリオ](./media/active-directory-saas-slack-tutorial/IC796925.png "シナリオ")
+    ![Scenario](./media/active-directory-saas-slack-tutorial/IC796925.png "Scenario")
 
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、Slack で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+The objective of this section is to outline how to enable users to authenticate to Slack with their account in Azure AD using federation based on the SAML protocol.  
+As part of this procedure, you are required to create a base-64 encoded certificate file.  
+If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Slack** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Slack** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/IC794982.png "Configure Single Sign-On")
 
-2.  **[ユーザーの Slack へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Slack** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/IC794983.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの **[Slack サインイン URL]** ボックスに、Slack テナントの URL (例: "*https://azuread.slack.com*") を入力し、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **Slack Sign In URL** textbox, type the URL of your Slack tenant (e.g.: "*https://azuread.slack.com*"), and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-slack-tutorial/IC794984.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-slack-tutorial/IC794984.png "Configure App URL")
 
-4.  **[Slack でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、コンピューターで証明書ファイルをローカルに保存します。
+4.  On the **Configure single sign-on at Slack** page, to download your certificate, click **Download certificate**, and then save the certificate file locally on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/IC794985.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザー ウィンドウで、Slacka 企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your Slack company site as an administrator.
 
-6.  **[Microsoft Azure AD]、[Team Settings]** の順に選択します。
+6.  Go to **to Microsoft Azure AD \> Team Settings**.
 
-    ![チーム設定](./media/active-directory-saas-slack-tutorial/IC794986.png "チーム設定")
+    ![Team Settings](./media/active-directory-saas-slack-tutorial/IC794986.png "Team Settings")
 
-7.  **[Team Settings]** セクションで、**[Authentication]** タブをクリックし、**[Change Settings]** をクリックします。
+7.  In the **Team Settings** section, click the **Authentication** tab, and then click **Change Settings**.
 
-    ![チーム設定](./media/active-directory-saas-slack-tutorial/IC794987.png "チーム設定")
+    ![Team Settings](./media/active-directory-saas-slack-tutorial/IC794987.png "Team Settings")
 
-8.  **[SAML Authentication Settings]** ダイアログで、次の手順を実行します。
+8.  On the **SAML Authentication Settings** dialog, perform the following steps:
 
-    ![SAML 設定](./media/active-directory-saas-slack-tutorial/IC794988.png "SAML 設定")
+    ![SAML Settings](./media/active-directory-saas-slack-tutorial/IC794988.png "SAML Settings")
 
-    1.  Azure クラシック ポータルで、**[Slack でのシングル サインオンの構成]** ダイアログ ページの **[SAML SSO URL]** の値をコピーし、**[SAML 2.0 Endpoint (HTTP) (SAML 2.0 エンドポイント (HTTP))]** ボックスに貼り付けます。
-    2.  Azure クラシック ポータルで、**[Slack でのシングル サインオンの構成]** ダイアログ ページの **[発行者の URL]** の値をコピーし、**[ID プロバイダーの発行者]** ボックスに貼り付けます。
-    3.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
+    1.  In the Azure classic portal, on the **Configure single sign-on at Slack** dialog page, copy the **SAML SSO URL** value, and then paste it into the **SAML 2.0 Endpoint (HTTP)** textbox.
+    2.  In the Azure classic portal, on the **Configure single sign-on at Slack** dialog page, copy the **Issuer URL** value, and then paste it into the **Identity Provider Issuer** textbox.
+    3.  Create a **base-64 encoded** file from your downloaded certificate.
     
-        >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP] For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 
-    4.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[Public Certificate]** テキスト ボックスに貼り付けます。
-    5.  **[Allow users to change their email address]** を選択解除します。
-    6.  **[Allow users to choose their own username]** を選択します。
-    7.  **[Authentication for your team must be used by (チームの認証の使用者)]** で、**[It’s optional (省略可能)]** を選択します。
-    8.  **[Save Configuration]** をクリックします。
+    4.  Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **Public Certificate** textbox.
+    5.  Deselect **Allow users to change their email address**.
+    6.  Select **Allow users to choose their own username**.
+    7.  As **Authentication for your team must be used by**, select **It’s optional**.
+    8.  Click **Save Configuration**.
 
-9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/IC794989.png "Configure Single Sign-On")
 
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが Slack にログインできるようにするには、ユーザーを Slack にプロビジョニングする必要があります。
+In order to enable Azure AD users to log into Slack, they must be provisioned into Slack.
   
-Slack へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられているユーザーが Slack にログインしようとすると、必要に応じて Slack アカウントが自動的に作成されます。
+There is no action item for you to configure user provisioning to Slack.  
+When an assigned user tries to log into Slack, a Slack account is automatically created if necessary.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Slack に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-slack,-perform-the-following-steps:"></a>To assign users to Slack, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Slack** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Slack **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-slack-tutorial/IC794990.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-slack-tutorial/IC794990.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-slack-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

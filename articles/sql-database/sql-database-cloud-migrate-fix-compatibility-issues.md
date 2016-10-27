@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Database へ移行する前に SQL Server データベースの互換性に関する問題を修正する | Microsoft Azure"
-   description="Microsoft Azure SQL Database、データベースの移行、互換性、SQL Azure の移行ウィザード"
+   pageTitle="Fix SQL Server database compatibility issues before migration to SQL Database | Microsoft Azure"
+   description="Microsoft Azure SQL Database, database migration, compatibility, SQL Azure Migration Wizard"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -16,33 +16,38 @@
    ms.date="08/24/2016"
    ms.author="carlrab"/>
 
-# Azure SQL Database へ移行する前に SQL Azure 移行ウィザードを使用して SQL Server データベースの互換性に関する問題を修正する
+
+# <a name="use-sql-azure-migration-wizard-to-fix-sql-server-database-compatibility-issues-before-migration-to-azure-sql-database"></a>Use SQL Azure Migration Wizard to Fix SQL Server database compatibility issues before migration to Azure SQL Database
 
 > [AZURE.SELECTOR]
-- [SQL Azure 移行ウィザード](sql-database-cloud-migrate-fix-compatibility-issues.md)を使用する
-- [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md) を使用する
-- [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md) を使用する
+- Use [SQL Azure Migration Wizard](sql-database-cloud-migrate-fix-compatibility-issues.md)
+- Use [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
+- Use [SSMS](sql-database-cloud-migrate-fix-compatibility-issues-ssms.md)
 
-この記事では、Azure SQL Database へ移行する前に SQL Azure 移行ウィザードを使用して SQL Server データベースの互換性に関する問題を検出し修正する方法について説明します。
+In this article, you learn to detect and fix SQL Server database compatibility issues using the SQL Azure Migration Wizard before migration to Azure SQL Database.
 
-## SQL Azure 移行ウィザードを使用する
+## <a name="using-sql-azure-migration-wizard"></a>Using SQL Azure Migration wizard
 
-[SQL Azure 移行ウィザード](http://sqlazuremw.codeplex.com/) CodePlex ツールを使用して、互換性のないソース データベースから T-SQL スクリプトを生成します。これにより、このスクリプトは、ウィザードによって、SQL Database と互換性があるように変換されます。次に、Azure SQL Database に接続して、スクリプトを実行します。このツールは、トレース ファイルを分析して互換性の問題も特定します。スキーマのみを含むスクリプトを生成することも、BCP 形式のデータを含むスクリプトを生成することもできます。その他のドキュメントには詳細な手順などが含まれ、CodePlex の [SQL Azure 移行ウィザード](http://sqlazuremw.codeplex.com/)に関するページで入手できます。
+Use the [SQL Azure Migration wizard](http://sqlazuremw.codeplex.com/) CodePlex tool to generate a T-SQL script from an incompatible source database. This script is then transformed by the wizard to make it compatible with the SQL Database. You then connect to Azure SQL Database to execute the script. This tool also analyzes trace files to determine compatibility issues. The script can be generated with schema only or can include data in BCP format. Additional documentation, including step-by-step guidance is available on CodePlex at [SQL Azure Migration wizard](http://sqlazuremw.codeplex.com/).  
 
- ![SAMW の移行ダイアグラム](./media/sql-database-cloud-migrate/02SAMWDiagram.png)
+ ![SAMW migration diagram](./media/sql-database-cloud-migrate/02SAMWDiagram.png)
 
-  > [AZURE.NOTE] ウィザードで検出できるすべての非互換スキーマを組み込み変換で修正できるとは限りません。処理できない非互換スクリプトは、生成されたスクリプトにコメントが挿入され、エラーとして報告されます。多くのエラーが検出された場合は、Visual Studio または SQL Server Management Studio を使用して、SQL Server 移行ウィザードでは修正できない各エラーを修正します。
+  > [AZURE.NOTE] Not all incompatible schema that are detected by the wizard can be fixed by its built-in transformations. Incompatible script that cannot be addressed are reported as errors, with comments injected into the generated script. If many errors are detected, use either Visual Studio or SQL Server Management Studio to step through and fix each error that could not be fixed using the SQL Server Migration Wizard.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
-- [互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
+- [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [Migrate a compatible SQL Server database to SQL Database](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
 - [SQL Database V12](sql-database-v12-whats-new.md)
-- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
-- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+- [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

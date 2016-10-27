@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center の検出機能 | Microsoft Azure"
-   description="このドキュメントでは、Azure Security Center の検出機能の働きについてわかりやすく説明します。"
+   pageTitle="Detection capabilities in Azure Security Center | Microsoft Azure"
+   description="This document helps you to understand how Azure Security Center detection capabilities work."
    services="security-center"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,77 +16,82 @@
    ms.date="09/22/2016"
    ms.author="yurid"/>
 
-# Azure Security Center の検出機能
-このドキュメントでは、Azure Security Center の高度な検出機能について取り上げます。この機能を使用すると、Microsoft Azure リソースが今さらされている脅威を特定し、迅速に対応するうえで必要な知見を得ることができます。
 
-> [AZURE.NOTE] 高度な検出は、Azure Security Center の Standard レベルで利用できます。90 日間の無料試用版が提供されています。アップグレードは、[[セキュリティ ポリシー]](security-center-policies.md) の [価格レベル] の選択から実行できます。価格の詳細については、[Security Center のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+# <a name="azure-security-center-detection-capabilities"></a>Azure Security Center detection capabilities
+This document discusses Azure Security Center’s advanced detection capabilities, which helps identify active threats targeting your Microsoft Azure resources and provides you with the insights needed to respond quickly.
+
+> [AZURE.NOTE] Advanced detections are available in the Standard Tier of Azure Security Center. A free 90-day trial is available. You can upgrade from the Pricing Tier selection in the [Security Policy](security-center-policies.md). Visit [Security Center page](https://azure.microsoft.com/pricing/details/security-center/) to learn more about pricing. 
 
 
-## 今日の脅威への対応
-脅威を取り巻く状況は、この 20 年で様変わりしました。従来、企業が警戒すべきことは一般に Web サイトの改ざんのみで、その攻撃も興味本位の個人によるものが大半でした。その頃と比べ今日の攻撃は、はるかに進化しており、組織化されています。明らかに金銭や戦略的な目的をもって攻撃が遂行されるケースも少なくありません。攻撃に利用されるリソースも増えてきました。国家や犯罪組織によって資金提供されている場合があるためです。
+## <a name="responding-to-today’s-threats"></a>Responding to today’s threats
+There have been significant changes in the threat landscape over the last 20 years. In the past, companies typically only had to worry about web site defacement by individual attackers who were mostly interested in seeing “what they could do". Today’s attackers are much more sophisticated and organized. They often have specific financial and strategic goals. They also have more resources available to them, as they may be funded by nation states or organized crime.
 
-その手法により、攻撃者集団はかつてないほど高い技術力を身に付けています。もはや彼らのねらいは、Web の改ざんではありません。情報や金融口座、プライベート データの盗難がねらいです。いずれも一般市場で現金を得たり、特定の事業や政治、軍事的な立場を利用したりする目的で使用されます。金銭目的のこのような攻撃者以上にやっかいな存在は、インフラストラクチャや人に危害を加えるためにネットワークを侵害する攻撃者です。
+This approach has led to an unprecedented level of professionalism in the attacker ranks. No longer are they interested in web defacement. They are now interested in stealing information, financial accounts, and private data – all of which they can use to generate cash on the open market or to leverage a particular business, political or military position. Even more concerning than those attackers with a financial objective are the attackers who breach networks to do harm to infrastructure and people.
 
-そうした攻撃に対応するために多くの組織が実施しているさまざまな解決策は、既に知られている攻撃のシグネチャを探すことで企業ネットワークの境界領域やエンドポイントを防御する対症療法が中心です。このような解決策では、精度の低いアラートが大量に生成されることが多く、セキュリティ アナリストが優先順位を付けて調査しなければなりません。しかし、そのようなアラートに対応できるだけの時間とノウハウを持った組織はまれで、多くのアラートは未解決のまま放置されます。その一方で攻撃者の手法は着々と進化を遂げています。シグネチャを使用した防御はその多くが攻略され、[クラウド環境への対応](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/)も進んでいます。発生している脅威を従来以上に早く特定し、検出と対応にかかる時間を短縮する新しいアプローチが必要です。
+In response, organizations often deploy various point solutions, which focus on defending either the enterprise perimeter or endpoints by looking for known attack signatures. These solutions tend to generate a high volume of low fidelity alerts, which require a security analyst to triage and investigate. Most organizations lack the time and expertise required to respond to these alerts – so many go unaddressed.  Meanwhile, attackers have evolved their methods to subvert many signature-based defenses and [adapt to cloud environments](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/). New approaches are required to more quickly identify emerging threats and expedite detection and response. 
 
-## Azure Security Center での脅威の検出と対応
+## <a name="how-azure-security-center-detects-and-responds-to-threats"></a>How Azure Security Center detects and responds to threats
 
-マイクロソフトのセキュリティ研究員は、絶えず脅威に目を光らせています。クラウドやオンプレミスにおけるマイクロソフトのグローバル プレゼンスから得た広範なテレメトリにアクセスすることが彼らには許されています。この広範かつ多様なデータセットのコレクションによって、マイクロソフトは、そのオンプレミスの消費者向け/企業向け製品からオンライン サービスに至るまで、攻撃の新しいパターンや傾向を把握することができます。攻撃者によって脆弱性の悪用手法が次々に生み出され、しだいに複雑化する中で、Security Center は、その検出アルゴリズムを更新することができるのです。この手法が、目まぐるしい脅威の環境の変化に対応するために役立てられます。
+Microsoft security researchers are constantly on the lookout for threats. They have access to an expansive set of telemetry gained from Microsoft’s global presence in the cloud and on-premises. This wide-reaching and diverse collection of datasets enables Microsoft to discover new attack patterns and trends across its on-premises consumer and enterprise products, as well as its online services. As a result, Security Center can rapidly update its detection algorithms as attackers release new and increasingly sophisticated exploits. This approach helps you keep pace with a fast moving threat environment. 
 
-Security Center の脅威検出は、Azure のリソースやネットワーク、接続されているパートナー ソリューションからセキュリティ情報を自動的に収集することによって機能します。この情報を分析し、ときには複数の情報源から得た情報との関連性を探りながら、脅威を特定します。Security Center では、セキュリティの警告に優先順位が、脅威に対処するための推奨事項と共に割り当てられます。
+Security Center threat detection works by automatically collecting security information from your Azure resources, the network, and connected partner solutions. It analyzes this information, often correlating information from multiple sources, to identify threats. Security alerts are prioritized in Security Center along with recommendations on how to remediate the threat.
 
 ![Security Center Data collection and presentation](./media/security-center-detection-capabilities/security-center-detection-capabilities-fig1.png)
 
-Security Center には、シグネチャ ベースの手法とは比較にならない高度なセキュリティ分析が採用されています。ビッグ データや[機械学習](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)における革新的テクノロジを活かし、クラウド ファブリック全体にわたってイベントが評価されるので、手作業に頼った手法や攻撃の進化を予測する手法では特定できない脅威でも検出することができます。こうしたセキュリティ分析の例を次に示します。
+Security Center employs advanced security analytics, which go far beyond signature-based approaches. Breakthroughs in big data and [machine learning](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) technologies are leveraged to evaluate events across the entire cloud fabric – detecting threats that would be impossible to identify using manual approaches and predicting the evolution of attacks. These security analytics include: 
 
-- **統合された脅威インテリジェンス**: グローバルな脅威インテリジェンスを活用して、既知の有害因子を探します。情報源としては、Microsoft の製品とサービス、Microsoft デジタル犯罪対策ユニット (DCU: Digital Crimes Unit)、Microsoft セキュリティ レスポンス センター (MSRC)、および外部フィードがあります。
-- **行動分析**: 既知のパターンを適用することによって悪質な行動を検出します。
-- **異常検出**: 統計プロファイルを使用して、過去の基準を構築します。確立された基準からの逸脱に、攻撃ベクトルとの一致が疑われる場合、警告が生成されます。
+- **Integrated threat intelligence**: looks for known bad actors by leveraging global threat intelligence from Microsoft products and services, the Microsoft Digital Crimes Unit (DCU), the Microsoft Security Response Center (MSRC), and external feeds.
+- **Behavioral analytics**: applies known patterns to discover malicious behavior. 
+- **Anomaly detection**: uses statistical profiling to build a historical baseline. It alerts on deviations from established baselines that conform to a potential attack vector.
 
 
-### 脅威インテリジェンス
-Microsoft は、膨大なグローバル脅威インテリジェンスを保有しています。Azure、Office 365、Microsoft CRM オンライン、Microsoft Dynamics AX、outlook.com、MSN.com、Microsoft Digital Crimes Unit (DCU)、Microsoft セキュリティ レスポンス センター (MSRC) などさまざまなソースからテレメトリが集められます。また研究員も、大手クラウド サービス プロバイダー間で共有されている脅威インテリジェンス情報を入手しているほか、サード パーティから脅威インテリジェンス フィードをサブスクライブしています。Azure Security Center はこの情報を基に、既知の有害因子から生じる脅威について利用者に警告を発することができます。次に例をいくつか示します。
+### <a name="threat-intelligence"></a>Threat intelligence
+Microsoft has an immense amount of global threat intelligence. Telemetry flows in from multiple sources, such as Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com, MSN.com, the Microsoft Digital Crimes Unit (DCU) and Microsoft Security Response Center (MSRC). Researchers also receive threat intelligence information that is shared among major cloud service providers and subscribes to threat intelligence feeds from third parties. Azure Security Center can use this information to alert you to threats from known bad actors. Some examples include:
 
-- **悪質な IP アドレスへの送信方向の通信**: 既知のボットネットやダークネットへの送信トラフィックは、リソースのセキュリティが侵害され、そのシステムに対して攻撃者がコマンドを実行しようとしているか、データを引き出そうとしている可能性を強く示唆しています。Azure Security Center は、マイクロソフトのグローバル脅威データベースに対してネットワーク トラフィックを比較し、悪質な IP アドレスへの通信を検出した場合に警告を発します。
+- **Outbound communication to a malicious IP address**: outbound traffic to a known botnet or darknet likely indicates that your resource has been compromised and an attacker it attempting to execute commands on that system or exfiltrate data. Azure Security Center compares network traffic to Microsoft’s global threat database and alerts you if it detects communication to a malicious IP address.
 
-## 行動分析
+## <a name="behavioral-analytics"></a>Behavioral analytics
 
-行動分析は、データを分析し、既知のパターンのコレクションと照らして比較する手法です。ただし、これらのパターンはただのシグネチャではありません。大量のデータセットに適用された複雑な機械学習アルゴリズムを通じてパターンが決定されています。また、パターンの特定にあたっては、専門のアナリストによって悪質な行動が緻密に分析されます。Azure Security Center は行動分析を使用し、仮想マシンのログや仮想ネットワーク デバイスのログ、ファブリック ログ、クラッシュ ダンプなど各種ソースの分析に基づいて、セキュリティの侵害されたリソースを特定します。
+Behavioral analytics is a technique that analyzes and compares data to a collection of known patterns. However, these patterns are not simple signatures. They are determined through complex machine learning algorithms that are applied to massive datasets. They are also determined through careful analysis of malicious behaviors by expert analysts. Azure Security Center can use behavioral analytics to identify compromised resources based on analysis of virtual machine logs, virtual network device logs, fabric logs, crash dumps and other sources. 
 
-また、他のシグナルとの間には、蔓延している攻撃の裏付けとなる兆候を確認できる相関関係が存在します。この相関関係によって、セキュリティ侵害の証拠として確立されたインジケーターと一致しているイベントが特定されます。次に例をいくつか示します。
+In addition, there is correlation with other signals to check for supporting evidence of a widespread campaign. This correlation helps to identify events that are consistent with established indicators of compromise. Some examples include:
 
-- **疑わしいプロセスの実行**: 攻撃者は、悪質なソフトウェアを秘かに実行するためにいくつかの手法を用います。たとえば、マルウェアに対して正規のシステム ファイルと同じ名前を付けて本来とは異なる場所に配置したり、無害なファイルと酷似した名前を使用したり、ファイルの本当の拡張子を隠したりすることが考えられます。Security Center はプロセスの動作をモデル化し、そのプロセスの実行を監視することで、こうした異常を検出します。
-- **潜伏するマルウェアや脆弱性悪用の試み**: 洗練されたマルウェアは、ディスクへの書き込みを一切行わないようにするか、ソフトウェア コンポーネントを暗号化してディスクに保存することによって、従来のマルウェア対策製品の目をかいくぐります。しかし、マルウェアが機能するためにはメモリに痕跡を残す必要があるので、メモリ分析を使用すればそのようなマルウェアを検出することができます。ソフトウェアがクラッシュすると、クラッシュ時のメモリが部分的にクラッシュ ダンプにキャプチャされます。Azure Security Center は、クラッシュ ダンプでメモリを分析することによって、ソフトウェアの脆弱性悪用や機密データへのアクセスに使用された手法を検出できます。侵入したコンピューターのパフォーマンスに影響を及ぼさず、こっそりと常駐するタイプの手法であっても検出が可能です。
-- **侵入拡大と内部偵察**: 多くの場合、攻撃者は、侵入したネットワークに留まって利用価値の高いデータを特定したり抽出したりするために、侵入したコンピューターから他のコンピューターへと同じネットワーク内を縦横無尽に動き回ります。ネットワーク内の踏み台を広げようとする攻撃者の試み (リモート コマンド実行、ネットワーク プローブ、アカウントの列挙など) を検出するために、Security Center はプロセスとログイン アクティビティを監視します。
-- **悪質な PowerShell スクリプト**: PowerShell は、標的となる仮想マシン上で悪質なコードを実行するために、攻撃者がさまざまな目的で使用します。疑わしい活動の兆候がないか、PowerShell のアクティビティは Security Center によって調査されます。
-- **送信方向の攻撃**: 攻撃の踏み台として利用するために、クラウド リソースを攻撃者が標的にすることは少なくありません。たとえば、侵入した仮想マシンを利用して、他の仮想マシンにブルート フォース攻撃を仕掛けたり、スパムを送信したり、開放ポートやインターネット上の他のデバイスをスキャンしたりする場合があります。Security Center では、ネットワーク トラフィックに機械学習を適用することで、正常な範囲を逸脱した送信ネットワーク通信を検出することができます。さらに、スパムの場合、Security Center は、普通でない電子メール トラフィックと Office 365 から得られたインテリジェンスとの相関を明らかにし、不正目的のメールであるか、正当な電子メール キャンペーンによるものであるかを判断します。
+- **Suspicious process execution**: Attackers employ several techniques to execute malicious software without detection. For example, an attacker might give malware the same names as legitimate system files but place these files in an alternate location, use a name that is very similar to a benign file, or mask the file’s true extension. Security Center models processes behaviors and monitors process executions to detect outliers such as these.  
+- **Hidden malware and exploitation attempts**: Sophisticated malware is able to evade traditional antimalware products by either never writing to disk or encrypting software components stored on disk.  However, such malware can be detected using memory analysis, as the malware must leave traces in memory in order to function. When software crashes, a crash dump captures a portion of memory at the time of the crash.  By analyzing the memory in the crash dump, Azure Security Center can detect techniques used to exploit vulnerabilities in software, access confidential data, and surreptitiously persist with-in a compromised machine without impacting the performance of your machine.
+- **Lateral movement and internal reconnaissance**: To persist in a compromised network and locate/harvest valuable data, attackers often attempt to move laterally from the compromised machine to others within the same network. Security Center monitors process and login activities in order to discover attempts to expand an attacker’s foothold within the network, such as remote command execution network probing, and account enumeration.
+- **Malicious PowerShell Scripts**: PowerShell is being used by attackers to execute malicious code on target virtual machines for a variety of purposes. Security Center inspects PowerShell activity for evidence of suspicious activity. 
+- **Outgoing attacks**: Attackers often target cloud resources with the goal of using those resources to mount additional attacks. Compromised virtual machines, for example, might be used to launch brute force attacks against other virtual machines, send SPAM, or scan open ports and other devices on the internet. By applying machine learning to network traffic, Security Center can detect when outbound network communications exceed the norm. In the case of SPAM, Security Center also correlates unusual email traffic with intelligence from Office 365 to determine whether the mail is likely nefarious or the result of a legitimate email campaign.  
 
-### 異常検出
+### <a name="anomaly-detection"></a>Anomaly detection
 
-Azure Security Center での脅威の特定には、異常検出も使用されます。行動分析は、大規模なデータセットから導いた既知のパターンに依存します。これとは対照的に、異常検出は "独自色" が強く、個々の環境に固有の基準に重点が置かれます。機械学習を適用して個々の環境の正常なアクティビティを突き止めたうえで、セキュリティ イベントの可能性を示す異常な条件とは何かを定義する規則を作成します。次に例を示します。
+Azure Security Center also uses anomaly detection to identify threats. In contrast to behavioral analytics (which depends on known patterns derived from large data sets), anomaly detection is more “personalized” and focuses on baselines that are specific to your deployments. Machine learning is applied to determine normal activity for your deployments and then rules are generated to define outlier conditions that could represent a security event. Here’s an example:
 
-- **受信方向の RDP/SSH ブルート フォース攻撃**: 同じ環境でも、日々多数のユーザーがログインする稼働率の高い仮想マシンもあれば、ほとんどまたはまったくログインされない仮想マシンもあります。Azure Security Center は、これらの仮想マシンの基準となるログイン アクティビティを突き止め、機械学習を使って、異常なログイン アクティビティを定義します。ログインの回数や時刻、要求元など、ログインに関連したさまざまな特性がその基準と有意に異なる場合、警告が生成されます。前述のように、何をもって有意とするかは、機械学習によって突き止められます。
+- **Inbound RDP/SSH brute force attacks**: Your deployments may have busy virtual machines with a lot of logins each day and other virtual machines that have very few or any logins. Azure Security Center can determine baseline login activity for these virtual machines and use machine learning to define what is outside of normal login activity. If the number of logins, or the time of day of the logins, or the location from which the logins are requested, or other login-related characteristics are significantly different from the baseline, then an alert may be generated. Again, machine learning determines what is significant.
 
-## 脅威インテリジェンスの継続的監視
+## <a name="continuous-threat-intelligence-monitoring"></a>Continuous threat intelligence monitoring
 
-Azure Security Center に寄与するセキュリティ リサーチ チームやデータ サイエンス チームは、脅威に関する状況の変化を絶えず監視します。たとえば次のような取り組みが行われています。
+Azure Security Center operates security research and data science teams that continuously monitor for changes in the threat landscape. This includes the following initiatives:
 
-- **脅威インテリジェンスの監視**: 脅威インテリジェンスには、既存の脅威や新たに発生した脅威に関するメカニズム、インジケーター、示唆、即時に利用可能なアドバイスが含まれます。こうした情報はセキュリティ コミュニティから得られるほか、マイクロソフトも、社内や社外のソースから提供される脅威インテリジェンスを絶えず監視しています。
-- **シグナルの共有**: クラウドとオンプレミス向けに Microsoft が保有するさまざまなサービス、サーバー、クライアント エンドポイント デバイスを通じてセキュリティ チームが得た知見は共有され、分析されます。
-- **Microsoft のセキュリティ スペシャリスト**: フォレンジクスや Web 攻撃検出など、専門のセキュリティ分野に従事する Microsoft 内のさまざまなチームと絶えず連携します。
-- **検出のチューニング**: 実際のユーザーのデータセットに対してアルゴリズムが実行され、セキュリティ研究員がユーザーと連携してその結果を検証します。機械学習アルゴリズムの精度を高めるために、真陽性と偽陽性が使用されます。
+- **Threat intelligence monitoring**: Threat intelligence includes mechanisms, indicators, implications and actionable advice about existing or emerging threats. This information is shared in the security community and Microsoft continuously monitors threat intelligence feeds from internal and external sources.
+- **Signal sharing**: Insights from security teams across Microsoft’s broad portfolio of cloud and on-premises services, servers, and client endpoint devices are shared and analyzed. 
+- **Microsoft security specialists**: Ongoing engagement with teams across Microsoft that work in specialized security fields, like forensics and web attack detection.
+- **Detection tuning**: Algorithms are run against real customer data sets and security researchers work with customers to validate the results. True and false positives are used to refine machine learning algorithms.
 
-こうしたさまざまな取り組みを通じて、これまでできなかったような検出が可能となり、検出の精度が向上しています。しかもその恩恵はすぐに得ることができます。ユーザーが措置を講じる必要はありません。
+These combined efforts culminate in new and improved detections, which you can benefit from instantly – there’s no action for you to take.
 
-## 関連項目
-このドキュメントでは、Azure Security Center の検出機能の働きについて説明しました。セキュリティ センターの詳細については、次を参照してください。
+## <a name="see-also"></a>See also
+In this document, you learned how to Azure Security Center detection capabilities work. To learn more about Security Center, see the following:
 
-- [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
-- [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)
-- [Azure Security Center の種類別のセキュリティの警告](security-center-alerts-type.md)
-- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+- [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md)
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
+- [Security Alerts by Type in Azure Security Center](security-center-alerts-type.md)
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md) — Learn how to monitor the health of your Azure resources.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) — Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Find blog posts about Azure security and compliance.
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,7 +1,7 @@
 <properties
-   pageTitle="クラウド ビジネス継続性 - データベース復旧 - SQL Database | Microsoft Azure"
-   description="Azure SQL Database がどのようにクラウド ビジネス継続性とデータベース復旧をサポートし、ミッション クリティカルなクラウド アプリケーションの実行を維持できるようにするかについて説明します。"
-   keywords="ビジネス継続性, クラウド ビジネス継続性, データベースの障害復旧, データベース復旧"
+   pageTitle="Cloud business continuity - database recovery - SQL Database | Microsoft Azure"
+   description="Learn how Azure SQL Database supports cloud business continuity and database recovery and helps keep mission-critical cloud applications running."
+   keywords="business continuity,cloud business continuity,database disaster recovery,database recovery"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -14,134 +14,145 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/20/2016"
+   ms.date="10/13/2016"
    ms.author="carlrab"/>
 
-# Azure SQL Database によるビジネス継続性の概要
 
-この概要では、Azure SQL Database に用意されているビジネス継続性と障害復旧の機能について説明し、データ損失につながる、またはデータベースやアプリケーションを使用不能状態に追い込む破壊的なイベントから復旧するためのオプション、推奨事項、およびチュートリアルを紹介します。また、ユーザーまたはアプリケーション エラーがデータ整合性に影響を及ぼすとき、Azure リージョンでシステム停止が発生したとき、あるいはアプリケーションにメンテナンスが必要なときの対処方法についても取り上げます。
+# <a name="overview-of-business-continuity-with-azure-sql-database"></a>Overview of business continuity with Azure SQL Database
 
-## ビジネス継続性を提供するときに使用できる SQL Database の機能
+This overview describes the capabilities that Azure SQL Database provides for business continuity and disaster recovery. It provides options, recommendations, and tutorials for recovering from disruptive events that could cause data loss or cause your database and application to become unavailable. The discussion includes what to do when a user or application error affects data integrity, an Azure region has an outage, or your application requires maintenance. 
 
-SQL Database には、自動バックアップ、オプションのデータベース レプリケーションなど、ビジネス継続性の機能がいくつか用意されており、推定復旧時間 (ERT) と、最近のトランザクションに対する潜在的なデータ損失の特徴が、それぞれ異なります。オプションについて理解したら、その中から適切なものを選択できます。これらのオプションは、ほとんどの場合、さまざまなシナリオに対して組み合わせて使用できます。ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。これが目標復旧時間 (RTO) です。さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる最大データ更新 (期間) 量についても理解しなければなりません。これは目標復旧時点 (RPO) です。
+## <a name="sql-database-features-that-you-can-use-to-provide-business-continuity"></a>SQL Database features that you can use to provide business continuity
 
-次のテーブルは、3 つの一般的なシナリオについて ERT と RPO を比較しています。
+SQL Database provides several business continuity features, including automated backups and optional database replication. Each has different characteristics for estimated recovery time (ERT) and potential data loss for recent transactions. Once you understand these options, you can choose among them - and, in most scenarios, use them together for different scenarios. As you develop your business continuity plan, you need to understand the maximum acceptable time before the application fully recovers after the disruptive event - this is your recovery time objective (RTO). You also need to understand the maximum amount of recent data updates (time interval) the application can tolerate losing when recovering after the disruptive event - the recovery point objective (RPO). 
 
-| 機能 |	Basic レベル | Standard レベル | Premium レベル |
+The following table compares the ERT and RPO for the three most common scenarios.
+
+| Capability |  Basic tier | Standard tier  | Premium tier |
 |---|---|---|---|
-| バックアップからのポイントインタイム リストア | 7 日間以内のあらゆる復元ポイント | 35 日間以内のあらゆる復元ポイント | 35 日間以内のあらゆる復元ポイント |
-Geo レプリケーション バックアップからの geo リストア | ERT < 12 時間、RPO < 1 時間 | ERT < 12 時間、RPO < 1 時間 | ERT < 12 時間、RPO < 1 時間 |
-|アクティブ geo レプリケーションを選択するとき | ERT < 30 秒、RPO < 5 秒 | ERT < 30 秒、RPO < 5 秒 |	ERT < 30 秒、RPO < 5 秒 |
+| Point in Time Restore from backup | Any restore point within 7 days   | Any restore point within 35 days  | Any restore point within 35 days |
+Geo-Restore from geo-replicated backups | ERT < 12h, RPO < 1h   | ERT < 12h, RPO < 1h   | ERT < 12h, RPO < 1h |
+|Active Geo-Replication | ERT < 30s, RPO < 5s   | ERT < 30s, RPO < 5s | ERT < 30s, RPO < 5s |
 
 
-### データベース バックアップを使用してデータベースを復旧する
+### <a name="use-database-backups-to-recover-a-database"></a>Use database backups to recover a database
 
-SQL Database は、データ損失からビジネスを守るために、データベースの完全バックアップ (毎週)、データベースの差分バックアップ (1 時間ごと)、およびトランザクション ログのバックアップ (5 分ごと) を組み合わせて自動的に実行します。これらのバックアップは、Standard および Premium サービス階層の場合は 35 日間、Basic サービス階層では 7 日間、ローカル冗長ストレージに格納されます。サービス階層の詳細については、[サービス階層](sql-database-service-tiers.md)に関するページをご覧ください。サービス階層のリテンション期間がビジネス要件を満たしていない場合、リテンション期間を長くするには、[サービス階層を変更](sql-database-scale-up.md)します。データベースの完全バックアップと差分バックアップは、データ センターの停止に対する保護のために[ペアのデータ センター](../best-practices-availability-paired-regions.md)にもレプリケートされます。詳細については、[データベースの自動バックアップ](sql-database-automated-backups.md)に関するページをご覧ください。
+SQL Database automatically performs a combination of full database backups weekly, differential database backups hourly, and transaction log backups every five minutes to protect your business from data loss. These backups are stored in locally redundant storage for 35 days for databases in the Standard and Premium service tiers and seven days for databases in the Basic service tier - see [service tiers](sql-database-service-tiers.md) for more details on service tiers. If the retention period for your service tier does not meet your business requirements, you can increase the retention period by [changing the service tier](sql-database-scale-up.md). The full and differential database backups are also replicated to a [paired data center](../best-practices-availability-paired-regions.md) for protection against a data center outage - see [automatic database backups](sql-database-automated-backups.md) for more details.
 
-これらのデータベースの自動バックアップを使用して、さまざまな中断イベントから、データ センター内または別のデータ センターにデータベースを回復することができます。データベースの自動バックアップでの復旧時間は、同じリージョン内で同時に復旧するデータベースの合計数、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅など、複数の要因によって異なりますが、ほとんどの場合、12 時間もかかりません。他のデータ リージョンに復旧する場合は、geo 冗長ストレージで 1 時間ごとにデータベースの差分バックアップが実行されるため、潜在的なデータ損失が 1 時間分の量を超えることはありません。
+You can use these automatic database backups to recover a database from various disruptive events, both within your data center and to another data center. Using automatic database backups, the estimated time of recovery depends on several factors including the total number of databases recovering in the same region at the same time, the database size, the transaction log size, and network bandwidth. In most cases, the recovery time is less than 12 hours. When recovering to another data region, the potential data loss is limited to 1 hour by the geo-redundant storage of hourly differential database backups. 
 
-> [AZURE.IMPORTANT] 自動バックアップを使って復旧するには、SQL Server の共同作業者ロールのメンバーまたはサブスクリプション所有者である必要があります。「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」をご覧ください。復旧には、Azure ポータル、PowerShell、または REST API を使用できます。Transact-SQL は使用できません。
+> [AZURE.IMPORTANT] To recover using automated backups, you must be a member of the SQL Server Contributor role or the subscription owner - see [RBAC: Built-in roles](../active-directory/role-based-access-built-in-roles.md). You can recover using the Azure portal, PowerShell, or the REST API. You cannot use Transact-SQL.
 
-次のようなアプリケーションについては、ビジネス継続性と復旧メカニズムとして自動バックアップを使用します。
+Use automated backups as your business continuity and recovery mechanism if your application:
 
-- ミッション クリティカルではない。
-- 拘束力のある SLA がないため、24 時間以上のダウンタイムで財務責任が課せられることがない。
-- データ変更率 (1 時間あたりのトランザクション数など) が低く、最大 1 時間分の変更に対するデータ損失を許容できる。
-- コスト重視である。
+- Is not considered mission critical.
+- Doesn't have a binding SLA therefore the downtime of 24 hours or longer will not result in financial liability.
+- Has a low rate of data change (low transactions per hour) and losing up to an hour of change is an acceptable data loss. 
+- Is cost sensitive. 
 
-迅速に復旧する必要がある場合は、後述する[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用してください。作成してから 35 日を超えたデータを復旧できるようにしたい場合は、Azure BLOB ストレージまたは他の場所にある BACPAC ファイル (データベース スキーマと関連するデータが含まれる圧縮ファイル) に、データベースを定期的にアーカイブすることを検討します。トランザクション整合データベースのアーカイブを作成する方法の詳細については、[データベース コピーの作成](sql-database-copy.md)に関するページと、[データベース コピーのエクスポート](sql-database-export.md)に関するページをご覧ください。
+If you need faster recovery, use [Active Geo-Replication](sql-database-geo-replication-overview.md) (discussed next). If you need to be able to recover data from a period older than 35 days, consider archiving your database regularly to a BACPAC file (a compressed file containing your database schema and associated data) stored either in Azure blob storage or in another location of your choice. For more information on how to create a transactionally consistent database archive, see [create a database copy](sql-database-copy.md) and [export the database copy](sql-database-export.md). 
 
-### アクティブ geo レプリケーションを使用して、復旧時間を短縮し、復旧に伴うデータ損失を抑える
+### <a name="use-active-geo-replication-to-reduce-recovery-time-and-limit-data-loss-associated-with-a-recovery"></a>Use Active Geo-Replication to reduce recovery time and limit data loss associated with a recovery
 
-ビジネス中断が発生した場合、データベース バックアップを使用してデータベースを復旧するほか、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用して、最大 4 つの読み取り可能なセカンダリ データベースが任意のリージョンに作成されるように、データベースを構成することもできます。このセカンダリ データベースは、非同期レプリケーション メカニズムを使用して、プライマリ データベースと同期し続けます。この機能は、データ センター停止またはアプリケーションのアップグレードによるビジネス中断を防ぐために使用されます。また、アクティブ geo レプリケーションを使って、地理的に分散したユーザーの読み取り専用クエリのパフォーマンスを高めることもできます。
+In addition to using database backups for database recovery in the event of a business disruption, you can use [Active Geo-Replication](sql-database-geo-replication-overview.md) to configure a database to have up to four readable secondary databases in the regions of your choice. These secondary databases are kept synchronized with the primary database using an asynchronous replication mechanism. This feature is used to protect against business disruption in the event of a data center outage or during an application upgrade. Active Geo-Replication can also be used to provide better query performance for read-only queries to geographically dispersed users.
 
-プライマリ データベースが予期せずオフラインになった場合、またはメンテナンスのためにプライマリ データベースをオフラインにする必要がある場合は、セカンダリ データベースをすばやくプライマリに昇格し ("フェールオーバー" とも呼ばれます)、新しくプライマリに昇格したデータベースに接続されるようにアプリケーションを構成できます。計画されたフェールオーバーの場合、データ損失は発生しません。計画されていないフェールオーバーについては、非同期レプリケーションの性質上、最近のトランザクションのデータが多少失われます。フェールオーバー後は、後でフェールバックできます。このフェールバックは、計画に従って、またはデータ センターがオンラインに戻ったときに行います。いずれにしても、ユーザーのダウンタイムはわずかで、再接続が必要です。
+If the primary database goes offline unexpectedly or you need to take it offline for maintenance activities, you can quickly promote a secondary to become the primary (also called a failover) and configure applications to connect to the newly promoted primary. With a planned failover, there is no data loss. With an unplanned failover, there may be some small amount of data loss for very recent transactions due to the nature of asynchronous replication. After a failover, you can later failback - either according to a plan or when the data center comes back online. In all cases, users experience a small amount of downtime and need to reconnect. 
 
-> [AZURE.IMPORTANT] アクティブ geo レプリケーションを使用するには、サブスクリプション所有者であるか、SQL Server の管理アクセス許可を持っている必要があります。Azure ポータル、PowerShell、または REST API で構成およびフェールオーバーを行う場合は、サブスクリプションでアクセス許可を使用します。Transact-SQL で行う場合は、SQL Server 内でアクセス許可を使用します。
+> [AZURE.IMPORTANT] To use Active Geo-Replication, you must either be the subscription owner or have administrative permissions in SQL Server. You can configure and failover using the Azure portal, PowerShell, or the REST API using permissions on the subscription or using Transact-SQL using permissions within SQL Server.
 
-アクティブ geo レプリケーションは、アプリケーションが次のいずれかの条件を満たす場合に使用します。
+Use Active Geo-Replication if your application meets any of these criteria:
 
-- ミッション クリティカルである。
-- サービス レベル アグリーメント (SLA) で 24 時間以上のダウンタイムが許可されていない。
-- ダウンタイムによって財務責任が発生する。
-- データ変更率が高く、1 時間分のデータの損失が許容されない。
-- アクティブ geo レプリケーションの追加コストが、潜在的な財務責任と関連するビジネス損失を下回る。
+- Is mission critical.
+- Has a service level agreement (SLA) that does not allow for 24 hours or more of downtime.
+- Downtime will result in financial liability.
+- Has a high rate of data change is high and losing an hour of data is not acceptable.
+- The additional cost of active geo-replication is lower than the potential financial liability and associated loss of business.
 
-## ユーザーまたはアプリケーション エラーの発生後にデータベースを復旧する
+## <a name="recover-a-database-after-a-user-or-application-error"></a>Recover a database after a user or application error
 
-ミスをしない人など存在しません。 一部のデータ、重要なテーブル、そしてデータベース全体さえも、うっかり削除してしまう場合があります。アプリケーションの欠陥で、正しいデータが不良データによって誤って上書きされることもあります。
+*No one is perfect! A user might accidentally delete some data, inadvertently drop an important table, or even drop an entire database. Or, an application might accidentally overwrite good data with bad data due to an application defect. 
 
-ここでは、このような場合の復旧オプションを紹介します。
+In this scenario, these are your recovery options.
 
-### ポイントインタイム リストアを実行する
+### <a name="perform-a-point-in-time-restore"></a>Perform a point-in-time restore
 
-自動バックアップを使用すると、データベースのコピーを、データベース リテンション期間内の既知の適切な時点まで遡って復旧できます。データベースを復元したら、元のデータベースを復元したデータベースに置き換えるか、復元したデータから必要なデータを元のデータベースにコピーできます。データベースでアクティブ geo レプリケーションが使用されている場合は、復元されたコピーから元のデータベースに必要なデータをコピーすることをお勧めします。元のデータベースを復元したデータベースに置き換える場合は、アクティブ geo レプリケーションを再構成して再同期する必要があります (大きなデータベースの場合はかなり時間がかかることがあります)。
+You can use the automated backups to recover a copy of your database to a known good point in time, provided that time is within the database retention period. After the database is restored, you can either replace the original database with the restored database or copy the needed data from the restored data into the original database. If the database uses Active Geo-Replication, we recommend copying the required data from the restored copy into the original database. If you replace the original database with the restored database, you will need to reconfigure and resynchronize Active Geo-Replication (which can take quite some time for a large database). 
 
-詳細情報、および Azure ポータルまたは PowerShell を使用してデータベースを特定の時点に復元する詳細な手順については、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」をご覧ください。Transact-SQL を使用して回復することはできません。
+For more information and for detailed steps for restoring a database to a point in time using the Azure portal or using PowerShell, see [point-in-time restore](sql-database-recovery-using-backups.md#point-in-time-restore). You cannot recover using Transact-SQL.
 
-### 削除されたデータベースの復元
+### <a name="restore-a-deleted-database"></a>Restore a deleted database
 
-データベースだけが削除され、論理サーバーが削除されていない場合は、削除されたデータベースを、そのデータベースが削除された時点に戻すことができます。この場合、データベースが削除された論理 SQL サーバーに、データベース バックアップが復元されます。このデータベースの復元は元の名前を使用して実行することも、復元したデータベースに新しいに名前を付けることもできます。
+If the database is deleted but the logical server has not been deleted, you can restore the deleted database to the point at which it was deleted. This restores a database backup to the same logical SQL server from which it was deleted. You can restore it using the original name or provide a new name or the restored database.
 
-詳細情報、および削除されたデータベースを Azure ポータルまたは PowerShell を使用して復元する詳細な手順については、[削除されたデータベースの復元](sql-database-recovery-using-backups.md#deleted-database-restore)に関するページをご覧ください。Transact-SQL を使用して復元することはできません。
+For more information and for detailed steps for restoring a deleted database using the Azure portal or using PowerShell, see [restore a deleted database](sql-database-recovery-using-backups.md#deleted-database-restore). You cannot restore using Transact-SQL.
 
-> [AZURE.IMPORTANT] 論理サーバーが削除された場合、削除されたデータベースは回復できません。
+> [AZURE.IMPORTANT] If the logical server is deleted, you cannot recover a deleted database. 
 
-### データベース アーカイブからインポートする
+### <a name="import-from-a-database-archive"></a>Import from a database archive
 
-自動バックアップの現在のリテンション期間外でデータ損失が発生した場合、データベースがアーカイブされていれば、新しいデータベースに[アーカイブ済み BACPAC ファイルをインポート](sql-database-import.md)できます。この時点で、元のデータベースをインポートされたデータベースに置き換えるか、インポートされたデータから必要なデータを元のデータベースにコピーできます。
+If the data loss occurred outside the current retention period for automated backups and you have been archiving the database, you can [Import an archived BACPAC file](sql-database-import.md) to a new database. At this point, you can either replace the original database with the imported database or copy the needed data from the imported data into the original database. 
 
-## Azure リージョン データ センターが停止した場合にデータベースを別のリージョンで回復する
+## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Recover a database to another region from an Azure regional data center outage
 
 <!-- Explain this scenario -->
 
-まれではありますが、Azure データ センターが停止することもあります。停止が発生すると、ビジネスが中断します。この中断はわずか数分で解消されることもありますが、数時間に及ぶ場合もあります。
+Although rare, an Azure data center can have an outage. When an outage occurs, it causes a business disruption that might only last a few minutes or might last for hours. 
 
-- オプションの 1 つは、データ センターの停止が終了し、データベースがオンラインに戻るのを待つことです。このオプションは、オフラインのデータベースが許容されるアプリケーションで有効です。たとえば、常時作業する必要のない開発プロジェクトや無料試用版がこれに該当します。また、データ センターが停止したときに、復旧までの時間を予測できないため、当面はデータベースが必要ない場合にのみ使用できます。
-- もう 1 つは、アクティブ geo レプリケーションを使用して別のデータ リージョンにフェールオーバーするか、geo 冗長データベース バックアップ (geo リストア) を使用して復旧するオプションです。フェールオーバーの所要時間はわずか数秒ですが、バックアップから復旧する場合は数時間かかります。
+- One option is to wait for your database to come back online when the data center outage is over. This works for applications that can afford to have the database offline. For example, a development project or free trial you don't need to work on constantly. When a data center has an outage, you won't know how long the outage will last, so this option only works if you don't need your database for a while.
+- Another option is to either failover to another data region if you are using Active Geo-Replication or the recover using geo-redundant database backups (Geo-Restore). Failover takes only a few seconds, while recovery from backups takes hours.
 
-アクションを実行するタイミング、復旧にかかる時間、およびデータ センターの停止が発生した場合に発生するデータ損失の量は、前に説明したビジネス継続性機能をアプリケーションでどのように使用するかによって異なります。実際は、アプリケーションの要件に応じて、データベース バックアップとアクティブ geo レプリケーションを組み合わせて使用できます。ビジネス継続性機能を使用したスタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+When you take action, how long it takes you to recover, and how much data loss you incur in the event of a data center outage depends upon how you decide to use the business continuity features discussed above in your application. Indeed, you may choose to use a combination of database backups and Active Geo-Replication depending upon your application requirements. For a discussion of application design considerations for stand-alone databases and for elastic pools using these business continuity features, see [Design an application for cloud disaster recovery](sql-database-designing-cloud-solutions-for-disaster-recovery.md) and [Elastic Pool disaster recovery strategies](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
-以下のセクションでは、データベース バックアップまたは アクティブ geo レプリケーションのいずれかを使用して復旧する手順の概要について説明します。要件の計画、復旧後の手順、障害をシミュレートして障害復旧訓練を実施する方法など、詳細な手順については、[障害からの SQL Database 復旧](sql-database-disaster-recovery.md)に関するページをご覧ください。
+The sections below provide an overview of the steps to recover using either database backups or Active Geo-Replication. For detailed steps including planning requirements, post recovery steps and information about how to simulate an outage to perform a disaster recovery drill, see [Recover a SQL Database from an outage](sql-database-disaster-recovery.md).
 
-### 障害に備える
+### <a name="prepare-for-an-outage"></a>Prepare for an outage
 
-使用するビジネス継続性機能に関係なく、次の操作を行う必要があります。
+Regardless of the business continuity feature you use, you must:
 
-- サーバー レベルのファイアウォール規則、ログイン、マスター データベース レベルのアクセス許可など、ターゲット サーバーを特定して準備します。
-- クライアントとクライアント アプリケーションを、新しいサーバーにリダイレクトする方法を決めます
-- 監査の設定、アラートなど、他の依存関係を文書化します
+- Identify and prepare the target server, including server-level firewall rules, logins, and master database level permissions.
+- Determine how to redirect clients and client applications to the new server
+- Document other dependencies, such as auditing settings and alerts 
  
-計画および準備が不十分な状態で、フェールオーバーまたは復旧後にアプリケーションをオンラインにすると、余計な時間がかかり、負荷がかかったときにトラブルシューティングが必要になる場合があります。良くない組み合わせです。
+If you do not plan and prepare properly, bringing your applications online after a failover or a recovery takes additional time and likely also require troubleshooting at a time of stress - a bad combination.
 
-### geo レプリケートされたセカンダリ データベースにフェールオーバーする 
+### <a name="failover-to-a-geo-replicated-secondary-database"></a>Failover to a geo-replicated secondary database 
 
-復旧メカニズムとしてアクティブ geo レプリケーションを使用している場合は、[geo レプリケートされたセカンダリに強制的にフェールオーバー](sql-database-disaster-recovery.md#failover-to-geo-replicated-secondary-database)します。数秒以内に、セカンダリは新しいプライマリに昇格し、いつでも新しいトランザクションを記録して、すべてのクエリに応答できるようになります。失われるのは、わずか数秒分のレプリケートされなかったデータだけです。フェールオーバー プロセスの自動化については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
+If you are using Active Geo-Replication as your recovery mechanism, [force a failover to a geo-replicated secondary](sql-database-disaster-recovery.md#failover-to-geo-replicated-secondary-database). Within seconds, the secondary is promoted to become the new primary and is ready to record new transactions and respond to any queries - with only a few seconds of data loss for the data that had not yet been replicated. For information on automating the failover process, see [Design an application for cloud disaster recovery](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
-> [AZURE.NOTE] データ センターがオンラインに戻ると、元のプライマリにフェールバックできます (フェールバックしなくてもかまいません)。
+> [AZURE.NOTE] When the data center comes back online, you can failback to the original primary (or not).
 
-### geo リストアを実行する 
+### <a name="perform-a-geo-restore"></a>Perform a Geo-Restore 
 
-Geo 冗長ストレージ レプリケーションによる自動バックアップを復旧メカニズムとして使用している場合は、[geo リストアを使用してデータベース復旧を開始](sql-database-disaster-recovery.md#recover-using-geo-restore)します。ほとんどの場合、12 時間以内に復旧が実行され、最大 1 時間分のデータ損失が発生します。これは 1 時間ごとの差分バックアップによって、最後のバックアップが実行およびレプリケートされたタイミングによって決まります。復旧処理が完了するまで、データベースは、トランザクションを記録したり、クエリに応答したりすることはできません。
+If you are using automated backups with geo-redundant storage replication as your recovery mechanism, [initiate a database recovery using Geo-Restore](sql-database-disaster-recovery.md#recover-using-geo-restore). Recovery usually takes place within 12 hours - with data loss of up to one hour determined by when the last hourly differential backup with taken and replicated. Until the recovery completes, the database is unable to record any transactions or respond to any queries. 
 
-> [AZURE.NOTE] 復旧されたデータベースにアプリケーションを切り替える前に、データ センターがオンラインに戻った場合は、復旧をキャンセルするだけです。
+> [AZURE.NOTE] If the data center comes back online before you switch your application over to the recovered database, you can simply cancel the recovery.  
 
-### フェールオーバー後のタスク/復旧タスクを実行する 
+### <a name="perform-post-failover-/-recovery-tasks"></a>Perform post failover / recovery tasks 
 
-復旧にどちらのメカニズムを使ったとしても、ユーザーおよびアプリケーションの動作を元に戻す前に、次の追加タスクを実行する必要があります。
+After recovery from either recovery mechanism, you must perform the following additional tasks before your users and applications are back up and running:
 
-- クライアントとクライアント アプリケーションを、新しいサーバーおよび復元されたサーバーにリダイレクトする
-- ユーザーが接続できるように、適切なサーバー レベルのファイアウォール規則が適用されていることを確認する (または[データベース レベルのファイアウォール](sql-database-firewall-configure.md#creating-database-level-firewall-rules)を使用する)
-- 適切なログインとマスター データベース レベルのアクセス許可が適切に指定されていることを確認する (または[包含ユーザー](https://msdn.microsoft.com/library/ff929188.aspx)を使用する)
-- 必要に応じて、監査を構成する
-- 必要に応じて、アラートを構成する
+- Redirect clients and client applications to the new server and restored database
+- Ensure appropriate server-level firewall rules are in place for users to connect (or use [database-level firewalls](sql-database-firewall-configure.md#creating-database-level-firewall-rules))
+- Ensure appropriate logins and master database level permissions are in place (or use [contained users](https://msdn.microsoft.com/library/ff929188.aspx))
+- Configure auditing, as appropriate
+- Configure alerts, as appropriate
 
-## 最小のダウンタイムでアプリケーションをアップグレードする
+## <a name="upgrade-an-application-with-minimal-downtime"></a>Upgrade an application with minimal downtime
 
-アプリケーションのアップグレードなど、計画されたメンテナンスのために、アプリケーションをオフラインにしなければならないことがあります。[アプリケーション アップグレードの管理](sql-database-manage-application-rolling-upgrade.md)に関するページでは、アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを有効化し、アップグレード中のダウンタイムを最小限に抑え、問題が発生した場合の復旧パスを提供する方法について説明します。この記事では、アップグレード処理を編成する 2 種類の方法を確認し、方法ごとに利点とトレードオフを説明します。
+Sometimes an application needs to be taken offline because of planned maintenance such as an application upgrade. [Manage application upgrades](sql-database-manage-application-rolling-upgrade.md) describes how to use Active Geo-Replication to enable rolling upgrades of your cloud application to minimize downtime during upgrades and provide a recovery path in the event something goes wrong. This article looks at two different methods of orchestrating the upgrade process and discusses the benefits and trade-offs of each option.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-スタンドアロン データベースおよびエラスティック プール用アプリケーション設計に関する考慮事項については、[クラウド障害復旧用のアプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページと[エラスティック プール障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+For a discussion of application design considerations for stand-alone databases and for elastic pools, see [Design an application for cloud disaster recovery](sql-database-designing-cloud-solutions-for-disaster-recovery.md) and [Elastic Pool disaster recovery strategies](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,22 +1,22 @@
-#### ExpressRoute の制限
+#### <a name="expressroute-limits"></a>ExpressRoute Limits
 
-各サブスクリプションの ExpressRoute リソースには、次の制限が適用されます。
+The following limits apply to ExpressRoute resources per subscription.
 
-| リソース | 既定の制限 |
+| Resource | Default Limit |
 |---|---|
-| サブスクリプションあたりの ExpressRoute 回線数 | 10 |
-| ARM のサブスクリプションあたりの地域ごとの ExpressRoute 回線数 | 10 |
-| ExpressRoute Standard の Azure プライベート ピアリング用の最大ルート数 | 4,000 |
-| ExpressRoute Premium アドオンの Azure プライベート ピアリング用の最大ルート数 | 10,000 |
-| ExpressRoute Standard の Azure パブリック ピアリング用の最大ルート数 | 200 |
-| ExpressRoute premium アドオンの Azure パブリック ピアリング用の最大ルート数 | 200 |
-| ExpressRoute Standard の Azure Microsoft ピアリング用の最大ルート数 | 200 |
-| ExpressRoute Premium アドオンの Azure Microsoft ピアリング用の最大ルート数 | 200 |
-| ExpressRoute 回線あたりで許可される仮想ネットワークのリンク数 | 次の表を参照 |
+| ExpressRoute circuits per subscription | 10 |
+| ExpressRoute circuits per region per subscription for ARM | 10 |
+| Maximum number of routes for Azure private peering with ExpressRoute standard | 4,000 |
+| Maximum number of routes for Azure private peering with ExpressRoute premium add-on | 10,000 |
+| Maximum number of routes for Azure public peering with ExpressRoute standard | 200 |
+| Maximum number of routes for Azure public peering with ExpressRoute premium add-on | 200 |
+| Maximum number of routes for Azure Microsoft peering with ExpressRoute standard | 200 |
+| Maximum number of routes for Azure Microsoft peering with ExpressRoute premium add-on | 200 |
+| Number of virtual network links allowed per ExpressRoute circuit | see table below |
 
-#### ExpressRoute 回線あたりの Virtual Network 数
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a>Number of Virtual Networks per ExpressRoute circuit
 
-| **回線のサイズ** | **Standard での VNET リンク数** | **Premium アドオンでの VNET リンク数** |
+| **Circuit Size** | **Number of VNet links for standard** | **Number of VNet Links with Premium add-on** |
 |---|---|---|
 | 50 Mbps | 10 | 20 |
 | 100 Mbps | 10 | 25 |
@@ -27,4 +27,8 @@
 | 5 Gbps | 10 | 75 |
 | 10 Gbps | 10 | 100 |
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

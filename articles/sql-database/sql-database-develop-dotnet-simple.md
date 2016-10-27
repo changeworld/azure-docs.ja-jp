@@ -1,52 +1,62 @@
 <properties
-	pageTitle=".NET (C#) からの SQL Database 使用 | Microsoft Azure"
-	description="このクイック スタートのコード サンプルを使用して、C# で最新のアプリケーションを構築し、Azure SQL Database を使用してクラウドの強力なリレーショナル データベースでバックアップします。"
-	services="sql-database"
-	documentationCenter=""
-	authors="tobbox"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Connect to SQL Database by using .NET (C#) | Microsoft Azure"
+    description="Use the sample code in this quick start to build a modern application with C# and backed by a powerful relational database in the cloud with Azure SQL Database."
+    services="sql-database"
+    documentationCenter=""
+    authors="tobbox"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.workload="drivers"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="06/16/2016"
-	ms.author="tobiast"/>
+    ms.service="sql-database"
+    ms.workload="drivers"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="06/16/2016"
+    ms.author="tobiast"/>
 
-# .NET (C#) を使用して SQL Database に接続する
 
-[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
+# <a name="connect-to-sql-database-by-using-.net-(c#)"></a>Connect to SQL Database by using .NET (C#)
 
-## 手順 1: 開発環境を設定する
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)] 
 
-[ADO.NET 開発用の開発環境を構成する](https://msdn.microsoft.com/library/mt718321.aspx)
+## <a name="step-1:-configure-development-environment"></a>Step 1:  Configure Development Environment
 
-## 手順 2: SQL Database を作成する
+[Configure development environment for ADO.NET development](https://msdn.microsoft.com/library/mt718321.aspx)
 
-「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
+## <a name="step-2:-create-a-sql-database"></a>Step 2: Create a SQL database
 
-## 手順 3: 接続文字列を取得する
+See the [getting started page](sql-database-get-started.md) to learn how to create a sample database.  It is important you follow the guide to create an **AdventureWorks database template**. The samples shown below only work with the **AdventureWorks schema**.  
+
+## <a name="step-3:-get-connection-string"></a>Step 3:  Get Connection String
 
 [AZURE.INCLUDE [sql-database-include-connection-string-dotnet-20-portalshots](../../includes/sql-database-include-connection-string-dotnet-20-portalshots.md)]
 
-## 手順 4: サンプル コードを実行する
+## <a name="step-4:-run-sample-code"></a>Step 4: Run sample code
 
-* [ADO.NET を使用した SQL 接続の概念実証](https://msdn.microsoft.com/library/mt718320.aspx)
-* [ADO.NET を使用して SQL に弾性的に接続する](https://msdn.microsoft.com/library/mt703195.aspx)
+* [Proof of concept connecting to SQL using ADO.NET](https://msdn.microsoft.com/library/mt718320.aspx)
+* [Connect resiliently to SQL with ADO.NET](https://msdn.microsoft.com/library/mt703195.aspx)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-* [認証および SQL DB を使用する ASP.NET MVC アプリの作成と、Azure App Service へのデプロイ](../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
-* [Mobile Services .NET バックエンドによる既存の SQL データベースを使用するサービスの作成](../mobile-services/mobile-services-dotnet-backend-use-existing-sql-database.md)
-* 「[SQL Database の開発: 概要](sql-database-develop-overview.md)」の確認
-* [Microsoft ADO.Net Driver for SQL Server](https://msdn.microsoft.com/library/mt657768.aspx) の詳細
+* [Create an ASP.NET MVC app with auth and SQL DB and deploy to Azure App Service]( ../app-service-web/web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)
+* [Build a service using an existing SQL database with the Mobile Services .NET backend](../mobile-services/mobile-services-dotnet-backend-use-existing-sql-database.md)
+* Review the [SQL Database Development Overview](sql-database-develop-overview.md)
+* More information on the [Microsoft ADO.Net Driver for SQL Server](https://msdn.microsoft.com/library/mt657768.aspx)
 
-## その他のリソース 
+## <a name="additional-resources"></a>Additional resources 
 
-* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-* すべての [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)を確認
+* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

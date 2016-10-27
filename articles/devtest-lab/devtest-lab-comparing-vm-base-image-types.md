@@ -1,51 +1,57 @@
 <properties
-	pageTitle="DevTest ラボのカスタム イメージと数式の比較 | Microsoft Azure"
-	description="環境に最適なものを判断できるように、VM ベースとして使用するカスタム イメージと数式の違いについて説明します。"
-	services="devtest-lab,virtual-machines"
-	documentationCenter="na"
-	authors="tomarcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Comparing custom images and formulas in DevTest Labs | Microsoft Azure"
+    description="Learn about the differences between custom images and formulas as VM bases so you can decide which one best suits your environment."
+    services="devtest-lab,virtual-machines"
+    documentationCenter="na"
+    authors="tomarcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="devtest-lab"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2016"
-	ms.author="tarcher"/>
+    ms.service="devtest-lab"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/25/2016"
+    ms.author="tarcher"/>
 
-# DevTest ラボのカスタム イメージと数式の比較
 
-## Overview
-[カスタム イメージ](./devtest-lab-create-template.md)と[数式](./devtest-lab-manage-formulas.md)の両方を、[新しく作成した VM](./devtest-lab-add-vm-with-artifacts.md) のベースとして使用することができます。ただし、カスタム イメージが単に VHD に基づくイメージであるのに対して、数式は VM サイズ、仮想ネットワークとサブネット、アーティファクトなどの構成済み設定*に加え*、VHD に基づくイメージであるという重要な相違点があります。これらの構成済みの設定は、VM の作成時にオーバーライド可能な既定値で設定されます。この記事では、カスタム イメージを使用する場合と数式を使用する場合の利点 (長所) と欠点 (短所) についていくつか説明します。
+# <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Comparing custom images and formulas in DevTest Labs
+
+## <a name="overview"></a>Overview
+Both [custom images](./devtest-lab-create-template.md) and [formulas](./devtest-lab-manage-formulas.md) can be used as bases for [created new VMs](./devtest-lab-add-vm-with-artifacts.md). However, the key distinction between custom images and formulas is that a custom image is simply an image based on a VHD, while a formula is an image based on a VHD *in addition to* preconfigured settings - such as VM Size, virtual network and subnet, artifacts, and so on. These preconfigured settings are set up with default values that can be overridden at the time of VM creation. This article explains some of the advantages (pros) and disadvantages (cons) to using custom images versus using formulas.
  
-## カスタム イメージの長所と短所
-カスタム イメージでは、必要な環境から VM を作成するための静的で不変な方法が提供されます。
+## <a name="custom-image-pros-and-cons"></a>Custom image pros and cons
+Custom images provide a a static, immutable way to create VMs from a desired environment. 
 
-**長所**
-- イメージからの VM のスピンアップ後は何も変わらないため、カスタム イメージからすばやく VM をプロビジョニングできます。つまり、カスタム イメージは設定のない単なるイメージであるため、適用する設定はありません。
-- 1 つのカスタム イメージから作成される VM は同じです。
+**Pros**
+- VM provisioning from a custom image is fast as nothing changes after the VM is spun up from the image. In other words, there are no settings to apply as the custom image is simply an image without settings. 
+- VMs created from a single custom image are identical.
 
-**短所**
-- カスタム イメージの一部の要素を更新する必要がある場合、イメージを再作成する必要があります。
+**Cons**
+- If you need to update some aspect of the custom image, the image must be recreated.  
 
-## 数式の長所と短所
-数式では、必要な構成/設定から VM を作成するための動的な方法が提供されます。
+## <a name="formula-pros-and-cons"></a>Formula pros and cons
+Formulas provide a dynamic way to create VMs from the desired configuration/settings.
 
-**長所**
-- 環境の変更は、アーティファクトを介してすぐにキャプチャできます。たとえば、リリース パイプラインから最新ビットの VM をインストールする必要がある場合、またはリポジトリから最新コードを登録する場合は、最新のビットをデプロイするか、ターゲットのベース イメージと共に数式に最新のコードを登録するアーティファクトを単に指定できます。VM を作成するためにこの数式が使用される場合は常に、最新のビット/コードが VM にデプロイ/登録されます。
-- 数式では、VM サイズや仮想ネットワークの設定など、カスタム イメージで指定できない既定の設定を定義できます。
-- 数式で保存されている設定は既定値として表示されますが、VM の作成時に変更できます。
+**Pros**
+- Changes in the environment can be captured on the fly via artifacts. For example, if you want a VM installed with the latest bits from your release pipeline or enlist the latest code from your repository, you can simply specify an artifact that deploys the latest bits or enlists the latest code in the formula together with a target base image. Whenever this formula is used to create VMs, the latest bits/code are deployed/enlisted to the VM. 
+- Formulas can define default settings that custom images cannot provide - such as VM sizes and virtual network settings. 
+- The settings saved in a formula are shown as default values, but can be modified when the VM is created. 
 
-**短所**
-- 数式から VM を作成すると、カスタム イメージから VM を作成する場合よりも時間がかかることがあります。
+**Cons**
+- Creating a VM from a formula can take more time than creating a VM from a custom image.
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## 関連するブログ記事
+## <a name="related-blog-posts"></a>Related blog posts
 
-- [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Custom images or formulas?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

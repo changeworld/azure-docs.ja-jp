@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure リソース エクスプローラー | Microsoft Azure"
-   description="Azure リソース エクスプローラーについて説明すると共に、Azure リソース エクスプローラーから Azure リソース マネージャーを介してデプロイを表示し更新する方法についても示します。"
+   pageTitle="Azure Resource Explorer | Microsoft Azure"
+   description="Describes Azure Resource Explorer and how it can be used to view and update deployments through Azure Resource Manager"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="stuartleeks"
@@ -16,62 +16,69 @@
    ms.date="08/01/2016"
    ms.author="stuartle;tomfitz"/>
 
-# Azure リソース エクスプローラーを使用してリソースを表示および変更する
-[Azure リソース エクスプローラー](https://resources.azure.com)は、サブスクリプションで作成済みのリソースを検索するのに非常に便利なツールです。このツールを使用すると、リソースがどのような構成になっているかを把握し、各リソースに割り当てられているプロパティを確認することができます。リソースの種類で使用できる REST API 操作および PowerShell コマンドレットについて説明します。インターフェイスを介してコマンドを発行することもできます。既存のリソースのプロパティを表示できるため、リソース エクスプローラーはリソース マネージャーのテンプレートを作成する際に特に有用です。
 
-リソース エクスプローラー ツールのソースは、[GitHub](https://github.com/projectkudu/ARMExplorer) で提供されています。ここでは、独自のアプリケーションで同様の動作を実装する必要がある場合に貴重なリファレンスを入手できます。
+# <a name="use-azure-resource-explorer-to-view-and-modify-resources"></a>Use Azure Resource Explorer to view and modify resources
+The [Azure Resource Explorer](https://resources.azure.com) is a great tool for looking at resources that you've already created in your subscription. By using this tool, you can understand how the resources are structured, and see the properties assigned to each resource. You can learn about the REST API operations and PowerShell cmdlets that are available for a resource type, and you can issue commands through the interface. Resource Explorer can be particularly helpful when you are creating Resource Manager templates because it enables you to view the properties for existing resources.
 
-## リソースの表示
-[https://resources.azure.com](https://resources.azure.com) に移動し、[Azure ポータル](https://portal.azure.com)の場合と同じ資格情報でサインインします。
+The source for the Resource Explorer tool is available on [github](https://github.com/projectkudu/ARMExplorer), which provides a valuable reference if you need to implement similar behavior in your own applications.
 
-読み込まれたら、左側にあるツリービューで、サブスクリプションとリソース グループにドリル ダウンすることができます。
+## <a name="view-resources"></a>View resources
+Navigate to [https://resources.azure.com](https://resources.azure.com) and sign in with the same credentials you would use for the [Azure Portal](https://portal.azure.com).
 
-![ツリー ビュー](./media/resource-manager-resource-explorer/are-01-treeview.png)
+Once loaded, the treeview on the left allows you to drill down into your subscriptions and resource groups:
 
-リソース グループがドリルダウンしたら、そのリソース グループに含まれているリソースに対応するプロバイダーを確認できます。
+![treeview](./media/resource-manager-resource-explorer/are-01-treeview.png)
 
-![プロバイダー](./media/resource-manager-resource-explorer/are-02-treeview-providers.png)
+As you drill into a resource group you will see the providers for which there are resources in that group:
 
-そこから、リソース インスタンスへのドリル ダウンを開始できます。次のスクリーン ショットでは、ツリービューに `sltest` という SQL Server インスタンスが表示されているのを確認できます。右側には、そのリソースで使用できる REST API 要求に関する情報が表示されています。リソースのノードに移動すると、リソース エクスプローラーによって、そのリソースに関する情報を取得するための GET 要求が自動的に発行されます。URL の下の広いテキスト領域には、API からの応答が表示されます。
+![providers](./media/resource-manager-resource-explorer/are-02-treeview-providers.png)
 
-Resource Manager テンプレートに精通するに従って、本文の内容を理解しやすくなります。 応答の **properties** セクションは、テンプレートの **properties** テンプレートに指定できる値に相当します。
+From there you can start drilling into the resource instances. In the screenshot below you can see the `sltest` SQL Server instance in the treeview. On the right hand side, you can see information about the REST API requests you can use with that resource. By navigating to the node for a resource, Resource Explorer automatically makes the GET request to retrieve information about the resource. In the large text area below the URL, you will see the response from the API. 
 
-![SQL Server](./media/resource-manager-resource-explorer/are-03-sqlserver-with-response.png)
+As you become familiar with Resource Manager templates the body content starts to look familiar! The **properties** section of the response matches the values you can provide in the **properties** section of your template.
 
-リソース エクスプローラーでは、ドリルダウンを続けることで、子リソースを探索できます。SQL Database Server の場合は、データベースやファイアウォール ルールなどに対して子リソースがあります。
+![sql server](./media/resource-manager-resource-explorer/are-03-sqlserver-with-response.png)
 
-データベースを探索すると、そのデータベースのプロパティが表示されます。以下のスクリーン ショットの場合、データベース `edition` は `Standard` であり、`serviceLevelObjective` (またはデータベース層) は `S1` となっています。
+Resource Explorer allows you to keep drilling down to explore child resources, in the case of the SQL Database Server, there are child resources for things such as databases and firewall rules.
 
-![SQL Database](./media/resource-manager-resource-explorer/are-04-database-get.png)
+Exploring a database shows us the properties for that database. In the screenshot below we can see that the database `edition` is `Standard` and the `serviceLevelObjective` (or database tier) is `S1`.
 
-## リソースの変更
+![sql database](./media/resource-manager-resource-explorer/are-04-database-get.png)
 
-リソースに移動すると、[編集] ボタンを選択することで、JSON コンテンツを編集可能にすることができます。次に、リソース エクスプローラーを使用して JSON を編集し、PUT 要求を送信してリソースを変更することができます。たとえば、次の図は、`S0` に変更されたデータベース層を示しています。
+## <a name="change-resources"></a>Change resources
 
-![データベース - PUT 要求](./media/resource-manager-resource-explorer/are-05-database-put.png)
+Once you have navigated to a resource, you can select the Edit button to make the JSON content editable. You can then use Resource Explorer to edit the JSON and send a PUT request to change the resource. For example, the image below shows the database tier changed to `S0`:
 
-**PUT** を選択することで、要求を送信します。
+![database - PUT request](./media/resource-manager-resource-explorer/are-05-database-put.png)
 
-要求が送信されると、リソース エクスプローラーは GET 要求を再発行して状態を更新します。これを見ると、`requestedServiceObjectiveId` は、更新済みであり、スケール操作が進行中であることを示す `currentServiceObjectiveId` とは異なっていることがわかります。GET ボタンをクリックすれば、状態を手動で更新することができます。
+By selecting **PUT** you submit the request. 
 
-![データベース - GET 要求 2](./media/resource-manager-resource-explorer/are-06-database-get2.png)
+Once the request has been submitted Resource Explorer re-issues the GET request to refresh the status. In this case we can see that the `requestedServiceObjectiveId` has been updated and is different from the `currentServiceObjectiveId` indicating that a scaling operation is in progress. You can click the GET button to refresh the status manually.
 
-## リソースに対する操作の実行
+![database - GET request2](./media/resource-manager-resource-explorer/are-06-database-get2.png)
 
-**[アクション]** タブでは、追加の REST 操作を確認および実行することができます。たとえば、Web サイト リソースを選択すると、[アクション] タブに、使用可能な操作を掲載した長いリストが表示されます。その一部を以下に示します。
+## <a name="performing-actions-on-resources"></a>Performing Actions on resources
 
-![Web - POST 要求](./media/resource-manager-resource-explorer/are-web-post.png)
+The **Actions** tab enables you to see and perform additional REST operations. For example, when you have selected a web site resource, the Actions tab presents a long list of available operations, some of which are shown below.
 
-## PowerShell による API の呼び出し
-リソース エクスプローラーの [PowerShell] タブには、現在探索しているリソースとやり取りするために使用できるコマンドレットが表示されます。表示される PowerShell スクリプトは、選択したリソースの種類に応じて、単純なコマンドレット (`Get-AzureRmResource` や `Set-AzureRmResource` など) から、より複雑なコマンドレット (Web サイトでのスロットのスワップなど) までさまざまです。
+![web - POST request](./media/resource-manager-resource-explorer/are-web-post.png)
+
+## <a name="invoking-the-api-via-powershell"></a>Invoking the API via PowerShell
+The PowerShell tab in Resource Explorer shows you the cmdlets to use to interact with the resource that you are currently exploring. Depending on the type of resource you have selected, the displayed PowerShell script can range from simple cmdlets (such as `Get-AzureRmResource` and `Set-AzureRmResource`) to more complicated cmdlets (such as swapping slots on a web site). 
 
 ![PowerShell](./media/resource-manager-resource-explorer/are-07-powershell.png)
 
-Azure PowerShell コマンドレットの詳細については、「[Azure Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」をご覧ください。
+For more information on The Azure PowerShell cmdlets, see [Using Azure PowerShell with Azure Resource Manager](powershell-azure-resource-manager.md)
 
-## 概要
-Resource Manager を使用する場合は、リソース エクスプローラーを使用すると非常に便利です。PowerShell を使用してどのようにクエリを実行し変更を行うかを考える場合に有効です。REST API を使用する場合は、コードの記述を開始する前に、起動して API 呼び出しを迅速にテストすることができます。テンプレートを作成する場合は、リソースの階層を把握し、構成を配置する場所を特定するのに便利です。ポータルで変更を加え、リソース エクスプローラーで対応するエントリを見つけることができます。
+## <a name="summary"></a>Summary
+When working with Resource Manager, the Resource Explorer can be an extremely useful tool. It is a great way to find ways to use PowerShell to query and make changes. If you're working with the REST API it is a great way to get started and quickly test API calls before you start writing code. And if you're writing templates it can be a great way to understand the resource hierarchy and find where to put configuration - you can make a change in the Portal and then find the corresponding entries in Resource Explorer!
 
-詳細については、「[Channel 9 video with Scott Hanselman and David Ebbo (Scott Hanselman と David Ebbo によるチャネル 9 ビデオ)](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo)」を参照してください。
+For more information, watch the [Channel 9 video with Scott Hanselman and David Ebbo](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Resource-Manager-Explorer-with-David-Ebbo)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

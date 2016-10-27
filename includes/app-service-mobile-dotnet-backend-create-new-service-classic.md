@@ -1,28 +1,31 @@
-1. [Azure ポータル]にログインします。
+1. Log in at the [Azure Portal].
 
-2. **[+ 新規]**、**[Web + モバイル]**、**[モバイル アプリ]** の順にクリックし、モバイル アプリ バックエンドの名前を入力します。
+2. Click **+NEW** > **Web + Mobile** > **Mobile App**, then provide a name for your Mobile App backend.
 
-3. **[リソース グループ]** では、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
+3. For the **Resource Group**, select an existing resource group, or create a new one (using the same name as your app.) 
  
-	別の App Service プランを選択するか、または新しいプランを作成することもできます。App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「[Azure App Service プランの詳細な概要](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
+    You can either select another App Service plan or create a new one. For more about App Services plans and how to create a new plan in a different pricing tier and in your desired location, see [Azure App Service plans in-depth overview](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
-4. **[App Service プラン]** には既定のプラン ([Standard レベル](https://azure.microsoft.com/pricing/details/app-service/)) が選択されています。別のプランを選択することも、[新しいプランを作成](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan)することもできます。App Service プランの設定により、アプリに関連付けられる[場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/)が決まります。
+4. For the **App Service plan**, the default plan (in the [Standard tier](https://azure.microsoft.com/pricing/details/app-service/)) is selected. You can also  select a different plan, or [create a new one](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan). The App Service plan's settings determine the [location, features, cost and compute resources](https://azure.microsoft.com/pricing/details/app-service/) associated with your app. 
 
-	プランを決定したら、**[作成]** をクリックします。モバイル アプリ バックエンドが作成されます。
-	
-6. 新しいモバイル アプリ バックエンドの **[設定]** ブレードで、**[クイック スタート]**、お使いのクライアント アプリ プラットフォーム、**[データベースに接続する]** の順にクリックします。
+    After you decide on the plan, click **Create**. This creates the Mobile App backend. 
+    
+6. In the **Settings** blade for the new Mobile App backend, click **Quick start** > your client app platform > **Connect a database**. 
 
-	![](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)
+    ![](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)
 
-7. **[データ接続の追加]** ブレードで、**[SQL Database]**、**[新しいデータベースの作成]** の順にクリックします。データベースの **[名前]** を入力し、価格レベルを選択して、**[サーバー]** をクリックします。この新しいデータベースは再利用できます。同じ場所に既にデータベースを所有している場合は、代わりに**既存のデータベースを使用**することもできます。別の場所にあるデータベースを使用することは、帯域幅コストと待機時間が増加するため、お勧めしません。
+7. In the **Add data connection** blade, click **SQL Database** > **Create a new database**, type the database **Name**, choose a pricing tier, then click **Server**.  You can reuse this new database. If you already have a database in the same location, you can instead choose **Use an existing database**. The use of a database in a different location isn't recommended due to bandwidth costs and higher latency.
  
     ![](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-db.png)
 
-8. **[新しいサーバー]** ブレードで、**[サーバー名]** フィールドに一意のサーバー名を入力して、ログインとパスワードを指定し、**[Azure サービスにサーバーへのアクセスを許可する]** をオンにして、**[OK]** をクリックします。新しいデータベースが作成されます。
+8. In the **New server** blade, type a unique server name in the **Server name** field, provide a login and password, check **Allow azure services to access server**, and click **OK**. This creates the new database.
 
-9. **[データ接続の追加]** ブレードに戻り、**[接続文字列]** をクリックし、データベースのログインとパスワードの値を入力して、**[OK]** をクリックします。データベースが正常にデプロイされるまで数分待ってから次の手順に進んでください。
+9. Back in the **Add data connection** blade, click **Connection string**, type the login and password values for your database, and click **OK**. Wait a few minutes for the database to be deployed successfully before proceeding.
 
 <!-- URLs. -->
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

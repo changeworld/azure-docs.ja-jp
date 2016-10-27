@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure アプリケーションの公開ウィザード | Microsoft Azure"
-   description="Azure アプリケーションの公開ウィザード"
+   pageTitle="Publish Azure Application Wizard | Microsoft Azure"
+   description="Publish Azure Application Wizard"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,128 +15,134 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Azure アプリケーションの公開ウィザード
 
-## Overview
+# <a name="publish-azure-application-wizard"></a>Publish Azure Application Wizard
 
-Visual Studio で Web アプリケーションをデプロイしたら、**Azure アプリケーションの公開**ウィザードを使用して、そのアプリケーションを Azure クラウド サービスにより簡単に発行できます。最初のセクションではウィザードの使用にあたって行う必要のある手順について説明し、残りのセクションではウィザードの機能について説明します。
+## <a name="overview"></a>Overview
 
->[AZURE.NOTE] このトピックでは Web サイトではなくクラウド サービスへのデプロイについて説明します。Web サイトへのデプロイの詳細については、[Azure の Web サイトのデプロイ方法](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false)に関するページを参照してください。
+After you develop a web application in Visual Studio, you can publish that application more easily to an Azure cloud service by using the **Publish Azure Application** wizard. The first section explains the steps that you must complete before you use the wizard, and the remaining sections explain the features of the wizard.
 
-## 前提条件
+>[AZURE.NOTE] This topic is about deploying to cloud services, not to web sites. For information about deploying to web sites, see [How to Deploy an Azure Web Site](https://social.msdn.microsoft.com/Search/windowsazure?query=How%20to%20Deploy%20an%20Azure%20Web%20Site&Refinement=138&ac=4#refinementChanges=117&pageNumber=1&showMore=false).
 
-Azure に Web アプリケーションを発行する前に、Microsoft アカウントと Azure サブスクリプションを取得して、Web アプリケーションを Azure クラウド サービスに関連付ける必要があります。これらのタスクを既に完了している場合は、次のセクションに進むことができます。
+## <a name="prerequisites"></a>Prerequisites
 
-1. Microsoft アカウントと Azure サブスクリプションを取得します。[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間無料の Azure サブスクリプションを試すことができます。
+Before you can publish your web application to Azure, you need to have a Microsoft account and an Azure subscription, and you have to associate your web application with an Azure cloud service. If you’ve already completed these tasks, you can skip to the next section.
 
-1. Azure でクラウド サービスとストレージ アカウントを作成します。これは、Visual Studio のサーバー エクスプローラーから行うことも、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して行うこともできます。
+1. Get a Microsoft account and an Azure subscription. You can try a free one month free Azure subscription [here](https://azure.microsoft.com/pricing/free-trial/)
 
-1. Azure 用の Web アプリケーションを有効にします。Web アプリケーションを Visual Studio から Azure に発行できるようにするには、Visual Studio で Azure クラウド サービス プロジェクトに関連付ける必要があります。関連付けられたクラウド サービス プロジェクトを作成するには、Web アプリケーションのプロジェクトのショートカット メニューを開き、[変換]、**[Azure クラウド サービス プロジェクトに変換]** の順に選択します。
+1. Create a cloud service and a storage account on Azure. You can do this from Server Explorer in Visual Studio, or by using the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-1. クラウド サービス プロジェクトをソリューションに追加したら、ショートカット メニューをもう一度開き、**[発行]** を選択します。Azure のアプリケーションを有効にする方法の詳細については、「[方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](https://msdn.microsoft.com/library/azure/hh420322.aspx)」を参照してください。
+1. Enable your web application for Azure. To enable your web application to be published to Azure from Visual Studio, you’ll need to associate it with an Azure cloud service project in Visual Studio. To create the associated cloud service project, open the shortcut menu for the project for your web application, and then choose Convert, **Convert to Azure Cloud Service Project**.
 
->[AZURE.NOTE] 必ず、管理者の資格情報 (管理者として実行) で Visual Studio を開始するようにしてください。
+1. After the cloud service project is added to your solution, open the same shortcut menu again and then choose **Publish**. For more information about how to enable applications for Azure, see [How to: Migrate and Publish a Web Application to an Azure Cloud Service from Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx).
 
-1. アプリケーションを発行する準備ができたら、Azure クラウド サービス プロジェクトのショートカット メニューを開き、**[発行]** を選択します。次の手順では、Azure アプリケーションの公開ウィザードを示します。
+>[AZURE.NOTE] Be sure to start Visual Studio with administrator credentials (Run As Administrator).
 
-## サブスクリプションの選択
+1. When you’re ready to publish your application, open the shortcut menu for the Azure cloud service project, and then choose **Publish**. The following steps show the Publish Azure Application wizard.
 
-### サブスクリプションを選択するには
+## <a name="choosing-your-subscription"></a>Choosing Your Subscription
 
-1. ウィザードを初めて使用する際は、サインインする必要があります。**[サインイン]** リンクをクリックします。Azure ポータルにサインインするように求められたらサインインして、Azure のユーザー名とパスワードを入力します。
+### <a name="to-choose-a-subscription"></a>To choose a subscription
+
+1. Before you use the wizard for the first time, you must sign in. Choose the **Sign In** link. Sign in to the Azure portal when prompted, and provide your Azure user name and password. 
 
     ![This is one of the publishing wizard screens](./media/vs-azure-tools-publish-azure-application-wizard/IC799159.png)
 
-    サブスクリプションの一覧に、アカウントに関連付けられたサブスクリプションが表示されます。以前にインポートしたサブスクリプション ファイルからサブスクリプションが表示される場合もあります。
+    The list of subscriptions populates with the subscriptions associated with your account. You might also see subscriptions from any subscription files that you imported previously.
 
-1. **[サブスクリプションの選択]** の一覧で、このデプロイに使用するサブスクリプションを選択します。
+1. In the **Choose your subscription** list, choose the subscription to use for this deployment.
 
-   **[<管理…>]** を選択した場合、**[サブスクリプションの管理]** ダイアログ ボックスが表示され、使用するサブスクリプションとユーザー アカウントを選択できます。**[アカウント]** タブにはすべてのアカウントが表示され、**[サブスクリプション]** タブにはアカウントに関連付けられているすべてのサブスクリプションが表示されます。Azure リソースを使用するリージョンを選択できるほか、Azure ポータルからサブスクリプションの証明書を作成したり、インポートしたりすることもできます。サブスクリプションをサブスクリプション ファイルからインポートした場合は、関連付けられている証明書が **[証明書]** タブに表示されます。終了したら、**[閉じる]** をクリックします。
+   If you choose **<Manage…>**, the **Manage Subscriptions** dialog box appears, and you can choose the subscription and user account you want to use. The **Accounts** tab shows all of your accounts, and the **Subscriptions** tab shows all of the subscriptions associated with the accounts. You can also choose a region from which to use Azure resources, as well as create or import certificates for your subscription from the Azure portal. If you imported any subscriptions from a subscription file, the associated certificates will appear under the **Certificates** tab. When you're done, choose the **Close** button.
 
     ![Manage subscriptions](./media/vs-azure-tools-publish-azure-application-wizard/IC799160.png)
 
     >[AZURE.NOTE] A subscription file can contain more than one subscription.
 
-1. **[次へ]** をクリックして続行します。
+1. Choose the **Next** button to continue. 
 
-    サブスクリプションにクラウド サービスがない場合は、プロジェクトをホストするクラウド サービスを Azure で作成する必要があります。**[クラウド サービスとストレージ アカウントの作成]** ダイアログ ボックスが表示されます。
+    If there aren't any cloud services in your subscription, you need to create a cloud service in Azure to host your project. The **Create Cloud Service and Storage Account** dialog box appears.
 
-    クラウド サービスの新しい名前を指定します。この名前は Azure 内で一意である必要があります。次に、自分またはほとんどのクライアントの近くにあるデータ センターのリージョンまたはアフィニティ グループを指定します。この名前は、Azure でクラウド サービスに対して作成される新しいストレージ アカウントにも使用されます。
+    Specify a new name for the cloud service. The name must be unique in Azure. Then specify a region or affinity group for a data center that’s near you or most of your clients. This name is also used for a new storage account that Azure creates for your cloud service.
 
-1. このデプロイの設定を変更し、**[発行]** をクリックしてこのデプロイを発行します (次のセクションでは、さまざまな設定の詳細について説明します)。発行する前に設定を確認するには、**[次へ]** をクリックします。
+1. Modify any settings you want for this deployment and then publish it by choosing the **Publish** button (The next section provides more details about the various settings). To review the settings before publishing, choose the **Next** button.
 
-    >[AZURE.NOTE] この手順で [発行] をクリックした場合は、Visual Studio でこのデプロイの状態を監視できます。
+    >[AZURE.NOTE] If you chose Publish in this step, you can monitor the status of this deployment in Visual Studio.
 
-**Azure アプリケーションの公開**ウィザードを使用して、デプロイの共通設定と詳細設定の両方を変更できます。たとえば、リリースする前にアプリケーションをテスト環境にデプロイする設定を選択できます。次の図は、Azure デプロイの **[共通設定]** タブを示しています。
+You can modify both common and advanced settings for a deployment by using the **Publish Azure Application** wizard. For example, you can choose a setting to deploy your application to a test environment before you release it. The following illustration shows the **Common Settings** tab for an Azure deployment.
 
 ![Common Settings](./media/vs-azure-tools-publish-azure-application-wizard/IC749013.png)
 
-## 発行設定の構成
+## <a name="configuring-your-publish-settings"></a>Configuring Your Publish Settings
 
-### 発行設定を構成するには
+### <a name="to-configure-the-publish-settings"></a>To configure the publish settings
 
-1. **[クラウド サービス]** ボックスで、次の一連の手順のいずれかを実行します。
+1. In the **Cloud service** list, perform one of the following sets of steps:
 
-   1. ドロップダウン ボックスで、既存のクラウド サービスを選択します。このサービスのデータ センターの場所が表示されます。この場所をメモし、ストレージ アカウントの場所が同じデータ センター内にあるかどうかを確認します。
+   1. In the dropdown list box, choose an existing cloud service. The data center location for the service appears. You should note this location and make sure that your storage account location is in the same data center.
 
-    1. **[新規作成]** を選択し、Azure がホストするクラウド サービスを作成します。**[クラウド サービスの作成]** ダイアログ ボックスで、サービスの名前を指定し、リージョンまたはアフィニティ グループを指定して、このクラウド サービスをホストするデータ センターの場所を指定します。この名前は Azure 内で一意である必要があります。
+    1. Choose **Create New** to create a cloud service that Azure hosts. In the **Create Cloud Service** dialog box, provide a name for the service, and then specify a region or affinity group to specify the location of the data center that you want to host this cloud service. The name must be unique in Azure.
 
-1. **[環境]** の一覧で、**[実稼働]** と **[ステージング]** のどちらかを選択します。アプリケーションをテスト環境にデプロイする場合は、ステージング環境を選択します。後でアプリケーションを運用環境に移動できます。
+1. In the **Environment** list, choose either **Production** or **Staging**. Choose the staging environment if you want to deploy your application to a test environment. You can move your application to the production environment later.
 
-1. **[ビルド構成]** の一覧で、**[デバッグ]** と **[リリース]** のどちらかを選択します。
+1. In the **Build configuration** list, choose either **Debug** or **Release**.
 
-1. **[サービス構成]** の一覧で、**[クラウド]** と **[ローカル]** のどちらかを選択します。
+1. In the **Service configuration** list, choose either **Cloud** or **Local**.
 
-    サービスにリモート接続できるようにする場合は、**[すべてのロールのリモート デスクトップを有効にする]** チェック ボックスをオンにします。このオプションは、主にトラブルシューティングのために使用されます。このチェック ボックスをオンにすると、**[リモート デスクトップ構成]** ダイアログ ボックスが表示されます。構成を変更するには、[設定] リンクをクリックします。
+    Select the **Enable Remote Desktop for all roles** check box if you want to be able to remotely connect to the service. This option is primarily used for troubleshooting. When you select this check box, the **Remote Desktop Configuration** dialog box appears. Choose the Settings link to change the configuration.
 
-    **[すべての Web ロールの Web 配置を有効にする]** チェック ボックスをオンにすると、このサービスで Web デプロイが有効になります。この機能を使用するには、リモート デスクトップを有効にする必要があります。詳細については、「[[Azure Tools を使用したクラウド サービスの発行](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx)」を参照してください。Web デプロイの詳細については、「[[Azure Tools を使用したクラウド サービスの発行](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx)」を参照してください。
+    Select the **Enable Web Deploy for all web roles** check box to enable web deployment for the service. You must enable Remote Desktop to use this feature. For more information, see [[Publishing a Cloud Service using the Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx). For more information about Web Deploy, see [[Publishing a Cloud Service using the Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)](https://msdn.microsoft.com/library/azure/ff683672.aspx).
 
-1. **[詳細設定]** タブをクリックします。**[デプロイ ラベル]** フィールドで、既定の名前をそのまま使用するか、独自の名前を入力します。デプロイ ラベルに日付を付加するには、チェック ボックスをオンのままにします。
+1. Choose the **Advanced Settings** tab. In the **Deployment label** field, either accept the default name, or enter a name of your choosing. To append the date to the deployment label, leave the check box selected.
 
     ![Third screen of the Publishing Wizard](./media/vs-azure-tools-publish-azure-application-wizard/IC749014.png)
 
-1. **[ストレージ アカウント]** の一覧で、このデプロイに使用するストレージ アカウントを選択します。クラウド サービスとストレージ アカウント用のデータ センターの場所を比較します。これらの場所が同じになるようにしてください。
+1. In the **Storage account** list, choose the storage account to use for this deployment. Compare the locations of the data centers for your cloud service and your storage account. Ideally, these locations should be the same.
 
-    >[AZURE.NOTE] Azure ストレージ アカウントには、アプリケーション デプロイのパッケージが格納されます。アプリケーションのデプロイ後、パッケージはストレージ アカウントから削除されます。
+    >[AZURE.NOTE] The Azure storage account stores the package for the application deployment. After the application is deployed, the package is removed from the storage account.
 
-1. 更新されたコンポーネントのみをデプロイする場合は、**[配置の更新]** チェック ボックスをオンにします。このデプロイは、完全なデプロイより高速な場合があります。下記の図に示すように、**[設定]** リンクをクリックして **[配置の更新設定]** ダイアログ ボックスを開きます。
+1. Select the **Deployment update** check box if you want to deploy only updated components. This type of deployment can be faster than a full deployment. Choose the **Settings** link to open the **Deployment update settings** dialog box, shown in the following illustration. 
 
     ![Deployment Settings](./media/vs-azure-tools-publish-azure-application-wizard/IC617060.png)
 
-    デプロイの更新では、増分デプロイと同時デプロイのどちらかを選択できます。増分デプロイでは、デプロイ済みのインスタンスが 1 つずつ更新されます。このため、アプリケーションはオンラインのままで、ユーザーが利用できます。同時デプロイは、一度にすべてのデプロイ済みのインスタンスを更新します。同時更新は増分更新よりも高速ですが、このオプションを選択した場合、アプリケーションは更新プロセス中に利用できない場合があります。
+    You can choose either of two options for update deployment, incremental or simultaneous. An incremental deployment updates one deployed instance at a time, so that your application remains online and available to users. A simultaneous deployment updates all deployed instances at once. Simultaneous update is faster than incremental update, but if you choose this option, your application might not be available during the update process.
 
-    デプロイの更新が失敗した場合に、自動的に完全なデプロイを実行するには、[デプロイを更新できない場合は、完全なデプロイを実行する] チェック ボックスをオンにします。完全なデプロイでは、クラウド サービスの仮想 IP (VIP) アドレスがリセットされます。詳細については、「[方法: クラウド サービスの固定仮想 IP アドレスを保持する](https://msdn.microsoft.com/library/azure/jj614593.aspx)」を参照してください。
-
-
-1. サービスをデバッグするには、**[IntelliTrace を有効にする]** チェック ボックスをオンにします。**デバッグ**構成をデプロイして、Azure でクラウド サービスをデバッグする場合は、**[すべてのロールのリモート デバッガーを有効にする]** チェック ボックスをオンにして、リモート デバッグ サービスをデプロイします。
-
-2. このアプリケーションをプロファイリングするには、**[プロファイルを有効にする]** チェック ボックスをオンにし、**[設定]** リンクをクリックしてプロファイルのオプションを表示します。
+    You should select the check box for If deployment can't be updated, do a full deployment if you want the full deployment to take place automatically if an update deployment fails. A full deployment resets the virtual IP (VIP) address for the cloud service. For more information, see [How to: Retain a Constant Virtual IP Address for a Cloud Service](https://msdn.microsoft.com/library/azure/jj614593.aspx).
 
 
-    >[AZURE.NOTE] Visual Studio Ultimate を使用して IntelliTrace または階層相互作用プロファイリング (TIP) を有効にする必要がありますが、同時に両方を有効にすることはできません。
+1. To debug your service, select the **Enable IntelliTrace** check box, or if you are deploying a **Debug** configuration and want to debug your cloud service in Azure, select the **Enable Remote Debugger for all roles** checkbox to deploy the remote debugging services.
 
-    詳細については、「[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ff683671.aspx)」および「[クラウド サービスのパフォーマンスのテスト](https://msdn.microsoft.com/library/azure/hh369930.aspx)」を参照してください。
+2. To profile the application, select the **Enable profiling** check box, and then choose the **Settings** link to display the profiling options. 
 
-1. アプリケーションの概要ページを表示するには、**[次へ]** をクリックします。
 
-## アプリケーションの発行
+    >[AZURE.NOTE] You must use Visual Studio Ultimate to enable either IntelliTrace or Tier Interaction Profiling (TIP), and you can't enable both at the same time.
 
-1. 選択した設定から発行プロファイルを作成することができます。たとえば、テスト環境用と運用環境用に 1 つずつプロファイルを作成できます。このプロファイルを保存するには、**[保存]** アイコンをクリックします。ウィザードでプロファイルが作成され、Visual Studio プロジェクトに保存されます。プロファイル名を変更するには、**[ターゲット プロファイル]** の一覧を開き、**[<管理…>]** を選択します。
+    For more information, see [Debugging a Published Cloud Service with IntelliTrace and Visual Studio](https://msdn.microsoft.com/library/azure/ff683671.aspx) and [Testing the Performance of a Cloud Service](https://msdn.microsoft.com/library/azure/hh369930.aspx).
+
+1. Choose **Next** to view the summary page for the application.
+
+## <a name="publishing-your-application"></a>Publishing Your Application
+
+1. You can choose to create a publishing profile from the settings that you have chosen. For example, you might create one profile for a test environment and another for production. To save this profile, choose the **Save** icon. The wizard creates the profile and saves it in the Visual Studio project. To modify the profile name, open the **Target profile** list, and then choose **<Manage…>**.
 
     ![Summary screen of the Publishing Wizard](./media/vs-azure-tools-publish-azure-application-wizard/IC749015.png)
 
-    >[AZURE.NOTE] 発行プロファイルが Visual Studio のソリューション エクスプローラーに表示され、プロファイル設定が .azurePubxml という拡張子を持つファイルに書き込まれます。設定は、XML タグの属性として保存されます。
+    >[AZURE.NOTE] The publishing profile appears in Solution Explorer in Visual Studio, and the profile settings are written to a file with an .azurePubxml extension. Settings are saved as attributes of XML tags.
 
-1. **[発行]** をクリックしてアプリケーションを発行します。Visual Studio の **[出力]** ウィンドウでプロセスの状態を監視できます。
+1. Choose **Publish** to publish your application. You can monitor the process status in the **Output** window in Visual Studio.
 
-## 関連項目
+## <a name="see-also"></a>See Also
 
-[方法: Visual Studio から Azure クラウド サービスへの Web アプリケーションの移行および発行](https://msdn.microsoft.com/library/azure/hh420322.aspx)
+[How to: Migrate and Publish a Web Application to an Azure Cloud Service from Visual Studio](https://msdn.microsoft.com/library/azure/hh420322.aspx)
 
-[Azure Tools を使用したクラウド サービスの発行](https://msdn.microsoft.com/library/azure/ff683672.aspx)
+[Publishing a Cloud Service using the Azure Tools](https://msdn.microsoft.com/library/azure/ff683672.aspx)
 
-[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ff683671.aspx)
+[Debugging a Published Cloud Service with IntelliTrace and Visual Studio](https://msdn.microsoft.com/library/azure/ff683671.aspx)
 
-[クラウド サービスのパフォーマンスのテスト](https://msdn.microsoft.com/library/azure/hh369930.aspx)
+[Testing the Performance of a Cloud Service](https://msdn.microsoft.com/library/azure/hh369930.aspx)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

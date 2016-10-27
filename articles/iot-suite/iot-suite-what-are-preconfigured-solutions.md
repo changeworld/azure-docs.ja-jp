@@ -1,6 +1,6 @@
 <properties
- pageTitle="Azure IoT の構成済みソリューション | Microsoft Azure"
- description="Azure IoT の構成済みソリューションとそのアーキテクチャ (追加リソースのリンクを含む) の説明。"
+ pageTitle="Azure IoT preconfigured solutions | Microsoft Azure"
+ description="A description of the Azure IoT preconfigured solutions and their architecture with links to additional resources."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -17,107 +17,108 @@
  ms.date="08/09/2016"
  ms.author="dobett"/>
 
-# Azure IoT Suite の構成済みソリューションとは
 
-Azure IoT Suite の構成済みソリューションとは、サブスクリプションを使用して Azure にデプロイできる一般的な IoT ソリューション パターンの実装です。構成済みソリューションは次の用途で使用できます。
+# <a name="what-are-the-azure-iot-suite-preconfigured-solutions?"></a>What are the Azure IoT Suite preconfigured solutions?
 
-- 独自の IoT ソリューションの開始点として。
-- IoT ソリューションの設計と開発で一般的なパターンについて学習するため。
+The Azure IoT Suite preconfigured solutions are implementations of common IoT solution patterns that you can deploy to Azure using your subscription. You can use the preconfigured solutions:
 
-構成済みの各ソリューションは、シミュレートされたデバイスを使用してテレメトリを生成することができる、完全なエンド ツー エンドの実装です。
+- As a starting point for your own IoT solutions.
+- To learn about common patterns in IoT solution design and development.
 
-Azure にソリューションをデプロイして実行するだけでなく、完全なソース コードをダウンロードして、特定の IoT 要件を満たすようにソリューションをカスタマイズして拡張することができます。
+Each preconfigured solution is a complete, end-to-end implementation that uses simulated devices to generate telemetry.
 
-> [AZURE.NOTE] 構成済みソリューションのいずれかをデプロイするには、[Microsoft Azure IoT Suite][lnk-azureiotsuite] にアクセスしてください。[IoT 事前構成済みソリューションの使用][lnk-getstarted-preconfigured]に関する記事では、ソリューションのいずれかをデプロイして実行する方法について詳しく説明しています。
+In addition to deploying and running the solutions in Azure, you can download the complete source code and then customize and extend the solution to meet your specific IoT requirements.
 
-次の表は、ソリューションが特定の IoT 機能にどのようにマップされるかを示しています。
+> [AZURE.NOTE] To deploy one of the preconfigured solutions, visit [Microsoft Azure IoT Suite][lnk-azureiotsuite]. The article [Get started with the IoT preconfigured solutions][lnk-getstarted-preconfigured] provides more information about how to deploy and run one of the solutions.
 
-| 解決策 | データの取り込み | デバイス ID | コマンドと制御 | ルールとアクション | 予測分析 |
+The following table shows how the solutions map to specific IoT features:
+
+| Solution | Data Ingestion | Device Identity | Command and Control | Rules and Actions | Predictive Analytics |
 |------------------------|-----|-----|-----|-----|-----|
-| [リモート監視][lnk-getstarted-preconfigured] | あり | あり | あり | あり | - |
-| [予測的なメンテナンス][lnk-predictive-maintenance] | あり | あり | あり | あり | あり |
+| [Remote monitoring][lnk-getstarted-preconfigured] | Yes | Yes | Yes | Yes | -   |
+| [Predictive maintenance][lnk-predictive-maintenance] | Yes | Yes | Yes | Yes | Yes |
 
-- *データの取り込み*: クラウドへの大規模なデータの取り込み。
-- *デバイス ID*: すべての接続されたデバイスの一意の ID を管理します。
-- *コマンドと制御*: クラウドからデバイスにメッセージを送信して、デバイスで何らかのアクションを実行します。
-- *ルールとアクション*: ソリューション バックエンドでは、ルールを使用して、特定のデバイスからクラウドへのデータを操作します。
-- *予測分析*: ソリューション バックエンドでは、デバイスからクラウドへのデータを分析して、特定のアクションを実行するタイミングを予測します。たとえば、航空機エンジンのテレメトリを分析して、エンジンのメンテナンス時期を判断できます。
+- *Data ingestion*: Ingress of data at scale to the cloud.
+- *Device identity*: Manage unique identities of every connected device.
+- *Command and control*: Send messages to a device from the cloud to cause the device to take some action.
+- *Rules and actions*: The solution back end uses rules to act on specific device-to-cloud data.
+- *Predictive analytics*: The solution back end applies analyzes device-to-cloud data to predict when specific actions should take place. For example, analyzing aircraft engine telemetry to determine when engine maintenance is due.
 
-## リモート監視の構成済みソリューションの概要
+## <a name="remote-monitoring-preconfigured-solution-overview"></a>Remote Monitoring preconfigured solution overview
 
-この記事では、リモート監視の構成済みソリューションについて説明します。このソリューションを選択したのは、他のソリューションと共通する一般的な設計要素がたくさん使用されているためです。
+We have chosen to discuss the remote monitoring preconfigured solution in this article because it illustrates many common design elements that the other solutions share.
 
-次の図は、リモート監視ソリューションの主な要素を示しています。以降のセクションでは、これらの要素について詳しく説明します。
+The following diagram illustrates the key elements of the remote monitoring solution. The sections below provide more information about these elements.
 
-![リモート監視の構成済みソリューションのアーキテクチャ][img-remote-monitoring-arch]
+![Remote Monitoring preconfigured solution architecture][img-remote-monitoring-arch]
 
-## デバイス
+## <a name="devices"></a>Devices
 
-リモート監視の構成済みソリューションをデプロイすると、冷却デバイスをシミュレートする 4 つのシミュレートされたデバイスがソリューション内で事前にプロビジョニングされます。これらのシミュレートされたデバイスには、テレメトリを出力する温度と湿度モデルが組み込まれています。これらのシミュレートされたデバイスが含まれているのは、ソリューションを使用したエンド ツー エンドのデータ フローを示すためと、カスタム実装の開始点としてソリューションを使用してバックエンド アプリケーションを開発する場合に、テレメトリの便利なソースとコマンドのターゲットを提供するためです。
+When you deploy the remote monitoring preconfigured solution, four simulated devices are pre-provisioned in the solution that simulate a cooling device. These simulated devices have a built-in temperature and humidity model that emits telemetry. These simulated devices are included to illustrate the end-to-end flow of data through the solution, and to provide a convenient source of telemetry and a target for commands if you are a back-end developer using the solution as a starting point for a custom implementation.
 
-デバイスがリモート監視の構成済みソリューションの IoT Hub に初めて接続すると、IoT Hub に送信されるデバイス情報メッセージに、デバイスが応答できるコマンドの一覧が列挙されます。リモート監視の構成済みソリューションには、次のコマンドが用意されています。
+When a device first connects to IoT Hub in the remote monitoring preconfigured solution, the device information message sent to the IoT hub enumerates the list of commands that the device can respond to. In the remote monitoring preconfigured solution, the commands are: 
 
-- *デバイスの ping*: デバイスは、確認応答を伴って、このコマンドに応答します。これは、デバイスがまだアクティブでリッスンしていることを確認するのに便利です。
-- *テレメトリの開始*: テレメトリの送信を開始するようデバイスに指示します。
-- *テレメトリの停止*: テレメトリの送信を停止するようデバイスに指示します。
-- *設定点温度の変更*: デバイスが送信するシミュレートされた温度テレメトリ値を制御します。これは、バックエンド ロジックのテストに便利です。
-- *診断テレメトリ*: デバイスが外部温度をテレメトリとして送信するかどうかを制御します。
-- *デバイス状態の変更*: デバイスが報告するデバイスの状態のメタデータ プロパティを設定します。これは、バックエンド ロジックのテストに便利です。
+- *Ping Device*: The device responds to this command with an acknowledgement. This is useful for checking that the device is still active and listening.
+- *Start Telemetry*: Instructs the device to start sending telemetry.
+- *Stop Telemetry*: Instructs the device to stop sending telemetry.
+- *Change Set Point Temperature*: Controls the simulated temperature telemetry values the device sends. This is useful for testing back-end logic.
+- *Diagnostic Telemetry*: Controls if the device should send the external temperature as telemetry.
+- *Change Device State*.: Sets the device state metadata property that the device reports. This is useful for testing back-end logic.
 
-同じテレメトリを出力し、同じコマンドに応答するシミュレートされたデバイスをソリューションに追加できます。
+You can add more simulated devices to the solution that emit the same telemetry and respond to the same commands. 
 
-## IoT Hub
+## <a name="iot-hub"></a>IoT Hub
 
-この構成済みソリューションの IoT Hub インスタンスは、一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の*クラウド ゲートウェイ*に相当します。
+In this preconfigured solution, the IoT Hub instance corresponds to the *Cloud Gateway* in a typical [IoT solution architecture][lnk-what-is-azure-iot].
 
-IoT Hub は、1 つのエンドポイントのデバイスからテレメトリを受信します。また、IoT Hub は、デバイス固有のエンドポイントも保守します。各デバイスは、送信されたコマンドをエンドポイントで取得できます。
+An IoT hub receives telemetry from the devices at a single endpoint. An IoT hub also maintains device specific endpoints where each devices can retrieve the commands that are sent to it.
 
-IoT Hub は、受信したテレメトリをサービス側のテレメトリ読み取りエンドポイントを介して使用できるようにします。
+The IoT hub makes the received telemetry available through the service-side telemetry read endpoint.
 
-## Azure Stream Analytics
+## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-構成済みソリューションでは、次の 3 つの [Azure Stream Analytics][lnk-asa] \(ASA) ジョブを使用して、デバイスのテレメトリ ストリームをフィルターします。
+The preconfigured solution uses three [Azure Stream Analytics][lnk-asa] (ASA) jobs to filter the telemetry stream from the devices:
 
 
-- *DeviceInfo ジョブ* - デバイスが最初に接続するときに、または**デバイス状態の変更**コマンドに応答して送信されたデバイス登録固有のメッセージをソリューションのデバイス レジストリ (DocumentDB データベース) にルーティングするイベント ハブにデータを出力します。
-- *Telemetry ジョブ* - Azure Blob Storage にコールド ストレージの未加工のテレメトリをすべて送信し、ソリューションのダッシュボードに表示されるテレメトリの集計を行います。
-- *Rules ジョブ* - テレメトリ ストリームをフィルターして、いずれかのルールのしきい値を超える値を絞り込み、そのデータをイベント ハブに出力します。ルールが実行されると、ソリューション ポータルのダッシュボード ビューにこのイベントがアラーム履歴テーブルの新しい行として表示され、ソリューション ポータルのルールとアクション ビューで定義した設定に基づいてアクションがトリガーされます。
+- *DeviceInfo job* - outputs data to an Event hub that routes device registration specific messages, sent when a device first connects or in response to a **Change device state** command, to the solution device registry (a DocumentDB database). 
+- *Telemetry job* - sends all raw telemetry to Azure blob storage for cold storage and calculates telemetry aggregations that display in the solution dashboard.
+- *Rules job* - filters the telemetry stream for values that exceed any rule thresholds and outputs the data to an Event hub. When a rule fires, the solution portal dashboard view displays this event as a new row in the alarm history table and triggers an action based on the settings defined on the Rules and Actions views in the solution portal.
 
-この構成済みソリューションでは、ASA ジョブは一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の **IoT ソリューション バックエンド**の一部です。
+In this preconfigured solution, the ASA jobs form part of to the **IoT solution back end** in a typical [IoT solution architecture][lnk-what-is-azure-iot].
 
-## イベント プロセッサ
+## <a name="event-processor"></a>Event processor
 
-この構成済みソリューションでは、イベント プロセッサは一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の **IoT ソリューション バックエンド**の一部です。
+In this preconfigured solution, the event processor forms part of the **IoT solution back end** in a typical [IoT solution architecture][lnk-what-is-azure-iot].
 
-**DeviceInfo** と **Rules** ASA ジョブは、他のバックエンド サービスに配信するために出力をイベント ハブに送信します。このソリューションでは、[Web ジョブ][lnk-web-job]で実行される [EventPocessorHost][lnk-event-processor] インスタンスを使用して、これらのイベント ハブからメッセージを読み取ります。**EventProcessorHost** では、**DeviceInfo** のデータを使用して、DocumentDB データベースのデバイス データを更新し、**Rules** のデータを使用して、ロジック アプリを呼び出し、ソリューション ポータルのアラートの表示を更新します。
+The **DeviceInfo** and **Rules** ASA jobs send their output to Event hubs for delivery to other back end services. The solution uses an [EventPocessorHost][lnk-event-processor] instance, running in a [WebJob][lnk-web-job], to read the messages from these Event hubs. The **EventProcessorHost** uses the **DeviceInfo** data to update the device data in the DocumentDB database, and uses the **Rules** data to invoke the Logic app and update the alerts display in the solution portal.
 
-## デバイス ID レジストリと DocumentDB
+## <a name="device-identity-registry-and-documentdb"></a>Device identity registry and DocumentDB
 
-すべての IoT Hub には、デバイス キーを格納する[デバイス ID レジストリ][lnk-identity-registry]が含まれています。IoT Hub は、この情報を使用してデバイスを認証します (ハブに接続する前に、デバイスが登録され、有効なキーを持っている必要があります)。
+Every IoT hub includes a [device identity registry][lnk-identity-registry] that stores device keys. IoT Hub uses this information authenticate devices - a device must be registered and have a valid key before it can connect to the hub.
 
-このソリューションでは、デバイスに関する追加情報 (状態、サポートしているコマンド、その他のメタデータなど) を格納します。また、DocumentDB データベースを使用して、このソリューションに固有のデバイス データを格納します。ソリューション ポータルでは、表示および編集のために、この DocumentDB データベースからデータを取得します。
+This solution stores additional information about devices such as their state, the commands they support, and other metadata. The solution uses a DocumentDB database to store this solution-specific device data and the solution portal retrieves data from this DocumentDB database for display and editing.
 
-このソリューションでは、デバイス ID レジストリの情報と DocumentDB データベースのコンテンツの同期が維持されている必要もあります。**EventProcessorHost** では、**DeviceInfo** Stream Analytics ジョブのデータを使用して、同期を管理します。
+The solution must also keep the information in the device identity registry synchronized with the contents of the DocumentDB database. The **EventProcessorHost** uses the data from **DeviceInfo** stream analytics job to manage the synchronization.
 
-## ソリューション ポータル
+## <a name="solution-portal"></a>Solution portal
 
-![ソリューションのダッシュボード][img-dashboard]
+![Solution dashboard][img-dashboard]
 
-ソリューション ポータルは、構成済みソリューションの一部としてクラウドにデプロイされている Web ベースの UI です。ソリューション ポータルでは、次の操作を実行できます。
+The solution portal is a web-based UI that is deployed to the cloud as part of the preconfigured solution. It enables you to:
 
-- ダッシュボードにテレメトリとアラームの履歴を表示します。
-- 新しいデバイスをプロビジョニングします。
-- デバイスを管理し、監視します。
-- 特定のデバイスにコマンドを送信します。
-- ルールとアクションを管理します。
+- View telemetry and alarm history in a dashboard.
+- Provision new devices.
+- Manage and monitor devices.
+- Send commands to specific devices.
+- Manage rules and actions.
 
-この構成済みソリューションでは、ソリューション ポータルは **IoT ソリューション バックエンド**の一部です。また、一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の**処理とビジネスの接続**に含まれています。
+In this preconfigured solution, the solution portal forms part of the **IoT solution back end** and part of the **Processing and business connectivity** in the typical [IoT solution architecture][lnk-what-is-azure-iot].
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-IoT ソリューション アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT 参照アーキテクチャ)][lnk-refarch]」を参照してください。
+For more information about IoT solution architectures, see [Microsoft Azure IoT services: Reference Architecture][lnk-refarch].
 
-構成済みソリューションについて理解した後は、[構成済みソリューションの使用][lnk-getstarted-preconfigured]に関するチュートリアルを参照して、"*リモート監視*" の構成済みソリューションをデプロイしましょう。
+Now you know what a preconfigured solution is, you can get started by deploying the *remote monitoring* preconfigured solution: [Get started with the preconfigured solutions][lnk-getstarted-preconfigured].
 
 [img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
 [img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
@@ -131,4 +132,7 @@ IoT ソリューション アーキテクチャの詳細については、「[Mi
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
 
-<!---HONumber=AcomDC_1005_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

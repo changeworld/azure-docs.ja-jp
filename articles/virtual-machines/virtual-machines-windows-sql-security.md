@@ -1,61 +1,66 @@
 <properties
-	pageTitle="Azure における SQL Server のセキュリティに関する考慮事項 | Microsoft Azure"
-	description="このトピックでは、クラシック デプロイ モデルで作成されたリソースを参照し、Azure 仮想マシンで実行している SQL Server をセキュリティ保護するための一般的なガイダンスを示します。"
-	services="virtual-machines-windows"
-	documentationCenter="na"
-	authors="rothja"
-	manager="jhubbard"
+    pageTitle="Security Considerations for SQL Server in Azure | Microsoft Azure"
+    description="This topic refers to resources created with the classic deployment model, and provides general guidance for securing SQL Server running in an Azure Virtual Machine."
+    services="virtual-machines-windows"
+    documentationCenter="na"
+    authors="rothja"
+    manager="jhubbard"
    editor=""    
    tags="azure-service-management"/>
 <tags
-	ms.service="virtual-machines-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-windows-sql-server"
-	ms.workload="infrastructure-services"
-	ms.date="06/24/2016"
-	ms.author="jroth" />
+    ms.service="virtual-machines-windows"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="vm-windows-sql-server"
+    ms.workload="infrastructure-services"
+    ms.date="06/24/2016"
+    ms.author="jroth" />
 
-# Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項
+
+# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Security Considerations for SQL Server in Azure Virtual Machines
  
-このトピックでは、Azure VM の SQL Server インスタンスへのセキュリティで保護されたアクセスの確立に役立つ全体的なセキュリティ ガイドラインについて説明します。ただし、Azure の SQL Server データベース インスタンスをより安全に保護するには、Azure のセキュリティに関するベスト プラクティスに加えて、従来のオンプレミスのセキュリティに関するベスト プラクティスも実装することをお勧めします。
+This topic includes overall security guidelines that help establish secure access to SQL Server instances in an Azure VM. However, in order to ensure better protection to your SQL Server database instances in Azure, we recommend that you implement the traditional on-premises security practices in addition to the security best practices for Azure.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
-SQL Server のセキュリティ ベスト プラクティスの詳細については、「[SQL Server 2008 R2 Security Best Practices - Operational and Administrative Tasks (SQL Server 2008 R2 のセキュリティに関するベスト プラクティス - 運用作業と管理作業)](http://download.microsoft.com/download/1/2/A/12ABE102-4427-4335-B989-5DA579A4D29D/SQL_Server_2008_R2_Security_Best_Practice_Whitepaper.docx)」を参照してください。
+For more information about the SQL Server security practices, see [SQL Server 2008 R2 Security Best Practices - Operational and Administrative Tasks](http://download.microsoft.com/download/1/2/A/12ABE102-4427-4335-B989-5DA579A4D29D/SQL_Server_2008_R2_Security_Best_Practice_Whitepaper.docx)
 
-Azure はいくつかの業界規制および標準に準拠しているため、ユーザーは仮想マシンで実行されている SQL Server を使用して、標準に準拠したソリューションを構築できます。Azure での法規制遵守に関する情報については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)を参照してください。
+Azure complies with several industry regulations and standards that can enable you to build a compliant solution with SQL Server running in a Virtual Machine. For information about regulatory compliance with Azure, see [Azure Trust Center](https://azure.microsoft.com/support/trust-center/).
 
-次に示すのは、Azure VM の SQL Server インスタンスへの接続とその構成のときに考慮する必要がある、セキュリティに関する推奨事項の一覧です。
+Following is a list of security recommendations that should be considered when configuring and connecting to the instance of SQL Server in an Azure VM.
 
-## アカウントの管理に関する注意点:
+## <a name="considerations-for-managing-accounts:"></a>Considerations for managing accounts:
 
-- **Administrator** という名前ではない一意のローカル管理者アカウントを作成します。
+- Create a unique local administrator account that is not named **Administrator**.
 
-- すべてのアカウントに複雑で強力なパスワードを使用します。強力なパスワードを作成する方法の詳細については、「[強力なパスワードの作成に関するヒント](http://windows.microsoft.com/ja-JP/windows-vista/Tips-for-creating-a-strong-password)」を参照してください。
+- Use complex strong passwords for all your accounts. For more information about how to create a strong password, see [Tips for creating a strong passwords](http://windows.microsoft.com/en-us/windows-vista/Tips-for-creating-a-strong-password) article .
 
-- 既定で、Azure は SQL Server 仮想マシンのセットアップ中に Windows 認証を選択します。そのため、**SA** ログインは無効となり、パスワードはセットアップによって割り当てられます。**SA** ログインは使用せず、有効にしないことをお勧めします。次に示すのは、SQL ログインが必要な場合の代替方法です。
-	- sysadmin メンバーシップを持つ SQL アカウントを作成します。
-	- **SA** ログインを使用する必要がある場合は、ログインを有効にし、名前を変更して新しいパスワードを割り当てます。
-	- 上記のどちらのオプションでも、認証モードを **[SQL Server 認証モードと Windows 認証モード]** に変更する必要があります。詳細については、「[サーバーの認証モードの変更](https://msdn.microsoft.com/library/ms188670.aspx)」を参照してください。
+- By default, Azure selects Windows Authentication during SQL Server Virtual Machine setup. Therefore, the **SA** login is disabled and a password is assigned by setup. We recommend that the **SA** login should be not be used or enabled. The following are alternative strategies if a SQL Login is desired:
+    - Create a SQL account that has sysadmin membership.
+    - If you must use a **SA** login, enable the login and rename it and assign a new password.
+    - Both the options that were mentioned earlier require a change the authentication mode to **SQL Server and Windows Authentication Mode**. For more information, see [Change Server Authentication Mode](https://msdn.microsoft.com/library/ms188670.aspx).
 
-## Azure 仮想マシンへの接続のセキュリティ保護に関する注意事項:
+## <a name="considerations-for-securing-connections-to-azure-virtual-machine:"></a>Considerations for Securing Connections to Azure Virtual Machine:
 
-- 仮想マシンの管理には、パブリック RDP ポートではなく、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) を使用することを検討してください。
+- Consider using [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) to administer the virtual machines instead of public RDP ports.
 
-- [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) (NSG) を使用して、仮想マシンへのネットワーク トラフィックを許可または拒否します。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[PowerShell を使用したエンドポイントの Access Control リスト (ACL) の管理](../virtual-network/virtual-networks-acl-powershell.md)を参照してください。
+- Use a [Network Security Group](../virtual-network/virtual-networks-nsg.md) (NSG) to allow or deny network traffic to your virtual machine. If you want to use an NSG and have an endpoint ACL already in place, first remove the endpoint ACL. For information about how to do this, see [Managing Access Control Lists (ACLs) for Endpoints by using PowerShell](../virtual-network/virtual-networks-acl-powershell.md).
 
-- エンドポイントを使用している場合、使用しない仮想マシンのエンドポイントは削除します。エンドポイントで ACL を使用する手順については、「[エンドポイントの ACL の管理](../virtual-network/virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint)」を参照してください。
+- If you are using endpoints, remove any endpoints on the virtual machine if you do not use them. For instructions on using ACLs with endpoints, see [Manage the ACL on an endpoint](../virtual-network/virtual-machines-windows-classic-setup-endpoints.md#manage-the-acl-on-an-endpoint).
 
-- Azure Virtual Machines の SQL Server データベース エンジンのインスタンスで、暗号化された接続オプションを有効にします。署名付き証明書で SQL Server インスタンスを構成します。詳細については、「[データベース エンジンへの暗号化接続の有効化](https://msdn.microsoft.com/library/ms191192.aspx)」および「[接続文字列の構文](https://msdn.microsoft.com/library/ms254500.aspx)」を参照してください。
+- Enable an encrypted connection option for an instance of the SQL Server Database Engine in Azure Virtual Machines. Configure SQL server instance with a signed certificate. For more information, see [Enable Encrypted Connections to the Database Engine](https://msdn.microsoft.com/library/ms191192.aspx) and [Connection String Syntax](https://msdn.microsoft.com/library/ms254500.aspx).
 
-- 仮想マシンが特定のネットワークからのみアクセスされる場合は、Windows ファイアウォールを使用して、特定の IP アドレスまたはネットワーク サブネットへのアクセスを制限します。
+- If your virtual machines should be accessed only from a specific network, use Windows Firewall to restrict access to certain IP addresses or network subnets.
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-パフォーマンスに関するベスト プラクティスにも関心がある場合は、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
+If you are also interested in best practices around performance, see [Performance Best Practices for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-performance.md).
 
-Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+For other topics related to running SQL Server in Azure VMs, see [SQL Server on Azure Virtual Machines overview](virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

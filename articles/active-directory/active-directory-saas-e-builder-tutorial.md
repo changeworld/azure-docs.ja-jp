@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と e-Builder の統合 | Microsoft Azure" 
-    description="Azure Active Directory で e-Builder を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with e-Builder | Microsoft Azure" 
+    description="Learn how to use e-Builder with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,103 +11,111 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と e-Builder の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-e-builder"></a>Tutorial: Azure Active Directory integration with e-Builder
   
-このチュートリアルでは、Azure と e-Builder の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and e-Builder.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   e-Builder テナント
+-   A valid Azure subscription
+-   An e-Builder tenant
   
-このチュートリアルを完了すると、e-Builder に割り当てた Azure AD ユーザーは、e-Builder 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to e-Builder will be able to single sign into the application at your e-Builder company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  e-Builder のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for e-Builder
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-e-builder-tutorial/IC777378.png "シナリオ")
-##e-Builder のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-e-builder-tutorial/IC777378.png "Scenario")
+##<a name="enabling-the-application-integration-for-e-builder"></a>Enabling the application integration for e-Builder
   
-このセクションでは、e-Builder のアプリケーション統合を有効にする方法について説明します。
+The objective of this section is to outline how to enable the application integration for e-Builder.
 
-###e-Builder のアプリケーション統合を有効にするには、次の手順を実行します。
+###<a name="to-enable-the-application-integration-for-e-builder,-perform-the-following-steps:"></a>To enable the application integration for e-Builder, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-e-builder-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-e-builder-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-e-builder-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-e-builder-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-e-builder-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-e-builder-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-e-builder-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**e-Builder**」と入力します。
+6.  In the **search box**, type **e-Builder**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-e-builder-tutorial/IC777379.png "アプリケーション ギャラリー")
+    ![Application gallery](./media/active-directory-saas-e-builder-tutorial/IC777379.png "Application gallery")
 
-7.  結果ウィンドウで **[e-Builder]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **e-Builder**, and then click **Complete** to add the application.
 
     ![e-Builder](./media/active-directory-saas-e-builder-tutorial/IC777380.png "e-Builder")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで e-Builder に対する認証を行うことができるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to e-Builder with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **e-Builder** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **e-Builder** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777381.png "Configure single sign-on")
 
-2.  **[ユーザーの e-Builder へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to e-Builder** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777382.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページの **[e-Builder サインイン URL]** ボックスに、"*https://\<テナント名>.e-Builder.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **e-Builder Sign In URL** textbox, type your URL using the following pattern "*https://\<tenant-name\>.e-Builder.com*", and then click **Next**.
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-e-builder-tutorial/IC777383.png "アプリケーション URL の構成")
+    ![Configure app URL](./media/active-directory-saas-e-builder-tutorial/IC777383.png "Configure app URL")
 
-4.  **[e-Builder でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、データ ファイルを **c:\\e-BuilderMetaData.xml** としてローカルに保存します。
+4.  On the **Configure single sign-on at e-Builder** page, to download your metadata, click **Download metadata**, and then the data file locally as **c:\\e-BuilderMetaData.xml**.
 
     ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777384.png "Configure single sign-on")
 
-5.  メタデータ ファイルを e-Builder サポート チームに転送します。サポート チームは、シングル サインオンを構成する必要があります。
+5.  Forward that metadata file to e-Builder support team. The support team needs configures single sign-on for you.
 
-6.  シングル サインオンの構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  Select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-e-builder-tutorial/IC777385.png "Configure single sign-on")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-e-Builder へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して e-Builder にログインしようとすると、そのユーザーが存在するかどうかが e-Builder によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは自動的に作成されます。
-##ユーザーの割り当て
+There is no action item for you to configure user provisioning to e-Builder.  
+When an assigned user tries to log into e-Builder using the access panel, e-Builder checks whether the user exists.  
+If there is no user account available yet, it is automatically created by e-Builder.
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを e-Builder に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-e-builder,-perform-the-following-steps:"></a>To assign users to e-Builder, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **e-Builder** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **e-Builder **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-e-builder-tutorial/IC777386.png "ユーザーの割り当て")
+    ![Assign users](./media/active-directory-saas-e-builder-tutorial/IC777386.png "Assign users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-e-builder-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

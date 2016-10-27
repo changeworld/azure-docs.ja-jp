@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Dynamics CRM Online コネクタを Logic Apps に追加する | Microsoft Azure"
-	description="Azure App Service を使用してロジック アプリを作成します。Dynamics CRM Online 接続プロバイダーは、Dynamics CRM Online でエンティティを操作するための API を提供します。"
-	services="logic-apps"    
-	documentationCenter=""     
-	authors="MandiOhlinger"    
-	manager="erikre"    
-	editor="" 
-	tags="connectors" />
+    pageTitle="Add the Dynamics CRM Online connector to your Logic Apps | Microsoft Azure"
+    description="Create Logic apps with Azure App service. The Dynamics CRM Online Connection Provider provides an API to work with entities on Dynamics CRM Online."
+    services="logic-apps"    
+    documentationCenter=""     
+    authors="MandiOhlinger"    
+    manager="erikre"    
+    editor="" 
+    tags="connectors" />
 
 <tags
 ms.service="logic-apps"
@@ -17,262 +17,268 @@ ms.workload="integration"
 ms.date="08/15/2016"
 ms.author="mandia"/>
 
-# Dynamics CRM Online コネクタの概要
-Dynamics CRM Online に接続して、新しいレコードの作成、項目の更新などを行います。CRM Online では、次の操作を実行できます。
 
-- CRM Online から取得したデータに基づいてビジネス フローを構築できます。
-- レコードの削除、エンティティの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、CRM で項目を更新するときに、Office 365 を使用して電子メールを送信できます。
+# <a name="get-started-with-the-dynamics-crm-online-connector"></a>Get started with the Dynamics CRM Online connector
+Connect to Dynamics CRM Online to create a new record, update an item, and more. With CRM Online, you can:
 
-このトピックでは、ロジック アプリ内で Dynamics CRM Online コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
+- Build your business flow based on the data you get from CRM Online. 
+- Use actions that delete a record, get entities, and more. These actions get a response, and then make the output available for other actions. For example, when an item is updated in CRM, you can send an email using Office 365.
 
->[AZURE.NOTE] 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
+This topic shows you how to use the Dynamics CRM Online connector in a logic app, and also lists the triggers and actions.
 
-Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」および[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
+>[AZURE.NOTE] This version of the article applies to Logic Apps general availability (GA).
 
-## Dynamics CRM Online に接続する
+To learn more about Logic Apps, see [What are logic apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、Dynamics に接続するには、まず Dynamics CRM Online への "*接続*" が必要になります。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、Dynamics の場合は、Dynamics CRM Online アカウントの資格情報を入力して接続を作成します。
+## <a name="connect-to-dynamics-crm-online"></a>Connect to Dynamics CRM Online
 
-
-### 接続の作成
-
->[AZURE.INCLUDE [Dynamics CRM Online 接続プロバイダーへの接続を作成する手順](../../includes/connectors-create-api-crmonline.md)]
-
-## トリガーを使用する
-
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーは、指定された間隔と頻度でサービスを "ポーリング" します。[トリガーの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
-
-1. ロジック アプリで「dynamics」と入力して、トリガーの一覧を取得します。
-
-	![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
-
-2. **[Dynamics CRM Online - When a record is created (Dynamics CRM Online - レコードが作成されたとき)]** を選択します。接続が既に存在する場合は、ドロップダウン リストから組織とエンティティを選択します。
-
-	![](./media/connectors-create-api-crmonline/select-organization.png)
-
-	サインインを求められたら、サインインの詳細を入力して接続を作成します。この手順については、このトピックの「[接続の作成](connectors-create-api-crmonline.md#create-the-connection)」をご覧ください。
-
-	> [AZURE.NOTE] この例では、レコードが作成されたときにロジック アプリが実行されます。このトリガーの結果を確認するには、自身に電子メールを送信する別のアクションを追加してください。たとえば、Office 365 の "*電子メールを送信する*" アクションを追加します。これにより、新しいレコードが追加されると電子メールが送信されます。
-
-3. **[編集]** を選択し、**[頻度]** と **[間隔]** の値を設定します。たとえば、トリガーを使用して 15 分ごとにポーリングを実行するには、**[頻度]** を **[分]** に設定し、**[間隔]** を **15** に設定します。
-
-	![](./media/connectors-create-api-crmonline/edit-properties.png)
-
-4. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+Before your logic app can access any service, you first create a *connection* to the service. A connection provides connectivity between a logic app and another service. For example, to connect to Dynamics, you first need a Dynamics CRM Online *connection*. To create a connection, enter the credentials you normally use to access the service you wish to connect to. So with Dynamics, enter the credentials to your Dynamics CRM Online account to create the connection.
 
 
-## アクションを使用する
+### <a name="create-the-connection"></a>Create the connection
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+>[AZURE.INCLUDE [Steps to create a connection to Dynamics CRM Online Connection Provider](../../includes/connectors-create-api-crmonline.md)]
 
-1. プラス記号を選択します。**[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
+## <a name="use-a-trigger"></a>Use a trigger
 
-	![](./media/connectors-create-api-crmonline/add-action.png)
+A trigger is an event that can be used to start the workflow defined in a logic app. Triggers "poll" the service at an interval and frequency that you want. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-2. **[アクションの追加]** を選択します。
+1. In the logic app, type "dynamics" to get a list of the triggers:  
 
-3. テキスト ボックスに「dynamics」と入力して、使用可能なすべてのアクションの一覧を取得します。
+    ![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
 
-	![](./media/connectors-create-api-crmonline/dynamics-actions.png)
+2. Select **Dynamics CRM Online - When a record is created**. If a connection already exists, then select an organization and entity from the drop-down list.
 
-4. この例では、**[Dynamics CRM Online - Update a record (Dynamics CRM Online - レコードを更新する)]** を選択します。接続が既に存在する場合は、**[組織名]**、**[エンティティ名]**、およびその他のプロパティを指定します。
+    ![](./media/connectors-create-api-crmonline/select-organization.png)
 
-	![](./media/connectors-create-api-crmonline/sample-action.png)
+    If you are prompted to sign in, then enter the sign in details to create the connection. [Create the connection](connectors-create-api-crmonline.md#create-the-connection) in this topic lists the steps. 
 
-	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-crmonline.md#create-the-connection)」をご覧ください。
+    > [AZURE.NOTE] In this example, the logic app runs when a record is created. To see the results of this trigger, add another action that sends you an email. For example, add the Office 365 *Send an email* action that emails you when the new record is added. 
 
-	> [AZURE.NOTE] この例では、CRM Online の既存のレコードを更新します。別のトリガーからの出力を使用して、レコードを更新できます。たとえば、SharePoint の "*既存の項目が変更されたとき*" トリガーを追加します。次に、CRM Online の "*レコードを更新する*" アクションを追加します。このアクションは、SharePoint フィールドを使用して CRM Online 内の既存のレコードを更新します。
+3. Select the **Edit** button and set the **Frequency** and **Interval** values. For example, if you want the trigger to poll every 15 minutes, then set the **Frequency** to **Minute**, and set the **Interval** to **15**. 
 
-5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+    ![](./media/connectors-create-api-crmonline/edit-properties.png)
+
+4. **Save** your changes (top left corner of the toolbar). Your logic app is saved and may be automatically enabled.
 
 
-## 技術的な詳細
+## <a name="use-an-action"></a>Use an action
 
-## トリガー
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-|トリガー | Description|
+1. Select the plus sign. You see several choices: **Add an action**, **Add a condition**, or one of the **More** options.
+
+    ![](./media/connectors-create-api-crmonline/add-action.png)
+
+2. Choose **Add an action**.
+
+3. In the text box, type “dynamics” to get a list of all the available actions.
+
+    ![](./media/connectors-create-api-crmonline/dynamics-actions.png)
+
+4. In our example, choose **Dynamics CRM Online - Update a record**. If a connection already exists, then choose the **Organization Name**, **Entity Name**, and other properties:  
+
+    ![](./media/connectors-create-api-crmonline/sample-action.png)
+
+    If you are prompted for the connection information, then enter the details to create the connection. [Create the connection](connectors-create-api-crmonline.md#create-the-connection) in this topic describes these properties. 
+
+    > [AZURE.NOTE] In this example, we update an existing record in CRM Online. You can use output from another trigger to update the record. For example, add the SharePoint *When an existing item is modified* trigger. Then add the CRM Online *Update a record* action that uses the SharePoint fields to update the existing record in CRM Online. 
+
+5. **Save** your changes (top left corner of the toolbar). Your logic app is saved and may be automatically enabled.
+
+
+## <a name="technical-details"></a>Technical Details
+
+## <a name="triggers"></a>Triggers
+
+|Trigger | Description|
 |--- | ---|
-|[レコードが作成されたとき](connectors-create-api-crmonline.md#when-a-record-is-created)|CRM のオブジェクトが作成されたときにフローをトリガーします。|
-|[レコードが更新されたとき](connectors-create-api-crmonline.md#when-a-record-is-updated)|CRM のオブジェクトが変更されたときにフローをトリガーします。|
-|[レコードが削除されたとき](connectors-create-api-crmonline.md#when-a-record-is-deleted)|CRM のオブジェクトが削除されたときにフローをトリガーします。|
+|[When a record is created](connectors-create-api-crmonline.md#when-a-record-is-created)|Triggers a flow when an object is created in CRM.|
+|[When a record is updated](connectors-create-api-crmonline.md#when-a-record-is-updated)|Triggers a flow when an object is modified in CRM.|
+|[When a record is deleted](connectors-create-api-crmonline.md#when-a-record-is-deleted)|Triggers a flow when an object is deleted in CRM.|
 
 
-## アクション
+## <a name="actions"></a>Actions
 
-|アクション|Description|
+|Action|Description|
 |--- | ---|
-|[レコードを一覧表示する](connectors-create-api-crmonline.md#list-records)|この操作では、エンティティのレコードを取得します。|
-|[新しいレコードを作成する](connectors-create-api-crmonline.md#create-a-new-record)|この操作では、エンティティの新しいレコードを作成します。|
-|[レコードを取得する](connectors-create-api-crmonline.md#get-record)|この操作では、エンティティの指定されたレコードを取得します。|
-|[レコードを削除する](connectors-create-api-crmonline.md#delete-a-record)|この操作では、エンティティのコレクションからレコードを削除します。|
-|[レコードを更新する](connectors-create-api-crmonline.md#update-a-record)|この操作では、エンティティの既存のレコードを更新します。|
+|[List records](connectors-create-api-crmonline.md#list-records)|This operation gets the records for an entity.|
+|[Create a new record](connectors-create-api-crmonline.md#create-a-new-record)|This operation creates a new record of an entity.|
+|[Get record](connectors-create-api-crmonline.md#get-record)|This operation gets the specified record for an entity.|
+|[Delete a record](connectors-create-api-crmonline.md#delete-a-record)|This operation deletes a record from an entity collection.|
+|[Update a record](connectors-create-api-crmonline.md#update-a-record)|This operation updates an existing record for an entity.|
 
-### トリガーとアクションの詳細
+### <a name="trigger-and-action-details"></a>Trigger and Action details
 
-このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各トリガーとアクションに関する具体的な詳細について説明します。
+In this section, see the specific details about each trigger and action, including any required or optional input properties, and any corresponding output associated with the connector.
 
-#### レコードが作成されたとき
-CRM のオブジェクトが作成されたときにフローをトリガーします。
+#### <a name="when-a-record-is-created"></a>When a record is created
+Triggers a flow when an object is created in CRM. 
 
-|プロパティ名| 表示名|Description|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|組織名|Contoso などの CRM 組織の名前|
-|table*|エンティティ名|エンティティの名前|
-|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
-|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定 = 256)|
-|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
-|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to get (default = 256)|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
-##### 出力の詳細
+##### <a name="output-details"></a>Output Details
 ItemsList
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
-#### レコードが更新されたとき
-CRM のオブジェクトが変更されたときにフローをトリガーします。
+#### <a name="when-a-record-is-updated"></a>When a record is updated
+Triggers a flow when an object is modified in CRM. 
 
-|プロパティ名| 表示名|Description|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|組織名|Contoso などの CRM 組織の名前|
-|table*|エンティティ名|エンティティの名前|
-|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
-|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定 = 256)|
-|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
-|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to get (default = 256)|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
-##### 出力の詳細
+##### <a name="output-details"></a>Output Details
 ItemsList
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
-#### レコードが削除されたとき
-CRM のオブジェクトが削除されたときにフローをトリガーします。
+#### <a name="when-a-record-is-deleted"></a>When a record is deleted
+Triggers a flow when an object is deleted in CRM. 
 
-|プロパティ名| 表示名|Description|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|組織名|Contoso などの CRM 組織の名前|
-|table*|エンティティ名|エンティティの名前|
-|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
-|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定 = 256)|
-|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
-|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to get (default = 256)|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
-##### 出力の詳細
+##### <a name="output-details"></a>Output Details
 ItemsList
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
-#### レコードを一覧表示する
-この操作では、エンティティのレコードを取得します。
+#### <a name="list-records"></a>List records
+This operation gets the records for an entity. 
 
-|プロパティ名| 表示名|Description|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|組織名|Contoso などの CRM 組織の名前|
-|table*|エンティティ名|エンティティの名前|
-|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
-|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定 = 256)|
-|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
-|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to get (default = 256)|
+|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
-##### 出力の詳細
+##### <a name="output-details"></a>Output Details
 ItemsList
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
-#### 新しいレコードを作成する
-この操作では、エンティティの新しいレコードを作成します。
+#### <a name="create-a-new-record"></a>Create a new record
+This operation creates a new record of an entity. 
 
-|プロパティ名| 表示名|Description|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|組織名|Contoso などの CRM 組織の名前|
-|table*|エンティティ名|エンティティの名前|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
-##### 出力の詳細
-なし。
+##### <a name="output-details"></a>Output Details
+None.
 
 
-#### レコードを取得する
-この操作では、エンティティの指定されたレコードを取得します。
+#### <a name="get-record"></a>Get record
+This operation gets the specified record for an entity. 
 
-|プロパティ名| 表示名|Description|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|組織名|Contoso などの CRM 組織の名前|
-|table*|エンティティ名|エンティティの名前|
-|id*|項目識別子|レコードの識別子を指定します。|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|id*|Item identifier|Specify the Identifier for the record|
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
-##### 出力の詳細
-なし。
+##### <a name="output-details"></a>Output Details
+None.
 
 
-#### レコードを削除する
-この操作では、エンティティのコレクションからレコードを削除します。
+#### <a name="delete-a-record"></a>Delete a record
+This operation deletes a record from an entity collection. 
 
-|プロパティ名| 表示名|Description|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|組織名|Contoso などの CRM 組織の名前|
-|table*|エンティティ名|エンティティの名前|
-|id*|項目識別子|レコードの識別子を指定します。|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|id*|Item identifier|Specify the identifier for the record|
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
 
-#### レコードを更新する
-この操作では、エンティティの既存のレコードを更新します。
+#### <a name="update-a-record"></a>Update a record
+This operation updates an existing record for an entity. 
 
-|プロパティ名| 表示名|Description|
+|Property name| Display name|Description|
 | ---|---|---|
-|dataset*|組織名|Contoso などの CRM 組織の名前|
-|table*|エンティティ名|エンティティの名前|
-|id*|レコード識別子|レコードの識別子を指定します。|
+|dataset*|Organization Name|Name of the CRM organization like Contoso|
+|table*|Entity Name|Name of the entity|
+|id*|Record identifier|Specify the identifier for the record|
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
-##### 出力の詳細
-なし。
+##### <a name="output-details"></a>Output Details
+None.
 
 
-## HTTP 応答
+## <a name="http-responses"></a>HTTP responses
 
-アクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
+The actions and triggers can return one or more of the following HTTP status codes: 
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|承認済み|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました。|
-|default|操作に失敗しました。|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occurred.|
+|default|Operation Failed.|
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). Explore the other available connectors in Logic Apps at our [APIs list](apis-list.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

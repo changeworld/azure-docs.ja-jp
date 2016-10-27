@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager デプロイメント モデルを使用した Azure からの Windows Server または Windows Client へのデータの復元 | Microsoft Azure"
-   description="Windows Server または Windows クライアントからの復元方法について説明します。"
+   pageTitle="Restore data to a Windows Server or Windows Client from Azure using the Resource Manager deployment model | Microsoft Azure"
+   description="Learn how to restore from a Windows Server or Windows Client."
    services="backup"
    documentationCenter=""
    authors="saurabhsensharma"
@@ -10,111 +10,116 @@
 <tags
    ms.service="backup"
    ms.workload="storage-backup-recovery"
-	 ms.tgt_pltfrm="na"
-	 ms.devlang="na"
-	 ms.topic="article"
-	 ms.date="08/02/2016"
-	 ms.author="trinadhk; jimpark; markgal;"/>
+     ms.tgt_pltfrm="na"
+     ms.devlang="na"
+     ms.topic="article"
+     ms.date="08/02/2016"
+     ms.author="trinadhk; jimpark; markgal;"/>
 
-# Resource Manager デプロイメント モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
+
+# <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Restore files to a Windows server or Windows client machine using Resource Manager deployment model
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](backup-azure-restore-windows-server.md)
-- [クラシック ポータル](backup-azure-restore-windows-server-classic.md)
+- [Azure portal](backup-azure-restore-windows-server.md)
+- [Classic portal](backup-azure-restore-windows-server-classic.md)
 
-この記事では、復元操作に必要な 2 種類の手順を説明します。
+This article covers the steps required to perform two types of restore operations:
 
-- バックアップが実行されたのと同じマシンにデータを復元する
-- その他の任意のマシンにデータを復元する
+- Restore data to the same machine from which the backups were taken.
+- Restore data to any other machine.
 
-いずれの場合も、データは Azure Recovery Services コンテナーから取得されます。
+In both cases, the data is retrieved from the Azure Recovery Services vault.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル。
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
 
-## 同じコンピューターへのデータの回復
-ファイルを誤って削除してしまったため、バックアップを実行したのと同じコンピューターにそのファイルを復元するには、次の手順でデータを回復できます。
+## <a name="recover-data-to-the-same-machine"></a>Recover data to the same machine
+If you accidentally deleted a file and wish to restore it to the same machine (from which the backup is taken), the following steps will help you recover the data.
 
-1. **Microsoft Azure Backup** スナップインを開きます。
-2. [**データの回復**] をクリックして、ワークフローを開始します。
+1. Open the **Microsoft Azure Backup** snap in.
+2. Click **Recover Data** to initiate the workflow.
 
     ![Recover Data](./media/backup-azure-restore-windows-server/recover.png)
 
-3. バックアップ ファイルを同じコンピューターに復元する場合は、[**このサーバー (*コンピューター名*)**] オプションを選択します。
+3. Select the **This server (*yourmachinename*)** option to restore the backed up file on the same machine.
 
     ![Same machine](./media/backup-azure-restore-windows-server/samemachine.png)
 
-4. [**ファイルの参照**] または [**ファイルの検索**] を選択します。
+4. Choose to **Browse for files** or **Search for files**.
 
-    パスがわかっている 1 つまたは複数のファイルを復元する場合は、既定のオプションをそのまま使用します。フォルダー構造がわからず、ファイルを検索する場合は、**[ファイルの検索]** オプションを選択します。ここでは、既定のオプションを使用します。
+    Leave the default option if you plan to restore one or more files whose path is known. If you are not sure about the folder structure but would like to search for a file, pick the **Search for files** option. For the purpose of this section, we will proceed with the default option.
 
     ![Browse files](./media/backup-azure-restore-windows-server/browseandsearch.png)
 
-5. ファイルの復元元となるボリュームを選択します。
+5. Select the volume from which you wish to restore the file.
 
-    任意の時点から復元できます。カレンダー コントロールに**太字**で表示される日付は、復元ポイントが存在していることを示しています。日付を選択すると、バックアップ スケジュールに基づいて (バックアップ操作が成功していれば)、**[時間]** ドロップダウンから特定の時点を選択できます。
+    You can restore from any point in time. Dates which appear in **bold** in the calendar control indicate the availability of a restore point. Once a date is selected, based on your backup schedule (and the success of a backup operation), you can select a point in time from the **Time** drop down.
 
     ![Volume and Date](./media/backup-azure-restore-windows-server/volanddate.png)
 
-6. 回復する項目を選択します。復元するフォルダーまたはファイルを複数選択することができます。
+6. Select the items to recover. You can multi-select folders/files you wish to restore.
 
     ![Select files](./media/backup-azure-restore-windows-server/selectfiles.png)
 
-7. 回復パラメーターを指定します。
+7. Specify the recovery parameters.
 
     ![Recovery options](./media/backup-azure-restore-windows-server/recoveroptions.png)
 
-  - 元の場所に復元することも (ファイルまたはフォルダーが上書きされます)、同じコンピューターの別の場所に復元することもできます。
-  - 復元するファイルまたはフォルダーが復元先の場所に存在する場合、コピーを作成するか (同じファイルの 2 つのバージョンが作成されます)、復元先の場所にあるファイルを上書きするか、復元先に存在するファイルの回復をスキップすることができます。
-  - 復元されるファイルの ACL を復元するという既定のオプションは、そのままにしておくことを強くお勧めします。
+  - You have an option of restoring to the original location (in which the file/folder would be overwritten) or to another location in the same machine.
+  - If the file/folder you wish to restore exists in the target location, you can create copies (two versions of the same file), overwrite the files in the target location, or skip the recovery of the files which exist in the target.
+  - It is highly recommended that you leave the default option of restoring the ACLs on the files which are being recovered.
 
-8. これらのうちいずれか 1 つを指定して、[**次へ**] をクリックします。このコンピューターにファイルを復元する回復ワークフローが開始します。
+8. Once these inputs are provided, click **Next**. The recovery workflow, which restores the files to this machine, will begin.
 
-## 別のコンピューターへの回復
-サーバー全体が失われた場合でも、 Azure Backup から別のコンピューターにデータを回復できます。次の手順はそのワークフローを示しています。
+## <a name="recover-to-an-alternate-machine"></a>Recover to an alternate machine
+If your entire server is lost, you can still recover data from Azure Backup to a different machine. The following steps illustrate the workflow.  
 
-この手順で使用される用語は次のとおりです。
+The terminology used in these steps includes:
 
-- *ソース コンピューター* – バックアップが実行され、現在は使用できなくなっている元のコンピューター。
-- *ターゲット コンピューター* – データの回復先となるコンピューター。
-- *サンプルのコンテナー* – *ソース コンピューター*と*ターゲット コンピューター*が登録されている Recovery Services コンテナー。<br/>
+- *Source machine* – The original machine from which the backup was taken and which is currently unavailable.
+- *Target machine* – The machine to which the data is being recovered.
+- *Sample vault* – The Recovery Services vault to which the *Source machine* and *Target machine* are registered. <br/>
 
-> [AZURE.NOTE] コンピューターのバックアップは、以前のバージョンのオペレーティング システムが実行されているコンピューターには復元できません。たとえば、バックアップが Windows 7 コンピューターで行われた場合、Windows 8 以上のコンピューターにそのバックアップを復元できます。ただし、その逆は当てはまりません。
+> [AZURE.NOTE] Backups taken from a machine cannot be restored on a machine which is running an earlier version of the operating system. For example, if backups are taken from a Windows 7 machine, it can be restored on a Windows 8 or above machine. However the vice-versa does not hold true.
 
-1. *ターゲット コンピューター*の **Microsoft Azure Backup** スナップインを開きます。
-2. *ターゲット コンピューター*および*ソース コンピューター*が同じ Recovery Services コンテナーに登録されていることを確認します。
-3. **[データの回復]** をクリックして、ワークフローを開始します。
+1. Open the **Microsoft Azure Backup** snap in on the *Target machine*.
+2. Ensure that the *Target machine* and the *Source machine* are registered to the same Recovery Services vault.
+3. Click **Recover Data** to initiate the workflow.
 
     ![Recover Data](./media/backup-azure-restore-windows-server/recover.png)
 
-4. **[別のサーバー]** を選択します。
+4. Select **Another server**
 
     ![Another Server](./media/backup-azure-restore-windows-server/anotherserver.png)
 
-5. *サンプルの資格情報コンテナー*に対応するコンテナー資格情報ファイルを指定します。コンテナー資格情報ファイルが無効である (または有効期限が切れている) 場合、Azure ポータルの*サンプルの資格情報コンテナー*から、新しいコンテナー資格情報ファイルをダウンロードします。コンテナーの資格情報ファイルを指定すると、そのコンテナーの資格情報ファイルに対する Recovery Services コンテナーが表示されます。
+5. Provide the vault credential file that corresponds to the *Sample vault*. If the vault credential file is invalid (or expired) download a new vault credential file from the *Sample vault* in the Azure portal. Once the vault credential file is provided, the Recovery Services vault against the vault credential file is displayed.
 
-6. 表示されているコンピューターの一覧から*ソース コンピューター*を選択します。
+6. Select the *Source machine* from the list of displayed machines.
 
     ![List of machines](./media/backup-azure-restore-windows-server/machinelist.png)
 
-7. [**ファイルの検索**] または [**ファイルの参照**] オプションのいずれかを選択します。ここでは、**[ファイルを検索]** オプションを使用します。
+7. Select either the **Search for files** or **Browse for files** option. For the purpose of this section, we will use the **Search for files** option.
 
     ![Search](./media/backup-azure-restore-windows-server/search.png)
 
-8. 次の画面で、ボリュームと日付を選択します。復元するフォルダー名とファイル名を検索します。
+8. Select the volume and date in the next screen. Search for the folder/file name you want to restore.
 
     ![Search items](./media/backup-azure-restore-windows-server/searchitems.png)
 
-9. ファイルの復元先にする場所を選択します。
+9. Select the location where the files need to be restored.
 
     ![Restore location](./media/backup-azure-restore-windows-server/restorelocation.png)
 
-10. *ソース コンピューター*を*サンプルの資格情報コンテナー*に登録する際に指定した暗号化パスフレーズを入力します。
+10. Provide the encryption passphrase that was provided during *Source machine’s* registration to *Sample vault*.
 
     ![Encryption](./media/backup-azure-restore-windows-server/encryption.png)
 
-11. 入力して [**回復**] ボタンをクリックすると、指定した復元先でバックアップ ファイルの復元が開始します。
+11. Once the input is provided, click **Recover**, which triggers the restore of the backed up files to the destination provided.
 
-## 次のステップ
-- ファイルとフォルダーを回復したので、[バックアップを管理](backup-azure-manage-windows-server.md)できます。
+## <a name="next-steps"></a>Next steps
+- Now that you've recovered your files and folders, you can [manage your backups](backup-azure-manage-windows-server.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

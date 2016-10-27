@@ -1,6 +1,6 @@
 <properties
-   pageTitle="サービスの回復性ガイダンス | Microsoft Azure"
-   description="Microsoft Azure サービスの障害復旧、予防的回復性、可用性のガイダンスのリンク。"
+   pageTitle="Service resiliency guidance | Microsoft Azure"
+   description="Links to disaster recovery and proactive resiliency and availability guidance for Microsoft Azure services."
    services=""
    documentationCenter="na"
    authors="adamglick"
@@ -16,26 +16,31 @@
    ms.date="08/18/2016"
    ms.author="aglick"/>
 
-# Microsoft Azure サービスの回復性ガイダンス
-Microsoft Azure は、必要なときに必要なリソースを提供できるように設計されています。設計と運用を適切に実践するには、高い可用性を実現するように Azure サービスの利用を節制する方法と、サービス停止の影響をアプリケーションが受けたときの措置の両方を知っておく必要があります。このプロセスを支援する目的で、このドキュメントには、障害復旧ガイダンスとさまざまな Azure サービスの設計ガイダンスのリンクが含まれています。
 
-##障害復旧ガイダンス
-下の障害復旧ガイダンスのリンクでは、Azure サービスが停止し、影響が出た場合に、アプリケーションをオンラインに戻すために必要な情報があります。これらのリンクは、「Azure サービスが停止し、影響が出ていますか。どうすればよいでしょうか。」という質問に答えるために作られました。
+# <a name="microsoft-azure-service-resiliency-guidance"></a>Microsoft Azure service resiliency guidance
+Microsoft Azure is designed to provide you with the resources you need, when you need them. As part of good design and operational practices, you should know both how to architect your use of Azure services to achieve high availability as well as what to do if your application is impacted by a service disruption. To aid you in this process, this document contains links to disaster recovery guidance as well as design guidance for various Azure services.
 
-##設計ガイダンス
-下の設計ガイダンスのリンクからは、設計上の指南にアクセスできます。それぞれの Azure サービスを最大限に利用し、アプリケーションのアップタイムを最大化する方法を理解できます。これらのリンクは、「バグ、ハードウェアの故障、サービスの停止、その他の障害が発生しても、アプリケーションの全体的可用性に影響を与えないようにするにはどうすればよいでしょうか。」という質問に答えるために作られました。 現在探しているサービスに関する具体的なガイダンスがない場合、「[High availability for applications built on Microsoft Azure (Microsoft Azure 上に構築されたアプリケーションの高可用性)](./resiliency-high-availability-azure-applications.md)」を参照すると、設計に役立つ追加情報が得られる可能性があります。　
+##<a name="disaster-recovery-guidance"></a>Disaster recovery guidance
+The disaster recovery guidance links below are can provide you with the information you need to help you get your application back online quickly if you are impacted by an Azure service disruption. These links were created to help you answer the question, "I'm being impacted by an Azure service disruption, what can I do?"
 
-##サービス ガイダンス
-| サービス | 障害復旧ガイダンス | 設計ガイダンス |
+##<a name="design-guidance"></a>Design guidance
+The design guidance links below are design and architectural guidance that has been created to help you understand how best to use each Azure service in a way that maximizes your application's uptime. These links were created to help you answer the question "How do I make sure that a bug, hardware failure, service disruption, or other failure won't impact the overall availability of my application?" If there is no specific guidance for the service you are currently looking for, the [High availability for applications built on Microsoft Azure](./resiliency-high-availability-azure-applications.md) article may have additional information that can help you in your design. 
+
+##<a name="service-guidance"></a>Service guidance
+| Service  | Disaster recovery guidance | Design guidance |
 |:---------|:--------------------------:|:------------------:|
-| [Cloud Services](https://azure.microsoft.com/services/cloud-services/ "Azure クラウド サービス") | [link](../cloud-services/cloud-services-disaster-recovery-guidance.md "Azure Cloud Services の障害復旧ガイダンス") | 利用不可 |
-| [Key Vault](https://azure.microsoft.com/services/key-vault/ "Azure Key Vault") | [link](../key-vault/key-vault-disaster-recovery-guidance.md "Azure Key Vault の障害復旧ガイダンス") | 利用不可 |
-| [Storage](https://azure.microsoft.com/services/storage/ "Azure Storage") | [link](../storage/storage-disaster-recovery-guidance.md "Azure Storage の障害復旧ガイダンス") | 利用不可 |
-| [SQL データベース](https://azure.microsoft.com/services/sql-database/ "Azure SQL Database") | [link](../sql-database/sql-database-disaster-recovery.md "Azure SQL Database の障害復旧ガイダンス") | [link](../sql-database/sql-database-business-continuity-design.md "Azure SQL Databases の設計ガイダンス") |
-| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/ "Azure Virtual Machines") | [link](../virtual-machines/virtual-machines-disaster-recovery-guidance.md "Azure Virtual Machines の障害復旧ガイダンス") | 利用不可 |
-| [Virtual Network](https://azure.microsoft.com/services/virtual-network/ "Azure Virtual Network") | [link](../virtual-network/virtual-network-disaster-recovery-guidance.md "Azure Virtual Network の障害復旧ガイダンス") | 利用不可 |
+| [Cloud Services](https://azure.microsoft.com/services/cloud-services/ "Azure Cloud Services")       | [link](../cloud-services/cloud-services-disaster-recovery-guidance.md "Azure Cloud Services disaster recovery guidance")   | Not Available |
+| [Key Vault](https://azure.microsoft.com/services/key-vault/ "Azure Key Vault")                      | [link](../key-vault/key-vault-disaster-recovery-guidance.md "Azure Key Vault disaster recovery guidance")        | Not Available |
+| [Storage](https://azure.microsoft.com/services/storage/ "Azure Storage")                            | [link](../storage/storage-disaster-recovery-guidance.md "Azure Storage disaster recovery guidance")          | Not Available |
+| [SQL Databases](https://azure.microsoft.com/services/sql-database/ "Azure SQL Databases")           | [link](../sql-database/sql-database-disaster-recovery.md  "Azure SQL Database disaster recovery guidance")    | [link](../sql-database/sql-database-business-continuity-design.md "Azure SQL Databases design guidance") |
+| [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/ "Azure Virtual Machines") | [link](../virtual-machines/virtual-machines-disaster-recovery-guidance.md "Azure Virtual Machines disaster recovery guidance") | Not Available |
+| [Virtual Network](https://azure.microsoft.com/services/virtual-network/ "Azure Virtual Network")    | [link](../virtual-network/virtual-network-disaster-recovery-guidance.md "Azure Virtual Network disaster recovery guidance")  | Not Available |
 
-##次のステップ
-システムとソリューションをより包括的に取り上げたガイダンスが必要であれば、「[Disaster recovery and high availability for applications built on Microsoft Azure (Microsoft Azure 上に構築されたアプリケーションの障害復旧と高可用性)](https://aka.ms/drtechguide)」を参照してください。
+##<a name="next-steps"></a>Next steps
+If you are looking for guidance that focuses more broadly on systems and solutions, please read [Disaster recovery and high availability for applications built on Microsoft Azure](https://aka.ms/drtechguide).
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

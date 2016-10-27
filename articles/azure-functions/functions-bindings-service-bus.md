@@ -1,47 +1,48 @@
 <properties
-	pageTitle="Azure Functions における Service Bus トリガーとバインド | Microsoft Azure"
-	description="Azure Functions で Azure Service Bus トリガーとバインドを使用する方法を説明します。"
-	services="functions"
-	documentationCenter="na"
-	authors="christopheranderson"
-	manager="erikre"
-	editor=""
-	tags=""
-	keywords="Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
+    pageTitle="Azure Functions Service Bus triggers and bindings | Microsoft Azure"
+    description="Understand how to use Azure Service Bus triggers and bindings in Azure Functions."
+    services="functions"
+    documentationCenter="na"
+    authors="christopheranderson"
+    manager="erikre"
+    editor=""
+    tags=""
+    keywords="azure functions, functions, event processing, dynamic compute, serverless architecture"/>
 
 <tags
-	ms.service="functions"
-	ms.devlang="multiple"
-	ms.topic="reference"
-	ms.tgt_pltfrm="multiple"
-	ms.workload="na"
-	ms.date="08/22/2016"
-	ms.author="chrande; glenga"/>
+    ms.service="functions"
+    ms.devlang="multiple"
+    ms.topic="reference"
+    ms.tgt_pltfrm="multiple"
+    ms.workload="na"
+    ms.date="08/22/2016"
+    ms.author="chrande; glenga"/>
 
-# Azure Functions における Service Bus トリガーとキューとトピックに使用するバインド
+
+# <a name="azure-functions-service-bus-triggers-and-bindings-for-queues-and-topics"></a>Azure Functions Service Bus triggers and bindings for queues and topics
 
 [AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions で Azure Service Bus のトリガーとバインドを構成したりコーディングしたりする方法について説明します。
+This article explains how to configure and code Azure Service Bus triggers and bindings in Azure Functions. 
 
-[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)] 
 
-## <a id="sbtrigger"></a>Service Bus キューまたはトピックのトリガー
+## <a name="<a-id="sbtrigger"></a>-service-bus-queue-or-topic-trigger"></a><a id="sbtrigger"></a> Service Bus queue or topic trigger
 
-#### function.json
+#### <a name="function.json"></a>function.json
 
-*function.json* ファイルでは、次のプロパティを指定します。
+The *function.json* file specifies the following properties.
 
-- `name`: キューまたはトピック、キューまたはトピックのメッセージの関数コードで使用される変数名。
-- `queueName`: (キュー トリガーのみ) ポーリングするキューの名前。
-- `topicName`: (トピック トリガーのみ) ポーリングするトピックの名前。
-- `subscriptionName`: (トピック トリガーのみ) サブスクリプション名。
-- `connection`: Service Bus 接続文字列を含むアプリ設定の名前。接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。接続文字列に管理権限がない場合は、`accessRights` プロパティを設定します。`connection` を空のままにすると、トリガーまたはバインドは、AzureWebJobsServiceBus アプリ設定で指定される Function App の既定の Service Bus 接続文字列で動作します。
-- `accessRights`: 接続文字列に使用できるアクセス権を指定します。既定値は `manage` です。manage アクセス権を提供しない接続文字列を使用している場合は、`listen` に設定します。それ以外の場合は、Functions ランタイムは、管理権限を必要とする操作を試行し、失敗する可能性があります。
-- `type`: *serviceBusTrigger* に設定する必要があります。
-- `direction`: *in* に設定する必要があります。
+- `name` : The variable name used in function code for the queue or topic, or the queue or topic message. 
+- `queueName` : For queue trigger only, the name of the queue to poll.
+- `topicName` : For topic trigger only, the name of the topic to poll.
+- `subscriptionName` : For topic trigger only, the subscription name.
+- `connection` : The name of an app setting that contains a Service Bus connection string. The connection string must be for a Service Bus namespace, not limited to a specific queue or topic. If the connection string doesn't have manage rights, set the `accessRights` property. If you leave `connection` empty, the trigger or binding will work with the default Service Bus connection string for the function app, which is specified by the AzureWebJobsServiceBus app setting.
+- `accessRights` : Specifies the access rights available for the connection string. Default value is `manage`. Set to `listen` if you're using a connection string that doesn't provide manage permissions. Otherwise the Functions runtime might try and fail to do operations that require manage rights.
+- `type` : Must be set to *serviceBusTrigger*.
+- `direction` : Must be set to *in*. 
 
-Service Bus キューのトリガーに使用する *function.json* の例
+Example *function.json* for a Service Bus queue trigger:
 
 ```json
 {
@@ -58,7 +59,7 @@ Service Bus キューのトリガーに使用する *function.json* の例
 }
 ```
 
-#### Service Bus キュー メッセージを処理する C# コードの例
+#### <a name="c#-code-example-that-processes-a-service-bus-queue-message"></a>C# code example that processes a Service Bus queue message
 
 ```csharp
 public static void Run(string myQueueItem, TraceWriter log)
@@ -67,14 +68,14 @@ public static void Run(string myQueueItem, TraceWriter log)
 }
 ```
 
-#### Service Bus キュー メッセージを処理する F# コードの例
+#### <a name="f#-code-example-that-processes-a-service-bus-queue-message"></a>F# code example that processes a Service Bus queue message
 
 ```fsharp
 let Run(myQueueItem: string, log: TraceWriter) =
     log.Info(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
 ```
 
-#### Service Bus キュー メッセージを処理する Node.js コードの例
+#### <a name="node.js-code-example-that-processes-a-service-bus-queue-message"></a>Node.js code example that processes a Service Bus queue message
 
 ```javascript
 module.exports = function(context, myQueueItem) {
@@ -83,43 +84,43 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-#### サポートされている型
+#### <a name="supported-types"></a>Supported types
 
-Service Bus キュー メッセージを、次のいずれかの型に逆シリアル化できます。
+The Service Bus queue message can be deserialized to any of the following types:
 
-* オブジェクト (JSON)
+* Object (from JSON)
 * string
-* byte array
-* `BrokeredMessage` (C#)
+* byte array 
+* `BrokeredMessage` (C#) 
 
-#### <a id="sbpeeklock"></a> PeekLock 動作
+#### <a name="<a-id="sbpeeklock"></a>-peeklock-behavior"></a><a id="sbpeeklock"></a> PeekLock behavior
 
-Functions ランタイムは、`PeekLock` モードでメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は `Abandon` を呼び出します。関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。
+The Functions runtime receives a message in `PeekLock` mode and calls `Complete` on the message if the function finishes successfully, or calls `Abandon` if the function fails. If the function runs longer than the `PeekLock` timeout, the lock is automatically renewed.
 
-#### <a id="sbpoison"></a> 有害メッセージの処理
+#### <a name="<a-id="sbpoison"></a>-poison-message-handling"></a><a id="sbpoison"></a> Poison message handling
 
-Service Bus では、Azure Functions の構成やコードで制御または構成することができない、独自の有害メッセージを処理します。
+Service Bus does its own poison message handling which can't be controlled or configured in Azure Functions configuration or code. 
 
-#### <a id="sbsinglethread"></a> シングルスレッド
+#### <a name="<a-id="sbsinglethread"></a>-single-threading"></a><a id="sbsinglethread"></a> Single-threading
 
-既定では、Functions ランタイムは、複数のキュー メッセージを同時に処理します。一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、*host.json* ファイルで `serviceBus.maxConcurrrentCalls` を 1 に設定します。*host.json* ファイルの詳細については、開発者向けリファレンスの記事「[フォルダー構造](functions-reference.md#folder-structure)」と、WebJobs.Script リポジトリ Wiki の「[host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json)」を参照してください。
+By default the Functions runtime processes multiple queue messages concurrently. To direct the runtime to process only a single queue or topic message at a time, set `serviceBus.maxConcurrrentCalls` to 1 in the *host.json* file. For information about the *host.json* file, see [Folder Structure](functions-reference.md#folder-structure) in the Developer reference article, and [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) in the WebJobs.Script repository wiki.
 
-## <a id="sboutput"></a>Service Bus キューまたはトピックの出力バインド
+## <a name="<a-id="sboutput"></a>-service-bus-queue-or-topic-output-binding"></a><a id="sboutput"></a> Service Bus queue or topic output binding
 
-#### function.json
+#### <a name="function.json"></a>function.json
 
-*function.json* ファイルでは、次のプロパティを指定します。
+The *function.json* file specifies the following properties.
 
-- `name`: キューまたはキュー メッセージの関数コードで使用される変数名。
-- `queueName`: (キュー トリガーのみ) ポーリングするキューの名前。
-- `topicName`: (トピック トリガーのみ) ポーリングするトピックの名前。
-- `subscriptionName`: (トピック トリガーのみ) サブスクリプション名。
-- `connection`: Service Bus のトリガーと同じです。
-- `accessRights`: 接続文字列に使用できるアクセス権を指定します。既定値は `manage` です。manage アクセス権を提供しない接続文字列を使用している場合は、`send` に設定します。それ以外の場合は、Functions ランタイムは、キューの作成などの管理権限を必要とする操作を試行し、失敗する可能性があります。
-- `type`: *serviceBus* に設定する必要があります。
-- `direction`: *out* に設定する必要があります。
+- `name` : The variable name used in function code for the queue or queue message. 
+- `queueName` : For queue trigger only, the name of the queue to poll.
+- `topicName` : For topic trigger only, the name of the topic to poll.
+- `subscriptionName` : For topic trigger only, the subscription name.
+- `connection` : Same as for Service Bus trigger.
+- `accessRights` : Specifies the access rights available for the connection string. Default value is `manage`. Set to `send` if you're using a connection string that doesn't provide manage permissions. Otherwise the Functions runtime might try and fail to do operations that require manage rights, such as creating queues.
+- `type` : Must be set to *serviceBus*.
+- `direction` : Must be set to *out*. 
 
-Service Bus キュー メッセージを記述するためにタイマー トリガーを使用する *function.json* の例を次に示します。
+Example *function.json* for using a timer trigger to write Service Bus queue messages:
 
 ```JSON
 {
@@ -143,23 +144,23 @@ Service Bus キュー メッセージを記述するためにタイマー トリ
 }
 ``` 
 
-#### サポートされている型
+#### <a name="supported-types"></a>Supported types
 
-Azure Functions は、次の型のいずれかから Service Bus キュー メッセージを作成できます。
+Azure Functions can create a Service Bus queue message from any of the following types.
 
-* オブジェクト (常に JSON メッセージを作成し、関数が終了したときに、値が null である場合は、null オブジェクトでメッセージを作成)
-* string (関数が終了したときに、値が null でない場合は、メッセージを作成します)
-* byte array (string と同様に動作)
-* `BrokeredMessage` (C#、string と同様に動作)
+* Object (always creates a JSON message, creates the message with a null object if the value is null when the function ends)
+* string (creates a message if the value is non-null when the function ends)
+* byte array (works like string) 
+* `BrokeredMessage` (C#, works like string)
 
-C# 関数で複数のメッセージを作成するには、`ICollector<T>` または `IAsyncCollector<T>` を使用できます。`Add` メソッドを呼び出すときに、メッセージが作成されます。
+For creating multiple messages in a C# function, you can use `ICollector<T>` or `IAsyncCollector<T>`. A message is created when you call the `Add` method.
 
-#### Service Bus キュー メッセージを作成する C# コードの例
+#### <a name="c#-code-examples-that-create-service-bus-queue-messages"></a>C# code examples that create Service Bus queue messages
 
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQueue)
 {
-	string message = $"Service Bus queue message created at: {DateTime.Now}";
+    string message = $"Service Bus queue message created at: {DateTime.Now}";
     log.Info(message); 
     outputSbQueue = message;
 }
@@ -168,14 +169,14 @@ public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQu
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> outputSbQueue)
 {
-	string message = $"Service Bus queue message created at: {DateTime.Now}";
+    string message = $"Service Bus queue message created at: {DateTime.Now}";
     log.Info(message); 
     outputSbQueue.Add("1 " + message);
     outputSbQueue.Add("2 " + message);
 }
 ```
 
-#### Service Bus キュー メッセージを作成する F# コードの例
+#### <a name="f#-code-example-that-creates-a-service-bus-queue-message"></a>F# code example that creates a Service Bus queue message
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
@@ -184,7 +185,7 @@ let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
     outputSbQueue = message
 ```
 
-#### Service Bus キュー メッセージを作成する Node.js コードの例
+#### <a name="node.js-code-example-that-creates-a-service-bus-queue-message"></a>Node.js code example that creates a Service Bus queue message
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -201,8 +202,12 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
+[AZURE.INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)] 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

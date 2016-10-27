@@ -1,50 +1,55 @@
 <properties 
-	pageTitle="Azure Data Factory から Spark プログラムを呼び出す" 
-	description="MapReduce アクティビティを使用して Azure Data Factory から Spark プログラムを呼び出す方法について説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+    pageTitle="Invoke Spark programs from Azure Data Factory" 
+    description="Learn how to invoke Spark programs from an Azure data factory using the MapReduce Activity." 
+    services="data-factory" 
+    documentationCenter="" 
+    authors="spelluru" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/25/2016" 
-	ms.author="spelluru"/>
+    ms.service="data-factory" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/25/2016" 
+    ms.author="spelluru"/>
 
-# Data Factory から Spark プログラムを起動する
-## はじめに
-Data Factory パイプラインで MapReduce アクティビティを使用して、HDInsight Spark クラスターで Spark プログラムを実行することができます。この記事を読む前に、アクティビティの使用の詳細について、[MapReduce アクティビティ](data-factory-map-reduce.md)に関する記事をご覧ください。
 
-## GitHub 上の Spark サンプル
-[GitHub 上の Spark - Data Factory サンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark)は、MapReduce アクティビティを使用して Spark プログラムを起動する方法を示しています。Spark プログラムは、単に、1 つの Azure BLOB コンテナーから別のコンテナーにデータをコピーします。
+# <a name="invoke-spark-programs-from-data-factory"></a>Invoke Spark Programs from Data Factory
+## <a name="introduction"></a>Introduction
+You can use the MapReduce Activity in a Data Factory pipeline to run Spark programs on your HDInsight Spark cluster. See [MapReduce Activity](data-factory-map-reduce.md) article for detailed information on using the activity before reading this article. 
 
-## Data Factory のエンティティ
-**Spark-ADF/src/ADFJsons** フォルダーには、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) のファイルが含まれています。
+## <a name="spark-sample-on-github"></a>Spark sample on GitHub
+The [Spark - Data Factory sample on GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) shows how to use MapReduce activity to invoke a Spark program. The spark program just copies data from one Azure Blob container to another. 
 
-このサンプルには、2 つの**リンクされたサービス**があります。Azure Storage と Azure HDInsight です。Azure ストレージの名前とキーの値を **StorageLinkedService.json** に指定し、clusterUri、userName、およびパスワードを **HDInsightLinkedService.json** に指定します。
+## <a name="data-factory-entities"></a>Data Factory entities
+The **Spark-ADF/src/ADFJsons** folder contains files for Data Factory entities (linked services, datasets, pipeline).  
 
-このサンプルには、2 つの**データセット**があります。**input.json** と **output.json** です。これらのファイルは、**Datasets** フォルダーにあります。これらのファイルが表しているのは、MapReduce アクティビティの入力および出力データセットです。
+There are two **linked services** in this sample: Azure Storage and Azure HDInsight. Specify your Azure storage name and key values in **StorageLinkedService.json** and clusterUri, userName, and password in **HDInsightLinkedService.json**.
 
-**ADFJsons/Pipeline** フォルダーにはサンプル パイプラインがあります。パイプラインを確認して、MapReduce アクティビティを使用して Spark プログラムを呼び出す方法について理解します。
+There are two **datasets** in this sample: **input.json** and **output.json**. These files are located in the **Datasets** folder.  These files represent input and output datasets for the MapReduce activity
 
-MapReduce アクティビティは、Azure ストレージの **adflibs** コンテナーの **com.adf.sparklauncher.jar** を呼び出すように構成されています (StorageLinkedService.json で指定)。このプログラムのソース コードは Spark-ADF/src/main/java/com/adf/ フォルダーにあり、spark-submit を呼び出して Spark ジョブを実行します。
+You find sample pipelines in the **ADFJsons/Pipeline** folder. Review a pipeline to understand how to invoke a Spark program by using the MapReduce activity. 
+
+The MapReduce activity is configured to invoke **com.adf.sparklauncher.jar** in the **adflibs** container in your Azure storage (specified in the StorageLinkedService.json). The source code for this program is in Spark-ADF/src/main/java/com/adf/ folder and it calls spark-submit and run Spark jobs. 
 
 > [AZURE.IMPORTANT] 
-サンプルを使用する前に、[README.TXT](https://github.com/Azure/Azure-DataFactory/blob/master/Samples/Spark/README.txt) に目を通して、最新情報と追加情報を確認してください。
+> Read through [README.TXT](https://github.com/Azure/Azure-DataFactory/blob/master/Samples/Spark/README.txt) for the latest and additional information before using the sample. 
 >  
-> MapReduce アクティビティを使用して Spark プログラムを呼び出すには、この方法で独自の HDInsight Spark クラスターを使用します。オンデマンド HDInsight クラスターの使用は、サポートされていません。
+> Use your own HDInsight Spark cluster with this approach to invoke Spark programs using the MapReduce activity. Using an on-demand HDInsight cluster is not supported.   
 
 
-## 関連項目
-- [Hive アクティビティ](data-factory-hive-activity.md)
-- [Pig アクティビティ](data-factory-pig-activity.md)
-- [MapReduce アクティビティ](data-factory-map-reduce.md)
-- [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
-- [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+## <a name="see-also"></a>See Also
+- [Hive Activity](data-factory-hive-activity.md)
+- [Pig Activity](data-factory-pig-activity.md)
+- [MapReduce Activity](data-factory-map-reduce.md)
+- [Hadoop Streaming Activity](data-factory-hadoop-streaming-activity.md)
+- [Invoke R scripts](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

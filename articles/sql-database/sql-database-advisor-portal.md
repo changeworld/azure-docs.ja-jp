@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure ポータルを使用した Azure SQL Database Advisor | Microsoft Azure" 
-   description="Azure SQL Database Advisor を Azure ポータルで使用して、現在のクエリのパフォーマンスを向上できる、既存の SQL Database 向けの推奨事項の確認および実装ができます。" 
+   pageTitle="Azure SQL Database Advisor using the Azure portal | Microsoft Azure" 
+   description="You can use the Azure SQL Database Advisor in the Azure portal to review and implement recommendations for your existing SQL Databases that can improve current query performance." 
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
@@ -13,164 +13,175 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="data-management" 
-   ms.date="06/22/2016"
+   ms.date="09/30/2016"
    ms.author="sstein"/>
 
-# SQL Database Advisor
+
+# <a name="sql-database-advisor-using-the-azure-portal"></a>SQL Database Advisor using the Azure portal
 
 > [AZURE.SELECTOR]
-- [SQL Database Advisor の概要](sql-database-advisor.md)
-- [ポータル](sql-database-advisor-portal.md)
+- [SQL Database Advisor Overview](sql-database-advisor.md)
+- [Portal](sql-database-advisor-portal.md)
 
-Azure SQL Database Advisor を Azure ポータルで使用して、現在のクエリのパフォーマンスを向上できる、既存の SQL Database 向けの推奨事項の確認および実装ができます。
+You can use the Azure SQL Database Advisor in the Azure portal to review and implement recommendations for your existing SQL Databases that can improve current query performance.
 
-## 推奨事項の表示
+## <a name="viewing-recommendations"></a>Viewing recommendations
 
-[推奨事項] ページには、パフォーマンスの向上につながる可能性が高い順に推奨事項が表示されます。さらに、これまでに行った操作の状態も確認できます。推奨インデックスまたは状態を選択すると、その詳細が表示されます。
+The recommendations page is where you view the top recommendations based on their potential impact to improve performance. You can also view the status of the historical operations. Select a recommendation or status to see  more details.
 
-推奨事項を表示し適用するには、Azure における適切な[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)権限が必要です。推奨事項を表示するには、**リーダー**権限と **SQL DB の共同作成者**権限が必要です。また、インデックスの作成または削除、およびインデックス作成のキャンセルなどのアクションを実行するには、**所有者**権限と **SQL DB の共同作成者**権限が必要です。
+To view and apply recommendations, you need the correct [role-based access control](../active-directory/role-based-access-control-configure.md) permissions in Azure. **Reader**, **SQL DB Contributor** permissions are required to view recommendations, and **Owner**, **SQL DB Contributor** permissions are required to execute any actions; create or drop indexes and cancel index creation.
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. **[参照]**、**[SQL データベース]** の順にクリックし、データベースを選択します。
-5. **[すべての設定]**、**[推奨事項]** の順にクリックし、選択したデータベースで使用できる**推奨事項**を表示します。
+1. Sign in to the [Azure portal](https://portal.azure.com/).
+2. Click **More services** > **SQL databases**, and select your database.
+5. Click **Performance recommendation** to view available recommendations for the selected database.
 
-> [AZURE.NOTE] 推奨事項を得るには、データベースを約 1 週間使用し、その週内にいくつかのアクティビティを行う必要があります。さらに、一貫性のアクティビティも行う必要もあります。SQL Database Advisor は、ランダムでむらのある瞬間的なアクティビティよりも、一貫性のあるアクティビティのクエリ パターンをより簡単に最適化できます。推奨事項を使用できない場合は、**[推奨事項]** ページに、その理由を説明するメッセージが表示されます。
+> [AZURE.NOTE] To get recommendations a database needs to have about a day of usage, and there needs to be some activity. There also needs to be some consistent activity. The SQL Database Advisor can more easily optimize for consistent query patterns than it can for random spotty bursts of activity. If recommendations are not available, the **Performance recommendation** page should provide a message explaining why.
 
-![推奨事項](./media/sql-database-advisor-portal/recommendations.png)
+![Recommendations](./media/sql-database-advisor-portal/recommendations.png)
 
-Azure ポータルの、「スキーマの問題の修正」に関する推奨事項の例を次に示します。
+Here is an example of "Fix schema issue" recommendation in the Azure portal.
 
-![スキーマの問題の修正](./media/sql-database-advisor-portal/sql-database-advisor-schema-issue.png)
+![Fix Schema Issue](./media/sql-database-advisor-portal/sql-database-advisor-schema-issue.png)
 
-お勧め候補は、パフォーマンスへの潜在的な影響ごとに、次の 4 つのカテゴリに並べ替えられます。
+Recommendations are sorted by their potential impact on performance into the following four categories:
 
-| 影響 | 説明 |
+| Impact | Description |
 | :--- | :--- |
-| 高 | 高い影響を及ぼすお勧め候補は、パフォーマンスに最も重要な影響を与えます。 |
-| 中 | 中程度の影響を及ぼすおすすめ候補は、パフォーマンスを向上しますが、それほど著しい向上ではありません。 |
-| 低 | 低い影響を及ぼすおすすめ候補は、推奨事項を行わない場合よりも優れたパフォーマンスを提供しますが、大きくは改善されない可能性があります。 
+| High | High impact recommendations should provide the most significant performance impact. |
+| Medium | Medium impact recommendations should improve performance, but not substantially. |
+| Low | Low impact recommendations should provide better performance than without, but improvements might not be significant. 
 
 
-### 一覧からの推奨事項の削除
+### <a name="removing-recommendations-from-the-list"></a>Removing recommendations from the list
 
-推奨事項の一覧に削除したい項目が含まれている場合は、その項目を破棄することができます。
+If your list of recommendations contains items that you want to remove from the list, you can discard the recommendation:
 
-1. **[推奨事項]** の一覧にある項目を選択します。
-2. **[詳細]** ブレードで **[破棄]** をクリックします。
-
-
-必要な場合は、破棄した項目をもう一度 **[推奨事項]** の一覧に追加できます。
-
-1. **[推奨事項]** ブレードの **[破棄された内容の表示]** をクリックします。
-1. 破棄した項目を一覧から選択し、その詳細を表示します。
-1. 必要に応じて、**[破棄を元に戻す]** をクリックして、インデックスを **[推奨事項]** の主な一覧に戻します。
+1. Select a recommendation in the list of **Recommendations**.
+2. Click **Discard** on the **Details** blade.
 
 
+If desired, you can add discarded items back to the **Recommendations** list:
 
-## 推奨事項の適用
+1. On the **Recommendations** blade click **View discarded**.
+1. Select a discarded item from the list to view its details.
+1. Optionally, click **Undo Discard** to add the index back to the main list of **Recommendations**.
 
-SQL Database Advisor では、次の 3 つのオプションのいずれかを使用して、推奨事項を有効にする方法を完全に制御できます。
 
-- 個々の推奨インデックスを 1 つずつ適用する。
-- アドバイザーが推奨事項を自動的に適用できるようにします (現時点では、インデックスに関する推奨事項にのみ適用されます)。
-- 推奨される T-SQL スクリプトをデータベースに対して手動で実行して推奨インデックスを実装する。
 
-任意の推奨インデックスを選択すると、その詳細が表示されます。その後、**[スクリプトの表示]** をクリックして、推奨事項の作成方法の詳細を確認します。
+## <a name="applying-recommendations"></a>Applying recommendations
 
-アドバイザーによって推奨事項が適用される間、データベースはオンラインのままです。つまり、SQL Database Advisor を使用することでデータベースがオフラインになることはありません。
+SQL Database Advisor gives you full control over how recommendations are enabled using any of the following three options: 
 
-### 個々の推奨インデックスを適用する
+- Apply individual recommendations one at a time.
+- Enable the advisor to automatically apply recommendations (currently applies to index recommendations only).
+- To implement a recommendation manually, run the recommended T-SQL script against your database .
 
-推奨インデックスは、1 つずつ確認して受け入れることができます。
+Select any recommendation to view its details and then click **View script** to review the exact details of how the recommendation is created.
 
-1. **[推奨事項]** ブレードで、推奨インデックスをクリックします。
-2. **[詳細]** ブレードで、**[適用]** をクリックします。
+The database remains online while the advisor applies the recommendation -- using SQL Database Advisor never takes a database offline.
+
+### <a name="apply-an-individual-recommendation"></a>Apply an individual recommendation
+
+You can review and accept recommendations one at a time.
+
+1. On the **Recommendations** blade, click a recommendation.
+2. On the **Details** blade click **Apply**.
 
     ![Apply recommendation](./media/sql-database-advisor-portal/apply.png)
 
-### インデックスの自動管理を有効にする
+### <a name="enable-automatic-index-management"></a>Enable automatic index management
 
-推奨事項を自動的に実装するように SQL Database Advisor を設定できます。推奨インデックスは、利用可能になると自動的に適用されます。サービスによって管理されるすべてのインデックス操作と同様に、パフォーマンスに悪影響が生じる場合は、推奨インデックスは元に戻されます。
+You can set the SQL Database Advisor to implement recommendations automatically. As recommendations become available they will automatically be applied. As with all index operations managed by the service if the performance impact is negative the recommendation will be reverted.
 
-1. **[推奨事項]** ブレードで **[自動化]** をクリックします。
+1. On the **Recommendations** blade, click **Automate**:
 
     ![Advisor settings](./media/sql-database-advisor-portal/settings.png)
 
-2. インデックスを自動的に**作成**または**削除**するようにアドバイザーを設定します。
+2. Set the advisor to automatically **Create** or **Drop** indexes:
 
-    ![推奨インデックス](./media/sql-database-advisor-portal/automation.png)
-
-
-### 推奨される T-SQL スクリプトを手動で実行する
-
-任意の推奨インデックスを選択し、**[スクリプトの表示]** をクリックします。データベースに対してこのスクリプトを実行し、推奨インデックスを手動で適用します。
-
-*手動で実行されたインデックスは、パフォーマンスへの影響についてサービスによる監視や検証が行われません。*そのため、作成後にこれらのインデックスを監視して、パフォーマンスが向上するかどうかを検証し、必要に応じて調整または削除することをお勧めします。インデックスの作成方法の詳細については、「[CREATE INDEX (TRANSACT-SQL)](https://msdn.microsoft.com/library/ms188783.aspx)」を参照してください。
+    ![Recommended Indexes](./media/sql-database-advisor-portal/automation.png)
 
 
-### 推奨事項のキャンセル
+### <a name="manually-run-the-recommended-t-sql-script"></a>Manually run the recommended T-SQL script
 
-状態が**保留中**、**確認中**、または**成功**の推奨事項はキャンセルすることができます。ただし、**実行中**の状態の推奨事項はキャンセルできないのでご注意ください。
+Select any recommendation and then click **View script**. Run this script against your database to manually apply the recommendation.
 
-1. **[チューニングの履歴]** 領域の推奨事項を選択して、**[推奨事項の詳細]**ブレードを開きます。
-2. **[キャンセル]** をクリックして推奨事項の適用プロセスを中止します。
-
+*Indexes that are manually executed are not monitored and validated for performance impact by the service* so it is suggested that you monitor these indexes after creation to verify they provide performance gains and adjust or delete them if necessary. For details about creating indexes, see [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
 
 
-## 操作の監視
+### <a name="canceling-recommendations"></a>Canceling recommendations
 
-推奨インデックスの適用は、瞬時に行われない場合があります。ポータルには、推奨インデックスの操作の状態に関する詳細情報が表示されます。インデックスは次のいずれかの状態になります。
+Recommendations that are in a **Pending**, **Verifying**, or **Success** status can be canceled. Recommendations with a status of **Executing** cannot be canceled.
 
-| 状態 | 説明 |
+1. Select a recommendation in the **Tuning History** area to open the **recommendations details** blade.
+2. Click **Cancel** to abort the process of applying the recommendation.
+
+
+
+## <a name="monitoring-operations"></a>Monitoring operations
+
+Applying a recommendation might not happen instantaneously. The portal provides details regarding the status of recommendation operations. The following are possible states that an index can be in:
+
+| Status | Description |
 | :--- | :--- |
-| Pending | 推奨インデックスの適用コマンドは受信済みで、実行が予定されています。 |
-| を実行しています | 推奨インデックスは適用中です。 |
-| 成功 | 推奨インデックスが正常に適用されました。 |
-| エラー | 推奨インデックスの適用プロセス中にエラーが発生しました。一時的な問題か、またはテーブルおよびスクリプトへのスキーマの変更が無効になっている可能性があります。 |
-| 復元 | 推奨インデックスは適用されましたが、非効率なインデックスと見なされたため、自動的に元に戻されています。 |
-| 復元済み | 推奨インデックスは元に戻されました。 |
+| Pending | Apply recommendation command has been received and is scheduled for execution. |
+| Executing | The recommendation is being applied. |
+| Success | Recommendation was successfully applied. |
+| Error | An error occurred during the process of applying the recommendation. This can be a transient issue, or possibly a schema change to the table and the script is no longer valid. |
+| Reverting | The recommendation was applied, but has been deemed non-performant and is being automatically reverted. |
+| Reverted | The recommendation was reverted. |
 
-一覧内で処理中の推奨インデックスをクリックすると、その詳細が表示されます。
+Click an in-process recommendation from the list to see more details:
 
-![推奨インデックス](./media/sql-database-advisor-portal/operations.png)
-
-
-### 推奨インデックスを元に戻す
-
-アドバイザーを使用して推奨インデックスを適用した場合 (つまり、T-SQL スクリプトを手動で実行していない場合)、パフォーマンスへの悪影響が見つかるとインデックスは自動的に元に戻されます。何らかの理由で推奨インデックスを元に戻すには、次の手順を実行します。
+![Recommended Indexes](./media/sql-database-advisor-portal/operations.png)
 
 
-1. **[チューニングの履歴]** 領域で、正常に適用された推奨インデックスを選択します。
-2. **[推奨事項の詳細]**ブレードで **[元に戻す]** をクリックします。
+### <a name="reverting-a-recommendation"></a>Reverting a recommendation
 
-![推奨インデックス](./media/sql-database-advisor-portal/details.png)
+If you used the advisor to apply the recommendation (meaning you did not manually run the T-SQL script) it will automatically revert it if it finds the performance impact to be negative. If for any reason you simply want to revert a recommendation you can do the following:
 
 
-## 推奨インデックスによるパフォーマンスへの影響の監視
+1. Select a successfully applied recommendation in the **Tuning history** area.
+2. Click **Revert** on the **recommendation details** blade.
 
-推奨事項が正常に実装されたら (現時点では、インデックスの操作とクエリのパラメーター化に関する推奨事項のみ)、[推奨事項の詳細] ブレードの **[クエリの洞察]** をクリックして [Query Performance Insight](sql-database-query-performance.md) を開き、よく使用されるクエリによるパフォーマンスへの影響を確認します。
+![Recommended Indexes](./media/sql-database-advisor-portal/details.png)
+
+
+## <a name="monitoring-performance-impact-of-index-recommendations"></a>Monitoring performance impact of index recommendations
+
+After recommendations are successfully implemented (currently, index operations and parameterize queries recommendations only) you can click **Query Insights** on the recommendation details blade to open [Query Performance Insights](sql-database-query-performance.md) and see the performance impact of your top queries.
 
 ![Monitor performance impact](./media/sql-database-advisor-portal/query-insights.png)
 
 
 
-## 概要
+## <a name="summary"></a>Summary
 
-SQL Database Advisor は、データベースのパフォーマンス向上のための推奨事項を提供します。SQL Database Advisor には、T-SQL スクリプトのほか、個別管理オプションと完全自動管理オプション (現時点ではインデックスのみ) が備わっているため、データベースを最適化して最終的にクエリ パフォーマンスを向上させるのに役立ちます。
+SQL Database Advisor provides recommendations for improving SQL database performance. By providing T-SQL scripts, as well as individual and fully-automatic (currently index only), the advisor provides helpful assistance in optimizing your database and ultimately improving query performance.
 
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-推奨事項を監視し、引き続きパフォーマンスの調整対象とします。データベースのワークロードは動的であり、継続的に変化します。SQL Database Advisor では、お使いのデータベースのパフォーマンスを向上させる可能性がある推奨事項の監視と提供を継続します。
+Monitor your recommendations and continue to apply them to refine performance. Database workloads are dynamic and change continuously. SQL Database advisor will continue to monitor and provide recommendations that can potentially improve your database's performance. 
 
- - SQL Database Advisor の概要については、「[SQL Database Advisor](sql-database-advisor.md)」 を参照してください。
- - よく使用されるクエリによるパフォーマンスへの影響を確認する方法については、[クエリ パフォーマンスの洞察](sql-database-query-performance.md)に関する記事を参照してください。
+ - See [SQL Database Advisor](sql-database-advisor.md) for an overview of SQL Database Advisor.
+ - See [Query Performance Insights](sql-database-query-performance.md) to learn about viewing the performance impact of your top queries.
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-- [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx)
+- [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)
 - [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-- [ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
+- [Role-based access control](../active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

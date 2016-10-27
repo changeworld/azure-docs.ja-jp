@@ -1,83 +1,94 @@
 <properties
-	pageTitle="Azure Mobile Apps を使用して Android アプリにプッシュ通知を追加する"
-	description="Azure Mobile Apps を使用して Android アプリにプッシュ通知を送信する方法について説明します。"
-	services="app-service\mobile"
-	documentationCenter="android"
-	manager="erikre"
-	editor=""
-	authors="RickSaling"/>
+    pageTitle="Add Push Notifications to Android App with Azure  Mobile Apps"
+    description="Learn how to use Azure Mobile Apps to send push notifications to your Android app."
+    services="app-service\mobile"
+    documentationCenter="android"
+    manager="erikre"
+    editor=""
+    authors="yuaxu"/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="java"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="ricksal"/>
+    ms.service="app-service-mobile"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-android"
+    ms.devlang="java"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="yuaxu"/>
 
-# プッシュ通知を Android アプリに追加する
+
+# <a name="add-push-notifications-to-your-android-app"></a>Add Push Notifications to your Android App
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## 概要
-このチュートリアルでは、[Android クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている「[Android クイック スタート]」チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+## <a name="overview"></a>Overview
+This tutorial shows you how to add push notifications to the [Android quick start] project so that every time a record is inserted, a push notification is sent. This tutorial is based on the [Android quick start] tutorial, which you must complete first. If you do not use the downloaded quick start server project, you must add the push notification extension package to your project. For more information about server extension packages, see [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-##前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-このチュートリアルを完了するには、以下が必要です。
+The following items are needed to complete this tutorial:
 
-* 確認済みの電子メール アドレスがある [Google アカウント](http://go.microsoft.com/fwlink/p/?LinkId=268302)
-* [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) (Node.js バックエンド プロジェクトには不要)
-* [クイック スタート チュートリアル](app-service-mobile-android-get-started.md)を完了していること。
+* [Google account](http://go.microsoft.com/fwlink/p/?LinkId=268302) with a verified email address.
 
-##<a name="create-hub"></a>通知ハブを作成する
+* An IDE depending on your project's backend:
+
+    * [Android Studio](https://developer.android.com/sdk/index.html) if this app has a Node.js backend.
+
+    * [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) or later if this app has a .Net backend.
+
+* Complete the [quickstart tutorial](app-service-mobile-android-get-started.md).
+
+## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Create a project that supports Firebase Cloud Messaging
+
+[AZURE.INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
+
+## <a name="create-a-notification-hub"></a>Create a Notification Hub
 
 [AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
 
-## Google Cloud Messaging を有効にする
+## <a name="configure-the-mobile-app-backend-for-sending-push-requests"></a>Configure the Mobile App backend for sending push requests
 
-[AZURE.INCLUDE [mobile-services-enable-google-cloud-messaging](../../includes/mobile-engagement-enable-google-cloud-messaging.md)]
+[AZURE.INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-##プッシュ要求を送信するように Mobile App バックエンドを構成する
-
-[AZURE.INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
-
-##<a id="update-service"></a>サーバー プロジェクトをプッシュ通知を送信するように更新する
+## <a name="enable-push-notifications-for-the-server-project"></a>Enable push notifications for the server project
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
-## アプリケーションにプッシュ通知を追加する
+## <a name="add-push-notifications-to-your-app"></a>Add push notifications to your app
 
-Android アプリ プロジェクトでプッシュ通知を処理する準備が整っていることを確認する必要があります。
+In this section, you enable your Android app project to handle push notifications.
 
-###Android SDK バージョンの検証
+### <a name="verify-android-sdk-version"></a>Verify Android SDK Version
 
 [AZURE.INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-次の手順は、Google Play サービスをインストールすることです。Google Cloud Messaging には、マニフェストの **minSdkVersion** プロパティが準拠する必要がある、開発およびテストに関する最小 API レベル要件があります。
+Your next step is to install Google Play services. Google Cloud Messaging has some minimum API level requirements for development and testing, which the **minSdkVersion** property in the Manifest must conform to.
 
-古いデバイスを使用している場合は、[Google Play Services SDK のセットアップに関するページ]を参考に、どれだけ小さな値を設定できるか判断し、適切に設定してください。
+If you are testing with an older device, then consult [Set Up Google Play Services SDK] to determine how low you can set this value, and set it appropriately.
 
-###プロジェクトへの Google Play Services の追加
+### <a name="add-google-play-services-to-the-project"></a>Add Google Play Services to the project
 
-[AZURE.INCLUDE [Play サービスの追加](../../includes/app-service-mobile-add-google-play-services.md)]
+[AZURE.INCLUDE [Add Play Services](../../includes/app-service-mobile-add-google-play-services.md)]
 
-###コードの追加
+### <a name="add-code"></a>Add code
 
 [AZURE.INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
 
-## 発行されたモバイル サービスに対してアプリケーションをテストする
+## <a name="test-the-app-against-the-published-mobile-service"></a>Test the app against the published mobile service
 
-Android フォンを USB ケーブルで直接接続するか、エミュレーターで仮想デバイスを使用する方法により、アプリケーションをテストできます。
+You can test the app by directly attaching an Android phone with a USB cable, or by using a virtual device in the emulator.
 
-##<a id="more"></a>詳細
+## <a name="more"></a>More
 
-* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」に記載されています。
+* Tags allow you to target segmented customers with pushes. [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) shows you how to add tags to a device installation.
 
 <!-- URLs -->
-[Android クイック スタート]: app-service-mobile-android-get-started.md
+[Android quick start]: app-service-mobile-android-get-started.md
 
-[Google Play Services SDK のセットアップに関するページ]: https://developers.google.com/android/guides/setup
+[Set Up Google Play Services SDK]:https://developers.google.com/android/guides/setup
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

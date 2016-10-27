@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Tools を使用したクラウド サービスの発行 | Microsoft Azure"
-   description="Visual Studio を使用して Azure クラウド サービス プロジェクトを発行する方法について説明します。"
+   pageTitle="Publishing a Cloud Service using the Azure Tools | Microsoft Azure"
+   description="Learn about how to publish Azure cloud service projects by using Visual Studio."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,162 +15,167 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Azure Tools を使用したクラウド サービスの発行
 
-Azure Tools for Microsoft Visual Studio を使用することで、Azure アプリケーションを Visual Studio から直接発行できます。Visual Studio では、クラウド サービスのステージング環境または運用環境への統合された発行をサポートしています。
+# <a name="publishing-a-cloud-service-using-the-azure-tools"></a>Publishing a Cloud Service using the Azure Tools
 
-Azure アプリケーションを発行するには、Azure サブスクリプションが必要です。また、アプリケーションで使用するようにクラウド サービスおよびストレージ アカウントを設定する必要があります。これらは [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で設定できます。
+By using the Azure Tools for Microsoft Visual Studio, you can publish your Azure application directly from Visual Studio. Visual Studio supports integrated publishing to either the Staging or the Production environment of a cloud service.
 
->[AZURE.IMPORTANT] 発行時に、クラウド サービスのデプロイ環境を選択できます。デプロイ用のアプリケーション パッケージの格納に使用するストレージ アカウントも選択する必要があります。デプロイ後、アプリケーション パッケージはストレージ アカウントから削除されます。
+Before you can publish an Azure application, you must have an Azure subscription. You must also set up a cloud service and storage account to be used by your application. You can set these up at the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-Azure アプリケーションを開発およびテストするときは、Web Deploy を使用して、Web ロールの変更を段階的に発行することができます。アプリケーションをデプロイ環境に発行したら、Web Deploy を使用して、Web ロールを実行している仮想マシンに変更を直接デプロイできます。変更をテストするために Web ロールを更新するたびに、Azure アプリケーション全体をパッケージ化して発行する必要はありません。この方法では、アプリケーションがデプロイ環境に発行されるのを待たなくても、クラウドで Web ロールの変更をテストできます。
+>[AZURE.IMPORTANT] When you publish, you can select the deployment environment for your cloud service. You must also select a storage account that is used to store the application package for deployment. After deployment, the application package is removed from the storage account.
 
-Azure アプリケーションを発行し、Web Deploy を使用して Web ロールを更新するには、次の手順に従います。
+When you are developing and testing an Azure application, you can use Web Deploy to publish changes incrementally for your web roles. After you publish your application to a deployment environment, Web Deploy lets you deploy changes directly to the virtual machine that is running the web role. You do not have to package and publish your entire Azure application each time you want to update your web role to test out the changes. With this approach you can have your web role changes available in the cloud for testing without waiting to have your application published to a deployment environment.
 
-- Visual Studio からの Azure アプリケーションの発行またはパッケージ化
+Use the following procedures to publish your Azure application and to update a web role by using Web Deploy:
 
-- 開発およびテスト サイクルの一環としての Web ロールの更新
+- Publish or Package an Azure application from Visual Studio
 
-## Visual Studio からの Azure アプリケーションの発行またはパッケージ化
+- Update a web role as part of the development and testing cycle
 
-Azure アプリケーションを発行するときは、次のいずれかの作業を行います。
+## <a name="publish-or-package-an-azure-application-from-visual-studio"></a>Publish or Package an Azure Application from Visual Studio
 
-- サービス パッケージを作成する: このパッケージとサービス構成ファイルを使用して、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)からデプロイ環境にアプリケーションを発行できます。
+When you publish your Azure application, you can do one of the following tasks:
 
-- Visual Studio から Azure プロジェクトを発行する: アプリケーションを Azure に直接発行するには、発行ウィザードを使用します。詳細については、「[Azure アプリケーションの発行ウィザード](vs-azure-tools-publish-azure-application-wizard.md)」をご覧ください。
+- Create a service package: You can use this package and the service configuration file to publish your application to a deployment environment from the [Azure Classic Portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-### Visual Studio からサービス パッケージを作成するには
+- Publish your Azure project from Visual Studio: To publish your application directly to Azure, you use the Publish Wizard. For information, see [Publish Azure Application Wizard](vs-azure-tools-publish-azure-application-wizard.md).
 
-1. アプリケーションを発行する準備ができたら、ソリューション エクスプローラーを開き、ロールを含む Azure プロジェクトのショートカット メニューを開いて、[発行] をクリックします。
+### <a name="to-create-a-service-package-from-visual-studio"></a>To create a service package from Visual Studio
 
-1. サービス パッケージだけを作成するには、次の手順に従います。
+1. When you are ready to publish your application, open Solution Explorer, open the shortcut menu for the Azure project that contains your roles, and choose Publish.
 
-  1. Azure プロジェクトのショートカット メニューで、**[パッケージ]** をクリックします。
+1. To create a service package only, follow these steps:  
 
-  1. **[Azure アプリケーションのパッケージ化]** ダイアログ ボックスで、パッケージを作成するサービス構成を選択し、ビルド構成を選択します。
+  1. On the shortcut menu for the Azure project, choose **Package**.
 
-  1. (省略可能) 発行後にクラウド サービスのリモート デスクトップを有効にするには、**[すべてのロールのリモート デスクトップを有効にする]** チェック ボックスをオンにし、**[設定]** を選択してリモート デスクトップを構成します。クラウド サービスを発行後にデバッグする場合は、**[すべてのロールのリモート デバッガーを有効にする]** を選択してリモート デバッグを有効にします。
+  1. In the **Package Azure Application** dialog box, choose the service configuration for which you want to create a package, and then choose the build configuration.
 
-      詳細については、「[Azure ロールでのリモート デスクトップの使用](vs-azure-tools-using-remote-desktop-with-azure-roles.md)」をご覧ください。
+  1. (optional) To turn on Remote Desktop for the cloud service after you publish it, select the **Enable Remote Desktop for all Roles** check box, and then select **Settings** to configure Remote Desktop. If you want to debug your cloud service after you publish it, turn on remote debugging by selecting **Enable Remote Debugger for all Roles**.
 
-  1. パッケージを作成するには、**[パッケージ]** リンクをクリックします。
+      For more information, see [Using Remote Desktop with Azure Roles](vs-azure-tools-using-remote-desktop-with-azure-roles.md).
 
-      ファイル エクスプ ローラーに、新しく作成されたパッケージのファイルの場所が表示されます。[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)から使用できるように、この場所をコピーできます。
+  1. To create the package, choose the **Package** link.
 
-  1. このパッケージをデプロイ環境に発行するには、クラウド サービスを作成し、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)でこのパッケージを環境にデプロイするときに、この場所をパッケージの場所として使用する必要があります。
+      File Explorer shows the file location of the newly created package. You can copy this location so that you can use it from the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-1. (省略可能) デプロイ プロセスをキャンセルするには、アクティビティ ログの行項目のショートカット メニューで、**[取り消して削除]** を選択します。これにより、デプロイ プロセスが停止し、Azure からデプロイ環境が削除されます。
+  1. To publish this package to a deployment environment, you must use this location as the Package location when you create a cloud service and deploy this package to an environment with the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-    >[AZURE.NOTE] このデプロイ環境をデプロイ後に削除するには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用する必要があります。
+1. (Optional) To cancel the deployment process, on the shortcut menu for the line item in the activity log, choose **Cancel and remove**. This stops the deployment process and deletes the deployment environment from Azure.
 
-1. (省略可能) ロール インスタンスが起動すると、Visual Studio のサーバー エクスプローラーの **[クラウド サービス]** ノードにデプロイ環境が自動的に表示されます。ここから、個々のロール インスタンスの状態を確認できます。「[Managing Azure Resources with Cloud Explorer (クラウド エクスプローラーを使用した Azure リソースの管理)](vs-azure-tools-resources-managing-with-cloud-explorer.md)」をご覧ください。次の図は、まだ "初期化中" 状態であるロール インスタンスを示しています。
+    >[AZURE.NOTE] To remove this deployment environment after it has been deployed, you must use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-    ![VST\_DeployComputeNode](./media/vs-azure-tools-publishing-a-cloud-service/IC744134.png)
+1. (Optional) After your role instances have started, Visual Studio automatically shows the deployment environment in the **Cloud Services** node in Server Explorer. From here you can see the status of the individual role instances. See [Managing Azure resources with Cloud Explorer](vs-azure-tools-resources-managing-with-cloud-explorer.md).The following illustration shows the role instances while they are still in the Initializing state:
 
-## 開発およびテスト サイクルの一環としての Web ロールの更新
+    ![VST_DeployComputeNode](./media/vs-azure-tools-publishing-a-cloud-service/IC744134.png)
 
-アプリケーションのバックエンド インフラストラクチャは安定していても、Web ロールを頻繁に更新する必要がある場合は、Web Deploy を使用してプロジェクトの Web ロールだけを更新できます。これは、バックエンド worker ロールの再構築と再デプロイを避ける場合や、複数の Web ロールの中の 1 つだけを更新する場合に便利です。
+## <a name="update-a-web-role-as-part-of-the-development-and-testing-cycle"></a>Update a Web Role as Part of the Development and Testing Cycle
 
-### 必要条件
+If your app’s backend infrastructure is stable, but the web roles need more frequent updating, you can use Web Deploy to update only a web role in your project. This is handy when you don’t want to rebuild and redeploy the backend worker roles, or if you have multiple web roles and you want to update only one of the web roles.
 
-Web Deploy を使用して、Web ロールを更新するための要件を次に示します。
+### <a name="requirements"></a>Requirements
 
-- **開発とテストのみを目的とする:** Web ロールが実行されている仮想マシンに直接変更が加えられます。この仮想マシンをリサイクルする必要がある場合、発行済みの元のパッケージを使用してロールの仮想マシンが再作成されるため、変更は失われます。Web ロールの最新の変更を取得するには、アプリケーションを再発行する必要があります。
+Here are the requirements to use Web Deploy to update your web role:
 
-- **Web ロールだけを更新できる:** ワーカー ロールは更新できません。また、web role.cs で RoleEntryPoint を更新することもできません。
+- **For development and testing purposes only:** The changes are made directly to the virtual machine where the web role is running. If this virtual machine has to be recycled, the changes are lost because the original package that you published is used to recreate the virtual machine for the role. You must republish your application to get the latest changes for the web role.
 
-- **サポートできる Web ロールのインスタンスは 1 つに限られる:** デプロイ環境で Web ロールの複数のインスタンスを使用することはできません。ただし、それぞれにインスタンスを 1 つだけ持つ複数の Web ロールがサポートされます。
+- **Only web roles can be updated:** Worker roles can’t be updated. In addition, you can’t update the RoleEntryPoint in web role.cs.
 
-- **リモート デスクトップ接続を有効にする必要がある:** これは、Web Deploy でユーザーとパスワードを使用して仮想マシンに接続し、インターネット インフォメーション サービス (IIS) を実行しているサーバーに変更をデプロイできるようにするために必要となります。また、仮想マシンに接続して、その仮想マシン上の IIS に信頼された証明書を追加することが必要な場合もあります (これにより、Web Deploy によって使用される IIS のリモート接続のセキュリティが確保されます)。
+- **Can only support a single instance of a web role:** You can’t have multiple instances of any web role in your deployment environment. However, multiple web roles each with only one instance are supported.
 
-次の手順は、**Azure アプリケーションの公開**ウィザードを使用していることを前提としています。
+- **You must enable remote desktop connections:** This is required so that Web Deploy can use the user and password to connect to the virtual machine to deploy the changes to the server that’s running Internet Information Services (IIS). In addition, you might need to connect to the virtual machine to add a trusted certificate to IIS on this virtual machine. (This ensures that the remote connection for IIS that is used by Web Deploy is secure.)
 
-### アプリケーションの発行時に Web Deploy を有効にするには
+The following procedure assumes that you are using the **Publish Azure Application** wizard.
 
-1. **[すべての Web ロールの Web 配置を有効にする]** チェック ボックスを有効にするには、リモート デスクトップ接続を構成しておく必要があります。**[すべてのロールのリモート デスクトップを有効にする]** を選択し、表示される **[リモート デスクトップ構成]** ボックスに、リモート接続に使用する資格情報を入力します。詳細については、「[Azure ロールでのリモート デスクトップの使用](vs-azure-tools-remote-desktop-roles.md)」をご覧ください。
+### <a name="to-enable-web-deploy-when-you-publish-your-application"></a>To Enable Web Deploy When You Publish Your Application
 
-1. アプリケーションのすべての Web ロールの Web Deploy を有効にするには、**[すべての Web ロールの Web 配置を有効にする]** を選択します。
+1. To enable the **Enable Web Deploy** for all web roles check box, you must first configure remote desktop connections. Select **Enable Remote Desktop** for all roles and then supply the credentials that will be used to connect remotely in the **Remote Desktop Configuration** box that appears. See [Using Remote Desktop with Azure Roles](vs-azure-tools-remote-desktop-roles.md) for more information.
 
-    警告を表す黄色の三角形が表示されます。Web Deploy では、信頼されていない自己署名証明書が既定で使用されます。これは、機密データをアップロードする場合には推奨されません。機密データのためにこのプロセスを保護する必要がある場合は、Web Deploy の接続に使用する SSL 証明書を追加できます。この証明書は、信頼された証明書であることが必要です。この方法については、このトピックで後述する「**Web Deploy のセキュリティを確保するには**」をご覧ください。
+1. To enable Web Deploy for all the web roles in your application, select **Enable Web Deploy for all web roles**.
 
-1. **[次へ]** をクリックして **[概要]** 画面を表示し、**[発行]** をクリックしてクラウド サービスをデプロイします。
+    A yellow warning triangle appears. Web Deploy uses an untrusted, self-signed certificate by default, which is not recommended for uploading sensitive data. If you need to secure this process for sensitive data, you can add a SSL certificate to be used for Web Deploy connections. This certificate needs to be a trusted certificate. For information about how to do this, see the section **To Make Web Deploy Secure** later in this topic.
 
-    クラウド サービスが発行されます。作成される仮想マシンでは IIS のリモート接続が有効になっているため、Web ロールを再発行しなくても、Web Deploy を使用してそれらのロールを更新できます。
+1. Choose **Next** to show the **Summary** screen, and then choose **Publish** to deploy the cloud service.
 
-    >[AZURE.NOTE] Web ロールの複数のインスタンスを構成している場合、アプリケーションを発行するために作成されるパッケージでは、Web ロールごとに 1 つのインスタンスに制限されることを示す警告メッセージが表示されます。**[OK]** を選択して続行します。「必要条件」で説明したように、複数の Web ロールを使用できますが、インスタンスはロールごとに 1 つに限られます。
+    The cloud service is published. The virtual machine that is created has remote connections enabled for IIS so that Web Deploy can be used to update your web roles without republishing them.
 
-### Web Deploy を使用して Web ロールを更新するには
+    >[AZURE.NOTE] If you have more than one instance configured for a web role, a warning message appears, stating that each web role will be limited to one instance only in the package that’s created to publish your application. Select **OK** to continue. As stated in the Requirements section, you can have more than one web role but only one instance of each role.
 
-1. Web Deploy を使用するには、発行する Web ロールのプロジェクトに Visual Studio でコードの変更を加え、ソリューションでこのプロジェクト ノードを右クリックして、**[発行]** をポイントします。**[Web の発行]** ダイアログ ボックスが表示されます。
+### <a name="to-update-your-web-role-by-using-web-deploy"></a>To Update Your Web Role by Using Web Deploy
 
-1. (省略可能) IIS のリモート接続に使用する信頼された SSL 証明書を追加した場合は、**[信頼されていない証明書を許可する]** チェック ボックスをオフにすることができます。証明書を追加して Web Deploy のセキュリティを確保する方法については、このトピックで後述する「**Web Deploy のセキュリティを確保するには**」をご覧ください。
+1. To use Web Deploy, make code changes to the project for any of your web roles in Visual Studio that you want to publish, and then right-click this project node in your solution and point to **Publish**. The **Publish Web** dialog box appears.
 
-1. Web Deploy を使用するには、パッケージを最初に発行したときにリモート デスクトップ接続用に設定したユーザー名とパスワードが必要です。
+1. (Optional) If you added a trusted SSL certificate to use for remote connections for IIS, you can clear the **Allow untrusted certificate** check box. For information about how to add a certificate to make Web Deploy secure, see the section **To Make Web Deploy Secure** later in this topic.
 
-  1. **[ユーザー名]** に、ユーザー名を入力します。
+1. To use Web Deploy, the publish mechanism needs the user name and password that you set up for your remote desktop connection when you first published the package.
 
-  1. **[パスワード]** に、パスワードを入力します。
+  1. In **User name**, enter the user name.
 
-  1. (省略可能) このパスワードをこのプロファイルに保存する場合は、**[パスワードの保存]** を選択します。
+  1. In **Password**, enter the password.
 
-1. Web ロールへの変更を発行するには、**[発行]** をクリックします。
+  1. (Optional) If you want to save this password in this profile, choose **Save password**.
 
-    状態行に **[発行を開始しました]** と表示されます。発行が完了すると、**[発行は成功しました]** と表示されます。これで、仮想マシンの Web ロールに変更がデプロイされました。Azure 環境で Azure アプリケーションを起動して変更をテストできます。
+1. To publish the changes to your web role, choose **Publish**.
 
-### Web Deploy のセキュリティを確保するには
+    The status line displays **Publish started**. When the publishing has completed, **Publish succeeded** appears. The changes have now been deployed to the web role on your virtual machine. Now you can start your Azure application in the Azure environment to test your changes.
 
-1. Web Deploy では、信頼されていない自己署名証明書が既定で使用されます。これは、機密データをアップロードする場合には推奨されません。機密データのためにこのプロセスを保護する必要がある場合は、Web Deploy の接続に使用する SSL 証明書を追加できます。この証明書は、証明機関 (CA) から取得した信頼された証明書であることが必要です。
+### <a name="to-make-web-deploy-secure"></a>To Make Web Deploy Secure
 
-    各 Web ロールの各仮想マシンで Web デプロイのセキュリティを確保するには、Web デプロイに使用する信頼された証明書を [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にアップロードする必要があります。これにより、アプリケーションの発行時に作成される Web ロールの仮想マシンに証明書が確実に追加されます。
+1. Web Deploy uses an untrusted, self-signed certificate by default, which is not recommended for uploading sensitive data. If you need to secure this process for sensitive data, you can add a SSL certificate to be used for Web Deploy connections. This certificate needs to be a trusted certificate, which you obtain from a certificate authority (CA).
 
-1. リモート接続に使用する信頼された SSL 証明書を IIS に追加するには、次の手順を実行します。
+    To make Web Deploy secure for each virtual machine for each of your web roles, you must upload the trusted certificate that you want to use for web deploy to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885). This makes sure that the certificate is added to the virtual machine that is created for the web role when you publish your application.
 
-  1. Web ロールを実行している仮想マシンに接続するには、**クラウド エクスプローラー**または**サーバー エクスプローラー**で Web ロールのインスタンスを選択し、**[リモート デスクトップを使用して接続]** をクリックします。仮想マシンに接続する方法の詳しい手順については、「[Azure ロールでのリモート デスクトップの使用](vs-azure-tools-remote-desktop-roles.md)」をご覧ください。
+1. To add a trusted SSL certificate to IIS to use for remote connections, follow these steps:
 
-      ブラウザーに .RDP ファイルのダウンロードを求めるメッセージが表示されます。
+  1. To connect to the virtual machine that is running the web role, select the instance of the web role in **Cloud Explorer** or **Server Explorer**, and then choose the **Connect using Remote Desktop** command. For detailed steps about how to connect to the virtual machine, see [Using Remote Desktop with Azure Roles](vs-azure-tools-remote-desktop-roles.md).
 
-  1. SSL 証明書を追加するには、IIS マネージャーで管理サービスを開きます。IIS マネージャーで、**[操作]** ウィンドウの **[バインド]** リンクを開いて SSL を有効にします。**[サイト バインドの追加]** ダイアログ ボックスが表示されます。**[追加]** を選択し、**[種類]** ボックスの一覧の HTTPS を選択します。**[SSL 証明書]** 一覧で、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にアップロードした、CA による署名済みの SSL 証明書を選択します。詳細については、「[管理サービスの接続設定を構成する (IIS 7)](http://go.microsoft.com/fwlink/?LinkId=215824)」をご覧ください。
+      Your browser will prompt you to download an .RDP file.
 
-      >[AZURE.NOTE] 信頼された SSL 証明書を追加すると、**発行ウィザード**で警告を表す黄色の三角形が表示されなくなります。
+  1. To add an SSL certificate, open the management service in IIS Manager. In IIS Manager, enable SSL by opening the **Bindings** link in the **Action** pane. The **Add Site Binding** dialog box appears. Choose **Add**, and then choose HTTPS in the **Type** dropdown list. In the **SSL certificate** list, choose the SSL certificate that you had signed by a CA and that you uploaded to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885). For more information, see [Configure Connection Settings for the Management Service](http://go.microsoft.com/fwlink/?LinkId=215824).
 
-## サービス パッケージにファイルを含める
+      >[AZURE.NOTE] If you add a trusted SSL certificate, the yellow warning triangle no longer appears in the **Publish Wizard**.
 
-作成されるロールの仮想マシンで特定のファイルを使用できるように、サービス パッケージにそれらのファイルを含めることが必要な場合があります。たとえば、スタートアップ スクリプトで使用する .exe ファイルまたは .msi ファイルをサービス パッケージに追加する場合があります。また、Web ロール プロジェクトまたは worker ロール プロジェクトに必要なアセンブリを追加することが必要な場合もあります。ファイルを含めるには、そのファイルを Azure アプリケーションのソリューションに追加する必要があります。
+## <a name="include-files-in-the-service-package"></a>Include Files in the Service Package
 
-### サービス パッケージにファイルを含めるには
+You might need to include specific files in your service package so that they are available on the virtual machine that is created for a role. For example, you might want to add an .exe or an .msi file that is used by a startup script to your service package. Or you might need to add an assembly that a web role or worker role project requires. To include files they must be added to the solution for your Azure application.
 
-1. サービス パッケージにアセンブリを追加するには、次の手順に従います。
+### <a name="to-include-files-in-the-service-package"></a>To include files in the service package
 
-  1. **ソリューション エクスプローラー**で、参照アセンブリが欠けているプロジェクトのプロジェクト ノードを開きます。
+1. To add an assembly to a service package, use the following steps:
 
-  1. アセンブリをプロジェクトに追加するには、**[参照]** フォルダーのショートカット メニューを開き、**[参照の追加]** をクリックします。[参照の追加] ダイアログが表示されます。
+  1. In **Solution Explorer** open the project node for the project that is missing the referenced assembly.
 
-  1. 追加する参照を選択し、**[OK]** をクリックします。
+  1. To add the assembly to the project, open the shortcut menu for the **References** folder and then choose **Add Reference**. The Add Reference dialog appears.
 
-      **[参照]** フォルダーの下の一覧に参照が追加されます。
+  1. Choose the reference that you want to add and then choose the **OK** button.
 
-  1. 追加したアセンブリのショートカット メニューを開き、**[プロパティ]** をクリックします。**[プロパティ]** ウィンドウが表示されます。
+      The reference is added to the list under the **References** folder.
 
-      このアセンブリをサービス パッケージに含めるには、**[ローカルにコピー]** 一覧で **[True]** を選択します。
+  1. Open the shortcut menu for the assembly that you added and choose **Properties**. The **Properties** window appears.
 
-1. **ソリューション エクスプローラー**で、参照アセンブリが欠けているプロジェクトのプロジェクト ノードを開きます。
+      To include this assembly in the service package, in the **Copy Local list** choose **True**.
 
-1. アセンブリをプロジェクトに追加するには、**[参照]** フォルダーのショートカット メニューを開き、**[参照の追加]** をクリックします。**[参照の追加]** ダイアログが表示されます。
+1. In **Solution Explorer** open the project node for the project that is missing the referenced assembly.
 
-1. 追加する参照を選択し、**[OK]** をクリックします。
+1. To add the assembly to the project, open the shortcut menu for the **References** folder and then choose **Add Reference**. The **Add Reference** dialog appears.
 
-    **[参照]** フォルダーの下の一覧に参照が追加されます。
+1. Choose the reference that you want to add and then choose the **OK** button.
 
-1. 追加したアセンブリのショートカット メニューを開き、**[プロパティ]** をクリックします。[プロパティ] ウィンドウが表示されます。
+    The reference is added to the list under the **References** folder.
 
-1. このアセンブリをサービス パッケージに含めるには、**[ローカルにコピー]** 一覧で **[True]** を選択します。
+1. Open the shortcut menu for the assembly that you added and choose **Properties**. The Properties window appears.
 
-1. Web ロール プロジェクトに追加したサービス パッケージにファイルを含めるには、ファイルのショートカット メニューを開き、**[プロパティ]** をクリックします。**[プロパティ]** ウィンドウで、**[ビルド アクション]** ボックスの一覧の **[コンテンツ]** をクリックします。
+1. To include this assembly in the service package, in the **Copy Local** list, choose **True**.
 
-1. worker ロール プロジェクトに追加したサービス パッケージにファイルを含めるには、ファイルのショートカット メニューを開き、**[プロパティ]** をクリックします。**[プロパティ]** ウィンドウで、**[出力ディレクトリにコピー]** ボックスの一覧の **[新しい場合はコピーする]** をクリックします。
+1. To include files in the service package that have been added to your web role project, open the shortcut menu for the file, and then choose **Properties**. From the **Properties** window, choose **Content** from the **Build Action** list box.
 
-## 次のステップ
+1. To include files in the service package that have been added to your worker role project, open the shortcut menu for the file, and then choose **Properties**. From the **Properties** window, choose **Copy if newer** from the **Copy to output directory** list box.
 
-Visual Studio から Azure への発行の詳細については、「[Azure アプリケーションの発行ウィザード](vs-azure-tools-publish-azure-application-wizard.md)」をご覧ください。
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0817_2016-->
+To learn more about publishing to Azure from Visual Studio, see [Publish Azure Application Wizard](vs-azure-tools-publish-azure-application-wizard.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

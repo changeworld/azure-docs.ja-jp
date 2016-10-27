@@ -1,10 +1,10 @@
 <properties
-pageTitle="ロジック アプリで SFTP コネクタを使用する方法 | Microsoft Azure"
-description="Azure App Service を使用してロジック アプリを作成します。SFTP API に接続してファイルを送受信します。ファイルの作成、更新、取得、削除など、さまざまな操作を実行できます。"
-services="logic-apps"	
-documentationCenter=".net,nodejs,java" 	
-authors="msftman"	
-manager="erikre"	
+pageTitle="Learn how to use the SFTP connector in your logic apps | Microsoft Azure"
+description="Create logic apps with Azure App service. Connect to SFTP API to send and receive files. You can perform various operations such as create, update, get or delete files."
+services="logic-apps"   
+documentationCenter=".net,nodejs,java"  
+authors="msftman"   
+manager="erikre"    
 editor=""
 tags="connectors" />
 
@@ -17,398 +17,399 @@ ms.workload="integration"
 ms.date="07/20/2016"
 ms.author="deonhe"/>
 
-# SFTP コネクタの使用
 
-SFTP コネクタを使用すると、SFTP アカウントにアクセスしてファイルを送受信できます。ファイルの作成、更新、取得、削除など、さまざまな操作を実行できます。
+# <a name="get-started-with-the-sftp-connector"></a>Get started with the SFTP connector
 
-[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
+Use the SFTP connector to access an SFTP account to send and receive files. You can perform various operations such as create, update, get or delete files.  
 
-## SFTP への接続
+To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "接続" を作成する必要があります。[接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。
+## <a name="connect-to-sftp"></a>Connect to SFTP
 
-### SFTP への接続を作成する
+Before your logic app can access any service, you first need to create a *connection* to the service. A [connection](./connectors-overview.md) provides connectivity between a logic app and another service.  
 
->[AZURE.INCLUDE [SFTP への接続を作成する手順](../../includes/connectors-create-api-sftp.md)]
+### <a name="create-a-connection-to-sftp"></a>Create a connection to SFTP
 
-## SFTP トリガーの使用
+>[AZURE.INCLUDE [Steps to create a connection to SFTP](../../includes/connectors-create-api-sftp.md)]
 
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
+## <a name="use-an-sftp-trigger"></a>Use an SFTP trigger
 
-この例では、**[SFTP - When a file is added or modified (SFTP - ファイルの追加または変更時)]** トリガーを使用して、SFTP サーバー上でファイルが追加または変更されたときにロジック アプリ ワークフローを開始する方法について説明します。また、新しいファイルまたは変更されたファイルの内容をチェックする際の条件を追加し、ファイルの内容が、内容を使用する前にファイルを抽出する必要があることを示している場合にファイルの抽出を決定する方法についても説明します。最後に、ファイルの内容を抽出し、抽出した内容を SFTP サーバー上のフォルダーに配置するアクションを追加する方法を説明します。
+A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
 
-企業での使用例として、このトリガーを使用して、SFTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。その後、**Get file content (ファイルの内容を取得する)** などの SFTP コネクタ アクションを使用して注文の内容を取得し、後続の処理や注文データベースへの格納を行うことができます。
+In this example, I will show you how to use the **SFTP - When a file is added or modified** trigger to initiate a logic app workflow when a file is added to, or modified on, an SFTP server. In the example, you will also learn how to add a condition that checks the contents of the new or modified file and make a decision to extract the file if its contents indicate that it  should be extracted before using the contents. Finally, you will learn how to add an action to extract the contents of a file and place the extracted contents in a folder on the SFTP server. 
 
->[AZURE.INCLUDE [SFTP トリガーを作成する手順](../../includes/connectors-create-api-sftp-trigger.md)]
+In an enterprise example, you could use this trigger to monitor an SFTP folder for new files that represent orders from customers.  You could then use an SFTP connector action such as **Get file content** to get the contents of the order for further processing and storage in your orders database.
 
-## Add a condition
+>[AZURE.INCLUDE [Steps to create an SFTP trigger](../../includes/connectors-create-api-sftp-trigger.md)]
 
->[AZURE.INCLUDE [条件を追加する手順](../../includes/connectors-create-api-sftp-condition.md)]
+## <a name="add-a-condition"></a>Add a condition
 
-## SFTP アクションの使用
+>[AZURE.INCLUDE [Steps to add a condition](../../includes/connectors-create-api-sftp-condition.md)]
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。アクションの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
+## <a name="use-an-sftp-action"></a>Use an SFTP action
 
->[AZURE.INCLUDE [SFTP アクションを作成する手順](../../includes/connectors-create-api-sftp-action.md)]
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
+
+>[AZURE.INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
 
 
-## 技術的な詳細
+## <a name="technical-details"></a>Technical Details
 
-ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
+Here are the details about the triggers, actions and responses that this connection supports:
 
-## SFTP トリガー
+## <a name="sftp-triggers"></a>SFTP triggers
 
-SFTP には次のトリガーがあります。
+SFTP has the following trigger(s):  
 
-|トリガー | 説明|
+|Trigger | Description|
 |--- | ---|
-|[When a file is added or modified (ファイルの追加または変更時)](connectors-create-api-sftp.md#when-a-file-is-added-or-modified)|この操作では、フォルダーでファイルが追加または変更されたときにフローをトリガーします。|
+|[When a file is added or modified](connectors-create-api-sftp.md#when-a-file-is-added-or-modified)|This operation triggers a flow when a file is added or modified in a folder.|
 
 
-## SFTP アクション
+## <a name="sftp-actions"></a>SFTP actions
 
-SFTP には次のアクションがあります。
+SFTP has the following actions:
 
 
-|アクション|説明|
+|Action|Description|
 |--- | ---|
-|[ファイルのメタデータを取得する](connectors-create-api-sftp.md#get-file-metadata)|この操作では、ファイル ID を使用してファイルのメタデータを取得します。|
-|[ファイルを更新する](connectors-create-api-sftp.md#update-file)|この操作では、ファイルの内容を更新します。|
-|[ファイルを削除する](connectors-create-api-sftp.md#delete-file)|この操作では、ファイルを削除します。|
-|[パスを使用してファイルのメタデータを取得する](connectors-create-api-sftp.md#get-file-metadata-using-path)|この操作では、ファイル パスを使用してファイルのメタデータを取得します。|
-|[パスを使用してファイルの内容を取得する](connectors-create-api-sftp.md#get-file-content-using-path)|この操作では、ファイル パスを使用してファイルの内容を取得します。|
-|[ファイルの内容を取得する](connectors-create-api-sftp.md#get-file-content)|この操作では、ファイル ID を使用してファイルの内容を取得します。|
-|[ファイルを作成する](connectors-create-api-sftp.md#create-file)|この操作では、SFTP サーバーにファイルをアップロードします。|
-|[ファイルをコピーする](connectors-create-api-sftp.md#copy-file)|この操作では、SFTP サーバーにファイルをコピーします。|
-|[フォルダー内のファイルを一覧表示する](connectors-create-api-sftp.md#list-files-in-folder)|この操作では、フォルダーに含まれているファイルを取得します。|
-|[ルート フォルダー内のファイルを一覧表示する](connectors-create-api-sftp.md#list-files-in-root-folder)|この操作では、ルート フォルダー内のファイルを取得します。|
-|[フォルダーを抽出する](connectors-create-api-sftp.md#extract-folder)|この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。|
-### アクションの詳細
+|[Get file metadata](connectors-create-api-sftp.md#get-file-metadata)|This operation gets file metadata using the file id.|
+|[Update file](connectors-create-api-sftp.md#update-file)|This operation updates the file content.|
+|[Delete file](connectors-create-api-sftp.md#delete-file)|This operation deletes a file.|
+|[Get file metadata using path](connectors-create-api-sftp.md#get-file-metadata-using-path)|This operation gets file metadata using the file path.|
+|[Get file content using path](connectors-create-api-sftp.md#get-file-content-using-path)|This operation gets file contents using the file path.|
+|[Get file content](connectors-create-api-sftp.md#get-file-content)|This operation gets file contents using the file id.|
+|[Create file](connectors-create-api-sftp.md#create-file)|This operation uploads a file to an SFTP server.|
+|[Copy file](connectors-create-api-sftp.md#copy-file)|This operation copies a file to an SFTP server.|
+|[List files in folder](connectors-create-api-sftp.md#list-files-in-folder)|This operation gets files contained in a folder.|
+|[List files in root folder](connectors-create-api-sftp.md#list-files-in-root-folder)|This operation gets the files in the root folder.|
+|[Extract folder](connectors-create-api-sftp.md#extract-folder)|This operation extracts an archive file into a folder (example: .zip).|
+### <a name="action-details"></a>Action details
 
-ここでは、このコネクタのアクションおよびトリガーとその応答について詳しく説明します。
-
-
-
-### ファイルのメタデータを取得する
-この操作では、ファイル ID を使用してファイルのメタデータを取得します。
+Here are the details for the actions and triggers for this connector, along with their responses:
 
 
-|プロパティ名| Displayname Settings|説明|
+
+### <a name="get-file-metadata"></a>Get file metadata
+This operation gets file metadata using the file id. 
+
+
+|Property Name| Display Name|Description|
 | ---|---|---|
-|id*|ファイル|ファイルを指定します|
+|id*|File|Specify the file|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### ファイルを更新する
-この操作では、ファイルの内容を更新します。
+### <a name="update-file"></a>Update file
+This operation updates the file content. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|id*|ファイル|ファイルを指定します|
-|body*|ファイルのコンテンツ|更新するファイルの内容|
+|id*|File|Specify the file|
+|body*|File content|Content of the file to update|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### ファイルを削除する
-この操作では、ファイルを削除します。
+### <a name="delete-file"></a>Delete file
+This operation deletes a file. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|id*|ファイル|ファイルを指定します|
+|id*|File|Specify the file|
 
-* は、必須のプロパティを示します。
-
-
+An * indicates that a property is required
 
 
-### パスを使用してファイルのメタデータを取得する
-この操作では、ファイル パスを使用してファイルのメタデータを取得します。
 
 
-|プロパティ名| Displayname Settings|説明|
+### <a name="get-file-metadata-using-path"></a>Get file metadata using path
+This operation gets file metadata using the file path. 
+
+
+|Property Name| Display Name|Description|
 | ---|---|---|
-|path*|ファイル パス|ファイルの一意のパス|
+|path*|File path|Unique path of the file|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
-|ETag|string|
-|FileLocator|文字列|
-
-
-
-
-### パスを使用してファイルの内容を取得する
-この操作では、ファイル パスを使用してファイルの内容を取得します。
-
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|path*|ファイル パス|ファイルの一意のパス|
-
-* は、必須のプロパティを示します。
-
-
-
-
-### ファイルの内容を取得する
-この操作では、ファイル ID を使用してファイルの内容を取得します。
-
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|id*|ファイル|ファイルを指定します|
-
-* は、必須のプロパティを示します。
-
-
-
-
-### ファイルを作成する
-この操作では、SFTP サーバーにファイルをアップロードします。
-
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|folderPath*|フォルダー パス|フォルダーの一意のパス|
-|name*|ファイル名|ファイルの名前|
-|body*|ファイルのコンテンツ|作成するファイルの内容|
-
-* は、必須のプロパティを示します。
-
-#### 出力の詳細
-
-BlobMetadata
-
-
-|| プロパティ名 | データ型 |
-|---|---|---|
-|ID|string|
-|名前|string|
-|DisplayName|string|
-|パス|string|
-|LastModified|string|
-|サイズ|integer|
-|MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### ファイルをコピーする
-この操作では、SFTP サーバーにファイルをコピーします。
+### <a name="get-file-content-using-path"></a>Get file content using path
+This operation gets file contents using the file path. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|source*|Source file path (コピー元ファイル パス)|ソース ファイルのパス|
-|destination*|Destination file path (コピー先ファイル パス)|ファイル名を含む、宛先ファイルのパス|
-|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
+|path*|File path|Unique path of the file|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-#### 出力の詳細
+
+
+
+### <a name="get-file-content"></a>Get file content
+This operation gets file contents using the file id. 
+
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|id*|File|Specify the file|
+
+An * indicates that a property is required
+
+
+
+
+### <a name="create-file"></a>Create file
+This operation uploads a file to an SFTP server. 
+
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|folderPath*|Folder path|Unique path of the folder|
+|name*|File name|Name of the file|
+|body*|File content|Content of the file to create|
+
+An * indicates that a property is required
+
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+|| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### When a file is added or modified (ファイルの追加または変更時)
-この操作では、フォルダーでファイルが追加または変更されたときにフローをトリガーします。
+### <a name="copy-file"></a>Copy file
+This operation copies a file to an SFTP server. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|folderId*|フォルダー|フォルダーを指定します|
+|source*|Source file path|Path to the source file|
+|destination*|Destination file path|Path to the destination file, including file name|
+|overwrite|Overwrite?|Overwrites the destination file if set to 'true'|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
-
-
-
-### フォルダー内のファイルを一覧表示する
-この操作では、フォルダーに含まれているファイルを取得します。
-
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|id*|フォルダー|フォルダーを指定します|
-
-* は、必須のプロパティを示します。
-
-
-
-#### 出力の詳細
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
-|ETag|string|
-|FileLocator|文字列|
-
-
-
-
-### ルート フォルダー内のファイルを一覧表示する
-この操作では、ルート フォルダー内のファイルを取得します。
-
-
-この呼び出しには、パラメーターはありません
-
-#### 出力の詳細
-
-BlobMetadata
-
-
-| プロパティ名 | データ型 |
-|---|---|---|
-|ID|string|
-|名前|string|
-|DisplayName|string|
-|パス|string|
-|LastModified|string|
-|サイズ|integer|
-|MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### フォルダーを抽出する
-この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。
+### <a name="when-a-file-is-added-or-modified"></a>When a file is added or modified
+This operation triggers a flow when a file is added or modified in a folder. 
 
 
-|プロパティ名| Displayname Settings|説明|
+|Property Name| Display Name|Description|
 | ---|---|---|
-|source*|Source archive file path (ソース アーカイブ ファイルのパス)|アーカイブ ファイルのパス|
-|destination*|Destination folder path (抽出先フォルダー パス)|宛先フォルダーのパス|
-|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
+|folderId*|Folder|Specify a folder|
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required
 
 
 
-#### 出力の詳細
+
+### <a name="list-files-in-folder"></a>List files in folder
+This operation gets files contained in a folder. 
+
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|id*|Folder|Specify the folder|
+
+An * indicates that a property is required
+
+
+
+#### <a name="output-details"></a>Output Details
 
 BlobMetadata
 
 
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|---|
-|ID|string|
-|名前|string|
+|Id|string|
+|Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
-|IsFolder|ブール値|
+|IsFolder|boolean|
 |ETag|string|
-|FileLocator|文字列|
+|FileLocator|string|
 
 
 
-## HTTP 応答
 
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
+### <a name="list-files-in-root-folder"></a>List files in root folder
+This operation gets the files in the root folder. 
 
-|名前|説明|
+
+There are no parameters for this call
+
+#### <a name="output-details"></a>Output Details
+
+BlobMetadata
+
+
+| Property Name | Data Type |
+|---|---|---|
+|Id|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Size|integer|
+|MediaType|string|
+|IsFolder|boolean|
+|ETag|string|
+|FileLocator|string|
+
+
+
+
+### <a name="extract-folder"></a>Extract folder
+This operation extracts an archive file into a folder (example: .zip). 
+
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|source*|Source archive file path|Path to the archive file|
+|destination*|Destination folder path|Path to the destination folder|
+|overwrite|Overwrite?|Overwrites the destination files if set to 'true'|
+
+An * indicates that a property is required
+
+
+
+#### <a name="output-details"></a>Output Details
+
+BlobMetadata
+
+
+| Property Name | Data Type |
+|---|---|---|
+|Id|string|
+|Name|string|
+|DisplayName|string|
+|Path|string|
+|LastModified|string|
+|Size|integer|
+|MediaType|string|
+|IsFolder|boolean|
+|ETag|string|
+|FileLocator|string|
+
+
+
+## <a name="http-responses"></a>HTTP responses
+
+The actions and triggers above can return one or more of the following HTTP status codes: 
+
+|Name|Description|
 |---|---|
 |200|OK|
-|202|承認済み|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました。|
-|default|操作に失敗しました。|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occurred.|
+|default|Operation Failed.|
 
 
 
@@ -416,7 +417,10 @@ BlobMetadata
 
 
 
-## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!----HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

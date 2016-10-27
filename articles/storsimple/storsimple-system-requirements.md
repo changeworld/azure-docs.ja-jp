@@ -1,6 +1,6 @@
 <properties
-   pageTitle="StorSimple のシステム要件 | Microsoft Azure"
-   description="Microsoft Azure StorSimple ソリューションのソフトウェア、ネットワーク、高可用性の要件とベスト プラクティスについて説明します。"
+   pageTitle="StorSimple system requirements | Microsoft Azure"
+   description="Describes software, networking, and high availability requirements and best practices for a Microsoft Azure StorSimple solution."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,281 +16,285 @@
    ms.date="08/31/2016"
    ms.author="alkohli"/>
 
-# StorSimple ソフトウェア、高可用性、ネットワークの要件
 
-## Overview
+# <a name="storsimple-software,-high-availability,-and-networking-requirements"></a>StorSimple software, high availability, and networking requirements
 
-Microsoft Azure StorSimple へようこそ。この記事では、StorSimple デバイスおよび StorSimple デバイスにアクセスするストレージ クライアントにおける重要なシステム要件とベスト プラクティスについて説明します。StorSimple システムをデプロイする前に以下の情報を慎重に確認します。さらにデプロイと後続の操作中にも必要に応じて以下の情報を参照することをお勧めします。
+## <a name="overview"></a>Overview
 
-システム要件は次のとおりです。
+Welcome to Microsoft Azure StorSimple. This article describes important system requirements and best practices for your StorSimple device and for the storage clients accessing the device. We recommend that you review the information carefully before you deploy your StorSimple system, and then refer back to it as necessary during deployment and subsequent operation.
 
-- **ストレージ クライアントのソフトウェア要件** - サポートされているオペレーティング システムと、これらのオペレーティング システムに関する追加要件について説明します。
-- **、StorSimple デバイスのネットワーク要件** - iSCSI、クラウド、または管理トラフィックを使用できるようにするため、ファイアウォールで開いておく必要があるポートについての情報を提供します。
-- **StorSimple の高可用性の要件** - StorSimple デバイスおよびホスト コンピューターの高可用性要件およびベスト プラクティスについて説明します。
+The system requirements include:
+
+- **Software requirements for storage clients** - describes the supported operating systems and any additional requirements for those operating systems.
+- **Networking requirements for the StorSimple device** - provides information about the ports that need to be open in your firewall to allow for iSCSI, cloud, or management traffic.
+- **High availability requirements for StorSimple** - describes high availability requirements and best practices for your StorSimple device and host computer. 
 
 
-## ストレージ クライアントのソフトウェア要件
+## <a name="software-requirements-for-storage-clients"></a>Software requirements for storage clients
 
-次のソフトウェア要件は、StorSimple デバイスにアクセスするストレージ クライアントに適用されます。
+The following software requirements are for the storage clients that access your StorSimple device.
 
-| サポートされているオペレーティング システム | 必須のバージョン | その他の要件/注意事項 |
+| Supported operating systems | Version required | Additional requirements/notes |
 | --------------------------- | ---------------- | ------------- |
-| Windows Server | 2008R2 SP1、2012、2012R2 |StorSimple iSCSI ボリュームは、次の Windows ディスク タイプで使用する場合にのみサポートされます。<ul><li>ベーシック ディスク上のシンプル ボリューム</li><li>ダイナミック ディスク上のミラー化されたシンプル ボリューム</li></ul>Windows Server 2012 の仮想プロビジョニング機能および ODX 機能は、StorSimple iSCSI ボリュームを使用する場合にサポートされます。<br><br>StorSimple で作成できるのは、仮想プロビジョニングされたボリュームと完全にプロビジョニングされたボリュームです。部分的にプロビジョニングされたボリュームについては作成できません。<br><br>仮想プロビジョニングされたボリュームを再フォーマットと時間がかかる場合があります。再フォーマットするのではなく、ボリュームを削除して、新しいボリュームを作成することをお勧めします。ただし、ボリュームの再フォーマットを行いたい場合は、次の操作を行ってください。<ul><li>領域の回復の遅延を避けるために、再フォーマットする前に次のコマンドを実行します。<br>`fsutil behavior set disabledeletenotify 1`</br></li><li>フォーマットが完了したら、次のコマンドを使用して領域の回復を再度有効にします。<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635](https://support.microsoft.com/kb/2870270) で説明されている Windows Server 2012 修正プログラムを Windows Server コンピューターに適用します。</li></ul></li></ul></ul> StorSimple Snapshot Manager または SharePoint 用 StorSimple アダプターを構成する場合は、「[オプション コンポーネントのソフトウェア要件](#software-requirements-for-optional-components)」を参照してください。|
-| VMWare ESX | 5\.5 および 6.0 | iSCSI クライアントとして VMWare vSphere でサポートされます。VAAI ブロック機能は、StorSimple デバイス上の VMware vSphere でサポートされます。
-| Linux RHEL/CentOS | 5、6 および 7 | Open-iSCSI イニシエーター バージョン 5、6 および 7 での Linux iSCSI クライアントのサポート。 |
+| Windows Server              | 2008R2 SP1, 2012, 2012R2 |StorSimple iSCSI volumes are supported for use on only the following Windows disk types:<ul><li>Simple volume on basic disk</li><li>Simple and mirrored volume on dynamic disk</li></ul>Windows Server 2012 thin provisioning and ODX features are supported if you are using a StorSimple iSCSI volume.<br><br>StorSimple can create thinly provisioned and fully provisioned volumes. It cannot create partially provisioned volumes.<br><br>Reformatting a thinly provisioned volume may take a long time. We recommend deleting the volume and then creating a new one instead of reformatting. However, if you still prefer to reformat a volume:<ul><li>Run the following command before the reformat to avoid space reclamation delays: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>After the formatting is complete, use the following command to re-enable space reclamation:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Apply the Windows Server 2012 hotfix as described in [KB 2878635](https://support.microsoft.com/kb/2870270) to your Windows Server computer.</li></ul></li></ul></ul> If you are configuring StorSimple Snapshot Manager or StorSimple Adapter for SharePoint, go to [Software requirements for optional components](#software-requirements-for-optional-components).|
+| VMWare ESX | 5.5 and 6.0 | Supported with VMWare vSphere as iSCSI client. VAAI-block feature is supported with VMware vSphere on StorSimple devices.
+| Linux RHEL/CentOS | 5, 6, and 7 | Support for Linux iSCSI clients with open-iSCSI initiator versions 5, 6, and 7. |
 | Linux | SUSE Linux 11 | |
- > [AZURE.NOTE] 現在、IBM AIX は StorSimple ではサポートされていません。
+ > [AZURE.NOTE] IBM AIX is currently not supported with StorSimple.
 
-## オプション コンポーネントのソフトウェア要件用のソフトウェア要件
+## <a name="software-requirements-for-optional-components"></a>Software requirements for optional components
 
-オプションの StorSimple コンポーネント (StorSimple Snapshot Manager および SharePoint 用 StorSimple アダプター) のソフトウェア要件を次に示します。
+The following software requirements are for the optional StorSimple components (StorSimple Snapshot Manager and StorSimple Adapter for SharePoint).
 
-| コンポーネント | ホスト プラットフォーム | その他の要件/注意事項 |
+| Component | Host platform | Additional requirements/notes |
 | --------------------------- | ---------------- | ------------- |
-| StorSimple Snapshot Manager | Windows Server 2008R2 SP1、2012、2012R2 | ミラー化されたダイナミック ディスクをバックアップ/復元する場合、およびアプリケーション整合性バックアップを実行する場合は、Windows Server 上で StorSimple Snapshot Manager を使用する必要があります。<br> StorSimple Snapshot Manager は、Windows Server 2008 R2 SP1 (64 ビット)、Windows 2012 R2、Windows Server 2012 でのみサポートされます。<ul><li>Window Server 2012 を使用する場合は、StorSimple Snapshot Manager をインストールする前に .NET 3.5 ～ 4.5 をインストールしておく必要があります。</li><li>Windows Server 2008 R2 SP1 を使用する場合は、StorSimple Snapshot Manager をインストールする前に Windows Management Framework 3.0 をインストールしておく必要があります。</li></ul> |
-| SharePoint 用 StorSimple アダプター | Windows Server 2008R2 SP1、2012、2012R2 |<ul><li>SharePoint 用 StorSimple アダプターは、SharePoint 2010 および SharePoint 2013 でのみサポートされます。</li><li>RBS には SQL Server Enterprise Edition のバージョン 2008 R2 または 2012が必要です。</li></ul>|
+| StorSimple Snapshot Manager | Windows Server 2008R2 SP1, 2012, 2012R2 | Use of StorSimple Snapshot Manager on Windows Server is required for backup/restore of mirrored dynamic disks and for any application-consistent backups.<br> StorSimple Snapshot Manager is supported only on Windows Server 2008 R2 SP1 (64-bit), Windows 2012 R2, and Windows Server 2012.<ul><li>If you are using Window Server 2012, you must install .NET 3.5–4.5 before you install StorSimple Snapshot Manager.</li><li>If you are using Windows Server 2008 R2 SP1, you must install Windows Management Framework 3.0 before you install StorSimple Snapshot Manager.</li></ul> |
+| StorSimple Adapter for SharePoint | Windows Server 2008R2 SP1, 2012, 2012R2 |<ul><li>StorSimple Adapter for SharePoint is only supported on SharePoint 2010 and SharePoint 2013.</li><li>RBS requires SQL Server Enterprise Edition, version 2008 R2 or 2012.</li></ul>|
 
-## StorSimple デバイスのネットワーク要件
+## <a name="networking-requirements-for-your-storsimple-device"></a>Networking requirements for your StorSimple device
 
-StorSimple デバイスはロックされたデバイスです。ただし、iSCSI、クラウド、管理トラフィックを許可するには、ファイアウォールでポートを開く必要があります。次の表は、ファイアウォールで開く必要があるポートの一覧です。この表では、*イン*または*受信*はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。*アウト*または*送信*は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します
+Your StorSimple device is a locked-down device. However, ports need to be opened in your firewall to allow for iSCSI, cloud, and management traffic. The following table lists the ports that need to be opened in your firewall. In this table, *in* or *inbound* refers to the direction from which incoming client requests access your device. *Out* or *outbound* refers to the direction in which your StorSimple device sends data externally, beyond the deployment: for example, outbound to the Internet.
 
-| ポート番号<sup>1,2</sup> | インまたはアウト | ポート範囲 | 必須 | メモ |
+| Port No.<sup>1,2</sup> | In or out | Port scope | Required | Notes |
 |------------------------|-----------|------------|----------|-------|
-|TCP 80 (HTTP)<sup>3</sup>| アウト | WAN | いいえ |<ul><li>送信ポートは、更新プログラムを取得するためにインターネット アクセスに使用されます。</li><li>送信 Web プロキシはユーザーが構成可能です。</li><li>システムの更新を許可するには、コントローラーの固定 IP アドレスに対してこのポートも開いている必要があります。</li></ul> |
-|TCP 443 (HTTPS)<sup>3</sup>| アウト | WAN | はい |<ul><li>送信ポートは、クラウド内のデータにアクセスするために使用されます。</li><li>送信 Web プロキシはユーザーが構成可能です。</li><li>システムの更新を許可するには、コントローラーの固定 IP アドレスに対してこのポートも開いている必要があります。</li><li>このポートは、ガベージ コレクションの両方のコントローラーでも使用されます。</li></ul>|
-|UDP 53 (DNS) | アウト | WAN | 場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
-| UDP 123 (NTP) | アウト | WAN | 場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
-| TCP 9354 | アウト | WAN | はい |送信ポートは、StorSimple Manager サービスと通信するために StorSimple デバイスによって使用されます。 |
-| 3260 (iSCSI) | [ | LAN | いいえ | このポートは、iSCSI を介してデータにアクセスするために使用されます。|
-| 5985 | [ | LAN | いいえ | 受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によってを使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
-| 5986 | [ | LAN | いいえ | このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+|TCP 80 (HTTP)<sup>3</sup>|  Out |  WAN | No |<ul><li>Outbound port is used for Internet access to retrieve updates.</li><li>The outbound web proxy is user configurable.</li><li>To allow system updates, this port must also be open for the controller fixed IPs.</li></ul> |
+|TCP 443 (HTTPS)<sup>3</sup>| Out | WAN | Yes |<ul><li>Outbound port is used for accessing data in the cloud.</li><li>The outbound web proxy is user configurable.</li><li>To allow system updates, this port must also be open for the controller fixed IPs.</li><li>This port is also used on both the controllers for garbage collection.</li></ul>|
+|UDP 53 (DNS) | Out | WAN | In some cases; see notes. |This port is required only if you are using an Internet-based DNS server. |
+| UDP 123 (NTP) | Out | WAN | In some cases; see notes. |This port is required only if you are using an Internet-based NTP server. |
+| TCP 9354 | Out | WAN | Yes |The outbound port is used by the StorSimple device to communicate with the StorSimple Manager service. |
+| 3260 (iSCSI) | In | LAN | No | This port is used to access data over iSCSI.|
+| 5985 | In | LAN | No | Inbound port is used by StorSimple Snapshot Manager to communicate with the StorSimple device.<br>This port is also used when you remotely connect to Windows PowerShell for StorSimple over HTTP. |
+| 5986 | In | LAN | No | This port is used when you remotely connect to Windows PowerShell for StorSimple over HTTPS. |
 
-<sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
+<sup>1</sup> No inbound ports need to be opened on the public Internet.
 
-<sup>2</sup> 複数のポートでゲートウェイ構成が運ばれる場合、送信トラフィックの順序は、以下の「[ポートのルーティング](#routing-metric)」で説明するポート ルーティング順序で決定されます。
+<sup>2</sup> If multiple ports carry a gateway configuration, the outbound routed traffic order will be determined based on the port routing order described in [Port routing](#routing-metric), below.
 
-<sup>3</sup> StorSimple デバイスのコントローラーの固定の IP アドレスがルーティング可能でインターネットに接続可能である必要があります。固定の IP アドレスは、デバイスに更新プログラムを提供するために使用されます。デバイスのコントローラーが固定の IP アドレスを使用してインターネットに接続できない場合は、StorSimple デバイスを更新できません。
+<sup>3</sup> The controller fixed IPs on your StorSimple device must be routable and able to connect to the Internet. The fixed IP addresses are used for servicing the updates to the device. If the device controllers cannot connect to the Internet via the fixed IPs, you will not be able to update your StorSimple device.
 
-> [AZURE.IMPORTANT] StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
+> [AZURE.IMPORTANT] Ensure that the firewall does not modify or decrypt any SSL traffic between the StorSimple device and Azure.
 
-### ファイアウォール ルールの URL パターン
+### <a name="url-patterns-for-firewall-rules"></a>URL patterns for firewall rules
 
-多くの場合、ネットワーク管理者は、受信トラフィックと送信トラフィックをフィルターする URL パターンに基づいて、高度なファイアウォール ルールを構成できます。StorSimple デバイスと StorSimple Manager サービスは、Azure Service Bus、Azure Active Directory Access Control、ストレージ アカウント、Microsoft Update サーバーなど、他の Microsoft アプリケーションに依存しています。その Microsoft アプリケーションと関連付けられた URL パターンを使用してファイアウォール ルールを構成できます。Microsoft アプリケーションに関連付けられた URL パターンは変化する可能性がある点を理解することが重要です。これにより、ネットワーク管理者は必要に応じて StorSimple のファイアウォール ルールを監視し更新する必要があります。
+Network administrators can often configure advanced firewall rules based on the URL patterns to filter the inbound and the outbound traffic. Your StorSimple device and the StorSimple Manager service depend on other Microsoft applications such as Azure Service Bus, Azure Active Directory Access Control, storage accounts, and Microsoft Update servers. The URL patterns associated with these applications can be used to configure firewall rules. It is important to understand that the URL patterns associated with these applications can change. This in turn will require the network administrator to monitor and update firewall rules for your StorSimple as and when needed.
 
-ほとんどの場合、StorSimple 固定 IP アドレスに基づき、送信トラフィックのファイアウォール ルールを設定することが推奨されます。ただし、次の情報を使用して、セキュリティで保護された環境を作成するのにために必要な高度なファイアウォール ルールを設定することもできます。
+We recommend that you set your firewall rules for outbound traffic, based on StorSimple fixed IP addresses, liberally in most cases. However, you can use the information below to set advanced firewall rules that are needed to create secure environments.
 
-> [AZURE.NOTE] デバイスの (ソース) IP は、常にすべての有効なネットワーク インターフェイスに合わせて設定するようにします。宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/ja-JP/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
+> [AZURE.NOTE] The device (source) IPs should always be set to all the enabled network interfaces. The destination IPs should be set to [Azure datacenter IP ranges](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653).
 
-#### Azure ポータルの URL パターン
-| URL パターン | コンポーネント/機能 | デバイスの IP |
+#### <a name="url-patterns-for-azure-portal"></a>URL patterns for Azure portal
+| URL pattern                                                      | Component/Functionality                                           | Device IPs                           |
 |------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus| クラウド対応のネットワーク インターフェイス |
-|`https://*.backup.windowsazure.com`|デバイス登録| DATA 0 のみ|
-|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|証明書の失効 |クラウド対応のネットワーク インターフェイス |
-| `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> | コントローラーの固定 IP のみ |
-| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |コントローラーの固定 IP のみ |
-| `https://*.partners.extranet.microsoft.com/*` | サポート パッケージ | クラウド対応のネットワーク インターフェイス |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`   | StorSimple Manager service<br>Access Control Service<br>Azure Service Bus| Cloud-enabled network interfaces        |
+|`https://*.backup.windowsazure.com`|Device registration| DATA 0 only|
+|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|Certificate revocation |Cloud-enabled network interfaces |
+| `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure storage accounts and monitoring | Cloud-enabled network interfaces        |
+| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update servers<br>                             | Controller fixed IPs only               |
+| `http://*.deploy.akamaitechnologies.com`                         |Akamai CDN |Controller fixed IPs only   |
+| `https://*.partners.extranet.microsoft.com/*`                    | Support package                                                  | Cloud-enabled network interfaces        |
 
-#### Azure Government ポータルの URL パターン
-| URL パターン | コンポーネント/機能 | デバイスの IP |
+#### <a name="url-patterns-for-azure-government-portal"></a>URL patterns for Azure Government portal
+| URL pattern                                                      | Component/Functionality                                           | Device IPs                           |
 |------------------------------------------------------------------|---------------------------------------------------------------|-----------------------------------------|
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` | StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus| クラウド対応のネットワーク インターフェイス |
-|`https://*.backup.windowsazure.us`|デバイス登録| DATA 0 のみ|
-|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|証明書の失効 |クラウド対応のネットワーク インターフェイス |
-| `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure ストレージ アカウントと監視 | クラウド対応のネットワーク インターフェイス |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update サーバー<br> | コントローラーの固定 IP のみ |
-| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |コントローラーの固定 IP のみ |
-| `https://*.partners.extranet.microsoft.com/*` | サポート パッケージ | クラウド対応のネットワーク インターフェイス |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`   | StorSimple Manager service<br>Access Control Service<br>Azure Service Bus| Cloud-enabled network interfaces        |
+|`https://*.backup.windowsazure.us`|Device registration| DATA 0 only|
+|`http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*`|Certificate revocation |Cloud-enabled network interfaces |
+| `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` | Azure storage accounts and monitoring | Cloud-enabled network interfaces        |
+| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com`| Microsoft Update servers<br>                             | Controller fixed IPs only               |
+| `http://*.deploy.akamaitechnologies.com`                         |Akamai CDN |Controller fixed IPs only   |
+| `https://*.partners.extranet.microsoft.com/*`                    | Support package                                                  | Cloud-enabled network interfaces        |
 
-### ルーティング メトリック
+### <a name="routing-metric"></a>Routing metric
 
-ルーティング メトリックは、指定したネットワークにデータをルーティングするインターフェイスとゲートウェイに関連付けられています。ルーティング プロトコルによって、指定された宛先への最適なパスを計算するために使用されます (同じ宛先への複数のパスが存在することがわかった場合)。ルーティング メトリックが低いと、優先順位が高くなります。
+A routing metric is associated with the interfaces and the gateway that route the data to the specified networks. Routing metric is used by the routing protocol to calculate the best path to a given destination, if it learns multiple paths exist to the same destination. The lower the routing metric, the higher the preference.
 
-StorSimple のコンテキストで、複数のネットワーク インターフェイスとゲートウェイがトラフィックを伝送するように構成されている場合、ルーティング メトリックはインターフェイスの相対的な使用順序を決定する役割を果たします。ルーティング メトリックをユーザーが変更することはできません。ただし、`Get-HcsRoutingTable` コマンドレットを使用して、StorSimple デバイスのルーティング テーブル (およびメトリック) を出力することはできます。Get-HcsRoutingTable コマンドレットの詳細については、[StorSimple デプロイのトラブルシューティング](storsimple-troubleshoot-deployment.md)に関するページをご覧ください。
+In the context of StorSimple, if multiple network interfaces and gateways are configured to channel traffic, the routing metrics will come into play to determine the relative order in which the interfaces will get used. The routing metrics cannot be changed by the user. You can however use the `Get-HcsRoutingTable` cmdlet to print out the routing table (and metrics) on your StorSimple device. More information on Get-HcsRoutingTable cmdlet in [Troubleshooting StorSimple deployment](storsimple-troubleshoot-deployment.md).
 
-ルーティング メトリックのアルゴリズムは、StorSimple デバイスで実行されているソフトウェアのバージョンによって異なります。
+The routing metric algorithms are different depending on the software version running on your StorSimple device.
 
-**Update 1 より前のリリース**
+**Releases prior to Update 1**
 
-これには、GA、0.1、0.2、0.3 リリースなど、Update 1 より前のソフトウェア バージョンが含まれます。ルーティング メトリックに基づく順序は次のとおりです。
+This includes software versions prior to Update 1 such as the GA, 0.1, 0.2, or 0.3 release. The order based on routing metrics is as follows:
 
-   *最後に構成した 10 GbE ネットワーク インターフェイス > その他の 10 GbE ネットワーク インターフェイス > 最後に構成した 1 GbE ネットワーク インターフェイス > その他の 1 GbE ネットワーク インターフェイス*
+   *Last configured 10 GbE network interface > Other 10 GbE network interface > Last configured 1 GbE network interface > Other 1 GbE network interface*
 
 
-**Update 1 以降で、Update 2 より前のリリース**
+**Releases starting from Update 1 and prior to Update 2**
 
-これには、1、1.1、1.2 などのソフトウェア バージョンが含まれます。ルーティング メトリックに基づく順序は、次のように決定されます。
+This includes software versions such as 1, 1.1, or 1.2. The order based on routing metrics is decided as follows:
 
-   *DATA 0 > 最後に構成した 10 GbE ネットワーク インターフェイス > その他の 10 GbE ネットワーク インターフェイス > 最後に構成した 1 GbE ネットワーク インターフェイス > その他の 1 GbE ネットワーク インターフェイス*
+   *DATA 0 > Last configured 10 GbE network interface > Other 10 GbE network interface > Last configured 1 GbE network interface > Other 1 GbE network interface*
 
-   更新プログラム 1 では、DATA 0 のルーティング メトリックが最低値になります。そのため、すべてのクラウド トラフィックが DATA 0 を介してルーティングされます。StorSimple デバイス上に複数のクラウド対応ネットワーク インターフェイスがある場合は、これをメモしておきます。
+   In Update 1, the routing metric of DATA 0 is made the lowest; therefore, all the cloud-traffic is routed through DATA 0. Make a note of this if there are more than one cloud-enabled network interface on your StorSimple device.
 
 
-**Update 2 以降のリリース**
+**Releases starting from Update 2**
 
-Update 2 にはいくつかのネットワーク関連の機能強化があり、ルーティング メトリックが変更されました。動作の説明は次のとおりです。
+Update 2 has several networking-related improvements and the routing metrics has changed. The behavior can be explained as follows.
 
-- 事前に定義された一連の値が、ネットワーク インターフェイスに割り当てられています。
+- A set of predetermined values have been assigned to network interfaces.   
 
-- 以下に示す表の例では、さまざまなネットワーク インターフェイスがクラウド対応の場合とクラウド非対応 (ただしゲートウェイが構成済み) の場合に、割り当てられる値を示しています。ここで割り当てられている値はあくまでも一例です。
+- Consider an example table shown below with values assigned to the various network interfaces when they are cloud-enabled or cloud-disabled but with a configured gateway. Note the values assigned here are example values only.
 
 
-	| ネットワーク インターフェイス | クラウド対応 | クラウド非対応 (ゲートウェイを使用) |
-	|-----|---------------|---------------------------|
-	| Data 0 | 1 | - |
-	| Data 1 | 2 | 20 |
-	| Data 2 | 3 | 30 |
-	| Data 3 | 4 | 40 |
-	| Data 4 | 5 | 50 |
-	| Data 5 | 6 | 60 |
+  	| Network interface | Cloud-enabled | Cloud-disabled with gateway |
+  	|-----|---------------|---------------------------|
+  	| Data 0  | 1            | -                        |
+  	| Data 1  | 2            | 20                       |
+  	| Data 2  | 3            | 30                       |
+  	| Data 3  | 4            | 40                       |
+  	| Data 4  | 5            | 50                       |
+  	| Data 5  | 6            | 60                       |
 
 
-- クラウド トラフィックがネットワーク インターフェイスを介してルーティングされる順序は、次のとおりです。
+- The order in which the cloud traffic will be routed through the network interfaces is:
 
-	*Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5*
+    *Data 0 > Data 1 > Date 2 > Data 3 > Data 4 > Data 5*
 
-	これは、次の例で説明できます。
+    This can be explained by the following example.
 
-	2 つのクラウド対応ネットワーク インターフェイスとして Data 0 と Data 5 を使用する StorSimple デバイスを考えてみます。Data 1 から Data 4 まではクラウドに対応しておらず、ゲートウェイが構成されています。このデバイスでトラフィックがルーティングされる順序は、次のようになります。
+    Consider a StorSimple device with two cloud-enabled network interfaces, Data 0 and Data 5. Data 1 through Data 4 are cloud-disabled but have a configured gateway. The order in which traffic will be routed for this device will be:
 
-	*Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
+    *Data 0 (1) > Data 5 (6) > Data 1 (20) > Data 2 (30) > Data 3 (40) > Data 4 (50)*
 
-	*かっこ内の数値は、それぞれのルーティング メトリックを示しています。*
+    *where the numbers in parentheses indicate the respective routing metrics.*
 
-	Data 0 が失敗すると、クラウド トラフィックは Data 5 を介してルーティングされます。ゲートウェイがその他のすべてのネットワークで構成されている場合、Data 0 と Data 5 の両方が失敗すると、クラウド トラフィックは Data 1 を介して送信されます。
+    If Data 0 fails, the cloud traffic will get routed through Data 5. Given that a gateway is configured on all other network, if both Data 0 and Data 5 were to fail, the cloud traffic will go through Data 1.
 
 
-- クラウド対応ネットワーク インターフェイスが失敗すると、そのインターフェイスへの接続が 30 秒間隔で 3 回試行されます。すべての再試行が失敗した場合、トラフィックはルーティング テーブルによって決定されるとおりに、次に利用可能なクラウド対応インターフェイスにルーティングされます。すべてのクラウド対応ネットワーク インターフェイスが失敗した場合、デバイスは他のコントローラーにフェールオーバーされます (この場合、再起動はありません)。
+- If a cloud-enabled network interface fails, then are 3 retries with a 30 second delay to connect to the interface. If all the retries fail, the traffic is routed to the next available cloud-enabled interface as determined by the routing table. If all the cloud-enabled network interfaces fail, then the device will fail over to the other controller (no reboot in this case).
 
-- iSCSI 対応のネットワーク インターフェイスで VIP エラーが発生した場合、2 秒間隔で 3 回まで再試行されます。この動作は、以前のリリースと同じです。すべての iSCSI ネットワーク インターフェイスが失敗すると、コントローラー フェールオーバーが発生します (再起動が伴います)。
+- If there is a VIP failure for an iSCSI-enabled network interface, there will be 3 retries with a 2 seconds delay. This behavior has stayed the same from the previous releases. If all the iSCSI network interfaces fail, then a controller failover will occur (accompanied by a reboot).
 
 
-- VIP エラーが発生すると、StorSimple デバイスでアラートも生成されます。詳細については、[アラートのクイック リファレンス](storsimple-manage-alerts.md)に関するページを参照してください。
+- An alert is also raised on your StorSimple device when there is a VIP failure. For more information, go to [alert quick reference](storsimple-manage-alerts.md).
 
-- 再試行に関しては、クラウドよりも iSCSI が優先されます。
+- In terms of retries, iSCSI will take precedence over cloud.
 
-	次の例で考えてみましょう。
-	StorSimple デバイスで、2 つのネットワーク インターフェイス Data 0 と Data 1 が有効になっているとします。Data 0 はクラウド対応ですが、Data 1 はクラウドと iSCSI の両方に対応しています。このデバイス上の他のネットワーク インターフェイスは、クラウドにも iSCSI にも対応していません。
+    Consider the following example: A StorSimple device has two network interfaces enabled, Data 0 and Data 1. Data 0 is cloud-enabled whereas Data 1 is both cloud and iSCSI-enabled. No other network interfaces on this device are enabled for cloud or iSCSI.
 
-	Data 1 が失敗した場合、これが最後の iSCSI ネットワーク インターフェイスであるため、他のコントローラー上の Data 1 に対するコントローラー フェールオーバーが発生します。
+    If Data 1 fails, given it is the last iSCSI network interface, this will result in a controller failover to Data 1 on the other controller.
 
 
-### ネットワークのベスト プラクティス
+### <a name="networking-best-practices"></a>Networking best practices
 
-StorSimple ソリューションの最適なパフォーマンスを得るためには、上記のネットワーク要件に加えて、次のベスト プラクティスに従ってください。
+In addition to the above networking requirements, for the optimal performance of your StorSimple solution, please adhere to the following best practices:
 
-- StorSimple デバイスで専用の 40 Mbps 帯域幅 (またはそれ以上) が常に利用できるようにします。この帯域幅は他のいかなるアプリケーションとも共有できません (あるいは、QoS ポリシーを利用して確実に配分する必要があります)。
+- Ensure that your StorSimple device has a dedicated 40 Mbps bandwidth (or more) available at all times. This bandwidth should not be shared (or allocation should be guaranteed through the use of QoS policies) with any other applications.
 
-- インターネットへのネットワーク接続を常に利用できるようにします。インターネット接続が途切れるなど、デバイスのインターネット接続が信頼できないと、結果的にサポートされない構成になります。
+- Ensure network connectivity to the Internet is available at all times. Sporadic or unreliable Internet connections to the devices, including no Internet connectivity whatsoever, will result in an unsupported configuration.
 
-- iSCSI とクラウドのアクセスに対してデバイスに専用のネットワーク インターフェイスを置くことで、iSCSI とクラウド トラフィックを分離します。詳細については、StorSimple デバイスで[ネットワーク インターフェイスを変更する](storsimple-modify-device-config.md#modify-network-interfaces)方法を参照してください。
+- Isolate the iSCSI and cloud traffic by having dedicated network interfaces on your device for iSCSI and cloud access. For more information, see how to [modify network interfaces](storsimple-modify-device-config.md#modify-network-interfaces) on your StorSimple device.
 
-- ネットワーク インターフェイスには、Link Aggregation Control Protocol (LACP) 構成を使用しないでください。このような構成はサポートされていません。
+- Do not use a Link Aggregation Control Protocol (LACP) configuration for your network interfaces. This is an unsupported configuration.
 
 
-## StorSimple の高可用性の要件
+## <a name="high-availability-requirements-for-storsimple"></a>High availability requirements for StorSimple
 
-StorSimple ソリューションに含まれるハードウェア プラットフォームには、可用性と信頼性の機能があります。これらの機能は、可用性が高くフォールト トレラントなストレージ インフラストラクチャの基礎をデータセンターで実現します。ただし、StorSimple ソリューションの可用性が得られるようにするには、特定の要件とベスト プラクティスに準拠する必要があります。StorSimple をデプロイする前に、StorSimple デバイスおよび接続されているホスト コンピューターについて次の要件とベスト プラクティスを慎重に確認します。
+The hardware platform that is included with the StorSimple solution has availability and reliability features that provide a foundation for a highly available, fault-tolerant storage infrastructure in your datacenter. However, there are requirements and best practices that you should comply with to help ensure the availability of your StorSimple solution. Before you deploy StorSimple, carefully review the following requirements and best practices for the StorSimple device and connected host computers.
 
-StorSimple デバイスのハードウェア コンポーネントの監視と保守の詳細については、「[StorSimple Manager サービスを使用したハードウェア コンポーネントと状態の監視](storsimple-monitor-hardware-status.md)」および「[StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」を参照してください。
+For more information about monitoring and maintaining the hardware components of your StorSimple device, go to [Use the StorSimple Manager service to monitor hardware components and status](storsimple-monitor-hardware-status.md) and [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
 
-### StorSimple デバイスの高可用性の要件と手順
+### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>High availability requirements and procedures for your StorSimple device
 
-StorSimple デバイスの高可用性を確保するには、次の情報を慎重に確認します。
+Review the following information carefully to ensure the high availability of your StorSimple device.
 
-#### PCM
+#### <a name="pcms"></a>PCMs
 
-StorSimple デバイスには、冗長なホットスワップ型の電源および冷却モジュール (PCM) が含まれています。各 PCM はシャーシ全体にサービスを提供するのに十分な容量を備えています。高可用性を確保するには、PCM を両方とも取り付ける必要があります。
+StorSimple devices include redundant, hot-swappable power and cooling modules (PCMs). Each PCM has enough capacity to provide service for the entire chassis. To ensure high availability, both PCMs must be installed.
 
-- 1 つの電源で障害が発生した場合に可用性を確保するには、PCM をそれぞれ別々の電源に接続しておきます。
-- PCM で障害が発生した場合は、すぐに交換を要求します。
-- 故障した PCM は必ず、交換部品の取り付け準備ができてから取り外します。
-- 両方の PCM を同時に取り外さないでください。PCM モジュールには、バックアップ バッテリ モジュールが含まれます。両方の PCM を取り外すと、バッテリの保護なしでシャットダウンされ、デバイスの状態は保存されません。バッテリの詳細については、「[バックアップ バッテリ モジュールを保守する](storsimple-battery-replacement.md#maintain-the-backup-battery-module)」を参照してください。
+- Connect your PCMs to different power sources to provide availability if a power source fails.
+- If a PCM fails, request a replacement immediately.
+- Remove a failed PCM only when you have the replacement and are ready to install it.
+- Do not remove both PCMs concurrently. The PCM module includes the backup battery module. Removing both of the PCMs will result in a shutdown without battery protection, and the device state will not be saved. For more information about the battery, go to [Maintain the backup battery module](storsimple-battery-replacement.md#maintain-the-backup-battery-module).
 
-#### コントローラー モジュール
+#### <a name="controller-modules"></a>Controller modules
 
-StorSimple デバイスには、冗長なホットスワップ型のコントローラー モジュールが含まれています。コントローラー モジュールは、アクティブ/パッシブで動作します。どのような場合も、一方のコントローラー モジュールがアクティブでサービスを提供し、もう一方のコントローラー モジュールがパッシブになります。アクティブ コントローラー モジュールが故障したか取り外された場合は、パッシブ コントローラー モジュールの電源が入って動作可能になります。各コントローラー モジュールには、シャーシ全体にサービスを提供できるだけの十分な容量があります。高可用性を確保するには、両方のコントローラー モジュールを取り付ける必要があります。
+StorSimple devices include redundant, hot-swappable controller modules. The controller modules operate in an active/passive manner. At any given time, one controller module is active and is providing service, while the other controller module is passive. The passive controller module is powered on and becomes operational if the active controller module fails or is removed. Each controller module has enough capacity to provide service for the entire chassis. Both controller modules must be installed to ensure high availability.
 
-- 両方のコントローラー モジュールが常に取り付けられている状態にします。
+- Make sure that both controller modules are installed at all times.
 
-- コントローラー モジュールで障害が発生した場合は、すぐに交換を要求します。
+- If a controller module fails, request a replacement immediately.
 
-- 故障したコントローラーは必ず、交換部品の取り付け準備ができてから取り外します。長時間モジュールを取り外すと通気に影響し、その結果、システムの冷却に影響します。
+- Remove a failed controller module only when you have the replacement and are ready to install it. Removing a module for extended periods will affect the airflow and hence the cooling of the system.
 
-- 両方のコントローラー モジュールへのネットワーク接続が同じであり、接続したネットワーク インターフェイスのネットワーク構成が同じになっていることを確認します。
+- Make sure that the network connections to both controller modules are identical, and the connected network interfaces have an identical network configuration.
 
-- コントローラー モジュールの障害または交換が必要な場合は、障害状態にあるコントローラー モジュールを交換する前に、もう 1 つのコントローラー モジュールがアクティブ状態であることを確認します。コントローラーがアクティブであることを確認するには、「[デバイスのアクティブなコントローラーを識別する](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
+- If a controller module fails or needs replacement, make sure that the other controller module is in an active state before replacing the failed controller module. To verify that a controller is active, go to [Identify the active controller on your device](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).
 
-- 両方のコントローラー モジュールを同時に取り外さないでください。コントローラー フェールオーバーが進行中の場合、スタンバイ コントローラー モジュールをシャットダウンしたり、シャーシから取り外したりしないでください。
+- Do not remove both controller modules at the same time. If a controller failover is in progress, do not shut down the standby controller module or remove it from the chassis.
 
-- コントローラー フェールオーバー後、いずれかのコントローラー モジュールを取り外す前に少なくとも 5 分待機します。
+- After a controller failover, wait at least five minutes before removing either controller module.
 
-#### ネットワーク インターフェイス
+#### <a name="network-interfaces"></a>Network interfaces
 
-StorSimple デバイス コントローラー モジュールはそれぞれ、1 ギガ ビットのイーサネット ネットワーク インターフェイスを 4 つと、10 ギガビットのイーサネット ネットワーク インターフェイスを 2 つ備えています。
+StorSimple device controller modules each have four 1 Gigabit and two 10 Gigabit Ethernet network interfaces.
 
-- 両方のコントローラー モジュールへのネットワーク接続が同じであり、コントローラー モジュール インターフェイスが接続されているネットワーク インターフェイスのネットワーク構成が同じになっていることを確認します。
+- Make sure that the network connections to both controller modules are identical, and the network interfaces that the controller module interfaces are connected to have an identical network configuration.
 
-- ネットワーク デバイスで障害が発生した場合にサービスの可用性を確保できるようにするには、ネットワーク接続をそれぞれ異なる複数のスイッチでデプロイします。
+- When possible, deploy network connections across different switches to ensure service availability in the event of a network device failure.
 
-- 唯一のまたは最後に残った iSCSI 対応インターフェイス (IP アドレスが割り当てられた) のプラグを抜く場合は、そのインターフェイスをまず無効にしてから、ケーブルを外します。先にインターフェイスのプラグを抜くと、アクティブ コントローラーはパッシブ コントローラーにフェール オーバーします。パッシブ コントローラーの対応するインターフェイスもプラグが抜かれている場合は、両方のコントローラーが複数回再起動してから 1 つのコントローラーに落ち着きます。
+- When unplugging the only or the last remaining iSCSI-enabled interface (with IPs assigned), disable the interface first and then unplug the cables. If the interface is unplugged first, then it will cause the active controller to fail over to the passive controller. If the passive controller also has its corresponding interfaces unplugged, then both the controllers will reboot multiple times before settling on one controller.
 
-- 少なくとも 2 つのデータ インターフェイスを各コントローラー モジュールからネットワークに接続します。
+- Connect at least two DATA interfaces to the network from each controller module.
 
-- 2 つの 10 GbE インターフェイスを有効にした場合は、これらをそれぞれ異なる複数のスイッチでデプロイします。
+- If you have enabled the two 10 GbE interfaces, deploy those across different switches.
 
-- 可能であれば、サーバー上で MPIO を使用して、サーバーがリンク、ネットワーク、またはインターフェイスの障害に耐え得るようにします。
+- When possible, use MPIO on servers to ensure that the servers can tolerate a link, network, or interface failure.
 
-高可用性および高パフォーマンスを実現するためのデバイスのネットワーク接続方法の詳細については、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device)」または「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)」を参照してください。
+For more information about networking your device for high availability and performance, go to [Install your StorSimple 8100 device](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) or [Install your StorSimple 8600 device](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
-#### SSD と HDD
+#### <a name="ssds-and-hdds"></a>SSDs and HDDs
 
-StorSimple デバイスには、ミラー化されたスペースを使用して保護されているソリッド ステート ドライブ (SSD) とハード ディスク ドライブ (HDD) が含まれています。ミラー化されたスペースを使用すると、デバイスは 1 台または複数台の SSD または HDD で障害が発生してもそれを許容できます。
+StorSimple devices include solid state disks (SSDs) and hard disk drives (HDDs) that are protected using mirrored spaces. Use of mirrored spaces ensures that the device is able to tolerate the failure of one or more SSDs or HDDs.
 
-- すべての SSD と HDD モジュールが取り付けられていることを確認します。
+- Make sure that all SSD and HDD modules are installed.
 
-- SSD または HDD で障害が発生した場合は、すぐに交換を要求します。
+- If an SSD or HDD fails, request a replacement immediately.
 
-- SSD または HDD の障害または交換が必要な場合、交換が必要な SSD または HDD のみを取り外すようにします。
+- If an SSD or HDD fails or requires replacement, make sure that you remove only the SSD or HDD that requires replacement.
 
-- どの時点でもシステムから複数台の SSD または HDD を取り外さないでください。
-特定の種類のディスク (HDD、SSD) での 2 つ以上のエラー、または短時間の連続したエラーは、システムの誤作動やデータ損失を発生させる可能性があります。その場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
+- Do not remove more than one SSD or HDD from the system at any point in time.
+A failure of 2 or more disks of certain type (HDD, SSD) or consecutive failure within a short time frame may result in system malfunction and potential data loss. If this occurs, [contact Microsoft Support](storsimple-contact-microsoft-support.md) for assistance.
 
-- 交換中は、SSD と HDD のドライブの **[メンテナンス]** ページで **[ハードウェア状態]** を監視します。緑のチェック状態は、ディスクが正常または OK であると示しています。一方、赤の感嘆符は障害中の SSD または HDD を示しています。
+- During replacement, monitor the **Hardware Status** in the **Maintenance** page for the drives in the SSDs and HDDs. A green check status indicates that the disks are healthy or OK, whereas a red exclamation point indicates a failed SSD or HDD.
 
-- システム エラーに備えて、保護する必要があるすべてのボリュームのクラウド スナップショットを構成することもお勧めします。
+- We recommend that you configure cloud snapshots for all volumes that you need to protect in case of a system failure.
 
-#### EBOD エンクロージャ
+#### <a name="ebod-enclosure"></a>EBOD enclosure
 
-StorSimple デバイス モデル 8600 には、主エンクロージャに加えて、Extended Bunch of Disks (EBOD) エンクロージャが含まれています。EBOD には、EBOD コントローラーと、ミラー化されたスペースを使用して保護されるハード ディスク ドライブ (HDD) が含まれます。ミラー化されたスペースを使用すると、デバイスは 1 台または複数台の HDD で障害が発生してもそれを許容できます。EBOD エンクロージャは、冗長な SAS ケーブルを使用して、主エンクロージャに接続されます。
+StorSimple device model 8600 includes an Extended Bunch of Disks (EBOD) enclosure in addition to the primary enclosure. An EBOD contains EBOD controllers and hard disk drives (HDDs) that are protected using mirrored spaces. Use of mirrored spaces ensures that the device is able to tolerate the failure of one or more HDDs. The EBOD enclosure is connected to the primary enclosure through redundant SAS cables.
 
-- 両方の EBOD エンクロージャ コントローラー モジュール、両方の SAS ケーブル、およびすべてのハード ディスク ドライブは必ず常時取り付けておきます。
+- Make sure that both EBOD enclosure controller modules, both SAS cables, and all the hard disk drives are installed at all times.
 
-- EBOD エンクロージャ コントローラー モジュールで障害が発生した場合は、すぐに交換を要求します。
+- If an EBOD enclosure controller module fails, request a replacement immediately.
 
-- EBOD エンクロージャ コントローラー モジュールで故障が発生した場合は、該当するモジュールを交換する前に、もう 1 つのコントローラー モジュールがアクティブ状態であることを確認します。コントローラーがアクティブであることを確認するには、「[デバイスのアクティブなコントローラーを識別する](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device)」を参照してください。
+- If an EBOD enclosure controller module fails, make sure that the other controller module is active before you replace the failed module. To verify that a controller is active, go to [Identify the active controller on your device](storsimple-controller-replacement.md#identify-the-active-controller-on-your-device).
 
-- EBOD コントローラー モジュールの交換中に、**[メンテナンス]**、**[ハードウェアの状態]** の順にアクセスして、StorSimple Manager サービスのコンポーネントの状態を継続して監視します。
+- During an EBOD controller module replacement, continuously monitor the status of the component in the StorSimple Manager service by accessing **Maintenance** > **Hardware status**.
 
-- SAS ケーブルの障害または交換が必要な場合 (Microsoft サポートはこのような判断にかかわる必要があります)、交換が必要な SAS ケーブルのみを取り外すようにします。
+- If an SAS cable fails or requires replacement (Microsoft Support should be involved to make such a determination), make sure that you remove only the SAS cable that requires replacement.
 
-- どの時点でも両方の SAS ケーブルをシステムから同時に取り外さないでください。
+- Do not concurrently remove both SAS cables from the system at any point in time.
 
-### ホスト コンピューターの高可用性の推奨事項
+### <a name="high-availability-recommendations-for-your-host-computers"></a>High availability recommendations for your host computers
 
-StorSimple デバイスに接続されているホストの高可用性を確保するには、以下のベスト プラクティスを慎重に確認してください。
+Carefully review these best practices to ensure the high availability of hosts connected to your StorSimple device.
 
-- [2 ノード ファイル サーバー クラスター構成][1]を使用した StorSimple を構成します。単一障害点を削除し、ホスト側の冗長性を構築することにより、ソリューション全体の可用性が向上します。
+- Configure StorSimple with [two-node file server cluster configurations][1]. By removing single points of failure and building in redundancy on the host side, the entire solution becomes highly available.
 
-- ストレージ コントローラーのフェールオーバー中の高可用性を目的として、Windows Server 2012 (SMB 3.0) で利用できる継続的可用性 (CA) 共有を使用します。ファイル サーバー クラスターと Windows Server 2012 との継続的可用性の共有を構成するための追加情報については、この[ビデオ メモ](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)を参照してください。
+- Use Continuously available (CA) shares available with Windows Server 2012 (SMB 3.0) for high availability during failover of the storage controllers. For additional information for configuring file server clusters and Continuously Available shares with Windows Server 2012, refer to this [video demo](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares).
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [StorSimple システムの制限の詳細](storsimple-limits.md)
-- [StorSimple ソリューションをデプロイする方法](storsimple-deployment-walkthrough-u2.md)
+- [Learn about StorSimple system limits](storsimple-limits.md).
+- [Learn how to deploy your StorSimple solution](storsimple-deployment-walkthrough-u2.md).
 
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

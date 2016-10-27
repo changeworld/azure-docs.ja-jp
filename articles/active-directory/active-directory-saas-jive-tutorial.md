@@ -1,302 +1,307 @@
 <properties
-	pageTitle="チュートリアル: Azure Active Directory と Jive の統合 | Microsoft Azure"
-	description="Azure Active Directory と Jive の間でシングル サインオンを構成する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with Jive | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and Jive."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/01/2016"
+    ms.author="jeedes"/>
 
 
-# チュートリアル: Azure Active Directory と Jive の統合
 
-このチュートリアルでは、Jive と Azure Active Directory (Azure AD) を統合する方法について説明します。
+# <a name="tutorial:-azure-active-directory-integration-with-jive"></a>Tutorial: Azure Active Directory integration with Jive
 
-Jive と Azure AD の統合には、次の利点があります。
+In this tutorial, you learn how to integrate Jive with Azure Active Directory (Azure AD).
 
-- Jive にアクセスできる Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Jive にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+Integrating Jive with Azure AD provides you with the following benefits:
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+- You can control in Azure AD who has access to Jive
+- You can enable your users to automatically get signed-on to Jive (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## 前提条件
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Jive と Azure AD の統合を構成するには、次のものが必要です。
+## <a name="prerequisites"></a>Prerequisites
 
-- Azure AD サブスクリプション
-- Jive でのシングル サインオンが有効なサブスクリプション
+To configure Azure AD integration with Jive, you need the following items:
 
-
-> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+- An Azure AD subscription
+- A Jive single-sign on enabled subscription
 
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
 
-## シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
+To test the steps in this tutorial, you should follow these recommendations:
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
-
-1. ギャラリーからの Jive の追加
-2. Azure AD シングル サインオンの構成とテスト
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## ギャラリーからの Jive の追加
-Azure AD への Jive の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Jive を追加する必要があります。
+## <a name="scenario-description"></a>Scenario Description
+In this tutorial, you test Azure AD single sign-on in a test environment.
 
-**ギャラリーから Jive を追加するには、次の手順に従います。**
+The scenario outlined in this tutorial consists of two main building blocks:
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
-
-	![Active Directory][1]
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-
-	![アプリケーション][2]
-
-4. ページの下部にある **[追加]** をクリックします。
-
-	![アプリケーション][3]
-
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-
-	![アプリケーション][4]
-
-6. 検索ボックスに、「**Jive**」と入力します。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/tutorial_jive_01.png)
-7. 結果ウィンドウで **[Jive]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/tutorial_jive_02.png)
+1. Adding Jive from the gallery
+2. Configuring and testing Azure AD single sign-on
 
 
-##  Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Jive で Azure AD のシングル サインオンを構成し、テストします。
+## <a name="adding-jive-from-the-gallery"></a>Adding Jive from the gallery
+To configure the integration of Jive into Azure AD, you need to add Jive from the gallery to your list of managed SaaS apps.
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Jive ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Jive 内の対応しているユーザーの間で、リンク関係が確立されている必要があります。
+**To add Jive from the gallery, perform the following steps:**
 
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Jive の **[Username]** の値として割り当てます。
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-Jive で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+    ![Active Directory][1]
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[ のテスト ユーザーの作成](#creating-a-jive-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Jive で作成します。
-4. **[ユーザー プロビジョニングの構成](#configuring-user-provisioning)** - Active Directory のユーザー アカウントのプロビジョニングを Jive に対して有効にする方法を説明します。
-5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-6. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
 
-### Azure AD シングル サインオンの構成
+    ![Applications][2]
 
-このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Jive アプリケーションでシングル サインオンを構成することです。
+4. Click **Add** at the bottom of the page.
 
-**Jive で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+    ![Applications][3]
 
-1. クラシック ポータルの **Jive** アプリケーション統合のページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
-	 
-	![Configure Single Sign-On][6]
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-2. **[ユーザーの Jive へのアクセスを設定してください]** ページで、**[Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+    ![Applications][4]
 
-	![Configure Single Sign-On](./media/active-directory-saas-jive-tutorial/tutorial_jive_03.png)
+6. In the search box, type **Jive**.
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+    ![Creating an Azure AD test user](./media/active-directory-saas-jive-tutorial/tutorial_jive_01.png)
+7. In the results pane, select **Jive**, and then click **Complete** to add the application.
 
-	![Configure Single Sign-On](./media/active-directory-saas-jive-tutorial/tutorial_jive_04.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-jive-tutorial/tutorial_jive_02.png)
 
-    a.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Jive アプリケーションへのサインオンに使用する URL を入力します。**https://\<顧客名>.jivecustom.com**
-	
-	b. **[次へ]** をクリックします。
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+In this section, you configure and test Azure AD single sign-on with Jive based on a test user called "Britta Simon".
+
+For single sign-on to work, Azure AD needs to know what the counterpart user in Jive is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in Jive needs to be established.
+
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Jive.
+
+To configure and test Azure AD single sign-on with Jive, you need to complete the following building blocks:
+
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Creating a Jive test user](#creating-a-jive-test-user)** - to have a counterpart of Britta Simon in Jive that is linked to the Azure AD representation of her.
+4. **[Configuring user provisioning](#configuring-user-provisioning)** - to outline how to enable user provisioning of Active Directory user accounts to Jive.
+5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+6. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+
+The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Jive application.
+
+**To configure Azure AD single sign-on with Jive, perform the following steps:**
+
+1. In the classic portal, on the **Jive** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+     
+    ![Configure Single Sign-On][6] 
+
+2. On the **How would you like users to sign on to Jive** page, select **Azure AD Single Sign-On**, and then click **Next**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-jive-tutorial/tutorial_jive_03.png) 
+
+3. On the **Configure App Settings** dialog page, perform the following steps:
+
+    ![Configure Single Sign-On](./media/active-directory-saas-jive-tutorial/tutorial_jive_04.png) 
+
+    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Jive application using the following pattern: **https://\<customer name\>.jivecustom.com**.
+    
+    b. click **Next**
  
-4. **[Jive でのシングル サインオンの構成]** ページで、次の手順を実行します。
+4. On the **Configure single sign-on at Jive** page, perform the following steps:
 
-	![Configure Single Sign-On](./media/active-directory-saas-jive-tutorial/tutorial_jive_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-jive-tutorial/tutorial_jive_05.png)
 
-    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. Click **Download certificate**, and then save the file on your computer.
 
-    b.**[次へ]** をクリックします。
-
-
-5. Jive テナントに管理者としてサインオンします。
-
-6. 上部のメニューで、**[SAML]** をクリックします。
-
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-jive-tutorial/tutorial_jive_002.png)
-
-	a.**[Genaral (全般)]** タブで **[Enabled (有効)]** を選択します。
-
-	b.**[Save all saml settings (すべての SAML 設定を保存)]** ボタンをクリックします。
-
-7. **[Idp Metadata (IDP メタデータ)]** タブに移動します。
-
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-jive-tutorial/tutorial_jive_003.png)
-
-	a.ダウンロードしたメタデータ XML ファイルの内容をコピーし、**[Identity Provider (IDP) Metadata (ID プロバイダー (IDP) のメタデータ)]** ボックスに貼り付けます。
-
-	b.**[Save all saml settings (すべての SAML 設定を保存)]** ボタンをクリックします。
-
-8. **[User Attribute Mapping (ユーザー属性のマッピング)]** タブに移動します。
-
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-jive-tutorial/tutorial_jive_004.png)
-
-	a.**[Email (電子メール)]** ボックスに、**mail** 値の属性名をコピーして貼り付けます。
-
-	b.**[First Name (名)]** ボックスに、**givenname** 値の属性名をコピーして貼り付けます。
-
-	c.**[Last Name (姓)]** ボックスに、**surname** 値の属性名をコピーして貼り付けます。
-	
-9. Azure AD ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。![Azure AD Single Sign-On][10]
-
-10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。![Azure AD Single Sign-On][11]
+    b. Click **Next**.
 
 
-### Azure AD のテスト ユーザーの作成
-このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
+5. Sign-on to your Jive tenant as an administrator.
+
+6. In the menu on the top, Click "**Saml**".
+
+    ![Configure Single Sign-On On App Side](./media/active-directory-saas-jive-tutorial/tutorial_jive_002.png)
+
+    a. Select **Enabled** under the **Genaral** tab.
+
+    b. Click the "**Save all saml settings**" button.
+
+7. Navigate to the "**Idp Metadata**" tab.
+
+    ![Configure Single Sign-On On App Side](./media/active-directory-saas-jive-tutorial/tutorial_jive_003.png)
+
+    a. Copy the content of the downloaded metadata XML file, and then paste it into the **Identity Provider (IDP) Metadata** textbox.
+
+    b. Click the "**Save all saml settings**" button. 
+
+8. Go to the "**User Attribute Mapping**" tab.
+
+    ![Configure Single Sign-On On App Side](./media/active-directory-saas-jive-tutorial/tutorial_jive_004.png)
+
+    a. In the **Email** textbox, copy and paste the attribute name of **mail** value.
+
+    b. In the **First Name** textbox, copy and paste the attribute name of **givenname** value.
+
+    c. In the **Last Name** textbox, copy and paste the attribute name of **surname** value.
+    
+9. In the Azure AD portal, select the single sign-on configuration confirmation, and then click **Next**.
+![Azure AD Single Sign-On][10]
+
+10. On the **Single sign-on confirmation** page, click **Complete**.  
+  ![Azure AD Single Sign-On][11]
 
 
-![Azure AD ユーザーの作成][20]
-
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
-
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/create_aaduser_09.png)
-
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/create_aaduser_03.png)
-
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/create_aaduser_04.png)
-
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/create_aaduser_05.png)
-
-    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
-
-    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
-
-    c.**[次へ]** をクリックします。
-
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/create_aaduser_06.png)
-
-    a.**[名]** ボックスに「**Britta**」と入力します。
-
-    b.**[姓]** ボックスに「**Simon**」と入力します。
-
-    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
-
-    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
-
-    e.**[次へ]** をクリックします。
-
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/create_aaduser_07.png)
-
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-jive-tutorial/create_aaduser_08.png)
-
-    a.**[新しいパスワード]** の値を書き留めます。
-
-    b.**[完了]** をクリックします。
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+In this section, you create a test user in the classic portal called Britta Simon.
 
 
+![Create Azure AD User][20]
 
-###Jive テスト ユーザーの作成
+**To create a test user in Azure AD, perform the following steps:**
 
-このセクションでは、Jive で Britta Simon というユーザーを作成します。Jive サポート チームと連携し、Jive プラットフォームにユーザーを追加してください。
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-jive-tutorial/create_aaduser_09.png) 
+
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
+
+3. To display the list of users, in the menu on the top, click **Users**.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-jive-tutorial/create_aaduser_03.png) 
+
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-jive-tutorial/create_aaduser_04.png) 
+
+5. On the **Tell us about this user** dialog page, perform the following steps:  ![Creating an Azure AD test user](./media/active-directory-saas-jive-tutorial/create_aaduser_05.png) 
+
+    a. As Type Of User, select New user in your organization.
+
+    b. In the User Name **textbox**, type **BrittaSimon**.
+
+    c. Click **Next**.
+
+6.  On the **User Profile** dialog page, perform the following steps: ![Creating an Azure AD test user](./media/active-directory-saas-jive-tutorial/create_aaduser_06.png) 
+
+    a. In the **First Name** textbox, type **Britta**.  
+
+    b. In the **Last Name** textbox, type, **Simon**.
+
+    c. In the **Display Name** textbox, type **Britta Simon**.
+
+    d. In the **Role** list, select **User**.
+
+    e. Click **Next**.
+
+7. On the **Get temporary password** dialog page, click **create**.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-jive-tutorial/create_aaduser_07.png) 
+
+8. On the **Get temporary password** dialog page, perform the following steps:
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-jive-tutorial/create_aaduser_08.png) 
+
+    a. Write down the value of the **New Password**.
+
+    b. Click **Complete**.   
 
 
-###ユーザー プロビジョニングの構成
+
+###<a name="creating-a-jive-test-user"></a>Creating a Jive test user
+
+In this section, you create a user called Britta Simon in Jive. Please work with Jive support team to add the users in the Jive platform.
+
+
+###<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-このセクションでは、Active Directory のユーザー アカウントのプロビジョニングを Jive に対して有効にする方法を説明します。この手順の一環として、Jive.com からの要求に必要なユーザー セキュリティ トークンを指定する必要があります。
+The objective of this section is to outline how to enable user provisioning of Active Directory user accounts to Jive.  
+As part of this procedure, you are required to provide a user security token you need to request from Jive.com.
   
-次のスクリーン ショットは、Azure AD の関連ダイアログの例を示しています。
+The following screenshot shows an example of the related dialog in Azure AD:
 
-![ユーザー プロビジョニングの構成](./media/active-directory-saas-jive-tutorial/IC698794.png "ユーザー プロビジョニングの構成")
+![Configure User Provisioning](./media/active-directory-saas-jive-tutorial/IC698794.png "Configure User Provisioning")
 
-####ユーザー プロビジョニングを構成するには、次の手順に従います。
+####<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
 
-1.  Microsoft Azure 管理ポータルの **Jive** アプリケーション統合ページで、**[ユーザー プロビジョニングの構成]** をクリックして **[ユーザー プロビジョニングの構成]** ダイアログを開きます。
+1.  In the Azure Management Portal, on the **Jive** application integration page, click **Configure user provisioning** to open the **Configure User Provisioning** dialog.
 
-2.  **[自動ユーザー プロビジョニングを有効にするための Jive の資格情報を入力してください]** ページで、以下の構成設定を入力します。
+2.  On the **Enter your Jive credentials to enable automatic user provisioning** page, provide the following configuration settings:
 
-    1.  **[JIVE 管理ユーザー名]** テキストボックスに、Jive.com の**システム管理者**プロファイルが割り当てられている Jive アカウント名を入力します。
+    1.  In the **Jive Admin User Name** textbox, type a Jive account name that has the **System Administrator** profile in Jive.com assigned.
 
-    2.  **[JIVE 管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
+    2.  In the **Jive Admin Password** textbox, type the password for this account.
 
-    3.  **[JIVE テナント URL]** テキストボックスに、Jive テナント URL を入力します。
+    3.  In the **Jive Tenant URL** textbox, type the Jive tenant URL.
 
-        >[AZURE.NOTE] Jive テナント URL は、組織が Jive にログインするために使用する URL です。通常、URL の形式は **www.<組織名>.jive.com** のようになります。
+        >[AZURE.NOTE] The Jive tenant URL is URL that is used by your organization to log into Jive.  
+        Typically, the URL has the following format: **www.\<organization\>.jive.com**.
 
-    4.  **[検証]** をクリックして構成を確認します。
+    4.  Click **validate** to verify your configuration.
 
-    5.  **[次へ]** をクリックして、**[確認]** ページを開きます。
+    5.  Click the **Next** button to open the **Confirmation** page.
 
-3.  **[確認]** ページで、チェックマークをクリックして構成を保存します。
+3.  On the **Confirmation** page, click the checkmark to save your configuration.
   
-ここで、テスト アカウントを作成して 10 分間待機し、アカウントが Jive.com と同期されていることを確認します。
+You can now create a test account, wait for 10 minutes and verify that the account has been synchronized to Jive.com.
 
 
 
 
-### Azure AD テスト ユーザーの割り当て
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-このセクションでは、Britta Simon に Jive へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
+In this section, you enable Britta Simon to use Azure single sign-on by granting her access to Jive.
 
-![ユーザーの割り当て][200]
+![Assign User][200] 
 
-**Jive に Britta Simon を割り当てるには、次の手順に従います。**
+**To assign Britta Simon to Jive, perform the following steps:**
 
-1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
 
-	![ユーザーの割り当て][201]
+    ![Assign User][201] 
 
-2. アプリケーションの一覧で **[Jive]** を選択します。
+2. In the applications list, select **Jive**.
 
-	![Configure Single Sign-On](./media/active-directory-saas-jive-tutorial/tutorial_jive_50.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-jive-tutorial/tutorial_jive_50.png) 
 
-3. 上部のメニューで **[ユーザー]** をクリックします。
+3. In the menu on the top, click **Users**.
 
-	![ユーザーの割り当て][203]
+    ![Assign User][203]
 
-4. ユーザーの一覧で **[Britta Simon]** を選択します。
+4. In the Users list, select **Britta Simon**.
 
-5. 下部にあるツール バーで **[割り当て]** をクリックします。
+5. In the toolbar on the bottom, click **Assign**.
 
-	![ユーザーの割り当て][205]
-
-
-### シングル サインオンのテスト
-
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
-
-アクセス パネルで [Jive] タイルをクリックすると、自動的に Jive アプリケーションにサインオンします。
+    ![Assign User][205]
 
 
-## その他のリソース
+### <a name="testing-single-sign-on"></a>Testing Single Sign-On
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+
+When you click the Jive tile in the Access Panel, you should get automatically signed-on to your Jive application.
+
+
+## <a name="additional-resources"></a>Additional Resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -317,4 +322,8 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 [204]: ./media/active-directory-saas-jive-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-jive-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

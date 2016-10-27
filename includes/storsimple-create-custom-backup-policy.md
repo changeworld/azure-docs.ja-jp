@@ -1,43 +1,48 @@
 <!--author=SharS last changed: 9/15/15-->
 
-#### カスタム バックアップ ポリシーを作成するには
+#### <a name="to-create-a-custom-backup-policy"></a>To create a custom backup policy
 
-1. **[デバイス]** ページで **[バックアップ ポリシー]** をクリックし、**[追加]** をクリックします。
+1. On the **Devices** page, click **Backup Policies** and then click **Add**.
 
-2. **[バックアップ ポリシーの追加]** ダイアログ ボックスの **[バックアップ ポリシーの定義]** で、次の操作を行います。
+2. In the **Add a backup policy** dialog box, under **Define your backup policy**:
 
-    1. バックアップ ポリシー名を指定します。
+    1. Specify a backup policy name.
 
-    2. このポリシーに追加するボリュームを選択します。ドロップダウン リストで複数のボリュームを選択して追加することもできます。
+    2. Select the volumes to be added to this policy. You can choose to add multiple volumes by selecting them from the drop-down list.
 
-    3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) をクリックします。
+    3. Click the check icon ![check icon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png).
 
-     ポリシーが正常に作成されると、通知が表示されます。[バックアップ ポリシー] ページも更新され、新しく作成されたポリシーが表示されます。
+     You will be notified after the policy is created successfully. The backup policies page will also be updated to show the newly created policy.
 
-4. ポリシー名 (最初の列) をクリックして、作成したポリシーの詳細にドリルダウンします。
+4. Click the policy name (first column) to drill down into details of the policy you just created.
 
-5. **[スケジュールの管理]** をクリックします。
+5. Click **manage schedules**.
 
-6. **[スケジュールの管理]** ダイアログ ボックスで、次の操作を行います。
+6. In the **Manage Schedules** dialog box:
 
-    1. **[新規作成]** を選択して、別のスケジュールを追加します。
+    1. Select **Create new** to add another schedule.
 
-    2. ドロップダウン リストから、バックアップの種類として**[ローカル]** または **[クラウド]** スナップショットを選択します。
+    2. From the drop-down list, choose the backup type as **local** or **cloud** snapshot.
 
-    3. バックアップの頻度を分、時間、日、または週で指定します。
+    3. Specify the backup frequency in minutes, hours, days, or weeks.
 
-    4. 保有期間を選択します。保存期間の選択肢はバックアップの頻度によって異なります。
+    4. Select a retention. The retention choices depend on the backup frequency.
  
-    5. ポリシーの開始日時を選択します。
+    5. Select the starting time and date for the policy.
 
-    6. ポリシーを有効にするチェック ボックスをオンにします。
+    6. Select the check box to enable the policy.
 
-7. チェック マーク ![チェック マーク アイコン](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) をクリックして完了します。
+7. Click the check icon ![check icon](./media/storsimple-add-backup-policy/HCS_CheckIcon-include.png) to finish.
 
-8. ポリシーの詳細が再び表示されます。**[保存]** をクリックして、このポリシーに加えた変更を保存します。ポリシーが保存されると、通知が表示されます。
+8. You will return to the policy details. Click **Save** to save the changes you made to this policy. You will be notified when the policy has been saved.
 
-9. **[バックアップ ポリシー]** ページに戻ります。バックアップ ポリシーの表形式の一覧が更新され、変更したポリシーが表示されます。
+9. Navigate back to the **Backup Policies** page. The tabular listing of the backup policies will be updated to display the modified policy.
 
-    ![Custom backup policy](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png)
+    ![Custom backup policy](./media/storsimple-create-custom-backup-policy/HCS_CustomBackupPolicyM-include.png).
+
+
+
+
+<!--HONumber=Oct16_HO2-->
 
 

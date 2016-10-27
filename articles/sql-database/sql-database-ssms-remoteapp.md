@@ -1,152 +1,153 @@
 <properties
-	pageTitle="Azure RemoteApp で SQL Server Management Studio を使用して SQL Database に接続する | Microsoft Azure"
-	description="このチュートリアルでは、Azure RemoteApp で SQL Server Management Studio を使用して、SQL Database に接続するときにセキュリティとパフォーマンスを確保する方法について説明します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="adhurwit"
-	manager=""/>
+    pageTitle="Connect to SQL Database using SQL Server Management Studio in Azure RemoteApp | Microsoft Azure"
+    description="Use this tutorial to learn how to use SQL Server Management Studio in Azure RemoteApp for security and performance when connecting to SQL Database"
+    services="sql-database"
+    documentationCenter=""
+    authors="adhurwit"
+    manager=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.workload="data"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/05/2016"
-	ms.author="adhurwit"/>
+    ms.service="sql-database"
+    ms.workload="data"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/05/2016"
+    ms.author="adhurwit"/>
 
-# Azure RemoteApp で SQL Server Management Studio を使用して SQL Database に接続する
 
-## はじめに  
-このチュートリアルでは、Azure RemoteApp で SQL Server Management Studio (SSMS) を使用して、SQL Database に接続する方法について説明します。Azure RemoteApp で SQL Server Management Studio を設定する手順を示し、その利点と、Azure Active Directory で使用できるセキュリティ機能について説明します。
+# <a name="use-sql-server-management-studio-in-azure-remoteapp-to-connect-to-sql-database"></a>Use SQL Server Management Studio in Azure RemoteApp to connect to SQL Database
 
-**推定所要時間:** 45分
+## <a name="introduction"></a>Introduction  
+This tutorial shows you how to use SQL Server Management Studio (SSMS) in Azure RemoteApp to connect to SQL Database. It walks you through the process of setting up SQL Server Management Studio in Azure RemoteApp, explains the benefits, and shows security features that you can use in Azure Active Directory.
 
-## Azure RemoteApp での SSMS
+**Estimated time to complete:** 45 minutes
 
-Azure RemoteApp は、アプリケーションを配布する Azure の RDS サービスです。詳細については、「[Azure RemoteApp とは](../remoteapp/remoteapp-whatis.md)」をご覧ください。
+## <a name="ssms-in-azure-remoteapp"></a>SSMS in Azure RemoteApp
 
-Azure RemoteApp で SSMS を実行すると、ローカルで実行した SSMS と同じエクスペリエンスが提供されます。
+Azure RemoteApp is an RDS service in Azure that delivers applications. You can learn more about it here: [What is RemoteApp?](../remoteapp/remoteapp-whatis.md)
 
-![Azure RemoteApp で実行している SSMS のスクリーンショット][1]
+SSMS running in Azure RemoteApp gives you the same experience as running SSMS locally.
 
+![Screenshot showing SSMS running in Azure RemoteApp][1]
 
 
-## メリット
 
-Azure RemoteApp で SSMS を使用すると、次のような多くのメリットがあります。
+## <a name="benefits"></a>Benefits
 
-- Azure SQL Server のポート 1433 を外部 (Azure の外部) に公開する必要がありません。
-- IP アドレスの追加と削除を Azure SQL Server ファイアウォールの内側だけにする必要がありません。
-- Azure RemoteApp のすべての接続は、暗号化されたリモート デスクトップ プロトコルを使用して、ポート 443 の HTTPS 経由で行われます。
-- マルチ ユーザー対応であり、拡張可能です。
-- SQL Database と同じリージョンに SSMS がある場合よりパフォーマンスが向上します。
-- ユーザー アクティビティ レポートを備えた Azure Active Directory の Premium エディションで Azure RemoteApp の使用を監査できます。
-- Multi-Factor Authentication (MFA) を有効にできます。
-- iOS、Android、Mac、Windows Phone、Windows PC など、サポートされる Azure RemoteApp クライアントを使用して、どこからでも SSMS にアクセスできます。
+There are many benefits to using SSMS in Azure RemoteApp, including:
 
+- Port 1433 on Azure SQL Server does not have to be exposed externally (outside of Azure).
+- No need to keep adding and removing IP addresses in the Azure SQL Server firewall.
+- All Azure RemoteApp connections occur over HTTPS on port 443 using encrypted Remote Desktop protocol
+- It is multi-user and can scale.
+- There is a performance gain from having SSMS in the same region as the SQL Database.
+- You can audit use of Azure RemoteApp with the Premium edition of Azure Active Directory which has user activity reports.
+- You can enable multi-factor authentication (MFA).
+- Access SSMS anywhere when using any of the supported Azure RemoteApp clients which includes iOS, Android, Mac, Windows Phone, and Windows PC’s.
 
-## Azure RemoteApp コレクションの作成
 
-ここでは、SSMS で Azure RemoteApp コレクションを作成する手順を示します。
+## <a name="create-the-azure-remoteapp-collection"></a>Create the Azure RemoteApp collection
 
+Here are the steps to create your Azure RemoteApp collection with SSMS:
 
-### 1\.イメージから新しい Windows 仮想マシンを作成する
-ギャラリーの "Windows Server Remote Desktop Session Host Windows Server 2012 R2" イメージを使用して、新しい VM を作成します。
 
+### <a name="1.-create-a-new-windows-vm-from-image"></a>1. Create a new Windows VM from Image
+Use the "Windows Server Remote Desktop Session Host Windows Server 2012 R2" Image from the Gallery to make your new VM.
 
-### 2\.SQL Express から SSMS をインストールする
 
-新しい VM で [Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/ja-JP/download/details.aspx?id=42299) のダウンロード ページに移動します。
+### <a name="2.-install-ssms-from-sql-express"></a>2. Install SSMS from SQL Express
 
-SSMS のみをダウンロードするオプションがあります。ダウンロードした後、インストール ディレクトリに移動し、セットアップを実行して SSMS をインストールします。
+Go onto the new VM and navigate to this download page: [Microsoft® SQL Server® 2014 Express](https://www.microsoft.com/en-us/download/details.aspx?id=42299)
 
-SQL Server 2014 Service Pack 1 もインストールする必要があります。[Microsoft SQL Server 2014 Service Pack 1 (SP1)](https://www.microsoft.com/ja-JP/download/details.aspx?id=46694) はこちらでダウンロードできます。
+There is an option to only download SSMS. After download, go into the install directory and run Setup to install SSMS.
 
-SQL Server 2014 Service Pack 1 には、Azure SQL Database を使用するための基本機能が含まれます。
+You also need to install SQL Server 2014 Service Pack 1. You can download it here: [Microsoft SQL Server 2014 Service Pack 1 (SP1)](https://www.microsoft.com/en-us/download/details.aspx?id=46694)
 
+SQL Server 2014 Service Pack 1 includes essential functionality for working with Azure SQL Database.
 
-### 3\.Validate スクリプトと Sysprep を実行する
 
-VM のデスクトップに Validate という名前の PowerShell スクリプトがあります。これをダブルクリックして実行します。このスクリプトは、VM がアプリケーションのリモート ホストに使用できる状態かどうかを検証します。検証が完了すると、sysprep を実行するかどうかを尋ねられるので実行します。
+### <a name="3.-run-validate-script-and-sysprep"></a>3. Run Validate script and Sysprep
 
-sysprep は、完了すると VM をシャットダウンします。
+On the desktop of the VM is a PowerShell script called Validate. Run this by double-clicking. It will verify that the VM is ready to be used for remote hosting of applications. When verification is complete, it will ask to run sysprep - choose to run it.
 
-Azure RemoteApp イメージの作成方法の詳細については、「[How to create a RemoteApp template image in Azure](http://blogs.msdn.com/b/rds/archive/2015/03/17/how-to-create-a-remoteapp-template-image-in-azure.aspx)」をご覧ください。
+When sysprep completes, it will shut down the VM.
 
+To learn more about creating a Azure RemoteApp image, see: [How to create a RemoteApp template image in Azure](http://blogs.msdn.com/b/rds/archive/2015/03/17/how-to-create-a-remoteapp-template-image-in-azure.aspx)
 
-### 4\.イメージをキャプチャする
 
-VM の実行が停止したら、現在のポータルで探してキャプチャします。
+### <a name="4.-capture-image"></a>4. Capture image
 
-イメージのキャプチャの詳細については、「[クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする](../virtual-machines/virtual-machines-windows-classic-capture-image.md)」をご覧ください。
+When the VM has stopped running, find it in the current portal and capture it.
 
+To learn more about capturing an image, see [Capture an image of an Azure Windows virtual machine created with the classic deployment model](../virtual-machines/virtual-machines-windows-classic-capture-image.md)
 
-### 5\.Azure RemoteApp テンプレート イメージに追加する
 
-現在のポータルの Azure RemoteApp セクションで、[テンプレート イメージ] タブに移動して、[追加] をクリックします。ポップアップ ボックスで [Virtual Machines ライブラリからイメージをインポートします] を選択し、先に作成したイメージを選びます。
+### <a name="5.-add-to-azure-remoteapp-template-images"></a>5. Add to Azure RemoteApp Template images
 
+In the Azure RemoteApp section of the current portal, go to the Template Images tab and click Add. In the pop-up box, select "Import an image from your Virtual Machines library" and then choose the Image that you just created.
 
 
-### 6\.クラウド コレクションを作成する
 
-現在のポータルで、新しい Azure RemoteApp クラウド コレクションを作成します。前の手順でインポートした、SSMS がインストールされているテンプレート イメージを選びます。
+### <a name="6.-create-cloud-collection"></a>6. Create cloud collection
 
-![新しいクラウド コレクションの作成][2]
+In the current portal, create a new Azure RemoteApp Cloud Collection. Choose the Template Image that you just imported with SSMS installed on it.
 
+![Create new cloud collection][2]
 
-### 7\.SSMS を発行する
 
-新しいクラウド コレクションの [発行] タブで、[スタート] メニューから [アプリケーションの発行] を選び、リストから SSMS を選びます。
+### <a name="7.-publish-ssms"></a>7. Publish SSMS
 
-![アプリの発行][5]
+On the Publishing tab of your new cloud collection, select Publish an application from the Start Menu and then choose SSMS from the list.
 
-### 8\.Add users (ユーザーを追加する)
+![Publish App][5]
 
-[ユーザー アクセス] タブでは、SSMS のみを含むこの Azure RemoteApp コレクションにアクセスできるユーザーを選択できます。
+### <a name="8.-add-users"></a>8. Add users
 
-![ユーザーの追加][6]
+On the User Access tab you can select the users that will have access to this Azure RemoteApp collection which only includes SSMS.
 
+![Add User][6]
 
-### 9\.Azure RemoteApp クライアント アプリケーションをインストールする
 
-Azure RemoteApp は、[Azure RemoteApp のダウンロード ページ](https://www.remoteapp.windowsazure.com/en/clients.aspx)からダウンロードしてインストールできます。
+### <a name="9.-install-the-azure-remoteapp-client-application"></a>9. Install the Azure RemoteApp client application
 
+You can download and install a Azure RemoteApp client here: [Download | Azure RemoteApp](https://www.remoteapp.windowsazure.com/en/clients.aspx)
 
 
-## Azure SQL Server の構成
 
-必要な構成は、ファイアウォールで Azure サービスを有効にすることだけです。このソリューションを使用する場合は、ファイアウォールを開くために IP アドレスを追加する必要はありません。SQL Server に対して許可されるネットワーク トラフィックは、他の Azure サービスからのものです。
+## <a name="configure-azure-sql-server"></a>Configure Azure SQL Server
 
+The only configuration needed is to ensure that Azure Services is enabled for the firewall. If you use this solution, then you do not need to add any IP addresses to open the firewall. The network traffic that is allowed to the SQL Server is from other Azure services.
 
-![Azure の許可][4]
 
+![Azure Allow][4]
 
 
-## Multi-Factor Authentication (MFA)
 
-特にこのアプリケーションを対象にして MFA を有効にできます。Azure Active Directory の [アプリケーション] タブに移動します。Microsoft Azure RemoteApp のエントリがあります。そのアプリケーションをクリックして構成する場合、次のページでこのアプリケーションに対して MFA を有効にできます。
+## <a name="multi-factor-authentication-(mfa)"></a>Multi-Factor Authentication (MFA)
 
-![MFA の有効化][3]
+MFA can be enabled for this application specifically. Go to the Applications tab of your Azure Active Directory. You will find an entry for Microsoft Azure RemoteApp. If you click that application and then configure, you will see the page below where you can enable MFA for this application.
 
+![Enable MFA][3]
 
 
-## Azure Active Directory Premium でのユーザー アクティビティの監査
 
-Azure AD Premium がない場合は、ディレクトリの [ライセンス] セクションで有効にする必要があります。Premium を有効にすると、ユーザーを Premium レベルに割り当てることができます。
+## <a name="audit-user-activity-with-azure-active-directory-premium"></a>Audit user activity with Azure Active Directory Premium
 
-Azure Active Directory でユーザーに移動すると、[アクティビティ] タブに移動して Azure RemoteApp へのログイン情報を確認できます。
+If you do not have Azure AD Premium, then you have to turn it on in the Licenses section of your directory. With Premium enabled, you can assign users to the Premium level.
 
+When you go to a user in your Azure Active Directory, you can then go to the Activity tab to see login information to Azure RemoteApp.
 
 
-## 次のステップ
 
-以上の手順をすべて完了すると、Azure RemoteApp クライアントを実行し、割り当てられたユーザーでログインできるようになります。アプリケーションの 1 つとして SSMS が表示され、Azure SQL Server にアクセスできるコンピューターにインストールされている場合と同様に実行できます。
+## <a name="next-steps"></a>Next steps
 
-SQL Database に接続する方法の詳細については、「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」をご覧ください。
+After completing all the above steps, you will be able to run the Azure RemoteApp client and log-in with an assigned user. You will be presented with SSMS as one of your applications, and you can run it as you would if it were installed on your computer with access to Azure SQL Server.
 
+For more information on how to make the connection to SQL Database, see [Connect to SQL Database with SQL Server Management Studio and perform a sample T-SQL query](sql-database-connect-query-ssms.md).
 
-今のところは以上ですべてです。機能を有効にご活用ください。
+
+That's everything for now. Enjoy!
 
 
 
@@ -158,4 +159,8 @@ SQL Database に接続する方法の詳細については、「[SQL Server Mana
 [5]: ./media/sql-database-ssms-remoteapp/publish.png
 [6]: ./media/sql-database-ssms-remoteapp/user.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

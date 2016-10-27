@@ -1,78 +1,83 @@
 <properties
-	pageTitle="Azure Active Directory へのカスタム ドメイン名の追加とフェデレーション サインオンの設定 | Microsoft Azure"
-	description="企業のドメイン名を Azure Active Directory に追加し、Azure Active Directory とオンプレミスのフェデレーション ソリューションの間でのフェデレーション サインオンを設定する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="jeffsta"
-	manager="femila"
-	editor=""/>
+    pageTitle="Add your custom domain name and set up federated sign-on to Azure Active Directory | Microsoft Azure"
+    description="How to add your company's domain names to Azure Active Directory, and how set up federated sign-on between Azure Active Directory and your on-premises federation solution."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeffsta"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="10/04/2016"
-	ms.author="curtand;jeffsta"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="10/04/2016"
+    ms.author="curtand;jeffsta"/>
 
-# Azure Active Directory へのカスタム ドメイン名の追加
 
-"contoso.com" などのカスタム ドメイン名を構成することで、contoso.com 内のユーザーは企業ネットワークからフェデレーション シングル サインオンを実行できるようになります。既に Active Directory フェデレーション サービス (AD FS) やその他のフェデレーション サーバーが企業ネットワーク上で稼働している場合は、Azure AD Connect ツールを使用して、カスタム ドメイン名を利用できるように Azure AD を構成できます。Azure AD Connect では、新しい AD FS 環境をデプロイし、それを Azure AD へのフェデレーション シングル サインオン向けに構成することができます。
+# <a name="add-your-custom-domain-name-to-azure-active-directory"></a>Add your custom domain name to Azure Active Directory
 
-AD FS やその他のフェデレーション サーバーを所有しておらず、デプロイする予定もない場合は、「[Azure Active Directory へのカスタム ドメイン名の追加](active-directory-add-domain.md)」の手順に従ってください。
+You can configure a custom domain name, such as ‘contoso.com,’ so that users in contoso.com can have a federated single sign-on experience from your corporate network. If you already have Active Directory Federation Services (AD FS) or a different federation server running on your corporate network, you can configure Azure AD to use your custom domain name using the Azure AD Connect tool. You can also use Azure AD Connect to deploy a new AD FS environment, and configure that for federated single sign-on to Azure AD.
 
-## カスタム ドメイン名をディレクトリに追加する
+If you do not have and do not plan to deploy AD FS or another federation server, follow these instructions: [Add a custom domain name to Azure Active Directory](active-directory-add-domain.md).
 
-1. Azure AD ディレクトリのグローバル管理者となっているユーザー アカウントで [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
+## <a name="add-a-custom-domain-name-to-your-directory"></a>Add a custom domain name to your directory
 
-2. **[Active Directory]** でディレクトリを開き、**[ドメイン]** タブをクリックします。
+1. Sign in to the [Azure classic portal](https://manage.windowsazure.com/) with a user account that is a global administrator of your Azure AD directory.
 
-3. コマンド バーで **[追加]** を選択し、"contoso.com" のようなカスタム ドメインの名前を入力します。必ず、.com、.net、その他の上位拡張子を含めます。
+2. In **Active Directory**, open your directory and select the **Domains** tab.
 
-4. **[このドメインを構成して、ローカル Active Directory にシングル サインオンします]** チェック ボックスをオンにします。
+3. On the command bar, select **Add**, and then enter the name of your custom domain, such as 'contoso.com'. Be sure to include the .com, .net, or other top-level extension.
 
-5. **[追加]** を選択します。
+4. Select the **I plan to configure this domain for single sign-on with my local Active Directory** checkbox.
 
-Azure AD Connect ツールを実行して、Azure AD がドメインの検証に使う DNS エントリを取得します。DNS エントリは、ウィザードの **Azure AD ドメイン**の手順で表示されます。ウィザードの手順の表示内容は[こちらの手順](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation)で確認できます。Azure AD Connect ツールをお持ちでない場合は、[こちらからダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)できます。
+5. Select **Add**.
 
-## ドメインのドメイン名レジストラーで DNS エントリを追加する
+Run the Azure AD Connect tool to get the DNS entry that Azure AD will use to verify the domain. You will see the DNS entry in the **Azure AD Domain** step in the wizard. You can see what that step in the wizard looks like [in these instructions](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation). If you do not have the Azure AD Connect tool, you can [download it here](http://go.microsoft.com/fwlink/?LinkId=615771).
 
-Azure AD でカスタム ドメイン名を使用できるようにするために、次の手順としてドメインの DNS ゾーン ファイルを更新します。これにより、組織がそのカスタム ドメイン名を所有していることを Azure AD で検証できます。
+## <a name="add-the-dns-entry-at-the-domain-name-registrar-for-the-domain"></a>Add the DNS entry at the domain name registrar for the domain
 
-1. ドメイン名のドメイン名レジストラーの Web サイトにサインインします。アクセス権がない場合は、組織内でアクセス権を持つ人物またはチームに連絡し、手順 2. の実行と、完了後の連絡を依頼します。
+The next step to use your custom domain name with Azure AD is to update the DNS zone file for the domain. This enables Azure AD to verify that your organization owns the custom domain name.
 
-2. Azure AD から提供された DNS エントリを追加し、ドメインの DNS ゾーン ファイルを更新します。この DNS エントリにより、Azure AD でドメインの所有権を検証することが可能になります。メール ルーティングや Web ホスティングなどの動作は変更されません。
+1. Sign in to the website for domain name registrar for your domain name. If you don't have access to do this, ask the person or team in your organization who has this access to complete step 2 and to let you know when it is completed.
 
-この手順に関するヘルプについては、[一般的な DNS レジストラーで DNS エントリを追加する手順](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)に関するページを参照してください。
+2. Update the DNS zone file for the domain by adding the DNS entry provided to you by Azure AD. This DNS entry enables Azure AD to verify your ownership of the domain. The DNS entry doesn't change any behaviors such as mail routing or web hosting.
 
-## Azure AD との間でドメイン名を検証する
+For help with this step, read [Instructions for adding a DNS entry at popular DNS registrars](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)
 
-DNS エントリを追加すると、Azure AD でドメイン名を検証することができるようになります。
+## <a name="verify-the-domain-name-with-azure-ad"></a>Verify the domain name with Azure AD
 
-ドメインを検証するには、Azure AD Connect ウィザードの **[Azure AD ドメイン]** の手順で **[次へ]** をクリックします。Azure AD はドメインの DNS ゾーン ファイル内の DNS エントリを探します。DNS レコードが反映された後でないと、Azure AD はドメイン名を検証しません。反映には数秒しかかからない場合がほとんどですが、1 時間以上かかる場合もあります。最初から検証が機能しない場合は、後でもう一度やり直してください。
+Once you have added the DNS entry, you are ready to verify the domain name with Azure AD.
 
-次に、Azure AD Connect ウィザードの残りの手順を進めます。これにより、ユーザーが Windows Server AD から Azure AD に同期されます。フェデレーション用に構成されたドメイン内の同期済みユーザーは、企業ネットワークから Azure AD へのフェデレーション シングル サインオンを実行できるようになります。
+To verify the domain, select **Next** on the **Azure AD Domain** step of the Azure AD Connect wizard. Azure AD will look for the DNS entry in the DNS zone file for the domain. Azure AD only verify the domain name once the DNS records have propagated. Propagation often takes only seconds, but it can sometimes take an hour or more. If verification doesn’t work the first time, try again later.
 
-## トラブルシューティング
+Then, proceed with the remaining steps in the Azure AD Connect wizard. This will synchronize users from your Windows Server AD to Azure AD. Synchronized users in the domain that you configured for federation will be able to get a federated single sign-on experience from your corporate network to Azure AD.
 
-カスタム ドメイン名を検証できない場合は、次のことを試してください。以下では、最も一般的な原因から順に列挙します。
+## <a name="troubleshooting"></a>Troubleshooting
 
-1.	**1 時間待つ**: DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。これに 1 時間以上かかる場合があります。
+If you can't verify a custom domain name, try the following. We'll start with the most common and work down to the least common.
 
-2.	**DNS レコードが正しく入力されていることを確認する**: ドメインのドメイン名レジストラーの Web サイトで、この手順を実行します。Azure AD は、DNS エントリが DNS ゾーン ファイルに存在しない場合、または Azure AD によって提供された DNS エントリと完全に一致しない場合は、ドメイン名を検証できません。ドメインの DNS レコードをドメイン名レジストラーで更新するアクセス権がない場合は、組織内でそのアクセス権を持つ人物またはチームと DNS エントリを共有し、DNS エントリの追加を依頼します。
+1.  **Wait an hour**. DNS records need to propagate before Azure AD can verify the domain. This can take an hour or more.
 
-3.	**Azure AD の別のディレクトリからドメイン名を削除する**: ドメイン名は、1 つのディレクトリ内だけでしか検証できません。ドメイン名が以前に他のディレクトリで検証されていた場合は、新しいディレクトリで検証する前に、前のディレクトリ内から削除されている必要があります。ドメイン名の削除については、[カスタム ドメイン名の管理](active-directory-add-manage-domain-names.md)に関する記事をご覧ください。
+2.  **Ensure the DNS record was entered, and that it is correct**. Complete this step at the website for the domain name registrar for the domain. Azure AD cannot verify the domain name if the DNS entry is not present in the DNS zone file, or if it is not an exact match with the DNS entry that Azure AD provided you. If you do not have access to update DNS records for the domain at the domain name registrar, share the DNS entry with the person or team at your organization who has this access, and ask them to add the DNS entry.
 
-## カスタム ドメイン名を追加する
+3.  **Delete the domain name from another directory in Azure AD**. A domain name can be verified in only a single directory. If a domain name was previously verified in another directory, it must be deleted there before it can be verified in your new directory. To learn about deleting domain names, read [Manage custom domain names](active-directory-add-manage-domain-names.md).
 
-複数のカスタム ドメイン名 (たとえば "contoso.com" と "contosobank.com" など) を使用する場合、ドメイン名は最大 900 個まで使用することができます。この記事の同じ手順に従って各ドメイン名を追加してください。
+## <a name="add-more-custom-domain-names"></a>Add more custom domain names
 
-## 次のステップ
+If your organization uses multiple custom domain names, such as ‘contoso.com’ and ‘contosobank.com’, you can add them up to a maximum of 900 domain names. Use the same steps in this article to add each of your domain names.
 
--   [カスタム ドメイン名を管理する](active-directory-add-manage-domain-names.md)
--   [Azure AD のドメイン管理の概念を理解する](active-directory-add-domain-concepts.md)
--   [ユーザーがサインインしたときに会社のブランドを表示する](active-directory-add-company-branding.md)
--   [PowerShell を使用して Azure AD のドメイン名を管理する](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_1005_2016-->
+-   [Manage custom domain names](active-directory-add-manage-domain-names.md)
+-   [Learn about domain management concepts in Azure AD](active-directory-add-domain-concepts.md)
+-   [Show your company's branding when your users sign in](active-directory-add-company-branding.md)
+-   [Use PowerShell to manage domain names in Azure AD](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

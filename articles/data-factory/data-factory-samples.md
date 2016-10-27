@@ -1,121 +1,124 @@
-<properties 	
-	pageTitle="Azure Data Factory - サンプル" 
-	description="Azure Data Factory サービスに付属するサンプルについて詳細に説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+<properties     
+    pageTitle="Azure Data Factory - Samples" 
+    description="Provides details about samples that ship with the Azure Data Factory service." 
+    services="data-factory" 
+    documentationCenter="" 
+    authors="spelluru" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/08/2016" 
-	ms.author="spelluru"/>
+    ms.service="data-factory" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/08/2016" 
+    ms.author="spelluru"/>
 
-# Azure Data Factory - サンプル
 
-## GitHub のサンプル
-[GitHub の Azure-DataFactory リポジトリ](https://github.com/azure/azure-datafactory)には、Azure Data Factory サービスを迅速に導入sしたり、スクリプトを変更して独自のアプリケーションで使用したりするのに役立ついくつかのサンプルがあります。Samples\\JSON フォルダーには、一般的なシナリオ用の JSON スニペットが含まれています。
+# <a name="azure-data-factory---samples"></a>Azure Data Factory - Samples
 
-| サンプル | Description |
+## <a name="samples-on-github"></a>Samples on GitHub
+The [GitHub Azure-DataFactory repository](https://github.com/azure/azure-datafactory) contains several samples that help you quickly ramp up with Azure Data Factory service (or) modify the scripts and use it in own application. The Samples\JSON folder contains JSON snippets for common scenarios.
+
+| Sample | Description |
 | :----- | :---------- | 
-| [ADF チュートリアル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) | このサンプルでは、Azure Data Factory を使用したログ ファイルの処理によってログ ファイルのデータから知見を得る方法をエンド ツー エンドでわかりやすく解説します。<br/><br/>このチュートリアルでは、Data Factory パイプラインでサンプル ログを収集、処理します。ログから得たデータを参照データで補強し、そのデータを変換することによって、最近開始されたマーケティング キャンペーンの有効性を評価します。 |
-| [JSON のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) | 一般的なシナリオにおける JSON の使用例を紹介したサンプルです。 | 
-| [Http Data Downloader サンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) | カスタム .NET アクティビティを使用して HTTP エンドポイントから Azure Blob Storage にデータをダウンロードするサンプルです。 |
-| [Cross AppDomain Dot Net Activity サンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) | ADF ランチャーで使用されているアセンブリ バージョン (WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x など) に限定されないカスタム .NET アクティビティを作成することができます。 |
-| [R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) | RScript.exe の呼び出しに使用できる Data Factory カスタム アクティビティが含まれています。このサンプルは、既に R がインストールされている独自の (オンデマンドではない) HDInsight クラスターでのみ正しく動作します。 |
-| [HDInsight Hadoop クラスターでの Spark ジョブの呼び出し](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) | MapReduce アクティビティを使用して Spark プログラムを起動する方法を紹介するサンプルです。Spark プログラムは、単に、1 つの Azure BLOB コンテナーから別のコンテナーにデータをコピーします。 |
-| [Azure Machine Learning バッチ スコアリング アクティビティを使用した Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-AzureMLBatchScoringActivity) | Twitter のセンチメント分析、スコア付け、予測などを実行する Azure Machine Learning モデルを AzureMLBatchScoringActivity で呼び出す方法について紹介したサンプルです。 |
-| [カスタム アクティビティを使用した Twitter 分析](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) | Twitter のセンチメント分析、スコア付け、予測などを実行する Azure Machine Learning モデルをカスタム .NET アクティビティで呼び出す方法について紹介したサンプルです。 |
-| [Azure Machine Learning のパラメーター化パイプライン](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ParameterizedPipelinesForAzureML/) | それぞれ異なるリージョン パラメーターを使ってスコア付けと再トレーニングを行う N 個のパイプラインをデプロイするエンド ツー エンドの C# コードを紹介したサンプルです。一連のリージョンは、このサンプルに含まれている parameters.txt ファイルから取得します。 | 
-| [Azure Stream Analytics ジョブのリファレンス データの更新](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs) | Azure Data Factory と Azure Stream Analytics を連携させ、リファレンス データを使ってクエリを実行したり、リファレンス データの定期的更新をセットアップしたりする方法を紹介するサンプルです。 |
-| [オンプレミスの Hortonworks Hadoop を使用したハイブリッド パイプライン](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) | Data Factory でジョブを実行するためのコンピューティング ターゲットとしてオンプレミスの Hadoop クラスターを使用するサンプルです。HDInsight ベースの Hadoop クラスターなど、他のコンピューティング ターゲットをクラウドに追加する感覚でオンプレミスの Hadoop クラスターを使用します。 |
-| [JSON 変換ツール](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) | 2015-07-01-preview 未満のバージョンの JSON を最新または 2015-07-01-preview (既定) に変換するツールです。 |  
-| [U-SQL サンプル入力ファイル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) | このサンプル ファイルは、U-SQL アクティビティで使用します。 | 
+| [ADF Walkthrough](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) | This sample provides an end-to-end walkthrough for processing log files using Azure Data Factory to turn data from log files into insights. <br/><br/>In this walkthrough, the Data Factory pipeline collects sample logs, processes and enriches the data from logs with reference data, and transforms the data to evaluate the effectiveness of a marketing campaign that was recently launched. |
+| [JSON samples](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) | This sample provides JSON examples for common scenarios. | 
+| [Http Data Downloader Sample](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) | This sample showcases downloading of data from an HTTP endpoint to Azure Blob Storage using custom .NET activity. |
+| [Cross AppDomain Dot Net Activity Sample](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) | This sample allows you to author a custom .NET activity that is not constrained to assembly versions used by the ADF launcher (e.g., WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x, etc.). |
+| [Run R script](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample) |  This sample includes the Data Factory custom activity that can be used to invoke RScript.exe. This sample works only with your own (not on-demand) HDInsight cluster that already has R Installed on it. |
+| [Invoke Spark jobs on HDInsight Hadoop cluster](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/Spark) | This sample shows how to use MapReduce activity to invoke a Spark program. The spark program just copies data from one Azure Blob container to another. |
+| [Twitter Analysis using Azure Machine Learning Batch Scoring Activity](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-AzureMLBatchScoringActivity) | This sample shows how to use AzureMLBatchScoringActivity to invoke an Azure Machine Learning model that performs twitter sentiment analysis, scoring, prediction etc. |
+| [Twitter Analysis using custom activity](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |  This sample shows how to use a custom .NET activity to invoke an Azure Machine Learning model that performs twitter sentiment analysis, scoring, prediction etc. |
+| [Parameterized Pipelines for Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ParameterizedPipelinesForAzureML/) | The sample provides an end-to-end C# code to deploy N pipelines for scoring and retraining each with a different region parameter where the list of regions is coming from a parameters.txt file which is included with this sample. | 
+| [Reference Data Refresh for Azure Stream Analytics jobs](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs) |  This sample shows how to leverage Azure Data Factory and Azure Stream Analytics together to run the queries with reference data and setup the refresh for reference data on a schedule. |
+| [Hybrid Pipeline with On-premises Hortonworks Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HybridPipelineWithOnPremisesHortonworksHadoop) | The sample uses an on-premises Hadoop cluster as a compute target for running jobs in Data Factory just like you would add other compute targets like an HDInsight based Hadoop cluster in cloud. |
+| [JSON Conversion Tool](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSONConversionTool) | This tool allows you to convert JSONs from version prior to 2015-07-01-preview to latest or 2015-07-01-preview (default). |  
+| [U-SQL sample input file](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/U-SQL%20Sample%20Input%20File) |  This is a sample file used by an U-SQL activity. | 
 
 
 
-## Azure ポータルのサンプル
-データ ファクトリのホーム ページにある **[パイプラインのサンプル]** タイルを使用して、パイプラインのサンプルおよび関連付けられているエンティティ (データセットおよびリンクされたサービス) をデータ ファクトリにデプロイできます。
+## <a name="samples-in-azure-portal"></a>Samples in Azure Portal
+You can use the **Sample pipelines** tile on the home page of your data factory to deploy sample pipelines and their associated entities (datasets and linked services) into your data factory. 
 
-1. 新しいデータ ファクトリを作成するか、既存のデータ ファクトリを開きます。データ ファクトリを作成する手順については、「[Azure Data Factory を使ってみる](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#CreateDataFactory)」を参照してください
-2. データ ファクトリの **[Data Factory]** ブレードで、**[パイプラインのサンプル]** タイルをクリックします。
+1. Create a new data factory or open an existing data factory. See [Getting started with Azure Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#CreateDataFactory) for steps to create a data factory.
+2. In the **DATA FACTORY** blade for the data factory, click the **Sample pipelines** tile.
 
-	![サンプル パイプライン タイル](./media/data-factory-samples/SamplePipelinesTile.png)
+    ![Sample pipelines tile](./media/data-factory-samples/SamplePipelinesTile.png)
 
-2. **[パイプラインのサンプル]** ブレードで、デプロイする**サンプル**をクリックします。
-	
-	![サンプル パイプライン ブレード](./media/data-factory-samples/SampleTile.png)
+2. In the **Sample pipelines** blade, click the **sample** that you want to deploy. 
+    
+    ![Sample pipelines blade](./media/data-factory-samples/SampleTile.png)
 
-3. このサンプルの構成設定を指定します。たとえば、Azure ストレージ アカウント名とアカウント キー、Azure SQL サーバーの名前、データベース、ユーザー ID、パスワードなどです。
+3. Specify configuration settings for the sample. For example, your Azure storage account name and account key, Azure SQL server name, database, User ID, and password, etc... 
 
-	![サンプル ブレード](./media/data-factory-samples/SampleBlade.png)
+    ![Sample blade](./media/data-factory-samples/SampleBlade.png)
 
-4. 構成設定の指定が完了したら **[作成]** をクリックして、サンプルのパイプラインと、そのパイプラインで使用するリンクされたサービスとテーブルを作成またはデプロイします。
-5. 前に **[パイプラインのサンプル]** ブレードでクリックしたサンプルのタイルに、デプロイの状態が表示されます。
+4. After you are done with specifying the configuration settings, click **Create** to create/deploy the sample pipelines and linked services/tables used by the pipelines.
+5. You will see the status of deployment on the sample tile you clicked earlier on the **Sample pipelines** blade.
 
-	![デプロイ ステータス](./media/data-factory-samples/DeploymentStatus.png)
+    ![Deployment status](./media/data-factory-samples/DeploymentStatus.png)
 
-6. サンプルのタイルに**デプロイに成功した**ことを示すメッセージが表示されたら、**[パイプラインのサンプル]** ブレードを閉じます。
-5. **[Data Factory]** ブレードで、リンクされたサービス、データ セット、パイプラインがデータ ファクトリに追加されたことを確認できます。
+6. When you see the **Deployment succeeded** message on the tile for the sample, close the **Sample pipelines** blade.  
+5. On **DATA FACTORY** blade, you will see that linked services, data sets, and pipelines are added to your data factory.  
 
-	![[Data Factory] ブレード](./media/data-factory-samples/DataFactoryBladeAfter.png)
+    ![Data Factory blade](./media/data-factory-samples/DataFactoryBladeAfter.png)
    
-## Visual Studio のサンプル
+## <a name="samples-in-visual-studio"></a>Samples in Visual Studio
 
-### 前提条件
+### <a name="prerequisites"></a>Prerequisites
 
-コンピューターに以下がインストールされている必要があります。
+You must have the following installed on your computer: 
 
-- Visual Studio 2013 または Visual Studio 2015
-- Azure SDK for Visual Studio 2013 または Visual Studio 2015 をダウンロードします。[Azure ダウンロード ページ](https://azure.microsoft.com/downloads/)に移動し、**.NET** セクションの **[VS 2013]** または **[VS 2015]** をクリックします。
-- Visual Studio 用の最新の Azuer Data Factory プラグイン ([VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) または [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)) をダウンロードします。Visual Studio 2013 を使用している場合は、メニューで **[ツール]**、**[拡張機能と更新プログラム]**、**[オンライン]**、**[Visual Studio ギャラリー]**、**[Microsoft Azure Data Factory Tools for Visual Studio]**、**[更新]** の順にクリックして、プラグインを更新することもできます。
+- Visual Studio 2013 or Visual Studio 2015
+- Download Azure SDK for Visual Studio 2013 or Visual Studio 2015. Navigate to [Azure Download Page](https://azure.microsoft.com/downloads/) and click **VS 2013** or **VS 2015** in the **.NET** section.
+- Download the latest Azuer Data Factory plugin for Visual Studio : [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) or [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). If you are using Visual Studio 2013, you can also update the plugin by doing the following: On the menu, click **Tools** -> **Extensions and Updates** -> **Online** -> **Visual Studio Gallery** -> **Microsoft Azure Data Factory Tools for Visual Studio** -> **Update**.
 
-### Data Factory テンプレートの使用
+### <a name="use-data-factory-templates"></a>Use Data Factory Templates
 
-1. メニューの **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。
-2. **[新しいプロジェクト]** ダイアログ ボックスで、次の操作を行います。
-	1. **[テンプレート]** で **[DataFactory]** を選択します。
-	2. 右側のウィンドウで **[Data Factory テンプレート]** を選択します。
-	3. プロジェクトの**名前**を入力します。
-	4. プロジェクトの**場所**を選択します。
-	5. **[OK]** をクリックします。
+1. Click **File** on the menu, point to **New**, and click **Project**. 
+2. In the **New Project** dialog box, do the following: 
+    1. Select **DataFactory** under **Templates**. 
+    2. Select **Data Factory Templates** in the right pane. 
+    3. Enter a **name** for the project. 
+    4. Select a **location** for the project. 
+    5. Click **OK**. 
 
-	![[新しいプロジェクト] ダイアログ ボックス  
-](./media/data-factory-samples/vs-new-project-adf-templates.png)
-6. **[Data Factory テンプレート]** ダイアログ ボックスで、**[ユースケース テンプレート]** セクションからサンプル テンプレートを選択し、**[次へ]** を選択します。この後の手順では、**顧客プロファイリング** テンプレートの使用方法について説明します。他のサンプルでも手順は同じです。
+    ![New project dialog box](./media/data-factory-samples/vs-new-project-adf-templates.png)
+6. In the **Data Factory Templates** dialog box, select the sample template from the **Use-Case Templates** section, and click **Next**. The following steps walk you through using the **Customer Profiling** template. Steps are similar for the other sample(s). 
 
-	![Data Factory Templates dialog box](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
-7. **[Data Factory の構成]** ダイアログの **[Data Factory の基本]** ページで **[次へ]** をクリックします。
-8. **[データ ファクトリの構成]** ページで、次の操作を行います。
-	1. このチュートリアルの目的である **[Data Factory を新規作成する]** を選択します。**[既存のデータ ファクトリを使用する]** を選択することもできます。
-	2. データ ファクトリの**名前**を入力します。
-	3. データ ファクトリを作成する **Azure サブスクリプション**を選択します。
-	4. データ ファクトリの**リソース グループ**を選択します。
-	5. **リージョン**として **[米国西部]**、**[米国東部]** または **[北ヨーロッパ]** を選択します。
-	6. **[次へ]** をクリックします。
-9. **[データ ストアの構成]** ページで、既存の **Azure SQL Database** と **Azure ストレージ アカウント**を指定するか、それぞれ新規作成して、[次へ] をクリックします。
-10. **[コンピューティングの構成]** ページで、既定値を選択し、**[次へ]** をクリックします。
-11. **[概要]** ページで、すべての設定を確認し、**[次へ]** をクリックします。
-12. **[デプロイ ステータス]** ページで、デプロイが完了するまで待って、**[完了]** をクリックします。
-13. ソリューション エクスプローラーでプロジェクトを右クリックし、**[発行]** をクリックします。
-19. **[Microsoft アカウントの新規登録]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、**[サインイン]** をクリックします。
-20. 次のダイアログ ボックスが表示されます。
+    ![Data Factory Templates dialog box](./media/data-factory-samples/vs-data-factory-templates-dialog.png) 
+7. In the **Data Factory Configuration** dialog, click **Next** on the **Data Factory Basics** page.
+8. On the **Configure data factory** page, do the following: 
+    1. select **Create New Data Factory** for the purpose of this walkthrough. You can also select **Use existing data factory**.
+    2. Enter a **name** for the data factory.
+    3. Select the **Azure subscription** in which you want the data factory to be created. 
+    4. Select the **resource group** for the data factory.
+    5. Select the **West US**, **East US** or **North Europe** for the **region**.
+    6. Click **Next**. 
+9. In the **Configure data stores** page, specify an existing **Azure SQL database** and **Azure storage account** (or) create new ones, and click Next. 
+10. In the **Configure compute** page, select defaults, and click **Next**. 
+11. In the **Summary** page, review all settings, and click **Next**. 
+12. In the **Deployment Status** page, wait until the deployment is finished, and click **Finish**.
+13. Right-click project in the Solution Explorer, and click **Publish**. 
+19. If you see **Sign in to your Microsoft account** dialog box, enter your credentials for the account that has Azure subscription, and click **sign in**.
+20. You should see the following dialog box:
 
-	![[発行] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
+    ![Publish dialog box](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
 
-21. **[データ ファクトリの構成]** ページで、次の操作を行います。
-	1. **[既存のデータ ファクトリを使用する]** オプションが選択されていることを確認します。
-	2. 前述のテンプレートを使用する際に選択した**データ ファクトリ**を選択します。
-	6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。(**[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します)。
-23. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。
-24. 概要を確認し、**[次へ]** をクリックし、デプロイ プロセスを開始し、**[デプロイ ステータス]** を表示します。
-25. **[デプロイ ステータス]** ページに、デプロイメント プロセスのステータスが表示されます。デプロイメントが完了したら、[完了] をクリックします。
+21. In the **Configure data factory** page, do the following: 
+    1. Confirm that **Use existing data factory** option.
+    2. Select the **data factory** you had select when using the template above. 
+    6. Click **Next** to switch to the **Publish Items** page. (Press **TAB** to move out of the Name field to if the **Next** button is disabled.) 
+23. In the **Publish Items** page, ensure that all the Data Factories entities are selected, and click **Next** to switch to the **Summary** page.     
+24. Review the summary and click **Next** to start the deployment process and view the **Deployment Status**.
+25. In the **Deployment Status** page, you should see the status of the deployment process. Click Finish after the deployment is done. 
 
-Visual Studio を使用して Data Factory エンティティを作成し、Azure に発行する方法の詳細については、「[Visual Studio を使用した初めての Azure Data Factory パイプラインの作成](data-factory-build-your-first-pipeline-using-vs.md)」を参照してください。
+See [Build your first data factory (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) for details about using Visual Studio to author Data Factory entities and publishing them to Azure.          
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

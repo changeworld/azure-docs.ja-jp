@@ -1,60 +1,68 @@
 <properties
-	pageTitle="Azure AD Connect 同期: Synchronization Service Manager UI | Microsoft Azure"
-	description="Azure AD Connect の Synchronization Service Manager の [操作] タブについて"
-	services="active-directory"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure AD Connect sync: Synchronization Service Manager UI | Microsoft Azure"
+    description="Understand the Operations tab in the Synchronization Service Manager for Azure AD Connect."
+    services="active-directory"
+    documentationCenter=""
+    authors="andkjell"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/07/2016"
-	ms.author="andkjell"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/07/2016"
+    ms.author="billmath"/>
 
 
-# Azure AD Connect 同期: Synchronization Service Manager
 
-[操作](active-directory-aadconnectsync-service-manager-ui-operations.md) | [コネクタ](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [メタバース デザイナー](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [メタバース検索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)
+# <a name="azure-ad-connect-sync:-synchronization-service-manager"></a>Azure AD Connect sync: Synchronization Service Manager
+
+[Operations](active-directory-aadconnectsync-service-manager-ui-operations.md) | [Connectors](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [Metaverse Designer](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [Metaverse Search](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)
 --- | --- | --- | ---
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/operations.png)
 
-[操作] タブには、最近の操作の結果が表示されます。このタブは問題を理解し、解決するための鍵となります。
+The operations tab shows the results from the most recent operations. This tab is key to understand and troubleshoot issues.
 
-## [操作] タブに表示される情報を理解する
-上半分にはすべての実行が時系列で表示されます。既定では、操作ログには過去 7 日間の情報が保持されますが、この設定は[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)で変更できます。状態が成功になっていない実行を探したい場合があります。見出しをクリックすると、並べ替えを変更できます。
+## <a name="understand-the-information-visible-in-the-operations-tab"></a>Understand the information visible in the operations tab
+The top half shows all runs in chronic order. By default, the operations log keeps information about the last seven days, but this setting can be changed with the [scheduler](active-directory-aadconnectsync-feature-scheduler.md). You want to look for any run that does not show a success status. You can change the sorting by clicking the headers.
 
-**[Status]** (ステータス) 列は最も重要な情報であり、実行関連で最も深刻な問題を示します。最も一般的なステータスを調査の優先度に基づいて簡単にまとめると次のようになります (* はエラー文字列が入ることを意味します)。
+The **Status** column is the most important information and shows the most severe problem for a run. Here is a quick summary of the most common statuses in order of priority to investigate (where * indicate several possible error strings).
 
-状態 | コメント
+Status | Comment
 --- | ---
-stopped-* | 実行を完了できませんでした。たとえば、リモート システムがダウンし、連絡できない場合などです。
-stopped-error-limit | エラーの数が 5,000 を超えています。大量のエラーに起因し、実行が自動的に停止しました。
-completed-*-errors | 実行は完了しましたが、エラーが発生し (5,000 件未満)、調査が必要です。
-completed-*-warnings | 実行は完了しましたが、一部のデータが予想と異なります。エラーがある場合には通常、このメッセージは単なる症状の 1 つにすぎません。エラーを解決するまでは、警告を調査しないでください。
-成功 | 問題ありません。
+stopped-* | The run could not complete. For example, if the remote system is down and cannot be contacted.
+stopped-error-limit | There are more than 5,000 errors. The run was automatically stopped due to the large number of errors.
+completed-\*-errors | The run completed, but there are errors (fewer than 5,000) that should be investigated.
+completed-\*-warnings | The run completed, but some data is not in the expected state. If you have errors, then this message is usually only a symptom. Until you have addressed errors, you should not investigate warnings.
+success | No issues.
 
-行を選択すると、下の領域が更新され、実行の詳細が表示されます。下の領域の左端には、**Step #** (# は番号) という一覧が表示されることがあります。これは、フォレストに複数のドメインがあり、手順が各ドメインを表す場合にのみ表示されます。ドメイン名は **[Partition]** (パーティション) という見出しにあります。**[Synchronization Statistics (同期統計)]** には、処理された変更の数に関する詳細が表示されます。リンクをクリックすると、変更されたオブジェクトの一覧を取得できます。オブジェクトにエラーがある場合、**[Synchronization Errors (同期エラー)]** の下に表示されます。
+When you select a row, the bottom updates to show the details of that run. To the far left of the bottom, you might have a list saying **Step #**. This list only appears if you have multiple domains in your forest where each domain is represented by a step. The domain name can be found under the heading **Partition**. Under **Synchronization Statistics**, you can find more information about the number of changes that were processed. You can click the links to get a list of the changed objects. If you have objects with errors, those errors show up under **Synchronization Errors**.
 
-## [オペレーション] タブでエラーを解決する
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/errorsync.png) エラーがある場合、エラーのあるオブジェクトとエラー自体がリンクとなり、クリックすると詳細が表示されます。
+## <a name="troubleshoot-errors-in-operations-tab"></a>Troubleshoot errors in operations tab
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/errorsync.png)  
+When you have errors, both the object in error and the error itself are links that provides more information.
 
-まず、エラー文字列をクリックしてみます (上の画像の **sync-rule-error-function-triggered**)。最初にオブジェクトの概要が表示されます。実際のエラーを確認するには、**[スタック トレース]** ボタンをクリックします。このトレースにより、エラーのデバッグ レベル情報が表示されます。
+Start by clicking the error string (**sync-rule-error-function-triggered** in the picture). You are first presented with an overview of the object. To see the actual error, click the button **Stack Trace**. This trace provides debug level information for the error.
 
-**ヒント:** **[call stack information]** (コール スタック情報) ボックスで右クリックし、**[select all]** (すべて選択) を選択して、**[copy]** (コピー) を選択します。次に、スタックをコピーし、メモ帳など、普段利用しているエディターでエラーを確認できます。
+**TIP:** You can right-click in the **call stack information** box, choose **select all**, and **copy**. You can then copy the stack and look at the error in your favorite editor, such as Notepad.
 
-- エラー元が **SyncRulesEngine** の場合、コール スタック情報の最初にオブジェクトの全属性の一覧が表示されます。**InnerException =>** という見出しが表示されるまで下へスクロールします。![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/errorinnerexception.png) その次の行には、エラーが表示されます。上の図では、Fabrikam が作成したカスタムの同期規則がエラー元になっています。
+- If the error is from **SyncRulesEngine**, then the call stack information first has a list of all attributes on the object. Scroll down until you see the heading **InnerException =>**.  
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/errorinnerexception.png)  
+The line after shows the error. In the picture above, the error is from a custom Sync Rule Fabrikam created.
 
-エラー自体から十分な情報が得られない場合、データ自体を見る必要があります。オブジェクト識別子のあるリンクをクリックし、[システム全体でオブジェクトとそのデータをフォロー](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system)できます。
+If the error itself does not give enough information, then it is time to look at the data itself. You can click the link with the object identifier and [Follow an object and its data through the system](active-directory-aadconnectsync-service-manager-ui-connectors.md#follow-an-object-and-its-data-through-the-system).
 
-## 次のステップ
-[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
+## <a name="next-steps"></a>Next steps
+Learn more about the [Azure AD Connect sync](active-directory-aadconnectsync-whatis.md) configuration.
 
-「[オンプレミスの ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
+Learn more about [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

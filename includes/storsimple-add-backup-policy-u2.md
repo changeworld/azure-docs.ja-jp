@@ -1,29 +1,35 @@
 <!--author=v-sharos last changed: 11/06/15-->
 
-#### StorSimple のバックアップ ポリシーを追加するには
+#### <a name="to-add-a-storsimple-backup-policy"></a>To add a StorSimple backup policy
 
-1. デバイスの **[クイック スタート]** ページで、**[バックアップ ポリシー]** タブをクリックします。この操作により、**[バックアップ ポリシー]** ページが表示されます。
+1. On the device **Quick Start** page, click the **Backup Policies** tab. This will take you to the **Backup Policies** page.
 
-2. ページ下部にある **[追加]** をクリックして、バックアップ ポリシーの追加ウィザードを開始します。
+2. At the bottom of the page, click **Add** to start the Add Backup Policy wizard.
 
-    ![バックアップ ポリシー 1 の追加](./media/storsimple-add-backup-policy-u2/AddBackupPolicy1.png)
+    ![Add a backup policy 1](./media/storsimple-add-backup-policy-u2/AddBackupPolicy1.png)
 
-3. **[バックアップ ポリシーの追加]** ダイアログ ボックスの **[バックアップ ポリシーの定義]** で、次の操作を行います。
+3. In the **Add Backup Policy** dialog box, under **Define your backup policy**, do the following:
 
-    1. バックアップ ポリシーに 3 ～ 150 文字の名前を指定します。
-    2. チェック ボックスをオンにして、このバックアップ ポリシーに 1 つ以上のボリュームを割り当てます。別のクラウド サービス プロバイダーを使用しているボリュームは選択できないことに注意してください。複数のクラウド サービス プロバイダーを使用している場合は、最初の選択に基づいて、そのクラウド サービス プロバイダーにのみ属するボリュームが表示されます。これにより、特定のクラウド サービス プロバイダーに属するボリュームを 1 つのスナップショットにグループ化できます。
-    3. 矢印アイコン ![矢印アイコン](./media/storsimple-add-backup-policy-u2/HCS_ArrowIcon-include.png) をクリックして、次のページに進みます。
+    1. Specify a backup policy name that contains between 3 and 150 characters.
+    2. Click the check box(es) to assign one or more volumes to this backup policy. Note that you cannot select volumes that use different cloud service providers. If you are using multiple cloud service providers, based on your first selection, the list will show volumes belonging to only that cloud service provider. This will allow you to group volumes belonging to a single cloud service provider in a snapshot.
+    3. Click the arrow icon ![arrow icon](./media/storsimple-add-backup-policy-u2/HCS_ArrowIcon-include.png) to go to the next page.
 
-     ![バックアップ ポリシー 2 の追加](./media/storsimple-add-backup-policy-u2/AddBackupPolicy2.png)
+     ![Add a backup policy 2](./media/storsimple-add-backup-policy-u2/AddBackupPolicy2.png)
 
-4. **[スケジュールの定義]** で、以下を実行します。
-    1. **[バックアップの種類]** ボックスで、ドロップ ダウン リストから **[クラウド スナップショット]** または **[ローカル スナップショット]** を選択します。
-    2. バックアップの頻度を指定します (数値を指定し、ドロップ ダウン リストから **[日]** または **[週間]** を選択します。
-    3. 保持スケジュールを入力します。
-    4. バックアップ ポリシーの開始日時を入力します。  
-    6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) をクリックして、ポリシーを保存します。
+4. Under **Define a schedule**, do the following:
+    1. In the **Type of Backup** box, select **Cloud Snapshot** or **Local Snapshot** from the drop-down list.
+    2. Indicate the frequency of backups (specify a number and then choose **Days** or **Weeks** from the drop-down list.
+    3. Enter a retention schedule.
+    4. Enter a time and date for the backup policy to begin.  
+    6. Click the check icon ![check icon](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) to save the policy.
 
-**[バックアップ ポリシー]** ページの表形式のビューに、新たに追加したポリシーが表示されます。
+The newly added policy will be displayed in the tabular view on the **Backup Policies** page.
  
 
-<!---HONumber=AcomDC_1217_2015-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

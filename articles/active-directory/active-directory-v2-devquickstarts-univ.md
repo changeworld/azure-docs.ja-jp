@@ -1,28 +1,33 @@
 <properties
-	pageTitle="Azure AD v2.0 Windows ユニバーサル アプリ | Microsoft Azure"
-	description="サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Windows ユニバーサル アプリを構築する方法を説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+    pageTitle="Azure AD v2.0 Windows Universal App | Microsoft Azure"
+    description="How to build an Windows Universal app that signs users in with both personal Microsoft Account and work or school accounts."
+    services="active-directory"
+    documentationCenter=""
+    authors="dstrockis"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.topic="article"
-  	ms.tgt_pltfrm="mobile-windows-store"
-	ms.devlang="dotnet"
-	ms.date="02/20/2016"
-	ms.author="dastrock"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.topic="article"
+    ms.tgt_pltfrm="mobile-windows-store"
+    ms.devlang="dotnet"
+    ms.date="02/20/2016"
+    ms.author="dastrock"/>
 
-  # v2.0 エンドポイントを使用してサインインを Windows ユニバーサル アプリに追加する Windows ユニバーサル アプリのクイック スタート チュートリアルは、まだ準備ができていません...後でもう一度確認して、Twitter の @AzureAD から最新情報をチェックしてください。
+  
+# <a name="add-sign-in-to-a-windows-universal-app-using-the-v2.0-endpoint"></a>Add sign-in to a Windows Universal app using the v2.0 endpoint
+  The quick-start tutorial for Windows Universal apps isn't quite ready... Check back soon & look for updates from @AzureAD on Twitter.
 
 > [AZURE.NOTE]
-	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
-	
-	## Get security updates for our products
+    Not all Azure Active Directory scenarios & features are supported by the v2.0 endpoint.  To determine if you should use the v2.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).
+    
+    ## Get security updates for our products
 
-セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
+We encourage you to get notifications of when security incidents occur by visiting [this page](https://technet.microsoft.com/security/dd252948) and subscribing to Security Advisory Alerts.
 
-<!---HONumber=AcomDC_0601_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

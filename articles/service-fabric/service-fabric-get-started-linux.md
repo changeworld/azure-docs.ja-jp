@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Linux での開発環境のセットアップ | Microsoft Azure"
-   description="Linux にランタイムと SDK をインストールし、ローカル開発クラスターを作成します。このセットアップを終えれば、アプリケーションを構築する準備は完了です。"
+   pageTitle="Set up your development environment on Linux | Microsoft Azure"
+   description="Install the runtime and SDK and create a local development cluster on Linux. After completing this setup, you will be ready to build applications."
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -16,7 +16,8 @@
    ms.date="09/26/2016"
    ms.author="seanmck"/>
 
-# Linux で開発環境を準備する
+
+# <a name="prepare-your-development-environment-on-linux"></a>Prepare your development environment on Linux
 
 
 > [AZURE.SELECTOR]
@@ -24,77 +25,77 @@
 - [Linux](service-fabric-get-started-linux.md)
 - [OSX](service-fabric-get-started-mac.md)
 
- Linux の開発コンピューターに [Azure Service Fabric アプリケーション](service-fabric-application-model.md)をデプロイして実行するには、ランタイムと共通 SDK をインストールする必要があります。また、必要に応じて Java 用 SDK と .NET Core 用 SDK をインストールすることもできます。
+ To deploy and run [Azure Service Fabric applications](service-fabric-application-model.md) on your Linux development machine, install the runtime and common SDK. You can also install optional SDKs for Java and .NET Core.
 
-## 前提条件
-### サポートされるオペレーティング システムのバージョン
-開発では、次のオペレーティング システムのバージョンがサポートされます。
+## <a name="prerequisites"></a>Prerequisites
+### <a name="supported-operating-system-versions"></a>Supported operating system versions
+The following operating system versions are supported for development:
 
 - Ubuntu 16.04 (Xenial Xerus)
 
-## apt ソースを更新する
+## <a name="update-your-apt-sources"></a>Update your apt sources
 
-apt get を実行して SDK および関連付けられたランタイム パッケージをインストールするために、まず apt ソースを更新する必要があります。
+To install the SDK and the associated runtime package via apt-get, you must first update your apt sources.
 
-1. ターミナルを開きます。
-2. ソース リストに Service Fabric リポジトリを追加します。
+1. Open a terminal.
+2. Add the Service Fabric repo to your sources list.
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 
-3. apt キーリングに新しい GPG キーを追加します。
+3. Add the new GPG key to your apt keyring.
 
     ```bash
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     ```
 
-4. 新しく追加されたリポジトリに基づいてパッケージ リストを更新します。
+4. Refresh your package lists based on the newly added repositories.
 
     ```bash
     sudo apt-get update
     ```
 
-## SDK をインストールしてセットアップする
+## <a name="install-and-set-up-the-sdk"></a>Install and set up the SDK
 
-ソースが更新されたら、SDK をインストールできます。
+Once your sources are updated, you can install the SDK.
 
-1. Service Fabric SDK パッケージをインストールします。インストールを開始することを確認し、使用許諾契約書に同意するよう求められます。
+1. Install the Service Fabric SDK package. You will be asked to confirm the installation and to agree to a license agreement.
 
     ```bash
     sudo apt-get install servicefabricsdkcommon
     ```
 
-2. SDK のセットアップ スクリプトを実行します。
+2. Run the SDK setup script.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
     ```
 
-## Azure クロスプラットフォーム CLI をセットアップする
+## <a name="set-up-the-azure-cross-platform-cli"></a>Set up the Azure cross-platform CLI
 
-[Azure クロスプラットフォーム CLI][azure-xplat-cli-github] には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。この CLI は Node.js をベースにしているため、[Node がインストールされていることを確認][install-node]してから、以下の手順に進んでください。
+The [Azure cross-platform CLI][azure-xplat-cli-github] includes commands for interacting with Service Fabric entities, including clusters and applications. It is based on Node.js so [ensure that you have installed Node][install-node] before proceeding with the instructions below.
 
-1. 開発用コンピューターに GitHub リポジトリをクローンします。
+1. Clone the github repo to your development machine.
 
     ```bash
     git clone https://github.com/Azure/azure-xplat-cli.git
     ```
 
-2. クローンしたリポジトリに移動し、Node Package Manager (npm) を使用して CLI の依存関係をインストールします。
+2. Switch into the cloned repo and install the CLI's dependencies using the Node Package Manager (npm).
 
     ```bash
     cd azure-xplat-cli
     npm install
     ```
 
-3. クローンしたリポジトリの bin/azure フォルダーから /usr/bin/azure へのシンボリック リンクを作成します。これにより、/usr/bin/azure がパスに追加され、任意のディレクトリからコマンドを利用できるようになります。
+3. Create a symlink from the bin/azure folder of the cloned repo to /usr/bin/azure so that it's added to your path and commands are available from any directory.
 
     ```bash
     sudo ln -s $(pwd)/bin/azure /usr/bin/azure
     ```
 
-4. 最後に、オート コンプリート Service Fabric コマンドを有効にします。
+4. Finally, enable auto-completion Service Fabric commands.
 
     ```bash
     azure --completion >> ~/azure.completion.sh
@@ -102,75 +103,75 @@ apt get を実行して SDK および関連付けられたランタイム パッ
     source ~/azure.completion.sh
     ```
 
-## ローカル クラスターをセットアップする
+## <a name="set-up-a-local-cluster"></a>Set up a local cluster
 
-すべてが正常にインストールされていれば、ローカル クラスターを起動できます。
+If everything has installed successfully, you should be able to start a local cluster.
 
-1. クラスターのセットアップ スクリプトを実行します。
+1. Run the cluster setup script.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Web ブラウザーを開き、http://localhost:19080/Explorer にアクセスします。クラスターが起動されている場合は、Service Fabric Explorer ダッシュボードが表示されます。
+2. Open a web browser and navigate to http://localhost:19080/Explorer. If the cluster has started, you should see the Service Fabric Explorer dashboard.
 
     ![Service Fabric Explorer on Linux][sfx-linux]
 
-これで、構築済みの Service Fabric アプリケーション パッケージか、ゲスト コンテナーやゲスト実行可能ファイルをベースに新規作成したパッケージをデプロイできるようになりました。Java 用 SDK または .NET Core 用 SDK を使用して新しいサービスを構築する場合は、次のセットアップ手順を実行します。
+At this point, you are able to deploy pre-built Service Fabric application packages or new ones based on guest containers or guest executables. To build new services using the Java or .NET Core SDKs, follow the optional setup steps below.
 
-## Java SDK と Eclipse Neon プラグインをインストールする (省略可能)
+## <a name="install-the-java-sdk-and-eclipse-neon-plugin-(optional)"></a>Install the Java SDK and Eclipse Neon plugin (optional)
 
-Java SDK には、Java を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
+The Java SDK provides the libraries and templates required to build Service Fabric services using Java.
 
-1. Java SDK パッケージをインストールします。
+1. Install the Java SDK package.
 
     ```bash
     sudo apt-get install servicefabricsdkjava
     ```
 
-2. SDK のセットアップ スクリプトを実行します。
+2. Run the SDK setup script.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
     ```
 
-Eclipse Neon IDE 内から Service Fabric 用 Eclipse プラグインをインストールできます。
+You can install the Eclipse plugin for Service Fabric from within the Eclipse Neon IDE.
 
-1. Eclipse で、Buildship バージョン 1.0.17 以降がインストールされていることを確認します。**[Help (ヘルプ)]、[Installation Details (インストールの詳細)]** の順に選択して、インストールされたコンポーネントのバージョンを確認できます。Buildship は、[こちら][buildship-update]の手順に従って更新できます。
+1. In Eclipse, ensure that you have Buildship version 1.0.17 or later installed. You can check the versions of installed components by choosing **Help > Installation Details**. You can update Buildship using the instructions [here][buildship-update].
 
-2. **[Help (ヘルプ)]、[Install New Software (新しいソフトウェアのインストール)]** を選択して、Service Fabric プラグインをインストールします。
+2. To install the Service Fabric plugin, choose **Help > Install New Software...**
 
-3. [Work with (作業対象)] テキストボックスに、次のように入力します。http://dl.windowsazure.com/eclipse/servicefabric
+3. In the "Work with" textbox, enter: http://dl.windowsazure.com/eclipse/servicefabric
 
-4. [追加] をクリックします。
+4. Click Add.
 
     ![Eclipse plugin][sf-eclipse-plugin]
 
-5. Service Fabric プラグインを選択し、[Next (次へ)] をクリックします。
+5. Choose the Service Fabric plugin and click next.
 
-6. 指示に従ってインストールを実行し、使用許諾契約書に同意します。
+6. Proceed through the installation and accept the end-user license agreement.
 
-## .NET Core SDK をインストールする (省略可能)
+## <a name="install-the-.net-core-sdk-(optional)"></a>Install the .NET Core SDK (optional)
 
-.NET Core SDK には、クロスプラットフォームの .NET Core を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
+The .NET Core SDK provides the libraries and templates required to build Service Fabric services using cross-platform .NET Core.
 
-1. .NET Core SDK パッケージをインストールします。
+1. Install the .NET Core SDK package.
 
     ```bash
     sudo apt-get install servicefabricsdkcsharp
     ```
 
-2. SDK のセットアップ スクリプトを実行します。
+2. Run the SDK setup script.
 
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
     ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [Linux で最初の Java アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-java.md)
+- [Create your first Java application on Linux](service-fabric-create-your-first-linux-application-with-java.md)
 
-- [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
+- [Prepare your development environment on OSX](service-fabric-get-started-mac.md)
 
 
 <!-- Links -->
@@ -184,4 +185,8 @@ Eclipse Neon IDE 内から Service Fabric 用 Eclipse プラグインをイン�
 [sf-eclipse-plugin]: ./media/service-fabric-get-started-linux/service-fabric-eclipse-plugin.png
 [sfx-linux]: ./media/service-fabric-get-started-linux/sfx-linux.png
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

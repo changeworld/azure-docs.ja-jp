@@ -1,216 +1,231 @@
 <properties
-	pageTitle="最初に: バックアップ コンテナーを使用した Azure VM の保護 | Microsoft Azure"
-	description="バックアップ コンテナーを使用して Azure VM を保護します。チュートリアルでは、Azure におけるコンテナーの作成、VM の登録、ポリシーの作成、VM の保護について説明します。"
-	services="backup"
-	documentationCenter=""
-	authors="markgalioto"
-	manager="cfreeman"
-	editor=""/>
+    pageTitle="First Look: Protect Azure VMs with a backup vault | Microsoft Azure"
+    description="Protect Azure VMs with Backup vault. Tutorial explains create vault, register VMs, create policy, and protect VMs in Azure."
+    services="backup"
+    documentationCenter=""
+    authors="markgalioto"
+    manager="cfreeman"
+    editor=""/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="09/15/2016"
-	ms.author="markgal; jimpark"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="09/15/2016"
+    ms.author="markgal; jimpark"/>
 
 
-# 最初に: Azure 仮想マシンのバックアップ
+
+# <a name="first-look:-backing-up-azure-virtual-machines"></a>First look: Backing up Azure virtual machines
 
 > [AZURE.SELECTOR]
-- [Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)
-- [バックアップ コンテナーを使用した Azure VM の保護](backup-azure-vms-first-look.md)
+- [Protect VMs with a recovery services vault](backup-azure-vms-first-look-arm.md)
+- [Protect Azure VMs with a backup vault](backup-azure-vms-first-look.md)
 
-このチュートリアルでは、Azure 仮想マシン (VM) を Azure のバックアップ コンテナーにバックアップする手順について説明します。この記事では、クラシック モデルまたは Service Manager デプロイメント モデルでの VM のバックアップについて説明します。リソース グループに属する Recovery Services コンテナーへの VM のバックアップについては、「[最初に: Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)」を参照してください。このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
+This tutorial takes you through the steps for backing up an Azure virtual machine (VM) to a backup vault in Azure. This article describes the Classic model or Service Manager deployment model, for backing up VMs. If you are interested in backing up a VM to a Recovery Services vault that belongs to a Resource Group, see [First look: Protect VMs with a recovery services vault](backup-azure-vms-first-look-arm.md). To successfully complete this tutorial, these prerequisites must exist:
 
-- Azure サブスクリプションで既に VM を作成している。
-- VM が Azure パブリック IP アドレスに接続できる。詳細については、「[ネットワーク接続](./backup-azure-vms-prepare.md#network-connectivity)」を参照してください。
+- You have created a VM in your Azure subscription.
+- The VM has connectivity to Azure public IP addresses. For additional information, see [Network connectivity](./backup-azure-vms-prepare.md#network-connectivity).
 
-VM をバックアップする手順は、主に次の 5 つです。
+To back up a VM, there are five main steps:  
 
-![手順 1](./media/backup-azure-vms-first-look/step-one.png)バックアップ コンテナーを作成するか、既存のバックアップ コンテナーを指定します。<br/>![手順 2](./media/backup-azure-vms-first-look/step-two.png)Azure クラシック ポータルを使用して仮想マシンを検索し、登録します。<br/>![手順 3](./media/backup-azure-vms-first-look/step-three.png)VM エージェントをインストールします。<br/>![手順 4](./media/backup-azure-vms-first-look/step-four.png)仮想マシンを保護するためのポリシーを作成します。<br/>![手順 5](./media/backup-azure-vms-first-look/step-five.png)バックアップを実行します。
+![step-one](./media/backup-azure-vms-first-look/step-one.png) Create a backup vault or identify an existing backup vault. <br/>
+![step-two](./media/backup-azure-vms-first-look/step-two.png) Use the Azure Classic portal to discover and register the virtual machines. <br/>
+![step-three](./media/backup-azure-vms-first-look/step-three.png) Install the VM Agent. <br/>
+![step-four](./media/backup-azure-vms-first-look/step-four.png) Create the policy for protecting the virtual machines. <br/>
+![step-five](./media/backup-azure-vms-first-look/step-five.png) Run the backup.
 
 ![High-level view of VM backup process](./media/backup-azure-vms-first-look/backupazurevm-classic.png)
 
->[AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。このチュートリアルは、Azure クラシック ポータルで作成できる VM 向けです。Azure Backup サービスでは、Resource Manager ベースの VM がサポートされています。Recovery Services コンテナーへの VM のバックアップについて詳しくは、「[最初に: Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)」を参照してください。
+>[AZURE.NOTE] Azure has two deployment models for creating and working with resources: [Resource Manager and Classic](../resource-manager-deployment-model.md). This tutorial is for use with the VMs that can be created in the Azure Classic portal. The Azure Backup service supports Resource Manager-based VMs. For details on backing up VMs to a recovery services vault, see [First Look: Protect VMs with a recovery services vault](backup-azure-vms-first-look-arm.md).
 
 
 
-## 手順 1. VM 用のバックアップ コンテナーの作成
+## <a name="step-1---create-a-backup-vault-for-a-vm"></a>Step 1 - Create a backup vault for a VM
 
-バックアップ コンテナーは、経時的に作成されたすべてのバックアップと復旧ポイントを格納するエンティティです。バックアップ コンテナーには、バックアップ対象の仮想マシンに適用されるバックアップ ポリシーも含まれています。
+A backup vault is an entity that stores all the backups and recovery points that have been created over time. The backup vault also contains the backup policies that are applied to the virtual machines being backed up.
 
-1. [Azure クラシック ポータル](http://manage.windowsazure.com/)にサインインします。
+1. Sign in to the [Azure Classic portal](http://manage.windowsazure.com/).
 
-2. Azure ポータルの左下隅にある **[新規]** をクリックします。
+2. In the lower left corner of the Azure portal, click **New**
 
-    ![[新しいメニュー] のクリック](./media/backup-azure-vms-first-look/new-button.png)
+    ![Click New menu](./media/backup-azure-vms-first-look/new-button.png)
 
-3. 簡易作成ウィザードで、**[Data Services]**、**[Recovery Services]**、**[バックアップ コンテナー]**、**[簡易作成]** の順にクリックします。
+3. In the Quick Create wizard, click **Data Services** > **Recovery Services** > **Backup Vault** > **Quick Create**.
 
-    ![バックアップ資格情報コンテナーの作成](./media/backup-azure-vms-first-look/new-vault-wizard-one-subscription.png)
+    ![Create backup vault](./media/backup-azure-vms-first-look/new-vault-wizard-one-subscription.png)
 
-    **[名前]** と **[リージョン]** の入力を求められます。複数のサブスクリプションを管理している場合、サブスクリプションを選択するダイアログが表示されます。
+    The wizard prompts you for the **Name** and **Region**. If you administer more than one subscription, a dialog for choosing the subscription appears.
 
-4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。名前は Azure サブスクリプションに対して一意である必要があります。
+4. For **Name**, enter a friendly name to identify the vault. The name needs to be unique for the Azure subscription.
 
-5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。コンテナーは、保護する仮想マシンと同じリージョンにある**必要があります**。
+5. In **Region**, select the geographic region for the vault. The vault **must** be in the same region as the virtual machines it protects.
 
-    VM があるリージョンが不明な場合は、このウィザードを閉じ、Azure のサービス一覧から **[Virtual Machines]** をクリックします。[場所] 列でリージョン名を確認できます。複数のリージョンに仮想マシンがある場合は、各リージョンでバックアップ コンテナーを作成します。
+    If you don't know the region in which your VM exists, close this wizard and click **Virtual Machines** in the list of Azure services. The Location column provides the name of the region. If you have virtual machines in multiple regions, create a backup vault in each region.
 
-6. ウィザードで **[サブスクリプション]** ダイアログが表示されない場合は、次の手順に進みます。複数のサブスクリプションを使用している場合は、新しいバックアップ コンテナーに関連付けるサブスクリプションを選択します。
+6. If there is no **Subscription** dialog in the wizard, skip to the next step. If you work with multiple subscriptions, select a subscription to associate with the new backup vault.
 
-    ![資格情報コンテナーのトースト通知の作成](./media/backup-azure-vms-first-look/backup-vaultcreate.png)
+    ![Create vault toast notification](./media/backup-azure-vms-first-look/backup-vaultcreate.png)
 
-7. **[資格情報コンテナーの作成]** をクリックします。バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。ポータルの下部にある状態通知を監視します。
+7. Click **Create Vault**. It can take a while for the backup vault to be created. Monitor the status notifications at the bottom of the portal.
 
-    ![資格情報コンテナーのトースト通知の作成](./media/backup-azure-vms-first-look/create-vault-demo.png)
+    ![Create vault toast notification](./media/backup-azure-vms-first-look/create-vault-demo.png)
 
-    コンテナーが正常に作成されたことを確認するメッセージが表示されます。**[Recovery Services]** ページに、コンテナーが **[アクティブ]** と表示されます。
+    A message confirms the vault has been successfully created. It is listed on the **Recovery services** page as **Active**.
 
-    ![資格情報コンテナーのトースト通知の作成](./media/backup-azure-vms-first-look/create-vault-demo-success.png)
+    ![Create vault toast notification](./media/backup-azure-vms-first-look/create-vault-demo-success.png)
 
-8. **[Recovery Services]** ページのコンテナーの一覧で、作成したコンテナーを選択して **[クイック スタート]** ページを起動します。
+8. In the list of vaults on **Recovery Services** page, select the vault you created to launch the **Quick Start** page.
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look/active-vault-demo.png)
+    ![List of backup vaults](./media/backup-azure-vms-first-look/active-vault-demo.png)
 
-9. **[クイック スタート]** ページで、**[構成]** をクリックして [ストレージのレプリケーション] オプションを開きます。![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look/configure-storage.png)
+9. On the **Quick Start** page, click **Configure** to open the storage replication option.
+    ![List of backup vaults](./media/backup-azure-vms-first-look/configure-storage.png)
 
-10. **[ストレージのレプリケーション]** オプションで、コンテナーのレプリケーション オプションを選択します。
+10. On the **storage replication** option, choose the replication option for your vault.
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look/backup-vault-storage-options-border.png)
+    ![List of backup vaults](./media/backup-azure-vms-first-look/backup-vault-storage-options-border.png)
 
-    既定では、コンテナーには geo 冗長ストレージがあります。これがプライマリ バックアップである場合は、geo 冗長ストレージを選択します。冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。geo 冗長ストレージ オプションとローカル冗長ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事を参照してください。
+    By default, your vault has geo-redundant storage. Choose geo-redundant storage if this is your primary backup. Choose locally redundant storage if you want a cheaper option that isn't quite as durable. Read more about geo-redundant and locally redundant storage options in the [Azure Storage replication overview](../storage/storage-redundancy.md).
 
-コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。関連付けを開始するには、Azure 仮想マシンを検出して登録します。
+After choosing the storage option for your vault, you are ready to associate the VM with the vault. To begin the association, discover and register the Azure virtual machines.
 
-## 手順 2. Azure 仮想マシンの検出と登録
-コンテナーに VM を登録する前に、検出プロセスを実行して新しい VM を検出します。これにより、サブスクリプションに含まれる仮想マシンの一覧が、クラウド サービス名、リージョンなどの追加情報と共に返されます。
+## <a name="step-2---discover-and-register-azure-virtual-machines"></a>Step 2 - Discover and Register Azure virtual machines
+Before registering the VM with a vault, run the discovery process to identify any new VMs. This returns a list of virtual machines in the subscription, along with additional information like the cloud service name and the region.
 
-1. [Azure クラシック ポータル](http://manage.windowsazure.com/)にサインインします。
+1. Sign in to the [Azure Classic portal](http://manage.windowsazure.com/)
 
-2. Azure クラシック ポータルで、**[Recovery Services]** をクリックして Recovery Services コンテナーの一覧を開きます。![Select workload](./media/backup-azure-vms-first-look/recovery-services-icon.png)
+2. In the Azure classic portal, click **Recovery Services** to open the list of Recovery Services vaults.
+    ![Select workload](./media/backup-azure-vms-first-look/recovery-services-icon.png)
 
-3. コンテナーの一覧で、VM をバックアップするコンテナーを選択します。
+3. From the list of vaults, select the vault to back up a VM.
 
-    コンテナーを選択すると、**[クイック スタート]** ページが開きます。
+    When you select your vault, it opens in the **Quick Start** page
 
-4. コンテナーのメニューの **[登録済みの項目]** をクリックします。
+4. From the vault menu, click **Registered Items**.
 
     ![Select workload](./media/backup-azure-vms-first-look/configure-registered-items.png)
 
-5. **[種類]** メニューの **[Azure 仮想マシン]** を選択します。
+5. From the **Type** menu, select **Azure Virtual Machine**.
 
     ![Select workload](./media/backup-azure-vms/discovery-select-workload.png)
 
-6. ページの下部にある **[検出]** をクリックします。![Discover button](./media/backup-azure-vms/discover-button-only.png)
+6. Click **DISCOVER** at the bottom of the page.
+    ![Discover button](./media/backup-azure-vms/discover-button-only.png)
 
-    仮想マシンが集計されるまで、この検出プロセスに数分かかる場合があります。プロセスが実行中であることを知らせる通知が画面の下部に表示されます。
+    The discovery process may take a few minutes while the virtual machines are being tabulated. There is a notification at the bottom of the screen that lets you know that the process is running.
 
     ![Discover VMs](./media/backup-azure-vms/discovering-vms.png)
 
-    プロセスが完了すると、通知が変更されます。
+    The notification changes when the process is complete.
 
     ![Discovery done](./media/backup-azure-vms-first-look/discovery-complete.png)
 
-7. ページの下部にある **[登録]** をクリックします。![Register button](./media/backup-azure-vms-first-look/register-icon.png)
+7. Click **REGISTER** at the bottom of the page.
+    ![Register button](./media/backup-azure-vms-first-look/register-icon.png)
 
-8. **[項目の登録]** ショートカット メニューで、登録する仮想マシンを選択します。
+8. In the **Register Items** shortcut menu, select the virtual machines that you want to register.
 
-    >[AZURE.TIP] 一度に複数の仮想マシンを登録することができます。
+    >[AZURE.TIP] Multiple virtual machines can be registered at one time.
 
-    選択した仮想マシンごとにジョブが作成されます。
+    A job is created for each virtual machine that you've selected.
 
-9. 通知内の **[ジョブの表示]** をクリックして **[ジョブ]** ページに移動します。
+9. Click **View Job** in the notification to go to the **Jobs** page.
 
     ![Register job](./media/backup-azure-vms/register-create-job.png)
 
-    仮想マシンが登録済みの項目の一覧にも、登録操作の状態と共に表示されます。
+    The virtual machine also appears in the list of registered items, along with the status of the registration operation.
 
-    ![登録状態 1](./media/backup-azure-vms/register-status01.png)
+    ![Registering status 1](./media/backup-azure-vms/register-status01.png)
 
-    操作が完了すると、状態が変更され、"*登録済み*" 状態が反映されます。
+    When the operation completes, the status changes to reflect the *registered* state.
 
-    ![登録状態 2](./media/backup-azure-vms/register-status02.png)
+    ![Registration status 2](./media/backup-azure-vms/register-status02.png)
 
-## 手順 3. 仮想マシンへの VM エージェントのインストール
+## <a name="step-3---install-the-vm-agent-on-the-virtual-machine"></a>Step 3 - Install the VM Agent on the virtual machine
 
-バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。VM を Azure ギャラリーから作成した場合、VM エージェントは既に VM に存在します。[VM の保護](backup-azure-vms-first-look.md#step-4-protect-azure-virtual-machines)に進むことができます。
+The Azure VM Agent must be installed on the Azure virtual machine for the Backup extension to work. If your VM was created from the Azure gallery, the VM Agent is already present on the VM. You can skip to [protecting your VMs](backup-azure-vms-first-look.md#step-4-protect-azure-virtual-machines).
 
-オンプレミス データセンターから VM を移行した場合、VM にはおそらく VM エージェントがインストールされていません。VM の保護に進む前に、仮想マシンに VM エージェントをインストールする必要があります。VM エージェントをインストールする詳しい手順については、[VM のバックアップに関する記事の VM エージェントのセクション](backup-azure-vms-prepare.md#vm-agent)をご覧ください。
+If your VM migrated from an on-premises datacenter, the VM probably does not have the VM Agent installed. You must install the VM Agent on the virtual machine before proceeding to protect the VM. For detailed steps on installing the VM Agent, see the [VM Agent section of the Backup VMs article](backup-azure-vms-prepare.md#vm-agent).
 
 
-## 手順 4 - バックアップ ポリシーの作成
-最初のバックアップ ジョブをトリガーする前に、バックアップ スナップショットの取得スケジュールを設定します。バックアップ スナップショットの取得スケジュールと、スナップショットのリテンション期間は、バックアップ ポリシーです。リテンション期間情報は、祖父-父-子バックアップ ローテーション スキームに基づいています。
+## <a name="step-4---create-the-backup-policy"></a>Step 4 - Create the backup policy
+Before you trigger the initial backup job, set the schedule when backup snapshots are taken. The schedule when backup snapshots are taken, and the length of time those snapshots are retained, is the backup policy. The retention information is based on Grandfather-father-son backup rotation scheme.
 
-1. Azure クラシック ポータルの **[Recovery Services]** にあるバックアップ コンテナーに移動し、**[登録済みの項目]** をクリックします。
-2. ドロップダウン メニューから **[Azure 仮想マシン]** を選択します。
+1. Navigate to the backup vault under **Recovery Services** in the Azure Classic portal, and  click **Registered Items**.
+2. Select **Azure Virtual Machine** from the drop-down menu.
 
-    ![ポータルでのワークロードの選択](./media/backup-azure-vms/select-workload.png)
+    ![Select workload in portal](./media/backup-azure-vms/select-workload.png)
 
-3. ページの下部にある **[保護]** をクリックします。![Click Protect](./media/backup-azure-vms-first-look/protect-icon.png)
+3. Click **PROTECT** at the bottom of the page.
+    ![Click Protect](./media/backup-azure-vms-first-look/protect-icon.png)
 
-    **項目の保護ウィザード**が表示され、登録済みで保護されていない仮想マシン "*のみ*" が一覧表示されます。
+    The **Protect Items wizard** appears and lists *only* virtual machines that are registered and not protected.
 
-    ![保護をスケールで構成](./media/backup-azure-vms/protect-at-scale.png)
+    ![Configure protection at scale](./media/backup-azure-vms/protect-at-scale.png)
 
-4. 保護する仮想マシンを選択します。
+4. Select the virtual machines that you want to protect.
 
-    同じ名前の仮想マシンが 2 つ以上ある場合は、クラウド サービスを使用して仮想マシンを区別します。
+    If there are two or more virtual machines with the same name, use the Cloud Service to distinguish between the virtual machines.
 
-5. **[保護の構成]** メニューで、特定した仮想マシンを保護するための既存のポリシーを選択するか、新しいポリシーを作成します。
+5. On the **Configure protection** menu select an existing policy or create a new policy to protect the virtual machines that you identified.
 
-    新しいバックアップ コンテナーには、コンテナーに関連付けられている既定のポリシーがあります。このポリシーでは 1 日 1 回夜間にスナップショットを取得し、そのスナップショットを 30 日間保持します。各バックアップ ポリシーには、複数の仮想マシンを関連付けることができます。ただし、仮想マシンは同時に 1 つのポリシーにしか関連付けることができません。
+    New Backup vaults have a default policy associated with the vault. This policy takes a daily snapshot each evening, and the daily snapshot is retained for 30 days. Each backup policy can have multiple virtual machines associated with it. However, the virtual machine can only be associated with one policy at a time.
 
-    ![新しいポリシーで保護](./media/backup-azure-vms/policy-schedule.png)
+    ![Protect with new policy](./media/backup-azure-vms/policy-schedule.png)
 
-    >[AZURE.NOTE] バックアップ ポリシーには、スケジュールされたバックアップの保持スキーマが含まれています。既存のバックアップ ポリシーを選択した場合は、次の手順で保持期間オプションを変更することができません。
+    >[AZURE.NOTE] A backup policy includes a retention scheme for the scheduled backups. If you select an existing backup policy, you will be unable to modify the retention options in the next step.
 
-6. **[リテンション期間]** で、特定のバックアップ ポイントの日、週、月、および年単位の期間を定義します。
+6. On **Retention Range** define the daily, weekly, monthly, and yearly scope for the specific backup points.
 
-    ![復旧ポイントを作成した後の仮想マシンのバックアップ](./media/backup-azure-vms/long-term-retention.png)
+    ![Virtual machine is backed up with recovery point](./media/backup-azure-vms/long-term-retention.png)
 
-    バックアップを保存する期間は保持ポリシーで指定します。バックアップが作成されたタイミングに応じて異なる保持ポリシーを指定することができます。
+    Retention policy specifies the length of time for storing a backup. You can specify different retention policies based on when the backup is taken.
 
-7. **[ジョブ]** をクリックすると、**[保護の構成]** ジョブの一覧が表示されます。
+7. Click **Jobs** to view the list of **Configure Protection** jobs.
 
-    ![保護の構成ジョブ](./media/backup-azure-vms/protect-configureprotection.png)
+    ![Configure protection job](./media/backup-azure-vms/protect-configureprotection.png)
 
-    ポリシーを確立したら、次の手順に進み、初回のバックアップを実行します。
+    Now that you've established the policy, go to the next step and run the initial backup.
 
-## 手順 5. 初回バックアップ
+## <a name="step-5---initial-backup"></a>Step 5 - Initial backup
 
-ポリシーを使用して仮想マシンが保護されると、その関係が **[保護された項目]** タブに表示されます。初回バックアップが行われるまで、**[保護の状態]** には **[Protected - (pending initial backup) (保護済み (初回のバックアップが保留中))]** と表示されます。既定では、スケジュールされた最初のバックアップが*初回バックアップ*となります。
+Once a virtual machine has been protected with a policy, you can view that relationship on the **Protected Items** tab. Until the initial backup occurs, the **Protection Status** shows as **Protected - (pending initial backup)**. By default, the first scheduled backup is the *initial backup*.
 
 ![Backup pending](./media/backup-azure-vms-first-look/protection-pending-border.png)
 
-初回バックアップをすぐに開始するには、次の操作を行います。
+To start the initial backup now:
 
-1. **[保護された項目]** ページの下部にある **[今すぐバックアップ]** をクリックします。![Backup Now icon](./media/backup-azure-vms-first-look/backup-now-icon.png)
+1. On the **Protected Items** page, click **Backup Now** at the bottom of the page.
+    ![Backup Now icon](./media/backup-azure-vms-first-look/backup-now-icon.png)
 
-    Azure Backup サービスによって、初回バックアップ操作用にバックアップ ジョブが作成されます。
+    The Azure Backup service creates a backup job for the initial backup operation.
 
-2. **[ジョブ]** タブをクリックしてジョブの一覧を表示します。
+2. Click the **Jobs** tab to view the list of jobs.
 
-    ![バックアップが進行中](./media/backup-azure-vms-first-look/protect-inprogress.png)
+    ![Backup in progress](./media/backup-azure-vms-first-look/protect-inprogress.png)
 
-    初回バックアップが完了すると、**[保護された項目]** タブの仮想マシンの状態が *[保護済み]* になります。
+    When initial backup is complete, the status of the virtual machine in the **Protected Items** tab is *Protected*.
 
-    ![復旧ポイントを作成した後の仮想マシンのバックアップ](./media/backup-azure-vms/protect-backedupvm.png)
+    ![Virtual machine is backed up with recovery point](./media/backup-azure-vms/protect-backedupvm.png)
 
-    >[AZURE.NOTE] 仮想マシンのバックアップはローカルな処理です。あるリージョンの仮想マシンを別のリージョンのバックアップ コンテナーにバックアップすることはできません。そのため、バックアップが必要な VM がある Azure リージョンごとに、そのリージョン内に少なくとも 1 つのバックアップ コンテナーを作成する必要があります。
+    >[AZURE.NOTE] Backing up virtual machines is a local process. You cannot back up virtual machines from one region to a backup vault in another region. So, for every Azure region that has VMs that need to be backed up, at least one backup vault must be created in that region.
 
-## 次のステップ
-これで、VM が正常にバックアップされました。さらに、関心がありそうなステップがいくつかあります。最も論理的な手順は、VM にデータを復元する処理に慣れることです。一方、データを安全に保管し、コストを最小限に抑える方法を理解できる管理タスクもあります。
+## <a name="next-steps"></a>Next steps
+Now that you have successfully backed up a VM, there are several next steps that could be of interest. The most logical step is to familiarize yourself with restoring data to a VM. However, there are management tasks that will help you understand how to keep your data safe and minimize costs.
 
-- [仮想マシンの管理と監視](backup-azure-manage-vms.md)
-- [仮想マシンの復元](backup-azure-restore-vms.md)
-- [トラブルシューティング ガイダンス](backup-azure-vms-troubleshoot.md)
+- [Manage and monitor your virtual machines](backup-azure-manage-vms.md)
+- [Restore virtual machines](backup-azure-restore-vms.md)
+- [Troubleshooting guidance](backup-azure-vms-troubleshoot.md)
 
 
-## 疑問がある場合
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
+## <a name="questions?"></a>Questions?
+If you have questions, or if there is any feature that you would like to see included, [send us feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

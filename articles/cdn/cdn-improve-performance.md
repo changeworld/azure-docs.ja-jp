@@ -1,129 +1,134 @@
 <properties
-	pageTitle="Azure CDN でのファイル圧縮によるパフォーマンスの向上 | Microsoft Azure"
-	description="Azure CDN でファイルを圧縮して、ファイル転送速度とページ読み込みパフォーマンスを向上させる方法を説明します。"
-	services="cdn"
-	documentationCenter=""
-	authors="camsoper"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Improve performance by compressing files in Azure CDN | Microsoft Azure"
+    description="Learn how to improve file transfer speed and increases page load performance by compressing your files in Azure CDN."
+    services="cdn"
+    documentationCenter=""
+    authors="camsoper"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/28/2016"
-	ms.author="casoper"/>
-
-# ファイル圧縮によるパフォーマンスの向上
-
-圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるので、ファイルの転送速度を改善し、ページ読み込みのパフォーマンスを向上するには簡単で効率的な方法です。帯域幅のコストが軽減され、ユーザーへの応答も改善されます。
-
-圧縮を有効にするには、2 つの方法があります。
-
-- 配信元サーバーで圧縮を有効にします。この方法では、CDN は圧縮ファイルをパス スルーし、要求したクライアントに対して圧縮ファイルを配信します。
-- CDN エッジ サーバーで直接、圧縮を有効にします。この方法では、配信元サーバーで圧縮されていない場合でも、CDN でファイルが圧縮され、エンド ユーザーに渡されます。
-
-> [AZURE.IMPORTANT] CDN 構成の変更がネットワーク全体に反映されるまでには時間がかかります。<b>Azure CDN from Akamai</b> プロファイルの場合、通常、反映は 1 分以内で完了します。<b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内で完了します。今回初めて CDN エンドポイントの圧縮を設定した場合は、トラブルシューティングの前に、圧縮設定が確実に POP に反映されるように 1 ～ 2 時間の待機時間を検討してください。
-
-## 圧縮の有効化
-
-> [AZURE.NOTE] Standard および Premium CDN レベルでは同じ圧縮機能が提供されますが、ユーザー インターフェイスは異なります。Standard と Premium CDN レベルの違いの詳細については、[Azure CDN の概要](cdn-overview.md)に関する記述を参照してください。
-
-### Standard レベル
-
-> [AZURE.NOTE] このセクションは、**Azure CDN Standard from Verizon** プロファイルと **Azure CDN Standard from Akamai** プロファイルに適用されます。
-
-1. CDN プロファイル ブレードで、管理する CDN エンドポイントをクリックします。
-
-	![CDN プロファイル ブレード エンドポイント](./media/cdn-file-compression/cdn-endpoints.png)
-
-	CDN エンドポイントのブレードが開きます。
-
-2. **[構成]** をクリックします。
-
-	![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-file-compression/cdn-config-btn.png)
-
-	CDN 構成ブレードが開きます。
-
-3. **[圧縮]** をオンにします。
-
-	![CDN の圧縮オプション](./media/cdn-file-compression/cdn-compress-standard.png)
-
-4. 既定の種類を使用するか、ファイルの種類を削除または追加して一覧を変更します。
-	
-	> [AZURE.TIP] ZIP、MP3、MP4、JPG などの圧縮形式に圧縮を適用することは可能ですが、推奨されません。
-	
-5. 変更したら、**[保存]** をクリックします。
-
-### Premium レベル
-
-> [AZURE.NOTE] このセクションは、**Azure CDN Premium from Verizon** プロファイルに適用されます。
-
-1. [CDN プロファイル] ブレードで、**[管理]** をクリックします。
-
-	![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-file-compression/cdn-manage-btn.png)
-
-	CDN 管理ポータルが開きます。
-
-2. **[HTTP ラージ]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。**[圧縮]** をクリックします。
-
-	圧縮のオプションが表示されます。
-
-	![ファイル圧縮](./media/cdn-file-compression/cdn-compress-files.png)
-
-3. **[Compression Enabled]** ラジオ ボタンをクリックして圧縮を有効にします。**[ファイルの種類]** テキストボックスで、コンマ区切りのリスト (スペースなし) として圧縮する MIME の種類を入力します。
-		
-	> [AZURE.TIP] ZIP、MP3、MP4、JPG などの圧縮形式に圧縮を適用することは可能ですが、推奨されません。
-
-4. 変更したら、**[更新]** をクリックします。
+    ms.service="cdn"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/28/2016"
+    ms.author="casoper"/>
 
 
-## 圧縮のルール
+# <a name="improve-performance-by-compressing-files"></a>Improve performance by compressing files
 
-次の表に、すべてのシナリオでの Azure CDN 圧縮動作を示します。
+Compression is a simple and effective method to improve file transfer speed and increase page load performance by reducing file size before it is sent from the server. It reduces bandwidth costs and provides a more responsive experience for your users.
 
-> [AZURE.IMPORTANT] **Azure CDN from Verizon** (Standard と Premium) の場合、条件を満たすファイルのみが圧縮されます。圧縮を実行可能にするためのファイルの条件は、次のとおりです。
+There are two ways to enable compression:
+
+- You can enable compression on your origin server, in which case the CDN will pass through the compressed files and deliver compressed files to clients that request them.
+- You can enable compression directly on CDN edge servers, in which case the CDN will compress the files and serve it to end users, even if they are not compressed by the origin server.
+
+> [AZURE.IMPORTANT] CDN configuration changes take some time to propagate through the network.  For <b>Azure CDN from Akamai</b> profiles, propagation usually completes in under one minute.  For <b>Azure CDN from Verizon</b> profiles, you will usually see your changes apply within 90 minutes.  If this is the first time you've set up compression for your CDN endpoint, you should consider waiting 1-2 hours to be sure the compression settings have propagated to the POPs before troubleshooting
+
+## <a name="enabling-compression"></a>Enabling compression
+
+> [AZURE.NOTE] The Standard and Premium CDN tiers provide the same compression functionality, but the user interface differs.  For more information about the differences between Standard and Premium CDN tiers, see [Azure CDN Overview](cdn-overview.md).
+
+### <a name="standard-tier"></a>Standard tier
+
+> [AZURE.NOTE] This section applies to **Azure CDN Standard from Verizon** and **Azure CDN Standard from Akamai** profiles.
+
+1. From the CDN profile blade, click the CDN endpoint you wish to manage.
+
+    ![CDN profile blade endpoints](./media/cdn-file-compression/cdn-endpoints.png)
+
+    The CDN endpoint blade opens.
+
+2. Click the **Configure** button.
+
+    ![CDN profile blade manage button](./media/cdn-file-compression/cdn-config-btn.png)
+
+    The CDN Configuration blade opens.
+
+3. Turn on **Compression**.
+
+    ![CDN compression options](./media/cdn-file-compression/cdn-compress-standard.png)
+
+4. Use the default types, or modify the list by removing or adding file types.
+    
+    > [AZURE.TIP] While possible, it is not recommended to apply compression to compressed formats, such as ZIP, MP3, MP4, JPG, etc.
+    
+5. After making your changes, click the **Save** button.
+
+### <a name="premium-tier"></a>Premium tier
+
+> [AZURE.NOTE] This section applies to **Azure CDN Premium from Verizon** profiles.
+
+1. From the CDN profile blade, click the **Manage** button.
+
+    ![CDN profile blade manage button](./media/cdn-file-compression/cdn-manage-btn.png)
+
+    The CDN management portal opens.
+
+2. Hover over the **HTTP Large** tab, then hover over the **Cache Settings** flyout.  Click on **Compression**.
+
+    Compression options are displayed.
+
+    ![File compression](./media/cdn-file-compression/cdn-compress-files.png)
+
+3. Enable compression by clicking the **Compression Enabled** radio button.  Enter the MIME types you wish to compress as a comma-delimited list (no spaces) in the **File Types** textbox.
+        
+    > [AZURE.TIP] While possible, it is not recommended to apply compression to compressed formats, such as ZIP, MP3, MP4, JPG, etc. 
+
+4. After making your changes, click the **Update** button.
+
+
+## <a name="compression-rules"></a>Compression rules
+
+These tables describe Azure CDN compression behavior for every scenario.
+
+> [AZURE.IMPORTANT] For **Azure CDN from Verizon** (Standard and Premium), only eligible files are compressed.  To be eligible for compression, a file must:
 >
-> - 128 バイトより大きい
-> - 1 MB 未満
+> - Be larger than 128 bytes.
+> - Be smaller than 1 MB.
 > 
-> **Azure CDN from Akamai** の場合、すべてのファイルが圧縮対象です。
+> For **Azure CDN from Akamai**, all files are eligible for compression.
 >
-> すべての Azure CDN 製品で、ファイルの MIME タイプは、[圧縮用に構成されている](#enabling-compression)必要があります。
+> For all Azure CDN products, a file must be a MIME type that has been [configured for compression](#enabling-compression).
 >
-> **Azure CDN from Verizon** プロファイル (Standard と Premium) は、**gzip**、**deflate**、または **bzip2** エンコーディングをサポートしています。**Azure CDN from Akamai** プロファイルは、**gzip** エンコーディングのみをサポートしています。
+> **Azure CDN from Verizon** profiles (Standard and Premium) support **gzip**, **deflate**, or **bzip2** encoding.  **Azure CDN from Akamai** profiles only support **gzip** encoding.
 >
-> **Azure CDN from Akamai** エンドポイントは、クライアントの要求に関係なく、常に配信元から **gzip** でエンコードされたファイルを要求します。
+> **Azure CDN from Akamai** endpoints always request **gzip** encoded files from the origin, regardless of the client request.
 
-### 圧縮が無効であるか、ファイルの圧縮が実行不可能
+### <a name="compression-disabled-or-file-is-ineligible-for-compression"></a>Compression disabled or file is ineligible for compression
 
-|クライアントから要求された形式 (Accept-Encoding ヘッダー経由)|キャッシュされたファイルの形式|クライアントへの CDN の応答|メモ|
+|Client requested format (via Accept-Encoding header)|Cached file format|CDN response to the client|Notes|
 |----------------|-----------|------------|-----|
-|圧縮|圧縮|圧縮| |
-|圧縮|非圧縮|非圧縮| |	
-|圧縮|キャッシュなし|圧縮または非圧縮|配信元の応答に依存|
-|非圧縮|圧縮|非圧縮| |
-|非圧縮|非圧縮|非圧縮| |	
-|非圧縮|キャッシュなし|非圧縮| |
+|Compressed|Compressed|Compressed|   |
+|Compressed|Uncompressed|Uncompressed|    | 
+|Compressed|Not cached|Compressed or Uncompressed|Depends on origin response|
+|Uncompressed|Compressed|Uncompressed|    |
+|Uncompressed|Uncompressed|Uncompressed|    |   
+|Uncompressed|Not cached|Uncompressed|     |
 
-### 圧縮が有効でファイルの圧縮が実行可能
+### <a name="compression-enabled-and-file-is-eligible-for-compression"></a>Compression enabled and file is eligible for compression
 
-|クライアントから要求された形式 (Accept-Encoding ヘッダー経由)|キャッシュされたファイルの形式|クライアントへの CDN の応答|メモ|
+|Client requested format (via Accept-Encoding header)|Cached file format|CDN response to the client|Notes|
 |----------------|-----------|------------|-----|
-|圧縮|圧縮|圧縮|サポートされている形式間での CDN のトランスコード|
-|圧縮|非圧縮|圧縮|CDN が圧縮を実行|
-|圧縮|キャッシュなし|圧縮|配信元から非圧縮が返された場合、CDN が圧縮を実行します。**Azure CDN from Verizon** は、最初の要求で圧縮されていないファイルを渡し、後続の要求のためにファイルを圧縮してキャッシュします。`Cache-Control: no-cache` ヘッダーを持つファイルは圧縮されません。 
-|非圧縮|圧縮|非圧縮|CDN が展開を実行|
-|非圧縮|非圧縮|非圧縮| |	
-|非圧縮|キャッシュなし|非圧縮| |
+|Compressed|Compressed|Compressed|CDN transcodes between supported formats|
+|Compressed|Uncompressed|Compressed|CDN performs compression|
+|Compressed|Not cached|Compressed|CDN performs compression if origin returns uncompressed.  **Azure CDN from Verizon** will pass the uncompressed file on the first request and then compress and cache the file for subsequent requests.  Files with `Cache-Control: no-cache` header will never be compressed. 
+|Uncompressed|Compressed|Uncompressed|CDN performs decompression|
+|Uncompressed|Uncompressed|Uncompressed|     |  
+|Uncompressed|Not cached|Uncompressed|     |
 
-## Media Services CDN の圧縮
+## <a name="media-services-cdn-compression"></a>Media Services CDN Compression
 
-Media Services CDN 対応ストリーミング エンドポイントについて、圧縮は既定で application/vnd.ms-sstr+xml、application/dash+xml、application/vnd.apple.mpegurl、application/f4m+xml というコンテンツの種類に対応しています。これらの種類の圧縮は、Azure ポータルを使用して有効/無効にすることはできません。
+For Media Services CDN enabled streaming endpoints, compression is enabled by default for the following content types: application/vnd.ms-sstr+xml, application/dash+xml,application/vnd.apple.mpegurl, application/f4m+xml. You cannot enable/disable compression for the mentioned types using the Azure portal.  
 
-## 関連項目
-- [CDN ファイルの圧縮のトラブルシューティング](cdn-troubleshoot-compression.md)
+## <a name="see-also"></a>See also
+- [Troubleshooting CDN file compression](cdn-troubleshoot-compression.md)    
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

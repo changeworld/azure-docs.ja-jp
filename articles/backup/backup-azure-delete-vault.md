@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Backup コンテナーを削除する | Microsoft Azure"
-   description="Azure Backup コンテナーを削除する方法。バックアップ コンテナーを削除できない理由をトラブルシューティングします。"
+   pageTitle="Delete an Azure Backup vault | Microsoft Azure"
+   description="How to delete an Azure Backup vault. Troubleshooting why you can't delete a backup vault. "
    services="service-name"
    documentationCenter="dev-center-name"
    authors="markgalioto"
@@ -16,230 +16,238 @@
    ms.date="08/29/2016"
    ms.author="markgal;trinadhk"/>
 
-# Azure Backup コンテナーを削除する
 
-Azure Backup サービスには、バックアップ コンテナーと Recovery Services コンテナーの 2 種類のコンテナーがあります。最初にあったのは、バックアップ コンテナーです。次に、拡張 Resource Manager デプロイメントをサポートするために、Recovery Services コンテナーが加わりました。拡張された機能と、コンテナーに保存する必要がある情報への依存性のために、Recovery Services コンテナーの削除は困難に見える場合があります。
+# <a name="delete-an-azure-backup-vault"></a>Delete an Azure Backup vault
 
-|**デプロイの種類**|**ポータル**|**コンテナー名**|
+The Azure Backup service has two types of vaults - the Backup vault and the Recovery Services vault. The Backup vault came first. Then the Recovery Services vault came along to support the expanded Resource Manager deployments. Because of the expanded capabilities and the information dependencies that must be stored in the vault, deleting a Recovery Services vault can seem harder than it has to be.
+
+|**Deployment Type**|**Portal**|**Vault name**|
 |--------------|----------|---------|
-|クラシック|クラシック|バックアップ資格情報コンテナー|
-|Resource Manager|Azure|Recovery Services コンテナー|
+|Classic|Classic|Backup vault|
+|Resource Manager|Azure|Recovery Services vault|
 
 
-> [AZURE.NOTE] Resource Manager モデルでデプロイされたソリューションをバックアップ コンテナーで保護することはできません。ただし、Recovery Services コンテナーを使用して、クラシック デプロイによるサーバーと VM を保護することはできます。
+> [AZURE.NOTE] Backup vaults cannot protect Resource Manager-deployed solutions. However, you can use a Recovery Services vault to protect classically deployed servers and VMs.  
 
-この記事で、コンテナーという言葉は、バックアップ コンテナーまたは Recovery Services コンテナーの一般的な形式を意味します。コンテナーの種類を区別する必要がある場合に、バックアップ コンテナーまたは Recovery Services コンテナーという正式な名称を使用します。
+In this article, we use the term, vault, to refer to the generic form of the Backup vault or Recovery Services vault. We use the formal name, Backup vault, or Recovery Services vault, when it is necessary to distinguish between the vaults.
 
 
 
-## Recovery Services コンテナーの削除
+## <a name="deleting-a-recovery-services-vault"></a>Deleting a Recovery Services vault
 
-"*コンテナーにリソースが含まれていない場合*"、Recovery Services コンテナーの削除は、1 ステップの処理です。Recovery Services コンテナーを削除する前に、コンテナー内のすべてのリソースを削除する必要があります。リソースが含まれているコンテナーを削除しようとすると、次の図のようなエラーが表示されます。
+Deleting a Recovery Services vault is a one-step process - *provided the vault doesn't contain any resources*. Before you can delete a Recovery Services vault, you must remove or delete all resources in the vault. If you attempt to delete a vault that contains resources, you get an error like the following image.
 
 ![Vault deletion error](./media/backup-azure-delete-vault/vault-deletion-error.png) <br/>
 
-コンテナーからリソースを消去しない限り、**[再試行]** をクリックすると、同じエラーが発生し続けます。このエラー メッセージが表示され続ける場合は、**[キャンセル]** をクリックし、以下の手順に従って Recovery Services コンテナー内のリソースを削除してください。
+Until you have cleared the resources from the vault, clicking **Retry** produces the same error. If you're stuck on this error message, click **Cancel** and follow the steps below to delete the resources in the Recovery Services vault.
 
 
-### VM を保護しているコンテナーからのアイテムの削除
+### <a name="removing-the-items-from-a-vault-protecting-a-vm"></a>Removing the items from a vault protecting a VM
 
-既に Recovery Services コンテナーを開いている場合は、手順 2. に進みます。
+If you already have the Recovery Services vault open, skip to the second step.
 
-1.  Azure Portal を開き、削除するコンテナーをダッシュボードから開きます。
+1.  Open the Azure portal, and from the Dashboard open the vault you want to delete.
 
-    Recovery Services コンテナーがダッシュボードにピン留めされていない場合は、[Hub (ハブ)] メニューで **[More Services (その他のサービス)]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** をクリックします。
+    If you don't have the Recovery Services vault pinned to the Dashboard, on the Hub menu, click **More Services** and in the list of resources, type **Recovery Services**. As you begin typing, the list filters based on your input. Click **Recovery Services vaults**.
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
-    Recovery Services コンテナーの一覧が表示されます。一覧で、削除するコンテナーを選択します。
+    The list of Recovery Services vaults is displayed. From the list, select the vault you want to delete.
 
     ![choose vault from list](./media/backup-azure-work-with-vaults/choose-vault-to-delete.png)
 
-2. コンテナー ビューで、**[要点]** ウィンドウを見ます。コンテナーを削除するには、保護されているアイテムがあってはなりません。ゼロ以外の数字が表示されている場合は、**[バックアップ アイテム]** または **[バックアップ管理サーバー]** でそれらのアイテムを削除してから、コンテナーを削除する必要があります。
+2. In the vault view, look at the **Essentials** pane. To delete a vault, there cannot be any protected items. If you see a number other than zero, under either **Backup Items** or **Backup management servers**, you must remove those items before you can delete the vault.
 
     ![Look at Essentials pane for protected items](./media/backup-azure-delete-vault/contoso-bkpvault-settings.png)
 
-    VM およびファイル/フォルダーはバックアップ アイテムと見なされ、[要点] ウィンドウの **[バックアップ アイテム]** 領域の一覧に表示されます。DPM サーバーは、[要点] ウィンドウの **[バックアップ管理サーバー]** 領域の一覧に表示されます。**[レプリケートされたアイテム]** は、Azure Site Recovery サービスに関連します。
+    VMs and Files/Folders are considered Backup Items, and are listed in the **Backup Items** area of the Essentials pane. A DPM server is listed in the **Backup Management Server** area of the Essentials pane. **Replicated Items** pertain to the Azure Site Recovery service.
 
-3. コンテナーから保護されているアイテムを削除するには、まず、コンテナー内のアイテムを探します。コンテナー ダッシュボードで **[設定]**、**[バックアップ アイテム]** の順にクリックして、次のブレードを開きます。
+3. To begin removing the protected items from the vault, find the items in the vault. In the vault dashboard click **Settings**, and then click **Backup items** to open that blade.
 
     ![choose vault from list](./media/backup-azure-delete-vault/open-settings-and-backup-items.png)
 
-    **[バックアップ アイテム]** ブレードには、アイテムの種類 (Azure Virtual Machines またはファイル フォルダー) に基づいて、個別の一覧があります (図を参照)。一覧に表示される既定のアイテムの種類は、Azure Virtual Machines です。コンテナー内のファイル フォルダー アイテムの一覧を表示するには、ドロップダウン メニューで **[ファイル フォルダー]** を選択します。
+    The **Backup Items** blade has separate lists, based on the Item Type: Azure Virtual Machines or File-Folders (see image). The default Item Type list shown is Azure Virtual Machines. To view the list of File-Folders items in the vault, select **File-Folders** from the drop-down menu.
 
-4. VM を保護しているコンテナーからアイテムを削除する前に、アイテムのバックアップ ジョブを停止し、回復ポイント データを削除する必要があります。コンテナー内の各アイテムに対して、次の手順を行います。
+4. Before you can delete an item from the vault protecting a VM, you must stop the item's backup job and delete the recovery point data. For each item in the vault, follow these steps:
 
-    a.**[バックアップ アイテム]** ブレードでアイテムを右クリックし、コンテキスト メニューで **[バックアップの停止]** を選択します。
+    a. On the **Backup Items** blade, right-click the item, and from the context menu, select **Stop backup**.
 
     ![stop the backup job](./media/backup-azure-delete-vault/stop-the-backup-process.png)
 
-    [バックアップの停止] ブレードが開きます。
+    The Stop Backup blade opens.
 
-    b.**[バックアップの停止]** ブレードの **[オプションの選択]** メニューで **[バックアップ データの削除]** を選択し、アイテムの名前を入力して、**[バックアップの停止]** をクリックします。
+    b. On the **Stop Backup** blade, from the **Choose an option** menu, select **Delete Backup Data** > type the name of the item > and click **Stop backup**.
 
-      削除することを確認するために、アイテムの名前を入力します。停止するアイテムが確認されるまで、**[バックアップの停止]** ボタンはアクティブになりません。バックアップ アイテムの名前を入力するダイアログ ボックスが表示されない場合は、**[バックアップ データの保持]** オプションを選択したはずです。
+      Type the name of the item to verify you want to delete it. The **Stop Backup** button will not activate until you verify the item to stop. If you do not see the dialog box to type the name of the backup item, you have chosen the **Retain Backup Data** option.
 
     ![delete backup data](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-      必要に応じて、データを削除する理由を指定し、コメントを追加できます。**[バックアップの停止]** をクリックした後、削除ジョブが完了するまで待機してから、コンテナーを削除します。ジョブの完了を確認するには、Azure メッセージ ![delete backup data](./media/backup-azure-delete-vault/messages.png) をチェックします。<br/> ジョブが完了すると、バックアップ プロセスが停止されたことと、そのアイテムのバックアップ データが削除されたことを示すメッセージが表示されます。
+      Optionally, you can provide a reason why you are deleting the data, and add comments. After you click **Stop Backup**, allow the delete job to complete before attempting to delete the vault. To verify that the job has completed, check the Azure Messages ![delete backup data](./media/backup-azure-delete-vault/messages.png). <br/>
+      Once the job is complete, you'll receive a message stating the backup process was stopped and the backup data was deleted for that item.
 
-    c.一覧のアイテムを削除した後、**[バックアップ アイテム]** メニューの **[更新]** をクリックして、コンテナー内の残りのアイテムを確認します。
+    c. After deleting an item in the list, on the **Backup Items** menu, click **Refresh** to see the remaining items in the vault.
 
       ![delete backup data](./media/backup-azure-delete-vault/empty-items-list.png)
 
-      一覧にアイテムがなくなったら、[バックアップ コンテナー] ブレードの **[要点]** ウィンドウまでスクロールします。一覧には、**[バックアップ アイテム]**、**[バックアップ管理サーバー]**、**[レプリケートされたアイテム]** のどれも表示されないはずです。コンテナーにまだアイテムが表示される場合は、上の手順 3. に戻って、別のアイテムの種類の一覧を選択します。
+      When there are no items in the list, scroll to the **Essentials** pane in the Backup vault blade. There shouldn't be any **Backup items**, **Backup management servers**, or **Replicated items** listed. If items still appear in the vault, return to step three above and choose a different item type list.  
 
-5. コンテナー ツール バーにアイテムがなくなったら、**[削除]** をクリックします。
+5. When there are no more items in the vault toolbar, click **Delete**.
 
     ![delete backup data](./media/backup-azure-delete-vault/delete-vault.png)
 
-6. コンテナーの削除を確認するように求めるメッセージが表示されたら、**[はい]** をクリックします。
+6. When asked to verify that you want to delete the vault, click **Yes**.
 
-    コンテナーが削除され、ポータルが **[新規]** サービス メニューに戻ります。
+    The vault is deleted and the portal returns to the **New** service menu.
 
 
-## バックアップ プロセスを停止してもデータが保持されている場合の対処
+## <a name="what-if-i-stopped-the-backup-process-but-retained-the-data?"></a>What if I stopped the backup process but retained the data?
 
-バックアップ プロセスを停止したものの、誤ってデータが "*保持*" されてしまった場合は、コンテナーを削除する前にバックアップ データを削除する必要があります。バックアップ データを削除するには:
+If you stopped the backup process but accidentally *retained* the data, you must delete the backup data before you can delete the vault. To delete the backup data:
 
-1. **[バックアップ アイテム]** ブレードでアイテムを右クリックし、コンテキスト メニューで **[バックアップ データの削除]** をクリックします。
+1. On the **Backup Items** blade, right-click the item, and on the context menu click **Delete backup data**.
 
     ![delete backup data](./media/backup-azure-delete-vault/delete-backup-data-menu.png)
 
-    **[バックアップ データを削除]** ブレードが開きます。
+    The **Delete Backup Data** blade opens.
 
-2. **[バックアップ データの削除]** ブレードでアイテムの名前を入力し、**[削除]** をクリックします。
+2. On the **Delete Backup Data** blade, type the name of the item, and click **Delete**.
 
     ![delete backup data](./media/backup-azure-delete-vault/delete-retained-vault.png)
 
-    データを削除した後は、上の手順 4. c に移動し、操作を続行します。
+    Once you have deleted the data, go to step 4c, above, and continue with the process.
 
-## DPM サーバーの保護に使用されているコンテナーの削除
+## <a name="delete-a-vault-used-to-protect-a-dpm-server"></a>Delete a vault used to protect a DPM server
 
-DPM サーバーの保護に使用されているコンテナーを削除する前に、作成したすべての回復ポイントを消去し、コンテナーへのサーバーの登録を解除する必要があります。
+Before you can delete a vault used to protect a DPM server, you must clear any recovery points that have been created, and then unregister the server from the vault.
 
-保護グループに関連付けられているデータを削除するには:
+To delete the data associated with a protection group:
 
-1. DPM 管理者コンソールで **[保護]** をクリックし、保護グループ、保護グループのメンバーの順に選択して、ツール リボンで **[削除]** をクリックします。メンバーを選択しないと、ツール リボンに **[削除]** ボタンが表示されません。例では、メンバーは **dummyvm9** です。保護グループに複数のメンバーがある場合は、Ctrl キーを押しながら、複数のメンバーを選択します。
+1. In the DPM Administrator Console, click **Protection**, select a protection group, select the Protection Group Member, and in the tool ribbon click **Remove**. You must select the member for the **Remove** button to appear in the tool ribbon. In the example, the member is **dummyvm9**. If there are multiple members in the protection group, hold down the Ctrl key to select multiple members.
 
     ![delete backup data](./media/backup-azure-delete-vault/az-portal-delete-protection-group.png)
 
-    **[保護の停止]** ダイアログ ボックスが開かれます。
+    The **Stop Protection** dialog opens.
 
-2. **[保護の停止]** ダイアログで **[保護されるデータを削除する]** を選択し、**[保護の停止]** をクリックします。
+2. In the **Stop Protection** dialog, select **Delete protected data**, and click **Stop Protection**.
 
     ![delete backup data](./media/backup-azure-delete-vault/delete-dpm-protection-group.png)
 
-    コンテナーを削除するにはコンテナーの内容を消去する必要があるため、保護されているデータは保持しません。回復ポイントの数と、保護グループ内のデータの量によっては、データの削除に数秒から数分までかかる場合があります。**[保護の停止]** ダイアログには、ジョブが完了すると状態が表示されます。
+    You don't want to retain protected data because you need to clear the vault in order to delete it. Depending on how many recovery points and how much data is in the protection group, it may take anywhere from a few seconds to a few minutes to delete the data. The **Stop Protection** dialog shows the status when the job has completed.
 
     ![delete backup data](./media/backup-azure-delete-vault/success-deleting-protection-group.png)
 
-3. すべての保護グループのすべてのメンバーに対して、この操作を繰り返します。
+3. Continue this process for all members in all protection groups.
 
-    保護されているすべてのデータと保護グループを削除する必要があります。
+    You must remove all protected data, and the protection group(s).
 
-4. 保護グループからすべてのメンバーを削除した後、Azure Portal に切り替えます。コンテナー ダッシュボードを開き、**バックアップ アイテム**、**バックアップ管理サーバー**、および**レプリケートされたアイテム**がないことを確認します。コンテナー ツール バーで、**[削除]** をクリックします。
+4. After deleting all members from the protection group, switch to the Azure portal. Open the vault dashboard, and make sure there are no **Backup Items**, **Backup management servers**, or **Replicated items**. On the vault toolbar, click **Delete**.
 
     ![delete backup data](./media/backup-azure-delete-vault/delete-vault.png)
 
-    コンテナーに登録されているバックアップ管理サーバーがある場合は、コンテナーにデータがない場合でも、コンテナーを削除することはできません。コンテナーに関連付けられているバックアップ管理サーバーを削除したはずなのに、まだ **[要点]** ウィンドウにサーバーが表示されている場合は、「[コンテナーに登録されているバックアップ管理サーバーを探す](backup-azure-delete-vault.md#find-the-backup-management-servers-registered-to-the-vault)」を参照してください。
+    If there are Backup management servers registered to the vault, you won't be able to delete the vault even if there is no data in the vault. If you thought you'd deleted the Backup management servers associated with the vault, but there are still servers showing in the **Essentials** pane, see [Find the Backup management servers registered to the vault](backup-azure-delete-vault.md#find-the-backup-management-servers-registered-to-the-vault).
 
-5. コンテナーの削除を確認するように求めるメッセージが表示されたら、**[はい]** をクリックします。
+5. When asked to verify that you want to delete the vault, click **Yes**.
 
-    コンテナーが削除され、ポータルが **[新規]** サービス メニューに戻ります。
+    The vault is deleted and the portal returns to the **New** service menu.
 
 
-## 実稼働サーバーの保護に使用されているコンテナーの削除
+## <a name="delete-a-vault-used-to-protect-a-production-server"></a>Delete a vault used to protect a Production server
 
-サーバーの保護に使用されているコンテナーを削除する前に、コンテナーからサーバーを削除するか、登録を解除する必要があります。
+Before you can delete a vault used to protect a Production server, you must delete or unregister the server from the vault.
 
-コンテナーに関連付けられている実稼働サーバーを削除するには:
+To delete the Production server associated with the vault:
 
-1. Azure Portal でコンテナー ダッシュボードを開き、**[設定]**、**[バックアップ インフラストラクチャ]**、**[実稼働サーバー]** の順にクリックします。
+1. In the Azure portal, open the vault dashboard and click **Settings** > **Backup Infrastructure** > **Production Servers**.
 
     ![open Production Servers blade](./media/backup-azure-delete-vault/delete-production-server.png)
 
-    **[実稼働サーバー]** ブレードが開き、コンテナー内のすべての実稼働サーバーが一覧表示されます。
+    The **Production Servers** blade opens and lists all Production servers in the vault.
 
     ![list of Production Servers](./media/backup-azure-delete-vault/list-of-production-servers.png)
 
-2. **[実稼働サーバー]** ブレードでサーバーを右クリックし、**[削除]** をクリックします。
+2. On the **Production Servers** blade, right-click on the server, and click **Delete**.
 
-    ![delete production server](./media/backup-azure-delete-vault/delete-server-on-production-server-blade.png)
+    ![delete production server ](./media/backup-azure-delete-vault/delete-server-on-production-server-blade.png)
 
-    **[削除]** ブレードが開きます。
+    The **Delete** blade opens.
 
-    ![delete production server](./media/backup-azure-delete-vault/delete-blade.png)
+    ![delete production server ](./media/backup-azure-delete-vault/delete-blade.png)
 
-3. **[削除]** ブレードで、削除するサーバーの名前を確認し、**[削除]** をクリックします。**[削除]** ボタンをアクティブにするには、サーバーの名前を正確に入力する必要があります。
+3. On the **Delete** blade, confirm the name of the server to delete and click **Delete**. You must correctly enter the name of the server to activate the **Delete** button.
 
-    コンテナーが削除されると、コンテナーが削除されたというメッセージが表示されます。コンテナー内のすべてのサーバーを削除した後、コンテナー ダッシュボードで [要点] ウィンドウに戻るまでスクロールします。
+    Once the vault has been deleted, you'll receive a message stating the vault has been deleted. After deleting all servers in the vault, scroll back to the Essentials pane in the vault dashboard.
 
-4. コンテナー ダッシュボードで、**バックアップ アイテム**、**バックアップ管理サーバー**、および**レプリケートされたアイテム**がないことを確認します。コンテナー ツール バーで、**[削除]** をクリックします。
+4. In the vault dashboard, make sure there are no **Backup Items**, **Backup management servers**, or **Replicated items**. On the vault toolbar, click **Delete**.
 
-5. コンテナーの削除を確認するように求めるメッセージが表示されたら、**[はい]** をクリックします。
+5. When asked to verify that you want to delete the vault, click **Yes**.
 
-    コンテナーが削除され、ポータルが **[新規]** サービス メニューに戻ります。
+    The vault is deleted and the portal returns to the **New** service menu.
 
 
-## バックアップ コンテナーの削除
+## <a name="delete-a-backup-vault"></a>Delete a Backup vault
 
-以下の手順は、クラシック ポータルでバックアップ コンテナーを削除するためのものです。バックアップ コンテナーと Recovery Services コンテナーは同じです。コンテナーを削除する前に、アイテムと保持されているデータを削除してください。
+The following instructions are for deleting a Backup vault in the classic portal. A Backup vault and Recovery Services vault are the same: before you can delete the vault, delete the items and the retained data.
 
-1. クラシック ポータルを開きます。
+1. Open the Classic portal.
 
-2. バックアップ コンテナーの一覧で、削除するコンテナーを選択します。
+2. From the list of backup vaults, select the vault you want to delete.
 
     ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-open-vault.png)
 
-    コンテナー ダッシュボードが開かれます。コンテナーに関連付けられている Windows Server および Azure 仮想マシンの数を確認します。また、Azure で使用されているストレージの合計も確認します。コンテナーを削除する前に、すべてのバックアップ ジョブを停止し、既存のデータを削除する必要があります。
+    The vault dashboard opens. Look at the number of Windows Servers and/or Azure virtual machines associated with the vault. Also, look at the total storage consumed in Azure. You'll need to stop any backup jobs and delete existing data before deleting the vault.
 
-3. **[保護されているアイテム]** タブをクリックし、**[保護の停止]** をクリックします。
+3. Click the **Protected Items** tab, and then click **Stop Protection**
 
     ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-stop-protect.png)
 
-    **[<対象のコンテナー> の保護を停止します]** ダイアログが表示されます。
+    The **Stop protection of 'your vault'** dialog appears.
 
-4. **[<対象のコンテナー> の保護を停止します]** ダイアログ ボックスで、**[関連付けられたバックアップ データを削除します]** をオンにし、![checkmark](./media/backup-azure-delete-vault/checkmark.png) をクリックします。<br/> 必要に応じて、保護を停止する理由を選択し、コメントを指定できます。
+4. In the **Stop protection of 'your vault'** dialog, check **Delete associated backup data** and click ![checkmark](./media/backup-azure-delete-vault/checkmark.png). <br/>
+    Optionally, you can choose a reason for stopping protection, and provide a comment.
 
     ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-verify-stop-protect.png)
 
-    コンテナー内のアイテムを削除した後、コンテナーが空になります。
+    After deleting the items in the vault, the vault will be empty.
 
     ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-post-delete-data.png)
 
-5. タブの一覧で、**[登録済みの項目]** をクリックします。コンテナーに登録されているアイテムを 1 つずつ選択し、**[登録解除]** をクリックします。
+5. In the list of tabs, click **Registered Items**. For each item registered in the vault, select the item, and click **Unregister**.
 
     ![delete backup data](./media/backup-azure-delete-vault/classic-portal-unregister.png)
 
-6. タブの一覧で **[ダッシュボード]** をクリックして、そのタブを開きます。登録されているサーバーや、クラウドで保護されている Azure 仮想マシンがないことを確認します。また、ストレージにデータがないことも確認します。**[削除]** をクリックして、コンテナーを削除します。
+6. In the list of tabs, click **Dashboard** to open that tab. Verify there are no registered servers or Azure virtual machines protected in the cloud. Also, verify there is no data in storage. Click **Delete** to delete the vault.
 
     ![delete backup data](./media/backup-azure-delete-vault/classic-portal-list-of-tabs-dashboard.png)
 
-    [バックアップ コンテナーの削除] 確認画面が開かれます。コンテナーを削除する理由を示すオプションを選択し、![checkmark](./media/backup-azure-delete-vault/checkmark.png) をクリックします。 <br/>
+    The Delete Backup vault confirmation screen opens. Select an option why you're deleting the vault, and click ![checkmark](./media/backup-azure-delete-vault/checkmark.png). <br/>
 
     ![delete backup data](./media/backup-azure-delete-vault/classic-portal-delete-vault-confirmation-1.png)
 
-    コンテナーが削除され、クラシック ポータルのダッシュボードに戻ります。
+    The vault is deleted, and you return to the classic portal dashboard.
 
-### コンテナーに登録されているバックアップ管理サーバーを探す
+### <a name="find-the-backup-management-servers-registered-to-the-vault"></a>Find the Backup Management servers registered to the vault
 
-コンテナーに複数のサーバーが登録されている場合、それらを覚えておくことは難しいことがあります。コンテナーに登録されているサーバーを確認し、それらを削除するには:
+If you have multiple servers registered to a vault, it can be difficult to remember them. To see the servers registered to the vault, and delete them:
 
-1. コンテナー ダッシュボードを開きます。
+1. Open the vault dashboard.
 
-2. **[要点]** ウィンドウで **[設定]** をクリックし、ブレードを開きます。
+2. In the **Essentials** pane, click **Settings** to open that blade.
 
     ![open settings blade](./media/backup-azure-delete-vault/backup-vault-click-settings.png)
 
-3. **[設定]** ブレードで **[バックアップ インフラストラクチャ]** をクリックします。
+3. On the **Settings blade**, click **Backup Infrastructure**.
 
-4. **[バックアップ インフラストラクチャ]** ブレードで **[バックアップ管理サーバー]** をクリックします。[バックアップ管理サーバー] ブレードが開かれます。
+4. On the **Backup Infrastructure** blade, click **Backup Management Servers**. The Backup Management Servers blade opens.
 
     ![list of backup management servers](./media/backup-azure-delete-vault/list-of-backup-management-servers.png)
 
-5. 一覧からサーバーを削除するには、サーバーの名前を右クリックし、**[削除]** をクリックします。**[削除]** ブレードが開かれます。
+5. To delete a server from the list, right-click the name of the server and then click **Delete**.
+    The **Delete** blade opens.
 
-6. **[削除]** ブレードで、サーバーの名前を指定します。長い名前である場合は、[バックアップ管理サーバー] の一覧からコピーして貼り付けることができます。その後、**[削除]** をクリックします。
+6. On the **Delete** blade, provide the name of the server. If it is a long name, you can copy and paste it from the list of Backup Management Servers. Then click **Delete**.  
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

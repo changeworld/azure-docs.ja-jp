@@ -1,72 +1,76 @@
 <properties
-	pageTitle="サブスクリプションとアカウントのガイドライン | Microsoft Azure"
-	description="Azure サブスクリプションとアカウントに関する主要な設計と実装のガイドラインについて説明します。"
-	documentationCenter=""
-	services="virtual-machines-linux"
-	authors="iainfoulds"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Subscription and Accounts Guidelines | Microsoft Azure"
+    description="Learn about the key design and implementation guidelines for subscriptions and accounts on Azure."
+    documentationCenter=""
+    services="virtual-machines-linux"
+    authors="iainfoulds"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/08/2016"
-	ms.author="iainfou"/>
-
-# サブスクリプションとアカウントのガイドライン
-
-[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
-
-この記事は、環境とユーザー ベースの拡大にあわせたサブスクリプションとアカウント管理の方法について説明します。
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/08/2016"
+    ms.author="iainfou"/>
 
 
-## サブスクリプションとアカウントに関する実装ガイドライン
+# <a name="subscription-and-accounts-guidelines"></a>Subscription and accounts guidelines
 
-決めること:
+[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)] 
 
-- IT ワークロードやインフラストラクチャをホストするために必要なサブスクリプションとアカウントのセット
-- 階層を組織に合わせて分類する方法
-
-タスク:
-
-- サブスクリプション レベルから管理する論理的な組織階層を定義する。
-- この論理階層に合わせて必要なアカウントを定義し、さらにアカウントごとにサブスクリプションを定義する。
-- 名前付け規則を使用して、サブスクリプションとアカウントのセットを作成する。
+This article focuses on understanding how to approach subscription and account management as your environment and user base grows.
 
 
-## サブスクリプションとアカウント
+## <a name="implementation-guidelines-for-subscriptions-and-accounts"></a>Implementation guidelines for subscriptions and accounts
 
-Azure を使用するには、1 つまたは複数の Azure サブスクリプションが必要です。仮想マシン (VM) や仮想ネットワークなどのリソースは、サブスクリプションに存在します。
+Decisions:
 
-- 企業のお客様は、通常、エンタープライズ加入契約を使用します。これは、階層内の最上位のリソースであり、1 つまたは複数のアカウントに関連付けられています。
-- エンタープライズ加入契約を持たないコンシューマーおよび顧客の最上位のリソースはアカウントです。
-- サブスクリプションはアカウントに関連付けられており、アカウントごとに 1 つまたは複数のサブスクリプションを使用できます。Azure はサブスクリプション レベルで課金情報を記録します。
+- What set of subscriptions and accounts do you need to host your IT workload or infrastructure?
+- How to break down the hierarchy to fit your organization?
 
-アカウント/サブスクリプションの関係での 2 つの階層レベルの制限のため、アカウントとサブスクリプションの名前付け規則を課金のニーズに合わせることが重要です。たとえば、世界規模の企業が Azure を使用する場合、リージョンごとに 1 つのアカウントを使用し、リージョン レベルでサブスクリプションを管理できます。
+Tasks:
+
+- Define your logical organization hierarchy as you would like to manage it from a subscription level.
+- To match this logical hierarchy, define the accounts required and subscriptions under each account.
+- Create the set of subscriptions and accounts using your naming convention.
+
+
+## <a name="subscriptions-and-accounts"></a>Subscriptions and accounts
+
+To work with Azure, you need one or more Azure subscriptions. Resources like virtual machines (VMs) or virtual networks exist in of those subscriptions.
+
+- Enterprise customers typically have an Enterprise Enrollment, which is the top-most resource in the hierarchy, and is associated to one or more accounts.
+- For consumers and customers without an Enterprise Enrollment, the top-most resource is the account.
+- Subscriptions are associated to accounts, and there can be one or more subscriptions per account. Azure records billing information at the subscription level.
+
+Due to the limit of two hierarchy levels on the Account/Subscription relationship, it is important to align the naming convention of accounts and subscriptions to the billing needs. For instance, if a global company uses Azure, they might choose to have one account per region, and have subscriptions managed at the region level:
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub01.png)
 
-たとえば、次の構造を使用できます。
+For instance, you might use the following structure:
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub02.png)
 
-リージョンで特定のグループに複数のサブスクリプションを関連付ける場合は、名前付け規則に、アカウントまたはサブスクリプション名で追加データをエンコードする仕組みが組み込まれている必要があります。次の組織では、請求レポートの間にメッセージ請求データで新しいレベルの階層を生成できます。
+If a region decides to have more than one subscription associated to a particular group, the naming convention should incorporate a way to encode the extra data on either the account or the subscription name. This organization allows massaging billing data to generate the new levels of hierarchy during billing reports:
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub03.png)
 
-組織は次のようになります。
+The organization could look like the following:
 
 ![](./media/virtual-machines-common-infrastructure-service-guidelines/sub04.png)
 
-単一アカウントまたはエンタープライズ アグリーメントのすべてのアカウントについて、詳細な課金情報が記載されたファイルをダウンロードできます。
+We provide detailed billing via a downloadable file for a single account, or for all accounts in an enterprise agreement.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
+[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)] 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

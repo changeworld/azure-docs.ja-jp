@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure 仮想マシンの暗号化 | Microsoft Azure"
-   description="このドキュメントは、Azure Security Center からアラートを受け取った後に Azure 仮想マシンを暗号化する際に役立ちます。"
+   pageTitle="Encrypt an Azure Virtual Machine | Microsoft Azure"
+   description="This document helps you to encrypt an Azure Virtual Machine after receiving an alert from Azure Security Center."
    services="security, security-center"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,160 +16,167 @@
    ms.date="05/27/2016"
    ms.author="tomsh"/>
 
-# Azure 仮想マシンの暗号化
-暗号化されていない仮想マシンがある場合には、Azure Security Center からアラートを受け取ります。これらのアラートは重要度が高いとして表示されるため、このような仮想マシンを暗号化することをお勧めします。
+
+# <a name="encrypt-an-azure-virtual-machine"></a>Encrypt an Azure Virtual Machine
+Azure Security Center will alert you if you have virtual machines that are not encrypted. These alerts will show as High Severity and the recommendation is to encrypt these virtual machines.
 
 ![Disk encryption recommendation](./media/security-center-disk-encryption\security-center-disk-encryption-fig1.png)
 
-> [AZURE.NOTE] このドキュメントの情報は、Azure セキュリティ センターのプレビュー リリースに適用されます。
+> [AZURE.NOTE] The information in this document applies to the preview release of Azure Security Center.
 
-Azure Security Center で暗号化が必要と識別された Azure 仮想マシンを暗号化するには、次の手順をお勧めします。
+To encrypt Azure Virtual Machines that have been identified by Azure Security Center as needing encryption, we recommend the following steps:
 
-- Azure PowerShell のインストールおよび構成。これにより、Azure 仮想マシンの暗号化に必要な必須コンポーネントを設定するための PowerShell コマンドを実行できるようになります。
-- Azure Disk Encryption の前提条件となる Azure PowerShell スクリプトの取得と実行。
-- 仮想マシンの暗号化。
+- Install and configure Azure PowerShell. This will enable you to run the PowerShell commands required to set up the prerequisites required to encrypt Azure Virtual Machines.
+- Obtain and run the Azure Disk Encryption Prerequisites Azure PowerShell script
+- Encrypt your virtual machines
 
-このドキュメントの目的は、Azure PowerShell の知識がほとんどまたはまったくない場合でも、仮想マシンを暗号化できるようにすることです。このドキュメントでは、Azure Disk Encryption を構成するクライアント コンピューターとして Windows 10 を使用していることを想定しています。
+The goal of this document is to enable you to encrypt your virtual machines, even if you have little or no background in Azure PowerShell.
+This document assumes you are using Windows 10 as the client machine from which you will configure Azure Disk Encryption.
 
-必須コンポーネントの設定と Azure 仮想マシンの暗号化の構成に使用できる方法は多数あります。既に Azure PowerShell または Azure CLI についてよく知っている方は、他の方法を好む場合もあります。
+There are many approaches that can be used to setup the prerequisites and to configure encryption for Azure Virtual Machines. If you are already well-versed in Azure PowerShell or Azure CLI, then you may prefer to use alternate approaches.
 
-> [AZURE.NOTE] Azure 仮想マシンの暗号化を構成する他の方法の詳細については、「[Azure Disk Encryption for Windows and Linux Azure Virtual Machines (Windows とLinux の Azure 仮想マシンの Azure Disk Encryption)](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)」を参照してください。
+> [AZURE.NOTE] To learn more about alternate approaches to configuring encryption for Azure virtual machines, please see [Azure Disk Encryption for Windows and Linux Azure Virtual Machines](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0).
 
-## Azure PowerShell のインストールおよび構成
-お使いのコンピューターに Azure PowerShell Version 1.2.1 以降がインストールされている必要があります。「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」には、Azure PowerShell を操作するためにコンピューターをプロビジョニングする際に必要な手順がすべて記載されています。最も簡単なのは、この記事で説明されている Web PI によるインストール方法です。既に Azure PowerShell がインストールされている場合でも、Azure PowerShell の最新バージョンを入手するために Web PI による方法を使用して再インストールしてください。
+## <a name="install-and-configure-azure-powershell"></a>Install and configure Azure PowerShell
+You need Azure PowerShell version 1.2.1 or above installed on your computer. The article [How to install and configure Azure PowerShell](../powershell-install-configure.md) contains all the steps you need to provision your computer to work with Azure PowerShell. The most straightforward approach is to use the Web PI installation approach mentioned in that article. Even if you already have Azure PowerShell installed, install again using the Web PI approach so that you have the latest version of Azure PowerShell.
 
 
-## Azure Disk Encryption の前提条件となる構成スクリプトの取得と実行
-Azure Disk Encryption の前提条件となる構成スクリプトを使用すると、Azure 仮想マシンの暗号化に必要な必須コンポーネントすべてが設定されます。
+## <a name="obtain-and-run-the-azure-disk-encryption-prerequisites-configuration-script"></a>Obtain and run the Azure disk encryption prerequisites configuration script
+The Azure Disk Encryption Prerequisites Configuration Script will set up all the prerequisites required for encrypting your Azure Virtual Machines.
 
-1.	[Azure Disk Encryption Prerequisite Setup スクリプト](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)がある GitHub ページにアクセスします。
-2.	GibHub ページで、**[Raw]** (元データ) をクリックします。
-3.	**Ctrl + A** キーを押してそのページのテキストすべてを選択し、**Ctrl + C** キーを押して、選択したテキストをクリップボードにコピーします。
-4.	**メモ帳**を開き、コピーしたテキストをメモ帳に貼り付けます。
-5.	C: ドライブ上に、**AzureADEScript** という名前の新しいフォルダーを作成します。
-6.	メモ帳のファイルを保存します。これには、**[ファイル]** をクリックし、**[名前を付けて保存]** をクリックします。[ファイル名] ボックスに「**"ADEPrereqScript.ps1"**」と入力し、**[保存]** をクリックします (必ず名前を引用符で囲んでください。そうしないと、ファイルは .txt という拡張子付きで保存されます)。
+1.  Go to the GitHub page that has the [Azure Disk Encryption Prerequisite Setup Script](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1).
+2.  On the GibHub page, click the **Raw** button.
+3.  Use **CTRL-A** to select all the text on the page and then use **CTRL-C** to copy all the text on the page to the clipboard.
+4.  Open **Notepad** and paste the copied text into Notepad.
+5.  Create a new folder on your C: drive named **AzureADEScript**.
+6.  Save the Notepad file – click **File**, then click **Save As**. In the File name textbox, enter **“ADEPrereqScript.ps1”** and click **Save**. (make sure you put the quotation marks around the name, otherwise it will save the file with a .txt file extension).
 
-スクリプトの内容が保存されたので、PowerShell ISE でそのスクリプトを開きます。
+Now that the script content is saved, open the script in the PowerShell ISE:
 
-1.	[スタート] メニューの **[Cortana]** をクリックします。Cortana の検索ボックスに「**PowerShell**」と入力して、**Cortana** に "PowerShell" について質問します。
-2.	**[Windows PowerShell ISE]** を右クリックし、**[管理者として実行]** をクリックします。
-3.	**[管理者: Windows PowerShell ISE]** ウィンドウで、**[表示]** をクリックし、**[スクリプト ウィンドウの表示]** をクリックします。
-4.	ウィンドウの右側に **[コマンド]** ウィンドウが表示される場合は、そのウィンドウの右上隅にある**閉じるボタン**をクリックして閉じます。表示されるテキストが小さすぎる場合は、**Ctrl + プラス記号 (+)** キーを押します。テキストが大きすぎる場合は、**Ctrl + マイナス記号 (-)** キーを押します。
-5.	**[ファイル]** をクリックし、**[開く]** をクリックします。**C:\\AzureADEScript** フォルダーに移動し、**ADEPrereqScript** をダブルクリックします。
-6.	**ADEPrereqScript** の内容は PowerShell ISE で表示され、各種コンポーネント (コマンド、パラメーター、変数など) がよりわかりやすくなるように色分けされています。
+1.  In the Start Menu, click **Cortana**. Ask **Cortana** “PowerShell” by typing **PowerShell** in the Cortana search text box.
+2.  Right click **Windows PowerShell ISE** and click **Run as administrator**.
+3.  In the **Administrator: Windows PowerShell ISE** window, click **View** and then click **Show Script Pane**.
+4.  If you see the **Commands** pane on the right side of the window, click the **“x”** in the top right corner of the pane to close it. If the text is too small for you to see, use **CTRL+Add** (“Add” is the “+” sign). If the text is too large, use **CTRL+Subtract** (Subtract is the “-“ sign).
+5.  Click **File** and then click **Open**. Navigate to the **C:\AzureADEScript** folder and the double-click on the **ADEPrereqScript**.
+6.  The **ADEPrereqScript** contents should now appear in the PowerShell ISE and is color-coded to help you see various components, such as commands, parameters and variables more easily.
 
-次の図のように表示されます。
+You should now see something like the figure below.
 
 ![PowerShell ISE window](./media/security-center-disk-encryption\security-center-disk-encryption-fig2.png)
 
-上部のウィンドウは "スクリプト ウィンドウ"、下部のウィンドウは "コンソール" と呼ばれています。この記事では、これ以降、これらの用語を使用します。
+The top pane is referred to as the “script pane” and the bottom pane is referred to as the “console”. We will use these terms later in this article.
 
-## Azure Disk Encryption の前提条件となる PowerShell コマンドの実行
+## <a name="run-the-azure-disk-encryption-prerequisites-powershell-command"></a>Run the Azure disk encryption prerequisites PowerShell command
 
-Azure Disk Encryption の前提条件となるスクリプトでは、スクリプトの開始後に次の情報が求められます。
+The Azure Disk Encryption Prerequisites script will ask you for the following information after you start the script:
 
-- **リソース グループ名** - Key Vault を配置するリソース グループの名前。入力した名前のリソース グループがまだ作成されていない場合は、その名前の付いた新しいリソース グループが作成されます。このサブスクリプションで使用するリソース グループが既にある場合は、そのリソース グループ名を入力します。
-- **Key Vault 名** - 暗号化キーが配置される Key Vault の名前。この名前の Key Vault がまだない場合は、この名前の付いた新しい Key Vault が作成されます。使用する Key Vault が既にある場合は、既存の Key Vault の名前を入力します。
-- **場所** - Key Vault の場所。Key Vault と暗号化する VM が同じ場所にあることを確認します。場所がわからない場合は、その確認方法を説明する手順がこの記事の後半にあります。
-- **Azure Active Directory アプリケーション名** - Key Vault へのシークレットの書き込みに使用される Azure Active Directory アプリケーションの名前。該当するアプリケーションがない場合は、この名前の付いた新しいアプリケーションが作成されます。使用する Azure Active Directory アプリケーションが既にある場合は、その Azure Active Directory アプリケーションの名前を入力します。
+- **Resource Group Name** - Name of the Resource Group that you want to put the Key Vault into.  A new Resource Group with the name you enter will be created if there isn’t already one with that name created. If you already have a Resource Group that you want to use in this subscription, then enter the name of that Resource Group.
+- **Key Vault Name** - Name of the Key Vault in which encryption keys are to be placed. A new Key Vault with this name will be created if you don’t already have a Key Vault with this name. If you already have a Key Vault that you want to use, enter the name of the existing Key Vault.
+- **Location** - Location of the Key Vault. Make sure the Key Vault and VMs to be encrypted are in the same location. If you don’t know the location, there are steps later in this article that will show you how to find out.
+- **Azure Active Directory Application Name** - Name of the Azure Active Directory application that will be used to write secrets to the Key Vault. A new application with this name will be created if one doesn't exist. If you already have an Azure Active Directory application that you want to use, enter the name of that Azure Active Directory application.
 
-> [AZURE.NOTE] Azure Active Directory アプリケーションを作成する必要がある理由について知りたい場合は、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」の「*Azure Active Directory にアプリケーションを登録する*」セクションを参照してください。
+> [AZURE.NOTE] If you’re curious as to why you need to create an Azure Active Directory application, please see *Register an application with Azure Active Directory* section in the article [Getting Started with Azure Key Vault](../key-vault/key-vault-get-started.md).
 
-Azure 仮想マシンを暗号化するには、次の手順を実行してください。
+Perform the following steps to encrypt an Azure Virtual Machine:
 
-1.	PowerShell ISE を閉じた場合は、PowerShell ISE のインスタンスを管理者特権で開きます。PowerShell ISE がまだ開いていない場合は、この記事で前に説明した手順に従います。スクリプトを閉じた場合は、**ADEPrereqScript.ps1** を開きます (これには、**[ファイル]**、**[開く]** の順にクリックし、**C:\\AzureADEScript** フォルダーからスクリプトを選択します)。この記事の手順を最初から実行している場合は、そのまま次の手順に進んでください。
-2.	PowerShell ISE のコンソール (PowerShell ISE の下部のウィンドウ) で、「**cd c:\\AzureADEScript**」と入力して **Enter** キーを押すことで、スクリプトの場所にフォーカスを移動します。
-3.	スクリプトを実行できるようにコンピューター上で実行ポリシーを設定します。コンソールで「**Set-ExecutionPolicy Unrestricted**」と入力し、Enter キーを押します。変更による実行ポリシーへの影響を示すダイアログ ボックスが表示されたら、**[すべてはい]** または **[はい]** をクリックします (**[すべてはい]** が表示される場合はそれを選択し、**[すべてはい]** が表示されない場合は **[はい]** をクリックします)。
-4.	Azure アカウントにログインします。コンソールで、「**Login-AzureRmAccount**」と入力し、**Enter** キーを押します。資格情報を入力するダイアログ ボックスが表示されます (仮想マシンを変更する権限を持っていることを確認してください。権限がない場合は、仮想マシンを暗号化することができません。わからない場合は、サブスクリプションの所有者または管理者に問い合わせてください)。自身の **Environment**、**Account**、**TenantId**、**SubscriptionId**、**CurrentStorageAccount** に関する情報が表示されます。**SubscriptionId** をメモ帳にコピーします。これは手順 6. で必要になります。
-5.	仮想マシンが属しているサブスクリプションとその仮想マシンの場所を探します。[https://portal.azure.com](ttps://portal.azure.com) にアクセスしてログインします。ページの左側にある **[Virtual Machines]** をクリックします。仮想マシンとそれが属しているサブスクリプションの一覧が表示されます。
+1.  If you closed the PowerShell ISE, open an elevated instance of the PowerShell ISE. Follow the instructions earlier in this article if the PowerShell ISE is not already open. If you closed the script, then open the **ADEPrereqScript.ps1** clicking **File**, then **Open** and selecting the script from the **c:\AzureADEScript** folder. If you have followed this article from the start, then just move on to the next step.
+2.  In the console of the PowerShell ISE (the bottom pane of the PowerShell ISE), change the focus to the local of the script by typing **cd c:\AzureADEScript** and press **ENTER**.
+3.  Set the execution policy on your machine so that you can run the script. Type **Set-ExecutionPolicy Unrestricted** in the console and then press ENTER. If you see a dialog box telling about the effects of the change to execution policy, click either **Yes to all** or **Yes** (if you see **Yes to all**, select that option – if you do not see **Yes to all**, then click **Yes**).
+4.  Log into your Azure account. In the console, type **Login-AzureRmAccount** and press **ENTER**. A dialog box will appear in which you enter your credentials (make sure you have rights to change the virtual machines – if you do not have rights, you will not be able to encrypt them. If you are not sure, ask your subscription owner or administrator). You should see information about your **Environment**, **Account**, **TenantId**, **SubscriptionId** and **CurrentStorageAccount**. Copy the **SubscriptionId** to Notepad. You will need to use this in step #6.
+5.  Find what subscription your virtual machine belongs to and its location. Go to [https://portal.azure.com](ttps://portal.azure.com) and log in.  On the left side of the page, click **Virtual Machines**. You will see a list of your virtual machines and the subscriptions they belong to.
 
-	![Virtual Machines](./media/security-center-disk-encryption\security-center-disk-encryption-fig3.png)
+    ![Virtual Machines](./media/security-center-disk-encryption\security-center-disk-encryption-fig3.png)
 
-6.	PowerShell ISE に戻ります。スクリプトが実行されるサブスクリプションのコンテキストを設定します。コンソールで、「**Select-AzureRmSubscription –SubscriptionId <your_subscription_Id>**」と入力し (**< your_subscription_Id >** は実際のサブスクリプション ID に置き換えます)、**Enter** キーを押します。Environment、**Account**、**TenantId**、**SubscriptionId**、**CurrentStorageAccount** に関する情報が表示されます。
-7.	これで、スクリプトを実行する準備が整いました。**[スクリプトの実行]** ボタンをクリックするか、**F5** キーを押します。
+6.  Return to the PowerShell ISE. Set the subscription context in which the script will be run. In the console, type **Select-AzureRmSubscription –SubscriptionId <your_subscription_Id>** (replace **< your_subscription_Id >** with your actual Subscription ID) and press **ENTER**. You will see information about the Environment, **Account**, **TenantId**, **SubscriptionId** and **CurrentStorageAccount**.
+7.  You are now ready to run the script. Click the **Run Script** button or press **F5** on the keyboard.
 
-	![Executing PowerShell Script](./media/security-center-disk-encryption\security-center-disk-encryption-fig4.png)
+    ![Executing PowerShell Script](./media/security-center-disk-encryption\security-center-disk-encryption-fig4.png)
 
-8.	スクリプトにより **resourceGroupName:** の入力が求められます。使用する*リソース グループ*の名前を入力し、**Enter** キーを押します。リソース グループがない場合は、新しいリソース グループに使用する名前を入力します。使用する*リソース グループ* (仮想マシンが存在するものなど) が既にある場合は、既存のリソース グループの名前を入力します。
-9.	スクリプトにより **keyVaultName:** の入力が求められます。使用する *Key Vault* の名前を入力し、Enter キーを押します。Key Vault がない場合は、新しい Key Vault に使用する名前を入力します。使用する Key Vault が既にある場合は、既存の *Key Vault* の名前を入力します。
-10.	スクリプトにより **location:** の入力が求められます。暗号化する VM がある場所の名前を入力し、**Enter** キーを押します。場所を覚えていない場合は、手順 5. に戻ってください。
-11.	スクリプトにより **aadAppName:** の入力が求められます。使用する *Azure Active Directory* アプリケーションの名前を入力し、**Enter** キーを押します。Azure Active Directory アプリケーションがない場合は、新しい Azure Active Directory アプリケーションに使用する名前を入力します。使用する *Azure Active Directory アプリケーション*が既にある場合は、既存の *Azure Active Directory アプリケーション*の名前を入力します。
-12.	ログイン ダイアログ ボックスが表示されます。資格情報を入力します (一度ログインしていますが、ここでもう一度入力する必要があります)。
-13.	スクリプトが実行され、完了時に、**aadClientID**、**aadClientSecret**、**diskEncryptionKeyVaultUrl**、**keyVaultResourceId** の値をコピーするよう求められます。これらの値をそれぞれクリップボードにコピーし、メモ帳に貼り付けます。
-14.	PowerShell ISE に戻り、最後の行の末尾にカーソルを置いて、**Enter** キーを押します。
+8.  The script asks for **resourceGroupName:** - enter the name of *Resource Group* you want to use, then press **ENTER**. If you don’t have one, enter a name you want to use for a new one. If you already have a *Resource Group* that you want to use (such as the one that your virtual machine is in), enter the name of the existing Resource Group.
+9.  The script asks for **keyVaultName:** - enter the name of the *Key Vault* you want to use, then press ENTER. If you don’t have one, enter a name you want to use for a new one. If you already have a Key Vault that you want to use, enter the name of the existing *Key Vault*.
+10. The script asks for **location:** - enter the name of the location in which the VM you want to encrypt is located, then press **ENTER**. If you don’t remember the location, go back to step #5.
+11. The script asks for **aadAppName:** - enter the name of the *Azure Active Directory* application you want to use, then press **ENTER**. If you don’t have one, enter a name you want to use for a new one. If you already have an *Azure Active Directory application* that you want to use, enter the name of the existing *Azure Active Directory application*.
+12. A log in dialog box will appear. Provide your credentials (yes, you have logged in once, but now you need to do it again).
+13. The script runs and when complete it will ask you to copy the values of the **aadClientID**, **aadClientSecret**, **diskEncryptionKeyVaultUrl**, and **keyVaultResourceId**. Copy each of these values to the clipboard and paste them into Notepad.
+14. Return to the PowerShell ISE and place the cursor at the end of the last line, and press **ENTER**.
 
-スクリプトの出力は次の画面のようになります。
+The output of the script should look something like the screen below:
 
-![PowerShell の出力](./media/security-center-disk-encryption\security-center-disk-encryption-fig5.png)
+![PowerShell output](./media/security-center-disk-encryption\security-center-disk-encryption-fig5.png)
 
-## Azure 仮想マシンの暗号化
+## <a name="encrypt-the-azure-virtual-machine"></a>Encrypt the Azure virtual machine
 
-これで、仮想マシンを暗号化する準備が整いました。仮想マシンが Key Vault と同じリソース グループにある場合は、「暗号化の手順」に進むことができます。ただし、仮想マシンが Key Vault と同じリソース グループにない場合は、PowerShell ISE のコンソールに次のコマンドを入力する必要があります。
+You are now ready to encrypt your virtual machine. If your virtual machine is located in the same Resource Group as your Key Vault, you can move on to the encryption steps section. However, if your virtual machine is not in the same Resource Group as your Key Vault, you will need to enter the following in the console in the PowerShell ISE:
 
-**$resourceGroupName = <’Virtual\_Machine\_RG’>**
+**$resourceGroupName = <’Virtual_Machine_RG’>**
 
-**< Virtual_Machine_RG >** は、仮想マシンが含まれるリソース グループの名前を単一引用符で囲んだものに置き換えてください。次に、**Enter** キーを押します。正しいリソース グループ名が入力されたことを確認するには、PowerShell ISE のコンソールで次のコマンドを入力します。
+Replace **< Virtual_Machine_RG >** with the name of the Resource Group in which your virtual machines are contained, surrounded by a single quote. Then press **ENTER**.
+To confirm that the correct Resource Group name was entered, type the following in the PowerShell ISE console:
 
 **$resourceGroupName**
 
-**Enter** キーを押します。仮想マシンが存在するリソース グループの名前が表示されます。次に例を示します。
+Press **ENTER**. You should see the name of Resource Group that your virtual machines are located in. For example:
 
-![PowerShell の出力](./media/security-center-disk-encryption\security-center-disk-encryption-fig6.png)
+![PowerShell output](./media/security-center-disk-encryption\security-center-disk-encryption-fig6.png)
 
-### 暗号化の手順
+### <a name="encryption-steps"></a>Encryption steps
 
-まず、PowerShell に対して、暗号化する仮想マシンの名前を指定する必要があります。コンソールで、次のコマンドを入力します。
+First, you need to tell PowerShell the name of the virtual machine you want to encrypt. In the console, type:
 
-**$vmName = <’your\_vm\_name’>**
+**$vmName = <’your_vm_name’>**
 
-**<’your\_vm\_name’>** を VM の名前に置き換え (名前は単一引用符で囲んでください)、**Enter** キーを押します。
+Replace **<’your_vm_name’>** with the name of your VM (make sure the name is surrounded by a single quote) and then press **ENTER**.
 
-正しい VM 名が入力されたことを確認するには、次のコマンドを入力します。
+To confirm that the correct VM name was entered, type:
 
 **$vmName**
 
-**Enter** キーを押します。暗号化する仮想マシンの名前が表示されます。次に例を示します。
+Press **ENTER**. You should see the name of the virtual machine you want to encrypt. For example:
 
-![PowerShell の出力](./media/security-center-disk-encryption\security-center-disk-encryption-fig7.png)
+![PowerShell output](./media/security-center-disk-encryption\security-center-disk-encryption-fig7.png)
 
-暗号化コマンドを実行して仮想マシンを暗号化する方法は 2 とおりあります。1 つ目の方法では、PowerShell ISE のコンソールで次のコマンドを入力します。
+There are two ways you can run the encryption command to encrypt the virtual machine. The first method is to type the following command in the PowerShell ISE console:
 
 ~~~
 Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId
 ~~~
 
-上記のコマンドを入力した後、**Enter** キーを押します。
+After typing this command press **ENTER**.
 
-2 つ目の方法では、スクリプト ウィンドウ (PowerShell ISE の上部のウィンドウ) をクリックし、スクリプトの一番下までスクロールします。次に、上記のコマンドを強調表示し、右クリックして **[選択範囲の実行]** をクリックするか、**F8** キーを押します。
+The second method is to click in the script pane (the top pane of the PowerShell ISE) and scroll down to the bottom of the script. Highlight the command listed above, and then right click it and then click **Run Selection** or press **F8** on the keyboard.
 
 ![PowerShell ISE](./media/security-center-disk-encryption\security-center-disk-encryption-fig8.png)
 
-使用する方法にかかわらず、操作が完了するまでに 10 ～ 15 分かかることを示すダイアログ ボックスが表示されます。**[はい]** をクリックします。
+Regardless of the method you use, a dialog box will appear informing you that it will take 10-15 minutes for the operation to complete. Click **Yes**.
 
-暗号化処理が行われている間に、Azure ポータルに戻って、仮想マシンの状態を確認することができます。ページの左側にある **[Virtual Machines]** をクリックし、**[Virtual Machines]** ブレードで、暗号化している仮想マシンの名前をクリックします。表示されたブレードで、**[状態]** に **[更新中]** と表示されていることに気付きます。これは、暗号化が進行中であることを示します。
+While the encryption process is taking place, you can return to the Azure Portal and see the status of the virtual machine. On the left side of the page, click **Virtual Machines**, then in the **Virtual Machines** blade, click the name of the virtual machine you’re encrypting. In the blade that appears, you’ll notice that the **Status** says that it’s **Updating**. This demonstrates that encryption is in process.
 
 ![More details about the VM](./media/security-center-disk-encryption\security-center-disk-encryption-fig9.png)
 
-PowerShell ISE に戻ります。スクリプトが完了すると、次の図のように表示されます。
+Return to the PowerShell ISE. When the script completes, you’ll see what appears in the figure below.
 
-![PowerShell の出力](./media/security-center-disk-encryption\security-center-disk-encryption-fig10.png)
+![PowerShell output](./media/security-center-disk-encryption\security-center-disk-encryption-fig10.png)
 
-仮想マシンが暗号化されることを示すには、Azure ポータルに戻り、ページの左側にある **[Virtual Machines]** をクリックします。暗号化した仮想マシンの名前をクリックします。**[設定]** ブレードで **[ディスク]** をクリックします。
+To demonstrate that the virtual machine is now encrypted, return to the Azure Portal and click **Virtual Machines** on the left side of the page. Click the name of the virtual machine you encrypted. In the **Settings** blade, click **Disks**.
 
 ![Settings options](./media/security-center-disk-encryption\security-center-disk-encryption-fig11.png)
 
-**[ディスク]** ブレードで、**[暗号化]** が **[有効]** になっていることがわかります。
+On the **Disks** blade, you will see that **Encryption** is **Enabled**.
 
 ![Disks properties](./media/security-center-disk-encryption\security-center-disk-encryption-fig12.png)
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-このドキュメントでは、Azure 仮想マシンを暗号化する方法について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
+In this document, you learned how to encrypt an Azure Virtual Machine. To learn more about Azure Security Center, see the following:
 
-- 「[Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」 – Azure リソースのヘルスを監視する方法についての説明
-- 「[Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -セキュリティの警告の管理および応答の方法について
-- 「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」 – このサービスの使用に関してよく寄せられる質問
-- 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 – Azure のセキュリティとコンプライアンスについてまとめたブログ記事の検索
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md) – Learn how to monitor the health of your Azure resources
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) - Learn how to manage and respond to security alerts
+- [Azure Security Center FAQ](security-center-faq.md) – Find frequently asked questions about using the service
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – Find blog posts about Azure security and compliance
 
-<!-----HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

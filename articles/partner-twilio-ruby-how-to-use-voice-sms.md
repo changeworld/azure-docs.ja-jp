@@ -1,93 +1,94 @@
 <properties 
-	pageTitle="音声および SMS に Twilio を使用する方法 (Ruby) | Microsoft Azure" 
-	description="Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。コード サンプルは Ruby で記述されています。" 
-	services="" 
-	documentationCenter="ruby" 
-	authors="devinrader" 
-	manager="twilio" 
-	editor=""/>
+    pageTitle="How to Use Twilio for Voice and SMS (Ruby) | Microsoft Azure" 
+    description="Learn how to make a phone call and send a SMS message with the Twilio API service on Azure. Code samples written in Ruby." 
+    services="" 
+    documentationCenter="ruby" 
+    authors="devinrader" 
+    manager="twilio" 
+    editor=""/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="ruby" 
-	ms.topic="article" 
-	ms.date="11/25/2014" 
-	ms.author="MicrosoftHelp@twilio.com"/>
+    ms.service="multiple" 
+    ms.workload="na" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="ruby" 
+    ms.topic="article" 
+    ms.date="11/25/2014" 
+    ms.author="MicrosoftHelp@twilio.com"/>
 
 
 
 
 
-# Ruby で音声および SMS 機能に Twilio を使用する方法
-このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「[次のステップ](#NextSteps)」を参照してください。
 
-## <a id="WhatIs"></a>Twilio とは
-Twilio は、既存の Web 言語およびスキルを使用して音声および SMS アプリケーションの作成を可能にするテレフォニー Web サービス API です。Twilio は、サードパーティ製のサービスです (Azure の機能および Microsoft 製品ではありません)。
+# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>How to Use Twilio for Voice and SMS Capabilities in Ruby
+This guide demonstrates how to perform common programming tasks with the Twilio API service on Azure. The scenarios covered include making a phone call and sending a Short Message Service (SMS) message. For more information on Twilio and using voice and SMS in your applications, see the [Next Steps](#NextSteps) section.
 
-**Twilio Voice** を使用すると、アプリケーションで音声通話の発着信処理を行うことができます。**Twilio SMS** を使用すると、アプリケーションで SMS メッセージの送受信を行うことができます。**Twilio Client** を使用すると、アプリケーションに (モバイル接続を含む) 既存のインターネット接続を使用した音声通信を組み込むことができます。
+## <a name="<a-id="whatis"></a>what-is-twilio?"></a><a id="WhatIs"></a>What is Twilio?
+Twilio is a telephony web-service API that lets you use your existing web languages and skills to build voice and SMS applications. Twilio is a third-party service (not an Azure feature and not a Microsoft product).
 
-## <a id="Pricing"></a>Twilio の料金および特別プラン
-Twilio の料金については、[Twilio の料金に関するページ][twilio_pricing]でご確認ください。Azure ユーザーには、[特別プラン][special_offer] として、1,000 件のテキストまたは 1,000 分の着信通話相当の無料クレジットが用意されています。この特別プランにサインアップする、または詳細を確認するには、[http://ahoy.twilio.com/azure][special_offer] を参照してください。
+**Twilio Voice** allows your applications to make and receive phone calls. **Twilio SMS** allows your applications to make and receive SMS messages. **Twilio Client** allows your applications to enable voice communication using existing Internet connections, including mobile connections.
 
-## <a id="Concepts"></a>概念
-Twilio API は、アプリケーションに音声および SMS 機能を提供する REST ベースの API です。クライアント ライブラリはさまざまな言語で用意されています。言語の一覧については、[Twilio API ライブラリに関するページ][twilio_libraries]を参照してください。
+## <a name="<a-id="pricing"></a>twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio Pricing and Special Offers
+Information about Twilio pricing is available at [Twilio Pricing] [twilio_pricing]. Azure customers receive a [special offer][special_offer]: a free credit of 1000 texts or 1000 inbound minutes. To sign up for this offer or get more information, please visit [http://ahoy.twilio.com/azure][special_offer].  
 
-### <a id="TwiML"></a>TwiML
-TwiML は、通話または SMS をどのように処理するかを Twilio に通知する XML ベースの命令のセットです。
+## <a name="<a-id="concepts"></a>concepts"></a><a id="Concepts"></a>Concepts
+The Twilio API is a RESTful API that provides voice and SMS functionality for applications. Client libraries are available in multiple languages; for a list, see [Twilio API Libraries] [twilio_libraries].
 
-たとえば、次の TwiML は、テキスト **Hello World** を音声に変換します。
+### <a name="<a-id="twiml"></a>twiml"></a><a id="TwiML"></a>TwiML
+TwiML is a set of XML-based instructions that inform Twilio of how to process a call or SMS.
+
+As an example, the following TwiML would convert the text **Hello World** to speech.
 
     <?xml version="1.0" encoding="UTF-8" ?>
     <Response>
        <Say>Hello World</Say>
     </Response>
 
-すべての TwiML ドキュメントには、`<Response>` がルート要素として存在します。ここから、Twilio 動詞を使用してアプリケーションの動作を定義します。
+All TwiML documents have `<Response>` as their root element. From there, you use Twilio Verbs to define the behavior of your application.
 
-### <a id="Verbs"></a>TwiML 動詞
-Twilio 動詞は、何を**実行する**かを Twilio に通知する XML タグです。たとえば、**&lt;Say&gt;** 動詞は、メッセージを音声で返すことを Twilio に指示します。
+### <a name="<a-id="verbs"></a>twiml-verbs"></a><a id="Verbs"></a>TwiML Verbs
+Twilio Verbs are XML tags that tell Twilio what to **do**. For example, the **&lt;Say&gt;** verb instructs Twilio to audibly deliver a message on a call. 
 
-Twilio 動詞の一覧を次に示します。
+The following is a list of Twilio verbs.
 
-* **&lt;Dial&gt;**: 呼び出し元を別の電話に接続します。
-* **&lt;Gather&gt;**: 電話キーパッドに入力された数字を収集します。
-* **& lt;Hangup & gt;**: 通話を終了します。
-* **&lt;Play&gt;**: 音声ファイルを再生します。
-* **&lt;Pause&gt;**: 何も行わずに指定された秒数待機します。
-* **&lt;Record&gt;**: 呼び出し元の声を録音し、声が録音されたファイルの URL を返します。
-* **&lt;Redirect&gt;**: 通話または SMS の制御を別の URL の TwiML に転送します。
-* **&lt;Reject&gt;**: Twilio 番号への着信通話を拒否します。課金はされません。
-* **&lt;Say&gt;**: テキストを音声に変換して返します。
-* **&lt;Sms&gt;**: SMS メッセージを送信します。
+* **&lt;Dial&gt;**: Connects the caller to another phone.
+* **&lt;Gather&gt;**: Collects numeric digits entered on the telephone keypad.
+* **&lt;Hangup&gt;**: Ends a call.
+* **&lt;Play&gt;**: Plays an audio file.
+* **&lt;Pause&gt;**: Waits silently for a specified number of seconds.
+* **&lt;Record&gt;**: Records the caller's voice and returns a URL of a file that contains the recording.
+* **&lt;Redirect&gt;**: Transfers control of a call or SMS to the TwiML at a different URL.
+* **&lt;Reject&gt;**: Rejects an incoming call to your Twilio number without billing you
+* **&lt;Say&gt;**: Converts text to speech that is made on a call.
+* **&lt;Sms&gt;**: Sends an SMS message.
 
-Twilio の動詞と属性、および TwiML の詳細については、[TwiML に関するページ][twiml]を参照してください。Twilio API の詳細については、[Twilio API に関するページ][twilio_api]を参照してください。
+For more information about Twilio verbs, their attributes, and TwiML, see [TwiML] [twiml]. For additional information about the Twilio API, see [Twilio API] [twilio_api].
 
-## <a id="CreateAccount"></a>Twilio アカウントを作成する
-Twilio アカウントを取得する準備ができたら、[Twilio のサインアップ ページ][try_twilio]でサインアップします。無料アカウントで始め、後でアカウントをアップグレードすることができます。
+## <a name="<a-id="createaccount"></a>create-a-twilio-account"></a><a id="CreateAccount"></a>Create a Twilio Account
+When you're ready to get a Twilio account, sign up at [Try Twilio] [try_twilio]. You can start with a free account, and upgrade your account later.
 
-Twilio アカウントにサインアップすると、アプリケーションで使用できる無料の電話番号が与えられます。さらに、アカウント SID と認証トークンも受け取ります。Twilio API を呼び出すには、この両方が必要になります。自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。アカウント SID と認証トークンは、[Twilio アカウント ページ][twilio_account]の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
+When you sign up for a Twilio account, you'll get a free phone number for your application. You'll also receive an account SID and an auth token. Both will be needed to make Twilio API calls. To prevent unauthorized access to your account, keep your authentication token secure. Your account SID and auth token are viewable at the [Twilio account page][twilio_account], in the fields labeled **ACCOUNT SID** and **AUTH TOKEN**, respectively.
 
-### <a id="VerifyPhoneNumbers"></a>電話番号を確認する
-Twilio から与えられた番号の他に、自分で管理している番号 (携帯電話や自宅の電話番号) を確認してアプリケーションで使用することもできます。
+### <a name="<a-id="verifyphonenumbers"></a>verify-phone-numbers"></a><a id="VerifyPhoneNumbers"></a>Verify Phone Numbers
+In addition to the number you are given by Twilio, you can also verify numbers that you control (i.e. your cell phone or home phone number) for use in your applications. 
 
-電話番号を確認する方法の詳細については、[番号の管理に関するページ][verify_phone]を参照してください。
+For information on how to verify a phone number, see [Manage Numbers] [verify_phone].
 
-## <a id="create_app"></a>Ruby アプリケーションを作成します。
-Twilio サービスを使用し、Azure で動作している Ruby アプリケーションと、Twilio サービスを使用するその他の Ruby アプリケーションに違いはありません。Twilio サービスは REST ベースであり、Ruby から複数の方法で呼び出すことができますが、この記事では、Twilio サービスの呼び出しに [Ruby 用 Twilio ヘルパー ライブラリ][twilio_ruby]を使用する方法について重点的に説明します。
+## <a name="<a-id="create_app"></a>create-a-ruby-application"></a><a id="create_app"></a>Create a Ruby Application
+A Ruby application that uses the Twilio service and is running in Azure is no different than any other Ruby application that uses the Twilio service. While Twilio services are RESTful and can be called from Ruby in several ways, this article will focus on how to use Twilio services with [Twilio helper library for Ruby][twilio_ruby].
 
-まず、新しい Ruby Web アプリケーションのホストとして動作する[新しい Azure Linux VM をセットアップ][azure_vm_setup]します。Rails アプリケーションの作成に関する手順は無視し、VM のセットアップだけを行ってください。作成するエンドポイントは、外部ポートを 80、内部ポートを 5000 としてください。
+First, [set-up a new Azure Linux VM][azure_vm_setup] to act as a host for your new Ruby web application. Ignore the steps involving the creation of a Rails app, just set-up the VM. Make sure you create an Endpoint with an external port of 80 and an internal port of 5000.
 
-以下の例では、Ruby 用の非常にシンプルな Web フレームワークである [Sinatra][sinatra] を使用しています。もちろん、Ruby on Rails などの他の Web フレームワークで Twilio ヘルパー ライブラリを使用することもできます。
+In the examples below, we will be using [Sinatra][sinatra], a very simple web framework for Ruby. But you can certainly use the Twilio helper library for Ruby with any other web framework, including Ruby on Rails.
 
-新しい VM に SSH で接続し、新しいアプリケーション用のディレクトリを作成します。そのディレクトリの中に Gemfile というファイルを作成し、次のコードをファイルにコピーします。
+SSH into your new VM and create a directory for your new app. Inside that directory, create a file called Gemfile and copy the following code into it:
 
     source 'https://rubygems.org'
     gem 'sinatra'
     gem 'thin'
 
-コマンド ラインで、`bundle install` を実行します。これにより、上に示した依存関係がインストールされます。次に、`web.rb` というファイルを作成します。これが Web アプリケーションのコードを記述する場所になります。このファイルに次のコードを貼り付けます。
+On the command line run `bundle install`. This will install the dependencies above. Next create a file called `web.rb`. This will be where the code for your web app lives. Paste the following code into it:
 
     require 'sinatra'
 
@@ -95,41 +96,41 @@ Twilio サービスを使用し、Azure で動作している Ruby アプリケ�
         "Hello Monkey!"
     end
 
-この時点で、`ruby web.rb -p 5000` コマンドを実行できます。これにより、単純な Web サーバーがポート 5000 で動き始めます。Azure VM 用に設定した URL にブラウザーでアクセスすると、このアプリケーションを参照できます。ブラウザーで Web アプリケーションにアクセスできたら、Twilio アプリケーションの作成を始める準備ができています。
+At this point you should be able the run the command `ruby web.rb -p 5000`. This will spin-up a small web server on port 5000. You should be able to browse to this app in your browser by visiting the URL you set-up for your Azure VM. Once you can reach your web app in the browser, you're ready to start building a Twilio app.
 
-## <a id="configure_app"></a>Twilio を使用するようにアプリケーションを構成する
-Twilio ライブラリを使用するように Web アプリケーションを構成するには、`Gemfile` を更新して次の行を追加します。
+## <a name="<a-id="configure_app"></a>configure-your-application-to-use-twilio"></a><a id="configure_app"></a>Configure Your Application to Use Twilio
+You can configure your web app to use the Twilio library by updating your `Gemfile` to include this line:
 
     gem 'twilio-ruby'
 
-コマンド ラインで、`bundle install` を実行します。`web.rb` を開き、先頭に次の行を追加します。
+On the command line, run `bundle install`. Now open `web.rb` and including this line at the top:
 
     require 'twilio-ruby'
 
-これで、Ruby 用の Twilio ヘルパー ライブラリを Web アプリケーションで使用するための設定が完了しました。
+You're now all set to use the Twilio helper library for Ruby in your web app.
 
-## <a id="howto_make_call"></a>方法: 発信通話する
-次のコードでは、発信通話を行う方法を示します。ここで重要となるのは、Ruby 用の Twilio ヘルパー ライブラリを使用した REST API の呼び出しと、TwiML のレンダリングです。コードを実行する前に、**From** および **To** の電話番号の値を置き換えて、Twilio アカウントの **From** の電話番号を確認します。
+## <a name="<a-id="howto_make_call"></a>how-to:-make-an-outgoing-call"></a><a id="howto_make_call"></a>How to: Make an outgoing call
+The following shows how to make an outgoing call. Key concepts include using the Twilio helper library for Ruby to make REST API calls and rendering TwiML. Substitute your values for the **From** and **To** phone numbers, and ensure that you verify the **From** phone number for your Twilio account prior to running the code.
 
-次の関数を `web.md` に追加します。
+Add this function to `web.md`:
 
     # Set your account ID and authentication token.
-	sid = "your_twilio_account_sid";
-	token = "your_twilio_authentication_token";
+    sid = "your_twilio_account_sid";
+    token = "your_twilio_authentication_token";
 
-	# The number of the phone initiating the the call.
+    # The number of the phone initiating the the call.
     # This should either be a Twilio number or a number that you've verified
-	from = "NNNNNNNNNNN";
+    from = "NNNNNNNNNNN";
 
-	# The number of the phone receiving call.
-	to = "NNNNNNNNNNN";
+    # The number of the phone receiving call.
+    to = "NNNNNNNNNNN";
 
-	# Use the Twilio-provided site for the TwiML response.
+    # Use the Twilio-provided site for the TwiML response.
     url = "http://yourdomain.cloudapp.net/voice_url";
       
     get '/make_call' do
-	  # Create the call client.
-	  client = Twilio::REST::Client.new(sid, token);
+      # Create the call client.
+      client = Twilio::REST::Client.new(sid, token);
       
       # Make the call
       client.account.calls.create(to: to, from: from, url: url)
@@ -141,16 +142,16 @@ Twilio ライブラリを使用するように Web アプリケーションを�
        </Response>"
     end
     
-ブラウザーで `http://yourdomain.cloudapp.net/make_call` を開くと、通話を発信する Twilio API の呼び出しがトリガーされます。`client.account.calls.create` の最初の 2 つのパラメーターは、文字どおり、呼び出し元 (`from`) と呼び出し先 (`to`) の番号です。
+If you open-up `http://yourdomain.cloudapp.net/make_call` in a browser, that will trigger the call to the Twilio API to make the phone call. The first two parameters in `client.account.calls.create` are fairly self-explanatory: the number the call is `from` and the number the call is `to`. 
 
-3 つ目のパラメーター (`url`) は、通話がつながったときの動作に関する指示を受け取るために Twilio が要求する URL です。この例では、単純な TwiML ドキュメントを返す URL (`http://yourdomain.cloudapp.net`) を設定し、テキストを音声に変換する `<Say>` 動詞を使用して、通話の受信者に "Hello Monkey" という音声を届けます。
+The third parameter (`url`) is the URL that Twilio requests to get instructions on what to do once the call is connected. In this case we set-up a URL (`http://yourdomain.cloudapp.net`) that returns a simple TwiML document and uses the `<Say>` verb to do some text-to-speech and say "Hello Monkey" to the person recieving the call.
 
-## <a id="howto_recieve_sms"></a>方法: SMS メッセージを受信する
-前の例では、**発信**通話を開始しました。今度は、Twilio へのサインアップ時に受け取った電話番号を使用して、**受信** SMS メッセージを処理します。
+## <a name="<a-id="howto_recieve_sms"></a>how-to:-recieve-an-sms-message"></a><a id="howto_recieve_sms"></a>How to: Recieve an SMS message
+In the previous example we initiated an **outgoing** phone call. This time, let's use the phone number that Twilio gave us during sign-up to process an **incoming** SMS message.
 
-まず、[Twilio ダッシュボード][twilio_account]にログインします。上部のナビゲーションで [Numbers] をクリックし、自分の Twilio 番号をクリックします。構成できる URL が 2 つ表示されます。Voice Request URL と、SMS Request URL です。これらは、該当する番号に電話がかかってきたとき、または SMS メッセージが送信されたときに Twilio から呼び出される URL です。これらの URL は "Web フック" とも呼ばれます。
+First, log-in to your [Twilio dashboard][twilio_account]. Click on "Numbers" in the top nav and then click on the Twilio number you were provided. You'll see two URLs that you can configure. A Voice Request URL and an SMS Request URL. These are the URLs that Twilio calls whenever a phone call is made or an SMS is sent to your number. The URLs are also known as "web hooks".
 
-今回は受信 SMS メッセージを処理するので、URL を `http://yourdomain.cloudapp.net/sms_url` に更新します。ページの下部にある [Save Changes] をクリックします。`web.rb` に戻り、アプリケーションをプログラミングして次の処理を追加します。
+We would like to process incoming SMS messages, so let's update the URL to `http://yourdomain.cloudapp.net/sms_url`. Go ahead and click Save Changes at the bottom of the page. Now, back in `web.rb` let's program our application to handle this:
 
     post '/sms_url' do
       "<Response>
@@ -158,19 +159,19 @@ Twilio ライブラリを使用するように Web アプリケーションを�
        </Response>"
     end
 
-変更を加えた後は、必ず Web アプリケーションを再起動してください。次に、電話を使用して Twilio 番号に SMS を送信します。"Hey, thanks for the ping! Twilio and Azure rock!" という SMS 応答がすぐに返されます。
+After making the change, make sure to re-start your web app. Now, take out your phone and send an SMS to your Twilio number. You should promptly get an SMS response that says "Hey, thanks for the ping! Twilio and Azure rock!".
 
-## <a id="additional_services"></a>方法: その他の Twilio サービスを使用する
-ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。詳細については、[Twilio API に関するドキュメント][twilio_api_documentation]を参照してください。
+## <a name="<a-id="additional_services"></a>how-to:-use-additional-twilio-services"></a><a id="additional_services"></a>How to: Use Additional Twilio Services
+In addition to the examples shown here, Twilio offers web-based APIs that you can use to leverage additional Twilio functionality from your Azure application. For full details, see the [Twilio API documentation] [twilio_api_documentation].
 
-### <a id="NextSteps"></a>次のステップ
-これで、Twilio サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+### <a name="<a-id="nextsteps"></a>next-steps"></a><a id="NextSteps"></a>Next Steps
+Now that you've learned the basics of the Twilio service, follow these links to learn more:
 
-* [Twilio に関するセキュリティ ガイドラインのページ][twilio_security_guidelines]
-* [Twilio に関する方法とコード例のページ][twilio_howtos]
-* [Twilio のクイック スタート チュートリアルのページ][twilio_quickstarts] 
-* [GitHub 上の Twilio に関するページ][twilio_on_github]
-* [Twilio に関するサポートへの連絡のページ][twilio_support]
+* [Twilio Security Guidelines] [twilio_security_guidelines]
+* [Twilio HowTos and Example Code] [twilio_howtos]
+* [Twilio Quickstart Tutorials][twilio_quickstarts] 
+* [Twilio on GitHub] [twilio_on_github]
+* [Talk to Twilio Support] [twilio_support]
 
 [twilio_ruby]: https://www.twilio.com/docs/ruby/install
 
@@ -184,7 +185,7 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 [twiml]: http://www.twilio.com/docs/api/twiml
 [twilio_api]: http://www.twilio.com/api
 [try_twilio]: https://www.twilio.com/try-twilio
-[twilio_account]: https://www.twilio.com/user/account
+[twilio_account]:  https://www.twilio.com/user/account
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
 [twilio_api_documentation]: http://www.twilio.com/api
 [twilio_security_guidelines]: http://www.twilio.com/docs/security
@@ -195,4 +196,8 @@ Twilio ライブラリを使用するように Web アプリケーションを�
 [sinatra]: http://www.sinatrarb.com/
 [azure_vm_setup]: http://www.windowsazure.com/develop/ruby/tutorials/web-app-with-linux-vm/
 
-<!---HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Portal のダッシュボード | Microsoft Azure"
-   description="この記事では、Azure Portal でダッシュボードを作成して編集する方法について説明します。"
+   pageTitle="Azure portal dashboards | Microsoft Azure"
+   description="This article explains how to create and edit dashboards in the Azure portal."
    services="azure-portal"
    documentationCenter=""
    authors="sewatson"
@@ -16,90 +16,94 @@
    ms.date="09/06/2016"
    ms.author="sewatson"/>
 
-# Azure Portal でのダッシュボードの作成と共有
 
-ダッシュボードを複数作成し、ご自分の Azure サブスクリプションにアクセスできる他のユーザーと共有することができます。この投稿では、ダッシュボードの作成、編集、発行のほか、ダッシュボードへのアクセスの管理に関する基本について説明します。
+# <a name="creating-and-sharing-dashboards-in-the-azure-portal"></a>Creating and sharing dashboards in the Azure portal
 
-## ダッシュボードとブレードをカスタマイズする
+You can create multiple dashboards and share them with others who have access to your Azure subscriptions.  This post goes through the basics of creating/editing, publishing, and managing access to dashboards.
 
-数か月前にダッシュボードが導入されて以来、ブレードのカスタマイズが減り続ける一方で、ダッシュボードのカスタマイズが急激に増加しています。使用状況に関するこの顕著な傾向から、ブレードよりもダッシュボードのカスタマイズの方が好まれていることがわかります。この傾向に対応するために、Microsoft はブレードをカスタマイズする機能を削除し、ダッシュボード機能の強化に専念することにしました。ブレードをカスタマイズしている場合、そのカスタマイズは間もなく削除されます。そのカスタマイズを保持するには、カスタマイズされたタイルをダッシュボードにピン留めします。タイルを右クリックし、次の画像に示すように **[ダッシュボードにピン留めする]** を選択してください。
+## <a name="customizing-dashboards-versus-blades"></a>Customizing dashboards versus blades
+
+Since launching dashboards a few months ago, there has been a steady decline in blade customizations and a rapid increase in dashboard customizations. This strong usage trend shows that you prefer customizing dashboards over blades. To support that trend, we will remove the ability to customize blades and dedicate our efforts to enhancing dashboard functionality. If you customized a blade, your customization will soon be removed. To preserve that customization, pin the customized tiles to a dashboard. Simply right-click the tile and select **Pin to dashboard** as shown in the following image.
 
 ![save customized tile](./media/azure-portal-dashboards/save-customization.png)
 
-## ダッシュボードを作成する
+## <a name="create-a-dashboard"></a>Create a dashboard
 
-ダッシュボードを作成するには、現在のダッシュボードの名前の隣にある **[新しいダッシュボード]** ボタンを選択します。
+To create a dashboard, select the **New dashboard** button next to the current dashboard's name.  
 
 ![create dashboard](./media/azure-portal-dashboards/new-dashboard.png)
 
-この操作を実行すると、新しい空のプライベート ダッシュボードが作成され、カスタマイズ モードに切り替わります。カスタマイズ モードでは、ダッシュボードに名前を付けられるほか、タイルを追加したり並べ替えたりできます。このモードでは、折りたたみ可能なタイル ギャラリーが左側のナビゲーション メニューに表示されます。タイル ギャラリーでは、さまざまな方法で Azure リソース用のタイルを探すことができます。[リソース グループ](../resource-group-overview.md#resource-groups)、リソースの種類、[タグ](../resource-group-using-tags.md)、または名前によるリソースの検索を使用して参照できます。
+This action creates a new, empty, private dashboard and puts you into customization mode where you can name your dashboard and add or rearrange tiles.  When in this mode, the collapsible tile gallery takes over the left navigation menu.  The tile gallery lets you find tiles for your Azure resources in various ways: you can browse by [resource group](../resource-group-overview.md#resource-groups), by resource type, by [tag](../resource-group-using-tags.md), or by searching for your resource by name.  
 
 ![customize dashboard](./media/azure-portal-dashboards/customize-dashboard.png)
 
-ダッシュボード画面上のお好きな場所にドラッグ アンド ドロップしてタイルを追加します。
+Add tiles by dragging and dropping them onto the dashboard surface wherever you want.
 
-特定のリソースに関連付けられていないタイル用に、**General** という新しいカテゴリがあります。この例では、[マークダウン] タイルをピン留めします。このタイルを使用してカスタム コンテンツをダッシュボードに追加します。このタイルでは、プレーン テキスト、[マークダウン構文](https://daringfireball.net/projects/markdown/syntax)、一部の HTML がサポートされます (安全のために、`<script>` タグを挿入したり、ポータルに干渉するおそれのある CSS の特定のスタイル要素を使用したりすることはできなくなっています)。
+There's a new category called **General** for tiles that are not associated with a particular resource.  In this example, we pin the Markdown tile.  You use this tile to add custom content to your dashboard.  The tile supports plain text, [Markdown syntax](https://daringfireball.net/projects/markdown/syntax), and a limited set of HTML.  (For safety, you can't do things like inject `<script>` tags or use certain styling element of CSS that might interfere with the portal.) 
 
 ![add markdown](./media/azure-portal-dashboards/add-markdown.png)
 
-## ダッシュボードを編集する
+## <a name="edit-a-dashboard"></a>Edit a dashboard
 
-ダッシュボードの作成後、タイル ギャラリーのタイルまたはブレードのタイル表示をピン留めできます。リソース グループの表示をピン留めしてみましょう。項目の参照中にピン留めすることも、リソース グループのブレードからピン留めすることもできます。どちらの方法でも、リソース グループのタイル表示がピン留めされます。
+After creating your dashboard, you can pin tiles from the tile gallery or the tile representation of blades. Let's pin the representation of our resource group. You can either pin when browsing the item, or from the resource group blade. Both approaches result in pinning the tile representation of the resource group.
 
 ![pin to dashboard](./media/azure-portal-dashboards/pin-to-dashboard.png)
 
-項目のピン留め後、ダッシュボードにそれが表示されます。
+After pinning the item, it appears on your dashboard.
 
 ![view dashboard](./media/azure-portal-dashboards/view-dashboard.png)
 
-マークダウン タイルとリソース グループをダッシュボードにピン留めしたので、適切なレイアウトになるようにタイルのサイズを変更して並べ替えることができます。
+Now that we have a Markdown tile and a resource group pinned to the dashboard, we can resize and rearrange the tiles into a suitable layout.
 
-[…] の上にカーソルを合わせて選択するか、タイルを右クリックして、そのタイルのコンテキストに応じたコマンドをすべて表示できます。既定では、次の 2 つの項目があります。
+By hovering and selecting "…" or right-clicking on a tile you can see all the contextual commands for that tile. By default, there are two items:
 
-1. **[ダッシュボードへのピン留めを外す]** – ダッシュボードからタイルが削除されます。
-2.	**[カスタマイズ]** – カスタマイズ モードに切り替わります。
+1. **Unpin from dashboard** – removes the tile from the dashboard
+2.  **Customize** – enters customize mode
 
 ![customize tile](./media/azure-portal-dashboards/customize-tile.png)
 
-[カスタマイズ] を選択すると、タイルのサイズの変更と並べ替えを行えます。タイルのサイズを変更するには、次の画像のようにコンテキスト メニューで新しいサイズを選択します。
+By selecting customize, you can resize and reorder tiles. To resize a tile, select the new size from the contextual menu, as shown in the following image.
 
 ![resize tile](./media/azure-portal-dashboards/resize-tile.png)
 
-また、タイルで任意のサイズがサポートされている場合、右下隅をドラッグして目的のサイズにすることができます。
+Or, if the tile supports any size, you can drag the bottom right-hand corner to the desired size.
 
 ![resize tile](./media/azure-portal-dashboards/resize-corner.png)
 
-タイルのサイズ変更が終わったら、ダッシュボードを表示します。
+After resizing tiles, view the dashboard.
 
 ![view tile](./media/azure-portal-dashboards/view-tile.png)
 
-ダッシュボードのカスタマイズが完了したら、**[カスタマイズを完了しました]** を選択してカスタマイズ モードを終了します。または、右クリックしてコンテキスト メニューで **[カスタマイズを完了しました]** を選択します。
+Once you are finished customizing a dashboard, simply select the **Done customizing** to exit customize mode or right-click and select **Done customizing** from the context menu.
 
-## ダッシュボードを発行してアクセス制御を管理する
+## <a name="publish-a-dashboard-and-manage-access-control"></a>Publish a dashboard and manage access control
 
-作成したダッシュボードは既定ではプライベートです。つまり、自分だけがこのダッシュボードを見ることができます。他のユーザーもこのダッシュボードを表示できるようにするには、ダッシュボードの他のコマンドと共に表示されている **[共有]** ボタンを使用します。
+When you create a dashboard, it is private by default, which means you are the only person who can see it.  To make it visible to others, use the **Share** button that appears alongside the other dashboard commands.
 
 ![share dashboard](./media/azure-portal-dashboards/share-dashboard.png)
 
-ダッシュボードの発行先となるサブスクリプションとリソース グループを選択するよう求められます。ダッシュボードをエコシステムにシームレスに統合するために、Microsoft は Azure リソースとして共有ダッシュボードを実装しています (このため、電子メール アドレスを入力して共有することはできません)。ポータルのほとんどのタイルに表示される情報へのアクセスは、[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)によって管理されています。アクセス制御の見地からは、共有ダッシュボードは仮想マシンやストレージ アカウントと変わりありません。
+You are asked to choose a subscription and resource group for your dashboard to be published to. To seamlessly integrate dashboards into the ecosystem, we've implemented shared dashboards as Azure resources (so you can't share by typing an email address).  Access to the information displayed by most of the tiles in the portal are governed by [Azure Role Based Access Control](../active-directory/role-based-access-control-configure.md ). From an access control perspective, shared dashboards are no different from a virtual machine or a storage account.  
 
-Azure サブスクリプションがあり、チームのメンバーに、サブスクリプションの**所有者**、**共同作成者**、または**閲覧者**ロールが割り当てられているとします。所有者または共同作成者であるユーザーは、そのサブスクリプション内でダッシュボードを一覧表示、表示、作成、変更、削除できます。閲覧者であるユーザーは、ダッシュボードの一覧表示と表示はできますが、変更と削除はできません。閲覧者アクセス許可を持つユーザーは、共有ダッシュボードにローカルで編集を加えることはできますが、その変更をサーバーに戻すことはできません。ただし、自分で使用するためにダッシュボードのプライベート コピーを作成することができます。通常どおり、ダッシュボードの個々のタイルには、対応するリソースに基づいて独自のアクセス制御ルールが適用されます。
+Let's say you have an Azure subscription and members of your team have been assigned the roles of **owner**, **contributor**, or **reader** of the subscription.  Users who are owners or contributors are able to list, view, create, modify, or delete dashboards within that subscription.  Users who are readers are able to list and view dashboards, but cannot modify or delete them.  Users with reader access are able to make local edits to a shared dashboard, but are not able to publish those changes back to the server.  However, they can make a private copy of the dashboard for their own use.  As always, individual tiles on the dashboard enforce their own access control rules based on the resources they correspond to.  
 
-便宜上、ポータルの発行機能によって、**dashboards** という名前のリソース グループにダッシュボードを配置するように案内されます。
+For convenience, the portal's publishing experience guides you towards a pattern where you place dashboards in a resource group called **dashboards**.  
 
 ![publish dashboard](./media/azure-portal-dashboards/publish-dashboard.png)
 
-ダッシュボードを特定のリソース グループに発行することもできます。このダッシュボードのアクセス制御は、リソース グループのアクセス制御に一致します。このリソース グループ内のリソースを管理できるユーザーは、ダッシュボードにもアクセスすることができます。
+You can also choose to publish a dashboard to a particular resource group.  The access control for that dashboard matches the access control for the resource group.  Users that can manage the resources in that resource group also have access to the dashboards.
 
 ![publish dashboard to resource group](./media/azure-portal-dashboards/publish-to-resource-group.png)
 
-ダッシュボードの発行後、**[Sharing + access control (共有 + アクセス制御)]** ウィンドウが更新され、発行したダッシュボードの情報が表示されます。ここには、ダッシュボードに対するユーザー アクセスを管理するためのリンクが含まれています。このリンクから、Azure リソースのアクセス管理に使用される、ロールベースのアクセス制御の標準的なブレードが開きます。**[共有]** を選択することで、いつでもこのビューに戻ってくることができます。
+After your dashboard is published, the **Sharing + access** control pane will refresh and show you information about the published dashboard, including a link to manage user access to the dashboard.  This link launches the standard Role Based Access Control blade used to manage access for any Azure resource.  You can always get back to this view by selecting **Share**.
 
 ![manage access control](./media/azure-portal-dashboards/manage-access.png)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- リソースの管理については、「[ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
-- リソースのデプロイについては、「[Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](../resource-group-template-deploy-portal.md)」を参照してください。
+- To manage resources, see [Manage Azure resources through portal](resource-group-portal.md).
+- To deploy resources, see [Deploy resources with Resource Manager templates and Azure portal](../resource-group-template-deploy-portal.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,122 +1,127 @@
 <properties
-	pageTitle="Web アプリ テンプレートによる Azure Machine Learning Web サービスの使用 | Microsoft Azure"
-	description="Azure Marketplace の Web アプリ テンプレートを利用して、Azure Machine Learning で予測 Web サービスを使用します。"
-	keywords="Web サービス,運用,REST API,Machine Learning"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Consume a Machine Learning web service with a web app template | Microsoft Azure"
+    description="Use a web app template in Azure Marketplace to consume a predictive web service in Azure Machine Learning."
+    keywords="web service,operationalization,REST API,machine learning"
+    services="machine-learning"
+    documentationCenter=""
+    authors="garyericson"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="garye;raymondl"/>
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/10/2016"
+    ms.author="garye;raymondl"/>
 
-# Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用
 
->[AZURE.NOTE] このトピックでは、従来の Web サービスに適用できる手法について説明します。
+# <a name="consume-an-azure-machine-learning-web-service-with-a-web-app-template"></a>Consume an Azure Machine Learning web service with a web app template
 
-予測モデルを開発し、Machine Learning Studio を使用するか、R または Python などのツールを使用してそれを Azure Web サービスとしてデプロイしたら、REST API を使用して運用可能モデルにアクセスできます。
+>[AZURE.NOTE] This topic describes techniques applicable to a classic web service. 
 
-REST API を使用して Web サービスにアクセスする方法は、いろいろあります。たとえば、Web サービスをデプロイしたときに生成されたサンプル コード (Machine Learning Studio の Web サービス ダッシュボードにある API ヘルプ ページで利用可能) を使用して、C#、R、または Python でアプリケーションを記述できます。また、作成されたサンプル Microsoft Excel ブック (これも Studio の Web サービス ダッシュボードで利用可能) を使用することもできます。
+Once you've developed your predictive model and deployed it as an Azure web service using Machine Learning Studio, or using tools such as R or Python, you can access the operationalized model using a REST API.
 
-しかし、Web サービスにアクセスするための最もすばやくて簡単な方法は、[Azure Web アプリケーション Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/)で入手できる Web アプリ テンプレートを利用する方法です。
+There are a number of ways to consume the REST API and access the web service. For example, you can write an application in C#, R, or Python using the sample code generated for you when you deployed the web service (available on the API Help Page in the web service dashboard in Machine Learning Studio). Or you can use the sample Microsoft Excel workbook created for you (also available in the web service dashboard in Studio).
+
+But the quickest and easiest way to access your web service is through the Web App Templates available in the [Azure Web App Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## Azure Machine Learning Web アプリ テンプレート
+## <a name="the-azure-machine-learning-web-app-templates"></a>The Azure Machine Learning Web App Templates
 
-Azure Marketplace で入手できる Web アプリ テンプレートを使用すると、Web サービスの入力データと予想される結果を認識するカスタム Web アプリを構築できます。必要な操作は、Web アプリに Web サービスおよびデータへのアクセスを許可することだけで、後の処理はテンプレートによって行われます。
+The web app templates available in the Azure Marketplace can build a custom web app that knows your web service's input data and expected results. All you need to do is give the web app access to your web service and data, and the template does the rest.
 
-使用できるテンプレートは、次の 2 つです。
+Two templates are available:
 
 - [Azure ML Request-Response Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
 - [Azure ML Batch Execution Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-各テンプレートは、Web サービスの API URI とキーを使用してサンプル ASP.NET アプリケーションを作成し、Web サイトとして Azure にデプロイします。Request-Response Service (RRS) テンプレートは、1 つの結果を取得するために Web サービスに 1 行のデータを送信できる Web アプリケーションを作成します。Batch Execution Service (BES) テンプレートは、複数の結果を取得するために多くの行のデータを送信できる Web アプリケーションを作成します。
+Each template creates a sample ASP.NET application, using the API URI and Key for your web service, and deploys it as a web site to Azure. The Request-Response Service (RRS) template creates a web app that allows you to send a single row of data to the web service to get a single result. The Batch Execution Service (BES) template creates a web app that allows you to send many rows of data to get multiple results.
 
-これらのテンプレートは、コードを記述せずに使用できます。API URI とキーだけを指定すれば、テンプレートによってアプリケーションが構築されます。
+No coding is required to use these templates. You just supply the API URI and Key and the template builds the application for you.
 
-## Request-Response Service (RRS) テンプレートの使用方法
+## <a name="how-to-use-the-request-response-service-(rrs)-template"></a>How to use the Request-Response Service (RRS) template
 
-Web サービスをデプロイした後は、次の図のように、以下の手順に従って RRS Web アプリケーション テンプレートを使用します。
+Once you've deployed your web service, you can follow the steps below to use the RRS web app template, as shown in the following diagram.
 
-![RRS Web テンプレートを使用する手順][image1]
+![Process to use RRS web template][image1]
 
-1. Machine Learning Studio で **[Web サービス]** タブを開き、アクセスする Web サービスを開きます。**[API キー]** の下に表示されるキーをコピーして保存します。
+1. In Machine Learning Studio, open the **Web Services** tab and then open the web service you want to access. Copy the key listed under **API key** and save it.
 
-	![API キー][image3]
+    ![API Key][image3]
 
-2. **REQUEST/RESPONSE** API のヘルプ ページを開きます。ヘルプ ページの上部にある **[要求]** の下で、**要求 URI** 値をコピーして保存します。この値は、次のようなものです。
+2. Open the **REQUEST/RESPONSE** API Help Page. At the top of the help page, under **Request**, copy the **Request URI** value and save it. This value will look like this:
 
-		https://ussouthcentral.services.azureml.net/workspaces/<workspace-id>/services/<service-id>/execute?api-version=2.0&details=true
+        https://ussouthcentral.services.azureml.net/workspaces/<workspace-id>/services/<service-id>/execute?api-version=2.0&details=true
 
-	![要求 URI][image4]
+    ![Request URI][image4]
 
-3. [Azure ポータル](https://portal.azure.com)に移動して**ログイン**し、**[新規]** をクリックします。**[Azure ML Request-Response Service Web App]** を探して選択し、**[作成]** をクリックします。
+3. Go to the [Azure portal](https://portal.azure.com), **Login**, click **New**, Search for and select **Azure ML Request-Response Service Web App**, then click **Create**. 
 
-	- Web アプリケーションに一意の名前を付けます。Web アプリの URL は、この名前の後に `.azurewebsites.net.` を付けたものです。たとえば、`http://carprediction.azurewebsites.net.` のようになります。
+    - Give your web app a unique name. The URL of the web app will be this name followed by `.azurewebsites.net.` For example, `http://carprediction.azurewebsites.net.`
 
-	- 実行している Web サービスの Azure サブスクリプションとサービスを選択します。
+    - Select the Azure subscription and services under which your web service is running.
 
-	- **[作成]** をクリックします。
+    - Click **Create**.
 
-	![Web アプリの作成][image5]
+    ![Create web app][image5]
 
-4. Azure による Web アプリのデプロイが完了したら、Azure で Web アプリ設定ページの **[URL]** をクリックするか、Web ブラウザーで URL を入力します。たとえば、`http://carprediction.azurewebsites.net.` のように指定します。
+4. When Azure has finished deploying the web app, click the **URL** on the web app settings page in Azure, or enter the URL in a web browser. For example, `http://carprediction.azurewebsites.net.`
 
-5. 初めて Web アプリを実行すると、**API ポスト URL** と **API キー**を指定するように求められます。前に保存しておいた値を入力します。
-	- **API ポスト URL** には、API ヘルプ ページの**要求 URI**
-	- **API キー**には Web サービス ダッシュボードの **API キー**
+5. When the web app first runs it will ask you for the **API Post URL** and **API Key**.
+Enter the values you saved earlier:
+    - **Request URI** from the API Help Page for **API Post URL**
+    - **API Key** from the web service dashboard for the **API Key**.
 
-	**[Submit]** をクリックします。
+    Click **Submit**.
 
-	![ポスト URI と API キーの入力][image6]
+    ![Enter Post URI and API Key][image6]
 
-6. **Web アプリの構成**ページに、現在の Web サービス設定が表示されます。ここで、Web アプリで使用される設定を変更できます。
+6. The web app displays its **Web App Configuration** page with the current web service settings. Here you can make changes to the settings used by the web app.
 
-	> [AZURE.NOTE] ここでの設定の変更は、この Web アプリだけに適用されます。Web サービスの既定の設定は変更されません。たとえば、ここで**説明**を変更した場合、Machine Learning Studio の Web サービス ダッシュボードに表示される説明は変更されません。
+    > [AZURE.NOTE] Changing the settings here only changes them for this web app. It doesn't change the default settings of your web service. For example, if you change the **Description** here it doesn't change the description shown on the web service dashboard in Machine Learning Studio.
 
-	設定し終わったら、**[変更を保存]** をクリックし、**[ホーム ページに移動]** をクリックします。
+    When you're done, click **Save changes**, and then click **Go to Home Page**.
 
-7. ホーム ページでは、Web サービスに送信する値を入力できます。**[送信]** をクリックすると、結果が返されます。
+7. From the home page you can enter values to send to your web service, click **Submit**, and the result will be returned.
 
-**構成**ページに戻るには、Web アプリの `setting.aspx` ページに移動します。たとえば、`http://carprediction.azurewebsites.net/setting.aspx.` ページに移動します。もう一度 API キーを入力するように求められます。ページにアクセスして設定を更新するには、キーの入力が必要です。
+If you want to return to the **Configuration** page, go to the `setting.aspx` page of the web app. For example: `http://carprediction.azurewebsites.net/setting.aspx.` You will be prompted to enter the API key again - you need that to access the page and update the settings.
 
-他の Web アプリと同様に、Azure ポータルでこの Web アプリの停止、再開、または削除を行うことができます。実行中は、ホーム Web アドレスに移動して、新しい値を入力することができます。
+You can stop, restart, or delete the web app in the Azure portal like any other web app. As long as it is running you can browse to the home web address and enter new values.
 
-## Batch Execution Service (BES) テンプレートの使用方法
+## <a name="how-to-use-the-batch-execution-service-(bes)-template"></a>How to use the Batch Execution Service (BES) template
 
-BES Web アプリ テンプレートは、RRS テンプレートと同じように使用できます。ただし、作成される Web アプリで複数行のデータを送信し、複数の結果を受け取ることができる点が異なります。
+You can use the BES web app template in the same way as the RRS template, except that the web app that's created will allow you to submit multiple rows of data and receive multiple results.
 
-バッチ実行 Web サービスからの結果は、Azure ストレージ コンテナーに格納されます。入力値は、Azure Storage から取得することも、ローカル ファイルから取得することもできます。そのため、Web アプリから返される結果を保持するための Azure ストレージ コンテナーが必要であり、入力データも準備する必要があります。
+The results from a batch execution web service are stored in an Azure storage container; the input values can come from Azure storage or a local file.
+So, you'll need an Azure storage container to hold the results returned by the web app, and you'll need to get your input data ready.
 
-![BES Web テンプレートを使用する手順][image2]
+![Process to use BES web template][image2]
 
-1. RRS テンプレートと同じ手順で、BES Web アプリを作成します。ただし、以下の点が異なります。
-	- Web サービスの**バッチ実行** API ヘルプ ページから**要求 URI** を取得します。
-	- [Azure ML Batch Execution Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) に移動して、Azure Marketplace で BES テンプレートを開き、**[Web アプリを作成]** をクリックします。
+1. Follow the same procedure to create the BES web app as for the RRS template, except:
+    - Get the **Request URI** from the **BATCH EXECUTION** API Help Page for the web service.
+    - Go to [Azure ML Batch Execution Service Web App Template](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) to open the BES template on Azure Marketplace and click **Create Web App**.
 
-2. 結果の格納先を指定するには、Web アプリのホーム ページで格納先コンテナーの情報を入力します。Web アプリが入力値を取得する場所として、ローカル ファイルまたは Azure ストレージ コンテナーも指定します。**[Submit]** をクリックします。
+2. To specify where you want the results stored, enter the destination container information on the web app home page. Also specify where the web app can get the input values, either in a local file or an Azure storage container.
+Click **Submit**.
 
-	![ストレージ情報][image7]
+    ![Storage information][image7]
 
-ページが表示され、ジョブの状態が示されます。ジョブが完了すると、Azure BLOB ストレージ内の結果の場所が表示されます。結果をローカル ファイルにダウンロードするためのオプションも表示されます。
+The web app will display a page with job status.
+When the job has completed you'll be given the location of the results in Azure blob storage. You also have the option of downloading the results to a local file.
 
-## BLOB の詳細
+## <a name="for-more-information"></a>For more information
 
-詳細については、以下のページをご覧ください。
+To learn more about...
 
-- Machine Learning Studio で Machine Learning の実験を作成する方法については、「[Azure Machine Learning Studio で初めての実験を作成する](machine-learning-create-experiment.md)」を参照してください。
+- creating a machine learning experiment with Machine Learning Studio, see [Create your first experiment in Azure Machine Learning Studio](machine-learning-create-experiment.md)
 
-- Machine Learning の実験を Web サービスとしてデプロイする方法については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」を参照してください。
+- how to deploy your machine learning experiment as a web service, see [Deploy an Azure Machine Learning web service](machine-learning-publish-a-machine-learning-web-service.md)
 
-- Web サービスにアクセスするための別の方法については、「[Azure Machine Learning Web サービスを使用する方法](machine-learning-consume-web-services.md)」を参照してください。
+- other ways to access your web service, see [How to consume an Azure Machine Learning web service](machine-learning-consume-web-services.md)
 
 
 [image1]: media\machine-learning-consume-web-service-with-web-app-template\rrs-web-template-flow.png
@@ -127,4 +132,8 @@ BES Web アプリ テンプレートは、RRS テンプレートと同じよう�
 [image6]: media\machine-learning-consume-web-service-with-web-app-template\web-service-info.png
 [image7]: media\machine-learning-consume-web-service-with-web-app-template\storage.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

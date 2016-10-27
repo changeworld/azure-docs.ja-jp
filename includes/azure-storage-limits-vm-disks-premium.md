@@ -1,29 +1,32 @@
-**仮想マシンのディスク: アカウントあたりの上限**
+**Virtual machine disks: per account limits**
 
-リソース|既定の制限
+Resource|Default Limit
 ---|---
-アカウントごとのディスク容量合計|35 TB
-アカウントごとのスナップショット容量合計|10 TB
-アカウントごとの最大帯域幅 (受信 + 送信<sup>1</sup>)|50 Gbps 以下
+Total disk capacity per account|35 TB
+Total snapshot capacity per account|10 TB
+Max bandwidth per account (ingress + egress<sup>1</sup>)|<=50 Gbps
 
-<sup>1</sup>受信とはストレージ アカウントに送信されるすべてのデータ (要求) のことです。*送信*とはストレージ アカウントから送信されるすべてのデータ (応答) のことです。
+<sup>1</sup>*Ingress* refers to all data (requests) being sent to a storage account. *Egress* refers to all data (responses) being received from a storage account.
 
-**仮想マシンのディスク: ディスクあたりの上限**
+**Virtual machine disks: per disk limits**
 
-Premium Storage ディスク タイプ | P10 | P20 | P30
+Premium Storage Disk Type | P10 | P20 | P30
 ---|---|---|---
-ディスク サイズ | 128 GiB | 512 GiB | 1024 GiB (1 TB)
-ディスクあたりの最大 IOPS | 500 | 2300 | 5000
-ディスクあたりの最大スループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒
-ストレージ アカウントあたりの最大ディスク数 | 280 | 70 | 35
+Disk size | 128 GiB | 512 GiB | 1024 GiB (1 TB)
+Max IOPS per disk | 500 | 2300 | 5000
+Max throughput per disk | 100 MB per second | 150 MB per second | 200 MB per second
+Max number of disks per storage account | 280 | 70 | 35
 
-**仮想マシンのディスク: VM あたりの上限**
+**Virtual machine disks: per VM limits**
 
-リソース|既定の制限
+Resource|Default Limit
 ---|---
-VM あたりの最大 IOPS|GS5 VM<sup>1</sup> で 80,000 IOPS
-VM あたりの最大スループット|GS5 VM<sup>1</sup> で 2,000 MB/秒
+Max IOPS Per VM|80,000 IOPS with GS5 VM<sup>1</sup>
+Max throughput per VM|2,000 MB/s with GS5 VM<sup>1</sup>
 
-<sup>1</sup>他の VM サイズに制限については、「[VM サイズ](../articles/virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
+<sup>1</sup>Refer to [VM Size](../articles/virtual-machines/virtual-machines-linux-sizes.md) for limits on other VM sizes. 
 
-<!---HONumber=AcomDC_0615_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

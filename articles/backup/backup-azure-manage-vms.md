@@ -1,225 +1,230 @@
 
 <properties
-	pageTitle="Resource Manager によってデプロイされた仮想マシン バックアップの管理 | Microsoft Azure"
-	description="Resource Manager によってデプロイされた仮想マシンのバックアップを管理したり監視したりする方法について説明します。"
-	services="backup"
-	documentationCenter=""
-	authors="trinadhk"
-	manager="shreeshd"
-	editor=""/>
+    pageTitle="Manage Resource Manager-deployed virtual machine backups | Microsoft Azure"
+    description="Learn how to manage and monitor Resource Manager-deployed virtual machine backups"
+    services="backup"
+    documentationCenter=""
+    authors="trinadhk"
+    manager="shreeshd"
+    editor=""/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/11/2016"
-	ms.author="jimpark; markgal; trinadhk"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/11/2016"
+    ms.author="jimpark; markgal; trinadhk"/>
 
-# Azure 仮想マシンのバックアップの管理
+
+# <a name="manage-azure-virtual-machine-backups"></a>Manage Azure virtual machine backups
 
 > [AZURE.SELECTOR]
-- [Azure VM バックアップの管理](backup-azure-manage-vms.md)
-- [クラシック VM バックアップの管理](backup-azure-manage-vms-classic.md)
+- [Manage Azure VM backups](backup-azure-manage-vms.md)
+- [Manage Classic VM backups](backup-azure-manage-vms-classic.md)
 
-この記事では、VM のバックアップ管理に関するガイダンスを提供するほか、ポータルのダッシュボードで使用できるバックアップ アラート情報について説明します。この記事のガイダンスは、Recovery Services コンテナーと組み合わせて VM を使用するケースを想定しています。この記事で仮想マシンの作成や仮想マシンの保護については取り上げていません。Azure Resource Manager によって Azure にデプロイされた VM を Recovery Services コンテナーで保護する方法についての基本的な情報については、「[最初に: ARM VM の Recovery Services コンテナーへのバックアップ](backup-azure-vms-first-look-arm.md)」を参照してください。
+This article provides guidance on managing VM backups, and explains the backup alerts information available in the portal dashboard. The guidance in this article applies to using VMs with Recovery Services vaults. This article does not cover the creation of virtual machines, nor does it explain how to protect virtual machines. For a primer on protecting Azure Resource Manager-deployed VMs in Azure with a Recovery Services vault, see [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md).
 
-## コンテナーと保護された仮想マシンの管理
+## <a name="manage-vaults-and-protected-virtual-machines"></a>Manage vaults and protected virtual machines
 
-Azure ポータルから Recovery Services コンテナーのダッシュボードにアクセスすると、コンテナーに関して次のような情報を確認できます。
+In the Azure portal, the Recovery Services vault dashboard provides access to information about the vault including:
 
-- 最新のバックアップ スナップショット (つまり最新の復元ポイント) <br>
-- バックアップ ポリシー <br>
-- すべてのバックアップ スナップショットの合計サイズ <br>
-- コンテナーで保護されている仮想マシンの数 <br>
+- the most recent backup snapshot, which is also the latest restore point <br\>
+- the backup policy <br\>
+- total size of all backup snapshots <br\>
+- number of virtual machines that are protected with the vault <br\>
 
-仮想マシンのバックアップに伴う管理タスクは多くの場合、ダッシュボードでコンテナーを開くことから始まります。ただし Recovery Services コンテナーを使った保護は、複数の項目 (または複数の VM) が対象となる場合があるため、特定の VM の詳細を表示するには、そのコンテナー項目のダッシュボードを開きます。以降の手順では、*コンテナーのダッシュボード*と*コンテナー項目のダッシュボード*の開き方について順に説明しています。2 つの手順では、コンテナーとコンテナー項目を Azure ダッシュボードに追加する方法について、[ダッシュボードにピン留めする] コマンドを使用した "ヒント" を紹介しています。"ダッシュボードにピン留めする" は、コンテナーまたはコンテナー項目へのショートカットの作成手段となります。このショートカットから使用頻度の高いコマンドを実行することもできます。
+Many management tasks with a virtual machine backup begin with opening the vault in the dashboard. However, because vaults can be used to protect multiple items (or multiple VMs), to view details about a particular VM, open the vault item dashboard. The following procedure shows you how to open the *vault dashboard* and then continue to the *vault item dashboard*. There are "tips" in both procedures that point out how to add the vault and vault item to the Azure dashboard by using the Pin to dashboard command. Pin to dashboard is a way of creating a shortcut to the vault or item. You can also execute common commands from the shortcut.
 
->[AZURE.TIP] 複数のダッシュボードまたはブレードが開いている場合は、ウィンドウの一番下にある濃い青色のスライダーを使用して、Azure ダッシュボードを左右にスライドさせます。
+>[AZURE.TIP] If you have multiple dashboards and blades open, use the dark-blue slider at the bottom of the window to slide the Azure dashboard back and forth.
 
 ![Full view with slider](./media/backup-azure-manage-vms/bottom-slider.png)
 
-### Recovery Services コンテナーをダッシュボードから開く
+### <a name="open-a-recovery-services-vault-in-the-dashboard:"></a>Open a Recovery Services vault in the dashboard:
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** をクリックします。
+2. On the Hub menu, click **Browse** and in the list of resources, type **Recovery Services**. As you begin typing, the list filters based on your input. Click **Recovery Services vault**.
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png) <br/>
 
-    Recovery Services コンテナーの一覧が表示されます。
+    The list of Recovery Services vaults are displayed.
 
-    ![List of Recovery Services vaults](./media/backup-azure-manage-vms/list-o-vaults.png) <br/>
+    ![List of Recovery Services vaults ](./media/backup-azure-manage-vms/list-o-vaults.png) <br/>
 
-    >[AZURE.TIP] Azure ダッシュボードにコンテナーをピン留めすると、Azure ポータルを開いてすぐにコンテナーにアクセスすることができます。ダッシュボードにコンテナーをピン留めするには、コンテナーの一覧で目的のコンテナーを右クリックし、**[ダッシュボードにピン留めする]** を選択します。
+    >[AZURE.TIP] If you pin a vault to the Azure Dashboard, that vault is immediately accessible when you open the Azure portal. To pin a vault to the dashboard, in the vault list, right-click the vault, and select **Pin to dashboard**.
 
-3. コンテナーの一覧から、いずれかのコンテナーを選択して、そのダッシュボードを開きます。コンテナーを選択すると、そのコンテナーのダッシュボードと **[設定]** ブレードが表示されます。次の画像では、**Contoso-vault** ダッシュボードが強調表示されています。
+3. From the list of vaults, select the vault to open its dashboard. When you select the vault, the vault dashboard and the **Settings** blade open. In the following image, the **Contoso-vault** dashboard is highlighted.
 
     ![Open vault dashboard and Settings blade](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-### コンテナー項目のダッシュボードを開く
+### <a name="open-a-vault-item-dashboard"></a>Open a vault item dashboard
 
-前の手順では、コンテナーのダッシュボードを開きました。コンテナー項目のダッシュボードを開くには、次の手順に従います。
+In the previous procedure you opened the vault dashboard. To open the vault item dashboard:
 
-1. コンテナーのダッシュボードにある **[バックアップ項目]** タイルで、**[Azure Virtual Machines]** をクリックします。
+1. In the vault dashboard, on the **Backup Items** tile, click **Azure Virtual Machines**.
 
     ![Open backup items tile](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-    **[バックアップ項目]** ブレードに、項目ごとの最新のバックアップ ジョブが一覧表示されます。この例では、このコンテナーによって保護されている仮想マシンが 1 つ存在します (demovm-markgal)。
+    The **Backup Items** blade lists the last backup job for each item. In this example, there is one virtual machine, demovm-markgal, protected by this vault.  
 
     ![Backup items tile](./media/backup-azure-manage-vms/backup-items-blade.png)
 
-    >[AZURE.TIP] コンテナー項目は、アクセスしやすいように、Azure ダッシュボードにピン留めすることができます。コンテナー項目をピン留めするには、コンテナー項目の一覧で目的の項目を右クリックし、**[ダッシュボードにピン留めする]** を選択します。
+    >[AZURE.TIP] For ease of access, you can pin a vault item to the Azure Dashboard. To pin a vault item, in the vault item list, right-click the item and select **Pin to dashboard**.
 
-2. **[バックアップ項目]** ブレードで目的の項目をクリックして、コンテナー項目のダッシュボードを開きます。
+2. In the **Backup Items** blade, click the item to open the vault item dashboard.
 
     ![Backup items tile](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-    コンテナー項目のダッシュボードとその **[設定]** ブレードが表示されます。
+    The vault item dashboard and its **Settings** blade open.
 
     ![Backup items dashboard with Settings blade](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
-    コンテナー項目のダッシュボードから、多くの重要な管理作業を実行できます。その例を次に示します。
+    From the vault item dashboard, you can accomplish many key management tasks, such as:
 
-    - ポリシーの変更または新しいバックアップ ポリシーの作成<br>
-	- 復元ポイントとその整合状態の確認 <br>
-	- オンデマンドでの仮想マシンのバックアップ <br>
-	- 仮想マシンの保護の停止 <br>
-	- 仮想マシンの保護の再開 <br>
-	- バックアップ データ (または復旧ポイント) の削除 <br>
-	- [バックアップ (または復旧ポイント) の復元](./backup-azure-arm-restore-vms.md#restore-a-recovery-point) <br>
+    - change policies or create a new backup policy<br\>
+    - view restore points, and see their consistency state <br\>
+    - on-demand backup of a virtual machine <br\>
+    - stop protecting virtual machines <br\>
+    - resume protection of a virtual machine <br\>
+    - delete a backup data (or recovery point) <br\>
+    - [restore a backup (or recovery point)](./backup-azure-arm-restore-vms.md#restore-a-recovery-point)  <br\>
 
-次の手順は、コンテナー項目のダッシュボードを表示したところから始めます。
+For the following procedures, the starting point is the vault item dashboard.
 
-## バックアップ ポリシーを管理する
+## <a name="manage-backup-policies"></a>Manage backup policies
 
-1. [コンテナー項目のダッシュボード](backup-azure-manage-vms.md#open-a-vault-item-dashboard)で、**[すべての設定]** をクリックして **[設定]** ブレードを開きます。
+1. On the [vault item dashboard](backup-azure-manage-vms.md#open-a-vault-item-dashboard), click **All Settings** to open the **Settings** blade.
 
     ![Backup policy blade](./media/backup-azure-manage-vms/all-settings-button.png)
 
-2. **[設定]** ブレードの **[バックアップ ポリシー]** をクリックして対応するブレードを開きます。
+2. On the **Settings** blade, click **Backup policy** to open that blade.
 
-    表示されたブレードに、バックアップの頻度とリテンション期間が詳しく表示されます。
+    On the blade, the backup frequency and retention range details are shown.
 
     ![Backup policy blade](./media/backup-azure-manage-vms/backup-policy-blade.png)
 
-3. **[バックアップ ポリシーの選択]** メニューから次の手順を実行します。
-    - ポリシーを変更するには、別のポリシーを選択し、**[保存]** をクリックします。すぐに、新しいポリシーがコンテナーに適用されます。<br>
-    - ポリシーを作成するには、**[新規作成]** を選択します。
+3. From the **Choose backup policy** menu:
+    - To change policies, select a different policy and click **Save**. The new policy is immediately applied to the vault. <br\>
+    - To create a policy, select **Create New**.
 
-    ![仮想マシンのバックアップ](./media/backup-azure-manage-vms/backup-policy-create-new.png)
+    ![Virtual machine backup](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
-    バックアップ ポリシーを作成する手順については、「[バックアップ ポリシーの定義](backup-azure-manage-vms.md#defining-a-backup-policy)」を参照してください。
+    For instructions on creating a backup policy, see [Defining a backup policy](backup-azure-manage-vms.md#defining-a-backup-policy).
 
 [AZURE.INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
 
-## オンデマンドでの仮想マシンのバックアップ
-仮想マシンに保護が構成されていれば、その仮想マシンについてオンデマンド バックアップを作成できます。初回バックアップがまだ実行されていない場合、オンデマンド バックアップを実行すると、仮想マシンの完全なコピーが Recovery Services コンテナーに作成されます。初回バックアップが完了している場合、オンデマンド バックアップによって Recovery Services コンテナーに送信されるのは、前回のスナップショット以降の変更だけです。つまり、以降のバックアップでは、増分のみが送信対象となります。
+## <a name="on-demand-backup-of-a-virtual-machine"></a>On-demand backup of a virtual machine
+You can take an on-demand backup of a virtual machine once it is configured for protection. If the initial backup is pending, on-demand backup creates a full copy of the virtual machine in the Recovery Services vault. If the initial backup is completed, an on-demand backup will only send changes from the previous snapshot, to the Recovery Services vault. That is, subsequent backups are always incremental.
 
->[AZURE.NOTE] オンデマンド バックアップのリテンション期間は、ポリシーの中で日単位のバックアップ ポイントに対して指定されたリテンション期間の値となります。日単位のバックアップ ポイントが選択されていない場合は、週単位のバックアップ ポイントが使用されます。
+>[AZURE.NOTE] The retention range for an on-demand backup is the retention value specified for the Daily backup point in the policy. If no Daily backup point is selected, then the weekly backup point is used.
 
-仮想マシンのオンデマンド バックアップをトリガーするには、次の手順に従います。
+To trigger an on-demand backup of a virtual machine:
 
-- [コンテナー項目のダッシュボード](backup-azure-manage-vms.md#open-a-vault-item-dashboard)で **[今すぐバックアップ]** をクリックします。
+- On the [vault item dashboard](backup-azure-manage-vms.md#open-a-vault-item-dashboard), click **Backup now**.
 
     ![Backup now button](./media/backup-azure-manage-vms/backup-now-button.png)
 
-    オンデマンド バックアップ ジョブを開始してよいかどうかを確認するメッセージが表示されます。バックアップ ジョブを開始する場合は **[はい]** をクリックします。
+    The portal makes sure that you want to start an on-demand backup job. Click **Yes** to start the backup job.
 
     ![Backup now button](./media/backup-azure-manage-vms/backup-now-check.png)
 
-    バックアップ ジョブによって、復旧ポイントが作成されます。復旧ポイントのリテンション期間は、仮想マシンに関連付けられているポリシーで指定されるリテンション期間と同じです。ジョブの進行状況を追跡するには、コンテナーのダッシュボードで **[バックアップ ジョブ]** タイルをクリックします。
+    The backup job creates a recovery point. The retention range of the recovery point is the same as retention range specified in the policy associated with the virtual machine. To track the progress for the job, in the vault dashboard, click the **Backup Jobs** tile.  
 
 
-## 仮想マシンの保護を停止する
-仮想マシンの保護を中止するように選択した場合、復旧ポイントを保持するかどうかを確認するメッセージが表示されます。仮想マシンの保護を中止する方法は 2 つあります。
-- 将来のバックアップ ジョブをすべて停止したうえで、すべての復旧ポイントを削除する方法と、
-- 将来のバックアップ ジョブをすべて停止して、復旧ポイントを保持する方法です。<br/>
+## <a name="stop-protecting-virtual-machines"></a>Stop protecting virtual machines
+If you choose to stop protecting a virtual machine, you are asked if you want to retain the recovery points. There are two ways to stop protecting virtual machines:
+- stop all future backup jobs and delete all recovery points, or
+- stop all future backup jobs but leave the recovery points <br/>
 
-復旧ポイントを記憶域に保持するためにはコストが発生します。一方、復旧ポイントを保持する利点は、仮想マシンを必要に応じて後から復元できることです。復旧ポイントを保持するためのコストについては、「[価格の詳細](https://azure.microsoft.com/pricing/details/backup/)」を参照してください。すべての復旧ポイントを削除するように選択した場合、仮想マシンを復元することはできません。
+There is a cost associated with leaving the recovery points in storage. However, the benefit of leaving the recovery points is you can restore the virtual machine later, if desired. For information about the cost of leaving the recovery points, see the  [pricing details](https://azure.microsoft.com/pricing/details/backup/). If you choose to delete all recovery points, you cannot restore the virtual machine.
 
-仮想マシンに対する保護を停止するには、次の手順に従います。
+To stop protection for a virtual machine:
 
-1. [コンテナー項目のダッシュボード](backup-azure-manage-vms.md#open-a-vault-item-dashboard)で **[バックアップの停止]** をクリックします。
+1. On the [vault item dashboard](backup-azure-manage-vms.md#open-a-vault-item-dashboard), click **Stop backup**.
 
     ![Stop backup button](./media/backup-azure-manage-vms/stop-backup-button.png)
 
-    [バックアップの停止] ブレードが開きます。
+    The Stop Backup blade opens.
 
     ![Stop backup blade](./media/backup-azure-manage-vms/stop-backup-blade.png)
 
-2. **[バックアップの停止]** ブレードで、バックアップ データを保持するか削除するかを選択します。選択内容についての詳しい説明が、情報ボックスに表示されます。
+2. On the **Stop Backup** blade, choose whether to retain or delete the backup data. The information box provides details about your choice.
 
-    ![保護の停止](./media/backup-azure-manage-vms/retain-or-delete-option.png)
+    ![Stop protection](./media/backup-azure-manage-vms/retain-or-delete-option.png)
 
-3. バックアップ データを保持するように選択した場合は、手順 4. に進みます。バックアップ データを削除するように選択した場合は、バックアップ ジョブの停止と復旧ポイントの削除についての意思確認をします。対象となる項目の名前を入力してください。
+3. If you chose to retain the backup data, skip to step 4. If you chose to delete backup data, confirm that you want to stop the backup jobs and delete the recovery points - type the name of the item.
 
     ![Stop verification](./media/backup-azure-manage-vms/item-verification-box.png)
 
-    項目名がわからない場合は、感嘆符にマウス カーソルを合わせると名前が表示されます。また、**[バックアップの停止]** ブレードのタイトルの下にも項目の名前が表示されます。
+    If you aren't sure of the item name, hover over the exclamation mark to view the name. Also, the name of the item is under **Stop Backup** at the top of the blade.
 
-4. 必要に応じて、**[理由]** または **[コメント]** に入力します。
+4. Optionally provide a **Reason** or **Comment**.
 
-5. 現在の項目のバックアップ ジョブを停止するには、![Stop backup button](./media/backup-azure-manage-vms/stop-backup-button-blue.png) をクリックします
+5. To stop the backup job for the current item, click  ![Stop backup button](./media/backup-azure-manage-vms/stop-backup-button-blue.png)
 
-    バックアップ ジョブが停止したことを示す通知メッセージが表示されます。
+    A notification message lets you know the backup jobs have been stopped.
 
-    ![保護の停止の確認](./media/backup-azure-manage-vms/stop-message.png)
+    ![Confirm stop protection](./media/backup-azure-manage-vms/stop-message.png)
 
 
-## 仮想マシンの保護の再開
-仮想マシンの保護を停止するときに **[バックアップ データの保持]** オプションを選択した場合、保護を再開することができます。**[バックアップ データを削除]** オプションを選択した場合は、仮想マシンの保護を再開できません。
+## <a name="resume-protection-of-a-virtual-machine"></a>Resume protection of a virtual machine
+If the **Retain Backup Data** option was chosen when protection for the virtual machine was stopped, then it is possible to resume protection. If the **Delete Backup Data** option was chosen, then protection for the virtual machine cannot resume.
 
-仮想マシンの保護を再開するには
+To resume protection for the virtual machine
 
-1. [コンテナー項目のダッシュボード](backup-azure-manage-vms.md#open-a-vault-item-dashboard)で **[バックアップの再開]** をクリックします。
+1. On the [vault item dashboard](backup-azure-manage-vms.md#open-a-vault-item-dashboard), click **Resume backup**.
 
     ![Resume protection](./media/backup-azure-manage-vms/resume-backup-button.png)
 
-    [バックアップ ポリシー] ブレードが開きます。
+    The Backup Policy blade opens.
 
-    >[AZURE.NOTE] 仮想マシンを再保護する場合は、最初に仮想マシンを保護するために使用したポリシー以外のポリシーを選択できます。
+    >[AZURE.NOTE] When re-protecting the virtual machine, you can choose a different policy than the policy with which virtual machine was protected initially.
 
-2. [ポリシーの変更または新しいバックアップ ポリシーの作成](backup-azure-manage-vms.md#change-policies-or-create-a-new-backup-policy)に関するトピックの手順に従って、仮想マシンのポリシーを割り当てます。
+2. Follow the steps in [Change policies or Create a new backup policy](backup-azure-manage-vms.md#change-policies-or-create-a-new-backup-policy), to assign the policy for the virtual machine.
 
-    仮想マシンにバックアップ ポリシーが適用されると、次のメッセージが表示されます。
+    Once the backup policy is applied to the virtual machine, you see the following message.
 
     ![Successfully protected VM](./media/backup-azure-manage-vms/success-message.png)
 
-## バックアップ データの削除
-仮想マシンに関連付けられているバックアップ データは、**バックアップの停止**ジョブの実行中やバックアップ ジョブが完了した後にいつでも削除することができます。数日または数週間待ってから復旧ポイントを削除する方が便利な場合もあります。復旧ポイントの復元とは異なり、バックアップ データを削除するときは、特定の復旧ポイントを削除対象として選択することができません。バックアップ データを削除するように選択すると、その項目に関連付けられている復旧ポイントもすべて削除されます。
+## <a name="delete-backup-data"></a>Delete Backup data
+You can delete the backup data associated with a virtual machine during the **Stop backup** job, or anytime after the backup job has completed. It may even be beneficial to wait days or weeks before deleting the recovery points. Unlike restoring recovery points, when deleting backup data, you cannot choose specific recovery points to delete. If you choose to delete your backup data, you delete all recovery points associated with the item.
 
-以降の手順は、仮想マシンのバックアップ ジョブが停止済みであるか、無効にされていることを前提としています。バックアップ ジョブを無効にしたら、**[バックアップの再開]** オプションと **[バックアップ データの削除]** オプションが、コンテナー項目のダッシュボードに表示されます。
+The following procedure assumes the Backup job for the virtual machine has been stopped or disabled. Once the Backup job is disabled, the **Resume backup** and **Delete backup** options are available in the vault item dashboard.
 
 ![Resume and delete buttons](./media/backup-azure-manage-vms/resume-delete-buttons.png)
 
-"*バックアップを無効*" にした状態の仮想マシンでバックアップ データを削除するには:
+To delete backup data on a virtual machine with the *Backup disabled*:
 
-1. [コンテナー項目のダッシュボード](backup-azure-manage-vms.md#open-a-vault-item-dashboard)で **[バックアップ データの削除]** をクリックします。
+1. On the [vault item dashboard](backup-azure-manage-vms.md#open-a-vault-item-dashboard), click **Delete backup**.
 
-    ![VM の種類](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+    ![VM Type](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-    **[バックアップ データを削除]** ブレードが開きます。
+    The **Delete Backup Data** blade opens.
 
-    ![VM の種類](./media/backup-azure-manage-vms/delete-backup-blade.png)
+    ![VM Type](./media/backup-azure-manage-vms/delete-backup-blade.png)
 
-2. 項目の名前を入力して、復旧ポイントを削除してもよいことを確認します。
+2. Type the name of the item to confirm you want to delete the recovery points.
 
     ![Stop verification](./media/backup-azure-manage-vms/item-verification-box.png)
 
-    項目名がわからない場合は、感嘆符にマウス カーソルを合わせると名前が表示されます。また、**[バックアップ データを削除]** ブレードのタイトルの下にも項目の名前が表示されます。
+    If you aren't sure of the item name, hover over the exclamation mark to view the name. Also, the name of the item is under **Delete Backup Data** at the top of the blade.
 
-3. 必要に応じて、**[理由]** または **[コメント]** に入力します。
+3. Optionally provide a **Reason** or **Comment**.
 
-4. 現在の項目のバックアップ データを削除するには、![Stop backup button](./media/backup-azure-manage-vms/delete-button.png) をクリックします
+4. To delete the backup data for the current item, click  ![Stop backup button](./media/backup-azure-manage-vms/delete-button.png)
 
-    バックアップ データが削除されたことを示す通知メッセージが表示されます。
+    A notification message lets you know the backup data has been deleted.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-復旧ポイントからの仮想マシンの再作成については、[Azure VM の復元](backup-azure-restore-vms.md)に関するページをご覧ください。仮想マシンの保護については、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。イベントの監視については、「[Monitor alerts for Azure virtual machine backups (Azure 仮想マシンのバックアップ アラートの監視)](backup-azure-monitor-vms.md)」を参照してください。
+For information on re-creating a virtual machine from a recovery point, check out [Restore Azure VMs](backup-azure-restore-vms.md). If you need information on protecting your virtual machines, see [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md). For information on monitoring events, see [Monitor alerts for Azure virtual machine backups](backup-azure-monitor-vms.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

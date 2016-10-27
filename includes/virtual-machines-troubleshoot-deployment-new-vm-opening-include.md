@@ -1,4 +1,9 @@
-新しい Azure 仮想マシン (VM) を作成しようとしたときに発生する一般的なエラーは、プロビジョニング エラーと割り当てエラーです。
+When you try to create a new Azure Virtual Machine (VM), the common errors you encounter are provisioning failures or allocation failures.
 
-- プロビジョニング エラーは、準備手順が適切ではなかったため、またはポータルからのイメージのキャプチャ時に間違った設定を選択したために、OS イメージの読み込みに失敗した場合に発生します。
-- 割り当てエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
+- A provisioning failure happens when the OS image fails to load either due to incorrect preparatory steps or because of selecting the wrong settings during the image capture from the portal.
+- An allocation failure results when the cluster or region either does not have resources available or cannot support the requested VM size.
+
+
+<!--HONumber=Oct16_HO2-->
+
+

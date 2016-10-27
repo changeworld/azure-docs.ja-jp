@@ -1,155 +1,160 @@
 <properties
-	pageTitle="PowerShell を使用して App Service アプリのバックアップと復元を実行する"
-	description="PowerShell を使用して、Azure App Service でアプリのバックアップと復元を行う方法について説明します。"
-	services="app-service"
-	documentationCenter=""
-	authors="NKing92"
-	manager="wpickett"
+    pageTitle="Use PowerShell to back up and restore App Service apps"
+    description="Learn how to use PowerShell to back up and restore an app in Azure App Service"
+    services="app-service"
+    documentationCenter=""
+    authors="NKing92"
+    manager="wpickett"
     editor="" />
 
 <tags
-	ms.service="app-service"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/10/2016"
-	ms.author="nicking"/>
-# PowerShell を使用して App Service アプリのバックアップと復元を実行する
+    ms.service="app-service"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/10/2016"
+    ms.author="nicking"/>
+
+# <a name="use-powershell-to-back-up-and-restore-app-service-apps"></a>Use PowerShell to back up and restore App Service apps
 
 > [AZURE.SELECTOR]
 - [PowerShell](app-service-powershell-backup.md)
 - [REST API](../app-service-web/websites-csm-backup.md)
 
-Azure PowerShell を使用して [App Service アプリ](https://azure.microsoft.com/services/app-service/web/)のバックアップと復元を実行する方法について説明します。Web アプリのバックアップと、要件や制限事項の詳細については、「[Azure App Service での Web アプリのバックアップ](../app-service-web/web-sites-backup.md)」を参照してください。
+Learn how to use Azure PowerShell to back up and restore [App Service apps](https://azure.microsoft.com/services/app-service/web/). For more information about web app backups, including requirements and restrictions, see [Back up a web app in Azure App Service](../app-service-web/web-sites-backup.md).
 
-## 前提条件
-PowerShell を使用してアプリのバックアップを行うには、以下が必要になります。
+## <a name="prerequisites"></a>Prerequisites
+To use PowerShell to manage your app backups, you need the following:
 
-- Azure ストレージ コンテナーへの読み書きを可能にする **A SAS URL**。SAS URL の詳細については、「[SAS モデルについて](../storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。PowerShell を使用して Azure Storage を管理する例については、「[Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md)」を参照してください。
-- Web アプリと共にデータベースをバックアップする場合は、**データベース接続文字列**。
+- **A SAS URL** that allows read and write access to an Azure Storage container. See [Understanding the SAS model](../storage/storage-dotnet-shared-access-signature-part-1.md) for an explanation of SAS URLs. See [Using Azure PowerShell with Azure Storage](../storage/storage-powershell-guide-full.md) for examples of managing Azure Storage using PowerShell.
+- **A database connection string** if you want to back up a database along with your web app.
 
-### Web アプリのバックアップ コマンドレットで使用する SAS URL を生成する方法
-PowerShell では、SAS URL を生成できます。この記事で説明するコマンドレットで使用できる SAS URL は、次のように生成します。
+### <a name="how-to-generate-a-sas-url-to-use-with-the-web-app-backup-cmdlets"></a>How to generate a SAS URL to use with the web app backup cmdlets
+A SAS URL can be generated with PowerShell. Here is an example of how to generate one that can be used with the cmdlets discussed in this article.
 
-		$storageAccountName = "<your storage account's name>"
-		$storageAccountRg = "<your storage account's resource group>"
+        $storageAccountName = "<your storage account's name>"
+        $storageAccountRg = "<your storage account's resource group>"
 
-		# This returns an array of keys for your storage account. Be sure to select the appropriate key. Here we select the first key as a default.
-		$storageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountRg -Name $storageAccountName
-		$context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey[0].Value
+        # This returns an array of keys for your storage account. Be sure to select the appropriate key. Here we select the first key as a default.
+        $storageAccountKey = Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountRg -Name $storageAccountName
+        $context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey[0].Value
 
-		$blobContainerName = "<name of blob container for app backups>"
-		$sasUrl = New-AzureStorageContainerSASToken -Name $blobContainerName -Permission rwdl -Context $context -ExpiryTime (Get-Date).AddMonths(1) -FullUri
+        $blobContainerName = "<name of blob container for app backups>"
+        $sasUrl = New-AzureStorageContainerSASToken -Name $blobContainerName -Permission rwdl -Context $context -ExpiryTime (Get-Date).AddMonths(1) -FullUri
 
-## Azure PowerShell 1.3.2 以上をインストールする
+## <a name="install-azure-powershell-1.3.2-or-greater"></a>Install Azure PowerShell 1.3.2 or greater
 
-Azure PowerShell のインストール手順と使用方法については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-install-configure.md)」を参照してください。
+See [Using Azure PowerShell with Azure Resource Manager](../powershell-install-configure.md) for instructions on installing and using Azure PowerShell.
 
-## バックアップの作成
+## <a name="create-a-backup"></a>Create a backup
 
-Web アプリのバックアップを作成するには、New-AzureRmWebAppBackup コマンドレットを使用します。
+Use the New-AzureRmWebAppBackup cmdlet to create a backup of a web app.
 
-		$sasUrl = "<your SAS URL>"
-		$resourceGroupName = "Default-Web-WestUS"
-		$appName = "ContosoApp"
+        $sasUrl = "<your SAS URL>"
+        $resourceGroupName = "Default-Web-WestUS"
+        $appName = "ContosoApp"
 
-		$backup = New-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -StorageAccountUrl $sasUrl
+        $backup = New-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -StorageAccountUrl $sasUrl
 
-これにより、自動生成された名前で、バックアップが作成されます。バックアップの名前を指定したい場合は、BackupName オプション パラメーターを使用します。
+This creates a backup with an automatically generated name. If you would like to provide a name for your backup, use the BackupName optional parameter.
 
-		$backup = New-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -StorageAccountUrl $sasUrl -BackupName MyBackup
+        $backup = New-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -StorageAccountUrl $sasUrl -BackupName MyBackup
 
-データベースをバックアップに含めるには、最初に New-AzureRmWebAppDatabaseBackupSetting コマンドレットを使用してデータベース バックアップ設定を作成し、次にその設定を New-AzureRmWebAppBackup コマンドレットの Databases パラメーターに指定します。Databases パラメーターはデータベース設定の配列を受け取るため、複数のデータベースをバックアップできるようになります。
+To include a database in the backup, first create a database backup setting using the New-AzureRmWebAppDatabaseBackupSetting cmdlet, then supply that setting in the Databases parameter of the New-AzureRmWebAppBackup cmdlet. The Databases parameter accepts an array of database settings, allowing you to back up more than one database.
 
-		$dbSetting1 = New-AzureRmWebAppDatabaseBackupSetting -Name DB1 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
-		$dbSetting2 = New-AzureRmWebAppDatabaseBackupSetting -Name DB2 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
-		$dbBackup = New-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -BackupName MyBackup -StorageAccountUrl $sasUrl -Databases $dbSetting1,$dbSetting2
+        $dbSetting1 = New-AzureRmWebAppDatabaseBackupSetting -Name DB1 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
+        $dbSetting2 = New-AzureRmWebAppDatabaseBackupSetting -Name DB2 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
+        $dbBackup = New-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -BackupName MyBackup -StorageAccountUrl $sasUrl -Databases $dbSetting1,$dbSetting2
 
-## バックアップの取得
+## <a name="get-backups"></a>Get backups
 
-Get-AzureRmWebAppBackupList コマンドレットは Web アプリのすべてのバックアップの配列を返します。Web アプリとそのリソース グループの名前を指定する必要があります。
+The Get-AzureRmWebAppBackupList cmdlet returns an array of all backups for a web app. You must supply the name of the web app and its resource group.
 
-		$resourceGroupName = "Default-Web-WestUS"
-		$appName = "ContosoApp"
-		$backups = Get-AzureRmWebAppBackupList -Name $appName -ResourceGroupName $resourceGroupName
+        $resourceGroupName = "Default-Web-WestUS"
+        $appName = "ContosoApp"
+        $backups = Get-AzureRmWebAppBackupList -Name $appName -ResourceGroupName $resourceGroupName
 
-特定のバックアップを取得するには、Get-AzureRmWebAppBackup コマンドレットを使用します。
+To get a specific backup, use the Get-AzureRmWebAppBackup cmdlet.
 
-		$backup = Get-AzureRmWebAppBackup -Name $appName -ResourceGroupName $resourceGroupName -BackupId 10102
+        $backup = Get-AzureRmWebAppBackup -Name $appName -ResourceGroupName $resourceGroupName -BackupId 10102
 
-利便性のため、Web アプリのオブジェクトをいずれかのバックアップ管理コマンドレットにパイプすることもできます。
+You can also pipe a web app object into any of the backup management cmdlets for convenience.
 
-		$app = Get-AzureRmWebApp -Name ContosoApp -ResourceGroupName Default-Web-WestUS
-		$backupList = $app | Get-AzureRmWebAppBackupList
-		$backup = $app | Get-AzureRmWebAppBackup -BackupId 10102
+        $app = Get-AzureRmWebApp -Name ContosoApp -ResourceGroupName Default-Web-WestUS
+        $backupList = $app | Get-AzureRmWebAppBackupList
+        $backup = $app | Get-AzureRmWebAppBackup -BackupId 10102
 
-## 自動バックアップのスケジュールを作成する
+## <a name="schedule-automatic-backups"></a>Schedule automatic backups
 
-バックアップが指定された間隔で自動的に実行されるようにスケジュールすることができます。バックアップのスケジュールを構成するには、Edit-AzureRmWebAppBackupConfiguration コマンドレットを使用します。このコマンドレットは、いくつかのパラメーターを受け取ります。
+You can schedule backups to happen automatically at a specified interval. To configure a backup schedule, use the Edit-AzureRmWebAppBackupConfiguration cmdlet. This cmdlet takes several parameters:
 
-- **Name** - Web アプリの名前。
-- **ResourceGroupName** - Web アプリを含むリソース グループの名前。
-- **Slot** - 省略可能。Web アプリ スロットの名前。
-- **StorageAccountUrl** -バックアップの格納に使用する Azure Storage コンテナーの SAS URL。
-- **FrequencyInterval** - バックアップの頻度を示す数値。正の整数にする必要があります。
-- **FrequencyUnit** - バックアップの頻度を示す時間の単位。時間または日です。
-- **RetentionPeriodInDays** - 自動バックアップが自動的に削除されるまでの保存日数。
-- **StartTime** - 省略可能。自動バックアップを開始する時刻。これが null の場合、バックアップが直ちに開始されます。DateTime にする必要があります。
-- **Databases** - 省略可能。バックアップするデータベースの DatabaseBackupSettings の配列。
-- **KeepAtLeastOneBackup** - 省略可能なスイッチ パラメーター。保存期間に関係なく、常に 1 つのバックアップをストレージ アカウントに保持する必要がある場合に指定します。
+- **Name** - The name of the web app.
+- **ResourceGroupName** - The name of the resource group containing the web app.
+- **Slot** - Optional. The name of the web app slot.
+- **StorageAccountUrl** - The SAS URL for the Azure Storage container used to store the backups.
+- **FrequencyInterval** - Numeric value for how often the backups should be made. Must be a positive integer.
+- **FrequencyUnit** - Unit of time for how often the backups should be made. Options are Hour and Day.
+- **RetentionPeriodInDays** - How many days the automatic backups should be saved before being automatically deleted.
+- **StartTime** - Optional. The time when the automatic backups should begin. Backups begin immediately if this is null. Must be a DateTime.
+- **Databases** - Optional. An array of DatabaseBackupSettings for the databases to backup.
+- **KeepAtLeastOneBackup** - Optional switched parameter. Supply this if one backup should always be kept in the storage account, regardless of how old it is.
 
-このコマンドレットを使用する方法の例を次に示します。
+Following is an example of how to use this cmdlet.
 
-		$resourceGroupName = "Default-Web-WestUS"
-		$appName = "ContosoApp"
-		$slotName = "StagingSlot"
-		$dbSetting1 = New-AzureRmWebAppDatabaseBackupSetting -Name DB1 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
-		$dbSetting2 = New-AzureRmWebAppDatabaseBackupSetting -Name DB2 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
-		Edit-AzureRmWebAppBackupConfiguration -Name $appName -ResourceGroupName $resourceGroupName -Slot $slotName `
-		  -StorageAccountUrl "<your SAS URL>" -FrequencyInterval 6 -FrequencyUnit Hour -Databases $dbSetting1,$dbSetting2 `
-		  -KeepAtLeastOneBackup -StartTime (Get-Date).AddHours(1)
+        $resourceGroupName = "Default-Web-WestUS"
+        $appName = "ContosoApp"
+        $slotName = "StagingSlot"
+        $dbSetting1 = New-AzureRmWebAppDatabaseBackupSetting -Name DB1 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
+        $dbSetting2 = New-AzureRmWebAppDatabaseBackupSetting -Name DB2 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
+        Edit-AzureRmWebAppBackupConfiguration -Name $appName -ResourceGroupName $resourceGroupName -Slot $slotName `
+          -StorageAccountUrl "<your SAS URL>" -FrequencyInterval 6 -FrequencyUnit Hour -Databases $dbSetting1,$dbSetting2 `
+          -KeepAtLeastOneBackup -StartTime (Get-Date).AddHours(1)
 
-最新のバックアップのスケジュールを取得するには、Get-AzureRmWebAppBackupConfiguration コマンドレットを使用します。これは、既に構成されているスケジュールを変更する場合に便利です。
+To get the current backup schedule, use the Get-AzureRmWebAppBackupConfiguration cmdlet. This can be useful for modifying a schedule that has already been configured.
 
-		$configuration = Get-AzureRmWebAppBackupConfiguration -Name $appName -ResourceGroupName $resourceGroupName
+        $configuration = Get-AzureRmWebAppBackupConfiguration -Name $appName -ResourceGroupName $resourceGroupName
 
-		# Modify the configuration slightly
-		$configuration.FrequencyInterval = 2
-		$configuration.FrequencyUnit = "Day"
+        # Modify the configuration slightly
+        $configuration.FrequencyInterval = 2
+        $configuration.FrequencyUnit = "Day"
 
-		# Apply the new configuration by piping it into the Edit-AzureRmWebAppBackupConfiguration cmdlet
-		$configuration | Edit-AzureRmWebAppBackupConfiguration
+        # Apply the new configuration by piping it into the Edit-AzureRmWebAppBackupConfiguration cmdlet
+        $configuration | Edit-AzureRmWebAppBackupConfiguration
 
-## Web アプリをバックアップから復元する
+## <a name="restore-a-web-app-from-a-backup"></a>Restore a web app from a backup
 
-Web アプリをバックアップから復元するには、Restore-AzureRmWebAppBackup コマンドレットを使用します。このコマンドレットを使用する場合、Get-AzureRmWebAppBackup cmdlet または Get-AzureRmWebAppBackupList コマンドレットから取得したバックアップ オブジェクトにパイプする方法が最も簡単です。
+To restore a web app from a backup, use the Restore-AzureRmWebAppBackup cmdlet. The easiest way to use this cmdlet is to pipe in a backup object retrieved from the Get-AzureRmWebAppBackup cmdlet or Get-AzureRmWebAppBackupList cmdlet.
 
-作成されたバックアップ オブジェクトは、Restore-AzureRmWebAppBackup コマンドレットにパイプすることができます。Web アプリの内容をバックアップの内容で上書きすることを示すには、Overwrite スイッチ パラメーターを指定します。バックアップにデータベースが含まれる場合は、これらのデータベースも復元されます。
+Once you have a backup object, you can pipe it into the Restore-AzureRmWebAppBackup cmdlet. Specify the Overwrite switch parameter to indicate that you intend to overwrite the contents of your web app with the contents of the backup. If the backup contains databases, those databases are restored as well.
 
-		$backup | Restore-AzureRmWebAppBackup -Overwrite
+        $backup | Restore-AzureRmWebAppBackup -Overwrite
 
-Restore-AzureRmWebAppBackup ですべてのパラメーターを指定する方法の例を次に示します。
+Following is an example of how to use the Restore-AzureRmWebAppBackup by specifying all the parameters.
 
-		$resourceGroupName = "Default-Web-WestUS"
-		$appName = "ContosoApp"
-		$slotName = "StagingSlot"
-		$blobName = "ContosoBackup.zip"
-		$dbSetting1 = New-AzureRmWebAppDatabaseBackupSetting -Name DB1 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
-		$dbSetting2 = New-AzureRmWebAppDatabaseBackupSetting -Name DB2 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
-		Restore-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -Slot $slotName -StorageAccountUrl "<your SAS URL>" -BlobName $blobName -Databases $dbSetting1,$dbSetting2 -Overwrite
+        $resourceGroupName = "Default-Web-WestUS"
+        $appName = "ContosoApp"
+        $slotName = "StagingSlot"
+        $blobName = "ContosoBackup.zip"
+        $dbSetting1 = New-AzureRmWebAppDatabaseBackupSetting -Name DB1 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
+        $dbSetting2 = New-AzureRmWebAppDatabaseBackupSetting -Name DB2 -DatabaseType SqlAzure -ConnectionString "<connection_string>"
+        Restore-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -Slot $slotName -StorageAccountUrl "<your SAS URL>" -BlobName $blobName -Databases $dbSetting1,$dbSetting2 -Overwrite
 
-## バックアップの削除
+## <a name="delete-a-backup"></a>Delete a backup
 
-バックアップを削除するには、AzureRmWebAppBackup コマンドレットを使用します。これにより、ストレージ アカウントからバックアップが削除されます。アプリ名、そのリソース グループ、削除するバックアップの ID を指定します。
+To delete a backup, use the Remove-AzureRmWebAppBackup cmdlet. This removes the backup from your storage account. Specify your app name, its resource group, and the ID of the backup you want to delete.
 
-		$resourceGroupName = "Default-Web-WestUS"
-		$appName = "ContosoApp"
-		Remove-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -BackupId 10102
+        $resourceGroupName = "Default-Web-WestUS"
+        $appName = "ContosoApp"
+        Remove-AzureRmWebAppBackup -ResourceGroupName $resourceGroupName -Name $appName -BackupId 10102
 
-バックアップ オブジェクトを Remove-AzureRmWebAppBackup コマンドレットにパイプして削除することもできます。
+You can also pipe a backup object into the Remove-AzureRmWebAppBackup cmdlet to delete it.
 
-		$backup = Get-AzureRmWebAppBackup -Name $appName -ResourceGroupName $resourceGroupName -BackupId 10102
-		$backup | Remove-AzureRmWebAppBackup -Overwrite
+        $backup = Get-AzureRmWebAppBackup -Name $appName -ResourceGroupName $resourceGroupName -BackupId 10102
+        $backup | Remove-AzureRmWebAppBackup -Overwrite
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

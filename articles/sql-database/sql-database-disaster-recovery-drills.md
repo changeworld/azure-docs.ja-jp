@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="SQL Database の障害復旧訓練 | Microsoft Azure" 
-   description="Azure SQL Database を使用して、ミッション クリティカルなビジネス アプリケーションがエラーと障害に対して回復力を保持するための障害復旧訓練を実行するためのガイダンスとベスト プラクティスについて説明します。" 
+   pageTitle="SQL Database Disaster Recovery Drills | Microsoft Azure" 
+   description="Learn guidance and best practices for using Azure SQL Database to perform disaster recovery drills that will help keep your mission critical business applications resilient to failures and outages." 
    services="sql-database" 
    documentationCenter="" 
    authors="mihaelablendea" 
@@ -16,59 +16,63 @@
    ms.date="07/31/2016"
    ms.author="mihaelab"/>
 
-#障害復旧訓練の実行
 
-復旧ワークフローのためのアプリケーションの対応状況の検証は、定期的に実行することをお勧めします。アプリケーションの動作、データの損失の影響やフェールオーバーによる中断を検証することをお勧めします。これは、ビジネス継続性の証明として、ほとんどの業界標準で必要条件ともなっています。
+#<a name="performing-disaster-recovery-drill"></a>Performing Disaster Recovery Drill
 
-障害復旧の訓練は以下のもので構成されています。
+It is recommended that validation of application readiness for recovery workflow is performed periodically. Verifying the application behavior and implications of data loss and/or the disruption that failover involves is a good engineering practice. It is also a requirement by most industry standards as part of business continuity certification.
 
-- データ層の停止シミュレーション
-- 復旧
-- 復旧後のアプリケーションの整合性の検証
+Performing a disaster recovery drill consists of:
 
-[ビジネス継続性のためにアプリケーションをどのように設計](sql-database-business-continuity.md)したかによって、実行する訓練のワークフローは異なります。下記に、Azure SQL Database のコンテキストで障害復旧の訓練を行う際のベスト プラクティスについて説明します。
+- Simulating data tier outage
+- Recovering 
+- Validate application integrity post recovery
 
-##地理リストア
+Depending on how you [designed your application for business continuity](sql-database-business-continuity.md), the workflow to execute the drill can vary. Below we describe the best practices conducting a disaster recovery drill in the context of Azure SQL Database. 
 
-障害復旧の訓練を実施する際のデータ損失の可能性を回避するために、運用環境のコピーから作成したテスト環境を使用して訓練を実行し、アプリケーションのフェールオーバーのワークフローの確認にもそれを使用することをお勧めします。
+##<a name="geo-restore"></a>Geo-Restore
+
+To prevent the potential data loss when conducting a disaster recovery drill, we recommend performing the drill using a test environment by creating a copy of the production environment and using it to verify the application’s failover workflow.
  
-####障害のシミュレーション
+####<a name="outage-simulation"></a>Outage simulation
 
-障害をシミュレートするために、ソース データベースを削除したり、名前を変更したりすることができます。これによって、アプリケーションの接続エラーが発生します。
+To simulate the outage you can delete or rename the source database. This will cause application connectivity failure. 
 
-####復旧
+####<a name="recovery"></a>Recovery
 
-- [こちら](sql-database-disaster-recovery.md)の説明に従って、データベースの地理リストアを別のサーバーに実行します。
-- アプリケーションの構成を変更して、復旧したデータベースに接続し、「[復旧後のデータベースの構成](sql-database-disaster-recovery.md)」のガイドに従って、復旧を完了します。
+- Perform the Geo-Restore of the database into a different server as described [here](sql-database-disaster-recovery.md). 
+- Change the application configuration to connect to the recovered database(s) and follow the [Configure a database after recovery](sql-database-disaster-recovery.md) guide to complete the recovery.
 
-####検証
+####<a name="validation"></a>Validation
 
-- 復旧後に、アプリケーションの整合性を検証して訓練を完了します (接続文字列、ログイン、基本的な機能のテスト、その他の標準的なアプリケーションのサインオフのプロシージャの検証など)。
+- Complete the drill by verifying the application integrity post recovery (i.e. connection strings, logins, basic functionality testing or other validations part of standard application signoffs procedures).
 
-##geo レプリケーション
+##<a name="geo-replication"></a>Geo-Replication
 
-geo レプリケーションを使用して保護されたデータベースの場合、訓練には、セカンダリ データベースへの計画されたフェールオーバーが含まれます。計画されたフェールオーバーでは、ロールが切り替わったときに、プライマリ データベースとセカンダリ データベースの同期を維持するようにします。計画外のフェールオーバーとは異なり、この操作ではデータは失われないため、訓練を運用環境で実行できます。
+For a database that is protected using Geo-Replication the drill exercise will involve planned failover to the secondary database. The planned failover ensures that the primary and the secondary databases remains in sync when the roles are switched. Unlike the unplanned failover, this operation will not result in data loss, so the drill can be performed in the production environment. 
 
-####障害のシミュレーション
+####<a name="outage-simulation"></a>Outage simulation
 
-障害をシミュレートするために、データベースに接続されている Web アプリケーションまたは仮想マシンを無効にできます。これにより、Web クライアントの接続エラーが発生します。
+To simulate the outage you can disable the web application or virtual machine connected to the database. This will result in the connectivity failures for the web clients.
 
-####復旧
+####<a name="recovery"></a>Recovery
 
-- 障害復旧リージョンのアプリケーション構成が (完全にアクセス可能な新しいプライマリになる) 前のセカンダリをポイントしていることを確認します。
-- [計画されたフェールオーバー](sql-database-geo-replication-powershell.md#initiate-a-planned-failover)を実行して、セカンダリ データベースを新しいプライマリにします。
-- 「[復旧後のデータベースの構成](sql-database-disaster-recovery.md)」のガイドに従って、復旧を完了します。
+- Make sure the the application configuration in the DR region points to the former secondary which will become fully accessible new primary. 
+- Perform [planned failover](sql-database-geo-replication-powershell.md#initiate-a-planned-failover) to make the secondary database a new primary
+- Follow the [Configure a database after recovery](sql-database-disaster-recovery.md) guide to complete the recovery.
 
-####検証
+####<a name="validation"></a>Validation
 
-- 復旧後に、アプリケーションの整合性を検証して訓練を完了します (接続文字列、ログイン、基本的な機能のテスト、その他の標準的なアプリケーションのサインオフのプロシージャの検証など)。
+- Complete the drill by verifying the application integrity post recovery (i.e. connection strings, logins, basic functionality testing or other validations part of standard application signoffs procedures).
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity.md)に関するページをご覧ください
-- Azure SQL Database 自動バックアップの詳細については、「[SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください
-- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
-- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- To learn about business continuity scenarios, see [Continuity scenarios](sql-database-business-continuity.md)
+- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md)
+- To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](sql-database-recovery-using-backups.md)
+- To learn about faster recovery options, see [Active-Geo-Replication](sql-database-geo-replication-overview.md)  
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

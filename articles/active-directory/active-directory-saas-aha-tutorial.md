@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Aha! の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Aha! を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Aha! | Microsoft Azure" 
+    description="Learn how to use Aha! with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,133 +11,141 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Aha! の統合
 
-このチュートリアルでは、Azure と Aha! の統合について説明します。 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+#<a name="tutorial:-azure-active-directory-integration-with-aha!"></a>Tutorial: Azure Active Directory integration with Aha!
 
--   有効な Azure サブスクリプション
--   Aha! でのシングル サインオンが有効なサブスクリプション
+The objective of this tutorial is to show the integration of Azure and Aha!  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
-このチュートリアルを完了すると、Aha! に割り当てた Azure AD ユーザーは、Aha! 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+-   A valid Azure subscription
+-   An Aha! single sign-on enabled subscription
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+After completing this tutorial, the Azure AD users you have assigned to Aha! will be able to single sign into the application at your Aha! company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-1.  Aha! のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+The scenario outlined in this tutorial consists of the following building blocks:
 
-![シナリオ](./media/active-directory-saas-aha-tutorial/IC798944.png "シナリオ")
-##Aha! のアプリケーション統合の有効化
+1.  Enabling the application integration for Aha!
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-このセクションでは、Aha! のアプリケーション統合を有効にする方法について説明します。
+![Scenario](./media/active-directory-saas-aha-tutorial/IC798944.png "Scenario")
+##<a name="enabling-the-application-integration-for-aha!"></a>Enabling the application integration for Aha!
 
-###Aha! のアプリケーション統合を有効にするには、次の手順に従います。
+The objective of this section is to outline how to enable the application integration for Aha!.
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+###<a name="to-enable-the-application-integration-for-aha!,-perform-the-following-steps:"></a>To enable the application integration for Aha!, perform the following steps:
+
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-aha-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-aha-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-aha-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-aha-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-aha-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-aha-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-aha-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  [**検索**] ボックスに、「**Aha!**」と入力します。
+6.  In the **search box**, type **Aha!**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-aha-tutorial/IC798945.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-aha-tutorial/IC798945.png "Application Gallery")
 
-7.  結果ウィンドウで [**Aha!**] を選択し、[**完了**] をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Aha!**, and then click **Complete** to add the application.
 
     ![Aha!](./media/active-directory-saas-aha-tutorial/IC802746.png "Aha!")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Aha! に対する認証を行えるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to Aha! with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Aha!** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Aha!** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798946.png "Configure Single Sign-On")
 
-2.  [**ユーザーの Aha! へのアクセスを設定してください**] ページで、[**Microsoft Azure AD のシングル サインオン**] を選択し、[**次へ**] をクリックします。
+2.  On the **How would you like users to sign on to Aha!** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798947.png "Configure Single Sign-On")
 
-3.  [**アプリケーション URL の構成**] ページの [** Aha! サインオン URL**] テキスト ボックスに、Aha! アプリケーションへのサインオンにユーザーが使用する URL (例:"*https://company.aha.io/session/new*") を入力してから、**[次へ]* をクリックします。
+3.  On the **Configure App URL** page, in the **Aha! Sign On URL** textbox, type the URL used by your users to sign-on to your Aha! Application (e.g.: "*https://company.aha.io/session/new*"), and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-aha-tutorial/IC798948.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-aha-tutorial/IC798948.png "Configure App URL")
 
-4.  [**Aha! でのシングル サインオンの構成**] ページで、メタデータをダウンロードするには、[**メタデータのダウンロード**] をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。
+4.  On the **Configure single sign-on at Aha!** page, to download your metadata file, click **Download metadata**, and then save the metadata file locally on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798949.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザーのウィンドウで、管理者として Aha! 企業サイトにログインします。
+5.  In a different web browser window, log into your Aha! company site as an administrator.
 
-6.  上部のメニューで [**設定**] をクリックします。
+6.  In the menu on the top, click **Settings**.
 
     ![Settings](./media/active-directory-saas-aha-tutorial/IC798950.png "Settings")
 
-7.  [**アカウント**] クリックします。
+7.  Click **Account**.
 
-    ![プロファイル](./media/active-directory-saas-aha-tutorial/IC798951.png "プロファイル")
+    ![Profile](./media/active-directory-saas-aha-tutorial/IC798951.png "Profile")
 
-8.  [**セキュリティとシングル サインオン**] クリックします。
+8.  Click **Security and single sign-on**.
 
-    ![セキュリティとシングル サインオン](./media/active-directory-saas-aha-tutorial/IC798952.png "セキュリティとシングル サインオン")
+    ![Security and single sign-on](./media/active-directory-saas-aha-tutorial/IC798952.png "Security and single sign-on")
 
-9.  [**シングル サインオン**] セクションで、[**ID プロバイダー**] として [**SAML2.0**] を選択します。
+9.  In **Single Sign-On** section, as **Identity Provider**, select **SAML2.0**.
 
-    ![セキュリティとシングル サインオン](./media/active-directory-saas-aha-tutorial/IC798953.png "セキュリティとシングル サインオン")
+    ![Security and single sign-on](./media/active-directory-saas-aha-tutorial/IC798953.png "Security and single sign-on")
 
-10. [**シングル サインオン**] 構成ページで、次の手順を実行します。
+10. On the **Single Sign-On** configuration page, perform the following steps:
 
-    ![シングル サインオン](./media/active-directory-saas-aha-tutorial/IC798954.png "シングル サインオン")
+    ![Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798954.png "Single Sign-On")
 
-    1.  [**名前**] テキスト ボックスに、構成の名前を入力します。
-    2.  [**Configure using**] には [**メタデータ ファイル**] を選択します。
-    3.  ダウンロードしたメタデータ ファイルをアップロードするには、[**参照**] をクリックします。
-    4.  [**更新**] をクリックします。
+    1.  In the **Name** textbox, type a name for your configuration.
+    2.  For **Configure using**, select **Metadata File**.
+    3.  To upload your downloaded metadata file, click **Browse**.
+    4.  Click **Update**.
 
-11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+11. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-aha-tutorial/IC798955.png "Configure Single Sign-On")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
 
-Azure AD ユーザーが Aha! にログインできるようにするには、そのユーザーを Aha! にプロビジョニングする必要があります。Aha! の場合、プロビジョニングは自動化されています。ユーザー側で必要な操作はありません。
+In order to enable Azure AD users to log into Aha!, they must be provisioned into Aha!.  
+In the case of Aha!, provisioning is an automated task.  
+There is no action item for you.
   
-最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
+Users are automatically created if necessary during the first single sign-on attempt.
 
->[AZURE.NOTE] 他の Aha! ユーザー アカウントの作成ツールまたは Aha! から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other Aha! user account creation tools or APIs provided by Aha! to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
 
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Aha! に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-aha!,-perform-the-following-steps:"></a>To assign users to Aha!, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Aha!** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Aha! **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-aha-tutorial/IC798956.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-aha-tutorial/IC798956.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-aha-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

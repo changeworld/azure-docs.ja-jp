@@ -1,119 +1,125 @@
 <properties
-	pageTitle="Azure Mobile App (Android) のオフライン同期の有効化"
-	description="App Service Mobile Apps を使用して、Android アプリケーションのオフライン データをキャッシュおよび同期する方法について説明します。"
-	documentationCenter="android"
-	authors="RickSaling"
-	manager="erikre"
-	services="app-service\mobile"/>
+    pageTitle="Enable offline sync for your Azure Mobile App (Android)"
+    description="Learn how to use App Service Mobile Apps to cache and sync offline data in your Android application"
+    documentationCenter="android"
+    authors="yuaxu"
+    manager="erikre"
+    services="app-service\mobile"/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="java"
-	ms.topic="article"
-	ms.date="07/21/2016"
-	ms.author="ricksal"/>
+    ms.service="app-service-mobile"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-android"
+    ms.devlang="java"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="yuaxu"/>
 
-# Android モバイル アプリのオフライン同期の有効化
+
+# <a name="enable-offline-sync-for-your-android-mobile-app"></a>Enable offline sync for your Android mobile app
 
 [AZURE.INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## 概要
+## <a name="overview"></a>Overview
 
-このチュートリアルでは、Android 向け Azure Mobile Apps のオフライン同期機能について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。変更はローカル データベースに格納され、デバイスが再びオンラインになると、これらの変更がリモート バックエンドと同期されます。
+This tutorial covers the offline sync feature of Azure Mobile Apps for Android. Offline sync allows end-users to interact with a mobile app&mdash;viewing, adding, or modifying data&mdash;even when there is no network connection. Changes are stored in a local database; once the device is back online, these changes are synced with the remote backend.
 
-Azure Mobile Apps を初めて使用する場合は、チュートリアル「[Create an Android App (Android アプリの作成)]」を完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、データ アクセス拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+If this is your first experience with Azure Mobile Apps, you should first complete the tutorial [Create an Android App]. If you do not use the downloaded quick start server project, you must add the data access extension packages to your project. For more information about server extension packages, see [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-オフラインの同期機能の詳細については、トピック「[Azure Mobile Apps でのオフライン データ同期]」をご覧ください。
+To learn more about the offline sync feature, see the topic [Offline Data Sync in Azure Mobile Apps].
 
-## オフライン同期をサポートするようにアプリケーションを更新する
+## <a name="update-the-app-to-support-offline-sync"></a>Update the app to support offline sync
 
-オフライン同期では、*同期テーブル*に対して読み取りと書き込みを行います (*IMobileServiceSyncTable* インターフェイスを使用)。このテーブルは、デバイス上の **SQLite** データベースの一部です。
+With offline sync you read to and write from a *sync table* (using the *IMobileServiceSyncTable* interface), which is part of a **SQLite** database on your device.
 
-デバイスと Azure Mobile Services の間で変更をプッシュしたりプルしたりするには、*同期コンテキスト* (*MobileServiceClient.SyncContext*) を使用します。この同期コンテキストは、データをローカルに格納するローカル データベースで初期化されます。
+To push and pull changes between the device and Azure Mobile Services, you use a *synchronization context* (*MobileServiceClient.SyncContext*), which you initialize with the local database that you use to store data locally.
 
-1. `TodoActivity.java` で、`mToDoTable` の既存の定義をコメント アウトし、同期テーブルのバージョンをコメント解除します。
+1. In `TodoActivity.java`, comment out the existing definition of `mToDoTable` and uncomment the sync table version:
 
-	    private MobileServiceSyncTable<ToDoItem> mToDoTable;
+        private MobileServiceSyncTable<ToDoItem> mToDoTable;
 
-2. `onCreate` メソッドで、`mToDoTable` の既存の初期化をコメント アウトし、次の定義をコメント解除します。
+2. In the `onCreate` method, comment out the existing initialization of `mToDoTable` and uncomment this definition:
 
         mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 
-3. `refreshItemsFromTable` で、`results` の定義をコメント アウトし、次の定義をコメント解除します。
+3. In `refreshItemsFromTable` comment out the definition of `results` and uncomment this definition:
 
-		// Offline Sync
-		final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
+        // Offline Sync
+        final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
 
-4. `refreshItemsFromMobileServiceTable` の定義をコメント アウトします。
+4. Comment out the definition of `refreshItemsFromMobileServiceTable`.
 
-5. `refreshItemsFromMobileServiceTableSyncTable` の定義をコメント解除します。
+5. Uncomment the definition of `refreshItemsFromMobileServiceTableSyncTable`:
 
-	    private List<ToDoItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
-	        //sync the data
-	        sync().get();
-	        Query query = QueryOperations.field("complete").
-	                eq(val(false));
-	        return mToDoTable.read(query).get();
-	    }
+        private List<ToDoItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
+            //sync the data
+            sync().get();
+            Query query = QueryOperations.field("complete").
+                    eq(val(false));
+            return mToDoTable.read(query).get();
+        }
 
-6. `sync` の定義をコメント解除します。
+6. Uncomment the definition of `sync`:
 
-	    private AsyncTask<Void, Void, Void> sync() {
-	        AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
-	            @Override
-	            protected Void doInBackground(Void... params) {
-	                try {
-	                    MobileServiceSyncContext syncContext = mClient.getSyncContext();
-	                    syncContext.push().get();
-	                    mToDoTable.pull(null).get();
-	                } catch (final Exception e) {
-	                    createAndShowDialogFromTask(e, "Error");
-	                }
-	                return null;
-	            }
-	        };
-	        return runAsyncTask(task);
-	    }
+        private AsyncTask<Void, Void, Void> sync() {
+            AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
+                @Override
+                protected Void doInBackground(Void... params) {
+                    try {
+                        MobileServiceSyncContext syncContext = mClient.getSyncContext();
+                        syncContext.push().get();
+                        mToDoTable.pull(null).get();
+                    } catch (final Exception e) {
+                        createAndShowDialogFromTask(e, "Error");
+                    }
+                    return null;
+                }
+            };
+            return runAsyncTask(task);
+        }
 
-## アプリケーションをテストする
+## <a name="test-the-app"></a>Test the app
 
-このセクションでは、WiFi 接続した状態で動作をテストしてから、WiFi を切断してオフラインのシナリオを用意します。
+In this section, you will test the behavior with WiFi on, and then turn off WiFi to create an offline scenario.
 
-データ項目を追加したときに、これらの項目はローカルの SQLite ストアに保持されていますが、**[更新]** ボタンをクリックするまでモバイル サービスと同期されません。他のアプリでは、データを同期させるタイミングに関する要件が異なる場合がありますが、このチュートリアルではデモの目的で、ユーザーが明示的にデータ同期を要求したことにします。
+When you add data items, they are held in the local SQLite store, but not synced to the mobile service until you press the **Refresh** button. Other apps may have different requirements regarding when data needs to be synchronized, but for demo purposes this tutorial has the user explicitly request it.
 
-[更新] ボタンを押すと、新しいバック グラウンド タスクが開始し、最初に、同期コンテキストを使用してローカル ストアに加えられたすべての変更がプッシュされます。次に、Azure から変更されたすべてのデータがローカル テーブルにプルされます。
+When you press that button, a new background task starts, and first pushes all the changes made to the local store, by using the synchronization context, and then pulls all changed data from Azure to the local table.
 
-### オフライン テスト
+### <a name="offline-testing"></a>Offline testing
 
-1. デバイスまたはシミュレーターを [*機内モード*] に切り替えます。これでオフラインのシナリオが準備できます。
+1. Place the device or simulator in *Airplane Mode*. This creates an offline scenario.
 
-2. *ToDo* 項目をいくつか追加するか、一部の項目を完了済みとしてマークします。デバイスまたはシミュレーターを終了して (またはアプリケーションを強制的に閉じて)、再起動します。変更はローカルの SQLite ストアに保持されているため、変更がデバイスに保存されたことを確認します。
+2. Add some *ToDo* items, or mark some items as complete. Quit the device or simulator (or forcibly close the app) and restart. Verify that your changes have been persisted on the device because they are held in the local SQLite store.
 
-3. *SQL Server Management Studio* などの SQL ツール、または *Fiddler* や *Postman* などの REST クライアントを使用して、Azure *TodoItem* テーブルの内容を表示します。新しい項目が、サーバーと同期されなかったことを確認します。
+3. View the contents of the Azure *TodoItem* table either with a SQL tool such as *SQL Server Management Studio*, or a REST client such as *Fiddler* or *Postman*. Verify that the new items have _not_ been synced to the server
 
-   	+ Node.js バックエンドの場合は、[Azure ポータル](https://portal.azure.com/)に移動し、Mobile App バックエンドで **[簡易テーブル]**、**[TodoItem]** の順にクリックして、`TodoItem` テーブルの内容を表示します。
-   	+ .NET バックエンドの場合は、*SQL Server Management Studio* などの SQL ツール、または *Fiddler* や *Postman* などの REST クライアントを使用して、テーブルの内容を表示します。
+    + For a Node.js backend, go to the [Azure portal](https://portal.azure.com/), and in your Mobile App backend click **Easy Tables** > **TodoItem** to view the contents of the `TodoItem` table.
+    + For a .NET backend, view the table contents either with a SQL tool such as *SQL Server Management Studio*, or a REST client such as *Fiddler* or *Postman*.
 
-4. デバイスまたはシミュレーターの WiFi を有効にします。次に [**更新**] ボタンを押します。
+4. Turn on WiFi in the device or simulator. Next, press the **Refresh** button.
 
-5. Azure ポータルで、もう一度 TodoItem のデータを参照します。新しく変更した TodoItems が表示されます。
+5. View the TodoItem data again in the Azure portal. The new and changed TodoItems should now appear.
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional Resources
 
-* [Azure Mobile Apps でのオフライン データ同期]
+* [Offline Data Sync in Azure Mobile Apps]
 
-* [Cloud Cover: Azure Mobile Services でのオフライン同期] \(注: このビデオは Mobile Services に関するものですが、オフライン同期は Azure Mobile Apps でも同様に機能します)
+* [Cloud Cover: Offline Sync in Azure Mobile Services] \(note: the video is on Mobile Services, but offline sync works in a similar way in Azure Mobile Apps\)
 
 
 <!-- URLs. -->
 
-[Azure Mobile Apps でのオフライン データ同期]: ../app-service-mobile-offline-data-sync.md
+[Offline Data Sync in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 
-[Create an Android App (Android アプリの作成)]: ../app-service-mobile-android-get-started.md
+[Create an Android App]: app-service-mobile-android-get-started.md
 
-[Cloud Cover: Azure Mobile Services でのオフライン同期]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Cloud Cover: Offline Sync in Azure Mobile Services]: http://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: http://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

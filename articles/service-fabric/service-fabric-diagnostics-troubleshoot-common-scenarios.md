@@ -1,6 +1,6 @@
 <properties
-   pageTitle="イベント トレーによるトラブルシューティング | Microsoft Azure"
-   description="Microsoft Azure Service Fabric でサービスをデプロイするときに発生するお問い合わせの多い問題について説明します。"
+   pageTitle="Troubleshooting with event tracing | Microsoft Azure"
+   description="The most common issues encountered while deploying services on Microsoft Azure Service Fabric."
    services="service-fabric"
    documentationCenter=".net"
    authors="mattrowmsft"
@@ -17,36 +17,43 @@
    ms.author="mattrow"/>
 
 
-# Azure Service Fabric でサービスをデプロイするときの一般的な問題のトラブルシューティング
 
-開発者のコンピューターでサービスを実行している場合、[Visual Studio のデバッグ ツール](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)は簡単に使用できます。リモート クラスターの場合は、[正常性レポート](service-fabric-view-entities-aggregated-health.md)から開始することをお勧めします。これらのレポートには、PowerShell や [SFX](service-fabric-visualizing-your-cluster.md) を介してアクセスするのが最も簡単な方法です。この記事では、ユーザーがリモート クラスターのデバッグを実行しており、これらのツールのいずれかの使用方法について基本的な知識があることを前提としています。
+# <a name="troubleshoot-common-issues-when-you-deploy-services-on-azure-service-fabric"></a>Troubleshoot common issues when you deploy services on Azure Service Fabric
 
-##アプリケーションのクラッシュ
-「パーティションはターゲット レプリカまたはインスタンス カウントより下です」は、サービスがクラッシュしていることを示します。サービスのクラッシュが発生している場所を特定するには、もう少し調査する必要があります。大きな規模で実行している場合、一番の味方はよく練られたトレースのセットです。これらのトレースを収集し、トレースの表示と検索に [Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) などのソリューションを使用する場合は、[Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md) を使ってみることをお勧めします。
+When you're running services on your developer computer, it is easy to use [Visual Studio's debugging tools](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). For remote clusters, [health reports](service-fabric-view-entities-aggregated-health.md) are always a good place to start. The easiest ways to access these reports are through PowerShell or [SFX](service-fabric-visualizing-your-cluster.md). This article assumes that you are debugging a remote cluster and have a basic understanding of how to use either of these tools.
 
-![SFX パーティションの正常性](./media/service-fabric-diagnostics-troubleshoot-common-scenarios/crashNewApp.png)
+##<a name="application-crash"></a>Application crash
+The "Partition is below target replica or instance count" report is a good indication that your service is crashing. To find out where your service is crashing takes a little more investigation. When your service is running at scale, your best friend will be a set of well-thought-out traces.  We suggest that you try [Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md) for collecting those traces and using a solution such as [Elastic Search](service-fabric-diagnostic-how-to-use-elasticsearch.md) for viewing and searching the traces.
 
-###サービスまたはアクターの初期化中
-サービス タイプの初期化前の例外はすべて、プロセスのクラッシュの原因となります。この種のクラッシュでは、アプリケーション イベント ログにサービスからのエラーが表示されます。これらはサービスが初期化される前に最もよく見られる例外です。
+![SFX Partition Health](./media/service-fabric-diagnostics-troubleshoot-common-scenarios/crashNewApp.png)
+
+###<a name="during-service-or-actor-initialization"></a>During service or actor initialization
+Any exceptions before the service type is initialized will cause the process to crash. For these types of crashes, the application event log will show the error from your service.
+These are the most common exceptions to see before the service is initialized.
 
 ***System.IO.FileNotFoundException***
 
-このエラーは、多くの場合、アセンブリの依存関係がないために発生します。Visual Studio の CopyLocal プロパティまたは ノードのグローバル アセンブリ キャッシュを確認します。
+This error is often due to missing assembly dependencies. Check the CopyLocal property in Visual Studio or the global assembly cache for the node.
 
-***System.Runtime.InteropServices.COMException*** *at System.Fabric.Interop.NativeRuntime+IFabricRuntime.RegisterStatefulServiceFactory(IntPtr, IFabricStatefulServiceFactory)*
+***System.Runtime.InteropServices.COMException***
+ *at System.Fabric.Interop.NativeRuntime+IFabricRuntime.RegisterStatefulServiceFactory(IntPtr, IFabricStatefulServiceFactory)*
  
- これは、登録されているサービス タイプの名前が、サービス マニフェストと一致していないことを示します。
+ This indicates that the registered service type name does not match the service manifest.
 
-すべてのノードについてアプリケーション イベント ログを自動的にアップロードするように [Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md) を構成できます。
+[Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md) can be configured to upload the application event log for all your nodes automatically.
 
-###RunAsync() または OnActivateAsync()
-登録済みのサービス タイプやアクターの初期化中または実行中にクラッシュが発生する場合は、Azure Service Fabric で例外がキャッチされます。これらは「次のステップ」で説明する EventSource プロバイダーで確認できます。
+###<a name="runasync()-or-onactivateasync()"></a>RunAsync() or OnActivateAsync()
+If the crash happens during the initialization or running of your registered service type or actor, the exception will be caught by Azure Service Fabric. You can view these from the EventSource providers detailed in the "Next steps" section.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-Service Fabric によって提供される次の既存の診断について説明します。
+Learn more about existing diagnostics provided by Service Fabric:
 
-* [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
-* [Reliable Services の診断](service-fabric-reliable-services-diagnostics.md)
+* [Reliable Actors diagnostics](service-fabric-reliable-actors-diagnostics.md)
+* [Reliable Services diagnostics](service-fabric-reliable-services-diagnostics.md)
 
-<!---HONumber=AcomDC_0406_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

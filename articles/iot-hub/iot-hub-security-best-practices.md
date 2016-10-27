@@ -1,6 +1,6 @@
 <properties
- pageTitle="IoT のセキュリティのベスト プラクティス | Microsoft Azure"
- description="IoT インフラストラクチャをセキュリティで保護するためのセキュリティのベスト プラクティス"
+ pageTitle="IoT Security Best Practices | Microsoft Azure"
+ description="Security best practices for securing your IoT infrastructure"
  services="iot-hub"
  documentationCenter=""
  authors="YuriDio"
@@ -16,28 +16,26 @@
  ms.date="08/02/2016"
  ms.author="yurid"/>
  
+
 [AZURE.INCLUDE [iot-security-best-practices](../../includes/iot-security-best-practices.md)]
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-IoT ソリューションのセキュリティ保護の詳細については、次のリンクを使用してください。
+To learn more about securing your IoT solution, see:
 
-- [IoT のセキュリティ アーキテクチャ][lnk-security-architecture]
-- [IoT デプロイのセキュリティ保護][lnk-security-deployment]
+- [IoT Security Architecture][lnk-security-architecture]
+- [Secure your IoT deployment][lnk-security-deployment]
 
-IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+To further explore the capabilities of IoT Hub, see:
 
-- [ソリューションの設計][lnk-design]
-- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
-- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
-- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
+- [Simulating a device with the Gateway SDK][lnk-gateway]
 
 [lnk-security-architecture]: iot-hub-security-architecture.md
 [lnk-security-deployment]: iot-hub-security-deployment.md
 
-[lnk-design]: iot-hub-guidance.md
-[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
-[lnk-portal]: iot-hub-manage-through-portal.md
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

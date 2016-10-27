@@ -1,69 +1,70 @@
 <properties 
-	pageTitle="Dapper でのエラスティック データベース クライアント ライブラリの使用 | Microsoft Azure" 
-	description="Dapper でのエラスティック データベース クライアント ライブラリの使用。" 
-	services="sql-database" 
-	documentationCenter="" 
-	manager="jhubbard" 
-	authors="torsteng"/>
+    pageTitle="Using elastic database client library with Dapper | Microsoft Azure" 
+    description="Using elastic database client library with Dapper." 
+    services="sql-database" 
+    documentationCenter="" 
+    manager="jhubbard" 
+    authors="torsteng"/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="sql-database" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/27/2016" 
-	ms.author="torsteng"/>
+    ms.service="sql-database" 
+    ms.workload="sql-database" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="05/27/2016" 
+    ms.author="torsteng"/>
 
-# Dapper でのエラスティック データベース クライアント ライブラリの使用 
 
-このドキュメントは、Dapper を使用してアプリケーションを構築する開発者が、[エラスティック データベース ツール](sql-database-elastic-scale-introduction.md)を導入し、シャーディングを実装してデータ層をスケールアウトするアプリケーションを作成する場合に使用します。このドキュメントでは、エラスティック データベース ツールと統合するために Dapper ベースのアプリケーションに加える必要がある変更点を示します。ここでは、Dapper を使用してエラスティック データベース シャード管理とデータ依存ルーティングを構成する方法を重点的に説明します。
+# <a name="using-elastic-database-client-library-with-dapper"></a>Using elastic database client library with Dapper 
 
-**サンプル コード**: [エラスティック データベースツール for Azure SQL Database - Dapper integration (Azure SQL Database のエラスティック データベース ツール - Dapper の統合)](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f)。
+This document is for developers that rely on Dapper to build applications, but also want to embrace [elastic database tooling](sql-database-elastic-scale-introduction.md) to create applications that implement sharding to scale-out their data tier.  This document illustrates the changes in Dapper-based applications that are necessary to integrate with elastic database tools. Our focus is on composing the elastic database shard management and data dependent routing with Dapper. 
+
+**Sample Code**: [Elastic database tools for Azure SQL Database - Dapper integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
  
-**Dapper** と **DapperExtensions** を Azure SQL Database のエラスティック データベース クライアント ライブラリに統合することは容易です。アプリケーションではデータ依存ルーティングを使用できます。そのためには、[クライアント ライブラリ](http://msdn.microsoft.com/library/azure/dn765902.aspx)の [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しを使用するように新しい [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトを作成する操作と開く操作を変更します。これにより、アプリケーションの変更が、新しい接続を作成して開く場所だけに制限されます。
+Integrating **Dapper** and **DapperExtensions** with the elastic database client library for Azure SQL Database is easy. Your applications can use data dependent routing by changing the creation and opening of new [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objects to use the [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) call from the [client library](http://msdn.microsoft.com/library/azure/dn765902.aspx). This limits changes in your application to only where new connections are created and opened. 
 
-## Dapper の概要
-**Dapper** はオブジェクト リレーショナル マッパーです。Dapper は、アプリケーションの .NET オブジェクトをリレーショナル データベースに (またはその逆に) マップします。サンプル コードの最初の部分は、エラスティック データベース クライアント ライブラリと Dapper ベースのアプリケーションを統合する方法を示します。サンプル コードの 2 番目の部分は、Dapper と DapperExtensions の両方を使用する場合の統合方法を示します。
+## <a name="dapper-overview"></a>Dapper overview
+**Dapper** is an object-relational mapper. It maps .NET objects from your application to a relational database (and vice versa). The first part of the sample code illustrates how you can integrate the elastic database client library with Dapper-based applications. The second part of the sample code illustrates how to integrate when using both Dapper and DapperExtensions.  
 
-Dapper のマッパー機能には、データベース接続に対する拡張メソッドが用意されています。このメソッドによって、データベースの実行または照会のための T-SQL ステートメントの送信が簡略化されます。たとえば、Dapper を使用すると、**Execute** の呼び出しでの .NET オブジェクトと SQL ステートメントのパラメーター間のマッピングを容易に行うことができます。また、Dapper から **Query** の呼び出しを使用して、SQL クエリの結果を .NET オブジェクトに容易に組み込むことができます。
+The mapper functionality in Dapper provides extension methods on database connections that simplify submitting T-SQL statements for execution or querying the database. For instance, Dapper makes it easy to map between your .NET objects and the parameters of SQL statements for **Execute** calls, or to consume the results of your SQL queries into .NET objects using **Query** calls from Dapper. 
 
-DapperExtensions を使用する場合に SQL ステートメントを指定する必要はなくなりました。データベース接続経由で使用する、**GetList** や **Insert** などの拡張メソッドでは SQL ステートメントがバックグラウンドで作成されます。
+When using DapperExtensions, you no longer need to provide the SQL statements. Extensions methods such as **GetList** or **Insert** over the database connection create the SQL statements behind the scenes.
  
-Dapper と DapperExtensions のもう 1 つの利点は、データベース接続の作成がアプリケーションによって制御されることです。これにより、データベースに対するシャードレットのマッピングに基づいてデータベース接続を仲介するエラスティック データベース クライアント ライブラリとやり取りできるようになります。
+Another benefit of Dapper and also DapperExtensions is that the application controls the creation of the database connection. This helps interact with the elastic database client library which brokers database connections based on the mapping of shardlets to databases.
 
-Dapper アセンブリを入手するには、「[Dapper dot net](http://www.nuget.org/packages/Dapper/)」をご覧ください。Dapper の拡張機能については、「[DapperExtensions](http://www.nuget.org/packages/DapperExtensions)」をご覧ください。
+To get the Dapper assemblies, see [Dapper dot net](http://www.nuget.org/packages/Dapper/). For the Dapper extensions, see [DapperExtensions](http://www.nuget.org/packages/DapperExtensions).
 
-## エラスティック データベース クライアント ライブラリの概要
+## <a name="a-quick-look-at-the-elastic-database-client-library"></a>A quick Look at the elastic database client library
 
-エラスティック データベース クライアント ライブラリでは、*シャードレット*と呼ばれる、アプリケーション データのパーティションを定義して、データベースにマップし、*シャーディング キー*によって識別します。任意の数のデータベースを使用して、シャードレットをそれらのデータベースに分散できます。シャーディング キー値とデータベースとの間のマッピングは、ライブラリの API によって提供されるシャード マップによって格納されます。この機能は、**シャード マップの管理**と呼ばれます。シャード マップは、シャーディング キーを格納する要求のデータベース接続用のためのブローカーとしても機能します。この機能は、**データ依存ルーティング**と呼ばれます。
+With the elastic database client library, you define partitions of your application data called *shardlets* , map them to databases, and identify them by *sharding keys*. You can have as many databases as you need and distribute your shardlets across these databases. The mapping of sharding key values to the databases is stored by a shard map provided by the library’s APIs. This capability is called **shard map management**. The shard map also serves as the broker of database connections for requests that carry a sharding key. This capability is referred to as **data dependent routing**.
 
-![シャード マップとデータ依存ルーティング][1]
+![Shard maps and data dependent routing][1]
 
-シャード マップ マネージャーは、データベースでの同時シャードレット管理操作の実行中に発生する可能性があるシャードレット データの一貫性のないビューからユーザーを保護します。これを実現するために、シャード マップは、ライブラリを使用して構築されたアプリケーションのデータベース接続を仲介します。これにより、シャード管理操作がシャードレットに影響を与える可能性のあるときに、シャード マップ機能によってデータベース接続を自動的に強制終了できます。
+The shard map manager protects users from inconsistent views into shardlet data that can occur when concurrent shardlet management operations are happening on the databases. To do so, the shard maps broker the database connections for an application built with the library. When shard management operations could impact the shardlet, this allows the shard map functionality to automatically kill a database connection. 
 
-従来の方法で Dapper 用の接続を作成するのではなく、[OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn824099.aspx) メソッドを使用する必要があります。これにより、シャード間でのデータの移動時に、すべての検証が行われ、接続が適切に管理されます。
+Instead of using the traditional way to create connections for Dapper, we need to use the [OpenConnectionForKey method](http://msdn.microsoft.com/library/azure/dn824099.aspx). This ensures that all the validation takes place and connections are managed properly when any data moves between shards.
 
-### Dapper の統合の要件
+### <a name="requirements-for-dapper-integration"></a>Requirements for Dapper integration
 
-エラスティック データベース クライアント ライブラリと Dapper API の両方を使用する場合は、次のプロパティを維持することを想定します。
+When working with both the elastic database client library and the Dapper APIs, we want to retain the following properties:
 
-* **スケールアウト**: アプリケーションの容量要求に合わせて必要に応じてシャード化されたアプリケーションのデータ層のデータベースを追加または削除します。 
+* **Scaleout**: We want to add or remove databases from the data tier of the sharded application as necessary for the capacity demands of the application. 
 
--    **一貫性**: アプリケーションはシャーディングを使用してスケールアウトされるため、データ依存ルーティングを実行する必要があります。そのためには、ライブラリのデータ依存ルーティング機能を使用します。具体的には、破損や誤ったクエリ結果を回避するために、シャード マップ マネージャーを通じて仲介された接続を提供して、検証と一貫性を維持します。これにより、たとえば、Split/Merge API を使用して特定のシャードレットを別のシャードに移動中の場合は、そのシャードレットに対する接続が拒否または停止されます。
+-    **Consistency**: Since our application is scaled out using sharding, we need to perform data dependent routing. We want to use the Data dependent routing capabilities of the library to do so. In particular, we want to retain the validation and consistency guarantees provided by connections that are brokered through the shard map manager in order to avoid corruption or wrong query results. This ensures that connections to a given shardlet are rejected or stopped if (for instance) the shardlet is currently moved to a different shard using Split/Merge APIs.
 
--    **オブジェクト マッピング**: Dapper が提供するマッピングの利便性を保ち、アプリケーションと基になるデータベース構造でクラス間の変換を行います。
+-    **Object Mapping**: We want to retain the convenience of the mappings provided by Dapper to translate between classes in the application and the underlying database structures. 
 
-次のセクションでは、**Dapper** と **DapperExtensions** に基づくこれらのアプリケーションの要件のガイダンスを示します。
+The following section provides guidance for these requirements for applications based on **Dapper** and **DapperExtensions**.
 
-## 技術ガイダンス
-### Dapper を使用したデータ依存ルーティング 
+## <a name="technical-guidance"></a>Technical Guidance
+### <a name="data-dependent-routing-with-dapper"></a>Data dependent routing with Dapper 
 
-Dapper では、通常、基になるデータベースへの接続を作成して開くのはアプリケーションです。アプリケーションで型 T が指定されている場合、Dapper はクエリ結果を型 T の .NET コレクションとして返します。Dapper は、T-SQL の結果行から型 T のオブジェクトへのマッピングを実行します。同様に、Dapper は、データ操作言語 (DML) ステートメント用に .NET オブジェクトを SQL 値またはパラメーターにマップします。Dapper は、ADO .NET SQL クライアント ライブラリの通常の [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトに対して拡張メソッドを使用してこの機能を提供します。DDR 用の Elastic Scale API から返される SQL 接続も通常の [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトです。これにより、クライアント ライブラリの DDR API から返される型を経由して Dapper の拡張機能を直接使用できます (この型も単純な SQL クライアント接続であるため)。
+With Dapper, the application is typically responsible for creating and opening the connections to the underlying database. Given a type T by the application, Dapper returns query results as .NET collections of type T. Dapper performs the mapping from the T-SQL result rows to the objects of type T. Similarly, Dapper maps .NET objects into SQL values or parameters for data manipulation language (DML) statements. Dapper offers this functionality via extension methods on the regular [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) object from the ADO .NET SQL Client libraries. The SQL connection returned by the Elastic Scale APIs for DDR are also regular [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objects. This allows us to directly use Dapper extensions over the type returned by the client library’s DDR API, as it is also a simple SQL Client connection.
 
-これらの手順によって、Dapper 用のエラスティック データベース クライアント ライブラリが仲介する接続を容易に使用できます。
+These observations make it straightforward to use connections brokered by the elastic database client library for Dapper.
 
-次のコード例 (付属のサンプルからの抜粋) は、適切なシャードへの接続を仲介するために、アプリケーションがライブラリに対してシャーディング キーを提供するアプローチを示しています。
+This code example (from the accompanying sample) illustrates the approach where the sharding key is provided by the application to the library to broker the connection to the right shard.   
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                      key: tenantId1, 
@@ -78,15 +79,15 @@ Dapper では、通常、基になるデータベースへの接続を作成し�
                         );
     }
 
-[OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) API を呼び出すと、SQL Client 接続を作成する既定の操作と開く既定の操作が置き換えられます。[OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しは、データ依存ルーティングに必要な次の引数を受け取ります。
+The call to the [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) API replaces the default creation and opening of a SQL Client connection. The [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) call takes the arguments that are required for data dependent routing: 
 
--    データ依存ルーティング インターフェイスにアクセスするためのシャード マップ
--    シャードレットを識別するためのシャーディング キー
--    シャードに接続するための資格情報 (ユーザー名とパスワード)
+-    The shard map to access the data dependent routing interfaces
+-    The sharding key to identify the shardlet
+-    The credentials (user name and password) to connect to the shard
 
-シャード マップ オブジェクトにより、特定のシャーディング キーのシャードレットを保持するシャードへの接続が作成されます。また、エラスティック データベース クライアント API は接続にタグ付けして、その一貫性を保証します。[OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しでは通常の SQL クライアント接続オブジェクトが返されるため、Dapper からの後続の **Execute** 拡張メソッドの呼び出しは Dapper の標準の手法に従います。
+The shard map object creates a connection to the shard that holds the shardlet for the given sharding key. The elastic database client APIs also tag the connection to implement its consistency guarantees. Since the call to [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) returns a regular SQL Client connection object, the subsequent call to the **Execute** extension method from Dapper follows the standard Dapper practice.
 
-クエリの使用方法はまったく同じです。最初に、クライアント API から [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) を使用して接続を開きます。次に、通常の Dapper 拡張メソッドを使用して、SQL クエリの結果を .NET オブジェクトにマップします。
+Queries work very much the same way – you first open the connection using [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) from the client API. Then you use the regular Dapper extension methods to map the results of your SQL query into .NET objects:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1, 
@@ -106,13 +107,13 @@ Dapper では、通常、基になるデータベースへの接続を作成し�
             }
     }
 
-DDR 接続を含む **using** ブロックのスコープは、tenantId1 が保持されている 1 つのシャードに対する、そのブロック内のすべてのデータベース操作であることに注目してください。このクエリが返すのは、現在のシャードに格納されているブログのみです。他のシャードに格納されているブログは返されません。
+Note that the **using** block with the DDR connection scopes all database operations within the block to the one shard where tenantId1 is kept. The query only returns blogs stored on the current shard, but not the ones stored on any other shards. 
 
-## Dapper と DapperExtensions を使用したデータ依存ルーティング
+## <a name="data-dependent-routing-with-dapper-and-dapperextensions"></a>Data dependent routing with Dapper and DapperExtensions
 
-Dapper には、データベース アプリケーションの開発時にデータベースからさらなる利便性と抽象化を実現する追加の拡張機能のエコシステムが用意されています。DapperExtensions はその一例です。
+Dapper comes with an ecosystem of additional extensions that can provide further convenience and abstraction from the database when developing database applications. DapperExtensions is an example. 
 
-アプリケーションで DapperExtensions を使用しても、データベース接続の作成と管理の方法は変わりません。接続を開く操作は引き続きアプリケーションが担当し、通常の SQL クライアント接続オブジェクトが拡張メソッドによって使用されます。既に説明したように、[OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) を利用できます。次のコード サンプルに示すとおり、変更されたのは、T-SQL ステートメントを記述する必要がなくなった点のみです。
+Using DapperExtensions in your application does not change how database connections are created and managed. It is still the application’s responsibility to open connections, and regular SQL Client connection objects are expected by the extension methods. We can rely on the [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) as outlined above. As the following code samples show, the only change is that we do no longer have to write the T-SQL statements:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2, 
@@ -123,7 +124,7 @@ Dapper には、データベース アプリケーションの開発時にデー
            sqlconn.Insert(blog);
     }
 
-クエリ用のコード サンプルを次に示します。
+And here is the code sample for the query: 
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2, 
@@ -139,11 +140,11 @@ Dapper には、データベース アプリケーションの開発時にデー
            }
     }
 
-### 一時的エラーの処理
+### <a name="handling-transient-faults"></a>Handling transient faults
 
-Microsoft Patterns & Practices チームでは、「[Transient Fault Handling Application Block (一時的な障害処理アプリケーション ブロック)](http://msdn.microsoft.com/library/hh680934.aspx)」を公開しています。これは、クラウドでの実行時によく発生する一時的なエラー状態をアプリケーション開発者が軽減する際に役立ちます。詳細については、「[Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (成功のための耐力と秘密: 一時的な障害処理アプリケーション ブロック)](http://msdn.microsoft.com/library/dn440719.aspx)」をご覧ください。
+The Microsoft Patterns & Practices team published the [Transient Fault Handling Application Block](http://msdn.microsoft.com/library/hh680934.aspx) to help application developers mitigate common transient fault conditions encountered when running in the cloud. For more information, see [Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block](http://msdn.microsoft.com/library/dn440719.aspx).
 
-次のコード サンプルでは、一時的エラーのライブラリを使用して一時的エラーを防ぎます。
+The code sample relies on the transient fault library to protect against transient faults. 
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
@@ -155,18 +156,18 @@ Microsoft Patterns & Practices チームでは、「[Transient Fault Handling Ap
           }
     });
 
-上記のコードの **SqlDatabaseUtils.SqlRetryPolicy** は **SqlDatabaseTransientErrorDetectionStrategy** として定義され、再試行回数が 10 回、再試行間の待機時間が 5 秒に設定されています。トランザクションを使用する場合は、一時的エラーの発生時に再試行のスコープがトランザクションの先頭に戻ることをご確認ください。
+**SqlDatabaseUtils.SqlRetryPolicy** in the code above is defined as a **SqlDatabaseTransientErrorDetectionStrategy** with a retry count of 10, and 5 seconds wait time between retries. If you are using transactions, make sure that your retry scope goes back to the beginning of the transaction in the case of a transient fault.
 
-## 制限事項
+## <a name="limitations"></a>Limitations
 
-このドキュメントで説明した方法には、いくつかの制限事項があります。
+The approaches outlined in this document entail a couple of limitations:
 
-* このドキュメントのサンプル コードには、複数のシャードにおけるスキーマの管理方法を示していません。
-* 要求を受け取った場合、要求によって提供されたシャーディング キーで識別される 1 つのシャード内にそのすべてのデータベース処理が含まれると見なします。ただし、この仮定が常に正しいとは限りません。たとえば、シャーディング キーを使用可能にできないことがあります。これに対処するために、[MultiShardQuery クラス](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx)がエラスティック データベース クライアント ライブラリに含まれています。このクラスは、複数のシャードに対してクエリを実行するための接続の抽象化を実装します。Dapper と組み合わせた MultiShardQuery の使用方法については、このドキュメントの範囲を超えているため省略します。
+* The sample code for this document does not demonstrate how to manage schema across shards.
+* Given a request, we assume that all its database processing is contained within a single shard as identified by the sharding key provided by the request. However, this assumption does not always hold, for example, when it is not possible to make a sharding key available. To address this, the elastic database client library includes the [MultiShardQuery class](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardexception.aspx). The class implements a connection abstraction for querying over several shards. Using MultiShardQuery in combination with Dapper is beyond the scope of this document.
 
-## まとめ
+## <a name="conclusion"></a>Conclusion
 
-Dapper と DapperExtensions を使用するアプリケーションは、Azure SQL Database のエラスティック データベース ツールのメリットを簡単に活用できます。このドキュメントで説明した手順に従って、エラスティック データベース クライアント ライブラリの [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) の呼び出しを使用するように新しい [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) オブジェクトを作成する操作と開く操作を変更することにより、これらのアプリケーションでツールの機能をデータ依存ルーティングに利用できるようになります。これにより、アプリケーションに対して必要な変更が、新しい接続を作成して開く場所だけに制限されます。
+Applications using Dapper and DapperExtensions can easily benefit from elastic database tools for Azure SQL Database. Through the steps outlined in this document, those applications can use the tool's capability for data dependent routing by changing the creation and opening of new [SqlConnection](http://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) objects to use the [OpenConnectionForKey](http://msdn.microsoft.com/library/azure/dn807226.aspx) call of the elastic database client library. This limits the application changes required to those places where new connections are created and opened. 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -174,4 +175,7 @@ Dapper と DapperExtensions を使用するアプリケーションは、Azure S
 [1]: ./media/sql-database-elastic-scale-working-with-dapper/dapperimage1.png
  
 
-<!---HONumber=AcomDC_0601_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

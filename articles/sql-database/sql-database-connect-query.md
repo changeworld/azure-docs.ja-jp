@@ -1,105 +1,113 @@
 <properties
-	pageTitle="C# クエリによる SQL Database への接続 | Microsoft Azure"
-	description="SQL データベースへのクエリおよび接続を実行するプログラムを C# で作成します。IP アドレス、接続文字列、セキュリティで保護されたログイン、および無料版の Visual Studio に関する情報。"
-	services="sql-database"
-	keywords="C# データベース クエリ, C# クエリ, データベースへの接続, SQL C#"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Connect to SQL Database with a C# query | Microsoft Azure"
+    description="Write a program in C# to query and connect to SQL database. Info about IP addresses, connection strings, secure login, and free Visual Studio."
+    services="sql-database"
+    keywords="c# database query, c# query, connect to database, SQL C#"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="get-started-article"
-	ms.date="08/17/2016"
-	ms.author="stevestein"/>
+    ms.service="sql-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="get-started-article"
+    ms.date="08/17/2016"
+    ms.author="stevestein"/>
 
 
 
-# Visual Studio で SQL Database に接続する
+
+# <a name="connect-to-a-sql-database-with-visual-studio"></a>Connect to a SQL Database with Visual Studio
 
 > [AZURE.SELECTOR]
 - [Visual Studio](sql-database-connect-query.md)
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
-Visual Studio で Azure SQL データベースに接続する方法について説明します。
+Learn how to connect to an Azure SQL database in Visual Studio. 
 
-## 前提条件
-
-
-Visual Studio を使用して SQL データベースに接続するには、以下のものが必要です。
+## <a name="prerequisites"></a>Prerequisites
 
 
-- 接続先の SQL データベース。この記事では、**AdventureWorks** サンプル データベースを使用します。AdventureWorks サンプル データベースを入手するには、[デモ データベースの作成](sql-database-get-started.md)に関するページを参照してください。
+To connect to a SQL database using Visual Studio, you need the following: 
 
 
-- Visual Studio 2013 Update 4 以降。現在 Microsoft では、Visual Studio Community を *無料* で提供しています。
- - [Visual Studio Community のダウンロード](http://www.visualstudio.com/products/visual-studio-community-vs)
- - [その他の無料版 Visual Studio の選択肢](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
+- A SQL database to connect to. This article uses the **AdventureWorks** sample database. To get the AdventureWorks sample database, see [Create the demo database](sql-database-get-started.md).
+
+
+- Visual Studio 2013 update 4 (or later). Microsoft now provides Visual Studio Community for *free*.
+ - [Visual Studio Community, download](http://www.visualstudio.com/products/visual-studio-community-vs)
+ - [More options for free Visual Studio](http://www.visualstudio.com/products/free-developer-offers-vs.aspx)
 
 
 
 
-## Azure ポータルから Visual Studio を開く
+## <a name="open-visual-studio-from-the-azure-portal"></a>Open Visual Studio from the Azure portal
 
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. Log in to the [Azure portal](https://portal.azure.com/).
 
-2. **[More Services (その他のサービス)]**、**[SQL データベース]** の順にクリックします。
-3. *AdventureWorks* データベースを見つけてクリックして、**AdventureWorks** データベース ブレードを開きます。
+2. Click **More Services** > **SQL databases**
+3. Open the **AdventureWorks** database blade by locating and clicking the *AdventureWorks* database.
 
-6. データベース ブレードの上部にある **[ツール]** ボタンをクリックします。
+6. Click the **Tools** button at the top of the database blade:
 
-	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/tools.png)
+    ![New query. Connect to SQL Database server: SQL Server Management Studio](./media/sql-database-connect-query/tools.png)
 
-7. **[Visual Studio で開く]** をクリックします (Visual Studio が必要な場合は、ダウンロード リンクをクリックしてください)。
+7. Click **Open in Visual Studio** (if you need Visual Studio, click the download link):
 
-	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/open-in-vs.png)
-
-
-8. Visual Studio が開かれます。**[サーバーへの接続]** ウィンドウは既に、ポータルで選択したサーバーとデータベースに接続するように設定されています(**[オプション]** をクリックし、接続が正しいデータベースに設定されていることを確認します)。 サーバー管理者パスワードを入力し、**[接続]** をクリックします。
+    ![New query. Connect to SQL Database server: SQL Server Management Studio](./media/sql-database-connect-query/open-in-vs.png)
 
 
-	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/connect.png)
+8. Visual Studio opens with the **Connect to Server** window already set to connect to the server and database you selected in the portal.  (Click **Options** to verify that the connection is set to the correct database.) Type your server admin password and click **Connect**.
 
 
-8. 自分のコンピューターの IP アドレス用にファイアウォール規則をセットアップしていない場合は、ここで "*接続できません*" というメッセージが表示されます。ファイアウォール規則を作成するには、「[Azure ポータルを使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md)」を参照してください。
+    ![New query. Connect to SQL Database server: SQL Server Management Studio](./media/sql-database-connect-query/connect.png)
 
 
-9. 正常に接続すると、データベースに接続した状態で、**[SQL Server オブジェクト エクスプローラー]** ウィンドウが開かれます。
-
-	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/sql-server-object-explorer.png)
+8. If you do not have a firewall rule set up for your computer's IP address, you get a *Cannot connect* message here. To create a firewall rule, see [Configure an Azure SQL Database server-level firewall rule](sql-database-configure-firewall-settings.md).
 
 
-## サンプル クエリの実行
+9. After successfully connecting, the **SQL Server Object Explorer** window opens with a connection to your database.
 
-これでデータベースに接続できたので、次の手順では単純なクエリを実行する方法を示します。
+    ![New query. Connect to SQL Database server: SQL Server Management Studio](./media/sql-database-connect-query/sql-server-object-explorer.png)
 
-2. データベースを右クリックし、**[新しいクエリ]** を選択します。
 
-	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query/new-query.png)
+## <a name="run-a-sample-query"></a>Run a sample query
 
-3. クエリ ウィンドウに、次のコードをコピーして貼り付けます。
+Now that we're connected to the database, the following steps show how to run a simple query:
 
-		SELECT
-		CustomerId
-		,Title
-		,FirstName
-		,LastName
-		,CompanyName
-		FROM SalesLT.Customer;
+2. Right-click the database and then select **New Query**.
 
-4. クエリを実行するには、**[実行]** ボタンをクリックします。
+    ![New query. Connect to SQL Database server: SQL Server Management Studio](./media/sql-database-connect-query/new-query.png)
 
-	![成功。Connect to SQL Database server: SVisual Studio](./media/sql-database-connect-query/run-query.png)
+3. In the query window, copy and paste the following code.
 
-## 次のステップ
+        SELECT
+        CustomerId
+        ,Title
+        ,FirstName
+        ,LastName
+        ,CompanyName
+        FROM SalesLT.Customer;
 
-- Visual Studio で SQL データベースを開くには、SQL Server Data Tools を使用します。詳細については、「[SQL Server Data Tools](https://msdn.microsoft.com/library/hh272686.aspx)」を参照してください。
-- コードを使用して SQL データベースに接続するには、「[.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md)」を参照してください。
+4. Click the **Execute** button to run the query:
 
-<!-------HONumber=AcomDC_0824_2016-->
+    ![Success. Connect to SQL Database server: SVisual Studio](./media/sql-database-connect-query/run-query.png)
+
+## <a name="next-steps"></a>Next steps
+
+- Opening SQL databases in Visual Studio uses SQL Server Data Tools. For more details, see [SQL Server Data Tools](https://msdn.microsoft.com/library/hh272686.aspx).
+- To connect to a SQL database using code, see [Connect to SQL Database by using .NET (C#)](sql-database-develop-dotnet-simple.md).
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

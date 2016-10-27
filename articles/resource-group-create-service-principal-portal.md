@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ポータルでサービス プリンシパルを作成する | Microsoft Azure"
-   description="Azure リソース マネージャーでロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しい Active Directory のアプリケーションとサービス プリンシパルを作成する方法について説明します。"
+   pageTitle="Create service principal in portal | Microsoft Azure"
+   description="Describes how to create a new Active Directory application and service principal that can be used with the role-based access control in Azure Resource Manager to manage access to resources."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,210 +16,218 @@
    ms.date="09/07/2016"
    ms.author="tomfitz"/>
 
-# リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
+
+# <a name="use-portal-to-create-active-directory-application-and-service-principal-that-can-access-resources"></a>Use portal to create Active Directory application and service principal that can access resources
 
 > [AZURE.SELECTOR]
 - [PowerShell](resource-group-authenticate-service-principal.md)
 - [Azure CLI](resource-group-authenticate-service-principal-cli.md)
-- [ポータル](resource-group-create-service-principal-portal.md)
+- [Portal](resource-group-create-service-principal-portal.md)
 
 
-アプリケーションでリソースにアクセスしたり変更を加えたりするには、Active Directory (AD) アプリケーションをセットアップして、そこに必要な権限を割り当てる必要があります。このトピックでは、それらの手順をポータルで行う方法について説明します。現時点では、クラシック ポータルを使用して新しい Active Directory アプリケーションを作成したうえで、Azure ポータルに切り替え、アプリケーションにロールを割り当てる必要があります。
+When you have an application that needs to access or modify resources, you must set up an Active Directory (AD) application and assign the required permissions to it. This topic shows you how to perform those steps through the portal. Currently, you must use the classic portal to create a new Active Directory application, and then switch to the Azure portal to assign a role to the application. 
 
-> [AZURE.NOTE] 特に証明書を認証に使用する場合に言えることですが、AD アプリケーションとサービス プリンシパルは、[PowerShell](resource-group-authenticate-service-principal.md) または [Azure CLI](resource-group-authenticate-service-principal-cli.md) の方が簡単に設定できる場合があります。このトピックでは、証明書の使用方法については説明していません。
+> [AZURE.NOTE] The steps in this topic only apply when using the **classic portal** to create the AD application. **If you use the Azure portal for creating the AD application, these steps will not succeed.** 
+>
+> You may find it easier to set up your AD application and service principal through [PowerShell](resource-group-authenticate-service-principal.md) or [Azure CLI](resource-group-authenticate-service-principal-cli.md), especially if you want to use a certificate for authentication. This topic does not show how to use a certificate.
 
-Active Directory の概念については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](./active-directory/active-directory-application-objects.md)」を参照してください。Active Directory 認証の詳細については、「[Azure AD の認証シナリオ](./active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
+For an explanation of Active Directory concepts, see [Application Objects and Service Principal Objects](./active-directory/active-directory-application-objects.md). For more information about Active Directory authentication, see [Authentication Scenarios for Azure AD](./active-directory/active-directory-authentication-scenarios.md).
 
-アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
+For detailed steps on integrating an application into Azure for managing resources, see [Developer's guide to authorization with the Azure Resource Manager API](resource-manager-api-authentication.md).
 
-## Active Directory アプリケーションを作成する
+## <a name="create-an-active-directory-application"></a>Create an Active Directory application
 
-1. [クラシック ポータル](https://manage.windowsazure.com/)で Azure アカウントにログインします。
+1. Log in to your Azure Account through the [classic portal](https://manage.windowsazure.com/). 
 
-2. サブスクリプションの既定の Active Directory を確認してください。アクセス権を付与できるのは、該当するサブスクリプションと同じディレクトリ内のアプリケーションのみです。**[設定]** を選択し、サブスクリプションに関連付けられているディレクトリの名前を探します。詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](./active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+2. Make sure you know the default Active Directory for your subscription. You can only grant access for applications in the same directory as your subscription. Select **Settings** and look for the directory name associated with your subscription.  For more information, see [How Azure subscriptions are associated with Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md).
    
-     ![既定のディレクトリの検索](./media/resource-group-create-service-principal-portal/show-default-directory.png)
+     ![find default directory](./media/resource-group-create-service-principal-portal/show-default-directory.png)
 
-2. 左側のペインで **[Active Directory]** を選択します。
+2. Select **Active Directory** from the left pane.
 
-     ![Active Directory の選択](./media/resource-group-create-service-principal-portal/active-directory.png)
+     ![select Active Directory](./media/resource-group-create-service-principal-portal/active-directory.png)
      
-3. アプリケーションの作成に使用する Active Directory を選択します。Active Directory が複数ある場合は、該当するサブスクリプションの既定のディレクトリにアプリケーションを作成します。
+3. Select the Active Directory that you want to use for creating the application. If you have more than one Active Directory, create the application in the default directory for your subscription.   
 
-     ![ディレクトリの選択](./media/resource-group-create-service-principal-portal/active-directory-details.png)
+     ![choose directory](./media/resource-group-create-service-principal-portal/active-directory-details.png)
      
-3. ディレクトリ内のアプリケーションを表示するには、**[アプリケーション]** をクリックします。
+3. To view the applications in your directory, select **Applications**.
 
-     ![アプリケーションの表示](./media/resource-group-create-service-principal-portal/view-applications.png)
+     ![view applications](./media/resource-group-create-service-principal-portal/view-applications.png)
 
-4. そのディレクトリにアプリケーションを作成したことがない場合、次の画像のように表示されます。**[アプリケーションの追加]** を選択します。
+4. If you haven't created an application in that directory before, you should see something similar to following image. Select **ADD AN APPLICATION**
 
-     ![アプリケーションの追加](./media/resource-group-create-service-principal-portal/create-application.png)
+     ![add application](./media/resource-group-create-service-principal-portal/create-application.png)
 
-     または下のペインの **[追加]** をクリックします。
+     Or, click **Add** in the bottom pane.
 
      ![add](./media/resource-group-create-service-principal-portal/add-icon.png)
 
-5. 作成するアプリケーションの種類を選択します。このチュートリアルでは、**[組織で開発中のアプリケーションを追加]** を選択します。
+5. Select the type of application you would like to create. For this tutorial, select **Add an application my organization is developing**. 
 
-     ![新規アプリケーション](./media/resource-group-create-service-principal-portal/what-do-you-want-to-do.png)
+     ![new application](./media/resource-group-create-service-principal-portal/what-do-you-want-to-do.png)
 
-6. アプリケーションの名前を入力し、作成するアプリケーションの種類を選択します。このチュートリアルでは、**[Web アプリケーションや Web API]** を作成し、[次へ] をクリックします。**[ネイティブ クライアント アプリケーション]** を選択した場合、以降の手順が実際の画面と一致しなくなります。
+6. Provide a name for the application and select the type of application you want to create. For this tutorial, create a **WEB APPLICATION AND/OR WEB API** and click the next button. If you select **NATIVE CLIENT APPLICATION**, the remaining steps of this article will not match your experience.
 
-     ![アプリケーションの名前指定](./media/resource-group-create-service-principal-portal/tell-us-about-your-application.png)
+     ![name application](./media/resource-group-create-service-principal-portal/tell-us-about-your-application.png)
 
-7. アプリのプロパティを入力します。**[サインオン URL]** には、アプリケーションについて説明する Web サイトの URI を指定します。Web サイトの存在は検証されません。**[アプリケーション ID/URI]** には、アプリケーションを識別する URI を指定します。
+7. Fill in the properties for your app. For **SIGN-ON URL**, provide the URI to a web site that describes your application. The existence of the web site is not validated. For **APP ID URI**, provide the URI that identifies your application.
 
-     ![アプリケーションのプロパティ](./media/resource-group-create-service-principal-portal/app-properties.png)
+     ![application properties](./media/resource-group-create-service-principal-portal/app-properties.png)
 
-これでアプリケーションが作成されます。
+You have created your application.
 
-## クライアント ID と認証キーを取得する
+## <a name="get-client-id-and-authentication-key"></a>Get client id and authentication key
 
-プログラムによってログインするときは、アプリケーションの ID が必要です。アプリケーションがその独自の資格情報で動作する場合は、さらに認証キーが必要となります。
+When programmatically logging in, you need the id for your application. If the application runs under its own credentials, you also need an authentication key.
 
-1. **[構成]** タブを選択し、アプリケーションのパスワードを構成します。
+1. Select the **Configure** tab to configure your application's password.
 
-     ![アプリケーションの構成](./media/resource-group-create-service-principal-portal/application-configure.png)
+     ![configure application](./media/resource-group-create-service-principal-portal/application-configure.png)
 
-2. **[クライアント ID]** の値をコピーします。
+2. Copy the **CLIENT ID**.
   
-     ![クライアント ID](./media/resource-group-create-service-principal-portal/client-id.png)
+     ![client id](./media/resource-group-create-service-principal-portal/client-id.png)
 
-3. アプリケーションがその独自の資格情報で動作する場合は、下へスクロールして **[キー]** セクションを表示し、パスワードを有効にする期間を選択します。
+3. If the application runs under its own credentials, scroll down to the **Keys** section and select how long you would like your password to be valid.
 
-     ![キー](./media/resource-group-create-service-principal-portal/create-key.png)
+     ![keys](./media/resource-group-create-service-principal-portal/create-key.png)
 
-4. **[保存]** を選択してキーを作成します。
+4. Select **Save** to create your key.
 
-     ![保存](./media/resource-group-create-service-principal-portal/save-icon.png)
+     ![save](./media/resource-group-create-service-principal-portal/save-icon.png)
 
-     保存されたキーが表示され、それをコピーすることができます。このキーは後で取得できないため、ここでコピーしてください。
+     The saved key is displayed and you can copy it. You are not able to retrieve the key later so copy it now.
 
-     ![保存されたキー](./media/resource-group-create-service-principal-portal/save-key.png)
+     ![saved key](./media/resource-group-create-service-principal-portal/save-key.png)
 
-## テナント ID を取得する
+## <a name="get-tenant-id"></a>Get tenant id
 
-プログラムによってログインするときは、認証要求と共にテナント ID を渡す必要があります。Web Apps と Web API Apps の場合、テナント ID を取得するには、画面の下部にある **[エンドポイントの表示]** を選択して、次の画像のように ID を取得します。
+When programmatically logging in, you need to pass the tenant id with your authentication request. For Web Apps and Web API Apps, you can retrieve the tenant id by selecting **View endpoints** at the bottom of the screen and retrieving the id as shown in the following image.  
 
-   ![テナント ID](./media/resource-group-create-service-principal-portal/save-tenant.png)
+   ![tenant id](./media/resource-group-create-service-principal-portal/save-tenant.png)
 
-次の PowerShell を使ってテナント ID を取得することもできます。
+You can also retrieve the tenant id through PowerShell:
 
     Get-AzureRmSubscription
 
-または、次の Azure CLI を使います。
+Or, Azure CLI:
 
     azure account show --json
 
-## 委任されたアクセス許可を設定する
+## <a name="set-delegated-permissions"></a>Set delegated permissions
 
-アプリケーションから、サインイン済みユーザーの代理でリソースにアクセスする場合、そのアプリケーションに対して、他のアプリケーションにアクセスできる委任されたアクセス許可を付与する必要があります。このアクセス許可は、**[構成]** タブの **[他のアプリケーションに対するアクセス許可]** で付与します。Azure Active Directory の既定では、委任されたアクセス許可は有効です。この委任されたアクセス許可は変更しないでください。
+If your application accesses resources on behalf of a signed-in user, you must grant your application the delegated permission to access other applications. You grant this access in the **permissions to other applications** section of the **Configure** tab. By default, a delegated permission is already enabled for the Azure Active Directory. Leave this delegated permission unchanged.
 
-1. **[アプリケーションの追加]** をクリックします。
+1. Select **Add application**.
 
-2. リストから **[Microsoft Azure サービス管理 API]** を選択します。次に、完了アイコンを選択します。
+2. From the list, select the **Windows Azure Service Management API**. Then, select the complete icon.
 
-      ![アプリケーションの選択](./media/resource-group-create-service-principal-portal/select-app.png)
+      ![select app](./media/resource-group-create-service-principal-portal/select-app.png)
 
-3. 委任されたアクセス許可のドロップダウン リストから **[Access Azure Service Management as organization (組織として Azure サービス管理にアクセスする)]** を選択します。
+3. In the dropdown list for delegated permissions, select **Access Azure Service Management as organization**.
 
-      ![アクセス許可の選択](./media/resource-group-create-service-principal-portal/select-permissions.png)
+      ![select permission](./media/resource-group-create-service-principal-portal/select-permissions.png)
 
-4. 変更を保存します。
+4. Save the change.
 
-## アプリケーションをロールに割り当てる
+## <a name="assign-application-to-role"></a>Assign application to role
 
-アプリケーションがその独自の資格情報で動作している場合は、アプリケーションをロールに割り当てる必要があります。アプリケーションにとって適切なアクセス許可を表すのはどのロールであるかを判断します。利用可能なロールについては、「[RBAC: 組み込みのロール](./active-directory/role-based-access-built-in-roles.md)」を参照してください。
+If your application is running under its own credentials, you must assign the application to a role. Decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles](./active-directory/role-based-access-built-in-roles.md). 
 
-アプリケーションにロールを割り当てるには適切なアクセス許可が必要です。具体的には、[所有者](./active-directory/role-based-access-built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](./active-directory/role-based-access-built-in-roles.md#user-access-administrator)ロールを通じて付与される `Microsoft.Authorization/*/Write` アクセス権が必要です。共同作成者ロールには適切なアクセス権がありません。
+To assign a role to an application, you must have the correct permissions. Specifically, you must have `Microsoft.Authorization/*/Write` access that is granted through the [Owner](./active-directory/role-based-access-built-in-roles.md#owner) role or [User Access Administrator](./active-directory/role-based-access-built-in-roles.md#user-access-administrator) role. The Contributor role does not have the correct access.
 
-スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。アクセス許可は、スコープの下位レベルに継承されます。たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます。
+You can set the scope at the level of the subscription, resource group, or resource. Permissions are inherited to lower levels of scope. For example, adding an application to the Reader role for a resource group means it can read the resource group and any resources it contains.
 
-1. アプリケーションをロールに割り当てるには、クラシック ポータルから [Azure ポータル](https://portal.azure.com)に切り替えます。
+1. To assign the application to a role, switch from the classic portal to the [Azure portal](https://portal.azure.com).
 
-1. サービス プリンシパルをロールに割り当てられるように、アクセス許可を確認します。アカウントの **[アクセス許可]** を選択します。
+1. Check your permissions to make sure you can assign the service principal to a role. Select **My permissions** for your account.
 
     ![select my permissions](./media/resource-group-create-service-principal-portal/my-permissions.png)
 
-1. アカウントの割り当て済みアクセス許可を表示します。既に説明したとおり、所有者ロールとユーザー アクセス管理者ロールのいずれかに属している必要があります。または、Microsoft.Authorization への書き込みアクセス権が付与される、カスタマイズされたロールが必要です。次の画像は、サブスクリプションの共同作成者ロールに割り当てられたアカウントを示します。これは、アプリケーションをロールに割り当てるうえで十分なアクセス許可ではありません。
+1. View the assigned permissions for your account. As noted previously, you must belong to the Owner or User Access Administrator roles, or have a customized role that grants write access for Microsoft.Authorization. The following image shows an account that is assigned to the Contributor role for the subscription, which is not adequate permissions to assign an application to a role.
 
     ![show my permissions](./media/resource-group-create-service-principal-portal/show-permissions.png)
 
-     アプリケーションにアクセス権を付与するための適切なアクセス許可がない場合、ユーザー アクセス管理者ロールに自身を追加するようにサブスクリプション管理者に依頼するか、アプリケーションにアクセス権を付与するように管理者に依頼する必要があります。
+     If you do not have the correct permissions to grant access to an application, you must either request that your subscription administrator adds you to the User Access Administrator role, or request that an administrator grants access to the application.
 
-1. アプリケーションを割り当てるスコープのレベルに移動します。サブスクリプションのスコープでロールを割り当てるには、**[サブスクリプション]** を選択します。
+1. Navigate to the level of scope you wish to assign the application to. To assign a role at the subscription scope, select **Subscriptions**.
 
-     ![サブスクリプションを選択する](./media/resource-group-create-service-principal-portal/select-subscription.png)
+     ![select subscription](./media/resource-group-create-service-principal-portal/select-subscription.png)
 
-     アプリケーションを割り当てる特定のサブスクリプションを選択します。
+     Select the particular subscription to assign the application to.
 
-     ![割り当てのためのサブスクリプションの選択](./media/resource-group-create-service-principal-portal/select-one-subscription.png)
+     ![select subscription for assignment](./media/resource-group-create-service-principal-portal/select-one-subscription.png)
 
-     右上にある **[アクセス]** アイコンを選択します。
+     Select the **Access** icon in the upper-right corner.
 
-     ![アクセスの選択](./media/resource-group-create-service-principal-portal/select-access.png)
+     ![select access](./media/resource-group-create-service-principal-portal/select-access.png)
      
-     または、リソース グループのスコープでロールを割り当てるには、リソース グループに移動します。リソース グループのブレードで **[アクセス制御]** を選択します。
+     Or, to assign a role at resource group scope, navigate to a resource group. From the resource group blade, select **Access control**.
 
-     ![ユーザーの選択](./media/resource-group-create-service-principal-portal/select-users.png)
+     ![select users](./media/resource-group-create-service-principal-portal/select-users.png)
 
-     以降の手順は、どちらのスコープでも同じです。
+     The following steps are the same for any scope.
 
-2. **[追加]** を選択します。
+2. Select **Add**.
 
      ![select add](./media/resource-group-create-service-principal-portal/select-add.png)
 
-3. **[閲覧者]** ロール (または、アプリケーションを割り当てる任意のロール) を選択します。
+3. Select the **Reader** role (or whatever role you wish to assign the application to).
 
      ![select role](./media/resource-group-create-service-principal-portal/select-role.png)
 
-4. ロールに追加できるユーザーの一覧が初めて表示される場合、アプリケーションは表示されません。グループとユーザーのみが表示されます。
+4. When you first see the list of users you can add to the role, you will not see applications. You will only see group and users.
 
      ![show users](./media/resource-group-create-service-principal-portal/show-users.png)
 
-5. アプリケーションを見つけるには、検索する必要があります。アプリケーションの名前を入力し始めると、使用可能なオプションの一覧が変更されます。アプリケーションが一覧に表示されたら、選択します。
+5. To find your application, you must search for it. Start typing the name of your application, and the list of available options will change. Select your application when you see it in the list.
 
      ![assign to role](./media/resource-group-create-service-principal-portal/assign-to-role.png)
 
-6. **[OK]** を選択して、ロールの割り当てを完了します。リソース グループのロールに割り当てられたユーザーの一覧にアプリケーションが表示されるようになりました。
+6. Select **Okay** to finish assigning the role. You should now see your application in the list of uses assigned to a role for the resource group.
 
 
-ポータルを使用してユーザーやアプリケーションをロールに割り当てる方法の詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](role-based-access-control-configure.md#manage-access-using-the-azure-management-portal)」を参照してください。
+For more information about assigning users and applications to roles through the portal, see [Use role assignments to manage access to your Azure subscription resources](role-based-access-control-configure.md#manage-access-using-the-azure-management-portal).
 
-## サンプル アプリケーション
+## <a name="sample-applications"></a>Sample applications
 
-サービス プリンシパルとしてログインする方法については、以下のサンプル アプリケーションで紹介されています。
+The following sample applications show how to log in as the service principal.
 
 **.NET**
 
-- [.NET からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
-- [Azure のリソースとリソース グループを .NET で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template with .NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
+- [Manage Azure resources and resource groups with .NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 
 **Java**
 
-- [リソースの概要 - Java で Azure Resource Manager テンプレートをデプロイする](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
-- [リソースの概要 - Java でリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group//)
+- [Getting Started with Resources - Deploy Using Azure Resource Manager Template - in Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
+- [Getting Started with Resources - Manage Resource Group - in Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group//)
 
 **Python**
 
-- [Python からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
-- [Azure のリソースとリソース グループを Python で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template in Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
+- [Managing Azure Resource and Resource Groups with Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
 
-**Node.JS**
+**Node.js**
 
-- [Node.js からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
-- [Azure のリソースとリソース グループを Node.js で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template in Node.js](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
+- [Manage Azure resources and resource groups with Node.js](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
 
 **Ruby**
 
-- [Ruby からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
-- [Azure のリソースとリソース グループを Ruby で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template in Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
+- [Managing Azure Resource and Resource Groups with Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-- セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
-- これらの手順のビデオ デモについては、[Azure Active Directory を使用した Azure リソースのプログラムによる管理の有効化](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory)に関するビデオを参照してください。
+- To learn about specifying security policies, see [Azure Role-based Access Control](./active-directory/role-based-access-control-configure.md).  
+- For a video demonstration of these steps, see [Enabling Programmatic Management of an Azure Resource with Azure Active Directory](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Enabling-Programmatic-Management-of-an-Azure-Resource-with-Azure-Active-Directory).
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

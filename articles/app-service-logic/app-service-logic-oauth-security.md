@@ -1,47 +1,52 @@
 <properties
-	pageTitle="SaaS コネクタと API Apps での OAUTH セキュリティ | Azure"
-	description="Azure App Service のコネクタと API Apps における OAUTH セキュリティのほか、マイクロサービス アーキテクチャ、SaaS について説明します。"
-	services="logic-apps"
-	documentationCenter=""
-	authors="MandiOhlinger"
-	manager="dwrede"
-	editor="cgronlun"/>
+    pageTitle="OAUTH Security in SaaS Connectors and API Apps | Azure"
+    description="Read about OAUTH security in the Connectors and API Apps in Azure App Service; microservices architecture; saas"
+    services="logic-apps"
+    documentationCenter=""
+    authors="MandiOhlinger"
+    manager="dwrede"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="logic-apps"
-	ms.workload="integration"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/23/2016"
-	ms.author="mandia"/>
+    ms.service="logic-apps"
+    ms.workload="integration"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/23/2016"
+    ms.author="mandia"/>
 
 
-# SaaS コネクタでの OAUTH セキュリティについて
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
+# <a name="learn-about-oauth-security-in-saas-connectors"></a>Learn about OAUTH Security in SaaS connectors
 
-Facebook、Twitter、DropBox など、サービスとしてのソフトウェア (SaaS) の多くは、ユーザーが OAUTH プロトコルを使用して認証する必要があります。Logic Apps からこれらの SaaS コネクタを使用する場合、Logic Apps デザイナーで [承認] をクリックするだけという、シンプルなユーザー エクスペリエンスが用意されています。**承認**を実行する場合、まだサインインしていない場合はサインインし、SaaS のサービスへの接続に同意するよう求められます。同意して承認すると、Logic Apps からこれらの SaaS サービスにアクセスできます。
+>[AZURE.NOTE] This version of the article applies to logic apps 2014-12-01-preview schema version.
 
-## 独自の SaaS アプリの作成
-これらの SaaS サービスで既にアプリケーションを作成して登録しているために、このようなシンプルなエクスペリエンスが可能になります。場合によっては、独自のアプリケーションを登録し、使用することがあります。たとえば、カスタム アプリケーションで、これらの SaaS コネクタを使用する場合に必要となります。この例では DropBox コネクタを使用しますが、そのプロセスは、OAUTH に依存するすべてのコネクタで同じです。
+Many of the Software as a Service (SaaS) connectors like Facebook, Twitter, DropBox, and so on require users to authenticate using the OAUTH protocol.  When you use these SaaS connectors from Logic Apps, we provide a simplified user experience where you click "Authorize" in the Logic Apps designer. When you **Authorize**, you are asked to sign in (if not already) and provide consent to connect to the SaaS service on your behalf. After you do provide consent and authorize, your Logic Apps can then access these SaaS services.
 
-Logic Apps の場合でも、既定のアプリケーションを使用する代わりに、独自のアプリケーションを使用できます。[承認] ボタンを使用して接続に失敗した場合、独自のアプリケーションを作成してみてください。Twitter コネクタの場合の手順を次に示します。
+## <a name="create-your-own-saas-app"></a>Create your own SaaS app
+This simplified experience is possible because we previously created and registered our application in these SaaS services.  In certain cases, you may want to register and use your own application.  This is necessary, for instance, when you want to use these SaaS connectors in your custom applications. This example uses the DropBox connector, but the process is the same for all connectors that rely on OAUTH.
 
-1. Azure プレビュー ポータルで、Twitter コネクタを開きます。**[参照]**、**[API Apps]** の順に移動します。[Twitter コネクタ] を選択します。![][1]
+Even in the context of Logic Apps, you can use your own application instead of using the default application that we provide. If the "Authorize" button fails to connect, you can try creating your own app. The following lists these steps for the Twitter connector:
 
-2. **[設定]**、**[認証]** の順に選択します。![][2]
+1. Open your Twitter connector in the Azure preview portal. Go to **Browse** > **API Apps**. Select your Twitter connector:  
+    ![][1]
 
-3. **[リダイレクト URI]** の値をコピーします。![][3]
+2. Select **Settings** > **Authentication**:  
+    ![][2]
 
-4. [[Twitter]](http://apps.twitter.com)、**[新しいアプリの作成]** の順に移動します。**[コールバック URL]** プロパティで、Twitter コネクタからコピーした **[リダイレクト URI]** の値を貼り付けます。![][4]
-5. 独自の Twitter アプリを作成する場合は、**[キーとアクセス トークン]** を選択します。これらの値をコピーします。
-6. Twitter コネクタの認証設定で、**[クライアント ID]** と **[クライアント シークレット]** プロパティにこれらの値を貼り付けます。![][5]
-7. コネクタの設定を保存します。
+3. Copy the **Redirect URI** value:  
+    ![][3]
 
-これで、Logic Apps からコネクタを使用できるようになります。Logic Apps からこのコネクタを使用する場合、既定のアプリケーションではなく、独自のアプリケーションを使用します。
+4. Go to [Twitter](http://apps.twitter.com) and **Create a New App**. In the **Callback URL** property, paste the **Redirect URI** value copied from  your Twitter connector:  ![][4]  
+5. When your Twitter app is created, select **Key and Access Tokens**. Copy these values.
+6. In your Twitter connector authentication settings, paste these values in the **Client ID** and **Client Secret** properties:   
+    ![][5]  
+7. Save your connector settings.  
 
-> [AZURE.NOTE] アプリを既に承認している場合は、アプリを再度承認しなければならない場合があります。
+Now, you should be able to use your connector from Logic Apps. When you use this connector from Logic Apps, it uses your application instead of the default application.  
+
+> [AZURE.NOTE] If you have authorized an app previously, you may have to reauthorize the app.
 
 
 <!--Image references-->
@@ -51,4 +56,8 @@ Logic Apps の場合でも、既定のアプリケーションを使用する代
 [4]: ./media/app-service-logic-oauth-security/TwitterApp.png
 [5]: ./media/app-service-logic-oauth-security/TwitterKeys.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

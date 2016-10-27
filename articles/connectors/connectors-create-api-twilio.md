@@ -1,6 +1,6 @@
 <properties
-pageTitle="ロジック アプリに Twilio コネクタを追加する | Microsoft Azure"
-description="Twilio コネクタと REST API パラメーターの概要"
+pageTitle="Add the Twilio Connector in your Logic apps| Microsoft Azure"
+description="Overview of the Twilio Connector with REST API parameters"
 services=""    
 documentationCenter=""     
 authors="msftman"    
@@ -17,235 +17,243 @@ ms.workload="integration"
 ms.date="09/19/2016"
 ms.author="mandia"/>
 
-# Twilio コネクタの使用
 
-Twilio に接続し、グローバル SMS、MMS、IP メッセージを送受信します。
+# <a name="get-started-with-the-twilio-connector"></a>Get started with the Twilio connector
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+Connect to Twilio to send and receive global SMS, MMS, and IP messages.
 
-Twilio では次のことができます。
+>[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version.
 
-- Twilio から取得したデータに基づいてビジネス フローを構築します。
-- メッセージを取得したり、メッセージを一覧表示したりするアクションを使用します。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、新しい Twilio メッセージを取得したとき、そのメッセージを Service Bus ワークフローで利用できます。
+With Twilio, you can:
 
-ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+- Build your business flow based on the data you get from Twilio. 
+- Use actions that get a message, list messages, and more. These actions get a response, and then make the output available for other actions. For example, when  you get a new Twilio message, you can take this message and use it a Service Bus workflow. 
 
-## トリガーとアクション
-Twilio コネクタには、次のアクションがあります。トリガーはありません。
+To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-| トリガー | アクション|
+## <a name="triggers-and-actions"></a>Triggers and actions
+The Twilio Connector includes the following actions. There are no triggers. 
+
+| Triggers | Actions|
 | --- | --- |
-|なし| <ul><li>メッセージを取得する</li><li>メッセージを一覧表示する</li><li>メッセージを送信する</li></ul>|
+|None| <ul><li>Get Message</li><li>List Messages</li><li>Send Message</li></ul>|
 
-すべてのコネクタは、JSON および XML 形式のデータに対応します。
+All connectors support data in JSON and XML formats. 
 
-## Twilio への接続を作成する
-このコネクタをロジック アプリに追加するときに、次の Twilio 値を入力します。
+## <a name="create-a-connection-to-twilio"></a>Create a connection to Twilio
+When you add this Connector to your logic apps, enter the following Twilio values:
 
-|プロパティ| 必須|Description|
+|Property| Required|Description|
 | ---|---|---|
-|Account ID|はい|Twilio アカウント ID を入力します。|
-|Access Token|はい|Twilio アカウント トークンを入力します。|
+|Account ID|Yes|Enter your Twilio account ID|
+|Access Token|Yes|Enter your Twilio access token|
 
->[AZURE.INCLUDE [Twilio への接続を作成する手順](../../includes/connectors-create-api-twilio.md)]
+>[AZURE.INCLUDE [Steps to create a connection to Twilio](../../includes/connectors-create-api-twilio.md)] 
 
-アクセス トークンがない場合は、[Twilio](https://www.twilio.com/docs/api/ip-messaging/guides/identity) を参照してアクセス トークンを作成してください。
+If you don't have one, see [Twilio](https://www.twilio.com/docs/api/ip-messaging/guides/identity) to create an access token.
 
 
->[AZURE.TIP] 他のロジック アプリでこの同じ Twilio 接続を使用できます。
+>[AZURE.TIP] You can use this same Twilio connection in other Logic apps.
 
-## Swagger REST API リファレンス
-#### このドキュメントの対象バージョン: 1.0
+## <a name="swagger-rest-api-reference"></a>Swagger REST API reference
+#### <a name="this-documentation-is-for-version:-1.0"></a>This documentation is for version: 1.0
 
-### メッセージを取得する
-入力したメッセージ ID で指定された 1 つのメッセージを返します。```GET: /Messages/{MessageId}.json```
+### <a name="get-message"></a>Get Message
+Returns a single message specified by the provided Message ID.  
+```GET: /Messages/{MessageId}.json```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|MessageId|string|○|path|なし|メッセージ ID|
+|MessageId|string|yes|path|none|Message ID|
 
-### 応答
-|Name|説明|
+### <a name="response"></a>Response
+|Name|Description|
 |---|---|
-|200|操作に成功しました|
-|400|正しくない要求|
-|404|メッセージが見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|default|操作に失敗しました。|
+|200|Operation successful|
+|400|Bad Request|
+|404|Message not found|
+|500|Internal Server Error. Unknown error occurred|
+|default|Operation Failed.|
 
 
-### メッセージを一覧表示する
-自分のアカウントに関連付けられているメッセージの一覧を返します。```GET: /Messages.json```
+### <a name="list-messages"></a>List Messages
+Returns a list of messages associated with your account.  
+```GET: /Messages.json```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|To|string|×|query|なし|宛先の電話番号|
-|From|string|×|query|なし|送信元の電話番号|
-|DateSent|string|×|query|なし|この YYYY-MM-DD 日付 (GMT 形式) で送信されたメッセージのみを表示します。例: DateSent=2009-07-06。不等号も指定できます。たとえば、ある日付の真夜中以前に送信されたメッセージの場合は「DateSent<=YYYY-MM-DD」と、ある日付の真夜中以後に送信されたメッセージの場合は「DateSent>=YYYY-MM-DD」と指定できます。|
-|PageSize|integer|×|query|50|各リスト ページで返されるリソースの数。既定は 50 です。|
-|ページ|integer|×|query|0|ページ番号。既定値は 0 です。|
+|To|string|no|query|none|To phone number|
+|From|string|no|query|none|From phone number|
+|DateSent|string|no|query|none|Only show messages sent on this date (in GMT format), given as YYYY-MM-DD. Example: DateSent=2009-07-06. You can also specify inequality, such as DateSent<=YYYY-MM-DD for messages that were sent on or before midnight on a date, and DateSent>=YYYY-MM-DD for messages sent on or after midnight on a date.|
+|PageSize|integer|no|query|50|How many resources to return in each list page. Default is 50.|
+|Page|integer|no|query|0|Page number. Default is 0.|
 
-### 応答
-|Name|説明|
+### <a name="response"></a>Response
+|Name|Description|
 |---|---|
-|200|操作に成功しました|
-|400|正しくない要求|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|default|操作に失敗しました。|
+|200|Operation successful|
+|400|Bad Request|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
 
-### メッセージを送信する
-携帯電話番号に新しいメッセージを送信します。```POST: /Messages.json```
+### <a name="send-message"></a>Send Message
+Send a new message to a mobile number.  
+```POST: /Messages.json```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|sendMessageRequest| |○|body|なし|送信するメッセージ|
+|sendMessageRequest| |yes|body|none|Message To Send|
 
-### 応答
-|Name|説明|
+### <a name="response"></a>Response
+|Name|Description|
 |---|---|
-|200|操作に成功しました|
-|400|正しくない要求|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|default|操作に失敗しました。|
+|200|Operation successful|
+|400|Bad Request|
+|500|Internal Server Error. Unknown error occurred|
+|default|Operation Failed.|
 
 
-## オブジェクト定義
+## <a name="object-definitions"></a>Object definitions
 
-#### SendMessageRequest: メッセージ送信操作の要求モデル
+#### <a name="sendmessagerequest:-request-model-for-send-message-operation"></a>SendMessageRequest: Request model for Send Message operation
 
-|プロパティ名 | データ型 | 必須|
+|Property Name | Data Type | Required|
 |---|---|---|
-|from|string|○|
-|to|string|○|
-|body|string|○|
-|media\_url|array|×|
-|status\_callback|string|×|
-|messaging\_service\_sid|string|×|
-|application\_sid|string|×|
-|max\_price|string|×|
+|from|string|yes|
+|to|string|yes|
+|body|string|yes|
+|media_url|array|no|
+|status_callback|string|no|
+|messaging_service_sid|string|no|
+|application_sid|string|no|
+|max_price|string|no|
 
 
-#### Message: メッセージのモデル
+#### <a name="message:-model-for-message"></a>Message: Model for Message
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|body|string|×|
-|from|string|×|
-|to|string|×|
-|status|string|×|
-|sid|string|×|
-|account\_sid|string|×|
-|api\_version|string|×|
-|num\_segments|string|×|
-|num\_media|string|×|
-|date\_created|string|×|
-|date\_sent|string|×|
-|date\_updated|string|×|
-|direction|string|×|
-|error\_code|string|×|
-|error\_message|string|×|
-|price|string|×|
-|price\_unit|string|×|
-|uri|string|×|
-|subresource\_uris|array|×|
-|messaging\_service\_sid|string|×|
+|body|string|no|
+|from|string|no|
+|to|string|no|
+|status|string|no|
+|sid|string|no|
+|account_sid|string|no|
+|api_version|string|no|
+|num_segments|string|no|
+|num_media|string|no|
+|date_created|string|no|
+|date_sent|string|no|
+|date_updated|string|no|
+|direction|string|no|
+|error_code|string|no|
+|error_message|string|no|
+|price|string|no|
+|price_unit|string|no|
+|uri|string|no|
+|subresource_uris|array|no|
+|messaging_service_sid|string|no|
 
-#### MessageList: メッセージの一覧表示操作の応答モデル
+#### <a name="messagelist:-response-model-for-list-messages-operation"></a>MessageList: Response model for List Messages operation
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|messages|array|×|
-|page|integer|×|
-|page\_size|integer|×|
-|num\_pages|integer|×|
-|uri|string|×|
-|first\_page\_uri|string|×|
-|next\_page\_uri|string|×|
-|total|integer|×|
-|previous\_page\_uri|string|×|
+|messages|array|no|
+|page|integer|no|
+|page_size|integer|no|
+|num_pages|integer|no|
+|uri|string|no|
+|first_page_uri|string|no|
+|next_page_uri|string|no|
+|total|integer|no|
+|previous_page_uri|string|no|
 
-#### IncomingPhoneNumberList: メッセージの一覧表示操作の応答モデル
+#### <a name="incomingphonenumberlist:-response-model-for-list-messages-operation"></a>IncomingPhoneNumberList: Response model for List Messages operation
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|incoming\_phone\_numbers|array|×|
-|page|integer|×|
-|page\_size|integer|×|
-|num\_pages|integer|×|
-|uri|string|×|
-|first\_page\_uri|string|×|
-|next\_page\_uri|string|×|
+|incoming_phone_numbers|array|no|
+|page|integer|no|
+|page_size|integer|no|
+|num_pages|integer|no|
+|uri|string|no|
+|first_page_uri|string|no|
+|next_page_uri|string|no|
 
 
-#### AddIncomingPhoneNumberRequest: 着信番号追加操作の要求モデル
+#### <a name="addincomingphonenumberrequest:-request-model-for-add-incoming-number-operation"></a>AddIncomingPhoneNumberRequest: Request model for Add Incoming Number operation
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|PhoneNumber|string|○|
-|AreaCode|string|×|
-|FriendlyName|string|×|
+|PhoneNumber|string|yes|
+|AreaCode|string|no|
+|FriendlyName|string|no|
 
 
-#### IncomingPhoneNumber: 着信電話番号
+#### <a name="incomingphonenumber:-incoming-phone-number"></a>IncomingPhoneNumber: Incoming Phone Number
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|phone\_number|string|×|
-|friendly\_name|string|×|
-|sid|string|×|
-|account\_sid|string|×|
-|date\_created|string|×|
-|date\_updated|string|×|
-|capabilities|未定義|×|
-|status\_callback|string|×|
-|status\_callback\_method|string|×|
-|api\_version|string|×|
+|phone_number|string|no|
+|friendly_name|string|no|
+|sid|string|no|
+|account_sid|string|no|
+|date_created|string|no|
+|date_updated|string|no|
+|capabilities|not defined|no|
+|status_callback|string|no|
+|status_callback_method|string|no|
+|api_version|string|no|
 
 
-#### Capabilities: 電話番号機能
+#### <a name="capabilities:-phone-number-capabilities"></a>Capabilities: Phone Number Capabilities
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|mms|boolean|×|
-|sms|boolean|×|
-|voice|boolean|×|
+|mms|boolean|no|
+|sms|boolean|no|
+|voice|boolean|no|
 
-#### AvailablePhoneNumbers: 利用可能な電話番号
+#### <a name="availablephonenumbers:-available-phone-numbers"></a>AvailablePhoneNumbers: Available Phone Numbers
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|phone\_number|string|×|
-|friendly\_name|string|×|
-|lata|string|×|
-|latitude|string|×|
-|longitude|string|×|
-|postal\_code|string|×|
-|rate\_center|string|×|
-|region|string|×|
-|MMS|boolean|×|
-|SMS|boolean|×|
-|voice|boolean|×|
+|phone_number|string|no|
+|friendly_name|string|no|
+|lata|string|no|
+|latitude|string|no|
+|longitude|string|no|
+|postal_code|string|no|
+|rate_center|string|no|
+|region|string|no|
+|MMS|boolean|no|
+|SMS|boolean|no|
+|voice|boolean|no|
 
 
-#### UsageRecords: 使用状況レコード クラス
+#### <a name="usagerecords:-usage-records-class"></a>UsageRecords: Usage Records class
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|カテゴリ|string|×|
-|usage|string|×|
-|usage\_unit|string|×|
-|description|string|×|
-|price|number|×|
-|price\_unit|string|×|
-|count|string|×|
-|count\_unit|string|×|
-|start\_date|string|×|
-|end\_date|string|×|
+|category|string|no|
+|usage|string|no|
+|usage_unit|string|no|
+|description|string|no|
+|price|number|no|
+|price_unit|string|no|
+|count|string|no|
+|count_unit|string|no|
+|start_date|string|no|
+|end_date|string|no|
 
 
-## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

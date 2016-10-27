@@ -1,263 +1,264 @@
 <properties
-	pageTitle="チュートリアル: Azure Active Directory と Aravo の統合 | Microsoft Azure"
-	description="Azure Active Directory と Aravo の間でシングル サインオンを構成する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with Aravo | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and Aravo."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/26/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/14/2016"
+    ms.author="jeedes"/>
 
 
-# チュートリアル: Azure Active Directory と Aravo の統合
 
-このチュートリアルの目的は、Aravo と Azure Active Directory (Azure AD) を統合する方法を説明することです。
+# <a name="tutorial:-azure-active-directory-integration-with-aravo"></a>Tutorial: Azure Active Directory integration with Aravo
 
-Aravo と Azure AD の統合には、次の利点があります。
+The objective of this tutorial is to show you how to integrate Aravo with Azure Active Directory (Azure AD).
 
-- Aravo にアクセスできる Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Aravo にサインオン (シングル サインオン) できるようにすることが可能です。
-- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+Integrating Aravo with Azure AD provides you with the following benefits:
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+- You can control in Azure AD who has access to Aravo
+- You can enable your users to automatically get signed-on to Aravo (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## 前提条件
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Aravo と Azure AD の統合を構成するには、次のものが必要です。
+## <a name="prerequisites"></a>Prerequisites
 
-- Azure AD サブスクリプション
-- Aravo でのシングル サインオンが有効なサブスクリプション
+To configure Azure AD integration with Aravo, you need the following items:
 
+- An Azure AD subscription
+- A Aravo single-sign on enabled subscription
 
-> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+To test the steps in this tutorial, you should follow these recommendations:
 
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
-## シナリオの説明
-このチュートリアルの目的は、テスト環境で Microsoft Azure AD のシングル サインオンをテストできるようにすることです。
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+## <a name="scenario-description"></a>Scenario description
+The objective of this tutorial is to enable you to test Microsoft Azure AD Single Sign-On in a test environment.
 
-1. ギャラリーからの Aravo の追加
-2. Microsoft Azure AD シングル サインオンの構成とテスト
+The scenario outlined in this tutorial consists of two main building blocks:
 
+1. Adding Aravo from the gallery
+2. Configuring and testing Microsoft Azure AD Single Sign-On
 
-## ギャラリーからの Aravo の追加
-Azure AD への Aravo の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Aravo を追加する必要があります。
 
-**ギャラリーから Aravo を追加するには、次の手順を実行します。**
+## <a name="adding-aravo-from-the-gallery"></a>Adding Aravo from the gallery
+To configure the integration of Aravo into Azure AD, you need to add Aravo from the gallery to your list of managed SaaS apps.
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+**To add Aravo from the gallery, perform the following steps:**
 
-	![Active Directory][1]
+1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+    ![Active Directory][1]
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-	
-	![アプリケーション][2]
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-4. ページの下部にある **[追加]** をクリックします。
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
+    
+    ![Applications][2]
 
-	![アプリケーション][3]
+4. Click **Add** at the bottom of the page.
 
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+    ![Applications][3]
 
-	![アプリケーション][4]
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-6. 検索ボックスに、「**Aravo**」と入力します。
+    ![Applications][4]
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_01.png)
-7. 結果ウィンドウで **[Aravo]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+6. In the search box, type **Aravo**.
 
-	![ギャラリーでアプリを選択する](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_0001.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_01.png)
+7. In the results pane, select **Aravo**, and then click **Complete** to add the application.
 
+    ![Selecting the app in the gallery](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_0001.png)
 
-##  Microsoft Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Aravo で Microsoft Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Aravo ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Aravo の関連ユーザーの間で、リンク関係が確立されている必要があります。
+##  <a name="configuring-and-testing-microsoft-azure-ad-single-sign-on"></a>Configuring and testing Microsoft Azure AD Single Sign-On
+The objective of this section is to show you how to configure and test Microsoft Azure AD Single Sign-On with Aravo based on a test user called "Britta Simon".
 
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Aravo の **[Username (ユーザー名)]** の値として割り当てます。
+For single sign-on to work, Azure AD needs to know what the counterpart user in Aravo to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Aravo needs to be established.
 
-Aravo で Microsoft Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Aravo.
 
-1. **[Microsoft Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD テスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Microsoft Azure AD シングル サインオンをテストします。
-3. **[Aravo のテスト ユーザーの作成](#creating-a-aravo-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Aravo で作成します。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Microsoft Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+To configure and test Microsoft Azure AD Single Sign-On with Aravo, you need to complete the following building blocks:
 
-### Microsoft Azure AD のシングル サインオンの構成
+1. **[Configuring Microsoft Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Microsoft Azure AD Single Sign-On with Britta Simon.
+3. **[Creating a Aravo test user](#creating-a-aravo-test-user)** - to have a counterpart of Britta Simon in Aravo that is linked to the Azure AD representation of her.
+4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Microsoft Azure AD Single Sign-On.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
 
-このセクションでは、クラシック ポータルで Microsoft Azure AD のシングル サインオンを有効にして、Aravo アプリケーションでシングル サインオンを構成します。
+### <a name="configuring-microsoft-azure-ad-single-sign-on"></a>Configuring Microsoft Azure AD Single Sign-On
 
-**Aravo で Microsoft Azure AD シングル サインオンを構成するには、次の手順に従います。**
+In this section, you enable Microsoft Azure AD Single Sign-On in the classic portal and configure single sign-on in your Aravo application.
 
-1. クラシック ポータルの **Aravo** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
-	 
-	![Configure Single Sign-On][6]
+**To configure Microsoft Azure AD Single Sign-On with Aravo, perform the following steps:**
 
-2. **[ユーザーの Aravo へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+1. In the classic portal, on the **Aravo** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+     
+    ![Configure Single Sign-On][6] 
 
-	![Configure Single Sign-On](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_03.png)
+2. On the **How would you like users to sign on to Aravo** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
+    ![Configure Single Sign-On](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_03.png) 
 
-	![Configure Single Sign-On](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_04.png)
+3. On the **Configure App Settings** dialog page, perform the following steps and click **Next**:
 
-    a.**[識別子]** ボックスに、次のパターンを使用して URL を入力します。`https://<company name>.aravo.com`
+    ![Configure Single Sign-On](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_04.png)
 
-    b.**[応答 URL]** ボックスに、次の形式で URL を入力します。`https://<company name>.aravo.com/aems/login.do`
+    a. In the **Identifier** textbox, type a URL using the following pattern: `https://<company name>.aravo.com`
 
-	c.**[次へ]** をクリックします。
+    b. In the **Reply URL** textbox, type a URL using the following pattern: `https://<company name>.aravo.com/aems/login.do`
 
-	> [AZURE.NOTE] これは実際の値ではないので注意してください。実際の識別子と応答 URL で値を更新する必要があります。これらの値の取得については、Aravo にお問い合わせください。
+    c. Click **Next**
 
-4. **[Aravo でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
+    > [AZURE.NOTE] Please note that these are not the real value. You have to update the values with the actual Identifier and Reply URL. To get these values, contact Aravo.
 
-	![Configure Single Sign-On](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_05.png)
+4. On the **Configure single sign-on at Aravo** page, perform the following steps and click **Next**:
 
-    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    ![Configure Single Sign-On](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_05.png)
 
-    b.**[次へ]** をクリックします。
+    a. Click **Download certificate**, and then save the file on your computer.
 
-5. アプリケーション用に構成された SSO を入手するために、Aravo サポート チームに連絡し、次のものを情報として提供します。
+    b. Click **Next**.
 
-	• **ダウンロードした証明書**ファイル
+5. To get SSO configured for your application, contact your Aravo support team and provide them with the following: 
 
-	• **発行者の URL**
+    - The **Downloaded certificate** file
 
-	•  **SAML SSO URL**
+    - The **Issuer URL**
 
-	•  **シングル サインアウト サービス URL**
+    - The **SAML SSO URL**
 
-6. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+    - The **Single Sign-Out Service URL**
 
-	![Azure AD Single Sign-On][10]
+6. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
 
-7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+    ![Azure AD Single Sign-On][10]
 
-	![Azure AD Single Sign-On][11]
+7. On the **Single sign-on confirmation** page, click **Complete**.  
 
+    ![Azure AD Single Sign-On][11]
 
 
-### Azure AD のテスト ユーザーの作成
-このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
-	
-![Azure AD ユーザーの作成][20]
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+The objective of this section is to create a test user in the classic portal called Britta Simon.
+    
+![Create Azure AD User][20]
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+**To create a test user in Azure AD, perform the following steps:**
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-aravo-tutorial/create_aaduser_09.png)
+1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+    ![Creating an Azure AD test user](./media/active-directory-saas-aravo-tutorial/create_aaduser_09.png)
 
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
-	
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-aravo-tutorial/create_aaduser_03.png)
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
-	
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-aravo-tutorial/create_aaduser_04.png)
+3. To display the list of users, in the menu on the top, click **Users**.
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-aravo-tutorial/create_aaduser_03.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-aravo-tutorial/create_aaduser_04.png)
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-aravo-tutorial/create_aaduser_05.png)
+5. On the **Tell us about this user** dialog page, perform the following steps:
 
-    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    ![Creating an Azure AD test user](./media/active-directory-saas-aravo-tutorial/create_aaduser_05.png)
 
-    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    a. As Type Of User, select New user in your organization.
 
-    c.**[次へ]** をクリックします。
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
-	
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-aravo-tutorial/create_aaduser_06.png)
+    c. Click **Next**.
 
-    a.**[名]** ボックスに「**Britta**」と入力します。
+6.  On the **User Profile** dialog page, perform the following steps:
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-aravo-tutorial/create_aaduser_06.png)
 
-    b.**[姓]** ボックスに「**Simon**」と入力します。
+    a. In the **First Name** textbox, type **Britta**.  
 
-    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    e.**[次へ]** をクリックします。
+    d. In the **Role** list, select **User**.
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
-	
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-aravo-tutorial/create_aaduser_07.png)
+    e. Click **Next**.
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
-	
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-aravo-tutorial/create_aaduser_08.png)
+7. On the **Get temporary password** dialog page, click **create**.
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-aravo-tutorial/create_aaduser_07.png)
 
-    a.**[新しいパスワード]** の値を書き留めます。
+8. On the **Get temporary password** dialog page, perform the following steps:
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-aravo-tutorial/create_aaduser_08.png)
 
-    b.**[完了]** をクリックします。
+    a. Write down the value of the **New Password**.
 
+    b. Click **Complete**.   
 
 
-### Aravo のテスト ユーザーの作成
 
-このセクションの目的は、Britta Simon というユーザーを Aravo で作成することです。Aravo サポート チームと連携し、Aravo アカウントにユーザーを追加してください。
+### <a name="creating-a-aravo-test-user"></a>Creating a Aravo test user
 
+The objective of this section is to create a user called Britta Simon in Aravo.Please work with Aravo support team to add the users in the Aravo account.
 
-### Azure AD テスト ユーザーの割り当て
 
-このセクションの目的は、Britta Simon に Aravo へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
-	
-![ユーザーの割り当て][200]
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-**Aravo に Britta Simon を割り当てるには、次の手順を実行します。**
+The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Aravo.
+    
+![Assign User][200]
 
-1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+**To assign Britta Simon to Aravo, perform the following steps:**
 
-	![ユーザーの割り当て][201]
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
 
-2. アプリケーションの一覧で **[Aravo]** を選択します。
+    ![Assign User][201]
 
-	![Configure Single Sign-On](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_50.png)
+2. In the applications list, select **Aravo**.
 
-3. 上部のメニューで **[ユーザー]** をクリックします。
-	
-	![ユーザーの割り当て][203]
+    ![Configure Single Sign-On](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_50.png)
 
-4. ユーザーの一覧で **[Britta Simon]** を選択します。
+3. In the menu on the top, click **Users**.
+    
+    ![Assign User][203]
 
-5. 下部にあるツール バーで **[割り当て]** をクリックします。
+4. In the Users list, select **Britta Simon**.
 
-	![ユーザーの割り当て][205]
+5. In the toolbar on the bottom, click **Assign**.
 
+    ![Assign User][205]
 
 
-### シングル サインオンのテスト
 
-このセクションの目的は、アクセス パネルを使用して Microsoft Azure AD のシングル サインオン構成をテストすることです。
+### <a name="testing-single-sign-on"></a>Testing single sign-on
 
-アクセス パネルで Aravo のタイルをクリックすると、自動的に Aravo アプリケーションにサインオンします。
+The objective of this section is to test your Microsoft Azure AD Single Sign-On configuration using the Access Panel.
 
+When you click the Aravo tile in the Access Panel, you should get automatically signed-on to your Aravo application.
 
-## その他のリソース
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+## <a name="additional-resources"></a>Additional resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -279,4 +280,8 @@ Aravo で Microsoft Azure AD のシングル サインオンを構成してテ�
 [204]: ./media/active-directory-saas-aravo-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-aravo-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

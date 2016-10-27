@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Automation Runbook で Azure VM アラートを修復する |Microsoft Azure"
-    description="この記事では、Azure Automation Runbook で Azure Virtual Machine アラートを統合し、問題を自動修復する方法について説明します"
+    pageTitle=" Remediate Azure VM Alerts with Automation Runbooks | Microsoft Azure"
+    description="This article demonstrates how to integrate Azure Virtual Machine alerts with Azure Automation runbooks and auto-remediate issues"
     services="automation"
     documentationCenter=""
     authors="mgoedtel"
@@ -15,90 +15,91 @@
     ms.date="06/14/2016"
     ms.author="csand;magoedte" />
 
-# Azure Automation シナリオ - Azure VM アラートを修復する
 
-Azure Automation および Azure Virtual Machines 向けに、Automation Runbook を実行するように仮想マシン (VM) アラートを構成できる新機能がリリースされました。この新しい機能では、VM の再起動や停止など、VM アラートに応じて標準の修復を自動的に実行できます。
+# <a name="azure-automation-scenario---remediate-azure-vm-alerts"></a>Azure Automation scenario - remediate Azure VM alerts
 
-これまでは、アラートがトリガーするたびに Runbook を実行するように、VM アラート ルールの作成中に Runbook に [Automation Webhook を指定](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/)できていました。ただし、これには Runbook を作成し、Runbook 用の Webhook を作成してから、アラート ルールの作成中に Webhook をコピーして貼り付ける必要がありました。この新しいリリースでは、アラート ルールの作成中に Runbook を一覧から直接選択でき、また Runbook を実行する Automation アカウントを選択するかアカウントを簡単に作成できるようになったため、プロセスがはるかに簡単なりました。
+Azure Automation and Azure Virtual Machines have released a new feature allowing you to configure Virtual Machine (VM) alerts to run Automation runbooks. This new capability allows you to automatically perform standard remediation in response to VM alerts, like restarting or stopping the VM.
 
-この記事では、Azure VM アラートを設定して、アラートがトリガーするたびに実行されるように Automation Runbook を構成することがいかに簡単かを示します。シナリオ例では、メモリ リークがある VM 上のアプリケーションのためにメモリ使用量がしきい値を超えたときの VM の再起動や、CPU ユーザー時間が過去 1 時間で 1% を下回っていて使用されていないときの VM の停止を扱います。また、Automation アカウントのサービス プリンシパルの自動作成によって Azure アラート修復での Runbook の使用を簡素化させる方法についても説明します。
+Previously, during VM alert rule creation you were able to [specify an Automation webhook](https://azure.microsoft.com/blog/using-azure-automation-to-take-actions-on-azure-alerts/) to a runbook in order to run the runbook whenever the alert triggered. However, this required you to do the work of creating the runbook, creating the webhook for the runbook, and then copying and pasting the webhook during alert rule creation. With this new release, the process is much easier because you can directly choose a runbook from a list during alert rule creation, and you can choose an Automation account which will run the runbook or easily create an account.
 
-## VM のアラートを作成する
+In this article, we will show you how easy it is to set up an Azure VM alert and configure an Automation runbook to run whenever the alert triggers. Example scenarios include restarting a VM when the memory usage exceeds some threshold due to an application on the VM with a memory leak, or stopping a VM when the CPU user time has been below 1% for past hour and is not in use. We’ll also explain how the automated creation of a service principal in your Automation account simplifies the use of runbooks in Azure alert remediation.
 
-しきい値が満たされたら Runbook を起動するようにアラートを構成するには、次の手順を実行します。
+## <a name="create-an-alert-on-a-vm"></a>Create an alert on a VM
 
->[AZURE.NOTE] このリリースでは、V2 仮想マシンのみをサポートします。クラシック VM のサポートについてはまもなく追加される予定です。
+Perform the following steps to configure an alert to launch a runbook when its threshold has been met.
 
-1. Azure ポータルにログインし、**[仮想マシン]** をクリックします。  
-2. いずれかの仮想マシンを選択します。仮想マシンのダッシュボード ブレードが表示され、**[設定]** ブレードが右側に表示されます。  
-3. [監視] セクションで、**[設定]** ブレードから **[アラート ルール]** を選択します。
-4. **[アラート ルール]** ブレードで、**[アラートの追加]** をクリックします。
+>[AZURE.NOTE] With this release, we only support V2 virtual machines and support for classic VMs will be added soon.  
 
-**[アラート ルールの追加]** ブレードが開きます。ここで、アラートの条件を構成して、電子メールを他のユーザーに送信する、Webhook を使用してアラートを別のシステムに転送する、応答の試行時に Automation Runbook を実行して問題を修正するなどといったオプションの 1 つまたはすべてを選択できます。
+1. Log in to the Azure portal and click **Virtual Machines**.  
+2. Select one of your virtual machines.  The virtual machine dashboard blade will appear and the **Settings** blade to its right.  
+3. From the **Settings** blade, under the Monitoring section select **Alert rules**.
+4. On the **Alert rules** blade, click **Add alert**.
 
-## Runbook を構成する
+This opens up the **Add an alert rule** blade, where you can configure the conditions for the alert and choose among one or all of these options: send email to someone, use a webhook to forward the alert to another system, and/or run an Automation runbook in response attempt to remediate the issue.
 
-VM アラートしきい値に達したときに実行されるように Runbook を構成するには、**[Automation Runbook]** を選択します。 **[Configure runbook (Runbook の構成)]** ブレードで、実行する Runbook と、Runbook を実行する Automation アカウントを選択できます。
+## <a name="configure-a-runbook"></a>Configure a runbook
 
-![Automation Runbook を構成して新しい Automation アカウントを作成する](media/automation-azure-vm-alert-integration/ConfigureRunbookNewAccount.png)
+To configure a runbook to run when the VM alert threshold is met, select **Automation Runbook**. In the **Configure runbook** blade, you can select the runbook to run and the Automation account to run the runbook in.
 
->[AZURE.NOTE] このリリースでは、サービスが提供する Restart VM、Stop VM、Remove VM (VM の消去) の 3 つの Runbook から選択できます。他の Runbook やいずれかの独自の Runbook を選択する機能は、今後のリリースで提供されます。
+![Configure an Automation runbook and create a new Automation Account](media/automation-azure-vm-alert-integration/ConfigureRunbookNewAccount.png)
 
-![Runbook の選択肢](media/automation-azure-vm-alert-integration/RunbooksToChoose.png)
+>[AZURE.NOTE] For this release you can choose from three runbooks that the service provides – Restart VM, Stop VM, or Remove VM (delete it).  The ability to select other runbooks or one of your own runbooks will be available in a future release.
 
-3 つの利用可能な Runbook からいずれかを選択すると、**[Automation アカウント]** ボックスが表示され、Runbook を実行する Automation アカウントを選択できます。Runbook は、Azure サブスクリプションにある [Automation アカウント](automation-security-overview.md)のコンテキストで実行する必要があります。既に作成した Automation アカウントを選択するか、新しい Automation アカウントを作成することができます。
+![Runbooks to choose from](media/automation-azure-vm-alert-integration/RunbooksToChoose.png)
 
-提供されている Runbook は、サービス プリンシパルを使用して Azure を認証します。既存の Automation アカウントのいずれかで Runbook を実行する場合は、サービス プリンシパルが自動的に作成されます。新しい Automation アカウントを作成する場合は、アカウントとサービス プリンシパルが自動的に作成されます。いずれの場合も、**AzureRunAsCertificate** という証明書資産と **AzureRunAsConnection** という接続資産の 2 つの資産が、Automation アカウントで作成されます。Runbook は、VM に対する管理アクションを実行するために、**AzureRunAsConnection** を使用して Azure を認証します。
+After you select one of the three available runbooks, the **Automation account** drop-down list appears and you can select an automation account the runbook will run as. Runbooks need to run in the context of an [Automation account](automation-security-overview.md) that is in your Azure subscription. You can select an Automation account that you already created, or you can have a new Automation account created for you.
 
->[AZURE.NOTE] サービス プリンシパルは、サブスクリプションのスコープで作成され、共同作成者ロールに割り当てられます。このロールは、アカウントに対し、Automation Runbook を実行して Azure VM を管理する権限を設定するために必要です。Automation アカウントとサービス プリンシパルの作成は、1 回限りのイベントです。アカウントは、1 度作成すると、他の Azure VM アラートでの Runbook の実行にも私用できます。
+The runbooks that are provided authenticate to Azure using a service principal. If you choose to run the runbook in one of your existing Automation accounts, we will automatically create the service principal for you. If you choose to create a new Automation account, then we will automatically create the account and the service principal. In both cases, two assets will also be created in the Automation account – a certificate asset named **AzureRunAsCertificate** and a connection asset named **AzureRunAsConnection**. The runbooks will use **AzureRunAsConnection** to authenticate with Azure in order to perform the management action against the VM.
 
-**[OK]** をクリックすると、アラートが構成されます。新しい Automation アカウントを作成するオプションを選択した場合は、アカウントがサービス プリンシパルと共に作成されます。この処理の完了には数秒かかります。
+>[AZURE.NOTE] The service principal is created in the subscription scope and is assigned the Contributor role. This role is required in order for the account to have permission to run Automation runbooks to manage Azure VMs.  The creation of an Automaton account and/or service principal is a one-time event. Once they are created, you can use that account to run runbooks for other Azure VM alerts.
 
-![構成中の Runbook](media/automation-azure-vm-alert-integration/RunbookBeingConfigured.png)
+When you click **OK** the alert is configured and if you selected the option to create a new Automation account, it is created along with the service principal.  This can take a few seconds to complete.  
 
-構成が完了すると、**[アラート ルールの追加]** ブレードに Runbook の名前が表示されます。
+![Runbook being configured](media/automation-azure-vm-alert-integration/RunbookBeingConfigured.png)
 
-![構成済みの Runbook](media/automation-azure-vm-alert-integration/RunbookConfigured.png)
+After the configuration is completed you will see the name of the runbook appear in the **Add an alert rule** blade.
 
-**[アラート ルールの追加]** ブレードで **[OK]** をクリックすると、アラート ルールが作成され、仮想マシンが実行状態の場合アクティブ化されます。
+![Runbook configured](media/automation-azure-vm-alert-integration/RunbookConfigured.png)
 
-### Runbook を有効または無効にする
+Click **OK** in the **Add an alert rule** blade and the alert rule will be created and activate if the virtual machine is in a running state.
 
-アラートで Runbook を構成した場合、Runbook はその構成を削除せず無効にできます。これにより、アラートの実行を保持したまま、一部のアラート ルールをテストし、その後 Runbook を再度有効にすることができます。
+### <a name="enable-or-disable-a-runbook"></a>Enable or disable a runbook
 
-## Azure アラートで動作する Runbook を作成する
+If you have a runbook configured for an alert, you can disable it without removing the runbook configuration. This allows you to keep the alert running and perhaps test some of the alert rules and then later re-enable the runbook.
 
-Azure アラート ルールの一部として Runbook を選択するときは、渡されるアラート データを管理するためのロジックが Runbook に必要です。Runbook がアラート ルールで構成されていると、Runbook 用に webhook が作成されます。アラートがトリガーするたびに、その webhook を使用して Runbook が開始されます。Runbook を開始するための実際の呼び出しは、webhook の URL に対する HTTP POST 要求です。POST 要求の本文には、アラートに関する有用なプロパティを格納する JSON 形式のオブジェクトが含まれています。後述するように、アラート データには、subscriptionID、resourceGroupName、resourceName、resourceType などの詳細情報が含まれています。
+## <a name="create-a-runbook-that-works-with-an-azure-alert"></a>Create a runbook that works with an Azure alert
 
-### アラート データの例
+When you choose a runbook as part of an Azure alert rule, the runbook needs to have logic in it to manage the alert data that is passed to it.  When a runbook is configured in an alert rule, a webhook is created for the runbook; that webhook is then used to start the runbook each time the alert triggers.  The actual call to start the runbook is an HTTP POST request to the webhook URL. The body of the POST request contains a JSON-formated object that contains useful properties related to the alert.  As you can see below, the alert data contains details like subscriptionID, resourceGroupName, resourceName, and resourceType.
+
+### <a name="example-of-alert-data"></a>Example of Alert data
 ```
 {
     "WebhookName": "AzureAlertTest",
     "RequestBody": "{
-	"status":"Activated",
-	"context": {
-		"id":"/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/microsoft.insights/alertrules/AlertTest",
-		"name":"AlertTest",
-		"description":"",
-		"condition": {
-			"metricName":"CPU percentage guest OS",
-			"metricUnit":"Percent",
-			"metricValue":"4.26337916666667",
-			"threshold":"1",
-			"windowSize":"60",
-			"timeAggregation":"Average",
-			"operator":"GreaterThan"},
-		"subscriptionId":<subscriptionID> ",
-		"resourceGroupName":"TestResourceGroup",
-		"timestamp":"2016-04-24T23:19:50.1440170Z",
-		"resourceName":"TestVM",
-		"resourceType":"microsoft.compute/virtualmachines",
-		"resourceRegion":"westus",
-		"resourceId":"/subscriptions/<subscriptionId>/resourceGroups/TestResourceGroup/providers/Microsoft.Compute/virtualMachines/TestVM",
-		"portalLink":"https://portal.azure.com/#resource/subscriptions/<subscriptionId>/resourceGroups/TestResourceGroup/providers/Microsoft.Compute/virtualMachines/TestVM"
-		},
-	"properties":{}
-	}",
+    \"status\":\"Activated\",
+    \"context\": {
+        \"id\":\"/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/microsoft.insights/alertrules/AlertTest\",
+        \"name\":\"AlertTest\",
+        \"description\":\"\",
+        \"condition\": {
+            \"metricName\":\"CPU percentage guest OS\",
+            \"metricUnit\":\"Percent\",
+            \"metricValue\":\"4.26337916666667\",
+            \"threshold\":\"1\",
+            \"windowSize\":\"60\",
+            \"timeAggregation\":\"Average\",
+            \"operator\":\"GreaterThan\"},
+        \"subscriptionId\":\<subscriptionID> \",
+        \"resourceGroupName\":\"TestResourceGroup\",
+        \"timestamp\":\"2016-04-24T23:19:50.1440170Z\",
+        \"resourceName\":\"TestVM\",
+        \"resourceType\":\"microsoft.compute/virtualmachines\",
+        \"resourceRegion\":\"westus\",
+        \"resourceId\":\"/subscriptions/<subscriptionId>/resourceGroups/TestResourceGroup/providers/Microsoft.Compute/virtualMachines/TestVM\",
+        \"portalLink\":\"https://portal.azure.com/#resource/subscriptions/<subscriptionId>/resourceGroups/TestResourceGroup/providers/Microsoft.Compute/virtualMachines/TestVM\"
+        },
+    \"properties\":{}
+    }",
     "RequestHeader": {
         "Connection": "Keep-Alive",
         "Host": "<webhookURL>"
@@ -106,9 +107,9 @@ Azure アラート ルールの一部として Runbook を選択するときは�
 }
 ```
 
-Automation webhook サービスは HTTP POST を受信すると、アラート データを抽出して、WebhookData Runbook 入力パラメーターで Runbook に渡します。以下のサンプル Runbook では、WebhookData パラメーターの使用方法、およびアラート データを抽出し、アラートをトリガーした Azure リソースの管理にそれを使用する方法を示します。
+When the Automation webhook service receives the HTTP POST it extracts the alert data and passes it to the runbook in the WebhookData runbook input parameter.  Below is a sample runbook that shows how to use the WebhookData parameter and extract the alert data and use it to manage the Azure resource that triggered the alert.
 
-### Runbook の例
+### <a name="example-runbook"></a>Example runbook
 
 ```
 #  This runbook will restart an ARM (V2) VM in response to an Azure VM alert.
@@ -119,57 +120,61 @@ param ( [object] $WebhookData )
 
 if ($WebhookData)
 {
-	# Get the data object from WebhookData
-	$WebhookBody = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
+    # Get the data object from WebhookData
+    $WebhookBody = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
 
     # Assure that the alert status is 'Activated' (alert condition went from false to true)
     # and not 'Resolved' (alert condition went from true to false)
-	if ($WebhookBody.status -eq "Activated")
+    if ($WebhookBody.status -eq "Activated")
     {
-	    # Get the info needed to identify the VM
-	    $AlertContext = [object] $WebhookBody.context
-	    $ResourceName = $AlertContext.resourceName
-	    $ResourceType = $AlertContext.resourceType
+        # Get the info needed to identify the VM
+        $AlertContext = [object] $WebhookBody.context
+        $ResourceName = $AlertContext.resourceName
+        $ResourceType = $AlertContext.resourceType
         $ResourceGroupName = $AlertContext.resourceGroupName
         $SubId = $AlertContext.subscriptionId
 
-	    # Assure that this is the expected resource type
-	    Write-Verbose "ResourceType: $ResourceType"
-	    if ($ResourceType -eq "microsoft.compute/virtualmachines")
-	    {
-		    # This is an ARM (V2) VM
+        # Assure that this is the expected resource type
+        Write-Verbose "ResourceType: $ResourceType"
+        if ($ResourceType -eq "microsoft.compute/virtualmachines")
+        {
+            # This is an ARM (V2) VM
 
-		    # Authenticate to Azure with service principal and certificate
+            # Authenticate to Azure with service principal and certificate
             $ConnectionAssetName = "AzureRunAsConnection"
-		    $Conn = Get-AutomationConnection -Name $ConnectionAssetName
-		    if ($Conn -eq $null) {
+            $Conn = Get-AutomationConnection -Name $ConnectionAssetName
+            if ($Conn -eq $null) {
                 throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
             }
-		    Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
-		    Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
+            Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+            Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
             # Restart the VM
-		    Restart-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName
-	    } else {
-		    Write-Error "$ResourceType is not a supported resource type for this runbook."
-	    }
+            Restart-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName
+        } else {
+            Write-Error "$ResourceType is not a supported resource type for this runbook."
+        }
     } else {
         # The alert status was not 'Activated' so no action taken
-		Write-Verbose ("No action taken. Alert status: " + $WebhookBody.status)
+        Write-Verbose ("No action taken. Alert status: " + $WebhookBody.status)
     }
 } else {
     Write-Error "This runbook is meant to be started from an Azure alert only."
 }
 ```
 
-## 概要
+## <a name="summary"></a>Summary
 
-Azure VM でアラートを構成する場合、アラートがトリガー時に修復アクションを自動で実行するように Automation Runbook を簡単に構成できるようになりました。このリリースでは、アラート シナリオに応じて VM の再起動、停止、または削除を行う Runbook を選択できます。この新機能は、アラートのトリガー時に自動的に実行されるアクション (通知、トラブルシューティング、修復) を制御できる、便利なシナリオの始まりにすぎません。
+When you configure an alert on an Azure VM, you now have the ability to easily configure an Automation runbook to automatically perform remediation action when the alert triggers. For this release, you can choose from runbooks to restart, stop, or delete a VM depending on your alert scenario. This is just the beginning of enabling scenarios where you control the actions (notification, troubleshooting, remediation) that will be taken automatically when an alert triggers.
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-- グラフィカルな Runbook の使用を開始するには、「[初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)」を参照してください。
-- PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
-- Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
+- To get started with Graphical runbooks, see [My first graphical runbook](automation-first-runbook-graphical.md)
+- To get started with PowerShell workflow runbooks, see [My first PowerShell workflow runbook](automation-first-runbook-textual.md)
+- To learn more about runbook types, their advantages and limitations, see [Azure Automation runbook types](automation-runbook-types.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

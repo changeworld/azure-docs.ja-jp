@@ -1,17 +1,19 @@
-Azure Redis Cache のインスタンスに接続するには、キャッシュ クライアントにキャッシュのホスト名、ポート、およびキーが必要です。一部のクライアントは、若干異なる名前で、これらの項目を参照できます。これらの項目を取得するには、[Azure ポータル](https://portal.azure.com)でキャッシュを[参照](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings)し、**[設定]** または **[すべての設定]** をクリックします。
+To connect to an Azure Redis Cache instance, cache clients need the host name, ports, and keys of the cache. Some clients may refer to these items by slightly different names. To retrieve these items, [browse](../articles/redis-cache/cache-configure.md#configure-redis-cache-settings) to your cache in the [Azure portal](https://portal.azure.com) and click **Settings** or **All settings**. 
 
 ![Redis cache settings](media/redis-cache-access-keys/redis-cache-settings.png)
 
-### ホスト名とポート
+### <a name="host-name-and-ports"></a>Host name and ports
 
-ホスト名とポートにアクセスするには、**[プロパティ]** をクリックします。
+To access the host name and ports click **Properties**.
 
 ![Redis cache properties](media/redis-cache-access-keys/redis-cache-properties.png)
 
-### アクセス キー
+### <a name="access-keys"></a>Access keys
 
-アクセス キーを取得するには、**[アクセス キー]** をクリックします。
+To retrieve the access keys, click **Access keys**.
 
 ![Redis cache access keys](media/redis-cache-access-keys/redis-cache-access-keys.png)
 
-<!---HONumber=AcomDC_0629_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

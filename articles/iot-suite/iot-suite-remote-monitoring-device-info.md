@@ -1,6 +1,6 @@
 <properties
- pageTitle="リモート監視ソリューションのデバイス情報メタデータ | Microsoft Azure"
- description="Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。"
+ pageTitle="Device information metadata in the remote monitoring solution | Microsoft Azure"
+ description="A description of the Azure IoT preconfigured solution remote monitoring and its architecture."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -17,24 +17,25 @@
  ms.date="09/12/2016"
  ms.author="dobett"/>
 
-# リモート監視構成済みソリューションのデバイス情報メタデータ
 
-Azure IoT Suite リモート監視構成済みソリューションは、デバイス メタデータを管理する手法を示します。この記事では、次のことがわかるように、このソリューションの手法について概説します。
+# <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>Device information metadata in the remote monitoring preconfigured solution
 
-- ソリューションが格納するデバイス メタデータ。
-- ソリューションがデバイス メタデータを管理する方法。
+The Azure IoT Suite remote monitoring preconfigured solution demonstrates an approach for managing device metadata. This article outlines the approach this solution takes to enable you to understand:
 
-## Context
+- What device metadata the solution stores.
+- How the solution manages the device metadata.
 
-リモート監視構成済みソリューションでは、対象のデバイスからクラウドにデータを送信できるようにする [Azure IoT Hub][lnk-iot-hub] を使用します。IoT Hub には、IoT Hub へのアクセスを制御するための[デバイス ID レジストリ][lnk-identity-registry]が含まれています。IoT Hub デバイス ID レジストリは、デバイス情報メタデータが格納される、リモート監視ソリューション固有の*デバイス レジストリ*とは異なります。リモート監視ソリューションでは、[DocumentDB][lnk-docdb] データベースを使用して、デバイス情報メタデータを格納するためのデバイス レジストリが実装されます。一般的な IoT ソリューションでのデバイス レジストリの役割については、『[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)][lnk-ref-arch]』で説明されています。
+## <a name="context"></a>Context
 
-> [AZURE.NOTE] リモート監視構成済みソリューションは、デバイス ID レジストリとデバイス レジストリの同期状態を維持します。どちらのレジストリも、同一のデバイス ID を使用して、対象の IoT Hub に接続された各デバイスを一意に識別します。
+The remote monitoring preconfigured solution uses [Azure IoT Hub][lnk-iot-hub] to enable your devices to send data to the cloud. IoT Hub includes a [device identity registry][lnk-identity-registry] to control access to IoT Hub. The IoT Hub device identity registry is separate from the remote monitoring solution-specific *device registry* that stores device information metadata. The remote monitoring solution uses a [DocumentDB][lnk-docdb] database to implement its device registry for storing device information metadata. The [Microsoft Azure IoT Reference Architecture][lnk-ref-arch] describes the role of the device registry in a typical IoT solution.
 
-[IoT Hub デバイス管理プレビュー][lnk-dm-preview]を使用すると、この記事で説明するデバイス情報管理機能に似た機能を IoT Hub に追加できます。現在、リモート監視ソリューションでは IoT Hub の一般公開 (GA) 機能のみを利用できます。
+> [AZURE.NOTE] The remote monitoring preconfigured solution keeps the device identity registry in sync with the device registry. Both use the same device id to uniquely identify each device connected to your IoT hub.
 
-## デバイス情報メタデータ
+The [IoT Hub device management preview][lnk-dm-preview] adds features to IoT Hub that are similar to the device information management features described in this article. Currently, the remote monitoring solution only uses generally available (GA) features in IoT Hub.
 
-デバイス レジストリ DocumentDB データベースに格納されるデバイス情報メタデータ JSON ドキュメントの構造は、次のようになっています。
+## <a name="device-information-metadata"></a>Device information metadata
+
+A device information metadata JSON document stored in the device registry DocumentDB database has the following structure:
 
 ```
 {
@@ -55,53 +56,53 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 }
 ```
 
-- **DeviceProperties**: これらのプロパティはデバイス自体によって書き込まれます。また、デバイスはこのデータに対する権限を持ちます。その他のデバイス プロパティの例としては、製造元、モデル番号、シリアル番号が挙げられます。
-- **DeviceID**: 一意のデバイス ID。この値は、IoT Hub デバイス ID レジストリのものと同じです。
-- **HubEnabledState**: IoT Hub のデバイスの状態。この値は、デバイスが初めて接続されるまでは **null** に設定されています。ソリューション ポータルでは、**null** の値は、デバイスが "登録されていますが、存在していない" ことを表します。
-- **CreatedTime**: デバイスが作成された時刻。
-- **DeviceState**: デバイスによって報告される状態。
-- **UpdatedTime**: ソリューション ポータルによるデバイスの最終更新時刻。
-- **SystemProperties**: システム プロパティは、ソリューション ポータルによって書き込まれます。デバイスはこれらのプロパティの情報を持ちません。システム プロパティの一例としては、サービスを管理する SIM 対応デバイスによってソリューションが承認され、そのデバイスに接続される場合の **ICCID** があります。
-- **Commands**: デバイスでサポートされているコマンドの一覧。この情報は、デバイスからソリューションに提供されます。
-- **CommandHistory**: リモート監視ソリューションによってデバイスに送信されたコマンドと、それらのコマンドの状態の一覧。
-- **IsSimulatedDevice**: シミュレーションされたデバイスであるかどうかを示すフラグ。
-- **id**: このデバイス ドキュメントの一意の DocumentDB 識別子。
+- **DeviceProperties**: The device itself writes these properties and the device is the authority for this data. Other example device properties include manufacturer, model number, and serial number. 
+- **DeviceID**: The unique device id. This value is the same in the IoT Hub device identity registry.
+- **HubEnabledState**: The status of the device in IoT Hub. This value is initially set to **null** until the device first connects. In the solution portal, a **null** value is represented as the device being "registered but not present."
+- **CreatedTime**: The time the device was created.
+- **DeviceState**: The state reported by the device.
+- **UpdatedTime**: The time the device was last updated through the solution portal.
+- **SystemProperties**: The solution portal writes the system properties and the device has no knowledge of these properties. An example system property is the **ICCID** if the solution is authorized with and connected to a service managing SIM-enabled devices.
+- **Commands**: A list of the commands the device supports. The device supplies this information to the solution.
+- **CommandHistory**: A list of the commands sent by the remote monitoring solution to the device and the status of those commands.
+- **IsSimulatedDevice**: A flag that identifies a device as a simulated device.
+- **id**: The unique DocumentDB identifier for this device document.
 
-> [AZURE.NOTE] デバイス情報には、デバイスから IoT Hub に送信されたテレメトリを示すメタデータを含めることもできます。リモート監視ソリューションでは、このテレメトリ メタデータを使用して、ダッシュボードでの[動的テレメトリ][lnk-dynamic-telemetry]の表示方法をカスタマイズできます。
+> [AZURE.NOTE] Device information can also include metadata to describe the telemetry the device sends to IoT Hub. The remote monitoring solution uses this telemetry metadata to customize how the dashboard displays [dynamic telemetry][lnk-dynamic-telemetry].
 
-## ライフサイクル
+## <a name="lifecycle"></a>Lifecycle
 
-ソリューション ポータルで初めてデバイスを作成するとき、先ほどのようにソリューションによってデバイス レジストリのエントリが作成されます。当初は情報の多くが消去されており、**HubEnabledState** は **null** に設定されています。またこの時点で、デバイス ID レジストリのデバイスのエントリも作成されます。これにより、デバイスが IoT Hub での認証に使用するキーが生成されます。
+When you first create a device in the solution portal, the solution creates an entry in its device registry as shown previously. Much of the information is initially stubbed out and the **HubEnabledState** is set to **null**. At this point, the solution also creates an entry for the device in the device identity registry, which generates the keys the device uses to authenticate with IoT Hub.
 
-初めてソリューションに接続するとき、デバイスはデバイス情報メッセージを送信します。このデバイス情報メッセージには、デバイスの製造元、モデル番号、シリアル番号などのデバイス プロパティが含まれています。また、すべてのコマンド パラメーターの情報が付属した、デバイスでサポートされているコマンドの一覧も含まれています。このメッセージを受信すると、ソリューションはデバイス レジストリ内のデバイス情報メタデータを更新します。
+When a device first connects to the solution, it sends a device information message. This device information message includes device properties such as the device manufacturer, model number, and serial number. A device information message also includes a list of the commands the device supports including information about any command parameters. When the solution receives this message, it updates the device information metadata in the device registry.
 
-### ソリューション ポータルでのデバイス情報の表示と編集
+### <a name="view-and-edit-device-information-in-the-solution-portal"></a>View and edit device information in the solution portal
 
-ソリューション ポータルのデバイス一覧には、**[状態]**、**[DeviceId]**、**[製造元]**、**[モデル番号]**、**[シリアル番号]**、**[ファームウェア]**、**[プラットフォーム]**、**[プロセッサ]**、**[インストールされている RAM]** の各プロパティが、列として表示されています。**[緯度]** と **[経度]** のデバイス プロパティによって、ダッシュボードの Bing 地図内での位置が定まります。
+The device list in the solution portal displays the following device properties as columns: **Status**, **DeviceId**, **Manufacturer**, **Model Number**, **Serial Number**, **Firmware**, **Platform**, **Processor**, and **Installed RAM**. The device properties **Latitude** and **Longitude** drive the location in the Bing Map on the dashboard. 
 
 ![Device list][img-device-list]
 
-ソリューション ポータルで **[デバイスの詳細]** ウィンドウの **[編集]** をクリックすると、これらのプロパティをすべて編集できます。これらのプロパティを編集すると、DocumentDB データベース内のデバイスのレコードが更新されます。ただし、更新されたデバイス情報メッセージをデバイスから送信する場合は、ソリューション ポータルで加えた変更が上書きされます。ソリューション ポータルでは、**DeviceId**、**Hostname**、**HubEnabledState**、**CreatedTime**、**DeviceState**、**UpdatedTime** の各プロパティは編集できません。これらのプロパティに対する権限を持つのがデバイスのみであるためです。
+If you click **Edit** in the **Device Details** pane in the solution portal, you can edit all these properties. Editing these properties updates the record for the device in the DocumentDB database. However, if a device sends an updated device info message, it overwrites any changes made in the solution portal. You cannot edit the **DeviceId**, **Hostname**, **HubEnabledState**, **CreatedTime**, **DeviceState**, and **UpdatedTime** properties in the solution portal because only the device has authority over these properties.
 
 ![Device edit][img-device-edit]
 
-ソリューション ポータルを使用して、ソリューションからデバイスを削除できます。デバイスを削除すると、ソリューションによってソリューションのデバイス レジストリからデバイス情報メタデータが削除され、IoT Hub デバイス ID レジストリのデバイス エントリが削除されます。デバイスを削除するには、無効にしておく必要があります。
+You can use the solution portal to remove a device from your solution. When you remove a device, the solution removes the device information metadata from the solution device registry and removes the device entry in the IoT Hub device identity registry. Before you can remove a device, you must disable it.
 
 ![Device remove][img-device-remove]
 
-## デバイス情報メッセージの処理
+## <a name="device-information-message-processing"></a>Device information message processing
 
-デバイスによって送信されるデバイス情報メッセージは、テレメトリ メッセージとは異なります。デバイス情報メッセージには、デバイス プロパティ、デバイスが応答できるコマンド、コマンド履歴などの情報が含まれます。IoT Hub 自体は、デバイス情報メッセージに含まれたメタデータを把握しません。このメッセージは、デバイスからクラウドへのメッセージを処理するのと同じ方法で処理されます。リモート監視ソリューションでは、[Azure Stream Analytics][lnk-stream-analytics] \(ASA) ジョブが IoT Hub からのメッセージを読み取ります。**DeviceInfo** Stream Analytics ジョブは、**"ObjectType": "DeviceInfo"** が含まれたメッセージをフィルター処理し、Web ジョブで実行される **EventProcessorHost** ホスト インスタンスにそれらを転送します。**EventProcessorHost** インスタンス内のロジックは、デバイス ID を使用して特定のデバイスの DocumentDB レコードを特定し、そのレコードを更新します。デバイス レジストリのレコードには現在、デバイス プロパティ、コマンド、コマンド履歴などの情報が含まれています。
+Device information messages sent by a device are distinct from telemetry messages. Device information messages include information such as device properties, the commands a device can respond to, and any command history. IoT Hub itself has no knowledge of the metadata contained in a device information message and processes the message in the same way it processes any device-to-cloud message. In the remote monitoring solution, an [Azure Stream Analytics][lnk-stream-analytics] (ASA) job reads the messages from IoT Hub. The **DeviceInfo** stream analytics job filters for messages that contain **"ObjectType": "DeviceInfo"** and forwards them to the **EventProcessorHost** host instance that runs in a web job. Logic in the **EventProcessorHost** instance uses the device id to find the DocumentDB record for the specific device and update the record. The device registry record now includes information such as device properties, commands, and command history.
 
-> [AZURE.NOTE] デバイス情報メッセージは、標準的なデバイスからクラウドへのメッセージです。このソリューションでは、ASA クエリを使用してデバイス情報メッセージとテレメトリ メッセージが区別されます。
+> [AZURE.NOTE] A device information message is a standard device-to-cloud message. The solution distinguishes between device information messages and telemetry messages by using ASA queries.
 
-## デバイス情報レコードの例
+## <a name="example-device-information-records"></a>Example device information records
 
-リモート監視構成済みソリューションでは、2 種類のデバイス情報レコードが使用されます。ソリューションと共にデプロイされた、シミュレートされたデバイスのレコードと、ソリューションに接続するカスタム デバイスのレコードです。
+The remote monitoring preconfigured solution uses two types of device information records: records for the simulated devices deployed with the solution and records for the custom devices you connect to the solution.
 
-### シミュレートされたデバイス
+### <a name="simulated-device"></a>Simulated device
 
-次の例は、シミュレートされたデバイスの JSON デバイス情報レコードを示します。このレコードには、デバイスが **DeviceInfo** メッセージを IoT Hub に送信したことを示す **UpdatedTime** の値セットがあります。レコードには一般的なデバイス プロパティがいくつか含まれており、シミュレートされたデバイスがサポートする 6 つのコマンドが定義されています。また、**IsSimulatedDevice** フラグが **1** に設定されています。
+The following example shows the JSON device information record for a simulated device. This record has a value set for **UpdatedTime**, which indicates the device has sent a **DeviceInfo** message to IoT Hub. The record includes some common device properties, defines the six commands the simulated devices support, and has the **IsSimulatedDevice** flag set to **1**.
 
 ```
 {
@@ -181,9 +182,9 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 }
 ```
 
-### カスタム デバイス
+### <a name="custom-device"></a>Custom device
 
-次の例は、カスタム デバイスの JSON デバイス情報レコードを示します。ここでは、**IsSimulatedDevice** フラグが **0** に設定されています。このカスタム デバイスが 2 つのコマンドをサポートしていることと、ソリューション ポータルからデバイスに **SetTemperature** コマンドが送信されたことがわかります。
+The following example shows the JSON device information record for a custom device and has the **IsSimulatedDevice** flag set to **0**. You can see that this custom device supports two commands and that the solution portal has sent a **SetTemperature** command to the device:
 
 ```
 {
@@ -244,7 +245,7 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 }
 ```
 
-次の例は、デバイス情報メタデータを更新するためにデバイスから送信された JSON **DeviceInfo** メッセージを示しています。
+The following shows the JSON **DeviceInfo** message the device sent to update the device information metadata:
 
 ```
 { "ObjectType":"DeviceInfo",
@@ -258,13 +259,13 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 }
 ```
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-構成済みのソリューションをカスタマイズする方法を学習し終えたので、次のリンク先で IoT Suite の構成済みのソリューションのその他の機能のいくつかについて調べることができます。
+Now you've finished learning how you can customize the preconfigured solutions, you can explore some of the other features and capabilities of the IoT Suite preconfigured solutions:
 
-- [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive-overview]
-- [IoT スイートに関してよく寄せられる質問][lnk-faq]
-- [IoT の徹底的なセキュリティ][lnk-security-groundup]
+- [Predictive maintenance preconfigured solution overview][lnk-predictive-overview]
+- [Frequently asked questions for IoT Suite][lnk-faq]
+- [IoT security from the ground up][lnk-security-groundup]
 
 
 
@@ -274,7 +275,7 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 [img-device-remove]: media/iot-suite-remote-monitoring-device-info/image3.png
 
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
-[lnk-identity-registry]: ../iot-hub/iot-hub-devguide.md#device-identity-registry
+[lnk-identity-registry]: ../iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-docdb]: https://azure.microsoft.com/documentation/services/documentdb/
 [lnk-ref-arch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 [lnk-stream-analytics]: https://azure.microsoft.com/documentation/services/stream-analytics/
@@ -285,4 +286,8 @@ Azure IoT Suite リモート監視構成済みソリューションは、デバ�
 [lnk-faq]: iot-suite-faq.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

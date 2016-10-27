@@ -1,139 +1,147 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と InsideView の統合 | Microsoft Azure" 
-    description="Azure Active Directory で InsideView を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with InsideView | Microsoft Azure" 
+    description="Learn how to use InsideView with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
-	manager="femila"/>
+    manager="femila"/>
 <tags 
     ms.service="active-directory" 
     ms.devlang="na" 
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/09/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と InsideView の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-insideview"></a>Tutorial: Azure Active Directory integration with InsideView
   
-このチュートリアルでは、Azure と InsideView の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and InsideView.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   InsideView テナント
+-   A valid Azure subscription
+-   A InsideView tenant
   
-このチュートリアルを完了すると、InsideView に割り当てた Azure AD ユーザーは、InsideView 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to InsideView will be able to single sign into the application at your InsideView company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  InsideView のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for InsideView
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-insideview-tutorial/IC794128.png "シナリオ")
-##InsideView のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-insideview-tutorial/IC794128.png "Scenario")
+##<a name="enabling-the-application-integration-for-insideview"></a>Enabling the application integration for InsideView
   
-このセクションでは、InsideView のアプリケーション統合を有効にする方法を説明します。
+The objective of this section is to outline how to enable the application integration for InsideView.
 
-###InsideView のアプリケーション統合を有効にするには、次の手順を実行します。
+###<a name="to-enable-the-application-integration-for-insideview,-perform-the-following-steps:"></a>To enable the application integration for InsideView, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-insideview-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-insideview-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-insideview-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-insideview-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-insideview-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-insideview-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-insideview-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に「**InsideView**」と入力します。
+6.  In the **search box**, type **InsideView**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-insideview-tutorial/IC794129.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-insideview-tutorial/IC794129.png "Application Gallery")
 
-7.  結果ウィンドウで **[InsideView]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **InsideView**, and then click **Complete** to add the application.
 
     ![InsideView](./media/active-directory-saas-insideview-tutorial/IC794130.png "InsideView")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで InsideView に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+The objective of this section is to outline how to enable users to authenticate to InsideView with their account in Azure AD using federation based on the SAML protocol.  
+As part of this procedure, you are required to create a base-64 encoded certificate file.  
+If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **InsideView** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **InsideView** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-insideview-tutorial/IC794131.png "シングル サインオンの構成")
+    ![Configure Single SignOn](./media/active-directory-saas-insideview-tutorial/IC794131.png "Configure Single SignOn")
 
-2.  **[ユーザーの InsideView へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to InsideView** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-insideview-tutorial/IC794132.png "シングル サインオンの構成")
+    ![Configure Single SignOn](./media/active-directory-saas-insideview-tutorial/IC794132.png "Configure Single SignOn")
 
-3.  **[アプリケーション URL の構成]** ページで、**[InsideView 応答 URL]** テキストボックスに InsideView SSO URL (例: `https://my.insideview.com/iv/<STS Name>/login.iv`) を入力し、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **InsideView Reply URL** textbox, type your InsideView SSO URL (e.g.: `https://my.insideview.com/iv/<STS Name>/login.iv`), and then click **Next**.
 
     ![Configure App URL](./media/active-directory-saas-insideview-tutorial/IC794133.png "Configure App URL")
 
-4.  **[InsideView でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
+4.  On the **Configure single sign-on at InsideView** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-insideview-tutorial/IC794134.png "シングル サインオンの構成")
+    ![Configure Single SignOn](./media/active-directory-saas-insideview-tutorial/IC794134.png "Configure Single SignOn")
 
-5.  別の Web ブラウザー ウィンドウで、InsideView 企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your InsideView company site as an administrator.
 
-6.  上部のツールバーで、**[管理者]**、**[シングル サインオン設定]** をクリックし、**[SAML の追加]** をクリックします。
+6.  In the toolbar on the top, click **Admin**, **SingleSignOn Settings**, and then click **Add SAML**.
 
-    ![SAML シングル サインオンの設定](./media/active-directory-saas-insideview-tutorial/IC794135.png "SAML シングル サインオンの設定")
+    ![SAML Single Sign On Settings](./media/active-directory-saas-insideview-tutorial/IC794135.png "SAML Single Sign On Settings")
 
-7.  **[新しい SAML の追加]** セクションで、次の手順を実行します。
+7.  In the **Add a New SAML** section, perform the following steps:
 
-    ![新しい SAML の追加](./media/active-directory-saas-insideview-tutorial/IC794136.png "新しい SAML の追加")
+    ![Add a New SAML](./media/active-directory-saas-insideview-tutorial/IC794136.png "Add a New SAML")
 
-    1.  **[STS 名]** テキストボックスに、構成の名前を入力します。
-    2.  Azure クラシック ポータルの **[InsideView でのシングル サインオンの構成]** ダイアログ ページで、**[サービス プロバイダー (SP) が開始したエンドポイント]** の値をコピーし、**[SamlP/WS-Fed 未承諾エンドポイント]** テキストボックスに貼り付けます。
-    3.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
+    1.  In the **STS Name** textbox, type a name for your configuration.
+    2.  In the Azure classic portal, on the **Configure single sign-on at InsideView** dialog page, copy the **Service Provider (SP) Initiated Endpoint** value, and then paste it into the **SamlP/WS-Fed Unsolicated EndPoint** textbox.
+    3.  Create a **base-64 encoded** file from your downloaded certificate.
         
-		>[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」を参照してください。
+        >[AZURE.TIP]For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 
-    4.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[STS 証明書]** テキストボックスに貼り付けます。
-    5.  **[Crm ユーザー ID マッピング]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
-    6.  **[Crm 電子メール マッピング]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
-    7.  **[Crm ファースト ネーム マッピング]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
-    8.  **[Crm ラスト ネーム マッピング]** テキストボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
-    9.  **[保存]** をクリックします。
+    4.  Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **STS Certificate** textbox
+    5.  In the **Crm User Id Mapping** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    6.  In the **Crm Email Mapping** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    7.  In the **Crm First Name Mapping** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    8.  In the **Crm lastName Mapping** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.
+    9.  Click **Save**.
 
-8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-insideview-tutorial/IC794137.png "シングル サインオンの構成")
-##ユーザー プロビジョニングの構成
+    ![Configure Single SignOn](./media/active-directory-saas-insideview-tutorial/IC794137.png "Configure Single SignOn")
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが InsideView にログインできるようにするには、そのユーザーを InsideView にプロビジョニングする必要があります。InsideView の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into InsideView, they must be provisioned into InsideView.  
+In the case of InsideView, provisioning is a manual task.
   
-InsideView で作成されたユーザーまたは連絡先を取得するには、カスタマー サクセス マネージャーに問い合わせるか、**support@insideview.com** に電子メールを送信してください。
+To get users or contacts created in InsideView, contact your customer success manager or send email to **support@insideview.com**
 
->[AZURE.NOTE] InsideView から提供されている他の InsideView ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other InsideView user account creation tools or APIs provided by InsideView to provision Azure AD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを InsideView に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-insideview,-perform-the-following-steps:"></a>To assign users to InsideView, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **InsideView** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **InsideView **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-insideview-tutorial/IC794138.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-insideview-tutorial/IC794138.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-insideview-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

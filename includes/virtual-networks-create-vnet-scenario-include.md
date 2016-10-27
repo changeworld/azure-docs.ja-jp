@@ -1,14 +1,16 @@
-## シナリオ
+## <a name="scenario"></a>Scenario
 
-VNet とサブネットの作成方法をわかりやすく説明するために、このドキュメントでは次のシナリオを使用します。
+To better illustrate how to create a VNet and subnets, this document will use the scenario below.
 
-![VNet のシナリオ](./media/virtual-networks-create-vnet-scenario-include/vnet-scenario.png)
+![VNet scenario](./media/virtual-networks-create-vnet-scenario-include/vnet-scenario.png)
 
-このシナリオでは、予約済み CIDR ブロック **192.168.0.0./16** を含む **TestVNet** という名前の VNet を作成します。 この VNet には、次のサブネットが含まれます。
+In this scenario you will create a VNet named **TestVNet** with a reserved CIDR block of **192.168.0.0./16**. Your VNet will contain the following subnets: 
 
-- CIDR ブロックとして **192.168.1.0/24** を使用する **FrontEnd**。
-- CIDR ブロックとして **192.168.2.0/24** を使用する **BackEnd**。
+- **FrontEnd**, using **192.168.1.0/24** as its CIDR block.
+- **BackEnd**, using **192.168.2.0/24** as its CIDR block.
 
  
 
-<!---HONumber=Oct15_HO3-->
+<!--HONumber=Oct16_HO2-->
+
+

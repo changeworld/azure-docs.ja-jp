@@ -1,12 +1,15 @@
 
-| レベル: | 無料 | 基本 | 標準 |
+| TIER: | FREE | BASIC | STANDARD |
 |----|----|----|----|
-| 含まれるプッシュ | 100 万 | 1000 万 | 1000 万 |
-| アクティブなデバイス | 500 | 無制限 | 無制限 |
-| インストール/登録ごとのタグ クォータ | 60 | 60 | 60 |
+| Included Pushes | 1 Million | 10 Million | 10 Million |
+| Active Devices | 500 | Unlimited | Unlimited |
+| Tag quota per installation/registration | 60 | 60 | 60 |
 
 
 
-これらの制限に関する詳細と価格の詳細については、[Notification Hubs の価格](https://azure.microsoft.com/pricing/details/notification-hubs/)を参照してください。
+For additional details on these limits and for information on pricing, see [Notification Hubs Pricing](https://azure.microsoft.com/pricing/details/notification-hubs/). 
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

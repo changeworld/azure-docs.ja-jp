@@ -1,13 +1,16 @@
-ここでは、Azure Active Directory サービスの使用上の制約およびその他のサービスの制限を説明します。
+Here are the usage constraints and other service limits for the Azure Active Directory service.
 
-| カテゴリ | 制限 |
+| Category | Limits |
 |---|---|
-| ディレクトリ | 1 人のユーザーは、最大 20 個の Azure Active Directory ディレクトリに関連付けられます。<br />考えられる組み合わせの例を次に示します。<ul><li>1 人のユーザーが 20 個のディレクトリを作成する。</li><li>1 人のユーザーをメンバーとして 20 個のディレクトリに追加する。</li><li>1 人のユーザーが 10 個のディレクトリを作成した後で、他のユーザーがそのユーザーを 10 個の異なるディレクトリに追加する。</li></ul> |  
-| オブジェクト | <ul><li>Azure Active Directory の Free エディションのユーザーが 1 つのディレクトリで使用できるオブジェクト数は最大 500,000 個です。</li><li>管理者以外のユーザーが作成できるオブジェクト数は最大 250 個です。</li></ul> |
-| スキーマの拡張機能 | <ul><li>文字列型の拡張の最大文字数は 256 文字です。</li><li>バイナリ型の拡張は 256 バイトに制限されています。</li><li>1 つのオブジェクトに対して、すべての型およびアプリケーションで合計 100 個の拡張値を書き込むことができます。</li><li>"String" 型または "Binary" 型の単一値の属性で拡張できるのは、"User"、"Group"、"TenantDetail"、"Device"、"Application"、"ServicePrincipal" の各エンティティのみです。</li><li>スキーマ拡張は、Graph API-version 1.21-preview でのみ使用できます。拡張を登録するには、アプリケーションに書き込みアクセス権を付与する必要があります。</li></ul> |
-| アプリケーション | 1 つのアプリケーションに対して、最大 10 ユーザーが所有者になれます。 |
-| グループ | <ul><li>最大 10 人のユーザーが 1 つのグループの所有者になれます。</li><li>1 つの Azure Active Directory グループのメンバーとして登録できるオブジェクト数に制限はありません。</li><li>Azure Active Directory のディレクトリ同期 (DirSync) を使用してオンプレミスの Active Directory から Azure Active Directory に同期できるグループ内のメンバーの数は、15,000 ユーザーに制限されています。</li><li>Azure AD Connect を使用してオンプレミスの Active Directory から Azure Active Directory に同期できるグループ内のメンバーの数は、50,000 ユーザーに制限されています。</li></ul> |
-| アクセス パネル | <ul><li> Azure AD Premium または Enterprise Mobility Suite のライセンスが割り当てられているユーザーの場合、1 エンド ユーザーたりにアクセス パネルに表示できるアプリケーション数に制限はありません。</li><li>Azure Active Directory の Free エディションまたは Azure AD Basic エディションのライセンスを割り当てられているユーザーの場合、1 エンド ユーザーたりにアクセス パネルに表示できるアプリ タイル数は最大 10 個です (例: Box、Salesforce、または Dropbox) 。この制限は、管理者アカウントには適用されません。</li></ul> |
-| レポート | いずれのレポートでも、最大 1,000 行を表示またはダウンロードできます。それを超えるデータは切り捨てられます。 |
+| Directories | A single user can only be associated with a maximum of 20 Azure Active Directory directories.<br />Examples of possible combinations: <ul> <li>A single user creates 20 directories.</li><li>A single user is added to 20 directories as a member.</li><li>A single user creates 10 directories and later is added by others to 10 different directories.</li></ul> |  
+| Objects | <ul><li>A maximum of 500,000 objects can be used in a single directory by users of the Free edition of Azure Active Directory.</li><li>A non-admin user can create no more than 250 objects.</li></ul> |
+| Schema extensions | <ul><li>String type extensions can have maximum of 256 characters. </li><li>Binary type extensions are limited to 256 bytes.</li><li>100 extension values (across ALL types and ALL applications) can be written to any single object.</li><li>Only “User”, “Group”, “TenantDetail”, “Device”, “Application” and “ServicePrincipal” entities can be extended with “String” type or “Binary” type single-valued attributes.</li><li>Schema extensions are available only in Graph API-version 1.21-preview. The application must be granted write access to register an extension.</li></ul> |
+| Applications | A maximum of 10 users can be owners of a single application. |
+| Groups | <ul><li>A maximum of 10 users can be owners of a single group.</li><li>Any number of objects can be members of a single group in Azure Active Directory.</li><li>The number of members in a group you can synchronize from your on-premises Active Directory to Azure Active Directory is limited to 15K members, using Azure Active Directory Directory Synchronization (DirSync).</li><li>The number of members in a group you can synchronize from your on-premises Active Directory to Azure Active Directory using Azure AD Connect is limited to 50K members.</li></ul> |
+| Access Panel | <ul><li>There is no limit to the number of applications that can be seen in the Access Panel per end user, for users assigned licenses for Azure AD Premium or the Enterprise Mobility Suite.</li><li>A maximum of 10 app tiles (examples: Box, Salesforce, or Dropbox) can be seen in the Access Panel for each end user for users assigned licenses for Free or Azure AD Basic editions of Azure Active Directory. This limit does not apply to Administrator accounts.</li></ul> |
+| Reports | A maximum of 1,000 rows can be viewed or downloaded in any report. Any additional data is truncated. |
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

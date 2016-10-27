@@ -1,61 +1,63 @@
-## ルート テーブル
-ルート テーブル リソースには、Azure インフラストラクチャ内でトラフィックがどのようにフローするかを定義するために使用されるルートが含まれています。ファイアウォールや侵入検知システム (IDS) など、ユーザー定義ルート (UDR) を使用して所定のサブネットからのすべてのトラフィックを仮想アプライアンスに送信できます。サブネットにルート テーブルを関連付けることができます。
+## <a name="route-tables"></a>Route tables
+Route table resources contains routes used to define how traffic flows within your Azure infrastructure. You can use user defined routes (UDR) to send all traffic from a given subnet to a virtual appliance, such as a firewall or intrusion detection system (IDS). You can associate a route table to subnets. 
 
-ルート テーブルには次のプロパティが含まれています。
+Route tables contain the following properties.
 
-|プロパティ|説明|サンプルの値|
+|Property|Description|Sample values|
 |---|---|---|
-|**routes**|ルート テーブル内のユーザー定義ルートのコレクション|[ユーザー定義のルート](#User-defined-routes)を参照|
-|**サブネット**|ルート テーブルが適用されるサブネットのコレクション|[サブネット](#Subnets)を参照|
+|**routes**|Collection of user defined routes in the route table|see [user defined routes](#User-defined-routes)|
+|**subnets**|Collection of subnets the route table is applied to|see [subnets](#Subnets)|
 
 
-### ユーザー定義のルート
-宛先アドレスに基づいてトラフィックの送信先を指定する UDR を作成できます。ルートは、ネットワーク パケットの宛先アドレスに基づく既定のゲートウェイ定義として考えることができます。
+### <a name="user-defined-routes"></a>User defined routes
+You can create UDRs to specify where traffic should be sent to, based on its destination address. You can think of a route as the default gateway definition based on the destination address of a network packet.
 
-UDR には、次のプロパティが含まれています。
+UDRs contain the following properties. 
 
-|プロパティ|説明|サンプルの値|
+|Property|Description|Sample values|
 |---|---|---|
-|**addressPrefix**|アドレスのプレフィックス、または宛先の完全な IP アドレス|192\.168.1.0/24, 192.168.1.101|
-|**nextHopType**|トラフィックの送信先となるデバイスの種類|VirtualAppliance、VPN Gateway、インターネット|
-|**nextHopIpAddress**|次のホップ先の IP アドレス|192\.168.1.4|
+|**addressPrefix**|Address prefix, or full IP address for the destination|192.168.1.0/24, 192.168.1.101|
+|**nextHopType**|Type of device the traffic will be sent to|VirtualAppliance, VPN Gateway, Internet|
+|**nextHopIpAddress**|IP address for the next hop|192.168.1.4|
 
 
-JSON 形式のサンプル ルート テーブル
+Sample route table in JSON format:
 
-	{
-	    "name": "UDR-BackEnd",
-	    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd",
-	    "etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
-	    "type": "Microsoft.Network/routeTables",
-	    "location": "westus",
-	    "properties": {
-	        "provisioningState": "Succeeded",
-	        "routes": [
-	            {
-	                "name": "RouteToFrontEnd",
-	                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd/routes/RouteToFrontEnd",
-	                "etag": "W/"v"",
-	                "properties": {
-	                    "provisioningState": "Succeeded",
-	                    "addressPrefix": "192.168.1.0/24",
-	                    "nextHopType": "VirtualAppliance",
-	                    "nextHopIpAddress": "192.168.0.4"
-	                }
-	            }
-	        ],
-	        "subnets": [
-	            {
-	                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd"
-	            }
-	        ]
-	    }
-	}
+    {
+        "name": "UDR-BackEnd",
+        "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd",
+        "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
+        "type": "Microsoft.Network/routeTables",
+        "location": "westus",
+        "properties": {
+            "provisioningState": "Succeeded",
+            "routes": [
+                {
+                    "name": "RouteToFrontEnd",
+                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/routeTables/UDR-BackEnd/routes/RouteToFrontEnd",
+                    "etag": "W/\"v\"",
+                    "properties": {
+                        "provisioningState": "Succeeded",
+                        "addressPrefix": "192.168.1.0/24",
+                        "nextHopType": "VirtualAppliance",
+                        "nextHopIpAddress": "192.168.0.4"
+                    }
+                }
+            ],
+            "subnets": [
+                {
+                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/BackEnd"
+                }
+            ]
+        }
+    }
 
-### その他のリソース
+### <a name="additional-resources"></a>Additional resources
 
-- [UDR](../articles/virtual-network/virtual-networks-udr-overview.md) の詳細を確認します。
-- ルート テーブルに関しては、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502549.aspx)を確認してください。
-- ユーザー定義ルート (UDR) に関しては、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt502539.aspx)を確認してください。
+- Get more information about [UDRs](../articles/virtual-network/virtual-networks-udr-overview.md).
+- Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt502549.aspx) for route tables.
+- Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt502539.aspx) for user defined routes (UDRs).
 
-<!---HONumber=AcomDC_0323_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

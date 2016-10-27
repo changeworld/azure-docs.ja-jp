@@ -1,49 +1,54 @@
 <properties
-	pageTitle="Azure Virtual Networks に影響を与える Azure サービスの中断が発生した場合の対処方法 | Microsoft Azure"
-	description="Azure Virtual Networks に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。"
-	services="virtual-network"
-	documentationCenter=""
-	authors="NarayanAnnamalai"
-	manager="jefco"
-	editor=""/>
+    pageTitle="What to do in the event of an Azure service disruption impacting Azure Virtual Networks | Microsoft Azure"
+    description="Learn what to do in the event of an Azure service disruption impacting Azure Virtual Networks."
+    services="virtual-network"
+    documentationCenter=""
+    authors="NarayanAnnamalai"
+    manager="jefco"
+    editor=""/>
 
 <tags
-	ms.service="virtual-network"
-	ms.workload="virtual-network"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/16/2016"
-	ms.author="narayan;aglick"/>
+    ms.service="virtual-network"
+    ms.workload="virtual-network"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="05/16/2016"
+    ms.author="narayan;aglick"/>
 
-#Virtual Network – ビジネス継続性
 
-##概要
+#<a name="virtual-network-–-business-continuity"></a>Virtual Network – Business Continuity
 
-Virtual Network (VNet) は、クラウド内のユーザーのネットワークを論理的に表したものです。これにより、独自のプライベート IP アドレス空間を定義し、ネットワークをサブネットに分割することができます。VNet は、Azure Virtual Machines や Cloud Services (web/worker ロール) などのコンピューティング リソースをホストする際に信頼の境界として機能します。VNet の内部にホストされているリソースどうしは、プライベート IP で直接通信できます。Virtual Network は、VPN Gateway や ExpressRoute などのハイブリッド オプションのいずれかを介して、オンプレミスのネットワークにもリンクすることができます。
+##<a name="overview"></a>Overview
+
+A Virtual Network (VNet) is a logical representation of your network in the cloud. It allows you to define your own private IP address space and segment the network into subnets. VNets serves as a trust boundary to host your compute resources such as Azure Virtual Machines and Cloud Services (web/worker roles). A VNet allows direct private IP communication between the resources hosted in it. A Virtual Network can also be linked to an on-premises network through one of the hybrid options such as a VPN Gateway or ExpressRoute.
  
-VNet は、1 つのリージョンの範囲内に作成します。同じアドレス空間を持つ VNet を異なる 2 つのリージョンに作成できます (つまり、米国東部と米国西部に作成できますが、これらの間を直接接続することはできません)。
+A VNet is created within the scope of a region. You can create VNets with same address space in two different regions (i.e. US East and US West but cannot connect them to one another directly). 
 
-##ビジネス継続性
+##<a name="business-continuity"></a>Business Continuity
 
-アプリケーションが中断される原因はさまざまです。特定のリージョンで、自然災害によりネットワークが完全に切断される可能性や、いくつかのデバイスやサービスの障害により部分的に障害が発生する可能性があります。VNet サービスへの影響は、これらの状況によって異なります。
+There could be several different ways that your application could be disrupted. A given region could be completely cut off due to a natural disaster or a partial disaster due to a failure of multiple devices/services. The impact on the VNet service is different in each of these situations.
 
-**Q: リージョン全体の機能が停止した場合、つまり、自然災害により、リージョンが完全に切断された場合、どうなりますか。 そのリージョンでホストされている Virtual Network はどうなりますか。**
+**Q: What do you do in the event of an outage to an entire region? i.e. if a region is completely cutoff due to a natural disaster? What happens to the Virtual Networks hosted in the region?**
 
-A: サービスが中断されている間は、影響を受けたリージョン内の Virtual Network とリソースにアクセスできなくなります。
+A: The Virtual Network and the resources in the affected region remains inaccessible during the time of the service disruption.
 
-![単純な Virtual Network の図](./media/virtual-network-disaster-recovery-guidance/vnet.png)
+![Simple Virtual Network Diagram](./media/virtual-network-disaster-recovery-guidance/vnet.png)
 
-**Q: 別のリージョンで同じ仮想ネットワークを再作成するには、どうすればよいですか。**
+**Q: What can I to do re-create the same Virtual Network in a different region?**
 
-A: Virtual Network (VNet) は、非常に軽量なリソースです。Azure API を呼び出して、別のリージョンに同じアドレス空間を持つ VNet を作成することができます。影響を受けたリージョンに存在していたのと同じ環境を再作成するには、API を呼び出して、Cloud Services (web/worker ロール) と Virtual Machines を再デプロイします。また、オンプレミス接続 (ハイブリッド デプロイなど) があった場合は、VPN Gateway を起動し、オンプレミスのネットワークに接続する必要があります。
+A: Virtual Network (VNet) is fairly lightweight resource. You can invoke Azure APIs to create a VNet with the same address space in a different region. To re-create the same environment that was present in the affected region, you have to make API calls to re-deploy your Cloud Services (web/worker roles) and Virtual Machines that you had. You will also have to spin up a VPN Gateway and connect to your on-premises network if you had on-premises connectivity (such as in a hybrid deployment).
 
-VNet を作成する手順については、[こちら](./virtual-networks-create-vnet-arm-pportal.md)をご覧ください。
+The instructions for creating a VNet are found [here](./virtual-networks-create-vnet-arm-pportal.md). 
 
-**Q: 特定のリージョンの VNet のレプリカを別のリージョンに前もって再作成できますか。**
+**Q: Can a replica of a VNet in a given region be re-created in another region ahead of time?**
 
-A: はい。VNet の同じプライベート IP アドレス空間とリソースを使用して、2 つの異なるリージョンに 2 つの VNet を前もって作成できます。お客様が VNet 内でインターネットに接続するサービスをホストしていた場合は、Traffic Manager をセットアップして、アクティブなリージョンにトラフィックを地理的に分散させることができます。ただし、ルーティングの問題の原因となるため、同じアドレス空間を持つ 2 つの VNet をオンプレミスのネットワークに接続することはできません。一方のリージョンで災害が発生し、VNet が失われた場合は、同じアドレス空間を持つもう一方の利用可能な VNet をオンプレミスのネットワークに接続できます。
+A: Yes, you can create two VNets using the same private IP address space and resources under the VNet in two different regions ahead of time. If the customer was hosting internet facing services in the VNet, he could have setup Traffic Manager to geo distribute traffic to the region that is active. However, a customer cannot connect two VNets with the same address space to on-premises network as it would cause routing issues. At the time of a disaster and loss of a VNet in one region, the customer can connect the other available VNet with the same address space to on-premises network.
 
-VNet を作成する手順については、[こちら](./virtual-networks-create-vnet-arm-pportal.md)をご覧ください。
+The instructions for creating a VNet are found [here](./virtual-networks-create-vnet-arm-pportal.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Virtual Network VPN Gateway の FAQ | Microsoft Azure"
-   description="VPN Gateway に関する FAQ です。Microsoft Azure Virtual Network のクロスプレミス接続、ハイブリッド構成接続、および VPN Gateway の FAQ"
+   pageTitle="Virtual Network VPN Gateway FAQ | Microsoft Azure"
+   description="The VPN Gateway FAQ. FAQ for Microsoft Azure Virtual Network cross-premises connections, hybrid configuration connections, and VPN Gateways"
    services="vpn-gateway"
    documentationCenter="na"
    authors="yushwang"
@@ -15,266 +15,273 @@
    ms.date="03/10/2016"
    ms.author="yushwang" />
 
-# VPN Gateway に関する FAQ
 
-## 仮想ネットワークへの接続
+# <a name="vpn-gateway-faq"></a>VPN Gateway FAQ
 
-### 仮想ネットワークは異なる Azure リージョン間でも接続できますか。
-はい。リージョンにより制限されることはありません。特定の仮想ネットワークから、同一リージョン内の別の仮想ネットワーク、または別の Azure リージョンに存在する別の仮想ネットワークに接続できます。
+## <a name="connecting-to-virtual-networks"></a>Connecting to Virtual Networks
 
-### 異なるサブスクリプションの仮想ネットワークに接続することはできますか。
-はい。
+### <a name="can-i-connect-virtual-networks-in-different-azure-regions?"></a>Can I connect virtual networks in different Azure regions?
+Yes. In fact, there is no region constraint. One virtual network can connect to another virtual network in the same region, or in a different Azure region.
 
-### 1 つの仮想ネットワークから複数のサイトに接続できますか。
+### <a name="can-i-connect-virtual-networks-in-different-subscriptions?"></a>Can I connect virtual networks in different subscriptions?
+Yes.
 
-Windows PowerShell および Azure REST API を使用して複数のサイトに接続することができます。詳細については、「[マルチサイトと VNet 間接続](#multi-site-and-vnet-to-vnet-connectivity)」の FAQ を参照してください。
-## クロスプレミス接続にはどのようなオプションがありますか。
+### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network?"></a>Can I connect to multiple sites from a single virtual network?
 
-次のようなクロスプレミス接続がサポートされています。
+You can connect to multiple sites by using Windows PowerShell and the Azure REST APIs. See the [Multi-Site and VNet-to-VNet Connectivity](#multi-site-and-vnet-to-vnet-connectivity) FAQ section.
+## <a name="what-are-my-cross-premises-connection-options?"></a>What are my cross-premises connection options?
 
-- [サイト間接続](vpn-gateway-site-to-site-create.md) - IPsec (IKE v1 および IKE v2) 経由での VPN 接続。この種類の接続には、VPN デバイスまたは RRAS が必要です。
+The following cross-premises connections are supported:
 
-- [ポイント対サイト接続](vpn-gateway-point-to-site-create.md) – SSTP (Secure Socket トンネリング プロトコル) 経由での VPN 接続。この接続では、VPN デバイスは不要です。
+- [Site-to-Site](vpn-gateway-site-to-site-create.md) – VPN connection over IPsec (IKE v1 and IKE v2). This type of connection requires a VPN device or RRAS.
 
-- [VNet 間接続](virtual-networks-configure-vnet-to-vnet-connection.md) - この種類の接続は、サイト間構成の場合と同じです。VNet 間接続では IPsec (IKE v1 および IKE v2) 経由で VPN 接続を確立します。VPN デバイスは不要です。
+- [Point-to-Site](vpn-gateway-point-to-site-create.md) – VPN connection over SSTP (Secure Socket Tunneling Protocol). This connection does not require a VPN device.
 
-- [マルチサイト接続](vpn-gateway-multi-site.md) - これはサイト間構成の一種で、複数のオンプレミス サイトから仮想ネットワークに接続するものです。
+- [VNet-to-VNet](virtual-networks-configure-vnet-to-vnet-connection.md) – This type of connection is the same as a Site-to-Site configuration. VNet to VNet is a VPN connection over IPsec (IKE v1 and IKE v2). It does not require a VPN device.
 
-- [ExpressRoute 接続](../expressroute/expressroute-introduction.md) - ExpressRoute 接続では、パブリックなインターネットを経由せず、WAN から Azure に直接接続します。詳細については、 「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」および「[ExpressRoute の FAQ](../expressroute/expressroute-faqs.md)」を参照してください。
+- [Multi-Site](vpn-gateway-multi-site.md) – This is a variation of a Site-to-Site configuration that allows you to connect multiple on-premises sites to a virtual network.
 
-接続の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
+- [ExpressRoute](../expressroute/expressroute-introduction.md) – ExpressRoute is a direct connection to Azure from your WAN, not over the public Internet. See the [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md) and the [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) for more information.
 
-### サイト間接続とポイント対サイト接続の違いを教えてください。
+For more information about connections, see [About VPN Gateway](vpn-gateway-about-vpngateways.md).
 
-**サイト間接続**では、ルーティングの構成に従って、オンプレミスの場所に存在する任意のコンピューターと仮想ネットワーク内に存在する任意の仮想マシンやロール インスタンスを接続します。このオプションはクロスプレミス接続として常に使用可能で、ハイブリッド構成にも適しています。この種類の接続は IPsec VPN アプライアンス (ハードウェア アプライアンスまたはソフト アプライアンス) に依存します。なお、これらのアプライアンスはネットワーク境界にデプロイされている必要がありますこの種類の接続を作成するには、VPN ハードウェアと、外部に公開された IPv4 アドレスが必要です。
+### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site?"></a>What is the difference between a Site-to-Site connection and Point-to-Site?
 
-**ポイント対サイト接続**では、任意の場所に存在する 1 台のコンピューターから仮想ネットワーク内に存在する任意のデバイスに接続できます。この接続では、Windows に組み込み済みの VPN クライアントを使用します。ポイント対サイト構成の一部として、証明書と VPN クライアント構成パッケージをインストールします。このパッケージには、コンピューターを仮想ネットワーク内の任意の仮想マシンまたはロール インスタンスに接続できるようにする設定が含まれています。これは仮想ネットワークに接続する場合には適していますが、オンプレミスに存在している場合は適していません。また、このオプションは VPN ハードウェアにアクセスできない場合や外部に公開された IPv4 アドレスが存在しない場合にも便利ですが、このどちらでもサイト間接続が必須となります。
+**Site-to-Site** connections let you connect between any of the computers located on your premises to any virtual machine or role instance within your virtual network, depending on how you choose to configure routing. It's a great option for an always-available cross-premises connection and is well-suited for hybrid configurations. This type of connection relies on an IPsec VPN appliance (hardware or soft appliance), which must be deployed at the edge of your network. To create this type of connection, you must have the required VPN hardware and an externally facing IPv4 address.
 
-VPN の種類がルート ベースのゲートウェイを使用して、サイト間接続を作成する場合は、サイト間接続とポイント対サイト接続の両方を同時に使用するように仮想ネットワークを構成できます。VPN の種類がルート ベースのゲートウェイは、クラシック デプロイ モデルでは動的ゲートウェイと呼ばれます。
+**Point-to-Site** connections let you connect from a single computer from anywhere to anything located in your virtual network. It uses the Windows in-box VPN client. As part of the Point-to-Site configuration, you install a certificate and a VPN client configuration package, which contains the settings that allow your computer to connect to any virtual machine or role instance within the virtual network. It's great when you want to connect to a virtual network, but aren't located on-premises. It's also a good option when you don't have access to VPN hardware or an externally facing IPv4 address, both of which are required for a Site-to-Site connection. 
 
-### ExpressRoute とは何ですか。
+You can configure your virtual network to use both Site-to-Site and Point-to-Site concurrently, provided that you create your Site-to-Site connection using a route-based VPN type for your gateway. Route-based VPN types are called dynamic gateways in the classic deployment model.
 
-ExpressRoute は、マイクロソフトのデータセンターとオンプレミスや共用環境にあるインフラストラクチャの間でプライベート接続を作成するサービスです。ExpressRoute では、Microsoft Azure や Office 365 などの Microsoft クラウド サービスへの接続を、ExpressRoute パートナーの共用施設で確立するか、既存の WAN ネットワーク (ネットワーク サービス プロバイダーが提供する MPLS VPN など) から直接接続することができます。
+### <a name="what-is-expressroute?"></a>What is ExpressRoute?
 
-ExpressRoute 接続は、インターネット経由の一般的な接続に比べて安全性と信頼性が高く、帯域幅が広く、待機時間も短いという特長があります。オンプレミス ネットワークと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合もあります。オンプレミス ネットワークから Azure までのクロスプレミス接続を作成済みである場合は、仮想ネットワークをそのまま維持しながら ExpressRoute 接続に移行することができます。
+ExpressRoute lets you create private connections between Microsoft datacenters and infrastructure that’s on your premises or in a co-location environment. With ExpressRoute, you can establish connections to Microsoft cloud services such as Microsoft Azure and Office 365 at an ExpressRoute partner co-location facility, or directly connect from your existing WAN network (such as an MPLS VPN provided by a network service provider).
 
-詳細については、[ExpressRoute の FAQ](../expressroute/expressroute-faqs.md) を参照してください。
+ExpressRoute connections offer better security, more reliability, higher bandwidth, and lower latencies than typical connections over the Internet. In some cases, using ExpressRoute connections to transfer data between your on-premises network and Azure can also yield significant cost benefits. If you already have created a cross-premises connection from your on-premises network to Azure, you can migrate to an ExpressRoute connection while keeping your virtual network intact.
 
-## サイト間接続と VPN デバイス
+See the [ExpressRoute FAQ](../expressroute/expressroute-faqs.md) for more details.
 
-### VPN デバイスを選択する場合の考慮事項について教えてください。
+## <a name="site-to-site-connections-and-vpn-devices"></a>Site-to-Site connections and VPN devices
 
-Microsoft では、デバイス ベンダーと協力して複数の標準的なサイト間 VPN デバイスを検証しました。互換性が確認されている VPN デバイス、およびそれに対応する構成の手順またはサンプル、およびデバイスの仕様のリストは[こちら](vpn-gateway-about-vpn-devices.md)で確認できます。互換性が確認されているデバイス ファミリに属するすべてのデバイスも仮想ネットワークで動作します。VPN デバイスを構成するには、デバイスの構成サンプル、または適切なデバイス ファミリに対応するリンクを参照してください。
+### <a name="what-should-i-consider-when-selecting-a-vpn-device?"></a>What should I consider when selecting a VPN device?
 
-### 互換性が確認されているデバイスのリストに記載されていない VPN デバイスを所有している場合はどうすればよいですか。
+We have validated a set of standard Site-to-Site VPN devices in partnership with device vendors. A list of known compatible VPN devices, their corresponding configuration instructions or samples, and device specs can be found [here](vpn-gateway-about-vpn-devices.md). All devices in the device families listed as known compatible should work with Virtual Network. To help configure your VPN device, refer to the device configuration sample or link that corresponds to appropriate device family.
 
-互換性が確認されている VPN デバイスのリストにお持ちのデバイスが記載されていない場合、そのデバイスを VPN 接続で使用するには、そのデバイスが IPsec/IKE 構成オプションのほか、[こちらのリスト](vpn-gateway-about-vpn-devices.md#devices-not-on-the-compatible-list)に記載されているパラメーターをサポートしていることを確認する必要があります。最小要件を満たしていれば、そのデバイスは VPN ゲートウェイで動作します。詳細なサポートと構成手順については、デバイスの製造元にお問い合わせください。
+### <a name="what-do-i-do-if-i-have-a-vpn-device-that-isn't-in-the-known-compatible-device-list?"></a>What do I do if I have a VPN device that isn't in the known compatible device list?
 
-### トラフィックがアイドル状態のときにポリシー ベースの VPN トンネルがダウンするのはなぜですか。
+If you do not see your device listed as a known compatible VPN device and you want to use it for your VPN connection, you'll need to verify that it meets the supported IPsec/IKE configuration options and parameters listed [here](vpn-gateway-about-vpn-devices.md#devices-not-on-the-compatible-list). Devices meeting the minimum requirements should work well with VPN gateways. Contact your device manufacturer for additional support and configuration instructions.
 
-これは、ポリシー ベースの (静的ルーティングとも呼ばれる) VPN ゲートウェイの予期される動作です。トンネル経由のトラフィックが 5 分以上アイドル状態になると、トンネルは破棄されます。どちらかの方向のトラフィック フローが開始されると、トンネルはすぐに再び確立されます。
+### <a name="why-does-my-policy-based-vpn-tunnel-go-down-when-traffic-is-idle?"></a>Why does my policy-based VPN tunnel go down when traffic is idle?
 
-### ソフトウェア VPN を使用して Azure に接続することはできますか。
+This is expected behavior for policy-based (also known as static routing) VPN gateways. When the traffic over the tunnel is idle for more than 5 minutes, the tunnel will be torn down. When traffic starts flowing in either direction, the tunnel will be reestablished immediately.
 
-Windows Server 2012 ルーティングとリモート アクセス (RRAS) サーバーでは、クロスプレミス構成のサイト間接続をサポートしています。
+### <a name="can-i-use-software-vpns-to-connect-to-azure?"></a>Can I use software VPNs to connect to Azure?
 
-その他のソフトウェア VPN ソリューションについては、業界標準の IPsec の実装に準拠していればマイクロソフトのゲートウェイで動作します。構成とサポートの手順については、ソフトウェアのベンダーにお問い合わせください。
+We support Windows Server 2012 Routing and Remote Access (RRAS) servers for Site-to-Site cross-premises configuration.
 
-## ポイント対サイト接続
+Other software VPN solutions should work with our gateway as long as they conform to industry standard IPsec implementations. Contact the vendor of the software for configuration and support instructions.
 
-### ポイント対サイト接続で使用できるオペレーティング システムを教えてください。
+## <a name="point-to-site-connections"></a>Point-to-Site connections
 
-次のクライアント オペレーティング システムがサポートされています。
+### <a name="what-operating-systems-can-i-use-with-point-to-site?"></a>What operating systems can I use with Point-to-Site?
 
-- Windows 7 (32 ビットと 64 ビット)
+The following operating systems are supported:
 
-- Windows Server 2008 R2 (64 ビットのみ)
+- Windows 7 (32-bit and 64-bit)
 
-- Windows 8 (32 ビットと 64 ビット)
+- Windows Server 2008 R2 (64-bit only)
 
-- Windows 8.1 (32 ビットと 64 ビット)
+- Windows 8 (32-bit and 64-bit)
 
-- Windows Server 2012 (64 ビットのみ)
+- Windows 8.1 (32-bit and 64-bit)
 
-- Windows Server 2012 R2 (64 ビットのみ)
+- Windows Server 2012 (64-bit only)
+
+- Windows Server 2012 R2 (64-bit only)
 
 - Windows 10
 
-### SSTP をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
+### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp?"></a>Can I use any software VPN client for Point-to-Site that supports SSTP?
 
-いいえ。上記のバージョンの Windows オペレーティング システムのみがサポートされています。
+No. Support is limited only to the Windows operating system versions listed above.
 
-### ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
+### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration?"></a>How many VPN client endpoints can I have in my Point-to-Site configuration?
 
-仮想ネットワークに同時に接続できる VPN クライアント数は、最大で 128 個です。
+We support up to 128 VPN clients to be able to connect to a virtual network at the same time.
 
-### ポイント対サイト接続で自社の内部 PKI ルート CA を使用できますか。
+### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity?"></a>Can I use my own internal PKI root CA for Point-to-Site connectivity?
 
-はい。以前は、自己署名ルート証明書のみを使用できました。現在も 20 ルート証明書までアップロードできます。
+Yes. Previously, only self-signed root certificates could be used. You can still upload 20 root certificates.
 
-### プロキシやファイアウォールを経由してポイント対サイト接続の機能を使用できますか。
+### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability?"></a>Can I traverse proxies and firewalls using Point-to-Site capability?
 
-はい。SSTP (Secure Socket トンネリング プロトコル) を使用してファイアウォール経由のトンネルが確立されます。このトンネルは HTTPS 接続として表示されます。
+Yes. We use SSTP (Secure Socket Tunneling Protocol) to tunnel through firewalls. This tunnel will appear as an HTTPs connection.
 
-### ポイント対サイト接続用に構成されたクライアント コンピューターを再起動した場合、VPN は自動的に再接続されますか。
+### <a name="if-i-restart-a-client-computer-configured-for-point-to-site,-will-the-vpn-automatically-reconnect?"></a>If I restart a client computer configured for Point-to-Site, will the VPN automatically reconnect?
 
-既定では、クライアント コンピューターの再起動時には VPN の自動再接続は行われません。
+By default, the client computer will not reestablish the VPN connection automatically.
 
-### ポイント対サイトの自動再接続と VPN クライアントの DDNS はサポートされていますか。
+### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients?"></a>Does Point-to-Site support auto-reconnect and DDNS on the VPN clients?
 
-ポイント対サイト VPN では、自動再接続と DDNS は現時点ではサポートされていません。
+Auto-reconnect and DDNS are currently not supported in Point-to-Site VPNs.
 
-### サイト間接続およびポイント対サイト接続の構成は、同一仮想ネットワークに共存させることはできますか。
+### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network?"></a>Can I have Site-to-Site and Point-to-Site configurations coexist for the same virtual network?
 
-はい。ゲートウェイの VPN の種類が RouteBased の場合は、どちらのソリューションも機能します。クラシック デプロイメント モデルの場合は、動的ゲートウェイが必要です。静的ルーティング VPN ゲートウェイと、VPN の種類がルート ベースのゲートウェイでは、ポイント対サイト接続はサポートされません。
+Yes. Both these solutions will work if you have a RouteBased VPN type for your gateway. For the classic deployment model, you need a dynamic gateway. We do not support Point-to-Site for static routing VPN gateways or gateways using -VpnType PolicyBased.
 
-### ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
+### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time?"></a>Can I configure a Point-to-Site client to connect to multiple virtual networks at the same time?
 
-はい、できます。ただし、仮想ネットワーク内で重複する IP プレフィックスを使用することはできません。また、ポイント対サイト接続のアドレス空間は仮想ネットワーク内で重複しないようにする必要があります。
+Yes, it is possible. But the virtual networks cannot have overlapping IP prefixes and the Point-to-Site address spaces must not overlap between the virtual networks.
 
-### サイト間接続またはポイント対サイト接続ではどの程度のスループットが得られますか。
+### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections?"></a>How much throughput can I expect through Site-to-Site or Point-to-Site connections?
 
-VPN トンネルのスループットを正確に一定レベルに維持することは困難です。IPsec と SSTP は、VPN プロトコルの中でも暗号化処理の負荷が高いものです。また、スループットはオンプレミスとインターネットの間の待機時間や帯域幅によっても制限されます。
+It's difficult to maintain the exact throughput of the VPN tunnels. IPsec and SSTP are crypto-heavy VPN protocols. Throughput is also limited by the latency and bandwidth between your premises and the Internet.
 
-## ゲートウェイ
+## <a name="gateways"></a>Gateways
 
-### ポリシーベース (静的ルーティング) ゲートウェイとは何ですか。
+### <a name="what-is-a-policy-based-(static-routing)-gateway?"></a>What is a policy-based (static-routing) gateway?
 
-ポリシー ベースのゲートウェイとは、ポリシー ベースの VPN を実装したものです。ポリシー ベースの VPN では、パケットを暗号化し、オンプレミス ネットワークと Azure VNet の間でアドレスのプレフィックスの組み合わせに基づいて IPsec トンネル経由でそのパケットを送信します。ポリシー (またはトラフィック セレクター) は、通常、VPN の構成でアクセス リストとして定義されます。
+Policy-based gateways implement policy-based VPNs. Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the combinations of address prefixes between your on-premises network and the Azure VNet. The policy (or Traffic Selector) is usually defined as an access list in the VPN configuration.
 
-### ルートベース (動的ルーティング) ゲートウェイとは何ですか。
+### <a name="what-is-a-route-based-(dynamic-routing)-gateway?"></a>What is a route-based (dynamic-routing) gateway?
 
-ルート ベースのゲートウェイは、ルート ベースの VPN を実装したものです。ルート ベースの VPN は、「ルート」を使用して、IP 転送やルーティング テーブルを使用してパケットを対応するトンネル インターフェイスに直接送信します。その後、トンネル インターフェイスではトンネルの内部または外部でパケットを暗号化または復号します。ルート ベースの VPN のポリシーまたはトラフィック セレクターは、任意の環境間 (またはワイルドカード) として構成できます。
+Route-based gateways implement the route-based VPNs. Route-based VPNs use "routes" in the IP forwarding or routing table to direct packets into their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy or traffic selector for route based VPNs are configured as any-to-any (or wild cards).
 
-### ゲートウェイを作成する前に VPN ゲートウェイの IP アドレスを取得できますか。
+### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it?"></a>Can I get my VPN gateway IP address before I create it?
 
-いいえ。IP アドレスを取得する前にゲートウェイを作成する必要があります。VPN ゲートウェイを削除してもう一度作成すると、IP アドレスは変更されます。
+No. You have to create your gateway first to get the IP address. The IP address changes if you delete and recreate your VPN gateway.
 
-### VPN トンネルの認証を取得する方法を教えてください。
+### <a name="how-does-my-vpn-tunnel-get-authenticated?"></a>How does my VPN tunnel get authenticated?
 
-Azure の VPN では PSK (事前共有キー) の認証を使用します。事前共有キー (PSK) は VPN トンネルを作成したときに生成されます。自分で使用するために自動生成した PSK は、PowerShell コマンドレットまたは REST API の Set Pre-Shared Key を使用して変更できます。
+Azure VPN uses PSK (Pre-Shared Key) authentication. We generate a pre-shared key (PSK) when we create the VPN tunnel. You can change the auto-generated PSK to your own with the Set Pre-Shared Key PowerShell cmdlet or REST API.
 
-### ポリシー ベース (静的ルーティング) ゲートウェイ VPN を構成する際に Set Pre-Shared Key API を使用できますか。
+### <a name="can-i-use-the-set-pre-shared-key-api-to-configure-my-policy-based-(static-routing)-gateway-vpn?"></a>Can I use the Set Pre-Shared Key API to configure my policy-based (static routing) gateway VPN?
 
-はい。Set Pre-Shared Key API および PowerShell コマンドレットは、Azure のポリシー ベース (静的ルーティング) VPN とルート ベース (動的ルーティング) VPN のどちらを構成する場合にも使用できます。
+Yes, the Set Pre-Shared Key API and PowerShell cmdlet can be used to configure both Azure policy-based (static) VPNs and route-based (dynamic) routing VPNs.
 
-### ほかの認証オプションを使用することはできますか
+### <a name="can-i-use-other-authentication-options?"></a>Can I use other authentication options?
 
-事前共有キー (PSK) による認証のみに制限されています。
+We are limited to using pre-shared keys (PSK) for authentication.
 
-### 「ゲートウェイ サブネット」とは何ですか。また、これが必要な理由を教えてください。
+### <a name="what-is-the-"gateway-subnet"-and-why-is-it-needed?"></a>What is the "gateway subnet" and why is it needed?
 
-クロスプレミス接続を有効にするために実行されているゲートウェイ サービスです。
+We have a gateway service that we run to enable cross-premises connectivity. 
 
-VPN ゲートウェイを構成するには、VNet のゲートウェイ サブネットを作成する必要があります。すべてのゲートウェイ サブネットを正常に動作させるには、GatewaySubnet という名前を付ける必要があります。ゲートウェイ サブネットに他の名前を付けないでください。また、ゲートウェイ サブネットには VM などをデプロイしないでください。
+You'll need to create a gateway subnet for your VNet to configure a VPN gateway. All gateway subnets must be named GatewaySubnet to work properly. Don't name your gateway subnet something else. And don't deploy VMs or anything else to the gateway subnet.
 
-ゲートウェイ サブネットの最小サイズは、作成する構成に完全に依存します。構成によっては /29 のような小さいゲートウェイ サブネットを作成できますが、/28 以上 (/28、/27、/26 など) のゲートウェイ サブネットを作成することをお勧めします。
+The gateway subnet minimum size depends entirely on the configuration that you want to create. Although it is possible to create a gateway subnet as small as /29 for some configurations, we recommend that you create a gateway subnet of /28 or larger (/28, /27, /26 etc.). 
 
-### ゲートウェイ サブネットに仮想マシンやロール インスタンスをデプロイできますか。
+### <a name="can-i-deploy-virtual-machines-or-role-instances-to-my-gateway-subnet?"></a>Can I deploy Virtual Machines or role instances to my gateway subnet?
 
-  
-いいえ。
+No.
 
-### VPN ゲートウェイを通過するトラフィックの種類は、どのようにすれば指定できますか。
+### <a name="how-do-i-specify-which-traffic-goes-through-the-vpn-gateway?"></a>How do I specify which traffic goes through the VPN gateway?
 
-Azure クラシック ポータルを使用している場合、[ローカル ネットワーク] の [ネットワーク] ページで、仮想ネットワークのゲートウェイを経由して送信する範囲をそれぞれ追加します。
+If you are using the Azure Classic Portal, add each range that you want sent through the gateway for your virtual network on the Networks page under Local Networks.
 
-### 強制トンネリングを構成できますか。
+### <a name="can-i-configure-forced-tunneling?"></a>Can I configure Forced Tunneling?
 
-はい。[強制トンネリングについて](vpn-gateway-about-forced-tunneling.md)を参照してください。
+Yes. See [Configure forced tunneling](vpn-gateway-about-forced-tunneling.md).
 
-### Azure で自社の VPN サーバーをセットアップし、オンプレミス ネットワークへの接続に使用することはできますか。
+### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network?"></a>Can I set up my own VPN server in Azure and use it to connect to my on-premises network?
 
-はい。Azure Marketplace から、または自社の VPN ルーターを作成して、自社の VPN ゲートウェイやサーバーを Azure 内にデプロイできます。仮想ネットワーク内でユーザー定義ルートを構成して、オンプレミス ネットワークと仮想ネットワークのサブネットの間でトラフィックが適切にルーティングされるようにする必要があります。
+Yes, you can deploy your own VPN gateways or servers in Azure either from the Azure Marketplace or creating your own VPN routers. You will need to configure user defined routes in your virtual network to ensure traffic is routed properly between your on-premises networks and your virtual network subnets.
 
-### VPN ゲートウェイで特定のポートが開いているのはなぜですか。
+### <a name="why-are-certain-ports-opened-on-my-vpn-gateway?"></a>Why are certain ports opened on my VPN gateway?
 
-Azure インフラストラクチャの通信に必要です。これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに影響を与えることはできません。
+They are required for Azure infrastructure communication. They are protected (locked down) by Azure certificates. Without proper certificates, external entities, including the customers of those gateways, will not be able to cause any effect on those endpoints.
 
-VPN ゲートウェイは、基本的に、1 つの NIC が顧客のプライベート ネットワークに接続され、1 つの NIC がパブリック ネットワークに接続されているマルチホーム デバイスです。Azure インフラストラクチャのエンティティは、コンプライアンス上の理由から顧客のプライベート ネットワークに接続できないため、インフラストラクチャの通信用にパブリック エンドポイントを使用する必要があります。パブリック エンドポイントは、Azure のセキュリティ監査によって定期的にスキャンされます。
+A VPN gateway is fundamentally a multi-homed device with one NIC tapping into the customer private network, and one NIC facing the public network. Azure infrastructure entities cannot tap into customer private networks for compliance reasons, so they need to utilize public endpoints for infrastructure communication. The public endpoints are periodically scanned by Azure security audit.
 
 
-### ゲートウェイの種類、要件、およびスループットの詳細について教えてください。
+### <a name="more-information-about-gateway-types,-requirements,-and-throughput"></a>More information about gateway types, requirements, and throughput
 
-詳細については、「[About VPN Gateway Settings (VPN Gateway の設定について)](vpn-gateway-about-vpn gateway-settings.md)」を参照してください。
+For more information, see [About VPN Gateway Settings](vpn-gateway-about-vpn-gateway-settings.md).
 
-## マルチサイトと VNet 間の接続
+## <a name="multi-site-and-vnet-to-vnet-connectivity"></a>Multi-Site and VNet-to-VNet connectivity
 
-### マルチサイト接続と VNet 接続をサポートしているゲートウェイの種類を教えてください。
+### <a name="which-type-of-gateways-can-support-multi-site-and-vnet-to-vnet-connectivity?"></a>Which type of gateways can support multi-site and VNet-to-VNet connectivity?
 
-ルート ベース (動的ルーティング) VPN のみです。
+Only route-based (dynamic routing) VPNs.
 
-### VPN の種類がルート ベースの VNet を VPN の種類がポリシー ベースの VNet に接続できますか。
+### <a name="can-i-connect-a-vnet-with-a-routebased-vpn-type-to-another-vnet-with-a-policybased-vpn-type?"></a>Can I connect a VNet with a RouteBased VPN Type to another VNet with a PolicyBased VPN type?
 
-いいえ、両方の仮想ネットワークでルート ベース (動的ルーティング) VPN を使用している必要があります。
+No, both virtual networks MUST be using route-based (dynamic routing) VPNs.
 
-### VNet 間のトラフィックはセキュリティで保護されていますか。
+### <a name="is-the-vnet-to-vnet-traffic-secure?"></a>Is the VNet-to-VNet traffic secure?
 
-はい、IPsec/IKE 暗号化で保護されます。
+Yes, it is protected by IPsec/IKE encryption.
 
-### VNet 間のトラフィックは、Azure のバックボーンを経由して送信されますか。
+### <a name="does-vnet-to-vnet-traffic-travel-over-the-azure-backbone?"></a>Does VNet-to-VNet traffic travel over the Azure backbone?
 
-はい。
+Yes.
 
-### 1 つの仮想ネットワークから接続できるオンプレミス サイトと仮想ネットワークの数を教えてください。
+### <a name="how-many-on-premises-sites-and-virtual-networks-can-one-virtual-network-connect-to?"></a>How many on-premises sites and virtual networks can one virtual network connect to?
 
-最大で、基本および標準の動的ルーティング ゲートウェイでは合計 10 個の接続が可能です。高性能の VPN ゲートウェイでは最大で 30 個まで可能です。
+Max. 10 combined for the Basic and Standard Dynamic Routing gateways; 30 for the High Performance VPN gateways.
 
-### 仮想ネットワークを持つポイント対サイト VPN を複数の VPN トンネルで使用できますか。
+### <a name="can-i-use-point-to-site-vpns-with-my-virtual-network-with-multiple-vpn-tunnels?"></a>Can I use Point-to-Site VPNs with my virtual network with multiple VPN tunnels?
 
-はい、ポイント対サイト (P2S) VPN は複数のオンプレミス サイトおよび他の仮想ネットワークに接続されている VPN ゲートウェイで使用できます。
+Yes, Point-to-Site (P2S) VPNs can be used with the VPN gateways connecting to multiple on-premises sites and other virtual networks.
 
-### 仮想ネットワークとオンプレミス サイトの間に、マルチサイト VPN を使用して複数のトンネルを構成できますか。
+### <a name="can-i-configure-multiple-tunnels-between-my-virtual-network-and-my-on-premises-site-using-multi-site-vpn?"></a>Can I configure multiple tunnels between my virtual network and my on-premises site using multi-site VPN?
 
-いいえ、Azure の仮想ネットワークと、オンプレミス サイトの間で冗長なトンネルを構成することはできません。
+No, redundant tunnels between an Azure virtual network and an on-premises site are not supported.
 
-### 接続されている仮想ネットワークとオンプレミスのローカル サイトで、重複するアドレス空間を使用できますか。
+### <a name="can-there-be-overlapping-address-spaces-among-the-connected-virtual-networks-and-on-premises-local-sites?"></a>Can there be overlapping address spaces among the connected virtual networks and on-premises local sites?
 
-いいえ。アドレス空間が重複すると、ネットワーク構成ファイルのアップロードまたは "仮想ネットワークの作成" でエラーが発生します。
+No. Overlapping address spaces will cause the network configuration file upload or "Creating Virtual Network" to fail.
 
-### 1 つの仮想ネットワークのよりも多くのサイト間 VPN を確立した方がより広い帯域幅を得られるのでしょうか。
+### <a name="do-i-get-more-bandwidth-with-more-site-to-site-vpns-than-for-a-single-virtual-network?"></a>Do I get more bandwidth with more Site-to-Site VPNs than for a single virtual network?
 
-いいえ、ポイント対サイト VPN を含むすべての VPN トンネルは、同一の Azure VPN Gateway とそこで利用可能な帯域幅を共有します。
+No, all VPN tunnels, including Point-to-Site VPNs, share the same Azure VPN gateway and the available bandwidth.
 
-### オンプレミス サイトや別の仮想ネットワークに向けてトラフィックを通過させるときに、Azure VPN Gateway を使用できますか。
+### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network?"></a>Can I use Azure VPN gateway to transit traffic between my on-premises sites or to another virtual network?
 
-**クラシック デプロイメント モデル**<br>クラシック デプロイメント モデルを使用して Azure VPN Gateway 経由でトラフィックを通過させることは可能です。この場合、ネットワーク構成ファイル内の静的に定義されたアドレス空間が使用されます。BGP はまだ、クラシック デプロイメント モデルを使用した Azure Virtual Network と VPN Gateway ではサポートされていません。BGP が使用できない場合、手動で通過アドレス空間を定義すると非常にエラーが発生しやすいため、推奨されません。<br> **Resource Manager デプロイメント モデル**<br>Resource Manager デプロイメント モデルを使用している場合は、詳細について「[BGP](#bgp)」セクションをご覧ください。
+**Classic deployment model**<br>
+Transit traffic via Azure VPN gateway is possible using the classic deployment model, but relies on statically defined address spaces in the network configuration file. BGP is not yet supported with Azure Virtual Networks and VPN gateways using the classic deployment model. Without BGP, manually defining transit address spaces is very error prone, and not recommended.<br>
+**Resource Manager deployment model**<br>
+If you are using the Resource Manager deployment model, see the [BGP](#bgp) section for more information.
 
-### Azure では、同一仮想ネットワークのすべての VPN 接続に対して同一の IPsec/IKE 事前共有キーが生成されるのですか。
+### <a name="does-azure-generate-the-same-ipsec/ike-pre-shared-key-for-all-my-vpn-connections-for-the-same-virtual-network?"></a>Does Azure generate the same IPsec/IKE pre-shared key for all my VPN connections for the same virtual network?
 
-いいえ、既定では、Azure は異なる VPN 接続に対してそれぞれ異なる事前共有キーを生成します。ただし、Set VPN Gateway Key REST API または PowerShell コマンドレットを使用すると、お好みのキー値を設定することができます。キーは、1 ～ 128 文字の長さの英数字の文字列である必要があります。
+No, Azure by default generates different pre-shared keys for different VPN connections. However, you can use the Set VPN Gateway Key REST API or PowerShell cmdlet to set the key value you prefer. The key MUST be alphanumerical string of length between 1 to 128 characters.
 
-### Azure では、仮想ネットワーク間のトラフィックに対して料金が発生しますか。
+### <a name="does-azure-charge-for-traffic-between-virtual-networks?"></a>Does Azure charge for traffic between virtual networks?
 
-異なる Azure 仮想ネットワーク間のトラフィックについては、異なる Azure リージョンに転送する場合のみ料金が発生します。料金の詳細については、Azure [VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway/)ページを参照してください。
+For traffic between different Azure virtual networks, Azure charges only for traffic traversing from one Azure region to another. The charge rate is listed in the Azure [VPN Gateway Pricing](https://azure.microsoft.com/pricing/details/vpn-gateway/) page.
 
 
-### IPsec VPN を使用している仮想ネットワークを自社の ExpressRoute 回線に接続できますか。
+### <a name="can-i-connect-a-virtual-network-with-ipsec-vpns-to-my-expressroute-circuit?"></a>Can I connect a virtual network with IPsec VPNs to my ExpressRoute circuit?
 
-はい、これはサポートされています。詳細については、[共存する ExpressRoute とサイト間 VPN の接続の構成](../expressroute/expressroute-howto-coexist-classic.md)を参照してください。
+Yes, this is supported. For more information, see [Configure ExpressRoute and Site-to-Site VPN connections that coexist](../expressroute/expressroute-howto-coexist-classic.md).
 
-## <a name="bgp"></a>BGP
+## <a name="<a-name="bgp"></a>bgp"></a><a name="bgp"></a>BGP
 
-[AZURE.INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)]
+[AZURE.INCLUDE [vpn-gateway-bgp-faq-include](../../includes/vpn-gateway-bpg-faq-include.md)] 
 
 
 
-## クロスプレミス接続と VM
+## <a name="cross-premises-connectivity-and-vms"></a>Cross-premises connectivity and VMs
 
-### 仮想ネットワーク内に仮想マシンが存在し、クロスプレミス接続が使用できる場合、その VM にはどのように接続できますか。
+### <a name="if-my-virtual-machine-is-in-a-virtual-network-and-i-have-a-cross-premises-connection,-how-should-i-connect-to-the-vm?"></a>If my virtual machine is in a virtual network and I have a cross-premises connection, how should I connect to the VM?
 
-いくつかの方法を使用できます。RDP が有効でエンドポイントが既に作成されている場合は、VIP を使用して仮想マシンに接続できます。この場合、接続先の VIP とポートを指定します。このため、このトラフィックで使用するポートを仮想マシンで構成する必要があります。通常は、Azure クラシック ポータルに移動して RDP 接続の設定をコンピューターに保存します。この設定には必要な接続情報が格納されています。
+You have a few options. If you have RDP enabled and you have created an endpoint, you can connect to your virtual machine by using the VIP. In that case, you would specify the VIP and the port that you want to connect to. You'll need to configure the port on your virtual machine for the traffic. Typically, you would go to the Azure Classic Portal and save the settings for the RDP connection to your computer. The settings contain the necessary connection information.
 
-クロスプレミス接続が構成されている環境に仮想ネットワークが存在する場合は、内部 DIP またはプライベート IP アドレスを使用して仮想マシンに接続できます。また、同一仮想ネットワークに存在する別の仮想マシンから内部 DIP で仮想マシンに接続することもできます。仮想ネットワークの外部から接続している場合は、DIP を使用して仮想マシンに RDP 接続することはできません。たとえば、ポイント対サイト仮想ネットワークが構成済みで、使用中のコンピューターからの接続が確立されていない場合は、DIP を使用して仮想マシンに接続することはできません。
+If you have a virtual network with cross-premises connectivity configured, you can connect to your virtual machine by using the internal DIP or private IP address. You can also connect to your virtual machine by internal DIP from another virtual machine that's located on the same virtual network. You can't RDP to your virtual machine by using the DIP if you are connecting from a location outside of your virtual network. For example, if you have a Point-to-Site virtual network configured and you don't establish a connection from your computer, you can't connect to the virtual machine by DIP.
 
-### クロスプレミス接続が確立されている仮想ネットワーク内に仮想マシンが存在する場合、VM からのトラフィックはすべてその接続を経由しますか。
+### <a name="if-my-virtual-machine-is-in-a-virtual-network-with-cross-premises-connectivity,-does-all-the-traffic-from-my-vm-go-through-that-connection?"></a>If my virtual machine is in a virtual network with cross-premises connectivity, does all the traffic from my VM go through that connection?
 
-いいえ。仮想ネットワーク ゲートウェイを経由して送信されるのは、仮想ネットワークのローカル ネットワークの IP アドレス範囲内に存在する送信先 IP が指定されているトラフィックのみです。送信先 IP が同一仮想ネットワーク内に存在する場合は、その仮想ネットワーク内のみで通信が行われます。それ以外のトラフィックは、ロード バランサーを経由してパブリック ネットワークに送信されます。ただし、強制トンネリングを使用する場合は Azure VPN ゲートウェイを経由して送信されます。トラブルシューティングの際には、ゲートウェイを経由して送信する場合に使用するアドレス範囲がすべてローカル ネットワークのリストに含まれていることを確認することが重要です。ローカル ネットワークのアドレス範囲は、仮想ネットワークのどのアドレス範囲とも重複していないことを確認します。また、使用する DNS サーバーの名前解決が適切な IP アドレスに対して実行されていることを確認します。
+No. Only the traffic that has a destination IP that is contained in the virtual network Local Network IP address ranges that you specified will go through the virtual network gateway. Traffic has a destination IP located within the virtual network stays within the virtual network. Other traffic is sent through the load balancer to the public networks, or if forced tunneling is used, sent through the Azure VPN gateway. If you are troubleshooting, it's important to make sure that you have all the ranges listed in your Local Network that you want to send through the gateway. Verify that the Local Network address ranges do not overlap with any of the address ranges in the virtual network. Also, you want to verify that the DNS server you are using is resolving the name to the proper IP address.
 
 
-## Virtual Network FAQ
+## <a name="virtual-network-faq"></a>Virtual Network FAQ
 
-「[Virtual Network FAQ](../virtual-network/virtual-networks-faq.md)」で、仮想ネットワークの情報をさらに詳しく参照できます。
+You view additional virtual network information in the [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md).
  
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

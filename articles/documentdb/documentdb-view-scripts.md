@@ -1,118 +1,123 @@
 <properties
-	pageTitle="DocumentDB スクリプト エクスプローラーという JavaScript エディター | Microsoft Azure"
-	description="DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) を管理するための Azure ポータル ツール、DocumentDB スクリプト エクスプローラーについて説明します。"
-	keywords="javascript エディター"
-	services="documentdb"
-	authors="AndrewHoh"
-	manager="jhubbard"
-	editor="monicar"
-	documentationCenter=""/>
+    pageTitle="DocumentDB Script Explorer, a JavaScript editor | Microsoft Azure"
+    description="Learn about the DocumentDB Script Explorer, an Azure Portal tool to manage DocumentDB server-side programming artifacts including stored procedures, triggers, and user-defined functions."
+    keywords="javascript editor"
+    services="documentdb"
+    authors="kirillg"
+    manager="jhubbard"
+    editor="monicar"
+    documentationCenter=""/>
 
 <tags
-	ms.service="documentdb"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/30/2016"
-	ms.author="anhoh"/>
+    ms.service="documentdb"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/30/2016"
+    ms.author="kirillg"/>
 
-# DocumentDB スクリプト エクスプローラーを使用したストアド プロシージャ、トリガー、ユーザー定義関数の作成と実行
 
-この記事では、DocumentDB のサーバー側プログラミング アーティファクト (ストアド プロシージャ、トリガー、ユーザー定義関数など) の表示と実行を可能にする Azure ポータルの JavaScript エディター、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) スクリプト エクスプローラーの概要を説明します。DocumentDB のサーバー側プログラミングの詳細については、「[ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)」という記事を参照してください。
+# <a name="create-and-run-stored-procedures,-triggers,-and-user-defined-functions-using-the-documentdb-script-explorer"></a>Create and run stored procedures, triggers, and user-defined functions using the DocumentDB Script Explorer
 
-## スクリプト エクスプローラーを起動する
+This article provides an overview of the [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) Script Explorer, which is a JavaScript editor in the Azure portal that enables you to view and execute DocumentDB server-side programming artifacts including stored procedures, triggers, and user-defined functions. Read more about DocumentDB server-side programming in the [Stored procedures, database triggers, and UDFs](documentdb-programming.md) article.
 
-1. Azure ポータルで、ジャンプバーの **[DocumentDB (NoSQL)]** をクリックします。**[DocumentDB アカウント]** が表示されない場合は、**[More Services (その他のサービス)]** をクリックし、**[DocumentDB (NoSQL)]** をクリックします。
+## <a name="launch-script-explorer"></a>Launch Script Explorer
 
-2. リソース メニューの **[スクリプト エクスプローラー]** をクリックします。
+1. In the Azure portal, in the Jumpbar, click **DocumentDB (NoSQL)**. If **DocumentDB Accounts** is not visible, click **More Services** and then click **DocumentDB (NoSQL)**.
 
-	![スクリプト エクスプローラー コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorercommand.png)
+2. In the resources menu, click **Script Explorer**.
+
+    ![Screenshot of the Script Explorer command](./media/documentdb-view-scripts/scriptexplorercommand.png)
  
-    **[データベース]** と **[コレクション]** の各ドロップダウン リスト ボックスには、スクリプト エクスプローラーを起動したコンテキストに応じて値が設定されています。たとえば、データベース ブレードから起動した場合には、現在のデータベースが設定されます。コレクション ブレードから起動した場合には、現在のコレクションが設定されます。
+    The **Database** and **Collection** drop-down list boxes are pre-populated depending on the context in which you launch Script Explorer.  For example, if you launch from a database blade, then the current database is pre-populated.  If you launch from a collection blade, then the current collection is pre-populated.
 
-4.  **[データベース]** ボックスと **[コレクション]** ボックスを使用すると、スクリプト エクスプローラーを閉じて再度起動することなく、現在表示されているドキュメントが含まれるコレクションを簡単に変更できます。
+4.  Use the **Database** and **Collection** drop-down list boxes to easily change the collection from which scripts are currently being viewed without having to close and re-launch Script Explorer.  
 
-5. スクリプト エクスプローラーでは、現在読み込まれているドキュメントのセットを ID プロパティでフィルター処理することもできます。フィルター ボックスに入力します。スクリプト エクスプローラーの一覧の結果が指定された条件に基づいてフィルター処理されます。
+5. Script Explorer also supports filtering the currently loaded set of scripts by their id property.  Simply type in the filter box and the results in the Script Explorer list are filtered based on your supplied criteria.
 
-	![フィルターの結果が表示されたスクリプト エクスプローラーのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerfilterresults.png)
-
-
-	> [AZURE.IMPORTANT] スクリプト エクスプローラーのフィルター機能では、現在読み込まれているドキュメントのみがフィルター処理されます。現在選択されているコレクションに対してスクリプトが自動的に更新されることはありません。
-
-5. スクリプト エクスプローラーに読み込まれたスクリプトトの一覧を更新するには、ブレードの上部にある **[更新]** をクリックするだけです。
-
-	![スクリプト エクスプローラーの [最新の情報に更新] コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerrefresh.png)
+    ![Screenshot of Script Explorer with filtered results](./media/documentdb-view-scripts/scriptexplorerfilterresults.png)
 
 
-## ストアド プロシージャ、トリガー、ユーザー定義関数の作成、表示、編集
+    > [AZURE.IMPORTANT] The Script Explorer filter functionality only filters from the ***currently*** loaded set of scripts and does not automatically refresh the currently selected collection.
 
-スクリプト エクスプローラーを使用すると、DocumentDB サーバー側プログラミング アーティファクトに対する CRUD 操作を簡単に実行できます。
+5. To refresh the list of scripts loaded by Script Explorer, simply click the **Refresh** command at the top of the blade.
 
-- スクリプトを作成するには、スクリプト エクスプローラーで適切な作成コマンドをクリックし、ID を指定し、スクリプトの内容を入力し、**[保存]** をクリックします。
+    ![Screenshot of Script Explorer refresh command](./media/documentdb-view-scripts/scriptexplorerrefresh.png)
 
-	![スクリプト エクスプローラーの作成オプションと JavaScript エディターのスクリーンショット](./media/documentdb-view-scripts/scriptexplorercreatecommand.png)
 
-- トリガーを作成する場合は、トリガーの種類とトリガー操作を指定する必要があります。
+## <a name="create,-view,-and-edit-stored-procedures,-triggers,-and-user-defined-functions"></a>Create, view, and edit stored procedures, triggers, and user-defined functions
 
-	![スクリプト エクスプローラーのトリガー作成オプションのスクリーンショット](./media/documentdb-view-scripts/scriptexplorercreatetrigger.png)
+Script Explorer allows you to easily perform CRUD operations on DocumentDB server-side programming artifacts.  
 
-- スクリプトを表示するには、関心のあるスクリプトをクリックします。
+- To create a script, simply click on the applicable create command within script explorer, provide an id, enter the contents of the script, and click **Save**.
 
-	![スクリプト エクスプローラーのスクリプト表示エクスペリエンスのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerviewscript.png)
+    ![Screenshot of Script Explorer create option, showing the JavaScript editor](./media/documentdb-view-scripts/scriptexplorercreatecommand.png)
 
-- スクリプトを編集するには、JavaScript エディターで目的の変更を行い、**[保存]** をクリックします。
+- When creating a trigger, you must also specify the trigger type and trigger operation
 
-	![スクリプト エクスプローラーのスクリプト表示エクスペリエンスのスクリーンショット](./media/documentdb-view-scripts/scriptexplorereditscript.png)
+    ![Screenshot of Script Explorer create trigger option](./media/documentdb-view-scripts/scriptexplorercreatetrigger.png)
 
-- スクリプトの保留中の変更を破棄するには、**[破棄]** コマンドをクリックします。
+- To view a script, simply click the script in which you're interested.
 
-	![スクリプト エクスプローラーの変更破棄エクスペリエンスのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerdiscardchanges.png)
+    ![Screenshot of Script Explorer view script experience](./media/documentdb-view-scripts/scriptexplorerviewscript.png)
 
-- スクリプト エクスプローラーで **[プロパティ]** をクリックすると、現在読み込まれているスクリプトのシステム プロパティを簡単に表示することもできます。
+- To edit a script, simply make the desired changes in the JavaScript editor and click **Save**.
 
-	![スクリプト エクスプローラーのスクリプトのプロパティ表示のスクリーンショット](./media/documentdb-view-scripts/scriptproperties.png)
+    ![Screenshot of Script Explorer view script experience](./media/documentdb-view-scripts/scriptexplorereditscript.png)
 
-	> [AZURE.NOTE] タイムスタンプ (\_ts) プロパティは内部ではエポック時間として表現されますが、スクリプト エクスプローラーでは、人間が読むことができる GMT 形式で値が表示されます。
+- To discard any pending changes to a script, simply click the **Discard** command.
 
-- スクリプトを削除するには、スクリプト エクスプ ローラーで削除するスクリプトを選択し、**[削除]** コマンドをクリックします。
+    ![Screenshot of Script Explorer discard changes experience](./media/documentdb-view-scripts/scriptexplorerdiscardchanges.png)
 
-	![スクリプト エクスプローラーの削除コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerdeletescript1.png)
+- Script Explorer also allows you to easily view the system properties of the currently loaded script by clicking the **Properties** command.
 
-- 削除アクションを **[はい]** をクリックして確認するか、**[いいえ]** をクリックして取り消します。
+    ![Screenshot of Script Explorer script properties view](./media/documentdb-view-scripts/scriptproperties.png)
 
-	![スクリプト エクスプローラーの削除コマンドのスクリーンショット](./media/documentdb-view-scripts/scriptexplorerdeletescript2.png)
+    > [AZURE.NOTE] The timestamp (_ts) property is internally represented as epoch time, but Script Explorer displays the value in a human readable GMT format.
 
-## ストアド プロシージャの実行
+- To delete a script, select it in Script Explorer and click the **Delete** command.
 
-> [AZURE.WARNING] スクリプト エクスプローラーでのストアド プロシージャの実行は、サーバー側のパーティション分割コレクションではまだサポートされていません。詳細については、[DocumentDB でのパーティション分割とスケーリング](documentdb-partition-data.md)に関するページをご覧ください。
+    ![Screenshot of Script Explorer delete command](./media/documentdb-view-scripts/scriptexplorerdeletescript1.png)
 
-スクリプト エクスプローラーでは、Azure ポータルからサーバー側のストアド プロシージャを実行できます。
+- Confirm the delete action by clicking **Yes** or cancel the delete action by clicking **No**.
 
-- ストアド プロシージャの新規作成ブレードを開くと、既定のスクリプト (*prefix*) が提供されます。*prefix* スクリプトまたは独自のスクリプトを実行するには、*ID* と "*入力*" を追加します。複数のパラメーターを受け取るストアド プロシージャの場合、すべて配列内に入力する必要があります (例 *["foo", "bar"]*)。
+    ![Screenshot of Script Explorer delete command](./media/documentdb-view-scripts/scriptexplorerdeletescript2.png)
 
-	![スクリプト エクスプローラーの [ストアド プロシージャ] ブレードで入力を追加し、ストアド プロシージャを実行するスクリーンショット](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-input.png)
+## <a name="execute-a-stored-procedure"></a>Execute a stored procedure
 
-- ストアド プロシージャを実行するには、スクリプト エディター ウィンドウ内で **[保存して実行]** をクリックします。
+> [AZURE.WARNING] Executing stored procedures in Script Explorer is not yet supported for server side partitioned collections. For more information, visit [Partitioning and Scaling in DocumentDB](documentdb-partition-data.md).
 
-	> [AZURE.NOTE] **[保存して実行]** コマンドでは、実行前にストアド プロシージャが保存されます。つまり、ストアド プロシージャの前回保存されたバージョンが上書きされます。
+Script Explorer allows you to execute server-side stored procedures from the Azure portal.
 
-- ストアド プロシージャが正常に実行されると、状態が "*ストアド プロシージャを正常に保存し、実行しました*" になり、返された結果が *[結果]* ウィンドウに入力されます。
+- When opening a new create stored procedure blade, a default script (*prefix*) will already be provided. In order to run the *prefix* script or your own script, add an *id* and *inputs*. For stored procedures that accept multiple parameters, all inputs must be within an array (e.g. *["foo", "bar"]*).
 
-	![スクリプト エクスプローラーの [ストアド プロシージャ] ブレードでストアド プロシージャを実行するスクリーンショット](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure.png)
+    ![Screenshot of Script Explorer Stored Procedures blade to add input and execute a stored procedure](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-input.png)
 
-- 実行中にエラーが発生した場合、エラーは *[結果]* ウィンドウに表示されます。
+- To execute a stored procedure, simply click on the **Save & Execute** command within script editor pane.
 
-	![スクリプト エクスプローラーのスクリプト プロパティのスクリーンショットストアド プロシージャの実行とエラー](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-error.png)
+    > [AZURE.NOTE] The **Save & Execute** command will save your stored procedure before executing, which means it will overwrite the previously saved version of the stored procedure.
 
-## ポータルの外部のスクリプトを使用する
+- Successful stored procedure executions will have a *Successfully saved and executed the stored procedure* status and the returned results will be populated in the *Results* pane.
 
-Azure ポータルのスクリプト エクスプローラーは、DocumentDB のストアド プロシージャ、トリガー、ユーザー定義関数を使用する方法の 1 つです。REST API と[クライアント SDK](documentdb-sdk-dotnet.md) を使用してスクリプトを操作することもできます。REST API ドキュメントには、[REST を使用したストアド プロシージャ](https://msdn.microsoft.com/library/azure/mt489092.aspx)、[REST を使用したユーザー定義関数](https://msdn.microsoft.com/library/azure/dn781481.aspx)、[REST を使用したトリガー](https://msdn.microsoft.com/library/azure/mt489116.aspx)のサンプルが含まれています。[C# を使用したスクリプト](documentdb-dotnet-samples.md#server-side-programming-examples)と [Node.js を使用したスクリプト](documentdb-nodejs-samples.md#server-side-programming-examples)の使用方法を示すサンプルもあります。
+    ![Screenshot of Script Explorer Stored Procedures blade, to execute a stored procedure](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure.png)
 
-## 次のステップ
+- If the execution encounters an error, the error will be populated in the *Results* pane.
 
-DocumentDB のサーバー側プログラミングの詳細については、[ストアド プロシージャ、データベース トリガー、UDF](documentdb-programming.md)に関する記事をご覧ください。
+    ![Screenshot of Script Explorer script properties view. Execute a stored procedure with errors](./media/documentdb-view-scripts/documentdb-execute-a-stored-procedure-error.png)
 
-[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細を理解する際に便利なリソースです。
+## <a name="work-with-scripts-outside-the-portal"></a>Work with scripts outside the portal
 
-<!---HONumber=AcomDC_0831_2016-->
+The Script Explorer in the Azure portal is just one way to work with stored procedures, triggers, and user-defined functions in DocumentDB. You can also work with scripts using the the REST API and the [client SDKs](documentdb-sdk-dotnet.md). The REST API documentation includes samples for working with [stored procedures using REST](https://msdn.microsoft.com/library/azure/mt489092.aspx), [user defined functions using REST](https://msdn.microsoft.com/library/azure/dn781481.aspx), and [triggers using REST](https://msdn.microsoft.com/library/azure/mt489116.aspx). Samples are also available showing how to [work with scripts using C#](documentdb-dotnet-samples.md#server-side-programming-examples) and [work with scripts using Node.js](documentdb-nodejs-samples.md#server-side-programming-examples).
+
+## <a name="next-steps"></a>Next steps
+
+Learn more about DocumentDB server-side programming in the [Stored procedures, database triggers, and UDFs](documentdb-programming.md) article.
+
+The [Learning path](https://azure.microsoft.com/documentation/learning-paths/documentdb/) is also a useful resource to guide you as you learn more about DocumentDB.  
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ステートフル Reliable Services の診断 | Microsoft Azure"
-   description="ステートフル Reliable Services の診断機能"
+   pageTitle="Stateful Reliable Services diagnostics | Microsoft Azure"
+   description="Diagnostic functionality for Stateful Reliable Services"
    services="service-fabric"
    documentationCenter=".net"
    authors="AlanWarwick"
@@ -16,32 +16,37 @@
    ms.date="05/17/2016"
    ms.author="alanwar"/>
 
-# ステートフル Reliable Services の診断機能
-ステートフル Reliable Services の StatefulServiceBase クラスは、サービスのデバッグに使用することができる [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントを出力するため、ランタイムの動作状況を理解し、トラブルシューティングに役立ちます。
 
-## EventSource イベント
-ステートフル Reliable Services の StatefulServiceBase クラスの EventSource 名は、"Microsoft-ServiceFabric-Services" です。このイベント ソースからのイベントは、サービスを [Visual Studio でデバッグしている](service-fabric-debugging-your-application.md)ときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
+# <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnostic functionality for Stateful Reliable Services
+The Stateful Reliable Services StatefulServiceBase class emits [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) events that can be used to debug the service, provide insights into how the runtime is operating, and help with troubleshooting.
 
-EventSource イベントの収集や表示に役立つツールとテクノロジの例には、[PerfView](http://www.microsoft.com/download/details.aspx?id=28567)、[Microsoft Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md)、および [Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
+## <a name="eventsource-events"></a>EventSource events
+The EventSource name for the Stateful Reliable Services StatefulServiceBase class is "Microsoft-ServiceFabric-Services". Events from this event source appear in the [Diagnostics Events](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) window when the service is being [debugged in Visual Studio](service-fabric-debugging-your-application.md).
 
-## イベント
+Examples of tools and technologies that help in collecting and/or viewing EventSource events are [PerfView](http://www.microsoft.com/download/details.aspx?id=28567), [Microsoft Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md), and the [Microsoft TraceEvent Library](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
 
-|イベント名|イベント ID|Level|イベントの説明|
+## <a name="events"></a>Events
+
+|Event name|Event ID|Level|Event description|
 |----------|--------|-----|-----------------|
-|StatefulRunAsyncInvocation|1|情報|サービスの RunAsync タスクが開始されたるときに出力されます|
-|StatefulRunAsyncCancellation|2|情報|サービスの RunAsync タスクが取り消されたときに出力されます|
-|StatefulRunAsyncCompletion|3|情報|サービスの RunAsync タスクが完了したときに出力されます|
-|StatefulRunAsyncSlowCancellation|4|警告|サービスの RunAsync タスクが取り消しの実行に時間がかかりすぎたときに出力されます|
-|StatefulRunAsyncFailure|5|エラー|サービスの RunAsync タスクが例外をスローしたときに出力されます|
+|StatefulRunAsyncInvocation|1|Informational|Emitted when service RunAsync task is started|
+|StatefulRunAsyncCancellation|2|Informational|Emitted when service RunAsync task is cancelled|
+|StatefulRunAsyncCompletion|3|Informational|Emitted when service RunAsync task is completed|
+|StatefulRunAsyncSlowCancellation|4|Warning|Emitted when service RunAsync task takes too long to complete cancellation|
+|StatefulRunAsyncFailure|5|Error|Emitted when service RunAsync task throws an exception|
 
-## イベントの解釈
+## <a name="interpret-events"></a>Interpret events
 
-StatefulRunAsyncInvocation、StatefulRunAsyncCompletion、および StatefulRunAsyncCancellation イベントは、サービスの作成者が、サービスのライフ サイクルに加えて、サービスが開始されたとき、取り消されたとき、完了したときのタイミングを知るために役立ちます。これはサービスの問題をデバッグする場合やサービスのライフ サイクルを理解する場合に役立つことがあります。
+StatefulRunAsyncInvocation, StatefulRunAsyncCompletion, and StatefulRunAsyncCancellation events are useful to the service writer to understand the lifecycle of a service--as well as the timing for when a service is started, cancelled, or completed. This can be useful when debugging service issues or understanding the service lifecycle.
 
-StatefulRunAsyncSlowCancellation および StatefulRunAsyncFailure イベントはサービスの問題を示しているため、サービスの作成者はこれらのイベントに細心の注意を払う必要があります。
+Service writers should pay close attention to StatefulRunAsyncSlowCancellation and StatefulRunAsyncFailure events because they indicate issues with the service.
 
-StatefulRunAsyncFailure は、サービスの RunAsync() タスクが例外をスローするたびに出力されます。一般に、スローされる例外は、サービスのエラーやバグを示します。さらに、この例外はサービスが失敗する原因となるため、別のノードに移動されます。この動作には高い負荷がかかる可能性があるため、サービスの移動中には要求の受信が遅れることがあります。サービスの作成者は例外の原因を特定し、可能であればそれを軽減する必要があります。
+StatefulRunAsyncFailure is emitted whenever the service RunAsync() task throws an exception. Typically, an exception thrown indicates an error or bug in the service. Additionally, the exception causes the service to fail, so it is moved to a different node. This can be an expensive operation and can delay incoming requests while the service is moved. Service writers should determine the cause of the exception and, if possible, mitigate it.
 
-StatefulRunAsyncSlowCancellation は、RunAsync タスクの取り消し要求が 4 秒より長くかかる場合に出力されます。取り消しの完了に時間がかかると、サービスが別のノードで速やかに再開されなくなります。これはサービスの全体の可用性に影響を与える可能性があります。
+StatefulRunAsyncSlowCancellation is emitted whenever a cancellation request for the RunAsync task takes longer than four seconds. When a service takes too long to complete cancellation, it impacts the ability for the service to be quickly restarted on another node. This may impact the overall availability of the service.
 
-<!---HONumber=AcomDC_0518_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center での SQL Database の監査の有効化 | Microsoft Azure"
-   description="このドキュメントでは、";SQL Database の監査の有効化"; という Azure Security Center の推奨事項を実装する方法について説明します。"
+   pageTitle="Enable auditing on SQL databases in Azure Security Center | Microsoft Azure"
+   description="This document shows you how to implement the Azure Security Center recommendation **Enable auditing on SQL databases**."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,45 +16,53 @@
    ms.date="07/29/2016"
    ms.author="terrylan"/>
 
-# Azure Security Center での SQL Database の監査の有効化
 
-Azure Security Center では、監査をまだ有効にしていない場合に、すべての SQL Database の監査を有効にすることを勧めます。監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
+# <a name="enable-auditing-on-sql-databases-in-azure-security-center"></a>Enable auditing on SQL databases in Azure Security Center
 
-監査を有効にしたら、脅威の検出設定と、セキュリティの警告を受信する電子メールを構成できます。脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。これにより、発生した潜在的な脅威を検出し、対応することができます。
+Azure Security Center will recommend that you turn on auditing for all SQL databases if auditing is not already enabled. Auditing can help you maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate business concerns or suspected security violations.
 
-この推奨事項は Azure SQL サービスにのみ適用されます。仮想マシンで実行されている SQL は含まれません。
+Once you’ve turned on auditing you can configure Threat Detection settings and emails to receive security alerts. Threat Detection detects anomalous database activities indicating potential security threats to the database. This enables you to detect and respond to potential threats as they occur.
 
-> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
+This recommendation applies to the Azure SQL service only; doesn't include SQL running on your virtual machines.
 
-## 推奨事項の実装
+> [AZURE.NOTE] This document introduces the service by using an example deployment.  This is not a step-by-step guide.
 
-1. **[推奨事項]** ブレードで、**[SQL Database の監査を有効にする]** を選択します。**[SQL データベースの監査を有効にする]** ブレードが開きます。![SQL データベースの監査の有効化][1]
+## <a name="implement-the-recommendation"></a>Implement the recommendation
 
-2. 監査を有効にする SQL Database を選択します。**[監査と脅威検出]** ブレードが開きます。![監査と脅威の検出][2]
-3. **[監査と脅威検出]** ブレードで、**[監査]** の **[オン]** を選択します。![監査と脅威の検出の有効化][3]
+1. In the **Recommendations** blade, select **Enable Auditing on SQL databases**.  This opens the **Enable Auditing on SQL databases** blade.
+![Enable auditing on SQL databases][1]
+
+2. Select a SQL database to enable auditing on. This opens the **Auditing & Threat detection** blade.
+![Auditing and threat detection][2]
+3. On the **Auditing & Threat detection** blade, select **ON** under **Auditing**.
+![Turn on auditing and threat detection][3]
 
 
-5. 「[SQL Database 脅威の検出の概要](../sql-database/sql-database-threat-detection-get-started.md)」の手順に従って、脅威の検出を有効にして構成し、異常なアクティビティの検出時にセキュリティの警告を受信する電子メールの一覧を構成します。
+5. Follow the steps in [Get started with SQL Database Threat Detection](../sql-database/sql-database-threat-detection-get-started.md) to turn on and configure Threat Detection and to configure the list of emails that will receive security alerts upon detection of anomalous activities.
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-この記事では、"SQL Database の監査の有効化" という Security Center の推奨事項を実装する方法について説明しました。 SQL Database のセキュリティ保護の詳細については、次の記事をご覧ください。
+This article showed you how to implement the Security Center recommendation "Enable auditing on SQL databases." To learn more about securing your SQL database, see the following:
 
-- [SQL Database の保護](../sql-database/sql-database-security.md)
+- [Securing your SQL Database](../sql-database/sql-database-security.md)
 
-セキュリティ センターの詳細については、次を参照してください。
+To learn more about Security Center, see the following:
 
-- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
-- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
+- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
+- [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
+- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
+- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Get the latest Azure security news and information.
 
 <!--Image references-->
 [1]: ./media/security-center-enable-auditing-on-sql-databases/enable-auditing-on-sql-databases.png
-[2]: ./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection.png
+[2]:./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection.png
 [3]: ./media/security-center-enable-auditing-on-sql-databases/auditing-threat-detection-blade.png
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

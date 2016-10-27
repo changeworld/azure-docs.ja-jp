@@ -5,4 +5,6 @@
 - [Java](active-directory-b2c-devquickstarts-graph-java.md)
 - [Ruby](active-directory-b2c-devquickstarts-graph-ruby.md)
 
-<!---HONumber=Oct15_HO3-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,58 +1,59 @@
 <properties
-	pageTitle="Mobile Apps を使用した Android での認証の追加 | Azure App Service"
-	description="Azure App Service で Mobile Apps を使用して、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを通じて Android アプリのユーザーを認証する方法について説明します。"
-	services="app-service\mobile"
-	documentationCenter="android"
-	authors="RickSaling"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Add authentication on Android with Mobile Apps | Azure App Service"
+    description="Learn how to use Mobile Apps in Azure App Service to authenticate users of your Android app through a variety of identity providers, including Google, Facebook, Twitter, and Microsoft."
+    services="app-service\mobile"
+    documentationCenter="android"
+    authors="yuaxu"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-android"
-	ms.devlang="java"
-	ms.topic="article"
-	ms.date="07/18/2016"
-	ms.author="ricksal"/>
+    ms.service="app-service-mobile"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-android"
+    ms.devlang="java"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="yuaxu"/>
 
-# Android アプリに認証を追加する
+
+# <a name="add-authentication-to-your-android-app"></a>Add authentication to your Android app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-## 概要
+## <a name="summary"></a>Summary
 
-このチュートリアルでは、サポートされている ID プロバイダーを使用して、Android で todolist クイック スタート プロジェクトに認証を追加します。最初に、このチュートリアルの基になっている [Mobile Apps の使用]チュートリアルを完了しておく必要があります。
+In this tutorial, you add authentication to the todolist quickstart project on Android using a supported identity provider. This tutorial is based on the [Get started with Mobile Apps] tutorial, which you must complete first.
 
-##<a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
+##<a name="<a-name="register"></a>register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Register your app for authentication and configure the App Service
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
+##<a name="<a-name="permissions"></a>restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Restrict permissions to authenticated users
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-+ Android Studio で、[Mobile Apps の使用]チュートリアルの完了時に作成されたプロジェクトを開き、**[Run]** メニューから **[Run app]** をクリックし、アプリケーションの開始後に、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。
++ In Android Studio, open the project that you created when you completed the tutorial [Get started with Mobile Apps], then from the **Run** menu click **Run app** and verify that an unhandled exception with a status code of 401 (Unauthorized) is raised after the app starts.
 
-	 この問題は、認証されないユーザーとしてアプリケーションがバックエンドにアクセスしようとしても、_TodoItem_ テーブルでは認証が要求されるために発生します。
+     This happens because the app attempts to access the backend as an unauthenticated user, but the _TodoItem_ table now requires authentication.
 
-次に、Mobile App バックエンドのリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
+Next, you will update the app to authenticate users before requesting resources from the Mobile App backend.
 
-## アプリケーションに認証を追加する
+## <a name="add-authentication-to-the-app"></a>Add authentication to the app
 
 [AZURE.INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
 
-## <a name="cache-tokens"></a>クライアントに認証トークンをキャッシュする
+## <a name="<a-name="cache-tokens"></a>cache-authentication-tokens-on-the-client"></a><a name="cache-tokens"></a>Cache authentication tokens on the client
 
 [AZURE.INCLUDE [mobile-android-authenticate-app-with-token](../../includes/mobile-android-authenticate-app-with-token.md)]
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-これで基本的な認証チュートリアルは完了しましたので、引き続き次のいずれかのチュートリアルのご利用を検討してください。
+Now that you completed this basic authentication tutorial, consider continuing on to one of the following tutorials:
 
-+ [Android アプリにプッシュ通知を追加する](app-service-mobile-android-get-started-push.md) アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使用してプッシュ通知を送信するように Mobile App バックエンドを構成する方法について説明します。
++ [Add push notifications to your Android app](app-service-mobile-android-get-started-push.md) Learn how to add push notifications support to your app and configure your Mobile App backend to use Azure Notification Hubs to send push notifications.
 
-+ [Android アプリのオフライン同期を有効にする](app-service-mobile-android-get-started-offline-data.md) Mobile App バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。
++ [Enable offline sync for your Android app](app-service-mobile-android-get-started-offline-data.md) Learn how to add offline support your app using an Mobile App backend. Offline sync allows end-users to interact with a mobile app&mdash;viewing, adding, or modifying data&mdash;even when there is no network connection.
 
 
 
@@ -62,10 +63,14 @@
 [Add authentication to the app]: #add-authentication
 [Store authentication tokens on the client]: #cache-tokens
 [Refresh expired tokens]: #refresh-tokens
-[Next Steps]: #next-steps
+[Next Steps]:#next-steps
 
 
 <!-- URLs. -->
-[Mobile Apps の使用]: app-service-mobile-android-get-started.md
+[Get started with Mobile Apps]: app-service-mobile-android-get-started.md
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

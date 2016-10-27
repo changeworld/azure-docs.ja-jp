@@ -1,61 +1,63 @@
 <properties
-	pageTitle="Xamarin アプリ用通知ハブを使用した iOS Push Notifications | Microsoft Azure"
-	description="このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.iOS アプリケーションにプッシュ通知を送信する方法について学習します。"
-	services="notification-hubs"
-    keywords="ios push notifications、プッシュ メッセージ、プッシュ通知、プッシュ メッセージ"
-	documentationCenter="xamarin"
-	authors="wesmc7777"
-	manager="erikre"
-	editor=""/>
+    pageTitle="iOS Push Notifications with Notification Hubs for Xamarin apps | Microsoft Azure"
+    description="In this tutorial, you learn how to use Azure Notification Hubs to send push notifications to a Xamarin iOS application."
+    services="notification-hubs"
+    keywords="ios push notifications,push messages,push notifications,push message"
+    documentationCenter="xamarin"
+    authors="wesmc7777"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="notification-hubs"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-xamarin-ios"
-	ms.devlang="dotnet"
-	ms.topic="hero-article"
-	ms.date="06/29/2016"
-	ms.author="wesmc"/>
+    ms.service="notification-hubs"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-xamarin-ios"
+    ms.devlang="dotnet"
+    ms.topic="hero-article"
+    ms.date="06/29/2016"
+    ms.author="wesmc"/>
 
-# Xamarin アプリ用通知ハブを使用した iOS Push Notifications
+
+# <a name="ios-push-notifications-with-notification-hubs-for-xamarin-apps"></a>iOS Push Notifications with Notification Hubs for Xamarin apps
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-##概要
-> [AZURE.IMPORTANT] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started)を参照してください。
+##<a name="overview"></a>Overview
+> [AZURE.IMPORTANT] To complete this tutorial, you must have an active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
 
-このチュートリアルでは、Azure Notification Hubs を使用して iOS アプリケーションにプッシュ通知を送信する方法について説明します。[Apple Push Notification サービス (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html) を使用してプッシュ通知を受信する空の Xamarin.iOS アプリケーションを作成します。完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
+This tutorial shows you how to use Azure Notification Hubs to send push notifications to an iOS application.
+You'll create a blank Xamarin.iOS app that receives push notifications by using the [Apple Push Notification Service (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html). When you're finished, you'll be able to use your notification hub to broadcast push notifications to all the devices running your app. The finished code is available in the [NotificationHubs app][GitHub] sample.
 
-このチュートリアルでは、Notification Hubs を使用した簡単なプッシュ メッセージ ブロードキャスト シナリオのデモンストレーションを行います。
+This tutorial demonstrates the simple push message broadcast scenario with Notification Hubs.
 
-##前提条件
+##<a name="prerequisites"></a>Prerequisites
 
-このチュートリアルには、次のものが必要です。
+This tutorial requires the following:
 
-+ [XCode 6.0][Install Xcode]
-+ iOS 7.0 以降のバージョンに対応するデバイス
-+ iOS Developer Program メンバーシップ
++ [Xcode 6.0][Install Xcode]
++ An iOS 7.0 (or later version) compatible device
++ iOS Developer Program membership
 + [Xamarin Studio]
 
-   > [AZURE.NOTE] iOS Push Notifications の構成要件に従って、サンプル アプリケーションのデプロイとテストは、シミュレーターではなく、物理的な iOS デバイス (iPhone または iPad) で行う必要があります。
+   > [AZURE.NOTE] Because of configuration requirements for iOS push notifications, you must deploy and test the sample application on a physical iOS device (iPhone or iPad) instead of in the simulator.
 
-このチュートリアルを完了することは、Xamarin.iOS アプリの他のすべての Notification Hubs チュートリアルの前提条件です。
-
-
-[AZURE.INCLUDE [Notification Hubs による Apple プッシュ通知の有効化](../../includes/notification-hubs-enable-apple-push-notifications.md)]
+Completing this tutorial is a prerequisite for all other Notification Hubs tutorials for Xamarin iOS apps.
 
 
-##通知ハブを構成する
+[AZURE.INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-このセクションでは、作成した **.p12** プッシュ証明書を使用して、新しい通知ハブを作成し、APNS での認証を構成する方法について説明します。既に作成した通知ハブを使用する場合は、手順 5. に進んでください。
+
+##<a name="configure-your-notification-hub"></a>Configure your notification hub
+
+This section walks you through creating a new notification hub and configuring authentication with APNS using the **.p12** push certificate that you created. If you want to use a notification hub that you have already created, you can skip to step 5.
 
 [AZURE.INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 
 <ol start="7">
 <li>
-<p>APNS 接続を構成するため、iPhone で [通知ハブ] 設定を開き、<b>[Notification Services]</b> をクリックし、リストの <b>[Apple (APNS)]</b> 項目をクリックします。次に <b>[証明書のアップロード]</b> をクリックし、エクスポートした <b>.p12</b> 証明書を選択し、証明書のパスワードを入力します。</p>
-<p>開発環境でプッシュ メッセージを送信するので、<b>[サンドボックス]</b> モードをオンにします。<b>[運用]</b> 設定は、ストアから既にアプリを購入しているユーザーにプッシュ通知を送信する場合のみ使用します。</p>
+<p>As we want to configure the APNS connection, in the Azure Portal, open your Notification Hub settings, ande click on <b>Notification Services</b>, and then click the <b>Apple (APNS)</b> item in the list. Once done, click on <b>Upload Certificate</b> and select the <b>.p12</b> certificate that you exported earlier, as well as the password for the certificate.</p>
+<p>Make sure to select <b>Sandbox</b> mode since you will be sending push messages in a development environment. Only use the <b>Production</b> setting if you want to send push notifications to users who already purchased your app from the store.</p>
 </li>
 </ol>
 &emsp;&emsp;![](./media/notification-hubs-ios-get-started/notification-hubs-apns.png)
@@ -63,54 +65,54 @@
 &emsp;&emsp;![](./media/notification-hubs-ios-get-started/notification-hubs-sandbox.png)
 
 
-これで、通知ハブが APNS と連動するように構成されました。接続文字列にアプリケーションを登録し、プッシュ通知を送信できます。
+Your notification hub is now configured to work with APNS, and you have the connection strings to register your app and send push notifications.
 
 
-##通知ハブにアプリケーションを接続する
+##<a name="connect-your-app-to-the-notification-hub"></a>Connect your app to the notification hub
 
-#### 新しいプロジェクトを作成する
+#### <a name="create-a-new-project"></a>Create a new project
 
-1. Xamarin Studio で、新しい iOS プロジェクトを作成し、**[統合 API]**、**[単一ビュー アプリケーション]** テンプレートの順に選択します。
+1. In Xamarin Studio, create a new iOS project and select the **Unified API** > **Single View Application** template.
 
-   	![Xamarin Studio - アプリケーションの種類を選択する][31]
+    ![Xamarin Studio - Select Application Type][31]
 
-2. Azure Messaging コンポーネントへの参照を追加します。[ソリューション] ビューで、プロジェクトの **[コンポーネント]** フォルダーを右クリックし、**[他のコンポーネントを取得する]** を選択します。**Azure Messaging** コンポーネントを検索し、そのコンポーネントをプロジェクトに追加します。
+2. Add a reference to the Azure Messaging component. In the Solution view, right-click the **Components** folder for your project and choose **Get More Components**. Search for the **Azure Messaging** component and add the component to your project.
 
-3. **AppDelegate.cs** で、次の using ステートメントを追加します。
+3. In **AppDelegate.cs**, add the following using statement:
 
-    	using WindowsAzure.Messaging;
+        using WindowsAzure.Messaging;
 
-4. **SBNotificationHub** のインスタンスを宣言します。
+4. Declare an instance of **SBNotificationHub**:
 
-		private SBNotificationHub Hub { get; set; }
+        private SBNotificationHub Hub { get; set; }
 
-5. 次の変数を使用して **Constants.cs** クラスを作成します。
+5. Create a **Constants.cs** class with the following variables:
 
         // Azure app-specific connection string and hub path
         public const string ConnectionString = "<Azure connection string>";
         public const string NotificationHubPath = "<Azure hub path>";
 
 
-6. **AppDelegate.cs** で、**FinishedLaunching()** を更新して次の内容に合わせます。
+6. In **AppDelegate.cs**, update **FinishedLaunching()** to match the following:
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
-    			var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
+                var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
                        UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
                        new NSSet ());
 
-			    UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
-			    UIApplication.SharedApplication.RegisterForRemoteNotifications ();
-			} else {
-			    UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-			    UIApplication.SharedApplication.RegisterForRemoteNotificationTypes (notificationTypes);
-			}
+                UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
+                UIApplication.SharedApplication.RegisterForRemoteNotifications ();
+            } else {
+                UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
+                UIApplication.SharedApplication.RegisterForRemoteNotificationTypes (notificationTypes);
+            }
 
             return true;
         }
 
-7. **AppDelegate.cs** で **RegisteredForRemoteNotifications()** メソッドをオーバーライドします。
+7. Override the **RegisteredForRemoteNotifications()** method in **AppDelegate.cs**:
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
@@ -131,14 +133,14 @@
             });
         }
 
-8. **AppDelegate.cs** で **ReceivedRemoteNotification()** メソッドをオーバーライドします。
+8. Override the **ReceivedRemoteNotification()** method in **AppDelegate.cs**:
 
         public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
         {
             ProcessNotification(userInfo, false);
         }
 
-9. **AppDelegate.cs** で次の **ProcessNotification()** メソッドを作成します。
+9. Create the following **ProcessNotification()** method in **AppDelegate.cs**:
 
         void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
         {
@@ -174,120 +176,120 @@
             }
         }
 
-    > [AZURE.NOTE] ネットワーク接続がないなどの状況に対処するために、**FailedToRegisterForRemoteNotifications()** をオーバーライドすることを選択できます。この方法は、ユーザーが (飛行機内などで) オフライン モードで起動した場合に備えて、アプリ独自のプッシュ メッセージ シナリオを処理する場合に特に重要です。
+    > [AZURE.NOTE] You can choose to override **FailedToRegisterForRemoteNotifications()** to handle situations such as no network connection. This is especially important where the user might start your application in offline mode (e.g. Airplane) and you want to handle push messaging scenarios specific to your app.
 
 
-10. デバイスでアプリケーションを実行します。
+10. Run the app on your device.
 
 
-## プッシュ通知を送信する
+## <a name="sending-push-notifications"></a>Sending Push Notifications
 
 
-[Azure ポータル]の **[トラブルシューティング]** ツールセットの **[テスト送信]** で通知を送信して、アプリでプッシュ通知をテスト受信することができます。[トラブルシューティング] は、次の図のように [通知ハブ] ページにあります。
+You can test receiving push notifications in your app by sending notifications in the [Azure Portal] via the **Test Send** capability in the **Troubleshooting** toolset, right in the notification hub page, as shown in the screen below.
 
 ![](./media/notification-hubs-ios-get-started/notification-hubs-test-send.png)
 
-通常、プッシュ通知は、互換性のあるライブラリを使用し、Mobile Services などのバックエンド サービスや ASP.NET を経由して送信されます。実際のシナリオでライブラリを利用できない場合、REST API を使用してプッシュ メッセージを直接送信できます。
+Push notifications are normally sent through a back-end service like Mobile Services or ASP.NET using a compatible library. You can also use the REST API directly to send push messages if a library is not available in your scenario. 
 
-このチュートリアルでは、バックエンド サービスではなく、コンソール アプリケーションの通知ハブに .NET SDK を使用して通知を送信することで例を単純にして、クライアント アプリのテスト手順のみを説明します。ASP.NET バックエンドから通知を送信するには、次のステップとして「[Notification Hubs を使用したユーザーへのプッシュ通知](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)」を参照することをお勧めします。ただし、通知の送信には、次の方法も使用できます。
+In this tutorial, we will keep it simple and just demonstrate testing your client app by sending notifications using the .NET SDK for notification hubs in a console application instead of a backend service. We recommend the [Use Notification Hubs to push notifications to users](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) tutorial as the next step for sending notifications from an ASP.NET backend. However, the following approaches can be used for sending notifications:
 
-* **REST インターフェイス**: [REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用すると、任意のバックエンド プラットフォームのプッシュ通知をサポートできます。
+* **REST Interface**:  You can support push notification on any backend platform using  the [REST interface](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
 
-* **Microsoft Azure Notification Hubs .NET SDK**: Nuget Package Manager for Visual Studio で、[Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) を実行します。
+* **Microsoft Azure Notification Hubs .NET SDK**: In the Nuget Package Manager for Visual Studio, run [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-* **Node.js** : [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)。
+* **Node.js** : [How to use Notification Hubs from Node.js](notification-hubs-nodejs-push-notification-tutorial.md).
 
-* **Azure Mobile Services**: Notification Hubs と統合した Azure Mobile Services Backend からのプッシュ通知の送信例については、「Mobile Services でのプッシュ通知の使用」([.NET バックエンド](../mobile-services/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md) | [JavaScript バックエンド](../mobile-services/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)) を参照してください。
+* **Azure Mobile Services**: For an example of how to send push notifications from an Azure Mobile Services backend that's integrated with Notification Hubs, see "Get started with push notifications in Mobile Services" ([.NET backend](../mobile-services/mobile-services-dotnet-backend-windows-universal-dotnet-get-started-push.md) | [JavaScript backend](../mobile-services/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)).
 
-* **Java / PHP**: REST API を使用したプッシュ通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) を参照してください。
+* **Java / PHP**: For an example of how to send push notifications by using the REST APIs, see "How to use Notification Hubs from Java/PHP" ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
 
 
-####(省略可能) .NET コンソール アプリケーションからプッシュ通知を送信する
+####<a name="(optional)-send-push-notifications-from-a-.net-console-app"></a>(Optional) Send Push Notifications from a .NET Console App
 
-このセクションでは、シンプルな .NET コンソール アプリケーションを使用してプッシュ通知を送信します。この例の目的に合わせて、Visual Studio が既にインストールされている Windows 開発環境に切り替えます。
+In this section, we will send push notifications by using a simple .NET console app. For the purposes of this example, we will switch to a Windows development environment that has Visual Studio already installed.
 
-1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。
+1. In Visual Studio, create a new Visual C# console application:
 
-   	![Visual Studio - 新しいコンソール アプリケーションを作成する][213]
+    ![Visual Studio - Create a new console application][213]
 
-2. Visual Studio で、**[ツール]**、**[Nuget パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+2. In Visual Studio, click **Tools**, click **NuGet Package Manager**, and then click **Package Manager Console**.
 
-	Visual Studio ワークスペースの下部にドッキングされた状態でパッケージ マネージャー コンソールが表示されます。
+    The package manager console should appear docked to the bottom of your Visual Studio workspace.
 
-3. パッケージ マネージャー コンソール ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
+3. In the Package Manager Console window, set the **Default project** to your new console application project, and then in the console window, execute the following command:
 
         Install-Package Microsoft.Azure.NotificationHubs
 
-	これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
+    This adds a reference to the Azure Notification Hubs SDK using the <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet package</a>.
 
-	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 
-4. `Program.cs` ファイルを開き、次の `using` ステートメントを追加して、メイン クラス内で Azure のクラスと関数を使用できるようにします。
+4. Open the `Program.cs` file and add the following `using` statement, ensuring that we can use Azure classes and functions within your main class:
 
         using Microsoft.Azure.NotificationHubs;
 
-3. `Program` クラスに、次のメソッドを追加します (**接続文字列**と**ハブ名**は必ず書き換えてください)。
+3. In your `Program` class, add the following method (don't forget to replace the **connection string** and **hub name**):
 
         private static async void SendNotificationAsync()
         {
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            var alert = "{"aps":{"alert":"Hello from .NET!"}}";
+            var alert = "{\"aps\":{\"alert\":\"Hello from .NET!\"}}";
             await hub.SendAppleNativeNotificationAsync(alert);
         }
 
-4. `Main` メソッド内に次の行を追加します。
+4. Add the following lines in your `Main` method:
 
          SendNotificationAsync();
-		 Console.ReadLine();
+         Console.ReadLine();
 
-5. F5 キーを押してアプリケーションを実行します。数秒後に、プッシュ通知がデバイスに表示されます。Wi-Fi と携帯電話データ ネットワークのいずれを使用している場合でも、デバイスのインターネット接続がアクティブである必要があります。
+5. Press the F5 key to run the app. Within seconds, you should see a push notification appear on your device. Whether you are using Wi-Fi or a cellular data network, make sure that you have an active internet connection on the device.
 
-Apple の「[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]」に、使用できるすべてのペイロードが記載されています。
+You can find all the possible payloads in the Apple [Local and Push Notification Programming Guide].
 
-####(省略可能) モバイル サービスから通知を送信する
+####<a name="(optional)-send-notifications-from-a-mobile-service"></a>(Optional) Send Notifications from a Mobile Service
 
-このセクションでは、モバイル サービスを使用してノード スクリプトからプッシュ通知を送信します。
+In this section, we will send push notifications using a mobile service through a node script.
 
-モバイル サービスを使用して通知を送信するには、「[Mobile Services の使用]」に従った後、次の手順を実行します。
+To send a notification by using a mobile service, follow [Get started with Mobile Services], and then:
 
-1. [Azure クラシック ポータル]にサインインし、モバイル サービスを選択します。
+1. Sign in to the [Azure Classic Portal], and select your mobile service.
 
-2. 上部にある **[Scheduler]** タブを選択します。
+2. Select the **Scheduler** tab on the top.
 
-   	![Azure クラシック ポータル - Scheduler][215]
+    ![Azure Classic Portal - Scheduler][215]
 
-3. スケジュールされた新しいジョブを作成して名前を挿入し、**[要求時]** をクリックします。
+3. Create a new scheduled job, insert a name, and select **On demand**.
 
-   	![Azure クラシック ポータル - 新しいジョブを作成する][216]
+    ![Azure Classic Portal - Create new job][216]
 
-4. ジョブが作成されたら、ジョブ名をクリックします。上部のバーにある **[スクリプト]** タブをクリックします。
+4. When the job is created, click the job name. Then click the **Script** tab on the top bar.
 
-5. スケジューラ関数内に次のスクリプトを挿入します。必ず、プレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えてください。**[保存]** をクリックします。
+5. Insert the following script inside your scheduler function. Make sure to replace the placeholders with your notification hub name and the connection string for *DefaultFullSharedAccessSignature* that you obtained earlier. Click **Save**.
 
-		var azure = require('azure');
-		var notificationHubService = azure.createNotificationHubService('<Hubname>', '<SAS Full access >');
-		notificationHubService.apns.send(
-	    	null,
-    		{"aps":
-        		{
-          		"alert": "Hello from Mobile Services!"
-        		}
-    		},
-    		function (error)
-    		{
-	        	if (!error) {
-    	        	console.warn("Notification successful");
-        		}
-    		}
-		);
+        var azure = require('azure');
+        var notificationHubService = azure.createNotificationHubService('<Hubname>', '<SAS Full access >');
+        notificationHubService.apns.send(
+            null,
+            {"aps":
+                {
+                "alert": "Hello from Mobile Services!"
+                }
+            },
+            function (error)
+            {
+                if (!error) {
+                    console.warn("Notification successful");
+                }
+            }
+        );
 
 
-6. 下部のバーにある **[一度だけ実行する]** をクリックします。デバイスでアラートを受信します。
+6. Click **Run Once** on the bottom bar. You should receive an alert on your device.
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-この簡単な例では、すべての iOS デバイスにプッシュ通知をブロードキャストします。特定のユーザーをターゲットとするには、「[Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。対象グループごとにユーザーを区分する場合は、「[Notification Hubs を使用したニュース速報の送信]」を参照してください。Notification Hubs の使用方法の詳細については、「[Microsoft Azure Notification Hubs の概要]」と「[方法: Microsoft Azure Notification Hubs (iOS アプリ)]」を参照してください。
+In this simple example, you broadcasted push notifications to all your iOS devices. In order to target specific users, refer to the tutorial [Use Notification Hubs to push notifications to users]. If you want to segment your users by interest groups, you can read [Use Notification Hubs to send breaking news]. Learn more about how to use Notification Hubs in [Notification Hubs Guidance] and in the [Notification Hubs How-To for iOS].
 
 
 <!-- Images. -->
@@ -309,23 +311,27 @@ Apple の「[Local and Push Notification Programming Guide (ローカルおよ�
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
-[Mobile Services の使用]: /develop/mobile/tutorials/get-started-xamarin-ios
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
-[Microsoft Azure Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
-[方法: Microsoft Azure Notification Hubs (iOS アプリ)]: http://msdn.microsoft.com/library/jj927168.aspx
+[Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-ios
+[Azure Classic Portal]: https://manage.windowsazure.com/
+[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
-[Notification Hubs を使用したユーザーへのプッシュ通知]: /manage/services/notification-hubs/notify-users-aspnet
-[Notification Hubs を使用したニュース速報の送信]: /manage/services/notification-hubs/breaking-news-dotnet
+[Use Notification Hubs to push notifications to users]: /manage/services/notification-hubs/notify-users-aspnet
+[Use Notification Hubs to send breaking news]: /manage/services/notification-hubs/breaking-news-dotnet
 
-[Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[Local and Push Notification Programming Guide]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Apple Push Notification Service]: http://go.microsoft.com/fwlink/p/?LinkId=272584
 
 [Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Xamarin Studio]: http://xamarin.com/download
 [WindowsAzure.Messaging]: https://github.com/infosupport/WindowsAzure.Messaging.iOS
-[Azure ポータル]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

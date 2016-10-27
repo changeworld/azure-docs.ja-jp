@@ -2,4 +2,7 @@
 - [C#](../articles/iot-hub/iot-hub-csharp-csharp-process-d2c.md)
 - [Java](../articles/iot-hub/iot-hub-java-java-process-d2c.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

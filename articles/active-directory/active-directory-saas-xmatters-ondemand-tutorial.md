@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と xMatters OnDemand の統合 | Microsoft Azure"
-    description="Azure Active Directory で xMatters OnDemand を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory Integration with xMatters OnDemand | Microsoft Azure"
+    description="Learn how to use xMatters OnDemand with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,146 +14,152 @@
     ms.date="09/09/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と xMatters OnDemand の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-xmatters-ondemand"></a>Tutorial: Azure Active Directory Integration with xMatters OnDemand
   
-このチュートリアルでは、Azure と xMatters OnDemand の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and xMatters OnDemand. The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   xMatters OnDemand テナント
+-   A valid Azure subscription
+-   A xMatters OnDemand tenant
   
-このチュートリアルを完了すると、xMatters OnDemand に割り当てた Azure AD ユーザーは、xMatters OnDemand 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to xMatters OnDemand will be able to single sign into the application at your xMatters OnDemand company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  xMatters OnDemand のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for xMatters OnDemand
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776788.png "シナリオ")
+![Scenario](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776788.png "Scenario")
 
-##xMatters OnDemand のアプリケーション統合の有効化
+##<a name="enabling-the-application-integration-for-xmatters-ondemand"></a>Enabling the application integration for xMatters OnDemand
   
-このセクションでは、xMatters OnDemand のアプリケーション統合を有効にする方法を説明します。
+The objective of this section is to outline how to enable the application integration for xMatters OnDemand.
 
-###xMatters OnDemand のアプリケーション統合を有効にするには、次の手順を実行します。
+###<a name="to-enable-the-application-integration-for-xmatters-ondemand,-perform-the-following-steps:"></a>To enable the application integration for xMatters OnDemand, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-xmatters-ondemand-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-xmatters-ondemand-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-xmatters-ondemand-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-xmatters-ondemand-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-xmatters-ondemand-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-xmatters-ondemand-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-xmatters-ondemand-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**xMatters OnDemand**」と入力します。
+6.  In the **search box**, type **xMatters OnDemand**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776789.png "アプリケーション ギャラリー")
+    ![Application gallery](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776789.png "Application gallery")
 
-7.  結果ウィンドウで **[xMatters OnDemand]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **XMatters OnDemand**, and then click **Complete** to add the application.
 
     ![xMatters OnDemand](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776790.png "xMatters OnDemand")
 
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで xMatters OnDemand に対する認証を行うことができるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to XMatters OnDemand with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **xMatters OnDemand** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **XMatters OnDemand** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776791.png "Configure single sign-on")
 
-2.  **[ユーザーの xMatters OnDemand へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to XMatters OnDemand** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure single sign-on](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776792.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
+3.  On the **Configure App URL** page, perform the following steps:
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776793.png "アプリケーション URL の構成")
+    ![Configure app URL](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776793.png "Configure app URL")
 
-	a.**[xMatters OnDemand サインイン URL]** ボックスに、`https://<tenant-name>.XMattersOnDemandapp.com` という形式で URL を入力します。
+    a. In the **XMatters OnDemand Sign In URL** textbox, type your URL using the following pattern: `https://<tenant-name>.XMattersOnDemandapp.com`
 
-	b.**[次へ]** をクリックします。
+    b. Click **Next**.
 
 
-4.  **[xMatters OnDemand でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、証明書ファイルをローカルで **c:\\XMatters OnDemand.cer** としてコンピューターに保存します。
+4.  On the **Configure single sign-on at XMatters OnDemand** page, to download your certificate, click **Download certificate**, and then save the certificate file locally as **c:\\XMatters OnDemand.cer**.
 
-    >[AZURE.IMPORTANT] XMatters サポート チームに証明書を転送する必要があります。シングル サインオンの構成を確定するには、その前に、xMatters サポート チームによって証明書がアップロードされる必要があります。
+    >[AZURE.IMPORTANT] You need to forward the certificate to the xMatters support team. The certificate needs to be uploaded by the xMatters support team before you can finalize the single sign-on configuration.
 
-    ![シングル サインオンの有効化](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776794.png "シングル サインオンの構成")
+    ![Configure single sign on](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776794.png "Configure single sign on")
 
-5.  別の Web ブラウザーのウィンドウで、XMatters OnDemand の企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your XMatters OnDemand company site as an administrator.
 
-6.  上部のツールバーで、**[管理者]** をクリックし、左側にあるナビゲーション バーで **[会社の詳細]** をクリックします。
+6.  In the toolbar on the top, click **Admin**, and then click **Company Details** in the navigation bar on the left side.
 
-    ![管理者](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "管理者")
+    ![Admin](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "Admin")
 
-7.  **[SAML 構成]** ページで、次の手順を実行します。
+7.  On the **SAML Configuration** page, perform the following steps:
 
-    ![SAML の構成](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML の構成")
+    ![SAML configuration](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "SAML configuration")
 
-    1.  **[Enable SAML]** を選択します。
-    2.  Azure クラシック ポータルの **[XMatters OnDemand でのシングル サインオンの構成]** ダイアログ ページで、**[ID プロバイダーの ID]** 値をコピーして、**[ID プロバイダーの URL]** テキスト ボックスに貼り付けます。
-    3.  Azure クラシック ポータルの **[XMatters OnDemand でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[シングル サインオン サービス URL]** テキスト ボックスに貼り付けます。
-    4.  Azure クラシック ポータルの **[XMatters OnDemand でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインアウト サービス URL]** の値をコピーし、**[シングル ログアウト URL]** テキスト ボックスに貼り付けます。
-    5.  [会社の詳細] ページで、上部にある **[変更の保存]** をクリックします。![会社の詳細情報](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "会社の詳細情報")
+    1.  Select **Enable SAML**.
+    2.  In the Azure classic portal, on the **Configure single sign-on at XMatters OnDemand** dialog page, copy the **Identity Provider ID** value, and then paste it into the **Identity Provider ID** textbox.
+    3.  In the Azure classic portal, on the **Configure single sign-on at XMatters OnDemand** dialog page, copy the **Single Sign-On Service URL** value, and then paste it into the **Single Sign On URL** textbox.
+    4.  In the Azure classic portal, on the **Configure single sign-on at XMatters OnDemand** dialog page, copy the **Single Sign-Out Service URL** value, and then paste it into the **Single Logout URL** textbox.
+    5.  On the Company Details page, at the top, click **Save Changes**.
+        ![Company details](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "Company details")
 
-8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776798.png "シングル サインオンの構成")
+    ![Configure single sign on](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776798.png "Configure single sign on")
 
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが XMatters OnDemand にログインできるようにするには、そのユーザーを XMatters OnDemand にプロビジョニングする必要があります。XMatters OnDemand の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into XMatters OnDemand, they must be provisioned into XMatters OnDemand.  
+In the case of XMatters OnDemand, provisioning is a manual task.
 
-###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
+###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
 
-1.  **XMatters OnDemand** テナントにログインします。
+1.  Log in to your **XMatters OnDemand** tenant.
 
-2.  **[ユーザー]** タブをクリックします。
+2.  Click the **Users** tab.
 
-3.  **[ユーザーの追加]** をクリックします。
+3.  Click **Add User**.
 
     ![Users](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "Users")
 
-4.  **[アクティブ]** を選択します。
+4.  Select **Active**.
 
-5.  **[ユーザーの追加]** セクションで、次の手順に従います。
+5.  In the **Add a User** section, perform the following steps:
 
-    ![ユーザーの追加](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "ユーザーの追加")
+    ![Add a User](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "Add a User")
 
-    1.  プロビジョニングする有効な AAD アカウントの**ユーザー ID**、**名**、**姓**、**サイト**を入力します。
-    2.  [**Save**] をクリックします。
+    1.  Enter the **UserID**, **First name**, **Last name**, **Site** of a valid AAD account you want to provision.
+    2.  Click **Save**.
 
->[AZURE.NOTE] XMatters OnDemand から提供されている他の XMatters OnDemand ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other XMatters OnDemand user account creation tools or APIs provided by XMatters OnDemand to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを XMatters OnDemand に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-xmatters-ondemand,-perform-the-following-steps:"></a>To assign users to XMatters OnDemand, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **XMatters OnDemand** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **XMatters OnDemand **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776799.png "ユーザーの割り当て")
+    ![Assign users](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776799.png "Assign users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
-    ![はい](./media/active-directory-saas-xmatters-ondemand-tutorial/IC767830.png "Yes")
+    ![Yes](./media/active-directory-saas-xmatters-ondemand-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

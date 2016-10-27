@@ -1,13 +1,17 @@
-| | **クラシック デプロイ** | **リソース マネージャーのデプロイメント** |
+|  | **Classic Deployment**  | **Resource Manager Deployment** |
 |----------------------------------------|--------------|----------------------|
-| **クラシック ポータル** |[記事*](../articles/vpn-gateway/vpn-gateway-site-to-site-create.md) | サポートされていません |
-| **Azure ポータル** | サポートされています** | [記事](vpn-gateway-howto-site-to-site-resource-manager-portal.md)|
-| **PowerShell** |[記事+](..articles/vpn-gateway/vpn-gateway-multi-site.md) | [記事](..articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)| 
+| **Classic Portal**                     |[Article*](../articles/vpn-gateway/vpn-gateway-site-to-site-create.md) |  Not Supported |
+| **Azure Portal**                       | Supported**              | [Article](vpn-gateway-howto-site-to-site-resource-manager-portal.md)|
+| **PowerShell**               |[Article+](..articles/vpn-gateway/vpn-gateway-multi-site.md)          | [Article](..articles/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)| 
 
-"*" は、クラシック ポータルで 1 つの S2S VPN 接続の作成のみがサポートされることを示します。
+(*) denotes that the classic portal can only support creating one S2S VPN connection.
 
-"**" は、エンド ツー エンドのシナリオに Azure ポータルがまだ対応していないことを示します。
+(**) denotes that an end-to-end scenario is not yet available for the Azure portal.
 
-"+" は、この記事がマルチサイト接続向けに書かれていることを示します。
+(+) denotes that this article is written for multi-site connections.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

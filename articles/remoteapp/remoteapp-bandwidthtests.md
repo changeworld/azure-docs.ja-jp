@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="Azure RemoteApp - 一般的なシナリオでのネットワークの使用帯域幅をテストする | Microsoft Azure"
-	description="Azure RemoteApp に必要なネットワーク帯域幅を算定するのに役立つ一般的な使用シナリオについて説明します。"
-	services="remoteapp"
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" />
+    pageTitle="Azure RemoteApp - testing your network bandwidth usage with some common scenarios | Microsoft Azure"
+    description="Learn how about common usage scenarios that can help you figure out your network bandwidth needs for Azure RemoteApp."
+    services="remoteapp"
+    documentationCenter="" 
+    authors="lizap" 
+    manager="mbaldwin" />
 
 <tags 
     ms.service="remoteapp" 
@@ -15,37 +15,38 @@
     ms.date="08/15/2016" 
     ms.author="elizapo" />
     
-# Azure RemoteApp - 一般的なシナリオでのネットワークの使用帯域幅をテストする
+
+# <a name="azure-remoteapp---testing-your-network-bandwidth-usage-with-some-common-scenarios"></a>Azure RemoteApp - testing your network bandwidth usage with some common scenarios
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-「[Estimate Azure RemoteApp network bandwidth usage (Azure RemoteApp で使用されるネットワーク帯域幅を推定する)](remoteapp-bandwidth.md)」で説明したとおり、Azure RemoteApp がネットワークに及ぼす影響を算定する最善の方法は、使用量のテストを実行することです。特定の期間に対してこれらのテストを実行し、各シナリオに必要な帯域幅を測定します。可能であれば、特定の環境で生じるネットワークのパターンを理解するために、ネットワーク パケットの損失やネットワークのジッターを測定することもできます。
+As we discussed in [Estimate Azure RemoteApp network bandwidth usage](remoteapp-bandwidth.md), the best way to figure out what the impact of Azure RemoteApp to your network is to run some usage tests. Run these tests for a set time period and measure the bandwidth needed for each scenario. If you have the capability, you can also measure the network packet loss and network jitter to understand the network patterns that will be created in your specific environment.
 
     
-使用帯域幅を評価するときには、社内のユーザーごとに使用量が異なることにご注意ください。たとえば、テキスト リーダーとテキスト ライターが通常使用する帯域幅は、ビデオを利用するユーザーよりも少なくなります。最善の結果を得るためには、ご自分のユーザーのニーズを調査し、社内のユーザーを最もよく表す次のシナリオの組み合わせをご作成ください。[使用帯域幅とユーザー エクスペリエンスに影響する要因の確認](remoteapp-bandwidthexperience.md)を忘れずに行ってください。これは理想的なテストを特定するのに役立ちます。
+When evaluating the bandwidth usage, remember that usage varies between different users within your company. For example, text readers and writers usually consume less bandwidth than users that work with video. For best results, study your own user needs and create a mix of the following scenarios that best represents the users in your company. Remember to [review the factors that impact bandwidth usage and user experience](remoteapp-bandwidthexperience.md) - that will help you identify the ideal tests.
 
-最初にテストについて読んでから、組み合わせを選択して、それらを実行します。以下の表を使用して、パフォーマンスを追跡できます。
+First read about the tests, pick your mix, and then run them. You can use the table below to help track performance.
 
->[AZURE.NOTE] ご自分でネットワーク テストを実行できない場合、またはそのための時間がない場合は、[基本的なネットワーク帯域幅の推定/推奨事項](remoteapp-bandwidthguidelines.md)をご確認ください。ただし、ご自分のマイレージは違う可能性があることから、ご自分でテストを実行*できる*場合には、そうする必要があります。
+>[AZURE.NOTE] If you cannot do your own network testing, or you do not have the time to do so, check out our [basic network bandwidth estimates/recommendations](remoteapp-bandwidthguidelines.md). Your mileage may vary, however, so if you *can* run your own tests, you should.
 
 
-## 使用量のテスト
-これらのテストの実行にかかる時間は、テストごとに異なります。ネットワーク帯域幅を使用するテスト対象機能も、テストごとに異なります。社内の個々のユーザーに最適なテストの組み合わせをご選択ください。
+## <a name="the-usage-tests"></a>The usage tests
+Each of these tests run for different amounts of time and test different functions/features that consume network bandwidth. Remember to choose the mix of test that best matches your individual company users.
  
-### エグゼクティブ用/複雑な PowerPoint - 実行時間 900 から 1000 秒
+### <a name="executive/complex-powerpoint---run-for-900-1000-seconds"></a>Executive/complex PowerPoint - Run for 900-1000 seconds
 
-ユーザーは Microsoft Office PowerPoint を全画面表示モードで使用して、45 から 50 枚の高品質なスライドを表示します。スライドには、イメージ、切り替え (アニメーション)、および自社の一般的なグラデーションによる背景が含まれる必要があります。ユーザーは、各スライドに少なくとも 20 秒を費やす必要があります。
+A user presents between 45-50 high-fidelity slides by using Microsoft Office PowerPoint in full-screen mode. The slides should contain images, transitions (with animations), and backgrounds with color gradient that are typical for your company. The user should spend at least 20 seconds on each slide.
     
-このシナリオでは、プレゼンテーションの次のスライドへのスライド切り替えのときに、バースト トラフィックが発生します。
+This scenario creates bursty traffic, when a slide transitions to the next slide in the presentation.
     
-### 単純な PowerPoint - 実行時間 620 秒以内
+### <a name="simple-powerpoint---run-for-~620-seconds"></a>Simple PowerPoint - Run for ~620 seconds
 
-ユーザーは、Microsoft Office PowerPoint を全画面表示モードで使用して、約 30 枚のスライドで構成される単純な PowerPoint ファイルを実行します。これらのスライドには、エグゼクティブ用/複雑な PowerPoint シナリオより多くのテキストと、単純な背景およびイメージ (黒ダイアグラム) が含まれます。
+A user presents a simple PowerPoint file with approximately 30 slides by using Microsoft Office PowerPoint in full-screen mode. The slides are more text-intensive than in the Executive/complex PowerPoint scenario and have simpler backgrounds and images (black diagrams). 
     
-### Internet Explorer - 実行時間 250 秒以内
+### <a name="internet-explorer---run-for-~250-seconds"></a>Internet Explorer - Run for ~250 seconds
 
-ユーザーは、Internet Explorer を使用して Web を参照します。ユーザーは、テキスト、ナチュラル イメージ、概略図の組み合わせを参照およびスクロールします。Web ページはリモート デスクトップ セッション ホスト (RD セッション ホスト) サーバーのローカル ディスク ドライブに .MHT ファイルとして格納されます。 ユーザーは PageUp、PageDown、上へ、および下への各キー使用してスクロールします。スクロールの各キー/種類の間隔は異なります。
+A user browses the web by using Internet Explorer. The user browses and scrolls through a mix of text, natural images, and some schematic diagrams. The web pages stored on the local disk drive of the Remote Desktop Session Host (RD Session Host) server as an .MHT file. The user scrolls using Page Up, Page Down, Up, and Down keys, with varying intervals for each key/type of scroll:
     
     - Down - 250 keystrokes very 500 ms
     - Page Up - 36 keystrokes every 1000 ms
@@ -53,51 +54,54 @@ Azure RemoteApp の提供は終了しました。詳細については、[お知
     - Page Down - 20 keystrokes every 500 ms
     - Up - 120 keystrokes every 300 ms
     
-### PDF ドキュメント - 単純 - 実行時間 610 秒以内
-ユーザーは、Adobe Acrobat Reader を使用して、さまざまな方法で PDF ドキュメントの読み取りおよび検索を行います。ドキュメントはテーブル、単純なグラフ、および複数のテキスト フォントで構成される必要があります。ドキュメントの長さは 35 から 40 ページです。ユーザーは 4 種類のズーム サイズ (fit to page、fit to width、100%、その他の選択) を使用して、2 種類のスクロール速度で、順方向と逆方向にスクロールします。ズームを使用することで、テキスト (フォント) をさまざまなサイズで表示できます。PageUp、PageDown、上へ、および下への各キー使用してスクロールします。各スクロールの間隔は異なります。
+### <a name="pdf-document---simple---run-for-~610-seconds"></a>PDF document - simple - Run for ~610 seconds
+A user reads and searches a PDF document in various ways by using Adobe Acrobat Reader. The document should consist of tables, simple graphs, and multiple text fonts. The document is 35-40 pages long. The user scrolls through at two different rates, backwards and forwards, at four different zoom sizes (fit to page, fit to width, 100%, and another of your choosing). The zooming ensures that the text (font) renders in different sizes. Scrolling is down using the Page Up, Page Down, Up, and Down keys, with varying intervals for each scroll.
 
-### PDF ドキュメント - 混合 - 実行時間 320 秒以内
-ユーザーは、Adobe Acrobat Reader を使用して、さまざまな方法で PDF ドキュメントの読み取りおよび検索を行います。ドキュメントは、高品質の画像 (写真を含む)、テーブル、単純なグラフ、および複数のテキストのフォントで構成されます。ユーザーは 4 種類のズーム サイズ (fit to page、fit to width、100%、その他の選択) を使用して、2 種類のスクロール速度で、順方向と逆方向にスクロールします。ズームを使用することで、テキスト (フォント) をさまざまなサイズで表示できます。PageUp、PageDown、上へ、および下への各キー使用してスクロールします。各スクロールの間隔は異なります。
+### <a name="pdf-document---mixed---run-for-~320-seconds"></a>PDF document - mixed - Run for ~320 seconds
+A user reads and searches a PDF document in various ways by using Adobe Acrobat Reader. The document consists of high-quality images (including photographs), tables, simple graphs, and multiple text fonts. The user scrolls through at two different rates, backwards and forwards, at four different zoom sizes (fit to page, fit to width, 100%, and another of your choosing). The zooming ensures that the text (font) renders in different sizes. Scrolling is down using the Page Up, Page Down, Up, and Down keys, with varying intervals for each scroll.
 
-### フラッシュ ビデオの再生 - 実行時間 180 秒以内
-ユーザーは、Web ページに埋め込まれた Adobe Flash でエンコードされたビデオを表示します。Web ページは、リモート デスクトップ セッション ホスト サーバーのローカル ハード ディスク ドライブに格納されます。ビデオは Internet Explorer 内に埋め込まれたプレーヤー プラグインで再生されます。
+### <a name="flash-video-playback---run-for-~180-seconds"></a>Flash video playback - Run for ~180 seconds
+A user views an Adobe Flash-encoded video embedded in a web page. The web page is stored in the local hard drive of the RD Session Host server. The video is played within Internet Explorer by an embedded player plug-in.
 
-このシナリオは、マルチメディアを含むリッチ コンテンツ Web ページを表示するユーザーをエミュレートします。ほとんどのデータは VOBR を経る必要があります。
+This scenario emulates users viewing rich content web pages containing multimedia. Most of the data should bo through VOBR.
 
-### Word のリモート入力 - 実行時間 1800 秒以内
-ユーザーは RDP セッションでドキュメントを入力します。RDP セッションによってクライアント側のキーボード操作は、リモート セッションで実行中の Microsoft Word のドキュメントに送信されます。入力速度は 250 ミリ秒あたり 1 文字 (合計 7,050 文字) です。
+### <a name="word-remote-typing---run-for-~1800-seconds"></a>Word remote typing - Run for ~1800 seconds
+A user types a document over an RDP session. Keystrokes are sent from the client side through the RDP session to a document in Microsoft Word running in the remote session. The typing rate is one character every 250 ms (total 7050 characters). 
 
-これは、ナレッジ ワーカーの最も一般的なシナリオの 1 つです。このシナリオでは、現代のワーク プロセッサに入力するユーザーの応答性がテストされます。このシナリオは、使用帯域幅の些細な変更にも反応します。
+This is one of the most common scenarios for a knowledge worker. This scenario tests the responsiveness of a user typing into a modern work processor. This scenario is sensitive to even small changes in bandwidth usage.
 
-## テスト結果の追跡
+## <a name="tracking-the-test-results"></a>Tracking the test results
 
-次の表を使用して、ご自分の環境内でのシナリオを評価できます。下記のデータは単なる例であり、実際の測定値と大きく異なる場合があります。
+You can use the following table to evaluate the scenarios in your environment. The data provided below is just for illustration - it may be vastly different from what you observe. 
 
-わかりやすいように、画面解像度 1920x1080 ピクセル、ネットワーク待機時間 (遅延) が 200 ミリ秒未満であるネットワークでの TCP トランスポート、および 120 ミリ秒+ マークのネットワーク ジッター約 1% という条件で、すべてのシナリオがテストされると仮定します。
+For simplicity, we assume that all scenarios are tested using the same 1920x1080 pixels screen resolution and TCP transports on a network with latency (delay) below 200 ms and network jitter in the 120 ms+ mark of about 1%.
 
-この表について：
-- **平均的なエクスペリエンス**には、ユーザーの生産性が大きな影響を受けないネットワーク帯域幅が表示されています。ビデオまたはオーディオに関する不定期の問題は除外されません。システムは動的なロジックを利用して迅速に回復できます。このネットワーク帯域幅の推定値は、ユーザー エクスペリエンスの質を保証することを目的としています。
- - **顕著な問題 (ブレーク ポイント)** には、ユーザーがエクスペリエンスの重大な問題に気付く可能性があり、測定可能な期間のユーザー生産性に影響が及ぶネットワーク帯域幅が表示されています。この時点ではネットワーク帯域幅が不十分であることから、RDP アルゴリズムが正常に機能することが難しくなっており、ユーザー エクスペリエンスの質を保証できません。
- - **推奨**には、良好または非常に良好なエクスペリエンスのために推奨されるネットワーク帯域幅が表示されています。これは通常では、対応する**平均的なエクスペリエンス**列の値より 1 段階高くなります。
- - **メモ**には、所見とコメントが表示されています。
+About the table:
+- **Average experience** contains the network bandwidth where user productivity is not significantly impacted but does not exclude occasional video or audio glitches. The system is able to recover quickly by taking advantage of the dynamic logic. The network bandwidth estimates attempt to guarantee the quality of the user experience.
+ - **Noticeable issues (break point)** contains the network bandwidth where users might notice significant issues in their experience, and their productivity is impacted for measurable time periods. At this point the RDP algorithms are struggling and cannot guarantee the user's quality of experience because of insufficient network bandwidth.
+ - **Recommended** contains the network bandwidth recommended for good or excellent experience. It is usually one step higher than the value in the corresponding **Average experience** column.
+ - **Notes** include observations and comments.
  
-| テスト | 平均的なエクスペリエンス | 顕著な問題 (ブレーク ポイント) | 推奨ネットワーク帯域幅 | メモ |
+| Test                  | Average experience | Noticeable issues (break point) | Recommended network bandwidth | Notes                                                              |
 |-----------------------|--------------------|---------------------------------|-------------------------------|--------------------------------------------------------------------|
-| エグゼクティブ用/複雑な PPT | 10 MB/s | 1 MB/s | >10 MB/s (100 MB/s 推奨) | 1 MB/s で多くのアニメーションは失われます |
-| 単純な PPT | 5 MB/s | 256 KB/s | 10 MB/s | 256 KB/s でスライドの読み込みがかなり遅くなります |
-| Internet Explorer | 10 MB/s | 1 MB/s | >10 MB/s (100 MB/s 推奨) | 1 MB/s で Web ビデオがぼやけて途切れ、高速なスクロールで問題が発生します |
-| 単純な PDF | 1 MB/s | 256 KB/s | 5 MB/s | 256 KB/s でページの読み込みにしばらく時間がかかります |
-| 混合 PDF | 1 MB/s | 256 KB/s | 5 MB/s | 256 KB/s でページの読み込みにかなりの時間がかかります |
-| Flash ビデオの再生 | 10 MB/s | 1 MB/s | >10 MB/s (100 MB/s 推奨) | 1 MB/s でビデオがざらつき、いくつかのフレームがドロップされます |
-| Word のリモート入力 | 256 KB/s | 128 KB/s | 1 MB/s | 256 KB/s でユーザーがキーボード操作の間に時間がかかることに気付きます |
+| Executive/complex PPT | 10 MB/s             | 1 MB/s                           | >10 MB/s, 100 MB/s preferred    | At 1 MB/s many animations are lost                                   |
+| Simple PPT            | 5 MB/s              | 256 KB/s                         | 10 MB/s                        | At 256 KB/s the slides load with noticeable delay                   |
+| Internet Explorer     | 10 MB/s             | 1 MB/s                           | >10 MB/s, 100 MB/s preferred    | At 1 MB/s web videos are blurry and choppy, fast scrolling has issues |
+| Simple PDF            | 1 MB/s              | 256 KB/s                         | 5 MB/s                         | At 256 KB/s it takes a while to load the page                       |
+| Mixed PDF             | 1 MB/s             | 256 KB/s                         | 5 MB/s                         | At 256 KB/s the page takes a considerable amount of time to load    |
+| Flash video playback  | 10 MB/s             | 1 MB/s                           | >10 MB/s, 100 MB/s preferred    | At 1 MB/s the video is grainy and some frames are dropped           |
+| Word remote typing    | 256 KB/s            | 128 KB/s                         | 1 MB/s                         | At 256 KB/s user may notice the time between keystrokes             |
 
-ユーザーごとのネットワーク帯域幅を評価するには、上記のシナリオの組み合わせと、必要なネットワーク帯域幅の対応する比率を作成します。ご自分のシナリオに必要な最大の数値を選択します。ユーザーが単独でシステムを使用することはほとんどないことから、同じネットワーク上で同時に作業するユーザーのための予約をご検討ください。
+To evaluate the network bandwidth per user, create a mix of the above scenarios and the corresponding proportion of required network bandwidth. Pick the highest number needed for your scenarios. Since users almost never use the system alone, consider some reserve for users that work simultaneously on the same network.
      
-## 詳細情報
-- [Estimate Azure RemoteApp network bandwidth usage (Azure RemoteApp で使用されるネットワーク帯域幅を推定する)](remoteapp-bandwidth.md)
+## <a name="learn-more"></a>Learn more
+- [Estimate Azure RemoteApp network bandwidth usage](remoteapp-bandwidth.md)
 
-- [Azure RemoteApp - how do network bandwidth and quality of experience work together? (Azure RemoteApp - ネットワーク帯域幅とエクスペリエンスの質はどのような関係にあるのか) ](remoteapp-bandwidthexperience.md)
+- [Azure RemoteApp - how do network bandwidth and quality of experience work together?](remoteapp-bandwidthexperience.md)
 
-- [Azure RemoteApp network bandwidth - general guidelines (if you can't test your own) (Azure RemoteApp のネットワーク帯域幅に関する一般的なガイドライン (自分でテストできない場合))](remoteapp-bandwidthguidelines.md)
+- [Azure RemoteApp network bandwidth - general guidelines (if you can't test your own)](remoteapp-bandwidthguidelines.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

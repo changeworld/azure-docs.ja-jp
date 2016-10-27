@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Node.js アプリケーションを Azure 内の Linux 仮想マシンにデプロイする"
-   description="Node.js アプリケーションを Azure 内の Linux 仮想マシンにデプロイする方法について説明します"
+   pageTitle="Deploy a Node.js application to Linux Virtual Machines in Azure"
+   description="Learn how to deploy a Node.js application to Linux virtual machines in Azure."
    services=""
    documentationCenter="nodejs"
    authors="stepro"
@@ -16,175 +16,176 @@
    ms.date="02/02/2016"
    ms.author="stephpr"/>
 
-# Node.js アプリケーションを Azure 内の Linux 仮想マシンにデプロイする
 
-このチュートリアルでは、Node.js アプリケーションを入手し、Azure で実行されている Linux 仮想マシンにデプロイする方法について説明します。このチュートリアルの手順は、Node.js を実行できる任意のオペレーティング システムで使用できます。
+# <a name="deploy-a-node.js-application-to-linux-virtual-machines-in-azure"></a>Deploy a Node.js application to Linux Virtual Machines in Azure
 
-学習内容は次のとおりです。
+This tutorial shows how to take a Node.js application and deploy it to Linux virtual machines running in Azure. The instructions in this tutorial can be followed on any operating system that is capable of running Node.js.
 
-- 単純な TODO アプリケーションが含まれている GitHub リポジトリをフォークして複製する方法。
-- アプリケーションを実行するために Azure 内に 2 つの Linux 仮想マシンを作成、構成する方法。
-- 更新を Web フロントエンド仮想マシンにプッシュして、アプリケーションを反復処理する方法。
+You'll learn how to:
+
+- Fork and clone a GitHub repository containing a simple TODO application;
+- Create and configure two Linux virtual machines in Azure to run the application;
+- Iterate on the application by pushing updates to the web frontend virtual machine.
 
 > [AZURE.NOTE]
-このチュートリアルを完了するには、GitHub アカウントと Microsoft Azure アカウントが必要です。また、開発用コンピューターから Git を使用できる必要があります。
+> To complete this tutorial, you need a GitHub account and a Microsoft Azure account, and the ability to use Git from a development machine.
 
-> GitHub アカウントをお持ちでない場合は、[こちら](https://github.com/join)でサインアップできます。
+> If you don't have a GitHub account, you can sign up [here](https://github.com/join).
 
-> [Microsoft Azure](https://azure.microsoft.com/) アカウントをお持ちでない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)で無料試用版にサインアップできます。ここでは、[Microsoft アカウント](http://account.microsoft.com)をお持ちでない場合にはそのサインアップ プロセスについても説明します。また、Visual Studio サブスクライバーである場合は、[MSDN の特典を利用](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)できます。
+> If you don't have a [Microsoft Azure](https://azure.microsoft.com/) account, you can sign up for a FREE trial [here](https://azure.microsoft.com/pricing/free-trial/). This will also lead you through the sign up process for a [Microsoft Account](http://account.microsoft.com) if you do not already have one. Alternatively, if you are a Visual Studio subscriber, you can [activate your MSDN benefits](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 
-> お使いの開発用コンピューターに Git がなく、使用しているコンピューターが Macintosh または Windows の場合は、[こちら](http://www.git-scm.com)から Git をインストールしてください。Linux を使用している場合は、`sudo apt-get install git` などの最適なメカニズムを使用して Git をインストールしてください。
+> If you do not have git on your development machine, then if you are using a Macintosh or Windows machine, install git from [here](http://www.git-scm.com). If you are using Linux, install git using the mechanism most appropriate for you, such as `sudo apt-get install git`.
 
-## TODO アプリケーションのフォークと複製
+## <a name="forking-and-cloning-the-todo-application"></a>Forking and Cloning the TODO Application
 
-このチュートリアルで使用する TODO アプリケーションでは、単純な Web フロントエンドが、TODO リストを追跡する MongoDB インスタンスで実装されます。GitHub にサインインした後、[こちら](https://github.com/stepro/node-todo)に移動してアプリケーションを見つけたら、右上のリンクを使用してフォークします。これで、アカウントに *accountname*/node-todo という名前のリポジトリが作成されます。
+The TODO application used by this tutorial implements a simple web frontend over a MongoDB instance that keeps track of a TODO list. After signing in to GitHub, go [here](https://github.com/stepro/node-todo) to find the application and fork it using the link in the top right. This should create a repository in your account named *accountname*/node-todo.
 
-次に、開発用コンピューターにこのリポジトリを複製します。
+Now on your development machine, clone this repository:
 
     git clone https://github.com/accountname/node-todo.git
 
-このリポジトリのローカル クローンは、少し後でソース コードを変更するときに使用します。
+We'll use this local clone of the repository a little later when making changes to the source code.
 
-## Linux 仮想マシンの作成と構成
+## <a name="creating-and-configuring-the-linux-virtual-machines"></a>Creating and Configuring the Linux Virtual Machines
 
-Azure では、Linux 仮想マシンを使用したそのままのコンピューティングがうまくサポートされています。チュートリアルのこのセクションでは、2 つの Linux 仮想マシンを作成し、それらに TODO アプリケーションをデプロイする簡単な方法を説明します。これにより、一方の仮想マシンでは Web フロントエンドが実行され、もう一方の仮想マシンでは MongoDB インスタンスが実行されます。
+Azure has great support for raw compute using Linux virtual machines. This part of the tutorial shows how you can easily spin up two Linux virtual machines and deploy the TODO application to them, running the web frontend on one and the MongoDB instance on the other.
 
-### 仮想マシンの作成
+### <a name="creating-virtual-machines"></a>Creating Virtual Machines
 
-Azure で新しい仮想マシンを作成する最も簡単な方法は、Azure ポータルを使用することです。[こちら](https://portal.azure.com)をクリックしてサインインし、お使いの Web ブラウザーで Azure ポータルを起動します。Azure ポータルの読み込みが終わったら、次の手順を実行します。
+The easiest way to create a new virtual machine in Azure is to use the Azure Portal. Click [here](https://portal.azure.com) to sign in and launch the Azure Portal in your web browser. Once the Azure Portal has loaded, complete the following steps:
 
-- [+新規] リンクをクリックします。
-- [Compute] カテゴリを選択し、[Ubuntu Server 14.04 LTS] を選択します。
-- [リソース マネージャー] デプロイ モデルを選択し、[作成] をクリックします。
-- 次のガイドラインに従って基本情報を入力します。
-  - 後で簡単に識別できる名前を指定する。
-  - このチュートリアルではパスワード認証を選択する。
-  - 特定可能な名前で新しいリソース グループを作成する。
-- このチュートリアルでは、仮想マシンのサイズに "A1 Standard" を選択することが妥当です。
-- その他の設定については、ディスクの種類が [Standard] であることを確認し、残りはすべて既定値をそのまま使用します。
-- [概要] ページで作成を開始します。
+- Click the "+ New" link;
+- Pick the "Compute" category and choose "Ubuntu Server 14.04 LTS";
+- Select the "Resource Manager" deployment model and click "Create";
+- Fill in the basics following these guidelines:
+  - Specify a name you can easily identify later;
+  - For this tutorial, choose Password authentication;
+  - Create a new resource group with an identifiable name.
+- For the Virtual Machine size, "A1 Standard" is a reasonable choice for this tutorial.
+- For additional settings, ensure the disk type is "Standard" and accept all the remaining defaults.
+- Kick off the creation on the summary page.
 
-上記の手順を 2 回実行して、2 つの Linux 仮想マシンを作成します。そのうち一方は Web フロントエンドに使用し、もう一方は MongoDB インスタンスに使用します。仮想マシンの作成には約 5 ～ 10 分かかります。
+Perform the above process twice to create two Linux virtual machines, one for the web frontend and one for the MongoDB instance. Creation of the virtual machines will take about 5-10 minutes.
 
-### 仮想マシンの DNS エントリの割り当て
+### <a name="assigning-a-dns-entry-for-virtual-machines"></a>Assigning a DNS entry for Virtual Machines
 
-Azure に作成された仮想マシンは、既定では、1.2.3.4 などのパブリック IP アドレスのみを使用してアクセスできます。仮想マシンをより簡単に識別できるように、DNS エントリを割り当てましょう。
+Virtual machines created in Azure are by default only accessible through a public IP address like 1.2.3.4. Let's make the machines more easily identifiable by assigning them DNS entries.
 
-仮想マシンが作成されたことがポータルで示されたら、左側のナビゲーション バーの [仮想マシン] リンクをクリックし、自分の仮想マシンを探します。各マシンについて次の手順を実行します。
+Once the portal indicates that the virtual machines have been created, click on the "Virtual machines" link in the left navbar and locate your machines. For each machine:
 
-- [要点] タブを探して、パブリック IP アドレスをクリックします。
-- パブリック IP アドレスの構成で、DNS 名ラベルを割り当てて保存します。
+- Locate the Essentials tab and click on the Public IP Address;
+- In the public IP address configuration, assign a DNS name label and save.
 
-ポータルでは、指定した名前を使用できるようになります。構成の保存後、仮想マシンのホスト名は `machinename.region.cloudapp.azure.com` のようになります。
+The portal will ensure that the name you specify is available. After saving the configuration, your virtual machines will have host names similar to `machinename.region.cloudapp.azure.com`.
 
-### 仮想マシンへの接続
+### <a name="connecting-to-the-virtual-machines"></a>Connecting to the Virtual Machines
 
-プロビジョニング後の仮想マシンは、SSH 経由のリモート接続を許可するように事前に構成されていました。これは、仮想マシンの構成に使用するメカニズムです。開発に Windows を使用している場合、SSH クライアントをまだ持っていなければ入手する必要があります。ここでは一般的に PuTTY を選択します。PuTTY は[こちら](http://www.chiark.greenend.org.uk/~sgtatham/putty/)からダウンロードできます。Macintosh と Linux OS にはプレインストール版の SSH が付属しています。
+When your virtual machines were provisioned, they were pre-configured to allow remote connections over SSH. This is the mechanism we will use to configure the virtual machines. If you are using Windows for your development, you will need to get an SSH client if you do not already have one. A common choice here is PuTTY, which can be downloaded from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/). Macintosh and Linux OSes come with a version of SSH pre-installed.
 
-### Web フロントエンド仮想マシンの構成
+### <a name="configuring-the-web-frontend-virtual-machine"></a>Configuring the Web Frontend Virtual Machine
 
-PuTTY、SSH コマンド ライン、またはその他のお好きな SSH ツールを使用して、作成した Web フロントエンド マシンに SSH 接続します。ウェルカム メッセージの後にコマンド プロンプトが表示されます。
+SSH to the web frontend machine you created using PuTTY, ssh command line or your other favorite SSH tool. You should see a welcome message followed by a command prompt.
 
-最初に、Git とノードの両方がインストールされていることを確認します。
+First, let's make sure that git and node are both installed:
 
     sudo apt-get install -y git
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
     sudo apt-get install -y nodejs
     
-アプリケーションの Web フロントエンドがネイティブの Node.js モジュールに依存しているため、必須のビルド ツールのセットもインストールする必要があります。
+Since the application's web frontend relies on some native Node.js modules, we also need to install the essential set of build tools:
 
     sudo apt-get install -y build-essential
 
-最後に、*forever* という名前の Node.js アプリケーションをインストールします。これで Node.js サーバー アプリケーションを実行できます。
+Finally, let's install a Node.js application called *forever*, which helps to run Node.js server applications:
 
     sudo npm install -g forever
     
-これらはすべて、アプリケーションの Web フロントエンドを実行できるようにするためにこの仮想マシンで必要な依存関係です。それではこれを実行してみましょう。そのためには、まず先ほどフォークした GitHub リポジトリの作業ディレクトリを持たないクローンを作成し、仮想マシンに更新を簡単に発行できるようにします (この更新シナリオについては後で説明します)。その後、作業ディレクトリを持たないクローンを複製し、実際に実行できるリポジトリのバージョンを提供します。
+These are all the dependencies needed on this virtual machine to be able to run the application's web frontend, so let's get that running. To do this, we will first create a bare clone of the GitHub repository you previously forked so that you can easily publish updates to the virtual machine (we'll cover this update scenario later), and then clone the bare clone to provide a version of the repository that can actually be executed.
 
-ホーム (~) ディレクトリから、次のコマンドを実行します (*accountname* はお使いの GitHub ユーザー アカウント名に置き換えます)。
+Starting from the home (~) directory, run the following commands (replacing *accountname* with your GitHub user account name):
 
     git clone --bare https://github.com/accountname/node-todo.git
     git clone node-todo.git
 
-次に、node-todo ディレクトリに移動し、次のコマンドを実行します。
+Now enter the node-todo directory and run these commands:
 
     npm install
     forever start server.js
     
-これで、アプリケーションの Web フロントエンドは実行されている状態になりました。ただし、Web ブラウザーからアプリケーションにアクセスできるようにするには、もう 1 つ手順が必要です。作成した仮想マシンは、*ネットワーク セキュリティ グループ*と呼ばれる Azure リソースで保護されています。これは、仮想マシンをプロビジョニングしたときに作成されたものです。現在、このリソースで許可されているのは、ポート 22 に対する外部要求をこの仮想マシンにルーティングすることのみで、SSH 通信はこのマシンとのみ可能です。そのため、ポート 8080 で実行するように構成された TODO アプリケーションを表示するためには、このポートも開いておく必要があります。
+The application's web frontend is now running, however there is one more step before you can access the application from a web browser. The virtual machine you created is protected by an Azure resource called a *network security group*, which was created for you when you provisioned the virtual machine. Currently, this resource only allows external requests to port 22 to be routed to the virtual machine, which enables SSH communication with the machine but nothing else. So in order to view the TODO application, which is configured to run on port 8080, this port also needs to be opened up.
 
-Azure ポータルに戻り、次の手順を実行します。
+Return to the Azure Portal and complete the following steps:
 
-- 左側のナビゲーション バーの [リソース グループ] をクリックします。
-- 作成した仮想マシンが含まれているリソース グループを選択します。
-- 表示されたリソースの一覧で、ネットワーク セキュリティ グループ (盾のアイコンが付いたもの) を選択します。
-- プロパティの [受信セキュリティ規則] を選択します。
-- ツール バーの [追加] をクリックします。
-- "default-allow-todo" などの名前を指定します。
-- プロトコルを "TCP" に設定します。
-- 宛先ポート範囲を "8080" に設定します。
-- [OK] をクリックして、セキュリティ規則が作成されるまで待ちます。
+- Click on "Resource groups" in the left navbar;
+- Select the resource group that contains your virtual machine;
+- In the resulting list of resources, select the network security group (the one with a shield icon);
+- In the properties, choose "Inbound security rules";
+- In the toolbar, click "Add";
+- Provide a name like "default-allow-todo";
+- Set the protocol to "TCP";
+- Set the destination port range to "8080";
+- Click OK and wait for the security rule to be created.
 
-このセキュリティ規則を作成すると、TODO アプリケーションはインターネット上で一般に公開されるため、たとえば次のような URL を使用して、ブラウザーで参照できるようになります。
+After creating this security rule, the TODO application is publically visible on the internet and you can browse to it, for instance using a URL such as:
 
     http://machinename.region.cloudapp.azure.com:8080
 
-まだ MongoDB 仮想マシンが構成されていなくても、TODO アプリケーションが完全に動作しているように見えます。これは、ソース リポジトリが事前にデプロイされた MongoDB インスタンスを使用するようにハードコーディングされているためです。MongoDB 仮想マシンを構成した後、ソース コードに戻り、代わりにプライベート MongoDB インスタンスを使用するように変更します。
+You will notice that even though we have not yet configured the MongoDB virtual machine, the TODO application appears to be quite functional. This is because the source repository is hardcoded to use a pre-deployed MongoDB instance. Once we have configured the MongoDB virtual machine, we will go back and change the source code to utilize our private MongoDB instance instead.
 
-### MongoDB 仮想マシンの構成
+### <a name="configuring-the-mongodb-virtual-machine"></a>Configuring the MongoDB Virtual Machine
 
-PuTTY、SSH コマンド ライン、またはその他のお好きな SSH ツールを使用して、作成した 2 つ目のマシンに SSH 接続します。ウェルカム メッセージとコマンド プロンプトが表示されたら、MongoDB をインストールします (これらの手順は[こちら](https://docs.mongodb.org/master/tutorial/install-mongodb-on-ubuntu/)から抜粋したものです)。
+SSH to the second machine you created using PuTTY, ssh command line or your other favorite SSH tool. After seeing the welcome message and command prompt, install MongoDB (these instructions were taken from [here](https://docs.mongodb.org/master/tutorial/install-mongodb-on-ubuntu/)):
 
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
     echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
     sudo apt-get update
     sudo apt-get install -y mongodb-org
 
-既定では、MongoDB はローカルでしかアクセスできないように構成されています。このチュートリアルでは、MongoDB をアプリケーションの仮想マシンからアクセスできるように構成します。sudo のコンテキストで、/etc/mongod.conf ファイルを開き、`# network interfaces` セクションを探します。`net.bindIp` 構成の値を `0.0.0.0` に変更します。
+By default, MongoDB is configured so it can only be accessed locally. For this tutorial, we will configure MongoDB so it can be accessed from the application's virtual machine. In a sudo context, open the /etc/mongod.conf file and locate the `# network interfaces` section. Change the `net.bindIp` configuration value to `0.0.0.0`.
 
 > [AZURE.NOTE]
-この構成は、このチュートリアルのみに使用します。これは、セキュリティ上推奨される設定では**ない**ため、運用環境では使用しないでください。
+> This configuration is for the purposes of this tutorial only. It is **NOT** a recommended security practice and should not be used in production environments.
 
-ここで、MongoDB サービスが開始されたことを確認します。
+Now ensure the MongoDB service has been started:
 
     sudo service mongod restart
 
-MongoDB は、既定ではポート 27017 で動作します。そのため、Web フロントエンド仮想マシンでポート 8080 を開く必要があったのと同様に、MongoDB 仮想マシンではポート 27017 を開く必要があります。
+MongoDB operates over port 27017 by default. So, in the same way that we needed to open port 8080 on the web frontend virtual machine, we need to open port 27017 on the MongoDB virtual machine.
 
-Azure ポータルに戻り、次の手順を実行します。
+Return to the Azure Portal and complete the following steps:
 
-* 左側のナビゲーション バーの [リソース グループ] をクリックします。
-* MongoDB 仮想マシンが含まれているリソース グループを選択します。
-* 表示されたリソースの一覧で、MongoDB 仮想マシンに指定したのと同じ名前のネットワーク セキュリティ グループ (盾のアイコンが付いたもの) を選択します。
-* プロパティの [受信セキュリティ規則] を選択します。
-* ツール バーの [追加] をクリックします。
-* "default-allow-mongo" などの名前を指定します。
-* プロトコルを "TCP" に設定します。
-* 宛先ポート範囲を "27017" に設定します。
-* [OK] をクリックして、セキュリティ規則が作成されるまで待ちます。
+* Click on "Resource groups" in the left navbar;
+* Select the resource group that contains the MongoDB virtual machine;
+* In the resulting list of resources, select the network security group (the one with a shield icon) with the same name that you gave to the MongoDB virtual machine;
+* In the properties, choose "Inbound security rules";
+* In the toolbar, click "Add";
+* Provide a name like "default-allow-mongo";
+* Set the protocol to "TCP";
+* Set the destination port range to "27017";
+* Click OK and wait for the security rule to be created.
 
-## TODO アプリケーションの反復処理
-ここまでで、2 つの Linux 仮想マシンのプロビジョニングが完了しました。1 つはアプリケーションの Web フロントエンドを実行し、もう 1 つは MongoDB インスタンスを実行しています。ただし、1 つ問題があります。実際のところ、Web フロントエンドでは、プロビジョニングされた MongoDB インスタンスがまだ使用されていません。これを修正するために、ハードコーディングされたインスタンスではなく環境変数を使用するよう、Web フロントエンドのコードを更新します。
+## <a name="iterating-on-the-todo-application"></a>Iterating on the TODO application
+So far, we have provisioned two Linux virtual machines: one that is running the application's web frontend and one that is running a MongoDB instance. But there is a problem - the web frontend isn't actually using the provisioned MongoDB instance yet. Let's fix that by updating the web frontend code to use an environment variable instead of a hard-coded instance.
 
-### TODO アプリケーションの変更
+### <a name="changing-the-todo-application"></a>Changing the TODO application
 
-最初に node-todo リポジトリを複製した開発用コンピューターで、お好きなエディターを使用して `node-todo/config/database.js` ファイルを開き、URL の値を `mongodb://...` のようにハードコーディングされた値から `process.env.MONGODB` に変更します。
+On your development machine where you first cloned the node-todo repository, open the `node-todo/config/database.js` file in your favorite editor and change the url value from the hard-coded value like `mongodb://...` to `process.env.MONGODB`.
 
-変更をコミットして GitHub の master にプッシュします。
+Commit your changes and push to the GitHub master:
 
     git commit -am "Get MongoDB instance from env"
     git push origin master
 
-残念ながら、これだけでは Web フロントエンド仮想マシンに対して変更は発行されません。その仮想マシンにさらにいくつかの変更を加え、更新を発行するために単純でありながら効果的なメカニズムを有効にします。これにより、実際の環境におけるその変更の影響をすばやく確認できます。
+Unfortunately, this doesn't publish the change to the web frontend virtual machine. Let's make a few more changes to that virtual machine to enable a simple but effective mechanism for publishing updates so you can quickly observe the effect of the changes in the live environment.
 
-### Web フロントエンド仮想マシンの構成
-先ほど、Web フロントエンド仮想マシンに node-todo リポジトリの作業ディレクトリを持たないクローンを作成したことを思い出してください。この操作で変更のプッシュ先である新しい Git リモートが作成されたことがわかります。ただし、このリモートにプッシュするだけでは、開発者がコードを操作する際に探している迅速な反復処理モデルが実現されたとはいえません。
+### <a name="configuring-the-web-frontend-virtual-machine"></a>Configuring the Web Frontend Virtual Machine
+Recall that we previously created a bare clone of the node-todo repository on the web frontend virtual machine. It turns out that this action created a new Git remote to which changes can be pushed. However, simply pushing to this remote doesn't quite give the rapid iteration model that developers are looking for when working on their code.
 
-望ましいのは、仮想マシンのリモート リポジトリへのプッシュが行われたときに実行中の TODO アプリケーションが自動的に更新されるようにできることです。さいわいなことに、これは Git を使用すれば簡単に実現できます。
+What we would like to be able to do is ensure that when a push to the remote repository on the virtual machine occurs, the running TODO application is automatically updated. Fortunately, this is easy to achieve with git.
 
-Git では、リポジトリに対して行われた操作に反応するように、特定の時間に呼び出される多数のフックが公開されています。これらは、リポジトリの `hooks` フォルダー内のシェル スクリプトを使用して指定されます。自動更新シナリオに最適なフックは、`post-update` イベントです。
+Git exposes a number of hooks that are called at particular times to react to actions taken on the repository. These are specified using shell scripts in the repository's `hooks` folder. The hook that is most applicable for the auto-update scenario is the `post-update` event.
 
-Web フロントエンド仮想マシンとの SSH セッションで、`~/node-todo.git/hooks` ディレクトリに移動し、次の内容を `post-update` という名前のファイルに追加します (`machinename` と `region` をお使いの MongoDB 仮想マシンの情報に置き換えます)。
+In a SSH session to the web frontend virtual machine, change to the `~/node-todo.git/hooks` directory and add the following content to a file named `post-update` (replacing `machinename` and `region` with your MongoDB virtual machine information):
 
     #!/bin/bash
     
@@ -194,26 +195,26 @@ Web フロントエンド仮想マシンとの SSH セッションで、`~/node-
     cd ~/node-todo && git fetch origin && git pull origin master && npm install && forever start ~/node-todo/server.js
     exec git update-server-info
     
-次のコマンドを実行して、このファイルを実行可能にします。
+Ensure this file is executable by running the following command:
 
     chmod 755 post-update
 
-このスクリプトを使用すると、現在のサーバー アプリケーションが停止し、複製されたリポジトリ内のコードが最新の状態に更新されます。さらに、更新された依存関係が満たされ、サーバーが再起動されます。また、最初のアプリケーションの更新を受け取り、環境変数から MongoDB インスタンスを取得する準備として環境が構成されていることが確認されます。
+This script ensures that the current server application is stopped, the code in the cloned repository is updated to the latest, any updated dependencies are satisfied, and the server is restarted. It also ensures that the environment has been configured in preparation for receiving our first application update to get the MongoDB instance from an environment variable.
 
-### 開発用コンピューターの構成
-ここで、開発用コンピューターを Web フロントエンド仮想マシンに接続します。これは、リモートとしてベア リポジトリを仮想マシンに追加するのと同じように簡単です。この操作を行うには、次のコマンドを実行します (*user* を Web フロントエンド仮想マシンのログイン名に置き換え、*machinename* と *region* を適切な内容に置き換えます)。
+### <a name="configuring-your-development-machine"></a>Configuring your Development Machine
+Now let's get your development machine hooked up to the web frontend virtual machine. This is as simple as adding the bare repository on the virtual machine as a remote. Run the following command to do this (replacing *user* with your web frontend virtual machine login name and *machinename* and *region* as appropriate):
 
     git remote add azure user@machinename.region.cloudapp.azure.com:node-todo.git
 
-Web フロントエンド仮想マシンへの変更のプッシュ (実際には発行) を有効にするために必要な操作はこれですべてです。
+This is all that is needed to enable pushing, or in effect publishing, changes to the web frontend virtual machine.
 
-### 更新の発行
+### <a name="publishing-updates"></a>Publishing Updates
 
-ここまでに行った変更を発行して、アプリケーションが独自の MongoDB インスタンスを使用するようにします。
+Let's publish the one change that has been made so far so that the application will use our own MongoDB instance:
 
     git push azure master
 
-次のような出力が表示されます。
+You should see output similar to this:
 
     Counting objects: 4, done.
     Delta compression using up to 4 threads.
@@ -239,25 +240,29 @@ Web フロントエンド仮想マシンへの変更のプッシュ (実際に�
     To username@machinename.region.cloudapp.azure.com:node-todo.git
     5f31fd7..5bc7be5  master -> master
 
-このコマンドが完了したら、Web ブラウザーでアプリケーションを更新してみてください。ここで表示される TODO リストが空で、デプロイされた共有 MongoDB インスタンスに関連付けられていないことを確認できます。
+After this command completes, try refreshing the application in a web browser. You should be able to see that the TODO list presented here is empty and no longer tied to the shared deployed MongoDB instance.
 
-このチュートリアルを完了するために、よりわかりやすい別の変更を行います。開発用コンピューターで、お好きなエディターを使用して node-todo/public/index.html ファイルを開きます。jumbotron ヘッダーを探して、タイトルを "I'm a Todo-aholic" から "I'm a Todo-aholic on Azure!" に変更します。
+To complete the tutorial, let's make another, more visible change. On your development machine, open the node-todo/public/index.html file using your favorite editor. Locate the jumbotron header and change  the title from "I'm a Todo-aholic" to "I'm a Todo-aholic on Azure!".
 
-これでコミットします。
+Now let's commit:
 
     git commit -am "Azurify the title"
 
-今度は、GitHub のリポジトリにもう一度プッシュする前に Azure に変更を発行します。
+This time, let's publish the change to Azure before pushing it to back to the GitHub repo:
 
     git push azure master
 
-このコマンドの完了後、Web ページを更新すると変更内容が表示されます。変更が正しく表示されたので、配信元のリモートに変更をプッシュして戻します。
+Once this command completes, refresh the web page and you will see the changes. Since they look good, push the change back to the origin remote: 
 
     git push origin master
 
-## 次のステップ
-この記事では、Node.js アプリケーションを入手し、Azure で実行されている Linux 仮想マシンにデプロイする方法について説明しました。Azure での Linux 仮想マシンの詳細については、「[Azure での Linux 入門](/documentation/articles/virtual-machines-linux-introduction/)」を参照してください。
+## <a name="next-steps"></a>Next Steps
+This article showed how to take a Node.js application and deploy it to Linux virtual machines running in Azure. To learn more about Linux virtual machines in Azure, see [Introduction to Linux on Azure](/documentation/articles/virtual-machines-linux-introduction/).
     
-Azure で Node.js アプリケーションを開発する方法の詳細については、[Node.js デベロッパー センター](/develop/nodejs/)を参照してください。
+For more information about how to develop Node.js applications on Azure, see the [Node.js Developer Center](/develop/nodejs/).
 
-<!---HONumber=AcomDC_0211_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

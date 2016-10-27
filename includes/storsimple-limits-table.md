@@ -1,30 +1,33 @@
 <!--author=alkohli last changed: 12/15/15-->
 
-| 制限の種類 | 制限 | 説明 |
+| Limit identifier | Limit | Comments |
 |----------------- | ------|--------- |
-| ストレージ アカウントの資格情報の最大数 | 64 | |
-| ボリューム コンテナーの最大数 | 64 | |
-| ボリュームの最大数 | 255 | |
-| 帯域幅テンプレートごとのスケジュールの最大数 | 168 | 毎日の 1 時間ごとのスケジュール (1 日 24 時間週 7 日)。 |
-| 物理デバイス上の階層化ボリュームの最大サイズ | 8100 と 8600 では 64 TB | 8100 と 8600 は物理デバイスです。 |
-| Azure 内の仮想デバイス上の階層化ボリュームの最大サイズ | 8010 では 30 TB<br></br>8020 では 64 TB | 8010 と 8020 は、それぞれ Standard Storage と Premium Storage を使用する Azure の仮想デバイスです。 |
-| 物理デバイス上のローカル固定ボリュームの最大サイズ | 8100 では 9 TB (テラバイト)<br></br>8600 では 24 TB (テラバイト) | 8100 と 8600 は物理デバイスです。 |
-| iSCSI 接続の最大数 | 512 | |
-| イニシエーターからの iSCSI 接続の最大数 | 512 | |
-| デバイスごとのアクセス制御レコードの最大数 | 64 | |
-| バックアップ ポリシーごとのボリュームの最大数 | 24 | |
-| バックアップ ポリシーごとに保持されるバックアップの最大数 | 64 | |
-| バックアップ ポリシーごとのスケジュールの最大数 | 10 | |
-| 種類に関係なく保持されるスナップショットのボリュームあたりの最大数 | 256 | これにはローカル スナップショットとクラウド スナップショットが含まれます。 |
-| 1 つのデバイス内に存在できるスナップショットの最大数 | 10,000 | |
-| バックアップ、復元、またはクローニングのために並列に処理できるボリュームの最大数 | 16 |<ul><li>ボリュームの数が 16 を超える場合は、処理スロットが使用可能になるのに合わせて順番に処理されます。</li><li>複製または復元された階層化ボリュームの新規バックアップは、前の操作が完了するまで実行できません。ただし、ローカル ボリュームでは、バックアップはボリュームがオンライになった後で可能になります。</li></ul>|
-| 階層化ボリュームの復元および複製による復旧時間 | 2 分未満 | <ul><li>ボリュームは、そのサイズにかかわらず、復元または複製の操作から 2 分以内に利用可能になります。</li><li>最初は、データやメタデータの大部分がまだクラウドにあるため、ボリュームのパフォーマンスが通常より低下する場合があります。クラウドから StorSimple デバイスに移されるデータが増えるにつれて、パフォーマンスが向上することがあります。</li><li>メタデータのダウンロードにかかる合計時間は、割り当てられたボリューム サイズによって異なります。割り当てられたボリューム データの TB (テラバイト) あたり 5 分の速度で、メタデータはバック グラウンドで自動的にデバイスに移されます。この速度はクラウドへのインターネット帯域幅によって影響を受けることがあります。</li><li>すべてのメタデータがデバイスに移動した時点で、復元または複製の操作は完了します。</li><li>復元または複製の操作が完全に完了するまで、バックアップ操作は実行できません。|
-| ローカル固定ボリュームの復元回復時間 | 2 分未満 | <ul><li>ボリュームは、そのサイズにかかわらず、復元操作から 2 分以内に利用可能になります。</li><li>最初は、データやメタデータの大部分がまだクラウドにあるため、ボリュームのパフォーマンスが通常より低下する場合があります。クラウドから StorSimple デバイスに移されるデータが増えるにつれて、パフォーマンスが向上することがあります。</li><li>メタデータのダウンロードにかかる合計時間は、割り当てられたボリューム サイズによって異なります。割り当てられたボリューム データの TB (テラバイト) あたり 5 分の速度で、メタデータはバック グラウンドで自動的にデバイスに移されます。このレートはクラウドに対するインターネットの帯域幅によって影響される可能性があります。</li><li>階層化ボリュームとは異なり、ローカル固定ボリュームでは、ボリューム データもデバイスにローカルにダウンロードされます。復元操作は、ボリュームのすべてのデータがデバイスに移行されたときに完了します。</li><li>復元操作の長さと復元が完了するまでの合計時間は、プロビジョニングされているローカル ボリュームのサイズ、インターネットの帯域幅、およびデバイス上の既存のデータによって異なります。復元操作の進行中に、ローカル固定ボリュームのバックアップ操作を実行できます。|
-| シン復元の可用性 | 最後のフェールオーバー | |
-| クライアントによる最大読み取り/書き込みスループット (SSD 層から提供された場合)* | 920/720 MB/秒 (単一の 10 GbE ネットワーク インターフェイスを使用) | 単一の MPIO と 2 つのネットワーク インターフェイスを使用する場合は最大 2x。 |
-| クライアントによる最大読み取り/書き込みスループット (HDD 層から提供された場合)* | 120/250 MB/秒 |
-| クライアントによる最大読み取り/書き込みスループット (クラウド層から提供された場合)* | 11/41 MB/秒 | 読み取りスループットは、十分な I/O キューの深さを生成および維持するクライアントに依存します。 |
+| Maximum number of storage account credentials | 64 | |
+| Maximum number of volume containers | 64 | |
+| Maximum number of volumes | 255 | |
+| Maximum number of schedules per bandwidth template | 168 | A schedule for every hour, every day of the week (24*7). |
+| Maximum size of a tiered volume on physical devices | 64 TB for 8100 and 8600 | 8100 and 8600 are physical devices. |
+| Maximum size of a tiered volume on virtual devices in Azure | 30 TB for 8010 <br></br> 64 TB for 8020 | 8010 and 8020 are virtual devices in Azure that use Standard Storage and Premium Storage respectively. |
+| Maximum size of a locally pinned volume on physical devices | 9 TB for 8100 <br></br> 24 TB for 8600 | 8100 and 8600 are physical devices. |
+| Maximum number of iSCSI connections | 512 | |
+| Maximum number of iSCSI connections from initiators | 512 | |
+| Maximum number of access control records per device | 64 | |
+| Maximum number of volumes per backup policy | 24 | |
+| Maximum number of backups retained per backup policy | 64 | |
+| Maximum number of schedules per backup policy | 10 | |
+| Maximum number of snapshots of any type that can be retained per volume | 256 | This includes local snapshots and cloud snapshots. |
+| Maximum number of snapshots that can be present in any device | 10,000 | |
+| Maximum number of volumes that can be processed in parallel for backup, restore, or clone | 16 |<ul><li>If there are more than 16 volumes, they will be processed sequentially as processing slots become available.</li><li>New backups of a cloned or a restored tiered volume cannot occur until the operation is finished. However, for a local volume, backups are allowed after the volume is online.</li></ul>|
+| Restore and clone recover time for tiered volumes | < 2 minutes | <ul><li>The volume is made available within 2 minutes of restore or clone operation, regardless of the volume size.</li><li>The volume performance may initially be slower than normal as most of the data and metadata still resides in the cloud. Performance may increase as data flows from the cloud to the StorSimple device.</li><li>The total time to download metadata depends on the allocated volume size. Metadata is automatically brought into the device in the background at the rate of 5 minutes per TB of allocated volume data. This rate may be affected by Internet bandwidth to the cloud.</li><li>The restore or clone operation is complete when all the metadata is on the device.</li><li>Backup operations cannot be performed until the restore or clone operation is fully complete.|
+| Restore recover time for locally pinned volumes | < 2 minutes | <ul><li>The volume is made available within 2 minutes of the restore operation, regardless of the volume size.</li><li>The volume performance may initially be slower than normal as most of the data and metadata still resides in the cloud. Performance may increase as data flows from the cloud to the StorSimple device.</li><li>The total time to download metadata depends on the allocated volume size. Metadata is automatically brought into the device in the background at the rate of 5 minutes per TB of allocated volume data. This rate may be affected by Internet bandwidth to the cloud.</li><li>Unlike tiered volumes, in the case of locally pinned volumes, the volume data is also downloaded locally on the device. The restore operation is complete when all the volume data has been brought to the device.</li><li>The restore operations may be long and the total time to complete the restore will depend on the size of the provisioned local volume, your Internet bandwidth and the existing data on the device. Backup operations on the locally pinned volume are allowed while the restore operation is in progress.|
+| Thin-restore availability | Last failover | |
+| Maximum client read/write throughput (when served from the SSD tier)* | 920/720 MB/s with a single 10GbE network interface | Up to 2x with MPIO and two network interfaces. |
+| Maximum client read/write throughput (when served from the HDD tier)* | 120/250 MB/s |
+| Maximum client read/write throughput (when served from the cloud tier)* | 11/41 MB/s | Read throughput depends on clients generating and maintaining sufficient I/O queue depth. |
 
-&#42; I/O の種類ごとの最大スループットは、読み取り率と書き込み率が 100% の場合のシナリオにおいて測定されたものです。実際のスループットはこれより低くなる可能性があり、I/O の組み合わせとネットワーク状態によって異なります。
+&#42; Maximum throughput per I/O type was measured with 100 percent read and 100 percent write scenarios. Actual throughput may be lower and depends on I/O mix and network conditions.
 
-<!---HONumber=AcomDC_0114_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,163 +1,164 @@
 <properties
-	pageTitle="Azure AD の署名キーのロールオーバー | Microsoft Azure"
-	description="この記事では、Azure Active Directory の署名キーのロール オーバーのベスト プラクティスについて説明します"
-	services="active-directory"
-	documentationCenter=".net"
-	authors="gsacavdm"
-	manager="krassk"
-	editor=""/>
+    pageTitle="Signing Key Rollover in Azure AD | Microsoft Azure"
+    description="This article discusses the signing key rollover best practices for Azure Active Directory"
+    services="active-directory"
+    documentationCenter=".net"
+    authors="gsacavdm"
+    manager="krassk"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/18/2016"
-	ms.author="gsacavdm"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/18/2016"
+    ms.author="gsacavdm"/>
 
-# Azure Active Directory の署名キーのロールオーバー
 
-このトピックでは、Azure Active Directory (Azure AD) でセキュリティ トークンに署名するために使用される公開キーについて説明します。これらのキーは定期的にロールオーバー (交換) されるほか、緊急時にはその場ですぐロールオーバーすることもできます。Azure AD を使用するすべてのアプリケーションには、プログラムからキーのロールオーバー プロセスを処理できる機能、または定期的な手動ロールオーバー プロセスを確立できる機能が必要です。ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。
+# <a name="signing-key-rollover-in-azure-active-directory"></a>Signing key rollover in Azure Active Directory
 
-## Azure AD での署名キーの概要
+This topic discusses what you need to know about the public keys that are used in Azure Active Directory (Azure AD) to sign security tokens. It is important to note that these keys rollover on a periodic basis and, in an emergency, could be rolled over immediately. All applications that use Azure AD should be able to programmatically handle the key rollover process or establish a periodic manual rollover process. Continue reading to understand how the keys work, how to assess the impact of the rollover to your application and how to update your application or establish a periodic manual rollover process to handle key rollover if necessary.
 
-Azure AD では、業界標準に基づいて構築された公開キー暗号化を使って、キーと、キーを使用するアプリケーションの間の信頼を確立しています。具体的には、次のように機能します。Azure AD は、公開キーと秘密キーの組み合わせから構成される署名キーを使用します。認証に Azure AD を使用するアプリケーションにユーザーが署名すると、Azure AD はユーザーに関する情報を含むセキュリティ トークンを作成します。このトークンは、Azure AD によって秘密キーを使って署名されてから、アプリケーションに送り返されます。トークンが有効であり、実際に Azure AD から発行されたことを確認するには、アプリケーションは、テナントの [OpenID Connect Discovery ドキュメント](http://openid.net/specs/openid-connect-discovery-1_0.html)または SAML/WS-Fed の[フェデレーション メタデータ ドキュメント](active-directory-federation-metadata.md)に含まれる Azure AD によって公開された公開キーを使用して、トークンの署名を検証する必要があります。
+## <a name="overview-of-signing-keys-in-azure-ad"></a>Overview of signing keys in Azure AD
 
-Azure AD の署名キーは、セキュリティ上の理由から定期的に交換されるほか、緊急時にはその場ですぐにロールオーバーすることもできます。Azure AD を組み込むすべてのアプリケーションは、発生頻度に関係なくキーのロールオーバー イベントを処理できるようになっている必要があります。このロジックを備えていないアプリケーションが期限切れのキーを使ってトークンの署名の検証を試みると、サインイン要求が失敗します。
+Azure AD uses public-key cryptography built on industry standards to establish trust between itself and the applications that use it. In practical terms, this works in the following way: Azure AD uses a signing key that consists of a public and private key pair. When a user signs in to an application that uses Azure AD for authentication, Azure AD creates a security token that contains information about the user. This token is signed by Azure AD using its private key before it is sent back to the application. To verify that the token is valid and actually originated from Azure AD, the application must validate the token’s signature using the public key exposed by Azure AD that is contained in the tenant’s [OpenID Connect discovery document](http://openid.net/specs/openid-connect-discovery-1_0.html) or SAML/WS-Fed [federation metadata document](active-directory-federation-metadata.md).
 
-OpenID Connect Discovery ドキュメントとフェデレーション メタデータ ドキュメントには、利用できる有効なキーが常に複数存在します。1 つのキーがすぐにロールされて別のキーに置き換えられる可能性があるので、アプリケーションは、このドキュメントで指定されているどのキーでも使用できるようになっている必要があります。
+For security purposes, Azure AD’s signing key rolls on a periodic basis and, in the case of an emergency, could be rolled over immediately. Any application that integrates with Azure AD should be prepared to handle a key rollover event no matter how frequently it may occur. If it doesn’t, and your application attempts to use an expired key to verify the signature on a token, the sign-in request will fail.
 
-## アプリケーションに影響が波及するかどうかの評価とその対処法
+There is always more than one valid key available in the OpenID Connect discovery document and the federation metadata document. Your application should be prepared to use any of the keys specified in the document, since one key may be rolled soon, another may be its replacement, and so forth.
 
-キー ロールオーバーへのアプリケーション側の対応は、アプリケーションの種類や使用されている ID プロトコル、ライブラリなどさまざまな要因によって異なります。以下の各セクションでは、ごく一般的なアプリケーションにおけるキー ロールオーバーへの影響の有無を評価し、キーの自動ロールオーバーまたは手動更新に対応するようにアプリケーションを更新するうえでの指針を取り上げています。
+## <a name="how-to-assess-if-your-application-will-be-affected-and-what-to-do-about-it"></a>How to assess if your application will be affected and what to do about it
 
-* [リソースにアクセスするネイティブ クライアント アプリケーション](#nativeclient)
-* [リソースにアクセスする Web アプリケーション/API](#webclient)
-* [Azure App Service を使用して構築された、リソースを保護する Web アプリケーション/API](#appservices)
-* [.NET OWIN OpenID Connect、WS-Fed、WindowsAzureActiveDirectoryBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API](#owin)
-* [.NET Core OpenID Connect と JwtBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API](#owincore)
-* [Node.js passport-azure-ad モジュールを使用し、リソースを保護する Web アプリケーション/API](#passport)
-* [Visual Studio 2015 を使用して作成された、リソースを保護する Web アプリケーション/API](#vs2015)
-* [Visual Studio 2013 を使用して作成された、リソースを保護する Web アプリケーション](#vs2013)
-* [Visual Studio 2013 を使用して作成された、リソースを保護する Web API](#vs2013_webapi)
-* [Visual Studio 2012 を使用して作成された、リソースを保護する Web アプリケーション](#vs2012)
-* [Visual Studio 2010/2008 または Windows Identity Foundation を使用して作成された、リソースを保護する Web アプリケーション](#vs2010)
-* [その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された、リソースを保護する Web アプリケーション/API](#other)
+How your application handles key rollover depends on variables such as the type of application or what identity protocol and library was used. The sections below assess whether the most common types of applications are impacted by the key rollover and provide guidance on how to update the application to support automatic rollover or manually update the key.
 
-このガイダンスは、次のアプリケーションには適用**されません**。
+* [Native client applications accessing resources](#nativeclient)
+* [Web applications / APIs accessing resources](#webclient)
+* [Web applications / APIs protecting resources and built using Azure App Services](#appservices)
+* [Web applications / APIs protecting resources using .NET OWIN OpenID Connect, WS-Fed or WindowsAzureActiveDirectoryBearerAuthentication middleware](#owin)
+* [Web applications / APIs protecting resources using .NET Core OpenID Connect or  JwtBearerAuthentication middleware](#owincore)
+* [Web applications / APIs protecting resources using Node.js passport-azure-ad module](#passport)
+* [Web applications / APIs protecting resources and created with Visual Studio 2015](#vs2015)
+* [Web applications protecting resources and created with Visual Studio 2013](#vs2013)
+* [Web APIs protecting resources and created with Visual Studio 2013](#vs2013_webapi)
+* [Web applications protecting resources and created with Visual Studio 2012](#vs2012)
+* [Web applications protecting resources and created with Visual Studio 2010, 2008 o using Windows Identity Foundation](#vs2010)
+* [Web applications / APIs protecting resources using any other libraries or manually implementing any of the supported protocols](#other)
 
-* Azure AD アプリケーション ギャラリーから追加したアプリケーションについては (カスタム アプリケーションも含め)、キーの署名に関して別個のガイダンスがあります。[詳細については、こちらをご覧ください。](active-directory-sso-certs.md)
-* アプリケーション プロキシ経由で発行されたオンプレミスのアプリケーションでは、キーの署名について配慮する必要はありません。
+This guidance is **not** applicable for:
 
-### <a name="nativeclient"></a>リソースにアクセスするネイティブ クライアント アプリケーション
+* Applications added from Azure AD Application Gallery (including Custom) have separate guidance with regards to signing keys. [More information.](active-directory-sso-certs.md)
+* On-premises applications published via application proxy don't have to worry about signing keys.
 
-リソース (つまり、Microsoft Graph、KeyVault、Outlook API、その他の Microsoft API) にアクセスするだけのアプリケーションは、通常、トークンを取得してリソース所有者に渡すだけです。アプリケーションでリソースを保護しない場合は、トークンを調べることはないため、トークンへの適切な署名は必要はありません。
+### <a name="<a-name="nativeclient"></a>native-client-applications-accessing-resources"></a><a name="nativeclient"></a>Native client applications accessing resources
 
-デスクトップかモバイルかを問わず、ネイティブ クライアント アプリケーションはこのカテゴリに分類され、ロールオーバーの影響を受けません。
+Applications that are only accessing resources (i.e Microsoft Graph, KeyVault, Outlook API and other Microsoft APIs) generally only obtain a token and pass it along to the resource owner. Given that they are not protecting any resources, they do not inspect the token and therefore do not need to ensure it is properly signed.
 
-### <a name="webclient"></a>リソースにアクセスする Web アプリケーション/API
+Native client applications, whether desktop or mobile, fall into this category and are thus not impacted by the rollover.
 
-リソース (つまり、Microsoft Graph、KeyVault、Outlook API、その他の Microsoft API) にアクセスするだけのアプリケーションは、通常、トークンを取得してリソース所有者に渡すだけです。アプリケーションでリソースを保護しない場合は、トークンを調べることはないため、トークンへの適切な署名は必要はありません。
+### <a name="<a-name="webclient"></a>web-applications-/-apis-accessing-resources"></a><a name="webclient"></a>Web applications / APIs accessing resources
 
-アプリ専用のフロー (クライアント資格情報/クライアント証明書) を使用する Web アプリケーションと Web API はこのカテゴリに分類され、ロールオーバーの影響を受けません。
+Applications that are only accessing resources (i.e Microsoft Graph, KeyVault, Outlook API and other Microsoft APIs) generally only obtain a token and pass it along to the resource owner. Given that they are not protecting any resources, they do not inspect the token and therefore do not need to ensure it is properly signed.
 
-### <a name="appservices"></a>Azure App Service を使用して構築された、リソースを保護する Web アプリケーション/API
+Web applications and web APIs that are using the app-only flow (client credentials / client certificate), fall into this category and are thus not impacted by the rollover.
 
-Azure App Service の認証/承認 (EasyAuth) 機能には、キーのロールオーバーを自動的に処理するうえで必要なロジックがあります。
+### <a name="<a-name="appservices"></a>web-applications-/-apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Web applications / APIs protecting resources and built using Azure App Services
 
-### <a name="owin"></a>.NET OWIN OpenID Connect、WS-Fed、WindowsAzureActiveDirectoryBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API
+Azure App Services' Authentication / Authorization (EasyAuth) functionality already has the necessary logic to handle key rollover automatically.
 
-アプリケーションで .NET OWIN OpenID Connect、WS-Fed、WindowsAzureActiveDirectoryBearerAuthentication のいずれかのミドルウェアを使用している場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。
+### <a name="<a-name="owin"></a>web-applications-/-apis-protecting-resources-using-.net-owin-openid-connect,-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Web applications / APIs protecting resources using .NET OWIN OpenID Connect, WS-Fed or WindowsAzureActiveDirectoryBearerAuthentication middleware
 
-それらがアプリケーションで使用されているかどうかは、アプリケーションの Startup.cs または Startup.Auth.cs から次のスニペットを探すことで確認できます。
+If your application is using the .NET OWIN OpenID Connect, WS-Fed or WindowsAzureActiveDirectoryBearerAuthentication middleware, it already has the necessary logic to handle key rollover automatically.
+
+You can confirm that your application is using any of these by looking for any of the following snippets in your application's Startup.cs or Startup.Auth.cs
 
 ```
 app.UseOpenIdConnectAuthentication(
-	 new OpenIdConnectAuthenticationOptions
-	 {
-		 // ...
-	 });
+     new OpenIdConnectAuthenticationOptions
+     {
+         // ...
+     });
 ```
 ```
 app.UseWsFederationAuthentication(
     new WsFederationAuthenticationOptions
     {
-	 // ...
- 	});
+     // ...
+    });
 ```
 ```
  app.UseWindowsAzureActiveDirectoryBearerAuthentication(
-	 new WindowsAzureActiveDirectoryBearerAuthenticationOptions
-	 {
-	 // ...
-	 });
+     new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+     {
+     // ...
+     });
 ```
 
-### <a name="owincore"></a>.NET Core OpenID Connect と JwtBearerAuthentication のいずれかのミドルウェアを使用し、リソースを保護する Web アプリケーション/API
+### <a name="<a-name="owincore"></a>web-applications-/-apis-protecting-resources-using-.net-core-openid-connect-or-jwtbearerauthentication-middleware"></a><a name="owincore"></a>Web applications / APIs protecting resources using .NET Core OpenID Connect or  JwtBearerAuthentication middleware
 
-アプリケーションで .NET Core OWIN OpenID Connect と JwtBearerAuthentication のいずれかのミドルウェアを使用している場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。
+If your application is using the .NET Core OWIN OpenID Connect  or JwtBearerAuthentication middleware, it already has the necessary logic to handle key rollover automatically.
 
-それらがアプリケーションで使用されているかどうかは、アプリケーションの Startup.cs または Startup.Auth.cs から次のスニペットを探すことで確認できます。
+You can confirm that your application is using any of these by looking for any of the following snippets in your application's Startup.cs or Startup.Auth.cs
 
 ```
 app.UseOpenIdConnectAuthentication(
-	 new OpenIdConnectAuthenticationOptions
-	 {
-		 // ...
-	 });
+     new OpenIdConnectAuthenticationOptions
+     {
+         // ...
+     });
 ```
 ```
 app.UseJwtBearerAuthentication(
     new JwtBearerAuthenticationOptions
     {
-	 // ...
- 	});
+     // ...
+    });
 ```
 
-### <a name="passport"></a>Node.js passport-azure-ad モジュールを使用し、リソースを保護する Web アプリケーション/API
+### <a name="<a-name="passport"></a>web-applications-/-apis-protecting-resources-using-node.js-passport-azure-ad-module"></a><a name="passport"></a>Web applications / APIs protecting resources using Node.js passport-azure-ad module
 
-アプリケーションで Node.js passport-ad モジュールを使用している場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。
+If your application is using the Node.js passport-ad module, it already has the necessary logic to handle key rollover automatically.
 
-アプリケーションで passport-ad が使用されているかどうかは、アプリケーションの app.js から次のスニペットを探すことで確認できます。
+You can confirm that your application passport-ad by searching for the following snippet in your application's app.js
 
 ```
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 passport.use(new OIDCStrategy({
-	//...
+    //...
 ));
 ```
 
-### <a name="vs2015"></a>Visual Studio 2015 を使用して作成された、リソースを保護する Web アプリケーション/API
+### <a name="<a-name="vs2015"></a>web-applications-/-apis-protecting-resources-and-created-with-visual-studio-2015"></a><a name="vs2015"></a>Web applications / APIs protecting resources and created with Visual Studio 2015
 
-アプリケーションが Visual Studio 2015 の Web アプリケーション テンプレートを使用して作成されており、**[認証の変更]** メニューで **[会社用および学校用のアカウント]** を選択した場合は、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。このロジックは OpenID Connect Discovery ドキュメントからキーを取得してキャッシュし、定期的にそれらを更新するもので、OWIN OpenID Connect ミドルウェアに組み込まれています。
+If your application was built using a web application template in Visual Studio 2015 and you selected **Work And School Accounts** from the **Change Authentication** menu, it already has the necessary logic to handle key rollover automatically. This logic, embedded in the OWIN OpenID Connect middleware, retrieves and caches the keys from the OpenID Connect discovery document and periodically refreshes them.
 
-認証を手動でソリューションに追加した場合は、キーのロールオーバーに対応するうえで必要なロジックがアプリケーションに備わっていない可能性があります。必要なロジックを独自に作成するか、[その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された Web アプリケーション/API](#other) に関するセクションの手順に従ってください。
+If you added authentication to your solution manually, your application might not have the necessary key rollover logic. You will need to write it yourself, or follow the steps in [Web applications / APIs using any other libraries or manually implementing any of the supported protocols.](#other).
 
-### <a name="vs2013"></a>Visual Studio 2013 を使用して作成された、リソースを保護する Web アプリケーション
+### <a name="<a-name="vs2013"></a>web-applications-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Web applications protecting resources and created with Visual Studio 2013
 
-アプリケーションが Visual Studio 2013 の Web アプリケーション テンプレートを使用して作成されており、**[認証の変更]** メニューで **[組織アカウント]** を選択した場合、キーのロールオーバーに自動的に対処するうえで必要なロジックがあらかじめ用意されています。このロジックにより、プロジェクトに関連付けられた 2 つのデータベース テーブルに組織の一意識別子と署名キー情報が保存されます。このデータベースの接続文字列は、プロジェクトの Web.config ファイル内に格納されています。
+If your application was built using a web application template in Visual Studio 2013 and you selected **Organizational Accounts** from the **Change Authentication** menu, it already has the necessary logic to handle key rollover automatically. This logic stores your organization’s unique identifier and the signing key information in two database tables associated with the project. You can find the connection string for the database in the project’s Web.config file.
 
-認証を手動でソリューションに追加した場合は、キーのロールオーバーに対応するうえで必要なロジックがアプリケーションに備わっていない可能性があります。必要なロジックを独自に作成するか、[その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された Web アプリケーション/API](#other) に関するセクションの手順に従ってください。
+If you added authentication to your solution manually, your application might not have the necessary key rollover logic. You will need to write it yourself, or follow the steps in [Web applications / APIs using any other libraries or manually implementing any of the supported protocols.](#other).
 
-アプリケーションでロジックが適切に機能するかどうかは、以下の手順によって確認できます。
+The following steps will help you verify that the logic is working properly in your application.
 
-1. Visual Studio 2013 でソリューションを開き、右側のウィンドウで **[サーバー エクスプローラー]** タブをクリックします。
-2. **[データ接続]**、**[既定の接続]**、**[テーブル]** の順に展開します。**IssuingAuthorityKeys** テーブルを右クリックし、**[テーブル データの表示]** をクリックします。
-3. **IssuingAuthorityKeys** テーブルには少なくとも 1 つの行があり、キーの拇印の値に対応しています。テーブル内の任意の行を削除します。
-4. **Tenants** テーブルを右クリックし、**[テーブル データの表示]** をクリックします。
-5. **Tenants** テーブルには少なくとも 1 つの行があり、一意のディレクトリ テナント ID に対応しています。テーブル内の任意の行を削除します。**Tenants** テーブルと **IssuingAuthorityKeys** テーブルの両方で行を削除しないと、実行時にエラーが表示されます。
-6. アプリケーションをビルドし、実行します。アカウントにログインすると、アプリケーションを停止できます。
-7. **[サーバー エクスプローラー]** に戻り、**IssuingAuthorityKeys** テーブルと **Tenants** テーブルの値を確認します。テーブルにはフェデレーション メタデータ ドキュメントから自動的に適切な情報が入力されています。
+1. In Visual Studio 2013, open the solution, and then click on the **Server Explorer** tab on the right window.
+2. Expand **Data Connections**, **DefaultConnection**, and then **Tables**. Locate the **IssuingAuthorityKeys** table, right-click it, and then click **Show Table Data**.
+3. In the **IssuingAuthorityKeys** table, there will be at least one row, which corresponds to the thumbprint value for the key. Delete any rows in the table.
+4. Right-click the **Tenants** table, and then click **Show Table Data**.
+5. In the **Tenants** table, there will be at least one row, which corresponds to a unique directory tenant identifier. Delete any rows in the table. If you don't delete the rows in both the **Tenants** table and **IssuingAuthorityKeys** table, you will get an error at runtime.
+6. Build and run the application. After you have logged in to your account, you can stop the application.
+7. Return to the **Server Explorer** and look at the values in the **IssuingAuthorityKeys** and **Tenants** table. You’ll notice that they have been automatically repopulated with the appropriate information from the federation metadata document.
 
-### <a name="vs2013"></a>Visual Studio 2013 を使用して作成された、リソースを保護する Web API
+### <a name="<a-name="vs2013"></a>web-apis-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Web APIs protecting resources and created with Visual Studio 2013
 
-Visual Studio 2013 で Web API テンプレートを使用して Web API を作成し、**[認証の変更]** メニューで **[組織アカウント]** を選択した場合、アプリケーションには既に必要なロジックが含まれています。
+If you created a web API application in Visual Studio 2013 using the Web API template, and then selected **Organizational Accounts** from the **Change Authentication** menu, you already have the necessary logic in your application.
 
-手動で認証を構成する場合は、以下の手順に従って、自動的にキー情報を更新するように Web API を構成する方法を確認してください。
+If you manually configured authentication, follow the instructions below to learn how to configure your Web API to automatically update its key information.
 
-次のコード スニペットは、フェデレーション メタデータ ドキュメントから最新のキーを取得し、[JWT トークン ハンドラー](https://msdn.microsoft.com/library/dn205065.aspx)を使用してトークンを検証する方法を示しています。このコード スニペットは、今後 Azure AD から受け取るトークンを検証するために、データベース、構成ファイルなどの何らかの独自のキャッシュ メカニズムを使用してキーを保存することが前提です。
+The following code snippet demonstrates how to get the latest keys from the federation metadata document, and then use the [JWT Token Handler](https://msdn.microsoft.com/library/dn205065.aspx) to validate the token. The code snippet assumes that you will use your own caching mechanism for persisting the key to validate future tokens from Azure AD, whether it be in a database, configuration file, or elsewhere.
 
 ```
 using System;
@@ -247,29 +248,29 @@ namespace JWTValidation
 }
 ```
 
-### <a name="vs2012"></a>Visual Studio 2012 を使用して作成された、リソースを保護する Web アプリケーション
+### <a name="<a-name="vs2012"></a>web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Web applications protecting resources and created with Visual Studio 2012
 
-アプリケーションが Visual Studio 2012 で作成されている場合、通常、アプリケーションは ID およびアクセス ツールを使用して構成されています。また、通常は[発行者名レジストリの検証 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) が使用されています。VINR の役割は、信頼済みの ID プロバイダー (Azure AD) に関する情報、およびプロバイダーが発行するトークンを検証するために使用されるキーに関する情報を維持することです。また、VINR を使用すると、ディレクトリに関連付けられている最新のフェデレーション メタデータ ドキュメントをダウンロードし、構成が期限切れになっているかどうかを確認し、必要に応じて新しいキーでアプリケーションを更新することにより、Web.config ファイルに保存されているキー情報を自動的に更新することが容易になります。
+If your application was built in Visual Studio 2012, you probably used the Identity and Access Tool to configure your application. It’s also likely that you are using the [Validating Issuer Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx). The VINR is responsible for maintaining information about trusted identity providers (Azure AD) and the keys used to validate tokens issued by them. The VINR also makes it easy to automatically update the key information stored in a Web.config file by downloading the latest federation metadata document associated with your directory, checking if the configuration is out of date with the latest document, and updating the application to use the new key as necessary.
 
-Microsoft から提供されたコード サンプルまたはチュートリアルのいずれかを使用してアプリケーションを作成した場合、キーのロールオーバー ロジックは既にプロジェクトに含まれています。以下に示すコードがプロジェクト内に存在していることを確認できます。アプリケーションにこのロジックが含まれていない場合は、以下の手順を実行してロジックを追加し、正常に機能することを確認してください。
+If you created your application using any of the code samples or walkthrough documentation provided by Microsoft, the key rollover logic is already included in your project. You will notice that the code below already exists in your project. If your application does not already have this logic, follow the steps below to add it and to verify that it’s working correctly.
 
-1. **[ソリューション エクスプローラー]** で、適切なプロジェクトの **System.IdentityModel** アセンブリへの参照を追加します。
-2. **Global.asax.cs** ファイルを開き、次の using ディレクティブを追加します。
+1. In **Solution Explorer**, add a reference to the **System.IdentityModel** assembly for the appropriate project.
+2. Open the **Global.asax.cs** file and add the following using directives:
 ```
 using System.Configuration;
 using System.IdentityModel.Tokens;
 ```
-3. 次のメソッドを **Global.asax.cs** ファイルに追加します。
+3. Add the following method to the **Global.asax.cs** file:
 ```
 protected void RefreshValidationSettings()
 {
-    string configPath = AppDomain.CurrentDomain.BaseDirectory + "\" + "Web.config";
+    string configPath = AppDomain.CurrentDomain.BaseDirectory + "\\" + "Web.config";
     string metadataAddress =
                   ConfigurationManager.AppSettings["ida:FederationMetadataLocation"];
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
 }
 ```
-4. 次に示すように、**Global.asax.cs** 内の **Application\_Start()** メソッドで **RefreshValidationSettings()** メソッドを呼び出します。
+4. Invoke the **RefreshValidationSettings()** method in the **Application_Start()** method in **Global.asax.cs** as shown:
 ```
 protected void Application_Start()
 {
@@ -279,11 +280,11 @@ protected void Application_Start()
 }
 ```
 
-この手順を実行すると、アプリケーションの Web.config は、最新のキーなど、フェデレーション メタデータ ドキュメントの最新情報で更新されます。この更新は、IIS のアプリケーション プールがリサイクルされるたびに行われます。IIS の既定では、アプリケーションは 29 時間ごとにリサイクルされます。
+Once you have followed these steps, your application’s Web.config will be updated with the latest information from the federation metadata document, including the latest keys. This update will occur every time your application pool recycles in IIS; by default IIS is set to recycle applications every 29 hours.
 
-キーのロールオーバー ロジックが機能していることを確認するには、次の手順に従います。
+Follow the steps below to verify that the key rollover logic is working.
 
-1. アプリケーションで上記のコードが使用されていることを確認したら、**Web.config** ファイルを開き、**<issuerNameRegistry>** ブロックに移動して、以下の行を見つけます。
+1. After you have verified that your application is using the code above, open the **Web.config** file and navigate to the **<issuerNameRegistry>** block, specifically looking for the following few lines:
 ```
 <issuerNameRegistry type="System.IdentityModel.Tokens.ValidatingIssuerNameRegistry, System.IdentityModel.Tokens.ValidatingIssuerNameRegistry">
         <authority name="https://sts.windows.net/ec4187af-07da-4f01-b18f-64c2f5abecea/">
@@ -291,38 +292,42 @@ protected void Application_Start()
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
 ```
-2. **<add thumbprint="">** 設定で、どれか 1 文字を別の文字に置き換えて拇印の値を変更します。**Web.config** ファイルを保存します。
+2. In the **<add thumbprint=””>** setting, change the thumbprint value by replacing any character with a different one. Save the **Web.config** file.
 
-3. アプリケーションをビルドし、実行します。サインイン プロセスを完了できる場合、アプリケーションではディレクトリのフェデレーション メタデータ ドキュメントから必要な情報をダウンロードすることによってキーが正しく更新されています。サインインで問題が発生する場合は、[Azure AD を使用した Web アプリケーションへのサインオンの追加](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)に関するトピックを読むか、コード サンプル ([Multi-Tenant Cloud Application for Azure Active Directory (Azure Active Directory 向けのマルチテナント クラウド アプリケーション)](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)) をダウンロードして調べることによって、アプリケーションの変更が正しいことを確認します。
+3. Build the application, and then run it. If you can complete the sign-in process, your application is successfully updating the key by downloading the required information from your directory’s federation metadata document. If you are having issues signing in, ensure the changes in your application are correct by reading the [Adding Sign-On to Your Web Application Using Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) topic, or downloading and inspecting the following code sample: [Multi-Tenant Cloud Application for Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 
-### <a name="vs2010"></a>Visual Studio 2008/2010 および .NET 3.5 用 Windows Identity Foundation (WIF) v1.0 で作成された、リソースを保護する Web アプリケーション
+### <a name="<a-name="vs2010"></a>web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-(wif)-v1.0-for-.net-3.5"></a><a name="vs2010"></a>Web applications protecting resources and created with Visual Studio 2008 or 2010 and Windows Identity Foundation (WIF) v1.0 for .NET 3.5
 
-WIF v1.0 でアプリケーションを作成した場合、新しいキーを使用するようにアプリケーションの構成を自動的に更新するメカニズムは用意されていません。
+If you built an application on WIF v1.0, there is no provided mechanism to automatically refresh your application’s configuration to use a new key.
 
-- "*最も簡単な方法*" は、WIF SDK に含まれている FedUtil ツールを使用することです。このツールでは、最新のメタデータ ドキュメントを取得し、構成を更新できます。
-- System 名前空間に最新バージョンの WIF が含まれている .NET 4.5 にアプリケーションを更新する。その後、[発行者名レジストリの検証 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) を使用して、アプリケーションの構成の自動更新を実行できます。
-- このガイダンスの末尾にある手順に従って、手動ロールオーバーを実行します。
+- *Easiest way* Use the FedUtil tooling included in the WIF SDK, which can retrieve the latest metadata document and update your configuration.
+- Update your application to .NET 4.5, which includes the newest version of WIF located in the System namespace. You can then use the [Validating Issuer Name Registry (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) to perform automatic updates of the application’s configuration.
+- Perform a manual rollover as per the instructions at the end of this guidance document.
 
-FedUtil を使用して構成を更新する手順は、次のようになります。
+Instructions to use the FedUtil to update your configuration:
 
-1. Visual Studio 2008 または 2010 をデプロイしてあるマシンに WIF v1.0 SDK がインストールされていることを確認します。インストールされていない場合は、[ここからダウンロード](https://www.microsoft.com/ja-JP/download/details.aspx?id=4451)できます。
-2. Visual Studio でソリューションを開き、該当するプロジェクトを右クリックして、**[Update federation metadata (フェデレーション メタデータの更新)]** を選択します。このオプションが表示されない場合は、FedUtil と WIF v1.0 SDK の少なくともどちらかがインストールされていません。
-3. プロンプトで **[更新]** を選択してフェデレーション メタデータの更新を開始します。アプリケーションがホストされているサーバー環境にアクセスできる場合は、FedUtil の[メタデータの自動更新スケジューラ](https://msdn.microsoft.com/library/ee517272.aspx)を使用することもできます。
-4. **[完了]** をクリックして更新プロセスを完了します。
+1. Verify that you have the WIF v1.0 SDK installed on your development machine for Visual Studio 2008 or 2010. You can [download it from here](https://www.microsoft.com/en-us/download/details.aspx?id=4451) if you have not yet installed it.
+2. In Visual Studio, open the solution, and then right-click the applicable project and select **Update federation metadata**. If this option is not available, FedUtil and/or the WIF v1.0 SDK has not been installed.
+3. From the prompt, select **Update** to begin updating your federation metadata. If you have access to the server environment where the application is hosted, you can optionally use FedUtil’s [automatic metadata update scheduler](https://msdn.microsoft.com/library/ee517272.aspx).
+4. Click **Finish** to complete the update process.
 
-### <a name="other"></a>その他のライブラリが使用されているか、サポートされているプロトコルが手動で実装された、リソースを保護する Web アプリケーション/API
+### <a name="<a-name="other"></a>web-applications-/-apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Web applications / APIs protecting resources using any other libraries or manually implementing any of the supported protocols
 
-その他何らかのライブラリを使用している場合またはサポートされているプロトコルを手動で実装した場合、OpenID Connect Discovery ドキュメントまたはフェデレーション メタデータ ドキュメントから確実にキーが取得されるようそのライブラリまたは実装内容を再確認する必要があります。この点はたとえば、自分が記述したコードやライブラリのコードから、OpenID のディスカバリー ドキュメントまたはフェデレーション メタデータ ドキュメントの呼び出しを検索することによって確認できます。
+If you are using some other library or manually implemented any of the supported protocols, you'll need to review the library or your implementation to ensure that the key is being retrieved from either the OpenID Connect discovery document or the federation metadata document. One way to check for this is to do a search in your code or the library's code for any calls out to either the OpenID discovery document or the federation metadata document.
 
-キーがどこかに格納されている場合、またはアプリケーション内でハードコーディングされている場合は、キーを手動で取得し、このガイダンスの末尾にある手順に従って手動ロールオーバーを実行することで、適宜キーを更新できます。今後 Azure AD のロールオーバー頻度が高まったり、予定されていない緊急のロールオーバーが発生したりした場合の中断やオーバーヘッドを避けるために、この記事に書かれているいずれかの手法を使用して**自動ロールオーバーをアプリケーションでサポートするよう強くお勧めします**。
+If they key is being stored somewhere or hardcoded in your application, you can manually retrieve the key and update it accordingly by perform a manual rollover as per the instructions at the end of this guidance document. **It is strongly encouraged that you enhance your application to support automatic rollover** using any of the approaches outline in this article to avoid future disruptions and overhead if Azure AD increases it's rollover cadence or has an emergency out-of-band rollover.
 
-## アプリケーションをテストして、影響を受けるかどうかを判別する
+## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>How to test your application to determine if it will be affected
 
-[この GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)からスクリプトをダウンロードし、指示に従って、アプリケーションで自動キー ロールオーバーがサポートされているかどうかを検証できます。
+You can validate whether your application supports automatic key rollover by downloading the scripts and following the instructions in [this GitHub repository.](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
-## アプリケーションで自動ロールオーバーがサポートされていない場合に手動ロールオーバーを実行する方法
+## <a name="how-to-perform-a-manual-rollover-if-you-application-does-not-support-automatic-rollover"></a>How to perform a manual rollover if you application does not support automatic rollover
 
-アプリケーションで自動ロールオーバーがサポートされて**いない**場合、Azure AD の署名キーを定期的に監視し、適宜手動ロールオーバーを実行するプロセスを確立する必要があります。[こちらの GitHub リポジトリ](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)には、これを実行する方法についてのスクリプトと手順が含まれています。
+If your application does **not** support automatic rollover, you will need to establish a process that periodically monitors Azure AD's signing keys and performs a manual rollover accordingly. [This GitHub repository](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) contains scripts and instructions on how to do this.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

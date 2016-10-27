@@ -1,6 +1,6 @@
 <properties
- pageTitle="クラウド サービスのサイズ"
- description="Azure のクラウド サービスの Web ロールと worker ロールのさまざまな仮想マシンのサイズ一覧を示します。"
+ pageTitle="Sizes for cloud services"
+ description="Lists the different virtual machine sizes for Azure cloud service web and worker roles."
  services="cloud-services"
  documentationCenter=""
  authors="Thraka"
@@ -15,141 +15,142 @@
  ms.date="08/10/2016"
  ms.author="adegeo"/>
 
-# Cloud Services のサイズ
 
-このトピックでは、クラウド サービスのロール インスタンス (Web ロールと worker ロール) で使用できるサイズとオプションについて説明します。また、これらのリソースの使用を計画するときに注意するデプロイメントに関する考慮事項も示します。
+# <a name="sizes-for-cloud-services"></a>Sizes for Cloud Services
 
-Cloud Services は、Azure が提供する数種類のコンピューティング リソースの 1 つです。Cloud Services の詳細については、[こちら](cloud-services-choose-me.md)を参照してください。
+This topic describes the available sizes and options for Cloud Service role instances (web roles and worker roles). It also provides deployment considerations to be aware of when planning to use these resources.
 
-> [AZURE.NOTE]関連する Azure の制限については、[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)に関するページを参照してください。
+Cloud Services is one of several types of compute resources offered by Azure. Click [here](cloud-services-choose-me.md) for more information about Cloud Services.
 
-## Web ロールと worker ロールのインスタンスのサイズ
+> [AZURE.NOTE]To see related Azure limits, see [Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md)
 
-サイズを決定する際に役立つ考慮事項は次のとおりです。
+## <a name="sizes-for-web-and-worker-role-instances"></a>Sizes for web and worker role instances
 
-* D シリーズ VM インスタンスは、より高いコンピューティング能力と一時ディスクのパフォーマンスを必要とするアプリケーションを実行するように設計されています。D シリーズ VM は、より高速なプロセッサ、より高いメモリ対コア比、一時ディスク用ソリッド ステート ドライブ (SSD) を提供します。詳細については、Azure ブログの投稿「[新しい D シリーズ仮想マシンのサイズ](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)」をご覧ください。
+The following considerations might help you decide on a size:
 
-* オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.1 GHz まで実現できます。Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
+* D-series VM instances are designed to run applications that demand higher compute power and temporary disk performance. D-series VMs provide faster processors, a higher memory-to-core ratio, and a solid-state drive (SSD) for the temporary disk. For details, see the announcement on the Azure blog, [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/).  
 
-* Web ロールと worker ロールは、システム要件により Azure Virtual Machines よりも多くの一時ディスク領域が必要です。システム ファイルは、Windows ページファイルに 4 GB、Windows ダンプ ファイルに 2 GB の領域を予約します。
+* Dv2-series, a follow-on to the original D-series, features a more powerful CPU. The Dv2-series CPU is about 35% faster than the D-series CPU. It is based on the latest generation 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) processor, and with the Intel Turbo Boost Technology 2.0, can go up to 3.1 GHz. The Dv2-series has the same memory and disk configurations as the D-series.
 
-* OS ディスクには Windows ゲスト OS が含まれており、Program Files フォルダー (別のディスクを指定していない場合はスタートアップ タスクで実行されたインストールを含む)、レジストリの変更、System32 フォルダー、.NET Framework も含まれています。
+* Web roles and worker roles require more temporary disk space than Azure Virtual Machines because of system requirements. The system files reserve 4 GB of space for the Windows page file, and 2 GB of space for the Windows dump file.  
 
-* **一時ストレージ ディスク**には、Azure ログと構成ファイル、Azure 診断 (IIS ログを含む)、ユーザーが定義したローカル ストレージ リソースが含まれています。
+* The OS disk contains the Windows guest OS and includes the Program Files folder (including installations done via startup tasks unless you specify another disk), registry changes, the System32 folder, and the .NET framework.  
 
-* **アプリケーション ディスク**には、.cspkg ファイルが抽出される場所で、Web サイト、バイナリ、ロール ホスト プロセス、スタートアップ タスク、web.config などが含まれています。
+* The **temporary storage disk** contains Azure logs and configuration files, Azure Diagnostics (which includes your IIS logs), and any local storage resources you define.  
 
-* A8/A10 と A9/A11 の仮想マシンのサイズは、同じ容量です。A8 と A9 の仮想マシンのインスタンスには、仮想マシン間の高速通信用のリモート ダイレクト メモリ アクセス (RDMA) ネットワークに接続された追加のネットワーク アダプターが含まれています。A8 と A9 のインスタンスは、実行中にノード間で持続的で待ち時間の少ない通信を必要とする高パフォーマンス コンピューティング アプリケーション (Message Passing Interface (MPI) を使用するアプリケーションなど) 向けに設計されています。A10 と A11 の仮想マシン インスタンスには、追加のネットワーク アダプターが含まれていません。A10 と A11 のインスタンスは、ノード間で一定した待ち時間の少ない通信を必要としない高パフォーマンス コンピューティング アプリケーション (パラメトリックまたは Embarrassingly Parallel アプリケーションとも呼ばれる) 向けに設計されています。
+* The **application disk** is where your .cspkg is extracted and includes your website, binaries, role host process, startup tasks, web.config, and so on.  
 
-    >[AZURE.NOTE] A8 ～ A11 のサイズを検討している場合は、[こちら](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md)の情報をお読みください。
+* The A8/A10 and A9/A11 virtual machine sizes have the same capacities. The A8 and A9 virtual machine instances include an additional network adapter that is connected to a remote direct memory access (RDMA) network for fast communication between virtual machines. The A8 and A9 instances are designed for high-performance computing applications that require constant and low-latency communication between nodes during execution, for example, applications that use the Message Passing Interface (MPI). The A10 and A11 virtual machine instances do not include the additional network adapter. A10 and A11 instances are designed for high-performance computing applications that do not require constant and low-latency communication between nodes, also known as parametric or embarrassingly parallel applications.
 
->[AZURE.NOTE] すべてのマシン サイズで**アプリケーション ディスク**が 1 つ提供され、ここにクラウド サービス パッケージから全ファイルが格納されます。このサイズはおよそ 1.5 GB です。
+    >[AZURE.NOTE] If you're considering sizes A8 through A11, please read [this](../virtual-machines/virtual-machines-windows-a8-a9-a10-a11-specs.md) information.
 
-クラウド サービスの各サイズの[価格](https://azure.microsoft.com/pricing/details/cloud-services/)を必ずご確認ください。
+>[AZURE.NOTE] All machine sizes provide an **application disk** that stores all the files from your cloud service package; it is around 1.5 GB in size. 
 
-## 汎用
+Please make sure you review the [pricing](https://azure.microsoft.com/pricing/details/cloud-services/) of each Cloud Service size.
 
-Web サイト、中小規模のデータベース、および日常使用のその他のアプリケーション用
+## <a name="general-purpose"></a>General purpose
 
->[AZURE.NOTE] Storage の容量は、GB の測定単位として 1024^3 バイトを使用して表されます。これはギガバイト、または 2 進数定義とも呼ばれます。使用する進法が異なるサイズを比較する場合、2 進数のサイズが 10 進数よりも小さく見える場合でも、1024^3 は 1000^3 より大きいため、特定のサイズ (1 GB など) では、2 進法の方が 10 進法よりも提供される容量が大きいことに注意してください。
+For websites, small-to-medium databases, and other everyday applications.
 
-| サイズ (ID) | コア | RAM | ネットワーク帯域幅 | 合計ディスク サイズ |
+>[AZURE.NOTE] Storage capacity is represented by using 1024^3 bytes as the unit of measurement for GB. This is sometimes referred to as gibibyte, or base 2 definition. When comparing sizes that use different base systems, remember that base 2 sizes may appear smaller than base 10 but for any specific size (such as 1 GB) a base 2 system provides more capacity than a base 10 system, because 1024^3 is greater than 1000^3. 
+
+| Size (id)       | Cores     | Ram     | Net Bandwidth | Total disk size |
 | --------------- | :-------: | ------: | :-----------: | -------: |
-| ExtraSmall | 1 | 0\.75 GB | 低 | 19 GB |
-| Small | 1 | 1\.75 GB | 中 | 224 GB |
-| 中 | 2 | 3\.5 GB | 中 | 489 GB |
-| Large | 4 | 7 GB | 高 | 999 GB |
-| ExtraLarge | 8 | 14 GB | 高 | 2,039 GB |
+| ExtraSmall      | 1         | 0.75 GB | Low           | 19 GB    |
+| Small           | 1         | 1.75 GB | Moderate      | 224 GB   |
+| Medium          | 2         | 3.5 GB  | Moderate      | 489 GB   |
+| Large           | 4         | 7 GB    | High          | 999 GB   |
+| ExtraLarge      | 8         | 14 GB   | High          | 2,039 GB |
 
->[AZURE.NOTE] **ExtraSmall** から **ExtraLarge** までのサイズ名は、それぞれ **A0 から A4** と呼ばれる場合もあります。
+>[AZURE.NOTE] **ExtraSmall** through **ExtraLarge** can also be named **A0-A4** respectively.
 
-## メモリ集中型
+## <a name="memory-intensive"></a>Memory intensive
 
-大規模データベース、SharePoint サーバー ファーム、および高スループットのアプリケーション用
+For large databases, SharePoint server farms, and high-throughput applications.
 
-| サイズ (ID) | コア | RAM | ネットワーク帯域幅 | 合計ディスク サイズ |
+| Size (id)       | Cores     | Ram     | Net Bandwidth | Total disk size |
 | --------------- | :-------: | ------: | :-----------: | ------:  |
-| A5 | 2 | 14 GB | 中 | 489 GB |
-| A6 | 4 | 28 GB | 高 | 999 GB |
-| A7 | 8 | 56 GB | 高 | 2,039 GB |
+| A5              | 2         | 14 GB   | Moderate      | 489 GB   |
+| A6              | 4         | 28 GB   | High          | 999 GB   |
+| A7              | 8         | 56 GB   | High          | 2,039 GB |
 
-## ネットワークに最適 (InfiniBand のサポート)
+## <a name="network-optimized-with-infiniband-support"></a>Network optimized with InfiniBand support
 
-選択データ センターで利用可能。A8 と A9 の仮想マシンには、[Intel® Xeon® E5 プロセッサ](http://www.intel.com/content/www/us/en/processors/xeon/xeon-processor-e5-family.html)が搭載されています。リモート ダイレクト メモリ アクセス (RDMA) テクノロジ採用の 32 ギガビット/秒 **InfiniBand** ネットワークが追加されます。Message Passing Interface (MPI) アプリケーション、高パフォーマンス クラスター、モデリングとシミュレーション、ビデオ エンコード、およびその他のコンピューティング集中型あるいはネットワーク集中型のシナリオに最適です。
+Available in select data centers. A8 and A9 virtual machines feature [Intel® Xeon® E5 processors](http://www.intel.com/content/www/us/en/processors/xeon/xeon-processor-e5-family.html). Adds a 32 Gbit/s **InfiniBand** network with remote direct memory access (RDMA) technology. Ideal for Message Passing Interface (MPI) applications, high-performance clusters, modeling and simulations, video encoding, and other compute or network intensive scenarios.
 
-| サイズ (ID) | コア | RAM | ネットワーク帯域幅 | 合計ディスク サイズ |
+| Size (id)       | Cores     | Ram     | Net Bandwidth | Total disk size |
 | --------------- | :-------: | ------: | :-----------: | ------: |
-| A8 | 8 | 56 GB | 高 | 382 GB |
-| A9 | 16 | 112 GB | 非常に高 | 382 GB |
+| A8              | 8         | 56 GB   | High          | 382 GB  |
+| A9              | 16        | 112 GB  | Very High     | 382 GB  |
 
-## コンピューティング集中型
+## <a name="compute-intensive"></a>Compute intensive
 
-選択データ センターで利用可能。A10 と A11 の仮想マシンには、[Intel® Xeon® E5 プロセッサ](http://www.intel.com/content/www/us/en/processors/xeon/xeon-processor-e5-family.html)が搭載されています。ハイパフォーマンス クラスター、モデリングとシミュレーション、ビデオ エンコード、およびその他のコンピューティング集中型あるいはネットワーク集中型のシナリオに最適です。A8 および A9 のインスタンスの構成と類似していますが、InfiniBand ネットワークと RDMA テクノロジは含まれません。
+Available in select data centers. A10 and A11 virtual machines feature [Intel® Xeon® E5 processors](http://www.intel.com/content/www/us/en/processors/xeon/xeon-processor-e5-family.html). For high-performance clusters, modeling and simulations, video encoding, and other compute or network intensive scenarios. Similar to A8 and A9 instance configuration without the InfiniBand network and RDMA technology.
 
-| サイズ (ID) | コア | RAM | ネットワーク帯域幅 | 合計ディスク サイズ |
+| Size (id)       | Cores     | Ram     | Net Bandwidth | Total disk size |
 | --------------- | :-------: | ------: | :-----------: | ------: |
-| A10 | 8 | 56 GB | 高 | 382 GB |
-| A11 | 16 | 112 GB | 非常に高 | 382 GB |
+| A10             | 8         | 56 GB   | High          | 382 GB  |
+| A11             | 16        | 112 GB  | Very High     | 382 GB  |
 
-## D シリーズ: コンピューティングに最適
+## <a name="d-series:-optimized-compute"></a>D-series: Optimized compute
 
-D シリーズの仮想マシンは、ソリッド ステート ドライブ (SSD)、および A シリーズよりも 60% 高速なプロセッサが搭載されており、Azure Cloud Services の Web ロールまたは worker ロールでも利用可能です。このシリーズは、高速の CPU、高いローカル ディスク パフォーマンス、あるいはより多くのメモリを必要とするアプリケーションに最適です。
+D-series virtual machines feature solid state drives (SSDs) and faster processors than the A-series (60% faster) and is also available for web or worker roles in Azure Cloud Services. This series is ideal for applications that demand faster CPUs, better local disk performance, or higher memory.
 
-## 汎用 (D)
+## <a name="general-purpose-(d)"></a>General purpose (D)
 
-Web サイト、中小規模のデータベース、および日常使用のその他のアプリケーション用
+For websites, small-to-medium databases, and other everyday applications.
 
-| サイズ (ID) | コア | RAM | ネットワーク帯域幅 | 合計ディスク サイズ |
+| Size (id)       | Cores     | Ram     | Net Bandwidth | Total disk size |
 | --------------- | :-------: | ------: | :-----------: | ------: |
-| Standard\_D1 | 1 | 3\.5 GB | 中 | 50 GB |
-| Standard\_D2 | 2 | 7 GB | 高 | 100 GB |
-| Standard\_D3 | 4 | 14 GB | 高 | 200 GB |
-| Standard\_D4 | 8 | 28 GB | 高 | 400 GB |
+| Standard_D1     | 1         | 3.5 GB  | Moderate      | 50 GB   |
+| Standard_D2     | 2         | 7 GB    | High          | 100 GB  |
+| Standard_D3     | 4         | 14 GB   | High          | 200 GB  |
+| Standard_D4     | 8         | 28 GB   | High          | 400 GB  |
 
-## メモリ集中型 (D)
+## <a name="memory-intensive-(d)"></a>Memory intensive (D)
 
-大規模データベース、SharePoint サーバー ファーム、および高スループットのアプリケーション用
+For large databases, SharePoint server farms, and high-throughput applications.
 
-| サイズ (ID) | コア | RAM | ネットワーク帯域幅 | 合計ディスク サイズ |
+| Size (id)       | Cores     | Ram     | Net Bandwidth | Total disk size |
 | --------------- | :-------: | ------: | :-----------: | ------: |
-| Standard\_D11 | 2 | 14 GB | 高 | 100 GB |
-| Standard\_D12 | 4 | 28 GB | 高 | 200 GB |
-| Standard\_D13 | 8 | 56 GB | 高 | 400 GB |
-| Standard\_D14 | 16 | 112 GB | 非常に高 | 800 GB |
+| Standard_D11    | 2         | 14 GB   | High          | 100 GB  |
+| Standard_D12    | 4         | 28 GB   | High          | 200 GB  |
+| Standard_D13    | 8         | 56 GB   | High          | 400 GB  |
+| Standard_D14    | 16        | 112 GB  | Very High     | 800 GB  |
 
-## Dv2 シリーズ: コンピューティングに最適
+## <a name="dv2-series:-optimized-compute"></a>Dv2-series: Optimized compute
 
-Dv2 シリーズのインスタンスは、Virtual Machines または Cloud Services として使用できる、D シリーズの次世代のインスタンスです。Dv2 シリーズのインスタンスは、D シリーズのインスタンスよりも平均で約 35% 高速の強力な CPU を搭載し、D シリーズと同じメモリ構成とディスク構成で稼働します。Dv2 シリーズのインスタンスは、最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサをベースとしており、Intel Turbo Boost Technology 2.0 の使用により 3.1 GHz まで高速化できます。Dv2 シリーズと D シリーズは、高速の CPU、高いローカル ディスク パフォーマンス、あるいはより多くのメモリを必要とするアプリケーションに最適で、多くのエンタープライズ レベルのアプリケーションにとって強力な組み合わせとなります。
+Dv2-series instances are the next generation of D-series instances that can be used as Virtual Machines or Cloud Services. Dv2-series instances will carry more powerful CPUs which are on average about 35% faster than D-series instances, and carry the same memory and disk configurations as the D-series. Dv2-series instances are based on the latest generation 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) processor, and with Intel Turbo Boost Technology 2.0 can go to 3.1 GHz. Dv2-series and D-series are ideal for applications that demand faster CPUs, better local disk performance, or higher memories and offer a powerful combination for many enterprise-grade applications.
 
-## 汎用 (Dv2)
+## <a name="general-purpose-(dv2)"></a>General purpose (Dv2)
 
-Web サイト、中小規模のデータベース、および日常使用のその他のアプリケーション用
+For websites, small-to-medium databases, and other everyday applications.
 
-| サイズ (ID) | コア | RAM | ネットワーク帯域幅 | 合計ディスク サイズ |
+| Size (id)       | Cores     | Ram     | Net Bandwidth | Total disk size |
 | --------------- | :-------: | ------: | :-----------: | ------: |
-| Standard\_D1\_v2 | 1 | 3\.5 GB | 中 | 50 GB |
-| Standard\_D2\_v2 | 2 | 7 GB | 高 | 100 GB |
-| Standard\_D3\_v2 | 4 | 14 GB | 高 | 200 GB |
-| Standard\_D4\_v2 | 8 | 28 GB | 高 | 400 GB |
-| Standard\_D5\_v2 | 16 | 56 GB | 非常に高 | 800 GB |
+| Standard_D1_v2  | 1         | 3.5 GB  | Moderate      | 50 GB   |
+| Standard_D2_v2  | 2         | 7 GB    | High          | 100 GB  |
+| Standard_D3_v2  | 4         | 14 GB   | High          | 200 GB  |
+| Standard_D4_v2  | 8         | 28 GB   | High          | 400 GB  |
+| Standard_D5_v2  | 16        | 56 GB   | Very High     | 800 GB  |
 
-## メモリ集中型 (Dv2)
+## <a name="memory-intensive-(dv2)"></a>Memory intensive (Dv2)
 
-大規模データベース、SharePoint サーバー ファーム、および高スループットのアプリケーション用
+For large databases, SharePoint server farms, and high-throughput applications
 
-| サイズ (ID) | コア | RAM | ネットワーク帯域幅 | 合計ディスク サイズ |
+| Size (id)       | Cores     | Ram     | Net Bandwidth | Total disk size |
 | --------------- | :-------: | ------: | :-----------: | -------: |
-| Standard\_D11\_v2 | 2 | 14 GB | 高 | 100 GB |
-| Standard\_D12\_v2 | 4 | 28 GB | 高 | 200 GB |
-| Standard\_D13\_v2 | 8 | 56 GB | 高 | 400 GB |
-| Standard\_D14\_v2 | 16 | 112 GB | 非常に高 | 800 GB |
-| Standard\_D15\_v2 | 20 | 140 GB | 非常に高 | 1,000 GB |
+| Standard_D11_v2 | 2         | 14 GB   | High          | 100 GB   |
+| Standard_D12_v2 | 4         | 28 GB   | High          | 200 GB   |
+| Standard_D13_v2 | 8         | 56 GB   | High          | 400 GB   |
+| Standard_D14_v2 | 16        | 112 GB  | Very High     | 800 GB   |
+| Standard_D15_v2 | 20        | 140 GB  | Very High     | 1,000 GB |
 
-## Cloud Services のサイズの構成
+## <a name="configure-sizes-for-cloud-services"></a>Configure sizes for Cloud Services
 
-ロール インスタンスの仮想マシンのサイズを、[サービス定義ファイル](cloud-services-model-and-package.md#csdef)で記述するサービス モデルの一部として指定できます。ロールのサイズによって、CPU コアの数、メモリ容量、および実行中のインスタンスに割り当てられるローカル ファイル システムのサイズが決まります。ロールのサイズは、アプリケーションのリソース要件に基づいて選択します。
+You can specify the Virtual Machine size of a role instance as part of the service model described by the [service definition file](cloud-services-model-and-package.md#csdef). The size of the role determines the number of CPU cores, the memory capacity, and the local file system size that is allocated to a running instance. Choose the role size based on your application's resource requirement.
 
-Web ロール インスタンスのロール サイズを [Standard\_D2](#general-purpose-d) に設定する例を次に示します。
+Here is an example for setting the role size to be [Standard_D2](#general-purpose-d) for a Web Role instance:
 
 ```xml
 <WebRole name="WebRole1" vmsize="<mark>Standard_D2</mark>">
@@ -157,4 +158,8 @@ Web ロール インスタンスのロール サイズを [Standard\_D2](#genera
 </WebRole>
 ```
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

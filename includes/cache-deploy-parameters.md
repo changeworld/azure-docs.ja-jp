@@ -1,7 +1,7 @@
 
-### cacheSKUName
+### <a name="cacheskuname"></a>cacheSKUName
 
-新しい Azure Redis Cache の価格レベルです。
+The pricing tier of the new Azure Redis Cache.
 
     "cacheSKUName": {
       "type": "string",
@@ -15,11 +15,12 @@
       }
     },
 
-テンプレートでは、このパラメーターに指定できる値 (Basic または Standard) を定義します。値が指定されない場合は既定値 (Basic) が割り当てられます。Basic では、複数のサイズを最大 53 GB まで使用できる 1 つのノードが提供されます。Standard では、複数のサイズを最大 53 GB まで使用できる 2 つのノード (プライマリとレプリカ) が提供され、99.9% の SLA が実現されます。
+The template defines the values that are permitted for this parameter (Basic or Standard), and assigns a default value (Basic) if no value is specified. Basic provides a single node with multiple sizes available up to 53 GB.
+Standard provides two-node Primary/Replica with multiple sizes available up to 53 GB and 99.9% SLA.
 
-### cacheSKUFamily
+### <a name="cacheskufamily"></a>cacheSKUFamily
 
-SKU のファミリです。
+The family for the sku.
 
     "cacheSKUFamily": {
       "type": "string",
@@ -33,9 +34,9 @@ SKU のファミリです。
     },
 
 
-### cacheSKUCapacity
+### <a name="cacheskucapacity"></a>cacheSKUCapacity
 
-新しい Azure Redis Cache インスタンスのサイズです。
+The size of the new Azure Redis Cache instance. 
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -55,5 +56,10 @@ SKU のファミリです。
     }
 
 
-テンプレートには、このパラメーターに指定できる値 (0、1、2、3、4、5、または 6) を定義します。値が指定されない場合は既定値 (1) が割り当てられます。これらの数値はキャッシュ サイズに対応します (0 = 250 MB、1 = 1 GB、2 = 2.5 GB、3 = 6 GB、4 = 13 GB、5 = 26 GB、6 = 53 GB)。
+The template defines the values that are permitted for this parameter (0, 1, 2, 3, 4, 5 or 6), and assigns a default value (1) if no value is specified. Those numbers correspond to following cache sizes: 0 = 250 MB, 1 = 1 GB, 2 = 2.5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
+
+
+
+<!--HONumber=Oct16_HO2-->
+
 

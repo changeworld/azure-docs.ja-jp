@@ -1,6 +1,6 @@
 <properties 
-    pageTitle=" Azure Automation でのソース管理の統合 | Microsoft Azure"
-    description="この記事では、Azure Automation での GitHub とのソース管理の統合について説明します。"
+    pageTitle=" Source Control integration in Azure Automation | Microsoft Azure"
+    description="This article describes source control integration with GitHub in Azure Automation."
     services="automation"
     documentationCenter=""
     authors="mgoedtel"
@@ -15,150 +15,156 @@
     ms.date="09/12/2016"
     ms.author="magoedte;sngun" />
 
-# Azure Automation でのソース管理の統合
 
-ソース管理の統合により、Automation アカウントの Runbook を GitHub のソース管理リポジトリに関連付けることができます。ソース管理により、チームとの共同作業、変更の追跡、Runbook の以前のバージョンへのロールバックを簡単に実行できるようになります。たとえば、開発、テスト、または運用の Automation アカウントに異なるブランチをソース管理で同期できるようになり、開発環境内でテストされたコードを運用の Automation アカウントに昇格することが容易になります。
+# <a name="source-control-integration-in-azure-automation"></a>Source control integration in Azure Automation
 
-ソース管理することで、Azure Automation からソース管理にコードをプッシュしたり、ソース管理から Azure Automation に Runbook をプルしたりできます。この記事では、Azure Automation 環境内でソース管理を設定する方法について説明します。まず、Azure Automation を GitHub リポジトリにアクセスするよう構成し、ソース管理の統合を使用することで実行できるさまざまな操作について、順を追って説明します。
+Source control integration allows you to associate runbooks in your Automation account to a GitHub source control repository. Source control allows you to easily collaborate with your team, track changes, and roll back to earlier versions of your runbooks. For example, source control allows you to sync different branches in source control to your development, test or production Automation accounts, making it easy to promote code that has been tested in your development environment to your production Automation account.
 
-
->[AZURE.NOTE] ソース管理では、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) および [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) のプル操作とプッシュ操作がサポートされていますが、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) はサポートされません。<br><br>
+Source control allows you to push code from Azure Automation to source control or pull your runbooks from source control to Azure Automation. This article describes how to set up source control in your Azure Automation environment. We will start by configuring Azure Automation to access your GitHub repository and walk through different operations that can be done using source control integration. 
 
 
-Automation アカウントのソース管理を構成するには、2 つの簡単な手順が必要です。ただし、既に GitHub アカウントを持っている場合、必要な手順は 1 つだけです。次に例を示します。
-## 手順 1. GitHub リポジトリを作成する
-
-GitHub アカウントと、Azure Automation にリンクするリポジトリが既にある場合は、既存のアカウントにログインし、次の手順 2. から開始してください。それ以外の場合は、[GitHub](https://github.com/) に移動し、新しいアカウントにサインアップして、[新しいリポジトリを作成](https://help.github.com/articles/create-a-repo/)します。
+>[AZURE.NOTE] Source control supports pulling and pushing [PowerShell Workflow runbooks](automation-runbook-types.md#powershell-workflow-runbooks) as well as [PowerShell runbooks](automation-runbook-types.md#powershell-runbooks). [Graphical runbooks](automation-runbook-types.md#graphical-runbooks) are not yet supported.<br><br>
 
 
-## 手順 2. Azure Automation でソース管理を設定する
+There are two simple steps required to configure source control for your Automation account, and only one if you already have a GitHub account. They are:
+## <a name="step-1-–-create-a-github-repository"></a>Step 1 – Create a GitHub repository
 
-1. Azure ポータルの [Automation アカウント] ブレードで、**[ソース管理の設定]** をクリックします。
+If you already have a GitHub account and a repository that you want to link to Azure Automation, then login to your existing account and start from step 2 below. Otherwise, navigate to [GitHub](https://github.com/), sign up for a new account and [create a new repository](https://help.github.com/articles/create-a-repo/).
+
+
+## <a name="step-2-–-set-up-source-control-in-azure-automation"></a>Step 2 – Set up source control in Azure Automation
+
+1. From the Automation Account blade in the Azure portal, click **Set Up Source Control.** 
  
-    ![ソース管理の設定](media/automation-source-control-integration/automation_01_SetUpSourceControl.png)
+    ![Set Up Source Control](media/automation-source-control-integration/automation_01_SetUpSourceControl.png)
 
-2. **[ソース管理]** ブレードが開きます。ここでは、GitHub アカウントの詳細を構成できます。構成するパラメーターを次に示します。
+2. The **Source Control** blade opens, where you can configure your GitHub account details. Below is the list of parameters to configure:  
 
-    |**パラメーター** |**説明** |
-    |:---|:---| 
-    |ソースの選択 | ソースを選択します。現時点では、**GitHub** のみがサポートされています。 |
-    |承認 | **[承認する]** ボタンをクリックすると、GitHub リポジトリへのアクセスが Azure Automation に許可されます。既に別のウィンドウで GitHub アカウントにログインしている場合は、そのアカウントの資格情報が使用されます。承認が成功すると、ブレードの **[承認プロパティ]** の下に GitHub のユーザー名が表示されます。 |
-    |リポジトリの選択 | 使用可能なリポジトリの一覧から GitHub リポジトリを選択します。 |
-    |ブランチの選択 | 使用可能なブランチの一覧からブランチを選択します。ブランチを作成したことがない場合は、**master** ブランチのみが表示されます。 |
-    |Runbook フォルダーのパス | Runbook フォルダーのパスは、コードをプッシュまたはプルする GitHub リポジトリのパスを指定します。これは、**/foldername/subfoldername** 形式で指定する必要があります。Runbook フォルダーのパスにある Runbook のみが Automation アカウントと同期されます。Runbook フォルダーのパスのサブフォルダーにある Runbook は同期**されません**。リポジトリですべての Runbook を同期するには、**/** を使います。 |
+  	|**Parameter**            |**Description** |
+  	|:---|:---| 
+  	|Choose Source   | Select the source. Currently, only **GitHub** is supported. |
+  	|Authorization | Click the **Authorize** button to grant Azure Automation access to your GitHub repository. If you are already logged in to your GitHub account in a different window, then the credentials of that account are used. Once authorization is successful, the blade will show your GitHub username under **Authorization Property**. |
+  	|Choose repository | Select a GitHub repository from the list of available repositories. |
+  	|Choose branch | Select a branch from the list of available branches. Only the **master** branch is shown if you haven’t created any branches. |
+  	|Runbook folder path | The runbook folder path specifies the path in the GitHub repository from which you want to push or pull your code. It must be entered in the format **/foldername/subfoldername**. Only runbooks in the runbook folder path will be synced to your Automation account. Runbooks in the subfolders of the runbook folder path will **NOT** be synced. Use **/** to sync all the runbooks under the repository. |
 
 
-3. たとえば、**PowerShellScripts** という名前のリポジトリに **RootFolder** という名前のフォルダーがあり、このフォルダー内に **SubFolder** という名前のフォルダーがあるとします。次の文字列を使用して、各フォルダー レベルで同期できます。
+3. For example, if you have a repository named **PowerShellScripts** that contains a folder named **RootFolder**, which contains a folder named **SubFolder**. You can use the following strings to sync each folder level:
 
-    1. **リポジトリ**から Runbook を同期するには、Runbook フォルダーのパスは */* となります。
-    2. **RootFolder** から Runbook を同期するには、Runbook フォルダーのパスは */RootFolder* となります。
-    3. **SubFolder** から Runbook を同期するには、Runbook フォルダーのパスは */RootFolder/SubFolder* となります。
+    1. To sync runbooks from **repository**, runbook folder path is */*
+    2. To sync runbooks from **RootFolder**, runbook folder path is */RootFolder*
+    3. To sync runbooks from **SubFolder**, runbook folder path is */RootFolder/SubFolder*.
   
 
-4. 構成したパラメーターは、**[ソース管理の設定]** ブレードに表示されます。
+4. After you configure the parameters, they are displayed on the **Set Up Source Control blade.**  
  
-    ![[構成] ブレード](media/automation-source-control-integration/automation_02_SourceControlConfigure.png)
+    ![Configure Blade](media/automation-source-control-integration/automation_02_SourceControlConfigure.png)
 
 
-5. [OK] をクリックすると、ソース管理の統合は、お使いの Automation アカウント用に構成されるため、GitHub 情報を使用して更新する必要があります。この部分をクリックすると、ソース管理の同期ジョブの履歴がすべて表示されます。
+5. Once you click OK, source control integration is now configured for your Automation account and should be updated with your GitHub information. You can now click on this part to view all of your source control sync job history.  
 
-    ![リポジトリの値](media/automation-source-control-integration/automation_03_RepoValues.png)
+    ![Repository Values](media/automation-source-control-integration/automation_03_RepoValues.png)
 
-6. ソース管理の設定後、次の Automation リソースが Automation アカウントに作成されます。2 つの[変数アセット](automation-variables.md)が作成されます。
+6. After you set up source control, the following Automation resources will be created in your Automation account:  
+ Two [variable assets](automation-variables.md) are created.  
       
-    * 次に示すように、**Microsoft.Azure.Automation.SourceControl.Connection** 変数には、接続文字列の値が格納されます。
+    * The variable **Microsoft.Azure.Automation.SourceControl.Connection** contains the values of the connection string, as shown below.  
 
-    |**パラメーター** |**値** |
-    |:---|:---|
-    | 名前 | Microsoft.Azure.Automation.SourceControl.Connection |
-    | 型 | String |
-    | 値 | {"Branch":<*ブランチ名*>,"RunbookFolderPath":<*Runbook フォルダーのパス*>,"ProviderType":<*GitHub の場合は値 1*>,"Repository":<*リポジトリ名*>,"Username":<*GitHub ユーザー名*>} | <br>
-
-
-    * **Microsoft.Azure.Automation.SourceControl.OauthToken** 変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。
-
-    |**パラメーター** |**値** |
-    |:---|:---|
-    | 名前 | Microsoft.Azure.Automation.SourceControl.OAuthToken |
-    | 型 | Unknown(Encrypted) |
-    | 値 | <*暗号化された OAuthToken*> |  
-
-    ![変数](media/automation-source-control-integration/automation_04_Variables.png)
-
-    * **Automation ソース管理**は、承認済みのアプリケーションとして GitHub アカウントに追加されます。アプリケーションを表示するには、GitHub のホーム ページから **[profile]**、**[Settings]**、**[Applications]** の順に移動します。このアプリケーションにより、Azure Automation は GitHub リポジトリを Automation アカウントに同期できます。
-
-    ![Git アプリケーション](media/automation-source-control-integration/automation_05_GitApplication.png)
+  	|**Parameter**            |**Value** |
+  	|:---|:---|
+  	| Name  | Microsoft.Azure.Automation.SourceControl.Connection |
+  	| Type | String |
+  	| Value  | {"Branch":\<*Your branch name*>,"RunbookFolderPath":\<*Runbook folder path*>,"ProviderType":\<*has a value 1 for GitHub*>,"Repository":\<*Name of your repository*>,"Username":\<*Your GitHub user name*>} |  <br>
 
 
-## Automation でのソース管理の使用
+    * The variable **Microsoft.Azure.Automation.SourceControl.OAuthToken**, contains the secure encrypted value of your OAuthToken.  
+
+  	|**Parameter**            |**Value** |
+  	|:---|:---|
+  	| Name  | Microsoft.Azure.Automation.SourceControl.OAuthToken |
+  	| Type | Unknown(Encrypted) |
+  	| Value | <*Encrypted OAuthToken*> |  
+
+    ![Variables](media/automation-source-control-integration/automation_04_Variables.png)  
+
+    * **Automation Source Control** is added as an authorized application to your GitHub account. To view the application: From your GitHub home page, navigate to your **profile** > **Settings** > **Applications**. This application allows Azure Automation to sync your GitHub repository to an Automation account.  
+
+    ![Git Application](media/automation-source-control-integration/automation_05_GitApplication.png)
 
 
-### Azure Automation からソース管理に Runbook をチェックインする
-
-Runbook をチェックインすると、Azure Automation で Runbook に対して行った変更をソース管理リポジトリにプッシュできます。Runbook のチェックイン手順は次のとおりです。
-
-1. Automation アカウントから、[テキスト形式の Runbook を新しく作成](automation-first-runbook-textual.md)するか、[テキスト形式の既存の Runbook を編集](automation-edit-textual-runbook.md)します。この Runbook は、PowerShell ワークフローまたは PowerShell スクリプト Runbook のどちらでもかまいません。
-
-2. Runbook を編集して保存したら、**[編集]** ブレードの **[チェックイン]** をクリックします。
-
-    ![[チェックイン] ボタン](media/automation-source-control-integration/automation_06_CheckinButton.png)
+## <a name="using-source-control-in-automation"></a>Using Source Control in Automation
 
 
-     >[AZURE.NOTE] Azure Automation からチェックインすると、ソース管理に現在存在しているコードが上書きされます。チェックインするための対応する Git コマンド ライン命令は、**git add + git commit + git push** です。
+### <a name="check-in-a-runbook-from-azure-automation-to-source-control"></a>Check-in a runbook from Azure Automation to source control
 
-3. **[チェックイン]** をクリックすると、確認メッセージが表示されるので、[はい] をクリックして続行します。
+Runbook check-in allows you to push the changes you have made to a runbook in Azure Automation into your source control repository. Below are the steps to check-in a runbook:
 
-    ![チェックイン メッセージ](media/automation-source-control-integration/automation_07_CheckinMessage.png)
+1. From your Automation Account, [create a new textual runbook](automation-first-runbook-textual.md), or [edit an existing, textual runbook](automation-edit-textual-runbook.md). This runbook can be either a PowerShell Workflow or a PowerShell script runbook.  
 
-4. チェックインにより、ソース管理 Runbook の **Sync-MicrosoftAzureAutomationAccountToGitHubV1** が開始されます。この Runbook は、GitHub に接続し、変更を Azure Automation からリポジトリにプッシュします。チェックイン ジョブの履歴を表示するには、**[ソース管理の統合]** タブに戻り、[リポジトリの同期] ブレードをクリックして開きます。このブレードには、すべてのソース管理ジョブが表示されます。表示するジョブを選択し、クリックして詳細を表示します。
+2. After you edit your runbook, save it and click **check-in** from the **Edit** blade.  
 
-    ![チェックイン Runbook](media/automation-source-control-integration/automation_08_CheckinRunbook.png)
+    ![Checkin Button](media/automation-source-control-integration/automation_06_CheckinButton.png)
 
-    >[AZURE.NOTE] ソース管理 Runbook は、特別な Automation Runbook であり、表示または編集することはできません。これらは Runbook の一覧に表示されませんが、ジョブの一覧には同期ジョブが表示されます。
+
+     >[AZURE.NOTE] Check-in from Azure Automation will overwrite the code that currently exists in your source control. The Git equivalent command line instruction to check-in is **git add + git commit + git push**  
+
+3. When you click **check-in**, you will be prompted with a confirmation message, click yes to continue.  
+
+    ![Checkin Message](media/automation-source-control-integration/automation_07_CheckinMessage.png)
+
+4. Check-in starts the source control runbook: **Sync-MicrosoftAzureAutomationAccountToGitHubV1**. This runbook connects to GitHub and pushes changes from Azure Automation to your repository. To view the check-in job history, go back to the **Source Control Integration** tab and click to open the Repository Synchronization blade. This blade shows all of your source control jobs.  Select the job you want to view and click to view the details.  
+
+    ![Checkin Runbook](media/automation-source-control-integration/automation_08_CheckinRunbook.png)
+
+    >[AZURE.NOTE] Source control runbooks are special Automation runbooks that you cannot view or edit. While they will not show up on your runbook list, you will see sync jobs showing up on your jobs list.
  
-5. 変更された Runbook の名前は、入力パラメーターとしてチェックイン Runbook に送信されます。**[リポジトリの同期]** ブレードで Runbook を展開すると、[ジョブの詳細を表示](automation-runbook-execution.md#viewing-job-status-using-the-azure-management-portal)できます。
+5. The name of the modified runbook is sent as an input parameter to the check-in runbook. You can [view the job details](automation-runbook-execution.md#viewing-job-status-using-the-azure-management-portal) by expanding runbook in **Repository Synchronization** blade.  
 
-    ![チェックイン入力](media/automation-source-control-integration/automation_09_CheckinInput.png)
+    ![Checkin Input](media/automation-source-control-integration/automation_09_CheckinInput.png)
 
-6. ジョブが完了したら GitHub リポジトリを更新して、変更を表示します。リポジトリにコミットすると、"**Azure Automation で *Runbook 名* が更新されました**" というコミット メッセージが表示されます。
+6. Refresh your GitHub repository once the job completes to view the changes.  There should be a commit in your repository with a commit message: **Updated *Runbook Name* in Azure Automation.**  
 
 
 
-### ソース管理から Azure Automation に Runbook を同期する 
+### <a name="sync-runbooks-from-source-control-to-azure-automation"></a>Sync runbooks from source control to Azure Automation 
 
-[リポジトリの同期] ブレードの [同期] ボタンを使用すると、リポジトリの Runbook フォルダーのパスにあるすべての Runbook を Automation アカウントにプルできます。同一リポジトリを複数の Automation アカウントに同期できます。Runbook の同期手順は次のとおりです。
+The sync button on the Repository Synchronization blade allows you to pull all the runbooks in the runbook folder path of your repository to your Automation account. The same repository can be synced to more than one Automation account. Below are the steps to sync a runbook:
 
-1. ソース管理を設定した Automation アカウントで、**[ソース管理の統合] の [リポジトリの同期] ブレード**を開き、**[同期]** をクリックします。その後、確認メッセージが表示されたら、**[はい]** をクリックして続行します。
+1. From the Automation account where you set up source control, open the **Source Control Integration/Repository Synchronization blade** and click **Sync** then you will be prompted with a confirmation message, click **Yes** to continue.  
 
-    ![同期ボタン](media/automation-source-control-integration/automation_10_SyncButtonwithMessage.png)
+    ![Sync Button](media/automation-source-control-integration/automation_10_SyncButtonwithMessage.png)
 
-2. 同期により、**Sync-MicrosoftAzureAutomationAccountToGitHubV1** Runbook が開始されます。この Runbook は、GitHub に接続し、変更をリポジトリから Azure Automation にプルします。**[リポジトリ同期]** ブレードにこのアクション向けの新しいジョブが表示されます。同期ジョブの詳細を表示するには、[ジョブの詳細] ブレードをクリックして、開きます。
+2. Sync starts the runbook: **Sync-MicrosoftAzureAutomationAccountFromGitHubV1**. This runbook connects to GitHub and pulls the changes from your repository to Azure Automation. You should see a new job on the **Repository Synchronization** blade for this action. To view details about the sync job, click to open the job details blade.  
  
-    ![Runbook の同期](media/automation-source-control-integration/automation_11_SyncRunbook.png)
+    ![Sync Runbook](media/automation-source-control-integration/automation_11_SyncRunbook.png)
 
  
-    >[AZURE.NOTE] ソース管理から同期すると、ソース管理に現在含まれている**すべての** Runbook のうち、Automation アカウントに現在存在するドラフト バージョンの Runbook が上書きされます。同期するための対応する Git コマンド ライン命令は、**git pull** です。
+    >[AZURE.NOTE] A sync from source control overwrites the draft version of the runbooks that currently exist in your Automation account for **ALL** runbooks that are currently in source control. The Git equivalent command line instruction to sync is **git pull**
 
 
-## ソース管理の問題のトラブルシューティング
+## <a name="troubleshooting-source-control-problems"></a>Troubleshooting source control problems
 
-チェックイン ジョブまたは同期ジョブにエラーがある場合は、ジョブが中断状態になるため、[ジョブ] ブレードでエラーに関する詳細情報を表示できます。**[すべてのログ]** 部分には、該当するジョブに関連付けられた PowerShell ストリームがすべて表示されます。これにより、チェックインまたは同期の問題を解決するために必要な詳細情報が提供されます。Runbook での同期またはチェックイン中に発生した一連のアクションも表示されます。
+If there are any errors with a check-in or sync job, the job status should be suspended and you can view more details about the error in the job blade.  The **All Logs** part will show you all the PowerShell streams associated with that job. This will provide you with the details needed to help you fix any problems with your check-in or sync. It will also show you the sequence of actions that occurred while syncing or checking-in a runbook.  
 
-![AllLogs イメージ](media/automation-source-control-integration/automation_13_AllLogs.png)
+![AllLogs image](media/automation-source-control-integration/automation_13_AllLogs.png)
 
-## ソース管理の切断
+## <a name="disconnecting-source-control"></a>Disconnecting source control
 
-GitHub アカウントから切断するには、[リポジトリの同期] ブレードを開き、**[切断]** をクリックします。ソース管理を切断すると、それまでに同期された Runbook はそのまま Automation アカウントに保持されますが、[リポジトリの同期] ブレードは有効になりません。
+To disconnect from your GitHub account, open the Repository Synchronization blade and click **Disconnect**. Once you disconnect source control, runbooks that were synced earlier will still remain in your Automation account but the Repository Synchronization blade will not be enabled.  
 
-  ![[切断] ボタン](media/automation-source-control-integration/automation_12_Disconnect.png)
+  ![Disconnect Button](media/automation-source-control-integration/automation_12_Disconnect.png)
 
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-ソース管理の統合の詳細については、次のリソースをご覧ください。
-- [Azure Automation: Source Control Integration in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)
-- [好みのソース管理システムの投票](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d)
-- [Azure Automation: Integrating Runbook Source Control using Visual Studio Online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)
+For more information about source control integration, see the following resources:  
+- [Azure Automation: Source Control Integration in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
+- [Vote for your favorite source control system](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d)  
+- [Azure Automation: Integrating Runbook Source Control using Visual Studio Team Services](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)  
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

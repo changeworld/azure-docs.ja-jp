@@ -1,103 +1,105 @@
 <properties
-	pageTitle="クロスデータベース クエリの概要 (列方向のパーティション分割) | Microsoft Azure"	
-	description="垂直にパーティション分割されたデータベースでエラスティック データベース クエリを使用する方法"
-	services="sql-database"
-	documentationCenter=""  
-	manager="jhubbard"
-	authors="torsteng"/>
+    pageTitle="Get started with cross-database queries (vertical partitioning) | Microsoft Azure"   
+    description="how to use elastic database query with vertically partitioned databases"
+    services="sql-database"
+    documentationCenter=""  
+    manager="jhubbard"
+    authors="torsteng"/>
 
 <tags
-	ms.service="sql-database"
-	ms.workload="sql-database"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/23/2016"
-	ms.author="torsteng" />
+    ms.service="sql-database"
+    ms.workload="sql-database"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="05/23/2016"
+    ms.author="torsteng" />
 
-# クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
 
-Azure SQL Database 用の エラスティック データベース クエリ (プレビュー) を使用すると、1 つの接続ポイントで複数のデータベースにまたがる T-SQL クエリを実行することができます。このトピックは[垂直にパーティション分割されたデータベース](sql-database-elastic-query-vertical-partitioning.md)に適用されます。
+# <a name="get-started-with-cross-database-queries-(vertical-partitioning)-(preview)"></a>Get started with cross-database queries (vertical partitioning) (preview)
 
-終了すると、複数の関連するデータベースにまたがるクエリを実行するために Azure SQL Database を構成および使用する方法を習得できます。
+Elastic database query (preview) for Azure SQL Database allows you to run T-SQL queries that span multiple databases using a single connection point. This topic applies to [vertically partitioned databases](sql-database-elastic-query-vertical-partitioning.md).  
 
-エラスティック データベース クエリ機能の詳細については、「[Azure SQL Database エラスティック データベース クエリの概要](sql-database-elastic-query-overview.md)」を参照してください。
+When completed, you will: learn how to configure and use an Azure SQL Database to perform queries that span multiple related databases. 
 
-## サンプル データベースの作成
+For more information about the elastic database query feature, please see  [Azure SQL Database elastic database query overview](sql-database-elastic-query-overview.md). 
 
-最初に、同じ論理サーバーか異なる論理サーバーで「**Customers**」と「**Orders**」という 2 つのデータベースを作成する必要があります。
+## <a name="create-the-sample-databases"></a>Create the sample databases
 
-「**Orders**」データベースで次のクエリを実行し、「**OrderInformation**」テーブルを作成し、サンプル データを入力します。
+To start with, we need to create two databases, **Customers** and **Orders**, either in the same or different logical servers.   
 
-	CREATE TABLE [dbo].[OrderInformation]( 
-		[OrderID] [int] NOT NULL, 
-		[CustomerID] [int] NOT NULL 
-		) 
-	INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (123, 1) 
-	INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (149, 2) 
-	INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (857, 2) 
-	INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1) 
-	INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8) 
+Execute the following queries on the **Orders** database to create the **OrderInformation** table and input the sample data. 
 
-次に、**Customers** データベースで次のクエリを実行して、**CustomerInformation** テーブルを作成し、サンプル データを入力します。
+    CREATE TABLE [dbo].[OrderInformation]( 
+        [OrderID] [int] NOT NULL, 
+        [CustomerID] [int] NOT NULL 
+        ) 
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (123, 1) 
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (149, 2) 
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (857, 2) 
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1) 
+    INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8) 
 
-	CREATE TABLE [dbo].[CustomerInformation]( 
-		[CustomerID] [int] NOT NULL, 
-		[CustomerName] [varchar](50) NULL, 
-		[Company] [varchar](50) NULL 
-		CONSTRAINT [CustID] PRIMARY KEY CLUSTERED ([CustomerID] ASC) 
-	) 
-	INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (1, 'Jack', 'ABC') 
-	INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (2, 'Steve', 'XYZ') 
-	INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (3, 'Lylla', 'MNO') 
+Now, execute following query on the **Customers** database to create the **CustomerInformation** table and input the sample data. 
 
-## データベース オブジェクトを作成する
-### データベース スコープのマスター キーと資格情報
+    CREATE TABLE [dbo].[CustomerInformation]( 
+        [CustomerID] [int] NOT NULL, 
+        [CustomerName] [varchar](50) NULL, 
+        [Company] [varchar](50) NULL 
+        CONSTRAINT [CustID] PRIMARY KEY CLUSTERED ([CustomerID] ASC) 
+    ) 
+    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (1, 'Jack', 'ABC') 
+    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (2, 'Steve', 'XYZ') 
+    INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]) VALUES (3, 'Lylla', 'MNO') 
 
-1. SQL Server Management Studio または Visual Studio の SQL Server Data Tools を開きます。
-2. Orders データベースに接続し、次の T-SQL コマンドを実行します。
+## <a name="create-database-objects"></a>Create database objects
+### <a name="database-scoped-master-key-and-credentials"></a>Database scoped master key and credentials
 
-		CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'; 
-		CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred 
-		WITH IDENTITY = '<username>', 
-		SECRET = '<password>';  
+1. Open SQL Server Management Studio or SQL Server Data Tools in Visual Studio.
+2. Connect to the Orders database and execute the following T-SQL commands:
 
-	「username」と「password」は Customers データベースのログインに使用するユーザー名とパスワードになります。Azure Active Directory とエラスティック クエリを使用した認証は、現時点ではサポートされていません。
+        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'; 
+        CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred 
+        WITH IDENTITY = '<username>', 
+        SECRET = '<password>';  
 
-### 外部データ ソース
-外部データ ソースを作成するには、Orders データベースで、次のコマンドを実行します。
+    The "username" and "password" should be the username and password used to login into the Customers database.
+    Authentication using Azure Active Directory with elastic queries is not currently supported.
 
-	CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH 
-		(TYPE = RDBMS, 
-		LOCATION = '<server_name>.database.windows.net', 
-		DATABASE_NAME = 'Customers', 
-		CREDENTIAL = ElasticDBQueryCred, 
-	) ;
+### <a name="external-data-sources"></a>External data sources
+To create an external data source, execute the following command on the Orders database: 
 
-### 外部テーブル
-CustomerInformation テーブルの定義に一致する外部テーブルを Orders データベースで作成します。
+    CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH 
+        (TYPE = RDBMS, 
+        LOCATION = '<server_name>.database.windows.net', 
+        DATABASE_NAME = 'Customers', 
+        CREDENTIAL = ElasticDBQueryCred, 
+    ) ;
 
-	CREATE EXTERNAL TABLE [dbo].[CustomerInformation] 
-	( [CustomerID] [int] NOT NULL, 
-	  [CustomerName] [varchar](50) NOT NULL, 
-	  [Company] [varchar](50) NOT NULL) 
-	WITH 
-	( DATA_SOURCE = MyElasticDBQueryDataSrc) 
+### <a name="external-tables"></a>External tables
+Create an external table on the Orders database, which matches the definition of the CustomerInformation table:
 
-## サンプルのエラスティック データベース T-SQL クエリを実行する
+    CREATE EXTERNAL TABLE [dbo].[CustomerInformation] 
+    ( [CustomerID] [int] NOT NULL, 
+      [CustomerName] [varchar](50) NOT NULL, 
+      [Company] [varchar](50) NOT NULL) 
+    WITH 
+    ( DATA_SOURCE = MyElasticDBQueryDataSrc) 
 
-外部データ ソースと外部テーブルを定義すると、T-SQL を使用して外部テーブルにクエリを実行できるようになります。Orders データベースでこのクエリを実行します。
+## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Execute a sample elastic database T-SQL query
 
-	SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company 
-	FROM OrderInformation 
-	INNER JOIN CustomerInformation 
-	ON CustomerInformation.CustomerID = OrderInformation.CustomerID 
+Once you have defined your external data source and your external tables you can now use T-SQL to query your external tables. Execute this query on the Orders database: 
 
-## コスト
+    SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company 
+    FROM OrderInformation 
+    INNER JOIN CustomerInformation 
+    ON CustomerInformation.CustomerID = OrderInformation.CustomerID 
 
-現在のところ、エラスティック データベース クエリ機能は Azure SQL Database のコストに含まれています。
+## <a name="cost"></a>Cost
 
-料金情報については、「[SQL Database の価格](/pricing/details/sql-database)」を参照してください。
+Currently, the elastic database query feature is included into the cost of your Azure SQL Database.  
+
+For pricing information see [SQL Database Pricing](/pricing/details/sql-database). 
 
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
@@ -106,4 +108,8 @@ CustomerInformation テーブルの定義に一致する外部テーブルを Or
 
 <!--anchors-->
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,229 +1,239 @@
 <properties
-	pageTitle="Python による Microsoft Azure Storage のクライアント側の暗号化 | Microsoft Azure"
-	description="Python 用 Azure Storage クライアント ライブラリはクライアント側の暗号化を支援して、Azure Storage アプリケーションのセキュリティを最大限に高めます。"
-	services="storage"
-	documentationCenter="python"
-	authors="dineshmurthy"
-	manager="jahogg"
-	editor="tysonn"/>
+    pageTitle="Client-Side Encryption with Python for Microsoft Azure Storage | Microsoft Azure"
+    description="The Azure Storage Client Library for Python supports client-side encryption for maximum security for your Azure Storage applications."
+    services="storage"
+    documentationCenter="python"
+    authors="dineshmurthy"
+    manager="jahogg"
+    editor="tysonn"/>
 
 <tags
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="python"
-	ms.topic="article"
-	ms.date="09/20/2016"
-	ms.author="dineshm;robinsh"/>
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="python"
+    ms.topic="article"
+    ms.date="10/18/2016"
+    ms.author="dineshm"/>
 
 
-# Python による Microsoft Azure Storage のクライアント側の暗号化
+
+# <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Client-Side Encryption with Python for Microsoft Azure Storage
 
 [AZURE.INCLUDE [storage-selector-client-side-encryption-include](../../includes/storage-selector-client-side-encryption-include.md)]
 
-## Overview
+## <a name="overview"></a>Overview
 
-[Python 用 Azure Storage クライアント ライブラリ](https://pypi.python.org/pypi/azure-storage)は、Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。
+The [Azure Storage Client Library for Python](https://pypi.python.org/pypi/azure-storage) supports encrypting data within client applications before uploading to Azure Storage, and decrypting data while downloading to the client.
 
->[AZURE.NOTE] Azure Storage Python ライブラリはプレビュー段階です。
+>[AZURE.NOTE] The Azure Storage Python library is in preview.
 
-## エンベロープ手法による暗号化と復号化
-暗号化と復号化のプロセスは、エンベロープ手法に倣います。
+## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Encryption and decryption via the envelope technique
+The processes of encryption and decryption follow the envelope technique.
 
-### エンベロープ手法による暗号化
-エンベロープ手法による暗号化は、次の方法で機能します。
+### <a name="encryption-via-the-envelope-technique"></a>Encryption via the envelope technique
+Encryption via the envelope technique works in the following way:
 
-1.	Azure ストレージ クライアント ライブラリは、1 回使用の対称キーであるコンテンツ暗号化キー (CEK) を生成します。
+1.  The Azure storage client library generates a content encryption key (CEK), which is a one-time-use symmetric key.
 
-2.	ユーザー データは、この CEK を使用して暗号化されます。
+2.  User data is encrypted using this CEK.
 
-3.	CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルで管理することができます。ストレージ クライアント ライブラリ自体が KEK にアクセスすることはありません。ライブラリは、KEK によって提供されるキー ラップ アルゴリズムを呼び出すだけです。ユーザーは、必要な場合は、キー ラップ/ラップ解除にカスタム プロバイダーを使用できます。
+3.  The CEK is then wrapped (encrypted) using the key encryption key (KEK). The KEK is identified by a key identifier and can be an asymmetric key pair or a symmetric key, which is managed locally.
+The storage client library itself never has access to KEK. The library invokes the key wrapping algorithm that is provided by the KEK. Users can choose to use custom providers for key wrapping/unwrapping if desired.
 
-4.	暗号化されたデータは、Azure Storage サービスにアップロードされます。ラップされたキーは追加の暗号化メタデータと共にメタデータとして (BLOB に) 格納されるか、暗号化されたデータ (キュー メッセージやテーブル エンティティ) によって補間されます。
+4.  The encrypted data is then uploaded to the Azure Storage service. The wrapped key along with some additional encryption metadata is either stored as metadata (on a blob) or interpolated with the encrypted data (queue messages and table entities).
 
-### エンベロープ手法による復号化
-エンベロープ手法による復号化は、次の方法で機能します。
+### <a name="decryption-via-the-envelope-technique"></a>Decryption via the envelope technique
+Decryption via the envelope technique works in the following way:
 
-1.	クライアント ライブラリでは、ユーザーがキー暗号化キー (KEK) をローカルで管理することを前提としています。ユーザーは、暗号化に使用された特定のキーを把握しておく必要はありません。代わりに、さまざまなキー識別子をキーに解決するキー リゾルバーを設定、使用できます。
+1.  The client library assumes that the user is managing the key encryption key (KEK) locally. The user does not need to know the specific key that was used for encryption. Instead, a key resolver, which resolves different key identifiers to keys, can be set up and used.
 
-2.	クライアント ライブラリは、暗号化されたデータおよびサービスに格納されている暗号化に関する情報 (ある場合) をダウンロードします。
+2.  The client library downloads the encrypted data along with any encryption material that is stored on the service.
 
-3.	次に、ラップされたコンテンツ暗号化キー (CEK) が、キー暗号化キー (KEK) によりラップ解除 (復号化) されます。ここでも、クライアント ライブラリが KEK にアクセスすることはありません。これは、単にカスタム プロバイダーのラップ解除アルゴリズムを呼び出すだけです。
+3.  The wrapped content encryption key (CEK) is then unwrapped (decrypted) using the key encryption key (KEK). Here again, the client library does not have access to KEK. It simply invokes the custom provider’s unwrapping algorithm.
 
-4.	次に、コンテンツ暗号化キー (CEK) を使用して、暗号化されたユーザー データを復号化します。
+4.  The content encryption key (CEK) is then used to decrypt the encrypted user data.
 
-## 暗号化メカニズム  
-ストレージ クライアント ライブラリは [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) を使用して、ユーザー データを暗号化します。具体的には、AES で[暗号ブロック チェーン (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) モードを使用します。サービスごとに動作が多少異なるため、以下でそれぞれについて説明します。
+## <a name="encryption-mechanism"></a>Encryption Mechanism  
+The storage client library uses [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) in order to encrypt user data. Specifically, [Cipher Block Chaining (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mode with AES. Each service works somewhat differently, so we will discuss each of them here.
 
-### BLOB
-現在、クライアント ライブラリでは BLOB 全体の暗号化のみがサポートされています。具体的には、**create*** メソッドを使用する場合に暗号化がサポートされます。ダウンロードについては、完全ダウンロードと一部の範囲のダウンロードの両方がサポートされています。また、アップロードとダウンロードの両方の並列処理が可能です。
+### <a name="blobs"></a>Blobs
+The client library currently supports encryption of whole blobs only. Specifically, encryption is supported when users use the **create*** methods. For downloads, both complete and range downloads are supported, and parallelization of both upload and download is available.
 
-暗号化中、クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を生成し、この情報を使用して BLOB データのエンベロープ暗号化を実行します。ラップされた CEK と一部の追加暗号化メタデータが、サービスの暗号化された BLOB と共に、BLOB メタデータとして格納されます。
+During encryption, the client library will generate a random Initialization Vector (IV) of 16 bytes, together with a random content encryption key (CEK) of 32 bytes, and perform envelope encryption of the blob data using this information. The wrapped CEK and some additional encryption metadata are then stored as blob metadata along with the encrypted blob on the service.
 
->[AZURE.WARNING] BLOB のメタデータを編集またはアップロードする場合は、このメタデータを保持している必要があります。このメタデータなしで新しいメタデータをアップロードした場合、ラップされた CEK、IV、およびその他のメタデータは失われ、BLOB コンテンツが再度取得可能になることはありません。
+>[AZURE.WARNING] If you are editing or uploading your own metadata for the blob, you need to ensure that this metadata is preserved. If you upload new metadata without this metadata, the wrapped CEK, IV and other metadata will be lost and the blob content will never be retrievable again.
 
-暗号化された BLOB のダウンロードには、便利なメソッド **get*** を使用した BLOB 全体のコンテンツの取得も含まれます。ラップされた CEK はラップ解除され、復号化されたデータをユーザーに返すために IV (この場合 BLOB メタデータとして格納された) と共に使用されます。
+Downloading an encrypted blob involves retrieving the content of the entire blob using the **get*** convenience methods. The wrapped CEK is unwrapped and used together with the IV (stored as blob metadata in this case) to return the decrypted data to the users.
 
-暗号化された BLOB での任意の範囲 (範囲パラメーターが渡された **get*** メソッド) のダウンロードでは、ユーザーが指定した範囲が調整されます。これは、少量の追加データを取得して、要求された範囲を正常に復号化するためです。
+Downloading an arbitrary range (**get*** methods with range parameters passed in) in the encrypted blob involves adjusting the range provided by users in order to get a small amount of additional data that can be used to successfully decrypt the requested range.
 
-このスキームを使用して暗号化/復号化できるのは、ブロック BLOB とページ BLOB だけです。現在、追加 BLOB の暗号化はサポートされていません。
+Block blobs and page blobs only can be encrypted/decrypted using this scheme. There is currently no support for encrypting append blobs.
 
-### キュー
-キュー メッセージの書式は一定でないため、クライアント ライブラリでは、メッセージ テキストで初期化ベクトル (IV) と暗号化されたコンテンツ暗号化キー (CEK) を含むカスタム書式が定義されます。
+### <a name="queues"></a>Queues
+Since queue messages can be of any format, the client library defines a custom format that includes the Initialization Vector (IV) and the encrypted content encryption key (CEK) in the message text.
 
-暗号化中、クライアント ライブラリは 16 バイトのランダムな IV と 32 バイトのランダムな CEK を生成し、この情報を使用してキュー メッセージ テキストのエンベロープ暗号化を実行します。次に、ラップされた CEK と追加の暗号化メタデータのいくつかが、暗号化されたキュー メッセージに追加されます。この変更されたメッセージ (下記参照) は、サービスに格納されます。
+During encryption, the client library generates a random IV of 16 bytes along with a random CEK of 32 bytes and performs envelope encryption of the queue message text using this information. The wrapped CEK and some additional encryption metadata are then added to the encrypted queue message. This modified message (shown below) is stored on the service.
 
-	<MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
+    <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 
-復号化中、ラップされたキーがキュー メッセージから抽出され、ラップ解除されます。また、IV もキュー メッセージから抽出され、これをラップ解除されたキーと共に使用して、キュー メッセージ データが復号化されます。暗号化メタデータは小さいため (500 バイト未満)、キュー メッセージの 64 KB という上限を考慮したとき、影響が小さくて済みます。
+During decryption, the wrapped key is extracted from the queue message and unwrapped. The IV is also extracted from the queue message and used along with the unwrapped key to decrypt the queue message data. Note that the encryption metadata is small (under 500 bytes), so while it does count toward the 64KB limit for a queue message, the impact should be manageable.
 
-### テーブル
-クライアント ライブラリでは、挿入および置換操作のエンティティ プロパティの暗号化がサポートされます。
+### <a name="tables"></a>Tables
+The client library supports encryption of entity properties for insert and replace operations.
 
->[AZURE.NOTE] 現在、マージはサポートされていません。別のキーを使用してプロパティのサブセットが以前に暗号化されている場合、新しいプロパティをマージしたり、メタデータを更新したりするとデータ損失が発生します。マージでは、追加のサービス呼び出しをして既存のエンティティをサービスから読み込むか、プロパティごとに新しいキーを使用する必要があります。いずれの方法も、パフォーマンス上の理由でお勧めできません。
+>[AZURE.NOTE] Merge is not currently supported. Since a subset of properties may have been encrypted previously using a different key, simply merging the new properties and updating the metadata will result in data loss. Merging either requires making extra service calls to read the pre-existing entity from the service, or using a new key per property, both of which are not suitable for performance reasons.
 
-テーブル データの暗号化は、次のように機能します。
+Table data encryption works as follows:
 
-1.	暗号化するプロパティをユーザーが指定します。
+1.  Users specify the properties to be encrypted.
 
-2.	クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を各エンティティごとに生成し、プロパティごとに新しい IV を派生させることで暗号化する個々のプロパティでエンベロープ暗号化を実行します。暗号化されたプロパティは、バイナリ データとして格納されます。
+2.  The client library generates a random Initialization Vector (IV) of 16 bytes along with a random content encryption key (CEK) of 32 bytes for every entity, and performs envelope encryption on the individual properties to be encrypted by deriving a new IV per property. The encrypted property is stored as binary data.
 
-3.	次に、ラップされた CEK と追加の暗号化メタデータが、2 つの追加の予約済みプロパティとして格納されます。最初の予約済みプロパティ (\_ClientEncryptionMetadata1) は文字列プロパティで、IV、バージョン、およびラップされたキーに関する情報を保持します。2 番目の予約済みプロパティ (\_ClientEncryptionMetadata2) はバイナリ プロパティで、暗号化されたプロパティに関する情報を保持します。この 2 番目のプロパティ (\_ClientEncryptionMetadata2) 内の情報自体が暗号化されます。
+3.  The wrapped CEK and some additional encryption metadata are then stored as two additional reserved properties. The first reserved property (\_ClientEncryptionMetadata1) is a string property that holds the information about IV, version, and wrapped key. The second reserved property (\_ClientEncryptionMetadata2) is a binary property that holds the information about the properties that are encrypted. The information in this second property (\_ClientEncryptionMetadata2) is itself encrypted.
 
-4.	これらの暗号化に必要な追加の予約済みプロパティにより、ユーザーが所有できるカスタム プロパティは 252 ではなく、250 個になります。エンティティの合計サイズは、1 MB 未満である必要があります。
+4.  Due to these additional reserved properties required for encryption, users may now have only 250 custom properties instead of 252. The total size of the entity must be less than 1MB.
 
-	暗号化できるのは、文字列プロパティのみであることに注意してください。他の種類のプロパティを暗号化する必要がある場合は、文字列に変換する必要があります。暗号化された文字列はバイナリ プロパティとしてサービスで保存され、復号化された後、文字列 (EdmType.STRING 型の EntityProperties ではない、生の文字列) に変換されて戻されます。
+    Note that only string properties can be encrypted. If other types of properties are to be encrypted, they must be converted to strings. The encrypted strings are stored on the service as binary properties, and they are converted back to strings (raw strings, not EntityProperties with type EdmType.STRING) after decryption.
 
-	テーブルの場合、暗号化ポリシーに加え、ユーザーは暗号化するプロパティを指定する必要があります。そのためには、これらのプロパティを TableEntity オブジェクトに格納し、型を EdmType.STRING に、暗号化を true に設定するか、tableservice オブジェクトで encryption\_resolver\_function を設定します。暗号化リゾルバーは、パーティション キー、行キー、プロパティ名を取得し、プロパティを暗号化するかどうかを示すブール値を返します。暗号化時、クライアント ライブラリはこの情報を使用して、ネットワークへの書き込み時にプロパティを暗号化するかどうかを決定します。また、デリゲートは、プロパティの暗号化方法に関するロジックを使用する可能性にも備えます。(X の場合、プロパティ A を暗号化し、それ以外の場合はプロパティ A および B を暗号化するなど。) エンティティの読み込み中、またはクエリの実行中は、この情報を指定する必要はありません。
+    For tables, in addition to the encryption policy, users must specify the properties to be encrypted. This can be done by either storing these properties in TableEntity objects with the type set to EdmType.STRING and encrypt set to true or setting the encryption_resolver_function on the tableservice object. An encryption resolver is a function that takes a partition key, row key, and property name and returns a boolean that indicates whether that property should be encrypted. During encryption, the client library will use this information to decide whether a property should be encrypted while writing to the wire. The delegate also provides for the possibility of logic around how properties are encrypted. (For example, if X, then encrypt property A; otherwise encrypt properties A and B.) Note that it is not necessary to provide this information while reading or querying entities.
 
-### バッチ操作
-バッチ内のすべての行に同じ暗号化ポリシーが適用されます。クライアント ライブラリは、バッチ内の行ごとに 1 つの新しいランダム IV とランダム CEK を内部的に生成します。ユーザーは、暗号化リゾルバーでこの動作を定義することで、バッチの各操作で個別のプロパティを暗号化することも選択できます。バッチを tableservice batch() メソッドを通じてコンテキスト マネージャーとして作成した場合、そのバッチには tableservice の暗号化ポリシーが自動的に適用されます。コンストラクターを呼び出すことによって明示的に作成したバッチの場合、暗号化ポリシーはパラメーターとして渡し、バッチが完了するまで変更されないようにする必要があります。なお、エンティティの暗号化が行われるのは、バッチの暗号化ポリシーを使用してバッチにエンティティを挿入するときであり、tableservice の暗号化ポリシーを使用してバッチをコミットするときではありませんので注意してください。
+### <a name="batch-operations"></a>Batch Operations
+One encryption policy applies to all rows in the batch. The client library will internally generate a new random IV and random CEK per row in the batch. Users can also choose to encrypt different properties for every operation in the batch by defining this behavior in the encryption resolver.
+If a batch is created as a context manager through the tableservice batch() method, the tableservice's encryption policy will automatically be applied to the batch. If a batch is created explicitly by calling the constructor, the encryption policy must be passed as a parameter and left unmodified for the lifetime of the batch.
+Note that entities are encrypted as they are inserted into the batch using the batch's encryption policy (entities are NOT encrypted at the time of committing the batch using the tableservice's encryption policy).
 
-### クエリ
-クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。クエリでサーバー側のプロジェクションが実行される場合、クライアント ライブラリは既定で、特別な暗号化メタデータ プロパティ (\_ClientEncryptionMetadata1 および \_ClientEncryptionMetadata2) を選択した列に追加します。
+### <a name="queries"></a>Queries
+To perform query operations, you must specify a key resolver that is able to resolve all the keys in the result set. If an entity contained in the query result cannot be resolved to a provider, the client library will throw an error. For any query that performs server side projections, the client library will add the special encryption metadata properties (\_ClientEncryptionMetadata1 and \_ClientEncryptionMetadata2) by default to the selected columns.
 
->[AZURE.IMPORTANT] クライアント側の暗号化を使用する場合は、次の重要な点に注意してください。
+>[AZURE.IMPORTANT] Be aware of these important points when using client-side encryption:
 >
->- 暗号化された BLOB を読み書きするときは、完全 BLOB アップロード コマンドと範囲/完全 BLOB ダウンロード コマンドを使用してください。Put Block、Put Block List、Write Pages、Clear Pages などのプロトコル操作で暗号化された BLOB に書き込む行為は避けてください。暗号化された BLOB が壊れたり、読み取り不可能になったりすることがあります。
+>- When reading from or writing to an encrypted blob, use whole blob upload commands and range/whole blob download commands. Avoid writing to an encrypted blob using protocol operations such as Put Block, Put Block List, Write Pages, or Clear Pages; otherwise you may corrupt the encrypted blob and make it unreadable.
 >
->- テーブルの場合、同様の制約があります。暗号化メタデータを更新せずに暗号化されたプロパティを更新する行為は避けてください。
+>- For tables, a similar constraint exists. Be careful to not update encrypted properties without updating the encryption metadata.
 >
->- 暗号化された BLOB にメタデータを設定する場合、メタデータの設定は付加的には行われないため、復号化に必要な暗号化関連メタデータが上書きされる可能性があります。これはスナップショットにも該当します。暗号化された BLOB のスナップショットを作成するときにメタデータを指定しないでください。メタデータを設定する必要がある場合は、最初に **get\_blob\_metadata** メソッドを呼び出し、現在の暗号化メタデータを取得してください。メタデータの設定中に、同時書き込みは行わないでください。
+>- If you set metadata on the encrypted blob, you may overwrite the encryption-related metadata required for decryption, since setting metadata is not additive. This is also true for snapshots; avoid specifying metadata while creating a snapshot of an encrypted blob. If metadata must be set, be sure to call the **get_blob_metadata** method first to get the current encryption metadata, and avoid concurrent writes while metadata is being set.
 >
->- 暗号化されたデータのみを処理する必要のあるユーザーについては、サービス オブジェクトで **require\_encryption** フラグを有効にします。詳細については、以下をご覧ください。
+>- Enable the **require_encryption** flag on the service object for users that should work only with encrypted data. See below for more info.
 
-ストレージ クライアント ライブラリでは、指定された KEK とキー リゾルバーによって、次のインターフェイスが実装されることを想定しています。Python KEK を管理するための [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) のサポートはまだ提供されていませんが、このライブラリに統合される予定です。
+The storage client library expects the provided KEK and key resolver to implement the following interface. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) support for Python KEK management is pending and will be integrated into this library when completed.
 
 
-## クライアント API / インターフェイス
-ストレージ サービス オブジェクト (blockblobservice) が作成されたら、暗号化ポリシーを構成するフィールド key\_encryption\_key、key\_resolver\_function、require\_encryption に値を割り当てることができます。KEK のみ、リゾルバーのみ、またはその両方を指定できます。key\_encryption\_key は、キー識別子を使用して識別されるキーの基本型で、ラップ/ラップ解除のロジックを提供します。key\_resolver\_function は、復号化の処理中にキーを解決するために使用され、特定のキー識別子に有効な KEK を返します。これは、複数の場所で管理されている複数のキーの中から選択するための機能を提供します。
+## <a name="client-api-/-interface"></a>Client API / Interface
+After a storage service object (i.e. blockblobservice) has been created, the user may assign values to the fields that constitute an encryption policy: key_encryption_key, key_resolver_function, and require_encryption. Users can provide only a KEK, only a resolver, or both. key_encryption_key is the basic key type that is identified using a key identifier and that provides the logic for wrapping/unwrapping. key_resolver_function is used to resolve a key during the decryption process. It returns a valid KEK given a key identifier. This provides users the ability to choose between multiple keys that are managed in multiple locations.
 
-KEK で正常にデータを暗号化するには、次のメソッドを実装する必要があります。
-- wrap\_key(cek): ユーザーが選択したアルゴリズムを使用して、指定された CEK (バイト) をラップし、ラップされたキーを返します。
-- get\_key\_wrap\_algorithm(): キーをラップするためのアルゴリズムを返します。
-- get\_kid(): この KEK の文字列キー ID を返します。KEK で正常にデータの暗号化を解除するには、次のメソッドを実装する必要があります。
-- unwrap\_key(cek, algorithm): 文字列指定アルゴリズムを使用して、指定された CEK のラップされていない形式を返します。
-- get\_kid(): この KEK の文字列キー ID を返します。
+The KEK must implement the following methods to successfully encrypt data:
+- wrap_key(cek): Wraps the specified CEK (bytes) using an algorithm of the user's choice. Returns the wrapped key.
+- get_key_wrap_algorithm(): Returns the algorithm used to wrap keys.
+- get_kid(): Returns the string key id for this KEK.
+The KEK must implement the following methods to successfully decrypt data:
+- unwrap_key(cek, algorithm): Returns the unwrapped form of the specified CEK using the string-specified algorithm.
+- get_kid(): Returns a string key id for this KEK.
 
-キー リゾルバーでは少なくとも、上記のインターフェイスを実装する、指定されたキー ID に対応する KEK を返すメソッドを実装する必要があります。このメソッドだけが、サービス オブジェクトの key\_resolver\_function プロパティに割り当てられます。
+The key resolver must at least implement a method that, given a key id, returns the corresponding KEK implementing the interface above. Only this method is to be assigned to the key_resolver_function property on the service object.
 
-- 暗号化では、キーは常に使用され、キーがないとエラーが発生します。
-- 復号化の場合:
-	- キーを取得するよう指定した場合にキー リゾルバーが起動します。リゾルバーが指定されていても、キー識別子のマッピングがない場合、エラーがスローされます。
-	- リゾルバーが指定されていない場合にキーが指定されると、そのキーの識別子が必須キー識別子と一致すると、そのキーが使用されます。識別子が一致しなければ、エラーがスローされます。
+- For encryption, the key is used always and the absence of a key will result in an error.
+- For decryption:
+    - The key resolver is invoked if specified to get the key. If the resolver is specified but does not have a mapping for the key identifier, an error is thrown.
+    - If resolver is not specified but a key is specified, the key is used if its identifier matches the required key identifier. If the identifier does not match, an error is thrown.
 
-	  BLOB、キュー、およびテーブルの詳細なエンド ツー エンド シナリオについては、azure.storage.samples の暗号化のサンプルを参照してください。KEK とキー リゾルバーのサンプル実装は、それぞれ KeyWrapper と KeyResolver としてサンプル ファイルに用意されています。
+      The encryption samples in azure.storage.samples <fix URL>demonstrate a more detailed end-to-end scenario for blobs, queues and tables.
+        Sample implementations of the KEK and key resolver are provided in the sample files as KeyWrapper and KeyResolver respectively.
 
-### RequireEncryption モード
-すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。この動作は、サービス オブジェクトの **require\_encryption** フラグによって制御されます。
+### <a name="requireencryption-mode"></a>RequireEncryption mode
+Users can optionally enable a mode of operation where all uploads and downloads must be encrypted. In this mode, attempts to upload data without an encryption policy or download data that is not encrypted on the service will fail on the client. The **require_encryption** flag on the service object controls this behavior.
 
-### BLOB サービス暗号化
-blockblobservice オブジェクトで暗号化ポリシー フィールドを設定します。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
+### <a name="blob-service-encryption"></a>Blob service encryption
+Set the encryption policy fields on the blockblobservice object. Everything else will be handled by the client library internally.
 
-	# Create the KEK used for encryption.
-	# KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-	kek = KeyWrapper('local:key1') # Key identifier
+    # Create the KEK used for encryption.
+    # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
+    kek = KeyWrapper('local:key1') # Key identifier
 
-	# Create the key resolver used for decryption.
-	# KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
-	key_resolver = KeyResolver()
-	key_resolver.put_key(kek)
+    # Create the key resolver used for decryption.
+    # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
+    key_resolver = KeyResolver()
+    key_resolver.put_key(kek)
 
-	# Set the KEK and key resolver on the service object.
-	my_block_blob_service.key_encryption_key = kek
-	my_block_blob_service.key_resolver_funcion = key_resolver.resolve_key
+    # Set the KEK and key resolver on the service object.
+    my_block_blob_service.key_encryption_key = kek
+    my_block_blob_service.key_resolver_funcion = key_resolver.resolve_key
 
-	# Upload the encrypted contents to the blob.
-	my_block_blob_service.create_blob_from_stream(container_name, blob_name, stream)
+    # Upload the encrypted contents to the blob.
+    my_block_blob_service.create_blob_from_stream(container_name, blob_name, stream)
 
-	# Download and decrypt the encrypted contents from the blob.
-	blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
+    # Download and decrypt the encrypted contents from the blob.
+    blob = my_block_blob_service.get_blob_to_bytes(container_name, blob_name)
 
-### Queue サービス暗号化
-queueservice オブジェクトで暗号化ポリシー フィールドを設定します。その他の操作はすべて、クライアント ライブラリが内部的に処理します。
+### <a name="queue-service-encryption"></a>Queue service encryption
+Set the encryption policy fields on the queueservice object. Everything else will be handled by the client library internally.
 
-	# Create the KEK used for encryption.
-	# KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-	kek = KeyWrapper('local:key1') # Key identifier
+    # Create the KEK used for encryption.
+    # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
+    kek = KeyWrapper('local:key1') # Key identifier
 
-	# Create the key resolver used for decryption.
-	# KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
-	key_resolver = KeyResolver()
-	key_resolver.put_key(kek)
+    # Create the key resolver used for decryption.
+    # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
+    key_resolver = KeyResolver()
+    key_resolver.put_key(kek)
 
-	# Set the KEK and key resolver on the service object.
-	my_queue_service.key_encryption_key = kek
-	my_queue_service.key_resolver_funcion = key_resolver.resolve_key
+    # Set the KEK and key resolver on the service object.
+    my_queue_service.key_encryption_key = kek
+    my_queue_service.key_resolver_funcion = key_resolver.resolve_key
 
-	# Add message
-	my_queue_service.put_message(queue_name, content)
+    # Add message
+    my_queue_service.put_message(queue_name, content)
 
-	# Retrieve message
-	retrieved_message_list = my_queue_service.get_messages(queue_name)
+    # Retrieve message
+    retrieved_message_list = my_queue_service.get_messages(queue_name)
 
-### Table サービス暗号化
-暗号化ポリシーを作成し、要求オプションにそれを設定するだけでなく、**encryption\_resolver\_function** を **tableservice** に指定するか、EntityProperty に暗号化属性を設定する必要があります。
+### <a name="table-service-encryption"></a>Table service encryption
+In addition to creating an encryption policy and setting it on request options, you must either specify an **encryption_resolver_function** on the **tableservice**, or set the encrypt attribute on the EntityProperty.
 
-### リゾルバーの使用
+### <a name="using-the-resolver"></a>Using the resolver
 
-	# Create the KEK used for encryption.
-	# KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
-	kek = KeyWrapper('local:key1') # Key identifier
+    # Create the KEK used for encryption.
+    # KeyWrapper is the provided sample implementation, but the user may use their own object as long as it implements the interface above.
+    kek = KeyWrapper('local:key1') # Key identifier
 
-	# Create the key resolver used for decryption.
-	# KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
-	key_resolver = KeyResolver()
-	key_resolver.put_key(kek)
+    # Create the key resolver used for decryption.
+    # KeyResolver is the provided sample implementation, but the user may use whatever implementation they choose so long as the function set on the service object behaves appropriately.
+    key_resolver = KeyResolver()
+    key_resolver.put_key(kek)
 
-	# Define the encryption resolver_function.
-	def my_encryption_resolver(pk, rk, property_name):
-			if property_name == 'foo':
-					return True
-			return False
+    # Define the encryption resolver_function.
+    def my_encryption_resolver(pk, rk, property_name):
+            if property_name == 'foo':
+                    return True
+            return False
 
-	# Set the KEK and key resolver on the service object.
-	my_table_service.key_encryption_key = kek
-	my_table_service.key_resolver_funcion = key_resolver.resolve_key
-	my_table_service.encryption_resolver_function = my_encryption_resolver
+    # Set the KEK and key resolver on the service object.
+    my_table_service.key_encryption_key = kek
+    my_table_service.key_resolver_funcion = key_resolver.resolve_key
+    my_table_service.encryption_resolver_function = my_encryption_resolver
 
-	# Insert Entity
-	my_table_service.insert_entity(table_name, entity)
+    # Insert Entity
+    my_table_service.insert_entity(table_name, entity)
 
-	# Retrieve Entity
-	# Note: No need to specify an encryption resolver for retrieve, but it is harmless to leave the property set.
-	my_table_service.get_entity(table_name, entity['PartitionKey'], entity['RowKey'])
+    # Retrieve Entity
+    # Note: No need to specify an encryption resolver for retrieve, but it is harmless to leave the property set.
+    my_table_service.get_entity(table_name, entity['PartitionKey'], entity['RowKey'])
 
-### 属性の使用
-前述のように、プロパティを EntityProperty オブジェクトに格納して暗号化フィールドを設定することで、そのプロパティを暗号化としてマークすることができます。
+### <a name="using-attributes"></a>Using attributes
+As mentioned above, a property may be marked for encryption by storing it in an EntityProperty object and setting the encrypt field.
 
-	encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
+    encrypted_property_1 = EntityProperty(EdmType.STRING, value, encrypt=True)
 
-## 暗号化とパフォーマンス
-ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。このオーバーヘッドは、暗号化されるデータの量によって異なります。開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
+## <a name="encryption-and-performance"></a>Encryption and performance
+Note that encrypting your storage data results in additional performance overhead. The content key and IV must be generated, the content itself must be encrypted, and additional metadata must be formatted and uploaded. This overhead will vary depending on the quantity of data being encrypted. We recommend that customers always test their applications for performance during development.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [Azure Storage Client Library for Java の PyPi パッケージ](https://pypi.python.org/pypi/azure-storage) をダウンロードする
-- GitHub から [Azure Storage Client Library for Python のソースコード](https://github.com/Azure/azure-storage-python)をダウンロードする
+- Download the [Azure Storage Client Library for Java PyPi package](https://pypi.python.org/pypi/azure-storage)
+- Download the [Azure Storage Client Library for Python Source Code from GitHub](https://github.com/Azure/azure-storage-python)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

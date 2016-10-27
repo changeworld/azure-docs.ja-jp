@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と OfficeSpace Software の統合 | Microsoft Azure" 
-    description="Azure Active Directory で OfficeSpace Software を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with OfficeSpace Software | Microsoft Azure" 
+    description="Learn how to use OfficeSpace Software with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,127 +11,136 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/08/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と OfficeSpace Software の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-officespace-software"></a>Tutorial: Azure Active Directory integration with OfficeSpace Software
   
-このチュートリアルの目的は、Azure と OfficeSpace Software の統合を示すことです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and OfficeSpace Software.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   シングル サインオン対応の OfficeSpace Software サブスクリプション
+-   A valid Azure subscription
+-   An OfficeSpace Software single sign-on enabled subscription
   
-このチュートリアルを完了すると、OfficeSpace Software に割り当てた Azure AD ユーザーは、OfficeSpace Software 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to OfficeSpace Software will be able to single sign into the application at your OfficeSpace Software company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  OfficeSpace Software のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for OfficeSpace Software
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-officespace-software-tutorial/IC777764.png "シナリオ")
-##OfficeSpace Software のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-officespace-software-tutorial/IC777764.png "Scenario")
+##<a name="enabling-the-application-integration-for-officespace-software"></a>Enabling the application integration for OfficeSpace Software
   
-このセクションでは、OfficeSpace Software のアプリケーション統合を有効にする方法を説明します。
+The objective of this section is to outline how to enable the application integration for OfficeSpace Software.
 
-###OfficeSpace Software のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-officespace-software,-perform-the-following-steps:"></a>To enable the application integration for OfficeSpace Software, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-officespace-software-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-officespace-software-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-officespace-software-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-officespace-software-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-officespace-software-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-officespace-software-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-officespace-software-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **[検索ボックス]** に、「**OfficeSpace Software**」と入力します。
+6.  In the **search box**, type **OfficeSpace Software**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-officespace-software-tutorial/IC777765.png "アプリケーション ギャラリー")
+    ![Application gallery](./media/active-directory-saas-officespace-software-tutorial/IC777765.png "Application gallery")
 
-7.  結果ウィンドウで **[OfficeSpace Software]** を選び、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **OfficeSpace Software**, and then click **Complete** to add the application.
 
     ![OfficeSpace Software](./media/active-directory-saas-officespace-software-tutorial/IC781007.png "OfficeSpace Software")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで OfficeSpace Software に対する認証を行えるようにする方法を説明します。OfficeSpace Software にシングル サインオンを構成するには、証明書の拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
+The objective of this section is to outline how to enable users to authenticate to OfficeSpace Software with their account in Azure AD using federation based on the SAML protocol.  
+Configuring single sign-on for OfficeSpace Software requires you to retrieve a thumbprint value from a certificate.  
+If you are not familiar with this procedure, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI).
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **OfficeSpace Software** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **OfficeSpace Software** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-officespace-software-tutorial/IC777766.png "シングル サインオンの構成")
+    ![Configure single sign=on](./media/active-directory-saas-officespace-software-tutorial/IC777766.png "Configure single sign=on")
 
-2.  **[ユーザーの OfficeSpace Software へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選び、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to OfficeSpace Software** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure single sign-on](./media/active-directory-saas-officespace-software-tutorial/IC777767.png "Configure single sign-on")
 
-3.  **[Configure App URL]** (アプリケーション URL の構成) ページの **[OfficeSpace Software サインオン URL]** テキストボックスに、ユーザーが OfficeSpace Software アプリケーションのサインオンに使用する URL (例: "*https://company.officespacesoftware.com*"*) を入力して、*[次へ]* をクリックします。
+3.  On the **Configure App URL** page, in the **OfficeSpace Software Sign On URL** textbox, type the URL used by your users to sign on to your OfficeSpace Software application (e.g.: "*https://company.officespacesoftware.com*"), and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-officespace-software-tutorial/IC775556.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-officespace-software-tutorial/IC775556.png "Configure App URL")
 
-4.  **[OfficeSpace Software でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
+4.  On the **Configure single sign-on at OfficeSpace Software** page, to download your certificate, click **Download certificate**, and then save the certificate file locally on your computer.
 
     ![Configure single sign-on](./media/active-directory-saas-officespace-software-tutorial/IC793769.png "Configure single sign-on")
 
-5.  別の Web ブラウザーのウィンドウで、管理者として OfficeSpace Software 企業サイトにログインします。
+5.  In a different web browser window, log into your OfficeSpace Software company site as an administrator.
 
-6.  **[Admin] > [コネクタ]** に移動します。
+6.  Go to **Admin \> Connectors**.
 
-    ![管理者](./media/active-directory-saas-officespace-software-tutorial/IC777769.png "管理者")
+    ![Admin](./media/active-directory-saas-officespace-software-tutorial/IC777769.png "Admin")
 
-7.  **[SAML 承認]** をクリックします。
+7.  Click **SAML Authorization**.
 
-    ![コネクタ](./media/active-directory-saas-officespace-software-tutorial/IC777770.png "コネクタ")
+    ![Connectors](./media/active-directory-saas-officespace-software-tutorial/IC777770.png "Connectors")
 
-8.  **[SAML 承認]** セクションで、次の手順に従います。
+8.  In the **SAML Authorization** section, perform the following steps:
 
-    ![SAML の構成](./media/active-directory-saas-officespace-software-tutorial/IC777771.png "SAML の構成")
+    ![SAML configuration](./media/active-directory-saas-officespace-software-tutorial/IC777771.png "SAML configuration")
 
-    1.  Azure クラシック ポータルの **[OfficeSpace Software でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログイン URL]** の値をコピーして、**[Logout provider url]** ボックスに貼り付けます。
-    2.  Azure クラシック ポータルの **[OfficeSpace Software でのシングル サインオンの構成]** ダイアログ ページで、**[リモート ログアウト URL]** の値をコピーして、**[Client idp target url]** ボックスに貼り付けます。
-    3.  エクスポートした証明書から **[拇印]** の値をコピーして、**[クライアント IDP 証明書の指紋]** ボックスに貼り付けます。
+    1.  In the Azure classic portal, on the **Configure single sign-on at OfficeSpace Software** dialogue page, copy the **Remote Login URL** value, and then paste it into the **Logout provider url** textbox.
+    2.  In the Azure classic portal, on the **Configure single sign-on at OfficeSpace Software** dialogue page, copy the **Remote Logout URL** value, and then paste it into the **Client idp target url** textbox.
+    3.  Copy the **Thumbprint** value from the exported certificate, and then paste it into the **Client idp cert fingerprint** textbox.  
 
         >[AZURE.TIP]
-        詳細については、「[How to retrieve a certificate's thumbprint value （証明書の拇印の値を取得する方法）](http://youtu.be/YKQF266SAxI)」をご覧ください。
+        For more details, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)
 
-    4.  **[設定の保存]** をクリックします。
+    4.  Click **Save Settings**.
 
-9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-officespace-software-tutorial/IC777772.png "Configure single sign-on")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーの OfficeSpace Software へのログインを有効にするためには、ユーザーを OfficeSpace Software にプロビジョニングする必要があります。OfficeSpace Software の場合は、プロビジョニングは自動化されています。ユーザー側で必要な操作はありません。最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
+In order to enable Azure AD users to log into OfficeSpace Software, they must be provisioned into OfficeSpace Software. In the case of OfficeSpace Software, provisioning is an automated task.  
+There is no action item for you.  
+Users are automatically created if necessary during the first single sign-on attempt.
 
->[AZURE.NOTE]他の OfficeSpace Software ユーザー アカウントの作成ツールまたは OfficeSpace Software から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE]You can use any other OfficeSpace Software user account creation tools or APIs provided by OfficeSpace Software to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを OfficeSpace Software に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-officespace-software,-perform-the-following-steps:"></a>To assign users to OfficeSpace Software, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **OfficeSpace Software** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **OfficeSpace Software **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-officespace-software-tutorial/IC777773.png "ユーザーの割り当て")
+    ![Assign users](./media/active-directory-saas-officespace-software-tutorial/IC777773.png "Assign users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-officespace-software-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

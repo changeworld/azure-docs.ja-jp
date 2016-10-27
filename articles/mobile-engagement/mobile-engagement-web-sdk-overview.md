@@ -1,139 +1,144 @@
 <properties
-	pageTitle="Azure Mobile Engagement Web SDK の概要 | Microsoft Azure"
-	description="Web SDK for Azure Mobile Engagement の最新の更新プログラムと手順"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="erikre"
-	editor="" />
+    pageTitle="Azure Mobile Engagement Web SDK Overview | Microsoft Azure"
+    description="The latest updates and procedures for the Web SDK for Azure Mobile Engagement"
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager="erikre"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="web"
-	ms.devlang="js"
-	ms.topic="article"
-	ms.date="06/07/2016"
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="web"
+    ms.devlang="js"
+    ms.topic="article"
+    ms.date="06/07/2016"
+    ms.author="piyushjo" />
 
 
-# Azure Mobile Engagement Web SDK
 
-Web アプリに Azure Mobile Engagement を統合する方法について詳しく説明したページには、ここからアクセスできます。独自の Web アプリで作業を開始する前に試してみる場合は、[15 分間チュートリアル](mobile-engagement-web-app-get-started.md)をご覧ください。
+# <a name="azure-mobile-engagement-web-sdk"></a>Azure Mobile Engagement Web SDK
 
-## 統合手順
-1. [Web アプリに Mobile Engagement を統合する方法](mobile-engagement-web-integrate-engagement.md)を確認します。
+Start here for all the details about how to integrate Azure Mobile Engagement in a web app. If you'd like to give it a try before getting started with your own web app, see our [15-minute tutorial](mobile-engagement-web-app-get-started.md).
 
-2. タグ付けプランの実装について、[Web アプリで Mobile Engagement の高度なタグ付け API を使用する方法](mobile-engagement-web-use-engagement-api.md)を確認します。
+## <a name="integration-procedures"></a>Integration procedures
+1. Learn [how to integrate Mobile Engagement in your web app](mobile-engagement-web-integrate-engagement.md).
 
-## リリース ノート
+2. For tag plan implementation, learn [how to use the advanced Mobile Engagement tagging API in your web app](mobile-engagement-web-use-engagement-api.md).
 
-### 2\.0.1 (2016/6/10)
+## <a name="release-notes"></a>Release notes
 
--   Internet Explorer 8 と Internet Explorer 9 で Mobile Engagement Web SDK が無効になりました。
--   Opera Web ブラウザーの検出が修正されました。
+### <a name="2.0.1-(6/10/2016)"></a>2.0.1 (6/10/2016)
 
-すべてのバージョンについては、[完全なリリース ノート](mobile-engagement-web-release-notes.md)をご覧ください。
+-   Disabled the Mobile Engagement Web SDK in Internet Explorer 8 and Internet Explorer 9.
+-   Fixed the Opera web browser detection.
 
-## アップグレードの手順
+For all versions, please see the [complete release notes](mobile-engagement-web-release-notes.md).
 
-### 1\.2.1 から 2.0.0 へのアップグレード
+## <a name="upgrade-procedures"></a>Upgrade procedures
 
-以下のセクションでは、Mobile Engagement Web SDK 統合を、Capptain SAS によって提供される Capptain サービスから、Azure Mobile Engagement アプリに移行する方法について説明します。1.2.1 より前のバージョンから移行する場合は、Capptain Web サイトをご覧のうえ、まず 1.2.1 に移行してから、以下の手順を適用してください。
+### <a name="upgrade-from-1.2.1-to-2.0.0"></a>Upgrade from 1.2.1 to 2.0.0
 
-このバージョンの Mobile Engagement Web SDK では、Samsung Smart TV、Opera TV、webOS、または Reach の機能がサポートされません。
+The following sections describe how to migrate a Mobile Engagement Web SDK integration from the Capptain service, offered by Capptain SAS, to an Azure Mobile Engagement app. If you are migrating from a version earlier than 1.2.1, please consult the Capptain website to migrate to 1.2.1 first, and then apply the following procedures.
 
->[AZURE.IMPORTANT] Capptain と Azure Mobile Engagement は、同じサービスではありません。以下の手順では、クライアント アプリを移行する方法だけを説明します。アプリで Mobile Engagement Web SDK を移行しても、データは Capptain サーバーから Mobile Engagement のサーバーに移行されません。
+This version of the Mobile Engagement Web SDK doesn't support Samsung Smart TV, Opera TV, webOS, or the Reach feature.
 
-#### JavaScript ファイル
+>[AZURE.IMPORTANT] Capptain and Azure Mobile Engagement are not the same service, and the following procedures highlight only how to migrate the client app. Migrating the Mobile Engagement Web SDK in the app will not migrate your data from a Capptain server to a Mobile Engagement server.
 
-capptain-sdk.js ファイルを azure-engagement.js ファイルに置き換え、スクリプトのインポートを適宜更新します。
+#### <a name="javascript-files"></a>JavaScript files
 
-#### Capptain Reach の削除
+Replace the file capptain-sdk.js with the file azure-engagement.js, and then update your script imports accordingly.
 
-このバージョンの Mobile Engagement Web SDK では、Reach の機能がサポートされません。アプリケーションに Capptain Reach を統合している場合は、それを削除する必要があります。
+#### <a name="remove-capptain-reach"></a>Remove Capptain Reach
 
-Reach CSS のインポートをページから削除し、関連する css ファイル (既定では capptain-reach.css) を削除します。
+This version of the Mobile Engagement Web SDK doesn't support the Reach feature. If you have integrated Capptain Reach into your application, you need to remove it.
 
-Reach のリソースである終了画像 (既定では capptain-close.png) とブランド アイコン (既定では capptain-notification-icon) を削除してください。
+Remove the Reach CSS import from your page and delete the related .css file (capptain-reach.css, by default).
 
-アプリ内通知の Reach UI を削除します。既定のレイアウトは次のとおりです。
+Delete the following Reach resources: the close image (capptain-close.png, by default) and the brand icon (capptain-notification-icon, by default).
 
-	<!-- capptain notification -->
-	<div id="capptain_notification_area" class="capptain_category_default">
-	  <div class="icon">
-	    <img src="capptain-notification-icon.png" alt="icon" />
-	  </div>
-	  <div class="content">
-	    <div class="title" id="capptain_notification_title"></div>
-	    <div class="message" id="capptain_notification_message"></div>
-	  </div>
-	  <div id="capptain_notification_image"></div>
-	  <div>
-	    <button id="capptain_notification_close">Close</button>
-	  </div>
-	</div>
+Remove the Reach UI for in-app notifications. The default layout looks like this:
 
-テキスト/Web 通知および投票に使用される Reach UI を削除します。既定のレイアウトは次のとおりです。
+    <!-- capptain notification -->
+    <div id="capptain_notification_area" class="capptain_category_default">
+      <div class="icon">
+        <img src="capptain-notification-icon.png" alt="icon" />
+      </div>
+      <div class="content">
+        <div class="title" id="capptain_notification_title"></div>
+        <div class="message" id="capptain_notification_message"></div>
+      </div>
+      <div id="capptain_notification_image"></div>
+      <div>
+        <button id="capptain_notification_close">Close</button>
+      </div>
+    </div>
 
-	<div id="capptain_overlay" class="capptain_category_default">
-	  <button id="capptain_overlay_close">x</button>
-	  <div id="capptain_overlay_title"></div>
-	  <div id="capptain_overlay_body"></div>
-	  <div id="capptain_overlay_poll"></div>
-	  <div id="capptain_overlay_buttons">
-	    <button id="capptain_overlay_exit"></button>
-	    <button id="capptain_overlay_action"></button>
-	  </div>
-	</div>
+Remove the Reach UI for text and web announcements and polls. The default layout looks like this:
 
-`reach` オブジェクトを構成から削除します (存在する場合)。次のように表示されています。
+    <div id="capptain_overlay" class="capptain_category_default">
+      <button id="capptain_overlay_close">x</button>
+      <div id="capptain_overlay_title"></div>
+      <div id="capptain_overlay_body"></div>
+      <div id="capptain_overlay_poll"></div>
+      <div id="capptain_overlay_buttons">
+        <button id="capptain_overlay_exit"></button>
+        <button id="capptain_overlay_action"></button>
+      </div>
+    </div>
 
-	window.capptain = {
-	  [...]
-	  reach: {
-	    [...]
-	  }
-	}
+Remove the `reach` object from your configuration, if it exists. It looks like this:
 
-その他の Reach 関連のカスタマイズ (カテゴリなど) をすべて削除します。
+    window.capptain = {
+      [...]
+      reach: {
+        [...]
+      }
+    }
 
-#### 非推奨 API の削除
+Remove any other Reach customization, such as categories.
 
-Capptain の API の中には、Mobile Engagement Web SDK では非推奨になっているものがあります。
+#### <a name="remove-deprecated-apis"></a>Remove deprecated APIs
 
-`agent.connect`、`agent.disconnect`、`agent.pause`、`agent.sendMessageToDevice` の各 API の呼び出しをすべて削除します。
+Some APIs from Capptain are deprecated in the Mobile Engagement Web SDK.
 
-Capptain 構成から、`onConnected`、`onDisconnected`、`onDeviceMessageReceived`、`onPushMessageReceived` の各コールバックをすべて削除します。
+Remove any calls to the following APIs: `agent.connect`, `agent.disconnect`, `agent.pause`, and `agent.sendMessageToDevice`.
 
-#### 構成
+Remove any of the following callbacks from your Capptain configuration: `onConnected`, `onDisconnected`, `onDeviceMessageReceived`, and `onPushMessageReceived`.
 
-Mobile Engagement では、接続文字列を使用して、アプリケーション ID などの SDK 識別子を構成します。
+#### <a name="configuration"></a>Configuration
 
-アプリケーション ID を接続文字列に置き換えます。SDK 構成のグローバル オブジェクトが、`capptain` から `azureEngagement` に変わっている点に注意してください。
+Mobile Engagement uses a connection string to configure SDK identifiers, for example, the application identifier.
 
-移行前:
+Replace the application ID with your connection string. Note that the global object for the SDK configuration changes from `capptain` to `azureEngagement`.
 
-	window.capptain = {
-	  appId: ...,
-	  [...]
-	};
+Before migration:
 
-移行後:
+    window.capptain = {
+      appId: ...,
+      [...]
+    };
 
-	window.azureEngagement = {
-	  connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
-	  [...]
-	};
+After migration:
 
-Azure ポータルにアプリケーションの接続文字列が表示されます。
+    window.azureEngagement = {
+      connectionString: 'Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}',
+      [...]
+    };
 
-#### JavaScript API
+The connection string for your application is displayed in the Azure portal.
 
-グローバル JavaScript オブジェクト `window.capptain` の名前が `window.azureEngagement` に変更されましたが、API 呼び出しには `window.engagement` エイリアスを使用できます。このエイリアスを使用して、SDK 構成を定義することはできません。
+#### <a name="javascript-apis"></a>JavaScript APIs
 
-たとえば、`capptain.deviceId` は `engagement.deviceId` になり、`capptain.agent.startActivity` は `engagement.agent.startActivity` になります。他も同様です。
+The global JavaScript object `window.capptain` has been renamed `window.azureEngagement`, but you can use the `window.engagement` alias for API calls. You can't use this alias to define the SDK configuration.
 
-以前のバージョンの Azure Mobile Engagement Web SDK を既にアプリケーションに統合している場合は、[アップグレード手順](mobile-engagement-web-upgrade-procedure.md)をご覧ください。
+For instance, `capptain.deviceId` becomes `engagement.deviceId`, `capptain.agent.startActivity` becomes `engagement.agent.startActivity`, and so on.
 
-<!---HONumber=AcomDC_0713_2016-->
+If you have already integrated an earlier version of the Azure Mobile Engagement Web SDK into your application, please read about [upgrade procedures](mobile-engagement-web-upgrade-procedure.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

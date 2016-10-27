@@ -1,6 +1,6 @@
 <properties
-   pageTitle="起動しないロールのトラブルシューティング | Microsoft Azure"
-   description="クラウド サービス ロールが起動に失敗する一般的な原因をいくつか取り上げます。これらの問題に対する解決策も紹介します。"
+   pageTitle="Troubleshoot roles that fail to start | Microsoft Azure"
+   description="Here are some common reasons why a Cloud Service role may fail to start. Solutions to these problems are also provided."
    services="cloud-services"
    documentationCenter=""
    authors="simonxjx"
@@ -16,151 +16,156 @@
    ms.date="09/02/2016"
    ms.author="v-six" />
 
-# クラウド サービス ロールが起動しないときのトラブルシューティング
 
-ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
+# <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Troubleshoot Cloud Service roles that fail to start
+
+Here are some common problems and solutions related to Azure Cloud Services roles that fail to start.
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## DLL または依存コンポーネントの欠落
+## <a name="missing-dlls-or-dependencies"></a>Missing DLLs or dependencies
 
-ロールが応答しない、**[初期化しています]**、**[ビジー]**、**[停止しています]** の状態を繰り返す、といった症状は、DLL やアセンブリの不足が原因で起こる場合があります。
+Unresponsive roles and roles that are cycling between **Initializing**, **Busy**, and **Stopping** states can be caused by missing DLLs or assemblies.
 
-DLL やアセンブリの不足は、次のような症状を引き起こします。
+Symptoms of missing DLLs or assemblies can be:
 
-- ロール インスタンスが **[初期化しています]**、**[ビジー]**、**[停止しています]** の状態を繰り返す。
-- ロール インスタンスが **[準備完了]** 状態に移行したにもかかわらず、Web アプリケーションにアクセスしてもページが表示されない。
+- Your role instance is cycling through **Initializing**, **Busy**, and **Stopping** states.
+- Your role instance has moved to **Ready** but if you navigate to your web application, the page does not appear.
 
-これらの問題に関して推奨される調査方法がいくつかあります。
+There are several recommended methods for investigating these issues.
 
-## DLL の欠落を Web ロールで診断する
+## <a name="diagnose-missing-dll-issues-in-a-web-role"></a>Diagnose missing DLL issues in a web role
 
-Web ロールにデプロイされている Web サイトにアクセスし、ブラウザーに次のようなサーバー エラーが表示されるとき、それは DLL の欠落を意味している可能性があります。
+When you navigate to a website that is deployed in a web role, and the browser displays a server error similar to the following, it may indicate that a DLL is missing.
 
 ![Server Error in '/' Application.](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
 
-## カスタム エラーをオフにして問題を診断する
+## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Diagnose issues by turning off custom errors
 
-Web ロールの web.config でカスタム エラー モードをオフに設定して再度サービスをデプロイすると、もっと詳しいエラー情報を表示できます。
+More complete error information can be viewed by configuring the web.config for the web role to set the custom error mode to Off and redeploying the service.
 
-リモート デスクトップを使用せずに詳細なエラーを表示するには
+To view more complete errors without using Remote Desktop:
 
-1. Microsoft Visual Studio でソリューションを開きます。
+1. Open the solution in Microsoft Visual Studio.
 
-2. **ソリューション エクスプローラー**で、web.config ファイルを探して開きます。
+2. In the **Solution Explorer**, locate the web.config file and open it.
 
-3. web.config ファイルの system.web セクションを探し、次の行を追加します。
+3. In the web.config file, locate the system.web section and add the following line:
 
     ```xml
     <customErrors mode="Off" />
     ```
 
-4. ファイルを保存します。
+4. Save the file.
 
-5. サービスをパッケージし直して再度デプロイします。
+5. Repackage and redeploy the service.
 
-サービスを再度デプロイすると、不足しているアセンブリまたは DLL の名前と共にエラー メッセージが表示されます。
+Once the service is redeployed, you will see an error message with the name of the missing assembly or DLL.
 
-## 遠隔からエラーを参照して問題を診断する
+## <a name="diagnose-issues-by-viewing-the-error-remotely"></a>Diagnose issues by viewing the error remotely
 
-離れた場所からリモート デスクトップを使用してロールにアクセスし、詳細なエラー情報を参照することができます。リモート デスクトップを使用してエラーを参照するには、次の手順に従います。
+You can use Remote Desktop to access the role and view more complete error information remotely. Use the following steps to view the errors by using Remote Desktop:
 
-1. Azure SDK 1.3 以上がインストールされていることを確認します。
+1. Ensure that Azure SDK 1.3 or later is installed.
 
-2. Visual Studio を利用したソリューションのデプロイメントの際に、[リモート デスクトップ接続の構成...] を選択します。リモート デスクトップ接続の構成の詳細については、「[Azure ロールでのリモート デスクトップの使用](../vs-azure-tools-remote-desktop-roles.md)」をご覧ください。
+2. During the deployment of the solution by using Visual Studio, choose to “Configure Remote Desktop connections…”. For more information on configuring the Remote Desktop connection, see [Using Remote Desktop with Azure Roles](../vs-azure-tools-remote-desktop-roles.md).
 
-3. Microsoft Azure クラシック ポータルで、インスタンスのステータスが **[準備完了]** として表示されたら、いずれかのロール インスタンスをクリックします。
+3. In the Microsoft Azure classic portal, once the instance shows a status of **Ready**, click one of the role instances.
 
-4. リボンの **[リモート アクセス]** 領域の **[接続]** アイコンをクリックします。
+4. Click the **Connect** icon in the **Remote Access** area of the ribbon.
 
-5. リモート デスクトップの構成中に指定した資格情報を使用して仮想マシンにサインインします。
+5. Sign in to the virtual machine by using the credentials that were specified during the Remote Desktop configuration.
 
-6. コマンド ウィンドウを開きます。
+6. Open a command window.
 
-7. 「`IPconfig`」と入力します。
+7. Type `IPconfig`.
 
-8. IPV4 アドレスの値をメモします。
+8. Note the IPV4 Address value.
 
-9. Internet Explorer を起動します。
+9. Open Internet Explorer.
 
-10. Web アプリケーションのアドレスと名前を入力します。たとえば、「`http://<IPV4 Address>/default.aspx`」のように入力します。
+10. Type the address and the name of the web application. For example, `http://<IPV4 Address>/default.aspx`.
 
-Web サイトにアクセスすると、詳しいエラー メッセージが表示されます。
+Navigating to the website will now return more explicit error messages:
 
 * Server Error in '/' Application.
 
-* 説明: 現在の Web 要求を実行中に、ハンドルされていない例外が発生しました。エラーに関する詳細および例外の発生場所については、スタック トレースを参照してください。
+* Description: An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
 
-* 例外の詳細: System.IO.FIleNotFoundException: ファイルまたはアセンブリ ’Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35’、またはその依存関係の 1 つが読み込めませんでした。指定されたファイルが見つかりません。
+* Exception Details: System.IO.FIleNotFoundException: Could not load file or assembly ‘Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35’ or one of its dependencies. The system cannot find the file specified.
 
-次に例を示します。
+For example:
 
 ![Explicit Server Error in '/' Application](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
-## コンピューティング エミュレーターを使用した問題の診断
+## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Diagnose issues by using the compute emulator
 
-依存コンポーネントの不足や web.config エラーに関する問題の診断とトラブルシューティングは、Microsoft Azure コンピューティング エミュレーターを使って行うことができます。
+You can use the Microsoft Azure compute emulator to diagnose and troubleshoot issues of missing dependencies and web.config errors.
 
-この診断方法の効果を最大限に高めるには、Windows がクリーン インストールされたコンピューターまたは仮想マシンを使用する必要があります。Azure 環境のシミュレーションには、Windows Server 2008 R2 x64 が最適です。
+For best results in using this method of diagnosis, you should use a computer or virtual machine that has a clean installation of Windows. To best simulate the Azure environment, use Windows Server 2008 R2 x64.
 
-1. スタンドアロン バージョンの [Azure SDK](https://azure.microsoft.com/downloads/) をインストールします。
+1. Install the standalone version of the [Azure SDK](https://azure.microsoft.com/downloads/).
 
-2. 開発コンピューターで、クラウド サービスのプロジェクトをビルドします。
+2. On the development machine, build the cloud service project.
 
-3. エクスプローラーで、クラウド サービス プロジェクトの bin\\debug フォルダーに移動します。
+3. In Windows Explorer, navigate to the bin\debug folder of the cloud service project.
 
-4. デバッグ用のコンピューターに .csx フォルダーと .cscfg ファイルをコピーします。
+4. Copy the .csx folder and .cscfg file to the computer that you are using to debug the issues.
 
-5. クリーン インストールされたコンピューターで Azure SDK コマンド プロンプト ウィンドウを開き、「`csrun.exe /devstore:start`」と入力します。
+5. On the clean machine, open an Azure SDK Command Prompt window and type `csrun.exe /devstore:start`.
 
-6. コマンド プロンプトで「`run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`」と入力します。
+6. At the command prompt, type `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`.
 
-7. ロールが起動すると、詳しいエラー情報が Internet Explorer に表示されます。Windows の標準的なトラブルシューティング ツールを使用して、さらに詳しく問題を診断することもできます。
+7. When the role starts, you will see detailed error information in Internet Explorer. You can also use standard Windows troubleshooting tools to further diagnose the problem.
 
-## IntelliTrace を使用して問題を診断する
+## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnose issues by using IntelliTrace
 
-.NET Framework 4 を使用する worker ロールと Web ロールに関しては、[IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx) ([Microsoft Visual Studio Ultimate](https://www.visualstudio.com/products/visual-studio-ultimate-with-MSDN-vs) で利用可能) を使用することができます。
+For worker and web roles that use .NET Framework 4, you can use [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx), which is available in [Microsoft Visual Studio Ultimate](https://www.visualstudio.com/products/visual-studio-ultimate-with-MSDN-vs).
 
-IntelliTrace を有効にしてサービスをデプロイするには、以下の手順に従います。
+Follow these steps to deploy the service with IntelliTrace enabled:
 
-1. Azure SDK 1.3 以上がインストールされていることを確認します。
+1. Confirm that Azure SDK 1.3 or later is installed.
 
-2. Visual Studio を使用してソリューションをデプロイします。デプロイメント中は、**[.NET 4 のロールに対して IntelliTrace を有効にします]** チェック ボックスをオンにしてください。
+2. Deploy the solution by using Visual Studio. During deployment, check the **Enable IntelliTrace for .NET 4 roles** check box.
 
-3. インスタンスが起動したら、**サーバー エクスプローラー**を開きます。
+3. Once the instance starts, open the **Server Explorer**.
 
-4. **Azure\\Cloud Services** ノードを展開し、対象のデプロイを特定します。
+4. Expand the **Azure\\Cloud Services** node and locate the deployment.
 
-5. ロール インスタンスが表示されるまでデプロイメントを展開します。いずれかのインスタンスを右クリックします。
+5. Expand the deployment until you see the role instances. Right-click on one of the instances.
 
-6. **[IntelliTrace ログの表示]** を選択します。**[IntelliTrace の概要]** が表示されます。
+6. Choose **View IntelliTrace logs**. The **IntelliTrace Summary** will open.
 
-7. 概要の例外セクションを探します。例外が存在する場合、そのセクションには **[例外データ]** という見出しが付きます。
+7. Locate the exceptions section of the summary. If there are exceptions, the section will be labeled **Exception Data**.
 
-8. **[例外データ]** を展開し、次のような **System.IO.FileNotFoundException** エラーを探します。
+8. Expand the **Exception Data** and look for **System.IO.FileNotFoundException** errors similar to the following:
 
-![Exception data, missing file or assembly](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
+![Exception data, missing file, or assembly](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
 
-## 不足している DLL とアセンブリの解決
+## <a name="address-missing-dlls-and-assemblies"></a>Address missing DLLs and assemblies
 
-不足している DLL とアセンブリのエラーを解決するには、次の手順を実行します。
+To address missing DLL and assembly errors, follow these steps:
 
-1. Visual Studio でソリューションを開きます。
+1. Open the solution in Visual Studio.
 
-2. **ソリューション エクスプローラー**で **[参照]** フォルダーを開きます。
+2. In **Solution Explorer**, open the **References** folder.
 
-3. エラーに表示されているアセンブリをクリックします。
+3. Click the assembly identified in the error.
 
-4. **[プロパティ]** ウィンドウで **[ローカル コピー]** プロパティを探し、その値を **[True]** に設定します。
+4. In the **Properties** pane, locate **Copy Local property** and set the value to **True**.
 
-5. クラウド サービスを再デプロイします。
+5. Redeploy the cloud service.
 
-すべてのエラーを修正済みであることが確認できたら、**[.NET 4 のロールに対して IntelliTrace を有効にします]** チェック ボックスをオフにしてサービスをデプロイできます。
+Once you have verified that all errors have been corrected, you can deploy the service without checking the **Enable IntelliTrace for .NET 4 roles** check box.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-クラウド サービスの他の[トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services)を参照します。
+View more [troubleshooting articles](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) for cloud services.
 
-Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
+To learn how to troubleshoot cloud service role issues by using Azure PaaS computer diagnostics data, see [Kevin Williamson's blog series](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

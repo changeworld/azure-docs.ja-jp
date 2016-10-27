@@ -1,6 +1,6 @@
 <properties
-   pageTitle="イベント処理機能の作成 | Microsoft Azure"
-   description="イベント タイマーに従って実行される C# 関数を Azure Functions で作成します。"
+   pageTitle="Create an event processing function | Microsoft Azure"
+   description="Use Azure Functions create a C# function that runs based on an event timer."
    services="functions"
    documentationCenter="na"
    authors="ggailey777"
@@ -18,67 +18,75 @@
    ms.date="09/25/2016"
    ms.author="glenga"/>
    
-# イベント処理用の Azure の機能の作成
 
-Azure Functions では、イベント ドリブンでオンデマンドのコンピューティング体験により、スケジュールやトリガーが設定されたコード ユニットを、さまざまなプログラミング言語で作成できます。Azure Functions の詳細については、「[Azure Functions の概要](functions-overview.md)」を参照してください。
+# <a name="create-an-event-processing-azure-function"></a>Create an event processing Azure Function
 
-このトピックでは、イベント タイマーに従って実行され、メッセージをストレージ キューに追加する新しい関数を C# で作成する方法について説明します。
+Azure Functions is an event-driven, compute-on-demand experience that enables you to create scheduled or triggered units of code implemented in a variety of programming languages. To learn more about Azure Functions, see the [Azure Functions Overview](functions-overview.md).
 
-## 前提条件 
+This topic shows you how to create a new function in C# that executes based on an event timer to add messages to a storage queue. 
 
-関数を作成するには、アクティブな Azure アカウントを用意する必要があります。Azure アカウントがない場合は、[無料アカウントを利用できます](https://azure.microsoft.com/free/)。
+## <a name="prerequisites"></a>Prerequisites 
 
-## タイマーでトリガーされる関数をテンプレートから作成する
+Before you can create a function, you need to have an active Azure account. If you don't already have an Azure account, [free accounts are available](https://azure.microsoft.com/free/).
 
-関数アプリは Azure での関数の実行をホストします。関数を作成するには、アクティブな Azure アカウントを用意する必要があります。Azure アカウントがない場合は、[無料アカウントを利用できます](https://azure.microsoft.com/free/)。
+## <a name="create-a-timer-triggered-function-from-the-template"></a>Create a timer-triggered function from the template
 
-1. [Azure Functions ポータル](https://functions.azure.com/signin)に移動し、Azure アカウントでサインインします。
+A function app hosts the execution of your functions in Azure. Before you can create a function, you need to have an active Azure account. If you don't already have an Azure account, [free accounts are available](https://azure.microsoft.com/free/). 
 
-2. 使用する既存の関数アプリがある場合は、**[Your function apps]** (関数アプリ) から選択し、**[開く]** をクリックします。新しい関数アプリを作成するには、アプリ用に一意の **[Name]** (名前) を入力するか、生成された名前をそのまま使用し、希望する **[Region]** (リージョン) を選択して **[Create + get started]** (作成 + 開始) をクリックします。
+1. Go to the [Azure Functions portal](https://functions.azure.com/signin) and sign-in with your Azure account.
 
-3. 関数アプリで、**[+ New Function (+ 新しい関数)]**、**[TimerTrigger - C#]**、**[作成]** の順にクリックします。既定のスケジュールで (1 分おきに) 実行される関数が既定の名前で作成されます。
+2. If you have an existing function app to use, select it from **Your function apps** then click **Open**. To create a new function app, type a unique **Name** for your new function app or accept the generated one, select your preferred **Region**, then click **Create + get started**. 
 
-	![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-new-timer-trigger.png)
+3. In your function app, click **+ New Function** > **TimerTrigger - C#** > **Create**. This creates a function with a default name that is run on the default schedule of once every minute. 
 
-4. 新しい関数で、**[Integrate (統合)]** タブ、**[New Output (新しい出力)]**、**[Azure Storage Queue (Azure Storage キュー)]**、**[選択]** の順にクリックします。
+    ![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-new-timer-trigger.png)
 
-	![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding.png)
+4. In your new function, click the **Integrate** tab > **New Output** > **Azure Storage Queue** > **Select**.
 
-5. **[Azure Storage Queue output (Azure Storage キューの出力)]** で、既存の**ストレージ アカウント接続**を選択するか、新しく作成して **[保存]** をクリックします。
+    ![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding.png)
 
-	![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding-2.png)
+5. In  **Azure Storage Queue output**, select an existing **Storage account connection**, or create a new one, then click **Save**. 
 
-6. **[開発]** タブに戻り、**[コード]** ウィンドウの既存の C# スクリプトを次のコードに置き換えます。
+    ![Create a new timer-triggered function](./media/functions-create-an-event-processing-function/functions-create-storage-queue-output-binding-2.png)
 
-		using System;
-		
-		public static void Run(TimerInfo myTimer, out string outputQueueItem, TraceWriter log)
-		{
-		    // Add a new scheduled message to the queue.
-		    outputQueueItem = $"Ping message added to the queue at: {DateTime.Now}.";
-		    
-		    // Also write the message to the logs.
-		    log.Info(outputQueueItem);
-		}
+6. Back in the **Develop** tab, replace the existing C# script in the **Code** window with the following code:
 
-	このコードでは、関数が実行された時点の日付と時刻を含む新しいメッセージをキューに追加します。
+        using System;
+        
+        public static void Run(TimerInfo myTimer, out string outputQueueItem, TraceWriter log)
+        {
+            // Add a new scheduled message to the queue.
+            outputQueueItem = $"Ping message added to the queue at: {DateTime.Now}.";
+            
+            // Also write the message to the logs.
+            log.Info(outputQueueItem);
+        }
 
-7. **[保存]** をクリックし、**[ログ]** ウィンドウで次の関数の実行を確認します。
+    This code adds a new message to the queue with the current date and time when the function is executed.
 
-8. (省略可能) ストレージ アカウントに移動し、メッセージがキューに追加されていることを確認します。
+7. Click **Save** and watch the **Logs** windows for the next function execution.
 
-9. **[Integrate (統合)]** タブに戻り、スケジュール フィールドを `0 0 * * * *` に変更します。これで、関数が 1 時間に 1 回実行されます。
+8. (Optional) Navigate to the storage account and verify that messages are being added to the queue.
 
-これは、タイマー トリガーとストレージ キューの出力バインドの両方の非常に単純な例です。詳細については、「[Azure Functions におけるタイマー トリガー](functions-bindings-timer.md)」と「[Azure Functions における Azure Storage のトリガーとバインド](functions-bindings-storage.md)」の両方を参照してください。
+9. Go back to the **Integrate** tab and change the schedule field to `0 0 * * * *`. The function now runs once every hour. 
 
-##次のステップ
+This is a very simplified example of both a timer trigger and a storage queue output binding. For more information, see both the [Azure Functions timer trigger](functions-bindings-timer.md) and the [Azure Functions triggers and bindings for Azure Storage](functions-bindings-storage.md) topics.
 
-Azure Functions の詳細については、次のトピックを参照してください。
+##<a name="next-steps"></a>Next steps
 
-+ [Azure Functions 開発者向けリファレンス](functions-reference.md) 関数のコーディングとトリガーおよびバインドの定義に関するプログラマ向けリファレンスです。
-+ [Azure Functions のテスト](functions-test-a-function.md) 関数をテストするための各種ツールと手法について説明します。
-+ [Azure Functions のスケーリング方法](functions-scale.md) Azure Functions で利用できるサービス プラン (動的サービス プランを含む) と、適切なプランを選択する方法について説明します。
+See these topics for more information about Azure Functions.
 
-[AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
++ [Azure Functions developer reference](functions-reference.md)  
+Programmer reference for coding functions and defining triggers and bindings.
++ [Testing Azure Functions](functions-test-a-function.md)  
+Describes various tools and techniques for testing your functions.
++ [How to scale Azure Functions](functions-scale.md)  
+Discusses service plans available with Azure Functions, including the Dynamic service plan, and how to choose the right plan.  
 
-<!---HONumber=AcomDC_0928_2016-->
+[AZURE.INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Active Directory を使用して外部 ID を管理するための機能の比較 | Microsoft Azure"
-   description="外部 ID の認証と承認のサポートに関して、Azure Active Directory B2B コラボレーション、B2C、マルチテナント アプリを比較します"
+   pageTitle="Comparing capabilities for managing external identities using Azure Active Directory | Microsoft Azure"
+   description="Compares Azure Active Directory B2B collaboration, B2C, and Multi-tenant App for supporting authentication and authorization for external identities"
    services="active-directory"
    documentationCenter="" 
    authors="arvindsuthar"
@@ -17,38 +17,43 @@
    ms.date="02/24/2016"
    ms.author="asuthar"/>
 
-# Azure Active Directory を使用して外部 ID を管理するための機能の比較
 
-SaaS アプリへのモバイル ユーザーのアクセスを管理するだけでなく、ビジネス パートナーとリソースを共有したり、企業や消費者にアプリケーションを提供したりする場合にも、Azure Active Directory (Azure AD) が役に立ちます。
+# <a name="comparing-capabilities-for-managing-external-identities-using-azure-active-directory"></a>Comparing capabilities for managing external identities using Azure Active Directory
 
-## 企業向けのアプリケーションを開発する
+In addition to managing mobile workforce access to SaaS apps, Azure Active Directory (Azure AD) can help your organization share resources with business partners and deliver applications to businesses and consumers.
 
-給与支払いサービスなどのサービスやアプリケーションを企業に提供する場合、 Azure AD が備える ID プラットフォームを使用すると、Office 365 や他のエンタープライズ サービスのデプロイの一部として Azure AD を既に構成している多くの組織とシームレスに統合するアプリケーションを構築できます。
+## <a name="developing-applications-for-businesses"></a>Developing applications for businesses
 
-**例:** ある医薬品会社は、医療用品や情報システムを医療業界に提供しています。この会社は医療機関に分析アプリケーションを提供する必要があり、顧客が自分で ID を管理できるようにしたいと考えました。この会社は、業務管理アプリケーションの ID プラットフォームとして Azure AD を選択し、必要に応じてサインアップ時に顧客に Azure AD の ID を提供しています。詳細については、「[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)」をご覧ください。
+Do you provide a service or application, such as a payroll service, to businesses? Azure AD provides the identity platform that allows you to build applications that seamlessly integrate with millions of organizations that have already configured Azure AD as part of deploying Office 365 or other enterprise services.
 
-## ビジネス パートナーが会社のリソースにアクセスできるようにする
+**Example:** A pharmaceutical distributor provides medical supplies and information systems to the healthcare industry. They needed to field an analytics application to medical practices and wanted customers to manage their own identities. This company chose Azure AD as the identity platform for their practice management application, providing Azure AD identities to their customers at sign up when necessary. For more information, see [Azure Active Directory developer's guide](active-directory-developers-guide.md).
 
-ビジネス パートナーや他の社外ユーザーに、SharePoint サイトや ERP システムなどの社内リソースにアクセスできるようにすることが必要な場合があります。 Azure AD を使用すると、外部ユーザー (Azure AD 内にいてもいなくても) に会社のアプリケーションへのシングル サインオン アクセスを許可できます。ユーザーがパートナー組織を辞めたときはアクセスできなくなるのでセキュリティが向上し、組織内のアクセス ポリシーを制御できます。また、外部パートナーのディレクトリを管理したり、パートナーのフェデレーション関係ごとに管理したりする必要がないため、管理が簡素化されます。
+## <a name="enabling-business-partner-access-to-your-corporate-resources"></a>Enabling business partner access to your corporate resources
 
-**例:** ある映像関連企業は、小売店に写真画像化サービスを提供し、印刷キオスクの最大規模の小売店ネットワークを運営しています。この会社は、Azure AD を導入して、何千店ものリテール ビジネス パートナーが専用の資格情報を使用して最新のパートナー マーケティング資料をダウンロードしたり、会社のサプライヤー エクストラネットから写真処理用品を再注文したりできるようにしました。詳細については、「[Azure AD B2B コラボレーション](active-directory-b2b-what-is-azure-ad-b2b.md)」を参照してください。
+Do you have business partners or others outside your company who need to access your enterprise resources, such as a SharePoint site or your ERP system? Azure AD enables admins to grant external users (who may or may not exist in Azure AD) single sign on access to corporate applications. This improves security as users lose access when they leave the partner organization, while you control access policies within your organization. This also simplifies administration as you don’t need to manage an external partner directory or per partner federation relationships.
 
-## 消費者向けのアプリケーションを開発する
+**Example:** An imaging company provides retailers with photo imaging services and operates the largest retail network of printing kiosks. They chose Azure AD to enable thousands of users at their retail business partners to use their own credentials to download the latest partner marketing materials and reorder photo processing supplies from the company’s supplier extranet. For more information, see [Azure AD B2B collaboration](active-directory-b2b-what-is-azure-ad-b2b.md).
 
-小売りなどのオンライン アプリケーションを何百万人もの消費者に対して安全かつ安価に公開したいことがあります。 Azure AD のプラットフォームを利用すると、ソーシャル ログインやユーザー名/パスワードのサインイン、ブランド化されたセルフサービスのサインアップ、セルフサービスのパスワード リセットなどを、アプリケーションの消費者に提供できます。これにより、消費者の利便性を高めながら、開発者の負担を軽減できます。
+## <a name="developing-applications-for-consumers"></a>Developing applications for consumers
 
-**例:** 世界最大のスポーツ フランチャイズ企業は、4 億 5,000 万人のファンと直接交流する必要がありました。そのため、ユーザーの認証とプロファイルの保存に Azure AD を使用するモバイル アプリを開発しました。ファンは、Facebook などのソーシャル アカウントを使用して簡単に登録してサインインすることも、従来のユーザー名とパスワードを使用して iOS、Android、Windows Phone の間でシームレスなエクスペリエンスを利用することもできます。確立された Azure AD プラットフォーム上に構築することにより、カスタム コードは大幅に減り、ブランドをカスタマイズでき、セキュリティ、データ漏えい、拡張性に関する苦労が軽減されます。詳細については、「[Azure AD B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)」を参照してください。
+Do you need to securely and cost-effectively publish online applications, such as a retail store front, to millions of consumers? Azure AD provides a platform enabling social as well as username/password sign-in, branded self-service sign up, and self-service password reset for consumers of your application. This increases convenience for your consumers while reducing load on your developers.
 
-## Azure AD の機能の比較
+**Example:** The \#1 sports franchise in the world needed to directly engage with its 450 million fans. To do this, they built a mobile app using Azure AD for user authentication and profile storage. Fans get simplified registration and sign-in through use of social accounts like Facebook, or they can use traditional username/passwords for a seamless experience across iOS, Android, and Windows phones. Building on the established Azure AD platform significantly reduced custom code while giving the franchise customized branding and alleviating concerns about security, data breaches, and scalability. For more information, see [Azure AD B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/).
 
-以上のような各シナリオには、Azure AD の機能で対応できます。次の表を見ると、実際の状況に最適な機能がよくわかります。
+## <a name="comparison-of-azure-ad-capabilities"></a>Comparison of Azure AD capabilities
 
-| **検討すべき製品...** | [Azure AD マルチ テナント SaaS アプリ](active-directory-developers-guide.md) | [Azure AD B2B コラボレーション](active-directory-b2b-what-is-azure-ad-b2b.md) | [Azure AD B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/) |
+Each of the scenarios already discussed in this article is addressed by capabilities within Azure AD. This table should help clarify which capabilities are most relevant to you:
+
+| **Consider this product...**       | [Azure AD multi-tenant SaaS app](active-directory-developers-guide.md)    | [Azure AD B2B collaboration](active-directory-b2b-what-is-azure-ad-b2b.md)        | [Azure AD B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)                |
 |-----------------------|-------------------------|----------------------------|------------------------|
-| **提供する必要があるもの...** | 企業向けサービス | パートナー向けアプリ | 消費者向けサービス |
-| **似た事例...** | 医薬品会社 | 映像関連企業 | スポーツ フランチャイズ |
-| **アプリをデプロイする目的...** | 業務管理 | サプライヤー エクストラネット | サッカー ファン |
-| **対象...** | 医師のオフィス | 承認済みのビジネス パートナー | 電子メールが使えるすべてのユーザー |
-| **アクセス方法...** | 顧客の管理者の同意 | 自社の管理者が招待 | 消費者自身がサインアップ |
+| **If I need to provide...** | a service to businesses | partner access to my apps  | a service to consumers |
+| **And I am similar to...**  | Pharma distributor      | Imaging company            | Sports franchise       |
+| **Deploying an app for...**  | Practice management     | Supplier extranet          | Soccer fans            |
+| **Targeting...**        | Doctor’s offices        | Approved business partners | Anyone with email      |
+| **Accessible when...**      | Customer admin consents | My admin invites           | The consumer signs up      |
 
-<!---HONumber=AcomDC_0224_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

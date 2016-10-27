@@ -1,66 +1,67 @@
 <properties
-	pageTitle="App Services アプリケーションに Twitter 認証を構成する方法"
-	description="App Services アプリケーションに Twitter 認証を構成する方法について説明します。"
-	services="app-service"
-	documentationCenter=""
-	authors="mattchenderson"
-	manager="erikre"
-	editor=""/>
+    pageTitle="How to configure Twitter authentication for your App Services application"
+    description="Learn how to configure Twitter authentication for your App Services application."
+    services="app-service"
+    documentationCenter=""
+    authors="mattchenderson"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="08/22/2016"
-	ms.author="mahender"/>
+    ms.service="app-service-mobile"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="na"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="mahender"/>
 
-# Twitter ログインを使用するように App Service アプリケーションを構成する方法
+
+# <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>How to configure your App Service application to use Twitter login
 
 [AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-このトピックでは、認証プロバイダーとして Twitter を使用するように Azure App Services を構成する方法を示します。
+This topic shows you how to configure Azure App Service to use Twitter as an authentication provider.
 
-このトピックの手順を完了するには、電子メール アドレスと電話番号を検証済みの Twitter アカウントが必要になります。新しい Twitter アカウントを作成するには、<a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a> にアクセスしてください。
+To complete the procedure in this topic, you must have a Twitter account that has a verified email address and phone number. To create a new Twitter account, go to <a href="http://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">twitter.com</a>.
 
-## <a name="register"> </a>Twitter にアプリケーションを登録する
-
-
-1. [Azure ポータル]にログオンし、アプリケーションに移動します。**[URL]** をコピーします。この URL は、Twitter アプリの構成で使用します。
-
-2. [Twitter Developers] の Web サイトに移動し、Twitter アカウント資格情報でサインインして、**[Create New App]** をクリックします。
-
-3. 新しいアプリの **[名前]** と **[説明]** を入力します。**[Web サイト]** 値にアプリケーションの **URL** を貼り付けます。次に、**[コールバック URL]** に先ほどコピーした **[コールバック URL]** を貼り付けます。この URL は、モバイル アプリ ゲートウェイの後にパス _/.auth/login/twitter/callback_ を追加したフォーマットです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/twitter/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
-
-3.  ページの下部で、条項を読み、同意します。**[Create your Twitter application]** をクリックします。これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
-
-4. **[設定]** タブをクリックし、**[Allow this application to be used to sign in with Twitter]** チェック ボックスをオンにして、**[Update Settings]** をクリックします。
-
-5. **[Keys and Access Tokens]** タブをクリックします。**[Consumer Key (API Key)]** と **[Consumer secret (API Secret)]** の値を書き留めます。
-
-    > [AZURE.NOTE] コンシューマー シークレットは、重要なセキュリティ資格情報です。このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
+## <a name="<a-name="register">-</a>register-your-application-with-twitter"></a><a name="register"> </a>Register your application with Twitter
 
 
-## <a name="secrets"> </a>アプリケーションに Twitter 情報を追加する
+1. Log on to the [Azure portal], and navigate to your application. Copy your **URL**. You will use this to configure your Twitter app.
 
-13. [Azure ポータル]に戻り、アプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックします。
+2. Navigate to the [Twitter Developers] website, sign in with your Twitter account credentials, and click **Create New App**.
 
-14. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
+3. Type in the **Name** and a **Description** for your new app. Paste in your application's **URL** for the **Website** value. Then, for the **Callback URL**, paste the **Callback URL** you copied earlier. This is your Mobile App gateway appended with the path, _/.auth/login/twitter/callback_. For example, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Make sure that you are using the HTTPS scheme.
 
-15. **[Twitter]** をクリックします。以前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。次に、 **[OK]** をクリックします
+3.  At the bottom the page, read and accept the terms. Then click **Create your Twitter application**. This registers the app displays the application details.
+
+4. Click the **Settings** tab, check **Allow this application to be used to sign in with Twitter**, then click **Update Settings**.
+
+5. Select the **Keys and Access Tokens** tab. Make a note of the values of **Consumer Key (API Key)** and **Consumer secret (API Secret)**.
+
+    > [AZURE.NOTE] The consumer secret is an important security credential. Do not share this secret with anyone or distribute it with your app.
+
+
+## <a name="<a-name="secrets">-</a>add-twitter-information-to-your-application"></a><a name="secrets"> </a>Add Twitter information to your application
+
+13. Back in the [Azure portal], navigate to your application. Click **Settings**, and then **Authentication / Authorization**.
+
+14. If the Authentication / Authorization feature is not enabled, turn the switch to **On**.
+
+15. Click **Twitter**. Paste in the App ID and App Secret values which you obtained previously. Then click **OK**.
 
     ![][1]
 
-	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
+    By default, App Service provides authentication but does not restrict authorized access to your site content and APIs. You must authorize users in your app code.
 
-17. (省略可能) Twitter によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されていないときに実行するアクション]** を **[Twitter]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Twitter にリダイレクトされます。
+17. (Optional) To restrict access to your site to only users authenticated by Twitter, set **Action to take when request is not authenticated** to **Twitter**. This requires that all requests be authenticated, and all unauthenticated requests are redirected to Twitter for authentication.
 
-17. **[保存]** をクリックします。
+17. Click **Save**.
 
-これで、アプリケーションで認証に Twitter を使用する準備ができました。
+You are now ready to use Twitter for authentication in your app.
 
-## <a name="related-content"> </a>関連コンテンツ
+## <a name="<a-name="related-content">-</a>related-content"></a><a name="related-content"> </a>Related Content
 
 [AZURE.INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
@@ -74,7 +75,11 @@
 <!-- URLs. -->
 
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
-[Azure ポータル]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

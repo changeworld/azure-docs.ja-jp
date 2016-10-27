@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center の警告と Azure ログの統合 (プレビュー) | Microsoft Azure"
-   description="この記事では、Security Center の警告と Azure ログの統合の概要について説明します。"
+   pageTitle="Integrating Azure Security Center alerts with Azure log integration (Preview) | Microsoft Azure"
+   description="This article helps you get started with integrating Security Center alerts with Azure log integration."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,78 +16,83 @@
    ms.date="08/08/2016"
    ms.author="terrylan"/>
 
-# Security Center の警告と Azure ログの統合 (プレビュー)
 
-セキュリティ操作およびインシデント対応チームの多くが、セキュリティ情報イベント管理 (SIEM) ソリューションを、セキュリティ警告のトリアージと調査の開始点として使用します。Azure ログ統合により、お客様は、Azure Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントとともに、ログ分析または SIEM ソリューションとほぼリアルタイムで同期させることができます。
+# <a name="integrating-security-center-alerts-with-azure-log-integration-(preview)"></a>Integrating Security Center alerts with Azure log integration (Preview)
 
-Azure ログ統合は、HP ArcSight、Splunk、IBM Qradar などで動作します。
+Many security operations and incident response teams rely on a Security Information and Event Management (SIEM) solution as the starting point for triaging and investigating security alerts. With Azure log integration, customers can sync Azure Security Center alerts, along with virtual machine security events collected by Azure Diagnostics and Azure Audit Logs, with their log analytics or SIEM solution in near real-time.
 
-## 統合できるログ
+Azure log integration works with HP ArcSight, Splunk, IBM QRadar, and others.
 
-Azure では、すべてのサービスの広範なログ記録を作成します。これらのログは、次のように分類されます。
+## <a name="what-logs-can-i-integrate?"></a>What logs can I integrate?
 
-- **コントロール/管理ログ**は、Azure Resource Manager の CREATE、UPDATE、および DELETE 操作の可視性を提供します。
-- **データ プレーン ログ**は、Azure のリソースを使用する場合に発生するイベントの可視性を提供します。仮想マシンの Windows イベント ログ (セキュリティ ログとアプリケーション ログ) はその例です。
+Azure produces extensive logging for every service. These logs are categorized as:
 
-Azure ログ統合では、現在、次のログの統合をサポートしています。
+- **Control/Management logs** which give visibility into the Azure Resource Manager CREATE, UPDATE, and DELETE operations.
+- **Data Plane logs** which give visibility into the events raised when using an Azure resource. An example is the Windows Event log - security and application logs in a virtual machine.
 
-- Azure VM ログ
-- Azure 監査ログ
-- Azure Security Center のアラート
+Azure log integration currently supports the integration of:
 
-## Azure ログ統合のインストール
+- Azure VM logs
+- Azure Audit Logs
+- Azure Security Center alerts
 
-[Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)をダウンロードします。
+## <a name="install-azure-log-integration"></a>Install Azure log integration
 
-Azure ログ統合サービスは、インストール先のマシンから利用統計情報を収集します。収集される利用統計情報を以下に示します。
+Download [Azure log integration](https://www.microsoft.com/download/details.aspx?id=53324).
 
-- Azure ログ統合の実行中に発生する例外
-- 処理されたクエリおよびイベントの数に関するメトリック
-- 使用されている Azlog.exe コマンド ライン オプションについての統計情報
+The Azure log integration service collects telemetry data from the machine on which it is installed.  Telemetry data collected is:
 
-> [AZURE.NOTE] このオプションをオフにして、利用統計情報の収集を無効にすることができます。
+- Exceptions that occur during execution of Azure log integration
+- Metrics about the number of queries and events processed
+- Statistics about which Azlog.exe command line options are being used
 
-## Azure 監査ログと Security Center のアラートの統合
+> [AZURE.NOTE] You can turn off collection of telemetry data by unchecking this option.
 
-1. コマンド プロンプトを開き、**cd** により、現在のディレクトリを **C:\\Program Files\\Microsoft Azure Log Integration** に変更します。
+## <a name="integrate-azure-audit-logs-and-security-center-alerts"></a>Integrate Azure Audit Logs and Security Center alerts
 
-2. **azlog createazureid** コマンドを実行して、Azure サブスクリプションをホストする Azure Active Directory (AD) テナントに [Azure Active Directory サービス プリンシパル](../active-directory/active-directory-application-objects.md)を作成します。
+1. Open the command prompt and **cd** into **c:\Program Files\Microsoft Azure Log Integration**.
 
-    Azure のログインを求められます。
+2. Run the **azlog createazureid** command to create an [Azure Active Directory Service Principal](../active-directory/active-directory-application-objects.md) in the Azure Active Directory (AD) tenants that host the Azure subscriptions.
 
-    > [AZURE.NOTE] サブスクリプション所有者またはサブスクリプションの共同管理者である必要があります。
+    You will be prompted for your Azure login.
 
-    Azure への認証は、Azure AD によって行われます。Azure ログ統合のサービス プリンシパルを作成すると、Azure サブスクリプションからの読み取りアクセス許可が付与された、Azure AD の ID が作成されます。
+    > [AZURE.NOTE] You must be the subscription Owner or a Co-Administrator of the subscription.
 
-3. **azlog authorize <SubscriptionID>** コマンドを実行して、手順 2 で作成したサービス プリンシパルにサブスクリプションでの閲覧者アクセス許可を割り当てます。**SubscriptionID** を指定しない場合は、作成者がアクセスできるすべてのサブスクリプションに対する閲覧者のロールがサービス プリンシパルに割り当てられます。
+    Authentication to Azure is done through Azure AD.  Creating a service principal for Azure log integration will create the Azure AD identity that will be given access to read from Azure subscriptions.
 
-    > [AZURE.NOTE] **authorize** コマンドを、**createazureid** コマンドの直後に実行すると警告が表示されることがあります。これは、Azure AD のアカウントの作成からアカウントが使用できるようになるまでに一定の待機時間があるためです。**createazureid** コマンドを実行した後で約 10 秒間待ってから **authorize** コマンドを実行すれば、この警告が表示されることはありません。
+3. Run the **azlog authorize <SubscriptionID>** command to assign Reader access on the subscription to the service principal created in step 2. If you don’t specify a **SubscriptionID**, then the service principal will be assigned the Reader role to all subscriptions to which you have access.
 
-4. 次のフォルダーを調べて、監査ログの JSON ファイルがあることを確認します。
+    > [AZURE.NOTE] You may see warnings if you run the **authorize** command immediately after the **createazureid** command because there is some latency between when the Azure AD account is created and when the account is available for use. If you wait about 10 seconds after running the **createazureid** command to run the **authorize** command, then you should not see these warnings.
 
-  - **C:\\Users\\azlog\\AzureResourceManagerJson**
-  - **C:\\Users\\azlog\\AzureResourceManagerJsonLD**
+4. Check the following folders to confirm that the Audit log JSON files are there:
 
-5. 次のフォルダーを調べて、Security Center のアラートが存在することを確認します。
+  - **c:\Users\azlog\AzureResourceManagerJson**
+  - **c:\Users\azlog\AzureResourceManagerJsonLD**
 
-  - **C:\\Users\\azlog\\AzureSecurityCenterJson**
-  - **C:\\Users\\azlog\\AzureSecurityCenterJsonLD**
+5. Check the following folders to confirm that Security Center alerts exist in them:
 
-6. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。SIEM 構成については、[SIEM 構成](https://azsiempublicdrops.blob.core.windows.net/drops/ALL.htm)に関するページをご覧ください。
+  - **c:\Users\azlog\ AzureSecurityCenterJson**
+  - **c:\Users\azlog\AzureSecurityCenterJsonLD**
 
-Azure ログ統合に関する質問がある場合は、[AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com) 宛に電子メールを送信してください。
+6. Point the standard SIEM file forwarder connector to the appropriate folder to pipe the data to the SIEM instance. Please refer to [SIEM configurations](https://azsiempublicdrops.blob.core.windows.net/drops/ALL.htm) on your SIEM configuration.
 
-## 次のステップ
+If you have questions about Azure Log Integration, please send an email to [AzSIEMteam@microsoft.com] (mailto:AzSIEMteam@microsoft.com)
 
-Azure 監査ログとプロパティ定義の詳細については、次をご覧ください。
+## <a name="next-steps"></a>Next steps
 
-- [リソース マネージャーの監査操作](../resource-group-audit.md)
-- 「[List the management events in a subscription (サブスクリプションでの管理イベントを一覧表示する)](https://msdn.microsoft.com/library/azure/dn931934.aspx)」-- 監査ログのイベントを取得する方法です。
+To learn more about Azure Audit Logs and property definitions, see:
 
-セキュリティ センターの詳細については、次を参照してください。
+- [Audit operations with Resource Manager](../resource-group-audit.md)
+- [List the management events in a subscription](https://msdn.microsoft.com/library/azure/dn931934.aspx) - To retrieve audit log events.
 
-- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+To learn more about Security Center, see the following:
 
-<!---HONumber=AcomDC_0921_2016-->
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) — Learn how to manage and respond to security alerts.
+- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service.
+- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Get the latest Azure security news and information.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

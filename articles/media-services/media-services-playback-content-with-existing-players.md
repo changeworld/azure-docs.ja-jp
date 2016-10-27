@@ -1,96 +1,101 @@
 <properties 
-	pageTitle="コンテンツの再生 | Microsoft Azure" 
-	description="このトピックでは、コンテンツの再生に使用できる既存のプレーヤーを示します。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="Juliako" 
-	manager="erikre" 
-	editor=""/>
+    pageTitle="Playback your content  | Microsoft Azure" 
+    description="This topic lists existing players that you can use to playback your content." 
+    services="media-services" 
+    documentationCenter="" 
+    authors="Juliako" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/19/2016" 
-	ms.author="juliako"/>
+    ms.service="media-services" 
+    ms.workload="media" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/12/2016" 
+    ms.author="juliako"/>
 
 
-#既存のプレーヤーによるコンテンツの再生
 
-Azure Media Services は、スムーズ ストリーミング、HTTP ライブ ストリーミング、Mpeg-dash など、人気のある多くのストリーミング形式をサポートします。このトピックでは、ストリームのテストに使用できる既存のプレーヤーを示します。
+#<a name="playing-your-content-with-existing-players"></a>Playing your content with existing players
 
->[AZURE.NOTE]動的にパッケージ化または暗号化されたコンテンツを再生するには、コンテンツを配信する予定のストリーミング エンドポイントのストリーミング ユニットを必ず 1 つ以上取得するようにしてください。ストリーミング ユニットのスケーリングについては、「[スケーリング ユニットの規模変更方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+Azure Media Services supports many popular streaming formats, such as Smooth Streaming, HTTP Live Streaming, and MPEG-Dash. This topic points you to existing players that you can use to test your streams.
 
-###Azure クラシック ポータル Media Services コンテンツ プレーヤー
+>[AZURE.NOTE]To play dynamically packaged or dynamically encrypted content, make sure to get at least one streaming unit for the streaming endpoint from which you plan to deliver your content. For information about scaling streaming units, see: [How to scale streaming units](media-services-portal-manage-streaming-endpoints.md).
 
-**Azure** ポータルには、ビデオのテストに使用できるコンテンツ プレーヤーが用意されています。
+### <a name="the-azure-portal-media-services-content-player"></a>The Azure portal Media Services content player
 
-目的のビデオをクリックし ([発行済](media-services-portal-publish.md)であることを確認します)、ポータルの下部の **[再生]** ボタンをクリックします。
+The **Azure** portal provides a content player that you can use to test your video.
 
-いくつかの考慮事項が適用されます。
+Click on the desired video (make sure it was [published](media-services-portal-publish.md)) and click the **Play** button at the bottom of the portal.
 
-- **Media Services コンテンツ プレーヤー**を既定のストリーミング エンドポイントから再生します。既定以外のストリーミング エンドポイントから再生する場合は、別のプレーヤーを使用します([Azure Media Player など](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
+Some considerations apply:
+
+- The **MEDIA SERVICES CONTENT PLAYER** plays from the default streaming endpoint. If you want to play from a non-default streaming endpoint, use another player. For example, [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 
 ![AMSPlayer][AMSPlayer]
 
-###Azure Media Player
+###<a name="azure-media-player"></a>Azure Media Player
 
-[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、次のいずれかの形式でコンテンツ (平文のコンテンツまたは保護されたコンテンツ) を再生します。
+Use [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) to playback your content (clear or protected) in any of the following formats:
 
-- スムーズ ストリーミング
+- Smooth Streaming
 - MPEG DASH
 - HLS
 - Progressive MP4
 
 
-###Flash Player
+###<a name="flash-player"></a>Flash Player
 
-####トークンを使用した AES 暗号化
+####<a name="aes-encrypted-with-token"></a>AES-encrypted with Token
 
 [http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
 
-###Silverlight Players
+###<a name="silverlight-players"></a>Silverlight Players
 
-####監視
+####<a name="monitoring"></a>Monitoring
 
 [http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor)
 
-####トークンを使用した PlayReady
+####<a name="playready-with-token"></a>PlayReady with Token
 
 [http://sltoken.azurewebsites.net](http://sltoken.azurewebsites.net)
 
-### DASH Players
+### <a name="dash-players"></a>DASH Players
 
 [http://dashplayer.azurewebsites.net](http://dashplayer.azurewebsites.net)
 
 [http://dashif.org](http://dashif.org)
 
-###その他
+###<a name="other"></a>Other
 
-次を使用して HLS URL をテストすることもできます。
+To test HLS URLs you can also use:
 
-- **Safari** (iOS デバイス) または
-- **3ivx HLS Player** (Windows)
+- **Safari** on an iOS device or
+- **3ivx HLS Player** on Windows.
 
-##ビデオ プレーヤーの開発
+##<a name="developing-video-players"></a>Developing video players
 
-独自のプレーヤーの開発方法については、「[ビデオ プレーヤーの開発](media-services-develop-video-players.md)」を参照してください。
-
-
+For information about how to develop your own players, see [Developing video players](media-services-develop-video-players.md)
 
 
-##Media Services のラーニング パス
+
+
+##<a name="media-services-learning-paths"></a>Media Services learning paths
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##フィードバックの提供
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

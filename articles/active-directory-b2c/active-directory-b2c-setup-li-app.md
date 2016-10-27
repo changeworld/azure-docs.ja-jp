@@ -1,53 +1,58 @@
 <properties
-	pageTitle="Azure Active Directory B2C: LinkedIn の構成 | Microsoft Azure"
-	description="Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、LinkedIn アカウントを使用するコンシューマーにサインアップとサインインを提供します。"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="swkrish"
-	manager="msmbaldwin"
-	editor="bryanla"/>
+    pageTitle="Azure Active Directory B2C: LinkedIn configuration | Microsoft Azure"
+    description="Provide sign-up and sign-in to consumers with LinkedIn accounts in your applications that are secured by Azure Active Directory B2C"
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="swkrish"
+    manager="mbaldwin"
+    editor="bryanla"/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/24/2016"
-	ms.author="swkrish"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/24/2016"
+    ms.author="swkrish"/>
 
-# Azure Active Directory B2C: LinkedIn アカウントでコンシューマーにサインアップおよびサインインを提供する
 
-## LinkedIn アプリケーションを作成する
+# <a name="azure-active-directory-b2c:-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C: Provide sign-up and sign-in to consumers with LinkedIn accounts
 
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして LinkedIn を使用するには、LinkedIn アプリケーションを作成し、適切なパラメーターを提供する必要があります。そのためには LinkedIn アカウントが必要です。ない場合は、[https://www.linkedin.com/](https://www.linkedin.com/) で取得できます。
+## <a name="create-a-linkedin-application"></a>Create a LinkedIn application
 
-1. [LinkedIn Developers](https://www.developer.linkedin.com/) の Web サイトに移動し、LinkedIn アカウントの資格情報でサインインします。
-2. 上部メニュー バーの **[My Apps (マイ アプリ)]** をクリックし、**[Create Application (アプリケーションの作成)]** をクリックします。
+To use LinkedIn as an identity provider in Azure Active Directory (Azure AD) B2C, you need to create a LinkedIn application and supply it with the right parameters. You need a LinkedIn account to do this. If you don’t have one, you can get it at [https://www.linkedin.com/](https://www.linkedin.com/).
 
-    ![LinkedIn - 新しいアプリ](./media/active-directory-b2c-setup-li-app/linkedin-new-app.png)
+1. Go to the [LinkedIn Developers website](https://www.developer.linkedin.com/) and sign in with your LinkedIn account credentials.
+2. Click **My Apps** in the top menu bar and then click **Create Application**.
 
-3. **[Create a New Application]** フォームで、関連する情報 (**[Company Name]**、**[Name]**、**[Description]**、**[Application Logo URL]**、**[Application Use]**、**[Website URL]**、**[Business Email]**、**[Business Phone]**) を入力します。
-4. **LinkedIn API の使用条件**に同意し、**[Submit (送信)]** をクリックします。
+    ![LinkedIn - New app](./media/active-directory-b2c-setup-li-app/linkedin-new-app.png)
 
-    ![LinkedIn - アプリの登録](./media/active-directory-b2c-setup-li-app/linkedin-register-app.png)
+3. In the **Create a New Application** form, fill in the relevant information (**Company Name**, **Name**, **Description**, **Application Logo URL**, **Application Use**, **Website URL**, **Business Email** and **Business Phone**).
+4. Agree to the **LinkedIn API Terms of Use** and click **Submit**.
 
-5. **[Client ID (クライアント ID)]** と **[Client Secret (クライアント シークレット)]** の値をコピーします (**[Authentication Keys (認証キー)]** セクションの下にあります)。 テナントで ID プロバイダーとして LinkedIn を構成するには、両方の値が必要です。
+    ![LinkedIn - Register app](./media/active-directory-b2c-setup-li-app/linkedin-register-app.png)
 
-	>[AZURE.NOTE] **[Client Secret]** は、重要なセキュリティ資格情報です。
+5. Copy the values of **Client ID** and **Client Secret**. (You can find them under **Authentication Keys**.) You will need both of them to configure LinkedIn as an identity provider in your tenant.
 
-6. **[OAuth 2.0]** セクションの **[Authorized Redirect URLs (承認済みのリダイレクト URL)]** フィールドに「`https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`」と入力します。**{tenant}** は、実際のテナントの名前 (例: contoso.onmicrosoft.com) に置き換えます。**[Add (追加)]** をクリックし、**[Update (更新)]** をクリックします。**{tenant}** の値は大文字小文字が区別されます。
+    >[AZURE.NOTE] **Client Secret** is an important security credential.
 
-    ![LinkedIn - アプリの設定](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
+6. Enter `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` in the **Authorized Redirect URLs** field (under **OAuth 2.0**). Replace **{tenant}** with your tenant's name (for example, contoso.onmicrosoft.com). Click **Add**, and then click **Update**. The **{tenant}** value is case-sensitive.
 
-## テナントで ID プロバイダーとして LinkedIn を構成する
+    ![LinkedIn - Setup app](./media/active-directory-b2c-setup-li-app/linkedin-setup.png)
 
-1. この手順に従って、Azure ポータルで [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)します。
-2. B2C 機能ブレードで、**[ID プロバイダー]** をクリックします。
-3. ブレードの上部にある **[+追加]** をクリックします。
-4. ID プロバイダー構成のわかりやすい **[名前]** を指定します。たとえば、「LI」などと入力します。
-5. **[ID プロバイダーの種類]** をクリックし、**[LinkedIn]** を選択して、**[OK]** をクリックします。
-6. **[この ID プロバイダーを設定する]** をクリックし、先に作成した LinkedIn アプリケーションのクライアント ID とクライアント シークレットを入力します。
-7. **[OK]** をクリックし、**[作成]** をクリックして LinkedIn の構成を保存します。
+## <a name="configure-linkedin-as-an-identity-provider-in-your-tenant"></a>Configure LinkedIn as an identity provider in your tenant
 
-<!---HONumber=AcomDC_0727_2016-->
+1. Follow these steps to [navigate to the B2C features blade](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) on the Azure portal.
+2. On the B2C features blade, click **Identity providers**.
+3. Click **+Add** at the top of the blade.
+4. Provide a friendly **Name** for the identity provider configuration. For example, enter "LI".
+5. Click **Identity provider type**, select **LinkedIn**, and click **OK**.
+6. Click **Set up this identity provider** and enter the client ID and client secret of the LinkedIn application that you created earlier.
+7. Click **OK** and then click **Create** to save your LinkedIn configuration.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

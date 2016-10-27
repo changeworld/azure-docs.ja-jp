@@ -1,52 +1,53 @@
 <properties 
-	pageTitle="collectd: perf stats for Java on Unix in Application Insights (collectd: Application Insights での Unix 上の Java のパフォーマンス統計)" 
-	description="Extended monitoring of your Java website with the CollectD plug-in for Application Insights (Application Insights の CollectD プラグインを使用した Java Web サイトの監視の拡張)" 
-	services="application-insights" 
+    pageTitle="collectd: perf stats for Java on Unix in Application Insights" 
+    description="Extended monitoring of your Java website with the CollectD plug-in for Application Insights" 
+    services="application-insights" 
     documentationCenter="java"
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/24/2016" 
+    ms.author="awills"/>
  
-# collectd: Application Insights での Unix パフォーマンス メトリック
 
-*Application Insights はプレビュー段階です。*
+# <a name="collectd:-unix-performance-metrics-in-application-insights"></a>collectd: Unix performance metrics in Application Insights
 
-[Application Insights](app-insights-overview.md) で Unix システムのパフォーマンス メトリックを探索するには、[collectd](http://collectd.org/) を Application Insights のプラグインと共にインストールします。このオープンソース ソリューションでは、さまざまなシステムおよびネットワーク統計情報を収集します。
+*Application Insights is in Preview.*
 
-既に [Application Insights で Java Web サービスをインストルメント化][java]してある場合は、通常、collectd を使用します。collectd を使用すると、アプリのパフォーマンスの向上や問題の診断に役立つ多くのデータを得られます。
+To explore Unix system performance metrics in [Application Insights](app-insights-overview.md), install [collectd](http://collectd.org/), together with its Application Insights plug-in. This open-source solution gathers various system and network statistics.
 
-![サンプルのグラフ](./media/app-insights-java-collectd/sample.png)
+Typically you'll use collectd if you have already [instrumented your Java web service with Application Insights][java]. It gives you more data to help you to enhance your app's performance or diagnose problems. 
 
-## インストルメンテーション キーの取得
+![Sample charts](./media/app-insights-java-collectd/sample.png)
 
-[Microsoft Azure ポータル](https://portal.azure.com)で、データを表示する [Application Insights](app-insights-overview.md) リソースを開きます (または[新しいリソースを作成](app-insights-create-new-resource.md)します。)
+## <a name="get-your-instrumentation-key"></a>Get your instrumentation key
 
-リソースを識別する、インストルメンテーション キーのコピーを取ります。
+In the [Microsoft Azure portal](https://portal.azure.com), open the [Application Insights](app-insights-overview.md) resource where you want the data to appear. (Or [create a new resource](app-insights-create-new-resource.md).)
 
-![Browse all, open your resource, and then in the Essentials drop-down, select and copy the Instrumentation Key (すべてを参照し、リソースを開いてから、[Essentials] ドロップダウンでインストルメンテーション キーを選択およびコピーする)](./media/app-insights-java-collectd/02-props.png)
+Take a copy of the instrumentation key, which identifies the resource.
+
+![Browse all, open your resource, and then in the Essentials drop-down, select, and copy the Instrumentation Key](./media/app-insights-java-collectd/02-props.png)
 
 
 
-## collectd とプラグインのインストール
+## <a name="install-collectd-and-the-plug-in"></a>Install collectd and the plug-in
 
-Unix サーバー コンピューターで、次の操作を行います。
+On your Unix server machines:
 
-1. [collectd](http://collectd.org/) のバージョン 5.4.0 またはそれ以降をインストールします。
-2. [Application Insights collectd ライター プラグイン](https://aka.ms/aijavasdk)をダウンロードします。バージョン番号をメモしておきます。
-3. プラグイン JAR を `/usr/share/collectd/java` にコピーします。
-3. `/etc/collectd/collectd.conf` を編集します:
- * [Java プラグイン](https://collectd.org/wiki/index.php/Plugin:Java)が有効になっていることを確認します。
- * java.class.path の JVMArg を次の JAR を含むように更新します。バージョン番号を、ダウンロードしたものと一致するように更新します。
+1. Install [collectd](http://collectd.org/) version 5.4.0 or later.
+2. Download the [Application Insights collectd writer plugin](https://aka.ms/aijavasdk). Note the version number.
+3. Copy the plugin JAR into `/usr/share/collectd/java`.
+3. Edit `/etc/collectd/collectd.conf`:
+ * Ensure that [the Java plugin](https://collectd.org/wiki/index.php/Plugin:Java) is enabled.
+ * Update the JVMArg for the java.class.path to include the following JAR. Update the version number to match the one you downloaded:
   * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
- * リソースからのインストルメンテーション キーを使用して、次のスニペットを追加します。
+ * Add this snippet, using the Instrumentation Key from your resource:
 
 ```
 
@@ -56,7 +57,7 @@ Unix サーバー コンピューターで、次の操作を行います。
      </Plugin>
 ```
 
-サンプル構成ファイルの一部を次に示します。
+Here's part of a sample configuration file:
 
     ...
     # collectd plugins
@@ -84,47 +85,47 @@ Unix サーバー コンピューターで、次の操作を行います。
       # Other plugin configurations ...
       ...
     </Plugin>
-. ...
+.   ...
 
-その他の [collectd プラグイン](https://collectd.org/wiki/index.php/Table_of_Plugins)を構成します。これにより、異なるソースからさまざまなデータを収集できます。
+Configure other [collectd plugins](https://collectd.org/wiki/index.php/Table_of_Plugins), which can collect various data from different sources.
 
-[マニュアル](https://collectd.org/wiki/index.php/First_steps)に従って collectd を起動します。
+Restart collectd according to its [manual](https://collectd.org/wiki/index.php/First_steps).
 
-## Application Insights でデータを表示する
+## <a name="view-the-data-in-application-insights"></a>View the data in Application Insights
 
-Application Insights のリソースで、[メトリックス エクスプローラーの [グラフの追加]][metrics] を開き、[カスタム] カテゴリから表示するメトリックを選択します。
+In your Application Insights resource, open [Metrics Explorer and add charts][metrics], selecting the metrics you want to see from the Custom category.
 
 ![](./media/app-insights-java-collectd/result.png)
 
-既定では、メトリックは、メトリックの収集元のすべてのホスト コンピューターにわたって集計されます。ホスト別のメトリックを表示するには、グラフの詳細ブレードで [グループ化] を有効にしてから、CollectD-Host でのグループ化を選択します。
+By default, the metrics are aggregated across all host machines from which the metrics were collected. To view the metrics per host, in the Chart details blade, turn on Grouping and then choose to group by CollectD-Host.
 
 
-## 特定の統計のアップロードを除外するには
+## <a name="to-exclude-upload-of-specific-statistics"></a>To exclude upload of specific statistics
 
-既定では、Application Insights プラグインにより、すべての有効になっている collectd 'read' プラグインによって収集されたすべてのデータが送信されます。
+By default, the Application Insights plugin sends all the data collected by all the enabled collectd 'read' plugins. 
 
-特定のプラグインまたはデータ ソースからのデータを除外するには:
+To exclude data from specific plugins or data sources:
 
-* 構成ファイルを編集します。
-* `<Plugin ApplicationInsightsWriter>` に次のようなディレクティブ行を追加します。
+* Edit the configuration file. 
+* In `<Plugin ApplicationInsightsWriter>`, add directive lines like this:
 
-ディレクティブ | 効果
+Directive | Effect
 ---|---
-`Exclude disk` | `disk` プラグインによって収集されたすべてのデータを除外します
-`Exclude disk:read,write` | `read` および `write` という名前のソースを `disk` プラグインから除外します。
+`Exclude disk` | Exclude all data collected by the `disk` plugin
+`Exclude disk:read,write` | Exclude the sources named `read` and `write` from the `disk` plugin.
 
-各ディレクティブを改行で区切ります。
+Separate directives with a newline.
 
 
-## 問題が発生した場合
+## <a name="problems?"></a>Problems?
 
-*ポータルにデータが表示されません。*
+*I don't see data in the portal*
 
-* [[検索]][diagnostic] を開き、未加工のイベントが到着しているかどうかを確認します。メトリックス エクスプローラーに表示されるまでに時間がかかる場合があります。
-* 必要に応じて[データ送信についてファイアウォール例外を設定](app-insights-ip-addresses.md)します。
-* Application Insights プラグインでトレースを有効にします。`<Plugin ApplicationInsightsWriter>` に次の行を追加します。
+* Open [Search][diagnostic] to see if the raw events have arrived. Sometimes they take longer to appear in metrics explorer.
+* You might need to [set firewall exceptions for outgoing data](app-insights-ip-addresses.md)
+* Enable tracing in the Application Insights plugin. Add this line within `<Plugin ApplicationInsightsWriter>`:
  *  `SDKLogger true`
-* ターミナルを開き、詳細モードで collectd を起動して報告されている問題がないか確認します。
+* Open a terminal and start collectd in verbose mode, to see any issues it is reporting:
  * `sudo collectd -f`
 
 
@@ -144,4 +145,8 @@ Application Insights のリソースで、[メトリックス エクスプロー
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

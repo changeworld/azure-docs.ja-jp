@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Server データベースの Azure SQL Database への移行 | Microsoft Azure"
-   description="Microsoft Azure SQL Database、データベースのデプロイ、データベースの移行、データベースのインポート、データベースのエクスポート、移行ウィザード"
+   pageTitle="Migrating a SQL Server database to Azure SQL Database | Microsoft Azure"
+   description="Microsoft Azure SQL Database, database deploy, database migration, import database, export database, migration wizard"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -16,51 +16,56 @@
    ms.date="08/24/2016"
    ms.author="carlrab"/>
 
-# SSMS を使用して BACPAC から SQL Database にインポートする
+
+# <a name="import-from-bacpac-to-sql-database-using-ssms"></a>Import from BACPAC to SQL Database using SSMS
 
 > [AZURE.SELECTOR]
 - [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 - [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
-- [Azure ポータル](sql-database-import.md)
+- [Azure portal](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 
-この記事では、SQL Server Management Studio のデータ層アプリケーションのエクスポート ウィザードを使用して [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルから SQL Database にインポートする方法について説明します。
+This article shows how to import from a [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) file to SQL Database using the Export Data Tier Application Wizard in SQL Server Management Studio.
 
-> [AZURE.NOTE] 以下の手順では、Azure SQL 論理インスタンスを既にプロビジョニングしてあり、接続情報がわかっているものとします。
+> [AZURE.NOTE] The following steps assume that you have already provisioned your Azure SQL logical instance and have the connection information on hand.
 
-1. 最新バージョンの SQL Server Management Studio があることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure ポータルの更新との同期が維持されます。
+1. Verify that you have the latest version of SQL Server Management Studio. New versions of Management Studio are updated monthly to remain in sync with updates to the Azure portal.
 
-	 > [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+     > [AZURE.IMPORTANT] It is recommended that you always use the latest version of Management Studio to remain synchronized with updates to Microsoft Azure and SQL Database. [Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
-2. Azure SQL Database サーバーに接続し、**[データベース]** フォルダーを右クリックして、**[データ層アプリケーションのインポート]** をクリックします
+2. Connect to your Azure SQL Database server, right-click the **Databases** folder and click **Import Data-tier Application...**
 
-    ![[データ層アプリケーションのインポート] メニュー項目](./media/sql-database-cloud-migrate/MigrateUsingBACPAC03.png)
+    ![Import data-tier application menu item](./media/sql-database-cloud-migrate/MigrateUsingBACPAC03.png)
 
-3.	新しいデータベースを Azure SQL Database に作成するには、ローカル ディスクから BACPAC ファイルをインポートするか、Azure Storage アカウントと、BACPAC ファイルのアップロード先コンテナーを選択します。
+3.  To create the database in Azure SQL Database, import a BACPAC file from your local disk or select the Azure storage account and container to which you uploaded your BACPAC file.
 
-    ![設定のインポート](./media/sql-database-cloud-migrate/MigrateUsingBACPAC04.png)
+    ![Import settings](./media/sql-database-cloud-migrate/MigrateUsingBACPAC04.png)
 
-	 > [AZURE.IMPORTANT] BACPAC を Azure Blob Storage からインポートする場合は、Standard Storage を使用します。Premium Storage からの BACPAC のインポートはサポートされていません。
+     > [AZURE.IMPORTANT] When importing a BACPAC from Azure blob storage, use standard storage. Importing a BACPAC from premium storage is not supported.
 
-4.	Azure SQL DB でのデータベースの **[新しいデータベース名]** を指定し、**[Microsoft Azure SQL Database のエディション]** (サービス階層)、**[データベースの最大サイズ]**、および **[サービスの目的]** (パフォーマンス レベル) を設定します。
+4.  Provide the **New database name** for the database on Azure SQL DB, set the **Edition of Microsoft Azure SQL Database** (service tier), **Maximum database size**, and **Service Objective** (performance level).
 
-    ![データベース設定](./media/sql-database-cloud-migrate/MigrateUsingBACPAC05.png)
+    ![Database settings](./media/sql-database-cloud-migrate/MigrateUsingBACPAC05.png)
 
-5.	**[次へ]**、**[完了]** の順にクリックし、Azure SQL Database サーバーの新しいデータベースに BACPAC ファイルをインポートします。
+5.  Click **Next** and then click **Finish** to import the BACPAC file into a new database in the Azure SQL Database server.
 
-6. オブジェクト エクスプローラーを使用して、Azure SQL Database サーバーの移行されたデータベースに接続します。
+6. Using Object Explorer, connect to your migrated database in your Azure SQL Database server.
 
-6.	Azure ポータルを使用して、データベースとそのプロパティを表示します。
+6.  Using the Azure portal, view your database and its properties.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
 - [SQL Database V12](sql-database-v12-whats-new.md)
-- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
-- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+- [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

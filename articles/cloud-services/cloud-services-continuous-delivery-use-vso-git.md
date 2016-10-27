@@ -1,230 +1,232 @@
 <properties
-	pageTitle="Visual Studio Team Services と Git を使用した Azure での継続的な配信 | Microsoft Azure"
-	description="Visual Studio Team Services チーム プロジェクトを Git を使用して自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
-	services="cloud-services"
-	documentationCenter=".net"
-	authors="mlearned"
-	manager="douge"
-	editor=""/>
+    pageTitle="Continuous delivery with Git and Visual Studio Team Services in Azure | Microsoft Azure"
+    description="Learn how to configure your Visual Studio Team Services team projects to use Git to automatically build and deploy to the Web App feature in Azure App Service or cloud services."
+    services="cloud-services"
+    documentationCenter=".net"
+    authors="mlearned"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="mlearned"/>
+    ms.service="cloud-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="07/06/2016"
+    ms.author="mlearned"/>
 
-# Visual Studio Team Services と Git を使用した Azure への継続的な配信
 
-Visual Studio Team Services チーム プロジェクトを使用してソース コードの Git リポジトリをホストし、コミットをリポジトリにプッシュするたびに自動的にビルドして Azure の Web アプリまたはクラウド サービスにデプロイすることができます。
+# <a name="continuous-delivery-to-azure-using-visual-studio-team-services-and-git"></a>Continuous delivery to Azure using Visual Studio Team Services and Git
 
-Visual Studio 2013 および Azure SDK をインストールする必要があります。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
+You can use Visual Studio Team Services team projects to host a Git repository for your source code, and automatically build and deploy to Azure web apps or cloud services whenever you push a commit to the repository.
 
+You'll need Visual Studio 2013 and the Azure SDK installed. If you don't already have Visual Studio 2013, download it by choosing the **Get started for free** link at [www.visualstudio.com](http://www.visualstudio.com). Install the Azure SDK from [here](http://go.microsoft.com/fwlink/?LinkId=239540).
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。[Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
 
-Visual Studio Team Services を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
+> [AZURE.NOTE] You need an Visual Studio Team Services account to complete this tutorial: You can [open a Visual Studio Team Services account for free](http://go.microsoft.com/fwlink/p/?LinkId=512979).
 
-## 1: Git リポジトリを作成する
+To set up a cloud service to automatically build and deploy to Azure by using Visual Studio Team Services, follow these steps.
 
-1. Visual Studio Team Services アカウントをまだ持っていない場合は、[ここ](http://go.microsoft.com/fwlink/?LinkId=397665)で取得できます。チーム プロジェクトを作成するときに、ソース管理システムとして Git を選択します。指示に従い、Visual Studio をチーム プロジェクトに接続します。
+## <a name="1:-create-a-git-repository"></a>1: Create a Git repository
 
-2. **チーム エクスプローラー**で、**[このリポジトリを複製]** を選択します。
+1. If you don’t already have a Visual Studio Team Services account, you can get one  [here](http://go.microsoft.com/fwlink/?LinkId=397665). When you create your team project, choose Git as your source control system. Follow the instructions to connect Visual Studio to your team project.
 
-	![][3]
+2. In **Team Explorer**, choose the **Clone this repository** link.
 
-3. ローカル コピーの場所を指定し、**[複製]** をクリックします。
+    ![][3]
 
-## 2: プロジェクトを作成してリポジトリにコミットする
+3. Specify the location of the local copy and then choose the **Clone** button.
 
-1. **チーム エクスプローラー**の **[ソリューション]** セクションで、**[新規作成]** リンクを選択して新しいプロジェクトをローカル リポジトリに作成します。
+## <a name="2:-create-a-project-and-commit-it-to-the-repository"></a>2: Create a project and commit it to the repository
 
-	![][4]
+1. In **Team Explorer**, in the **Solutions** section, choose the **New** link to create a new project in the local repository.
 
-2. このチュートリアルの手順に従って、Web アプリまたはクラウド サービス (Azure アプリケーション) をデプロイできます。新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。プロジェクトが .NET Framework 4 以降を対象にしていることを確認します。クラウド サービス プロジェクトを作成する場合は、ASP.NET MVC Web ロールと worker ロールを追加します。Web アプリを作成する場合は、**[ASP.NET Web アプリケーション]** プロジェクト テンプレートを選択し、次に **[MVC]** を選択します。詳細については、「[Azure App Service での ASP.NET Web アプリの作成](../app-service-web/web-sites-dotnet-get-started.md)」を参照してください。
+    ![][4]
 
-3. ソリューションのショートカット メニューを開き、**[コミット]** を選択します。
+2. You can deploy a web app or a cloud service (Azure Application) by following the steps in this walkthrough. Create a new Azure Cloud Service project, or a new ASP.NET MVC project. Make sure that the project targets the .NET Framework 4 or later. If you are creating a cloud service project, add an ASP.NET MVC web role and a worker role.
+If you want to create a web app, choose the **ASP.NET Web Application** project template, and then choose **MVC**. See [Create an ASP.NET web app in Azure App Service](../app-service-web/web-sites-dotnet-get-started.md) for more information.
 
-	![][7]
+3. Open the shortcut menu for the solution, and choose **Commit**.
 
-4. Visual Studio Team Services で初めて Git を使用する場合は、Git で自分自身が識別されるように情報を提供する必要があります。**チーム エクスプローラー**の **[保留中の変更]** 領域で、ユーザー名と電子メール アドレスを入力します。コミットのコメントを入力し、**[コミット]** をクリックします。
+    ![][7]
 
-	![][8]
+4. If this is the first time you've used Git in Visual Studio Team Services, you'll need to provide some information to identify yourself in Git. In the **Pending Changes** area of **Team Explorer**, enter your username and email address. Enter a comment for the commit and then choose the **Commit** button.
 
-5. チェックインをするときは、特定の変更を含むまたは除外するためのオプションに注意してください。必要な変更が除外されている場合は、**[すべて含む]** を選択します。
+    ![][8]
 
-6. これで、リポジトリのローカル コピーに変更をコミットできました。次に、**[同期]** リンクを選択してこれらの変更をサーバーと同期させます。
+5. Note the options to include or exclude specific changes when you check in. If the changes you want are excluded, choose **Include All**.
 
-## 3: プロジェクトを Azure に接続する
+6. You've now committed the changes in your local copy of the repository. Next, sync those changes with the server by choosing the **Sync** link.
 
-1. ソース コードを含む Git リポジトリが Visual Studio Team Services に保持され、Git リポジトリを Azure に接続する準備が整いました。[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で、クラウド サービスまたは Web アプリを選択するか、新たに作成します。作成するには、左下にある [+] アイコンを選択し、**[クラウド サービス]** または **[Web アプリ]** を選択して、**[簡易作成]** を選択します。
+## <a name="3:-connect-the-project-to-azure"></a>3: Connect the project to Azure
 
-	![][9]
+1. Now that you have a Git repository in Visual Studio Team Services with some source code in it, you are ready to connect your git repository to Azure.  In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), select your cloud service or web app, or create a new one by choosing the + icon at the bottom left and choosing **Cloud Service** or **Web App** and then **Quick Create**.
 
-3. クラウド サービスの場合は、**[Visual Studio Team Services 発行の設定]** リンクを選択します。Web アプリの場合は、**[ソース管理からのデプロイの設定]** リンクを選択します。
+    ![][9]
 
-	![][10]
+3. For cloud services, choose the **Set up publishing with Visual Studio Team Services** link. For web apps, choose the **Set up deployment from source control** link.
 
-2. ウィザードで、テキスト ボックスに Visual Studio Team Services アカウントの名前を入力し、**[今すぐ承認]** を選択します。サインインを求められることがあります。
+    ![][10]
 
-	![][11]
+2. In the wizard, type the name of your Visual Studio Team Services account in the textbox and choose the **Authorize Now** link. You might be asked to sign in.
 
-3. **[接続要求]** ポップアップ ダイアログで、**[承認]** を選択し、Azure が Visual Studio Team Services のチーム プロジェクトを構成することを許可します。
+    ![][11]
 
-	![][12]
+3. In the **Connection Request** pop-up dialog, choose **Accept** to authorize Azure to configure your team project in Visual Studio Team Services.
 
-4. 承認が成功すると、Visual Studio Team Services チーム プロジェクトが含まれるドロップダウン リストが表示されます。前のステップで作成したチーム プロジェクトの名前を選択し、ウィザードのチェック マーク ボタンを選択します。
+    ![][12]
 
-	![][13]
+4. After authorization succeeds, you see a dropdown list that contains your Visual Studio Team Services team projects.  Select the name of team project that you created in the previous steps, and choose the wizard's checkmark button.
 
-	次にコミットをリポジトリにプッシュするときに、Visual Studio Team Services はプロジェクトをビルドして Azure にデプロイします。
+    ![][13]
 
-## 4: リビルドをトリガーし、プロジェクトを再デプロイする
+    The next time you push a commit to your repository, Visual Studio Team Services will build and deploy your project to Azure.
 
-1. Visual Studio で、ファイルを開き、変更します。たとえば、MVC Web ロールの Views\\Shared フォルダーにある `_Layout.cshtml` ファイルを変更します。
+## <a name="4:-trigger-a-rebuild-and-redeploy-your-project"></a>4: Trigger a rebuild and redeploy your project
 
-	![][17]
+1. In Visual Studio, open up a file and change it. For example, change the file `_Layout.cshtml` under the Views\\Shared folder in an MVC web role.
 
-2. サイトのフッター テキストを編集し、そのファイルを保存します。
+    ![][17]
 
-	![][18]
+2. Edit the footer text for the site and save the file.
 
-3. **ソリューション エクスプローラー**で、ソリューション ノード、プロジェクト ノード、または変更したファイルのショートカット メニューを開き、**[コミット]** を選択します。
+    ![][18]
 
-4. コメントを入力し、**[コミット]** を選択します。
+3. In **Solution Explorer**, open the shortcut menu for the solution node, project node, or the file you changed, and then choose **Commit**.
 
-	![][20]
+4. Type in a comment and choose **Commit**.
 
-5. **[同期]** リンクを選択します。
+    ![][20]
 
-	![][38]
+5. Choose the **Sync** link.
 
-6. **[プッシュ]** リンクを選択してコミットを Visual Studio Team Services のリポジトリにプッシュします。(また、**[同期]** を使用してコミットをリポジトリにコピーすることもできます。その違いは、**[同期]** ではリポジトリから最新の変更が取得される点です)。
+    ![][38]
 
-	![][39]
+6. Choose the **Push** link to push your commit to the repository in Visual Studio Team Services. (You can also use the **Sync** button to copy your commits to the repository. The difference is that **Sync** also pulls the latest changes from the repository.)
 
-7. **[ホーム]** を選択して、**チーム エクスプローラー**のホーム ページに戻ります。
+    ![][39]
 
-	![][21]
+7. Choose the **Home** button to return to the **Team Explorer** home page.
 
-8. **[ビルド]** を選択して処理中のビルドを表示します。
+    ![][21]
 
-	![][22]
+8. Choose **Builds** to view the builds in progress.
 
-	**チーム エクスプローラー**に、チェックインのためにビルドが開始されたことが示されます。
+    ![][22]
 
-	![][23]
+    **Team Explorer** shows that a build has been triggered for your check-in.
 
-9. ビルドの処理に応じて詳細なログを表示するには、処理中のビルドの名前をダブルクリックします。
+    ![][23]
 
-10. ビルドの処理中に、Azure にリンクするためのウィザードを使用したときに作成されたビルド定義を調べます。ビルド定義のショートカット メニューを開き、**[ビルド定義の編集]** を選択します。
+9. To view a detailed log as the build progresses, double-click the name of the build in progress.
 
-	![][25]
+10. While the build is in-progress, take a look at the build definition that was created when you used the wizard to link to Azure.  Open the shortcut menu for the build definition and choose **Edit Build Definition**.
 
-11. **[トリガー]** タブを見ると、既定ではチェックインごとにビルドを行うようにビルド定義が設定されていることがわかります。クラウド サービスの場合は、Visual Studio Team Services により master 分岐がビルドされてステージング環境に自動的にデプロイされます。その場合も、ライブ サイトにデプロイするための手動による手順を実行する必要があります。ステージング環境がない Web アプリの場合は、master 分岐が直接ライブ サイトにデプロイされます。
+    ![][25]
 
-	![][26]
+11. In the **Trigger** tab, you will see that the build definition is set to build on every check-in, by default. (For a cloud service, Visual Studio Team Services builds and deploys the master branch to the staging environment automatically. You still have to do a manual step to deploy to the live site. For a web app that doesn't have staging environment, it deploys the master branch directly to the live site.
 
-1. **[プロセス]** タブを見ると、デプロイ環境がクラウド サービスまたは Web アプリの名前に設定されていることがわかります。
+    ![][26]
 
-	![][27]
+1. In the **Process** tab, you can see the deployment environment is set to the name of your cloud service or web app.
 
-1. 既定値と異なる値を使用する場合は、プロパティに対して希望の値を指定します。Azure の発行のプロパティは **[デプロイ]** セクションにあり、MSBuild パラメーターの設定が必要な場合もあります。たとえば、クラウド サービス プロジェクトで "クラウド" 以外のサービス構成を指定する場合は、MSbuild パラメーターに `/p:TargetProfile=[YourProfile]` を設定します。ここで *[YourProfile]* は ServiceConfiguration.*YourProfile*.cscfg のような名前のサービス構成ファイルに一致します。
+    ![][27]
 
-	次の表は、**[デプロイ]** セクションで使用可能なプロパティを示しています。
+1. Specify values for the properties if you want different values than the defaults. The properties for Azure publishing are in the **Deployment** section, and you might also need to set MSBuild parameters. For example, in a cloud service project, to specify a service configuration other than "Cloud", set the MSbuild parameters to `/p:TargetProfile=[YourProfile]` where *[YourProfile]* matches a service configuration file with a name like ServiceConfiguration.*YourProfile*.cscfg.
 
-	|プロパティ|既定値|
-	|---|---|
-	|信頼されていない証明書を許可|false の場合、SSL 証明書はルート証明機関によって署名される必要があります。|
-	|アップグレードの許可|新規作成の代わりに、既存のデプロイメントを更新するデプロイメントを許可します。IP アドレスを保持します。|
-	|削除しない|true の場合、既存の関連のないデプロイメントを上書きしません (アップグレードは許可)。|
-	|デプロイメント設定へのパス|リポジトリのルート フォルダーを基準とした Web アプリの .pubxml ファイルへのパス。クラウド サービスでは無視されます。|
-	|Sharepoint デプロイメント環境|サービス名と同じ。|
-	|Azure デプロイメント環境|Web アプリ名またはクラウド サービス名。|
+    The following table shows the available properties in the **Deployment** section:
 
-1. このころまでには、ビルドが正常に完了しています。
+  	|Property|Default Value|
+  	|---|---|
+  	|Allow Untrusted Certificates|If false, SSL certificates must be signed by a root authority.|
+  	|Allow Upgrade|Allows the deployment to update an existing deployment instead of creating a new one. Preserves the IP address.|
+  	|Do Not Delete|If true, do not overwrite an existing unrelated deployment (upgrade is allowed).|
+  	|Path to Deployment Settings|The path to your .pubxml file for a web app, relative to the root folder of the repo. Ignored for cloud services.|
+  	|Sharepoint Deployment Environment|The same as the service name.|
+  	|Azure Deployment Environment|The web app or cloud service name.|
 
-	![][28]
+1. By this time, your build should be completed successfully.
 
-1. ビルド名をダブルクリックすると、関連付けられた単体テスト プロジェクトのテスト結果を含む **[ビルドの概要]** が表示されます。
+    ![][28]
 
-	![][29]
+1. If you double-click the build name, Visual Studio shows a **Build Summary**, including any test results from associated unit test projects.
 
-1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)では、ステージング環境が選択されると、関連付けられたデプロイが **[デプロイ]** タブに表示されます。
+    ![][29]
 
-	![][30]
+1. In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), you can view the associated deployment on the **Deployments** tab when the staging environment is selected.
 
-1.	目的のサイトの URL に移動します。Web アプリの場合は、ポータルの [**参照**] をクリックします。クラウド サービスの場合は、ステージング環境が表示される **[ダッシュボード]** ページの **[概要]** セクションで URL を選択します。
+    ![][30]
 
-	クラウド サービス向けの継続的な統合からのデプロイは、既定ではステージング環境に発行されます。**[代替クラウド サービス環境]** プロパティを **[運用]** に設定することで、これを変更できます。ここでは、クラウド サービスのダッシュボード ページにサイト URL が表示されます。
+1.  Browse to your site's URL. For a web app, just choose  the **Browse** button in the portal. For a cloud service, choose the URL in the **Quick Glance** section of the **Dashboard** page that shows the Staging environment.
 
-	![][31]
+    Deployments from continuous integration for cloud services are published to the Staging environment by default. You can change this by setting the **Alternate Cloud Service Environment** property to **Production**. Here's where the site URL is on the cloud service's dashboard page.
 
-	新しいブラウザー タブが開いて、実行中のサイトが表示されます。
+    ![][31]
 
-	![][32]
+    A new browser tab will open to reveal your running site.
 
-1.	プロジェクトにその他の変更を加えると、さらにビルドが実行され、複数のデプロイが累積されます。最新のデプロイは [アクティブ] とマークされます。
+    ![][32]
 
-	![][33]
+1.  If you make other changes to your project, you trigger more builds, and you will accumulate multiple deployments. The latest one is marked as Active.
 
-## 5: 以前のビルドを再デプロイする
+    ![][33]
 
-この手順は省略可能です。Azure クラシック ポータルで以前のデプロイを選択し、**[再デプロイ]** をクリックしてサイトを以前のチェックインに戻します。これによって、TFS で新しいビルドが開始され、デプロイ履歴に新しいエントリが作成されます。
+## <a name="5:-redeploy-an-earlier-build"></a>5: Redeploy an earlier build
+
+This step is optional. In the Azure classic portal, choose an earlier deployment and choose **Redeploy** to rewind your site to an earlier check-in. Note that this will trigger a new build in TFS and create a new entry in your deployment history.
 
 ![][34]
 
-## 6: 運用デプロイを変更する
+## <a name="6:-change-the-production-deployment"></a>6: Change the Production deployment
 
-準備が整ったら、Azure クラシック ポータルで **[スワップ]** を選択してステージング環境を運用環境へ昇格できます。新たにデプロイされたステージング環境は運用に昇格され、以前の運用環境がある場合、運用環境はステージング環境になります。運用環境とステージング環境でアクティブなデプロイメントは異なることはありますが、最近のビルドのデプロイメント履歴は環境にかかわらず同じです。
+When you are ready, you can promote the Staging environment to the Production environment by choosing **Swap** in the Azure classic portal. The newly deployed Staging environment is promoted to Production, and the previous Production environment, if any, becomes a Staging environment. The Active deployment may be different for the Production and Staging environments, but the deployment history of recent builds is the same regardless of environment.
 
 ![][35]
 
-## 7: working 分岐からデプロイする
+## <a name="7:-deploy-from-a-working-branch."></a>7: Deploy from a working branch.
 
-Git を使用する場合は、通常、working 分岐で変更を行い、開発が完了状態に到達したときに master 分岐に統合します。プロジェクトの開発フェーズの間に、この working 分岐をビルドして Azure にデプロイします。
+When you use Git, you usually make changes in a working branch and integrate into the master branch when your development reaches a finished state. During the development phase of a project, you'll want to build and deploy the working branch to Azure.
 
-1. **チーム エクスプローラー**で、**[ホーム]** をクリックし、**[分岐]** を選択します。
+1. In **Team Explorer**, choose the **Home** button and then choose the **Branches** button.
 
-	![][40]
+    ![][40]
 
-2. **[新しい分岐]** リンクを選択します。
+2. Choose the **New Branch** link.
 
-	![][41]
+    ![][41]
 
-3. "working" など分岐の名前を入力し、**[分岐の作成]** をクリックします。これにより、新しいローカル分岐が作成されます。
+3. Enter the name of the branch, such as "working," and choose **Create Branch**. This creates a new local branch.
 
-	![][42]
+    ![][42]
 
-4. 分岐を発行します。**[発行されていない分岐]** で分岐名を選択し、**[発行]** を選択します。
+4. Publish the branch. Choose the branch name in **Unpublished branches**, and choose **Publish**.
 
-	![][44]
+    ![][44]
 
-6. 既定では、master 分岐が変更された場合にのみ、継続的なビルドがトリガーされます。working 分岐に対して継続的なビルドを設定するには、**チーム エクスプローラー**の **[ビルド]** ページで **[ビルド定義の編集]** をクリックします。
+6. By default, only changes to the master branch trigger a continuous build. To set up continuous build for a working branch, choose the **Builds** page in **Team Explorer**, and choose **Edit Build Definition**.
 
-7. **[ソースの設定]** タブをクリックします。**[継続的インテグレーションとビルドのロールの監視対象となる分岐]** で、**[新しい行を追加するにはここをクリックしてください]** をクリックします。
+7. Open the **Source Settings** tab. Under **Monitored branches for continuous integration and build**, choose **Click here to add a new row**.
 
-	![][47]
+    ![][47]
 
-8. refs/heads/working など作成した分岐を指定します。
+8. Specify the branch you created, such as refs/heads/working.
 
-	![][48]
+    ![][48]
 
-9. コードに変更を加え、変更したファイルのショートカット メニューを開き、**[コミット]** を選択します。
+9. Make a change in the code, open the shortcut menu for the changed file, and then choose **Commit**.
 
-	![][43]
+    ![][43]
 
-10. **[同期されていないコミット]** を選択し、**[同期]** を選択するか、**[プッシュ]** を選択して、Visual Studio Team Services の working 分岐のコピーに変更をコピーします。
+10. Choose the **Unsynced Commits** link, and choose  the **Sync** button or the **Push** link to copy the changes to the copy of the working branch in Visual Studio Team Services.
 
-	![][45]
+    ![][45]
 
-11. **[ビルド]** ビューに移動して、working 分岐に対してトリガーされたビルドを見つけます。
+11. Navigate to the **Builds** view and find the build that just got triggered for the working branch.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-Visual Studio Team Services で Git を使用する場合のその他のヒントについては、[Visual Studio を使用した Git でのコードの開発と共有](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)に関するページを参照してください。また、Visual Studio Team Services で管理されていない Git リポジトリを使用した Azure への発行の詳細については、「[Azure App Service への継続的なデプロイ](../app-service-web/app-service-continuous-deployment.md)」を参照してください。Visual Studio Team Services の詳細については、[Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861) に関するページをご覧ください。
+To learn more tips on using Git with Visual Studio Team Services, see [Develop and share your code in Git using Visual Studio](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx) and for information about using a Git repository that's not managed by Visual Studio Team Services to publish to Azure, see [Continuous Deployment to Azure App Service](../app-service-web/app-service-continuous-deployment.md). For more information on Visual Studio Team Services, see [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso-git/CreateTeamProjectInGit.PNG
@@ -272,4 +274,8 @@ Visual Studio Team Services で Git を使用する場合のその他のヒン�
 [47]: ./media/cloud-services-continuous-delivery-use-vso-git/SourceSettingsPage.PNG
 [48]: ./media/cloud-services-continuous-delivery-use-vso-git/IncludeWorkingBranch.PNG
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

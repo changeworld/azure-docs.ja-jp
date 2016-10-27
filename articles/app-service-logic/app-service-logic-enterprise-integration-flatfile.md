@@ -1,77 +1,91 @@
 <properties
-	pageTitle="Enterprise Integration Pack と Logic Apps を使用したフラット ファイルのエンコードまたはデコードについての詳細情報 | Microsoft Azure App Service | Microsoft Azure"
-	description="Enterprise Integration Pack および Logic Apps の機能を使用してフラット ファイルをエンコードまたはデコードします。"
-	services="app-service\logic"
-	documentationCenter=".net,nodejs,java"
-	authors="msftman"
-	manager="erikre"
-	editor="cgronlun"/>
+    pageTitle="Learn to encode or decode flat files using the Enterprise Integration Pack and Logic apps| Microsoft Azure App Service | Microsoft Azure"
+    description="Use the features of Enterprise Integration Pack and Logic apps to encode or decode flat files"
+    services="app-service\logic"
+    documentationCenter=".net,nodejs,java"
+    authors="msftman"
+    manager="erikre"
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2016" 
-	ms.author="deonhe"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/08/2016" 
+    ms.author="deonhe"/>
 
-# フラット ファイルでのエンタープライズ統合
 
-## 概要
+# <a name="enterprise-integration-with-flat-files"></a>Enterprise integration with flat files
 
-企業間 (B2B) シナリオでのビジネス パートナーに送信する前に、XML の内容をエンコードする必要がある場合があります。Azure App Service の Logic Apps 機能で作成されたロジック アプリでは、フラット ファイル エンコーディング コネクタを使用してこれを実行できます。作成するロジック アプリは、HTTP 要求トリガー、別のアプリケーション、さらには多くの[コネクタ](../connectors/apis-list.md)の 1 つなど、さまざまなソースから XML の内容を取得できます。ロジック アプリの詳細については、[ロジック アプリのドキュメント](./app-service-logic-what-are-logic-apps.md "Logic Apps についての詳細情報")を参照してください。
+## <a name="overview"></a>Overview
 
-## コネクタをエンコードするフラット ファイルの作成方法
+You may want to encode XML content before you send it to a business partner in a business-to-business (B2B) scenario. In a logic app made by the Logic Apps feature of the Azure App Service, you can use the flat file encoding connector to do this. The logic app that you create can get its XML content from a variety of sources, including from an HTTP request trigger, from another application, or even from one of the many [connectors](../connectors/apis-list.md). For more information about logic apps, see the [logic apps documentation](./app-service-logic-what-are-logic-apps.md "Learn more about Logic apps").  
 
-フラット ファイル エンコーディング コネクタをロジック アプリに追加するには、次の手順に従います。
+## <a name="how-to-create-the-flat-file-encoding-connector"></a>How to create the flat file encoding connector
 
-1. ロジック アプリを作成し、[統合アカウントにリンクします](./app-service-logic-enterprise-integration-accounts.md "ロジック アプリへの統合アカウントの関連付けについての詳細情報")。このアカウントには、XML データをエンコードする際に使用するスキーマが存在します。
-2. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。![Screenshot of trigger to select](./media/app-service-logic-enterprise-integration-flatfile/flatfile-1.png)
-3. 次の手順でフラット ファイルのエンコード アクションを追加します。
+Follow these steps to add a flat file encoding connector to your logic app.
 
-    a.**プラス**記号を選択します。
+1. Create a logic app and [link it to your integration account](./app-service-logic-enterprise-integration-accounts.md "Learn to link an integration account to a Logic app"). This account contains the schema you will use to encode the XML data.  
+2. Add a **Request - When an HTTP request is received** trigger to your logic app.  
+![Screenshot of trigger to select](./media/app-service-logic-enterprise-integration-flatfile/flatfile-1.png)    
+3. Add the flat file encoding action, as follows:
 
-	b.プラス記号を選択すると表示される **[アクションの追加]** リンクを選択します。
+    a. Select the **plus** sign.
 
-	c.検索ボックスに「*Flat*」と入力し、すべてのアクションから使用するアクションだけを抽出します。
+    b. Select the **Add an action** link (appears after you have selected the plus sign).
 
-	d.リストから **[フラット ファイルのエンコード]** オプションを選択します。![Screenshot of Flat File Encoding option](./media/app-service-logic-enterprise-integration-flatfile/flatfile-2.png)
-4. **[フラット ファイルのエンコード]** ダイアログ ボックスの **[コンテンツ]** ボックスを選択します。![Screenshot of Content text box](./media/app-service-logic-enterprise-integration-flatfile/flatfile-3.png)
-5. エンコードする内容として body タグを選択します。[コンテンツ] フィールドに body タグが入力されます。![Screenshot of body tag](./media/app-service-logic-enterprise-integration-flatfile/flatfile-4.png)
-6. **[スキーマ名]** ボックスを選択し、コンテンツの入力内容をエンコードするために使用するスキーマを選択します。![Screenshot of Schema Name list box](./media/app-service-logic-enterprise-integration-flatfile/flatfile-5.png)
-7. 作業内容を保存します。![Screenshot of Save icon](./media/app-service-logic-enterprise-integration-flatfile/flatfile-6.png)
+    c. In the search box, enter *Flat* to filter all the actions to the one that you want to use.
 
-この時点で、コネクタをエンコードするフラット ファイルの設定が終了します。実際のアプリケーションでは、エンコードされたデータを Salesforce などの業務アプリケーションに保存することができます。または、そのエンコード済みのデータを取引先に送信することもできます。提供されるその他のコネクタのいずれかを使用して、Salesforce または取引先にエンコードするアクションの出力を送信するアクションを簡単に追加することができます。
+    d. Select the **Flat File Encoding** option from the list.   
+![Screenshot of Flat File Encoding option](./media/app-service-logic-enterprise-integration-flatfile/flatfile-2.png)   
+4. On the **Flat File Encoding** dialog box, select the **Content** text box.  
+![Screenshot of Content text box](./media/app-service-logic-enterprise-integration-flatfile/flatfile-3.png)  
+5. Select the body tag as the content that you want to encode. The body tag will populate the content field.     
+![Screenshot of body tag](./media/app-service-logic-enterprise-integration-flatfile/flatfile-4.png)  
+6. Select the **Schema Name** list box, and choose the schema you want to use to encode the input content.    
+![Screenshot of Schema Name list box](./media/app-service-logic-enterprise-integration-flatfile/flatfile-5.png)  
+7. Save your work.   
+![Screenshot of Save icon](./media/app-service-logic-enterprise-integration-flatfile/flatfile-6.png)  
 
-ここでコネクタをテストするには、HTTP エンドポイントへの要求を作成し、要求の本文に XML の内容を含めます。
+At this point, you are finished setting up your flat file encoding connector. In a real world application, you may want to store the encoded data in a line-of-business application, such as Salesforce. Or you can send that encoded data to a trading partner. You can easily add an action to send the output of the encoding action to Salesforce, or to your trading partner, by using any one of the other connectors provided.
 
-## コネクタをデコードするフラット ファイルの作成方法
+You can now test your connector by making a request to the HTTP endpoint, and including the XML content in the body of the request.  
 
->[AZURE.NOTE] 次の手順を完了するには、スキーマ ファイルが統合アカウントに既にアップロードされている必要があります。
+## <a name="how-to-create-the-flat-file-decoding-connector"></a>How to create the flat file decoding connector
 
-1. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。![Screenshot of trigger to select](./media/app-service-logic-enterprise-integration-flatfile/flatfile-1.png)
-2. 次の手順でフラット ファイルのデコード アクションを追加します。
+>[AZURE.NOTE] To complete these steps, you need to have a schema file already uploaded into you integration account.
 
-    a.**プラス**記号を選択します。
+1. Add a **Request - When an HTTP request is received** trigger to your logic app.  
+![Screenshot of trigger to select](./media/app-service-logic-enterprise-integration-flatfile/flatfile-1.png)    
+2. Add the flat file decoding action, as follows:
 
-	b.プラス記号を選択すると表示される **[アクションの追加]** リンクを選択します。
+    a. Select the **plus** sign.
 
-	c.検索ボックスに「*Flat*」と入力し、すべてのアクションから使用するアクションだけを抽出します。
+    b. Select the **Add an action** link (appears after you have selected the plus sign).
 
-	d.リストから **[フラット ファイルのデコード]** オプションを選択します。![Screenshot of Flat File Decoding option](./media/app-service-logic-enterprise-integration-flatfile/flatfile-2.png)
-- **[コンテンツ]** コントロールを選択します。これにより、デコードする内容として使用できる、前の手順で作成した内容の一覧が作成されます。受信 HTTP 要求からの "*本文*" がデコードする内容として使用できるようになったことがわかります。デコードする内容を **[コンテンツ]** コントロールに直接入力することもできます。
-- *Body* タグを選択します。現在、body タグは **[コンテンツ]** コントロールにあることに注意してください。
-- 内容のデコードに使用するスキーマの名前を選択します。次のスクリーンショットでは、スキーマ名として *OrderFile* が選択されています。このスキーマ名は、既に統合アカウントにアップロードされています。
+    c. In the search box, enter *Flat* to filter all the actions to the one that you want to use.
 
- ![Screenshot of Flat File Decoding dialog box](./media/app-service-logic-enterprise-integration-flatfile/flatfile-decode-1.png)
-- 作業内容を保存します。![Screenshot of Save icon](./media/app-service-logic-enterprise-integration-flatfile/flatfile-6.png)
+    d. Select the **Flat File Decoding** option from the list.   
+![Screenshot of Flat File Decoding option](./media/app-service-logic-enterprise-integration-flatfile/flatfile-2.png)   
+- Select the **Content** control. This produces a list of the content from earlier steps that you can use as the content to decode. Notice that the *Body* from the incoming HTTP request is available to be used as the content to decode. You can also enter the content to decode directly into the **Content** control.     
+- Select the *Body* tag. Notice the body tag is now in the **Content** control.
+- Select the name of the schema that you want to use to decode the content. The following screenshot shows that *OrderFile* is the selected schema name. This schema name had been uploaded into the integration account previously.
 
-この時点で、コネクタをデコードするフラット ファイルの設定が終了します。実際のアプリケーションでは、デコードされたデータを Salesforce などの業務アプリケーションに保存することができます。Salesforce にデコードするアクションの出力を送信するアクションを簡単に追加することができます。
+ ![Screenshot of Flat File Decoding dialog box](./media/app-service-logic-enterprise-integration-flatfile/flatfile-decode-1.png)    
+- Save your work.  
+![Screenshot of Save icon](./media/app-service-logic-enterprise-integration-flatfile/flatfile-6.png)    
 
-ここでコネクタをテストするには、HTTP エンドポイントへの要求を作成し、要求の本文にデコードする XML の内容を含めます。
+At this point, you are finished setting up your flat file decoding connector. In a real world application, you may want to store the decoded data in a line-of-business application such as Salesforce. You can easily add an action to send the output of the decoding action to Salesforce.
 
-## 次のステップ
-- [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
+You can now test your connector by making a request to the HTTP endpoint and including the XML content you want to decode in the body of the request.  
 
-<!---HONumber=AcomDC_0803_2016-->
+## <a name="next-steps"></a>Next steps
+- [Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack").  
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

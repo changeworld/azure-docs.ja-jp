@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と SumoLogic の統合 | Microsoft Azure" 
-    description="Azure Active Directory で SumoLogic を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with SumoLogic | Microsoft Azure" 
+    description="Learn how to use SumoLogic with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,157 +14,165 @@
     ms.date="09/11/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と SumoLogic の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-sumologic"></a>Tutorial: Azure Active Directory Integration with SumoLogic
   
-このチュートリアルでは、Azure と SumoLogic の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and SumoLogic.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   SumoLogic テナント
+-   A valid Azure subscription
+-   A SumoLogic tenant
   
-このチュートリアルを完了すると、SumoLogic に割り当てた Azure AD ユーザーは、SumoLogic 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to SumoLogicwill be able to single sign into the application at your SumoLogic company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  SumoLogic のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for SumoLogic
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-sumologic-tutorial/IC778549.png "シナリオ")
+![Scenario](./media/active-directory-saas-sumologic-tutorial/IC778549.png "Scenario")
 
-##SumoLogic のアプリケーション統合の有効化
+##<a name="enabling-the-application-integration-for-sumologic"></a>Enabling the application integration for SumoLogic
   
-このセクションでは、SumoLogic のアプリケーション統合を有効にする方法を説明します。
+The objective of this section is to outline how to enable the application integration for SumoLogic.
 
-###SumoLogic のアプリ統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-sumologic,-perform-the-following-steps:"></a>To enable the application integration for SumoLogic, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-sumologic-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-sumologic-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-sumologic-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-sumologic-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-sumologic-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-sumologic-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-sumologic-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**sumologic**」と入力します。
+6.  In the **search box**, type **sumologic**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-sumologic-tutorial/IC778550.png "アプリケーション ギャラリー")
+    ![Application gallery](./media/active-directory-saas-sumologic-tutorial/IC778550.png "Application gallery")
 
-7.  結果ウィンドウで **[SumoLogic]** を選び、**[完了]** をクリックしてアプリを追加します。
+7.  In the results pane, select **SumoLogic**, and then click **Complete** to add the application.
 
     ![SumoLogic](./media/active-directory-saas-sumologic-tutorial/IC778551.png "SumoLogic")
 
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、SumoLogic で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書を SumoLogic テナントにアップロードする必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+The objective of this section is to outline how to enable users to authenticate to SumoLogic with their account in Azure AD using federation based on the SAML protocol.  
+As part of this procedure, you are required to upload a base-64 encoded certificate to your SumoLogictenant.  
+If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **SumoLogic** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **SumoLogic** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778552.png "Configure single sign-on")
 
-2.  **[ユーザーの SumoLogic へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to SumoLogic** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778553.png "Configure single sign-on")
 
-3.  **[アプリケーション URL の構成]** ページで、**[SumoLogic サインイン URL]** テキストボックスに、"*https://\<テナント名>.SumoLogic.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **SumoLogic Sign In URL** textbox, type your URL using the following pattern "*https://\<tenant-name\>.SumoLogic.com*", and then click **Next**.
 
-    ![アプリケーション URL の構成](./media/active-directory-saas-sumologic-tutorial/IC778554.png "アプリケーション URL の構成")
+    ![Configure aoo URL](./media/active-directory-saas-sumologic-tutorial/IC778554.png "Configure aoo URL")
 
-4.  **[SumoLogic でのシングル サインオンの構成]** ページで、証明書をダウンロードするために **[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
+4.  On the **Configure single sign-on at SumoLogic** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
 
     ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778555.png "Configure single sign-on")
 
-5.  別の Web ブラウザーのウィンドウで、SumoLogic 企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your SumoLogic company site as an administrator.
 
-6.  **[Manage]、[Security]** の順に選択します。
+6.  Go to **Manage \> Security**.
 
-    ![管理](./media/active-directory-saas-sumologic-tutorial/IC778556.png "管理")
+    ![Manage](./media/active-directory-saas-sumologic-tutorial/IC778556.png "Manage")
 
-7.  **[SAML]** をクリックします。
+7.  Click **SAML**.
 
-    ![グローバル セキュリティ設定](./media/active-directory-saas-sumologic-tutorial/IC778557.png "グローバル セキュリティ設定")
+    ![Global security settings](./media/active-directory-saas-sumologic-tutorial/IC778557.png "Global security settings")
 
-8.  **[Select a configuration or create a new one]** ボックスの一覧から **[Azure AD]** を選択し、**[Configure]** をクリックします。
+8.  From the **Select a configuration or create a new one** list, select **Azure AD**, and then click **Configure**.
 
-    ![SAML 2.0 の構成](./media/active-directory-saas-sumologic-tutorial/IC778558.png "SAML 2.0 の構成")
+    ![Configure SAML 2.0](./media/active-directory-saas-sumologic-tutorial/IC778558.png "Configure SAML 2.0")
 
-9.  **[Configure SAML 2.0]** ダイアログで、次の手順に従います。
+9.  On the **Configure SAML 2.0** dialog, perform the following steps:
 
-    ![SAML 2.0 の構成](./media/active-directory-saas-sumologic-tutorial/IC778559.png "SAML 2.0 の構成")
+    ![Configure SAML 2.0](./media/active-directory-saas-sumologic-tutorial/IC778559.png "Configure SAML 2.0")
 
-    1.  **[Configuration Name]** テキスト ボックスに、「**Azure AD**」と入力します。
-    2.  **[Debug Mode]** を選択します。
-    3.  Azure クラシック ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[発行者]** テキスト ボックスに貼り付けます。
-    4.  Azure クラシック ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで **[認証要求 URL]** の値をコピーし、それを **[Authn Request URL (認証要求 URL)]** テキスト ボックスに貼り付けます。
-    5.  ダウンロードした証明書から **Base-64 でエンコードされた**ファイルを作成します。
+    1.  In the **Configuration Name** textbox, type **Azure AD**.
+    2.  Select **Debug Mode**.
+    3.  In the Azure classic portal, on the **Configure single sign-on at SumoLogic** dialogue page, copy the **Issuer URL** value, and then paste it into the **Issuer** textbox.
+    4.  In the Azure classic portal, on the **Configure single sign-on at SumoLogic** dialogue page, copy the **Authentication Request URL** value, and then paste it into the **Authn Request URL** textbox.
+    5.  Create a **Base-64 encoded** file from your downloaded certificate.  
 
-        >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP] For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 
-    6.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、証明書全体を **[X.509 Certificate]** テキスト ボックスに貼り付けます。
-    7.  **[Email Attribute]** として、**[Use SAML subject]** を選択します。
-    8.  **[SP initiated Login Configuration]** を選択します。
-    9.  **[Login Path]** テキスト ボックスに、「**Azure**」と入力します。
-    10. [**Save**] をクリックします。
+    6.  Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste the entire Certificate into **X.509 Certificate** textbox.
+    7.  As **Email Attribute**, select **Use SAML subject**.
+    8.  Select **SP initiated Login Configuration**.
+    9.  In the **Login Path** textbox, type **Azure**.
+    10. Click **Save**.
 
-10. Azure クラシック ポータルの **[SumoLogic でのシングル サインオンの構成]** ダイアログ ページで、シングル サインオンの構成確認を選択し、**[完了]** をクリックします。
+10. In the Azure classic portal, on the **Configure single sign-on at SumoLogic** dialogue page, select the single sign-on configuration confirmation, and then click **Complete**.
 
     ![Configure single sign-on](./media/active-directory-saas-sumologic-tutorial/IC778560.png "Configure single sign-on")
 
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが SumoLogic にログインできるようにするには、そのユーザーを SumoLogic にプロビジョニングする必要があります。SumoLogic の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into SumoLogic, they must be provisioned to SumoLogic.  
+In the case of SumoLogic, provisioning is a manual task.
 
-###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
+###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
 
-1.  **SumoLogic** テナントにログインします。
+1.  Log in to your **SumoLogic** tenant.
 
-2.  **[Manage Users]** に移動します。
+2.  Go to **Manage \> Users**.
 
     ![Users](./media/active-directory-saas-sumologic-tutorial/IC778561.png "Users")
 
-3.  **[追加]** をクリックします。
+3.  Click **Add**.
 
     ![Users](./media/active-directory-saas-sumologic-tutorial/IC778562.png "Users")
 
-4.  **[New User]** ダイアログ ページで、次の手順に従います。
+4.  On the **New User** dialog, perform the following steps:
 
-    ![新しいユーザー](./media/active-directory-saas-sumologic-tutorial/IC778563.png "新しいユーザー")
+    ![New User](./media/active-directory-saas-sumologic-tutorial/IC778563.png "New User")
 
-    1.  プロビジョニングする Azure AD アカウントに関連する情報を、**[First Name]**、**[Last Name]**、および **[Email]** テキスト ボックスに入力します。
-    2.  ロールを選択します。
-    3.  **[Status]** として、**[Active]** を選択します。
-    4.  **[保存]** をクリックします。
+    1.  Type the related information of the Azure AD account you want to provision into the **First Name**, **Last Name** and **Email** textboxes.
+    2.  Select a role.
+    3.  As **Status**, select **Active**.
+    4.  Click **Save**.
 
->[AZURE.NOTE] SumoLogic から提供されている他の SumoLogic ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other SumoLogic user account creation tools or APIs provided by SumoLogic to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを SumoLogic に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-sumologic,-perform-the-following-steps:"></a>To assign users to SumoLogic, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **SumoLogic** アプリ統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **SumoLogic** application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-sumologic-tutorial/IC778564.png "ユーザーの割り当て")
+    ![Assign users](./media/active-directory-saas-sumologic-tutorial/IC778564.png "Assign users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
-    ![はい](./media/active-directory-saas-sumologic-tutorial/IC767830.png "Yes")
+    ![Yes](./media/active-directory-saas-sumologic-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

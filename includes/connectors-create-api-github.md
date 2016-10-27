@@ -1,12 +1,22 @@
-### 前提条件
-- [GitHub](http://GitHub.com) アカウント 
+### <a name="prerequisites"></a>Prerequisites
+- A [GitHub](http://GitHub.com) account 
 
-ロジック アプリで GitHub アカウントを使用するには、GitHub アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
+Before you can use your GitHub account in a Logic app, you must authorize the Logic app to connect to your GitHub account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
 
-次に、GitHub アカウントに接続するロジック アプリを承認する手順を示します。
+Here are the steps to authorize your Logic app to connect to your GitHub account:
 
-1. GitHub への接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Show Microsoft managed APIs]** (Microsoft Managed API を表示) を選択し、検索ボックスに「*GitHub*」と入力します。使用するトリガーまたはアクションを選択します。 ![](./media/connectors-create-api-github/github-1.png)
-2. これまでに GitHub への接続を作成していない場合は、GitHub の資格情報を指定するよう求められます。この資格情報を使用して、接続するロジック アプリの承認と、GitHub アカウントのデータへのアクセスが行われます。 ![](./media/connectors-create-api-github/github-2.png)
-3. GitHub のユーザー名とパスワードを入力して、ロジック アプリを承認します。 ![](./media/connectors-create-api-github/github-3.png)   
-4. 操作の目的を確認します。 ![](./media/connectors-create-api-github/github-4.png)   
-5. ポータルで接続が作成されたことを確認します。これで、ロジック アプリを作成し、GitHub を使用することができます。 ![](./media/connectors-create-api-github/github-5.png)   
+1. To create a connection to GitHub, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *GitHub* in the search box. Select the trigger or action you'll like to use:  
+  ![](./media/connectors-create-api-github/github-1.png)
+2. If you haven't created any connections to GitHub before, you'll get prompted to provide your GitHub credentials. These credentials will be used to authorize your Logic app to connect to, and access your GitHub account's data:  
+  ![](./media/connectors-create-api-github/github-2.png)
+3. Provide your GitHub user name and password to authorize your Logic app:  
+  ![](./media/connectors-create-api-github/github-3.png)   
+4. Confirm your intentions:  
+  ![](./media/connectors-create-api-github/github-4.png)   
+5. Notice the connection has been created in the portal. You can now proceed with creating your Logic app and using GitHub in it:   
+  ![](./media/connectors-create-api-github/github-5.png)   
+
+
+<!--HONumber=Oct16_HO2-->
+
+

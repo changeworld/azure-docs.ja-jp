@@ -1,76 +1,98 @@
 <properties 
-	pageTitle="統合アカウントと Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
-	description="統合アカウント、Enterprise Integration Pack と Logic Apps についての詳細情報" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="msftman" 
-	manager="erikre" 
-	editor="cgronlun"/>
+    pageTitle="Overview of integration accounts and the Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
+    description="Learn all about Integration accounts, the Enterprise Integration Pack and Logic apps" 
+    services="logic-apps" 
+    documentationCenter=".net,nodejs,java"
+    authors="msftman" 
+    manager="erikre" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2016" 
-	ms.author="deonhe"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/08/2016" 
+    ms.author="deonhe"/>
 
-# 統合アカウントの概要
 
-## 統合アカウントとは
-統合アカウントは Azure アカウントです。これにより、エンタープライズ統合アプリでスキーマ、マップ、証明書、パートナーおよび契約を含むアーティファクトを管理することができます。作成する統合アプリには、スキーマ、マップまたは証明書などにアクセスするために統合アカウントを使用する必要があります。
+# <a name="overview-of-integration-accounts"></a>Overview of integration accounts
 
-## 統合アカウントの作成 
-1. **[参照]** を選択します。![](./media/app-service-logic-enterprise-integration-accounts/account-1.png)
-2. フィルター検索ボックスに「**integration**」と入力し、結果リストから **[Integration Accounts (統合アカウント)]**を選択します。![](./media/app-service-logic-enterprise-integration-accounts/account-2.png)
-3. ページ上部のメニューから *[追加]* を選択します。![](./media/app-service-logic-enterprise-integration-accounts/account-3.png)
-4. **名前**を入力 し、使用する**サブスクリプション**を選択します。新しい**リソース グループ**を作成するか、または既存のリソース グループを選択します。統合アカウントがホストされる**場所**を選択し、 **価格レベル**を選択して、 **[作成]** ボタンを選択します。
+## <a name="what-is-an-integration-account?"></a>What is an integration account?
+An integration account is an Azure account that allows Enterprise Integration apps to manage artifacts including schemas, maps, certificates, partners and agreements. Any integration app you create will need to use an integration account in order to access a schema, map or certificate, for example.
 
-  この時点で、統合アカウントは選択した場所にプロビジョニングされます。これは、1 分以内に完了する必要があります。![](./media/app-service-logic-enterprise-integration-accounts/account-4.png)
-5. ページを更新します。新しい統合アカウントがリストされていることを確認します。お疲れさまでした。![](./media/app-service-logic-enterprise-integration-accounts/account-5.png)
+## <a name="create-an-integration-account"></a>Create an integration account 
+1. Select **Browse**   
+![](./media/app-service-logic-enterprise-integration-accounts/account-1.png)  
+2. Enter **integration** in the filter search box and select **Integration Accounts** from the results list     
+ ![](./media/app-service-logic-enterprise-integration-accounts/account-2.png)  
+3. Select *Add* button from the menu at the top of the page      
+![](./media/app-service-logic-enterprise-integration-accounts/account-3.png)  
+4. Enter the **Name**, select the **Subscription** you want to use, either create a new **Resource group** or select an existing resource group, select a **Location** where your integration account will be hosted, select a **Pricing tier**, then select the **Create** button.   
 
-## ロジック アプリに統合アカウントをリンクする方法
-ロジック アプリでマップ、スキーマ、契約、および統合アカウントにある他のアーティファクトにアクセスするには、最初にロジック アプリに統合アカウントをリンクする必要があります。
+  At this point the integration account will be provisioned in the location you selected. This should complete within 1 minute.    
+![](./media/app-service-logic-enterprise-integration-accounts/account-4.png)  
+5. Refresh the page. You will see your new integration account listed. Congratulations!  
+![](./media/app-service-logic-enterprise-integration-accounts/account-5.png) 
 
-### ロジック アプリに統合アカウントをリンクする手順を次に示します。 
+## <a name="how-to-link-an-integration-account-to-a-logic-app"></a>How to link an integration account to a Logic app
+In order for your Logic apps to access to maps, schemas, agreements and other artifacts that are located in your integration account, you must first link the integration account to your Logic app.
 
-#### 前提条件
-- 統合アカウント
-- ロジック アプリ
+### <a name="here-are-the-steps-to-link-an-integration-account-to-a-logic-app"></a>Here are the steps to link an integration account to a Logic app 
 
->[AZURE.NOTE]開始する前に、統合アカウントおよびロジック アプリが**同じ Azure の場所**にあることを確認してください。
+#### <a name="prerequisites"></a>Prerequisites
+- An integration account
+- A Logic app
 
-1. ロジック アプリのメニューから **[設定]** リンクを選択します。![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-1.png)
-2. [設定] ブレードから **[Integration Account (統合アカウント)]** 項目を選択します。![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-2.png)
-3. **[Select an Integration account (統合アカウントを選択する)]** ドロップダウン リスト ボックスからロジック アプリにリンクする統合アカウントを選択します。![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-3.png)
-4. 作業内容を保存します。![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-4.png)
-5. 統合アカウントがロジック アプリにリンクされていることと、統合アカウント内のすべてのアーティファクトがロジック アプリに対して使用できるようになったことを示す通知が表示されます。![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-5.png)
+>[AZURE.NOTE]Be sure your integration account and Logic app are in the **same Azure location** before you begin
 
-ロジック アプリに統合アカウントがリンクされると、ロジック アプリに移動し、XML の検証、フラット ファイルのエンコード/デコードや変換などの B2B コネクタを使用して、B2B 機能を備えたアプリを作成することができます。
+1. Select **Settings** link from the menu of your Logic app  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-1.png)   
+2. Select the **Integration Account** item from the Settings blade  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-2.png)   
+3. Select the integration account you wish to link to your Logic app from the **Select an Integration account** drop down list box  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-3.png)   
+4. Save your work  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-4.png)   
+5. You will see a notification that indicates that your integration account has been linked to your Logic app and that all artifacts in your integration account are now available to your Logic app.  
+![](./media/app-service-logic-enterprise-integration-accounts/linkaccount-5.png)   
+
+Now that your integration account is linked to your Logic app, you can you go to your Logic app and use B2B connectors such as the XML Validation, Flat file encode/decode or Transform to create apps with B2B features.  
     
-## 統合アカウントの削除方法
-1. **[参照]** を選択します。![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
-2. フィルター検索ボックスに「**integration**」と入力し、結果リストから **[Integration Accounts (統合アカウント)]**を選択します。![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)
-3. 削除する**統合アカウント**を選択します。![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)
-4. メニューに配置されている**[削除]** リンクを選択します。![](./media/app-service-logic-enterprise-integration-accounts/delete.png)
-5. 選択内容を確認します。
+## <a name="how-to-delete-an-integration-account?"></a>How to delete an integration account?
+1. Select **Browse**  
+![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)    
+2. Enter **integration** in the filter search box and select **Integration Accounts** from the results list     
+ ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)  
+3. Select the **integration account** that you wish to delete  
+![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)  
+4. Select the **Delete** link that's located on the menu   
+![](./media/app-service-logic-enterprise-integration-accounts/delete.png)  
+5. Confirm your choice    
 
-## 統合アカウントの移動方法
-統合アカウントは、新しいサブスクリプションと新しいリソース グループに簡単に移動できます。統合アカウントを移動する必要がある場合は、次の手順に従います。
+## <a name="how-to-move-an-integration-account?"></a>How to move an integration account?
+You can easily move an integration account to a new subscription and a new resource group. Follow these steps if you need to move your integration account:
 
->[AZURE.IMPORTANT] 統合アカウントを移動すると、新しいリソース ID を使用するために、すべてのスクリプトを更新する必要があります。
+>[AZURE.IMPORTANT] You will need to update all scripts to use the new resource IDs after you move an integration account.
 
-1. **[参照]** を選択します。![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
-2. フィルター検索ボックスに「**integration**」と入力し、結果リストから **[Integration Accounts (統合アカウント)]**を選択します。![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)
-3. 削除する**統合アカウント**を選択します。![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)
-4. メニューに配置されている**[移動]** リンクを選択します。![](./media/app-service-logic-enterprise-integration-accounts/move.png)
-5. 選択内容を確認します。
+1. Select **Browse**  
+![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)    
+2. Enter **integration** in the filter search box and select **Integration Accounts** from the results list     
+ ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)  
+3. Select the **integration account** that you wish to delete  
+![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)  
+4. Select the **Move** link that's located on the menu   
+![](./media/app-service-logic-enterprise-integration-accounts/move.png)  
+5. Confirm your choice    
 
-## 次のステップ
-- [契約についての詳細情報](./app-service-logic-enterprise-integration-agreements.md "エンタープライズ統合契約についての詳細情報")
+## <a name="next-steps"></a>Next Steps
+- [Learn more about agreements](./app-service-logic-enterprise-integration-agreements.md "Learn about enterprise integration agreements")  
 
 
  
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

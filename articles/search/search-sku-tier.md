@@ -1,104 +1,110 @@
 <properties
-	pageTitle="Azure Search 用の SKU または価格レベルの選択 | Microsoft Azure"
-	description="Azure Search は無料、Basic、Standard の各 SKU にプロビジョニングできます。Standard は、複数のリソース構成および容量レベルで使用できます。"
-	services="search"
-	documentationCenter=""
-	authors="HeidiSteen"
-	manager="jhubbard"
-	editor=""
+    pageTitle="Choose a SKU or pricing tier for Azure Search | Microsoft Azure"
+    description="Azure Search can be provisioned at these SKUs: Free, Basic, and Standard, where Standard is available in various resource configurations and capacity levels."
+    services="search"
+    documentationCenter=""
+    authors="HeidiSteen"
+    manager="jhubbard"
+    editor=""
     tags="azure-portal"/>
 
 <tags
-	ms.service="search"
-	ms.devlang="NA"
-	ms.workload="search"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.date="08/08/2016"
-	ms.author="heidist"/>
+    ms.service="search"
+    ms.devlang="NA"
+    ms.workload="search"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.date="10/17/2016"
+    ms.author="heidist"/>
 
-# Azure Search 用の SKU または価格レベルの選択
 
-[サービスのプロビジョニング](search-create-service-portal.md)中に、SKU または価格レベルを指定する必要があります。指定できる選択肢には、**Free**、**Basic**、**Standard** があります。このうち **Standard** は、複数の構成および容量で指定できます。
+# <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Choose a SKU or pricing tier for Azure Search
 
-小規模のプロジェクト用としていつでも利用できるように、常に **Free** サービスをプロビジョニングするようお勧めしています (サブスクリプションごとに 1 つで、有効期限はありません)。**Free** サービスはテストや評価向けに利用できますが、運用向け、またはより大規模なテスト ワークロード向けには **Basic** レベルまたは **Standard** レベルで課金対象サービスを別途作成します。
+During [service provisioning](search-create-service-portal.md), you'll need to specify a SKU or pricing tier. Choices include **Free**, **Basic**, or **Standard**, where **Standard** is available in multiple configurations and capacities.
 
-Azure Search では、SKU により、利用できる機能ではなく容量が決まります。プレビュー機能を含むすべての機能を、すべての価格レベルで利用できます。
+We recommend that you always provision a **Free** service (one per subscription, with no expiration) so that its readily available for light-weight projects. Use the **Free** service for testing and evaluation; create a second billable service at the **Basic** or **Standard** tier for production or larger test workloads.
 
-## 価格レベルを決める方法
+In Azure Search, the SKU determines capacity, not feature availability. All features are available at every pricing tier, including preview features.
 
-容量が大きいほど、サービスの実行にかかるコストも高くなります。この記事の情報は、どの SKU で適切なバランスが得られるかを判断するのに役立ちますが、そのためには少なくとも、以下の点について大まかな見積もりを行う必要があります。
+## <a name="how-to-approach-a-pricing-tier-decision"></a>How to approach a pricing tier decision
 
-- 作成する予定のインデックスの数とサイズ
-- アップロードするドキュメントの数とサイズ
-- 1 秒あたりのクエリ数 (QPS) を単位としたクエリ量の概算
+Capacity and costs of running the service go hand-in-hand. Information in this article can help you decide which SKU delivers the right balance, but for any of it to be useful, you will need at least rough estimates on the following:
 
-容量の上限は、サービス内のインデックスやドキュメントの数、またはサービスによって使用されるリソース (ストレージやレプリカ) に対するハード制限によって決まるため、数とサイズが重要です。サービスの実質的な上限は、リソースとオブジェクトのうち先に使い果たした方の使用量になります。
+- Number and size of indexes you plan to create
+- Number and size of documents to upload
+- Some idea of query volume, in terms of Queries Per Second (QPS)
 
-見積もりが得られたら、次の手順によってプロセスを簡素化できます。
+Number and size are important because maximum limits are reached through a hard limit on the count of indexes or documents in a service, or on resources (storage or replicas) used by the service. The actual limit for your service will be whichever is used up first: resources or objects.
 
-- **手順 1.** 以降の SKU に関する説明を読み、どのようなオプションが利用できるかを確認します。
-- **手順 2.** 質問事項を確認して、選択肢を絞り込みます。
-- **手順 3.** ストレージと価格に対するハードウェアの制限を確認し、前の手順での決定事項を検証します。
+With estimates in hand, the following steps should simplify the process:
 
-> [AZURE.NOTE] 容量を少なめに見積もると、新しいサービスを上位の価格レベルでプロビジョニングする必要が生じ、その後でインデックスの再読み込みも必要になります。同じサービスで、特定の SKU から別の SKU へのインプレース アップグレードを実行することはできません。
+- **Step 1** Review the SKU descriptions below to learn about available options.
+- **Step 2** Review the questions to narrow down your choice.
+- **Step 3** Validate your decision by reviewing hard limits on storage and pricing.
 
-## SKU の説明
+> [AZURE.NOTE] If you underestimate capacity, you will need to provision a new service at the higher tier, and then reload your indexes. There is no in-place upgrade of the same service from one SKU to another.
 
-次の表に、それぞれの価格レベルについての説明を示します。
+## <a name="sku-descriptions"></a>SKU descriptions
 
-レベル|主なシナリオ
+The following table provides descriptions of each tier. 
+
+Tier|Primary scenarios
 ----|-----------------
-**Free**|評価、調査、または小規模なワークロードに使用される、課金なしの共有サービス。他のサブスクライバーと共有されるため、クエリのスループットとインデックス数は、サービスを使用している他のサブスクライバーに基づいて変化します。容量は小です (50 MB、または 3 つのインデックスと、インデックスごとに最大 10,000 個のドキュメント)。
-**Basic**|専用ハードウェア上の小規模な実稼働ワークロード。高可用性。容量は最大で 3 つのレプリカと 1 つのパーティション (2 GB) です。
-**S1**|Standard 1 はパーティション (12) とレプリカ (12) の柔軟な組み合わせをサポートし、専用ハードウェア上の中規模の実稼働ワークロードに対して使用されます。最大 36 個の請求可能な検索単位でサポートされる組み合わせで、レプリカとパーティションを割り当てることができます。この価格レベルでは、パーティションはそれぞれ 25 GB で、QPS は約 15 クエリ/秒です。
-**S2**|Standard 2 は S1 と同じ 36 検索単位を使用しながら、より大きいサイズのパーティションとレプリカで、より大規模な実稼働ワークロードを実行できます。この価格レベルでは、パーティションはそれぞれ 100 GB で、QPS は約 60 クエリ/秒です。
-**S3** (プレビュー)|Standard 3 はハイエンド システムで、最大 12 個のパーティションまたは 12 個のレプリカから成る構成 (36 検索単位以内) で、より大規模な実稼働ワークロードを実行できます。この価格レベルでは、パーティションはそれぞれ 200 GB で、QPS は 60 クエリ/秒を超えます。S3 はプレビュー段階にあり、導入価格が適用されます。
-**S3 HD** (プレビュー)|Standard 3 High Density は、多数の小さいインデックス向けです。パーティションは 1 個のみで、200 GB です。QPS は 60 クエリ/秒を超えます。S3 はプレビュー段階にあり、導入価格が適用されます。
+**Free**|A shared service, at no charge, used for evaluation, investigation, or small workloads. Because it's shared with other subscribers, query throughput and indexing will vary based on who else is using the service. Capacity is small (50 MB or 3 indexes with up 10,000 documents each).
+**Basic**|Small production workloads on dedicated hardware. Highly available. Capacity is up to 3 replicas and 1 partition (2 GB).
+**S1**|Standard 1 supports flexible combinations of partitions (12) and replicas (12), used for medium production workloads on dedicated hardware. You can allocate partitions and replicas in combinations supported by a maximum number of 36 billable search units. At this level, partitions are 25 GB each and QPS is approximately 15 queries per second.
+**S2**|Standard 2 runs larger production workloads using the same 36 search units as S1 but with larger sized partitions and replicas. At this level, partitions are 100 GB each and QPS is about 60 queries per second.
+**S3** (Preview)|Standard 3 runs proportionally larger production workloads on higher end systems, in configurations of up to 12 partitions or 12 replicas under 36 search units. At this level, partitions are 200 GB each and QPS is more than 60 queries per second. S3 is in preview and available at an introductory rate.
+**S3 HD** (Preview)|Standard 3 High Density is designed for a large number of smaller indexes. There is one partition only, at 200 GB. QPS is more than 60 queries per second. S3 is in preview and available at  an introductory rate.
 
-> [AZURE.NOTE] レプリカとパーティションの最大値は検索単位 (サービスごとに最大 36 単位) として課金されるため、表に示された最大値よりも実際の上限は低くなります。たとえば、最大 12 個のレプリカを使用する場合、使用できるパーティションは最大で 3 個となります (12 * 3 = 36 単位)。同様に、最大数のパーティションを使用する場合は、レプリカの数を 3 個に減らす必要があります。使用できる組み合わせの一覧については、「[Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする](search-capacity-planning.md)」をご覧ください。
+> [AZURE.NOTE] Replica and partition maximums are billed out as search units (36 unit maximum per service), which imposes a lower effective limit than what the maximum implies at face value. For example, to use the maximum of 12 replicas, you could have at most 3 partitions (12 * 3 = 36 units). Similarly, to use maximum partitions, reduce replicas to 3. See [Scale resource levels for query and indexing workloads in Azure Search](search-capacity-planning.md) for a chart on allowable combinations.
 
-## レベルごとの制限を確認する
+## <a name="review-limits-per-tier"></a>Review limits per tier
 
-次の表は、「[Azure Search サービスの制限](search-limits-quotas-capacity.md)」から制限の一部を抜粋したものです。この表には、SKU の決定に最も影響しやすい要因を示しています。以下の質問事項を確認する際は、この表を参考にしてください。
+The following chart is a subset of the limits from [Service Limits in Azure Search](search-limits-quotas-capacity.md). It lists the factors most likely to impact a SKU decision. You can refer to this chart when reviewing the questions below.
 
-リソース|無料|基本|S1|S2|S3 <br/>(プレビュー) |S3 HD <br/>(プレビュー) 
+Resource|Free|Basic|S1|S2|S3 <br/>(Preview) |S3 HD <br/>(Preview) 
 ---|---|---|---|----|---|----
-サービス レベル アグリーメント (SLA)|なし <sup>1</sup> |はい |はい |はい |なし <sup>1</sup> |なし <sup>1</sup> 
-SKU ごとに許可されるインデックス数|3|5|50|200|200|1,000
-ドキュメントの制限|合計 10,000|サービスあたり 100 万|パーティションあたり 1,500 万 |パーティションあたり 6,000 万|パーティションあたり 1 億 2,000 万 |インデックスあたり 100 万
-最大パーティション数|該当なし |1 |12 |12 |12|1
-パーティション サイズ|合計 50 MB|サービスあたり 2 GB|パーティションあたり 25 GB |パーティションあたり 100 GB (サービスあたり最大 1.2 TB)|パーティションあたり 200 GB (サービスあたり最大 2.4 TB)|200 GB (1 個のパーティション)
-最大レプリカ数|該当なし |3 |12 |12 |12|12
-秒間クエリ|該当なし|レプリカあたり最大 3|レプリカあたり最大 15|レプリカあたり最大 60|レプリカあたり 60 以上|レプリカあたり 60 以上
+Service Level Agreement (SLA)|No <sup>1</sup> |Yes |Yes  |Yes |No <sup>1</sup> |No <sup>1</sup> 
+Indexes allowed per SKU|3|5|50|200|200|1000
+Documents limits|10,000 total|1 million per service|15 million per partition |60 million per partition|120 million per partition |1 million per index
+Maximum partitions|N/A |1 |12  |12 |12|1
+Partition size|50 MB total|2 GB per service|25 GB per partition |100 GB per partition (up to a maximum of 1.2 TB per service)|200 GB per partition (up to a maximum of 2.4 TB per service)|200 GB (for the 1 partition)
+Maximum replicas|N/A |3 |12 |12 |12|12
+Queries per second|N/A|~3 per replica|~15 per replica|~60 per replica|>60 per replica|>60 per replica
 
-<sup>1</sup> Free およびプレビューの SKU には SLA がありません。SKU が一般公開されると、SLA が適用されます。
+<sup>1</sup> Free and Preview SKUs do not come with SLAs. SLAs are enforced once a SKU becomes generally available.
 
 
-## 要件を満たしていない SKU を排除する 
+## <a name="eliminate-skus-that-don't-meet-requirements"></a>Eliminate SKUs that don't meet requirements 
 
-次の質問は、ワークロードに対する適切な SKU の決定に役立ちます。
+The following questions can help you arrive at the right SKU decision for your workload.
 
-1. **サービス レベル アグリーメント (SLA)** の要件はありますか? SKU の決定を Basic、またはプレビュー以外の Standard に絞り込んでください。
-2. **何個のインデックス**が必要ですか? SKU の決定に最も大きな影響を与える変数の 1 つが、各 SKU でサポートされるインデックスの数です。インデックスのサポート内容は、低い価格レベルでは著しく異なります。インデックス数の要件は、SKU を決めるための主要な決定要因となる可能性があります。
-3. 各インデックスに**何個のドキュメント**が読み込まれますか? ドキュメントの数とサイズは、インデックスの最終的なサイズを決定します。インデックスの予測サイズを見積もることができると仮定した場合、そのサイズを SKU あたりのパーティション サイズ、およびそのサイズのインデックスを格納するために必要なパーティション数と比較して検討できます。
-4. **予想されるクエリ負荷はどのくらいですか**? ストレージの要件を把握した後は、クエリのワークロードについて検討します。S2 SKU および S3 の両方の SKU は同等に近いスループットを提供しますが、プレビュー SKU は SLA の要件から除外されます。
+1. Do you have **Service Level Agreement (SLA)** requirements? Narrow the SKU decision to Basic or non-preview Standard.
+2. **How many indexes** do you require? One of the biggest variables that will factor into a SKU decision is the number of indexes supported by each SKU. Index support is at markedly different levels in the lower pricing tiers. Requirements on number of indexes could be a primary determinant of a SKU decision.
+3. **How many documents** will be loaded into each index? The number and size of documents will determine the eventual size of the index. Assuming you can estimate the projected size of the index, you can compare that number against the partition size per SKU, extended by the number of partitions required to store an index of that size. 
+4. **What is the expected query load**? Once storage requirements are understood, consider query workloads. S2 and both S3 SKUs offer near-equivalent throughput, but SLA requirements will rule out any preview SKUs. 
 
-ほとんどのお客様は、これら 4 つの質問に対する回答に基づいて、特定の SKU を検討するか除外するかを決定できます。それでもまだ、どの SKU が適切であるかがわからない場合は、Azure サポートまでお問い合わせください。
+Most customers can rule a specific SKU in or out based on their answers to these four questions. If you still aren't sure which SKU to go with, contact Azure Support for further guidance.
 
-## 意思決定の検証: SKU が十分なストレージと QPS を提供するか
+## <a name="decision-validation:-does-the-sku-offer-sufficient-storage-and-qps?"></a>Decision validation: does the SKU offer sufficient storage and QPS?
 
-最後の手順として、[価格に関するページ](https://azure.microsoft.com/pricing/details/search/)と、[サービスの制限に関するページのサービスごとの制限とインデックスごとの制限の各セクション](search-limits-quotas-capacity.md)を見直し、サブスクリプションとサービスの制限に照らして見積もりをもう一度確認します。
+As a last step, revisit the [pricing page](https://azure.microsoft.com/pricing/details/search/) and the [per-service and per-index sections in Service Limits](search-limits-quotas-capacity.md) to double-check your estimates against subscription and service limits. 
 
-価格またはストレージの要件が範囲外にある場合は、(たとえば) 複数の小規模なサービス間でワークロードをリファクタリングすることができます。より細かいレベルでは、インデックスを小さく設計し直したり、フィルターを使用してクエリの効率を高めたりすることもできます。
+If either the price or storage requirements are out of bounds, you might want to refactor the workloads among multiple smaller services (for example). On more granular level, you could redesign indexes to be smaller, or use filters to make queries more efficient.
 
-> [AZURE.NOTE] ドキュメントに余分なデータが含まれている場合は、ストレージの要件が過剰になる可能性があります。ドキュメントは、検索可能なデータまたはメタデータのみで構成されているのが理想的です。検索不可能なバイナリ データは別の場所 (たとえば Azure テーブルまたは Blob Storage) に保存し、外部データへの URL 参照を保持するフィールドをインデックスに追加します。個々のドキュメントの最大サイズは 16 MB です (1 回の要求で複数のドキュメントを一括アップロードする場合は、それより小さくなります)。詳細については、「[Azure Search サービスの制限](search-limits-quotas-capacity.md)」をご覧ください。
+> [AZURE.NOTE] Storage requirements can be over-inflated if documents contain extraneous data. Ideally, documents contain only searchable data or metadata. Binary data is non-searchable and should be stored separately (perhaps in an Azure table or blob storage) with a field in the index to hold a URL reference to the external data. The maximum size of an individual document is 16 MB (or less if you are bulk uploading multiple documents in one request). See [Service limits in Azure Search](search-limits-quotas-capacity.md) for more information.
 
-## 次のステップ
+## <a name="next-step"></a>Next step
 
-どの SKU が適切であるかを決定した後は、次の手順に進みます。
+Once you know which SKU is the right fit, continue on with these steps:
 
-- [ポータルで Search サービスを作成する](search-create-service-portal.md)
-- [サービスをスケールするためにパーティションとレプリカの割り当てを変更する](search-capacity-planning.md)
+- [Create a search service in the portal](search-create-service-portal.md)
+- [Change the allocation of partitions and replicas to scale your service](search-capacity-planning.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

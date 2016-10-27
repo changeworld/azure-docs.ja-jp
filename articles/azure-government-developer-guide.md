@@ -1,71 +1,72 @@
 <properties 
-	pageTitle="Azure Government 開発者向けガイド" 
-	description="Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。" 
-	services="" 
-	cloud="gov"
-	documentationCenter="" 
-	authors="Joharve2" 
-	manager="Chrisnie" 
-	editor=""/>
+    pageTitle="Azure Government Developers Guide" 
+    description="This provides a comparision of features and guidance on developing applications for Azure Government" 
+    services="" 
+    cloud="gov"
+    documentationCenter="" 
+    authors="Joharve2" 
+    manager="Chrisnie" 
+    editor=""/>
 
 <tags 
-	ms.service="multiple" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.tgt_pltfrm="na" 
-	ms.workload="azure-government" 
-	ms.date="10/29/2015" 
-	ms.author="jharve"/>
+    ms.service="multiple" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.tgt_pltfrm="na" 
+    ms.workload="azure-government" 
+    ms.date="10/29/2015" 
+    ms.author="jharve"/>
 
 
-#  「Microsoft Azure Government Developer Guide (Microsoft Azure Government 開発者向けガイド)」をご覧ください 
 
-<p> Microsoft Azure Government は、Microsoft Azure の物理的、ネットワーク的に独立したインスタンスです。この開発者向けガイドには、アプリケーション開発者と管理者が、Azure のこれらの異なるリージョンとやり取りし、操作する必要がある場合の相違点についての詳しい説明が記載されています。
+#  <a name="microsoft-azure-government-developer-guide"></a>Microsoft Azure Government Developer Guide 
+
+<p> Microsoft Azure Government is a physically and network isolated instance of Microsoft Azure.  This developers guide will provide details on the differences that application developers and administrators would need to interact and work with these seperate regions of Azure.
 
 <!--Table of contents for topic, the words in brackets must match the heading wording exactly-->
 
 
-## このトピックの内容
+## <a name="in-this-topic"></a>In this topic
 
 
-+ [概要](#Overview)
-+ [開発者向けのガイダンス](#Guidance)
-+ [Microsoft Azure Government で現在使用できる機能](#Features)
-+ [エンドポイント マッピング](#Endpoint)
-+ [次のステップ](#next)
++ [Overview](#Overview)
++ [Guidance for Developers](#Guidance)
++ [Features currently available in Microsoft Azure Government](#Features)
++ [Endpoint Mapping](#Endpoint)
++ [Next Steps](#next)
 
 
-## <a name="Overview"></a>概要
+## <a name="<a-name="overview"></a>overview"></a><a name="Overview"></a>Overview
 
-Microsoft Azure Government は、米国連邦政府機関、州、地方自治体、そのソリューション プロバイダーのセキュリティとコンプライアンスのニーズを満たす Microsoft Azure サービスの個別のインスタンスです。Azure Government は、米国政府機関以外のデプロイから物理的、ネットワーク的に独立しており、選別された米国のスタッフによって運営されます。
+Microsoft Azure Government is a separate instance of the Microsoft Azure service addressing the security and compliance needs of U.S. federal agencies, state and local governments and their solutions providers. Azure Government offers physical and network isolation from non-U.S. government deployments and provides screened U.S. personnel. 
 
-Microsoft では、クラウド アプリケーションの作成、Microsoft のグローバルな Microsoft Azure サービス ("グローバル サービス") と Microsoft Azure Government サービスにデプロイするための多数のツールを提供します。
+Microsoft provides a number of tools to create and deploy cloud applications to Microsoft’s global Microsoft Azure service (“Global Service”) and Microsoft Azure Government services.
 
-アプリケーションを作成し、グローバル サービスではなく Azure Government サービスにデプロイするとき、開発者はその 2 つのサービスの主な違いを把握する必要があります(特に、プログラム環境の設定と構成、エンドポイントの構成、アプリケーションの記述、それらをサービスとした Azure Government へのデプロイについて)。
+When creating and deploying applications to the Azure Government Services, as opposed to the Global Service, developers need to know the key differences of the two services.  Specifically around setting up and configuring their programming environment, configuring endpoints, writing applications, and deploying them as services to Azure Government.
 
-このドキュメント内の情報は、これらの相違点をまとめ、[Azure Government](http://www.azure.com/gov "Azure Government") サイトと MSDN の [Microsoft Azure のテクニカル ライブラリ](http://msdn.microsoft.com/cloud-app-development-msdn "MSDN")に記載されている情報を補足するものです。公式の情報は、[Microsoft Azure のトラスト センター](https://azure.microsoft.com/support/trust-center/ "Microsoft Azure のトラスト センター"/)、[Azure ドキュメント センター](https://azure.microsoft.com/documentation/)、[Azure ブログ](https://azure.microsoft.com/blog/ "Azure ブログ"/)など、さまざまな場所にも記載されています。
+The information in this document summarizes those differences and supplements the information available on the [Azure Government](http://www.azure.com/gov "Azure Government") site and the [Microsoft Azure Technical Library](http://msdn.microsoft.com/cloud-app-development-msdn "MSDN") on MSDN. Official information may also be available in many other locations such as the [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/ "Microsoft Azure Trust Center"/), [Azure Documentation Center](https://azure.microsoft.com/documentation/) and in [Azure Blogs](https://azure.microsoft.com/blog/ "Azure Blogs"/). 
 
-このコンテンツは、Microsoft Azure Government にデプロイしているパートナーと開発者に適しています。
-
-
-
-## <a name="Guidance"></a>開発者向けのガイダンス
-現在利用可能な技術的なコンテンツのほとんどは、Microsoft Azure Government ではなく、グローバル サービス向けにアプリケーションを開発中であることを前提としているため、開発者は、Azure Government でホストされるように開発されたアプリケーションの主な相違点を確実に意識することが重要です。
-
-- まず、サービスと機能に相違点があります。これは、グローバル サービスの特定のリージョンにある特定の機能は、Azure Government では使用できないことを意味します。
-
-- 第 2 に、Azure Government で提供されている機能の場合、グローバル サービスとは構成上の相違点があります。そのため、サンプル コード、構成、手順を確認し、Azure Government クラウド サービス環境内で確実に構築と実行するようにしてください。
+This content is intended for partners and developers who are deploying to Microsoft Azure Government.
 
 
-## <a name="Features"></a> Microsoft Azure Government で現在使用できる機能
-現在、Azure Government では、米国政府アイオワ州、米国政府バージニア州の両方のリージョンで、次のサービスを使用できます。
+
+## <a name="<a-name="guidance"></a>guidance-for-developers"></a><a name="Guidance"></a>Guidance for Developers
+Because most of the technical content that is available currently assumes that applications are being developed for the Global Service rather than for Microsoft Azure Government, it’s important for you to ensure that developers are aware of key differences for applications developed to be hosted in Azure Government.
+
+- First, there are services and feature differences, this means that certain features that are in specific regions of the Global Service may not be available in Azure Government.
+
+- Second, for features that are offered in Azure Government, there are configuration differences from the Global Service.  Therefore, you should review your sample code, configurations and steps to ensure that you are building and executing within the Azure Government Cloud Services environment.
+
+
+## <a name="<a-name="features"></a>-features-currently-available-in-microsoft-azure-government"></a><a name="Features"></a> Features currently available in Microsoft Azure Government
+Azure Government currently has the following services available in both US GOV IOWA and US GOV VIRGINIA regions:
 
 - Virtual Machines
 - Cloud Services
 - Storage
 - Active Directory
 - Scheduler
-- 仮想ネットワーク
+- Virtual Networking
 - SQL Database
 - Azure Files
 - Media Services
@@ -76,45 +77,45 @@ Microsoft では、クラウド アプリケーションの作成、Microsoft �
 - Azure Backup
 - Automation
 - ExpressRoute
-- など
+- etc.
 
-その他のサービスを利用でき、より多くのサービスが継続的に追加される予定です。最新のサービスのリストについては、各リージョンで提供されているサービスを紹介している[リージョンに関するページ](https://azure.microsoft.com/regions/#services)を参照してください。
+Other services are available, and more services will be added on a continuous basis.  For the most current list of services, please see the [regions page](https://azure.microsoft.com/regions/#services) which will highlight each available region and their services.  
 
-現時点では、Azure Government をサポートするデータ センターは、米国政府アイオワ州と米国政府バージニア州です。現在のデータ センターと利用可能なサービスについては、上記リージョン ページをご覧ください。
+Currently, US GOV Iowa and US GOV Virginia are the data centers supporting Azure Government.  Please refer to the regions page above for current data centers and services available.
 
-## <a name="Endpoint"></a>エンドポイント マッピング
+## <a name="<a-name="endpoint"></a>endpoint-mapping"></a><a name="Endpoint"></a>Endpoint Mapping
 
-次の表を使用すると、Microsoft Azure と SQL データベースのパブリック エンドポイントを Azure Government 特定のエンドポイントにマッピングするときに役立ちます。
+Use the following table to guide you when mapping public Microsoft Azure and SQL Database endpoints to Azure Government specific endpoints.
 
 
-サービスの種類|Azure Public|Azure Government
+Service Type|Azure Public|Azure Government
 ---|---|---
-管理ポータル|manage.windowsazure.com|manage.windowsazure.us
-全般|*.windows.net|*.usgovcloudapi.net
-コア|*.core.windows.net|*.core.usgovcloudapi.net
-計算|*.cloudapp.net|*.usgovcloudapp.net
-BLOB ストレージ|*.blob.core.windows.net|	*.blob.core.usgovcloudapi.net
-キュー ストレージ|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
+Management Portal|manage.windowsazure.com|manage.windowsazure.us
+General|*.windows.net|*.usgovcloudapi.net
+Core|*.core.windows.net|*.core.usgovcloudapi.net
+Compute|*.cloudapp.net|*.usgovcloudapp.net
+Blob Storage|*.blob.core.windows.net|   *.blob.core.usgovcloudapi.net
+Queue Storage|*.queue.core.windows.net|*.queue.core.usgovcloudapi.net
 Table Storage|*.table.core.windows.net|*.table.core.usgovcloudapi.net
-サービス管理|management.core.windows.net|management.core.usgovcloudapi.net
+Service Management|management.core.windows.net|management.core.usgovcloudapi.net
 SQL Database|*.database.windows.net|*.database.usgovcloudapi.net
-ARM の負荷分散されたエンドポイント|https://management.windows.net|https://management.usgovcloudapi.net  
+ARM Load balanced Endpoint|https://management.windows.net|https://management.usgovcloudapi.net  
 
-* Azure AD 経由の ARM 認証については、「[Azure Resource Manager 要求の認証](https://msdn.microsoft.com/library/azure/dn790557.aspx)」を参照してください 。
+* For ARM authentication via Azure AD, please reference [Authenticating Azure Resource Manager Requests](https://msdn.microsoft.com/library/azure/dn790557.aspx)
 
-## <a name="next"></a>次のステップ
+## <a name="<a-name="next"></a>next-steps"></a><a name="next"></a>Next steps
 
-Azure Government のさらに詳細については、次のページをご覧ください。
+If you are interested in learning more and about Azure Government please leverage some of the links below.
 
-- **[Sign up for a trial (サインアップして試用)](https://azuregov.microsoft.com/trial/azuregovtrial)**
+- **[Sign up for a trial](https://azuregov.microsoft.com/trial/azuregovtrial)**
 
-- **[Azure Government の入手とアクセス](http://azure.com/gov)**
+- **[Acquiring and accessing Azure Government](http://azure.com/gov)**
 
-- **[Azure Government Overview (Azure Government の概要)](/azure-government-overview)**
+- **[Azure Government Overview](/azure-government-overview)**
 
-- **[Azure Government のブログ](http://blogs.msdn.com/b/azuregov/)**
+- **[Azure Government Blog](http://blogs.msdn.com/b/azuregov/)**
 
-- **[Microsoft Azure セキュリティ センター: コンプライアンス](https://azure.microsoft.com/support/trust-center/compliance/)**
+- **[Azure Compliance](https://azure.microsoft.com/support/trust-center/compliance/)**
 
 <!--Anchors-->
 
@@ -130,4 +131,8 @@ Azure Government のさらに詳細については、次のページをご覧く
 [Link 2 to another azure.microsoft.com documentation topic]: web-sites-custom-domain-name.md
 [Link 3 to another azure.microsoft.com documentation topic]: storage-whatis-account.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

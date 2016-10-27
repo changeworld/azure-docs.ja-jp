@@ -1,18 +1,22 @@
 
-1. [Azure ポータル]にアクセスします。**[すべて参照]**、**[Mobile Apps]**、作成したバックエンドの順にクリックします。モバイル アプリの設定で、**[クイックスタート]**、 **[Cordova]** の順にクリックします。**[クライアント アプリケーションを構成]** で **[新しいアプリの作成]** を選択してから、**[ダウンロード]** をクリックします。これにより、バックエンドに接続するように事前に構成されたアプリ用の完成した Cordova プロジェクトがダウンロードされます。
+1. Visit the [Azure Portal]. Click **Browse All** > **Mobile Apps** > the backend that you just created. In the mobile app settings, click **Quickstart** > **Cordova**. Under **Configure your client application**, select **Create a New App**, then click **Download**. This downloads a complete Cordova project for an app pre-configured to connect to your backend.
 
-2. ハード ドライブのディレクトリにダウンロードした ZIP ファイルを展開します。ソリューション ファイル (.sln) に移動し、Visual Studio を使ってファイルを開きます。
+2. Unpack the downloaded ZIP file to a directory on your hard drive, navigate to the solution file (.sln) and open it using Visual Studio.
 
-5. Visual Studio で、開始用の矢印の横にあるドロップダウン リストからソリューション プラットフォーム (Android、iOS、または Windows) を選択し、緑色の矢印のドロップダウン リストをクリックして、特定のデプロイ デバイスまたはエミュレーターを選択します。既定の Android プラットフォームと Ripple エミュレーターを使用できます。高度なチュートリアルでは、サポートされているデバイスまたはエミュレーターを選択する必要があります。
+5. In Visual Studio, choose the solution platform (Android, iOS or Windows) from the drop-down next to the start arrow, then select a specific deployment device or emulator by clicking the drop-down on the green arrow. Note that you can use the default Android platform and Ripple emulator. More advanced tutorials will require you to select a supported device or emulator. 
 
-6. F5 キーを押すか、緑色の矢印をクリックして、Cordova アプリをビルドして実行します。ネットワークへのアクセスを要求するエミュレーターのセキュリティ ダイアログが表示された場合は、承認します。
+6. Press F5 or click the green arrow to build and and run your Cordova app. If you see a security dialog in the emulator requesting access to the network, accept it.   
 
-7. デバイスまたはエミュレーターでアプリが起動したら、**[Enter new text (新しいテキストを入力)]** に意味のあるテキスト (「_チュートリアルの完了_」など) を入力し、**[Add (追加)]** ボタンをクリックします。これにより、事前にデプロイした Azure バックエンドに POST 要求が送信されます。バックエンドは要求から取得したデータを SQL Database の TodoItem テーブルに挿入し、新しく格納されたアイテムに関する情報をモバイル アプリに返します。モバイル アプリでは、このデータが一覧に表示されます。
+7. After the the app is started on the device or emulator, type meaningful text in **Enter new text**, such as _Complete the tutorial_ and then click the **Add** button.  
+This sends a POST request to the Azure backend you deployed earlier. The backend inserts data from the request is into the TodoItem table in the SQL Database, and returns information about the newly stored items back to the mobile app. The mobile app displays this data in the list.
 
     ![](./media/app-service-mobile-cordova-quickstart/quickstart-startup.png)
     
-8. サポート予定のデバイス プラットフォームごとに前の 3 つの手順を繰り返します。
+8. Repeat the previous three steps for each device platform that you plan to support.
 
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

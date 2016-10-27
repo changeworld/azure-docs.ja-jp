@@ -1,98 +1,104 @@
 <properties
-	pageTitle="データベースを新しいサーバーに復元した後、またはセカンダリ データベースのコピーにデータベースをフェールオーバーした後にセキュリティを管理する方法 |Microsoft Azure"
-	description="このトピックでは、データベースの復元またはフェールオーバー後にセキュリティを管理する際のセキュリティに関する考慮事項について説明します。"
-	services="sql-database"
-	documentationCenter="na"
-	authors="CarlRabeler"
-	manager="jhubbard"
-	editor="monicar" />
+    pageTitle="How to manage security after restoring a database to a new server or failing over a database to a secondary database copy | Microsoft Azure"
+    description="This topic explains security considerations for managing security after a database restore or a failover."
+    services="sql-database"
+    documentationCenter="na"
+    authors="CarlRabeler"
+    manager="jhubbard"
+    editor="monicar" />
 
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="data-management"
-	ms.date="07/16/2016"
-	ms.author="carlrab" />
+    ms.service="sql-database"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="data-management"
+    ms.date="10/13/2016"
+    ms.author="carlrab" />
 
-# 障害復旧後にセキュリティを管理する方法
 
->[AZURE.NOTE] すべてのサービス階層のデータベースで [Active Geo-Replication](sql-database-geo-replication-overview.md) を使用できるようになりました。
+# <a name="how-to-manage-azure-sql-database-security-after-disaster-recovery"></a>How to manage Azure SQL Database security after disaster recovery
 
-## 障害復旧の認証要件の概要
+>[AZURE.NOTE] [Active Geo-Replication](sql-database-geo-replication-overview.md) is now available for all databases in all service tiers.
 
-このトピックでは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成し、制御するための認証要件と、セカンダリ データベースへのユーザー アクセスを設定するために必要な手順について説明します。また、[geo リストア](sql-database-recovery-using-backups.md#geo-restore)使用後に復旧されたデータベースへのアクセスを有効にする方法についても説明します。復旧オプションの詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+## <a name="overview-of-authentication-requirements-for-disaster-recovery"></a>Overview of authentication requirements for disaster recovery
 
-## 包含ユーザーによる障害復旧
+This topic describes the authentication requirements to configure and control [Active Geo-Replication](sql-database-geo-replication-overview.md) and the steps required to set up user access to the secondary database. It also describes how enable access to the recovered database after using [geo-restore](sql-database-recovery-using-backups.md#geo-restore). For more information on recovery options, see [Business Continuity Overview](sql-database-business-continuity.md).
 
-従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。これには 2 つ利点があります。障害復旧のシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
+## <a name="disaster-recovery-with-contained-users"></a>Disaster recovery with contained users
 
-主なトレードオフは、大規模な障害復旧プロセスの管理が困難になることです。同じログインを使用するデータベースが複数ある場合、複数のデータベースで包含ユーザーを使用して資格情報を維持すると、包含ユーザーの利点が損なわれる場合があります。たとえば、パスワード ローテーション ポリシーでは、マスター データベースで 1 回だけログイン用パスワードを変更するのではなく、複数のデータベースで一貫して変更を行う必要があります。このような理由から、同じユーザー名とパスワードを使用するデータベースが複数ある場合、包含ユーザーの使用は推奨されません。
+Unlike traditional users, which must be mapped to logins in the master database, a contained user is managed completely by the database itself. This has two benefits. In the disaster recovery scenario, the users can continue to connect to the new primary database or the database recovered using geo-restore without any additional configuration, because the database manages the users. There are also potential scalability and performance benefits from this configuration from a login perspective. For more information, see [Contained Database Users - Making Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx). 
 
-## ログインとユーザーを構成する方法
+The main trade-off is that managing the disaster recovery process at scale is more challenging. When you have multiple databases that use the same login, maintaining the credentials using contained users in multiple database may negate the benefits of contained users. For example, the password rotation policy requires that changes be made consistently in multiple databases rather than changing the password for the login once in the master database. For this reason, if you have multiple databases that use the same user name and password, using contained users is not recommended. 
 
-包含ユーザーではなくログインとユーザーを使用している場合は、追加の手順を実行して、マスター データベースに同じログインが存在することを確認する必要があります。次のセクションでは、関連する手順とその他の考慮事項について概要を説明します。
+## <a name="how-to-configure-logins-and-users"></a>How to configure logins and users
 
-### セカンダリ データベースまたは復旧されたデータベースへのユーザー アクセスの設定
+If you are using logins and users (rather than contained users), you must make take extra steps to insure that the same logins exist in the master database. The following sections outline the steps involved and additional considerations.
 
-セカンダリ データベースを読み取り専用のセカンダリ データベースとして使用できるようにし、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースへの適切なアクセスを保証するには、復旧の前に、ターゲット サーバーのマスター データベースに適切なセキュリティ構成を設定する必要があります。
+### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Set up user access to a secondary or recovered database
 
-各手順の詳細なアクセス許可については、後ほど詳しく説明します。
+In order for the secondary database to be usable as a read-only secondary database, and to ensure proper access to the new primary database or the database recovered using geo-restore, the master database of the target server must have the appropriate security configuration in place before the recovery.
 
-geo レプリケーション セカンダリに対するユーザー アクセスの準備は、geo レプリケーションの構成の一部として実行する必要があります。geo リストアされたデータベースへのユーザー アクセスの準備は、元のサーバーがオンラインになっているときに実行する必要があります (例: 障害復旧訓練の一部として)。
+The specific permissions for each step are described later in this topic.
 
->[AZURE.NOTE] ログイン アクセスが適切に構成されていないサーバーにフェールオーバーまたは geo リストアする場合は、サーバー管理者アカウントに制限されます。
+Preparing user access to a Geo-Replication secondary should be performed as part configuring Geo-Replication. Preparing user access to the geo-restored databases should be performed at any time when the original server is online (e.g. as part of the DR drill).
 
-ターゲット サーバーでのログインの設定には、以下に示す 3 つの手順が含まれます。
+>[AZURE.NOTE] If you failover or geo-restore to a server that does not have properly configured logins access to it will be limited to the server admin account.
 
-#### 1\.プライマリ データベースにアクセスできるログインを特定する:
-このプロセスの最初の手順は、ターゲット サーバー上に複製するログインを特定することです。そのために、ソース サーバーの論理 master データベースとプライマリ データベースでそれぞれ 1 回ずつ SELECT ステートメントを実行します。
+Setting up logins on the target server involves three steps outlined below:
 
-サーバー管理者または **LoginManager** サーバー ロールのメンバーのみが、次の SELECT ステートメントを使用してソース サーバーのログインを特定できます。
+#### <a name="1.-determine-logins-with-access-to-the-primary-database:"></a>1. Determine logins with access to the primary database:
+The first step of the process is to determine which logins must be duplicated on the target server. This is accomplished with a pair of SELECT statements, one in the logical master database on the source server and one in the primary database itself.
 
-	SELECT [name], [sid] 
-	FROM [sys].[sql_logins] 
-	WHERE [type_desc] = 'SQL_Login'
+Only the server admin or a member of the **LoginManager** server role can determine the logins on the source server with the following SELECT statement. 
 
-また、db\_owner データベース ロールのメンバー、dbo ユーザー、またはサーバー管理者のみが、プライマリ データベース内にあるすべてのデータベース ユーザー プリンシパルを特定できます。
+    SELECT [name], [sid] 
+    FROM [sys].[sql_logins] 
+    WHERE [type_desc] = 'SQL_Login'
 
-	SELECT [name], [sid]
-	FROM [sys].[database_principals]
-	WHERE [type_desc] = 'SQL_USER'
+Only a member of the db_owner database role, the dbo user, or server admin, can determine all of the database user principals in the primary database.
 
-#### 2\.手順 1. で特定したログインの SID を検索する:
-前のセクションで実行したクエリの出力を比較して SID を一致させることで、サーバー ログインをデータベース ユーザーに対応付けることができます。一致する SID を持つデータベース ユーザーが対応付けられたログインは、そのデータベースのユーザー プリンシパルとしてデータベースに対するユーザー アクセス権が付与されます。
+    SELECT [name], [sid]
+    FROM [sys].[database_principals]
+    WHERE [type_desc] = 'SQL_USER'
 
-次のクエリを使用すると、データベース内のすべてのユーザー プリンシパルとその SID を表示できます。このクエリを実行できるのは、db\_owner データベース ロールのメンバーまたはサーバー管理者のみです。
+#### <a name="2.-find-the-sid-for-the-logins-identified-in-step-1:"></a>2. Find the SID for the logins identified in step 1:
+By comparing the output of the queries from the previous section and matching the SIDs, you can map the server login to database user. Logins that have a database user with a matching SID have user access to that database as that database user principal. 
 
-	SELECT [name], [sid]
-	FROM [sys].[database_principals]
-	WHERE [type_desc] = 'SQL_USER'
+The following query can be used to see all of the user principals and their SIDs in a database. Only a member of the db_owner database role or server admin can run this query.
 
->[AZURE.NOTE] **INFORMATION\_SCHEMA** ユーザーと **sys** ユーザーの SID は *NULL* で、**ゲスト** SID は **0x00** です。データベースの作成者が **DbManager** のメンバーではなくサーバー管理者だった場合、**dbo** SID は *0x01060000000001648000000000048454* で始まることがあります。
+    SELECT [name], [sid]
+    FROM [sys].[database_principals]
+    WHERE [type_desc] = 'SQL_USER'
 
-#### 3\.ターゲット サーバーへのログインを作成する:
-最後の手順では、1 つ以上のターゲット サーバーにアクセスし、適切な SID を使用してログインを生成します。基本的な構文は次のとおりです。
+>[AZURE.NOTE] The **INFORMATION_SCHEMA** and **sys** users have *NULL* SIDs, and the **guest** SID is **0x00**. The **dbo** SID may start with *0x01060000000001648000000000048454*, if the database creator was the server admin instead of a member of **DbManager**.
 
-	CREATE LOGIN [<login name>]
-	WITH PASSWORD = <login password>,
-	SID = <desired login SID>
+#### <a name="3.-create-the-logins-on-the-target-server:"></a>3. Create the logins on the target server:
+The last step is to go to the target server, or servers, and generate the logins with the appropriate SIDs. The basic syntax is as follows.
 
->[AZURE.NOTE] セカンダリへのユーザー アクセスを許可し、プライマリへのアクセスは許可しない場合は、次の構文を使用してプライマリ サーバーでユーザー ログインを変更します。
+    CREATE LOGIN [<login name>]
+    WITH PASSWORD = <login password>,
+    SID = <desired login SID>
+
+>[AZURE.NOTE] If you want to grant user access to the secondary, but not to the primary, you can do that by altering the user login on the primary server by using the following syntax.
 >
->ALTER LOGIN <ログイン名> DISABLE
+>ALTER LOGIN <login name> DISABLE
 >
->DISABLE を実行してもパスワードは変更されないため、必要な場合にいつでも有効にできます。
+>DISABLE doesn’t change the password, so you can always enable it if needed.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- データベースへのアクセスとログインの管理の詳細については、「[SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)」を参照してください。
-- 包含データベース ユーザーの詳細については、「[包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
-- アクティブ geo レプリケーションの使用および構成の方法については、「[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)」をご覧ください。
-- geo リストアの使用方法については、「[geo リストア](sql-database-recovery-using-backups.md#geo-restore)」をご覧ください。
+- For more information on managing database access and logins, see [SQL Database security: Manage database access and login security](sql-database-manage-logins.md).
+- For more information on contained database users, see [Contained Database Users - Making Your Database Portable](https://msdn.microsoft.com/library/ff929188.aspx).
+- For information about using and configuring Active Geo-Replication, see [Active Geo-Replication](sql-database-geo-replication-overview.md)
+- For informatin about using Geo-Restore, see [Geo-Restore](sql-database-recovery-using-backups.md#geo-restore)
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

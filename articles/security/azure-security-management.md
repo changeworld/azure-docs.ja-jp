@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure のセキュリティ管理 | Microsoft Azure"
-   description=" この記事では、クラウド サービスや仮想マシン、カスタム アプリケーションをはじめとする Microsoft Azure 環境の管理という観点で、リモート管理のセキュリティを強化するための手順を説明します。"
+   pageTitle="Security Management in Azure | Microsoft Azure"
+   description=" This article discusses steps for enhancing remote management security while administering Microsoft Azure environments, including cloud services, Virtual Machines and custom applications."
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,230 +16,231 @@
    ms.date="08/25/2016"
    ms.author="terrylan"/>
 
-# Azure のセキュリティ管理
 
-Azure の利用者は、そのクラウド環境をさまざまなデバイスから管理できます。その中には管理ワークステーションや開発用 PC もあれば、タスク固有の権限を持った特権付きのエンド ユーザー デバイスもあります。管理作業は、[Azure ポータル](https://azure.microsoft.com/features/azure-portal/)など、Web ベースのコンソールを介して実行する場合もあれば、オンプレミス システムと Azure との間に直接接続が存在し、仮想プライベート ネットワーク (VPN) やターミナル サービス、クライアント アプリケーション プロトコルを介して実行したり、プログラムから Azure Service Management API (SMAPI) を介して実行したりする場合もあります。また、クライアントのエンドポイントはドメインに参加している場合と、タブレット、スマートフォンなど、管理下にない孤立したデバイスである場合とがあります。
+# <a name="security-management-in-azure"></a>Security management in Azure
 
-このように多彩なアクセスと管理が可能であることによって豊富な選択肢が存在する反面、そのばらつきがクラウド デプロイに深刻なリスクをもたらすこともあり、管理、追跡、監査という管理上の工程が困難になる可能性があります。そうした選択肢の多さから、クラウド サービスの管理用クライアント エンドポイントの利用に監視の目が行き届かず、セキュリティ上の脅威を招く場合もあります。インフラストラクチャの開発と管理に共用ワークステーションや個人用ワークステーションを使用することは、Web 閲覧 (水飲み場型攻撃など) や電子メール (ソーシャル エンジニアリング、フィッシングなど) などの予測不可能な脅威要因にさらされる原因となります。
+Azure subscribers may manage their cloud environments from multiple devices, including management workstations, developer PCs, and even privileged end-user devices that have task-specific permissions. In some cases, administrative functions are performed through web-based consoles such as the [Azure portal](https://azure.microsoft.com/features/azure-portal/). In other cases, there may be direct connections to Azure from on-premises systems over Virtual Private Networks (VPNs), Terminal Services, client application protocols, or (programmatically) the Azure Service Management API (SMAPI). Additionally, client endpoints can be either domain joined or isolated and unmanaged, such as tablets or smartphones.
+
+Although multiple access and management capabilities provide a rich set of options, this variability can add significant risk to a cloud deployment. It can be difficult to manage, track, and audit administrative actions. This variability may also introduce security threats through unregulated access to client endpoints that are used for managing cloud services. Using general or personal workstations for developing and managing infrastructure opens unpredictable threat vectors such as web browsing (for example, watering hole attacks) or email (for example, social engineering and phishing).
 
 ![][1]
 
-Azure のインターフェイス (SMAPI など) に対する多種多様なエンドポイントからのアクセスを適切に管理するセキュリティ ポリシーやセキュリティ メカニズムを構築することは困難であるため、この種の環境は攻撃のリスクが大きくなります。
+The potential for attacks increases in this type of environment because it is challenging to construct security policies and mechanisms to appropriately manage access to Azure interfaces (such as SMAPI) from widely varied endpoints.
 
-### リモート管理の脅威
+### <a name="remote-management-threats"></a>Remote management threats
 
-攻撃者はえてして、アカウントの資格情報を不正に利用したり (パスワードのブルート フォース攻撃、フィッシング、資格情報の採集など)、ユーザーを欺いて有害なコード (悪質な Web サイトからドライブバイ ダウンロードで、または悪質な電子メール添付ファイルから) を実行させたりするなどして特権アクセスの取得を試みます。リモートから管理されるクラウド環境では、いつ、どこからアクセスされるかわからないために、アカウント侵害はリスクの増大につながります。
+Attackers often attempt to gain privileged access by compromising account credentials (for example, through password brute forcing, phishing, and credential harvesting), or by tricking users into running harmful code (for example, from harmful websites with drive-by downloads or from harmful email attachments). In a remotely managed cloud environment, account breaches can lead to an increased risk due to anywhere, anytime access.
 
-主要な管理者アカウントを厳しく規制しても、それよりも低いレベルのユーザー アカウントが、セキュリティ戦略の弱点を攻略する目的で悪用される可能性があります。またセキュリティに対する訓練が不足しているために、アカウント情報が意図せず漏えいし、侵害につながることもあります。
+Even with tight controls on primary administrator accounts, lower-level user accounts can be used to exploit weaknesses in one’s security strategy. Lack of appropriate security training can also lead to breaches through accidental disclosure or exposure of account information.
 
-ユーザーのワークステーションが管理作業にも使われていると、さまざまな部分に侵入の隙が生じます。ユーザーがサードパーティのオープン ソース ツールを使用して Web を閲覧することもあれば、トロイの木馬が忍ばされた悪質なドキュメント ファイルを開くこともあります。
+When a user workstation is also used for administrative tasks, it can be compromised at many different points. Whether a user is browsing the web, using 3rd-party and open-source tools, or opening a harmful document file that contains a trojan.
 
-一般に、データの侵害は、デスクトップ コンピューターに対するスピア フィッシング (電子メール)、ブラウザーの脆弱性の悪用やプラグイン (Flash、PDF、Java など) に端を発しており、それらが攻撃の最大の標的となっています。これらのコンピューターには、開発や他の資産の管理を目的とした業務に関して、運用サーバーや運用ネットワーク デバイスに対する管理者レベルまたはサービス レベルのアクセス権限が割り当てられている場合があります。
+In general, most targeted attacks that result in data breaches can be traced to browser exploits, plug-ins (such as Flash, PDF, Java), and spear phishing (email) on desktop machines. These machines may have administrative-level or service-level permissions to access live servers or network devices for operations when used for development or management of other assets.
 
-### 運用上のセキュリティの基本
+### <a name="operational-security-fundamentals"></a>Operational security fundamentals
 
-管理と運用のセキュリティは、侵入の危険のあるポイントを減らしてクライアントの攻撃対象領域を小さくすることで強化できます。これは、"職務の分離" と "環境の分離" というセキュリティ原則を実施することで達成できます。
+For more secure management and operations, you can minimize a client’s attack surface by reducing the number of possible entry points. This can be done through security principles: “separation of duties” and “segregation of environments.”
 
-機密性が求められる部門を他の部門から切り離すことで、複数のレベルにセキュリティ侵害が広がるリスクを減らします。次に例を示します。
+Isolate sensitive functions from one another to decrease the likelihood that a mistake at one level will lead to a breach in another. Examples:
 
-- セキュリティの侵害を招く危険性がある業務は、管理タスクから切り離してください (たとえば管理者が受け取ったメールにマルウェアが添付されていると、インフラストラクチャ サーバーにまで感染が広がります)。
-- 高度な機密を要する業務用のワークステーションは、インターネットの閲覧といった高いリスクを伴う用途に使用しないでください。
+- Administrative tasks should not be combined with activities that might lead to a compromise (for example, malware in an administrator’s email that then infects an infrastructure server).
+- A workstation used for high-sensitivity operations should not be the same system used for high-risk purposes such as browsing the Internet.
 
-不要なソフトウェアを削除することによって、システムの攻撃対象領域を減らします。例:
+Reduce the system’s attack surface by removing unnecessary software. Example:
 
-- 管理、サポート、開発に使用される標準的なワークステーションには、そのデバイスの主な目的がクラウド サービスを管理することであるならば、メール クライアントなどの生産性アプリケーションをインストールする必要はありません。
+- Standard administrative, support, or development workstation should not require installation of an email client or other productivity applications if the device’s main purpose is to manage cloud services.
 
-インフラストラクチャ コンポーネントに対する管理者アクセス権を持つクライアント システムには、可能な限り厳格なポリシーを適用して、セキュリティ リスクを軽減する必要があります。次に例を示します。
+Client systems that have administrator access to infrastructure components should be subjected to the strictest possible policy to reduce security risks. Examples:
 
-- デバイスからのオープン インターネット アクセスを拒否し、制限の厳しいファイアウォール構成を使用するグループ ポリシー設定をセキュリティ ポリシーに含める。
-- 直接アクセスが必要である場合はインターネット プロトコル セキュリティ (IPsec) VPN を使用する。
-- 管理用と開発用に別々の Active Directory ドメインを構成する。
-- 管理用ワークステーションのネットワーク トラフィックを隔離してフィルタリングする。
-- マルウェア対策ソフトウェアを使用する。
-- 多要素認証を導入して資格情報の盗難リスクを小さくする。
+- Security policies can include Group Policy settings that deny open Internet access from the device and use of a restrictive firewall configuration.
+- Use Internet Protocol security (IPsec) VPNs if direct access is needed.
+- Configure separate management and development Active Directory domains.
+- Isolate and filter management workstation network traffic.
+- Use antimalware software.
+- Implement multi-factor authentication to reduce the risk of stolen credentials.
 
-さらにアクセス リソースを一元管理し、未管理のエンドポイントをなくすことで、管理タスクを省力化することができます。
+Consolidating access resources and eliminating unmanaged endpoints also simplifies management tasks.
 
 
-### Azure のリモート管理に対するセキュリティの確保
+### <a name="providing-security-for-azure-remote-management"></a>Providing security for Azure remote management
 
-Azure には、そのクラウド サービスと仮想マシンの管理者を支援するセキュリティ メカニズムが備わっています。その例を次に示します。
+Azure provides security mechanisms to aid administrators who manage Azure cloud services and virtual machines. These mechanisms include:
 
-- 認証と[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)。
-- 監視、ログ、監査。
-- 証明書と通信の暗号化。
-- Web 管理ポータル。
-- ネットワーク パケット フィルタリング。
+- Authentication and [role-based access control](../active-directory/role-based-access-control-configure.md).
+- Monitoring, logging, and auditing.
+- Certificates and encrypted communications.
+- A web management portal.
+- Network packet filtering.
 
-クライアント側のセキュリティ構成とデータセンターにデプロイされた管理ゲートウェイに加え、クラウドのアプリケーションやデータに対する管理者のアクセスを制限したり監視したりすることができます。
+In combination with client-side security configuration and datacenter deployment of a management gateway, it is possible to restrict and monitor administrator access to cloud applications and data.
 
-> [AZURE.NOTE] この記事で紹介しているいくつかの推奨事項に従った場合、結果的にデータやネットワーク、コンピューティング リソースの使用量が増加したり、ライセンス コストやサブスクリプション コストが増大したりする場合があります。
+> [AZURE.NOTE] Certain recommendations in this article may result in increased data, network, or compute resource usage, and may increase your license or subscription costs.
 
-## 管理用ワークステーションの堅牢化
+## <a name="hardened-workstation-for-management"></a>Hardened workstation for management
 
-ワークステーションを堅牢化するにあたっての目標は、その運用上、最も重要な機能以外を排除することによって、潜在的な攻撃対象領域をできるだけ小さくすることです。システムの堅牢化には、インストールされているサービスやアプリケーションの数を減らすことや、アプリケーションの実行を制限すること、ネットワーク アクセスを必要最小限にすること、システムを常に最新の状態に保つことが含まれます。そのうえで堅牢化したワークステーションを管理用途に使用することによって、管理ツールや管理作業を他のエンド ユーザーの作業から隔離します。
+The goal of hardening a workstation is to eliminate all but the most critical functions required for it to operate, making the potential attack surface as small as possible. System hardening includes minimizing the number of installed services and applications, limiting application execution, restricting network access to only what is needed, and always keeping the system up to date. Furthermore, using a hardened workstation for management segregates administrative tools and activities from other end-user tasks.
 
-オンプレミスのエンタープライズ環境では、専用の管理ネットワークや、ID カードで入退出を制限するサーバー ルーム、保護されたネットワーク領域で動作するワークステーションによって、物理インフラストラクチャの攻撃対象領域を制限します。クラウド型やハイブリッド型の IT モデルでは、IT リソースへの物理的なアクセス手段の欠落から、管理サービスの安全性を徹底することが他のモデルと比べて複雑である場合があります。保護ソリューションを導入するためには、入念なソフトウェア構成、セキュリティにフォーカスしたプロセス、包括的なポリシーが必要です。
+Within an on-premises enterprise environment, you can limit the attack surface of your physical infrastructure through dedicated management networks, server rooms that have card access, and workstations that run on protected areas of the network. In a cloud or hybrid IT model, being diligent about secure management services can be more complex because of the lack of physical access to IT resources. Implementing protection solutions requires careful software configuration, security-focused processes, and comprehensive policies.
 
-クラウド管理やアプリケーション開発用にロックダウンされたワークステーションでは、使用ソフトウェアに与える特権を最小限にし、リモート管理と開発環境を標準化することによって、セキュリティ インシデントのリスクを小さくすることができます。ワークステーションの構成にしっかりとしたセキュリティを適用することによって、脆弱性の悪用やマルウェアに多く使用される経路を遮断し、重要なクラウド リソースの管理に使用するアカウントの侵害を防ぐことができます。具体的には、[Windows AppLocker](http://technet.microsoft.com/library/dd759117.aspx) と Hyper-V テクノロジを使用して、クライアント システムの動作を制御、隔離し、メールやインターネット閲覧などの脅威を緩和することができます。
+Using a least-privilege minimized software footprint in a locked-down workstation for cloud management—as well as for application development—can reduce the risk of security incidents by standardizing the remote management and development environments. A hardened workstation configuration can help prevent the compromise of accounts that are used to manage critical cloud resources by closing many common avenues used by malware and exploits. Specifically, you can use [Windows AppLocker](http://technet.microsoft.com/library/dd759117.aspx) and Hyper-V technology to control and isolate client system behavior and mitigate threats, including email or Internet browsing.
 
-堅牢化したワークステーションで管理者が使用するのは標準ユーザー アカウントです。これで管理レベルの実行がブロックされます。また、関連するアプリケーションは許可リストによって制御されます。ワークステーションの堅牢化は、基本的に次の要素で構成されます。
+On a hardened workstation, the administrator runs a standard user account (which blocks administrative-level execution) and associated applications are controlled by an allow list. The basic elements of a hardened workstation are as follows:
 
-- 積極的なスキャンと修正プログラムの適用。マルウェア対策ソフトウェアをデプロイし、脆弱性を定期的にスキャンします。また適切なタイミングで最新のセキュリティ更新プログラムを適用することによってすべてのワークステーションを最新の状態に保ちます。
-- 機能の制限。不要なアプリケーションはすべてアンインストールし、不要な (スタートアップ) サービスは無効にします。
-- ネットワークの堅牢化。Windows ファイアウォール ルールを使用して、Azure の管理に関連した有効な IP アドレス、ポート、URL だけを許可します。リモートからワークステーションへの受信接続も確実にブロックしてください。
-- 実行の制限。管理に必要な定義済みの一連の実行可能ファイルのみ実行を許可します ("default deny")。許可リストで明示的に定義されている場合を除き、ユーザーに対するプログラムの実行権限は自動的に拒否する必要があります。
-- 最小特権。管理用ワークステーションのユーザーに、ローカル コンピューター自体の管理者権限を割り当てることは避けます。そうすれば、意図的であれ不注意であれ、システムの構成やシステム ファイルに変更を加えることはできなくなります。
+- Active scanning and patching. Deploy antimalware software, perform regular vulnerability scans, and update all workstations by using the latest security update in a timely fashion.
+- Limited functionality. Uninstall any applications that are not needed and disable unnecessary (startup) services.
+- Network hardening. Use Windows Firewall rules to allow only valid IP addresses, ports, and URLs related to Azure management. Ensure that inbound remote connections to the workstation are also blocked.
+- Execution restriction. Allow only a set of predefined executable files that are needed for management to run (referred to as “default-deny”). By default, users should be denied permission to run any program unless it is explicitly defined in the allow list.
+- Least privilege. Management workstation users should not have any administrative privileges on the local machine itself. This way, they cannot change the system configuration or the system files, either intentionally or unintentionally.
 
-以上の要素はすべて、Active Directory ドメイン サービス (AD DS) の[グループ ポリシー オブジェクト](https://www.microsoft.com/download/details.aspx?id=2612) (GPO) を使用し、(ローカル) 管理ドメインを通じてすべての管理アカウントに適用することで履行を強制できます。
+You can enforce all of this by using [Group Policy Objects](https://www.microsoft.com/download/details.aspx?id=2612) (GPOs) in Active Directory Domain Services (AD DS) and applying them through your (local) management domain to all management accounts.
 
-### サービス、アプリケーション、データの管理
+### <a name="managing-services,-applications,-and-data"></a>Managing services, applications, and data
 
-Azure クラウド サービスの構成は、Azure ポータルを使用して行うか、Windows PowerShell コマンドライン インターフェイスまたはカスタム アプリケーションで SMAPI の RESTful インターフェイスを介して行います。この機構を使ったサービスには、Azure Active Directory (Azure AD)、Azure Storage、Azure Websites、Azure Virtual Network などがあります。
+Azure cloud services configuration is performed through either the Azure portal or SMAPI, via the Windows PowerShell command-line interface or a custom-built application that takes advantage of these RESTful interfaces. Services using these mechanisms include Azure Active Directory (Azure AD), Azure Storage, Azure Websites, and Azure Virtual Network, and others.
 
-Virtual Machines にデプロイされるアプリケーションには、必要に応じて独自のクライアント ツールとインターフェイスが用意されています。Microsoft 管理コンソール (MMC) やエンタープライズ管理コンソール (Microsoft System Center、Windows Intune など)、各種管理アプリケーション (Microsoft SQL Server Management Studio など) がその例です。こうしたツールは通常、企業環境内やクライアント ネットワーク内で動作するものであり、リモート デスクトップ プロトコル (RDP) など、ステートフルな直接接続を必要とする特定のネットワーク プロトコルに依存している場合があります。そうしたツールの中には、Web 対応インターフェイスを備えているものもあり、そのままインターネットに公開したりインターネット経由でのアクセスを許可したりすることが望ましくないケースもあるでしょう。
+Virtual Machine–deployed applications provide their own client tools and interfaces as needed, such as the Microsoft Management Console (MMC), an enterprise management console (such as Microsoft System Center or Windows Intune), or another management application—Microsoft SQL Server Management Studio, for example. These tools typically reside in an enterprise environment or client network. They may depend on specific network protocols, such as Remote Desktop Protocol (RDP), that require direct, stateful connections. Some may have web-enabled interfaces that should not be openly published or accessible via the Internet.
 
-Azure では、[多要素認証](../multi-factor-authentication/multi-factor-authentication.md)や [X.509 管理証明書](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/)、ファイアウォール規則を使ってインフラストラクチャやプラットフォームのサービス管理へのアクセスを制限できます。Azure ポータルと SMAPI には、トランスポート層セキュリティ (TLS) が必要となります。一方、Azure にデプロイするサービスやアプリケーションには、アプリケーションに応じた適切な防御手段が求められます。堅牢化したワークステーションの構成が標準化されていれば、こうしたメカニズムに何度でも簡単に対応することができます。
+You can restrict access to infrastructure and platform services management in Azure by using [multi-factor authentication](../multi-factor-authentication/multi-factor-authentication.md), [X.509 management certificates](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/), and firewall rules. The Azure portal and SMAPI require Transport Layer Security (TLS). However, services and applications that you deploy into Azure require you to take protection measures that are appropriate based on your application. These mechanisms can frequently be enabled more easily through a standardized hardened workstation configuration.
 
-### 管理ゲートウェイ
+### <a name="management-gateway"></a>Management gateway
 
-すべての管理アクセス権を一元管理し、監視とログを省力化するためには、専用の[リモート デスクトップ ゲートウェイ](https://technet.microsoft.com/library/dd560672) (RD ゲートウェイ) サーバーをオンプレミス ネットワークにデプロイし、Azure 環境に接続します。
+To centralize all administrative access and simplify monitoring and logging, you can deploy a dedicated [Remote Desktop Gateway](https://technet.microsoft.com/library/dd560672) (RD Gateway) server in your on-premises network, connected to your Azure environment.
 
-リモート デスクトップ ゲートウェイは、セキュリティ要件を強制的に適用するポリシー ベースの RDP プロキシ サービスです。RD ゲートウェイを Windows Server ネットワーク アクセス保護 (NAP) と共に導入することで、Active Directory ドメイン サービス (AD DS) のグループ ポリシー オブジェクト (GPO) によって設定された特定の基準をセキュリティの状態に関して満たしたクライアントにのみ接続を許可することができます。加えて次の作業を行います。
+A Remote Desktop Gateway is a policy-based RDP proxy service that enforces security requirements. Implementing RD Gateway together with Windows Server Network Access Protection (NAP) helps ensure that only clients that meet specific security health criteria established by Active Directory Domain Services (AD DS) Group Policy objects (GPOs) can connect. In addition:
 
-- RD ゲートウェイに [Azure の管理証明書](http://msdn.microsoft.com/library/azure/gg551722.aspx)をプロビジョニングし、それ以外のホストは Azure 管理ポータルにアクセスできないようにします。
-- 管理者のワークステーションと同じ[管理ドメイン](http://technet.microsoft.com/library/bb727085.aspx)に RD ゲートウェイを参加させます。これは、Azure AD に対する一方向の信頼関係を持ったドメイン内でサイト間 IPsec VPN または ExpressRoute を使用する場合や、オンプレミスの AD DS インスタンスと Azure AD との間で資格情報をフェデレーションしている場合に必要となります。
-- クライアント コンピューターの名前が有効であること (ドメインに参加していること)、また Azure 管理ポータルへのアクセスが許可されていることを RD ゲートウェイが確認できるように[クライアント接続承認ポリシー](http://technet.microsoft.com/library/cc753324.aspx)を構成します。
-- [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) に IPsec を使用し、盗聴やトークンの盗難から管理トラフィックをさらに保護します。または、[Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) を介してインターネット リンクを隔離することを検討します。
-- RD ゲートウェイ経由でログオンする管理者には、多要素認証 ([Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) 経由) またはスマート カード認証を使用します。
-- 発信元 [IP アドレスの制限](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/)または[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)を Azure で構成し、許可する管理エンドポイントの数を最小限にします。
+- Provision an [Azure management certificate](http://msdn.microsoft.com/library/azure/gg551722.aspx) on the RD Gateway so that it is the only host allowed to access the Azure management portal.
+- Join the RD Gateway to the same [management domain](http://technet.microsoft.com/library/bb727085.aspx) as the administrator workstations. This is necessary when you are using a site-to-site IPsec VPN or ExpressRoute within a domain that has a one-way trust to Azure AD, or if you are federating credentials between your on-premises AD DS instance and Azure AD.
+- Configure a [client connection authorization policy](http://technet.microsoft.com/library/cc753324.aspx) to let the RD Gateway verify that the client machine name is valid (domain joined) and allowed to access the Azure management portal.
+- Use IPsec for [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/) to further protect management traffic from eavesdropping and token theft, or consider an isolated Internet link via [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
+- Enable multi-factor authentication (via [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)) or smart-card authentication for administrators who log on through RD Gateway.
+- Configure source [IP address restrictions](http://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) or [Network Security Groups](../virtual-network/virtual-networks-nsg.md) in Azure to minimize the number of permitted management endpoints.
 
-## セキュリティ ガイドライン
+## <a name="security-guidelines"></a>Security guidelines
 
-一般に、クラウドでの用途に合わせて管理者が使うワークステーションのセキュリティを高めることは、オンプレミスのワークステーションに適用される慣例 (必要最小限の機能構成とアクセス許可など) とよく似ています。またクラウドの管理に伴ういくつかの作業は、企業向けのリモート管理やアウトオブバンド管理に酷似しています。その例として、資格情報の使用や監査、リモート アクセスのセキュリティ強化、脅威の検出と対応が挙げられます。
+In general, helping to secure administrator workstations for use with the cloud is very similar to the practices used for any workstation on-premises—for example, minimized build and restrictive permissions. Some unique aspects of cloud management are more akin to remote or out-of-band enterprise management. These include the use and auditing of credentials, security-enhanced remote access, and threat detection and response.
 
-### 認証
+### <a name="authentication"></a>Authentication
 
-監査アクセス要求や管理ツールへのアクセスに使用される発信元 IP アドレスは、Azure のログオン制限を使用して規制できます。管理クライアント (ワークステーションやアプリケーション) を Azure が識別しやすいように、SMAPI (Windows PowerShell のコマンドレットなどのカスタム開発ツールから利用) と Azure 管理ポータルの構成で、SSL 証明書の他に管理証明書がクライアント側にインストールされていることを義務化できます。加えて管理者アクセスに、多要素認証を義務付けることをお勧めします。
+You can use Azure logon restrictions to constrain source IP addresses for accessing administrative tools and audit access requests. To help Azure identify management clients (workstations and/or applications), you can configure both SMAPI (via customer-developed tools such as Windows PowerShell cmdlets) and the Azure management portal to require client-side management certificates to be installed, in addition to SSL certificates. We also recommend that administrator access require multi-factor authentication.
 
-Azure にデプロイされるアプリケーションやサービスには、エンド ユーザーと管理者アクセスの両方に独自の認証メカニズムが採用されている場合もあれば、認証をすべて Azure AD で行う場合もあります。Active Directory フェデレーション サービス (AD FS) を使って資格情報を連携させるか、ディレクトリ同期を使用するか、ユーザー アカウントをクラウドにのみ保持するかに応じて、リソース間の ID ライフサイクルは、[Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium に付属) を使って管理できます。
+Some applications or services that you deploy into Azure may have their own authentication mechanisms for both end-user and administrator access, whereas others take full advantage of Azure AD. Depending on whether you are federating credentials via Active Directory Federation Services (AD FS), using directory synchronization or maintaining user accounts solely in the cloud, using [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (part of Azure AD Premium) helps you manage identity lifecycles between the resources.
 
-### 接続
+### <a name="connectivity"></a>Connectivity
 
-クライアントと Azure 仮想ネットワークとの間には、いくつかの機構によって接続のセキュリティを確保できます。たとえば、[サイト間 VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) と[ポイント対サイト VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) (P2S) の 2 つが挙げられます。これによって業界標準の IPsec (S2S) または [Secure Socket トンネリング プロトコル](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) を使用した暗号化とトンネリングが可能となります。Azure 管理ポータルなどの公開されている Azure サービス管理機能に Azure から接続するときは、HTTPS (ハイパーテキスト転送プロトコル セキュア) が必須となります。
+Several mechanisms are available to help secure client connections to your Azure virtual networks. Two of these mechanisms, [site-to-site VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) and [point-to-site VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) (P2S), enable the use of industry standard IPsec (S2S) or the [Secure Socket Tunneling Protocol](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) for encryption and tunneling. When Azure is connecting to public-facing Azure services management such as the Azure management portal, Azure requires Hypertext Transfer Protocol Secure (HTTPS).
 
-堅牢化したスタンドアロン ワークステーションは、Azure への接続に RD ゲートウェイを介さない場合、SSTP ベースのポイント対サイト VPN を使用し、Azure Virtual Network に対する最初の接続を作成したうえで、VPN トンネルで個々の仮想マシンに対して RDP 接続を確立するようにしてください。
+A stand-alone hardened workstation that does not connect to Azure through an RD Gateway should use the SSTP-based point-to-site VPN to create the initial connection to the Azure Virtual Network, and then establish RDP connection to individual virtual machines from with the VPN tunnel.
 
-### 管理の監査とポリシーの適用
+### <a name="management-auditing-vs.-policy-enforcement"></a>Management auditing vs. policy enforcement
 
-通常、管理プロセスのセキュリティを確保するには、監査とポリシーの適用という 2 とおりの方法があります。その 2 つの方法で包括的な管理は実現しますが、それだけでは対処できない状況もあります。加えて 2 つの方法は、特に個人とシステム アーキテクチャに置く信頼のレベルに関して、セキュリティの管理に関連したリスクのレベルやコスト、労力が異なります。
+Typically, there are two approaches for helping to secure management processes: auditing and policy enforcement. Doing both will provide comprehensive controls, but may not be possible in all situations. In addition, each approach has different levels of risk, cost, and effort associated with managing security, particularly as it relates to the level of trust placed in both individuals and system architectures.
 
-監視、ログ、監査は、管理作業の追跡と把握の基礎となるものですが、生成されるデータの量が膨大であるため、それですべてのアクションを常に細部まで監査できるわけではありません。とはいえ、管理ポリシーの効果の監査は積極的に行うことをお勧めします。
+Monitoring, logging, and auditing provide a basis for tracking and understanding administrative activities, but it may not always be feasible to audit all actions in complete detail due to the amount of data generated. Auditing the effectiveness of the management policies is a best practice, however.
 
-アクセスを厳しく制御するポリシーの適用で、管理者の操作をプログラミングによって統制する働きが生まれ、有力な防御手段をすべて確実に利用することができます。ログは、いつだれが、どこから何を行ったかの記録となるだけでなく、ポリシーが適用されていることの裏付けとなります。また、管理者のポリシー準拠状況について情報の監査と照合が可能となり、活動の証拠を残すことができます。
+Policy enforcement that includes strict access controls puts programmatic mechanisms in place that can govern administrator actions, and it helps ensure that all possible protection measures are being used. Logging provides proof of enforcement, in addition to a record of who did what, from where, and when. Logging also enables you to audit and crosscheck information about how administrators follow policies, and it provides evidence of activities
 
-## クライアントの構成
+## <a name="client-configuration"></a>Client configuration
 
-ワークステーションの堅牢化に関して Microsoft は基本となる 3 つの構成を推奨しています。3 つの構成の最も大きな違いは、かかる費用と使いやすさ、利用しやすさであり、どの構成を選んでも同様のセキュリティ プロファイルが維持されます。以下の表は、それぞれの構成の長所と欠点を簡単に分析したものです。"企業 PC" とは、役割に関係なくすべてのドメイン ユーザーを対象にデプロイされる標準的なデスクトップ PC の構成を指します。
+We recommend three primary configurations for a hardened workstation. The biggest differentiators between them are cost, usability, and accessibility, while maintaining a similar security profile across all options. The following table provides a short analysis of the benefits and risks to each. (Note that “corporate PC” refers to a standard desktop PC configuration that would be deployed for all domain users, regardless of roles.)
 
-| 構成 | メリット | 短所 |
+| Configuration | Benefits | Cons |
 | ----- | ----- | ----- |
-| スタンドアロン ワークステーションの堅牢化 | ワークステーションを厳しく管理できる | 専用デスクトップであるためコストが大きい
-| | アプリケーションの脆弱性の悪用リスクを軽減できる | 管理の負担が増える |
-| | 職務に応じて明確に分離できる | |
-| 仮想マシンとしての企業 PC | ハードウェア コストを削減できる | |
-| | 職務やアプリケーションを分離できる | |
-| Windows To Go と BitLocker ドライブ暗号化 | ほとんどの PC に対応 | 資産の追跡 |
-| | コスト パフォーマンスと携帯性 | |
-| | 管理環境を分離できる | |
+| Stand-alone hardened workstation | Tightly controlled workstation | higher cost for dedicated desktops
+| | Reduced risk of application exploits | Increased management effort |
+| | Clear separation of duties | |
+| Corporate PC as virtual machine | Reduced hardware costs | |
+| | Segregation of role and applications | |
+| Windows to go with BitLocker drive encryption | Compatibility with most PCs | Asset tracking |
+| | Cost-effectiveness and portability | |
+| | Isolated management environment | |
 
-堅牢化の対象となるワークステーションはゲストではなくホストであり、ホスト オペレーティング システムとハードウェアの間には何もない、ということが重要です。"クリーン ソースの原則" ("セキュア オリジン" ともいいます) に従えば、最も堅牢なセキュリティはホストに適用する必要があります。そうしないと、ホスト システムが攻撃を受けた場合に、その影響がゲストにまで波及します。
+It is important that the hardened workstation is the host and not the guest, with nothing between the host operating system and the hardware. Following the “clean source principle” (also known as “secure origin”) means that the host should be the most hardened. Otherwise, the hardened workstation (guest) is subject to attacks on the system on which it is hosted.
 
-堅牢化する各ワークステーションに対して専用のシステム イメージを用意して、特定の Azure アプリケーションとクラウド アプリケーションの管理に必要な最小限のツールと権限を与え、必要なタスクには特定のローカル AD DS GPO を適用することで、管理機能の独立性をさらに高めることができます。
+You can further segregate administrative functions through dedicated system images for each hardened workstation that have only the tools and permissions needed for managing select Azure and cloud applications, with specific local AD DS GPOs for the necessary tasks.
 
-オンプレミス インフラストラクチャを持たない IT 環境 (サーバーがすべてクラウドに存在するために、ローカル AD DS インスタンスへのアクセス権が GPO にないなど) では、[Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) などのサービスによって、ワークステーション構成のデプロイと管理を省力化することができます。
+For IT environments that have no on-premises infrastructure (for example, no access to a local AD DS instance for GPOs because all servers are in the cloud), a service such as [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) can simplify deploying and maintaining workstation configurations.
 
-### 管理用スタンドアロン ワークステーションの堅牢化
+### <a name="stand-alone-hardened-workstation-for-management"></a>Stand-alone hardened workstation for management
 
-スタンドアロン ワークステーションの堅牢化では、管理タスク用の PC (またはノート PC) と、非管理タスク用の別個の PC (またはノート PC) が管理者に割り当てられます。Azure サービスの管理専用ワークステーションには、他のアプリケーションがインストールされている必要はありません。また、[トラステッド プラットフォーム モジュール](https://technet.microsoft.com/library/cc766159) (TPM) または同様のハードウェア レベルの暗号テクノロジをサポートするワークステーションを使用すると、デバイスの認証と特定の攻撃の防御に効果的です。TPM は、[BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)を使用することで、システム ドライブのボリューム全体の保護にも対応しています。
+With a stand-alone hardened workstation, administrators have a PC or laptop that they use for administrative tasks and another, separate PC or laptop for non-administrative tasks. A workstation dedicated to managing your Azure services does not need other applications installed. Additionally, using workstations that support a [Trusted Platform Module](https://technet.microsoft.com/library/cc766159) (TPM) or similar hardware-level cryptography technology aids in device authentication and prevention of certain attacks. TPM can also support full volume protection of the system drive by using [BitLocker Drive Encryption](https://technet.microsoft.com/library/cc732774.aspx).
 
-スタンドアロン ワークステーションの堅牢化のシナリオ (下図) では、Windows ファイアウォール (またはサードパーティのクライアント ファイアウォール) のローカル インスタンスが、RDP などの受信接続をブロックするように構成されています。管理者は、堅牢化されたワークステーションにログオンし、Azure Virtual Network との VPN 接続を確立した後で、Azure に接続する RDP セッションを開始できます。一方、企業 PC にログオンし、RDP を使用して、堅牢化されたワークステーションに接続することはできません。
+In the stand-alone hardened workstation scenario (shown below), the local instance of Windows Firewall (or a non-Microsoft client firewall) is configured to block inbound connections, such as RDP. The administrator can log on to the hardened workstation and start an RDP session that connects to Azure after establishing a VPN connect with an Azure Virtual Network, but cannot log on to a corporate PC and use RDP to connect to the hardened workstation itself.
 
 ![][2]
 
-### 仮想マシンとしての企業 PC
+### <a name="corporate-pc-as-virtual-machine"></a>Corporate PC as virtual machine
 
-専用のスタンドアロン ワークステーションを堅牢化することがコスト面で難しい場合や都合が悪い場合は、堅牢化したワークステーションで仮想マシンをホストし、非管理タスクはそこで実行するようにします。
+In cases where a separate stand-alone hardened workstation is cost prohibitive or inconvenient, the hardened workstation can host a virtual machine to perform non-administrative tasks.
 
 ![][3]
 
-システムの管理とその他の日常的な作業とに 1 台のワークステーションを使用することで発生しうるさまざまなセキュリティ リスクを回避するため、堅牢化したワークステーションには Windows Hyper-V 仮想マシンをデプロイします。この仮想マシンを企業 PC として使用することができます。企業 PC 環境は、ホストから隔離されたままなので、攻撃対象領域を小さくし、ユーザーの日常的な作業 (電子メールなど) と機微な管理タスクとの共存を避けることができます。
+To avoid several security risks that can arise from using one workstation for systems management and other daily work tasks, you can deploy a Windows Hyper-V virtual machine to the hardened workstation. This virtual machine can be used as the corporate PC. The corporate PC environment can remain isolated from the Host, which reduces its attack surface and removes the user’s daily activities (such as email) from coexisting with sensitive administrative tasks.
 
-企業 PC 仮想マシンは保護された空間で実行され、ユーザー アプリケーションはそこで実行されます。ホストは "クリーン ソース" の状態を維持し、ルート オペレーティング システムには厳しいネットワーク ポリシーが適用されます (仮想マシンからの RDP アクセスをブロックするなど)。
+The corporate PC virtual machine runs in a protected space and provides user applications. The host remains a “clean source” and enforces strict network policies in the root operating system (for example, blocking RDP access from the virtual machine).
 
-### Windows To Go
+### <a name="windows-to-go"></a>Windows To Go
 
-スタンドアロン ワークステーションの堅牢化に代わるもう 1 つの選択肢は、クライアント側を USB ブート対応にする機能、[Windows To Go](https://technet.microsoft.com/library/hh831833.aspx) ドライブの使用です。Windows To Go を使用すると、暗号化された USB フラッシュ ドライブを使って Windows 対応の PC を起動し、隔離されたシステム イメージを実行することができます。イメージは社内 IT グループによって完全に管理され、厳しいセキュリティ ポリシーと最小限の OS 構成、TPM 対応が実現されるため、リモート管理エンドポイントに対する統制を強化することができます。
+Another alternative to requiring a stand-alone hardened workstation is to use a [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx) drive, a feature that supports a client-side USB-boot capability. Windows To Go enables users to boot a compatible PC to an isolated system image running from an encrypted USB flash drive. It provides additional controls for remote-administration endpoints because the image can be fully managed by a corporate IT group, with strict security policies, a minimal OS build, and TPM support.
 
-以下の図では、ポータブル イメージ内のシステムはドメインに参加しており、Azure にしか接続できないよう事前に構成され、多要素認証が必須となっています。また管理以外のトラフィックはすべてブロックされます。同じ PC を標準的な企業 PC のイメージとして起動し、RD ゲートウェイにアクセスして Azure 管理ツールを使おうとしても、セッションはブロックされます。Windows To Go は、ルート レベルのオペレーティング システムです。追加レイヤー (ホスト オペレーティング システム、ハイパーバイザー、仮想マシン) が不要である分、外部からの攻撃の影響を受けにくくなります。
+In the figure below, the portable image is a domain-joined system that is preconfigured to connect only to Azure, requires multi-factor authentication, and blocks all non-management traffic. If a user boots the same PC to the standard corporate image and tries accessing RD Gateway for Azure management tools, the session will be blocked. Windows To Go becomes the root-level operating system, and no additional layers are required (host operating system, hypervisor, virtual machine) that may be more vulnerable to outside attacks.
 
 ![][4]
 
-平均的なデスクトップ PC と比べ、USB フラッシュ ドライブは紛失しやすい点に注意が必要です。BitLocker を使用してボリューム全体を強力なパスワードで暗号化すると、ドライブ イメージが攻撃者によって悪用されるリスクを軽減することができます。また、USB フラッシュ ドライブを紛失しても、速やかにパスワード リセットすると共に、管理証明書を取り消して[新たに発行](https://technet.microsoft.com/library/hh831574.aspx)すれば、セキュリティの侵害を軽減することができます。管理監査ログは、クライアント上ではなく Azure 内に存在するため、この点でも、データ損失のリスクは小さくて済みます。
+It is important to note that USB flash drives are more easily lost than an average desktop PC. Use of BitLocker to encrypt the entire volume, together with a strong password, will make it less likely that an attacker can use the drive image for harmful purposes. Additionally, if the USB flash drive is lost, revoking and [issuing a new management certificate](https://technet.microsoft.com/library/hh831574.aspx) along with a quick password reset can reduce exposure. Administrative audit logs reside within Azure, not on the client, further reducing potential data loss.
 
-## ベスト プラクティス
+## <a name="best-practices"></a>Best practices
 
-以上の点に加え、Azure 内のアプリケーションとデータを管理するときは、以下のガイドラインに従ってください。
+Consider the following additional guidelines when you are managing applications and data in Azure.
 
-### すべきこととやってはいけないこと
+### <a name="dos-and-don'ts"></a>Dos and don'ts
 
-ワークステーションがロックダウンされているからといって、他の一般的なセキュリティ要件に準拠しなくてよい、というわけではありません。管理者アカウントは通常、アクセス レベルが昇格されているため、その分、潜在的リスクは大きくなります。以下の表に、セキュリティの観点からすべきこととやってはいけないことの例を示します。
+Don't assume that because a workstation has been locked down that other common security requirements do not need to be met. The potential risk is higher because of elevated access levels that administrator accounts generally possess. Examples of risks and their alternate safe practices are shown in the table below.
 
-| やってはいけないこと | すべきこと |
+| Don't | Do |
 | ----- | ----- |
-| 管理者アクセスの資格情報やその他のシークレット (SSL 証明書、管理証明書など) を電子メールで送信しない。 | 機密性を保つために、アカウント名とパスワードは口頭で伝える (留守番電話は不可)。クライアント/サーバーの証明書はリモートから (暗号化されたセッション経由で) インストールする。ダウンロードは保護されたネットワーク共有場所から行う。リムーバブル メディアで手渡しする。 |
-| | 管理証明書のライフ サイクル管理を積極的に実施する。 |
-| 暗号化もハッシュも適用されていない状態でアカウントのパスワードをアプリケーションの記憶域 (スプレッドシート、SharePoint サイト、ファイル共有など) に保存することは避ける。 | セキュリティ管理の原則とシステム堅牢化のポリシーを作成して開発環境に適用する。 |
-| | [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) の証明書のピン留めルールを使用して、Azure SSL/TLS サイトへの適切なアクセスを徹底する。 |
-| アカウントとパスワードを管理者どうしで共有したり、複数のユーザー アカウントや複数のサービスに同じパスワードを使用したりすることは避ける。特に、ソーシャル メディアなど、管理以外の作業に使用するパスワードは再利用しない。 | Azure サブスクリプションを管理するための専用の Microsoft アカウント (個人の電子メールに使用されていないアカウント) を作成する。 |
-| 構成ファイルを電子メールで送信しない。 | 構成ファイルとプロファイルは、暗号化された USB フラッシュ ドライブなどの信頼のおけるソースからインストールし、電子メールのように、簡単にセキュリティが破られるような機構からインストールすることは避ける。 |
-| 弱い (単純な) ログオン パスワードは使用しない。 | 強力なパスワード ポリシー、期限切れサイクル (初回使用時に変更する)、コンソール タイムアウト、自動アカウント ロックアウトを適用する。パスワード コンテナーへのアクセスに多要素認証を使用したクライアント パスワード管理システムを使用する。 |
-| 管理ポートをインターネットに開放しない。 | Azure のポートと IP アドレスをロックダウンして管理アクセスを制限する。詳細については、ホワイト ペーパー『[Azure Network Security (Azure ネットワーク セキュリティ)](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx)』を参照してください。 |
-| | すべての管理接続にファイアウォール、VPN、NAP を使用する。 |
+| Don't email credentials for administrator access or other secrets (for example, SSL or management certificates) | Maintain confidentiality by delivering account names and passwords by voice (but not storing them in voice mail), perform a remote installation of client/server certificates (via an encrypted session), download from a protected network share, or distribute by hand via removable media. |
+| | Proactively manage your management certificate life cycles. |
+| Don't store account passwords unencrypted or un-hashed in application storage (such as in spreadsheets, SharePoint sites, or file shares). | Establish security management principles and system hardening policies, and apply them to your development environment. |
+| | Use [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) certificate pinning rules to ensure proper access to Azure SSL/TLS sites. |
+| Don't share accounts and passwords between administrators, or reuse passwords across multiple user accounts or services, particularly those for social media or other nonadministrative activities. | Create a dedicated Microsoft account to manage your Azure subscription—an account that is not used for personal email. |
+| Don't email configuration files. | Configuration files and profiles should be installed from a trusted source (for example, an encrypted USB flash drive), not from a mechanism that can be easily compromised, such as email. |
+| Don't use weak or simple logon passwords. | Enforce strong password policies, expiration cycles (changeon-first-use), console timeouts, and automatic account lockouts. Use a client password management system with multi-factor authentication for password vault access. |
+| Don't expose management ports to the Internet. | Lock down Azure ports and IP addresses to restrict management access. For more information, see the [Azure Network Security] (http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx) white paper. |
+| | Use firewalls, VPNs, and NAP for all management connections. |
 
-## Azure の運用
+## <a name="azure-operations"></a>Azure operations
 
-マイクロソフトによる Azure の運用に関して言えば、Azure の運用環境システムにアクセスする運用エンジニアとサポート担当者は、[堅牢化されたワークステーション PC とそこにプロビジョニングされた VM](#stand-alone-hardened-workstation-for-management) を、内部的な企業ネットワーク アクセスとアプリケーション (メール、イントラネットなど) に使用しています。すべての管理ワークステーション コンピューターは TPM を搭載し、ホストのブート ドライブが BitLocker で暗号化されて、マイクロソフトの主要な企業ドメイン内の特殊な組織単位 (OU) に参加しています。
+Within Microsoft’s operation of Azure, operations engineers and support personnel who access Azure’s production systems use [hardened workstation PCs with VMs](#stand-alone-hardened-workstation-for-management) provisioned on them for internal corporate network access and applications (such as e-mail, intranet, etc.). All management workstation computers have TPMs, the host boot drive is encrypted with BitLocker, and they are joined to a special organizational unit (OU) in Microsoft’s primary corporate domain.
 
-システムの堅牢化は、グループ ポリシーの適用とソフトウェア更新の一元化によって行われています。監査と分析に関しては、管理ワークステーションかイベント ログ (セキュリティと AppLocker) が収集されて一か所に保存されます。
+System hardening is enforced through Group Policy, with centralized software updating. For auditing and analysis, event logs (such as security and AppLocker) are collected from management workstations and saved to a central location.
 
-加えて、Azure の運用ネットワークへの接続には、マイクロソフトのネットワークに置かれた、2 要素認証を必須とする専用のジャンプ ボックスが使用されています。
+In addition, dedicated jump-boxes on Microsoft’s network that require two-factor authentication are used to connect to Azure’s production network.
 
-## Azure のセキュリティ チェックリスト
+## <a name="azure-security-checklist"></a>Azure security checklist
 
-堅牢化したワークステーションに対し管理者が実行できるタスクの数をできるだけ少なくすることで、開発環境と管理環境の攻撃対象領域を最小限に抑えることができます。堅牢化したワークステーションの保護には、次のテクノロジを活用できます。
+Minimizing the number of tasks that administrators can perform on a hardened workstation will help minimize the attack surface in your development and management environment. Use the following technologies to help protect your hardened workstation:
 
-- IE の堅牢化。Internet Explorer ブラウザー (サードパーティの Web ブラウザーを含む) は、外部サーバーとの通信に広く使われているため、悪質なコードの主な侵入ポイントとなっています。クライアント ポリシーを確認し、保護モードでの実行、アドオンの無効化、ファイルのダウンロードの無効化、[Microsoft SmartScreen](https://technet.microsoft.com/library/jj618329.aspx) フィルタリングの使用を徹底してください。セキュリティ警告が確実に表示されるようにします。インターネット ゾーンを有効活用し、必要な堅牢化が済んでいる信頼済みサイトのリストを作成します。その他のサイトとブラウザー内コード (ActiveX、Java など) はすべてブロックしてください。
-- 標準ユーザー。標準ユーザーとして実行することには、さまざまな利点があります。最大の利点は、マルウェアを介して管理者の資格情報を盗むことが、より難しくなる点です。また標準ユーザー アカウントには、ルート オペレーティング システムに対する昇格された特権がなく、構成オプションや API の多くが既定でロックアウトされています。
-- AppLocker。ユーザーが実行できるプログラムやスクリプトは、[AppLocker](http://technet.microsoft.com/library/ee619725.aspx) を使用して制限できます。AppLocker は、監査モードまたは強制モードで実行できます。既定では、管理者トークンを持ったユーザーが、クライアント上ですべてのコードを実行できる許可ルールが存在します。これは、管理者が自分自身をロックアウトしてしまうことを防止するためのルールであり、昇格されたトークンにのみ適用されます。Windows Server の「[Core Security (コア セキュリティ)](http://technet.microsoft.com/library/dd348705.aspx)」に記載されているコードの整合性の説明もご覧ください。
-- コード署名。管理者によって使用されるすべてのツールとスクリプトにコード署名を行うことによって、アプリケーションのロックダウン ポリシーをデプロイするための扱いやすいしくみを実現できます。ハッシュでは、めまぐるしいコード変更に対応できず、また、ファイル パスでは高度なセキュリティが確保できません。AppLocker のルールには、特定の署名済みコードとスクリプトにのみ[実行](http://technet.microsoft.com/library/hh849812.aspx)を許可する PowerShell [実行ポリシー](http://technet.microsoft.com/library/ee176961.aspx)を組み合わせるようにしてください。
-- グループ ポリシー。管理用のドメイン ワークステーションとそれらのワークステーションで認証されるユーザー アカウントとに適用されるグローバル管理ポリシーを作成し、それ以外からのアクセスをブロックします。
-- プロビジョニングのセキュリティ強化。ベースラインとなる堅牢化したワークステーション イメージを、改ざんされないよう保護します。暗号化や分離といったセキュリティ対策を使用してイメージや仮想マシン、スクリプトを保管し、利用を制限します (監査可能なチェックイン/チェックアウト プロセスを使用するなど)。
-- 修正プログラムの適用。機能構成の一貫性を維持 (または開発や運用などの管理タスク用に別途イメージを作成) します。変更やマルウェアがないか定期的にスキャンすると共に、機能構成を最新の状態に保ちます。また、コンピューターは必要なときにだけアクティブ化するようにしてください。
-- 暗号化。[暗号化ファイル システム](https://technet.microsoft.com/library/cc700811.aspx) (EFS) や BitLocker の効果を高めるために、管理ワークステーションに TPM が搭載されていることを確認します。Windows To Go を使用している場合は必ず、暗号化された USB キーと BitLocker を使用してください。
-- ガバナンス。ファイル共有など、管理者のすべての Windows インターフェイスは、AD DS GPO を使用して統制してください。監査、監視、ログのプロセスに管理ワークステーションを追加します。管理者と開発者のすべてのアクセスと使用状況を追跡するようにします。
+- IE hardening. The Internet Explorer browser (or any web browser, for that matter) is a key entry point for harmful code due to its extensive interactions with external servers. Review your client policies and enforce running in protected mode, disabling add-ons, disabling file downloads, and using [Microsoft SmartScreen](https://technet.microsoft.com/library/jj618329.aspx) filtering. Ensure that security warnings are displayed. Take advantage of Internet zones and create a list of trusted sites for which you have configured reasonable hardening. Block all other sites and in-browser code, such as ActiveX and Java.
+- Standard user. Running as a standard user brings a number of benefits, the biggest of which is that stealing administrator credentials via malware becomes more difficult. In addition, a standard user account does not have elevated privileges on the root operating system, and many configuration options and APIs are locked out by default.
+- AppLocker. You can use [AppLocker](http://technet.microsoft.com/library/ee619725.aspx) to restrict the programs and scripts that users can run. You can run AppLocker in audit or enforcement mode. By default, AppLocker has an allow rule that enables users who have an admin token to run all code on the client. This rule exists to prevent administrators from locking themselves out, and it applies only to elevated tokens. See also Code Integrity as part of Windows Server [core security](http://technet.microsoft.com/library/dd348705.aspx).
+- Code signing. Code signing all tools and scripts used by administrators provides a manageable mechanism for deploying application lockdown policies. Hashes do not scale with rapid changes to the code, and file paths do not provide a high level of security. You should combine AppLocker rules with a PowerShell [execution policy](http://technet.microsoft.com/library/ee176961.aspx) that only allows specific signed code and scripts to be [executed](http://technet.microsoft.com/library/hh849812.aspx).
+- Group Policy. Create a global administrative policy that is applied to any domain workstation that is used for management (and block access from all others), as well as to user accounts authenticated on those workstations.
+- Security-enhanced provisioning. Safeguard your baseline hardened workstation image to help protect against tampering. Use security measures like encryption and isolation to store images, virtual machines, and scripts, and restrict access (perhaps use an auditable check-in/check-out process).
+- Patching. Maintain a consistent build (or have separate images for development, operations, and other administrative tasks), scan for changes and malware routinely, keep the build up to date, and only activate machines when they are needed.
+- Encryption. Make sure that management workstations have a TPM to more securely enable [Encrypting File System](https://technet.microsoft.com/library/cc700811.aspx) (EFS) and BitLocker. If you are using Windows To Go, use only encrypted USB keys together with BitLocker.
+- Governance. Use AD DS GPOs to control all of the administrators’ Windows interfaces, such as file sharing. Include management workstations in auditing, monitoring, and logging processes. Track all administrator and developer access and usage.
 
-## 概要
+## <a name="summary"></a>Summary
 
-Azure のクラウド サービス、仮想マシン、アプリケーションの管理に使用するワークステーションの構成を堅牢化することで、重要な IT インフラストラクチャをリモートから管理することで生じるさまざまなリスクや脅威を排除することができます。Azure と Windows にはどちらも、通信と認証を保護し、クライアントの動作を制御するための機能が用意されています。
+Using a hardened workstation configuration for administering your Azure cloud services, Virtual Machines, and applications can help you avoid numerous risks and threats that can come from remotely managing critical IT infrastructure. Both Azure and Windows provide mechanisms that you can employ to help protect and control communications, authentication, and client behavior.
 
-## 次のステップ
-このホワイト ペーパーで触れた具体的な情報のほか、Azure とそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
+## <a name="next-steps"></a>Next steps
+The following resources are available to provide more general information about Azure and related Microsoft services, in addition to specific items referenced in this paper:
 
-- [Securing Privileged Access (特権アクセスのセキュリティ保護)](https://technet.microsoft.com/library/mt631194.aspx) – Azure の管理を目的とした安全な管理ワークステーションの設計と構築について、技術的な側面から説明します。
-- [Microsoft Trust Center (Microsoft セキュリティ センター)](https://www.microsoft.com/TrustCenter/Security/AzureSecurity) - Azure のファブリックと Azure 上で動作するワークロードを保護する Azure プラットフォームの機能について説明します。
-- [Microsoft セキュリティ レスポンス センター](http://www.microsoft.com/security/msrc/default.aspx) -- このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、[secure@microsoft.com](mailto:secure@microsoft.com) 宛に報告してください。
-- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
+- [Securing Privileged Access](https://technet.microsoft.com/library/mt631194.aspx) – get the technical details for designing and building a secure administrative workstation for Azure management
+- [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Security/AzureSecurity) - learn about Azure platform capabilities that protect the Azure fabric and the workloads that run on Azure
+- [Microsoft Security Response Center](http://www.microsoft.com/security/msrc/default.aspx) -- where Microsoft security vulnerabilities, including issues with Azure, can be reported or via email to [secure@microsoft.com](mailto:secure@microsoft.com)
+- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) – keep up to date on the latest in Azure Security
 
 <!--Image references-->
 [1]: ./media/azure-security-management/typical-management-network-topology.png
@@ -247,4 +248,8 @@ Azure のクラウド サービス、仮想マシン、アプリケーション�
 [3]: ./media/azure-security-management/hardened-workstation-enabled-with-hyper-v.png
 [4]: ./media/azure-security-management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

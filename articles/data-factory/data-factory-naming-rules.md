@@ -1,30 +1,34 @@
 <properties 
-	pageTitle="Data Factory - 名前付け規則 | Microsoft Azure" 
-	description="Data Factory エンティティの名前付け規則について説明します。" 
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+    pageTitle="Data Factory - Naming Rules | Microsoft Azure" 
+    description="Describes naming rules for Data Factory entities." 
+    services="data-factory" 
+    documentationCenter="" 
+    authors="sharonlo101" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/12/2016" 
-	ms.author="spelluru"/>
-
-# Azure Data Factory - 名前付け規則 
-次の表に、Data Factory アーティファクトの名前付け規則を示します。
+    ms.service="data-factory" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/12/2016" 
+    ms.author="shlo"/>
 
 
+# <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - Naming Rules 
+The following table provides naming rules for Data Factory artifacts.
 
-名前 | 名前の一意性 | 検証チェック
+
+
+Name | Name Uniqueness | Validation Checks
 :--- | :-------------- | :----------------
-Data Factory | Microsoft Azure 全体で一意です。名前の大文字と小文字を区別されません。つまり、MyDF と mydf は同じデータ ファクトリを表します。 |<ul><li>各データ ファクトリは、厳密に 1 つの Azure サブスクリプションに関連付けられます。</li><li>オブジェクト名は文字または数字で始まる必要があり、文字、数字、またはダッシュ (-) 文字のみを含めることができます。</li><li>すべてのダッシュ (-) 文字は、その直前または直後に文字または数字が使用されている必要があります。連続するダッシュ文字はコンテナー名では使用できません。</li><li>。名前は 3 ～ 63 文字の長さにすることができます。</li></ul>
-リンクされたサービス/テーブル/パイプライン | データ ファクトリ内で一意です。名前の大文字と小文字は区別されません。 | <ul><li>テーブル名の最大文字数: 260。</li><li>オブジェクトの名前は、文字、数字、またはアンダースコア (</li>) で始まる必要があります。<li>次の文字は使用できません。"."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\"</li></ul>
-リソース グループ | Microsoft Azure 全体で一意です。名前の大文字と小文字は区別されません。 | <ul><li>最大文字数: 1,000。</li><li>名前には、文字、数字、および、次の文字を含めることができます。"-"、"\_"、"," および "."。</li></ul>
+Data Factory | Unique across Microsoft Azure. Names are case-insensitive, that is, MyDF and mydf refer to the same data factory. |<ul><li>Each data factory is tied to exactly one Azure subscription.</li><li>Object names must start with a letter or a number, and can contain only letters, numbers, and the dash (-) character.</li><li>Every dash (-) character must be immediately preceded and followed by a letter or a number. Consecutive dashes are not permitted in container names.</li><li>Name can be 3-63 characters long.</li></ul>
+Linked Services/Tables/Pipelines | Unique with in a data factory. Names are case-insensitive. | <ul><li>Maximum number of characters in a table name: 260.</li><li>Object names must start with a letter number, or an underscore (_).</li><li>Following characters are not allowed: “.”, “+”, “?”, “/”, “<”, ”>”,”*”,”%”,”&”,”:”,”\\”</li></ul>
+Resource Group | Unique across Microsoft Azure. Names are case-insensitive. | <ul><li>Maximum number of characters: 1000.</li><li>Name can contain letters, digits, and the following characters: “-”, “_”, “,” and “.”.</li></ul>
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SqlPackage を使用して BACPAC ファイルから SQL Database にインポートする"
-   description="Microsoft Azure SQL Database、データベースの移行、データベースのインポート、BACPAC ファイルのインポート、sqlpackage"
+   pageTitle="Import to SQL Database from a BACPAC file using SqlPackage"
+   description="Microsoft Azure SQL Database, database migration, import database, import BACPAC file, sqlpackage"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -16,49 +16,54 @@
    ms.date="08/24/2016"
    ms.author="carlrab"/>
 
-# SqlPackage を使用して BACPAC ファイルから SQL Database にインポートする
+
+# <a name="import-to-sql-database-from-a-bacpac-file-using-sqlpackage"></a>Import to SQL Database from a BACPAC file using SqlPackage
 
 > [AZURE.SELECTOR]
 - [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 - [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
-- [Azure ポータル](sql-database-import.md)
+- [Azure portal](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 
-この記事では、[SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンドライン ユーティリティを使用して [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルから SQL Database にインポートする方法について説明します。このユーティリティは、最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) と [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) に付属しています。また、Microsoft ダウンロード センターから最新バージョンの [SqlPackage](https://www.microsoft.com/ja-JP/download/details.aspx?id=53876) を直接ダウンロードすることもできます。
+This article shows how to import to SQL database from a [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) file using the [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) command-line utility. This utility ships with the latest versions of [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) and [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), or you can download the latest version of [SqlPackage](https://www.microsoft.com/en-us/download/details.aspx?id=53876) directly from the Microsoft download center.
 
 
-> [AZURE.NOTE] 以下の手順では、SQL Database サーバーを既にプロビジョニングしてあり、接続情報がわかっていて、移行元データベースに互換性があると検証済みであることを前提にしています。
+> [AZURE.NOTE] The following steps assume that you have already provisioned a SQL Database server, have the connection information on hand, and have verified that your source database is compatible.
 
-## SqlPackage を使用して BACPAC ファイルを Azure SQL Database にインポートする
+## <a name="import-from-a-bacpac-file-into-azure-sql-database-using-sqlpackage"></a>Import from a BACPAC file into Azure SQL Database using SqlPackage
 
-以下の手順では、[SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) コマンド ライン ユーティリティを使用して、互換性のある SQL Server データベース (または Azure SQL Database) を BACPAC ファイルからインポートします。
+Use the following steps to use the [SqlPackage.exe](https://msdn.microsoft.com/library/hh550080.aspx) command-line utility to import a compatible SQL Server database (or Azure SQL database) from a BACPAC file.
 
-> [AZURE.NOTE] 以下の手順では、Azure SQL Database サーバーを既にプロビジョニングしてあり、接続情報がわかっていることを前提にしています。
+> [AZURE.NOTE] The following steps assume that you have already provisioned an Azure SQL Database server and have the connection information on hand.
 
-1. コマンド プロンプトを開き、sqlpackage.exe コマンドライン ユーティリティのあるディレクトリに移動します。このユーティリティは、Visual Studio と SQL Server の両方に付属します。
-2. 次の sqlpackage.exe コマンドをご利用の環境に合わせた引数で実行します。
+1. Open a command prompt and change a directory containing the sqlpackage.exe command-line utility - this utility ships with both Visual Studio and SQL Server.
+2. Execute the following sqlpackage.exe command with the following arguments for your environment:
 
-	`sqlpackage.exe /Action:Import /tsn:< server_name > /tdn:< database_name > /tu:< user_name > /tp:< password > /sf:< source_file >`
+    `sqlpackage.exe /Action:Import /tsn:< server_name > /tdn:< database_name > /tu:< user_name > /tp:< password > /sf:< source_file >`
 
-	| 引数 | 説明 |
-	|---|---|
-	| < server\_name > | ターゲット サーバー名 |
-	| < database\_name > | ターゲット データベース名 |
-	| < user\_name > | ターゲット サーバーのユーザー名 |
-	| < password > | ユーザーのパスワード |
-	| < source\_file > | インポートする BACPAC ファイルのファイル名と場所 |
+  	| Argument  | Description  |
+  	|---|---|
+  	| < server_name >  | target server name  |
+  	| < database_name >  | target database name  |
+  	| < user_name >  | the user name in the target server |
+  	| < password >  | the user's password  |
+  	| < source_file >  | the file name and location for the BACPAC file being imported  |
 
-	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
+    ![Export a data-tier application from the Tasks menu](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01c.png)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
 - [SQL Database V12](sql-database-v12-whats-new.md)
-- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
-- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+- [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

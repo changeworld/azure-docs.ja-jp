@@ -1,6 +1,6 @@
 <properties
-   pageTitle="CSV ファイルから Azure SQL Database へのデータの読み込み (bcp) | Microsoft Azure"
-   description="データ サイズが小さい場合は、bcp を使用して Azure SQL Database にデータをインポートできます。"
+   pageTitle="Load data from CSV file into Azure SQL Databaase (bcp) | Microsoft Azure"
+   description="For a small data size, uses bcp to import data into Azure SQL Database."
    services="sql-database"
    documentationCenter="NA"
    authors="CarlRabeler"
@@ -17,31 +17,32 @@
    ms.author="carlrab"/>
 
 
-# CSV から Azure SQL Data Warehouse へのデータの読み込み (フラット ファイル)
 
-bcp コマンドライン ユーティリティを使用して、CSV ファイルから Azure SQL Database にデータをインポートできます。
+# <a name="load-data-from-csv-into-azure-sql-data-warehouse-(flat-files)"></a>Load data from CSV into Azure SQL Data Warehouse (flat files)
 
-## 開始する前に
+You can use the bcp command-line utility to import data from a CSV file into Azure SQL Database.
 
-### 前提条件
+## <a name="before-you-begin"></a>Before you begin
 
-このチュートリアルを進めるには、次が必要です。
+### <a name="prerequisites"></a>Prerequisites
 
-- Azure SQL Database の論理サーバーとデータベース
-- インストールされた bcp コマンド ライン ユーティリティ
-- インストールされた sqlcmd コマンド ライン ユーティリティ
+To step through this tutorial, you need:
 
-bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][]からダウンロードできます。
+- An Azure SQL Database logical server and database
+- The bcp command-line utility installed
+- The sqlcmd command-line utility installed
 
-### ASCII または UTF-16 形式のデータ
+You can download the bcp and sqlcmd utilities from the [Microsoft Download Center][].
 
-自身のデータを使ってこのチュートリアルを試す場合、bcp では UTF-8 がサポートされないため、データには ASCII または UTF-16 エンコードを使用する必要があります。
+### <a name="data-in-ascii-or-utf-16-format"></a>Data in ASCII or UTF-16 format
 
-## 1\.ターゲット テーブルを作成する
+If you are trying this tutorial with your own data, your data needs to use the ASCII or UTF-16 encoding since bcp does not support UTF-8. 
 
-SQL Database 内でターゲット テーブルとなるテーブルを定義します。テーブル内の各列は、データ ファイルの各行のデータに対応する必要があります。
+## <a name="1.-create-a-destination-table"></a>1. Create a destination table
 
-テーブルを作成するには、コマンド プロンプトを開き、sqlcmd.exe を使用して次のコマンドを実行します。
+Define a table in SQL Database as the destination table. The columns in the table must correspond to the data in each row of your data file.
+
+To create a table, open a command prompt and use sqlcmd.exe to run the following command:
 
 
 ```sql
@@ -57,9 +58,9 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## 手順 2.ソース データ ファイルを作成する
+## <a name="2.-create-a-source-data-file"></a>2. Create a source data file
 
-メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\\Temp\\DimDate2.txt)。このデータは ASCII 形式です。
+Open Notepad and copy the following lines of data into a new text file and then save this file to your local temp directory, C:\Temp\DimDate2.txt. This data is in ASCII format.
 
 ```
 20150301,1,3
@@ -76,26 +77,26 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 20150101,1,3
 ```
 
-(オプション) 自身のデータを SQL Server データベースからエクスポートするには、コマンド プロンプトを開き、次のコマンドを実行します。TableName、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えてください。
+(Optional) To export your own data from a SQL Server database, open a command prompt and run the following command. Replace TableName, ServerName, DatabaseName, Username, and Password with your own information.
 
 ```sql
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
 ```
 
-## 3\.データを読み込む
-データを読み込むには、コマンド プロンプトを開き、次のコマンドを実行します。ここでは、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えます。
+## <a name="3.-load-the-data"></a>3. Load the data
+To load the data, open a command prompt and run the following command, replacing the values for Server Name, Database name, Username, and Password with your own information.
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ','
 ```
 
-次のコマンドを使用して、データが正しく読み込まれたことを確認します。
+Use this command to verify the data was loaded properly
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-結果は次のようになります。
+The results should look like this:
 
 DateId |CalendarQuarter |FiscalQuarter
 ----------- |--------------- |-------------
@@ -113,15 +114,19 @@ DateId |CalendarQuarter |FiscalQuarter
 20151201 |4 |2
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-SQL Server データベースを移行するには、[SQL Server データベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
+To migrate a SQL Server database, see [SQL Server database migration](sql-database-cloud-migrate.md).
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
 [CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

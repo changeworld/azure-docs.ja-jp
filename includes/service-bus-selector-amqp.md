@@ -5,4 +5,7 @@
 - [Python](../articles/service-bus/service-bus-amqp-python.md)
 - [Apache](../articles/service-bus/service-bus-amqp-apache.md)
 
-<!---HONumber=Nov15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

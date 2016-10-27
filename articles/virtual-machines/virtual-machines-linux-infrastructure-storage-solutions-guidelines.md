@@ -1,94 +1,98 @@
 <properties
-	pageTitle="ストレージ ソリューションのガイドライン |Microsoft Azure"
-	description="Azure インフラストラクチャ サービスでのストレージ ソリューションのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
-	documentationCenter=""
-	services="virtual-machines-linux"
-	authors="iainfoulds"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Storage Solutions Guidelines | Microsoft Azure"
+    description="Learn about the key design and implementation guidelines for deploying storage solutions in Azure infrastructure services."
+    documentationCenter=""
+    services="virtual-machines-linux"
+    authors="iainfoulds"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/08/2016"
-	ms.author="iainfou"/>
-
-# ストレージ インフラストラクチャのガイドライン
-
-[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
-
-この記事は、最適な仮想マシン (VM) のパフォーマンスを実現するための、ストレージのニーズと設計に関する考慮事項について説明します。
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/08/2016"
+    ms.author="iainfou"/>
 
 
-## ストレージに関する実装ガイドライン
+# <a name="storage-infrastructure-guidelines"></a>Storage infrastructure guidelines
 
-決めること:
+[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)] 
 
-- ワークロードのために Standard Storage または Premium Storage のうちのいずれを使用する必要があるか
-- 1023 GB を超えるディスクを作成するためにディスクのストライピングが必要か
-- ワークロードに最適な I/O パフォーマンスを実現するためにディスクのストライピングが必要か
-- IT ワークロードやインフラストラクチャをホストするために必要なストレージ アカウントのセット
-
-タスク:
-
-- デプロイするアプリケーションの I/O 要求を確認し、適切なストレージ アカウントの数と種類を計画します。
-- 名前付け規則を使用してストレージ アカウントのセットを作成します。Azure CLI またはポータルを使用することができます。
+This article focuses on understanding storage needs and design considerations for achieving optimum virtual machine (VM) performance.
 
 
-## Storage
+## <a name="implementation-guidelines-for-storage"></a>Implementation guidelines for storage
 
-Azure Storage は仮想マシン (VM) とアプリケーションをデプロイし、管理するための重要な要素です。Azure Storage はファイル データ、構造化されていないデータ、メッセージを保存するためのサービスを提供します。VM をサポートするインフラストラクチャの一部でもあります。
+Decisions:
 
-VM をサポートするために 2 種類のストレージ アカウントを使用できます。
+- Do you need to use Standard or Premium storage for your workload?
+- Do you need disk striping to create disks larger than 1023 GB?
+- Do you need disk striping to achieve optimal I/O performance for your workload?
+- What set of storage accounts do you need to host your IT workload or infrastructure?
 
-- Standard Storage アカウントでは、BLOB ストレージ (Azure VM ディスクの保存に利用)、テーブル ストレージ、キュー ストレージ、ファイル ストレージにアクセスできます。
-- [Premium Storage](../storage/storage-premium-storage.md) アカウントは、MongoDB シャード クラスターなどの高負荷 I/O ワークロードを対象に、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Premium Storage では、現在、Azure VM ディスクのみがサポートされています。
+Tasks:
 
-Azure で作成される VM には、オペレーティング システム ディスク、一時ディスク、および 0 個以上のオプションのデータ ディスクが含まれます。オペレーティング システム ディスクとデータ ディスクは Azure ページ BLOB です。一時ディスクは、コンピューターが存在するノードにローカル保存されます。メンテナンス イベント中 VM をホスト間に移行する場合があるため、一時ディスクを非永続的データに使用するためだけにアプリケーションを設計する場合は注意が必要です。一時ディスクに格納されているデータが失われます。
-
-持続性と高可用性が、基盤となる Azure Storage 環境に備わっており、計画外メンテナンスやハードウェアの故障からデータを保護します。Azure Storage 環境を設計するとき、次のように VM ストレージをレプリケートするように指定できます。
-
-- 特定の Azure データ センター内でローカルにレプリケートする
-- 指定したリージョン内の Azure データセンター間でレプリケートする
-- さまざまなリージョンの Azure データセンター間でレプリケートする。
-
-高可用性のためのレプリケーション オプションの詳細については、[こちら](../storage/storage-introduction.md#replication-for-durability-and-high-availability)をご覧ください。
-
-オペレーティング システム ディスクとデータ ディスクの最大サイズは 1023 ギガバイト (GB) です。BLOB の最大サイズは 1024 GB で、VHD ファイルのメタデータ (フッター) を含める必要があります (1 GB は 1024<sup>3</sup> バイト)。論理ボリューム マネージャー (LVM) を使用してデータ ディスクをプールし、1023 GB を超える論理ボリュームを VM に割り当てることで、この制限を超えることができます。
-
-Azure Storage のデプロイを設計する場合、スケーラビリティ制限がいくつか適用されます。詳細については、[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md#storage-limits)に関するページをご覧ください。また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md)」もご覧ください。
-
-アプリケーション ストレージについては、BLOB ストレージを使用して、ドキュメント、イメージ、バックアップ、構成データ、ログなどの非構造化データを保存できます。アプリケーションが VM に接続されている仮想ディスクに書き込むのではなく、アプリケーションが Azure BLOB ストレージに直接書き込むことができます。BLOB ストレージには、可用性ニーズとコスト面の制約に応じて、[ホット ストレージ層とクール ストレージ層](../storage/storage-blob-storage-tiers.md)のオプションも用意されています。
+- Review I/O demands of the applications you are deploying and plan the appropriate number and type of storage accounts.
+- Create the set of storage accounts using your naming convention. You can use the Azure CLI or the portal.
 
 
-## ストライピングされたディスク
-データ ディスクにストライピングを使用すると、1023 GB より大きいディスクを作成できるだけでなく、多くの場合、複数の BLOB で単一ボリュームのストレージをバックアップできるため、パフォーマンスが向上します。ストライピングにより、単一の論理ディスクのデータを読み書きするのに必要な I/O が並列化されます。
+## <a name="storage"></a>Storage
 
-Azure では、使用できるデータ ディスクの数と帯域幅が、VM のサイズに応じて制限されます。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
+Azure Storage is a key part of deploying and managing virtual machines (VMs) and applications. Azure Storage provides services for storing file data, unstructured data, and messages, and it is also part of the infrastructure supporting VMs.
 
-Azure データ ディスクにディスク ストライピングを使用する場合は、次のガイドラインを考慮してください。
+There are two types of storage accounts available for supporting VMs:
 
-- データ ディスクは、常に最大サイズ (1023 GB) にする必要があります。
-- VM のサイズで許可されている最大数のデータ ディスクをアタッチします。
-- LVM を使用します。
-- Azure データ ディスクのキャッシュ オプションを使わないようにします (キャッシュ ポリシー = なし)。
+- Standard storage accounts give you access to blob storage (used for storing Azure VM disks), table storage, queue storage, and file storage.
+- [Premium storage](../storage/storage-premium-storage.md) accounts deliver high-performance, low-latency disk support for I/O intensive workloads, such as MongoDB Sharded cluster. Premium storage currently supports Azure VM disks only.
 
-詳細については、[Linux VM での LVM の構成](virtual-machines-linux-configure-lvm.md)に関するページをご覧ください。
+Azure creates VMs with an operating system disk, a temporary disk, and zero or more optional data disks. The operating system disk and data disks are Azure page blobs, whereas the temporary disk is stored locally on the node where the machine lives. Take care when designing applications to only use this temporary disk for non-persistent data as the VM may be migrated between hosts during a maintenance event. Any data stored on the temporary disk would be lost.
+
+Durability and high availability is provided by the underlying Azure Storage environment to ensure that your data remains protected against unplanned maintenance or hardware failures. As you design your Azure Storage environment, you can choose to replicate VM storage:
+
+- locally within a given Azure datacenter
+- across Azure datacenters within a given region
+- across Azure datacenters across different regions.
+
+You can read [more about the replication options for high availability](../storage/storage-introduction.md#replication-for-durability-and-high-availability).
+
+Operating system disks and data disks have a maximum size of 1023 gigabytes (GB). The maximum size of a blob is 1024 GB and that must contain the metadata (footer) of the VHD file (a GB is 1024<sup>3</sup> bytes). You can use Logical Volume Manager (LVM) to surpass this limit by pooling together data disks to present logical volumes larger than 1023GB to your VM.
+
+There are some scalability limits when designing your Azure Storage deployments - see [Microsoft Azure subscription and service limits, quotas, and constraints](azure-subscription-service-limits.md#storage-limits) for more details. Also see [Azure storage scalability and performance targets](../storage/storage-scalability-targets.md).
+
+For application storage, you can store unstructured object data such as documents, images, backups, configuration data, logs, etc. using blob storage. Rather than your application writing to a virtual disk attached to the VM, the application can write directly to Azure blob storage. Blob storage also provides the option of [hot and cool storage tiers](../storage/storage-blob-storage-tiers.md) depending on your availability needs and cost constraints.
 
 
-## 複数のストレージ アカウント
+## <a name="striped-disks"></a>Striped disks
+Besides allowing you to create disks larger than 1023 GB, in many instances, using striping for data disks enhances performance by allowing multiple blobs to back the storage for a single volume. With striping, the I/O required to write and read data from a single logical disk proceeds in parallel.
 
-Azure Storage 環境を設計するとき、デプロイする VM の増加に伴って複数のストレージ アカウントを使用できます。このアプローチにより、I/O を基盤となる Azure Storage インフラストラクチャ間に分散させ、VM とアプリケーションの最適なパフォーマンスを維持することができます。デプロイするアプリケーションを設計する場合は、各 VM の I/O 要件を考慮し、Azure Storage アカウント間に VM を分散してください。I/O 要求の高いすべての VM を、1 つまたは 2 つのストレージ アカウントだけにまとめることは避けてください。
+Azure imposes limits on the number of data disks and amount of bandwidth available, depending on the VM size. For details, see [Sizes for virtual machines](virtual-machines-linux-sizes.md).
 
-さまざまな Azure Storage オプションの I/O 機能と推奨する最大値の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md)」を参照してください。
+If you are using disk striping for Azure data disks, consider the following guidelines:
+
+- Data disks should always be the maximum size (1023 GB).
+- Attach the maximum data disks allowed for the VM size.
+- Use LVM.
+- Avoid using Azure data disk caching options (caching policy = None).
+
+For more information, see [Configuring LVM on a Linux VM](virtual-machines-linux-configure-lvm.md).
 
 
-## 次のステップ
+## <a name="multiple-storage-accounts"></a>Multiple storage accounts
 
-[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)]
+When designing your Azure Storage environment, you can use multiple storage accounts as the number of VMs you deploy increases. This approach helps distribute out the I/O across the underlying Azure Storage infrastructure to maintain optimum performance for your VMs and applications. As you design the applications that you are deploying, consider the I/O requirements each VM has and balance out those VMs across Azure Storage accounts. Try to avoid grouping all the high I/O demanding VMs in to just one or two storage accounts.
 
-<!---HONumber=AcomDC_0914_2016-->
+For more information about the I/O capabilities of the different Azure Storage options and some recommend maximums, see [Azure storage scalability and performance targets](../storage/storage-scalability-targets.md).
+
+
+## <a name="next-steps"></a>Next steps
+
+[AZURE.INCLUDE [virtual-machines-linux-infrastructure-guidelines-next-steps](../../includes/virtual-machines-linux-infrastructure-guidelines-next-steps.md)] 
+
+
+<!--HONumber=Oct16_HO2-->
+
+

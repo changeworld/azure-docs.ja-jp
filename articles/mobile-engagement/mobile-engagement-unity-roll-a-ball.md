@@ -1,325 +1,326 @@
 <properties
-	pageTitle="Unity Roll a Ball チュートリアル"
-	description="Mobile Engagement Unity のすべてのチュートリアルの前提条件である、従来の Unity Roll a Ball ゲームを作成する手順"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager=""
-	editor="" />
+    pageTitle="Unity Roll a Ball tutorial"
+    description="Steps to create the classic Unity Roll a Ball game which is a pre-requisite for all Mobile Engagement Unity tutorials"
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager=""
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/19/2016"
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="08/19/2016"
+    ms.author="piyushjo" />
 
-#<a id="unity-roll-a-ball"></a>Unity Roll a Ball ゲームの作成
 
-このチュートリアルでは、若干変更された [Unity Roll a Ball のチュートリアル](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial)の主な手順について説明します。このサンプル ゲームは、アプリ ユーザーによって操作される球形の "プレーヤー" オブジェクトで構成されます。ゲームの目的は、プレーヤー オブジェクトを収集可能なオブジェクトに衝突させることによって、このような収集可能なオブジェクトを "収集" することです。このチュートリアルは、Unity エディター環境の基礎知識があることを前提としています。問題が発生した場合は、完全なチュートリアルを参照してください。
+#<a name="<a-id="unity-roll-a-ball"></a>create-unity-roll-a-ball-game"></a><a id="unity-roll-a-ball"></a>Create Unity Roll a Ball game
 
-### ゲームを設定する
-次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/set-up?playlist=17141)に基づいています。
+This tutorial walks through the main steps for a slightly modified [Unity Roll a Ball tutorial](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial). This sample game consists of a spherical 'player' object which is controlled by the app user and the objective of the game is to 'collect' collectible objects by colliding the player object with these collectible objects. This assumes basic familiarity with Unity editor environment. If you run into any issues then you should refer to the full tutorial. 
 
-1. **Unity エディター**を開き、**[New]** (新規) をクリックします。
-	
-	![][51]
-	
-2. **[Project name]** (プロジェクト名) ボックスと **[Location]** (場所) ボックスに適切な情報を入力し、**[3D]** (3D) を選択して、**[Create project]** (プロジェクトの作成) をクリックします。
-	
-	![][52]
+### <a name="setting-up-the-game"></a>Setting up the game
+The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/set-up?playlist=17141)
 
-3. 新しいプロジェクトの一部として作成された既定のシーンを、**Assets** フォルダーの下の新しい **\_Scenes** フォルダーに **MiniGame** という名前で保存します。
- 	
-	![][53]
+1. Open **Unity Editor** and click **New**. 
+    
+    ![][51] 
+    
+2. Provide a **Project name** & **Location**, select **3D** and click **Create project**.
+    
+    ![][52]
 
-4. **[3D Object] \(3D オブジェクト)、[Plane] \(平面)** の順に選択して、プレイするフィールドとして平面を作成し、この平面オブジェクトの名前を **Ground** に変更します。
+3. Save the default scene just created as part of the new project as with the name **MiniGame** within a new **\_Scenes** folder under **Assets** folder:
+    
+    ![][53]
 
-	![][1]
+4. Create a **3D Object -> Plane** as the playing field and rename this plane object as **Ground**
 
-5. この **Ground** オブジェクトの変換コンポーネントをリセットして、そのオブジェクトが原点に配置されるようにします。
+    ![][1]
 
-	![][3]
+5. Reset the transform component for this **Ground** object so that it is at the Origin. 
 
-6. **Ground** オブジェクトの **[Gizmos]** (ギズモ) メニューにある **[Show Grid]** (グリッドの表示) チェック ボックスをオフにします。
+    ![][3]
 
-	![][4]
+6. Uncheck **Show Grid** from **Gizmos menu** for the **Ground** object.
 
-7. **Ground** オブジェクトの **[Scale]** (スケール) コンポーネントを [X = 2、Y = 1、Z = 2] に更新します。
+    ![][4]
 
-	![][5]
+7. Update the **Scale** component for the **Ground** object to be [X = 2,Y = 1, Z = 2]. 
 
-8. **[3D Object] \(3D オブジェクト)、[Sphere] \(球)** の順に選択して新しいオブジェクトをプロジェクトに追加し、この球オブジェクトの名前を **Player** に変更します。
+    ![][5]
 
-	![][6]
+8. Add a new **3D Object -> Sphere** to the project and rename this sphere object as **Player**. 
 
-9. **Player** オブジェクトを選択し、平面オブジェクトの場合と同様に、**[Reset Transform]** (変換のリセット) をクリックします。
+    ![][6]
 
-10. **[Transform] \(変換)、[Position] \(位置)、[Y] \(Y)** の順に選択して、Player の Y 座標コンポーネントを 0.5 に更新します。
+9. Select the **Player** object and click **Reset Transform** similar to the Plane object. 
 
-	![][7]
+10. Update **Transform -> Position -> Y Coordinate** component for the Player Y as 0.5.  
 
-11. **Materials** という名前の新しいフォルダーをプロジェクトに作成します。このフォルダーに、プレイヤーの色を設定するマテリアルを作成します。
+    ![][7]
 
-12. このフォルダー内に、**Background** という名前の新しい**マテリアル**を作成します。
+11. Create a new folder called **Materials** in the project where we will create the material to color the player. 
 
-	![][8]
+12. Create a new **Material** called **Background** in this folder. 
 
-13. マテリアルの色を更新するには、その **[Albedo]** (アルベド) プロパティを更新します。RGB 値 [0,32,64] を選択できます。
+    ![][8]
 
-	![][9]
+13. Update the color of the material by updating the **Albedo** property of it. You can select the RGB values of [0,32,64]. 
 
-14. このマテリアルをシーン ビューにドラッグして、**Ground** オブジェクトに色を適用します。
+    ![][9]
 
-	![][10]
+14. Drag this material into the scene view to apply color to the **Ground** object. 
 
-17. 最後に、わかりやすくするために、Directional Light オブジェクトで、**[Transform] \(変換) の [Rotation] \(回転) で [Y] \(Y)** を 60 に設定します。
+    ![][10]
 
-	![][12]
+17. Finally update the **Transform -> Rotation -> Y** to 60 on the Directional Light object for clarity. 
 
-### プレイヤーを動かす
-次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-player?playlist=17141)に基づいています。
+    ![][12]
 
-1. **RigidBody** コンポーネントを **Player** オブジェクトに追加します。
+### <a name="moving-the-player"></a>Moving the player
+The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-player?playlist=17141)
 
-	![][13]
+1. Add a **RigidBody** component to the **Player** object. 
 
-2. **Scripts** という名前の新しいフォルダーをプロジェクトに作成します。
+    ![][13]
 
-3. **[Add Component] \(コンポーネントの追加)、[New Script] \(新しいスクリプト)、[C# Script] \(C# スクリプト)** の順にクリックします。スクリプトに **PlayerController** という名前を付け、**[Create and Add]** (作成して追加) をクリックします。これで、スクリプトが作成され、Player オブジェクトにアタッチされます。
+2. Create a new folder called **Scripts** in the Project. 
 
-	![][14]
+3. Click **Add Component-> New Script -> C# Script**. Name it **PlayerController**, and click **Create and Add**. This will create and attach a script to the Player object.  
 
-5. このスクリプトをプロジェクトの **Scripts** フォルダーに移動します。
+    ![][14]
 
-6. 好みのスクリプト エディターでこのスクリプトを編集するために開き、スクリプト コードを次のコードで更新して、保存します。
+5. Move this script under the **Scripts** folder in the project. 
 
-		using UnityEngine;
-		using System.Collections;
-		
-		public class PlayerController : MonoBehaviour 
-		{
-			public float speed;
-			private Rigidbody rb;
-			void Start ()
-			{
-			    rb = GetComponent<Rigidbody>();
-			}
-			void FixedUpdate ()
-			{
-			    float moveHorizontal = Input.GetAxis ("Horizontal");
-			    float moveVertical = Input.GetAxis ("Vertical");
-				Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-				rb.AddForce (movement * speed);
-			}
-		}
-	
-8. 上記のスクリプトで **Speed** プロパティが使用されていることに注目します。Unity エディターで、[Speed] \(速度) プロパティを 10 に更新します。
+6. Open the script for editing in your favorite script editor, update the script code with the following code and save it. 
 
-	![][15]
+        using UnityEngine;
+        using System.Collections;
+        
+        public class PlayerController : MonoBehaviour 
+        {
+            public float speed;
+            private Rigidbody rb;
+            void Start ()
+            {
+                rb = GetComponent<Rigidbody>();
+            }
+            void FixedUpdate ()
+            {
+                float moveHorizontal = Input.GetAxis ("Horizontal");
+                float moveVertical = Input.GetAxis ("Vertical");
+                Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+                rb.AddForce (movement * speed);
+            }
+        }
+    
+8. Note that the script above uses a **Speed** property. In the Unity editor, update the speed property to 10.  
 
-9. Unity エディターの **[Play]** (再生) をクリックします。これで、キーボードを使って球を操作できるようになります。球は回転したり、動き回ったりします。
+    ![][15]
 
-### カメラを動かす
-次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141)に基づいています。この手順では、**Main Camera** を **Player** オブジェクトに関連付けます。
+9. Hit **Play** in the Unity Editor. Now you should be able to control the ball using the keyboard and it should rotate and move around. 
 
-1. **Transform.Position** を X = 0、Y = 10.5、Z=-10 に更新します。
-2. **Transform.Rotation** を X = 45、Y = 0、Z = 0 に更新します。
+### <a name="moving-the-camera"></a>Moving the camera
+The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141) and will tie the **Main Camera** to the **Player** object. 
 
-	![][16]
+1. Update the **Transform.Position** to be X = 0,  Y = 10.5, Z=-10.  
+2. Update the **Transform.Rotation** to be X = 45, Y = 0, Z = 0.  
 
-2. **CameraController** という名前の新しいスクリプトを **Main Camera** に追加し、そのスクリプトを Scripts フォルダーに移動します。
+    ![][16]
 
-	![][17]
+2. Add a new script called **CameraController** to the **MainCamera** and move it under the Scripts folder. 
 
-3. スクリプトを編集するために開き、次のコードを追加します。
+    ![][17]
 
-		using UnityEngine;
-		using System.Collections;
-		
-		public class CameraController : MonoBehaviour {
-		
-		    public GameObject player;
-		
-		    private Vector3 offset;
-		
-		    void Start ()
-		    {
-		        offset = transform.position - player.transform.position;
-		    }
-		    
-		    void LateUpdate ()
-		    {
-		        transform.position = player.transform.position + offset;
-		    }
-		}
-	
-5. Unity 環境で、Player 変数を Main Camera オブジェクトの Player スロットにドラッグして、この 2 つを相互に関連付けます。
+3. Open up the script for editing and add the following code in it:
 
-	![][18]
+        using UnityEngine;
+        using System.Collections;
+        
+        public class CameraController : MonoBehaviour {
+        
+            public GameObject player;
+        
+            private Vector3 offset;
+        
+            void Start ()
+            {
+                offset = transform.position - player.transform.position;
+            }
+            
+            void LateUpdate ()
+            {
+                transform.position = player.transform.position + offset;
+            }
+        }
+    
+5. In Unity environment - drag the Player variable into the Player slot for the Main Camera object so that the two are associated with one another. 
 
-6. これで、エディターで [Play] \(再生) をクリックし、Player Ball オブジェクトを回転させると、カメラはその動きを追いかけます。
+    ![][18]
 
-### プレイ領域を設定する
-次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/setting-up-the-play-area?playlist=17141)に基づいています。ここでは、Player Ball オブジェクトが動く際にプレイ領域から飛び出さないように Ground オブジェクトを取り囲む Walls オブジェクトを作成します。
+6. Now if you hit Play in the Unity editor and rotate the Player Ball object then you will see the Camera following it in the movement.  
 
-1. **[Create] \(作成)、[Create Empty] \(空のオブジェクト)、[Game Object] \(ゲーム オブジェクト)** の順にクリックし、そのオブジェクトに **Walls** という名前を付けます。
+### <a name="setting-up-the-play-area"></a>Setting up the Play area
+The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/setting-up-the-play-area?playlist=17141). We will create the Walls surrounding the Ground so that the Player Ball object doesn't drop off the play area in its movement. 
 
-	![][19]
+1. Click **Create -> Create Empty -> Game Object** and name it **Walls**
 
-2. この Walls オブジェクトの下で、**[3D Object] \(3D オブジェクト)、[Cube] \(キューブ)** の順に選択してオブジェクトを作成し、"West wall" という名前を付けます。
+    ![][19]
 
-	![][20]
+2. Under this Walls object - create a new **3D Object -> Cube** and name it "West wall". 
 
-3. この West wall オブジェクトについて、**[Transform] \(変換) の [Position] \(位置)** と **[Transform] \(変換) の [Scale] \(スケール)** を更新します。
+    ![][20]
 
-	![][21]
+3. Update the **Transform -> Position** and **Transform -> Scale** for this West Wall object. 
 
-4. West wall を複製して **East wall** を作成し、変換の位置とスケールを更新します。
+    ![][21]
 
-	![][22]
+4. Duplicate the West wall to create an **East wall** with the updated transform position and scale. 
 
-5. East wall を複製して **North wall** を作成し、変換の位置とスケールを更新します。
+    ![][22]
 
-	![][23]
+5. Duplicate the East wall to create a **North wall** with the updated transform position & scale. 
 
-6. North wall を複製して **South wall** を作成し、変換の位置とスケールを更新します。
+    ![][23]
 
-	![][24]
+6. Duplicate the North wall and create a **South wall** with the updated transform position & scale. 
 
-### 収集可能なオブジェクトを作成する
-次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141)に基づいています。ここでは、収集可能なオブジェクトのセットを構成する見栄えのよいオブジェクトをいくつか作成します。Player Ball オブジェクトは、これらのオブジェクトを衝突させることによって "収集" する必要があります。
+    ![][24]
 
-1. 新しい **3D キューブ オブジェクト**を作成し、Pickup という名前を付けます。
+### <a name="creating-collectible-objects"></a>Creating Collectible objects
+The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141). We will create some attractive looking objects which will form the set of collectible objects which the Player Ball object needs to 'collect' by colliding with them. 
 
-2. この Pickup オブジェクトについて、**[Transform] \(変換) の [Rotation] \(回転)** と **[Transform] \(変換) の [Scale] \(スケール)** を調整します。
+1. Create a new **3D Cube object** and name it Pickup. 
 
-	![][25]
+2. Adjust the **Transform -> Rotation** & **Transform -> Scale** of the Pickup object. 
 
-3. **Rotator** という名前の**新しい C# スクリプト**を作成し、Pickup オブジェクトにアタッチします。このスクリプトを Scripts フォルダーの下に配置するようにしてください。
+    ![][25]
 
-	![][26]
+3. Create and attach a **new C# Script** called **Rotator** to the Pickup object. Make sure to put the script under the Scripts folder. 
 
-4. このスクリプトを編集するために開き、次のように更新します。
+    ![][26]
 
-		using UnityEngine;
-		using System.Collections;
-		
-		public class Rotator : MonoBehaviour {
-		
-		    void Update () 
-		    {
-		        transform.Rotate (new Vector3 (15, 30, 45) * Time.deltaTime);
-		    }
-		}
+4. Open this script for editing and update it to be the following: 
 
-5. エディターで [Play] \(再生) をクリックすると、Pickup オブジェクトがその軸を中心に回転します。
+        using UnityEngine;
+        using System.Collections;
+        
+        public class Rotator : MonoBehaviour {
+        
+            void Update () 
+            {
+                transform.Rotate (new Vector3 (15, 30, 45) * Time.deltaTime);
+            }
+        }
 
-6. **Prefabs** という名前の新しいフォルダーを作成します。
+5. Now hit the Play mode in the Unity Editor and your Pickup object show be rotating on its axis.
 
-	![][27]
+6. Create a new folder called **Prefabs** 
 
-7. **Pickup** オブジェクトをドラッグして Prefabs フォルダーに置きます。
+    ![][27]
 
-	![][28]
+7. Drag the **Pickup** object and put it in the Prefabs folder.
 
-8. **Pickups** という名前の新しい**空のゲーム オブジェクト**を作成します。その位置を原点にリセットした後、このゲーム オブジェクトの下に Pickup オブジェクトをドラッグします。
+    ![][28]
 
-	![][29]
+8. Create a new **Empty Game object** called **Pickups**. Reset its position to origin and then drag the Pickup object under this game object.  
 
-9. **Pickup** オブジェクトを複製し、**Transform.Position の X と Z** の値を適宜更新して、**Player** オブジェクトを取り囲む **Ground** オブジェクト上に散らします。
+    ![][29]
 
-	![][30]
+9. Duplicate the **Pickup** object and spread it on the **Ground** object around the **Player** object by updating the **Transform.Position's X & Z** values appropriately. 
 
-10. **Pickup** という名前の**新しいマテリアル**を作成します。Ground オブジェクトを更新したときと同じように、**[Albedo] \(アルベド) プロパティ**を更新して、その色が [Red] \(赤) になるように更新します。
+    ![][30]
 
-	![][31]
+10. Create a **new material** called **Pickup** and update it to be Red in color by updating the **Albedo property** similar to what we did for updating the Ground object. 
 
-11. マテリアルを 4 つの Pickup オブジェクトすべてに適用します。
+    ![][31]
 
-	![][32]
+11. Apply the material to all the 4 pickup objects.
 
-### Pickup オブジェクトを収集する
-次の手順は、[Unity のチュートリアル](https://unity3d.com/learn/tutorials/projects/roll-a-ball/collecting-pick-up-objects?playlist=17141)に基づいています。ここでは、Player が衝突することで Pickup オブジェクトを "収集" できるように Player を更新します。
+    ![][32]
 
-1. Player オブジェクトにアタッチされている **PlayerController** スクリプトを編集するために開き、次のように更新します。
+### <a name="collecting-the-pickup-objects"></a>Collecting the Pickup objects
+The steps below are from the [Unity tutorial](https://unity3d.com/learn/tutorials/projects/roll-a-ball/collecting-pick-up-objects?playlist=17141). We will update the Player so that it is able to 'collect' the pickup objects by colliding with them. 
 
-		using UnityEngine;
-		using System.Collections;
-		
-		public class PlayerController : MonoBehaviour {
-		
-		    public float speed;
-		
-		    private Rigidbody rb;
-		
-		    void Start ()
-		    {
-		        rb = GetComponent<Rigidbody>();
-		    }
-		
-		    void FixedUpdate ()
-		    {
-		        float moveHorizontal = Input.GetAxis ("Horizontal");
-		        float moveVertical = Input.GetAxis ("Vertical");
-		
-		        Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		
-		        rb.AddForce (movement * speed);
-		    }
-		
-		    void OnTriggerEnter(Collider other) 
-		    {
-		        if (other.gameObject.CompareTag ("Pick Up"))
-		        {
-		            other.gameObject.SetActive (false);
-		        }
-		    }
-		}
+1. Open up the **PlayerController** script attached to the Player object for editing and update it to the following:  
 
-2. **Pick Up** という名前の新しい**タグ**を作成します (名前は、スクリプトの内容と一致する必要があります)。
+        using UnityEngine;
+        using System.Collections;
+        
+        public class PlayerController : MonoBehaviour {
+        
+            public float speed;
+        
+            private Rigidbody rb;
+        
+            void Start ()
+            {
+                rb = GetComponent<Rigidbody>();
+            }
+        
+            void FixedUpdate ()
+            {
+                float moveHorizontal = Input.GetAxis ("Horizontal");
+                float moveVertical = Input.GetAxis ("Vertical");
+        
+                Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
+        
+                rb.AddForce (movement * speed);
+            }
+        
+            void OnTriggerEnter(Collider other) 
+            {
+                if (other.gameObject.CompareTag ("Pick Up"))
+                {
+                    other.gameObject.SetActive (false);
+                }
+            }
+        }
 
-	![][33]
-	
-	![][34]
+2. Create a new **Tag** called **Pick Up** (it must match what is in the script)  
 
-3. この**タグ**を Prefab Pickup オブジェクトに適用します。
+    ![][33]
+    
+    ![][34]
 
-	![][35]
+3. Apply this **Tag** to the Prefab Pickup object. 
 
-4. Prefab オブジェクトの **[IsTrigger]** チェック ボックスをオンにします。
+    ![][35]
 
-	![][36]
+4. Enable **IsTrigger** checkbox for the Prefab object.
 
-5. RigidBody を Pickup Prefab オブジェクトに追加します。ここでは、パフォーマンスを最適化するために、使用していた静的コライダーを動的コライダーに更新します。
+    ![][36]
 
-	![][37]
+5. Add a Rigid body to Pickup Prefab object. For performance optimization we will update the static collider that we used to a Dynamic collider. 
+
+    ![][37]
   
-6. 最後に、Prefab オブジェクトの **IsKinematic** プロパティのチェック ボックスをオンにします。
+6. Finally check the **IsKinematic** property for the prefab object. 
 
-	![][38]
+    ![][38]
 
-7. Unity エディターの **[Play]** (再生) をクリックすると、方向入力にキーボードのキーを使用して Player オブジェクトを動かすことで、この **Roll a Ball** ゲームをプレイできるようになります。
+7. Hit **Play** in the Unity editor and you will be able to play this **Roll a Ball** game by moving the Player object using your keyboard keys for direction input. 
 
-### モバイルでプレイできるようにゲームを更新する
-Unity の基本的なチュートリアルは、上のセクションで終了です。ここでは、モバイル デバイスで使いやすくなるようにゲームを変更します。ここまでは、ゲームをテストする際にキーボード入力を使用してきたことに注意してください。今度は、電話の所作を使用して (つまり、加速度計を入力として使用して)、プレイヤーを操作できるように変更します。
+### <a name="updating-the-game-for-mobile-play"></a>Updating the game for mobile play
+The sections above concluded the basic tutorial from Unity. Now we will modify the game to make it mobile device friendly. Note that we used keyboard input for the game so far for testing. Now we will modify it so that we can control the player by using the motion of the phone i.e. using Accelerometer as the input. 
 
-**PlayerController** スクリプトを編集するために開き、Player オブジェクトの移動に加速度計からの動きを使用するように **FixedUpdate** メソッドを更新します。
+Open up the **PlayerController** script for editing and update the **FixedUpdate** method to use the motion from the accelerometer to move the Player object. 
 
-	    void FixedUpdate()
-	    {
-	        //float moveHorizontal = Input.GetAxis("Horizontal");
-	        //float moveVertical = Input.GetAxis("Vertical");
-	        //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-	        rb.AddForce(Input.acceleration.x * Speed, 0, -Input.acceleration.z * Speed);
-	    }
+        void FixedUpdate()
+        {
+            //float moveHorizontal = Input.GetAxis("Horizontal");
+            //float moveVertical = Input.GetAxis("Vertical");
+            //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+            rb.AddForce(Input.acceleration.x * Speed, 0, -Input.acceleration.z * Speed);
+        }
 
-これで、Unity を使用した基本的なゲームの作成チュートリアルはおしまいです。このゲームを任意のデバイスにデプロイしてゲームをプレイすることができます。
+This tutorial concludes a basic game creation with Unity and you can deploy this on a device of your choice to play the game. 
 
 <!-- Images -->
-[1]: ./media/mobile-engagement-unity-roll-a-ball/1.png
+[1]: ./media/mobile-engagement-unity-roll-a-ball/1.png  
 [2]: ./media/mobile-engagement-unity-roll-a-ball/2.png
 [3]: ./media/mobile-engagement-unity-roll-a-ball/3.png
 [4]: ./media/mobile-engagement-unity-roll-a-ball/4.png
@@ -327,9 +328,9 @@ Unity の基本的なチュートリアルは、上のセクションで終了�
 [6]: ./media/mobile-engagement-unity-roll-a-ball/6.png
 [7]: ./media/mobile-engagement-unity-roll-a-ball/7.png
 [8]: ./media/mobile-engagement-unity-roll-a-ball/8.png
-[9]: ./media/mobile-engagement-unity-roll-a-ball/9.png
-[10]: ./media/mobile-engagement-unity-roll-a-ball/10.png
-[11]: ./media/mobile-engagement-unity-roll-a-ball/11.png
+[9]: ./media/mobile-engagement-unity-roll-a-ball/9.png  
+[10]: ./media/mobile-engagement-unity-roll-a-ball/10.png    
+[11]: ./media/mobile-engagement-unity-roll-a-ball/11.png    
 [12]: ./media/mobile-engagement-unity-roll-a-ball/12.png
 [13]: ./media/mobile-engagement-unity-roll-a-ball/13.png
 [14]: ./media/mobile-engagement-unity-roll-a-ball/14.png
@@ -337,41 +338,45 @@ Unity の基本的なチュートリアルは、上のセクションで終了�
 [16]: ./media/mobile-engagement-unity-roll-a-ball/16.png
 [17]: ./media/mobile-engagement-unity-roll-a-ball/17.png
 [18]: ./media/mobile-engagement-unity-roll-a-ball/18.png
-[19]: ./media/mobile-engagement-unity-roll-a-ball/19.png
-[20]: ./media/mobile-engagement-unity-roll-a-ball/20.png
-[21]: ./media/mobile-engagement-unity-roll-a-ball/21.png
-[22]: ./media/mobile-engagement-unity-roll-a-ball/22.png
-[23]: ./media/mobile-engagement-unity-roll-a-ball/23.png
-[24]: ./media/mobile-engagement-unity-roll-a-ball/24.png
-[25]: ./media/mobile-engagement-unity-roll-a-ball/25.png
-[26]: ./media/mobile-engagement-unity-roll-a-ball/26.png
-[27]: ./media/mobile-engagement-unity-roll-a-ball/27.png
-[28]: ./media/mobile-engagement-unity-roll-a-ball/28.png
-[29]: ./media/mobile-engagement-unity-roll-a-ball/29.png
-[30]: ./media/mobile-engagement-unity-roll-a-ball/30.png
-[31]: ./media/mobile-engagement-unity-roll-a-ball/31.png
-[32]: ./media/mobile-engagement-unity-roll-a-ball/32.png
-[33]: ./media/mobile-engagement-unity-roll-a-ball/33.png
-[34]: ./media/mobile-engagement-unity-roll-a-ball/34.png
-[35]: ./media/mobile-engagement-unity-roll-a-ball/35.png
-[36]: ./media/mobile-engagement-unity-roll-a-ball/36.png
-[37]: ./media/mobile-engagement-unity-roll-a-ball/37.png
-[38]: ./media/mobile-engagement-unity-roll-a-ball/38.png
+[19]: ./media/mobile-engagement-unity-roll-a-ball/19.png    
+[20]: ./media/mobile-engagement-unity-roll-a-ball/20.png    
+[21]: ./media/mobile-engagement-unity-roll-a-ball/21.png    
+[22]: ./media/mobile-engagement-unity-roll-a-ball/22.png    
+[23]: ./media/mobile-engagement-unity-roll-a-ball/23.png    
+[24]: ./media/mobile-engagement-unity-roll-a-ball/24.png    
+[25]: ./media/mobile-engagement-unity-roll-a-ball/25.png    
+[26]: ./media/mobile-engagement-unity-roll-a-ball/26.png    
+[27]: ./media/mobile-engagement-unity-roll-a-ball/27.png    
+[28]: ./media/mobile-engagement-unity-roll-a-ball/28.png    
+[29]: ./media/mobile-engagement-unity-roll-a-ball/29.png    
+[30]: ./media/mobile-engagement-unity-roll-a-ball/30.png    
+[31]: ./media/mobile-engagement-unity-roll-a-ball/31.png    
+[32]: ./media/mobile-engagement-unity-roll-a-ball/32.png    
+[33]: ./media/mobile-engagement-unity-roll-a-ball/33.png    
+[34]: ./media/mobile-engagement-unity-roll-a-ball/34.png    
+[35]: ./media/mobile-engagement-unity-roll-a-ball/35.png    
+[36]: ./media/mobile-engagement-unity-roll-a-ball/36.png    
+[37]: ./media/mobile-engagement-unity-roll-a-ball/37.png    
+[38]: ./media/mobile-engagement-unity-roll-a-ball/38.png    
 [51]: ./media/mobile-engagement-unity-roll-a-ball/new-project.png
 [52]: ./media/mobile-engagement-unity-roll-a-ball/new-project-properties.png
 [53]: ./media/mobile-engagement-unity-roll-a-ball/save-scene.png
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

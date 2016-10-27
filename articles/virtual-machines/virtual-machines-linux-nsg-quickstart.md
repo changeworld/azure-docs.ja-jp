@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Linux 仮想マシンへのポートの開放 |Microsoft Azure"
-   description="Azure Resource Manager デプロイメント モデルと Azure CLI を使用して、Linux VM へのポートを開き、エンドポイントを作成する方法について説明します。"
+   pageTitle="Open ports to a Linux VM | Microsoft Azure"
+   description="Learn how to open a port / create an endpoint to your Linux VM using the Azure resource manager deployment model and the Azure CLI"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,49 +16,53 @@
    ms.date="08/08/2016"
    ms.author="iainfou"/>
 
-# Azure での Linux VM へのポートの開放
-サブネットまたは仮想マシン (VM) ネットワーク インターフェイスでネットワーク フィルターを作成して、Azure で VM へのポートを開くか、エンドポイントを作成します。着信および発信の両方のトラフィックを制御するこれらのフィルターを、トラフィックを受信するリソースに接続されているネットワーク セキュリティ グループに配置します。ポート 80 での Web トラフィックの一般的な例を使用して説明します。
 
-## クイック コマンド
-ネットワーク セキュリティ グループとルールを作成するには、Resource Manager モードの [Azure CLI](../xplat-cli-install.md) が必要です (`azure config mode arm`)。
+# <a name="opening-ports-to-a-linux-vm-in-azure"></a>Opening ports to a Linux VM in Azure
+You open a port, or create an endpoint, to a virtual machine (VM) in Azure by creating a network filter on a subnet or VM network interface. You place these filters, which control both inbound and outbound traffic, on a Network Security Group attached to the resource that receives the traffic. Let's use a common example of web traffic on port 80.
 
-独自の名前と場所を適宜入力してネットワーク セキュリティ グループを作成します。
+## <a name="quick-commands"></a>Quick commands
+To create a Network Security Group and rules you need [the Azure CLI](../xplat-cli-install.md) in Resource Manager mode (`azure config mode arm`).
+
+Create your Network Security Group, entering your own names and location appropriately:
 
 ```
 azure network nsg create --resource-group TestRG --name TestNSG --location westus
 ```
 
-Web サーバーへの HTTP トラフィックを許可するルールを追加します (または SSH アクセス、データベース接続など、独自のシナリオに合わせて調整します)。
+Add a rule to allow HTTP traffic to your webserver (or adjust for your own scenario, such as SSH access or database connectivity):
 
 ```
 azure network nsg rule create --protocol tcp --direction inbound --priority 1000 \
     --destination-port-range 80 --access allow --resource-group TestRG --nsg-name TestNSG --name AllowHTTP
 ```
 
-ネットワーク セキュリティ グループと仮想マシンのネットワーク インターフェイスを関連付けます。
+Associate the Network Security Group with your VM's network interface:
 
 ```
 azure network nic set --resource-group TestRG --name TestNIC --network-security-group-name TestNSG
 ```
 
-また、ネットワーク セキュリティ グループは、単一の VM のネットワーク インターフェイスに関連付けるのではなく、仮想ネットワークのサブネットに関連付けることもできます。
+Alternatively, you can associate your Network Security Group with a virtual network subnet rather than just to the network interface on a single VM:
 
 ```
 azure network vnet subnet set --resource-group TestRG --name TestSubnet --network-security-group-name TestNSG
 ```
 
-## ネットワーク セキュリティ グループの詳細
-このページのクイック コマンドでは、VM にフローするトラフィックの開始と実行を行うことができます。ネットワーク セキュリティ グループには優れた機能が多数用意されており、リソースへのアクセスをきめ細かく制御できます。詳細については、[ネットワーク セキュリティ グループと ACL 規則の作成](../virtual-network/virtual-networks-create-nsg-arm-cli.md)に関するページをご覧ください。
+## <a name="more-information-on-network-security-groups"></a>More information on Network Security Groups
+The quick commands here allow you to get up and running with traffic flowing to your VM. Network Security Groups provide many great features and granularity for controlling access to your resources. You can read more about [creating a Network Security Group and ACL rules here](../virtual-network/virtual-networks-create-nsg-arm-cli.md).
 
-ネットワーク セキュリティ グループと ACL 規則は、Azure Resource Manager のテンプレートの一部として定義できます。詳細については、[テンプレートを使用したネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-template.md)に関するページをご覧ください。
+You can define Network Security Groups and ACL rules as part of Azure Resource Manager templates. Read more about [creating Network Security Groups with templates](../virtual-network/virtual-networks-create-nsg-arm-template.md).
 
-ポート フォワーディングを使用して、一意の外部ポートを VM 上の内部ポートにマップする必要がある場合は、ロード バランサーとネットワーク アドレス変換 (NAT) 規則を使用します。たとえば、TCP ポート 8080 を外部に公開し、VM 上の TCP ポート 80 にトラフィックを送ることができます。詳細については、[インターネットに接続するロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-cli.md)に関するページをご覧ください。
+If you need to use port-forwarding to map a unique external port to an internal port on your VM, use a load balancer and Network Address Translation (NAT) rules. For example, you may want to expose TCP port 8080 externally and have traffic directed to TCP port 80 on a VM. You can learn about [creating an Internet-facing load balancer](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
-## 次のステップ
-この例では、HTTP トラフィックを許可する単純な規則を作成します。より精密な環境の作成については、次の記事で確認できます。
+## <a name="next-steps"></a>Next steps
+In this example, you created a simple rule to allow HTTP traffic. You can find information on creating more detailed environments in the following articles:
 
-- [Azure リソース マネージャーの概要](../resource-group-overview.md)
-- [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
-- [ロード バランサーのための Azure Resource Manager の概要](../load-balancer2 /load-balancer-arm.md)
+- [Azure Resource Manager overview](../resource-group-overview.md)
+- [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md)
+- [Azure Resource Manager Overview for Load Balancers](../load-balancer2    /load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

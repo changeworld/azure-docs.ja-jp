@@ -1,125 +1,130 @@
 <properties
-	pageTitle="メモリ不足エラー (OOM) - Hive 設定 | Microsoft Azure"
-	description="HDInsight の Hadoop で、Hive クエリによるメモリ不足 (OOM) エラーを修正します。ユーザーのシナリオは、多数の大きなテーブルに対するクエリです。"
-	keywords="メモリ不足エラー、OOM、Hive 設定"
-	services="hdinsight"
-	documentationCenter=""
-	authors="rashimg"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Out of memory error (OOM) - Hive settings | Microsoft Azure"
+    description="Fix an out of memory error (OOM) from a Hive query in Hadoop in HDInsight. The customer scenario is a query across many large tables."
+    keywords="out of memory error, OOM, Hive settings"
+    services="hdinsight"
+    documentationCenter=""
+    authors="rashimg"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="big-data"
-	ms.date="09/02/2016"
-	ms.author="rashimg;jgao"/>
+    ms.service="hdinsight"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="big-data"
+    ms.date="09/02/2016"
+    ms.author="rashimg;jgao"/>
 
-# Azure HDInsight の Hadoop の Hive メモリ設定を使用してメモリ不足 (OOM) エラーを修正する
 
-ユーザーがよく経験する問題として、Hive を使用するときに発生するメモリ不足 (OOM) エラーがあります。この記事では、ユーザーのシナリオと、問題を解決するために推奨される Hive 設定について説明します。
+# <a name="fix-an-out-of-memory-(oom)-error-with-hive-memory-settings-in-hadoop-in-azure-hdinsight"></a>Fix an Out of Memory (OOM) error with Hive memory settings in Hadoop in Azure HDInsight
 
-## シナリオ: 大きなテーブル全体に対する Hive クエリ
+One of the common problems our customers face is getting an Out of Memory (OOM) error when using Hive. This article describes a customer scenario and the Hive settings we recommended to fix the issue.
 
-ユーザーは Hive を使用して次のクエリを実行しました。
+## <a name="scenario:-hive-query-across-large-tables"></a>Scenario: Hive query across large tables
 
-	SELECT
-		COUNT (T1.COLUMN1) as DisplayColumn1,
-		…
-		…
-		….
-	FROM
-		TABLE1 T1,
-		TABLE2 T2,
-		TABLE3 T3,
-		TABLE5 T4,
-		TABLE6 T5,
-		TABLE7 T6
-	where (T1.KEY1 = T2.KEY1….
-		…
-		…
+A customer ran the query below using Hive.
 
-このクエリの特徴:
+    SELECT
+        COUNT (T1.COLUMN1) as DisplayColumn1,
+        …
+        …
+        ….
+    FROM
+        TABLE1 T1,
+        TABLE2 T2,
+        TABLE3 T3,
+        TABLE5 T4,
+        TABLE6 T5,
+        TABLE7 T6
+    where (T1.KEY1 = T2.KEY1….
+        …
+        …
 
-* T1 は、STRING 型の列が多数ある大きなテーブル TABLE1 のエイリアスです。
-* 他のテーブルはそれほど大きくありませんが、多数の列があります。
-* すべてのテーブルは相互に結合されています。場合によっては、TABLE1 などのテーブルにある複数の列によって結合されています。
+Some nuances of this query:
 
-ユーザーが 24 ノード A3 クラスターの MapReduce に Hive を使用してクエリを実行すると、クエリの実行時間は約 26 分間になりました。ユーザーは、MapReduce に Hive を使用してクエリを実行すると、次の警告メッセージが表示されることに気づきました。
+* T1 is an alias to a big table, TABLE1, which has lots of STRING column types.
+* Other tables are not that big but do have a large number of columns.
+* All tables are joining each other, in some cases with multiple columns in TABLE1 and others.
 
-	Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
-	Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
+When the customer ran the query using Hive on MapReduce on a 24 node A3 cluster, the query ran in about 26 minutes. The customer noticed the following warning messages when the query was run using Hive on MapReduce:
 
-クエリは約 26 分間で実行を完了したので、ユーザーは警告を無視し、このクエリのパフォーマンスをさらに改善する方法に注目し始めました。
+    Warning: Map Join MAPJOIN[428][bigTable=?] in task 'Stage-21:MAPRED' is a cross product
+    Warning: Shuffle Join JOIN[8][tables = [t1933775, t1932766]] in Stage 'Stage-4:MAPRED' is a cross product
 
-ユーザーは「[HDInsight の Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)」を参照して、Tez 実行エンジンを使用することにしました。Tez 設定を有効にして同じクエリを実行すると、クエリの実行時間は 15 分間になり、次のエラーがスローされました。
+Because the query finished executing in about 26 minutes, the customer ignored these warnings and instead started to focus on how to improve the this query’s performance further.
 
-	Status: Failed
-	Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
+The customer consulted [Optimize Hive queries for Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md), and decided to use Tez execution engine. Once the same query was run with the Tez setting enabled the query ran for 15 minutes, and then threw the following error:
+
+    Status: Failed
+    Vertex failed, vertexName=Map 5, vertexId=vertex_1443634917922_0008_1_05, diagnostics=[Task failed, taskId=task_1443634917922_0008_1_05_000006, diagnostics=[TaskAttempt 0 failed, info=[Error: Failure while running task:java.lang.RuntimeException: java.lang.OutOfMemoryError: Java heap space
         at
-	org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:172)
+    org.apache.hadoop.hive.ql.exec.tez.TezProcessor.initializeAndRunProcessor(TezProcessor.java:172)
         at org.apache.hadoop.hive.ql.exec.tez.TezProcessor.run(TezProcessor.java:138)
         at
-	org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:324)
+    org.apache.tez.runtime.LogicalIOProcessorRuntimeTask.run(LogicalIOProcessorRuntimeTask.java:324)
         at
-	org.apache.tez.runtime.task.TezTaskRunner$TaskRunnerCallable$1.run(TezTaskRunner.java:176)
+    org.apache.tez.runtime.task.TezTaskRunner$TaskRunnerCallable$1.run(TezTaskRunner.java:176)
         at
-	org.apache.tez.runtime.task.TezTaskRunner$TaskRunnerCallable$1.run(TezTaskRunner.java:168)
+    org.apache.tez.runtime.task.TezTaskRunner$TaskRunnerCallable$1.run(TezTaskRunner.java:168)
         at java.security.AccessController.doPrivileged(Native Method)
         at javax.security.auth.Subject.doAs(Subject.java:415)
         at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1628)
         at
-	org.apache.tez.runtime.task.TezTaskRunner$TaskRunnerCallable.call(TezTaskRunner.java:168)
+    org.apache.tez.runtime.task.TezTaskRunner$TaskRunnerCallable.call(TezTaskRunner.java:168)
         at
-	org.apache.tez.runtime.task.TezTaskRunner$TaskRunnerCallable.call(TezTaskRunner.java:163)
+    org.apache.tez.runtime.task.TezTaskRunner$TaskRunnerCallable.call(TezTaskRunner.java:163)
         at java.util.concurrent.FutureTask.run(FutureTask.java:262)
         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
         at java.lang.Thread.run(Thread.java:745)
-	Caused by: java.lang.OutOfMemoryError: Java heap space
+    Caused by: java.lang.OutOfMemoryError: Java heap space
 
-そこで、ユーザーは大きな VM の方がヒープ領域が増えると考えて、大きな VM (つまり D12) を使用することにしました。それでも同じエラーが発生します。ユーザーは HDInsight チームに連絡し、この問題のデバッグについて相談しました。
+The customer then decided to use a bigger VM (i.e. D12) thinking a bigger VM would have more heap space. Even then, the customer continued to see the error. The customer reached out to the HDInsight team for help in debugging this issue.
 
-## メモリ不足 (OOM) エラーのデバッグ
+## <a name="debug-the-out-of-memory-(oom)-error"></a>Debug the Out of Memory (OOM) error
 
-サポート チームとエンジニアリング チームは協力して、メモリ不足 (OOM) エラーの原因となる問題の 1 つが、[Apache JIRA の既知の問題](https://issues.apache.org/jira/browse/HIVE-8306)であることを見つけました。JIRA の説明を引用します。
+Our support and engineering teams together found one of the issues causing the Out of Memory (OOM) error was a [known issue described in the Apache JIRA](https://issues.apache.org/jira/browse/HIVE-8306). From the description in the JIRA:
 
-	When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesnt take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
+    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesnt take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
 
-hive-site.xml ファイルを確認したところ、**hive.auto.convert.join.noconditionaltask** が **true** に設定されていることが判明しました。
+We confirmed that **hive.auto.convert.join.noconditionaltask** was indeed set to **true** by looking under hive-site.xml file:
 
-	<property>
-    	<name>hive.auto.convert.join.noconditionaltask</name>
-    	<value>true</value>
-    	<description>
-      		Whether Hive enables the optimization about converting common join into mapjoin based on the input file size.
-      		If this parameter is on, and the sum of size for n-1 of the tables/partitions for a n-way join is smaller than the
-      		specified size, the join is directly converted to a mapjoin (there is no conditional task).
-    	</description>
-  	</property>
+    <property>
+        <name>hive.auto.convert.join.noconditionaltask</name>
+        <value>true</value>
+        <description>
+            Whether Hive enables the optimization about converting common join into mapjoin based on the input file size.
+            If this parameter is on, and the sum of size for n-1 of the tables/partitions for a n-way join is smaller than the
+            specified size, the join is directly converted to a mapjoin (there is no conditional task).
+        </description>
+    </property>
 
-警告と JIRA の説明に基づき、Map Join が Java ヒープ領域 OOM エラーの原因であると仮説を立てました。そしてこの問題をさらに深く掘り下げました。
+Based on the warning and the JIRA, our hypothesis was Map Join was the cause of the Java Heap Space OOM error. So we dug deeper into this issue.
 
-[HDInsight の Hadoop Yarn メモリ設定](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)に関するブログの投稿で説明したように、Tez 実行エンジンを使用すると、使用されるヒープ領域は、実際には Tez コンテナーに属します。Tez コンテナー メモリについて説明した次の図を参照してください。
+As explained in the blog post [Hadoop Yarn memory settings in HDInsight](http://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), when Tez execution engine is used the heap space used actually belongs to the Tez container. See the image below describing the Tez container memory.
 
-![Tez コンテナー メモリ図: Hive のメモリ不足 (OOM) エラー](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+![Tez container memory diagram: Hive out of memory error  OOM](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
 
-ブログの投稿で提案したように、**hive.tez.container.size** と **hive.tez.java.opts** という 2 つのメモリ設定で、ヒープのコンテナー メモリを定義しています。経験から判断すると、OOM 例外の原因は、コンテナー サイズが小さすぎることではありません。Java ヒープ サイズ (hive.tez.java.opts) が小さすぎることが原因です。そのため、OOM が発生する場合は、**hive.tez.java.opts** を増やしてみてください。必要に応じて、**hive.tez.container.size** も増やす必要があります。**java.opts** 設定は、**container.size** の約 80% にすることをお勧めします。
+As the blog post suggests, the following two memory settings define the container memory for the heap: **hive.tez.container.size** and **hive.tez.java.opts**. From our experience, the OOM exception does not mean the container size is too small. It means the Java heap size (hive.tez.java.opts) is too small. So whenever you see OOM, you can try to increase **hive.tez.java.opts**. If needed you might have to increase **hive.tez.container.size**. The **java.opts** setting should be around 80% of **container.size**.
 
-> [AZURE.NOTE]  **hive.tez.java.opts** は、常に **hive.tez.container.size** よりも小さく設定する必要があります。
+> [AZURE.NOTE]  The setting **hive.tez.java.opts** must always be smaller than **hive.tez.container.size**.
 
-D12 コンピューターには 28 GB のメモリがあるので、10 GB (10,240 MB) のコンテナー サイズを使用し、80% を java.opts に割り当てることにしました。そのために、Hive コンソールで次の設定を使用しました。
+Since a D12 machine has 28GB memory, we decided to use a container size of 10GB (10240MB) and assign 80% to java.opts. This was done on the Hive console using the setting below:
 
-	SET hive.tez.container.size=10240
-	SET hive.tez.java.opts=-Xmx8192m
+    SET hive.tez.container.size=10240
+    SET hive.tez.java.opts=-Xmx8192m
 
-これらの設定に基づいて、クエリは 10 分間未満で正常に実行されました。
+Based on these settings, the query successfully ran in under ten minutes.
 
-## 結論: OOM エラーとコンテナー サイズ
+## <a name="conclusion:-oom-errors-and-container-size"></a>Conclusion: OOM errors and container size
 
-OOM エラーの原因は、必ずしもコンテナー サイズが小さすぎるためではありません。コンテナー サイズではなくヒープ サイズを増やし、コンテナー メモリ サイズの 80% 以上を割り当てるようにメモリ設定を構成することをお勧めします。
+Getting an OOM error doesn't necessarily mean the container size is too small. Instead, you should configure the memory settings so that the heap size is increased and is at least 80% of the container memory size.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

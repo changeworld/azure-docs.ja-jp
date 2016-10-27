@@ -1,7 +1,7 @@
 <properties 
     pageTitle="DocumentDB インデックス作成ポリシー | Microsoft Azure" 
-    description="DocumentDB でのインデックス作成のしくみと、インデックス作成ポリシーを構成および変更する方法について説明します。インデックス作成の自動化とパフォーマンス向上を目的として、DocumentDB でインデックス作成ポリシーを構成します。" 
-	keywords="インデックス作成のしくみ, 自動インデックス作成, インデックス作成データベース, documentdb, azure, Microsoft azure"
+    description="DocumentDB でのインデックス作成のしくみと、インデックス作成ポリシーを構成および変更する方法について説明します。 インデックス作成の自動化とパフォーマンス向上を目的として、DocumentDB でインデックス作成ポリシーを構成します。" 
+    keywords="インデックス作成のしくみ, 自動インデックス作成, インデックス作成データベース, documentdb, azure, Microsoft azure"
     services="documentdb" 
     documentationCenter="" 
     authors="arramac" 
@@ -18,11 +18,12 @@
     ms.author="arramac"/>
 
 
-# DocumentDB インデックス作成ポリシー
 
-多くの顧客は Azure DocumentDB を使用して[インデックス作成のすべての機能](documentdb-indexing.md)を自動的に処理していますが、DocumentDB は、コレクション向けのカスタム **インデックス作成ポリシー**を作成時に指定することもサポートしています。DocumentDB でインデックス作成ポリシーを使用すると、他のデータベース プラットフォームで提供されているセカンダリ インデックスよりも、より柔軟性の高い、強力なデザインが利用できるため、スキーマの柔軟性を損なうことがなく、インデックスの構造をカスタマイズできます。DocumentDB でのインデックス作成のしくみを知るには、インデックス作成ポリシーを管理することで、インデックスのストレージ オーバーヘッド、書き込みとクエリのスループット、クエリの一貫性のバランスをきめ細かく調整できることを理解する必要があります。
+# <a name="documentdb-indexing-policies"></a>DocumentDB インデックス作成ポリシー
 
-この記事では、DocumentDB インデックス作成ポリシー、インデックス作成ポリシーのカスタマイズの方法、関連するトレードオフの詳細について説明します。
+多くの顧客は Azure DocumentDB を使用して [インデックス作成のすべての機能](documentdb-indexing.md)を自動的に処理していますが、DocumentDB は、コレクション向けのカスタム **インデックス作成ポリシー** を作成時に指定することもサポートしています。 DocumentDB でインデックス作成ポリシーを使用すると、他のデータベース プラットフォームで提供されているセカンダリ インデックスよりも、より柔軟性の高い、強力なデザインが利用できるため、スキーマの柔軟性を損なうことがなく、インデックスの構造をカスタマイズできます。 DocumentDB でのインデックス作成のしくみを知るには、インデックス作成ポリシーを管理することで、インデックスのストレージ オーバーヘッド、書き込みとクエリのスループット、クエリの一貫性のバランスをきめ細かく調整できることを理解する必要があります。  
+
+この記事では、DocumentDB インデックス作成ポリシー、インデックス作成ポリシーのカスタマイズの方法、関連するトレードオフの詳細について説明します。 
 
 この記事を読むと、次の質問に回答できるようになります。
 
@@ -32,15 +33,15 @@
 - コレクションのインデックス作成ポリシーに変更を加えるにはどうすればよいか。
 - さまざまなインデックス作成ポリシーのストレージとパフォーマンスを比較するにはどうすればよいか。
 
-##<a id="CustomizingIndexingPolicy"></a>コレクションのインデックス作成ポリシーのカスタマイズ
+##<a name="<a-id="customizingindexingpolicy"></a>-customizing-the-indexing-policy-of-a-collection"></a><a id="CustomizingIndexingPolicy"></a> コレクションのインデックス作成ポリシーのカスタマイズ
 
 開発者は、DocumentDB コレクションで既定のインデックス作成ポリシーをオーバーライドし、次の機能を設定することによって、ストレージ、書き込みやクエリのパフォーマンス、クエリの一貫性の間のトレードオフをカスタマイズできます。
 
-- **ドキュメントとパスをインデックスに含める/除外する**。開発者は、コレクションに挿入または置き換える際に、インデックスに含めたり除外したりする特定のドキュメントを選択できます。開発者は、インデックスに含まれるすべてのドキュメント間で、ワイルドカード パターンを含め、特定の JSON プロパティ (パス) をインデックス作成に含めるか、除外するかを選択することもできます。
-- **さまざまなインデックスの種類を構成する**。含まれるパスごとに、開発者はそのデータと予測されるクエリ ワークロード、各パスの数値や文字列の "有効桁数" に基づいて、コレクションに必要とされるインデックスの種類も指定できます。
-- **インデックスの更新モードを構成する**。DocumentDB は、DocumentDB コレクションのインデックス作成ポリシーを使用して構成できる、3 つのインデックス作成モード (同期 (Consistent)、非同期 (Lazy)、なし (None)) をサポートしています。
+- **ドキュメントとパスをインデックスに含める/除外する**。 開発者は、コレクションに挿入または置き換える際に、インデックスに含めたり除外したりする特定のドキュメントを選択できます。 また、インデックスに含まれるドキュメント間で、特定の JSON プロパティ すなわちパス (ワイルドカード パターンを含む) をインデックスに含めるか除外するかも選択できます。
+- **さまざまなインデックスの種類を構成する**。 含まれるパスごとに、開発者はそのデータと予測されるクエリ ワークロード、各パスの数値や文字列の "有効桁数" に基づいて、コレクションに必要とされるインデックスの種類も指定できます。
+- **インデックスの更新モードを構成する**。 DocumentDB は、DocumentDB コレクションのインデックス作成ポリシーを使用して構成できる、3 つのインデックス作成モード (同期 (Consistent)、非同期 (Lazy)、なし (None)) をサポートしています。 
 
-次の .NET コード スニペットは、コレクションの作成時に、カスタムのインデックス作成ポリシーを設定する方法を示します。ここでは、最大有効桁数で文字列や数値の範囲のインデックスを持つポリシーを設定します。このポリシーでは、文字列に対して Order By クエリを実行することができます。
+次の .NET コード スニペットは、コレクションの作成時に、カスタムのインデックス作成ポリシーを設定する方法を示します。 ここでは、最大有効桁数で文字列や数値の範囲のインデックスを持つポリシーを設定します。 このポリシーでは、文字列に対して Order By クエリを実行することができます。
 
     DocumentCollection collection = new DocumentCollection { Id = "myCollection" };
     
@@ -50,25 +51,25 @@
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), collection);   
 
 
->[AZURE.NOTE] インデックス作成ポリシーの JSON スキーマは、REST API のバージョン 2015-06-03 のリリースにより変更され、文字列に対して範囲インデックスをサポートするようになりました。.NET SDK の 1.2.0、および Java、Python、Node.js SDK の 1.1.0 では新しいポリシー スキーマをサポートします。古い SDK では、REST API バージョン 2015-04-08 を使用してインデックス作成ポリシーの古いスキーマをサポートしています。
+>[AZURE.NOTE] インデックス作成ポリシーの JSON スキーマは、REST API のバージョン 2015-06-03 のリリースにより変更され、文字列に対して範囲インデックスをサポートするようになりました。 .NET SDK の 1.2.0、および Java、Python、Node.js SDK の 1.1.0 では新しいポリシー スキーマをサポートします。 古い SDK では、REST API バージョン 2015-04-08 を使用してインデックス作成ポリシーの古いスキーマをサポートしています。
 >
->既定では、DocumentDB はハッシュ インデックスに応じたドキュメント内のすべての文字列プロパティと、範囲インデックスを含む数値プロパティのインデックスを作成します。
+>既定では、DocumentDB はハッシュ インデックスに応じたドキュメント内のすべての文字列プロパティと、範囲インデックスを含む数値プロパティのインデックスを作成します。  
 
-### データベース インデックス作成モード
+### <a name="database-indexing-modes"></a>データベース インデックス作成モード
 
 DocumentDB は、DocumentDB コレクションのインデックス作成ポリシーを使用して構成できる、同期 (Consistent)、非同期 (Lazy)、なし (None) の 3 つのインデックス作成モードをサポートしています。
 
-**同期 (Consistent)**: DocumentDB コレクションのポリシーを "同期 (Consistent)" として設計する場合、指定された DocumentDB コレクションのクエリは、そのポイントの読み取りに指定された同じ一貫性レベル (strong、bounded-staleness、session、eventual) に従います。インデックスは、ドキュメントの更新 (DocumentDB コレクション内のドキュメントの挿入、置換、更新、削除など) の一部として、同期的に更新されます。同期 (Consistent) インデックス作成では、書き込みスループットの短縮によって、一貫性のあるクエリがサポートされます。この短縮は、インデックスを作成する必要がある一意のパスの機能と "一貫性レベル" によるものです。同期 (Consistent) インデックス作成モードは、"すばやく書き込み、即座にクエリ" するワークロード向けです。
+**同期 (Consistent)**: DocumentDB コレクションのポリシーを "同期 (Consistent)" として設計する場合、指定された DocumentDB コレクションのクエリは、そのポイントの読み取りに指定された同じ一貫性レベル (strong、bounded-staleness、session、eventual) に従います。 インデックスは、ドキュメントの更新 (DocumentDB コレクション内のドキュメントの挿入、置換、更新、削除など) の一部として、同期的に更新されます。  同期 (Consistent) インデックス作成では、書き込みスループットの短縮によって、一貫性のあるクエリがサポートされます。 この短縮は、インデックスを作成する必要がある一意のパスの機能と "一貫性レベル" によるものです。 同期 (Consistent) インデックス作成モードは、"すばやく書き込み、即座にクエリ" するワークロード向けです。
 
-**非同期 (Lazy)**: 最大ドキュメント取り込みスループットを許可するために、DocumentDB コレクションを非同期 (Lazy) で構成できます。つまり、最終的にクエリの一貫性は保たれます。インデックスは、DocumentDB コレクションが休止状態 (コレクションのスループット容量がユーザー要求の処理に完全に利用されない場合) の間は非同期的に更新されます。制約を受けずにドキュメントを取り込む必要のある、"今すぐ取り込み、後でクエリ する" ワークロードでは、"非同期 (lazy)" インデックス作成モードが適しています。
+**非同期 (Lazy)**: 最大ドキュメント取り込みスループットを許可するために、DocumentDB コレクションを非同期 (Lazy) で構成できます。つまり、最終的にクエリの一貫性は保たれます。 インデックスは、DocumentDB コレクションが休止状態 (コレクションのスループット容量がユーザー要求の処理に完全に利用されない場合) の間は非同期的に更新されます。 制約を受けずにドキュメントを取り込む必要のある、"今すぐ取り込み、後でクエリ する" ワークロードでは、"非同期 (lazy)" インデックス作成モードが適しています。
 
-**なし (None)**: "なし (None)" のインデックスのモードでマークされたコレクションには、関連付けられているインデックスはありません。これは、キーと値の記憶域として DocumentDB が使用され、ドキュメントがそれぞれの ID プロパティによってのみアクセスする場合によく使用されます。
+**なし (None)**: "なし (None)" のインデックスのモードでマークされたコレクションには、関連付けられているインデックスはありません。 これは、キーと値の記憶域として DocumentDB が使用され、ドキュメントがそれぞれの ID プロパティによってのみアクセスする場合によく使用されます。 
 
->[AZURE.NOTE] インデックス作成ポリシーを "なし (None)" で設定すると、既存のインデックスを削除してしまうという影響があります。アクセス パターンで必要なのが "ID" か "自己リンク" (または両方) のみの場合は、このオプションを使用します。
+>[AZURE.NOTE] インデックス作成ポリシーを "なし (None)" で設定すると、既存のインデックスを削除してしまうという影響があります。 アクセス パターンで必要なのが "ID" か "自己リンク" (または両方) のみの場合は、このオプションを使用します。
 
 次に示すサンプルは、すべてのドキュメントの挿入に一貫性のある自動インデックス作成と .NET SDK を使用して DocumentDB コレクションを作成する方法を示します。
 
-次の表は、コレクション用に構成されたインデックス作成モード (同期 (Consistent) と非同期 (Lazy)) に基づいたクエリの一貫性と、クエリ要求に指定された一貫性レベルを示します。これは、任意のインターフェイス (REST API、SDK) を使用して作成されたクエリや、ストアド プロシージャやトリガーから作成されたクエリに適用されます。
+次の表は、コレクション用に構成されたインデックス作成モード (同期 (Consistent) と非同期 (Lazy)) に基づいたクエリの一貫性と、クエリ要求に指定された一貫性レベルを示します。 これは、任意のインターフェイス (REST API、SDK) を使用して作成されたクエリや、ストアド プロシージャやトリガーから作成されたクエリに適用されます。 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -79,12 +80,12 @@ DocumentDB は、DocumentDB コレクションのインデックス作成ポリ�
             </td>
             <td valign="top">
                 <p>
-                    <strong>一貫性</strong>
+                    <strong>同期 (同期 (Consistent))</strong>
                 </p>
             </td>
             <td valign="top">
                 <p>
-                    <strong>遅延</strong>
+                    <strong>非同期 (Lazy)</strong>
                 </p>
             </td>            
         </tr>
@@ -96,13 +97,11 @@ DocumentDB は、DocumentDB コレクションのインデックス作成ポリ�
             </td>
             <td valign="top">
                 <p>
-                    Strong
-                </p>
+Strong </p>
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>            
         </tr>       
         <tr>
@@ -113,13 +112,11 @@ DocumentDB は、DocumentDB コレクションのインデックス作成ポリ�
             </td>
             <td valign="top">
                 <p>
-                    Bounded Staleness
-                </p>
+Bounded Staleness </p>
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>            
         </tr>          
         <tr>
@@ -130,13 +127,11 @@ DocumentDB は、DocumentDB コレクションのインデックス作成ポリ�
             </td>
             <td valign="top">
                 <p>
-                    Session
-                </p>
+Session </p>
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>            
         </tr>      
         <tr>
@@ -147,19 +142,17 @@ DocumentDB は、DocumentDB コレクションのインデックス作成ポリ�
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>            
         </tr>         
     </tbody>
 </table>
 
-DocumentDB は、コレクションが "なし (None)" インデックス作成モードで設定された場合、クエリにエラーを返します。明示的に REST API で `x-ms-documentdb-enable-scans` ヘッダーを使用するか、.NET SDK の `EnableScanInQuery` 要求オプションで使用すれば、クエリはスキャンとしても実行できます。ORDER BY などの一部のクエリ機能は、`EnableScanInQuery` を使用したスキャンとしてサポートされていません。
+DocumentDB は、コレクションが "なし (None)" インデックス作成モードで設定された場合、クエリにエラーを返します。 明示的に REST API で `x-ms-documentdb-enable-scan` ヘッダーを使用するか、.NET SDK の `EnableScanInQuery` 要求オプションで使用すれば、クエリはスキャンとしても実行できます。 ORDER BY などの一部のクエリ機能は、 `EnableScanInQuery`を使用したスキャンとしてサポートされていません。
 
 次の表は、EnableScanInQuery を指定した場合のインデックス作成モード (同期 (Consistent)、非同期 (Lazy)、なし (None)) に基づいたクエリの一貫性を示します
 
@@ -172,17 +165,17 @@ DocumentDB は、コレクションが "なし (None)" インデックス作成�
             </td>
             <td valign="top">
                 <p>
-                    <strong>一貫性</strong>
+                    <strong>同期 (同期 (Consistent))</strong>
                 </p>
             </td>
             <td valign="top">
                 <p>
-                    <strong>遅延</strong>
+                    <strong>非同期 (Lazy)</strong>
                 </p>
             </td>       
             <td valign="top">
                 <p>
-                    <strong>なし</strong>
+                    <strong>なし (なし (None))</strong>
                 </p>
             </td>             
         </tr>
@@ -194,18 +187,15 @@ DocumentDB は、コレクションが "なし (None)" インデックス作成�
             </td>
             <td valign="top">
                 <p>
-                    Strong
-                </p>
+Strong </p>
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>    
             <td valign="top">
                 <p>
-                    Strong
-                </p>
+Strong </p>
             </td>                
         </tr>       
         <tr>
@@ -216,18 +206,15 @@ DocumentDB は、コレクションが "なし (None)" インデックス作成�
             </td>
             <td valign="top">
                 <p>
-                    Bounded Staleness
-                </p>
+Bounded Staleness </p>
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>      
             <td valign="top">
                 <p>
-                    Bounded Staleness
-                </p>
+Bounded Staleness </p>
             </td> 
         </tr>          
         <tr>
@@ -238,18 +225,15 @@ DocumentDB は、コレクションが "なし (None)" インデックス作成�
             </td>
             <td valign="top">
                 <p>
-                    Session
-                </p>
+Session </p>
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>   
             <td valign="top">
                 <p>
-                    Session
-                </p>
+Session </p>
             </td>             
         </tr>      
         <tr>
@@ -260,18 +244,15 @@ DocumentDB は、コレクションが "なし (None)" インデックス作成�
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>      
             <td valign="top">
                 <p>
-                    Eventual
-                </p>
+Eventual </p>
             </td>              
         </tr>         
     </tbody>
@@ -290,11 +271,11 @@ DocumentDB は、コレクションが "なし (None)" インデックス作成�
      collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("mydb"), collection);
 
 
-### インデックスのパス
+### <a name="index-paths"></a>インデックスのパス
 
-DocumentDB は JSON ドキュメントとインデックスをツリーとしてモデル化し、ツリー内のパスに対するポリシーを調整できるようにします。詳細については、「[Azure DocumentDB での自動インデックス作成](documentdb-indexing.md)」をご覧ください。ドキュメントでインデックス作成に含めたり除外したりするパスを選択できます。これにより、クエリのパターンが事前にわかっている場合に、書き込みパフォーマンスの向上とインデックス ストレージの削減が可能になります。
+DocumentDB は JSON ドキュメントとインデックスをツリーとしてモデル化し、ツリー内のパスに対するポリシーを調整できるようにします。 詳細については、「 [Azure DocumentDB での自動インデックス作成](documentdb-indexing.md)」をご覧ください。 ドキュメントでインデックス作成に含めたり除外したりするパスを選択できます。 これにより、クエリのパターンが事前にわかっている場合に、書き込みパフォーマンスの向上とインデックス ストレージの削減が可能になります。
 
-インデックスのパスはルート (/) で始まり、通常、? ワイルドカード演算子で終わります。これは、プレフィックスに複数の可能な値があることを示します。たとえば、SELECT * FROM Families F WHERE F.familyName = "Andersen" を処理するには、コレクションのインデックス ポリシーに /familyName/? のインデックスのパスを含める必要があります。
+インデックスのパスはルート (/) で始まり、通常、 ? ワイルドカード演算子で終わります。これは、プレフィックスに複数の可能な値があることを示します。 たとえば、SELECT * FROM Families F WHERE F.familyName = "Andersen" を処理するには、コレクションのインデックス ポリシーに /familyName/?  のインデックスのパスを含める必要があります。
 
 インデックスのパスは * ワイルドカード演算子を使用して、プレフィックスの下のパスの動作を再帰的に指定することもできます。たとえば、/payload/* を使用して、payload プロパティの下のすべてをインデックス作成から除外できます。
 
@@ -322,116 +303,96 @@ DocumentDB は JSON ドキュメントとインデックスをツリーとして
             </td>
             <td valign="top">
                 <p>
-                    コレクションの既定のパス。再帰的で、ドキュメント ツリー全体に適用されます。
+コレクションの既定のパス。 再帰的で、ドキュメント ツリー全体に適用されます。
                 </p>
             </td>
         </tr>
         <tr>
             <td valign="top">
                 <p>
-                    /prop/?
+/prop/?
                 </p>
             </td>
             <td valign="top">
                 <p>
-                    次のようなクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。
-                </p>
+次のようなクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。 </p>
                 <p>
-                    SELECT * FROM collection c WHERE c.prop = "value"
-                </p>
+SELECT * FROM collection c WHERE c.prop = "value" </p>
                 <p>
-                    SELECT * FROM collection c WHERE c.prop > 5
-                </p>
+SELECT * FROM collection c WHERE c.prop &gt; 5 </p>
                 <p>
-                    SELECT * FROM collection c ORDER BY c.prop
-                </p>                
+SELECT * FROM collection c ORDER BY c.prop </p>                
             </td>
         </tr>
         <tr>
             <td valign="top">
                 <p>
-                    /"prop"/*
-                </p>
+/"prop"/* </p>
             </td>
             <td valign="top">
                 <p>
-                    指定されたラベルの下のすべてのパスのインデックスのパス。次のようなクエリで使用
-                </p>
+指定されたラベルの下のすべてのパスのインデックスのパス。 次のようなクエリで使用 </p>
                 <p>
-                    SELECT * FROM collection c WHERE c.prop = "value"
-                </p>
+SELECT * FROM collection c WHERE c.prop = "value" </p>
                 <p>
-                    SELECT * FROM collection c WHERE c.prop.subprop > 5
-                </p>
+SELECT * FROM collection c WHERE c.prop.subprop &gt; 5 </p>
                 <p>
-                    SELECT * FROM collection c WHERE c.prop.subprop.nextprop = "value"
-                </p>
+SELECT * FROM collection c WHERE c.prop.subprop.nextprop = "value" </p>
                 <p>
-                    SELECT * FROM collection c ORDER BY c.prop
-                </p>
+SELECT * FROM collection c ORDER BY c.prop </p>
             </td>
         </tr>
         <tr>
             <td valign="top">
                 <p>
-                    /props/[]/?
+/props/[]/?
                 </p>
             </td>
             <td valign="top">
                 <p>
-                    ["a", "b", "c"] のようなスカラーの配列に対して、反復クエリと JOIN クエリを処理するために必要なインデックスのパス。
-                </p>
+["a", "b", "c"] のようなスカラーの配列に対して、反復クエリと JOIN クエリを処理するために必要なインデックスのパス。 </p>
                 <p>
-                    SELECT tag FROM tag IN collection.props WHERE tag = "value"
-                </p>
+SELECT tag FROM tag IN collection.props WHERE tag = "value" </p>
                 <p>
-                    SELECT tag FROM collection c JOIN tag IN c.props WHERE tag > 5
-                </p>
+SELECT tag FROM collection c JOIN tag IN c.props WHERE tag > 5 </p>
             </td>
         </tr>
         <tr>
             <td valign="top">
                 <p>
-                    /props/[]/subprop/?
+/props/[]/subprop/?
                 </p>
             </td>
             <td valign="top">
                 <p>
-                    [{subprop: "a"}, {subprop: "b"}] のようなオブジェクトの配列に対して、反復クエリと JOIN クエリを処理するために必要なインデックスのパス。
-                </p>
+[{subprop: "a"}, {subprop: "b"}] のようなオブジェクトの配列に対して、反復クエリと JOIN クエリを処理するために必要なインデックスのパス。 </p>
                 <p>
-                    SELECT tag FROM tag IN collection.props WHERE tag.subprop = "value"
-                </p>
+SELECT tag FROM tag IN collection.props WHERE tag.subprop = "value" </p>
                 <p>
-                    SELECT tag FROM collection c JOIN tag IN c.props WHERE tag.subprop = "value"
-                </p>
+SELECT tag FROM collection c JOIN tag IN c.props WHERE tag.subprop = "value" </p>
             </td>
         </tr>        
         <tr>
             <td valign="top">
                 <p>
-                    /prop/subprop/?
+/prop/subprop/?
                 </p>
             </td>
             <td valign="top">
                 <p>
-                    次のクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。
-                </p>
+次のクエリを処理するために必要なインデックスのパス (ハッシュまたは範囲の各種類)。 </p>
                 <p>
-                    SELECT * FROM collection c WHERE c.prop.subprop = "value"
-                </p>
+SELECT * FROM collection c WHERE c.prop.subprop = "value" </p>
                 <p>
-                    SELECT * FROM collection c WHERE c.prop.subprop > 5
-                </p>
+SELECT * FROM collection c WHERE c.prop.subprop &gt; 5 </p>
                 <p>
-                    SELECT * FROM collection c ORDER BY c.prop.subprop
-                </p>                
+SELECT * FROM collection c ORDER BY c.prop.subprop </p>                
             </td>
         </tr>
     </tbody>
 </table>
 
->[AZURE.NOTE] カスタム インデックスのパスを設定するときに、特定のパス "/" で表されるドキュメント ツリー全体の既定のインデックス作成ルールを指定する必要があります。
+>[AZURE.NOTE] カスタム インデックスのパスを設定するときに、特定のパス "/" で表されるドキュメント ツリー全体の既定のインデックス作成ルールを指定する必要があります。 
 
 次の例では、範囲インデックス作成と 20 バイトのカスタムの有効桁数を使用して、特定のパスを構成します。
 
@@ -457,26 +418,26 @@ DocumentDB は JSON ドキュメントとインデックスをツリーとして
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), pathRange);
 
 
-### インデックスのデータ型、種類、および有効桁数
+### <a name="index-data-types,-kinds-and-precisions"></a>インデックスのデータ型、種類、および有効桁数
 
-パスの指定方法について説明したので、ここからはパスのインデックス作成ポリシーの構成で使用できるオプションを見てみましょう。すべてのパスに対して 1 つ以上のインデックス作成定義を指定することができます。
+パスの指定方法について説明したので、ここからはパスのインデックス作成ポリシーの構成で使用できるオプションを見てみましょう。 すべてのパスに対して 1 つ以上のインデックス作成定義を指定することができます。
 
-- データ型: **String**、**Number**、**Point** (各パスのデータ型ごとにエントリを 1 つだけ含めることができます)。**Polygon** と **LineString** はプライベート プレビューでサポートされています。
-- インデックスの種類: **Hash** (等値クエリ)、**Range** (等値、範囲、Order By クエリ)、**Spatial** (空間クエリ)
-- 有効桁数: 数値の場合は 1 ～ 8 または -1 (最大有効桁数)、文字列の場合は 1 ～ 100 (最大有効桁数)
+- データ型: **String**、**Number**、**Point** (各パスのデータ型ごとにエントリを 1 つだけ含めることができます)。 **Polygon** と **LineString** はプライベート プレビューでサポートされています。
+- インデックスの種類: **Hash** (等値クエリ)、**Range** (等値、範囲、Order By クエリ)、**Spatial** (空間クエリ) 
+- 有効桁数:  数値の場合は 1 ～ 8 または -1 (最大有効桁数)、文字列の場合は 1 ～ 100 (最大有効桁数)
 
-#### インデックスの種類
+#### <a name="index-kind"></a>インデックスの種類
 
 DocumentDB は、(文字列、数値、またはその両方に対して構成できる) すべてのパスに対して、Hash と Range の 2 種類のインデックスをサポートします。
 
-- **Hash** は効率的な等値クエリと JOIN クエリをサポートします。ほとんどのケースでは、ハッシュ インデックスには既定値 3 バイトより高い有効桁数は不要です。
-- **Range** は効率的な等値クエリ、範囲クエリ (>、<、>=、<=、!= を使用)、Order By クエリをサポートします。既定では Order By クエリには、インデックスの最大有効桁数 (-1) も必要です。
+- **Hash** は効率的な等値クエリと JOIN クエリをサポートします。 ほとんどのケースでは、ハッシュ インデックスには既定値 3 バイトより高い有効桁数は不要です。
+- **Range** は効率的な等値クエリ、範囲クエリ (>、<、>=、<=、!= を使用)、Order By クエリをサポートします。 既定では Order By クエリには、インデックスの最大有効桁数 (-1) も必要です。
 
-DocumentDB では、Point データ型に指定できるすべてのパスに対するインデックスの種類 Spatial もサポートしています。指定されたパスの値は、`{"type": "Point", "coordinates": [0.0, 10.0]}` のような有効な GeoJSON ポイントである必要があります。
+DocumentDB では、Point データ型に指定できるすべてのパスに対するインデックスの種類 Spatial もサポートしています。 指定されたパスの値は、 `{"type": "Point", "coordinates": [0.0, 10.0]}`のような有効な GeoJSON ポイントである必要があります。
 
 - **Spatial** では、効率的な空間クエリ (within と distance) をサポートしています。
 
->[AZURE.NOTE] DocumentDB は、Point、Polygon (プライベート プレビュー)、LineString (プライベート プレビュー) のインデックス作成をサポートしています。プレビューのご利用方法については、askdocdb@microsoft.com までメールでお問い合わせいただくか、Azure サポートまでお問い合わせください。
+>[AZURE.NOTE] DocumentDB は、Point、Polygon (プライベート プレビュー)、LineString (プライベート プレビュー) のインデックス作成をサポートしています。 プレビューのご利用方法については、askdocdb@microsoft.com, までメールでお問い合わせいただくか、Azure サポートまでお問い合わせください。
 
 サポートされているインデックスの種類とそれに対して使用可能なクエリの例を示します。
 
@@ -497,55 +458,49 @@ DocumentDB では、Point データ型に指定できるすべてのパスに対
         <tr>
             <td valign="top">
                 <p>
-                    ハッシュ
-                </p>
+Hash </p>
             </td>
             <td valign="top">
                 <p>
-                    ハッシュ /prop/? (または /*) は、クエリ SELECT * FROM collection c WHERE c.prop = "value" を効率的に使用できます。ハッシュ /props/[]/? (または /* or /props/*) は、クエリ SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5 に効率的に使用できます。
-                </p>
+ハッシュ /prop/?  (または /*) は、クエリ SELECT * FROM collection c WHERE c.prop = "value" を効率的に使用できます。ハッシュ /props/[]/?  (または /* または /props/*) は、クエリ SELECT tag FROM collection c JOIN tag IN c.props WHERE tag = 5 に効率的に使用できます。 </p>
             </td>
         </tr>
         <tr>
             <td valign="top">
                 <p>
-                    範囲
-                </p>
+Range </p>
             </td>
             <td valign="top">
                 <p>
-                    範囲 /prop/? (or /*) は、クエリ SELECT * FROM collection c WHERE c.prop = "value" SELECT * FROM collection c WHERE c.prop > 5 SELECT * FROM collection c ORDER BY c.prop に効率的に使用できます。
-                </p>
+範囲 /prop/?  (または /*) は、クエリ SELECT * FROM collection c WHERE c.prop = "value" SELECT * FROM collection c WHERE c.prop > 5 SELECT * FROM collection c ORDER BY c.prop に効率的に使用できます。 </p>
             </td>
         </tr>
         <tr>
             <td valign="top">
                 <p>
-                    Spatial
-                </p>
+Spatial </p>
             </td>
             <td valign="top">
                 <p>
-                    範囲 /prop/? (or /*) を使用すると、SELECT * FROM collection c WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) &lt; 40 SELECT * FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) のようなクエリを効率的に実行できます。
-                </p>
+範囲 /prop/?  (または /*) を使用すると、SELECT * FROM collection c WHERE ST_DISTANCE(c.prop, {"type": "Point", "coordinates": [0.0, 10.0]}) < 40 SELECT * FROM collection c WHERE ST_WITHIN(c.prop, {"type": "Polygon", ... }) のようなクエリを効率的に実行できます。 </p>
             </td>
         </tr>        
     </tbody>
 </table>
 
-既定では、範囲インデックス (有効桁数は任意) が存在しない場合、>= のような範囲演算子を使用したクエリに対してはエラーが返され、このクエリを処理するにはスキャンが必要であることが通知されます。x-ms-documentdb-enable-scans ヘッダーを REST API で使用するか、または .NET SDK を使用した EnableScanInQuery 要求オプションで使用すれば、範囲インデックスがなくても、範囲クエリを実行することができます。DocumentDB でインデックスを使用してフィルター処理できるその他のフィルターがクエリにない場合、エラーは返されません。
+既定では、範囲インデックス (有効桁数は任意) が存在しない場合、>= のような範囲演算子を使用したクエリに対してはエラーが返され、このクエリを処理するにはスキャンが必要であることが通知されます。 x-ms-documentdb-enable-scan ヘッダーを REST API で使用するか、または .NET SDK を使用した EnableScanInQuery 要求オプションで使用すれば、範囲インデックスがなくても、範囲クエリを実行することができます。 DocumentDB でインデックスを使用してフィルター処理できるその他のフィルターがクエリにない場合、エラーは返されません。
 
-同じ規則が空間クエリにも適用されます。既定では、空間インデックスがなく、インデックスからサービスを提供できる他のフィルターがない場合、空間クエリにエラーが返されます。これらは、x-ms-documentdb-enable-scan/EnableScanInQuery を使用して、スキャンとして実行できます。
+同じ規則が空間クエリにも適用されます。 既定では、空間インデックスがなく、インデックスからサービスを提供できる他のフィルターがない場合、空間クエリにエラーが返されます。 これらは、x-ms-documentdb-enable-scan/EnableScanInQuery を使用して、スキャンとして実行できます。
 
-#### インデックスの有効桁数
+#### <a name="index-precision"></a>インデックスの有効桁数
 
-インデックスの有効桁数により、インデックスのストレージ オーバーヘッドとクエリのパフォーマンスをトレードオフできます。数値の場合、既定の有効桁数の構成 -1 (最大) を使用することをお勧めします。JSON では数値は 8 バイトであるため、これは、8 バイトの構成と同じです。1 ～ 7 などの小さい値の有効桁数を選択すると、特定の範囲内の値が同じインデックス エントリにマップされることになります。したがって、インデックスのストレージ領域が削減されますが、クエリの実行でより多くのドキュメントを処理しなければならなくなるため、使用されるスループット、つまり要求単位も増えます。
+インデックスの有効桁数により、インデックスのストレージ オーバーヘッドとクエリのパフォーマンスをトレードオフできます。 数値の場合、既定の有効桁数の構成 -1 (最大) を使用することをお勧めします。 JSON では数値は 8 バイトであるため、これは、8 バイトの構成と同じです。 1 ～ 7 などの小さい値の有効桁数を選択すると、特定の範囲内の値が同じインデックス エントリにマップされることになります。 したがって、インデックスのストレージ領域が削減されますが、クエリの実行でより多くのドキュメントを処理しなければならなくなるため、使用されるスループット、つまり要求単位も増えます。
 
-インデックスの有効桁数の構成は、文字列の範囲を使用するとより実際に役立ちます。文字列は任意の長さにできるため、インデックスの有効桁数を選択することで、文字列の範囲クエリのパフォーマンスと、必要なインデックスのストレージ領域の量に影響を与えることができます。文字列の範囲インデックスは 1～100 または -1 (最大) で構成できます。文字列のプロパティに Order By クエリを実行する場合は、対応するパスに有効桁数 -1 を指定する必要があります。
+インデックスの有効桁数の構成は、文字列の範囲を使用するとより実際に役立ちます。 文字列は任意の長さにできるため、インデックスの有効桁数を選択することで、文字列の範囲クエリのパフォーマンスと、必要なインデックスのストレージ領域の量に影響を与えることができます。 文字列の範囲インデックスは 1～100 または -1 (最大) で構成できます。 文字列のプロパティに Order By クエリを実行する場合は、対応するパスに有効桁数 -1 を指定する必要があります。
 
-空間インデックスでは、常にポイント用の既定のインデックスの有効桁数を使用するため、オーバーライドすることはできません。
+空間インデックスでは、常にポイント用の既定のインデックスの有効桁数を使用するため、オーバーライドすることはできません。 
 
-次の例では、.NET SDK を使用して、コレクション内の範囲インデックスの有効桁数を増やす方法を示します。
+次の例では、.NET SDK を使用して、コレクション内の範囲インデックスの有効桁数を増やす方法を示します。 
 
 **カスタム インデックスの有効桁数でコレクションを作成する**
 
@@ -557,9 +512,9 @@ DocumentDB では、Point データ型に指定できるすべてのパスに対
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), rangeDefault);   
 
 
-> [AZURE.NOTE] クエリが Order By を使用しているのに、最大有効桁数でのクエリ パスに対して範囲インデックスが存在しない場合、DocumentDB はエラーを返します。
+> [AZURE.NOTE] クエリが Order By を使用しているのに、最大有効桁数でのクエリ パスに対して範囲インデックスが存在しない場合、DocumentDB はエラーを返します。 
 
-同様に、インデックス作成からパスを完全に除外することができます。次の例では、ワイルドカード "*" を使用して、ドキュメントのセクション全体 (別名サブツリー) をインデックス作成から除外する方法を示します。
+同様に、インデックス作成からパスを完全に除外することができます。 次の例では、ワイルドカード "*" を使用して、ドキュメントのセクション全体 ( 別名サブツリー) をインデックス作成から除外する方法を示します。
 
     var collection = new DocumentCollection { Id = "excludedPathCollection" };
     collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
@@ -569,11 +524,11 @@ DocumentDB では、Point データ型に指定できるすべてのパスに対
 
 
 
-## インデックス作成の有効化と無効化
+## <a name="opting-in-and-opting-out-of-indexing"></a>インデックス作成の有効化と無効化
 
-コレクションがすべてのドキュメントのインデックスを自動的に作成するかどうかを選択できます。既定では、すべてのドキュメントのインデックスが自動的に作成されますが、これを無効にすることができます。自動インデックス作成が無効になっている場合、自己リンクまたは ID を使用したクエリでのみドキュメントにアクセスできます。
+コレクションがすべてのドキュメントのインデックスを自動的に作成するかどうかを選択できます。 既定では、すべてのドキュメントのインデックスが自動的に作成されますが、これを無効にすることができます。 自動インデックス作成が無効になっている場合、自己リンクまたは ID を使用したクエリでのみドキュメントにアクセスできます。
 
-自動インデックス作成が無効になっている場合でも、特定のドキュメントだけを選択してインデックスに追加できます。反対に、自動インデックス作成を有効にしたまま、特定のドキュメントだけを選択して除外できます。インデックス作成の有効または無効の構成は、ドキュメントのサブセットだけにクエリを実行する必要がある場合に役立ちます。
+自動インデックス作成が無効になっている場合でも、特定のドキュメントだけを選択してインデックスに追加できます。 反対に、自動インデックス作成を有効にしたまま、特定のドキュメントだけを選択して除外できます。 インデックス作成の有効または無効の構成は、ドキュメントのサブセットだけにクエリを実行する必要がある場合に役立ちます。
 
 次の例は、[DocumentDB .NET SDK](https://github.com/Azure/azure-documentdb-java) と [RequestOptions.IndexingDirective](http://msdn.microsoft.com/library/microsoft.azure.documents.client.requestoptions.indexingdirective.aspx) プロパティを使用して、明示的にドキュメントを含める方法を示しています。
 
@@ -584,28 +539,28 @@ DocumentDB では、Point データ型に指定できるすべてのパスに対
         new { id = "AndersenFamily", isRegistered = true },
         new RequestOptions { IndexingDirective = IndexingDirective.Include });
 
-## コレクションのインデックス作成ポリシーの変更
+## <a name="modifying-the-indexing-policy-of-a-collection"></a>コレクションのインデックス作成ポリシーの変更
 
-DocumentDB を使用すると、その場でコレクションのインデックス作成ポリシーを変更できます。DocumentDB コレクションでインデックス作成ポリシーを変更すると、インデックス自体の一貫性モデルだけでなく、インデックスを作成できるパスやその有効桁数などのインデックスの構造も変更される可能性があります。そのため、インデックス作成ポリシーの変更では、以前のインデックスから新しいインデックスへの変換が求められます。
+DocumentDB を使用すると、その場でコレクションのインデックス作成ポリシーを変更できます。 DocumentDB コレクションでインデックス作成ポリシーを変更すると、インデックス自体の一貫性モデルだけでなく、インデックスを作成できるパスやその有効桁数などのインデックスの構造も変更される可能性があります。 そのため、インデックス作成ポリシーの変更では、以前のインデックスから新しいインデックスへの変換が求められます。 
 
 **オンラインのインデックスの変換**
 
 ![インデックス作成のしくみ - DocumentDB オンライン インデックス変換](media/documentdb-indexing-policies/index-transformations.png)
 
-インデックスの変換をオンラインで行う場合、コレクションの**書き込み可用性またはプロビジョニング済みスループットに影響を与えずに**、古いポリシーごとにインデックスが作成されたドキュメントを効率的に変換できます。インデックス変換中、SDK、REST API を使ったり、ストアド プロシージャやトリガー内から確立された読み取り操作と書き込み操作の一貫性に影響はありません。つまり、インデックス作成ポリシーを変更しても、アプリに対するパフォーマンスの低下やダウンタイムはありません。
+インデックスの変換をオンラインで行う場合、コレクションの **書き込み可用性またはプロビジョニング済みスループットに影響を与えずに** 、古いポリシーごとにインデックスが作成されたドキュメントを効率的に変換できます。 インデックス変換中、SDK、REST API を使ったり、ストアド プロシージャやトリガー内から確立された読み取り操作と書き込み操作の一貫性に影響はありません。 つまり、インデックス作成ポリシーを変更しても、アプリに対するパフォーマンスの低下やダウンタイムはありません。
 
-ただし、インデックス変換の進行中は、インデックス作成モードの構成が同期 (Consistent) か非同期 (Lazy) かに関係なく、最終的にクエリの一貫性は保たれます。これは、任意のインターフェイス (REST API、SDK) を使用して作成されたクエリや、ストアド プロシージャやトリガーから作成されたクエリにも適用されます。非同期 (Lazy) インデックス作成と同様に、インデックスの変換は、指定したレプリカで利用可能なスペア リソースを使用して、バックグラウンドで非同期的に行われます。
+ただし、インデックス変換の進行中は、インデックス作成モードの構成が同期 (Consistent) か非同期 (Lazy) かに関係なく、最終的にクエリの一貫性は保たれます。 これは、任意のインターフェイス (REST API、SDK) を使用して作成されたクエリや、ストアド プロシージャやトリガーから作成されたクエリにも適用されます。 非同期 (Lazy) インデックス作成と同様に、インデックスの変換は、指定したレプリカで利用可能なスペア リソースを使用して、バックグラウンドで非同期的に行われます。 
 
-インデックスの変換も**その場で** (インプレース) 行われます。つまり、DocumentDB はインデックスの 2 つのコピーを維持せず、以前のインデックスを新しいインデックスとスワップします。これは、インデックス変換の実行中に追加のディスク領域が必要ないことを意味します。また、コレクションで使用されることもありません。
+インデックスの変換も**その場で** (インプレース) 行われます。つまり、DocumentDB はインデックスの 2 つのコピーを維持せず、以前のインデックスを新しいインデックスとスワップします。 これは、インデックス変換の実行中に追加のディスク領域が必要ないことを意味します。また、コレクションで使用されることもありません。
 
-インデックス作成ポリシーを変更する場合に以前のインデックスから新しいインデックスへの変更の適用方法は、包含/除外パス、インデックスの種類、有効桁数などのその他の値よりも、主にインデックス作成モードの構成によって左右されます。以前のポリシーと新しいポリシーの両方で同期 (Consistent) インデックス作成を使用する場合、DocumentDB はオンラインでインデックス変換を実行します。変換の進行中は、同期 (Consistent) インデックス作成モードで別のインデックス作成ポリシーの変更を適用することはできません。
+インデックス作成ポリシーを変更する場合に以前のインデックスから新しいインデックスへの変更の適用方法は、包含/除外パス、インデックスの種類、有効桁数などのその他の値よりも、主にインデックス作成モードの構成によって左右されます。 以前のポリシーと新しいポリシーの両方で同期 (Consistent) インデックス作成を使用する場合、DocumentDB はオンラインでインデックス変換を実行します。 変換の進行中は、同期 (Consistent) インデックス作成モードで別のインデックス作成ポリシーの変更を適用することはできません。
 
-ただし、変換の進行中に、非同期 (Lazy) や、なし (None) インデックス作成モードに移動することは可能です。
+ただし、変換の進行中に、非同期 (Lazy) や、なし (None) インデックス作成モードに移動することは可能です。 
 
-- 非同期 (Lazy) に移動すると、インデックス ポリシーの変更はすぐに有効になり、DocumentDB はインデックスの再作成を非同期的に開始します。
-- なし (None) に移動すると、インデックスはすぐに無効になります。なし (None) への移動は、進行中の変換を中止して別のインデックス作成ポリシーを最初から開始する場合に便利です。
+- 非同期 (Lazy) に移動すると、インデックス ポリシーの変更はすぐに有効になり、DocumentDB はインデックスの再作成を非同期的に開始します。 
+- なし (None) に移動すると、インデックスはすぐに無効になります。 なし (None) への移動は、進行中の変換を中止して別のインデックス作成ポリシーを最初から開始する場合に便利です。 
 
-.NET SDK を使用している場合は、新しい **ReplaceDocumentCollectionAsync** メソッドを使用してインデックス作成ポリシーの変更を開始し、**ReadDocumentCollectionAsync** 呼び出しからの **IndexTransformationProgress** 応答プロパティを使用してインデックス変換の進行状況を追跡できます。その他の SDK と REST API は、インデックス作成ポリシーを変更するための同等のプロパティとメソッドをサポートします。
+.NET SDK を使用している場合は、新しい **ReplaceDocumentCollectionAsync** メソッドを使用してインデックス作成ポリシーの変更を開始し、**ReadDocumentCollectionAsync** 呼び出しからの **IndexTransformationProgress** 応答プロパティを使用してインデックス変換の進行状況を追跡できます。 その他の SDK と REST API は、インデックス作成ポリシーを変更するための同等のプロパティとメソッドをサポートします。
 
 次のコード スニペットは、コレクションのインデックス作成ポリシーを同期 (Consistent) から非同期 (Lazy) に変更する方法を示しています。
 
@@ -636,7 +591,7 @@ DocumentDB を使用すると、その場でコレクションのインデック
         await Task.Delay(TimeSpan.FromMilliseconds(smallWaitTimeMilliseconds));
     }
 
-コレクションのインデックスを削除するには、なし (None) インデックス作成モードに移動します。これは、進行中の変換をキャンセルして、新しい変換をすぐに開始する場合に便利な運用ツールです。
+コレクションのインデックスを削除するには、なし (None) インデックス作成モードに移動します。 これは、進行中の変換をキャンセルして、新しい変換をすぐに開始する場合に便利な運用ツールです。
 
 **コレクションのインデックスの削除**
 
@@ -656,13 +611,13 @@ DocumentDB コレクションに対してインデックス作成ポリシーを
 
 >[AZURE.NOTE] ReplaceDocumentCollectionAsync を使用してインデックス作成ポリシーを変更するには、.NET SDK のバージョン 1.3.0 以降が必要です。
 >
-> インデックス変換を正常に完了するために、コレクションに十分な空きストレージ空間があることを確認してください。コレクションがそのストレージ クォータに到達すると、インデックス変換が一時停止します。ストレージ空間が利用可能になると、たとえば、ドキュメントをいくつか削除した場合、インデックス変換は自動的に再開します。
+> インデックス変換を正常に完了するために、コレクションに十分な空きストレージ空間があることを確認してください。 コレクションがそのストレージ クォータに到達すると、インデックス変換が一時停止します。 ストレージ空間が利用可能になると、たとえば、ドキュメントをいくつか削除した場合、インデックス変換は自動的に再開します。
 
-## パフォーマンスのチューニング
+## <a name="performance-tuning"></a>パフォーマンスのチューニング
 
-DocumentDB API は使用されているインデックス ストレージ、すべての操作のスループット コスト (要求単位) などのパフォーマンス メトリックに関する情報を提供します。この情報は、さまざまなインデックス作成ポリシーの比較やパフォーマンス チューニングに使用することができます。
+DocumentDB API は使用されているインデックス ストレージ、すべての操作のスループット コスト (要求単位) などのパフォーマンス メトリックに関する情報を提供します。 この情報は、さまざまなインデックス作成ポリシーの比較やパフォーマンス チューニングに使用することができます。
 
-コレクションの記憶域のクォータと使用状況を確認するには、HEAD 要求または GET 要求をコレクションのリソースに対して実行し、x-ms-request-quota と x-ms-request-usage のヘッダーを調べます。.NET SDK では、[ResourceResponse<T>](http://msdn.microsoft.com/library/dn799209.aspx) の [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) プロパティと [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティに、これらの対応する値が含まれています。
+コレクションの記憶域のクォータと使用状況を確認するには、HEAD 要求または GET 要求をコレクションのリソースに対して実行し、x-ms-request-quota と x-ms-request-usage のヘッダーを調べます。 .NET SDK では、[ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) の [DocumentSizeQuota](http://msdn.microsoft.com/library/dn850325.aspx) プロパティと [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティに、これらの対応する値が含まれています。
 
      // Measure the document size usage (which includes the index size) against   
      // different policies.
@@ -670,7 +625,7 @@ DocumentDB API は使用されているインデックス ストレージ、す�
      Console.WriteLine("Document size quota: {0}, usage: {1}", collectionInfo.DocumentQuota, collectionInfo.DocumentUsage);
 
 
-書き込み操作 (作成、更新、削除) のたびにインデックス作成のオーバーヘッドを測定するには、x-ms-request-charge ヘッダー (または、.NET SDK の [ResourceResponse<T>](http://msdn.microsoft.com/library/dn799209.aspx) の同等の [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) プロパティ) を調査して、これらの操作で使用される要求単位の数を測定します。
+書き込み操作 (作成、更新、削除) のたびにインデックス作成のオーバーヘッドを測定するには、x-ms-request-charge ヘッダー (または、.NET SDK の [ResourceResponse<T\>](http://msdn.microsoft.com/library/dn799209.aspx) の同等の [RequestCharge](http://msdn.microsoft.com/library/dn799099.aspx) プロパティ) を調査して、これらの操作で使用される要求単位の数を測定します。
 
      // Measure the performance (request units) of writes.     
      ResourceResponse<Document> response = await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri("db", "coll"), myDocument);              
@@ -689,18 +644,18 @@ DocumentDB API は使用されているインデックス ストレージ、す�
      
      Console.WriteLine("Query consumed {0} request units in total", totalRequestCharge);
 
-## インデックス作成ポリシーの仕様の変更
-インデックス作成ポリシーにおけるスキーマの変更は、2015 年 7 月 7 日に、REST API のバージョン 2015-06-03 により導入されました。SDK バージョン内の該当するクラスには、そのスキーマに適合する新しい実装が含まれています。
+## <a name="changes-to-the-indexing-policy-specification"></a>インデックス作成ポリシーの仕様の変更
+インデックス作成ポリシーにおけるスキーマの変更は、2015 年 7 月 7 日に、REST API のバージョン 2015-06-03 により導入されました。 SDK バージョン内の該当するクラスには、そのスキーマに適合する新しい実装が含まれています。 
 
 JSON 仕様に次の変更が実装されました。
 
 - インデックス作成ポリシーでは文字列に対して範囲インデックスをサポートします。
 - 各パスのインデックス定義は複数であってもかまいません (各データ型に 1 つ)。
 - インデックス作成時の有効桁数は、数字に対する 1 ～ 8、文字列に対する 1 ～ 100、および -1 (最大有効桁数) に対応します。
-- パス セグメントに、各パスをエスケープするための二重引用符は必要ありません。たとえば、パス /title/? を追加する場合、/"title"/? とする必要はありません。
+- パス セグメントに、各パスをエスケープするための二重引用符は必要ありません。 たとえば、パス /title/? を追加する場合、 /"title"/? とする必要はありません。
 - 「すべてのパス」を表すルート パスは、/* (/ に加えて) で表現できます。
 
-バージョン 1.1.0 以前の.NET SDK で作成されたカスタム インデックス作成ポリシーを使用してコレクションをプロビジョニングするコードがある場合、SDK バージョン 1.2.0 に移行するには、アプリケーション コードを変更して変更内容に対応する必要があります。インデックス作成ポリシーを構成するコードがない場合、または以前の SDK バージョンを引き続き使用する場合、変更の必要はありません。
+バージョン 1.1.0 以前の.NET SDK で作成されたカスタム インデックス作成ポリシーを使用してコレクションをプロビジョニングするコードがある場合、SDK バージョン 1.2.0 に移行するには、アプリケーション コードを変更して変更内容に対応する必要があります。 インデックス作成ポリシーを構成するコードがない場合、または以前の SDK バージョンを引き続き使用する場合、変更の必要はありません。
 
 実際に比較を行うため、REST API のバージョン 2015-06-03 と以前のバージョン 2015-04-08 を使用して記述されたカスタム インデックス作成ポリシーの例を示します。
 
@@ -718,7 +673,7 @@ JSON 仕様に次の変更が実装されました。
           }
        ],
        "ExcludedPaths":[
-          "/"nonIndexedContent"/*"
+          "/\"nonIndexedContent\"/*"
        ]
     }
 
@@ -751,14 +706,19 @@ JSON 仕様に次の変更が実装されました。
        ]
     }
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 次のリンク先で、インデックス ポリシー管理のサンプルや DocumentDB のクエリ言語の詳細を参照できます。
 
-1.	[DocumentDB .NET のインデックス管理のコード サンプル](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
-2.	[DocumentDB ドキュメント コレクションに対する操作](https://msdn.microsoft.com/library/azure/dn782195.aspx)
-3.	[DocumentDB SQL を使用したクエリ](documentdb-sql-query.md)
+1.  [DocumentDB .NET のインデックス管理のコード サンプル](https://github.com/Azure/azure-documentdb-net/blob/master/samples/code-samples/IndexManagement/Program.cs)
+2.  [DocumentDB ドキュメント コレクションに対する操作](https://msdn.microsoft.com/library/azure/dn782195.aspx)
+3.  [DocumentDB SQL を使用したクエリ](documentdb-sql-query.md)
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

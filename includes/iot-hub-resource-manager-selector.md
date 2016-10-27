@@ -1,5 +1,10 @@
 > [AZURE.SELECTOR]
-- [PowerShell とテンプレート](iot-hub-rm-template-powershell.md)
-- [C# と REST](iot-hub-rm-rest.md)
-- [C# とテンプレート](iot-hub-rm-template.md)
+- [Azure portal](iot-hub-create-through-portal.md)
+- [CLI](iot-hub-create-using-cli.md)
+- [PowerShell with template](iot-hub-rm-template-powershell.md)
+- [C# with REST](iot-hub-rm-rest.md)
+- [C# with template](iot-hub-rm-template.md)
+
+<!--HONumber=Oct16_HO2-->
+
 

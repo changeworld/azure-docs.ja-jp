@@ -1,11 +1,11 @@
 <properties
-	pageTitle="IoT Hub を使用したクラウドからデバイスへのメッセージの送信 | Microsoft Azure"
-	description="このチュートリアルに従って、Java を使用して Azure IoT Hub でクラウドからデバイスへのメッセージを送信する方法を学習します。"
-	services="iot-hub"
-	documentationCenter="java"
-	authors="dominicbetts"
-	manager="timlt"
-	editor=""/>
+    pageTitle="Send cloud-to-device messages with IoT Hub | Microsoft Azure"
+    description="Follow this tutorial to learn how to send cloud-to-device messages using Azure IoT Hub with Java."
+    services="iot-hub"
+    documentationCenter="java"
+    authors="dominicbetts"
+    manager="timlt"
+    editor=""/>
 
 <tags
      ms.service="iot-hub"
@@ -16,44 +16,45 @@
      ms.date="09/13/2016"
      ms.author="dobett"/>
 
-# チュートリアル: IoT Hub と Java でクラウドからデバイスへのメッセージを送信する方法
+
+# <a name="tutorial:-how-to-send-cloud-to-device-messages-with-iot-hub-and-java"></a>Tutorial: How to send cloud-to-device messages with IoT Hub and Java
 
 [AZURE.INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-## はじめに
+## <a name="introduction"></a>Introduction
 
-Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。「[IoT Hub の概要]」チュートリアルには、IoT Hub の作成方法、IoT Hub でデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレーション済みデバイスをコード化する方法が示されています。
+Azure IoT Hub is a fully managed service that helps enable reliable and secure bi-directional communications between millions of IoT devices and an application back end. The [Get started with IoT Hub] tutorial shows how to create an IoT hub, provision a device identity in it, and code a simulated device that sends device-to-cloud messages.
 
-このチュートリアルは、[IoT Hub の概要]に関するページのチュートリアルに基づいて作成されており、次の方法について説明します。
+This tutorial builds on [Get started with IoT Hub]. It shows you how to:
 
-- アプリケーションのクラウド バックエンドから IoT Hub を介して単一のデバイスにクラウドからデバイスへのメッセージを送信する。
-- クラウドからデバイスへのメッセージをデバイスで受信する。
-- IoT Hub からデバイスに送信されたメッセージの配信確認 (*フィードバック*) を、アプリケーションのクラウド バックエンドから要求する。
+- From your application cloud back end, send cloud-to-device messages to a single device through IoT Hub.
+- Receive cloud-to-device messages on a device.
+- From your application cloud back end, request delivery acknowledgement (*feedback*) for messages sent to a device from IoT Hub.
 
-クラウドからデバイスへのメッセージの詳細については、「[IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」をご覧ください。
+You can find more information on cloud-to-device messages in the [IoT Hub Developer Guide][IoT Hub Developer Guide - C2D].
 
-このチュートリアルの最後に、次の 2 つの Java コンソール アプリケーションを実行します。
+At the end of this tutorial, you run two Java console applications:
 
-* **simulated-device**。[IoT Hub の概要]に関するページで作成されたアプリケーションの修正バージョン。これは、IoT Hub に接続し、クラウドからデバイスへのメッセージを受け取ります。
-* **send-c2d-messages**。これは、クラウドからデバイスへのメッセージを IoT Hub を介してシミュレーション済みデバイスに送信し、その配信確認を受け取ります。
+* **simulated-device**, a modified version of the app created in [Get started with IoT Hub], which connects to your IoT hub and receives cloud-to-device messages.
+* **send-c2d-messages**, which sends a cloud-to-device message to the simulated device through IoT Hub, and then receives its delivery acknowledgement.
 
-> [AZURE.NOTE] IoT Hub には、Azure IoT device SDK を介した多数のデバイス プラットフォームや言語 (C、Java、Javascript など) に対する SDK サポートがあります。このチュートリアルのコード (一般的には Azure IoT Hub) にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター]のページを参照してください。
+> [AZURE.NOTE] IoT Hub has SDK support for many device platforms and languages (including C, Java, and Javascript) through Azure IoT device SDKs. For step-by-step instructions on how to connect your device to this tutorial's code, and generally to Azure IoT Hub, see the [Azure IoT Developer Center].
 
-このチュートリアルを完了するには、以下が必要です。
+To complete this tutorial, you need the following:
 
-+ Java SE 8。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Java をインストールする方法があります。Windows と Linux の両方が対象となっています。
++ Java SE 8. <br/> [Prepare your development environment][lnk-dev-setup] describes how to install Java for this tutorial on either Windows or Linux.
 
-+ Maven 3。<br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」には、このチュートリアルのために Maven をインストールする方法があります。Windows と Linux の両方が対象となっています。
++ Maven 3.  <br/> [Prepare your development environment][lnk-dev-setup] describes how to install Maven for this tutorial on either Windows or Linux.
 
-+ アクティブな Azure アカウント。アカウントがない場合は、無料試用版アカウントを数分で作成することができます。詳細については、[Azure の無料試用版][lnk-free-trial]サイトを参照してください。
++ An active Azure account. (If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][lnk-free-trial].)
 
-## シミュレーション済みデバイスでメッセージを受信する
+## <a name="receive-messages-on-the-simulated-device"></a>Receive messages on the simulated device
 
-このセクションでは、[IoT Hub の概要]に関するページで作成したシミュレーション済みデバイス アプリケーションを、クラウドからデバイスへのメッセージを IoT Hub から受信するように変更します。
+In this section, you modify the simulated device application you created in [Get started with IoT Hub] to receive cloud-to-device messages from the IoT hub.
 
-1. テキスト エディターを使用し、simulated-device\\src\\main\\java\\com\\mycompany\\app\\App.java ファイルを開きます。
+1. Using a text editor, open the simulated-device\src\main\java\com\mycompany\app\App.java file.
 
-2. 次の **MessageCallback** クラスを、**App** クラス内のネストされたクラスとして追加します。デバイスが IoT Hub からメッセージを受信すると、**execute** メソッドが呼び出されます。この例では、デバイスはメッセージが完了したことを常にハブに通知します。
+2. Add the following **MessageCallback** class as a nested class inside the **App** class. The **execute** method is invoked when the device receives a message from IoT Hub. In this example, the device always notifies the hub that it has completed the message:
 
     ```
     private static class MessageCallback implements
@@ -67,7 +68,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     }
     ```
 
-3. **main** メソッドを次のとおり変更して、**MessageCallback** インスタンスを作成し、**setMessageCallback** メソッドを呼び出してから、クライアントを開くようにします。
+3. Modify the **main** method to create a **MessageCallback** instance and call the **setMessageCallback** method before it opens the client as follows:
 
     ```
     client = new DeviceClient(connString, protocol);
@@ -77,21 +78,21 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     client.open();
     ```
 
-    > [AZURE.NOTE] トランスポートとして AMQP の代わりに HTTP/1 を使用した場合、**DeviceClient** インスタンスが IoT Hub からのメッセージをチェックする頻度は低くなります (25 分に 1 回未満)。AMQP と HTTP/1 のサポートの相違点と、IoT Hub スロットルの詳細については、「[Azure IoT Hub 開発者ガイド][IoT Hub Developer Guide - C2D]」を参照してください。
+    > [AZURE.NOTE] If you use HTTP/1 instead of AMQP as the transport, the **DeviceClient** instance checks for messages from IoT Hub infrequently (less than every 25 minutes). For more information about the differences between AMQP and HTTP/1 support, and IoT Hub throttling, see the [IoT Hub Developer Guide][IoT Hub Developer Guide - C2D].
 
-## C2D メッセージを送信する
+## <a name="send-a-cloud-to-device-message"></a>Send a cloud-to-device message
 
-このセクションでは、クラウドからデバイスへのメッセージを、シミュレーション済みデバイス アプリに送信する Java コンソール アプリを作成します。[IoT Hub の概要]のチュートリアルで追加したデバイスのデバイス ID が必要です。また、IoT Hub の接続文字列も必要です ([Azure Portal] で確認できます)。
+In this section, you create a Java console app that sends cloud-to-device messages to the simulated device app. You need the device Id of the device you added in the [Get started with IoT Hub] tutorial. You also need the connection string for your IoT hub that you can find in the [Azure portal].
 
-1. コマンド プロンプトで次のコマンドを使用して、**send-c2d-messages** という Maven プロジェクトを作成します。これは、1 つの長いコマンドであることに注意してください。
+1. Create a Maven project called **send-c2d-messages** using the following command at your command-prompt. Note this is a single, long command:
 
     ```
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=send-c2d-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. コマンド プロンプトで、新しい send-c2d-messages フォルダーに移動します。
+2. At your command prompt, navigate to the new send-c2d-messages folder.
 
-3. テキスト エディターを使用して、send-c2d-messages フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。依存関係を追加することにより、アプリケーションの **iothub-java-service-client** パッケージを使用して、IoT Hub サービスと通信できます。
+3. Using a text editor, open the pom.xml file in the send-c2d-messages folder and add the following dependency to the **dependencies** node. Adding the dependency enables you to use the **iothub-java-service-client** package in your application to communicate with your IoT hub service:
 
     ```
     <dependency>
@@ -101,11 +102,11 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     </dependency>
     ```
 
-4. pom.xml ファイルを保存して閉じます。
+4. Save and close the pom.xml file.
 
-5. テキスト エディターを使用し、send-c2d-messages\\src\\main\\java\\com\\mycompany\\app\\App.java ファイルを開きます。
+5. Using a text editor, open the send-c2d-messages\src\main\java\com\mycompany\app\App.java file.
 
-6. ファイルに次の **import** ステートメントを追加します。
+6. Add the following **import** statements to the file:
 
     ```
     import com.microsoft.azure.iot.service.sdk.*;
@@ -113,7 +114,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     import java.net.URISyntaxException;
     ```
 
-7. 次のクラス レベルの変数を **App** クラスに追加し、**{yourhubconnectionstring}** と **{yourdeviceid}** を先にメモした値に置き換えます。
+7. Add the following class-level variables to the **App** class, replacing **{yourhubconnectionstring}** and **{yourdeviceid}** with the values your noted earlier:
 
     ```
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -121,7 +122,7 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQPS;
     ```
     
-8. **main** メソッドを次のコードに置き換えて、IoT Hub に接続し、デバイスにメッセージを送信して、デバイスがメッセージを受信して処理したことを示す受信確認を待機するようにします。
+8. Replace the **main** method with the following code that connects to your IoT hub, sends a message to your device, and then waits for an acknowledgment that the device received and processed the message:
 
     ```
     public static void main(String[] args) throws IOException,
@@ -153,50 +154,53 @@ Azure IoT Hub は、何百万もの IoT デバイスとアプリケーション 
     }
     ```
 
-    > [AZURE.NOTE] わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。運用環境のコードでは、MSDN の記事「[Transient Fault Handling (一時的な障害の処理)]」で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
+    > [AZURE.NOTE] For simplicity's sake, this tutorial does not implement any retry policy. In production code, you should implement retry policies (such as exponential backoff), as suggested in the MSDN article [Transient Fault Handling].
 
-## アプリケーションの実行
+## <a name="run-the-applications"></a>Run the applications
 
-これで、アプリケーションを実行する準備が整いました。
+You are now ready to run the applications.
 
-1. simulated-device フォルダーからコマンド プロンプトで次のコマンドを実行し、IoT Hub へのテレメトリの送信を開始して、IoT Hub から送信される (クラウドからデバイスへの) メッセージをリッスンします。
+1. At a command-prompt in the simulated-device folder, run the following command to begin sending telemetry to your IoT hub and to listen for cloud-to-device messages sent from your hub:
 
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
 
-    ![シミュレーション済みデバイス アプリを実行する][img-simulated-device]
+    ![Run the simulated device app][img-simulated-device]
 
-2. send-c2d-messages フォルダーからコマンド プロンプトで次のコマンドを実行し、クラウドからデバイスへのメッセージを送信して、フィードバックの配信確認を待機します。
+2. At a command-prompt in the send-c2d-messages folder, run the following command to send a cloud-to-device message and wait for a feedback acknowledgment:
 
     ```
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![クラウドからデバイスへのメッセージを送信するコマンドを実行する][img-send-command]
+    ![Run the command to send the cloud-to-device message][img-send-command]
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
+In this tutorial, you learned how to send and receive cloud-to-device messages. 
 
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT Suite] に関するドキュメントをご覧ください。
+To see examples of complete end-to-end solutions that use IoT Hub, see [Azure IoT Suite].
 
-IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド]をご覧ください。
+To learn more about developing solutions with IoT Hub, see the [IoT Hub Developer Guide].
 
 
 <!-- Images -->
 [img-simulated-device]: media/iot-hub-java-java-c2d/receivec2d.png
-[img-send-command]: media/iot-hub-java-java-c2d/sendc2d.png
+[img-send-command]:  media/iot-hub-java-java-c2d/sendc2d.png
 <!-- Links -->
 
-[IoT Hub の概要]: iot-hub-java-java-getstarted.md
-[IoT Hub Developer Guide - C2D]: iot-hub-devguide.md#c2d
-[IoT Hub 開発者ガイド]: iot-hub-devguide.md
-[Azure IoT デベロッパー センター]: http://www.azure.com/develop/iot
+[Get started with IoT Hub]: iot-hub-java-java-getstarted.md
+[IoT Hub Developer Guide - C2D]: iot-hub-devguide-messaging.md
+[IoT Hub Developer Guide]: iot-hub-devguide.md
+[Azure IoT Developer Center]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdks/blob/master/doc/get_started/java-devbox-setup.md
-[Transient Fault Handling (一時的な障害の処理)]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
+[Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure portal]: https://portal.azure.com
 [Azure IoT Suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

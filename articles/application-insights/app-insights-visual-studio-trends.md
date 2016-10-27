@@ -1,103 +1,108 @@
 <properties 
-	pageTitle="Visual Studio での傾向の分析 | Microsoft Azure" 
-	description="Visual Studio で、Application Insights テレメトリの傾向を分析、視覚化、調査します。" 
-	services="application-insights" 
+    pageTitle="Analyzing Trends in Visual Studio | Microsoft Azure" 
+    description="Analyze, visualize, and explore trends in your Application Insights telemetry in Visual Studio." 
+    services="application-insights" 
     documentationCenter=".net"
-	authors="numberbycolors" 
-	manager="douge"/>
+    authors="numberbycolors" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="08/08/2016" 
-	ms.author="daviste"/>
-	
-# Visual Studio での傾向の分析
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="get-started-article" 
+    ms.date="10/25/2016" 
+    ms.author="daviste"/>
+    
 
-Application Insights Trends ツールを使用すると、アプリケーションの重要なテレメトリ イベントが時間の経過に伴ってどのように変化しているかを視覚化できます。これにより、問題と異常を迅速に特定できるようになります。より詳細な診断情報が得られるようになるため、Trends は、アプリのパフォーマンスの向上、例外の原因の追跡、カスタム イベントからの知見の獲得に役立ちます。
+# <a name="analyzing-trends-in-visual-studio"></a>Analyzing Trends in Visual Studio
+
+The Application Insights Trends tool visualizes how your application's important telemetry events change over time, helping you quickly identify problems and anomalies. By linking you to more detailed diagnostic information, Trends can help you improve your app's performance, track down the causes of exceptions, and uncover insights from your custom events.
 
 ![Example Trends window](./media/app-insights-visual-studio-trends/app-insights-trends-hero-750.png)
 
-> [AZURE.NOTE] Application Insights Trends は、Visual Studio 2015 Update 3 以降または [Developer Analytics Tools 拡張機能](https://visualstudiogallery.msdn.microsoft.com/82367b81-3f97-4de1-bbf1-eaf52ddc635a)バージョン 5.209 以降で利用できます。
+> [AZURE.NOTE] Application Insights Trends is available in Visual Studio 2015 Update 3 and later, or with the [Developer Analytics Tools extension](https://visualstudiogallery.msdn.microsoft.com/82367b81-3f97-4de1-bbf1-eaf52ddc635a) version 5.209 and later.
 
-## Application Insights Trends を開く方法
+## <a name="open-application-insights-trends"></a>Open Application Insights Trends
 
-[Application Insights の傾向] ウィンドウを開くには、次のいずれかを行います。
+To open the Application Insights Trends window:
 
-* Application Insights のツール バー ボタンから、**[テレメトリの傾向を調べる]** を選択する。
-* プロジェクトのコンテキスト メニューから、**[Application Insights]、[テレメトリの傾向を調べる]** の順に選択する。
-* Visual Studio のメニュー バーから、**[表示]、[その他のウィンドウ]、[Application Insights Trends]** を選択する。
+* From the Application Insights toolbar button, choose **Explore Telemetry Trends**, or
+* From the project context menu, choose **Application Insights > Explore Telemetry Trends**, or
+* From the Visual Studio menu bar, choose **View > Other Windows > Application Insights Trends**.
 
-リソースの選択を求めるメッセージが表示される場合があります。**[リソースの選択]** をクリックし、Azure サブスクリプションでサインインしてから、テレメトリの傾向の分析対象とする Application Insights リソースを一覧から選択します。
+You may see a prompt to select a resource. Click **Select a resource**, sign in with an Azure subscription, then choose an Application Insights resource from the list for which you'd like to analyze telemetry trends.
 
-## 傾向分析の選択
+## <a name="choose-a-trend-analysis"></a>Choose a trend analysis
 
 ![Menu of common types of trend analysis](./media/app-insights-visual-studio-trends/app-insights-trends-1-750.png)
 
-5 種類の一般的な傾向分析からいずれかを選択して開始します。各傾向分析では、過去 24 時間のデータが分析されます。
+Get started by choosing from one of five common trend analyses, each analyzing data from the last 24 hours:
 
-* **[サーバー要求のパフォーマンスの問題を調査します。]** - 対象のサービスに対して行われた要求が、応答時間ごとにグループ化されます。
-* **[サーバー要求におけるエラーを分析します。]** - 対象のサービスに対して行われた要求が、HTTP 応答コードごとにグループ化されます。
-* **[アプリケーションの例外を確認します。]** - サービスからの例外が、例外の種類ごとにグループ化されます。
-* **[アプリケーションの依存関係のパフォーマンスを確認します。]** - 対象のサービスに呼び出されたサービスが、応答時間ごとにグループ化されます。
-* **[カスタム イベントを検査します。]** - サービスについて設定してあるカスタム イベントが、イベントの種類ごとにグループ化されます。
+* **Investigate performance issues with your server requests** - Requests made to your service, grouped by response times
+* **Analyze errors in your server requests** - Requests made to your service, grouped by HTTP response code
+* **Examine the exceptions in your application** - Exceptions from your service, grouped by exception type
+* **Check the performance of your application's dependencies** - Services called by your service, grouped by response times
+* **Inspect your custom events** - Custom events you've set up for your service, grouped by event type.
 
-事前構築済みのこれらの分析は、Trends ウィンドウの左上隅にある **[一般的な種類のテレメトリの解析を表示する]** ボタンから後で利用できます。
+These pre-built analyses are available later from the **View common types of telemetry analysis** button in the upper-left corner of the Trends window.
 
-## アプリケーションでの傾向の視覚化
+## <a name="visualize-trends-in-your-application"></a>Visualize trends in your application
 
-Application Insights Trends では、アプリのテレメトリが時系列で視覚化されます。時系列の視覚化それぞれで、1 種類のテレメトリを、そのいずれかのプロパティに基づいてグループ化したうえで、一定期間を対象に表示できます。たとえば、送信元の国別にグループ分けして、過去 24 時間のサーバー要求を確認する必要があるとします。この例では、視覚化上の各バブルは、ある国/地域から 1 時間の間に行われたサーバー要求の数を表します。
+Application Insights Trends creates a time series visualization from your app's telemetry. Each time series visualization displays one type of telemetry, grouped by one property of that telemetry, over some time range. For example, you might want to view server requests, grouped by the country from which they originated, over the last 24 hours. In this example, each bubble on the visualization would represent a count of the server requests for some country/region during one hour.
 
-ウィンドウの上部にあるコントロールを使用して、表示するテレメトリの種類を調整します。まず、関心のあるテレメトリの種類を選択します。
+Use the controls at the top of the window to adjust what types of telemetry you view. First, choose the telemetry types in which you're interested:
 
-* **テレメトリの種類** - サーバー要求、例外、依存関係、またはカスタム イベント。
-* **時間範囲** - 過去 3 日前から 30 分前までの任意の範囲。
-* **グループ化** - 例外の種類、問題 ID、国/地域など。
+* **Telemetry Type** - Server requests, exceptions, depdendencies, or custom events
+* **Time Range** - Anywhere from the last 30 minutes to the last 3 days
+* **Group By** - Exception type, problem ID, country/region, and more.
 
-その後、**[テレメトリの分析]** をクリックしてクエリを実行します。
+Then, click **Analyze Telemetry** to run the query.
 
-視覚化のバブル間で移動するには、次の手順に従います。
+To navigate between bubbles in the visualization:
 
-* バブルをクリックして選択します。これにより、ウィンドウの下部にあるフィルターが更新され、特定の期間に発生したイベントだけが要約されます。
-* バブルをダブルクリックして検索ツールに移動し、この期間に発生した個別のテレメトリ イベントをすべて表示します。
-* Ctrl キーを押しながらバブルをクリックして、視覚化のバブルの選択を解除します。
+* Click to select a bubble, which updates the filters at the bottom of the window, summarizing just the events that occurred during a specific time period
+* Double-click a bubble to navigate to the Search tool and see all of the individual telemetry events that occured during that time period
+* Ctrl-click a bubble to de-select it in the visualization.
 
-> [AZURE.TIP] Trends ツールと検索ツールを併用すれば、何千ものテレメトリ イベントの中から、対象のサービスに関する問題の原因を特定できます。たとえばある日の午後に、対象のアプリの反応が悪いことに顧客が気付いたら、Trends ツールの使用を開始します。応答時間ごとにグループ化して、過去数時間の間に対象のサービスに対して行われた要求を分析します。応答に時間がかかっている要求が存在しないか確認します。次に、そのバブルをダブルクリックして検索ツールに移動し、それらの要求イベントでフィルター処理します。検索ツールから、これらの要求の内容を調査し、問題の解決にかかわるコードに移動できます。
+> [AZURE.TIP] The Trends and Search tools work together to help you pinpoint the causes of issues in your service among thousands of telemetry events. For example, if one afternoon your customers notice your app is being less responsive, start with Trends. Analyze requests made to your service over the past several hours, grouped by response time. See if there's an unusually large cluster of slow requests. Then double click that bubble to go to the Search tool, filtered to those request events. From Search, you can explore the contents of those requests and navigate to the code involved to resolve the issue.
 
-## フィルター
+## <a name="filter"></a>Filter
 
-ウィンドウの下部にあるフィルター コントロールを使用して、より具体的な傾向を特定します。フィルターを適用するには、その名前をクリックします。各種フィルターをすばやく切り替えて、テレメトリの特定のディメンションに隠れている可能性のある傾向を突き止めることができます。例外の種類など、いずれかのディメンションのフィルターを適用すると、それ以外のディメンションのフィルターは淡色表示されますが、クリックできます。フィルターの適用を解除するには、もう一度クリックします。Ctrl キーを押しながらクリックして、同じディメンションの複数のフィルターを選択します。
+Discover more specific trends with the filter controls at the bottom of the window. To apply a filter, click on its name. You can quickly switch between different filters to discover trends that may be hiding in a particular dimension of your telemetry. If you apply a filter in one dimension, like Exception Type, filters in other dimensions remain clickable even though they appear grayed-out. To un-apply a filter, click it again. Ctrl-click to select multiple filters in the same dimension.
 
 ![Trend filters](./media/app-insights-visual-studio-trends/TrendsFiltering-750.png)
 
-複数のフィルターを適用するには
+What if you want to apply multiple filters? 
 
-1. 最初のフィルターを適用します。
-2. 最初のフィルターのディメンション名のそばにある、**[選択したフィルターを適用し、もう一度クエリを実行します]** ボタンをクリックします。これにより、最初のフィルターに一致するイベントのみを対象に、テレメトリのクエリが再び実行されます。
-3. 2 番目のフィルターを適用します。
-4. この手順を繰り返して、テレメトリの特定のサブセットに潜む傾向を突き止めます。たとえば、"GET Home/Index" というサーバー要求、ドイツが送信元であるサーバー要求、そして応答コードが 500 であったサーバー要求というぐあいです。
+1. Apply the first filter. 
+2. Click the **Apply selected filters and query again** button by the name of the dimension of your first filter. This will re-query your telemetry for only events that match the first filter. 
+3. Apply a second filter. 
+4. Repeat the process to find trends in specific subsets of your telemetry. For example, server requests named "GET Home/Index" _and_ that came from Germany _and_ that received a 500 response code. 
 
-これらのフィルターの適用を解除するには、ディメンションの **[選択したフィルターを削除し、もう一度クエリを実行します]** ボタンをクリックします。
+To un-apply one of these filters, click the **Remove selected filters and query again** button for the dimension.
 
 ![Multiple filters](./media/app-insights-visual-studio-trends/TrendsFiltering2-750.png)
 
-## 異常の検出
+## <a name="find-anomalies"></a>Find anomalies
 
-Trends ツールでは、同じ時系列の他のバブルと比べて異常なイベントのバブルを強調表示できます。[ビューの種類] ボックスの一覧の **[タイム バケット内の数 (異常を強調表示)]** または **[タイム バケット内の割合 (異常を強調表示)]** を選択します。赤いバブルが異常なバブルです。異常なバブルは、数/割合が過去の 2 つの期間で発生した数/割合の標準偏差の 2.1 倍を超えているバブルと定義されています (過去 24 時間を表示する場合は 48 時間)。
+The Trends tool can highlight bubbles of events that are anomalous compared to other bubbles in the same time series. In the View Type dropdown, choose **Counts in time bucket (highlight anomalies)** or **Percentages in time bucket (highlight anomalies)**. Red bubbles are anomalous. Anomalies are defined as bubbles with counts/percentages exceeding 2.1 times the standard deviation of the counts/percentages that occured in the past two time periods (48 hours if you're viewing the last 24 hours, etc.).
 
 ![Colored dots indicate anomalies](./media/app-insights-visual-studio-trends/TrendsAnomalies-750.png)
 
-> [AZURE.TIP] 異常の強調表示は特に、時系列で並んだ小さなバブルの外れ値を見つけるのに役立ちます。強調表示がない場合、これらのバブルは同じような大きさに見える可能性があります。
+> [AZURE.TIP] Highlighting anomalies is especially helpful for finding outliers in time series of small bubbles that may otherwise look similarly sized.  
 
-## <a name="next"></a>次のステップ
+## <a name="<a-name="next"></a>next-steps"></a><a name="next"></a>Next steps
 
 ||
 |---|---
-|**[Visual Studio での Application Insights の操作](app-insights-visual-studio.md)**<br/>テレメトリの検索、CodeLens でのデータの確認、Application Insights の構成。いずれも Visual Studio で行うことができます。 |![プロジェクトを右クリックし、[Application Insights]、[検索] を選択する](./media/app-insights-visual-studio-trends/34.png)
-|**[データの追加](app-insights-asp-net-more.md)**<br/>使用状況、可用性、依存関係、例外の監視。ログ記録フレームワークからのトレースを統合します。カスタム テレメトリを記述します。 | ![Visual studio](./media/app-insights-visual-studio-trends/64.png)
-|**[Application Insights ポータルの操作](app-insights-dashboards.md)**<br/>ダッシュボード、強力な診断および分析ツール、アラート、アプリケーションのリアルタイム依存関係マップ、テレメトリのエクスポート。 |![Visual studio](./media/app-insights-visual-studio-trends/62.png)
+|**[Working with Application Insights in Visual Studio](app-insights-visual-studio.md)**<br/>Search telemetry, see data in CodeLens, and configure Application Insights. All within Visual Studio. |![Right-click the project and choose Application Insights, Search](./media/app-insights-visual-studio-trends/34.png)
+|**[Add more data](app-insights-asp-net-more.md)**<br/>Monitor usage, availability, dependencies, exceptions. Integrate traces from logging frameworks. Write custom telemetry. | ![Visual studio](./media/app-insights-visual-studio-trends/64.png)
+|**[Working with the Application Insights portal](app-insights-dashboards.md)**<br/>Dashboards, powerful diagnostic and analytic tools, alerts, a live dependency map of your application, and telemetry export. |![Visual studio](./media/app-insights-visual-studio-trends/62.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

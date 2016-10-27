@@ -1,43 +1,53 @@
 <properties 
-	pageTitle="Enterprise Integration Pack での XML 検証の概要 | Microsoft Azure App Service | Microsoft Azure" 
-	description="Enterprise Integration Pack と Logic Apps での検証のしくみについて説明します。" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="msftman" 
-	manager="erikre" 
-	editor="cgronlun"/>
+    pageTitle="Overview of XML validation in the Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
+    description="Learn how validation works in the Enterprise Integration Pack and Logic apps" 
+    services="logic-apps" 
+    documentationCenter=".net,nodejs,java"
+    authors="msftman" 
+    manager="erikre" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/08/2016" 
-	ms.author="deonhe"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/08/2016" 
+    ms.author="deonhe"/>
 
-# XML 検証を使用した Enterprise Integration
 
-## 概要
-B2B のシナリオでは多くの場合、契約の対象となるパートナーは、データの処理が開始される前に、パートナーの間で交換されるメッセージが有効であることを検証する必要があります。Enterprise Integration Pack では、XML 検証コネクタを使用して、定義済みのスキーマに対してドキュメントを検証できます。
+# <a name="enterprise-integration-with-xml-validation"></a>Enterprise integration with XML validation
 
-## XML 検証コネクタを使用してドキュメントを検証する方法
-1. ロジック アプリを作成し、XML データの検証に使用するスキーマが含まれた[統合アカウントにリンクします](./app-service-logic-enterprise-integration-accounts.md "ロジック アプリへの統合アカウントの関連付けについての詳細情報")。
-2. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。![](./media/app-service-logic-enterprise-integration-xml/xml-1.png)
-3. **[Add an action (アクションの追加)]** を選択し、**[XML Validation (XML の検証)]** アクションを追加します。
-4. 検索ボックスに「*xml*」と入力し、すべてのアクションから使用するアクションだけをフィルター処理します。
-5. **[XML Validation (XML の検証)]** を選択します。 ![](./media/app-service-logic-enterprise-integration-xml/xml-2.png)
-6. **[コンテンツ]** ボックスを選択します。 ![](./media/app-service-logic-enterprise-integration-xml/xml-1-5.png)
-7. 検証する内容として body タグを選択します。 ![](./media/app-service-logic-enterprise-integration-xml/xml-3.png)
-8. **[スキーマ名]** リスト ボックスを選択し、上側の *[コンテンツ]* の入力内容を検証するために使用するスキーマを選択します。 ![](./media/app-service-logic-enterprise-integration-xml/xml-4.png)
-9. 作業内容を保存します。![](./media/app-service-logic-enterprise-integration-xml/xml-5.png)
+## <a name="overview"></a>Overview
+Often, in B2B scenarios, the partners to an agreement need to validate that messages they exchange among each other are valid before processing of the data can begin. In the Enterprise Integration Pack, you can use the XML Validation connector to validate documents against a predefined schema.  
 
-この時点で、検証コネクタの設定が終了します。実際のアプリケーションでは、検証されたデータを SalesForce などの LOB アプリケーション内に格納する必要がある場合があります。検証の出力を Salesforce に送信するアクションを簡単に追加できます。
+## <a name="how-to-validate-a-document-with-the-xml-validation-connector"></a>How to validate a document with the XML Validation connector
+1. Create a Logic app and [link it to your integration account](./app-service-logic-enterprise-integration-accounts.md "Learn to link an integration account to a Logic app") that contains the schema you will use to validate the XML data.
+2. Add a **Request - When an HTTP request is received** trigger to your Logic app  
+![](./media/app-service-logic-enterprise-integration-xml/xml-1.png)    
+3. Add the **XML Validation** action by first selecting **Add an action**  
+4. Enter *xml* in the search box in order to filter all the actions to the one that you want to use 
+5. Select **XML Validation**     
+![](./media/app-service-logic-enterprise-integration-xml/xml-2.png)   
+6. Select the **CONTENT** text box  
+![](./media/app-service-logic-enterprise-integration-xml/xml-1-5.png)
+7. Select the body tag as the content that will be validated.   
+![](./media/app-service-logic-enterprise-integration-xml/xml-3.png)  
+8. Select the **SCHEMA NAME** list box and chose the schema you want to use to validate the input *content* above     
+![](./media/app-service-logic-enterprise-integration-xml/xml-4.png) 
+9. Save your work  
+![](./media/app-service-logic-enterprise-integration-xml/xml-5.png) 
 
-これで、HTTP エンドポイントに要求を送信して、検証のアクションをテストできます。
+At this point, you are finished setting up your validation connector. In a real world application, you may want to store the validated data in an LOB application such as SalesForce. You can easily add an action to send the output of the validation to Salesforce. 
 
-## 次のステップ
+You can now test your validation action by making a request to the HTTP endpoint.  
 
-[Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0803_2016-->
+[Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")   
+
+
+<!--HONumber=Oct16_HO2-->
+
+

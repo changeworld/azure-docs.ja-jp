@@ -1,37 +1,42 @@
 <properties 
-	pageTitle="Enterprise Integration Pack での XML の処理の概要 |Microsoft Azure App Service | Microsoft Azure" 
-	description="Enterprise Integration Pack と Logic Apps を使用して XML メッセージを処理および検証する方法について説明します" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="msftman" 
-	manager="erikre" 
-	editor="cgronlun"/>
+    pageTitle="Overview of XML processing in the Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
+    description="Learn how to process and validate XML messages using the Enterprise Integration Pack and Logic apps" 
+    services="logic-apps" 
+    documentationCenter=".net,nodejs,java"
+    authors="msftman" 
+    manager="erikre" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/07/2016" 
-	ms.author="deonhe"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/07/2016" 
+    ms.author="deonhe"/>
 
 
-# XML の処理
 
-Enterprise Integration Pack により、ビジネス パートナーと交換する XML ドキュメントの検証や処理が容易になります。Logic Apps を使用してこれらの XML メッセージを処理する方法には、次のものがあります。
+# <a name="xml-processing"></a>XML processing
 
-- [XML 検証](./app-service-logic-enterprise-integration-xml-validation.md "XML メッセージの検証について") - 送信元エンドポイントから送られてくるメッセージを、特定のスキーマに対して検証できます。
-- [XML 変換](./app-service-logic-enterprise-integration-transform.md "XML メッセージの変換と対応付けについて") - 宛先エンドポイントの要件に基づいて、XML メッセージを変換できます。
-- [フラット ファイルのエンコードとデコード](./app-service-logic-enterprise-integration-flatfile.md "フラット ファイルのエンコードとデコードについて") - フラット ファイルをエンコードまたはデコードできます。
-- [XPath](https://msdn.microsoft.com/library/mt643789.aspx) -メッセージを強化し、メッセージから特定のプロパティを抽出できます。抽出されたプロパティは、宛先または中継のエンドポイントにメッセージをルーティングするために使用できます。
+The Enterprise Integration Pack makes it easy to validate and process XML documents that you exchange with business partners. Here are the ways you can process these XML messages using Logic apps:  
 
-## 試してみる
+- [XML validation](./app-service-logic-enterprise-integration-xml-validation.md "Learn about XML message validation")  - XML validation provides the ability to validate a message that originates from a source endpoint against a specific schema.
+- [XML transform](./app-service-logic-enterprise-integration-transform.md "Learn about XML message transformations and maps") - XML transform provides the ability to convert an XML message based on the requirements of a destination endpoint.   
+- [Flat file encoding and flat file decoding](./app-service-logic-enterprise-integration-flatfile.md "Learn about flat file encoding/decoding") - Flat file encoding/decoding provides the ability to encode or decode a flat file. 
+- [XPath](https://msdn.microsoft.com/library/mt643789.aspx) - Provides the ability to enrich a message and extract specific properties from the message. The extracted properties can then be used to route the message to a destination or an intermediary endpoint.    
 
-実際に試してみましょう。Logic Apps の XML 機能を使用して、本格的な機能を備えた独自のロジック アプリをデプロイするには、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline)をクリックしてください。
+## <a name="try-it-for-yourself"></a>Try it for yourself
 
-## 詳細情報
+Why not give it a try. Click [here](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) to deploy a fully operational logic app of your own using the XML features of Logic Apps 
 
-[Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
+## <a name="learn-more"></a>Learn more
 
-<!---HONumber=AcomDC_0817_2016-->
+[Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")  
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

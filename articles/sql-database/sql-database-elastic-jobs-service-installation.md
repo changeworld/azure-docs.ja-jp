@@ -1,185 +1,187 @@
 <properties 
-	pageTitle="エラスティック データベース ジョブのインストールの概要 | Microsoft Azure" 
-	description="弾力性ジョブの機能のインストールについて説明します。" 
-	services="sql-database" 
-	documentationCenter="" 
-	manager="jhubbard" 
-	authors="ddove" 
-	editor=""/>
+    pageTitle="Installing elastic database jobs | Microsoft Azure" 
+    description="Walk through installation of the elastic job feature." 
+    services="sql-database" 
+    documentationCenter="" 
+    manager="jhubbard" 
+    authors="ddove" 
+    editor=""/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="sql-database" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/27/2016" 
-	ms.author="ddove"/>
+    ms.service="sql-database" 
+    ms.workload="sql-database" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="05/27/2016" 
+    ms.author="ddove"/>
 
-# Elastic Database ジョブのインストールの概要
 
-[**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)のインストールには PowerShell または Azure クラシック ポータルを使用できます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
+# <a name="installing-elastic-database-jobs-overview"></a>Installing Elastic Database jobs overview
 
-既存の**Elastic Database プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。PowerShell API 経由で公開されている新しい機能を活用するために、最新の**Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
+[**Elastic Database jobs**](sql-database-elastic-jobs-overview.md) can be installed via PowerShell or through the Azure Classic Portal.You can gain access to create and manage jobs using the PowerShell API only if you install the PowerShell package. Additionally, the PowerShell APIs provide significantly more functionality than the portal at this point in time.
 
-## 前提条件
-* Azure サブスクリプション。無料評価版については、「[無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
-* Azure PowerShell。[Web Platform インストーラー](http://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョンをインストールします。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
-* [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。詳細については、http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
+If you have already installed **Elastic Database jobs** through the Portal from an existing **Elastic Database pool**, the latest Powershell preview includes scripts to upgrade your existing installation. It is highly recommended to upgrade your installation to the latest **Elastic Database jobs** components in order to take advantage of new functionality exposed via the PowerShell APIs.
 
-## Elastic Database ジョブ PowerShell パッケージをダウンロードしてインストールする
-1. Microsoft Azure PowerShell コマンド ウィンドウを開き、NuGet Command-line Utility (nuget.exe) をダウンロードしたディレクトリに移動します。
+## <a name="prerequisites"></a>Prerequisites
+* An Azure subscription. For a free trial, see [Free trial](https://azure.microsoft.com/pricing/free-trial/).
+* Azure PowerShell. Install the latest version using the [Web Platform Installer](http://go.microsoft.com/fwlink/p/?linkid=320376). For detailed information, see [How to install and configure Azure PowerShell](../powershell-install-configure.md).
+* [NuGet Command-line Utility](https://nuget.org/nuget.exe) is used to install the Elastic Database jobs package. For more information, see http://docs.nuget.org/docs/start-here/installing-nuget.
 
-2. 次のコマンドを使用して、**エラスティック データベース ジョブ** パッケージを現在のディレクトリにダウンロードしてインポートします。
+## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Download and import the Elastic Database jobs PowerShell package
+1. Launch Microsoft Azure PowerShell command window and navigate to the directory where you downloaded NuGet Command-line Utility (nuget.exe).
 
-		PS C:\>.\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
+2. Download and import **Elastic Database jobs** package into the current directory with the following command:
 
-    **Elastic Database ジョブ** ファイルは、ローカル ディレクトリの **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x** というフォルダー内に保存されます。この *x.x.xxxx.x* には、バージョン番号が反映されます。(必要なクライアント .dll を含む) PowerShell コマンドレットは、**tools\\ElasticDatabaseJobs** サブディレクトリに保存されます。インストール、アップグレード、およびアンインストールを行う PowerShell スクリプトも **tools** サブディレクトリに保存されます。
+        PS C:\>.\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
 
-3. 次のように cd tools と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x 以下の tools サブディレクトリに移動します。
+    The **Elastic Database jobs** files are placed in the local directory in a folder named **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x** where *x.x.xxxx.x* reflects the version number. The PowerShell cmdlets (including required client .dlls) are located in the **tools\ElasticDatabaseJobs** sub-directory and the PowerShell scripts to install, upgrade and uninstall also reside in the **tools** sub-directory.
 
-		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+3. Navigate to the tools sub-directory under the Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x folder by typing cd tools, for example:
 
-4.	.\\InstallElasticDatabaseJobsCmdlets.ps1 スクリプトを実行して、ElasticDatabaseJobs ディレクトリを $home\\Documents\\WindowsPowerShell\\Modules にコピーします。この処理で、次のように使用するモジュールも自動的にインポートされます。
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
-		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
+4.  Execute the .\InstallElasticDatabaseJobsCmdlets.ps1 script to copy the ElasticDatabaseJobs directory into $home\Documents\WindowsPowerShell\Modules. This will also automatically import the module for use, for example:
 
-## PowerShell を使用して Elastic Database ジョブ コンポーネントをインストールする
-1.	Microsoft Azure PowerShell コマンド ウィンドウを開き、cd \\tools と入力して、Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x フォルダー以下の \\tools サブディレクトリに移動します。
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
 
-		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
+## <a name="install-the-elastic-database-jobs-components-using-powershell"></a>Install the Elastic Database jobs components using PowerShell
+1.  Launch a Microsoft Azure PowerShell command window and navigate to the \tools sub-directory under the Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x folder: Type cd \tools
 
-2.	.\\InstallElasticDatabaseJobs.ps1 PowerShell スクリプトを実行し、要求された変数に値を設定します。このスクリプトで、[Elastic Database ジョブ コンポーネントと価格設定](sql-database-elastic-jobs-overview.md#components-and-pricing)のページで説明されているコンポーネントが作成され、依存するコンポーネントを適切に使用するように Azure クラウド サービスが構成されます。
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
-		PS C:*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
+2.  Execute the .\InstallElasticDatabaseJobs.ps1 PowerShell script and supply values for its requested variables. This script will create the components described in [Elastic Database jobs components and pricing](sql-database-elastic-jobs-overview.md#components-and-pricing) along with configuring the Azure Cloud Service to appropriately use the dependent components.
 
-コマンドを実行すると、**[ユーザー名]** と **[パスワード]** の入力を求めるウィンドウが表示されます。ここで入力するユーザー名とパスワードは Azure の資格情報ではなく、新しいサーバーの管理者の資格情報となります
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
+        PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
 
-この呼び出し例で指定したパラメーターは、実際の設定に合わせて変更できます。次に各パラメーターの動作の詳細について説明します。
+When you run this command a window opens asking for a **user name** and **password**. This is not your Azure credentials, enter the user name and password that will be the administrator credentials you want to create for the new server.
+
+The parameters provided on this sample invocation can be modified for your desired settings. The following provides more information on the behavior of each parameter:
 
 <table style="width:100%">
   <tr>
-    <th>パラメーター</th>
-    <th>説明</th>
+    <th>Parameter</th>
+    <th>Description</th>
   </tr>
 
 <tr>
-	<td>ResourceGroupName</td>
-	<td>新しく作成された Azure コンポーネントを含めるために作成する Azure リソース グループ名を指定します。このパラメーターの既定値は “__ElasticDatabaseJob” です。この値は変更しないことをお勧めします。</td>
-	</tr>
+    <td>ResourceGroupName</td>
+    <td>Provides the Azure resource group name created to contain the newly created Azure components. This parameter defaults to “__ElasticDatabaseJob”. It is not recommended to change this value.</td>
+    </tr>
 
 </tr>
 
-	<tr>
-	<td>ResourceGroupLocation</td>
-	<td>新しく作成された Azure コンポーネントに使用する Azure のリージョンを指定します。このパラメーターの既定値は Central US (米国中央部) です。</td>
+    <tr>
+    <td>ResourceGroupLocation</td>
+    <td>Provides the Azure location to be used for the newly created Azure components. This parameter defaults to the Central US location.</td>
 </tr>
 
 <tr>
-	<td>ServiceWorkerCount</td>
-	<td>インストールするサービス ワーカーの数を指定します。このパラメーターの既定値は 1 です。ワーカー数を多くすると、サービスをスケール アウトし、高可用性を実現できます。サービスの高可用性が必要なデプロイメントの場合、"2" を使用することをお勧めします。</td>
-	</tr>
+    <td>ServiceWorkerCount</td>
+    <td>Provides the number of service workers to install. This parameter defaults to 1. A higher number of workers can be used to scale out the service and to provide high availability. It is recommended to use “2” for deployments that require high availability of the service.</td>
+    </tr>
 
 </tr>
-	<tr>
-	<td>ServiceVmSize</td>
-	<td>クラウド サービス内で使用する VM サイズを指定します。このパラメーターの既定値は A0 です。A0/A1/A2/A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。worker ロール サイズの詳細については、[エラスティック データベース ジョブ コンポーネントと価格設定](sql-database-elastic-jobs-overview/#components-and-pricing) を参照してください。</td>
-</tr>
-
-</tr>
-	<tr>
-	<td>SqlServerDatabaseSlo</td>
-	<td>Standard エディションのサービス レベル目標を指定します。このパラメーターの既定値は S0 です。S0/S1/S2/S3 のパラメーター値を指定できます。Azure SQL Database で各 SLO が使用されます。SQL Database SLO の詳細については、[エラスティック データベース ジョブ コンポーネントと価格設定](sql-database-elastic-jobs-overview/#components-and-pricing) を参照してください。</td>
+    <tr>
+    <td>ServiceVmSize</td>
+    <td>Provides the VM size for usage within the Cloud Service. This parameter defaults to A0. Parameters values of A0/A1/A2/A3 are accepted which cause the worker role to use an ExtraSmall/Small/Medium/Large size, respectively. Fo more information on worker role sizes, see [Elastic Database jobs components and pricing](sql-database-elastic-jobs-overview/#components-and-pricing).</td>
 </tr>
 
 </tr>
-	<tr>
-	<td>SqlServerAdministratorUserName</td>
-	<td>新しく作成した Azure SQL Database サーバーの管理ユーザー名を指定します。指定しない場合、PowerShell の資格情報ウィンドウが開き、資格情報の入力を求められます。</td>
+    <tr>
+    <td>SqlServerDatabaseSlo</td>
+    <td>Provides the service level objective for a Standard edition. This parameter defaults to S0. Parameter values of S0/S1/S2/S3 are accepted which cause the Azure SQL Database to use the respective SLO. For more information on SQL Database SLOs, see [Elastic Database jobs components and pricing](sql-database-elastic-jobs-overview/#components-and-pricing).</td>
 </tr>
 
 </tr>
-	<tr>
-	<td>SqlServerAdministratorPassword</td>
-	<td>新しく作成した Azure SQL Database サーバーの管理パスワードを指定します。指定しない場合、PowerShell の資格情報ウィンドウが開き、資格情報の入力を求められます。</td>
+    <tr>
+    <td>SqlServerAdministratorUserName</td>
+    <td>Provides the admin user name for the newly created Azure SQL Database server. When not specified, a PowerShell credentials window will open to prompt for the credentials.</td>
+</tr>
+
+</tr>
+    <tr>
+    <td>SqlServerAdministratorPassword</td>
+    <td>Provides the admin password for the newly created Azure SQL Database server. When not provided, a PowerShell credentials window will open to prompt for the credentials.</td>
 </tr>
 </table>
 
-多数のデータベースに対して同時に実行されるジョブ数が多数あるシステムの場合、-ServiceWorkerCount 2 -ServiceVmSize A2 -SqlServerDatabaseSlo S2 などのパラメーターを指定することをお勧めします。
+For systems that target having large numbers of jobs running in parallel against a large number of databases, it is recommended to specify parameters such as: -ServiceWorkerCount 2 -ServiceVmSize A2 -SqlServerDatabaseSlo S2.
 
-    PS C:*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
-    PS C:*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\InstallElasticDatabaseJobs.ps1 -ServiceWorkerCount 2 -ServiceVmSize A2 -SqlServerDatabaseSlo S2
+    PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
+    PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\InstallElasticDatabaseJobs.ps1 -ServiceWorkerCount 2 -ServiceVmSize A2 -SqlServerDatabaseSlo S2
 
-## PowerShell を使用して既存の Elastic Database ベース ジョブ コンポーネントのインストールを更新する
+## <a name="update-an-existing-elastic-database-jobs-components-installation-using-powershell"></a>Update an existing Elastic Database jobs components installation using PowerShell
 
-**Elastic Database ジョブ**は、スケールと高可用性のために既存のインストール内で更新できます。このプロセスは、将来的に、管理データベースを削除して再作成することなく、サービス コードをアップグレードすること見込んでいます。また、同じバージョン内でこのプロセスを使用して、サービス VM サイズまたはサーバーのワーカー数を変更できます。
+**Elastic Database jobs** can be updated within an existing installation for scale and high-availability. This process allows for future upgrades of service code without having to drop and recreate the control database. This process can also be used within the same version to modify the service VM size or the server worker count.
 
-インストールの VM サイズを更新するには、パラメーターを選択した値に更新して、次のスクリプトを実行します。
+To update the VM size of an installation, run the following script with parameters updated to the values of your choice.
 
-    PS C:*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\UpdateElasticDatabaseJobs.ps1
-    PS C:*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\UpdateElasticDatabaseJobs.ps1 -ServiceVmSize A1 -ServiceWorkerCount 2
+    PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\UpdateElasticDatabaseJobs.ps1
+    PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\UpdateElasticDatabaseJobs.ps1 -ServiceVmSize A1 -ServiceWorkerCount 2
 
 <table style="width:100%">
   <tr>
-  <th>パラメーター</th>
-  <th>説明</th>
+  <th>Parameter</th>
+  <th>Description</th>
 </tr>
 
   <tr>
-	<td>ResourceGroupName</td>
-	<td>Elastic Database ジョブ コンポーネントを最初にインストールしたときに使用した Azure リソース グループ名を指定します。このパラメーターの既定値は “__ElasticDatabaseJob” です。この値を変更することは推奨されないので、このパラメーターを指定する必要はありません。</td>
-	</tr>
+    <td>ResourceGroupName</td>
+    <td>Identifies the Azure resource group name used when the Elastic Database job components were initially installed. This parameter defaults to “__ElasticDatabaseJob”. Since it is not recommended to change this value, you shouldn't have to specify this parameter.</td>
+    </tr>
 </tr>
 
 </tr>
 
   <tr>
-	<td>ServiceWorkerCount</td>
-	<td>インストールするサービス ワーカーの数を指定します。このパラメーターの既定値は 1 です。ワーカー数を多くすると、サービスをスケール アウトし、高可用性を実現できます。サービスの高可用性が必要なデプロイメントの場合、"2" を使用することをお勧めします。</td>
+    <td>ServiceWorkerCount</td>
+    <td>Provides the number of service workers to install.  This parameter defaults to 1.  A higher number of workers can be used to scale out the service and to provide high availability.  It is recommended to use “2” for deployments that require high availability of the service.</td>
 </tr>
 
 </tr>
 
-	<tr>
-	<td>ServiceVmSize</td>
-	<td>クラウド サービス内で使用する VM サイズを指定します。このパラメーターの既定値は A0 です。A0/A1/A2/A3 のパラメーター値を指定できます。それぞれ、worker ロールに ExtraSmall/Small/Medium/Large サイズが使用されます。worker ロール サイズの詳細については、[エラスティック データベース ジョブ コンポーネントと価格設定](sql-database-elastic-jobs-overview/#components-and-pricing) を参照してください。</td>
+    <tr>
+    <td>ServiceVmSize</td>
+    <td>Provides the VM size for usage within the Cloud Service. This parameter defaults to A0. Parameters values of A0/A1/A2/A3 are accepted which cause the worker role to use an ExtraSmall/Small/Medium/Large size, respectively. Fo more information on worker role sizes, see [Elastic Database jobs components and pricing](sql-database-elastic-jobs-overview/#components-and-pricing).</td>
 </tr>
 
 </table>
 
-## ポータルを使用して Elastic Database ジョブ コンポーネントをインストールする
+## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>Install the Elastic Database jobs components using the Portal
 
-[Elastic Database プールを作成](sql-database-elastic-pool-create-portal.md)すると、**Elastic Database ジョブ** コンポーネントをインストールして、Elastic Database プール内の各データベースに対して管理タスクを実行できるようになります。**Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
+Once you have [created an Elastic Database pool](sql-database-elastic-pool-create-portal.md), you can install **Elastic Database jobs** components to enable execution of administrative tasks against each database in the Elastic Database pool. Unlike when using the **Elastic Database jobs** PowerShell APIs, the portal interface is currently restricted to only executing against an existing pool.
 
 
-**推定所要時間:** 10 分。
+**Estimated time to complete:** 10 minutes.
 
-1. [Azure ポータル](https://portal.azure.com/#)のエラスティック データベース プールのダッシュボード ビューで、**[ジョブの作成]** をクリックします。
-2. 初めてジョブを作成する場合は、**[プレビュー版の使用条件]** をクリックして、**Elastic Database ジョブ**をインストールする必要があります。
-3. チェック ボックスをクリックして条項に同意します。
-4. [サービスのインストール] ビューで、**[ジョブの資格情報]** をクリックします。
+1. From the dashboard view of the elastic database pool via the [Azure Portal](https://portal.azure.com/#) , click **Create job**.
+2. If you are creating a job for the first time, you must install **Elastic Database jobs** by clicking **PREVIEW TERMS**.
+3. Accept the terms by clicking the checkbox.
+4. In the "Install services" view, click **JOB CREDENTIALS**.
 
-	![サービスのインストール][1]
+    ![Installing the services][1]
 
-5. データベース管理者のユーザー名とパスワードを入力します。インストールの一環として、新しい Azure SQL Database サーバーが作成されます。この新しいサーバー内に、管理データベースと呼ばれる新しいデータベースが作成され、Elastic Database ジョブのメタデータの格納に使用されます。ここで作成されるユーザー名とパスワードは、管理データベースにログインするために使用されます。プール内のデータベースに対するスクリプト実行には、別の資格情報が使用されます。
+5. Type a user name and password for a database admin. As part of the installation, a new Azure SQL Database server is created. Within this new server, a new database, known as the control database, is created and used to contain the meta data for Elastic Database jobs. The user name and password created here are used for the purpose of logging in to the control database. A separate credential is used for script execution against the databases within the pool.
 
-	![ユーザー名とパスワードの作成][2]
+    ![Create username and password][2]
 
-6. [OK] ボタンをクリックします。新しい[リソース グループ](../resource-group-overview.md)にコンポーネントが数分で作成されます。下記に示すように、新しいリソース グループがスタート ボードに固定表示されています。作成されると、弾力性データベース ジョブ (クラウド サービス、SQL Database、Service Bus、ストレージ記憶域) は、すべてグループ内に作成されます。
+6. Click the OK button. The components are created for you in a few minutes in a new [Resource group](../resource-group-overview.md). The new resource group is pinned to the start board, as shown below. Once created, elastic database jobs (Cloud Service, SQL Database, Service Bus, and Storage) are all created in the group.
 
-	![スタート ボードのリソース グループ][3]
+    ![resource group in start board][3]
 
-7. 弾力性データベース ジョブをインストール中にジョブを作成または管理しようとすると、**資格情報**の入力中に 、次のメッセージが表示されます。
+7. If you attempt to create or manage a job while elastic database jobs is installing, when providing **Credentials** you will see the following message.
 
-	![実行中のデプロイメント][4]
+    ![Deployment still in progress][4]
 
-アンインストールが必要な場合は、リソース グループを削除します。「[エラスティック データベース ジョブ コンポーネントのアンインストール方法](sql-database-elastic-jobs-uninstall.md)」を参照してください。
+If uninstallation is required, delete the resource group. See [How to uninstall the Elastic Database job components](sql-database-elastic-jobs-uninstall.md).
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-スクリプトを実行できる適切な権限を持つ資格情報がグループ内の各データベースに作成されていることを確認します。詳細については、「[SQL Database の保護](sql-database-security.md)」をご覧ください。概要については、「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」を参照してください。
+Ensure a credential with the appropriate rights for script execution is created on each database in the group, for more information see [Securing your SQL Database](sql-database-security.md).
+See [Creating and managing an Elastic Database jobs](sql-database-elastic-jobs-create-and-manage.md) to get started.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-jobs-service-installation/screen-1.png
@@ -187,4 +189,8 @@
 [3]: ./media/sql-database-elastic-jobs-service-installation/start-board.png
 [4]: ./media/sql-database-elastic-jobs-service-installation/not-done.png
 
-<!---HONumber=AcomDC_0720_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

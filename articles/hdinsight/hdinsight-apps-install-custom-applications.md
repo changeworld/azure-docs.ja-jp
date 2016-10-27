@@ -1,148 +1,153 @@
 <properties
-   	pageTitle="HDInsight への Hadoop アプリケーションのインストール | Microsoft Azure"
-   	description="HDInsight アプリケーションに HDInsight アプリケーションをインストールする方法について説明します。"
-   	services="hdinsight"
-   	documentationCenter=""
-   	authors="mumian"
-   	manager="jhubbard"
-   	editor="cgronlun"
-	tags="azure-portal"/>
+    pageTitle="Install Hadoop applications on HDInsight | Microsoft Azure"
+    description="Learn how to install HDInsight applications on HDInsight applications."
+    services="hdinsight"
+    documentationCenter=""
+    authors="mumian"
+    manager="jhubbard"
+    editor="cgronlun"
+    tags="azure-portal"/>
 
 <tags
-   	ms.service="hdinsight"
-   	ms.devlang="na"
-   	ms.topic="hero-article"
-   	ms.tgt_pltfrm="na"
-   	ms.workload="big-data"
-   	ms.date="09/14/2016"
-   	ms.author="jgao"/>
+    ms.service="hdinsight"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.tgt_pltfrm="na"
+    ms.workload="big-data"
+    ms.date="09/14/2016"
+    ms.author="jgao"/>
 
-# カスタム HDInsight アプリケーションのインストール
 
-HDInsight アプリケーションは、ユーザーが Linux ベースの HDInsight クラスターにインストールすることのできるアプリケーションです。マイクロソフトや独立系ソフトウェア ベンダー (ISV) によって作成されるほか、ユーザーが独自に作成することもできます。この記事では、まだ Azure ポータルに発行されていない HDInsight アプリケーションを HDInsight にインストールする方法について説明します。ここでインストールするアプリケーションは [Hue](http://gethue.com/) です。
+# <a name="install-custom-hdinsight-applications"></a>Install custom HDInsight applications
 
-その他の関連記事:
+An HDInsight application is an application that users can install on a Linux-based HDInsight cluster.  These applications can be developed by Microsoft, independent software vendors (ISV) or by yourself. In this article, you will learn how to install an HDInsight application that has not been published to the Azure portal on HDInsight. The application you will install is [Hue](http://gethue.com/). 
 
-- [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md): HDInsight アプリケーションをクラスターにインストールする方法について説明します。
-- [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。
-- [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法について説明します。
+Other related articles:
+
+- [Install HDInsight applications](hdinsight-apps-install-applications.md): Learn how to install an HDInsight application to your clusters.
+- [Publish HDInsight applications](hdinsight-apps-publish-applications.md): Learn how to publish your custom HDInsight applications to Azure Marketplace.
+- [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx): Learn how to define HDInsight applications.
 
  
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-既存の HDInsight クラスターに HDInsight アプリケーションをインストールする場合は、対象となる HDInsight クラスターが必要です。新たに作成する場合は、「[クラスターの作成](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。HDInsight クラスターを作成するときに HDInsight アプリケーションをインストールすることもできます。
+If you want to install HDInsight applications on an existing HDInsight cluster, you must have an HDInsight cluster. To create one, see [Create clusters](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster). You can also install HDInsight applications when you create an HDInsight cluster.
 
 
-## HDInsight アプリケーションのインストール
+## <a name="install-hdinsight-applications"></a>Install HDInsight applications
 
-HDInsight アプリケーションは、クラスターを作成するときにインストールするか、または既存の HDInsight クラスターにインストールすることができます。Azure Resource Manager テンプレートの定義については、MSDN の「[Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
+HDInsight applications can be installed when you create a cluster or to an existing HDInsight cluster. For defining Azure Resource Manager templates, see [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx).
 
-このアプリケーション (Hue) をデプロイするために必要なファイルは次のとおりです。
+The files needed for deploying this application (Hue):
 
-- [azuredeploy.json](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/azuredeploy.json): HDInsight アプリケーションをインストールするための Resource Manager テンプレート。独自の Resource Manager テンプレートの作成については、MSDN の「[Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
-- [hue-install\_v0.sh](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/scripts/Hue-install_v0.sh): Resource Manager テンプレートによって呼び出されるスクリプト アクション。エッジ ノードの構成に使用されます。
-- [hue-binaries.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): hui-install\_v0.sh から呼び出される hue のバイナリ ファイル。
-- [hue-binaries-14-04.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): hui-install\_v0.sh から呼び出される hue のバイナリ ファイル。
-- [webwasb-tomcat.tar.gz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/webwasb-tomcat.tar.gz): hui-install\_v0.sh から呼び出されるサンプル Web アプリケーション (Tomcat)。
+- [azuredeploy.json](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/azuredeploy.json): The Resource Manager template for installing HDInsight application. See [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) for developing your own Resource Manager template.
+- [hue-install_v0.sh](https://github.com/hdinsight/Iaas-Applications/blob/master/Hue/scripts/Hue-install_v0.sh): The Script action being called by the Resource Manager template for configuring the edge node. 
+- [hue-binaries.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): The hue binary file being called from hui-install_v0.sh. 
+- [hue-binaries-14-04.tgz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/hue-binaries-14-04.tgz): The hue binary file being called from hui-install_v0.sh. 
+- [webwasb-tomcat.tar.gz](https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv01/webwasb-tomcat.tar.gz): A sample web application (Tomcat) being called from hui-install_v0.sh.
 
-**既存の HDInsight クラスターに Hue をインストールするには**
+**To install Hue to an existing HDInsight cluster**
 
-1. 次の画像をクリックして Azure にサインインし、Azure ポータルで Resource Manager テンプレートを開きます。
+1. Click the following image to sign in to Azure and open the Resource Manager template in the Azure Portal. 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FHue%2Fazuredeploy.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-    このボタンをクリックすると、Azure ポータルの Resource Manager テンプレートが開きます。この Resource Manager テンプレートは、[https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue) にあります。この Resource Manager テンプレートの作成方法については、MSDN の「[Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
+    This button opens a Resource Manager template on the Azure portal.  The Resource Manager template is located at [https://github.com/hdinsight/Iaas-Applications/tree/master/Hue](https://github.com/hdinsight/Iaas-Applications/tree/master/Hue).  To learn how to write this Resource Manager template, see [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx).
     
-2. **[パラメーター]** ブレードで、次の各項目を入力します。
+2. From the **Parameters** blade, enter the following:
 
-    - **ClusterName**: アプリケーションのインストール先となるクラスターの名前を入力します。このクラスターは既に存在していることが必要です。
+    - **ClusterName**: Enter the name of the cluster where you want to install the application. This cluster must be an existing cluster.
     
-3. **[OK]** をクリックしてパラメーターを保存します。
-4. **[カスタム デプロイ]** ブレードで「**リソース グループ**」と入力します。リソース グループとは、クラスターや依存するストレージ アカウントなどのリソースをひとまとめにしたコンテナーです。クラスターと同じリソース グループを使用する必要があります。
-5. **[法律条項]** をクリックし、**[作成]** をクリックします。
-6. **[ダッシュボードにピン留めする]** チェック ボックスがオンになっていることを確認し、**[作成]** をクリックします。インストールのステータスは、ポータル ダッシュボードにピン留めされたタイルまたはポータルの通知 (ポータル上部のベル アイコンをクリック) で確認できます。アプリケーションのインストールには 10 分程度かかります。
+3. Click **OK** to save the parameters.
+4. From the **Custom deployment** blade, enter **Resource group**.  The resource group is a container that groups the cluster, the dependent storage account and other resources. It is required to use the same resource group as the cluster.
+5. Click **Legal terms**, and then click **Create**.
+6. Verify the **Pin to dashboard** checkbox is selected, and then click **Create**. You can see the installation status from the tile pinned to the portal dashboard and the portal notification (click the bell icon on the top of the portal).  It takes about 10 minutes to install the application.
 
-**クラスターの作成時に Hue をインストールするには**
+**To install Hue while creating a cluster**
 
-1. 次の画像をクリックして Azure にサインインし、Azure ポータルで Resource Manager テンプレートを開きます。
+1. Click the following image to sign in to Azure and open the Resource Manager template in the Azure Portal. 
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhdinsightapps%2Fcreate-linux-based-hadoop-cluster-in-hdinsight.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-    このボタンをクリックすると、Azure ポータルの Resource Manager テンプレートが開きます。この Resource Manager テンプレートは [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json) にあります。この Resource Manager テンプレートの作成方法については、MSDN の「[Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
+    This button opens a Resource Manager template on the Azure portal.  The Resource Manager template is located at [https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  To learn how to write this Resource Manager template, see [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx).
 
-2. 手順に従ってクラスターを作成し、Hue をインストールします。HDInsight クラスターの作成の詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
+2. Follow the instruction to create cluster and install Hue. For more information on creating HDInsight clusters, see [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-Azure ポータルのほか、[Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-powershell) や [Azure CLI](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-azure-cli) を使用して Resource Manager テンプレートを呼び出すこともできます。
+In addition to the Azure portal, you can also use [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-powershell) and [Azure CLI](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-with-azure-cli) to call Resource Manager templates.
 
-## インストールを検証する
+## <a name="validate-the-installation"></a>Validate the installation
 
-Azure ポータルでアプリケーションのステータスを確認し、アプリケーションが正しくインストールされていることを確認できます。さらに、すべての HTTP エンドポイントが正しく設定されていること、また Web ページが存在する場合は正しく表示されることを確認することもできます。
+You can check the application status on the Azure portal to validate the application installation. In addition, you can also validate all HTTP endpoints came up as expected and the webpage if there is one:
 
-**Hue ポータルを開くには**
+**To open the Hue portal**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. 左側のメニューの **[HDInsight クラスター]** をクリックします。表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
-3. アプリケーションをインストールしたクラスターをクリックします。
-4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。**[インストール済みアプリ]** ブレードの一覧に **hue** が表示されます。
-5. 一覧の **[hue]** をクリックしてプロパティを一覧表示します。
-6. Web ページ リンクをクリックして Web サイトを検証します。具体的には、ブラウザーで HTTP エンドポイントを開いて Hue の Web UI が正しく表示されることを確認し、[PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md) などの [SSH クライアント](hdinsight-hadoop-linux-use-ssh-unix.md)を使用して SSH エンドポイントを開きます。
+1. Sign in to the [Azure portal](https://portal.azure.com).
+2. Click **HDInsight Clusters** in the left menu.  If you don't see it, click **Browse**, and then click **HDInsight Clusters**.
+3. Click the cluster where you installed the application.
+4. From the **Settings** blade, click **Applications** under the **General** category. You shall see **hue** listed in the **Installed Apps** blade.
+5. Click **hue** from the list to list the properties.  
+6. Click the Webpage link to validate the website; open the HTTP endpoint in a browser to validate the Hue web UI, open the SSH endpoint using [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md) or other [SSH clients](hdinsight-hadoop-linux-use-ssh-unix.md).
  
-## インストールのトラブルシューティング
+## <a name="troubleshoot-the-installation"></a>Troubleshoot the installation
 
-アプリケーションのインストールの状態は、ポータル通知で確認できます (ポータル上部のベル アイコンをクリック)。
+You can check the application installation status from the portal notification (Click the bell icon on the top of the portal). 
 
 
-アプリケーションのインストールが失敗した場合は、エラー メッセージとデバッグ情報を次の 3 つの場所で確認できます。
+If an application installation failed, you can see the error messages and debug information from 3 places:
 
-- HDInsight アプリケーション: 一般的なエラー情報です。
+- HDInsight Applications: general error information.
 
-    ポータルでクラスターを開き、[設定] ブレードで [アプリケーション] をクリックします。
+    Open the cluster from the portal, and click Applications from the Settings blade:
 
     ![hdinsight applications application installation error](./media/hdinsight-apps-install-applications/hdinsight-apps-error.png)
 
-- HDInsight のスクリプト アクション: HDInsight アプリケーションのエラー メッセージがスクリプト アクションのエラーを示している場合、その詳細がスクリプト アクション ウィンドウに表示されます。
+- HDInsight script action: If the HDInsight Applications' error message indicates a script action failure, more details about the script failure will be presented in the script actions pane.
 
-    [設定] ブレードで、[スクリプト アクション] をクリックします。スクリプト アクションの履歴に、エラー メッセージが表示されます。
+    Click Script Action from the Settings blade. Script action history shows the error messages
 
     ![hdinsight applications script action error](./media/hdinsight-apps-install-applications/hdinsight-apps-script-action-error.png)
     
-- Ambari Web UI: インストール スクリプトがエラーの原因であった場合は、Ambari Web UI を使用して、インストール スクリプトの完全なログを確認します。
+- Ambari Web UI: If the install script was the cause of the failure, use Ambari Web UI to check full logs about the install scripts.
 
-    詳細については、「[トラブルシューティング](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)」を参照してください。
+    For more information, see [Troubleshooting](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
 
-## HDInsight アプリケーションの削除
+## <a name="remove-hdinsight-applications"></a>Remove HDInsight applications
 
-HDInsight アプリケーションを削除する方法は複数あります。
+There are several ways to delete HDInsight applications.
 
-### ポータルの使用
+### <a name="use-portal"></a>Use portal
 
-**ポータルを使用してアプリケーションを削除するには**
+**To remove an application using the portal**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. 左側のメニューの **[HDInsight クラスター]** をクリックします。表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
-3. アプリケーションをインストールしたクラスターをクリックします。
-4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。インストールされているアプリケーションの一覧が表示されます。このチュートリアルでは、**[インストール済みアプリ]** ブレードの一覧に **hue** が表示されます。
-5. 削除するアプリケーションを右クリックし、**[削除]** をクリックします。
-6. **[はい]** をクリックして確定します。
+1. Sign in to the [Azure portal](https://portal.azure.com).
+2. Click **HDInsight Clusters** in the left menu.  If you don't see it, click **Browse**, and then click **HDInsight Clusters**.
+3. Click the cluster where you installed the application.
+4. From the **Settings** blade, click **Applications** under the **General** category. You shall see a list of installed application. For this tutorial, **hue** listed in the **Installed Apps** blade.
+5. Right-click the application you want to remove, and then click **Delete**.
+6. Click **Yes** to confirm.
 
-ポータルからは、クラスターを削除したり、アプリケーションが含まれているリソース グループを削除したりすることもできます。
+From the portal, you can also delete the cluster or delete the resource group which contains the application.
 
-### Azure PowerShell の使用
+### <a name="use-azure-powershell"></a>Use Azure PowerShell
 
-Azure PowerShell を使用して、クラスターを削除したり、リソース グループを削除したりできます。[Azure PowerShell を使用したクラスターの削除](hdinsight-administer-use-powershell.md#delete-clusters)に関するセクションを参照してください。
+Using Azure PowerShell, you can delete the cluster or delete the resource group. See [Delete clusters by using Azure PowerShell](hdinsight-administer-use-powershell.md#delete-clusters).
 
-### Azure CLI の使用
+### <a name="use-azure-cli"></a>Use Azure CLI
 
-Azure CLI を使用して、クラスターを削除したり、リソース グループを削除したりできます。[Azure CLI を使用したクラスターの削除](hdinsight-administer-use-command-line.md#delete-clusters)に関するセクションを参照してください。
+Using Azure CLI, you can delete the cluster or delete the resource group. See [Delete clusters by using Azure CLI](hdinsight-administer-use-command-line.md#delete-clusters).
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [MSDN 記事を参照して HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションをデプロイするための Resource Manager テンプレートの作成方法について確認します。
-- [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md): HDInsight アプリケーションをクラスターにインストールする方法について確認します。
-- [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
-- [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
-- [Resource Manager テンプレートを使用して HDInsight で Linux ベースの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Resource Manager テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
-- [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスター、テスト HDInsight アプリケーション、およびホスティング HDInsight アプリケーションにアクセスするために空のエッジ ノードを使用する方法を確認します。
+- [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx): learn how to develop Resource Manager templates for deploying HDInsight applications.
+- [Install HDInsight applications](hdinsight-apps-install-applications.md): Learn how to install an HDInsight application to your clusters.
+- [Publish HDInsight applications](hdinsight-apps-publish-applications.md): Learn how to publish your custom HDInsight applications to Azure Marketplace.
+- [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md): learn how to use Script Action to install additional applications.
+- [Create Linux-based Hadoop clusters in HDInsight using Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md): learn how to call Resource Manager templates to create HDInsight clusters.
+- [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md): learn how to use an empty edge node for accessing HDInsight cluster, testing HDInsight applications, and hosting HDInsight applications.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

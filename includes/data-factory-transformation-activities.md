@@ -1,18 +1,20 @@
-Azure Data Factory は、次の変換アクティビティをサポートしています。これらのアクティビティは、個別または他のアクティビティと連結した状態でパイプラインに追加できます。
+Azure Data Factory supports the following transformation activities that can be added to pipelines either individually or chained with another activity.
 
-データ変換アクティビティ | Compute 環境 
+Data transformation activity |  Compute environment 
 :----------------------- | :--------------------
-[Hive](../articles/data-factory/data-factory-hive-activity.md) | HDInsight [Hadoop]
- [Pig](../articles/data-factory/data-factory-pig-activity.md) | HDInsight [Hadoop]
-[MapReduce](../articles/data-factory/data-factory-map-reduce.md) | HDInsight [Hadoop] 
-[Hadoop Streaming](../articles/data-factory/data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop] 
-[Machine Learning アクティビティ: バッチ実行と更新のリソース](../articles/data-factory/data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
-[ストアド プロシージャ](../articles/data-factory/data-factory-stored-proc-activity.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server |
+[Hive](../articles/data-factory/data-factory-hive-activity.md) | HDInsight [Hadoop] 
+[Pig](../articles/data-factory/data-factory-pig-activity.md) | HDInsight [Hadoop]  
+[MapReduce](../articles/data-factory/data-factory-map-reduce.md) | HDInsight [Hadoop]  
+[Hadoop Streaming](../articles/data-factory/data-factory-hadoop-streaming-activity.md) | HDInsight [Hadoop]
+[Machine Learning activities: Batch Execution and Update Resource](../articles/data-factory/data-factory-azure-ml-batch-execution-activity.md) | Azure VM 
+[Stored Procedure](../articles/data-factory/data-factory-stored-proc-activity.md) | Azure SQL, Azure SQL Data Warehouse, or SQL Server |
 [Data Lake Analytics U-SQL](../articles/data-factory/data-factory-usql-activity.md) | Azure Data Lake Analytics 
-[DotNet](../articles/data-factory/data-factory-use-custom-activities.md) | HDInsight [Hadoop] または Azure Batch
+[DotNet](../articles/data-factory/data-factory-use-custom-activities.md) | HDInsight [Hadoop] or Azure Batch
    
 > [AZURE.NOTE] 
-MapReduce アクティビティを使用して、HDInsight Spark クラスターで Spark プログラムを実行することができます。詳細については、[Data Factory からの Spark プログラムの呼び出し](../articles/data-factory/data-factory-spark.md)に関するページを参照してください。
-カスタム アクティビティを作成して、R がインストールされている HDInsight クラスターで R スクリプトを実行することができます。[Azure Data Factory を使用した R スクリプトの実行](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)に関するトピックを参照してください。
+> You can use MapReduce activity to run Spark programs on your HDInsight Spark cluster. See [Invoke Spark programs from Azure Data Factory](../articles/data-factory/data-factory-spark.md) for details.
+> You can create a custom activity to run R scripts on your HDInsight cluster with R installed. See [Run R Script using Azure Data Factory](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample).
 
-<!---HONumber=AcomDC_0928_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="プライベート テンプレートを使ってみる | Microsoft Azure"
-   description="Azure ポータル、Azure CLI、または PowerShell を使ってプライベート テンプレートを追加、管理、共有します。"
+   pageTitle="Get started with private Templates | Microsoft Azure"
+   description="Add, manage and share your private templates using the Azure portal, the Azure CLI, or PowerShell."
    services="marketplace-customer"
    documentationCenter=""
    authors="VybavaRamadoss"
@@ -18,117 +18,125 @@
    ms.date="05/18/2016"
    ms.author="vybavar"/>
 
-# Azure ポータルでプライベート テンプレートを使ってみる
 
-[Azure Resource Manager](../resource-group-authoring-templates.md) テンプレートは、デプロイの定義に使う宣言型のテンプレートです。ソリューションでデプロイするリソースを定義し、さまざまな環境に応じた値を入力できるパラメーターと変数を指定できます。テンプレートは、JSON、およびデプロイの値を構築する際の式で構成されます。
+# <a name="get-started-with-private-templates-on-the-azure-portal"></a>Get started with private Templates on the Azure Portal
 
-この新しい**テンプレート**機能は、[Azure Marketplace](https://azure.microsoft.com/marketplace/) の拡張機能として、[Azure ポータル](https://portal.azure.com)内で **Microsoft.Gallery** リソース プロバイダーと共に使用できます。この機能を使用すると、ユーザーは個人用ライブラリからプライベート テンプレートを作成、管理、デプロイすることができます。
+An [Azure Resource Manager](../resource-group-authoring-templates.md) template is a declarative template used to define your deployment. You can define the resources to deploy for a solution, and specify parameters and variables that enable you to input values for different environments. The template consists of JSON and expressions which you can use to construct values for your deployment.
 
-このドキュメントでは、Azure ポータルを使ってプライベート **テンプレート**を追加、管理、共有する方法について説明します。
+You can use the new **Templates** capability in the [Azure Portal](https://portal.azure.com) along with the **Microsoft.Gallery** resource provider as an extension of the [Azure Marketplace](https://azure.microsoft.com/marketplace/) to enable users to create, manage and deploy private templates from a personal library.
 
-## ガイダンス
+This document walks you through adding, managing and sharing a private **Template** using the Azure Portal.
 
-次の推奨事項は、ソリューションを操作する際に**テンプレート**を最大限に活用するのに役立ちます。
+## <a name="guidance"></a>Guidance
 
-- **テンプレート**は、Resource Manager テンプレートと追加のメタデータを保持する、カプセル化したリソースです。その動作は、Marketplace のアイテムとよく似ています。主な違いは、これがパブリックの Marketplace アイテムではなく、プライベートなアイテムであるという点です。
-- **テンプレート** ライブラリは、デプロイをカスタマイズする必要があるユーザーに役立ちます。
-- **テンプレート**は、Azure 内に単純なリポジトリを必要とするユーザーに役立ちます。
-- まずは、既存の Resource Manager テンプレートから使用します。テンプレートは、[GitHub](https://github.com/Azure/azure-quickstart-templates) で探すか、既存のリソース グループから[エクスポート](../resource-manager-export-template.md)してください。
-- **テンプレート**は、そのテンプレートを発行したユーザーに関連付けられます。発行者の名前は、そのテンプレートへの読み取りアクセス権を持つすべてのユーザーに表示されます。
-- **テンプレート**は Resource Manager のリソースであるため、発行後に名前を変更することはできません。
+The following suggestions will help you take full advantage of **Templates** when working with your solutions:
 
-## テンプレート リソースの追加
+- A **Template** is an encapsulating resource that contains an Resource Manager template and additional metadata. It behaves very similarly to an item in the Marketplace. The key difference is that it is a private item as opposed to the public Marketplace items.
+- The **Templates** library works well for users who need to customize their deployments.
+- **Templates** work well for users who need a simple repository within Azure.
+- Start with an existing Resource Manager template. Find templates in [github](https://github.com/Azure/azure-quickstart-templates) or [Export template](../resource-manager-export-template.md) from an existing resource group.
+- **Templates** are tied to the user who publishes them. The publisher name is visible to everyone who has read access to it.
+- **Templates** are Resource Manager resources and cannot be renamed once published.
 
-Azure ポータルで**テンプレート** リソースを作成する方法は 2 とおりあります。
+## <a name="add-a-template-resource"></a>Add a Template resource
 
-### 方法 1: 実行中のリソース グループから新しいテンプレート リソースを作成する
+There are two ways to create a **Template** resource in the Azure portal.
 
-1. Azure ポータルで既存のリソース グループに移動します。**[設定]** で **[テンプレートのエクスポート]** を選択します。
-2. Resource Manager テンプレートをエクスポートしたら、**[Save Template]** (テンプレートの保存) ボタンをクリックして、そのテンプレートを **[テンプレート]** リポジトリに保存します。[テンプレートのエクスポート] の詳細については、[こちら](../resource-manager-export-template.md)を参照してください。<br /><br /> ![Resource group export](media/rg-export-portal1.PNG) <br />
+### <a name="method-1-:-create-a-new-template-resource-from-a-running-resource-group"></a>Method 1 : Create a new Template resource from a running resource group
 
-3. **[Save to Template]** (テンプレートに保存) ボタンをクリックします。<br /><br />
+1. Navigate to an existing resource group on the Azure Portal. Select **Export template** in **Settings**.
+2. Once the Resource Manager template is exported, use the **Save Template** button to save it to the **Templates** repository. Find complete details for Export template [here](../resource-manager-export-template.md).
+<br /><br />
+![Resource group export](media/rg-export-portal1.PNG)  <br />
 
-4. 次の情報を入力します。
+3. Select the **Save to Template** command button.
+<br /><br />
 
-    - [名前] – テンプレート オブジェクトの名前 (注: これは、Azure Resource Manager に基づく名前です。名前付けの制限がすべて適用されており、作成後に変更することはできません)。
-    - [説明] – テンプレートの簡単な概要。
+4. Enter the following information:
 
-    ![Save Template](media/save-template-portal1.PNG) <br />
+    - Name – Name of the template object (NOTE: This is an Azure Resource Manager based name. All naming restrictions apply and it cannot be changed once created).
+    - Description – Quick summary about the template.
 
-5. **[保存]** をクリックします。
+    ![Save Template](media/save-template-portal1.PNG)  <br />
 
-    > [AZURE.NOTE] エクスポートされた Resource Manager テンプレートでエラーが発生している場合は、[テンプレートのエクスポート] ブレードに通知が表示されますが、その Resource Manager テンプレートを引き続き [テンプレート] に保存できます。確実に Resource Manager テンプレートの問題を確認して修正してから、エクスポートされた Resource Manager テンプレートを再デプロイしてください。
+5. Click **Save**.
 
-### B.方法 2: [参照] から新しいテンプレート リソースを追加する
+    > [AZURE.NOTE] The Export template blade shows notifications when the exported Resource Manager template has errors, but you will still be able to save this Resource Manager template to the Templates. Ensure that you check and fix any Resource Manager template issues before redeploying the exported Resource Manager template.
 
-新しい**テンプレート**を一から追加することもできます。これには、**[参照]、[テンプレート]** の順に選択して [追加] ボタンをクリックします。ここでは、名前、説明、Resource Manager テンプレート JSON を入力する必要があります。
+### <a name="b.-method-2-:-add-a-new-template-resource-from-browse"></a>B. Method 2 : Add a new Template resource from browse
 
-![Add Template](media/add-template-portal1.PNG) <br />
+You can also add a new **Template** from scratch using the +Add command button in **Browse > Templates**. You will need to provide a Name, Description and the Resource Manager template JSON.
 
-> [AZURE.NOTE] Microsoft.Gallery は、テナント ベースの Azure リソース プロバイダーです。テンプレート リソースは、それを作成したユーザーに関連付けられます。特定のサブスクリプションには関連付けられません。サブスクリプションを選ぶ必要があるのは、テンプレートをデプロイするときだけです。
+![Add Template](media/add-template-portal1.PNG)  <br />
 
-## テンプレート リソースの表示
+> [AZURE.NOTE] Microsoft.Gallery is a Tenant based Azure resource provider. The Template resource is tied to the user who created it. It is not tied to any specific subscription. A subscription needs to be chosen only when deploying a Template.
 
-**[参照]、[テンプレート]** の順に選択すると、使用可能な**テンプレート**すべてが表示されます。ここには、自身が作成した**テンプレート**のほか、さまざまなレベルのアクセス許可で共有しているテンプレートが含まれます。詳細については、下の[アクセス制御](#access-control-for-a-tenant-resource-provider)に関するセクションを参照してください。
+## <a name="view-template-resources"></a>View Template resources
 
-![View Template](media/view-template-portal1.PNG) <br />
+All **Templates** available to you can be seen at **Browse > Templates**. This includes **Templates** you have created as well as ones that have been shared with you with varying levels of permissions. More details in the [access control](#access-control-for-a-tenant-resource-provider) section below.
 
-**テンプレート**の詳細は、一覧にある項目をクリックすると確認できます。
+![View Template](media/view-template-portal1.PNG)  <br />
 
-![View Template](media/view-template-portal2c.png) <br />
+You can view the details of a **Template** by clicking into an item in the list.
 
-## テンプレート リソースの編集
+![View Template](media/view-template-portal2c.png)  <br />
 
-**テンプレート**の編集フローを開始するには、参照リストで項目を右クリックするか、[編集] ボタンをクリックします。
+## <a name="edit-a-template-resource"></a>Edit a Template resource
 
-![Edit Template](media/edit-template-portal1a.PNG) <br />
+You can initiate the edit flow for a **Template** by right clicking the item on the Browse list or by choosing the Edit command button.
 
-説明または Resource Manager テンプレートのテキストを編集できます。名前は、Resource Manager のリソース名であるため編集できません。Resource Manager テンプレート JSON を編集すると、それが有効な JSON であるかどうかを確認するための検証が行われます。**[OK]**、**[保存]** の順にクリックして、更新したテンプレートを保存します。
+![Edit Template](media/edit-template-portal1a.PNG)  <br />
 
-![Edit Template](media/edit-template-portal2a.PNG) <br />
+You can edit the description or Resource Manager template text. You cannot edit the name since it is an Resource Manager resource name. When you edit the Resource Manager template JSON we will validate to ensure that it is valid JSON. Choose **OK** and then **Save** to save your updated template.
 
-**テンプレート**を保存すると、確認通知が表示されます。
+![Edit Template](media/edit-template-portal2a.PNG)  <br />
 
-![Edit Template](media/edit-template-portal3b.png) <br />
+Once the **Template** is saved you will see a confirmation notification.
 
-## テンプレート リソースのデプロイ
+![Edit Template](media/edit-template-portal3b.png)  <br />
 
-**テンプレート**に対する**読み取り**アクセス許可があれば、そのテンプレートをデプロイできます。デプロイのフローでは、まず、標準的な Azure テンプレートのデプロイ ブレードを開きます。Resource Manager テンプレートのパラメーターの値を入力して、デプロイを続行します。
+## <a name="deploy-a-template-resource"></a>Deploy a Template resource
 
-![Deploy Template](media/deploy-template-portal1b.png) <br />
+You can deploy any **Template** that you have **Read** permissions on. The deployment flow launches the standard Azure Template deployment blade. Fill out the values for the Resource Manager template parameters to proceed with the deployment.
 
-## テンプレート リソースの共有
+![Deploy Template](media/deploy-template-portal1b.png)  <br />
 
-**テンプレート** リソースは、仲間と共有できます。共有の動作は、[Azure 上のリソースへのロールの割り当て](../active-directory/role-based-access-control-configure.md)に似ています。**テンプレート**の所有者は、他のユーザーにアクセス許可を付与し、テンプレート リソースを操作できるようにします。**テンプレート**の共有相手であるユーザーまたはユーザーのグループは、Resource Manager テンプレートとそのギャラリーのプロパティを参照できます。
+## <a name="share-a-template-resource"></a>Share a Template resource
 
-### Microsoft.Gallery リソースのアクセス制御
+A **Template** resource can be shared with your peers. Sharing behaves similarly to [role assignment for any resource on Azure](../active-directory/role-based-access-control-configure.md). The **Template** owner provides permissions to other users who can interact with a Template resource. The person or group of people you share the **Template** with will be able to see the Resource Manager template and its gallery properties.
 
-ロール | アクセス許可
+### <a name="access-control-for-the-microsoft.gallery-resources"></a>Access control for the Microsoft.Gallery resources
+
+Role | Permissions
 ---|----
-所有者 | テンプレート リソースに対するフル コントロール (共有を含む) を許可します。
-閲覧者 | テンプレート リソースの読み取りと実行 (デプロイ) を許可します。
-共同作成者 | テンプレート リソースの編集と削除を許可します。他のユーザーとテンプレートを共有することはできません。
+Owner | Allows full control on the Template resource including Share
+Reader | Allows Read and Execute(Deploy) on the Template resource
+Contributor | Allows Edit and Delete permission on the Template resource. User cannot Share the Template with others
 
-**[共有]** は、参照するアイテムを右クリックして選択するか、特定のアイテムを表示しているブレードで選択します。これにより、共有が開始されます。
+Select **Share** on the browse item by right clicking or on the view blade of a specific item. This launches a Share experience.
 
-![Share Template](media/share-template-portal1a.png) <br />
+![Share Template](media/share-template-portal1a.png)  <br />
 
- これで、特定の**テンプレート**へのアクセスを提供するロールやユーザーまたはグループを選択できるようになりました。利用可能なロールは、所有者、閲覧者、共同作成者です。詳細については、前述の[アクセス制御](#access-control-for-a-tenant-resource-provider)に関するセクションを参照してください。
+ You can now choose a role and a user or group to provide access to a particular **Template**. The available roles are Owner, Reader and Contributor. More details in the [access control](#access-control-for-a-tenant-resource-provider) section above.
 
-![Share Template](media/share-template-portal2b.png) <br />
+![Share Template](media/share-template-portal2b.png)  <br />
 
-![Share Template](media/share-template-portal3b.png) <br />
+![Share Template](media/share-template-portal3b.png)  <br />
 
-**[選択]**、**[OK]** の順にクリックします。これで、リソースに追加したユーザーまたはグループが表示されます。
+Click **Select** and **Ok**. You can now see the users or groups you added to the resource.
 
-![Share Template](media/share-template-portal4b.png) <br />
+![Share Template](media/share-template-portal4b.png)  <br />
 
-> [AZURE.NOTE] テンプレートは、同じ Azure Active Directory テナント内のユーザーとグループのみと共有できます。テンプレートの共有相手の電子メール アドレスがテナントに登録されていない場合は、ゲストとしてテナントに参加することをユーザーに求める招待が送信されます。
+> [AZURE.NOTE] A Template can only be shared with users and groups in the same Azure Active Directory tenant. If you share a Template with an email address that is not in your tenant, an invitation will be sent asking the user to join the tenant as a guest.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- Resource Manager テンプレートの作成の詳細については、[テンプレートの作成](../resource-group-authoring-templates.md)に関するページを参照してください。
-- Resource Manager テンプレートで使用できる関数を理解するには、[テンプレートの関数](../resource-group-template-functions.md)に関するページを参照してください。
-- テンプレートのデザインのガイダンスについては、[Azure リソース マネージャー テンプレートを設計するためのベスト プラクティス](../best-practices-resource-manager-design-templates.md)に関するページを参照してください。
+- To learn about creating Resource Manager templates, see [Authoring templates](../resource-group-authoring-templates.md)
+- To understand the functions you can use in an Resource Manager template, see [Template functions](../resource-group-template-functions.md)
+- For guidance on designing your templates, see [Best practices for designing Azure Resource Manager templates](../best-practices-resource-manager-design-templates.md)
 
-<!---HONumber=AcomDC_0629_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

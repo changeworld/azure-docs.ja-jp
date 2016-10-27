@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Publish-WebApplicationWebSite (Windows PowerShell スクリプト) | Microsoft Azure"
-   description="Web プロジェクトを Azure Web サイトに発行する方法について説明します。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。"
+   pageTitle="Publish-WebApplicationWebSite (Windows PowerShell script) | Microsoft Azure"
+   description="Learn how to publish a web project to an Azure website. This script creates the required resources in your Azure subscription if they don't exist."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,118 +15,123 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Publish-WebApplicationWebSite (Windows PowerShell スクリプト)
 
-##構文
+# <a name="publish-webapplicationwebsite-(windows-powershell-script)"></a>Publish-WebApplicationWebSite (Windows PowerShell script)
 
-Web プロジェクトを Azure Web サイトに発行します。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
+##<a name="syntax"></a>Syntax
 
-	Publish-WebApplicationWebSite
-	–Configuration <configuration>
-	-SubscriptionName <subscriptionName>
-	-WebDeployPackage <packageName>
-	-DatabaseServerPassword @{Name = "name"; Password = "password"}
-	-SendHostMessagesToOutput
-	-Verbose
+Publishes a web project to an Azure website. The script creates the required resources in your Azure subscription if they don't exist.
+
+    Publish-WebApplicationWebSite
+    –Configuration <configuration>
+    -SubscriptionName <subscriptionName>
+    -WebDeployPackage <packageName>
+    -DatabaseServerPassword @{Name = "name"; Password = "password"}
+    -SendHostMessagesToOutput
+    -Verbose
 
 
-## 構成
+## <a name="configuration"></a>Configuration
 
-デプロイの詳細が記述されている JSON 構成ファイルへのパス。
+The path to the JSON configuration file that describes the details of the deployment.
 
-|パラメーター|既定値|
+|Parameter|Default value|
 |---|---|
-|別名|なし|
-|必須|true|
-|位置|named|
-|既定値|なし|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Aliases|none|
+|Required?|true|
+|Position|named|
+|Default value|none|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-## SubscriptionName
+## <a name="subscriptionname"></a>SubscriptionName
 
-Web サイトを作成する Azure サブスクリプションの名前。
+The name of the Azure subscription that you want to create the website in.
 
-|パラメーター|既定値|
+|Parameter|Default value|
 |---|---|
-|別名|なし|
-|必須|false|
-|位置|named|
-|既定値|なし|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Aliases|none|
+|Required?|false|
+|Position|named|
+|Default value|none|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-## WebDeployPackage
+## <a name="webdeploypackage"></a>WebDeployPackage
 
-Web サイトに発行する Web デプロイ パッケージへのパス。Visual Studio で Web の発行ウィザードを使用して、このパッケージを作成できます。詳細については、「[Azure Cloud Services と ASP.NET を使ってみる](http://go.microsoft.com/fwlink/p/?LinkID=623089)」を参照してください。
+The path to the web deployment package to publish to the website. You can create this package by using the Publish Web wizard in Visual Studio. For more information, see [Get started with Azure Cloud Services and ASP.NET](http://go.microsoft.com/fwlink/p/?LinkID=623089).
 
-|パラメーター|既定値|
+|Parameter|Default value|
 |---|---|
-|別名|なし|
-|必須|false|
-|位置|named|
-|既定値|なし|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Aliases|none|
+|Required?|false|
+|Position|named|
+|Default value|none|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-## DatabaseServerPassword
+## <a name="databaseserverpassword"></a>DatabaseServerPassword
 
-Azure の SQL データベースのユーザー名およびパスワード。
+The username and password for the SQL database in Azure.
 
-|パラメーター|既定値|
+|Parameter|Default value|
 |---|---|
-|別名|なし|
-|必須|false|
-|位置|named|
-|既定値|なし|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Aliases|none|
+|Required?|false|
+|Position|named|
+|Default value|none|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-## SendHostMessagesToOutput
+## <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
 
-true の場合、スクリプトからのメッセージは出力ストリームに出力されます。
+If true, print messages from the script to the output stream.
 
-|パラメーター|既定値|
+|Parameter|Default value|
 |---|---|
-|別名|なし|
-|必須|false|
-|位置|named|
-|既定値|false|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Aliases|none|
+|Required?|false|
+|Position|named|
+|Default value|false|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-## 解説
+## <a name="remarks"></a>Remarks
 
-スクリプトを使用して開発とテストの環境を作成する方法の詳細については、「[Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](vs-azure-tools-publishing-using-powershell-scripts.md)」をご覧ください。
+For a complete explanation of how to use the script to create Dev and Test environments, see [Using Windows PowerShell Scripts to Publish to Dev and Test Environments](vs-azure-tools-publishing-using-powershell-scripts.md).
 
-JSON 構成ファイルではデプロイ対象の詳細が指定されます。この中には、Web サイトの名前やユーザー名など、プロジェクトの作成時に指定した情報が含まれます。また、プロビジョニングを行うデータベースがある場合はそれも含まれます。次のコードは JSON 構成ファイルの例を示しています。
+The JSON configuration file specifies the details of what is to be deployed. It includes the information that you specified when you created the project, such as the name and username for the website. It also includes the database to provision, if any. The following code shows an example JSON configuration file:
 
-	{
-	    "environmentSettings": {
-	        "webSite": {
-	            "name": "WebApplication10554",
-	            "location": "West US"
-	        },
-	        "databases": [
-	            {
-	                "connectionStringName": "DefaultConnection",
-	                "databaseName": "WebApplication10554_db",
-	                "serverName": "iss00brc88",
-	                "user": "sqluser2",
-	                "password": "",
-	                "edition": "",
-	                "size": "",
-	                "collation": "",
-	                "location": "West US"
-	            }
-	        ]
-	    }
-	}
+    {
+        "environmentSettings": {
+            "webSite": {
+                "name": "WebApplication10554",
+                "location": "West US"
+            },
+            "databases": [
+                {
+                    "connectionStringName": "DefaultConnection",
+                    "databaseName": "WebApplication10554_db",
+                    "serverName": "iss00brc88",
+                    "user": "sqluser2",
+                    "password": "",
+                    "edition": "",
+                    "size": "",
+                    "collation": "",
+                    "location": "West US"
+                }
+            ]
+        }
+    }
 
-JSON 構成ファイルは、デプロイ対象を変更するように編集できます。webSite のセクションは必須ですが、データベースのセクションは省略可能です。
+You can edit the JSON configuration file to change what is deployed. A webSite section is required, but the database section is optional.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-詳細については、「[Publish-WebApplicationVM (Windows PowerShell スクリプト)](vs-azure-tools-publish-webapplicationvm.md)」を参照してください。
+For more information, see [Publish-WebApplicationVM (Windows PowerShell script)](vs-azure-tools-publish-webapplicationvm.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

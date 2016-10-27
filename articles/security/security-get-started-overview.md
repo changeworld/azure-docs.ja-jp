@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure セキュリティの概要 | Microsoft Azure"
-   description="Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。"
+   pageTitle="Azure security overview | Microsoft Azure"
+   description="The Microsoft Azure Security Information site on Azure.com is your place for technical answers to your Azure security questions."
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,34 +16,39 @@
    ms.date="08/09/2016"
    ms.author="terrylan"/>
 
-# Azure セキュリティの概要
 
-Azure.com の Microsoft Azure セキュリティ情報サイトでは、Azure のセキュリティに関する疑問の技術的な回答を得ることができます。Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://www.microsoft.com/TrustCenter/default.aspx) にアクセスしてください。
+# <a name="azure-security-overview"></a>Azure security overview
 
-セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。
+The Microsoft Azure Security Information site on Azure.com is your place for technical answers to your Azure security questions. If you are interested in Azure compliance and how Azure secures its own infrastructure, visit the [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
 
-新しい Azure サービスがオンラインで利用できるようにになり、既存のサービスが更新されるのに伴って、このページとサイトは進化します。セキュリティ関連のツールや機能は常に強化されており、それらの技術的な詳細がここで共有されます。定期的にこのサイトにアクセスして、最新情報を確認することをお勧めします。
+We know that security is job one in the cloud and how important it is that you find accurate and timely information about Azure security. One of the best reasons to use Azure for your applications and services is to take advantage of the wide array of security tools and capabilities available. These tools and capabilities help make it possible to create secure solutions on the secure Azure platform.
 
-## Azure セキュリティ情報サイトの使用
-ページの左側には、セキュリティのトピックがカテゴリごとに表示されます。カテゴリの記事を参照するには、トピックをクリックまたはタップします。
+This page, and this site, will evolve as new Azure services come online and existing services are updated. Our security offerings constantly improve and we’ll share the technical details of those improvements here. We recommend that you return to this site regularly and see what’s new!
 
-各カテゴリには、概要記事があります。概要記事は、そのカテゴリのセキュリティに関して Azure から提供されるものの概略を示すためのものです。概要記事を読むと、デプロイのセキュリティを強化するために Azure で使用できる製品、サービス、機能を理解できます。これらの概要記事には、技術的なコンテンツへのさまざまなリンクが含まれているため、トピックに関する詳細とその実装方法を学習できます。
+## <a name="using-the-azure-security-information-site"></a>Using the Azure Security Information Site
+When you look on the left side of the page, you see a collection of categories of security topics. Click or tap the topic to see the articles we have for that category.
 
-Azure セキュリティ情報サイトは、現在、次のカテゴリに対応しています。
+Each category has an Overview article. The goal of the Overview article is to provide you a summary of what Azure has to offer in terms of security for that category. The Overview articles help you understand the products, services, and features available in Azure that you can use to enhance the security of your deployments. These Overview articles contain numerous links to technical content so that you can learn more about the topics and how to implement them.
 
-- リソース
-- ネットワークのセキュリティ
-- ストレージのセキュリティ
-- 仮想マシンのセキュリティ
-- エンドポイント保護
-- セキュリティの管理と監視
-- ID 管理
-- PaaS サービス
-- 業界に固有
-- アーキテクチャ
+The Azure Security Information site currently addresses the following categories:
 
-> [AZURE.NOTE] Azure セキュリティ情報サイトのすべての記事は、ページの左側のナビゲーションに表示されます。すべての記事を表示するには、カテゴリの一覧の下部にある **[詳細を表示]** をクリックまたはタップします。
+- Resources
+- Network security
+- Storage security
+- Virtual machine security
+- Endpoint protection
+- Security management and monitoring
+- Identity management
+- PaaS services
+- Industry specific
+- Architecture
 
-ご意見をお寄せください。 追加してほしいカテゴリがある場合は、お知らせください。 既存のカテゴリに追加してほしい記事がある場合も、お知らせください。 下のコメント セクションを使用するか、[azsecinfosite@microsoft.com](mailto:azsecinfosite@microsoft.com) までご連絡ください。ご意見を今後の計画に組み込むようにいたします。
+> [AZURE.NOTE] All the articles we have in the Azure Security Information site appear in the navigation on the left side of the page. If you want to see all the articles, click or tap **See More** at the bottom of the categories list.
 
-<!---HONumber=AcomDC_0810_2016-->
+We want your input! If there are categories you want added, let us know! If there are articles you want added to an existing category, let us know that too! You can use the Comments section below, or write to us at [azsecinfosite@microsoft.com](mailto:azsecinfosite@microsoft.com) and we’ll incorporate your recommendations into our plans.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

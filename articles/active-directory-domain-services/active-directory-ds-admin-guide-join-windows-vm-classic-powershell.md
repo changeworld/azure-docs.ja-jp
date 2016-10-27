@@ -1,125 +1,126 @@
 <properties
-	pageTitle="Azure Active Directory Domain Services: 管理ガイド | Microsoft Azure"
-	description="Azure PowerShell とクラシック デプロイ モデルを使用して Windows 仮想マシンを管理対象ドメインに参加させます。"
-	services="active-directory-ds"
-	documentationCenter=""
-	authors="mahesh-unnikrishnan"
-	manager="stevenpo"
-	editor="curtand"/>
+    pageTitle="Azure Active Directory Domain Services: Administration Guide | Microsoft Azure"
+    description="Join a Windows virtual machine to a managed domain using Azure PowerShell and the classic deployment model."
+    services="active-directory-ds"
+    documentationCenter=""
+    authors="mahesh-unnikrishnan"
+    manager="stevenpo"
+    editor="curtand"/>
 
 <tags
-	ms.service="active-directory-ds"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/20/2016"
-	ms.author="maheshu"/>
+    ms.service="active-directory-ds"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="maheshu"/>
 
 
-# PowerShell を使用して Windows Server 仮想マシンを管理対象ドメインに参加させる
+
+# <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-powershell"></a>Join a Windows Server virtual machine to a managed domain using PowerShell
 
 > [AZURE.SELECTOR]
-- [Azure クラシック ポータル - Windows](active-directory-ds-admin-guide-join-windows-vm.md)
+- [Azure classic portal - Windows](active-directory-ds-admin-guide-join-windows-vm.md)
 - [PowerShell - Windows](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
 
 <br>
 
-> [AZURE.IMPORTANT] Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[リソース マネージャー デプロイ モデルとクラシック デプロイ モデル](../resource-manager-deployment-model.md)です。この記事では、クラシック デプロイ モデルの使用方法について説明します。現在、Azure AD ドメイン サービスでは、Resource Manager モデルをサポートしていません。
+> [AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md). This article covers using the classic deployment model. Azure AD Domain Services does not currently support the Resource Manager model.
 
-以下の手順では、構成ブロック手法を使用して、Azure PowerShell コマンド セットをカスタマイズする方法を示します。このコマンド セットでは、Windows ベースの Azure 仮想マシンを作成および事前構成します。この手順に従うと、Windows ベースの Azure 仮想マシンを作成して、Azure AD ドメイン サービスで管理されているドメインに参加させることができます。
+These steps show you how to customize a set of Azure PowerShell commands that create and preconfigure a Windows-based Azure virtual machine by using a building block approach. These steps help you build a Windows-based Azure virtual machine and join it to an Azure AD Domain Services managed domain.
 
-これらの手順では、空白に記入する方式に従って Azure PowerShell コマンド セットを作成します。この方法は、PowerShell を初めて使う場合や、構成を正しく行うためにどの値を指定するとよいかを知りたい場合に役立ちます。PowerShell に慣れているユーザーは、コマンドの変数を独自の値で置き換えることができます ("$" で始まる行)。
+These steps follow a fill-in-the-blanks approach for creating Azure PowerShell command sets. This approach can be useful if you are new to PowerShell or you want to know what values to specify for successful configuration. Advanced PowerShell users can take the commands and substitute their own values for the variables (the lines beginning with "$").
 
-まだ完了していない場合は、[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)に関するページの手順に従って、Azure PowerShell をご使用のローカル コンピューターにインストールします。次に、Windows PowerShell コマンド プロンプトを開きます。
+If you haven't done so already, use the instructions in [How to install and configure Azure PowerShell](../powershell-install-configure.md) to install Azure PowerShell on your local computer. Then, open a Windows PowerShell command prompt.
 
-## 手順 1: アカウントを追加する
+## <a name="step-1:-add-your-account"></a>Step 1: Add your account
 
-1. PowerShell プロンプトで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。
-2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。
-3. アカウントのパスワードを入力します。
-4. **[サインイン]** をクリックします。
+1. At the PowerShell prompt, type **Add-AzureAccount** and click **Enter**.
+2. Type in the email address associated with your Azure subscription and click **Continue**.
+3. Type in the password for your account.
+4. Click **Sign in**.
 
-## 手順 2. サブスクリプションとストレージ アカウントを設定する
+## <a name="step-2:-set-your-subscription-and-storage-account"></a>Step 2: Set your subscription and storage account
 
-Windows PowerShell コマンド プロンプトで次のコマンドを実行して、Azure サブスクリプションとストレージ アカウントを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
+Set your Azure subscription and storage account by running these commands at the Windows PowerShell command prompt. Replace everything within the quotes, including the < and > characters, with the correct names.
 
-	$subscr="<subscription name>"
-	$staccount="<storage account name>"
-	Select-AzureSubscription -SubscriptionName $subscr –Current
-	Set-AzureSubscription -SubscriptionName $subscr -CurrentStorageAccountName $staccount
+    $subscr="<subscription name>"
+    $staccount="<storage account name>"
+    Select-AzureSubscription -SubscriptionName $subscr –Current
+    Set-AzureSubscription -SubscriptionName $subscr -CurrentStorageAccountName $staccount
 
-**Get-AzureSubscription** コマンドで出力される SubscriptionName プロパティで正しいサブスクリプション名を取得できます。**Select-AzureSubscription** コマンドの実行後、**Get-AzureStorageAccount** コマンドを実行して出力される Label プロパティで正しいストレージ アカウント名を取得できます。
+You can get the correct subscription name from the SubscriptionName property of the output of the **Get-AzureSubscription** command. You can get the correct storage account name from the Label property of the output of the **Get-AzureStorageAccount** command after you run the **Select-AzureSubscription** command.
 
 
-## 手順 3: 詳細な手順: 仮想マシンをプロビジョニングし、管理対象ドメインに参加させる
-この仮想マシンを作成するための対応する Azure PowerShell コマンド セットは次のとおりです。読みやすくするために各ブロックの間に空白行を入れてあります。
+## <a name="step-3:-step-by-step-walkthrough---provision-the-virtual-machine-and-join-it-to-the-managed-domain"></a>Step 3: Step-by-step walkthrough - provision the virtual machine and join it to the managed domain
+Here is the corresponding Azure PowerShell command set to create this virtual machine, with blank lines between each block for readability.
 
-プロビジョニングする Windows 仮想マシンに関する情報を指定します。
+Specify information about the Windows virtual machine to be provisioned.
 
     $family="Windows Server 2012 R2 Datacenter"
     $vmname="Contoso100-test"
     $vmsize="ExtraSmall"
 
-D、DS、または G シリーズの各仮想マシンの InstanceSize 値の詳細については、「[Azure の仮想マシンおよびクラウド サービスのサイズ](https://msdn.microsoft.com/library/azure/dn197896.aspx)」を参照してください。
+For the InstanceSize values for D-, DS-, or G-series virtual machines, see [Virtual Machine and Cloud Service Sizes for Azure](https://msdn.microsoft.com/library/azure/dn197896.aspx).
 
-管理対象ドメインに関する情報を指定します。
+Provide information about the managed domain.
 
     $domaindns="contoso100.com"
     $domacctdomain="contoso100"
 
-クラウド サービスの名前を指定します。
+Specify the name of the cloud service.
 
     $svcname="Contoso100-test"
 
-VM が参加する仮想ネットワークの名前を指定します。AAD-DS 管理対象ドメインをこの仮想ネットワークで使用できることを確認します。
+Specify the name of the virtual network to which the VM should be joined. Ensure that the AAD-DS managed domain is available in this virtual network.
 
     $vnetname="MyPreviewVnet"
 
-VM のプロビジョニングに使用する VM イメージを選択します。
+Select the VM image to be used to provision the VM.
 
     $image=Get-AzureVMImage | where { $_.ImageFamily -eq $family } | sort PublishedDate -Descending | select -ExpandProperty ImageName -First 1
 
-VM を構成します。VM 名、インスタンス サイズ、および使用するイメージを設定します。
+Configure the VM - set VM name, instance size & image to be used.
 
     $vm1=New-AzureVMConfig -Name $vmname -InstanceSize $vmsize -ImageName $image
 
-VM のローカル管理者の資格情報を取得します。強力なローカル管理者パスワードを選択します。強度を確認するには、[パスワード チェッカーの強力なパスワードの使用](https://www.microsoft.com/security/pc-security/password-checker.aspx)に関するページを参照してください。
+Obtain local administrator credentials for the VM. Choose a strong local administrator password.
 
     $localadmincred=Get-Credential –Message "Type the name and password of the local administrator account."
 
-VM を管理対象ドメインに参加させるために必要となる、"AAD DC Administrators" グループに属するユーザー アカウントの資格情報を取得します。ドメイン名を指定しないでください。たとえば、この例では、ユーザー名として "bob" を指定しています。
+Obtain credentials for a user account belonging to 'AAD DC Administrators' group to join VM to the managed domain. Do not specify the domain name - for instance, in our example, we specify 'bob' as the user name.
 
     $domainadmincred=Get-Credential –Message "Now type the name (DO NOT INCLUDE THE DOMAIN) and password of an account in the AAD DC Administrators group, that has permission to add the machine to the domain."
 
-VM を構成します。ドメイン参加要件と必要な資格情報を指定します。
+Configure the VM - specify domain join requirement & required credentials.
 
     $vm1 | Add-AzureProvisioningConfig -AdminUsername $localadmincred.Username -Password $localadmincred.GetNetworkCredential().Password -WindowsDomain -Domain $domacctdomain -DomainUserName $domainadmincred.Username -DomainPassword $domainadmincred.GetNetworkCredential().Password -JoinDomain $domaindns
 
-VM のサブネットを設定します。
+Set a subnet for the VM.
 
     $vm1 | Set-AzureSubnet -SubnetNames "Subnet-1"
 
-省略可能: ドメインの IP アドレスを設定します。Azure AD ドメイン サービス管理対象ドメインの IP アドレスを仮想ネットワークの DNS サーバーに設定した場合は、この手順は必要ありません。
+Optional: Point to the IP address of the domain. If you set the IP addresses of the Azure AD Domain Services managed domain to be the DNS servers for the virtual network, this step is not required.
 
     $dns = New-AzureDns -Name 'contoso100-dc1' -IPAddress '10.0.0.4'
 
-ドメイン参加済みの Windows VM をプロビジョニングします。
+Now, provision the domain-joined Windows VM.
 
     New-AzureVM –ServiceName $svcname -VMs $vm1 -VNetName $vnetname -Location "Central US" -DnsSettings $dns
 
 <br>
 
-## Windows VM をプロビジョニングし、AAD ドメイン サービスの管理対象ドメインに自動的に参加させるためのスクリプト
-下記の PowerShell コマンド セットを実行すると、次の条件で基幹業務サーバー用の仮想マシンを作成できます。
+## <a name="script-to-provision-a-windows-vm-and-automatically-join-it-to-an-aad-domain-services-managed-domain"></a>Script to provision a Windows VM and automatically join it to an AAD Domain Services managed domain
+This PowerShell command set creates a virtual machine for a line-of-business server that:
 
-- Windows Server 2012 R2 Datacenter イメージを使用する。
-- 仮想マシンを極小にする。
-- 名前を contoso-test にする。
-- contoso100 という管理対象ドメインに自動的に参加する。
-- 管理対象ドメインと同じ仮想ネットワークに追加される。
+- Uses the Windows Server 2012 R2 Datacenter image.
+- Is an extra small virtual machine.
+- Has the name contoso-test.
+- Is automatically domain joined to the contoso100 managed domain.
+- Is added to the same virtual network as the managed domain.
 
-以下は、Windows 仮想マシンを作成し、Azure AD ドメイン サービスで管理されているドメインに自動的に参加するためのサンプル スクリプトの全文です。
+Here is the full sample script to create the Windows virtual machine and automatically join it to the Azure AD Domain Services managed domain.
 
     $family="Windows Server 2012 R2 Datacenter"
     $vmname="Contoso100-test"
@@ -149,9 +150,13 @@ VM のサブネットを設定します。
 
 <br>
 
-## 関連コンテンツ
-- [Azure AD ドメイン サービス - 作業開始ガイド](./active-directory-ds-getting-started.md)
+## <a name="related-content"></a>Related Content
+- [Azure AD Domain Services - Getting Started guide](./active-directory-ds-getting-started.md)
 
-- [Azure AD ドメイン サービスで管理されているドメインの管理](./active-directory-ds-admin-guide-administer-domain.md)
+- [Administer an Azure AD Domain Services managed domain](./active-directory-ds-admin-guide-administer-domain.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

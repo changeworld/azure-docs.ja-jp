@@ -1,92 +1,96 @@
 <properties 
-	pageTitle="Analytics - Application Insights の強力な検索ツール | Microsoft Azure" 
-	description="Application Insights の強力な診断検索ツールである Analytics の概要。" 
-	services="application-insights" 
+    pageTitle="Analytics - the powerful search tool of Application Insights | Microsoft Azure" 
+    description="Overview of Analytics, the powerful diagnostic search tool of Application Insights. " 
+    services="application-insights" 
     documentationCenter=""
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/25/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="07/26/2016" 
+    ms.author="awills"/>
 
 
-# Application Insights の Analytics
+
+# <a name="analytics-in-application-insights"></a>Analytics in Application Insights
 
 
-[Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。ここでは、Analytics のクエリ言語について説明します。
+[Analytics](app-insights-analytics.md) is the powerful search feature of [Application Insights](app-insights-overview.md). These pages describe the Analytics query lanquage. 
 
-* **[紹介ビデオを見る](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**。
-* **[シミュレーション データで Analytics を試す](https://analytics.applicationinsights.io/demo)** (ご使用のアプリからまだ Application Insights にデータが送信されていない場合)。
+* **[Watch the introductory video](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Test drive Analytics on our simulated data](https://analytics.applicationinsights.io/demo)** if your app isn't sending data to Application Insights yet.
 
-## Analytics でのクエリ
+## <a name="queries-in-analytics"></a>Queries in Analytics
  
-一般的なクエリでは、"*ソース*" テーブルの後に、一連の "*演算子*" を `|` で区切って記載します。
+A typical query is a *source* table followed by a series of *operators* separated by `|`. 
 
-例として、ハイデラバードの市民が何時に Web アプリを使用しているか調べてみましょう。この調査の際に、HTTP 要求に対してどのような結果コードが返されるか確認しましょう。
+For example, let's find out what time of day the citizens of Hyderabad try our web app. And while we're there, let's see what result codes are returned to their HTTP requests. 
 
 ```AIQL
 
     requests      // Table of events that log HTTP requests.
-    | where timestamp > ago(7d) and client_City == "Hyderabad"
-    | summarize clients = dcount(client_IP) 
+  	| where timestamp > ago(7d) and client_City == "Hyderabad"
+  	| summarize clients = dcount(client_IP) 
       by tod_UTC=bin(timestamp % 1d, 1h), resultCode
-    | extend local_hour = (tod_UTC + 5h + 30min) % 24h + datetime("2001-01-01") 
+  	| extend local_hour = (tod_UTC + 5h + 30min) % 24h + datetime("2001-01-01") 
 ```
 
-異なるクライアント IP アドレスをカウントし、それらを過去 7 日間にわたり 1 日の時刻ごとにまとめます。
+We count distinct client IP addresses, grouping them by the hour of the day over the past 7 days. 
 
-結果を棒グラフで表示し、異なる応答コードの結果を積算してましょう。
+Let's display the results with the bar chart presentation, choosing to stack the results from different response codes:
 
-![棒グラフ、X 軸および Y 軸を選択してからセグメント化します](./media/app-insights-analytics/020.png)
+![Choose bar chart, x and y axes, then segmentation](./media/app-insights-analytics/020.png)
 
-ハイデラバードでは、アプリは昼食時と就寝時に最も使用されているようです (これら 500 のコードを調べる必要があります)。
+Looks like our app is most popular at lunchtime and bed-time in Hyderabad. (And we should investigate those 500 codes.)
 
 
-次のような、強力な統計演算もあります。
+There are also powerful statistical operations:
 
 ![](./media/app-insights-analytics/025.png)
 
 
-言語には、以下のような多くの魅力的な機能があります。
+The language has many attractive features:
 
-* [フィルター](app-insights-analytics-reference.md#where-operator)。カスタム プロパティとメトリックを含む、すべてのフィールドで未加工のアプリ テレメトリをフィルター処理します。
-* [結合](app-insights-analytics-reference.md#join-operator)。複数のテーブルを結合します。要求をページ ビュー、依存関係の呼び出し、例外およびログ トレースに関連付けます。
-* 強力な統計[集計](app-insights-analytics-reference.md#aggregations)。
-* SQL と同じように強力ですが、複雑なクエリがより容易になります。つまり、ステートメントを入れ子にするのではなく、基本演算間でデータをパイプします。
-* 迅速かつ強力な視覚化。
-
-
+* [Filter](app-insights-analytics-reference.md#where-operator) your raw app telemetry by any fields, including your custom properties and metrics.
+* [Join](app-insights-analytics-reference.md#join-operator) multiple tables – correlate requests with page views, dependency calls, exceptions and log traces.
+* Powerful statistical [aggregations](app-insights-analytics-reference.md#aggregations).
+* Just as powerful as SQL, but much easier for complex queries: instead of nesting statements, you pipe the data from one elementary operation to the next.
+* Immediate and powerful visualizations.
 
 
 
 
 
-## Application Insights のデータに接続する
 
 
-以下のように、Application Insights でアプリの[概要ブレード](app-insights-dashboards.md)から Analytics を開きます。
-
-![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/app-insights-analytics/001.png)
+## <a name="connect-to-your-application-insights-data"></a>Connect to your Application Insights data
 
 
-## 制限
+Open Analytics from your app's [overview blade](app-insights-dashboards.md) in Application Insights: 
 
-現時点では、クエリの結果は過去 1 週間のデータだけに制限されます。
+![Open portal.azure.com, open your Application Insights resource, and click Analytics.](./media/app-insights-analytics/001.png)
+
+
+## <a name="limits"></a>Limits
+
+At present, query results are limited to just over a week of past data.
 
 
 
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
 
-* まず、[言語ツアー](app-insights-analytics-tour.md)を参照することをお勧めします。
+* We recommend you start with the [language tour](app-insights-analytics-tour.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

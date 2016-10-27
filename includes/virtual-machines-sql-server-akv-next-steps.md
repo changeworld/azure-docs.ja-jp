@@ -1,98 +1,101 @@
-## 次のステップ
-Azure Key Vault 統合を有効にしたら、SQL VM で SQL Server 暗号化を有効にできます。最初に、Key Vault 内で非対称鍵を作成し、VM の SQL Server 内で対称鍵を作成する必要があります。これでデータベースとバックアップの暗号化を有効にする T-SQL ステートメントを実行できます。
+## <a name="next-steps"></a>Next steps
+After enabling Azure Key Vault Integration, you can enable SQL Server encryption on your SQL VM. First, you will need to create an asymmetric key inside your key vault and a symmetric key within SQL Server on your VM. Then, you will be able to execute T-SQL statements to enable encryption for your databases and backups.
 
-次のような形式の暗号化を活用できます。
+There are several forms of encryption you can take advantage of:
 
-- [透過的なデータ暗号化 (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
-- [暗号化バックアップ](https://msdn.microsoft.com/library/dn449489.aspx)
-- [列レベルの暗号化 (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+- [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx)
+- [Encrypted backups](https://msdn.microsoft.com/library/dn449489.aspx)
+- [Column Level Encryption (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
 
-次の Transact-SQL スクリプトにはこれらの各領域の例があります。
+The following Transact-SQL scripts provide examples for each of these areas.
 
->[AZURE.NOTE] 例はいずれも 2 つ前提条件に基づきます。Key Vault からの「**CONTOSO\_KEY**」という名前の非対称鍵と AKV 統合機能により作成された「**Azure\_EKM\_TDE\_cred**」という名前の資格情報です。
+>[AZURE.NOTE] Each example is based on the two prerequisites: an asymmetric key from your key vault called **CONTOSO_KEY** and a credential created by the AKV Integration feature called **Azure_EKM_TDE_cred**.
 
-### 透過的なデータ暗号化 (TDE)
-1. TDE のためにデータベース エンジンで使用される SQL Server を作成し、それに資格情報を追加します。
-	
-		USE master;
-		-- Create a SQL Server login associated with the asymmetric key 
-		-- for the Database engine to use when it loads a database 
-		-- encrypted by TDE.
-		CREATE LOGIN TDE_Login 
-		FROM ASYMMETRIC KEY CONTOSO_KEY;
-		GO
-		
-		-- Alter the TDE Login to add the credential for use by the 
-		-- Database Engine to access the key vault
-		ALTER LOGIN TDE_Login 
-		ADD CREDENTIAL Azure_EKM_TDE_cred;
-		GO
-	
-2. TDE に使用されるデータベース暗号化鍵を作成します。
-	
-		USE ContosoDatabase;
-		GO
-		
-		CREATE DATABASE ENCRYPTION KEY 
-		WITH ALGORITHM = AES_128 
-		ENCRYPTION BY SERVER ASYMMETRIC KEY CONTOSO_KEY;
-		GO
-		
-		-- Alter the database to enable transparent data encryption.
-		ALTER DATABASE ContosoDatabase 
-		SET ENCRYPTION ON;
-		GO
+### <a name="transparent-data-encryption-(tde)"></a>Transparent Data Encryption (TDE)
+1. Create a SQL Server login to be used by the Database Engine for TDE, then add the credential to it.
+    
+        USE master;
+        -- Create a SQL Server login associated with the asymmetric key 
+        -- for the Database engine to use when it loads a database 
+        -- encrypted by TDE.
+        CREATE LOGIN TDE_Login 
+        FROM ASYMMETRIC KEY CONTOSO_KEY;
+        GO
+        
+        -- Alter the TDE Login to add the credential for use by the 
+        -- Database Engine to access the key vault
+        ALTER LOGIN TDE_Login 
+        ADD CREDENTIAL Azure_EKM_TDE_cred;
+        GO
+    
+2. Create the database encryption key that will be used for TDE.
+    
+        USE ContosoDatabase;
+        GO
+        
+        CREATE DATABASE ENCRYPTION KEY 
+        WITH ALGORITHM = AES_128 
+        ENCRYPTION BY SERVER ASYMMETRIC KEY CONTOSO_KEY;
+        GO
+        
+        -- Alter the database to enable transparent data encryption.
+        ALTER DATABASE ContosoDatabase 
+        SET ENCRYPTION ON;
+        GO
 
-### 暗号化バックアップ
-1. バックアップを暗号化するためにデータベース エンジンで使用される SQL Server を作成し、それに資格情報を追加します。
-	
-		USE master;
-		-- Create a SQL Server login associated with the asymmetric key 
-		-- for the Database engine to use when it is encrypting the backup.
-		CREATE LOGIN Backup_Login 
-		FROM ASYMMETRIC KEY CONTOSO_KEY;
-		GO 
-		
-		-- Alter the Encrypted Backup Login to add the credential for use by 
-		-- the Database Engine to access the key vault
-		ALTER LOGIN Backup_Login 
-		ADD CREDENTIAL Azure_EKM_Backup_cred ;
-		GO
-	
-2. Key Vault に保存されている非対称鍵で暗号化を指定し、データベースをバックアップします。
-	
-		USE master;
-		BACKUP DATABASE [DATABASE_TO_BACKUP]
-		TO DISK = N'[PATH TO BACKUP FILE]' 
-		WITH FORMAT, INIT, SKIP, NOREWIND, NOUNLOAD, 
-		ENCRYPTION(ALGORITHM = AES_256, SERVER ASYMMETRIC KEY = [CONTOSO_KEY]);
-		GO
+### <a name="encrypted-backups"></a>Encrypted backups
+1. Create a SQL Server login to be used by the Database Engine for encrypting backups, and add the credential to it.
+    
+        USE master;
+        -- Create a SQL Server login associated with the asymmetric key 
+        -- for the Database engine to use when it is encrypting the backup.
+        CREATE LOGIN Backup_Login 
+        FROM ASYMMETRIC KEY CONTOSO_KEY;
+        GO 
+        
+        -- Alter the Encrypted Backup Login to add the credential for use by 
+        -- the Database Engine to access the key vault
+        ALTER LOGIN Backup_Login 
+        ADD CREDENTIAL Azure_EKM_Backup_cred ;
+        GO
+    
+2. Backup the database specifying encryption with the asymmetric key stored in the key vault.
+    
+        USE master;
+        BACKUP DATABASE [DATABASE_TO_BACKUP]
+        TO DISK = N'[PATH TO BACKUP FILE]' 
+        WITH FORMAT, INIT, SKIP, NOREWIND, NOUNLOAD, 
+        ENCRYPTION(ALGORITHM = AES_256, SERVER ASYMMETRIC KEY = [CONTOSO_KEY]);
+        GO
 
-### 列レベルの暗号化 (CLE)
-このスクリプトにより、Key Vault の非対称鍵で保護される対称鍵が作成され、その対称鍵を利用し、データベースのデータが暗号化されます。
+### <a name="column-level-encryption-(cle)"></a>Column Level Encryption (CLE)
+This script creates a symmetric key protected by the asymmetric key in the key vault, and then uses the symmetric key to encrypt data in the database.
 
-	CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
-	WITH ALGORITHM=AES_256
-	ENCRYPTION BY ASYMMETRIC KEY CONTOSO_KEY;
-	
-	DECLARE @DATA VARBINARY(MAX);
-	
-	--Open the symmetric key for use in this session
-	OPEN SYMMETRIC KEY DATA_ENCRYPTION_KEY 
-	DECRYPTION BY ASYMMETRIC KEY CONTOSO_KEY;
-	
-	--Encrypt syntax
-	SELECT @DATA = ENCRYPTBYKEY(KEY_GUID('DATA_ENCRYPTION_KEY'), CONVERT(VARBINARY,'Plain text data to encrypt'));
-	
-	-- Decrypt syntax
-	SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
-	
-	--Close the symmetric key
-	CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
+    CREATE SYMMETRIC KEY DATA_ENCRYPTION_KEY
+    WITH ALGORITHM=AES_256
+    ENCRYPTION BY ASYMMETRIC KEY CONTOSO_KEY;
+    
+    DECLARE @DATA VARBINARY(MAX);
+    
+    --Open the symmetric key for use in this session
+    OPEN SYMMETRIC KEY DATA_ENCRYPTION_KEY 
+    DECRYPTION BY ASYMMETRIC KEY CONTOSO_KEY;
+    
+    --Encrypt syntax
+    SELECT @DATA = ENCRYPTBYKEY(KEY_GUID('DATA_ENCRYPTION_KEY'), CONVERT(VARBINARY,'Plain text data to encrypt'));
+    
+    -- Decrypt syntax
+    SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
+    
+    --Close the symmetric key
+    CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 
-## その他のリソース
-これらの暗号化機能の使用方法の詳細については、「[SQL Server 暗号化機能で EKM を使用する](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM)」を参照してください。
+## <a name="additional-resources"></a>Additional resources
+For more information on how to use these encryption features, see [Using EKM with SQL Server Encryption Features](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
-この記事の手順では、Azure 仮想マシンで SQL Server を既に実行していることを前提としています。実行していない場合、「[Azure での SQL Server 仮想マシンのプロビジョニング](../articles/virtual-machines/virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。Azure VM で SQL Server を実行する方法については、「[Azure Virtual Machines における SQL Server の概要](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+Note that the steps in this article assume that you already have SQL Server running on an Azure virtual machine. If not, see [Provision a SQL Server virtual machine in Azure](../articles/virtual-machines/virtual-machines-windows-portal-sql-server-provision.md). For other guidance on running SQL Server on Azure VMs, see [SQL Server on Azure Virtual Machines overview](../articles/virtual-machines/virtual-machines-windows-sql-server-iaas-overview.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

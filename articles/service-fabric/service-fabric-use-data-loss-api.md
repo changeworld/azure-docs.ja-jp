@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric サービスでデータ損失を発生させる方法 | Microsoft Azure"
-   description="データ損失 API の使用方法を説明します。"
+   pageTitle="How to Invoke Data Loss on Service Fabric Services | Microsoft Azure"
+   description="Describes how to use the data loss api"
    services="service-fabric"
    documentationCenter=".net"
    authors="LMWF"
@@ -16,39 +16,42 @@
    ms.date="09/19/2016"
    ms.author="lemai"/>
    
-# サービスでデータ損失を発生させる方法
 
->[AZURE.WARNING] このドキュメントでは、サービスでデータ損失を発生させる方法について説明するため、取り扱いにご注意ください。
+# <a name="how-to-invoke-data-loss-on-services"></a>How to Invoke Data Loss on Services
 
-## はじめに
-StartPartitionDataLossAsync() を呼び出すことで、Service Fabric サービスのパーティションでデータ損失を発生させることができます。この API は、フォールト挿入と分析サービスを使用して、データが失われる状況が発生する処理を実行します。
+>[AZURE.WARNING] This document describe how to cause data loss in your services, and should be used with care.
 
-## フォールト挿入と分析サービスの使用
+## <a name="introduction"></a>Introduction
+You can invoke data loss on a partition of your Service Fabric Service by calling StartPartitionDataLossAsync().  This api uses the Fault Injection and Analysis Service to perform the work to cause data loss conditions.
 
-フォールト挿入と分析サービスは、現在、次の表にある API をサポートしています。表の右側は、対応する PowerShell コマンドレットを示します。詳細については、各 API に関する MSDN ドキュメントを参照してください。
+## <a name="using-the-fault-injection-and-analysis-service"></a>Using the Fault Injection and Analysis Service
 
-| C# API | PowerShell コマンドレット |
+The Fault Injection and Analysis Service currently supports the following APIs in the chart below.  The right side of the chart shows the corresponding PowerShell cmdlet.  Please refer to the msdn documentation on each API for more information on each one.
+
+|           C# API                    |         PowerShell Cmdlet                      |
 |-------------------------------------|-----------------------------------------------:|
-|[StartPartitionDataLossAsync][dl] |[Start-ServiceFabricPartitionDataLoss][psdl] |
-|[StartPartitionQuorumLossAsync][ql] |[Start-ServiceFabricPartitionQuorumLoss][psql] |
-|[StartPartitionRestartAsync][rp] |[Start-ServiceFabricPartitionRestart][psrp] |
+|[StartPartitionDataLossAsync] [dl]   |[Start-ServiceFabricPartitionDataLoss] [psdl]   |
+|[StartPartitionQuorumLossAsync] [ql] |[Start-ServiceFabricPartitionQuorumLoss] [psql] |
+|[StartPartitionRestartAsync] [rp]    |[Start-ServiceFabricPartitionRestart] [psrp]    |
 
-## コマンドの実行についての概念の概要
+## <a name="conceptual-overview-of-running-a-command"></a>Conceptual Overview of Running a Command
 
-フォールト挿入と分析サービスは、1 つの API でコマンドを開始する非同期モデルを使用します。これは、このドキュメントで "Start" API と呼ばれ、終了状態に到達するかキャンセルされるまで、"GetProgress"API を使用してこのコマンドの進行状況をチェックします。コマンドを開始するには、対応する API の "Start" API を呼び出します。この API は、フォールト挿入と分析サービスが要求を受け入れると制御を返します。ただし、コマンドの実行がどこまで進行したかや、まだ開始されていないことさえ示しません。コマンドの進行状況を確認するには、前に呼び出した "Start" API に対応する "GetProgress" API を呼び出します。"GetProgress" API は、State プロパティ内のコマンドの現在の状態を示すオブジェクトを返します。コマンドは以下のタイミングまで無限に実行されます。
+The Fault Injection and Analysis Service uses an asynchronous model where you start the command with one API, referred to as the “Start” API in this document, then checks the progress of this command using a “GetProgress” API until it has reached a terminal state, or until you cancel it.
+To start a command, call the “Start” API for the corresponding API.  This API returns when the Fault Injection and Analysis Service has accepted the request.  However, it does not indicate how far a command has run, or even if it has started yet.  In order to check progress of a command, call the “GetProgress” API that corresponds to the “Start” API previously called.  The “GetProgress” API will return an object indicating the current status of the command inside its State property.  A command runs indefinitely until:
 
-1.	正常に完了する。ここで "GetProgress" を呼び出すと、進行状況オブジェクトの State は "Completed" になります。
-2.	致命的なエラーが発生する。ここで "GetProgress" を呼び出すと、進行状況オブジェクトの State は "Faulted" になります。
-3.	[CancelTestCommandAsync][cancel] API または [Stop-ServiceFabricTestCommand][cancelps] PowerShell コマンドレットによってキャンセルします。こで "GetProgress" を呼び出すと、進行状況オブジェクトの State は API の引数に応じて "Cancelled" または "ForceCancelled" になります。詳細については、[CancelTestCommandAsync][cancel] に関するドキュメントを参照してください。
+1.  It completes successfully.  If you call “GetProgress” on it in this case, the progress object’s State will be Completed.
+2.  It encounters a fatal error.  If you call “GetProgress” on it in this case, the progress object’s State will be Faulted
+3.  You cancel it through the [CancelTestCommandAsync] [cancel] API, or [Stop-ServiceFabricTestCommand] [cancelps] PowerShell cmdlet.  If you call “GetProgress” on it in this case, the progress object’s State will be either Cancelled or ForceCancelled, depending on an argument to that API.  See the documentation for [CancelTestCommandAsync] [cancel] for more details.
 
 
-## コマンドの実行の詳細
+## <a name="details-of-running-a-command"></a>Details of Running a Command
 
-コマンドを開始するために、想定される引数を使用して Start API を呼び出します。すべての Start API に、operationId という名前の Guid 引数が含まれます。operationId 引数はこのコマンドの進行状況を追跡するために使用されているため、追跡を続ける必要があります。これは、コマンドの進行状況を追跡するために、"GetProgress" API に渡す必要があります。operationId は一意である必要があります。
+In order to start a command, call the Start API with the expected arguments.  All Start APIs have a Guid argument named operationId.  You should keep track of the operationId argument, since it is used to track progress of this command.  This must be passed into the “GetProgress” API in order to track progress of the command.  The operationId must be unique.
 
-Start API を正常に呼び出した後で、返される進行状況オブジェクトの State プロパティが "Completed" になるまで、GetProgress API をループ内で呼び出す必要があります。すべての [FabricTransientException][fte] と OperationCanceledException を再試行する必要があります。コマンドが終了状態 (Completed、Faulted、または Cancelled) に達すると、返される進行状況オブジェクトの Result プロパティに情報が追加されます。状態が Completed の場合、Result.SelectedPartition.PartitionId に、選択したパーティション ID が格納されます。Result.Exception は null になります。状態が Faulted の場合、Result.Exception に、フォールト挿入と分析サービスでコマンドがエラーになった理由が格納されます。Result.SelectedPartition.PartitionId に、選択したパーティション ID が格納されます。場合によっては、パーティションを選択できるほどコマンドが進行していない可能性があります。その場合、PartitionId は 0 になります。状態が Cancelled の場合、Result.Exception は null になります。Faulted の場合と同様、Result.SelectedPartition.PartitionId に、選択したパーティション ID が格納されますが、コマンドがそこまで進行していない場合、パーティション ID は 0 になります。次の例も参照してください。
+After successfully calling the Start API, the GetProgress API should be called in a loop until the returned progress object’s State property is Completed.  All [FabricTransientException’s] [fte] and OperationCanceledException’s should be retried.
+When the command has reached a terminal state (Completed, Faulted, or Cancelled), the returned progress object’s Result property will have additional information.  If the state is Completed, Result.SelectedPartition.PartitionId will contain the partition id that was selected.  Result.Exception will be null.  If the state is Faulted, Result.Exception will have the reason the Fault Injection and Analysis Service faulted the command.  Result.SelectedPartition.PartitionId will have the partition id that was selected.  In some situations, the command may not have proceeded far enough to choose a partition.  In that case, the PartitionId will be 0.  If the state is Cancelled, Result.Exception will be null.  Like the Faulted case, Result.SelectedPartition.PartitionId will have the partition id that was chosen, but if the command has not proceeded far enough to do so, it will be 0.  Please also refer to the sample below.
 
-次のサンプル コードでは、コマンドを開始して、特定のパーティションでデータ損失を発生させるコマンドの進行状況をチェックする方法を示します。
+The sample code below shows how to start then check progress on a command to cause data loss on a specific partition.
 
 ```csharp
     static async Task PerformDataLossSample()
@@ -131,7 +134,7 @@ Start API を正常に呼び出した後で、返される進行状況オブジ�
     }
 ```
 
-次の例では、PartitionSelector を使用して、指定されたサービスのランダム パーティションを選択する方法を示します。
+The sample below shows how to use the PartitionSelector to choose a random partition of a specified service:
 
 ```csharp
     static async Task PerformDataLossUseSelectorSample()
@@ -218,9 +221,9 @@ Start API を正常に呼び出した後で、返される進行状況オブジ�
     }
 ```
 
-## 履歴と切り捨て
+## <a name="history-and-truncation"></a>History and Truncation
 
-コマンドが終了状態に達すると、そのメタデータは、スペースの節約のために削除されるまでフォールト挿入および分析サービスに一定期間残ります。削除された後に、コマンドの operationId を使用して "GetProgress" が呼び出された場合、エラー コード KeyNotFound と一緒に FabricException が返されます。
+After a command has reached a terminal state, its metadata will remain in the Fault Injection and Analysis Service for a certain time, before it will be removed to save space.  If “GetProgress” is called using the operationId of a command after it has been removed, it will return a FabricException with an ErrorCode of KeyNotFound.
 
 [dl]: https://msdn.microsoft.com/library/azure/mt693569.aspx
 [ql]: https://msdn.microsoft.com/library/azure/mt693558.aspx
@@ -232,4 +235,8 @@ Start API を正常に呼び出した後で、返される進行状況オブジ�
 [cancelps]: https://msdn.microsoft.com/library/mt697566.aspx
 [fte]: https://msdn.microsoft.com/library/azure/system.fabric.fabrictransientexception.aspx
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

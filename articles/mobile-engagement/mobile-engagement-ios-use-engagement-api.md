@@ -1,286 +1,291 @@
 <properties
-	pageTitle="iOS でエンゲージメント API を使用する方法"
-	description="最新の iOS SDK - iOS でエンゲージメント API を使用する方法"
-	services="mobile-engagement"
-	documentationCenter="mobile"
-	authors="piyushjo"
-	manager="dwrede"
-	editor="" />
+    pageTitle="How to Use the Engagement API on iOS"
+    description="Latest iOS SDK - How to Use the Engagement API on iOS"
+    services="mobile-engagement"
+    documentationCenter="mobile"
+    authors="piyushjo"
+    manager="dwrede"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-ios"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/19/2016"
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-ios"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/19/2016"
+    ms.author="piyushjo" />
 
 
-#iOS でエンゲージメント API を使用する方法
 
-このドキュメントは、「iOS でエンゲージメントを統合する方法」を補足し、エンゲージメント API を使用してアプリケーションの統計情報を報告する方法について詳しく説明します。
+#<a name="how-to-use-the-engagement-api-on-ios"></a>How to Use the Engagement API on iOS
 
-エンゲージメントでアプリケーションのセッション、アクティビティ、クラッシュ、技術情報を報告するだけの場合、最も簡単な方法は、すべてのカスタムの `UIViewController` オブジェクトを、対応する `EngagementViewController` クラスから継承することです。
+This document is an add-on to the document How to Integrate Engagement on iOS: it provides in depth details about how to use the Engagement API to report your application statistics.
 
-他の操作を実行する場合、たとえば、アプリケーションの特定のイベント、エラー、ジョブを報告する場合や、`EngagementViewController` クラスに実装されているのとは別の方法でアプリケーションのアクティビティを報告する必要がある場合は、エンゲージメント API を使用する必要があります。
+Keep in mind that if you only want Engagement to report your application's sessions, activities, crashes and technical information, then the simplest way is to make all your custom `UIViewController` objects inherit from the corresponding `EngagementViewController` class.
 
-エンゲージメント API は `EngagementAgent` クラスによって提供されます。このクラスのインスタンスは、`[EngagementAgent shared]` 静的メソッドを呼び出すことで取得できます (返される `EngagementAgent` オブジェクトはシングルトンです)。
+If you want to do more, for example if you need to report application specific events, errors and jobs, or if you have to report your application's activities in a different way than the one implemented in the `EngagementViewController` classes, then you need to use the Engagement API.
 
-すべての API 呼び出しの前に、メソッド `[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];` を呼び出して、`EngagementAgent` オブジェクトを初期化する必要があります
+The Engagement API is provided by the `EngagementAgent` class. An instance of this class can be retrieved by calling the `[EngagementAgent shared]` static method (note that the `EngagementAgent` object returned is a singleton).
 
-##エンゲージメントの概念
+Before any API calls, the `EngagementAgent` object must be initialized by calling the method `[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
 
-次のパートは、iOS プラットフォームの一般的な [Mobile Engagement の概念](mobile-engagement-concepts.md)を改善するものです。
+##<a name="engagement-concepts"></a>Engagement concepts
 
-### `Session` と `Activity`
+The following parts refine the common [Mobile Engagement Concepts](mobile-engagement-concepts.md) for the iOS platform.
 
-*アクティビティ*は通常、アプリケーションの 1 つの画面に関連付けられます。つまり、*アクティビティ*は画面が表示されると開始され、画面を閉じると停止します。この場合、エンゲージメント SDK は `EngagementViewController` クラスを使用して統合されています。
+### <a name="`session`-and-`activity`"></a>`Session` and `Activity`
 
-ただし、*アクティビティ*はエンゲージメント API を使用して手動で制御することも可能です。これにより、特定の画面をいくつかのサブ パートに分割して、この画面の使用状況の詳細情報を取得できます (たとえば、ダイアログがこの画面内で使用される頻度や時間を知ることができます)。
+An *activity* is usually associated with one screen of the application, that is to say the *activity* starts when the screen is displayed and stops when the screen is closed: this is the case when the Engagement SDK is integrated by using the `EngagementViewController` classes.
 
-##アクティビティを報告する
+But *activities* can also be controlled manually by using the Engagement API. This allows to split a given screen in several sub parts to get more details about the usage of this screen (for example to known how often and how long dialogs are used inside this screen).
 
-### ユーザーが新しいアクティビティを開始する
+##<a name="reporting-activities"></a>Reporting Activities
 
-			[[EngagementAgent shared] startActivity:@"MyUserActivity" extras:nil];
+### <a name="user-starts-a-new-activity"></a>User starts a new Activity
 
-ユーザー アクティビティが変更されるたびに `startActivity()` を呼び出す必要があります。この関数の最初の呼び出しで、新しいユーザー セッションが開始します。
+            [[EngagementAgent shared] startActivity:@"MyUserActivity" extras:nil];
 
-### ユーザーが現在のアクティビティを終了する
+You need to call `startActivity()` each time the user activity changes. The first call to this function starts a new user session.
 
-			[[EngagementAgent shared] endActivity];
+### <a name="user-ends-his-current-activity"></a>User ends his current Activity
 
-> [AZURE.WARNING] 1 つの用途のアプリケーションを複数のセッションに分割する場合を除いて、**絶対に**自分でこの関数を呼び出さないでください。この関数を呼び出すと現在のセッションがすぐに終了するため、後続の `startActivity()` への呼び出しでは新しいセッションが開始されます。この関数は、アプリケーションを閉じると、SDK によって自動的に呼び出されます。
+            [[EngagementAgent shared] endActivity];
 
-##イベントを報告する
+> [AZURE.WARNING] You should **NEVER** call this function by yourself, except if you want to split one use of your application into several sessions: a call to this function would end the current session immediately, so, a subsequent call to `startActivity()` would start a new session. This function is automatically called by the SDK when your application is closed.
 
-### セッション イベント
+##<a name="reporting-events"></a>Reporting Events
 
-通常、セッション イベントは、セッション中にユーザーによって実行されるアクションの報告に使用されます。
+### <a name="session-events"></a>Session events
 
-**余分なデータがない例:**
+Session events are usually used to report the actions performed by a user during his session.
 
-	@implementation MyViewController {
-	   [...]
-	   - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-	   {
-	    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-	        ...
-	    [[EngagementAgent shared] sendSessionEvent:@"will_rotate" extras:nil];
-	        ...
-	   }
-	   [...]
-	}
+**Example without extra data:**
 
-**余分なデータがある例:**
+    @implementation MyViewController {
+       [...]
+       - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+       {
+        [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+            ...
+        [[EngagementAgent shared] sendSessionEvent:@"will_rotate" extras:nil];
+            ...
+       }
+       [...]
+    }
 
-	@implementation MyViewController {
-	   [...]
-	   - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
-	   {
-	    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-	        ...
-	    NSMutableDictionary* extras = [NSMutableDictionary dictionary];
-	    [extras setObject:[NSNumber numberWithInt:toInterfaceOrientation] forKey:@"to_orientation_id"];
-	    [extras setObject:[NSNumber numberWithDouble:duration] forKey:@"duration"];
-	    [[EngagementAgent shared] sendSessionEvent:@"will_rotate" extras:extras];
-	        ...
-	   }
-	   [...]
-	}
+**Example with extra data:**
 
-### スタンドアロン イベント
+    @implementation MyViewController {
+       [...]
+       - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+       {
+        [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+            ...
+        NSMutableDictionary* extras = [NSMutableDictionary dictionary];
+        [extras setObject:[NSNumber numberWithInt:toInterfaceOrientation] forKey:@"to_orientation_id"];
+        [extras setObject:[NSNumber numberWithDouble:duration] forKey:@"duration"];
+        [[EngagementAgent shared] sendSessionEvent:@"will_rotate" extras:extras];
+            ...
+       }
+       [...]
+    }
 
-セッション イベントとは異なり、スタンドアロン イベントはセッションのコンテキスト外で使用されます。
+### <a name="standalone-events"></a>Standalone events
 
-**例:**
+Contrary to session events, standalone events can be used outside of the context of a session.
 
-	[[EngagementAgent shared] sendEvent:@"received_notification" extras:nil];
+**Example:**
 
-##エラーの報告
+    [[EngagementAgent shared] sendEvent:@"received_notification" extras:nil];
 
-### セッション エラー
+##<a name="reporting-errors"></a>Reporting Errors
 
-通常、セッション エラーは、セッション中にユーザーに影響するエラーの報告に使用されます。
+### <a name="session-errors"></a>Session errors
 
-**例:**
+Session errors are usually used to report the errors impacting the user during his session.
 
-	/** The user has entered invalid data in a form */
-	@implementation MyViewController {
-	  [...]
-	  -(void)onMyFormSubmitted:(MyForm*)form {
-	    [...]
-	    /* The user has entered an invalid email address */
-	    [[EngagementAgent shared] sendSessionError:@"sign_up_email" extras:nil]
-	    [...]
-	  }
-	  [...]
-	}
+**Example:**
 
-### スタンドアロン エラー
+    /** The user has entered invalid data in a form */
+    @implementation MyViewController {
+      [...]
+      -(void)onMyFormSubmitted:(MyForm*)form {
+        [...]
+        /* The user has entered an invalid email address */
+        [[EngagementAgent shared] sendSessionError:@"sign_up_email" extras:nil]
+        [...]
+      }
+      [...]
+    }
 
-セッション エラーとは異なり、スタンドアロン エラーはセッションのコンテキスト外で使用できます。
+### <a name="standalone-errors"></a>Standalone errors
 
-**例:**
+Contrary to session errors, standalone errors can be used outside of the context of a session.
 
-	[[EngagementAgent shared] sendError:@"something_failed" extras:nil];
+**Example:**
 
-##ジョブを報告する
+    [[EngagementAgent shared] sendError:@"something_failed" extras:nil];
 
-**例:**
+##<a name="reporting-jobs"></a>Reporting Jobs
 
-ログイン プロセスの実行時間を報告する場合を想定します。
+**Example:**
 
-	[...]
-	-(void)signIn
-	{
-	  /* Start job */
-	  [[EngagementAgent shared] startJob:@"sign_in" extras:nil];
+Suppose you want to report the duration of your login process:
 
-	  [... sign in ...]
+    [...]
+    -(void)signIn
+    {
+      /* Start job */
+      [[EngagementAgent shared] startJob:@"sign_in" extras:nil];
 
-	  /* End job */
-	  [[EngagementAgent shared] endJob:@"sign_in"];
-	}
-	[...]
+      [... sign in ...]
 
-### ジョブ中のエラーを報告する
+      /* End job */
+      [[EngagementAgent shared] endJob:@"sign_in"];
+    }
+    [...]
 
-エラーは、現在のユーザー セッションに関連付ける代わりに、実行中のジョブに関連付けることができます。
+### <a name="report-errors-during-a-job"></a>Report Errors during a Job
 
-**例:**
+Errors can be related to a running job instead of being related to the current user session.
 
-ログイン プロセス中にエラーを報告する場合を想定します。
+**Example:**
 
-	[...]
-	-(void)signin
-	{
-	  /* Start job */
-	  [[EngagementAgent shared] startJob:@"sign_in" extras:nil];
+Suppose you want to report an error during your login process:
 
-	  BOOL success = NO;
-	  while (!success) {
-	    /* Try to sign in */
-	    NSError* error = nil;
-	    [self trySigin:&error];
-	    success = error == nil;
+    [...]
+    -(void)signin
+    {
+      /* Start job */
+      [[EngagementAgent shared] startJob:@"sign_in" extras:nil];
 
-	    /* If an error occured report it */
-	    if(!success)
-	    {
-	      [[EngagementAgent shared] sendJobError:@"sign_in_error"
-	                     jobName:@"sign_in"
-	                      extras:[NSDictionary dictionaryWithObject:[error localizedDescription] forKey:@"error"]];
+      BOOL success = NO;
+      while (!success) {
+        /* Try to sign in */
+        NSError* error = nil;
+        [self trySigin:&error];
+        success = error == nil;
 
-	      /* Retry after a moment */
-	      [NSThread sleepForTimeInterval:20];
-	    }
-	  }
+        /* If an error occured report it */
+        if(!success)
+        {
+          [[EngagementAgent shared] sendJobError:@"sign_in_error"
+                         jobName:@"sign_in"
+                          extras:[NSDictionary dictionaryWithObject:[error localizedDescription] forKey:@"error"]];
 
-	  /* End job */
-	  [[EngagementAgent shared] endJob:@"sign_in"];
-	};
-	[...]
+          /* Retry after a moment */
+          [NSThread sleepForTimeInterval:20];
+        }
+      }
 
-### ジョブ中のイベント
+      /* End job */
+      [[EngagementAgent shared] endJob:@"sign_in"];
+    };
+    [...]
 
-イベントは、現在のユーザー セッションではなく、実行中のジョブに関連付けることができます。
+### <a name="events-during-a-job"></a>Events during a job
 
-**例:**
+Events can be related to a running job instead of being related to the current user session.
 
-ソーシャル ネットワークを持っていて、ジョブを使用して、ユーザーがサーバーに接続している合計時間を報告する場合を想定します。ユーザーは友達からメッセージを受信できます。これがジョブ イベントです。
+**Example:**
 
-	[...]
-	- (void) signin
-	{
-	  [...Sign in code...]
-	  [[EngagementAgent shared] startJob:@"connection" extras:nil];
-	}
-	[...]
-	- (void) signout
-	{
-	  [...Sign out code...]
-	  [[EngagementAgent shared] endJob:@"connection"];
-	}
-	[...]
-	- (void) onMessageReceived
-	{
-	  [...Notify user...]
-	  [[EngagementAgent shared] sendJobEvent:@"connection" jobName:@"message_received" extras:nil];
-	}
-	[...]
+Suppose we have a social network, and we use a job to report the total time during which the user is connected to the server. The user can receive messages from his friends, this is a job event.
 
-##追加のパラメーター
+    [...]
+    - (void) signin
+    {
+      [...Sign in code...]
+      [[EngagementAgent shared] startJob:@"connection" extras:nil];
+    }
+    [...]
+    - (void) signout
+    {
+      [...Sign out code...]
+      [[EngagementAgent shared] endJob:@"connection"];
+    }
+    [...]
+    - (void) onMessageReceived
+    {
+      [...Notify user...]
+      [[EngagementAgent shared] sendJobEvent:@"connection" jobName:@"message_received" extras:nil];
+    }
+    [...]
 
-任意のデータをイベント、エラー、アクティビティ、ジョブに添付できます。
+##<a name="extra-parameters"></a>Extra parameters
 
-このデータは構造化することができ、iOS の NSDictionary クラスを使用します。
+Arbitrary data can be attached to events, errors, activities and jobs.
 
-これには `arrays(NSArray, NSMutableArray)`、`numbers(NSNumber class)`、`strings(NSString, NSMutableString)`、`urls(NSURL)`、`data(NSData, NSMutableData)`、`NSDictionary`、またはその他の インスタンスが含まれます。
+This data can be structured, it uses iOS's NSDictionary class.
 
-> [AZURE.NOTE] 追加のパラメーターは、JSON でシリアル化されます。上記以外の別のオブジェクトを渡す場合は、クラス内に次のメソッドを実装する必要があります。
+Note that extras can contain `arrays(NSArray, NSMutableArray)`, `numbers(NSNumber class)`, `strings(NSString, NSMutableString)`, `urls(NSURL)`, `data(NSData, NSMutableData)` or other `NSDictionary` instances.
+
+> [AZURE.NOTE] The extra parameter is serialized in JSON. If you want to pass different objects than the ones described above, you must implement the following method in your class:
 >
-			 -(NSString*)JSONRepresentation;
+             -(NSString*)JSONRepresentation;
 >
-> このメソッドは、JSON 表記のオブジェクトを返す必要があります。
+> The method should return a JSON representation of your object.
 
-### 例
+### <a name="example"></a>Example
 
-	NSMutableDictionary* extras = [NSMutableDictionary dictionaryWithCapacity:2];
-	[extras setObject:[NSNumber numberWithInt:123] forKey:@"video_id"];
-	[extras setObject:@"http://foobar.com/blog" forKey:@"ref_click"];
-	[[EngagementAgent shared] sendEvent:@"video_clicked" extras:extras];
+    NSMutableDictionary* extras = [NSMutableDictionary dictionaryWithCapacity:2];
+    [extras setObject:[NSNumber numberWithInt:123] forKey:@"video_id"];
+    [extras setObject:@"http://foobar.com/blog" forKey:@"ref_click"];
+    [[EngagementAgent shared] sendEvent:@"video_clicked" extras:extras];
 
-### 制限
+### <a name="limits"></a>Limits
 
-#### 構成する
+#### <a name="keys"></a>Keys
 
-`NSDictionary` の各キーは、次の正規表現と一致する必要があります。
+Each key in the `NSDictionary` must match the following regular expression:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
-キーは、文字、数字、アンダー スコア (\_) が後に続く、少なくとも 1 つの文字で始まる必要があることを意味します。
+It means that keys must start with at least one letter, followed by letters, digits or underscores (\_).
 
-#### サイズ
+#### <a name="size"></a>Size
 
-追加は、1 回の呼び出しにつき **1024** 文字に制限されます (エンゲージメント エージェントによって JSON でエンコードされた場合)。
+Extras are limited to **1024** characters per call (once encoded in JSON by the Engagement agent).
 
-前の例では、サーバーに送信される JSON は 58 文字です。
+In the previous example, the JSON sent to the server is 58 characters long:
 
-	{"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
+    {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
-##アプリケーションの情報を報告する
+##<a name="reporting-application-information"></a>Reporting Application Information
 
-`sendAppInfo:` 関数を使用して、追跡情報 (または他のアプリケーション固有の情報) を手動で報告できます。
+You can manually report tracking information (or any other application specific information) using the `sendAppInfo:` function.
 
-これらの情報は段階的に送信される可能性があることにご注意ください。特定のキーの最新の値のみが特定のデバイスに保持されます。
+Note that these information can be sent incrementally: only the latest value for a given key will be kept for a given device.
 
-イベントの追加と同様に、`NSDictionary` クラスはアプリケーション情報の要約に使用されます。配列またはサブディクショナリが (JSON のシリアル化を使用して) 単純な文字列として処理されます。
+Like event extras, the `NSDictionary` class is used to abstract application information, note that arrays or sub-dictionaries will be treated as flat strings (using JSON serialization).
 
-**例:**
+**Example:**
 
-	NSMutableDictionary* appInfo = [NSMutableDictionary dictionaryWithCapacity:2];
-	[appInfo setObject:@"female" forKey:@"gender"];
-	[appInfo setObject:@"1983-12-07" forKey:@"birthdate"]; // December 7th 1983
-	[[EngagementAgent shared] sendAppInfo:appInfo];
+    NSMutableDictionary* appInfo = [NSMutableDictionary dictionaryWithCapacity:2];
+    [appInfo setObject:@"female" forKey:@"gender"];
+    [appInfo setObject:@"1983-12-07" forKey:@"birthdate"]; // December 7th 1983
+    [[EngagementAgent shared] sendAppInfo:appInfo];
 
-### 制限
+### <a name="limits"></a>Limits
 
-#### 構成する
+#### <a name="keys"></a>Keys
 
-`NSDictionary` の各キーは、次の正規表現と一致する必要があります。
+Each key in the `NSDictionary` must match the following regular expression:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
-キーは、文字、数字、アンダー スコア (\_) が後に続く、少なくとも 1 つの文字で始まる必要があることを意味します。
+It means that keys must start with at least one letter, followed by letters, digits or underscores (\_).
 
-#### サイズ
+#### <a name="size"></a>Size
 
-アプリケーション情報は、1 回の呼び出しにつき **1024** 文字に制限されます (エンゲージメント エージェントによって JSON でエンコードされた場合)。
+Application information are limited to **1024** characters per call (once encoded in JSON by the Engagement agent).
 
-前の例では、サーバーに送信される JSON は 44 文字です。
+In the previous example, the JSON sent to the server is 44 characters long:
 
-	{"birthdate":"1983-12-07","gender":"female"}
+    {"birthdate":"1983-12-07","gender":"female"}
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

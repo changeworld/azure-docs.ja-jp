@@ -2,4 +2,7 @@
 - [SSH](../articles/hdinsight/hdinsight-hadoop-mahout-linux-mac.md)
 - [PowerShell](../articles/hdinsight/hdinsight-mahout.md)
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

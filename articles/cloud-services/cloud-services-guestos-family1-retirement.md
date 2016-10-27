@@ -1,9 +1,9 @@
 <properties
-   pageTitle="ゲスト OS ファミリ 1 の提供終了に関する通知 | Microsoft Azure"
-   description="Azure ゲスト OS ファミリ 1 の提供が終了した時期と、利用中のサービスがその影響を受けるかどうかを判断する方法について説明します"
+   pageTitle="Guest OS family 1 retirement notice | Microsoft Azure"
+   description="Provides information about when the Azure Guest OS Family 1 retirement happened and how to determine if you are affected"
    services="cloud-services"
    documentationCenter="na"
-   authors="yuemlu"
+   authors="raiye"
    manager="timlt"
    editor=""/>
 
@@ -13,33 +13,34 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="06/10/2016"
-   ms.author="yuemlu"/>
-
-
-
-# ゲスト OS ファミリ 1 の提供終了に関する通知
-
-OS ファミリ 1 の提供終了は、2013 年 6 月 1 日に最初に発表されました。
-
-**2014 年 9 月 2 日**: Windows Server 2008 オペレーティング システムに基づく Azure ゲスト オペレーティング システム (ゲスト OS) ファミリ 1.x が正式に提供終了となりました。ファミリ 1 を使用して新しいサービスをデプロイしようとする試みまたは既存のサービスをアップグレードしようとする試みはすべて失敗し、ゲスト OS ファミリ 1 の提供が終了したことを示すエラー メッセージが表示されます。
-
-**2014 年 11 月 3 日**: ゲスト OS ファミリ 1 の延長サポートが終了し、完全に提供終了となりました。ファミリ 1 を利用しているすべてのサービスは、この影響を受けます。これらのサービスは、突然停止される可能性があります。自分で手動でこれらのサービスをアップグレードしない限り、サービスが継続される保証はありません。
-
-質問がある場合は、[Cloud Services フォーラム](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc)にアクセスするか、または [Azure サポートにお問い合わせ](https://azure.microsoft.com/support/options/)ください。
+   ms.date="10/24/2016"
+   ms.author="raiye"/>
 
 
 
 
-## 利用中のサービスが影響を受けるか
+# <a name="guest-os-family-1-retirement-notice"></a>Guest OS Family 1 retirement notice
 
-次のいずれかの条件に該当する場合、利用中の Cloud Services は影響を受けます。
+The retirement of OS Family 1 was first announced on June 1, 2013.
 
-1. クラウド サービスの ServiceConfiguration.cscfg ファイルに "osFamily = 1" という値が明示的に指定されている。
-2. クラウド サービスの ServiceConfiguration.cscfg ファイル内で osFamily の値が明示的に指定されていない。現在、この場合、既定値として "1" が使用されます。
-3. Azure クラシック ポータルで、ゲスト オペレーティング システム ファミリの値として "Windows Server 2008" が表示されている。
+**Sept 2, 2014** The Azure Guest operating system (Guest OS) Family 1.x, which is based on the Windows Server 2008 operating system, was officially retired. All attempts to deploy new services or upgrade existing services using Family 1 will fail with an error message informing you that the Guest OS Family 1 has been retired.
 
-クラウド サービスで実行されている OS ファミリを調べるには、Azure PowerShell を使用して次のスクリプトを実行します。最初に、[Azure PowerShell を設定する](../powershell-install-configure.md)必要があります。スクリプトの詳細については、[Azure ゲスト OS ファミリ 1 の提供中止: 2014 年 6 月](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)を参照してください。
+**November 3, 2014** Extended support for Guest OS Family 1 ended and it is fully retired. All services still on Family 1 will be impacted. We may stop those services at any time. There is no guarantee your services will continue to run unless you manually upgrade them yourself.
+
+If you have additional questions, please visit the [Cloud Services Forums](http://social.msdn.microsoft.com/Forums/home?forum=windowsazuredevelopment&filter=alltypes&sort=lastpostdesc) or [contact Azure support](https://azure.microsoft.com/support/options/).
+
+
+
+
+## <a name="are-you-affected?"></a>Are you affected?
+
+Your Cloud Services are affected if any one of the following applies:
+
+1. You have a value of "osFamily = "1" explicitly specified in the ServiceConfiguration.cscfg file for your Cloud Service.
+2. You do not have a value for osFamily explicitly specified in the ServiceConfiguration.cscfg file for your Cloud Service. Currently, the system uses the default value of "1" in this case.
+3. The Azure classic portal lists your Guest Operating System family value as "Windows Server 2008".
+
+To find which of your cloud services are running which OS Family, you can run the script below in Azure PowerShell, though you must [set up Azure PowerShell](../powershell-install-configure.md) first. For additional details on the script, see [Azure Guest OS Family 1 End of Life: June 2014](http://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx). 
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -51,34 +52,38 @@ foreach($subscription in Get-AzureSubscription) {
 }
 ```
 
-スクリプトの出力の osFamily 列が空であるか、"1" が含まれている場合、クラウド サービスは、OS ファミリ 1 の提供終了の影響を受けます。
+Your cloud services will be impacted by OS Family 1 retirement if the osFamily column in the script output is empty or contains a "1".
 
-## 利用中のサービスが影響を受ける場合の推奨事項
+## <a name="recommendations-if-you-are-affected"></a>Recommendations if you are affected
 
-クラウド サービスのロールを、サポートされているゲスト OS ファミリのいずれかに移行することをお勧めします。
+We recommend you migrate your Cloud Service roles to one of the supported Guest OS Families:
 
-**ゲスト OS ファミリ 4.x** - Windows Server 2012 R2 *(推奨)*
+**Guest OS family 4.x** - Windows Server 2012 R2 *(recommended)*
 
-1. アプリケーションで SDK 2.1 以降と .NET Framework 4.0、4.5、または 4.5.1 を使用していることを確認します。
-2. ServiceConfiguration.cscfg ファイルで osFamily 属性を "4" に設定し、クラウド サービスを再デプロイします。
-
-
-**ゲスト OS ファミリ 3.x** - Windows Server 2012
-
-1. アプリケーションで SDK 1.8 以降と .NET Framework 4.0 または 4.5 を使用していることを確認します。
-2. ServiceConfiguration.cscfg ファイルで osFamily 属性を “3” に設定し、クラウド サービスを再デプロイします。
+1. Ensure that your application is using SDK 2.1 or later with .NET framework 4.0, 4.5 or 4.5.1.
+2. Set the osFamily attribute to “4” in the ServiceConfiguration.cscfg file, and redeploy your cloud service.
 
 
-**ゲスト OS ファミリ 2.x** - Windows Server 2008 R2
+**Guest OS family 3.x** - Windows Server 2012
 
-1. アプリケーションで SDK 1.3 以降と .NET Framework 3.5 または 4.0 を使用していることを確認します。
-2. ServiceConfiguration.cscfg ファイルで osFamily 属性を "2" に設定し、クラウド サービスを再デプロイします。
+1. Ensure that your application is using SDK 1.8 or later with .NET framework 4.0 or 4.5.
+2. Set the osFamily attribute to “3” in the ServiceConfiguration.cscfg file, and redeploy your cloud service.
 
 
-## 2014 年 11 月 3 日付けでゲスト OS ファミリ 1 の延長サポートが終了
-ゲスト OS ファミリ 1 のクラウド サービスはサポートされていません。サービスの中断を回避するには、できるだけ早くファミリ 1 から移行してください。
+**Guest OS family 2.x** - Windows Server 2008 R2
 
-## 次のステップ
-最新の[ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
+1. Ensure that your application is using SDK 1.3 and above with .NET framework 3.5 or 4.0.
+2. Set the osFamily attribute to "2" in the ServiceConfiguration.cscfg file, and redeploy your cloud service.
 
-<!---HONumber=AcomDC_0615_2016-->
+
+## <a name="extended-support-for-guest-os-family-1-ended-nov-3,-2014"></a>Extended Support for Guest OS Family 1 ended Nov 3, 2014
+Cloud services on Guest OS family 1 are no longer supported. Please migrate off family 1 as soon as possible to avoid service disruption.  
+
+## <a name="next-steps"></a>Next steps
+Review the latest [Guest OS releases](cloud-services-guestos-update-matrix.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

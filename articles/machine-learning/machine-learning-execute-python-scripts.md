@@ -1,183 +1,193 @@
 <properties 
-	pageTitle="Python Machine Learning スクリプトの実行 |Microsoft Azure" 
-	description="Azure Machine Learning における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。" 
-	keywords="python の機械の学習、pandas、python pandas、python スクリプト、python スクリプトの実行"
-	services="machine-learning"
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="jhubbard" 
-	editor="cgronlun"/>
+    pageTitle="Execute Python machine learning scripts | Microsoft Azure" 
+    description="Outlines design principles underlying support for Python scripts in Azure Machine Learning and basic usage scenarios, capabilities, and limitations." 
+    keywords="python machine learning,pandas,python pandas,python scripts, execute python scripts"
+    services="machine-learning"
+    documentationCenter="" 
+    authors="bradsev" 
+    manager="jhubbard" 
+    editor="cgronlun"/>
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/12/2016" 
-	ms.author="bradsev" />
+    ms.service="machine-learning" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/12/2016" 
+    ms.author="bradsev" />
 
 
-# Azure Machine Learning Studio での Python Machine Learning スクリプトの実行
 
-このトピックでは、Azure Machine Learning における現在の Python スクリプトのサポートの基になる設計原則について説明します。また、既存のコードのインポートや視覚化のエクスポートのサポートを含む主要な機能の概要と、最後に、いくつかの制限事項と進行中の作業についても説明します。
+# <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Execute Python machine learning scripts in Azure Machine Learning Studio
 
-[Python](https://www.python.org/) は、多くのデータ サイエンティストにとって欠かせないツールです。次の特徴があります。
+This topic describes the design principles underlying the current support for Python scripts in Azure Machine Learning. The main capabilities are also outlined, including support for importing existing code, exporting visualizations and, finally, some of the limitations and ongoing work are discussed.
 
--  洗練されたかつ簡潔な構文
--  クロスプラットフォームのサポート
--  膨大で強力なライブラリ
--  成熟した開発ツール
+[Python](https://www.python.org/) is an indispensable tool in the tool chest of many data scientists. It has:
 
-Python は、データの取り込みと処理から、特徴構築とモデルのトレーニング、そして検証とモデルのデプロイに至るまで、Machine Learning のモデリングで通常使用されるワークフローのすべてのフェーズで使用されています。
+-  an elegant and concise syntax, 
+-  cross-platform support, 
+-  a vast collection of powerful libraries, and 
+-  mature development tools. 
 
-Azure Machine Learning Studio は、Machine Learning の実験のさまざまな部分への Python スクリプトの埋め込みと、スケーラブルで運用可能な Microsoft Azure の Web サービスとしてシームレスな公開をサポートしています。
+Python is being used in all phases of the workflow typically used in machine learning modeling, from data ingest and processing, to feature construction and model training, and then validation and deployment of the models. 
+
+Azure Machine Learning Studio supports embedding Python scripts into various parts of a machine learning experiment and also seamlessly publishing them as scalable, operationalized web services on Microsoft Azure.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 
-## Machine Learning での Python スクリプトの設計原則
-Azure Machine Learning Studio でのPython の主要なインターフェイスは、[Python スクリプトの実行][execute-python-script]モジュールを経由します (図 1 参照)。
+## <a name="design-principles-of-python-scripts-in-machine-learning"></a>Design principles of Python scripts in Machine Learning
+The primary interface to Python in Azure Machine Learning Studio is via the [Execute Python Script][execute-python-script] module shown in Figure 1.
 
-![Image1](./media/machine-learning-execute-python-scripts/execute-machine-learning-python-scripts-module.png)
+![image1](./media/machine-learning-execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
-![Image2](./media/machine-learning-execute-python-scripts/embedded-machine-learning-python-script.png)
+![image2](./media/machine-learning-execute-python-scripts/embedded-machine-learning-python-script.png)
 
-図 1.**Python スクリプトの実行**モジュール
+Figure 1. The **Execute Python Script** module.
 
-[Python スクリプトの実行][execute-python-script]モジュールは、R アナログの [R スクリプトの実行][execute-r-script] モジュールと同様に、最大 3 つの入力を受け取り、最大 2 つの出力を生成します (後述)。実行される Python コードは、`azureml_main` という特別に指定されたエントリポイント関数としてパラメーター ボックスに入力されます。次にこのモジュールの実装に使用される主要な設計原則を示します。
+The [Execute Python Script][execute-python-script] module accepts up to three inputs and produces up to two outputs (discussed below), just like its R analog, the [Execute R Script][execute-r-script] module. The Python code to be executed is entered into the parameter box as a specially named entry-point function called `azureml_main`. Here are the key design principles used to implement this module:
 
-1.	*Python ユーザーにとって慣用的であること。* ほとんどの Python ユーザーは、モジュール内の関数としてコードを組み込むため、最上位レベルのモジュールに多くの実行可能ステートメントを置くことは比較的まれです。そのため、単なるステートメントのシーケンスとは対照的に、スクリプト ボックスにも特別に指定された Python 関数が入力されます。この関数で公開されるオブジェクトは、[Pandas](http://pandas.pydata.org/) データ フレームや [NumPy](http://www.numpy.org/) 配列などの標準的な Python ライブラリの型です。
-2.	*ローカルとクラウド間の実行が高品質であること。* Python コードの実行に使用されるバックエンドは、プラットフォーム間で広く使用されている科学的な Python ディストリビューション、[Anaconda](https://store.continuum.io/cshop/anaconda/) 2.1 に基づいています。最も一般的な Python パッケージが 200 個近く付属しています。そのため、データ サイエンティストは、ローカルの Azure Machine Learning と互換性のある Anaconda 環境で、コードをデバッグおよび検証できます。[IPython](http://ipython.org/) notebook や [Python Tools for Visual Studio](http://aka.ms/ptvs) などの既存の開発環境を使用し、高い信頼性で、Azure Machine Learning の実験の一部として実行します。さらに、`azureml_main` エントリ ポイントは、vanilla Python 関数であり、Azure Machine Learning 固有のコードや SDK がインストールされていなくても作成できます。
-3.	*他のAzure Machine Learning モジュールとシームレスに構成できること。* [Python スクリプトの実行][execute-python-script]モジュールは、入力と出力として、標準の Azure Machine Learning データセットを受け取ります。基になるフレームワークは、透過的かつ効率的に Azure Machine Learning と Python のランタイムを埋めます (不足値などの特徴をサポート)。そのため、Python は既存の Azure Machine Learning ワークフロー (R や SQLite の呼び出しを含む) と組み合わせて使用できます。ユーザーは次のようなワークフローを予測できます。
-  * データの前処理とクリーニングに Python と Pandas を使用する。
-  * データを SQL 変換にフィードし、フォームの特徴に複数のデータセットを結合する。
-  * Azure Machine Learning のアルゴリズムの広範なコレクションを使用したモデルのトレーニング。
-  * R を使用した結果の評価と後処理。
+1.  *Must be idiomatic for Python users.* Most Python users factor their code as functions inside modules, so putting a lot of executable statements in a top-level module is relatively rare. As a result, the script box also takes a specially named Python function as opposed to just a sequence of statements. The objects exposed in the function are standard Python library types such as [Pandas](http://pandas.pydata.org/) data frames and [NumPy](http://www.numpy.org/) arrays.
+2.  *Must have high-fidelity between local and cloud executions.* The backend used to execute the Python code is based on [Anaconda](https://store.continuum.io/cshop/anaconda/) 2.1, a widely used cross-platform scientific Python distribution. It comes with close to 200 of the most common Python packages. Therefore, data scientists can debug and qualify their code on their local Azure Machine Learning-compatible Anaconda environment. Then use existing development environments such as [IPython](http://ipython.org/) notebook or [Python Tools for Visual Studio](http://aka.ms/ptvs) to run it as part of an Azure Machine Learning experiment with high confidence. Further, the `azureml_main` entry point is a vanilla Python function and can be authored without Azure Machine Learning specific code or the SDK installed.
+3.  *Must be seamlessly composable with other Azure Machine Learning modules.* The [Execute Python Script][execute-python-script] module accepts, as inputs and outputs, standard Azure Machine Learning datasets. The underlying framework transparently and efficiently bridges the Azure Machine Learning and Python runtimes (supporting features such as missing values). Python can therefore be used in conjunction with existing Azure Machine Learning workflows, including those that call into R and SQLite. One can therefore envisage workflows that:
+  * use Python and Pandas for data pre-processing and cleaning, 
+  * feed the data to a SQL transformation, joining multiple datasets to form features, 
+  * train models using the extensive collection of algorithms in Azure Machine Learning, and 
+  * evaluate and post-process the results using R.
 
 
-## Machine Learning での Python スクリプトの基本的な使用シナリオ
-このセクションでは、[Python スクリプトの実行][execute-python-script]モジュールのいくつかの基本的な使用方法を調査します。前述のように、Python モジュールへの入力は、Pandas データ フレームとして公開されます。Python Pandas の詳細と、効果的かつ効率的にデータを操作するための Python Pandas の使用方法については、「*Python によるデータ分析*」(O'Reilly, 2012) をご覧ください。この関数は、Python [シーケンス](https://docs.python.org/2/c-api/sequence.html) (タプル、リスト、NumPy 配列など) の内部にパッケージ化された 1 つの Pandas データ フレームを返す必要があります。このシーケンスの最初の要素は、モジュールの最初の出力ポートに返されます。図 2 に、この方法を示します。
+## <a name="basic-usage-scenarios-in-machine-learning-for-python-scripts"></a>Basic usage scenarios in Machine Learning for Python scripts
+In this section, we survey some of the basic uses of the [Execute Python Script][execute-python-script] module.
+As mentioned earlier, any inputs to the Python module are exposed as Pandas data frames. More information on Python Pandas and how it can be used to manipulate data effectively and efficiently can be found in *Python for Data Analysis* (O'Reilly, 2012) by W. McKinney. The function must return a single Pandas data frame packaged inside of a Python [sequence](https://docs.python.org/2/c-api/sequence.html) such as a tuple, list, or NumPy array. The first element of this sequence is then returned in the first output port of the module. This scheme is shown in Figure 2.
 
-![Image3](./media/machine-learning-execute-python-scripts/map-of-python-script-inputs-outputs.png)
+![image3](./media/machine-learning-execute-python-scripts/map-of-python-script-inputs-outputs.png)
 
-図 2.パラメーターに入力ポートをマッピングし、出力ポートに値を返す。
+Figure 2. Mapping of input ports to parameters and return value to output port.
 
-入力ポートが `azureml_main` 関数のパラメーターにマッピングされる方法の詳細なセマンティクスを、表 1 に示します。
+More detailed semantics of how the input ports get mapped to parameters of the `azureml_main` function are shown in Table 1:
 
 ![image1T](./media/machine-learning-execute-python-scripts/python-script-inputs-mapped-to-parameters.png)
 
-表 1関数パラメーターへの入力ポートのマッピング。
+Table 1. Mapping of input ports to function parameters.
 
-入力ポートと関数パラメーター間のマッピングは位置指定されています。最初に接続された入力ポートは関数の最初のパラメーターにマップされ、2 番目の入力は (接続した場合) 関数の2 番目のパラメーターにマップされます。
+The mapping between input ports and function parameters is positional. The first connected input port is mapped to the first parameter of the function and the second input (if connected) is mapped to the second parameter of the function.
 
-## 入力と出力の種類の変換
-前述のように、Azure Machine Learning の入力データセットは Pandas 内のデータ フレームに変換され、出力データ フレームは Azure Machine Learning データセットに戻されます。次の変換が実行されます。
+## <a name="translation-of-input-and-output-types"></a>Translation of input and output types
+As explained earlier, input datasets in Azure Machine Learning are converted to data frames in Pandas and output data frames are converted back to Azure Machine Learning datasets. The following conversions are performed:
 
-1.	文字列と数値列は、現状のまま変換され、データセット内の不足値は Pandas 内で 'NA' 値に変換されます。戻す場合も同じ変換が行われます (Pandas 内の NA 値は Azure Machine Learning で不足値に変換されます)。
-2.	Azure Machine Learning では、Pandas のインデックス ベクターはサポートされていません。Python 関数内のすべての入力データ フレームには、常に 0 から、行数から 1 を引いた数までの 64 ビットの数値インデックスがあります。
-3.	Azure Machine Learning データセットには、文字列以外の重複する列名と列名を指定できません。出力データ フレームに数値以外の列が含まれる場合、フレームワークは列名で `str` を呼び出します。同様に、重複する列名は、確実に一意の名前になるように自動的に破棄されます。サフィックス (2) は最初の重複に追加され、サフィックス (3) は2 つ目の重複に追加されます。
+1.  String and numeric columns are converted as-is and missing values in a dataset are converted to ‘NA’ values in Pandas. The same conversion happens on the way back (NA values in Pandas are converted to missing values in Azure Machine Learning).
+2.  Index vectors in Pandas are not supported in Azure Machine Learning. All input data frames in the Python function always have a 64-bit numerical index from 0 through the number of rows minus 1. 
+3.  Azure Machine Learning datasets cannot have duplicate column names and column names that are not strings. If an output data frame contains non-numeric columns, the framework calls `str` on the column names. Likewise, any duplicate column names are automatically mangled to insure the names are unique. The suffix (2) is added to the first duplicate, (3) to the second duplicate, etc.
 
-## Python スクリプトの操作
-スコア付け実験で使用されるすべての [Python スクリプトの実行][execute-python-script]モジュールは、Web サービスとして公開された場合に呼び出されます。たとえば、図 3 は、1 つの Python 式を評価するコードを含む、スコア付け実験を示します。
+## <a name="operationalizing-python-scripts"></a>Operationalizing Python scripts
+Any [Execute Python Script][execute-python-script] modules used in a scoring experiment are called when published as a web service. For example, Figure 3 shows a scoring experiment containing the code to evaluate a single Python expression. 
 
 ![image4](./media/machine-learning-execute-python-scripts/figure3a.png)
 
 ![image5](./media/machine-learning-execute-python-scripts/python-script-with-python-pandas.png)
 
-図 3:Python 式を評価するための Web サービス。
+Figure 3. Web service for evaluating a Python expression.
 
-この実験から作成された Web サービスは、入力として Python 式を受け取り (文字列として)、これを Python インタープリターに送信し、式と評価結果の両方を含むテーブルを返します。
+A web service created from this experiment takes as input a Python expression (as a string), sends it to the Python interpreter and returns a table containing both the expression and the evaluated result.
 
-## 既存の Python スクリプト モジュールをインポートする
-多くのデータ サイエンティスト向けの一般的な使用例は、既存の Python スクリプトを Azure Machine Learningの実験に組み込むことです。すべてのコードを連結して 1 つのスクリプト ボックスに貼り付ける代わりに、[Python スクリプトの実行][execute-python-script]モジュールが、Python モジュールが含まれている zip ファイルに接続する 3 番目の入力ポートを受け入れます。このファイルは実行時に実行フレームワークによって解凍され、その内容が Python インタープリターのライブラリ パスに追加されます。`azureml_main` エントリ ポイント関数がこれらのモジュールを直接インポートできます。
+## <a name="importing-existing-python-script-modules"></a>Importing existing Python script modules
+A common use-case for many data scientists is to incorporate existing Python scripts into Azure Machine Learning experiments. Instead of concatenating and pasting all the code into a single script box, the [Execute Python Script][execute-python-script] module accepts a third input port to which a zip file that contains the Python modules can be connected. The file is then unzipped by the execution framework at runtime and the contents are added to the library path of the Python interpreter. The `azureml_main` entry point function can then import these modules directly.
 
-たとえば、単純な “Hello, World” 関数を含む Hello.py ファイルについて考えてみます。
+As an example, consider the file Hello.py containing a simple “Hello, World” function.
 
 ![image6](./media/machine-learning-execute-python-scripts/figure4.png)
 
-図 4:ユーザー定義関数
+Figure 4. User-defined function.
 
-次に、Hello.py を含む Hello.zip ファイルを作成します。
+Next, we create a file Hello.zip that contains Hello.py:
 
 ![image7](./media/machine-learning-execute-python-scripts/figure5.png)
 
-図 5:ユーザー定義の Python コードを含む zip ファイル。
+Figure 5. Zip file containing user-defined Python code.
 
-次に、これをデータセットとして Azure Machine Learning Studio にアップロードします。この図に示すように、Python スクリプトの実行の 3 番目の入力ポートに追加することで、Hello.zip ファイルに Python コードを使用する簡単な実験を作成し実行します。
+Then, upload this as a dataset into Azure Machine Learning Studio. Create and run a simple experiment that uses the Python code in the Hello.zip file by attaching it to the third input port of the Execute Python Script, as shown in this figure.
 
 ![image8](./media/machine-learning-execute-python-scripts/figure6a.png)
 
 ![image9](./media/machine-learning-execute-python-scripts/figure6b.png)
 
-図 6:ユーザー定義の Python コードを使ったサンプル実験は zip ファイルとしてアップロードされる。
+Figure 6. Sample experiment with user-defined Python code uploaded as a zip file.
 
-モジュール出力は、zip ファイルがパッケージ化され、関数`print_hello`が実際に実行されたことを示しています。   ![image10](./media/machine-learning-execute-python-scripts/figure7.png)
+The module output shows that the zip file has been unpackaged and the function `print_hello` has indeed been run.
+ 
+![image10](./media/machine-learning-execute-python-scripts/figure7.png)
  
-図 7:[Python スクリプトの実行][execute-python-script]モジュール内で使用中のユーザー定義関数。
+Figure 7. User-defined function in use inside the [Execute Python Script][execute-python-script] module.
 
-## 視覚化の操作
-ブラウザーでビジュアル化できる MatplotLib を使用して作成されたプロットは、[Python スクリプト][execute-python-script]によって返されます。ただし、R を使用している場合、プロットは自動的にリダイレクトされません。このため、プロットを Azure Machine Learning に返す場合、ユーザーはすべてのプロットを PNG ファイルに明示的に保存する必要があります。
+## <a name="working-with-visualizations"></a>Working with visualizations
+Plots created using MatplotLib that can be visualized on the browser can be returned by the [Execute Python Script][execute-python-script]. But the plots are not automatically redirected to images as they are when using R. So the user must explicitly save any plots to PNG files if they are to be returned back to Azure Machine Learning. 
 
-MatplotLib からのイメージを生成するには、次の手順を完了する必要があります。
+In order to generate images from MatplotLib, you must compete the following procedure:
 
-* 既定の Qt ベース レンダラーから "AGG"にバックエンドを切り替える
-* 新しい figure オブジェクトを作成する
-* 軸を取得し、そこにすべてのプロットを生成する
-* PNG ファイルに図を保存する
+* switch the backend to “AGG” from the default Qt-based renderer 
+* create a new figure object 
+* get the axis and generate all plots into it 
+* save the figure to a PNG file 
 
-下記の図 8 に、Pandas の scatter\_matrix 関数を使用して散布図マトリックスを作成するプロセスを示します。
+This process is illustrated in the following Figure 8 that creates a scatter plot matrix using the scatter_matrix function in Pandas.
  
 ![image1v](./media/machine-learning-execute-python-scripts/figure-v1-8.png)
 
-図 8:イメージに MatplotLib の図を保存します。
+Figure 8. Saving MatplotLib figures to images.
 
 
 
-図 9 は、前述のスクリプトを使用して、2 番目の出力ポートからプロットを返す実験を示しています。
+Figure 9 shows an experiment that uses the script shown previously to return plots via the second output port.
 
-![image2v](./media/machine-learning-execute-python-scripts/figure-v2-9a.png)
-	 
-![image2v](./media/machine-learning-execute-python-scripts/figure-v2-9b.png)
+![image2v](./media/machine-learning-execute-python-scripts/figure-v2-9a.png) 
+     
+![image2v](./media/machine-learning-execute-python-scripts/figure-v2-9b.png) 
 
-図 9:Python コードから生成されたプロットの視覚化。
+Figure 9. Visualizing plots generated from Python code.
 
-複数の図をさまざまなイメージに保存して返すことができるため、Azure Machine Learning ランタイムはすべてのイメージを取得し、それらを視覚化のために連結できます。
+It is possible to return multiple figures by saving them into different images, the Azure Machine Learning runtime picks up all images and concatenates them for visualization.
 
 
-## 高度な例
-Azure Machine Learning にインストールされている Anaconda 環境には、NumPy、SciPy、Scikits-Learn などの一般的なパッケージが含まれています。これらは、通常の機械学習パイプラインのさまざまなデータ処理タスクで効果的に使用できます。たとえば、次の実験とスクリプトは、データセットの特徴の重要度スコアを計算するための Scikits-Learn でのアンサンブル学習者の使用を示しています。このスコアは、別の機械学習モデルに供給する前に、監視する特徴を選択するために使用されます。
+## <a name="advanced-examples"></a>Advanced examples
+The Anaconda environment installed in Azure Machine Learning contains common packages such as NumPy, SciPy, and Scikits-Learn and these can be effectively used for various data processing tasks in a typical machine learning pipeline. As an example, the following experiment and script illustrates the use of ensemble learners in Scikits-Learn to compute feature importance scores for a dataset. The scores can then be used to perform supervised feature selection before feeding into another machine learning model.
 
-重要度スコアを計算し、それに基づいて特徴を順序付ける Python 関数を以下に示します。
+The Python function to compute the importance scores and order the features based on it is shown below:
 
 ![image11](./media/machine-learning-execute-python-scripts/figure8.png)
 
-図 10:スコアによって特徴を順位付ける関数。  次の実験は、Azure Machine Learning の “ピマ インディアン糖尿病” データセットにおける特徴の重要度スコアを計算して返します。
+Figure 10. Function to rank features by scores.
+  The following experiment then computes and returns the importance scores of features in the “Pima Indian Diabetes” dataset in Azure Machine Learning:
 
-![image12](./media/machine-learning-execute-python-scripts/figure9a.png) ![image13](./media/machine-learning-execute-python-scripts/figure9b.png)
-	
-図 11:ピマ インディアン糖尿病の特徴の順位付けの実験
+![image12](./media/machine-learning-execute-python-scripts/figure9a.png)
+![image13](./media/machine-learning-execute-python-scripts/figure9b.png)    
+    
+Figure 11. Experiment to rank features in the Pima Indian Diabetes dataset.
 
-## 制限事項 
-[Python スクリプトの実行][execute-python-script]には、現在次のような制限があります。
+## <a name="limitations"></a>Limitations 
+The [Execute Python Script][execute-python-script] currently has the following limitations:
 
-1.	*セキュリティで保護された実行。* Python ランタイムは、現在セキュリティで保護されているため、永続的な方法でのネットワークやローカル ファイル システムへのアクセスを許可しません。ローカルに保存されているすべてのファイルは分離され、モジュールが終了すると削除されます。Python コードは、現在のディレクトリとそのサブディレクトリを除く、実行中のコンピューターのほとんどのディレクトリにアクセスできません。
-2.	*高度な開発とデバッグ サポートの欠如。* Python モジュールは、現在、Intellisense やデバッグなどの IDE 機能をサポートしていません。また、モジュールが実行時に失敗した場合は、完全な Python スタック トレースが使用できますが、モジュールのログ出力に表示される必要があります。ユーザーが IPython などの環境で自身の Python スクリプトを作成してデバッグし、そのコードをモジュールにインポートすることをお勧めします。
-3.	*1 つのデータ フレームの出力。* Python のエントリ ポイントは、1 つのデータ フレームのみを出力として返すことができます。現在は、Azure Machine Learning ランタイムに直接戻されたトレーニング済みのモデルなどの、任意の Python オブジェクトを返すことはできません。[R スクリプトの実行][execute-r-script]と同様、同じ制限がありますが、多くの場合は、バイト配列にオブジェクトを変換し、そのデータ フレームの内部を返すことができます。
-4.	*Python のインストールをカスタマイズできない。*現時点では、カスタムの Python モジュールを追加する唯一の方法は、前に説明した zip ファイルのメカニズムを使用することです。これは、小さなモジュールに適していますが、大きなモジュール (特にネイティブ DLL を使用するモジュール) や大量のモジュールでは、使用が面倒です。
+1.  *Sandboxed execution.* The Python runtime is currently sandboxed and, as a result, does not allow access to the network or to the local file system in a persistent manner. All files saved locally are isolated and deleted once the module finishes. The Python code cannot access most directories on the machine it runs on, the exception being the current directory and its subdirectories.
+2.  *Lack of sophisticated development and debugging support.* The Python module currently does not support IDE features such as intellisense and debugging. Also, if the module fails at runtime, the full Python stack trace is available, but must be viewed in the output log for the module. We currently recommend that you develop and debug their Python scripts in an environment such as IPython and then import the code into the module.
+3.  *Single data frame output.* The Python entry point is only permitted to return a single data frame as output. It is not currently possible to return arbitrary Python objects such as trained models directly back to the Azure Machine Learning runtime. Like [Execute R Script][execute-r-script], which has the same limitation, it is however possible in many cases to pickle objects into a byte array and then return that inside of a data frame.
+4.  *Inability to customize Python installation*. Currently, the only way to add custom Python modules is via the zip file mechanism described earlier. While this is feasible for small modules, it is cumbersome for large modules (especially those with native DLLs) or a large number of modules. 
 
 
-##まとめ
-データ サイエンティストが [Python スクリプトの実行][execute-python-script]モジュールを使用することで、Azure Machine Learning のクラウドでホストされている機械学習のワークフローに既存の Python コードを組み込み、これらを Web サービスの一部としてシームレスに運用できます。Python スクリプト モジュールは、Azure Machine Learning の他のモジュールと自然に相互運用し、データの探索から前処理、特徴の抽出、評価、結果の後処理までのタスクの範囲で使用できます。実行で使用されるバックエンド ランタイムは、Anaconda (十分にテストされ、広く使用されている Python ディストリビューション) に基づいています。これにより、簡単に既存のコード資産をクラウドに配布できます。
+##<a name="conclusions"></a>Conclusions
+The [Execute Python Script][execute-python-script] module allows a data scientist to incorporate existing Python code into cloud-hosted machine learning workflows in Azure Machine Learning and to seamlessly operationalize them as part of a web service. The Python script module interoperates naturally with other modules in Azure Machine Learning and can be used for a range of tasks from data exploration to pre-processing, to feature extraction, to evaluation and post-processing of the results. The backend runtime used for execution is based on Anaconda, a well-tested and widely used Python distribution. This makes it simple for you to on-board existing code assets into the cloud.
 
-[Python スクリプトの実行][execute-python-script] モジュールに、Python でのモデルのトレーニングや運用などの追加機能を提供し、Azure Machine Learning Studio のコードの開発とデバッグにより優れたサポートを追加する予定です。
+We expect to provide additional functionality to the [Execute Python Script][execute-python-script] module such as the ability to train and operationalize models in Python and to add better support for the development and debugging code in Azure Machine Learning Studio.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-詳細については、[Python デベロッパー センター](/develop/python/)を参照してください。
+For more information, see the [Python Developer Center](/develop/python/).
 
 <!-- Module References -->
 [execute-python-script]: https://msdn.microsoft.com/library/azure/cdb56f95-7f4c-404d-bde7-5bb972e6f232/
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

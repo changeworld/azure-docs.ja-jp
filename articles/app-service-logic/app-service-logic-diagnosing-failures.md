@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ロジック アプリ障害の診断 | Microsoft Azure"
-   description="ロジック アプリのエラー発生箇所を理解するための一般的な手法"
+   pageTitle="Diagnosing logic apps failures | Microsoft Azure"
+   description="Common approaches to understanding where logic apps are failing"
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
@@ -13,67 +13,68 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration"
-   ms.date="05/18/2016"
+   ms.date="10/18/2016"
    ms.author="jehollan"/>
 
-# ロジック アプリの障害の診断
 
-Azure App Service のロジック アプリの機能でエラーや障害が発生した場合、障害の発生源を確認できる方法がいくつかあります。
+# <a name="diagnosing-logic-app-failures"></a>Diagnosing logic app failures
 
-## Azure ポータル ツール
+If you experience issues or failures with the Logic Apps feature of Azure App Service, a few approaches can help you better understand where the failures are coming from.  
 
-Azure ポータルには、各段階で各ロジック アプリを診断するためのツールがあります。
+## <a name="azure-portal-tools"></a>Azure portal tools
 
-### トリガー履歴
+The Azure portal provides many tools to diagnose each logic app at each step.
 
-各ロジック アプリには少なくとも 1 つのトリガーがあります。アプリが起動されない場合は、まずトリガー履歴で詳細を確認します。トリガー履歴にはロジック アプリのメイン ブレードからアクセスできます。
+### <a name="trigger-history"></a>Trigger history
 
-![トリガー履歴の検索][1]
+Each logic app has at least one trigger. If you notice that apps aren't firing, the first place to look for additional information is the trigger history. You can access the trigger history on the logic app main blade.
 
-トリガー履歴では、ロジック アプリで行われたトリガーの試行がすべて一覧表示されます。各トリガー試行をクリックして、次のレベルの詳細を確認できます (具体的には、トリガー試行が生成された入力または出力が表示されます)。失敗トリガーが見つかったら、そのトリガー試行をクリックし、**出力**リンクを表示してください。エラー メッセージが生成された原因 (無効な FTP 資格情報など) を確認できることがあります。
+![Locating the trigger history][1]
 
-表示される状態:
+This lists all of the trigger attempts that your logic app has made. You can click each trigger attempt to get the next level of detail (specifically, any inputs or outputs that the trigger attempt generated). If you see any failed triggers, click the trigger attempt and drill into the **Outputs** link to see any error messages that might have been generated (for example, for invalid FTP credentials).
 
-* **スキップ済み**。データをチェックするエンドポイントをポーリングし、使用可能なデータがないという応答を受信しました。
-* **成功**。データを使用できるという応答を受信しました。この応答は、手動トリガー、繰り返しトリガー、ポーリング トリガーからである可能性があります。多くの場合、これには **Fired (起動)** の状態が付随しますが、条件やコード ビューの splitOn コマンドが十分ではない場合、付随しません。
-* **失敗**。エラーが発生しました。
+The different statuses you might see are:
 
-#### トリガーを手動で開始する
+* **Skipped**. It polled the endpoint to check for data and received a response that no data was available.
+* **Succeeded**. The trigger received a response that data was available. This could be from a manual trigger, a recurrence trigger, or a polling trigger. This likely will be accompanied with a status of **Fired**, but it might not if you have a condition or SplitOn command in code view that wasn't satisfied.
+* **Failed**. An error was generated.
 
-メイン ブレードの **[トリガーの選択]** ボタンをクリックすると、(次回の試行を待たずに) 利用できるトリガーをすぐに確認できます。たとえば、Dropbox トリガーでこのリンクをクリックすると、新しいファイルに関するポーリングを Dropbox に実行するワークフローがすぐに開始されます。
+#### <a name="starting-a-trigger-manually"></a>Starting a trigger manually
 
-### 実行履歴
+If you want the logic app to check for an available trigger immediately (without waiting for the next recurrence), you can click **Select Trigger** on the main blade to force a check. For example, clicking this link with a Dropbox trigger will cause the workflow to immediately poll Dropbox for new files.
 
-起動され、実行されたすべてのトリガーが表示されます。実行の情報には、メイン ブレードからアクセスできます。メイン ブレードには、ワークフローの実行中に何が発生したかについて確認するのに役立つ、多くの情報が含まれます。
+### <a name="run-history"></a>Run history
 
-![実行履歴の検索][2]
+Every trigger that is fired results in a run. You can access run information from the main blade, which contains a lot of information that can be helpful in understanding what happened during the workflow.
 
-実行では、次の状態のいずれかが表示されます。
+![Locating the run history][2]
 
-* **成功**。すべてのアクションが成功したか、失敗した場合はワークフローの後続のアクションによって処理済みです。つまり、失敗したアクションより後に実行されるように設定されたアクションによって処理されています。
-* **失敗**。少なくとも 1 つのアクションに失敗し、その失敗がワークフローの後続のアクションによって処理されていません。
-* **取り消し済み**。ワークフローは実行されていましたが、キャンセル要求を受け取りました。
-* **実行中**。ワークフローは現在実行中です。これは、現在スロットル中のワークフローに対して、または現行の App Service プランによって発生することがあります。詳細については、[価格設定ページ](https://azure.microsoft.com/pricing/details/app-service/plans/)のアクション制限を参照してください。診断の構成 (実行履歴の下にあるグラフ) でも、現在発生中のスロットル イベントに関する情報が提供されます。
+A run displays one of the following statuses:
 
-実行履歴を調べるときに、詳細を確認できます。
+* **Succeeded**. All actions succeeded, or, if there was a failure, it was handled by an action that occurred later in the workflow. That is, it was handled by an action that was set to run after a failed action.
+* **Failed**. At least one action had a failure that was not handled by an action later in the workflow.
+* **Cancelled**. The workflow was running but received a cancel request.
+* **Running**. The workflow is currently running. This may occur for workflows that are being throttled, or because of the current App Service plan. Please see action limits on the [pricing page](https://azure.microsoft.com/pricing/details/app-service/plans/) for details. Configuring diagnostics (the charts listed below the run history) also can provide information about any throttle events that are occurring.
 
-#### トリガー出力
+When you are looking at a run history, you can drill in for more details.  
 
-トリガー 出力には、トリガーから受け取ったデータが表示されます。すべてのプロパティが予期したとおりに返されるかどうかを確認できます。
+#### <a name="trigger-outputs"></a>Trigger outputs
 
->[AZURE.NOTE] 不明なコンテンツが表示される場合に、ロジック アプリ機能による[さまざまなコンテンツ タイプの処理](app-service-logic-content-type.md)方法を理解するために役立つことがあります。
+Trigger outputs show the data that was received from the trigger. This can help you determine whether all properties returned as expected.
 
-![トリガーの出力例][3]
+>[AZURE.NOTE] It might be helpful to understand how the Logic Apps feature [handles different content types](app-service-logic-content-type.md) if you see any content that you don't understand.
 
-#### アクションの入力と出力
+![Trigger output examples][3]
 
-アクションが受け取った入力と出力の詳細にアクセスできます。これは出力の大きさと形を理解するために役立ちます。エラー メッセージが生成されていれば、それも確認できます。
+#### <a name="action-inputs-and-outputs"></a>Action inputs and outputs
 
-![アクションの入力と出力][4]
+You can drill into the inputs and outputs that an action received. This is useful for understanding the size and shape of the outputs, as well as to see any error messages that may have been generated.
 
-## ワークフロー ランタイムのデバッグ
+![Action inputs and outputs][4]
 
-入力、出力、実行のトリガーを監視するだけでなく、デバッグに役立つ手順をワークフローに追加すると便利な場合があります。ワークフローに手順として追加できる強力なツールの 1 つが [RequestBin](http://requestb.in) です。RequestBin を使用して、HTTP 要求の大きさ、形、書式を正確に特定する目的で、HTTP 要求インスペクターを設定できます。新しい RequestBin を作成し、URL をロジック アプリの HTTP POST アクションに貼り付けることができます。本文にはあらゆるコンテンツ (式や別の手順の出力など) を指定し、テストできます。ロジック アプリの実行後、RequestBin を更新し、ロジック アプリ エンジンから生成されたとき、要求がどのように書式設定されたかを確認できます。
+## <a name="debugging-workflow-runtime"></a>Debugging workflow runtime
+
+In addition to monitoring the inputs, outputs, and triggers of a run, it could be useful to add some steps within a workflow to help with debugging. [RequestBin](http://requestb.in) is a powerful tool that you can add as a step in a workflow. By using RequestBin, you can set up an HTTP request inspector to determine the exact size, shape, and format of an HTTP request. You can create a new RequestBin and paste the URL in a logic app HTTP POST action along with body content you want to test (for example, an expression or another step output). After you run the logic app, you can refresh your RequestBin to see how the request was formed as it was generated from the Logic Apps engine.
 
 
 
@@ -84,4 +85,8 @@ Azure ポータルには、各段階で各ロジック アプリを診断する�
 [3]: ./media/app-service-logic-diagnosing-failures/triggerOutputsLink.PNG
 [4]: ./media/app-service-logic-diagnosing-failures/ActionOutputs.PNG
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,15 +1,18 @@
-[.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)には、構成ファイルの接続文字列を解析するためのクラスが用意されています。[CloudConfigurationManager クラス](https://msdn.microsoft.com/library/azure/mt634650.aspx)を使用すると、クライアント アプリケーションがデスクトップ、モバイル デバイス、Azure 仮想マシン、Azure クラウド サービスのいずれで実行されているかにかかわらず、構成設定を解析できます。
+The [Microsoft Azure Configuration Manager Library for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) provides a class for parsing a connection string from a configuration file. The [CloudConfigurationManager class](https://msdn.microsoft.com/library/azure/mt634650.aspx) parses configuration settings regardless of whether the client application is running on the desktop, on a mobile device, in an Azure virtual machine, or in an Azure cloud service.
 
-CloudConfigurationManager パッケージを参照するには、次の `using` ステートメントをクラスに追加します。
+To reference the CloudConfigurationManager package, add the following `using` statement to your class:
 
-	using Microsoft.Azure;	//Namespace for CloudConfigurationManager
+    using Microsoft.Azure;  //Namespace for CloudConfigurationManager
 
-構成ファイルから接続文字列を取得する方法の例を次に示します。
+Here's an example that shows how to use retrieve a connection string from a configuration file:
 
     // Parse the connection string and return a reference to the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-		CloudConfigurationManager.GetSetting("StorageConnectionString"));
+        CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
-Azure Configuration Manager の使用はオプションです。また、.NET Framework の [ConfigurationManager クラス](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)などの API を使用することもできます。
+Using Azure Configuration Manager is optional. You can also use an API such as the .NET Framework's [ConfigurationManager class](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx).
 
-<!---HONumber=AcomDC_0601_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

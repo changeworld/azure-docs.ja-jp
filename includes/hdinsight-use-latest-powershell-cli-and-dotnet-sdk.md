@@ -1,4 +1,9 @@
-> [AZURE.IMPORTANT] Azure PowerShell、Azure CLI、HDInsight .NET SDK から Azure サービス マネージャー (ASM) を使用した HDInsight リソースの管理のサポートは、2017 年 1 月 1 日までに__廃止__される予定です。このドキュメントの手順では、Azure Resource Manager (ARM) で機能する新しい Azure PowerShell コマンドレット、Azure CLI コマンド、.NET SDK を使用します。
+> [AZURE.IMPORTANT] Support for managing HDInsight resources using Azure Service Manager (ASM) through Azure PowerShell, the Azure CLI, and the HDInsight .NET SDK is __deprecated__, and will be removed by January 1, 2017. The steps in this document use the new Azure PowerShell cmdlets, Azure CLI commands, and .NET SDK that work with Azure Resource Manager (ARM).
 >
-> [Azure CLI のインストールと構成](../articles/xplat-cli-install.md)および [Azure PowerShell のインストールと構成](../articles/powershell-install-configure.md)の手順に従って、最新バージョンの Azure PowerShell と Azure CLI をインストールしてください。最新バージョンの HDInsight .NET SDK をインストールするには、NuGet の「[Microsoft Azure HDInsight .NET SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.HDInsight/)」で提供されている情報を使用してください。新しいコマンドレット、新しい CLI コマンド、または .NET SDK を使用するように既存のスクリプトまたはアプリケーションを変更する必要がある場合は、「[HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md)」を参照してください。
+> Please follow the steps in the [Install and Configure Azure CLI](../articles/xplat-cli-install.md) and [Install and Configure Azure PowerShell](../articles/powershell-install-configure.md) to install the latest version of Azure PowerShell and the Azure CLI. To install the latest version of the HDInsight .NET SDK, use the information provided on the [Microsoft Azure HDInsight .NET SDK](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.HDInsight/) NuGet page. If you have existing scripts or applications that need to be modified to use the new cmdlets, new CLI commands, or .NET SDK, see [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md) for more information.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
 

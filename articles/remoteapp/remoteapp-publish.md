@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure RemoteApp のアプリの発行 | Microsoft Azure"
-    description="Azure RemoteApp のアプリとリソースを発行する方法について説明します。"
+    pageTitle="Publish an app in Azure RemoteApp | Microsoft Azure"
+    description="Learn how to publish applications and resources in Azure RemoteApp."
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -16,24 +16,28 @@
     ms.author="elizapo" />
 
 
-# RemoteApp のアプリを発行する方法
+
+# <a name="how-to-publish-an-app-in-remoteapp"></a>How to publish an app in RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-RemoteApp コレクションの作成後、ユーザーが使用できるアプリまたはリソースを発行する必要があります。サブスクリプションで提供されるテンプレート イメージには、既定で発行されているいくつかのアプリしか含まれていません。その他のアプリを共有するにはアプリを公開する必要があります。
+After you create your RemoteApp collection, you need to publish the apps or resources that you want to make available for your users. The template images provided with your subscription only have a few apps published by default - to share the other apps, you need to publish them.
 
-> [AZURE.NOTE] アプリを更新する場合には、 まず [イメージを更新する](remoteapp-update.md)必要があります。
+> [AZURE.NOTE] Do you need to update an app? You'll need to [update the image](remoteapp-update.md) first.
 
-ポータルの **[発行しています]** タブをクリックして、**[発行]** をクリックします。**[スタート]** メニューのテンプレート イメージからアプリを追加することも、テンプレート イメージにインストールされているアプリの場所の指定することもできます。**[スタート]** メニューから追加する場合は、一覧から発行するアプリケーションを選択します。アプリのパスを指定する場合は、アプリの名前とアプリのパスを入力します。パスには、"c:\" ではなく、たとえば "%systemdrive%" のような変数を使用します。
+On the **Publishing** tab in the portal, click **Publish**. You can either add an app from your template image's **Start** menu or provide the path to where the app is installed on the template image. If you choose to add from the **Start** menu, choose the app to publish from the list. If you choose to provide the path to the app, enter a name for the app and the path to the app. Use variables in the path - for example, "%systemdrive%" instead of "c:\".
 
-> [AZURE.NOTE] **[スタート]** メニューからアプリを追加する場合は、"*テンプレート イメージの* *[スタート]* メニューに*そのアプリを追加*" しておく必要があります。 そうしないと、RemoteApp は、**[スタート]** メニューに現在*存在する*もののみを表示するので、わかりにくくなる可能性があります。
+> [AZURE.NOTE] If you want to add your app from the **Start** menu, you need to have *added that app to the **Start** menu on your template image.* Otherwise, RemoteApp will only see what *is* on the **Start** menu, and you will be confused. 
 
->アプリを **[スタート]** メニューに表示するには、%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs フォルダーの中にショートカット ファイル (**.lnk**) を作成します。
+>To make sure your app is in the **Start** menu, place a shortcut file - **.lnk** - inside the %systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs folder.
 
-> テンプレートを作成するときに **[スタート]** メニューにアプリを追加しなかった場合は、アプリのパスを追加する方法を選択します(またはテンプレート イメージを再作成することもできますが、これは少し手間のかかる作業です)。
+> If you forgot to add the app to the **Start** menu when you created the template, choose to add the path to the app. (Or recreate your template image, but that's quite a bit more work.)
 
 
  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

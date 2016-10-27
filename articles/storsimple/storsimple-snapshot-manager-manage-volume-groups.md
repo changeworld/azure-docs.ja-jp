@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager のボリューム グループ | Microsoft Azure"
-   description="StorSimple Snapshot Manager MMC スナップインを使用して、ボリューム グループを作成および管理する方法について説明します。"
+   pageTitle="StorSimple Snapshot Manager volume groups | Microsoft Azure"
+   description="Describes how to use the StorSimple Snapshot Manager MMC snap-in to create and manage volume groups."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,136 +15,141 @@
    ms.date="04/18/2016"
    ms.author="v-sharos" />
 
-# StorSimple Snapshot Manager を使用したボリューム グループの作成と管理
 
-## 概要
+# <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Use StorSimple Snapshot Manager to create and manage volume groups
 
-**[スコープ]** ウィンドウの **[ボリューム グループ]** ノードを使用して、ボリューム グループへのボリュームの割り当て、ボリューム グループに関する情報の表示、バックアップのスケジュール設定、およびボリューム グループの編集を行うことができます。
+## <a name="overview"></a>Overview
 
-ボリューム グループは関連するボリュームのプールであり、バックアップのアプリケーション整合性を確保するために使用されます。詳細については、「[ボリュームとボリューム グループ](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups)」および「[Windows ボリューム シャドウ コピー サービスとの統合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)」をご覧ください。
+You can use the **Volume Groups** node on the **Scope** pane to assign volumes to volume groups, view information about a volume group, schedule backups, and edit volume groups. 
+
+Volume groups are pools of related volumes used to ensure that backups are application-consistent. For more information, see [Volumes and volume groups](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups) and [Integration with Windows Volume Shadow Copy Service](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
 
 >[AZURE.IMPORTANT] 
 >
-> * ボリューム グループ内のすべてのボリュームは、1 つのクラウド サービス プロバイダーから取得する必要があります。
+> * All volumes in a volume group must come from a single cloud service provider.
 > 
-> * ボリューム グループを構成するときは、クラスター共有ボリューム (CSV) と非 CSV を同じボリューム グループに混在させないでください。StorSimple Snapshot Manager では、同じスナップショット内に CSV と非 CSV が混在した環境はサポートされません。
+> * When you configure volume groups, do not mix cluster-shared volumes (CSVs) and non-CSVs in the same volume group. StorSimple Snapshot Manager does not support a mix of CSVs and non-CSVs in the same snapshot.
  
-![[ボリューム グループ] ノード](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Volume_groups.png)
+![Volume groups node](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Volume_groups.png)
 
-**図 1: StorSimple Snapshot Manager の [ボリューム グループ] ノード**
+**Figure 1: StorSimple Snapshot Manager Volume Groups node** 
 
-このチュートリアルでは、StorSimple Snapshot Manager を使用して次を行う方法を説明します。
+This tutorial explains how you can use StorSimple Snapshot Manager to:
 
-- ボリューム グループに関する情報の表示 
-- ボリューム グループの作成
-- ボリューム グループのバックアップ
-- ボリューム グループの編集
-- ボリューム グループの削除
+- View information about your volume groups 
+- Create a volume group
+- Back up a volume group
+- Edit a volume group
+- Delete a volume group
 
-これらの操作はすべて、**[操作]** ウィンドウでも使用できます。
+All of these actions are also available on the **Actions** pane.
  
-## ボリューム グループの表示
+## <a name="view-volume-groups"></a>View volume groups
 
-**[ボリューム グループ]** ノードをクリックすると、列の選択内容に従って、**[結果]** ウィンドウに各ボリューム グループに関する次の情報が表示されます (**[結果]** ウィンドウの列は構成可能です。**[ボリューム]** ノードを右クリックし、**[ビュー]** を選択して、**[列の追加と削除]** を選択します)。
+If you click the **Volume Groups** node, the **Results** pane shows the following information about each volume group, depending on the column selections you make. (The columns in the **Results** pane are configurable. Right-click the **Volumes** node, select **View**, and then select **Add/Remove Columns**.)
 
-結果の列 | 説明 
+Results column | Description 
 :--------------|:------------ 
-名前 | **[名前]** 列には、ボリューム グループの名前が含まれます。
-アプリケーション | **[アプリケーション]** 列は、Windows ホスト上で現在インストールされ、実行されている VSS ライターの数を示します。
-オン | **[オン]** 列には、ボリューム グループに含まれているボリュームの数が表示されます。ゼロ (0) は、ボリューム グループ内のボリュームに関連付けられたアプリケーションが存在しないことを示します。
-インポート済み | **[インポート済み]** 列には、インポートされたボリュームの数が表示されます。**True** に設定されている場合、この列はボリューム グループが Azure クラシック ポータルからインポートされ、StorSimple Snapshot Manager では作成されなかったことを示します。
+Name           | The **Name** column contains the name of the volume group.
+Application    | The **Applications** column shows the number of VSS writers currently installed and running on the Windows host.
+Selected       | The **Selected** column shows the number of volumes that are contained in the volume group. A zero (0) indicates that no application is associated with the volumes in the volume group.
+Imported       | The **Imported** column shows the number of imported volumes. When set to **True**, this column indicates that a volume group was imported from the Azure classic portal and was not created in StorSimple Snapshot Manager.
  
->[AZURE.NOTE] StorSimple Snapshot Manager ボリューム グループも Azure クラシック ポータルの **[バックアップ ポリシー]** タブに表示されます。
+>[AZURE.NOTE] StorSimple Snapshot Manager volume groups are also displayed on the **Backup Policies** tab in the Azure classic portal.
  
-## ボリューム グループの作成
+## <a name="create-a-volume-group"></a>Create a volume group
 
-ボリューム グループを作成するには、以下の手順を実行します。
+Use the following procedure to create a volume group.
 
-#### ボリューム グループを作成するには
+#### <a name="to-create-a-volume-group"></a>To create a volume group
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
+1. Click the desktop icon to start StorSimple Snapshot Manager. 
 
-2. **[スコープ]** ウィンドウで、**[ボリューム グループ]** を右クリックし、**[ボリューム グループの作成]** をクリックします。
+2. In the **Scope** pane, right-click **Volume Groups**, and then click **Create Volume Group**. 
 
-    ![ボリューム グループの作成](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
+    ![Create volume group](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
  
-    **[ボリューム グループの作成**] ダイアログ ボックスが表示されます。
+    The **Create a volume group** dialog box appears. 
 
-    ![[ボリューム グループの作成] ダイアログ](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
+    ![Create a volume group dialog](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png) 
 
-3.  次の情報を入力します。
+3.  Enter the following information: 
 
-    1. **[名前]** ボックスに、新しいボリューム グループの一意の名前を入力します。 
+    1. In the **Name** box, type a unique name for the new volume group. 
 
-    2. **[アプリケーション]** ボックスで、ボリューム グループに追加するボリュームに関連付けられたアプリケーションを選択します。
+    2. In the **Applications** box, select applications associated with the volumes that you will be adding to the volume group. 
 
-        **[アプリケーション]** ボックスには、StorSimple ボリュームを使用し、それらのボリュームに対して VSS ライターが有効になっているアプリケーションだけが表示されます。VSS ライターは、ライターが認識しているすべてのボリュームが StorSimple ボリュームである場合にのみ有効になります。[アプリケーション] ボックスが空の場合は、Azure StorSimple ボリュームを使用し、サポートされる VSS ライターを持つアプリケーションはインストールされていません (現在、Azure StorSimple は Microsoft Exchange と SQL Server をサポートしています)。 VSS ライターの詳細については、「[Windows ボリューム シャドウ コピー サービスとの統合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)」をご覧ください。
+        The **Applications** box lists only those applications that use StorSimple volumes and have VSS writers enabled for them. A VSS writer is enabled only if all the volumes that the writer is aware of are StorSimple volumes. If the Applications box is empty, then no applications that use Azure StorSimple volumes and have supported VSS writers are installed. (Currently, Azure StorSimple supports Microsoft Exchange and SQL Server.) For more information about VSS writers, see [Integration with Windows Volume Shadow Copy Service](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service).
 
-        アプリケーションを選択すると、それに関連付けられているすべてのボリュームが自動的に選択されます。逆に、特定のアプリケーションに関連付けられているボリュームを選択すると、**[アプリケーション]** ボックスでそのアプリケーションが自動的に選択されます。
+        If you select an application, all volumes associated with it are automatically selected. Conversely, if you select volumes associated with a specific application, the application is automatically selected in the **Applications** box. 
 
-    3. **[ボリューム]** ボックスで、ボリューム グループに追加する StorSimple ボリュームを選択します。
+    3. In the **Volumes** box, select StorSimple volumes to add to the volume group. 
 
-      - 1 つまたは複数のパーティションを持つボリュームを含めることができます (複数のパーティションを持つボリュームは、複数のパーティションを持つ動的ディスクまたは基本ディスクにすることができます)。 複数のパーティションが含まれているボリュームは、1 つの単位として扱われます。このため、ボリューム グループに 1 つのパーティションのみを追加する場合、その他のすべてのパーティションが、同時にそのボリューム グループに自動的に追加されます。複数パーティション ボリュームをボリューム グループに追加した後も、その複数パーティション ボリュームは 1 つの単位として扱われます。
+      - You can include volumes with single or multiple partitions. (Multiple partition volumes can be dynamic disks or basic disks with multiple partitions.) A volume that contains multiple partitions is treated as a single unit. Consequently, if you add only one of the partitions to a volume group, all the other partitions are automatically added to that volume group at the same time. After you add a multiple partition volume to a volume group, the multiple partition volume continues to be treated as a single unit.
 
-      - ボリュームを割り当てないようにして、空のボリューム グループを作成できます。
+      - You can create empty volume groups by not assigning any volumes to them. 
 
-      - クラスター共有ボリューム (CSV) と非 CSV を同じボリューム グループで混在させないでください。StorSimple Snapshot Manager では、同じスナップショット内に CSV ボリュームと非 CSV ボリュームが混在した環境はサポートされません。
+      - Do not mix cluster-shared volumes (CSVs) and non-CSVs in the same volume group. StorSimple Snapshot Manager does not support a mix of CSV volumes and non-CSV volumes in the same snapshot. 
 
-4. **[OK]** をクリックしてボリューム グループを保存します。
+4. Click **OK** to save the volume group.
 
-## ボリューム グループのバックアップ
+## <a name="back-up-a-volume-group"></a>Back up a volume group
 
-ボリューム グループをバックアップするには、以下の手順を実行します。
+Use the following procedure to back up a volume group.
 
-#### ボリューム グループをバックアップするには
+#### <a name="to-back-up-a-volume-group"></a>To back up a volume group
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
+1. Click the desktop icon to start StorSimple Snapshot Manager.
 
-2. **[スコープ]** ウィンドウで、**[ボリューム グループ]** ノードを展開し、ボリューム グループ名を右クリックして、**[バックアップの作成]** をクリックします。
+2. In the **Scope** pane, expand the **Volume Groups** node, right-click a volume group name, and then click **Take Backup**. 
 
-    ![ボリューム グループの即時バックアップ](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
+    ![Back up volume group immediately](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
 
-3. **[バックアップの作成]** ダイアログ ボックスで、**[ローカル スナップショット]** または **[クラウド スナップショット]** を選択し、**[作成]** をクリックします。
+3. In the **Take Backup** dialog box, select **Local Snapshot** or **Cloud Snapshot**, and then click **Create**. 
 
-    ![[バックアップの作成] ダイアログ](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
+    ![Take backup dialog](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png) 
 
-4. バックアップが実行されていることを確認するには、**[ジョブ]** ノードを展開し、**[実行中]** をクリックします。バックアップが表示されます。
+4. To confirm that the backup is running, expand the **Jobs** node, and then click **Running**. The backup should be listed.
 
-5. 完了したスナップショットを表示するには、**[バックアップ カタログ]** ノードを展開し、ボリューム グループ名を展開して、**[ローカル スナップショット]** または **[クラウド スナップショット]** をクリックします。バックアップが正常に完了した場合は、バックアップが表示されます。
+5. To view the completed snapshot, expand the **Backup Catalog** node, expand the volume group name, and then click **Local Snapshot** or **Cloud Snapshot**. The backup will be listed if it finished successfully. 
 
-## ボリューム グループの編集
+## <a name="edit-a-volume-group"></a>Edit a volume group
 
-ボリューム グループを編集するには、以下の手順を実行します。
+Use the following procedure to edit a volume group.
 
-#### ボリューム グループを編集するには
+#### <a name="to-edit-a-volume-group"></a>To edit a volume group
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
+1. Click the desktop icon to start StorSimple Snapshot Manager.
 
-2. **[スコープ]** ウィンドウで、**[ボリューム グループ]** ノードを展開し、ボリューム グループ名を右クリックして、**[編集]** をクリックします。
+2. In the **Scope** pane, expand the **Volume Groups** node, right-click a volume group name, and then click **Edit**. 
 
-3. **[ボリューム グループの作成]** ダイアログ ボックスが表示されます。**[名前]**、**[アプリケーション]**、**[ボリューム]** エントリは変更できます。
+3. The **Create a volume group **dialog box appears. You can change the **Name**, **Applications**, and **Volumes** entries. 
 
-4. **[OK]** をクリックして変更を保存します。
+4. Click **OK** to save your changes.
 
-## ボリューム グループの削除
+## <a name="delete-a-volume-group"></a>Delete a volume group
 
-ボリューム グループを削除するには、以下の手順を実行します。
+Use the following procedure to delete a volume group. 
 
->[AZURE.WARNING] この操作により、ボリューム グループに関連付けられているすべてのバックアップも削除されます。
+>[AZURE.WARNING] This also deletes all the backups associated with the volume group.
 
-#### ボリューム グループを削除するには
+#### <a name="to-delete-a-volume-group"></a>To delete a volume group
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
+1. Click the desktop icon to start StorSimple Snapshot Manager. 
 
-2. **[スコープ]** ウィンドウで、**[ボリューム グループ]** ノードを展開し、ボリューム グループ名を右クリックして、**[削除]** をクリックします。
+2. In the **Scope** pane, expand the **Volume Groups** node, right-click a volume group name, and then click **Delete**. 
 
-3. **[ボリューム グループの削除]** ダイアログ ボックスが表示されます。テキスト ボックスに「**Confirm**」と入力し、**[OK]** をクリックします。
+3. The **Delete Volume Group** dialog box appears. Type **Confirm** in the text box, and then click **OK**. 
 
-    削除されたボリューム グループは **[結果]** ウィンドウのリストから消去され、そのボリューム グループに関連付けられているすべてのバックアップはバックアップ カタログから削除されます。
+    The deleted volume group vanishes from the list in the **Results** pane and all backups that are associated with that volume group are deleted from the backup catalog.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)方法を確認する。
-- [StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理](storsimple-snapshot-manager-manage-backup-policies.md)方法を確認する。
+- Learn how to [use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
+- Learn how to [use StorSimple Snapshot Manager to create and manage backup policies](storsimple-snapshot-manager-manage-backup-policies.md).
 
-<!---HONumber=AcomDC_0511_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

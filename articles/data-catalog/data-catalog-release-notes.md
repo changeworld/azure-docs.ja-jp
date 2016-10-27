@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Data Catalog リリース ノート | Microsoft Azure"
-   description="Azure Data Catalog のリリース ノートです。"
+   pageTitle="Azure Data Catalog release notes | Microsoft Azure"
+   description="Release notes for Azure Data Catalog."
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -16,72 +16,77 @@
    ms.date="09/21/2016"
    ms.author="maroche"/>
 
-# Azure Data Catalog リリース ノート
 
-## Azure Data Catalog の 2015 年 11 月 20 日リリースのノート
+# <a name="azure-data-catalog-release-notes"></a>Azure Data Catalog release notes
 
-### Power BI Desktop でデータ ソースを開く
+## <a name="notes-for-the-november-20,-2015-release-of-azure-data-catalog"></a>Notes for the November 20, 2015 release of Azure Data Catalog
 
-**Azure Data Catalog** ポータルから [Power BI Desktop で開く] オプションを使用したときに、Power BI Desktop アプリケーションで次の 2 つの問題のどちらかが発生することがあります。
+### <a name="opening-data-sources-in-power-bi-desktop"></a>Opening Data Sources in Power BI Desktop
 
-- [ドキュメントを表示できません] というタイトルのダイアログ ボックスが表示される
-- Power BI Desktop アプリケーションは開くが、ファイルが表示されない
+When using the "Open in Power BI Desktop" option from the **Azure Data Catalog** portal, users may encounter one of two problems in the Power BI Desktop application:
 
-どちらの状況でも、[PowerBI.com](https://powerbi.com) から Power BI Desktop の最新バージョンをインストールすることで問題を解決できます。
+- A dialog box with the title "Unable to Open Document" is displayed
+- The Power BI Desktop application opens, but the file appears to be empty
 
-## Azure Data Catalog の 2015 年 11 月 13 日リリースのノート
+For each situation, the problem can be resolved by downloading and installing the latest version of Power BI Desktop from [PowerBI.com](https://powerbi.com).
 
-### Teradata への登録と接続
+## <a name="notes-for-the-november-13,-2015-release-of-azure-data-catalog"></a>Notes for the November 13, 2015 release of Azure Data Catalog
 
-Teradata データ ソースに接続する場合は、使用するソフトウェアのビット (32 ビットまたは 64 ビット) と一致する適切な Teradata ODBC ドライバーをインストールする必要があります。
+### <a name="registering-and-connecting-to-teradata"></a>Registering and connecting to Teradata
 
-この ADC のリリース日の時点では、最新の [Windows 用の Teradata ODBC ドライバー (バージョン 15.10)](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) は Office 2013 に対応しますが、Office 2016 には対応していません。
+When connecting to Teradata data sources users must have installed the correct Teradata ODBC driver that match the bitness (32-bit or 64-bit) of the software being used.
 
-## Azure Data Catalog の 2015 年 7 月 13 日リリースのノート
+As of this ADC release date, the most recent [Teradata ODBC driver for windows ( version 15.10)](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) is compatible with Office 2013, but not with Office 2016.
 
-### Oracle Database への登録と接続
+## <a name="notes-for-the-july-13,-2015-release-of-azure-data-catalog"></a>Notes for the July 13, 2015 release of Azure Data Catalog
 
-Oracle Database データ ソースに接続する場合、ユーザーは、使用しているソフトウェアのビット (32 ビットか 64 ビット) に一致する正しい Oracle ドライバーをインストールしている必要があります。
+### <a name="registering-and-connecting-to-oracle-database"></a>Registering and connecting to Oracle Database
 
--	32 ビット Windows を実行するコンピューター上の Oracle データ ソースを登録する場合は、32 ビット Oracle ドライバーを使用します。
--	64 ビット Windows を実行するコンピューター上の Oracle データ ソースを登録する場合は、64 ビット Oracle ドライバーを使用します。
--	64 ビット Windows に含まれる 32 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して、Oracle データ ソースに接続する場合、32 ビット Oracle ドライバーを使用します。
--	64 ビット バージョンの Microsoft Office を実行するコンピューター上の Excel を使用して、Oracle データ ソースに接続する場合、64 ビット Oracle ドライバーを使用します。
+When connecting to Oracle Database data sources users must have installed the correct Oracle drivers that match the bitness (32-bit or 64-bit) of the software being used.
 
-### SQL Server Reporting Services への登録と接続
+-   When registering Oracle data sources on a computer running 32-bit Windows, the 32-bit Oracle drivers will be used
+-   When registering Oracle data sources on a computer running 64-bit Windows, the 64-bit Oracle drivers will be used
+-   When connecting to Oracle data sources using Excel on a computer running the 32-bit version of Microsoft Office, including on 64-bit Windows, the 32-bit Oracle drivers will be used
+-   When connecting to Oracle data sources using Excel on a computer running the 64-bit version of Microsoft Office, the 64-bit Oracle drivers will be used
 
-現在、SQL Server Reporting Services (SSRS) データ ソースのサポートは、ネイティブ モード サーバーのみに制限されます。SSRS の SharePoint モードでのサポートは、今後のリリースで追加される予定です。
+### <a name="registering-and-connecting-to-sql-server-reporting-services"></a>Registering and connecting to SQL Server Reporting Services
 
-### Excel でのデータ資産のオープン
+Support for SQL Server Reporting Services (SSRS) data sources is currently limited to Native Mode servers only. Support for SSRS in SharePoint mode will be added in a later release.
 
-**Azure Data Catalog ポータル**から Microsoft Excel でデータ資産を開くと、**[Microsoft Excel のセキュリティに関する通知]** ダイアログ ボックスにメッセージが表示されることがあります。これは標準の予想される動作であり、ユーザーは、[**有効にする**] を選択して続行できます。
+### <a name="opening-data-assets-in-excel"></a>Opening data assets in Excel
 
-詳細については、「[不審な Web サイトへのリンクやそうしたサイトからのファイルについてのセキュリティの警告を有効または無効にする](https://support.office.com/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE)」を参照してください。
+When opening data assets in Microsoft Excel from the **Azure Data Catalog** portal, users may be prompted with a **Microsoft Excel Security Notice** dialog box. This is standard, expected behavior, and users can select **Enable** to continue.
 
-### プロキシおよびポリシーの構成とデータ ソースの登録
+For more information, see [Enable or disable security alerts about links and files from suspicious websites](https://support.office.com/article/Enable-or-disable-security-alerts-about-links-and-files-from-suspicious-websites-A1AC6AE9-5C4A-4EB3-B3F8-143336039BBE).
 
-ユーザーは、Azure Data Catalog ポータルにログオンできる状況が発生することがありますが、データ ソース登録ツールにログオンしようとすると、ログオンを妨げるエラー メッセージが表示されます。
+### <a name="proxy-and-policy-configuration-and-data-source-registration"></a>Proxy and policy configuration and data source registration
 
-この問題の動作には 2 つの可能性のある原因があります。
+Users may encounter a situation where they can log on to the Azure Data Catalog portal, but when they attempt to log on to the data source registration tool they encounter an error message that prevents them from logging on.
 
-**原因 1: Active Directory Federation Services の構成**。データ ソース登録ツールは、フォーム認証を使用して、Active Directory に対するユーザー ログオンを検証します。ログオンを成功させるには、Active Directory 管理者によって、グローバル認証ポリシーでフォーム認証が有効にされている必要があります。
+There are two potential causes for this problem behavior:
 
-特定の状況で、ユーザーが企業ネットワーク上にいる場合のみ、またはユーザーが企業ネットワークの外部から接続している場合のみ、このエラー動作が発生することがあります。グローバル認証ポリシーでは、イントラネット接続とエクストラネット接続で個別に認証方法を有効にすることができます。ログオン エラーは、ユーザーの接続元のネットワークで、フォーム認証が有効にされていない場合に発生する可能性があります。
+**Cause 1: Active Directory Federation Services configuration** The data source registration tool uses Forms Authentication to validate user logons against Active Directory. For successful logon, Forms Authentication must be enabled in the Global Authentication Policy by an Active Directory administrator.
 
-詳細については、「[認証ポリシーの構成](https://technet.microsoft.com/library/dn486781.aspx)」を参照してください。
+In some situations, this error behavior may occur only when the user is on the company network, or only when the user is connecting from outside the company network. The Global Authentication Policy allows authentication methods to be enabled separately for intranet and extranet connections. Logon errors may occur if Forms Authentication is not enabled for the network from which the user is connecting.
 
-**原因 2: ネットワーク プロキシの構成**。企業ネットワークでプロキシ サーバーを使用している場合、登録ツールが、プロキシ経由で Azure Active Directory に接続できないことがあります。ユーザーは、ツールの構成ファイルを編集し、このセクションをファイルに追加して、登録ツールが確実に接続できるようにします。
+For more information, see [Configuring Authentication Policies](https://technet.microsoft.com/library/dn486781.aspx).
 
-
-	  <system.net>
-	    <defaultProxy useDefaultCredentials="true" enabled="true">
-	      <proxy usesystemdefault="True"
-	                      proxyaddress="http://<your corporate network proxy url>"
-	                      bypassonlocal="True"/>
-	    </defaultProxy>
-	  </system.net>
+**Cause 2: Network proxy configuration** If the corporate network uses a proxy server, the registration tool may not be able to connect to Azure Active Directory through the proxy. Users can ensure that the registration tool by editing the tool’s configuration file, adding this section to the file:
 
 
-RegistrationTool.exe.config ファイルを見つけるには、登録ツールを起動し、Windows タスク マネージャー ユーティリティを開きます。タスク マネージャーの [詳細] タブで、[RegistrationTool.exe] を右クリックし、ポップアップ メニューから [ファイルの場所を開く] を選択します。
+      <system.net>
+        <defaultProxy useDefaultCredentials="true" enabled="true">
+          <proxy usesystemdefault="True"
+                          proxyaddress="http://<your corporate network proxy url>"
+                          bypassonlocal="True"/>
+        </defaultProxy>
+      </system.net>
 
-<!---HONumber=AcomDC_0921_2016-->
+
+To locate the RegistrationTool.exe.config file, launch the registration tool, and then open the Windows Task Manager utility. On the Details tab in Task manager, right-click on RegistrationTool.exe and choose Open file location from the pop-up menu.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

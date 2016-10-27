@@ -1,84 +1,85 @@
 <properties
-	pageTitle="Azure Active Directory B2C: サード パーティ ライブラリを使用して iOS アプリケーションから Web API を呼び出す | Microsoft Azure"
-	description="この記事では、OAuth 2.0 ベアラー トークンとサード パーティ ライブラリを使用して、Node.js Web API を呼び出す iOS の ";To-Do List"; アプリを作成する方法について説明します。"
-	services="active-directory-b2c"
-	documentationCenter="ios"
-	authors="brandwe"
-	manager="mbaldwin"
-	editor=""/>
+    pageTitle="Azure Active Directory B2C: Call a web API from an iOS application using third party libraries| Microsoft Azure"
+    description="This article will show you how to create an iOS 'to-do list' app that calls a Node.js web API by using OAuth 2.0 bearer tokens using a third party library"
+    services="active-directory-b2c"
+    documentationCenter="ios"
+    authors="brandwe"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags ms.service="active-directory-b2c" ms.workload="identity" ms.tgt_pltfrm="na" ms.devlang="objectivec" ms.topic="hero-article"
 
-	ms.date="07/26/2016"
-	ms.author="brandwe"/>
+    ms.date="07/26/2016"
+    ms.author="brandwe"/>
 
-# Azure AD B2C: サード パーティ ライブラリを使用して iOS アプリケーションから Web API を呼び出す
+
+# <a name="azure-ad-b2c-:-call-a-web-api-from-an-ios-application-using-a-third-party-library"></a>Azure AD B2C : Call a web API from an iOS application using a third party library
 
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
-Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。そのため開発者は、好きなライブラリを活用して Microsoft のサービスと連携させることができます。Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
+The Microsoft identity platform uses open standards such as OAuth2 and OpenID Connect. This allows developers to leverage any library they wish to integrate with our services. To aid developers in using our platform with other libraries we've written a few walkthroughs like this one to demonstate how to configure third party libraries to connect to the Microsoft identity platform. Most libraries that implement [the RFC6749 OAuth2 spec](https://tools.ietf.org/html/rfc6749) will be able to connect to the Microsoft Identity platform.
 
 
-ここで紹介する構成サンプルは OAuth2 や OpenID Connect に精通している読者を想定しており、それ以外の方にとっては、あまり参考にならない可能性があります。その場合は、[対応プロトコルについて簡単に解説したこちらの記事](active-directory-b2c-reference-protocols.md)に目を通すことをお勧めします。
+If you're new to OAuth2 or OpenID Connect much of this sample configuration may not make much sense to you. We recommend you look at a brief [overview of the protocol we've documented here](active-directory-b2c-reference-protocols.md).
 
 > [AZURE.NOTE]
-    Microsoft のプラットフォーム機能のうち、これらの標準に含まれている式が使われているいくつかの機能 (条件付きアクセスや Intune ポリシー管理) については、オープン ソースの Microsoft Azure Identity Libraries を使用する必要があります。
+    Some features of our platform that do have an expression in these standards, such as Conditional Access and Intune policy management, require you to use our open source Microsoft Azure Identity Libraries. 
    
-Azure Active Directory のシナリオおよび機能のすべてが B2C プラットフォームでサポートされているわけではありません。B2C プラットフォームを使用する必要があるかどうかを判断するには、[B2C の制限事項](active-directory-b2c-limitations.md)に関するページをお読みください。
+Not all Azure Active Directory scenarios & features are supported by the B2C platform.  To determine if you should use the B2C platform, read about [B2C limitations](active-directory-b2c-limitations.md).
 
 
-## Azure AD B2C ディレクトリの取得
+## <a name="get-an-azure-ad-b2c-directory"></a>Get an Azure AD B2C directory
 
-Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、[B2C ディレクトリを作成](active-directory-b2c-get-started.md)してから先に進んでください。
+Before you can use Azure AD B2C, you must create a directory, or tenant. A directory is a container for all of your users, apps, groups, and more. If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue.
 
-## アプリケーションの作成
+## <a name="create-an-application"></a>Create an application
 
-次に、B2C ディレクトリにアプリを作成する必要があります。これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。ここでは、アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従います。次を行ってください。
+Next, you need to create an app in your B2C directory. This gives Azure AD information that it needs to communicate securely with your app. Both the app and the web API are represented by a single **Application ID** in this case, because they comprise one logical app. To create an app, follow [these instructions](active-directory-b2c-app-registration.md). Be sure to:
 
-- **モバイル デバイス**をアプリケーションに含めます。
-- アプリに割り当てられた**アプリケーション ID** をコピーしておきます。この情報も後で必要になります。
+- Include a **mobile device** in the application.
+- Copy the **Application ID** that is assigned to your app. You will also need this later.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## ポリシーの作成
+## <a name="create-your-policies"></a>Create your policies
 
-Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。このアプリには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、このポリシーを種類ごとに作成する必要があります。ポリシーを作成するときは、以下の操作を必ず実行してください。
+In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md). This app contains one identity experience: a combined sign in and sign-up. You need to create this policy of each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy). When you create the policy, be sure to:
 
-- ポリシーで、**[表示名]** とサインアップ属性を選択します。
-- すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。その他のクレームも選択できます。
-- ポリシーの作成後、各ポリシーの **[名前]** をコピーしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。このポリシー名は後で必要になります。
+- Choose the **Display name** and sign-up attributes in your policy.
+- Choose the **Display name** and **Object ID** application claims in every policy. You can choose other claims as well.
+- Copy the **Name** of each policy after you create it. It should have the prefix `b2c_1_`.  You'll need the policy name later.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-ポリシーを作成したら、アプリを構築できます。
+After you have created your policies, you're ready to build your app.
 
 
-## コードのダウンロード
+## <a name="download-the-code"></a>Download the code
 
-このチュートリアルのコードは、[GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c) で管理されています。チュートリアルを先に進めるため、[アプリを .zip ファイル (/archive/master.zip) としてダウンロードする](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c)か、次のように複製することができます。
+The code for this tutorial is maintained [on GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c).  To follow along, you can [download the app as a .zip](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-b2c)/archive/master.zip) or clone it:
 
 ```
 git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
 ```
 
-または、完成済みのコードをダウンロードして、すぐに開始することもできます。
+Or just download the completed code and get started right away: 
 
 ```
 git clone --branch complete git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-b2c.git
 ```
 
-## サード パーティ製ライブラリ nxoauth2 のダウンロードとワークスペースの起動
+## <a name="download-the-third-party-library-nxoauth2-and-launch-a-workspace"></a>Download the third party library nxoauth2 and launch a workspace
 
-このチュートリアルでは、Mac OS X & iOS (Cocoa & Cocoa Touch) 用の OAuth2 ライブラリ OAuth2Client を GitHub からクローンして使用します。このライブラリのベースとなっているのは、OAuth2 仕様のドラフト 10 です。このライブラリは、ネイティブ アプリケーション プロファイルを実装し、エンド ユーザーの承認エンドポイントをサポートしています。これらの条件さえ整えば、Microsoft の ID プラットフォームと連携させることができます。
+For this walkthrough we will use the OAuth2Client from GitHub, an OAuth2 library for Mac OS X & iOS (Cocoa & Cocoa touch). This library is based on draft 10 of the OAuth2 spec. It implements the native application profile and supports the end-user authorization endpoint. These are all the things we'll need in order to integrat with The Microsoft identity platform.
 
-### CocoaPods を使用してプロジェクトにライブラリを追加する
+### <a name="adding-the-library-to-your-project-using-cocoapods"></a>Adding the library to your project using CocoaPods
 
-CocoaPods は、Xcode プロジェクト用の依存関係マネージャーです。上記のインストール手順は、CocoaPods によって自動的に管理されます。
+CocoaPods is a dependency manager for Xcode projects. It manages the above installation steps automatically.
 
 ```
 $ vi Podfile
 ```
-このポッドファイルに次のコードを追加します。
+Add the following to this podfile:
 
 ```
  platform :ios, '8.0'
@@ -90,7 +91,7 @@ $ vi Podfile
  end
 ```
 
-次に Cocoapods を使用してポッドファイルを読み込みます。これにより、読み込む新しい XCode ワークスペースが作成されます。
+Now load the podfile using cocoapods. This will create a new XCode Workspace you will load.
 
 ```
 $ pod install
@@ -99,75 +100,75 @@ $ open SampleforB2C.xcworkspace
 
 ```
 
-## プロジェクトの構造
+## <a name="the-structure-of-the-project"></a>The structure of the project
 
-プロジェクトのスケルトンには、次の構造をセットアップしてあります。
+We have the following structure set up for our project in the skeleton:
 
-* **マスター ビュー** (タスク ウィンドウを含む)
-* **タスクの追加ビュー** (選択したタスクに関するデータ用のビュー)
-* **ログイン ビュー** (ユーザーがアプリにサインインするときに使用する)
+* A **Master View** with a task pane
+* A **Add Task View** for the data about the selected task
+* A **Login View** that allows a user to sign-in to the app.
 
-ここでは、プロジェクト内の各種ファイルにアクセスして認証機能を追加していきます。その他のコード要素 (ビジュアル コードなど) は ID と密接な関係があるとは言えませんが、参考までに記載しています。
+We will jump in to various files in the project to add authentication. Other parts of the code such as the visual code is not germane to identity and are provided for you.
 
-## アプリケーション用の `settings.plist` ファイルを作成する
+## <a name="create-the-`settings.plist`-file-for-your-application"></a>Create the `settings.plist` file for your application
 
-各種構成値を配置して一元的に管理できる場所があると、アプリケーションを構成しやすくなります。また、アプリケーションでの各設定の役割を把握するうえでも役立ちます。ここでは、これらの値をアプリケーションに設定する方法として、*プロパティ リスト*を活用します。
+It's easier to configure the application if we have a centralized location to put our configuration values. It also helps you understand what each setting does in your application. We will leverage the *Property List* as a way to provide these values to the application.
 
-* アプリケーション ワークスペースで `Supporting Files` の下に `settings.plist` ファイルを作成して開きます。
+* Create/Open the `settings.plist` file under `Supporting Files` in your application workspace
 
-* 以下に示す値を入力します (それぞれの値の詳細についてはすぐに説明します)。
+* Enter in the following values (we'll go through them in detail soon)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>accountIdentifier</key>
-	<string>B2C_Acccount</string>
-	<key>clientID</key>
-	<string><client ID></string>
-	<key>clientSecret</key>
-	<string></string>
-	<key>authURL</key>
-	<string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/authorize?p=<policy name></string>
-	<key>loginURL</key>
-	<string>https://login.microsoftonline.com/<tenant name>/login</string>
-	<key>bhh</key>
-	<string>urn:ietf:wg:oauth:2.0:oob</string>
-	<key>tokenURL</key>
-	<string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/token?p=<policy name></string>
-	<key>keychain</key>
-	<string>com.microsoft.azureactivedirectory.samples.graph.QuickStart</string>
-	<key>contentType</key>
-	<string>application/x-www-form-urlencoded</string>
-	<key>taskAPI</key>
-	<string>https://aadb2cplayground.azurewebsites.net</string>
+    <key>accountIdentifier</key>
+    <string>B2C_Acccount</string>
+    <key>clientID</key>
+    <string><client ID></string>
+    <key>clientSecret</key>
+    <string></string>
+    <key>authURL</key>
+    <string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/authorize?p=<policy name></string>
+    <key>loginURL</key>
+    <string>https://login.microsoftonline.com/<tenant name>/login</string>
+    <key>bhh</key>
+    <string>urn:ietf:wg:oauth:2.0:oob</string>
+    <key>tokenURL</key>
+    <string>https://login.microsoftonline.com/<tenant name>/oauth2/v2.0/token?p=<policy name></string>
+    <key>keychain</key>
+    <string>com.microsoft.azureactivedirectory.samples.graph.QuickStart</string>
+    <key>contentType</key>
+    <string>application/x-www-form-urlencoded</string>
+    <key>taskAPI</key>
+    <string>https://aadb2cplayground.azurewebsites.net</string>
 </dict>
 </plist>
 ```
 
-ではこのコードについて詳しく見ていきましょう。
+Let's go in to these in detail.
 
 
-`authURL`、`loginURL`、`bhh`、`tokenURL` については、テナント名の入力が必要であることがわかります。これは、自分に割り当てられた B2C テナントのテナント名です。たとえば、`kidventusb2c.onmicrosoft.com` のようにします。Microsoft のオープン ソースである Microsoft Azure Identity Libraries を使用する場合、このデータは、Microsoft のメタデータ エンドポイントを使用して自動的に取得されます。これらの値を自動的に抽出するためのさまざまな工夫が Microsoft によって施されています。
+For `authURL`, `loginURL`, `bhh`, `tokenURL` you'll notice you need to fill in your tenant name. This is the tenant name of your B2C tenant that was assigned to you. For instance, `kidventusb2c.onmicrosoft.com`.If you use our open source Microsoft Azure Identity Libraries we would pull this data down for you using our metadata endpoint. We've done the hard work of extracting these values for you.
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-`keychain` の値は、NXOAuth2Client ライブラリがトークンの格納先となるキーチェーンを作成する際に使用するコンテナーです。多数のアプリで SSO を利用したい場合は、それぞれのアプリケーションで同じキーチェーンを指定できるほか、XCode の Entitlement からそのキーチェーンの使用を要求することができます。この点については、Apple のドキュメントを参照してください。
+The `keychain` value is the container that the NXOAuth2Client library will use to create a keychain to store your tokens. If you'd like to get SSO across numerous apps you can specify the same keychain in each of your applications as well as request the use of that keychain in your XCode entitements. This is covered in the Apple documentation.
 
-各 URL の末尾にある `<policy name>` は、上で作成したポリシーを配置する場所です。アプリはフローに応じてこれらのポリシーを呼び出します。
+The `<policy name>`  at the end of each URL are the places where you'd put the policy you created above. The app will call these policies depending on the flow.
 
-`taskAPI` は、タスクを追加するか、既存のタスクに対してクエリを実行するために、B2C トークンを使用して呼び出す REST エンドポイントです。この値は、このサンプル専用に設定されています。この値を変更せずにそのまま使用しても、サンプルは動作します。
+The `taskAPI` is the REST Endpoint we will call with your B2C token to either add tasks or query existing tasks. This has been set up specifically for this sample. You don't need to change it for the sample to work.
 
-残りはライブラリを使用するために必要となる値で、目的のコンテキストに伝える値を保持するために使用されます。
+The rest of these values are required to use the library and simply create places for you to carry values to the context.
 
-`settings.plist` ファイルは作成したので、次はファイルを読み取るコードが必要です。
+Now that we have the `settings.plist` file created, we need code to read it.
 
-## 設定を読み取るための AppData クラスをセットアップする
+## <a name="set-up-a-appdata-class-to-read-our-settings"></a>Set up a AppData class to read our settings
 
-上で作成した `settngs.plist` ファイルを解析するだけの簡単なファイルを作成し、今後どのクラスからでも設定を取得できるようにしましょう。クラスから要求されるたびにデータの新しいコピーが作成されるのは望ましくないため、シングルトン パターンを使用し、設定が要求されるたびに作成される同じインスタンスのみを返します。
+Let's make a simple file that just parses our `settngs.plist` file we created above and make those settings avaialble in the future to any class. Since we don't want to create a new copy of the data every time a class asks for it, we will use a Singleton pattern and only return the same instance created each time a request is made for the settings
 
-* `AppData.h` ファイルを作成します。
+* Create an `AppData.h` file:
 
 ```objc
 #import <Foundation/Foundation.h>
@@ -190,7 +191,7 @@ $ open SampleforB2C.xcworkspace
 @end
 ```
 
-* `AppData.m` ファイルを作成します。
+* Create an `AppData.m` file:
 
 ```objc
 #import "AppData.h"
@@ -226,32 +227,32 @@ $ open SampleforB2C.xcworkspace
 @end
 ```
 
-これで、後述する例のように、いずれかのクラスで `  AppData *data = [AppData getInstance];` を呼び出すだけで、データに簡単にアクセスできるようになりました。
+Now we can easily get at our data by simply calling `  AppData *data = [AppData getInstance];` in any of our classes as you'll see below.
 
 
 
-## AppDelegate で NXOAuth2Client ライブラリをセットアップする
+## <a name="set-up-the-nxoauth2client-library-in-your-appdelegate"></a>Set up the NXOAuth2Client library in your AppDelegate
 
-NXOAuthClient ライブラリでは、いくつかの値を設定する必要があります。それが完了したら、取得したトークンを使って REST API を呼び出すことができます。アプリケーションを読み込むときには常に `AppDelegate` が呼び出されることがわかっているため、設定する値はそのファイルに記述するのが妥当です。
-* `AppDelegate.m` ファイルを開きます。
+The NXOAuthClient library requires some values to get set up. Once that is complete you can use the token that is aquired to call the REST API. Since we know that the `AppDelegate` will be called any time we load the application it makes sense that we put our configuration values in to that file.
+* Open `AppDelegate.m` file
 
-* 後で使用するいくつかのヘッダー ファイルをインポートします。
+* Import some header files we will use later.
 
 ```objc
 #import "NXOAuth2.h" // the Identity library we are using
 #import "AppData.h" // the class we just created we will use to load the settings of our application
 ```
 
-* `setupOAuth2AccountStore` メソッドを AppDelegate に追加します。
+* Add the `setupOAuth2AccountStore` method in the AppDelegate
 
-AccountStore を作成し、それに `settings.plist` ファイルから読み取ったデータをフィードする必要があります。
+We need to create an AccountStore and then feed it the data we just read in from the `settings.plist` file.
 
-B2C サービスに関して、この時点で把握しておくべき点がいくつかあります。それらを把握しておけば、コードの内容もより理解しやすくなります。
+There are some things you should be aware of regarding the B2C service at this point that will make this code more understandable:
 
 
-1. Azure AD B2C では、クエリ パラメーターによって指定される "*ポリシー*" を使用して、要求を処理します。これにより、Azure Active Directory はアプリケーション専用の独立したサービスとして機能できます。このような追加のクエリ パラメーターを指定するには、カスタム ポリシー パラメーターを使用して `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` メソッドを指定する必要があります。
+1. Azure AD B2C uses the *policy* as provided by the query parameters to service your request. This allows Azure Active Directory to act as an independent service just for your application. In order to provide these extra query parameters we need to provide the `kNXOAuth2AccountStoreConfigurationAdditionalAuthenticationParameters:` method with our custom policy parameters. 
 
-2. Azure AD B2C では、他の OAuth2 サーバーとほぼ同じ方法でスコープを使用します。ただし、B2C はリソースへのアクセスにも、ユーザーの認証にも使用されることから、フローを正しく機能させるためには、いくつかのスコープが欠かせません。その 1 つが `openid` スコープです。Microsoft Identity SDK では、自動的に `openid` スコープが指定されるため、SDK 構成にこのスコープを含める必要はありません。ただし、ここではサード パーティのライブラリを使用するため、このスコープを指定する必要があります。
+2. Azure AD B2C uses scopes in much the same way as other OAuth2 servers. However since the use of B2C is as much about authenticating a user as accessing resources some scopes are absolutely required in order for the flow to work correctly. This is the `openid` scope. Our Microsoft identity SDKs automatically provide the `openid` scope for you so you won't see that in our SDK configuration. Since we are using a third party library, however, we need to specify this scope.
 
 ```objc
 - (void)setupOAuth2AccountStore {
@@ -284,18 +285,18 @@ B2C サービスに関して、この時点で把握しておくべき点がい�
                                         forAccountType:data.accountIdentifier];
 }
 ```
-次に、これを AppDelegate の `didFinishLaunchingWithOptions:` メソッドの下で呼び出すようにします。
+Next, make sure you call it in the AppDelegate under `didFinishLaunchingWithOptions:` method. 
 
 ```
 [self setupOAuth2AccountStore];
 ```
 
 
-## 認証要求の処理に使用する `LoginViewController` クラスを作成する
+## <a name="create-a-`loginviewcontroller`-class-that-we-will-use-to-handle-authentication-requests"></a>Create a `LoginViewController` class that we will use to handle authentication requests
 
-アカウントのサインインには WebView を使用します。このビューを介して SMS テキスト メッセージなどの付加的な要素の入力をユーザーに促したり (構成されている場合)、エラー メッセージをユーザーに返したりすることができます。ここで WebView を設定した後、WebView 内で発生する Microsoft Identity Service からのコールバックに対処するコードを記述します。
+We use a webview for account sign-in. This allows us to prompt the user for additional factors like SMS text message (if configured) or give error messages back to the user. Here we'll set up the webview and then later write the code to handle the callbacks that will happen in the WebView from the Microsoft Identity Service.
 
-* `LoginViewController.h` クラスを作成します。
+* Create a `LoginViewController.h` class
 
 ```objc
 @interface LoginViewController : UIViewController <UIWebViewDelegate>
@@ -306,14 +307,14 @@ B2C サービスに関して、この時点で把握しておくべき点がい�
 - (void)requestOAuth2Access; // This is where we invoke our webview.
 ```
 
-これらの各メソッドを以下で作成します。
+We will create each of these methods below.
 
 > [AZURE.NOTE] 
-    `loginView` はストーリーボード内の実際の Web ビューにバインドしてください。そうしないと、認証時にポップアップ表示できる Web ビューが存在しない状態になります。
+    Make sure that you bind the `loginView` to the actual webview that is inside your storyboard. Otherwise you won't have a webview that can pop up when it's time to authenticate.
 
-* `LoginViewController.m` クラスを作成します。
+* Create a `LoginViewController.m` class
 
-* 認証時に状態を保持するいくつかの変数を追加します。
+* Add some variables to carry state as we authenticate
 
 ```objc
 NSURL *myRequestedUrl; \\ The URL request to Azure Active Directory 
@@ -323,9 +324,9 @@ bool isRequestBusy; \\ A way to give status to the thread that the request is st
 NSURL *authcode; \\ A placeholder for our auth code.
 ```
 
-* WebView のメソッドをオーバーライドして認証を処理する
+* Override the WebView methods to handle authentication
 
-上記のログインをユーザーから要求されたときの動作を WebView に対して指定する必要があります。以下のコードをそのまま貼り付けてご使用ください。
+We need to tell the webview the behavior we want when a user needs to login as discussed above. You can simply cut and paste the code below.
 
 ```objc
 - (void)resolveUsingUIWebView:(NSURL *)URL {
@@ -395,9 +396,9 @@ NSURL *authcode; \\ A placeholder for our auth code.
 
 ```
 
-* OAuth2 要求の結果を処理するコードを記述する
+* Write code to handle the result of the OAuth2 request
 
-WebView から返された redirectURL を処理するコードが必要です。OAuth2 要求に失敗した場合は、再試行します。このときライブラリから生成されたエラーをコンソールに表示したり、非同期で処理したりすることができます。
+We'll need code that will handle the redirectURL that comes back from the WebView. If it wasn't successful, we will try again. Meanwhile the library will provide the error that you can see in the console or handle asyncronously. 
 
 ```objc
 - (void)handleOAuth2AccessResult:(NSURL *)accessResult {
@@ -414,9 +415,9 @@ WebView から返された redirectURL を処理するコードが必要です�
 }
 ```
 
-* 通知ファクトリをセットアップします。
+* Set up the Notification factories.
 
-上の `AppDelegate` で作成したものと同じメソッドを作成しますが、今回はサービス内で何が行われているかを通知するために、`NSNotification` をいくつか追加します。トークンに変更が生じたときに通知を実行するオブザーバーを設定します。トークンを取得したら、ユーザーを `masterView` に戻します。
+We create the same method we did in the `AppDelegate` above, but this time we will add some `NSNotification`s to tell us what is happening in our service. We set up an observer that will tell us when anything changes with the token. Once we get the token we return the user back to the `masterView`.
 
 
 
@@ -457,9 +458,9 @@ WebView から返された redirectURL を処理するコードが必要です�
 }
 
 ```
-* サイン ネイティブの要求が開始されるたびにユーザー向けの処理を実行するコードを追加します。
+* Add code that handles the user whenever a request is initiated for sign-native
 
-認証要求を受け取るたびに呼び出されるメソッドを作成しましょう。これは、Web ビューを実際に作成するメソッドとなります。
+Let's create a method that will be called whenever we have a request for authentication. This will be the method that actually creates a webview
 
 ```objc
 - (void)requestOAuth2Access {
@@ -478,7 +479,7 @@ WebView から返された redirectURL を処理するコードが必要です�
 }
 ```
 
-* 最後に、上で作成したすべてのメソッドを、`LoginViewController` が読み込まれるたびに呼び出します。これを実行するには、Apple から提供されている `viewDidLoad` メソッドに、作成した各メソッドを追加します。
+* Finally, let's call all these methods we've written above every time the `LoginViewController` loads. We do this by adding these methods to our `viewDidLoad` method Apple gives us
 
 ```objc
   [super viewDidLoad];
@@ -496,14 +497,14 @@ WebView から返された redirectURL を処理するコードが必要です�
   [NSURLCache setSharedURLCache:URLCache];
 ```
 
-これで、サインインのためにアプリケーションを操作する際の主な手段が作成できました。サインインした後は、受け取ったトークンを使用する必要があります。そのため、このライブラリを使用して REST API を呼び出すヘルパー コードをいくつか作成します。
+You are now done with creating the main way we'll interact with our application for sign in. After we've signed in, we'll need to use our tokens we've received. For that we'll create some helper code that will call REST APIs for us using this library.
 
 
-## REST API への要求を処理する `GraphAPICaller` クラスを作成する
+## <a name="create-a-`graphapicaller`-class-to-handle-our-requests-to-a-rest-api"></a>Create a `GraphAPICaller` class to handle our requests to a REST API
 
-アプリを読み込むたびに、構成が読み込まれます。トークンを取得したら、この構成に少し手を加える必要があります。
+We have a configuration loaded every time we load our app. Now we need to do something with it once we have a token. 
 
-* `GraphAPICaller.h` ファイルを作成します。
+* Create a `GraphAPICaller.h`  file
 
 ```objc
 @interface GraphAPICaller : NSObject <NSURLConnectionDataDelegate>
@@ -516,11 +517,11 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock;
 @end
 ```
 
-このコードを見ると、これから 2 つのメソッド (API からタスクを取得するメソッドと、API にタスクを追加するメソッド) を作成することがわかります。
+You see from this code that we will be creating two methods: one to get the tasks from an API and another to add tasks to the API.
 
-インターフェイスをセットアップしたので、実装を追加しましょう。
+Now that we've set up our interface, let's add the actual implementation:
 
-* `GraphAPICaller.m file` を作成します。
+* Create a `GraphAPICaller.m file`
 
 ```objc
 @implementation GraphAPICaller
@@ -631,19 +632,23 @@ completionBlock:(void (^)(bool, NSError *error))completionBlock {
 @end
 ```
 
-## サンプル アプリを実行する
+## <a name="run-the-sample-app"></a>Run the sample app
 
-最後に、アプリを Xcode でビルドして実行します。アプリにサインアップまたはサインインし、サインインしているユーザーのタスクを作成します。サインアウトして、別のユーザーとしてもう一度サインインし、そのユーザーのタスクを作成します。
+Finally, build and run the app in Xcode. Sign up or sign in to the app, and create tasks for a signed-in user. Sign out and sign back in as a different user, and create tasks for that user.
 
-API でタスクがユーザーごとに保存されたことを確認します。これは、API が、受信したアクセス トークンからユーザー ID を抽出したためです。
+Notice that the tasks are stored per-user on the API, because the API extracts the user's identity from the access token that it receives.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-さらに高度な B2C のトピックに進むことができます。次のトピックをご覧ください。
+You can now move onto more advanced B2C topics. You might try:
 
-[Node.js Web アプリからの Node.js Web API の呼び出し]()
+[Call a Node.js web API from a Node.js web app]()
 
-[B2C アプリの UX のカスタマイズ]()
+[Customize the UX for a B2C app]()
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO4-->
+
+

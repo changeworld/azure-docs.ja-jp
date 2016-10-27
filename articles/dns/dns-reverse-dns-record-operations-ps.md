@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager で PowerShell を使用してサービスの逆引き DNS レコードを管理する方法 |Microsoft Azure"
-   description="Resource Manager で PowerShell を使用して Azure サービスの逆引き DNS レコードまたは PTR レコードを管理する方法"
+   pageTitle="How to manage reverse DNS records for your services using PowerShell in Resource Manager | Microsoft Azure"
+   description="How to manage reverse DNS records or PTR records for Azure services using PowerShell in Resource Manager"
    services="DNS"
    documentationCenter="na"
    authors="s-malone"
@@ -17,7 +17,8 @@
    ms.date="09/05/2016"
    ms.author="smalone" />
 
-# PowerShell を使用してサービスの逆引き DNS レコードを管理する方法
+
+# <a name="how-to-manage-reverse-dns-records-for-your-services-using-powershell"></a>How to manage reverse DNS records for your services using PowerShell
 
 [AZURE.INCLUDE [dns-reverse-dns-record-operations-arm-selectors-include.md](../../includes/dns-reverse-dns-record-operations-arm-selectors-include.md)]
 <BR>
@@ -25,47 +26,51 @@
 <BR>
 [AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](dns-reverse-dns-record-operations-classic-ps.md).
 
-## 逆引き DNS レコードの検証
-Azure では、サード パーティがお客様の DNS ドメインにマッピングされた逆引き DNS レコードを作成できないようにするために、以下のいずれかに該当する場合のみ逆引き DNS レコードを作成できるようにしています。
+## <a name="validation-of-reverse-dns-records"></a>Validation of reverse DNS records
+To ensure a third party can’t create reverse DNS records mapping to your DNS domains, Azure only allows the creation of a reverse DNS record where one of the following is true:
 
-- "ReverseFqdn" が、逆引き DNS で指定されたパブリック IP アドレス リソースの "Fqdn"、または同じサブスクリプションに含まれるいずれかのパブリック IP アドレスの "Fqdn" と同じである (例: "ReverseFqdn" が "contosoapp1.northus.cloudapp.azure.com." である)。
+- The “ReverseFqdn” is the same as the “Fqdn” for the Public IP Address resource for which it has been specified, or the “Fqdn” for any Public IP Address within the same subscription e.g., “ReverseFqdn” is “contosoapp1.northus.cloudapp.azure.com.”.
 
-- "ReverseFqdn" が、逆引き DNS で指定されたパブリック IP アドレスの名前または IP か、または同じサブスクリプションに含まれるいずれかのパブリック IP アドレスの "Fqdn" または IP に対して前方解決される (例: "ReverseFqdn" が、"contosoapp1.northus.cloudapp.azure.com" の CName エイリアスの "app1.contoso.com" である)。
+- The “ReverseFqdn” forward resolves to the name or IP of the Public IP Address for which it has been specified, or to any Public IP Address “Fqdn” or IP within the same subscription e.g., “ReverseFqdn” is “app1.contoso.com.” which is a CName alias for “contosoapp1.northus.cloudapp.azure.com.”
 
-検証チェックが実行されるのは、パブリック IP アドレスの逆引き DNS プロパティの設定時または変更時のみです。定期的な再検証は行われません。
+Validation checks are only performed when the reverse DNS property for a Public IP Address is set or modified. Periodic re-validation is not performed.
 
-## 既存の Public IP Addresses への逆引き DNS の追加
-既存のパブリック IP アドレスに逆引き DNS を追加するには、“Set-AzureRmPublicIpAddress” コマンドレットを使用します。
+## <a name="add-reverse-dns-to-existing-public-ip-addresses"></a>Add reverse DNS to existing Public IP addresses
+You can add reverse DNS to an existing Public IP Address using the “Set-AzureRmPublicIpAddress” cmdlet:
 
-	PS C:\> $pip = Get-AzureRmPublicIpAddress -Name PublicIP -ResourceGroupName NRP-DemoRG-PS
-	PS C:\> $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-	PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+    PS C:\> $pip = Get-AzureRmPublicIpAddress -Name PublicIP -ResourceGroupName NRP-DemoRG-PS
+    PS C:\> $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
+    PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 
-まだ DNS 名を持っていない既存のパブリック IP アドレスに逆引き DNS を追加する場合は、DNS 名も指定する必要があります。これは、"Set-AzureRmPublicIpAddress" コマンドレットを使用して行うことができます。
+If you wish to add reverse DNS to an existing Public IP Address that doesn't already have a DNS name, you must also specify a DNS name. You can add achieve this using the “Set-AzureRmPublicIpAddress” cmdlet:
 
-	PS C:\> $pip = Get-AzureRmPublicIpAddress -Name PublicIP -ResourceGroupName NRP-DemoRG-PS
-	PS C:\> $pip.DnsSettings = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings
-	PS C:\> $pip.DnsSettings.DomainNameLabel = "contosoapp1"
-	PS C:\> $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-	PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+    PS C:\> $pip = Get-AzureRmPublicIpAddress -Name PublicIP -ResourceGroupName NRP-DemoRG-PS
+    PS C:\> $pip.DnsSettings = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings
+    PS C:\> $pip.DnsSettings.DomainNameLabel = "contosoapp1"
+    PS C:\> $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
+    PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 
-## 逆引き DNS でのパブリック IP アドレスの作成
-逆引き DNS プロパティを指定して新しいパブリック IP アドレスを追加するには、“New-AzureRmPublicIpAddress” コマンドレットを使用します。
+## <a name="create-a-public-ip-address-with-reverse-dns"></a>Create a Public IP Address with reverse DNS
+You can add a new Public IP Address with the reverse DNS property specified using the “New-AzureRmPublicIpAddress” cmdlet:
 
-	PS C:\> New-AzureRmPublicIpAddress -Name PublicIP2 -ResourceGroupName NRP-DemoRG-PS -Location WestUS -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
+    PS C:\> New-AzureRmPublicIpAddress -Name PublicIP2 -ResourceGroupName NRP-DemoRG-PS -Location WestUS -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
 
-## 既存の Public IP Addresses の逆引き DNS の表示
-既存のパブリック IP アドレスで構成されている値を確認するには、“Get-AzureRmPublicIpAddress” コマンドレットを使用します。
+## <a name="view-reverse-dns-for-existing-public-ip-addresses"></a>View reverse DNS for existing Public IP Addresses
+You can view the configured value for an existing Public IP Address using the “Get-AzureRmPublicIpAddress” cmdlet:
 
-	PS C:\> Get-AzureRmPublicIpAddress -Name PublicIP2 -ResourceGroupName NRP-DemoRG-PS
+    PS C:\> Get-AzureRmPublicIpAddress -Name PublicIP2 -ResourceGroupName NRP-DemoRG-PS
 
-## 既存のパブリック IP アドレスの逆引き DNS を削除する
-既存のパブリック IP アドレスから逆引き DNS プロパティを削除するには、“Set-AzureRmPublicIpAddress” コマンドレットを使用します。この操作を行うには、ReverseFqdn プロパティの値を空白にします。
+## <a name="remove-reverse-dns-from-existing-public-ip-addresses"></a>Remove reverse DNS from existing Public IP Addresses
+You can remove a reverse DNS property from an existing Public IP Address using the “Set-AzureRmPublicIpAddress” cmdlet. This is done by setting the ReverseFqdn property value to blank:
 
-	PS C:\> $pip = Get-AzureRmPublicIpAddress -Name PublicIP -ResourceGroupName NRP-DemoRG-PS
-	PS C:\> $pip.DnsSettings.ReverseFqdn = ""
-	PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+    PS C:\> $pip = Get-AzureRmPublicIpAddress -Name PublicIP -ResourceGroupName NRP-DemoRG-PS
+    PS C:\> $pip.DnsSettings.ReverseFqdn = ""
+    PS C:\> Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 
 [AZURE.INCLUDE [FAQ](../../includes/dns-reverse-dns-record-operations-faq-arm-include.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

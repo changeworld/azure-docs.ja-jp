@@ -1,22 +1,23 @@
 <properties 
-	pageTitle="Elemental Live エンコーダーを構成して、単一ビットレートのライブ ストリームを送信する | Microsoft Azure" 
-	description="このトピックでは、Elemental Live エンコーダーを構成して、ライブ エンコードで有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。" 
-	services="media-services" 
-	documentationCenter="" 
-	authors="cenkdin" 
-	manager="dwrede" 
-	editor=""/>
+    pageTitle="Configure the Elemental Live encoder to send a single bitrate live stream | Microsoft Azure" 
+    description="This topic shows how to configure the Elemental Live encoder to send a single bitrate stream to AMS channels that are enabled for live encoding." 
+    services="media-services" 
+    documentationCenter="" 
+    authors="cenkdin" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="ne" 
-	ms.topic="article" 
-	ms.date="09/19/2016"
-	ms.author="cenkdin;anilmur;juliako"/>
+    ms.service="media-services" 
+    ms.workload="media" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="ne" 
+    ms.topic="article" 
+    ms.date="10/12/2016"
+    ms.author="cenkdin;anilmur;juliako"/>
 
-#Elemental Live エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
+
+#<a name="use-the-elemental-live-encoder-to-send-a-single-bitrate-live-stream"></a>Use the Elemental Live encoder to send a single bitrate live stream
 
 > [AZURE.SELECTOR]
 - [Elemental Live](media-services-configure-elemental-live-encoder.md)
@@ -24,152 +25,158 @@
 - [Wirecast](media-services-configure-wirecast-live-encoder.md)
 - [FMLE](media-services-configure-fmle-live-encoder.md)
 
-このトピックでは、[Elemental Live](http://www.elementaltechnologies.com/products/elemental-live) エンコーダーを構成して、ライブ エンコードで有効になっている AMS チャネルに単一ビットレートのストリームを送信する方法を示します。詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+This topic shows how to configure the [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live) encoder to send a single bitrate stream to AMS channels that are enabled for live encoding.  For more information, see [Working with Channels that are Enabled to Perform Live Encoding with Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
-このチュートリアルでは、Azure Media Service Explorer (AMSE) ツールを使用して、Azure Media Services (AMS) を管理する方法を示します。このツールは、Windows PC でのみ実行されます。Mac または Linux の場合は、Azure クラシック ポータルを使用して、[チャネル](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) と [プログラム](media-services-portal-creating-live-encoder-enabled-channel.md#create-and-manage-a-program)を作成します。
+This tutorial shows how to manage Azure Media Services (AMS) with Azure Media Services Explorer (AMSE) tool. This tool only runs on Windows PC. If you are on Mac or Linux, use the Azure portal to create [channels](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) and [programs](media-services-portal-creating-live-encoder-enabled-channel.md#create-and-manage-a-program).
 
-##前提条件
+##<a name="prerequisites"></a>Prerequisites
 
-- ライブ イベントを作成するには、Elemental Live Web インターフェイスの使用に関する知識が必要です。
-- [Azure Media Services アカウントの作成](media-services-create-account.md)
-- 1 つ以上のストリーミング ユニットが割り当てられたストリーミング エンドポイントが実行中であることを確認します。詳細については、[Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)に関する記事をご覧ください。
-- 最新バージョンの [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) ツールをインストールします。
-- ツールを起動し、AMS アカウントに接続します。
+- Must have a working knowledge of using Elemental Live web interface to create live events.
+- [Create an Azure Media Services account](media-services-portal-create-account.md)
+- Ensure there is a Streaming Endpoint running with at least one streaming unit allocated. For more information, see [Manage Streaming Endpoints in a Media Services Account](media-services-portal-manage-streaming-endpoints.md).
+- Install the latest version of the [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) tool.
+- Launch the tool and connect to your AMS account.
 
-##ヒント
+##<a name="tips"></a>Tips
 
-- 可能な限り、有線のインターネット接続を使用します。
-- 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
-- ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
+- Whenever possible, use a hardwired internet connection.
+- A good rule of thumb when determining bandwidth requirements is to double the streaming bitrates. While this is not a mandatory requirement, it will help mitigate the impact of network congestion.
+- When using software based encoders, close out any unnecessary programs.
 
-## RTP インジェストを使用する Elemental Live
+## <a name="elemental-live-with-rtp-ingest"></a>Elemental Live with RTP ingest
 
-このセクションでは、RTP 経由で単一ビットレートのライブ ストリームを送信する Elemental Live エンコーダーを構成する方法を示します。詳細については、「[RTP 経由の MPEG-TS ストリーム](media-services-manage-live-encoder-enabled-channels.md#channel)」を参照してください。
+This section shows how to configure the Elemental Live encoder that sends a single bitrate live stream over RTP.  For more information, see [MPEG-TS stream over RTP](media-services-manage-live-encoder-enabled-channels.md#channel).
 
-### チャネルの作成
+### <a name="create-a-channel"></a>Create a channel
 
-1.  AMSE ツールで、**[Live]** タブに移動して、チャネル領域内を右クリックします。メニューから **[チャネルの作成]** を選択します。
+1.  In the AMSE tool, navigate to the **Live** tab, and right click within the channel area. Select **Create channel…** from the menu.
 
 ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental1.png)
 
-2. チャネルの名前を指定します。説明フィールドは省略可能です。[チャネル設定] の [Live Encoding] オプションで入力プロトコルを **[RTP (MPEG TS)]** に設定して、**[Standard]** を選択します。それ以外の設定はすべてそのままにしておくことができます。
+2. Specify a channel name, the description field is optional. Under Channel Settings, select **Standard** for the Live Encoding option, with the Input Protocol set to **RTP (MPEG-TS)**. You can leave all other settings as is.
 
 
-**[新しいチャネルを今すぐ開始する]** が選択されていることを確認します。
+Make sure the **Start the new channel now** is selected.
 
-3. **[チャネルの作成]** をクリックします。![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental12.png)
+3. Click **Create Channel**.
+![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental12.png)
 
->[AZURE.NOTE] チャネルの開始までに 20 分程度かかることがあります。
+>[AZURE.NOTE] The channel can take as long as 20 minutes to start.
 
-チャネルを開始している間に、[エンコーダーを構成する](media-services-configure-elemental-live-encoder.md#configure_elemental_rtp)ことができます。
+While the channel is starting you can [configure the encoder](media-services-configure-elemental-live-encoder.md#configure_elemental_rtp).
 
->[AZURE.IMPORTANT] チャネルが準備完了の状態になるとすぐに課金が開始されることに注意してください。詳細については、「[チャネルの状態](media-services-manage-live-encoder-enabled-channels.md#states)」を参照してください。
+>[AZURE.IMPORTANT] Note that billing starts as soon as Channel goes into a ready state. For more information, see [Channel's states](media-services-manage-live-encoder-enabled-channels.md#states).
 
-###<a id=configure_elemental_rtp></a>Elemental Live エンコーダーを構成する 
+###<a name="<a-id=configure_elemental_rtp></a>configure-the-elemental-live-encoder"></a><a id=configure_elemental_rtp></a>Configure the Elemental Live encoder 
 
-このチュートリアルでは、次の出力設定が使用されます。このセクションの残りの部分では、構成の手順の詳細について説明します。
+In this tutorial the following output settings are used. The rest of this section describes configuration steps in more detail. 
 
-**ビデオ**:
+**Video**:
  
-- コーデック: H.264
-- プロファイル: 高 (レベル 4.0)
-- ビットレート: 5000 kbps
-- キーフレーム: 2 秒 (60 秒)
-- フレーム レート: 30
+- Codec: H.264 
+- Profile: High (Level 4.0) 
+- Bitrate: 5000 kbps 
+- Keyframe: 2 seconds (60 seconds) 
+- Frame Rate: 30
  
-**オーディオ**:
+**Audio**:
 
-- コーデック: AAC (LC)
-- ビットレート: 192 kbps
-- サンプル レート: 44.1 kHz
+- Codec: AAC (LC) 
+- Bitrate: 192 kbps 
+- Sample Rate: 44.1 kHz
 
 
-####構成の手順
+####<a name="configuration-steps"></a>Configuration steps
 
-1. **Elemental Live** Web インターフェイスに移動し、**UDP/TS** ストリーミングのエンコーダーを設定します。
+1. Navigate to the **Elemental Live** web interface, and set up the encoder for **UDP/TS** streaming. 
 
-2. 新しいイベントが作成されたら、出力グループまでスクロールし、**UDP/TS** 出力グループを追加します。
+2. Once a new event is created, scroll down to the output groups and add the **UDP/TS** output group. 
 
-3. **[新しいストリーム]** を選択し、**[出力の追加]** をクリックして、新しい出力を作成します。
-	
-	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental13.png)
-	
-	>[AZURE.NOTE] ストリームのエラー時にエンコーダーが再接続できるように、Elemental のイベントのタイムコードを [システム クロック] に設定することをお勧めします。
+3. Create a new output by selecting **New Stream** and then clicking **Add Output**.  
+    
+    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental13.png)
+    
+    >[AZURE.NOTE] It is recommended that the Elemental event has the timecode set to "System Clock" to help the encoder reconnect in the case of a stream failure.
 
-4. 出力が作成されたので、**[ストリームの追加]** をクリックします。これで、出力の設定が構成されました。
-5. 作成した "Stream 1" まで下にスクロールし、左の **[ビデオ]** タブをクリックして、**[詳細]** 設定セクションを展開します。
+4. Now that the Output has been created, click **Add Stream**. The output settings can now be configured. 
+5. Scroll down to the "Stream 1" that was just created, click the **Video** tab on the left and expand the **Advanced** settings section. 
 
-	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental4.png)
+    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental4.png)
 
-	Elemental Live では多様なカスタマイズが可能ですが、AMS へのストリーミングを開始する場合は、次の設定をお勧めします。
-	
-	- 解像度: 1280 x 720
-	- フレームレート: 30
-	- GOP サイズ: 60 フレーム
-	- インターレース モード: プログレッシブ
-	- ビットレート: 5000000 ビット/秒 (ネットワークの制限に基づいて調整可能)
-	
+    While Elemental Live has a wide range of available customizing, the following settings are recommended for getting started with streaming to AMS. 
+    
+    - Resolution: 1280 x 720 
+    - Framerate: 30 
+    - GOP Size: 60 frames 
+    - Interlace Mode: Progressive 
+    - Bitrate: 5000000 bit/s (This can be adjusted based on network limitations) 
+    
 
-	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental5.png)
+    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental5.png)
 
-6. チャネルの入力 URL を取得します。
-	
-	AMSE ツールに戻り、チャネルの完了状態を確認します。状態が **[開始中]** から **[実行中]** に変わったら、入力 URL を取得することができます。
-	  
-	チャネルが実行されている場合、チャネル名を右クリックして、下へ移動して **[入力 URL をクリップボードにコピー]** にマウスを合わせ、**[プライマリ入力 URL]** を選択します。
-	
-	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental6.png)
-	
-1. この情報を Elemental の **[プライマリ宛先]** フィールドに貼り付けます。その他のすべての設定は、既定値にしておくことができます。
-	
-	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental14.png)
+6. Get the channel's input URL.
+    
+    Navigate back to the AMSE tool, and check on the channel completion status. Once the State has changed from **Starting** to **Running**, you can get the input URL.
+      
+    When the channel is running, right click the channel name, navigate down to hover over **Copy Input URL to clipboard** and then select **Primary Input  URL**.  
+    
+    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental6.png)
+    
+1. Paste this information in the **Primary Destination** field of the Elemental. All other settings can remain the default.
+    
+    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental14.png)
 
-	冗長性を高めるには、UDP/TS のストリーミング用に別の [出力] タブを作成することで、セカンダリ入力 URL を使用してこれらの手順を繰り返します。
-	
-7. **[作成]** (新しいイベントが作成された場合) または **[更新]** (既存のイベントを編集する場合) をクリックして、エンコーダーの開始に進みます。
+    For extra redundancy, repeat these steps with the Secondary Input URL by creating a separate "Output" tab for UDP/TS Streaming.
+    
+7. Click **Create** (if a new event was created) or **Update** (if editing a pre-existing event) and then proceed to start the encoder. 
 
->[AZURE.IMPORTANT] Elemental Live Web インターフェイスの **[開始]** をクリックする前に、チャネルが準備可能になっていることを確認する**必要があります**。また、15 分を超えるイベントがある場合を除き、チャネルを準備可能のままにしないでください。
+>[AZURE.IMPORTANT] Before you click **Start** on the Elemental Live web interface, you **must** ensure that the Channel is ready. 
+>Also, make sure not to leave the Channel in a ready state without an event for longer than > 15 minutes.
 
-ストリームが 30 秒間実行されたら、AMSE ツールに戻り、再生をテストします。
+After the stream has been running for 30 seconds, navigate back to the AMSE tool and test playback.  
 
-###再生をテストする
+###<a name="test-playback"></a>Test playback
   
-1. AMSE ツールに移動し、テストするチャネルを右クリックします。メニューが表示されたら、**[プレビューの再生]** にマウスを合わせ、**[Azure Media Player を使用]** を選択します。
+1. Navigate to the AMSE tool, and right click the channel to be tested. From the menu, hover over **Playback the Preview** and select **with Azure Media Player**.  
 
-	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental8.png)
+    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental8.png)
 
-ストリームがプレーヤーに表示されている場合は、エンコーダーが AMS に接続するように正しく構成されています。
+If the stream appears in the player, then the encoder has been properly configured to connect to AMS. 
 
-エラーが表示される場合は、チャネルをリセットして、エンコーダー設定を調整する必要があります。ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関するトピックをご覧ください。
+If an error is received, the channel will need to be reset and encoder settings adjusted. Please see the [troubleshooting](media-services-troubleshooting-live-streaming.md) topic for guidance.   
 
-###プログラムを作成する
+###<a name="create-a-program"></a>Create a program
 
-1. チャネルの再生が確認されたら、プログラムを作成します。AMSE ツールの **[Live]** タブで、プログラム領域内を右クリックし、**[新しいプログラムの作成]** を選択します。
+1. Once channel playback is confirmed, create a program. Under the **Live** tab in the AMSE tool, right click within the program area and select **Create New Program**.  
 
-	![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental9.png)
+    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental9.png)
 
-2. 必要に応じてプログラムに名前を付け、**[アーカイブ ウィンドウの長さ]** (既定では 4 時間) を調整します。ストレージの場所を指定することも、既定値のままにすることもできます。
-3. **[プログラムを今すぐ開始]** ボックスを選択します。
-4. **[プログラムの作成]** をクリックします。
+2. Name the program and, if needed, adjust the **Archive Window Length** (which defaults to 4 hours). You can also specify a storage location or leave as the default.  
+3. Check the **Start the Program now** box.
+4. Click **Create Program**.  
   
-	注: プログラムの作成は、チャネルの作成ほど時間はかかりません。
+    Note: Program creation takes less time than channel creation.    
  
-5. プログラムが実行されたら、再生を確認するために、プログラムを右クリックして **[プログラムの再生]** に移動し、**[Azure Media Player を使用]** を選択します。
-6. 確認したら、プログラムをもう一度クリックし、**[出力 URL をクリップボードにコピー]** を選択します (または、メニューの **[プログラムの情報と設定]** オプションから、この情報を取得します)。
+5. Once the program is running, confirm playback by right clicking the program and navigating to **Playback the program(s)** and then selecting **with Azure Media Player**.  
+6. Once confirmed, right click the program again and select **Copy the Output URL to Clipboard** (or retrieve this information from the **Program information and settings** option from the menu). 
 
-これで、ストリームをプレーヤーに埋め込んだり、ライブ表示のために対象ユーザーに配信したりできるようになりました。
+The stream is now ready to be embedded in a player, or distributed to an audience for live viewing.  
 
-## トラブルシューティング
+## <a name="troubleshooting"></a>Troubleshooting
 
-ガイダンスについては、[トラブルシューティング](media-services-troubleshooting-live-streaming.md)に関するトピックをご覧ください。
+Please see the [troubleshooting](media-services-troubleshooting-live-streaming.md) topic for guidance. 
 
 
-##Media Services のラーニング パス
+##<a name="media-services-learning-paths"></a>Media Services learning paths
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##フィードバックの提供
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,12 +1,15 @@
-リソース|上限
+Resource|Maximum Limit
 ---|---
-アプリ コレクション ユーザー数|アプリ コレクションあたり 5
-平均データ ポイント数|1 日あたりアクティブ ユーザーごとに 200
-平均設定アプリ情報|1 日あたりアクティブ ユーザーごとに 50
-平均プッシュ メッセージ数|1 日あたりアクティブ ユーザーごとに 20
-セグメント|アプリあたり 100
-セグメントあたりの条件数|10
-アクティブ プッシュ キャンペーン数|アプリあたり 50
-合計プッシュ キャンペーン数 (アクティブと完了を含む)|アプリあたり 1000
+App Collection Users|5 per App Collection
+Average Data points|200 per Active User/Day
+Average App-Info set|50 per Active User/Day
+Average Messages pushed|20 per Active User/Day
+Segments|100 per app
+Criteria per segment|10
+Active Push Campaigns|50 per app
+Total Push Campaigns (includes Active & Completed)|1000 per app
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

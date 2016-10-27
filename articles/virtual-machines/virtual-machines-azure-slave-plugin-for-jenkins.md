@@ -1,241 +1,242 @@
 <properties
-	pageTitle="Azure スレーブ プラグインを Jenkins 継続的インテグレーションで使用する方法 | Microsoft Azure"
-	description="Azure スレーブ プラグインを Jenkins 継続的インテグレーションで使用する方法について説明します。"
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="rmcmurray"
-	manager="wpickett"
-	editor="" />
+    pageTitle="How to use the Azure slave plug-in with Jenkins Continuous Integration | Microsoft Azure"
+    description="Describes how to use the Azure slave plug-in with Jenkins Continuous Integration."
+    services="virtual-machines-linux"
+    documentationCenter=""
+    authors="rmcmurray"
+    manager="wpickett"
+    editor="" />
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-multiple"
-	ms.devlang="java"
-	ms.topic="article"
-	ms.date="09/20/2016"
-	ms.author="robmcm"/>
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-multiple"
+    ms.devlang="java"
+    ms.topic="article"
+    ms.date="09/20/2016"
+    ms.author="robmcm"/>
 
-# Azure スレーブ プラグインを Jenkins 継続的インテグレーションで使用する方法
 
-Jenkins 用の Azure スレーブ プラグインを使用して、分散されたビルドを実行するときにスレーブ ノードを Azure にプロビジョニングできます。
+# <a name="how-to-use-the-azure-slave-plug-in-with-jenkins-continuous-integration"></a>How to use the Azure slave plug-in with Jenkins Continuous Integration
 
-## Azure スレーブ プラグインをインストールする
+You can use the Azure slave plug-in for Jenkins to provision slave nodes on Azure when running distributed builds.
 
-1. Jenkins ダッシュボードで、**[Manage Jenkins]** をクリックします。
+## <a name="install-the-azure-slave-plug-in"></a>Install the Azure slave plug-in
 
-1. **[Manage Jenkins]** ページで **[Manage Plugins]** をクリックします。
+1. In the Jenkins dashboard, click **Manage Jenkins**.
 
-1. **[Available]** タブをクリックします。
+1. On the **Manage Jenkins** page, click **Manage Plugins**.
 
-1. 使用可能なプラグインの一覧の上にあるフィルター フィールドに「**Azure**」と入力して、一覧を関連するプラグインに制限します。
+1. Click the **Available** tab.
 
-    使用可能なプラグインの一覧をスクロールする場合、Azure スレーブ プラグインは **[Cluster Management and Distributed Build]** セクションで見つかります。
+1. In the filter field above the list of available plug-ins, type **Azure** to limit the list to relevant plug-ins.
 
-1. **[Azure Slave Plugin]** チェック ボックスをオンにします。
+    If you opt to scroll through the list of available plug-ins, you will find the Azure slave plug-in under the **Cluster Management and Distributed Build** section.
 
-1. **[Install without restart]** または **[Download now and install after restart]** をクリックします。
+1. Select the **Azure Slave Plugin** check box.
 
-これでプラグインがインストールされたため、次の手順では、Azure サブスクリプション プロファイルを使用してプラグインを構成し、スレーブ ノード用の仮想マシンの作成で使用するテンプレートを作成します。
+1. Click **Install without restart** or **Download now and install after restart**.
 
+Now that the plug-in is installed, the next steps are to configure the plug-in with your Azure subscription profile and to create a template that will be used in creating the virtual machine for the slave node.
 
-## サブスクリプション プロファイルを使用して Azure スレーブ プラグインを構成する
 
-サブスクリプション プロファイル (発行設定) は、セキュリティで保護された資格情報と、開発環境で Azure を操作するために必要な追加情報を含む XML ファイルです。Azure スレーブ プラグインを構成するには、以下が必要です。
+## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Configure the Azure slave plug-in with your subscription profile
 
-* サブスクリプション ID
-* サブスクリプション用の管理証明書
+A subscription profile, also referred to as publish settings, is an XML file that contains secure credentials and some additional information you'll need to work with Azure in your development environment. To configure the Azure slave plug-in, you need:
 
-これらは、[サブスクリプション プロファイル]で確認できます。サブスクリプション プロファイルの例を以下に示します。
+* Your subscription id
+* A management certificate for your subscription
 
-	<?xml version="1.0" encoding="utf-8"?>
+These can be found in your [subscription profile]. Below is an example of a subscription profile.
 
-		<PublishData>
+    <?xml version="1.0" encoding="utf-8"?>
 
-  		<PublishProfile SchemaVersion="2.0" PublishMethod="AzureServiceManagementAPI">
+        <PublishData>
 
-    	<Subscription
+        <PublishProfile SchemaVersion="2.0" PublishMethod="AzureServiceManagementAPI">
 
-      		ServiceManagementUrl="https://management.core.windows.net"
+        <Subscription
 
-      		Id="<Subscription ID value>"
+            ServiceManagementUrl="https://management.core.windows.net"
 
-      		Name="Pay-As-You-Go"
-			ManagementCertificate="<Management certificate value>" />
+            Id="<Subscription ID value>"
 
-  		</PublishProfile>
+            Name="Pay-As-You-Go"
+            ManagementCertificate="<Management certificate value>" />
 
-	</PublishData>
+        </PublishProfile>
 
-サブスクリプション プロファイルを用意したら、次の手順に従って Azure スレーブ プラグインを構成します。
+    </PublishData>
 
-1. Jenkins ダッシュボードで、**[Manage Jenkins]** をクリックします。
+After you have your subscription profile, follow these steps to configure the Azure slave plug-in:
 
-1. **[Configure System]** をクリックします。
+1. In the Jenkins dashboard, click **Manage Jenkins**.
 
-1. ページを下にスクロールして **[Cloud]** セクションを探します。
+1. Click **Configure System**.
 
-1. **[Add new cloud]、[Microsoft Azure]** の順にクリックします。
+1. Scroll down the page to find the **Cloud** section.
 
-    ![クラウド セクション][cloud section]
+1. Click **Add new cloud > Microsoft Azure**.
 
-    サブスクリプションの詳細を入力する必要のあるフィールドが表示されます。
+    ![cloud section][cloud section]
 
-    ![サブスクリプションの構成][subscription configuration]
+    This will show the fields where you need to enter your subscription details.
 
-1. サブスクリプション プロファイルからサブスクリプションID と管理証明書の値をコピーし、適切なフィールドに貼り付けます。
+    ![subscription configuration][subscription configuration]
 
-    サブスクリプション ID と管理証明書をコピーするときは、値を囲む引用符は含めないでください。
+1. Copy the subscription id and management certificate values from your subscription profile and paste them in the appropriate fields.
 
-1. **[Verify Configuration]** をクリックします。
+    When copying the subscription id and management certificate, do not include the quotes that enclose the values.
 
-1. 構成が正しいことが確認したら、**[Save]** をクリックします。
+1. Click **Verify Configuration**.
 
-## Azure スレーブ プラグイン用の仮想マシン テンプレートを設定する
+1. When the configuration is verified to be correct, click **Save**.
 
-仮想マシン テンプレートでは、プラグインが Azure でスレーブ ノードを作成するために使用するパラメーターを定義します。次の手順では、Ubuntu 仮想マシン用のテンプレートを作成します。
+## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Set up a virtual machine template for the Azure slave plug-in
 
-1. Jenkins ダッシュボードで、**[Manage Jenkins]** をクリックします。
+A virtual machine template defines the parameters that the plug-in will use to create a slave node on Azure. In the following steps, we'll create a template for an Ubuntu virtual machine.
 
-1. **[Configure System]** をクリックします。
+1. In the Jenkins dashboard, click **Manage Jenkins**.
 
-1. ページを下にスクロールして **[Cloud]** セクションを探します。
+1. Click **Configure System**.
 
-1. **[Cloud]** セクションで、**[Add Azure Virtual Machine Template]** を探し、**[Add]** をクリックします。
+1. Scroll down the page to find the **Cloud** section.
 
-    ![VM テンプレートの追加][add vm template]
+1. In the **Cloud** section, find **Add Azure Virtual Machine Template**, and then click **Add**.
 
-    作成するテンプレートの詳細を入力するフィールドが表示されます。
+    ![add vm template][add vm template]
 
-    ![空白の一般的な構成][blank general configuration]
+    This will show the fields where you enter details about the template you are creating.
 
-1. **[Name]** ボックスに、Azure クラウド サービスの名前を入力します。入力した名前が既存のクラウド サービスを指す場合、仮想マシンはそのサービス内にプロビジョニングされます。それ以外の場合、Azure は新しいものを作成します。
+    ![blank general configuration][blank general configuration]
 
-1. **[Description]** ボックスに、作成するテンプレートを説明するテキストを入力します。これは記録のみを目的としており、仮想マシンのプロビジョニングでは使用されません。
+1. In the **Name** box, enter an Azure cloud service name. If the name you entered refers to an existing cloud service, the virtual machine will be provisioned in that service. Otherwise, Azure will create a new one.
 
-1. **[Labels]** ボックスは作成中のテンプレートを識別するために使用され、その後、Jenkins ジョブを作成するときにテンプレートを参照するために使用されます。この手順では、このボックスに「**linux**」と入力します。
+1. In the **Description** box, enter text that describes the template you are creating. This is only for your records and is not used in provisioning a virtual machine.
 
-1. **[Region]** ボックスの一覧で、仮想マシンを作成するリージョンをクリックします。
+1. The **Labels** box is used to identify the template you are creating and is subsequently used to reference the template when creating a Jenkins job. For our purpose, enter **linux** in this box.
 
-1. **[Virtual Machine Size]** ボックスの一覧で、適切なサイズをクリックします。
+1. In the **Region** list, click the region where the virtual machine will be created.
 
-1. **[Storage Account Name]** ボックスに、仮想マシンを作成するストレージ アカウントを指定します。使用するクラウド サービスと同じリージョン内にあることを確認します。新しいストレージを作成する場合は、このボックスを空白のままにすることができます。
+1. In the **Virtual Machine Size** list, click the appropriate size.
 
-1. [Retention time] は、その時間を経過するとJenkins がアイドル状態のスレーブを削除する分数を指定します。これは、既定値 60 のままにします。スレーブは、アイドル状態になったときに削除するのではなくシャットダウンすることもできます。そのためには、**[Shutdown Only (Do Not Delete) After Retention Time]** チェック ボックスをオンにします。
+1. In the **Storage Account Name** box, specify a storage account where the virtual machine will be created. Make sure that it is in the same region as the cloud service you'll be using. If you want new storage to be created, you can leave this box blank.
 
-1. **[Usage]** ボックスの一覧で、このスレーブ ノードが使用される適切な条件をクリックします。ここでは、**[Utilize this node as much as possible]** をクリックします。
+1. Retention time specifies the number of minutes before Jenkins deletes an idle slave. Leave this at the default value of 60. You can also choose to shut down the slave instead of deleting it when it's idle. To do that, select the **Shutdown Only (Do Not Delete) After Retention Time** check box.
 
-    この時点で、フォームは次のようになります。
+1. In the **Usage** list, click the appropriate condition when this slave node will be used. For now, click **Utilize this node as much as possible**.
 
-    ![一般的なテンプレート構成のチェックポイント][checkpoint general template config]
+    At this point, your form should look somewhat similar to this:
 
-    次の手順では、スレーブが作成されるオペレーティング システム イメージの詳細を指定します。
+    ![checkpoint general template config][checkpoint general template config]
 
-1. **[Image Family or Id]** ボックスには、仮想マシンにインストールされるシステム イメージを指定する必要があります。イメージ ファミリの一覧から選択するか、カスタム イメージを指定できます。
+    The next step is to provide details about the operating system image that you want your slave to be created in.
 
-    イメージ ファミリの一覧から選択する場合は、イメージ ファミリ名の最初の文字を (大文字と小文字を区別して) 入力します。たとえば、「**U**」と入力すると、Ubuntu Server ファミリの一覧が表示されます。一覧から選択すると、Jenkins は仮想マシンをプロビジョニングするときにそのファミリの最新バージョンのシステム イメージを使用します。
+1. In the **Image Family or Id** box, you have to specify what system image will be installed on your virtual machine. You can either select from a list of image families or specify a custom image.
 
-    ![OS イメージの一覧の例][OS Image list sample]
+    If you want to select from a list of image families, enter the first character (case-sensitive) of the image family name. For instance, typing **U** will bring up a list of Ubuntu Server families. After you select from the list, Jenkins will use the latest version of that system image from that family when provisioning your virtual machine.
 
-    代わりに使用するカスタム イメージがある場合は、そのカスタム イメージの名前を入力します。カスタム イメージの名前は一覧には表示されないため、名前が正しく入力されていることを確認する必要があります。
+    ![OS Image list sample][OS Image list sample]
 
-    このチュートリアルでは、「**U**」と入力して Ubuntu イメージの一覧を表示し、**[Ubuntu Server 14.04 LTS]** をクリックします。
+    If you have a custom image that you want to use instead, enter the name of that custom image. Custom image names are not shown in a list, so you have to ensure that the name is entered correctly.
 
-1. **[Launch Method]** ボックスの一覧で、**[SSH]** をクリックします。
+    For this tutorial, type **U** to bring up a list of Ubuntu images, and then click **Ubuntu Server 14.04 LTS**.
 
-1. 次のスクリプトをコピーして **[Init Script]** ボックスに貼り付けます。
+1. In the **Launch Method** list, click **SSH**.
 
-		# Install Java
+1. Copy the script below and paste it in the **Init Script** box.
 
-		sudo apt-get -y update
+        # Install Java
 
-		sudo apt-get install -y openjdk-7-jdk
+        sudo apt-get -y update
 
-		sudo apt-get -y update --fix-missing
+        sudo apt-get install -y openjdk-7-jdk
 
-		sudo apt-get install -y openjdk-7-jdk
+        sudo apt-get -y update --fix-missing
 
-		# Install git
+        sudo apt-get install -y openjdk-7-jdk
 
-		sudo apt-get install -y git
+        # Install git
 
-		#Install ant
+        sudo apt-get install -y git
 
-		sudo apt-get install -y ant
+        #Install ant
 
-		sudo apt-get -y update --fix-missing
+        sudo apt-get install -y ant
 
-		sudo apt-get install -y ant
+        sudo apt-get -y update --fix-missing
 
-    init スクリプトは、仮想マシンが作成された後で実行されます。この例では、このスクリプトによって、Java、Git、および ant がインストールされます。
+        sudo apt-get install -y ant
 
-1. **[Username]** ボックスと **[Password]** ボックスに、仮想マシンに作成される管理者アカウント用の優先値を入力します。
+    The init script will be executed after the virtual machine is created. In this example, the script installs Java, Git, and ant.
 
-1. **[Verify Template]** をクリックして、指定したパラメーターが有効であることを確認します。
+1. In the **Username** and **Password** boxes, enter your preferred values for the administrator account that will be created on your virtual machine.
 
-1. [**Save**] をクリックします。
+1. Click **Verify Template** to check if the parameters you specified are valid.
 
+1. Click **Save**.
 
-## Azure のスレーブ ノードで実行される Jenkins ジョブを作成する
 
-このセクションでは、Azure のスレーブ ノードで実行される Jenkins タスクを作成します。このためには、独自のプロジェクトを GitHub で起動する必要があります。
+## <a name="create-a-jenkins-job-that-runs-on-a-slave-node-on-azure"></a>Create a Jenkins job that runs on a slave node on Azure
 
-1. Jenkins ダッシュボードで、**[New Item]** をクリックします。
+In this section, you'll be creating a Jenkins task that will run on a slave node on Azure. You'll need to have your own project up on GitHub to follow along.
 
-1. 作成するタスクの名前を入力します。
+1. In the Jenkins dashboard, click **New Item**.
 
-1. プロジェクトの種類として、**[Freestyle project]** をクリックします。
+1. Enter a name for the task you are creating.
 
-1. **[OK]** をクリックします。
+1. For the project type, click **Freestyle project**.
 
-1. タスクを構成するページで、**[Restrict where this project can be run]** を選択します。
+1. Click **Ok**.
 
-1. **[Label Expression]** ボックスに、「**linux**」と入力します。前のセクションで、**linux** という名前のテンプレートを作成しました。ここで指定するのはそのテンプレートです。
+1. In the task configuration page, select **Restrict where this project can be run**.
 
-1. **[Build]** セクションで、**[Add build step]** をクリックし、**[Execute shell]** を選択します。
+1. In the **Label Expression** box, enter **linux**. In the previous section, we created a slave template that we named **linux**, which is what we're specifying here.
 
-1. 次のスクリプトを編集します。**(your GitHub account name)**、**(your project name)**、**(your project directory)** を適切な値に置き換え、編集後のスクリプトを次に表示されるテキスト領域に貼り付けます。
+1. In the **Build** section, click **Add build step** and select **Execute shell**.
 
-		# Clone from git repo
+1. Edit the following script, replacing **(your GitHub account name)**, **(your project name)**, and **(your project directory)** with appropriate values, and paste the edited script in the text area that appears.
 
-		currentDir="$PWD"
+        # Clone from git repo
 
-		if [ -e (your project directory) ]; then
+        currentDir="$PWD"
 
-  			cd (your project directory)
+        if [ -e (your project directory) ]; then
 
-  			git pull origin master
+            cd (your project directory)
 
-		else
+            git pull origin master
 
-  			git clone https://github.com/(your GitHub account name)/(your project name).git
+        else
 
-		fi
+            git clone https://github.com/(your GitHub account name)/(your project name).git
 
-		# change directory to project
+        fi
 
-		cd $currentDir/(your project directory)
+        # change directory to project
 
-		#Execute build task
+        cd $currentDir/(your project directory)
 
-		ant
+        #Execute build task
 
-1. [**Save**] をクリックします。
+        ant
 
-1. Jenkins ダッシュボードで、作成したばかりのタスクの上にマウスを移動し、ドロップダウン矢印をクリックしてタスク オプションを表示します。
+1. Click **Save**.
 
-1. **[Build now]** をクリックします。
+1. In the Jenkins dashboard, hover over the task you just created and click the drop-down arrow to display task options.
 
-Jenkins は、前のセクションで作成したテンプレートを使用してスレーブ ノードを作成し、このタスク用のビルド手順で指定されたスクリプトを実行します。
+1. Click **Build now**.
 
-## 次のステップ
+Jenkins will then create a slave node by using the template created in the previous section and execute the script you specified in the build step for this task.
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター]を参照してください。
+## <a name="next-steps"></a>Next Steps
+
+For more information about using Azure with Java, see the [Azure Java Developer Center].
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
-[サブスクリプション プロファイル]: http://go.microsoft.com/fwlink/?LinkID=396395
+[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
+[subscription profile]: http://go.microsoft.com/fwlink/?LinkID=396395
 
 <!-- IMG List -->
 
@@ -246,4 +247,7 @@ Java での Azure の使用の詳細については、[Azure Java デベロッ�
 [checkpoint general template config]: ./media/virtual-machines-azure-slave-plugin-for-jenkins/jenkins-slave-template-general-configuration.png
 [OS Image list sample]: ./media/virtual-machines-azure-slave-plugin-for-jenkins/jenkins-os-family-list-sample.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

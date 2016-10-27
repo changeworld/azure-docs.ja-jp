@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="VM またはロール インスタンスを別のサブネットに移動する方法"
-   description="別のサブネットに VM とロール インスタンスを移動する方法を学習します。"
+   pageTitle="How to move a VM or role instance to a different subnet"
+   description="Learn how to move VMs and role instances to a different subnet"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,42 +15,47 @@
    ms.date="03/22/2016"
    ms.author="jdial" />
 
-# VM またはロール インスタンスを別のサブネットに移動する方法
 
-PowerShell を使用すると、同じ Virtual Network (VNet) 内のサブネット間で VM を移動することができます。ロール インスタンスを移動する場合は、PowerShell を使用せずに、CSCFG を編集します。
+# <a name="how-to-move-a-vm-or-role-instance-to-a-different-subnet"></a>How to move a VM or role instance to a different subnet
 
->[AZURE.NOTE] この記事には、Azure クラシック デプロイのみに関連する情報が含まれています。
+You can use PowerShell to move your VMs from one subnet to another in the same virtual network (VNet). Role instances can be moved by editing the CSCFG, rather than using PowerShell.
 
-サブネット間で VM を移動する理由は何でしょうか。 たとえば、古いサブネットが小さいにもかかわらず、その中で既存の VM が動作しているために拡張できないときは、サブネットを移行することで問題を解決できます。サブネットを移行する場合は、まず新しい、より規模の大きいサブネットを作成し、そこに VM を移行します。そして移行が完了したら、空になった古いサブネットを削除します。
+>[AZURE.NOTE] This article contains information that is relative to Azure classic deployments only.
 
-## 別のサブネットに VM を移動する方法
+Why move VMs to another subnet? Subnet migration is useful when the older subnet is too small and cannot be expanded due to existing running VMs in that subnet. In that case, you can create a new, larger subnet and migrate the VMs to the new subnet, then after migration is complete, you can delete the old empty subnet.
 
-VM を移動するには、次の例をテンプレートとして使用して、Set-AzureSubnet という PowerShell コマンドレットを実行します。以下の例では、TestVM を現在のサブネットから Subnet-2 に移動しています。必ず、環境に合わせて例を編集してください。移動の手順として Update-AzureVM コマンドレットを実行すると、更新プロセスの一環として VM が常に再起動されます。
+## <a name="how-to-move-a-vm-to-another-subnet"></a>How to move a VM to another subnet
 
-	Get-AzureVM –ServiceName TestVMCloud –Name TestVM `
-	| Set-AzureSubnet –SubnetNames Subnet-2 `
-	| Update-AzureVM
+To move a VM, run the Set-AzureSubnet PowerShell cmdlet, using the example below as a template. In the example below, we are moving TestVM from its present subnet, to Subnet-2. Be sure to edit the example to reflect your environment. Note that whenever you run the Update-AzureVM cmdlet as part of a procedure, it will restart your VM as part of the update process.
 
-VM に対して静的内部プライベート IP が指定されている場合は、VM を新しいサブネットに移動する前に、その設定を解除する必要があります。この場合、以下のように指定します。
+    Get-AzureVM –ServiceName TestVMCloud –Name TestVM `
+  	| Set-AzureSubnet –SubnetNames Subnet-2 `
+  	| Update-AzureVM
 
-	Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
-	| Remove-AzureStaticVNetIP `
-	| Update-AzureVM
-	Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
-	| Set-AzureSubnet -SubnetNames Subnet-2 `
-	| Update-AzureVM
+If you specified a static internal private IP for your VM, you'll have to clear that setting before you can move the VM to a new subnet. In that case, use the following:
 
-## 別のサブネットにロール インスタンスを移動する方法
+    Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
+  	| Remove-AzureStaticVNetIP `
+  	| Update-AzureVM
+    Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
+  	| Set-AzureSubnet -SubnetNames Subnet-2 `
+  	| Update-AzureVM
 
-ロール インスタンスを移動するには、CSCFG ファイルを編集します。以下の例では、Virtual Network *VNETName* 内の「Role0」 を、現在のサブネットから *Subnet-2* に移動します。ロール インスタンスは既にデプロイされているので、単に Subnet name = Subnet-2 の部分を変更します。必ず、環境に合わせて例を編集してください。
+## <a name="to-move-a-role-instance-to-another-subnet"></a>To move a role instance to another subnet
 
-	<NetworkConfiguration>
-	    <VirtualNetworkSite name="VNETName" />
-	    <AddressAssignments>
-	       <InstanceAddress roleName="Role0">
-	            <Subnets><Subnet name="Subnet-2" /></Subnets>
-	       </InstanceAddress>
-	    </AddressAssignments>
-	</NetworkConfiguration> 
+To move a role instance, edit the CSCFG file. In the example below, we are moving "Role0" in virtual network *VNETName* from its present subnet to *Subnet-2*. Because the role instance was already deployed, you'll just change the Subnet name = Subnet-2. Be sure to edit the example to reflect your environment.
 
-<!---HONumber=AcomDC_0810_2016-->
+    <NetworkConfiguration>
+        <VirtualNetworkSite name="VNETName" />
+        <AddressAssignments>
+           <InstanceAddress roleName="Role0">
+                <Subnets><Subnet name="Subnet-2" /></Subnets>
+           </InstanceAddress>
+        </AddressAssignments>
+    </NetworkConfiguration> 
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

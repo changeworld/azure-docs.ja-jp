@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Boomi の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Boomi を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Boomi | Microsoft Azure" 
+    description="Learn how to use Boomi with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,143 +11,150 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Boomi の統合
 
-このチュートリアルでは、Azure と Boomi の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+#<a name="tutorial:-azure-active-directory-integration-with-boomi"></a>Tutorial: Azure Active Directory integration with Boomi
 
--   有効な Azure サブスクリプション
--   Boomi でのシングル サインオンが有効なサブスクリプション
+The objective of this tutorial is to show the integration of Azure and Boomi.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
-このチュートリアルを完了すると、Boomi に割り当てた Azure AD ユーザーは、Boomi 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+-   A valid Azure subscription
+-   A Boomi single sign-on enabled subscription
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+After completing this tutorial, the Azure AD users you have assigned to Boomi will be able to single sign into the application at your Boomi company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-1.  Boomi のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+The scenario outlined in this tutorial consists of the following building blocks:
 
-![シナリオ](./media/active-directory-saas-boomi-tutorial/IC791134.png "シナリオ")
-##Boomi のアプリケーション統合の有効化
+1.  Enabling the application integration for Boomi
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-このセクションでは、Boomi のアプリケーション統合を有効にする方法について説明します。
+![Scenario](./media/active-directory-saas-boomi-tutorial/IC791134.png "Scenario")
+##<a name="enabling-the-application-integration-for-boomi"></a>Enabling the application integration for Boomi
 
-###Boomi のアプリケーション統合を有効にするには、次の手順を実行します。
+The objective of this section is to outline how to enable the application integration for Boomi.
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+###<a name="to-enable-the-application-integration-for-boomi,-perform-the-following-steps:"></a>To enable the application integration for Boomi, perform the following steps:
+
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-boomi-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-boomi-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-boomi-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-boomi-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-boomi-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-boomi-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-boomi-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Boomi**」と入力します。
+6.  In the **search box**, type **Boomi**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-boomi-tutorial/IC790822.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-boomi-tutorial/IC790822.png "Application Gallery")
 
-7.  結果ウィンドウで **[Boomi]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Boomi**, and then click **Complete** to add the application.
 
     ![Boomi](./media/active-directory-saas-boomi-tutorial/IC790823.png "Boomi")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Boomi に対する認証を行えるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to Boomi with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Boomi** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Boomi** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/IC790824.png "Configure Single Sign-On")
 
-2.  **[ユーザーの Boomi へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Boomi** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/IC790825.png "Configure Single Sign-On")
 
-3.  **[アプリの URL の構成]** ページで、**[Boomi 応答 URL]** ボックスに **Boomi AtomSphere ログイン URL** (例: "*https://platform.boomi.com/sso/AccountName/saml*” を入力し、**[次へ]* をクリックします。
+3.  On the **Configure App URL** page, in the **Boomi Reply URL** textbox, type your **Boomi AtomSphere Login URL** (e.g.: “*https://platform.boomi.com/sso/AccountName/saml*”), and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-boomi-tutorial/IC790826.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-boomi-tutorial/IC790826.png "Configure App URL")
 
-4.  **[Boomi でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、コンピューターで証明書ファイルをローカルに保存します。
+4.  On the **Configure single sign-on at Boomi** page, to download your certificate, click **Download certificate**, and then save the certificate file locally on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/IC790827.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザー ウィンドウで、Boomi 企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your Boomi company site as an administrator.
 
-6.  上部のツール バーで会社名をクリックし、**[Setup]** をクリックします。
+6.  In the toolbar on the top, click your company name, and then **Setup**.
 
-    ![セットアップ](./media/active-directory-saas-boomi-tutorial/IC790828.png "セットアップ")
+    ![Setup](./media/active-directory-saas-boomi-tutorial/IC790828.png "Setup")
 
-7.  **[SSO Options]** をクリックします。
+7.  Click **SSO Options**.
 
     ![SSO Options](./media/active-directory-saas-boomi-tutorial/IC790829.png "SSO Options")
 
-8.  **[Single Sign-On Options]** セクションで、次の手順を実行します。
+8.  In the **Single Sign-On Options** section, perform the following steps:
 
     ![Single Sign-On Options](./media/active-directory-saas-boomi-tutorial/IC790830.png "Single Sign-On Options")
 
-    1.  **[Enable SAML Single Sign-On]** を選択します。
-    2.  **[Import]** をクリックして、ダウンロードした証明書をアップロードします。
-    3.  Azure クラシック ポータルで、**[Boomi でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ID プロバイダー ログイン URL]** ボックスに貼り付けます。
-    4.  **[Federation Id Location]** で、**[Federation Id is in NameID element of the Subject]** を選択します。
-    5.  **[保存]** をクリックします。
+    1.  Select **Enable SAML Single Sign-On**.
+    2.  Click **Import**, to upload the downloaded certificate.
+    3.  In the Azure classic portal, on the **Configure single sign-on at Boomi** dialog page, copy the **Remote Login URL** value, and then paste it into the **Identity Provider Login URL** textbox.
+    4.  As **Federation Id Location**, select **Federation Id is in NameID element of the Subject**.
+    5.  Click **Save**.
 
-9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-boomi-tutorial/IC775560.png "Configure Single Sign-On")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
 
-Azure AD ユーザーが Boomi にログインできるようにするには、ユーザーを Boomi にプロビジョニングする必要があります。Boomi の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into Boomi, they must be provisioned into Boomi.  
+In the case of Boomi, provisioning is a manual task.
 
-###ユーザー プロビジョニングを構成するには、次の手順に従います。
+###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
 
-1.  **Boomi** 企業サイトに管理者としてログインします。
+1.  Log in to your **Boomi** company site as administrator.
 
-2.  **[User Management]、[Users]** の順にクリックします。
+2.  Go to **User Management \> Users**.
 
     ![Users](./media/active-directory-saas-boomi-tutorial/IC790831.png "Users")
 
-3.  **[Add User]** をクリックします。
+3.  Click **Add User**.
 
-    ![ユーザーの追加](./media/active-directory-saas-boomi-tutorial/IC790832.png "ユーザーの追加")
+    ![Add User](./media/active-directory-saas-boomi-tutorial/IC790832.png "Add User")
 
-4.  **[Add User Roles]** ダイアログ ページで、次の手順を実行します。
+4.  On the **Add User Roles** dialog page, perform the following steps:
 
-    ![ユーザーの追加](./media/active-directory-saas-boomi-tutorial/IC790833.png "ユーザーの追加")
+    ![Add User](./media/active-directory-saas-boomi-tutorial/IC790833.png "Add User")
 
-    1.  対応するボックスに、プロビジョニングする有効な AAD アカウントの**名**、**姓**、**電子メール**を入力します。
-    2.  [OK] をクリックします。
+    1.  Type the **First Name**, **Last Name** and **Email** of a valid AAD account you want to provision into the related textboxes.
+    2.  Click OK.
 
->[AZURE.NOTE] Boomi から提供されている他の Boomi ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other Boomi user account creation tools or APIs provided by Boomi to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
 
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Boomi に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-boomi,-perform-the-following-steps:"></a>To assign users to Boomi, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Boomi** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Boomi **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-boomi-tutorial/IC790834.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-boomi-tutorial/IC790834.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-boomi-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

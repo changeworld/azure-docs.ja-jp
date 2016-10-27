@@ -1,34 +1,36 @@
 <properties
-	pageTitle="PowerShell コマンドレットを使用した仮想マシン スケール セットの作成 | Microsoft Azure"
-	description="Azure PowerShell コマンドレットを使用した初めての Azure 仮想マシン スケール セットの作成と管理の概要です。"
-	services="virtual-machines-windows"
-	documentationCenter=""
-	authors="danielsollondon"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Creating Virtual Machine Scale Sets using PowerShell cmdlets | Microsoft Azure"
+    description="Get started creating and managing your first Azure Virtual Machine Scale Sets using Azure PowerShell cmdlets"
+    services="virtual-machines-windows"
+    documentationCenter=""
+    authors="danielsollondon"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-windows"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/30/2016"
-	ms.author="danielsollondon"/>
+    ms.service="virtual-machines-windows"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/29/2016"
+    ms.author="danielsollondon"/>
 
-# PowerShell コマンドレットを使用した仮想マシン スケール セットの作成
 
-ここでは、仮想マシン スケール セット (VMSS) を作成する方法の例を示します。関連付けられているすべてのネットワークとストレージと共に、3 ノードの VMSS を作成します。
+# <a name="creating-virtual-machine-scale-sets-using-powershell-cmdlets"></a>Creating Virtual Machine Scale Sets using PowerShell cmdlets
 
-## 最初の手順
-最新の Azure PowerShell モジュールがインストールされていることを確認してください。これには、VMSS の管理と作成に必要な PowerShell コマンドレットが含まれます。利用可能な最新の Azure モジュールのコマンドライン ツールは、[こちら](http://aka.ms/webpi-azps)で入手できます。
+This is an example of how to create a Virtual Machine Scale Set(VMSS), it creates a VMSS of 3 nodes, with all the associated Networking and Storage.
 
-VMSS 関連のコマンドレットを検索するには、検索文字列 *VMSS* を使います。
+## <a name="first-steps"></a>First Steps
+Ensure you have the latest Azure PowerShell module installed, this will contain the PowerShell commandlets needed to maintain and create VMSS.
+Go to the commandline tools [here](http://aka.ms/webpi-azps) for the latest available Azure Modules.
 
-## VMSS の作成
+To find VMSS related commandlets, use the search string \*VMSS\*.
 
-##### リソース グループの作成
+## <a name="creating-a-vmss"></a>Creating a VMSS
+
+##### <a name="create-resource-group"></a>Create Resource Group
 
 ```
 $loc = 'westus';
@@ -36,9 +38,9 @@ $rgname = 'mynewrgwu';
   New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 ```
 
-##### ストレージ アカウントの作成
+##### <a name="create-storage-account"></a>Create Storage Account
 
-ストレージ アカウントの種類と名前を設定します。
+Set storage account type / name.
 
 ```
 $stoname = 'sto' + $rgname;
@@ -48,35 +50,35 @@ $stotype = 'Standard_LRS';
 $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
 ```
 
-#### ネットワークの作成 (VNET とサブネット)
+#### <a name="create-networking-(vnet-/-subnet)"></a>Create Networking (VNET / Subnet)
 
-##### サブネットの指定
+##### <a name="subnet-specification"></a>Subnet Specification
 
 ```
 $subnetName = 'websubnet'
   $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix "10.0.0.0/24";
 ```
 
-##### VNET の指定
+##### <a name="vnet-specification"></a>VNET Specification
 
 ```
-$vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+$vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
 $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
 
 #In this case below we assume the new subnet is the only one, note difference if you have one already or have adjusted this code to more than one subnet.
 $subnetId = $vnet.Subnets[0].Id;
 ```
 
-##### 外部アクセスを許可するパブリック IP リソースの作成
+##### <a name="create-public-ip-resource-to-allow-external-access"></a>Create Public IP Resource to Allow External Access
 
-これは Load Balancer にバインドされます。
+This will be bound to the to the Load Balancer.
 
 ```
 $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
 $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
 ```
 
-##### Load Balancer の作成と構成
+##### <a name="create-and-configure-load-balancer"></a>Create and Configure Load Balancer
 
 ```
 $frontendName = 'fe' + $rgname
@@ -90,20 +92,20 @@ $lbName = 'vmsslb' + $rgname
 $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
 ```
 
-##### Load Balancer の構成
-バックエンド アドレス プール構成を作成します。これは、VMSS 内の VM の NIC によって共有されます。
+##### <a name="configure-load-balancer"></a>Configure Load Balancer
+Create Backend Address Pool Config, this will be shared by the NICs of the VMs in VMSS.
 
 ```
 $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
 ```
 
-負荷分散プローブ ポートを設定します。対象のアプリケーションに合わせて設定を変更してください。
+Set Load Balanced Probe Port, change the settings as appropriate for your application.
 
 ```
 $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 ```
 
-Load Balancer を経由して VMSS 内の VM に (負荷分散なしで) 直接ルーティングされた接続に関する NAT 規則を作成します。この説明では RDP が使用されていることに注意してください。これはデモンストレーションのみを目的としており、これらのサーバーに対する RDP 接続には内部 VNET による方法を使用する必要があります。
+Create NAT rules for direct routed connectivity (not load balanced) to the VMs in the VMSS via the Load Balancer, note this demonstrates using RDP, this is just for demonstration and internal VNET methods should be used for RDP'ing to these servers.
 
 ```
 $frontendpoolrangestart = 3360
@@ -113,7 +115,7 @@ $inboundNatPool = New-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatP
 $frontend.Id -Protocol Tcp -FrontendPortRangeStart $frontendpoolrangestart -FrontendPortRangeEnd $frontendpoolrangeend -BackendPort $backendvmport;
 ```
 
-負荷分散規則を作成します。次の例では、前の手順の設定を使用して負荷分散ポート 80 の要求を示しています。
+Create the Load Balanced Rule, this example shows load balancing port 80 requests, using the settings from previous steps.
 
 ```
 $protocol = 'Tcp'
@@ -126,7 +128,7 @@ $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName `
 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP -Verbose;
 ```
 
-上記の構成で Load Balancer を作成します。
+Create Load Balancer with configuration.
 
 ```
 $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $loc `
@@ -134,15 +136,15 @@ $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Lo
 -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool -Verbose;
 ```
 
-Load Balancer の設定を確認します。負荷分散ポートの構成を確認してください。VMSS 内の VM が作成されるまで受信 NAT 規則は表示されないことに注意してください。
+Check  LB settings, check load balanced port configs, note, you will not see Inbound NAT rules until the VM's in the VMSS are created.
 
 ```
 $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 ```
 
-##### VMSS の構成と作成
+##### <a name="configure-and-create-vmss"></a>Configure and Create VMSS
 
-このインフラストラクチャの例では、VMSS 全体で Web トラフィックを分散、スケールするための設定方法を示していますが、ここで指定された VM イメージには Web サービスがインストールされていないことに注意してください。
+Note, this infrastructure example shows how to setup distribute and scale web traffic across the VMSS, but the VMs Images specified here do not have any web services installed.
 
 ```
 #specify VMSS Name
@@ -167,40 +169,37 @@ $exttype = 'BGInfo';
 $extver = '2.1';
 ```
 
-Load Balancer とサブネットへの NIC のバインド
+Bind NIC to Load Balancer and Subnet
 
 ```
 $ipCfg = New-AzureRmVmssIPConfig -Name 'nic' `
 -LoadBalancerInboundNatPoolsId $actualLb.InboundNatPools[0].Id `
 -LoadBalancerBackendAddressPoolsId $actualLb.BackendAddressPools[0].Id `
 -SubnetId $subnetId;
-
-$ipCfg.LoadBalancerBackendAddressPools.Add($actualLb.BackendAddressPools[0].Id);
-$ipCfg.LoadBalancerInboundNatPools.Add($actualLb.InboundNatPools[0].Id);
 ```
 
-VMSS 構成の作成
+Create VMSS Config
 
 ```
 #Specify number of nodes
 $numberofnodes = 3
 
 $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity $numberofnodes -SkuName 'Standard_A2' -UpgradePolicyMode 'automatic' `
-    | Add-AzureRmVmssNetworkInterfaceConfiguration -Name $subnetName -Primary $true -IPConfiguration $ipCfg `
-    | Set-AzureRmVmssOSProfile -ComputerNamePrefix $vmNamePrefix -AdminUsername $adminUsername -AdminPassword $adminPassword `
-    | Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+  	| Add-AzureRmVmssNetworkInterfaceConfiguration -Name $subnetName -Primary $true -IPConfiguration $ipCfg `
+  	| Set-AzureRmVmssOSProfile -ComputerNamePrefix $vmNamePrefix -AdminUsername $adminUsername -AdminPassword $adminPassword `
+  	| Set-AzureRmVmssStorageProfile -Name 'test' -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
     -ImageReferenceOffer $Offer -ImageReferenceSku $Sku -ImageReferenceVersion $Version `
     -ImageReferencePublisher $PublisherName -VhdContainer $vhdContainer `
-    | Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true
+  	| Add-AzureRmVmssExtension -Name $extname -Publisher $publisher -Type $exttype -TypeHandlerVersion $extver -AutoUpgradeMinorVersion $true
 ```
 
-VMSS 構成のビルド
+Build VMSS Config
 
 ```
 New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss -Verbose;
 ```
 
-これで、VMSS が作成されました。次の例では、RDP を使用して個々の VM への接続をテストできます。
+Now you have created the VMSS. You can test connecting to the individual VM using RDP in this example:
 
 ```
 VM0 : pubipmynewrgwu.westus.cloudapp.azure.com:3360
@@ -208,4 +207,8 @@ VM1 : pubipmynewrgwu.westus.cloudapp.azure.com:3361
 VM2 : pubipmynewrgwu.westus.cloudapp.azure.com:3362
 ```
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

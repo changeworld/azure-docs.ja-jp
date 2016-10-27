@@ -1,44 +1,49 @@
 <properties
-	pageTitle="Azure Active Directory の条件付きアクセスに関する FAQ | Microsoft Azure"
-	description="条件付きアクセスに関してよく寄せられる質問 "
-	services="active-directory"
-	documentationCenter=""
-	authors="markusvi"
-	manager="swadhwa"
-	editor=""/>
+    pageTitle="Azure Active Directory Conditional Access FAQ | Microsoft Azure"
+    description="Frequently asked questions about conditional access "
+    services="active-directory"
+    documentationCenter=""
+    authors="MarkusVi"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/26/2016"
-	ms.author="markvi"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/20/2016"
+    ms.author="markvi"/>
 
-# Azure Active Directory の条件付きアクセスに関する FAQ
 
-## 条件付きアクセス ポリシーを使用するアプリケーションにはどのようなものがありますか?
+# <a name="azure-active-directory-conditional-access-faq"></a>Azure Active Directory Conditional Access FAQ
 
-**A:** [条件付きアクセスでサポートされるアプリケーション](active-directory-conditional-access-supported-apps.md)に関するトピックを参照してください。
+## <a name="which-applications-work-with-conditional-access-policies?"></a>Which applications work with conditional access policies?
 
-## 条件付きアクセス ポリシーは、B2B コラボレーション ユーザーおよびゲスト ユーザーには適用されますか?
+**A:** Please see the topic, [Conditional access- What applications are supported](active-directory-conditional-access-supported-apps.md).
 
-**A:** B2B コラボレーション ユーザーにはポリシーが適用されます。ただし、ユーザーがポリシー要件を満たすことができない場合もあります。たとえば、組織が多要素認証をサポートしていない場合などです。
+## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users?"></a>Are conditional access policies enforced for B2B collaboration and guest users?
 
-現在、SharePoint ゲスト ユーザーにはポリシーが適用されません。ゲストの関係は、SharePoint 内で維持されます。ゲスト ユーザー アカウントには、認証サーバーでのアクセス ポリシーは適用されません。ゲスト アクセスは、SharePoint で管理できます。
+**A:** Policies are enforced for B2B collaboration users. However, in some cases, a user might not be able to satisfy the policy requirement if, for example, an organization does not support multi-factor authentication. 
 
-## SharePoint Online ポリシーは、OneDrive for Business にも適用されますか?
+The policy is currently not enforced for SharePoint guest users. The guest relationship is maintained within SharePoint. Guest users accounts are not subject to access polices at the authentication server. Guest access can be managed at SharePoint.
 
-**A:** はい。
+## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business?"></a>Does a SharePoint Online policy also apply to OneDrive for Business?
+
+**A:** Yes.
  
-## Word や Outlook などのクライアント アプリにポリシーを設定できないのですが、なぜでしょうか?
+## <a name="why-can’t-i-set-a-policy-on-client-apps,-like-word-or-outlook?"></a>Why can’t I set a policy on client apps, like Word or Outlook?
 
-**A:** 条件付きアクセス ポリシーは、サービスへのアクセスの要件を設定し、そのサービスへの認証を実行するときに適用されます。ポリシーはクライアント アプリケーションで直接設定されるのではなく、サービスを呼び出すときに適用されます。たとえば、SharePoint で設定したポリシーは SharePoint を呼び出すクライアントに適用され、Exchange で設定したポリシーは Outlook に適用されます。
+**A:** A conditional access policy sets requirements for accessing a service and is enforced when authentication happens to that service. The policy is not set directly on a client application; instead, it is applied when it calls into a service. For example, a policy set on SharePoint applies to clients calling SharePoint and a policy set on Exchange applies to Outlook.
 
 
-## 条件付きアクセス ポリシーはサービス アカウントに適用されますか?
+## <a name="does-a-conditional-access-policy-apply-to-service-accounts?"></a>Does a conditional access policy apply to service accounts?
 
-**A:** 条件付きアクセス ポリシーは、すべてのユーザー アカウントに適用されます。これには、サービス アカウントとして使用されるユーザー アカウントも含まれます。多くの場合、自動的に実行されるサービス アカウントはポリシーを満たすことができません。例として、MFA が必要となる場面が挙げられます。このような場合、条件付きアクセス ポリシーの管理設定を使用して、サービス アカウントをポリシーから除外できます。ここで、ユーザーへのポリシーの適用についてさらに詳しく説明します。
+**A:** Conditional access policies apply to all user accounts. This includes user accounts used as service accounts. In many cases, a service account that runs unattended is not able to satisfy a policy. This is, for example the case, when MFA is required. In these cases, services accounts can be excluded from a policy, using conditional access policy management settings. Learn more about applying a policy to users here.
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

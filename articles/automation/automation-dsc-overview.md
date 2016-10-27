@@ -1,12 +1,12 @@
 <properties 
-   pageTitle="Azure Automation DSC の概要 | Microsoft Azure" 
-   description="Azure Automation Desired State Configuration (DSC) の概要、その利用規約、および既知の問題" 
+   pageTitle="Azure Automation DSC Overview | Microsoft Azure" 
+   description="An Overview of Azure Automation Desired State Configuration (DSC), its terms, and known issues" 
    services="automation" 
    documentationCenter="dev-center-name" 
    authors="coreyp-at-msft" 
    manager="stevenka" 
    editor="tysonn"
-   keywords="powershell dsc, 必要な状態の構成, powershell dsc azure"/>
+   keywords="powershell dsc, desired state configuration, powershell dsc azure"/>
 
 <tags
    ms.service="automation"
@@ -17,115 +17,120 @@
    ms.date="05/10/2016"
    ms.author="magoedte;coreyp"/>
 
-# Azure Automation DSC Overview #
 
-##Azure Automation DSC とは##
-サーバーとアプリケーションのリソースをデプロイし、目的の状態を維持することは、単調でエラーが発生しやすい作業です。Azure Automation Desired State Configuration (DSC) を使用すると、クラウドの規模で、すべての IT リソースの目的の状態を一貫した方法でデプロイし、確実に監視し、自動的に更新できます。Automation DSC は PowerShell DSC に基づいて構築されているので、Windows または Linux を使用して、クラウド内またはオンプレミス内の物理および仮想マシン (VM) 全体で、マシン構成を特定の状態に合わせることができます。一貫した制御で継続的な IT サービス配信を有効にし、異種ハイブリッド IT 環境全体の急な変更を管理する作業も簡単になります。
+# <a name="azure-automation-dsc-overview"></a>Azure Automation DSC Overview #
 
-Azure Automation DSC は、構成管理をより容易にするために PowerShell DSC で導入された基礎をベースとします。Azure Automation DSC は、今日 Azure Automation が PowerShell スクリプト用に提供するものと同じ管理レイヤーを [PowerShell Desired State Configuration](https://msdn.microsoft.com/powershell/dsc/overview) に提供します。
+##<a name="what-is-azure-automation-dsc?##"></a>What is Azure Automation DSC?##
+Deploying and maintaining the desired state of your servers and application resources can be tedious and error prone. With Azure Automation Desired State Configuration (DSC), you can consistently deploy, reliably monitor, and automatically update the desired state of all your IT resources, at scale from the cloud. Built on PowerShell DSC, Automation DSC can align machine configuration with a specific state across physical and virtual machines (VMs), using Windows or Linux, and in the cloud or on-premises. You can enable continuous IT services delivery with consistent control and manage rapid change across your heterogeneous hybrid IT environment with ease.
 
-Azure Automation DSC を使用することで、[PowerShell Desired State Configuration の作成や管理](https://technet.microsoft.com/library/dn249918.aspx)、[DSC リソース](https://technet.microsoft.com/library/dn282125.aspx)のインポート、および DSC ノード構成 (MOF ドキュメント) の生成がすべてクラウドで可能になります。これらの DSC 項目は、Azure Automation の [DSC プル サーバー](https://technet.microsoft.com/library/dn249913.aspx)に配置されるため、クラウドおよびオンプレミスのターゲット ノード (物理および仮想マシンなど) はそれらを選択し、指定した必要な状態に自動的に準拠して、Azure Automation に必要な状態の準拠に関するレポートを返します。
+Azure Automation DSC builds on top of the fundamentals introduced in PowerShell DSC to provide an even easier configuration management experience. Azure Automation DSC brings the same management layer to [PowerShell Desired State Configuration](https://msdn.microsoft.com/powershell/dsc/overview) as Azure Automation offers for PowerShell scripting today.
 
-読むより見る方がよければ、 Azure Automation DSC が初めて発表された 2015年 5 月に公開された次のビデオをご覧ください。**注:** このビデオで解説されている概念とライフサイクルは正しいものですが、このビデオが作成されてから Azure Automation DSC はかなり進歩しています。Azure Automation DSC は一般公開され、Azure ポータルでさまざまな UI を使用できるようになり、多数の機能がサポートされています。
+Azure Automation DSC allows you to [author and manage PowerShell Desired State Configurations](https://technet.microsoft.com/library/dn249918.aspx), import [DSC Resources](https://technet.microsoft.com/library/dn282125.aspx), and generate DSC Node Configurations (MOF documents), all in the cloud. These DSC items will be placed on the Azure Automation [DSC pull server](https://technet.microsoft.com/library/dn249913.aspx) so that target nodes (such as physical and virtual machines) in the cloud or on-premises can pick them up, automatically conform to the desired state they specify, and report back on their compliance with the desired state to Azure Automation.
+
+Prefer watching to reading? Have a look at the below video from May 2015, when Azure Automation DSC was first announced. **Note:** While the concepts and lifecycle discussed in this video are correct, Azure Automation DSC has progressed a lot since this video was recorded. It is now generally available, has a much more extensive UI in the Azure portal, and supports many additional capabilities.
 
 > [AZURE.VIDEO microsoft-ignite-2015-heterogeneous-configuration-management-using-microsoft-azure-automation]
 
 
 
-## Azure Automation DSC の利用規約 ##
-### 構成 ###
-PowerShell DSC では、構成という新しい概念が導入されました。構成では、PowerShell 構文を使用して、環境の必要な状態を定義することができます。DSC を使用して環境を構成するには、まず、構成キーワードを使用して Windows PowerShell スクリプト ブロックを定義してから、その後に識別子と、ブロックを区切る中かっこ ({}) を付加します。
+## <a name="azure-automation-dsc-terms"></a>Azure Automation DSC Terms ##
+### <a name="configuration"></a>Configuration ###
+PowerShell DSC introduced a new concept called configurations. Configurations allow you to define, via PowerShell syntax, the desired state of your environment. To use DSC to configure your environment, first define a Windows PowerShell script block using the configuration keyword, then follow it with an identifier, then with braces ({}) to delimit the block.
 
 ![alt text](./media/automation-dsc-overview/AADSC_1.png)
 
-構成ブロック内には、まったく同じように構成する必要がある環境内の一連のノード (コンピューター) に必要な構成を指定するノードの構成ブロックを定義できます。このようにして、ノード構成では想定される 1 つ以上のノードの「ロール」を示します。ノードの構成ブロックはノード キーワードで始まります。このキーワードの後にロール名 (変数または式の場合あり) を付加します。ロール名の後に中かっこ {} を使用して、ノードの構成ブロックを区切ります。
+Inside the configuration block you can define node configuration blocks that specify the desired configuration for a set of nodes (computers) in your environment that should be configured exactly the same. In this way, a node configuration represents a “role” for one or more nodes to assume. A node configuration block starts with the node keyword. Follow this keyword with the name of the role, which can be a variable or expression. After the role name, use braces {} to delimit the node configuration block.
 
 ![alt text](./media/automation-dsc-overview/AADSC_2.png)
  
-ノードの構成ブロック内には、特定の DSC リソースを構成するためのリソース ブロックを定義できます。リソース ブロックはリソース名で始まり、その後にブロックに対して指定する必要がある識別子と、ブロックを区切るための中かっこ {} が続きます。
+Inside the node configuration block, you can define resource blocks to configure specific DSC resources. A resource block starts with the name of the resource, followed by the identifier you want to specify for that block, then braces {} to delimit the block.
 
 ![alt text](./media/automation-dsc-overview/AADSC_3.png)
 
-構成キーワードの詳細については、「[Desired State Configuration における構成キーワードについて](http://blogs.msdn.com/b/powershell/archive/2013/11/05/understanding-configuration-keyword-in-desired-state-configuration.aspx "Desired State Configuration における構成キーワードについて")」を参照してください。
+For more detailed information about the configuration keyword, see: [Understanding Configuration Keyword in Desired State Configuration](http://blogs.msdn.com/b/powershell/archive/2013/11/05/understanding-configuration-keyword-in-desired-state-configuration.aspx "Understanding Configuration Keyword in Desired State Configuration")
 
-DSC 構成を実行 (コンパイル) すると、1 つ以上の DSC ノード構成 (MOF ドキュメント) が生成されます。これらは、DSC ノードが必要な状態に準拠するために適用するものです。
+Running (compiling) a DSC configuration will produce one or more DSC node configurations (MOF documents), which are what DSC nodes apply to comply with desired state.
 
-Azure Automation DSC では、Azure Automation での DSC 構成のインポート、作成、およびコンパイルが可能です。これは、Azure Automation で Runbook をインポート、作成、および開始する方法に似ています。
+Azure Automation DSC allows you to import, author, and compile DSC configurations in Azure Automation, similar to how runbooks can be imported, authored, and started in Azure Automation.
 
->[AZURE.IMPORTANT] Azure Automation DSC では、構成にそれと同じ名前の構成ブロックを 1 つだけ含める必要があります。
-
-
-###ノード構成###
-
-DSC 構成がコンパイルされると、構成内のノード ブロックに応じて、1 つ以上のノード構成が生成されます。ノード構成は「MOF」、つまり「構成ドキュメント」と同じで (これらの PS DSC 利用規約をよく理解している場合)、Web サーバーや worker などの「ロール」(目的の状態を 1 つ以上のノードが想定する場合や、コンプライアンスを確認する場合) を示します。Azure Automation DSC でのノード構成の名前は、“Configuration Name.NodeConfigurationBlockName” という形式です。
-
-PS DSC ノードは、DSC プッシュまたはプル メソッドのいずれかを使用して制定する必要があるノード構成を認識するようになります。Azure Automation DSC は、Azure Automation DSC プル サーバーから適用する必要があるノード構成をノードが要求する DSC プル方式に依存します。ノードは Azure Automation DSC に対して要求を行うため、ファイアウォールの内側に配置したり、受信ポートをすべて閉じたりすることができます。インターネットへの (直接またはプロキシ経由の) 送信アクセスのみが必要です。
+>[AZURE.IMPORTANT] A configuration should contain only one configuration block, with the same name as the configuration, in Azure Automation DSC. 
 
 
-###ノード###
+###<a name="node-configuration###"></a>Node Configuration###
 
-DSC ノードは、その構成が DSC によって管理される任意のコンピューターです。たとえば、別のパブリック クラウドにあるオンプレミス VM または物理ホストの Windows または Linux Azure VM です。ノードは、定義した必要な状態になり、その状態の準拠を維持するようにノード構成を制定します。また、構成状態と、準拠と目的の状態に関するレポートをレポート サーバーに返すこともできます。
+When a DSC Configuration is compiled, one or more node configurations are produced depending on the Node blocks in the configuration. A node configuration is the same as a “MOF,” or “configuration document” (if you are familiar with those PS DSC terms) and represents a “role,” such as webserver or worker, which desired state one or more nodes should assume or check for compliance against. Names of node configurations in Azure Automation DSC take the form of “Configuration Name.NodeConfigurationBlockName”.
 
-Azure Automation DSC は Azure Automation DSC によって管理されるノードのオンボードを容易にし、ノード サーバー側にそれぞれ割り当てられているノード構成を変更できるようにするため、ノードは次回サーバーの指示を確認する際に、別のロールを想定し、一致するように構成方法とレポートする準拠状態を変更します。
-
-
-###リソース###
-DSC リソースは、Windows PowerShell Desired State Configuration (DSC) 構成を定義するために使用できる構成要素です。DSC には、ファイルやフォルダー、サーバー機能やロール、レジストリ設定、環境変数、およびサービスやプロセスなど、一連の組み込みリソースが用意されています。組み込みの DSC リソースの完全な一覧と使用方法については、「[組み込みの Windows PowerShell Desired State Configuration リソース](https://technet.microsoft.com/library/dn249921.aspx)」を参照してください。
-
-DSC リソースは、一連の組み込み DSC リソースを拡張するために PowerShell モジュールの一部としてインポートすることもできます。ノードが制定する必要があるノード構成に既定以外のリソースへの参照が含まれている場合、DSC プル サーバーから DSC ノードによってそのリソースがプルダウンされます。カスタム リソースの作成方法については、「[カスタムの Windows PowerShell Desired State Configuration リソースの作成](https://technet.microsoft.com/library/dn249927.aspx)」を参照してください。
-
-Azure Automation DSC には、PS DSC と同じ組み込み DSC リソースがすべて付属しています。Azure Automation にリソースを含む PowerShell モジュールをインポートすることで、Azure Automation DSC にリソースをさらに追加することができます。
+PS DSC nodes become aware of node configurations they should enact via either DSC push, or pull methods. Azure Automation DSC relies on the DSC pull method, where nodes request node configurations they should apply from the Azure Automation DSC pull server. Because the nodes make the request to Azure Automation DSC, nodes can be behind firewalls, have all inbound ports closed, etc. They only need outbound access to the Internet (either directly or via a proxy).
 
 
-###コンパイル ジョブ###
-Azure Automation DSC のコンパイル ジョブは、1 つ以上のノード構成を作成するための構成のコンパイルのインスタンスです。Azure Automation Runbook ジョブに似ていますが、ノード構成を作成する場合を除き、タスクを実際に実行しないという点が異なります。コンパイル ジョブによって作成されたノード構成は、Azure Automation DSC プル サーバーに自動的に配置され、以前のバージョンのノード構成は、この構成のために存在している場合、上書きされます。コンパイル ジョブによって生成されたノード構成の名前には、"ConfigurationName.NodeConfigurationBlockName" という形式を使用します。たとえば、以下の構成をコンパイルすると、"MyConfiguration.webserver" という単一のノード構成が生成されます。
+###<a name="node###"></a>Node###
+
+A DSC node is any machine that has its configuration managed by DSC. This could be a Windows or Linux Azure VM, on-premises VM / physical host, or machine in another public cloud. Nodes enact node configurations to become and maintain compliance with the desired state they define, and also can report back to a reporting server on their configuration status and compliance versus the desired state.
+
+Azure Automation DSC makes onboarding of nodes for management by Azure Automation DSC easy, and allows changing of the node configuration assigned to each node server-side, so next time a node checks the server for instructions it will assume a different role and change both how it is configured and the complaince status it should report against to match.
+
+
+###<a name="resource###"></a>Resource###
+DSC resources are building blocks that you can use to define a Windows PowerShell Desired State Configuration (DSC) configuration. DSC comes with a set of built-in resources such as those for files and folders, server features and roles, registry settings, environment variables, and services and processes. To learn about the full list of built-in DSC resources and how to use them, see [Built-In Windows PowerShell Desired State Configuration Resources](https://technet.microsoft.com/library/dn249921.aspx).
+
+DSC resources can also be imported as part of PowerShell Modules to extend the set of built-in DSC resources. Non-default resources will be pulled down by DSC nodes from the DSC pull server, if a node configuration the node is meant to enact contains references to those resources. To learn how to create custom resources, see [Build Custom Windows PowerShell Desired State Configuration Resources](https://technet.microsoft.com/library/dn249927.aspx).
+
+Azure Automation DSC ships with all the same built-in DSC resources as does PS DSC. Additional resources can be added to Azure Automation DSC by importing PowerShell modules containing the resources into Azure Automation.
+
+
+###<a name="compilation-job###"></a>Compilation Job###
+A compilation job in Azure Automation DSC is an instance of compilation of a configuration, to create one or more node configurations. They are similar to Azure Automation runbook jobs, except that they do not actually perform any task except to create node configurations. Any node configurations created by a compilation job are automatically placed on the Azure Automation DSC pull server, and overwrite previous versions of node configurations, if they existed for this configuration. The name of a node configuration produced by a compilation job takes the form of “ConfigurationName.NodeConfigurationBlockName”. For example, compiling the below configuration would produce a single node configuration called “MyConfiguration.webserver”
 
 
 ![alt text](./media/automation-dsc-overview/AADSC_5.png)
 
 
->[AZURE.NOTE] Runbook と同じように、構成を発行することができます。これは、Azure Automation DSC プル サーバーへの DSC 項目の配置とは関係ありません。コンパイル ジョブにより、DSC 項目は Azure Automation DSC プル サーバーに配置されます。Azure Automation での「発行」の詳細については、「[Runbook の公開](https://msdn.microsoft.com/library/dn903765.aspx)」を参照してください。
+>[AZURE.NOTE] Just like runbooks, configurations can be published. This is not related to putting DSC items onto the Azure Automation DSC pull server. Compilation jobs cause DSC items to be placed on the Azure Automation DSC pull server. For more information on “publishing” in Azure Automation, see [Publishing a Runbook](https://msdn.microsoft.com/library/dn903765.aspx).
 
 
-##Azure Automation DSC のライフサイクル##
-空のオートメーション アカウントから適切に構成されたノードの管理対象セットを作成するには、構成を定義し、定義した構成をノード構成に変更して、ノードを Azure Automation DSC とこれらのノード構成にオンボードする一連のプロセスを行います。次の図に、Azure Automation DSC のライフサイクルを示します。
+##<a name="azure-automation-dsc-lifecycle##"></a>Azure Automation DSC LifeCycle##
+Going from an empty automation account to a managed set of correctly configured nodes involves a set of processes for defining configurations, turning those configurations into node configurations, and onboarding nodes to Azure Automation DSC and to those node configurations. The following diagram illustrates the Azure Automation DSC lifecycle:
 
 ![alt text](./media/automation-dsc-overview/DSCLifecycle.png)
 
 
-次の図は、DSC のライフサイクルのプロセスをステップごとに詳細に示しています。この図には、Azure Automation に構成をインポートし、ノードに適用するさまざまな方法、オンプレミス コンピューターが DSC をサポートするために必要なコンポーネント、さまざまなコンポーネント間のやり取りが含まれています。
+The following image illustrates detailed step-by-step process in the life cycle of DSC. It includes different ways a configuration is imported and applied to nodes in Azure Automation, components required for an on-premises machine to support DSC and interactions between different components. 
 
-![DSC アーカイブ](./media/automation-dsc-overview/dsc-architecture.png)
+![DSC Architecture](./media/automation-dsc-overview/dsc-architecture.png)     
 
-##認識されている既知の問題##
+##<a name="gotchas-/-known-issues:##"></a>Gotchas / Known Issues:##
 
-- WMF 5 RTM にアップグレードするときに、コンピューターが Azure Automation DSC のノードとして既に登録されている場合は、Azure Automation DSC からノードの登録を解除し、WMF 5 RTM のアップグレード後に再登録してください。
+- When upgrading to WMF 5 RTM, if the machine is already registered as a node in Azure Automation DSC, please unregister it from Azure Automation DSC and reregister it after the WMF 5 RTM upgrade.
 
-- 現時点では、Azure Automation DSC では部分的または複合 DSC 構成はサポートされていません。ただし、ローカル PowerShell と同様に、DSC の複合リソースをインポートして Azure Automation DSC 構成で使用することで、構成を再利用できます。
+- Azure Automation DSC does not support partial or composite DSC configurations at this time. However, DSC composite resources can be imported and used in Azure Automation DSC Configurations just like in local PowerShell, enabling configuration reuse.
 
-- Windows 用 PowerShell DSC エージェントを Azure Automation と通信できるようにするには、最新バージョンの WMF 5 をインストールする必要があります。Linux を Azure Automation と通信できるようにするには、最新バージョンの Linux 用 PowerShell DSC エージェントをインストールする必要があります。
+- The latest version of WMF 5 must be installed for the PowerShell DSC agent for Windows to be able to communicate with Azure Automation. The latest version of the PowerShell DSC agent for Linux must be installed for Linux to be able to communicate with Azure Automation.
 
-- 従来の PowerShell DSC プル サーバーでは、**ModuleName\_Version.zip"** という形式のモジュール zip をプル サーバーに配置する必要があります。Azure Automation では、**ModuleName.zip** という形式の名前の PowerShell モジュールをインポートする必要があります。Azure Automation にモジュールをインポートするために必要な統合モジュールの詳細については、「[このブログの投稿](https://azure.microsoft.com/blog/2014/12/15/authoring-integration-modules-for-azure-automation/)」を参照してください。
+- The traditional PowerShell DSC pull server expects module zips to be placed on the pull server in the format **ModuleName_Version.zip”**. Azure Automation expects PowerShell modules to be imported with names in the form of **ModuleName.zip**. See [this blog post](https://azure.microsoft.com/blog/2014/12/15/authoring-integration-modules-for-azure-automation/) for more info on the Integration Module format needed to import the module into Azure Automation. 
 
-- Azure Automation にインポートした PowerShell モジュールには、.doc ファイルや .docx ファイルを含めることはできません。DSC リソースを含むいくつかの PowerShell モジュールには、参照用にこれらのファイルが含まれます。Azure Automation にインポートする前に、モジュールからこれらのファイルを削除してください。
+- PowerShell modules imported into Azure Automation cannot contain .doc or .docx files. Some PowerShell modules containing DSC resources contain these files, for help purposes. These files should be removed from modules, prior to import into Azure Automation.
 
-- ノードが初めて Azure Automation アカウントに登録されたとき、またはノードがサーバー側の異なるノード構成にマップされるように変更されたときには、ノードの状態が現在マップされているノード構成に実際には準拠していない場合であっても、ノードの状態は "準拠" になります。ノードが登録後またはノード構成のマッピング変更後に最初のプルを実行して最初のレポートを送信した後であれば、ノードの状態を信頼できます。
+- When a node is first registered with an Azure Automation account, or the node is changed to be mapped to a different node configuration server-side, it’s status will be 'Compliant', even if the node’s status is not actually compliant with the node configuration it is now mapped to. After the node performs its first pull, and sends its first report, after registration or a node configuration mapping change, the node status can be trusted.
 
-- いずれかの直接的なオンボーディング方法を使用して、Azure Automation DSC による管理のために Azure Windows VM の利用を開始する場合、Azure Automation に DSC ノードとして VM が表示されるまで最長 1 時間かかる可能性があります。これは、VM を Azure Automation DSC にオンボードするために必要な Windows Management Framework 5.0 を、Azure VM DSC 拡張機能が VM にインストールするためです。
+- When onboarding an Azure Windows VM for management by Azure Automation DSC using any of our direct onboarding methods, it could take up to an hour for the VM to show up as a DSC node in Azure Automation. This is due to the installation of Windows Management Framework 5.0 on the VM by the Azure VM DSC extension, which is required to onboard the VM to Azure Automation DSC.
 
-- 登録すると、各ノードは、1 年後に有効期限が切れる認証用の一意の証明書を自動的にネゴシエートします。現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 再登録は、ノードを初めて登録したのと同じ方法で実行されます。証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。
+- After registering, each node automatically negotiates a unique certificate for authentication that expires after one year. At this time, the PowerShell DSC registration protocol cannot automatically renew certificates when they are nearing expiration, so you need to reregister the nodes after a year’s time. Before reregistering, ensure that each node is running Windows Management Framework 5.0 RTM. If a node’s authentication certificate expires, and the node is not reregistered, the node will be unable to communicate with Azure Automation and will be marked ‘Unresponsive.’ Reregistration is performed in the same way you registered the node initially. Reregistration performed 90 days or less from the certificate expiration time, or at any point after the certificate expiration time, will result in a new certificate being generated and used.
 
-- WMF 5 RTM にアップグレードするときに、コンピューターが Azure Automation DSC のノードとして既に登録されている場合は、Azure Automation DSC からノードの登録を解除し、WMF 5 RTM のアップグレード後に再登録してください。再登録する前に、$env:windir\\system32\\configuration\\DSCEngineCache.mof を削除します。
+- When upgrading to WMF 5 RTM, if the machine is already registered as a node in Azure Automation DSC, please unregister it from Azure Automation DSC and reregister it after the WMF 5 RTM upgrade. Before reregistering, delete the $env:windir\system32\configuration\DSCEngineCache.mof file.
 
-- PowerShell DSC コマンドレットは、WMF 5 RTM が WMF 5 Production Preview の上にインストールされている場合は機能しないことがあります。これを解決するには、管理者特権の PowerShell セッションで次のコマンドを実行します (管理者として実行)。 `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
+- PowerShell DSC cmdlets may not work if WMF 5 RTM is installed on top of WMF 5 Production Preview. To fix this, run the following command in an elevated PowerShell session (run as administrator): `mofcomp $env:windir\system32\wbem\DscCoreConfProv.mof`
  
 
-##関連記事##
+##<a name="related-articles##"></a>Related Articles##
 
-- [Azure Automation DSC による管理のためのマシンのオンボード](../automation/automation-dsc-onboarding.md)
-- [Azure Automation DSC での構成のコンパイル](../automation/automation-dsc-compile.md)
-- [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://msdn.microsoft.com/library/mt244122.aspx)
-- [Azure Automation DSC cmdlets (Azure Automation DSC の価格)](https://azure.microsoft.com/pricing/details/automation/)
-- [Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)
+- [Onboarding machines for management by Azure Automation DSC] (../automation/automation-dsc-onboarding.md)
+- [Compiling configurations in Azure Automation DSC] (../automation/automation-dsc-compile.md)
+- [Azure Automation DSC cmdlets] (https://msdn.microsoft.com/library/mt244122.aspx)
+- [Azure Automation DSC pricing] (https://azure.microsoft.com/pricing/details/automation/)
+- [Continuous Deployment to IaaS VMs Using Azure Automation DSC and Chocolatey] (automation-dsc-cd-chocolatey.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

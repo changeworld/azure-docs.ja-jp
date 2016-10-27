@@ -1,123 +1,129 @@
 <properties 
-	pageTitle="SQL Database における 1433 以外のポート | Microsoft Azure"
-	description="ADO.NET から Azure SQL Database V12 へのクライアント接続では、プロキシを使用せずに、データベースと直接やり取りする場合があります。1433 以外のポートが重要になります。"
-	services="sql-database"
-	documentationCenter=""
-	authors="MightyPen"
-	manager="jhubbard"
-	editor="" />
+    pageTitle="Ports beyond 1433 for SQL Database | Microsoft Azure"
+    description="Client connections from ADO.NET to Azure SQL Database V12 sometimes bypass the proxy and interact directly with the database. Ports other than 1433 become important."
+    services="sql-database"
+    documentationCenter=""
+    authors="MightyPen"
+    manager="jhubbard"
+    editor="" />
 
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="drivers"
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/17/2016"
-	ms.author="annemill"/>
+    ms.service="sql-database" 
+    ms.workload="drivers"
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/17/2016"
+    ms.author="annemill"/>
 
 
-# Ports beyond 1433 for ADO.NET 4.5, and SQL Database V12 (ADO.NET 4.5、SQL Database V12 における 1433 以外のポート)
 
+# <a name="ports-beyond-1433-for-ado.net-4.5-and-sql-database-v12"></a>Ports beyond 1433 for ADO.NET 4.5 and SQL Database V12
 
-このトピックでは、Azure SQL Database V12 によってもたらされる ADO.NET 4.5 以降のバージョンを使用するクライアントの接続動作の変化について説明します。
 
+This topic describes the changes that Azure SQL Database V12 brings to the connection behavior of clients that use ADO.NET 4.5 or a later version.
 
-## SQL Database V11: ポート 1433
 
+## <a name="v11-of-sql-database:-port-1433"></a>V11 of SQL Database: Port 1433
 
-クライアント プログラムで ADO.NET 4.5 を使用して、SQL Database V11 に接続し、クエリを実行する場合、内部での実行順序は次のようになります。
 
+When your client program uses ADO.NET 4.5 to connect and query with SQL Database V11, the internal sequence is as follows:
 
-1. ADO.NET が SQL Database への接続を試行します。
 
-2. ADO.NET は、ポート 1433 を使用して、ミドルウェア モジュールを呼び出し、ミドルウェアが SQL Database に接続します。
+1. ADO.NET attempts to connect to SQL Database.
 
-3. SQL Database は、ミドルウェアへ応答を送信し、ミドルウェアが ADO.NET のポート 1433 へ応答を転送します。
+2. ADO.NET uses port 1433 to call a middleware module, and the middleware connects to SQL Database.
 
+3. SQL Database sends its response back to the middleware, which forwards the response to ADO.NET to port 1433.
 
-**用語:** 前述の実行順序の説明では、ADO.NET は*プロキシ ルート*を使用して SQL Database とやり取りしていることを表現しています。ミドルウェアが関与していない場合は、*ダイレクト ルート*を使用するというように表現します。
 
+**Terminology:** We describe the preceding sequence by saying that ADO.NET interacts with SQL Database by using the *proxy route*. If no middleware were involved, we would say the *direct route* was used.
 
-## SQL Database V12: 外部と内部
 
+## <a name="v12-of-sql-database:-outside-vs-inside"></a>V12 of SQL Database: Outside vs inside
 
-V12 への接続については、クライアント プログラムが Azure クラウド境界の*内部*で実行されているか、または*外部*で実行されているかを確認する必要があります。サブセクションでは、次の 2 つの一般的なシナリオについて説明します。
 
+For connections to V12, we must ask whether your client program runs *outside* or *inside* the Azure cloud boundary. The subsections discuss two common scenarios.
 
-#### *外部:* クライアントをデスクトップ コンピューターで実行
 
+#### <a name="*outside:*-client-runs-on-your-desktop-computer"></a>*Outside:* Client runs on your desktop computer
 
-ポート 1433 が、SQL Database クライアント アプリケーションをホストするデスクトップ コンピューターで開く必要がある唯一のポートです。
 
+Port 1433 is the only port that must be open on your desktop computer that hosts your SQL Database client application.
 
-#### *内部:* クライアントを Azure で実行
 
+#### <a name="*inside:*-client-runs-on-azure"></a>*Inside:* Client runs on Azure
 
-Azure クラウド境界内でクライアントを実行している場合、クライアントは、いわゆる*ダイレクト ルート* を使用して SQL Database とやり取りします。接続が確立した後に、クライアントとデータベース間のやり取りにミドルウェア プロキシが関与することはありません。
 
+When your client runs inside the Azure cloud boundary, it uses what we can call a *direct route* to interact with the SQL Database server. After a connection is established, further interactions between the client and database involve no middleware proxy.
 
-順序は次のとおりです。
 
+The sequence is as follows:
 
-1. ADO.NET 4.5 (またはそれ以降) は、Azure クラウドと簡単なやり取りを開始し、動的に指定されたポート番号を受信します。
- - 動的に特定されるポート番号は、11000 から 11999 または 14000 から 14999 の範囲になります。
 
-2. ADO.NET は次に、ミドルウェアによって仲介することなく、SQL Database サーバーと直接接続します。
+1. ADO.NET 4.5 (or later) initiates a brief interaction with the Azure cloud, and receives a dynamically identified port number.
+ - The dynamically identified port number is in the range of 11000-11999 or 14000-14999.
 
-3. クエリは、データベースに直接送信され、その結果もクライアントに直接返されます。
+2. ADO.NET then connects to the SQL Database server directly, with no middleware in between.
 
+3. Queries are sent directly to the database, and results are returned directly to the client.
 
-11000 から 11999 および 14000 から 14999 のポート範囲が Azure クライアント コンピューター上で使用可能なまま残され、SQL Database V12 と ADO.NET 4.5 クライアントのやり取りに使用できることを確認します。
 
-- 具体的には、対象の範囲のポートが他のすべての送信ブロッカーの影響を受けないようにします。
+Ensure that the port ranges of 11000-11999 and 14000-14999 on your Azure client machine are left available for ADO.NET 4.5 client interactions with SQL Database V12.
 
-- Azure VM では、**高度なセキュリティを備えた Windows ファイアウォール**がポート設定を制御します。
- - [ファイアウォールのユーザー インターフェイス](http://msdn.microsoft.com/library/cc646023.aspx)を利用し、**TCP** プロトコルと「**11000-11999**」のような構文のポート範囲を指定するルールを追加できます。
+- In particular, ports in the range must be free of any other outbound blockers.
 
+- On your Azure VM, the **Windows Firewall with Advanced Security** controls the port settings.
+ - You can use the [firewall's user interface](http://msdn.microsoft.com/library/cc646023.aspx) to add a rule for which you specify the **TCP** protocol along with a port range with the syntax like **11000-11999**.
 
-## バージョンの明確化
 
+## <a name="version-clarifications"></a>Version clarifications
 
-このセクションでは、製品バージョンを参照するモニカーを明らかにします。また、製品間でのバージョンのいくつかの組み合わせも一覧表示します。
 
+This section clarifies the monikers that refer to product versions. It also lists some pairings of versions between products.
 
-#### ADO.NET
 
+#### <a name="ado.net"></a>ADO.NET
 
-- ADO.NET 4.0 は TDS 7.3 プロトコルをサポートしますが、7.4 はサポートされません。
-- ADO.NET 4.5 以降は、TDS 7.4 プロトコルをサポートします。
 
+- ADO.NET 4.0 supports the TDS 7.3 protocol, but not 7.4.
+- ADO.NET 4.5 and later supports the TDS 7.4 protocol.
 
-#### SQL Database V11 と V12
 
+#### <a name="sql-database-v11-and-v12"></a>SQL Database V11 and V12
 
-このトピックでは、SQL Database V11 と V12 でのクライアント接続の差異について説明します。
 
+The client connection differences between SQL Database V11 and V12 are highlighted in this topic.
 
-*注:* Transact-SQL ステートメント `SELECT @@version;` は、'11.' または '12.' から始まる値を返します。この数値は、SQL Database のバージョン名 (V11 と V12) と一致します。
 
+*Note:* The Transact-SQL statement `SELECT @@version;` returns a value that start with a number such as '11.' or '12.', and those match our version names of V11 and V12 for SQL Database.
 
-## 関連リンク
 
+## <a name="related-links"></a>Related links
 
-- ADO.NET 4.6 は、2015 年 7 月 20 日にリリースされました。.NET チームのブログのお知らせは[こちら](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx)からご利用になれます。
 
+- ADO.NET 4.6 was released on July 20, 2015. A blog announcement from the .NET team is available [here](http://blogs.msdn.com/b/dotnet/archive/2015/07/20/announcing-net-framework-4-6.aspx).
 
-- ADO.NET 4.5 は、2012 年 8 月 15 日にリリースされました。.NET チームのブログのお知らせは[こちら](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)からご利用になれます。
- - ADO.NET 4.5.1 についてのブログの投稿は、[こちら](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx)からご利用になれます。
 
+- ADO.NET 4.5 was released on August 15, 2012. A blog announcement from the .NET team is available [here](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx).
+ - A blog post about ADO.NET 4.5.1 is available [here](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx).
 
-- [TDS プロトコルのバージョンの一覧](http://www.freetds.org/userguide/tdshistory.htm)
 
+- [TDS protocol version list](http://www.freetds.org/userguide/tdshistory.htm)
 
-- [SQL Database の開発: 概要](sql-database-develop-overview.md)
 
+- [SQL Database Development Overview](sql-database-develop-overview.md)
 
-- [Azure SQL Database ファイアウォール](sql-database-firewall-configure.md)
 
+- [Azure SQL Database firewall](sql-database-firewall-configure.md)
 
-- [方法: ファイアウォール設定を構成する (SQL データベース)](sql-database-configure-firewall-settings.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+- [How to: Configure firewall settings on SQL Database](sql-database-configure-firewall-settings.md)
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

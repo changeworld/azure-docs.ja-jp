@@ -1,23 +1,26 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### ボリューム コンテナーを作成するには
+#### <a name="to-create-a-volume-container"></a>To create a volume container
 
-1. デバイス の **[クイック スタート]** ページで、**[ボリューム コンテナーの追加]** をクリックします。**[ボリューム コンテナーの作成]** ダイアログ ボックスが表示されます。
+1. In the device **Quick Start** page, click **Add a volume container**. The **Create Volume Container** dialog box appears.
 
-    ![ボリューム コンテナーの作成](./media/storsimple-create-volume-container/HCS_CreateVolumeContainerM-include.png)
+    ![Create Volume Container](./media/storsimple-create-volume-container/HCS_CreateVolumeContainerM-include.png)
 
-2. **[ボリューム コンテナーの作成]** ダイアログ ボックスで、次の手順を実行します。
-  1. ボリューム コンテナーの **[名前]** を指定します。名前は 3 ～ 32 文字で指定する必要があります。
-  2. このボリューム コンテナーに関連付ける **[ストレージ アカウント]** を選択します。サービス作成時に生成される既定のアカウントを選択できます。**[新規追加]** オプションを使用して、このサービス サブスクリプションにリンクしないストレージ アカウントを指定することもできます。
-  3. **[クラウド ストレージの暗号化を有効にする]** を選択して、デバイス からクラウドに送信されるデータの暗号化を有効にします。
-  4. 8 ～ 32 文字の **[クラウド ストレージ暗号化キー]** を指定し、確定します。このキーは、デバイス が暗号化されたデータにアクセスするために使用されます。
-  5. 利用可能な帯域幅をすべて使用する場合は、**[帯域幅の指定]** ボックスの一覧で **[無制限]** を選択します。このオプションを **[カスタム]** に設定して帯域幅の制御を利用し、1 ～ 1,000 Mbps の範囲の値を指定することもできます。帯域幅の使用状況に関する情報がある場合は、**[帯域幅テンプレートの選択]** を指定して、スケジュールに基づいて帯域幅を割り当てることもできます。詳細な手順については、[帯域幅テンプレートの追加](storsimple-manage-bandwidth-templates.md#add-a-bandwidth-template)に関するページを参照してください。
-  6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-create-volume-container/HCS_CheckIcon-include.png) をクリックし、ボリューム コンテナーを保存してウィザードを終了します。 
+2. In the **Create Volume container** dialog box:
+  1. Supply a **Name** for your volume container. The name must be 3 to 32 characters long.
+  2. Select a **Storage Account** to associate with this volume container. You can choose the default account that is generated at the time of service creation. You can also use the **Add new** option to specify a storage account that is not linked to this service subscription.
+  3. Select **Enable Cloud Storage Encryption** to enable encryption of the data sent from the device to the cloud.
+  4. Provide and confirm a **Cloud Storage Encryption Key** that is 8 to 32 characters long. This key is used by the device to access encrypted data.
+  5. Select **Unlimited** in the **Specify bandwidth** drop-down list if you wish to consume all the available bandwidth. You can also set this option to **Custom** to employ bandwidth controls, and specify a value between 1 and 1,000 Mbps. 
+  If you have your bandwidth usage information available, you may be able to allocate bandwidth based on a schedule by specifying **Select a bandwidth template**. For a step-by-step procedure, go to [Add a bandwidth template](storsimple-manage-bandwidth-templates.md#add-a-bandwidth-template).
+  6. Click the check icon ![check-icon](./media/storsimple-create-volume-container/HCS_CheckIcon-include.png) to save this volume container and exit the wizard. 
 
-  新しく作成されたボリューム コンテナーが、**[ボリューム コンテナー]** ページの一覧に表示されます。
+  The newly created volume container will be listed on the **Volume containers** page.
 
-![ビデオ](./media/storsimple-create-volume-container/Video_icon.png) **ビデオ**
+![Video available](./media/storsimple-create-volume-container/Video_icon.png) **Video available**
 
-StorSimple ソリューションでボリューム コンテナーを作成する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/)を参照してください。
+To watch a video that demonstrates how to create a volume container in your StorSimple solution, click [here](https://azure.microsoft.com/documentation/videos/create-a-volume-container-in-your-storsimple-solution/).
 
-<!---HONumber=AcomDC_0128_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

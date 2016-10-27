@@ -1,76 +1,77 @@
 <properties
-	pageTitle="Azure API Management で VPN 接続を設定する方法"
-	description="Azure API Management で VPN 接続を設定して Web サービスにアクセスする方法について説明します。"
-	services="api-management"
-	documentationCenter=""
-	authors="antonba"
-	manager="erikre"
-	editor=""/>
+    pageTitle="How to setup VPN connections in Azure API Management"
+    description="Learn how to setup a VPN connection in Azure API Management and access web services through it."
+    services="api-management"
+    documentationCenter=""
+    authors="antonba"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="api-management"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/09/2016"
-	ms.author="antonba"/>
+    ms.service="api-management"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/25/2016"
+    ms.author="antonba"/>
 
-# Azure API Management で VPN 接続を設定する方法
 
-API Management の VPN のサポートにより、API Management ゲートウェイを Azure Virtual Network (従来型) に接続することができます。これにより、API Management のお客様は、オンプレミスのバックエンド Web サービスまたはパブリック インターネットからアクセスできないバックエンド Web サービスに安全に接続できます。
+# <a name="how-to-setup-vpn-connections-in-azure-api-management"></a>How to setup VPN connections in Azure API Management
 
->[AZURE.NOTE] Azure API Management は、従来型 VNET と連携します。従来型 VNET を作成する方法については、「[」Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」を参照してください。従来の VNET を ARM VNETS に接続する方法の詳細については、「[従来の Vnet を新しい Vnet に接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)」を参照してください。
+API Management's VPN support allows you to connect your API Management gateway to an Azure Virtual Network (classic). This allows API Management customers to securely connect to their backend web services that are on-premises or are otherwise inaccessible to the public internet.
 
-## <a name="enable-vpn"> </a>VPN 接続を有効にする
+>[AZURE.NOTE] Azure API Management works with classic VNETs. For information on creating a classic VNET, see [Create a virtual network (classic) by using the Azure Portal](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). For information on connecting classic VNETs to ARM VNETS, see [Connecting classic VNets to new VNets](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
->VPN 接続は、**Premium** レベルと **Developer** レベルでのみ利用できます。Premium レベルに切り替えるには、[Azure クラシック ポータル][]で API Management サービスを開き、**[スケール]** タブを開きます。**[全般]** セクションで、Premium レベルを選択し、[保存] をクリックします。
+## <a name="<a-name="enable-vpn">-</a>enable-vpn-connections"></a><a name="enable-vpn"> </a>Enable VPN connections
 
-VPN 接続を有効にするには、[Azure クラシック ポータル][]で API Management サービスを開き、**[構成]** タブに切り替えます。
+>VPN connectivity is only available in the **Premium** and **Developer** tiers. To switch to it, open your API Management service in the [Azure Classic Portal][] and then open the **Scale** tab. Under the **General** section select the Premium tier and click Save.
 
-[VPN] セクションで、**[VPN 接続]** を **[オン]** に切り替えます。
+To enable VPN connectivity, open your API Management service in the [Azure Classic Portal][] and switch to the **Configure** tab. 
 
-![API Management インスタンスの [構成] タブ][api-management-setup-vpn-configure]
+Under the VPN section, switch **VPN connection** to **On**.
 
-API Management サービスがプロビジョニングされているすべてのリージョンの一覧が表示されます。
+![Configure tab of API Management instance][api-management-setup-vpn-configure]
 
-すべてのリージョンについて、VPN とサブネットを選択します。VPN の一覧は、構成しているリージョンで設定された Azure サブスクリプションで使用できる仮想ネットワークに基づいて設定されます。
+You will now see a list of all regions where your API Management service is provisioned.
 
-![VPN の選択][api-management-setup-vpn-select]
+Select a VPN and subnet for every region. The list of VPNs is populated based on the virtual networks available in your Azure subscription that are setup in the region you are configuring.
 
-ページの下部にある **[保存]** をクリックします。更新中は、Azure クラシック ポータルで API Management サービスに対して他の操作を実行できません。サービス ゲートウェイは使用可能な状態に保持されるため、実行時の呼び出しは影響を受けません。
+![Select VPN][api-management-setup-vpn-select]
 
-ゲートウェイの VIP アドレスは VPN を有効または無効にするたびに変化することに注意してください。
+Click **Save** at the bottom of the screen. You will not be able to perform other operations on the API Management service from the Azure Classic Portal while it is updating. The service gateway will remain available and runtime calls should not be affected.
 
-## <a name="connect-vpn"> </a>VPN の背後にある Web サービスへの接続
+Note that the VIP address of the gateway will change each time VPN is enabled or disabled.
 
-API Management サービスが VPN に接続された後で仮想ネットワーク内の Web サービスにアクセスする方法は、パブリック サービスにアクセスする方法と同じです。単に、新しい API を作成するときや既存の API を編集するときに Web サービスのローカル アドレスまたはホスト名 (Azure Virtual Network に対して DNS サーバーが構成されている場合) を **[Web サービスの URL]** ボックスに入力するだけです。
+## <a name="<a-name="connect-vpn">-</a>connect-to-a-web-service-behind-vpn"></a><a name="connect-vpn"> </a>Connect to a web service behind VPN
 
-![VPN からの API の追加][api-management-setup-vpn-add-api]
+After your API Management service is connected to the VPN, accessing web services within the virtual network is no different than accessing public services. Just type in the local address or the host name (if a DNS server was configured for the Azure Virtual Network) of your web service into the **Web service URL** field when creating a new API or editing an existing one.
 
-## API Management VPN のサポートに必要なポート
+![Add API from VPN][api-management-setup-vpn-add-api]
 
-API Management サービス インスタンスが VNET でホストされている場合は、次の表のポートが使用されます。これらのポートがブロックされている場合は、サービスが正しく機能しない可能性があります。VNET で API Management を使用する場合に、不正な構成に関する最も一般的な問題は、これらの 1 つまたは複数のポートがブロックされていることです。
+## <a name="required-ports-for-api-management-vpn-support"></a>Required ports for API Management VPN support
 
-| ポート | 方向 | トランスポート プロトコル | 目的 | ソース / ターゲット |
+When an API Management service instance is hosted in a VNET, the ports in the following table are used. If these ports are blocked, the service may not function correctly. Having one or more of these ports blocked is the most common misconfiguration issue when using API Management with a VNET.
+
+| Port(s)                      | Direction        | Transport Protocol | Purpose                                                          | Source / Destination              |
 |------------------------------|------------------|--------------------|------------------------------------------------------------------|-----------------------------------|
-| 80、443 | 受信 | TCP | API Management へのクライアント通信 | INTERNET / VIRTUAL\_NETWORK |
-| 80,443 | 送信 | TCP | Azure Storage および Azure Service Bus への API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
-| 1433 | 送信 | TCP | SQL への API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
-| 9350、9351、9352、9353、9354 | 送信 | TCP | Service Bus への API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
-| 5671 | 送信 | AMQP | Event Hub へのログ記録ポリシーのための API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
-| 6381、6382、6383 | 受信/送信 | UDP | Redis Cache への API Management の依存 | VIRTUAL\_NETWORK / VIRTUAL\_NETWORK |
-| 445 | 送信 | TCP | GIT のための Azure ファイル共有への API Management の依存 | VIRTUAL\_NETWORK / INTERNET |
+| 80, 443                      | Inbound          | TCP                | Client communication to API Management                           | INTERNET / VIRTUAL_NETWORK        |
+| 80,443                       | Outbound         | TCP                | API Management Dependency on Azure Storage and Azure Service Bus | VIRTUAL_NETWORK / INTERNET        |
+| 1433                         | Outbound         | TCP                | API Management dependencies on SQL                               | VIRTUAL_NETWORK / INTERNET        |
+| 9350, 9351, 9352, 9353, 9354 | Outbound         | TCP                | API Management dependencies on Service Bus                       | VIRTUAL_NETWORK / INTERNET        |
+| 5671                         | Outbound         | AMQP               | API Management dependency for Log to event Hub policy            | VIRTUAL_NETWORK / INTERNET        |
+| 6381, 6382, 6383             | Inbound/Outbound | UDP                | API Management dependencies on Redis Cache                       | VIRTUAL_NETWORK / VIRTUAL_NETWORK |
+| 445                          | Outbound         | TCP                | API Management Dependency on Azure File Share for GIT            | VIRTUAL_NETWORK / INTERNET        |
 
-## <a name="custom-dns"> </a>カスタム DNS サーバーのセットアップ
+## <a name="<a-name="custom-dns">-</a>custom-dns-server-setup"></a><a name="custom-dns"> </a>Custom DNS server setup
 
-API Management は、さまざまな Azure サービスに依存しています。カスタム DNS サーバーが使用される VNET で API Management サービス インスタンスをホストする場合、このサービス インスタンスは、これらの Azure サービスのホスト名を解決できる必要があります。カスタム DNS のセットアップについては、[こちらの](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)ガイダンスに従ってください。
+API Management depends on a number of Azure services. When an API Management service instance is hosted in a VNET where a custom DNS server is used, it needs to be able to resolve hostnames of those Azure services. Please follow [this](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) guidance on custom DNS setup.  
 
-## <a name="related-content"></a>関連コンテンツ
+## <a name="<a-name="related-content">-</a>related-content"></a><a name="related-content"> </a>Related content
 
 
-* [Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する][]
-* [Azure API Management で API Inspector を使用して呼び出しをトレースする方法][]
+* [Create a virtual network with a site-to-site VPN connection using the Azure Classic Portal][]
+* [How to use the API Inspector to trace calls in Azure API Management][]
 
 [api-management-setup-vpn-configure]: ./media/api-management-howto-setup-vpn/api-management-setup-vpn-configure.png
 [api-management-setup-vpn-select]: ./media/api-management-howto-setup-vpn/api-management-setup-vpn-select.png
@@ -80,9 +81,13 @@ API Management は、さまざまな Azure サービスに依存しています�
 [Connect to a web service behind VPN]: #connect-vpn
 [Related content]: #related-content
 
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Azure Classic Portal]: https://manage.windowsazure.com/
 
-[Azure クラシック ポータルでサイト間 VPN 接続を使用して仮想ネットワークを作成する]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
-[Azure API Management で API Inspector を使用して呼び出しをトレースする方法]: api-management-howto-api-inspector.md
+[Create a virtual network with a site-to-site VPN connection using the Azure Classic Portal]: ../vpn-gateway/vpn-gateway-site-to-site-create.md
+[How to use the API Inspector to trace calls in Azure API Management]: api-management-howto-api-inspector.md
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

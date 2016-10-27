@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure モバイル エンゲージメント ユーザー インターフェイス - Reach (リーチ) 方法"
-   description="Azure モバイル エンゲージメントのユーザー インターフェイスの概要" 
+   pageTitle="Azure Mobile Engagement User Interface - Reach How To"
+   description="User Interface Overview for Azure Mobile Engagement" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -16,216 +16,229 @@
    ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
-# エンドユーザーに通知するためのプッシュの利用と管理を始める方法
 
-SDK とアプリを完全統合したら、UI のリーチ セクションでアプリのユーザーにプッシュ通知を実行できます。
+# <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>How to get started using and managing pushes to reach out to your end users
 
-## 最初のプッシュ通知キャンペーンの実行
--    リーチが SDK でアプリに統合されていることを確認します。
--    アプリケーションを選択します。
+Once the SDK is fully integrated into your app, you can get started using the the Reach section of the UI to Push notifications to the users of your app.  
+
+## <a name="do-your-first-push-notification-campaign"></a>Do Your First Push Notification Campaign
+-    Confirm that your Reach is integrated into your app with the SDK. 
+-    Select your application
  
 ![First1][1]
 
--    [リーチ] セクションに移動し、[新しいアナウンスメント] をクリックします。
+-    Go to the "Reach" Section and Click "New announcement"
  
 ![First2][2]
 
--    新しいキャンペーンを作成し、名前を付けます。
+-    Create a new campaign and name it
  
  ![First3][3]
 
--    通知の配信方法として、[アプリ内のみ] を選択します。
+-    Select how the notification should be delivered, as In-app only
  
 ![First4][4]
 
--    プッシュするメッセージを作成します。
+-    Create the message you want to push
  
 ![First5][5]
 
--    通知のタイトルを記述できます (省略可能)。
--    プッシュ メッセージの内容を記述します。
--    イメージをアップロードすることができます。ファイルのサイズは 32,768 バイトを超えないようにしてください。
--    他のオプションを選択することもできますが、このチュートリアルの焦点を合わせるために、後で参照します。
+-    You may write a title on the notification (Optional).
+-    Write push message content.
+-    You can upload an image. Be aware that the size of the file cannot exceed 32,768 bytes.
+-    You also have the ability to select further options, but for the focus of this tutorial, we will see that later.
 
--    コンテンツの種類として [通知のみ] を選択します。
+-    Select the content type as Notification only
  
 ![First6][6]
 
--    プッシュ キャンペーンを作成すると、キャンペーンの一覧に表示されます。
+-    Create your push campaign and it will appear in your campaign list.
  
 ![First7][7]
 
-## プッシュ通知キャンペーンのテスト
+## <a name="test-your-push-notification-campaign"></a>Test Your Push Notification Campaign
 ![Test1][8]
 
--    デバイスを登録します。
--    プッシュするデバイスのチェック ボックスをオンにします。
--    [テスト] ボタンをクリックしてデバイスにプッシュを送信します。
+-    Register your device.
+-    Click on the checkbox of the device you want to push.
+-    Click on the "Test" button to send the push to the device.
  
 ![Test2][9]
 
--    キャンペーンをアクティブ化します。
+-    Activate the campaign
  
 ![Test3][10]
 
--    これでキャンペーンが作成されたので、ユーザーに通知をプッシュするにはキャンペーンのアクティブ化のみ必要です。
+-    Now that you have created your campaign you just need to activate it for the notification to be pushed to your users.
  
-## 個人用に設定されたプッシュの送信
--    この例では、カスタム リベート コードがプッシュ通知に入力されるプッシュを作成します。
+## <a name="send-personalized-pushes"></a>Send Personalized Pushes
+-    This example creates a push where a custom rebate code is entered into the push notification.
  
 ![Personalize1][11]
 
-個人用設定は、アプリ情報タグからマーカーを置き換えることで動作するため、最初にユーザーが適切なアプリ情報を定義したことを確認する必要があります。この例では、対象とするユーザーには、rebate\_code という名前のアプリ情報タグが定義されています。上記のように、プッシュ通知の内容には、マーカー ${rebate\_code} が含まれます。これは、アプリ情報タグの実際の内容で置き換えられることを示します。
+Personalization works by replacing a marker by from an app info tag so, you'll have to make sure the user has the proper app-info defined first. In this example the targeted users will have an app info tag named rebate_code defined.
+As you see above the push notification content includes the marker ${rebate_code} which will indicate that it is to be replaced by the actual content of the app info tag.
 
-> 警告: アプリ情報タグがユーザーに対して定義されていない場合、ユーザーはプッシュを受け取りません。
+> Warning: If the app info tag is not defined for the user, the user will not receive the push.
 
--    結果
+-    Result
  
 ![Personalize2][12]
 
-### 通知のテキストのさらなるカスタマイズが可能
+### <a name="you-can-further-personalize-the-text-your-notification"></a>You can further personalize the text your notification
 ![Personalize3][13]
 
--    通知のタイトルの挿入
--    メッセージの内容
--    アナウンスメントの種類の選択 (テキスト ビューまたは Web ビュー)
+-    Including the title of the notification,
+-    And the content of the message.
+-    Choose the type of announcement (Text view or Web view)
  
 ![Personalize4][14]
 
-### 次の情報でアナウンスメントの本文もカスタマイズ可能
--    ランディング ページをカスタマイズする場合は実際の URL
--    タイトル
--    メッセージの本文
+### <a name="the-body-of-an-announcement-may-also-be-personalized-with:"></a>The body of an announcement may also be personalized with:
+-    The action URL, should you want to customize the landing page
+-    The title,
+-    The body of the message.
  
  
-## プッシュ通知の区別 (アプリの内部または外部)
--    プッシュする通知の種類を選択し、アプリケーションを選択し、[リーチ] セクションに移動し、プッシュ キャンペーンを選択または作成して、[通知] セクションに移動します。
+## <a name="differentiate-your-push-notification-(in-or-out-of-app)"></a>Differentiate Your Push Notification (in or out of app)
+-    Choose the type of notification you will push, select your application, go to the "Reach" section, select or create a push campaign and go to the "Notification" section.
  
--    目的の「配信モード」をクリックします。
--    特定のアクティビティ (画面) に対して通知を行う場合は、[アクティビティの制限] チェック ボックスをオンにします。
+-    Click on the "delivery mode" you want.
+-    Click on the "Restrict Activities" checkbox when you want the notification occurs on specific activities (screens).
 
 ![Differentiate1][15]
 
-### [アプリ外のみ] 配信モード
+### <a name=""out-of-app-only"-delivery-mode"></a>"Out of App Only" delivery mode
 ![Differentiate2][16]
 
-[アプリ外のみ] 配信モードは、アプリケーションが閉じている場合にプッシュ通知を提供します。これは標準のプッシュ通知です。[アプリ外のみ] を選択する場合は、アプリケーションをビルドしているプラットフォーム (APNS または GCM) から証明書を既に提供している必要があります。
+"Out of App Only" delivery mode provides push notification when the application is closed. This is the standard push notification.
+When you select "out of app only" ,you must have already provided the certificates from the platform that your application is building on (APNS or GCM).
 
-### 関連項目
--  [Apple Push Notification Service – Certificates (Apple プッシュ通知サービス – 証明書)](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9)、Google Cloud Messaging – Certificate (Google クラウド メッセージング - 証明書)](http://developer.android.com/google/gcm/index.html)
+### <a name="see-also"></a>See also
+-  [Apple Push Notification Service – Certificates](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), Google Cloud Messaging – Certificate](http://developer.android.com/google/gcm/index.html) 
 
-### [アプリ内のみ] 配信モード
+### <a name=""in-app-only"-delivery-mode"></a>"in-App Only" delivery mode
 ![Differentiate3][17]
 
-[アプリ内のみ] 配信モードは、アプリケーションが実行中の場合にプッシュ通知を提供します。この通知では、APNS および GCM のシステムを実行する必要はありません。アプリ内配信システムを使用して、エンドユーザーに到達できます。通知を完全にカスタマイズし、通知が表示されるアクティビティ (画面) を決定できます。
+"In-App Only" delivery mode provides push notification when the application is running.
+For this notification, you do not need to go through the APNS and GCM system.
+You can use the in-app delivery system to reach your end-users.
+You can fully customize the notification and decide in which activity (screen) the notification will appear.
 
-### [随時] 配信モード
-[随時] 配信モードを選択すると、アプリケーションが実行されているかどうかにかかわらずエンドユーザーに到達することができます。[常時] を選択する場合は、アプリケーションをビルドしているプラットフォーム (APNS または GCM) から証明書を既に提供している必要があります。
+### <a name=""anytime"-delivery-mode"></a>"Anytime" delivery mode
+You can choose an "Anytime" delivery mode, ensures you to reach your end-user whether the application is running or not.
+When you select "Anytime" , you must have already provided the certificates from the platform that your application is building upon (APNS or GCM). 
  
-## プッシュ キャンペーンのスケジュール
-### キャンペーン開始の計画
+## <a name="schedule-a-push-campaign"></a>Schedule a Push Campaign
+### <a name="plan-to-start-a-campaign"></a>Plan to Start a campaign
 ![Shedule1][18]
 
-今日が 3 月 21 日で、アナウンスメントを 3 月 22 日の午前 0 時に行うことを計画しています。プッシュを行うために、インターフェイスの前にとどまっている必要はありません。 通知を送信する正確な時刻 (分単位) を事前に計画することができます。
--    [なし] チェック ボックスをオフにし、開始時刻を選択します。
--    プッシュ キャンペーンを開始する日付と時刻を選択します。
+It is the 21st of March and you have an announcement to make and planed for the 22nd of March at midnight. You don’t have to stay in front of the interface to do a push! You can plan in advance the exact minute notifications will be sent.
+-    Un-check the "None" checkbox and select a start time 
+-    Choose the date and the time you want to start the push campaign.
 
-### キャンペーン終了の計画
+### <a name="plan-to-end-a-campaign"></a>Plan to end a campaign
 ![Shedule2][19]
 
-キャンペーンを 3 月 25 日の午後 3時 00 分に終了しますが、その時刻には不在になることがわかっています。プッシュを行うために、インターフェイスの前にとどまっている必要はありません。 キャンペーンを終了する正確な時刻 (分単位) を事前に計画することができます。
--    [なし] チェック ボックスをオンにするか、終了時刻を選択します。
--    プッシュ キャンペーンを終了する日付と時刻を選択します。
+You want your campaign to stop on the 25th of March at 3.00 pm but you know you won't be there to do it.
+You don’t have to stay in front of the interface to push! You can plan in advance the exact minute your campaign will stop.
+-    Click on the "None" checkbox or select a end time
+-    Choose the date and the time you want to finish the push campaign.
 
-### 手動でのキャンペーンの終了
+### <a name="end-a-campaign-manually"></a>End a campaign manually
 ![Shedule3][20]
 
-既定では、[なし] チェック ボックスがオンになっています。つまり、キャンペーンは [リーチ] セクションでアクティブにするとすぐに開始し、[リーチ] セクションで終了したときに終了します。
+By default, the "None" check-boxes are selected.
+This means that the campaign will start as soon as you activate it in the reach section and will end when you will stop it on the reach section.
  
-> 注: 終了日を設定せずに作成されたキャンペーンは、プッシュをデバイス上にローカルに保存するため、手動でキャンペーンを終了させても、次回アプリを開いたときにそのプッシュを表示します。
+> Note: Campaigns created without an end date store the push locally on the device and show it the next time the app is opened even if the campaign is manually ended.
 
-## テキスト ビューでのプッシュ通知の強化
-### テキスト ビューとは
+## <a name="enhance-a-push-notification-with-a-text-view"></a>Enhance a Push Notification with a Text View
+### <a name="what-is-a-text-view?"></a>What is a Text View?
 ![TextView1][21]
 
-テキスト ビューとは、テキスト コンテンツを含むポップアップです。このポップアップは、エンドユーザーがプッシュ通知をクリックした後に表示されます。テキスト ビューでは、エンドユーザーにより多くの内容を表示することができます。アプリのページへのジャンプ、ストアへのリダイレクト、Web ページを開く、電子メールの送信、地理的にローカライズされた検索の開始などのアクションの呼び出しを提示することもできます。
+A text view is a pop-up with text content. This pop-up appears after the end-user has clicked on the push notification.
+A text view allows you to present more content to your end-user. This is also the opportunity to present a call to action such as jumping to a page of your app, redirecting to a Store, opening a web page, sending an e-mail, starting a geo-localized search, etc...
 
-### 例: テキスト ビュー
--    [リーチ] セクションでプッシュ通知キャンペーンを作成し、キャンペーンに名前を付けます。
+### <a name="example:-text-view"></a>Example: Text View
+-    Create your Push notification campaign in the "Reach" section and give your campaign a name
  
 ![TextView2][22]
 
--    通知に表示されるメッセージを記述します。
--    アナウンスメントの内容の種類として「テキスト」を選択します。
+-    Write the message that will appear on the notification.
+-    Select the Announcement Content Type of “text”
  
 ![TextView3][23]
 
-> 注: テキスト ビューをプッシュした場合は、常に通知が最初に表示されます。
+> Note: when you push a text view, it always comes with a notification first. 
 
-- テキストを定義します (テキスト アナウンスメントの内容を選択した後、サブ セクションが表示され、表示するテキストを定義することができます)。
+- Define the text (After having selected the text announcement content, the sub-section will appear, allowing you to define the text you want to be displayed.)
  
 ![TextView4][24]
 
--    メッセージの上部に表示されるタイトルを記述します。
--    テキスト ビューの主な内容を記述します。
--    アクション ボタンに表示する内容を記述します (アクション ボタンにより、アプリケーションはアプリケーションのページを開く、アプリ ストアまたは提供できる任意の種類のソースへのリダイレクトなどの特定のアクションを実行できます)。
--    終了ボタンに表示される内容を記述します (終了ボタンをクリックすると、テキスト ビューが表示されなくなります)。
+-    Write the title that will appear at the top of the message.
+-    Write the main content of the text view.
+-    Write the content that will appear on the action button (an action button enables the application to make a specific action such as opening a page of the application, redirecting to an App store or any kind of sources you can provide).
+-    Write the content that will appear on the exit button (by clicking on the exit button, the text view will disappear.)
  
--    プッシュ通知キャンペーンを作成すると、キャンペーンの一覧に表示されます。
+-    Create your push notification campaign and it will appear on the campaign list.
  
 ![TextView5][25]
 
--    テキスト ビューをユーザーに送信するには、プッシュ通知キャンペーンをアクティブ化します。
+-    Activate your push notification campaign to send the text view to your users.
  
 ![TextView6][26]
 
--    結果
+-    Result
  
 ![TextView7][27]
 
--    ユーザーは通知を受信し、クリックします。
--    テキスト ビューは、ユーザーが対話できるポップアップとして表示されます。
+-    The user receives the notification and click on it.
+-    The text view appears as a pop-up allowing the user to interact with it.
 
-## Web ビューでのプッシュ通知の強化
-### Web ビューとは
+## <a name="enhance-a-push-notification-with-a-web-view"></a>Enhance a Push Notification with a Web View
+### <a name="what-is-a-web-view?"></a>What is a Web View?
 ![WebView1][28]
 
-Web ビューとは、Web コンテンツを含むポップアップです。このポップアップは、エンドユーザーがプッシュ通知をクリックしたときに表示されます。Web ビューでは、エンドユーザーとの対話を増やすことができます。アプリ ストアへのリダイレクト、Web ページを開く、電子メールの送信、地理的にローカライズされた検索の開始などのアクションの呼び出しを提示することもできます。
+A web view is a pop-up with web content. This pop-up appears when the end-user has clicked on the push notification.
+A web view allows you to have more interaction with the end-user.
+This is also the opportunity to present a call to action such as redirection to App Store, opening a web page, sending an e-mail, starting a geo-localized search, etc...
 
-### 例: Web ビュー
--    [リーチ] セクションでプッシュ キャンペーンを作成し、キャンペーンに名前を付けます。
+### <a name="example:-web-view"></a>Example: Web View
+-    Create your Push campaign in the "Reach" section and give your campaign a name.
  
 ![WebView2][29]
 
--    通知に表示されるメッセージを記述します。
--    アナウンスメントの内容の種類として「Web」を選択します。
+-    Write the message that will appear on the notification.
+-    Select the Announcement Content Type as “web”
  
 ![WebView3][30]
 
-### アナウンスメントの種類について:
-- 通知のみ: シンプルな標準的な通知です。ユーザーがクリックすると、他のビューが表示されず、操作に関連付けられた内容のみが発生します。
-- テキストのアナウンス: ユーザーにテキスト ビューを閲覧するよう促す通知です。
-- Web のアナウンス: ユーザーに Web ビューを閲覧するよう促す通知です。「Web アナウンスメント」の内容を選択します。
+### <a name="about-announcement-types:"></a>About Announcement types:
+- Notification only: It is a simple standard notification. Meaning that if a user clicks on it, no additional view will appear, but only the action associated to it will occur.
+- Text announcement: It is a notification that engages the user to have a look at a text view.
+- Web announcement: It is a notification that engages the user to have a look at a web view.
+Select the "Web announcement" content.
 
-> 注: Web ビューをプッシュした場合は、常に通知が最初に表示されます。
+> Note: When you push a web view, it always comes with a notification first.
 
-- Web コンテンツを定義します (Web アナウンスメントの内容を選択した後、サブ セクションが表示され、表示する Web ビューのコンテンツを定義することができます)。
+- Define the web content (After having selected the web announcement content, the subsection will appear, allowing you to define the web view content you want to be displayed.)
 
  
 ![WebView4][31]
 
--    メッセージの上部に表示されるタイトルを記述します (省略可能)。
--    ここで HTML コードを記述します。
--    ソース編集モード ボタンをクリックして編集を切り替え、その外観を参照します。
--    アクション ボタンに表示する内容を記述します (アクション ボタンにより、アプリケーションはアプリケーションのページを開く、ストアまたは提供できる任意の種類のソースへのリダイレクトなどの特定のアクションを実行できます)。
--    終了ボタンに表示される内容を記述します (終了ボタンをクリックすると、Web ビューが表示されなくなります)。
+-    Write the title that will appear at the top of the message (optional).
+-    Write your HTML code here.
+-    Click on the source editing mode button to switch edition and see how it looks like.
+-    Write the content that will appear on the action button (an action button enables the application to make a specific action such as opening a page of the application, redirecting to a Store or any kind of sources you can provide).
+-    Write the content that will appear on the exit button (by clicking on the exit button, the web view will disappear).
  
--    結果
+-    Result
  
 ![WebView5][32]
 
--    ユーザーは通知を受信し、クリックします。
--    テキスト ビューは、ユーザーが対話できるポップアップとして表示されます。
+-    The user receive the notification and click on it.
+-    The text view appears as a pop-up allowing the user to interact with it.
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-how-tos/First1.png
@@ -297,4 +310,8 @@ Web ビューとは、Web コンテンツを含むポップアップです。こ
 [Link 33]: ../mobile-engagement-how-tos-web-view.md
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

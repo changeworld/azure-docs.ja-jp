@@ -1,65 +1,70 @@
 <properties
-	pageTitle="Azure Active Directory でカスタム ドメインにユーザーを割り当てる | Microsoft Azure"
-	description="Azure Active Directory のカスタム ドメインにユーザー アカウントを設定する方法です。"
-	services="active-directory"
-	documentationCenter=""
-	authors="jeffsta"
-	manager="femila"
-	editor=""/>
+    pageTitle="Assign users to a custom domain in Azure Active Directory | Microsoft Azure"
+    description="How to populate a custom domain in Azure Active Directory with user accounts."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeffsta"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/18/2016"
-	ms.author="curtand;jeffsta"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/04/2016"
+    ms.author="curtand;jeffsta"/>
 
-# カスタム ドメインにユーザーを割り当てる
 
-カスタム ドメインを Azure Active Directory に追加した後は、このドメインのユーザー アカウントを追加する必要があります。その後ユーザー アカウントの認証を開始できます。
+# <a name="assign-users-to-a-custom-domain"></a>Assign users to a custom domain
 
-## 企業ネットワークのディレクトリから同期したユーザー
+After you have added your custom domain to Azure Active Directory, you must add the user accounts for this domain so that you can begin authenticating them.
 
-既にオンプレミスの Active Directory と Azure Active Directory の間の接続を設定してある場合は、同期することで、アカウントを設定できます。オンプレミスの Active Directory と Azure Active Directory を同期する方法の詳細については、「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+## <a name="users-synced-in-from-a-directory-on-your-corporate-network"></a>Users synced in from a directory on your corporate network
 
-## クラウドで追加され管理されるユーザー
+If you have already set up a connection between your on-premises Active Directory and Azure Active Directory, synchronization can populate the accounts. For more information on how to synchronize Azure Active Directory with your on-premises Active Directory, see [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).
 
-既存のユーザー アカウントのドメインを変更するには次の手順を実行します。
+## <a name="users-added-and-managed-in-the-cloud"></a>Users added and managed in the cloud
 
-1.  グローバル管理者またはユーザー管理者であるアカウントを使用して Azure クラシック ポータルを開きます。
+To change the domain for an existing user account:
 
-2.  ディレクトリを開きます。
+1.  Open the Azure classic portal using an account that is a global admin or a user admin.
 
-3.  **[ユーザー]** タブをクリックします。
+2.  Open your directory.
 
-4.  一覧からユーザーを選択します。
+3.  Select the **Users** tab.
 
-5.  ユーザーのドメインを変更し、**[保存]** を選択します。
+4.  Select the user from the list.
 
-この操作は、[Microsoft PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains) または [Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations) を使用しても実行できます。
+5.  Change the domain for the user, and then select **Save**.
 
-## 新しいユーザーを作成するときにカスタム ドメインを選択する
+This can also be done using [Microsoft PowerShell](https://msdn.microsoft.com/library/azure/e1ef403f-3347-4409-8f46-d72dafa116e0#BKMK_ManageDomains) or the [Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations).
 
-1.  グローバル管理者またはユーザー管理者であるアカウントを使用して Azure クラシック ポータルを開きます。
+## <a name="select-a-custom-domain-when-creating-a-new-user"></a>Select a custom domain when creating a new user
 
-2.  ディレクトリを開きます。
+1.  Open the Azure classic portal using an account that is a global admin or a user admin.
 
-3.  **[ユーザー]** タブをクリックします。
+2.  Open your directory.
 
-4.  コマンド バーで、**[追加]** を選択します。
+3.  Select the **Users** tab.
 
-5.  ユーザー名を追加するときに、ドメインの一覧からカスタム ドメインを選択します。
+4.  In the command bar, select **Add**.
 
-6.  [**保存**] を選択します。
+5.  When you add the user name, choose the custom domain from the domain list.
 
-## 次のステップ
+6.  Select **Save**.
 
--   [カスタム ドメイン名を使用してユーザーのサインインを省力化する](active-directory-add-domain.md)
+## <a name="next-steps"></a>Next steps
 
--   [カスタム ドメイン名を管理する](active-directory-add-manage-domain-names.md)
+-   [Using custom domain names to simplify the sign-in experience for your users](active-directory-add-domain.md)
 
--   [Azure AD のドメイン管理の概念を理解する](active-directory-add-domain-concepts.md)
+-   [Manage custom domain names](active-directory-add-manage-domain-names.md)
 
-<!---HONumber=AcomDC_0720_2016-->
+-   [Learn about domain management concepts in Azure AD](active-directory-add-domain-concepts.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

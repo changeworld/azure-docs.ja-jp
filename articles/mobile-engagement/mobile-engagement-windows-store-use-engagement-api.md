@@ -1,371 +1,377 @@
 <properties 
-	pageTitle="Windows ユニバーサルでエンゲージメント API を使用する方法" 
-	description="Windows ユニバーサルでエンゲージメント API を使用する方法"			
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede" 
-	editor="" />
+    pageTitle="How to Use the Engagement API on Windows Universal" 
+    description="How to Use the Engagement API on Windows Universal"            
+    services="mobile-engagement" 
+    documentationCenter="mobile" 
+    authors="piyushjo" 
+    manager="dwrede" 
+    editor="" />
 
 <tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-store" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="08/19/2016" 
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement" 
+    ms.workload="mobile" 
+    ms.tgt_pltfrm="mobile-windows-store" 
+    ms.devlang="dotnet" 
+    ms.topic="article" 
+    ms.date="08/19/2016" 
+    ms.author="piyushjo" />
 
-#Windows ユニバーサルでエンゲージメント API を使用する方法
 
-このドキュメントは、ドキュメント「[How to Integrate Engagement on Windows Universal (Windows ユニバーサルでエンゲージメントを統合する方法)](mobile-engagement-windows-store-integrate-engagement.md)」のアドオンです。エンゲージメントを使用して、アプリケーションの統計情報を報告する方法について詳しく説明しています。
+#<a name="how-to-use-the-engagement-api-on-windows-universal"></a>How to Use the Engagement API on Windows Universal
 
-アプリケーションのセッション、アクティビティ、クラッシュ、技術情報を報告するエンゲージメントのみが必要な場合、最も簡単な方法はすべての `Page` サブクラスが `EngagementPage` クラスから継承されるようにすることです。
+This document is an add-on to the document [How to Integrate Engagement on Windows Universal](mobile-engagement-windows-store-integrate-engagement.md): it provides in depth details about how to use the Engagement API to report your application statistics.
 
-他の操作を実行する場合、たとえば、アプリケーションの特定のイベント、エラー、ジョブを報告する場合や、`EngagementPage` クラスに実装されているのとは別の方法でアプリケーションのアクティビティを報告する必要がある場合は、エンゲージメント API を使用する必要があります。
+Keep in mind that if you only want Engagement to report your application's sessions, activities, crashes and technical information, then the simplest way is to make all your `Page` sub-classes inherit from the `EngagementPage` class.
 
-エンゲージメント API は `EngagementAgent` クラスによって提供されます。これらのメソッドには `EngagementAgent.Instance` からアクセスできます。
+If you want to do more, for example if you need to report application specific events, errors and jobs, or if you have to report your application's activities in a different way than the one implemented in the `EngagementPage` classes, then you need to use the Engagement API.
 
-エージェントのモジュールが初期化されていない場合でも、API に対する各呼び出しが遅延されると、エージェントが使用可能な場合にもう一度実行されます。
+The Engagement API is provided by the `EngagementAgent` class. You can access to those methods through `EngagementAgent.Instance`.
 
-##エンゲージメントの概念
+Even if the agent module has not been initialized, each call to the API is deferred, and will be executed again when the agent is available.
 
-次のパートは、Windows ユニバーサル プラットフォームの一般的な[モバイル エンゲージメントの概念](mobile-engagement-concepts.md)を改善するものです。
+##<a name="engagement-concepts"></a>Engagement concepts
 
-### `Session` と `Activity`
+The following parts refine the common [Mobile Engagement Concepts](mobile-engagement-concepts.md) for the Windows Universal platform.
 
-*アクティビティ*は通常、アプリケーションの 1 つのページに関連付けられています。つまり、*アクティビティ*はページが表示されるときに開始され、閉じるときに停止されます。これは、エンゲージメント SDK が `EngagementPage` クラスを使用して統合されるときの場合です。
+### <a name="`session`-and-`activity`"></a>`Session` and `Activity`
 
-ただし、*アクティビティ*はエンゲージメント API を使用して手動で制御することも可能です。これにより、このページの使用状況に関する詳しい情報を表示するために、いくつかのサブ部分で特定のページ (たとえばこのページ内でのダイアログの使用頻度と使用時間を知るために) を分割できます。
+An *activity* is usually associated with one page of the application, that is to say the *activity* starts when the page is displayed and stops when the page is closed: this is the case when the Engagement SDK is integrated by using the `EngagementPage` class.
 
-##アクティビティを報告する
+But *activities* can also be controlled manually by using the Engagement API. This allows you to split a given page in several sub parts to get more details about the usage of this page (for example to know how often and how long dialogs are used inside this page).
 
-### ユーザーが新しいアクティビティを開始する
+##<a name="reporting-activities"></a>Reporting Activities
 
-#### リファレンス
+### <a name="user-starts-a-new-activity"></a>User starts a new Activity
 
-			void StartActivity(string name, Dictionary<object, object> extras = null)
+#### <a name="reference"></a>Reference
 
-ユーザー アクティビティが変更されるたびに `StartActivity()` を呼び出す必要があります。この関数の最初の呼び出しで、新しいユーザー セッションが開始します。
+            void StartActivity(string name, Dictionary<object, object> extras = null)
 
-> [AZURE.IMPORTANT] アプリケーションが終了すると SDK は EndActivity メソッドを自動的に呼び出します。したがって、EndActivity メソッドを呼び出すと現在のセッションが強制的に終了されるので、このメソッドを呼び出さないようにし、ユーザーのアクティビティが変わる際には常に StartActivity メソッドを呼び出すことを強くお勧めします。
+You need to call `StartActivity()` each time the user activity changes. The first call to this function starts a new user session.
 
-#### 例
+> [AZURE.IMPORTANT] The SDK automatically calls the EndActivity method when the application is closed. Thus, it is HIGHLY recommended to call the StartActivity method whenever the activity of the user changes, and to NEVER call the EndActivity method, since calling this method forces the current session to be ended.
 
-			EngagementAgent.Instance.StartActivity("main", new Dictionary<object, object>() {{"example", "data"}});
+#### <a name="example"></a>Example
 
-### ユーザーが現在のアクティビティを終了する
+            EngagementAgent.Instance.StartActivity("main", new Dictionary<object, object>() {{"example", "data"}});
 
-#### リファレンス
+### <a name="user-ends-his-current-activity"></a>User ends his current Activity
 
-			void EndActivity()
+#### <a name="reference"></a>Reference
 
-これは、アクティビティとセッションを終了します。実際に何を実行しているのかがわからない場合は、このメソッドは呼び出さないでください。
+            void EndActivity()
 
-#### 例
+This ends the activity and the session. You should not call this method unless you really know what you're doing.
 
-			EngagementAgent.Instance.EndActivity();
+#### <a name="example"></a>Example
 
-##ジョブを報告する
+            EngagementAgent.Instance.EndActivity();
 
-### ジョブを開始する
+##<a name="reporting-jobs"></a>Reporting Jobs
 
-#### リファレンス
+### <a name="start-a-job"></a>Start a job
 
-			void StartJob(string name, Dictionary<object, object> extras = null)
+#### <a name="reference"></a>Reference
 
-ジョブを使用して、一定期間、特定のタスクを追跡できます。
+            void StartJob(string name, Dictionary<object, object> extras = null)
 
-#### 例
+You can use the job to track certains tasks over a period of time.
 
-			// An upload begins...
-			
-			// Set the extras
-			var extras = new Dictionary<object, object>();
-			extras.Add("title", "avatar");
-			extras.Add("type", "image");
-			
-			EngagementAgent.Instance.StartJob("uploadData", extras);
+#### <a name="example"></a>Example
 
-### ジョブを終了する
+            // An upload begins...
+            
+            // Set the extras
+            var extras = new Dictionary<object, object>();
+            extras.Add("title", "avatar");
+            extras.Add("type", "image");
+            
+            EngagementAgent.Instance.StartJob("uploadData", extras);
 
-#### リファレンス
+### <a name="end-a-job"></a>End a job
 
-			void EndJob(string name)
+#### <a name="reference"></a>Reference
 
-ジョブによって追跡されるタスクが終了するとすぐに、ジョブ名を指定して、このジョブの EndJob メソッドを呼び出す必要があります。
+            void EndJob(string name)
 
-#### 例
+As soon as a task tracked by a job has been terminated, you should call the EndJob method for this job, by supplying the job name.
 
-			// In the previous section, we started an upload tracking with a job
-			// Then, the upload ends
-			
-			EngagementAgent.Instance.EndJob("uploadData");
+#### <a name="example"></a>Example
 
-##イベントを報告する
+            // In the previous section, we started an upload tracking with a job
+            // Then, the upload ends
+            
+            EngagementAgent.Instance.EndJob("uploadData");
 
-イベントには 3 種類あります。
+##<a name="reporting-events"></a>Reporting Events
 
--   スタンドアロン イベント
--   セッション イベント
--   ジョブ イベント
+There is three types of events :
 
-### スタンドアロン イベント
+-   Standalone events
+-   Session events
+-   Job events
 
-#### リファレンス
+### <a name="standalone-events"></a>Standalone Events
 
-			void SendEvent(string name, Dictionary<object, object> extras = null)
+#### <a name="reference"></a>Reference
 
-スタンドアロン イベントは、セッションのコンテキストの外で発生します。
+            void SendEvent(string name, Dictionary<object, object> extras = null)
 
-#### 例
+Standalone events can occur outside of the context of a session.
 
-			EngagementAgent.Instance.SendEvent("event", extra);
+#### <a name="example"></a>Example
 
-### セッション イベント
+            EngagementAgent.Instance.SendEvent("event", extra);
 
-#### リファレンス
+### <a name="session-events"></a>Session events
 
-			void SendSessionEvent(string name, Dictionary<object, object> extras = null)
+#### <a name="reference"></a>Reference
 
-通常、セッション イベントは、セッション中にユーザーによって実行されるアクションの報告に使用されます。
+            void SendSessionEvent(string name, Dictionary<object, object> extras = null)
 
-#### 例
+Session events are usually used to report the actions performed by a user during his session.
 
-**データなし:**
+#### <a name="example"></a>Example
 
-			EngagementAgent.Instance.SendSessionEvent("sessionEvent");
-			
-			// or
-			
-			EngagementAgent.Instance.SendSessionEvent("sessionEvent", null);
+**Without data :**
 
-**データあり:**
+            EngagementAgent.Instance.SendSessionEvent("sessionEvent");
+            
+            // or
+            
+            EngagementAgent.Instance.SendSessionEvent("sessionEvent", null);
 
-			Dictionary<object, object> extras = new Dictionary<object,object>();
-			extras.Add("name", "data");
-			EngagementAgent.Instance.SendSessionEvent("sessionEvent", extras);
+**With data :**
 
-### ジョブ イベント
+            Dictionary<object, object> extras = new Dictionary<object,object>();
+            extras.Add("name", "data");
+            EngagementAgent.Instance.SendSessionEvent("sessionEvent", extras);
 
-#### リファレンス
+### <a name="job-events"></a>Job Events
 
-			void SendJobEvent(string eventName, string jobName, Dictionary<object, object> extras = null)
+#### <a name="reference"></a>Reference
 
-通常、ジョブ イベントは、ジョブ中にユーザーによって実行されるアクションの報告に使用されます。
+            void SendJobEvent(string eventName, string jobName, Dictionary<object, object> extras = null)
 
-#### 例
+Job events are usually used to report the actions performed by a user during a Job.
 
-			EngagementAgent.Instance.SendJobEvent("eventName", "jobName", extras);
+#### <a name="example"></a>Example
 
-##エラーの報告
+            EngagementAgent.Instance.SendJobEvent("eventName", "jobName", extras);
 
-エラーには次の 3 種類があります。
+##<a name="reporting-errors"></a>Reporting Errors
 
--   スタンドアロン エラー
--   セッション エラー
--   ジョブ エラー
+There are three types of errors :
 
-### スタンドアロン エラー
+-   Standalone errors
+-   Session errors
+-   Job errors
 
-#### リファレンス
+### <a name="standalone-errors"></a>Standalone errors
 
-			void SendError(string name, Dictionary<object, object> extras = null)
+#### <a name="reference"></a>Reference
 
-セッション エラーとは反対に、スタンドアロン エラーはセッションのコンテキストの外で発生します。
+            void SendError(string name, Dictionary<object, object> extras = null)
 
-#### 例
+Contrary to session errors, standalone errors can occur outside of the context of a session.
 
-			EngagementAgent.Instance.SendError("errorName", extras);
+#### <a name="example"></a>Example
 
-### セッション エラー
+            EngagementAgent.Instance.SendError("errorName", extras);
 
-#### リファレンス
+### <a name="session-errors"></a>Session errors
 
-			void SendSessionError(string name, Dictionary<object, object> extras = null)
+#### <a name="reference"></a>Reference
 
-通常、セッション エラーは、セッション中にユーザーに影響するエラーの報告に使用されます。
+            void SendSessionError(string name, Dictionary<object, object> extras = null)
 
-#### 例
+Session errors are usually used to report the errors impacting the user during his session.
 
-			EngagementAgent.Instance.SendSessionError("errorName", extra);
+#### <a name="example"></a>Example
 
-### ジョブ エラー
+            EngagementAgent.Instance.SendSessionError("errorName", extra);
 
-#### リファレンス
+### <a name="job-errors"></a>Job Errors
 
-			void SendJobError(string errorName, string jobName, Dictionary<object, object> extras = null)
+#### <a name="reference"></a>Reference
 
-エラーは、現在のユーザー セッションに関連付ける代わりに、実行中のジョブに関連付けることができます。
+            void SendJobError(string errorName, string jobName, Dictionary<object, object> extras = null)
 
-#### 例
+Errors can be related to a running job instead of being related to the current user session.
 
-			EngagementAgent.Instance.SendJobError("errorName", "jobname", extra);
+#### <a name="example"></a>Example
 
-##クラッシュを報告する
+            EngagementAgent.Instance.SendJobError("errorName", "jobname", extra);
 
-エージェントは、クラッシュに対処する 2 つのメソッドを提供します。
+##<a name="reporting-crashes"></a>Reporting Crashes
 
-### 例外を送信する
+The agent provides two methods to deal with crashes.
 
-#### リファレンス
+### <a name="send-an-exception"></a>Send an exception
 
-			void SendCrash(Exception e, bool terminateSession = false)
+#### <a name="reference"></a>Reference
 
-#### 例
+            void SendCrash(Exception e, bool terminateSession = false)
 
-呼び出すことで、いつでも例外を送信できます。
+#### <a name="example"></a>Example
 
-			EngagementAgent.Instance.SendCrash(aCatchedException);
+You can send an exception at any time by calling :
 
-オプションのパラメーターを使用して、クラッシュを送信するよりも、同時にエンゲージメント セッションを終了することも可能です。それには次のように呼び出します。
+            EngagementAgent.Instance.SendCrash(aCatchedException);
 
-			EngagementAgent.Instance.SendCrash(new Exception("example"), terminateSession: true);
+You can also use an optional parameter to terminate the engagement session at the same time than sending the crash. To do so, call :
 
-その場合、セッションとジョブは、クラッシュを送信した後にだけ閉じられます。
+            EngagementAgent.Instance.SendCrash(new Exception("example"), terminateSession: true);
 
-### 未処理の例外を送信する
+If you do that, the session and jobs will be closed just after sending the crash.
 
-#### リファレンス
+### <a name="send-an-unhandled-exception"></a>Send an unhandled exception
 
-			void SendCrash(Exception e)
+#### <a name="reference"></a>Reference
 
-エンゲージメントは、エンゲージメントの自動**クラッシュ**レポートが**無効**になっている場合に、未処理の例外を送信するメソッドも提供します。これは、アプリケーションの UnhandledException イベント ハンドラーの内部で使用する場合に特に便利です。
+            void SendCrash(Exception e)
 
-このメソッドは、呼び出された後に、**常に**エンゲージメントのセッションとジョブを終了します。
+Engagement also provides a method to send unhandled exceptions if you have **DISABLED** Engagement automatic **crash** reporting. This is especially useful when used inside the application UnhandledException event handler.
 
-#### 例
+This method will **ALWAYS** terminate the engagement session and jobs after being called.
 
-これを使用して、独自の UnhandledExceptionEventArgs ハンドラーを実装できます。たとえば、`App.xaml.cs` ファイルの `Current_UnhandledException` メソッドを追加します。
+#### <a name="example"></a>Example
 
-			// In your App.xaml.cs file
-			
-			// Code to execute on Unhandled Exceptions
-			void Current_UnhandledException(object sender, UnhandledExceptionEventArgs e)
-			{
-			   EngagementAgent.Instance.SendCrash(e.Exception,false);
-			}
+You can use it to implement your own UnhandledExceptionEventArgs handler. For example, add the `Current_UnhandledException` method of the `App.xaml.cs` file :
 
-"Public App(){}" の App.xaml.cs で次のように追加します。
+            // In your App.xaml.cs file
+            
+            // Code to execute on Unhandled Exceptions
+            void Current_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+            {
+               EngagementAgent.Instance.SendCrash(e.Exception,false);
+            }
 
-			Application.Current.UnhandledException += Current_UnhandledException;
+In App.xaml.cs in "Public App(){}" add:
 
-##デバイス Id
+            Application.Current.UnhandledException += Current_UnhandledException;
 
-			String EngagementAgent.Instance.GetDeviceId()
+##<a name="device-id"></a>Device Id
 
-このメソッドを呼び出すことで、エンゲージメント デバイス id を取得できます。
+            String EngagementAgent.Instance.GetDeviceId()
 
-##Extras パラメーター
+You can get the engagement device id by calling this method.
 
-任意のデータをイベント、エラー、アクティビティ、ジョブにアタッチできます。これらのデータは、ディクショナリを使用して構造化できます。任意の型のキーと値を指定できます。
+##<a name="extras-parameters"></a>Extras parameters
 
-Extras データはシリアル化されるため、Extras に独自の型を挿入する場合、この型のデータ コントラクトを追加する必要があります。
+Arbitrary data can be attached to an event, an error, an activity or a job. These data can be structured using a dictionary. Keys and values can be of any type.
 
-### 例
+Extras data are serialized so if you want to insert your own type in extras you have to add a data contract for this type.
 
-新しい "Person" クラスを作成します。
+### <a name="example"></a>Example
 
-			using System.Runtime.Serialization;
-			
-			namespace Microsoft.Azure.Engagement
-			{
-			  [DataContract]
-			  public class Person
-			  {
-			    public Person(string name, int age)
-			    {
-			      Age = age;
-			      Name = name;
-			    }
-			
-			    // Properties
-			
-			    [DataMember]
-			    public int Age
-			    {
-			      get;
-			      set;
-			    }
-			
-			    [DataMember]
-			    public string Name
-			    {
-			      get;
-			      set; 
-			    }
-			  }
-			}
+We create a new class "Person".
 
-次に、`Person` インスタンスを Extra に追加します。
+            using System.Runtime.Serialization;
+            
+            namespace Microsoft.Azure.Engagement
+            {
+              [DataContract]
+              public class Person
+              {
+                public Person(string name, int age)
+                {
+                  Age = age;
+                  Name = name;
+                }
+            
+                // Properties
+            
+                [DataMember]
+                public int Age
+                {
+                  get;
+                  set;
+                }
+            
+                [DataMember]
+                public string Name
+                {
+                  get;
+                  set; 
+                }
+              }
+            }
 
-			Person person = new Person("Engagement Haddock", 51);
-			var extras = new Dictionary<object, object>();
-			extras.Add("people", person);
-			
-			EngagementAgent.Instance.SendEvent("Event", extras);
+Then, we will add a `Person` instance to an extra.
 
-> [AZURE.WARNING] その他の型のオブジェクトを配置する場合、ToString() メソッドは、人間が判読できる文字列を返すように実装されていることを確認します。
+            Person person = new Person("Engagement Haddock", 51);
+            var extras = new Dictionary<object, object>();
+            extras.Add("people", person);
+            
+            EngagementAgent.Instance.SendEvent("Event", extras);
 
-### 制限
+> [AZURE.WARNING] If you put other types of objects, make sure their ToString() method is implemented to return a human readable string.
 
-#### 構成する
+### <a name="limits"></a>Limits
 
-オブジェクト内の各キーは、次の正規表現と一致する必要があります。
+#### <a name="keys"></a>Keys
+
+Each key in the object must match the following regular expression:
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
-キーは、文字、数字、アンダー スコア (\_) が後に続く、少なくとも 1 つの文字で始まる必要があることを意味します。
+It means that keys must start with at least one letter, followed by letters, digits or underscores (\_).
 
-#### サイズ
+#### <a name="size"></a>Size
 
-Extras はセルあたり **1024** 文字に制限されています。
+Extras are limited to **1024** characters per call.
 
-##アプリケーションの情報を報告する
+##<a name="reporting-application-information"></a>Reporting Application Information
 
-### リファレンス
+### <a name="reference"></a>Reference
 
-			void SendAppInfo(Dictionary<object, object> appInfos)
+            void SendAppInfo(Dictionary<object, object> appInfos)
 
-SendAppInfo() 関数を使用して追跡情報 (またはその他のアプリケーション固有情報) を手動で報告できます。
+You can manually report tracking information (or any other application specific information) using the SendAppInfo() function.
 
-このデータは段階的に送信される可能性があることにご注意ください。特定のキーの最新の値のみが特定のデバイスに保持されます。イベント Extras のように、Dictionary<object, object> を使用してデータをアタッチします。
+Note that this data can be sent incrementally: only the latest value for a given key will be kept for a given device. Like event extras, use a Dictionary\<object, object\> to attach data.
 
-### 例
+### <a name="example"></a>Example
 
-			Dictionary<object, object> appInfo = new Dictionary<object, object>()
-			  {
-			    {"birthdate", "1983-12-07"},
-			    {"gender", "female"}
-			  };
-			
-			EngagementAgent.Instance.SendAppInfo(appInfo);
+            Dictionary<object, object> appInfo = new Dictionary<object, object>()
+              {
+                {"birthdate", "1983-12-07"},
+                {"gender", "female"}
+              };
+            
+            EngagementAgent.Instance.SendAppInfo(appInfo);
 
-### 制限
+### <a name="limits"></a>Limits
 
-#### 構成する
+#### <a name="keys"></a>Keys
 
-オブジェクト内の各キーは、次の正規表現と一致する必要があります。
+Each key in the object must match the following regular expression:
 
 `^[a-zA-Z][a-zA-Z_0-9]*$`
 
-キーは、文字、数字、アンダー スコア (\_) が後に続く、少なくとも 1 つの文字で始まる必要があることを意味します。
+It means that keys must start with at least one letter, followed by letters, digits or underscores (\_).
 
-#### サイズ
+#### <a name="size"></a>Size
 
-アプリケーションの情報は、呼び出しあたり **1024** 文字に制限されています。
+Application information is limited to **1024** characters per call.
 
-前の例では、サーバーに送信される JSON は 44 文字です。
+In the previous example, the JSON sent to the server is 44 characters long:
 
-			{"birthdate":"1983-12-07","gender":"female"}
+            {"birthdate":"1983-12-07","gender":"female"}
 
-##ログの記録
-###ログの有効化
+##<a name="logging"></a>Logging
+###<a name="enable-logging"></a>Enable Logging
 
-IDE コンソールにテスト ログを生成するように SDK を構成できます。このテスト ログは既定では有効になっていません。これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の 1 つに更新します。
+The SDK can be configured to produce test logs in the IDE console.
+These logs are not activated by default. To customize this, update the property `EngagementAgent.Instance.TestLogEnabled` to one of the value available from the `EngagementTestLogLevel` enumeration, for instance:
 
-			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
-			EngagementAgent.Instance.Init();
+            EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
+            EngagementAgent.Instance.Init();
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

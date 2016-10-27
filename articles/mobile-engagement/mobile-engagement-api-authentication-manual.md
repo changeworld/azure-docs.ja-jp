@@ -1,125 +1,126 @@
 <properties 
-	pageTitle="Mobile Engagement REST API を使用した認証 - 手動の設定"
-	description="Mobile Engagement REST API の認証を手動で設定する方法について説明します" 
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Authenticate with Mobile Engagement REST APIs - manual setup"
+    description="Describes how to manually setup authentication for Mobile Engagement REST APIs" 
+    services="mobile-engagement" 
+    documentationCenter="mobile" 
+    authors="piyushjo"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="mobile-engagement"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="mobile-multiple"
-	ms.workload="mobile" 
-	ms.date="08/19/2016"
-	ms.author="piyushjo"/>
-
-# Mobile Engagement REST API を使用した認証 - 手動の設定
-
-これは、「[Azure Mobile Engagement - 認証への API の使用](mobile-engagement-api-authentication.md)」の付録のドキュメントです。このドキュメントを先に読み、内容を把握してください。このドキュメントでは、Azure ポータルを使用して Mobile Engagement REST API の認証を設定するために 1 回限りの設定を行う代替の方法について説明します。
-
->[AZURE.NOTE] 以下の手順はこの [Active Directory ガイド](../resource-group-create-service-principal-portal.md)に基づいており、Mobile Engagement API の認証に必要なものに対応してカスタマイズしています。そのため、以下の手順を詳しく理解したい場合は、このガイドを参照してください。
-
-1. [従来のポータル](https://manage.windowsazure.com/)によって Azure アカウントにログインします。
-
-2. 左側のペインで **[Active Directory]** を選択します。
-
-     ![Active Directory の選択][1]
-
-3. Azure ポータルで **[既定の Active Directory]** を選択します。
-
-     ![ディレクトリの選択][2]
-
-	>[AZURE.IMPORTANT] このアプローチは、アカウントの既定の Active Directory で作業する場合にのみ機能し、アカウントで作成した Active Directory でこれを実行する場合は機能しません。
-
-4. ディレクトリ内のアプリケーションを表示するには、**[アプリケーション]** をクリックします。
-
-     ![アプリケーションの表示][3]
-
-5. **[追加]** をクリックします。
-
-     ![アプリケーションの追加][4]
-
-6. **[組織で開発中のアプリケーションを追加]** をクリックします。
-
-     ![新規アプリケーション][5]
-
-6. アプリケーションの名前を入力し、アプリケーションの種類を **[WEB アプリケーションや WEB API]** として選択し、[次へ] ボタンをクリックします。
-
-     ![アプリケーションの名前指定][6]
-
-7. **[サインオン URL]** と **[アプリケーション ID/URI]** に任意のダミー URL を指定できます。ここのシナリオではそれらを使用せず、URL 自体は検証されません。
-
-     ![アプリケーションのプロパティ][7]
-
-8. この最後に、次のように以前に入力した名前を持つ AAD アプリケーションが表示されます。これは **AD\_APP\_NAME** で、これを書き留めておきます。
-
-     ![アプリケーション名][8]
-
-9. アプリケーション名をクリックし、**[構成]** をクリックします。
-
-     ![アプリケーションの構成][9]
-
-10. API 呼び出しの **CLIENT\_ID** として使用されるクライアント ID を書き留めておきます。
-
-     ![アプリケーションの構成][10]
-
-11. **[キー]** セクションまで下へスクロールして、できれば期間が 2 年間 (有効期限) のキーを追加し、**[保存]** をクリックします。
-
-     ![アプリケーションの構成][11]
+    ms.service="mobile-engagement"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="mobile-multiple"
+    ms.workload="mobile" 
+    ms.date="08/19/2016"
+    ms.author="piyushjo"/>
 
 
-12. キーに対して表示されている値をすぐにコピーします。それはこの時点しか表示されず、保存されないため、再び表示されることはありません。なくしてしまった場合は、新しいキーを生成する必要があります。これは、API 呼び出しの **CLIENT\_SECRET** になります。
+# <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>Authenticate with Mobile Engagement REST APIs - manual setup
 
-     ![アプリケーションの構成][12]
+This is an appendix documentation to [Authenticate with Mobile Engagement REST APIs](mobile-engagement-api-authentication.md). Make sure you read it first to get the context. This describes an alternate way to do the One-time setup for setting up your authentication for the Mobile Engagement REST APIs using the Azure Portal. 
 
-	>[AZURE.IMPORTANT] このキーは、指定した期間の最後に期限切れになるため、その時が来たら更新してください。そうしないと、API 認証が機能しなくなります。このキーが侵害されていると思われる場合は、削除して、再作成することもできます。
+>[AZURE.NOTE] The instructions below are based on this [Active Directory guide](../resource-group-create-service-principal-portal.md) and customized for what is required for authentication for Mobile Engagement APIs. So refer to it if you want to understand the steps below in detail. 
+
+1. Login to your Azure Account through the [classic portal](https://manage.windowsazure.com/).
+
+2. Select **Active Directory** from the left pane.
+
+     ![select Active Directory][1]
+
+3. Choose the **Default Active Directory** in your Azure portal. 
+
+     ![choose directory][2]
+
+    >[AZURE.IMPORTANT] This approach works only when you are working in the default Active Directory of your account and will not work if you are doing this in an Active Directory that you have created in your account. 
+
+4. To view the applications in your directory, click on **Applications**.
+
+     ![view applications][3]
+
+5. Click on **ADD**. 
+
+     ![add application][4]
+
+6. Click on **Add an application my organization is developing**
+
+     ![new application][5]
+
+6. Fill in name of the application and select the type of application as **WEB APPLICATION AND/OR WEB API** and click the next button.
+
+     ![name application][6]
+
+7. You can provide any dummy URLs for **SIGN-ON URL** and **APP ID URI**. They are not used for our scenario and the URLs themselves are not validated.  
+
+     ![application properties][7]
+
+8. At the end of this, you will have an AAD app with the name you provided previously like the following. This is your **AD\_APP\_NAME** and make a note of it.  
+
+     ![app name][8]
+
+9. Click on the app name and click on **Configure**.
+
+     ![configure app][9]
+
+10. Make a note of the CLIENT ID that will be used as **CLIENT\_ID** for your API calls. 
+
+     ![configure app][10]
+
+11. Scroll down to the **Keys** section and add a key with preferably 2 years (expiry) duration and click **Save**. 
+
+     ![configure app][11]
+
+
+12. Immediately copy the value which is shown for the key as it is only shown now and is not stored so will not be displayed ever again. If you lose it then you will have to generate a new key. This will be the **CLIENT_SECRET** for your API calls. 
+
+     ![configure app][12]
+
+    >[AZURE.IMPORTANT] This key will expire at the end of the duration that you specified so make sure to renew it when the time comes otherwise your API authentication will not work anymore. You can also delete and recreate this key if you think that it has been compromised.
  
-13. **[エンドポイントの表示]** ボタンをクリックすると、**[アプリケーションのエンドポイント]** ダイアログ ボックスが開きます。
+13. Click on **VIEW ENDPOINTS** button now which will open up the **App Endpoints** dialog box. 
 
-	![][13]
+    ![][13]
 
-14. [アプリケーションのエンドポイント] ダイアログ ボックスから、**[Oauth 2.0 トークン エンドポイント]** をコピーします。
+14. From the App Endpoints dialog box, copy the **OAUTH 2.0 TOKEN ENDPOINT**. 
 
-	![][14]
+    ![][14]
 
-15. このエンドポイントは、次の形式になります。ここで、URL の GUID は **TENANT\_ID** であるため、これを書き留めておきます。
+15. This endpoint will be in the following form where the GUID in the URL is your **TENANT_ID** so make a note of it: 
 
-		https://login.microsoftonline.com/<GUID>/oauth2/token
+        https://login.microsoftonline.com/<GUID>/oauth2/token
 
-16. ここで、このアプリケーションのアクセス許可の構成に進みます。このために、[Azure ポータル](https://portal.azure.com)を開く必要があります。
+16. Now we will proceed to configure the permissions on this app. For this you will have to open up the [Azure portal](https://portal.azure.com). 
 
-17. **[リソース グループ]** をクリックし、**[Mobile Engagement]** リソース グループを見つけます。
+17. Click on **Resource Groups** and find the **Mobile Engagement** resource group.  
 
-	![][15]
+    ![][15]
 
-18. **[Mobile Engagement]** リソース グループをクリックして、ここの **[設定]** ブレードに移動します。
+18. Click the **Mobile Engagement** resource group and navigate to the **Settings** blade here. 
 
-	![][16]
+    ![][16]
 
-19. [設定] ブレードの **[ユーザー]** をクリックし、**[追加]** をクリックして、ユーザーを追加します。
+19. Click on **Users** in the Settings blade and then click on **Add** to add a user. 
 
-	![][17]
+    ![][17]
 
-20. **[ロールの選択]** をクリックします。
+20. Click on **Select a role**
 
-	![][18]
+    ![][18]
 
-21. **[所有者]** をクリックします。
+21. Click on **Owner**
 
-	![][19]
+    ![][19]
 
-22. 検索ボックスで、アプリケーションの名前 **AD\_APP\_NAME** を検索します。既定では、これは表示されません。見つかったら、それを選択し、ブレードの下部の **[選択]** をクリックします。
+22. Search for the name of your application **AD\_APP\_NAME** in the Search box. You will not see this by default here. Once you find it, select it and click on **Select** at the bottom of the blade. 
 
-	![][20]
+    ![][20]
 
-23. **[アクセスを追加]** ブレードで、それが **1 ユーザー、0 グループ**と表示されます。このブレードの **[OK]** をクリックして変更を確認します。
+23. On the **Add Access** blade, it will show up as **1 user, 0 groups**. Click **OK** on this blade to confirm the change. 
 
-	![][21]
+    ![][21]
 
-これで必要な AAD 構成が完了し、API を呼び出すためにすべて設定されました。
+You have now completed the required AAD configuration and you are all set to call the APIs. 
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-api-authentication-manual/active-directory.png
@@ -144,4 +145,11 @@
 [20]: ./media/mobile-engagement-api-authentication-manual/add-user-select.png
 [21]: ./media/mobile-engagement-api-authentication-manual/add-access-final.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

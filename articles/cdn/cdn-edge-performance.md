@@ -1,195 +1,200 @@
 <properties
-	pageTitle="Azure CDN でのエッジ パフォーマンスの分析 | Microsoft Azure"
-	description="Microsoft Azure CDN でエッジ ノード パフォーマンスを分析します。エッジ パフォーマンス分析は、CDN のトラフィックや帯域幅の使用状況の詳細な情報を提供します。"
-	services="cdn"
-	documentationCenter=""
-	authors="camsoper"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Analyze Edge Performance in Azure CDN | Microsoft Azure"
+    description="Analyze edge node performance in Microsoft Azure CDN. Edge Performance Analytics provides granular information traffic and bandwidth usage for the CDN."
+    services="cdn"
+    documentationCenter=""
+    authors="camsoper"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="cdn"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/28/2016"
-	ms.author="casoper"/>
+    ms.service="cdn"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/28/2016"
+    ms.author="casoper"/>
 
-# Microsoft Azure CDN でのエッジ ノード パフォーマンスの分析
+
+# <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analyze edge node performance in Microsoft Azure CDN
 
 [AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## 概要
-エッジ パフォーマンス分析は、CDN のトラフィックや帯域幅の使用状況の詳細な情報を提供します。この情報は、傾向分析の統計を生成するために使用できます。この統計を使用すると、アセットがどのようにキャッシュされ、クライアントに配信されるかを把握できます。さらに、コンテンツの配信を最適化する方法の戦略を立てたり、CDN を活用するために取り組む必要がある問題を判断したりすることができます。その結果、データ配信のパフォーマンスを向上させるだけでなく、CDN コストを削減することもできます。
+## <a name="overview"></a>Overview
+Edge performance analytics provides granular information traffic and bandwidth usage for the CDN. This information can then be used to generate trending statistics, which allow you to gain insight on how your assets are being cached and delivered to your clients. In turn, this allows you to form a strategy on how to optimize the delivery of your content and to determine what issues should be tackled to better leverage the CDN. As a result, not only will you be able to improve data delivery performance, but you will also be able to reduce your CDN costs.
 
-> [AZURE.NOTE] すべてのレポートは、日付/時刻を指定するときに、UTC/GMT 表記を使用します。
+> [AZURE.NOTE] All reports use UTC/GMT notation when specifying a date/time.
 
-## レポートとログの収集
+## <a name="reports-and-log-collection"></a>Reports and log collection
 
-エッジ パフォーマンス分析モジュールが CDN アクティビティ データに基づいたレポートを生成するには、まず、そのデータを収集する必要があります。この収集処理は 1 日に 1 回行われ、前日に行われたアクティビティが対象になります。つまり、レポートの統計情報は、処理が行われた時点での 1 日の統計情報のサンプルを表しており、当日のデータの完全なセットが含まれているとは限りません。これらのレポートの主な機能は、パフォーマンスを評価することです。課金を目的としたり、正確な数値統計情報として使用したりしないください。
+CDN activity data must be collected by the Edge Performance Analytics module before it can generate reports on it. This collection process occurs once a day and it covers the activity that took place during the previous day. This means that a report's statistics represent a sample of the day's statistics at the time it was processed, and do not necessarily contain the complete set of data for the current day. The primary function of these reports is to assess performance. They should not be used for billing purposes or exact numeric statistics.
 
-> [AZURE.NOTE] エッジ パフォーマンス分析レポートの生成に使用された生データは、少なくとも 90 日間、利用可能です。
+> [AZURE.NOTE] The raw data from which Edge Performance Analytic reports are generated is available for at least 90 days.
 
-## ダッシュボード
+## <a name="dashboard"></a>Dashboard
 
-エッジ パフォーマンス分析ダッシュボードでは、グラフと統計情報で、現在および過去の CDN トラフィックを追跡できます。このダッシュボードを使用すると、自分のアカウントの CDN トラフィックのパフォーマンスに関する最近の傾向と長期的な傾向を検出できます。
+The Edge Performance Analytics dashboard tracks current and historical CDN traffic through a chart and statistics. Use this dashboard to detect recent and long-term trends on the performance of CDN traffic for your account.
 
-このダッシュボードの構成要素は、以下のとおりです。
+This dashboard consists of:
 
-* 主要なメトリックと傾向を視覚化できる、対話的なグラフ。
-* 主要なメトリックと傾向の長期的なパターンの印象を示すタイムライン。
-* 全体的なパフォーマンス、使用状況、および効率の面で、CDN ネットワークがサイト トラフィックをどのように向上させるかについての主要なメトリックと統計情報。
+* An interactive chart that allows the visualization of key metrics and trends.
+* A timeline that provides a sense of long term patterns for key metrics and trends.
+* Key metrics and statistical information on how our CDN network improves site traffic as measured by overall performance, usage, and efficiency.
 
-### エッジ パフォーマンス ダッシュボードへのアクセス
+### <a name="accessing-the-edge-performance-dashboard"></a>Accessing the edge performance dashboard
 
-1. CDN プロファイル ブレードで、**[管理]** をクリックします。
+1. From the CDN profile blade, click the **Manage** button.
 
-	![CDN profile blade manage button](./media/cdn-edge-performance/cdn-manage-btn.png)
+    ![CDN profile blade manage button](./media/cdn-edge-performance/cdn-manage-btn.png)
 
-	CDN 管理ポータルが開きます。
+    The CDN management portal opens.
 
-2. **[分析]** タブにマウス ポインターを合わせ、次に **[エッジ パフォーマンス分析]** フライアウトにポインターを合わせます。**[ダッシュボード]** をクリックします。
+2. Hover over the **Analytics** tab, then hover over the **Edge Perfomance Analytics** flyout.  Click on **Dashboard**.
 
-	エッジ ノード分析ダッシュボードが表示されます。
+    The edge node analytics dashboard is displayed.
 
-### グラフ
+### <a name="chart"></a>Chart
 
-ダッシュボードにはグラフがあり、そのすぐ下に表示されるタイムラインで選択した期間にわたってメトリックが追跡されます。タイムラインは 2 年前までの CDN アクティビティを図示し、グラフのすぐ下に表示されます。
+The dashboard contains a chart that tracks a metric over the time period selected in the timeline that appears directly below it.  A timeline that graphs up to the last two years of CDN activity is displayed directly below the chart.
 
-#### グラフの使用
+#### <a name="using-the-chart"></a>Using the chart
 
-* 既定では、過去 30 日間のキャッシュ効率がグラフ化されます。
-* このグラフは、1 日単位でまとめられたデータから生成されます。
-* 線グラフ上の日付にポインターを合わせると、日付と、その日のメトリックの値が表示されます。
-* グラフ上で週末を表す薄い灰色の垂直バーのオーバーレイを切り替えるには、[週末を強調] をクリックします。この種類のオーバーレイは、週末のトラフィックのパターンを識別するために便利です。
-* グラフ上で前年の同じ期間のアクティビティのオーバーレイに切り替えるには、[1 年前を表示] をクリックします。この種類の比較では、長期的な CDN の使用パターンを調べることができます。グラフの右上隅には、各線グラフのカラー コードを示す凡例があります。
+* By default, the cache efficiency rate for the last 30 days will be charted.
+* This chart is generated from data collated on a daily basis.
+* Hovering over a day on the line graph will indicate a date and the value of the metric on that date.
+* Click Highlight Weekends to toggle an overlay of light gray vertical bars that represent weekends onto the chart. This type of overlay is useful for identifying traffic patterns over weekends.
+* Click View One Year Ago to toggle an overlay of the previous year's activity over the same time period onto the chart. This type of comparison provides insight into long-term CDN usage patterns. The upper-right hand corner of the chart contains a legend that indicates the color code for each line graph.
 
-#### グラフの更新
+#### <a name="updating-the-chart"></a>Updating the chart
 
-* 時間範囲: 以下のいずれかを行います。
-	* タイムラインで、目的の区域を選択します。グラフは、選択された期間に対応するデータで更新されます。
-	* 最大で 2 年間の使用可能なすべての履歴データを表示するには、グラフをダブルクリックします。
-* メトリック: 目的のメトリックの横に表示されるグラフ アイコンをクリックします。グラフとタイムラインが、対応するメトリックのデータで更新されます。
+* Time Range: Perform one of the following:
+    * Select the desired region in the timeline. The chart will be updated with data that corresponds to the selected time period.
+    * Double-click the chart to display all available historical data up to a maximum of two years.
+* Metric: Click the chart icon that appears next to the desired metric. The chart and the timeline will be refreshed with data for the corresponding metric.
 
 
-### 主要なメトリックと統計情報
+### <a name="key-metrics-and-statistics"></a>Key metrics and statistics
 
-#### 効率性のメトリック
+#### <a name="efficiency-metrics"></a>Efficiency metrics
 
-これらのメトリックの目的は、キャッシュの効率を向上させることができるかどうかを確認することです。キャッシュの効率化によってもたらされる主な利点は、次のとおりです。
+The purpose of these metrics is to see whether cache efficiency can be improved. The main benefits derived from cache efficiency are:
 
-* 配信元サーバーの負荷を軽減します。それによって、次のような効果があります。
-	* Web サーバーのパフォーマンスが向上する。
-	* 運用コストが削減される。
-* より多くの要求に CDN が直接対応するため、データ配信速度が向上します。
+* Reduced load on the origin server which may lead to:
+    * Better web server performance.
+    * Reduced operational costs.
+* Improved data delivery acceleration since more requests will be served directly from the CDN.
 
-フィールド | 説明
+Field | Description
 ------|------------
-キャッシュの効率性 | キャッシュから提供された、転送されたデータの割合を示します。このメトリックは、要求されたコンテンツのキャッシュされたバージョンが CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に直接提供されたときに測定されます。
-ヒット率 | キャッシュから提供された要求の割合を示します。このメトリックは、要求されたコンテンツのキャッシュされたバージョンが CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に直接提供されたときに測定されます。
-リモート バイトの割合 - キャッシュ構成なし | 発信元サーバーから CDN (エッジ サーバー) に提供されたトラフィックのうち、バイパス キャッシュ機能 (HTTP ルール エンジン) の結果としてキャッシュされないトラフィックの割合を示します。
-リモート バイトの割合 - 期限切れのキャッシュ | 古くなったコンテンツの再検証の結果として、発信元サーバーから CDN (エッジ サーバー) に提供されたトラフィックの割合を示します。
+Cache Efficiency | Indicates the percentage of data transferred that was served from cache. This metric measures when a cached version of the requested content was served directly from the CDN (edge servers) to requesters (e.g., web browser)
+Hit Rate | Indicates the percentage of requests that were served from cache. This metric measures when a cached version of the requested content was served directly from the CDN (edge servers) to requesters (e.g., web browser).
+% of Remote Bytes - No Cache Config | Indicates the percentage of traffic that was served from origin servers to the CDN (edge servers) that will not be cached as a result of the Bypass Cache feature (HTTP Rules Engine).
+% of Remote Bytes - Expired Cache | Indicates the percentage of traffic that was served from origin servers to the CDN (edge servers) as a result of stale content revalidation.
 
-#### 使用状況のメトリック
+#### <a name="usage-metrics"></a>Usage metrics
 
-これらのメトリックの目的は、以下のコスト削減方法に関する情報を提供することです。
+The purpose of these metrics is to provide insight into the following cost-cutting measures:
 
-* CDN を通じて運用コストを最小限に抑える。
-* キャッシュの効率化と圧縮を通じて CDN の経費を削減する。
+* Minimizing operational costs through the CDN.
+* Reducing CDN expenditures through cache efficiency and compression.
 
-> [AZURE.NOTE] トラフィック量数は、比率および割合の計算に使用されたトラフィックを表し、合計トラフィックのうちの高ボリューム顧客の部分だけを示している場合があります。
+> [AZURE.NOTE] Traffic volume numbers represent traffic that was used in calculations of ratios and percentages, and may only show a portion of the total traffic for high-volume customers.
 
-フィールド | 説明
+Field | Description
 ------|------------
-平均出力バイト数 | CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に提供された、要求ごとに転送されたバイトの平均数を示します。
-キャッシュなしの構成のバイト率 | CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に提供された、バイパス キャッシュ機能を使用したためにキャッシュされなかったトラフィックの割合を示します。
-圧縮されたバイト率 | CDN (エッジ サーバー) から (Web ブラウザーなど) の要求者に圧縮された形式で送信されたトラフィックの割合を示します。
-出力バイト数 | CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に配信されたデータの量をバイト単位で示します。  
-入力バイト数 | 要求者 (Web ブラウザーなど) から CDN (エッジ サーバー) に送信されたデータの量をバイト単位で示します。
-リモート バイト数 | CDN および顧客の配信元サーバーから CDN (エッジ サーバー) に送信されたデータの量をバイト単位で示します。
+Ave Bytes Out | Indicates the average number of bytes transferred for each request served from the CDN (edge servers) to the requester (e.g., web browser).
+No Cache Config Byte Rate | Indicates the percentage of traffic served from the CDN (edge servers) to the requester (e.g., web browser) that will not be cached due to the Bypass Cache feature.
+Compressed Byte Rate | Indicates the percentage of traffic sent from the CDN (edge servers) to requesters (e.g., web browser) in a compressed format.
+Bytes Out | Indicates the amount of data, in bytes, that were delivered from the CDN (edge servers) to the requester (e.g., web browser).  
+Bytes In | Indicates the amount of data, in bytes, sent from requesters (e.g., web browser) to the CDN (edge servers).
+Bytes Remote | Indicates the amount of data, in bytes, sent from CDN and customer origin servers to the CDN (edge servers).
 
-#### パフォーマンスのメトリック
+#### <a name="performance-metrics"></a>Performance Metrics
 
-これらのメトリックの目的は、トラフィックに対する CDN の全体的なパフォーマンスを追跡することです。
+The purpose of these metrics is to track overall CDN performance for your traffic.
 
-フィールド | 説明
+Field | Description
 ------|------------
-転送速度 | コンテンツが CDN から要求者に転送されたときの平均速度を示します。
-時間 | アセットを要求者 (Web ブラウザーなど) に配信するまでにかかった平均時間をミリ秒単位で示します。
-圧縮された要求の率 | CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に圧縮された形式で配信されたヒットの割合を示します。
-4xx エラー率 | 4xx 状態コードを生成したヒットの割合を示します。
-5xx エラー率 | 5xx 状態コードを生成したヒットの割合を示します。
-ヒット数 | CDN コンテンツの要求の数を示します。
+Transfer Rate | Indicates the average rate at which content was transferred from the CDN to a requester.
+Duration | Indicates the average time, in milliseconds, it took to deliver an asset to a requester (e.g., web browser).
+Compressed Request Rate | Indicates the percentage of hits that were delivered from the CDN (edge servers) to the requester (e.g., web browser) in a compressed format.
+4xx Error Rate | Indicates the percentage of hits that generated a 4xx status code.
+5xx Error Rate | Indicates the percentage of hits that generated a 5xx status code.
+Hits | Indicates the number of requests for CDN content.
 
-#### セキュリティで保護されたトラフィックのメトリック
+#### <a name="secure-traffic-metrics"></a>Secure Traffic Metrics
 
-これらのメトリックの目的は、HTTPS トラフィックに対する CDN パフォーマンスを追跡することです。
+The purpose of these metrics is to track CDN performance for HTTPS traffic.
 
-フィールド | 説明
+Field | Description
 ------|------------
-セキュリティで保護されたキャッシュ効率 | キャッシュから提供された、HTTPS 要求のために転送されたデータの割合を示します。このメトリックは、要求されたコンテンツのキャッシュされたバージョンが CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に HTTPS 経由で直接提供されたときに測定されます。
-セキュリティで保護された転送速度 | CDN (エッジ サーバー) から要求者 (Web サーバーなど) に HTTPS 経由で転送されたコンテンツの平均速度を示します。
-セキュリティで保護された期間の平均時間 | アセットを要求者 (Web ブラウザーなど) に HTTPS 経由で配信するまでにかかった平均時間をミリ秒単位で示します。
-セキュリティで保護されたヒット | CDN コンテンツの HTTPS 要求の数を示します。
-セキュリティで保護された出力バイト数 | CDN (エッジ サーバー) から要求者 (Web ブラウザーなど) に配信された HTTPS トラフィックの量をバイト単位で示します。
+Secure Cache Efficiency | Indicates the percentage of data transferred for HTTPS requests that were served from cache. This metric measures when a cached version of the requested content was served directly from the CDN (edge servers) to requesters (e.g., web browser) over HTTPS.
+Secure Transfer Rate | Indicates the average rate at which content was transferred from the CDN (edge servers) to requesters (e.g., web servers) over HTTPS.
+Average Secure Duration | Indicates the average time, in milliseconds, it took to deliver an asset to a requester (e.g., web browser) over HTTPS.
+Secure Hits | Indicates the number of HTTPS requests for CDN content.
+Secure Bytes Out | Indicates the amount of HTTPS traffic, in bytes, that were delivered from the CDN (edge servers) to the requester (e.g., web browser).
 
-## レポート
+## <a name="reports"></a>Reports
 
-このモジュールの各レポートには、帯域幅やトラフィック使用状況に関するさまざまな種類のメトリック (HTTP 状態コード、キャッシュの状態コード、要求 URL など) のグラフと統計情報が含まれています。この情報は、コンテンツがクライアントにどのように提供されているかを詳しく調査し、CDN の動作を調整してデータ配信パフォーマンスを向上させるために使用することができます。
+Each report in this module contains a chart and statistics on bandwidth and traffic usage for different types of metrics (e.g., HTTP status codes, cache status codes, request URL, etc.). This information may be used to delve deeper into how content is being served to your clients and to fine-tune CDN behavior to improve data delivery performance.
 
-### エッジ パフォーマンス レポートへのアクセス
+### <a name="accessing-the-edge-performance-reports"></a>Accessing the edge performance reports
 
-1. CDN プロファイル ブレードで、**[管理]** をクリックします。
+1. From the CDN profile blade, click the **Manage** button.
 
-	![CDN profile blade manage button](./media/cdn-edge-performance/cdn-manage-btn.png)
+    ![CDN profile blade manage button](./media/cdn-edge-performance/cdn-manage-btn.png)
 
-	CDN 管理ポータルが開きます。
+    The CDN management portal opens.
 
-2. **[分析]** タブにマウス ポインターを合わせ、次に **[エッジ パフォーマンス分析]** フライアウトにポインターを合わせます。**[HTTP ラージ オブジェクト]** をクリックします。
+2. Hover over the **Analytics** tab, then hover over the **Edge Perfomance Analytics** flyout.  Click on **HTTP Large Object**.
 
-	エッジ ノード分析レポート画面が表示されます。
+    The edge node analytics reports screen is displayed.
 
-レポート | 説明
+Report | Description
 -------|------------
-概要 (日単位) | 指定した期間の毎日のトラフィックの傾向を表示できます。このグラフの各棒は、特定の日を表します。棒のサイズは、その日に発生したヒットの総数を示します。
-概要 (時間単位) | 指定した期間の時間ごとのトラフィックの傾向を表示できます。このグラフの各棒は、特定の日の 1 時間を表します。棒のサイズは、その時間内に発生したヒットの総数を示します。
-プロトコル | HTTP と HTTPS プロトコル間のトラフィックの内訳を表示します。ドーナツ グラフは、プロトコルの種類ごとに発生したヒット数の割合を示します。
-HTTP メソッド | データの要求にどの HTTP メソッドが使用されているかをすばやく把握できるようにします。通常、最も一般的な HTTP 要求メソッドは、GET、HEAD、POST です。ドーナツ グラフは、HTTP 要求メソッドの種類ごとに発生したヒット数の割合を示します。
-URL | 要求された URL の上位 10 件を表示するグラフが含まれています。棒は、URL ごとに表示されます。棒の高さは、レポートの対象となる期間内に特定の URL が生成したヒット数を示します。上位 100 件の要求された URL の統計情報は、このグラフのすぐ下に表示されます。
-CNAME | レポートの対象期間中にアセットの要求で使用された上位 10 件の CNAME を表示するグラフが含まれています。上位 100 件の要求された CNAME の統計情報は、このグラフのすぐ下に表示されます。
-配信元 | 指定された期間中にアセットの要求先となった上位 10 件の CDN または顧客の配信元サーバーを表示するグラフが含まれています。上位 100 件の要求された CDN または顧客の配信元サーバーの統計情報は、このグラフのすぐ下に表示されます。顧客の配信元サーバーは、[ディレクトリ名] オプションで定義された名前によって識別されます。
-Geo POP | トラフィックのどれだけの量が特定のポイント オブ プレゼンス (POP) を通じてルーティングされているかを示します。3 文字の省略形は、CDN ネットワーク内の POP を表しています。
-クライアント | 指定した期間中にアセットを要求した上位 10 件のクライアントを表示するグラフが含まれています。このレポートの目的のために、同じ IP アドレスから送信されるすべての要求は、同じクライアントからの要求であると見なされます。上位 100 件のクライアントの統計情報は、このグラフのすぐ下に表示されます。このレポートは、上位クライアントのダウンロード アクティビティのパターンを特定するのに役立ちます。
-キャッシュの状態 | キャッシュ動作の詳細な内訳が示されます。これによって、エンド ユーザー エクスペリエンス全体を向上させるための方法が明確になる場合があります。キャッシュ ヒット数から最速のパフォーマンスが得られるため、キャッシュ ミス数と期限切れのキャッシュ ヒット数を最小化することで、データ配信速度を最適化できます。
-NONE の詳細 | 指定した期間中にキャッシュ コンテンツの鮮度が確認されていないアセットの上位 10 件の URL を表示するグラフが含まれています。このような種類のアセットの上位 100 件の URL の統計情報は、このグラフのすぐ下に表示されます。
-CONFIG\_NOCACHE の詳細 | 顧客の CDN 構成によってキャッシュされなかったアセットの上位 10 件の URL を表示するグラフが含まれています。これらの種類のアセットは、配信元サーバーから直接提供されました。このような種類のアセットの上位 100 件の URL の統計情報は、このグラフのすぐ下に表示されます。
-UNCACHEABLE の詳細 | 要求ヘッダー データによってキャッシュできなかったアセットの上位 10 件の URL を表示するグラフが含まれています。このような種類のアセットの上位 100 件の URL の統計情報は、このグラフのすぐ下に表示されます。
-TCP\_HIT の詳細 | キャッシュからすぐに提供されるアセットの上位 10 件の URL を表示するグラフが含まれています。このような種類のアセットの上位 100 件の URL の統計情報は、このグラフのすぐ下に表示されます。
-TCP\_MISS の詳細 | キャッシュの状態が TCP\_MISS であるアセットの上位 10 件の URL を表示するグラフが含まれています。このような種類のアセットの上位 100 件の URL の統計情報は、このグラフのすぐ下に表示されます。
-TCP\_EXPIRED\_HIT の詳細 | POP から直接提供された、古くなったアセットの上位 10 件の URL を表示するグラフが含まれています。このような種類のアセットの上位 100 件の URL の統計情報は、このグラフのすぐ下に表示されます。
-TCP\_EXPIRED\_MISS の詳細 | 配信元サーバーから新しいバージョンを取得する必要がある、古くなったアセットの上位 10 件の URL を表示するグラフが含まれています。このような種類のアセットの上位 100 件の URL の統計情報は、このグラフのすぐ下に表示されます。
-TCP\_CLIENT\_REFRESH\_MISS の詳細 | クライアントからのキャッシュなし要求によって配信元サーバーから取得されたアセットの上位 10 件の URL を示す棒グラフが含まれています。このような種類の要求の上位 100 件の URL の統計情報は、このグラフのすぐ下に表示されます。
-クライアント要求の種類 | HTTP クライアント (ブラウザーなど) によって行われた要求の種類を示します。このレポートには、要求がどのように処理されているかを把握できるようなドーナツ グラフが含まれています。要求の種類ごとの帯域幅およびトラフィックの情報は、グラフの下に表示されます。
-ユーザー エージェント | CDN 経由でコンテンツを要求する上位 10 件のユーザー エージェントを表示する棒グラフが含まれています。通常、ユーザー エージェントは、Web ブラウザー、メディア プレーヤー、または携帯電話ブラウザーです。上位 100 件のユーザー エージェントの統計情報は、このグラフのすぐ下に表示されます。
-参照元 | CDN 経由でアクセスされるコンテンツへの上位 10 件の参照元を表示する棒グラフが含まれています。通常、参照元は、Web ページの URL か、コンテンツにリンクしているリソースの URL です。詳細情報は、上位 100 件の参照元のグラフの下に表示されます。
-圧縮の種類 | エッジ サーバーによって圧縮されたかどうかによって、要求されたアセットを細分化するドーナツ グラフが含まれています。圧縮されたアセットの割合が、使用された圧縮の種類によって細分化されます。詳細情報は、各圧縮の種類と状態のグラフの下に表示されます。
-ファイルの種類 | アカウントの CDN を通じて要求された上位 10 件のファイルの種類を表示する棒グラフが含まれています。このレポートの目的のために、ファイルの種類はアセットのファイル名拡張子とインターネットのメディアの種類によって定義されています (たとえば、.html [text/html]、.htm [text/html]、.aspx [text/html] など)。詳細情報は、上位 100 件のファイルの種類のグラフの下に表示されます。
-一意のファイル | 指定した期間中の特定の日に要求された一意のアセットの合計数をプロットするグラフが含まれています。
-トークン認証の概要 | 要求されたアセットがトークン ベースの認証によって保護されていたかどうかについての簡単な概要を示す円グラフが含まれています。保護されているアセットは、試行された認証の結果に基づいてグラフに表示されます。
-トークン認証の拒否の詳細 | トークン ベースの認証によって拒否された上位 10 件の要求を表示できる棒グラフが含まれています。
-HTTP 応答コード | エッジ サーバーによって HTTP クライアントに配信された HTTP 状態コード (200 OK、403 Forbidden、404 Not Found など) の内訳を示します。円グラフでは、アセットがどのように提供されたかをすばやく評価することができます。詳細な統計データは、応答コードごとに、グラフの下に表示されます。
-404 エラー | 404 Not Found 応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。
-403 エラー | 403 Forbidden 応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。403 Forbidden 応答コードは、顧客の配信元サーバーまたは POP のエッジ サーバーによって要求が拒否された場合に発生します。
-4xx エラー | 400 の範囲の応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。403 Not Found および 404 Forbidden 応答コードは、このレポートから除外されます。通常、4 xx 応答コードは、クライアント エラーの結果として要求が拒否された場合に発生します。
-504 エラー | 504 Gateway Timeout 応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。504 Gateway Timeout 応答コードは、HTTP プロキシが別のサーバーと通信しようとしていてタイムアウトになった場合に発生します。CDN の場合、504 Gateway Timeout 応答コードは、通常、エッジ サーバーが顧客の配信元サーバーとの通信を確立できない場合に発生します。
-502 エラー | 502 Bad Gateway 応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。502 Bad Gateway 応答コードは、サーバーと HTTP プロキシの間で HTTP プロトコル エラーが起きたときに発生します。CDN の場合、502 Bad Gateway 応答コードは、通常、顧客の配信元サーバーがエッジ サーバーに無効な応答を返す場合に発生します。応答は、解析できない場合、または不完全な場合に無効になります。
-5xx エラー | 500 の範囲の応答コードが返された上位 10 件の要求を表示できる棒グラフが含まれています。502 Bad Gateway および 504 Gateway Timeout 応答コードは、このレポートから除外されます。
+Daily Summary | Allows you to view daily traffic trends over a specified time period. Each bar on this graph represents a particular date. The size of the bar indicates the total number of hits that occurred on that date.
+Hourly Summary | Allows you to view hourly traffic trends over a specified time period. Each bar on this graph represents a single hour on a particular date. The size of the bar indicates the total number of hits that occurred during that hour.
+Protocols | Displays the breakdown of traffic between the HTTP and HTTPS protocols. A donut chart indicates the percentage of hits that occurred for each type of protocol.
+HTTP Methods | Allows you to get a quick sense of which HTTP methods are being used to request your data. Typically, the most common HTTP request methods are GET, HEAD, and POST. A donut chart indicates the percentage of hits that occurred for each type of HTTP request method.
+URLs | Contains a graph that displays the top 10 requested URLs. A bar is displayed for each URL. The height of the bar indicates how many hits that particular URL has generated over the time span covered by the report. Statistics for the top 100 requested URLs are displayed directly below this graph.
+CNAMEs | Contains a graph that displays the top 10 CNAMEs used to request assets over the time span of a report. Statistics for the top 100 requested CNAMEs are displayed directly below this graph.
+Origins | Contains a graph that displays the top 10 CDN or customer origin servers from which assets were requested over a specified period of time. Statistics for the top 100 requested CDN or customer origin servers are displayed directly below this graph. Customer origin servers are identified by the name defined in the Directory Name option.
+Geo POPs | Shows how much of your traffic is being routed through a particular point-of-presence (POP). The three-letter abbreviation represents a POP in our CDN network.
+Clients | Contains a graph that displays the top 10 clients that requested assets over a specified period of time. For the purposes of this report, all requests that originate from the same IP address are considered to be from the same client. Statistics for the top 100 clients are displayed directly below this graph. This report is useful for determining download activity patterns for your top clients.
+Cache Statuses | Gives a detailed breakdown of cache behavior, which may reveal approaches for improving the overall end-user experience. Since the fastest performance comes from cache hits, you can optimize data delivery speeds by minimizing cache misses and expired cache hits.
+NONE Details | Contains a graph that displays the top 10 URLs for assets for which cache content freshness was not checked over a specified period of time. Statistics for the top 100 URLs for these types of assets are displayed directly below this graph.
+CONFIG_NOCACHE Details | Contains a graph that displays the top 10 URLs for assets that were not cached due to the customer's CDN configuration. These types of assets were served directly from the origin server. Statistics for the top 100 URLs for these types of assets are displayed directly below this graph.
+UNCACHEABLE Details | Contains a graph that displays the top 10 URLs for assets that could not be cached due to request header data. Statistics for the top 100 URLs for these types of assets are displayed directly below this graph.
+TCP_HIT Details | Contains a graph that displays the top 10 URLs for assets that are served immediately from cache. Statistics for the top 100 URLs for these types of assets are displayed directly below this graph.
+TCP_MISS Details | Contains a graph that displays the top 10 URLs for assets that have a cache status of TCP_MISS. Statistics for the top 100 URLs for these types of assets are displayed directly below this graph.
+TCP_EXPIRED_HIT Details | Contains a graph that displays the top 10 URLs for stale assets that were served directly from the POP. Statistics for the top 100 URLs for these types of assets are displayed directly below this graph.
+TCP_EXPIRED_MISS Details | Contains a graph that displays the top 10 URLs for stale assets for which a new version had to be retrieved from the origin server. Statistics for the top 100 URLs for these types of assets are displayed directly below this graph.
+TCP_CLIENT_REFRESH_MISS Details | Contains a bar chart that displays the top 10 URLs for assets were retrieved from an origin server due to a no-cache request from the client. Statistics for the top 100 URLs for these types of requests are displayed directly below this chart.
+Client Request Types | Indicates the type of requests that were made by HTTP clients (e.g., browsers). This report includes a donut chart that provides a sense as to how requests are being handled. Bandwidth and traffic information for each request type is displayed below the chart.
+User Agent | Contains a bar graph displaying the top 10 user agents to request your content through our CDN. Typically, a user agent is a web browser, media player, or a mobile phone browser. Statistics for the top 100 user agents are displayed directly below this chart.
+Referrers | Contains a bar graph displaying the top 10 referrers to content accessed through our CDN. Typically, a referrer is the URL of the web page or resource that links to your content. Detailed information is provided below the graph for the top 100 referrers.
+Compression Types | Contains a donut chart that breaks down requested assets by whether they were compressed by our edge servers. The percentage of compressed assets is broken down by the type of compression used. Detailed information is provided below the graph for each compression type and status.
+File Types | Contains a bar graph that displays the top 10 file types that have been requested through our CDN for your account. For the purposes of this report, a file type is defined by the asset's file name extension and Internet media type (e.g., .html \[text/html\], .htm \[text/html\], .aspx \[text/html\], etc.). Detailed information is provided below the graph for the top 100 file types.
+Unique Files | Contains a graph that plots the total number of unique assets that were requested on a particular day over a specified period of time.
+Token Auth Summary | Contains a pie chart that provides a quick overview on whether requested assets were protected by Token-Based Authentication. Protected assets are displayed in the chart according to the results of their attempted authentication.
+Token Auth Deny Details | Contains a bar graph that allows you to view the top 10 requests that were denied due to Token-Based Authentication.
+HTTP Response Codes | Provides a breakdown of the HTTP status codes (e.g., 200 OK, 403 Forbidden, 404 Not Found, etc.) that were delivered to your HTTP clients by our edge servers. A pie chart allows you to quickly assess how your assets were served. Detailed statistical data is provided for each response code below the graph.
+404 Errors | Contains a bar graph that allows you to view the top 10 requests that resulted in a 404 Not Found response code.
+403 Errors | Contains a bar graph that allows you to view the top 10 requests that resulted in a 403 Forbidden response code. A 403 Forbidden response code occurs when a request is denied by a customer origin server or an edge server on our POP.
+4xx Errors | Contains a bar graph that allows you to view the top 10 requests that resulted in a response code in the 400 range. Excluded from this report are 403 Not Found and 404 Forbidden response codes. Typically, a 4xx response code occurs when a request is denied as a result of a client error.
+504 Errors | Contains a bar graph that allows you to view the top 10 requests that resulted in a 504 Gateway Timeout response code. A 504 Gateway Timeout response code occurs when a timeout occurs when an HTTP proxy is trying to communicate with another server. In the case of our CDN, a 504 Gateway Timeout response code typically occurs when an edge server is unable to establish communication with a customer origin server.
+502 Errors | Contains a bar graph that allows you to view the top 10 requests that resulted in a 502 Bad Gateway response code. A 502 Bad Gateway response code occurs when an HTTP protocol failure occurs between a server and an HTTP proxy. In the case of our CDN, a 502 Bad Gateway response code typically occurs when a customer origin server returns an invalid response to an edge server. A response is invalid if it cannot be parsed or if it is incomplete.
+5xx Errors | Contains a bar graph that allows you to view the top 10 requests that resulted in a response code in the 500 range.  Excluded from this report are 502 Bad Gateway and 504 Gateway Timeout response codes.
 
-## 関連項目
-* [Azure CDN の概要](cdn-overview.md)
-* [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
-* [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
-* [詳細な HTTP レポート](cdn-advanced-http-reports.md)
+## <a name="see-also"></a>See also
+* [Azure CDN Overview](cdn-overview.md)
+* [Real-time stats in Microsoft Azure CDN](cdn-real-time-stats.md)
+* [Overriding default HTTP behavior using the rules engine](cdn-rules-engine.md)
+* [Advanced HTTP Reports](cdn-advanced-http-reports.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,64 +1,65 @@
 <properties
-	pageTitle="Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法 | Microsoft Azure"
-	description="Azure AD アプリケーション プロキシ コネクタのサイレント インストールを実行して、オンプレミス アプリへの安全なリモート アクセスを実現する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+    pageTitle="How to silently install the Azure AD Application Proxy Connector | Microsoft Azure"
+    description="Covers how to perform a silent installation of Azure AD Application Proxy Connector to provide secure remote access to your on-premises apps."
+    services="active-directory"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="06/22/2016"
-	ms.author="kgremban"/>
-
-# Azure AD アプリケーション プロキシ コネクタをサイレント インストールする方法
-
-複数の Windows サーバーまたはユーザー インターフェイスが有効になっていない Windows サーバーにインストール スクリプトを送信できます。このトピックでは、無人インストールを有効にし、Azure AD アプリケーション プロキシ コネクタをインストールして登録する Windows PowerShell スクリプトを作成する方法について説明します。
-
-## アクセスの実現
-アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。アプリケーション プロキシ コネクタを機能させるには、グローバル管理者のアカウントとパスワードを使用して、Azure AD ディレクトリにコネクタを登録する必要があります。通常、これは、コネクタのインストール時にポップアップ ダイアログ ボックスに入力します。または、Windows PowerShell を使用して資格情報オブジェクトを作成することで登録情報を入力することも、独自のトークンを作成して、登録情報の入力に使用することもできます。
-
-## 手順 1: 登録せずにコネクタをインストールする
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="06/22/2016"
+    ms.author="kgremban"/>
 
 
-次のように、コネクタを登録せずにコネクタ MSI をインストールします。
+# <a name="how-to-silently-install-the-azure-ad-application-proxy-connector"></a>How to silently install the Azure AD Application Proxy Connector
+
+You want to be able to send an installation script to multiple Windows servers or to Windows Servers that don't have user interface enabled. This topic explains how to create a Windows PowerShell script that enables unattended installation to install and register your Azure AD Application Proxy Connector.
+
+## <a name="enabling-access"></a>Enabling Access
+Application Proxy works by installing a slim Windows Server service called the Connector inside your network. For the Application Proxy Connector to work it has to be registered with your Azure AD directory using a global administrator and password. Ordinarily this is entered during Connector installation in a pop up dialog box. Alternatively, you can use Windows PowerShell to create a credential object to enter your registration information, or you can create your own token and use it to enter your registration information.
+
+## <a name="step-1:-install-the-connector-without-registration"></a>Step 1:  Install the Connector without registration
 
 
-1. コマンド プロンプトを開きます。
-2. 次のコマンドを実行します。/q はサイレント インストールを意味します。つまり、インストールで使用許諾契約書への同意を求めるメッセージは表示されません。
+Install the Connector MSIs without registering the Connector as follows:
+
+
+1. Open a command prompt.
+2. Run the following command in which the /q means quiet installation - the installation will not prompt you to accept the End User License Agreement.
 
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## 手順 2: コネクタを Azure Active Directory に登録する
-次の方法のいずれかを使用してこれを行うこともできます。
+## <a name="step-2:-register-the-connector-with-azure-active-directory"></a>Step 2: Register the Connector with Azure Active Directory
+This can be accomplished using either of the following methods:
 
 
-- Windows PowerShell 資格情報オブジェクトを使用してコネクタを登録する
-- オフラインで作成したトークンを使用してコネクタを登録する
+- Register the Connector using a Windows PowerShell credential object
+- Register the Connector using a token created offline
 
-### Windows PowerShell 資格情報オブジェクトを使用してコネクタを登録する
+### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Register the Connector using a Windows PowerShell credential object
 
 
-1. 次のスクリプトを実行して、Windows PowerShell 資格情報オブジェクトを作成します。"<username>" と "<password>" をディレクトリのユーザー名とパスワードに置き換えます。
+1. Create the Windows PowerShell Credentials object by running the following, where "<username>" and "<password>" should be replaced with the username and password for your directory:
 
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
 
-2. **C:\\Program Files\\Microsoft AAD App Proxy Connector** に移動し、作成済みの PowerShell 資格情報オブジェクトを使用してスクリプトを実行します。ここで、$cred は作成済みの PowerShell 資格情報オブジェクトの名前です。
+2. Go to **C:\Program Files\Microsoft AAD App Proxy Connector** and run the script using the PowerShell credentials object you created, where $cred is the name of the PowerShell credentials object you created:
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred
 
 
-### オフラインで作成したトークンを使用してコネクタを登録する
+### <a name="register-the-connector-using-a-token-created-offline"></a>Register the Connector using a token created offline
 
-1. コード スニペットの値を使用する AuthenticationContext クラスを使用して、オフライン トークンを作成します。
+1. Create an offline token using the AuthenticationContext class using the values in the code snippet:
 
 
         using System;
@@ -118,18 +119,24 @@
 
 
 
-2. トークンを作成したら、そのトークンを使用して SecureString を作成します。<br> `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
-3. 次の Windows PowerShell コマンドを実行します。SecureToken は上記で作成したトークンの名前です。tenantID はテナントの GUID です。<br> `RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
+2. Once you have the token create a SecureString using the token: <br>
+`$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
+3. Run the following Windows PowerShell command, where SecureToken is the name of the token you created above and tenantID is your tenant's GUID: <br>
+`RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID>`
 
 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-- [Azure Active Directory のアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
-- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
-- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
-- [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
+- [Enable Application Proxy for Azure Active Directory](active-directory-application-proxy-enable.md)
+- [Publish applications using your own domain name](active-directory-application-proxy-custom-domains.md)
+- [Enable single-sign on](active-directory-application-proxy-sso-using-kcd.md)
+- [Troubleshoot issues you're having with Application Proxy](active-directory-application-proxy-troubleshoot.md)
 
-最新のニュースと更新情報については、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
+For the latest news and updates, check out the [Application Proxy blog](http://blogs.technet.com/b/applicationproxyblog/)
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

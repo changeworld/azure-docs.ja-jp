@@ -1,6 +1,6 @@
 <properties
-   pageTitle="一般的にスローされる FabricClient 例外 | Microsoft Azure"
-   description="FabricClient API でアプリケーションやクラスターの管理操作を実行しているときにスローされる可能性のある一般的な例外とエラーについて説明します。"
+   pageTitle="Common FabricClient exceptions thrown | Microsoft Azure"
+   description="Describes the common exceptions and errors which can be thrown by the FabricClient APIs while performing application and cluster management operations."
    services="service-fabric"
    documentationCenter=".net"
    authors="rwike77"
@@ -16,32 +16,37 @@
    ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
-# FabricClient API の操作時に発生する一般的な例外とエラー
-Service Fabric のアプリケーションやサービス、クラスターに対する管理タスクは、クラスター アドミニストレーターやアプリケーション管理者が [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) API を使って実行できます。管理タスクの例としては、アプリケーションのデプロイ、アップグレード、削除、クラスターの正常性のチェック、サービスのテストといった作業が挙げられます。アプリケーション開発者やクラスター アドミニストレーターは、FabricClient API を使用して、Service Fabric クラスターや Service Fabric アプリケーションを管理するためのツールを開発できます。
 
-FabricClient を使用して実行できる操作の種類は多岐にわたります。FabricClient のメソッドは、誤った入力やランタイム エラー、一過性のインフラストラクチャの問題などに起因するエラーによって例外をスローします。特定のメソッドでどのような例外がスローされるかについては、API リファレンス ドキュメントを参照してください。ただし、数ある [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) API に共通してスローされる例外もいくつかあります。以下の表は、各種の FabricClient API に共通する例外を一覧にしたものです。
+# <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Common exceptions and errors when working with the FabricClient APIs
+The [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) APIs enable cluster and application administrators to perform administrative tasks on a Service Fabric application, service, or cluster. For example, application deployment, upgrade, and removal, checking the health a cluster, or testing a service. Application developers and cluster administrators can use the FabricClient APIs to develop tools for managing the Service Fabric cluster and applications.
 
-|例外| スローされるタイミング|
+There are many different types of operations which can be performed using FabricClient.  Each method can throw exceptions for errors due to incorrect input, runtime errors, or transient infrastructure issues.  See the API reference documentation to find which exceptions are thrown by a specific method. There are some exceptions, however, which can be thrown by many different [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) APIs. The following table lists the exceptions that are common across the FabricClient APIs.
+
+|Exception| Thrown when|
 |---------|:-----------|
-|[System.Fabric.FabricObjectClosedException](https://msdn.microsoft.com/library/system.fabric.fabricobjectclosedexception.aspx)|[FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) オブジェクトがクローズ済みであるとき。使用中の [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) オブジェクトを破棄したうえで、新しい [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) オブジェクトをインスタンス化してください。 |
-|[System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)|操作がタイムアウトしたとき。操作の完了前に MaxOperationTimeout に達すると、[OperationTimedOut](https://msdn.microsoft.com/library/system.fabric.fabricerrorcode.aspx) が返されます。|
-|[System.UnauthorizedAccessException](https://msdn.microsoft.com/ja-JP/library/system.unauthorizedaccessexception.aspx)|操作のアクセス チェックに失敗したとき。E\_ACCESSDENIED が返されます。|
-|[System.Fabric.FabricException](https://msdn.microsoft.com/library/system.fabric.fabricexception.aspx)|操作の実行中にランタイム エラーが発生したとき。FabricClient のいずれのメソッドも、[FabricException](https://msdn.microsoft.com/library/system.fabric.fabricexception.aspx) をスローする可能性があります。例外の正確な原因は [ErrorCode](https://msdn.microsoft.com/library/system.fabric.fabricexception.errorcode.aspx) プロパティによって示されます。エラー コードは、[FabricErrorCode](https://msdn.microsoft.com/library/system.fabric.fabricerrorcode.aspx) 列挙体として定義されています。|
-|[System.Fabric.FabricTransientException](https://msdn.microsoft.com/library/system.fabric.fabrictransientexception.aspx)|なんらかの一過性のエラー状態が原因で操作に失敗したとき。たとえばレプリカのクォーラムが一時的に到達不能状態に陥ったことが原因で操作に失敗する可能性があります。一過性の例外によって失敗した操作は、再試行することができます。|
+|[System.Fabric.FabricObjectClosedException](https://msdn.microsoft.com/library/system.fabric.fabricobjectclosedexception.aspx)|The [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) object is in a closed state. Dispose of the [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) object you are using and instantiate a new [FabricClient](https://msdn.microsoft.com/library/system.fabric.fabricclient.aspx) object. |
+|[System.TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx)|The operation timed out. [OperationTimedOut](https://msdn.microsoft.com/library/system.fabric.fabricerrorcode.aspx) is returned when the operation takes more than MaxOperationTimeout to complete.|
+|[System.UnauthorizedAccessException](https://msdn.microsoft.com/en-us/library/system.unauthorizedaccessexception.aspx)|The access check for the operation failed. E_ACCESSDENIED is returned.|
+|[System.Fabric.FabricException](https://msdn.microsoft.com/library/system.fabric.fabricexception.aspx)|A runtime error occurred while performing the operation. Any of the FabricClient methods can potentially throw [FabricException](https://msdn.microsoft.com/library/system.fabric.fabricexception.aspx), the [ErrorCode](https://msdn.microsoft.com/library/system.fabric.fabricexception.errorcode.aspx) property indicates the exact cause of the exception. Error codes are defined in the [FabricErrorCode](https://msdn.microsoft.com/library/system.fabric.fabricerrorcode.aspx) enumeration.|
+|[System.Fabric.FabricTransientException](https://msdn.microsoft.com/library/system.fabric.fabrictransientexception.aspx)|The operation failed due to a transient error condition of some kind. For example, an operation may fail because a quorum of replicas is temporarily not reachable. Transient exceptions correspond to failed operations that can be retried.|
 
-[FabricException](https://msdn.microsoft.com/library/system.fabric.fabricexception.aspx) で返される可能性のある一般的な [FabricErrorCode](https://msdn.microsoft.com/library/system.fabric.fabricerrorcode.aspx) エラーを次に示します。
+Some common [FabricErrorCode](https://msdn.microsoft.com/library/system.fabric.fabricerrorcode.aspx) errors that can be returned in a [FabricException](https://msdn.microsoft.com/library/system.fabric.fabricexception.aspx):
 
-|エラー| 条件|
+|Error| Condition|
 |---------|:-----------|
-|CommunicationError|操作の失敗の原因は通信エラーです。操作をやり直してください。|
-|InvalidCredentialType|資格情報の種類が無効です。|
-|InvalidX509FindType|X509FindType が無効です。|
-|InvalidX509StoreLocation|X509 ストアの場所が無効です。|
-|InvalidX509StoreName|X509 ストアの名前が無効です。|
-|InvalidX509Thumbprint|X509 証明書の拇印の文字列が無効です。|
-|InvalidProtectionLevel|保護レベルが無効です。|
-|InvalidX509Store|X509 証明書ストアを開くことができません。|
-|InvalidSubjectName|サブジェクト名が無効です。|
-|InvalidAllowedCommonNameList|共通名リスト文字列の形式が無効です。コンマ区切りで指定する必要があります。|
+|CommunicationError|A communication error caused the operation to fail, retry the operation.|
+|InvalidCredentialType|The credential type is invalid.|
+|InvalidX509FindType|The X509FindType is invalid.|
+|InvalidX509StoreLocation|The X509 store location is invalid.|
+|InvalidX509StoreName|The X509 store name is invalid.|
+|InvalidX509Thumbprint|The X509 certificate thumbprint string is invalid.|
+|InvalidProtectionLevel|The protection level is invalid.|
+|InvalidX509Store|The X509 certificate store cannot be opened.|
+|InvalidSubjectName|The subject name is invalid.|
+|InvalidAllowedCommonNameList|The format of common name list string is invalid. It should be a comma-separated list.|
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

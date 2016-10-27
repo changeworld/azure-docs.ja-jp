@@ -1,82 +1,89 @@
 <properties 
-	pageTitle="データ統合サービスである Data Factory の紹介 | Microsoft Azure" 
-	description="データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。" 
-	keywords="データ統合, クラウド データ統合, Azure Data Factory とは"
-	services="data-factory" 
-	documentationCenter="" 
-	authors="spelluru" 
-	manager="jhubbard" 
-	editor="monicar"/>
+    pageTitle="Introduction to Data Factory, a data integration service | Microsoft Azure" 
+    description="Learn what Azure Data Factory is: A cloud data integration service that orchestrates and automates movement and transformation of data." 
+    keywords="data integration, cloud data integration, what is azure data factory"
+    services="data-factory" 
+    documentationCenter="" 
+    authors="sharonlo101" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="data-factory" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="get-started-article" 
-	ms.date="09/22/2016" 
-	ms.author="spelluru"/>
+    ms.service="data-factory" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="get-started-article" 
+    ms.date="09/22/2016" 
+    ms.author="shlo"/>
 
-# クラウドによるデータ統合サービスである Azure Data Factory サービスの概要
 
-## Azure Data Factory とは何ですか。 
-Data Factory は、データの**移動**や**変換**を調整し、自動化するクラウドベースのデータ統合サービスです。さまざまなデータ ストアからデータを取り込み、データを変換/処理して結果データをデータ ストアに発行できる Data Factory サービスを使用することで、データ統合ソリューションを作成できます。
+# <a name="introduction-to-azure-data-factory-service,-a-data-integration-service-in-the-cloud"></a>Introduction to Azure Data Factory Service, a data integration service in the cloud
 
-Data Factory サービスでは、データを移動して変換するデータ パイプラインを作成し、指定したスケジュール (毎時、毎日、毎週など) でパイプラインを実行できます。また、このサービスには視覚化機能が豊富に用意されています。このため、データ パイプライン間の系列と依存関係を表示できるほか、統一された 1 つのビューからすべてのデータ パイプラインを監視して、容易に問題を特定し、監視アラートを設定できます。
+## <a name="what-is-azure-data-factory?"></a>What is Azure Data Factory? 
+Data Factory is a cloud-based data integration service that orchestrates and automates the **movement** and **transformation** of data. You can create data integration solutions using the Data Factory service that can ingest data from various data stores, transform/process the data, and publish the result data to the data stores. 
 
-![Diagram: Data Factory Overview, a data integration service](./media/data-factory-introduction/what-is-azure-data-factory.png) **図 1.** さまざまなデータ ソースからデータを取り込み、準備、変換、分析を行って、すぐ使用できるデータを発行します。
+Data Factory service allows you to create data pipelines that move and transform data, and then run the pipelines on a specified schedule (hourly, daily, weekly, etc.). It also provides rich visualizations to display the lineage and dependencies between your data pipelines, and monitor all your data pipelines from a single unified view to easily pinpoint issues and setup monitoring alerts.
 
-## パイプラインとアクティビティ
-Data Factory ソリューションでは、1 つ以上のデータ **パイプライン**を作成します。パイプラインは、アクティビティの論理的なグループです。パイプラインは、まとまってタスクを実行するユニットにアクティビティをグループ化するために使用されます。
+![Diagram: Data Factory Overview, a data integration service](./media/data-factory-introduction/what-is-azure-data-factory.png)
+**Figure1.** Ingest data from various data sources, prepare, transform, and analyze the data, and then publish ready-to-use data for consumption.
 
-**アクティビティ**は、データに対して実行するアクションを定義します。たとえば、コピー アクティビティを使用して、データ ストア間でデータをコピーできます。同様に、Azure HDInsight クラスターに対して Hive クエリを実行する Hive アクティビティを使用して、データを変換または分析できます。Data Factory では、データ移動アクティビティとデータ変換アクティビティの 2 種類のアクティビティがサポートされています。
+## <a name="pipelines-and-activities"></a>Pipelines and activities
+In a Data Factory solution, you create one or more data **pipelines**. A pipeline is a logical grouping of activities. They are used to group activities into a unit that together perform a task. 
+
+**Activities** define the actions to perform on your data. For example, you may use a Copy activity to copy data from one data store to another data store. Similarly, you may use a Hive activity, which runs a Hive query on an Azure HDInsight cluster to transform or analyze your data. Data Factory supports two types of activities: data movement activities and data transformation activities. 
   
-## データ移動アクティビティ 
+## <a name="data-movement-activities"></a>Data movement activities 
 [AZURE.INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事をご覧ください。
+See [Data Movement Activities](data-factory-data-movement-activities.md) article for more details. 
 
-## データ変換アクティビティ
+## <a name="data-transformation-activities"></a>Data transformation activities
 [AZURE.INCLUDE [data-factory-transformation-activities](../../includes/data-factory-transformation-activities.md)]
 
-詳細については、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事をご覧ください。
+See [Data Transformation Activities](data-factory-data-transformation-activities.md) article for more details.
 
-コピー アクティビティでサポートされていないデータ ストアとの間でデータを移動する必要がある場合、つまり独自のロジックを使用してデータを変換する場合は、**カスタム .NET アクティビティ**を作成します。カスタム アクティビティの作成と使用の詳細については、「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](data-factory-use-custom-activities.md)」をご覧ください。
+If you need to move data to/from a data store that Copy Activity doesn't support, or transform data using your own logic, create a **custom .NET activity**. For details on creating and using a custom activity, see [Use custom activities in an Azure Data Factory pipeline](data-factory-use-custom-activities.md).
 
-## リンクされたサービス
-リンクされたサービスは、Data Factory が外部リソース (例: Azure Storage、オンプレミスの SQL Server、Azure HDInsight) に接続するために必要な情報を定義します。Data Factory ではリンクされたサービスは 2 つの目的に使用されます。
+## <a name="linked-services"></a>Linked services
+Linked services define the information needed for Data Factory to connect to external resources (Examples: Azure Storage, on-premises SQL Server, Azure HDInsight). Linked services are used for two purposes in Data Factory:
 
-- オンプレミスの SQL Server、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の**データ ストア**を表すため。サポートされているデータ ストアの一覧については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事をご覧ください。
-- アクティビティの実行をホストできる**コンピューティング リソース**を表すため。たとえば、HDInsightHive アクティビティは HDInsight Hadoop クラスターで実行されます。サポートされているコンピューティング環境の一覧については、[データ変換アクティビティ](data-factory-data-transformation-activities.md)に関する記事をご覧ください。
+- To represent a **data store** including, but not limited to, an on-premises SQL Server, Oracle database, file share, or an Azure Blob Storage account. See the [Data movement activities](data-factory-data-movement-activities.md) section for a list of supported data stores. 
+- To represent a **compute resource** that can host the execution of an activity. For example, the HDInsightHive activity runs on an HDInsight Hadoop cluster. See [Data transformation activities](data-factory-data-transformation-activities.md) section for a list of supported compute environments. 
 
-## データセット 
-リンクされたサービスは、データ ストアを Azure データ ファクトリにリンクします。データセットは、データ ストア内のデータ構造を表します。たとえば、Azure Storage のリンクされたサービスは、Azure Storage アカウントに接続するための接続情報を Data Factory に提供します。Azure BLOB データセットは、パイプラインによってデータが読み取られる、Azure BLOB ストレージ内の BLOB コンテナーと BLOB フォルダーを指定します。同様に、Azure SQL のリンクされたサービスは、Azure SQL データベースに関する接続情報を提供します。また、Azure SQL データセットは、データが含まれているテーブルを指定します。
+## <a name="datasets"></a>Datasets 
+Linked services link data stores to an Azure data factory. Datasets represent data structures with in the data stores. For example, an Azure Storage linked service provides connection information for Data Factory to connect to an Azure Storage account. An Azure Blob dataset specifies the blob container and folder in the Azure Blob Storage from which the pipeline should read the data. Similarly, an Azure SQL linked service provides connection information for an Azure SQL database and an Azure SQL dataset specifies the table that contains the data.   
 
-## Data Factory エンティティ間の関係
-Data Factory には、入力と出力データ、処理イベント、および目的のデータ フローの実行に必要なスケジュールとリソースを定義するために連携するいくつかの重要なエンティティがあります。
+## <a name="relationship-between-data-factory-entities"></a>Relationship between Data Factory entities
+Data Factory has a few key entities that work together to define input and output data, processing events, and the schedule and resources required to execute the desired data flow.
 
-![Diagram: Data Factory, a cloud data integration service - Key Concepts](./media/data-factory-introduction/data-integration-service-key-concepts.png) **図 2** データセット、アクティビティ、パイプライン、リンクされたサービスの間の関係
+![Diagram: Data Factory, a cloud data integration service - Key Concepts](./media/data-factory-introduction/data-integration-service-key-concepts.png)
+**Figure 2.** Relationships between Dataset, Activity, Pipeline, and Linked service
 
-リンクされたサービス、データセット、アクティビティ、パイプラインという 4 つの簡単な概念を理解したら、開始する準備は完了です。 [最初のパイプラインを作成](data-factory-build-your-first-pipeline.md)できます。
+With the four simple concepts of linked services, datasets, activities, and pipelines, you are ready to get started! You can [build your first pipeline](data-factory-build-your-first-pipeline.md). 
 
-## サポートされているリージョン
-現時点では、データ ファクトリは、**米国西部**、**米国東部**、**北ヨーロッパ** リージョンで作成できます。ただし、データ ファクトリは、他の Azure リージョン内のデータ ストアやコンピューティング サービスにアクセスし、データ ストア間でデータを移動したり、コンピューティング サービスを使用してデータを処理したりできます。
+## <a name="supported-regions"></a>Supported regions
+Currently, you can create data factories in the **West US**, **East US**, and **North Europe** regions. However, a data factory can access data stores and compute services in other Azure regions to move data between data stores or process data using compute services. 
 
-Azure Data Factory 自体は、データを保存しません。Azure Data Factory を使用すると、データ主導型のフローを作成し、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores)間でのデータ移動と、他のリージョンまたはオンプレミス環境にある[コンピューティング サービス](data-factory-compute-linked-services.md)を使用したデータ処理を調整できます。また、プログラムと UI の両方のメカニズムを使用して、[ワークフローを監視および管理](data-factory-monitor-manage-pipelines.md)することもできます。
+Azure Data Factory itself does not store any data. It lets you create data-driven flows to orchestrate movement of data between [supported data stores](data-factory-data-movement-activities.md#supported-data-stores) and processing of data using [compute services](data-factory-compute-linked-services.md) in other regions or in an on-premises environment. It also allows you to [monitor and manage workflows](data-factory-monitor-manage-pipelines.md) using both programmatic and UI mechanisms. 
 
-Azure Data Factory を利用できるリージョンが**米国西部**、**米国東部**、**北ヨーロッパ**のみであっても、Data Factory 内でデータ移動を実行するサービスは、いくつかのリージョンで[グローバル](data-factory-data-movement-activities.md#global)に利用できます。データ ストアがファイアウォールの内側にある場合は、オンプレミス環境にインストールされている [Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) がデータを移動します。
+Even though Azure Data Factory is available in only **West US**, **East US**, and **North Europe** regions, the service powering the data movement in Data Factory is available [globally](data-factory-data-movement-activities.md#global) in several regions. In case a data store sits behind a firewall then a [Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) installed in your on-premises environment moves the data instead. 
 
-たとえば、Azure HDInsight クラスターや Azure Machine Learning などのコンピューティング環境が西ヨーロッパ リージョン以外で稼働しているものと想定します。北ヨーロッパに Azure Data Factory インスタンスを作成して利用すると、西ヨーロッパのコンピューティング環境でジョブのスケジュール設定にそのインスタンスを使用することができます。Data Factory がコンピューティング環境でジョブをトリガーするまでに数ミリ秒かかりますが、コンピューティング環境でのジョブの実行時間は変わりません。
+For an example, let us assume that your compute environments such as Azure HDInsight cluster and Azure Machine Learning are running out of West Europe region. You can create and use an Azure Data Factory instance in North Europe and use it to schedule jobs on your compute environments in West Europe. It takes a few milliseconds for Data Factory to trigger the job on your compute environment but the time for running the job on your computing environment does not change.
 
-将来的には、Azure がサポートするすべての地域で Azure Data Factory が提供される予定です。
+We intend to have Azure Data Factory in every geography supported by Azure in the future.
   
-## 次のステップ
-データ パイプラインでデータ ファクトリを構築する方法については、以下のチュートリアルで紹介されている具体的な手順に従ってください。
+## <a name="next-steps"></a>Next steps
+To learn how to build data factories with data pipelines, follow step-by-step instructions in the following tutorials. 
 
-チュートリアル | Description
+Tutorial | Description
 -------- | -----------
-[Hadoop クラスターを使用してデータを処理するデータ パイプラインを作成する](data-factory-build-your-first-pipeline.md) | このチュートリアルでは、Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行して**データを処理する**データ パイプラインを備えた最初の Azure データ ファクトリを構築します。 |
-[2 つのクラウド データ ストア間でデータを移動するデータ パイプラインを構築する](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) | このチュートリアルでは、BLOB ストレージから SQL データベースに**データを移動**するパイプラインを備えたデータ ファクトリを作成します。
-[Data Management Gateway を使用してオンプレミス データ ストアとクラウド データ ストア間でデータを移動するデータ パイプラインを構築する](data-factory-move-data-between-onprem-and-cloud.md) | このチュートリアルでは、**オンプレミス**の SQL Server データベースから Azure BLOB に**データを移動**するパイプラインを備えたデータ ファクトリを構築します。チュートリアルの一環として、ご使用のコンピューターに Data Management Gateway をインストールして構成します。 
+[Build a data pipeline that processes data using Hadoop cluster](data-factory-build-your-first-pipeline.md) | In this tutorial, you build your first Azure data factory with a data pipeline that **processes data** by running Hive script on an Azure HDInsight (Hadoop) cluster. |
+[Build a data pipeline to move data between two cloud data stores](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) | In this tutorial, you create a data factory with a pipeline that **moves data** from Blob storage to SQL database.
+[Build a data pipeline to move data between an on-premises data store and a cloud data store using Data Management Gateway](data-factory-move-data-between-onprem-and-cloud.md) | In this tutorial, you build a data factory with a pipeline that **moves data** from an **on-premises** SQL Server database to an Azure blob. As part of the walkthrough, you install and configure the Data Management Gateway on your machine. 
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

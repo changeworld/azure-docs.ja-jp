@@ -1,9 +1,9 @@
 <properties
-    pageTitle="Azure ポータルを使用した Azure Search インデックスの照会 | Microsoft Azure | ホステッド クラウド検索サービス"
-    description="Azure ポータルの Search エクスプローラーで検索クエリを発行します。"
+    pageTitle="Query your Azure Search Index using the Azure Portal | Microsoft Azure | Hosted cloud search service"
+    description="Issue a search query in the Azure Portal's Search Explorer."
     services="search"
     documentationCenter=""
-	authors="ashmaka"
+    authors="ashmaka"
 />
 
 <tags
@@ -15,36 +15,41 @@
     ms.date="08/29/2016"
     ms.author="ashmaka"
 />
-# Azure ポータルを使用した Azure Search インデックスの照会
+
+# <a name="query-your-azure-search-index-using-the-azure-portal"></a>Query your Azure Search index using the Azure Portal
 > [AZURE.SELECTOR]
-- [概要](search-query-overview.md)
-- [ポータル](search-explorer.md)
+- [Overview](search-query-overview.md)
+- [Portal](search-explorer.md)
 - [.NET](search-query-dotnet.md)
-- [REST ()](search-query-rest-api.md)
+- [REST](search-query-rest-api.md)
 
-このガイドでは、Azure ポータルで Azure Search インデックスを照会する方法を説明します。
+This guide will show you how to query your Azure Search index in the Azure Portal.
 
-このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んでいます](search-what-is-data-import.md)。
+Before beginning this walkthrough, you should already have [created an Azure Search index](search-what-is-an-index.md) and [populated it with data](search-what-is-data-import.md).
 
-## I.Azure Search ブレードに移動する
-1. [Azure ポータル](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)の左側のメニューで [すべてのリソース] をクリックします。
-2. Azure Search サービスを選択する
+## <a name="i.-go-to-your-azure-search-blade"></a>I. Go to your Azure Search blade
+1. Click on "All resources" in the menu on the left side of the [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
+2. Select your Azure Search service
 
-## II.検索するインデックスを選択する
-1. [インデックス] タイルから、検索するインデックスを選択します。
+## <a name="ii.-select-the-index-you-would-like-to-search"></a>II. Select the index you would like to search
+1. Select the index you would like to search from the "Indexes" tile.
 
 ![](./media/search-explorer/pick-index.png)
 
-## III.[Search エクスプローラー] タイルをクリックする
+## <a name="iii.-click-on-the-"search-explorer"-tile"></a>III. Click on the "Search Explorer" tile
 ![](./media/search-explorer/search-explorer-tile.png)
 
-## III.検索を開始する
-1. Azure Search インデックスを検索するには、*[クエリ文字列]* フィールドで文字の入力を開始し、**[検索]** をクリックします。
- * Search エクスプローラーを使用している場合は、いずれかの[クエリ パラメーター](https://msdn.microsoft.com/library/dn798927.aspx)を指定できます。
+## <a name="iii.-start-searching"></a>III. Start searching
+1. To search your Azure Search index, start typing into the "*Query string*" field and then press "**Search**".
+ * When using the Search Explorer, you can specify any of the [query parameters](https://msdn.microsoft.com/library/dn798927.aspx)
 
-2. *[結果]* セクションに、クエリの結果が未加工の JSON として表示されます。これは、Azure Search REST API に対する検索要求を発行したときに、HTTP 応答の本文で返されます。
-3. クエリ文字列は適切な要求 URL として自動的に解析され、Azure Search REST API に対して HTTP 要求が送信されます。
+2. In the "*Results*" section, the query's results will be presented in the raw JSON that you would receiving in an HTTP Response Body when issuing search requests against the Azure Search REST API.
+3. The query string is automatically parsed into the proper request URL to submit a HTTP request against the Azure Search REST API
 
 ![](./media/search-explorer/search-bar.png)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

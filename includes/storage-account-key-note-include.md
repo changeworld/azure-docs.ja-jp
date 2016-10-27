@@ -1,3 +1,6 @@
->[AZURE.IMPORTANT] ストレージ アカウント キーは、ストレージ アカウントの root パスワードに似ています。アカウント キーは常に慎重に保護してください。このキーを他のユーザーに配布したり、ハードコーディングしたり、他のユーザーがアクセスできるプレーン テキスト ファイルに保存したりしないでください。アカウント キーが侵害されたと思われる場合は、Azure ポータルを使用してキーを再生成してください。アカウント キーを再生成する方法については、[Azure ポータルでストレージ アカウントを作成、管理、削除する方法](../articles/storage/storage-create-storage-account.md#manage-your-storage-account)に関するページを参照してください。
+>[AZURE.IMPORTANT] Your storage account key is similar to the root password for your storage account. Always be careful to protect your account key. Avoid distributing it to other users, hard-coding it, or saving it in a plain-text file that is accessible to others. Regenerate your account key using the Azure Portal if you believe it may have been compromised. To learn how to regenerate your account key, see [How to create, manage, or delete a storage account in the Azure Portal](../articles/storage/storage-create-storage-account.md#manage-your-storage-account).
 
-<!---HONumber=AcomDC_0420_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

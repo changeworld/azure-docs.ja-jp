@@ -1,34 +1,34 @@
-1. [Azure ポータル][]にログオンします。
+1. Log on to the [Azure portal][].
 
-2. ポータルの左側のナビゲーション ウィンドウで **[新規]** をクリックし、**[Enterprise Integration]**、**[Service Bus]** の順にクリックします。
+2. In the left navigation pane of the portal, click **New**, then click **Enterprise Integration**, and then click **Service Bus**.
 
-4. **[名前空間の作成]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。
+4. In the **Create namespace** dialog, enter a namespace name. The system immediately checks to see if the name is available.
 
-5. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Basic、Standard、Premium) を選択します。
+5. After making sure the namespace name is available, choose the pricing tier (Basic, Standard, or Premium).
 
-7. **[サブスクリプション]** フィールドで、名前空間を作成する Azure サブスクリプションを選択します。
+7. In the **Subscription** field, choose an Azure subscription in which to create the namespace.
 
-9. **[リソース グループ]** フィールドで、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。
+9. In the **Resource group** field, choose an existing resource group in which the namespace will live, or create a new one.      
 
-8. **[場所]** で、名前空間をホストする国またはリージョンを選択します。
+8. In **Location**, choose the country or region in which your namespace should be hosted.
 
-	![Create namespace][create-namespace]
+    ![Create namespace][create-namespace]
 
-6. **[作成]** をクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
+6. Click **Create**. The system now creates your namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
  
-### 管理資格情報の取得
+### <a name="obtain-the-management-credentials"></a>Obtain the management credentials
 
-1. 名前空間の一覧で、新しく作成した名前空間の名前をクリックします。
+1. In the list of namespaces, click the newly created namespace name.
  
-3. 名前空間ブレードで、**[共有アクセス ポリシー]** をクリックします。
+3. In the namespace blade, click **Shared access policies**.
 
-4. **[共有アクセス ポリシー]** ブレードで、**[RootManageSharedAccessKey]** をクリックします。
+4. In the **Shared access policies** blade, click **RootManageSharedAccessKey**.
 
-	![connection-info][connection-info]
+    ![connection-info][connection-info]
 
-5. **[ポリシー: RootManageSharedAccessKey]** ブレードで、**[Connection string–primary key (接続文字列 - プライマリ キー)]** の横にあるコピー ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。この値をメモ帳などに一時的に貼り付けます。
+5. In the **Policy: RootManageSharedAccessKey** blade, click the copy button next to **Connection string–primary key**, to copy the connection string to your clipboard for later use. Paste this value into Notepad or some other temporary location.
 
-	![connection-string][connection-string]
+    ![connection-string][connection-string]
 
 <!--Image references-->
 
@@ -37,6 +37,8 @@
 [connection-string]: ./media/service-bus-create-namespace-portal/connection-string.png
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->
-[Azure ポータル]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 
-<!---HONumber=AcomDC_0921_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

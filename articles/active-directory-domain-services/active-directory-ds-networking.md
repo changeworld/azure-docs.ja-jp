@@ -1,113 +1,118 @@
 <properties
-	pageTitle="Azure AD Domain Services: ネットワーク ガイドライン | Microsoft Azure"
-	description="Azure Active Directory Domain Services のネットワークに関する考慮事項"
-	services="active-directory-ds"
-	documentationCenter=""
-	authors="mahesh-unnikrishnan"
-	manager="stevenpo"
-	editor="curtand"/>
+    pageTitle="Azure AD Domain Services: Networking guidelines | Microsoft Azure"
+    description="Networking considerations for Azure Active Directory Domain Services"
+    services="active-directory-ds"
+    documentationCenter=""
+    authors="mahesh-unnikrishnan"
+    manager="stevenpo"
+    editor="curtand"/>
 
 <tags
-	ms.service="active-directory-ds"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/20/2016"
-	ms.author="maheshu"/>
-
-# Azure AD Domain Services のネットワークに関する考慮事項
-
-## Azure 仮想ネットワークを選択する方法
-次のガイドラインは、Azure AD Domain Services で使用する仮想ネットワークを選択する際に役立ちます。
-
-### Azure 仮想ネットワークの種類
-
-- クラシック Azure 仮想ネットワークで Azure AD Domain Services を有効にすることができます。
-
-- Azure AD Domain Services は、**Azure Resource Manager を使用して作成された仮想ネットワークでは有効にできません**。
-
-- Resource Manager ベースの仮想ネットワークを、Azure AD Domain Services が有効になっているクラシック仮想ネットワークに接続できます。その後、Resource Manager ベースの仮想ネットワークでは Azure AD Domain Services を使用できます。
-
-- **リージョン仮想ネットワーク**: 既存の仮想ネットワークを使用する予定がある場合は、リージョン仮想ネットワークであることを確認してください。
-
-    - 従来のアフィニティ グループ機構を使った仮想ネットワークは、Azure AD ドメイン サービスでは使用できません。
-
-	- Azure AD Domain Services を使用するには、[従来の仮想ネットワークをリージョン仮想ネットワークに移行してください](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
+    ms.service="active-directory-ds"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/20/2016"
+    ms.author="maheshu"/>
 
 
-### 仮想ネットワークの Azure リージョン
+# <a name="networking-considerations-for-azure-ad-domain-services"></a>Networking considerations for Azure AD Domain Services
 
-- Azure AD Domain Services の管理対象ドメインは、サービスを有効にすることを選択した仮想ネットワークと同じ Azure リージョンにデプロイされます。
+## <a name="how-to-select-an-azure-virtual-network"></a>How to select an Azure virtual network
+The following guidelines help you select a virtual network to use with Azure AD Domain Services.
 
-- Azure AD Domain Services でサポートされている Azure リージョンの仮想ネットワークを選択します。
+### <a name="type-of-azure-virtual-network"></a>Type of Azure virtual network
 
-- Azure AD Domain Services を使用できる Azure リージョンを確認するには、[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services/)に関するページを参照してください。
+- You can enable Azure AD Domain Services in a classic Azure virtual network.
+
+- Azure AD Domain Services **cannot be enabled in virtual networks created using Azure Resource Manager**.
+
+- You can connect a Resource Manager-based virtual network to a classic virtual network in which Azure AD Domain Services is enabled. Thereafter, you can use Azure AD Domain Services in the Resource Manager-based virtual network.
+
+- **Regional Virtual Networks**: If you plan to use an existing virtual network, ensure that it is a regional virtual network.
+
+    - Virtual networks that use the legacy affinity groups mechanism cannot be used with Azure AD Domain Services.
+
+    - To use Azure AD Domain Services, [migrate legacy virtual networks to regional virtual networks](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
 
 
-### 仮想ネットワークの要件
+### <a name="azure-region-for-the-virtual-network"></a>Azure region for the virtual network
 
-- **Azure ワークロードへの近さ**: Azure AD Domain Services にアクセスする必要のある仮想マシンを現在ホストしている (または今後ホストする予定の) 仮想ネットワークを選択します。
+- Your Azure AD Domain Services managed domain is deployed in the same Azure region as the virtual network you choose to enable the service in.
 
-- **カスタムまたは持ち込みの DNS サーバー**: 仮想ネットワーク用にカスタムの DNS サーバーが構成されていないことを確認します。
+- Select a virtual network in an Azure region supported by Azure AD Domain Services.
 
-- **同じドメイン名を持つ既存のドメイン**: 仮想ネットワークで使用できるドメインと同じ名前の既存のドメインがないことを確認します。たとえば、選択した仮想ネットワークで既に利用可能な "contoso.com" という名前のドメインがあると仮定します。その後、その仮想ネットワークでこれと同じドメイン名 (つまり "contoso.com") で、Azure AD Domain Services の管理対象ドメインを有効にしようとします。Azure AD Domain Services を有効にしようとすると、エラーが発生します。このエラーの原因は、仮想ネットワークのドメイン名で名前が競合していることにあります。この場合、Azure AD ドメイン サービスの管理対象ドメインを設定するには、別の名前を使用する必要があります。または、既存のドメインのプロビジョニングを解除してから、Azure AD ドメイン サービスの有効化に進みます。
-
-> [AZURE.WARNING] Domain Services は、有効にした後、別の仮想ネットワークに移動できません。
+- See the [Azure services by region](https://azure.microsoft.com/regions/#services/) page to know the Azure regions in which Azure AD Domain Services is available.
 
 
-## ネットワーク セキュリティ グループとサブネットの設計
-[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md) には、仮想ネットワークの VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
+### <a name="requirements-for-the-virtual-network"></a>Requirements for the virtual network
 
-> [AZURE.NOTE] **Azure AD Domain Services は、Azure 仮想ネットワーク内の別の専用サブネットにデプロイします。この専用サブネットに NSG を適用しないでください。仮想ネットワークのゲートウェイ サブネットでは Azure AD Domain Services を有効にしないでください。**
+- **Proximity to your Azure workloads**: Select the virtual network that currently hosts/will host virtual machines that need access to Azure AD Domain Services.
+
+- **Custom/bring-your-own DNS servers**: Ensure that there are no custom DNS servers configured for the virtual network.
+
+- **Existing domains with the same domain name**: Ensure that you do not have an existing domain with the same domain name available on that virtual network. For instance, assume you have a domain called 'contoso.com' already available on the selected virtual network. Later, you try to enable an Azure AD Domain Services managed domain with the same domain name (that is 'contoso.com') on that virtual network. You encounter a failure when trying to enable Azure AD Domain Services. This failure is due to name conflicts for the domain name on that virtual network. In this situation, you must use a different name to set up your Azure AD Domain Services managed domain. Alternately, you can de-provision the existing domain and then proceed to enable Azure AD Domain Services.
+
+> [AZURE.WARNING] You cannot move Domain Services to a different virtual network after you have enabled the service.
+
+
+## <a name="network-security-groups-and-subnet-design"></a>Network Security Groups and subnet design
+[Network security group (NSG)](../virtual-network/virtual-networks-nsg.md) contains a list of Access Control List (ACL) rules that allow or deny network traffic to your VM instances in a Virtual Network. NSGs can be associated with either subnets or individual VM instances within that subnet. When an NSG is associated with a subnet, the ACL rules apply to all the VM instances in that subnet. In addition, traffic to an individual VM can be restricted further by associating an NSG directly to that VM.
+
+> [AZURE.NOTE] **Deploy Azure AD Domain Services to a separate dedicated subnet within your Azure virtual network. Do not apply NSG to that dedicated subnet. Do not enable Azure AD Domain Services in the gateway subnet of your virtual network.**
 
 ![Recommended subnet design](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
-> [AZURE.WARNING] Azure AD Domain Services が有効になっているサブネットに NSG を関連付けると、Microsoft によるドメインのサービス提供および管理機能が中断される可能性があります。さらに、Azure AD テナントと管理対象ドメインの間の同期が中断されます。**SLA は、Azure AD Domain Services が有効になっているサブネットに NSG が適用されているデプロイには適用されません。**
+> [AZURE.WARNING] When you associate an NSG with a subnet in which Azure AD Domain Services is enabled, you may disrupt Microsoft's ability to service and manage the domain. Additionally, synchronization between your Azure AD tenant and your managed domain is disrupted. **The SLA does not apply to deployments where an NSG has been applied to the subnet in which Azure AD Domain Services is enabled.**
 
 
-## ネットワーク接続
-Azure AD Domain Services の管理対象ドメインは、Azure の 1 つのクラシック仮想ネットワーク内のみで有効にすることができます。Azure Resource Manager を使用して作成された仮想ネットワークはサポートされていません。
+## <a name="network-connectivity"></a>Network connectivity
+An Azure AD Domain Services managed domain can be enabled only within a single classic virtual network in Azure. Virtual networks created using Azure Resource Manager are not supported.
 
-### Azure ネットワークを接続するためのシナリオ
-次のいずれかのデプロイ シナリオで Azure 仮想ネットワークを接続して管理対象ドメインを使用します。
+### <a name="scenarios-for-connecting-azure-networks"></a>Scenarios for connecting Azure networks
+Connect Azure virtual networks to use the managed domain in any of the following deployment scenarios:
 
-#### 複数の Azure クラシック仮想ネットワークで管理対象ドメインを使用する
-Azure AD Domain Services を有効にした Azure クラシック仮想ネットワークには他の Azure クラシック仮想ネットワークを接続できます。この接続により、ワークロードが他の仮想ネットワークにデプロイされている管理対象ドメインを使用できます。
+#### <a name="use-the-managed-domain-in-more-than-one-azure-classic-virtual-network"></a>Use the managed domain in more than one Azure classic virtual network
+You can connect other Azure classic virtual networks to the Azure classic virtual network in which you have enabled Azure AD Domain Services. This connection enables you to use the managed domain with your workloads deployed in other virtual networks.
 
 ![Classic virtual network connectivity](./media/active-directory-domain-services-design-guide/classic-vnet-connectivity.png)
 
-#### Resource Manager ベースの仮想ネットワークで管理対象ドメインを使用する
-Resource Manager ベースの仮想ネットワークを、Azure AD Domain Services を有効にした Azure クラシック仮想ネットワークに接続できます。この接続により、ワークロードが Resource Manager ベースの仮想ネットワークにデプロイされている管理対象ドメインを使用できます。
+#### <a name="use-the-managed-domain-in-a-resource-manager-based-virtual-network"></a>Use the managed domain in a Resource Manager-based virtual network
+You can connect a Resource Manager-based virtual network to the Azure classic virtual network in which you have enabled Azure AD Domain Services. This connection enables you to use the managed domain with your workloads deployed in the Resource Manager-based virtual network.
 
 ![Resource Manager to classic virtual network connectivity](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
 
 
-### ネットワーク接続オプション
+### <a name="network-connection-options"></a>Network connection options
 
-- **サイト間 VPN 接続を使用した VNet 間接続**: 仮想ネットワーク間 (VNet 間) の接続は、仮想ネットワークをオンプレミスのサイトの場所に接続することと似ています。どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。
+- **VNet-to-VNet connections using site-to-site VPN connections**: Connecting a virtual network to another virtual network (VNet-to-VNet) is similar to connecting a virtual network to an on-premises site location. Both connectivity types use a VPN gateway to provide a secure tunnel using IPsec/IKE.
 
-	![Virtual network connectivity using VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
+    ![Virtual network connectivity using VPN Gateway](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
-    [関連情報 - VPN ゲートウェイを使用した仮想ネットワークの接続](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
+    [More information - connect virtual networks using VPN gateway](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 
 
-- **仮想ネットワーク ピアリングを使用した VNet 間接続**: 仮想ネットワーク ピアリングとは、同じリージョンに存在する 2 つの仮想ネットワークを Azure のバックボーン ネットワークを介して接続する機構です。ピアリングされた 2 つの仮想ネットワークは、あらゆる接続において、見かけ上 1 つのネットワークとして機能します。これらの仮想ネットワークはあくまで個別のリソースとして管理されますが、そこに存在する仮想マシンは互いに、プライベート IP アドレスを使用して直接通信を行うことができます。
+- **VNet-to-VNet connections using virtual network peering**: Virtual network peering is a mechanism that connects two virtual networks in the same region through the Azure backbone network. Once peered, the two virtual networks appear as one for all connectivity purposes. They are still managed as separate resources, but virtual machines in these virtual networks can communicate with each other directly by using private IP addresses.
 
     ![Virtual network connectivity using peering](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
-	[関連情報 - 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
+    [More information - virtual network peering](../virtual-network/virtual-network-peering-overview.md)
 
 
 
 <br>
 
-## 関連コンテンツ
+## <a name="related-content"></a>Related Content
 
-- [Azure 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
+- [Azure virtual network peering](../virtual-network/virtual-network-peering-overview.md)
 
-- [クラシック デプロイ モデルで VNet 対 VNet 接続を構成する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
+- [Configure a VNet-to-VNet connection for the classic deployment model](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 
-- [Azure ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
+- [Azure Network Security Groups](../virtual-network/virtual-networks-nsg.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

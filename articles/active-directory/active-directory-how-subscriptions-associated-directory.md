@@ -1,137 +1,138 @@
 <properties
-	pageTitle="Azure サブスクリプションを Azure Active Directory に関連付ける方法 | Microsoft Azure"
-	description="Microsoft Azure へのサインインのほか、Azure サブスクリプションと Azure Active Directory の関係などの関連する問題。"
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="femila"
-	editor=""/>
+    pageTitle="How Azure subscriptions are associated with Azure Active Directory | Microsoft Azure"
+    description="Signing in to Microsoft Azure and related issues, such as the relationship between an Azure subscription and Azure Active Directory."
+    services="active-directory"
+    documentationCenter=""
+    authors="curtand"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/15/2016"
-	ms.author="curtand"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/15/2016"
+    ms.author="curtand"/>
 
-# Azure サブスクリプションを Azure Active Directory に関連付ける方法
 
-このトピックでは、Microsoft Azure へのサインインのほか、Azure サブスクリプションと Azure Active Directory (Azure AD) の関係など、関連する問題について説明します。
+# <a name="how-azure-subscriptions-are-associated-with-azure-active-directory"></a>How Azure subscriptions are associated with Azure Active Directory
 
-## サインインに使用できるアカウント
-サインインに使用できるアカウントから始めます。Microsoft アカウント (旧称 Microsoft Live ID) と、Azure AD に格納されるアカウントである職場または学校アカウントの 2 種類があります。
+This topic covers information about signing in to Microsoft Azure and related issues, such as the relationship between an Azure subscription and Azure Active Directory (Azure AD).
 
- Microsoft アカウント | Azure AD アカウント
-	------------- | -------------
-Microsoft によって実行されるコンシューマー ID システム | Microsoft によって実行されるビジネス ID システム
-Hotmail や MSN などのコンシューマー指向サービスに対する認証 | Office 365 などのビジネス指向サービスに対する認証
-コンシューマーは、電子メールにサインアップするときなどに、専用の Microsoft アカウントを作成します | 企業および組織は、専用の職場または学校アカウントを作成および管理します
-ID が作成されて Microsoft アカウント システムに格納されます | Azure または Office 365 などの他のサービスを使用して ID が作成され、組織に割り当てられている Azure AD インスタンスに格納されます
+## <a name="accounts-that-you-can-use-to-sign-in"></a>Accounts that you can use to sign in
+Let’s start with the accounts that you can use to sign in. There are two types: a Microsoft account (formerly known as Microsoft Live ID) and a work or school account, which is an account stored in Azure AD.
 
-最初、Azure には Microsoft アカウント ユーザーのみがアクセスできましたが、現在では*両方の*システムのユーザーがアクセスできます。これは、すべての Azure プロパティが認証のために Azure AD を信頼し、Azure AD が組織のユーザーを認証し、Azure AD が Microsoft アカウント コンシューマー ID システムを信頼してコンシューマー ユーザーを認証するフェデレーション関係を作成することによって実現されました。その結果、Azure AD は「ゲスト」 Microsoft アカウントだけでなく「ネイティブ」 Azure AD アカウントも認証できます。
+ Microsoft account  | Azure AD account
+    ------------- | -------------
+The consumer identity system run by Microsoft | The business identity system run by Microsoft
+Authentication to services that are consumer-oriented, such as Hotmail and MSN | Authentication to services that are business-oriented, such as Office 365
+Consumers create their own Microsoft accounts, such when they sign up for email | Companies and organizations create and manage their own work or school accounts
+Identities are created and stored in the Microsoft account system | Identities are created by using Azure or another service such as Office 365, and they are stored in an Azure AD instance assigned to the organization
 
-たとえば、Microsoft アカウントを使用するユーザーは Azure クラシック ポータルにサインインします。
+Although Azure originally allowed access only by Microsoft account users, it now allows access by users from *both* systems. This was done by having all the Azure properties trust Azure AD for authentication, having Azure AD authenticate organizational users, and by creating a federation relationship where Azure AD trusts the Microsoft account consumer identity system to authenticate consumer users. As a result, Azure AD is able to authenticate “guest” Microsoft accounts as well as “native” Azure AD accounts.
+
+For example, here a user with a Microsoft account signs in to the Azure classic portal.
 
 > [AZURE.NOTE]
-Azure クラシック ポータルにサインインするには、msmith@hotmail.com に Azure のサブスクリプションが必要です。アカウントは、サービス管理者またはサブスクリプションの共同管理者である必要があります。
+> To sign in to the Azure classic portal, msmith@hotmail.com must have a subscription to Azure. The account must be either a Service administrator or a co-administrator of the subscription.
 
 ![][1]
 
-この Hotmail アドレスはコンシューマー アカウントであるため、サインインは Microsoft アカウント コンシューマー ID システムによって認証されます。Azure AD の ID システムは、Microsoft アカウント システムによって行われた認証を信頼し、Azure サービスにアクセスするためのトークンを発行します。
+Because this Hotmail address is a consumer account, the sign in is authenticated by the Microsoft account consumer identity system. The Azure AD identity system trusts the authentication done by the Microsoft account system and will issue a token to access Azure services.
 
-## Azure サブスクリプションが Azure AD に関連付けられる方法
+## <a name="how-an-azure-subscription-is-related-to-azure-ad"></a>How an Azure subscription is related to Azure AD
 
-すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。サブスクリプションが信頼しているディレクトリは、[設定] タブで確認できます。[サブスクリプションの設定を編集](active-directory-understanding-resource-access.md)して、信頼するディレクトリを変更できます。
+Every Azure subscription has a trust relationship with an Azure AD instance. This means that it trusts that directory to authenticate users, services, and devices. Multiple subscriptions can trust the same directory, but a subscription trusts only one directory. You can see which directory is trusted by your subscription under the Settings tab. You can [edit the subscription settings](active-directory-understanding-resource-access.md) to change which directory it trusts.
 
-このサブスクリプションとディレクトリの間の信頼関係は、サブスクリプションと Azure 内の他のすべてのリソース (Web サイト、データベースなど) の間の関係と異なります。後者は、サブスクリプションの子リソースにより近いものです。サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられたこれらの他のリソースへのアクセスも停止します。一方、ディレクトリは Azure 内に残っており、別のサブスクリプションをそのディレクトリと関連付けて、ディレクトリ ユーザーの管理を継続できます。
+This trust relationship that a subscription has with a directory is unlike the relationship that a subscription has with all other resources in Azure (websites, databases, and so on), which are more like child resources of a subscription. If a subscription expires, then access to those other resources associated with the subscription also stops. But the directory remains in Azure, and you can associate another subscription with that directory and continue to manage the directory users.
 
-同様に、サブスクリプションに表示される Azure AD 拡張機能は、Azure クラシック ポータルの他の拡張機能のように機能しません。Azure クラシック ポータルの他の拡張機能の有効範囲は Azure サブスクリプションです。Azure AD 拡張機能に表示されるものは、サブスクリプションに応じて変わりません。サインインしているユーザーに基づくディレクトリだけが表示されます。
+Similarly, the Azure AD extension you see in your subscription doesn’t work like the other extensions in the Azure classic portal. Other extensions in the Azure classic portal are scoped to the Azure subscription. What you see in the Azure AD extension does not vary based on subscription – it shows only directories based on the signed-in user.
 
-すべてのユーザーにはそのユーザーを認証する 1 つのホーム ディレクトリがありますが、ユーザーは他のディレクトリのゲストになることもできます。Azure AD 拡張機能では、ユーザー アカウントがメンバーであるすべてのディレクトリが表示されます。アカウントがメンバーではないディレクトリは表示されません。ディレクトリは、Azure AD の職場または学校アカウントに対して、または Microsoft アカウント ユーザーに対して (Azure AD は Microsoft アカウント システムとフェデレーションされているため)、トークンを発行できます。
+All users have a single home directory which authenticates them, but they can also be guests in other directories. In the Azure AD extension, you will see every directory your user account is a member of. Any directory that your account is not a member of will not appear. A directory can issue tokens for work or school accounts in Azure AD or for Microsoft account users (because Azure AD is federated with the Microsoft account system).
 
-次の図では、Contoso の職場アカウントを使用してサインアップした後の Michael Smith のサブスクリプションを示します。
+This diagram shows a subscription for Michael Smith after he signed up by using a work account for Contoso.
 
 ![][2]
 
-## サブスクリプションとディレクトリを管理する方法
-Azure サブスクリプションの管理ロールは、Azure サブスクリプションに関連付けられているリソースを管理します。サブスクリプションの管理に関するこれらのロールとベスト プラクティスについては、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
+## <a name="how-to-manage-a-subscription-and-a-directory"></a>How to manage a subscription and a directory
+The administrative roles for an Azure subscription manage resources tied to the Azure subscription. These roles and the best practices for managing your subscription are covered at [Assigning administrator roles in Azure Active Directory](active-directory-assign-admin-roles.md).
 
-既定では、サインアップすると、サービス管理者ロールを割り当てられます。他のユーザーが同じサブスクリプションを使用してサインインし、サービスにアクセスする必要がある場合は、共同管理者として追加できます。サービス管理者および共同管理者になることができるのは、Azure サブスクリプションが関連付けられているディレクトリの Microsoft アカウントか、職場または学校アカウントです。
+By default, you are assigned the Service Administrator role when you sign up. If others need to sign in and access services using the same subscription, you can add them as co-administrators. The Service Administrator and co-administrators can be either Microsoft accounts or work or school accounts from the directory that the Azure subscription is associated with.
 
-Azure AD には、ディレクトリおよび ID 関連の機能を管理するために異なる管理ロールのセットがあります。たとえば、ディレクトリのグローバル管理者は、ディレクトリにユーザーとグループを追加でき、ユーザーに多要素認証を要求できます。ディレクトリを作成するユーザーはグローバル管理者ロールに割り当てられ、他のユーザーに管理者ロールを割り当てることができます。
+Azure AD has a different set of administrative roles to manage the directory and identity-related features. For example, the global administrator of a directory can add users and groups to the directory, or require multifactor authentication for users. A user who creates a directory is assigned to the global administrator role and they can assign administrator roles to other users.
 
-サブスクリプション管理者と同様、Azure AD 管理ロールには Microsoft アカウントか、職場または学校アカウントを使用できます。Azure AD 管理ロールは、Office 365 や Microsoft Intune などの他のサービスによっても使用されます。詳細については、「[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
+As with subscription administrators, the Azure AD administrative roles can be either Microsoft accounts or work or school accounts. Azure AD administrative roles are also used by other services such as Office 365 and Microsoft Intune. For more information, see [Assigning administrator roles](active-directory-assign-admin-roles.md).
 
-ここで重要なポイントは、Azure サブスクリプション管理者と Azure AD ディレクトリ管理者は 2 つの異なる概念であるということです。Azure サブスクリプション管理者は、Azure のリソースを管理でき、Azure クラシック ポータルで Active Directory 拡張機能を表示できます (Azure クラシック ポータルは Azure のリソースであるため)。ディレクトリ管理者は、ディレクトリ内のプロパティを管理できます。
+But the important point here is that Azure subscription admins and Azure AD directory admins are two separate concepts. Azure subscription admins can manage resources in Azure and can view the Active Directory extension in the Azure classic portal (because the Azure classic portal is an Azure resource). Directory admins can manage properties in the directory.
 
-1 人のユーザーが両方のロールになることができますが、これは必須ではありません。ユーザーをディレクトリ グローバル管理者ロールに割り当てることはできますが、Azure サブスクリプションのサービス管理者または共同管理者として割り当てることはできません。サブスクリプションの管理者にならなければ、このユーザーは Azure クラシック ポータルにサインインできません。ただし、そのユーザーは Azure AD PowerShell や Office 365 管理センターなどの他のツールを使用して、ディレクトリ管理タスクを実行できます。
+A person can be in both roles but this isn’t required. A user can be assigned to the directory global administrator role but not be assigned as Service administrator or co-administrator of an Azure subscription. Without being an administrator of the subscription, this user cannot sign in to the Azure classic portal. But the user could perform directory administration tasks using other tools such as Azure AD PowerShell or Office 365 Admin Center.
 
-## 現在のユーザー アカウントでディレクトリを管理できない理由
+## <a name="why-can't-i-manage-the-directory-with-my-current-user-account?"></a>Why can't I manage the directory with my current user account?
 
-ユーザーが Azure サブスクリプションにサインアップする前に職場または学校アカウントを使用して Azure クラシック ポータルにサインインしようとする場合があります。そのような場合、ユーザーはそのアカウントにはサブスクリプションがないというメッセージを受け取ります。メッセージには、無料評価版サブスクリプションを開始するためのリンクが含まれます。
+Sometimes a user may try to sign in to the Azure classic portal using a work or school account prior to signing up for an Azure subscription. In this case, the user will receive a message that there is no subscription for that account. The message will include a link to start a free trial subscription.
 
-無料試用版にサインアップした後は、ユーザーは Azure クラシック ポータルで組織のディレクトリを見ることはできますが、ディレクトリ グローバル管理者ではないため、ディレクトリを管理することはできません (つまり、ユーザーの追加、既存ユーザーのプロパティの編集はできません)。サブスクリプションにより、ユーザーは Azure クラシック ポータルを使用して Azure Active Directory 拡張機能を表示することはできますが、ディレクトリを管理するにはグローバル管理者の追加権限が必要です。
+After signing up for the free trial, the user will see the directory for the organization in the Azure classic portal but be unable to manage it (that is, be unable to add users, or edit any existing user properties) because the user is not a directory global administrator. The subscription allows the user to use the Azure classic portal and see the Azure Active Directory extension, but the additional permissions of a global administrator are needed to manage the directory.
 
-## Microsoft アカウントを使用して作成された Azure サブスクリプションの、職場または学校アカウントを使用した管理
+## <a name="using-your-work-or-school-account-to-manage-an-azure-subscription-that-was-created-by-using-a-microsoft-account"></a>Using your work or school account to manage an Azure subscription that was created by using a Microsoft account
 
-ベスト プラクティスでは、[組織として Azure にサインアップ](sign-up-organization.md)し、職場または学校アカウントを使用して Azure のリソースを管理すｒ必要があります。職場または学校アカウントが推奨されるのは、それらを発行した組織によって一元的に管理でき、Microsoft アカウントより多くの機能があり、Azure AD によって直接認証されるためです。同じアカウントが、企業や組織に提供される Office 365 や Microsoft Intune などの他の Microsoft オンライン サービスへのアクセスを提供します。既に他のプロパティで使用するアカウントがある場合は、Azure でその同じアカウントを使用できます。また、これらのプロパティに対する Active Directory インスタンスが既にあって、それを Azure サブスクリプションで信頼することもできます。
+As a best practice, you should [sign up for Azure as an organization](sign-up-organization.md) and use a work or school account to manage resources in Azure. Work or school accounts are preferred because they can be centrally managed by the organization that issued them, they have more features than Microsoft accounts, and they are directly authenticated by Azure AD. The same account provides access to other Microsoft online services that are offered to businesses and organizations, such as Office 365 or Microsoft Intune. If you already have an account that you use with those other properties, you likely want to use that same account with Azure. You will also already have an Active Directory instance backing those properties that you will want your Azure subscription to trust.
 
-職場または学校アカウントは、Microsoft アカウントよりも多くの方法で管理することもできます。たとえば、管理者は職場または学校アカウントのパスワードをリセットでき、多要素認証を要求できます。
+Work or school accounts can also be managed in more ways than a Microsoft account. For example, an administrator can reset the password of an a work or school account, or require multifactor authentication for it.
 
-場合によっては、組織のユーザーがコンシューマー Microsoft アカウントの Azure サブスクリプションに関連付けられているリソースを管理できます。サブスクリプションまたはディレクトリの管理を異なるアカウントに移行する方法の詳細については、「[Azure での Office 365 サブスクリプションのディレクトリの管理](#manage-the-directory-for-your-office-365-subscription-in-azure)」を参照してください。
+In some cases, you may want a user from your organization to be able to manage resources that are associated with an Azure subscription for a consumer Microsoft account. For more information about how to transition to have different accounts manage subscriptions or directories, see [Manage the directory for your Office 365 subscription in Azure](#manage-the-directory-for-your-office-365-subscription-in-azure).
 
 
-## Microsoft アカウントに会社の電子メールを使用していた場合のサインイン
+## <a name="signing-in-when-you-used-your-work-email-for-your-microsoft-account"></a>Signing in when you used your work email for your Microsoft account
 
-過去のある時点で、ユーザー ID として仕事の電子メールを使用してコンシューマー Microsoft アカウントを作成した場合、Microsoft Azure アカウント システムまたは Microsoft アカウント システムのいずれかを選択するよう求めるページが表示される可能性があります。
+If at some point of time in the past you created a consumer Microsoft account using your work email as a user identifier, you may see a page asking you to select from either the Microsoft Azure Account system or the Microsoft Account system.
 
 ![][3]
 
-Azure AD とコンシューマー Microsoft アカウント システムに同じ名前のユーザー アカウントがあります。使用する Azure サブスクリプションに関連付けるアカウントを選択する必要があります。このユーザーに対してサブスクリプションが存在しないというエラーが表示される場合は、正しくないオプションを選択した可能性があります。サインアウトして、もう一度やり直してください。サインインを妨げる可能性のあるエラーの詳細については、「[Troubleshooting "We were unable to find any subscriptions associated with your account" errors ("アカウントに関連付けられたサブスクリプションはありませんでした" というエラーのトラブルシューティング)](https://social.msdn.microsoft.com/Forums/ja-JP/f952f398-f700-41a1-8729-be49599dd7e2/troubleshooting-we-were-unable-to-find-any-subscriptions-associated-with-your-account-errors-in?forum=windowsazuremanagement)」を参照してください。
+You have user accounts with the same name, one in Azure AD and the other in the consumer Microsoft account system. You should pick the account that is associated with the Azure subscription you want to use. If you get an error saying a subscription does not exist for this user, you likely just chose the wrong option. Sign out and try again. For more information about errors that can prevent sign in, see [Troubleshooting "We were unable to find any subscriptions associated with your account" errors](https://social.msdn.microsoft.com/Forums/en-US/f952f398-f700-41a1-8729-be49599dd7e2/troubleshooting-we-were-unable-to-find-any-subscriptions-associated-with-your-account-errors-in?forum=windowsazuremanagement).
 
-## Azure での Office 365 サブスクリプションのディレクトリの管理
+## <a name="manage-the-directory-for-your-office-365-subscription-in-azure"></a>Manage the directory for your Office 365 subscription in Azure
 
-Azure にサインアップする前に Office 365 にサインアップしたものとします。Office 365 サブスクリプションのディレクトリを Azure クラシック ポータルで管理することになりました。その場合、Azure にサインアップしているかどうかに応じた 2 つの方法があります。
+Let's say you signed up for Office 365 before you sign up for Azure. Now you want to manage the directory for the Office 365 subscription in the Azure classic portal. There are two ways to do this, depending on whether you have signed up for Azure or you have not.
 
-### Azure のサブスクリプションがない場合
+### <a name="i-do-not-have-a-subscription-for-azure"></a>I do not have a subscription for Azure
 
-この場合は、Office 365 へのサインインに使用している会社または学校のアカウントを使用して、[Azure にサインアップする](sign-up-organization.md)ことだけが必要です。Office 365 アカウントからの関連情報が、Azure のサインアップ フォームに事前に入力されます。アカウントは、サブスクリプションのサービス管理者ロールに割り当てられます。
+In this case, just [sign up for Azure](sign-up-organization.md) using the same work or school account that you use to sign in to Office 365. Relevant information from the Office 365 account will be prepopulated in the Azure sign-up form. Your account will be assigned to the Service Administrator role of the subscription.  
 
-### Microsoft アカウントを使用する Azure のサブスクリプションがある場合
+### <a name="i-do-have-a-subscription-for-azure-using-my-microsoft-account"></a>I do have a subscription for Azure using my Microsoft account
 
-職場または学校アカウントを使用して Office 365 にサインアップした後、Microsoft アカウントを使用して Azure にサインアップした場合は、2 つのディレクトリがあります。1 つは職場または学校用で、もう 1 つは Azure にサインアップしたときに作成された既定のディレクトリです。
+If you signed up for Office 365 using a work or school account and then signed up for Azure using a Microsoft account, then you have two directories: one for your work or school and a Default directory that was created when you signed up for Azure.
 
-Azure クラシック ポータルで両方のディレクトリを管理するには、以下の手順を実行します。
+To manage both of the directories in the Azure classic portal, complete these steps.
 
 > [AZURE.NOTE]
-この手順は、ユーザーが Microsoft アカウントでサインインしているときにのみ実行できます。ユーザーが職場または学校アカウントでサインインしている場合は、ホーム ディレクトリ (つまり、職場または学校アカウントが格納されていて、職場または学校によって所有されているディレクトリ) によってのみアカウントを認証できるので、**[既存のディレクトリの使用]** オプションは使用できません。
+> These steps can only be completed while a user is signed in with a Microsoft account. If the user is signed in with a work or school account, the option **Use existing directory** is not available because a work or school account can be authenticated only by its home directory (that is, the directory where the work or school account is stored, and which is owned by the work or school).
 
-1. Microsoft アカウントを使用して、Azure クラシック ポータルにサインインします。
+1. Sign in to the Azure classic portal using your Microsoft account.
 
-2. **[新規]**、**[App Services]**、**[Active Directory]**、**[ディレクトリ]**、**[カスタム作成]** の順にクリックします。
+2. Click **New** > **App services** > **Active Directory** > **Directory** > **Custom Create**.
 
-3. **[既存のディレクトリの使用]** をクリックして、**[サインアウトする準備ができました]** をオンにし、チェック マークをクリックしてアクションを完了します。
+3. Click **Use existing directory** and check **I am ready to be signed out now** and click the check mark to complete the action.
 
-4. 職場または学校のディレクトリのグローバル管理者権限を持つアカウントを使用して、Azure クラシック ポータルにサインインします。
+4. Sign in to the Azure classic portal using an account that has global admin rights for the work or school directory.
 
-5. **[Azure で Contoso ディレクトリを使用しますか]** と表示されたら、**[続行]** をクリックします。
+5. When prompted to **Use the Contoso directory with Azure?**, and click **continue**.
 
-6. **[今すぐサインアウト]** をクリックします。
+6. Click **Sign out now**.
 
-7. Microsoft アカウントを使用して、Azure クラシック ポータルに再度サインインします。両方のディレクトリが Active Directory 拡張機能に表示されます。
+7. Sign back in to the Azure classic portal using your Microsoft account. Both directories will appear in the Active Directory extension.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-- Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください。
+- To learn more about how to change administrators for an Azure subscription, see [How to add or change Azure administrator roles](../billing-add-change-azure-subscription-administrator.md)
 
-- Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください。
+- To learn more about how resource access is controlled in Microsoft Azure, see [Understanding resource access in Azure](active-directory-understanding-resource-access.md)
 
-- Azure AD で役割を割り当てる方法の詳細については、「[Azure Active Directory の管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
+- For more information on how to assign roles in Azure AD, see [Assigning administrator roles in Azure Active Directory](active-directory-assign-admin-roles.md)
 
-- [Azure への組織としてのサインアップ](sign-up-organization.md)
+- [Sign up for Azure as an organization](sign-up-organization.md)
 
 
 <!--Image references-->
@@ -139,4 +140,8 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 [2]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_OrgAccountSubscription.png
 [3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

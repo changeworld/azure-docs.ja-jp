@@ -1,184 +1,186 @@
 <properties
-	pageTitle="[Stretch Database を有効にする] ウィザードを実行する方法の概要 | Microsoft Azure"
-	description="[Stretch Database を有効にする] ウィザードを実行し、Stretch Database のデータベースを設定する方法について説明します。"
-	services="sql-server-stretch-database"
-	documentationCenter=""
-	authors="douglaslMS"
-	manager=""
-	editor=""/>
+    pageTitle="Get started by running the Enable Database for Stretch Wizard | Microsoft Azure"
+    description="Learn how to configure a database for Stretch Database by running the Enable Database for Stretch Wizard."
+    services="sql-server-stretch-database"
+    documentationCenter=""
+    authors="douglaslMS"
+    manager=""
+    editor=""/>
 
 <tags
-	ms.service="sql-server-stretch-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="08/05/2016"
-	ms.author="douglasl"/>
+    ms.service="sql-server-stretch-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="08/05/2016"
+    ms.author="douglasl"/>
 
-# [Stretch Database を有効にする] ウィザードを実行する方法の概要
 
-Stretch Database のデータベースを設定するには、[Stretch Database を有効にする] ウィザードを実行します。このトピックでは、ウィザードで入力し、選択する情報について説明します。
+# <a name="get-started-by-running-the-enable-database-for-stretch-wizard"></a>Get started by running the Enable Database for Stretch Wizard
 
-Stretch Database の詳細については、「[Stretch Database](sql-server-stretch-database-overview.md)」を参照してください。
+To configure a database for Stretch Database, run the Enable Database for Stretch Wizard.  This topic describes the info that you have to enter and the choices that you have to make in the wizard.
 
- >   [AZURE.NOTE] 後で Strech Database を無効にする場合、テーブルまたはデータベースの Stretch Database を無効にしても、リモート オブジェクトは削除されないことに注意してください。リモート テーブルまたはリモート データベースを削除する場合は、Microsoft Azure 管理ポータルを使用して削除する必要があります。リモート オブジェクトを手動で削除するまで、Azure のコストが引き続き発生します。
+To learn more about Stretch Database, see [Stretch Database](sql-server-stretch-database-overview.md).
 
-## ウィザードを起動する
+ >   [AZURE.NOTE] Later, if you disable Stretch Database, remember that disabling Stretch Database for a table or for a database does not delete the remote object. If you want to delete the remote table or the remote database, you have to drop it by using the Azure management portal. The remote objects continue to incur Azure costs until you delete them manually. 
 
-1.  SQL Server Management Studio のオブジェクト エクスプローラーで、Stretch を有効にするデータベースを選択します。
+## <a name="launch-the-wizard"></a>Launch the wizard
 
-2.  右クリックして **[タスク]** を選択し、**[Stretch]** を選択し、**[有効化]** を選択してウィザードを起動します。
+1.  In SQL Server Management Studio, in Object Explorer, select the database on which you want to enable Stretch.
 
-## <a name="Intro"></a>はじめに
-ウィザードの目的と前提条件を確認します。
+2.  Right\-click and select **Tasks**, and then select **Stretch**, and then select **Enable** to launch the wizard.
 
-重要な前提条件を以下に示します。
+## <a name="<a-name="intro"></a>introduction"></a><a name="Intro"></a>Introduction
+Review the purpose of the wizard and the prerequisites.
 
--   データベースの設定を変更するため、管理者である必要があります。
--   Microsoft Azure サブスクリプションを持っている必要があります。
--   SQL Server がリモート Azure サーバーと通信できる必要があります。
+The important prerequisites include the following:
 
-![Stretch Database ウィザードの概要ページ][StretchWizardImage1]
+-   You have to be an administrator to change database settings.
+-   You have to have a Microsoft Azure subscription.
+-   Your SQL Server has to be able to communicate with the remote Azure server.
 
-## <a name="Tables"></a>テーブルを選択する
-Stretch を有効にするテーブルを選択します。
+![Introduction page of the Stretch Database wizard][StretchWizardImage1]
 
-行の多いテーブルは、並べ替えられた一覧の上部に表示されます。ウィザードでは、テーブルの一覧を表示する前に、Strech Database で現在サポートされていないデータ型が含まれていないかどうかを分析します。
+## <a name="<a-name="tables"></a>select-tables"></a><a name="Tables"></a>Select tables
+Select the tables that you want to enable for Stretch.
 
-![Stretch データベース ウィザードの [テーブルの選択] ページ][StretchWizardImage2]
+Tables with lots of rows appear at the top of the sorted list. Before the Wizard displays the list of tables, it analyzes them for data types that are not currently supported by Stretch Database.
 
-|分割|説明|
+![Select tables page of the Stretch Database wizard][StretchWizardImage2]
+
+|Column|Description|
 |----------|---------------|
-|(タイトルなし)|選択したテーブルの Stretch を有効にするにはこの列のチェック ボックスを選択します。|
-|**名前**|テーブルの列の名前を指定します。|
-|(タイトルなし)|この列の記号は、選択したテーブルの Stretch の有効化を妨げない警告を表している場合があります。また、テーブルでサポートされないデータ型を使用しているなどの理由により、選択したテーブルの Stretch の有効化を妨げるブロック問題を表している場合もあります。記号の上にマウス カーソルを合わせると、ヒント形式で詳細が表示されます。詳細については、「[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)」を参照してください。|
-|**ストレッチ済み**|テーブルの Stretch が既に有効になっているかどうかを示します。|
-|**移行**|テーブル全体を移行することも (**[テーブル全体]**)、テーブル内の既存の列に対するフィルターを指定することもできます。移行する行を選択するフィルター関数を変更する場合は、ウィザードを終了した後、ALTER TABLE ステートメントを実行してフィルター関数を指定します。フィルター関数の詳細については、[移行する行の選択におけるフィルター関数の使用](sql-server-stretch-database-predicate-function.md)に関するページを参照してください。関数の適用方法の詳細については、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」または「[ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx)」を参照してください。|
-|**行**|テーブルの行数を指定します。|
-|**サイズ (KB)**|テーブルのサイズを KB 単位で指定します。|
+|(no title)|Check the check box in this column to enable the selected table for Stretch.|
+|**Name**|Specifies the name of the column in the table.|
+|(no title)|A symbol in this column may represent a warning that doesn\'t prevent you from enabling the selected table for Stretch. It may also represent a blocking issue that prevents you from enabling the selected table for Stretch \- for example, because the table uses an unsupported data type. Hover over the symbol to display more info in a tooltip. For more info, see [Limitations for Stretch Database](sql-server-stretch-database-limitations.md).|
+|**Stretched**|Indicates whether the table is already enabled for Stretch.|
+|**Migrate**|You can migrate an entire table (**Entire Table**) or you can specify a filter on an existing column in the table. If you want to use a different filter function to select rows to migrate, run the ALTER TABLE statement to specify the filter function after you exit the wizard. For more info about the filter function, see [Select rows to migrate by using a filter function](sql-server-stretch-database-predicate-function.md). For more info about how to apply the function, see [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md) or [ALTER TABLE (Transact-SQL)](https://msdn.microsoft.com/library/ms190273.aspx).|
+|**Rows**|Specifies the number of rows in the table.|
+|**Size (KB)**|Specifies the size of the table in KB.|
 
-## <a name="Filter"></a>必要に応じて行フィルターを指定する
+## <a name="<a-name="filter"></a>optionally-provide-a-row-filter"></a><a name="Filter"></a>Optionally provide a row filter
 
-フィルター関数を指定して移行する行を選択する場合は、**[テーブルの選択]** ページで次のようにします。
+If you want to provide a filter function to select rows to migrate, do the following things on the **Select tables** page.
 
-1.  **[拡張するテーブルを選択します]** ボックスの一覧で、テーブルの行の **[テーブル全体]** をクリックします。**[拡張する行の選択]** ダイアログ ボックスが表示されます。
+1.  In the **Select the tables you want to stretch** list, click **Entire Table** in the row for the table. The **Select rows to stretch** dialog box opens.
 
     ![Define a filter function][StretchWizardImage2a]
 
-2.  **[拡張する行の選択]** ダイアログ ボックスで、**[行の選択]** を選択します。
+2.  In the **Select rows to stretch** dialog box, select **Choose Rows**.
 
-3.  **[名前]** フィールドに、フィルター関数の名前を入力します。
+3.  In the **Name field**, provide a name for the filter function.
 
-4.  **Where** 句で、テーブルの列を選択し、演算子を選択して値を指定します。
+4.  For the **Where** clause, pick a column from the table, pick an operator, and provide a value.
 
-5. **[確認]** をクリックして関数をテストします。関数がテーブルから結果を返す場合、つまり条件を満たす移行される行がある場合は、テストで **[成功]** と表示されます。
+5. Click **Check** to test the function. If the function returns results from the table - that is, if there are rows to migrate that satisfy the condition - the test reports **Success**.
 
-    >   [AZURE.NOTE] フィルター クエリを表示するテキスト ボックスは、読み取り専用です。テキスト ボックスのクエリを編集することはできません。
+    >   [AZURE.NOTE] The textbox that displays the filter query is read-only. You can't edit the query in the textbox.
 
-6.  [完了] をクリックして **[テーブルの選択]** ページに戻ります。
+6.  Click Done to return to the **Select tables** page.
 
-ウィザードを終了すると、フィルター関数が SQL Server に作成されます。終了するまでは、**[テーブルの選択]** ページに戻って、フィルター関数やその名前を変更することができます。
+The filter function is created in SQL Server only when you finish the wizard. Until then, you can return to the **Select tables** page to change or rename the filter function.
 
 ![Select Tables page after defining a filter function][StretchWizardImage2b]
 
-別の種類のフィルター関数を使用して、移行する行を選択する場合は、次のいずれかの操作を行います。
+If you want to use a different type of filter function to select rows to migrate, do one of the following things.  
 
--   ウィザードを終了し、ALTER TABLE ステートメントを実行してテーブルの Stretch を有効にし、フィルター関数を指定します。詳細については、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」を参照してください。
+-   Exit the wizard and run the ALTER TABLE statement to enable Stretch for the table and to specify a filter function. For more info, see [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md).  
 
--   ウィザードを終了してから、ALTER TABLE ステートメントを実行して、フィルター関数を指定します。必要な手順については、「[ウィザードの実行後にフィルター関数を追加する](sql-server-stretch-database-predicate-function.md#addafterwiz)」を参照してください。
+-   Run the ALTER TABLE statement to specify a filter function after you exit the wizard. For the required steps, see [Add a filter function after running the Wizard](sql-server-stretch-database-predicate-function.md#addafterwiz).
 
-## <a name="Configure"></a>Azure デプロイを構成する
+## <a name="<a-name="configure"></a>configure-azure-deployment"></a><a name="Configure"></a>Configure Azure deployment
 
-1.  Microsoft アカウントで Microsoft Azure にサインインします。
+1.  Sign in to Microsoft Azure with a Microsoft account.
 
-    ![Azure へのサインイン - Stretch Database ウィザード][StretchWizardImage3]
+    ![Sign in to Azure - Stretch Database wizard][StretchWizardImage3]
 
-2.  Stretch Database に使用する既存の Azure サブスクリプションを選択します。
+2.  Select the existing Azure subscription to use for Stretch Database.
 
-3.  Azure リージョンを選択します。
-    -   新しいサーバーを作成すると、このリージョンにサーバーが作成されます。
-    -   選択したリージョンに既存のサーバーが存在する場合は、**[既存のサーバー]** を選択すると、ウィザードに一覧表示されます。
+3.  Select an Azure region.
+    -   If you create a new server, the server is created in this region.  
+    -   If you have existing servers in the selected region, the wizard lists them when you choose **Existing server**.
 
-    待機時間を最小限に抑えるために、SQL Server が配置されている Azure リージョンを選択してください。リージョンの詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。
+    To minimize latency, pick the Azure region in which your SQL Server is located. For more info about regions, see [Azure Regions](https://azure.microsoft.com/regions/).
 
-4.  既存のサーバーを使用するか、新しい Azure サーバーを作成するように指定します。
+4.  Specify whether you want to use an existing server or create a new Azure server.
 
-    SQL Server の Active Directory が Azure Active Directory と連合している場合、SQL Server のフェデレーション サービス アカウントを利用し、リモート Azure サーバーと通信することもできます。このオプションの要件に関する詳細については、「[ALTER DATABASE の SET オプション (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx)」を参照してください。
+    If the Active Directory on your SQL Server is federated with Azure Active Directory, you can optionally use a federated service account for SQL Server to communicate with the remote Azure server. For more info about the requirements for this option, see [ALTER DATABASE SET Options (Transact-SQL)](https://msdn.microsoft.com/library/bb522682.aspx).
 
-	-   **新しいサーバーを作成する**
+    -   **Create new server**
 
-        1.  サーバー管理者のログイン名とパスワードを作成します。
+        1.  Create a login and password for the server administrator.
 
-        2.  SQL Server のフェデレーション サービス アカウントを利用し、リモート Azure サーバーと通信することもできます。
+        2.  Optionally, use a federated service account for SQL Server to communicate with the remote Azure server.
 
-		![新しい Azure サーバーの作成 - Stretch Database ウィザード][StretchWizardImage4]
+        ![Create new Azure server - Stretch Database wizard][StretchWizardImage4]
 
-    -   **既存サーバー**
+    -   **Existing server**
 
-        1.  既存の Azure サーバーを選択します。
+        1.  Select the existing Azure server.
 
-        2.  認証方法を選択します。
+        2.  Select the authentication method.
 
-            -   **[SQL Server 認証]** を選択した場合、管理者のログインとパスワードを指定します。
+            -   If you select **SQL Server Authentication**, provide the administrator login and password.
 
-            -   SQL Server のフェデレーション サービス アカウントを利用し、リモート Azure サーバーと通信するには、**[Active Directory 統合認証]** を選択します。選択したサーバーが Azure Active Directory と統合されていない場合、このオプションは表示されません。
+            -   Select **Active Directory Integrated Authentication** to use a federated service account for SQL Server to communicate with the remote Azure server. If the selected server is not integrated with Azure Active Directory, this option doesn't appear.
 
-		![既存の Azure サーバーの選択 - Stretch Database ウィザード][StretchWizardImage5]
+        ![Select existing Azure server - Stretch Database wizard][StretchWizardImage5]
 
-## <a name="Credentials"></a>資格情報をセキュリティで保護する
-Stretch Database がリモート データベースの接続に使用する資格情報が守るためには、データベース マスター キーを用意する必要があります。
+## <a name="<a-name="credentials"></a>secure-credentials"></a><a name="Credentials"></a>Secure credentials
+You have to have a database master key to secure the credentials that Stretch Database uses to connect to the remote database.  
 
-データベース マスター キーが既に存在する場合は、そのパスワードを入力します。
+If a database master key already exists, enter the password for it.  
 
-![Stretch Database ウィザードのセキュリティで保護された資格情報ページ][StretchWizardImage6b]
+![Secure credentials page of the Stretch Database wizard][StretchWizardImage6b]
 
-データベースに既存のマスター キーがない場合は、データベース マスター キーを作成するための強力なパスワードを入力します。
+If the database does not have an existing master key, enter a strong password to create a database master key.  
 
-![Stretch Database ウィザードのセキュリティで保護された資格情報ページ][StretchWizardImage6]
+![Secure credentials page of the Stretch Database wizard][StretchWizardImage6]
 
-データベース マスター キーの詳細については、「[CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx)」と「[データベース マスター キーの作成](https://msdn.microsoft.com/library/aa337551.aspx)」を参照してください。ウィザードにより作成される資格情報の詳細については、「[CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx)」を参照してください。
+For more info about the database master key, see [CREATE MASTER KEY (Transact-SQL)](https://msdn.microsoft.com/library/ms174382.aspx) and [Create a Database Master Key](https://msdn.microsoft.com/library/aa337551.aspx). For more info about the credential that the wizard creates,  see [CREATE DATABASE SCOPED CREDENTIAL (Transact-SQL)](https://msdn.microsoft.com/library/mt270260.aspx).
 
-## <a name="Network"></a>IP アドレスを選択する
-サブネットの IP アドレス範囲 (推奨)、または SQL Server のパブリック IP アドレスを使用して、SQL Server とリモート Azure サーバーの通信を可能にするファイアウォール規則を Azure で作成します。
+## <a name="<a-name="network"></a>select-ip-address"></a><a name="Network"></a>Select IP address
+Use the subnet IP address range (recommended), or the public IP address of your SQL Server, to create a firewall rule on Azure that lets SQL Server communicate with the remote Azure server.
 
-このページで指定した IP アドレスにより、SQL Server からの受信データ、クエリ、および管理操作が Azure ファイアウォールを通過することを許可するよう Azure サーバーに指示します。このウィザードによって、SQL Server のファイアウォール設定が変更されることはありません。
+The IP address or addresses that you provide on this page tell the Azure server to allow incoming data, queries, and management operations initiated by SQL Server to pass through the Azure firewall. The wizard doesn't change anything in the firewall settings on the SQL Server.
 
-![Stretch Database ウィザードの IP アドレスの選択ページ][StretchWizardImage7]
+![Select IP address page of the Stretch Database wizard][StretchWizardImage7]
 
-## <a name="Summary"></a>概要
-入力した値、ウィザードで選択したオプション、Azure の推定コストを確認します。**[完了]** を選択して、Stretch を有効にします。
+## <a name="<a-name="summary"></a>summary"></a><a name="Summary"></a>Summary
+Review the values that you entered and the options that you selected in the wizard and the estimated costs on Azure. Then select **Finish** to enable Stretch.
 
-![Stretch Database ウィザードのまとめのページ][StretchWizardImage8]
+![Summary page of the Stretch Database wizard][StretchWizardImage8]
 
-## <a name="Results"></a>結果
-結果を確認します。
+## <a name="<a-name="results"></a>results"></a><a name="Results"></a>Results
+Review the results.
 
-データ移行の状態を監視するには、「[データ移行の監視とトラブルシューティング (Stretch Database)](sql-server-stretch-database-monitor.md)」を参照してください。
+To monitor the status of data migration, see [Monitor and troubleshoot data migration (Stretch Database)](sql-server-stretch-database-monitor.md).
 
 ![Results page of the Stretch Database wizard][StretchWizardImage9]
 
-## <a name="KnownIssues"></a>ウィザードのトラブルシューティングを行う
-**Stretch Database ウィザードが失敗しました。** Stretch Database がサーバー レベルで有効になっていないとき、システム管理者の許可なしでウィザードを実行し、有効にしようとすると、ウィザードは失敗します。ローカル サーバー インスタンスで Stretch Database を有効にするようにシステム管理者に依頼し、その後、ウィザードをもう一度実行します。詳細については、[前提条件である、サーバーで Stretch Database を有効にするためのアクセス許可](sql-server-stretch-database-enable-database.md#EnableTSQLServer)に関するセクションを参照してください。
+## <a name="<a-name="knownissues"></a>troubleshooting-the-wizard"></a><a name="KnownIssues"></a>Troubleshooting the wizard
+**The Stretch Database wizard failed.**
+If Stretch Database is not yet enabled at the server level, and you run the wizard without the system administrator permissions to enable it, the wizard fails. Ask the  system administrator to enable Stretch Database on the local server instance, and then run the wizard again. For more info, see [Prerequisite: Permission to enable Stretch Database on the server](sql-server-stretch-database-enable-database.md#EnableTSQLServer).
 
-## 次のステップ
-Stretch Database の追加テーブルを有効にします。データ移行を監視し、Stretch 対応のデータベースとテーブルを管理します。
+## <a name="next-steps"></a>Next steps
+Enable additional tables for Stretch Database. Monitor data migration and manage Stretch\-enabled databases and tables.
 
--   [テーブルの Stretch Database を有効にして](sql-server-stretch-database-enable-table.md)追加テーブルを有効にします。
+-   [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md) to enable additional tables.
 
--   [データ移行の監視とトラブルシューティングを行って](sql-server-stretch-database-monitor.md)、データ移行の状態を確認します。
+-   [Monitor and troubleshoot data migration](sql-server-stretch-database-monitor.md) to see the status of data migration.
 
--   [Stretch Database を一時停止し、再開します。](sql-server-stretch-database-pause.md)
+-   [Pause and resume Stretch Database](sql-server-stretch-database-pause.md)
 
--   [Stretch Database を管理し、問題を解決します。](sql-server-stretch-database-manage.md)
+-   [Manage and troubleshoot Stretch Database](sql-server-stretch-database-manage.md)
 
--   [Stretch 対応データベースをバックアップする](sql-server-stretch-database-backup.md)
+-   [Backup Stretch-enabled databases](sql-server-stretch-database-backup.md)
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md)
+[Enable Stretch Database for a database](sql-server-stretch-database-enable-database.md)
 
-[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
+[Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md)
 
 [StretchWizardImage1]: ./media/sql-server-stretch-database-wizard/stretchwiz1.png
 [StretchWizardImage2]: ./media/sql-server-stretch-database-wizard/stretchwiz2.png
@@ -193,4 +195,8 @@ Stretch Database の追加テーブルを有効にします。データ移行を
 [StretchWizardImage8]: ./media/sql-server-stretch-database-wizard/stretchwiz8.png
 [StretchWizardImage9]: ./media/sql-server-stretch-database-wizard/stretchwiz9.png
 
-<!-------HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

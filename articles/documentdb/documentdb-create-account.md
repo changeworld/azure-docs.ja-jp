@@ -1,96 +1,101 @@
 <properties
-	pageTitle="DocumentDB アカウントを作成する方法 | Microsoft Azure"
-	description="Azure DocumentDB で NoSQL データベースを作成します。手順に従って DocumentDB アカウントを作成し、グローバル スケールの超高速 NoSQL データベースを作成します。" 
-	keywords="データベースの作成"
-	services="documentdb"
-	documentationCenter=""
-	authors="mimig1"
-	manager="jhubbard"
-	editor="monicar"/>
+    pageTitle="How to create a DocumentDB account | Microsoft Azure"
+    description="Build a NoSQL database with Azure DocumentDB. Follow these instructions to create a DocumentDB account and start building your blazing fast, global-scale NoSQL database." 
+    keywords="build a database"
+    services="documentdb"
+    documentationCenter=""
+    authors="mimig1"
+    manager="jhubbard"
+    editor="monicar"/>
 
 <tags
-	ms.service="documentdb"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/12/2016"
-	ms.author="mimig"/>
+    ms.service="documentdb"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/12/2016"
+    ms.author="mimig"/>
 
-# Azure Portal を使用して DocumentDB NoSQL アカウントを作成する方法
+
+# <a name="how-to-create-a-documentdb-nosql-account-using-the-azure-portal"></a>How to create a DocumentDB NoSQL account using the Azure portal
 
 > [AZURE.SELECTOR]
-- [Azure Portal](documentdb-create-account.md)
-- [Azure CLI と Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
+- [Azure portal](documentdb-create-account.md)
+- [Azure CLI and Azure Resource Manager](documentdb-automation-resource-manager-cli.md)
 
-Microsoft Azure DocumentDB でデータベースを作成するには、次の条件を満たす必要があります。
+To build a database with Microsoft Azure DocumentDB, you must:
 
-- Azure アカウントを入手する。まだ持っていない場合は、[無料の Azure アカウント](https://azure.microsoft.com/free)を取得できます。
-- DocumentDB アカウントを作成する。
+- Have an Azure account. You can get a [free Azure account](https://azure.microsoft.com/free) if you don't have one already. 
+- Create a DocumentDB account.  
 
-DocumentDB アカウントは、Azure Portal、Azure Resource Manager テンプレート、Azure CLI (コマンド ライン インターフェイス) のいずれかを使用して作成できます。この記事では、Azure Portal を使用して DocumentDB アカウントを作成する方法について説明します。Azure Resource Manager または Azure CLI を使用してアカウントを作成する方法については、[DocumentDB データベース アカウントの自動作成](documentdb-automation-resource-manager-cli.md)に関する記事をご覧ください。
+You can create a DocumentDB account using either the Azure portal, Azure Resource Manager templates, or Azure command-line interface (CLI). This article shows how to create a DocumentDB account using the Azure portal. To create an account using Azure Resource Manager or Azure CLI, see [Automate DocumentDB database account creation](documentdb-automation-resource-manager-cli.md).
 
-DocumentDB を初めて使用する場合は、 Scott Hansleman による[こちら](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/)の 4 分間のビデオを視聴し、オンライン ポータルで最もよく使用されるタスクの実行方法を確認してください。
+Are you new to DocumentDB? Watch [this](https://azure.microsoft.com/documentation/videos/create-documentdb-on-azure/) four-minute video by Scott Hanselman to see how to complete the most common tasks in the online portal.
 
-1.	[Azure Portal](https://portal.azure.com/) にサインインします。
-2.	ジャンプバーで **[新規]** をクリックし、**[データ + ストレージ]**、**[DocumentDB (NoSQL)]** の順にクリックします。
+1.  Sign in to the [Azure portal](https://portal.azure.com/).
+2.  In the Jumpbar, click **New**, click **Data + Storage**, and then click **DocumentDB (NoSQL)**.
 
-	![その他のサービスと DocumentDB (NoSQL) が強調表示された Azure Portal のスクリーンショット](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-1.png)
+    ![Screen shot of the Azure portal, highlighting More Services, and DocumentDB (NoSQL)](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-1.png)  
 
-3. **[新しいアカウント]** ブレードで、DocumentDB アカウントに必要な構成を指定します。
+3. In the **New account** blade, specify the desired configuration for the DocumentDB account.
 
-	![新しい [DocumentDB] ブレードのスクリーンショット](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-2.png)
+    ![Screen shot of the New DocumentDB blade](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-2.png)
 
-	- **[ID]** ボックスに、DocumentDB アカウントを識別する名前を入力します。**ID** が検証されると、緑色のチェック マークが **[ID]** ボックスに表示されます。この **ID** の値は、URI 内のホスト名になります。**ID** に含めることができるのは英小文字、数字、および "-" のみで、文字数は 3 ～ 50 文字にする必要があります。選択したエンドポイント名に *documents.azure.com* が追加され、これが DocumentDB アカウント エンドポイントになります。
+    - In the **ID** box, enter a name to identify the DocumentDB account.  When the **ID** is validated, a green check mark appears in the **ID** box. The **ID** value becomes the host name within the URI. The **ID** may contain only lowercase letters, numbers, and the '-' character, and must be between 3 and 50 characters. Note that *documents.azure.com* is appended to the endpoint name you choose, the result of which becomes your DocumentDB account endpoint.
 
-    - **[NoSQL API]** ボックスで、使用するプログラミング モデルを選択します。
-        - **[DocumentDB]**: DocumentDB API は、HTTP [REST](https://msdn.microsoft.com/library/azure/dn781481.aspx) だけでなく、.NET、Java、Node.js、Python、JavaScript の各 [SDK](documentdb-sdk-dotnet.md) でも使用することができ、DocumentDB のすべての機能にプログラムによってアクセスできます。
+    - In the **NoSQL API** box, select the programming model to use:
+        - **DocumentDB**: The DocumentDB API is available via .NET, Java, Node.js, Python and JavaScript [SDKs](documentdb-sdk-dotnet.md), as well as HTTP [REST](https://msdn.microsoft.com/library/azure/dn781481.aspx), and offers programmatic access to all the DocumentDB functionality. 
        
-        - **[MongoDB]**: DocumentDB では、**MongoDB** API の[プロトコル レベルのサポート](documentdb-protocol-mongodb.md)も提供します。MongoDB API オプションを選択した場合は、既存の MongoDB SDK と[ツール](documentdb-mongodb-mongochef.md)を使用して DocumentDB を操作できます。DocumentDB を使用するために、[コードの変更を必要とせずに](documentdb-connect-mongodb-account.md)、既存の MongoDB アプリを[移行](documentdb-import-data.md)し、完全に管理されたデータベースを、無制限のスケーリングやグローバル レプリケーションなどの機能を備えたサービスとして利用できます。
+        - **MongoDB**: DocumentDB also offers [protocol-level support](documentdb-protocol-mongodb.md) for **MongoDB** APIs. When you choose the MongoDB API option, you can use existing MongoDB SDKs and [tools](documentdb-mongodb-mongochef.md) to talk to DocumentDB. You can [move](documentdb-import-data.md) your existing MongoDB apps to use DocumentDB, with [no code changes needed](documentdb-connect-mongodb-account.md), and take advantage of a fully managed database as a service, with limitless scale, global replication, and other capabilities.
 
-	- **[サブスクリプション]** で、DocumentDB アカウントに使用する Azure サブスクリプションを選択します。アカウントにサブスクリプションが 1 つしかない場合は、そのアカウントが既定で選択されます。
+    - For **Subscription**, select the Azure subscription that you want to use for the DocumentDB account. If your account has only one subscription, that account is selected by default.
 
-	- **[リソース グループ]** で、DocumentDB アカウントのリソース グループを選択または作成します。既定では、新しいリソース グループが作成されます。詳細については、[Azure Portal を使用した Azure リソースの管理](../articles/azure-portal/resource-group-portal.md)に関する記事をご覧ください。
+    - In **Resource Group**, select or create a resource group for your DocumentDB account.  By default, a new resource group is created. For more information, see [Using the Azure portal to manage your Azure resources](../articles/azure-portal/resource-group-portal.md).
 
-	- **[場所]** を使用して、DocumentDB アカウントをホストする地理的な場所を指定します。
+    - Use **Location** to specify the geographic location in which to host your DocumentDB account. 
 
-4.	新しい DocumentDB アカウントのオプションを構成したら、**[作成]** をクリックします。デプロイの状態を通知ハブで確認します。
+4.  Once the new DocumentDB account options are configured, click **Create**. To check the status of the deployment, check the Notifications hub.  
 
-	![データベースの迅速な作成 - DocumentDB アカウントを作成中であることを示す通知ハブのスクリーンショット](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-4.png)
+    ![Create databases quickly - Screen shot of the Notifications hub, showing that the DocumentDB account is being created](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-4.png)  
 
-	![DocumentDB アカウントが正常に作成され、リソース グループにデプロイされたことを示す通知ハブのスクリーンショット - オンライン データベース クリエーターの通知](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-5.png)
+    ![Screen shot of the Notifications hub, showing that the DocumentDB account was created successfully and deployed to a resource group - Online database creator notification](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-5.png)
 
-5.	DocumentDB アカウントが作成されたら、既定の設定で使用できる状態になります。DocumentDB アカウントの既定の整合性は **[セッション]** に設定されます。既定の整合性は、リソース メニューの **[既定の整合性]** をクリックして調整できます。DocumentDB によって提供される整合性レベルの詳細については、「[DocumentDB の整合性レベル](documentdb-consistency-levels.md)」をご覧ください。
+5.  After the DocumentDB account is created, it is ready for use with the default settings. The default consistency of the DocumentDB account is set to **Session**.  You can adjust the default consistency by clicking **Default Consistency** in the resource menu. To learn more about the consistency levels offered by DocumentDB, see [Consistency levels in DocumentDB](documentdb-consistency-levels.md).
 
-    ![[リソース グループ] ブレードのスクリーンショット - アプリケーション開発の開始](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-6.png)
+    ![Screen shot of the Resource Group blade - begin application development](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-6.png)  
 
-    ![整合性レベル ブレードのスクリーンショット - セッション整合性](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-7.png)
+    ![Screen shot of the Consistency Level blade - Session Consistency](./media/documentdb-create-account/create-nosql-db-databases-json-tutorial-7.png)  
 
 [How to: Create a DocumentDB account]: #Howto
 [Next steps]: #NextSteps
-[documentdb-manage]: ../articles/documentdb/documentdb-manage.md
+[documentdb-manage]:../articles/documentdb/documentdb-manage.md
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-DocumentDB アカウントを作成できたら、次の手順として DocumentDB データベースを作成します。
+Now that you have a DocumentDB account, the next step is to create a DocumentDB database. 
 
-新しいデータベースは、次のいずれかを使用して作成できます。
+You can create a new database by using one of the following:
 
-- Azure Portal。[Azure Portal を使用した DocumentDB データベースの作成](documentdb-create-database.md)に関する記事をご覧ください。
-- サンプル データが含まれた包括的なチュートリアル ([.NET](documentdb-get-started.md)、[.NET MVC](documentdb-dotnet-application.md)、[Java](documentdb-java-application.md)、[Node.js](documentdb-nodejs-application.md)、[Python](documentdb-python-application.md))。
-- GitHub で入手できる [.NET](documentdb-dotnet-samples.md#database-examples)、[Node.js](documentdb-nodejs-samples.md#database-examples)、[Python](documentdb-python-samples.md#database-examples) のサンプル コード。
-- [.NET](documentdb-sdk-dotnet.md)、[Node.js](documentdb-sdk-node.md)、[Java](documentdb-sdk-java.md)、[Python](documentdb-sdk-python.md)、[REST](https://msdn.microsoft.com/library/azure/mt489072.aspx) の各 SDK。
+- The Azure portal, as described in [Create a DocumentDB database using the Azure portal](documentdb-create-database.md).
+- The all-inclusive tutorials, which include sample data: [.NET](documentdb-get-started.md), [.NET MVC](documentdb-dotnet-application.md), [Java](documentdb-java-application.md), [Node.js](documentdb-nodejs-application.md), or [Python](documentdb-python-application.md).
+- The [.NET](documentdb-dotnet-samples.md#database-examples), [Node.js](documentdb-nodejs-samples.md#database-examples), or [Python](documentdb-python-samples.md#database-examples) sample code available in GitHub.
+- The [.NET](documentdb-sdk-dotnet.md), [Node.js](documentdb-sdk-node.md), [Java](documentdb-sdk-java.md), [Python](documentdb-sdk-python.md), and [REST](https://msdn.microsoft.com/library/azure/mt489072.aspx) SDKs.
 
-データベースを作成した後に、データベースに [1 つまたは複数のコレクションを追加](documentdb-create-collection.md)し、それらのコレクションに[ドキュメントを追加する](documentdb-view-json-document-explorer.md)必要があります。
+After creating your database, you need to [add one or more collections](documentdb-create-collection.md) to the database, then [add documents](documentdb-view-json-document-explorer.md) to the collections.
 
-ドキュメントをコレクションに追加したら、[DocumentDB SQL](documentdb-sql-query.md) を使用してドキュメントに対して[クエリを実行](documentdb-sql-query.md#executing-queries)できます。クエリは、ポータル、[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx)、またはいずれかの [SDK](documentdb-sdk-dotnet.md) で[クエリ エクスプローラー](documentdb-query-collections-query-explorer.md)を使用して実行できます。
+After you have documents in a collection, you can use [DocumentDB SQL](documentdb-sql-query.md) to [execute queries](documentdb-sql-query.md#executing-queries) against your documents. You can execute queries by using the [Query Explorer](documentdb-query-collections-query-explorer.md) in the portal, the [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx), or one of the [SDKs](documentdb-sdk-dotnet.md).
 
-### 詳細情報
+### <a name="learn-more"></a>Learn more
 
-DocumentDB の詳細については、以下のリソースを参照してください。
+To learn more about DocumentDB, explore these resources:
 
--	[DocumentDB のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
--	[DocumentDB 階層型リソース モデルと概念](documentdb-resources.md)
+-   [Learning path for DocumentDB](https://azure.microsoft.com/documentation/learning-paths/documentdb/)
+-   [DocumentDB hierarchical resource model and concepts](documentdb-resources.md)
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

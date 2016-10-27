@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Azure と Azure RemoteApp | Microsoft Azure"
-   description="Azure RemoteApp での SQL Azure の使用方法について説明します。"
+   pageTitle="SQL Azure with Azure RemoteApp | Microsoft Azure"
+   description="Learn how to use SQL Azure with Azure RemoteApp."
    services="remoteapp"
    documentationCenter=""
    authors="ericorman"
@@ -16,41 +16,47 @@
    ms.date="08/15/2016"
    ms.author="elizapo"/>
 
-# SQL Azure と Azure RemoteApp
+
+# <a name="sql-azure-with-azure-remoteapp"></a>SQL Azure with Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-顧客の多くは、Azure RemoteApp を使用してクラウド内で Windows アプリケーションをホストする場合、完全なクラウド デプロイメントのために SQL サーバーなどのデータをクラウドに移行することを希望します。これにより、Azure RemoteApp を使用し任意のデバイスで、いつでもどこからでもアクセスできる完全なクラウド ホスト ソリューションを実現することができます。このプロセスを実行する際に役立つリンク、リファレンス、ガイドを次に示します。
+Often when customers choose to host their Windows applications in the cloud with Azure RemoteApp they also want to migrate their data such as SQL servers into the cloud for an entire cloud deployment. This allows for entire cloud hosted solution that can be accessed anytime by any device anywhere using Azure RemoteApp. Below are links and references along with guidance to help you with this process.  
 
-## SQL データを移行する
+## <a name="migrate-your-sql-data"></a>Migrate your SQL data
 
-まず、[SQL Server データベースを Azure SQL Database に移行](../sql-database/sql-database-cloud-migrate.md)します。
+Start with [Migrating a SQL Server database to Azure SQL Database](../sql-database/sql-database-cloud-migrate.md). 
 
-## Azure RemoteApp を構成する
-Azure RemoteApp で Windows アプリケーションをホストします。大まかな手順を次に示します。
+## <a name="configure-azure-remoteapp"></a>Configure Azure RemoteApp
+Host your Windows application in Azure RemoteApp. Below is a very high level step-by-step:
 
-1.     [Azure RemoteApp テンプレート VM](remoteapp-imageoptions.md) を作成します。
-2.     VM に必要なアプリケーションをインストールします。
-3.     SQL DB に接続するようにアプリケーションを構成し、アプリケーションが動作することを確認します。
-4.     VM に対して Sysprep を実行し、VM をシャット ダウンします。これを、Azure で使用するイメージとしてキャプチャします。**注:** sysprep プロセスの間、アプリケーションが DB 接続情報を保持できるようにする必要があります。アプリケーションがデータベース接続情報を保持できない場合は、接続文字列を指定する方法を、アプリケーションのベンダーに確認することができます。
-5.     SQL Azure デプロイメントが置かれている適切な地理的な場所を選択して、カスタム イメージを Azure RemoteApp ライブラリにインポートします。
-6.     上記のテンプレートを使用して SQL Azure デプロイメントの場合と同じデータ センター内に RemoteApp コレクションをデプロイし、アプリケーションを発行します。SQL Azure デプロイメントの場合と同じデータ センターに Azure RemoteApp をデプロイすることで、確実に接続速度が速くなり、待機時間が短くなります。
+1.     Create the [Azure RemoteApp template VM](remoteapp-imageoptions.md). 
+2.     Install the required application on the VM.
+3.     Configure the application so it connects to the SQL DB and confirm that it works.
+4.     Sysprep and shutdown the VM. Capture this as an image for use with Azure. **Note:** You will need to ensure that the application is able to retain the DB connectivity information through the sysprep process. If the application is unable to retain the DB connection information, you might want to engage the vendor of the application to check how we can specify the connection string.
+5.     Import the custom image into your Azure RemoteApp library selecting the proper geographical location that your SQL Azure deployment resides. 
+6.     Deploy a RemoteApp collection in the same data center as your SQL Azure deployment using the above template and publish the application. Deploying Azure RemoteApp in the same data center as your SQL Azure deployment helps ensure the fastest connection speeds and reduce latency. 
 
-## アプリと SQL 構成に関する注意事項
-RemoteApp で Azure SQL を使用する際には、検討すべき点がいくつかあります。
+## <a name="app-and-sql-configuration-considerations:"></a>App and SQL configuration considerations:
+There are a few points to consider when using Azure SQL with RemoteApp:
 
-[Azure SQL データベース ファイアウォールを構成する方法](../sql-database/sql-database-firewall-configure.md)を学習してください。記事の内容を抜粋します。「最初は、Azure SQL Database サーバーへのすべてのアクセスは、ファイアウォールによってブロックされます。Azure SQL Database サーバーの使用を開始するためには、クラシック ポータルに移動し、Azure SQL Database サーバーへのアクセスを有効にする 1 つまたは複数のサーバー レベルのファイアウォール規則を指定する必要があります。ファイアウォール規則を使用すると、インターネットからのアクセスを許可する IP アドレス範囲、および Azure アプリケーションから Azure SQL Database サーバーへの接続を試みることができるかどうかを指定できます」。
+Learn [how to configure an Azure SQL database firewall](../sql-database/sql-database-firewall-configure.md). An excerpt from the article states, “Initially, all access to your Azure SQL Database server is blocked by the firewall. In order to begin using your Azure SQL Database server, you must go to the Classic Portal and specify one or more server-level firewall rules that enable access to your Azure SQL Database server. Use the firewall rules to specify which IP address ranges from the Internet are allowed, and whether or not Azure applications can attempt to connect to your Azure SQL Database server.”
 
-また、コンピューターがインターネットからデータベース サーバーに接続しようとした場合、ファイアウォールは、すべてのサーバー レベルのファイアウォール規則と (必要な場合は) データベース レベルのファイアウォール規則に対し、要求の送信元の IP アドレスを確認します。「要求の IP アドレスがサーバー レベルのファイアウォール規則で指定されたいずれかの IP アドレス範囲内にある場合は、Azure SQL Database サーバーへの接続が許可されます」。 このように、個別の発信元 IP アドレスだけでなく、IP 範囲も利用することができます。
+Also, when a computer attempts to connect to your database server from the Internet, the firewall checks the originating IP address of the request against the full set of server-level and (if required) database-level firewall rules. “If the IP address of the request is within one of the ranges specified in the server-level firewall rules, the connection is granted to your Azure SQL Database server.” Hence, we can make use of IP Ranges and not just individual source IP addresses.
 
-[Azure ポータルを使用して SQL Database のファイアウォール設定を構成する方法](../sql-database/sql-database-configure-firewall-settings.md)に関するページの手順に従って、IP 範囲を指定します。SQL ファイアウォール規則を構成するときには、Azure RemoteApp コレクションに対して指定されているサブネットの IP 範囲を指定してください。これにより、ARA サーバーは IP アドレスが動的に割り当てられたとしても、SQL DB に接続することができます。
+Follow the step by step instructions in [How to: Configure firewall settings on SQL Database using the Azure Portal](../sql-database/sql-database-configure-firewall-settings.md) to specify the IP range. When you are configuring the SQL Firewall rules, please provide the IP range of the subnet that is specified for the Azure RemoteApp collection. This should allow the ARA servers to connect to the SQL DB even though they will have dynamically-assigned IP Addresses.
 
-## トラブルシューティング
-Azure RemoteApp でホストされているクライアント アプリケーションを使用して、Azure またはオンプレミスでホストされている SQL データベースに接続する場合に速度が遅くなるときは、いくつかの原因が考えられます。
+## <a name="troubleshooting"></a>Troubleshooting
+If the experience of using a client application hosted in Azure RemoteApp that connects to a SQL database where hosted on Azure or on-premises is slow there could be a few reasons why.  
 
-- デバイスから Azure へのネットワーク待機時間が長い。最良のパフォーマンスが得られるように、可能な限り最速のネットワーク接続に移行します。一般的なツールである [azurespeed.com](http://azurespeed.com/) を使用して、デバイスから Azure データ センターへの接続の待機時間をテストします。
-- Azure RemoteApp でホストされているクライアント アプリがストレス条件下に置かれている。Premium 課金などの別の課金プランを選択すると、パフォーマンスが向上します。別の方法として、アプリによって使用されるリソースを監視するという手があります。アクティブ セッション中に、Ctrl + Alt + End キーを押して、SAS 画面を起動し、タスク マネージャーを選択して、アプリのリソース使用状況を確認します。
-- SQL サーバーがストレス条件下にあるか、または最適化されていません。SQL に関するトラブルシューティングのガイダンスに従います。
+- Network latency from your device to Azure is high. Move to the best and fastest network connection you can for best performance. Use [azurespeed.com](http://azurespeed.com/) as a general tool to test your devices latency to Azure data center.  
+- Client app hosted in Azure RemoteApp is under stress. Selecting a different billing plan such as Premium billing will improve performance. Another trick is to monitor the resources your application is consuming: during an active session perform a ctrl-alt-end key sequence which will launch the SAS screen, select Task Manager and observe resource utilization for your app.
+- SQL server is under stress or not optimized. Follow SQL guidance for troubleshooting. 
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

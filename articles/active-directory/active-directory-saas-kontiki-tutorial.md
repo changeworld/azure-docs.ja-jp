@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Kontiki の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Kontiki を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Kontiki | Microsoft Azure" 
+    description="Learn how to use Kontiki with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,105 +11,112 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/08/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Kontiki の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-kontiki"></a>Tutorial: Azure Active Directory integration with Kontiki
   
-このチュートリアルの目的は、Azure と Kontiki の統合を紹介することです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and Kontiki.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   Kontiki でのシングル サインオンが有効なサブスクリプション
+-   A valid Azure subscription
+-   A Kontiki single sign-on enabled subscription
   
-このチュートリアルを完了すると、Kontiki に割り当てた Azure AD ユーザーは、Kontiki 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to Kontiki will be able to single sign into the application at your Kontiki company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Kontiki のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for Kontiki
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-kontiki-tutorial/IC790235.png "シナリオ")
-##Kontiki のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-kontiki-tutorial/IC790235.png "Scenario")
+##<a name="enabling-the-application-integration-for-kontiki"></a>Enabling the application integration for Kontiki
   
-このセクションでは、Kontiki のアプリケーション統合を有効にする方法について説明します。
+The objective of this section is to outline how to enable the application integration for Kontiki.
 
-###Kontiki のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-kontiki,-perform-the-following-steps:"></a>To enable the application integration for Kontiki, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-kontiki-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-kontiki-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-kontiki-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-kontiki-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-kontiki-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-kontiki-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-kontiki-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Kontiki**」と入力します。
+6.  In the **search box**, type **Kontiki**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-kontiki-tutorial/IC790236.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-kontiki-tutorial/IC790236.png "Application Gallery")
 
-7.  結果ウィンドウで **[Kontiki]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Kontiki**, and then click **Complete** to add the application.
 
     ![Kontiki](./media/active-directory-saas-kontiki-tutorial/IC790237.png "Kontiki")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Kontiki に対する認証を行えるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to Kontiki with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Kontiki** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Kontiki** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-kontiki-tutorial/IC790238.png "シングル サインオンの構成")
+    ![Configure Single SignOn](./media/active-directory-saas-kontiki-tutorial/IC790238.png "Configure Single SignOn")
 
-2.  **[ユーザーの Kontiki へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Kontiki** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-kontiki-tutorial/IC790239.png "シングル サインオンの構成")
+    ![Configure Single SignOn](./media/active-directory-saas-kontiki-tutorial/IC790239.png "Configure Single SignOn")
 
-3.  **[アプリケーションの URL を構成する]** ページの **[Kontiki サインオン URL]** テキストボックスに、ユーザーが Kontiki アプリのサインオンに使用する URL (例: "*https://company.mc.eval.kontiki.com/*") を入力して、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **Kontiki Sign On URL** textbox, type the URL used by your users to sign on to Kontiki (e.g.: “*https://company.mc.eval.kontiki.com/*"), and then click **Next**.
 
     ![Configure App URL](./media/active-directory-saas-kontiki-tutorial/IC790240.png "Configure App URL")
 
-4.  **[Kontiki でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターのローカルに保存します。
+4.  On the **Configure single sign-on at Kontiki** page, click **Download metadata**, and then save the metadata file on your computer.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-kontiki-tutorial/IC790241.png "シングル サインオンの構成")
+    ![Configure Single SignOn](./media/active-directory-saas-kontiki-tutorial/IC790241.png "Configure Single SignOn")
 
-5.  Kontiki サポート チームに、メタデータ ファイルを送信します。
+5.  Send the metadatafile to the Kontiki support team.
 
-    >[AZURE.NOTE] シングル サインオンの構成は、Kontiki サポート チームが実行する必要があります。構成が完了すると、サポート チームから通知が届きます。
+    >[AZURE.NOTE] The single sign-on configuration has to be performed by the Kontiki support team. You will get a notification as soon as the configuration has been completed.
 
-6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
-    ![シングル サインオンの構成](./media/active-directory-saas-kontiki-tutorial/IC790242.png "シングル サインオンの構成")
-##ユーザー プロビジョニングの構成
+    ![Configure Single SignOn](./media/active-directory-saas-kontiki-tutorial/IC790242.png "Configure Single SignOn")
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Kontiki へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して Kontiki にログインしようとすると、そのユーザーが存在するかどうかが Kontiki によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは Kontiki により自動的に作成されます。
-##ユーザーの割り当て
+There is no action item for you to configure user provisioning to Kontiki.  
+When an assigned user tries to log into Kontiki using the access panel, Kontiki checks whether the user exists.  
+If there is no user account available yet, it is automatically created by Kontiki.
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Kontiki に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-kontiki,-perform-the-following-steps:"></a>To assign users to Kontiki, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **[Kontiki]** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Kontiki **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-kontiki-tutorial/IC790243.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-kontiki-tutorial/IC790243.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-kontiki-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

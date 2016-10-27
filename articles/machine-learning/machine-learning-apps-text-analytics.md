@@ -1,240 +1,241 @@
 <properties
-	pageTitle="Machine Learning API: テキスト分析 | Microsoft Azure"
-	description="Microsoft の Machine Learning テキスト分析 API を使用し、センチメント分析、キー フレーズの抽出、言語検出、トピック検出の非構造化テキストを分析できます。"
-	services="machine-learning"
-	documentationCenter=""
-	authors="onewth"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Machine Learning APIs: Text Analytics | Microsoft Azure"
+    description="Microsoft's Machine Learning Text Analytics APIs can be used to analyze unstructured text for sentiment analysis, key phrase extraction, language detection and topic detection."
+    services="machine-learning"
+    documentationCenter=""
+    authors="onewth"
+    manager="jhubbard"
+    editor="cgronlun"/> 
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/07/2016"
-	ms.author="onewth"/>
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/04/2016"
+    ms.author="onewth"/>
 
 
-# Machine Learning API: センチメントのテキスト分析、キー フレーズ抽出、言語検出、トピック検出
 
->[AZURE.NOTE] このガイドはバージョン 1 の API 用です。バージョン 2 については、[**こちらのドキュメントを参照**](../cognitive-services/cognitive-services-text-analytics-quick-start.md)してください。この API の推奨バージョンは現在、バージョン 2 となっています。
+# <a name="machine-learning-apis:-text-analytics-for-sentiment,-key-phrase-extraction,-language-detection-and-topic-detection"></a>Machine Learning APIs: Text Analytics for Sentiment, Key Phrase Extraction, Language Detection and Topic Detection
 
-## Overview
+>[AZURE.NOTE] This guide is for version 1 of the API. For version 2, [**refer to this document**](../cognitive-services/cognitive-services-text-analytics-quick-start.md). Version 2 is now the preferred version of this API.
 
-テキスト分析 API は、Azure Machine Learning で構築されたテキスト分析 [Web サービス](https://datamarket.azure.com/dataset/amla/text-analytics)です。API を使用して、センチメント分析、キー フレーズの抽出、言語検出、トピック検出などのタスクの非構造化テキストを分析することができます。この API を使用するためにトレーニング データは必要ありません。自分のテキスト データを使用するだけです。この API は、高度な自然言語の処理手法を使用し、このクラスで最高の予測機能を提供します。
+## <a name="overview"></a>Overview
 
-[デモ サイト](https://text-analytics-demo.azurewebsites.net/)で実際のテキスト分析をご覧いただけます。このサイトには、C# と Python のテキスト分析方法に関する[サンプル](https://text-analytics-demo.azurewebsites.net/Home/SampleCode)もあります。
+The Text Analytics API is a suite of text analytics [web services](https://datamarket.azure.com/dataset/amla/text-analytics) built with Azure Machine Learning. The API can be used to analyze unstructured text for tasks such as sentiment analysis, key phrase extraction, language detection and topic detection. No training data is needed to use this API: just bring your text data. This API uses advanced natural language processing techniques to deliver best in class predictions.
 
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+You can see text analytics in action on our [demo site](https://text-analytics-demo.azurewebsites.net/), where you will also find [samples](https://text-analytics-demo.azurewebsites.net/Home/SampleCode) on how to implement text analytics in C# and Python.
+
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)] 
 
 ---
 
-## センチメント分析
+## <a name="sentiment-analysis"></a>Sentiment analysis
 
-API は、0 と 1 の間の数値スコアを返します。1 に近いスコアは正のセンチメントを表し、0 に近いスコアは負のセンチメントを表します。センチメントのスコアは、分類の手法を使用して生成されます。分類子への入力機能には、会話の一部であることを示すタグと単語の埋め込みから生成される、n-gram 機能が含まれます。現在、サポートされている言語は英語だけです。
+The API returns a numeric score between 0 & 1. Scores close to 1 indicate positive sentiment, while scores close to 0 indicate negative sentiment. Sentiment score is generated using classification techniques. The input features to the classifier include n-grams, features generated from part-of-speech tags, and word embeddings. Currently, English is the only supported language.
  
-## キー フレーズの抽出
+## <a name="key-phrase-extraction"></a>Key phrase extraction
 
-API は、入力テキストの要点を示す文字列のリストを返します。Microsoft Office の高度な自然言語処理ツールキットの手法を採用しています。現在、サポートされている言語は英語だけです。
+The API returns a list of strings denoting the key talking points in the input text. We employ techniques from Microsoft Office's sophisticated Natural Language Processing toolkit. Currently, English is the only supported language.
 
-## 言語検出
+## <a name="language-detection"></a>Language detection
 
-この API は、検出した言語と 0 と 1 の間の数値スコアを返します。1 に近いスコアは、100% の確実性で正しい言語が特定されたことを示します。合計で 120 種類の言語がサポートされています。
+The API returns the detected language and a numeric score between 0 & 1. Scores close to 1 indicate 100% certainty that the identified language is true. A total of 120 languages are supported.
 
-## トピック検出
+## <a name="topic-detection"></a>Topic detection
 
-これは新しくリリースされた API であり、送信されたテキスト レコードの一覧に基づき検出されたトピックの上位を返します。トピックはキー フレーズ、つまり、1 つまたは複数の関連単語で特定されます。この API を利用するには、100 件以上のテキスト レコードを送信する必要がありますが、数百から数千単位のレコードからトピックを検出するように設計されています。この API では、送信されるテキスト レコードあたり 1 トランザクションが請求されることに注意してください。この API は、レビューやユーザー フィードバックなど、人間が書いた短いテキストで効果的に機能するように設計されています。
+This is a newly released API which returns the top detected topics for a list of submitted text records. A topic is identified with a key phrase, which can be one or more related words. This API requires a minimum of 100 text records to be submitted, but is designed to detect topics across hundreds to thousands of records. Note that this API charges 1 transaction per text record submitted. The API is designed to work well for short, human written text such as reviews and user feedback.
 
 ---
 
-## API の定義
+## <a name="api-definition"></a>API Definition
 
-### ヘッダー
+### <a name="headers"></a>Headers
 
-要求には次のような正しいヘッダーを必ず追加します。
+Ensure that you include the correct headers in your request, which should be as follows:
 
-	Authorization: Basic <creds>
-	Accept: application/json
+    Authorization: Basic <creds>
+    Accept: application/json
                
-	Where <creds> = ConvertToBase64(“AccountKey:” + yourActualAccountKey);  
+    Where <creds> = ConvertToBase64(“AccountKey:” + yourActualAccountKey);  
 
-アカウントのアカウント キーは [Azure データ マーケット](https://datamarket.azure.com/account/keys)で確認できます。現在、入力形式および出力形式として受け付けられるのは JSON だけであることに注意してください。XML はサポートされていません。
-
----
-
-## シングル リソース API
-
-### GetSentiment
-
-**URL**
-
-	https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentiment
-
-**要求の例**
-
-次の呼び出しでは、語句 "Hello World" のセンチメント分析を要求しています。
-
-	GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentiment?Text=hello+world
-
-次のような応答が返されます。
-
-	{
-	  "odata.metadata":"https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/$metadata",
-		"Score":1.0
-	}
+You can find your account key from your account in the [Azure Data Market](https://datamarket.azure.com/account/keys). Note that currently only JSON is accepted for input and output formats. XML is not supported.
 
 ---
 
-### GetKeyPhrases
+## <a name="single-response-apis"></a>Single Response APIs
+
+### <a name="getsentiment"></a>GetSentiment
+
+**URL** 
+
+    https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentiment
+
+**Example request**
+
+In the call below, we are requesting sentiment analysis for the phrase "Hello World":
+
+    GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentiment?Text=hello+world
+
+This will return a response as follows:
+
+    {
+      "odata.metadata":"https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/$metadata",
+        "Score":1.0
+    }
+
+---
+
+### <a name="getkeyphrases"></a>GetKeyPhrases
 
 **URL**
 
-	https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrases
+    https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrases
 
-**要求の例**
+**Example request**
 
-次の呼び出しでは、テキスト "ユニークな装飾がされていてスタッフも親しみやすく、素晴らしいホテルでした" のキー フレーズを要求しています。
+In the call below, we are requesting the key phrases found in the text "It was a wonderful hotel to stay at, with unique decor and friendly staff":
 
-	GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrases?
-	Text=It+was+a+wonderful+hotel+to+stay+at,+with+unique+decor+and+friendly+staff
+    GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrases?
+    Text=It+was+a+wonderful+hotel+to+stay+at,+with+unique+decor+and+friendly+staff
 
-次のような応答が返されます。
+This will return a response as follows:
 
-	{
-	  "odata.metadata":"https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/$metadata",
-	  "KeyPhrases":[
-	    "wonderful hotel",
-	    "unique decor",
-	    "friendly staff"
-	  ]
-	}
+    {
+      "odata.metadata":"https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/$metadata",
+      "KeyPhrases":[
+        "wonderful hotel",
+        "unique decor",
+        "friendly staff"
+      ]
+    }
  
 ---
 
-### GetLanguage
+### <a name="getlanguage"></a>GetLanguage
 
 **URL**
 
-	https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguage
+    https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguage
 
-**要求の例**
+**Example request**
 
-次の GET 呼び出しでは、テキスト *Hello World* のキー フレーズのセンチメントを要求しています。
+In the GET call below, we are requesting for the sentiment for the key phrases in the text *Hello World*
 
-	GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguages?
-	Text=Hello+World
+    GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguages?
+    Text=Hello+World
 
-次のような応答が返されます。
+This will return a response as follows:
 
-	{
-	  "UnknownLanguage": false,
-	  "DetectedLanguages": [{
-	    "Name": "English",
-	    "Iso6391Name": "en",
-	    "Score": 1.0
-	  }]
-	}
+    {
+      "UnknownLanguage": false,
+      "DetectedLanguages": [{
+        "Name": "English",
+        "Iso6391Name": "en",
+        "Score": 1.0
+      }]
+    }
 
-**省略可能なパラメーター**
+**Optional parameters**
 
-`NumberOfLanguagesToDetect` は省略可能なパラメーターです。既定値は 1 です。
+`NumberOfLanguagesToDetect` is an optional parameter. The default is 1.
 
 ---
 
-## Batch API
+## <a name="batch-apis"></a>Batch APIs
 
-Text Analytics サービスでは、センチメントとキー フレーズの抽出をバッチ モードで実行できます。スコアが付けられたレコードはそれぞれ 1 つのトランザクションとして数えられることに注意してください。たとえば、1 回の呼び出しで 1000 個のレコードのセンチメントを要求する場合、1000 のトランザクションが推論されます。
+The Text Analytics service allows you to do sentiment and key-phrase extractions in batch mode. Note that each of the records scored counts as one transaction. As an example, if you request sentiment for 1000 records in a single call, 1000 transactions will be deducted.
 
-システムに入力された ID はシステムから返された ID であることに注意してください。Web サービスは、ID が一意であることを確認しません。一意であることを確認するのは呼び出し元の役割です。
+Note that the IDs entered into the system are the IDs returned by the system. The web service does not check that these IDs are unique. It is the responsibility of the caller to verify uniqueness. 
 
 
-### GetSentimentBatch
+### <a name="getsentimentbatch"></a>GetSentimentBatch
 
-**URL**
+**URL** 
 
-	https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentimentBatch
+    https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentimentBatch
 
-**要求の例**
+**Example request**
 
-次の POST 呼び出しでは、要求の本文に、"Hello World"、"Hello Foo World"、"Hello My World" のフレーズのセンチメントを要求しています。
+In the POST call below, we are requesting for the sentiments of the phrases "Hello World", "Hello Foo World" and "Hello My World" in the body of the request:
 
-	POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentimentBatch 
+    POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetSentimentBatch 
 
-要求本文:
+Request body:
 
-	{"Inputs":
-	[
-	    {"Id":"1","Text":"hello world"},
-	    {"Id":"2","Text":"hello foo world"},
-	    {"Id":"3","Text":"hello my world"},
-	]}
+    {"Inputs":
+    [
+        {"Id":"1","Text":"hello world"},
+        {"Id":"2","Text":"hello foo world"},
+        {"Id":"3","Text":"hello my world"},
+    ]}
 
-次の応答では、テキスト ID に関連付けられているスコアの一覧を取得します。
+In the response below, you get the list of scores associated with your text Ids:
 
-	{
-	  "odata.metadata":"<url>", 
-	  "SentimentBatch":
-	  [
-		{"Score":0.9549767,"Id":"1"},
-		{"Score":0.7767222,"Id":"2"},
-		{"Score":0.8988889,"Id":"3"}
-	  ],  
-	  "Errors":[]
-	}
+    {
+      "odata.metadata":"<url>", 
+      "SentimentBatch":
+      [
+        {"Score":0.9549767,"Id":"1"},
+        {"Score":0.7767222,"Id":"2"},
+        {"Score":0.8988889,"Id":"3"}
+      ],  
+      "Errors":[]
+    }
 
 
 ---
 
-### GetKeyPhrasesBatch
+### <a name="getkeyphrasesbatch"></a>GetKeyPhrasesBatch
 
 **URL**
 
-	https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrasesBatch
+    https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrasesBatch
 
-**要求の例**
+**Example request**
 
-この例では、次のテキストのキー フレーズのセンチメントの一覧を要求しています。
+In this example, we are requesting for the list of sentiments for the key phrases in the following texts: 
 
-* "ユニークな装飾がされていてスタッフも親しみやすく、素晴らしいホテルでした"
-* "非常に興味深い話題が出た素晴らしいビルド会議でした"
-* "激しい交通渋滞で、空港に到着するのに 3 時間かかりました"
+* "It was a wonderful hotel to stay at, with unique decor and friendly staff"
+* "It was an amazing build conference, with very interesting talks"
+* "The traffic was terrible, I spent three hours going to the airport"
 
-この要求は、エンドポイントへの POST 呼び出しとして作成されています。
+This request is made as a POST call to the endpoint:
 
     POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetKeyPhrasesBatch
 
-要求本文:
+Request body:
 
-	{"Inputs":
-	[
-		{"Id":"1","Text":"It was a wonderful hotel to stay at, with unique decor and friendly staff"},
-		{"Id":"2","Text":"It was an amazing build conference, with very interesting talks"},
-		{"Id":"3","Text":"The traffic was terrible, I spent three hours going to the airport"}
-	]}
+    {"Inputs":
+    [
+        {"Id":"1","Text":"It was a wonderful hotel to stay at, with unique decor and friendly staff"},
+        {"Id":"2","Text":"It was an amazing build conference, with very interesting talks"},
+        {"Id":"3","Text":"The traffic was terrible, I spent three hours going to the airport"}
+    ]}
 
-次の応答では、テキスト ID に関連付けられているキー フレーズの一覧を取得します。
+In the response below, you get the list of key phrases associated with your text Ids:
 
-	{ "odata.metadata":"<url>",
-	 	"KeyPhrasesBatch":
-		[
-		   {"KeyPhrases":["unique decor","friendly staff","wonderful hotel"],"Id":"1"},
-		   {"KeyPhrases":["amazing build conference","interesting talks"],"Id":"2"},
-		   {"KeyPhrases":["hours","traffic","airport"],"Id":"3" }
-		],
-		"Errors":[]
-	}
+    { "odata.metadata":"<url>",
+        "KeyPhrasesBatch":
+        [
+           {"KeyPhrases":["unique decor","friendly staff","wonderful hotel"],"Id":"1"},
+           {"KeyPhrases":["amazing build conference","interesting talks"],"Id":"2"},
+           {"KeyPhrases":["hours","traffic","airport"],"Id":"3" }
+        ],
+        "Errors":[]
+    }
 
 ---
 
-### GetLanguageBatch
+### <a name="getlanguagebatch"></a>GetLanguageBatch
 
-下の POST 呼び出しでは、2 つのテキスト入力の言語検出を要求しています。
+In the POST call below, we are requesting language detection for two text inputs:
 
     POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetLanguageBatch
 
-要求本文:
+Request body:
 
     {
       "Inputs": [
@@ -243,7 +244,7 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
       ]
     }
 
-これで次の応答が返されます。英語が最初の入力で検出され、フランス語が 2 つ目の入力で検出されます。
+This returns the following response, where English is detected in the first input and French in the second input:
 
     {
        "LanguageBatch": [{
@@ -269,120 +270,124 @@ Text Analytics サービスでは、センチメントとキー フレーズの�
 
 ---
 
-## トピック検出 API
+## <a name="topic-detection-apis"></a>Topic Detection APIs
 
-これは新しくリリースされた API であり、送信されたテキスト レコードの一覧に基づき検出されたトピックの上位を返します。トピックはキー フレーズ、つまり、1 つまたは複数の関連単語で特定されます。この API では、送信されるテキスト レコードあたり 1 トランザクションが請求されることに注意してください。
+This is a newly released API which returns the top detected topics for a list of submitted text records. A topic is identified with a key phrase, which can be one or more related words. Note that this API charges 1 transaction per text record submitted.
 
-この API を利用するには、100 件以上のテキスト レコードを送信する必要がありますが、数百から数千単位のレコードからトピックを検出するように設計されています。
-
-
-### トピック – 送信ジョブ
-
-**URL**
-
-	https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection
-
-**要求の例**
+This API requires a minimum of 100 text records to be submitted, but is designed to detect topics across hundreds to thousands of records.
 
 
-下の POST 呼び出しでは、100 件の記事からなる 1 セットに対してトピックを要求しています。最初と最後の Input と 2 つの StopPhrases が表示されています。
-
-	POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection HTTP/1.1
-
-要求本文:
-
-	{"Inputs":[
-		{"Id":"1","Text":"I loved the food at this restaurant"},
-		...,
-		{"Id":"100","Text":"I hated the decor"}
-	],
-	"StopPhrases":[
-		"restaurant", “visitor"
-	]}
-
-下の応答では、送信されたジョブの JobId を取得します。
-
-	{
-		"odata.metadata":"<url>",
-		"JobId":"<JobId>"
-	}
-
-トピックとして返すべきではない 1 つの単語または複数の語句の一覧を利用し、非常に一般的なトピックを除外できます。たとえば、ホテルのレビューに関するデータセットで、"hotel" と "hostel" は理にかなったストップ フレーズとなります。
-
-### トピック – ジョブ結果のポーリング
+### <a name="topics-–-submit-job"></a>Topics – Submit job
 
 **URL**
 
-	https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult
+    https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection
 
-**要求の例**
-
-"ジョブの送信" 手順から返された JobId を渡し、結果を取得します。応答に「Status=’Complete’」が含まれるまで、このエンドポイントを 1 分ごとに呼び出すことが推奨されます。ジョブのレコードが数千単位になる場合、完了に 10 分以上かかります。
-
-	GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult?JobId=<JobId>
+**Example request**
 
 
-処理中の応答は次のようになります。
+In the POST call below, we are requesting topics for a set of 100 articles, where the first and last input articles are shown, and two StopPhrases are included.
 
-	{
-		"odata.metadata":"<url>",
-		"Status":"Running",
- 		"TopicInfo":[],
-		"TopicAssignment":[],
-		"Errors":[]
-	}
+    POST https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/StartTopicDetection HTTP/1.1
 
+Request body:
 
-この API は、JSON 形式の出力を次の形式で返します。
+    {"Inputs":[
+        {"Id":"1","Text":"I loved the food at this restaurant"},
+        ...,
+        {"Id":"100","Text":"I hated the decor"}
+    ],
+    "StopPhrases":[
+        "restaurant", “visitor"
+    ]}
 
-	{
-		"odata.metadata":"<url>",
-		"Status":"Finished",
-		"TopicInfo":[
-		{
-			"TopicId":"ed00480e-f0a0-41b3-8fe4-07c1593f4afd",
-			"Score":8.0,
-			"KeyPhrase":"food"
-		},
-		...
-		{
-			"TopicId":"a5ca3f1a-fdb1-4f02-8f1b-89f2f626d692",
-			"Score":6.0,
-			"KeyPhrase":"decor"
-    		}
-  		],
-		"TopicAssignment":[
-		{
-			"Id":"1",
-			"TopicId":"ed00480e-f0a0-41b3-8fe4-07c1593f4afd",
-			"Distance":0.7809
-		},
-		...
-		{
-			"Id":"100",
-			"TopicId":"a5ca3f1a-fdb1-4f02-8f1b-89f2f626d692",
-			"Distance":0.8034
-		}
-		],
-		"Errors":[]
+In the response below, you get the JobId for the submitted job:
+
+    {
+        "odata.metadata":"<url>",
+        "JobId":"<JobId>"
+    }
+
+A list of single word or multiple word phrases which should not be returned as topics. Can be used to filter out very generic topics. For example, in a dataset about hotel reviews, "hotel" and "hostel" may be sensible stop phrases.  
+
+### <a name="topics-–-poll-for-job-results"></a>Topics – Poll for job results
+
+**URL**
+
+    https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult
+
+**Example request**
+
+Pass the JobId returned from the ‘Submit job’ step to fetch the results. We recommend that you call this endpoint every minute until Status=’Complete’ in the response. It will take around 10 mins for a job to complete, or longer for jobs with many thousands of records.
+
+    GET https://api.datamarket.azure.com/data.ashx/amla/text-analytics/v1/GetTopicDetectionResult?JobId=<JobId>
 
 
-応答の各部分のプロパティは次のとおりです。
+While it is processing, the response will be as follows:
 
-**TopicInfo プロパティ**
+    {
+        "odata.metadata":"<url>",
+        "Status":"Running",
+        "TopicInfo":[],
+        "TopicAssignment":[],
+        "Errors":[]
+    }
 
-| キー | Description |
+
+The API returns output in JSON format in the following format:
+
+    {
+        "odata.metadata":"<url>",
+        "Status":"Finished",
+        "TopicInfo":[
+        {
+            "TopicId":"ed00480e-f0a0-41b3-8fe4-07c1593f4afd",
+            "Score":8.0,
+            "KeyPhrase":"food"
+        },
+        ...
+        {
+            "TopicId":"a5ca3f1a-fdb1-4f02-8f1b-89f2f626d692",
+            "Score":6.0,
+            "KeyPhrase":"decor"
+            }
+        ],
+        "TopicAssignment":[
+        {
+            "Id":"1",
+            "TopicId":"ed00480e-f0a0-41b3-8fe4-07c1593f4afd",
+            "Distance":0.7809
+        },
+        ...
+        {
+            "Id":"100",
+            "TopicId":"a5ca3f1a-fdb1-4f02-8f1b-89f2f626d692",
+            "Distance":0.8034
+        }
+        ],
+        "Errors":[]
+
+
+The properties for each part of the response are as follows:
+
+**TopicInfo properties**
+
+| Key | Description |
 |:-----|:----|
-| TopicId | 各トピックの一意の識別子。 |
-| Score | トピックに割り当てられているレコードの数。 |
-| KeyPhrase | トピックの要約となる単語または語句。1 つの単語の場合もあれば、複数の単語の場合もあります。 |
+| TopicId | A unique identifier for each topic. |
+| Score | Count of records assigned to topic. |
+| KeyPhrase | A summarizing word or phrase for the topic. Can be 1 or multiple words. |
 
-**TopicAssignment プロパティ**
+**TopicAssignment properties**
 
-| キー | Description |
+| Key | Description |
 |:-----|:----|
-| ID | レコードの識別子。入力に含まれる ID と同じです。 |
-| TopicId | レコードが割り当てられているトピック ID。 |
-| Distance | レコードがトピックに属する確実性。Distance がゼロに近ければ、それだけ確実性が高くなります。 |
+| Id | Identifier for the record. Equates to the ID included in the input. |
+| TopicId | The topic ID which the record has been assigned to. |
+| Distance | Confidence that the record belongs to the topic. Distance closer to zero indicates higher confidence. |
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

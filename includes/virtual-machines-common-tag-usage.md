@@ -1,22 +1,27 @@
 
 
 
-## 使用量の詳細でタグを確認する
+## <a name="viewing-your-tags-in-the-usage-details"></a>Viewing your tags in the usage details
 
-Resource Manager デプロイメント モデルで Compute、Network、および Storage リソースに設定したタグは、[課金ポータル](https://account.windowsazure.com/)の使用量の詳細に追加されます。
+Tags placed on Compute, Network, and Storage resources in the Resource Manager deployment model will be populated in your usage details in the [billing portal](https://account.windowsazure.com/).
 
-**[使用量の詳細のダウンロード]** をクリックして、サブスクリプションの使用量の詳細を表示します。
+Click on **Download usage details** to view the usage details in your subscription.
 
-![Azure ポータルの使用量の詳細](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
+![Usage details in Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-usage-details.png)
 
-課金明細と **[Version 2]** の使用量の詳細を選択します。
+Select your billing statement and the **Version 2** usage details:
 
-![Azure ポータルに表示される Version 2 プレビューの使用量の詳細](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
+![Version 2 Preview Usage Details in Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-version2-usage-details.png)
 
-使用量の詳細の **[タグ]** 列には、すべてのタグが表示されます。
+From the usage details, you can see all of the tags in the **Tags** column:
 
-![Azure ポータルのタグ列](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
+![Tags column in Azure portal](./media/virtual-machines-common-tag-usage/azure-portal-tags-column.png)
 
-これらのタグと使用量を分析すると、新たな視点で組織の使用データを調査できるようになります。
+By analyzing these tags along with usage, organizations will be able to gain new insights into their consumption data.
+
+
+
+
+<!--HONumber=Oct16_HO2-->
 
 

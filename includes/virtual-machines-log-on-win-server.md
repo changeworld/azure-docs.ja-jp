@@ -1,19 +1,26 @@
 <properties services="virtual-machines" title="How to Log on to a Virtual Machine Running Windows Server" authors="cynthn" solutions="" manager="timlt" editor="tysonn" />
 
-4. **[接続]** をクリックすると、リモート デスクトップ プロトコル ファイル (.rdp ファイル) が作成され、ダウンロードされます。**[開く]** をクリックしてこのファイルを使用します。
 
-5. .rdp の発行元が不明であることを示す警告が表示されます。問題はありません。リモート デスクトップ ウィンドウで、**[接続]** をクリックして続行します。
+4. Clicking **Connect** creates and downloads a Remote Desktop Protocol file (.rdp file). Click **Open** to use this file.
 
-	![Screenshot of a warning about an unknown publisher.](./media/virtual-machines-log-on-win-server/rdp-warn.png)
+5. You will get a warning that the .rdp is from an unknown publisher. This is normal. In the Remote Desktop window, click **Connect** to continue.
 
-6. **[Windows セキュリティ]** ウィンドウで、仮想マシンのアカウントの資格情報を入力し、**[OK]** をクリックします。
+    ![Screenshot of a warning about an unknown publisher.](./media/virtual-machines-log-on-win-server/rdp-warn.png)
 
- 	**ローカル アカウント** - 通常は、仮想マシンの作成時に指定したローカル アカウントのユーザー名とパスワードです。この場合、ドメインは仮想マシンの名前です。これを *vmname*&#92;*username* の形式で入力します。
-	
-	**ドメインに参加している VM** - VM がドメインに属している場合は、*Domain*&#92;*Username* の形式で入力します。また、アカウントは管理者グループに属しているか、VM へのリモート アクセス特権が付与されている必要があります。
-	
-	**ドメイン コントローラー** - VM がドメイン コントローラーである場合は、そのドメインのドメイン管理者アカウントのユーザー名とパスワードを入力します。
+6. In the **Windows Security** window, type the credentials for an account on the virtual machine and then click **OK**.
 
-7.	**[はい]** をクリックして、目的の仮想マシンであることを確認し、ログオンを完了します。
+    **Local account** - this is usually the local account user name and password that you specified when you created the virtual machine. In this case, the domain is the name of the virtual machine and it is entered as *vmname*&#92;*username*.  
+    
+    **Domain joined VM** - if the VM belongs to a domain, enter the user name in the format *Domain*&#92;*Username*. The account also needs to either be in the Administrators group or have been granted remote access privileges to the VM.
+    
+    **Domain controller** - if the VM is a domain controller, type the user name and password of a domain administrator account for that domain.
 
-	![VM の ID の検証に関するメッセージが表示されているスクリーンショット。](./media/virtual-machines-log-on-win-server/cert-warning.png)
+7.  Click **Yes** to verify the identity of the virtual machine and finish logging on.
+
+    ![Screenshot showing a message abut verifying the identity of the VM.](./media/virtual-machines-log-on-win-server/cert-warning.png)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

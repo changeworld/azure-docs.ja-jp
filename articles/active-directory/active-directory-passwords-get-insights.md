@@ -1,172 +1,173 @@
 <properties
-	pageTitle="Get Insights: Azure AD のパスワード管理レポート | Microsoft Azure"
-	description="この記事では、レポートを使用して、組織内のパスワード管理操作を把握する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="asteen"
-	manager="femila"
-	editor="curtand"/>
+    pageTitle="Get Insights: Azure AD Password Management Reports | Microsoft Azure"
+    description="This article describes how to use reports to get insight into Password Management operations in your organization."
+    services="active-directory"
+    documentationCenter=""
+    authors="asteen"
+    manager="femila"
+    editor="curtand"/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/12/2016"
-	ms.author="asteen"/>
-
-# パスワード管理レポートで運用情報を把握する方法
-
-> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
-
-このセクションでは、Azure Active Directory のパスワード管理レポートを使用して、ユーザーが組織内でどのようにパスワード リセットや変更を使用しているかを表示する方法について説明します。
-
-- [**パスワード管理レポートの概要**](#overview-of-password-management-reports)
-- [**パスワード管理レポートの表示方法**](#how-to-view-password-management-reports)
-- [**組織内のパスワード リセット登録アクティビティの表示**](#view-password-reset-registration-activity)
-- [**組織内のパスワード リセット アクティビティの表示**](#view-password-reset-activity)
-
-## パスワード管理レポートの概要
-パスワード リセットをデプロイした後、一般的な手順では、次に組織内でリセットがどのように使用されているかを確認します。たとえば、ユーザーが登録しているパスワード リセット方法、または過去数日間にパスワード リセットが実行された回数を確認できます。次に、現在、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)のパスワード管理レポートを使用して確認できる一般的な項目をいくつか示します。
-
-- パスワード リセットを登録した人数
-- パスワード リセットを登録したユーザー
-- ユーザーが登録しているデータ
-- 過去 7 日間で自分のパスワードをリセットしたユーザー数
-- パスワードをリセットするためにユーザーまたは管理者が使用する一般的な方法
-- パスワード リセットを試みる場合に、ユーザーまたは管理者が直面する一般的な問題
-- 自らのパスワードを頻繁にリセットしている管理者
-- パスワード リセットに関する不審なアクティビティの有無
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/12/2016"
+    ms.author="asteen"/>
 
 
-## パスワード管理レポートを表示する方法
-パスワード管理レポートを参照するには、次の手順に従います。
+# <a name="how-to-get-operational-insights-with-password-management-reports"></a>How to get operational insights with Password Management reports
 
-1.	[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で **[Active Directory]** 拡張機能をクリックします。
-2.	ポータルに表示される一覧から、ディレクトリを選択します。
-3.	**[レポート]** タブをクリックします。
-4.	**[動作状況のログ]** セクションの下で、
-5.	**[パスワード リセット アクティビティ]** レポートまたは **[パスワード リセット登録アクティビティ]** レポートのいずれかを選択します。
+> [AZURE.IMPORTANT] **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+
+This section describes how you can use Azure Active Directory’s Password Management reports to view how users are using password reset and change in your organization.
+
+- [**Password Management reports overview**](#overview-of-password-management-reports)
+- [**How to view Password Management reports**](#how-to-view-password-management-reports)
+- [**View password reset registration activity in your organization**](#view-password-reset-registration-activity)
+- [**View password reset activity in your organization**](#view-password-reset-activity)
+
+## <a name="overview-of-password-management-reports"></a>Overview of Password Management reports
+Once you deploy password reset, one of the most common next steps is to see how it is being used in your organization.  For example, you may want to get insight into how users are registering for password reset, or how many password resets have been done in the last few days.  Here are some of the common questions that you will be able to answer with the Password Management reports that exist in the [Azure Management Portal](https://manage.windowsazure.com) today:
+
+- How many people have registered for password reset?
+- Who has registered for password reset?
+- What data are people registering?
+- How many people reset their passwords in the last 7 days?
+- What are the most common methods users or admins use to reset their passwords?
+- What are common issues users or admins face when attempting to use password reset?
+- What admins are resetting their own passwords frequently?
+- Is there any suspicious activity going on with password reset?
+
+
+## <a name="how-to-view-password-management-reports"></a>How to view Password Management reports
+To find the Password Management reports, follow the steps below:
+
+1.  Click on the **Active Directory** extension in the [Azure Management Portal](https://manage.windowsazure.com).
+2.  Select your directory from the list that appears in the portal.
+3.  Click on the **Reports** tab.
+4.  Look under the **Activity Logs** section.
+5.  Select either the **Password reset activity** report or the **Password reset registration activity** report.
 
     ![][001]
 
-## API からパスワード管理レポートにアクセスする方法
-2015 年 8 月の時点で、Azure AD Reports および Events は、パスワード リセットおよびパスワード リセット登録レポートに含まれるすべての情報を取得できるようになりました。
+## <a name="how-to-access-password-management-reports-from-an-api"></a>How to access Password Management Reports from an API
+As of August 2015, the Azure AD Reports and Events now supports retrieving all of the information included in the Password Reset and Password Reset Registration reports.
 
-このデータにアクセスするには、サーバーからデータを取得するための小規模なアプリケーションまたはスクリプトを作成する必要があります。[Azure AD Reporting API の使用を開始する方法](active-directory-reporting-api-getting-started.md)
+To access this data, you'll need to write a small app or script to retrieve it from our servers. [Learn how to get started with the Azure AD Reporting API](active-directory-reporting-api-getting-started.md).
 
-作業用スクリプトの準備ができたら、シナリオの条件を満たすために取得可能なパスワード リセットおよび登録イベントを調査します。
+Once you have a working script, you'll next want to examine the password reset and registration events that you can retrieve to meet your scenarios.
 
-- [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): パスワード リセット イベントで利用可能な列を一覧します。
-- [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): パスワード リセット登録イベントで利用可能な列を一覧します。
+- [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): Lists the columns available for password reset events
+- [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): Lists the columns available for password reset registration events
 
-## パスワード リセット登録アクティビティの表示
+## <a name="view-password-reset-registration-activity"></a>View password Reset registration activity
 
-パスワード リセット登録アクティビティ レポートでは、組織で実行されたすべてのパスワード リセットの登録が表示されます。パスワード リセットの登録は、パスワード リセット登録ポータル ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)) で認証情報を正常に登録したユーザーについて、このレポートに表示されます
+The password reset registration activity report shows all password reset registrations that have occurred in your organization.  A password reset registration is displayed in this report for any user who has successfully registered authentication information at the password reset registration portal ([http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)).
 
-- **最大期間**: 1 か月
-- **最大行数**: 無制限
-- **ダウンロードの可否**: CSV ファイルでダウンロードできます。
+- **Max time range**: 1 month
+- **Max number of rows**: unlimited
+- **Downloadable**: Yes, via CSV file
 
     ![][002]
 
-### レポートの列の説明
-次の一覧では、レポートの各列について詳細に説明します。
+### <a name="description-of-report-columns"></a>Description of report columns
+The following list explains each of the report columns in detail:
 
-- **ユーザー** – パスワード リセット登録操作を試みたユーザー。
-- **ロール** – ディレクトリ内のユーザーの役割。
-- **日付と時刻** – 試行の日付と時刻。
-- **登録データ** – パスワード リセット登録中にユーザーが提供した認証データ。
+- **User** – the user who attempted a password reset registration operation.
+- **Role** – the role of the user in the directory.
+- **Date and Time** – the date and time of the attempt.
+- **Data Registered** – what authentication data the user provided during password reset registration.
 
-### レポートの値の説明
-次の表には、各列で使用できるさまざまな値について説明します。
+### <a name="description-of-report-values"></a>Description of report values
+The following table describes the different values allowed for each column:
 
-分割|使用できる値とその意味
+Column|Allowed values and their meanings
 ---|---
-登録済みデータ| **連絡用メール アドレス** – ユーザーは認証するために連絡用メール アドレスまたは認証用メール アドレスを使用しました。<p><p>**会社電話** – ユーザーは認証するために会社電話を使用しました。<p>**携帯電話** - ユーザーは認証するために携帯電話または認証用電話を使用しました。<p>**秘密の質問** – ユーザーは認証するために秘密の質問を使用しました。<p>**上記の組み合せ (例: 連絡用メール アドレス + 携帯電話)** – 2 ゲート ポリシーを指定した場合に発生し、ユーザーがパスワード リセット要求を認証するためにどの 2 つの方法を使用したかを示します。
+Data Registered| **Alternate Email** – user used alternate email or authentication email to authenticate<p><p>**Office Phone**– user used office phone to authenticate<p>**Mobile Phone** - user used mobile phone or authentication phone to authenticate<p>**Security Questions** – user used security questions to authenticate<p>**Any combination of the above (e.g. Alternate Email + Mobile Phone)** – occurs when a 2 gate policy is specified and shows which two methods the user used to authentication his password reset request.
 
-## パスワード リセット アクティビティの表示
+## <a name="view-password-reset-activity"></a>View password reset activity
 
-このレポートには、組織で実行されたすべてのパスワード リセット試行が表示されます。
+This report shows all password reset attempts that have occurred in your organization.
 
-- **最大期間**: 1 か月
-- **最大行数**: 無制限
-- **ダウンロードの可否**: CSV ファイルでダウンロードできます。
+- **Max time range**: 1 month
+- **Max number of rows**: unlimited
+- **Downloadable**: Yes, via CSV file
 
     ![][003]
 
-### レポートの列の説明
-次の一覧では、レポートの各列について詳細に説明します。
+### <a name="description-of-report-columns"></a>Description of report columns
+The following list explains each of the report columns in detail:
 
-1. **ユーザー** – パスワード リセット操作を試みたユーザー (ユーザーがパスワードをリセットするときに指定するユーザー ID フィールドに基づきます)。
-2. **ロール** – ディレクトリ内のユーザーの役割。
-3. **日付と時刻** – 試行の日付と時刻。
-4. **使用された方法** – このリセット操作でユーザーが使用した認証方法。
-5. **結果** – パスワード リセット操作の最終的な結果。
-6. **詳細** – パスワード リセットによって、表示された値についての理由の詳細。予期しないエラーを解決するために実行できる軽減手順も含まれます。
+1. **User** – the user who attempted a password reset operation (based on the User ID field provided when the user comes to reset a password).
+2. **Role** – the role of the user in the directory.
+3. **Date and Time** – the date and time of the attempt.
+4. **Method(s) Used** – what authentication methods the user used for this reset operation.
+5. **Result** – the end result of the password reset operation.
+6. **Details** – the details of why the password reset resulted in the value it did.  Also includes any mitigation steps you might take to resolve an unexpected error.
 
-### レポートの値の説明
-次の表には、各列で使用できるさまざまな値について説明します。
+### <a name="description-of-report-values"></a>Description of report values
+The following table describes the different values allowed for each column:
 
-分割|使用できる値とその意味
+Column|Allowed values and their meanings
 ---|---
-使用された方法|**連絡用メール アドレス** – ユーザーは認証するために連絡用メール アドレスまたは認証用メール アドレスを使用しました。<p>**会社電話** – ユーザーは認証するために会社電話を使用しました。<p>**携帯電話** - ユーザーは認証するために携帯電話または認証用電話を使用しました。<p>**秘密の質問** – ユーザーは認証するために秘密の質問を使用しました。<p>**上記の組み合せ (例: 連絡用メール アドレス + 携帯電話)** – 2 ゲート ポリシーを指定した場合に発生し、ユーザーがパスワード リセット要求を認証するためにどの 2 つの方法を使用したかを示します。
-結果|**中止** – ユーザーはパスワード リセットを開始しましたが、完了せずに途中で中止しました。<p>**ブロック** - 24 時間以内にパスワード リセット ページまたは単一のパスワード リセット ゲートを多く使用しすぎたため、ユーザーのアカウントで、パスワード リセットの使用が禁止されました。<p>**キャンセル** – ユーザーはパスワード リセットを開始しましたが、途中で [キャンセル] ボタンをクリックして、セッションをキャンセルしました。<p>**管理者に連絡済み** – ユーザーは、セッション中に問題が発生したため、パスワード リセット フローを完了する代わりに [管理者に連絡] リンクをクリックしました。<p>**失敗** – ユーザーはパスワードをリセットできませんでした。おそらくユーザーがこの機能を使用するように構成されていませんでした (例: ライセンスなし、認証情報不足、パスワードはオンプレミスで管理されているが書き戻しがオフになっている)。<p>**成功** – パスワードのリセットは成功しました。
-詳細|次の表を参照してください。
+Methods Used|**Alternate Email** – user used alternate email or authentication email to authenticate<p>**Office Phone** – user used office phone to authenticate<p>**Mobile Phone** – user used mobile phone or authentication phone to authenticate<p>**Security Questions** – user used security questions to authenticate<p>**Any combination of the above (e.g. Alternate Email + Mobile Phone)** – occurs when a 2 gate policy is specified and shows which two methods the user used to authentication his password reset request.
+Result|**Abandoned** – user started password reset but then stopped halfway through without completing<p>**Blocked** – user’s account was prevented to use password reset due to attempting to use the password reset page or a single password reset gate too many times in a 24 hour period<p>**Cancelled** – user started password reset but then clicked the cancel button to cancel the session part way through <p>**Contacted Admin** – user had a problem during his session that he could not resolve, so the user clicked the “Contact your administrator” link instead of finishing the password reset flow<p>**Failed** – user was not able to reset a password, likely because the user was not configured to use the feature (e.g. no license, missing authentication info, password managed on-prem but writeback is off).<p>**Succeeded** – password reset was successful.
+Details|See table below
 
-### [詳細] 列で許可される値
-パスワード リセット アクティビティ レポートを使用している場合に、想定される結果の種類の一覧を以下に示します。
+### <a name="allowed-values-for-details-column"></a>Allowed values for details column
+Below is the list of result types you may expect when using the password reset activity report:
 
-詳細 | 結果の種類
+Details | Result Type
 ----|----
-ユーザーは、電子メールの確認オプションの完了後に中止しました。 | Abandoned
-ユーザーは、モバイル SMS の確認オプションの完了後に中止しました。|Abandoned
-ユーザーは、音声通話の確認オプションの完了後に中止しました。 | Abandoned
-ユーザーは、会社音声通話の確認オプションの完了後に中止しました。 | Abandoned
-ユーザーは、秘密の質問オプションの完了後に中止しました。|Abandoned
-ユーザーは、ユーザー ID の入力後に中止しました。| Abandoned
-ユーザーは、電子メールの確認オプションの開始後に中止しました。|Abandoned
-ユーザーは、モバイル SMS の確認オプションの開始後に中止しました。|Abandoned
-ユーザーは、音声通話の確認オプションの開始後に中止しました。|Abandoned
-ユーザーは、会社音声通話の確認オプションの開始後に中止しました。|Abandoned
-ユーザーは、秘密の質問オプションの開始後に中止しました。| Abandoned
-ユーザーは、新しいパスワードを選択する前に中止しました。| Abandoned
-ユーザーは、新しいパスワードを選択するときに中止しました。| Abandoned
-ユーザーは、非常に多くの無効な SMS 確認コードを入力したため、24 時間ブロックされました。|Blocked
-ユーザーは、携帯電話の音声確認を何度も試行したため、24 時間ブロックされました。|Blocked
-ユーザーは、会社電話の音声確認を何度も試行したため、24 時間ブロックされました。 |Blocked
-ユーザーは、秘密の質問に何度も答えようとしたため、24 時間ブロックされました。| Blocked
-ユーザーは、電話番号を何度も確認しようとしたため、24 時間ブロックされました。|Blocked
-ユーザーは、必要な認証方式に合格する前にキャンセルしました。|Cancelled
-ユーザーは、新しいパスワードを送信する前にキャンセルしました。|Cancelled
-ユーザーは、電子メールの確認オプションを試行した後に、管理者に連絡しました。 |Contacted admin
-ユーザーは、モバイル SMS の確認オプションを試行した後に、管理者に連絡しました。|Contacted admin
-ユーザーは、モバイル音声通話の確認オプションを試行した後に、管理者に連絡しました。|Contacted admin
-ユーザーは、会社音声通話の確認オプションを試行した後に、管理者に連絡しました。 |Contacted admin
-ユーザーは、秘密の質問の確認オプションを試行した後に、管理者に連絡しました。|Contacted admin
-パスワード リセットは、このユーザーに対して有効になっていません。この問題を解決するには、[構成] タブで、パスワード リセットを有効にします。| Failed
-ユーザーには、ライセンスがありません。この問題を解決するには、ユーザーにライセンスを追加します。|Failed
-ユーザーは、Cookie を有効にしていないデバイスからリセットしようとしました。| Failed
-ユーザーのアカウントでは、認証方法が十分に定義されていません。この問題を解決するには、認証情報を追加します。|Failed
-ユーザーのパスワードは、オンプレミスで管理されています。この問題を解決するには、パスワードの書き戻しを有効にします。|Failed
-オンプレミス パスワード リセット サービスに接続できませんでした。同期コンピューターのイベント ログを確認してください。|Failed
-ユーザーのオンプレミスのパスワードのリセット中に問題が発生しました。同期コンピューターのイベント ログを確認してください。 | Failed
-このユーザーは、パスワード リセット ユーザー グループのメンバーではありません。この問題を解決するには、このグループに、ユーザーを追加します。|Failed
-パスワード リセットが、このテナントですべて無効になっています。これを解決するには、[ここ](http://aka.ms/ssprtroubleshoot)を参照してください。 | Failed
-ユーザーが、正常にパスワードをリセットしました。|Succeeded
+User abandoned after completing the email verification option  | Abandoned
+User abandoned after completing the mobile SMS verification option|Abandoned
+User abandoned after completing the mobile voice call verification option | Abandoned
+User abandoned after completing the office voice call verification option | Abandoned
+User abandoned after completing the security questions option|Abandoned
+User abandoned after entering their user ID| Abandoned
+User abandoned after starting the email verification option|Abandoned
+User abandoned after starting the mobile SMS verification option|Abandoned
+User abandoned after starting the mobile voice call verification option|Abandoned
+User abandoned after starting the office voice call verification option|Abandoned
+User abandoned after starting the security questions option| Abandoned
+User abandoned before selecting a new password| Abandoned
+User abandoned while selecting a new password| Abandoned
+User entered too many invalid SMS verification codes and is blocked for 24 hours|Blocked
+User tried mobile phone voice verification too many times and is blocked for 24 hours|Blocked
+User tried office phone voice verification too many times and is blocked for 24 hours |Blocked
+User tried to answer security questions too many times and is blocked for 24 hours| Blocked
+User tried to verify a phone number too many times and is blocked for 24 hours|Blocked
+User cancelled before passing the required authentication methods|Cancelled
+User cancelled before submitting a new password|Cancelled
+User contacted an admin after trying the email verification option |Contacted admin
+User contacted an admin after trying the mobile SMS verification option|Contacted admin
+User contacted an admin after trying the mobile voice call verification option|Contacted admin
+User contacted an admin after trying the office voice call verification option |Contacted admin
+User contacted an admin after trying the security question verification option|Contacted admin
+Password reset is not enabled for this user. Enable password reset under the configure tab to resolve this|  Failed
+User does not have a license. You can add a license to the user to resolve this|Failed
+User tried to reset from a device without cookies enabled| Failed
+User's account has insufficient authentication methods defined. Add authentication info to resolve this|Failed
+User's password is managed on-premises. You can enable Password Writeback to resolve this|Failed
+We could not reach your on-premises password reset service. Check your sync machine's event log|Failed
+We encountered a problem while resetting the user's on-premises password. Check your sync machine's event log | Failed
+This user is not a member of the password reset users group. Add this user to that group to resolve this.|Failed
+Password reset has been disabled entirely for this tenant. See [here](http://aka.ms/ssprtroubleshoot) to resolve this. | Failed
+User successfully reset password|Succeeded
 
-## パスワードのリセットに関するドキュメントへのリンク
-Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
+## <a name="links-to-password-reset-documentation"></a>Links to password reset documentation
+Below are links to all of the Azure AD Password Reset documentation pages:
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
-* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
-* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
-* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
-* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
+* **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+* [**How it works**](active-directory-passwords-how-it-works.md) - learn about the six different components of the service and what each does
+* [**Getting started**](active-directory-passwords-getting-started.md) - learn how to allow you users to reset and change their cloud or on-premises passwords
+* [**Customize**](active-directory-passwords-customize.md) - learn how to customize the look & feel and behavior of the service to your organization's needs
+* [**Best practices**](active-directory-passwords-best-practices.md) - learn how to quickly deploy and effectively manage passwords in your organization
+* [**FAQ**](active-directory-passwords-faq.md) - get answers to frequently asked questions
+* [**Troubleshooting**](active-directory-passwords-troubleshoot.md) - learn how to quickly troubleshoot problems with the service
+* [**Learn more**](active-directory-passwords-learn-more.md) - go deep into the technical details of how the service works
 
 
 
@@ -174,4 +175,8 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [002]: ./media/active-directory-passwords-get-insights/002.jpg "Image_002.jpg"
 [003]: ./media/active-directory-passwords-get-insights/003.jpg "Image_003.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

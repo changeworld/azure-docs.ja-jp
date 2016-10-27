@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure クラスターとそのリソースの削除 | Microsoft Azure"
-   description="クラスターを含むリソース グループを削除するか、リソースを選択的に削除して、Service Fabric クラスターを完全に削除する方法について学習します。"
+   pageTitle="Delete an Azure cluster and its resources | Microsoft Azure"
+   description="Learn how to completely delete a Service Fabric cluster either deleting the resource group containing the cluster or by selectively deleting resources."
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -16,21 +16,23 @@
    ms.date="09/09/2016"
    ms.author="chackdan"/>
 
-# Azure の Service Fabric クラスターとその使用リソースの削除
 
-Service Fabric クラスターは、クラスター リソース自体に加え、その他の多くの Azure リソースで構成されます。そのため、Service Fabric クラスターを完全に削除するには、構成されるすべてのリソースも削除する必要があります。オプションは 2 つあります。クラスターのあるリソース グループを削除 (クラスター リソースとリソース グループ内のその他のすべてのリソースが削除されます) するか、クラスター リソースとその関連するリソース (リソース グループ内のその他のリソースは対象から除かれます) を個別に削除します。
+# <a name="delete-a-service-fabric-cluster-on-azure-and-the-resources-it-uses"></a>Delete a Service Fabric cluster on Azure and the resources it uses
 
->[AZURE.NOTE] クラスター リソースを削除しても、Service Fabric クラスターを構成しているその他のすべてのリソースが削除されることは**ありません**。
+A Service Fabric cluster is made up of many other Azure resources in addition to the cluster resource itself. So to completely delete a Service Fabric cluster you also need to delete all the resources it is made of.
+You have two options: Either delete the resource group that the cluster is in (which deletes the cluster resource and any other resources in the resource group) or specifically delete the cluster resource and it's associated resources (but not other resources in the resource group).
 
-## Service Fabric クラスターがあるリソース グループ (RG) 全体の削除
+>[AZURE.NOTE] Deleting the cluster resource **does not** delete all the other resources that your Service Fabric cluster is composed of.
 
-これは、リソース グループを含む、クラスターに関連付けられているすべてのリソースを確実に削除する最も簡単な方法です。PowerShell または Azure ポータルを使用して、リソース グループを削除できます。Service fabric クラスターに関連していないリソースがリソース グループにある場合は、特定のリソースを削除できます。
+## <a name="delete-the-entire-resource-group-(rg)-that-the-service-fabric-cluster-is-in"></a>Delete the entire resource group (RG) that the Service Fabric cluster is in
 
-### Azure PowerShell を使用したリソース グループの削除
+This is the easiest way to ensure that you delete all the resources associated with your cluster, including the resource group. You can delete the resource group using PowerShell or through the Azure portal. If your resource group has resources that are not related to Service fabric cluster, then you can delete specific resources.
 
-次の Azure PowerShell コマンドレットを実行して、リソース グループを削除することもできます。Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。まだインストールされていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の手順を実行します。
+### <a name="delete-the-resource-group-using-azure-powershell"></a>Delete the resource group using Azure PowerShell
 
-PowerShell ウィンドウを開き、次の PS コマンドレットを実行します。
+You can also delete the resource group by running the following Azure PowerShell cmdlets. Make sure Azure PowerShell 1.0 or greater is installed on your computer. If you have not done this before, follow the steps outlined in [How to install and Configure Azure PowerShell.](../powershell-install-configure.md)
+
+Open a PowerShell window and run the following PS cmdlets:
 
 ```powershell
 Login-AzureRmAccount
@@ -38,70 +40,70 @@ Login-AzureRmAccount
 Remove-AzureRmResourceGroup -Name <name of ResouceGroup> -Force
 ```
 
-*-Force* オプションを使用しなかった場合、削除の確認を求めるメッセージが表示されます。確認すると、RG とそれに含まれるすべてのリソースが削除されます。
+You will get a prompt to confirm the deletion if you did not use the *-Force* option. On confirmation the RG and all the resources it contains are deleted.
 
-### Azure ポータルでのリソース グループの削除  
+### <a name="delete-a-resource-group-in-the-azure-portal"></a>Delete a resource group in the Azure portal  
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。
-2. 削除する Service Fabric クラスターに移動します。
-3. クラスターの [要点] ページでリソース グループの名前をクリックします。
-4. これにより、**リソース グループの [要点]** ページが表示されます。
-5. [**削除**] をクリックします。
-6. リソース グループの削除を完了するには、そのページに表示される指示に従います。
+1. Login to the [Azure portal](https://portal.azure.com).
+2. Navigate to the Service Fabric cluster you want to delete.
+3. Click on the Resource Group name on the cluster essentials page.
+4. This brings up the **Resource Group Essentials** page.
+5. Click **Delete**.
+6. Follow the instructions on that page to complete the deletion of the resource group.
 
-![リソース グループの削除][ResourceGroupDelete]
+![Resource Group Delete][ResourceGroupDelete]
 
 
-## クラスター リソースと、クラスターが使用するリソース (リソース グループ内のその他のリソースを除く) の削除
+## <a name="delete-the-cluster-resource-and-the-resources-it-uses,-but-not-other-resources-in-the-resource-group"></a>Delete the cluster resource and the resources it uses, but not other resources in the resource group
 
-リソース グループに、削除する Service Fabric クラスターに関連付けられているリソースのみがある場合は、リソース グループ全体を削除する方が簡単です。リソース グループ内のリソースを 1 つずつ選択して削除する場合は、次の手順を実行します。
+If your resource group has only resources that are related to the Service Fabric cluster you want to delete, then it is easier to delete the entire resource group. If you want to selectively delete the resources one-by-one in your resource group, then follow these steps.
 
-ポータルを使用するか、テンプレート ギャラリーに含まれる Service Fabric の Resource Manager テンプレートのいずれかを使用してクラスターをデプロイした場合は、クラスターで使用するすべてのリソースに次の 2 つのタグが付けられています。それらを使用して、削除するリソースを決定することができます。
+If you deployed your cluster using the portal or using one of the Service Fabric Resource Manager templates from the template gallery, then all the resources that the cluster uses are tagged with the following two tags. You can use them to decide which resources you want to delete.
 
-"***タグ 1:***" キー = clusterName、値 = <クラスターの名前>
+***Tag#1:*** Key = clusterName, Value = 'name of the cluster'
 
-"***タグ 2:***" キー = resourceName、値 = ServiceFabric
+***Tag#2:*** Key = resourceName, Value = ServiceFabric
 
-### Azure ポータルでの特定のリソースの削除
+### <a name="delete-specific-resources-in-the-azure-portal"></a>Delete specific resources in the Azure portal
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。
-2. 削除する Service Fabric クラスターに移動します。
-3. [要点] ブレードの **[すべての設定]** に移動します。
-4. [設定] ブレードの **[リソース管理]** で、**[タグ]** をクリックします。
-5. [タグ] ブレードでいずれかの**タグ**をクリックして、そのタグを持つすべてのリソースの一覧を取得します。
+1. Login to the [Azure portal](https://portal.azure.com).
+2. Navigate to the Service Fabric cluster you want to delete.
+3. Go to **All settings** on the essentials blade.
+4. Click on **Tags** under **Resource Management** in the settings blade.
+5. Click on one of the **Tags** in the tags blade to get a list of all the resources with that tag.
 
-    ![リソース タグ][ResourceTags]
+    ![Resource Tags][ResourceTags]
 
-6. タグが付けられたリソースの一覧を取得したら、各リソースをクリックして削除します。
+6. Once you have the list of tagged resources, click on each of the resources and delete them.
 
-    ![タグ付けされたリソース][TaggedResources]
+    ![Tagged Resources][TaggedResources]
 
-### Azure PowerShell を使用したリソースの削除
+### <a name="delete-the-resources-using-azure-powershell"></a>Delete the resources using Azure PowerShell
 
-次の Azure PowerShell コマンドレットを実行して、リソースを 1 つずつ削除できます。Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。まだインストールされていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の手順を実行します。
+You can delete the resources one-by-one by running the following Azure PowerShell cmdlets. Make sure Azure PowerShell 1.0 or greater is installed on your computer. If you have not done this before, follow the steps outlined in [How to install and Configure Azure PowerShell.](../powershell-install-configure.md)
 
-PowerShell ウィンドウを開き、次の PS コマンドレットを実行します。
+Open a PowerShell window and run the following PS cmdlets:
 
 ```powershell
 Login-AzureRmAccount
 ```
-削除するリソースごとに、次を実行します。
+For each of the resources you want to delete, run the following:
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "<Resource Type>" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-クラスター リソースを削除するには、次を実行します。
+To delete the cluster resource, run the following:
 
 ```powershell
 Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Microsoft.ServiceFabric/clusters" -ResourceGroupName "<name of the resource group>" -Force
 ```
 
-## 次のステップ
-次を確認して、クラスターのアップグレードとサービスのパーティション分割についても学習してください。
+## <a name="next-steps"></a>Next steps
+Read the following to also learn about upgrading a cluster and partitioning services:
 
-- [クラスターのアップグレードの詳細](service-fabric-cluster-upgrade.md)
-- [最大のスケールに対応するためのステートフル サービスのパーティション分割の詳細](service-fabric-concepts-partitioning.md)
+- [Learn about cluster upgrades](service-fabric-cluster-upgrade.md)
+- [Learn about partitioning stateful services for maximum scale](service-fabric-concepts-partitioning.md)
 
 
 <!--Image references-->
@@ -111,4 +113,8 @@ Remove-AzureRmResource -ResourceName "<name of the Resource>" -ResourceType "Mic
 
 [TaggedResources]: ./media/service-fabric-cluster-delete/TaggedResources.PNG
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

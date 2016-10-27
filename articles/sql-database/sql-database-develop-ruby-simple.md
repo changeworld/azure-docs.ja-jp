@@ -1,53 +1,58 @@
 <properties
-	pageTitle="Ruby を使用して SQL Database に接続する | Microsoft Azure"
-	description="Azure SQL Database に接続するための Ruby コード サンプルを提供します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="ajlam"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Connect to SQL Database by using Ruby | Microsoft Azure"
+    description="Give a Ruby code sample you can run to connect to Azure SQL Database."
+    services="sql-database"
+    documentationCenter=""
+    authors="ajlam"
+    manager="jhubbard"
+    editor=""/>
 
 
 <tags
-	ms.service="sql-database"
-	ms.workload="drivers"
-	ms.tgt_pltfrm="na"
-	ms.devlang="ruby"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="andrela"/>
+    ms.service="sql-database"
+    ms.workload="drivers"
+    ms.tgt_pltfrm="na"
+    ms.devlang="ruby"
+    ms.topic="article"
+    ms.date="10/03/2016"
+    ms.author="andrela"/>
 
 
-# Ruby を使用して SQL Database に接続する 
 
-[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
+# <a name="connect-to-sql-database-by-using-ruby"></a>Connect to SQL Database by using Ruby 
 
-このトピックでは、Ruby を使用して Azure SQL Database に接続し、クエリを実行する方法について説明します。このサンプルは、Windows、Ubuntu Linux、または Mac のプラットフォームから実行できます。
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)] 
 
-## 手順 1: 開発環境を設定する
+This topic shows how to connect and query an Azure SQL Database using Ruby. You can run this sample from Windows, Ubuntu Linux, or Mac platforms.
 
-[TinyTDS Ruby Driver for SQL Server 使用の前提条件](https://msdn.microsoft.com/library/mt711041.aspx)
+## <a name="step-1:-configure-development-environment"></a>Step 1: Configure Development Environment
 
-## 手順 2: SQL Database を作成する
+[Prerequisites for using the TinyTDS Ruby Driver for SQL Server](https://msdn.microsoft.com/library/mt711041.aspx)
 
-「[作業の開始](sql-database-get-started.md)」ページで、サンプル データベースを作成する方法についてご確認ください。ガイドに従って、**AdventureWorks データベースのテンプレート**を作成することが重要です。以下に示す例は、**AdventureWorks スキーマ** とのみ動作します。
+## <a name="step-2:-create-a-sql-database"></a>Step 2: Create a SQL database
 
-## 手順 3: 接続の詳細を取得する
+See the [getting started page](sql-database-get-started.md) to learn how to create a sample database.  It is important you follow the guide to create an **AdventureWorks database template**. The samples shown below only work with the **AdventureWorks schema**.
+
+## <a name="step-3:-get-connection-details"></a>Step 3: Get Connection Details
 
 [AZURE.INCLUDE [sql-database-include-connection-string-details-20-portalshots](../../includes/sql-database-include-connection-string-details-20-portalshots.md)]
 
-## 手順 4: サンプル コードを実行する
+## <a name="step-4:-run-sample-code"></a>Step 4: Run sample code
 
-[Ruby を使用した SQL 接続の概念実証](http://msdn.microsoft.com/library/mt715797.aspx)
+[Proof of Concept connecting to SQL using Ruby](http://msdn.microsoft.com/library/mt715797.aspx)
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-* 「[SQL Database の開発: 概要](sql-database-develop-overview.md)」の確認
-* [Microsoft Ruby Driver for SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) の詳細
+* Review the [SQL Database Development Overview](sql-database-develop-overview.md)
+* More information on the [Microsoft Ruby Driver for SQL Server](https://msdn.microsoft.com/library/mt691981.aspx)
 
-## その他のリソース 
+## <a name="additional-resources"></a>Additional resources 
 
-* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
+* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

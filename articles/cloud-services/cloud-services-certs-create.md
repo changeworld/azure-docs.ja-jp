@@ -1,65 +1,66 @@
 <properties 
-	pageTitle="Cloud Services と管理証明書 | Microsoft Azure" 
-	description="Microsoft Azure で証明書を作成し、使用する方法を学習します。" 
-	services="cloud-services" 
-	documentationCenter=".net" 
-	authors="Thraka" 
-	manager="timlt" 
-	editor=""/>
+    pageTitle="Cloud Services and management certificates | Microsoft Azure" 
+    description="Learn how to create and use certificates with Microsoft Azure" 
+    services="cloud-services" 
+    documentationCenter=".net" 
+    authors="Thraka" 
+    manager="timlt" 
+    editor=""/>
 
 <tags 
-	ms.service="cloud-services" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/05/2016"
-	ms.author="adegeo"/>
+    ms.service="cloud-services" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/11/2016"
+    ms.author="adegeo"/>
 
-# Azure Cloud Services の証明書の概要
-証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、 および管理 API の認証に使用されます (ARM ではなく Azure クラシック ポータルを使用している場合は、[管理証明書](#what-are-management-certificates))。このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成する](#create)方法、および Azure に[デプロイ](#deploy)する方法について説明します。
 
-Azure で使用される証明書は x.509 v3 証明書であり、別の信頼された証明書によって署名することも、自己署名することもできます。自己署名証明書は、作成者自身が署名するため、既定では信頼されません。ほとんどのブラウザーではこれを無視できます。自己署名証明書は、クラウド サービスを開発し、テストする際に、ユーザー自身によってのみ使用されるべき機能です。
+# <a name="certificates-overview-for-azure-cloud-services"></a>Certificates overview for Azure Cloud Services
+Certificates are used in Azure for cloud services ([service certificates](#what-are-service-certificates)) and for authenticating with the management API ([management certificates](#what-are-management-certificates) when using the Azure classic portal and not ARM). This topic gives a general overview of both certificate types, how to [create](#create) and [deploy](#deploy) them to Azure.
 
-Azure が使用する証明書には、プライベート キーか公開キーを含めることができます。証明書には、それらを明確な方法で識別する手段を提供する拇印があります。この拇印は、Azure の[構成ファイル](cloud-services-configure-ssl-certificate.md)で使用され、クラウド サービスで使用すべき証明書を識別します。
+Certificates used in Azure are x.509 v3 certificates and can be signed by another trusted certificate or they can be self-signed. A self-signed certificate is signed by its own creator, and because of this, are not trusted by default. Most browsers can ignore this. Self-signed certificates should only be used by yourself when developing and testing your cloud services. 
 
-## サービス証明書とは何でしょうか。
-サービス証明書はクラウド サービスに付属して、サービスとの間のセキュリティで保護された通信を有効にします。次の例では、Web ロールをデプロイして、公開されている HTTPS エンドポイントを認証できる証明書を指定します。サービス定義で定義されているサービス証明書は、ロールのインスタンスを実行している仮想マシンに自動的にデプロイされます。
+Certificates used by Azure can contain a private or a public key. Certificates have a thumbprint that provides a means to identify them in an unambiguous way. This thumbprint is used in the Azure [configuration file](cloud-services-configure-ssl-certificate.md) to identify which certificate a cloud service should use. 
 
-Azure クラシック ポータルまたはサービス管理 API を使用して、サービス証明書を Azure クラシック ポータルにアップロードすることができますサービス証明書は、特定のクラウド サービスに関連付けられ、サービス定義ファイルのデプロイメントに割り当てられます。
+## <a name="what-are-service-certificates?"></a>What are service certificates?
+Service certificates are attached to cloud services and enable secure communication to and from the service. For example, if you deployed a web role, you would want to supply a certificate that can authenticate an exposed HTTPS endpoint. Service certificates, defined in your service definition, are automatically deployed to the virtual machine that is running an instance of your role. 
 
-サービス証明書は、サービスとは別に管理することができ、別の人が管理する場合があります。たとえば、開発者が IT 管理者が 以前 Azure にアップロードした証明書を参照するサービス パッケージをアップロードする場合があります。IT 管理者は、新しいサービス パッケージをアップロードすることなくサービスの構成を変更する証明書を管理、更新できます。これは、証明書の論理名とそのストアの名前と場所がサービス定義ファイルで指定され、証明書の拇印はサービス構成ファイルで指定されているために可能です。証明書を更新するには、サービス構成ファイルに新しい証明書をアップロードし、拇印値を変更するだけです。
+You can upload service certificates to Azure classic portal either using the Azure classic portal or by using the Service Management API. Service certificates are associated with a specific cloud service and assigned to a deployment in the service definition file.
 
-## 管理証明書とは何でしょうか。
-管理証明書を使用すると、Azure クラシックによって提供されるサービス管理 API を使用して認証できます。多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書を使用して、さまざまな Azure サービスの構成とデプロイメントを自動化します。これらはクラウド サービスには実際には関連がありません。
+Service certificates can be managed separately from your services, and may be managed by different individuals. For example, a developer may upload a service package that refers to a certificate that an IT manager has previously uploaded to Azure. An IT manager can manage and renew that certificate changing the configuration of the service without needing to upload a new service package. This is possible because the logical name for the certificate and its store name and location are specified in the service definition file, while the certificate thumbprint is specified in the service configuration file. To update the certificate, it's only necessary to upload a new certificate and change the thumbprint value in the service configuration file.
 
->[AZURE.WARNING] ご注意ください。 これらの種類の証明書を使用して認証する場合、関連付けられているサブスクリプションを管理できます。
+## <a name="what-are-management-certificates?"></a>What are management certificates?
+Management certificates allow you to authenticate with the Service Management API provided by Azure classic. Many programs and tools (such as Visual Studio or the Azure SDK) will use these certificates to automate configuration and deployment of various Azure services. These are not really related to cloud services. 
 
-### 制限事項
-各サブスクリプションでは、管理証明書の数は 100 個までに制限されています。また、特定のサービス管理者のユーザー ID の下にあるすべてのサブスクリプションでも、管理証明書の数は 100 個までに制限されています。アカウント管理者のユーザー ID が既に 100 の管理証明書の追加に使用されていて、さらに証明書が必要な場合は、証明書を追加する共同管理者を追加できます。
+>[AZURE.WARNING] Be careful! These types of certificates allow anyone who authenticates with them to manage the subscription they are associated with. 
 
-100 を超える証明書を追加する前に既存の証明書を再利用できるかどうかをご確認ください。共同管理者を使用すると、証明書の管理プロセスが不必要に複雑になる場合があります。
+### <a name="limitations"></a>Limitations
+There is a limit of 100 management certificates per subscription. There is also a limit of 100 management certificates for all subscriptions under a specific service administrator’s user ID. If the user ID for the account administrator has already been used to add 100 management certificates and there is a need for more certificates, you can add a co-administrator to add the additional certificates. 
+
+Before adding more than 100 certificates, see if you can reuse an existing certificate. Using co-administrators adds potentially unneeded complexity to your certificate management process.
 
 
 <a name="create"></a>
-## 新しい自己署名証明書を作成する
-次の設定に準拠していれば、使用可能な任意のツールを使用して自己署名証明書を作成することができます。
+## <a name="create-a-new-self-signed-certificate"></a>Create a new self-signed certificate
+You can use any tool available to create a self-signed certificate as long as they adhere to these settings:
 
-* X.509 証明書。
-* 秘密キーが含まれている。
-* キー交換用に作成される (.pfx ファイル)。
-* 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。
-    > cloudapp.net (または Azure に関連する) ドメインの SSL 証明書を取得することはできません。証明書の件名は、アプリケーションへの接続に使用 されるカスタム ドメイン名と一致させる必要があります。たとえば、**contoso.cloudapp.net** ではなく、**contoso.net** を使います。
-* 最大で 2048 ビットの暗号化。
-* **サービス証明書のみ**: クライアント側の証明書は*個人*証明書ストアに格納されている必要があります。
+* An X.509 certificate.
+* Contains a private key.
+* Created for key exchange (.pfx file).
+* Subject name must match the domain used to access the cloud service. 
+    > You cannot acquire an SSL certificate for the cloudapp.net (or for any Azure related) domain; the certificate's subject name must match the custom domain name used to access your application. For example, **contoso.net**, not **contoso.cloudapp.net**.
+* Minimum of 2048-bit encryption.
+* **Service Certificate Only**: Client-side certificate must reside in the *Personal* certificate store.
 
-Windows で証明書を作成する簡単な方法として、`makecert.exe` ユーティリティを使用する方法と IIS を使用する方法の 2 つがあります。
+There are two easy ways to create a certificate on Windows, with the `makecert.exe` utility, or IIS.
 
-### Makecert.exe
+### <a name="makecert.exe"></a>Makecert.exe
 
-このユーティリティは廃止されたため、ここに記載されなくなりました。詳細については、[こちらの MSDN 記事](https://msdn.microsoft.com/library/windows/desktop/aa386968)を参照してください。
+This utility has been deprecated and is no longer documented here. Please see [this MSDN article](https://msdn.microsoft.com/library/windows/desktop/aa386968) for more information.
 
-### PowerShell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLocation "cert:\LocalMachine\My"
@@ -67,31 +68,35 @@ $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
 
->[AZURE.NOTE] ドメインではなく IP アドレスを持つ証明書を使用する場合は、-DnsName パラメーターで IP アドレスを使用します。
+>[AZURE.NOTE] If you want to use the certificate with an IP address instead of a domain, use the IP address in the -DnsName parameter.
 
 
-この[証明書を管理ポータルで](../azure-api-management-certs.md)使用する場合は、**.cer** ファイルにエクスポートしてください。
+If you want to use this [certificate with the management portal](../azure-api-management-certs.md), export it to a **.cer** file:
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
-### インターネット インフォメーション サービス (IIS)
+### <a name="internet-information-services-(iis)"></a>Internet Information Services (IIS)
 
-インターネット上には、IIS を使用した実行方法について説明する多くのページがあります。[ここ](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html)では、わかりやすく説明しているページを紹介します。
+There are many pages on the internet that cover how to do this with IIS. [Here](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) is a great one I found that I think explains it well. 
 
-### Java
-Java を使用して[証明書を作成](../app-service-web/java-create-azure-website-using-java-sdk.md#create-a-certificate)できます。
+### <a name="java"></a>Java
+You can use Java to [create a certificate](../app-service-web/java-create-azure-website-using-java-sdk.md#create-a-certificate).
 
-### Linux
-[この](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)記事では、SSH で証明書を作成する方法について説明します。
+### <a name="linux"></a>Linux
+[This](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md) article describes how to create certificates with SSH.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[Azure クラシック ポータル にサービス証明書をアップロードします](cloud-services-configure-ssl-certificate.md)(または [Azure ポータル](cloud-services-configure-ssl-certificate-portal.md))。
+[Upload your service certificate to the Azure classic portal](cloud-services-configure-ssl-certificate.md) (or the [Azure portal](cloud-services-configure-ssl-certificate-portal.md)).
 
-[管理 API 証明書](../azure-api-management-certs.md)を Azure クラシック ポータルにアップロードします。
+Upload a [management API certificate](../azure-api-management-certs.md) to the Azure classic portal.
 
->[AZURE.NOTE] Azure ポータルは、API へのアクセスに管理証明書を使用しないで、代わりにユーザー アカウントを使用します。
+>[AZURE.NOTE] The Azure portal does not use management certificates to access the API but instead uses user accounts.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

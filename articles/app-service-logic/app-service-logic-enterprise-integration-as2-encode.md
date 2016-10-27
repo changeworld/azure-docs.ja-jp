@@ -1,75 +1,81 @@
 <properties 
-	pageTitle="Enterprise Integration Pack の Encode AS2 Message コネクタの詳細情報 | Microsoft Azure App Service | Microsoft Azure" 
-	description="Enterprise Integration Pack と Logic Apps を使用してパートナーを使用する方法について説明します。" 
-	services="logic-apps" 
-	documentationCenter=".net,nodejs,java"
-	authors="padmavc" 
-	manager="erikre" 
-	editor=""/>
+    pageTitle="Learn about Enterprise Integration Pack Encode AS2 Message Connctor | Microsoft Azure App Service | Microsoft Azure" 
+    description="Learn how to use partners with the Enterprise Integration Pack and Logic apps" 
+    services="logic-apps" 
+    documentationCenter=".net,nodejs,java"
+    authors="padmavc" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="logic-apps" 
-	ms.workload="integration" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/15/2016" 
-	ms.author="padmavc"/>
+    ms.service="logic-apps" 
+    ms.workload="integration" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/15/2016" 
+    ms.author="padmavc"/>
 
-# Encode AS2 Message を使ってみる
 
-Encode AS2 Message に接続すると、メッセージを転送するときに、セキュリティと信頼性を確保できます。デジタル署名、暗号化、およびメッセージ処理通知 (MDN) による受信確認が可能になります。これにより、否認不可もサポートできるようになります。
+# <a name="get-started-with-encode-as2-message"></a>Get started with Encode AS2 Message
 
-## 接続の作成
+Connect to Encode AS2 Message to establish security and reliability while transmitting messages. It provides digital signing, encryption, and acknowledgements via Message Disposition Notifications (MDN), which also leads to support for Non-Repudiation.
 
-### 前提条件
+## <a name="create-the-connection"></a>Create the connection
 
-* Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
+### <a name="prerequisites"></a>Prerequisites
 
-* Encode AS2 Message コネクタを使用するには、統合アカウントが必要です。[統合アカウント](./app-service-logic-enterprise-integration-create-integration-account.md)、[パートナー](./app-service-logic-enterprise-integration-partners.md)、および [AS2 契約](./app-service-logic-enterprise-integration-as2.md)の作成方法の詳細を確認してください。
+* An Azure account; you can create a [free account](https://azure.microsoft.com/free)
 
-### 次の手順に従って、Encode AS2 Message に接続します。
+* An Integration Account is required to use Encode AS2 message connector. See details on how to create an [Integration Account](./app-service-logic-enterprise-integration-create-integration-account.md), [partners](./app-service-logic-enterprise-integration-partners.md) and an [AS2 agreement](./app-service-logic-enterprise-integration-as2.md)
 
-1. [ロジック アプリの作成](./app-service-logic-create-a-logic-app.md)に関する記事に例が記載されています。
+### <a name="connect-to-encode-as2-message-using-the-following-steps:"></a>Connect to Encode AS2 Message using the following steps:
 
-2. このコネクタにはトリガーがありません。ロジック アプリを起動するには、他のトリガー (要求トリガーなど) を使用します。Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。ドロップダウン リストから [Microsoft が管理している API を表示] を選択し、検索ボックスに「AS2」と入力します。[AS2 – Encode AS2 Message] を選択します。
+1. [Create a Logic App](./app-service-logic-create-a-logic-app.md) provides an example
 
-	![search AS2](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage1.png)
+2. This connector does not have any triggers. Use other triggers to start the Logic App, such as a Request trigger.  In the Logic App designer, add a trigger and add an action.  Select Show Microsoft managed APIs in the drop-down list and then enter “AS2” in the search box.  Select AS2 – Encode AS2 Message
 
-3. これまでに統合アカウントへの接続を作成したことがない場合は、接続の詳細情報を求められます。
-	
-	![create connection to integration account](./media/app-service-logic-enterprise-integration-AS2connector/as2encodeimage1.png)
+    ![search AS2](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage1.png)
 
-4. 統合アカウントの詳細を入力します。アスタリスクが付いているプロパティは必須です。
+3. If you haven’t previously created any connections to Integration Account, you are prompted for the connection details
+    
+    ![create connection to integration account](./media/app-service-logic-enterprise-integration-AS2connector/as2encodeimage1.png)  
 
-	| プロパティ | 詳細 |
-	| --------   | ------- |
-	| 接続名 * | 接続の任意の名前を入力します。 |
-	| 統合アカウント * | 統合アカウント名を入力します。統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
+4. Enter the Integration Account details.  Properties with an asterisk are required
 
-  	入力を完了すると、接続の詳細は次のようになります。
+  	| Property   | Details |
+  	| --------   | ------- |
+  	| Connection Name *    | Enter any name for your connection |
+  	| Integration Account * | Enter the Integration Account name. Be sure your Integration Account and Logic app are in the same Azure location |
 
-  	![integration connection established](./media/app-service-logic-enterprise-integration-AS2connector/as2encodeimage2.png)
+    Once complete, your connection details look similar to the following
 
-5. **[作成]** を選択します。
+    ![integration connection established](./media/app-service-logic-enterprise-integration-AS2connector/as2encodeimage2.png)  
 
-6. 接続が作成されたことを確認します。AS2-From、AS2-To 識別子を契約で構成されているとおりに指定し、本文 (メッセージ ペイロード) の詳細を指定します。
+5. Select **Create**
 
-	![provide mandatory fields](./media/app-service-logic-enterprise-integration-AS2connector/as2encodeimage3.png)
+6. Notice the connection has been created.  Provide AS2-From, AS2-To identifiers (as configured in agreement) and Body (the message payload) details. 
 
-## AS2 Encode の機能
+    ![provide mandatory fields](./media/app-service-logic-enterprise-integration-AS2connector/as2encodeimage3.png)
 
-* AS2/HTTP ヘッダーを適用する
-* 送信メッセージに署名する (構成されている場合)
-* 送信メッセージを暗号化する (構成されている場合)
-* メッセージを圧縮する (構成されている場合)
+## <a name="the-as2-encode-does-the-following"></a>The AS2 Encode does the following
 
-##試してみる
+* Applies AS2/HTTP headers
+* Signs outgoing messages (if configured)
+* Encrypts outgoing messages (if configured)
+* Compresses the message (if configured)
 
-実際に試してみましょう。Logic Apps AS2 の機能を使用して、本格的な機能を備えた独自のロジック アプリをデプロイするには、[こちら](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)をクリックしてください。
+##<a name="try-it-for-yourself"></a>Try it for yourself
 
-## 次のステップ
+Why not give it a try. Click [here](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/) to deploy a fully operational logic app of your own using the Logic Apps AS2 features
 
-[Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0914_2016-->
+[Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack") 
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,61 +1,66 @@
 <properties
-   	pageTitle="HDInsight .NET SDK を使用した HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターの作成 | Microsoft Azure"
-   	description="HDInsight .NET SDK を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
-   	services="hdinsight"
-   	documentationCenter=""
-   	authors="mumian"
-   	manager="jhubbard"
-   	editor="cgronlun"
-	tags="azure-portal"/>
+    pageTitle="Create Hadoop, HBase, Storm, or Spark clusters on Linux in HDInsight using the HDInsight .NET SDK | Microsoft Azure"
+    description="Learn how to create Hadoop, HBase, Storm, or Spark clusters on Linux for HDInsight using the HDInsight .NET SDK."
+    services="hdinsight"
+    documentationCenter=""
+    authors="mumian"
+    manager="jhubbard"
+    editor="cgronlun"
+    tags="azure-portal"/>
 
 <tags
-   	ms.service="hdinsight"
-   	ms.devlang="na"
-   	ms.topic="article"
-   	ms.tgt_pltfrm="na"
-   	ms.workload="big-data"
-   	ms.date="09/02/2016"
-   	ms.author="jgao"/>
+    ms.service="hdinsight"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="big-data"
+    ms.date="09/02/2016"
+    ms.author="jgao"/>
 
-#.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
 
-[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
+#<a name="create-linux-based-clusters-in-hdinsight-using-the-.net-sdk"></a>Create Linux-based clusters in HDInsight using the .NET SDK
 
-HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。このドキュメントでは、.NET SDK を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。
+[AZURE.INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
 
-> [AZURE.IMPORTANT] このドキュメントの手順では、worker ノードが 1 つあるクラスターを作成します。クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+The HDInsight .NET SDK provides .NET client libraries that make it easier to work with HDInsight from a .NET Framework application. This document demonstrates how to create a Linux-based HDInsight cluster using the .NET SDK.
+
+> [AZURE.IMPORTANT] The steps in this document create a cluster with one worker node. If you plan on more than 32 worker nodes, either at cluster creation or by scaling the cluster after creation, then you must select a head node size with at least 8 cores and 14GB ram.
 >
-> ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
+> For more information on node sizes and associated costs, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-##前提条件
+##<a name="prerequisites"></a>Prerequisites
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- __Visual Studio 2013 または 2015__
+- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+- __Visual Studio 2013 or 2015__
 
-## クラスターの作成
+### <a name="access-control-requirements"></a>Access control requirements
 
-1. Visual Studio 2013 または 2015 を開きます。
+[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
 
-2. 次の設定を使用して、新しい Visual Studio プロジェクトを作成します。
+## <a name="create-clusters"></a>Create clusters
 
-    |プロパティ|値|
-    |--------|-----|
-    |テンプレート|テンプレート/Visual C#/Windows/コンソール アプリケーション|
-    |Name|CreateHDICluster|
+1. Open Visual Studio 2013 or 2015.
 
-5. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+2. Create a new Visual Studio project with the following settings
 
-6. コンソールで次のコマンドを実行して、パッケージをインストールします。
+  	|Property|Value|
+  	|--------|-----|
+  	|Template|Templates/Visual C#/Windows/Console Application|
+  	|Name|CreateHDICluster|
+
+5. From the **Tools** menu, click **Nuget Package Manager**, and then click **Package Manager Console**.
+
+6. Run the following command in the console to install the packages:
 
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
 
-    これらのコマンドは、.NET ライブラリおよび .NET ライブラリへの参照を現在の Visual Studio プロジェクトに追加します。
+    These commands add .NET libraries and references to them to the current Visual Studio project.
 
-6. ソリューション エクスプローラーで、**Program.cs** をダブルクリックして開き、次のコードを貼り付け、変数の値を指定します。
+6. From Solution Explorer, double-click **Program.cs** to open it, paste the following code, and provide values for the variables:
 
         using System;
         using System.Threading;
@@ -177,16 +182,16 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
                 }
             }
         }
-	
-10. クラス メンバーの値を置き換えます。
+    
+10. Replace the class member values.
 
-7. **F5** キーを押してアプリケーションを実行します。コンソール ウィンドウが開き、アプリケーションの状態が表示されます。Azure アカウントの資格情報の入力も求められます。HDInsight クラスターの作成は数分かかる場合があります。通常は 15 分程度です。
+7. Press **F5** to run the application. A console window should open and display the status of the application. You will also be prompted to enter your Azure account credentials. It can take several minutes to create an HDInsight cluster, normally around 15.
 
-## ブートストラップの使用
+## <a name="use-bootstrap"></a>Use bootstrap
 
-詳細については、「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」を参照してください。
+For more information, see [Customize HDInsight clusters using Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-[クラスターの作成](#create-clusters)のサンプルを変更し、Hive の設定を構成します。
+Modify the sample in [Create clusters](#create-clusters) to configure a Hive setting:
 
     static void Main(string[] args)
     {
@@ -310,11 +315,11 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
     }
 
 
-## Script Action の使用
+## <a name="use-script-action"></a>Use Script Action
 
-詳細については、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+For more inforamtion, see [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md).
 
-[クラスターの作成](#create-clusters)のサンプルを変更し、Script Action を呼び出して、R をインストールします。
+Modify the sample in [Create clusters](#create-clusters) to call a Script Action to install R:
 
     static void Main(string[] args)
     {
@@ -358,40 +363,44 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
         System.Console.ReadLine();
     }
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。
+Now that you have successfully created an HDInsight cluster, use the following to learn how to work with your cluster. 
 
-###Hadoop クラスター
+###<a name="hadoop-clusters"></a>Hadoop clusters
 
-* [HDInsight での Hive の使用](hdinsight-use-hive.md)
-* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
-* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+* [Use Hive with HDInsight](hdinsight-use-hive.md)
+* [Use Pig with HDInsight](hdinsight-use-pig.md)
+* [Use MapReduce with HDInsight](hdinsight-use-mapreduce.md)
 
-###HBase クラスター
+###<a name="hbase-clusters"></a>HBase clusters
 
-* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)
-* [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux.md)
+* [Get started with HBase on HDInsight](hdinsight-hbase-tutorial-get-started-linux.md)
+* [Develop Java applications for HBase on HDInsight](hdinsight-hbase-build-java-maven-linux.md)
 
-###Storm クラスター
+###<a name="storm-clusters"></a>Storm clusters
 
-* [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
-* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
-* [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
+* [Develop Java topologies for Storm on HDInsight](hdinsight-storm-develop-java-topology.md)
+* [Use Python components in Storm on HDInsight](hdinsight-storm-develop-python-topology.md)
+* [Deploy and monitor topologies with Storm on HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-###Spark クラスター
+###<a name="spark-clusters"></a>Spark clusters
 
-* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
-* [Spark と BI: HDInsight で BI ツールと Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
+* [Create a standalone application using Scala](hdinsight-apache-spark-create-standalone-application.md)
+* [Run jobs remotely on a Spark cluster using Livy](hdinsight-apache-spark-livy-rest-interface.md)
+* [Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools](hdinsight-apache-spark-use-bi-tools.md)
+* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark Streaming: Use Spark in HDInsight for building real-time streaming applications](hdinsight-apache-spark-eventhub-streaming.md)
 
-### ジョブの実行
+### <a name="run-jobs"></a>Run jobs
 
-- [.NET SDK を使用して HDInsight で Hive ジョブを実行する](hdinsight-hadoop-use-hive-dotnet-sdk.md)
-- [.NET SDK を使用して HDInsight で Pig ジョブを実行する](hdinsight-hadoop-use-pig-dotnet-sdk.md)
-- [.NET SDK を使用して HDInsight で Sqoop ジョブを実行する](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
-- [HDInsight で Oozie ジョブを実行する](hdinsight-use-oozie.md)
+- [Run Hive jobs in HDInsight using .NET SDK](hdinsight-hadoop-use-hive-dotnet-sdk.md)
+- [Run Pig jobs in HDInsight using .NET SDK](hdinsight-hadoop-use-pig-dotnet-sdk.md)
+- [Run Sqoop jobs in HDInsight using .NET SDK](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
+- [Run Oozie jobs in HDInsight](hdinsight-use-oozie.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

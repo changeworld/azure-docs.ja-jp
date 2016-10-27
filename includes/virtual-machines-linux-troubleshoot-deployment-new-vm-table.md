@@ -1,6 +1,11 @@
-次の表に、Linux の一般化された OS イメージ (gen.) と特殊化された OS イメージ (spec.) のアップロードとキャプチャの考えられる組み合わせを示します。エラーなしで処理される組み合わせは Y で示され、エラーがスローされる組み合わせは N で示されています。発生するさまざまなエラーの原因と解決策が表の下に記載されています。
+The following table lists the possible upload and capture combinations of Linux generalized and specialized OS images. The combinations that will process without any errors are indicated by a Y, and those that will throw errors are indicated by an N. The causes and resolutions for the different errors you will run into are given below the table.
 
-| OS | spec. のアップロード | gen. のアップロード | spec. のキャプチャ | gen. のキャプチャ |
+| OS            | Upload spec. | Upload gen. | Capture spec. | Capture gen. |
 |---------------|--------------|-------------|---------------|--------------|
-| Linux gen. | N<sup>1</sup> | Y | N<sup>3</sup> | Y |
-| Linux spec. | Y | N<sup>2</sup> | Y | N<sup>4</sup> |
+| Linux gen.  | N<sup>1</sup>            | Y           | N<sup>3</sup>             | Y            |
+| Linux spec. | Y            | N<sup>2</sup>           | Y             | N<sup>4</sup>            |
+
+
+<!--HONumber=Oct16_HO2-->
+
+

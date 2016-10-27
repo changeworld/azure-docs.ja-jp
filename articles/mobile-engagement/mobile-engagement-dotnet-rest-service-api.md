@@ -1,38 +1,39 @@
 <properties 
-	pageTitle="REST API を使用して Azure Mobile Engagement サービス API にアクセスする" 
-	description="Mobile Engagement REST API を使用して Azure Mobile Engagement サービス API にアクセスする方法について説明します"		
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="wesmc7777" 
-	manager="erikre" 
-	editor="" />
+    pageTitle="Using the REST API to access Azure Mobile Engagement Service APIs" 
+    description="Describes how to use the Mobile Engagement REST APIs to access Azure Mobile Engagement Service APIs"       
+    services="mobile-engagement" 
+    documentationCenter="mobile" 
+    authors="wesmc7777" 
+    manager="erikre" 
+    editor="" />
 
 <tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-multiple" 
-	ms.devlang="dotnet" 
-	ms.topic="article" 
-	ms.date="07/07/2016" 
-	ms.author="wesmc;ricksal" />
+    ms.service="mobile-engagement" 
+    ms.workload="mobile" 
+    ms.tgt_pltfrm="mobile-multiple" 
+    ms.devlang="dotnet" 
+    ms.topic="article" 
+    ms.date="10/05/2016" 
+    ms.author="wesmc;ricksal" />
 
-#REST を使用して Azure Mobile Engagement サービス API にアクセスする
 
-Azure Mobile Engagement では、デバイス、リーチ/プッシュ キャンペーンなどを管理するために、[Azure Mobile Engagement REST API](https://msdn.microsoft.com/library/azure/mt683754.aspx) が提供されます。このサンプルでは、直接 REST API を使用して、アナウンス キャンペーンを作成してアクティブ化し、一連のデバイスにプッシュします。
+#<a name="using-rest-to-access-azure-mobile-engagement-service-apis"></a>Using REST to access Azure Mobile Engagement Service APIs
 
-REST API を直接使用したくない場合は、任意の言語の SDK を生成するツールと共に使用できる、[Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json)も提供しています。Swagger ファイルから SDK を生成するには、[AutoRest](https://github.com/Azure/AutoRest) を使用することをお勧めします。C# ラッパーを使用してこれらの API と対話できるようにするのと同様の方法で .NET SDK を作成しましたので、認証トークン ネゴシエーションを行ったり、自分で更新したりする必要はありません。このラッパーを使用して同様のサンプルについて確認するには、「[サービス API の .NET SDK のサンプル](mobile-engagement-dotnet-sdk-service-api.md)」を参照してください。
+Azure Mobile Engagement provides the [Azure Mobile Engagement REST API](https://msdn.microsoft.com/library/azure/mt683754.aspx) for you to manage Devices, Reach/Push campaigns etc. This sample will use the REST APIs directly to create an Announcement campaign then activate and push it to a set of devices. 
 
-このサンプルでは、直接 REST API を使用して、アナウンス キャンペーンを作成およびアクティブ化します。
+If you do not want to use the REST APIs directly, we also provide a [Swagger file](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-mobileengagement/2014-12-01/swagger/mobile-engagement.json) that you can use with tools to generate SDKs for your preferred language. We recommend using the [AutoRest](https://github.com/Azure/AutoRest) tool to generate your SDK from our Swagger file. We have created a .NET SDK in a similar manner which allows you to interact with these APIs using a C# wrapper and you don't have to do the authentication token negotiation and refresh yourself. If you want to walk through a similar sample using this wrapper, see [Service API .NET SDK Sample](mobile-engagement-dotnet-sdk-service-api.md)
 
-## user\_name AppInfo を Mobile Engagement アプリに追加する
+This sample will use the REST APIs directly to create and activate an Announcement campaign. 
 
-このサンプルには、Mobile Engagement アプリに追加された app-info タグが必要です。アプリの Engagement ポータルで、[**設定**]、[**タグ (app-info)**]、[**新しいタグ (app-info)**] の順にクリックして、タグを追加できます。**user\_name** という名前の新しいタグを、**文字列**型として追加します。
+## <a name="adding-a-user_name-appinfo-to-the-mobile-engagement-app"></a>Adding a user_name appInfo to the Mobile Engagement app
+
+This sample will require an app-info tag added to the Mobile Engagement app. In the engagement portal for your app, you can add the tag by clicking **Settings** > **Tag (app-info)** > **New tag (app-info)**. Add the new tag named **user_name** as a **String** type.
 
 ![](./media/mobile-engagement-dotnet-rest-service-api/user-name-app-info.png)
 
 
 
-「[Windows ユニバーサル アプリの Azure Mobile Engagement の概要](mobile-engagement-windows-store-dotnet-get-started.md)」に従った場合、次のコードのような app-info タグを送信するには、単に `MainPage` クラスの `OnNavigatedTo()` をオーバーライドして、**user\_name** タグの送信をテストできます。
+If you followed [Getting Started with Azure Mobile Engagement for Windows Universal Apps](mobile-engagement-windows-store-dotnet-get-started.md), you can test sending the **user_name** tag by simply overriding `OnNavigatedTo()` in your `MainPage` class to send the app-info tag similar to the following code:
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
@@ -47,37 +48,37 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
  
 
 
-## サービス API アプリを作成する
+## <a name="creating-the-service-api-app"></a>Creating the Service API app
 
-1. まず、このサンプルを使用するには、4 つの認証パラメーターが必要になります。そのパラメーターは、**SubscriptionId**、**TenantId**、**ApplicationId**、および **Secret** です。これらの認証パラメーターを取得するには、[認証](mobile-engagement-api-authentication.md#authentication)チュートリアルの *1 回限りのセットアップ (スクリプトを使用)* セクションで示される、PowerShell スクリプトのアプローチを使用することをお勧めします。
+1. First of all, you will need four authentication parameters to use with this sample. These parameters are **SubscriptionId**, **TenantId**, **ApplicationId** and **Secret**. To get these authentication parameters, it is recommended that you use the PowerShell script approach mentioned under the *One-time setup (using script)* section in the [Authentication](mobile-engagement-api-authentication.md#authentication) tutorial. 
 
-2. 単純な Windows コンソール アプリを使用して、新しいアナウンス キャンペーンを作成およびアクティブ化するための REST サービス API の操作を説明します。そのため、Visual Studio を開き、新しい**コンソール アプリケーション**を作成します。
+2. We will use a simple Windows Console app to demonstrate working with the REST Service APIs to create and activate a new Announcement campaign. So open up Visual Studio and create a new **Console Application**.   
 
-3. 次に、**Newtonsoft.Json** NuGet パッケージをプロジェクトにします。
+3. Next, add the **Newtonsoft.Json** NuGet package to your project.
 
-4. `Program.cs` ファイルで、次の名前空間に次の `using` ステートメントを追加します。
+4. In the `Program.cs` file, add the following `using` statements for the following namespaces:
 
-		using System.IO;
-		using System.Net;
-		using Newtonsoft.Json.Linq;
-		using Newtonsoft.Json;
+        using System.IO;
+        using System.Net;
+        using Newtonsoft.Json.Linq;
+        using Newtonsoft.Json;
 
-5. 次に、`Program` クラスで次の定数を定義する必要があります。これらは、認証およびアナウンス キャンペーンを作成している Mobile Engagement アプリと対話するために使用されます。
+5. Next you need to define the following constants in the `Program` class. These will be used for authentication and interacting with the Mobile Engagement App in which you are creating the Announcement campaign:
 
 
         // Parameters needed for authentication of API calls.
-		// These are returned from the PowerShell script in the authentication tutorial. 
-		// https://azure.microsoft.com/documentation/articles/mobile-engagement-api-authentication/
+        // These are returned from the PowerShell script in the authentication tutorial. 
+        // https://azure.microsoft.com/documentation/articles/mobile-engagement-api-authentication/
         static String SubscriptionId = "<Your Subscription Id>";
         static String TenantId = "<Your TenantId>";
         static String ApplicationId = "<Your Application Id>";
         static String Secret = "<Your Secret>";
 
-		// The token for authenticating with your Mobile Engagement app.
+        // The token for authenticating with your Mobile Engagement app.
         static String Token = null;
 
         // This is the Azure Resource group concept for grouping together resources 
-        // See: https://azure.microsoft.com/ja-JP/documentation/articles/resource-group-portal/
+        // See: https://azure.microsoft.com/en-us/documentation/articles/resource-group-portal/
         static String ResourceGroup = "MobileEngagement";
 
         // For Mobile Engagement operations
@@ -85,18 +86,18 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
         static String Collection = "<Your App Collection Name>";
 
         // Application Resource Name - make sure you are using the one as specified in the dashboard of the
-		// Azure portal. (This is NOT the App Name)
+        // Azure portal. (This is NOT the App Name)
         static String AppName = "WesmcRestTest-windows";
 
-		// New campaign id returned from creating the new campaign and used to activate and push the campaign
-		// a set of devices.
+        // New campaign id returned from creating the new campaign and used to activate and push the campaign
+        // a set of devices.
         static String NewCampaignID = null;
 
-		// This list will hold the device Ids we choose to push the campaign to.
+        // This list will hold the device Ids we choose to push the campaign to.
         static List<String> deviceList = new List<String>();
 
 
-6. 次の 2 つのメソッドを `Program` クラスに追加します。これらは、REST API を実行して、コンソールに応答を表示するために使用されます。
+6. Add the following two methods to the `Program` class. These will be used to execute REST APIs and display responses to the console.
 
         private static async Task<HttpWebResponse> ExecuteREST(string httpMethod, string uri, string authToken, WebHeaderCollection headers = null, string body = null, string contentType = "application/json")
         {
@@ -163,7 +164,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
 
     }
 
-7. 次のコードを `Main` メソッドに追加して、収集した認証パラメーターを使用して認証トークンを生成します。
+7. Add the following code to your `Main` method to generate an authentication token with the authentication parameters you collected:
 
         //***************************************************************************
         //*** Get a valid authorization token with your authentication parameters ***
@@ -194,12 +195,12 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
             return;
         }
 
-8. これで、[キャンペーンの作成](https://msdn.microsoft.com/library/azure/mt683742.aspx)の REST API を使用して新しいリーチ キャンペーンを作成できる、有効な認証トークンができました。新しいキャンペーンは、タイトルとメッセージを持つ、単純な**時間指定なし**と**通知のみ**のアナウンス キャンペーンになります。次のスクリーン ショットで示されるように、手動のプッシュ キャンペーンになります。つまり、このキャンペーンは、API を使用してのみプッシュされます。
+8. Now that we have a valid authentication token we can create a new Reach campaign using the [Create campaign](https://msdn.microsoft.com/library/azure/mt683742.aspx) REST API. The new campaign will be a simple **AnyTime** & **Notification-only** announcement campaign with a title and message. This will be a manual push campaign as shown in the following screen shot. This means it will only be pushed using the APIs.
 
 
-	![](./media/mobile-engagement-dotnet-rest-service-api/manual-push.png)
+    ![](./media/mobile-engagement-dotnet-rest-service-api/manual-push.png)
 
-	次のコードを `Main` メソッドに追加して、次のアナウンス キャンペーンを作成します。
+    Add the following code to your `Main` method to create the announcement campaign: 
 
         //*****************************************************************************
         //*** Create a campaign to send a notification using the user-name app-info ***
@@ -209,13 +210,13 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
                "resourcegroups/" + ResourceGroup + "/providers/Microsoft.MobileEngagement/appcollections/" +
                Collection + "/apps/" + AppName + "/campaigns/announcements?api-version=2014-12-01";
 
-        String campaignRequestBody = "{ "name": "BirthdayCoupon", " +
-                                        ""type": "only_notif", " +
-                                        ""deliveryTime": "any", " +
-                                        ""notificationType": "popup", " +
-                                        ""pushMode":"manual", " +
-                                        ""notificationTitle": "Happy Birthday ${user_name}", " +
-                                        ""notificationMessage": "Take extra 10% off on your orders today!"}";
+        String campaignRequestBody = "{ \"name\": \"BirthdayCoupon\", " +
+                                        "\"type\": \"only_notif\", " +
+                                        "\"deliveryTime\": \"any\", " +
+                                        "\"notificationType\": \"popup\", " +
+                                        "\"pushMode\":\"manual\", " +
+                                        "\"notificationTitle\": \"Happy Birthday ${user_name}\", " +
+                                        "\"notificationMessage\": \"Take extra 10% off on your orders today!\"}";
 
         Console.WriteLine("Creating new campaign...\n");
         HttpWebResponse newCampaignResponse = ExecuteREST("POST", newCampaignMethodUrl, Token, null, campaignRequestBody).Result;
@@ -239,9 +240,9 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
         }
 
 
-9. このキャンペーンを任意のデバイスにプッシュできるようにするには、キャンペーンをアクティブ化する必要があります。`NewCampaignID` 変数で、新しいキャンペーンの ID を保存しました。これを URI パス パラメーターとして使用して、[キャンペーンのアクティブ化](https://msdn.microsoft.com/library/azure/mt683745.aspx)の REST API を使用し、キャンペーンをアクティブ化します。これは、API を使用して手動でプッシュされるだけにもかかわらず、キャンペーンの状態は**スケジュール済み**に変更されます。
+9. The campaign must be activated before it can be pushed to any devices. We saved the ID for the new campaign in the `NewCampaignID` variable. We will use this as a URI path parameter to activate the campaign using the [Activate campaign](https://msdn.microsoft.com/library/azure/mt683745.aspx) REST API. This should change the state of the campaign to **scheduled** even though it will only be pushed manually with the APIs.
 
-	次のコードを `Main` メソッドに追加して、次のアナウンス キャンペーンをアクティブ化します。
+    Add the following code to your `Main` method to activate the announcement campaign: 
 
         //******************************************
         //*** Activate the new birthday campaign ***
@@ -272,9 +273,9 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
             return;
         }
 
-10. キャンペーンをプッシュするには、通知を受信するユーザーのデバイス ID を提供する必要があります。[デバイスをクエリする](https://msdn.microsoft.com/library/azure/mt683826.aspx) REST API を使用して、すべてのデバイス ID を取得します。デバイス ID が **user\_name** appInfo と関連付けられている場合は、一覧に各デバイス ID を追加します。
+10. To push the campaign we need to provide the device Ids for the users that we want to receive the notification. We will use the [Query devices](https://msdn.microsoft.com/library/azure/mt683826.aspx) REST API to get all device Ids. We will add each device Id to the list if it has associated **user_name** appInfo.
 
-	次のコードを `Main` メソッドに追加して、すべてのデバイス ID を取得し、deviceList を入力します。
+    Add the following code to your `Main` method to get all device Ids and populate the deviceList:
 
         //************************************************************************
         //*** Now that the manualPush campaign is activated, get the deviceIds ***
@@ -313,13 +314,13 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
         else
         {
             Console.WriteLine("*** Failed to get devices.\n");
-			return;
+            return;
         }
 
 
-11. 最後に、[キャンペーンのプッシュ](https://msdn.microsoft.com/library/azure/mt683734.aspx)の REST API を使用して、一覧にあるすべてのデバイス ID にキャンペーンをプッシュします。これは**アプリ内**通知です。そのため、ユーザーが受信できるように、アプリケーションがデバイス上で実行されている必要があります。
+11. Lastly, we will push the campaign to all device Ids in our list using the [Push campaign](https://msdn.microsoft.com/library/azure/mt683734.aspx) REST API. This is an **in-app** notification. So the app will have to be running on the device in order for it to be received by the user.
 
-	次のコードを `Main` メソッドに追加して、deviceList にあるデバイスにキャンペーンをプッシュします。
+    Add the following code to your `Main` method to push the campign to the devices in the deviceList:
 
         //**************************************************************
         //*** Trigger the manualPush campaign on the desired devices ***
@@ -331,7 +332,7 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
                    "/push?api-version=2014-12-01";
 
         Console.WriteLine("Triggering push for new campaign (ID : " + NewCampaignID + ")...\n");
-        String deviceIds = "{"deviceIds":" + JsonConvert.SerializeObject(deviceList) + "}";
+        String deviceIds = "{\"deviceIds\":" + JsonConvert.SerializeObject(deviceList) + "}";
         Console.WriteLine("\n" + deviceIds + "\n");
         HttpWebResponse pushDevicesResponse = ExecuteREST("POST", pushCampaignUrl, Token, null, deviceIds).Result;
         Stream pushDevicesStream = pushDevicesResponse.GetResponseStream();
@@ -351,114 +352,118 @@ REST API を直接使用したくない場合は、任意の言語の SDK を生
         }
 
 
-12. コンソール アプリを構築して実行します。出力は次のようになります。
+12. Build and run your console app. Your output should be similar to the following:
 
 
-		C:\Users\Wesley\AzME_Service_API_Rest\test.exe
+        C:\Users\Wesley\AzME_Service_API_Rest\test.exe
 
-		Getting authorization token...
-		
-		HTTP Status 200 : OK
-		{
-		  "token_type": "Bearer",
-		  "expires_in": "3599",
-		  "expires_on": "1458085162",
-		  "not_before": "1458081262",
-		  "resource": "https://management.core.windows.net/",
-		  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPW
-		b3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFh
-		NzE4LTQ0YzQtOGVjMS0xM2IwODExMTRmM2UiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53
-		MTdhNGJkIiwic3ViIjoiOWIzZGQ2MDctNmYwOC00Y2Y5LTk2N2YtZmUyOGU3MTdhNGJkIiwidGlkIjoiNzJm
-		F5x9gj8JJ4CjtLaH3mm1_U22Qc_AjB9mtbM97dgu3kCiUm19ISatRBoAmVz3JGW6LSv2TyCeg9TGYVrE3OAE
-		hl_pY9COXicc7I501_X67GsmUgs9-EedF3STrEoY5cONTiMvwCLfeBgScgXA0ikAu62KpzMu0VFDYu-HASI8
-		}
-		
-		Got authorization token...
-		Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNN
-		aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYt
-		Zi1jNzE4LTQ0YzQtOGVjMS0xM2IwODExMTRmM2UiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0
-		OGU3MTdhNGJkIiwic3ViIjoiOWIzZGQ2MDctNmYwOC00Y2Y5LTk2N2YtZmUyOGU3MTdhNGJkIiwidGlkIjoi
-		iI-oF5x9gj8JJ4CjtLaH3mm1_U22Qc_AjB9mtbM97dgu3kCiUm19ISatRBoAmVz3JGW6LSv2TyCeg9TGYVrE
-		vsf3hl_pY9COXicc7I501_X67GsmUgs9-EedF3STrEoY5cONTiMvwCLfeBgScgXA0ikAu62KpzMu0VFDYu-H
-		
-		Creating new campaign...
-		
-		HTTP Status 201 : Created
-		{
-		  "id": 24,
-		  "state": "draft"
-		}
-		
-		Created new campaign...
-		New Campaign Id    : 24
-		
-		Activating new campaign (ID : 24)...
-		
-		HTTP Status 200 : OK
-		{
-		  "id": 24,
-		  "state": "scheduled"
-		}
-		
-		Activated new campaign...
-		New Campaign State : scheduled
-		
-		Getting device IDs...
-		
-		HTTP Status 200 : OK
-		{
-		  "value": [
-		    {
-		      "meta": {
-		        "lastSeen": 1458080534371,
-		        "firstSeen": 1458080534371,
-		        "lastLocation": 1458081389617,
-		        "lastInfo": 1458080571603
-		      },
-		      "appInfo": {
-		        "user_name": "Wesley"
-		      },
-		      "deviceId": "1d6208b8f281203ecb49431e2e5ce6b3"
-		    },
-		    {
-		      "meta": {
-		        "lastSeen": 1457990584698,
-		        "firstSeen": 1457949384025,
-		        "lastLocation": 1457990914895,
-		        "lastInfo": 1457990584597
-		      },
-		      "appInfo": {
-		        "user_name": "Wesley"
-		      },
-		      "deviceId": "302486644890e26045884ee5aa0619ec"
-		    }
-		  ]
-		}
-		
-		Got devices.
-		Adding device for push campaign...
-		Device ID    : 1d6208b8f281203ecb49431e2e5ce6b3
-		user_name    : Wesley
-		Adding device for push campaign...
-		Device ID    : 302486644890e26045884ee5aa0619ec
-		user_name    : Wesley
-		
-		Triggering push for new campaign (ID : 24)...
-		
-		
-		{"deviceIds":["1d6208b8f281203ecb49431e2e5ce6b3","302486644890e26045884ee5aa0619ec"]}
-		
-		HTTP Status 200 : OK
-		{
-		  "invalidDeviceIds": []
-		}
-		
-		Triggered push on new campaign.
-		
+        Getting authorization token...
+        
+        HTTP Status 200 : OK
+        {
+          "token_type": "Bearer",
+          "expires_in": "3599",
+          "expires_on": "1458085162",
+          "not_before": "1458081262",
+          "resource": "https://management.core.windows.net/",
+          "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPW
+        b3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFh
+        NzE4LTQ0YzQtOGVjMS0xM2IwODExMTRmM2UiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0cy53
+        MTdhNGJkIiwic3ViIjoiOWIzZGQ2MDctNmYwOC00Y2Y5LTk2N2YtZmUyOGU3MTdhNGJkIiwidGlkIjoiNzJm
+        F5x9gj8JJ4CjtLaH3mm1_U22Qc_AjB9mtbM97dgu3kCiUm19ISatRBoAmVz3JGW6LSv2TyCeg9TGYVrE3OAE
+        hl_pY9COXicc7I501_X67GsmUgs9-EedF3STrEoY5cONTiMvwCLfeBgScgXA0ikAu62KpzMu0VFDYu-HASI8
+        }
+        
+        Got authorization token...
+        Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNN
+        aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYt
+        Zi1jNzE4LTQ0YzQtOGVjMS0xM2IwODExMTRmM2UiLCJhcHBpZGFjciI6IjEiLCJpZHAiOiJodHRwczovL3N0
+        OGU3MTdhNGJkIiwic3ViIjoiOWIzZGQ2MDctNmYwOC00Y2Y5LTk2N2YtZmUyOGU3MTdhNGJkIiwidGlkIjoi
+        iI-oF5x9gj8JJ4CjtLaH3mm1_U22Qc_AjB9mtbM97dgu3kCiUm19ISatRBoAmVz3JGW6LSv2TyCeg9TGYVrE
+        vsf3hl_pY9COXicc7I501_X67GsmUgs9-EedF3STrEoY5cONTiMvwCLfeBgScgXA0ikAu62KpzMu0VFDYu-H
+        
+        Creating new campaign...
+        
+        HTTP Status 201 : Created
+        {
+          "id": 24,
+          "state": "draft"
+        }
+        
+        Created new campaign...
+        New Campaign Id    : 24
+        
+        Activating new campaign (ID : 24)...
+        
+        HTTP Status 200 : OK
+        {
+          "id": 24,
+          "state": "scheduled"
+        }
+        
+        Activated new campaign...
+        New Campaign State : scheduled
+        
+        Getting device IDs...
+        
+        HTTP Status 200 : OK
+        {
+          "value": [
+            {
+              "meta": {
+                "lastSeen": 1458080534371,
+                "firstSeen": 1458080534371,
+                "lastLocation": 1458081389617,
+                "lastInfo": 1458080571603
+              },
+              "appInfo": {
+                "user_name": "Wesley"
+              },
+              "deviceId": "1d6208b8f281203ecb49431e2e5ce6b3"
+            },
+            {
+              "meta": {
+                "lastSeen": 1457990584698,
+                "firstSeen": 1457949384025,
+                "lastLocation": 1457990914895,
+                "lastInfo": 1457990584597
+              },
+              "appInfo": {
+                "user_name": "Wesley"
+              },
+              "deviceId": "302486644890e26045884ee5aa0619ec"
+            }
+          ]
+        }
+        
+        Got devices.
+        Adding device for push campaign...
+        Device ID    : 1d6208b8f281203ecb49431e2e5ce6b3
+        user_name    : Wesley
+        Adding device for push campaign...
+        Device ID    : 302486644890e26045884ee5aa0619ec
+        user_name    : Wesley
+        
+        Triggering push for new campaign (ID : 24)...
+        
+        
+        {"deviceIds":["1d6208b8f281203ecb49431e2e5ce6b3","302486644890e26045884ee5aa0619ec"]}
+        
+        HTTP Status 200 : OK
+        {
+          "invalidDeviceIds": []
+        }
+        
+        Triggered push on new campaign.
+        
 
 
 <!-- Images. -->
 
 [1]: ./media/mobile-engagement-dotnet-sdk-service-api/include-prerelease.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

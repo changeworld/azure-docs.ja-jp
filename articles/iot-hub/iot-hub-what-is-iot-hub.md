@@ -1,6 +1,6 @@
 <properties
- pageTitle="Azure IoT Hub の概要 | Microsoft Azure"
- description="Azure IoT Hub サービスの概要: IoT Hub、デバイスの接続、モノのインターネット (IoT) の通信パターン、サービス支援通信パターンの説明"
+ pageTitle="Azure IoT Hub overview | Microsoft Azure"
+ description="Overview of Azure IoT Hub service: what is iot hub, device connectivity, internet of things communication patterns, and service-assisted communication pattern"
  services="iot-hub"
  documentationCenter=""
  authors="dominicbetts"
@@ -16,96 +16,97 @@
  ms.date="08/25/2016"
  ms.author="dobett"/>
 
-# Azure IoT Hub とは
 
-Azure IoT Hub へようこそ。この記事では、Azure IoT Hub の概要と、モノのインターネット (IoT) ソリューションを実装したときに、このサービスを使用する理由について説明します。Azure IoT Hub は、何百万もの IoT デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。Azure IoT Hub の特長は次のとおりです。
+# <a name="what-is-azure-iot-hub?"></a>What is Azure IoT Hub?
 
-- デバイスとクラウド間の信頼性の高い双方向メッセージングを大規模に提供します。
-- デバイスごとのセキュリティ資格情報とアクセス制御を使用して、セキュリティで保護された通信を可能します。
-- デバイス接続イベントおよびデバイス ID 管理イベントの詳細な監視を実現します。
-- 最も一般的な言語とプラットフォームのデバイスのライブラリが含まれます。
+Welcome to Azure IoT Hub. This article provides an overview of Azure IoT Hub and describes why you should use this service to implement an Internet of Things (IoT) solution. Azure IoT Hub is a fully managed service that enables reliable and secure bidirectional communications between millions of IoT devices and a solution back end. Azure IoT Hub:
 
-「[IoT Hub と Event Hubs の比較][lnk-compare]」では、この 2 つのサービスの主な違いについて説明し、IoT ソリューションで IoT Hub を使用する利点を示しています。
+- Provides reliable device-to-cloud and cloud-to-device messaging at scale.
+- Enables secure communications using per-device security credentials and access control.
+- Provides extensive monitoring for device connectivity and device identity management events.
+- Includes device libraries for the most popular languages and platforms.
+
+The article [Comparison of IoT Hub and Event Hubs][lnk-compare] describes the key differences between these two services and highlights the advantages of using IoT Hub in your IoT solutions.
 
 ![Azure IoT Hub as cloud gateway in internet of things solution][img-architecture]
 
-> [AZURE.NOTE] IoT アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)][lnk-refarch]」を参照してください。
+> [AZURE.NOTE] For an in-depth discussion of IoT architecture, see the [Microsoft Azure IoT Reference Architecture][lnk-refarch].
 
-## IoT デバイスの接続の課題
+## <a name="iot-device-connectivity-challenges"></a>IoT device-connectivity challenges
 
-IoT Hub とデバイスのライブラリでは、デバイスをソリューション バック エンドに安定して安全に接続するための課題に対処できます。IoT デバイスの特性は次のとおりです。
+IoT Hub and the device libraries help you to meet the challenges of how to reliably and securely connect devices to the solution back end. IoT devices:
 
-- 多くの場合、人間が操作することのない組み込みシステムです。
-- 物理アクセスにコストがかかる遠隔地に配置されている場合があります。
-- ソリューション バック エンド経由でしか到達できない場合があります。
-- 電源や処理リソースが限られている場合があります。
-- ネットワーク接続が断続的に切れたり、遅かったり、高コストである場合があります。
-- 専用、カスタム、または業界固有のアプリケーション プロトコルを使用することが必要になる場合があります。
-- 一般的なハードウェアおよびソフトウェア プラットフォームを多数使用して作成できます。
+- Are often embedded systems with no human operator.
+- Can be in remote locations, where physical access is expensive.
+- May only be reachable through the solution back end.
+- May have limited power and processing resources.
+- May have intermittent, slow, or expensive network connectivity.
+- May need to use proprietary, custom, or industry-specific application protocols.
+- Can be created using a large set of popular hardware and software platforms.
 
-上記の要件に加え、IoT ソリューションはスケール、セキュリティ、および信頼性を提供する必要もあります。そのため、一連の接続要件は、Web コンテナーやメッセージング ブローカーなどの従来のテクノロジを使用すると、実装するのが難しく、時間がかかります。
+In addition to the requirements above, any IoT solution must also deliver scale, security, and reliability. The resulting set of connectivity requirements is hard and time-consuming to implement when you use traditional technologies, such as web containers and messaging brokers.
 
-## Azure IoT Hub を使用する理由
+## <a name="why-use-azure-iot-hub"></a>Why use Azure IoT Hub
 
-Azure IoT Hub は、次の方法でデバイスの接続の課題に対処します。
+Azure IoT Hub addresses the device-connectivity challenges in the following ways:
 
--   **デバイスごとの認証およびセキュリティで保護された接続**。各デバイスを独自の[セキュリティ キー][lnk-devguide-security]を使用してプロビジョニングし、IoT Hub に接続することができます。[IoT Hub ID レジストリ][lnk-devguide-identityregistry]には、ソリューションのデバイスの ID とキーが保存されます。ソリューション バックエンドで個々のデバイスを許可リストと拒否リストのいずれかに追加し、デバイスのアクセスを完全に制御できます。
+-   **Per-device authentication and secure connectivity**. You can provision each device with its own [security key][lnk-devguide-security] to enable it to connect to IoT Hub. The [IoT Hub identity registry][lnk-devguide-identityregistry] stores device identities and keys in a solution. A solution back end can add individual devices to allow or deny lists to enable complete control over device access.
 
--   **デバイスの接続操作の監視**。デバイス ID の管理操作とデバイス接続イベントに関する詳細な操作ログを受信できます。この監視機能により、IoT ソリューションでは、接続の問題 (不適切な資格情報で接続を試みるデバイス、メッセージを送信する頻度が異常であるデバイス、すべての C2D メッセージを拒否するデバイスなど) を識別することができます。
+-   **Monitoring of device connectivity operations**. You can receive detailed operation logs about device identity management operations and device connectivity events. This monitoring capability enables your IoT solution to identify connectivity issues, such as devices that try to connect with wrong credentials, send messages too frequently, or reject all cloud-to-device messages.
 
--   **広範なデバイス ライブラリ**。[Azure IoT デバイス SDK][lnk-device-sdks] は、さまざまな言語とプラットフォーム (多くの Linux ディストリビューション、Windows、リアルタイム オペレーティング システムでは C) で使用でき、サポートされています。Azure IoT デバイス SDK はまた、C#、Java、JavaScript など管理対象言語に対応しています。
+-   **An extensive set of device libraries**. [Azure IoT device SDKs][lnk-device-sdks] are available and supported for various languages and platforms--C for many Linux distributions, Windows, and real-time operating systems. Azure IoT device SDKs also support managed languages, such as C#, Java, and JavaScript.
 
--   **IoT プロトコルと機能拡張**。ソリューションでデバイス ライブラリを使用できない場合、IoT Hub は、デバイスで MQTT v3.1.1、HTTP 1.1、または AMQP 1.0 プロトコルをネイティブに使用できるようにするパブリック プロトコルを公開します。また、以下の方法で IoT Hub を拡張して、カスタム プロトコルをサポートすることもできます。
+-   **IoT protocols and extensibility**. If your solution cannot use the device libraries, IoT Hub exposes a public protocol that enables devices to natively use the MQTT v3.1.1, HTTP 1.1, or AMQP 1.0 protocols. You can also extend IoT Hub to provide support for custom protocols by:
 
-    - IoT Hub で認識される 3 つのプロトコルのいずれかにカスタム プロトコルを変換するフィールド ゲートウェイを、[Azure IoT Gateway SDK][lnk-gateway-sdk] で作成します。
-    - クラウドで実行されるオープン ソース コンポーネントである [Azure IoT プロトコル ゲートウェイ][protocol-gateway]をカスタマイズします。
+    - Creating a field gateway with the [Azure IoT Gateway SDK][lnk-gateway-sdk] that converts your custom protocol to one of the three protocols understood by IoT Hub. 
+    - Customizing the [Azure IoT protocol gateway][protocol-gateway], an open source component that runs in the cloud.
 
--   **スケール**。Azure IoT Hub は、デバイスの数百万単位での同時接続、および毎秒数百万単位のイベントに対応できます。
+-   **Scale**. Azure IoT Hub scales to millions of simultaneously connected devices and millions of events per second.
 
-多くの通信パターンにこれらの利点があります。現在 IoT Hub では、具体的に次の通信パターンを実装できます。
+These benefits are generic to many communication patterns. IoT Hub currently enables you to implement the following specific communication patterns:
 
--   **イベント ベースのデバイスからクラウドへの取り込み。** IoT Hub は、デバイスから 1 秒ごとに何百万ものイベントを安定して受信できます。その後、イベント プロセッサ エンジンを使用してホット パスでイベントを処理できます。また、分析のためにコールド パスに保存することもできます。IoT Hub は、信頼性の高い処理を保証するためとピーク時の負荷を吸収するために、最大 7 日間イベント データを保持します。
+-   **Event-based device-to-cloud ingestion.** IoT Hub can reliably receive millions of events per second from your devices. It can then process them on your hot path by using an event processor engine. It can also store them on your cold path for analysis. IoT Hub retains the event data for up to seven days to guarantee reliable processing and to absorb peaks in the load.
 
--   **クラウドからデバイスへの信頼性の高いメッセージング (または*コマンド*)。** ソリューション バック エンドでは、IoT Hub を使用して、最低 1 回の配信保証で個々のデバイスにメッセージを送信できます。各メッセージには個別の有効期限設定があり、バックエンドでは配信と有効期限の両方の受信通知を要求し、これらの受信通知により、クラウドからデバイスへのメッセージのライフサイクルについて完全な可視性を保証します。これにより、デバイス上で実行される操作を含むビジネス ロジックの実装が可能になります。
+-   **Reliable cloud-to-device messaging (or *commands*).** The solution back end can use IoT Hub to send messages with an at-least-once delivery guarantee to individual devices. Each message has an individual time-to-live setting, and the back end can request both delivery and expiration receipts. These receipts ensure full visibility into the life cycle of a cloud-to-device message. You can then implement business logic that includes operations that run on devices.
 
--   **クラウドへのファイルとキャッシュされたセンサー データのアップロード。** IoT Hub によって自動的に管理される SAS URI を使用して、デバイスから Azure Storage にファイルをアップロードできます。IoT Hub は、クラウドにファイルが届いたときに通知を生成して、バックエンドでそのファイルを処理できるようにします。
+-   **Upload files and cached sensor data to the cloud.** Your devices can upload files to Azure Storage using SAS URIs managed for you by IoT Hub. IoT Hub can generate notifications when files arrive in the cloud to enable the back end to process them.
 
-## ゲートウェイ
+## <a name="gateways"></a>Gateways
 
-通常、IoT ソリューションのゲートウェイは、クラウドにデプロイされる[プロトコル ゲートウェイ][lnk-gateway]か、デバイスでローカルにデプロイされる[フィールド ゲートウェイ][lnk-field-gateway]のいずれかになります。プロトコル ゲートウェイは、MQTT から AMQP への変換など、プロトコル変換を実行します。フィールド ゲートウェイは、現状分析を実行したり、時間の制約がある判断を行って遅延を短縮したりできます。また、デバイス管理サービスを提供したり、セキュリティとプライバシーの制約を強制したりできるほか、プロトコル変換を行うこともできます。どちらの種類のゲートウェイも、デバイスと IoT Hub 間の仲介役として機能します。
+A gateway in an IoT solution is typically either a [protocol gateway][lnk-gateway] that is deployed in the cloud or a [field gateway][lnk-field-gateway] that is deployed locally with your devices. A protocol gateway performs protocol translation, for example MQTT to AMQP. A field gateway can run analytics on the edge, make time-sensitive decisions to reduce latency, provide device management services, enforce security and privacy constraints, and also perform protocol translation. Both gateway types act as intermediaries between your devices and your IoT hub.
 
-フィールド ゲートウェイは通常、ソリューションにおけるアクセスと情報フローの管理において大きな役割を果たすため、単純なトラフィック ルーティング デバイス (ネットワーク アドレス変換デバイスやファイアウォールなど) とは異なります。
+A field gateway differs from a simple traffic routing device (such as a network address translation device or firewall) because it typically performs an active role in managing access and information flow in your solution.
 
-プロトコル ゲートウェイとフィールド ゲートウェイの両方をソリューションに含めることもできます。
+A solution may include both protocol and field gateways.
 
-## IoT Hub のしくみ
+## <a name="how-does-iot-hub-work?"></a>How does IoT Hub work?
 
-Azure IoT Hub は、デバイスとソリューション バックエンド間の対話を仲介する[サービス支援通信][lnk-service-assisted-pattern]パターンを実装しています。サービス支援通信の目的は、管理システム (IoT Hub など) と、信頼されていない物理領域にデプロイされている特殊用途のデバイス間の信頼できる双方向の通信パスを確立することです。このパターンでは次の原則が確立されています。
+Azure IoT Hub implements the [service-assisted communication][lnk-service-assisted-pattern] pattern to mediate the interactions between your devices and your solution back end. The goal of service-assisted communication is to establish trustworthy, bidirectional communication paths between a control system, such as IoT Hub, and special-purpose devices that are deployed in untrusted physical space. The pattern establishes the following principles:
 
-- セキュリティがその他のすべての機能に優先されます。
-- デバイスは、要求されていないネットワーク情報を受け入れません。デバイスは送信のみの方法で、すべての接続とルートを確立します。バック エンドからコマンドを受信する場合、デバイスは定期的に接続を開始して、処理待ちのコマンドがないか確認する必要があります。
-- デバイスは、IoT Hub など、ピアリングされている既知のサービスへの接続またはルートの確立のみを行います。
-- デバイスとサービス間またはデバイスとゲートウェイ間の通信パスは、アプリケーション プロトコル レイヤーで保護されます。
-- システム レベルの承認と認証は、デバイスごとの ID に基づいており、アクセス資格情報とアクセス許可をほぼ瞬時に取り消すことができます。
-- コマンドとデバイスの通知は、デバイスが接続され、それらを受信するまで保持されるので、電源や接続の問題によって散発的に接続されるデバイスの双方向通信が円滑になります。IoT Hub は、送信されるコマンドのデバイス固有のキューを維持しています。
-- アプリケーション ペイロード データは個別に保護され、ゲートウェイを介して特定のサービスに転送されます。
+- Security takes precedence over all other capabilities.
+- Devices do not accept unsolicited network information. A device establishes all connections and routes in an outbound-only fashion. For a device to receive a command from the back end, the device must regularly initiate a connection to check for any pending commands to process.
+- Devices should only connect to or establish routes to well-known services they are peered with, such as IoT Hub.
+- The communication path between device and service or between device and gateway is secured at the application protocol layer.
+- System-level authorization and authentication are based on per-device identities. They make access credentials and permissions nearly instantly revocable.
+- Bidirectional communication for devices that connect sporadically due to power or connectivity concerns is facilitated by holding commands and device notifications until a device connects to receive them. IoT Hub maintains device-specific queues for the commands it sends.
+- Application payload data is secured separately for protected transit through gateways to a particular service.
 
-モバイル業界では、サービス支援通信パターンを大規模に使用して、[Windows Push 通知サービス][lnk-wns]、[Google Cloud Messaging][lnk-google-messaging]、[Apple Push Notification サービス][lnk-apple-push]などのプッシュ通知サービスを実装しています。
+The mobile industry has used the service-assisted communication pattern at enormous scale to implement push notification services such as [Windows Push Notification Services][lnk-wns], [Google Cloud Messaging][lnk-google-messaging], and [Apple Push Notification Service][lnk-apple-push].
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-Azure IoT Hub では、標準ベースの IoT デバイス管理が可能となっており、リモートからデバイスを管理、構成、更新することができます。詳細については、「[Azure IoT Hub デバイス管理の概要][lnk-device-management]」を参照してください。
+To learn how Azure IoT Hub enables standards-based IoT device management for you to remotely manage, configure, and update your devices, see [Overview of Azure IoT Hub device management][lnk-device-management].
 
-クライアント アプリケーションを各種デバイス ハードウェア プラットフォームやオペレーティング システムに実装するために、IoT デバイス SDK を使用できます。IoT デバイス SDK には、テレメトリを IoT Hub に送信し、クラウドからデバイスへのコマンドを受信する操作を容易にするライブラリが含まれています。これらの SDK を使用すると、さまざまなネットワーク プロトコルのうちのいずれかを選択して IoT Hub と通信することができます。詳細については、[デバイス SDK に関する情報][lnk-device-sdks]を参照してください。
+To implement client applications on a wide variety of device hardware platforms and operating systems, you can use the IoT device SDKs. The IoT device SDKs include libraries that facilitate sending telemetry to an IoT hub and receiving cloud-to-device commands. When you use the SDKs, you can choose from various network protocols to communicate with IoT Hub. To learn more, see the [information about device SDKs][lnk-device-sdks].
 
-実際にコードを作成してサンプルを実行するには、[IoT Hub の使用][lnk-get-started]に関するチュートリアルを参照してください。
+To get started writing some code and running some samples, see the [Get started with IoT Hub][lnk-get-started] tutorial.
 
 [img-architecture]: media/iot-hub-what-is-iot-hub/hubarchitecture.png
 
 
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [protocol-gateway]: https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md
-[lnk-service-assisted-pattern]: http://blogs.msdn.com/b/clemensv/archive/2014/02/10/service-assisted-communication-for-connected-devices.aspx "サービス支援通信に関する Clemens Vasters によるブログの投稿"
+[lnk-service-assisted-pattern]: http://blogs.msdn.com/b/clemensv/archive/2014/02/10/service-assisted-communication-for-connected-devices.aspx "Service Assisted Communication, blog post by Clemens Vasters"
 [lnk-compare]: iot-hub-compare-event-hubs.md
 [lnk-gateway]: iot-hub-protocol-gateway.md
 [lnk-field-gateway]: iot-hub-devguide-endpoints.md#field-gateways
@@ -119,4 +120,8 @@ Azure IoT Hub では、標準ベースの IoT デバイス管理が可能とな�
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 [lnk-device-management]: iot-hub-device-management-overview.md
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

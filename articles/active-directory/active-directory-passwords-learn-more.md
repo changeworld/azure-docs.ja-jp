@@ -1,385 +1,390 @@
 <properties
-	pageTitle="詳細情報: Azure AD のパスワード管理 | Microsoft Azure"
-	description="パスワード ライトバックのしくみ、パスワード ライトバックのセキュリティ、パスワード リセット ポータルのしくみ、パスワードのリセットで使用されるデータなど、Azure AD のパスワード管理に関する高度なトピック。"
-	services="active-directory"
-	documentationCenter=""
-	authors="asteen"
-	manager="femila"
-	editor="curtand"/>
+    pageTitle="Learn More: Azure AD Password Management | Microsoft Azure"
+    description="Advanced topics on Azure AD Password Management, including how password writeback works, password writeback security, how the password reset portal works, and what data is used by password reset."
+    services="active-directory"
+    documentationCenter=""
+    authors="asteen"
+    manager="femila"
+    editor="curtand"/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/12/2016"
-	ms.author="asteen"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/12/2016"
+    ms.author="asteen"/>
 
-# パスワード管理の詳細情報
 
-> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+# <a name="learn-more-about-password-management"></a>Learn more about Password Management
 
-既にパスワード管理をデプロイしている場合、またはデプロイする前に技術的な動作方法についてさらにしく知りたい場合は、サービスの背景技術の概念について、このセクションで概要を説明します。次の内容を説明します。
+> [AZURE.IMPORTANT] **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
 
-* [**パスワード ライトバックの概要**](#password-writeback-overview)
-  - [パスワード ライトバックのしくみ](#how-password-writeback-works)
-  - [パスワード ライトバックでサポートされているシナリオ](#scenarios-supported-for-password-writeback)
-  - [パスワード ライトバックのセキュリティ モデル](#password-writeback-security-model)
-* [**パスワード リセット ポータルのしくみ**](#how-does-the-password-reset-portal-work)
-  - [パスワードのリセットで使用されるデータ](#what-data-is-used-by-password-reset)
-  - [ユーザーのパスワード リセット データにアクセスする方法](#how-to-access-password-reset-data-for-your-users)
+If you have already deployed Password Management, or are just looking to learn more about the technical nitty gritty of how it works before deploying, this section will give you a good overview of the technical concepts behind the service. We'll cover the following:
 
-## パスワード ライトバックの概要
-パスワード ライトバックは [Azure Active Directory Connect](active-directory-aadconnect.md) コンポーネントです。Azure Active Directory Premium の現在のサブスクライバーによって有効にされ、使用されます。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+* [**Password writeback overview**](#password-writeback-overview)
+  - [How pasword writeback works](#how-password-writeback-works)
+  - [Scenarios supported for password writeback](#scenarios-supported-for-password-writeback)
+  - [Password writeback security model](#password-writeback-security-model)
+* [**How does the password reset portal work?**](#how-does-the-password-reset-portal-work)
+  - [What data is used by password reset?](#what-data-is-used-by-password-reset)
+  - [How to access password reset data for your users](#how-to-access-password-reset-data-for-your-users)
 
-パスワード ライトバックを使用すると、オンプレミスの Active Directory にパスワードを書き戻すようにクラウド テナントを構成できます。これにより、複雑なオンプレミスのセルフサービス パスワード リセット ソリューションを設定して管理する必要がなくなります。ユーザーはどこにいても、便利なクラウドベースの方法で自分のオンプレミスのパスワードをリセットできます。次に、パスワード ライトバックの主な機能を示します。
+## <a name="password-writeback-overview"></a>Password writeback overview
+Password writeback is an [Azure Active Directory Connect](active-directory-aadconnect.md) component that can be enabled and used by the current subscribers of Azure Active Directory Premium. For more information, see [Azure Active Directory Editions](active-directory-editions.md).
 
-- **ゼロ遅延フィードバック。** パスワード ライトバックは同期操作です。ユーザーのパスワードがポリシーに合わなかった場合や、何らかの理由でリセットまたは変更できなかった場合は、すぐにユーザーに通知します。
-- **AD FS または他のフェデレーション技術を使ってユーザーのパスワードをリセットできます。** パスワード ライトバック使うと、フェデレーション ユーザー アカウントと Azure AD テナントが同期している限り、クラウドからオンプレミスの AD パスワードを管理できます。
-- **パスワード ハッシュ同期を使ってユーザーのパスワードをリセットできます。** パスワード リセット サービスは、同期されているユーザー アカウントでパスワード ハッシュ同期が有効になっていることを検出すると、このアカウントのオンプレミスのパスワードとクラウドのパスワードの両方を同時にリセットします。
-- **アクセス パネルと Office 365 からのパスワードの変更をサポートします。** フェデレーション ユーザーかパスワード同期されたユーザーが有効期限切れまたは有効期限切れでないパスワードを変更すると、これらのパスワードはローカル AD 環境に書き戻されます。
-- **管理者が [**Microsoft Azure 管理ポータル**](https://manage.windowsazure.com)でパスワードをリセットする場合のパスワードのライトバックをサポートします。**管理者が [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)でユーザーのパスワードをリセットするときに、そのユーザーがフェデレーションまたはパスワード同期されている場合は、ローカル AD で管理者が選択するパスワードも設定されます。現時点で、これは Office の管理ポータルではサポートされていません。
-- **オンプレミスの AD パスワード ポリシーを強制します。** ユーザーが自分のパスワードをリセットする場合、パスワードがオンプレミスの AD ポリシーに準拠していることを確認してから、そのディレクトリにコミットします。このポリシーには、履歴、複雑さ、年齢、パスワード フィルター、ローカル AD で定義された他のパスワード制限が含まれます。
-- **受信のファイアウォール規則を要求しません。** パスワード ライトバックは、基礎となる通信チャネルとして Azure Service Bus Relay を使用します。つまり、この機能を使用するためにファイアウォールで受信ポートを開く必要はありません、
-- **オンプレミスの Active Directory の保護グループ内に存在するユーザー アカウントではサポートされません。** 保護グループの詳細については、「[Protected Accounts and Groups in Active Directory (Active Directory の保護アカウントとグループ)](https://technet.microsoft.com/library/dn535499.aspx)」をご覧ください。
+Password writeback allows you to configure your cloud tenant to write passwords back to you on-premises Active Directory.  It obviates you from having to set up and manage a complicated on-premises self-service password reset solution, and it provides a convenient cloud-based way for your users to reset their on-premises passwords wherever they are.  Read on for some of the key features of password writeback:
 
-### パスワード ライトバックのしくみ
-パスワード ライトバックには次の 3 つの主要コンポーネントがあります。
+- **Zero delay feedback.**  Password writeback is a synchronous operation.  Your users will be notified immediately if their password did not meet policy or was not able to be reset or changed for any reason.
+- **Supports resetting passwords for users using AD FS or other federation technologies.**  With password writeback, as long as the federated user accounts are synchronized into your Azure AD tenant, they will be able to manage their on-premises AD passwords from the cloud.
+- **Supports resetting passwords for users using password hash sync.** When the password reset service detects that a synchronized user account is enabled for password hash sync, we reset both this account’s on-premises and cloud password simultaneously.
+- **Supports changing passwords from the access panel and Office 365.**  When federated or password sync’d users come to change their expired or non-expired passwords, we’ll write those passwords back to your local AD environment.
+- **Supports writing back passwords when an admin reset them from the** [**Azure Management Portal**](https://manage.windowsazure.com).  Whenever an admin resets a user’s password in the [Azure Management Portal](https://manage.windowsazure.com), if that user is federated or password sync’d, we’ll set the password the admin selects on your local AD, as well.  This is currently not supported in the Office Admin Portal.
+- **Enforces your on-premises AD password policies.**  When a user resets his/her password, we make sure that it meets your on-premises AD policy before committing it to that directory.  This includes history, complexity, age, password filters, and any other password restrictions you have defined in your local AD.
+- **Doesn’t require any inbound firewall rules.**  Password writeback uses an Azure Service Bus relay as an underlying communication channel, meaning that you do not have to open any inbound ports on your firewall for this feature to work.
+- **Is not supported for user accounts that exist within protected groups in your on-premises Active Directory.** For more information about protected groups, see [Protected Accounts and Groups in Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
 
-- パスワード リセットのクラウド サービス (これは Azure AD のパスワード変更ページにも統合されています)
-- テナント固有の Azure Service Bus Relay
-- オンプレミスのパスワード リセット エンドポイント
+### <a name="how-password-writeback-works"></a>How password writeback works
+Password writeback has three main components:
 
-これらは、以下の図で説明するように統合されています。
+- Password Reset cloud service (this is also integrated into Azure AD’s password change pages)
+- Tenant-specific Azure Service Bus relay
+- On-prem password reset endpoint
+
+They fit together as described in the below diagram:
 
   ![][001]
 
-フェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーがクラウドで自分のパスワードをリセットまたは変更する場合は、次の処理が行われます。
+When a federated or password hash sync’d user comes to reset or change his or her password in the cloud, the following occurs:
 
-1.	ユーザーのパスワードの種類が確認されます。パスワードがオンプレミスで管理されていることが確認されると、ライトバック サービスが起動し、実行します。オンプレミスで管理されている場合は続行しますが、管理されていない場合は、パスワードをリセットできないことがユーザーに通知されます。
-2.	次に、ユーザーが適切な認証ゲートを通過すると、パスワードのリセット画面が表示されます。
-3.	ユーザーは新しいパスワードを選択して確認します。
-4.	送信をクリックすると、プレーンテキスト パスワードがライトバックのセットアップ プロセス時に作成された対称キーを使用して暗号化されます。
-5.	パスワードは暗号化された後、ペイロードに含められ、HTTPS チャネル経由でテナント固有の Service Bus Relay (ライトバックのセットアップ中にも設定される) に送信されます。このリレーは、オンプレミスのインストールのみを認識するランダムに生成されたパスワードによって保護されます。
-6.	メッセージが Service Bus に到達すると、パスワード リセット エンドポイントが自動的にアクティブになり、保留中のリセット要求があるかどうかを確認します。
-7.	サービスは、クラウドのアンカー属性を使用して該当するユーザーを探します。この検索が正常に動作するには、ユーザー オブジェクトが AD コネクタ スペースに存在し、これが対応する MV オブジェクトにリンクし、さらにこれが対応する AAD コネクタ オブジェクトにリンクする必要があります。最後に、同期によってこのユーザー アカウントを検索するには、AD コネクタ オブジェクトから MV へのリンクに `Microsoft.InfromADUserAccountEnabled.xxx` 同期ルールが含まれている必要があります。これが必要なのは、クラウドから呼び出される場合に、同期エンジンは cloudAnchor 属性を使用して AAD コネクタ スペース オブジェクトを検索し、MV オブジェクトのリンクに戻り、次に AD オブジェクトのリンクに戻るためです。同じユーザーに対して複数の AD オブジェクト (マルチ フォレスト) がある可能性があるため、同期エンジンは `Microsoft.InfromADUserAccountEnabled.xxx` のリンクに依存して正しいユーザー アカウントを選択します。
-8.	ユーザー アカウントが見つかると、適切な AD フォレスト内で直接パスワードのリセットを試みます。
-9.	パスワードの設定操作に成功すると、ユーザーにパスワードが変更されたことが通知され、そのまま続行されます。
-10.	パスワードの設定操作に失敗した場合は、エラーが返され、やり直す必要があります。サービスがダウンした、選択したパスワードが組織のポリシーを満たしていない、ローカル AD でユーザーが見つからないなど、さまざまな原因で操作に失敗する可能性があります。多くの場合、特定のメッセージが表示され、問題解決の手段がユーザーに通知されます。
+1.  We check to see what type of password the user has.  If we see the password is managed on premises, then we ensure the writeback service is up and running.  If it is, we let the user proceed, if it is not, we tell the user that their password cannot be reset here.
+2.  Next, the user passes the appropriate authentication gates and reaches the reset password screen.
+3.  The user selects a new password and confirms it.
+4.  Upon clicking submit, we encrypt the plaintext password with a symmetric key that was created during the writeback setup process.
+5.  After encrypting the password, we include it in a payload that gets sent over an HTTPS channel to your tenant specific service bus relay (that we also set up for you during the writeback setup process).  This relay is protected by a randomly generated password that only your on-premises installation knows.
+6.  Once the message reaches service bus, the password reset endpoint automatically wakes up and sees that it has a reset request pending.
+7.  The service then looks for the user in question by using the cloud anchor attribute.  For this lookup to succeed, the user object must exist in the AD connector space, it must be linked to the corresponding MV object, and it must be linked to the corresponding AAD connector object. Finally, in order for sync to find this user account, the link from AD connector object to MV must have the sync rule `Microsoft.InfromADUserAccountEnabled.xxx` on the link.  This is needed because when the call comes in from the cloud, the sync engine uses the cloudAnchor attribute to look up the AAD connector space object, then follows the link back to the MV object, and then follows the link back to the AD object. Because there could be multiple AD objects (multi-forest) for the same user, the sync engine relies on the `Microsoft.InfromADUserAccountEnabled.xxx` link to pick the correct one.
+8.  Once the user account is found, we attempt to reset the password directly in the appropriate AD forest.
+9.  If the password set operation is successful, we tell the user their password has been modified and that they can go on their merry way.
+10. If the password set operation fails, we return the error to the user and let them try again.  The operation might fail because the service was down, because the password they selected did not meet organization policies, because we could not find the user in the local AD, or any number of reasons.  We have a specific message for many of these cases and tell the user what they can do to resolve the issue.
 
-### パスワード ライトバックでサポートされているシナリオ
-次の表では、同期機能のバージョンでサポートされているシナリオについて説明します。通常、パスワード ライトバックを使用する場合は、最新バージョンの [Azure AD Connect](active-directory-aadconnect.md#install-azure-ad-connect) をインストールすることを強くお勧めします。
+### <a name="scenarios-supported-for-password-writeback"></a>Scenarios supported for password writeback
+The table below describes which scenarios are supported for which versions of our sync capabilities.  In general, it is highly recommended that you install the latest version of [Azure AD Connect](active-directory-aadconnect.md#install-azure-ad-connect) if you want to use password writeback.
 
   ![][002]
 
-### パスワード ライトバックのセキュリティ モデル
-パスワード ライトバックは、安全性と信頼性の高いサービスです。ユーザーの情報を確実に保護するために、以下で説明する 4 層のセキュリティ モデルを実現しています。
+### <a name="password-writeback-security-model"></a>Password writeback security model
+Password writeback is a highly secure and robust service.  In order to ensure your information is protected, we enable a 4-tiered security model that is described below.
 
-- **テナント固有の Service Bus Relay** – サービスを設定すると、マイクロソフトでもアクセスできない、ランダムに生成された強力なパスワードで保護されたテナント固有の Service Bus Relay が設定されます。
-- **ロックダウンされ、暗号強度の高いパスワード暗号化キー** – Service Bus Relay が作成されると、強力な非対称キー ペアが作成され、ネットワーク経由でパスワードが渡されるときに暗号化に使用されます。このキーは、クラウド内の会社のシークレット ストアのみに存在し、厳重にロックダウンされ、ディレクトリ内のパスワードと同様に監査されます。
-- **業界標準の TLS** – クラウド内でパスワードのリセットや変更操作が行われる場合は、プレーン テキスト パスワードが取得され、公開キーを使用して暗号化されます。次に、これを HTTPS メッセージにして、マイクロソフトの SSL 証明書を使用して暗号化されたチャネルを介して Service Bus Relay に送信されます。このメッセージが Service Bus に到着すると、オンプレミスのエージェントがアクティブになり、前に生成された強力なパスワードを使用して Service Bus に認証され、暗号化されたメッセージを取得し、生成された秘密キーを使用して復号化され、AD DS SetPassword API を使用してパスワードの設定を試みます。この手順に従うと、クラウドで AD オンプレミスのパスワード ポリシー (複雑さ、年齢、履歴、フィルターなど) を適用できます。
-- **メッセージの有効期限ポリシー** - 最後に、何らかの理由でオンプレミス サービスが停止しているために Service Bus でメッセージが表示される場合は、セキュリティをさらに強化するために数分後にタイムアウトになり、削除されます。
+- **Tenant specific service-bus relay** – When you set up the service, we set up a tenant-specific service bus relay that is protected by a randomly generated strong password that Microsoft never has access to.
+- **Locked down, cryptographically strong, password encryption key** – After the service bus relay is created, we create a strong symmetric key which we use to encrypt the password as it comes over the wire.  This key lives only in your company's secret store in the cloud, which is heavily locked down and audited, just like any password in the directory.
+- **Industry standard TLS** – When a password reset or change operation occurs in the cloud, we take the plaintext password and encrypt it with your public key.  We then plop that into an HTTPS message which is sent over an encrypted channel using Microsoft’s SSL certs to your service bus relay.  After that message arrives into Service Bus, your on-prem agent wakes up, authenticates to Service Bus using the strong password that had been previously generated, picks up the encrypted message, decrypts it using the private key we generated, and then attempts to set the password through the AD DS SetPassword API.  This step is what allows us to enforce your AD on-prem password policy (complexity, age, history, filters, etc) in the cloud.
+- **Message expiration policies** – Finally, if for some reason the message sits in Service Bus because your on-prem service is down, it will be timed out and removed after several minutes in order to increase security even further.
 
-## パスワード リセット ポータルのしくみ
-ユーザーがパスワード リセット ポータルに移動すると、そのユーザー アカウントは有効か、そのユーザーはどの組織に属しているか、そのユーザーのパスワードはどこに管理されているか、ユーザーは機能を使用するライセンスが付与されているかを判断するためのワークフローが開始されます。パスワード リセット ページの背後にあるロジックの詳細については、次の手順をお読みください。
+## <a name="how-does-the-password-reset-portal-work?"></a>How does the password reset portal work?
+When a user navigates to the password reset portal, a workflow is kicked off to determine if that user account is valid, what organization that users belongs to, where that user’s password is managed, and whether or not the user is licensed to use the feature.  Read through the steps below to learn about the logic behind the password reset page.
 
-1.	ユーザーは、"あなたのアカウントにアクセスできません" のリンクをクリックするか、直接 [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com) に移動します。
-2.	ユーザーは、ユーザー ID を入力し、CAPTCHA を渡します。
-3.	Azure AD は、次の手順を行うことで、ユーザーがこの機能を使用できるかどうかを確認します。
-    - ユーザーがこの機能を有効にしていて、Azure AD ライセンスが割り当てられていることを確認します。
-        - ユーザーがこの機能を有効にしていない、またはライセンスが割り当てられていない場合、そのユーザーは管理者に連絡してパスワードをリセットするように求められます。
-    - ユーザーは、管理者ポリシーに従って、自分のアカウントに正しいチャレンジ データが定義されていることを確認します。
-        - ポリシーが 1 つのチャレンジのみを要求する場合は、管理者ポリシーで有効になっている 1 つ以上のチャレンジに対して、ユーザーが適切なデータを定義していることが確認されます。
-          - ユーザーが構成されていない場合、そのユーザーは管理者に連絡してパスワードをリセットするように求められます。
-        - ポリシーが 2 つのチャレンジを要求する場合は、管理者ポリシーで有効になっている 2 つ以上のチャレンジに対して、ユーザーが適切なデータを定義していることが確認されます。
-          - ユーザーが構成されていない場合、そのユーザーは管理者に連絡してパスワードをリセットするように求められます。
-    - ユーザーのパスワード (フェデレーションまたはパスワード ハッシュ同期された) がオンプレミスで管理されているかどうかを確認します。
-       - ライトバックがデプロイされていて、ユーザーのパスワードがオンプレミスで管理されている場合、ユーザーは自分のパスワードを認証してリセットできます。
-       - ライトバックがデプロイされておらず、ユーザーのパスワードがオンプレミスで管理されている場合、ユーザーは管理者に連絡してパスワードをリセットするように求められます。
-4.	ユーザーが自分のパスワードを正常にリセットできると判断された場合は、リセット プロセスの説明がユーザーに示されます。
+1.  User clicks on the Can’t access your account link or goes directly to [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com).
+2.  User enters a user id and passes a captcha.
+3.  Azure AD verifies if the user is able to use this feature by doing the following:
+    - Checks that the user has this feature enabled and an Azure AD license assigned.
+        - If the user does not have this feature enabled or a license assigned, the user is asked to contact his or her administrator to reset his or her password.
+    - Checks that the user has the right challenge data defined on his or her account in accordance with administrator policy.
+        - If policy requires only one challenge, then it is ensured that the user has the appropriate data defined for at least one of the challenges enabled by the administrator policy.
+          - If the user is not configured, then the user is advised to contact his or her administrator to reset his or her password.
+        - If the policy requires two challenges, then it is ensured that the user has the appropriate data defined for at least two of the challenges enabled by the administrator policy.
+          - If the user is not configured, then we the user is advised to contact his or her administrator to reset his or her password.
+    - Checks whether or not the user’s password is managed on premises (federated or password hash sync’d).
+       - If writeback is deployed and the user’s password is managed on premises, then the user is allowed to proceed to authenticate and reset his or her password.
+       - If writeback is not deployed and the user’s password is managed on premises, then the user is asked to contact his or her administrator to reset his or her password.
+4.  If it is determined that the user is able to successfully reset his or her password, then the user is guided through the reset process.
 
-パスワード ライトバックのデプロイ方法については、「[概要: Azure AD でのパスワード管理](active-directory-passwords-getting-started.md)」をご覧ください。
+Learn more about how to deploy password writeback at [Getting Started: Azure AD Password Management](active-directory-passwords-getting-started.md).
 
-### パスワードのリセットで使用されるデータ
-次の表は、このデータがパスワードのリセット時に使用される場所と方法を示し、組織に適した認証オプションを決定する際に役立つように作られています。この表では、このデータを検証しない入力パスからユーザーに代わってデータを指定する場合の形式の要件も示しています。
+### <a name="what-data-is-used-by-password-reset?"></a>What data is used by password reset?
+The following table outlines where and how this data is used during password reset and is designed to help you decide which authentication options are appropriate for your organization. This table also shows any formatting requirements for cases where you are providing data on behalf of users from input paths that do not validate this data.
 
-> [AZURE.NOTE] 会社電話は、現在ユーザーはディレクトリでこのプロパティを編集できないため、登録ポータルに表示されません。
+> [AZURE.NOTE] Office Phone does not appear in the registration portal because users are currently not able to edit this property in the directory.
 
 <table>
           <tbody><tr>
             <td>
               <p>
-                <strong>連絡方法</strong>
+                <strong>Contact Method Name</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>Azure Active Directory のデータ要素</strong>
+                <strong>Azure Active Directory Data Element</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>使用される場所 / 設定可能な場所</strong>
+                <strong>Used / Settable Where?</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>形式の要件</strong>
+                <strong>Format requirements</strong>
               </p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>会社電話</p>
+              <p>Office Phone</p>
             </td>
             <td>
               <p>PhoneNumber</p>
-              <p>例: Set-MsolUser -UserPrincipalName JWarner@contoso.com -PhoneNumber "+1 1234567890x1234"</p>
+              <p>e.g. Set-MsolUser -UserPrincipalName JWarner@contoso.com -PhoneNumber "+1 1234567890x1234"</p>
             </td>
             <td>
-              <p>使用される場所: </p>
-              <p>パスワード リセット ポータル</p>
-              <p>設定可能な場所: </p>
-              <p>PhoneNumber は、PowerShell、DirSync、Microsoft Azure 管理ポータル、Office の管理ポータルから設定可能です</p>
+              <p>Used in:</p>
+              <p>Password Reset Portal</p>
+              <p>Settable from:</p>
+              <p>PhoneNumber is settable from PowerShell, DirSync, Azure Management Portal, and the Office Admin Portal</p>
             </td>
             <td>
-              <p>+ccc xxxyyyzzzz (例: +1 1234567890)</p>
+              <p>+ccc xxxyyyzzzz (e.g. +1 1234567890)</p>
               <ul>
                 <li class="unordered">
-										国コードを提供する必要があります<br><br></li>
+Must provide a country code<br><br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										市外局番を指定する必要があります (該当する場合)<br><br></li>
+Must provide an area code (where applicable)<br><br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										国コードの前に + 記号を指定する必要があります<br><br></li>
+Must have provide a + in front of the country code<br><br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										国コードと残りの番号の間にスペースを入れる必要があります<br><br></li>
+Must have a space between country code and the rest of the number<br><br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										内線番号はサポートされません。内線番号が指定されている場合は、通話をディスパッチする前に電話番号から内線番号が削除されます。<br><br></li>
+Extensions are not supported, if you have any extensions specified, we will strip it from the number before dispatching the phone call.<br><br></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>
-              <p>携帯電話</p>
+              <p>Mobile Phone</p>
             </td>
             <td>
               <p>AuthenticationPhone</p>
-              <p>または</p>
+              <p>OR</p>
               <p>MobilePhone</p>
-              <p>(認証用電話はデータが存在する場合に使用されます。それ以外の場合は、携帯電話フィールドが使用されます)。</p>
-              <p>例: Set-MsolUser -UserPrincipalName JWarner@contoso.com -MobilePhone "+1 1234567890x1234"</p>
+              <p>(Authentication Phone is used if there is data present, otherwise this falls back to the mobile phone field).</p>
+              <p>e.g. Set-MsolUser -UserPrincipalName JWarner@contoso.com -MobilePhone "+1 1234567890x1234"</p>
             </td>
             <td>
-              <p>使用される場所: </p>
-              <p>パスワード リセット ポータル</p>
-              <p>登録ポータル</p>
-              <p>設定可能な場所:  </p>
-              <p>AuthenticationPhone は、パスワード リセット登録ポータルまたは MFA 登録ポータルから設定可能です。</p>
-              <p>MobilePhone は、PowerShell、DirSync、Microsoft Azure 管理ポータル、Office の管理ポータルから設定可能です</p>
+              <p>Used in:</p>
+              <p>Password Reset Portal</p>
+              <p>Registration Portal</p>
+              <p>Settable from: </p>
+              <p>AuthenticationPhone is settable from the password reset registration portal or MFA registration portal.</p>
+              <p>MobilePhone is settable from PowerShell, DirSync, Azure Management Portal, and the Office Admin Portal</p>
             </td>
             <td>
-              <p>+ccc xxxyyyzzzz (例: +1 1234567890)</p>
+              <p>+ccc xxxyyyzzzz (e.g. +1 1234567890)</p>
               <ul>
                 <li class="unordered">
-										国コードを提供する必要があります。<br><br></li>
+Must provide a country code.<br><br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										市外局番を指定する必要があります (該当する場合)。<br><br></li>
+Must provide an area code (where applicable).<br><br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										国コードの前に + 記号を指定する必要があります。<br><br></li>
+Must have provide a + in front of the country code.<br><br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										国コードと残りの番号の間にスペースを入れる必要があります。<br><br></li>
+Must have a space between country code and the rest of the number.<br><br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										内線番号はサポートされません。内線番号が指定されている場合は、通話をディスパッチするときに無視されます。<br><br></li>
+Extensions are not supported, if you have any extensions specified, we ignore it when dispatching the phone call.<br><br></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>
-              <p>連絡用メール アドレス</p>
+              <p>Alternate Email</p>
             </td>
             <td>
               <p>AuthenticationEmail</p>
-              <p>または</p>
-              <p>AlternateEmailAddresses [0] </p>
-              <p>(認証用電子メールはデータが存在する場合に使用されます。それ以外の場合は、連絡用メール アドレス フィールドが使用されます)</p>
-              <p>注: 連絡用メール アドレス フィールドは、ディレクトリ内の文字列の配列として指定されます。この配列内の最初のエントリが使用されます。</p>
-              <p>例: Set-MsolUser -UserPrincipalName JWarner@contoso.com -AlternateEmailAddresses "email@live.com"</p>
+              <p>OR</p>
+              <p>AlternateEmailAddresses[0] </p>
+              <p>(Authentication Email is used if there is data present, otherwise this falls back to the Alternate Email field).</p>
+              <p>Note: the alternate email field is specified as an array of strings in the directory.  We use the first entry in this array.</p>
+              <p>e.g. Set-MsolUser -UserPrincipalName JWarner@contoso.com -AlternateEmailAddresses "email@live.com"</p>
             </td>
             <td>
-              <p>使用される場所: </p>
-              <p>パスワード リセット ポータル</p>
-              <p>登録ポータル</p>
-              <p>設定可能な場所:  </p>
-              <p>AuthenticationEmail は、パスワード リセット登録ポータルまたは MFA 登録ポータルから設定可能です。</p>
-              <p>AlternateEmail は、PowerShell、Microsoft Azure 管理ポータル、Office の管理ポータルから設定可能です。</p>
+              <p>Used in:</p>
+              <p>Password Reset Portal</p>
+              <p>Registration Portal</p>
+              <p>Settable from: </p>
+              <p>AuthenticationEmail is settable from the password reset registration portal or MFA registration portal.</p>
+              <p>AlternateEmail is settable from PowerShell, the Azure Management Portal, and the Office Admin Portal</p>
             </td>
             <td>
               <p>
-                <a href="mailto:user@domain.com">user@domain.com</a> または甲斐@黒川.日本</p>
+                <a href="mailto:user@domain.com">user@domain.com</a> or 甲斐@黒川.日本</p>
               <ul>
                 <li class="unordered">
-										電子メールは標準的な形式に従う必要があります。<br><br></li>
+Emails should follow standard formatting as per .<br><br></li>
               </ul>
               <ul>
                 <li class="unordered">
-										Unicode の電子メールがサポートされています。<br><br></li>
+Unicode emails are supported.<br><br></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>
-              <p>セキュリティの質問と回答</p>
+              <p>Security Questions and Answers</p>
             </td>
             <td>
-              <p>ディレクトリ内で直接変更することはできません。</p>
+              <p>Not available to modify directly in the directory.</p>
             </td>
             <td>
-              <p>使用される場所: </p>
-              <p>パスワード リセット ポータル</p>
-              <p>登録ポータル </p>
-              <p>設定可能な場所:  </p>
-              <p>セキュリティの質問は、Microsoft Azure 管理ポータルからのみ設定可能です。</p>
-              <p>特定のユーザーからのセキュリティに関する質問への回答は、登録ポータルからのみ設定可能です。</p>
+              <p>Used in:</p>
+              <p>Password Reset Portal</p>
+              <p>Registration Portal </p>
+              <p>Settable from: </p>
+              <p>The only way to set security questions is through the Azure Management Portal.</p>
+              <p>The only way to set answers to security questions for a given user is through the Registration Portal.</p>
             </td>
             <td>
-              <p>セキュリティの質問は、最小 3 文字 ～ 最大 200 文字で指定します。</p>
-              <p>回答は、最小 3 文字 ～ 最大 40 文字で指定します。</p>
+              <p>Security questions have a max of 200 characters and a min of 3 characters</p>
+              <p>Answers have a max of 40 characters and a min of 3 characters</p>
             </td>
           </tr>
         </tbody></table>
 
-###ユーザーのパスワード リセット データにアクセスする方法
-####同期によって設定できるデータ
-次のフィールドは、オンプレミスから同期することができます。
+###<a name="how-to-access-password-reset-data-for-your-users"></a>How to access password reset data for your users
+####<a name="data-settable-via-synchronization"></a>Data settable via synchronization
+The following fields can be synchronized from on-premises:
 
-* 携帯電話
-* 会社電話
+* Mobile Phone
+* Office Phone
 
-####Azure AD PowerShell を使用して設定できるデータ
-次のフィールドは、Azure AD PowerShell と Graph API を使用してアクセスすることができます。
+####<a name="data-settable-with-azure-ad-powershell"></a>Data settable with Azure AD PowerShell
+The following fields are accessible with Azure AD PowerShell & the Graph API:
 
-* 連絡用メール アドレス
-* 携帯電話
-* 会社電話
-* 認証用電話
-* 認証用メール
+* Alternate Email
+* Mobile Phone
+* Office Phone
+* Authentication Phone
+* Authentication Email
 
-####登録 UI でのみ設定できるデータ
-次のフィールドは、SSPR 登録 UI でのみアクセスできます (https://aka.ms/ssprsetup):
+####<a name="data-settable-with-registration-ui-only"></a>Data settable with registration UI only
+The following fields are only accessible via the SSPR registration UI (https://aka.ms/ssprsetup):
 
-* セキュリティの質問と回答
+* Security Questions and Answers
 
-####ユーザーの登録時に発生すること
-ユーザーが登録するとき、登録ページには**常に**次のフィールドが設定されます。
+####<a name="what-happens-when-a-user-registers?"></a>What happens when a user registers?
+When a user registers, the registration page will **always** set the following fields:
 
-* 認証用電話
-* 認証用メール
-* セキュリティの質問と回答
+* Authentication Phone
+* Authentication Email
+* Security Questions and Answers
 
-**[携帯電話]** または **[連絡用メール アドレス]** に値が指定されている場合、ユーザーはそれらを使用してすぐにパスワードをリセットすることができます。これはユーザーがサービスに登録していない場合でも実行できます。さらに、これらの値は、ユーザーが初めて登録するときに表示され、ユーザーは必要に応じてそれらを変更することができます。ただし、ユーザーが正常に登録された後、これらの値は、それぞれ **[認証用電話]** フィールドと **[認証用メール]** フィールドの固定値になります。
+If you have provided a value for **Mobile Phone** or **Alternate Email**, users can immediately use those to reset their passwords, even if they haven't registered for the service.  In addition, users will see those values when registering for the first time, and modify them if they wish.  However, after they successfully register, these values will be persisted in the **Authentication Phone** and **Authentication Email** fields, respectively.
 
-これは、SSPR を使用できるように多数のユーザーをブロック解除すると同時に、ユーザーが登録プロセス中にこの情報を確認できるようにする便利な方法として利用できます。
+This can be a useful way to unblock large numbers of users to use SSPR while still allowing users to validate this information through the registration process.
 
-####PowerShell を使用したパスワード リセット データの設定
-次のフィールドの値は、Azure AD PowerShell を使用して設定することができます。
+####<a name="setting-password-reset-data-with-powershell"></a>Setting password reset data with PowerShell
+You can set values for the following fields with Azure AD PowerShell.
 
-* 連絡用メール アドレス
-* 携帯電話
-* 会社電話
+* Alternate Email
+* Mobile Phone
+* Office Phone
 
-操作を開始する前に、[Azure AD PowerShell モジュールをダウンロードしてインストールする](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)必要があります。インストールした後、次の手順に従って各フィールドを構成できます。
+To get started, you'll first need to [download and install the Azure AD PowerShell module](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule).  Once you have it installed, you can follow the steps below to configure each field.
 
-#####連絡用メール アドレス
+#####<a name="alternate-email"></a>Alternate Email
 ```
 Connect-MsolService
 Set-MsolUser -UserPrincipalName user@domain.com -AlternateEmailAddresses @("email@domain.com")
 ```
 
-#####携帯電話
+#####<a name="mobile-phone"></a>Mobile Phone
 ```
 Connect-MsolService
 Set-MsolUser -UserPrincipalName user@domain.com -MobilePhone "+1 1234567890"
 ```
 
-#####会社電話
+#####<a name="office-phone"></a>Office Phone
 ```
 Connect-MsolService
 Set-MsolUser -UserPrincipalName user@domain.com -PhoneNumber "+1 1234567890"
 ```
 
-####PowerShell を使用したパスワード リセット データの読み取り
-次のフィールドの値は、Azure AD PowerShell を使用して読み取ることができます。
+####<a name="reading-password-reset-data-with-powershell"></a>Reading password reset data with PowerShell
+You can read values for the following fields with Azure AD PowerShell.
 
-* 連絡用メール アドレス
-* 携帯電話
-* 会社電話
-* 認証用電話
-* 認証用メール
+* Alternate Email
+* Mobile Phone
+* Office Phone
+* Authentication Phone
+* Authentication Email
 
-操作を開始する前に、[Azure AD PowerShell モジュールをダウンロードしてインストールする](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)必要があります。インストールした後、次の手順に従って各フィールドを構成できます。
+To get started, you'll first need to [download and install the Azure AD PowerShell module](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule).  Once you have it installed, you can follow the steps below to configure each field.
 
-#####連絡用メール アドレス
+#####<a name="alternate-email"></a>Alternate Email
 ```
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select AlternateEmailAddresses
 ```
 
-#####携帯電話
+#####<a name="mobile-phone"></a>Mobile Phone
 ```
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select MobilePhone
 ```
 
-#####会社電話
+#####<a name="office-phone"></a>Office Phone
 ```
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select PhoneNumber
 ```
 
-#####認証用電話
+#####<a name="authentication-phone"></a>Authentication Phone
 ```
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select PhoneNumber
 ```
 
-#####認証用メール
+#####<a name="authentication-email"></a>Authentication Email
 ```
 Connect-MsolService
 Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthenticationUserDetails | select Email
 ```
 
-## パスワードのリセットに関するドキュメントへのリンク
-Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
+## <a name="links-to-password-reset-documentation"></a>Links to password reset documentation
+Below are links to all of the Azure AD Password Reset documentation pages:
 
-* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
-* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
-* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
-* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
-* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
+* **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+* [**How it works**](active-directory-passwords-how-it-works.md) - learn about the six different components of the service and what each does
+* [**Getting started**](active-directory-passwords-getting-started.md) - learn how to allow you users to reset and change their cloud or on-premises passwords
+* [**Customize**](active-directory-passwords-customize.md) - learn how to customize the look & feel and behavior of the service to your organization's needs
+* [**Best practices**](active-directory-passwords-best-practices.md) - learn how to quickly deploy and effectively manage passwords in your organization
+* [**Get insights**](active-directory-passwords-get-insights.md) - learn about our integrated reporting capabilities
+* [**FAQ**](active-directory-passwords-faq.md) - get answers to frequently asked questions
+* [**Troubleshooting**](active-directory-passwords-troubleshoot.md) - learn how to quickly troubleshoot problems with the service
 
 
 
 [001]: ./media/active-directory-passwords-learn-more/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-learn-more/002.jpg "Image_002.jpg"
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

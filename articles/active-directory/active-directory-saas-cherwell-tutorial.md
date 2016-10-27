@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Cherwell の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Cherwell を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Cherwell | Microsoft Azure" 
+    description="Learn how to use Cherwell with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,122 +11,128 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/27/2016" 
+    ms.date="10/14/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Cherwell の統合
 
-このチュートリアルでは、Azure と Cherwell の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+#<a name="tutorial:-azure-active-directory-integration-with-cherwell"></a>Tutorial: Azure Active Directory integration with Cherwell
 
--   有効な Azure サブスクリプション
--   Cherwell でのシングル サインオンが有効なサブスクリプション
+The objective of this tutorial is to show the integration of Azure and Cherwell. The scenario outlined in this tutorial assumes that you already have the following items:
 
-このチュートリアルを完了すると、Cherwell に割り当てた Azure AD ユーザーは、Cherwell 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+-   A valid Azure subscription
+-   A Cherwell single sign-on enabled subscription
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+After completing this tutorial, the Azure AD users you have assigned to Cherwell will be able to single sign into the application at your Cherwell company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-1.  Cherwell のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+The scenario outlined in this tutorial consists of the following building blocks:
 
-![シナリオ](./media/active-directory-saas-cherwell-tutorial/IC798988.png "シナリオ")
-##Cherwell のアプリケーション統合の有効化
+1.  Enabling the application integration for Cherwell
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-このセクションでは、Cherwell のアプリケーション統合を有効にする方法について説明します。
+![Scenario](./media/active-directory-saas-cherwell-tutorial/IC798988.png "Scenario")
+##<a name="enabling-the-application-integration-for-cherwell"></a>Enabling the application integration for Cherwell
 
-###Cherwell のアプリケーション統合を有効にするには、次の手順を実行します。
+The objective of this section is to outline how to enable the application integration for Cherwell.
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+###<a name="to-enable-the-application-integration-for-cherwell,-perform-the-following-steps:"></a>To enable the application integration for Cherwell, perform the following steps:
+
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-cherwell-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-cherwell-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-cherwell-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-cherwell-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-cherwell-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-cherwell-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-cherwell-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Cherwell**」と入力します。
+6.  In the **search box**, type **Cherwell**.
 
     ![Cherwell](./media/active-directory-saas-cherwell-tutorial/IC798989.png "Cherwell")
 
-7.  結果ウィンドウで **[Cherwell]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-##シングル サインオンの構成
+7.  In the results pane, select **Cherwell**, and then click **Complete** to add the application.
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
 
-	![Cherwell](./media/active-directory-saas-cherwell-tutorial/IC798996.png "Cherwell")
+    ![Cherwell](./media/active-directory-saas-cherwell-tutorial/IC798996.png "Cherwell")
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Cherwell に対する認証を行えるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to Cherwell with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Cherwell** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Cherwell** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-cherwell-tutorial/IC798990.png "Configure Single Sign-On")
 
-2.  **[ユーザーの Cherwell へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Cherwell** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-cherwell-tutorial/IC798991.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
+3.  On the **Configure App URL** page, perform the following steps:
 
-    ![Configure App URL](./media/active-directory-saas-cherwell-tutorial/IC798992.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-cherwell-tutorial/IC798992.png "Configure App URL")
 
-    a.**[サインオン URL]** ボックスに、ユーザーが **Cherwell** へのサインインに使用する URL を入力します (例: *https://\<会社名>.cherwellondemand.com/cherwellclient*)。
+    a.  In the **Sign On URL** textbox, type the URL used by your users to sign into your **Cherwell** (e.g.: *https://\<company name\>.cherwellondemand.com/cherwellclient*).
 
-    b.**[次へ]** をクリックします。
+    b.  Click **Next**
 
-4.  **[Cherwell でのシングル サインオンの構成]** ページで、次の手順を実行します。
+4.  On the **Configure single sign-on at Cherwell** page, perform the following steps:
 
     ![Configure Single Sign-On](./media/active-directory-saas-cherwell-tutorial/IC798993.png "Configure Single Sign-On")
 
-    a.**[証明書のダウンロード]** をクリックし、コンピューターで証明書をローカルに保存します。
+    a.  Click **Download certificate**, and then save the certificate locally on your computer.
 
-    b.**[ID プロバイダー URL]** をコピーします。
+    b.  Copy the **Identity Provider URL**.
 
-    c.**[シングル サインオン サービス URL]** をコピーします。
+    c.  Copy the **Single Sign-On Service URL**.
 
-    d.**[次へ]** をクリックします。
+    d.  Click **Next**.
 
-5.  ダウンロードした証明書、**ID プロバイダー URL**、**シングル サインオン サービス URL** を、Cherwell サポート チームに送信します。
+5.  Submit the downloaded certificate, the **Identity Provider URL** and the **Single Sign-On Service URL** to your Cherwell support team.
 
-    >[AZURE.NOTE] Cherwell サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知されます。
+    >[AZURE.NOTE] Your Cherwell support team has to do the actual SSO configuration.
+You will get a notification when SSO has been enabled for your subscription.
 
-6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-cherwell-tutorial/IC798994.png "Configure Single Sign-On")
 
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
 
-Azure AD ユーザーが Cherwell にログインできるようにするには、ユーザーを Cherwell にプロビジョニングする必要があります。  
-Cherwell の場合、Cherwell サポート チームがユーザー アカウントを作成する必要があります。
+In order to enable Azure AD users to log into Cherwell, they must be provisioned into Cherwell.  
+In the case of Cherwell, the user accounts need to be created by your Cherwell support team.
 
->[AZURE.NOTE] Cherwell から提供されている他の Cherwell ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other Cherwell user account creation tools or APIs provided by Cherwell to provision Azure Active Directory user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
 
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Cherwell に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-cherwell,-perform-the-following-steps:"></a>To assign users to Cherwell, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Cherwell** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Cherwell** application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-cherwell-tutorial/IC798995.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-cherwell-tutorial/IC798995.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-cherwell-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

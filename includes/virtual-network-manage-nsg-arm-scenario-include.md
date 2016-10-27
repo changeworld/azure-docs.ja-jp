@@ -1,21 +1,23 @@
-## サンプル シナリオ
+## <a name="sample-scenario"></a>Sample Scenario
 
-NSG の管理方法をわかりやすく説明するために、この記事では次のシナリオを使用します。
+To better illustrate how to manage NSGs, this article uses the scenario below.
 
-![VNet のシナリオ](./media/virtual-networks-create-nsg-scenario-include/figure1.png)
+![VNet scenario](./media/virtual-networks-create-nsg-scenario-include/figure1.png)
 
-このシナリオでは、以下の説明のように、**TestVNet** 仮想ネットワークの各サブネットに対して NSG を作成します。
+In this scenario you will create an NSG for each subnet in the **TestVNet** virtual network, as described below: 
 
-- **NSG-FrontEnd**。以下の 2 つの規則を含むフロントエンド NSG が *FrontEnd* サブネットに適用されます。	
-	- **rdp-rule**。この規則は *FrontEnd* サブネットに対する RDP トラフィックを許可します。
-	- **web-rule**。この規則は *FrontEnd* サブネットに対する HTTP トラフィックを許可します。
-- **NSG-BackEnd**。以下の 2 つの規則を含むバックエンド NSG が *BackEnd* サブネットに適用されます。	
-	- **sql-rule**。この規則は、*FrontEnd* サブネットからの SQL トラフィックのみを許可します。
-	- **web-rule**。この規則は、*BackEnd* サブネットからのすべてのインターネット経由トラフィックを拒否します。
+- **NSG-FrontEnd**. The front end NSG will be applied to the *FrontEnd* subnet, and contain two rules:  
+    - **rdp-rule**. This rule will allow RDP traffic to the *FrontEnd* subnet.
+    - **web-rule**. This rule will allow HTTP traffic to the *FrontEnd* subnet.
+- **NSG-BackEnd**. The back end NSG will be applied to the *BackEnd* subnet, and contain two rules: 
+    - **sql-rule**. This rule allows SQL traffic only from the *FrontEnd* subnet.
+    - **web-rule**. This rule denies all internet bound traffic from the *BackEnd* subnet.
 
-これらの規則の組み合わせによって、DMZ のようなシナリオが作成されます。このシナリオではバックエンドのサブネットはフロントエンドのサブネットから SQL トラフィックの受信トラフィックのみを受信でき、インターネットへはアクセスできません。一方、フロントエンドのサブネットはインターネットと通信でき、受信 HTTP 要求のみを受信します。
+The combination of these rules create a DMZ-like scenario, where the back end subnet can only receive incoming traffic for SQL traffic from the front end subnet, and has no access to the Internet, while the front end subnet can communicate with the Internet, and receive incoming HTTP requests only.
 
-上記のシナリオをデプロイするには、[このリンク](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG)に従って、**[Azure へのデプロイ]** をクリックし、必要に応じて既定のパラメーター値を置き換えて、ポータルの指示に従います。下記のサンプル手順では、テンプレートを使用して、**RG NSG** というリソース グループ名をデプロイしています。
+To deploy the scenario described above, follow [this link](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), click **Deploy to Azure**, replace the default parameter values if necessary, and follow the instructions in the portal. In the sample instructions below, the template was used to deploy a resource group names **RG-NSG**. 
  
 
-<!---HONumber=AcomDC_0323_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

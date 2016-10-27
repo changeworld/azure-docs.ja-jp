@@ -1,6 +1,6 @@
 <properties
-   pageTitle="モノのインターネットのセキュリティのベスト プラクティス | Microsoft Azure"
-   description="この記事では、Microsoft のモノのインターネットのセキュリティのベスト プラクティスと一般的な推奨を精選した一覧を示します。"
+   pageTitle="Internet of Things Security Best Practices | Microsoft Azure"
+   description="The article provides a curated list of Microsoft Internet of Things Security Best Practices and general recommendations."
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -13,56 +13,61 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="08/09/2016"
+   ms.date="10/25/2016"
    ms.author="yurid"/>
 
-# モノのインターネットのセキュリティのベスト プラクティス
 
-モノのインターネット (IoT) インフラストラクチャのセキュリティ保護は、IoT ソリューションに関わるすべてのユーザーにとって重要な作業です。関連のあるデバイスの数が多く、これらのデバイスに分散型の性質があるため、数百万の IoT デバイスの侵害に関係するセキュリティ イベントの影響は重大で、広範囲にわたって影響を与える可能性があります。
+# <a name="internet-of-things-security-best-practices"></a>Internet of Things Security Best Practices
 
-このため、IoT セキュリティには緻密なセキュリティのアプローチが必要です。データはプライベートおよびパブリック ネットワーク上を移動するため、クラウド内でセキュリティ保護する必要があります。メソッドは、IoT デバイス自体を安全にプロビジョニングする必要があります。各レイヤー (デバイスから、ネットワークへ、クラウド バックエンドへ) には、強力なセキュリティ保証が必要です。
+Securing the Internet of Things (IoT) infrastructure is a critical undertaking for anyone involved with IoT solutions. Because of the number of devices involved and the distributed nature of these devices, the impact a security event related to compromise of millions of IoT devices is non-trivial and can have widespread impact.
 
-IoT のベスト プラクティスは、次のように分類できます。
+For this reason, IoT security needs a security-in-depth approach. Data needs to be secure in the cloud and as it moves over private and public networks. Methods need to be in place to securely provision the IoT devices themselves. Each layer, from device, to network, to cloud back-end needs strong security assurances.
 
-- IoT ハードウェアの製造元またはインテグレーター
-- IoT ソリューション開発者
-- IoT ソリューションのデプロイ担当者
-- IoT ソリューションのオペレーター
+IoT best practices can be categorized in the following way:
 
-この記事では、[モノのインターネットのセキュリティのベスト プラクティス](../iot-suite/iot-security-best-practices.md)の概要について説明します。詳細情報については、記事をご覧ください。
+- IoT hardware manufacturer or integrator
+- IoT solution developer
+- IoT solution deployer
+- IoT solution operator
 
-## IoT ハードウェアの製造元またはインテグレーター
+This article summarizes [Internet of Things Security Best Practices](../iot-suite/iot-security-best-practices.md). Please refer to that article for more detailed information.
 
-IoT ハードウェアの製造元またはハードウェア インテグレーターの場合は、以下のベスト プラクティスに従います。
+## <a name="iot-hardware-manufacturer-or-integrator"></a>IoT hardware manufacturer or integrator
 
-- **ハードウェアのスコープを最小要件に絞る**: ハードウェアの設計には、ハードウェアの操作に必要な最小限の機能を含める必要がありますが、それ以上の機能は含めません。
-- **ハードウェアの改ざんへの耐性を備える**: デバイスのカバーを開ける、デバイスの部品を取り外すなど、ハードウェアの物理的な改ざんを検出するメカニズムを構築します。
-- **セキュリティで保護されたハードウェアを中心に構築する**: [COGS](https://en.wikipedia.org/wiki/Cost_of_goods_sold) が許す限り、セキュリティで保護された暗号化ストレージやトラステッド プラットフォーム モジュール (TPM) ベースのブート機能など、セキュリティ機能を構築します。
-- **アップグレードをセキュリティで保護する**: デバイスの有効期間中にファームウェアをアップグレードすることは不可欠です。
+Follow the best practices below if you are an IoT hardware manufacture or a hardware integrator:
 
-## IoT ソリューション開発者
+- **Scope hardware to minimum requirements**: the hardware design should include minimum features required for operation of the hardware, and nothing more. 
+- **Make hardware tamper proof**: build in mechanisms to detect physical tampering of hardware, such as opening the device cover, removing a part of the device, etc. 
+- **Build around secure hardware**: if [COGS](https://en.wikipedia.org/wiki/Cost_of_goods_sold) permit, build security features such as secure and encrypted storage and Trusted Platform Module (TPM)-based boot functionality.
+- **Make upgrades secure**: upgrading firmware during lifetime of the device is inevitable.
 
-IoT ソリューション開発者の場合は、以下のベスト プラクティスに従います。
+## <a name="iot-solution-developer"></a>IoT solution developer
 
-- **セキュリティで保護されたソフトウェアの開発方法に従う**: セキュリティで保護されたソフトウェアを開発するには、プロジェクトの開始からその実装、テスト、およびデプロイに至るまで、セキュリティをゼロから考慮する必要があります。
-- **オープン ソース ソフトウェアを慎重に選択する**: オープン ソース ソフトウェアは、ソリューションを簡単に開発する機会を提供します。
-- **注意深く統合を行う**: ソフトウェア セキュリティの欠陥の多くは、ライブラリと API の境界に存在します。
+Follow the best practices below if you are an IoT solution developer:
 
-## IoT ソリューションのデプロイ担当者
+- **Follow secure software development methodology**: developing secure software requires ground-up thinking about security from the inception of the project all the way to its implementation, testing, and deployment.
+- **Choose open source software with care**: open source software provides an opportunity to quickly develop solutions.
+- **Integrate with care**: many of the software security flaws exist at the boundary of libraries and APIs. 
 
-IoT ソリューションのデプロイ担当者の場合は、以下のベスト プラクティスに従います。
+## <a name="iot-solution-deployer"></a>IoT solution deployer
 
-- **ハードウェアを安全にデプロイする**: IoT デプロイでは、公共施設や監視されていないロケールなど、セキュリティで保護されていない場所にハードウェアをデプロイする必要が生じる場合があります。
-- **認証キーを安全に保管する**: デプロイ中、各デバイスはデバイス ID、およびクラウド サービスによって生成される関連する認証キーを必要とします。これらのキーは、デプロイ後にも物理的に安全に保管します。キーが盗まれると、悪意のあるデバイスが既存のデバイスになりすますために使用される可能性があります。
+Follow the best practices below if you are an IoT solution deployer:
 
-## IoT ソリューションのオペレーター
+- **Deploy hardware securely**: IoT deployments may require hardware to be deployed in unsecure locations, such as in public spaces or unsupervised locales.
+- **Keep authentication keys safe**: during deployment, each device requires device IDs and associated authentication keys generated by the cloud service. Keep these keys physically safe even after the deployment. Any compromised key can be used by a malicious device to masquerade as an existing device.
 
-IoT ソリューションのオペレーターの場合は、以下のベスト プラクティスに従います。
+## <a name="iot-solution-operator"></a>IoT solution operator
 
-- **システムを常に最新の状態に保つ**: デバイスのオペレーティング システムおよびすべてのデバイス ドライバーが最新バージョンに更新されていることを確認します。
-- **悪意のあるアクティビティから保護する**: オペレーティング システムで許可される場合は、各デバイスのオペレーティング システムに最新のウイルス対策およびマルウェア対策機能を配置します。
-- **頻繁に監査を行う**: セキュリティ インシデントに対応するときには、セキュリティ関連の問題について IoT インフラストラクチャを監査することが重要です。
-- **IoT インフラストラクチャを物理的に保護する**: IoT インフラストラクチャに対する最悪のセキュリティ攻撃は、デバイスへの物理的なアクセスによって開始されます。
-- **クラウドの資格情報を保護する**: IoT デプロイの構成と操作に使用されるクラウド認証の資格情報は、IoT システムへのアクセスを取得して侵害するための最も簡単な手段となりえます。
+Follow the best practices below if you are an IoT solution operator:
 
-<!---HONumber=AcomDC_0810_2016-->
+- **Keep systems up to date**: ensure device operating systems and all device drivers are updated to the latest versions. 
+- **Protect against malicious activity**: if the operating system permits, place the latest anti-virus and anti-malware capabilities on each device operating system. 
+- **Audit frequently**: auditing IoT infrastructure for security related issues is key when responding to security incidents.
+- **Physically protect the IoT infrastructure**: the worst security attacks against IoT infrastructure are launched using physical access to devices.
+- **Protect cloud credentials**: cloud authentication credentials used for configuring and operating an IoT deployment are possibly the easiest way to gain access and compromise an IoT system. 
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

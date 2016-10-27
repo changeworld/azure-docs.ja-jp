@@ -1,10 +1,13 @@
-システム ルートを使用するとデプロイメントのトラフィックが自動的に促進されますが、仮想アプライアンスを通過するパケットのルーティングを自分で制御したい場合もあります。特定のサブネット宛のパケットが代わりに仮想アプライアンスを通るように次ホップを指定するユーザー定義のルートを作成し、仮想アプライアンスとして実行する VM に対して IP 転送を有効にすることにより、これを実現できます。
+Although the use of system routes facilitates traffic automatically for your deployment, there are cases in which you want to control the routing of packets through a virtual appliance. You can do so by creating user defined routes that specify the next hop for packets flowing to a specific subnet to go to your virtual appliance instead, and enabling IP forwarding for the VM running as the virtual appliance.
 
-仮想アプライアンスを使用できるのは次のような場合です。
+Some of the cases where virtual appliances can be used include:
 
-- 侵入検出システム (ID) を使用したトラフィックの監視
-- ファイアウォールを使用したトラフィックの制御
+- Monitoring traffic with an intrusion detection system (IDS)
+- Controlling traffic with a firewall
 
-UDR および IP 転送の詳細については、「[ユーザー定義のルートと IP 転送](../articles/virtual-network/virtual-networks-udr-overview.md)」を参照してください。
+For more information about UDR and IP forwarding, visit [User Defined Routes and IP Forwarding](../articles/virtual-network/virtual-networks-udr-overview.md).
 
-<!---HONumber=AcomDC_0224_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

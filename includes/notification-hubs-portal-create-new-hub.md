@@ -1,25 +1,28 @@
 
 
-1. [Azure ポータル](https://portal.azure.com)にログインし、画面の右上にある **[+新規]** をクリックします。
+1. Log on to the [Azure Portal](https://portal.azure.com), and then click **+NEW** at the top left of the screen.
 
-2. **[新規]** をクリックし、**[Web + Mobile]** をクリックします。必要に応じて下にスクロールし、**[通知ハブ]** をクリックします。
+2. Click on **New**, then **Web + Mobile**. Scroll down if necessary and click **Notification Hub**.
 
-   	![Azure ポータル - 通知ハブを作成](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
+    ![Azure Portal - Create Notification Hubs](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
 
-3. **[通知ハブ]** フィールドには必ず一意の名前を指定します。**[リージョン]**、**[サブスクリプション]**、**[リソース グループ]** (既に 1 つ用意している場合) を選択します。
+3. Make sure you specify a unique name in the **Notification Hub** field. Select your desired **Region**, **Subscription** and **Resource Group** (if you have one already). 
  
-	ハブを作成する Service Bus 名前空間を既に用意している場合、**[名前空間]** フィールドの **[既存項目の選択]** オプションでそれを選択します。Service Bus 名前空間がない場合、ハブ名に基づいて作成される既定の名前を利用できます。
+    If you already have a service bus namespace that you want to create the hub in, select it through the **Select Existing** option in the **Namespace** field.  Otherwise, you can use the default name which will be created based on the hub name as long as the namespace name is available. 
 
-	準備ができたら、**[作成]** をクリックします。
+    Once ready, click **Create**.
 
-   	![Azure ポータル - 通知ハブのプロパティを設定](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
+    ![Azure Portal - Set notification hub properties](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-4. 名前空間と通知ハブが作成されたら、それぞれのポータル ページに移動します。
+4. Once the namespace and notification hub are created, you will be taken to the respective portal page. 
 
-   	![Azure ポータル - 通知ハブのポータル ページ](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-page.png)
+    ![Azure Portal - Notification hub portal page](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-page.png)
        
-5. **[設定]** をクリックし、**[アクセス ポリシー]** をクリックします。2 つの接続文字列をメモします。これは後でプッシュ通知を処理する際に必要になります。
+5. Click on **Settings** and then **Access Policies** - take note of the two connection strings that are made available to you, as you will need them to handle push notifications later.
 
-   	![Azure ポータル - 通知ハブの接続文字列](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
+    ![Azure Portal - Notification hub connection strings](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
 
-<!---HONumber=AcomDC_0413_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

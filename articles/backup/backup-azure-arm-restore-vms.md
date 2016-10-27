@@ -1,170 +1,175 @@
 
 <properties
-	pageTitle="Azure ポータルを使用してバックアップから仮想マシンを復元する | Microsoft Azure"
-	description="Azure ポータルを使用して復旧ポイントから Azure 仮想マシンを復元する"
-	services="backup"
-	documentationCenter=""
-	authors="markgalioto"
-	manager="cfreeman"
-	editor=""
-	keywords="バックアップの復元, 復元する方法, 回復ポイント"/>
+    pageTitle="Restore virtual machines from backup using Azure portal | Microsoft Azure"
+    description="Restore an Azure virtual machine from a recovery point using Azure portal"
+    services="backup"
+    documentationCenter=""
+    authors="markgalioto"
+    manager="cfreeman"
+    editor=""
+    keywords="restore backup; how to restore; recovery point;"/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/10/2016"
-	ms.author="trinadhk; jimpark;"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/10/2016"
+    ms.author="trinadhk; jimpark;"/>
 
 
-# Azure ポータルを使用した仮想マシンの復元
+
+# <a name="use-azure-portal-to-restore-virtual-machines"></a>Use Azure portal to restore virtual machines
 
 > [AZURE.SELECTOR]
-- [クラシック ポータルでの VM の復元](backup-azure-restore-vms.md)
-- [Azure ポータルでの VM の復元](backup-azure-arm-restore-vms.md)
+- [Restore VMs in Classic portal](backup-azure-restore-vms.md)
+- [Restore VMs in Azure portal](backup-azure-arm-restore-vms.md)
 
 
-定義された間隔でデータのスナップショットを取得してデータを保護します。これらのスナップショットは復旧ポイントと呼ばれ、Recovery Services コンテナーに格納されます。VM を修復または再構築する必要がある場合は、保存されている復旧ポイントのいずれかから VM を復元することができます。復旧ポイントを復元すると、VM は、復旧ポイントが作成された時点の状態に戻ります。この記事では、VM を復元する方法について説明します。
+Protect your data by taking snapshots of your data at defined intervals. These snapshots are known as recovery points, and they are stored in recovery services vaults. If or when it is necessary to repair or rebuild a VM, you can restore the VM from any of the saved recovery points. When you restore a recovery point, you return or revert the VM to the state when the recovery point was taken. This article explains how to restore a VM.
 
-> [AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイ モデルがあります。[Resource Manager デプロイ モデルとクラシック デプロイ モデル](../resource-manager-deployment-model.md)です。この記事では、Resource Manager モデルを使用してデプロイされた VM を復元するための情報および手順を示しています。
+> [AZURE.NOTE] Azure has two deployment models for creating and working with resources: [Resource Manager and classic](../resource-manager-deployment-model.md). This article provides the information and procedures for restoring VMs deployed using the Resource Manager model.
 
 
 
-## 復旧ポイントを復元する
+## <a name="restore-a-recovery-point"></a>Restore a recovery point
 
-1. [Azure ポータル](http://portal.azure.com/)にサインインします。
+1. Sign in to the [Azure portal](http://portal.azure.com/)
 
-2. Azure メニューで **[参照]** をクリックし、サービスの一覧で「**Recovery Services**」と入力します。入力した文字列に合わせて、サービスの一覧の内容が変更されます。**[Recovery Services コンテナー]** が表示されたら、それを選択します。
+2. On the Azure menu, click **Browse** and in the list of services, type **Recovery Services**. The list of services adjusts to what you type. When you see **Recovery Services vaults**, select it.
 
     ![Open Recovery Services vault](./media/backup-azure-arm-restore-vms/open-recovery-services-vault.png)
 
-    サブスクリプションに含まれるコンテナーの一覧が表示されます。
+    The list of vaults in the subscription is displayed.
 
     ![List of Recovery Services vaults](./media/backup-azure-arm-restore-vms/list-of-rs-vaults.png)
 
-3. 一覧から、復元する VM に関連付けられているコンテナーを選択します。コンテナーをクリックすると、ダッシュボードが開きます。
+3. From the list, select the vault associated with the VM you want to restore. When you click the vault, its dashboard opens.
 
     ![List of Recovery Services vaults](./media/backup-azure-arm-restore-vms/select-vault-open-vault-blade.png)
 
-4. コンテナーのダッシュボードが表示されています。**[バックアップ項目]** タイルの **[Azure Virtual Machines]** をクリックして、コンテナーに関連付けられている VM を表示します。
+4. Now that you're in the vault dashboard. On the **Backup Items** tile, click **Azure Virtual Machines** to display the VMs associated with the vault.
 
     ![vault dashboard](./media/backup-azure-arm-restore-vms/vault-dashboard.png)
 
-    **[バックアップ項目]** ブレードが開き、Azure の仮想マシンの一覧が表示されます。
+    The **Backup Items** blade opens and displays the list of Azure virtual machines.
 
     ![list of VMs in vault](./media/backup-azure-arm-restore-vms/list-of-vms-in-vault.png)
 
-5. 一覧から VM を選択して、ダッシュボードを開きます。VM のダッシュボードが開き、[復元ポイント] タイルを含む [監視] 領域が表示されます。
+5. From the list, select a VM to open the dashboard. The VM dashboard opens to the Monitoring area, which contains the Restore points tile.
 
     ![list of VMs in vault](./media/backup-azure-arm-restore-vms/vm-blade.png)
 
-6. VM のダッシュボードのメニューで、**[復元]** をクリックします。
+6. On the VM dashboard menu, click **Restore**
 
     ![list of VMs in vault](./media/backup-azure-arm-restore-vms/vm-blade-menu-restore.png)
 
-    [復元] ブレードが開きます。
+    The Restore blade opens.
 
     ![restore blade](./media/backup-azure-arm-restore-vms/restore-blade.png)
 
-7. **[復元]** ブレードで **[復元ポイント]** をクリックして、**[復元ポイントの選択]** ブレードを開きます。
+7. On the **Restore** blade, click **Restore point** to open the **Select Restore point** blade.
 
     ![restore blade](./media/backup-azure-arm-restore-vms/recovery-point-selector.png)
 
-    既定では、ダイアログ ボックスには過去 30 日間のすべての復元ポイントが表示されます。表示される復元ポイントの時間範囲を変更するには、**[フィルター]** を使用します。既定では、すべての整合性の復元ポイントが表示されます。復元ポイントの特定の整合性を選択するには、**[すべての復元ポイント]** フィルターを変更します。各種の復元ポイントの詳細については、[データの整合性](./backup-azure-vms-introduction.md#data-consistency)の説明を参照してください。
-    - **[復元ポイントの整合性]** は、次の一覧から選択します。
-        - クラッシュ整合性の復元ポイント
-        - アプリケーション整合性の復元ポイント
-        - ファイル システム整合性の復元ポイント
-        - すべての復元ポイント
+    By default, the dialog displays all restore points from the last 30 days. Use the **Filter** to alter the time range of the restore points displayed. By default, restore points of all consistency are displayed. Modify **All Restore points** filter to select a specific consistency of restore points. For more information about each type of restoration point, see the explanation of [Data consistency](./backup-azure-vms-introduction.md#data-consistency).  
+    - **Restore point consistency** from this list choose:
+        - Crash consistent restore points,
+        - Application consistent restore points,
+        - File system consistent restore points
+        - All restore points.  
 
-8. 復元ポイントを選択し、**[OK]** をクリックします。
+8. Choose a Restore point and click **OK**.
 
-    ![復元ポイントの選択](./media/backup-azure-arm-restore-vms/select-recovery-point.png)
+    ![choose restore point](./media/backup-azure-arm-restore-vms/select-recovery-point.png)
 
-    **[復元]** ブレードに、設定した復元ポイントが表示されます。
+    The **Restore** blade shows the Restore point is set.
 
-    ![復元ポイントが設定される](./media/backup-azure-arm-restore-vms/recovery-point-set.png)
+    ![restore point is set](./media/backup-azure-arm-restore-vms/recovery-point-set.png)
 
-9. 復元ポイントを設定すると、**[復元]** ブレードに **[復元の構成]** が自動的に開きます。
+9. On the **Restore** blade, **Restore configuration** opens automatically after restore point is set.
 
-    ![復元構成ウィザードが設定される](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard.png)
+    ![restore configuration wizard is set](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard.png)
 
-## VM の復元構成の選択
+## <a name="choosing-a-vm-restore-configuration"></a>Choosing a VM restore configuration
 
-復元ポイントを選択したので、次に復元 VM の構成を選択します。復元 VM の構成には、Azure ポータルまたは PowerShell を使用できます。
+Now that you have selected the restore point, choose a configuration for your restore VM. Your choices for configuring the restored VM are to use: Azure portal or PowerShell.
 
-> [AZURE.NOTE] ポータルには、復元される VM の [簡易作成] オプションがあります。復元する VM の VM 構成をカスタマイズする場合は、PowerShell を使用してバックアップ ディスクを復元し、選択した VM 構成にアタッチします。「[特別なネットワーク構成を持つ VM の復元](#restoring-vms-with-special-network-configurations)」を参照してください。
+> [AZURE.NOTE] Portal provides a Quick Create option for restored VM. If you want to customize the VM configuration of the to-be restored VM, use PowerShell to restore backed up disks and attach them to choice of VM configuration. See [Restoring a VM with special network configurations](#restoring-vms-with-special-network-configurations).
 
-1. 現在 **[復元]** ブレードを表示していない場合は、表示します。いずれかの**復元ポイント**が選択されている状態で、**[復元の構成]** をクリックして **[復元の構成]** ブレードを開きます。
+1. If you are not already there, go to the **Restore** blade. Ensure a **Restore point** has been selected, and click **Restore configuration** to open the **Recovery configuration** blade.
 
     ![recovery configuration wizard is set](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard.png)
 
-2. **[復元の構成]** ブレードで、次の各フィールドの値を入力または選択します。
-    - **[仮想マシン名]** - VM の名前を指定します。この名前は、リソース グループ (Resource Manager でデプロイされた VM の場合) またはクラウド サービス (クラシック VM の場合) に対して一意である必要があります。仮想マシンが既にサブスクリプションに存在する場合、それを置き換えることはできません。
-    - **[リソース グループ]** - 既存のリソース グループを使用するか、新しいリソース グループを作成します。クラシック VM を復元する場合は、このフィールドを使用して、新しいクラウド サービスの名前を指定します。新しいリソース グループまたはクラウド サービスを作成する場合、名前はグローバルに一意である必要があります。通常、クラウド サービス名は、公開された URL に関連付けられています (例: [cloudservice].cloudapp.net)。既に使用されているクラウド リソース グループまたはクラウド サービスの名前を指定した場合、Azure はリソース グループまたはクラウド サービスに VM と同じ名前を割り当てます。一覧には、どのアフィニティ グループにも関連付けられていないリソース グループまたはクラウド サービス、および仮想マシンが表示されます。詳細については、「[アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」を参照してください。
-    - **[Virtual Network]** - VM を作成する場合は、Virtual Network (VNET) を選択します。このフィールドには、サブスクリプションに関連付けられているすべての VNET が表示されます。VM のリソース グループがかっこ内に表示されます。
-    - **[サブネット]** - VNET にサブネットがある場合は、最初のサブネットが既定で選択されています。追加のサブネットがある場合は、必要なサブネットを選択します。
-    - **[ストレージ アカウント]** - このメニューには、Recovery Services コンテナーと同じ場所にあるストレージ アカウントが表示されます。ストレージ アカウントを選択するときは、Recovery Services コンテナーと同じ場所を共有するアカウントを選択します。ゾーン冗長であるストレージ アカウントはサポートされていません。Recovery Services コンテナーと同じ場所を共有するストレージ アカウントがない場合は、復元操作を開始する前にアカウントを作成する必要があります。ストレージ アカウントのレプリケーションの種類がかっこ内に表示されます。
+2. On the **Restore configuration** blade, enter or select values for each of the following fields:
+    - **Virtual machine name** - Provide a name for the VM. The name must be unique to the resource group (for a Resource Manager-deployed VM) or cloud service (for a Classic VM). You cannot replace the virtual machine if it already exists in the subscription.
+    - **Resource group** - Use an existing resource group, or create a new one. If you are restoring a Classic VM, use this field to specify the name of a new cloud service. If you are create a new resource group/cloud service, the name must be globally unique. Typically, the cloud service name is associated with a public-facing URL - for example: [cloudservice].cloudapp.net. If you attempt to use a name for the cloud resource group/cloud service that has already been used, Azure assigns the resource group/cloud service the same name as the VM. Azure displays resource groups/cloud services and VMs not associated with any affinity groups. For more information, see [How to migrate from Affinity Groups to a Regional Virtual Network (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+    - **Virtual Network** - Select the virtual network (VNET) when creating the VM. The field provides all VNETs associated with the subscription. Resource group of the VM is displayed in parentheses.
+    - **Subnet** - If the VNET has subnets, the first subnet is selected by default. If there are additional subnets, select the desired subnet.
+    - **Storage account** - This menu lists the storage accounts in the same location as the Recovery Services vault. When choosing a storage account, select an account that shares the same location as the Recovery Services vault. Storage accounts that are Zone redundant are not supported. If there are no storage accounts with the same location as the Recovery Services vault, you must create one before starting the restore operation. The storage account's replication type is mentioned in parentheses.
 
-    > [AZURE.NOTE] Resource Manager でデプロイされた VM を復元する場合は、仮想ネットワーク (VNET) を特定する必要があります。クラシック VM の場合には、仮想ネットワーク (VNET) は省略可能です。
+    > [AZURE.NOTE] If you are restoring a Resource Manager-deployed VM, you must identify a virtual network (VNET). A virtual network (VNET) is optional for a Classic VM.
 
-3. **[復元の構成]** ブレードで **[OK]** をクリックして、復元の構成を完了します。
+3. On the **Restore configuration** blade, click **OK** to finalize the restore configuration.
 
-4. **[復元]** ブレードで **[復元]** をクリックして、復元操作を開始します。
+4. On the **Restore** blade, click **Restore** to trigger the restore operation.
 
     ![Recovery configuration completed](./media/backup-azure-arm-restore-vms/trigger-restore-operation.png)
 
-## 復元操作を追跡する
+## <a name="track-the-restore-operation"></a>Track the restore operation
 
-復元操作を開始すると、Backup サービスによって、復元操作を追跡するためのジョブが作成されます。また、通知が作成されて、ポータルの [通知] 領域に一時的に表示されます。通知が表示されない場合は、いつでも通知アイコンをクリックすることで通知を表示できます。
+Once you trigger the restore operation, the Backup service creates a job for tracking the restore operation. The Backup service also creates and temporarily displays the notification in Notifications area of portal. If you do not see the notification, you can always click the Notifications icon to view your notifications.
 
 ![Restore triggered](./media/backup-azure-arm-restore-vms/restore-notification.png)
 
-操作を処理中に表示するか、または処理の完了後に表示するには、バックアップ ジョブの一覧を開きます。
+To view the operation while it is processing, or to view when it completed, open the Backup jobs list.
 
-1. Azure メニューで **[参照]** をクリックし、サービスの一覧で「**Recovery Services**」と入力します。入力した文字列に合わせて、サービスの一覧の内容が変更されます。**[Recovery Services コンテナー]** が表示されたら、それを選択します。
+1. On the Azure menu, click **Browse** and in the list of services, type **Recovery Services**. The list of services adjusts to what you type. When you see **Recovery Services vaults**, select it.
 
     ![Open Recovery Services vault](./media/backup-azure-arm-restore-vms/open-recovery-services-vault.png)
 
-    サブスクリプションに含まれるコンテナーの一覧が表示されます。
+    The list of vaults in the subscription is displayed.
 
     ![List of Recovery Services vaults](./media/backup-azure-arm-restore-vms/list-of-rs-vaults.png)
 
-2. 一覧から、復元した VM に関連付けられているコンテナーを選択します。コンテナーをクリックすると、ダッシュボードが開きます。
+2. From the list, select the vault associated with the VM you restored. When you click the vault, its dashboard opens.
 
-3. コンテナーのダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure Virtual Machines]** をクリックして、コンテナーに関連付けられているジョブを表示します。
+3. In the vault dashboard on the **Backup Jobs** tile, click **Azure Virtual Machines** to display the jobs associated with the vault.
 
     ![vault dashboard](./media/backup-azure-arm-restore-vms/vault-dashboard-jobs.png)
 
-    **[バックアップ ジョブ]** ブレードが開き、ジョブの一覧が表示されます。
+    The **Backup Jobs** blade opens and displays the list of jobs.
 
     ![list of VMs in vault](./media/backup-azure-arm-restore-vms/restore-job-in-progress.png)
 
-## 特別なネットワーク構成を持つ VM の復元
-次のような特別なネットワーク構成を持つ VM をバックアップして復元することができます。ただし、これらの構成では、復元プロセスを実行するときにいくつかの特別な配慮が必要となります。
+## <a name="restoring-vms-with-special-network-configurations"></a>Restoring VMs with special network configurations
+It is possible to backup and restore VMs with the following special network configurations. However, these configurations require some special consideration while going through the restore process.
 
-- ロード バランサー (内部および外部) の対象になっている VM
-- 予約済み IP が複数ある VM
-- NIC が複数ある VM
+- VMs under load balancer (internal and external)
+- VMs with multiple reserved IPs
+- VMs with multiple NICs
 
->[AZURE.IMPORTANT] VM に対して特別なネットワーク構成を作成するときは、PowerShell を使用して、復元されたディスクから VM を作成する必要があります。
+>[AZURE.IMPORTANT] When creating the special network configuration for VMs, you must use PowerShell to create VMs from the disks restored.
 
-ディスクへの復元後に仮想マシンを完全に作成し直すには、次の手順を実行します。
+To fully recreate the virtual machines after restoring to disk, follow these steps:
 
-1. [PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm) を使用して、Recovery Services コンテナーからディスクを復元します。
+1. Restore the disks from a recovery services vault using [PowerShell](../backup-azure-vms-automation.md#restore-an-azure-vm)
 
-2. PowerShell コマンドレットを使用して、ロード バランサー、複数の NIC、複数の予約済み IP に必要な VM 構成を作成し、その構成を使用して、目的の構成の VM を作成します。
-	- [内部ロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)を使用してクラウド サービスに VM を作成する
-	- [インターネットに接続するロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成する
-	- [NIC が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/)ある VM を作成する
-	- [予約済み IP が複数](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/)ある VM を作成する
+2. Create the VM configuration required for load balancer/multiple NIC/multiple reserved IP using the PowerShell cmdlets and use it to create the VM of desired configuration.
+    - Create VM in cloud service with [Internal Load balancer ](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)
+    - Create VM to connect to [Internet facing load balancer] (https://azure.microsoft.com/en-us/documentation/articles/load-balancer-internet-getstarted/)
+    - Create VM with [multiple NICs](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/)
+    - Create VM with [multiple reserved IPs](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/)
 
-## 次のステップ
-これで、VM を復元することができます。VM で発生する一般的なエラーについては、トラブルシューティングの記事を参照してください。また、VM を使用したタスク管理に関する記事もご覧ください。
+## <a name="next-steps"></a>Next steps
+Now that you can restore your VMs, see the troubleshooting article for information on common errors with VMs. Also, check out the article on managing tasks with your VMs.
 
-- [エラーのトラブルシューティング](backup-azure-vms-troubleshoot.md#restore)
-- [仮想マシンの管理](backup-azure-manage-vms.md)
+- [Troubleshooting errors](backup-azure-vms-troubleshoot.md#restore)
+- [Manage virtual machines](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

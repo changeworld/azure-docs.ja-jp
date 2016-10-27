@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple のローカル固定ボリュームに関してよく寄せられる質問|Microsoft Azure"
-   description="StorSimple のローカル固定ボリュームに関してよく寄せられる質問とその回答を示します。"
+   pageTitle="StorSimple locally pinned volumes FAQ|Microsoft Azure"
+   description="Provides answers to frequently asked questions about StorSimple locally pinned volumes."
    services="storsimple"
    documentationCenter="NA"
    authors="manuaery"
@@ -15,202 +15,209 @@
    ms.date="08/16/2016"
    ms.author="manuaery" />
 
-# StorSimple のローカル固定ボリューム: よく寄せられる質問 (FAQ)
 
-## Overview
+# <a name="storsimple-locally-pinned-volumes:-frequently-asked-questions-(faq)"></a>StorSimple locally pinned volumes: frequently asked questions (FAQ)
 
-以下に示す情報は、StorSimple のローカル固定ボリュームの作成、階層化ボリュームからローカル固定ボリュームへの変換 (およびその逆)、ローカル固定ボリュームのバックアップと復元などを行う場合に予想される質問とその回答です。
+## <a name="overview"></a>Overview
 
-質問と回答は次の各カテゴリに分類されます。
+The following are questions and answers that you might have when you create a StorSimple locally pinned volume, convert a tiered volume to a locally pinned volume (and vice versa), or back up and restore a locally pinned volume.
 
-- ローカル固定ボリュームの作成
-- ローカル固定ボリュームのバックアップ
-- 階層化ボリュームからローカル固定ボリュームへの変換
-- ローカル固定ボリュームの復元
-- ローカル固定ボリュームのフェールオーバー
+Questions and answers are arranged into the following categories
 
-## ローカル固定ボリュームの作成に関する質問
+- Creating a locally pinned volume
+- Backing up a locally pinned
+- Converting a tiered volume to a locally pinned volume
+- Restoring a locally pinned volume
+- Failing over a locally pinned volume
 
-**Q.** 8000 シリーズのデバイス上に作成できるローカル固定ボリュームの最大サイズを教えてください。
+## <a name="questions-about-creating-a-locally-pinned-volume"></a>Questions about creating a locally pinned volume
 
-**A.** 8100 デバイスには、ローカル固定ボリュームを 8.5 TB まで、階層化ボリュームを 200 TB までプロビジョニングできます。より大きな 8600 デバイスでは、ローカル固定ボリュームを 22.5 TB まで、階層化ボリュームを 500 TB までプロビジョニングできます。
+**Q.** What is the maximum size of a locally pinned volume that I can create on the 8000 series devices?
 
-**Q.** 最近 8100 デバイスを Update 2 にアップグレードしましたが、ローカル固定ボリュームを作成しようとすると、使用可能な最大サイズが 8.5 TB ではなく 6 TB しかありません。8.5 TB のボリュームを作成できないのはなぜですか。
+**A** You can provision locally pinned volumes up to 8.5 TB or tiered volumes up to 200 TB on the 8100 device. On the larger 8600 device, you can provision locally pinned volumes up to 22.5 TB or tiered volumes up to 500 TB.
 
-**A.** 8100 デバイスには、ローカル固定ボリュームを 8.5 TB まで、階層化ボリュームを 200 TB までプロビジョニングできます。ご利用のデバイスに既に階層化ボリュームが含まれている場合は、その分、ローカル固定ボリュームの作成に使用できる領域が、この上限よりも小さくなります。たとえば、8100 デバイスに 100 TB (階層化ボリューム容量の半分) の階層化ボリュームが既にプロビジョニングされている場合、それに応じて 8100 デバイス上に作成できるローカル ボリュームの最大サイズは 4 TB (ローカル固定ボリューム容量の最大値の約半分) に減少します。
+**Q.** I recently upgraded my 8100 device to Update 2 and when I try to create a locally pinned volume, the maximum available size is only 6 TB and not 8.5 TB. Why can’t I create an 8.5 TB volume?
 
-階層化ボリュームのワーキング セットをホストするためにデバイスのローカル領域の一部が使用されるため、デバイスに階層化ボリュームが含まれている場合はローカル固定ボリュームの作成に使用できる領域が減少します。反対に、ローカル固定ボリュームを作成すると、それに比例して階層化ボリュームに使用できる領域が減少します。次の表は、ローカル固定ボリュームが作成されている場合に 8100 デバイスと 8600 デバイスそれぞれで使用できる階層化ボリューム容量をまとめたものです。
+**A** You can provision locally pinned volumes up to 8.5 TB OR tiered volumes up to 200 TB on the 8100 device. If your device already has tiered volumes, then the space available for creating a locally pinned volume will be proportionally lower than this maximum limit. For example, if 100 TB of tiered volumes have already been provisioned on your 8100 device (which is half of the tiered capacity), then the maximum size of a local volume that you can create on the 8100 device will be correspondingly reduced to 4 TB (roughly half of the maximum locally pinned volume capacity).
 
-|ローカル固定ボリュームのプロビジョニング済み容量|階層化ボリュームのプロビジョニングに使用できる容量 - 8100|階層化ボリュームのプロビジョニングに使用できる容量 - 8600|
+Because some local space on the device is used to host the working set of tiered volumes, the available space for creating a locally pinned volume is reduced if the device has tiered volumes. Conversely, creating a locally pinned volume proportionally reduces the available space for tiered volumes. The following table summarizes the available tiered capacity on the 8100 and 8600 devices when locally pinned volumes are created.
+
+|Locally pinned volumes provisioned capacity|Available capacity to be provisioned for tiered volumes - 8100|Available capacity to be provisioned for tiered volumes - 8600|
 |-----|------|------|
 |0 | 200 TB | 500 TB |
-|1 TB (テラバイト) | 176\.5 TB | 477\.8 TB|
-|4 TB | 105\.9 TB | 411\.1 TB |
-|8\.5 TB | 0 TB | 311\.1 TB|
-|10 TB | 該当なし | 277\.8 TB |
-|15 TB | 該当なし | 166\.7 TB |
-|22\.5 TB | 該当なし | 0 TB |
+|1 TB | 176.5 TB | 477.8 TB|
+|4 TB | 105.9 TB | 411.1 TB |
+|8.5 TB | 0 TB | 311.1 TB|
+|10 TB | NA | 277.8 TB |
+|15 TB | NA | 166.7 TB |
+|22.5 TB | NA | 0 TB |
 
 
-**Q.** ローカル固定ボリュームの作成操作に長い実行時間がかかるのはなぜですか。
+**Q.** Why is locally pinned volume creation a long running operation? 
 
-**A.** ローカル固定ボリュームはシック プロビジョニングされます。デバイスのローカル層に領域を作成するため、プロビジョニング プロセス中に、既存の階層化ボリュームから一部のデータがクラウドにプッシュされることがあります。この操作はプロビジョニング対象のボリュームのサイズ、デバイス上の既存データ、クラウドへの利用可能な帯域幅などに依存するため、ローカル ボリュームの作成には数時間を要する場合があります。
+**A.** Locally pinned volumes are thickly provisioned. To create space on the local tiers of the device, some data from existing tiered volumes might be pushed to the cloud during the provisioning process. And since this depends upon the size of the volume being provisioned, the existing data on your device and the available bandwidth to the cloud, the time taken to create a local volume may be several hours.
 
-**Q.** ローカル固定ボリュームの作成にかかる時間を教えてください。
+**Q.** How long does it take to create a locally pinned volume?
 
-**A.** ローカル固定ボリュームはシック プロビジョニングされるため、プロビジョニング プロセス中に、階層化ボリュームから一部の既存データがクラウドにプッシュされることがあります。そのため、ローカル固定ボリュームの作成にかかる時間は、ボリュームのサイズ、デバイス上のデータ、利用可能な帯域幅など、複数の要因によって決まります。インストールしたばかりでボリュームがないデバイスの場合、ローカル固定ボリュームの作成時間は 1 TB のデータあたり約 10 分となります。ただし、ローカル ボリュームの作成にかかる時間は、使用しているデバイスでの前述した要因に基づき、数時間に及ぶ場合もあります。
+**A.** Because locally pinned volumes are thickly provisioned, some existing data from tiered volumes might be pushed to the cloud during the provisioning process. Therefore, the time taken to create a locally pinned volume depends upon multiple factors, including the size of the volume, the data on your device and the available bandwidth. On a freshly installed device that has no volumes, the time to create a locally pinned volume is about 10 minutes per terabyte of data. However, creation of local volumes may take several hours based on the factors explained above on a device that is in use.
 
-**Q.** ローカル固定ボリュームを作成します。認識しておくことが必要なベスト プラクティスはありますか。
+**Q.** I want to create a locally pinned volume. Are there any best practices I need to be aware of?
 
-**A.** ローカル固定ボリュームは、常にデータがローカルで保証されることを必要とし、クラウドの待機時間による影響を受けやすいワークロードに適しています。ワークロードに対するローカル ボリュームの使用率を考慮しながら、以下の点にも注意してください。
+**A.** Locally pinned volumes are suitable for workloads that require local guarantees of data at all times and are sensitive to cloud latencies. While considering usage of local volumes for any of your workloads, please be aware of the following:
 
-- ローカル固定ボリュームはシック プロビジョニングされることから、ローカル ボリュームの作成は階層化ボリュームに使用できる領域に影響します。そのため、まずは小さいサイズのボリュームから始めて、ストレージ要件の増大に合わせてスケールアップすることをお勧めします。
+- Locally pinned volumes are thickly provisioned, and creating local volumes impacts the available space for tiered volumes. Therefore, we suggest you start with smaller-sized volumes and scale up as your storage requirement increases.
 
-- ローカル ボリュームのプロビジョニングは実行時間の長い操作であり、場合によっては階層化ボリュームの既存データをクラウドにプッシュすることも必要になります。その結果、これらのボリュームでパフォーマンスが低下することがあります。
+- Provisioning of local volumes is a long running operation that might involve pushing existing data from tiered volumes to the cloud. As a result, you may experience reduced performance on these volumes.
 
-- ローカル ボリュームのプロビジョニングは時間がかかる操作です。実際に必要となる時間は、プロビジョニング対象のボリュームのサイズ、デバイス上のデータ、利用可能な帯域幅などの複数の要因によって異なります。既存のボリュームをクラウドにバックアップしていない場合、ボリュームの作成にかかる時間はさらに長くなります。ローカル ボリュームをプロビジョニングする前に、既存のボリュームのクラウド スナップショットを取得することをお勧めします。
+- Provisioning of local volumes is a time consuming operation. The actual time involved depends on multiple factors: the size of the volume being provisioned, data on your device, and available bandwidth. If you have not backed up your existing volumes to the cloud, then volume creation is slower. We suggest you take cloud snapshots of your existing volumes before you provision a local volume.
  
-- 既存の階層化ボリュームをローカル固定ボリュームに変換できますが、この変換には、変換先のローカル固定ボリューム用にデバイス上の領域をプロビジョニングする操作も伴います (クラウドに階層化データがある場合はそのダウンロードも行います)。これも実行時間の長い操作であり、必要な時間は前述した要因によって異なります。既存のボリュームがバックアップされていないと変換プロセスがさらに低速になるため、変換前に既存のボリュームをバックアップしておくことをお勧めします。このプロセス中に、デバイスでのパフォーマンスが低下する場合もあります。
-	
-ローカル固定ボリュームの作成方法の詳細については、[こちら](storsimple-manage-volumes-u2.md#add-a-volume)を参照してください。
+- You can convert existing tiered volumes to locally pinned volumes, and this conversion involves provisioning of space on the device for the resulting locally pinned volume (in addition to bringing down tiered data [if any] from the cloud). Again, this is a long running operation that depends on factors we’ve discussed above. We suggest that you back up your existing volumes prior to conversion as the process will be even slower if existing volumes are not backed up. Your device might also experience reduced performance during this process.
+    
+More information on how to [create a locally pinned volume](storsimple-manage-volumes-u2.md#add-a-volume)
 
-**Q.** 複数のローカル固定ボリュームを同時に作成することはできますか。
+**Q.** Can I create multiple locally pinned volumes at the same time?
 
-**A.** はい。ただし、ローカル固定ボリュームの作成ジョブと拡張ジョブは順番に処理されます。
+**A.** Yes, but any locally pinned volume creation and expansion jobs are processed sequentially.
 
-ローカル固定ボリュームはシック プロビジョニングされるため、デバイス上にローカル領域を作成する必要があります (この結果、プロビジョニング プロセス中に階層化ボリュームの既存データがクラウドにプッシュされることがあります)。そのため、プロビジョニング ジョブが進行中の場合、そのジョブが完了するまで他のローカル ボリュームの作成ジョブはキューに配置されます。
+Locally pinned volumes are thickly provisioned and this requires creation of local space on the device (which might result in existing data from tiered volumes to be pushed to the cloud during the provisioning process). Therefore, if a provisioning job is in progress, other local volume creation jobs will be queued until that job is finished.
 
-同様に、既存のローカル ボリュームの拡張や、階層化ボリュームからローカル固定ボリュームへの変換が行われている場合、新しいローカル固定ボリュームの作成ジョブは前のジョブが完了するまでキューに配置されます。ローカル固定ボリュームのサイズを拡張する場合は、そのボリューム用に既存のローカル領域を拡張します。階層化ボリュームからローカル固定ボリュームに変換する場合も、変換先のローカル固定ボリューム用にローカル領域を作成します。どちらの操作でも、ローカル領域の作成または拡張は実行時間の長いジョブになります。
+Similarly, if an existing local volume is being expanded or a tiered volume is being converted to a locally pinned volume, then the creation of a new locally pinned volume is queued until the previous job is completed. Expanding the size of a locally pinned volume involves the expansion of the existing local space for that volume. Conversion from a tiered to locally pinned volume also involves the creation of local space for the resulting locally pinned volume. In both of these operations, creation or expansion of local space is a long running job.
 
-これらのジョブは、Azure StorSimple Manager サービスの **[ジョブ]** ページで確認できます。アクティブに処理中のジョブは、領域のプロビジョニングの進行状況を反映するよう継続的に更新されます。残りのローカル固定ボリュームのジョブは実行中としてマークされますが、その進行状況は停止し、キューに配置された順に選択されます。
+You can view these jobs in the **Jobs** page of the Azure StorSimple Manager service. The job that is actively being processed is continually updated to reflect the progress of space provisioning. The remaining locally pinned volume jobs is marked as running, but their progress is stalled and they are picked in the order they were queued.
 
-**Q.** ローカル固定ボリュームを削除しました。新しいボリュームを作成しようとしても、使用可能な領域の表示に回収された領域が反映されないのはなぜですか。
+**Q.** I deleted a locally pinned volume. Why don't I see the reclaimed space reflected in the available space when I try to create a new volume? 
 
-**A.** ローカル固定ボリュームを削除する場合、新しいボリュームで使用可能な領域がすぐに更新されない可能性があります。StorSimple Manager サービスは、ローカルで使用可能な領域を約 1 時間ごとに更新します。新しいボリュームを作成するときは、その前に 1 時間待つことをお勧めします。
+**A.** If you delete a locally pinned volume, the space available for new volumes may not be updated immediately. The StorSimple Manager Service updates the local space available approximately every hour. We suggest you wait for an hour before you try to create the new volume.
 
-**Q.** ローカル固定ボリュームは、クラウド アプライアンスではサポートされていますか。
+**Q.** Are locally pinned volumes supported on the cloud appliance?
 
-**A.** ローカル固定ボリュームは、クラウド アプライアンスではサポートされていません (8010 デバイスと 8020 デバイスは、以前は StorSimple 仮想デバイスと呼ばれていました)。
+**A.** Locally pinned volumes are not supported on the cloud appliance (8010 and 8020 devices formerly referred to as the StorSimple virtual device).
 
-**Q.** Azure PowerShell コマンドレットを使用してローカル固定ボリュームを作成および管理できますか。
+**Q.** Can I use the Azure PowerShell cmdlets to create and manage locally pinned volumes? 
 
-**A.** いいえ。Azure PowerShell コマンドレットを使用してローカル固定ボリュームを作成することはできません (Azure PowerShell を使用して作成したボリュームはすべて階層化されます)。また、Azure PowerShell コマンドレットを使用してローカル固定ボリュームのプロパティを変更すると、ボリュームの種類が階層化に変更されるという望ましくない影響があるため、この方法での変更は行わないようお勧めします。
+**A.** No, you cannot create locally pinned volumes via Azure PowerShell cmdlets (any volume you create via Azure PowerShell is tiered). We also suggest that you do not use the Azure PowerShell cmdlets to modify any properties of a locally pinned volume, as it will have the undesired effect of modifying the volume type to tiered.
 
-## ローカル固定ボリュームのバックアップに関する質問
+## <a name="questions-about-backing-up-a-locally-pinned-volume"></a>Questions about backing up a locally pinned volume
 
-**Q.** ローカル固定ボリュームのローカル スナップショットはサポートされていますか。
+**Q.** Are local snapshots of locally pinned volumes supported?
 
-**A.** はい。ローカル固定ボリュームのローカル スナップショットを取得できます。ただし、クラウド スナップショットでローカル固定ボリュームを定期的にバックアップし、障害などの不測の事態において確実にデータを保護できるようにすることを強くお勧めします。
+**A.** Yes, you can take local snapshots of your locally pinned volumes. However, we strongly suggest that you regularly back up your locally pinned volumes with cloud snapshots to ensure that your data is protected in the eventuality of a disaster.
 
-**Q.** ローカル固定ボリュームのローカル スナップショットの管理に関するガイドラインはありますか。
+**Q.** Are there any guidelines for managing local snapshots for locally pinned volumes?
 
-**A.** ローカル固定ボリューム内のデータの大きな変化に加え、頻繁にローカル スナップショットを取得することでデバイスのローカル領域が急速に消費され、結果として階層化ボリュームのデータがクラウドにプッシュされる場合があります。そのため、ローカル スナップショットの数は最小限に抑えることをお勧めします。
+**A.** Frequent local snapshots alongside a high rate of data churn in the locally pinned volume might cause local space on the device to be consumed quickly and result in data from tiered volumes being pushed to the cloud. We therefore suggest you minimize the number of local snapshots.
 
-**Q.** ローカル固定ボリュームのローカル スナップショットが無効化される可能性があることを示す警告を受け取りました。この警告はどのような場合に発生しますか。
+**Q.** I received an alert stating that my local snapshots of locally pinned volumes might be invalidated. When can this happen?
 
-**A.** ローカル固定ボリューム内のデータの大きな変化に加え、頻繁にローカル スナップショットを取得することでデバイスのローカル領域が急速に消費される場合があります。デバイスのローカル層の使用頻度が高い場合、拡張クラウドの停止によってデバイスがいっぱいになり、さらにボリュームに対して書き込みが行われるとスナップショットが無効になることがあります (上書きされた古いデータ ブロックを参照するスナップショットを更新するための領域が存在しないため)。このような状況では、ボリュームに対する書き込みの処理は継続されますが、ローカル スナップショットは無効になることがあります。既存のクラウド スナップショットへの影響はありません。
+**A.** Frequent local snapshots alongside a high rate of data churn in the locally pinned volume might cause local space on the device to be consumed quickly. If the local tiers of the device are heavily used, an extended cloud outage might result in the device becoming full, and incoming writes to the volume might result in invalidation of the snapshots (as no space exists to update the snapshots to refer to the older blocks of data that have been overwritten). In such a situation the writes to the volume will continue to be served, but the local snapshots might be invalid. There is no impact to your existing cloud snapshots.
 
-この警告の目的は、このような状況が発生する可能性があることを通知し、ローカル スナップショットのスケジュールを見直してスナップショットの取得頻度を少なくするか、必要なくなった以前のローカル スナップショットを削除することで、同じような状況にすばやく対処できるようにすることです。
+The alert warning is to notify you that such a situation can arise and ensure you address the same in a timely manner by either reviewing your local snapshots schedules to take less frequent local snapshots or deleting older local snapshots that are no longer required.
 
-ローカル スナップショットが無効になった場合、特定のバックアップ ポリシーのローカル スナップショットが無効になったことと共に、無効になったローカル スナップショットのタイムスタンプのリストを通知する、情報アラートが届きます。これらのスナップショットは自動削除され、Azure クラシック ポータルの **[バックアップ カタログ]** ページでは確認できなくなります。
+If the local snapshots are invalidated, you will receive an information alert notifying you that the local snapshots for the specific backup policy have been invalidated alongside the list of timestamps of the local snapshots that were invalidated. These snapshots will be auto-deleted and you will no longer be able to view them in the **Backup Catalogs** page in the Azure classic portal.
 
-## 階層化ボリュームからローカル固定ボリュームへの変換に関する質問
+## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>Questions about converting a tiered volume to a locally pinned volume
 
-**Q.** 階層化ボリュームからローカル固定ボリュームへの変換中にデバイスでパフォーマンスが低下しています。パフォーマンスが低下しているのはなぜですか。
+**Q.** I’m observing some slowness on the device while converting a tiered volume to a locally pinned volume. Why is this happening? 
 
-**A.** 変換プロセスには次の 2 つの手順があります。
+**A.** The conversion process involves two steps: 
 
-  1. 変換される直前のローカル固定ボリューム用にデバイスの領域をプロビジョニングする。
-  2. ローカルで保証されるようにクラウドから階層化データをダウンロードする。
+  1. Provisioning of space on the device for the soon-to-be-converted locally pinned volume.
+  2. Downloading any tiered data from the cloud to ensure local guarantees.
 
-これらの手順はどちらも実行時間の長い操作であり、変換対象のボリュームのサイズ、デバイス上のデータ、利用可能な帯域幅などに応じて操作にかかる時間は異なります。プロビジョニング プロセスの一環として、既存の階層化ボリュームから一部のデータがクラウドにあふれることがあり、その際デバイスではパフォーマンスが低下する場合があります。さらに、次のような場合に変換プロセスによってパフォーマンスが低下することがあります。
+Both of these steps are long running operations that are dependent on the size of the volume being converted, data on the device, and available bandwidth. As some data from existing tiered volumes might spill to the cloud as part of the provisioning process, your device might experience reduced performance during this time. In addition, the conversion process can be slower if:
 
-- 既存のボリュームがクラウドにバックアップされていない。この場合は、変換を開始する前にボリュームをバックアップすることをお勧めします。
+- Existing volumes have not been backed up to the cloud; so we suggest you backup your volumes prior to initiating a conversion.
 
-- 帯域幅スロットル ポリシーが適用されていると、クラウドへの利用可能な帯域幅が制限されることがある。この場合は、40 Mbps 以上の専用接続でクラウドに接続することをお勧めします。
+- Bandwidth throttling policies have been applied, which might constrain the available bandwidth to the cloud; we therefore recommend you have a dedicated 40 Mbps or more connection to the cloud.
 
-- 前述した複数の要因によって変換プロセスに数時間を要することがある。そのため、この操作はピーク時以外か週末に実行し、エンド ユーザーへの影響を回避することをお勧めします。
+- The conversion process can take several hours due to the multiple factors explained above; therefore, we suggest that you perform this operation during non-peaks times or on a weekend to avoid the impact on end consumers.
 
-階層化ボリュームをローカル固定ボリュームに変換する方法の詳細については、[こちら](storsimple-manage-volumes-u2.md#change-the-volume-type)を参照してください。
+More information on how to [convert a tiered volume to a locally pinned volume](storsimple-manage-volumes-u2.md#change-the-volume-type)
 
-**Q.** ボリュームの変換操作を取り消すことはできますか。
+**Q.** Can I cancel the volume conversion operation?
 
-**A.** いいえ。変換操作は一度開始すると取り消すことができません。前の質問で説明したように、変換プロセス中に発生することがある潜在的なパフォーマンスの問題について認識し、変換を計画するときは上に挙げたベスト プラクティスに従ってください。
+**A.** No, you cannot the cancel the conversion operation once initiated. As discussed in the previous question, please be aware of the potential performance issues that you might encounter during the process, and follow the best practices listed above when you plan your conversion.
 
-**Q.** 変換操作に失敗した場合、ボリュームはどうなりますか。
+**Q.** What happens to my volume if the conversion operation fails?
 
-**A.** クラウド接続の問題によってボリュームの変換に失敗することがあります。クラウドからの階層化データのダウンロードに連続して失敗すると、最終的にデバイスによって変換プロセスが停止されることがあります。このような場合、ボリュームの種類は変換前のソース ボリュームの種類のままで、さらに次のような処理が行われます。
+**A.** Volume conversion can fail due to cloud connectivity issues. The device may eventually stop the conversion process after a series of unsuccessful attempts to bring down tiered data from the cloud. In such a scenario, the volume type will continue to be the source volume type prior to conversion, and:
 
-- ボリュームの変換エラーを通知する重大なアラートが生成されます。ローカル固定ボリュームに関連するアラートの詳細については、[こちら](storsimple-manage-alerts.md#locally-pinned-volume-alerts)を参照してください。
+- A critical alert will be raised to notify you of the volume conversion failure. More information on [alerts related to locally pinned volumes](storsimple-manage-alerts.md#locally-pinned-volume-alerts)
 
-- 階層化ボリュームをローカル固定ボリュームに変換している場合、データがまだクラウド上に存在する可能性があるため、ボリュームには階層化ボリュームのプロパティが引き続き表示されます。接続の問題を解決してから、変換操作をやり直すことをお勧めします。
+- If you are converting a tiered to a locally pinned volume, the volume will continue to exhibit properties of a tiered volume as data might still reside on the cloud. We suggest that you resolve the connectivity issues and then retry the conversion operation.
  
-- 同様に、ローカル固定ボリュームから階層化ボリュームへの変換に失敗した場合、ボリュームはローカル固定ボリュームとしてマークされますが、階層化ボリュームとして機能します (データがクラウドにあふれた可能性があるため)。ただし、このボリュームは、デバイスのローカル層の領域を占有し続けます。この領域は他のローカル固定ボリュームには使用できなくなります。この操作をやり直し、ボリューム変換が完了してデバイスのローカル領域が再利用可能になったことを確認することをお勧めします。
+- Similarly, when conversion from a locally pinned to a tiered volume fails, although the volume will be marked as a locally pinned volume, it will function as a tiered volume (because data could have spilled to the cloud). However, it will continue to occupy space on the local tiers of the device. This space will not be available for other locally pinned volumes. We suggest that you retry this operation to ensure that the volume conversion is complete and the local space on the device can be reclaimed.
 
-## ローカル固定ボリュームの復元に関する質問
+## <a name="questions-about-restoring-a-locally-pinned-volume"></a>Questions about restoring a locally pinned volume
 
-**Q.** ローカル固定ボリュームはすぐに復元できますか。
+**Q.** Are locally pinned volumes restored instantly?
 
-**A.** はい。ローカル固定ボリュームはすぐに復元できます。復元操作の一環としてボリュームのメタデータ情報がクラウドから取得されると、そのボリュームはすぐにオンラインになり、ホストからアクセスできるようになります。ただし、すべてのデータがクラウドからダウンロードされるまでボリューム データはローカルで保証されません。また、復元の実行中はこれらのボリュームでパフォーマンスが低下することがあります。
+**A.** Yes, locally pinned volumes are restored instantly. As soon as the metadata information for the volume is pulled from the cloud as part of the restore operation, the volume is brought online and can be accessed by the host. However, local guarantees for the volume data will not be present until all the data has been downloaded from the cloud, and you may experience reduced performance on these volumes for the duration of the restore.
 
-**Q.** ローカル固定ボリュームの復元にかかる時間を教えてください。
+**Q.** How long does it take to restore a locally pinned volume?
 
-**A.** ローカル固定ボリュームは、ボリュームのメタデータ情報がクラウドから取得されるとすぐに復元されてオンラインになり、その間バックグラウンドではボリューム データのダウンロードを継続することができます。この復元操作の後半部分、つまりボリューム データをもう一度ローカルで保証されるようにする操作は実行時間の長い操作であり、すべてのデータが再度ローカルになるまでに数時間かかる場合があります。同様の操作を完了するためにかかる時間は、復元対象のボリュームのサイズや利用可能な帯域幅など、複数の要因によって異なります。復元対象である元のボリュームが削除されている場合、復元操作の一環としてデバイスのローカル領域を作成するため、さらに時間がかかります。
+**A.** Locally pinned volumes are restored instantly and brought online as soon as the volume metadata information is retrieved from the cloud, while the volume data continues to be downloaded in the background. This latter part of the restore operation--getting back the local guarantees for the volume data--is a long running operation and might take several hours for all the data to be made local again. The time taken to complete the same depends on multiple factors, such as the size of the volume being restored and the available bandwidth. If the original volume that is being restored has been deleted, additional time will be taken to create the local space on the device as part of the restore operation.
 
-**Q.** 既存のローカル固定ボリュームを以前のスナップショット (ボリュームを階層化したときに取得したもの) に復元する必要があります。この場合、ボリュームは階層化ボリュームとして復元されるのでしょうか。
+**Q.** I need to restore my existing locally pinned volume to an older snapshot (taken when the volume was tiered). Will the volume be restored as tiered in this case?
 
-**A.** いいえ。ボリュームはローカル固定ボリュームとして復元されます。スナップショットはボリュームが階層化された日付のものですが、既存のボリュームの復元中、StorSimple は、現時点で存在する、ディスク上のボリュームの種類を常に使用します。
+**A.** No, the volume will be restored as a locally pinned volume. Although the snapshot dates to the time when the volume was tiered, while restoring existing volumes, StorSimple always uses the type of volume on the disk as it exists currently.
 
-**Q.** 最近ローカル固定ボリュームを拡張しましたが、今よりボリューム サイズが小さかったときのデータに復元することが必要になりました。復元すると、現在のボリューム サイズは変更されますか。また、復元の完了後にボリューム サイズの拡張は必要になりますか。
+**Q.** I extended my locally pinned volume recently, but I now need to restore the data to a time when the volume was smaller in size. Will restore resize the current volume and will I need to extend the size of the volume once the restore is completed?
 
-**A.** はい。復元によってボリューム サイズが変更され、復元の完了後にボリューム サイズの拡張が必要になります。
+**A.** Yes, the restore will resize the volume, and you will need to extend the size of the volume after the restore is completed.
 
-**Q.** 復元中にボリュームの種類を変更できますか。
+**Q.** Can I change the type of a volume during restore?
 
-**A.** いいえ。復元中にボリュームの種類を変更することはできません。
+**A.**No, you cannot change the volume type during restore.
 
-- 削除されたボリュームは、スナップショットに保存されている種類で復元されます。
+- Volumes that have been deleted are restored as the type stored in the snapshot.
 
-- 既存のボリュームは、スナップショットに保存されている種類に関係なく、その現在の種類に基づいて復元されます (前の 2 つの質問を参照)。
+- Existing volumes are restored based on their current type, irrespective of the type stored in the snapshot (refer to the previous two questions).
  
-**Q.** ローカル固定ボリュームを復元する必要がありますが、復元ポイントとするスナップショットの選択が間違っていました。現在の復元操作を取り消すことはできますか。
+**Q.** I need to restore my locally pinned volume, but I picked an incorrect point in time snapshot. Can I cancel the current restore operation?
 
-**A.** はい。進行中の復元操作を取り消すことができます。ボリュームの状態は復元の開始時点の状態までロールバックされます。ただし、復元の処理中に行われたボリュームへの書き込みはすべて失われます。
+**A.** Yes, you can cancel an on-going restore operation. The state of the volume will be rolled back to the state at the start of the restore. However, any writes that were made to the volume while the restore was in progress will be lost.
 
-**Q.** ローカル固定ボリュームの 1 つで復元操作を開始したところ、現在バックログ カタログ内に作成した覚えのないスナップショットが表示されています。これは何に使用するものなのでしょうか。
+**Q.** I started a restore operation on one of my locally pinned volumes, and now I see a snapshot in my backlog catalog that I don't recollect creating. What is this used for?
 
-**A.** これは復元操作の前に作成される一時的なスナップショットで、復元が取り消されるか失敗した場合のロールバックに使用されます。このスナップショットは削除しないでください。復元が完了すると、自動的に削除されます。この動作は、復元ジョブにローカル固定ボリュームのみが存在する場合、またはローカル固定ボリュームと階層化されたボリュームが混在する場合に発生することがあります。復元ジョブに階層化されたボリュームのみが含まれている場合、この動作は発生しません。
+**A.** This is the temporary snapshot that is created prior to the restore operation and is used for rollback in case the restore is canceled or fails. Do not delete this snapshot; it will be automatically deleted when the restore is complete. This behavior can occur if your restore job has only locally pinned volumes or a mix of locally pinned and tiered volumes. If the restore job includes only tiered volumes, then this behavior will not occur.
 
-**Q.** ローカル固定ボリュームを複製することはできますか。
+**Q.** Can I clone a locally pinned volume?
 
-**A.** はい、できます。ただし、ローカル固定ボリュームは、既定では階層化ボリュームとして複製されます。ローカル固定ボリュームの複製方法の詳細については、[こちら](storsimple-clone-volume-u2.md)をご覧ください。
+**A.** Yes, you can. However, the locally pinned volume will be cloned as a tiered volume by default. More information on how to [clone a  locally pinned volume](storsimple-clone-volume-u2.md)
 
-## ローカル固定ボリュームのフェールオーバーに関する質問
+## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Questions about failing over a locally pinned volume
 
-**Q.** デバイスを別の物理デバイスにフェールオーバーする必要があります。ローカル固定ボリュームをローカル固定ボリュームまたは階層化ボリュームとしてフェールオーバーできますか。
+**Q.** I need to fail over my device to another physical device. Will my locally pinned volumes be failed over as locally pinned or tiered?
 
-**A.** ローカル固定ボリュームは、ターゲット デバイスのソフトウェア バージョンに応じて以下のボリュームとしてフェールオーバーされます。
+**A.** Depending on the software version of the target device, locally pinned volumes will be failed over as:
 
-- ターゲット デバイスで StorSimple 8000 シリーズ Update 2 が実行されている場合はローカル固定ボリューム
-- ターゲット デバイスで StorSimple 8000 シリーズ Update 1.x が実行されている場合は階層化ボリューム
-- ターゲット デバイスがクラウド アプライアンス (ソフトウェア バージョンは Update 2 または Update 1.x) の場合は階層化ボリューム
+- Locally pinned if the target device is running StorSimple 8000 series update 2
+- Tiered if the target device is running StorSimple 8000 series update 1.x
+- Tiered if the target device is the cloud appliance (software version update 2 or update 1.x)
 
-各バージョンでのローカル固定ボリュームのフェールオーバーと DR の詳細については、[こちら](storsimple-device-failover-disaster-recovery.md#device-failover-across-software-versions)をご覧ください。
+More information on [failover and DR of locally pinned volumes across versions](storsimple-device-failover-disaster-recovery.md#device-failover-across-software-versions)
 
-**Q.** ローカル固定ボリュームは障害復旧 (DR) 時にすぐに復元されますか。
+**Q.** Are locally pinned volumes instantly restored during disaster recovery (DR)?
 
-**A.** はい。ローカル固定ボリュームはフェールオーバー時にすぐに復元されます。フェールオーバー操作の一環としてボリュームのメタデータ情報がクラウドから取得されると、そのボリュームはすぐにターゲット デバイス上でオンラインになり、ホストからアクセスできるようになります。その間、バックグラウンドではボリューム データのダウンロードが継続されるため、フェールオーバー中はこれらのボリュームでパフォーマンスが低下することがあります。
+**A.** Yes, locally pinned volumes are restored instantly during failover. As soon as the metadata information for the volume is pulled from the cloud as part of the failover operation, the volume is brought online on the target device and can be accessed by the host. Meanwhile, the volume data will continue to download in the background, and you may experience reduced performance on these volumes for the duration of the failover.
 
-**Q.** フェールオーバー ジョブが完了したことはわかりますが、ターゲット デバイス上で復元されているローカル固定ボリュームの進行状況を追跡するには、どうすればよいのでしょうか。
+**Q.** I see the failover job completed, how can I track the progress of locally pinned volume that is being restored on the target device?
 
-**A.** フェールオーバー操作中、フェールオーバー セットに含まれるすべてのボリュームがターゲット デバイス上で瞬時に復元されてオンラインになると、フェールオーバー ジョブは完了としてマークされます。これにはフェールオーバーされた可能性のあるすべてのローカル固定ボリュームが含まれますが、ボリュームのすべてのデータがダウンロードされるまでデータはローカルで保証されません。この進行状況は、フェールオーバーされたローカル固定ボリュームごとに、フェールオーバーの一環として作成された、対応する復元ジョブを監視することで追跡できます。このような個々の復元ジョブは、ローカル固定ボリュームに対してのみ作成されます。
+**A.** During a failover operation, the failover job is marked as complete once all the volumes in the failover set have been instantly restored and brought online on the target device. This includes any locally pinned volumes that might have been failed over; however, local guarantees of the data will only be available when all the data for the volume has been downloaded. You can track this progress for each locally pinned volume that was failed over by monitoring the corresponding restore jobs that are created as part of the failover. These individual restore jobs will only be created for locally pinned volumes.
 
-**Q.** フェールオーバー中にボリュームの種類を変更できますか。
+**Q.** Can I change the type of a volume during failover?
 
-**A.** いいえ。フェールオーバー中にボリュームの種類を変更することはできません。StorSimple 8000 シリーズ Update 2 が実行されている別の物理デバイスにフェールオーバーする場合、ボリュームはスナップショットに保存されているボリュームの種類に基づいてフェールオーバーされます。その他のデバイス バージョンにフェールオーバーする場合は、前述したフェールオーバー後のボリュームの種類に関する質問を参照してください。
+**A.** No, you cannot change the volume type during a failover. If you are failing over to another physical device that is running StorSimple 8000 series update 2, the volumes will be failed over based on the volume type stored in the snapshot. When failing over to any other device version, refer to the question above on the volume type after a failover.
 
-**Q.** ローカル固定ボリュームを含むボリューム コンテナーをクラウド アプライアンスにフェールオーバーできますか。
+**Q.** Can I fail over a volume container with locally pinned volumes to the cloud appliance?
 
-**A.** はい、できます。ローカル固定ボリュームは階層化ボリュームとしてフェールオーバーされます。各バージョンでのローカル固定ボリュームのフェールオーバーと DR の詳細については、[こちら](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)をご覧ください。
+**A.** Yes, you can. The locally pinned volumes will be failed over as tiered volumes. More information on [failover and DR of locally pinned volumes across versions](storsimple-device-failover-disaster-recovery.md#considerations-for-device-failover)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

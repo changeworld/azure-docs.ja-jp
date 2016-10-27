@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure RemoteApp のベスト プラクティス | Microsoft Azure"
-    description="Azure RemoteApp を構成し、使用するためのベスト プラクティス"
+    pageTitle="Azure RemoteApp best practices | Microsoft Azure"
+    description="Best practices for configuring and using Azure RemoteApp."
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -15,35 +15,40 @@
     ms.date="08/15/2016"
     ms.author="elizapo" />
 
-# Azure RemoteApp を構成し、使用するためのベスト プラクティス
+
+# <a name="best-practices-for-configuring-and-using-azure-remoteapp"></a>Best practices for configuring and using Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-次の情報を使用して Azure RemoteApp を生産的に構成し、使用することができます。
+The following information can help you configure and use Azure RemoteApp productively.
 
-## 接続
-
-
-- 常に最新のクライアントのバージョンを使用します。以前のクライアントを使用すると、接続の問題およびその他のエクスペリエンスの低下が発生する可能性があります。デバイスのアプリケーションの自動更新を有効にすると、常に最新のクライアントがインストールされるようになります。
-- 利用可能なインターネット接続のうち、最も安定性と信頼性が高い接続を常に使用します。
-- 最適な接続パフォーマンスのためにサポートされているプロキシ接続のみを使用します。SOCKS プロキシはサポートされていません。
-
-## アプリケーション
+## <a name="connectivity"></a>Connectivity
 
 
-- アプリケーションを終了する場合は、RemoteApp アプリケーションを保存して閉じます。アプリケーションを終了しないと、データが失われる可能性があります。
-- Azure RemoteApp で使用する前にカスタム アプリケーションを検証します。これには、アプリケーションが複数のセッションのプラットフォームで動作し、同じコレクション内の別のユーザーに悪影響を与えるメモリや CPU などの不要なリソースが消費されないことを確認することが含まれます。詳細については、「[Application Compatibility Best Practices for Remote Desktop Services (リモート デスクトップ サービスのためのアプリケーションの互換性ベスト プラクティス)](http://www.dabcc.com/resources/Application%20Compatibility%20Best%20Practices%20for%20Remote%20Desktop%20Services.pdf)」をダウンロードして確認してください。
+- Always use the latest client version. Using older clients might result in connectivity issues and other degraded experiences. Enabling automatic application updates for your device will ensure that the latest client is always installed.
+- Always use the most stable and reliable internet connection available to you.  
+- Use only supported proxy connections for optimal connectivity performance.  The SOCKS proxy is not supported.
 
-## 構成と管理
+## <a name="applications"></a>Applications
 
 
-- テンプレート イメージを最新に保ち、必要に応じて、ソフトウェア更新プログラムおよびその他の重要な修正プログラムをインストールします。これにより、Azure の RemoteApp は容量に適合するように自動スケールされ、に各インスタンスにはパッチが適用されます。
-- Active Directory フェデレーション サービス (AD FS) デプロイが、セキュリティで保護され、信頼性が高いかどうかを確認します。そうしないと、クライアント認証に失敗し、ユーザーが Azure RemoteApp へアクセスができなくなります。
-- テンプレート イメージをインストールされているアプリケーション、ロール、または機能がステートレスであるように構成します。これらは、継続状態である RemoteApp サービスの仮想マシンのいずれのインスタンスにも依存してはなりません。
-	- ユーザー プロファイルまたはオンプレミスのファイル共有または OneDrive などのその他のサービス外の保存先にすべてのユーザー データを格納します。
-	- オンプレミスのファイル共有または OneDrive などのサービス外の保存先に共有データを格納します。
-	- サービスの個々の仮想マシンではなく、テンプレート イメージにシステム全体のすべての設定を構成します。
-	- 発行済みのアプリケーションのソフトウェアの自動更新を無効にします - 代わりにそれらをテンプレート イメージに手動で適用し、テンプレートからデプロイする前にテストします。
+- Save and close RemoteApp applications when you are done with the application. Not closing the application might result in data loss.
+- Validate custom applications before using them in Azure RemoteApp. This includes ensuring they work on a multi-session platform and don’t consume unnecessary resources such as memory and CPU that might starve another user in the same collection. For information, download and review the [Application Compatibility Best Practices for Remote Desktop Services](http://www.dabcc.com/resources/Application%20Compatibility%20Best%20Practices%20for%20Remote%20Desktop%20Services.pdf).
 
-<!---HONumber=AcomDC_0921_2016-->
+## <a name="configuration-and-management"></a>Configuration and management
+
+
+- Keep your template images up to date, installing software updates and other critical fixes as needed. This ensures that as Azure RemoteApp auto-scales to meet your capacity, each instance is patched.  
+- Make sure your Active Directory Federation Services (AD FS) deployment is secure and reliable. Otherwise client authentications might fail, preventing users from accessing Azure RemoteApp.
+- Configure template images with installed applications, roles, or features such that they are stateless. They should not rely on any instances of the virtual machines in a RemoteApp service being in a persistent state.
+    - Store all user data in user profiles or other storage locations external to the service, such as on-premises file shares or OneDrive.
+    - Store shared data in storage locations external to the service, such as on-premises file shares or OneDrive.
+    - Configure any system-wide settings in the template image rather than on individual virtual machines in a service.
+    - Disable automatic software updates for published applications - instead apply them manually to the template image and test them before you deploy  from the template.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

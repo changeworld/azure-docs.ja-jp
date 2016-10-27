@@ -1,83 +1,88 @@
 <properties
-	pageTitle="Excel からの Machine Learning Web サービスの使用 | Microsoft Azure"
-	description="Excel からの Azure Machine Learning Web サービスの使用"
-	services="machine-learning"
-	documentationCenter=""
-	authors="tedway"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Consume a Machine Learning Web Service from Excel | Microsoft Azure"
+    description="Consume an Azure Machine Learning Web Service from Excel"
+    services="machine-learning"
+    documentationCenter=""
+    authors="tedway"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="tedway"/>
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/30/2016"
+    ms.author="tedway"/>
 
-# Excel からの Azure Machine Learning Web サービスの使用
 
- Azure Machine Learning Studio では、Excel から直接 Web サービスを簡単に呼び出すことができ、コードを作成する必要がありません。
+# <a name="consuming-an-azure-machine-learning-web-service-from-excel"></a>Consuming an Azure Machine Learning Web Service from Excel
 
-Excel 2013 (またはそれ以降) または Excel Online を使用している場合は、Excel の [Excel アドイン](machine-learning-excel-add-in-for-web-services.md)を使用することをお勧めします。
+ Azure Machine Learning Studio makes it easy to call web services directly from Excel without the need to write any code.
+
+If you are using Excel 2013 (or later) or Excel Online, then we recommend that you use the Excel [Excel add-in](machine-learning-excel-add-in-for-web-services.md).
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## 手順
+## <a name="steps"></a>Steps
 
-Web サービスを発行します。[このページ](machine-learning-walkthrough-5-publish-web-service.md)では、その方法を説明しています。現在、Excel ブック機能は、1 つの出力を持つ要求/応答サービス (つまり 1 つのスコア付けラベル) のみサポートしています。
+Publish a web service. [This page](machine-learning-walkthrough-5-publish-web-service.md) explains how to do it. Currently the Excel workbook feature is only supported for Request/Response services that have a single output (that is, a single scoring label). 
 
-Web サービスを作成したら、Studio の左側の **[WEB サービス]** セクションをクリックして、Excel から使用する Web サービスを選択します。
+Once you have a web service, click on the **WEB SERVICES** section on the left of the studio, and then select the web service to consume from Excel.
 
-**従来の Web サービス**
+**Classic Web Service**
 
-1. Web サービスの **[ダッシュボード]** タブに、**要求/応答**サービスの行があります。このサービスに 1 つの出力がある場合は、その行の **[Excel ブックのダウンロード]** のリンクを確認してください。
+1. On the **DASHBOARD** tab for the web service is a row for the **REQUEST/RESPONSE** service. If this service had a single output, you should see the **Download Excel Workbook** link in that row.
 
-	![][1]
+    ![][1]
 
-2. **[Excel ブックのダウンロード]** をクリックします。
+2. Click on **Download Excel Workbook**.
 
-**新しい Web サービス**
+**New Web Service**
 
-1. Azure Machine Learning Web サービス ポータルで **[Consume (使用)]** を選択します。
-2. [Consume (使用)] ページの **[Web service consumption options (Web サービスの使用オプション)]** セクションで、[Excel] アイコンをクリックします。
+1. In the Azure Machine Learning Web Service portal, select **Consume**.
+2. On the Consume page, in the **Web service consumption options** section, click the Excel icon.
 
-**ブックを使用する**
+**Using the workbook**
 
-1. ブックを開きます。
+1. Open the workbook.
 
-2. セキュリティの警告が表示されます。**[編集を有効にする]** ボタンをクリックします。
+2. A Security Warning appears; click on the **Enable Editing** button.
 
-	![][2]
+    ![][2]
 
-3. セキュリティの警告が表示されます。**[コンテンツの有効化]** ボタンをクリックして、スプレッドシートのマクロを実行します。
+3. A Security Warning appears. Click on the **Enable Content** button to run macros on your spreadsheet.
 
-	![][3]
-4. マクロが有効になると、テーブルが生成されます。青の列は RRS Web サービス、または **PARAMETERS** への入力として必要です。RRS サービス **PREDICTED VALUES** の出力は緑色で表示されます。特定の行のすべての列がいっぱいになると、ブックは自動的に、スコア付け API を呼び出し、スコア付けされた結果を表示します。
+    ![][3]
+4. Once macros are enabled, a table is generated. Columns in blue are required as input into the RRS web service, or **PARAMETERS**. Note the output of the RRS service, **PREDICTED VALUES** in green. When all columns for a given row are filled, the workbook automatically calls the scoring API, and displays the scored results.
 
-	![][4]
+    ![][4]
 
-5. 複数の行のスコア付けを実行するには、2 番目の行にデータを入力すると、予測値が生成されます。複数の行を一度に貼り付けることもできます。
+5. To score more than one row, fill the second row with data and the predicted values are produced. You can even paste several rows at once.
 
-これで、Excel 機能 (グラフ、Power Map、条件付き書式など) と予測値を使用して、データの視覚化に役立てることができます。
+You can use any of the Excel features (graphs, power map, conditional formatting, etc.) with the predicted values to help visualize the data.    
 
 
-## ブックを共有する
+## <a name="sharing-your-workbook"></a>Sharing your workbook
 
-マクロが機能するには、API キーがスプレッドシートの一部である必要があります。つまり、信頼するエンティティ/個人とだけ、ブックを共有する必要があります。
+For the macros to work, your API Key must be part of the spreadsheet. That means that you should share the workbook only with entities/individuals you trust.
 
-## 自動更新
+## <a name="automatic-updates"></a>Automatic updates
 
-RRS 呼び出しは、次の 2 つの状況で発生します。
+An RRS call is made in these two situations:
 
-1. 初めて行のすべての **PARAMETERS** にコンテンツが挿入されたとき
+1. The first time a row has content in all of its **PARAMETERS**
 
-2. すべての **PARAMETERS** に入力されている行の任意の **PARAMETERS** が変更されたとき。
+2. Any time any of the **PARAMETERS** changes in a row that had all of its **PARAMETERS** entered.
 
 [1]: ./media/machine-learning-consuming-from-excel/excellink.png
 [2]: ./media/machine-learning-consuming-from-excel/enableeditting.png
 [3]: ./media/machine-learning-consuming-from-excel/enablecontent.png
 [4]: ./media/machine-learning-consuming-from-excel/sampletable.png
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

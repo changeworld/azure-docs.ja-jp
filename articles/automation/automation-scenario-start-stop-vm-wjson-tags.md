@@ -1,6 +1,6 @@
 <properties
-   pageTitle="JSON 形式のタグを使用して Azure VM の起動とシャットダウンのスケジュールを作成する | Microsoft Azure"
-   description="この記事では、タグに関する JSON 文字列を使って VM の起動とシャットダウンのスケジュールを自動化する方法を示します。"
+   pageTitle="Using JSON-formatted tags to create a schedule for Azure VM startup and shutdown | Microsoft Azure"
+   description="This article demonstrates how to use JSON strings on tags to automate the scheduling of VM startup and shutdown."
    services="automation"
    documentationCenter=""
    authors="MGoedtel"
@@ -15,71 +15,72 @@
    ms.date="07/18/2016"
    ms.author="magoedte;paulomarquesc" />
 
-# Azure Automation シナリオ: JSON 形式のタグを使用して Azure VM の起動とシャットダウンのスケジュールを作成する
 
-お客様は多くの場合、サブスクリプション コストを削減し、ビジネス要件や技術要件に対応するために、仮想マシンの起動とシャットダウンのスケジュールを設定することを望みます。
+# <a name="azure-automation-scenario:-using-json-formatted-tags-to-create-a-schedule-for-azure-vm-startup-and-shutdown"></a>Azure Automation scenario: Using JSON-formatted tags to create a schedule for Azure VM startup and shutdown
 
-次のシナリオでは、Schedule というタグを使用して、Azure のリソース グループ レベルまたは仮想マシン レベルで VM の自動起動と自動シャットダウンを設定できます。このスケジュールは、起動時刻とシャットダウン時刻を指定して、日曜日から土曜日まで構成できます。
+Customers often want to schedule the startup and shutdown of virtual machines to help reduce subscription costs or support business and technical requirements.  
 
-すぐに使用できるオプションがいくつかあります。チェックの内容は次のとおりです
--  スケールインまたはスケールアウトが可能な自動スケール設定を備えた[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
-- 起動操作とシャットダウン操作のスケジュール機能が組み込まれた [DevTest Labs](../devtest-lab/devtest-lab-overview.md) サービス。
+The following scenario enables you to set up automated startup and shutdown of your VMs by using a tag called Schedule at a resource group level or virtual machine level in Azure. This schedule can be configured from Sunday to Saturday with a startup time and shutdown time.  
 
-ただし、これらのオプションは特定のシナリオにのみ対応しており、サービスとしてのインフラストラクチャ (IaaS) VM には適用できません。
+We do have some out-of-the-box options. These include:
+-  [Virtual machine scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) with autoscale settings that enable you to scale in or out.
+- [DevTest Labs](../devtest-lab/devtest-lab-overview.md) service, which has the built-in capability of scheduling startup and shutdown operations.
 
-Schedule タグをリソース グループに適用すると、タグはそのリソース グループ内のすべての仮想マシンにも適用されます。いずれかの VM に直接適用されているスケジュールもある場合、前回のスケジュールが次の順序で優先されます。
+However, these options only support specific scenarios and cannot be applied to infrastructure-as-a-service (IaaS) VMs.   
 
-1.  リソース グループに適用されているスケジュール
-2.  リソース グループとリソース グループ内の仮想マシンに適用されているスケジュール
-3.  仮想マシンに適用されているスケジュール
+When the Schedule tag is applied to a resource group, it's also applied to all virtual machines inside that resource group. If a schedule is also directly applied to a VM, the last schedule takes precedence in the following order:
 
-このシナリオでは主に、指定された形式の JSON 文字列を受け取り、それを Schedule というタグの値として追加します。その後、Runbook によってリソース グループと仮想マシンがすべて一覧表示され、前述のシナリオに基づいて各 VM のスケジュールが識別されます。次に、スケジュールの設定されている VM がループ処理され、実行するアクションが評価されます。たとえば、どの VM で停止、シャットダウン、または無視が必要であるかが特定されます。
+1.  Schedule applied to a resource group
+2.  Schedule applied to a resource group and virtual machine in the resource group
+3.  Schedule applied to a virtual machine
 
-これらの Runbook は、[Azure 実行アカウント](../automation/automation-sec-configure-azure-runas-account.md)を使用して認証します。
+This scenario essentially takes a JSON string with a specified format and adds it as the value for a tag called Schedule. Then a runbook lists all resource groups and virtual machines and identifies the schedules for each VM based on the scenarios listed earlier. Next it loops through the VMs that have schedules attached and evaluates what action should be taken. For example, it determines which VMs need to be stopped, shut down, or ignored.
 
-## このシナリオで使用する Runbook のダウンロード
+These runbooks authenticate by using the [Azure Run As account](../automation/automation-sec-configure-azure-runas-account.md).
 
-このシナリオは 4 つの PowerShell Workflow Runbook で構成されています。このシナリオの Runbook は、[TechNet ギャラリー](https://gallery.technet.microsoft.com/Azure-Automation-Runbooks-84f0efc7)またはこのプロジェクトの [GitHub](https://github.com/paulomarquesdacosta/azure-automation-scheduled-shutdown-and-startup) リポジトリからダウンロードできます。
+## <a name="download-the-runbooks-for-the-scenario"></a>Download the runbooks for the scenario
 
-Runbook | 説明
+This scenario consists of four PowerShell Workflow runbooks that you can download from the [TechNet Gallery](https://gallery.technet.microsoft.com/Azure-Automation-Runbooks-84f0efc7) or the [GitHub](https://github.com/paulomarquesdacosta/azure-automation-scheduled-shutdown-and-startup) repository for this project.
+
+Runbook | Description
 ----------|----------
-Test-ResourceSchedule | 各仮想マシンのスケジュールを確認し、スケジュールに応じてシャットダウンまたは起動を実行します。
-Add-ResourceSchedule | VM またはリソース グループに Schedule タグを追加します。
-Update-ResourceSchedule | 既存の Schedule タグを新しいタグで置き換えることで変更します。
-Remove-ResourceSchedule | VM またはリソース グループから Schedule タグを削除します。
+Test-ResourceSchedule | Checks each virtual machine schedule and performs shutdown or startup depending on the schedule.
+Add-ResourceSchedule | Adds the Schedule tag to a VM or resource group.
+Update-ResourceSchedule | Modifies the existing Schedule tag by replacing it with a new one.
+Remove-ResourceSchedule | Removes the Schedule tag from a VM or resource group.
 
 
-## このシナリオのインストールと構成
+## <a name="install-and-configure-this-scenario"></a>Install and configure this scenario
 
-### Runbook をインストールして発行する
+### <a name="install-and-publish-the-runbooks"></a>Install and publish the runbooks
 
-Runbook をダウンロードしたら、「[Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-Azure-Automation)」の手順を使用してインポートできます。各 Runbook が Automation アカウントに正常にインポートされたら、それを発行します。
-
-
-### Test-ResourceSchedule Runbook にスケジュールを追加する
-
-次の手順に従って、Test-ResourceSchedule Runbook のスケジュールを有効にします。この Runbook によって、起動、シャットダウン、または現状維持の対象となる仮想マシンが特定されます。
-
-1. Azure ポータルで Automation アカウントを開き、**[Runbook]** タイルをクリックします。
-2. **Test-ResourceSchedule** ブレードで、**[スケジュール]** タイルをクリックします。
-3. **[スケジュール]** ブレードで、**[スケジュールの追加]** をクリックします。
-4. **[スケジュール]** ブレードで、**[スケジュールを Runbook にリンクします]** を選択します。その後、**[新しいスケジュールを作成します]** を選択します。
-5.  **[新しいスケジュール]** ブレードで、このスケジュールの名前を入力します (たとえば、*HourlyExecution*)。
-6. スケジュールの **[開始]** で、スケジュールの開始時刻を 1 時間単位の値で設定します。
-7. **[繰り返し]** を選択し、**[繰り返しの間隔]** で間隔として **[1 時間]** を選択します。
-8. **[有効期限の設定]** が **[いいえ]** に設定されていることを確認し、**[作成]** をクリックして新しいスケジュールを保存します。
-9. **[Runbook のスケジュール設定]** オプション ブレードで、**[パラメーターと実行設定]** を選択します。Test-ResourceSchedule の **[パラメーター]** ブレードで、**[サブスクリプション名]** フィールドにサブスクリプションの名前を入力します。これは Runbook に必要な唯一のパラメーターです。操作が終了したら、**[OK]** をクリックします。
+After downloading the runbooks, you can import them by using the procedure in [Creating or importing a runbook in Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-Azure-Automation).  Publish each runbook after it has been successfully imported into your Automation account.
 
 
-完了した Runbook のスケジュールは次のようになります。
+### <a name="add-a-schedule-to-the-test-resourceschedule-runbook"></a>Add a schedule to the Test-ResourceSchedule runbook
+
+Follow these steps to enable the schedule for the Test-ResourceSchedule runbook. This is the runbook that verifies which virtual machines should be started, shut down, or left as is.
+
+1. From the Azure portal, open your Automation account, and then click the **Runbooks** tile.
+2. On the **Test-ResourceSchedule** blade, click the **Schedules** tile.
+3. On the **Schedules** blade, click **Add a schedule**.
+4. On the **Schedules** blade, select **Link a schedule to your runbook**. Then select **Create a new schedule**.
+5.  On the **New schedule** blade, type in the name of this schedule, for example: *HourlyExecution*.
+6. For the schedule **Start**, set the start time to an hour increment.
+7. Select **Recurrence**, and then for **Recur every interval**, select **1 hour**.
+8. Verify that **Set expiration** is set to **No**, and then click **Create** to save your new schedule.
+9. On the **Schedule Runbook** options blade, select **Parameters and run settings**. In the Test-ResourceSchedule **Parameters** blade, enter the name of your subscription in the **SubscriptionName** field.  This is the only parameter that's required for the runbook.  When you're finished, click **OK**.  
+
+
+The runbook schedule should look like the following when it's completed:
 
 ![Configured Test-ResourceSchedule runbook](./media/automation-scenario-start-stop-vm-wjson-tags/automation-schedule-config.png)<br>
 
-## JSON 文字列の形式
+## <a name="format-the-json-string"></a>Format the JSON string
 
-このソリューションでは主に、指定された形式の JSON 文字列を受け取り、それを Schedule というタグの値として追加します。その後、Runbook によってリソース グループと仮想マシンがすべて一覧表示され、各仮想マシンのスケジュールが識別されます。
+This solution basically takes a JSON string with a specified format and adds it as the value for a tag called Schedule. Then a runbook lists all resource groups and virtual machines and identifies the schedules for each virtual machine.
 
-スケジュールの設定されている仮想マシンがループ処理され、実行するアクションが確認されます。このソリューションで求められる形式の例を以下に示します。
+The runbook loops over the virtual machines that have schedules attached and checks what actions should be taken. The following is an example of how the solutions should be formatted:
 
     {
        "TzId": "Eastern Standard Time",
@@ -97,21 +98,21 @@ Runbook をダウンロードしたら、「[Azure Automation での Runbook の
         },
     }
 
-この構造に関する詳しい情報を一部次に示します。
+Here is some detailed information about this structure:
 
-1. この JSON 構造の形式は、Azure での 1 つのタグ値の文字数制限 (256 文字) に合わせて最適化されています。
+1. The format of this JSON structure is optimized to work around the 256-character limitation of a single tag value in Azure.
 
-2. *TzId* は、仮想マシンのタイム ゾーンを表します。この ID は、PowerShell セッションで .NET クラス TimeZoneInfo を使用して取得できます (**[System.TimeZoneInfo]::GetSystemTimeZones()**)。
+2. *TzId* represents the time zone of the virtual machine. This ID can be obtained by using the TimeZoneInfo .NET class in a PowerShell session--**[System.TimeZoneInfo]::GetSystemTimeZones()**.
 
-    ![PowerShell での GetSystemTimeZones](./media/automation-scenario-start-stop-vm-wjson-tags/automation-get-timzone-powershell.png)
+    ![GetSystemTimeZones in PowerShell](./media/automation-scenario-start-stop-vm-wjson-tags/automation-get-timzone-powershell.png)
 
-    - 曜日は 0 から 6 までの数値で表します。値 0 は日曜日を表します。
-    - 開始時刻は、**S** 属性で表し、その値は 24 時間形式です。
-    - 終了時刻またはシャットダウン時刻は **E** 属性で表し、その値は 24 時間形式です。
+    - Weekdays are represented with a numeric value of zero to six. The value zero equals Sunday.
+    - The start time is represented with the **S** attribute, and its value is in a 24-hour format.
+    - The end or shutdown time is represented with the **E** attribute, and its value is in a 24-hour format.
 
-    **S** 属性と **E** 属性にそれぞれ値ゼロ (0) を指定した場合、仮想マシンは評価の時点の状態のままになります。
+    If the **S** and **E** attributes each have a value of zero (0), the virtual machine will be left in its present state at the time of evaluation.   
 
-3. 週の特定の曜日の評価をスキップする場合は、その曜日のセクションを追加しないでください。次の例では、月曜日のみが評価され、その他の曜日は無視されます。
+3. If you want to skip evaluation for a specific day of the week, don’t add a section for that day of the week. In the following example, only Monday is evaluated, and the other days of the week are ignored:
 
         {
           "TzId": "Eastern Standard Time",
@@ -121,111 +122,115 @@ Runbook をダウンロードしたら、「[Azure Automation での Runbook の
            }
         }
 
-## リソース グループまたは仮想マシンへのタグ付け
+## <a name="tag-resource-groups-or-vms"></a>Tag resource groups or VMs
 
-VM をシャットダウンするには、VM または VM が存在するリソース グループにタグを付ける必要があります。Schedule タグが付けられていない仮想マシンは評価されません。そのため、起動も、シャットダウンもされません。
+To shut down VMs, you need to tag either the VMs or the resource groups in which they're located. Virtual machines that don't have a Schedule tag are not evaluated. Therefore, they aren't started or shut down.
 
-このソリューションを使用してリソース グループまたは VM にタグを付ける方法は 2 つあります。タグ付けはポータルから直接実行できます。そのほか、Add-ResourceSchedule Runbook、Update-ResourceSchedule Runbook、Remove-ResourceSchedule Runbook を使用する方法もあります。
+There are two ways to tag resource groups or VMs with this solution. You can do it directly from the portal. Or you can use the Add-ResourceSchedule, Update-ResourceSchedule, and Remove-ResourceSchedule runbooks.
 
-### ポータル経由でタグ付けする
+### <a name="tag-through-the-portal"></a>Tag through the portal
 
-ポータルで仮想マシンまたはリソース グループにタグを付けるには、次の手順に従います。
+Follow these steps to tag a virtual machine or resource group in the portal:
 
-1. JSON 文字列をフラット化し、スペースがないことを確認します。JSON 文字列は次のようになります。
+1. Flatten the JSON string and verify that there aren't any spaces.  Your JSON string should look like this:
 
         {"TzId":"Eastern Standard Time","0":{"S":"11","E":"17"},"1":{"S":"9","E":"19"},"2": {"S":"9","E":"19"},"3":{"S":"9","E":"19"},"4":{"S":"9","E":"19"},"5":{"S":"9","E":"19"},"6":{"S":"11","E":"17"}}
 
 
-2. このスケジュールを適用する VM またはリソース グループの **[タグ]** アイコンを選択します。
+2. Select the **Tag** icon for a VM or resource group to apply this schedule.
 
-![VM tag option](./media/automation-scenario-start-stop-vm-wjson-tags/automation-vm-tag-option.png)
-3. キー/値のペアの後に続けてタグを定義します。**[キー]** フィールドに「**Schedule**」と入力し、**[値]** フィールドに JSON 文字列を貼り付けます。**[保存]** をクリックします。リソースのタグ一覧に新しいタグが表示されます。
+![VM tag option](./media/automation-scenario-start-stop-vm-wjson-tags/automation-vm-tag-option.png)    
+3. Tags are defined following a key/value pair. Type **Schedule** in the **Key** field, and then paste the JSON string into the **Value** field. Click **Save**. Your new tag should now appear in the list of tags for your resource.
 
 ![VM schedule tag](./media/automation-scenario-start-stop-vm-wjson-tags/automation-vm-schedule-tag.png)
 
 
-### PowerShell でタグ付けする
+### <a name="tag-from-powershell"></a>Tag from PowerShell
 
-インポートしたすべての Runbook には、スクリプトの先頭にヘルプ情報が含まれていて、PowerShell から直接 Runbook を実行する方法が説明されています。PowerShell から、Add-ScheduleResource Runbook と Update-ScheduleResource Runbook を呼び出すことができます。そのためには、必要なパラメーターを渡します。これにより、ポータルの外部にある VM またはリソース グループの Schedule タグを作成または更新できます。
+All imported runbooks contain help information at the beginning of the script that describes how to execute the runbooks directly from PowerShell. You can call the Add-ScheduleResource and Update-ScheduleResource runbooks from PowerShell. You do this by passing required parameters that enable you to create or update the Schedule tag on a VM or resource group outside of the portal.  
 
-PowerShell でタグの作成、追加、削除を行うには、まず [Azure 用の PowerShell 環境を設定する](../powershell-install-configure.md)必要があります。設定が完了した後で、以下の手順に進むことができます。
+To create, add, and delete tags through PowerShell, you first need to [set up your PowerShell environment for Azure](../powershell-install-configure.md). After you complete the setup, you can proceed with the following steps.
 
-### PowerShell でスケジュールのタグを作成する
+### <a name="create-a-schedule-tag-with-powershell"></a>Create a schedule tag with PowerShell
 
-1. PowerShell セッションを開きます。次に、次の例を使用して実行アカウントを認証し、サブスクリプションを指定します。
+1. Open a PowerShell session. Then use the following example to authenticate with your Run As account and to specify a subscription:   
 
         Conn = Get-AutomationConnection -Name AzureRunAsConnection
         Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
         -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
         Select-AzureRmSubscription -SubscriptionName "MySubscription"
 
-2. スケジュールのハッシュ テーブルを定義します。作成方法を次の例に示します。
+2. Define a schedule hash table. Here is an example of how it should be constructed:
 
         $schedule= @{ "TzId"="Eastern Standard Time"; "0"= @{"S"="11";"E"="17"};"1"= @{"S"="9";"E"="19"};"2"= @{"S"="9";"E"="19"};"3"= @{"S"="9";"E"="19"};"4"= @{"S"="9";"E"="19"};"5"= @{"S"="9";"E"="19"};"6"= @{"S"="11";"E"="17"}}
 
-3. Runbook に必要なパラメーターを定義します。次の例では、VM を対象にしています。
+3. Define the parameters that are required by the runbook. In the following example, we are targeting a VM:
 
         $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01"; `
         "VmName"="VM01";"Schedule"=$schedule}
 
-    リソース グループにタグを付ける場合は、次のように $params ハッシュ テーブルから *VMName* パラメーターを削除します。
+    If you’re tagging a resource group, remove the *VMName* parameter from the $params hash table as follows:
 
         $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01"; `
         "Schedule"=$schedule}
 
-4. 次のパラメーターを指定して Add-ResourceSchedule Runbook を実行し、Schedule タグを作成します。
+4. Run the Add-ResourceSchedule runbook with the following parameters to create the Schedule tag:
 
         Start-AzureRmAutomationRunbook -Name "Add-ResourceSchedule" -Parameters $params `
         -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
 
-5. リソース グループまたは仮想マシンのタグを更新する場合は、次のパラメーターを指定して **Update-ResourceSchedule** Runbook を実行します。
+5. To update a resource group or virtual machine tag, execute the **Update-ResourceSchedule** runbook with the following parameters:
 
         Start-AzureRmAutomationRunbook -Name "Update-ResourceSchedule" -Parameters $params `
         -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
 
-### PowerShell でスケジュールのタグを削除する
+### <a name="remove-a-schedule-tag-with-powershell"></a>Remove a schedule tag with PowerShell
 
-1. PowerShell セッションを開き、次のコマンドを実行して実行アカウントで認証し、サブスクリプションを選択して指定します。
+1. Open a PowerShell session and run the following to authenticate with your Run As account and to select and specify a subscription:
 
         Conn = Get-AutomationConnection -Name AzureRunAsConnection
         Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID `
         -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
         Select-AzureRmSubscription -SubscriptionName "MySubscription"
 
-2. Runbook に必要なパラメーターを定義します。次の例では、VM を対象にしています。
+2. Define the parameters that are required by the runbook. In the following example, we are targeting a VM:
 
         $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01" `
         ;"VmName"="VM01"}
 
-    リソース グループからタグを削除する場合は、次のように $params ハッシュ テーブルから *VMName* パラメーターを削除します。
+    If you’re removing a tag from a resource group, remove the *VMName* parameter from the $params hash table as follows:
 
         $params = @{"SubscriptionName"="MySubscription";"ResourceGroupName"="ResourceGroup01"}
 
-3. Remove-ResourceSchedule Runbook を実行して Schedule タグを削除します。
+3. Execute the Remove-ResourceSchedule runbook to remove the Schedule tag:
 
         Start-AzureRmAutomationRunbook -Name "Remove-ResourceSchedule" -Parameters $params `
         -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
 
-4. リソース グループまたは仮想マシンのタグを更新する場合は、次のパラメーターを指定して Remove-ResourceSchedule Runbook を実行します。
+4. To update a resource group or virtual machine tag, execute the Remove-ResourceSchedule runbook with the following parameters:
 
         Start-AzureRmAutomationRunbook -Name "Remove-ResourceSchedule" -Parameters $params `
         -AutomationAccountName "AutomationAccount" -ResourceGroupName "ResourceGroup01"
 
 
->[AZURE.NOTE] これらの Runbook (および仮想マシンの状態) を積極的に監視し、仮想マシンがシャットダウンされ、その後に起動されたことを確認するようお勧めします。
+>[AZURE.NOTE] We recommend that you proactively monitor these runbooks (and the virtual machine states) to verify that your virtual machines are being shut down and started accordingly.  
 
-Azure ポータルで Test-ResourceSchedule Runbook ジョブの詳細を表示するには、Runbook の **[ジョブ]** タイルを選択します。ジョブの概要として、入力パラメーターと出力ストリーム、さらにジョブに関する全般情報が表示されます。例外が発生した場合は、その情報も表示されます。
+To view the details of the Test-ResourceSchedule runbook job in the Azure portal, select the **Jobs** tile of the runbook. The job summary displays the input parameters and the output stream, in addition to general information about the job and any exceptions if they occurred.  
 
-**[ジョブの概要]** には、出力、警告、およびエラー ストリームからのメッセージが表示されます。Runbook 実行の詳細な結果を表示するには、**[出力]** タイルを選択します。
+The **Job Summary** includes messages from the output, warning, and error streams. Select the **Output** tile to view detailed results from the runbook execution.
 
-![Test-ResourceSchedule の出力](./media/automation-scenario-start-stop-vm-wjson-tags/automation-job-output.png)
+![Test-ResourceSchedule Output](./media/automation-scenario-start-stop-vm-wjson-tags/automation-job-output.png)  
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
--  PowerShell Workflow Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
--  Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
--  PowerShell スクリプトのサポート機能の詳細については、[Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)に関するブログ記事を参照してください。
--  Runbook のログ記録と出力の詳細については、「[Azure Automation での Runbook の出力およびメッセージ](automation-runbook-output-and-messages.md)」を参照してください。
--  Azure 実行アカウントの詳細と、それを使用して Runbook を認証する方法については、「[Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)」を参照してください。
+-  To get started with PowerShell workflow runbooks, see [My first PowerShell workflow runbook](automation-first-runbook-textual.md).
+-  To learn more about runbook types, and their advantages and limitations, see [Azure Automation runbook types](automation-runbook-types.md).
+-  For more information about PowerShell script support features, see [Native PowerShell script support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
+-  To learn more about runbook logging and output, see [Runbook output and messages in Azure Automation](automation-runbook-output-and-messages.md).
+-  To learn more about an Azure Run As account and how to authenticate your runbooks by using it, see [Authenticate runbooks with Azure Run As account](../automation/automation-sec-configure-azure-runas-account.md).
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

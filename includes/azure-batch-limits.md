@@ -1,11 +1,14 @@
-**リソース**|**既定の制限**|**上限**
+**Resource**|**Default Limit**|**Maximum Limit**
 ---|---|---
-Batch アカウントあたりのコア数|20|N/A<sup>1</sup>
-Batch アカウントあたりのジョブ数とジョブ スケジュール数<sup>2</sup>|20|10,000
-Batch アカウントあたりのプール数|20|5000
+Cores per Batch account|20|N/A<sup>1</sup>
+Jobs and job schedules<sup>2</sup> per Batch account|20|10,000
+Pools per Batch account|20|5000
 
-<sup>1</sup> Batch アカウントあたりのコア数は増やすことができますが、最大数が指定されていません。このオプション値を増やす場合は、カスタマー サポートにお問い合わせください。
+<sup>1</sup> The number of cores per Batch account can be increased, but the maximum number is unspecified. Contact customer support to discuss increase options.
 
-<sup>2</sup> 一度だけ実行されるアクティブなジョブとアクティブなジョブ スケジュールが含まれています。完了したジョブとジョブ スケジュールに制限はありません。
+<sup>2</sup> Includes run-once active jobs and active job schedules. Completed jobs and job schedules are not limited.
 
-<!---HONumber=AcomDC_0615_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

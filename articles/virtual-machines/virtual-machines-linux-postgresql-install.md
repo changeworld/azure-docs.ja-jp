@@ -1,258 +1,263 @@
 <properties
-	pageTitle="PostgreSQL を Linux VM にセットアップする | Microsoft Azure"
-	description="Azure の Linux 仮想マシンに PostgreSQL をインストールして構成する方法を説明します。"
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="SuperScottz"
-	manager="timlt"
-	editor=""
- 	tags="azure-resource-manager,azure-service-management"/>
+    pageTitle="Set up PostgreSQL on a Linux VM | Microsoft Azure"
+    description="Learn how to install and configure PostgreSQL on a Linux virtual machine in Azure"
+    services="virtual-machines-linux"
+    documentationCenter=""
+    authors="SuperScottz"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager,azure-service-management"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="vm-linux"
-	ms.workload="infrastructure-services"
-	ms.date="02/01/2016"
-	ms.author="mingzhan"/>
+    ms.service="virtual-machines-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="vm-linux"
+    ms.workload="infrastructure-services"
+    ms.date="02/01/2016"
+    ms.author="mingzhan"/>
 
 
-# Azure での PostgreSQL のインストールと構成
 
-PostgreSQL は、Oracle や DB2 に似た高機能のオープン ソース データベースです。PostgreSQL には、完全な ACID 準拠、信頼性の高いトランザクション処理、複数バージョンの同時実行制御など、エンタープライズ対応の機能が含まれます。また、ANSI SQL や SQL/MED などの標準をサポートします (Oracle、MySQL、MongoDB、その他多くの外部データ ラッパーを含みます).12 を超える手続き型言語、GIN および GIST のインデックス、空間データ、および JSON またはキーと値に基づくアプリケーションに対する NoSQL に似た複数の機能などのサポートにより、高度な拡張を行えます。
+# <a name="install-and-configure-postgresql-on-azure"></a>Install and configure PostgreSQL on Azure
 
-この記事では、Linux を実行している Azure Virtual Machine に PostgreSQL をインストールして構成する方法を説明します。
+PostgreSQL is an advanced open-source database similar to Oracle and DB2. It includes enterprise-ready features such as full ACID compliance, reliable transactional processing, and multi-version concurrency control. It also supports standards such as ANSI SQL and SQL/MED (including foreign data wrappers for Oracle, MySQL, MongoDB, and many others). It is highly extensible with support for over 12 procedural languages, GIN and GiST indexes, spatial data support, and multiple NoSQL-like features for JSON or key-value-based applications.
+
+In this article, you will learn how to install and configure PostgreSQL on an Azure virtual machine running Linux.
 
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
-## PostgreSQL のインストール
+## <a name="install-postgresql"></a>Install PostgreSQL
 
-> [AZURE.NOTE] このチュートリアルを実行するには、Linux を実行する Azure Virtual Machines が既に存在している必要があります。続行する前に、[Azure Linux VM チュートリアル](virtual-machines-linux-quick-create-cli.md)を見て Linux VM を作成およびセットアップしてください。
+> [AZURE.NOTE] You must already have an Azure virtual machine running Linux in order to complete this tutorial. To create and set up a Linux VM before proceeding, see the [Azure Linux VM tutorial](virtual-machines-linux-quick-create-cli.md).
 
-この例では、PostgreSQL ポートとしてポート 1999 を使用します。
+In this case, use port 1999 as the PostgreSQL port.  
 
-PuTTY を使用して作成した Linux VM に接続します。Azure Linux VM を初めて使用する場合は、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-mac-create-ssh-keys.md)」を参照し、PuTTY を使用して Linux VM に接続する方法を確認してください。
+Connect to the Linux VM you created via PuTTY. If this is the first time you're using an Azure Linux VM, see [How to Use SSH with Linux on Azure](virtual-machines-linux-mac-create-ssh-keys.md) to learn how to use PuTTY to connect to a Linux VM.
 
-1. 次のコマンドを実行して、ルート (admin) に切り替えます。
+1. Run the following command to switch to the root (admin):
 
-		# sudo su -
+        # sudo su -
 
-2. 一部のディストリビューションには、PostgreSQL をインストールする前にインストールする必要がある依存アプリケーションがあります。次の一覧でお使いのディストリビューションを確認し、適切なコマンドを実行してください。
+2. Some distributions have dependencies that you must install before installing PostgreSQL. Check for your distro in this list and run the appropriate command:
 
-	- Red Hat ベースの Linux:
+    - Red Hat base Linux:
 
-			# yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
+            # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
 
-	- Debian ベースの Linux:
+    - Debian base Linux:
 
- 			# apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y  
+            # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y  
 
-	- Suse Linux:
+    - SUSE Linux:
 
-			# zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
+            # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
 
-3. PostgreSQL をルート ディレクトリにダウンロードし、パッケージを解凍します。
+3. Download PostgreSQL into the root directory, and then unzip the package:
 
-		# wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
+        # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
 
-		# tar jxvf  postgresql-9.3.5.tar.bz2
+        # tar jxvf  postgresql-9.3.5.tar.bz2
 
-	上に示したのは例です。[Index of /pub/source/](https://ftp.postgresql.org/pub/source/) で、詳細なダウンロード アドレスを参照できます。
+    The above is an example. You can find the more detailed download address in the [Index of /pub/source/](https://ftp.postgresql.org/pub/source/).
 
-4. ビルドを開始するには、以下のコマンドを実行します。
+4. To start the build, run these commands:
 
-		# cd postgresql-9.3.5
+        # cd postgresql-9.3.5
 
-		# ./configure --prefix=/opt/postgresql-9.3.5
+        # ./configure --prefix=/opt/postgresql-9.3.5
 
-5. ドキュメント (HTML およびマニュアル ページ) や追加モジュール (contrib) など、ビルドできるものをすべてビルドする場合は、代わりに次のコマンドを実行します。
+5. If  you want to build everything that can be built, including the documentation (HTML and man pages) and additional modules (contrib), run the following command instead:
 
-		# gmake install-world
+        # gmake install-world
 
-	次の確認メッセージが表示されます。
+    You should receive the following confirmation message:
 
-		PostgreSQL, contrib, and documentation successfully made. Ready to install.
+        PostgreSQL, contrib, and documentation successfully made. Ready to install.
 
-## PostgreSQL の構成
+## <a name="configure-postgresql"></a>Configure PostgreSQL
 
-1. (省略可能) シンボリック リンクを作成して、バージョン番号を含まないように PostgreSQL の参照を短縮します。
+1. (Optional) Create a symbolic link to shorten the PostgreSQL reference to not include the version number:
 
-		# ln -s /opt/pgsql9.3.5 /opt/pgsql
+        # ln -s /opt/pgsql9.3.5 /opt/pgsql
 
-2. データベース用のディレクトリを作成します。
+2. Create a directory for the database:
 
-		# mkdir -p /opt/pgsql_data
+        # mkdir -p /opt/pgsql_data
 
-3. root 以外のユーザーを作成し、そのユーザーのプロファイルを変更します。この新しいユーザーに切り替えます (この例では *postgres*)。
+3. Create a non-root user and modify that user’s profile. Then, switch to this new user (called *postgres* in our example):
 
-		# useradd postgres
+        # useradd postgres
 
-		# chown -R postgres.postgres /opt/pgsql_data
+        # chown -R postgres.postgres /opt/pgsql_data
 
-		# su - postgres
+        # su - postgres
 
-   > [AZURE.NOTE] セキュリティ上の理由から、PostgreSQL ではデータベースの初期化、開始、またはシャットダウンに root 以外のユーザーを使用します。
+   > [AZURE.NOTE] For security reasons, PostgreSQL uses a non-root user to initialize, start, or shut down the database.
 
 
-4. 次のコマンドを入力して、*bash\_profile* ファイルを編集します。以下の行を *bash\_profile* ファイルの最後に追加します。
+4. Edit the *bash_profile* file by entering the commands below. These lines will be added to the end of the *bash_profile* file:
 
-		cat >> ~/.bash_profile <<EOF
-		export PGPORT=1999
-		export PGDATA=/opt/pgsql_data
-		export LANG=en_US.utf8
-		export PGHOME=/opt/pgsql
-		export PATH=\$PATH:\$PGHOME/bin
-		export MANPATH=\$MANPATH:\$PGHOME/share/man
-		export DATA=`date +"%Y%m%d%H%M"`
-		export PGUSER=postgres
-		alias rm='rm -i'
-		alias ll='ls -lh'
-		EOF
+        cat >> ~/.bash_profile <<EOF
+        export PGPORT=1999
+        export PGDATA=/opt/pgsql_data
+        export LANG=en_US.utf8
+        export PGHOME=/opt/pgsql
+        export PATH=\$PATH:\$PGHOME/bin
+        export MANPATH=\$MANPATH:\$PGHOME/share/man
+        export DATA=`date +"%Y%m%d%H%M"`
+        export PGUSER=postgres
+        alias rm='rm -i'
+        alias ll='ls -lh'
+        EOF
 
-5. *bash\_profile* ファイルを実行します。
+5. Execute the *bash_profile* file:
 
-		$ source .bash_profile
+        $ source .bash_profile
 
-6. 次のコマンドを使用してインストールを検証します。
+6. Validate your installation by using the following command:
 
-		$ which psql
+        $ which psql
 
-	インストールが成功した場合は、次の応答が表示されます。
+    If your installation is successful, you will see the following response:
 
-		/opt/pgsql/bin/psql
+        /opt/pgsql/bin/psql
 
-7. PostgreSQL のバージョンをチェックすることもできます。
+7. You can also check the PostgreSQL version:
 
-		$ psql -V
+        $ psql -V
 
-8. ディスクを初期化します。
+8. Initialize the database:
 
-		$ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
+        $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
 
-	次の出力が表示されます。
+    You should receive the following output:
 
 ![image](./media/virtual-machines-linux-postgresql-install/no1.png)
 
-## PostgreSQL のセットアップ
+## <a name="set-up-postgresql"></a>Set up PostgreSQL
 
-<!--	[postgres@ test ~]$ exit -->
+<!--    [postgres@ test ~]$ exit -->
 
-次のコマンドを実行します。
+Run the following commands:
 
-	# cd /root/postgresql-9.3.5/contrib/start-scripts
+    # cd /root/postgresql-9.3.5/contrib/start-scripts
 
-	# cp linux /etc/init.d/postgresql
+    # cp linux /etc/init.d/postgresql
 
-/etc/init.d/postgresql ファイルの 2 つの変数を変更します。prefix には、PostgreSQL のインストール パス **/opt/pgsql** を設定します。PGDATA には、PostgreSQL のデータ ストレージ パス **/opt/pgsql\_data** を設定します。
+Modify two variables in the /etc/init.d/postgresql file. The prefix is set to the installation path of PostgreSQL: **/opt/pgsql**. PGDATA is set to the data storage path of PostgreSQL: **/opt/pgsql_data**.
 
-	# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
+    # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
-	# sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+    # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
 
 ![image](./media/virtual-machines-linux-postgresql-install/no2.png)
 
-実行可能なようにファイルを変更します。
+Change the file to make it executable:
 
-	# chmod +x /etc/init.d/postgresql
+    # chmod +x /etc/init.d/postgresql
 
-PostgreSQL を開始します。
+Start PostgreSQL:
 
-	# /etc/init.d/postgresql start
+    # /etc/init.d/postgresql start
 
-PostgreSQL のエンドポイントがオンかどうかを確認します。
+Check if the endpoint of PostgreSQL is on:
 
-	# netstat -tunlp|grep 1999
+    # netstat -tunlp|grep 1999
 
-次の出力が表示されます。
+You should see the following output:
 
 ![image](./media/virtual-machines-linux-postgresql-install/no3.png)
 
-## Postgres データベースへの接続
+## <a name="connect-to-the-postgres-database"></a>Connect to the Postgres database
 
-postgres ユーザーに再び切り替えます。
+Switch to the postgres user once again:
 
-	# su - postgres
+    # su - postgres
 
-Postgres データベースを作成します。
+Create a Postgres database:
 
-	$ createdb events
+    $ createdb events
 
-先に作成したイベント データベースに接続します。
+Connect to the events database that you just created:
 
-	$ psql -d events
+    $ psql -d events
 
-## Postgres テーブルの作成および削除
+## <a name="create-and-delete-a-postgres-table"></a>Create and delete a Postgres table
 
-データベースに接続しているため、そこにテーブルを作成できます。
+Now that you have connected to the database, you can create tables in it.
 
-たとえば、サンプルの Postgres テーブルを新しく作成するには、次のコマンドを実行します。
+For example, create a new example Postgres table by using the following command:
 
-	CREATE TABLE potluck (name VARCHAR(20),	food VARCHAR(30),	confirmed CHAR(1), signup_date DATE);
+    CREATE TABLE potluck (name VARCHAR(20), food VARCHAR(30),   confirmed CHAR(1), signup_date DATE);
 
-次の列名と制限で 4 列のテーブルを設定しました。
+You have now set up a four-column table with the following column names and restrictions:
 
-1. “name” 列は、VARCHAR コマンドによって、20 文字以下に制限されています。
-2. "food" 列は各自が持ってくる食品アイテムを示します。VARCHAR によってこのテキストは 30 文字以下に制限されます。
-3. “confirmed” 列は、ユーザーが料理に対する RSVP を持っているかどうかを記録します。許容される値は、"Y" と "N" です。
-4. “date” 列は、イベントにサインアップした日付を示します。Postgres では、日付を yyyy-mm-dd と記述する必要があります。
+1. The “name” column has been limited by the VARCHAR command to be under 20 characters long.
+2. The “food” column indicates the food item that each person will bring. VARCHAR limits this text to be under 30 characters.
+3. The “confirmed” column records whether the person has RSVP’d to the potluck. The acceptable values are "Y" and "N".
+4. The “date” column shows when they signed up for the event. Postgres requires that dates be written as yyyy-mm-dd.
 
-テーブルが正常に作成された場合、次が表示されます。
+You should see the following if your table has been successfully created:
 
 ![image](./media/virtual-machines-linux-postgresql-install/no4.png)
 
-次のコマンドを使用して、テーブルの構造をチェックすることもできます。
+You can also check the table structure by using the following command:
 
 ![image](./media/virtual-machines-linux-postgresql-install/no5.png)
 
-### テーブルにデータを追加する
+### <a name="add-data-to-a-table"></a>Add data to a table
 
-最初に、行に情報を挿入します。
+First, insert information into a row:
 
-	INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
+    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 
-次のように出力されます。
+You should see this output:
 
 ![image](./media/virtual-machines-linux-postgresql-install/no6.png)
 
-テーブルにさらに人を追加することもできます。オプションをいくつか次に示します。独自に作成することもできます。
+You can add a couple more people to the table as well. Here are some options, or you can create your own:
 
-	INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Sandy', 'Key Lime Tarts', 'N', '2012-04-14');
+    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Sandy', 'Key Lime Tarts', 'N', '2012-04-14');
 
-	INSERT INTO potluck (name, food, confirmed, signup_date) VALUES ('Tom', 'BBQ','Y', '2012-04-18');
+    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES ('Tom', 'BBQ','Y', '2012-04-18');
 
-	INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Tina', 'Salad', 'Y', '2012-04-18');
+    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Tina', 'Salad', 'Y', '2012-04-18');
 
-### テーブルの表示
+### <a name="show-tables"></a>Show tables
 
-テーブルを表示するには、次のコマンドを使用します。
+Use the following command to show a table:
 
-	select * from potluck;
+    select * from potluck;
 
-出力は次のようになります。
+The output is:
 
 ![image](./media/virtual-machines-linux-postgresql-install/no7.png)
 
-### テーブルのデータの削除
+### <a name="delete-data-in-a-table"></a>Delete data in a table
 
-テーブル内のデータを削除するには、次のコマンドを使用します。
+Use the following command to delete data in a table:
 
-	delete from potluck where name=’John’;
+    delete from potluck where name=’John’;
 
-これにより、"John" 列内のすべての情報が削除されます。出力は次のようになります。
+This deletes all the information in the "John" row. The output is:
 
-![イメージ](./media/virtual-machines-linux-postgresql-install/no8.png)
+![image](./media/virtual-machines-linux-postgresql-install/no8.png)
 
-### テーブルのデータの更新
+### <a name="update-data-in-a-table"></a>Update data in a table
 
-テーブル内のデータを更新するには、次のコマンドを使用します。この例では、Sandy が参加を確定したため、RSVP を "N" から "Y" に変更します。
+Use the following command to update data in a table. For this one, Sandy has confirmed that she is attending, so we will change her RSVP from "N" to "Y":
 
- 	UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
+    UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 
 
-##PostgreSQL の詳細情報
-PostgreSQL を Azure Linux VM にインストールする作業が完了したため、Azure でそれを使用できるようになりました。PostgreSQL についてさらに学習するには、[PostgreSQL の Web サイト](http://www.postgresql.org/)にアクセスしてください。
+##<a name="get-more-information-about-postgresql"></a>Get more information about PostgreSQL
+Now that you have completed the installation of PostgreSQL in an Azure Linux VM, you can enjoy using it in Azure. To learn more about PostgreSQL, visit the [PostgreSQL website](http://www.postgresql.org/).
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

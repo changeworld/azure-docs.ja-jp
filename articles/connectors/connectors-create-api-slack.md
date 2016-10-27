@@ -1,6 +1,6 @@
 <properties
-pageTitle="ロジック アプリで Slack コネクタを使用する | Microsoft Azure"
-description="Microsoft Azure App Service Logic Apps で Slack コネクタを使用する方法の概要について説明します"
+pageTitle=" Use the Slack Connector in your Logic apps| Microsoft Azure"
+description="Get started using the Slack Connector in your Microsoft Azure App Service Logic apps"
 services=""    
 documentationCenter=""     
 authors="msftman"    
@@ -17,147 +17,153 @@ ms.workload="na"
 ms.date="05/18/2016"
 ms.author="deonhe"/>
 
-# Slack コネクタの使用
 
-Slack はチーム コミュニケーション ツールです。チームのすべてのコミュニケーションが 1 個所にまとめられ、どこにいてもすぐに検索、使用できるようになります。
+# <a name="get-started-with-the-slack-connector"></a>Get started with the Slack connector
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+Slack is a team communication tool, that brings together all of your team communications in one place, instantly searchable and available wherever you go.
 
-Slack コネクタでは、次の操作を実行できます。
+>[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version.
 
-* ロジック アプリを構築できます
+With the Slack connector, you can:
 
-ロジック アプリに操作を追加する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
+* Use it to build logic apps
 
-## トリガーとアクション
+To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-Slack コネクタは、アクションとして使用できます。トリガーはありません。すべてのコネクタは、JSON および XML 形式のデータに対応します。
+## <a name="let's-talk-about-triggers-and-actions"></a>Let's talk about triggers and actions
 
- Slack コネクタでは、次のアクションやトリガーを使用できます。
+The Slack connector can be used as an action; there are no triggers. All connectors support data in JSON and XML formats. 
 
-### Slack のアクション
-実行できるアクションは以下のとおりです。
+ The Slack connector has the following action(s) and/or trigger(s) available:
 
-|アクション|説明|
+### <a name="slack-actions"></a>Slack actions
+You can take these action(s):
+
+|Action|Description|
 |--- | ---|
-|PostMessage|指定したチャネルにメッセージを投稿します。|
-## Slack への接続を作成する
-Slack コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
+|PostMessage|Post a Message to a specified channel.|
+## <a name="create-a-connection-to-slack"></a>Create a connection to Slack
+To use the Slack connector, you first create a **connection** then provide the details for these properties: 
 
-|プロパティ| 必須|説明|
+|Property| Required|Description|
 | ---|---|---|
-|トークン|あり|Slack の資格情報を指定します|
+|Token|Yes|Provide Slack Credentials|
 
-次の手順に従って、Slack にサインインし、ロジック アプリの Slack **接続**の構成を完了します。
+Follow these steps to sign into Slack and complete the configuration of the Slack **connection** in your logic app:
 
-1. **[繰り返し]** を選択します。
-2. **[頻度]** を選択し、**[間隔]** を入力します。
-3. **[アクションの追加]** を選択します。![Slack の構成][1]  
-4. 検索ボックスに「Slack」と入力し、名前に Slack が含まれたすべてのエントリが返されるまで待ちます。
-5. **[Slack - メッセージの投稿]** を選択します。
-6. **[Slack にサインイン]** をクリックします。![Slack の構成][2]
-7. アプリケーションを承認するために、Slack 資格情報を入力してサインインします。![Slack の構成][3]  
-8. 組織のログイン ページにリダイレクトされます。Slack がロジック アプリと対話することを**承認**します。![Slack の構成][5] 
-9. 承認が完了すると、ロジック アプリにリダイレクトされます。**[Slack - すべてのメッセージを取得]** セクションを構成して、ロジック アプリを完成させます。必要な他のトリガーやアクションを追加します。![Slack の構成][6]
-10. メニュー バー上の **[保存]** を選択して、作業内容を保存します。
-
-
->[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
-
-## Slack REST API リファレンス
-#### このドキュメントの対象バージョン: 1.0
-
-
-### 指定したチャネルにメッセージを投稿します。
-**```POST: /chat.postMessage```**
+1. Select **Recurrence**
+2. Select a **Frequency** and enter an **Interval**
+3. Select **Add an action**  
+![Configure Slack][1]  
+4. Enter Slack in the search box and wait for the search to return all entries with Slack in the name
+5. Select **Slack - Post message**
+6. Select **Sign in to Slack**:  
+![Configure Slack][2]
+7. Provide your Slack credentials to sign in to authorize the  application    
+![Configure Slack][3]  
+8. You'll be redirected to your organization's Log in page. **Authorize** Slack to interact with your logic app:      
+![Configure Slack][5] 
+9. After the authorization completes you'll be redirected to your logic app to complete it by configuring the **Slack - Get all messages** section. Add other triggers and actions that you need.  
+![Configure Slack][6]
+10. Save your work by selecting **Save** on the menu bar above.
 
 
+>[AZURE.TIP] You can use this connection in other logic apps.
 
-| 名前| データ型|必須|場所|既定値|説明|
+## <a name="slack-rest-api-reference"></a>Slack REST API reference
+#### <a name="this-documentation-is-for-version:-1.0"></a>This documentation is for version: 1.0
+
+
+### <a name="post-a-message-to-a-specified-channel."></a>Post a Message to a specified channel.
+**```POST: /chat.postMessage```** 
+
+
+
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|channel|string|○|query|なし|メッセージを送信するチャネル、プライベート グループ、IM チャネル。名前 (例: #general) またはエンコードされた ID を指定できます。|
-|text|string|○|query|なし|送信するメッセージのテキスト。書式設定オプションについては、https://api.slack.com/docs/formatting.| をご覧ください。
-|username|string|×|query|なし|ボットの名前|
-|as\_user|ブール値|×|query|なし|ボットとしてではなく、認証されたユーザーとして、メッセージを投稿するには、true を渡します|
-|parse|string|×|query|なし|メッセージの処理方法を変更します。詳細については、https://api.slack.com/docs/formatting.| をご覧ください。
-|link\_names|integer|×|query|なし|チャネル名とユーザー名を検索してリンクします。|
-|unfurl\_links|ブール値|×|query|なし|主にテキストベースのコンテンツの展開を有効にするには、true を渡します。|
-|unfurl\_media|ブール値|×|query|なし|メディア コンテンツの展開を無効にするには、false を渡します。|
-|icon\_url|string|×|query|なし|このメッセージのアイコンとして使用する画像の URL|
-|icon\_emoji|string|×|query|なし|このメッセージのアイコンとして使用する絵文字|
+|channel|string|yes|query|none|Channel, private group, or IM channel to send message to. Can be a name(ex: #general) or an encoded ID.|
+|text|string|yes|query|none|Text of the message to send. For formatting options, see https://api.slack.com/docs/formatting.|
+|username|string|no|query|none|Name of the bot|
+|as_user|boolean|no|query|none|Pass true to post the message as the authenticated user, instead of as a bot|
+|parse|string|no|query|none|Change how messages are treated. For details, see https://api.slack.com/docs/formatting.|
+|link_names|integer|no|query|none|Find and link channel names and usernames.|
+|unfurl_links|boolean|no|query|none|Pass true to enable unfurling of primarily text-based content.|
+|unfurl_media|boolean|no|query|none|Pass false to disable unfurling of media content.|
+|icon_url|string|no|query|none|URL to an image to use as an icon for this message|
+|icon_emoji|string|no|query|none|Emoji to use as an icon for this message|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|400|正しくない要求|
-|408|要求タイムアウト|
-|429|要求が多すぎます|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|503|Slack サービス利用不可|
-|504|ゲートウェイ タイムアウト|
-|default|操作に失敗しました。|
+|400|Bad Request|
+|408|Request Timeout|
+|429|Too Many Requests|
+|500|Internal Server Error. Unknown error occured|
+|503|Slack Service Unavailable|
+|504|Gateway Timeout|
+|default|Operation Failed.|
 ------
 
 
 
-## オブジェクト定義: 
+## <a name="object-definition(s):"></a>Object definition(s): 
 
- **Message**: Slack メッセージ
+ **Message**:Yammer Message
 
-Message の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for Message:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |id|integer|
-|content\_excerpt|string|
-|sender\_id|integer|
-|replied\_to\_id|integer|
-|created\_at|string|
-|network\_id|integer|
-|message\_type|string|
-|sender\_type|string|
+|content_excerpt|string|
+|sender_id|integer|
+|replied_to_id|integer|
+|created_at|string|
+|network_id|integer|
+|message_type|string|
+|sender_type|string|
 |url|string|
-|web\_url|string|
-|group\_id|integer|
-|body|未定義|
-|thread\_id|integer|
-|direct\_message|ブール値|
-|client\_type|string|
-|client\_url|string|
-|言語|string|
-|notified\_user\_ids|array|
+|web_url|string|
+|group_id|integer|
+|body|not defined|
+|thread_id|integer|
+|direct_message|boolean|
+|client_type|string|
+|client_url|string|
+|language|string|
+|notified_user_ids|array|
 |privacy|string|
-|liked\_by|未定義|
-|system\_message|ブール値|
+|liked_by|not defined|
+|system_message|boolean|
 
 
 
- **PostOperationRequest**: Slack に投稿する Slack コネクタの post 要求を表します。
+ **PostOperationRequest**:Represents a post request for Yammer Connector to post to yammer
 
-PostOperationRequest の必須プロパティ:
+Required properties for PostOperationRequest:
 
 body
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| 名前 | データ型 |
+| Name | Data Type |
 |---|---|
 |body|string|
-|group\_id|integer|
-|replied\_to\_id|integer|
-|direct\_to\_id|integer|
-|broadcast|ブール値|
+|group_id|integer|
+|replied_to_id|integer|
+|direct_to_id|integer|
+|broadcast|boolean|
 |topic1|string|
 |topic2|string|
 |topic3|string|
@@ -181,35 +187,35 @@ body
 
 
 
- **MessageList**: メッセージの一覧
+ **MessageList**:List of messages
 
-MessageList の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for MessageList:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |messages|array|
 
 
 
- **MessageBody**: メッセージ本文
+ **MessageBody**:Message Body
 
-MessageBody の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for MessageBody:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |parsed|string|
 |plain|string|
@@ -217,203 +223,203 @@ MessageBody の必須プロパティ:
 
 
 
- **LikedBy**: いいねを付けたユーザー
+ **LikedBy**:Liked By
 
-LikedBy の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for LikedBy:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |count|integer|
 |names|array|
 
 
 
- **YammmerEntity**: いいねを付けたユーザー
+ **YammmerEntity**:Liked By
 
-YammmerEntity の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for YammmerEntity:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |type|string|
 |id|integer|
-|full\_name|string|
+|full_name|string|
 
 
-## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
-## オブジェクト定義: 
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="object-definition(s):"></a>Object definition(s): 
 
- **WebResultModel**: Bing の Web 検索結果
+ **WebResultModel**:Bing web search results
 
-WebResultModel の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for WebResultModel:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|タイトル|string|
-|説明|string|
+|Title|string|
+|Description|string|
 |DisplayUrl|string|
-|ID|string|
+|Id|string|
 |FullUrl|string|
 
 
 
- **VideoResultModel**: Bing の動画検索結果
+ **VideoResultModel**:Bing video search results
 
-VideoResultModel の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for VideoResultModel:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|タイトル|string|
+|Title|string|
 |DisplayUrl|string|
-|ID|string|
+|Id|string|
 |MediaUrl|string|
-|ランタイム|integer|
-|サムネイル|未定義|
+|Runtime|integer|
+|Thumbnail|not defined|
 
 
 
- **ThumbnailModel**: マルチメディア要素のサムネイルのプロパティ
+ **ThumbnailModel**:Thumbnail properties of the multimedia element
 
-ThumbnailModel の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for ThumbnailModel:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |MediaUrl|string|
 |ContentType|string|
-|幅|integer|
-|高さ|integer|
+|Width|integer|
+|Height|integer|
 |FileSize|integer|
 
 
 
- **ImageResultModel**: Bing の画像検索結果
+ **ImageResultModel**:Bing image search results
 
-ImageResultModel の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for ImageResultModel:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|タイトル|string|
+|Title|string|
 |DisplayUrl|string|
-|ID|string|
+|Id|string|
 |MediaUrl|string|
 |SourceUrl|string|
-|サムネイル|未定義|
+|Thumbnail|not defined|
 
 
 
- **NewsResultModel**: Bing のニュース検索結果
+ **NewsResultModel**:Bing news search results
 
-NewsResultModel の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for NewsResultModel:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|タイトル|string|
-|説明|string|
+|Title|string|
+|Description|string|
 |DisplayUrl|string|
-|ID|string|
-|から|string|
+|Id|string|
+|Source|string|
 |Date|string|
 
 
 
- **SpellResultModel**: Bing の検索候補の結果
+ **SpellResultModel**:Bing spelling suggestions results
 
-SpellResultModel の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for SpellResultModel:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|ID|string|
-|値|string|
+|Id|string|
+|Value|string|
 
 
 
- **RelatedSearchResultModel**: Bing の関連項目の検索結果
+ **RelatedSearchResultModel**:Bing related search results
 
-RelatedSearchResultModel の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for RelatedSearchResultModel:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|タイトル|string|
-|ID|string|
+|Title|string|
+|Id|string|
 |BingUrl|string|
 
 
 
- **CompositeSearchResultModel**: Bing の複合検索結果
+ **CompositeSearchResultModel**:Bing composite search results
 
-CompositeSearchResultModel の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for CompositeSearchResultModel:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |WebResultsTotal|integer|
 |ImageResultsTotal|integer|
@@ -428,57 +434,61 @@ CompositeSearchResultModel の必須プロパティ:
 |RelatedSearchResults|array|
 
 
-## オブジェクト定義: 
+## <a name="object-definition(s):"></a>Object definition(s): 
 
- **PostOperationResponse**: Slack への投稿に対する Slack コネクタの post 操作の応答を表します。
+ **PostOperationResponse**:Represents response of post operation of Slack Connector for posting to Slack
 
-PostOperationResponse の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for PostOperationResponse:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
-|OK|ブール値|
+|ok|boolean|
 |channel|string|
 |ts|string|
-|message|未定義|
+|message|not defined|
 |error|string|
 
 
 
- **MessageItem**: チャネル メッセージ。
+ **MessageItem**:A channel message.
 
-MessageItem の必須のプロパティ:
-
-
-必須のプロパティはありません。
+Required properties for MessageItem:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |text|string|
 |id|string|
-|ユーザー|string|
+|user|string|
 |created|integer|
-|is\_user-deleted|ブール値|
+|is_user-deleted|boolean|
 
 
-## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
 [1]: ./media/connectors-create-api-slack/connectionconfig1.png
-[2]: ./media/connectors-create-api-slack/connectionconfig2.png
+[2]: ./media/connectors-create-api-slack/connectionconfig2.png 
 [3]: ./media/connectors-create-api-slack/connectionconfig3.png
 [4]: ./media/connectors-create-api-slack/connectionconfig4.png
 [5]: ./media/connectors-create-api-slack/connectionconfig5.png
 [6]: ./media/connectors-create-api-slack/connectionconfig6.png
 
-<!---HONumber=AcomDC_0525_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

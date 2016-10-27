@@ -1,6 +1,6 @@
 <properties
-pageTitle="ロジック アプリで SharePoint Online コネクタを使用する | Microsoft Azure"
-description="ロジック アプリで Azure App Service SharePoint Online コネクタを使用する方法の概要について説明します。"
+pageTitle="Use the SharePoint Online Connector in your Logic Apps | Microsoft Azure"
+description="Get started using the Azure App Service SharePoint Online Connector  in your Logic apps."
 services=""    
 documentationCenter=""     
 authors="msftman"    
@@ -17,483 +17,488 @@ ms.workload="na"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
-# SharePoint Online コネクタの使用 
 
-SharePoint コネクタを使用すると、SharePoint リストを操作できます。
+# <a name="get-started-with-the-sharepoint-online-connector"></a>Get started with the SharePoint Online Connector 
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+The SharePoint Connector provides an way to work with Lists on SharePoint.
+
+>[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version.
 
 
-ロジック アプリに操作を追加する方法については、[ロジック アプリの作成に関するページ](../app-service-logic/app-service-logic-create-a-logic-app.md)を参照してください。
+To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-## トリガーとアクション
+## <a name="let's-talk-about-triggers-and-actions"></a>Let's talk about triggers and actions
 
-SharePoint コネクタは、アクションとして使用できます。SharePoint コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
+The SharePoint Connector  can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
 
-SharePoint コネクタでは、次のアクションやトリガーを使用できます。
+The SharePoint Connector  has the following action(s) and/or trigger(s) available:
 
-### SharePoint のアクション
-実行できるアクションは以下のとおりです。
+### <a name="sharepoint-actions"></a>SharePoint actions
+You can take these action(s):
 
-|アクション|Description|
+|Action|Description|
 |--- | ---|
-|GetFileMetadata|ドキュメント ライブラリのファイル メタデータを取得するために使用されます|
-|UpdateFile|ドキュメント ライブラリのファイルを更新するために使用されます|
-|DeleteFile|ドキュメント ライブラリのファイルを削除するために使用されます|
-|GetFileMetadataByPath|ドキュメント ライブラリのファイル メタデータを取得するために使用されます|
-|GetFileContentByPath|ドキュメント ライブラリのファイルを取得するために使用されます|
-|GetFileContent|ドキュメント ライブラリのファイルを取得するために使用されます|
-|CreateFile|ドキュメント ライブラリにファイルをアップロードするために使用されます|
-|CopyFile|ドキュメント ライブラリのファイルをコピーするために使用されます|
-|ExtractFolderV2|ドキュメント ライブラリのフォルダーを抽出するために使用されます|
-|PostItem|SharePoint リストに新しい項目を作成します|
-|GetItem|SharePoint リストから 1 つの項目を取得します|
-|DeleteItem|SharePoint リストから項目を削除します|
-|PatchItem|SharePoint リストの 1 つの項目を更新します|
-### SharePoint のトリガー
-次のイベントをリッスンできます。
+|GetFileMetadata|Used for getting a file metadata on Document Library|
+|UpdateFile|Used for updating a file on Document Library|
+|DeleteFile|Used for deleting a file on Document Library|
+|GetFileMetadataByPath|Used for getting a file metadata on Document Library|
+|GetFileContentByPath|Used for getting a file on Document Library|
+|GetFileContent|Used for getting a file on Document Library|
+|CreateFile|Used for uploading a file on Document Library|
+|CopyFile|Used for copying a file on Document Library|
+|ExtractFolderV2|Used for extracting a folder on Document Library|
+|PostItem|Creates a new item in a SharePoint list|
+|GetItem|Retrieves a single item from a SharePoint list|
+|DeleteItem|Deletes an item from a SharePoint list|
+|PatchItem|Updates an item in a SharePoint list|
+### <a name="sharepoint-triggers"></a>SharePoint triggers
+You can listen for these event(s):
 
-|トリガー | Description|
+|Trigger | Description|
 |--- | ---|
-|OnNewFile|SharePoint フォルダーに新しいファイルが作成されたときにフローをトリガーします|
-|OnUpdatedFile|SharePoint フォルダーのファイルが変更されたときにフローをトリガーします|
-|GetOnNewItems|SharePoint リストに新しい項目が作成されたとき|
-|GetOnUpdatedItems|SharePoint リストの既存の項目が変更されたとき|
+|OnNewFile|Triggers a flow when a new file is created in a SharePoint folder|
+|OnUpdatedFile|Triggers a flow when a file is modified in a SharePoint folder|
+|GetOnNewItems|When a new item is created in a SharePoint list|
+|GetOnUpdatedItems|When an existing item is modified in a SharePoint list|
 
 
-## SharePoint への接続を作成する
-SharePoint コネクタを使用するには、まず**接続**を作成してから、以下のプロパティの詳細を指定します。
+## <a name="create-a-connection-to-sharepoint"></a>Create a connection to SharePoint
+To use the SharePoint Connector , you first create a **connection** then provide the details for these properties: 
 
-|プロパティ| 必須|Description|
+|Property| Required|Description|
 | ---|---|---|
-|トークン|はい|SharePoint の資格情報を指定します|
+|Token|Yes|Provide SharePoint Credentials|
 
-**SharePoint Online** に接続するには、SharePoint Online で ID (ユーザー名とパスワード、スマート カードの資格情報など) を入力する必要があります。認証されたら、ロジック アプリで SharePoint Online コネクタを使用できるようになります。
+In order to connect to **SharePoint Online**, you need to provide your identity (username and password, smart card credentials, etc.) to SharePoint Online. Once you've been authenticated, you can proceed to use the SharePoint Online Connector  in your logic app. 
 
-ロジック アプリのデザイナーで、次の手順に従って SharePoint にサインインし、ロジック アプリで使用する**接続**を作成します。
+While on the designer of your logic app, follow these steps to sign into SharePoint to create the connection **connection** for use in your logic app:
 
-1. 検索ボックスに「SharePoint」と入力し、名前に SharePoint が含まれるすべてのエントリが返されるまで待ちます。![SharePoint の構成][1]
-2. **[SharePoint Online - When a file is created (SharePoint Online - ファイルの作成時)]** を選択します。
-3. **[Sign in to SharePoint Online (SharePoint Online にサインイン)]** をクリックします。![SharePoint の構成][2]
-4. SharePoint で認証するために、SharePoint 資格情報を入力してサインインします。![SharePoint の構成][3]
-5. 認証が完了すると、ロジック アプリにリダイレクトされます。SharePoint の **[When a file is created (ファイルの作成時)]** ダイアログを構成して、ロジック アプリを完成させます。![SharePoint の構成][4]
-6. ロジック アプリを完成させるために必要な他のトリガーやアクションを追加できます。
-7. 上部のメニュー バーの **[保存]** をクリックして、作業内容を保存します。
-
-
-## SharePoint REST API リファレンス
-#### このドキュメントの対象バージョン: 1.0
-
-
-### ドキュメント ライブラリのファイル メタデータを取得するために使用されます
-**```GET: /datasets/{dataset}/files/{id}```**
+1. Enter SharePoint in the search box and wait for the search to return all entries with SharePoint in the name:   
+![Configure SharePoint][1]  
+2. Select **SharePoint Online - When a file is created**   
+3. Select **Sign in to SharePoint Online**:   
+![Configure SharePoint][2]    
+4. Provide your SharePoint credentials to sign in to authenticate with SharePoint   
+![Configure SharePoint][3]     
+5. After the authentication completes you'll be redirected to your logic app to complete it by configuring SharePoint's **When a file is created** dialog.          
+![Configure SharePoint][4]  
+6. You can then add other triggers and actions that you need to complete your logic app.   
+7. Save your work by selecting **Save** on the menu bar above.  
 
 
+## <a name="sharepoint-rest-api-reference"></a>SharePoint REST API reference
+#### <a name="this-documentation-is-for-version:-1.0"></a>This documentation is for version: 1.0
 
-| 名前| データ型|必須|場所|既定値|Description|
+
+### <a name="used-for-getting-a-file-metadata-on-document-library"></a>Used for getting a file metadata on Document Library
+**```GET: /datasets/{dataset}/files/{id}```** 
+
+
+
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL。例: http://contoso.sharepoint.com/sites/mysite|
-|id|string|○|path|なし|ファイルの一意識別子|
+|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
+|id|string|yes|path|none|Unique identifier of the file|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### ドキュメント ライブラリのファイルを更新するために使用されます
-**```PUT: /datasets/{dataset}/files/{id}```**
+### <a name="used-for-updating-a-file-on-document-library"></a>Used for updating a file on Document Library
+**```PUT: /datasets/{dataset}/files/{id}```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL。例: http://contoso.sharepoint.com/sites/mysite|
-|id|string|○|path|なし|ファイルの一意識別子|
-|body| |○|body|なし|ファイルの内容|
+|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
+|id|string|yes|path|none|Unique identifier of the file|
+|body| |yes|body|none|The Content of the file|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### ドキュメント ライブラリのファイルを削除するために使用されます
-**```DELETE: /datasets/{dataset}/files/{id}```**
+### <a name="used-for-deleting-a-file-on-document-library"></a>Used for deleting a file on Document Library
+**```DELETE: /datasets/{dataset}/files/{id}```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL。例: http://contoso.sharepoint.com/sites/mysite|
-|id|string|○|path|なし|ファイルの一意識別子|
+|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
+|id|string|yes|path|none|Unique identifier of the file|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### ドキュメント ライブラリのファイル メタデータを取得するために使用されます
-**```GET: /datasets/{dataset}/GetFileByPath```**
+### <a name="used-for-getting-a-file-metadata-on-document-library"></a>Used for getting a file metadata on Document Library
+**```GET: /datasets/{dataset}/GetFileByPath```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL。例: http://contoso.sharepoint.com/sites/mysite|
-|path|string|○|query|なし|ファイルのパス|
+|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
+|path|string|yes|query|none|Path of the file|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### ドキュメント ライブラリのファイルを取得するために使用されます
-**```GET: /datasets/{dataset}/GetFileContentByPath```**
+### <a name="used-for-getting-a-file-on-document-library"></a>Used for getting a file on Document Library
+**```GET: /datasets/{dataset}/GetFileContentByPath```** 
 
 
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL。例: http://contoso.sharepoint.com/sites/mysite|
-|path|string|○|query|なし|ファイルのパス|
+|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
+|path|string|yes|query|none|Path of the file|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### ドキュメント ライブラリのファイルを取得するために使用されます
-**```GET: /datasets/{dataset}/files/{id}/content```**
+### <a name="used-for-getting-a-file-on-document-library"></a>Used for getting a file on Document Library
+**```GET: /datasets/{dataset}/files/{id}/content```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL。例: http://contoso.sharepoint.com/sites/mysite|
-|id|string|○|path|なし|ファイルの一意識別子|
+|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
+|id|string|yes|path|none|Unique identifier of the file|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### ドキュメント ライブラリにファイルをアップロードするために使用されます
-**```POST: /datasets/{dataset}/files```**
+### <a name="used-for-uploading-a-file-on-document-library"></a>Used for uploading a file on Document Library
+**```POST: /datasets/{dataset}/files```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL。例: http://contoso.sharepoint.com/sites/mysite|
-|folderPath|string|○|query|なし|フォルダーのパス|
-|name|string|○|query|なし|ファイルの名前|
-|body| |○|body|なし|ファイルの内容|
+|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
+|folderPath|string|yes|query|none|The path to the folder|
+|name|string|yes|query|none|Name of the file|
+|body| |yes|body|none|The Content of the file|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### ドキュメント ライブラリのファイルをコピーするために使用されます
-**```POST: /datasets/{dataset}/copyFile```**
+### <a name="used-for-copying-a-file-on-document-library"></a>Used for copying a file on Document Library
+**```POST: /datasets/{dataset}/copyFile```** 
 
 
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL。例: http://contoso.sharepoint.com/sites/mysite|
-|source|string|○|query|なし|ソース ファイルのパス|
-|destination|string|○|query|なし|宛先ファイルのパス|
-|overwrite|boolean|×|query|false|既存のファイルを上書きするかどうか|
+|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
+|source|string|yes|query|none|Path to the source file|
+|destination|string|yes|query|none|Path to the destination file|
+|overwrite|boolean|no|query|false|Whether or not to overwrite an existing file|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### SharePoint フォルダーに新しいファイルが作成されたときにフローをトリガーします
-**```GET: /datasets/{dataset}/triggers/onnewfile```**
+### <a name="triggers-a-flow-when-a-new-file-is-created-in-a-sharepoint-folder"></a>Triggers a flow when a new file is created in a SharePoint folder
+**```GET: /datasets/{dataset}/triggers/onnewfile```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL|
-|folderId|string|○|query|なし|SharePoint のフォルダーの一意識別子|
+|dataset|string|yes|path|none|SharePoint site url|
+|folderId|string|yes|query|none|Unique identifier of the folder in SharePoint|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### SharePoint フォルダーのファイルが変更されたときにフローをトリガーします
-**```GET: /datasets/{dataset}/triggers/onupdatedfile```**
+### <a name="triggers-a-flow-when-a-file-is-modified-in-a-sharepoint-folder"></a>Triggers a flow when a file is modified in a SharePoint folder
+**```GET: /datasets/{dataset}/triggers/onupdatedfile```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL|
-|folderId|string|○|query|なし|SharePoint のフォルダーの一意識別子|
+|dataset|string|yes|path|none|SharePoint site url|
+|folderId|string|yes|query|none|Unique identifier of the folder in SharePoint|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### ドキュメント ライブラリのフォルダーを抽出するために使用されます
-**```POST: /datasets/{dataset}/extractFolderV2```**
+### <a name="used-for-extracting-a-folder-on-document-library"></a>Used for extracting a folder on Document Library
+**```POST: /datasets/{dataset}/extractFolderV2```** 
 
 
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL。例: http://contoso.sharepoint.com/sites/mysite|
-|source|string|○|query|なし|ソース ファイルのパス|
-|destination|string|○|query|なし|宛先フォルダーのパス|
-|overwrite|boolean|×|query|false|既存のファイルを上書きするかどうか|
+|dataset|string|yes|path|none|SharePoint Site URL. E.g. http://contoso.sharepoint.com/sites/mysite|
+|source|string|yes|query|none|Path to the source file|
+|destination|string|yes|query|none|Path to the destination folder|
+|overwrite|boolean|no|query|false|Whether or not to overwrite an existing file|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### SharePoint リストに新しい項目が作成されたとき
-**```GET: /datasets/{dataset}/tables/{table}/onnewitems```**
+### <a name="when-a-new-item-is-created-in-a-sharepoint-list"></a>When a new item is created in a SharePoint list
+**```GET: /datasets/{dataset}/tables/{table}/onnewitems```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|テーブル|string|○|path|なし|SharePoint リストの名前|
-|$skip|integer|×|query|なし|スキップするエントリの数 (既定値 = 0)|
-|$top|integer|×|query|なし|取得するエントリの最大数 (既定値 = 256)|
-|$filter|string|×|query|なし|エントリ数を制限する ODATA filter クエリ|
-|$orderby|string|×|query|なし|エントリの順序を指定する ODATA orderBy クエリ|
+|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|yes|path|none|SharePoint list name|
+|$skip|integer|no|query|none|Number of entries to skip (default = 0)|
+|$top|integer|no|query|none|Maximum number of entries to retrieve (default = 256)|
+|$filter|string|no|query|none|An ODATA filter query to restrict the number of entries|
+|$orderby|string|no|query|none|An ODATA orderBy query for specifying the order of entries|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### SharePoint リストの既存の項目が変更されたとき
-**```GET: /datasets/{dataset}/tables/{table}/onupdateditems```**
+### <a name="when-an-existing-item-is-modified-in-a-sharepoint-list"></a>When an existing item is modified in a SharePoint list
+**```GET: /datasets/{dataset}/tables/{table}/onupdateditems```** 
 
 
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|テーブル|string|○|path|なし|SharePoint リストの名前|
-|$skip|integer|×|query|なし|スキップするエントリの数 (既定値 = 0)|
-|$top|integer|×|query|なし|取得するエントリの最大数 (既定値 = 256)|
-|$filter|string|×|query|なし|エントリ数を制限する ODATA filter クエリ|
-|$orderby|string|×|query|なし|エントリの順序を指定する ODATA orderBy クエリ|
+|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|yes|path|none|SharePoint list name|
+|$skip|integer|no|query|none|Number of entries to skip (default = 0)|
+|$top|integer|no|query|none|Maximum number of entries to retrieve (default = 256)|
+|$filter|string|no|query|none|An ODATA filter query to restrict the number of entries|
+|$orderby|string|no|query|none|An ODATA orderBy query for specifying the order of entries|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### SharePoint リストに新しい項目を作成します
-**```POST: /datasets/{dataset}/tables/{table}/items```**
+### <a name="creates-a-new-item-in-a-sharepoint-list"></a>Creates a new item in a SharePoint list
+**```POST: /datasets/{dataset}/tables/{table}/items```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|テーブル|string|○|path|なし|SharePoint リストの名前|
-|item| |○|body|なし|作成する項目|
+|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|yes|path|none|SharePoint list name|
+|item| |yes|body|none|Item to create|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### SharePoint リストから 1 つの項目を取得します
-**```GET: /datasets/{dataset}/tables/{table}/items/{id}```**
+### <a name="retrieves-a-single-item-from-a-sharepoint-list"></a>Retrieves a single item from a SharePoint list
+**```GET: /datasets/{dataset}/tables/{table}/items/{id}```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|テーブル|string|○|path|なし|SharePoint リストの名前|
-|id|integer|○|path|なし|取得する項目の一意識別子|
+|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|yes|path|none|SharePoint list name|
+|id|integer|yes|path|none|Unique identifier of item to be retrieved|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### SharePoint リストから項目を削除します
-**```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```**
+### <a name="deletes-an-item-from-a-sharepoint-list"></a>Deletes an item from a SharePoint list
+**```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|テーブル|string|○|path|なし|SharePoint リストの名前|
-|id|integer|○|path|なし|削除する項目の一意識別子|
+|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|yes|path|none|SharePoint list name|
+|id|integer|yes|path|none|Unique identifier of item to be deleted|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-### SharePoint リストの 1 つの項目を更新します
-**```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```**
+### <a name="updates-an-item-in-a-sharepoint-list"></a>Updates an item in a SharePoint list
+**```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```** 
 
 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし|SharePoint サイトの URL (例: http://contoso.sharepoint.com/sites/mysite)|
-|テーブル|string|○|path|なし|SharePoint リストの名前|
-|id|integer|○|path|なし|更新する項目の一意識別子|
-|item| |○|body|なし|変更されたプロパティがある項目|
+|dataset|string|yes|path|none|SharePoint Site url (example: http://contoso.sharepoint.com/sites/mysite)|
+|table|string|yes|path|none|SharePoint list name|
+|id|integer|yes|path|none|Unique identifier of item to be updated|
+|item| |yes|body|none|Item with changed properties|
 
 
-### 次のような応答があります。
+### <a name="here-are-the-possible-responses:"></a>Here are the possible responses:
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 ------
 
 
 
-## オブジェクト定義: 
+## <a name="object-definition(s):"></a>Object definition(s): 
 
  **DataSetsMetadata**:
 
-DataSetsMetadata の必須プロパティ:
+Required properties for DataSetsMetadata:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| Name | データ型 |
+| Name | Data Type |
 |---|---|
-|tabular|未定義|
-|BLOB|未定義|
+|tabular|not defined|
+|blob|not defined|
 
 
 
  **TabularDataSetsMetadata**:
 
-TabularDataSetsMetadata の必須プロパティ:
+Required properties for TabularDataSetsMetadata:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| 名前 | データ型 |
+| Name | Data Type |
 |---|---|
 |source|string|
 |displayName|string|
@@ -505,16 +510,16 @@ TabularDataSetsMetadata の必須プロパティ:
 
  **BlobDataSetsMetadata**:
 
-BlobDataSetsMetadata の必須プロパティ:
+Required properties for BlobDataSetsMetadata:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| 名前 | データ型 |
+| Name | Data Type |
 |---|---|
 |source|string|
 |displayName|string|
@@ -524,23 +529,23 @@ BlobDataSetsMetadata の必須プロパティ:
 
  **BlobMetadata**:
 
-BlobMetadata の必須プロパティ:
+Required properties for BlobMetadata:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| 名前 | データ型 |
+| Name | Data Type |
 |---|---|
-|ID|string|
+|Id|string|
 |Name|string|
 |DisplayName|string|
-|パス|string|
+|Path|string|
 |LastModified|string|
-|サイズ|integer|
+|Size|integer|
 |MediaType|string|
 |IsFolder|boolean|
 |ETag|string|
@@ -550,87 +555,87 @@ BlobMetadata の必須プロパティ:
 
  **Object**:
 
-Object の必須プロパティ:
+Required properties for Object:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| 名前 | データ型 |
+| Name | Data Type |
 |---|---|
 
 
 
  **TableMetadata**:
 
-TableMetadata の必須プロパティ:
+Required properties for TableMetadata:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| 名前 | データ型 |
+| Name | Data Type |
 |---|---|
 |name|string|
 |title|string|
 |x-ms-permission|string|
-|schema|未定義|
+|schema|not defined|
 
 
 
  **DataSetsList**:
 
-DataSetsList の必須プロパティ:
+Required properties for DataSetsList:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| 名前 | データ型 |
+| Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
 
  **DataSet**:
 
-DataSet の必須プロパティ:
+Required properties for DataSet:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| Name | データ型 |
+| Name | Data Type |
 |---|---|
-|名前|string|
+|Name|string|
 |DisplayName|string|
 
 
 
- **テーブル**:
+ **Table**:
 
-Table の必須プロパティ:
-
-
-必須のプロパティはありません。
+Required properties for Table:
 
 
-**すべてのプロパティ**:
+None of the properties are required. 
 
 
-| 名前 | データ型 |
+**All properties**: 
+
+
+| Name | Data Type |
 |---|---|
 |Name|string|
 |DisplayName|string|
@@ -639,16 +644,16 @@ Table の必須プロパティ:
 
  **Item**:
 
-Item の必須プロパティ:
+Required properties for Item:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| 名前 | データ型 |
+| Name | Data Type |
 |---|---|
 |ItemInternalId|string|
 
@@ -656,44 +661,48 @@ Item の必須プロパティ:
 
  **ItemsList**:
 
-ItemsList の必須プロパティ:
+Required properties for ItemsList:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| 名前 | データ型 |
+| Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
 
  **TablesList**:
 
-TablesList の必須プロパティ:
+Required properties for TablesList:
 
 
-必須のプロパティはありません。
+None of the properties are required. 
 
 
-**すべてのプロパティ**:
+**All properties**: 
 
 
-| Name | データ型 |
+| Name | Data Type |
 |---|---|
-|値|array|
+|value|array|
 
 
-## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)  
 
-[1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png
-[2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png
+[1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png  
+[2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png 
 [3]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig3.png
 [4]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig4.png
 [5]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig5.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

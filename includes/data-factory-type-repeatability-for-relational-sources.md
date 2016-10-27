@@ -1,29 +1,32 @@
-## コピー中の再現性
+## <a name="repeatability-during-copy"></a>Repeatability during Copy
 
-データをリレーショナル ストアへコピーする場合、またはリレーショナル ストアからコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。
+When copying data from and to relational stores, you need to keep repeatability in mind to avoid unintended outcomes. 
 
-スライスは、再試行ポリシーで指定された回数、Azure Data Factory 内で自動的に再実行することができます。一時的なエラーを回避するため、再試行ポリシーを設定することをお勧めします。したがって、再現性は、データの移動中に注意すべき重要な側面です。
+A slice can be rerun automatically in Azure Data Factory as per the retry policy specified. We recommend that you set a retry policy to guard against transient failures. Hence repeatability is an important aspect to take care of during data movement. 
 
-**ソースとして:**
+**As a source:**
 
-> [AZURE.NOTE] 以下の例は Azure SQL 向けですが、四角形のデータセットをサポートする任意のデータ ストアに適用できます。データ ストアのソースの**種類**と**query** プロパティ (例: sqlReaderQuery の代わりに query) の調整が必要になる場合があります。
+> [AZURE.NOTE] The following samples are for Azure SQL but are applicable to any data store that supports rectangular datasets. You may have to adjust the **type** of source and the **query** property (for example: query instead of sqlReaderQuery) for the data store.   
 
-通常は、リレーショナル ストアからの読み取り時にそのスライスに対応するデータのみを読み込むことになります。これを行うには、Azure データ ファクトリで使用可能な、WindowStart と WindowEnd 変数を使用します。Azure データ ファクトリの変数と関数については、こちらの[スケジュールおよび実行](../articles/data-factory/data-factory-scheduling-and-execution.md)の記事をお読みください。例:
-	
-	  "source": {
-	    "type": "SqlSource",
-	    "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
-	  },
+Usually, when reading from relational stores, you would want to read only the data corresponding to that slice. A way to do so would be by using the WindowStart and WindowEnd variables available in Azure Data Factory. Read about the variables and functions in Azure Data Factory here in the [Scheduling and Execution](../articles/data-factory/data-factory-scheduling-and-execution.md) article. Example: 
+    
+      "source": {
+        "type": "SqlSource",
+        "sqlReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= \\'{0:yyyy-MM-dd HH:mm\\' AND timestampcolumn < \\'{1:yyyy-MM-dd HH:mm\\'', WindowStart, WindowEnd)"
+      },
 
-このクエリでは、スライス期間の範囲内にある "MyTable" からデータを読み取ります。このスライスを再実行すると、この動作は常に確認されます。
+This query reads data from ‘MyTable’ that falls in the slice duration range. Rerun of this slice would also always ensure this behavior. 
 
-その他の場合は、テーブル全体の読み取り (たとえば1 回の移動のみ) にし、次のように、sqlReaderQuery を定義することもできます。
+In other cases, you may wish to read the entire Table (suppose for one time move only) and may define the sqlReaderQuery as follows:
 
-	
-	"source": {
-	            "type": "SqlSource",
-	            "sqlReaderQuery": "select * from MyTable"
-	          },
-	
+    
+    "source": {
+                "type": "SqlSource",
+                "sqlReaderQuery": "select * from MyTable"
+              },
+    
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

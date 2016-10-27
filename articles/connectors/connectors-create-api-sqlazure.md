@@ -1,10 +1,10 @@
 <properties
-    pageTitle="ロジック アプリに Azure SQL Database コネクタを追加する | Microsoft Azure"
-    description="Azure SQL Database コネクタと REST API パラメーターの概要"
+    pageTitle="Add the Azure SQL Database connector in your Logic Apps | Microsoft Azure"
+    description="Overview of Azure SQL Database connector with REST API parameters"
     services=""
     documentationCenter="" 
     authors="MandiOhlinger"
-    manager="erikre"
+    manager="anneta"
     editor=""
     tags="connectors"/>
 
@@ -14,220 +14,225 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na" 
-   ms.date="07/25/2016"
+   ms.date="10/18/2016"
    ms.author="mandia"/>
 
 
-# Azure SQL Database コネクタの概要
-Azure SQL Database コネクタを使用して、テーブル内のデータを管理する組織のワークフローを作成します。
 
-SQL Database では次のことを行います。
+# <a name="get-started-with-the-azure-sql-database-connector"></a>Get started with the Azure SQL Database connector
+Using the Azure SQL Database connector, create workflows for your organization that manage data in your tables. 
 
-- 顧客データベースに新しい顧客を追加するか、注文データベースで注文を更新することで、ワークフローを構築します。
-- データ行の取得、新しい行の挿入、行の削除を行うアクションを使用します。たとえば、Dynamics CRM Online にレコードが作成されると (トリガー)、Azure SQL Database に行を挿入します (アクション)。
+With SQL Database, you:
 
-このトピックでは、ロジック アプリ内で SQL Database コネクタを使用する方法を説明し、アクションの一覧を示します。
+- Build your workflow by adding a new customer to a customers database, or updating an order in an orders database.
+- Use actions to get a row of data, insert a new row, and even delete. For example,  when a record is created in Dynamics CRM Online (a trigger), then insert a row in an Azure SQL Database (an action). 
 
->[AZURE.NOTE] 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
+This topic shows you how to use the SQL Database connector in a logic app, and also lists the actions.
 
-Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」および[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
+>[AZURE.NOTE] This version of the article applies to Logic Apps general availability (GA). 
 
-## Azure SQL Database に接続する
+To learn more about Logic Apps, see [What are logic apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "接続" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、SQL Database に接続するには、まず SQL Database "接続" を作成します。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、SQL Database の場合は、SQL Database の資格情報を入力して接続を作成します。
+## <a name="connect-to-azure-sql-database"></a>Connect to Azure SQL Database
 
-#### 接続の作成
+Before your logic app can access any service, you first create a *connection* to the service. A connection provides connectivity between a logic app and another service. For example, to connect to SQL Database, you first create a SQL Database *connection*. To create a connection, you enter the credentials you normally use to access the service you are connecting to. So, in SQL Database, enter your SQL Database credentials to create the connection. 
 
->[AZURE.INCLUDE [Azure SQL への接続を作成する](../../includes/connectors-create-api-sqlazure.md)]
+#### <a name="create-the-connection"></a>Create the connection
 
-## トリガーを使用する
+>[AZURE.INCLUDE [Create the connection to SQL Azure](../../includes/connectors-create-api-sqlazure.md)]
 
-このコネクタにはトリガーがありません。定期実行のトリガー、HTTP Webhook トリガー、他のコネクタで使用可能なトリガーなど、他のトリガーを使用してロジック アプリを起動します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事に例が記載されています。
+## <a name="use-a-trigger"></a>Use a trigger
 
-## アクションを使用する
-	
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。アクションの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
+This connector does not have any triggers. Use other triggers to start the logic app, such as a Recurrence trigger, an HTTP Webhook trigger, triggers available with other connectors, and more. [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md) provides an example.
 
-1. プラス記号を選択します。**[アクションの追加]**、**[条件の追加]**、**[More (その他)]** オプションのいずれかという複数の選択肢があります。
+## <a name="use-an-action"></a>Use an action
+    
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-	![](./media/connectors-create-api-sqlazure/add-action.png)
+1. Select the plus sign. You see several choices: **Add an action**, **Add a condition**, or one of the **More** options.
 
-2. **[アクションの追加]** を選択します。
+    ![](./media/connectors-create-api-sqlazure/add-action.png)
 
-3. テキスト ボックスに「sql」と入力して、使用可能なすべてのアクションの一覧を取得します。
+2. Choose **Add an action**.
 
-	![](./media/connectors-create-api-sqlazure/sql-1.png)
+3. In the text box, type “sql” to get a list of all the available actions.
 
-4. この例では、**[SQL Server - Get row (SQL Server - 行を取得する)]** を選択します。接続が既に存在する場合は、**[テーブル名]** ボックスの一覧でテーブル名を選択し、**[行 ID]** に返される ID を入力します。
+    ![](./media/connectors-create-api-sqlazure/sql-1.png) 
 
-	![](./media/connectors-create-api-sqlazure/sample-table.png)
+4. In our example, choose **SQL Server - Get row**. If a connection already exists, then select the **Table name** from the drop-down list, and enter the **Row ID** you want to return.
 
-	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-sqlazure.md#create-the-connection)」をご覧ください。
+    ![](./media/connectors-create-api-sqlazure/sample-table.png)
 
-	> [AZURE.NOTE] この例では、テーブルから 1 行が返されます。この行のデータを確認するには、テーブルのフィールドを使用してファイルを作成する別のアクションを追加してください。たとえば、FirstName フィールドと LastName フィールドを使用してクラウド ストレージ アカウントに新しいファイルを作成する OneDrive アクションを追加します。
+    If you are prompted for the connection information, then enter the details to create the connection. [Create the connection](connectors-create-api-sqlazure.md#create-the-connection) in this topic describes these properties. 
 
-5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+    > [AZURE.NOTE] In this example, we return a row from a table. To see the data in this row, add another action that creates a file using the fields from the table. For example, add a OneDrive action that uses the FirstName and LastName fields to create a new file in the cloud storage account. 
+
+5. **Save** your changes (top left corner of the toolbar). Your logic app is saved and may be automatically enabled.
 
 
-## 技術的な詳細
+## <a name="technical-details"></a>Technical Details
 
-## SQL Database アクション
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。SQL Database コネクタには、次のアクションがあります。
+## <a name="sql-database-actions"></a>SQL Database actions
+An action is an operation carried out by the workflow defined in a logic app. The SQL Database connector includes the following actions. 
 
-|アクション|説明|
+|Action|Description|
 |--- | ---|
-|[ExecuteProcedure](connectors-create-api-sqlazure.md#execute-stored-procedure)|SQL でストアド プロシージャを実行します。|
-|[GetRow](connectors-create-api-sqlazure.md#get-row)|SQL テーブルから 1 行を取得します。|
-|[GetRows](connectors-create-api-sqlazure.md#get-rows)|SQL テーブルから複数の行を取得します。|
-|[InsertRow](connectors-create-api-sqlazure.md#insert-row)|SQL テーブルに新しい行を挿入します。|
-|[DeleteRow](connectors-create-api-sqlazure.md#delete-row)|SQL テーブルから行を削除します。|
-|[GetTables](connectors-create-api-sqlazure.md#get-tables)|SQL データベースからテーブルを取得します。|
-|[UpdateRow](connectors-create-api-sqlazure.md#update-row)|SQL テーブルの既存の行を更新します。|
+|[ExecuteProcedure](connectors-create-api-sqlazure.md#execute-stored-procedure)|Executes a stored procedure in SQL|
+|[GetRow](connectors-create-api-sqlazure.md#get-row)|Retrieves a single row from a SQL table|
+|[GetRows](connectors-create-api-sqlazure.md#get-rows)|Retrieves rows from a SQL table|
+|[InsertRow](connectors-create-api-sqlazure.md#insert-row)|Inserts a new row into a SQL table|
+|[DeleteRow](connectors-create-api-sqlazure.md#delete-row)|Deletes a row from a SQL table|
+|[GetTables](connectors-create-api-sqlazure.md#get-tables)|Retrieves tables from a SQL database|
+|[UpdateRow](connectors-create-api-sqlazure.md#update-row)|Updates an existing row in a SQL table|
 
-### アクションの詳細
+### <a name="action-details"></a>Action Details
 
-このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各アクションに関する具体的な詳細について説明します。
+In this section, see the specific details about each action, including any required or optional input properties, and any corresponding output associated with the connector.
 
 
-#### ストアド プロシージャの実行
-SQL でストアド プロシージャを実行します。
+#### <a name="execute-stored-procedure"></a>Execute stored procedure
+Executes a stored procedure in SQL.  
 
-| プロパティ名| Displayname Settings |説明|
+| Property Name| Display Name |Description|
 | ---|---|---|
-|procedure * | プロシージャ名 | 実行するストアド プロシージャの名前 |
-|parameters * | 入力パラメーター | パラメーターは動的で、選択したストアド プロシージャに基づいています。<br/><br/> たとえば、Adventure Works サンプル データベースを使用している場合は、*ufnGetCustomerInformation* ストアド プロシージャを選択します。**Customer ID** 入力パラメーターが表示されます。「6」または他の顧客 ID の 1 つを入力します。 |
+|procedure * | Procedure name | The name of the stored procedure you want to execute |
+|parameters * | Input parameters | The parameters are dynamic and based on the stored procedure you choose. <br/><br/> For example, if you're using the Adventure Works sample database, choose the *ufnGetCustomerInformation* stored procedure. The **Customer ID** input parameter is displayed. Enter "6" or one of the other customer IDs. |
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
-##### 出力の詳細
-ProcedureResult: ストアド プロシージャの実行結果を示します。
+##### <a name="output-details"></a>Output Details
+ProcedureResult: Carries result of stored procedure execution
 
-| プロパティ名 | データ型 | 説明 |
+| Property Name | Data Type | Description |
 |---|---|---|
-|OutputParameters|オブジェクト|出力パラメーターの値 |
-|ReturnCode|integer|プロシージャのリターン コード |
-|ResultSets|オブジェクト| 結果セット|
+|OutputParameters|object|Output parameter values |
+|ReturnCode|integer|Return code of a procedure |
+|ResultSets|object| Result sets|
 
 
-#### 行を取得する 
-SQL テーブルから 1 行を取得します。
+#### <a name="get-row"></a>Get row 
+Retrieves a single row from a SQL table.  
 
-| プロパティ名| Displayname Settings |説明|
+| Property Name| Display Name |Description|
 | ---|---|---|
-|table * | テーブル名 |SQL テーブルの名前|
-|id * | 行 ID |取得する行の一意識別子|
+|table * | Table name |Name of SQL table|
+|id * | Row id |Unique identifier of the row to retrieve|
 
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
+An asterisk (*) means the property is required.
 
-##### 出力の詳細
-項目
+##### <a name="output-details"></a>Output Details
+Item
 
-| プロパティ名 | データ型 |
-|---|---|
-|ItemInternalId|文字列|
-
-
-#### 行を取得する 
-SQL テーブルから複数の行を取得します。
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|table*|テーブル名|SQL テーブルの名前|
-|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
-|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
-|$filter|Filter Query (フィルター クエリ)|エントリ数を制限する ODATA filter クエリ|
-|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### 出力の詳細
-ItemsList
-
-| プロパティ名 | データ型 |
-|---|---|
-|値|array|
-
-
-#### 行を挿入する 
-SQL テーブルに新しい行を挿入します。
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|table*|テーブル名|SQL テーブルの名前|
-|item*|行|SQL の指定されたテーブルに挿入する行|
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### 出力の詳細
-項目
-
-| プロパティ名 | データ型 |
-|---|---|
-|ItemInternalId|文字列|
-
-
-#### 行を削除する 
-SQL テーブルから行を削除します。
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|table*|テーブル名|SQL テーブルの名前|
-|id*|行 ID|削除する行の一意識別子|
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### 出力の詳細
-ありません。
-
-#### テーブルを取得する 
-SQL Database からテーブルを取得します。
-
-この呼び出しには、パラメーターはありません。
-
-##### 出力の詳細 
-TablesList
-
-| プロパティ名 | データ型 |
-|---|---|
-|値|array|
-
-#### 行を更新する 
-SQL テーブルの既存の行を更新します。
-
-|プロパティ名| Displayname Settings|説明|
-| ---|---|---|
-|table*|テーブル名|SQL テーブルの名前|
-|id*|行 ID|更新する行の一意識別子|
-|item*|行|更新された値のある行|
-
-アスタリスク (*) は、そのプロパティが必須であることを意味します。
-
-##### 出力の詳細  
-項目
-
-| プロパティ名 | データ型 |
+| Property Name | Data Type |
 |---|---|
 |ItemInternalId|string|
 
 
-### HTTP 応答
+#### <a name="get-rows"></a>Get rows 
+Retrieves rows from a SQL table.  
 
-他のアクションを呼び出すとき、特定の応答を受け取る場合があります。次の表に、これらの応答とその説明を示します。
+|Property Name| Display Name|Description|
+| ---|---|---|
+|table*|Table name|Name of SQL table|
+|$skip|Skip Count|Number of entries to skip (default = 0)|
+|$top|Maximum Get Count|Maximum number of entries to retrieve (default = 256)|
+|$filter|Filter Query|An ODATA filter query to restrict the number of entries|
+|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
 
-|名前|説明|
+An asterisk (*) means the property is required.
+
+##### <a name="output-details"></a>Output Details
+ItemsList
+
+| Property Name | Data Type |
+|---|---|
+|value|array|
+
+
+#### <a name="insert-row"></a>Insert row 
+Inserts a new row into a SQL table.  
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|table*|Table name|Name of SQL table|
+|item*|Row|Row to insert into the specified table in SQL|
+
+An asterisk (*) means the property is required.
+
+##### <a name="output-details"></a>Output Details
+Item
+
+| Property Name | Data Type |
+|---|---|
+|ItemInternalId|string|
+
+
+#### <a name="delete-row"></a>Delete row 
+Deletes a row from a SQL table.  
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|table*|Table name|Name of SQL table|
+|id*|Row id|Unique identifier of the row to delete|
+
+An asterisk (*) means the property is required.
+
+##### <a name="output-details"></a>Output Details
+None.
+
+#### <a name="get-tables"></a>Get tables 
+Retrieves tables from a SQL database.  
+
+There are no parameters for this call. 
+
+##### <a name="output-details"></a>Output Details 
+TablesList
+
+| Property Name | Data Type |
+|---|---|
+|value|array|
+
+#### <a name="update-row"></a>Update row 
+Updates an existing row in a SQL table.  
+
+|Property Name| Display Name|Description|
+| ---|---|---|
+|table*|Table name|Name of SQL table|
+|id*|Row id|Unique identifier of the row to update|
+|item*|Row|Row with updated values|
+
+An asterisk (*) means the property is required.
+
+##### <a name="output-details"></a>Output Details  
+Item
+
+| Property Name | Data Type |
+|---|---|
+|ItemInternalId|string|
+
+
+### <a name="http-responses"></a>HTTP Responses
+
+When making calls to the different actions, you may get certain responses. The following table outlines the responses and their descriptions:  
+
+|Name|Description|
 |---|---|
 |200|OK|
-|202|承認済み|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|default|操作に失敗しました。|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occurred|
+|default|Operation Failed.|
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。[API リスト](apis-list.md)で、Logic Apps で使用可能な他のコネクタを確認します。
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). Explore the other available connectors in Logic Apps at our [APIs list](apis-list.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

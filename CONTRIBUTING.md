@@ -1,5 +1,6 @@
-英語以外の Azure テクニカル ドキュメントに投稿していただきありがとうございます。翻訳の改善提案でも記事自体の記述の変更でも、いただいた提案はすべて確認いたします。後者の場合、修正案が承認されると、プル要求は英語とその他のすべての言語に反映されます。
+This content has been moved - see the [Readme page] (README.md) for information about how to contribute to the Azure tech docs.
 
-Azure テクニカル ドキュメントに投稿する方法の詳細については、[Readme ページ](README.md)をご覧ください。
 
-<!---HONumber=AcomDC_1125_2015-->
+<!--HONumber=Oct16_HO2-->
+
+

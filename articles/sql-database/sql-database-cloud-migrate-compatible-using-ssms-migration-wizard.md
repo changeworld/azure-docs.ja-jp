@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Deploy Database to Microsoft Azure Database (データベースの Microsoft Azure Database へのデプロイ) ウィザードを使用して SQL Server データベースを SQL Database に移行する | Microsoft Azure"
-   description="Microsoft Azure SQL Database、データベースの移行、Microsoft Azure Database ウィザード"
+   pageTitle="Migrate SQL Server database to SQL Database using Deploy Database to Microsoft Azure Database Wizard | Microsoft Azure"
+   description="Microsoft Azure SQL Database, database migration, Microsoft Azure Database Wizard"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -16,62 +16,67 @@
    ms.date="08/24/2016"
    ms.author="carlrab"/>
 
-# [データベースの Microsoft Azure Database へのデプロイ] ウィザードを使用して SQL Server データベースを SQL Database に移行する
+
+# <a name="migrate-sql-server-database-to-sql-database-using-deploy-database-to-microsoft-azure-database-wizard"></a>Migrate SQL Server database to SQL Database using Deploy Database to Microsoft Azure Database Wizard
 
 
 > [AZURE.SELECTOR]
-- [SSMS の移行ウィザード](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
-- [BACPAC ファイルへのエクスポート](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
-- [BACPAC ファイルからのインポート](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
-- [トランザクション レプリケーション](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
+- [SSMS Migration Wizard](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
+- [Export to BACPAC File](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
+- [Import from BACPAC File](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
+- [Transactional Replication](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
 
-SQL Server Management Studio のデータベースの Microsoft Azure Database へのデプロイ ウィザードは、[互換性のある SQL Server データベース](sql-database-cloud-migrate.md)を Azure SQL Database サーバーに直接移行します。
+The Deploy Database to Microsoft Azure Database wizard in SQL Server Management Studio migrates a [compatible SQL Server database](sql-database-cloud-migrate.md) directly into your Azure SQL Database server.
 
-## [データベースの Microsoft Azure Database へのデプロイ] ウィザードを使用する
+## <a name="use-the-deploy-database-to-microsoft-azure-database-wizard"></a>Use the Deploy Database to Microsoft Azure Database Wizard
 
-> [AZURE.NOTE] 以下の手順では、[SQL Database サーバーのプロビジョニング](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database/)が完了していると想定しています。
+> [AZURE.NOTE] The following steps assume that you have a [provisioned SQL Database server](https://azure.microsoft.com/documentation/learning-paths/sql-database-training-learn-sql-database/).
 
-1. 最新バージョンの SQL Server Management Studio があることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure ポータルの更新との同期が維持されます。
+1. Verify that you have the latest version of SQL Server Management Studio. New versions of Management Studio are updated monthly to remain in sync with updates to the Azure portal.
 
-    > [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+    > [AZURE.IMPORTANT] It is recommended that you always use the latest version of Management Studio to remain synchronized with updates to Microsoft Azure and SQL Database. [Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
-2. Management Studio を開き、オブジェクト エクスプローラーで移行する SQL Server データベースに接続します。
-3. オブジェクト エクスプローラーでデータベースを右クリックし、**[タスク]** をポイントして **[データベースの Microsoft Azure SQL データベースへのデプロイ...]** をクリックします。
+2. Open Management Studio and connect to your SQL Server database to be migrated in Object Explorer.
+3. Right-click the database in the Object Explorer, point to **Tasks**, and click **Deploy Database to Microsoft Azure SQL Database…**
 
-	![[タスク] メニューの "Azure へのデプロイ"](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard01.png)
+    ![Deploy to Azure from Tasks menu](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard01.png)
 
-4.	デプロイメント ウィザードで、**[次へ]** をクリックして **[接続]** をクリックし、SQL Database サーバーへの接続を構成します。
+4.  In the deployment wizard, click **Next**, and then click **Connect** to configure the connection to your SQL Database server.
 
-	![[タスク] メニューの "Azure へのデプロイ"](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard002.png)
+    ![Deploy to Azure from Tasks menu](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard002.png)
 
-5. [サーバーに接続] ダイアログ ボックスで、接続情報を入力し、SQL Database サーバーに接続します。
+5. In the Connect to Server dialog box, enter your connection information to connect to your SQL Database server.
 
-	![[タスク] メニューの "Azure へのデプロイ"](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard00.png)
+    ![Deploy to Azure from Tasks menu](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard00.png)
 
-5.	移行プロセス時にこのウィザードが作成する[BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) ファイルについて、次の項目を入力します。
+5.  Provide the following for the [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) file that this wizard creates during the migration process:
 
- - **新しいデータベース名**
- - **Microsoft Azure SQL Database のエディション** ([サービス レベル](sql-database-service-tiers.md))
- - **データベースの最大サイズ**
- - **サービスの目標** (パフォーマンス レベル)
- - **一時ファイル名**
+ - The **New database name** 
+ - The **Edition of Microsoft Azure SQL Database** ([service tier](sql-database-service-tiers.md))
+ - The **Maximum database size**
+ - The **Service Objective** (performance level)
+ - The **Temporary file name**  
 
-    ![設定のエクスポート](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard02.png)
+    ![Export settings](./media/sql-database-cloud-migrate/MigrateUsingDeploymentWizard02.png)
 
-6.	ウィザードを終了します。データベースのサイズと複雑さに応じて、デプロイメントには数分から数時間かかる場合があります。このウィザードで互換性の問題が検出された場合、画面にエラーが表示され、移行は続行されません。データベース互換性問題の修正方法については、「[データベースの互換性の問題を修正する](sql-database-cloud-migrate-fix-compatibility-issues.md)」を参照してください。
+6.  Complete the wizard. Depending on the size and complexity of the database, deployment may take from a few minutes to many hours. If this wizard detects compatibility issues, errors are displayed to the screen and the migration does not continue. For guidance on how to fix database compatibility issues, go to [fix database compatibility issues](sql-database-cloud-migrate-fix-compatibility-issues.md).
 
-7.	オブジェクト エクスプローラーを使用して、Azure SQL Database サーバーの移行されたデータベースに接続します。
-8.	Azure ポータルを使用して、データベースとそのプロパティを表示します。
+7.  Using Object Explorer, connect to your migrated database in your Azure SQL Database server.
+8.  Using the Azure portal, view your database and its properties.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
 - [SQL Database V12](sql-database-v12-whats-new.md)
-- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
-- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
+- [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
+- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

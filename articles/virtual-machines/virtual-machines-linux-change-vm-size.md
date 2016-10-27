@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Linux VM のサイズを変更する方法 | Microsoft Azure"
-   description="スケールアップまたは VM のサイズを変更することで Linux 仮想マシンをスケールアップまたはスケールダウンする方法。"
+   pageTitle="How to resize a Linux VM | Microsoft Azure"
+   description="How to scale up or scale down a Linux virtual machine, by changing the VM size."
    services="virtual-machines-linux"
    documentationCenter="na"
    authors="mikewasson"
@@ -18,28 +18,29 @@
    ms.author="mikewasson"/>
 
 
-# Linux VM のサイズを変更する方法
 
-## Overview 
+# <a name="how-to-resize-a-linux-vm"></a>How to resize a Linux VM
 
-仮想マシン (VM) をプロビジョニングした後、[VM のサイズ][vm-sizes]を変更することで、VM をスケールアップまたはスケールダウンできます。場合によっては、先に VM の割り当てを解除する必要があります。これは、VM をホストしているハードウェア クラスターで新しいサイズを使用できない場合に発生する可能性があります。
+## <a name="overview"></a>Overview 
 
-この記事では、[Azure CLI][azure-cli] を使用して Linux VM のサイズを変更する方法を示します。
+After you provision a virtual machine (VM), you can scale the VM up or down by changing the [VM size][vm-sizes]. In some cases, you must deallocate the VM first. This can happen if the new size is not available on the hardware cluster that is hosting the VM.
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
+This article shows how to resize a Linux VM using the [Azure CLI][azure-cli].
+
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
 
 
-## Linux VM のサイズを変更する 
+## <a name="resize-a-linux-vm"></a>Resize a Linux VM 
 
-VM のサイズを変更するには、次の手順を実行します。
+To resize a VM, perform the following steps.
 
-1. 次の CLI コマンドを実行します。このコマンドは、VM がホストされているハードウェア クラスターで使用できる VM のサイズを一覧表示します。
+1. Run the following CLI command. This command lists the VM sizes that are available on the hardware cluster where the VM is hosted.
 
     ```
     azure vm sizes -g <resource-group> --vm-name <vm-name>
     ```
 
-2. 目的のサイズが表示される場合は、次のコマンドを実行して VM のサイズを変更します。
+2. If the desired size is listed, run the following command to resize the VM.
 
     ```
     azure vm set -g <resource-group> --vm-size <new-vm-size> -n <vm-name>  
@@ -47,11 +48,11 @@ VM のサイズを変更するには、次の手順を実行します。
         https://<storage-account-name>.blob.core.windows.net/ 
     ```
 
-    この処理中に、VM が再起動します。再起動後に、既存の OS とデータ ディスクがリマップされます。一時ディスク上に格納されているデータはすべて失われます。
+    The VM will restart during this process. After the restart, your existing OS and data disks will be remapped. Anything on the temporary disk will be lost.
 
-    `--enable-boot-diagnostics` オプションを使用すると、[ブート診断][boot-diagnostics]で、起動に関連するすべてのエラーをログに記録できます。
+    Use the `--enable-boot-diagnostics` option enables [boot diagnostics][boot-diagnostics], to log any errors related to startup.
 
-3. 目的のサイズが表示されない場合は、次のコマンドを実行して VM の割り当てを解除します。その後、サイズを変更し、VM を再起動します。
+3. Otherwise, if the desired size is not listed, run the following commands to deallocate the VM, resize it, and then restart the VM.
 
     ```
     azure vm deallocate -g <resource-group> <vm-name>
@@ -61,17 +62,20 @@ VM のサイズを変更するには、次の手順を実行します。
     azure vm start -g <resource-group> <vm-name>
     ```
 
-   > [AZURE.WARNING] VM の割り当てを解除すると、VM に割り当てられているすべての動的 IP アドレスも解放されます。OS とデータ ディスクには影響しません。
+   > [AZURE.WARNING] Deallocating the VM also releases any dynamic IP addresses assigned to the VM. The OS and data disks are not affected.
    
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-スケーラビリティを高めるには、複数の VM インスタンスを実行してスケール アウトします。詳細については、「[仮想マシン スケール セットでの Linux マシンの自動スケール][scale-set]」を参照してください。
+For additional scalability, run multiple VM instances and scale out. For more information, see [Automatically scale Linux machines in a Virtual Machine Scale Set][scale-set]. 
 
 <!-- links -->
    
 [azure-cli]: ../xplat-cli-install.md
-[boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/
-[scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md
+[boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
+[scale-set]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
 [vm-sizes]: virtual-machines-linux-sizes.md
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-    pageTitle="ロジック アプリに Google Drive コネクタを追加する | Microsoft Azure"
-    description="Google Drive コネクタと REST API パラメーターの概要"
+    pageTitle="Add the Google Drive connector in logic apps | Microsoft Azure"
+    description="Overview of the Google Drive connector with REST API parameters"
     services=""
     suite=""
     documentationCenter="" 
@@ -18,319 +18,333 @@
    ms.date="08/18/2016"
    ms.author="mandia"/>
 
-# Google Drive コネクタの使用
-Google Drive に接続して、ファイルの作成、行の取得などを行います。Google Drive では、次の操作を実行できます。
 
-- 検索から取得したデータに基づいてビジネス フローを構築することができます。
-- 画像、ニュースなどを検索するアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、動画を検索し、Twitter を使用して Twitter フィードに動画を投稿することができます。
+# <a name="get-started-with-the-google-drive-connector"></a>Get started with the Google Drive connector
+Connect to Google Drive to create files, get rows, and more. With Google Drive, you can: 
 
-ロジック アプリに操作を追加する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページを参照してください。
+- Build your business flow based on the data you get from your search. 
+- Use actions to search images, search the news, and more. These actions get a response, and then make the output available for other actions. For example, you can search for a video, and then use Twitter to post that video to a Twitter feed.
+
+To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
 
-## トリガーとアクション
-Google Drive には、次のアクションがあります。トリガーはありません。
+## <a name="triggers-and-actions"></a>Triggers and actions
+Google Drive includes the following actions. There are no triggers. 
 
-トリガー | アクション
+Triggers | Actions
 --- | ---
-なし | <ul><li>ファイルを作成する</li><li>行を挿入する</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>行を削除する</li><li>アーカイブをフォルダーに抽出する</li><li>ID を使用してファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ID を使用してファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>行を取得する</li><li>ファイルを更新する</li><li>行を更新する</li></ul>
+None | <ul><li>Create file</li><li>Insert row</li><li>Copy file</li><li>Delete file</li><li>Delete row</li><li>Extract archive to folder</li><li>Get file content using id</li><li>Get file content using path</li><li>Get file metadata using id</li><li>Get file metadata using path</li><li>Get row</li><li>Update file</li><li>Update row</li></ul>
 
-すべてのコネクタは、JSON および XML 形式のデータに対応します。
-
-
-## Google Drive への接続を作成する
-
-ロジック アプリにこのコネクタを追加するとき、Google Drive に接続するロジック アプリを承認する必要があります。
-
->[AZURE.INCLUDE [Google Drive への接続を作成する手順](../../includes/connectors-create-api-googledrive.md)]
-
-接続を作成したら、フォルダー パスやファイル名など、Google Drive のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
-
->[AZURE.TIP] 他のロジック アプリでも、この同じ Google Drive 接続を使用できます。
+All connectors support data in JSON and XML formats.
 
 
-## Swagger REST API リファレンス
-適用されるバージョン: 1.0。
+## <a name="create-the-connection-to-google-drive"></a>Create the connection to Google Drive
 
-### ファイルを作成する    
-Google Drive にファイルをアップロードします。```POST: /datasets/default/files```
+When you add this connector to your logic apps, you must authorize logic apps to connect to your Google Drive.
 
-| Name| データ型|必須|場所|既定値|Description|
+>[AZURE.INCLUDE [Steps to create a connection to googledrive](../../includes/connectors-create-api-googledrive.md)]
+
+After you create the connection, you enter the Google Drive properties, like the folder path or file name. The **REST API reference** in this topic describes these properties.
+
+>[AZURE.TIP] You can use this same Google Drive connection in other logic apps.
+
+
+## <a name="swagger-rest-api-reference"></a>Swagger REST API reference
+Applies to version: 1.0.
+
+### <a name="create-file"></a>Create file    
+Uploads a file to Google Drive.  
+```POST: /datasets/default/files```
+
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|folderPath|string|○|query|なし |ファイルを Google Drive にアップロードするフォルダーのパス|
-|name|string|○|query|なし |Google Drive に作成するファイルの名前|
-|body|string (binary) |○|body| なし|Google Drive にアップロードするファイルの内容|
+|folderPath|string|yes|query|none |Folder path to upload the file to Google Drive|
+|name|string|yes|query|none |Name of the file to create in Google Drive|
+|body|string(binary) |yes|body| none|Content of the file to upload to Google Drive|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### 行を挿入する    
-Google シートに行を挿入します。```POST: /datasets/{dataset}/tables/{table}/items```
+### <a name="insert-row"></a>Insert row    
+Inserts a row into a Google Sheet.  
+```POST: /datasets/{dataset}/tables/{table}/items```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path| なし|Google シートファイルの一意識別子|
-|テーブル|string|○|path|なし |ワークシートの一意識別子|
-|item|ItemInternalId: string |○|body|なし |指定されたシートに挿入する行|
+|dataset|string|yes|path| none|Unique identifier of the Google Sheet file|
+|table|string|yes|path|none |Unique identifier of the worksheet|
+|item|ItemInternalId: string |yes|body|none |Row to insert into the specified sheet|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### ファイルをコピーする    
-Google Drive のファイルをコピーします。```POST: /datasets/default/copyFile```
+### <a name="copy-file"></a>Copy file    
+Copies a file on Google Drive.  
+```POST: /datasets/default/copyFile```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|source|string|○|query| なし|ソース ファイルの URL|
-|destination|string|○|query|なし |対象ファイル名を含む Google Drive の宛先ファイル パス|
-|overwrite|boolean|×|query|なし |’true’ に設定すると、宛先ファイルが上書きされます|
+|source|string|yes|query| none|Url to source file|
+|destination|string|yes|query|none |Destination file path in Google Drive, including target filename|
+|overwrite|boolean|no|query|none |Overwrites the destination file if set to 'true'|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### ファイルを削除する    
-Google Drive からファイルを削除します。```DELETE: /datasets/default/files/{id}```
+### <a name="delete-file"></a>Delete file    
+Deletes a file from Google Drive.  
+```DELETE: /datasets/default/files/{id}```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|id|string|○|path|なし |Google Drive から削除するファイルの一意識別子|
+|id|string|yes|path|none |Unique identifier of the file to delete from Google Drive|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### 行を削除する    
-Google シートから行を削除します。```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```
+### <a name="delete-row"></a>Delete Row    
+Deletes a row from a Google Sheet.  
+```DELETE: /datasets/{dataset}/tables/{table}/items/{id}```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし |Google シートファイルの一意識別子|
-|テーブル|string|○|path|なし |ワークシートの一意識別子|
-|id|string|○|path|なし |削除する行の一意識別子|
+|dataset|string|yes|path|none |Unique identifier of the Google Sheet file|
+|table|string|yes|path|none |Unique identifier of the worksheet|
+|id|string|yes|path|none |Unique identifier of the row to delete|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### アーカイブをフォルダーに抽出する    
-Google Drive のフォルダーにアーカイブ ファイル (例: .zip) を抽出します。```POST: /datasets/default/extractFolderV2```
+### <a name="extract-archive-to-folder"></a>Extract archive to folder    
+Extracts an archive file into a folder in Google Drive (example: .zip).  
+```POST: /datasets/default/extractFolderV2```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|source|string|○|query|なし |アーカイブ ファイルのパス|
-|destination|string|○|query|なし |アーカイブの内容を抽出する Google Drive のパス|
-|overwrite|boolean|×|query|なし |’true’ に設定すると、宛先ファイルが上書きされます|
+|source|string|yes|query|none |Path to the archive file|
+|destination|string|yes|query|none |Path in Google Drive to extract the archive contents|
+|overwrite|boolean|no|query|none |Overwrites the destination files if set to 'true'|
 
-#### 応答
-|Name|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### ID を使用してファイルの内容を取得する    
-ID を使用して Google Drive からファイルの内容を取得します。```GET: /datasets/default/files/{id}/content```
+### <a name="get-file-content-using-id"></a>Get file content using id    
+Retrieves file content from Google Drive using id.  
+```GET: /datasets/default/files/{id}/content```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|id|string|○|path|なし |Google Drive 内の取得するファイルの一意識別子|
+|id|string|yes|path|none |Unique identifier of the file to retrieve in Google Drive|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### パスを使用してファイルの内容を取得する    
-パスを使用して Google Drive からファイルの内容を取得します。```GET: /datasets/default/GetFileContentByPath```
+### <a name="get-file-content-using-path"></a>Get file content using path    
+Retrieves file content from Google Drive using path.  
+```GET: /datasets/default/GetFileContentByPath```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|path|string|○|query|なし |Google Drive 内のファイルのパス|
+|path|string|yes|query|none |Path of the file in Google Drive|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### ID を使用してファイルのメタデータを取得する    
-ID を使用して Google Drive からファイルのメタデータを取得します。```GET: /datasets/default/files/{id}```
+### <a name="get-file-metadata-using-id"></a>Get file metadata using id    
+Retrieves file metadata from Google Drive using id.  
+```GET: /datasets/default/files/{id}```
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|id|string|○|path|なし |Google Drive 内のファイルの一意識別子|
+|id|string|yes|path|none |Unique identifier of the file in Google Drive|
 
-#### 応答
-|Name|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### パスを使用してファイルのメタデータを取得する    
-パスを使用して Google Drive からファイルのメタデータを取得します。```GET: /datasets/default/GetFileByPath```
+### <a name="get-file-metadata-using-path"></a>Get file metadata using path    
+Retrieves file metadata from Google Drive using path.  
+```GET: /datasets/default/GetFileByPath```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|path|string|○|query|なし |Google Drive 内のファイルのパス|
+|path|string|yes|query|none |Path of the file in Google Drive|
 
-#### 応答
-|Name|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### 行を取得する    
-Google シートから 1 行を取得します。```GET: /datasets/{dataset}/tables/{table}/items/{id}```
+### <a name="get-row"></a>Get row    
+Retrieves a single row from a Google Sheet.  
+```GET: /datasets/{dataset}/tables/{table}/items/{id}```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし |Google シートファイルの一意識別子|
-|テーブル|string|○|path|なし |ワークシートの一意識別子|
-|id|string|○|path| なし|取得する行の一意識別子|
+|dataset|string|yes|path|none |Unique identifier of the Google Sheet file|
+|table|string|yes|path|none |Unique identifier of the worksheet|
+|id|string|yes|path| none|Unique identifier of row to retrieve|
 
-#### 応答
-|Name|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### ファイルを更新する    
-Google Drive 内のファイルを更新します。```PUT: /datasets/default/files/{id}```
+### <a name="update-file"></a>Update file    
+Updates a file in Google Drive.  
+```PUT: /datasets/default/files/{id}```
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|id|string|○|path|なし |Google Drive 内の更新するファイルの一意識別子|
-|body|string (binary) |○|body| なし|Google Drive にアップロードするファイルの内容|
+|id|string|yes|path|none |Unique identifier of the file to update in Google Drive|
+|body|string(binary) |yes|body| none|Content of the file to upload to Google Drive|
 
-#### 応答
-|Name|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-### 行を更新する    
-Google シート内の行を更新します。```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```
+### <a name="update-row"></a>Update row    
+Updates a row in a Google Sheet.  
+```PATCH: /datasets/{dataset}/tables/{table}/items/{id}```
 
-| Name| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|dataset|string|○|path|なし |Google シートファイルの一意識別子|
-|テーブル|string|○|path| なし|ワークシートの一意識別子|
-|id|string|○|path|なし |更新する行の一意識別子|
-|item|ItemInternalId: string |○|body|なし |更新された値のある行|
+|dataset|string|yes|path|none |Unique identifier of the Google Sheet file|
+|table|string|yes|path| none|Unique identifier of the worksheet|
+|id|string|yes|path|none |Unique identifier of the row to update|
+|item|ItemInternalId: string |yes|body|none |Row with updated values|
 
-#### 応答
-|名前|説明|
+#### <a name="response"></a>Response
+|Name|Description|
 |---|---|
 |200|OK|
-|default|操作に失敗しました。|
+|default|Operation Failed.|
 
 
-## オブジェクト定義
+## <a name="object-definitions"></a>Object definitions
 
-#### DataSetsMetadata
+#### <a name="datasetsmetadata"></a>DataSetsMetadata
 
-|プロパティ名 | データ型 | 必須|
+|Property Name | Data Type | Required|
 |---|---|---|
-|tabular|未定義|×|
-|BLOB|未定義|×|
+|tabular|not defined|no|
+|blob|not defined|no|
 
-#### TabularDataSetsMetadata
+#### <a name="tabulardatasetsmetadata"></a>TabularDataSetsMetadata
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|source|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
-|tableDisplayName|string|×|
-|tablePluralName|string|×|
+|source|string|no|
+|displayName|string|no|
+|urlEncoding|string|no|
+|tableDisplayName|string|no|
+|tablePluralName|string|no|
 
-#### BlobDataSetsMetadata
+#### <a name="blobdatasetsmetadata"></a>BlobDataSetsMetadata
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|source|string|×|
-|displayName|string|×|
-|urlEncoding|string|×|
+|source|string|no|
+|displayName|string|no|
+|urlEncoding|string|no|
 
-#### BlobMetadata
+#### <a name="blobmetadata"></a>BlobMetadata
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|ID|string|×|
-|名前|string|×|
-|DisplayName|string|×|
-|パス|string|×|
-|LastModified|string|×|
-|サイズ|integer|×|
-|MediaType|string|×|
-|IsFolder|boolean|×|
-|ETag|string|×|
-|FileLocator|string|×|
+|Id|string|no|
+|Name|string|no|
+|DisplayName|string|no|
+|Path|string|no|
+|LastModified|string|no|
+|Size|integer|no|
+|MediaType|string|no|
+|IsFolder|boolean|no|
+|ETag|string|no|
+|FileLocator|string|no|
 
-#### TableMetadata
+#### <a name="tablemetadata"></a>TableMetadata
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|name|string|×|
-|title|string|×|
-|x-ms-permission|string|×|
-|schema|未定義|×|
+|name|string|no|
+|title|string|no|
+|x-ms-permission|string|no|
+|schema|not defined|no|
 
-#### TablesList
+#### <a name="tableslist"></a>TablesList
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|値|array|×|
+|value|array|no|
 
-#### テーブル
+#### <a name="table"></a>Table
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|名前|string|×|
-|DisplayName|string|×|
+|Name|string|no|
+|DisplayName|string|no|
 
-#### 項目
+#### <a name="item"></a>Item
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|ItemInternalId|string|×|
+|ItemInternalId|string|no|
 
-#### ItemsList
+#### <a name="itemslist"></a>ItemsList
 
-|プロパティ名 | データ型 |必須|
+|Property Name | Data Type |Required|
 |---|---|---|
-|値|array|×|
+|value|array|no|
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-[API リスト](apis-list.md)に戻ります。
+Go back to the [APIs list](apis-list.md).
 
 
 <!--References-->
@@ -343,4 +357,8 @@ Google シート内の行を更新します。```PATCH: /datasets/{dataset}/tabl
 [13]: ./media/connectors-create-api-googledrive/configure-consent-screen.png
 [14]: ./media/connectors-create-api-googledrive/create-client-id.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

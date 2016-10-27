@@ -1,225 +1,231 @@
 <properties
-	pageTitle="最初に: Recovery Services コンテナーを使用した Azure VM の保護 | Microsoft Azure"
-	description="Recovery Services コンテナーを使用して Azure VM を保護します。Resource Manager デプロイによる VM、クラシック デプロイによる VM、Premium Storage VM のバックアップを使用して、データを保護します。Recovery Services コンテナーを作成して登録します。Azure で VM の登録、ポリシーの作成、VM の保護を行います。"
-	services="backup"
-	documentationCenter=""
-	authors="markgalioto"
-	manager="cfreeman"
-	editor=""
-	keyword="backups; vm backup"/>
+    pageTitle="First look: Protect Azure VMs with a recovery services vault | Microsoft Azure"
+    description="Protect Azure VMs with a recovery services vault. Use backups of Resource Manager-deployed VMs, Classic-deployed VMs and Premium Storage VMs to protect your data. Create and register a recovery services vault. Register VMs, create policy, and protect VMs in Azure."
+    services="backup"
+    documentationCenter=""
+    authors="markgalioto"
+    manager="cfreeman"
+    editor=""
+    keyword="backups; vm backup"/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="09/15/2016"
-	ms.author="markgal; jimpark"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="09/15/2016"
+    ms.author="markgal; jimpark"/>
 
 
-# 最初に: Recovery Services コンテナーを使用した Azure VM の保護
+
+# <a name="first-look:-protect-azure-vms-with-a-recovery-services-vault"></a>First look: Protect Azure VMs with a recovery services vault
 
 > [AZURE.SELECTOR]
-- [Recovery Services コンテナーを使用した VM の保護](backup-azure-vms-first-look-arm.md)
-- [バックアップ コンテナーを使用した VM の保護](backup-azure-vms-first-look.md)
+- [Protect VMs with a recovery services vault](backup-azure-vms-first-look-arm.md)
+- [Protect VMs with a backup vault](backup-azure-vms-first-look.md)
 
-このチュートリアルでは、Recovery Services コンテナーの作成と Azure 仮想マシン (VM) のバックアップの手順について説明します。Recovery Services コンテナーは次の VM を保護します。
+This tutorial takes you through the steps for creating a recovery services vault and backing up an Azure virtual machine (VM). Recovery services vaults protect:
 
-- Azure Resource Manager でデプロイされた VM
-- クラシック VM
-- Standard Storage VM
-- Premium Storage VM
-- Azure Disk Encryption を使って BEK と KEK で暗号化された VM (Powershell を使ってサポート)
+- Azure Resource Manager-deployed VMs
+- Classic VMs
+- Standard storage VMs
+- Premium storage VMs
+- VMs encrypted using Azure Disk Encryption, with BEK and KEK (supported using Powershell)
 
-Premium Storage VM の保護の詳細については、「[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms)」を参照してください。
+For more information on protecting Premium storage VMs, see [Back up and Restore Premium Storage VMs](backup-introduction-to-azure-backup.md#back-up-and-restore-premium-storage-vms)
 
->[AZURE.NOTE] このチュートリアルでは、既に Azure サブスクリプション内に VM があることと、バックアップ サービスが VM にアクセスできるようにしてあることを前提としています。
+>[AZURE.NOTE] This tutorial assumes you already have a VM in your Azure subscription and that you have taken measures to allow the backup service to access the VM.
 
 [AZURE.INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
 
-手順の概要は次のとおりです。
+At a high level, here are the steps that you'll complete.  
 
-1. VM 用の Recovery Services コンテナーを作成する。
-2. Azure ポータルを使用して、シナリオの選択、ポリシーの設定、および保護する項目の特定を行う。
-3. 初回バックアップを実行する。
-
-
-
-## VM 用の Recovery Services コンテナーを作成する
-
-Recovery Services コンテナーは、経時的に作成されたすべてのバックアップと復旧ポイントを格納するエンティティです。Recovery Services コンテナーには、保護される VM に適用されるバックアップ ポリシーも含まれます。
-
->[AZURE.NOTE] VM のバックアップはローカルの処理です。別の場所にある Recovery Services コンテナーに VM をバックアップすることはできません。そのため、バックアップする VM がある Azure の場所ごとに、少なくとも 1 つの Recovery Services コンテナーが存在する必要があります。
+1. Create a recovery services vault for a VM.
+2. Use the Azure portal to select a Scenario, set Policy, and identify items to protect.
+3. Run the initial backup.
 
 
-Recovery Services コンテナーを作成するには、次の手順に従います。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+## <a name="create-a-recovery-services-vault-for-a-vm"></a>Create a recovery services vault for a VM
 
-2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** をクリックします。
+A recovery services vault is an entity that stores all the backups and recovery points that have been created over time. The recovery services vault also contains the backup policy applied to the protected VMs.
+
+>[AZURE.NOTE] Backing up VMs is a local process. You cannot back up VMs from one location to a recovery services vault in another location. So, for every Azure location that has VMs to be backed up, at least one recovery services vault must exist in that location.
+
+
+To create a recovery services vault:
+
+1. Sign in to the [Azure portal](https://portal.azure.com/).
+
+2. On the Hub menu, click **Browse** and in the list of resources, type **Recovery Services**. As you begin typing, the list filters based on your input. Click **Recovery Services vault**.
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
 
-    Recovery Services コンテナーの一覧が表示されます。
+    The list of recovery services vaults are displayed.
 
-3. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
+3. On the **Recovery Services vaults** menu, click **Add**.
 
     ![Create Recovery Services Vault step 2](./media/backup-azure-vms-first-look-arm/rs-vault-menu.png)
 
-    Recovery Services コンテナー ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、および **[場所]** を指定するように求められます。
+    The Recovery Services vault blade opens, prompting you to provide a **Name**, **Subscription**, **Resource group**, and **Location**.
 
     ![Create Recovery Services vault step 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
 
-4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。名前は Azure サブスクリプションに対して一意である必要があります。2 ～ 50 文字の名前を入力します。名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+4. For **Name**, enter a friendly name to identify the vault. The name needs to be unique for the Azure subscription. Type a name that contains between 2 and 50 characters. It must start with a letter, and can contain only letters, numbers, and hyphens.
 
-5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
+5. Click **Subscription** to see the available list of subscriptions. If you are not sure which subscription to use, use the default (or suggested) subscription. There are multiple choices only if your organizational account is associated with multiple Azure subscriptions.
 
-6. **[リソース グループ]** をクリックして使用可能なリソース グループを表示するか、**[新規]** をクリックしてリソース グループを作成します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
+6. Click **Resource group** to see the available list of Resource groups, or click **New** to create a Resource group. For complete information on Resource groups, see [Azure Resource Manager overview](../resource-group-overview.md)
 
-7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。コンテナーは、保護する仮想マシンと同じリージョンにある**必要があります**。
+7. Click **Location** to select the geographic region for the vault. The vault **must** be in the same region as the virtual machines that you want to protect.
 
-    >[AZURE.IMPORTANT] VM がどの場所に存在するかが不明な場合は、コンテナーを作成するダイアログを閉じて、ポータルで仮想マシンの一覧に移動します。複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成します。最初の場所でコンテナーを作成してから、次の場所に移動してください。バックアップ データを格納するストレージ アカウントを指定する必要はありません。これは、Recovery Services コンテナーと Azure Backup サービスにより自動的に処理されます。
+    >[AZURE.IMPORTANT] If you are unsure of the location in which your VM exists, close out of the vault creation dialog, and go to the list of Virtual Machines in the portal. If you have virtual machines in multiple regions, create a recovery services vault in each region. Create the vault in the first location before going to the next location. There is no need to specify storage accounts to store the backup data--the recovery services vault and the Azure Backup service handle this automatically.
 
-8. **[作成]** をクリックします。Recovery Services コンテナーの作成に時間がかかることがあります。ポータルの右上隅で、状態の通知を監視します。コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
+8. Click **Create**. It can take a while for the recovery services vault to be created. Monitor the status notifications in the upper right-hand area in the portal. Once your vault is created, it appears in the list of recovery services vaults.
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
+    ![List of backup vaults](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
 
-これで、コンテナーが作成されました。次は、ストレージ レプリケーションを設定する方法について説明します。
+Now that you've created your vault, learn how to set the storage replication.
 
-### ストレージ レプリケーションの設定
+### <a name="set-storage-replication"></a>Set Storage Replication
 
-ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。既定では、コンテナーには geo 冗長ストレージがあります。プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。永続性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。[geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細について、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事を参照してください。
+The storage replication option allows you to choose between geo-redundant storage and locally redundant storage. By default, your vault has geo-redundant storage. Leave the option set to geo-redundant storage if this is your primary backup. Choose locally redundant storage if you want a cheaper option that isn't as durable. Read more about [geo-redundant](../storage/storage-redundancy.md#geo-redundant-storage) and [locally redundant](../storage/storage-redundancy.md#locally-redundant-storage) storage options in the [Azure Storage replication overview](../storage/storage-redundancy.md).
 
-ストレージ レプリケーション設定を編集するには、次の手順を実行します。
+To edit the storage replication setting:
 
-1. コンテナーを選択して、コンテナーのダッシュボードと [設定] ブレードを開きます。**[設定]** ブレードが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
+1. Select your vault to open the vault dashboard and the Settings blade. If the **Settings** blade doesn't open, click **All settings** in the vault dashboard.
 
-2. **[設定]** ブレードで、**[バックアップ インフラストラクチャ]**、**[バックアップ構成]** の順にクリックして、**[バックアップ構成]** ブレードを開きます。**[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
+2. On the **Settings** blade, click **Backup Infrastructure** > **Backup Configuration** to open the **Backup Configuration** blade. On the **Backup Configuration** blade, choose the storage replication option for your vault.
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+    ![List of backup vaults](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
-    コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
+    After choosing the storage option for your vault, you are ready to associate the VM with the vault. To begin the association, you should discover and register the Azure virtual machines.
 
-## バックアップの目標を選択し、ポリシーを設定し、保護する項目の定義する
+## <a name="select-a-backup-goal,-set-policy-and-define-items-to-protect"></a>Select a backup goal, set policy and define items to protect
 
-VM をコンテナーに登録する前に、サブスクリプションに追加された新しい仮想マシンが特定されるように検出プロセスを実行してください。このプロセスでは、サブスクリプションに含まれる仮想マシンの一覧を、クラウド サービス名、リージョンなどの追加情報と共に Azure に照会します。Azure ポータルのシナリオは、Recovery Services コンテナーに何を格納するのかを指しています。ポリシーは、復旧ポイントを作成する頻度と時期のスケジュールです。ポリシーには、復旧ポイントの保持期間も含まれます。
+Before registering a VM with a vault, run the discovery process to ensure that any new virtual machines that have been added to the subscription are identified. The process queries Azure for the list of virtual machines in the subscription, along with additional information like the cloud service name and the region. In the Azure portal, scenario refers to what you are going to put into the recovery services vault. Policy is the schedule for how often and when recovery points are taken. Policy also includes the retention range for the recovery points.
 
-1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。Recovery Services コンテナーが開かれていなくても、Azure ポータルが表示されている場合は、ハブ メニューの **[参照]** をクリックします。
+1. If you already have a recovery services vault open, proceed to step 2. If you do not have a recovery services vault open, but are in the Azure portal, on the Hub menu, click **Browse**.
 
-  - リソース ボックスに「**Recovery Services**」と入力します。
-  - 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** が表示されたら、それをクリックします。
+  - In the list of resources, type **Recovery Services**.
+  - As you begin typing, the list filters based on your input. When you see **Recovery Services vaults**, click it.
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
 
-    Recovery Services コンテナーの一覧が表示されます。
-  - Recovery Services コンテナーの一覧で、コンテナーを選択します。
+    The list of recovery services vaults appears.
+  - From the list of recovery services vaults, select a vault.
 
-    選択したコンテナーのダッシュボードが開きます。
+    The selected vault dashboard opens.
 
     ![Open vault blade](./media/backup-azure-vms-first-look-arm/vault-settings.png)
 
-2. コンテナーのダッシュボード メニューの **[バックアップ]** をクリックして、[バックアップ] ブレードを開きます。
+2. From the vault dashboard menu, click **Backup** to open the Backup blade.
 
     ![Open Backup blade](./media/backup-azure-vms-first-look-arm/backup-button.png)
 
-    ブレードを開くと、Backup サービスがサブスクリプション内の新しい VM を検索します。
+    When the blade opens, the Backup service searches for any new VMs in the subscription.
 
     ![Discover VMs](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
 
-3. [バックアップ] ブレードで、**[バックアップの目標]** をクリックして、[バックアップの目標] ブレードを開きます。
+3. On the Backup blade, click **Backup goal** to open the Backup Goal blade.
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
 
-4. [Backup Goal] \(バックアップの目標) ブレードで、**[Where is your workload running]** (ワークロードの実行場所) を [Azure] に、**[What do you want to backup]** (バックアップ対象) を [仮想マシン] に設定し、**[OK]** をクリックします。
+4. On the Backup Goal blade, set **Where is your workload running** to Azure and  **What do you want to backup** to Virtual machine, then click **OK**.
 
-    [Backup Goal] \(バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
+    The Backup Goal blade closes and the Backup policy blade opens.
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
 
-5. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、**[OK]** をクリックします。
+5. On the Backup policy blade, select the backup policy you want to apply to the vault and click **OK**.
 
     ![Select backup policy](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
 
-    既定のポリシーの詳細が一覧表示されます。ポリシーを作成する場合は、ドロップダウン メニューの **[新規作成]** を選択します。このドロップダウン メニューでは、スナップショットの作成時刻を午後 7 時などに切り替えることもできます。バックアップ ポリシーを定義する手順については、「[バックアップ ポリシーの定義](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)」を参照してください。**[OK]** をクリックすると、バックアップ ポリシーがコンテナーに関連付けられます。
+    The details of the default policy are listed in the details. If you want to create a policy, select **Create New** from the drop-down menu. The drop-down menu also provides an option to switch the time when the snapshot is taken, to 7PM. For instructions on defining a backup policy, see [Defining a backup policy](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Once you click **OK**, the backup policy is associated with the vault.
 
-    次に、コンテナーに関連付ける VM を選択します。
+    Next choose the VMs to associate with the vault.
 
-6. 指定したポリシーに関連付ける仮想マシンを選択し、**[選択]** をクリックします。
+6. Choose the virtual machines to associate with the specified policy and click **Select**.
 
     ![Select workload](./media/backup-azure-vms-first-look-arm/select-vms-to-backup-new.png)
 
-    目的の VM が表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその VM が存在することを確認します。
+    If you do not see the desired VM, check that it exists in the same Azure location as the Recovery Services vault.
 
-7. コンテナーの設定をすべて定義したところで、[バックアップ] ブレードで、ページの下部にある **[バックアップの有効化]** をクリックします。これにより、ポリシーがコンテナーと VM にデプロイされます。
+7. Now that you have defined all settings for the vault, in the Backup blade click **Enable Backup** at the bottom of the page. This deploys the policy to the vault and the VMs.
 
     ![Enable Backup](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
 
 
-## 初回バックアップ
+## <a name="initial-backup"></a>Initial backup
 
-バックアップ ポリシーが仮想マシンにデプロイされても、データがバックアップされたわけではありません。既定では、(バックアップ ポリシーで定義されたように) スケジュールされた最初のバックアップが初回バックアップとなります。初回バックアップが実行されるまで、**[バックアップ ジョブ]** ブレードの [前回のバックアップの状態] には、**[警告 (初回のバックアップが保留中)]** と表示されます。
+Once a backup policy has been deployed on the virtual machine, that does not mean the data has been backed up. By default, the first scheduled backup (as defined in the backup policy) is the initial backup. Until the initial backup occurs, the Last Backup Status on the **Backup Jobs** blade shows as **Warning(initial backup pending)**.
 
 ![Backup pending](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
 
-初回バックアップがすぐに開始される予定でない場合は、**[今すぐバックアップ]** を実行することをお勧めします。
+Unless your initial backup is due to begin soon, it is recommended that you run **Back up Now**.
 
-**[今すぐバックアップ]** を実行するには、次の手順に従います。
+To run **Back up Now**:
 
-1. コンテナー ダッシュボードの **[バックアップ]** タイルで、**[Azure Virtual Machines]** をクリックします。<br/> ![Settings icon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. On the vault dashboard, on the **Backup** tile, click **Azure Virtual Machines** <br/>
+    ![Settings icon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
 
-    **[バックアップ項目]** ブレードが開きます。
+    The **Backup Items** blade opens.
 
-2. **[バックアップ項目]** ブレードで、バックアップするコンテナーを右クリックし、**[今すぐバックアップ]** をクリックします。
+2. On the **Backup Items** blade, right-click the vault you want to back up, and click **Backup now**.
 
     ![Settings icon](./media/backup-azure-vms-first-look-arm/back-up-now.png)
 
-    バックアップ ジョブがトリガーされます。<br/>
+    The Backup job is triggered. <br/>
 
     ![Backup job triggered](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
 
-3. 初回バックアップが完了したことを確認するには、コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure Virtual Machines]** をクリックします。
+3. To view that your initial backup has completed, on the vault dashboard, on the **Backup Jobs** tile, click **Azure virtual machines**.
 
     ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
 
-    [バックアップ ジョブ] ブレードが開きます。
+    The Backup Jobs blade opens.
 
-4. [バックアップ ジョブ] ブレードでは、すべてのジョブの状態を確認できます。
+4. In the Backup jobs blade, you can see the status of all jobs.
 
     ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
 
-    >[AZURE.NOTE] Azure Backup サービスは、バックアップ操作の一部として、各 VM のバックアップ拡張機能に対して、すべての書き込みをフラッシュし、整合性のあるスナップショットを作成するためのコマンドを発行します。
+    >[AZURE.NOTE] As a part of the backup operation, the Azure Backup service issues a command to the backup extension in each VM to flush all writes and take a consistent snapshot.
 
-    バックアップ ジョブが完了すると、状態は *[完了]* になります。
+    When the backup job is finished, the status is *Completed*.
 
 [AZURE.INCLUDE [backup-create-backup-policy-for-vm](../../includes/backup-create-backup-policy-for-vm.md)]
 
-## 仮想マシンに VM エージェントをインストールする
+## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Install the VM Agent on the virtual machine
 
-この情報は、必要な場合に備えて提供されます。バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。ただし、VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。オンプレミスのデータセンターから移行された VM には、VM エージェントがインストールされていません。このような場合は、VM エージェントをインストールする必要があります。Azure VM のバックアップで問題が発生する場合は、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (次の表を参照)。カスタム VM を作成する場合は、仮想マシンをプロビジョニングする前に、[**[VM エージェントのインストール]** チェック ボックスがオンになっていることを確認](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)してください。
+This information is provided in case it is needed. The Azure VM Agent must be installed on the Azure virtual machine for the Backup extension to work. However, if your VM was created from the Azure gallery, then the VM Agent is already present on the virtual machine. VMs that are migrated from on-premises datacenters would not have the VM Agent installed. In such a case, the VM Agent needs to be installed. If you have problems backing up the Azure VM, check that the Azure VM Agent is correctly installed on the virtual machine (see the table below). If you create a custom VM, [ensure the **Install the VM Agent** check box is selected](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md) before the virtual machine is provisioned.
 
-詳細については、「[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)」と「[インストール方法](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md)」に関するページをご覧ください。
+Learn about the [VM Agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) and [how to install it](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md).
 
-次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
+The following table provides additional information about the VM Agent for Windows and Linux VMs.
 
-| **操作** | **Windows** | **Linux** |
+| **Operation** | **Windows** | **Linux** |
 | --- | --- | --- |
-| VM エージェントのインストール | <li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 | <li>GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent)をインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 |
-| VM エージェントの更新 | VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 | [Linux VM エージェントの更新](../virtual-machines-linux-update-agent.md)に関する手順に従います。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
-| VM エージェントのインストールの検証 | <li>Azure VM で *C:\\WindowsAzure\\Packages* フォルダーに移動します。<li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 | 該当なし |
+| Installing the VM Agent | <li>Download and install the [agent MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). You need Administrator privileges to complete the installation. <li>[Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed. | <li> Install the latest [Linux agent](https://github.com/Azure/WALinuxAgent) from GitHub. You need Administrator privileges to complete the installation. <li> [Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed. |
+| Updating the VM Agent | Updating the VM Agent is as simple as reinstalling the [VM Agent binaries](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Ensure that no backup operation is running while the VM agent is being updated. | Follow the instructions on [updating the Linux VM Agent ](../virtual-machines-linux-update-agent.md). <br>Ensure that no backup operation is running while the VM Agent is being updated. |
+| Validating the VM Agent installation | <li>Navigate to the *C:\WindowsAzure\Packages* folder in the Azure VM. <li>You should find the WaAppAgent.exe file present.<li> Right-click the file, go to **Properties**, and then select the **Details** tab. The Product Version field should be 2.6.1198.718 or higher. | N/A |
 
 
-### バックアップ拡張機能
+### <a name="backup-extension"></a>Backup extension
 
-VM エージェントが仮想マシンにインストールされると、Azure Backup サービスによって VM エージェントにバックアップ拡張機能がインストールされます。Azure Backup サービスは、バックアップ拡張機能のアップグレードと修正プログラムの適用をシームレスに自動実行します。
+Once the VM Agent is installed on the virtual machine, the Azure Backup service installs the backup extension to the VM Agent. The Azure Backup service seamlessly upgrades and patches the backup extension without additional user intervention.
 
-バックアップ拡張機能は、VM が実行されているかどうかにかかわらず、Backup サービスによってインストールされます。VM が実行されている場合は、アプリケーション整合性復旧ポイントを取得できる可能性が最も高くなります。ただし、Azure Backup サービスは、VM がオフになっている場合でも VM のバックアップを続行しますが、拡張機能はインストールされない可能性があります。これはオフライン VM と呼ばれます。この場合、復旧ポイントは、"*クラッシュ整合性*" 復旧ポイントになります。
+The backup extension is installed by the Backup service whether the VM is running. A running VM provides the greatest chance of getting an application-consistent recovery point. However, the Azure Backup service continues to back up the VM even if it is turned off, and the extension could not be installed. This is known as Offline VM. In this case, the recovery point will be *crash consistent*.
 
-## トラブルシューティング情報
-この記事のタスクを行っていて問題が発生した場合は、[トラブルシューティング ガイダンス](backup-azure-vms-troubleshoot.md)を参照してください。
+## <a name="troubleshooting-information"></a>Troubleshooting information
+If you have issues accomplishing some of the tasks in this article, consult the [Troubleshooting guidance](backup-azure-vms-troubleshoot.md).
 
 
-## 疑問がある場合
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
+## <a name="questions?"></a>Questions?
+If you have questions, or if there is any feature that you would like to see included, [send us feedback](http://aka.ms/azurebackup_feedback).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

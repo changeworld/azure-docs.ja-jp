@@ -1,103 +1,110 @@
 <properties
-	pageTitle="Azure Automation の概要 | Microsoft Azure"
-	description="Azure Automation が提供する価値について説明し、よく寄せられる質問への回答を示して、Runbook と Azure Automation DSC の作成と使用を始められるようにします。"
-	services="automation"
-	documentationCenter=""
-	authors="mgoedtel"
-	manager="jwhit"
-	editor=""
-	keywords="Automation とは, Azure Automation, Azure Automation の例"/>
+    pageTitle="What is Azure Automation | Microsoft Azure"
+    description="Learn what value Azure Automation provides and get answers to common questions so that you can get started in creating, using runbooks and Azure Automation DSC."
+    services="automation"
+    documentationCenter=""
+    authors="mgoedtel"
+    manager="jwhit"
+    editor=""
+    keywords="what is automation, azure automation, azure automation examples"/>
 <tags
-	ms.service="automation"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article" 
-	ms.date="05/10/2016"
-	ms.author="magoedte;bwren"/>
-
-# Azure Automation の概要
-
-ユーザーは Microsoft Azure Automation を使用すると、クラウド環境およびエンタープライズ環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を入手できます。時間を節約し、普段の管理タスクの信頼性が向上し、一定の間隔で自動的に実行されるようにスケジュールを設定します。Runbook を使用してプロセスを自動化したり、Desired State Configuration を使用して構成管理を自動化したりすることができます。この記事では、Azure Automation の概要を説明し、よく寄せられる質問に回答します。異なるトピックの詳細については、このライブラリの他の記事を参照してください。
+    ms.service="automation"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article" 
+    ms.date="05/10/2016"
+    ms.author="magoedte;bwren"/>
 
 
-## Runbook でのプロセスの自動化
+# <a name="azure-automation-overview"></a>Azure Automation overview
 
-Runbook は、Azure Automation で自動化されたプロセスを実行する一連のタスクです。仮想マシンの開始やログ エントリの作成といった簡単な処理だけでなく、他の小さい Runbook を結合して複数のリソースまたは複数のクラウドやオンプレミスの環境を対象とした複雑な処理を実行する複雑な Runbook も作成できます。
-
-たとえば、SQL Database が最大サイズに近づいたときにサイズを減らす既存の手動プロセスがあり、それにはサーバーへの接続、データベースへの接続、データベースの現在のサイズの取得、しきい値を超えたかどうかの確認、データベースの縮小とユーザーへの通知などの複数の手順が含まれる場合があります。手動でこれらの各手順を実行するの代わりに、1 つのプロセスとしてこれらすべてのタスクを実行する Runbook を作成できます。Runbook を開始し、SQL サーバー名、データベース名、受信者の電子メール アドレスなどの必要な情報を提供した後は、プロセスが完了するまでユーザーが手を出す必要はありません。
+Microsoft Azure Automation provides a way for users to automate the manual, long-running, error-prone, and frequently repeated tasks that are commonly performed in a cloud and enterprise environment. It saves time and increases the reliability of regular administrative tasks and even schedules them to be automatically performed at regular intervals. You can automate processes using runbooks or automate configuration management using Desired State Configuration. This article provides brief overview of Azure Automation and answers some common questions. You can refer to other articles in this library for more detailed information on the different topics.
 
 
-## Runbook が自動化できるものは何ですか。
+## <a name="automating-processes-with-runbooks"></a>Automating processes with runbooks
 
-Azure Automation での Runbook は、Windows PowerShell または Windows PowerShell Workflow に基づいているため、PowerShell で実行できることはすべて実行できます。アプリケーションまたはサービスに API がある場合、Runbook はそれを操作できます。アプリケーションに対する PowerShell モジュールがある場合は、そのモジュールを Azure Automation に読み込み、コマンドレットを Runbook に組み込むことができます。Azure Automation の Runbook は、Azure クラウド内で実行するので、クラウド リソースや、クラウドからアクセスできる外部リソースにアクセスできます。[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) を使用すると、Runbook はローカル データ センターで実行してローカル リソースを管理できます。
+A runbook is a set of tasks that perform some automated process in Azure Automation. It may be a simple process such as starting a virtual machine and creating a log entry, or you may have a complex runbook that combines other smaller runbooks to perform a complex process across multiple resources or even multiple clouds and on premise environments.  
 
-
-## コミュニティからの Runbook の取得
-
-[Runbook Gallery](automation-runbook-gallery.md#runbooks-in-runbook-gallery) で入手できるマイクロソフトやコミュニティが提供する Runbook は、そのまま環境内で使用することも、独自の目的に合わせてカスタマイズすることもできます。独自の Runbook を作成する方法を知るための参考情報としても役に立ちます。他のユーザーにも役に立つと思われる Runbook をギャラリーに提供して貢献することもできます。
+For example, you might have an existing manual process for truncating a SQL database if it’s approaching maximum size that includes multiple steps such as connecting to the server, connecting to the database, get the current size of database, check if threshold has exceeded and then truncate it and notify user. Instead of manually performing each of these steps, you could create a runbook that would perform all of these tasks as a single process. You would start the runbook, provide the required information such as the SQL server name, database name, and recipient e-mail and then sit back while the process completes. 
 
 
-## Azure Automation での Runbook の作成 
+## <a name="what-can-runbooks-automate?"></a>What can runbooks automate?
 
-最初から[独自の Runbook を作成する](automation-creating-importing-runbook.md)ことも、[Runbook Gallery](http://msdn.microsoft.com/library/azure/dn781422.aspx) の Runbook を独自の要件に合わせて修正することもできます。要件と PowerShell の経験に基づいて選択できる 3 つの [Runbook の種類](automation-runbook-types.md)があります。PowerShell コードを直接操作する場合は、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell Workflow Runbook](automation-runbook-types.md#powershell-workflow-runbooks) をオフラインでまたは Azure ポータルで[テキスト エディター](http://msdn.microsoft.com/library/azure/dn879137.aspx)を使用して編集できます。コードを見ないで Runbook を編集する場合は、Azure ポータルで[グラフィカル エディター](automation-graphical-authoring-intro.md)を使用して、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) を作成できます。
+Runbooks in Azure Automation are based on Windows PowerShell or Windows PowerShell Workflow, so they do anything that PowerShell can do. If an application or service has an API, then a runbook can work with it. If you have a PowerShell module for the application, then you can load that module into Azure Automation and include those cmdlets in your runbook. Azure Automation runbooks run in the Azure cloud and can access any cloud resources or external resources that can be accessed from the cloud. Using [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), runbooks can run in your local data center to manage local resources. 
 
-読むより見る方がよければ、 2015 年 5 月に行われた Microsoft Ignite セッションのビデオをご覧ください。注: このビデオで説明されている概念と機能は正しいのですが、このビデオが録画されたころよりも Azure Automation は大幅に改善され、現在では Azure ポータルの UI が増え、サポートされる機能も増えました。
+
+## <a name="getting-runbooks-from-the-community"></a>Getting runbooks from the community
+
+The [Runbook Gallery](automation-runbook-gallery.md#runbooks-in-runbook-gallery) contains runbooks from Microsoft and the community that you can either use unchanged in your environment or customize them for your own purposes. They are also useful to as references to learn how to create your own runbooks. You can even contribute your own runbooks to the gallery that you think other users may find useful. 
+
+
+## <a name="creating-runbooks-with-azure-automation"></a>Creating Runbooks with Azure Automation 
+
+You can [create your own runbooks](automation-creating-importing-runbook.md) from scratch or modify runbooks from the [Runbook Gallery](http://msdn.microsoft.com/library/azure/dn781422.aspx) for your own requirements. There are three different [runbook types](automation-runbook-types.md) that you can choose from based on your requirements and PowerShell experience. If you prefer to work directly with the PowerShell code, then you can use a [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) or [PowerShell Workflow runbook](automation-runbook-types.md#powershell-workflow-runbooks) that you edit offline or with the [textual editor](http://msdn.microsoft.com/library/azure/dn879137.aspx) in the Azure portal. If you prefer to edit a runbook without being exposed to the underlying code, then you can create a [Graphical runbook](automation-runbook-types.md#graphical-runbooks) using the [graphical editor](automation-graphical-authoring-intro.md) in the Azure portal. 
+
+Prefer watching to reading? Have a look at the below video from Microsoft Ignite session in May 2015. Note: While the concepts and features discussed in this video are correct, Azure Automation has progressed a lot since this video was recorded, it now has a more extensive UI in the Azure portal, and supports additional capabilities.
 
 > [AZURE.VIDEO microsoft-ignite-2015-automating-operational-and-management-tasks-using-azure-automation]
 
 
-## Desired State Configuration での構成管理の自動化 
+## <a name="automating-configuration-management-with-desired-state-configuration"></a>Automating configuration management with Desired State Configuration 
 
-[PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx) は管理プラットフォームであり、宣言型 PowerShell 構文を使用して物理ホストと仮想マシンの構成を管理、デプロイ、適用できます。ターゲット コンピューターが自動的に取得して適用できる構成を、1 つの DSC プル サーバーで一元的に定義できます。DSC が提供する一連の PowerShell コマンドレットを使用して、構成とリソースを管理できます。
+[PowerShell DSC](https://technet.microsoft.com/library/dn249912.aspx) is a management platform that allows you to manage, deploy and enforce configuration for physical hosts and virtual machines using a declarative PowerShell syntax. You can define configurations on a central DSC Pull Server that target machines can automatically retrieve and apply. DSC provides a set of PowerShell cmdlets that you can use to manage configurations and resources.  
 
-[Azure Automation DSC](automation-dsc-overview.md) は PowerShell DSC 用のクラウド ベースのソリューションであり、エンタープライズ環境に必要なサービスを提供します。DSC リソースを Azure Automation で管理し、Azure クラウド内の DSC プル サーバーから構成を取得する仮想マシンおよび物理コンピューターに構成を適用できます。また、Azure Automation DSC が提供するレポート サービスは、ノードが割り当てられている構成から逸脱したときや、新しい構成が適用されたときなど、重要なイベントをユーザーに通知します。
-
-
-## Azure Automation での独自の DSC 構成の作成
-
-[DSC 構成](automation-dsc-overview.md#azure-automation-dsc-terms)はノードの望ましい状態を指定します。複数のノードで同じ構成を適用し、すべてが同一の状態を維持できます。ローカル コンピューターで任意のテキスト エディターを使用して構成を作成した後、Azure Automation にインポートしてコンパイルし、ノードに適用できます。
+[Azure Automation DSC](automation-dsc-overview.md) is a cloud based solution for PowerShell DSC that provides services required for enterprise environments.  You can manage your DSC resources in Azure Automation and apply configurations to virtual or physical machines that retrieve them from a DSC Pull Server in the Azure cloud.  It also provides reporting services that inform you of important events such as when nodes have deviated from their assigned configuration and when a new configuration has been applied. 
 
 
-## モジュールと構成の取得 
+## <a name="creating-your-own-dsc-configurations-with-azure-automation"></a>Creating your own DSC configurations with Azure Automation
 
-Runbook や DSC の構成で使用できるコマンドレットを含む [PowerShell モジュール](automation-runbook-gallery.md#modules-in-powershell-gallery)を、[PowerShell ギャラリー](http://www.powershellgallery.com/)から取得できます。このギャラリーを Azure ポータルから起動して、Azure Automation にモジュールを直接インポートできます。または、手動でダウンロードしてインポートすることもできます。Azure ポータルからは、直接モジュールをインストールすることはできませんが、他のモジュールと同じように、ダウンロードしてインストールすることはできます。
-
-
-## Azure Automation の実際の適用例 
-
-以下では、Azure Automation を使用したさまざまな自動化のシナリオの例を示します。
-
-* 仮想マシンを作成し、異なる Azure サブスクリプションにコピーします。 
-* ローカル コンピューターから Azure BLOB ストレージ コンテナーへのファイルのコピーをスケジュールします。 
-* サービス拒否攻撃が検出されたときにクライアントからの要求を拒否するなど、セキュリティ機能を自動化します。 
-* コンピューターが構成されているセキュリティ ポリシーに常に適合しているようにします。
-* クラウドとオンプレミスのインフラストラクチャへのアプリケーション コードの継続的なデプロイメントを管理します。 
-* ラボ環境用の Active Directory フォレストを Azure に作成します。 
-* DB が最大サイズに近づいたら、SQL Database のテーブルを切り捨てます。 
-* Azure Web サイトの環境設定をリモートから更新します。 
+[DSC configurations](automation-dsc-overview.md#azure-automation-dsc-terms) specify the desired state of a node.  Multiple nodes can apply the same configuration to assure that they all maintain an identical state.  You can create a configuration using any text editor on your local machine and then import it into Azure Automation where you can compile it and apply it nodes.
 
 
-## Azure Automation と他のオートメーション ツールを関連付けるにはどうすればよいですか。
+## <a name="getting-modules-and-configurations"></a>Getting modules and configurations 
 
-[Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) は、プライベート クラウドでの管理タスクを自動化するためのものです。[Microsoft Azure Pack](https://www.microsoft.com/ja-JP/server-cloud/) のコンポーネントとしてデータ センターにローカルにインストールされます。SMA と Azure Automation では Windows PowerShell と Windows PowerShell Workflow と同じ Runbook 形式を使用しますが、SMA では[グラフィカル Runbook](automation-graphical-authoring-intro.md) はサポートされません。
-
-[System Center 2012 Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) はオンプレミスのリソースを自動化するためのものです。Azure Automation および Service Management Automation とは異なる形式の Runbook を使用し、スクリプトを作成する必要なしに Runbook を作成するためのグラフィカル インターフェイスを備えています。その Runbook は、Orchestrator 用に特に作成された統合パックのアクティビティで構成されます。
+You can get [PowerShell modules](automation-runbook-gallery.md#modules-in-powershell-gallery) containing cmdlets that you can use in your runbooks and DSC configurations from the [PowerShell Gallery](http://www.powershellgallery.com/). You can launch this gallery from the Azure portal and import modules directly into Azure Automation, or you can download and import them manually. You cannot install the modules directly from the Azure portal, but you can download them install them as you would any other module. 
 
 
-## 詳細な情報はどこで入手できますか。 
+## <a name="example-practical-applications-of-azure-automation"></a>Example practical applications of Azure Automation 
 
-Azure Automation や独自の Runbook の作成方法の詳細を確認できる多数のリソースが用意されています。
+Following are just a few examples of what are the kinds of automation scenarios with Azure Automation. 
 
-* ここは、**Azure Automation ライブラリ**です。このライブラリの記事では、Azure Automation の構成や管理、また独自の Runbook の作成に関する完全なドキュメントが提供されます。 
-* [Azure PowerShell コマンドレット](http://msdn.microsoft.com/library/jj156055.aspx)では、Windows PowerShell を使用した Azure の操作の自動化に関する情報が提供されます。Runbook ではこれらのコマンドレットを使用して Azure リソースを操作します。 
-* [管理ブログ](https://azure.microsoft.com/blog/tag/azure-automation/)では、Azure Automation およびその他の Microsoft の管理テクノロジに関する最新情報を提供しています。このブログをサブスクライブすると、Azure Automation チームによる最新の情報を把握できます。 
-* [Automation フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=390561)では Azure Automation に関する質問を投稿でき、マイクロソフトや Automation コミュニティから回答を取得できます。 
-* [Azure Automation コマンドレット](https://msdn.microsoft.com/library/mt244122.aspx)は、管理タスクを自動化するための情報を提供します。Automation アカウント、資産、Runbook、DSC を管理するコマンドレットが含まれます。
+* Create and copy virtual machines in different Azure subscriptions. 
+* Schedule file copies from a local machine to an Azure Blob Storage container. 
+* Automate security functions such as deny requests from a client when a denial of service attack is detected. 
+* Ensure machines continually align with configured security policy.
+* Manage continuous deployment of application code across cloud and on premises infrastructure. 
+* Build an Active Directory forest in Azure for your lab environment. 
+* Truncate a table in a SQL database if DB is approaching maximum size. 
+* Remotely update environment settings for an Azure website. 
 
 
-## フィードバックを提供できますか。 
+## <a name="how-does-azure-automation-relate-to-other-automation-tools?"></a>How does Azure Automation relate to other automation tools?
 
-**フィードバックをお待ちしています。** Azure Automation の Runbook ソリューションや統合モジュールを探索している場合は、スクリプト センターにスクリプトの要求を投稿することができます。Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback) にお寄せください。よろしくお願いいたします。
+[Service Management Automation (SMA)](http://technet.microsoft.com/library/dn469260.aspx) is intended to automate management tasks in the private cloud. It is installed locally in your data center as a component of [Microsoft Azure Pack](https://www.microsoft.com/en-us/server-cloud/). SMA and Azure Automation use the same runbook format based on Windows PowerShell and Windows PowerShell Workflow, but SMA does not support [graphical runbooks](automation-graphical-authoring-intro.md).  
 
-<!---HONumber=AcomDC_0511_2016-->
+[System Center 2012 Orchestrator](http://technet.microsoft.com/library/hh237242.aspx) is intended for automation of on-premises resources. It uses a different runbook format than Azure Automation and Service Management Automation and has a graphical interface to create runbooks without requiring any scripting. Its runbooks are composed of activities from Integration Packs that are written specifically for Orchestrator. 
+
+
+## <a name="where-can-i-get-more-information?"></a>Where can I get more information? 
+
+A variety of resources are available for you to learn more about Azure Automation and creating your own runbooks. 
+
+* **Azure Automation Library** is where you are right now. The articles in this library provide complete documentation on the configuration and administration of Azure Automation and for authoring your own runbooks. 
+* [Azure PowerShell cmdlets](http://msdn.microsoft.com/library/jj156055.aspx) provides information for automating Azure operations using Windows PowerShell. Runbooks use these cmdlets to work with Azure resources. 
+* [Management Blog](https://azure.microsoft.com/blog/tag/azure-automation/) provides the latest information on Azure Automation and other management technologies from Microsoft. You should subscribe to this blog to stay up to date with the latest from the Azure Automation team. 
+* [Automation Forum](http://go.microsoft.com/fwlink/p/?LinkId=390561) allows you to post questions about Azure Automation to be addressed by Microsoft and the Automation community. 
+* [Azure Automation Cmdlets](https://msdn.microsoft.com/library/mt244122.aspx) provides information for automating administration tasks. It contains cmdlets to manage Automation accounts, assets, runbooks, DSC.
+
+
+## <a name="can-i-provide-feedback?"></a>Can I provide feedback? 
+
+**Please give us feedback!** If you are looking for an Azure Automation runbook solution or an integration module, post a Script Request on Script Center. If you have feedback or feature requests for Azure Automation, post them on [User Voice](http://feedback.windowsazure.com/forums/34192--general-feedback). Thanks! 
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

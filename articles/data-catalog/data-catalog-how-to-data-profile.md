@@ -1,94 +1,99 @@
 <properties
-	pageTitle="データ ソースのプロファイリングを行う方法"
-	description="この記事では、Azure Data Catalog でデータ ソースを登録するときにテーブル レベルのデータ プロファイルと列レベルのデータ プロファイルを含める方法と、データ プロファイルを基にデータ ソースについて理解する方法について説明します。"
-	services="data-catalog"
-	documentationCenter=""
-	authors="spelluru"
-	manager="NA"
-	editor=""
-	tags=""/>
+    pageTitle="How to Data profile data sources"
+    description="How-to article highlighting how to include table- and column-level data profiles when registering data sources in Azure Data Catalog, and how to use data profiles to understand data sources."
+    services="data-catalog"
+    documentationCenter=""
+    authors="spelluru"
+    manager="NA"
+    editor=""
+    tags=""/>
 <tags
-	ms.service="data-catalog"
-	ms.devlang="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"
-	ms.workload="data-catalog"
-	ms.date="09/13/2016"
-	ms.author="spelluru"/>
+    ms.service="data-catalog"
+    ms.devlang="NA"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"
+    ms.workload="data-catalog"
+    ms.date="09/13/2016"
+    ms.author="spelluru"/>
 
-# データ ソースのプロファイリング
 
-## はじめに
+# <a name="data-profile-data-sources"></a>Data profile data sources
 
-**Microsoft Azure Data Catalog** は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。つまり、**Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。データ ソースが **Azure Data Catalog** に登録されると、そのメタデータはサービスによってコピーされてインデックスが付けられます。ただし、これで終わりではありません。
+## <a name="introduction"></a>Introduction
 
-**Azure Data Catalog** の**データのプロファイリング**機能は、カタログでサポートされているデータ ソースからのデータを分析し、そのデータに関する統計と情報を収集します。データ資産のプロファイルは簡単に追加できます。データ資産を登録する際に、データ ソース登録ツールで **[データ プロファイルを含める]** を選択してください。
+**Microsoft Azure Data Catalog** is a fully managed cloud service that serves as a system of registration and system of discovery for enterprise data sources. In other words, **Azure Data Catalog** is all about helping people discover, understand, and use data sources, and helping organizations to get more value from their existing data. When a data source is registered with **Azure Data Catalog**, its metadata is copied and indexed by the service, but the story doesn’t end there.
 
-## データのプロファイリングとは
+The **Data Profiling** feature of **Azure Data Catalog** examines the data from supported data sources in your catalog and collects statistics and information about that data. It's easy to include a profile of your data assets. When you register a data asset, choose **Include Data Profile** in the data source registration tool.
 
-データのプロファイリングとは、登録されているデータ ソース内のデータを分析し、そのデータに関する統計と情報を収集する処理です。これらの統計情報は、データ ソースの検出時に、ビジネス上の問題解決に向けたデータの適合性を判断する際に役立てることができます。
+## <a name="what-is-data-profiling"></a>What is Data Profiling
+
+Data profiling examines the data in the data source being registered, and collects statistics and information about that data. During data source discovery, these statistics can help you determine the suitability of the data to solve their business problem.
 
 <!-- In [How to discover data sources](data-catalog-how-to-discover.md), you learn about **Azure Data Catalog's** extensive search capabilities including searching for data assets that have a profile. See [How to include a data profile when registering a data source](#howto). -->
 
-データのプロファイリングは、次のデータ ソースでサポートされます。
+The following data sources support data profiling:
 
-- SQL Server (Azure SQL DB、Azure SQL Data Warehouse を含む) のテーブルとビュー
-- Oracle のテーブルとビュー
-- Teradata のテーブルとビュー
-- Hive のテーブル
+- SQL Server (including Azure SQL DB and Azure SQL Data Warehouse) tables and views
+- Oracle tables and views
+- Teradata tables and views
+- Hive tables
 
-データ資産の登録時にデータ プロファイルを含めることで、データ ソースについて次の点が明らかになります。
+Including data profiles when registering data assets helps users answer questions about data sources, including:
 
--	ビジネス上の問題解決に利用できるか。
--	データが特定の標準やパターンに従っているか。
--	データ ソースの不規則性。
--	データをアプリケーションに統合するうえでどのような課題が考えられるか。
+-   Can it be used to solve my business problem?
+-   Does the data conform to particular standards or patterns?
+-   What are some of the anomalies of the data source?
+-   What are possible challenges of integrating this data into my application?
 
-> [AZURE.NOTE] アプリケーションに対してどのようにデータを統合するかについて記述するドキュメントを資産に追加することもできます。[データ ソースの文書化の方法](data-catalog-how-to-documentation.md)を参照してください。
+> [AZURE.NOTE] You can also add documentation to an asset to describe how data could be integrated into an application. See [How to document data sources](data-catalog-how-to-documentation.md).
 
 
 <a name="howto"/>
-## データ ソースの登録時にデータ プロファイルを含める方法
+## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>How to include a data profile when registering a data source
 
-データ ソースのプロファイルは簡単に追加できます。データ ソースを登録するときに、データ ソース登録ツールの **[登録されるオブジェクト]** パネルで **[データ プロファイルを含める]** を選択します。
+It's easy to include a profile of your data source. When you register a data source, in the **Objects to be registered** panel of the data source registration tool, choose **Include Data Profile**.
 
 ![](media\data-catalog-data-profile\data-catalog-register-profile.png)
 
-データ ソースを登録する方法の詳細については、「[データ ソースの登録方法](data-catalog-how-to-register.md)」と「[Azure Data Catalog の概要](data-catalog-get-started.md)」を参照してください。
+To learn more about how to register data sources, see [How to register data sources](data-catalog-how-to-register.md) and [Get started with Azure Data Catalog](data-catalog-get-started.md).
 
 
-## データ プロファイルを含んだデータ資産をフィルターで抽出する
-データ プロファイルを含んだデータ資産を検出するために、検索語の 1 つとして `has:tableDataProfiles` または `has:columnsDataProfiles` を追加できます。
+## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Filtering on data assets that include data profiles
+To discover data assets that include a data profile, you can include `has:tableDataProfiles` or `has:columnsDataProfiles` as one of your search terms.
 
-> [AZURE.NOTE] データソース登録ツールで **[データ プロファイルを含める]** を選択すると、テーブル レベルと列レベルのプロファイル情報の両方が含まれます。ただし、Data Catalog API では、1 つのプロファイル情報セットのみを含むデータ資産を登録できます。
+> [AZURE.NOTE] Selecting **Include Data Profile** in the data source registration tool includes both table and column-level profile information. However, the Data Catalog API allows data assets to be registered with only one set of profile information included.
 
-## データ プロファイル情報の表示
+## <a name="viewing-data-profile-information"></a>Viewing data profile information
 
-プロファイルを含んだ適切なデータ ソースが見つかったら、そのデータ プロファイルの詳細を表示できます。データ プロファイルを表示するには、[Data Catalog ポータル] ウィンドウでデータ資産を選択し、**[データ プロファイル]** を選択します。
+Once you find a suitable data source with a profile, you can view the data profile details. To view the data profile, select a data asset and choose **Data Profile** in the Data Catalog portal window.
 
 ![](media\data-catalog-data-profile\data-catalog-view.png)
 
-**[Azure Data Catalog]** のデータ プロファイルに、テーブルと列のプロファイル情報が表示されます。それぞれ表示される情報は以下のとおりです。
+A data profile in **Azure Data Catalog** shows table and column profile information including:
 
-### オブジェクト データ プロファイル
+### <a name="object-data-profile"></a>Object data profile
 
--	行数
--	テーブルのサイズ
--	オブジェクトが最後に更新されたのはいつか
+-   Number of rows
+-   Table size
+-   When the object was last updated
 
-### 列データ プロファイル
+### <a name="column-data-profile"></a>Column data profile
 
-- 列のデータ型
-- 個別の値の数
-- NULL 値を含んだ行の数
-- 列の値の最小、最大、平均、標準偏差
+- Column data type
+- Number of distinct values
+- Number of rows with NULL values
+- Minimum, maximum, average, and standard deviation for column values
 
-## 概要
-登録されているデータ資産についての統計と情報は、データのプロファイリングを通じて得ることができます。ユーザーはそれを基に、ビジネス上の問題解決に向けたデータの適合性を判断することができます。データ プロファイルは、データ ソースの注釈付けや文書化と共に、データについての理解を深める手段となります。
+## <a name="summary"></a>Summary
+Data profiling provides statistics and information about registered data assets to help you determine the suitability of the data to solve business problems. Along with annotating, and documenting data sources, data profiles can give users a deeper understanding of your data.
 
 
-## 関連項目
--	[データ ソースの登録方法](data-catalog-how-to-register.md)
--	[Azure Data Catalog の概要](data-catalog-get-started.md)
+## <a name="see-also"></a>See Also
+-   [How to register data sources](data-catalog-how-to-register.md)
+-   [Get started with Azure Data Catalog](data-catalog-get-started.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

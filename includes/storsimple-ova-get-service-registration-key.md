@@ -1,12 +1,14 @@
-#### StorSimple サービス登録キーを取得するには
+#### <a name="to-get-the-storsimple-service-registration-key"></a>To get the StorSimple service registration key
 
-1.  **[StorSimple Manager サービス]** ページで、下部にある **[登録キー]** をクリックします。
+1.  On the **StorSimple Manager service** page, click **Registration Key** at the bottom of the page.
 
-2.  キーが取得されるまで、数分間待つ必要があります。**[サービス登録キー]** ダイアログ ボックスが表示されます。
+2.  You will have to wait for a few minutes while the key is retrieved. The **Service Registration Key** dialog box appears.
 
 
-	1.  **サービス登録キー**を探します。
+    1.  Locate the **Service Registration Key**.
 
-	2.  コピー アイコン ![](./media/storsimple-ova-get-service-registration-key/image6-include.png) をクリックしてキーをコピーし、後で使用できるように保存します。
+    2.  Click the copy icon ![](./media/storsimple-ova-get-service-registration-key/image6-include.png) to copy the key and save it for later use.
 
-<!---HONumber=AcomDC_0128_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,180 +1,181 @@
 <properties
-	pageTitle="Azure Functions のローカルでの開発と実行 |Microsoft Azure"
-	description="Azure App Service で実行する前に、Visual Studio で Azure Functions をコーディングしてテストする方法について説明します。"
-	services="functions"
-	documentationCenter="na"
-	authors="tdykstra"
-	manager="erikre"
-	editor=""/>
+    pageTitle="Develop and run Azure functions locally | Microsoft Azure"
+    description="Learn how to code and test Azure functions in Visual Studio before running them in Azure App Service."
+    services="functions"
+    documentationCenter="na"
+    authors="tdykstra"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="functions"
-	ms.workload="na"
-	ms.tgt_pltfrm="multiple"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="08/22/2016"
-	ms.author="glenga"/>
+    ms.service="functions"
+    ms.workload="na"
+    ms.tgt_pltfrm="multiple"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.date="08/22/2016"
+    ms.author="glenga"/>
 
-# Visual Studio で Azure Functions をコーディングしてテストする方法
 
-## Overview
+# <a name="how-to-code-and-test-azure-functions-in-visual-studio"></a>How to code and test Azure functions in Visual Studio
 
-この記事では、[WebJobs.Script](https://github.com/Azure/azure-webjobs-sdk-script/) GitHub リポジトリをダウンロードし、そのリポジトリに含まれている Visual Studio ソリューションを実行することで、[Azure Functions](functions-overview.md) をローカルで実行する方法について説明します。
+## <a name="overview"></a>Overview
 
-Azure Functions のランタイムは、WebJobs.Script オープン ソース プロジェクトの実装です。このプロジェクトは [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) を基盤に構築され、どちらのフレームワークもローカルで実行できます。ただし、WebJobs SDK では、ストレージ エミュレーターでサポートされないストレージ アカウントの機能を使用するため、Azure ストレージ アカウントに接続する必要があります。
+This article explains how to run [Azure Functions](functions-overview.md) locally by downloading the [WebJobs.Script](https://github.com/Azure/azure-webjobs-sdk-script/) GitHub repository and running the Visual Studio solution that it contains.
 
-関数は Azure ポータルで簡単にコーディングおよびテストできますが、Azure で実行する前にローカルで作業した方が良い場合があります。たとえば、Visual Studio は [IntelliSense](https://msdn.microsoft.com/library/hcw1s69b.aspx) を備えているため、Azure Functions でサポートされる言語の中には、Visual Studio でコードを記述した方が簡単なものもあります。また、関数はリモートでデバッグできますが、ローカルでデバッグした方が迅速で簡単な場合もあります。ローカルで実行する際に、関数コードや WebJobs スクリプト ホスト コードにブレークポイントを設定してデバッグできます。
+The runtime for Azure Functions is an implementation of the WebJobs.Script open source project. This project is in turn built on the [Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md), and both frameworks can run locally. You do need to connect to an Azure storage account, however, because the WebJobs SDK uses storage account features that the storage emulator doesn't support.
 
->[AZURE.NOTE] Azure Functions は現在プレビュー段階で、ツールを含めて全体的なエクスペリエンスは迅速に開発が進んでいます。この記事で説明している手順には最終的なローカル開発エクスペリエンスは反映されていませんが、ぜひ[フィードバックをお寄せ](https://feedback.azure.com/forums/355860-azure-functions)ください。
+Functions are easy to code and test in the Azure portal, but sometimes it's useful to work with them locally before running in Azure. For example, some of the languages that Azure Functions supports are easier to write code for in Visual Studio because it provides [IntelliSense](https://msdn.microsoft.com/library/hcw1s69b.aspx). And while you can debug a function remotely, it may be quicker and easier to debug locally. When you run locally, you can debug and set breakpoints in function code as well as in the WebJobs Script host code.  
 
-## 前提条件
+>[AZURE.NOTE] Azure Functions is currently in preview, and the overall experience including tooling is still under rapid development. The procedures outlined in this article do not reflect the final local development experience, and we’d love for you to [provide your feedback](https://feedback.azure.com/forums/355860-azure-functions).
 
-### Azure アカウントと関数アプリ
+## <a name="prerequisites"></a>Prerequisites
 
-この記事では、ポータルで [Azure Functions](functions-overview.md) を利用したことがあり、[トリガー、バインド、JobHost](functions-reference.md) などの Azure Functions の概念を把握していることを前提としています。
+### <a name="an-azure-account-with-a-function-app"></a>An Azure account with a function app
 
-関数をローカルで実行すると、コンソール ウィンドウに何らかの出力が表示されますが、関数呼び出しとログを確認するには、ライブ関数アプリによってホストされているダッシュボードを使用する必要があります。
+This article assumes that you have worked with [Azure Functions](functions-overview.md) in the portal and are familiar with Azure Functions concepts such as [triggers, bindings, and JobHost](functions-reference.md).
 
-### Visual Studio 2015 と最新の Azure SDK for .NET
+When you run functions locally, you get some output in the console window, but you'll also want to use the dashboard that is hosted by a live function app to view function invocations and logs.
 
-Visual Studio 2015 を持っていない場合、または最新の Azure SDK を持っていない場合は、[Azure SDK for Visual Studio 2015 をダウンロード](http://go.microsoft.com/fwlink/?linkid=518003)してください。Visual Studio 2015 をまだ持っていない場合は、Visual Studio 2015 は SDK と共に自動的にインストールされます。
+### <a name="visual-studio-2015-with-the-latest-azure-sdk-for-.net"></a>Visual Studio 2015 with the latest Azure SDK for .NET
 
-### 条件付きの前提条件
+If you don't have Visual Studio 2015, or you don't have the current Azure SDK, [download the Azure SDK for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003). Visual Studio 2015 is automatically installed with the SDK if you don't already have it.
 
-実行する関数で次のような Azure リソースやソフトウェアを使用する場合は、それらをインストールしておく必要があります。
+### <a name="conditional-prerequisites"></a>Conditional prerequisites
 
-* Azure リソース
-	* Service Bus
-	* Easy Tables
-	* DocumentDB
-	* Event Hubs
-	* Notification Hubs
+Some Azure resources and software installations are required only if you plan to run functions that use them, for example:  
 
-* コンパイラとスクリプト エンジン
-	* F#
-	* BASH
-	* Python
-	* PHP
+* Azure resources
+    * Service Bus
+    * Easy Tables
+    * DocumentDB
+    * Event Hubs
+    * Notification Hubs
 
-設定する必要のある環境変数を含め、これらの要件の詳細については、[WebJobs.Script リポジトリの Wiki ページ](https://github.com/Azure/azure-webjobs-sdk-script/wiki/home)を参照してください。
+* Compilers and script engines
+    * F#
+    * BASH
+    * Python
+    * PHP
 
-WebJobs.SDK プロジェクトに貢献することが目的の場合は、条件付きの前提条件をすべて満たして、完全なテストを実行する必要があります。
+For details about these requirements, including environment variables that you have to set for them, see the [wiki pages for the WebJobs.Script repository](https://github.com/Azure/azure-webjobs-sdk-script/wiki/home)
 
-## ローカルで実行するには
+If your purpose is to contribute to the WebJobs.SDK project, you need all of the conditional prerequisites to run complete tests.
 
-1. Webjobs.Script リポジトリを[複製](https://github.com/Azure/azure-webjobs-sdk-script/)または[ダウンロード](https://github.com/Azure/azure-webjobs-sdk-script/archive/master.zip)します。
+## <a name="to-run-locally"></a>To run locally
 
-2. ストレージ接続文字列用の環境変数を設定します。
+1. [Clone](https://github.com/Azure/azure-webjobs-sdk-script/) or [download](https://github.com/Azure/azure-webjobs-sdk-script/archive/master.zip) the Webjobs.Script repository.
 
-	* AzureWebJobsStorage
-	* AzureWebJobsDashboard
+2. Set environment variables for storage connection strings.
 
-	環境変数用のこのような環境変数の値は、App Service の **[アプリケーションの設定]** ポータル ブレードから取得できます。
+    * AzureWebJobsStorage
+    * AzureWebJobsDashboard
 
-	a.**[関数コンテナー]** ブレードで、**[Function app settings]** (関数アプリの設定) をクリックします。
+    You can get these values from the App Service **Application Settings** portal blade for a function app.
 
-	![Click Function App Settings](./media/functions-run-local/clickfuncappsettings.png)
+    a. On the **Function app** blade, click **Function app settings**.
+
+    ![Click Function App Settings](./media/functions-run-local/clickfuncappsettings.png)
  
-	b.**[Function App Settings]** (関数アプリの設定) ブレードで、**[Go to App Service Settings]** (App Service の設定に移動) をクリックします。
+    b. On the **Function App Settings** blade, click **Go to App Service Settings**.
 
-	![Click App Service Settings](./media/functions-run-local/clickappsvcsettings.png)
+    ![Click App Service Settings](./media/functions-run-local/clickappsvcsettings.png)
  
-	c.**[設定]** ブレードで、**[アプリケーション設定]** をクリックします。
+    c. On the **Settings** blade, click **Application settings**.
 
-	![Click Application Settings](./media/functions-run-local/clickappsettings.png)
+    ![Click Application Settings](./media/functions-run-local/clickappsettings.png)
  
-	d.**[アプリケーションの設定]** ブレードで **[アプリの設定]** セクションが表示されるまで下へスクロールし、WebJobs SDK の設定を探します。
+    d. On the **Application settings** blade, scroll down to the **App settings** section and find the WebJobs SDK settings.
 
-	![WebJobs settings](./media/functions-run-local/wjsettings.png)
+    ![WebJobs settings](./media/functions-run-local/wjsettings.png)
 
-	e.`AzureWebJobsStorage` アプリ設定と同じ名前と値で環境変数を設定します。
+    e. Set an environment variable with the same name and value as the `AzureWebJobsStorage` app setting.
 
-	f.`AzureWebJobsDashboard` アプリ設定に対しても同じ操作を行います。
+    f. Do the same for the `AzureWebJobsDashboard` app setting.
 
-2. AzureWebJobsServiceBus という環境変数を作成し、Service Bus 接続文字列を設定します。
+2. Create an environment variable named AzureWebJobsServiceBus, and set it to your Service Bus connection string.
 
-	この環境変数は、Service Bus のバインドに必要です。Service Bus のバインドを使用しない場合でも、設定することをお勧めします。シナリオによっては、バインドを使用するかどうかに関係なく、Service Bus 接続文字列を設定していないと、例外が表示される場合があります。
+    This environment variable is required for Service Bus bindings, and we recommend that you set it even if you don't use Service Bus bindings. In some scenarios, you might see exceptions if the Service Bus connection string is not set, regardless of the bindings in use.
 
-3. 必要なその他の環境変数がすべて設定されていることを確認します (前の「[条件付きの前提条件](#conditional-prerequisites)」セクションを参照してください)。
+3. Make sure any other environment variables that you need are set. (See preceding [Conditional prerequisites](#conditional-prerequisites) section).
 
-4. Visual Studio を起動し、WebJobs.Script ソリューションを開きます。
+4. Start Visual Studio, and then open the WebJobs.Script solution.
 
-6. スタートアップ プロジェクトを設定します。HTTP または WebHook トリガーを使用する関数を実行する場合は、**WebJobs.Script.WebHost** を選択します。それ以外の場合は、**WebJobs.Script.Host** を選択します。
+6. Set the startup project. If you want to run functions that use HTTP or WebHook triggers, choose **WebJobs.Script.WebHost**; otherwise, choose **WebJobs.Script.Host**.
 
-4. スタートアップ プロジェクトが WebJobs.Script.Host の場合は、次の手順を実行します。
+4. If your startup project is WebJobs.Script.Host:
 
-	a.**ソリューション エクスプローラー**で、WebJobs.Script.Host プロジェクトを右クリックしてから **[プロパティ]** をクリックします。
+    a. In **Solution Explorer**, right-click the WebJobs.Script.Host project, and then click **Properties**. 
 
-	b.**[プロジェクトのプロパティ]** ウィンドウの **[デバッグ]** タブで、**[コマンドライン引数]** を `..\..\..\..\sample` に設定します。
+    b. In the **Debug** tab of the **Project Properties** window, set **Command line arguments** to `..\..\..\..\sample`. 
 
-	![Command line arguments](./media/functions-run-local/cmdlineargs.png)
+    ![Command line arguments](./media/functions-run-local/cmdlineargs.png)
 
-	これは、リポジトリ内の *sample* フォルダーへの相対パスです。*sample* フォルダーには、グローバル設定が含まれている *host.json* ファイルと、各サンプル関数のフォルダーが含まれています。
+    This is a relative path to the *sample* folder in the repository.   The *sample* folder contains a *host.json* file that contains global settings, and a folder for each sample function. 
 
-	作業を開始するには、提供されている *sample* フォルダーを使用することが一番簡単です。後で *sample* フォルダーに独自の関数を追加することや、*host.json* と関数フォルダーが含まれている任意のフォルダーを使用することができます。
+    To get started it's easiest to use the *sample* folder that's provided. Later you can add your own functions to the *sample* folder or use any folder that contains a *host.json* and function folders.
 
-5. スタートアップ プロジェクトが WebJobs.Script.WebHost の場合は、次の手順を実行します。
+5. If your startup project is WebJobs.Script.WebHost:
 
-	a.AzureWebJobsScriptRoot 環境変数を `sample` フォルダーの完全なパスに設定します。
+    a. Set an AzureWebJobsScriptRoot environment variable to the full path to the `sample` folder.
 
-	b.新しい環境変数の値を反映するために、Visual Studio を再起動します。
+    b. Restart Visual Studio to pick up the new environment variable value.
 
-	HTTP トリガー関数を実行する方法の詳細については、[API キー](#api-keys)に関するセクションを参照してください。
+    See the [API keys](#api-keys) section for additional information about how to run HTTP trigger functions.
 
-5. *sample\\host.json* ファイルを開き、`functions` プロパティを追加して、実行する関数を指定します。
+5. Open the *sample\host.json* file, and add a `functions` property to specify which functions you want to run.
 
-	たとえば、次の JSON では、WebJobs SDK の JobHost が探す関数は 2 つだけです。
+    For example, the following JSON will make the WebJobs SDK JobHost look for only two functions. 
 
-		{
-		  "functions": [ "TimerTrigger-CSharp", "QueueTrigger-CSharp"],
-		  "id": "5a709861cab44e68bfed5d2c2fe7fc0c"
-		}
+        {
+          "functions": [ "TimerTrigger-CSharp", "QueueTrigger-CSharp"],
+          "id": "5a709861cab44e68bfed5d2c2fe7fc0c"
+        }
 
-	*sample* フォルダーの代わりに独自のフォルダーを使用する場合は、実行する関数のみをそのフォルダーに含めます。そうすると、*host.json* の `functions` プロパティを省略できます。
+    When you use your own folder instead of the *sample* folder, include in it only the functions that you want to run. Then you can omit the `functions` property in *host.json*.
  
-6. ソリューションをビルドして実行します。
+6. Build and run the solution.
 
-	コンソール ウィンドウには、`host.json` ファイルで指定した関数のみを JobHost が探すことが示されます。
+    The console window shows that the JobHost only finds the functions specified in the `host.json` file. 
 
-		Found the following functions:
-		Host.Functions.QueueTrigger-CSharp
-		Host.Functions.TimerTrigger-CSharp
-		Job host started
+        Found the following functions:
+        Host.Functions.QueueTrigger-CSharp
+        Host.Functions.TimerTrigger-CSharp
+        Job host started
 
-	WebHost プロジェクトを開始すると、対応するベース URL で提供するコンテンツがそのプロジェクトには存在しないため、空のブラウザー ページが表示されます。HTTP トリガー関数に使用する URL については、[API キー](#apikeys)のセクションを参照してください。
+    If you're starting the WebHost project, you get a blank browser page because there is no content to serve at the base URL of the project. See the [API keys](#apikeys) section for information about URLs to use for HTTP trigger functions.
 
-## 関数の出力の確認
+## <a name="viewing-function-output"></a>Viewing function output
 
-関数呼び出しとそのログ出力を確認するには、関数アプリのダッシュボードに移動します。
+Go to the dashboard for your function app to see function invocations and log output for them.
 
-ダッシュボードの URL は次のとおりです。
+The dashboard is at the following URL:
 
-	https://{function app name}.scm.azurewebsites.net/azurejobs/#/functions
+    https://{function app name}.scm.azurewebsites.net/azurejobs/#/functions
 
-**[関数]** ページには、実行された関数の一覧と、関数呼び出しの一覧が表示されます。
+The **Functions** page displays a list of functions that have been executed, and a list of function invocations.
 
 ![Invocation Detail](./media/functions-run-local/invocationdetail.png)
 
-呼び出しをクリックすると、**[Invocation Details]** (呼び出しの詳細) ページが表示され、関数がトリガーされた日時、おおよその実行時間、正常に完了したかどうかが示されます。**[Toggle Output]** (出力の切り替え) をクリックすると、関数コードによって書き込まれたログが表示されます。
+Click an invocation to see the **Invocation Details** page, which indicates when the function was triggered, the approximate run time, and successful completion. Click the **Toggle Output** button to see logs written by the function code.
 
 ![Invocation Detail](./media/functions-run-local/invocationdetail.png)
 
-## <a id="apikeys"></a> HTTP トリガーの API キー
+## <a name="<a-id="apikeys"></a>-api-keys-for-http-triggers"></a><a id="apikeys"></a> API Keys for HTTP triggers
 
-HTTP または WebHook 関数を実行するには、*function.json* ファイルに `"authLevel": "anonymous"` を含める場合を除き、API キーが必要です。
+To run an HTTP or WebHook function, you'll need an API key unless you include `"authLevel": "anonymous"` in the *function.json* file.
 
-たとえば、API キーが `12345` の場合は、WebJobs.Script.WebHost プロジェクトを実行中に、次の URL で *HttpTrigger* 関数をトリガーできます。
+For example, if the API key is `12345`, you can trigger the *HttpTrigger* function with the following URL when the WebJobs.Script.WebHost project is running.
 
-	http://localhost:28549/api/httptrigger?code=12345
+    http://localhost:28549/api/httptrigger?code=12345
 
-(代わりに、`x-functions-key` HTTP ヘッダーに API キーを配置することもできます。)
+(As an alternative, you can put the API key in the `x-functions-key` HTTP header.)
 
-API キーは、WebJobs.Script.WebHost プロジェクトの [App\_Data/secrets](https://github.com/Azure/azure-webjobs-sdk-script/tree/master/src/WebJobs.Script.WebHost/App_Data/secrets) フォルダーにある `.json` ファイルに格納されます。
+API keys are stored in `.json` files in the [App_Data/secrets](https://github.com/Azure/azure-webjobs-sdk-script/tree/master/src/WebJobs.Script.WebHost/App_Data/secrets) folder in the WebJobs.Script.WebHost project.
 
-### すべての HTTP および WebHook 関数に適用される API キー
+### <a name="api-keys-that-apply-to-all-http-and-webhook-functions"></a>API keys that apply to all HTTP and WebHook functions
 
-*App\_Data/secrets* フォルダーの *host.json* ファイルには、次の 2 つのキーがあります。
+The *host.json* file in the *App_Data/secrets* folder has two keys:
 
 ```json
 {
@@ -183,17 +184,17 @@ API キーは、WebJobs.Script.WebHost プロジェクトの [App\_Data/secrets]
 }
 ```
 
-`functionKey` プロパティは、HTTP または WebHook 関数のオーバーライドが定義されていない場合に、その特定の関数に使用できるキーを格納します。この機能により、関数を作成するたびに常に新しい API キーを定義する必要がなくなります。
+The `functionKey` property stores a key that can be used for any HTTP or WebHook function if no override for that particular function is defined. This feature eliminates the need to always define new API keys for every function you create.
 
-`masterKey` プロパティは、次のような一部のテスト シナリオに役に立つキーを格納します。
+The `masterKey` property stores a key that is useful in some testing scenarios:
 
-* マスター キーを使用して WebHook 関数を呼び出すと、WebJobs SDK が WebHook プロバイダーの署名の検証をバイパスする場合。
+* If you call a WebHook function with a master key, the WebJobs SDK bypasses the validation of the WebHook provider's signature.
 
-* マスター キーを使用して HTTP または WebHook 関数を呼び出すと、*function.json* ファイルで無効になっていても関数がトリガーされる場合。Azure ポータルでは、これを使用して、無効になっている関数に対しても **[実行]** ボタンが機能するようにしています。
+* If you call an HTTP or WebHook function with a master key, the function is triggered even if it's disabled in the *function.json* file. This is used in the Azure portal to make the **Run** button work even for disabled functions.
  
-### 個々の関数に適用される API キー
+### <a name="api-keys-that-apply-to-individual-functions"></a>API keys that apply to individual functions
 
-*{function name}.json* という名前のファイルには、特定の関数の API キーが含まれています。たとえば、次の例の *App\_Data/secrets/HttpTrigger.json* の JSON コンテンツでは、`HttpTrigger` 関数の API キーを設定します。
+Files that are named *{function name}.json* contain the API key for a particular function. For example, the following example JSON content in *App_Data/secrets/HttpTrigger.json* sets the API key for the `HttpTrigger` function.
 
 ```json
 {
@@ -201,26 +202,30 @@ API キーは、WebJobs.Script.WebHost プロジェクトの [App\_Data/secrets]
 }
 ```
 
-## NuGet パッケージの参照を関数内で使用する  
+## <a name="using-nuget-package-references-in-functions"></a>Using NuGet package references in functions  
 
-現在 NuGet の参照に適用される処理の形式上、必ずホストの実行中に *project.json* ファイルに "触れる" ようにしてください。ホストはファイルの変更を監視し、変更が検出されたときに復元を開始します。また、*NuGet.exe* (3.3.0 を推奨) は、実際のパスで指定するか、または *NuGet.exe* へのパスが AzureWebJobs\_NuGetPath という名前の環境変数に設定されている必要があります。
+Due to the way NuGet references are currently processed, make sure that you "touch" the *project.json* file while the host is running. The host watches for file modifications and initiates a restore when it detects changes. Also, *NuGet.exe* (3.3.0 recommended) must either be in your path or you must have an environment variable named AzureWebJobs_NuGetPath set, with the path to *NuGet.exe*.
 
-## トラブルシューティング
+## <a name="troubleshooting"></a>Troubleshooting
 
-Visual Studio の実行中に行われた環境変数の変更は自動的に反映されません。Visual Studio の起動後に環境変数を追加または変更した場合は、最新の値が反映されるように、Visual Studio をシャットダウンしてから再起動してください。
+Environment variable changes done while Visual Studio is running aren't picked up automatically. If you added or changed an environment variable after starting Visual Studio, shut down Visual Studio and restart it to make sure it is picking up the current values.
 
-**[例外設定]** ウィンドウ (ウィンドウを開くには、Ctrl + Alt + E キーを押します) で **[Common Language Runtime Exceptions]** を選択すると、デバッグ時に例外の詳細情報が表示される場合があります。
+When you're debugging, you might get more information about exceptions by selecting **Common Language Runtime Exceptions** in the **Exception Settings** window (CTRL-ALT-E to open the window).
 
-デバッグ時に例外情報を表示するもう 1 つの方法では、スクリプト ホストのメイン ループの `catch` ブロックにブレークポイントを設定します。このブロックは、WebJobs.Script プロジェクトの *Host/ScriptHostManager.cs* 内にある `RunAndBlock` メソッドにあります。
+Another way you might get more exception information while debugging is to set a breakpoint in the `catch` block of the main loop for the script host. You'll find this in the WebJobs.Script project, in *Host/ScriptHostManager.cs*, in the `RunAndBlock` method.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-詳細については、次のリソースを参照してください。
+For more information, see the following resources:
 
-* [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
-* [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
-* [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
-* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
-* [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
+* [Azure Functions developer reference](functions-reference.md)
+* [Azure Functions C# developer reference](functions-reference-csharp.md)
+* [Azure Functions F# developer reference](functions-reference-fsharp.md)
+* [Azure Functions NodeJS developer reference](functions-reference-node.md)
+* [Azure Functions triggers and bindings](functions-triggers-bindings.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ネットワーク アクセス制御リスト (ACL) とは"
-   description="ACL の概要"
+   pageTitle="What is a Network Access Control List (ACL)?"
+   description="Learn about ACLs"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,88 +15,93 @@
    ms.date="03/15/2016"
    ms.author="jdial" />
 
-# エンドポイント アクセス制御リスト (ACL) とは
 
-エンドポイント アクセス制御リスト (ACL) は、Azure デプロイメントに使用できるセキュリティ拡張機能です。ACL を使用して、仮想マシン エンドポイントのトラフィックを選択して許可または拒否することができます。このパケット フィルタリング機能は、セキュリティ レイヤーを追加します。エンドポイント用のネットワーク ACL のみを指定できます。仮想ネットワーク、または仮想ネットワークに含まれる特定のサブネットの ACL は指定できません。
+# <a name="what-is-an-endpoint-access-control-list-(acls)?"></a>What is an endpoint Access Control List (ACLs)?
 
-> [AZURE.IMPORTANT] 可能な限り、ACL ではなくネットワーク セキュリティ グループ (NSG) を使用することをお勧めします。NSG の詳細については、「[ネットワーク セキュリティ グループの概要](virtual-networks-nsg.md)」を参照してください。
+An endpoint Access Control List (ACL) is a security enhancement available for your Azure deployment. An ACL provides the ability to selectively permit or deny traffic for a virtual machine endpoint. This packet filtering capability provides an additional layer of security. You can specify network ACLs for endpoints only. You can't specify an ACL for a virtual network or a specific subnet contained in a virtual network.
 
-ACL は、PowerShell または管理ポータルを使用して構成できます。PowerShell を使用してネットワーク ACL を構成するには、「[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)」を参照してください。管理ポータルを使用してネットワーク ACL を構成するには、「[仮想マシンに対してエンドポイントを設定する方法](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
+> [AZURE.IMPORTANT] It is recommended to use Network Security Groups (NSGs) instead of ACLs whenever possible. To learn more about NSGs, see [What is a Network Security Group?](virtual-networks-nsg.md).
 
-ネットワーク ACL を使用すると、次の操作を実行できます。
+ACLs can be configured by using either PowerShell or the Management Portal. To configure a network ACL by using PowerShell, see [Managing Access Control Lists (ACLs) for Endpoints by using PowerShell](virtual-networks-acl-powershell.md). To configure a network ACL by using the Management Portal, see [How to Set Up Endpoints to a Virtual Machine](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md).
 
-- リモート サブネット IPv4 アドレスの範囲に基づいて、仮想マシン入力エンドポイントに対する受信トラフィックを選択して許可または拒否する。
+Using Network ACLs, you can do the following:
 
-- IP アドレスをブラックリストに登録する
+- Selectively permit or deny incoming traffic based on remote subnet IPv4 address range to a virtual machine input endpoint.
 
-- 仮想マシンのエンドポイントごとに複数のルールを作成する
+- Blacklist IP addresses
 
-- 仮想マシンのエンドポイントごとに最大で 50 個の ACL ルールを指定する
+- Create multiple rules per virtual machine endpoint
 
-- ルールの順序 (最低から最高) を使用して、特定の仮想マシン エンドポイントに適用される正しいルール セットを構成します。
+- Specify up to 50 ACL rules per virtual machine endpoint
 
-- 特定のリモート サブネットの IPv4 アドレスの ACL を指定します。
+- Use rule ordering to ensure the correct set of rules are applied on a given virtual machine endpoint (lowest to highest)
 
-## ACL のしくみ
+- Specify an ACL for a specific remote subnet IPv4 address.
 
-ACL は、ルールの一覧が格納されたオブジェクトです。ACL を作成し、仮想マシン エンドポイントに適用すると、VM のホスト ノードでパケットのフィルター処理が実行されます。つまり、リモート IP アドレスのトラフィックは、VM ではなく、一致する ACL ルールのホスト ノードでフィルター処理されます。そのため、VM のパケット フィルター処理に貴重な CPU サイクルが使用されることを回避できます。
+## <a name="how-acls-work"></a>How ACLs work
 
-仮想マシンが作成されると、すべての受信トラフィックをブロックする既定の ACL が作成されます。ただし、エンドポイント (ポート 3389) が作成されると、そのエンドポイントのすべての受信トラフィックを許可するように既定の ACL は変更されます。リモート サブネットの受信トラフィックは、そのエンドポイントに対して許可されるので、ファイアウォールのプロビジョニングは必要ありません。特定のポート用にエンドポイントを作成しない限り、受信トラフィックのその他すべてのポートはブロックされます。既定で、送信トラフィックは許可されています。
+An ACL is an object that contains a list of rules. When you create an ACL and apply it to a virtual machine endpoint, packet filtering takes place on the host node of your VM. This means the traffic from remote IP addresses is filtered by the host node for matching ACL rules instead of on your VM. This prevents your VM from spending the precious CPU cycles on packet filtering.
 
-**既定の ACL テーブルの例**
+When a virtual machine is created, a default ACL is put in place to block all incoming traffic. However, if an endpoint is created for (port 3389), then the default ACL is modified to allow all inbound traffic for that endpoint. Inbound traffic from any remote subnet is then allowed to that endpoint and no firewall provisioning is required. All other ports are blocked for inbound traffic unless endpoints are created for those ports. Outbound traffic is allowed by default.
 
-| **ルール番号** | **リモート サブネット** | **エンドポイント** | **許可/拒否** |
+**Example Default ACL table**
+
+| **Rule #** | **Remote Subnet** | **Endpoint** | **Permit/Deny** |
 |--------|---------------|----------|-------------|
-| 100 | 0\.0.0.0/0 | 3389 | 許可 |
+| 100    | 0.0.0.0/0     | 3389     | Permit      |
 
-## 許可および拒否
+## <a name="permit-and-deny"></a>Permit and deny
 
-"許可" または "拒否" を指定したルールを作成して、仮想マシン入力エンドポイントに対するネットワーク トラフィックを選択して許可または拒否できます。既定では、エンドポイントが作成されると、エンドポイントに対するすべてのトラフィックが許可されます。そのため、仮想マシン エンドポイントに到達できるネットワーク トラフィックを細かく制御するには、許可/拒否ルールを作成し、適切な優先順序で配置する方法を理解する必要があります。
+You can selectively permit or deny network traffic for a virtual machine input endpoint by creating rules that specify "permit" or "deny". It's important to note that by default, when an endpoint is created, all traffic is permitted to the endpoint. For that reason, it's important to understand how to create permit/deny rules and place them in the proper order of precedence if you want granular control over the network traffic that you choose to allow to reach the virtual machine endpoint.
 
-考慮すべき点:
+Points to consider:
 
-1. **ACL なし**: 既定では、エンドポイントが作成されると、エンドポイントに対するすべてが許可されます。
+1. **No ACL –** By default when an endpoint is created, we permit all for the endpoint.
 
-1. **許可**: 1 つ以上の "許可" 範囲を追加すると、既定でその他すべての範囲は拒否されます。許可された IP 範囲のパケットのみが、仮想マシン エンドポイントと通信できるようになります。
+1. **Permit -** When you add one or more "permit" ranges, you are denying all other ranges by default. Only packets from the permitted IP range will be able to communicate with the virtual machine endpoint.
 
-1. **拒否**: 1 つ以上の "拒否" 範囲を追加すると、既定でその他すべての範囲は許可されます。
+1. **Deny -** When you add one or more "deny" ranges, you are permitting all other ranges of traffic by default.
 
-1. **許可と拒否の組み合わせ**: 許可または拒否する特定の IP 範囲を絞り込むには、"許可" と "拒否" の組み合わせを使用できます。
+1. **Combination of Permit and Deny -** You can use a combination of "permit" and "deny" when you want to carve out a specific IP range to be permitted or denied.
 
-## ルールおよびルールの優先順位
+## <a name="rules-and-rule-precedence"></a>Rules and rule precedence
 
-特定の仮想マシン エンドポイントに関するネットワーク ACL をセットアップできます。たとえば、仮想マシンに作成された RDP エンドポイントのネットワーク ACL を指定して、特定の IP アドレスに対するアクセスをロックすることができます。次の表は、特定範囲のパブリック仮想 IP (VIP) に対してアクセス権を付与して、RDP へのアクセスを許可する方法を示しています。その他すべてのリモート IP は拒否されます。ここでは、*最小値が優先される*優先順ルールに従います。
+Network ACLs can be set up on specific virtual machine endpoints. For example, you can specify a network ACL for an RDP endpoint created on a virtual machine which locks down access for certain IP addresses. The table below shows a way to grant access to public virtual IPs (VIPs) of a certain range to permit access for RDP. All other remote IPs are denied. We follow a *lowest takes precedence* rule order.
 
-### 複数のルール
+### <a name="multiple-rules"></a>Multiple rules
 
-次の例で、2 つの IPv4 アドレス範囲 (65.0.0.0/8 と 159.0.0.0/8) の RDP エンドポイントに対するアクセス権のみを許可するには、2 つの*許可*ルールを指定します。この場合、既定で仮想マシンの RDP が作成されるので、リモート サブネットに基づいて RDP ポートへのアクセスをロックすることができます。次の例は、特定範囲のパブリック仮想 IP (VIP) に対してアクセス権を付与して、RDP へのアクセスを許可する方法を示しています。その他すべてのリモート IP は拒否されます。ネットワーク ACL は特定の仮想マシン エンドポイントに対してセットアップでき、既定でアクセスは拒否されるので、この方法は役に立ちます。
+In the example below, if you want to allow access to the RDP endpoint only from two public IPv4 address ranges (65.0.0.0/8, and 159.0.0.0/8), you can achieve this by specifying two *Permit* rules. In this case, since RDP is created by default for a virtual machine, you may want to lock down access to the RDP port based on a remote subnet. The example below shows a way to grant access to public virtual IPs (VIPs) of a certain range to permit access for RDP. All other remote IPs are denied. This works because network ACLs can be set up for a specific virtual machine endpoint and access is denied by default.
 
-**例 - 複数のルール**
+**Example – Multiple rules**
 
-| **ルール番号** | **リモート サブネット** | **エンドポイント** | **許可/拒否** |
+| **Rule #** | **Remote Subnet** | **Endpoint** | **Permit/Deny** |
 |--------|---------------|----------|-------------|
-| 100 | 65\.0.0.0/8 | 3389 | 許可 |
-| 200 | 159\.0.0.0/8 | 3389 | 許可 |
+| 100    | 65.0.0.0/8    | 3389     | Permit      |
+| 200    | 159.0.0.0/8   | 3389     | Permit      |
 
-### ルールの順序
+### <a name="rule-order"></a>Rule order
 
-1 つのエンドポイントに対して複数のルールを指定できるので、優先するルールを決定するには、ルールを整理する方法が必要です。優先順位は、ルールの順序で決まります。ネットワーク ACL は、*最小値が優先される*優先順ルールに従います。次の例では、ポート 80 のエンドポイントには、特定の IP アドレス範囲に対するアクセスのみが選択的に付与されます。この範囲を構成するために、175.1.0.1/24 空間のアドレス用の拒否ルール (ルール番号 100) を設定しています。2 つ目のルールは、175.0.0.0/8 以下のその他すべてのアドレスに対するアクセスを許可する優先順位 200 が指定されています。
+Because multiple rules can be specified for an endpoint, there must be a way to organize rules in order to determine which rule takes precedence. The rule order specifies precedence. Network ACLs follow a *lowest takes precedence* rule order. In the example below, the endpoint on port 80 is selectively granted access to only certain IP address ranges. To configure this, we have a deny rule (Rule \# 100) for addresses in the 175.1.0.1/24 space. A second rule is then specified with precedence 200 that permits access to all other addresses under 175.0.0.0/8.
 
-**例 - ルールの優先順位**
+**Example – Rule precedence**
 
-| **ルール番号** | **リモート サブネット** | **エンドポイント** | **許可/拒否** |
+| **Rule #** | **Remote Subnet** | **Endpoint** | **Permit/Deny** |
 |--------|---------------|----------|-------------|
-| 100 | 175\.1.0.1/24 | 80 | 拒否 |
-| 200 | 175\.0.0.0/8 | 80 | 許可 |
+| 100    | 175.1.0.1/24  | 80       | Deny        |
+| 200    | 175.0.0.0/8   | 80       | Permit      |
 
-## ネットワーク ACL と負荷分散セット
+## <a name="network-acls-and-load-balanced-sets"></a>Network ACLs and load balanced sets
 
-負荷分散セット (LB セット) エンドポイントに対するネットワーク ACL を指定できます。LB セットに対して ACL を指定すると、その LB セット内のすべての Virtual Machines に対してネットワーク ACL が適用されます。たとえば、LB セットが "ポート 80" で作成され、LB セットに 3 つの VM が含まれている場合、1 つの VM のエンドポイント "ポート 80" に作成されたネットワーク ACL は、自動的に他の VM に適用されます。
+Network ACLs can be specified on a Load balanced set (LB Set) endpoint. If an ACL is specified for a LB Set, the Network ACL is applied to all Virtual Machines in that LB Set. For example, if a LB Set is created with "Port 80" and the LB Set contains 3 VMs, the Network ACL created on endpoint "Port 80" of one VM will automatically apply to the other VMs.
 
-![ネットワーク ACL と負荷分散セット](./media/virtual-networks-acl/IC674733.png)
+![Network ACLs and load balanced sets](./media/virtual-networks-acl/IC674733.png)
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-[PowerShell を使用してエンドポイントのアクセス制御リスト (ACL) を管理する方法](virtual-networks-acl-powershell.md)
+[How to manage Access Control Lists (ACLs) for Endpoints by using PowerShell](virtual-networks-acl-powershell.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

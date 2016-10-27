@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure RemoteApp での PowerShell コマンドレットの使用 | Microsoft Azure"
-   description="Azure RemoteApp で Windows PowerShell コマンドレットを使用する方法について説明します。"
+   pageTitle="Use PowerShell cmdlets with Azure RemoteApp | Microsoft Azure"
+   description="Learn how to use Windows PowerShell cmdlets in Azure RemoteApp."
    services="remoteapp"
    documentationCenter=""
    authors="guscatalano"
@@ -18,56 +18,57 @@
 
 
 
-# Azure RemoteApp での Windows PowerShell コマンドレットの使用
+
+# <a name="use-windows-powershell-cmdlets-with-azure-remoteapp"></a>Use Windows PowerShell cmdlets with Azure RemoteApp
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
- Azure RemoteApp PowerShell コマンドレットを使用して、コレクションを管理、保守できます。次の情報を使用して、作業を開始しましょう。
+ You can use the Azure RemoteApp PowerShell cmdlets to administer and maintain your collections. Use the following information to get started.
 
-## コマンドレットの取得 
+## <a name="get-the-cmdlets"></a>Get the cmdlets 
 -------------
-最初に Azure Powershell コマンドレットを[ここ](http://go.microsoft.com/?linkid=9811175)からダウンロードします。RemoteApp のコマンドレットもそこに含まれています。
+First download the Azure Powershell cmdlets [here](http://go.microsoft.com/?linkid=9811175), the RemoteApp cmdlets are included in it. 
 
-詳細については、[Azure RemoteApp コマンドレットのヘルプ](https://msdn.microsoft.com/library/mt428031.aspx)をご覧ください。
+Check out the [Azure RemoteApp cmdlet help](https://msdn.microsoft.com/library/mt428031.aspx).
 
-## サブスクリプションを使用するために Azure コマンドレットを構成します。
+## <a name="configure-azure-cmdlets-to-use-your-subscription"></a>Configure Azure cmdlets to use your subscription
 ------------------
-[このガイド](../powershell-install-configure.md)に従うと、Azure サブスクリプションに対してコマンドレットを使用できるようになります。
+Follow [this guide](../powershell-install-configure.md) so you can use the cmdlets against your Azure subscription.
 
-次の手順に従って、すぐに作業を開始できます。
+You can use these steps to get started quickly:
 
-1.	[Azure PowerShell コマンドレット](http://go.microsoft.com/?linkid=9811175)をダウンロードしてインストールします。
-2.	Microsoft Azure PowerShell を起動します。
-3.	**Add-AzureAccount** を実行して、Azure サブスクリプションに対して認証します。メッセージが表示されたら、Azure ポータルへのサインインに使用するのと同じユーザー名とパスワードを入力します。
-4.	**Get-AzureSubscription** を実行して、自分のユーザー アカウントに関連付けられたサブスクリプションを表示します。
-5.	**Select-AzureSubscription** を実行して、PowerShell コンソールで使用するサブスクリプション名または ID を指定します。
+1.  Download and install the [Azure PowerShell cmdlets](http://go.microsoft.com/?linkid=9811175).
+2.  Launch Microsoft Azure PowerShell.
+3.  Run **Add-AzureAccount** to authenticate to your Azure subscription. When prompted, enter the same user name and password that you use to sign in to Azure portal.  
+4.  Run **Get-AzureSubscription** to list the subscriptions associated with your user account. 
+5.  Run **Select-AzureSubscription** and specify the subscription name or ID to use in the PowerShell console.
 
-これで、Azure PowerShell コンソールが構成され、使用できるようになりました。Azure PowerShell コンソールを起動するたびに、2 ～ 5 の手順を繰り返してください。
+Congratulations, your Azure PowerShell console is configured and ready to use. Be aware that you'll need to repeate steps 2 through 5 each time you start the the Azure PowerShell console.  
 
-## Create a cloud collection (クラウド コレクションを作成する)
+## <a name="create-a-cloud-collection"></a>Create a cloud collection
 --------------------
-次のコマンドを実行するだけです。
+It's simple, run the following command:
 
     New-AzureRemoteAppCollection -Collectionname RAppO365Col1 -ImageName "Office 365 ProPlus (Subscription required)" -Plan Basic -Location "West US" - Description "Office 365 Collection."
 
-上記のコマンドを実行すると、Microsoft Office 365 アプリケーション (Excel、OneNote、Outlook、PowerPoint、Visio および Word) が自動的に発行されます。
+The above command automatically publishes Microsoft Office 365 applications (Excel, OneNote, Outlook, PowerPoint, Visio and Word).
 
-コレクションの作成には、完了まで 30 分以上かかる場合があります。そのため、このコマンドは追跡に使用できる次のような ID を返します。
+Collection creation can take 30 minutes or longer to complete. Therefore, this command returns a tracking ID that you can use as follows:
 
 
     Get-AzureRemoteAppOperationResult -TrackingId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
-コレクションが完成したら、次のコマンドを使用して、コレクションにユーザーを追加できます。
+After the collection is done, you can add users to the collection with the following command:
 
     Add-AzureRemoteAppUser -CollectionName RAppO365Col1 -Type microsoftAccount -UserUpn someone@domain.com
 
-これで完了です。 ユーザーは、[ここ](https://www.remoteapp.windowsazure.com/)にある Azure RemoteApp クライアントを使用してアプリケーションに接続できるはずです。
+And you're done! That user should be able to connect to the application using the Azure RemoteApp client found [here](https://www.remoteapp.windowsazure.com/).
 
-## 利用可能なコマンドレット
-他にも多くのコマンドがあり、それらのコマンドに関するドキュメントも間もなく公開される予定です。
+## <a name="available-cmdlets"></a>Available cmdlets
+There are lots of other commands that we have, the documentation for them will be coming shortly:
 
-基本的な RemoteApp コレクションのコマンドレット:
+Basic RemoteApp Collection  cmdlets: 
 
 - New-AzureRemoteAppCollection
 - Get-AzureRemoteAppCollection
@@ -89,7 +90,7 @@ Azure RemoteApp の提供は終了しました。詳細については、[お知
 - Get-AzureRemoteAppCollectionUsageSummary
 - Get-AzureRemoteAppPlan
 
-RemoteApp 仮想ネットワークのコマンドレット:
+RemoteApp virtual network cmdlets:
 
 - New-AzureRemoteAppVNet
 - Get-AzureRemoteAppVNet
@@ -99,14 +100,14 @@ RemoteApp 仮想ネットワークのコマンドレット:
 - Get-- AzureRemoteAppVpnDeviceConfigScript
 - Reset-AzureRemoteAppVpnSharedKey
 
-RemoteApp テンプレート イメージのコマンドレット:
+RemoteApp template image cmdlets:
 
 - New-AzureRemoteAppTemplateImage
 - Get-AzureRemoteAppTemplateImage
 - Rename-AzureRemoteAppTemplateImage
 - Remove-AzureRemoteAppTemplateImage
 
-その他の RemoteApp のコマンドレット:
+Other RemoteApp cmdlets:
 
 - Get-AzureRemoteAppLocation
 - Get-AzureRemoteAppWorkspace
@@ -114,4 +115,8 @@ RemoteApp テンプレート イメージのコマンドレット:
 - Get-AzureRemoteAppOperationResult
  
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

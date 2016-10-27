@@ -1,91 +1,93 @@
 <properties
-	pageTitle="Machine Learning ワークスペースの作成 | Microsoft Azure"
-	description="Azure Machine Learning Studio のワークスペースの作成方法"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun"/>
+    pageTitle="Create a Machine Learning workspace | Microsoft Azure"
+    description="How to create a workspace for Azure Machine Learning Studio"
+    services="machine-learning"
+    documentationCenter=""
+    authors="garyericson"
+    manager="jhubbard"
+    editor="cgronlun"/>
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/16/2016"
-	ms.author="garye;bradsev;ahgyger"/>
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/16/2016"
+    ms.author="garye;bradsev;ahgyger"/>
 
 
-# Azure Machine Learning ワークスペースの作成と共有
 
-このメニューは、Cortana Analytics Process (CAP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
+# <a name="create-and-share-an-azure-machine-learning-workspace"></a>Create and share an Azure Machine Learning workspace
+
+This menu links to topics that describe how to set up the various data science environments used by the Cortana Analytics Process (CAPS).
 
 [AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
-Azure Machine Learning Studio を使用するには、Machine Learning ワークスペースが必要です。このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+To use Azure Machine Learning Studio, you need to have a Machine Learning workspace. This workspace contains the tools you need to create, manage, and publish experiments.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## ワークスペースを作成するには
+## <a name="to-create-a-workspace"></a>To create a workspace
 
-1. [Microsoft Azure クラシック ポータル]にサインインします。
+1. Sign-in to the [Microsoft Azure classic portal].
 
-> [AZURE.NOTE] サインインするには、Azure サブスクリプションの管理者である必要があります。Machine Learning ワークスペースの所有者であっても、[Microsoft Azure クラシック ポータル]へのアクセス権は付与されません。詳細については、「[Azure サブスクリプションとワークスペース所有者の特権](#subscriptionvsworkspace)」を参照してください。
+> [AZURE.NOTE] To sign-in, you need to be an Azure subscription administrator. Being the owner of a Machine Learning workspace will not give you access to the [Microsoft Azure classic portal]. See [Privileges of Azure subscription administrator and workspace owner](#subscriptionvsworkspace) for more details.
 
-2. Microsoft Azure サービス パネルで、**[MACHINE LEARNING]** をクリックします。
+2. In the Microsoft Azure services panel, click **MACHINE LEARNING**.
 
-    ![Machine Learning サービス][1]
+    ![Machine Learning service][1]
 
-3. ウィンドウの下部にある **[+新規]** をクリックします。
-4. **[Data Services]**、**[MACHINE LEARNING]**、**[簡易作成]** の順にクリックします。
+3. Click **+NEW** at the bottom of the window.
+4. Click **DATA SERVICES**, then **MACHINE LEARNING**, then **QUICK CREATE**.
 
-	![新しいワークスペースの簡易作成][3]
+    ![Quick Create of new workspace][3]
 
-5. ワークスペースの **[ワークスペース名]** を入力します。
-6. **[場所]** に Azure の場所を指定し、**[ストレージ アカウント]** に既存の Azure のストレージ アカウントを入力するか、**[新しいストレージ アカウントの作成]** を選択して新たに作成します。
-7. **[ML ワークスペースを作成]** をクリックします。
+5. Enter a **WORKSPACE NAME** for your workspace.
+6. Specify the Azure **LOCATION**, then enter an existing Azure **STORAGE ACCOUNT** or select **Create a new storage account** to create a new one.
+7. Click **CREATE AN ML WORKSPACE**.
 
-Machine Learning ワークスペースが作成されると、**機械学習**のページの一覧に表示されます。
+After your Machine Learning workspace is created, you will see it listed on the **machine learning** page.
 
-## Azure Machine Learning ワークスペースの共有
+## <a name="sharing-an-azure-machine-learning-workspace"></a>Sharing an Azure Machine Learning workspace
 
-Machine Learning ワークスペースを作成した後は、ユーザーをワークスペースに招待し、ワークスペースとそのすべての実験へのアクセス権を共有することができます。次の 2 つのユーザー ロールがサポートされます。
+Once a Machine Learning workspace is created, you can invite users to your workspace and share access to your workspace and all of its experiments. We support two roles of users:
 
-- **ユーザー** - ワークスペース ユーザーは、ワークスペース内のデータセット、実験、Web サービスの作成、表示、変更を行うことができます。
-- **所有者** - 所有者は、ユーザーの招待、削除、ワークスペースへのアクセス権の付与、ユーザーが実行できる操作の登録を行うことができます。また、所有者には Notebook へのアクセス権もあります。
+- **User** - A workspace user can create, open, modify and delete datasets, experiments and web services in the workspace.
+- **Owner** - An owner can invite, remove, and list users with access to the workspace, in addition to what a user can do. He/she also have access to Notebooks.
 
-### ワークスペースを共有するには
-1. [Machine Learning Studio] にサインインします
-2. Machine Learning Studio パネルの **[設定]** をクリックします
-3. **[ユーザー]** をクリックします
-4. **[その他のユーザーの招待]** をクリックします
+### <a name="to-share-a-workspace"></a>To share a workspace
+1. Sign-in to [Machine Learning Studio]
+2. In the Machine Learning Studio panel, click **SETTINGS**
+3. Click **USERS**
+4. Click **INVITE MORE USERS**
 
-    ![その他のユーザーを招待する][4]
+    ![Invite more users][4]
 
-5. 1 つ以上の電子メール アドレスを入力します。ユーザーには、有効な Microsoft アカウント (name@outlook.com など) または (Azure Active Directory の) 組織アカウントのみが必要です。
-6. チェック マークのボタンをクリックします。
+5. Enter one or more email address. The user just need a valid Microsoft account (e.g., name@outlook.com) or an organizational account (from Azure Active Directory).
+6. Click the check button.
 
-追加した各ユーザーには、共有ワークスペースにログインする手順が記載された電子メールが送信されます。
+Each user you added will receive an email with instruction to log-in to the shared workspace.
 
-ワークスペースの管理方法の詳細については、「[Azure Machine Learning ワークスペースの管理]」をご覧ください。ワークスペースの作成で問題が発生した場合は、「[Troubleshooting guide: Create and connect to an Machine Learning workspace (トラブルシューティング ガイド: Machine Learning ワークスペースの作成と接続)]」をご覧ください。
+For information about managing your workspace, see [Manage an Azure Machine Learning workspace].
+If you encounter a problem creating your workspace, see [Troubleshooting guide: Create and connect to an Machine Learning workspace].
 
-## <a name="subscriptionvsworkspace"></a>Azure サブスクリプションとワークスペース所有者の特権
+## <a name="<a-name="subscriptionvsworkspace"></a>privileges-of-azure-subscription-administrator-and-of-workspace-owner"></a><a name="subscriptionvsworkspace"></a>Privileges of Azure subscription administrator and of workspace owner
 
-次の表は、Azure サブスクリプション管理者とワークスペース所有者の違いを説明した一覧です。
+Below is a table clarifying the difference between an Azure subscription administrator and a workspace owner.
 
-| アクション | Azure サブスクリプション管理者 | ワークスペースの所有者 |
-| --------------			|:------------------------:| :----------------:|
-| [Microsoft Azure クラシック ポータル]にアクセスする| はい | なし |
-| 新しいワークスペースを作成する | はい | なし |
-| ワークスペースを削除する | はい | なし |
-| Web サービスにエンドポイントを追加する | はい | なし |
-| Web サービスからエンドポイントを削除する | はい | なし |
-| Web サービスの同時実行を変更する | はい | なし |
-| [Machine Learning Studio] にアクセスする | なし * | はい |
+| Actions                   | Azure subscription administrator | Workspace owner  |
+| --------------            |:------------------------:| :----------------:|
+| Access [Microsoft Azure classic portal]| Yes         | No                |
+| Create a new workspace                 | Yes         | No                |
+| Delete a workspace                     | Yes         | No                |
+| Add endpoint to a web service          | Yes         | No                |
+| Delete endpoint from a web service     | Yes         | No                |
+| Change concurrency for a web service   | Yes         | No                |
+| Access [Machine Learning Studio]       | No *        | Yes               |
 
 
-> [AZURE.NOTE] * Azure サブスクリプション管理者は、自分がワークスペース所有者として作成するワークスペースに自動的に追加されます。ただし、単に Azure サブスクリプション管理者であるというだけでは、そのサブスクリプションのワークスペースへのアクセスは許可されません。
+> [AZURE.NOTE] * An Azure subscription administrator is automatically added to the the workspace he/she creates as workspace Owner. However, simply being an Azure subscription administrator doesn't grant him/her access to any workspace under that subscription.
 
 <!-- ![List of Machine Learning workspaces][2] -->
 
@@ -100,9 +102,13 @@ Machine Learning ワークスペースを作成した後は、ユーザーをワ
 
 
 <!--Link references-->
-[Azure Machine Learning ワークスペースの管理]: machine-learning-manage-workspace.md
-[Troubleshooting guide: Create and connect to an Machine Learning workspace (トラブルシューティング ガイド: Machine Learning ワークスペースの作成と接続)]: machine-learning-troubleshooting-creating-ml-workspace.md
-[Machine Learning Studio]: https://studio.azureml.net/
-[Microsoft Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Manage an Azure Machine Learning workspace]: machine-learning-manage-workspace.md
+[Troubleshooting guide: Create and connect to an Machine Learning workspace]: machine-learning-troubleshooting-creating-ml-workspace.md
+[Machine Learning Studio]: https://studio.azureml.net/  
+[Microsoft Azure classic portal]: https://manage.windowsazure.com/
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

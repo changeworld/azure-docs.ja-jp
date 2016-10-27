@@ -1,232 +1,237 @@
 <properties
-	pageTitle="Linux ベースの HDInsight (Hadoop) の高可用性機能 | Microsoft Azure"
-	description="Linux ベースの HDInsight クラスターで、追加のヘッド ノードを使用することで、信頼性と可用性を改善する方法について説明します。また、その結果が Ambari や Hive などの Hadoop サービスに与える影響、SSH を使用して各ヘッド ノードに個別に接続する方法についても説明します。"
-	services="hdinsight"
-	editor="cgronlun"
-	manager="jhubbard"
-	authors="Blackmist"
-	documentationCenter=""
-	tags="azure-portal"/>
+    pageTitle="High availability features of Linux-based HDInsight (Hadoop) | Microsoft Azure"
+    description="Learn how Linux-based HDInsight clusters improve reliability and availability by using an additional head node. You will learn how this impacts Hadoop services such as Ambari and Hive, as well as how to individually connect to each head node using SSH."
+    services="hdinsight"
+    editor="cgronlun"
+    manager="jhubbard"
+    authors="Blackmist"
+    documentationCenter=""
+    tags="azure-portal"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.workload="big-data"
-	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="09/13/2016"
-	ms.author="larryfr"/>
+    ms.service="hdinsight"
+    ms.workload="big-data"
+    ms.tgt_pltfrm="na"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.date="09/13/2016"
+    ms.author="larryfr"/>
 
-#HDInsight における Hadoop クラスターの可用性と信頼性
 
-Hadoop は、クラスター内のノード間でサービスやデータの冗長コピーを分散することにより、高い可用性と信頼性を実現します。ただし、Hadoop の標準ディストリビューションに含まれるヘッド ノードは、通常 1 つのみです。この 1 つのヘッド ノードで障害が発生すると、クラスターが動作を停止する可能性があります。
+#<a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Availability and reliability of Hadoop clusters in HDInsight
 
-このような問題に対処するために、Azure の Linux ベースの HDInsight クラスターは 2 つのヘッド ノードを備え、実行中の Hadoop サービスおよびジョブの可用性と信頼性を高めています。
+Hadoop achieves high availability and reliability by distributing redundant copies of services and data across the nodes in a cluster. However standard distributions of Hadoop typically have only a single head node. Any outage of the single head node can cause the cluster to stop working.
 
-> [AZURE.NOTE] このドキュメントの手順は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターを使用する場合は、「[HDInsight におけるWindows ベースの Hadoop クラスターの可用性と信頼性](hdinsight-high-availability.md)」で Windows 固有の情報を参照してください。
+To address this potential problem, Linux-based HDInsight clusters on Azure provide two head nodes to increase the availability and reliability of Hadoop services and jobs running.
 
-##ノードについて
+> [AZURE.NOTE] The steps used in this document are specific to Linux-based HDInsight clusters. If you are using a Windows-based cluster, see [Availability and reliability of Windows-based Hadoop clusters in HDInsight](hdinsight-high-availability.md) for Windows-specific information.
 
-HDInsight クラスターのノードは、Azure Virtual Machines を使用して実装します。ノードに障害が発生した場合はオフラインになり、新しいノードが作成され、障害が発生したノードと置換されます。ノードがオフラインの間は、新しいノードがオンラインに戻るまで、同じ種類の別のノードが使用されます。
+##<a name="understanding-the-nodes"></a>Understanding the nodes
 
-> [AZURE.NOTE] 障害発生時にノードがデータ分析を行っていた場合、ジョブの進捗状況は失われます。障害が発生したノードで実行されていたジョブは、別のノードに再送信されます。
+Nodes in an HDInsight cluster are implemented using Azure Virtual Machines. In the event that a node fails, it is taken offline and a new node is created to replace the failed node. While the node is offline, another node of the same type will be used until the new node is brought online.
 
-次のセクションでは、HDInsight で使用される個々のノード タイプについて説明します。クラスターの種類によっては、一部のノード タイプのみが使用されます。たとえば、Hadoop クラスターには、Nimbus ノードはありません。HDInsight クラスターの種類ごとの使用されるノードの詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)」の「クラスターの種類」セクションを参照してください。
+> [AZURE.NOTE] If the node is analyzing data when it fails, its progress on the job is lost. The job that the failing node was working on will be resubmitted to another node.
 
-###ヘッド ノード
+The following sections discuss the individual node types used with HDInsight. Not all node types are used for a cluster type. For example, a Hadoop cluster type will not have any Nimbus nodes. For more information on nodes used by HDInsight cluster types, see the Cluster types section of [Create Linux-based Hadoop clusters in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
 
-一部の Hadoop の実装には、ワーカー ノードの障害をスムーズに管理するサービスとコンポーネントをホストする、1 つのヘッド ノードがあります。ただし、ヘッド ノードで実行されているマスター サービスが停止すると、クラスターは動作を停止します。
+###<a name="head-nodes"></a>Head nodes
 
-HDInsight クラスターには、セカンダリ ヘッド ノードが用意されています。これにより、プライマリ ノードで障害が発生した場合に、マスター サービスとコンポーネントの実行をセカンダリ ノードで継続できます。
+Some implementations of Hadoop have a single head node that hosts services and components that manage the failure of worker nodes smoothly. But any outages of master services running on the head node would cause the cluster to cease to work.
 
-> [AZURE.IMPORTANT] 両方のヘッド ノードは、クラスター内で同時にアクティブに実行されます。HDFS や YARN などの一部のサービスは、常にどちらかのヘッド ノードで「アクティブ」になります (他方のヘッド ノードでは「スタンバイ」になります)。HiveServer2 や Hive MetaStore などのサービスは、両方のヘッド ノードで同時にアクティブになります。
+HDInsight clusters provide a secondary head node, which allows master services and components to continue to run on on the secondary node in the event of a failure on the primary.
 
-ヘッド ノード (および HDInsight の他のノード) では、ノードのホスト名の一部として数値が使用されます。たとえば、`hn0-CLUSTERNAME` または `hn4-CLUSTERNAME` です。
+> [AZURE.IMPORTANT] Both head nodes are active and running within the cluster simultaneously. Some services, such as HDFS or YARN, are only 'active' on one head node at any given time (and ‘standby’ on the other head node). Other services such as HiveServer2 or Hive MetaStore are active on both head nodes at the same time.
 
-> [AZURE.IMPORTANT] ノードがプライマリとセカンダリのどちらであるかと、数値を関連付けないでください。数値は、各ノードに一意の名前を指定するためにのみ存在します。
+Head nodes (and other nodes in HDInsight,) have a numeric value as part of the hostname of the node. For example, `hn0-CLUSTERNAME` or `hn4-CLUSTERNAME`. 
 
-###Nimbus ノード
+> [AZURE.IMPORTANT] Do not associate the numeric value with whether a node is primary or secondary; the numeric value is only present to provide a unique name for each node.
 
-Storm クラスターの場合、Nimbus ノードは、ワーカー ノード間で処理を分散および監視して、Hadoop JobTracker と同様の機能を提供します。HDInsight では、Storm クラスターに対して 2 つの Nimbus ノードが提供されます。
+###<a name="nimbus-nodes"></a>Nimbus Nodes
 
-###Zookeeper ノード
+For Storm clusters, the Nimbus nodes provide similar functionality to the Hadoop JobTracker by distributing and monitoring processing across worker nodes. HDInsight provides 2 Nimbus nodes for the Storm cluster type.
 
-ノード ヘッドでマスター サービスを選択し、そのサービスを確実に動作させるために [ZooKeeper](http://zookeeper.apache.org/) ノード (ZK) が使用され、データ (ワーカー) ノードとゲートウェイはどちらのヘッド ノードでマスター サービスがアクティブであるかがわかります。既定では、HDInsight では 3 つの ZooKeeper ノードが提供されます。
+###<a name="zookeeper-nodes"></a>Zookeeper nodes
 
-###ワーカー ノード
+[ZooKeeper](http://zookeeper.apache.org/ ) nodes (ZKs) are used for leader election of master services on head nodes, and to insure that services, data (worker) nodes and gateways know which head node a master service is active on. By default, HDInsight provides 3 ZooKeeper nodes.
 
-ワーカー ノードは、クラスターにジョブが送信されると実際にデータ分析を実行します。ワーカー ノードに障害が発生した場合、そのノードが実行していたタスクは別のワーカー ノードに送信されます。既定では、HDInsight では 4 つのワーカー ノードが作成されます。ただし、クラスターの作成時とクラスターの作成後の両方で、ニーズに合わせてこの数を変更できます。
+###<a name="worker-nodes"></a>Worker nodes
 
-###エッジ ノード
+Worker nodes perform the actual data analysis when a job is submitted to the cluster. If a worker node fails, the task that it was performing will be submitted to another worker node. By default, HDInsight will create 4 worker nodes; however, you can change this number to suit your needs both during cluster creation and after cluster creation.
 
-エッジ ノードは、クラスター内のデータの分析にはアクティブに関与しませんが、開発者やデータ サイエンティストが Hadoop を操作するときに使用されます。エッジ ノードは、クラスター内の他のノードと同じ Azure Virtual Network 内に存在し、他のすべてのノードに直接アクセスできます。クラスターのデータ分析には関係しないため、重要な Hadoop サービスまたは分析ジョブからリソースを取り除く心配をせずに使用できます。
+###<a name="edge-node"></a>Edge node
 
-現在、HDInsight では、R Server が既定でエッジ ノードを提供する唯一のクラスターの種類です。HDInsight の R Server のエッジ ノードは、R コードを分散処理のためにクラスターに送信する前にローカルでテストするために使用されます。
+An edge node does not actively participate in data analysis within the cluster, but is instead used by developers or data scientists when working with Hadoop. The edge node lives in the same Azure Virtual Network as the other nodes in the cluster, and can directly access all other nodes. Since it is not involved in analyzing data for the cluster, it can be used without any concern of taking resources away from critical Hadoop services or analysis jobs.
 
-「[Create a Linux-based HDInsight cluster with Hue on an Edge Node (エッジ ノードで Hue を使用して Linux ベースの HDInsight クラスターを作成する)](https://azure.microsoft.com/documentation/templates/hdinsight-linux-with-hue-on-edge-node/)」は、エッジ ノードがある Hadoop クラスターの種類を作成するために使用できるサンプル テンプレートです。
+Currently, R Server on HDInsight is the only cluster type that provides an edge node by default. For R Server on HDInsight, the edge node is used test R code locally on the node before submitting it to the cluster for distributed processing.
 
+[Create a Linux-based HDInsight cluster with Hue on an Edge Node](https://azure.microsoft.com/documentation/templates/hdinsight-linux-with-hue-on-edge-node/) is an example template that can be used to create a Hadoop cluster type that has an Edge node.
 
-## ノードへのアクセス
 
-インターネット経由でのクラスターへのアクセスはパブリック ゲートウェイを通して提供されおり、接続先はヘッド ノードと (HDInsight クラスターの R Server の場合は) エッジ ノードに制限されています。パブリック ゲートウェイは、要求されたサービスをホストするヘッド ノードに要求をルーティングするため、ヘッド ノードで実行されているサービスへのアクセスは、ヘッド ノードが複数あっても影響を受けません。たとえば、Ambari がセカンダリ ヘッド ノードで現在ホストされている場合、ゲートウェイは Ambari の受信要求をそのノードにルーティングします。
+## <a name="accessing-the-nodes"></a>Accessing the nodes
 
-SSH を使用してクラスターにアクセスする場合は、ポート 22 (SSH の既定値) 経由で接続するとプライマリ ヘッド ノードに接続され、ポート 23 経由で接続するとセカンダリ ヘッド ノードに接続されます。たとえば、`ssh username@mycluster-ssh.azurehdinsight.net` は、__mycluster__ という名前のクラスターのプライマリ ヘッド ノードに接続します。
+Access to the cluster over the internet is provided through a public gateway, and is limited to connecting to the head nodes and (if an R Server on HDInsight cluster,) the edge node. Access to services running on the head nodes is not effected by having multiple head nodes, as the public gateway routes requests to the head node that hosts the requested service. For example, if Ambari is currently hosted on the secondary head node, the gateway will route incoming requests for Ambari to that node.
 
-> [AZURE.NOTE] これは、SSH ファイル転送プロトコル (SFTP) などの SSH に基づくプロトコルにも当てはまります。
+When accessing the cluster using SSH, connecting through port 22 (the default for SSH,) will connect to the primary head node; connecting through port 23 will connect to the secondary head node. For example, `ssh username@mycluster-ssh.azurehdinsight.net` will connect to the primary head node of the cluster named __mycluster__.
 
-HDInsight クラスターの R Server に付属するエッジ ノードにも、ポート 22 経由で SSH を使用して直接アクセスできます。 たとえば、`ssh username@RServer.mycluster.ssh.azurehdinsight.net` は、__mycluster__ という名前の HDInsight クラスターの R Server のエッジ ノードに接続します。
+> [AZURE.NOTE] This also applies to protocols based on SSH, such as the SSH File Transfer Protocol (SFTP).
 
-### 内部完全修飾ドメイン名 (FQDN)
+The edge node provided with R Server on HDInsight clusters can also be directly accessed using SSH through port 22. For example, `ssh username@RServer.mycluster.ssh.azurehdinsight.net` will connect to the edge node for an R Server on HDInsight cluster named __mycluster__. 
 
-HDInsight クラスター内のノードには、クラスターからのみアクセスできる内部 IP アドレスと FQDN があります (ヘッド ノードまたはクラスターで実行されているジョブに対する SSH セッションなど)。 内部 FQDN または IP アドレスを使用してクラスターのサービスにアクセスする場合は、サービスへのアクセス時に Ambari を使用して IP または FQDN を検証する必要があります。
+### <a name="internal-fully-qualified-domain-names-(fqdn)"></a>Internal fully qualified domain names (FQDN)
 
-たとえば、Oozie サービスは 1 つのヘッド ノードでのみ実行でき、SSH セッションからの `oozie` コマンドの使用にはサービスの URL が必要です。これは、次のコマンドを使用して Ambari から取得できます。
+Nodes in an HDInsight cluster have an internal IP address and FQDN that can only be accessed from the cluster (such as an SSH session to the head node or a job running on the cluster.) When accessing services on the cluster using the internal FQDN or IP address, you should use Ambari to verify the IP or FQDN to use when accessing the service.
 
-	curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
+For example, the Oozie service can only run on one head node, and using the `oozie` command from an SSH session requires the URL to the service. This can be retrieved from Ambari by using the following command:
 
-これにより、`oozie` コマンドで使用する内部 URL を含む、次に似た値が返ります。
+    curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
 
-	"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+This will return a value similar to the following, which contains the internal URL to use with the `oozie` command:
 
-### 他のノード タイプへのアクセス
+    "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
 
-インターネット経由で直接アクセスできないノードに接続するには、次の方法を使用します。
+### <a name="accessing-other-node-types"></a>Accessing other node types
 
-* __SSH__: SSH を使用してヘッド ノードに接続すると、ヘッド ノードから SSH を使用してクラスター内の他のノードに接続できます。
-* __SSH トンネル__: インターネットに公開されていないいずれかのノードのでホストされている Web サービスにアクセスするには、[SSH トンネルを使用](hdinsight-linux-ambari-ssh-tunnel.md)する必要があります。
-* __Azure Virtual Network__: HDInsight クラスターが Azure Virtual Network に含まれる場合、同じ Virtual Network 上にあるリソースから、クラスター内のすべてのノードに直接アクセスできます。
+You can connect to nodes that are not directly accessible over the internet by using the following methods.
 
-## サービスの状態を確認する方法
+* __SSH__: Once connected to a head node using SSH, you can then use SSH from the head node to connect to other nodes in the cluster.
+* __SSH Tunnel__: If you need to access a web service hosted on one of the nodes that is not exposed to the internet, you must [use an SSH tunnel](hdinsight-linux-ambari-ssh-tunnel.md).
+* __Azure Virtual Network__: If your HDInsight cluster is part of an Azure Virtual Network, any resource on the same Virtual Network can directly access all nodes in the cluster.
 
-Ambari Web UI または Ambari REST API のいずれかを使用して、ヘッド ノードで実行されているサービスの状態を確認できます。
+## <a name="how-to-check-on-a-service-status"></a>How to check on a service status
 
-###Ambari Web UI
+Either the Ambari Web UI or the Ambari REST API can be used to check the status of services that run on the head nodes.
 
-Ambari Web UI は、https://CLUSTERNAME.azurehdinsight.net で表示できます。**CLUSTERNAME** をクラスターの名前に置き換えます。メッセージが表示されたら、クラスターの HTTP ユーザーの資格情報を入力します。既定の HTTP ユーザー名は **admin**であり、パスワードはクラスターを作成するときに入力したパスワードです。
+###<a name="ambari-web-ui"></a>Ambari Web UI
 
-Ambari ページにアクセスすると、インストールされているサービスがページの左側に表示されます。
+The Ambari Web UI is viewable at https://CLUSTERNAME.azurehdinsight.net. Replace **CLUSTERNAME** with the name of your cluster. If prompted, enter the HTTP user credentials for your cluster. The default HTTP user name is **admin** and the password is the password you entered when creating the cluster.
 
-![インストールされているサービス](./media/hdinsight-high-availability-linux/services.png)
+When you arrive on the Ambari page, the installed services will be listed on the left of the page.
 
-状態を示すためにサービスの横に表示されるアイコンがあります。サービスに関連するアラートは、ページの上部にある **[アラート]** リンクを使用して表示できます。各サービスを選択して、その詳細を表示できます。
+![Installed services](./media/hdinsight-high-availability-linux/services.png)
 
-サービス ページには、各サービスの状態と構成に関する情報が表示されますが、サービスが実行されているヘッド ノードの情報は表示されません。この情報を表示するには、ページの上部にある **[ホスト]** リンクを使用します。これにより、ヘッド ノードを含むクラスター内のホストが表示されます。
+There are a series of icons that may appear next to a service to indicate status. Any alerts related to a service can be viewed using the **Alerts** link at the top of the page. You can select each service to view more information on it.
 
-![ホストの一覧](./media/hdinsight-high-availability-linux/hosts.png)
+While the service page provides information on the status and configuration of each service, it does not provide information on which head node the service is running on. To view this information, use the **Hosts** link at the top of the page. This will display hosts within the cluster, including the head nodes.
 
-どちらかのヘッド ノードのリンクを選択すると、そのノードで実行されているサービスとコンポーネントが表示されます。
+![hosts list](./media/hdinsight-high-availability-linux/hosts.png)
 
-![コンポーネントの状態](./media/hdinsight-high-availability-linux/nodeservices.png)
+Selecting the link for one of the head nodes will display the services and components running on that node.
 
-###Ambari REST API
+![Component status](./media/hdinsight-high-availability-linux/nodeservices.png)
 
-Ambari REST API はインターネット経由で使用でき、パブリック ゲートウェイが、この REST API を現在ホストしているヘッド ノードへのルーティング要求を処理します。
+###<a name="ambari-rest-api"></a>Ambari REST API
 
-次のコマンドを使用して、Ambari REST API を通してサービスの状態を確認できます。
+The Ambari REST API is available over the internet, and the public gateway handles routing requests to the head node that is currently hosting the REST API.
 
-	curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
+You can use the following command to check the state of a service through the Ambari REST API:
 
-* **PASSWORD** を HTTP ユーザー (admin) アカウントのパスワードに置き換えます。
+    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
 
-* **CLUSTERNAME** をクラスターの名前に置き換えます。
+* Replace **PASSWORD** with the HTTP user (admin,) account password
 
-* **SERVICENAME** を、その状態を確認するサービスの名前に置き換えます。
+* Replace **CLUSTERNAME** with the name of the cluster
 
-たとえば、**mycluster** という名前のクラスターで、**HDFS** サービスの状態を、**password** というパスワードで確認するには、次のコマンドを使用します。
+* Replace **SERVICENAME** with the name of the service to check the status of
 
-	curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
+For example, to check the status of the **HDFS** service on a cluster named **mycluster**, with a password of **password**, you would use the following:
 
-応答は次のようになります。
+    curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
 
-	{
-	  "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
-	  "ServiceInfo" : {
-	    "cluster_name" : "mycluster",
-	    "service_name" : "HDFS",
-	    "state" : "STARTED"
-	  }
-	}
+The response will be similar to the following:
 
-URL から、サービスが現在 __hn0-CLUSTERNAME__ というヘッド ノードで実行されていることがわかります。
+    {
+      "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+      "ServiceInfo" : {
+        "cluster_name" : "mycluster",
+        "service_name" : "HDFS",
+        "state" : "STARTED"
+      }
+    }
 
-「state」から、サービスが現在実行されている(**STARTED**) ことがわかります。
+The URL tells us that the service is currently running on a head node named __hn0-CLUSTERNAME__.
 
-どのようなサービスがクラスターにインストールされているかわからない場合は、次のコマンドを使用して一覧を取得できます。
+The state tells us that the service is currently running, or **STARTED**.
 
-	curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
+If you do not know what services are installed on the cluster, you can use the following to retrieve a list:
 
-####サービス コンポーネント
+    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
 
-サービスの中に、個別に状態を確認できるコンポーネントが含まれている場合があります。たとえば、HDFS には、NameNode コンポーネントが含まれています。コンポーネントに関する情報を表示するコマンドは次のようになります。
+####<a name="service-components"></a>Service components
 
-	curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+Services may contain components that you wish to check the status of individually. For example, HDFS contains the NameNode component. To view information on a component, the command would be:
 
-サービスがどのようなコンポーネントを備えているかわからない場合は、次のコマンドを使用して一覧を取得できます。
+    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
 
-	curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+If you do not know what components are provided by a service, you can use the following to retrieve a list:
+
+    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
     
-## ヘッド ノードのログ ファイルへのアクセス方法
+## <a name="how-to-access-log-files-on-the-head-nodes"></a>How to access log files on the head nodes
 
-###SSH
+###<a name="ssh"></a>SSH
 
-SSH 経由でヘッド ノードに接続している間、ログ ファイルは **/var/log** に保存されます。たとえば、**/var/log/hadoop-yarn/yarn** には、YARN のログが含まれます。
+While connected to a head node through SSH, log files can be found under **/var/log**. For example, **/var/log/hadoop-yarn/yarn** contain logs for YARN.
 
-各ヘッド ノードは独自のログ エントリを持つ可能性があるため、両方のログを確認する必要があります。
+Each head node can have unique log entries, so you should check the logs on both.
 
-###SFTP
+###<a name="sftp"></a>SFTP
 
-SSH ファイル転送プロトコルまたはセキュア ファイル転送プロトコル (SFTP) を使用してヘッド ノードに接続し、ログ ファイルを直接ダウンロードすることもできます。
+You can also connect to the head node using the SSH File Transfer Protocol or Secure File Transfer Protocol (SFTP), and download the log files directly.
 
-SSH クライアントを使用するときと同様に、クラスターへの接続時にクラスターの SSH ユーザー アカウント名と SSH アドレスを指定する必要があります。たとえば、「`sftp username@mycluster-ssh.azurehdinsight.net`」のように入力します。また、メッセージが表示されたらアカウントのパスワードを入力するか、または `-i` パラメーターを使用して公開キーを指定する必要があります。
+Similar to using an SSH client, when connecting to the cluster you must provide the SSH user account name and the SSH address of the cluster. For example, `sftp username@mycluster-ssh.azurehdinsight.net`. You must also provide the password for the account when prompted, or provide a public key using the `-i` parameter.
 
-接続されると、`sftp>` プロンプトが表示されます。このプロンプトでは、ディレクトリの移動、およびファイルのアップロードとダウンロードを行うことができます。たとえば、次のコマンドでは、**/var/log/hadoop/hdfs** ディレクトリに移動し、ディレクトリ内のすべてのファイルをダウンロードします。
+Once connected, you are presented with a `sftp>` prompt. From this prompt, you can change directories, upload and download files. For example, the following commands change directories to the **/var/log/hadoop/hdfs** directory and then download all files in the directory.
 
     cd /var/log/hadoop/hdfs
     get *
 
-使用可能なコマンドの一覧を参照するには、`sftp>` プロンプトで「`help`」と入力します。
+For a list of available commands, enter `help` at the `sftp>` prompt.
 
-> [AZURE.NOTE] SFTP を使用した接続時にファイル システムを視覚化できるグラフィカル インターフェイスもあります。たとえば、[MobaXTerm](http://mobaxterm.mobatek.net/) では、Windows エクスプ ローラーに似たインターフェイスを使用して、ファイル システムを閲覧できます。
+> [AZURE.NOTE] There are also graphical interfaces that allow you to visualize the file system when connected using SFTP. For example, [MobaXTerm](http://mobaxterm.mobatek.net/) allows you to browse the file system using an interface similar to Windows Explorer.
 
 
-###Ambari
+###<a name="ambari"></a>Ambari
 
-> [AZURE.NOTE] Ambari を通してログ ファイルにアクセスするには、SSH トンネルが必要です。これは、個々のサービスの Web サイトはインターネット上に公開されていないためです。SSH トンネルの使用の詳細については、「[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください。
+> [AZURE.NOTE] Accessing log files through Ambari requires an SSH tunnel, as the web sites for the individual services are not exposed publicly on the Internet. For information on using an SSH tunnel, see [Use SSH Tunneling to access Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie, and other web UI's](hdinsight-linux-ambari-ssh-tunnel.md).
 
-Ambari Web UI から、ログを表示するサービス (例: YARN) を選択し、**[クイック リンク]** を使用してログを表示するヘッド ノードを選択します。
+From the Ambari Web UI, select the service you wish to view logs for (for example, YARN,) and then use **Quick Links** to select which head node to view the logs for.
 
-![クイック リンクを使用したログの表示](./media/hdinsight-high-availability-linux/viewlogs.png)
+![Using quick links to view logs](./media/hdinsight-high-availability-linux/viewlogs.png)
 
-## ノード サイズの構成方法 ##
+## <a name="how-to-configure-the-node-size"></a>How to configure the node size ##
 
-ノードのサイズを構成できるのは、クラスターの作成中のみです。「[HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できる、コア、メモリ、ローカル ストレージを含むさまざまな VM サイズの一覧を確認できます。
+The size of the a node can only be selected during cluster creation. You can find a list of the different VM sizes available for HDInsight, including the core, memory, and local storage for each, on the [HDInsight pricing page](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-新しいクラスターを作成するときに、ノードのサイズを指定できます。この後、[Azure ポータル][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure CLI][azure-cli] を使用してサイズを指定する方法についての情報を示します。
+When creating a new cluster, you can specify the size of the nodes. The following provide information on how to specify the size using the [Azure Portal][preview-portal], [Azure PowerShell][azure-powershell], and the [Azure CLI][azure-cli]:
 
-* **Azure ポータル**: 新しいクラスターを作成するときに、クラスターのヘッド ノード、ワーカー ノード、および (クラスターの種類で使用されている場合) ZooKeeper ノードのサイズ (価格レベル) を設定できます。
+* **Azure Portal**: When creating a new cluster, you are given the option of setting the size (pricing tier,) of the head, worker and (if used by the cluster type,) ZooKeeper nodes for the cluster:
 
-	![ノード サイズの選択画面を示しているクラスター作成ウィザードの画像](./media/hdinsight-high-availability-linux/headnodesize.png)
+    ![Image of cluster creation wizard with node size selection](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure CLI**: `azure hdinsight cluster create` コマンドを使用するときに、`--headNodeSize`、`--workerNodeSize`、および `--zookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
+* **Azure CLI**: When using the `azure hdinsight cluster create` command, you can set the size of the head, worker, and ZooKeeper nodes by using the `--headNodeSize`, `--workerNodeSize`, and `--zookeeperNodeSize` parameters.
 
-* **Azure PowerShell**: `New-AzureRmHDInsightCluster` コマンドレットを使用するときに、`-HeadNodeVMSize`、`-WorkerNodeSize`、および `-ZookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
+* **Azure PowerShell**: When using the `New-AzureRmHDInsightCluster` cmdlet, you can set the size of the head, worker, and ZooKeeper nodes by using the `-HeadNodeVMSize`, `-WorkerNodeSize`, and `-ZookeeperNodeSize` parameters.
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-このドキュメントでは、Azure HDInsight での Hadoop の高可用性の実現方法を説明しました。このドキュメントに記載された事柄の詳細については、次の記事を参照してください。
+In this document you have learned how Azure HDInsight provides high availability for Hadoop. Use the following to learn more about things mentioned in this document.
 
-- [Ambari REST リファレンス](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
+- [Ambari REST Reference](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 
-- [Azure CLI のインストールと構成](../xplat-cli-install.md)
+- [Install and configure the Azure CLI](../xplat-cli-install.md)
 
-- [Azure PowerShell のインストールおよび構成](../powershell-install-configure.md)
+- [Install and configure Azure PowerShell](../powershell-install-configure.md)
 
-- [Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)
+- [Manage HDInsight using Ambari](hdinsight-hadoop-manage-ambari.md)
 
-- [Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-provision-linux-clusters.md)
+- [Provision Linux-based HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md)
 
 [preview-portal]: https://portal.azure.com/
 [azure-powershell]: ../powershell-install-configure.md
 [azure-cli]: ../xplat-cli-install.md
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

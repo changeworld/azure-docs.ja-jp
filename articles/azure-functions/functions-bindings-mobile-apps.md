@@ -1,172 +1,177 @@
 <properties
-	pageTitle="Azure Functions における Mobile Apps のバインド | Microsoft Azure"
-	description="Azure Functions で Azure Mobile Apps のバインドを使用する方法について説明します。"
-	services="functions"
-	documentationCenter="na"
-	authors="ggailey777"
-	manager="erikre"
-	editor=""
-	tags=""
-	keywords="Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
+    pageTitle="Azure Functions Mobile Apps bindings | Microsoft Azure"
+    description="Understand how to use Azure Mobile Apps bindings in Azure Functions."
+    services="functions"
+    documentationCenter="na"
+    authors="ggailey777"
+    manager="erikre"
+    editor=""
+    tags=""
+    keywords="azure functions, functions, event processing, dynamic compute, serverless architecture"/>
 
 <tags
-	ms.service="functions"
-	ms.devlang="multiple"
-	ms.topic="reference"
-	ms.tgt_pltfrm="multiple"
-	ms.workload="na"
-	ms.date="08/30/2016"
-	ms.author="glenga"/>
+    ms.service="functions"
+    ms.devlang="multiple"
+    ms.topic="reference"
+    ms.tgt_pltfrm="multiple"
+    ms.workload="na"
+    ms.date="08/30/2016"
+    ms.author="glenga"/>
 
-# Azure Functions における Mobile Apps のバインド
+
+# <a name="azure-functions-mobile-apps-bindings"></a>Azure Functions Mobile Apps bindings
 
 [AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-この記事では、Azure Functions で Azure Mobile Apps のバインドを構成したりコーディングしたりする方法について説明します。
+This article explains how to configure and code Azure Mobile Apps bindings in Azure Functions. 
 
-[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)] 
 
-Azure App Service Mobile Apps を使用すると、テーブル エンドポイント データをモバイル クライアントに公開できます。この同じ表形式のデータは、Azure Functions の入力バインドと出力バインドの両方で使用できます。動的スキーマをサポートしているため、Node.js バックエンドのモバイル アプリは、関数で使用するために表形式のデータを公開するのに最適です。動的スキーマは既定で有効になっていますが、運用環境のモバイル アプリでは無効にする必要があります。Node.js バックエンドにおけるテーブル エンドポイントの詳細については、[テーブル操作の概要に関するセクション](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations)を参照してください。Mobile Apps では、Node.js バックエンドは、ポータル内の参照とテーブルの編集をサポートします。詳細については、Node.js SDK トピックの[ポータルでの編集に関するセクション](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing)を参照してください。Azure Functions で .NET バックエンドのモバイル アプリを使用する場合は、関数からの必要に応じて、データ モデルを手動で更新する必要があります。.NET バックエンドのモバイル アプリのテーブル エンドポイントの詳細については、.NET バックエンドの SDK トピックの「[方法: テーブル コントローラーを定義する](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller)」を参照してください。
+Azure App Service Mobile Apps lets you expose table endpoint data to mobile clients. This same tabular data can be used with both input and output bindings in Azure Functions. Because it supports dynamic schema, a Node.js backend mobile app is ideal for exposing tabular data for use with your functions. Dynamic schema is enabled by default and should be disabled in a production mobile app. For more information about table endpoints in a Node.js backend, see [Overview: table operations](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#TableOperations). In Mobile Apps, the Node.js backend supports in-portal browsing and editing of tables. For more information, see [in-portal editing](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#in-portal-editing) in the Node.js SDK topic. When you use a .NET backend mobile app with Azure Functions, you must manually update your data model as required by your function. For more information about table endpoints in a .NET backend mobile app, see [How to: Define a table controller](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#define-table-controller) in the .NET backend SDK topic. 
 
-## モバイル アプリ バックエンドの URL の環境変数を作成する
+## <a name="create-an-environment-variable-for-your-mobile-app-backend-url"></a>Create an environment variable for your mobile app backend URL
 
-現在、モバイル アプリのバインドでは、モバイル アプリ バックエンド自体の URL を返す環境変数を作成する必要があります。この URL は、[Azure ポータル](https://portal.azure.com)でモバイル アプリを検索してブレードを開くと、見付けることができます。
+Mobile Apps bindings currently require you to create an environment variable that returns the URL of the mobile app backend itself. This URL can be found in the [Azure portal](https://portal.azure.com) by locating your mobile app and opening the blade.
 
-![Azure ポータルの Mobile Apps ブレード](./media/functions-bindings-mobile-apps/mobile-app-blade.png)
+![Mobile Apps blade in the Azure portal](./media/functions-bindings-mobile-apps/mobile-app-blade.png)
 
-この URL を環境変数として関数アプリに設定するには、次の手順に従います。
+To set this URL as an environment variable in your function app:
 
-1. [Azure Functions ポータル](https://functions.azure.com/signin) の関数アプリで、**[Function App Settings (関数アプリの設定)]**、**[Go to App Service Settings (App Service の設定に移動)]** の順にクリックします。
+1. In your function app in the [Azure Functions portal](https://functions.azure.com/signin), click **Function app settings** > **Go to App Service settings**. 
 
-	![関数アプリの設定のブレード](./media/functions-bindings-mobile-apps/functions-app-service-settings.png)
+    ![Function app settings blade](./media/functions-bindings-mobile-apps/functions-app-service-settings.png)
 
-2. 関数アプリで、**[すべての設定]** をクリックして **[アプリケーションの設定]** までスクロールし、**[アプリ設定]** で新しい**名前** を環境変数に入力して、URL を **[値]** に貼り付けます。HTTPS スキームが使用できることを確認したら、**[保存]** をクリックして関数アプリのブレードを閉じ、Functions ポータルに戻ります。
+2. In your function app, click **All settings**, scroll down to **Application settings**, then under **App settings** type a new **Name** for the environment variable, paste the URL into **Value**, making sure to use the HTTPS scheme, then click **Save** and close the function app blade to return to the Functions portal.   
 
-	![アプリ設定の環境変数を追加する](./media/functions-bindings-mobile-apps/functions-app-add-app-setting.png)
+    ![Add an app setting environment variable](./media/functions-bindings-mobile-apps/functions-app-add-app-setting.png)
 
-これで、新しい環境変数を*接続*フィールドとしてバインドに設定できるようになりました。
+You can now set this new environment variable as the *connection* field in your bindings.
 
-## <a id="mobiletablesapikey"></a>API キーを使用した Mobile Apps テーブル エンドポイントへの安全なアクセス
+## <a name="<a-id="mobiletablesapikey"></a>-use-an-api-key-to-secure-access-to-your-mobile-apps-table-endpoints."></a><a id="mobiletablesapikey"></a> Use an API key to secure access to your Mobile Apps table endpoints.
 
-Azure Functions のモバイル テーブルのバインドでは、API キーを指定できます。これは、関数以外のアプリからの望ましくないアクセスを回避するために使用できる共有シークレットです。Mobile Apps には、API キー認証向けのサポートが組み込まれていません。ただし、「[Azure App Service Mobile Apps backend implementing an API key (API キーを実装する Azure App Service Mobile Apps バックエンド)](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)」の例に従って、Node.js バックエンド モバイル アプリに API キーを実装できます。同様に、[.NET バックエンドのモバイル アプリ](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)に API キーを実装することができます。
+In Azure Functions, mobile table bindings let you specify an API key, which is a shared secret that can be used to prevent unwanted access from apps other than your functions. Mobile Apps does not have built-in support for API key authentication. However, you can implement an API key in your Node.js backend mobile app by following the examples in [Azure App Service Mobile Apps backend implementing an API key](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key). You can similarly implement an API key in a [.NET backend mobile app](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key).
 
->[AZURE.IMPORTANT] この API キーはモバイル アプリ クライアントで配布する必要があり、Azure Functions のようなサービス側のクライアントにのみ安全に配布する必要があります。
+>[AZURE.IMPORTANT] This API key must not be distributed with your mobile app clients, it should only be distributed securely to service-side clients, like Azure Functions. 
 
-## <a id="mobiletablesinput"></a>Azure Mobile Apps の入力バインド
+## <a name="<a-id="mobiletablesinput"></a>-azure-mobile-apps-input-binding"></a><a id="mobiletablesinput"></a> Azure Mobile Apps input binding
 
-入力バインドでは、モバイル テーブル エンドポイントからレコードを読み込んで、バインドに直接渡すことができます。レコード ID は、関数を呼び出したトリガーに基づいて決定されます。C# 関数で、レコードに加えられた変更は、関数が正常に終了したときに、テーブルに送り返されます。
+Input bindings can load a record from a mobile table endpoint and pass it directly to your binding. The record ID is determined based on the trigger that invoked the function. In a C# function, any changes made to the record are automatically sent back to the table when the function exits successfully.
 
-#### Mobile Apps 入力バインドの function.json
+#### <a name="function.json-for-mobile-apps-input-binding"></a>function.json for Mobile Apps input binding
 
-*function.json* ファイルでは、次のプロパティがサポートされます。
+The *function.json* file supports the following properties:
 
-- `name`: 新しいレコードの関数コードで使用される変数名。
-- `type`: バインドの型は *mobileTable* に設定する必要があります。
-- `tableName`: 新しいレコードの作成先のテーブル。
-- `id`: 取得するレコードの ID。このプロパティは、`{queueTrigger}` と同様のバインドをサポートします。ここでは、レコード ID としてキュー メッセージの文字列値を使用します。
-- `apiKey`: モバイル アプリ用のオプションの API キーを指定するアプリケーション設定である文字列。これは、モバイル アプリが API キーを使用してクライアント アクセスを制限するときに必要です。
-- `connection`: モバイル アプリ バックエンドの URL を指定する、アプリケーション設定の環境変数の名前を示す文字列。
-- `direction`: バインドの方向。*in* に設定する必要があります。
+- `name` : Variable name used in function code for the new record.
+- `type` : Biding type must be set to *mobileTable*.
+- `tableName` : The table where the new record will be created.
+- `id` : The ID of the record to retrieve. This property supports bindings similar to `{queueTrigger}`, which will use the string value of the queue message as the record Id.
+- `apiKey` : String that is the application setting that specifies the optional API key for the mobile app. This is required when your mobile app uses an API key to restrict client access.
+- `connection` : String that is the name of the environment variable in application settings that specifies the URL of your mobile app backend.
+- `direction` : Binding direction, which must be set to *in*.
 
-*function.json* ファイルの例:
+Example *function.json* file:
 
-	{
-	  "bindings": [
-	    {
-	      "name": "record",
-	      "type": "mobileTable",
-	      "tableName": "MyTable",
-	      "id" : "{queueTrigger}",
-	      "connection": "My_MobileApp_Url",
-	      "apiKey": "My_MobileApp_Key",
-	      "direction": "in"
-	    }
-	  ],
-	  "disabled": false
-	}
+    {
+      "bindings": [
+        {
+          "name": "record",
+          "type": "mobileTable",
+          "tableName": "MyTable",
+          "id" : "{queueTrigger}",
+          "connection": "My_MobileApp_Url",
+          "apiKey": "My_MobileApp_Key",
+          "direction": "in"
+        }
+      ],
+      "disabled": false
+    }
 
-#### Azure Mobile Apps のコード例 (C# キュー トリガー)
+#### <a name="azure-mobile-apps-code-example-for-a-c#-queue-trigger"></a>Azure Mobile Apps code example for a C# queue trigger
 
-上記の function.json の例に基づいて、入力バインドで、Mobile Apps テーブル エンドポイントからキュー メッセージ文字列と一致する ID を持つレコードを取得し、*record* パラメーターに渡します。レコードが検出されなかった場合、パラメーターは null になります。関数の終了時に、レコードは新しい *Text* 値で更新されます。
+Based on the example function.json above, the input binding retrieves the record from a Mobile Apps table endpoint with the ID that matches the queue message string and passes it to the *record* parameter. When the record is not found, the parameter is null. The record is then updated with the new *Text* value when the function exits.
 
-	#r "Newtonsoft.Json"	
-	using Newtonsoft.Json.Linq;
-	
-	public static void Run(string myQueueItem, JObject record)
-	{
-	    if (record != null)
-	    {
-	        record["Text"] = "This has changed.";
-	    }    
-	}
+    #r "Newtonsoft.Json"    
+    using Newtonsoft.Json.Linq;
+    
+    public static void Run(string myQueueItem, JObject record)
+    {
+        if (record != null)
+        {
+            record["Text"] = "This has changed.";
+        }    
+    }
 
-#### Azure Mobile Apps のコード例 (Node.js キュー トリガー)
+#### <a name="azure-mobile-apps-code-example-for-a-node.js-queue-trigger"></a>Azure Mobile Apps code example for a Node.js queue trigger
 
-上記の function.json の例に基づいて、入力バインドで、Mobile Apps テーブル エンドポイントからキュー メッセージ文字列と一致する ID を持つレコードを取得し、*record* パラメーターに渡します。Node.js 関数では、更新されたレコードは再びテーブルに送信されません。このコード例では、取得されたレコードをログに書き込みます。
+Based on the example function.json above, the input binding retrieves the record from a Mobile Apps table endpoint with the ID that matches the queue message string and passes it to the *record* parameter. In Node.js functions, updated records are not sent back to the table. This code example writes the retrieved record to the log.
 
-	module.exports = function (context, input) {    
-	    context.log(context.bindings.record);
-	    context.done();
-	};
+    module.exports = function (context, input) {    
+        context.log(context.bindings.record);
+        context.done();
+    };
 
 
-## <a id="mobiletablesoutput"></a>Azure Mobile Apps の出力バインド
+## <a name="<a-id="mobiletablesoutput"></a>azure-mobile-apps-output-binding"></a><a id="mobiletablesoutput"></a>Azure Mobile Apps output binding
 
-関数により、出力バインドを使用して、レコードを Mobile Apps テーブル エンドポイントに書き込めます。
+Your function can write a record to a Mobile Apps table endpoint using an output binding. 
 
-#### Mobile Apps 出力バインドの function.json
+#### <a name="function.json-for-mobile-apps-output-binding"></a>function.json for Mobile Apps output binding
 
-function.json ファイルは、次のプロパティをサポートします。
+The function.json file supports the following properties:
 
-- `name`: 新しいレコードの関数コードで使用される変数名。
-- `type`: *mobileTable* に設定する必要があるバインドの型。
-- `tableName`: 新しいレコードが作成されるテーブル。
-- `apiKey`: モバイル アプリ用のオプションの API キーを指定するアプリケーション設定である文字列。これは、モバイル アプリが API キーを使用してクライアント アクセスを制限するときに必要です。
-- `connection`: モバイル アプリ バックエンドの URL を指定する、アプリケーション設定の環境変数の名前を示す文字列。
-- `direction`: バインドの方向。*out* に設定する必要があります。
+- `name` : Variable name used in function code for the new record.
+- `type` : Binding type that must be set to *mobileTable*.
+- `tableName` : The table where the new record is created.
+- `apiKey` : String that is the application setting that specifies the optional API key for the mobile app. This is required when your mobile app uses an API key to restrict client access.
+- `connection` : String that is the name of the environment variable in application settings that specifies the URL of your mobile app backend.
+- `direction` : Binding direction, which must be set to *out*.
 
-function.json の例:
+Example function.json:
 
-	{
-	  "bindings": [
-	    {
-	      "name": "record",
-	      "type": "mobileTable",
-	      "tableName": "MyTable",
-	      "connection": "My_MobileApp_Url",
-	      "apiKey": "My_MobileApp_Key",
-	      "direction": "out"
-	    }
-	  ],
-	  "disabled": false
-	}
+    {
+      "bindings": [
+        {
+          "name": "record",
+          "type": "mobileTable",
+          "tableName": "MyTable",
+          "connection": "My_MobileApp_Url",
+          "apiKey": "My_MobileApp_Key",
+          "direction": "out"
+        }
+      ],
+      "disabled": false
+    }
 
-#### Azure Mobile Apps のコード例 (C# キュー トリガー)
+#### <a name="azure-mobile-apps-code-example-for-a-c#-queue-trigger"></a>Azure Mobile Apps code example for a C# queue trigger
 
-次の C# コードの例では、*Text* プロパティを持つ Mobile Apps テーブル エンドポイントの新しいレコードを、上記のバインドで指定したテーブルに挿入します。
+This C# code example inserts a new record into a Mobile Apps table endpoint with a *Text* property into the table specified in the above binding.
 
-	public static void Run(string myQueueItem, out object record)
-	{
-	    record = new {
-	        Text = $"I'm running in a C# function! {myQueueItem}"
-	    };
-	}
+    public static void Run(string myQueueItem, out object record)
+    {
+        record = new {
+            Text = $"I'm running in a C# function! {myQueueItem}"
+        };
+    }
 
-#### Azure Mobile Apps のコード例 (Node.js キュー トリガー)
+#### <a name="azure-mobile-apps-code-example-for-a-node.js-queue-trigger"></a>Azure Mobile Apps code example for a Node.js queue trigger
 
-次の Node.js コードの例では、*Text* プロパティを持つ Mobile Apps テーブル エンドポイントの新しいレコードを、上記のバインドで指定したテーブルに挿入します。
+This Node.js code example inserts a new record into a Mobile Apps table endpoint with a *text* property into the table specified in the above binding.
 
-	module.exports = function (context, input) {
-	
-	    context.bindings.record = {
-	        text : "I'm running in a Node function! Data: '" + input + "'"
-	    }   
-	
-	    context.done();
-	};
+    module.exports = function (context, input) {
+    
+        context.bindings.record = {
+            text : "I'm running in a Node function! Data: '" + input + "'"
+        }   
+    
+        context.done();
+    };
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
+[AZURE.INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

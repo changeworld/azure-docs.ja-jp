@@ -1,64 +1,65 @@
 <properties 
-	pageTitle="App Service 環境によるレイヤード セキュリティ アーキテクチャ" 
-	description="App Service 環境によるレイヤード セキュリティ アーキテクチャの実装" 
-	services="app-service" 
-	documentationCenter="" 
-	authors="stefsch" 
-	manager="wpickett" 
-	editor=""/>
+    pageTitle="Layered Security Architecture with App Service Environments" 
+    description="Implementing a layered security architecture with App Service Environments." 
+    services="app-service" 
+    documentationCenter="" 
+    authors="stefsch" 
+    manager="wpickett" 
+    editor=""/>
 
 <tags 
-	ms.service="app-service" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/30/2016" 
-	ms.author="stefsch"/>
+    ms.service="app-service" 
+    ms.workload="na" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/30/2016" 
+    ms.author="stefsch"/>   
 
-# App Service 環境によるレイヤード セキュリティ アーキテクチャの実装
 
-## Overview ##
+# <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementing a Layered Security Architecture with App Service Environments
+
+## <a name="overview"></a>Overview ##
  
-App Service Environment は、Virtual Network にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、物理的なアプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。
+Since App Service Environments provide an isolated runtime environment deployed into a virtual network, developers can create a layered security architecture providing differing levels of network access for each physical application tier.
 
-一般に、API バックエンドは通常のインターネット アクセスから隠し、アップストリームの Web アプリにのみ API の呼び出しを許可することが望ましいと考えられています。App Service Environment を含んだサブネットに対して[ネットワーク セキュリティ グループ (NSG)][NetworkSecurityGroups] を使用することで、API アプリケーションへのパブリック アクセスを制限することができます。
+A common desire is to hide API back-ends from general Internet access, and only allow APIs to be called by upstream web apps.  [Network security groups (NSGs)][NetworkSecurityGroups] can be used on subnets containing App Service Environments to restrict public access to API applications.
 
-以下の図は、WebAPI ベースのアプリを App Service Environment にデプロイしたアーキテクチャの例です。3 つの Web アプリのインスタンスが、独立した 3 つの App Service Environment に別々にデプロイされ、バックエンドにある同じ WebAPI アプリを呼び出します。
+The diagram below shows an example architecture with a WebAPI based app deployed on an App Service Environment.  Three separate web app instances, deployed on three separate App Service Environments, make back-end calls to the same WebAPI app.
 
-![Conceptual Architecture][ConceptualArchitecture]
+![Conceptual Architecture][ConceptualArchitecture] 
 
-"apiase" を含んだサブネットに対するネットワーク セキュリティ グループは、アップストリームの Web アプリから入ってくる呼び出しと、自分自身からの呼び出しを許可します。これを示したのが緑色の正符号です。一方、インターネットから入ってくる一般的なトラフィックについてはアクセスを明示的に拒否しています。
+The green plus signs indicate that the network security group on the subnet containing "apiase" allows inbound calls from the upstream web apps, as well calls from itself.  However the same network security group explicitly denies access to general inbound traffic from the Internet. 
 
-以降、"apiase" を含んだサブネットに対してネットワーク セキュリティ グループを構成する手順について説明します。
+The remainder of this topic walks through the steps needed to configure the network security group on the subnet containing "apiase".
 
-## ネットワークの動作の決定 ##
-必要なネットワーク セキュリティ ルールを把握するためには、API アプリを含んだ App Service Environment へのアクセスをどのネットワーク クライアントに許可し、どのクライアントをブロックするかを調べる必要があります。
+## <a name="determining-the-network-behavior"></a>Determining the Network Behavior ##
+In order to know what network security rules are needed, you need to determine which network clients will be allowed to reach the App Service Environment containing the API app, and which clients will be blocked.
 
-[ネットワーク セキュリティ グループ (NSG)][NetworkSecurityGroups] はサブネットに適用され、そのサブネットの中に App Service Environment がデプロイされます。そのため NSG 内のルールは、App Service Environment 上で動作する**すべて**のアプリに適用されます。この記事のサンプル アーキテクチャを使用して、"apiase" を含んだサブネットに対してネットワーク セキュリティ グループを適用すると、"apiase" App Service Environment 上で動作するすべてのアプリが同じセキュリティ ルール一式で保護されます。
+Since [network security groups (NSGs)][NetworkSecurityGroups] are applied to subnets, and App Service Environments are deployed into subnets, the rules contained in an NSG apply to **all** apps running on an App Service Environment.  Using the sample architecture for this article, once a network security group is applied to the subnet containing "apiase", all apps running on the "apiase" App Service Environment will be protected by the same set of security rules. 
 
-- **アップストリームの呼び出し元が送信に使う IP アドレスを調べる:** アップストリームの呼び出し元の IP アドレスを把握する必要があります。 これらのアドレスは NSG で明示的にアクセスを許可する必要があります。App Service Environment 間の呼び出しは "インターネット" を介した呼び出しと見なされます。つまり、3 つのアップストリーム App Service Environment にそれぞれ割り当てられた送信 IP アドレスを、"apiase" サブネットの NSG でアクセスを許可する必要があります。App Service Environment で実行されるアプリが送信に使う IP アドレスを調べる方法について詳しくは、[ネットワーク アーキテクチャの概要][NetworkArchitecture]の記事を参照してください。
-- **バックエンド API アプリは自己呼び出しを行うか。** バックエンド アプリケーションが自己呼び出しを行うかどうかは、見逃しやすいポイントです。App Service Environment のバックエンド API アプリケーションに自己呼び出しが伴う場合、これも "インターネット" を介した呼び出しと見なされます。サンプル アーキテクチャのケースでは、"apiase" App Service Environment の送信 IP アドレスについてもアクセスを許可する必要があります。
+- **Determine the outbound IP address of upstream callers:**  What is the IP address or addresses of the upstream callers?  These addresses will need to be explicitly allowed access in the NSG.  Since calls between App Service Environments are considered "Internet" calls, this means the outbound IP address assigned to each of the three upstream App Service Environments needs to be allowed access in the NSG for the "apiase" subnet.   For more details on determining the outbound IP address for apps running in an App Service Environment see the [Network Architecture][NetworkArchitecture] Overview article.
+- **Will the back-end API app need to call itself?**  A sometimes overlooked and subtle point is the scenario where the back-end application needs to call itself.  If a back-end API application on an App Service Environment needs to call itself, this is also treated as an "Internet" call.  In the sample architecture this requires allowing access from the outbound IP address of the "apiase" App Service Environment as well.
 
-## ネットワーク セキュリティ グループの設定 ##
-一連の送信 IP アドレスが確認できたら、今度はネットワーク セキュリティ グループを構築します。ネットワーク セキュリティ グループは、Resource Manager ベースの仮想ネットワークとクラシック仮想ネットワークのどちらにも作成できます。次の例は、PowerShell を使用してクラシック仮想ネットワーク上に NSG を作成して構成する方法を示しています。
+## <a name="setting-up-the-network-security-group"></a>Setting up the Network Security Group ##
+Once the set of outbound IP addresses are known, the next step is to construct a network security group.  Network security groups can be created for both Resource Manager based virtual networks, as well as classic virtual networks.  The examples below show creating and configuring an NSG on a classic virtual network using Powershell.
 
-このサンプル アーキテクチャの環境は、米国中南部に置かれているため、そのリージョンに空の NSG を作成します。
+For the sample architecture, the environments are located in South Central US, so an empty NSG is created in that region:
 
     New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
 
-最初に、Azure の管理インフラストラクチャに使用する明示的な許可ルールを追加します (App Service Environment の[受信トラフィック][InboundTraffic]の記事を参照)。
+First an explicit allow rule is added for the Azure management infrastructure as noted in the article on [inbound traffic][InboundTraffic] for App Service Environments.
 
     #Open ports for access by Azure management infrastructure
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
     
-次に、1 つ目のアップストリーム App Service Environment ("fe1ase") からの HTTP 呼び出しと HTTPS 呼び出しを許可する 2 つのルールを追加します。
+Next, two rules are added to allow HTTP and HTTPS calls from the first upstream App Service Environment ("fe1ase").
 
     #Grant access to requests from the first upstream web front-end
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe1ase" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-2 つ目と 3 つ目のアップストリーム App Service Environment ("fe2ase" と "fe3ase") についても同じ作業を行います。
+Rinse and repeat for the second and third upstream App Service Environments ("fe2ase"and "fe3ase").
 
     #Grant access to requests from the second upstream web front-end
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
@@ -68,34 +69,34 @@ App Service Environment は、Virtual Network にデプロイされる分離さ�
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe3ase" -Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe3ase" -Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-最後に、バックエンド API の App Service Environment が自己呼び出しを行えるよう、その送信 IP アドレスにアクセス権を付与します。
+Lastly, grant access to the outbound IP address of the back-end API's App Service Environment so that it can call back into itself.
 
     #Allow apps on the apiase environment to call back into itself
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" -Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-構成すべきネットワーク セキュリティ ルールは以上です。すべての NSG には既定のルール一式が備わっており、インターネットから入ってくるアクセスが既定でブロックされるため、他にルールを設定する必要はありません。
+No other network security rules need to be configured because every NSG has a set of default rules that block inbound access from the Internet by default.
 
-以下に示したのは、このネットワーク セキュリティ グループに含まれる全ルールの一覧です。最後のルール (ハイライト部分) に注目してください。明示的にアクセスが許可されている呼び出し元以外はすべて、このルールによって受信アクセスがブロックされます。
+The full list of rules in the network security group are shown below.  Note how the last rule, which is highlighted, blocks inbound access from all callers other than those which have been explicitly granted access.
 
-![NSG Configuration][NSGConfiguration]
+![NSG Configuration][NSGConfiguration] 
 
-最後に、"apiase" App Service Environment を含んだサブネットにこの NSG を適用する必要があります。
+The final step is to apply the NSG to the subnet that contains the "apiase" App Service Environment.  
 
      #Apply the NSG to the backend API subnet
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
 
-このサブネットに NSG を適用すると、アップストリームにある 3 つの App Service Environment と、API バックエンドを含んだ 1 つの App Service Environment とにのみ、"apiase" 環境に対する呼び出しが許可されるようになります。
+With the NSG applied to the subnet, only the three upstream App Service Environments, and the App Service Environment containing the API back-end, are allowed to call into the "apiase" environment.
 
 
-## その他のリンクおよび情報 ##
-App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md) を参照してください。
+## <a name="additional-links-and-information"></a>Additional Links and Information ##
+All articles and How-To's for App Service Environments are available in the [README for Application Service Environments](../app-service/app-service-app-service-environments-readme.md).
 
-[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関する情報。
+Information about [network security groups](../virtual-network/virtual-networks-nsg.md). 
 
-[送信 IP アドレス][NetworkArchitecture]と App Service Environment について
+Understanding [outbound IP addresses][NetworkArchitecture] and App Service Environments.
 
-App Service Environment で使用される[ネットワーク ポート][InboundTraffic]
+[Network ports][InboundTraffic] used by App Service Environments.
 
 [AZURE.INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -103,11 +104,15 @@ App Service Environment で使用される[ネットワーク ポート][Inbound
 
 <!-- LINKS -->
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[NetworkArchitecture]: https://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-architecture-overview/
-[InboundTraffic]: https://azure.microsoft.com/documentation/articles/app-service-app-service-environment-control-inbound-traffic/
+[NetworkArchitecture]:  https://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-architecture-overview/
+[InboundTraffic]:  https://azure.microsoft.com/en-us/documentation/articles/app-service-app-service-environment-control-inbound-traffic/
 
 <!-- IMAGES -->
 [ConceptualArchitecture]: ./media/app-service-app-service-environment-layered-security/ConceptualArchitecture-1.png
-[NSGConfiguration]: ./media/app-service-app-service-environment-layered-security/NSGConfiguration-1.png
+[NSGConfiguration]:  ./media/app-service-app-service-environment-layered-security/NSGConfiguration-1.png
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

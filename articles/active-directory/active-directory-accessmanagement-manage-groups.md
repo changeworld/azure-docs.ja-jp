@@ -1,124 +1,129 @@
 <properties
-	pageTitle="Azure Active Directory のグループの管理 | Microsoft Azure"
-	description="Azure Active Directory を使用して Azure ユーザーを管理するグループを作成し、管理する方法。"
-	services="active-directory"
-	documentationCenter=""
-	authors="curtand"
-	manager="femila"
-	editor=""/>
+    pageTitle="Managing groups in Azure Active Directory | Microsoft Azure"
+    description="How to create and manage groups to manage Azure users using Azure Active Directory."
+    services="active-directory"
+    documentationCenter=""
+    authors="curtand"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/29/2016"
-	ms.author="curtand"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/29/2016"
+    ms.author="curtand"/>
 
 
-# Azure Active Directory におけるグループの管理
+
+# <a name="managing-groups-in-azure-active-directory"></a>Managing groups in Azure Active Directory
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](active-directory-groups-create-azure-portal.md)
-- [Azure クラシック ポータル](active-directory-accessmanagement-manage-groups.md)
+- [Azure portal](active-directory-groups-create-azure-portal.md)
+- [Azure classic portal](active-directory-accessmanagement-manage-groups.md)
 - [PowerShell](active-directory-accessmanagement-groups-v2-cmdlets.md)
 
 
-Azure Active Directory (Azure AD) ユーザー管理の機能の 1 つに、ユーザーのグループを作成する機能があります。グループは、複数のユーザーにライセンスまたはアクセス許可を一度に割り当てるような管理タスクを実行するために使用します。また、グループは次のリソースに対するアクセス許可の割り当てにも使用できます。
+One of the features of Azure Active Directory (Azure AD) user management is the ability to create groups of users. You use a group to perform management tasks such as assigning licenses or permissions to a number of users at once. You can also use groups to assign access permission to
 
-- ディレクトリ内のオブジェクトなどのリソース
-- SaaS アプリケーション、Azure サービス、SharePoint サイト、オンプレミスのリソースなど、ディレクトリの外部に存在するリソース
+- Resources such as objects in the directory
+- Resources external to the directory such as SaaS applications, Azure services, SharePoint sites, or on-premises resources
 
-加えてリソース所有者は、リソースへのアクセス権を他のユーザーが所有する Azure AD グループに対して割り当てることもできます。これにより、割り当て先のグループのメンバーにリソースへのアクセス権が付与されます。グループのメンバーシップは、グループの所有者が管理します。実質的にはユーザーをリソースに割り当てる権限が、リソースの所有者からグループの所有者に委任されます。
+In addition, a resource owner can also assign access to a resource to an Azure AD group owned by someone else. This assignment grants the members of that group access to the resource. Then, the owner of the group manages membership in the group. Effectively, the resource owner delegates to the owner of the group the permission to assign users to their resource.
 
-## どのようにしてグループを作成しますか?
+## <a name="how-do-i-create-a-group?"></a>How do I create a group?
 
-組織がサブスクライブしているサービスに応じて、次のいずれかを使用してグループを作成できます。
-- Azure クラシック ポータル
-- Office 365 アカウント ポータル
-- Windows Intune アカウント ポータル
+Depending on the services to which your organization has subscribed, you can create a group using one of the following:
+- the Azure classic portal
+- the Office 365 account portal
+- the Windows Intune account portal
 
-ここでは、Azure クラシック ポータルで実行するタスクについて説明します。Azure 以外のポータルを使用した Azure AD ディレクトリの管理の詳細については、[Azure AD ディレクトリの管理](active-directory-administer.md)に関するページを参照してください。
+We'll describe tasks as performed in the Azure classic portal. For more information about using non-Azure portals to manage your Azure AD directory, see [Administering your Azure AD directory](active-directory-administer.md).
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** を選択し、該当する組織のディレクトリ名を選択します。
+1. In the [Azure classic portal](https://manage.windowsazure.com), select **Active Directory**, and then select the name of the directory for your organization.
 
-2. **[グループ]** タブを選択します。
+2. Select the **Groups** tab.
 
-3. **[グループの追加]** を選択します。
+3. Select **Add Group**.
 
-4. **[グループの追加]** ウィンドウで、グループの名前と説明を指定します。
-
-
-## セキュリティ グループのユーザーを個別に追加したり削除したりする方法
-
-**個々のユーザーをグループに追加するには**
-
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** を選択し、該当する組織のディレクトリ名を選択します。
-
-2. **[グループ]** タブを選択します。
-
-3. メンバーの追加先となるグループを開きます。選択したグループの **[メンバー]** タブを開きます (表示されていない場合)。
-
-4. **[メンバーの追加]** を選択します。
-
-5. **[メンバーの追加]** ページで、このグループのメンバーとして追加するユーザーまたはグループの名前を選択します。この名前が **[選択済み]** ウィンドウに追加されていることを確認してください。
+4. In the **Add Group** window, specify the name and the description of a group.
 
 
-**個々のユーザーをグループから削除するには**
+## <a name="how-do-i-add-or-remove-individual-users-in-a-security-group?"></a>How do I add or remove individual users in a security group?
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** を選択し、該当する組織のディレクトリ名を選択します。
+**To add an individual user to a group**
 
-2. **[グループ]** タブを選択します。
+1. In the [Azure classic portal](https://manage.windowsazure.com), select **Active Directory**, and then select the name of the directory for your organization.
 
-3. 削除するメンバーのグループを開きます。
+2. Select the **Groups** tab.
 
-4. **[メンバー]** タブを選択し、そのグループから削除するメンバーの名前を選択して **[削除]** をクリックします。
+3. Open the group to which you want to add members. Open the **Members** tab of the selected group if it not already displaying.
 
-6. このメンバーをグループから削除してよいか確認するメッセージが表示されるので、削除してよい場合は操作を確定します。
+4. Select **Add Members**.
+
+5. On the **Add Members** page, select the name of the user or a group that you want to add as a member of this group. Make sure that this name is added to the **Selected** pane.
 
 
-## グループのメンバーシップを動的に管理する方法
+**To remove an individual user from a group**
 
-Azure AD では、グループのメンバーとして追加するユーザーを特定のルールに基づいて指定できます。単純なルールであればその設定はごく簡単です。単純なルールとは、比較を 1 回だけ行うルールです。たとえば、グループが SaaS アプリケーションに割り当てられている場合、"営業担当者" の役職を持つユーザーを追加するルールを設定できます。 設定したこのルールによって、ディレクトリ内でその役職を持つすべてのユーザーに、この SaaS アプリケーションへのアクセスが許可されます。
+1. In the [Azure classic portal](https://manage.windowsazure.com), select **Active Directory**, and then select the name of the directory for your organization.
 
-ユーザーのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、このユーザーの属性の変更によってグループの追加または削除がトリガーされるかどうかを確認します。ユーザーがグループのルールを満たしている場合は、そのグループにメンバーとして追加されます。メンバーになっているグループのルールを満たさなくなった場合は、そのグループのメンバーから削除されます。
+2. Select the **Groups** tab.
 
-> [AZURE.NOTE] セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。現在、アプリケーションに対するグループ ベースの割り当てでは入れ子になったグループ メンバーシップはサポートされていません。
+3. Open the group from which you want to remove members.
+
+4. Select the **Members** tab, select the name of the member that you want to remove from this group, and then click **Remove**.
+
+6. Confirm at the prompt that you want to remove this member from the group.
+
+
+## <a name="how-can-i-manage-the-membership-of-a-group-dynamically?"></a>How can I manage the membership of a group dynamically?
+
+In Azure AD, you can very easily set up a simple rule to determine which users are to be members of the group. A simple rule is one that makes only a single comparison. For example, if a group is assigned to a SaaS application, you can set up a rule to add users who have a job title of "Sales Rep." This rule then grants access to this SaaS application to all users with that job title in your directory.
+
+When any attributes of a user change, the system evaluates all dynamic group rules in a directory to see if the attribute change of the user would trigger any group adds or removes. If a user satisfies a rule on a group, they are added as a member to that group. If they no longer satisfy the rule of a group they are a member of, they are removed as a members from that group.
+
+> [AZURE.NOTE] You can set up a rule for dynamic membership on security groups or Office 365 groups. Nested group memberships aren't currently supported for group-based assignment to applications.
 >
-> グループの動的メンバーシップを実行するには、次のユーザーに Azure AD Premium ライセンスが割り当てられている必要があります。
+> Dynamic memberships for groups require an Azure AD Premium license to be assigned to
 >
-> - グループに対するルールを管理する管理者
-> - グループのすべてのメンバー
+> - The administrator who manages the rule on a group
+> - All members of the group
 
-**グループに対する動的メンバーシップを有効にするには**
+**To enable dynamic membership for a group**
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** を選択し、該当する組織のディレクトリ名を選択します。
+1. In the [Azure classic portal](https://manage.windowsazure.com), select **Active Directory**, and then select the name of the directory for your organization.
 
-2. **[グループ]** タブを選択し、編集するグループを開きます。
+2. Select the **Groups** tab, and open the group you want to edit.
 
-3. **[構成]** タブを選択し、**[動的メンバーシップを有効にする]** を **[はい]** に設定します。
+3. Select the **Configure** tab, and then set **Enable Dynamic Memberships** to **Yes**.
 
-4. このグループに対する動的メンバーシップの働きを制御する単純なルールを 1 つグループに設定します。**[追加するユーザーの所属]** オプションがオンになっていることを確認し、ユーザーのプロパティ (department、jobTitle など) をリストから選択します。
+4. Set up a simple single rule for the group to control how dynamic membership for this group functions. Make sure the **Add users where** option is selected, and then select a user property from the list (for example, department, jobTitle, etc.),
 
-5. 次に、条件 (等しくない、等しい、指定値で始まらない、指定値で始まる、指定値を含まない、指定値を含む、一致しない、一致する) を選択します。
+5. Next, select a condition (Not Equals, Equals, Not Starts With, Starts With, Not Contains, Contains, Not Match, Match).
 
-6. 選択したユーザー プロパティの比較値を指定します。
+6. Specify a comparison value for the selected user property.
 
-動的グループのメンバーシップ管理を目的とした*高度*なルール (複数の比較を伴うルール) を作成する方法については、「[属性を使用した高度なルールの作成](active-directory-accessmanagement-groups-with-advanced-rules.md)」を参照してください。
+To learn about how to create *advanced* rules (rules that can contain multiple comparisons) for dynamic group membership, see [Using attributes to create advanced rules](active-directory-accessmanagement-groups-with-advanced-rules.md).
 
-## 追加情報
+## <a name="additional-information"></a>Additional information
 
-次の記事は、Azure Active Directory に関する追加情報を示します。
+These articles provide additional information on Azure Active Directory.
 
-* [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
+* [Managing access to resources with Azure Active Directory groups](active-directory-manage-groups.md)
 
-* [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
+* [Azure Active Directory cmdlets for configuring group settings](active-directory-accessmanagement-groups-settings-cmdlets.md)
 
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 
-* [Azure Active Directory とは](active-directory-whatis.md)
+* [What is Azure Active Directory?](active-directory-whatis.md)
 
-* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+* [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,189 +1,190 @@
 <properties
-	pageTitle="DocumentDB と HDInsight を使用した Hadoop ジョブの実行 | Microsoft Azure"
-	description="DocumentDB と Azure HDInsight を使用してシンプルな Hive、Pig、および MapReduce ジョブを実行する方法を説明します。"
-	services="documentdb"
-	authors="AndrewHoh"
-	manager="jhubbard"
-	editor="mimig"
-	documentationCenter=""/>
+    pageTitle="Run a Hadoop job using DocumentDB and HDInsight | Microsoft Azure"
+    description="Learn how to run a simple Hive, Pig, and MapReduce job with DocumentDB and Azure HDInsight."
+    services="documentdb"
+    authors="dennyglee"
+    manager="jhubbard"
+    editor="mimig"
+    documentationCenter=""/>
 
 
 <tags
-	ms.service="documentdb"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="java"
-	ms.topic="article"
-	ms.date="09/20/2016"
-	ms.author="anhoh"/>
+    ms.service="documentdb"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="java"
+    ms.topic="article"
+    ms.date="09/20/2016"
+    ms.author="denlee"/>
 
-#<a name="DocumentDB-HDInsight"></a>DocumentDB と HDInsight を使用した Hadoop ジョブの実行
 
-このチュートリアルでは、DocumentDB の Hadoop コネクタを使用して、 [Apache Hive][apache-hive]、[Apache Pig][apache-pig]、および [Apache Hadoop][apache-hadoop] MapReduce の各ジョブを Azure HDInsight 上で実行する方法について説明します。DocumentDB の Hadoop コネクタを使用すると、DocumentDB が Hive、Pig、および MapReduce の各ジョブに対してソースとシンクの両方として機能します。このチュートリアルでは、Hadoop ジョブのデータ ソースと出力先の両方に DocumentDB を使用します。
+#<a name="<a-name="documentdb-hdinsight"></a>run-a-hadoop-job-using-documentdb-and-hdinsight"></a><a name="DocumentDB-HDInsight"></a>Run a Hadoop job using DocumentDB and HDInsight
 
-このチュートリアルを完了すると、次の項目について説明できるようになります。
+This tutorial shows you how to run [Apache Hive][apache-hive], [Apache Pig][apache-pig], and [Apache Hadoop][apache-hadoop] MapReduce jobs on Azure HDInsight with DocumentDB's Hadoop connector. DocumentDB's Hadoop connector allows DocumentDB to act as both a source and sink for Hive, Pig, and MapReduce jobs. This tutorial will use DocumentDB as both the data source and destination for Hadoop jobs.
 
-- Hive、Pig、または MapReduce ジョブを使用して DocumentDB からどのようにしてデータを読み込むか。
-- Hive、Pig、または MapReduce ジョブを使用して DocumentDB にどのようにしてデータを格納するか。
+After completing this tutorial, you'll be able to answer the following questions:
 
-まずは、次のビデオを視聴することをお勧めします。このビデオでは、DocumentDB と HDInsight を使用して Hive ジョブがひととおり実行されます。
+- How do I load data from DocumentDB using a Hive, Pig, or MapReduce job?
+- How do I store data in DocumentDB using a Hive, Pig, or MapReduce job?
+
+We recommend getting started by watching the following video, where we run through a Hive job using DocumentDB and HDInsight.
 
 > [AZURE.VIDEO use-azure-documentdb-hadoop-connector-with-azure-hdinsight]
 
-その後で、この記事に戻ってください。この記事では、DocumentDB データに対して分析ジョブを実行する方法について詳しく説明します。
+Then, return to this article, where you'll receive the full details on how you can run analytics jobs on your DocumentDB data.
 
-> [AZURE.TIP] このチュートリアルは、これまでに Apache Hadoop、Hive、Pig の少なくとも 1 つを使用した経験があることを前提としています。Apache Hadoop、Hive、Pig の使用経験がない場合は、[Apache Hadoop のドキュメント][apache-hadoop-doc]を参照することをお勧めします。さらに、このチュートリアルでは、DocumentDB の使用経験があり、DocumentDB アカウントを持っていることを想定しています。DocumentDB を初めて扱う方や DocumentDB アカウントを持っていない方は、[使用の開始に関するページ][getting-started]を参照してください。
+> [AZURE.TIP] This tutorial assumes that you have prior experience using Apache Hadoop, Hive, and/or Pig. If you are new to Apache Hadoop, Hive, and Pig, we recommend visiting the [Apache Hadoop documentation][apache-hadoop-doc]. This tutorial also assumes that you have prior experience with DocumentDB and have a DocumentDB account. If you are new to DocumentDB or you do not have a DocumentDB account, please check out our [Getting Started][getting-started] page.
 
-チュートリアルを完了する時間がなく、Hive、Pig、および MapReduce の完全なサンプル PowerShell スクリプトが必要な場合は、 [こちら][documentdb-hdinsight-samples]をクリックすると入手できます。ダウンロードには、これらのサンプルの hql、pig、および java の各ファイルも含まれています。
+Don't have time to complete the tutorial and just want to get the full sample PowerShell scripts for Hive, Pig, and MapReduce? Not a problem, get them [here][documentdb-hdinsight-samples]. The download also contains the hql, pig, and java files for these samples.
 
-## <a name="NewestVersion"></a>最新バージョン
+## <a name="<a-name="newestversion"></a>newest-version"></a><a name="NewestVersion"></a>Newest Version
 
 <table border='1'>
-	<tr><th>Hadoop コネクタのバージョン</th>
-		<td>1.2.0</td></tr>
-	<tr><th>スクリプト URI</th>
-		<td>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v04.ps1</td></tr>
-	<tr><th>更新日時</th>
-		<td>04/26/2016</td></tr>
-	<tr><th>サポートされる HDInsight のバージョン</th>
-		<td>3.1、3.2</td></tr>
-	<tr><th>変更履歴</th>
-		<td>DocumentDB Java SDK 1.6.0 への更新</br>
-			ソースとシンクの両方としてのパーティション分割コレクションのサポートの追加</br>
-		</td></tr>
+    <tr><th>Hadoop Connector Version</th>
+        <td>1.2.0</td></tr>
+    <tr><th>Script Uri</th>
+        <td>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v04.ps1</td></tr>
+    <tr><th>Date Modified</th>
+        <td>04/26/2016</td></tr>
+    <tr><th>Supported HDInsight Versions</th>
+        <td>3.1, 3.2</td></tr>
+    <tr><th>Change Log</th>
+        <td>Updated DocumentDB Java SDK to 1.6.0</br>
+            Added support for partitioned collections as both a source and sink</br>
+        </td></tr>
 </table>
 
-## <a name="Prerequisites"></a>前提条件
-このチュートリアルの手順を実行する前に、次のものを備えておく必要があります。
+## <a name="<a-name="prerequisites"></a>prerequisites"></a><a name="Prerequisites"></a>Prerequisites
+Before following the instructions in this tutorial, ensure that you have the following:
 
-- DocumentDB アカウント、データベース、およびドキュメントが含まれているコレクション詳細については、[DocumentDB の使用に関するページ][getting-started]を参照してください。[DocumentDB インポート ツール][documentdb-import-data]を使用して、DocumentDB アカウントにサンプル データをインポートします。
-- スループット。HDInsight の読み取りと書き込みは、コレクションに割り当てられた要求単位に達するまでカウントされます。詳細については、[プロビジョニング済みスループット、要求単位、およびデータベース操作に関するページ][documentdb-manage-throughput]を参照してください。
-- 各出力コレクションに含まれる追加のストアド プロシージャ用の容量。ストアド プロシージャは、生成されたドキュメントを転送するために使用されます。詳細については、「[コレクションとプロビジョニング済みスループット][documentdb-manage-document-storage]」を参照してください。
-- Hive、Pig、または MapReduce のジョブから生成されたドキュメント用の容量。詳細については、「[DocumentDB の容量とパフォーマンスの管理][documentdb-manage-collections]」を参照してください。
-- *オプション*: 追加のコレクション用の容量。詳細については、「[プロビジョニング済みドキュメント ストレージとインデックス オーバーヘッド][documentdb-manage-document-storage]」を参照してください。
+- A DocumentDB account, a database, and a collection with documents inside. For more information, see [Getting Started with DocumentDB][getting-started]. Import sample data into your DocumentDB account with the [DocumentDB import tool][documentdb-import-data].
+- Throughput. Reads and writes from HDInsight will be counted towards your allotted request units for your collections. For more information, see [Provisioned throughput, request units, and database operations][documentdb-manage-throughput].
+- Capacity for an additional stored procedure within each output collection. The stored procedures are used for transferring resulting documents. For more information, see [Collections and provisioned throughput][documentdb-manage-document-storage].
+- Capacity for the resulting documents from the Hive, Pig, or MapReduce jobs. For more information, see [Manage DocumentDB capacity and performance][documentdb-manage-collections].
+- [*Optional*] Capacity for an additional collection. For more information, see [Provisioned document storage and index overhead][documentdb-manage-document-storage].
 
-> [AZURE.WARNING] 何かのジョブの実行中に新しいコレクションが作成されることを避けるために、stdout に結果を書き出して出力を WASB コンテナーに格納するか、既存のコレクションを指定することができます。既存のコレクションを指定した場合、新しいドキュメントはコレクション内に作成され、*ID* に競合がない限り既存のドキュメントに影響は及びません。**ID の競合がある場合は、既存のドキュメントがコネクタによって自動的に上書きされます**。この機能を無効にするには、upsert オプションを false に設定します。upsert が false に設定された状態で競合が発生すると、Hadoop ジョブは失敗し、ID 競合エラーが報告されます。
-
-
-## <a name="ProvisionHDInsight"></a>手順 1: 新しい HDInsight クラスターを作成する
-このチュートリアルでは、Azure Portal からスクリプト アクションを使用して、HDInsight クラスターをカスタマイズします。このチュートリアルでは、HDInsight クラスターの作成に、Azure Portal を使用します。PowerShell コマンドレットまたは HDInsight .NET SDK を使用する方法については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズに関するページ][hdinsight-custom-provision]を参照してください。
-
-1. [Azure ポータル][azure-portal]にサインインします。
-
-2. 左側のナビゲーションの上部にある **[+ 新規]** をクリックし、[新規] ブレードの上部にある検索バーで **HDInsight** を検索します。
-
-3. **Microsoft** によって発行された **HDInsight** が、結果の先頭に表示されます。それをクリックし、**[作成]** をクリックします。
-
-4. [新しい HDInsight クラスター] 作成ブレードで、**クラスター名**を入力し、このリソースのプロビジョニング先の**サブスクリプション**を選択します。
-
-	<table border='1'>
-		<tr><td>クラスター名</td><td>クラスターの名前を指定します。<br/>
-		DNS 名の最初と最後の文字は英数字にする必要があります。それ以外ではダッシュ (-) を使用できます。<br/>
-		3 ～ 63 文字のクラスター名を入力できます。</td></tr>
-		<tr><td>サブスクリプション名</td>
-			<td>複数の Azure サブスクリプションがある場合は、HDInsight クラスターをホストするサブスクリプションを選択します。</td></tr>
-	</table>
-
-5. **[クラスターの種類の選択]** をクリックし、以下のプロパティに、指定された値を設定します。
-
-	<table border='1'>
-		<tr><td>クラスターの種類</td><td><strong>Hadoop</strong></td></tr>
-		<tr><td>クラスター レベル</td><td><strong>Standard</strong></td></tr>
-		<tr><td>オペレーティング システム</td><td><strong>Windows</strong></td></tr>
-		<tr><td>バージョン</td><td>最新バージョン</td></tr>
-	</table>
-
-	ここで、**[選択]** をクリックします。
-
-	![Hadoop HDInsight の初期クラスターの詳細を提供][image-customprovision-page1]
-
-6. **[資格情報]** をクリックし、ログインとリモート アクセスの資格情報を設定します。**[クラスター ログイン ユーザー名]** と **[クラスター ログイン パスワード]** を選択します。
-
-	クラスターにリモート接続したい場合は、ブレードの下部の *[はい]* を選択し、ユーザー名とパスワードを指定します。
-
-7. **[データ ソース]** をクリックし、データ アクセスのプライマリ ロケーションを設定します。**[メソッドの選択]** を選択し、既存のストレージ アカウントを指定するか、新しいアカウントを作成します。
-
-8. 同じブレードで、**[既定のコンテナー]** と **[場所]** を指定します。その後、**[選択]** をクリックします。
-
-	> [AZURE.NOTE] パフォーマンスを良くするために、DocumentDB アカウントのリージョンに近い場所を選択します。
-
-8. **[料金]** をクリックし、ノードの数と種類を選択します。既定の構成のままにしておいて、後でワーカー ノードの数を増減できます。
-
-9. [オプションの構成] ブレードで、**[オプションの構成]**、**[スクリプト操作]** の順にクリックします。
-
-	[スクリプト操作] では、以下の情報を入力して、HDInsight クラスターをカスタマイズします。
-
-	<table border='1'>
-		<tr><th>プロパティ</th><th>値</th></tr>
-		<tr><td>名前</td>
-			<td>スクリプト アクションの名前を指定します。</td></tr>
-		<tr><td>スクリプト URI</td>
-			<td>クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。</br></br>
-			次の値を入力してください。 </br> <strong>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v04.ps1</strong>。</td></tr>
-		<tr><td>ヘッド</td>
-			<td>チェック ボックスをオンにして、ヘッド ノードに対して PowerShell スクリプトを実行します。</br></br>
-			<strong>このチェック ボックスをオンにします</strong>。</td></tr>
-		<tr><td>ワーカー</td>
-			<td>チェック ボックスをオンにして、ワーカー ノードに対して PowerShell スクリプトを実行します。</br></br>
-			<strong>このチェック ボックスをオンにします</strong>。</td></tr>
-		<tr><td>Zookeeper</td>
-			<td>チェック ボックスをオンにして、Zookeeper に対して PowerShell スクリプトを実行します。</br></br>
-			<strong>不要です</strong>。
-			</td></tr>
-		<tr><td>パラメーター</td>
-			<td>スクリプトで必要な場合は、パラメーターを指定します。</br></br>
-			<strong>パラメーターは必要ありません</strong>。</td></tr>
-	</table>
-
-10. 新しい**リソース グループ**を作成するか、Azure サブスクリプション内の既存のリソース グループを使用します。
-
-11. ここで、**[ダッシュボードにピン留めする]** チェック ボックスをオンにしてデプロイを追跡し、**[作成]** をクリックします。
-
-## <a name="InstallCmdlets"></a>手順 2: Azure PowerShell をインストールおよび構成する
-
-1. Azure PowerShell をインストールします。手順については、[このページ][powershell-install-configure]を参照してください。
-
-	> [AZURE.NOTE] または、Hive クエリに対して HDInsight のオンライン Hive エディターを使用できます。この場合は、[Azure Portal][azure-portal] にサインインし、左側のウィンドウで **[HDInsight]** をクリックすると、HDInsight クラスターの一覧が表示されます。Hive クエリを実行するクラスターをクリックし、**[クエリ コンソール]** をクリックします
-
-2. Azure PowerShell Integrated Scripting Environment を開きます。
-	- Windows 8 または Windows Server 2012 以降を実行しているコンピューターでは、組み込みの検索機能を使用できます。スタート画面で、「**powershell ise**」と入力し、**Enter** キーを押します。
-	- Windows 8 よりも前、または Windows Server 2012 より前のバージョンを実行しているコンピューターでは、[スタート] メニューを使用します。[スタート] メニューの検索ボックスに「**コマンド プロンプト**」と入力し、結果の一覧で、**[コマンド プロンプト]** をクリックします。コマンド プロンプトで、「**powershell\_ise**」と入力し、**Enter** キーを押します。
-
-3. Azure アカウントを追加します。
-	1. コンソール ウィンドウで、「**Add-AzureAccount**」と入力し、**Enter** キーを押します。
-	2. お使いの Azure サブスクリプションに関連付けられている電子メール アドレスを入力し、**[続行]** をクリックします。
-	3. Azure サブスクリプションのパスワードを入力します。
-	4. **[サインイン]** をクリックします。
-
-4. 次の図は、Azure PowerShell Scripting Environment の重要な要素を示しています。
-
-	![図: Azure PowerShell][azure-powershell-diagram]
-
-## <a name="RunHive"></a>手順 3: DocumentDB と HDInsight を使用して Hive ジョブを実行する
-
-> [AZURE.IMPORTANT] < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
-
-1. PowerShell スクリプト ウィンドウで次の変数を設定します。
-
-		# Provide Azure subscription name, the Azure Storage account and container that is used for the default HDInsight file system.
-		$subscriptionName = "<SubscriptionName>"
-		$storageAccountName = "<AzureStorageAccountName>"
-		$containerName = "<AzureStorageContainerName>"
-
-		# Provide the HDInsight cluster name where you want to run the Hive job.
-		$clusterName = "<HDInsightClusterName>"
-
-2. <p>クエリ文字列の作成から始めましょう。作成する Hive クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p>
-
-    <p>まず、DocumentDB コレクションから Hive テーブルを作成します。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid だけにドキュメントをトリミングするためのオプションである DocumentDB.query パラメーターが含まれていることを確認してください。</p>
-
-    > [AZURE.NOTE] **DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
-
-		'*DocumentDB.inputCollections*' = '*<DocumentDB Input Collection Name 1>*,*<DocumentDB Input Collection Name 2>*' A1A</br> The collection names are separated without spaces, using only a single comma.
+> [AZURE.WARNING] In order to avoid the creation of a new collection during any of the jobs, you can either print the results to stdout, save the output to your WASB container, or specify an already existing collection. In the case of specifying an existing collection, new documents will be created inside the collection and already existing documents will only be affected if there is a conflict in *ids*. **The connector will automatically overwrite existing documents with id conflicts**. You can turn off this feature by setting the upsert option to false. If upsert is false and a conflict occurs, the Hadoop job will fail; reporting an id conflict error.
 
 
-		# Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
-		$queryStringPart1 = "drop table DocumentDB_timestamps; "  +
+## <a name="<a-name="provisionhdinsight"></a>step-1:-create-a-new-hdinsight-cluster"></a><a name="ProvisionHDInsight"></a>Step 1: Create a new HDInsight cluster
+This tutorial uses Script Action from the Azure Portal to customize your HDInsight cluster. In this tutorial, we will use the Azure Portal to create your HDInsight cluster. For instructions on how to use PowerShell cmdlets or the HDInsight .NET SDK, check out the [Customize HDInsight clusters using Script Action][hdinsight-custom-provision] article.
+
+1. Sign in to the [Azure Portal][azure-portal].
+
+2. Click **+ New** on the top of the left navigation, search for **HDInsight** in the top search bar on the New blade.
+
+3. **HDInsight** published by **Microsoft** will appear at the top of the Results. Click on it and then click **Create**.
+
+4. On the New HDInsight Cluster create blade, enter your **Cluster Name** and select the **Subscription** you want to provision this resource under.
+
+    <table border='1'>
+        <tr><td>Cluster name</td><td>Name the cluster.<br/>
+        DNS name must start and end with an alpha numeric character, and may contain dashes.<br/>
+        The field must be a string between 3 and 63 characters.</td></tr>
+        <tr><td>Subscription Name</td>
+            <td>If you have more than one Azure Subscription, select the subscription that will host your HDInsight cluster. </td></tr>
+    </table>
+
+5. Click **Select Cluster Type** and set the following properties to the specified values.
+
+    <table border='1'>
+        <tr><td>Cluster type</td><td><strong>Hadoop</strong></td></tr>
+        <tr><td>Cluster tier</td><td><strong>Standard</strong></td></tr>
+        <tr><td>Operating System</td><td><strong>Windows</strong></td></tr>
+        <tr><td>Version</td><td>latest version</td></tr>
+    </table>
+
+    Now, click **SELECT**.
+
+    ![Provide Hadoop HDInsight initial cluster details][image-customprovision-page1]
+
+6. Click on **Credentials** to set your login and remote access credentials. Choose your **Cluster Login Username** and **Cluster Login Password**.
+
+    If you want to remote into your cluster, select *yes* at the bottom of the blade and provide a username and password.
+
+7. Click on **Data Source** to set your primary location for data access. Choose the **Selection Method** and specify an already existing storage account or create a new one.
+
+8. On the same blade, specify a **Default Container** and a **Location**. And, click **SELECT**.
+
+    > [AZURE.NOTE] Select a location close to your DocumentDB account region for better performance
+
+8. Click on **Pricing** to select the number and type of nodes. You can keep the default configuration and scale the number of Worker nodes later on.
+
+9. Click **Optional Configuration**, then **Script Actions** in the Optional Configuration Blade.
+
+    In Script Actions, enter the following information to customize your HDInsight cluster.
+
+    <table border='1'>
+        <tr><th>Property</th><th>Value</th></tr>
+        <tr><td>Name</td>
+            <td>Specify a name for the script action.</td></tr>
+        <tr><td>Script URI</td>
+            <td>Specify the URI to the script that is invoked to customize the cluster.</br></br>
+            Please enter: </br> <strong>https://portalcontent.blob.core.windows.net/scriptaction/documentdb-hadoop-installer-v04.ps1</strong>.</td></tr>
+        <tr><td>Head</td>
+            <td>Click the checkbox to run the PowerShell script onto the Head node.</br></br>
+            <strong>Check this checkbox</strong>.</td></tr>
+        <tr><td>Worker</td>
+            <td>Click the checkbox to run the PowerShell script onto the Worker node.</br></br>
+            <strong>Check this checkbox</strong>.</td></tr>
+        <tr><td>Zookeeper</td>
+            <td>Click the checkbox to run the PowerShell script onto the Zookeeper.</br></br>
+            <strong>Not needed</strong>.
+            </td></tr>
+        <tr><td>Parameters</td>
+            <td>Specify the parameters, if required by the script.</br></br>
+            <strong>No Parameters needed</strong>.</td></tr>
+    </table>
+
+10. Create either a new **Resource Group** or use an existing Resource Group under your Azure Subscription.
+
+11. Now, check **Pin to dashboard** to track its deployment and click **Create**!
+
+## <a name="<a-name="installcmdlets"></a>step-2:-install-and-configure-azure-powershell"></a><a name="InstallCmdlets"></a>Step 2: Install and configure Azure PowerShell
+
+1. Install Azure PowerShell. Instructions can be found [here][powershell-install-configure].
+
+    > [AZURE.NOTE] Alternatively, just for Hive queries, you can use HDInsight's online Hive Editor. To do so, sign in to the [Azure Portal][azure-portal], click **HDInsight** on the left pane to view a list of your HDInsight clusters. Click the cluster you want to run Hive queries on, and then click **Query Console**.
+
+2. Open the Azure PowerShell Integrated Scripting Environment:
+    - On a computer running Windows 8 or Windows Server 2012 or higher, you can use the built-in Search. From the Start screen, type **powershell ise** and click **Enter**.
+    - On a computer running a version earlier than Windows 8 or Windows Server 2012, use the Start menu. From the Start menu, type **Command Prompt** in the search box, then in the list of results, click **Command Prompt**. In the Command Prompt, type **powershell_ise** and click **Enter**.
+
+3. Add your Azure Account.
+    1. In the Console Pane, type **Add-AzureAccount** and click **Enter**.
+    2. Type in the email address associated with your Azure subscription and click **Continue**.
+    3. Type in the password for your Azure subscription.
+    4. Click **Sign in**.
+
+4. The following diagram identifies the important parts of your Azure PowerShell Scripting Environment.
+
+    ![Diagram for Azure PowerShell][azure-powershell-diagram]
+
+## <a name="<a-name="runhive"></a>step-3:-run-a-hive-job-using-documentdb-and-hdinsight"></a><a name="RunHive"></a>Step 3: Run a Hive job using DocumentDB and HDInsight
+
+> [AZURE.IMPORTANT] All variables indicated by < > must be filled in using your configuration settings.
+
+1. Set the following variables in your PowerShell Script pane.
+
+        # Provide Azure subscription name, the Azure Storage account and container that is used for the default HDInsight file system.
+        $subscriptionName = "<SubscriptionName>"
+        $storageAccountName = "<AzureStorageAccountName>"
+        $containerName = "<AzureStorageContainerName>"
+
+        # Provide the HDInsight cluster name where you want to run the Hive job.
+        $clusterName = "<HDInsightClusterName>"
+
+2. <p>Let's begin constructing your query string. We'll write a Hive query that takes all documents' system generated timestamps (_ts) and unique ids (_rid) from a DocumentDB collection, tallies all documents by the minute, and then stores the results back into a new DocumentDB collection.</p>
+
+    <p>First, let's create a Hive table from our DocumentDB collection. Add the following code snippet to the PowerShell Script pane <strong>after</strong> the code snippet from #1. Make sure you include the optional DocumentDB.query parameter t trim our documents to just _ts and _rid.</p>
+
+    > [AZURE.NOTE] **Naming DocumentDB.inputCollections was not a mistake.** Yes, we allow adding multiple collections as an input: </br>
+
+        '*DocumentDB.inputCollections*' = '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*' A1A</br> The collection names are separated without spaces, using only a single comma.
+
+
+        # Create a Hive table using data from DocumentDB. Pass DocumentDB the query to filter transferred data to _rid and _ts.
+        $queryStringPart1 = "drop table DocumentDB_timestamps; "  +
                             "create external table DocumentDB_timestamps(id string, ts BIGINT) "  +
                             "stored by 'com.microsoft.azure.documentdb.hive.DocumentDBStorageHandler' "  +
                             "tblproperties ( " +
@@ -193,14 +194,14 @@
                                 "'DocumentDB.inputCollections' = '<DocumentDB Input Collection Name>', " +
                                 "'DocumentDB.query' = 'SELECT r._rid AS id, r._ts AS ts FROM root r' ); "
 
-3.  次に、出力コレクション用に Hive テーブルを作成します。出力ドキュメントのプロパティは、月、日、時間、分、および発生した合計回数です。
+3.  Next, let's create a Hive table for the output collection. The output document properties will be the month, day, hour, minute, and the total number of occurrences.
 
-	> [AZURE.NOTE] **ここでも、DocumentDB.outputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。</br> 
-	'*DocumentDB.outputCollections*' = '*\<DocumentDB Output Collection Name 1\>*,*\<DocumentDB Output Collection Name 2\>*' </br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br></br> 
-	ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+    > [AZURE.NOTE] **Yet again, naming DocumentDB.outputCollections was not a mistake.** Yes, we allow adding multiple collections as an output: </br>
+    '*DocumentDB.outputCollections*' = '*\<DocumentDB Output Collection Name 1\>*,*\<DocumentDB Output Collection Name 2\>*' </br> The collection names are separated without spaces, using only a single comma. </br></br>
+    Documents will be distributed round-robin across multiple collections. A batch of documents will be stored in one collection, then a second batch of documents will be stored in the next collection, and so forth.
 
-		# Create a Hive table for the output data to DocumentDB.
-	    $queryStringPart2 = "drop table DocumentDB_analytics; " +
+        # Create a Hive table for the output data to DocumentDB.
+        $queryStringPart2 = "drop table DocumentDB_analytics; " +
                               "create external table DocumentDB_analytics(Month INT, Day INT, Hour INT, Minute INT, Total INT) " +
                               "stored by 'com.microsoft.azure.documentdb.hive.DocumentDBStorageHandler' " +
                               "tblproperties ( " +
@@ -209,9 +210,9 @@
                                   "'DocumentDB.db' = '<DocumentDB Database Name>', " +
                                   "'DocumentDB.outputCollections' = '<DocumentDB Output Collection Name>' ); "
 
-4. 最後は、ドキュメントを月単位、日単位、時間単位、および分単位で集計し、結果を出力 Hive テーブルに格納します。
+4. Finally, let's tally the documents by month, day, hour, and minute and insert the results back into the output Hive table.
 
-		# GROUP BY minute, COUNT entries for each, INSERT INTO output Hive table.
+        # GROUP BY minute, COUNT entries for each, INSERT INTO output Hive table.
         $queryStringPart3 = "INSERT INTO table DocumentDB_analytics " +
                               "SELECT month(from_unixtime(ts)) as Month, day(from_unixtime(ts)) as Day, " +
                               "hour(from_unixtime(ts)) as Hour, minute(from_unixtime(ts)) as Minute, " +
@@ -220,51 +221,51 @@
                               "GROUP BY month(from_unixtime(ts)), day(from_unixtime(ts)), " +
                               "hour(from_unixtime(ts)) , minute(from_unixtime(ts)); "
 
-5. 次のスクリプト スニペットを追加して、前のクエリから Hive ジョブ定義を作成します。
+5. Add the following script snippet to create a Hive job definition from the previous query.
 
-		# Create a Hive job definition.
-		$queryString = $queryStringPart1 + $queryStringPart2 + $queryStringPart3
-		$hiveJobDefinition = New-AzureHDInsightHiveJobDefinition -Query $queryString
+        # Create a Hive job definition.
+        $queryString = $queryStringPart1 + $queryStringPart2 + $queryStringPart3
+        $hiveJobDefinition = New-AzureHDInsightHiveJobDefinition -Query $queryString
 
-	-File スイッチを使用して、HDFS 上の HiveQL スクリプト ファイルを指定することもできます。
+    You can also use the -File switch to specify a HiveQL script file on HDFS.
 
-6. 次のスニペットを追加して、開始時刻を格納し、Hive ジョブを送信します。
+6. Add the following snippet to save the start time and submit the Hive job.
 
-		# Save the start time and submit the job to the cluster.
-		$startTime = Get-Date
-		Select-AzureSubscription $subscriptionName
-		$hiveJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $hiveJobDefinition
+        # Save the start time and submit the job to the cluster.
+        $startTime = Get-Date
+        Select-AzureSubscription $subscriptionName
+        $hiveJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $hiveJobDefinition
 
-7. 次のスニペットを追加して、Hive ジョブが完了するのを待機します。
+7. Add the following to wait for the Hive job to complete.
 
-		# Wait for the Hive job to complete.
-		Wait-AzureHDInsightJob -Job $hiveJob -WaitTimeoutInSeconds 3600
+        # Wait for the Hive job to complete.
+        Wait-AzureHDInsightJob -Job $hiveJob -WaitTimeoutInSeconds 3600
 
-8. 次のスニペットを追加して、標準出力および開始時刻と終了時刻を表示します。
+8. Add the following to print the standard output and the start and end times.
 
-		# Print the standard error, the standard output of the Hive job, and the start and end time.
-		$endTime = Get-Date
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $hiveJob.JobId -StandardOutput
-		Write-Host "Start: " $startTime ", End: " $endTime -ForegroundColor Green
+        # Print the standard error, the standard output of the Hive job, and the start and end time.
+        $endTime = Get-Date
+        Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $hiveJob.JobId -StandardOutput
+        Write-Host "Start: " $startTime ", End: " $endTime -ForegroundColor Green
 
-9. 作成できたスクリプトを**実行しましょう**。 緑色の実行ボタンを**クリックします**。
+9. **Run** your new script! **Click** the green execute button.
 
-10. 結果を確認します。[Azure ポータル][azure-portal]にサインインします。
-	1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。</br>
-	2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。</br>
-	3. <strong>[DocumentDB アカウント]</strong> を見つけてクリックします。</br>
-	4. 次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、Hive クエリで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。</br>
-	5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。</br></p>
+10. Check the results. Sign into the [Azure Portal][azure-portal].
+    1. Click <strong>Browse</strong> on the left-side panel. </br>
+    2. Click <strong>everything</strong> at the top-right of the browse panel. </br>
+    3. Find and click <strong>DocumentDB Accounts</strong>. </br>
+    4. Next, find your <strong>DocumentDB Account</strong>, then <strong>DocumentDB Database</strong> and your <strong>DocumentDB Collection</strong> associated with the output collection specified in your Hive query.</br>
+    5. Finally, click <strong>Document Explorer</strong> underneath <strong>Developer Tools</strong>.</br></p>
 
-	Hive クエリの結果が表示されます。
+    You will see the results of your Hive query.
 
-	![Hive クエリの結果][image-hive-query-results]
+    ![Hive query results][image-hive-query-results]
 
-## <a name="RunPig"></a>手順 4: DocumentDB と HDInsight を使用して Pig ジョブを実行する
+## <a name="<a-name="runpig"></a>step-4:-run-a-pig-job-using-documentdb-and-hdinsight"></a><a name="RunPig"></a>Step 4: Run a Pig job using DocumentDB and HDInsight
 
-> [AZURE.IMPORTANT] < > で囲まれている変数はすべて、構成設定を使用して入力する必要があります。
+> [AZURE.IMPORTANT] All variables indicated by < > must be filled in using your configuration settings.
 
-1. PowerShell スクリプト ウィンドウで次の変数を設定します。
+1. Set the following variables in your PowerShell Script pane.
 
         # Provide Azure subscription name.
         $subscriptionName = "Azure Subscription Name"
@@ -272,139 +273,139 @@
         # Provide HDInsight cluster name where you want to run the Pig job.
         $clusterName = "Azure HDInsight Cluster Name"
 
-2. <p>クエリ文字列の作成から始めましょう。作成する Pig クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p>
-    <p>まず、DocumentDB から HDInsight にドキュメントを読み込みます。次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。_ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>
-    
-     > [AZURE.NOTE] 次のように、複数のコレクションを 1 つの入力として追加することができます。</br> 
-     '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*'</br>コレクション名は、間にスペースを入れずにコンマだけで区切ります。</b>
+2. <p>Let's begin constructing your query string. We'll write a Pig query that takes all documents' system generated timestamps (_ts) and unique ids (_rid) from a DocumentDB collection, tallies all documents by the minute, and then stores the results back into a new DocumentDB collection.</p>
+    <p>First, load documents from DocumentDB into HDInsight. Add the following code snippet to the PowerShell Script pane <strong>after</strong> the code snippet from #1. Make sure to add a DocumentDB query to the optional DocumentDB query parameter to trim our documents to just _ts and _rid.</p>
 
-	ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+    > [AZURE.NOTE] Yes, we allow adding multiple collections as an input: </br>
+    '*\<DocumentDB Input Collection Name 1\>*,*\<DocumentDB Input Collection Name 2\>*'</br> The collection names are separated without spaces, using only a single comma. </b>
 
-		# Load data from DocumentDB. Pass DocumentDB query to filter transferred data to _rid and _ts.
+    Documents will be distributed round-robin across multiple collections. A batch of documents will be stored in one collection, then a second batch of documents will be stored in the next collection, and so forth.
+
+        # Load data from DocumentDB. Pass DocumentDB query to filter transferred data to _rid and _ts.
         $queryStringPart1 = "DocumentDB_timestamps = LOAD '<DocumentDB Endpoint>' USING com.microsoft.azure.documentdb.pig.DocumentDBLoader( " +
                                                         "'<DocumentDB Primary Key>', " +
                                                         "'<DocumentDB Database Name>', " +
                                                         "'<DocumentDB Input Collection Name>', " +
                                                         "'SELECT r._rid AS id, r._ts AS ts FROM root r' ); "
 
-3.  次に、ドキュメントを月単位、日単位、時間単位、分単位、および発生した合計回数で集計します。
+3.  Next, let's tally the documents by the month, day, hour, minute, and the total number of occurrences.
 
-		# GROUP BY minute and COUNT entries for each.
+        # GROUP BY minute and COUNT entries for each.
         $queryStringPart2 = "timestamp_record = FOREACH DocumentDB_timestamps GENERATE `$0#'id' as id:int, ToDate((long)(`$0#'ts') * 1000) as timestamp:datetime; " +
                             "by_minute = GROUP timestamp_record BY (GetYear(timestamp), GetMonth(timestamp), GetDay(timestamp), GetHour(timestamp), GetMinute(timestamp)); " +
                             "by_minute_count = FOREACH by_minute GENERATE FLATTEN(group) as (Year:int, Month:int, Day:int, Hour:int, Minute:int), COUNT(timestamp_record) as Total:int; "
 
-4. 最後に、その結果を新しい出力コレクションに格納します。
+4. Finally, let's store the results into our new output collection.
 
-    > [AZURE.NOTE] 次のように、複数のコレクションを 1 つの入力として追加することができます。</br>
-    '\<DocumentDB Output Collection Name 1\>,\<DocumentDB Output Collection Name 2\>'</br> コレクション名は、間にスペースを入れずにコンマだけで区切ります。</br>
-    ドキュメントは複数のコレクションに対してラウンドロビン形式で分散されます。ドキュメントの 1 つ目のバッチが 1 つのコレクションに格納され、2 つ目のバッチが次のコレクションに格納されて、以降、同様に処理されます。
+    > [AZURE.NOTE] Yes, we allow adding multiple collections as an output: </br>
+    '\<DocumentDB Output Collection Name 1\>,\<DocumentDB Output Collection Name 2\>'</br> The collection names are separated without spaces, using only a single comma.</br>
+    Documents will be distributed round-robin across the multiple collections. A batch of documents will be stored in one collection, then a second batch of documents will be stored in the next collection, and so forth.
 
-		# Store output data to DocumentDB.
+        # Store output data to DocumentDB.
         $queryStringPart3 = "STORE by_minute_count INTO '<DocumentDB Endpoint>' " +
                             "USING com.microsoft.azure.documentdb.pig.DocumentDBStorage( " +
                                 "'<DocumentDB Primary Key>', " +
                                 "'<DocumentDB Database Name>', " +
                                 "'<DocumentDB Output Collection Name>'); "
 
-5. 次のスクリプト スニペットを追加して、前のクエリから Pig ジョブ定義を作成します。
+5. Add the following script snippet to create a Pig job definition from the previous query.
 
         # Create a Pig job definition.
         $queryString = $queryStringPart1 + $queryStringPart2 + $queryStringPart3
         $pigJobDefinition = New-AzureHDInsightPigJobDefinition -Query $queryString -StatusFolder $statusFolder
 
-	-File スイッチを使用して、HDFS 上の Pig スクリプト ファイルを指定することもできます。
+    You can also use the -File switch to specify a Pig script file on HDFS.
 
-6. 次のスニペットを追加して、開始時刻を格納し、Pig ジョブを送信します。
+6. Add the following snippet to save the start time and submit the Pig job.
 
-		# Save the start time and submit the job to the cluster.
-		$startTime = Get-Date
-		Select-AzureSubscription $subscriptionName
-		$pigJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $pigJobDefinition
+        # Save the start time and submit the job to the cluster.
+        $startTime = Get-Date
+        Select-AzureSubscription $subscriptionName
+        $pigJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $pigJobDefinition
 
-7. 次のスニペットを追加して、Pig ジョブが完了するのを待機します。
+7. Add the following to wait for the Pig job to complete.
 
-		# Wait for the Pig job to complete.
-		Wait-AzureHDInsightJob -Job $pigJob -WaitTimeoutInSeconds 3600
+        # Wait for the Pig job to complete.
+        Wait-AzureHDInsightJob -Job $pigJob -WaitTimeoutInSeconds 3600
 
-8. 次のスニペットを追加して、標準出力および開始時刻と終了時刻を表示します。
+8. Add the following to print the standard output and the start and end times.
 
-		# Print the standard error, the standard output of the Hive job, and the start and end time.
-		$endTime = Get-Date
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $pigJob.JobId -StandardOutput
-		Write-Host "Start: " $startTime ", End: " $endTime -ForegroundColor Green
+        # Print the standard error, the standard output of the Hive job, and the start and end time.
+        $endTime = Get-Date
+        Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $pigJob.JobId -StandardOutput
+        Write-Host "Start: " $startTime ", End: " $endTime -ForegroundColor Green
 
-9. 作成できたスクリプトを**実行しましょう**。 緑色の実行ボタンを**クリックします**。
+9. **Run** your new script! **Click** the green execute button.
 
-10. 結果を確認します。[Azure ポータル][azure-portal]にサインインします。
-	1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。</br>
-	2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。</br>
-	3. <strong>[DocumentDB アカウント]</strong> を見つけてクリックします。</br>
-	4. 次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、Pig クエリで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。</br>
-	5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。</br></p>
+10. Check the results. Sign into the [Azure Portal][azure-portal].
+    1. Click <strong>Browse</strong> on the left-side panel. </br>
+    2. Click <strong>everything</strong> at the top-right of the browse panel. </br>
+    3. Find and click <strong>DocumentDB Accounts</strong>. </br>
+    4. Next, find your <strong>DocumentDB Account</strong>, then <strong>DocumentDB Database</strong> and your <strong>DocumentDB Collection</strong> associated with the output collection specified in your Pig query.</br>
+    5. Finally, click <strong>Document Explorer</strong> underneath <strong>Developer Tools</strong>.</br></p>
 
-	Pig クエリの結果が表示されます。
+    You will see the results of your Pig query.
 
-	![Pig クエリの結果][image-pig-query-results]
+    ![Pig query results][image-pig-query-results]
 
-## <a name="RunMapReduce"></a>手順 5: DocumentDB と HDInsight を使用して MapReduce ジョブを実行する
+## <a name="<a-name="runmapreduce"></a>step-5:-run-a-mapreduce-job-using-documentdb-and-hdinsight"></a><a name="RunMapReduce"></a>Step 5: Run a MapReduce job using DocumentDB and HDInsight
 
-1. PowerShell スクリプト ウィンドウで次の変数を設定します。
+1. Set the following variables in your PowerShell Script pane.
 
-		$subscriptionName = "<SubscriptionName>"   # Azure subscription name
-		$clusterName = "<ClusterName>"             # HDInsight cluster name
+        $subscriptionName = "<SubscriptionName>"   # Azure subscription name
+        $clusterName = "<ClusterName>"             # HDInsight cluster name
 
-2. DocumentDB コレクションから各ドキュメント プロパティの発生回数を集計する MapReduce ジョブを実行します。このスクリプト スニペットを上記のスニペットの**後に**追加します。
+2. We'll execute a MapReduce job that tallies the number of occurrences for each Document property from your DocumentDB collection. Add this script snippet **after** the snippet above.
 
-		# Define the MapReduce job.
-		$TallyPropertiesJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/TallyProperties-v01.jar" -ClassName "TallyProperties" -Arguments "<DocumentDB Endpoint>","<DocumentDB Primary Key>", "<DocumentDB Database Name>","<DocumentDB Input Collection Name>","<DocumentDB Output Collection Name>","<[Optional] DocumentDB Query>"
+        # Define the MapReduce job.
+        $TallyPropertiesJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/TallyProperties-v01.jar" -ClassName "TallyProperties" -Arguments "<DocumentDB Endpoint>","<DocumentDB Primary Key>", "<DocumentDB Database Name>","<DocumentDB Input Collection Name>","<DocumentDB Output Collection Name>","<[Optional] DocumentDB Query>"
 
-	> [AZURE.NOTE] TallyProperties-v01.jar は、DocumentDB Hadoop コネクタのカスタム インストールに付属しています。
+    > [AZURE.NOTE] TallyProperties-v01.jar comes with the custom installation of the DocumentDB Hadoop Connector.
 
-3. 次のコマンドを追加して、MapReduce ジョブを送信します。
+3. Add the following command to submit the MapReduce job.
 
-		# Save the start time and submit the job.
-		$startTime = Get-Date
-		Select-AzureSubscription $subscriptionName
-		$TallyPropertiesJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $TallyPropertiesJobDefinition | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600  
+        # Save the start time and submit the job.
+        $startTime = Get-Date
+        Select-AzureSubscription $subscriptionName
+        $TallyPropertiesJob = Start-AzureHDInsightJob -Cluster $clusterName -JobDefinition $TallyPropertiesJobDefinition | Wait-AzureHDInsightJob -WaitTimeoutInSeconds 3600  
 
-	MapReduce ジョブ定義に加えて、MapReduce ジョブを実行する HDInsight クラスター名、および資格情報も指定します。Start-AzureHDInsightJob は非同期呼び出しです。ジョブの完了を確認するには、*Wait-AzureHDInsightJob* コマンドレットを使用します。
+    In addition to the MapReduce job definition, you also provide the HDInsight cluster name where you want to run the MapReduce job, and the credentials. The Start-AzureHDInsightJob is an asynchronized call. To check the completion of the job, use the *Wait-AzureHDInsightJob* cmdlet.
 
-4. 次のコマンドを追加して、MapReduce ジョブの実行中に発生したエラーを確認します。
+4. Add the following command to check any errors with running the MapReduce job.
 
-		# Get the job output and print the start and end time.
-		$endTime = Get-Date
-		Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $TallyPropertiesJob.JobId -StandardError
-		Write-Host "Start: " $startTime ", End: " $endTime -ForegroundColor Green
+        # Get the job output and print the start and end time.
+        $endTime = Get-Date
+        Get-AzureHDInsightJobOutput -Cluster $clusterName -JobId $TallyPropertiesJob.JobId -StandardError
+        Write-Host "Start: " $startTime ", End: " $endTime -ForegroundColor Green
 
-5. 作成できたスクリプトを**実行しましょう**。 緑色の実行ボタンを**クリックします**。
+5. **Run** your new script! **Click** the green execute button.
 
-6. 結果を確認します。[Azure ポータル][azure-portal]にサインインします。
-	1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。
-	2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。
-	3. <strong>[DocumentDB アカウント]</strong> を見つけてクリックします。
-	4. 次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、MapReduce ジョブで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。
-	5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。
+6. Check the results. Sign into the [Azure Portal][azure-portal].
+    1. Click <strong>Browse</strong> on the left-side panel.
+    2. Click <strong>everything</strong> at the top-right of the browse panel.
+    3. Find and click <strong>DocumentDB Accounts</strong>.
+    4. Next, find your <strong>DocumentDB Account</strong>, then <strong>DocumentDB Database</strong> and your <strong>DocumentDB Collection</strong> associated with the output collection specified in your MapReduce job.
+    5. Finally, click <strong>Document Explorer</strong> underneath <strong>Developer Tools</strong>.
 
-	MapReduce ジョブの結果が表示されます。
+    You will see the results of your MapReduce job.
 
-	![MapReduce クエリの結果][image-mapreduce-query-results]
+    ![MapReduce query results][image-mapreduce-query-results]
 
-## <a name="NextSteps"></a>次のステップ
+## <a name="<a-name="nextsteps"></a>next-steps"></a><a name="NextSteps"></a>Next Steps
 
-ご利用ありがとうございます。 Azure DocumentDB および HDInsight を使用して最初の Hive、Pig、および MapReduce ジョブを実行しました。
+Congratulations! You just ran your first Hive, Pig, and MapReduce jobs using Azure DocumentDB and HDInsight.
 
-Microsoft では Hadoop コネクタをオープン ソース化しています。関心がある場合は、[GitHub][documentdb-github] に投稿できます。
+We have open sourced our Hadoop Connector. If you're interested, you can contribute on [GitHub][documentdb-github].
 
-詳細については、次の記事を参照してください。
+To learn more, see the following articles:
 
-- [DocumentDB を使用した Java アプリケーションの開発][documentdb-java-application]
-- [HDInsight での Hadoop 用 Java MapReduce プログラムの開発][hdinsight-develop-deploy-java-mapreduce]
-- [HDInsight で Hive と Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
-- [HDInsight での MapReduce の使用][hdinsight-use-mapreduce]
-- [HDInsight での Hive の使用][hdinsight-use-hive]
-- [HDInsight での Pig の使用][hdinsight-use-pig]
-- [Script Action を使って HDInsight クラスターをカスタマイズする][hdinsight-hadoop-customize-cluster]
+- [Develop a Java application with Documentdb][documentdb-java-application]
+- [Develop Java MapReduce programs for Hadoop in HDInsight][hdinsight-develop-deploy-java-mapreduce]
+- [Get started using Hadoop with Hive in HDInsight to analyze mobile handset use][hdinsight-get-started]
+- [Use MapReduce with HDInsight][hdinsight-use-mapreduce]
+- [Use Hive with HDInsight][hdinsight-use-hive]
+- [Use Pig with HDInsight][hdinsight-use-pig]
+- [Customize HDInsight clusters using Script Action][hdinsight-hadoop-customize-cluster]
 
 [apache-hadoop]: http://hadoop.apache.org/
 [apache-hadoop-doc]: http://hadoop.apache.org/docs/current/
@@ -439,4 +440,8 @@ Microsoft では Hadoop コネクタをオープン ソース化しています�
 
 [powershell-install-configure]: ../powershell-install-configure.md
 
-<!----HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

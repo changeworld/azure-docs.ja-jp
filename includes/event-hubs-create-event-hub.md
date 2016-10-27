@@ -1,49 +1,51 @@
-## Event Hub を作成する
+## <a name="create-an-event-hub"></a>Create an Event Hub
 
-1. [Azure Portal][] にログインし、画面の左上にある **[新規]** をクリックします。
+1. Log on to the [Azure portal][], and click **New** at the top left of the screen.
 
-2. **[データ + 分析]** をクリックし、**[イベント ハブ]** をクリックします。
+2. Click **Data + Analytics**, then click **Event Hubs**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub9.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub9.png)
 
-3. **[名前空間の作成]** ブレードで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。
+3. In the **Create namespace** blade, enter a namespace name. The system immediately checks to see if the name is available.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub1.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub1.png)
 
-4. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Basic または Standard) を選択します。Azure サブスクリプション、リソース グループ、リソースが作成される場所を選択します。
+4. After making sure the namespace name is available, choose the pricing tier (Basic or Standard). Also, choose an Azure subscription, resource group, and location in which to create the resource. 
 
-2. **[作成]** をクリックして、名前空間を作成します。
+2. Click **Create** to create the namespace.
 
-6. Event Hubs 名前空間の一覧で、新しく作成された名前空間をクリックします。
+6. In the Event Hubs namespace list, click the newly-created namespace.      
 
-	![](./media/event-hubs-create-event-hub/create-event-hub2.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub2.png)
 
-7. 名前空間ブレードで **[Event Hubs]** をクリックします。
+7. In the namespace blade, click **Event Hubs**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub3.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub3.png)
 
-8. ブレード上部の **[イベント ハブの追加]** をクリックします。
+8. At the top of the blade, click **Add Event Hub**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub4.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub4.png)
 
-3. イベント ハブの名前を入力し、**[作成]** をクリックします。
+3. Type a name for your Event Hub, then click **Create**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub5.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub5.png)
 
-4. Event Hubs の一覧で、新しく作成したイベント ハブの名前をクリックします。
+4. In the list of Event Hubs, click the newly created Event Hub name. 
 
-	![](./media/event-hubs-create-event-hub/create-event-hub6.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub6.png)
 
-5. 名前空間ブレード (特定のイベント ハブ ブレードではなく) に戻り、**[共有アクセス ポリシー]** をクリックし、**[RootManageSharedAccessKey]** をクリックします。
+5. Back in the namespace blade (not the specific Event Hub blade), click **Shared access policies**, and then click **RootManageSharedAccessKey**.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub7.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub7.png)
 
-5. コピー ボタンをクリックして **RootManageSharedAccessKey** 接続文字列をクリップボードにコピーします。この接続文字列を保存し、後でこのチュートリアルの中で使用します。
+5. Click the copy button to copy the **RootManageSharedAccessKey** connection string to the clipboard. Save this connection string to use later in the tutorial.
 
-	![](./media/event-hubs-create-event-hub/create-event-hub8.png)
+    ![](./media/event-hubs-create-event-hub/create-event-hub8.png)
 
-イベント ハブが作成され、イベントの送受信に必要な接続文字列が手元にあります。
+Your Event Hub is now created, and you have the connection strings you need to send and receive events.
 
 [Azure portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0921_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,62 +1,67 @@
 <properties 
-	pageTitle="Windows Phone Silverlight SDK 概要" 
-	description="Azure Mobile Engagement の Windows Phone Silverlight SDK の概要" 					
-	services="mobile-engagement" 
-	documentationCenter="mobile" 
-	authors="piyushjo" 
-	manager="dwrede"
-	editor="" />
+    pageTitle="Windows Phone Silverlight SDK Overview" 
+    description="Overview of the Windows Phone Silverlight SDK for Azure Mobile Engagement"                     
+    services="mobile-engagement" 
+    documentationCenter="mobile" 
+    authors="piyushjo" 
+    manager="dwrede"
+    editor="" />
 
 <tags 
-	ms.service="mobile-engagement" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="mobile-windows-phone" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/19/2016" 
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement" 
+    ms.workload="mobile" 
+    ms.tgt_pltfrm="mobile-windows-phone" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/19/2016" 
+    ms.author="piyushjo" />
 
-#Azure Mobile Engagement の Windows Phone Silverlight SDK 概要
 
-ここから Azure Mobile Engagement を Windows Phone Silverlight アプリに統合する方法についての説明を開始します。まず試してみる場合は、「[15 分間チュートリアル](mobile-engagement-windows-phone-get-started.md)」を完了してください。
+#<a name="windows-phone-silverlight-sdk-overview-for-azure-mobile-engagement"></a>Windows Phone Silverlight SDK Overview for Azure Mobile Engagement
 
-[SDK コンテンツ](mobile-engagement-windows-phone-sdk-content.md)について表示するにはここをクリックします。
+Start here to get the details on how to integrate Azure Mobile Engagement in a Windows Phone Silverlight App. If you'd like to give it a try first, make sure you complete our [15 minutes tutorial](mobile-engagement-windows-phone-get-started.md).
 
-##統合手順
+Click to see the [SDK Content](mobile-engagement-windows-phone-sdk-content.md)
 
-1. ここから開始: [Windows Phone Silverlight アプリに Mobile Engagement を統合する方法](mobile-engagement-windows-phone-integrate-engagement.md)
+##<a name="integration-procedures"></a>Integration procedures
 
-2. 通知: [リーチ (通知) を Windows Phone Silverlight アプリに統合する方法](mobile-engagement-windows-phone-integrate-engagement-reach.md)
+1. Start here: [How to integrate Mobile Engagement in your Windows Phone Silverlight app](mobile-engagement-windows-phone-integrate-engagement.md)
 
-3. タグ付けプランの実装: [Windows Phone Silverlight で高度な Mobile Engagement タグ付け API を使用する方法](mobile-engagement-windows-phone-use-engagement-api.md)
+2. For Notifications: [How to integrate Reach (Notifications) in your Windows Phone Silverlight app](mobile-engagement-windows-phone-integrate-engagement-reach.md)
 
-##リリース ノート
+3. Tag plan implementation: [How to use the advanced Mobile Engagement tagging API in your Windows Phone Silverlight app](mobile-engagement-windows-phone-use-engagement-api.md)
 
-###3\.3.0 (04/19/2016)
-*MicrosoftAzure.MobileEngagement* NuGet パッケージ **v3.4.0** の一部
+##<a name="release-notes"></a>Release notes
 
--   SDK によって出力されるコンソール ログを有効化/無効化/フィルター処理するために "TestLogLevel" API を追加しました。
+###<a name="3.3.0-(04/19/2016)"></a>3.3.0 (04/19/2016)
+Part of the *MicrosoftAzure.MobileEngagement* nuget package **v3.4.0**
 
-以前のバージョンについては、「[完全リリース ノート](mobile-engagement-windows-phone-release-notes.md)」をご覧ください。
+-   Added "TestLogLevel" API to enable/disable/filter console logs emitted by the SDK.
 
-##アップグレードの手順
+For earlier version please see the [complete release notes](mobile-engagement-windows-phone-release-notes.md)
 
-既に古いバージョンの SDK をアプリケーションに統合している場合は、SDK をアップグレードする際に次の点を考慮する必要があります。
+##<a name="upgrade-procedures"></a>Upgrade procedures
 
-SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。完全な[アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure.md)を参照してください。たとえば、0.10.1 から 0.11.0 に移行する場合、まず「0.9.0から 0.10.1」への手順を実行してから「0.10.1 から 0.11.0」への手順を実行する必要があります。
+If you already have integrated an older version of our SDK into your application, you have to consider the following points when upgrading the SDK.
 
-###2\.0.0 から 3.3.0 に移行
+You may have to follow several procedures if you missed several versions of the SDK. See the complete [Upgrade Procedures](mobile-engagement-windows-phone-upgrade-procedure.md). For example if you migrate from 0.10.1 to 0.11.0 you have to first follow the "from 0.9.0 to 0.10.1" procedure then the "from 0.10.1 to 0.11.0" procedure.
 
-####テスト ログ
+###<a name="from-2.0.0-to-3.3.0"></a>From 2.0.0 to 3.3.0
 
-SDK によって生成されるコンソール ログを有効化/無効化/フィルター処理できるようになりました。これをカスタマイズするには、次の例のように `EngagementAgent.Instance.TestLogEnabled` プロパティを `EngagementTestLogLevel` 列挙型の使用可能な値の 1 つに更新します。
+####<a name="test-logs"></a>Test logs
 
-			EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
-			EngagementAgent.Instance.Init();
+Console logs produced by the SDK can now be enabled/disabled/filtered. To customize this, update the property `EngagementAgent.Instance.TestLogEnabled` to one of the value available from the `EngagementTestLogLevel` enumeration, for instance:
 
-### 古いバージョンからのアップグレード
+            EngagementAgent.Instance.TestLogLevel = EngagementTestLogLevel.Verbose;
+            EngagementAgent.Instance.Init();
 
-[アップグレード手順](mobile-engagement-windows-phone-upgrade-procedure.md)をご覧ください
+### <a name="upgrade-from-older-versions"></a>Upgrade from older versions
+
+See [Upgrade Procedures](mobile-engagement-windows-phone-upgrade-procedure.md)
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

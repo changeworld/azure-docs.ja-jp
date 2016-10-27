@@ -1,616 +1,616 @@
 <properties
-	pageTitle="Azure Table サービスを使用する Node.js Web アプリ"
-	description="このチュートリアルでは、Azure Table サービスを使用して、Azure App Service Web Apps でホストされる Node.js アプリケーションのデータを格納する方法を説明します。"
-	tags="azure-portal"
-	services="app-service\web, storage"
-	documentationCenter="nodejs"
-	authors="rmcmurray"
-	manager="wpickett"
-	editor=""/>
+    pageTitle="Node.js web app using the Azure Table Service"
+    description="This tutorial teaches you how to use the Azure Table service to store data from a Node.js application which is hosted in Azure App Service Web Apps."
+    tags="azure-portal"
+    services="app-service\web, storage"
+    documentationCenter="nodejs"
+    authors="rmcmurray"
+    manager="wpickett"
+    editor=""/>
 
 <tags
-	ms.service="storage"
-	ms.workload="storage"
-	ms.tgt_pltfrm="na"
-	ms.devlang="nodejs"
-	ms.topic="article"
-	ms.date="08/11/2016"
-	ms.author="robmcm"/>
+    ms.service="storage"
+    ms.workload="storage"
+    ms.tgt_pltfrm="na"
+    ms.devlang="nodejs"
+    ms.topic="article"
+    ms.date="08/11/2016"
+    ms.author="robmcm"/>
 
-# Azure Table サービスを使用する Node.js Web アプリ
 
-## 概要
+# <a name="node.js-web-app-using-the-azure-table-service"></a>Node.js web app using the Azure Table Service
 
-このチュートリアルでは、Azure データ管理で提供される Table サービスを使用して、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps でホストされる[ノード] アプリケーションのデータを格納し、データにアクセスする方法を説明します。このチュートリアルは、ノードおよび [Git] を使用した経験があることを前提としています。
+## <a name="overview"></a>Overview
 
-学習内容:
+This tutorial shows you how to use Table service provided by Azure Data Management to store and access data from a [node] application hosted in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps. This tutorial assumes that you have some prior experience using node and [Git].
 
-* npm (ノード パッケージ マネージャー) を使用してノード モジュールをインストールする方法
+You will learn:
 
-* Azure Table サービスを使用する方法
+* How to use npm (node package manager) to install the node modules
 
-* Azure CLI を使用して Web アプリを作成する方法
+* How to work with the Azure Table service
 
-このチュートリアルでは、タスクを作成、取得、完了する機能を備えた、単純な Web ベースの "To DO リスト" アプリケーションを作成します。タスクは Table サービスに格納されます。
+* How to use the Azure CLI to create a web app.
 
-完成したアプリケーションを次に示します。
+By following this tutorial, you will build a simple web-based "to-do list" application that allows creating, retrieving and completing tasks. The tasks are stored in the Table service.
 
-![空のタスク一覧が表示されている Web ページ][node-table-finished]
+Here is the completed application:
 
->[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+![A web page displaying an empty tasklist][node-table-finished]
 
-## 前提条件
+>[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
 
-この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
+## <a name="prerequisites"></a>Prerequisites
 
-* [node] Version 0.10.24 以上
+Before following the instructions in this article, ensure that you have the following installed:
+
+* [node] version 0.10.24 or higher
 
 * [Git]
 
 [AZURE.INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-## ストレージ アカウントの作成
+## <a name="create-a-storage-account"></a>Create a storage account
 
-Azure ストレージ アカウントを作成します。アプリでは、このアカウントを使用して To Do リストの項目を保存します。
+Create an Azure storage account. The app will use this account to store the to-do items.
 
-1.  [Azure ポータル](https://portal.azure.com/)にログインします。
+1.  Log into the [Azure Portal](https://portal.azure.com/).
 
-2. ポータルの左下にある **[新規]** アイコンをクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。ストレージ アカウントに一意の名前を付け、アカウントの新しい[リソース グループ](../resource-group-overview.md)を作成します
+2. Click the **New** icon on the bottom left of the portal, then click **Data + Storage** > **Storage**. Give the storage account a unique name and create a new [resource group](../resource-group-overview.md) for it.
 
-  	![New ボタン](./media/storage-nodejs-use-table-storage-web-site/configure-storage.png)
+    ![New Button](./media/storage-nodejs-use-table-storage-web-site/configure-storage.png)
 
-	ストレージ アカウントが作成されると、**[通知]** ボタンに緑色の "**成功**" という文字が点滅し、ストレージ アカウントのブレードが開いて、作成した新しいリソース グループに属していることが示されます。
+    When the storage account has been created, the **Notifications** button will flash a green **SUCCESS** and the storage account's blade is open to show that it belongs to the new resource group you created.
 
-5. ストレージ アカウントのブレードで、**[設定]**、**[キー]** の順にクリックします。プライマリ アクセス キーをクリップボードにコピーします。
+5. In the storage account's blade, click **Settings** > **Keys**. Copy the primary access key to the clipboard.
 
-    ![アクセス キー][portal-storage-access-keys]
+    ![Access key][portal-storage-access-keys]
 
 
-##モジュールのインストールとスキャフォールディングの生成
+##<a name="install-modules-and-generate-scaffolding"></a>Install modules and generate scaffolding
 
-ここでは、新しい Node アプリケーションを作成し、npm を使用してモジュール パッケージを追加します。このアプリケーションでは、[Express] モジュールと [Azure] モジュールを使用します。Express モジュールは node の Model View Controller フレームワークを提供し、Azure モジュールは Table サービスへの接続を提供します。
+In this section you will create a new Node application and use npm to add module packages. For this application you will use the [Express] and [Azure] modules. The Express module provides a Model View Controller framework for node, while the Azure modules provides connectivity to the Table service.
 
-### express のインストールとスキャフォールディングの生成
+### <a name="install-express-and-generate-scaffolding"></a>Install express and generate scaffolding
 
-1. コマンド ラインで、**tasklist** という名前の新しいディレクトリを作成し、そのディレクトリに移動します。
+1. From the command line, create a new directory named **tasklist** and switch to that directory.  
 
-2. 次のコマンドを入力して、Express モジュールをインストールします。
+2. Enter the following command to install the Express module.
 
-		npm install express-generator@4.2.0 -g
+        npm install express-generator@4.2.0 -g
 
-    オペレーティング システムによっては、コマンドの前に 「sudo」を入力することが必要な場合があります。
+    Depending on the operating system, you may need to put 'sudo' before the command:
 
-		sudo npm install express-generator@4.2.0 -g
+        sudo npm install express-generator@4.2.0 -g
 
-    出力は次の例のようになります。
+    The output appears similar to the following example:
 
-		express-generator@4.2.0 /usr/local/lib/node_modules/express-generator
-		├── mkdirp@0.3.5
-		└── commander@1.3.2 (keypress@0.1.0)
+        express-generator@4.2.0 /usr/local/lib/node_modules/express-generator
+        ├── mkdirp@0.3.5
+        └── commander@1.3.2 (keypress@0.1.0)
 
-	> [AZURE.NOTE] "-g" パラメーターにより、モジュールがグローバルにインストールされます。これにより、追加のパス情報を入力しなくても、**express** を使用して Web アプリのスキャフォールディングを生成できます。
+    > [AZURE.NOTE] The '-g' parameter installs the module globally. That way, we can use **express** to generate web app scaffolding without having to type in additional path information.
 
-4. アプリケーションのスキャフォールディングを作成するには、**express** コマンドを入力します。
+4. To create the scaffolding for the application, enter the **express** command:
 
         express
 
-	このコマンドの出力は次の例のようになります。
+    The output of this command appears similar to the following example:
 
-		   create : .
-		   create : ./package.json
-		   create : ./app.js
-		   create : ./public
-		   create : ./public/images
-		   create : ./routes
-		   create : ./routes/index.js
-		   create : ./routes/users.js
-		   create : ./public/stylesheets
-		   create : ./public/stylesheets/style.css
-		   create : ./views
-		   create : ./views/index.jade
-		   create : ./views/layout.jade
-		   create : ./views/error.jade
-		   create : ./public/javascripts
-		   create : ./bin
-		   create : ./bin/www
+           create : .
+           create : ./package.json
+           create : ./app.js
+           create : ./public
+           create : ./public/images
+           create : ./routes
+           create : ./routes/index.js
+           create : ./routes/users.js
+           create : ./public/stylesheets
+           create : ./public/stylesheets/style.css
+           create : ./views
+           create : ./views/index.jade
+           create : ./views/layout.jade
+           create : ./views/error.jade
+           create : ./public/javascripts
+           create : ./bin
+           create : ./bin/www
 
-		   install dependencies:
-		     $ cd . && npm install
+           install dependencies:
+             $ cd . && npm install
 
-		   run the app:
-		     $ DEBUG=my-application ./bin/www
+           run the app:
+             $ DEBUG=my-application ./bin/www
 
-	**tasklist** ディレクトリに、複数の新しいディレクトリとファイルが作成されています。
+    You now have several new directories and files in the **tasklist** directory.
 
-### 追加モジュールをインストールする
+### <a name="install-additional-modules"></a>Install additional modules
 
-**express** によって作成されるファイルの 1 つに **package.json** があります。このファイルには、モジュールの依存関係のリストが含まれます。後でアプリケーションを App Service Web Apps にデプロイするときに、このファイルによって Azure にインストールする必要があるモジュールが特定されます。
+One of the files that **express** creates is **package.json**. This file contains a list of module dependencies. Later, when you deploy the application to App Service Web Apps, this file determines which modules need to be installed on Azure.
 
-コマンド ラインで次のコマンドを入力して、**package.json** ファイルに記述されたモジュールをインストールします。場合によっては、"sudo" を使用する必要があります。
+From the command-line, enter the following command to install the modules described in the **package.json** file. You may need to use 'sudo'.
 
     npm install
 
-このコマンドの出力は次の例のようになります。
+The output of this command appears similar to the following example:
 
-	debug@0.7.4 node_modules\debug
+    debug@0.7.4 node_modules\debug
 
-	cookie-parser@1.0.1 node_modules\cookie-parser
-	├── cookie-signature@1.0.3
-	└── cookie@0.1.0
+    cookie-parser@1.0.1 node_modules\cookie-parser
+    ├── cookie-signature@1.0.3
+    └── cookie@0.1.0
 
     [...]
 
 
-次に、次のコマンドを入力して、[azure]、[node-uuid]、[nconf]、[async] の各モジュールをインストールします。
+Next, enter the following command to install the [azure], [node-uuid], [nconf] and [async] modules:
 
-	npm install azure-storage node-uuid async nconf --save
+    npm install azure-storage node-uuid async nconf --save
 
-**--save** フラグにより、これらのモジュールのエントリが **package.json** ファイルに追加されます。
+The **--save** flag adds entries for these modules to the **package.json** file.
 
-このコマンドの出力は次の例のようになります。
+The output of this command appears similar to the following example:
 
-	async@0.9.0 node_modules\async
+    async@0.9.0 node_modules\async
 
-	node-uuid@1.4.1 node_modules\node-uuid
+    node-uuid@1.4.1 node_modules\node-uuid
 
-	nconf@0.6.9 node_modules\nconf
-	├── ini@1.2.1
-	├── async@0.2.9
-	└── optimist@0.6.0 (wordwrap@0.0.2, minimist@0.0.10)
+    nconf@0.6.9 node_modules\nconf
+    ├── ini@1.2.1
+    ├── async@0.2.9
+    └── optimist@0.6.0 (wordwrap@0.0.2, minimist@0.0.10)
 
-	[...]
+    [...]
 
 
-## アプリケーションを作成する
+## <a name="create-the-application"></a>Create the application
 
-これで、アプリケーションを作成する準備ができました。
+Now we're ready to build the application.
 
-### モデルの作成
+### <a name="create-a-model"></a>Create a model
 
-"モデル" は、アプリケーションでデータを表すオブジェクトです。このアプリケーションの場合、To Do リストの項目を表す Task オブジェクトが唯一のモデルです。Task には次のフィールドがあります。
+A *model* is an object that represents the data in your application. For the application, the only model is a task object, which represents an item in the to-do list. Tasks will have the following fields:
 
 - PartitionKey
 - RowKey
-- name (文字列)
-- category (文字列)
-- completed (ブール値)
+- name (string)
+- category (string)
+- completed (Boolean)
 
-**PartitionKey** と **RowKey** は、Table サービスでテーブル キーとして使用されます。詳細については、「[Table サービス データ モデルについて](https://msdn.microsoft.com/library/azure/dd179338.aspx)」を参照してください。
+**PartitionKey** and **RowKey** are used by the Table Service as table keys. For more information, see [Understanding the Table Service data model](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 
-1. **tasklist** ディレクトリ内に、**models** という名前の新しいディレクトリを作成します。
+1. In the **tasklist** directory, create a new directory named **models**.
 
-2. **models** ディレクトリ内に、**task.js** という名前の新しいファイルを作成します。このファイルには、アプリケーションで作成されるタスクのモデルが格納されます。
+2. In the **models** directory, create a new file named **task.js**. This file will contain the model for the tasks created by your application.
 
-3. **task.js** ファイルの先頭に、必要なライブラリを参照する次のコードを追加します。
+3. At the beginning of the **task.js** file, add the following code to reference required libraries:
 
         var azure = require('azure-storage');
-  		var uuid = require('node-uuid');
-		var entityGen = azure.TableUtilities.entityGenerator;
+        var uuid = require('node-uuid');
+        var entityGen = azure.TableUtilities.entityGenerator;
 
-4. Task オブジェクトを定義し、エクスポートする次のコードを追加します。このオブジェクトは、テーブルへの接続を処理します。
+4. Add the following code to define and export the Task object. This object is responsible for connecting to the table.
 
-  		module.exports = Task;
+        module.exports = Task;
 
-		function Task(storageClient, tableName, partitionKey) {
-		  this.storageClient = storageClient;
-		  this.tableName = tableName;
-		  this.partitionKey = partitionKey;
-		  this.storageClient.createTableIfNotExists(tableName, function tableCreated(error) {
-		    if(error) {
-		      throw error;
-		    }
-		  });
-		};
+        function Task(storageClient, tableName, partitionKey) {
+          this.storageClient = storageClient;
+          this.tableName = tableName;
+          this.partitionKey = partitionKey;
+          this.storageClient.createTableIfNotExists(tableName, function tableCreated(error) {
+            if(error) {
+              throw error;
+            }
+          });
+        };
 
-5. Task オブジェクトの追加のメソッドを定義する次のコードを追加します。このメソッドによって、テーブルに格納されたデータを操作できます。
+5. Add the following code to define additional methods on the Task object, which allow interactions with data stored in the table:
 
-		Task.prototype = {
-		  find: function(query, callback) {
-		    self = this;
-		    self.storageClient.queryEntities(this.tableName, query, null, function entitiesQueried(error, result) {
-		      if(error) {
-		        callback(error);
-		      } else {
-		        callback(null, result.entries);
-		      }
-		    });
-		  },
+        Task.prototype = {
+          find: function(query, callback) {
+            self = this;
+            self.storageClient.queryEntities(this.tableName, query, null, function entitiesQueried(error, result) {
+              if(error) {
+                callback(error);
+              } else {
+                callback(null, result.entries);
+              }
+            });
+          },
 
-		  addItem: function(item, callback) {
-		    self = this;
-		    // use entityGenerator to set types
-			// NOTE: RowKey must be a string type, even though
+          addItem: function(item, callback) {
+            self = this;
+            // use entityGenerator to set types
+            // NOTE: RowKey must be a string type, even though
             // it contains a GUID in this example.
-		    var itemDescriptor = {
-		      PartitionKey: entityGen.String(self.partitionKey),
-		      RowKey: entityGen.String(uuid()),
-		      name: entityGen.String(item.name),
-		      category: entityGen.String(item.category),
-		      completed: entityGen.Boolean(false)
-		    };
-		    self.storageClient.insertEntity(self.tableName, itemDescriptor, function entityInserted(error) {
-		      if(error){  
-		        callback(error);
-		      }
-		      callback(null);
-		    });
-		  },
+            var itemDescriptor = {
+              PartitionKey: entityGen.String(self.partitionKey),
+              RowKey: entityGen.String(uuid()),
+              name: entityGen.String(item.name),
+              category: entityGen.String(item.category),
+              completed: entityGen.Boolean(false)
+            };
+            self.storageClient.insertEntity(self.tableName, itemDescriptor, function entityInserted(error) {
+              if(error){  
+                callback(error);
+              }
+              callback(null);
+            });
+          },
 
-		  updateItem: function(rKey, callback) {
-		    self = this;
-		    self.storageClient.retrieveEntity(self.tableName, self.partitionKey, rKey, function entityQueried(error, entity) {
-		      if(error) {
-		        callback(error);
-		      }
-		      entity.completed._ = true;
-		      self.storageClient.updateEntity(self.tableName, entity, function entityUpdated(error) {
-		        if(error) {
-		          callback(error);
-		        }
-		        callback(null);
-		      });
-		    });
-		  }
-		}
+          updateItem: function(rKey, callback) {
+            self = this;
+            self.storageClient.retrieveEntity(self.tableName, self.partitionKey, rKey, function entityQueried(error, entity) {
+              if(error) {
+                callback(error);
+              }
+              entity.completed._ = true;
+              self.storageClient.updateEntity(self.tableName, entity, function entityUpdated(error) {
+                if(error) {
+                  callback(error);
+                }
+                callback(null);
+              });
+            });
+          }
+        }
 
-6. **task.js** ファイルを保存して閉じます。
+6. Save and close the **task.js** file.
 
-### コントローラーの作成
+### <a name="create-a-controller"></a>Create a controller
 
-*コント ローラー*は、HTTP 要求を処理し、HTML 応答を表示します。
+A *controller* handles HTTP requests and renders the HTML response.
 
-1. **tasklist/routes** ディレクトリに **tasklist.js** という名前の新しいファイルを作成し、テキスト エディターで開きます。
+1. In the **tasklist/routes** directory, create a new file named **tasklist.js** and open it in a text editor.
 
-2. 次のコードを **tasklist.js** に追加します。これによって、**tasklist.js** で使用される azure モジュールと async モジュールが読み込まれます。また、**TaskList** 関数が定義されます。先ほど定義した **Task** オブジェクトのインスタンスがこの関数に渡されます。
+2. Add the following code to **tasklist.js**. This loads the azure and async modules, which are used by **tasklist.js**. This also defines the **TaskList** function, which is passed an instance of the **Task** object we defined earlier:
 
-		var azure = require('azure-storage');
-		var async = require('async');
+        var azure = require('azure-storage');
+        var async = require('async');
 
-		module.exports = TaskList;
+        module.exports = TaskList;
 
-3. **TaskList** オブジェクトを定義します。
+3. Define a **TaskList** object.
 
-		function TaskList(task) {
-		  this.task = task;
-		}
-
-
-4. **TaskList** に次のメソッドを追加します。
-
-		TaskList.prototype = {
-		  showTasks: function(req, res) {
-		    self = this;
-		    var query = new azure.TableQuery()
-		      .where('completed eq ?', false);
-		    self.task.find(query, function itemsFound(error, items) {
-		      res.render('index',{title: 'My ToDo List ', tasks: items});
-		    });
-		  },
-
-		  addTask: function(req,res) {
-		    var self = this;
-		    var item = req.body.item;
-		    self.task.addItem(item, function itemAdded(error) {
-		      if(error) {
-		        throw error;
-		      }
-		      res.redirect('/');
-		    });
-		  },
-
-		  completeTask: function(req,res) {
-		    var self = this;
-		    var completedTasks = Object.keys(req.body);
-		    async.forEach(completedTasks, function taskIterator(completedTask, callback) {
-		      self.task.updateItem(completedTask, function itemsUpdated(error) {
-		        if(error){
-		          callback(error);
-		        } else {
-		          callback(null);
-		        }
-		      });
-		    }, function goHome(error){
-		      if(error) {
-		        throw error;
-		      } else {
-		       res.redirect('/');
-		      }
-		    });
-		  }
-		}
+        function TaskList(task) {
+          this.task = task;
+        }
 
 
-### app.js の変更
+4. Add the following methods to **TaskList**:
 
-1. **tasklist** ディレクトリの **app.js** ファイルを開きます。このファイルは、先ほど **express** コマンドを実行することによって作成されたものです。
+        TaskList.prototype = {
+          showTasks: function(req, res) {
+            self = this;
+            var query = new azure.TableQuery()
+              .where('completed eq ?', false);
+            self.task.find(query, function itemsFound(error, items) {
+              res.render('index',{title: 'My ToDo List ', tasks: items});
+            });
+          },
 
-2. ファイルの先頭に次のコードを追加します。このコードは、azure モジュールを読み込み、テーブル名とパーティション キーを設定し、この例で使用するストレージ資格情報を設定します。
+          addTask: function(req,res) {
+            var self = this;
+            var item = req.body.item;
+            self.task.addItem(item, function itemAdded(error) {
+              if(error) {
+                throw error;
+              }
+              res.redirect('/');
+            });
+          },
 
-		var azure = require('azure-storage');
-		var nconf = require('nconf');
-		nconf.env()
-		     .file({ file: 'config.json', search: true });
-		var tableName = nconf.get("TABLE_NAME");
-		var partitionKey = nconf.get("PARTITION_KEY");
-		var accountName = nconf.get("STORAGE_NAME");
-		var accountKey = nconf.get("STORAGE_KEY");
-
-	> [AZURE.NOTE] nconf は、環境変数または後で作成する **config.json** ファイルから構成値を読み込みます。
-
-3. app.js ファイル内で、次の行が表示されるまで下へスクロールします。
-
-		app.use('/', routes);
-		app.use('/users', users);
-
-	これらの行を下のコードに置き換えます。これにより、ストレージ アカウントへの接続を使って、<strong>Task</strong> のインスタンスが初期化されます。このインスタンスが <strong>TaskList</strong> に渡されます。TaskList はこれを使用して Table サービスとやり取りします。
-
-		var TaskList = require('./routes/tasklist');
-		var Task = require('./models/task');
-		var task = new Task(azure.createTableService(accountName, accountKey), tableName, partitionKey);
-		var taskList = new TaskList(task);
-
-		app.get('/', taskList.showTasks.bind(taskList));
-		app.post('/addtask', taskList.addTask.bind(taskList));
-		app.post('/completetask', taskList.completeTask.bind(taskList));
-
-4. **app.js** ファイルを保存します。
-
-### index ビューの変更
-
-1. テキスト エディターで **tasklist/views/index.jade** ファイルを開きます。
-
-2. ファイルの内容全体を次のコードに置き換えます。これにより、既存のタスクを表示するビューが定義されます。このビューには、新しいタスクを追加し、既存のタスクを完了済みとしてマークするためのフォームが含まれます。
-
-		extends layout
-
-		block content
-		  h1= title
-		  br
-
-		  form(action="/completetask", method="post")
-		    table.table.table-striped.table-bordered
-		      tr
-		        td Name
-		        td Category
-		        td Date
-		        td Complete
-		      if (typeof tasks === "undefined")
-		        tr
-		          td
-		      else
-		        each task in tasks
-		          tr
-		            td #{task.name._}
-		            td #{task.category._}
-		            - var day   = task.Timestamp._.getDate();
-		            - var month = task.Timestamp._.getMonth() + 1;
-		            - var year  = task.Timestamp._.getFullYear();
-		            td #{month + "/" + day + "/" + year}
-		            td
-		              input(type="checkbox", name="#{task.RowKey._}", value="#{!task.completed._}", checked=task.completed._)
-		    button.btn(type="submit") Update tasks
-		  hr
-		  form.well(action="/addtask", method="post")
-		    label Item Name:
-		    input(name="item[name]", type="textbox")
-		    label Item Category:
-		    input(name="item[category]", type="textbox")
-		    br
-		    button.btn(type="submit") Add item
-
-3. **index.jade** ファイルを保存して閉じます。
-
-### グローバル レイアウトの変更
-
-**views** ディレクトリの **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートです。この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使用するようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web アプリを簡単にデザインできるツールキットです。
-
-[Twitter Bootstrap](http://getbootstrap.com/) のファイルをダウンロードして展開します。Bootstrap の **css** フォルダーから **bootstrap.min.css** ファイルをアプリケーションの **public/stylesheets** ディレクトリにコピーします。
-
-**views** フォルダーの **layout.jade** を開き、内容全体を次のコードに置き換えます。
-
-	doctype html
-	html
-	  head
-	    title= title
-	    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-	    link(rel='stylesheet', href='/stylesheets/style.css')
-	  body.app
-	    nav.navbar.navbar-default
-	      div.navbar-header
-	      a.navbar-brand(href='/') My Tasks
-	    block content
-
-### config ファイルの作成
-
-アプリケーションをローカルで実行するために、Azure Storage の資格情報を config ファイルに追加します。次の JSON が含まれた **config.json** という名前のファイルを作成します。
-
-	{
-		"STORAGE_NAME": "<storage account name>",
-		"STORAGE_KEY": "<storage access key>",
-		"PARTITION_KEY": "mytasks",
-		"TABLE_NAME": "tasks"
-	}
-
-**storage account name** を以前に作成したストレージ アカウントの名前に置き換え、**storage access key** をストレージ アカウントのプライマリ アクセス キーに置き換えます。次に例を示します。
-
-	{
-	    "STORAGE_NAME": "nodejsappstorage",
-	    "STORAGE_KEY": "KG0oDd..."
-	    "PARTITION_KEY": "mytasks",
-	    "TABLE_NAME": "tasks"
-	}
-
-次のように、**tasklist** ディレクトリより "1 つ上位のディレクトリ レベル" にこのファイルを保存します。
-
-	parent/
-	  |-- config.json
-	  |-- tasklist/
-
-これは、公開される可能性のあるソース コントロールに config ファイルがチェックインされないようにするためです。アプリを Azure にデプロイするときは、config ファイルではなく環境変数を使用します。
+          completeTask: function(req,res) {
+            var self = this;
+            var completedTasks = Object.keys(req.body);
+            async.forEach(completedTasks, function taskIterator(completedTask, callback) {
+              self.task.updateItem(completedTask, function itemsUpdated(error) {
+                if(error){
+                  callback(error);
+                } else {
+                  callback(null);
+                }
+              });
+            }, function goHome(error){
+              if(error) {
+                throw error;
+              } else {
+               res.redirect('/');
+              }
+            });
+          }
+        }
 
 
-## ローカルでアプリケーションを実行する
+### <a name="modify-app.js"></a>Modify app.js
 
-ローカル コンピューターでアプリケーションをテストするには、次の手順を実行します。
+1. From the **tasklist** directory, open the **app.js** file. This file was created earlier by running the **express** command.
 
-1. コマンド ラインで、**tasklist** ディレクトリに移動します。
+2. At the beginning of the file, add the following to load the azure module, set the table name, partition key, and set the storage credentials used by this example:
 
-2. 次のコマンドを使用して、ローカルでアプリケーションを起動します。
+        var azure = require('azure-storage');
+        var nconf = require('nconf');
+        nconf.env()
+             .file({ file: 'config.json', search: true });
+        var tableName = nconf.get("TABLE_NAME");
+        var partitionKey = nconf.get("PARTITION_KEY");
+        var accountName = nconf.get("STORAGE_NAME");
+        var accountKey = nconf.get("STORAGE_KEY");
+
+    > [AZURE.NOTE] nconf will load the configuration values from either environment variables or the **config.json** file, which we will create later.
+
+3. In the app.js file, scroll down to where you see the following line:
+
+        app.use('/', routes);
+        app.use('/users', users);
+
+    Replace the above lines with the code shown below. This will initialize an instance of <strong>Task</strong> with a connection to your storage account. This is passed to the <strong>TaskList</strong>, which will use it to communicate with the Table service:
+
+        var TaskList = require('./routes/tasklist');
+        var Task = require('./models/task');
+        var task = new Task(azure.createTableService(accountName, accountKey), tableName, partitionKey);
+        var taskList = new TaskList(task);
+
+        app.get('/', taskList.showTasks.bind(taskList));
+        app.post('/addtask', taskList.addTask.bind(taskList));
+        app.post('/completetask', taskList.completeTask.bind(taskList));
+
+4. Save the **app.js** file.
+
+### <a name="modify-the-index-view"></a>Modify the index view
+
+1. Open the **tasklist/views/index.jade** file in a text editor.
+
+2. Replace the entire contents of the file with the following code. This defines a view that displays existing tasks and includes a form for adding new tasks and marking existing ones as completed.
+
+        extends layout
+
+        block content
+          h1= title
+          br
+
+          form(action="/completetask", method="post")
+            table.table.table-striped.table-bordered
+              tr
+                td Name
+                td Category
+                td Date
+                td Complete
+              if (typeof tasks === "undefined")
+                tr
+                  td
+              else
+                each task in tasks
+                  tr
+                    td #{task.name._}
+                    td #{task.category._}
+                    - var day   = task.Timestamp._.getDate();
+                    - var month = task.Timestamp._.getMonth() + 1;
+                    - var year  = task.Timestamp._.getFullYear();
+                    td #{month + "/" + day + "/" + year}
+                    td
+                      input(type="checkbox", name="#{task.RowKey._}", value="#{!task.completed._}", checked=task.completed._)
+            button.btn(type="submit") Update tasks
+          hr
+          form.well(action="/addtask", method="post")
+            label Item Name:
+            input(name="item[name]", type="textbox")
+            label Item Category:
+            input(name="item[category]", type="textbox")
+            br
+            button.btn(type="submit") Add item
+
+3. Save and close **index.jade** file.
+
+### <a name="modify-the-global-layout"></a>Modify the global layout
+
+The **layout.jade** file in the **views** directory is a global template for other **.jade** files. In this step you will modify it to use [Twitter Bootstrap](https://github.com/twbs/bootstrap), which is a toolkit that makes it easy to design a nice looking web app.
+
+Download and extract the files for [Twitter Bootstrap](http://getbootstrap.com/). Copy the **bootstrap.min.css** file from the Bootstrap **css** folder into the **public/stylesheets** directory of your application.
+
+From the **views** folder, open **layout.jade** and replace the entire contents with the following:
+
+    doctype html
+    html
+      head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+      body.app
+        nav.navbar.navbar-default
+          div.navbar-header
+          a.navbar-brand(href='/') My Tasks
+        block content
+
+### <a name="create-a-config-file"></a>Create a config file
+
+To run the app locally, we'll put Azure Storage credentials into a config file. Create a file named **config.json* *with the following JSON:
+
+    {
+        "STORAGE_NAME": "<storage account name>",
+        "STORAGE_KEY": "<storage access key>",
+        "PARTITION_KEY": "mytasks",
+        "TABLE_NAME": "tasks"
+    }
+
+Replace **storage account name** with the name of the storage account you created earlier, and replace **storage access key** with the primary access key for your storage account. For example:
+
+    {
+        "STORAGE_NAME": "nodejsappstorage",
+        "STORAGE_KEY": "KG0oDd..."
+        "PARTITION_KEY": "mytasks",
+        "TABLE_NAME": "tasks"
+    }
+
+Save this file *one directory level higher* than the **tasklist** directory, like this:
+
+    parent/
+      |-- config.json
+      |-- tasklist/
+
+The reason for doing this is to avoid checking the config file into source control, where it might become public. When we deploy the app to Azure, we will use environment variables instead of a config file.
+
+
+## <a name="run-the-application-locally"></a>Run the application locally
+
+To test the application on your local machine, perform the following steps:
+
+1. From the command-line, change directories to the **tasklist** directory.
+
+2. Use the following command to launch the application locally:
 
         npm start
 
-3. Web ブラウザーを開き、http://127.0.0.1:3000 にアクセスします。
+3. Open a web browser and navigate to http://127.0.0.1:3000.
 
-	次の例のような Web ページが表示されます。
+    A web page similar to the following example appears.
 
-	![空のタスク一覧が表示されている Web ページ][node-table-finished]
+    ![A webpage displaying an empty tasklist][node-table-finished]
 
-4. To Do リストの新しい項目を作成するには、名前とカテゴリを入力し、**[Add Item]** をクリックします。
+4. To create a new to-do item, enter a name and category and click **Add Item**. 
 
-6. タスクを完了としてマークするには、**[Complete]** をクリックし、**[Update Tasks]** をクリックします。
+6. To mark a task as complete, check **Complete** and click **Update Tasks**.
 
-	![タスク一覧の新しいアイテムの画像][node-table-list-items]
+    ![An image of the new item in the list of tasks][node-table-list-items]
 
-アプリケーションがローカルで実行されていても、データは Azure Table サービスに保存されています。
+Even though the application is running locally, it is storing the data in the Azure Table service.
 
-## Azure へのアプリケーションのデプロイ
+## <a name="deploy-your-application-to-azure"></a>Deploy your application to Azure
 
-このセクションの手順では、Azure コマンド ライン ツールを使用して App Service で新しい Web アプリを作成し、Git を使用してアプリケーションをデプロイします。これらの手順を実行するには、Azure サブスクリプションが必要です。
+The steps in this section use the Azure command-line tools to create a new web app in App Service, and then use Git to deploy your application. To perform these steps you must have an Azure subscription.
 
-> [AZURE.NOTE] これらの手順は、[Azure ポータル](https://portal.azure.com/)を使用して実行することもできます。「[Azure App Service での Node.js Web アプリの構築とデプロイ]」をご覧ください。
+> [AZURE.NOTE] These steps can also be performed by using the [Azure Portal](https://portal.azure.com/). See [Build and deploy a Node.js web app in Azure App Service].
 >
-> これが初めて作成した Web アプリの場合、Azure ポータルを使用してこのアプリケーションをデプロイする必要があります。
+> If this is the first web app you have created, you must use the Azure Portal to deploy this application.
 
-作業を始めるには、コマンド ラインで次のコマンドを入力して、[Azure CLI] をインストールします。
+To get started, install the [Azure CLI] by entering the following command from the command line:
 
-	npm install azure-cli -g
+    npm install azure-cli -g
 
-### 発行の設定をインポートする
+### <a name="import-publishing-settings"></a>Import publishing settings
 
-この手順では、サブスクリプションに関する情報が含まれたファイルをダウンロードします。
+In this step, you will download a file containing information about your subscription.
 
-1. 次のコマンドを入力します。
+1. Enter the following command:
 
-		azure account download
+        azure account download
 
-	このコマンドにより、ブラウザーが起動し、ダウンロード ページに移動します。ログインを求められた場合は、Azure サブスクリプションに関連付けられたアカウントを使用してログインします。
+    This command launches a browser and navigates to the download page. If prompted, log in with the account associated with your Azure subscription.
 
-	<!-- ![The download page][download-publishing-settings] -->
+    <!-- ![The download page][download-publishing-settings] -->
 
-	ファイルのダウンロードが自動的に開始されます。ダウンロードが開始されない場合は、ページの先頭にあるリンクをクリックして、手動でファイルをダウンロードできます。ファイルを保存し、ファイル パスを書き留めます。
+    The file download begins automatically; if it does not, you can click the link at the beginning of the page to manually download the file. Save the file and note the file path.
 
-2. 次のコマンドを入力して設定をインポートします。
+2. Enter the following command to import the settings:
 
-		azure account import <path-to-file>
+        azure account import <path-to-file>
 
-	そのためには、前の手順でダウンロードした発行設定ファイルのパスとファイル名を指定します。
+    Specify the path and file name of the publishing settings file you downloaded in the previous step.
 
-3. 設定をインポートしたら、不要になった発行設定ファイルを削除してください。このファイルはもう不要であり、Azure サブスクリプションに関する機密情報が含まれているためです。
+3. After the settings are imported, delete the publish settings file. It is no longer needed, and contains sensitive information regarding your Azure subscription.
 
-### App Service Web アプリの作成
+### <a name="create-an-app-service-web-app"></a>Create an App Service web app
 
-1. コマンド ラインで、**tasklist** ディレクトリに移動します。
+1. From the command-line, change directories to the **tasklist** directory.
 
-2. 次のコマンドを使用して、新しい Web アプリを作成します。
+2. Use the following command to create a new web app.
 
-		azure site create --git
+        azure site create --git
 
-	Web アプリの名前と場所の入力を求められます。一意の名前を指定し、Azure ストレージ アカウントと同じ地理的な場所を選択します。
+    You will be prompted for the web app name and location. Provide a unique name and select the same geographical location as your Azure Storage account.
 
-	`--git` パラメーターにより、Azure にこの Web アプリの Git リポジトリが作成されます。何も存在しない場合は、現在のディレクトリで Git リポジトリが初期化され、アプリケーションを Azure に発行する際に使用する "azure" という名前の [Git リモート]が追加されます。最後に、**web.config** ファイルが作成されます。このファイルには、ノード アプリケーションをホストするために Azure で使用される設定が含まれます。`--git` パラメーターを省略した場合でも、ディレクトリに Git リポジトリが含まれていれば、"azure" リモートが作成されます。
+    The `--git` parameter creates a Git repository on Azure for this web app. It also initializes a Git repository in the current directory if none exists, and adds a [Git remote] named 'azure', which is used to publish the application to Azure. Finally, it creates a **web.config** file, which contains settings used by Azure to host node applications. If you omit the `--git` parameter but the directory contains a Git repository, the command will still create the 'azure' remote.
 
-	このコマンドが完了すると、次のような出力が表示されます。**Website created at** で始まる行には、Web アプリの URL が含まれています。
+    Once this command has completed, you will see output similar to the following. Note that the line beginning with **Website created at** contains the URL for the web app.
 
-		info:   Executing command site create
-		help:   Need a site name
-		Name: TableTasklist
-		info:   Using location southcentraluswebspace
-		info:   Executing `git init`
-		info:   Creating default .gitignore file
-		info:   Creating a new web site
-		info:   Created web site at  tabletasklist.azurewebsites.net
-		info:   Initializing repository
-		info:   Repository initialized
-		info:   Executing `git remote add azure https://username@tabletasklist.azurewebsites.net/TableTasklist.git`
-		info:   site create command OK
+        info:   Executing command site create
+        help:   Need a site name
+        Name: TableTasklist
+        info:   Using location southcentraluswebspace
+        info:   Executing `git init`
+        info:   Creating default .gitignore file
+        info:   Creating a new web site
+        info:   Created web site at  tabletasklist.azurewebsites.net
+        info:   Initializing repository
+        info:   Repository initialized
+        info:   Executing `git remote add azure https://username@tabletasklist.azurewebsites.net/TableTasklist.git`
+        info:   site create command OK
 
-	> [AZURE.NOTE] これがサブスクリプションの最初の App Service Web アプリである場合、Azure ポータルを使用して Web アプリを作成するよう指示するメッセージが表示されます。詳細は、「[Azure App Service での Node.js Web アプリの構築とデプロイ]」を参照してください。
+    > [AZURE.NOTE] If this is the first App Service web app for your subscription, you will be instructed to use the Azure Portal to create the web app. For more information, see [Build and deploy a Node.js web app in Azure App Service].
 
-### 環境変数の設定
+### <a name="set-environment-variables"></a>Set environment variables
 
-この手順では、Azure の Web アプリの構成に環境変数を追加します。コマンド ラインで次のように入力します。
+In this step, you will add environment variables to your web app configuration on Azure.
+From the command line, enter the following:
 
-	azure site appsetting add
-		STORAGE_NAME=<storage account name>;STORAGE_KEY=<storage access key>;PARTITION_KEY=mytasks;TABLE_NAME=tasks
-
-
-**<storage account name>** を以前に作成したストレージ アカウントの名前に置き換え、**<storage access key>** をストレージ アカウントのプライマリ アクセス キーに置き換えます。(以前に作成した config.json ファイルと同じ値を使用します)。
-
-環境変数は、[Azure ポータル](https://portal.azure.com/)で設定することもできます。
-
-1.  **[参照]**、**[Web Apps]**、Web アプリ名の順にクリックして、Web アプリのブレードを開きます。
-
-1.  Web アプリのブレードで、**[すべての設定]**、**[アプリケーションの設定]** の順にクリックします。
-
-  	<!-- ![Top Menu](./media/storage-nodejs-use-table-storage-web-site/PollsCommonWebSiteTopMenu.png) -->
-
-1.  **[アプリ設定]** セクションまで下にスクロールし、キーと値のペアを追加します。
-
-  	![アプリ設定](./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png)
-
-1. **[保存]** をクリックします。
+    azure site appsetting add
+        STORAGE_NAME=<storage account name>;STORAGE_KEY=<storage access key>;PARTITION_KEY=mytasks;TABLE_NAME=tasks
 
 
-### アプリケーションの発行
+Replace **<storage account name>** with the name of the storage account you created earlier, and replace **<storage access key>** with the primary access key for your storage account. (Use the same values as the config.json file that you created earlier.)
 
-アプリを発行するには、コード ファイルを Git にコミットし、azure/master にプッシュします。
+Alternatively, you can set environment variables in the [Azure Portal](https://portal.azure.com/):
 
-1. デプロイメント資格情報を設定します。
+1.  Open the web app's blade by clicking **Browse** > **Web Apps** > your web app name.
 
-		azure site deployment user set <name> <password>
+1.  In your web app's blade, click **All Settings** > **Application Settings**.
 
-2. アプリケーション ファイルを追加し、コミットします。
+    <!-- ![Top Menu](./media/storage-nodejs-use-table-storage-web-site/PollsCommonWebSiteTopMenu.png) -->
 
-		git add .
-		git commit -m "adding files"
+1.  Scroll down to the **App settings** section and add the key/value pairs.
 
-3. コミットを App Service の Web アプリにプッシュします。
+    ![App Settings](./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png)
 
-		git push azure master
-
-	**master** をターゲット分岐として使用します。デプロイの最後に、次の例のようなステートメントが表示されます。
-
-		To https://username@tabletasklist.azurewebsites.net/TableTasklist.git
- 		 * [new branch]      master -> master
-
-4. プッシュ操作が完了したら、先ほど `azure create site` コマンドから返された Web アプリの URL を参照してアプリケーションを表示します。
+1. Click **SAVE**.
 
 
-## 次のステップ
+### <a name="publish-the-application"></a>Publish the application
 
-この記事の手順では、Table サービスを使用して情報を格納する方法を説明しましたが、MongoDB を使用することもできます。詳細については、[MongoDB を使用する Node.js Web アプリ]に関するページをご覧ください。
+To publish the app, commit the code files to Git and then push to azure/master.
 
-## その他のリソース
+1. Set your deployment credentials.
+
+        azure site deployment user set <name> <password>
+
+2. Add and commit your application files.
+
+        git add .
+        git commit -m "adding files"
+
+3. Push the commit to the App Service web app:
+
+        git push azure master
+
+    Use **master** as the target branch. At the end of the deployment, you see a statement similar to the following example:
+
+        To https://username@tabletasklist.azurewebsites.net/TableTasklist.git
+         * [new branch]      master -> master
+
+4. Once the push operation has completed, browse to the web app URL returned previously by the `azure create site` command to view your application.
+
+
+## <a name="next-steps"></a>Next steps
+
+While the steps in this article describe using the Table Service to store information, you can also use [MongoDB](https://mlab.com/azure/). 
+
+## <a name="additional-resources"></a>Additional resources
 
 [Azure CLI]
 
-## 変更内容
-* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
+## <a name="what's-changed"></a>What's changed
+* For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- URLs -->
 
-[Azure App Service での Node.js Web アプリの構築とデプロイ]: web-sites-nodejs-develop-deploy-mac.md
+[Build and deploy a Node.js web app in Azure App Service]: web-sites-nodejs-develop-deploy-mac.md
 [Azure Developer Center]: /develop/nodejs/
 
 [node]: http://nodejs.org
-[ノード]: http://nodejs.org
 [Git]: http://git-scm.com
 [Express]: http://expressjs.com
 [for free]: http://windowsazure.com
-[Git リモート]: http://git-scm.com/docs/git-remote
+[Git remote]: http://git-scm.com/docs/git-remote
 
-[MongoDB を使用する Node.js Web アプリ]: web-sites-nodejs-store-data-mongodb.md
 [Azure CLI]: ../xplat-cli-install.md
 
 [azure]: https://github.com/Azure/azure-sdk-for-node
@@ -636,4 +636,8 @@ Azure ストレージ アカウントを作成します。アプリでは、こ�
 [app-settings-save]: ./media/storage-nodejs-use-table-storage-web-site/savebutton.png
 [app-settings]: ./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

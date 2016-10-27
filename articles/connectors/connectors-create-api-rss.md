@@ -1,10 +1,10 @@
 <properties
 pageTitle="RSS | Microsoft Azure"
-description="Azure App Service を使用してロジック アプリを作成します。RSS コネクタを使用して、フィード アイテムを発行および取得できます。また、新しいアイテムがフィードに公開されたときに操作をトリガーすることもできます。"
-services="logic-apps"	
-documentationCenter=".net,nodejs,java" 	
-authors="msftman"	
-manager="erikre"	
+description="Create Logic apps with Azure App service. RSS connector allows the users to publish and retrieve feed items. It also allows the users to trigger operations when a new item is published to the feed."
+services="logic-apps"   
+documentationCenter=".net,nodejs,java"  
+authors="msftman"   
+manager="erikre"    
 editor=""
 tags="connectors" />
 
@@ -17,112 +17,116 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
-# RSS コネクタの使用
-RSS は、ブログ記事やニュースのヘッドラインのように、頻繁に更新されるコンテンツを発行するために使用する一般的な Web 配信形式です。多くのコンテンツ発行元は、ユーザーがサブスクライブすることができる RSS フィードを提供します。新しい項目を RSS フィードに発行するときに、RSS コネクタを使用してフィード情報を取得しフローをトリガーします。
 
->[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
+# <a name="get-started-with-the-rss-connector"></a>Get started with the RSS connector
+RSS is a popular web syndication format used to publish frequently updated content – like blog entries and news headlines.  Many content publishers provide an RSS feed to allow users to subscribe to it.  Use the RSS connector to retrieve feed information and trigger flows when new items are published in an RSS feed.
 
-まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
+>[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
 
-## トリガーとアクション
+You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-RSS コネクタは、アクションとして使用できます。RSS コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
+## <a name="triggers-and-actions"></a>Triggers and actions
 
- RSS コネクタでは、次のアクションやトリガーを使用できます。
+The RSS connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
 
-### RSS のアクション
-実行できるアクションは以下のとおりです。
+ The RSS connector has the following action(s) and/or trigger(s) available:
 
-|アクション|Description|
+### <a name="rss-actions"></a>RSS actions
+You can take these action(s):
+
+|Action|Description|
 |--- | ---|
-|[ListFeedItems](connectors-create-api-rss.md#listfeeditems)|すべての RSS フィード アイテムを取得します。|
-### RSS のトリガー
-次のイベントをリッスンできます。
+|[ListFeedItems](connectors-create-api-rss.md#listfeeditems)|Get all RSS feed items.|
+### <a name="rss-triggers"></a>RSS triggers
+You can listen for these event(s):
 
-|トリガー | Description|
+|Trigger | Description|
 |--- | ---|
-|新しいフィード アイテムが公開されたとき|新しいフィードが公開されたときに、ワークフローをトリガーします。|
+|When a new feed item published|Triggers a workflow when a new feed is published|
 
 
-## RSS への接続の作成
+## <a name="create-a-connection-to-rss"></a>Create a connection to RSS
 
->[AZURE.INCLUDE [RSS フィードへの接続を作成する手順](../../includes/connectors-create-api-rss.md)]
+>[AZURE.INCLUDE [Steps to create a connection to an RSS feed](../../includes/connectors-create-api-rss.md)]
 
->[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
+>[AZURE.TIP] You can use this connection in other logic apps.
 
-## RSS のリファレンス
-適用されるバージョン: 1.0
+## <a name="reference-for-rss"></a>Reference for RSS
+Applies to version: 1.0
 
-## OnNewFeed
-新しいフィード アイテムが公開されたとき: 新しいフィードが公開されたときにワークフローをトリガーします。
+## <a name="onnewfeed"></a>OnNewFeed
+When a new feed item published: Triggers a workflow when a new feed is published 
 
-```GET: /OnNewFeed```
+```GET: /OnNewFeed``` 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|feedUrl|string|○|query|なし|フィード URL|
+|feedUrl|string|yes|query|none|Feed url|
 
-#### 応答
+#### <a name="response"></a>Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|承認済み|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|default|操作に失敗しました。|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## ListFeedItems
-すべての RSS フィード アイテムの表示: すべての RSS フィード アイテムを取得します。
+## <a name="listfeeditems"></a>ListFeedItems
+List all RSS feed items.: Get all RSS feed items. 
 
-```GET: /ListFeedItems```
+```GET: /ListFeedItems``` 
 
-| 名前| データ型|必須|場所|既定値|Description|
+| Name| Data Type|Required|Located In|Default Value|Description|
 | ---|---|---|---|---|---|
-|feedUrl|string|○|query|なし|フィード URL|
+|feedUrl|string|yes|query|none|Feed url|
 
-#### 応答
+#### <a name="response"></a>Response
 
-|名前|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|承認済み|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました|
-|default|操作に失敗しました。|
+|202|Accepted|
+|400|Bad Request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not Found|
+|500|Internal Server Error. Unknown error occured|
+|default|Operation Failed.|
 
 
-## オブジェクト定義 
+## <a name="object-definitions"></a>Object definitions 
 
-### TriggerBatchResponse[FeedItem]
+### <a name="triggerbatchresponse[feeditem]"></a>TriggerBatchResponse[FeedItem]
 
 
-| プロパティ名 | データ型 | 必須 |
+| Property Name | Data Type | Required |
 |---|---|---|
-|値|array|なし |
+|value|array|No |
 
 
 
-### FeedItem
+### <a name="feeditem"></a>FeedItem
 
 
-| プロパティ名 | データ型 | 必須 |
+| Property Name | Data Type | Required |
 |---|---|---|
-|id|string|はい |
-|title|string|はい |
-|content|string|はい |
-|links|array|なし |
-|updatedOn|string|なし |
+|id|string|Yes |
+|title|string|Yes |
+|content|string|Yes |
+|links|array|No |
+|updatedOn|string|No |
 
 
-## 次のステップ
-[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next Steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Windows VM の拡張機能を使用したテンプレートの作成 |Microsoft Azure"
-   description="Windows VM の拡張機能を使用した Azure Resource Manager テンプレートの作成について説明します。"
+   pageTitle="Authoring Templates with Windows VM extensions | Microsoft Azure"
+   description="Learn about authoring Azure Resource Manager templates with extensions for Windows VMs"
    services="virtual-machines-windows"
    documentationCenter=""
    authors="kundanap"
@@ -17,37 +17,42 @@
    ms.date="03/29/2016"
    ms.author="kundanap"/>
 
-# Windows VM 拡張機能を使用した Azure Resource Manager テンプレートの作成
+
+# <a name="authoring-azure-resource-manager-templates-with-windows-vm-extensions"></a>Authoring Azure Resource Manager templates with Windows VM extensions
 
 [AZURE.INCLUDE [virtual-machines-common-extensions-authoring-templates](../../includes/virtual-machines-common-extensions-authoring-templates.md)]
 
-Azure PowerShell では、次の Azure PowerShell コマンドレットを実行します。
+From Azure PowerShell, run the following Azure PowerShell cmdlet:
 
       Get-AzureVMAvailableExtension
 
 
-このコマンドレットによって、発行元の名前、拡張機能名、バージョンが次のように返されます。
+This cmdlet returns the publisher name, extension name, and version as follows:
 
       Publisher                   : Microsoft.Azure.Extensions  
       ExtensionName               : DockerExtension
       Version                     : 1.0
 
-これら 3 つのプロパティはそれぞれ、前述のテンプレート スニペットに含まれる "publisher"、"type"、"typeHandlerVersion" に対応しています。
+These three properties map to "publisher", "type", and "typeHandlerVersion" respectively in the above template snippet.
 
->[AZURE.NOTE]常に拡張機能の最新バージョンを使用して最新機能を取得することをお勧めします。
+>[AZURE.NOTE]It's always recommended to use the latest extension version to get the most updated functionality.
 
-## 拡張機能構成パラメーターのスキーマの識別
+## <a name="identifying-the-schema-for-the-extension-configuration-parameters"></a>Identifying the schema for the extension configuration parameters
 
-拡張機能のテンプレートを作成する次の手順では、構成パラメーターを指定するための形式を特定します。それぞれの拡張機能では、独自のパラメーター セットがサポートされています。
+The next step with authoring an extension template is to identify the format for providing configuration parameters. Each extension supports its own set of parameters.
 
-Windows 拡張機能のサンプル構成については、[Windows 拡張機能のサンプル](virtual-machines-windows-extensions-configuration-samples.md)に関するページをご覧ください。
-
-
-VM の拡張機能を使用して完成したテンプレートを取得するには、以下を参照してください。
-
-[Windows VM のカスタム スクリプト拡張機能](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
+To look at sample configurations for Windows extensions, see [Windows extensions samples](virtual-machines-windows-extensions-configuration-samples.md).
 
 
-テンプレートを作成したら、Azure PowerShell を使用してそのテンプレートをデプロイできます。
+Please refer to the following to get a fully complete template with VM extensions.
 
-<!---HONumber=AcomDC_0601_2016-->
+[Custom Script Extension on a Windows VM](https://github.com/Azure/azure-quickstart-templates/blob/b1908e74259da56a92800cace97350af1f1fc32b/201-list-storage-keys-windows-vm/azuredeploy.json/)
+
+
+After authoring the template, you can deploy it using Azure PowerShell.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
    pageTitle="Publish-WebApplicationVM | Microsoft Azure"
-   description="仮想マシンに Web アプリケーションをデプロイする方法を学習します。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。"
+   description="Learn how to deploy a web application to a virtual machine. This script creates the required resources in your Azure subscription if they don't exist."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,9 +15,10 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# Publish-WebApplicationVM (Windows PowerShell スクリプト)
 
-仮想マシンに Web アプリケーションをデプロイします。このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
+# <a name="publish-webapplicationvm-(windows-powershell-script)"></a>Publish-WebApplicationVM (Windows PowerShell script)
+
+Deploys a web application to a virtual machine. The script creates the required resources in your Azure subscription if they don't exist.
 
 ```
 Publish-WebApplicationVM
@@ -30,95 +31,95 @@ Publish-WebApplicationVM
 -Verbose
 ```
 
-### 構成
+### <a name="configuration"></a>Configuration
 
-デプロイの詳細が記述されている JSON 構成ファイルへのパス。
+The path to the JSON configuration file that describes the details of the deployment.
 
-|別名|なし|
+|Aliases|none|
 |---|---|
-|必須|true|
-|位置|named|
-|既定値|なし|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Required?|true|
+|Position|named|
+|Default value|none|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-### SubscriptionName
+### <a name="subscriptionname"></a>SubscriptionName
 
-仮想マシンを作成する Azure サブスクリプションの名前。
+The name of the Azure subscription in which you want to create the virtual machine.
 
-|別名|なし|
+|Aliases|none|
 |---|---|
-|必須|false|
-|位置|named|
-|既定値|サブスクリプション ファイルで最初のサブスクリプションを使用する|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Required?|false|
+|Position|named|
+|Default value|Uses the first subscription in the subscription file|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-### WebDeployPackage
+### <a name="webdeploypackage"></a>WebDeployPackage
 
-仮想マシンに発行する Web デプロイ パッケージへのパス。Visual Studio で Web の発行ウィザードを使用して、このパッケージを作成できます。詳細については、「[方法: Visual Studio で Web デプロイ パッケージを作成する](https://msdn.microsoft.com/library/dd465323.aspx)」をご覧ください。
+The path to the web deployment package to publish to the virtual machine. You can create this package by using the Publish Web wizard in Visual Studio. See [How to: Create a Web Deployment Package in Visual Studio](https://msdn.microsoft.com/library/dd465323.aspx).
 
-|別名|なし|
+|Aliases|none|
 |---|---|
-|必須|false|
-|位置|named|
-|既定値|なし|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Required?|false|
+|Position|named|
+|Default value|none|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-### AllowUntrusted
+### <a name="allowuntrusted"></a>AllowUntrusted
 
-True の場合は、信頼されたルート証明機関によって署名されていない証明書の使用が許可されます。
+If true, allow the use of certificates that aren't signed by a trusted root authority.
 
-|別名|なし|
+|Aliases|none|
 |---|---|
-|必須|false|
-|位置|named|
-|既定値|false|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Required?|false|
+|Position|named|
+|Default value|false|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-### VMPassword
+### <a name="vmpassword"></a>VMPassword
 
-仮想マシンアカウントの資格情報。例: -VMPassword @{Name = "admin"; Password = "password"}
+The credentials for the virtual machine account. Example: -VMPassword @{Name = "admin"; Password = "password"}
 
-|別名|なし|
+|Aliases|none|
 |---|---|
-|必須|false|
-|位置|named|
-|既定値|なし|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Required?|false|
+|Position|named|
+|Default value|none|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-### DatabaseServerPassword
+### <a name="databaseserverpassword"></a>DatabaseServerPassword
 
-Azure での SQL Database の資格情報。例: -DatabaseServerPassword @{Name = "admin"; Password = "password"}
+The credentials for the SQL database in Azure. Example: -DatabaseServerPassword @{Name = "admin"; Password = "password"}
 
-|別名|なし|
+|Aliases|none|
 |---|---|
-|必須|false|
-|位置|named|
-|既定値|なし|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Required?|false|
+|Position|named|
+|Default value|none|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-### SendHostMessagesToOutput
+### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
 
-true の場合、スクリプトからのメッセージは出力ストリームに出力されます。
+If true, print messages from the script to the output stream.
 
-|別名|なし|
+|Aliases|none|
 |---|---|
-|必須|false|
-|位置|named|
-|既定値|false|
-|パイプライン入力を許可する|false|
-|ワイルドカード文字を許可する|false|
+|Required?|false|
+|Position|named|
+|Default value|false|
+|Accept pipeline input?|false|
+|Accept wildcard characters?|false|
 
-## 解説
+## <a name="remarks"></a>Remarks
 
-スクリプトを使用して開発とテストの環境を作成する方法の詳細については、「[Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行](vs-azure-tools-publishing-using-powershell-scripts.md)」をご覧ください。
+For a complete explanation of how to use the script to create Dev and Test environments, see [Using Windows PowerShell Scripts to Publish to Dev and Test Environments](vs-azure-tools-publishing-using-powershell-scripts.md).
 
-JSON 構成ファイルではデプロイ対象の詳細が指定されます。これには、仮想マシンの名前、アフィニティ グループ、VHD イメージ、およびサイズなど、プロジェクトを作成したときに指定した情報が含まれています。また、仮想マシン上のエンドポイント、プロビジョニングするデータベース (該当する場合)、Web デプロイメント パラメーターも含まれています。次のコードは JSON 構成ファイルの例を示しています。
+The JSON configuration file specifies the details of what is to be deployed. It includes the information that you specified when you created the project, such as the name, affinity group, VHD image, and size of the virtual machine. It also includes the endpoints on the virtual machine, the databases to provision, if any, and web deployment parameters. The following code shows an example JSON configuration file:
 
 ```
 {
@@ -187,6 +188,10 @@ JSON 構成ファイルではデプロイ対象の詳細が指定されます。
 }
 ```
 
-プロビジョニング対象が変更されるように JSON 構成ファイルを編集できます。仮想マシンとクラウド サービスは必須ですが、データベースのセクションは省略可能です。
+You can edit the JSON configuration file to change what is provisioned. A virtual machine and a cloud service are required, but the database section is optional.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,87 +1,88 @@
 <properties
-	pageTitle="BLOB ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト) | Microsoft Azure"
-	description="Visual Studio 接続済みサービスを使用して Azure Storage に接続した後、Web ジョブ プロジェクトで BLOB ストレージの使用を開始する方法について説明します。"
-	services="storage"
-	documentationCenter=""
-	authors="TomArcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="Get started with blob storage and Visual Studio connected services (WebJob projects) | Microsoft Azure"
+    description="How to get started using Blob storage in a WebJob project after connecting to an Azure storage using Visual Studio connected services."
+    services="storage"
+    documentationCenter=""
+    authors="TomArcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="storage"
-	ms.workload="web"
-	ms.tgt_pltfrm="vs-getting-started"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/18/2016"
-	ms.author="tarcher"/>
+    ms.service="storage"
+    ms.workload="web"
+    ms.tgt_pltfrm="vs-getting-started"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/18/2016"
+    ms.author="tarcher"/>
 
-# Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
+
+# <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-(webjob-projects)"></a>Get started with Azure Blob storage and Visual Studio connected services (WebJob projects)
 
 [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## 概要
+## <a name="overview"></a>Overview
 
-この記事では、Azure BLOB が作成または更新されたときにプロセスをトリガーする方法を示す C# コード サンプルについて説明します。コード サンプルでは [Web ジョブ SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) Version 1.x を使用しています。Visual Studio の **[接続済みサービスの追加]** ダイアログを使用して Web ジョブ プロジェクトにストレージ アカウントを追加すると、適切な Azure Storage NuGet パッケージがインストールされ、適切な .NET 参照がプロジェクトに追加され、App.config ファイルのストレージ アカウントの接続文字列が更新されます。
+This article provides C# code samples that show how to trigger a process when an Azure blob is created or updated. The code samples use the [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md) version 1.x. When you add a storage account to a WebJob project by using the Visual Studio **Add Connected Services** dialog, the appropriate Azure Storage NuGet package is installed, the appropriate .NET references are added to the project, and connection strings for the storage account are updated in the App.config file.
 
 
 
-## BLOB が作成または更新されたときに、関数を開始する方法
+## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>How to trigger a function when a blob is created or updated
 
-このセクションでは、**BlobTrigger** 属性を使用する方法を示しています。
+This section shows how to use the **BlobTrigger** attribute.
 
- **注:** Web ジョブ SDK は、ログ ファイルをスキャンして新しい blob や変更された blob を監視します。このプロセスは本質的に時間がかかります。関数は、blob が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります 。アプリケーションで、BLOB をすぐに処理する必要がある場合は、BLOB を作成する際にキュー メッセージを作成し、BLOB を処理する関数で **BlobTrigger** 属性の代わりにではなく、[QueueTrigger](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) 属性を使用することが推奨されます。
+ **Note:** The WebJobs SDK scans log files to watch for new or changed blobs. This process is inherently slow; a function might not get triggered until several minutes or longer after the blob is created.  If your application needs to process blobs immediately, the recommended method is to create a queue message when you create the blob, and use the [QueueTrigger](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#trigger) attribute instead of the **BlobTrigger** attribute on the function that processes the blob.
 
-### 拡張子を持つ BLOB 名の 1 つのプレース ホルダー  
+### <a name="single-placeholder-for-blob-name-with-extension"></a>Single placeholder for blob name with extension  
 
-次のコード サンプルは、 *入力*コンテナーに表示される テキスト BLOB を *出力*コンテナーにコピーします。
+The following code sample copies text blobs that appear in the *input* container to the *output* container:
 
-		public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
-		    [Blob("output/{name}")] out string output)
-		{
-		    output = input.ReadToEnd();
-		}
+        public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
+            [Blob("output/{name}")] out string output)
+        {
+            output = input.ReadToEnd();
+        }
 
-属性コンストラクターが、コンテナー名と BLOB 名のプレース ホルダーを指定する文字列パラメーターを取得します。たとえば、 *Blob1.txt* という名前の BLOB が *入力*コンテナーで作成されると、*Blob1.txt* という名前の BLOB が *出力*コンテナーに作成されます。
+The attribute constructor takes a string parameter that specifies the container name and a placeholder for the blob name. In this example, if a blob named *Blob1.txt* is created in the *input* container, the function creates a blob named *Blob1.txt* in the *output* container.
 
-次のコード サンプルに示すように、BLOB 名のプレース ホルダーを持つ名前のパターンを指定できます。
+You can specify a name pattern with the blob name placeholder, as shown in the following code sample:
 
-		public static void CopyBlob([BlobTrigger("input/original-{name}")] TextReader input,
-		    [Blob("output/copy-{name}")] out string output)
-		{
-		    output = input.ReadToEnd();
-		}
+        public static void CopyBlob([BlobTrigger("input/original-{name}")] TextReader input,
+            [Blob("output/copy-{name}")] out string output)
+        {
+            output = input.ReadToEnd();
+        }
 
-このコードは「元-」で始まる名前の BLOB のみをコピーします。たとえば、 *入力*コンテナーの *original-Blob1.txt* は、*出力*コンテナーの *copy-Blob1.txt* にコピーされます。
+This code copies only blobs that have names beginning with "original-". For example, *original-Blob1.txt* in the *input* container is copied to *copy-Blob1.txt* in the *output* container.
 
-名前に波括弧がある BLOB 名に新しいパターンを指定する必要がある場合は、波括弧を二重にします。たとえば、以下のような名前を持つ *イメージ*コンテナーに blob を見つける場合は、
+If you need to specify a name pattern for blob names that have curly braces in the name, double the curly braces. For example, if you want to find blobs in the *images* container that have names like this:
 
-		{20140101}-soundfile.mp3
+        {20140101}-soundfile.mp3
 
-これをパターンとして使用します。
+use this for your pattern:
 
-		images/{{20140101}}-{name}
+        images/{{20140101}}-{name}
 
-この例では、*名前* プレース ホルダーの値は、*soundfile.mp3* になります。
+In the example, the *name* placeholder value would be *soundfile.mp3*.
 
-### 別の BLOB 名と拡張子のプレース ホルダー
+### <a name="separate-blob-name-and-extension-placeholders"></a>Separate blob name and extension placeholders
 
-次のコード サンプルでは、*入力*コンテナーに表示される BLOB が *出力*コンテナーにコピーされる際にファイル拡張子を変更します。コードは、*入力* BLOB の拡張子をログに記録し、*出力* BLOB の拡張子を *.txt* に設定します。
+The following code sample changes the file extension as it copies blobs that appear in the *input* container to the *output* container. The code logs the extension of the *input* blob and sets the extension of the *output* blob to *.txt*.
 
-		public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
-		    [Blob("output/{name}.txt")] out string output,
-		    string name,
-		    string ext,
-		    TextWriter logger)
-		{
-		    logger.WriteLine("Blob name:" + name);
-		    logger.WriteLine("Blob extension:" + ext);
-		    output = input.ReadToEnd();
-		}
+        public static void CopyBlobToTxtFile([BlobTrigger("input/{name}.{ext}")] TextReader input,
+            [Blob("output/{name}.txt")] out string output,
+            string name,
+            string ext,
+            TextWriter logger)
+        {
+            logger.WriteLine("Blob name:" + name);
+            logger.WriteLine("Blob extension:" + ext);
+            output = input.ReadToEnd();
+        }
 
-## BLOB にバインドすることができる種類
+## <a name="types-that-you-can-bind-to-blobs"></a>Types that you can bind to blobs
 
-次の種類の **BlobTrigger** 属性を使用できます。
+You can use the **BlobTrigger** attribute on the following types:
 
 * **string**
 * **TextReader**
@@ -89,146 +90,150 @@
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
-* [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder) によって逆シリアル化されるその他の種類
+* Other types deserialized by [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
 
-Azure ストレージ アカウントを直接操作する場合は、メソッド シグネチャに **CloudStorageAccount** パラメーターを追加することもできます。
+If you want to work directly with the Azure storage account, you can also add a **CloudStorageAccount** parameter to the method signature.
 
-## 文字列にバインドすることによってテキスト BLOB のコンテンツを取得する
+## <a name="getting-text-blob-content-by-binding-to-string"></a>Getting text blob content by binding to string
 
-テキスト BLOB がある場合は、**BlobTrigger** を **string** パラメーターに適用できます。次のコード サンプルでは、テキスト BLOB を **logMessage** という名前の **string** パラメーターにバインドします。関数は、そのパラメーターを使用して Web ジョブ SDK のダッシュボードに、BLOB の内容を記述します。
+If text blobs are expected, **BlobTrigger** can be applied to a **string** parameter. The following code sample binds a text blob to a **string** parameter named **logMessage**. The function uses that parameter to write the contents of the blob to the WebJobs SDK dashboard.
 
-		public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
-		    string name,
-		    TextWriter logger)
-		{
-		     logger.WriteLine("Blob name: {0}", name);
-		     logger.WriteLine("Content:");
-		     logger.WriteLine(logMessage);
-		}
+        public static void WriteLog([BlobTrigger("input/{name}")] string logMessage,
+            string name,
+            TextWriter logger)
+        {
+             logger.WriteLine("Blob name: {0}", name);
+             logger.WriteLine("Content:");
+             logger.WriteLine(logMessage);
+        }
 
-## ICloudBlobStreamBinder を使用してシリアル化した BLOB の内容を取得する
+## <a name="getting-serialized-blob-content-by-using-icloudblobstreambinder"></a>Getting serialized blob content by using ICloudBlobStreamBinder
 
-次のコード サンプルでは、**ICloudBlobStreamBinder** を実装するクラスを使用して **BlobTrigger** 属性を有効化して BLOB を **WebImage** 型にバインドします。
+The following code sample uses a class that implements **ICloudBlobStreamBinder** to enable the **BlobTrigger** attribute to bind a blob to the **WebImage** type.
 
-		public static void WaterMark(
-		    [BlobTrigger("images3/{name}")] WebImage input,
-		    [Blob("images3-watermarked/{name}")] out WebImage output)
-		{
-		    output = input.AddTextWatermark("WebJobs SDK",
-		        horizontalAlign: "Center", verticalAlign: "Middle",
-		        fontSize: 48, opacity: 50);
-		}
-		public static void Resize(
-		    [BlobTrigger("images3-watermarked/{name}")] WebImage input,
-		    [Blob("images3-resized/{name}")] out WebImage output)
-		{
-		    var width = 180;
-		    var height = Convert.ToInt32(input.Height * 180 / input.Width);
-		    output = input.Resize(width, height);
-		}
+        public static void WaterMark(
+            [BlobTrigger("images3/{name}")] WebImage input,
+            [Blob("images3-watermarked/{name}")] out WebImage output)
+        {
+            output = input.AddTextWatermark("WebJobs SDK",
+                horizontalAlign: "Center", verticalAlign: "Middle",
+                fontSize: 48, opacity: 50);
+        }
+        public static void Resize(
+            [BlobTrigger("images3-watermarked/{name}")] WebImage input,
+            [Blob("images3-resized/{name}")] out WebImage output)
+        {
+            var width = 180;
+            var height = Convert.ToInt32(input.Height * 180 / input.Width);
+            output = input.Resize(width, height);
+        }
 
-**WebImage** バインド コードは、**ICloudBlobStreamBinder** から派生した **WebImageBinder** クラスに提供されます。
+The **WebImage** binding code is provided in a **WebImageBinder** class that derives from **ICloudBlobStreamBinder**.
 
-		public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
-		{
-		    public Task<WebImage> ReadFromStreamAsync(Stream input,
-		        System.Threading.CancellationToken cancellationToken)
-		    {
-		        return Task.FromResult<WebImage>(new WebImage(input));
-		    }
-		    public Task WriteToStreamAsync(WebImage value, Stream output,
-		        System.Threading.CancellationToken cancellationToken)
-		    {
-		        var bytes = value.GetBytes();
-		        return output.WriteAsync(bytes, 0, bytes.Length, cancellationToken);
-		    }
-		}
+        public class WebImageBinder : ICloudBlobStreamBinder<WebImage>
+        {
+            public Task<WebImage> ReadFromStreamAsync(Stream input,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                return Task.FromResult<WebImage>(new WebImage(input));
+            }
+            public Task WriteToStreamAsync(WebImage value, Stream output,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                var bytes = value.GetBytes();
+                return output.WriteAsync(bytes, 0, bytes.Length, cancellationToken);
+            }
+        }
 
-## 有害な BLOB の処理方法
+## <a name="how-to-handle-poison-blobs"></a>How to handle poison blobs
 
-**BlobTrigger** 関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。5 回目が失敗すると、SDK はメッセージは、 *webjobs-blobtrigger-poison* という名前のキューにメッセージを追加します。
+When a **BlobTrigger** function fails, the SDK calls it again, in case the failure was caused by a transient error. If the failure is caused by the content of the blob, the function fails every time it tries to process the blob. By default, the SDK calls a function up to 5 times for a given blob. If the fifth try fails, the SDK adds a message to a queue named *webjobs-blobtrigger-poison*.
 
-再試行回数の最大値の設定は変更可能です。 同じ [MaxDequeueCount](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) 設定は、有害な BLOB の処理と有害キュー メッセージの処理に使用されます。
+The maximum number of retries is configurable. The same [MaxDequeueCount](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#configqueue) setting is used for poison blob handling and poison queue message handling.
 
-有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
+The queue message for poison blobs is a JSON object that contains the following properties:
 
-* FunctionId (*{WebJob name}*.Functions.*{Function name}* の形式、たとえば、WebJob1.Functions.CopyBlob)
-* BLOB の種類 ("BlockBlob" か "PageBlob")
-* コンテナー名
+* FunctionId (in the format *{WebJob name}*.Functions.*{Function name}*, for example: WebJob1.Functions.CopyBlob)
+* BlobType ("BlockBlob" or "PageBlob")
+* ContainerName
 * BlobName
-* ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
+* ETag (a blob version identifier, for example: "0x8D1DC6E70A277EF")
 
-次のコード サンプルでは、**CopyBlob** 関数は、呼び出されるたびに障害が発生するコードを含んでいます。SDK は呼び出しを最大試行回数実行すると、メッセージが有害 BLOB キューに作成され、そのメッセージは、**LogPoisonBlob** 関数によって処理されます。
+In the following code sample, the **CopyBlob** function has code that causes it to fail every time it's called. After the SDK calls it for the maximum number of retries, a message is created on the poison blob queue, and that message is processed by the **LogPoisonBlob** function.
 
-		public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
-		    [Blob("textblobs/output-{name}")] out string output)
-		{
-		    throw new Exception("Exception for testing poison blob handling");
-		    output = input.ReadToEnd();
-		}
+        public static void CopyBlob([BlobTrigger("input/{name}")] TextReader input,
+            [Blob("textblobs/output-{name}")] out string output)
+        {
+            throw new Exception("Exception for testing poison blob handling");
+            output = input.ReadToEnd();
+        }
 
-		public static void LogPoisonBlob(
-		[QueueTrigger("webjobs-blobtrigger-poison")] PoisonBlobMessage message,
-		    TextWriter logger)
-		{
-		    logger.WriteLine("FunctionId: {0}", message.FunctionId);
-		    logger.WriteLine("BlobType: {0}", message.BlobType);
-		    logger.WriteLine("ContainerName: {0}", message.ContainerName);
-		    logger.WriteLine("BlobName: {0}", message.BlobName);
-		    logger.WriteLine("ETag: {0}", message.ETag);
-		}
+        public static void LogPoisonBlob(
+        [QueueTrigger("webjobs-blobtrigger-poison")] PoisonBlobMessage message,
+            TextWriter logger)
+        {
+            logger.WriteLine("FunctionId: {0}", message.FunctionId);
+            logger.WriteLine("BlobType: {0}", message.BlobType);
+            logger.WriteLine("ContainerName: {0}", message.ContainerName);
+            logger.WriteLine("BlobName: {0}", message.BlobName);
+            logger.WriteLine("ETag: {0}", message.ETag);
+        }
 
-SDK は、自動的にJSON メッセージを逆シリアル化します。ここでは、**PoisonBlobMessage** クラスです。
+The SDK automatically deserializes the JSON message. Here is the **PoisonBlobMessage** class:
 
-		public class PoisonBlobMessage
-		{
-		    public string FunctionId { get; set; }
-		    public string BlobType { get; set; }
-		    public string ContainerName { get; set; }
-		    public string BlobName { get; set; }
-		    public string ETag { get; set; }
-		}
+        public class PoisonBlobMessage
+        {
+            public string FunctionId { get; set; }
+            public string BlobType { get; set; }
+            public string ContainerName { get; set; }
+            public string BlobName { get; set; }
+            public string ETag { get; set; }
+        }
 
-### BLOB のポーリング アルゴリズム
+### <a name="blob-polling-algorithm"></a>Blob polling algorithm
 
-Web ジョブ SDK は、アプリケーションの起動時に **BlobTrigger** 属性が指定するすべてのコンテナーをスキャンします。大容量のストレージ アカウントでは、このスキャンに時間がかかるため、新しい BLOB が見つかり、**BlobTrigger** 関数が実行されるまでにしばらく時間がかかります。
+The WebJobs SDK scans all containers specified by **BlobTrigger** attributes at application start. In a large storage account this scan can take some time, so it might be a while before new blobs are found and **BlobTrigger** functions are executed.
 
-アプリケーションの起動後に新しいまたは変更された BLOB を検出するために、SDK は定期的にBLOB ストレージ ログを読み取ります。BLOB のログはバッファーされ、10 分程度ごとに物理的に記述されるので、BLOB が作成されるか更新され、対応する **BlobTrigger** 関数が実行されるにはかなり時間がかかる可能性があります。
+To detect new or changed blobs after application start, the SDK periodically reads from the blob storage logs. The blob logs are buffered and only get physically written every 10 minutes or so, so there may be significant delay after a blob is created or updated before the corresponding **BlobTrigger** function executes.
 
-**Blob** 属性を使用して作成する BLOB には例外があります。Web ジョブ SDK は新しい BLOB を作成すると、一致するすべての **BlobTrigger** 関数に新しい BLOB をすぐに渡します。そのため、一連の BLOB 入力と BLOB 出力がある場合は、SDK は効率的に処理できます。ただし、その他の方法で作成または更新された BLOB に対して 低遅延で実行される BLOB 処理関数を使用する場合は、**BlobTrigger** ではなく **QueueTrigger** をお勧めします。
+There is an exception for blobs that you create by using the **Blob** attribute. When the WebJobs SDK creates a new blob, it passes the new blob immediately to any matching **BlobTrigger** functions. Therefore if you have a chain of blob inputs and outputs, the SDK can process them efficiently. But if you want low latency running your blob processing functions for blobs that are created or updated by other means, we recommend using **QueueTrigger** rather than **BlobTrigger**.
 
-### BLOB の配信確認メッセージ
+### <a name="blob-receipts"></a>Blob receipts
 
-Web ジョブ SDK では、**BlobTrigger** 関数は、同一の新規または更新された BLOB について 2 回以上呼び出されることはありません。これは*BLOB の配信確認メッセージ*を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
+The WebJobs SDK makes sure that no **BlobTrigger** function gets called more than once for the same new or updated blob. It does this by maintaining *blob receipts* in order to determine if a given blob version has been processed.
 
-BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が指定した Azure ストレージ アカウントの *azure-webjobs-hosts* という名前のコンテナーに格納されています。BLOB の配信確認メッセージには次の情報が含まれています。
+Blob receipts are stored in a container named *azure-webjobs-hosts* in the Azure storage account specified by the AzureWebJobsStorage connection string. A blob receipt has the following  information:
 
-* BLOB に対して呼び出された関数 ("*{WebJob name}*.Functions.*{Function name}*"。たとえば、"WebJob1.Functions.CopyBlob")
-* コンテナーの名前
-* BLOB の種類 ("BlockBlob" か "PageBlob")
-* BLOB の名前
-* ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
+* The function that was called for the blob ("*{WebJob name}*.Functions.*{Function name}*", for example: "WebJob1.Functions.CopyBlob")
+* The container name
+* The blob type ("BlockBlob" or "PageBlob")
+* The blob name
+* The ETag (a blob version identifier, for example: "0x8D1DC6E70A277EF")
 
-BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテナーからその BLOB の配信確認メッセージを手動で削除します。
+If you want to force reprocessing of a blob, you can manually delete the blob receipt for that blob from the *azure-webjobs-hosts* container.
 
-## キューの記事で扱う関連トピック
+## <a name="related-topics-covered-by-the-queues-article"></a>Related topics covered by the queues article
 
-キュー メッセージによってトリガーされる BLOB 処理の方法、BLOB 処理に固有ではない Web ジョブ SDK のシナリオについては、「[Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md)」をご覧ください
+For information about how to handle blob processing triggered by a queue message, or for WebJobs SDK scenarios not specific to blob processing, see [How to use Azure queue storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md).
 
-その記事では、以下のような関連トピックが紹介されています。
+Related topics covered in that article include the following:
 
-* Async 関数
-* 複数のインスタンス
-* グレースフル シャットダウン
-* 関数本体での Web ジョブ SDK 属性の使用
-* コード内で SDK の接続文字列を設定する。
-* コードの Web ジョブ SDK コンストラクター パラメーター値の設定
-* 有害 BLOB を処理するために **MaxDequeueCount** を構成します。
-* 手動での関数のトリガー
-* ログの書き込み
+* Async functions
+* Multiple instances
+* Graceful shutdown
+* Use WebJobs SDK attributes in the body of a function
+* Set the SDK connection strings in code.
+* Set values for WebJobs SDK constructor parameters in code
+* Configure **MaxDequeueCount** for poison blob handling.
+* Trigger a function manually
+* Write logs
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-この記事では、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。Azure WebJobs および WebJobs SDK の使用方法の詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
+This article has provided code samples that show how to handle common scenarios for working with Azure blobs. For more information about how to use Azure WebJobs and the WebJobs SDK, see [Azure WebJobs documentation resources](http://go.microsoft.com/fwlink/?linkid=390226).
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

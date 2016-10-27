@@ -1,162 +1,171 @@
 <properties
-	pageTitle="Windows サービスと worker ロールのための Application Insights | Microsoft Azure"
-	description="Application Insights SDK を ASP.NET アプリケーションに手動で追加して、使用状況、可用性、およびパフォーマンスを分析します。"
-	services="application-insights"
+    pageTitle="Application Insights for Windows services and worker roles | Microsoft Azure"
+    description="Manually add the Application Insights SDK to your ASP.NET application to analyze usage, availability and performance."
+    services="application-insights"
     documentationCenter=".net"
-	authors="alancameronwills"
-	manager="douge"/>
+    authors="alancameronwills"
+    manager="douge"/>
 
 <tags
-	ms.service="application-insights"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="ibiza"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="08/30/2016"
-	ms.author="awills"/>
+    ms.service="application-insights"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="ibiza"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="08/30/2016"
+    ms.author="awills"/>
 
 
-# Application Insights を ASP.NET 4 アプリケーション用に手動で構成する
 
-*Application Insights はプレビュー段階です。*
+# <a name="manually-configure-application-insights-for-asp.net-4-applications"></a>Manually configure Application Insights for ASP.NET 4 applications
+
+*Application Insights is in preview.*
 
 [AZURE.INCLUDE [app-insights-selector-get-started](../../includes/app-insights-selector-get-started.md)]
 
-[Visual Studio Application Insights](app-insights-overview.md) を手動で構成して、Windows サービス、worker ロール、およびその他の ASP.NET アプリケーションを監視できます。Web アプリの場合、手動による構成は、Visual Studio で提供される[自動セットアップ](app-insights-asp-net.md)に代わる方法となります。
+You can manually configure [Visual Studio Application Insights](app-insights-overview.md) to monitor Windows services, worker roles, and other ASP.NET applications. For web apps, manual configuration is an alternative to the [automatic set-up](app-insights-asp-net.md) offered by Visual Studio.
 
-Application Insights は、実行中のアプリケーションの問題を診断したり、パフォーマンスと使用状況を監視したりするのに役立ちます。
+Application Insights helps you diagnose issues and monitor performance and usage in your live application.
 
 ![Example performance monitoring charts](./media/app-insights-windows-services/10-perf.png)
 
 
-#### 開始する前に
+#### <a name="before-you-start"></a>Before you start
 
-必要なもの:
+You need:
 
-* [Microsoft Azure](http://azure.com) のサブスクリプションチームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
-* Visual Studio 2013 以降
+* A subscription to [Microsoft Azure](http://azure.com). If your team or organization has an Azure subscription, the owner can add you to it, using your [Microsoft account](http://live.com).
+* Visual Studio 2013 or later.
 
 
 
-## <a name="add"></a>1.Application Insights リソースの作成
+## <a name="<a-name="add"></a>1.-create-an-application-insights-resource"></a><a name="add"></a>1. Create an Application Insights resource
 
-[Azure ポータル](https://portal.azure.com/)にサインインし、Application Insights の新しいリソースを作成します。アプリケーションの種類として ASP.NET を選択します。
+Sign in to the [Azure portal](https://portal.azure.com/), and create a new Application Insights resource. Choose ASP.NET as the application type.
 
-![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-services/01-new-asp.png)
+![Click New, Application Insights](./media/app-insights-windows-services/01-new-asp.png)
 
-Azure の[リソース](app-insights-resources-roles-access-control.md)は、サービスのインスタンスです。このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
+A [resource](app-insights-resources-roles-access-control.md) in Azure is an instance of a service. This resource is where telemetry from your app will be analyzed and presented to you.
 
-アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー](app-insights-metrics-explorer.md)に表示されるプロパティが設定されます。
+The choice of application type sets the default content of the resource blades and the properties visible in [Metrics Explorer](app-insights-metrics-explorer.md).
 
-#### インストルメンテーション キーのコピー
+#### <a name="copy-the-instrumentation-key"></a>Copy the Instrumentation Key
 
-これはリソースを識別するキーです。データをリソースに送信するために SDK の後の手順でインストールします。
+The key identifies the resource, and you'll install it soon in the SDK to direct data to the resource.
 
-![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-windows-services/02-props-asp.png)
+![Click Properties, select the key, and press ctrl+C](./media/app-insights-windows-services/02-props-asp.png)
 
-新しいリソースを作成するために実行した手順は、任意のアプリケーションの監視を開始するための優れた方法です。これで、データをリソースに送信できます。
+The steps you've just done to create a new resource are a good way to start monitoring any application. Now you can send data to it.
 
-## <a name="sdk"></a>2.アプリケーションに SDK をインストールする
+## <a name="<a-name="sdk"></a>2.-install-the-sdk-in-your-application"></a><a name="sdk"></a>2. Install the SDK in your application
 
-Application Insights SDK のインストールと構成は、作業中のプラットフォームによって異なります。ASP.NET アプリの場合は簡単です。
+Installing and configuring the Application Insights SDK varies depending on the platform you're working on. For ASP.NET apps, it's easy.
 
-1. Visual Studio で、Web アプリ プロジェクトの NuGet パッケージを編集します。
+1. In Visual Studio, edit the NuGet packages of your web app project.
 
-    ![プロジェクトを右クリックし、[Nuget パッケージの管理] を選択する](./media/app-insights-windows-services/03-nuget.png)
+    ![Right-click the project and select Manage Nuget Packages](./media/app-insights-windows-services/03-nuget.png)
 
-2. Web Apps 向け Application Insights SDK をインストールします。
+2. Install Application Insights SDK for Web Apps.
 
     ![Search for "Application Insights"](./media/app-insights-windows-services/04-ai-nuget.png)
 
-    *他のパッケージを使用することができますか。*
+    *Can I use other packages?*
 
-    はい。独自のテレメトリを送信するためだけに API を使用する場合は、コア API (Microsoft.ApplicationInsights) を選択してください。Windows Server パッケージには、コア API に加え、他にも多くのパッケージ (パフォーマンス カウンターや依存関係の監視など) が自動的に含まれます。
+    Yes. Choose the Core API (Microsoft.ApplicationInsights) if you only want to use the API to send your own telemetry. The Windows Server package automatically includes the Core API plus a number of other packages such as performance counter collection and dependency monitoring. 
 
-#### 新しいバージョンの SDK にアップグレードするには
+#### <a name="to-upgrade-to-future-sdk-versions"></a>To upgrade to future SDK versions
 
-SDK の新しいバージョンは不定期でリリースされます。
+We release a new version of the SDK from time to time.
 
-[SDK の新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/)にアップグレードするには、NuGet パッケージ マネージャーをもう一度開き、インストールされているパッケージに対してフィルターを実行します。**[Microsoft.ApplicationInsights.Web]**、**[アップグレード]** の順に選択します。
+To upgrade to a [new release of the SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases/), open NuGet package manager again and filter on installed packages. Select **Microsoft.ApplicationInsights.Web** and choose **Upgrade**.
 
-ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておき、後から新しいバージョンに変更をマージします。
-
-
-## 3\.テレメトリを送信する
+If you made any customizations to ApplicationInsights.config, save a copy of it before you upgrade, and afterwards merge your changes into the new version.
 
 
-**コア API パッケージのみをインストールしている場合:**
-
-* コードでインストルメンテーション キーを設定します (たとえば、`main()` 内)。
-
-    `TelemetryConfiguration.Active.InstrumentationKey = "`<*自分のキー*>`";`
-
-* [API を使用して独自のテレメトリを記述](app-insights-api-custom-events-metrics.md#ikey)します。
+## <a name="3.-send-telemetry"></a>3. Send telemetry
 
 
-**他の Application Insights パッケージをインストールしている場合**、必要に応じて .config ファイルを使用してインストルメンテーション キーを設定します。
+**If you installed only the core API package:**
 
-* (NuGet のインストールによって追加された) ApplicationInsights.config を編集します。次のコードを終了タグの直前に挿入します。
+* Set the instrumentation key in code, for example in `main()`: 
 
-    `<InstrumentationKey>` *コピーしたインストルメンテーション キー* `</InstrumentationKey>`
+    `TelemetryConfiguration.Active.InstrumentationKey = "` *your key* `";` 
 
-* ソリューション エクスプローラーで ApplicationInsights.config のプロパティが **[ビルド アクション] = [コンテンツ]、[出力ディレクトリにコピー] = [コピー]** に設定されていることを確認します。
-
-
+* [Write your own telemetry using the API](app-insights-api-custom-events-metrics.md#ikey).
 
 
-## <a name="run"></a> プロジェクトの実行
+**If you installed other Application Insights packages,** you can, if you prefer, use the .config file to set the instrumentation key:
 
-**F5** キーを使用してアプリケーションを実行して、試します。さまざまなページを開いて、いくつかのテレメトリを生成します。
+* Edit ApplicationInsights.config (which was added by the NuGet install). Insert this just before the closing tag:
 
-Visual Studio で、送信されたイベント数が表示されます。
+    `<InstrumentationKey>` *the instrumentation key you copied* `</InstrumentationKey>`
+
+* Make sure that the properties of ApplicationInsights.config in Solution Explorer are set to **Build Action = Content, Copy to Output Directory = Copy**.
+
+
+
+
+## <a name="<a-name="run"></a>-run-your-project"></a><a name="run"></a> Run your project
+
+Use the **F5** to run your application and try it out: open different pages to generate some telemetry.
+
+In Visual Studio, you'll see a count of the events that have been sent.
 
 ![Event count in Visual Studio](./media/app-insights-windows-services/appinsights-09eventcount.png)
 
-## <a name="monitor"></a> 利用統計情報を表示する
+## <a name="<a-name="monitor"></a>-view-your-telemetry"></a><a name="monitor"></a> View your telemetry
 
-[Azure ポータル](https://portal.azure.com/)に戻り、Application Insights のリソースを参照します。
+Return to the [Azure portal](https://portal.azure.com/) and browse to your Application Insights resource.
 
 
-Look for data in the Overview charts.最初、1 つまたは 2 つのポイントだけが表示されます。For example:
+Look for data in the Overview charts. At first, you'll just see one or two points. For example:
 
-![クリックしてより多くのデータを表示する](./media/app-insights-windows-services/12-first-perf.png)
+![Click through to more data](./media/app-insights-windows-services/12-first-perf.png)
 
-任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。](app-insights-web-monitor-performance.md)
+Click through any chart to see more detailed metrics. [Learn more about metrics.](app-insights-web-monitor-performance.md)
 
-#### データが表示されない場合
+#### <a name="no-data?"></a>No data?
 
-* アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
-* [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを表示します。メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
-* 数秒待機してから **[最新の情報に更新]** をクリックします。グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
-* [トラブルシューティング](app-insights-troubleshoot-faq.md)に関するページを参照します。
+* Use the application, opening different pages so that it generates some telemetry.
+* Open the [Search](app-insights-diagnostic-search.md) tile, to see individual events. Sometimes it takes events a little while longer to get through the metrics pipeline.
+* Wait a few seconds and click **Refresh**. Charts refresh themselves periodically, but you can refresh manually if you're waiting for some data to show up.
+* See [Troubleshooting](app-insights-troubleshoot-faq.md).
 
-## アプリケーションの発行
+## <a name="publish-your-app"></a>Publish your app
 
-ここで、アプリケーションをサーバーまたは Azure にデプロイし、データ累積を確認します。
+Now deploy your application to your server or to Azure and watch the data accumulate.
 
-![Visual Studio を使用してアプリを発行する](./media/app-insights-windows-services/15-publish.png)
+![Use Visual Studio to publish your app](./media/app-insights-windows-services/15-publish.png)
 
-デバッグ モードで実行している場合、テレメトリはパイプラインにより時間が短縮されるので、数秒でデータが表示されます。リリース構成でアプリケーションをデプロイすると、データ累積速度は遅くなります。
+When you run in debug mode, telemetry is expedited through the pipeline, so that you should see data appearing within seconds. When you deploy your app in Release configuration, data accumulates more slowly.
 
-#### サーバーに発行した後でデータはありませんか。
+#### <a name="no-data-after-you-publish-to-your-server?"></a>No data after you publish to your server?
 
-サーバーのファイアウォールで発信トラフィック用のこれらのポートを開きます。
+Open these ports for outgoing traffic in your server's firewall:
 
 + `dc.services.visualstudio.com:443`
 + `f5.services.visualstudio.com:443`
 
 
-#### ビルド サーバーで問題が発生した場合
+#### <a name="trouble-on-your-build-server?"></a>Trouble on your build server?
 
-[このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
+Please see [this Troubleshooting item](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
 
-> [AZURE.NOTE] \(ASP.NET SDK バージョン 2.0.0-beta3 以降を使用している状態で) アプリから大量のテレメトリが生成されると、アダプティブ サンプリング モジュールからイベントの代表的な部分のみが送信され、ポータルに送信されるデータ量が自動的に削減されます。ただし、同じ要求に関連するイベントはグループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。[サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
+> [AZURE.NOTE] If your app generates a lot of telemetry (and you are using the ASP.NET SDK version 2.0.0-beta3 or later), the adaptive sampling module will automatically reduce the volume that is sent to the portal by sending only a representative fraction of events. However, events that are related to the same request will be selected or deselected as a group, so that you can navigate between related events. 
+> [Learn about sampling](app-insights-sampling.md).
 
 
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-* アプリケーションの状態を完全に把握するために、[他のテレメトリを追加](app-insights-asp-net-more.md)します。
+* [Add more telemetry](app-insights-asp-net-more.md) to get the full 360-degree view of your application.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

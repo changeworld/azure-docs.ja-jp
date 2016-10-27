@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Marketplace のプランを作成するために必要なさまざまなポータルの概要 | Microsoft Azure"
-   description="Marketplace のプランを作成するために必要なさまざまなポータルの概要"
+   pageTitle="Overview of the various portals needed to create an offer for the Marketplace | Microsoft Azure"
+   description="Overview of the various portals needed to create an offer for the Marketplace"
    services="marketplace-publishing"
    documentationCenter=""
    authors="HannibalSII"
@@ -17,37 +17,42 @@
    ms.author="hascipio" />
 
 
-# 必要なポータル
-プランを発行するプロセスを開始する前に、必要な各種ポータルを紹介します。以下に、デベロッパー センター、Azure 発行ポータル、および Azure ポータルの概要を、やり取りする順番で示します。
-## デベロッパー センター
+
+# <a name="portals-you-will-need"></a>Portals you will need
+Before you start the process of publishing an offer, let’s get you introduced to the various portals that you will need. Below is the short summary about the portals--Developer Center, Azure Publishing Portal, and Azure Portal--in the order that you will interact with them.                                                                            
+## <a name="developer-center"></a>Developer Center
 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
-### 説明
-Microsoft デベロッパー センター アカウントの作成は、1 回限りのタスクです。作成する前に、デベロッパー センター アカウントを会社が既に所有していないことを確認してください。このプロセスでは、銀行口座の情報、税情報、および会社の住所情報が収集されます。
+### <a name="description"></a>Description
+Creating your Microsoft Developer Center account is a one-time task. Make sure that the company does not already have a Developer Center account before you attempt to create one. During the process, we collect bank account information, tax information, and company address information.
 
-> [AZURE.NOTE] 無料のプランのみを発行する場合 (またはライセンス持ち込みの場合)、税情報と銀行情報は必要ありません。
+> [AZURE.NOTE] If you are publishing only free offers (or bring-your-own-license offers), we do not require tax and bank information.
 
-### 使用する ID とアカウント
-配布リストまたはセキュリティ グループが理想です (azurepublishing@*partnercompany*.com など)。配布リストまたはセキュリティ グループは、Microsoft アカウントとして登録する**必要があります**。
+### <a name="identity/account-used"></a>Identity/account used
+Ideally, this is a distribution list or a security group (e.g., azurepublishing@*partnercompany*.com). The distribution list or security group **must** be registered as a Microsoft account.
 
-> [AZURE.TIP] 個人に依存することがないように、配布リストまたはセキュリティ グループを使用することをお勧めします。ただし、個人アカウントも同様に使用できます。
+> [AZURE.TIP] We recommend using a distribution list or a security group because it removes the dependency on any individual, although an individual account can be used as well.
 
-## 発行ポータル
+## <a name="publishing-portal"></a>Publishing portal
 [https://publish.windowsazure.com](https://publish.windowsazure.com)
 
-### 説明
-このポータルではプランを処理し、それを発行します (該当する場合、マーケティング、価格設定、発行、認定など)。
+### <a name="description"></a>Description
+This is the portal that you use to work on the offer and to publish it (marketing, pricing, publishing, certification if applicable, etc.).
 
-### 使用する ID とアカウント
-発行ポータルに初めてサインインする際には、前述の配布リストまたはセキュリティ グループを使用する必要があります。他のユーザーは後で共同管理者として追加できます。このようにして、デベロッパー センターの登録データにマップされます。
+### <a name="identity/account-used"></a>Identity/account used
+The above distribution list or security group must be used for the first time to sign in to the publishing portal. Later, other users can be added as co-admins. This is how it gets mapped to the Developer Center registration data.
 
-## Azure ポータル
+## <a name="azure-portal"></a>Azure Portal
 [https://portal.azure.com](https://portal.azure.com)
-### 説明
-このポータルでは、Azure Marketplace でステージングされたプランと発行されたプランを表示できます (VM、ソリューション テンプレート、および Azure リソース マネージャー ベースの開発者サービスに適用)。
-### 使用する ID とアカウント
-発行ポータルからプランをステージングしている間、サブスクリプション ID をホワイトリストに登録する必要があります。このポータルにサインインして、ステージングされたプランをテストする間、同じサブスクリプション (関連付けられたユーザー名とパスワードがあります) を使用する必要があります。
+### <a name="description"></a>Description
+This is the portal where you can view your staged and published offers in the Azure Marketplace (applicable for VMs, solution templates, and Azure Resource Manager-based developer services).
+### <a name="identity/account-used"></a>Identity/account used
+While you're staging an offer from the publishing portal, a subscription ID needs to be whitelisted. The same subscription (there is a user name and password associated with it) needs to be used for signing in to this portal to test the staged offer.
 
-## 関連項目
-- [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>See also
+- [Getting started: How to publish an offer for the Azure Marketplace](marketplace-publishing-getting-started.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

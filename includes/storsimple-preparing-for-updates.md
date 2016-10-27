@@ -1,36 +1,39 @@
 <!--author=jgerend last changed: 03/16/16-->
 
-## 更新プログラムの準備
-更新プログラムをスキャンして適用する前に、次の手順を実行する必要があります。
+## <a name="preparing-for-updates"></a>Preparing for updates
+You will need to perform the following steps before you scan and apply the update:
 
 
-1. デバイス データのクラウド スナップショットを取得します。
+1. Take a cloud snapshot of the device data.
 
-2. コントローラーの固定 IP アドレスがルーティング可能でインターネットに接続できることを確認します。これらの固定 IP は、デバイスに更新プログラムを提供するために使用されます。デバイスの Windows PowerShell インターフェイスから、各コントローラーで次のコマンドレットを実行してこれをテストできます。
+2. Ensure that your controller fixed IPs are routable and can connect to the Internet. These fixed IPs will be used to service updates to your device. You can test this by running the following cmdlet on each controller from the Windows PowerShell interface of the device:
 
- 	`Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter network> `
+    `Test-Connection -Source <Fixed IP of your device controller> -Destination <Any IP or computer name outside of datacenter network> `
 
-	**固定 IP でインターネットに接続できるときの Test-Connection のサンプル出力**
+    **Sample output for Test-Connection when fixed IPs can connect to the Internet**
 
 
-		Controller0>Test-Connection -Source 10.126.173.91 -Destination bing.com
+        Controller0>Test-Connection -Source 10.126.173.91 -Destination bing.com
 
-	    Source	  Destination 	IPV4Address      IPV6Address
-	    ----------------- -----------  -----------
-	    HCSNODE0  bing.com		204.79.197.200
-	    HCSNODE0  bing.com		204.79.197.200
-	    HCSNODE0  bing.com		204.79.197.200
-	    HCSNODE0  bing.com		204.79.197.200
+        Source    Destination   IPV4Address      IPV6Address
+        ----------------- -----------  -----------
+        HCSNODE0  bing.com      204.79.197.200
+        HCSNODE0  bing.com      204.79.197.200
+        HCSNODE0  bing.com      204.79.197.200
+        HCSNODE0  bing.com      204.79.197.200
 
-		Controller0>Test-Connection -Source 10.126.173.91 -Destination  204.79.197.200
+        Controller0>Test-Connection -Source 10.126.173.91 -Destination  204.79.197.200
 
-	    Source	  Destination 	  IPV4Address    IPV6Address
-	    ----------------- -----------  -----------
-	    HCSNODE0  204.79.197.200  204.79.197.200
-	    HCSNODE0  204.79.197.200  204.79.197.200
-	    HCSNODE0  204.79.197.200  204.79.197.200
-	    HCSNODE0  204.79.197.200  204.79.197.200
+        Source    Destination     IPV4Address    IPV6Address
+        ----------------- -----------  -----------
+        HCSNODE0  204.79.197.200  204.79.197.200
+        HCSNODE0  204.79.197.200  204.79.197.200
+        HCSNODE0  204.79.197.200  204.79.197.200
+        HCSNODE0  204.79.197.200  204.79.197.200
 
-これらの手動の事前チェックが正常に完了した後で、更新プログラムのスキャンとインストールを開始できます。
+After you have successfully completed these manual pre-checks, you can proceed to scan and install the updates.
 
-<!---HONumber=AcomDC_0323_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

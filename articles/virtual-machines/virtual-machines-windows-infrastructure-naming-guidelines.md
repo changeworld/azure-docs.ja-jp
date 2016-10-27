@@ -1,113 +1,117 @@
 <properties
-	pageTitle="インフラストラクチャの名前付けガイドライン | Microsoft Azure"
-	description="Azure インフラストラクチャ サービスでの名前付けに関する主要な設計と実装のガイドラインについて説明します。"
-	documentationCenter=""
-	services="virtual-machines-windows"
-	authors="iainfoulds"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Infrastructure Naming Guidelines | Microsoft Azure"
+    description="Learn about the key design and implementation guidelines for naming in Azure infrastructure services."
+    documentationCenter=""
+    services="virtual-machines-windows"
+    authors="iainfoulds"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-windows"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/08/2016"
-	ms.author="iainfou"/>
+    ms.service="virtual-machines-windows"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-windows"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/08/2016"
+    ms.author="iainfou"/>
 
-# インフラストラクチャの名前付けガイドライン
 
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
+# <a name="infrastructure-naming-guidelines"></a>Infrastructure naming guidelines
 
-この記事は、お使いの環境で論理的かつ簡単に識別できる一連のリソースを構築するための、Azure のすべてのリソースに対する名前付け規則について説明します。
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)] 
 
-## 名前付け規則に関する実装ガイドライン
+This article focuses on understanding how to approach naming conventions for all your various Azure resources to build a logical and easily identifiable set of resources across your environment.
 
-決めること:
+## <a name="implementation-guidelines-for-naming-conventions"></a>Implementation guidelines for naming conventions
 
-- Azure リソースの名前付け規則
+Decisions:
 
-タスク:
+- What are your naming conventions for Azure resources?
 
-- 一貫性を維持するためにリソース間で使用する接辞を定義します。
-- グローバルに一意であるという要件を満たすように、ストレージ アカウント名を定義します。
-- 使用する名前付け規則を文書化し、デプロイ間の一貫性確保に関わるすべての当事者に配布します。
+Tasks:
 
-## 名前付け規則
+- Define the affixes to use across your resources to maintain consistency.
+- Define storage account names given the requirement for them to be globally unique.
+- Document the naming convention to be used and distribute to all parties involved to ensure consistency across deployments.
 
-Azure で作成作業を始める前に、適切な名前付け規則を用意する必要があります。名前付け規則を設けるとすべてのリソースの名前が予測可能になり、これらのリソースの管理する際の負担が軽減されます。
+## <a name="naming-conventions"></a>Naming conventions
 
-組織全体に対する名前付け規則、または特定の Azure サブスクリプションまたはアカウントに対して定義されている名前付け規則のどちらに従うかを選択できます。組織内の個人が Azure リソースの作業をするときに暗黙のルールを設けるのは簡単ですが、チームで Azure のプロジェクトを作業する必要があるときに、そのようなモデルではうまく対応できません。
+You should have a good naming convention in place before creating anything in Azure. A naming convention ensures that all the resources have a predictable name, which helps lower the administrative burden associated with managing those resources.
 
-事前に名前付け規則をまとめておきます。一連のルールを構成する名前付け規則に関して、いくつかの考慮事項があります。
+You might choose to follow a specific set of naming conventions defined for your entire organization or for a specific Azure subscription or account. Although it is easy for individuals within organizations to establish implicit rules when working with Azure resources, when a team needs to work on a project on Azure, that model does not scale well.
 
-## 接辞
+Agree on a set of naming conventions up front. There are some considerations regarding naming conventions that cut across that sets of rules.
 
-名前付け規則を定義するとき、接辞の位置を決定することになります。
+## <a name="affixes"></a>Affixes
 
-- 名前の先頭 (プレフィックス)
-- 名前の末尾 (サフィックス)
+As you look to define a naming convention, one decision comes as to whether the affix is at:
 
-たとえば、`rg` 接辞を使ったリソース グループの名前として考えられるものは、以下の2つです。
+- The beginning of the name (prefix)
+- The end of the name (suffix)
 
-- Rg-WebApp (プレフィックス)
-- WebApp-Rg (サフィックス)
+For instance, here are two possible names for a Resource Group using the `rg` affix:
 
-接辞では、特定のリソースを説明するさまざまな特徴を示すことができます。一般的に使用される例を次に示します。
+- Rg-WebApp (prefix)
+- WebApp-Rg (suffix)
 
-| 特徴 | 例 | メモ |
+Affixes can refer to different aspects that describe the particular resources. The following table shows some examples typically used.
+
+| Aspect                               | Examples                                                               | Notes                                                                                                      |
 |:-------------------------------------|:-----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|
-| 環境 | dev、stg、prod | 各環境の目的と名前によって決まります。 |
-| 場所 | usw (米国西部)、use (米国東部 2) | データセンターのリージョンまたは組織のリージョンによって決まります。 |
-| Azure のコンポーネント、サービス、または製品 | Rg (リソース グループ)、VNet (仮想ネットワーク) | リソースがサポートを提供する製品によって決まります。 |
-| 役割 | sql、ora、sp、iis | 仮想マシンのロールによって決まります。 |
-| インスタンス | 01、02、03 など | 複数のインスタンスが存在するリソースの場合。たとえば、クラウド サービス内の負荷分散された Web サーバーなど。 |
+| Environment                          | dev, stg, prod                                                         | Depending on the purpose and name of each environment.                                                     |
+| Location                             | usw (West US), use (East US 2)                                         | Depending on the region of the datacenter or the region of the organization.                               |
+| Azure component, service, or product | Rg for resource group, VNet for virtual network                        | Depending on the product for which the resource provides support.                                          |
+| Role                                 | sql, ora, sp, iis                                                      | Depending on the role of the virtual machine.                                                              |
+| Instance                             | 01, 02, 03, etc.                                                       | For resources that have more than one instance. For example, load balanced web servers in a cloud service. |
 
 
-名前付け規則を設けるときは、各リソースの種類に対してどの接辞を使用するか、およびその位置 (プレフィックスかサフィックスか) を、明確に規定する必要があります。
+When establishing your naming conventions, make sure that they clearly state which affixes to use for each type of resource, and in which position (prefix vs suffix).
 
-## 日付
+## <a name="dates"></a>Dates
 
-多くの場合、リソースの名前から作成日がわかることが重要です。YYYYMMDD という日付形式をお勧めします。この形式を使用すると、完全な日付が記録されるだけでなく、名前の日付部分だけが異なる複数のリソースが、同時にアルファベット順と時系列順に並べ替えられます。
+It is often important to determine the date of creation from the name of a resource. We recommend the YYYYMMDD date format. This format ensures that not only the full date is recorded, but also that two resources whose names differ only on the date is sorted alphabetically and chronologically at the same time.
 
-## リソースの名前付け
+## <a name="naming-resources"></a>Naming resources
 
-名前付け規則では、作成される各リソースへの名前割り当て方法を定義するルールを用意するリソースの種類を定義します。これらのルールはすべての種類のリソースに適用する必要があります。次に例を示します。
+Define each type of resource in the naming convention, which should have rules that define how to assign names to each resource that is created. These rules should apply to all types of resources, for example:
 
-- サブスクリプション
-- アカウント
-- ストレージ アカウント
-- 仮想ネットワーク
-- サブネット
-- 可用性セット
-- リソース グループ
-- 仮想マシン
-- エンドポイント
-- ネットワーク セキュリティ グループ
-- ロール
+- Subscriptions
+- Accounts
+- Storage accounts
+- Virtual networks
+- Subnets
+- Availability sets
+- Resource groups
+- Virtual machines
+- Endpoints
+- Network security groups
+- Roles
 
-参照しているリソースを特定するのに十分な情報が提供されるように、わかりやすい名前にする必要があります。
+To ensure that the name provides enough information to determine to which resource it refers, you should use descriptive names.
 
-## コンピューター名
+## <a name="computer-names"></a>Computer names
 
-仮想マシン (VM) の作成時、リソース名として使用される VM 名を 15 字以内で指定する必要があります。Azure は、VM にインストールされるオペレーティング システムに対して同じ名前を使用します。ただし、これらの名前は同じではない場合があります。
+When you create a virtual machine (VM), Microsoft Azure requires a VM name of up to 15 characters which is used for the resource name. Azure uses the same name for the operating system installed in the VM. However, these names might not always be the same.
 
-既にオペレーティング システムを含んでいる .vhd イメージ ファイルから VM が作成される場合、Azure での VM 名と VM のオペレーティング システムのコンピューター名が異なる場合があります。このような状況は、VM の管理が困難になるのでお勧めしません。Azure VM のリソースには、その VM のオペレーティング システムに割り当てたコンピューター名と同じ名前を割り当てます。
+In case a VM is created from a .vhd image file that already contains an operating system, the VM name in Azure can differ from the VM's operating system computer name. This situation can add a degree of difficulty to VM management, which we therefore do not recommend. Assign the Azure VM resource the same name as the computer name that you assign to the operating system of that VM.
 
-Azure VM の名前と、基になるオペレーティング システムのコンピューター名を同じにすることをお勧めします。
+We recommend that the Azure VM name is the same as the underlying operating system computer name.
 
-## ストレージ アカウント名
+## <a name="storage-account-names"></a>Storage account names
 
-ストレージ アカウン名の管理には特別な規則があります。小文字と数字のみを使用できます。詳細については、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。また、ストレージ アカウント名は、core.windows.net と組み合わせ、グローバルで有効な一意の DNS 名にする必要があります。たとえば、ストレージ アカウントの名前が「mystorageaccount」の場合、次の DNS 名が一意となります。
+Storage accounts have special rules governing their names. You can only use lowercase letters and numbers. See [Create a storage account](../storage/storage-create-storage-account.md#create-a-storage-account) for more information. Additionally, the storage account name, along with core.windows.net, should be a globally valid, unique DNS name. For instance, if the storage account is called mystorageaccount, the following resulting DNS names should be unique:
 
 - mystorageaccount.blob.core.windows.net
 - mystorageaccount.table.core.windows.net
 - mystorageaccount.queue.core.windows.net
 
 
-## 次のステップ
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
+## <a name="next-steps"></a>Next steps
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)] 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

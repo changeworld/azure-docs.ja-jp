@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager のデプロイ | Microsoft Azure"
-   description="StorSimple Snapshot Manager、MMC スナップインをダウンロードしてインストールし、StorSimple データ保護およびバックアップ機能を管理する方法を説明します。"
+   pageTitle="Deploy StorSimple Snapshot Manager | Microsoft Azure"
+   description="Learn how to download and install the StorSimple Snapshot Manager, an MMC snap-in for managing StorSimple data protection and backup features."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,248 +15,254 @@
    ms.date="05/24/2016"
    ms.author="v-sharos" />
 
-# StorSimple Snapshot Manager MMC スナップインのデプロイ
 
-## 概要
+# <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>Deploy the StorSimple Snapshot Manager MMC snap-in
 
-StorSimple Snapshot Manager は、Microsoft Azure StorSimple 環境でのデータ保護とバックアップ管理を簡略化する Microsoft 管理コンソール (MMC) スナップインです。StorSimple Snapshot Manager を使用すれば、Microsoft Azure StorSimple をオンプレミスで管理し、完全に統合されたストレージ システムであるかのようにクラウド ストレージを管理できるため、バックアップと復元処理が簡略化され、コストを削減できます。
+## <a name="overview"></a>Overview
 
-このチュートリアルでは構成要件に加え、StorSimple Snapshot Manager のインストール、削除、およびアップグレード手順についても説明します。
+The StorSimple Snapshot Manager is a Microsoft Management Console (MMC) snap-in that simplifies data protection and backup management in a Microsoft Azure StorSimple environment. With StorSimple Snapshot Manager, you can manage Microsoft Azure StorSimple on-premises and cloud storage as if it were a fully integrated storage system, thus simplifying backup and restore processes and reducing costs. 
+
+This tutorial describes configuration requirements, as well as procedures for installing, removing, and upgrading StorSimple Snapshot Manager.
 
 >[AZURE.NOTE] 
 >
->- StorSimple Snapshot Manager を使用して、Microsoft Azure StorSimple Virtual Array (別名 StorSimple オンプレミス仮想デバイス) を管理することはできません。
+>- You cannot use StorSimple Snapshot Manager to manage Microsoft Azure StorSimple Virtual Arrays (also known as StorSimple on-premises virtual devices).
 >
->- StorSimple デバイスに StorSimple Update 2 をインストールする場合は、**StorSimple Update 2 をインストールする前に**、最新バージョンの StorSimple Snapshot Manager をダウンロードしてインストールする必要があります。最新バージョンの StorSimple Snapshot Manager には下位互換性があり、製品版のすべての Microsoft Azure StorSimple で動作します。以前のバージョンの StorSimple Snapshot Manager を使用している場合は更新する必要があります (新しいバージョンをインストールする前に、以前のバージョンをアンインストールする必要はありません)。
+>- If you plan to install StorSimple Update 2 on your StorSimple device, be sure to download the latest version of StorSimple Snapshot Manager and install it **before you install StorSimple Update 2**. The latest version of StorSimple Snapshot Manager is backward compatible and works with all released versions of Microsoft Azure StorSimple. If you are using the previous version of StorSimple Snapshot Manager, you will need to update it (you do not need to uninstall the previous version before you install the new version).
 
-## StorSimple Snapshot Manager のインストール
+## <a name="storsimple-snapshot-manager-installation"></a>StorSimple Snapshot Manager installation
 
-StorSimple Snapshot Manager は、Windows Server 2008 R2 SP1、Windows Server 2012、または Windows Server 2012 R2 オペレーティング システムを実行しているコンピューターにインストールできます。Windows 2008 R2 を実行しているサーバーでは、Windows Server 2008 SP1 と Windows Management Framework 3.0 をインストールする必要もあります。
+StorSimple Snapshot Manager can be installed on computers that are running the Windows Server 2008 R2 SP1, Windows Server 2012, or Windows Server 2012 R2 operating system. On servers running Windows 2008 R2, you must also install Windows Server 2008 SP1 and Windows Management Framework 3.0. 
 
-Microsoft 管理コンソール (MMC) 用に StorSimple Snapshot Manager スナップインをインストールまたはアップグレードする前に、Microsoft Azure StorSimple デバイスとホスト サーバーが正しく構成されていることを確認してください。
+Before you install or upgrade the StorSimple Snapshot Manager snap-in for the Microsoft Management Console (MMC), make sure that the Microsoft Azure StorSimple device and host server are configured correctly. 
 
-## 構成の前提条件
+## <a name="configure-prerequisites"></a>Configure prerequisites
 
-次の手順では、StorSimple Snapshot Manager をインストールする前に完了する必要がある構成タスクの概要を説明します。システム要件や詳細な手順の説明など、Microsoft Azure StorSimple の構成とセットアップに関する完全な情報については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」をご覧ください。
+The following steps provide a high-level overview of configuration tasks that you must complete before you install the StorSimple Snapshot Manager. For complete Microsoft Azure StorSimple configuration and setup information, including system requirements and step-by-step instructions, see [Deploy your on-premises StorSimple device](storsimple-deployment-walkthrough.md).
 
->[AZURE.IMPORTANT] 開始する前に、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」にある「[デプロイメント チェックリスト](storsimple-deployment-walkthrough.md#deployment-configuration-checklist)」と「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」をご確認ください。<br>
+>[AZURE.IMPORTANT] Before you begin, review the [Deployment configuration checklist](storsimple-deployment-walkthrough.md#deployment-configuration-checklist) and and [Deployment prerequisites](storsimple-deployment-walkthrough.md#deployment-prerequisites) in [Deploy your on-premises StorSimple device](storsimple-deployment-walkthrough.md).
+> <br>
  
-### StorSimple Snapshot Manager をインストールする前に
+### <a name="before-you-install-storsimple-snapshot-manager"></a>Before you install StorSimple Snapshot Manager
 
-1. 「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」または「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」で説明されているように、Microsoft Azure StorSimple デバイスを開梱、マウント、および接続します。
+1. Unpack, mount, and connect the Microsoft Azure StorSimple device as described in [Install your StorSimple 8100 device](storsimple-8100-hardware-installation.md) or [Install your StorSimple 8600 device](storsimple-8600-hardware-installation.md).
 
-2. ホスト コンピューターで、次のいずれかのオペレーティング システムが実行されていることを確認します。
+2. Make sure that your host computer is running one of the following operating systems:
 
-    - Windows Server 2008 R2 (Windows 2008 R2 を実行しているサーバーでは、Windows Server 2008 SP1 および Windows Management Framework 3.0 もインストールする必要があります)
+    - Windows Server 2008 R2 (on servers running Windows 2008 R2, you must also install Windows Server 2008 SP1 and Windows Management Framework 3.0)
     - Windows Server 2012
     - Windows Server 2012 R2
  
-    StorSimple 仮想デバイスの場合、ホストは Microsoft Azure Virtual Machine である必要があります。
+    For a StorSimple virtual device, the host must be a Microsoft Azure Virtual Machine. 
 
-3. すべての Microsoft Azure StorSimple 構成要件を満たしていることを確認します。詳細については、「[デプロイメントの前提条件](storsimple-deployment-walkthrough.md#deployment-prerequisites)」を確認してください。
+3. Make sure that you meet all the Microsoft Azure StorSimple configuration requirements. For details, go to [Deployment prerequisites](storsimple-deployment-walkthrough.md#deployment-prerequisites).
 
-4. ホストにデバイスを接続し、初期構成を実行します。詳細については、「[デプロイメントの手順](storsimple-deployment-walkthrough.md#deployment-steps)」を確認してください。
+4. Connect the device to the host and perform the initial configuration. For details, go to [Deployment steps](storsimple-deployment-walkthrough.md#deployment-steps).
 
-5. デバイスにボリュームを作成し、それらをホストに割り当て、ホストがボリュームをマウントし、使用できることを確認します。StorSimple Snapshot Manager では、次のタイプのボリュームがサポートされています。
+5. Create volumes on the device, assign them to the host, and verify that the host can mount and use them. StorSimple Snapshot Manager supports the following types of volumes: 
 
-    - 基本ボリューム
-    - シンプル ボリューム
-    - 動的ボリューム
-    - ミラー化された動的ボリューム (RAID 1)
-    - クラスターの共有ボリューム
+    - Basic volumes
+    - Simple volumes
+    - Dynamic volumes
+    - Mirrored dynamic volumes (RAID 1)
+    - Cluster-shared volumes
  
-    StorSimple デバイスまたは StorSimple 仮想デバイスにボリュームを作成する方法については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」の「[手順 6: ボリュームを作成する](storsimple-deployment-walkthrough.md#step-6-create-a-volume)」をご確認ください。
+    For information about creating volumes on the StorSimple device or StorSimple virtual device, go to [Step 6: Create a volume](storsimple-deployment-walkthrough.md#step-6-create-a-volume), in [Deploy your on-premises StorSimple device](storsimple-deployment-walkthrough.md).
 
-## StorSimple Snapshot Manager の新規インストール
+## <a name="install-a-new-storsimple-snapshot-manager"></a>Install a new StorSimple Snapshot Manager
 
-StorSimple Snapshot Manager をインストールする前に、StorSimple デバイスまたは StorSimple 仮想デバイスに作成したボリュームが、「[構成の前提条件](#configure-prerequisites)」に説明されているようにマウント、初期化、およびフォーマットされていることを確認します。
+Before installing StorSimple Snapshot Manager, make sure that the volumes you created on the StorSimple device or StorSimple virtual device are mounted, initialized, and formatted as described in [Configure prerequisites](#configure-prerequisites).
 
 >[AZURE.IMPORTANT]
 >
->- StorSimple 仮想デバイスの場合、ホストは Microsoft Azure Virtual Machine である必要があります。 
+>- For a StorSimple virtual device, the host must be a Microsoft Azure Virtual Machine. 
 >
->- ホストは、Windows 2008 R2、Windows Server 2012、または Windows Server 2012 R2 を実行している必要があります。サーバーが Windows Server 2008 R2 を実行している場合、Windows Server 2008 SP1 と Windows Management Framework 3.0 もインストールする必要があります。
+>- The host must be running Windows 2008 R2, Windows Server 2012, or Windows Server 2012 R2. If your server is running Windows Server 2008 R2, you must also install Windows Server 2008 SP1 and Windows Management Framework 3.0.
 >
->- デバイスを StorSimple Snapshot Manager に接続するには、ホストから StorSimple デバイスに iSCSI 接続を構成する必要があります。
+>- You must configure an iSCSI connection from the host to the StorSimple device before you can connect the device to StorSimple Snapshot Manager.
 
-次の手順に従って、StorSimple Snapshot Manager のフレッシュ インストールを実行します。アップグレードをインストールする場合は、「[StorSimple Snapshot Manager のアップグレードまたは再インストール](#upgrade-or-reinstall-storsimple-snapshot-manager)」をご覧ください。
+Follow these steps to complete a fresh installation of StorSimple Snapshot Manager. If you are installing an upgrade, go to [Upgrade or reinstall StorSimple Snapshot Manager](#upgrade-or-reinstall-storsimple-snapshot-manager).
 
-- 手順 1: StorSimple Snapshot Manager をインストールします 
-- 手順 2: StorSimple Snapshot Manager をデバイスに接続します 
-- 手順 3: デバイスへの接続を確認します 
+- Step 1: Install StorSimple Snapshot Manager 
+- Step 2: Connect StorSimple Snapshot Manager to a device 
+- Step 3: Verify the connection to the device 
 
-###手順 1: StorSimple Snapshot Manager をインストールします
+###<a name="step-1:-install-storsimple-snapshot-manager"></a>Step 1: Install StorSimple Snapshot Manager
 
-StorSimple Snapshot Manager をインストールするには、以下の手順を実行します。
+Use the following steps to install StorSimple Snapshot Manager.
 
-#### StorSimple Snapshot Manager をインストールするには
+#### <a name="to-install-storsimple-snapshot-manager"></a>To install StorSimple Snapshot Manager
 
-1. StorSimple Snapshot Manager ソフトウェアをダウンロードして (Microsoft ダウンロード センターの [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) にアクセス)、それをホストのローカルに保存します。
+1. Download the StorSimple Snapshot Manager software (go to [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) in the Microsoft Download Center) and save it locally on the host.
 
-2. エクスプローラーで、圧縮ファイルを右クリックし、**[すべて展開する]** をクリックします。
+2. In File Explorer, right-click the compressed folder, and then click **Extract all**.
 
-3. **[圧縮 (ZIP 形式) フォルダーの展開]** ウィンドウの **[展開先の選択とファイルの展開]** ボックスに、ファイルの展開先にするパスを入力するか、参照して指定します。
+3. In the **Extract Compressed (Zipped) Folders** window, in the **Select a destination and extract files** box, type or browse to the path where you would like to file to be extracted. 
 
-       >[AZURE.IMPORTANT] StorSimple Snapshot Manager は C: ドライブにインストールする必要があります。
+       >[AZURE.IMPORTANT] You must install StorSimple Snapshot Manager on the C: drive.
  
-4. **[完了時に展開されたファイルを表示する]** チェック ボックスを選択し、**[抽出]** をクリックします。
+4. Select the **Show extracted files when complete** check box, and then click **Extract**.
 
-    ![ファイル展開ダイアログ ボックス](./media/storsimple-snapshot-manager-deployment/HCS_SSM_extract_files.png)
+    ![Extract files dialog box](./media/storsimple-snapshot-manager-deployment/HCS_SSM_extract_files.png) 
 
-4. 展開が完了したら、展開先フォルダーが開きます。展開先フォルダーに表示されるアプリケーションのセットアップ アイコンをダブルクリックします。
+4. When the extraction is finished, the destination folder opens. Double-click the application setup icon that appears in the destination folder.
 
-5. **[セットアップ完了]** メッセージが表示されたら、**[閉じる]** をクリックします。デスクトップに [StorSimple Snapshot Manager] アイコンが表示されます。
+5. When the **Setup Successful** message appears, click **Close**. You should see the StorSimple Snapshot Manager icon on your desktop.
 
-    ![デスクトップ アイコン](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png)
+    ![desktop icon](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png) 
 
-### 手順 2: StorSimple Snapshot Manager をデバイスに接続します
+### <a name="step-2:-connect-storsimple-snapshot-manager-to-a-device"></a>Step 2: Connect StorSimple Snapshot Manager to a device
 
-次の手順に従って、StorSimple Snapshot Manager を StorSimple デバイスに接続します。
+Use the following steps to connect StorSimple Snapshot Manager to a StorSimple device.
 
-#### StorSimple Snapshot Manager をデバイスに接続するには
+#### <a name="to-connect-storsimple-snapshot-manager-to-a-device"></a>To connect StorSimple Snapshot Manager to a device
 
-1. デスクトップの [StorSimple Snapshot Manager] アイコンをクリックします。[StorSimple Snapshot Manager] ウィンドウが表示されます。このウィンドウには、**[スコープ]** ウィンドウ、**[結果]** ウィンドウ、および **[操作]** ウィンドウがあります。 
+1. Click the StorSimple Snapshot Manager icon on your desktop. The StorSimple Snapshot Manager window appears. The window contains a **Scope** pane, a **Results** pane, and an **Actions** pane. 
 
-    ![StorSimple Snapshot Manager のユーザー インターフェイス](./media/storsimple-snapshot-manager-deployment/HCS_SSM_gui_panes.png)
+    ![StorSimple Snapshot Manager user interface](./media/storsimple-snapshot-manager-deployment/HCS_SSM_gui_panes.png) 
 
-    - **[スコープ]** ウィンドウ (左ウィンドウ) には、ノードのリストがツリー構造で編成されて表示されます。一部のノードは展開して、そのノードに関連するビューまたは特定のデータを選択できます。ノードを展開または折りたたむには、矢印アイコンをクリックします。**[スコープ]** ウィンドウの項目を右クリックすると、その項目に使用可能な操作のリストが表示されます。 
+    - The **Scope** pane (the left pane) contains a list of nodes organized in a tree structure. You can expand some nodes to select a view or specific data related to that node. Click the arrow icon to expand or collapse a node. Right-click an item in the **Scope** pane to see a list of available actions for that item. 
 
-    - **[結果]** ウィンドウ (中央ウィンドウ) には、**[スコープ]** ウィンドウで選択したノード、ビュー、またはデータに関する詳細な状態情報が表示されます。
+    - The **Results** pane (the center pane) contains detailed status information about the node, view, or data that you selected in the **Scope** pane.
 
-    - **[操作]** ウィンドウには、**[スコープ]** ウィンドウで選択したノード、ビュー、またはデータに実行できる操作がリストされます。
+    - The **Actions** pane lists the operations that you can perform on the node, view, or data that you selected in the **Scope** pane.
 
-    StorSimple Snapshot Manager ユーザー インターフェイスの完全な説明については、「[StorSimple Snapshot Manager のユーザー インターフェイス](storsimple-use-snapshot-manager.md)」をご覧ください。
+    For a complete description of the StorSimple Snapshot Manager user interface, see [StorSimple Snapshot Manager user interface](storsimple-use-snapshot-manager.md).
 
-2. **[スコープ]** ウィンドウで **[デバイス]** ノードを右クリックし、**[デバイスの構成]** をクリックします。**[デバイスの構成]** ダイアログ ボックスが表示されます。
+2. In the **Scope** pane, right-click the **Devices** node, and then click **Configure a device**. The **Configure a Device** dialog box appears.
 
-    ![デバイスの構成](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png)
+    ![Configure a device](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
 
-3. **[デバイス]** ボックスの一覧で、Microsoft Azure StorSimple デバイスまたは仮想デバイスの IP アドレスを選択します。**[パスワード]** テキスト ボックスに、Azure クラシック ポータルでデバイス用に作成した StorSimple Snapshot Manager パスワードを入力します。**[OK]** をクリックします。
+3. In the **Device** list box, select the IP address of the Microsoft Azure StorSimple device or virtual device. In the **Password** text box, type the StorSimple Snapshot Manager password that you created for the device in the Azure classic portal. Click **OK**.
 
-4. StorSimple Snapshot Manager により、指定したデバイスが検索されます。デバイスを使用できる場合は、StorSimple Snapshot Manager によって接続が追加されます。[デバイスへの接続を検証](#to-verify-the-connection)して、接続が正常に追加されたことを確認できます。
+4. StorSimple Snapshot Manager searches for the device that you identified. If the device is available, StorSimple Snapshot Manager adds a connection. You can [verify the connection to the device](#to-verify-the-connection) to confirm that the connection was added successfully.
 
-    何かの理由でデバイスを使用できない場合は、StorSimple Snapshot Manager によってエラー メッセージが返されます。**[OK]** をクリックしてエラー メッセージを閉じ、**[キャンセル]** をクリックして **[デバイスの構成]** ダイアログ ボックスを閉じます。
+    If the device is unavailable for any reason, StorSimple Snapshot Manager returns an error message. Click **OK** to close the error message, and then click **Cancel** to close the **Configure a Device** dialog box.
 
-5. ボリューム グループに関連するバックアップがある場合、デバイスに接続されると、StorSimple Snapshot Manager は、そのデバイス用に構成された各ボリューム グループをインポートします。関連付けられているバックアップがないボリューム グループはインポートされません。また、ボリューム グループに対して作成されたバックアップ ポリシーはインポートされません。インポートされたグループを表示するには、**[スコープ]** ウィンドウの最上部にある **[ボリューム グループ]** ノードを右クリックし、**[インポートされたグループを切り替え]** をクリックします。
+5. When it connects to a device, StorSimple Snapshot Manager imports each volume group configured for that device, provided that the volume group has associated backups. Volume groups that do not have associated backups are not imported. Additionally, backup policies that were created for a volume group are not imported. To see the imported groups, right-click the top-most **Volume Groups** node in the **Scope** pane, and click **Toggle imported groups**.
 
-### 手順 3: デバイスへの接続を確認します
+### <a name="step-3:-verify-the-connection-to-the-device"></a>Step 3: Verify the connection to the device
 
-次の手順に従って、StorSimple Snapshot Manager が StorSimple デバイスに接続されていることを確認します。
+Use the following steps to verify that StorSimple Snapshot Manager is connected to the StorSimple device.
 
-#### 接続を確認するには
+#### <a name="to-verify-the-connection"></a>To verify the connection
 
-1. **[スコープ]** ウィンドウで、**[デバイス]** ノードをクリックします。
+1. In the **Scope** pane, click the **Devices** node.
 
-    ![StorSimple Snapshot Manager デバイスの状態](./media/storsimple-snapshot-manager-deployment/HCS_SSM_Device_status.png)
+    ![StorSimple Snapshot Manager device status](./media/storsimple-snapshot-manager-deployment/HCS_SSM_Device_status.png) 
 
-2. 次を参考にして、**[結果]** ウィンドウを確認します。
+2. Check the **Results** pane: 
 
-   - デバイス アイコンに緑色のインジケーターが表示され、**[状態]** 列に **[使用可能]** が表示されている場合、デバイスは接続されています。 
+   - If a green indicator appears on the device icon and **Available** appears in the **Status** column, then the device is connected. 
 
-   - デバイス アイコンに赤色のインジケーターが表示され、**[状態]** 列に [使用不可] が表示されている場合、デバイスは接続されていません。
+   - If a red indicator appears on the device icon and Unavailable appears in the **Status** column, then the device is not connected. 
 
-   - **[状態]** 列に **[更新しています]** が表示されている場合、StorSimple Snapshot Manager は、接続されたデバイスのボリューム グループと関連するバックアップを取得中です。
+   - If **Refreshing** appears in the **Status** column, then StorSimple Snapshot Manager is retrieving volume groups and associated backups for a connected device.
 
-## StorSimple Snapshot Manager のアップグレードまたは再インストール
+## <a name="upgrade-or-reinstall-storsimple-snapshot-manager"></a>Upgrade or reinstall StorSimple Snapshot Manager
 
-StorSimple Snapshot Manager をアップグレードまたは再インストールするには、このソフトウェアを完全にアンインストールする必要があります。
+You should uninstall StorSimple Snapshot Manager completely before you upgrade or reinstall the software. 
 
-StorSimple Snapshot Manager を再インストールする前に、ホスト コンピューターで既存の StorSimple Snapshot Manager データベースをバックアップします。これにより、バックアップ ポリシーと構成情報が保存されるため、バックアップからこのデータを簡単に復元できます。
+Before reinstalling StorSimple Snapshot Manager, back up the existing StorSimple Snapshot Manager database on the host computer. This saves the backup policies and configuration information so that you can easily restore this data from backup.
 
-StorSimple Snapshot Manager をアップグレードまたは再インストールするには、以下の手順を実行します。
+Follow these steps if you are upgrading or reinstalling StorSimple Snapshot Manager:
 
-- 手順 1: StorSimple Snapshot Manager をアンインストールします 
-- 手順 2: StorSimple Snapshot Manager データベースをバックアップします 
-- 手順 3: StorSimple Snapshot Manager を再インストールし、データベースを復元します 
+- Step 1: Uninstall StorSimple Snapshot Manager 
+- Step 2: Back up the StorSimple Snapshot Manager database 
+- Step 3: Reinstall StorSimple Snapshot Manager and restore the database 
 
-### 手順 1: StorSimple Snapshot Manager をアンインストールします
+### <a name="step-1:-uninstall-storsimple-snapshot-manager"></a>Step 1: Uninstall StorSimple Snapshot Manager
 
-StorSimple Snapshot Manager をアンインストールするには、以下の手順を実行します。
+Use the following steps to uninstall StorSimple Snapshot Manager.
 
-#### StorSimple Snapshot Manager をアンインストールするには
+#### <a name="to-uninstall-storsimple-snapshot-manager"></a>To uninstall StorSimple Snapshot Manager
 
-1. ホスト コンピューターで、**[コントロール パネル]** を開き、 **[プログラム]** をクリックしてから、**[プログラムと機能]** をクリックします。
+1. On the host computer, open the **Control Panel**, click **Programs**, and then click **Programs and Features**.
 
-2. 左側のウィンドウで、**[プログラムのアンインストールまたは変更]** をクリックします。
+2. In the left pane, click **Uninstall or change a program**.
 
-3. **[StorSimple Snapshot Manager]** を右クリックし、**[アンインストール]** をクリックします。
+3. Right-click **StorSimple Snapshot Manager**, and then click **Uninstall**.
 
-4. これにより、StorSimple Snapshot Manager のセットアップ プログラムが開始します。**[セットアップの変更]** をクリックし、**[アンインストール]** をクリックします。
+4. This starts the StorSimple Snapshot Manager Setup program. Click **Modify Setup**, and then click **Uninstall**.
 
-    >[AZURE.NOTE] StorSimple Snapshot Manager や ディスクの管理など、バック グラウンドで実行されている MMC プロセスがある場合、アンインストールは失敗し、プログラムのアンインストールを試行する前に、MMC のすべてのインスタンスを閉じるように求めるメッセージが表示されます。**[セットアップの完了後、アプリケーションを自動的に終了して、再起動する]** を選択し、**[OK]** をクリックします。
+    >[AZURE.NOTE] If there are any MMC processes running in the background, such as StorSimple Snapshot Manager or Disk Management, the uninstall will fail and you will receive a message to close all instances of MMC before you attempt to uninstall the program. Select **Automatically close applications and attempt to restart them after setup is complete**, and then click **OK**.
  
-5. アンインストール プロセスが完了したら、**[セットアップ完了]** メッセージが表示されます。**[閉じる]** をクリックします。
+5. When the uninstall process is finished, a **Setup Successful** message appears. Click **Close**.
 
-### 手順 2: StorSimple Snapshot Manager データベースをバックアップします
+### <a name="step-2:-back-up-the-storsimple-snapshot-manager-database"></a>Step 2: Back up the StorSimple Snapshot Manager database
 
-StorSimple Snapshot Manager データベースのコピーを作成して保存するには、以下の手順を実行します。
+Use the following steps to create and save a copy of the StorSimple Snapshot Manager database.
 
-#### データベースをバックアップするには
+#### <a name="to-back-up-the-database"></a>To back up the database
 
-1. Microsoft StorSimple Management Service を停止します。
+1. Stop the Microsoft StorSimple Management Service:
 
-   1. Server Manager を起動します。
+   1. Start Server Manager.
 
-   2. Server Manager ダッシュボードの **[ツール]** メニューで、**[サービス]** を選択します。
+   2. On the Server Manager Dashboard, on the **Tools** menu, select **Services**.
 
-   3. **[サービス]** ページで、**[Microsoft StorSimple Management Service]** を選択します。
+   3. On the **Services** page, select **Microsoft StorSimple Management Service**.
 
-   4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
+   4. In the right pane, under **Microsoft StorSimple Management Service**, click **Stop the service**.
 
         ![Stop the StorSimple Manager service](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 
-2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
+2. Browse to C:\ProgramData\Microsoft\StorSimple\BACatalog. 
 
-    >[AZURE.NOTE] ProgramData は隠しフォルダーです。
+    >[AZURE.NOTE] ProgramData is a hidden folder.
 
-3. カタログ XML ファイルを検索し、ファイルをコピーして、安全な場所、またはクラウドにコピーを保存します。
+3. Find the catalog XML file, copy the file, and store the copy in a safe location or in the cloud.
 
-    ![StorSimple バックアップ カタログ ファイル](./media/storsimple-snapshot-manager-deployment/HCS_SSM_bacatalog.png)
+    ![StorSimple backup catalog file](./media/storsimple-snapshot-manager-deployment/HCS_SSM_bacatalog.png)
 
-4. Microsoft StorSimple Management Service を再起動します。
+4. Restart the Microsoft StorSimple Management Service: 
 
-    1. Server Manager ダッシュボードの **[ツール]** メニューで、**[サービス]** を選択します。
+    1. On the Server Manager Dashboard, on the **Tools** menu, select **Services**.
 
-    2. **[サービス]** ページで、**[Microsoft StorSimple Management Service]** を選択します。
+    2. On the **Services** page, select the **Microsoft StorSimple Management Servic**e.
 
-    3. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。
+    3. In the right pane, under **Microsoft StorSimple Management Service**, click **Restart the service**. 
 
-### 手順 3: StorSimple Snapshot Manager を再インストールし、データベースを復元します
+### <a name="step-3:-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>Step 3: Reinstall StorSimple Snapshot Manager and restore the database
 
-StorSimple Snapshot Manager を再インストールするには、「[StorSimple Snapshot Manager の新規インストール](#install-a-new-storsimple-snapshot-manager)」の手順に従います。次に、以下の手順に従って、StorSimple Snapshot Manager データベースを復元します。
+To reinstall StorSimple Snapshot Manager, follow the steps in [Install a new StorSimple Snapshot Manager](#install-a-new-storsimple-snapshot-manager). Then, use the following procedure to restore the StorSimple Snapshot Manager database.
 
-#### データベースを復元するには
+#### <a name="to-restore-the-database"></a>To restore the database
 
-1. Microsoft StorSimple Management Service を停止します。
+1. Stop the Microsoft StorSimple Management Service:
 
-    1. Server Manager を起動します。
+    1. Start Server Manager.
 
-    2. Server Manager ダッシュボードの **[ツール]** メニューで、**[サービス]** を選択します。
+    2. On the Server Manager Dashboard, on the **Tools** menu, select **Services**.
 
-    3. **[サービス]** ページで、**[Microsoft StorSimple Management Service]** を選択します。
+    3. On the **Services** page, select **Microsoft StorSimple Management Service**.
 
-    4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
+    4. In the right pane, under **Microsoft StorSimple Management Service**, click **Stop the service**.
 
-2. C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
+2. Browse to C:\ProgramData\Microsoft\StorSimple\BACatalog. 
 
-     >[AZURE.NOTE] ProgramData は隠しフォルダーです。
+     >[AZURE.NOTE] ProgramData is a hidden folder.
 
-3. カタログ XML ファイルを削除し、以前に保存したバージョンで置き換えます。
+3. Delete the catalog XML file, and replace it with the version that you saved earlier.
 
-4. Microsoft StorSimple Management Service を再起動します。
+4. Restart the Microsoft StorSimple Management Service: 
 
-    1. Server Manager ダッシュボードの **[ツール]** メニューで、**[サービス]** を選択します。
+    1. On the Server Manager Dashboard, on the **Tools** menu, select **Services**.
 
-    2. **[サービス]** ページで、**[Microsoft StorSimple Management Service]** を選択します。
+    2. On the **Services** page, select **Microsoft StorSimple Management Service**.
 
-    3. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。
+    3. In the right pane, under **Microsoft StorSimple Management Service**, click **Restart the service**.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- StorSimple Snapshot Manager の詳細については、「[StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)」を参照してください。
+- To learn more about StorSimple Snapshot Manager, go to [What is StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md).
 
-- StorSimple Snapshot Manager ユーザー インターフェイスの詳細については、「[StorSimple Snapshot Manager のユーザー インターフェイス](storsimple-use-snapshot-manager.md)」を参照してください。
+- To learn more about the StorSimple Snapshot Manager user interface, go to [StorSimple Snapshot Manager user interface](storsimple-use-snapshot-manager.md).
 
-- StorSimple Snapshot Manager の使用方法については、「[StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理](storsimple-snapshot-manager-admin.md)」を参照してください。
+- To learn more about using StorSimple Snapshot Manager, go to [Use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
 
-<!---HONumber=AcomDC_0525_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

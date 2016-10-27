@@ -2,67 +2,67 @@
 - [Linux](../articles/iot-hub/iot-hub-linux-gateway-sdk-get-started.md)
 - [Windows](../articles/iot-hub/iot-hub-windows-gateway-sdk-get-started.md)
 
-この記事では、[Azure IoT Gateway SDK][lnk-gateway-sdk] アーキテクチャの基本的なコンポーネントを表す [Hello World サンプル コード][lnk-helloworld-sample]の詳細なチュートリアルを提供します。このサンプルでは、IoT Hub Gateway SDK を使用して、5 秒ごとに "hello world" メッセージをファイルに記録する単純なゲートウェイを作成します。
+This article provides a detailed walkthrough of the [Hello World sample code][lnk-helloworld-sample] to illustrate the fundamental components of the [Azure IoT Gateway SDK][lnk-gateway-sdk] architecture. The sample uses the IoT Hub Gateway SDK to build a simple gateway that logs a "hello world" message to a file every five seconds.
 
-このチュートリアルでは、次の項目について説明します。
+This walkthrough covers:
 
-- **概念**: Gateway SDK で作成するゲートウェイを構成するコンポーネントの概念についておおまかに説明します。
-- **Hello World サンプル アーキテクチャ**: 上記の概念が Hello World サンプルにどのように適用されるかについて、また、コンポーネントがどのように機能するかについて説明します。
-- **サンプルのビルド方法**: サンプルをビルドするために必要な手順を説明します。
-- **サンプルの実行方法**: サンプルを実行するために必要な手順を説明します。
-- **標準的な出力**: サンプルを実行したときに想定される出力の例を示します。
-- **コード スニペット**: Hello World サンプルでの主要なゲートウェイ コンポーネントの実装方法を示す、コード スニペットのコレクションです。
+- **Concepts**: A conceptual overview of the components that compose any gateway you create with the Gateway SDK.  
+- **Hello World sample architecture**: Describes how the concepts apply to the Hello World sample and how the components fit together.
+- **How to build the sample**: The steps required to build the sample.
+- **How to run the sample**: The steps required to run the sample. 
+- **Typical output**: An example of the output to expect when you run the sample.
+- **Code snippets**: A collection of code snippets to show how the Hello World sample implements key gateway components.
 
-## Gateway SDK の概念
+## <a name="gateway-sdk-concepts"></a>Gateway SDK concepts
 
-サンプルのコードを調べたり、Gateway SDK を使用して独自のフィールド ゲートウェイを作成したりする前に、Gateway SDK のアーキテクチャの基礎となる主要な概念を理解する必要があります。
+Before you examine the sample code or create your own field gateway using the Gateway SDK, you should understand the key concepts that underpin the architecture of the SDK.
 
-### モジュール
+### <a name="modules"></a>Modules
 
-Azure IoT Gateway SDK でゲートウェイを構築するには、*モジュール*を作成してアセンブルします。モジュールは、*メッセージ*を使用して互いにデータを交換します。モジュールがメッセージを受信すると、そのメッセージに対して何らかのアクションを実行し、必要に応じて新しいメッセージに変換したうえで、他のモジュールが処理できるように発行します。モジュールの中には、新しいメッセージを生成するだけで、受け取ったメッセージを処理しないものもあります。モジュールのチェーンによってデータ処理のパイプラインが作られ、このパイプライン上のそれぞれの時点で、各モジュールがデータの変換を行います。
+You build a gateway with the Azure IoT Gateway SDK by creating and assembling *modules*. Modules use *messages* to exchange data with each other. A module receives a message, performs some action on it, optionally transforms it into a new message, and then publishes it for other modules to process. Some modules might only produce new messages and never process incoming messages. A chain of modules creates a data processing pipeline with each module performing a transformation on the data at one point in that pipeline.
 
 ![A chain of modules in gateway built with the Azure IoT Gateway SDK][1]
  
-Gateway SDK には次のものが含まれます。
+The SDK contains the following:
 
-- 一般的なゲートウェイ機能を実行する記述済みのモジュール。
-- 開発者がカスタム モジュールを記述する際に使用できるインターフェイス。
-- 一連のモジュールをデプロイして実行するために必要なインフラストラクチャ。
+- Pre-written modules which perform common gateway functions.
+- The interfaces a developer can use to write custom modules.
+- The infrastructure necessary to deploy and run a set of modules.
 
-Gateway SDK が提供する抽象化レイヤーによって、さまざまなオペレーティング システムとプラットフォームで実行するゲートウェイの作成が可能になります。
+The SDK provides an abstraction layer that enables you to build gateways to run on a variety of operating systems and platforms.
 
 ![Azure IoT Hub Gateway SDK abstraction layer][2]
 
-### メッセージ
+### <a name="messages"></a>Messages
 
-ゲートウェイの機能を概念化する上で、モジュール同士がメッセージを交換すると考えると簡単ですが、正確にはそうではありません。モジュールはブローカーを使用して互いに通信し、メッセージをブローカー (バス、pubsub、その他のメッセージング パターン) に発行して、ブローカーがメッセージを接続されているモジュールにルーティングできるようにします。
+Although thinking about modules passing messages to each other is a convenient way to conceptualize how a gateway functions, it does not accurately reflect what happens. Modules use a broker to communicate with each other, they publish messages to the broker (bus, pubsub, or any other messaging pattern) and then let the broker route the message to the modules connected to it.
 
-モジュールは、**Broker\_Publish** 関数を使用してブローカーにメッセージを発行します。ブローカーは、コールバック関数を呼び出すことでモジュールにメッセージを配信します。メッセージは、一連のキー/値のプロパティと、メモリのブロックとして渡されるコンテンツで構成されます。
+A modules uses the **Broker_Publish** function to publish a message to the broker. The broker delivers messages to a module by invoking a callback function. A message consists of a set of key/value properties and content passed as a block of memory.
 
 ![The role of the Broker in the Azure IoT Gateway SDK][3]
 
-### メッセージのルーティングとフィルター処理
+### <a name="message-routing-and-filtering"></a>Message routing and filtering
 
-メッセージを適切なモジュールにルーティングする方法は、2 つあります。一連のリンクをブローカーに渡せば、ブローカーはモジュールごとに source と sink を把握できます。また、モジュールではメッセージのプロパティでフィルター処理することもできます。モジュールは、そのモジュール向けのメッセージに基づいて動作する必要があります。リンクとメッセージのフィルター処理により、メッセージのパイプラインを効果的に作成できます。
+There are two ways of directing messages to the correct modules. A set of links can be passed to the broker so the broker knows the source and sink for each module, or the module can filter on the properties of the message. A module should only act upon a message if the message is intended for it. The links and message filtering is what effectively creates a message pipeline.
 
-## Hello World サンプル アーキテクチャ
+## <a name="hello-world-sample-architecture"></a>Hello World sample architecture
 
-Hello World サンプルでは、前のセクションで説明した概念を示します。また、次の 2 つのモジュールで構成されるパイプラインを持つゲートウェイを実装します。
+The Hello World sample illustrates the concepts described in the previous section. The Hello World sample implements a gateway that has a pipeline made up of two modules:
 
--	*hello world* モジュール: 5 秒ごとにメッセージを作成し、それを logger モジュールに渡します。
--	*logger* モジュール: 受け取ったメッセージをファイルに書き込みます。
+-   The *hello world* module creates a message every five seconds and passes it to the logger module.
+-   The *logger* module writes the messages it receives to a file.
 
 ![Architecture of Hello World sample built with the Azure IoT Gateway SDK][4]
 
-前のセクションで説明したように、Hello World モジュールはメッセージを logger モジュールに直接渡すことはせず、5 秒ごとにブローカーに発行します。
+As described in the previous section, the Hello World module does not pass messages directly to the logger module every five seconds. Instead, it publishes a message to the broker every five seconds.
 
-logger モジュールは、ブローカーからメッセージを受信し、それに基づいて動作して、ファイルにメッセージの内容を書き込みます。
+The logger module receives the message from the broker and acts upon it, writing the contents of the message to a file.
 
-logger モジュールはブローカーからメッセージを受信するだけで、ブローカーに新しいメッセージを発行することはありません。
+The logger module only consumes messages from the broker, it never publishes new messages to the broker.
 
 ![How the broker routes messages between modules in the Azure IoT Gateway SDK][5]
 
-上の図は、Hello World サンプルのアーキテクチャと、サンプル内の各部分を[リポジトリ][lnk-gateway-sdk]に実装するソース ファイルへの相対パスを示しています。自分でコードを調べてみるか、以下のコード スニペットをガイドとして使用してください。
+The figure above shows the architecture of the Hello World sample and the relative paths to the source files that implement different portions of the sample in the [repository][lnk-gateway-sdk]. Explore the code on your own, or use the code snippets below as a guide.
 
 <!-- Images -->
 [1]: media/iot-hub-gateway-sdk-getstarted-selector/modules.png
@@ -75,4 +75,6 @@ logger モジュールはブローカーからメッセージを受信するだ�
 [lnk-helloworld-sample]: https://github.com/Azure/azure-iot-gateway-sdk/tree/master/samples/hello_world
 [lnk-gateway-sdk]: https://github.com/Azure/azure-iot-gateway-sdk
 
-<!---HONumber=AcomDC_1005_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

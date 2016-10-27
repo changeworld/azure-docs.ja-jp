@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Reliable Actors のタイマーとアラーム | Microsoft Azure"
-   description="Service Fabric Reliable Actors のタイマーとアラームの概要"
+   pageTitle="Reliable Actors timers and reminders | Microsoft Azure"
+   description="Introduction to timers and reminders for Service Fabric Reliable Actors."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -17,13 +17,14 @@
    ms.author="vturecek"/>
 
 
-# アクターのタイマーとアラーム
-アクターは、タイマーまたはアラームを登録することで、自身の定期的な作業をスケジュールできます。ここでは、タイマーとアラームの使用方法と、これらの違いについて説明します。
 
-## アクターのタイマー
-アクターのタイマーは、アクターのランタイムが提供するターンごとの同時実行の保証をコールバック メソッドが考慮するように、.NET タイマーの単純なラッパーを提供します。
+# <a name="actor-timers-and-reminders"></a>Actor timers and reminders
+Actors can schedule periodic work on themselves by registering either timers or reminders. This article shows how to use timers and reminders and explains the differences between them.
 
-アクターは、`RegisterTimer` と `UnregisterTimer` のメソッドをその基本クラスに使用して、タイマーを登録/登録解除できます。次の例はタイマー API の使用を示します。API は、.NET タイマーによく似ています。この例では、タイマーが期限に達すると、アクターのランタイムが `MoveObject` メソッドを呼び出します。このメソッドは、ターンごとの同時実行を優先することを保証します。つまり、このコールバックの実行が完了するまで、他のアクター メソッドやタイマーとアラームのコールバックは進行しません。
+## <a name="actor-timers"></a>Actor timers
+Actor timers provide a simple wrapper around .NET timer to ensure that the callback methods respect the turn-based concurrency guarantees that the Actors runtime provides.
+
+Actors can use the `RegisterTimer` and `UnregisterTimer` methods on their base class to register and unregister their timers. The example below shows the use of timer APIs. The APIs are very similar to the .NET timer. In this example, when the timer is due, the Actors runtime will call the `MoveObject` method. The method is guaranteed to respect the turn-based concurrency. This means that no other actor methods or timer/reminder callbacks will be in progress until this callback completes execution.
 
 ```csharp
 class VisualObjectActor : Actor, IVisualObject
@@ -61,16 +62,16 @@ class VisualObjectActor : Actor, IVisualObject
 }
 ```
 
-タイマーの次の期間は、コールバックが実行を完了した後に開始します。これは、コールバックを実行している間はタイマーが停止し、コールバックが完了したときにタイマーが開始することを意味します。
+The next period of the timer starts after the callback completes execution. This implies that the timer is stopped while the callback is executing and is started when the callback finishes.
 
-コールバックが完了すると、アクターのランタイムは、アクターの状態マネージャーに加えられた変更を保存します。状態の保存中にエラーが発生した場合、そのアクターのオブジェクトは非アクティブ化し、新しいインスタンスがアクティブ化されます。
+The Actors runtime saves changes made to the actor's State Manager when the callback finishes. If an error occurs in saving the state, that actor object will be deactivated and a new instance will be activated. 
 
-ガベージ コレクションの一部としてアクターが非アクティブ化されると、すべてのタイマーが停止します。その後は、タイマーのコールバックは呼び出されません。また、アクターのランタイムは、非アクティブ化の前に実行されていたタイマーについての情報は保持しません。その後、再アクティブ化したときに必要なタイマーを登録するかどうかはアクターによって異なります。詳細については、「[アクターのガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)」のセクションを参照してください。
+All timers are stopped when the actor is deactivated as part of garbage collection. No timer callbacks are invoked after that. Also, the Actors runtime does not retain any information about the timers that were running before deactivation. It is up to the actor to register any timers that it needs when it is reactivated in the future. For more information, see the section on [actor garbage collection](service-fabric-reliable-actors-lifecycle.md).
 
-## アクターのアラーム
-アラームは、指定した時間にアクターに永続的なコールバックをトリガーするメカニズムです。タイマーと似ていますが、アラームの場合は、アクターが明示的にアラームの登録を解除するか、アクターが明示的に削除されるまで、あらゆる状況下でトリガーされます。具体的には、アラームはアクターの無効化およびフェールオーバーによりトリガーされます。これは、アクターのランタイムがアクターのアラームに関する情報を永続化するためです。
+## <a name="actor-reminders"></a>Actor reminders
+Reminders are a mechanism to trigger persistent callbacks on an actor at specified times. Their functionality is similar to timers. But unlike timers, reminders are triggered under all circumstances until the actor explicitly unregisters them or the actor is explicitly deleted. Specifically, reminders are triggered across actor deactivations and failovers because the Actors runtime persists information about the actor's reminders.
 
-アラームを登録するには、次の例に示すように、アクターが基本クラスで提供される `RegisterReminderAsync` メソッドを呼び出します。
+To register a reminder, an actor calls the `RegisterReminderAsync` method provided on the base class, as shown in the following example:
 
 ```csharp
 protected override async Task OnActivateAsync()
@@ -86,9 +87,9 @@ protected override async Task OnActivateAsync()
 }
 ```
 
-上記の例で、`"Pay cell phone bill"` はアラーム名です。これは、アクターがアラームを一意に識別するために使用する文字列です。`BitConverter.GetBytes(amountInDollars)` は、そのアラームに関連付けられているコンテキストです。これは、アラームのコールバックの引数、つまり `IRemindable.ReceiveReminderAsync` としてアクターに戻ります。
+In this example, `"Pay cell phone bill"` is the reminder name. This is a string that the actor uses to uniquely identify a reminder. `BitConverter.GetBytes(amountInDollars)` is the context that is associated with the reminder. It will be passed back to the actor as an argument to the reminder callback, i.e. `IRemindable.ReceiveReminderAsync`.
 
-アラームを使用するアクターは、次の例に示すように `IRemindable` インターフェイスを実装する必要があります。
+Actors that use reminders must implement the `IRemindable` interface, as shown in the example below.
 
 ```csharp
 public class ToDoListActor : Actor, IToDoListActor, IRemindable
@@ -105,24 +106,28 @@ public class ToDoListActor : Actor, IToDoListActor, IRemindable
 }
 ```
 
-アラームがトリガーされると、Reliable Actors のランタイムがアクターの `ReceiveReminderAsync` メソッドを呼び出します。アクターは複数のアラームを登録でき、`ReceiveReminderAsync` メソッドは、そのいずれかのアラームがトリガーされると呼び出されます。アクターは `ReceiveReminderAsync` メソッドに渡されるアラーム名を使用して、どのアラームがトリガーされたかを判別できます。
+When a reminder is triggered, the Reliable Actors runtime will invoke the  `ReceiveReminderAsync` method on the Actor. An actor can register multiple reminders, and the `ReceiveReminderAsync` method is invoked when any of those reminders is triggered. The actor can use the reminder name that is passed in to the `ReceiveReminderAsync` method to figure out which reminder was triggered.
 
-アクターのランタイムは、`ReceiveReminderAsync` の呼び出しが完了するとアクターの状態を保存します。状態の保存中にエラーが発生した場合、そのアクターのオブジェクトは非アクティブ化し、新しいインスタンスがアクティブ化されます。
+The Actors runtime saves the actor's state when the `ReceiveReminderAsync` call finishes. If an error occurs in saving the state, that actor object will be deactivated and a new instance will be activated. 
 
-アラームの登録を解除するには、次の例に示すように、アクターが `UnregisterReminder` メソッドを呼び出します。
+To unregister a reminder, an actor calls the `UnregisterReminder` method, as shown in the example below.
 
 ```csharp
 IActorReminder reminder = GetReminder("Pay cell phone bill");
 Task reminderUnregistration = UnregisterReminder(reminder);
 ```
 
-上記の例のように、 `UnregisterReminder` メソッドは、`IActorReminder` インターフェイスを受け入れます。アクターの基本クラスは、アラーム名で渡すことで、`IActorReminder` インターフェイスを取得できる `GetReminder` メソッドをサポートします。これにより、アクターが `RegisterReminder` メソッドの呼び出しから返された `IActorReminder` インターフェイスを永続化する必要がなくなるため便利です。
+As shown above, the `UnregisterReminder` method accepts an `IActorReminder` interface. The actor base class supports a `GetReminder` method that can be used to retrieve the `IActorReminder` interface by passing in the reminder name. This is convenient because the actor does not need to persist the `IActorReminder` interface that was returned from the `RegisterReminder` method call.
 
-## 次のステップ
- - [アクター イベント](service-fabric-reliable-actors-events.md)
- - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
- - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
- - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [コード サンプル](https://github.com/Azure/servicefabric-samples)
+## <a name="next-steps"></a>Next Steps
+ - [Actor events](service-fabric-reliable-actors-events.md)
+ - [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
+ - [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
+ - [Actor API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [Sample code](https://github.com/Azure/servicefabric-samples)
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

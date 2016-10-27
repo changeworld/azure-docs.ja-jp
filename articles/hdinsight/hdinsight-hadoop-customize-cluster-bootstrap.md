@@ -1,25 +1,26 @@
 <properties
-	pageTitle="ブートストラップを使って HDInsight クラスターをカスタマイズする| Microsoft Azure"
-	description="ブートストラップを使って HDInsight クラスターをカスタマイズする方法について説明します。"
-	services="hdinsight"
-	documentationCenter=""
-	authors="mumian"
-	manager="jhubbard"
-	editor="cgronlun"
-	tags="azure-portal"/>
+    pageTitle="Customize HDInsight Clusters using bootstrap | Microsoft Azure"
+    description="Learn how to customize HDInsight clusters using bootstrap."
+    services="hdinsight"
+    documentationCenter=""
+    authors="mumian"
+    manager="jhubbard"
+    editor="cgronlun"
+    tags="azure-portal"/>
 
 <tags
-	ms.service="hdinsight"
-	ms.workload="big-data"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/02/2016"
-	ms.author="jgao"/>
+    ms.service="hdinsight"
+    ms.workload="big-data"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/02/2016"
+    ms.author="jgao"/>
 
-# ブートストラップを使って HDInsight クラスターをカスタマイズする
 
-次を含む構成ファイルを構成することが必要な場合があります。
+# <a name="customize-hdinsight-clusters-using-bootstrap"></a>Customize HDInsight clusters using Bootstrap
+
+Sometimes, you want to configure the configuration files which include:
 
 - clusterIdentity.xml
 - core-site.xml
@@ -37,86 +38,86 @@
 - webhcat-site.xml
 - yarn-site.xml
 
-再イメージ化により、クラスターは変更を保持できません。再イメージ化については、「[Role Instance Restarts Due to OS Upgrades (OS のアップグレードに伴うロール インスタンスの再起動)](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)」を参照してください。クラスターの有効期間中に変更を保持するには、作成プロセスで HDInsight クラスターのカスタマイズを使用します。これはクラスターの構成を変更するための推奨方法であり、変更は Azure 再イメージ化再起動イベントを越えて存続します。これらの構成の変更はサービスが起動される前に適用されるため、サービスを再起動する必要はありません。
+The clusters can't retain the changes due to re-imaging. For more information on re-imaging, see [Role Instance Restarts Due to OS Upgrades](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx). To keep the changes through the clusters' lifetime, you can use HDInsight cluster customization during the creation process. This is the recommended way to change configurations of a cluster and persist across these Azure reimage reboot restart events. These configuration changes are applied before service start, so services needn’t be restarted. 
 
-ブートストラップを使用する 3 つの方法があります。
+There are 3 methods to use bootstrap:
 
-- Azure PowerShell の使用
+- Use Azure PowerShell
 
     [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
     
-- .NET SDK の使用
-- Azure Resource Manager テンプレートの使用
+- Use .NET SDK
+- Use Azure Resource Manager template
 
-作成時に HDInsight クラスターへの追加コンポーネントのインストールの詳細については、次を参照してください。
+For information on installing additional components on HDInsight cluster during the creation time, see :
 
-- [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)
-- [Script Action を使用して HDInsight をカスタマイズする (Windows)](hdinsight-hadoop-customize-cluster.md)
+- [Customize HDInsight clusters using Script Action (Linux)](hdinsight-hadoop-customize-cluster-linux.md)
+- [Customize HDInsight clusters using Script Action (Windows)](hdinsight-hadoop-customize-cluster.md)
 
-## Azure PowerShell の使用
+## <a name="use-azure-powershell"></a>Use Azure PowerShell
 
-次の PowerShell コードでは、Hive 構成をカスタマイズします。
+The following PowerShell code customizes a Hive configuration:
 
-	# hive-site.xml configuration
-	$hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90" }
-	
-	$config = New-AzureRmHDInsightClusterConfig `
-		| Set-AzureRmHDInsightDefaultStorage `
-			-StorageAccountName "$defaultStorageAccountName.blob.core.windows.net" `
-			-StorageAccountKey $defaultStorageAccountKey `
-		| Add-AzureRmHDInsightConfigValues `
-			-HiveSite $hiveConfigValues 
-	
-	New-AzureRmHDInsightCluster `
-		-ResourceGroupName $existingResourceGroupName `
-		-ClusterName $clusterName `
-		-Location $location `
-		-ClusterSizeInNodes $clusterSizeInNodes `
-		-ClusterType Hadoop `
-		-OSType Windows `
-		-Version "3.2" `
-		-HttpCredential $httpCredential `
-		-Config $config 
+    # hive-site.xml configuration
+    $hiveConfigValues = @{ "hive.metastore.client.socket.timeout"="90" }
+    
+    $config = New-AzureRmHDInsightClusterConfig `
+        | Set-AzureRmHDInsightDefaultStorage `
+            -StorageAccountName "$defaultStorageAccountName.blob.core.windows.net" `
+            -StorageAccountKey $defaultStorageAccountKey `
+        | Add-AzureRmHDInsightConfigValues `
+            -HiveSite $hiveConfigValues 
+    
+    New-AzureRmHDInsightCluster `
+        -ResourceGroupName $existingResourceGroupName `
+        -ClusterName $clusterName `
+        -Location $location `
+        -ClusterSizeInNodes $clusterSizeInNodes `
+        -ClusterType Hadoop `
+        -OSType Windows `
+        -Version "3.2" `
+        -HttpCredential $httpCredential `
+        -Config $config 
 
-完全な作業 PowerShell スクリプトについては、「[付録 A](#hdinsight-hadoop-customize-cluster-bootstrap.md/appx-a:-powershell-sample)」を参照してください。
+A complete working PowerShell script can be found in [Appendix-A](#hdinsight-hadoop-customize-cluster-bootstrap.md/appx-a:-powershell-sample).
 
-**接続を確認するには:**
+**To verify the change:**
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
-2. 左側のウィンドウで、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックします。
-3. PowerShell スクリプトを使用して作成したクラスターをクリックします。
-4. ブレードの上部から **[ダッシュボード]** をクリックし、Ambari UI を開きます。
-5. 左側のメニューで **[Hive]** をクリックします。
-6. **[HiveServer2]** を **[概要]** からクリックします。
-7. **[Configs]** タブをクリックします。
-8. 左側のメニューで **[Hive]** をクリックします。
-9. **[詳細]** タブをクリックします。
-10. 下にスクロールして、**[Advanced hive-site]** を展開します。
-11. セクションの **hive.metastore.client.socket.timeout** を検索します。
+1. Sign on to the [Azure portal](https://portal.azure.com).
+2. On the left pane, click **Browse**, and then click **HDInsight Clusters**.
+3. Click the cluster you just created using the PowerShell script.
+4. Click **Dashboard** from the top of the blade to open the Ambari UI.
+5. Click **Hive** from the left menu.
+6. Click **HiveServer2** from **Summary**.
+7. Click the **Configs** tab.
+8. Click **Hive** from the left menu.
+9. Click the **Advanced** tab.
+10. Scroll down and then expand **Advanced hive-site**.
+11. Look for **hive.metastore.client.socket.timeout** in the section.
 
-他の構成ファイルのカスタマイズのサンプルを次に示します。
+Some more samples on customizing other configuration files:
 
-	# hdfs-site.xml configuration
-	$HdfsConfigValues = @{ "dfs.blocksize"="64m" } #default is 128MB in HDI 3.0 and 256MB in HDI 2.1
+    # hdfs-site.xml configuration
+    $HdfsConfigValues = @{ "dfs.blocksize"="64m" } #default is 128MB in HDI 3.0 and 256MB in HDI 2.1
 
-	# core-site.xml configuration
-	$CoreConfigValues = @{ "ipc.client.connect.max.retries"="60" } #default 50
+    # core-site.xml configuration
+    $CoreConfigValues = @{ "ipc.client.connect.max.retries"="60" } #default 50
 
-	# mapred-site.xml configuration
-	$MapRedConfigValues = @{ "mapreduce.task.timeout"="1200000" } #default 600000
+    # mapred-site.xml configuration
+    $MapRedConfigValues = @{ "mapreduce.task.timeout"="1200000" } #default 600000
 
-	# oozie-site.xml configuration
-	$OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # default 120
+    # oozie-site.xml configuration
+    $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # default 120
 
-詳細については、[HDInsight クラスターの作成のカスタマイズ](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx)に関する Azim Uddin のブログをご覧ください。
+For more information, see Azim Uddin's blog titled [Customizing HDInsight Cluster creation](http://blogs.msdn.com/b/bigdatasupport/archive/2014/04/15/customizing-hdinsight-cluster-provisioning-via-powershell-and-net-sdk.aspx).
 
-## .NET SDK の使用
+## <a name="use-.net-sdk"></a>Use .NET SDK
 
-「[.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap)」をご覧ください。
+See [Create Linux-based clusters in HDInsight using the .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
 
-## Resource Manager テンプレートの使用
+## <a name="use-resource-manager-template"></a>Use Resource Manager template
 
-Resource Manager テンプレートでは、ブートストラップを使用できます。
+You can use bootstrap in Resource Manager template:
 
     "configurations": {
         …
@@ -128,18 +129,18 @@ Resource Manager テンプレートでは、ブートストラップを使用で
     }
 
 
-![hdinsight hadoop を使用し、クラスターのブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![hdinsight hadoop customize cluster bootstrap azure resource manager template](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-- 「[HDInsight での Hadoop クラスターの作成][hdinsight-provision-cluster]」では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
-- [HDInsight 用の Script Action スクリプトの開発][hdinsight-write-script]
-- [HDInsight クラスターで Spark をインストールして使用する][hdinsight-install-spark]
-- [HDInsight クラスターに R をインストールして使用する][hdinsight-install-r]
-- [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install.md)
-- [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install.md)
+- [Create Hadoop clusters in HDInsight][hdinsight-provision-cluster] provides instructions on how to create an HDInsight cluster by using other custom options.
+- [Develop Script Action scripts for HDInsight][hdinsight-write-script]
+- [Install and use Spark on HDInsight clusters][hdinsight-install-spark]
+- [Install and use R on HDInsight clusters][hdinsight-install-r]
+- [Install and use Solr on HDInsight clusters](hdinsight-hadoop-solr-install.md).
+- [Install and use Giraph on HDInsight clusters](hdinsight-hadoop-giraph-install.md).
 
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
@@ -148,11 +149,11 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 [powershell-install-configure]: powershell-install-configure.md
 
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター作成時の段階"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "Stages during cluster creation"
 
-## 付録 A: PowerShell サンプル
+## <a name="appx-a:-powershell-sample"></a>Appx-A: PowerShell sample
 
-この PowerShell スクリプトでは、HDInsight クラスターを作成し、Hive の設定をカスタマイズします。
+This PowerShell script creates an HDInsight cluster and customizes a Hive setting:
 
     ####################################
     # Set these variables
@@ -261,4 +262,8 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 
     #endregion
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,33 +1,34 @@
 <properties 
-   pageTitle="仮想ネットワーク構成ファイルでの DNS 設定の指定 | Microsoft Azure"
-   description="クラシック デプロイ モデルで仮想ネットワーク構成ファイルを使用して仮想ネットワークの DNS サーバーの設定を変更する方法"
+   pageTitle="Specifying DNS Settings in a virtual network configuration file | Microsoft Azure"
+   description="How to change DNS server settings in a virtual network using a virtual network configuration file in the classic deployment model"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
    manager="carmonm"
    editor="tysonn" 
    tags="azure-service-management" />
-<tags  
+<tags 
    ms.service="virtual-network"
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="02/23/2016"
-   ms.author="jdial" />
+   ms.author="jdial" /> 
 
 
-# 仮想ネットワーク構成ファイルでの DNS 設定の指定
 
-ネットワーク構成ファイルの 2 つの要素を使用して、ドメイン ネーム システム (DNS) の設定 **DnsServers** と **DnsServerRef** を指定することができます。**DnsServers** 要素に IP アドレスと参照名を指定することにより、DNS サーバーのリストを追加できます。その後、**DnsServerRef** 要素を使用して、DnsServers 要素から、仮想ネットワーク内のネットワーク サイトに使用する DNS サーバー エントリを指定できます。
+# <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Specifying DNS settings in a virtual network configuration file
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] この記事では、クラシック デプロイメント モデルについて説明します。
+A network configuration file has two elements that you can use to specify Domain Name System (DNS) settings: **DnsServers** and **DnsServerRef**. You can add a list of DNS servers by specifying their IP addresses and reference names to the **DnsServers** element. You can then use a **DnsServerRef** element to specify which DNS server entries from the DnsServers element are used for different network sites within your virtual network.
 
-ネットワーク構成ファイルは、次の要素を含むことができます。各要素のタイトルは、要素値の設定に関する追加情報を提供するページにリンクされています。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] This article covers the classic deployment model.
 
->[AZURE.IMPORTANT] ネットワーク構成ファイルの構成方法について詳しくは、「[ネットワーク構成ファイルを使用した仮想ネットワークの構成](virtual-networks-using-network-configuration-file.md)」をご覧ください。ネットワーク構成ファイルに含まれる各要素については、「[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)」をご覧ください。
+The network configuration file may contain the following elements. The title of each element is linked to a page that provides additional information about the element value settings.
 
-[Dns 要素](http://go.microsoft.com/fwlink/?LinkId=248093)
+>[AZURE.IMPORTANT] For information about how to configure the network configuration file, see [Configure a Virtual Network Using a Network Configuration File](virtual-networks-using-network-configuration-file.md). For information about each element contained in the network configuration file, see [Azure Virtual Network Configuration Schema](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+
+[Dns Element](http://go.microsoft.com/fwlink/?LinkId=248093)
 
     <Dns>
       <DnsServers>
@@ -37,22 +38,26 @@
       </DnsServers>
     </Dns>
 
->[AZURE.WARNING] **DnsServer** 要素の **name** 属性は、**DnsServerRef** 要素の参照としてのみ使用されます。DNS サーバーのホスト名を表してはいません。各 **DnsServer** 属性の値は、Microsoft Azure サブスクリプション全体で一意である必要があります
+>[AZURE.WARNING] The **name** attribute in the **DnsServer** element is used only as a reference for the **DnsServerRef** element. It does not represent the host name for the DNS server. Each **DnsServer** attribute value must be unique across the entire Microsoft Azure subscription
 
-[VirtualNetworkSites 要素](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Virtual Network Sites Element](http://go.microsoft.com/fwlink/?LinkId=248093)
 
-	<DnsServersRef>
-	  <DnsServerRef name="ID1" />
-	  <DnsServerRef name="ID2" />
-	  <DnsServerRef name="ID3" />
-	</DnsServersRef>
+    <DnsServersRef>
+      <DnsServerRef name="ID1" />
+      <DnsServerRef name="ID2" />
+      <DnsServerRef name="ID3" />
+    </DnsServersRef>
 
->[AZURE.NOTE] VirtualNetworkSites 要素に対してこの設定を指定するには、その前に DNS 要素で定義されている必要があります。VirtualNetworkSites 要素の DnsServerRef *name* は、DNS 要素で DnsServer *name* に対して指定されている名前の値を参照している必要があります。
+>[AZURE.NOTE] In order to specify this setting for the Virtual Network Sites element, it must be previously defined in the DNS element. The DnsServerRef *name* in the Virtual Network Sites element must refer to a name value specified in the DNS element for DnsServer *name*.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)について理解します。
-- [Azure サービスの構成スキーマ](https://msdn.microsoft.com/library/windowsazure/ee758710)について理解します。
-- [ネットワーク構成ファイルを使用して仮想ネットワークを構成](virtual-networks-using-network-configuration-file.md)します。
+- Understand the [Azure Virtual Network Configuration Schema](http://go.microsoft.com/fwlink/?LinkId=248093).
+- Understand the [Azure Service Configuration Schema](https://msdn.microsoft.com/library/windowsazure/ee758710).
+- [Configure a virtual network using Network configuration files](virtual-networks-using-network-configuration-file.md).
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

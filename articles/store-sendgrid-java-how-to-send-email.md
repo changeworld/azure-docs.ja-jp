@@ -1,46 +1,47 @@
 <properties 
-	pageTitle="SendGrid 電子メール サービスの使用方法 (Java) | Microsoft Azure" 
-	description="Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。コード サンプルは Java で記述されています。" 
-	services="" 
-	documentationCenter="java" 
-	authors="thinkingserious" 
-	manager="sendgrid" 
-	editor="mollybos"/>
+    pageTitle="How to use the SendGrid email service (Java) | Microsoft Azure" 
+    description="Learn how send email with the SendGrid email service on Azure. Code samples written in Java." 
+    services="" 
+    documentationCenter="java" 
+    authors="thinkingserious" 
+    manager="sendgrid" 
+    editor="mollybos"/>
 
 <tags 
-	ms.service="multiple" 
-	ms.workload="na" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="Java" 
-	ms.topic="article" 
-	ms.date="10/30/2014" 
-	ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork"/>
-# Java から SendGrid を使用して電子メールを送信する方法
+    ms.service="multiple" 
+    ms.workload="na" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="Java" 
+    ms.topic="article" 
+    ms.date="10/30/2014" 
+    ms.author="elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork"/>
 
-このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。コード サンプルは Java で記述されています。紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、**添付ファイルの追加**、**フィルターの使用**、および**プロパティの更新**です。SendGrid と電子メールの送信の詳細については、「[次のステップ](#next-steps)」を参照してください。
+# <a name="how-to-send-email-using-sendgrid-from-java"></a>How to Send Email Using SendGrid from Java
 
-## SendGrid 電子メール サービスとは
+This guide demonstrates how to perform common programming tasks with the SendGrid email service on Azure. The samples are written in Java. The scenarios covered include **constructing email**, **sending email**, **adding attachments**, **using filters**, and **updating properties**. For more information on SendGrid and sending email, see the [Next steps](#next-steps) section.
 
-SendGrid は、信頼性の高い[トランザクション電子メール配信]、拡張性、およびリアルタイム分析の機能を備えた[クラウドベース電子メール サービス]であり、柔軟な API を備えているためカスタム統合も容易です。SendGrid の一般的な使用シナリオを次に示します。
+## <a name="what-is-the-sendgrid-email-service?"></a>What is the SendGrid Email Service?
 
--   顧客に受信通知を自動送信する
--   顧客に広告メールを月 1 回送信するための配布リストを管理する
--   ブロックされた電子メールや顧客の応答性などを表す測定値をリアルタイムで収集する
--   傾向を認識するために役立つレポートを生成する
--   顧客の問い合わせを転送する
-- アプリケーションからの電子メール通知
+SendGrid is a [cloud-based email service] that provides reliable [transactional email delivery], scalability, and real-time analytics along with flexible APIs that make custom integration easy. Common SendGrid usage scenarios include:
 
-詳細については、<http://sendgrid.com> を参照してください。
+-   Automatically sending receipts to customers
+-   Administering distribution lists for sending customers monthly e-fliers and special offers
+-   Collecting real-time metrics for things like blocked e-mail, and customer responsiveness
+-   Generating reports to help identify trends
+-   Forwarding customer inquiries
+- Email notifications from your application
 
-## SendGrid アカウントの作成
+For more information, see <http://sendgrid.com>.
+
+## <a name="create-a-sendgrid-account"></a>Create a SendGrid account
 
 [AZURE.INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
-## 方法: javax.mail ライブラリを使用する
+## <a name="how-to:-use-the-javax.mail-libraries"></a>How to: Use the javax.mail libraries
 
-javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> などから取得し、コードにインポートします。大まかに言えば、javax.mail ライブラリと SMTP を使用して電子メールを送信するプロセスは、次の処理を実行することです。
+Obtain the javax.mail libraries, for example from <http://www.oracle.com/technetwork/java/javamail> and import them into your code. At a high-level, the process for using the javax.mail library to send email using SMTP is to do the following:
 
-1.  SMTP に関する値を指定します。たとえば、SMTP サーバーは、SendGrid では smtp.sendgrid.net になります。
+1.  Specify the SMTP values, including the SMTP server, which for SendGrid is smtp.sendgrid.net.
     
 ```
         import java.util.Properties;
@@ -49,25 +50,25 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
         import javax.mail.internet.*;
 
         public class MyEmailer {
-	       private static final String SMTP_HOST_NAME = "smtp.sendgrid.net";
-	       private static final String SMTP_AUTH_USER = "your_sendgrid_username";
+           private static final String SMTP_HOST_NAME = "smtp.sendgrid.net";
+           private static final String SMTP_AUTH_USER = "your_sendgrid_username";
            private static final String SMTP_AUTH_PWD = "your_sendgrid_password";
         
-		   public static void main(String[] args) throws Exception{
-         	  new MyEmailer().SendMail();
+           public static void main(String[] args) throws Exception{
+              new MyEmailer().SendMail();
            }
         
-		   public void SendMail() throws Exception
+           public void SendMail() throws Exception
            {
               Properties properties = new Properties();
-           	  properties.put("mail.transport.protocol", "smtp");
-           	  properties.put("mail.smtp.host", SMTP_HOST_NAME);
-           	  properties.put("mail.smtp.port", 587);
-           	  properties.put("mail.smtp.auth", "true");
-           	  // …
+              properties.put("mail.transport.protocol", "smtp");
+              properties.put("mail.smtp.host", SMTP_HOST_NAME);
+              properties.put("mail.smtp.port", 587);
+              properties.put("mail.smtp.auth", "true");
+              // …
 ```
 
-2.  *javax.mail.Authenticator* クラスを拡張し、*getPasswordAuthentication* メソッドの実装で SendGrid のユーザー名とパスワードを返します。  
+2.  Extend the *javax.mail.Authenticator* class, and in your implementation of the *getPasswordAuthentication* method, return your SendGrid user name and password.  
 
         private class SMTPAuthenticator extends javax.mail.Authenticator {
         public PasswordAuthentication getPasswordAuthentication() {
@@ -76,17 +77,17 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
            return new PasswordAuthentication(username, password);
         }
 
-3.  *javax.mail.Session* オブジェクトを使用して、認証された電子メール セッションを作成します。
+3.  Create an authenticated email session through a *javax.mail.Session* object.  
 
         Authenticator auth = new SMTPAuthenticator();
         Session mailSession = Session.getDefaultInstance(properties, auth);
 
-4.  メッセージを作成し、**To**、**From**、**Subject**、およびコンテンツの値を設定します。このコードは「[方法: 電子メールを作成する](#bkmk_HowToCreateEmail)」に示しています。
-5.  *javax.mail.Transport* オブジェクトを使用してメッセージを送信します。このコードは、「[方法: 電子メールを送信する](How to: Send an Email)」セクションに示しています。
+4.  Create your message and assign **To**, **From**, **Subject** and content values. This is shown in the [How To: Create an Email](#bkmk_HowToCreateEmail) section.
+5.  Send the message through a *javax.mail.Transport* object. This is shown in the [How To: Send an Email][How to: Send an Email] section.
 
-## 方法: 電子メールを作成する
+## <a name="how-to:-create-an-email"></a>How to: Create an email
 
-次のコードは電子メールに関する値を指定する方法を示しています。
+The following shows how to specify values for an email.
 
     MimeMessage message = new MimeMessage(mailSession);
     Multipart multipart = new MimeMultipart("alternative");
@@ -94,10 +95,10 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
     part1.setText("Hello, Your Contoso order has shipped. Thank you, John");
     BodyPart part2 = new MimeBodyPart();
     part2.setContent(
-		"<p>Hello,</p>
-		<p>Your Contoso order has <b>shipped</b>.</p>
-		<p>Thank you,<br>John</br></p>",
-		"text/html");
+        "<p>Hello,</p>
+        <p>Your Contoso order has <b>shipped</b>.</p>
+        <p>Thank you,<br>John</br></p>",
+        "text/html");
     multipart.addBodyPart(part1);
     multipart.addBodyPart(part2);
     message.setFrom(new InternetAddress("john@contoso.com"));
@@ -106,9 +107,9 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
     message.setSubject("Your recent order");
     message.setContent(multipart);
 
-## 方法: 電子メールを送信する
+## <a name="how-to:-send-an-email"></a>How to: Send an email
 
-次のコードは電子メールを送信する方法を示しています。
+The following shows how to send an email.
 
     Transport transport = mailSession.getTransport();
     // Connect the transport object.
@@ -118,13 +119,13 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
     // Close the connection.
     transport.close();
 
-## 方法: 添付ファイルを追加する
+## <a name="how-to:-add-an-attachment"></a>How to: Add an attachment
 
-次のコードは添付ファイルを追加する方法を示しています。
+The following code shows you how to add an attachment.
 
     // Local file name and path.
     String attachmentName = "myfile.zip";
-    String attachmentPath = "c:\\myfiles\"; 
+    String attachmentPath = "c:\\myfiles\\"; 
     MimeBodyPart attachmentPart = new MimeBodyPart();
     // Specify the local file to attach.
     DataSource source = new FileDataSource(attachmentPath + attachmentName);
@@ -134,75 +135,79 @@ javax.mail ライブラリを <http://www.oracle.com/technetwork/java/javamail> 
     attachmentPart.setFileName(attachmentName);
     multipart.addBodyPart(attachmentPart);
 
-## 方法: フィルターを使用してフッター、追跡、および分析を有効にする
+## <a name="how-to:-use-filters-to-enable-footers,-tracking,-and-analytics"></a>How to: Use filters to enable footers, tracking, and analytics
 
-SendGrid では、*フィルター*を使用することでその他の電子メール機能も利用することができます。その設定を電子メール メッセージに追加することで、クリック追跡、Google 分析、サブスクリプション追跡などの独自の機能を有効にすることができます。すべてのフィルターの一覧については、[フィルター設定][]に関するページを参照してください。
+SendGrid provides additional email functionality through the use of *filters*. These are settings that can be added to an email message to enable specific functionality such as enabling click tracking, Google analytics, subscription tracking, and so on. For a full list of filters, see [Filter Settings][].
 
--   次のコードでは、フッター フィルターを挿入して、送信される電子メールの 下部に HTML テキストが追加されるようにしています。
+-   The following shows how to insert a footer filter that results in HTML text appearing at the bottom of the email being sent.
 
         message.addHeader("X-SMTPAPI", 
-			"{"filters": 
-			{"footer": 
-			{"settings": 
-        	{"enable":1,"text/html": 
-			"<html><b>Thank you</b> for your business.</html>"}}}}");
+            "{\"filters\": 
+            {\"footer\": 
+            {\"settings\": 
+            {\"enable\":1,\"text/html\": 
+            \"<html><b>Thank you</b> for your business.</html>\"}}}}");
 
--   別のフィルターの例として、クリック追跡があります。電子メールのテキストに次のようなハイパーリンクが含まれており、そのクリック率を追跡するとします。
+-   Another example of a filter is click tracking. Let’s say that your email text contains a hyperlink, such as the following, and you want to track the click rate:
 
         messagePart.setContent(
-			"Hello,
-			<p>This is the body of the message. Visit 
-			<a href='http://www.contoso.com'>http://www.contoso.com</a>.</p>
-			Thank you.", 
-        	"text/html");
+            "Hello,
+            <p>This is the body of the message. Visit 
+            <a href='http://www.contoso.com'>http://www.contoso.com</a>.</p>
+            Thank you.", 
+            "text/html");
 
--   クリック追跡を有効にするには、次のコードを使用します。
+-   To enable the click tracking, use the following code:
 
         message.addHeader("X-SMTPAPI", 
-			"{"filters": 
-			{"clicktrack": 
-			{"settings": 
-        	{"enable":1}}}}");
+            "{\"filters\": 
+            {\"clicktrack\": 
+            {\"settings\": 
+            {\"enable\":1}}}}");
 
-## 方法: 電子メールのプロパティを更新する
+## <a name="how-to:-update-email-properties"></a>How to: Update email properties
 
-一部の電子メールのプロパティは、**set*Property*** を使用して上書きすることや、**add*Property*** を使用して追加することができます。
+Some email properties can be overwritten using **set*Property*** or appended using **add*Property***.
 
-たとえば、**ReplyTo** アドレスを指定するには、次のコードを使用します。
+For example, to specify **ReplyTo** addresses, use the following:
 
     InternetAddress addresses[] = 
-		{ new InternetAddress("john@contoso.com"),
+        { new InternetAddress("john@contoso.com"),
           new InternetAddress("wendy@contoso.com") };
     
-	message.setReplyTo(addresses);
+    message.setReplyTo(addresses);
 
-**Cc** 受信者を追加するには、次のコードを使用します。
+To add a **Cc** recipient, use the following:
 
     message.addRecipient(Message.RecipientType.CC, new 
     InternetAddress("john@contoso.com"));
 
-## 方法: その他の SendGrid サービスを使用する
+## <a name="how-to:-use-additional-sendgrid-services"></a>How to: Use additional SendGrid services
 
-SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。詳細については、[SendGrid API に関するドキュメント][]を参照してください。
+SendGrid offers web-based APIs that you can use to leverage additional SendGrid functionality from your Azure application. For full details, see the [SendGrid API documentation][].
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+Now that you’ve learned the basics of the SendGrid Email service, follow these links to learn more.
 
-* Azure の展開での SendGrid の使用方法を示すサンプル: [Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email-example.md)
-* SendGrid Java SDK に関する情報: <https://sendgrid.com/docs/Code_Examples/java.html>
-* SendGrid API に関するドキュメント: <https://sendgrid.com/docs/API_Reference/index.html>
-* Azure ユーザー向けの SendGrid 特別プラン: <https://sendgrid.com/windowsazure.html>
+* Sample that demonstrates using SendGrid in an Azure deployment: [How to send email using SendGrid from Java in an Azure deployment](store-sendgrid-java-how-to-send-email-example.md)
+* SendGrid Java SDK: <https://sendgrid.com/docs/Code_Examples/java.html>
+* SendGrid API documentation: <https://sendgrid.com/docs/API_Reference/index.html>
+* SendGrid special offer for Azure customers: <https://sendgrid.com/windowsazure.html>
 
   [http://sendgrid.com]: https://sendgrid.com
   [http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html
   [http://www.sendgrid.com/azure.html]: https://www.sendgrid.com/windowsazure.html
   [http://sendgrid.com/features]: https://sendgrid.com/features
   [http://www.oracle.com/technetwork/java/javamail]: http://www.oracle.com/technetwork/java/javamail/index.html
-  [フィルター設定]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
-  [SendGrid API に関するドキュメント]: https://sendgrid.com/docs/API_Reference/index.html
+  [Filter Settings]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
+  [SendGrid API documentation]: https://sendgrid.com/docs/API_Reference/index.html
   [http://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
-  [トランザクション電子メール配信]: https://sendgrid.com/email-solutions
-  [クラウドベース電子メール サービス]: https://sendgrid.com/transactional-email
+  [cloud-based email service]: https://sendgrid.com/email-solutions
+  [transactional email delivery]: https://sendgrid.com/transactional-email
 
-<!----HONumber=Oct15_HO3-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

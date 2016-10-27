@@ -1,12 +1,12 @@
 <properties
-	pageTitle="Logic Apps の Webhook コネクタ |Microsoft Azure"
-	description="配列のフィルター処理などのアクションを実行するための Webhook アクションおよびトリガーの概要。"
-	services=""
-	documentationCenter="" 
-	authors="jeffhollan"
-	manager="erikre"
-	editor=""
-	tags="connectors"/>
+    pageTitle="Logic App webhook connector | Microsoft Azure"
+    description="Overview of webhook action and triggers for performing actions like Filter Array."
+    services=""
+    documentationCenter="" 
+    authors="jeffhollan"
+    manager="erikre"
+    editor=""
+    tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,146 +17,153 @@
    ms.date="07/21/2016"
    ms.author="jehollan"/>
 
-# Webhook コネクタの概要
 
-Webhook アクションおよびトリガーを使用すると、以下を実現するためにフローをトリガー、一時停止、再開できます。
+# <a name="get-started-with-the-webhook-connector"></a>Get started with the webhook connector
 
-- 項目を受信するとすぐに [Azure Event Hub](https://github.com/logicappsio/EventHubAPI) からトリガーする
-- 承認を待ってからワークフローを続行する
+With the webhook action and trigger you can trigger, pause, and resume flows to accomplish:
 
-Webhook のサブスクライブをサポートする API の作成については、[Logic Apps のコネクタの作成に関するこちらの記事](../app-service-logic/app-service-logic-create-api-app.md)をご覧ください。
+- Trigger from an [Azure Event Hub as soon as an item](https://github.com/logicappsio/EventHubAPI) is received
+- Wait for an approval before continuing a workflow
 
----
-
-## Webhook トリガーの使用
-
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。Webhook トリガーは、イベントが発生するとすぐにロジック アプリが起動する[要求トリガー](./connectors-native-reqres.md)と同様に、新しい項目のポーリングに依存しないので特に便利です。Webhook トリガーでは、必要に応じてロジック アプリの起動に使用できるサービスに "コールバック URL" を登録することでこれを実行します。
-
-ロジック アプリ デザイナーで HTTP トリガーをセットアップする方法の例を次に示します。これは、[Logic Apps で使用される Webhook のサブスクライブ/サブスクライブ解除パターン](../app-service-logic/app-service-logic-create-api-app.md#webhook-triggers)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。サブスクライブ呼び出しは、ロジック アプリが新しい Webhook と共に保存されるか、無効から有効に切り替えられるたびに実行されます。サブスクライブ解除呼び出しは、ロジック アプリの Webhook トリガーが削除されて保存されるか、有効から無効に切り替えられるたびに実行されます。
-
-1. ロジック アプリでの最初の手順として、**HTTP Webhook** トリガーを追加します。
-1. Webhook のサブスクライブ呼び出しとサブスクライブ解除呼び出しのパラメーターを入力します。
-	- これは、[HTTP アクション](./connectors-native-http.md)形式と同じパターンに従います。
-
-	![HTTP トリガー](./media/connectors-native-webhook/using-trigger.png)
-
-1. 1 つ以上のアクションを追加します。
-1. [保存] をクリックしてロジック アプリを発行します。これにより、このロジック アプリをトリガーするために必要なコールバック URL を使用して、サブスクライブ エンドポイントが呼び出されます。
-1. サービスがコールバック URL に対して `HTTP POST` を実行するたびに、ロジック アプリが起動します (また、ロジック アプリには、要求で渡されたすべてのデータが含まれます)。
-
-## Webhook アクションの使用
-	
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください。](connectors-overview.md) Webhook アクションは、*コールバック URL* をサービスに登録し、その URL が呼び出されるまで待機してから再開するので特に便利です。["承認電子メールの送信"](./connectors-create-api-office365-outlook.md) は、このパターンに従うコネクタの一例です。Webhook アクションを使用することで、このパターンをどのサービスにも適用できます。これは、[Logic Apps で使用される Webhook のサブスクライブ/サブスクライブ解除パターン](../app-service-logic/app-service-logic-create-api-app.md#webhook-actions)に従う API を既にデプロイしているか、その API にアクセスしていることを前提としています。ロジック アプリが Webhook アクションを実行すると、サブスクライブ呼び出しが実行されます。応答を待っている間またはロジック アプリが実行タイムアウトになる前に実行がキャンセルされると、サブスクライブ解除呼び出しが実行されます。
-
-Webhook アクションを追加するには、次の手順に従います。
-
-1. **[新しいステップ]** をクリックします。
-1. **[アクションの追加]** を選択します。
-1. アクションの検索ボックスに「webhook」と入力して、**[HTTP Webhook]** アクションを表示します。
-
-	![クエリ アクションの選択](./media/connectors-native-webhook/using-action-1.png)
-
-1. Webhook のサブスクライブ呼び出しとサブスクライブ解除呼び出しのパラメーターを入力します。
-	- これは、[HTTP アクション](./connectors-native-http.md)形式と同じパターンに従います。
-
-	![クエリ アクションの完了](./media/connectors-native-webhook/using-action-2.png)
-
-	- ロジック アプリは、実行時に該当のステップに到達すると、サブスクライブ エンドポイントを呼び出します。
-
-1. ツール バーの左上隅にある [保存] をクリックすると、ロジック アプリが保存および発行 (アクティブ化) されます。
+Information on creating an API that supports a webhook subscribe can be found [in this article on creating Logic App connectors](../app-service-logic/app-service-logic-create-api-app.md).
 
 ---
 
-## 技術的な詳細
+## <a name="use-the-webhook-trigger"></a>Use the webhook trigger
 
-Webhook でサポートされているトリガーとアクションの詳細を以下に示します。
+A trigger is an event that can be used to start the workflow defined in a Logic app. [Learn more about triggers](connectors-overview.md).  A webhook trigger is especially useful as it doesn't rely on polling for new items - like the [request trigger](./connectors-native-reqres.md) the logic app will fire the instant an event occurs.  It does this by registering a *callback URL* to a service which can be used to fire the logic app as needed.
 
-## Webhook トリガー
+Here’s an example sequence of how to setup a HTTP trigger in the logic app designer.  This assumes you have already deployed or are accessing an API that follows [the webhook subscribe and unsubscribe pattern used in Logic Apps](../app-service-logic/app-service-logic-create-api-app.md#webhook-triggers).  The subscribe call is made whenever a logic app is saved with a new webhook, or switched from disabled to enabled.  The unsubscribe call is made whenever a logic app webhook trigger is removed and saved, or switched from enabled to disabled.
 
-トリガーとは、ワークフローを開始するための操作です。[トリガーの詳細についてはこちらを参照してください。](connectors-overview.md) このコネクタにはトリガー 1 つあります。
+1. Add the **HTTP Webhook** trigger as the first step in a logic app
+1. Fill in the parameters for the webhook subscribe and unsubscribe calls
+    - This follow the same pattern as the [HTTP action](./connectors-native-http.md) format
 
-|アクション|説明|
+    ![HTTP Trigger](./media/connectors-native-webhook/using-trigger.png)
+
+1. Add at least one action
+1. Click save to publish the logic app - this will call the subscribe endpoint with the callback URL needed to trigger this logic app
+1. Whenever the service makes an `HTTP POST` to the callback URL, the logic app will fire (and include any data passed in the request)
+
+## <a name="use-the-webhook-action"></a>Use the webhook action
+    
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions.](connectors-overview.md)  A webhook action is especially useful as it will register a *callback URL* with a service and wait until the URL is called before resuming.  The ["Send Approval Email"](./connectors-create-api-office365-outlook.md) is an example of a connector that follows this pattern.  You can extend this pattern into any service through the webhook action.  This assumes you have already deployed or are accessing an API that follows [the webhook subscribe and unsubscribe pattern used in Logic Apps](../app-service-logic/app-service-logic-create-api-app.md#webhook-actions).  The subscribe call is made whenever a logic app executes the webhook action.  The unsubscribe call is made whenever a run is cancelled while awaiting a response, or before the logic app run times out.
+
+To add a webhook action:
+
+1. Select the **New Step** button
+1. Choose **Add an action**
+1. In the action search box, type "webhook" to list the **HTTP Webhook** action
+
+    ![Select query action](./media/connectors-native-webhook/using-action-1.png)
+
+1. Fill in the parameters for the webhook subscribe and unsubscribe calls
+    - This follow the same pattern as the [HTTP action](./connectors-native-http.md) format
+
+    ![Complete query action](./media/connectors-native-webhook/using-action-2.png)
+
+    - At runtime the logic app will call the subscribe endpoint once it reaches the step
+
+1. Click save at the top left corner of the toolbar, and your logic app will both save and publish (activate)
+
+---
+
+## <a name="technical-details"></a>Technical details
+
+Below are the details for the trigger and action webhook supports.
+
+## <a name="webhook-triggers"></a>Webhook triggers
+
+A trigger is an operation to start a workflow. [Learn more about triggers.](connectors-overview.md) This connector has 1 trigger.
+
+|Action|Description|
 |---|---|
-|HTTP Webhook|コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してロジック アプリを起動することができます。|
+|HTTP Webhook|Subscribe a callback URL to a service that can call the URL to fire logic app as needed.|
 
-### トリガーの詳細
+### <a name="trigger-details"></a>Trigger details
 
-Webhook コネクタには、使用可能なトリガーが 1 つ用意されています。アクションの情報、必須および省略可能な入力フィールド、アクションの使用に関連した対応する出力の詳細を次に示します。
+The webhook connector comes with 1 possible trigger. Below is the information on the action, its required and optional input fields, and the corresponding output details associated with its usage.
 
-#### HTTP Webhook
-コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してロジック アプリを起動することができます。* は必須フィールドを意味します。
+#### <a name="http-webhook"></a>HTTP Webhook
+Subscribe a callback URL to a service that can call the URL to fire logic app as needed.
+An * means required field.
 
-|表示名|プロパティ名|説明|
+|Display Name|Property Name|Description|
 |---|---|---|
-|Subscribe Method (メソッドのサブスクライブ)*|method|サブスクライブ要求に使用する HTTP メソッド|
-|Subscribe URI (URI のサブスクライブ)*|uri|サブスクライブ要求に使用する HTTP URI|
-|Unsubscribe Method (メソッドのサブスクライブ解除)*|method|サブスクライブ解除要求に使用する HTTP メソッド|
-|Unsubscribe URI (URI のサブスクライブ解除)*|uri|サブスクライブ解除要求に使用する HTTP URI|
-|Subscribe Body (本文のサブスクライブ)|body|サブスクライブの HTTP 要求本文|
-|Subscribe Headers (ヘッダーのサブスクライブ)|headers|サブスクライブの HTTP 要求ヘッダー|
-|Subscribe Authentication (認証のサブスクライブ)|authencation|サブスクライブに使用する HTTP 認証 (詳細については、[HTTP コネクタ](./connectors-native-http.md#authenication)に関する記事を参照)|
-|Unsubscribe Body (本文のサブスクライブ解除)|body|サブスクライブ解除の HTTP 要求本文|
-|Unsubscribe Headers (ヘッダーのサブスクライブ解除)|headers|サブスクライブ解除の HTTP 要求ヘッダー|
-|Unsubscribe Authentication (認証のサブスクライブ解除)|authentication|サブスクライブ解除に使用する HTTP 認証 (詳細については、[HTTP コネクタ](./connectors-native-http.md#authenication)に関する記事を参照)|
+|Subscribe Method*|method|HTTP Method to use for subscribe request|
+|Subscribe URI*|uri|HTTP URI to use for subscribe request|
+|Unsubscribe Method*|method|HTTP method to use for unsubscribe request|
+|Unsubscribe URI*|uri|HTTP URI to use for unsubscribe request|
+|Subscribe Body|body|HTTP request body for subscribe|
+|Subscribe Headers|headers|HTTP request headers for subscribe|
+|Subscribe Authentication|authencation|HTTP authentication to use for subscribe. [See HTTP connector](./connectors-native-http.md#authenication) for details|
+|Unsubscribe Body|body|HTTP request body for unsubscribe|
+|Unsubscribe Headers|headers|HTTP request headers for unsubscribe|
+|Unsubscribe Authentication|authentication|HTTP authentication to use for unsubscribe. [See HTTP connector](./connectors-native-http.md#authenication) for details|
 <br>
 
-**出力の詳細**
+**Output Details**
 
-Webhook 要求
+Webhook request
 
-|プロパティ名|データ型|説明|
+|Property Name|Data Type|Description|
 |---|---|---|
-|ヘッダー|オブジェクト|Webhook 要求ヘッダー|
-|本文|オブジェクト|Webhook 要求オブジェクト|
-|状態コード|int|Webhook 要求の状態コード|
+|Headers|object|Webhook request headers|
+|Body|object|Webhook request object|
+|Status Code|int|Webhook request status code|
 
-## Webhook アクション
+## <a name="webhook-actions"></a>Webhook actions
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください。](connectors-overview.md) このコネクタには、使用可能なアクションが 1 つあります。
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions.](connectors-overview.md) The connector has 1 possible action. 
 
-|アクション|説明|
+|Action|Description|
 |---|---|
-|HTTP Webhook|コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してワークフロー ステップを再開できます。|
+|HTTP Webhook|Subscribe a callback URL to a service that can call the URL to resume a workflow step as needed.|
 
-### アクションの詳細
+### <a name="action-details"></a>Action details
 
-Webhook コネクタには、使用可能なアクションが 1 つ用意されています。アクションの情報、必須および省略可能な入力フィールド、アクションの使用に関連した対応する出力の詳細を次に示します。
+The webhook connector comes with 1 possible action. Below, there is information on the action, its required and optional input fields, and the corresponding output details associated with its usage.
 
-#### HTTP Webhook
-コールバック URL をサービスにサブスクライブします。サービスは、必要に応じてこの URL を呼び出してワークフロー ステップを再開できます。* は必須フィールドを意味します。
+#### <a name="http-webhook"></a>HTTP Webhook
+Subscribe a callback URL to a service that can call the URL to resume a workflow step as needed.
+An * means required field.
 
-|表示名|プロパティ名|説明|
+|Display Name|Property Name|Description|
 |---|---|---|
-|Subscribe Method (メソッドのサブスクライブ)*|method|サブスクライブ要求に使用する HTTP メソッド|
-|Subscribe URI (URI のサブスクライブ)*|uri|サブスクライブ要求に使用する HTTP URI|
-|Unsubscribe Method (メソッドのサブスクライブ解除)*|method|サブスクライブ解除要求に使用する HTTP メソッド|
-|Unsubscribe URI (URI のサブスクライブ解除)*|uri|サブスクライブ解除要求に使用する HTTP URI|
-|Subscribe Body (本文のサブスクライブ)|body|サブスクライブの HTTP 要求本文|
-|Subscribe Headers (ヘッダーのサブスクライブ)|headers|サブスクライブの HTTP 要求ヘッダー|
-|Subscribe Authentication (認証のサブスクライブ)|authencation|サブスクライブに使用する HTTP 認証 (詳細については、[HTTP コネクタ](./connectors-native-http.md#authentication)に関する記事を参照)|
-|Unsubscribe Body (本文のサブスクライブ解除)|body|サブスクライブ解除の HTTP 要求本文|
-|Unsubscribe Headers (ヘッダーのサブスクライブ解除)|headers|サブスクライブ解除の HTTP 要求ヘッダー|
-|Unsubscribe Authentication (認証のサブスクライブ解除)|authentication|サブスクライブ解除に使用する HTTP 認証 (詳細については、[HTTP コネクタ](./connectors-native-http.md#authentication)に関する記事を参照)|
+|Subscribe Method*|method|HTTP Method to use for subscribe request|
+|Subscribe URI*|uri|HTTP URI to use for subscribe request|
+|Unsubscribe Method*|method|HTTP method to use for unsubscribe request|
+|Unsubscribe URI*|uri|HTTP URI to use for unsubscribe request|
+|Subscribe Body|body|HTTP request body for subscribe|
+|Subscribe Headers|headers|HTTP request headers for subscribe|
+|Subscribe Authentication|authencation|HTTP authentication to use for subscribe. [See HTTP connector](./connectors-native-http.md#authentication) for details|
+|Unsubscribe Body|body|HTTP request body for unsubscribe|
+|Unsubscribe Headers|headers|HTTP request headers for unsubscribe|
+|Unsubscribe Authentication|authentication|HTTP authentication to use for unsubscribe. [See HTTP connector](./connectors-native-http.md#authentication) for details|
 <br>
 
-**出力の詳細**
+**Output Details**
 
-Webhook 要求
+Webhook request
 
-|プロパティ名|データ型|説明|
+|Property Name|Data Type|Description|
 |---|---|---|
-|ヘッダー|オブジェクト|Webhook 要求ヘッダー|
-|本文|オブジェクト|Webhook 要求オブジェクト|
-|状態コード|int|Webhook 要求の状態コード|
+|Headers|object|Webhook request headers|
+|Body|object|Webhook request object|
+|Status Code|int|Webhook request status code|
 
 ---
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-ロジック アプリに取り組む方法とコミュニティの詳細を次に示します。
+Below are details on how to move forward with logic apps and our community.
 
-## ロジック アプリを作成します
+## <a name="create-a-logic-app"></a>Create a logic app
 
-プラットフォームを試用し、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。[API リスト](apis-list.md)を参照すると、ロジック アプリで使用可能な他のコネクタについて確認できます。
+Try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md) now. You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

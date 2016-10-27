@@ -1,47 +1,51 @@
 <properties
-	pageTitle="VM スケール セットの規模を設計する | Microsoft Azure"
-	description="VM スケール セットの規模を設計する方法について説明します"
-	keywords="Linux 仮想マシン,仮想マシン スケール セット" 
-	services="virtual-machine-scale-sets"
-	documentationCenter=""
-	authors="gatneil"
-	manager="madhana"
-	editor="tysonn"
-	tags="azure-resource-manager" />
+    pageTitle="Designing Virtual Machine Scale Sets For Scale | Microsoft Azure"
+    description="Learn about how to design your Virtual Machine Scale Sets for scale"
+    keywords="linux virtual machine,virtual machine scale sets" 
+    services="virtual-machine-scale-sets"
+    documentationCenter=""
+    authors="gatneil"
+    manager="madhana"
+    editor="tysonn"
+    tags="azure-resource-manager" />
 
 <tags
-	ms.service="virtual-machine-scale-sets"
-	ms.workload="na"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/28/2016"
-	ms.author="gatneil"/>
-
-# VM スケール セットの規模を設計する
-
-このトピックでは、仮想マシン スケール セットの設計に関する考慮事項について説明します。仮想マシン スケール セットに関する情報については、「[仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
+    ms.service="virtual-machine-scale-sets"
+    ms.workload="na"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/28/2016"
+    ms.author="gatneil"/>
 
 
-## Storage
+# <a name="designing-vm-scale-sets-for-scale"></a>Designing VM Scale Sets For Scale
 
-スケール セットはストレージ アカウントを利用し、セットに VM の OS ディスクを保管します。ストレージ アカウントあたり 20 以下の VM という比率が推奨されます。また、ストレージ アカウント名の始めの文字にアルファベットを使用することが推奨されます。これは、異なる内部システムの負荷を分散するのに役立ちます。たとえば、次のテンプレートでは、uniqueString Resource Manager テンプレート関数を利用し、ストレージ アカウント名の先頭に追加するプレフィックス ハッシュを生成しています。[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat)
-
-
-## オーバープロビジョニング
-
-"2016-03-30" API バージョンより、VM スケール セットは VM を "オーバープロビジョニング" するように初期設定されています。オーバープロビジョニングがオンに設定されていると、スケール セットは要求された数よりも多くの VM を起動し、最後に起動した余分な仮想マシンを削除します。オーバープロビジョニングによって、プロビジョニングの成功率がアップします。必要以上の VM については請求されません。割り当て制限でもカウントされません。
-
-オーバープロビジョニングはプロビジョニングの成功率を上げますが、通知なしで消える VM を処理するように設計されていないアプリケーションにとって、混乱を招く動作を引き起こすことがあります。オーバープロビジョニングをオフにするには、テンプレートに "overprovision": "false" という文字列を与えます。詳細については、[VM スケール セット REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt589035.aspx)をご覧ください。
-
-オーバープロビジョニングをオフにすると、ストレージ アカウントあたりの VM 数を上げることができますが、40 を超えることは推奨されません。
+This topic discusses design considerations for Virtual Machine Scale Sets. For information about what Virtual Machine Scale Sets are, refer to [Virtual Machine Scale Sets Overview](virtual-machine-scale-sets-overview.md).
 
 
-## 制限
-カスタム イメージで構築されたスケール セット (自分で構築したスケール セット) の場合、1 つのストレージ アカウント内にすべての OS ディスク VHD を作成する必要があります。その結果、カスタム イメージで構築されたスケール セットの VM の推奨される最大数は 20 になります。オーバープロビジョニングをオフにすると、最大 40 になります。
+## <a name="storage"></a>Storage
 
-プラットフォーム イメージで構築されたスケール セットは現在 100 VM に制限されています (このスケールには、5 ストレージ アカウントが推奨されます)。
+A scale set uses storage accounts to store the OS disks of the VMs in the set. We recommend a ratio of 20 VMs per storage account or less. We also recommend that you spread across the alphabet the beginning characters of the storage account names. Doing so helps spread load across different internal systems. For instance, in the following template, we use the uniqueString Resource Manager Template function to generate prefix hashes that are prepended to storage account names: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-linux-nat).
 
-VM の数が、これらの制限で許可されている数を超える場合は、[こちらのテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)に示すように、複数のスケール セットをデプロイする必要があります。
 
-<!---HONumber=AcomDC_0817_2016-->
+## <a name="overprovisioning"></a>Overprovisioning
+
+Starting with the "2016-03-30" API version, VM Scale Sets defaults to "overprovisioning" VMs. With overprovisioning turned on, the scale set actually spins up more VMs than you asked for, then deletes the extra VMs that spun up last. Overprovisioning improves provisioning success rates. You are not billed for these extra VMs, and they do not count toward your quota limits.
+
+While overprovisioning does improve provisioning success rates, it can cause confusing behavior for an application that is not designed to handle VMs disappearing unannounced. To turn overprovisioning off, ensure you have the following string in your template: "overprovision": "false". More details can be found in the [VM Scale Set REST API documentation](https://msdn.microsoft.com/library/azure/mt589035.aspx).
+
+If you turn off overprovisioning, you can get away with a larger ratio of VMs per storage account, but we do not recommend going above 40.
+
+
+## <a name="limits"></a>Limits
+A scale set built on a custom image (one built by you) must create all OS disk VHDs within one storage account. As a result, the maximum recommended number of VMs in a scale set built on a custom image is 20. If you turn off overprovisioning, you can go up to 40.
+
+A scale set built on a platform image is currently limited to 100 VMs (we recommend 5 storage accounts for this scale).
+
+For more VMs than these limits allow, you need to deploy multiple scale sets as shown in [this template](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
+
+
+<!--HONumber=Oct16_HO2-->
+
+

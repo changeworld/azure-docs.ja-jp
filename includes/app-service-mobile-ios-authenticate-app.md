@@ -1,6 +1,6 @@
-**Objective-C**:
+**Objective-C**: 
 
-1. Mac の Xcode で _QSTodoListViewController.m_ を開き、次のメソッドを追加します。Google を ID プロバイダーとして使用しない場合は、_google_ を _microsoftaccount_、_twitter_、_facebook_、_windowsazureactivedirectory_ のいずれかに変更します。Facebook を使用する場合、[アプリで Facebook ドメインをホワイトリストに追加する必要があります](https://developers.facebook.com/docs/ios/ios9#whitelist)。
+1. On your Mac, open _QSTodoListViewController.m_ in Xcode and add the following method. Change _google_ to _microsoftaccount_, _twitter_, _facebook_, or _windowsazureactivedirectory_ if you're not using Google as your identity provider. If you use Facebook, [you will need to whitelist Facebook domains in your app](https://developers.facebook.com/docs/ios/ios9#whitelist).
 
             - (void) loginAndGetData
             {
@@ -15,15 +15,15 @@
             }
 
 
-2. _QSTodoListViewController.m_ の `viewDidLoad` で `[self refresh]` を次のように置き換えます。
+2. Replace `[self refresh]` in `viewDidLoad` in _QSTodoListViewController.m_ with the following:
 
             [self loginAndGetData];
 
-3. _[実行]_ をクリックしてアプリを起動したら、ログインします。ログインが成功すると、Todo リストを表示して更新できます。
+3. Press  _Run_ to start the app, and then log in. When you are logged in, you should be able to view the Todo list and make updates.
 
 **Swift**:
 
-1. Mac の Xcode で _ToDoTableViewController.swift_ を開き、次のメソッドを追加します。Google を ID プロバイダーとして使用しない場合は、_google_ を _microsoftaccount_、_twitter_、_facebook_、_windowsazureactivedirectory_ のいずれかに変更します。Facebook を使用する場合、[アプリで Facebook ドメインをホワイトリストに追加する必要があります](https://developers.facebook.com/docs/ios/ios9#whitelist)。
+1. On your Mac, open _ToDoTableViewController.swift_ in Xcode and add the following method. Change _google_ to _microsoftaccount_, _twitter_, _facebook_, or _windowsazureactivedirectory_ if you're not using Google as your identity provider. If you use Facebook, [you will need to whitelist Facebook domains in your app](https://developers.facebook.com/docs/ios/ios9#whitelist).
         
             func loginAndGetData() {
                 
@@ -38,10 +38,13 @@
             }
 
 
-2. _ToDoTableViewController.swift_ の `viewDidLoad()` の最後にある `self.refreshControl?.beginRefreshing()` と `self.onRefresh(self.refreshControl)` の行を削除します。その場所に `loginAndGetData()` の呼び出しを追加します。
+2. Remove the lines `self.refreshControl?.beginRefreshing()` and `self.onRefresh(self.refreshControl)` at the end of `viewDidLoad()` in _ToDoTableViewController.swift_. Add a call to `loginAndGetData()` in their place:
 
             loginAndGetData()
 
-3. _[実行]_ をクリックしてアプリを起動したら、ログインします。ログインが成功すると、Todo リストを表示して更新できます。
+3. Press  _Run_ to start the app, and then log in. When you are logged in, you should be able to view the Todo list and make updates.
 
-<!---HONumber=AcomDC_0218_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

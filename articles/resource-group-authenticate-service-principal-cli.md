@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure CLI を使用したサービス プリンシパルの作成 | Microsoft Azure"
-   description="Azure CLI を使用して、Active Directory アプリケーションやサービス プリンシパルを作成し、ロールベースのアクセス制御によって、リソースへのアクセス権を付与する方法について説明します。パスワードまたは証明書を使ってアプリケーションを認証する方法を示します。"
+   pageTitle="Create service principal with Azure CLI | Microsoft Azure"
+   description="Describes how to use Azure CLI to create an Active Directory application and service principal, and grant it access to resources through role-based access control. It shows how to authenticate application with a password or certificate."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -13,70 +13,70 @@
    ms.topic="article"
    ms.tgt_pltfrm="multiple"
    ms.workload="na"
-   ms.date="09/07/2016"
+   ms.date="09/30/2016"
    ms.author="tomfitz"/>
 
-# リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する
+
+# <a name="use-azure-cli-to-create-a-service-principal-to-access-resources"></a>Use Azure CLI to create a service principal to access resources
 
 > [AZURE.SELECTOR]
 - [PowerShell](resource-group-authenticate-service-principal.md)
 - [Azure CLI](resource-group-authenticate-service-principal-cli.md)
-- [ポータル](resource-group-create-service-principal-portal.md)
+- [Portal](resource-group-create-service-principal-portal.md)
 
 
-リソースへのアクセスを必要とするアプリケーションやスクリプトがある場合、そのプロセスをお客様自身の資格情報で実行すると高い確率で不都合が生じます。アプリケーション用に別のアクセス許可が必要になるほか、担当が変わった場合もアプリケーションではお客様の資格情報が引き続き使用されることになります。このような場合は、認証の資格情報とロールの割り当てを含んだアプリケーションの ID を作成します。アプリケーションは、実行のたびにこれらの資格情報を使用して自動認証を行います。このトピックでは、アプリケーションをその独自の資格情報と ID で実行させるために必要な設定を [Mac、Linux、Windows 用の Azure CLI](xplat-cli-install.md) で行う方法を紹介しています。
+When you have an application or script that needs to access resources, you most likely do not want to run this process under your own credentials. You may have different permissions that you want for the application, and you do not want the application to continue using your credentials if your responsibilities change. Instead, you create an identity for the application that includes authentication credentials and role assignments. Every time the app runs, it authenticates itself with these credentials. This topic shows you how to use [Azure CLI for Mac, Linux and Windows](xplat-cli-install.md) to set up an application to run under its own credentials and identity.
 
-AD アプリケーションの認証に関して、Azure CLI には次の 2 つの選択肢があります。
+With Azure CLI, you have two options for authenticating your AD application:
 
- - パスワード
- - 証明書
+ - password
+ - certificate
 
-このトピックでは、Azure CLI でのこれらの選択肢の使用方法について説明します。プログラミング フレームワーク (Python、Ruby、Node.js など) から Azure にログインする場合は、パスワード認証が最適な選択肢と考えられます。パスワードと証明書のどちらを使用するか決める前に、「[サンプル アプリケーション](#sample-applications)」セクションで、各種フレームワークにおける認証の例を参照してください。
+This topic shows how to use both options in Azure CLI. If you intend to log in to Azure from a programming framework (such Python, Ruby, or Node.js), password authentication might be your best option. Before deciding whether to use a password or certificate, see the [Sample applications](#sample-applications) section for examples of authenticating in the different frameworks.
 
-## Active Directory の概念
+## <a name="active-directory-concepts"></a>Active Directory concepts
 
-この記事では、Active Directory (AD) アプリケーションとサービス プリンシパルという 2 つのオブジェクトを作成します。AD アプリケーションは、アプリケーションをグローバルに表現したものです。資格情報としてアプリケーション ID と、パスワードまたは証明書のいずれかを保持します。サービス プリンシパルは、Active Directory のアプリケーションをローカルに表現したものです。こちらは、ロールの割り当てを保持します。このトピックでは、シングル テナント アプリケーション (単一組織内でのみ実行するように意図されたアプリケーション) に焦点を絞って説明します。一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。シングルテナント アプリケーションでは、1 つの AD アプリケーションと 1 つのサービス プリンシパルを設定します。
+In this article, you create two objects - the Active Directory (AD) application and the service principal. The AD application is the global representation of your application. It contains the credentials (an application id and either a password or certificate). The service principal is the local representation of your application in an Active Directory. It contains the role assignment. This topic focuses on a single-tenant application where the application is intended to run within only one organization. You typically use single-tenant applications for line-of-business applications that run within your organization. In a single-tenant application, you have one AD app and one service principal.
 
-両方のオブジェクトが必要になるわけを疑問に思う方もいるでしょう。 このような方法の利点は、マルチテナント アプリケーションについて考えるとはっきりします。通常、マルチテナント アプリケーションは、さまざまなサブスクリプションでアプリケーションが実行されるサービスとしてのソフトウェア (SaaS) アプリケーションで使用します。マルチテナント アプリケーションでは、1 つの AD アプリケーションと複数のサービス プリンシパル (1 つは Active Directory でアプリケーションにアクセスを付与するためのもの) を設定できます。マルチテナント アプリケーションのセットアップについては、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
+You may be wondering - why do I need both objects? This approach makes more sense when you consider multi-tenant applications. You typically use multi-tenant applications for software-as-a-service (SaaS) applications, where your application runs in many different subscriptions. For multi-tenant applications, you have one AD app and multiple service principals (one in each Active Directory that grants access to the app). To set up a multi-tenant application, see [Developer's guide to authorization with the Azure Resource Manager API](resource-manager-api-authentication.md).
 
-## 必要なアクセス許可
+## <a name="required-permissions"></a>Required permissions
 
-このトピックを完了するには、Azure Active Directory と Azure サブスクリプションの両方で適切なアクセス許可を持っている必要があります。具体的には、Active Directory でアプリケーションを作成し、ロールにサービス プリンシパルを割り当てることができる必要があります。
+To complete this topic, you must have sufficient permissions in both your Azure Active Directory and your Azure subscription. Specifically, you must be able to create an app in the Active Directory, and assign the service principal to a role. 
 
-Active Directory のアカウントは管理者 (**全体管理者**や**ユーザー管理者**など) である必要があります。アカウントが**ユーザー** ロールに割り当てられている場合は、管理者に依頼してアクセス許可のレベルを上げてもらう必要があります。
+In your Active Directory, your account must be an administrator (such as **Global Admin** or **User Admin**). If your account is assigned to the **User** role, you need to have an administrator elevate your permissions.
 
-サブスクリプションのアカウントには `Microsoft.Authorization/*/Write` アクセス権が必要です。このアクセス権は、[所有者](./active-directory/role-based-access-built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](./active-directory/role-based-access-built-in-roles.md#user-access-administrator)ロールを通じて付与されます。アカウントが**共同作成者**ロールに割り当てられている場合、ロールにサービス プリンシパルを割り当てようとするとエラーが発生します。ここでも、サブスクリプション管理者に適切なアクセス権を付与してもらう必要があります。
+In your subscription, your account must have `Microsoft.Authorization/*/Write` access, which is granted through the [Owner](./active-directory/role-based-access-built-in-roles.md#owner) role or [User Access Administrator](./active-directory/role-based-access-built-in-roles.md#user-access-administrator) role. If your account is assigned to the **Contributor** role, you receive an error when attempting to assign the service principal to a role. Again, your subscription administrator must grant you sufficient access.
 
-ここで、[パスワード](#create-service-principal-with-password)認証または[証明書](#create-service-principal-with-certificate)認証に関するセクションに進みます。
+Now, proceed to a section for either [password](#create-service-principal-with-password) or [certificate](#create-service-principal-with-certificate) authentication.
 
-## パスワードを使用したサービス プリンシパルの作成
+## <a name="create-service-principal-with-password"></a>Create service principal with password
 
-このセクションでは次の手順を実行します。
+In this section, you perform the steps to create the AD application with a password, and assign the Reader role to the service principal.
 
-- パスワードを使用した AD アプリケーションと、サービス プリンシパルを作成する
-- サービス プリンシパルに閲覧者ロールを割り当てる
+Let's go through these steps.
 
-これらの手順をすぐに実行するには、次のコマンドを使用します。
+1. Sign in to your account.
 
-    azure ad sp create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example -p <Your_Password>
-    azure role assignment create --objectId ff863613-e5e2-4a6b-af07-fff6f2de3f4e -o Reader -c /subscriptions/{subscriptionId}/
-
-それでは、各プロセスについて理解できるように、これらの手順についてより細かく見ていきましょう。
-
-1. ご使用のアカウントにサインインします。
-
-        azure config mode arm
         azure login
 
-1. アプリケーションのサービス プリンシパルを作成します。表示名、アプリケーションを説明するページへの URI、アプリケーションを識別する URI、およびアプリケーション ID のパスワードを指定します。このコマンドによって、AD アプリケーションとサービス プリンシパルの両方が作成されます。
+1. You have two options for creating the AD application. You can either create the AD application and the service principal in one step, or create them separately. Create them in one step if you do not need specify a home page and identifier URIs for your app. Create them separately if you need to set these values for a web app. Both options are shown in this step.
 
-        azure ad sp create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example -p {your-password}
-        
-     シングルテナント アプリケーションでは、URI の検証は行われません。
+     - To create the AD application and service principal in one step, provide the name of the app and a password, as shown in the following command:
      
-     Active Directory のアカウントに[必要なアクセス許可](#required-permissions)が設定されていない場合、"認証が承認されなかったこと" または "コンテキストにサブスクリプションが見つからなかったこと" を示すエラー メッセージが表示されます。
+            azure ad sp create -n exampleapp -p {your-password}     
+     
+     - To create the AD application separately, provide the name of the app, a home page URI, identifier URIs, and a password, as shown in the following command:
+     
+            azure ad app create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example -p <Your_Password>
+
+         The preceding command returns an AppId value. To create a service principal, provide that value as a parameter in the following command:
+     
+            azure ad sp create -a <AppId>
+     
+     If your account does not have the [required permissions](#required-permissions) on the Active Directory, you see an error message indicating "Authentication_Unauthorized" or "No subscription found in the context".
     
-     新しいサービス プリンシパルが返されます。アクセス許可を付与する場合は、オブジェクト ID が必要です。ログイン時には、サービス プリンシパル名が必要となります。
+     For both options, the new service principal is returned. The **Object Id** is needed when granting permissions. The guid listed with the **Service Principal Names** is needed when logging in. This guid is the same value as the app id. In the sample applications, this value is referred to as the **Client ID**. 
     
         info:    Executing command ad sp create
         + Creating application exampleapp
@@ -88,81 +88,107 @@ Active Directory のアカウントは管理者 (**全体管理者**や**ユー�
         data:                             https://www.contoso.org/example
         info:    ad sp create command OK
 
-2. サブスクリプションに対する権限をサービス プリンシパルに付与します。この例では、**閲覧者**ロールにサービス プリンシパルを追加します。これにより、サブスクリプション内のすべてのリソースを読み取るアクセス許可が付与されます。その他のロールについては、「[RBAC: 組み込みのロール](./active-directory/role-based-access-built-in-roles.md)」を参照してください。**ServicePrincipalName** パラメーターには、アプリケーションの作成時に使用した **ObjectId** を指定します。
+2. Grant the service principal permissions on your subscription. In this example, you add the service principal to the **Reader** role, which grants permission to read all resources in the subscription. For other roles, see [RBAC: Built-in roles](./active-directory/role-based-access-built-in-roles.md). For the **ServicePrincipalName** parameter, provide the **ObjectId** that you used when creating the application. 
 
         azure role assignment create --objectId ff863613-e5e2-4a6b-af07-fff6f2de3f4e -o Reader -c /subscriptions/{subscriptionId}/
 
-     ロールを割り当てることのできるアクセス許可がアカウントに設定されていない場合は、エラー メッセージが表示されます。このメッセージは、アカウントが**スコープ '/subscriptions/{GUID}' に対するアクション 'Microsoft.Authorization/roleAssignments/write' の実行を承認されていない**ことを示しています。
+     If your account does not have sufficient permissions to assign a role, you see an error message. The message states your account **does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/{guid}'**. 
 
-これで完了です。 AD アプリケーションとサービス プリンシパルが設定されました。次のセクションでは、Azure CLI から資格情報を使ってログインする方法を紹介します。コード アプリケーションの資格情報を使用する場合は、このトピックを続行する必要はありません。「[サンプル アプリケーション](#sample-applications)」に進んで、アプリケーション ID とパスワードでログインする例をご覧ください。
+That's it! Your AD application and service principal are set up. The next section shows you how to log in with the credential through Azure CLI. If you want to use the credential in your code application, you do not need to continue with this topic. You can jump to the [Sample applications](#sample-applications) for examples of logging in with your application id and password. 
 
-### 資格情報を Azure CLI で渡す
+### <a name="provide-credentials-through-azure-cli"></a>Provide credentials through Azure CLI
 
-次に、操作を実行するアプリケーションとしてログインする必要があります。
+Now, you need to log in as the application to perform operations.
 
-1. サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。テナントは、Active Directory のインスタンスです。現在認証されているサブスクリプションのテナント ID を取得するには、次のコマンドを使用します。
+1. Whenever you sign in as a service principal, you need to provide the tenant id of the directory for your AD app. A tenant is an instance of Active Directory. To retrieve the tenant id for your currently authenticated subscription, use:
 
         azure account show
 
-     次のような結果が返されます。
+     Which returns:
 
         info:    Executing command account show
-        data:    Name                        : Microsoft Azure MSDN - Visual Studio Ultimate
+        data:    Name                        : Windows Azure MSDN - Visual Studio Ultimate
         data:    ID                          : {guid}
         data:    State                       : Enabled
         data:    Tenant ID                   : {guid}
         data:    Is Default                  : true
         ...
 
-     別のサブスクリプションのテナント ID を取得する必要がある場合は、次のコマンドを使用します。
+     If you need to get the tenant id of another subscription, use the following command:
 
         azure account show -s {subscription-id}
 
-3. サービス プリンシパルとしてログインします。
+2. If you need to retrieve the client id to use for logging in, use:
 
-        azure login -u https://www.contoso.org/example --service-principal --tenant {tenant-id}
+        azure ad sp show -c exampleapp --json
 
-    パスワードを入力するように求められます。AD アプリケーションの作成時に指定したパスワードを使用します。
+     The value to use for logging in is the guid listed in the service principal names.
+
+        [
+          {
+            "objectId": "ff863613-e5e2-4a6b-af07-fff6f2de3f4e",
+            "objectType": "ServicePrincipal",
+            "displayName": "exampleapp",
+            "appId": "7132aca4-1bdb-4238-ad81-996ff91d8db4",
+            "servicePrincipalNames": [
+              "https://www.contoso.org/example",
+              "7132aca4-1bdb-4238-ad81-996ff91d8db4"
+            ]
+          }
+        ]
+
+3. Log in as the service principal.
+
+        azure login -u 7132aca4-1bdb-4238-ad81-996ff91d8db4 --service-principal --tenant {tenant-id}
+
+    You are prompted for the password. Provide the password you specified when creating the AD application.
 
         info:    Executing command login
         Password: ********
 
-これで、作成したサービス プリンシパルのサービス プリンシパルとして認証されました。
+You are now authenticated as the service principal for the service principal that you created.
 
-## 証明書を使用したサービス プリンシパルの作成
+## <a name="create-service-principal-with-certificate"></a>Create service principal with certificate
 
-このセクションでは次の手順を実行します。
+In this section, you perform the steps to:
 
-- 自己署名証明書を作成する
-- 証明書を使用する AD アプリケーションとサービス プリンシパルを作成する
-- サービス プリンシパルに閲覧者ロールを割り当てる
+- create a self-signed certificate
+- create the AD application with the certificate, and the service principal
+- assign the Reader role to the service principal
 
-これらの手順を完了するには、[OpenSSL](http://www.openssl.org/) がインストールされている必要があります。
+To complete these steps, you must have [OpenSSL](http://www.openssl.org/) installed.
 
-1. 自己署名証明書を作成します。
+1. Create a self-signed certificate.
 
         openssl req -x509 -days 3650 -newkey rsa:2048 -out cert.pem -nodes -subj '/CN=exampleapp'
 
-2. パブリックとプライベート キーを組み合わせます。
+2. Combine the public and private keys.
 
         cat privkey.pem cert.pem > examplecert.pem
 
-3. **examplecert.pem** ファイルを開き、**-----BEGIN CERTIFICATE-----** と **-----END CERTIFICATE-----** の間の長い文字のシーケンスを探します。証明書データをコピーします。サービス プリンシパルを作成するときに、このデータをパラメーターとして渡します。
+3. Open the **examplecert.pem** file and look for the long sequence of characters between **-----BEGIN CERTIFICATE-----** and **-----END CERTIFICATE-----**. Copy the certificate data. You pass this data as a parameter when creating the service principal.
 
-1. ご使用のアカウントにサインインします。
+1. Sign in to your account.
 
-        azure config mode arm
         azure login
 
-1. アプリケーションのサービス プリンシパルを作成します。表示名、アプリケーションを説明するページへの URI、アプリケーションを識別する URI、およびコピーした証明書データを指定します。このコマンドによって、AD アプリケーションとサービス プリンシパルの両方が作成されます。
+1. You have two options for creating the AD application. You can either create the AD application and the service principal in one step, or create them separately. Create them in one step if you do not need specify a home page and identifier URIs for your app. Create them separately if you need to set these values for a web app. Both options are shown in this step.
 
-        azure ad sp create -n "exampleapp" --home-page "https://www.contoso.org" -i "https://www.contoso.org/example" --key-value <certificate data>
-        
-     シングルテナント アプリケーションでは、URI の検証は行われません。
+     - To create the AD application and service principal in one step, provide the name of the app and the certificate data, as shown in the following command:
      
-     Active Directory のアカウントに[必要なアクセス許可](#required-permissions)が設定されていない場合、"認証が承認されなかったこと" または "コンテキストにサブスクリプションが見つからなかったこと" を示すエラー メッセージが表示されます。
+            azure ad sp create -n exampleapp --cert-value <certificate data>
+     
+     - To create the AD application separately, provide the name of the app, a home page URI, identifier URIs, and the certificate data, as shown in the following command:
+     
+            azure ad app create -n exampleapp --home-page http://www.contoso.org --identifier-uris https://www.contoso.org/example --cert-value <certificate data>
+
+         The preceding command returns an AppId value. To create a service principal, provide that value as a parameter in the following command:
+     
+            azure ad sp create -a <AppId>
+  
+     If your account does not have the [required permissions](#required-permissions) on the Active Directory, you see an error message indicating "Authentication_Unauthorized" or "No subscription found in the context".
     
-     新しいサービス プリンシパルが返されます。アクセス許可を付与する場合は、オブジェクト ID が必要です。
+     For both options, the new service principal is returned. The Object Id is needed when granting permissions. The guid listed with the **Service Principal Names** is needed when logging in. This guid is the same value as the app id. In the sample applications, this value is referred to as the **Client ID**. 
     
         info:    Executing command ad sp create
         - Creating service principal for application 4fd39843-c338-417d-b549-a545f584a74+
@@ -173,81 +199,104 @@ Active Directory のアカウントは管理者 (**全体管理者**や**ユー�
         data:                      https://www.contoso.org/example
         info:    ad sp create command OK
         
-2. サブスクリプションに対する権限をサービス プリンシパルに付与します。この例では、**閲覧者**ロールにサービス プリンシパルを追加します。これにより、サブスクリプション内のすべてのリソースを読み取るアクセス許可が付与されます。その他のロールについては、「[RBAC: 組み込みのロール](./active-directory/role-based-access-built-in-roles.md)」を参照してください。**ServicePrincipalName** パラメーターには、アプリケーションの作成時に使用した **ObjectId** を指定します。
+2. Grant the service principal permissions on your subscription. In this example, you add the service principal to the **Reader** role, which grants permission to read all resources in the subscription. For other roles, see [RBAC: Built-in roles](./active-directory/role-based-access-built-in-roles.md). For the **ServicePrincipalName** parameter, provide the **ObjectId** that you used when creating the application. 
 
         azure role assignment create --objectId 7dbc8265-51ed-4038-8e13-31948c7f4ce7 -o Reader -c /subscriptions/{subscriptionId}/
 
-     ロールを割り当てることのできるアクセス許可がアカウントに設定されていない場合は、エラー メッセージが表示されます。このメッセージは、アカウントが**スコープ '/subscriptions/{GUID}' に対するアクション 'Microsoft.Authorization/roleAssignments/write' の実行を承認されていない**ことを示しています。
+     If your account does not have sufficient permissions to assign a role, you see an error message. The message states your account **does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/{guid}'**. 
 
-### 自動化された Azure CLI スクリプトから証明書を渡す
+### <a name="provide-certificate-through-automated-azure-cli-script"></a>Provide certificate through automated Azure CLI script
 
-次に、操作を実行するアプリケーションとしてログインする必要があります。
+Now, you need to log in as the application to perform operations.
 
-1. サービス プリンシパルとしてサインインするときは常に、AD アプリのディレクトリのテナント ID を指定する必要があります。テナントは、Active Directory のインスタンスです。現在認証されているサブスクリプションのテナント ID を取得するには、次のコマンドを使用します。
+1. Whenever you sign in as a service principal, you need to provide the tenant id of the directory for your AD app. A tenant is an instance of Active Directory. To retrieve the tenant id for your currently authenticated subscription, use:
 
         azure account show
 
-     次のような結果が返されます。
+     Which returns:
 
         info:    Executing command account show
-        data:    Name                        : Microsoft Azure MSDN - Visual Studio Ultimate
+        data:    Name                        : Windows Azure MSDN - Visual Studio Ultimate
         data:    ID                          : {guid}
         data:    State                       : Enabled
         data:    Tenant ID                   : {guid}
         data:    Is Default                  : true
         ...
 
-     別のサブスクリプションのテナント ID を取得する必要がある場合は、次のコマンドを使用します。
+     If you need to get the tenant id of another subscription, use the following command:
 
         azure account show -s {subscription-id}
 
-1. 証明書の拇印を取得し、不要な文字を削除するには、次のコマンドを使用します。
+1. To retrieve the certificate thumbprint and remove unneeded characters, use:
 
         openssl x509 -in "C:\certificates\examplecert.pem" -fingerprint -noout | sed 's/SHA1 Fingerprint=//g'  | sed 's/://g'
     
-     次のような拇印の値が返されます。
+     Which returns a thumbprint value similar to:
 
         30996D9CE48A0B6E0CD49DBB9A48059BF9355851
 
-1. サービス プリンシパルとしてログインします。
+2. If you need to retrieve the client id to use for logging in, use:
 
-        azure login --service-principal --tenant {tenant-id} -u https://www.contoso.org/example --certificate-file C:\certificates\examplecert.pem --thumbprint {thumbprint}
+        azure ad sp show -c exampleapp
 
-これで、作成した Active Directory アプリケーションのサービス プリンシパルとして認証されました。
+     The value to use for logging in is the guid listed in the service principal names.
 
-## サンプル アプリケーション
+        [
+          {
+            "objectId": "7dbc8265-51ed-4038-8e13-31948c7f4ce7",
+            "objectType": "ServicePrincipal",
+            "displayName": "exampleapp",
+            "appId": "4fd39843-c338-417d-b549-a545f584a745",
+            "servicePrincipalNames": [
+              "https://www.contoso.org/example",
+              "4fd39843-c338-417d-b549-a545f584a745"
+            ]
+          }
+        ]
 
-サービス プリンシパルとしてログインする方法については、以下のサンプル アプリケーションで紹介されています。
+1. Log in as the service principal.
+
+        azure login --service-principal --tenant {tenant-id} -u 4fd39843-c338-417d-b549-a545f584a745 --certificate-file C:\certificates\examplecert.pem --thumbprint {thumbprint}
+
+You are now authenticated as the service principal for the Active Directory application that you created.
+
+## <a name="sample-applications"></a>Sample applications
+
+The following sample applications show how to log in as the service principal.
 
 **.NET**
 
-- [.NET からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
-- [Azure のリソースとリソース グループを .NET で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template with .NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
+- [Manage Azure resources and resource groups with .NET](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
 
 **Java**
 
-- [リソースの概要 - Java で Azure Resource Manager テンプレートをデプロイする](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
-- [リソースの概要 - Java でリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group//)
+- [Getting Started with Resources - Deploy Using Azure Resource Manager Template - in Java](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
+- [Getting Started with Resources - Manage Resource Group - in Java](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group//)
 
 **Python**
 
-- [Python からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
-- [Azure のリソースとリソース グループを Python で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template in Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
+- [Managing Azure Resource and Resource Groups with Python](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
 
-**Node.JS**
+**Node.js**
 
-- [Node.js からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
-- [Azure のリソースとリソース グループを Node.js で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template in Node.js](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
+- [Manage Azure resources and resource groups with Node.js](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
 
 **Ruby**
 
-- [Ruby からテンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
-- [Azure のリソースとリソース グループを Ruby で管理する](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
+- [Deploy an SSH Enabled VM with a Template in Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
+- [Managing Azure Resource and Resource Groups with Ruby](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
   
-- アプリケーションを Azure に統合してリソースを管理する詳しい手順については、「[Azure Resource Manager API を使用した承認の開発者ガイド](resource-manager-api-authentication.md)」を参照してください。
-- 証明書と Azure CLI の使用方法の詳細については、「[Certificate-based authentication with Azure Service Principals from Linux command line (Linux コマンド ラインからの Azure サービス プリンシパルの証明書での認証)](http://blogs.msdn.com/b/arsen/archive/2015/09/18/certificate-based-auth-with-azure-service-principals-from-linux-command-line.aspx)」を参照してください。
+- For detailed steps on integrating an application into Azure for managing resources, see [Developer's guide to authorization with the Azure Resource Manager API](resource-manager-api-authentication.md).
+- To get more information about using certificates and Azure CLI, see [Certificate-based authentication with Azure Service Principals from Linux command line](http://blogs.msdn.com/b/arsen/archive/2015/09/18/certificate-based-auth-with-azure-service-principals-from-linux-command-line.aspx). 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

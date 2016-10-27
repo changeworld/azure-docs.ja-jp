@@ -1,69 +1,75 @@
 <properties
-	pageTitle="Microsoft Cloud Germany の Azure AD Connect"
-	description="Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。Office 365、Azure、SaaS など Azure AD と連動するアプリケーションの ID を共通化することができます。"
-    keywords="Azure AD Connect の紹介, Azure AD Connect の概要, Azure AD Connect とは, Active Directory のインストール, Germany, Black Forest"
-	services="active-directory"
-	documentationCenter=""
-	authors="billmath"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure AD Connect in Microsoft Cloud Germany"
+    description="Azure AD Connect will integrate your on-premises directories with Azure Active Directory. This allows you to provide a common identity for Office 365, Azure, and SaaS applications integrated with Azure AD."
+    keywords="introduction to Azure AD Connect, Azure AD Connect overview, what is Azure AD Connect, install active directory, Germany, Black Forest"
+    services="active-directory"
+    documentationCenter=""
+    authors="billmath"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="get-started-article"
-	ms.date="09/08/2016"
-	ms.author="billmath"/>
-
-#Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
-
-## はじめに
-Azure AD Connect は、オンプレミス Active Directory と Azure Active Directory の間の同期を実現します。現在、[Microsoft Cloud Germany](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) の多くのシナリオは、オペレーターが行う必要があります。Microsoft Cloud Germany を使用する場合は、以下の点に注意する必要があります。
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="get-started-article"
+    ms.date="09/08/2016"
+    ms.author="billmath"/>
 
 
-- 同期が正常に行われるようにするには、プロキシ サーバーで以下の URL を開く必要があります。
-	- *.microsoftonline.de
-	- *.windows.net
-	- + 証明書の失効リスト
+#<a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Azure AD Connect in Microsoft Cloud Germany - Public Preview
 
-- Azure AD ディレクトリにサインインするときは、onmicrosoft.de ドメインのアカウントを使用する必要があります。
-- 以下の機能は使用できません。
-	- Azure AD Connect Health
-	- 自動更新
-	- パスワードの書き戻し
+## <a name="introduction"></a>Introduction
+Azure AD Connect provides synchronization between your on-premises Active Directory and Azure Active Directory.
+Currently, many of the scenarios in [Microsoft Cloud Germany](https://www.microsoft.com/de-de/cloud/deutschland/default.aspx) must be done by the operator. When using Microsoft Cloud Germany, you must be aware of the following:
 
-## ダウンロード
-Azure AD Connect は、ポータル内の Azure AD Connect ブレードからダウンロードできます。Azure AD Connect ブレードを表示するには、次の手順に従います。
 
-### Azure AD Connect ブレード
+- The following URLs must be opened on a proxy server for synchronization to occur successfully:
+    - *.microsoftonline.de
+    - *.windows.net
+    - + Certificate Revocation Lists
 
-Azure Portal にサインインしたら、次の操作を行います。
+- When you sign in to your Azure AD directory, you must use an account in the onmicrosoft.de domain.
+- The following features are not available:
+    - Azure AD Connect Health
+    - Automatic updates
+    - Password writeback
 
-1. [参照] に移動します。
-2.	[Azure Active Directory] を選択します。
-3.	次に、[Azure AD Connect] を選択します。
+## <a name="download"></a>Download
+You can download Azure AD Connect from the Azure AD Connect blade within the portal.  Use the instructions below to locate the Azure AD Connect blade.
 
-次のように表示されます。
+### <a name="the-azure-ad-connect-blade"></a>The Azure AD Connect Blade
+
+Once you have signed in to the Azure portal, do the following:
+
+1. Go to Browse
+2.  Select Azure Active Directory
+3.  Then select Azure AD Connect
+
+You should see the following:
 
 ![Azure AD Connect Blade](media\active-directory-aadconnect-germany\germany1.png)
 
  
-次の表は、ブレードに表示される機能の説明です。
+The following table describes the features shown in the blade.
 
 
-タイトル|Description|
+Title|Description|
 ----- | ----- |
-同期状態|同期が有効か無効かを示します。|
-最後の同期|正常に完了した前回の同期です。|
-フェデレーション ドメイン|現在構成されているフェデレーション ドメインの数を示します。|
+SYNC STATUS|Let's you know whether synchronization is enabled or disabled.|
+LAST SYNC|The last time a successful sync completed.|
+FEDERATED DOMAINS|Shows the number of federated domains currently configured.|
 
 
-## インストール
-Azure AD Connect をインストールする場合は、[こちら](active-directory-aadconnect.md#install-azure-ad-connect)のドキュメントを参照してください。
+## <a name="installation"></a>Installation
+To install Azure AD Connect, you can use the documentation [here](active-directory-aadconnect.md#install-azure-ad-connect).
 
-## 高度な機能と追加情報
-追加情報と、カスタム設定や高度な構成のガイダンスについては、最初に「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。このページには、情報と追加のガイダンスへのリンクが用意されています。
+## <a name="advanced-features-and-additional-information"></a>Advanced features and Additional Information
+For additional information and guidance on custom settings or advanced configurations, start with [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).  This page provides information and links to additional guidance.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

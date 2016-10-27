@@ -1,6 +1,6 @@
 <properties
-   pageTitle="リソース バランサー クラスターの記述 | Microsoft Azure"
-   description="障害ドメイン、アップグレード ドメイン、ノードのプロパティ、ノード容量をクラスター リソース マネージャーに指定し、Service Fabric クラスターを記述します。"
+   pageTitle="Resource Balancer cluster description | Microsoft Azure"
+   description="Describing a Service Fabric cluster by specifying fault domains, upgrade domains, node properties, and node capacities to the Cluster Resource Manager."
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,112 +16,114 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
-# Service Fabric クラスターの記述
-Service Fabric クラスター リソース マネージャーには、クラスターを記述するためのメカニズムが複数用意されています。クラスター リソース マネージャーは、実行時にこの情報を利用することで、クラスターのリソースが適切に使用されるように管理しながら、クラスターで実行されているサービスの高可用性を確保します。
 
-## 主要な概念
-クラスター リソース マネージャーでサポートされているクラスターを記述する機能には次のようなものがあります。
+# <a name="describing-a-service-fabric-cluster"></a>Describing a service fabric cluster
+The Service Fabric Cluster Resource Manager provides several mechanisms for describing a cluster. During runtime, the Cluster Resource Manager uses this information to ensure high availability of the services running in the cluster while also ensuring that the resources in the cluster are being used appropriately.
 
-- 障害ドメイン
-- アップグレード ドメイン
-- ノードのプロパティ
-- ノード容量
+## <a name="key-concepts"></a>Key concepts
+The Cluster Resource Manager supports several features that describe a cluster:
 
-## 障害ドメイン
-障害ドメインとは、障害について調整されている領域です。1 台のコンピューターは 1 つの障害ドメインになります (電源障害、ドライブ障害、問題のある NIC ファームウェアなど、さまざまな理由から単独で停止する可能性があるためです)。複数のコンピューターが同じイーサネット スイッチに接続されている場合は、1 つの電源に接続されている場合と同様、すべてのコンピューターが 1 つの障害ドメインに属しています。これらは当然重複するため、障害ドメインは本質的に階層的で、Service Fabric での URI として表されます。
+- Fault Domains
+- Upgrade Domains
+- Node Properties
+- Node Capacities
 
-クラスターを自分で設定した場合は、こうした各種障害領域をすべて考慮し、Service Fabric がサービスを安全に配置できる場所を把握できるように障害ドメインが適切に設定されていることを確認する必要があります。"安全に" とは、実際のところ "的確に" という意味で使用しています。マイクロソフトでは、障害ドメインがないことが原因で (前記のいずれかのコンポーネントのエラーなど) サービス停止が発生するような状況にサービスを配置することは避けたいと考えています。Azure 環境では、環境によって提供される障害ドメイン情報を利用して、クラスター内のノードをユーザーに代わって正しく構成します。次の図 (図 7) では、簡単な例として、1 つの障害ドメインに属すると見なせるエンティティすべてに色が付いています。また、結果として生成される複数の障害ドメインを一覧で示しています。この例には、データセンター (DC)、ラック (R)、およびブレード (B) があります。各ブレードが複数の仮想マシンを保持している場合は、障害ドメイン階層に別のレイヤーが存在することがあります。
+## <a name="fault-domains"></a>Fault domains
+A fault domain is any area of coordinated failure. A single machine is a fault domain (since it alone can fail for a variety of reasons, from power supply failures to drive failures to bad NIC firmware). A bunch of machines connected to the same Ethernet switch are in the same fault domain, as would be those connected to a single source of power. Since it's natural for these to overlap, Fault Domains are inherently hierarchal and are represented as URIs in Service Fabric.
 
-![障害ドメインで構成されるノード][Image1]
+If you were setting up your own cluster you’d need to think about all of these different areas of failure and make sure that your fault domains were set up correctly so that Service Fabric would know where it was safe to place services. By “safe” we really mean smart – we don’t want to place services such that a loss of a fault domain (the failure of any of the components listed above, for example) causes the service to go down.  In the Azure environment we leverage the fault domain information provided by the environment in order to correctly configure the nodes in the cluster on your behalf.
+In the graphic below (Fig. 7) we color all of the entities that reasonably result in a fault domain as a simple example and list out all of the different fault domains that result. In this example, we have datacenters (DC), racks (R), and blades (B). Conceivably, if each blade holds more than one virtual machine, there could be another layer in the fault domain hierarchy.
 
- 実行時に、Service Fabric クラスター リソース マネージャーは、クラスター内の障害ドメインを考慮に入れ、すべてが異なる障害ドメインに属するように、特定のサービスに対するレプリカを分散させようとします。このプロセスにより、1 つの障害ドメイン (階層内の任意のレベル) で障害が発生したときに、そのサービスの可用性が損なわれることがありません。
+![Nodes organized via fault domains][Image1]
 
- Service Fabric クラスター リソース マネージャーは、階層内に含まれるレイヤー数は考慮しませんが、階層の一部が失われたときに、それがクラスターまたはそのクラスターで実行されているサービスに影響を及ぼさないかどうかについては確認しようとします。そのため、一般的には、障害ドメインの各階層レベルのコンピューター数は同じにすることをお勧めします。これにより、結果的に階層の一部が他よりも多くのサービスを保持しなければならない事態を避けることができます。
+ During run time, the Service Fabric Cluster Resource Manager considers the fault domains in the cluster and attempts to spread out the replicas for a given service so that they are all in separate fault domains. This process helps ensure that in case of failure of any one fault domain (at any level in the hierarchy), that the availability of that service is not compromised.
 
- 障害ドメインの "ツリー" のバランスを考えずにクラスターを構成すると、特に、あるドメインの損失がクラスターの可用性に過度に影響を与えることがあるため、クラスター リソース マネージャーがレプリカの最適な割り当てを判断するのが難しくなります。クラスター リソース マネージャーは、その "重い" ドメインにあるコンピューターをそこにサービスを配置して効率的に使用するか、ドメインの損失による問題が発生しないようにサービスを配置するかで板挟みになります。
+ Service Fabric’s Cluster Resource Manager doesn’t really care about how many layers there are in the hierarchy, however since it does try to ensure that the loss of any one portion of the hierarchy doesn’t impact the cluster or the services running on top of it, it is generally best if at each level of depth in the fault domain there are the same number of machines. This prevents one portion of the hierarchy from having to contain more services at the end of the day than others.
 
- 次の図は、2 つの異なるクラスター レイアウトの例を示しています。一方のクラスターでは、ノードが障害ドメイン間で適切に分散されていますが、もう一方では 1 つの障害ドメインに片寄っています。Azure では、どのノードが、どの障害ドメインとアップグレード ドメインに配置されるかは自動的に処理されるため、このような不均衡が表面に現れることはありません。ただし、オンプレミスまたは別の環境で独自にクラスターを作成している場合は、検討が必要になります。
+ Configuring your cluster in such a way that the “tree” of fault domains is unbalanced makes it rather hard for the Cluster Resource Manager to figure out what the best allocation of replicas is, particularly since it means that the loss of a particular domain can overly impact the availability of the cluster – the Cluster Resource Manager is torn between using the machines in that “heavy” domain efficiently by placing services on them and placing services so that the loss of the domain doesn’t cause problems.
+
+ In the diagram below we show two different example cluster layouts, one where the nodes are well distributed across the fault domains, and another where one fault domain ends up with many more nodes.  Note that in Azure the choices about which nodes end up in which fault and upgrade domains is handled for you, so you should never see these sorts of imbalances. However, if you ever stand up your own cluster on-premise or in another environment, it’s something you have to think about.
 
  ![Two different cluster layouts][Image2]
 
-## アップグレード ドメイン
-アップグレード ドメインも、Service Fabric リソース マネージャーがクラスターのレイアウトを把握するための機能で、これにより、障害に対して早めに手を打つことができます。アップグレード ドメインでは、アップグレード中に同時に停止する領域 (実際にはノード セット) が定義されます。
+## <a name="upgrade-domains"></a>Upgrade domains
+Upgrade Domains are another feature that helps the Service Fabric Resource Manager to understand the layout of the cluster so that it can plan ahead for failures. Upgrade Domains define areas (sets of nodes, really) that will go down at the same time during an upgrade.
 
-アップグレード ドメインは障害ドメインに似ていますが、重要な相違点がいくつかあります。まず、アップグレード ドメインは、通常、ポリシーによって定義されますが、障害ドメインは、調整された障害領域 (通常は環境のハードウェア レイアウト) によって厳密に定義されます。ただし、アップグレード ドメインの場合、必要な数を決める必要があります。また、アップグレード ドメインは (少なくとも現時点では) 階層ではなく、単純なタグのようなものです。
+Upgrade Domains are a lot like Fault Domains, but with a couple key differences. First, Upgrade Domains are usually defined by policy; whereas Fault Domains are rigorously defined by the areas of coordinated failures (and hence usually the hardware layout of the environment). In the case of Upgrade Domains however you get to decide how many you want. Another difference is that (today at least) Upgrade Domains are not hierarchical – they are more like a simple tag than a hierarchy.
 
-次の図は、3 つの障害ドメインにわたってストライピングされた 3 つのアップグレード ドメインがある架空のセットアップを示しています。また、ステートフル サービスの 3 つの異なるレプリカの配置例も示しています。これらはすべて、異なる障害ドメインとアップグレード ドメインにあることに注意してください。つまり、サービスのアップグレード中に障害ドメインを失うことがあっても、クラスター内では、コードとデータのコピーを実行しているものがまだ 1 つ存在します。ニーズによってはこれでよいのですが、このコピーが古いことがあります (Service Fabric では、クォーラム ベースのレプリケーションを使用)。2 つの障害を本当の意味で乗り切るには、さらに多くのレプリカ (5 つ以上) が必要です。
+The picture below shows a fictional setup where we have three upgrade domains striped across three fault domains. It also shows one possible placement for three different replicas of a stateful service. Note that they are all in different fault and upgrade domains. This means that we could lose a fault domain while in the middle of a service upgrade and there would still be one running copy of the code and data in the cluster. Depending on your needs this could be good enough, however you may notice though that this copy could be old (as Service Fabric uses quorum based replication). In order to truly survive two failures you’d need more replicas (five at a minimum).
 
 ![Placement With Fault and Upgrade Domains][Image3]
 
-アップグレード ドメインの数を増やすことは良くもあり、悪くもあります。良い点は、アップグレードの各手順が細かくなるため、影響を受けるノードやサービスの数が少なくなることです。この結果、一度に移動しなければならないサービスが減り、システムに対する変更も少なくなります。また、(障害の影響を受けるサービスが少なくなるため) 全体的な信頼性が向上します。アップグレード ドメインが多数存在する場合の欠点は、アップグレード時、Service Fabric が各アップグレード ドメインの正常性を検証し、正常な状態であることを確認してからでなければ次のアップグレード ドメインに進まない点です。このチェックは、アップグレード処理を進める前に、サービスを安定させ、正常性を検証することを目的としています。これにより、すべての問題が検出されます。正しくない変更が一度に多くのサービスに影響を及ぼすのを防ぐことができるため、このトレードオフは許容されています。
+There are pros and cons to having large numbers of upgrade domains – the pro is that each step of the upgrade is more granular and therefore affects a smaller number of nodes or services. This results in fewer services having to move at a time, introducing less churn into the system and overall improving reliability (since less of the service will be impacted by any issue). The downside of having many upgrade domains is that Service Fabric verifies the health of each Upgrade Domain as it is upgraded and ensures that the Upgrade Domain is healthy before moving on to the next Upgrade Domain. The goal of this check is to ensure that services have a chance to stabilize and that their health is validated before the upgrade proceeds, so that any issues are detected. The tradeoff is acceptable because it prevents bad changes from affecting too much of the service at a time.
 
-アップグレード ドメイン自身に副作用はほとんどありませんが、各アップグレード ドメインを停止してアップグレードしている間は、全体的な容量の大部分が使用できません。たとえば、アップグレード ドメインが 3 つしかない場合は、サービスまたはクラスター容量全体の約 3 分の 1 が一度に停止します。これは望ましくありません。残りのクラスターに、ワークロードを処理するための容量が必要になるためです。つまり、これらのノードにかかる負荷が低い通常状態と比べると、COGS が高くなります。
+Too few upgrade domains has its own side effects – while each individual upgrade domain is down and being upgraded a large portion of your overall capacity is unavailable. For example, if you only have three upgrade domains you are taking down about 1/3 of your overall service or cluster capacity at a time. This isn’t desirable as you have to have enough capacity in the rest of your cluster to cover the workload, meaning that in the normal case those nodes are less-loaded than they would otherwise be, increasing COGS.
 
-環境内の障害ドメインまたはアップグレード ドメインの合計数に制限はありません。また、重複の制約もありません。これまで見てきた一般的な構造は、1 対 1 (一意の各障害ドメインがそれぞれ専用のアップグレード ドメインにマップされる)、1 ノードに 1 つのアップグレード ドメイン (物理または仮想 OS インスタンス)、"ストライプ" または "マトリックス" モデル (障害ドメインとアップグレード ドメインがマトリックスを形成。通常はコンピューターが表中で対角線を描くように配置される) です。
+There’s no real limit to the total number of fault or upgrade domains in an environment, or constraints on how they overlap. Common structures that we’ve seen are 1:1 (where each unique fault domain maps to its own upgrade domain as well), an Upgrade Domain per Node (physical or virtual OS instance), and a “striped” or “matrix” model where the Fault Domains and Upgrade Domains form a matrix with machines usually running down the diagonal.
 
 ![Fault and Upgrade Domain Layouts][Image4]
 
-それぞれのレイアウトに長所と短所があり、どれがベストであるかを断言することはできません。たとえば、1FD 対 1UD モデルは設定が簡単ですが、1 UD/ノード モデルは、これまで少ないコンピューターを管理してきたユーザーが慣れているのに似たモデルで、各コンピューターが個別に停止します。
+There’s no best answer which layout to choose, each has some pros and cons. For example, the 1FD:1UD model is fairly simple to set up, whereas the 1 UD per Node model is most like what people are used to from managing small sets of machines in the past where each would be taken down independently.
 
-最も一般的なモデル (および、ホストされた Azure Service Fabric クラスターに使用されているモデル) は、FD/UD マトリックスです。このモデルでは、FD と UD がテーブルを形成し、ノードが対角線に沿って配置されます。ノードが分散するか密集するかは、FD と UD の数に対するノードの合計数によって決まります (つまり、クラスターが十分に大きい場合は、図 10 の右下のオプションに示すように、ほぼすべてが高密度マトリックス パターンのようになります)。
+The most common model (and the one that we use for the hosted Azure Service Fabric clusters) is the FD/UD matrix, where the FDs and UDs form a table and nodes are placed starting along the diagonal. Whether this ends up sparse or packed depends on the total number of nodes compared to the number of FDs and UDs (put differently, for sufficiently large clusters, almost everything ends up looking like the dense matrix pattern, shown in the bottom right option of Figure 10).
 
-## 障害ドメインとアップグレード ドメインの制約および結果の動作
-クラスター リソース マネージャーは、障害ドメインとアップグレード ドメイン全体にサービスを分散させたいという希望を制約として処理します。制約について詳しくは、[この記事](service-fabric-cluster-resource-manager-management-integration.md)を参照してください。障害ドメイン (FD) とアップグレード ドメイン (UD) の制約は次のように定義されます: "特定のサービス パーティションについて、2 つのドメインでのレプリカ数の差が "*1 よりも大きく*" なってはならない"。 実質的に意味することは、特定のサービスについて、この状態になると障害またはアップグレード ドメインの制約を違反するため、特定の移動または配置がクラスターで無効になる可能性があるということです。
+## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Fault and upgrade domain constraints and resulting behavior
+The Cluster Resource manager treats the desire to keep a service balanced across fault and upgrade domains as a constraint. You can find out more about constraints in [this article](service-fabric-cluster-resource-manager-management-integration.md). The fault and upgrade domain  constraints are defined as following: "For a given service partition there should never be a difference *greater than one* in the number of replicas between two domains."  Practically what this means is that for a given service certain movements or certain arrangements might not be valid in the cluster, because doing so would violate the fault or upgrade domain constraint.
 
-1 つ例を見てみましょう。たとえば、6 つのノードを持つクラスターを、5 つの障害ドメインと 5 つのアップグレード ドメインで構成したととします。
+Let's take a look at one example. Let's say that we have a cluster with 6 nodes, configured with 5 fault domains and 5 upgrade domains.
 
-| |FD0 |FD1 |FD2 |FD3 |FD4 |
+|       |FD0    |FD1    |FD2    |FD3    |FD4    |
 |-------|:-----:|:-----:|:-----:|:-----:|:-----:|
-| UD0 |N1 | | | | |
-| UD1 |N6 |N2 | | | |
-| UD2 | | |N3 | | |
-| UD3 | | | |N4 | |
-| UD4 | | | | |N5 |
+| UD0   |N1     |       |       |       |       |
+| UD1   |N6     |N2     |       |       |       |
+| UD2   |       |       |N3     |       |       |
+| UD3   |       |       |       |N4     |       |
+| UD4   |       |       |       |       |N5     |
 
-ここで、TargetReplicaSetSize に 5 を指定してサービスを作成します。レプリカを N1 ～ N5 に配置します。実際には N6 は使用されません。しかし、なぜでしょうか。 それでは、現在のレイアウトと、N6 を代わりに選択した場合の動作の違いを見て、これが FD および UD の制約のこの定義にどのように関連するかについて考えてみましょう。
+Now let's say that we create a service with a TargetReplicaSetSize of 5. The replicas land on N1-N5. In fact, N6 will never get used. But why? Well let's take a look at the difference between the current layout and what would happen if we had chosen N6 instead, and think about how that relates to our definition of the FD and UD constraint.
 
-以下にそのレイアウトと、障害およびアップグレード ドメインあたりのレプリカの合計数を示します。
+Here's the layout we got and the total number of replicas per fault and upgrade domain.
 
 
-| |FD0 |FD1 |FD2 |FD3 |FD4 |総 UD 数|
+|       |FD0    |FD1    |FD2    |FD3    |FD4    |UDTotal|
 |-------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| UD0 |R1 | | | | |1 |
-| UD1 | |R2 | | | |1 |
-| UD2 | | |R3 | | |1 |
-| UD3 | | | |R4 | |1 |
-| UD4 | | | | |R5 |1 |
-|総 FD 数 | 1 | 1 | 1 | 1 | 1 |-|
+| UD0   |R1     |       |       |       |       |1      |
+| UD1   |       |R2     |       |       |       |1      |
+| UD2   |       |       |R3     |       |       |1      |
+| UD3   |       |       |       |R4     |       |1      |
+| UD4   |       |       |       |       |R5     |1      |
+|FDTotal|1      |1      |1      |1      |1      |-      |
 
-このレイアウトは障害ドメインとアップグレード ドメインあたりのノードという点でバランスが取れており、障害ドメインとアップグレード ドメインあたりのレプリカという点でもバランスが取れています。各ドメインのノード数、レプリカ数は同じです。
+Note that this layout is balanced in terms of nodes per fault domain and upgrade domain, and it is also balanced in terms of the number of replicas per fault and upgrade domain. Each domain has the same number of nodes and the same number of replicas.
 
-ここで、N2 ではなく N6 を使用した場合どうなるか見てみましょう。レプリカはどのように分散されるでしょうか。 これは、次のようになります。
+Now, let's take a look at what would happen if instead of N2, we'd used N6. How would the replicas be distributed then? Well, they'd look something like this:
 
-| |FD0 |FD1 |FD2 |FD3 |FD4 |総 UD 数|
+|       |FD0    |FD1    |FD2    |FD3    |FD4    |UDTotal|
 |-------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| UD0 |R1 | | | | |1 |
-| UD1 |R5 | | | | |1 |
-| UD2 | | |R2 | | |1 |
-| UD3 | | | |R3 | |1 |
-| UD4 | | | | |R4 |1 |
-|総 FD 数|2 |0 |1 |1 |1 |- |
+| UD0   |R1     |       |       |       |       |1      |
+| UD1   |R5     |       |       |       |       |1      |
+| UD2   |       |       |R2     |       |       |1      |
+| UD3   |       |       |       |R3     |       |1      |
+| UD4   |       |       |       |       |R4     |1      |
+|FDTotal|2      |0      |1      |1      |1      |-      |
 
-これは、障害ドメインの制約の定義に違反しています。FD0 のレプリカ数は 2 つですが、FD1 は 0 で、差の合計が 2 であるため、クラスター リソース マネージャーでこの配置が許容されないためです。同様に、N2 ～ 6 を選んだ場合、次のようになります。
+This violates our definition for the fault domain constraint, since FD0 has 2 replicas, while FD1 has 0, making the total difference 2 and thus the Cluster Resource Manager will not allow this arrangement. Similarly if we had picked N2-6 we'd get:
 
-| |FD0 |FD1 |FD2 |FD3 |FD4 |総 UD 数|
+|       |FD0    |FD1    |FD2    |FD3    |FD4    |UDTotal|
 |-------|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
-| UD0 | | | | | |0 |
-| UD1 |R5 |R1 | | | |2 |
-| UD2 | | |R2 | | |1 |
-| UD3 | | | |R3 | |1 |
-| UD4 | | | | |R4 |1 |
-|総 FD 数 | 1 | 1 | 1 | 1 | 1 |-|
+| UD0   |       |       |       |       |       |0      |
+| UD1   |R5     |R1     |       |       |       |2      |
+| UD2   |       |       |R2     |       |       |1      |
+| UD3   |       |       |       |R3     |       |1      |
+| UD4   |       |       |       |       |R4     |1      |
+|FDTotal|1      |1      |1      |1      |1      |-      |
 
-ここでは、障害ドメインの点でバランスが取れていますが、アップグレード ドメインの制約に違反しており (UD0 のレプリカ数が 0 で、UD1 のレプリカ数は 2 であるため)、したがってこのレイアウトは無効です。
+Which while balanced in terms of fault domains is violating the upgrade domain constraint (since UD0 has 0 replicas while UD1 has 2), and hence is invalid as well.
 
-## 障害ドメインとアップグレード ドメインの構成
-障害ドメインとアップグレード ドメインは、Azure でホストされる Service Fabric デプロイで自動的に定義されます。Service Fabric は、Azure から環境情報を取得するだけです。Azure では、障害ドメインとアップグレード ドメインの両方の情報が "1 つのレベル" のように見えますが、実際には Azure Stack の下位レイヤーの情報をカプセル化して、論理的な障害ドメインとアップグレード ドメインをユーザーの観点から表示しているにすぎません。
+## <a name="configuring-fault-and-upgrade-domains"></a>Configuring fault and upgrade domains
+Defining Fault Domains and Upgrade Domains is done automatically in Azure hosted Service Fabric deployments; Service Fabric just picks up the environment information from Azure. In Azure both the fault and upgrade domain information looks “single level” but it really is encapsulating information from lower layers of the Azure stack and just presenting the logical fault and upgrade domains from the user’s perspective.
 
-自分でクラスターを作成している場合 (または、開発用コンピューターで特定のトポロジを実行しようとしている場合)、障害ドメインとアップグレード ドメインの情報も自分で提供する必要があります。この例では、3 つの "データセンター" (それぞれが 3 つのラックを装備) にまたがる 9 個のノード ローカル開発クラスターと、その 3 つのデータセンターにわたってストライピングされた 3 つのアップグレード ドメインを定義しています。クラスター マニフェスト テンプレートでは、次のようになります。
+If you’re standing up your own cluster (or just want to try running a particular topology on your development machine) you’ll need to provide the fault domain and upgrade domain information yourself. In this example we define a 9 node local development cluster that spans three “datacenters” (each with three racks), and three upgrade domains striped across those three datacenters. In the cluster manifest template, it looks something like this:
 
 ClusterManifest.xml
 
@@ -143,49 +145,49 @@ ClusterManifest.xml
     </WindowsServer>
   </Infrastructure>
 ```
-> [AZURE.NOTE] Azure デプロイメントでは、Azure が障害ドメインとアップグレード ドメインを割り当てます。そのため、Azure のインフラストラクチャ オプション内のノードとロールの定義に、障害ドメインまたはアップグレード ドメインに関する情報は含まれません。
+> [AZURE.NOTE] In Azure deployments, fault domains and upgrade domains are assigned by Azure. Therefore, the definition of your nodes and roles within the infrastructure option for Azure does not include fault domain or upgrade domain information.
 
-## 配置の制約とノードのプロパティ
-場合によっては (実際には、ほとんどの場合)、特定のワークロードが、クラスター内の特定のノードまたは特定のノード セットだけで確実に実行されるようにしたいことがあります。たとえば、ワークロードの中に GPU や SSD を必要とするものとしないものが混在している場合があります。その良い例がほぼすべての n 層アーキテクチャです。このアーキテクチャでは、アプリケーションのフロント エンド/インターフェイス提供側として機能するコンピューターが存在する一方で (したがっておそらくインターネットに対して公開)、(さまざまなハードウェア リソースを備えた) 別のセットが、コンピューティングやストレージ レイヤーの作業を処理します (通常、インターネットに公開されない)。Service Fabric では、マイクロサービスであっても、特定のワークロードを特定のハードウェア構成で実行する必要が生じる状況があると想定されています。たとえば、次のような状況です。
+## <a name="placement-constraints-and-node-properties"></a>Placement constraints and node properties
+Sometimes (in fact, most of the time) you’re going to want to ensure that certain workloads run only on certain nodes or certain sets of nodes in the cluster. For example, some workload may require GPUs or SSDs while others may not. A great example of this is pretty much every n-tier architecture out there, where certain machines serve as the front end/interface serving side of the application (and hence are probably exposed to the internet) while a different set (often with different hardware resources) handle the work of the compute or storage layers (and usually are not exposed to the internet). Service Fabric expects that even in a microservices world there are cases where particular workloads will need to run on particular hardware configurations, for example:
 
-- 既存の n 層アプリケーションが Service Fabric 環境に "リフト アンド シフト (移行)" された。
-- パフォーマンス、スケール、またはセキュリティの分離の理由により、ワークロードを特定のハードウェアで実行する必要がある。
--	ポリシーまたはリソース消費の理由により、特定のワークロードを他のワークロードから切り離す必要がある。
+- an existing n-tier application has been “lifted and shifted” into a Service Fabric environment
+- a workload wants to run on specific hardware for performance, scale, or security isolation reasons
+-   A workload needs to be isolated from other workloads for policy or resource consumption reasons
 
-こうした構成をサポートするために、Service Fabric には、配置の制約と呼ばれる優れた概念があります。配置の制約を使用すると、特定のサービスを実行する場所を指定できます。制約のセットはユーザーが拡張できます。つまり、ユーザーがカスタム プロパティでノードにタグを付けて、それに基づいて選択できます。
+In order to support these sorts of configurations Service Fabric has a first class notion of what we call placement constraints. Placement constraints can be used to indicate where certain services should run. The set of constraints is extensible by users, meaning that people can tag nodes with custom properties and then select for those as well.
 
 ![Cluster Layout Different Workloads][Image5]
 
-ノード上の各種キー/値タグはノードの配置 "*プロパティ*" (またはノード プロパティ) と呼ばれ、サービスのステートメントは配置の "*制約*" と呼ばれます。ノード プロパティで指定する値には、string、bool、signed long を使用できます。制約として使用できるのは、クラスター内の別のノード プロパティに対して実行される任意のブール ステートメントです。これらの (文字列である) ブール ステートメントでの有効なセレクターは次のとおりです。
+The different key/value tags on nodes are known as node placement *properties* (or just node properties), whereas the statement at the service is called a placement *constraint*. The value specified in the node property can be a string, bool, or signed long. The constraint can be any Boolean statement that operates on the different node properties in the cluster. The valid selectors in these boolean statements (which are strings) are:
 
-- 特定のステートメントを作成するための条件確認
-  - "等しい" ==
-  - "より大きい" >
-  - "より小さい" <
-  - "等しくない" !=
-  - "以上" >=
-  - "以下" <=
-- グループ化と否定のブール ステートメント
-  - "および" &&
-  - "または" ||
-  - "否定" !
-- グループ化操作のかっこ
+- conditional checks for creating particular statements
+  - "equal to" ==
+  - "greater than" >
+  - "less than" <
+  - "not equal to" !=
+  - "greater than or equal to" >=
+  - "less than or equal to" <=
+- boolean statements for grouping and negation
+  - "and" &&
+  - "or" ||
+  - "not" !
+- parenthesis for grouping operations
   - ()
 
-  上の記号の一部を使用する基本的な制約ステートメントの例をいくつか紹介します。ノードのプロパティとして使用できるのは、文字列、ブール、または数値であることに注意してください。
+  Here are some examples of basic constraint statements that use some of the symbols above. Note that node properties can be strings, bools, or numerical values.   
 
   - "Foo >= 5"
   - "NodeColor != green"
   - "((OneProperty < 100) || ((AnotherProperty == false) && (OneProperty >= 100)))"
 
 
-ステートメント全体の評価が "True" のノードのみ、サービスを配置させることができます。プロパティが定義されていないノードと、そのプロパティを含む配置の制約とは一致しません。
+Only nodes where the overall statement evaluates to “True” can have the service placed on it. Nodes without a property defined do not match any placement constraint that contains that property.
 
-Service Fabric では、自動的に適用できる既定のプロパティもいくつか定義されています。これらのプロパティについては、ユーザーが定義する必要はありません。この記事の執筆時点では、NodeType と NodeName が、既定のプロパティとして各ノードで定義されています。したがって、たとえば、配置の制約を "(NodeType == NodeType03)" と記述できます。一般的には、NodeType プロパティが最もよく使用されるプロパティの 1 つです。このプロパティは、通常、コンピューターの種類と 1 対 1 で対応しているためです。従来の n 層アプリケーション アーキテクチャでは、コンピューターの種類はワークロードの種類に対応しています。
+Service Fabric also defines some default properties which can be used automatically without the user having to define them. As of this writing the default properties defined at each node are the NodeType and the NodeName. So for example you could write a placement constraint as "(NodeType == NodeType03)". Generally we have found NodeType to be one of the most commonly used properties, as it usually corresponds 1:1 with a type of a machine, which in turn correspond to a type of workload in a traditional n-tier application architecture.
 
 ![Placement Constraints and Node Properties][Image6]
 
-たとえば、特定のノード タイプに対して次のノード プロパティが定義されているとします: ClusterManifest.xml
+Let’s say that the following node properties were defined for a given node type: ClusterManifest.xml
 
 ```xml
     <NodeType Name="NodeType01">
@@ -197,7 +199,7 @@ Service Fabric では、自動的に適用できる既定のプロパティも�
     </NodeType>
 ```
 
-サービスに対して、次のようにサービスの配置の制約を作成できます。
+You can create service placement constraints for a service like this:
 
 C#
 
@@ -216,9 +218,9 @@ Powershell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-NodeType01 のすべてのノードが確実に有効である場合は、上の図のような配置の制約を使用すれば、そのノード タイプを選択するだけで済みます。
+If you are sure that all nodes of NodeType01 are valid, you could also just select that node type, using placement constraints like those show in the pictures above.
 
-サービスの配置の制約で優れているのは、実行時に動的に更新される点です。そのため、必要に応じて、クラスター内でのサービスの移動や、要件の追加/削除などを行うことができます。このような変更が進行中でも、Service Fabric によって、サービスは確実に稼働し続け、利用することができます。
+One of the cool things about a service’s placement constraints is that they can be updated dynamically during runtime. So if you need to, you can move a service around in the cluster, add and remove requirements, etc. Service Fabric takes care of ensuring that the service stays up and available even when these types of changes are ongoing.
 
 C#:
 
@@ -234,18 +236,18 @@ Powershell:
 Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstraints "NodeType == NodeType01"
 ```
 
-配置の制約 (および、これから説明するその他多数のオーケストレーター コントロール) は、すべてのサービス インスタンスに対してそれぞれ指定されます。更新すると、以前に指定された内容は常に置き換えられます (上書きされます)。
+Placement constraints (along with many other orchestrator controls that we’re going to talk about) are specified for every different named service instance. Updates always take the place (overwrite) what was previously specified.
 
-また、この時点でノードのプロパティはクラスター定義を介して定義されるため、これらのプロパティを更新するにはクラスターをアップグレードする必要があり、各ノードを停止させてから復帰させてそのプロパティを更新する必要があることにも注意してください。
+It is also worth noting that at this point the properties on a node are defined via the cluster definition and hence cannot be updated without an upgrade to the cluster and will require each node to go down and then come back up in order to refresh its properties.
 
-## 容量
-クラスター内のリソース消費量の管理は、オーケストレーターの重要なジョブの 1 つです。サービスを効率的に実行しようとしている場合に最も望ましくないのは、(リソース競合やパフォーマンスの低下につながる) 大量のホット ノードと、(リソースが浪費される) コールド ノードが混在することです。しかし、バランスよりもっと基本的なことを考えてみましょう (バランスについては後ほど説明します)。そもそも、ノードでリソースが不足しないようにさえすればよいのではないでしょうか。
+## <a name="capacity"></a>Capacity
+One of the most important jobs of any orchestrator is to help manage resource consumption in the cluster. The last thing you want if you’re trying to run services efficiently is a bunch of nodes which are hot (leading to resource contention and poor performance) while others are cold (wasted resources). But let’s think even more basic than balancing (which we’ll get to in a minute) – what about just ensuring that nodes don’t run out of resources in the first place?
 
-Service Fabric はリソースを "メトリック" として表します。メトリックとは、Service Fabric に対して記述する論理または物理リソースです。たとえば、"WorkQueueDepth"、"MemoryInMb" などがメトリックです。メトリックは、配置の制約やノードのプロパティとは異なります。ノード プロパティは一般的にノード自体の静的な記述子ですが、メトリックは、ノードが所有し、サービスがノードで実行されているときに消費されるリソースに関するものです。つまり、プロパティは HasSSD (SSD 有り) のようなもので、true または false に設定できますが、その SSD で使用できる領域の量 (およびサービスによって消費される量) は、"DriveSpaceInMb" などのメトリックで表します。"DriveSpaceInMb" は、ノードの容量に基づいて、ドライブ上で予約されていない領域の合計量に設定されます。実行時にサービスが使用したメトリックの量は、そのサービスによってレポートされます。
+Service Fabric represents resources as “Metrics”. Metrics are any logical or physical resource that you want to describe to Service Fabric. Examples of metrics are things like “WorkQueueDepth” or “MemoryInMb”. Metrics are different from placements constraints and node properties in that node properties are generally static descriptors of the nodes themselves, whereas metrics are about resources that nodes have and that services consume when they are running on a node. So a property would be something like HasSSD and could be set to true or false, but the amount of space available on that SSD (and consumed by services) would be a metric like “DriveSpaceInMb”. Capacity on the node would set the “DriveSpaceInMb” to the amount of total non-reserved space on the drive, and services would report how much of the metric they used during runtime.
 
-すべてのリソース "*分散*" をオフにしても、Service Fabric のクラスター リソース マネージャーは、容量超過のノードが出ないように調整できます (クラスター全体に余裕がある限り)。容量とは、ノードにどのくらいのリソースがあるかを理解するためにクラスター リソース マネージャーが使用するもう 1 つの "*制約*" ですこのサービス レベルの容量と消費量の両方が、メトリックで表現されます。たとえば、メトリックが "MemoryInMb" の場合 - 指定したノードに MemoryInMb が 2048 の容量があり、指定したサービスは現在 64 の MemoryInMb を消費していると宣言できます。
+If you turned off all resource *balancing*, Service Fabric’s Cluster Resource Manager would still be able to ensure that no node ended up over its capacity (unless the cluster as a whole was too full). Capacity is another *constraint* which the Cluster Resource Manager uses to understand how much of a resource a node has. Both the capacity and the consumption at the service level are expressed in terms of metrics. So for example, the metric might be "MemoryInMb" - a given Node may have a capacity for MemoryInMb of 2048, while a given service can say it is currently consuming 64 of MemoryInMb.
 
-実行時、クラスター リソース マネージャーは、(容量によって定義される) 各ノードに存在する各リソースの量と、(宣言された使用量を各サービスから差し引くことで算出される) リソース残量をトラックします。Service Fabric リソース マネージャーは、ノードが容量超過にならないように、この情報を使用して、レプリカを配置または移動する場所を検討します。
+During runtime, the Cluster Resource Manager tracks how much of each resource is present on each node (defined by its capacity) and how much is remaining (by subtracting any declared usage from each service). With this information, the Service Fabric Resource Manager can figure out where to place or move replicas so that nodes don’t go over capacity.
 
 C#:
 
@@ -268,7 +270,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ![Cluster nodes and capacity][Image7]
 
-これは、クラスター マニフェストで確認できます。
+You can see these in the cluster manifest:
 
 ClusterManifest.xml
 
@@ -281,19 +283,19 @@ ClusterManifest.xml
     </NodeType>
 ```
 
-サービスの負荷が動的に変わる可能性もあります。レプリカの負荷が 64 から 1024 に変更されたが、それをその時点で実行しているノードの残りの容量が 512 ("MemoryInMb" メトリック) だったとします。このため、ノード上のすべてのレプリカとインスタンスの合計使用量が、そのノードの容量を超えているために、レプリカまたはインスタンスが現在配置されている場所が無効になります。負荷が動的に変化するこのシナリオについては後で説明しますが、容量に限って言えば、同じように処理されます。つまり、クラスター リソース マネージャーが自動的に起動し、ノード上の 1 つ以上のレプリカまたはインスタンスを別のノードに移動して、そのノードを容量未満に戻します。これを行うとき、クラスター リソース マネージャーは、すべての移動のコストを最小化しようとします (コストの概念については後ほど触れます)。
+It is also possible that a service’s load changes dynamically. Say that a replica's load changed from 64 to 1024, but the node it was running on at that time only had 512 (of the "MemoryInMb" metric) remaining. Because of this, where a replica or instance is currently placed becomes invalid since the combined usage of all of the replicas and instances on that node exceeds that node’s capacity. We’ll talk more about this scenario where load can change dynamically later, but as far as capacity goes it is handled the same way – the Cluster Resource Manager automatically kicks in and gets the node back below capacity by moving one or more of the replicas or instances on that node to different nodes. When doing this the Cluster Resource Manager tries to minimize the cost of all of the movements (we’ll come back to the notion of Cost later).
 
-## クラスターの容量
-では、クラスター全体がいっぱいにならないようにするにはどうすればよいのでしょうか。 実際のところ、負荷が動的な場合、できることは多くありません (サービスにかかる負荷は、クラスター リソース マネージャーのアクションに関係なく急激に高くなる場合があるためです。今日クラスターに余裕があったとしても、明日一躍有名になったらエネルギー不足に陥る可能性があります)。しかし、基本的な問題を回避するために制御できることはいくつかあります。まず、クラスターがいっぱいになる原因となるワークロードが新しく作成されないようにします。
+## <a name="cluster-capacity"></a>Cluster capacity
+So how do we keep the overall cluster from being too full? Well, with dynamic load there’s actually not a lot we can do (since services can have their load spike independent of actions taken by the Cluster Resource Manager – your cluster with a lot of headroom today may be rather underpowered when you become famous tomorrow), but there are some controls that are baked in to prevent basic problems. The first thing we can do is prevent the creation of new workloads that would cause the cluster to become full.
 
-たとえば、シンプルなステートレス サービスを作成するとします。このサービスには負荷が関連付けられています (既定および動的な負荷レポートの詳細については後述)。このサービスは、あるリソースを使用します。ここでは DiskSpace リソースとしましょう。サービスは既定でサービス インスタンスごとに 5 ユニットの DiskSpace を消費します。3 つのサービス インスタンスを作成する必要があるとしましょう。そこで、 つまり、これらのサービス インスタンスを作成するには、クラスターに 15 ユニットの DiskSpace が必要です。Service Fabric は、全体的な容量と各メトリックの消費量を継続的に計算しているため、判断に手間はかかりません。空き領域が足りない場合は、作成サービス呼び出しを拒否できます。
+Say that you go to create a simple stateless service and it has some load associated with it (more on default and dynamic load reporting later). For this service, let’s say that it cares about some resource (let’s say DiskSpace) and that by default it is going to consume 5 units of DiskSpace for every instance of the service. You want to create 3 instances of the service. Great! So that means that we need 15 units of DiskSpace to be present in the cluster in order for us to even be able to create these service instances. Service Fabric is continually calculating the overall capacity and consumption of each metric, so we can easily make the determination and reject the create service call if there’s insufficient space.
 
-要件は 15 ユニットが使用可能である、ということだけです。したがって、この領域はさまざまな方法で割り当てることができます。たとえば、15 ノードそれぞれに 1 つずつユニットが残っていても、5 ノードに 3 つずつユニットが残っていてもかまいません。3 つのノードに十分な容量がない場合、Service Fabric はクラスター内の既存のサービスを再構成して、その 3 つの必要なノードで領域を確保します。クラスター全体がほぼいっぱいでない限り、ほとんどの場合、このような再配置が可能です。
+Note that since the requirement is only that there be 15 units available, this space could be allocated many different ways; it could be one remaining unit of capacity on 15 different nodes, for example, or three remaining units of capacity on 5 different nodes, etc. If there isn’t sufficient capacity on three different nodes Service Fabric will reorganize the services already in the cluster in order to make room on the three necessary nodes. Such rearrangement is almost always possible unless the cluster as a whole is almost entirely full.
 
-## バッファーの容量
-また、ユーザーがクラスター全体の容量を管理しやすいように、予約済みのバッファーの概念が、各ノードで指定された容量に用意されています。この設定はオプションですが、これによりユーザーがノード全体の容量の一部を予約できます。予約した容量は、アップグレード中および障害発生中、つまり、その容量を使わないとクラスター容量が削減される場合に、サービスの配置でのみ使用されます。現時点では、バッファーは、すべてのノードを対象にグローバルに、ClusterManifest を介してメトリックごとに指定します。予約容量に対して指定する値は、サービスに対する制約が大きいリソースの関数と、クラスター内の障害ドメインとアップグレード ドメインの数です。一般的に、障害ドメインとアップグレード ドメイン数が多い場合は、バッファー容量に小さな数値を選択できます。アップグレード中や障害発生中に使用できなくなるクラスターの量が少なくなるためです。バッファーの割合の指定は、メトリックに対してノード容量を指定した場合にのみ有効です。
+## <a name="buffered-capacity"></a>Buffered Capacity
+Another thing that helps people manage overall cluster capacity is the notion of some reserved buffer to the capacity specified at each node. This setting is optional, but allows people to reserve some portion of the overall node capacity so that it is only used to place services during upgrades and failures – cases where the capacity of the cluster is otherwise reduced. Today buffer is specified globally per metric for all nodes via the ClusterManifest. The value you pick for the reserved capacity will be a function of which resources your services are more constrained on, as well as the number of fault and upgrade domains you have in the cluster. Generally more fault and upgrade domains means that you can pick a lower number for your buffered capacity, as you will expect smaller amounts of your cluster to be unavailable during upgrades and failures. Note that specifying the buffer percentage only makes sense if you have also specified the node capacity for a metric.
 
-バッファー容量を指定する方法の例を次に示します。
+Here's an example of how to specify buffered capacity:
 
 ClusterManifest.xml
 
@@ -305,7 +307,7 @@ ClusterManifest.xml
         </Section>
 ```
 
-クラスターにバッファー容量がなくなると、新しいサービスの作成が失敗します。これにより、クラスターで予備のオーバーヘッドが確実に確保され、アップグレードや障害でノードの容量超過が実際に発生することがなくなります。クラスター リソース マネージャーでは、PowerShell やクエリ API を使用して、こうした情報が多数公開されており、クラスターで使用中の各メトリックのバッファー容量の設定、合計容量、および現在の消費量を確認することができます。その出力の例を次に示します。
+The creation of new services will fail when the cluster is out of buffered capacity, ensuring that the cluster retains enough spare overhead such that upgrades and failures don’t result in nodes being actually over capacity. The Cluster Resource Manager exposes a lot of this information via PowerShell and the Query APIs, letting you see the buffered capacity settings, the total capacity, and the current consumption for every metric in use in the cluster. Here we see an example of that output:
 
 ```posh
 PS C:\Users\user> Get-ServiceFabricClusterLoadInformation
@@ -333,18 +335,22 @@ LoadMetricInformation     :
                             MaxNodeLoadNodeId     : 2cc648b6770be1bc9824fa995d5b68b1
 ```
 
-## 次のステップ
-- クラスター リソース マネージャーのアーキテクチャと情報フローについては、[この記事](service-fabric-cluster-resource-manager-architecture.md)を参照してください。
-- 最適化メトリックの定義は、負荷を分散するのではなく、ノードで統合する方法の 1 つです。最適化を構成する方法については、[この記事](service-fabric-cluster-resource-manager-defragmentation-metrics.md)を参照してください。
-- 最初から開始して、[Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)。
-- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
+## <a name="next-steps"></a>Next steps
+- For information on the architecture and information flow within the Cluster Resource manager, check out [this article ](service-fabric-cluster-resource-manager-architecture.md)
+- Defining Defragmentation Metrics is one way to consolidate load on nodes instead of spreading it out. To learn how to configure defragmentation, refer to [this article](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+- Start from the beginning and [get an Introduction to the Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
+- To find out about how the Cluster Resource Manager manages and balances load in the cluster, check out the article on [balancing load](service-fabric-cluster-resource-manager-balancing.md)
 
-[Image1]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-domains.png
-[Image2]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-uneven-fault-domain-layout.png
-[Image3]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-and-upgrade-domains-with-placement.png
-[Image4]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-and-upgrade-domain-layout-strategies.png
-[Image5]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-layout-different-workloads.png
-[Image6]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
-[Image7]: ./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
+[Image1]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-domains.png
+[Image2]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-uneven-fault-domain-layout.png
+[Image3]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-and-upgrade-domains-with-placement.png
+[Image4]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-and-upgrade-domain-layout-strategies.png
+[Image5]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-layout-different-workloads.png
+[Image6]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-placement-constraints-node-properties.png
+[Image7]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-nodes-and-capacity.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

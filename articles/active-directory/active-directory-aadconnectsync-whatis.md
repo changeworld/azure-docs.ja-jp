@@ -1,67 +1,72 @@
 <properties
-	pageTitle="Azure AD Connect sync: 同期を理解してカスタマイズする | Microsoft Azure"
-	description="Azure AD Connect の同期のしくみとカスタマイズ方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="andkjell"
-	manager="femila"
-	editor=""/>
+    pageTitle="Azure AD Connect sync: Understand and customize synchronization | Microsoft Azure"
+    description="Explains how Azure AD Connect sync works and how to customize."
+    services="active-directory"
+    documentationCenter=""
+    authors="andkjell"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/29/2016"
-	ms.author="markusvi;andkjell"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/29/2016"
+    ms.author="markusvi;andkjell"/>
 
 
-# Azure AD Connect sync: 同期を理解してカスタマイズする
-Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、Azure AD Connect の主要コンポーネントです。オンプレミス環境と Azure AD 間の ID データの同期に関連するすべての操作を処理します。Azure AD Connect Sync は、Azure Active Directory Connector で構成された DirSync、Azure AD Sync、Forefront Identity Manager の後継となります。
 
-このトピックは **Azure AD Connect Sync** (別名: **同期エンジン**) のホームであり、関連する他のすべてのトピックへのリンクを示します。Azure AD Connect へのリンクについては、「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
+# <a name="azure-ad-connect-sync:-understand-and-customize-synchronization"></a>Azure AD Connect sync: Understand and customize synchronization
+The Azure Active Directory Connect synchronization services (Azure AD Connect sync) is a main component of Azure AD Connect. It takes care of all the operations that are related to synchronize identity data between your on-premises environment and Azure AD. Azure AD Connect sync is the successor of DirSync, Azure AD Sync, and Forefront Identity Manager with the Azure Active Directory Connector configured.
 
-同期サービスは、オンプレミスの **Azure AD Connect Sync** コンポーネントと、**Azure AD Connect 同期サービス**と呼ばれる Azure AD のサービス側の、2 つのコンポーネントで構成されます。このサービスは、DirSync、Azure AD Sync、および Azure AD Connect で共通です。
+This topic is the home for **Azure AD Connect sync** (also called **sync engine**) and lists links to all other topics related to it. For links to Azure AD Connect, see [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).
 
-## Azure AD Connect Sync のトピック
+The sync service consists of two components, the on-premises **Azure AD Connect sync** component and the service side in Azure AD called **Azure AD Connect sync service**. The service is common for DirSync, Azure AD Sync, and Azure AD Connect.
 
-トピック | 内容
+## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect sync topics
+
+Topic | What it covers and when to read
 ----- | -----
-**Azure AD Connect sync の基礎** |
-[アーキテクチャの概要](active-directory-aadconnectsync-understanding-architecture.md) | 同期エンジンを初めて使うユーザーのために、アーキテクチャと用語について説明します。
-[技術的概念](active-directory-aadconnectsync-technical-concepts.md) | アーキテクチャのトピックを要約したもので、用語について簡単に説明します。
-[Azure AD Connect のトポロジ](active-directory-aadconnect-topologies.md) | 同期エンジンがサポートするさまざまなトポロジとシナリオについて説明します。
-**カスタム構成** |
-[インストール ウィザードの再実行](active-directory-aadconnectsync-installation-wizard.md) | Azure AD Connect インストール ウィザードをもう一度実行する場合に使用できるオプションについて説明します。
-[宣言型のプロビジョニングについて](active-directory-aadconnectsync-understanding-declarative-provisioning.md)| 宣言型のプロビジョニングと呼ばれる構成モデルについて説明します。
-[宣言型のプロビジョニングの式について](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | 宣言型のプロビジョニングで使用される式言語の構文について説明します。
-[既定の構成について](active-directory-aadconnectsync-understanding-default-configuration.md)| 既定のルールと既定の構成について説明します。また、既定のシナリオに対するルールの動作についても説明します。
-[ユーザーと連絡先について](active-directory-aadconnectsync-understanding-users-and-contacts.md) | 前のトピックの続きで、ユーザーと連絡先の構成の連携について説明します (特に複数フォレスト環境)。
-[既定の構成を変更する方法](active-directory-aadconnectsync-change-the-configuration.md) | 属性フローに対する一般的な構成変更方法について説明します。
-[既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | 既定の構成を変更する場合のサポートの制約。
-[フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md) | Azure AD と同期するオブジェクトを制限する方法についてのさまざまなオプション、およびこれらのオプションの構成手順について説明します。
-**機能とシナリオ** |
-[誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | "*誤って削除されないように保護する*" 機能とその構成方法について説明します。
-[Scheduler](active-directory-aadconnectsync-feature-scheduler.md) | データをインポート、同期、およびエクスポートする組み込みのスケジューラについて説明します。
-[パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md) | パスワード同期のしくみ、実装方法、および運用とトラブルシューティングについて説明します。
-[デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md) | Azure AD Connect のデバイスの書き戻しのしくみについて説明します。
-[ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md) | 独自のカスタム属性で Azure AD スキーマを拡張する方法について説明します。
-**同期サービス** |
-[Azure AD Connect 同期サービスの機能](active-directory-aadconnectsyncservice-features.md) | 同期サービス側と、Azure AD で同期の設定を変更する方法について説明します。
-[重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) | **userPrincipalName** と **proxyAddresses** の重複した属性値の回復性を有効にして使用する方法について説明します。
-**操作と UI** |
-[Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | [[操作]](active-directory-aadconnectsync-service-manager-ui-operations.md)、[[コネクタ]](active-directory-aadconnectsync-service-manager-ui-connectors.md)、[[メタバース デザイナー]](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md)、[[メタバース検索]](active-directory-aadconnectsync-service-manager-ui-mvsearch.md) の各タブなどの Synchronization Service Manager の UI について説明します。
-[操作タスクおよび考慮事項](active-directory-aadconnectsync-operations.md) | 障害回復などの操作上の考慮事項について説明します。
-**方法** |
-[Azure AD アカウントをリセットする](active-directory-aadconnectsync-howto-azureadaccount.md) | Azure AD Connect 同期サービスから Azure AD への接続に使用するサービス アカウントの資格情報をリセットする方法。
-**詳細情報とリファレンス** |
-[ポート](active-directory-aadconnect-ports.md) | 同期エンジンとオンプレミスのディレクトリおよび Azure AD の間で開く必要があるポートの一覧を示します。
-[Azure Active Directory に同期される属性](active-directory-aadconnectsync-attributes-synchronized.md) | オンプレミスの AD と Azure AD の間で同期されるすべての属性の一覧を示します。
-[関数参照](active-directory-aadconnectsync-functions-reference.md) | 宣言型のプロビジョニングで使用できるすべての関数の一覧を示します。
+**Azure AD Connect sync fundamentals** |
+[Understanding the architecture](active-directory-aadconnectsync-understanding-architecture.md) | For those of you who are new to the sync engine and want to learn about the architecture and the terms used.
+[Technical concepts](active-directory-aadconnectsync-technical-concepts.md) | A short version of the architecture topic and briefly explains the terms used.
+[Topologies for Azure AD Connect](active-directory-aadconnect-topologies.md) | Describes the different topologies and scenarios the sync engine supports.
+**Custom configuration** |
+[Running the installation wizard again](active-directory-aadconnectsync-installation-wizard.md) | Explains what options you have available when you run the Azure AD Connect installation wizard again.
+[Understanding Declarative Provisioning](active-directory-aadconnectsync-understanding-declarative-provisioning.md)| Describes the configuration model called declarative provisioning.
+[Understanding Declarative Provisioning Expressions](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) | Describes the syntax for the expression language used in declarative provisioning.
+[Understanding the default configuration](active-directory-aadconnectsync-understanding-default-configuration.md)| Describes the out-of-box rules and the default configuration. Also describes how the rules work together for the out-of-box scenarios to work.
+[Understanding Users and Contacts](active-directory-aadconnectsync-understanding-users-and-contacts.md) | Continues on the previous topic and describes how the configuration for users and contacts works together, in particular in a multi-forest environment.
+[How to make a change to the default configuration](active-directory-aadconnectsync-change-the-configuration.md) | Walks you through how to make a common configuration change to attribute flows.
+[Best practices for changing the default configuration](active-directory-aadconnectsync-best-practices-changing-default-configuration.md) | Support limitations and for making changes to the out-of-box configuration.
+[Configure Filtering](active-directory-aadconnectsync-configure-filtering.md) | Describes the different options for how to limit which objects are being synchronized to Azure AD and step-by-step how to configure these options.
+**Features and scenarios** |
+[Prevent accidental deletes](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) | Describes the *prevent accidental deletes* feature and how to configure it.
+[Scheduler](active-directory-aadconnectsync-feature-scheduler.md) | Describes the built-in scheduler, which is importing, synchronizing, and exporting data.
+[Implement password synchronization](active-directory-aadconnectsync-implement-password-synchronization.md) | Describes how password synchronization works, how to implement, and how to operate and troubleshoot.
+[Device writeback](active-directory-aadconnect-feature-device-writeback.md) | Describes how device writeback works in Azure AD Connect.
+[Directory extensions](active-directory-aadconnectsync-feature-directory-extensions.md) | Describes how to extend the Azure AD schema with your own custom attributes.
+**Sync Service** |
+[Azure AD Connect sync service features](active-directory-aadconnectsyncservice-features.md) | Describes the sync service side and how to change sync settings in Azure AD.
+[Duplicate attribute resiliency](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) | Describes how to enable and use **userPrincipalName** and **proxyAddresses** duplicate attribute values resiliency.
+**Operations and UI** |
+[Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) | Describes the Synchronization Service Manager UI, including [Operations](active-directory-aadconnectsync-service-manager-ui-operations.md), [Connectors](active-directory-aadconnectsync-service-manager-ui-connectors.md), [Metaverse Designer](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md), and [Metaverse Search](active-directory-aadconnectsync-service-manager-ui-mvsearch.md) tabs.
+[Operational tasks and considerations](active-directory-aadconnectsync-operations.md) | Describes operational concerns, such as disaster recovery.
+**How To...** |
+[Reset the Azure AD account](active-directory-aadconnectsync-howto-azureadaccount.md) | How to reset the credentials of the service account used to connect from Azure AD Connect sync to Azure AD.
+**More information and references** |
+[Ports](active-directory-aadconnect-ports.md) | Lists which ports you need to open between the sync engine and your on-premises directories and Azure AD.
+[Attributes synchronized to Azure Active Directory](active-directory-aadconnectsync-attributes-synchronized.md) | Lists all attributes being synchronized between on-premises AD and Azure AD.
+[Functions Reference](active-directory-aadconnectsync-functions-reference.md) | Lists all functions available in declarative provisioning.
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional Resources
 
-* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+* [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

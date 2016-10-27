@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array のベスト プラクティス | Microsoft Azure"
-   description="StorSimple Virtual Array のデプロイと管理のベスト プラクティスについて説明します。"
+   pageTitle="Best practices for StorSimple Virtual Array | Microsoft Azure"
+   description="Describes the best practices for deploying and managing the StorSimple Virtual Array."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,338 +15,344 @@
    ms.date="08/09/2016"
    ms.author="alkohli" />
 
-# StorSimple Virtual Array のベスト プラクティス
 
-## Overview
+# <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array best practices
 
-Microsoft Azure StorSimple Virtual Array は、ハイパーバイザーで実行されるオンプレミスの仮想デバイスと Microsoft Azure のクラウド ストレージとの間でストレージ タスクを管理する統合ストレージ ソリューションです。8000 シリーズの物理アレイに代わる効率的かつ経済的な選択肢となります。仮想アレイは、既存のハイパーバイザー インフラストラクチャ上で動作し、iSCSI と SMB の両方のプロトコルをサポートします。仮想アレイは、リモート オフィス/ブランチ オフィスのシナリオに適しています。StorSimple ソリューションの詳細については、[Microsoft Azure StorSimple の概要](https://www.microsoft.com/ja-JP/server-cloud/products/storsimple/overview.aspx)のページを参照してください。
+## <a name="overview"></a>Overview
 
-この記事では、StorSimple Virtual Array の初期セットアップ時、デプロイ時、管理時に実施するベスト プラクティスについて説明します。仮想アレイのセットアップと管理を対象とした検証済みのガイドラインとなっています。この記事は、データセンターで仮想アレイのデプロイと管理を担当する IT 管理者を対象としています。
+Microsoft Azure StorSimple Virtual Array is an integrated storage solution that manages storage tasks between an on-premises virtual device running in a hypervisor and Microsoft Azure cloud storage. StorSimple Virtual Array is an efficient, cost-effective alternative to the 8000 series physical array. The virtual array can run on your existing hypervisor infrastructure, supports both the iSCSI and the SMB protocols, and is well-suited for remote office/branch office scenarios. For more information on the StorSimple solutions, go to [Microsoft Azure StorSimple Overview](https://www.microsoft.com/en-us/server-cloud/products/storsimple/overview.aspx).
 
-セットアップや操作の流れに変更が生じてもデバイスの準拠状態を確実に保つために、ベスト プラクティスは定期的に再読することをお勧めします。万一仮想アレイにベスト プラクティスを適用する過程で問題が生じた場合は、[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
+This article covers the best practices implemented during the initial setup, deployment, and management of the StorSimple Virtual Array. These best practices provide validated guidelines for the setup and management of your virtual array. This article is targeted towards the IT administrators who deploy and manage the virtual arrays in their datacenters.
 
-## 構成のベスト プラクティス 
+We recommend a periodic review of the best practices to help ensure your device is still in compliance when changes are made to the setup or operation flow. Should you encounter any issues while implementing these best practices on your virtual array, [contact Microsoft Support](storsimple-contact-microsoft-support.md) for assistance.
 
-ベスト プラクティスでは、仮想アレイの初回セットアップとデプロイ時に守るべきガイドラインについて取り上げています。たとえば、仮想マシンのプロビジョニング、グループ ポリシーの設定、サイズ変更、ネットワークの設定、ストレージ アカウントの構成、仮想アレイの共有とボリュームの作成に関連するベスト プラクティスについて説明しています。
+## <a name="configuration-best-practices"></a>Configuration best practices 
 
-### プロビジョニング 
+These best practices cover the guidelines that need to be followed during the initial setup and deployment of the virtual arrays. These best practices include those related to the provisioning of the virtual machine, group policy settings, sizing, setting up the networking, configuring storage accounts, and creating shares and volumes for the virtual array. 
 
-StorSimple Virtual Array は、ホスト サーバーのハイパーバイザー (Hyper-V または VMware) にプロビジョニングされる仮想マシン (VM) です。仮想マシンをプロビジョニングするときは、最低限必要なリソースをホストに確保してください。詳細については、アレイをプロビジョニングするための[最低リソース要件](storsimple-ova-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)に関するページを参照してください。
+### <a name="provisioning"></a>Provisioning 
 
-仮想アレイをプロビジョニングする際は、次のベスト プラクティスに従ってください。
+StorSimple Virtual Array is a virtual machine (VM) provisioned on the hypervisor (Hyper-V or VMware) of your host server. When provisioning the virtual machine, ensure that your host is able to dedicate sufficient resources. For more information, go to [minimum resource requirements](storsimple-ova-deploy2-provision-hyperv.md#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements) to provision an array. 
+
+Implement the following best practices when provisioning the virtual array:
 
 
-| | Hyper-V | VMware |
+|                        | Hyper-V                                                                                                                                        | VMware                                                                                                               |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| **仮想マシンのタイプ** | **第 2 世代**の VM (Windows Server 2012 以降の場合) と *.vhdx* イメージ。<br></br> **第 1 世代**の VM (Windows Server 2008 以降の場合) と *.vhd* イメージ。 | *.vmdk* イメージを使用するときは、仮想マシン バージョン 8 ～ 11 を使用します。 |
-| **メモリの種類** | **静的メモリ**として構成します。<br></br> **動的メモリ**は選択しないでください。 | |
-| **データ ディスクの種類** | **容量可変**としてプロビジョニングします。<br></br> **固定サイズ**は時間がかかります。<br></br> **差分**オプションは選択しないでください。 | **シン プロビジョニング** オプションを使用します。 |
-| **データ ディスクの変更** | 拡張と縮小は許可されません。このような操作を試みると、デバイス上のローカル データがすべて失われます。 | 拡張と縮小は許可されません。このような操作を試みると、デバイス上のローカル データがすべて失われます。 |
+| **Virtual machine type**   | **Generation 2** VM for use with Windows Server 2012 or later and a *.vhdx* image. <br></br> **Generation 1** VM for use with a Windows Server 2008 or later and a *.vhd* image.                                                                                                              | Use virtual machine version 8 - 11 when using *.vmdk* image.                                                                      |
+| **Memory type**            | Configure as **static memory**. <br></br> Do not use the **dynamic memory** option.            |                                                    |
+| **Data disk type**         | Provision as **dynamically expanding**.<br></br> **Fixed size** takes a long time. <br></br> Do not use the **differencing** option.                                                                                                                   | Use the **thin provision** option.                                                                                      |
+| **Data disk modification** | Expansion or shrinking is not allowed. An attempt to do so results in the loss of all the local data on device.                       | Expansion or shrinking is not allowed. An attempt to do so results in the loss of all the local data on device. |
 
-### サイズ変更
+### <a name="sizing"></a>Sizing
 
-StorSimple Virtual Array のサイズを変更するときは、次の要素を考慮します。
+When sizing your StorSimple Virtual Array, consider the following factors:
 
-- ローカルにおけるボリュームまたは共有の予約。領域の約 12% は、プロビジョニングされる各階層化ボリュームまたは共有用にローカル階層で予約されています。また、領域の約 10% は、ファイル システムのローカル固定ボリューム用に予約されています。
-- スナップショットのオーバーヘッド。スナップショットには、ローカル階層に約 15% の領域が予約されます。
-- 復元の必要性。新しい操作として復元を実行する場合、サイズ変更では、復元に必要な領域を考慮する必要があります。復元は、同じサイズ以上の共有またはボリュームに対して実行されます。
-- 想定外の拡大に備えて、ある程度のバッファーを割り当てる必要があります。
+- Local reservation for volumes or shares. Approximately 12% of the space is reserved on the local tier for each provisioned tiered volume or share. Roughly 10% of the space is also reserved for a locally pinned volume for file system.
+- Snapshot overhead. Roughly 15% space on the local tier is reserved for snapshots.
+- Need for restores. If doing restore as a new operation, sizing should account for the space needed for restore. Restore is done to a share or volume of the same size or larger.
+- Some buffer should be allocated for any unexpected growth.
 
-以上の点を踏まえると、サイズ変更の要件は次の数式で表すことができます。
+Based on the preceding factors, the sizing requirements can be represented by the following equation:
 
 `Total usable local disk size = (Total provisioned locally pinned volume/share size including space for file system) + (Max (local reservation for a volume/share) for all tiered volumes/share) + (Local reservation for all tiered volumes/shares)`
 
 `Data disk size = Total usable local disk size + Snapshot overhead + buffer for unexpected growth or new share or volume`
 
 
-以降の例では、仮想アレイのサイズを要件に応じて変更する方法について説明します。
+The following examples illustrate how you can size a virtual array based on your requirements.
 
-#### 例 1:
-仮想アレイで次の要件に対応する必要があるとします。
+#### <a name="example-1:"></a>Example 1:
+On your virtual array, you want to be able to 
 
-- 2 TB の階層化ボリュームまたは階層化共有をプロビジョニング
-- 1 TB の階層化ボリュームまたは階層化共有をプロビジョニング
-- 300 GB のローカル固定ボリュームまたはローカル固定共有をプロビジョニング
-
-
-上記のボリュームまたは共有について、ローカル階層に必要な領域を計算してみましょう。
-
-まず、階層化ボリューム/共有ごとに、そのサイズの 12% 以上をローカルに予約します。ローカル固定ボリューム/共有ごとに、そのサイズの 10% をローカルに予約します。この例で必要な予約サイズは次のようになります。
-
-- 240 GB のローカル予約 (2 TB の階層化ボリューム/共有)
-- 120 GB のローカル予約 (1 TB の階層化ボリューム/共有)
-- 330 GB (ローカル固定ボリュームまたはローカル固定共有)
-
-ここまででローカル階層に必要な合計領域は、240 GB + 120 GB + 330 GB = 690 GB となります。
-
-次に、ローカル階層には、単一の予約と同じかそれ以上の領域が必要です。万一クラウドにあるスナップショットからの復元が必要となった場合に、この予備領域が使用されます。この例で、ローカルの最大予約サイズは 330 GB (ファイル システムの予約サイズを含む) です。したがってそれを 660 GB に加算することになります (660 GB + 330 GB = 990 GB)。それ以降、仮に別の復元操作を実行することになった場合でも、先行する復元操作で使用した領域はいつでも解放することができます。
-
-次に、ローカル スナップショットを格納するために、これまで計算した合計ローカル領域の 15% が必要となるため、利用できる領域は 85% のみとなります。この例では、これは約 990 GB (= 0.85&ast;プロビジョニングするデータ ディスクのサイズ(TB)) となります。したがって、プロビジョニングするデータ ディスクは、(990&ast;(1/0.85)) = 1164 GB = 1.16 ～ 1.25 TB (最も近い四分位数で丸める) となります。
-
-想定外の拡大や新たな復元操作を考慮すると、約 1.25 ～ 1.5 TB のローカル ディスクをプロビジョニングする必要があります。
-
-> [AZURE.NOTE] また、ローカル ディスクはシン プロビジョニングすることをお勧めします。復元領域が必要になるのは、5 日より前のデータを復元するときだけであるためです。項目レベルの回復では、過去 5 日間のデータは、余分な領域を必要とせずに復元することができます。
-
-#### 例 2: 
-仮想アレイで次の要件に対応する必要があるとします。
-
-- 2 TB の階層化ボリュームをプロビジョニング
-- 300 GB のローカル固定ボリュームをプロビジョニング
-
-ローカルに予約する領域は、階層化ボリューム/共有の 12% とローカル固定ボリューム/共有の 10% であるため、次の領域が必要となります。
-
-- 240 GB のローカル予約 (2 TB の階層化ボリューム/共有)
-- 330 GB (ローカル固定ボリュームまたはローカル固定共有)
-
-ローカル階層に必要な合計領域は、240 GB + 330 GB = 570 GB となります。
-
-復元に必要な最小ローカル領域は 330 GB です。
-
-合計ディスクの 15% はスナップショットの格納に使用されるので、利用できる領域は 0.85 のみとなります。したがって、ディスク サイズは、 (900&ast;(1/0.85)) = 1.06 ～ 1.25 TB (最も近い四分位数で丸める) となります。
-
-想定外の拡大を考慮して、1.25 ～ 1.5 TB のローカル ディスクをプロビジョニングすることになります。
+- provision a 2 TB tiered volume or share.
+- provision a 1 TB tiered volume or share.
+- provision a 300 GB of locally pinned volume or share.
 
 
-### グループ ポリシー
+For the preceding volumes or shares, let us calculate the space requirements on the local tier. 
 
-グループ ポリシーは、ユーザーとコンピューターに対して特定の構成を実装できるインフラストラクチャです。グループ ポリシーの設定は、グループ ポリシー オブジェクト (GPO) に格納されます。グループ ポリシー オブジェクトは、Active Directory ドメイン サービス (AD DS) のコンテナーであるサイトやドメイン、組織単位 (OU) に関連付けられています。
+First, for each tiered volume/share, local reservation would be equal to 12% of the volume/share size. For the locally pinned volume/share, local reservation would be 10 % of the volume/share size. In this example, you need
 
-仮想アレイがドメインに参加している場合は、そのドメインに GPO を適用することができます。これらの GPO によってウイルス対策ソフトウェアなどのアプリケーションがインストールされ、StorSimple Virtual Array の動作に悪影響が生じる場合があります。
+- 240 GB local reservation (for a 2 TB tiered volume/share)
+- 120 GB local reservation (for a 1 TB tiered volume/share)
+- 330 GB for locally pinned volume or share
 
-そこで、次のことをお勧めします。
+The total space required on the local tier so far is: 240 GB + 120 GB + 330 GB = 690 GB.
 
--   Active Directory に対し、仮想アレイを専用の組織単位 (OU) に配置します。
+Second, we need at least as much space on the local tier as the largest single reservation. This extra amount is used in case you need to restore from a cloud snapshot. In this example, the largest local reservation is 330 GB (including reservation for file system), so you would add that to the 660 GB: 660 GB + 330 GB = 990 GB.
+If we performed subsequent additional restores, we can always free up the space from the previous restore operation.
 
--   グループ ポリシー オブジェクト (GPO) が仮想アレイに適用されないようにします。仮想アレイ (子ノード) が親から GPO を自動的に継承しないように継承をブロックできます。詳細については、「[継承をブロックする](https://technet.microsoft.com/library/cc731076.aspx)」をご覧ください。
+Third, we need 15 % of your total local space so far to store local snapshots, so that only 85% of it is available. In this example, that would be around 990 GB = 0.85&ast;provisioned data disk TB. So, the provisioned data disk would be (990&ast;(1/0.85))= 1164 GB = 1.16 TB ~ 1.25 TB (rounding off to nearest quartile)
 
+Factoring in unexpected growth and new restores, you should provision a local disk of around 1.25 - 1.5 TB.
 
-### ネットワーク
+> [AZURE.NOTE] We also recommend that the local disk is thinly provisioned. This recommendation is because the restore space is only needed when you want to restore data that is older than five days. Item-level recovery allows you to restore data for the last five days without requiring the extra space for restore.
 
-仮想アレイのネットワーク構成は、ローカル Web UI で行います。仮想ネットワーク インターフェイスは、仮想アレイがプロビジョニングされているハイパーバイザーを通じて有効にします。[[ネットワークの設定]](storsimple-ova-deploy3-fs-setup.md) ページを使用して、仮想ネットワーク インターフェイスの IP アドレス、サブネット、ゲートウェイを構成します。プライマリ DNS サーバーとセカンダリ DNS サーバー、時刻設定、デバイスのプロキシ設定 (任意) を構成することもできます。ネットワーク構成のほとんどは 1 回限りの設定です。仮想アレイをデプロイする前に、[StorSimple のネットワーク要件](storsimple-ova-system-requirements.md#networking-requirements)を確認してください。
+#### <a name="example-2:"></a>Example 2: 
+On your virtual array, you want to be able to 
 
-仮想アレイをデプロイするときは、次のベスト プラクティスに従うようお勧めします。
+- provision a 2 TB tiered volume
+- provision a 300 GB locally pinned volume
 
--   仮想アレイのデプロイ先となるネットワークに、5 Mbps (またはそれ以上) のインターネット帯域幅を常に使用できるだけの容量を確保します。
+Based on 12 % of local space reservation for tiered volumes/shares and 10 % for locally pinned volumes/shares, we need
 
-    -   必要なインターネット帯域幅は、ワークロードの特性やデータの変化率によって変わります。
+- 240 GB local reservation (for 2 TB tiered volume/share)
+- 330 GB for locally pinned volume or share
 
-    -   処理できるデータの変更は、ご使用のインターネット帯域幅に正比例します。たとえば 5 Mbps の帯域幅でバックアップを行う場合、8 時間につき約 18 GB のデータ変更に対応できます。その 4 倍の帯域幅 (20 Mbps) では、対応できるデータ変更も 4 倍となります (72 GB)。
+Total space required on the local tier is: 240 GB + 330 GB = 570 GB
 
--   常時インターネットに接続できる状態を確保します。デバイスとのインターネット接続が不安定だったり信頼性が低かったりすると、クラウドのデータへのアクセスが失われ、サポート不能な構成に陥るおそれがあります。
+The minimum local space needed for restore is 330 GB. 
 
--   デバイスを iSCSI サーバーとしてデプロイする予定がある場合は、次の点を徹底してください。
-	-   **[IP アドレスを自動で取得する]** オプション (DHCP) は無効にすることをお勧めします。
-	-   静的 IP アドレスを構成します。プライマリ DNS サーバーとセカンダリ DNS サーバーを構成する必要があります。
+15 % of your total disk is used to store snapshots so that only 0.85 is available. So, the disk size is (900&ast;(1/0.85)) = 1.06 TB ~ 1.25 TB (rounding off to nearest quartile) 
 
-	-   仮想アレイに複数のネットワーク インターフェイスを定義する場合、クラウドに到達できるのは 1 つ目のネットワーク インターフェイス (既定では**イーサネット**) だけです。トラフィックの種類を制御するには、(iSCSI サーバーとして構成された) 仮想アレイに複数の仮想ネットワーク インターフェイスを作成し、それらのインターフェイスを異なるサブネットに接続します。
-
--   (仮想アレイで使用される) クラウドの帯域幅のみを調整するには、ルーターまたはファイアウォールでスロットルを構成します。ハイパーバイザーでスロットルを定義した場合、クラウドの帯域幅だけでなく、iSCSI と SMB を含むすべてのプロトコルが帯域幅調整の対象となります。
-
--   ハイパーバイザーの時刻同期は必ず有効にしてください。Hyper-V を使用している場合は、Hyper-V マネージャーで目的の仮想アレイを選択し、**[設定]、[Integration Services]** の順に選択して、**[時刻の同期]** チェック ボックスがオンになっていることを確認します。
-
-### ストレージ アカウント
-
-StorSimple Virtual Array は、1 つのストレージ アカウントに関連付けることができます。このストレージ アカウントは、自動的に生成されたストレージ アカウントか、サービスと同じサブスクリプション内のアカウント、別のサブスクリプションに関連付けられたストレージ アカウントのいずれかとなります。詳細については、[仮想アレイのストレージ アカウントを管理する方法](storsimple-ova-manage-storage-accounts.md)に関する記事をご覧ください。
-
-仮想アレイに関連付けるストレージ アカウントに関しては、次のことをお勧めします。
-
--   単一のストレージ アカウントに複数の仮想アレイを関連付けるときは、仮想アレイの最大容量 (64 TB) とストレージ アカウントの最大サイズ (500 TB) を考慮に入れてください。したがって、そのストレージ アカウントに関連付けることのできるフルサイズの仮想アレイの数は約 7 台が上限となります。
-
--   新しいストレージ アカウントを作成するときは、次の点を考慮してください。
-	-   遅延を最小限に抑えるために、ストレージ アカウントは、StorSimple Virtual Array のデプロイ先となるリモート オフィス/支社に最も近いリージョンに作成することをお勧めします。
-
-	-   異なるリージョン間でストレージ アカウントを移動することはできないことに注意してください。同様に、異なるサブスクリプション間でサービスを移動することもできません。
-
-	-   データセンター間の冗長性が確保されたストレージ アカウントを使用してください。geo 冗長ストレージ (GRS)、ゾーン冗長ストレージ (ZRS)、ローカル冗長ストレージ (LRS) はいずれも、仮想アレイで使用することができます。各種ストレージ アカウントの詳細については、「[Azure Storage のレプリケーション](../storage/storage-redundancy.md)」をご覧ください。
+Factoring in any unexpected growth, you can provision a 1.25 - 1.5 TB local disk.
 
 
-### 共有とボリューム
+### <a name="group-policy"></a>Group policy
 
-StorSimple Virtual Array には、共有 (ファイル サーバーとして構成されているとき) またはボリューム (iSCSI サーバーとして構成されているとき) をプロビジョニングすることができます。共有とボリュームを作成する際のベスト プラクティスは、構成するサイズと種類に関係します。
+Group Policy is an infrastructure that allows you to implement specific configurations for users and computers. Group Policy settings are contained in Group Policy objects (GPOs), which are linked to the following Active Directory Domain Services (AD DS) containers: sites, domains, or organizational units (OUs). 
 
-#### ボリューム/共有サイズ
+If your virtual array is domain-joined, GPOs can be applied to it. These GPOs can install applications such as an antivirus software that can adversely impact the operation of the StorSimple Virtual Array.
 
-仮想アレイには、共有 (ファイル サーバーとして構成されているとき) またはボリューム (iSCSI サーバーとして構成されているとき) をプロビジョニングすることができます。共有とボリュームを作成する際のベスト プラクティスは、構成するサイズと種類に関係します。
+Therefore, we recommend that you:
 
-仮想デバイスに共有またはボリュームをプロビジョニングするうえでのベスト プラクティスは次のとおりです。
+-   Ensure that your virtual array is in its own organizational unit (OU) for Active Directory. 
 
--   階層化共有のプロビジョニング サイズに対する相対的なファイル サイズが、階層化のパフォーマンスに影響する場合があります。処理するファイルが大きいと、階層化に時間がかかる可能性があります。複数の大きなファイルを処理するときは、最も大きなファイルのサイズを共有のサイズの 3% 未満にすることをお勧めします。
+-   Make sure that no group policy objects (GPOs) are applied to your virtual array. You can block inheritance to ensure that the virtual array (child node) does not automatically inherit any GPOs from the parent. For more information, go to [block inheritance](https://technet.microsoft.com/library/cc731076.aspx).
 
--   仮想アレイには最大 16 ボリューム/共有を作成できます。ローカル固定の場合、ボリューム/共有のサイズは、50 GB ～ 2 TB にすることができます。階層化されているボリューム/共有のサイズは 500 GB ～ 20 TB にする必要があります。
 
--   ボリュームを作成するときは、想定されるデータ消費量と将来的な増大を考慮してください。ボリュームを後で拡大することはできませんが、より大きなボリュームにいつでも復元できます。
+### <a name="networking"></a>Networking
 
--   ボリュームの作成後に、StorSimple 上のボリュームのサイズを縮小することはできません。
+The network configuration for your virtual array is done through the local web UI. A virtual network interface is enabled through the hypervisor in which the virtual array is provisioned. Use the [Network Settings](storsimple-ova-deploy3-fs-setup.md) page to configure the virtual network interface IP address, subnet, and gateway.  You can also configure the primary and secondary DNS server, time settings, and optional proxy settings for your device. Most of the network configuration is a one-time setup. Review the [StorSimple networking requirements](storsimple-ova-system-requirements.md#networking-requirements) prior to deploying the virtual array.
+
+When deploying your virtual array, we recommend that you follow these best practices:
+
+-   Ensure that the network in which the virtual array is deployed always has the capacity to dedicate 5 Mbps Internet bandwidth (or more). 
+
+    -   Internet bandwidth need varies depending on your workload characteristics and the rate of data change.
+
+    -   The data change that can be handled is directly proportional to your Internet bandwidth. As an example when taking a backup, a 5 Mbps bandwidth can accommodate a data change of around 18 GB in 8 hours. With four times more bandwidth (20 Mbps), you can handle four times more data change (72 GB). 
+
+-   Ensure connectivity to the Internet is always available. Sporadic or unreliable Internet connections to the devices may result in a loss of access to data in the cloud and could result in an unsupported configuration.
+
+-   If you plan to deploy your device as an iSCSI server: 
+    -   We recommend that you disable the **Get IP address automatically** option (DHCP). 
+    -   Configure static IP addresses. You must configure a primary and a secondary DNS server.
+
+    -   If defining multiple network interfaces on your virtual array, only the first network interface (by default, this interface is **Ethernet**) can reach the cloud. To control the type of traffic, you can create multiple virtual network interfaces on your virtual array (configured as an iSCSI server) and connect those interfaces to different subnets.
+
+-   To throttle the cloud bandwidth only (used by the virtual array), configure throttling on the router or the firewall. If you define throttling in your hypervisor, it will throttle all the protocols including iSCSI and SMB instead of just the cloud bandwidth. 
+
+-   Ensure that time synchronization for hypervisors is enabled. If using Hyper-V, select your virtual array in the Hyper-V Manager, go to **Settings &gt; Integration Services**, and ensure that the **Time synchronization** is checked.
+
+### <a name="storage-accounts"></a>Storage accounts
+
+StorSimple Virtual Array can be associated with a single storage account. This storage account could be an automatically generated storage account, an account in the same subscription as the service, or a storage account related to another subscription. For more information, see how to [manage storage accounts for your virtual array](storsimple-ova-manage-storage-accounts.md).
+
+Use the following recommendations for storage accounts associated with your virtual array.
+
+-   When linking multiple virtual arrays with a single storage account, factor in the maximum capacity (64 TB) for a virtual array and the maximum size (500 TB) for a storage account. This limits the number of full-sized virtual arrays that can be associated with that storage account to about 7.
+
+-   When creating a new storage account
+    -   We recommend that you create it in the region closest to the remote office/branch office where your StorSimple Virtual Array is deployed to minimize latencies.
+
+    -   Bear in mind that you cannot move a storage account across different regions. Also you cannot move a service across subscriptions.
+
+    -   Use a storage account that implements redundancy between the datacenters. Geo-Redundant Storage (GRS), Zone Redundant Storage (ZRS), and Locally Redundant Storage (LRS) are all supported for use with your virtual array. For more information on the different types of storage accounts, go to [Azure storage replication](../storage/storage-redundancy.md).
+
+
+### <a name="shares-and-volumes"></a>Shares and volumes
+
+For your StorSimple Virtual Array, you can provision shares when it is configured as a file server and volumes when configured as an iSCSI server. The best practices for creating shares and volumes are related to the size and the type configured.
+
+#### <a name="volume/share-size"></a>Volume/Share size
+
+On your virtual array, you can provision shares when it is configured as a file server and volumes when configured as an iSCSI server. The best practices for creating shares and volumes relate to the size and the type configured. 
+
+Keep in mind the following best practices when provisioning shares or volumes on your virtual device.
+
+-   The file sizes relative to the provisioned size of a tiered share can impact the tiering performance. Working with large files could result in a slow tier out. When working with large files, we recommend that the largest file is smaller than 3% of the share size.
+
+-   A maximum of 16 volumes/shares can be created on the virtual array. If locally pinned, the volumes/shares can be between 50 GB to 2 TB. If tiered, the volumes/shares must be between 500 GB to 20 TB. 
+
+-   When creating a volume, factor in the expected data consumption as well as future growth. While the volume cannot be expanded later, you can always restore to a larger volume.
+
+-   Once the volume has been created, you cannot shrink the size of the volume on StorSimple.
    
--   StorSimple 上の階層化ボリュームへの書き込み時に、ボリューム データが (そのボリューム用に予約されたローカル領域を基準とした) 特定のしきい値に達すると、IO が調整されます。このボリュームへの書き込みを続行すると、IO 速度が大幅に低下します。プロビジョニング済みの容量を超えて階層化ボリュームに書き込みを行うこともできますが (プロビジョニング済みの容量を超える書き込みができないよう積極的に措置を講じることはしていません)、サブスクリプションの上限を超えている旨の警告通知が表示されます。この警告が表示されたら、ボリューム データを削除したり、これまでより大きなボリュームに復元したりする (ボリュームの拡大は現在サポートされていません) など、必ず改善措置を講じてください。
+-   When writing to a tiered volume on StorSimple, when the volume data reaches a certain threshold (relative to the local space reserved for the volume), the IO is throttled. Continuing to write to this volume slows down the IO significantly. Though you can write to a tiered volume beyond its provisioned capacity (we do not actively stop the user from writing beyond the provisioned capacity), you see an alert notification to the effect that you have oversubscribed. Once you see the alert, it is imperative that you take remedial measures such as delete the volume data or restore the volume to a larger volume (volume expansion is currently not supported).
 
--   許容される共有/ボリュームの数は 16 で、並列に処理できる共有/ボリュームの最大数も 16 であるため、共有/ボリュームの数は、障害復旧における RPO や RTO とは関係ありません。
+-   For disaster recovery use cases, as the number of allowable shares/volumes is 16 and the maximum number of shares/volumes that can be processed in parallel is also 16, the number of shares/volumes does not have a bearing on your RPO and RTOs. 
 
-#### ボリューム/共有の種類
+#### <a name="volume/share-type"></a>Volume/Share type
 
-StorSimple はその用途に応じて、"ローカル固定" と "階層化" という 2 種類のボリューム/共有をサポートします。ローカル固定ボリューム/共有がシック プロビジョニングで、階層化ボリューム/共有はシン プロビジョニングとなります。
+StorSimple supports two volume/share types based on the usage: locally pinned and tiered. Locally pinned volumes/shares are thickly provisioned whereas the tiered volumes/shares are thinly provisioned. 
 
-StorSimple のボリューム/共有を構成するときは、次のベスト プラクティスに従うようお勧めします。
+We recommend that you implement the following best practices when configuring StorSimple volumes/shares:
 
--   デプロイする予定のワークロードに合ったボリュームの種類を見極めたうえで、ボリュームを作成してください。(クラウドの障害が発生した場合でも) ローカル データの存在が保証されるべきワークロードや、クラウドとのやり取りで生じる長い遅延が許されないようなワークロードには、ローカル固定ボリュームを使用します。仮想アレイにボリュームを作成した後で、ボリュームの種類をローカル固定から階層化に変更することはできません。逆の場合も同様です。たとえば、仮想マシン (VM) のホストとなるワークロードや SQL ワークロードをデプロイするときはローカル固定ボリュームを作成します。一方、ファイル共有のワークロードには、階層化ボリュームを使用します。
+-   Identify the volume type based on the workloads that you intend to deploy before you create a volume. Use locally pinned volumes for workloads that require local guarantees of data (even during a cloud outage) and that require low cloud latencies. Once you create a volume on your virtual array, you cannot change the volume type from locally pinned to tiered or *vice-versa*. As an example, create locally pinned volumes when deploying SQL workloads or workloads hosting virtual machines (VMs); use tiered volumes for file share workloads.
 
--   大きなファイル サイズを扱うときは、使用頻度の低いアーカイブ データのオプションをオンにします。このオプションをオンにすると、クラウドへのデータ転送を効率よく行うために、重複除去のチャンク サイズが 512 K に増やされます。
+-   Check the option for less frequently used archival data when dealing with large file sizes. A larger deduplication chunk size of 512 K is used when this option is enabled to expedite the data transfer to the cloud.
 
-#### ボリュームのフォーマット
+#### <a name="volume-format"></a>Volume format
 
-iSCSI サーバーに StorSimple ボリュームを作成したら、ボリュームを初期化してマウントし、フォーマットする必要があります。この操作は、StorSimple デバイスに接続されているホストで実行します。StorSimple ホストでボリュームをマウントしてフォーマットする際は、ベスト プラクティスに従うことをお勧めします。
+After you create StorSimple volumes on your iSCSI server, you need to initialize, mount, and format the volumes. This operation is performed on the host connected to your StorSimple device. Following best practices are recommended when mounting and formatting volumes on the StorSimple host.
 
--   すべての StorSimple ボリュームに対してクイック フォーマットを実行します。
+-   Perform a quick format on all StorSimple volumes.
 
--   StorSimple ボリュームをフォーマットするときのアロケーション ユニット サイズ (AUS) は 64 KB を使用します (既定値は 4 KB)。64 KB の AUS は、StorSimple の一般的なワークロードや他のワークロードに対して社内で実施されたテストに基づきます。
+-   When formatting a StorSimple volume, use an allocation unit size (AUS) of 64 KB (default is 4 KB). The 64 KB AUS is based on testing done in-house for common StorSimple workloads and other workloads.
 
--   iSCSI サーバーとして構成された StorSimple Virtual Array を使用するときは、スパン ボリュームやダイナミック ディスクを使用しないでください。これらのボリュームとディスクは StorSimple ではサポートされていません。
+-   When using the StorSimple Virtual Array configured as an iSCSI server, do not use spanned volumes or dynamic disks as these volumes or disks are not supported by StorSimple.
 
-#### 共有へのアクセス
+#### <a name="share-access"></a>Share access
 
-仮想アレイのファイル サーバー上に共有を作成するときは、次のガイドラインに従ってください。
+When creating shares on your virtual array file server, follow these guidelines:
 
--   共有を作成するとき、共有の管理者として単一のユーザーではなくユーザー グループを割り当てます。
+-   When creating a share, assign a user group as a share administrator instead of a single user.
 
--   共有の作成後、エクスプローラーを通じて共有を編集することで、NTFS アクセス許可を管理できます。
+-   You can manage the NTFS permissions after the share is created by editing the shares through Windows Explorer.
 
-#### ボリュームへのアクセス
+#### <a name="volume-access"></a>Volume access
 
-StorSimple Virtual Array 上に iSCSI ボリュームを構成するときは、必要な場所へのアクセスを制御することが大切です。ボリュームにアクセスできるホスト サーバーを決定するには、アクセス制御レコード (ACR) を作成し、StorSimple ボリュームに関連付けます。
+When configuring the iSCSI volumes on your StorSimple Virtual Array, it is important to control access wherever necessary. To determine which host servers can access volumes, create, and associate access control records (ACRs) with StorSimple volumes.
 
-StorSimple ボリュームの ACR を構成する際は、次のベスト プラクティスに従ってください。
+Use the following best practices when configuring ACRs for StorSimple volumes:
 
--   ボリュームには必ず、少なくとも 1 つの ACR を関連付けます。
+-   Always associate at least one ACR with a volume.
 
--   クラスター環境でのみ、複数の ACR を定義します。
+-   Define multiple ACRs only in a clustered environment.
 
--   1 つのボリュームに複数の ACR を割り当てるときは、複数の非クラスター化ホストから同時にアクセスできるような方法でボリュームが公開されることのないように注意してください。1 つのボリュームに複数の ACR を割り当てた場合、構成を確認するよう求める警告メッセージが表示されます。
+-   When assigning more than one ACR to a volume, ensure that the volume is not exposed in a way where it can be concurrently accessed by more than one non-clustered host. If you have assigned multiple ACRs to a volume, a warning message pops up for you to review your configuration.
 
-### データ セキュリティと暗号化
+### <a name="data-security-and-encryption"></a>Data security and encryption
 
-StorSimple Virtual Array には、データの機密性と整合性を確保するデータ セキュリティと暗号化の機能が備わっています。これらの機能を使用するときは、次のベスト プラクティスに従うようお勧めします。
+Your StorSimple Virtual Array has data security and encryption features that ensure the confidentiality and integrity of your data. When using these features, it is recommended that you follow these best practices: 
 
--   データが仮想アレイからクラウドに送信される前に AES-256 暗号化を適用するためにクラウド ストレージの暗号化キーを定義します。データが最初に暗号化される場合、このキーは不要です。キーは、[Azure Key Vault](../key-vault/key-vault-whatis.md) などのキー管理システムを使用して生成し、安全に保管することができます。
+-   Define a cloud storage encryption key to generate AES-256 encryption before the data is sent from your virtual array to the cloud. This key is not required if your data is encrypted to begin with. The key can be generated and kept safe using a key management system such as [Azure key vault](../key-vault/key-vault-whatis.md).
 
--   StorSimple Manager サービスを介してストレージ アカウントを構成する際は、必ず SSL モードを有効にし、StorSimple デバイスとクラウド間のネットワーク通信に安全なチャネルを作成します。
+-   When configuring the storage account via the StorSimple Manager service, make sure that you enable the SSL mode to create a secure channel for network communication between your StorSimple device and the cloud.
 
--   一連の管理者に変更が生じたことによるアクセスの変化に対応するために、ストレージ アカウントのキーは、(Azure Storage サービスにアクセスして) 定期的に再生成します。
+-   Regenerate the keys for your storage accounts (by accessing the Azure Storage service) periodically to account for any changes to access based on the changed list of administrators.
 
--   仮想アレイ上のデータは圧縮され、重複除去されてから、Azure に送信されます。Windows Server ホストでデータ重複除去役割サービスを使用することはお勧めできません。
+-   Data on your virtual array is compressed and deduplicated before it is sent to Azure. We don't recommend using the Data Deduplication role service on your Windows Server host.
 
 
-## 運用上のベスト プラクティス
+## <a name="operational-best-practices"></a>Operational best practices
 
-運用上のベスト プラクティスは、日常的な仮想アレイの管理時や運用時に従うべきガイドラインです。これらのベスト プラクティスは、バックアップの作成、バックアップ セットからの復元、フェールオーバーの実行、アレイの非アクティブ化と削除、システムの使用状況や正常性の監視、仮想アレイに対するウイルス スキャンの実行など、特定の管理タスクが対象となります。
+The operational best practices are guidelines that should be followed during the day-to-day management or operation of the virtual array. These practices cover specific management tasks such as taking backups, restoring from a backup set, performing a failover, deactivating and deleting the array, monitoring system usage and health, and running virus scans on your virtual array.
 
-### バックアップ
+### <a name="backups"></a>Backups
 
-クラウドには、仮想アレイ上のデータが 2 とおりの方法でバックアップされます。1 つは、既定のバックアップ方法で、毎日 22 時 30 分に自動的にデバイス全体のバックアップが開始されます。もう 1 つは、手動によるオンデマンド バックアップです。既定では、デバイス上に存在するすべてのデータのクラウド スナップショットが毎日、デバイスによって自動的に作成されます。詳細については、「[StorSimple Virtual Array をバックアップする](storsimple-ova-backup.md)」をご覧ください。
+The data on your virtual array is backed up to the cloud in two ways, a default automated daily backup of the entire device starting at 22:30 or via a manual on-demand backup. By default, the device automatically creates daily cloud snapshots of all the data residing on it. For more information, go to [back up your StorSimple Virtual Array](storsimple-ova-backup.md).
 
-既定のバックアップに関連付けられている頻度とリテンション期間は変更できませんが、日次バックアップが毎日開始される時刻を設定によって変更することはできます。自動化されたバックアップの開始時刻を構成するうえでの推奨事項は次のとおりです。
+The frequency and retention associated with the default backups cannot be changed but you can configure the time at which the daily backups are initiated every day. When configuring the start time for the automated backups, we recommend that:
 
--   バックアップはピーク時間帯を避けてスケジューリングします。バックアップの開始時刻が多数のホスト IO と重ならないようにしてください。
+-   Schedule your backups for off-peak hours. Backup start time should not coincide with numerous host IO.
 
--   デバイスのフェールオーバーを予定しているときやメンテナンス期間の前に、手動でのオンデマンド バックアップを実行して仮想アレイ上のデータを保護します。
+-   Initiate a manual on-demand backup when planning to perform a device failover or prior to the maintenance window, to protect the data on your virtual array.
 
-### 復元
+### <a name="restore"></a>Restore
 
-バックアップ セットは 2 とおりの方法で復元できます。別のボリュームまたは共有に対して復元する方法と、項目レベルの回復 (ファイル サーバーとして構成された仮想アレイでのみ利用可能) を実行する方法です。項目レベルの回復を使用すると、StorSimple デバイス上のすべての共有のクラウド バックアップから、ファイルとフォルダーを細かいレベルで復元できます。詳細については、[バックアップからの復元](storsimple-ova-restore.md)に関する記事をご覧ください。
+You can restore from a backup set in two ways: restore to another volume or share or perform an item-level recovery (available only on a virtual array configured as a file server). Item-level recovery allows you to do a granular recovery of files and folders from a cloud backup of all the shares on the StorSimple device. For more information, go to [restore from a backup](storsimple-ova-restore.md).
 
-復元を実行するときは、次のガイドラインを考慮してください。
+When performing a restore, keep the following guidelines in mind:
 
--   StorSimple Virtual Array は、インプレース復元をサポートしません。ただしこれは、仮想アレイに領域を確保し、別のボリューム/共有に復元する、という 2 段階のプロセスで簡単に実現できます。
+-   Your StorSimple Virtual Array does not support in-place restore. This can however be readily achieved by a two-step process: make space on the virtual array and then restore to another volume/share.
 
--   復元は実行に時間のかかる操作です。ローカル ボリュームから復元する際は注意してください。ボリュームはすぐにオンラインになりますが、データは引き続きバックグラウンドでハイドレートされます。
+-   When restoring from a local volume, keep in mind the restore will be a long running operation. Though the volume may quickly come online, the data continues to be hydrated in the background.
 
--   ボリュームの種類は、復元プロセス中も維持されます。階層化ボリュームは別の階層化ボリュームに復元され、ローカル固定ボリュームは別のローカル固定ボリュームに復元されます。
+-   The volume type remains the same during the restore process. A tiered volume is restored to another tiered volume and a locally pinned volume to another locally pinned volume.
 
--   バックアップ セットからボリュームまたは共有を復元するとき、復元ジョブが失敗したのに、ポータルでターゲットのボリュームまたは共有が作成されることがあります。将来、これに起因して発生する問題を最小限に抑えるために、この未使用のターゲット ボリュームまたは共有を削除することが重要です。
+-   When trying to restore a volume or a share from a backup set, if the restore job fails, a target volume or share may still be created in the portal. It is important that you delete this unused target volume or share in the portal to minimize any future issues arising from this element.
 
-### フェールオーバーと障害復旧
+### <a name="failover-and-disaster-recovery"></a>Failover and disaster recovery
 
-デバイスのフェールオーバーにより、データをデータセンターの*ソース* デバイスから、同じ場所または別の場所にある*ターゲット* デバイスに移行できます。デバイスのフェールオーバーは、デバイス全体に対して行われます。フェールオーバーの間、ソース デバイスのクラウド データの所有権はターゲット デバイスに移ります。
+A device failover allows you to migrate your data from a *source* device in the datacenter to another *target* device located in the same or a different geographical location. The device failover is for the entire device. During failover, the cloud data for the source device changes ownership to that of the target device.
 
-StorSimple Virtual Array は、同じ StorSimple Manager サービスによって管理された別の仮想アレイにしかフェールオーバーできません。8000 シリーズ デバイスへのフェールオーバーや、(フェールオーバー元のデバイスとは) 異なる StorSimple Manager サービスによって管理されたアレイへのフェールオーバーは実行できません。フェールオーバーの考慮事項の詳細については、[デバイスのフェールオーバーの前提条件](storsimple-ova-failover-dr.md)に関する記事をご覧ください。
+For your StorSimple Virtual Array, you can only fail over to another virtual array managed by the same StorSimple Manager service. A failover to an 8000 series device or an array managed by a different StorSimple Manager service (than the one for the source device) is not allowed. To learn more about the failover considerations, go to [prerequisites for the device failover](storsimple-ova-failover-dr.md).
 
-仮想アレイのフェールオーバーを実行するときは、次の点に注意してください。
+When performing a fail over for your virtual array, keep the following in mind:
 
--   計画されたフェールオーバーでは、すべてのボリューム/共有をオフラインにしてから、フェールオーバーを開始するようお勧めします。オペレーティング システム固有の手順に従って、ボリューム/共有をまずホスト上でオフラインにしてから、仮想デバイス上でそれらをオフラインにします。
+-   For a planned failover, it is a recommended best practice to take all the volumes/shares offline prior to initiating the failover. Follow the operating system-specific instructions to take the volumes/shares offline on the host first and then take those offline on your virtual device.
 
--   ファイル サーバーの障害復旧 (DR) では、共有のアクセス許可が自動的に解決されるように、ソース デバイスと同じドメインにターゲット デバイスを参加させることをお勧めします。このリリースでは、同じドメイン内のターゲット デバイスへのフェールオーバーのみがサポートされます。
+-   For a file server disaster recovery (DR), we recommend that you join the target device to the same domain as the source so that the share permissions are automatically resolved. Only the failover to a target device in the same domain is supported in this release.
 
--   DR が正常に完了すると、ソース デバイスは自動的に削除されます。デバイスは使用できなくなりますが、ホスト システムにプロビジョニングした仮想マシンは引き続きリソースを消費します。料金が発生しないように、この仮想マシンをホスト システムから削除することをお勧めします。
+-   Once the DR is successfully completed, the source device is automatically deleted. Though the device is no longer available, the virtual machine that you provisioned on the host system is still consuming resources. We recommend that you delete this virtual machine from your host system to prevent any charges from accruing.
 
--   フェールオーバーが失敗しても、**クラウドのデータは常に無傷です**。フェールオーバーが正常に完了しないケースとして、次の 3 つのシナリオに注意してください。
+-   Do note that even if the failover is unsuccessful, **the data is always safe in the cloud**. Consider the following three scenarios in which the failover did not complete successfully:
 
-    -   フェールオーバーの初期段階 (DR の事前チェックの実行中など) で障害が発生した。この状況では、ターゲット デバイスを引き続き使用できます。同じターゲット デバイスに対してフェールオーバーを再試行できます。
+    -   A failure occurred in the initial stages of the failover such as when the DR pre-checks are being performed. In this situation, your target device is still usable. You can retry the failover on the same target device.
 
-    -   実際のフェールオーバー プロセス中にエラーが発生した。このケースでは、ターゲット デバイスが使用不可としてマークされます。別のターゲット仮想アレイをプロビジョニングして構成し、フェールオーバーに使用する必要があります。
+    -   A failure occurred during the actual failover process. In this case, the target device is marked unusable. You must provision and configure another target virtual array and use that for failover.
 
-    -   フェールオーバーが完了し、その後ソース デバイスが削除されたが、ターゲット デバイスに問題あり、データにアクセスできない。クラウドのデータは無傷なままです。別の仮想アレイを作成し、それを DR のターゲット デバイスとして使用することにより、そのデータを簡単に取得できます。
+    -   The failover was complete following which the source device was deleted but the target device has issues and you cannot access any data. The data is still safe in the cloud and can be easily retrieved by creating another virtual array and then using it as a target device for the DR.
 
-### 非アクティブ化
+### <a name="deactivate"></a>Deactivate
 
-StorSimple Virtual Array を非アクティブ化する場合は、デバイスとこれに対応する StorSimple Manager サービスの接続を切断します。非アクティブ化は**永続的**な操作であるため、元に戻すことはできません。非アクティブ化されたデバイスを StorSimple Manager サービスに再び登録することはできません。詳細については、[StorSimple Virtual Array の非アクティブ化と削除](storsimple-deactivate-and-delete-device.md)に関する記事をご覧ください。
+When you deactivate a StorSimple Virtual Array, you sever the connection between the device and the corresponding StorSimple Manager service. Deactivation is a **permanent** operation and cannot be undone. A deactivated device cannot be registered with the StorSimple Manager service again. For more information, go to [deactivate and delete your StorSimple Virtual Array](storsimple-deactivate-and-delete-device.md).
 
-仮想アレイを非アクティブ化する際は、次のベスト プラクティスに従ってください。
+Keep the following best practices in mind when deactivating your virtual array:
 
--   仮想デバイスを非アクティブ化する前に、すべてのデータのクラウド スナップショットを作成します。仮想アレイを非アクティブ化すると、ローカル デバイスのすべてのデータが失われます。クラウド スナップショットを作成することによって、後からデータを復元することができます。
+-   Take a cloud snapshot of all the data prior to deactivating a virtual device. When you deactivate a virtual array, all the local device data is lost. Taking a cloud snapshot will allow you to recover data at a later stage.
 
--   StorSimple Virtual Array を非アクティブ化する前に、そのデバイスに依存するクライアントとホストを必ず停止または削除してください。
+-   Before you deactivate a StorSimple Virtual Array, make sure to stop or delete clients and hosts that depend on that device.
 
--   非アクティブ化したデバイスは、今後使用しないのであれば、料金が発生しないよう削除してください。
+-   Delete a deactivated device if you are no longer using so that it doesn't accrue charges.
 
-### 監視
+### <a name="monitoring"></a>Monitoring
 
-StorSimple Virtual Array を絶えず正常な状態に保つためには、そのアレイを監視し、警告などの情報を確実にシステムから取得する必要があります。仮想アレイの全体的な正常性を監視するために、以下のベスト プラクティスを実践してください。
+To ensure that your StorSimple Virtual Array is in a continuous healthy state, you need to monitor the array and ensure that you receive information from the system including alerts. To monitor the overall health of the virtual array, implement the following best practices:
 
-- 仮想アレイのデータ ディスクと OS ディスクの使用量を追跡するための監視を構成します。Hyper-V を実行している場合、System Center Virtual Machine Manager (SCVMM) と System Center Operations Manager (SCOM) を使用して仮想化ホストを監視することができます。
+- Configure monitoring to track the disk usage of your virtual array data disk as well as the OS disk. If running Hyper-V, you can use a combination of System Center Virtual Machine Manager (SCVMM) and System Center Operations Manager (SCOM) to monitor your virtualization hosts.   
 
-- 特定の使用率に達したときに警告を送信するように仮想アレイの電子メール通知を構成します。
+- Configure email notifications on your virtual array to send alerts at certain usage levels.                                                                                                                                                                                                
 
-### インデックス検索とウイルス スキャン アプリケーション
+### <a name="index-search-and-virus-scan-applications"></a>Index search and virus scan applications
 
-StorSimple Virtual Array では、ローカル階層から Microsoft Azure クラウドへとデータを自動的に階層化することができます。StorSimple に格納されているデータをインデックス検索またはウイルス スキャンなどのアプリケーションでスキャンするときは、クラウド データがアクセスされてローカル階層に引き戻されることのないように注意する必要があります。
+A StorSimple Virtual Array can automatically tier data from the local tier to the Microsoft Azure cloud. When an application such as an index search or a virus scan is used to scan the data stored on StorSimple, you need to take care that the cloud data does not get accessed and pulled back to the local tier.
 
-仮想アレイに対するインデックス検索またはウイルス スキャンを構成する際は、次のベスト プラクティスに従うようお勧めします。
+We recommend that you implement the following best practices when configuring the index search or virus scan on your virtual array:
 
--   自動的に構成されたフル スキャン操作があれば無効にします。
+-   Disable any automatically configured full scan operations.
 
--   階層化ボリュームの場合、増分スキャンを実行するようにインデックス検索またはウイルス スキャン アプリケーションを構成します。この場合、スキャンの対象は新しいデータのみで、そのようなデータは高い確率でローカル階層に存在します。クラウドに階層化されたデータは、増分操作時にはアクセスされません。
+-   For tiered volumes, configure the index search or virus scan application to perform an incremental scan. This would scan only the new data likely residing on the local tier. The data that is tiered to the cloud is not accessed during an incremental operation.
 
--   意図した種類のファイルだけがスキャン対象となるように検索フィルターと検索設定を正しく構成します。たとえばインデックスの増分再構築時や完全再構築時は、画像ファイル (JPEG、GIF、TIFF) や図面データをスキャンの対象外にします。
+-   Ensure the correct search filters and settings are configured so that only the intended types of files get scanned. For example, image files (JPEG, GIF, and TIFF) and engineering drawings should not be scanned during the incremental or full index rebuild.
 
-Windows のインデックス作成プロセスを使用する場合、次のガイドラインに従います。
+If using Windows indexing process, follow these guidelines:
 
--   階層化ボリュームに Windows Indexer は使用しないでください。インデックスを頻繁に再構築する必要がある場合、TB 規模の大量のデータがクラウドから呼び戻されます。インデックスを再構築した場合、すべてのファイル タイプが取得され、その内容のインデックスが作成されます。
+-   Do not use the Windows Indexer for tiered volumes as it recalls large amounts of data (TBs) from the cloud if the index needs to be rebuilt frequently. Rebuilding the index would retrieve all file types to index their content.
 
--   ローカル固定ボリュームには、Windows のインデックス作成プロセスを使用します。この場合は、ローカル階層のデータにのみアクセスしてインデックスが構築されます (クラウド データはアクセスされません)。
+-   Use the Windows indexing process for locally pinned volumes as this would only access data on the local tiers to build the index (the cloud data will not be accessed).
 
-### バイト範囲ロック
+### <a name="byte-range-locking"></a>Byte range locking
 
-ファイル内の特定の範囲のバイトがアプリケーションによってロックされている場合があります。StorSimple への書き込みを行っているアプリケーションでバイト範囲ロックが有効になっていると、仮想アレイで階層化が機能しません。階層化が正しく機能するためには、アクセスしたファイルのすべての領域をロック解除する必要があります。仮想アレイ上の階層化ボリュームでは、バイト範囲ロックはサポートされません。
+Applications can lock a specified range of bytes within the files. If byte range locking is enabled on the applications that are writing to your StorSimple, then tiering does not work on your virtual array. For the tiering to work, all areas of the files accessed should be unlocked. Byte range locking is not supported with tiered volumes on your virtual array.
 
-バイト範囲ロックに対応するために、次の対策をお勧めします。
+Recommended measures to alleviate byte range locking include:
 
--   アプリケーション ロジックでバイト範囲ロックを無効にします。
+-   Turn off byte range locking in your application logic.
 
--   このアプリケーションに関連付けられているデータには、(階層化ボリュームではなく) ローカル固定ボリュームを使用します。ローカル固定ボリュームは、クラウドに階層化されません。
+-   Use locally pinned volumes (instead of tiered) for the data associated with this application. Locally pinned volumes do not tier into the cloud.
 
--   バイト範囲ロックを有効にしたローカル固定ボリュームを使用しているときは、復元が完了する前にボリュームがオンラインに移行できます。このような場合は、復元が完了するまで待機してください。
+-   When using locally pinned volumes with byte range locking enabled, the volume can come online before the restore is complete. In these instances, you must wait for the restore to be complete.
 
-## 複数のアレイ
+## <a name="multiple-arrays"></a>Multiple arrays
 
-データのワーキング セットが大きくなってクラウドにまで溢れ、デバイスのパフォーマンスへの影響が懸念される場合、その対策として複数の仮想アレイをデプロイすることが必要になることがあります。この場合、ワーキング セットの増大に応じてデバイスを拡張することをお勧めします。そのためには、オンプレミスのデータ センターに 1 つ以上のデバイスを追加する必要があります。デバイスを追加するときに、次のことを検討してください。
+Multiple virtual arrays may need to be deployed to account for a growing working set of data that could spill onto the cloud thus affecting the performance of the device. In these instances, it is best to scale devices as the working set grows. This requires one or more devices to be added in the on-premises data center. When adding the devices, you could:
 
--   現在のデータのセットを分割します。
--   新しいワークロードは新しいデバイスにデプロイします。
--   複数の仮想アレイをデプロイする場合、負荷分散の観点から、複数のハイパーバイザー ホストにアレイを分散させます。
+-   Split the current set of data.
+-   Deploy new workloads to new device(s).
+-   If deploying multiple virtual arrays, we recommend that from load-balancing perspective, distribute the array across different hypervisor hosts.
 
--  ファイル サーバーまたは iSCSI サーバーとして構成されている複数の仮想アレイは、分散ファイル システムの名前空間にデプロイすることができます。詳しい手順については、「[Distributed File System Namespace Solution with Hybrid Cloud Storage Deployment Guide (分散ファイル システム名前空間ソリューションとハイブリッド クラウド ストレージ デプロイ ガイド)](https://www.microsoft.com/download/details.aspx?id=45507)」をご覧ください。現時点では、分散ファイル システム レプリケーションを仮想アレイで使用することは推奨されません。
+-  Multiple virtual arrays (when configured as a file server or an iSCSI server) can be deployed in a Distributed File System Namespace. For detailed steps, go to [Distributed File System Namespace Solution with Hybrid Cloud Storage Deployment Guide](https://www.microsoft.com/download/details.aspx?id=45507). Distributed File System Replication is currently not recommended for use with the virtual array. 
 
 
-## 関連項目
-StorSimple Manager サービスを介して [StorSimple Virtual Array を管理する方法](storsimple-ova-manager-service-administration.md)を学習します。
+## <a name="see-also"></a>See also
+Learn how to [administer your StorSimple Virtual Array](storsimple-ova-manager-service-administration.md) via the StorSimple Manager service.
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

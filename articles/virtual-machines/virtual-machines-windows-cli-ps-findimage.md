@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Windows VM イメージへの移動と選択 | Microsoft Azure"
-   description="リソース マネージャー デプロイ モデルで Windows 仮想マシンを作成するときに、イメージの発行元、プラン、および SKU を決定する方法について説明します。"
+   pageTitle="Navigate and select Windows VM images | Microsoft Azure"
+   description="Learn how to determine the publisher, offer, and SKU for images when creating a Windows virtual machine with the Resource Manager deployment model."
    services="virtual-machines-windows"
    documentationCenter=""
    authors="squillace"
@@ -18,27 +18,32 @@
    ms.date="08/23/2016"
    ms.author="rasquill"/>
 
-# Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択
 
-このトピックでは、デプロイする可能性のある場所ごとに、VM イメージの発行元、プラン、SKU、およびバージョンを検索する方法について説明します。たとえば、次のような Windows VM イメージが一般的に使用されます。
+# <a name="navigate-and-select-windows-virtual-machine-images-in-azure-with-powershell-or-the-cli"></a>Navigate and select Windows virtual machine images in Azure with PowerShell or the CLI
 
-## 一般的に使用される Windows イメージの表
+This topic describes how to find VM image publishers, offers, skus, and versions for each location into which you might deploy. To give an example, some commonly used Windows VM images are:
+
+## <a name="table-of-commonly-used-windows-images"></a>Table of commonly used Windows images
 
 
-| 発行元 | プラン | SKU |
+| PublisherName                        | Offer                                 | Sku                         |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
-| MicrosoftDynamicsNAV | DynamicsNAV | 2015 |
-| MicrosoftSharePoint | MicrosoftSharePointServer | 2013 |
-| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-DW |
-| MicrosoftSQLServer | SQL2014-WS2012R2 | Enterprise-Optimized-for-OLTP |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 |
-| MicrosoftWindowsServer | WindowsServer | Windows-Server-Technical-Preview |
-| MicrosoftWindowsServerEssentials | WindowsServerEssentials | WindowsServerEssentials |
-| MicrosoftWindowsServerHPCPack | WindowsServerHPCPack | 2012R2 |
+| MicrosoftDynamicsNAV             | DynamicsNAV                                | 2015                             |
+| MicrosoftSharePoint              | MicrosoftSharePointServer                  | 2013                             |
+| MicrosoftSQLServer               | SQL2014-WS2012R2                           | Enterprise-Optimized-for-DW      |
+| MicrosoftSQLServer               | SQL2014-WS2012R2                           | Enterprise-Optimized-for-OLTP    |
+| MicrosoftWindowsServer           | WindowsServer                              | 2012-R2-Datacenter                  |
+| MicrosoftWindowsServer           | WindowsServer                              | 2012-Datacenter               |
+| MicrosoftWindowsServer           | WindowsServer                              | 2008-R2-SP1 |
+| MicrosoftWindowsServer           | WindowsServer                              | Windows-Server-Technical-Preview |
+| MicrosoftWindowsServerEssentials | WindowsServerEssentials                    | WindowsServerEssentials          |
+| MicrosoftWindowsServerHPCPack    | WindowsServerHPCPack                       | 2012R2                           |
 
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

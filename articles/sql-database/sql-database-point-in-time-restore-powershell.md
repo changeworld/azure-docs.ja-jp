@@ -1,6 +1,6 @@
 <properties
-    pageTitle="以前の時点への Azure SQL Database の復元 (PowerShell) | Microsoft Azure"
-    description="以前の時点に Azure SQL Database を復元する"
+    pageTitle="Restore an Azure SQL Database to a previous point in time (PowerShell) | Microsoft Azure"
+    description="Restore an Azure SQL Database to a previous point in time"
     services="sql-database"
     documentationCenter=""
     authors="stevestein"
@@ -16,44 +16,49 @@
     ms.date="07/17/2016"
     ms.author="sstein"/>
 
-# PowerShell で以前の時点に Azure SQL Database を復元する
+
+# <a name="restore-an-azure-sql-database-to-a-previous-point-in-time-with-powershell"></a>Restore an Azure SQL Database to a previous point in time with PowerShell
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-recovery-using-backups.md)
-- [ポイントインタイム リストア: Azure ポータル](sql-database-point-in-time-restore-portal.md)
+- [Overview](sql-database-recovery-using-backups.md)
+- [Point-In-Time Restore: Azure portal](sql-database-point-in-time-restore-portal.md)
 
-この記事では、[SQL Database 自動バックアップ](sql-database-automated-backups.md)から以前の時点にデータベースを復元する方法について説明します。これは PowerShell を使用して実行できます。
+This article shows you how to restore your database to an earlier point in time from [SQL Database automated backups](sql-database-automated-backups.md). You can do this by using PowerShell.
 
-[AZURE.INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
+[AZURE.INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
 
-## スタンドアロン データベースとして任意の時点にデータベースを復元
+## <a name="restore-your-database-to-a-point-in-time-as-a-standalone-database"></a>Restore your database to a point in time as a standalone database
 
-1. [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) コマンドレットを使用して、復元するデータベースを取得します。
+1. Get the database you want to restore by using the [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) cmdlet.
 
         $Database = Get-AzureRmSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
-2. [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) コマンドレットを使用して、データベースを任意の時点に復元します。
+2. Restore the database to a point in time by using the [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) cmdlet.
 
         Restore-AzureRmSqlDatabase –FromPointInTimeBackup –PointInTime UTCDateTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName "RestoredDatabase" –ResourceId $Database.ResourceID -Edition "Standard" -ServiceObjectiveName "S2"
 
 
-## エラスティック データベース プールの任意の時点にデータベースを復元
+## <a name="restore-your-database-to-a-point-in-time-into-an-elastic-database-pool"></a>Restore your database to a point in time into an elastic database pool
 
-1. [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) コマンドレットを使用して、復元するデータベースを取得します。
+1. Get the database you want to restore by using the [Get-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt603648.aspx) cmdlet.
 
         $Database = Get-AzureRmSqlDatabase -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
-2. [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) コマンドレットを使用して、データベースを任意の時点に復元します。
+2. Restore the database to a point in time by using the [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) cmdlet.
 
         Restore-AzureRmSqlDatabase –FromPointInTimeBackup –PointInTime UTCDateTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName "RestoredDatabase" –ResourceId $Database.ResourceID –ElasticPoolName "elasticpool01"
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
-- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
-- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
-- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
-- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
+- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md)
+- To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](sql-database-recovery-using-backups.md)
+- To learn about faster recovery options, see [Active-Geo-Replication](sql-database-geo-replication-overview.md)  
+- To learn about using automated backups for archiving, see [database copy](sql-database-copy.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

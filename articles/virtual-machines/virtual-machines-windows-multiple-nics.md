@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Windows VM での複数 NIC の構成 | Microsoft Azure"
-   description="Azure PowerShell または Resource Manager テンプレートを使用して、複数の NIC を持つ VM を作成する方法について説明します。"
+   pageTitle="Configure multiple NICs on a Windows VM | Microsoft Azure"
+   description="Learn how to create a VM with multiple NICs attached to it using Azure PowerShell or Resource Manager templates."
    services="virtual-machines-windows"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,29 +16,30 @@
    ms.date="08/04/2016"
    ms.author="iainfou"/>
 
-# 複数 NIC を持つ VM の作成
-Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。独自の PowerShell スクリプト内に複数の NIC を作成する方法など、詳しくは、[複数 NIC の VM のデプロイ](../virtual-network/virtual-network-deploy-multinic-arm-ps.md)に関する記事を参照してください。[VM のサイズ](virtual-machines-windows-sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
 
->[AZURE.WARNING] VM の作成時に複数の NIC をアタッチする必要があります。既存の VM に NIC を追加することはできません。[元の仮想ディスクに基づいて新しい VM を作成](virtual-machines-windows-specialized-image.md)し、VM をデプロイするときに複数の NIC を作成できます。
+# <a name="creating-a-vm-with-multiple-nics"></a>Creating a VM with multiple NICs
+You can create a virtual machine (VM) in Azure that has multiple virtual network interfaces (NICs) attached to it. A common scenario would be to have different subnets for front-end and back-end connectivity, or a network dedicated to a monitoring or backup solution. This article provides quick commands to create a VM with multiple NICs attached to it. For detailed information, including how to create multiple NICs within your own PowerShell scripts, read more about [deploying multi-NIC VMs](../virtual-network/virtual-network-deploy-multinic-arm-ps.md). Different [VM sizes](virtual-machines-windows-sizes.md) support a varying number of NICs, so size your VM accordingly.
 
-## コア リソースの作成
-[最新の Azure PowerShell がインストールおよび構成](../powershell-install-configure.md)されていることを確認します。
+>[AZURE.WARNING] You must attach multiple NICs when you create a VM - you cannot add NICs to an existing VM. You can [create a new VM based on the original virtual disk(s)](virtual-machines-windows-vhd-copy.md) and create multiple NICs as you deploy the VM.
 
-まず、リソース グループを作成します。
+## <a name="create-core-resources"></a>Create core resources
+Make sure that you have the [latest Azure PowerShell installed and configured](../powershell-install-configure.md).
+
+First, create a resource group:
 
 ```powershell
 New-AzureRmResourceGroup -Name TestRG -Location WestUS
 ```
 
-VM を保持するストレージ アカウントを作成します。
+Create a storage account to hold your VMs:
 
 ```powershell
 $storageAcc = New-AzureRmStorageAccount -Name teststorage `
     -ResourceGroupName TestRG -Kind Storage -SkuName Premium_LRS -Location WestUS
 ```
 
-## 仮想ネットワークとサブネットの作成
-2 つの仮想ネットワーク サブネットを定義します。1 つはフロント エンド トラフィック用、もう 1 つはバック エンド トラフィック用です。これらのサブネットを持つ仮想ネットワークを作成します。
+## <a name="create-virtual-network-and-subnets"></a>Create virtual network and subnets
+Define two virtual network subnets - one for front-end traffic and one for back-end traffic. Create your virtual network with these subnets:
 
 ```powershell
 $frontEndSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "FrontEnd" `
@@ -53,8 +54,8 @@ $vnet = New-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet `
 ```
 
 
-## 複数の NIC の作成
-2 つの NIC を作成します。1 つをフロント エンド サブネットに、もう 1 つをバック エンド サブネットにアタッチします。
+## <a name="create-multiple-nics"></a>Create multiple NICs
+Create two NICs, attaching one NIC to the front-end subnet and one NIC to the back-end subnet:
 
 ```powershell
 $frontEnd = $vnet.Subnets|?{$_.Name -eq 'FrontEnd'}
@@ -66,11 +67,11 @@ $NIC2 = New-AzureRmNetworkInterface -Name NIC2 -ResourceGroupName TestRG `
         -Location WestUS -SubnetId $BackEnd.Id
 ```
 
-通常、複数の VM 間にトラフィックを分散および管理するための[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)または[ロード バランサー](../load-balancer/load-balancer-overview.md)も作成します。ネットワーク セキュリティ グループの作成方法や NIC の割り当て方法については、[より詳しい複数 NIC の VM](../virtual-network/virtual-network-deploy-multinic-arm-ps.md) に関する記事を参照してください。
+Typically you would also create a [network security group](../virtual-network/virtual-networks-nsg.md) or [load balancer](../load-balancer/load-balancer-overview.md) to help manage and distribute traffic across your VMs. The [more detailed multi-NIC VM](../virtual-network/virtual-network-deploy-multinic-arm-ps.md) article guides you through creating a Network Security Group and assigning NICs.
 
 
-## 仮想マシンの作成
-では、VM 構成を構築してみましょう。各 VM サイズについて、1 つの VM に追加できる NIC の合計数には制限があります。詳しくは、「[Windows VM のサイズ](virtual-machines-windows-sizes.md)」を参照してください。次の例では、最大 2 つの NIC をサポートする VM サイズを使用します (`Standard_DS2_v2`)。
+## <a name="create-the-virtual-machine"></a>Create the virtual machine
+Now start to build your VM configuration. Each VM size has a limit for the total number of NICs that you can add to a VM. Read more about [Windows VM sizes](virtual-machines-windows-sizes.md). The following example uses a VM size that supports up to two NICs (`Standard_DS2_v2`):
 
 ```powershell
 $cred = Get-Credential
@@ -83,14 +84,14 @@ $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName MicrosoftWindo
     -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
 ```
 
-以前に作成した 2 つの NIC をアタッチします。
+Attach the two NICs you previously created:
 
 ```powershell
 $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $NIC1.Id -Primary
 $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $NIC2.Id
 ```
 
-新しい VM 用のストレージと仮想ディスクを構成します。
+Configure the storage and virtual disk for your new VM:
 
 ```powershell
 $blobPath = "vhds/WindowsVMosDisk.vhd"
@@ -100,14 +101,14 @@ $vmConfig = Set-AzureRmVMOSDisk -VM $vmConfig -Name $diskName -VhdUri $osDiskUri
     -CreateOption fromImage
 ```
 
-最後に、VM を作成します。
+Finally, create a VM:
 
 ```powershell
 New-AzureRmVM -VM $vmConfig -ResourceGroupName TestRG -Location WestUS
 ```
 
-## Resource Manager テンプレートを使用して複数の NIC を作成する
-Azure Resource Manager テンプレートで宣言型の JSON ファイルを使用して環境を定義します。詳しくは、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。Resource Manager テンプレートでは、複数の NIC の作成など、デプロイ時にリソースの複数のインスタンスを作成することができます。*copy* を使用して、作成するインスタンスの数を指定します。
+## <a name="creating-multiple-nics-using-resource-manager-templates"></a>Creating multiple NICs using Resource Manager templates
+Azure Resource Manager templates use declarative JSON files to define your environment. You can read an [overview of Azure Resource Manager](../resource-group-overview.md). Resource Manager templates provide a way to create multiple instances of a resource during deployment, such as creating multiple NICs. You use *copy* to specify the number of instances to create:
 
 ```bash
 "copy": {
@@ -116,19 +117,22 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 }
 ```
 
-詳しくは、[*copy* を使用した複数のインスタンスの作成](../resource-group-create-multiple.md)に関する記事を参照してください。
+Read more about [creating multiple instances using *copy*](../resource-group-create-multiple.md). 
 
-`copyIndex()` を使用してリソース名に数値を追加することもできます。これにより、`NIC1`、`NIC2` などを作成することができます。インデックス値を追加する例を次に示します。
+You can also use a `copyIndex()` to then append a number to a resource name, which allows you to create `NIC1`, `NIC2`, etc. The following shows an example of appending the index value:
 
 ```bash
 "name": "[concat('NIC-', copyIndex())]", 
 ```
 
-完全な例については、「[Resource Manager テンプレートを使用して複数の NIC を作成する](../virtual-network/virtual-network-deploy-multinic-arm-template.md)」を参照してください。
+You can read a complete example of [creating multiple NICs using Resource Manager templates](../virtual-network/virtual-network-deploy-multinic-arm-template.md).
 
-## 次のステップ
-複数 NIC を持つ VM を作成するときは必ず「[Windows VM のサイズ](virtual-machines-windows-sizes.md)」をご覧ください。VM の各サイズでサポートされている NIC の最大数に注意してください。
+## <a name="next-steps"></a>Next steps
+Make sure to review [Windows VM sizes](virtual-machines-windows-sizes.md) when trying to creating a VM with multiple NICs. Pay attention to the maximum number of NICs each VM size supports. 
 
-既存の VM に NIC を追加することはできません。VM をデプロイするときにすべての NIC を作成する必要があります。デプロイメントの計画時に、初めから必要なすべてのネットワーク接続があることを確認してください。
+Remember that you cannot add additional NICs to an existing VM, you must create all the NICs when you deploy the VM. Take care when planning your deployments to make sure that you have all the required network connectivity from the outset.
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

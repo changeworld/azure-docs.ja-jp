@@ -1,59 +1,59 @@
 
 
-## 複数インスタンス VM と単一インスタンス VM
-Azure を使用するユーザーの多くにとって、VM の計画的メンテナンスをスケジュールできることは、重要なことです。計画的メンテナンスでは最大 15 分のダウンタイムが発生します。可用性セットを利用すると、プロビジョニングされた VM の計画的メンテナンスがいつ行われるかを制御できます。
+## <a name="multi-and-single-instance-vms"></a>Multi and Single Instance VMs
+For many customers running on Azure, it is critical that they are able to schedule when their VMs undergo planned maintenance, since this results in ~15 minutes of downtime. You can leverage availability sets to help control when provisioned VMs receive planned maintenance.
 
-Azure で実行される VM には 2 つの可能な構成があります。VM は、複数インスタンスまたは単一インスタンスとして構成されます。可用性セット内にある VM は、複数インスタンスとして構成されます。ただし、単一 VM を可用性セットにデプロイすることもでき、そのような VM は複数インスタンスとして扱われます。可用性セット内にない VM は、単一インスタンスとして構成されます。可用性セットの詳細については、「[Manage the availability of Windows virtual machines (Windows 仮想マシンの可用性を管理する)](../articles/virtual-machines/virtual-machines-windows-manage-availability.md)」または「[Manage the availability of Linux virtual machines (Linux 仮想マシンの可用性を管理する)](../articles/virtual-machines/virtual-machines-linux-manage-availability.md)」を参照してください。
+There are two possible configurations for VMs running on Azure. VMs are either configured as multi-instance or single-instance. If VMs are in an availability set, then they are configured as multi-instance. Note, even single VMs can be deployed in an availability set and they will be treated as multi-instance. If VMs are NOT in an availability set, then they are configured as single-instance.  For details on availability sets, please see either [Manage the Availability of your Windows Virtual Machines](../articles/virtual-machines/virtual-machines-windows-manage-availability.md) or [Manage the Availability of your Linux Virtual Machines](../articles/virtual-machines/virtual-machines-linux-manage-availability.md).
 
-単一インスタンス VM と複数インスタンス VM に対する計画的メンテナンスの更新は、個別に行われます。VM を単一インスタンス (複数インスタンスの場合) または複数インスタンス (単一インスタンスの場合) として再構成することにより、VM の計画的メンテナンスが行われるタイミングを制御できます。Azure VM の計画的メンテナンスの詳細については、「[Planned maintenance for Azure virtual machines (Azure 仮想マシンの計画的メンテナンス)](../articles/virtual-machines/virtual-machines-linux-planned-maintenance.md)」(Linux) または「[Planned maintenance for Azure virtual machines (Azure 仮想マシンの計画的メンテナンス)](../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md)」(Windows) を参照してください。
+Planned maintenance updates to single-instance and multi-instance VMs happen separately. By reconfiguring your VMs to be single-instance (if they are multi-instance) or to be multi-instance (if they are single-instance), you can control when their VMs receive the planned maintenance. Please see either [Planned maintenance for Azure Linux virtual machines](../articles/virtual-machines/virtual-machines-linux-planned-maintenance.md) or [Planned maintenance for Azure Windows virtual machines](../articles/virtual-machines/virtual-machines-windows-planned-maintenance.md) for details on planned maintenance for Azure VMs.
 
-## 複数インスタンス構成の場合
-可用性セットから VM を削除することで、可用性セット構成にデプロイされた VM に対していつ計画的メンテナンスが行われるかを選択できます。
+## <a name="for-multi-instance-configuration"></a>For Multi-instance Configuration
+You can select the time planned maintenance impacts your VMs that are deployed in an Availability Set configuration by removing these VMs from availability sets.
 
-1.	複数インスタンス構成の VM に対する計画的メンテナンスの 7 日前に、電子メールがユーザーに送信されます。電子メールの本文には、サブスクリプション ID と、影響を受ける複数インスタンス VM の名前が記載されています。
+1.  An email will be sent to you 7 calendar days before the planned maintenance to your VMs in a Multi-instance configuration. The subscription IDs and names of the affected Multi-instance VMs will be included in the body of the email.
 
-2.	この 7 日の間に、そのリージョン内の複数インスタンス VM を可用性セットから削除することにより、インスタンスが更新される時間を選択できます。この構成変更により、仮想マシンがメンテナンス対象の物理ホストからメンテナンス対象ではない別の物理ホストに移動するので、再起動が行われます。
+2.  During those 7 days, you can choose the time your instances are updated by removing your multi-instance VMs in that region from their availability set. This change in configuration will result in a reboot, as the Virtual Machine is moving from one physical host, targeted for maintenance, to another physical host that isn’t targeted for maintenance. 
 
-3.	可用性セットからの VM の削除はクラシック ポータルで行うことができます。
+3.  You can remove the VM from its availability set in the classic portal. 
    
-    1.	クラシック ポータルで、VM をクリックし、[構成] を選択します。
+    1.  In the Classic portal, click on the VM and then select “configure.” 
 
-    2.	[設定] で、VM がどの可用性セットの中にあるかを確認できます。
+    2.  Under “settings”, you can see which Availability Set the VM is in.
 
-        ![可用性セットの選択](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
+        ![Availability Set Selection](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselection.png)
 
-    3.	[可用性セット] にドロップダウン メニューから [可用性セットから削除] を選択します。
+    3.  In the availability set dropdown menu, select “remove from availability set.”
 
-        ![セットからの削除](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselectionconfiguration.png)
+        ![Remove from Set](./media/virtual-machines-planned-maintenance-schedule/availabilitysetselectionconfiguration.png)
 
-    4.	下部にある [保存] を選択します。 [はい] を選択して、この操作によって VM が再起動されることを承認します。
+    4.  At the bottom, select “save.” Select “yes” to acknowledge that this action will restart the VM.
 
-4.	これらの VM は単一インスタンス ホストに移動し、可用性セット構成の計画的メンテナンスでは更新されません。
+4.  These VMs will be moved to Single-Instance hosts and will not be updated during the planned maintenance to Availability Set Configurations.
 
-5.	可用性セット VM の更新が (元の電子メールに記載されているスケジュールに従って) 完了した後で、可用性セットに VM を戻す必要があります。戻した VM は、複数インスタンス VM として再構成されます。VM を単一インスタンスから複数インスタンスに戻すと、再起動が行われます。通常、Azure 環境全体のすべての複数インスタンスの更新が完了した後で、単一インスタンスのメンテナンスが行われます。
+5.  Once the update to Availability Set VMs is complete (according to schedule outlined in the original email), you should add the VMs back into their availability sets, and they will be re-configured as multi-instance VMs. Moving the VMs from Single-instance back to Multi-instance will result in a reboot. Typically, once all multi-instance updates are completed across the entire Azure environment, single-instance maintenance follows.
 
-これも Azure PowerShell を使用して行うことができます。
+This can also be achieved using Azure PowerShell:
 
 ```
 Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Remove-AzureAvailabilitySet | Update-AzureVM
 ```
 
-## 単一インスタンス構成の場合
-VM を可用性セットに追加することで、単一インスタンス構成の VM に対する計画的メンテナンスのタイミングを選択できます。
+## <a name="for-single-instance-configuration"></a>For Single-instance Configuration
+You can select the time planned maintenance impacts you VMs in a Single-instance configuration by adding these VMs into availability sets.
 
-詳細な手順:
+Step-by-step
 
-1.	単一インスタンス構成の VM に対する計画的メンテナンスの 7 日前に、電子メールがユーザーに送信されます。電子メールの本文には、サブスクリプション ID と、影響を受ける単一インスタンス VM の名前が記載されています。
+1.  An email will be sent to you 7 calendar days before the planned maintenance to VMs in a Single-instance configuration. The subscription IDs and names of the affected Single-Instance VMs will be included in the body of the email. 
 
-2.	この 7 日の間に、単一インスタンス VM を同じリージョンの可用性セットに移動することにより、インスタンスが再起動する時間を選択できます。この構成変更により、仮想マシンがメンテナンス対象の物理ホストからメンテナンス対象ではない別の物理ホストに移動するので、再起動が行われます。
+2.  During those 7 days, you can choose the time your instance reboots by moving your Single-instance VMs by moving them into an availability set in that same region. This change in configuration will result in a reboot, as the Virtual Machine is moving from one physical host, targeted for maintenance, to another physical host that isn’t targeted for maintenance.
 
-3.	クラシック ポータルと Azure PowerShell を使用し、ここで示す手順に従って、既存の VM を可用性セットに追加します (後の Azure PowerShell サンプルを参照)。
+3.  Follow instructions here to add existing VMs into availability sets using the Classic Portal and Azure PowerShell (see Azure PowerShell sample in the note below).
 
-4.	複数インスタンスとして再構成した VM は、単一インスタンス VM の計画的メンテナンスから除外されます。
+4.  Once these VMs are re-configured as Multi-instance, they will be excluded from the planned maintenance to Single-instance VMs.
 
-5.	単一インスタンス VM の更新が (元の電子メールに記載されているスケジュールに従って) 完了したら、可用性セットから VM を削除できます。削除した VM は、単一インスタンス VM として再構成されます。
+5.  Once the update to single-instance VMs is complete (according to schedule outlined in the original email), you can remove the VMs from their availability sets, and they will be re-configured as single-instance VMs.
 
-これも Azure PowerShell を使用して行うことができます。
+This can also be achieved using Azure PowerShell:
 
     Get-AzureVM -ServiceName "<VmCloudServiceName>" -Name "<VmName>" | Set-AzureAvailabilitySet -AvailabilitySetName "<AvSetName>" | Update-AzureVM
 
@@ -65,4 +65,7 @@ VM を可用性セットに追加することで、単一インスタンス構�
 [Virtual Machines Manage Availability]: virtual-machines-windows-tutorial.md
 [Understand planned versus unplanned maintenance]: virtual-machines-manage-availability.md#Understand-planned-versus-unplanned-maintenance/
 
-<!---HONumber=AcomDC_0803_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

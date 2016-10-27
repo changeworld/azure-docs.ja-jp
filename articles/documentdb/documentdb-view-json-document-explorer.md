@@ -1,167 +1,172 @@
 <properties
-	pageTitle="DocumentDB ドキュメント エクスプローラーでの JSON の表示 | Microsoft Azure"
-	description="NoSQL ドキュメント データベースである DocumentDB で JSON の表示と JSON ドキュメントの編集、作成、アップロードを実行するための Azure ポータルのツールである、DocumentDB ドキュメント エクスプローラーについて説明します。"
-    keywords="json の表示"
-	services="documentdb"
-	authors="AndrewHoh"
-	manager="jhubbard"
-	editor="monicar"
-	documentationCenter=""/>
+    pageTitle="DocumentDB Document Explorer, to view JSON | Microsoft Azure"
+    description="Learn about the DocumentDB Document Explorer, an Azure Portal tool to view JSON, edit, create, and upload JSON documents with DocumentDB, a NoSQL document database."
+    keywords="view json"
+    services="documentdb"
+    authors="kirillg"
+    manager="jhubbard"
+    editor="monicar"
+    documentationCenter=""/>
 
 <tags
-	ms.service="documentdb"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/30/2016"
-	ms.author="anhoh"/>
+    ms.service="documentdb"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/30/2016"
+    ms.author="kirillg"/>
 
-# DocumentDB ドキュメント エクスプローラーを使用して JSON ドキュメントを表示、編集、作成、アップロードする
 
-この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) ドキュメント エクスプローラーの概要を説明します。これは、DocumentDB を使用して JSON ドキュメントを表示、編集、作成、アップロード、およびフィルター処理する Azure ポータルのツールです。
+# <a name="view,-edit,-create,-and-upload-json-documents-using-documentdb-document-explorer"></a>View, edit, create, and upload JSON documents using DocumentDB Document Explorer
 
-ドキュメント エクスプローラーは、MongoDB のプロトコル対応の DocumentDB アカウントでは有効になっていません。この機能が有効になった場合は、このページも更新されます。
+This article provides an overview of the [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) Document Explorer, an Azure portal tool that enables you to view, edit, create, upload, and filter JSON documents with DocumentDB. 
 
-## ドキュメント エクスプローラーの起動
+Note that Document Explorer is not enabled on DocumentDB accounts with protocol support for MongoDB. This page will be updated when this feature is enabled.
 
-1. Azure ポータルで、ジャンプバーの **[DocumentDB (NoSQL)]** をクリックします。**[DocumentDB (NoSQL)]** が表示されない場合は、**[More Services (その他のサービス)]** をクリックし、**[DocumentDB (NoSQL)]** をクリックします。
+## <a name="launch-document-explorer"></a>Launch Document Explorer
 
-2. リソース メニューの **[ドキュメント エクスプローラー]** をクリックします。
+1. In the Azure portal, in the Jumpbar, click **DocumentDB (NoSQL)**. If **DocumentDB (NoSQL)** is not visible, click **More Services** and then click **DocumentDB (NoSQL)**.
+
+2. In the resource menu, click **Document Explorer**. 
  
-	![Document Explorer コマンドのスクリーンショット](./media/documentdb-view-json-document-explorer/documentexplorercommand.png)
+    ![Screenshot of the Document Explorer command](./media/documentdb-view-JSON-document-explorer/documentexplorercommand.png)
 
-    **[ドキュメント エクスプローラー]** ブレードの **[データベース]** と **[コレクション]** の各ドロップダウン リストには、ドキュメント エクスプローラーを起動したコンテキストに応じて値が設定されます。
+    In the **Document Explorer** blade, the **Databases** and **Collections** drop-down lists are pre-populated depending on the context in which you launched Document Explorer. 
 
-## ドキュメントの作成
+## <a name="create-a-document"></a>Create a document
 
-1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
+1. [Launch Document Explorer](#launch-document-explorer).
 
-2. **[ドキュメント エクスプローラー]** ブレードの **[ドキュメントの作成]** をクリックします。
+2. In the **Document Explorer** blade, click **Create Document**. 
 
-    **[ドキュメント]** ブレードには、最小限の JSON スニペットが入力されています。
+    A minimal JSON snippet is provided in the **Document** blade.
 
-	![Screenshot of Document Explorer create document experience, where you can view JSON and edit JSON](./media/documentdb-view-json-document-explorer/createdocument.png)
+    ![Screenshot of Document Explorer create document experience, where you can view JSON and edit JSON](./media/documentdb-view-JSON-document-explorer/createdocument.png)
 
-2. **[ドキュメント]** ブレードで、作成する JSON ドキュメントの内容を入力するか貼り付けて、**[保存]** をクリックし、**[ドキュメント エクスプローラー]** ブレードで指定したデータベースおよびコレクションにドキュメントをコミットします。
+2. In the **Document** blade, type or paste in the content of the JSON document you wish to create, and then click **Save** to commit your document to the database and collection specified in the **Document Explorer** blade.
 
-	![Document Explorer の [保存] コマンドのスクリーンショット](./media/documentdb-view-json-document-explorer/savedocument1.png)
+    ![Screenshot of Document Explorer save command](./media/documentdb-view-JSON-document-explorer/savedocument1.png)
 
-	> [AZURE.NOTE] "ID" プロパティを指定していない場合は、Document Explorer によって自動的に ID プロパティが追加され、ID 値として GUID が生成されます。
+    > [AZURE.NOTE] If you do not provide an "id" property, then Document Explorer automatically adds an id property and generates a GUID as the id value.
 
-    JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase、またはその他の DocumentDB コレクションのデータが既にある場合は、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用して、データをすばやくインポートできます。
+    If you already have data from JSON files, MongoDB, SQL Server, CSV files, Azure Table storage, Amazon DynamoDB, HBase, or from other DocumentDB collections, you can use DocumentDB's [data migration tool](documentdb-import-data.md) to quickly import your data.
 
-## ドキュメントの編集
+## <a name="edit-a-document"></a>Edit a document
 
-1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
+1. [Launch Document Explorer](#launch-document-explorer).
 
-2. 既存のドキュメントを編集するには、**[ドキュメント エクスプローラー]** ブレードでドキュメントを選択し、**[ドキュメント]** ブレードで編集して、**[保存]** をクリックします。
+2. To edit an existing document, select it in the **Document Explorer** blade, edit the document in the **Document** blade, and then click **Save**.
 
-    ![Screenshot of Document Explorer edit document functionality used to view JSON](./media/documentdb-view-json-document-explorer/editdocument.png)
+    ![Screenshot of Document Explorer edit document functionality used to view JSON](./media/documentdb-view-JSON-document-explorer/editdocument.png)
 
-    ドキュメントの編集中に現在の編集内容を破棄する必要がある場合は、**[ドキュメント]** ブレードの **[破棄]** をクリックして破棄アクションに同意するたけで、前の状態のドキュメントが再度読み込まれます。
+    If you're editing a document and decide that you want to discard the current set of edits, simply click **Discard** in the **Document** blade, confirm the discard action, and the previous state of the document is reloaded.
 
-    ![Document Explorer の [破棄] コマンドのスクリーンショット](./media/documentdb-view-json-document-explorer/discardedit.png)
+    ![Screenshot of Document Explorer discard command](./media/documentdb-view-JSON-document-explorer/discardedit.png)
 
-## ドキュメントの削除
+## <a name="delete-a-document"></a>Delete a document
 
-1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
+1. [Launch Document Explorer](#launch-document-explorer).
 
-2. **ドキュメント エクスプローラー**でドキュメントを選択し、**[削除]** をクリックして、削除を確定します。確定後、そのドキュメントはドキュメント エクスプローラーの一覧から即座に削除されます。
+2. Select the document in **Document Explorer**, click **Delete**, and then confirm the delete. After confirming, the document is immediately removed from the Document Explorer list.
 
-	![Document Explorer の [削除] コマンドのスクリーンショット](./media/documentdb-view-json-document-explorer/deletedocument.png)
+    ![Screenshot of Document Explorer delete command](./media/documentdb-view-JSON-document-explorer/deletedocument.png)
 
-## JSON ドキュメントの操作
+## <a name="work-with-json-documents"></a>Work with JSON documents
 
-ドキュメント エクスプローラーでは、新規または編集されたドキュメントに有効な JSON が含まれているかどうかが検証されます。エラーがあったセクションをマウスでポイントして、検証エラーの詳細を表示することによって、JSON エラーを確認することもできます。
+Document Explorer validates that any new or edited document contains valid JSON.  You can even view JSON errors by hovering over the incorrect section to get details about the validation error.
 
-![Screenshot of Document Explorer with invalid JSON highlighting](./media/documentdb-view-json-document-explorer/invalidjson1.png)
+![Screenshot of Document Explorer with invalid JSON highlighting](./media/documentdb-view-JSON-document-explorer/invalidjson1.png)
 
-また、Document Explorer では、無効な JSON コンテンツを含むドキュメントを保存できません。
+Additionally, Document Explorer prevents you from saving a document with invalid JSON content.
 
-![Screenshot of Document Explorer with invalid JSON save error](./media/documentdb-view-json-document-explorer/invalidjson2.png)
+![Screenshot of Document Explorer with invalid JSON save error](./media/documentdb-view-JSON-document-explorer/invalidjson2.png)
 
-最後に、Document Explorer で **[プロパティ]** をクリックすると、現在読み込まれているドキュメントのシステム プロパティを表示することができます。
+Finally, Document Explorer allows you to easily view the system properties of the currently loaded document by clicking the **Properties** command.
 
-![Document Explorer のドキュメントのプロパティ ビューのスクリーンショット](./media/documentdb-view-json-document-explorer/documentproperties.png)
+![Screenshot of Document Explorer document properties view](./media/documentdb-view-JSON-document-explorer/documentproperties.png)
 
-> [AZURE.NOTE] タイムスタンプ (\_ts) プロパティは内部ではエポック時間として表現されますが、Document Explorer では、人間が読むことができる GMT 形式で値が表示されます。
+> [AZURE.NOTE] The timestamp (_ts) property is internally represented as epoch time, but Document Explorer displays the value in a human readable GMT format.
 
-## ドキュメントのフィルター処理
-Document Explorer はさまざまなナビゲーション オプションと高度な設定を備えています。
+## <a name="filter-documents"></a>Filter documents
+Document Explorer supports a number of navigation options and advanced settings.
 
-既定では、Document Explorer は選択されたコレクション内の最初の最大 100 個 (作成日が早いもの順) のドキュメントを読み込みます。Document Explorer ブレードの下部にある **[さらに読み込む]** オプションをクリックすることで、(100 個単位で) 別のドキュメントを読み込むことができます。**[フィルター]** コマンドを使用して、どのドキュメントを読み込むかを選択できます。
+By default, Document Explorer loads up to the first 100 documents in the selected collection, by their created date from earliest to latest.  You can load additional documents (in batches of 100) by selecting the **Load more** option at the bottom of the Document Explorer blade. You can choose which documents to load through the **Filter** command.
 
-1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
+1. [Launch Document Explorer](#launch-document-explorer).
 
-2. **[ドキュメント エクスプローラー]** ブレードの上部にある **[フィルター]** をクリックします。
+2. At the top of the **Document Explorer** blade, click **Filter**.  
 
-    ![Screenshot of Document Explorer Filter Settings](./media/documentdb-view-json-document-explorer/documentexplorerfiltersettings.png)
+    ![Screenshot of Document Explorer Filter Settings](./media/documentdb-view-JSON-document-explorer/documentexplorerfiltersettings.png)
   
-3.  コマンド バーの下に、フィルターの設定が表示されます。フィルターの設定で、WHERE 句や ORDER BY 句を指定し、**[フィルター]** をクリックします。
+3.  The filter settings appear below the command bar. In the filter settings, provide a WHERE clause and/or an ORDER BY clause, and then click **Filter**.
 
-	![Screenshot of Document Explorer Settings blade](./media/documentdb-view-json-document-explorer/documentexplorerfiltersettings2.png)
+    ![Screenshot of Document Explorer Settings blade](./media/documentdb-view-JSON-document-explorer/documentexplorerfiltersettings2.png)
 
-	ドキュメント エクスプローラーでは、結果が自動的に更新され、フィルター クエリに一致するドキュメントが表示されます。DocumentDB の SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
+    Document Explorer automatically refreshes the results with documents matching the filter query. Read more about the DocumentDB SQL grammar in the [SQL query and SQL syntax](documentdb-sql-query.md) article or print a copy of the [SQL query cheat sheet](documentdb-sql-query-cheat-sheet.md).
 
-    **[データベース]** ボックスと **[コレクション]** ボックスを使用すると、Document Explorer を閉じて再度起動することなく、現在表示されているドキュメントが含まれるコレクションを簡単に変更できます。
+    The **Database** and **Collection** drop-down list boxes can be used to easily change the collection from which documents are currently being viewed without having to close and re-launch Document Explorer.  
 
-    Document Explorer では、現在読み込まれているドキュメントのセットを ID プロパティでフィルター処理することもできます。[ドキュメント] ボックスに ID を入力するだけです。
+    Document Explorer also supports filtering the currently loaded set of documents by their id property.  Simply type in the Documents Filter by id box.
 
-	![フィルターが強調表示された Document Explorer のスクリーンショット](./media/documentdb-view-json-document-explorer/documentexplorerfilter.png)
+    ![Screenshot of Document Explorer with filter highlighted](./media/documentdb-view-JSON-document-explorer/documentexplorerfilter.png)
 
-	ドキュメント エクスプローラーの一覧の結果は、指定された条件に基づいてフィルター処理されます。
+    The results in the Document Explorer list are filtered based on your supplied criteria.
 
-	![フィルターの結果が表示された Document Explorer のスクリーンショット](./media/documentdb-view-json-document-explorer/documentexplorerfilterresults.png)
+    ![Screenshot of Document Explorer with filtered results](./media/documentdb-view-JSON-document-explorer/documentexplorerfilterresults.png)
 
-	> [AZURE.IMPORTANT] Document Explorer のフィルター機能では、現在読み込まれているドキュメントのみがフィルター処理されます。現在選択されているコレクションに対してクエリが実行されることはありません。
+    > [AZURE.IMPORTANT] The Document Explorer filter functionality only filters from the ***currently*** loaded set of documents and does not perform a query against the currently selected collection.
 
-4. ドキュメント エクスプローラーに読み込まれたドキュメントの一覧を更新するには、ブレードの上部にある **[更新]** をクリックします。
+4. To refresh the list of documents loaded by Document Explorer, click **Refresh** at the top of the blade.
 
-	![Document Explorer の [最新の情報に更新] コマンドのスクリーンショット](./media/documentdb-view-json-document-explorer/documentexplorerrefresh.png)
+    ![Screenshot of Document Explorer refresh command](./media/documentdb-view-JSON-document-explorer/documentexplorerrefresh.png)
 
-## ドキュメントの一括追加
+## <a name="bulk-add-documents"></a>Bulk add documents
 
-ドキュメント エクスプローラーでは、1 つ以上の既存の JSON ドキュメントの一括インジェストをサポートしています。1 回のアップロード操作につき、最大で 100 個の JSON ファイルを処理できます。
+Document Explorer supports bulk ingestion of one or more existing JSON documents, up to 100 JSON files per upload operation.  
 
-1. [ドキュメント エクスプローラーを起動](#launch-document-explorer)します。
+1. [Launch Document Explorer](#launch-document-explorer).
 
-2. アップロード処理を開始するには、**[ドキュメントのアップロード]** をクリックします。
+2. To start the upload process, click **Upload Document**.
 
-	![Document Explorer の一括取り込み機能のスクリーンショット](./media/documentdb-view-json-document-explorer/uploaddocument1.png)
+    ![Screenshot of Document Explorer bulk ingestion functionality](./media/documentdb-view-JSON-document-explorer/uploaddocument1.png)
 
-    **[ドキュメントのアップロード]** ブレードが開きます。
+    The **Upload Document** blade opens. 
 
-2. [参照] をクリックしてエクスプローラー ウィンドウを開き、アップロードする JSON ドキュメントを 1 つ以上選択して、**[開く]** をクリックします。
+2. Click the browse button to open a file explorer window, select one or more JSON documents to upload, and then click **Open**.
 
-	![Document Explorer の一括取り込みプロセスのスクリーンショット](./media/documentdb-view-json-document-explorer/uploaddocument2.png)
+    ![Screenshot of Document Explorer bulk ingestion process](./media/documentdb-view-JSON-document-explorer/uploaddocument2.png)
 
-	> [AZURE.NOTE] Document Explorer では、現在、アップロード処理ごとに最大 100 個の JSON ドキュメントをサポートしています。
+    > [AZURE.NOTE] Document Explorer currently supports up to 100 JSON documents per individual upload operation.
 
-3. 選択したら、**[アップロード]** をクリックします。ドキュメントが自動的に Document Explorer グリッドに追加されます。操作の進捗状況に合わせてアップロード結果が表示されます。インポートが失敗すると、ファイルごとに報告されます。
+3. Once you're satisfied with your selection, click the **Upload** button.  The documents are automatically added to the Document Explorer grid and the upload results are displayed as the operation progresses. Import failures are reported for individual files.
 
-	![Document Explorer の一括取り込みの結果のスクリーンショット](./media/documentdb-view-json-document-explorer/uploaddocument3.png)
+    ![Screenshot of Document Explorer bulk ingestion results](./media/documentdb-view-JSON-document-explorer/uploaddocument3.png)
 
-4. この操作が完了すると、アップロードするドキュメントをさらに最大 100 個選択することができます。
+4. Once the operation is complete, you can select up to another 100 documents to upload.
 
-## ポータル外での JSON ドキュメントの操作
+## <a name="work-with-json-documents-outside-the-portal"></a>Work with JSON documents outside the portal
 
-Azure ポータルのドキュメント エクスプローラーは、DocumentDB のドキュメントを操作するための 1 つの手段にすぎません。[REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) や[クライアント SDK](documentdb-sdk-dotnet.md) を使用してドキュメントを操作することもできます。コード例については、[.NET SDK のドキュメントの例](documentdb-dotnet-samples.md#document-examples)と [Node.js SDK のドキュメントの例](documentdb-nodejs-samples.md#document-examples)をご覧ください。
+The Document Explorer in the Azure portal is just one way to work with documents in DocumentDB. You can also work with documents using the [REST API](https://msdn.microsoft.com/library/azure/mt489082.aspx) or the [client SDKs](documentdb-sdk-dotnet.md). For example code, see the [.NET SDK document examples](documentdb-dotnet-samples.md#document-examples) and the [Node.js SDK document examples](documentdb-nodejs-samples.md#document-examples).
 
-他のソース (JSON ファイル、MongoDB、SQL Server、CSV ファイル、Azure Table Storage、Amazon DynamoDB、HBase) からファイルをインポートまたは移行する必要がある場合は、DocumentDB の[データ移行ツール](documentdb-import-data.md)を使用すると、データを DocumentDB にすばやくインポートできます。
+If you need to import or migrate files from another source (JSON files, MongoDB, SQL Server, CSV files, Azure Table storage, Amazon DynamoDB, or HBase), you can use the DocumentDB [data migration tool](documentdb-import-data.md) to quickly import your data to DocumentDB.
 
-## トラブルシューティング
+## <a name="troubleshoot"></a>Troubleshoot
 
-**症状**: Document Explorer から "**ドキュメントが見つかりません**" というメッセージが返されます。
+**Symptom**: Document Explorer returns **No documents found**.
 
-**ソリューション**: ドキュメントが挿入された適切なサブスクリプション、データベース、およびコレクションが選択されていることを確認します。また、スループット クォータ内で操作していることを確認します。最大のスループット レベルで運用していて調整が行われている場合は、コレクションのスループットの最大クォータの範囲で動作するように、アプリケーションの使用量を削減します。
+**Solution**: Ensure that you have selected the correct subscription, database and collection in which the documents were inserted. Also, check to ensure that you are operating within your throughput quotas. If you are operating at your maximum throughput level and getting throttled, lower application usage to operate under the maximum throughput quota for the collection.
 
-**説明**: ポータルは、他のアプリケーションと同様に、DocumentDB データベースおよびコレクションの呼び出しを行います。別のアプリケーションから行われる呼び出しのために要求が調整中の場合は、ポータルも調整され、リソースがポータルに表示されなくなる可能性があります。問題を解決するには、スループットの使用量が高くなる原因に対処して、ポータルのブレードを最新の状態に更新します。スループットの使用量の測定方法と削減方法の詳細については、[パフォーマンスに関するヒント](documentdb-performance-tips.md)の記事の「[スループット](documentdb-performance-tips.md#throughput)」のセクションをご覧ください。
+**Explanation**: The portal is an application like any other, making calls to your DocumentDB database and collection. If your requests are currently being throttled due to calls being made from a separate application, the portal may also be throttled, causing resources not to appear in the portal. To resolve the issue, address the cause of the high throughput usage, and then refresh the portal blade. Information on how to measure and lower throughput usage can be found in the [Throughput](documentdb-performance-tips.md#throughput) section of the [Performance tips](documentdb-performance-tips.md) article.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-ドキュメント エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。
+To learn more about the DocumentDB SQL grammar supported in Document Explorer, see the [SQL query and SQL syntax](documentdb-sql-query.md) article or print out the [SQL query cheat sheet](documentdb-sql-query-cheat-sheet.md).
 
-[ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/documentdb/)も、DocumentDB の詳細を理解する際に便利なリソースです。
+The [Learning path](https://azure.microsoft.com/documentation/learning-paths/documentdb/) is also a useful resource to guide you as you learn more about DocumentDB. 
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

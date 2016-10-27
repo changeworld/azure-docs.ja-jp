@@ -1,251 +1,252 @@
 <properties
-	pageTitle="Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備 | Microsoft Azure"
-	description="Azure で仮想マシンをバックアップするための環境を準備する方法について説明します"
-	services="backup"
-	documentationCenter=""
-	authors="markgalioto"
-	manager="cfreeman"
-	editor=""
-	keywords="バックアップ, バックアップする,"/>
+    pageTitle="Preparing your environment to back up Resource Manager-deployed virtual machines | Microsoft Azure"
+    description="Make sure your environment is prepared for backing up virtual machines in Azure"
+    services="backup"
+    documentationCenter=""
+    authors="markgalioto"
+    manager="cfreeman"
+    editor=""
+    keywords="backups; backing up;"/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/21/2016"
-	ms.author="trinadhk; jimpark; markgal;"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/21/2016"
+    ms.author="trinadhk; jimpark; markgal;"/>
 
 
-# Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
+
+# <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Prepare your environment to back up Resource Manager-deployed virtual machines
 
 > [AZURE.SELECTOR]
-- [Resource Manager モデル](backup-azure-arm-vms-prepare.md)
-- [クラシック モデル](backup-azure-vms-prepare.md)
+- [Resource Manager model](backup-azure-arm-vms-prepare.md)
+- [Classic model](backup-azure-vms-prepare.md)
 
-この記事では、Resource Manager でデプロイされた仮想マシン (VM) をバックアップできるように環境を準備する手順について説明します。手順の各ステップでは、Azure ポータルを使用します。
+This article provides the steps for preparing your environment to back up a Resource Manager-deployed virtual machine (VM). The steps shown in the procedures use the Azure portal.  
 
-Azure Backup サービスでは、VM を保護するために 2 種類のコンテナー (バックアップ コンテナーと Recovery Services コンテナー) を用意しています。バックアップ コンテナーでは、クラシック デプロイメント モデルを使用してデプロイされた VM を保護します。Recovery Services コンテナーでは、**クラシック デプロイメント モデルでデプロイされた VM と Resource Manager でデプロイされた VM の両方**を保護します。Resource Manager でデプロイされた VM を保護するには、Recovery Services コンテナーを使用する必要があります。
+The Azure Backup service has two types of vaults (back up vaults and recovery services vaults) for protecting your VMs. A backup vault protects VMs deployed using the Classic deployment model. A recovery services vault protects ** both Classic-deployed or Resource Manager-deployed VMs** . You must use a Recovery Services vault to protect a Resource Manager-deployed VM.
 
->[AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」を参照してください。
+>[AZURE.NOTE] Azure has two deployment models for creating and working with resources: [Resource Manager and Classic](../resource-manager-deployment-model.md). See [Prepare your environment to back up Azure virtual machines](backup-azure-vms-prepare.md) for details on working with Classic deployment model VMs.
 
-Resource Manager でデプロイされた仮想マシン (VM) の保護またはバックアップを行うには、事前に次の前提条件を満たしておく必要があります。
+Before you can protect or back up a Resource Manager-deployed virtual machine (VM), make sure these prerequisites exist:
 
-- *VM と同じ場所に* Recovery Services コンテナーを作成します (または、既存の Recovery Services コンテナーを識別します)。
-- シナリオを選択し、バックアップ ポリシーを定義し、保護する項目を定義します。
-- 仮想マシンに VM エージェントがインストールされていることを確認します。
-- ネットワーク接続を確認します。
+- Create a recovery services vault (or identify an existing recovery services vault) *in the same location as your VM*.
+- Select a scenario, define the backup policy, and define items to protect.
+- Check the installation of VM Agent on virtual machine.
+- Check network connectivity
 
-これらの条件が既に環境内で満たされている場合は、[VM のバックアップに関する記事](backup-azure-vms.md)に進んでください。これらの前提条件のいずれかをセットアップまたは確認する必要がある場合は、この記事に前提条件を満たすための手順が説明されているので参照してください。
+If you know these conditions already exist in your environment then proceed to the [Back up your VMs article](backup-azure-vms.md). If you need to set up, or check, any of these prerequisites, this article leads you through the steps to prepare that prerequisite.
 
 
-## VM のバックアップと復元に関する制限
+## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Limitations when backing up and restoring a VM
 
-環境を準備する前に、制限事項を把握してください。
+Before you prepare your environment, please understand the limitations.
 
-- 16 台以上のデータ ディスクを搭載した仮想マシンのバックアップはサポートされません。
-- 予約済み IP アドレスはあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
-- Docker 拡張機能を持つ Linux 仮想マシンのバックアップはサポートされません。
-- バックアップ データには、ネットワーク経由でマウントされて VM に接続されているドライブは含まれません。
-- 復元中に既存の仮想マシンを置き換えることはサポートされません。VM が存在している場合に VM の復元を試みると、復元操作は失敗します。
-- リージョン間のバックアップと復元はサポートされません。
-- Azure のすべてのパブリック リージョンに仮想マシンをバックアップすることができます (サポートされているリージョンの[チェックリスト](https://azure.microsoft.com/regions/#services)を参照してください)。目的のリージョンが現在サポートされていない場合は、資格情報コンテナーの作成時にドロップダウン リストに表示されません。
-- 次のように特定のオペレーティング システムのバージョンについてのみ仮想マシンをバックアップすることができます。
-  - **Linux**: Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/virtual-machines-linux-endorsed-distros.md)をサポートしています (Core OS Linux を除く)。他の個人所有の Linux ディストリビューションも、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
-  - **Windows Server**: Windows Server 2008 R2 より前のバージョンはサポートされていません。
-- マルチ DC 構成の一部であるドメイン コントローラー (DC) VM の復元は、PowerShell を通じてのみサポートされます。[マルチ DC ドメイン コントローラーの復元](backup-azure-restore-vms.md#restoring-domain-controller-vms)の詳細をご覧ください。
-- 次のような特殊なネットワーク構成を持つ仮想マシンの復元は、PowerShell でのみサポートされています。復元操作の完了後、UI の復元ワークフローを使用して作成された VM には、これらのネットワーク構成は含まれません。詳細については、「[特別なネットワーク構成を持つ VM の復元](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations)」を参照してください。
-  - ロード バランサー構成 (内部および外部の) での仮想マシン
-  - 複数の予約済み IP アドレスを持つ仮想マシン
-  - 複数のネットワーク アダプターを持つ仮想マシン
+- Backing up virtual machines with more than 16 data disks is not supported.
+- Backing up virtual machines with a reserved IP address and no defined endpoint is not supported.
+- Backup of Linux virtual machines with Docker extension is not supported. 
+- Backup data doesn't include network mounted drives attached to VM. 
+- Replacing an existing virtual machine during restore is not supported. If you attempt to restore the VM when the VM exists, the restore operation fails.
+- Cross-region backup and restore is not supported.
+- You can back up virtual machines in all public regions of Azure (see the [checklist](https://azure.microsoft.com/regions/#services) of supported regions). If the region that you are looking for is unsupported today, it will not appear in the dropdown list during vault creation.
+- You can back up virtual machines only for select operating system versions:
+  - **Linux**: Azure Backup supports  [a list of distributions that are endorsed by Azure](../virtual-machines/virtual-machines-linux-endorsed-distros.md) except Core OS Linux.  Other Bring-Your-Own-Linux distributions also might work as long as the VM agent is available on the virtual machine and support for Python exists.
+  - **Windows Server**:  Versions older than Windows Server 2008 R2 are not supported.
+- Restoring a domain controller (DC) VM that is part of a multi-DC configuration is supported only through PowerShell. Read more about [restoring a multi-DC domain controller](backup-azure-restore-vms.md#restoring-domain-controller-vms).
+- Restoring virtual machines that have the following special network configurations is supported only through PowerShell. VMs created using the restore workflow in the UI will not have these network configurations after the restore operation is complete. To learn more, see [Restoring VMs with special network configurations](backup-azure-restore-vms.md#restoring-vms-with-special-netwrok-configurations).
+  - Virtual machines under load balancer configuration (internal and external)
+  - Virtual machines with multiple reserved IP addresses
+  - Virtual machines with multiple network adapters
 
-## VM 用の Recovery Services コンテナーを作成する
+## <a name="create-a-recovery-services-vault-for-a-vm"></a>Create a recovery services vault for a VM
 
-Recovery Services コンテナーは、経時的に作成されたバックアップと復旧ポイントを格納するエンティティです。Recovery Services コンテナーには、保護される仮想マシンに関連付けられたバックアップ ポリシーも含まれます。
+A recovery services vault is an entity that stores the backups and recovery points that have been created over time. The recovery services vault also contains the backup policies associated with the protected virtual machines.
 
-Recovery Services コンテナーを作成するには、次の手順に従います。
+To create a recovery services vault:
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-2. ハブ メニューで **[参照]** をクリックし、リソースの一覧で「**Recovery Services**」と入力します。入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** をクリックします。
+2. On the Hub menu, click **Browse** and in the list of resources, type **Recovery Services**. As you begin typing, the list will filter based on your input. Click **Recovery Services vault**.
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
 
-    Recovery Services コンテナーの一覧が表示されます。
+    The list of Recovery Services vaults is displayed.
 
-3. **[Recovery Services コンテナー]** メニューの **[追加]** をクリックします。
+3. On the **Recovery Services vaults** menu, click **Add**.
 
     ![Create Recovery Services Vault step 2](./media/backup-azure-vms-first-look-arm/rs-vault-menu.png)
 
-    Recovery Services コンテナー ブレードが開き、**[名前]**、**[サブスクリプション]**、**[リソース グループ]**、および **[場所]** を指定するように求められます。
+    The Recovery Services vault blade opens, prompting you to provide a **Name**, **Subscription**, **Resource group**, and **Location**.
 
     ![Create Recovery Services vault step 5](./media/backup-azure-vms-first-look-arm/rs-vault-attributes.png)
 
-4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。名前は Azure サブスクリプションに対して一意である必要があります。2 ～ 50 文字の名前を入力します。名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+4. For **Name**, enter a friendly name to identify the vault. The name needs to be unique for the Azure subscription. Type a name that contains between 2 and 50 characters. It must start with a letter, and can contain only letters, numbers, and hyphens.
 
-5. **[サブスクリプション]** をクリックして、使用可能なサブスクリプションの一覧を表示します。どのサブスクリプションを使用すればよいかがわからない場合は、既定 (または推奨) のサブスクリプションを使用してください。組織のアカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
+5. Click **Subscription** to see the available list of subscriptions. If you are not sure which subscription to use, use the default (or suggested) subscription. There will be multiple choices only if your organizational account is associated with multiple Azure subscriptions.
 
-6. **[リソース グループ]** をクリックして使用可能なリソース グループを表示するか、**[新規]** をクリックして新しいリソース グループを作成します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
+6. Click **Resource group** to see the available list of Resource groups, or click **New** to create a new Resource group. For complete information on Resource groups, see [Azure Resource Manager overview](../resource-group-overview.md)
 
-7. **[場所]** をクリックして、コンテナーの地理的リージョンを選択します。コンテナーは、保護する仮想マシンと同じリージョンにある**必要があります**。
+7. Click **Location** to select the geographic region for the vault. The vault **must** be in the same region as the virtual machines that you want to protect.
 
-    >[AZURE.IMPORTANT] VM がどの場所に存在するかが不明な場合は、コンテナーを作成するダイアログを閉じて、ポータルで仮想マシンの一覧に移動します。複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成する必要があります。最初の場所でコンテナーを作成してから、次の場所に移動してください。バックアップ データを格納するストレージ アカウントを指定する必要はありません。これは、Recovery Services コンテナーと Azure Backup サービスにより自動的に処理されます。
+    >[AZURE.IMPORTANT] If you are unsure of the location in which your VM exists, close out of the vault creation dialog, and go to the list of Virtual Machines in the portal. If you have virtual machines in multiple regions, you will need to create a Recovery Services vault in each region. Create the vault in the first location before going to the next location. There is no need to specify storage accounts to store the backup data--the Recovery Services vault and the Azure Backup service handle this automatically.
 
-8. **[作成]** をクリックします。Recovery Services コンテナーの作成に時間がかかることがあります。ポータルの右上隅で、状態の通知を監視します。コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。
+8. Click **Create**. It can take a while for the Recovery Services vault to be created. Monitor the status notifications in the upper right-hand area in the portal. Once your vault is created, it appears in the list of Recovery Services vaults.
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
+    ![List of backup vaults](./media/backup-azure-vms-first-look-arm/rs-list-of-vaults.png)
 
-    これで、コンテナーが作成されました。次は、ストレージ レプリケーションを設定する方法について説明します。
+    Now that you've created your vault, learn how to set the storage replication.
 
-## ストレージ レプリケーションの設定
+## <a name="set-storage-replication"></a>Set Storage Replication
 
-ストレージ レプリケーション オプションでは、geo 冗長ストレージとローカル冗長ストレージのどちらかを選択できます。既定では、コンテナーには geo 冗長ストレージがあります。プライマリ バックアップの場合は、オプションが geo 冗長ストレージに設定されているままにします。冗長性を犠牲にしても低コストなバックアップが必要な場合は、ローカル冗長ストレージを選択します。[geo 冗長](../storage/storage-redundancy.md#geo-redundant-storage)ストレージ オプションと[ローカル冗長](../storage/storage-redundancy.md#locally-redundant-storage)ストレージ オプションの詳細について、[Azure Storage のレプリケーションの概要](../storage/storage-redundancy.md)に関する記事を参照してください。
+The storage replication option allows you to choose between geo-redundant storage and locally redundant storage. By default, your vault has geo-redundant storage. Leave the option set to geo-redundant storage if this is your primary backup. Choose locally redundant storage if you want a cheaper option that isn't quite as durable. Read more about [geo-redundant](../storage/storage-redundancy.md#geo-redundant-storage) and [locally redundant](../storage/storage-redundancy.md#locally-redundant-storage) storage options in the [Azure Storage replication overview](../storage/storage-redundancy.md).
 
-ストレージ レプリケーション設定を編集するには、次の手順を実行します。
+To edit the storage replication setting:
 
-1. コンテナーを選択して、コンテナーのダッシュボードと [設定] ブレードを開きます。**[設定]** ブレードが開かない場合は、コンテナーのダッシュボードで **[すべての設定]** をクリックします。
+1. Select your vault to open the vault dashboard and the Settings blade. If the **Settings** blade doesn't open, click **All settings** in the vault dashboard.
 
-2. **[設定]** ブレードで、**[バックアップ インフラストラクチャ]**、**[バックアップ構成]** の順にクリックして、**[バックアップ構成]** ブレードを開きます。**[バックアップ構成]** ブレードで、コンテナーのストレージ レプリケーション オプションを選択します。
+2. On the **Settings** blade, click **Backup Infrastructure** > **Backup Configuration** to open the **Backup Configuration** blade. On the **Backup Configuration** blade, choose the storage replication option for your vault.
 
-    ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+    ![List of backup vaults](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
-    コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
+    After choosing the storage option for your vault, you are ready to associate the VM with the vault. To begin the association, you should discover and register the Azure virtual machines.
 
 
-## バックアップの目標を選択し、ポリシーを設定し、保護する項目の定義する
+## <a name="select-a-backup-goal,-set-policy-and-define-items-to-protect"></a>Select a backup goal, set policy and define items to protect
 
-VM をコンテナーに登録する前に、サブスクリプションに追加された新しい仮想マシンが特定されるように検出プロセスを実行してください。このプロセスでは、サブスクリプションに含まれる仮想マシンの一覧を、クラウド サービス名、リージョンなどの追加情報と共に Azure に照会します。Azure ポータルのシナリオは、Recovery Services コンテナーに何を格納するのかを指しています。ポリシーは、復旧ポイントを作成する頻度と時期のスケジュールです。ポリシーには、復旧ポイントの保持期間も含まれます。
+Before registering a VM with a vault, run the discovery process to ensure that any new virtual machines that have been added to the subscription are identified. The process queries Azure for the list of virtual machines in the subscription, along with additional information like the cloud service name and the region. In the Azure portal, scenario refers to what you are going to put into the recovery services vault. Policy is the schedule for how often and when recovery points are taken. Policy also includes the retention range for the recovery points.
 
-1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。Recovery Services コンテナーが開かれていなくても、Azure ポータルが表示されている場合は、ハブ メニューの **[参照]** をクリックします。
+1. If you already have a Recovery Services vault open, proceed to step 2. If you do not have a Recovery Services vault open, but are in the Azure portal, on the Hub menu, click **Browse**.
 
-  - リソース ボックスに「**Recovery Services**」と入力します。
-  - 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。**[Recovery Services コンテナー]** が表示されたら、それをクリックします。
+  - In the list of resources, type **Recovery Services**.
+  - As you begin typing, the list will filter based on your input. When you see **Recovery Services vaults**, click it.
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-vms-first-look-arm/browse-to-rs-vaults.png) <br/>
 
-    Recovery Services コンテナーの一覧が表示されます。
-  - Recovery Services コンテナーの一覧で、コンテナーを選択します。
+    The list of Recovery Services vaults appears.
+  - From the list of Recovery Services vaults, select a vault.
 
-    選択したコンテナーのダッシュボードが開きます。
+    The selected vault dashboard opens.
 
     ![Open vault blade](./media/backup-azure-vms-first-look-arm/vault-settings.png)
 
-2. コンテナーのダッシュボード メニューの **[バックアップ]** をクリックして、[バックアップ] ブレードを開きます。
+2. From the vault dashboard menu click **Backup** to open the Backup blade.
 
     ![Open Backup blade](./media/backup-azure-vms-first-look-arm/backup-button.png)
 
-    ブレードを開くと、Backup サービスがサブスクリプション内の新しい VM を検索します。
+    When the blade opens, the Backup service searches for any new VMs in the subscription.
 
     ![Discover VMs](./media/backup-azure-vms-first-look-arm/discovering-new-vms.png)
 
-3. [バックアップ] ブレードで、**[バックアップの目標]** をクリックして、[バックアップの目標] ブレードを開きます。
+3. On the Backup blade, click **Backup goal** to open the Backup Goal blade.
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-one.png)
 
-4. [バックアップの目標] ブレードで、**[ワークロードはどこで実行されていますか]** を [Azure] に、**[What do you want to backup (バックアップ対象)]** を [仮想マシン] に設定し、**[OK]** をクリックします。
+4. On the Backup Goal blade, set **Where is your workload running** to Azure and  **What do you want to backup** to Virtual machine, then click **OK**.
 
-    [Backup Goal]\(バックアップの目標) ブレードが閉じ、[バックアップ ポリシー] ブレードが開きます。
+    The Backup Goal blade closes and the Backup policy blade opens.
 
     ![Open Scenario blade](./media/backup-azure-vms-first-look-arm/select-backup-goal-two.png)
 
-5. [バックアップ ポリシー] ブレードで、コンテナーに適用するバックアップ ポリシーを選択し、**[OK]** をクリックします。
+5. On the Backup policy blade, select the backup policy you want to apply to the vault and click **OK**.
 
     ![Select backup policy](./media/backup-azure-vms-first-look-arm/setting-rs-backup-policy-new.png)
 
-    既定のポリシーの詳細が一覧表示されます。新しいポリシーを作成する場合は、ドロップダウン メニューの **[新規作成]** を選択します。このドロップダウン メニューでは、スナップショットの作成時刻を午後 7 時などに切り替えることもできます。バックアップ ポリシーを定義する手順については、「[バックアップ ポリシーの定義](backup-azure-vms-first-look-arm.md#defining-a-backup-policy)」を参照してください。**[OK]** をクリックすると、バックアップ ポリシーがコンテナーに関連付けられます。
+    The details of the default policy are listed in the details. If you want to create a new policy, select **Create New** from the drop-down menu. The drop-down menu also provides an option to switch the time when the snapshot is taken, to 7PM. For instructions on defining a backup policy, see [Defining a backup policy](backup-azure-vms-first-look-arm.md#defining-a-backup-policy). Once you click **OK**, the backup policy is associated with the vault.
 
-    次に、コンテナーに関連付ける VM を選択します。
+    Next choose the VMs to associate with the vault.
 
-6. 指定したポリシーに関連付ける仮想マシンを選択し、**[選択]** をクリックします。
+6. Choose the virtual machines to associate with the specified policy and click **Select**.
 
     ![Select workload](./media/backup-azure-vms-first-look-arm/select-vms-to-backup-new.png)
 
-    目的の VM が表示されない場合は、Recovery Services コンテナーと同じ Azure の場所にその VM が存在することを確認します。
+    If you do not see the desired VM, check that it exists in the same Azure location as the Recovery Services vault.
 
-7. コンテナーの設定をすべて定義したところで、[バックアップ] ブレードで、ページの下部にある **[バックアップの有効化]** をクリックします。これにより、ポリシーがコンテナーと VM にデプロイされます。
+7. Now that you have defined all settings for the vault, in the Backup blade click **Enable Backup** at the bottom of the page. This deploys the policy to the vault and the VMs.
 
     ![Enable Backup](./media/backup-azure-vms-first-look-arm/enable-backup-settings-new.png)
 
-準備作業の次の段階は、VM エージェントのインストール、または VM エージェントがインストールされていることの確認です。
+The next phase in preparation is installing the VM Agent or making sure the VM Agent is installed.
 
 
-## 仮想マシンに VM エージェントをインストールする
+## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Install the VM Agent on the virtual machine
 
-バックアップ拡張機能を動作させるには、Azure VM エージェントを Azure 仮想マシンにインストールする必要があります。VM を Azure ギャラリーから作成した場合、VM エージェントは既に仮想マシンに存在します。この情報は、使用している VM が Azure ギャラリーから作成したものでは "*なく*"、たとえば、オンプレミスのデータ センターから移行したものである場合に適用されます。このような場合、仮想マシンを保護するためには VM エージェントをインストールする必要があります。
+The Azure VM Agent must be installed on the Azure virtual machine for the Backup extension to work. If your VM was created from the Azure gallery, then the VM Agent is already present on the virtual machine. This information is provided for the situations where you are *not* using a VM created from the Azure gallery - for example you migrated a VM from an on-premises datacenter. In such a case, the VM Agent needs to be installed in order to protect the virtual machine.
 
-詳細については、[VM エージェント](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409)と [VM エージェントのインストール方法](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md)に関するページを参照してください。
+Learn about the [VM Agent](https://go.microsoft.com/fwLink/?LinkID=390493&clcid=0x409) and [how to install the VM Agent](../virtual-machines/virtual-machines-windows-classic-manage-extensions.md).
 
-Azure VM のバックアップで問題が発生する場合は、Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください (次の表を参照)。カスタム VM を作成した場合は、仮想マシンをプロビジョニングする前に、[**[VM エージェントのインストール]** チェック ボックスがオンになっていることを確認](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md)してください。
+If you have problems backing up the Azure VM, check that the Azure VM Agent is correctly installed on the virtual machine (see the table below). If you created a custom VM, [ensure that the **Install the VM Agent** check box is selected](../virtual-machines/virtual-machines-windows-classic-agents-and-extensions.md) before the virtual machine is provisioned.
 
-次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
+The following table provides additional information about the VM Agent for Windows and Linux VMs.
 
-| **操作** | **Windows** | **Linux** |
+| **Operation** | **Windows** | **Linux** |
 | --- | --- | --- |
-| VM エージェントのインストール | <li>[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 | <li>GitHub から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent)をインストールします。インストールを実行するには、管理者特権が必要です。<li>[VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。 |
-| VM エージェントの更新 | VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 | [Linux VM エージェントの更新](../virtual-machines-linux-update-agent.md)に関する手順に従います。<br>VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。 |
-| VM エージェントのインストールの検証 | <li>Azure VM で *C:\\WindowsAzure\\Packages* フォルダーに移動します。<li>WaAppAgent.exe ファイルを探します。<li> このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。 | 該当なし |
+| Installing the VM Agent | <li>Download and install the [agent MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). You will need Administrator privileges to complete the installation. <li>[Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed. | <li> Install the latest [Linux agent](https://github.com/Azure/WALinuxAgent) from GitHub. You will need Administrator privileges to complete the installation. <li> [Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed. |
+| Updating the VM Agent | Updating the VM Agent is as simple as reinstalling the [VM Agent binaries](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Ensure that no backup operation is running while the VM agent is being updated. | Follow the instructions on [updating the Linux VM Agent ](../virtual-machines-linux-update-agent.md). <br>Ensure that no backup operation is running while the VM Agent is being updated. |
+| Validating the VM Agent installation | <li>Navigate to the *C:\WindowsAzure\Packages* folder in the Azure VM. <li>You should find the WaAppAgent.exe file present.<li> Right-click the file, go to **Properties**, and then select the **Details** tab. The Product Version field should be 2.6.1198.718 or higher. | N/A |
 
 
-### バックアップ拡張機能
+### <a name="backup-extension"></a>Backup extension
 
-VM エージェントが仮想マシンにインストールされると、Azure Backup サービスによって VM エージェントにバックアップ拡張機能がインストールされます。Azure Backup サービスは、バックアップ拡張機能のアップグレードと修正プログラムの適用をシームレスに実行します。
+Once the VM Agent is installed on the virtual machine, the Azure Backup service installs the backup extension to the VM Agent. The Azure Backup service seamlessly upgrades and patches the backup extension.
 
-バックアップ拡張機能は、VM が実行されているかどうかにかかわらず、Backup サービスによってインストールされます。VM が実行されている場合は、アプリケーション整合性復旧ポイントを取得できる可能性が最も高くなります。ただし、Azure Backup サービスは、VM がオフになっている場合でも VM のバックアップを続行しますが、拡張機能はインストールされない可能性があります。これはオフライン VM と呼ばれます。この場合、復旧ポイントは、"*クラッシュ整合性*" 復旧ポイントになります。
+The backup extension is installed by the Backup service whether or not the VM is running. A running VM provides the greatest chance of getting an application-consistent recovery point. However, the Azure Backup service continues to back up the VM even if it is turned off, and the extension could not be installed. This is known as Offline VM. In this case, the recovery point will be *crash consistent*.
 
 
-## ネットワーク接続
+## <a name="network-connectivity"></a>Network connectivity
 
-拡張機能が VM スナップショットを管理するためには、Azure のパブリック IP アドレスへの接続が必要です。適切なインターネット接続を利用できない場合、VM からの HTTP 要求はタイムアウトになり、バックアップ操作は失敗します。(たとえば、ネットワーク セキュリティ グループ (NSG) を使用して) デプロイにアクセス制限が適用されている場合は、次のいずれかのオプションを選択して、バックアップ トラフィックの明確なパスを指定する必要があります。
+In order to manage the VM snapshots, the backup extension needs connectivity to the Azure public IP addresses. Without the right Internet connectivity, the virtual machine's HTTP requests time out and the backup operation fails. If your deployment has access restrictions in place (through a network security group (NSG), for example), then choose one of these options for providing a clear path for backup traffic:
 
-- [Azure データ センターの IP の範囲をホワイトリストに登録する](http://www.microsoft.com/ja-JP/download/details.aspx?id=41653) - IP アドレスをホワイトリストに登録する手順に関する記事を参照してください。
-- トラフィックをルーティングする HTTP プロキシ サーバーをデプロイする。
+- [Whitelist the Azure datacenter IP ranges](http://www.microsoft.com/en-us/download/details.aspx?id=41653) - see the article for instructions on how to whitelist the IP addresses.
+- Deploy an HTTP proxy server for routing traffic.
 
-どのオプションを使用するか決める場合は、次に示す管理の容易さ、細かな制御、およびコストの間のトレードオフを考慮します。
+When deciding which option to use, the trade-offs are between manageability, granular control, and cost.
 
-|オプション|長所|短所|
+|Option|Advantages|Disadvantages|
 |------|----------|-------------|
-|IP 範囲をホワイトリストに登録する| 追加のコストが発生しない。<br><br>NSG でアクセスを開くには、<i>Set-AzureNetworkSecurityRule</i> コマンドレットを使用する。 | 影響を受ける IP 範囲が時間の経過と共に変化するため、管理が複雑である。<br><br>Storage だけでなく Azure 全体へのアクセスを提供する。|
-|HTTP プロキシ| 許可するストレージ URL をプロキシで詳細に制御可能。<br>VM への単一ポイントのインターネット アクセス。<br>Azure の IP アドレスの変更による影響を受けない。| プロキシ ソフトウェアで VM を実行するための追加のコストが発生する。|
+|Whitelist IP ranges| No additional costs.<br><br>For opening access in an NSG, use the <i>Set-AzureNetworkSecurityRule</i> cmdlet. | Complex to manage as the impacted IP ranges change over time.<br><br>Provides access to the whole of Azure, and not just Storage.|
+|HTTP proxy| Granular control in the proxy over the storage URLs allowed.<br>Single point of Internet access to VMs.<br>Not subject to Azure IP address changes.| Additional costs for running a VM with the proxy software.|
 
-### Azure データセンターの IP 範囲をホワイトリストに登録する
+### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Whitelist the Azure datacenter IP ranges
 
-Azure データ センターの IP 範囲をホワイトリストに登録する場合、IP 範囲の詳細と手順については、[Azure の Web サイト](http://www.microsoft.com/ja-JP/download/details.aspx?id=41653)を参照してください。
+To whitelist the Azure datacenter IP ranges, please see the [Azure website](http://www.microsoft.com/en-us/download/details.aspx?id=41653) for details on the IP ranges, and instructions.
 
-### VM のバックアップに HTTP プロキシを使用する
-VM をバックアップする際、バックアップ拡張機能は HTTPS API を使用してスナップショット管理コマンドを Azure Storage に送信します。パブリック インターネットにアクセスできるように構成されたコンポーネントは HTTP プロキシのみであるため、HTTP プロキシ経由でバックアップ拡張機能のトラフィックをルーティングします。
+### <a name="using-an-http-proxy-for-vm-backups"></a>Using an HTTP proxy for VM backups
+When backing up a VM, the backup extension on the VM sends the snapshot management commands to Azure Storage using an HTTPS API. Route the backup extension traffic through the HTTP proxy since it is the only component configured for access to the public Internet.
 
->[AZURE.NOTE] 使用するプロキシ ソフトウェアについて推奨事項はありません。以降の構成手順と互換性があるプロキシを選択してください。
+>[AZURE.NOTE] There is no recommendation for the proxy software that should be used. Ensure that you pick a proxy that is compatible with the configuration steps below.
 
-次の図は、HTTP プロキシを使用するために必要な 3 つの構成手順を示しています。
+The example image below shows the three configuration steps necessary to use an HTTP proxy:
 
-- アプリケーション VM は、パブリック インターネット宛てのすべての HTTP トラフィックをプロキシ VM 経由でルーティングします。
-- プロキシ VM では、仮想ネットワーク内の VM からの着信トラフィックを許可します。
-- NSF ロックダウンと呼ばれるネットワーク セキュリティ グループ (NSG) には、プロキシ VM からの発信インターネット トラフィックを許可するセキュリティ規則が必要です。
+- App VM routes all HTTP traffic bound for the public Internet through Proxy VM.
+- Proxy VM allows incoming traffic from VMs in the virtual network.
+- The Network Security Group (NSG) named NSF-lockdown needs a security rule allowing outbound Internet traffic from Proxy VM.
 
-![HTTP プロキシ デプロイメントを使用した NSG の図](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
+![NSG with HTTP proxy deployment diagram](./media/backup-azure-vms-prepare/nsg-with-http-proxy.png)
 
-HTTP プロキシを使用してパブリック インターネットとの通信を行うには、次の手順を実行します。
+To use an HTTP proxy to communicating to the public Internet, follow these steps:
 
-#### 手順 1.発信方向のネットワーク接続を構成する
+#### <a name="step-1.-configure-outgoing-network-connections"></a>Step 1. Configure outgoing network connections
 
-###### Windows マシンの場合
-次の手順により、ローカル システム アカウントのプロキシ サーバー構成が設定されます。
+###### <a name="for-windows-machines"></a>For Windows machines
+This will setup proxy server configuration for Local System Account.
 
-1. [PsExec](https://technet.microsoft.com/sysinternals/bb897553) をダウンロードします。
-2. 管理者特権のプロンプトで、次のコマンドを実行します。
+1. Download [PsExec](https://technet.microsoft.com/sysinternals/bb897553)
+2. Run following command from elevated prompt,
 
      ```
      psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"
      ```
-     Internet Explorer のウィンドウが開きます。
-3. [ツール]、[インターネット オプション]、[接続]、[LAN の設定] の順に進みます。
-4. システム アカウントのプロキシ設定を確認します。プロキシの IP アドレスとポートを設定します。
-5. Internet Explorer を閉じます。
+     It will open internet explorer window.
+3. Go to Tools -> Internet Options -> Connections -> LAN settings.
+4. Verify proxy settings for System account. Set Proxy IP and port.
+5. Close Internet Explorer.
 
-これにより、コンピューター全体のプロキシ構成が設定され、すべての発信 HTTP/ HTTPS トラフィックに使用されます。
+This will set up a machine-wide proxy configuration, and will be used for any outgoing HTTP/HTTPS traffic.
 
-現在のユーザー アカウント (ローカル システム アカウントではなく) にプロキシ サーバーを設定した場合は、次のスクリプトを使用して、SYSTEMACCOUNT にそれらを適用します。
+If you have setup a proxy server on a current user account(not a Local System Account), use the following script to apply them to SYSTEMACCOUNT:
 
 ```
    $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
@@ -256,51 +257,51 @@ HTTP プロキシを使用してパブリック インターネットとの通�
    Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
 ```
 
->[AZURE.NOTE] プロキシ サーバーのログに "(407) プロキシ認証が必要です" というメッセージが記録されている場合は、認証が正しく設定されているか確認します。
+>[AZURE.NOTE] If you observe "(407) Proxy Authentication Required" in proxy server log, check your authentication is setup correctly.
 
-######Linux マシンの場合
+######<a name="for-linux-machines"></a>For Linux machines
 
-次の行を ```/etc/environment``` ファイルに追加します。
+Add the following line to the ```/etc/environment``` file:
 
 ```
 http_proxy=http://<proxy IP>:<proxy port>
 ```
 
-次の行を ```/etc/waagent.conf``` ファイルに追加します。
+Add the following lines to the ```/etc/waagent.conf``` file:
 
 ```
 HttpProxy.Host=<proxy IP>
 HttpProxy.Port=<proxy port>
 ```
 
-#### 手順 2.プロキシ サーバーで着信接続を許可する
+#### <a name="step-2.-allow-incoming-connections-on-the-proxy-server:"></a>Step 2. Allow incoming connections on the proxy server:
 
-1. プロキシ サーバーで Windows ファイアウォールを開きます。ファイアウォールにアクセスする最も簡単な方法は、"セキュリティが強化された Windows ファイアウォール" を検索することです。
+1. On the proxy server, open Windows Firewall. The easiest way to access the firewall is to search for Windows Firewall with Advanced Security.
 
-    ![ファイアウォールを開く](./media/backup-azure-vms-prepare/firewall-01.png)
+    ![Open the Firewall](./media/backup-azure-vms-prepare/firewall-01.png)
 
-2. [Windows ファイアウォール] ダイアログ ボックスで、**[受信の規則]** を右クリックし、**[新しい規則...]** をクリックします。
+2. In the Windows Firewall dialog, right-click  **Inbound Rules** and click **New Rule...**.
 
-    ![新しいルールの作成](./media/backup-azure-vms-prepare/firewall-02.png)
+    ![Create a new rule](./media/backup-azure-vms-prepare/firewall-02.png)
 
-3. **新規の受信の規則ウィザード**の **[規則の種類]** で **[カスタム]** を選択し、**[次へ]** をクリックします。
-4. **プログラム**の選択ページで、**[すべてのプログラム]** を選択し、**[次へ]** をクリックします。
+3. In the **New Inbound Rule Wizard**, choose the **Custom** option for the **Rule Type** and click **Next**.
+4. On the page to select the **Program**, choose **All Programs** and click **Next**.
 
-5. **[プロトコルおよびポート]** ページで、次の情報を入力して、**[次へ]** をクリックします。
+5. On the **Protocol and Ports** page, enter the following information and click **Next**:
 
-    ![新しいルールの作成](./media/backup-azure-vms-prepare/firewall-03.png)
+    ![Create a new rule](./media/backup-azure-vms-prepare/firewall-03.png)
 
-    - *[プロトコルの種類]* では、*[TCP]* を選択します。
-    - *[ローカル ポート]* では、*[特定のポート]* を選択し、下にあるフィールドで、構成済みの ```<Proxy Port>``` を指定します。
-    - *[リモート ポート]* では、*[すべてのポート]* を選択します。
+    - for *Protocol type* choose *TCP*
+    - for *Local port* choose *Specific Ports*, in the field below specify the ```<Proxy Port>``` that has been configured.
+    - for *Remote port* select *All Ports*
 
-    ウィザードの残りの部分では、[次へ] をクリックして最後まで進んだら、この規則に名前を付けます。
+    For the rest of the wizard, click all the way to the end and give this rule a name.
 
-#### 手順 3.NSG に例外の規則を追加する
+#### <a name="step-3.-add-an-exception-rule-to-the-nsg:"></a>Step 3. Add an exception rule to the NSG:
 
-Azure PowerShell コマンド プロンプトで、次のコマンドを入力します。
+In an Azure PowerShell command prompt, enter the following command:
 
-次のコマンドは、例外を NSG に追加します。この例外により、10.0.0.5 の任意のポートから、ポート 80 (HTTP) または 443 (HTTPS) 上の任意のインターネット アドレスに TCP トラフィックを送信できます。パブリック インターネットで特定のポートが必要な場合は、必ずそのポートも ```-DestinationPortRange``` に追加します。
+The following command adds an exception to the NSG. This exception allows TCP traffic from any port on 10.0.0.5 to any Internet address on port 80 (HTTP) or 443 (HTTPS). If you require a specific port in the public Internet, be sure to add that port to the ```-DestinationPortRange``` as well.
 
 ```
 Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
@@ -308,19 +309,23 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 ```
 
 
-*これらの手順では、この例の特定の名前と値を使用しています。実際のコードに対して詳細の入力、切り取り、貼り付けを行う場合は、実際のデプロイの名前と値を使用してください。*
+*These steps use specific names and values for this example. Please use the names and values for your deployment when entering, or cutting and pasting details into your code.*
 
 
-これでネットワークに接続できることがわかったので、VM をいつでもバックアップすることができます。[Resource Manager でデプロイされた VM のバックアップ](backup-azure-arm-vms.md)に関するページをご覧ください。
+Now that you know you have network connectivity, you are ready to back up your VM. See [Back up Resource Manager-deployed VMs](backup-azure-arm-vms.md).
 
-## 疑問がある場合
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、[フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
+## <a name="questions?"></a>Questions?
+If you have questions, or if there is any feature that you would like to see included, [send us feedback](http://aka.ms/azurebackup_feedback).
 
-## 次のステップ
-これで VM をバックアップするために環境の準備が整いました。次のステップとして、バックアップの作成を行ってください。計画に関する記事で、VM のバックアップについて詳細を説明します。
+## <a name="next-steps"></a>Next steps
+Now that you have prepared your environment for backing up your VM, your next logical step is to create a backup. The planning article provides more detailed information about backing up VMs.
 
-- [仮想マシンのバックアップ](backup-azure-vms.md)
-- [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
-- [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
+- [Back up virtual machines](backup-azure-vms.md)
+- [Plan your VM backup infrastructure](backup-azure-vms-introduction.md)
+- [Manage virtual machine backups](backup-azure-manage-vms.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

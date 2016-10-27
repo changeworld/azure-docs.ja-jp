@@ -1,10 +1,10 @@
 <properties 
-    pageTitle="Azure RemoteApp で使用されるネットワーク帯域幅 - 一般的なガイドライン | Microsoft Azure"
-	description="Azure RemoteApp コレクションおよびアプリで使用されるネットワーク帯域幅に関する基本的なガイドラインを紹介します。"
-	services="remoteapp"
-	documentationCenter="" 
-	authors="lizap" 
-	manager="mbaldwin" />
+    pageTitle="Azure RemoteApp network bandwidth - general guidelines | Microsoft Azure"
+    description="Understand some basic network bandwidth guidelines for your Azure RemoteApp collections and apps."
+    services="remoteapp"
+    documentationCenter="" 
+    authors="lizap" 
+    manager="mbaldwin" />
 
 <tags 
     ms.service="remoteapp" 
@@ -15,35 +15,39 @@
     ms.date="08/15/2016" 
     ms.author="elizapo" />
     
-# Azure RemoteApp ネットワークで使用される帯域幅 - 一般的なガイドライン (自分でテストできない場合)
+
+# <a name="azure-remoteapp-network-bandwidth---general-guidelines-(if-you-can't-test-your-own)"></a>Azure RemoteApp network bandwidth - general guidelines (if you can't test your own)
 
 > [AZURE.IMPORTANT]
-Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
+> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
 
-Azure RemoteApp の[ネットワーク帯域幅テスト](remoteapp-bandwidthtests.md)を実施する余裕がない場合は、下記の汎用的なガイドラインを参考に、ユーザーごとのネットワーク帯域幅を見積もることができます。
+If you do not have the time or capability to run the [network bandwidth tests](remoteapp-bandwidthtests.md) for Azure RemoteApp, here are some fairly generic guidelines that can help you estimate network bandwidth per user.
 
-以下のシナリオが混在している場合は、インターネットに接続された最新のアプリをリモート環境で利用するうえで、最低ネットワーク帯域幅が 10 MB/秒以下の環境はお勧めしません(ただし、既に説明したとおり、平均的なユーザー エクスペリエンスを上回る保証はありません)。
+If you have a mix of these scenarios, we don't recommend anything less than (or equal to) 10 MB/s as the MINIMUM network bandwidth for modern Internet-connected apps in a remote environment. (Although, as discussed, this will not guarantee a better than average user experience.)
 
-## 複雑な PowerPoint、単純な PowerPoint
+## <a name="complex-powerpoint,-simple-powerpoint"></a>Complex PowerPoint, simple PowerPoint
 
-Azure RemoteApp のパフォーマンスは、100 MB の LAN で最も高くなります。10 MB/秒のネットワーク プロファイルであれば、120 ミリ秒を超えるジッターが 5% を上回っていても、平均的なエクスペリエンスとなります。1 MB/秒の場合は状況が変わります。たとえば、スライド ショーの際に切り替えのアニメーションが見えなくなる可能性があります。フレームがスキップされるためです。
+Azure RemoteApp does best on 100 MB LAN. At the 10 MB/s network profile, when jitter above 120 ms is more than 5%, the user will see an average experience. At 1 MB/s the different is glaring - for example, in a slide show, the user might not see animated transitions at all because frames are skipped.
 
-## Internet Explorer、混合 PDF、PDF、テキスト
+## <a name="internet-explorer,-mixed-pdf,-pdf,-text"></a>Internet Explorer, mixed PDF, PDF, Text
 
-10 MB/秒のネットワーク プロファイルであれば、ほとんどの面で LAN に迫るユーザー エクスペリエンスとなります。1 MB/秒でも特に問題なく使えますが、画面上に画像がある状態でスクロールすると、ジッターが多少発生する可能性があります。
+10 MB/s network profile is close to LAN in most aspects. 1 MB/s will provide an OK experience, although there may be some jitter when a user scrolls while there are images on the screen.
 
-## Flash ビデオ (YouTube)
+## <a name="flash-video-(youtube)"></a>Flash video (YouTube)
 
-100 MB/秒の LAN で最も快適に視聴できますが、10 MB/秒でも問題ありません (この場合、フレーム レートは維持されますが、ジッターが増加します)。1 MB/秒では、ジッターがかなり増え、目立つようになります。
+100 MB/s LAN provides the best experience, while 10 MB/s is acceptable (meaning we keep up with the frame rate but jitter increases). At 1 MB/s, jitter is very high and noticeable.
 
-## Word の入力 (Word のリモート入力)
-こちらは低い帯域幅での使用を想定しています。256 KB/秒で、LAN と同等の感覚で快適に使用できます。
+## <a name="word-typing-(word-remote-input)"></a>Word typing (Word remote input)
+This is a low-bandwidth usage scenario. At 256 KB/s we provide as good of an experience as LAN.
 
-## 詳細情報
-- [Estimate Azure RemoteApp network bandwidth usage (Azure RemoteApp で使用されるネットワーク帯域幅を推定する)](remoteapp-bandwidth.md)
+## <a name="learn-more"></a>Learn more
+- [Estimate Azure RemoteApp network bandwidth usage](remoteapp-bandwidth.md)
 
-- [Azure RemoteApp - ネットワーク帯域幅とエクスペリエンスの質はどのような関係にあるのか](remoteapp-bandwidthexperience.md)
+- [Azure RemoteApp - how do network bandwidth and quality of experience work together?](remoteapp-bandwidthexperience.md)
 
-- [Azure RemoteApp - 一般的なシナリオでのネットワークの使用帯域幅をテストする](remoteapp-bandwidthtests.md)
+- [Azure RemoteApp - tseting your network bandwidth usage with some common scenarios](remoteapp-bandwidthtests.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

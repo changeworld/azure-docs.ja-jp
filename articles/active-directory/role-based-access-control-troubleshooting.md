@@ -1,101 +1,106 @@
 <properties
-	pageTitle="ロール ベースのアクセス制御のトラブルシューティング | Microsoft Azure"
-	description="ロール ベースの Access Control のリソースに関する問題や質問に関する支援を得ることができます。"
-	services="azure-portal"
-	documentationCenter="na"
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+    pageTitle="Role based access control troubleshooting | Microsoft Azure"
+    description="Get help with issues or questions about Role Based Access Control resources."
+    services="azure-portal"
+    documentationCenter="na"
+    authors="kgremban"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/12/2016"
-	ms.author="kgremban"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/12/2016"
+    ms.author="kgremban"/>
 
-# ロールベースのアクセス制御のトラブルシューティング
 
-## はじめに
+# <a name="role-based-access-control-troubleshooting"></a>Role-Based Access Control troubleshooting
 
-[ロールベースのアクセス制御](role-based-access-control-configure.md)は強力な機能で、これにより Azure のリソースに対するきめ細かいアクセスを委任できます。つまり、まさに必要な権限を特定の人物に確実に付与できます。しかし、Azure リソースのリソース モデルが複雑で、どのようなアクセス許可を付与すればよいのか正確に把握しにくい場合もあります。
+## <a name="introduction"></a>Introduction
 
-このドキュメントでは、Azure ポータルでいくつかのロールを使用する場合に想定されることについて説明します。次の 3 つのロールは、すべてのリソースの種類に対応しています。
+[Role-Based Access Control](role-based-access-control-configure.md) is a powerful feature that allows you to delegate fine-grained access to resources in Azure. This means you can feel confident granting a specific person the right to use exactly what they need, and no more. However, at times the resource model for Azure resources can be complicated and it can be difficult to understand exactly what you are granting permissions to.
 
-- 所有者
-- 共同作成者
-- 閲覧者
+This document will let you know what to expect when using some of the roles in the Azure portal. These three roles cover all resource types:
 
-所有者と共同作成者には管理操作に対するフル アクセス許可がありますが、共同作成者は、他のユーザーやグループにアクセス権を付与できません。閲覧者のロールはさらに興味深いので、以下で詳しく考慮します。アクセス権を付与する方法の詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」をご覧ください。
+- Owner  
+- Contributor  
+- Reader  
 
-## アプリ サービスのワークロード
+Owners and contributors both have full access to the management experience, but a contributor can’t give access to other users or groups. Things get a little more interesting with the reader role, so that’s where we’ll spend some time. See the [Role-Based Access Control get-started article](role-based-access-control-configure.md) for details on how to grant access.
 
-### 書き込みアクセス機能
+## <a name="app-service-workloads"></a>App service workloads
 
-1 つの Web アプリに対する読み取り専用アクセスをユーザーに付与する場合、予期しない機能が無効になることがあります。以下の管理機能には、Web アプリに対する**書き込み**アクセス権 (共同作成者または所有者) が必要なので、読み取り専用のシナリオでは利用できません。
+### <a name="write-access-capabilities"></a>Write access capabilities
 
-- コマンド (開始や停止など)
-- 一般的な構成、スケール設定、バックアップ設定、監視設定などの設定の変更。
-- 発行資格情報およびその他の機密情報 (アプリケーション設定や接続文字列など) へのアクセス。
-- ストリーミング ログ
-- 診断ログの構成
-- コンソール (コマンド プロンプト)
-- アクティブな最新のデプロイ (ローカル Git の継続的デプロイの場合)
-- 所要時間の見積もり
-- Web テスト
-- 仮想ネットワーク (書き込みアクセス権を持つユーザーが仮想ネットワークを事前に構成している場合のみ閲覧者が参照できる)。
+If you grant a user read-only access to a single web app, some features are disabled that you might not expect. The following management capabilities require **write** access to a web app (either Contributor or Owner), and won’t be available in any read-only scenario.
 
-これらのいずれかのタイルにアクセスできない場合、管理者に問い合わせて Web アプリに対する共同作成者アクセス権を得る必要があります。
+- Commands (e.g. start, stop, etc.)
+- Changing settings like general configuration, scale settings, backup settings, and monitoring settings
+- Accessing publishing credentials and other secrets like app settings and connection strings
+- Streaming logs
+- Diagnostic logs configuration
+- Console (command prompt)
+- Active and recent deployments (for local git continuous deployment)
+- Estimated spend
+- Web tests
+- Virtual network (only visible to a reader if a virtual network has previously been configured by a user with write access).
 
-### 関連リソースの処理
+If you can't access any of these tiles, you'll need to ask your administrator for Contributor access to the web app.
 
-相互作用する数種類のリソースがあると、Web アプリは複雑になります。複数の Web サイトが対になっている代表的なリソース グループを以下に示します。
+### <a name="dealing-with-related-resources"></a>Dealing with related resources
 
-![Web アプリ リソース グループ](./media/role-based-access-control-troubleshooting/website-resource-model.png)
+Web apps are complicated by the presence of a few different resources that interplay. Here is a typical resource group with a couple websites:
 
-結果として、Web アプリのみに対するアクセス権を付与すると、Azure ポータルの Web サイト ブレード上の多数の機能が使用できなくなります。
+![Web app resource group](./media/role-based-access-control-troubleshooting/website-resource-model.png)
 
-以下の項目には、Web サイトに対応する **App Service プラン**への**書き込み**アクセス権が必要です。
+As a result, if you grant someone access to just the web app, much of the functionality on the website blade in the Azure portal will be disabled.
 
-- Web アプリの価格レベル (Free または Standard) の表示
-- スケールの構成 (インスタンスの数、仮想マシンのサイズ、自動スケールの設定)
-- クォータ (ストレージ、帯域幅、CPU)
+These items require **write** access to the **App Service plan** that corresponds to your website:  
 
-以下の項目には、Web サイトが含まれる**リソース グループ**全体に対する**書き込み**アクセス権が必要です。
+- Viewing the web app’s pricing tier (Free or Standard)  
+- Scale configuration (number of instances, virtual machine size, autoscale settings)  
+- Quotas (storage, bandwidth, CPU)  
 
-- SSL 証明書とバインド (SSL 証明書は同じリソース グループや地理的な場所にあるサイト間で共有できるため)
-- アラート ルール
-- 自動スケールの設定
-- Application Insights コンポーネント
-- Web テスト
+These items require **write** access to the whole **Resource group** that contains your website:  
 
-## 仮想マシンのワークロード
+- SSL Certificates and bindings (This is because SSL certificates can be shared between sites in the same resource group and geo-location)  
+- Alert rules  
+- Autoscale settings  
+- Application insights components  
+- Web tests  
 
-Web アプリと同様、仮想マシン ブレード上の機能にも、仮想マシンかリソース グループ内の他のリソースに対する書き込みアクセス権が必要なものがあります。
+## <a name="virtual-machine-workloads"></a>Virtual machine workloads
 
-仮想マシンは、ドメイン名、仮想ネットワーク、ストレージ アカウント、アラート ルールなどのリソースと関連しています。
+Much like with web apps, some features on the virtual machine blade require write access to the virtual machine, or to other resources in the resource group.
 
-以下の項目には、**仮想マシン**に対する**書き込み**アクセス権が必要です。
+Virtual machines are related to Domain names, virtual networks, storage accounts, and alert rules.
 
-- エンドポイント
-- IP アドレス
-- ディスク
-- 拡張機能
+These items require **write** access to the **Virtual machine**:
 
-以下には、**仮想マシン**と、その仮想マシンが含まれる**リソース グループ** (とドメイン名) の両方に対する**書き込み**アクセス権が必要です。
+- Endpoints  
+- IP addresses  
+- Disks  
+- Extensions  
 
-- 可用性セット
-- 負荷分散セット
-- アラート ルール
+These require **write** access to both the **Virtual machine**, and the **Resource group** (along with the Domain name) that it is in:  
 
-これらのいずれかのタイルにアクセスできない場合、管理者に問い合わせてリソース グループに対する共同作成者アクセス権を得る必要があります。
+- Availability set  
+- Load balanced set  
+- Alert rules  
 
-## 関連項目
-- [ロールベースのアクセス制御](role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。
-- [組み込みのロール](role-based-access-built-in-roles.md): RBAC の標準ロールの詳細について説明します。
-- [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
-- [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
+If you can't access any of these tiles, you'll need to ask your administrator for Contributor access to the Resource group.
 
-<!---HONumber=AcomDC_0713_2016-->
+## <a name="see-more"></a>See more
+- [Role Based Access Control](role-based-access-control-configure.md): Get started with RBAC in the Azure portal.
+- [Built-in roles](role-based-access-built-in-roles.md): Get details about the roles that come standard in RBAC.
+- [Custom roles in Azure RBAC](role-based-access-control-custom-roles.md): Learn how to create custom roles to fit your access needs.
+- [Create an access change history report](role-based-access-control-access-change-history-report.md): Keep track of changing role assignments in RBAC.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

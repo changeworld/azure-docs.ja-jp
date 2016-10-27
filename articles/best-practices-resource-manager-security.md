@@ -1,53 +1,52 @@
 <properties
-	pageTitle="リソース マネージャーのセキュリティの考慮事項 | Microsoft Azure"
-	description="Azure リソース マネージャーでキーとシークレット、ロールベースのアクセス制御、ネットワーク セキュリティ グループを使用してリソースをセキュリティで保護するための推奨方法を示します。"
-	services="azure-resource-manager"
-	documentationCenter=""
-	authors="george-moore"
-	manager="georgem"
-	editor="tysonn"/>
+    pageTitle="Security considerations for Resource Manager | Microsoft Azure"
+    description="Shows recommended approaches in Azure Resource Manager for securing resources with keys and secrets, role-based access control and network security groups."
+    services="azure-resource-manager"
+    documentationCenter=""
+    authors="george-moore"
+    manager="georgem"
+    editor="tysonn"/>
 
 <tags
-	ms.service="azure-resource-manager"
-	ms.workload="multiple"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/01/2016"
-	ms.author="georgem;tomfitz"/>
+    ms.service="azure-resource-manager"
+    ms.workload="multiple"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/01/2016"
+    ms.author="georgem;tomfitz"/>
 
 
-# Azure リソース マネージャーのセキュリティに関する考慮事項
 
-Azure リソース マネージャー テンプレートをセキュリティの側面から見た場合、考慮する必要がある項目として、キーとシークレット、ロールベースのアクセス制御、ネットワーク セキュリティ グループがあります。
+# <a name="security-considerations-for-azure-resource-manager"></a>Security considerations for Azure Resource Manager
 
-このトピックは、Azure リソース マネージャーのロールベースの Access Control (RBAC) に精通している読者を対象にしています。詳細については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
+When looking at aspects of security for your Azure Resource Manager templates, there are several areas to consider – keys and secrets, role-based access control, and network security groups.
 
-このトピックは大型のホワイト ペーパーの一部です。ペーパーの完全版を参照するには、[World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf) をダウンロードしてください。
+This topic assumes you are familiar with Role-Based Access Control (RBAC) in Azure Resource Manager. For more information, see [Azure Role-based Access Control](./active-directory/role-based-access-control-configure.md).
 
-## シークレットと証明書
+This topic is part of a larger whitepaper. To read the full paper, download [World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf).
 
-Azure Virtual Machines、Azure リソース マネージャー、および Azure Key Vault は完全に統合されていて、VM にデプロイされる証明書のセキュリティで保護された処理をサポートします。Azure Key Vault とリソース マネージャーを使用した VM シークレットと証明書の調整と格納は、次の利点を持つベスト プラクティスです。
+## <a name="secrets-and-certificates"></a>Secrets and certificates
 
-- テンプレートにはシークレットへの URI 参照のみが含まれます。つまり、実際のシークレットは、コード リポジトリ、構成リポジトリ、ソース コード リポジトリには存在しません。これにより、GitHub での収集ボットのような、内外のリポジトリへのキー フィッシング攻撃を防ぐことができます。
-- Key Vault に格納されたシークレットは、厳密な RBAC により信頼されたオペレーターの手で制御されます。信頼されたオペレーターが退職または異動すると、自身が Vault 内に作成したキーにアクセスできなくなります。
-- 資産はすべて、完全に区分されます。
-      - キーをデプロイするためのテンプレート
-      - キーを参照して VM をデプロイするためのテンプレート
-      - Vault 内の実際のキー マテリアル。テンプレート (およびアクション) は、職務を完全に分離するため、担当の RBAC ロールをそれぞれ別にすることができます。
-- デプロイ時の VM へのシークレットの読み込みは、Microsoft データセンターの範囲内での Azure ファブリックと Key Vault 間の直接チャネルを介して行われます。キーが Key Vault に格納されたら、データセンター外の信頼されていないチャネルを経由してキーを見ることはできません。
-- Key Vault は常に局所的であるため、シークレットは常に VM と同じローカリティ (および主権) を持ちます。グローバルの Key Vault はありません。
+Azure Virtual Machines, Azure Resource Manager and Azure Key Vault are fully integrated to provide support for the secure handling of certificates which are to be deployed in the VM.  Utilizing Azure Key Vault with Resource Manager to orchestrate and store VM secrets and certificates is a best practice and provides the following advantages:
 
-### デプロイからのキーの分離
+- The templates only contain URI references to the secrets, which means the actual secrets are not in code, configuration or source code repositories. This prevents key phishing attacks on internal or external repos, such as harvest-bots in GitHub.
+- Secrets stored in the Key Vault are under full RBAC control of a trusted operator.  If the trusted operator leaves the company or transfers within the company to a new group, they no longer have access to the keys they created in the Vault.
+- Full compartmentalization of all assets: - the templates to deploy the keys - the templates to deploy a VM with references to the keys - the actual key materials in the Vault.  
+  Each template (and action) can be under different RBAC roles for full separation of duties.
+- The loading of secrets into a VM at deployment time occurs via direct channel between the Azure Fabric and the Key Vault within the confines of the Microsoft datacenter.  Once the keys are in the Key Vault, they never see 'daylight' over an untrusted channel outside of the datacenter.  
+- Key Vaults are always regional, so the secrets always have locality (and sovereignty) with the VMs. There are no global Key Vaults.
 
-次のそれぞれに個別のテンプレートを維持することをお勧めします。
+### <a name="separation-of-keys-from-deployments"></a>Separation of keys from deployments
 
-1.	資格情報コンテナー (キー マテリアルが格納されます) の作成
-2.	VM のデプロイ (資格情報コンテナーに格納されたキーへの URI 参照を含みます)
+A best practice is to maintain separate templates for:
 
-一般的な企業シナリオでは、デプロイされたワークロード内の重要なシークレットにアクセスできる少人数の信頼されたオペレーターのグループと、それよりも少し大きなグループとして VM のデプロイを作成または更新できる開発者/運用担当者のグループを作ります。以下に、Azure Active Directory で現在認証されているユーザーの ID のコンテキストで新しい資格情報コンテナーを作成して構成する ARM テンプレートの例を示します。このユーザーには、この新しい Key Vault 内のキーの作成、削除、一覧表示、更新、バックアップ、復元、公開部分の取得を行う既定のアクセス許可があります。
+1.  Creation of vaults (which will contain the key material)
+2.  Deployment of the VMs (with URI references to the keys contained in the vaults)
 
-このテンプレートのほとんどのフィールドは見ればわかるようになっていますが、**enableVaultForDeployment** 設定には追加の背景情報が必要です。資格情報コンテナーには、他の Azure インフラストラクチャ コンポーネントによる既定の有効なアクセス許可がありません。この値を設定することにより、Azure Compute インフラストラクチャ コンポーネントがこの特定の名前付き資格情報コンテナーに読み取り専用でアクセスできます。したがって、企業の機密データを仮想マシンのシークレットとして同一の資格情報コンテナー内に混在させないことが推奨されます。
+A typical enterprise scenario is to have a small group of Trusted Operators who have access to critical secrets within the deployed workloads, with a broader group of dev/ops personnel who can create or update VM deployments.  Below is an example ARM template which creates and configures a new vault in the context of the currently authenticated user's identity in Azure Active Directory.  This user would have the default permission to create, delete, list, update, backup, restore, and get the public half of keys in this new key vault.
+
+While most of the fields in this template should be self-explanatory, the **enableVaultForDeployment** setting deserves more background: vaults do not have any default standing access by any other Azure infrastructure component. By setting this value, it allows the Azure Compute infrastructure components read-only access to this specific named vault. Therefore, a further best practice is to not comingle corporate sensitive data in the same vault as virtual machine secrets.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -117,9 +116,9 @@ Azure Virtual Machines、Azure リソース マネージャー、および Azure
         }]
     }
 
-資格情報コンテナーが作成されたら、次の手順は、新しい VM のデプロイ テンプレートでそのコンテナーを参照することです。上で説明したように、異なる開発/運用グループが VM のデプロイを管理し、そのグループは資格情報コンテナーに格納されているキーに直接アクセスできないようにすることがベスト プラクティスです。
+Once the vault is created, the next step is to reference that vault in the deployment template of a new VM.  As mentioned above, a best practice is to have a different dev/ops group manage VM deployments, with that group having no direct access to the keys as stored in the vault.
 
-下に示すテンプレートの一部は、より高次のデプロイ コンストラクトを構成します。これらはそれぞれ、オペレーターが直接制御していない非常に重要なシークレットを安全に参照します。
+The below template fragment would be composed into higher order deployment constructs, each safely and securely referencing highly-sensitive secrets which are not under the direct control of the operator.
 
     "vaultName": {
         "type": "string",
@@ -147,196 +146,205 @@ Azure Virtual Machines、Azure リソース マネージャー、および Azure
         }
     }
 
-テンプレートのデプロイ時に Key Vault の値をパラメーターとして渡す場合は、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」をご覧ください。
+To pass a value from a key vault as a parameter during deployment of a template, see [Pass secure values during deployment](resource-manager-keyvault-parameter.md).
 
-## サブスクリプション間の対話のサービス プリンシパル
+## <a name="service-principals-for-cross-subscription-interactions"></a>Service principals for cross-subscription interactions
 
-サービス ID は Active Directory 内でサービス プリンシパルによって表されます。サービス プリンシパルは、企業の IT 組織、システム インテグレーター (SI)、クラウド サービス ベンダー (CSV) における主要なシナリオの有効化の中心になります。具体的には、これらの組織のいずれかが、ある顧客のサブスクリプションとやり取りする必要があるユース ケースがあります。
+Service identities are represented by service principals in Active Directory. Service principals will be at the center of enabling key scenarios for Enterprise IT organizations, System Integrators (SI), and Cloud Service Vendors (CSV). Specifically, there will be use cases where one of these organizations will need to interact with the subscription of one of their customers.  
 
-顧客の環境やサブスクリプションにデプロイされたソリューションを監視するサービスを提供できます。この場合は、監視ソリューションで使用できるように、顧客のアカウント内のログやその他のデータへのアクセスを取得する必要があります。企業の IT 組織やシステム インテグレーターの場合は、顧客独自のサブスクリプション内に、データ分析プラットフォームなどの機能をデプロイして管理するサービスを顧客に提供できます。
+Your organization could provide an offering that will monitor a solution deployed in your customers environment and subscription. In this case, you will need to get access to logs and other data within a customers account so that you can utilize it in your monitoring solution. If you're a corporate IT organization, a systems integrator, you may provide an offering to a customer where you will deploy and manage a capability for them, such as a data analytics platform, where the offering resides in the customers own subscription.
 
-これらのユース ケースでは、顧客のサブスクリプションのコンテキスト内でこれらの操作を実行するためのアクセス許可を付与された ID が必要になります。
+In these use cases, your organization would require an identity that could be given access to perform these actions within the context of a customer subscription.  
 
-これらのシナリオにより、顧客には次のような一連の考慮事項が発生します。
+These scenarios bring with them a certain set of considerations for your customer:
 
--	セキュリティ上の理由から、アクセスの範囲を特定の種類の操作 (読み取り専用アクセスなど) に設定することが必要になる場合があります。
--	デプロイされたリソースの提供にコストがかかるため、財務上の理由から、アクセスに対する同様の制約が必要になる場合があります。
--	セキュリティ上の理由から、アクセスの範囲を特定のリソース (ストレージ アカウント、環境またはソリューションを含むリソース グループ) のみに設定することが必要になる場合があります。
--	ベンダーとの関係が変わる可能性があるため、顧客は SI や CSV へのアクセスを有効または無効にする機能を希望します。
--	このアカウントに対する操作は課金に影響するため、顧客は課金の監査機能と説明責任のサポートを希望します。
--	コンプライアンスの観点から、顧客は自身の環境内でのシステム インテグレーターの動作を監査できることを希望します。
+-   For security reasons, access may need to be scoped to certain types of actions, e.g. read only access.
+-   As deployed resources are provided at a cost, there may be similar constraints on access required for financial reasons.
+-   For security reasons, access may need to be scoped only to a specific resource (storage accounts) or resources (resource group containing an environment or solution)
+-   As a relationship with a vendor may change, the customer will want to have the ability to enable/disable access to SI or CSV
+-   As actions against this account having billing implications, the customer desires support for auditability and accountability for billing.
+-   From a compliance perspective, the customer will want to be able to audit your behavior within their environment
 
-このような要件に対応するには、サービス プリンシパルと RBAC の組み合わせを使用します。
+A combination of a service principal and RBAC can be used to address these requirements.
 
-## ネットワーク セキュリティ グループ
+## <a name="network-security-groups"></a>Network security groups
 
-多くのシナリオには、仮想ネットワーク内の 1 つ以上の VM インスタンスに対するトラフィックの制御方法を指定する要件があります。ARM テンプレートのデプロイの一環として、ネットワーク セキュリティ グループ (NSG) を使用してこれを実現することができます。
+Many scenarios will have requirements that specify how traffic to one or more VM instances in your virtual network is controlled. You can use a Network Security Group (NSG) to do this as part of an ARM template deployment.
 
-ネットワーク セキュリティ グループは、サブスクリプションに関連付けられている最上位レベルのオブジェクトです。NSG には、VM インスタンスへのトラフィックを許可または拒否するアクセス制御ルールが含まれています。NSG のルールは、いつでも変更でき、変更は関連付けられているすべてのインスタンスに適用されます。NSG を使用するには、リージョン (場所) に関連付けられている仮想ネットワークが必要です。NSG は、アフィニティ グループに関連付けられている仮想ネットワークに対応していません。リージョン仮想ネットワークがない場合に、エンドポイントへのトラフィックを制御するには、[ネットワーク Access Control リスト (ACL)](./virtual-network/virtual-networks-acl.md) に関するページを参照してください。
+A network security group is a top-level object that is associated with your subscription. An NSG contains access control rules that allow or deny traffic to VM instances. The rules of an NSG can be changed at any time, and changes are applied to all associated instances. To use an NSG, you must have a virtual network that is associated with a region (location). NSGs are not compatible with virtual networks that are associated with an affinity group. If you don’t have a regional virtual network and you want to control traffic to your endpoints, please see [About Network Access Control Lists (ACLs)](./virtual-network/virtual-networks-acl.md).
 
-VM や仮想ネットワーク内のサブネットに NSG を関連付けることができます。VM に関連付けた場合、NSG は、VM インスタンスで送受信されるすべてのトラフィックに適用されます。仮想ネットワーク内のサブネットに適用した場合は、サブネット内のすべての VM インスタンスで送受信されるすべてのトラフィックに適用されます。VM またはサブネットは、1 つの NSG のみに関連付けることができます。各 NSG には、最大 200 のルールを含めることができます。サブスクリプションあたり 100 の NSG を割り当てることができます。
+You can associate an NSG with a VM, or to a subnet within a virtual network. When associated with a VM, the NSG applies to all the traffic that is sent and received by the VM instance. When applied to a subnet within your virtual network, it applies to all the traffic that is sent and received by all the VM instances in the subnet. A VM or subnet can be associated with only 1 NSG, but each NSG can contain up to 200 rules. You can have 100 NSGs per subscription.
 
->[AZURE.NOTE]  エンドポイント ベースの ACL とネットワーク セキュリティ グループは、同じ VM インスタンスではサポートされません。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[PowerShell を使用したエンドポイントの Access Control リスト (ACL) の管理](./virtual-network/virtual-networks-acl-powershell.md)を参照してください。
+>[AZURE.NOTE]  Endpoint-based ACLs and network security groups are not supported on the same VM instance. If you want to use an NSG and have an endpoint ACL already in place, first remove the endpoint ACL. For information about how to do this, see [Managing Access Control Lists (ACLs) for Endpoints by using PowerShell](./virtual-network/virtual-networks-acl-powershell.md).
 
-### ネットワーク セキュリティ グループのしくみ
+### <a name="how-network-security-groups-work"></a>How network security groups work
 
-ネットワーク セキュリティ グループは、エンドポイント ベースの ACL とは異なります。エンドポイントの ACL は、入力エンドポイントによって公開されるパブリック ポートでのみ動作します。NSG は 1 つまたは複数の VM インスタンスで動作し、VM 上の受信と送信のすべてのトラフィックを制御します。
+Network security groups are different than endpoint-based ACLs. Endpoint ACLs work only on the public port that is exposed through the Input endpoint. An NSG works on one or more VM instances and controls all the traffic that is inbound and outbound on the VM.
 
-ネットワーク セキュリティ グループには*名前*が割り当てられ、*リージョン* (サポートされている Azure の場所の 1 つ) に関連付けられ、わかりやすいラベルが付きます。受信と送信の 2 つのルールが含まれています。受信のルールは VM への受信パケットに適用され、送信のルールは、VM からの送信パケットに適用されます。ルールは、VM が配置されているサーバー コンピューターで適用されます。受信または送信パケットが許可されるためには、許可ルールに一致している必要があります。一致しない場合は、パケットは削除されます。
+A network security group has a *Name*, is associated with a *Region* (one of the supported Azure locations), and has a descriptive label. It contains two types of rules, Inbound and Outbound. The Inbound rules are applied on the incoming packets to a VM and the Outbound rules are applied to the outgoing packets from the VM.
+The rules are applied at the server machine where the VM is located. An incoming or outgoing packet must match an Allow rule to be permitted; otherwise, it’s dropped.
 
-ルールは、優先順位に従って処理されます。たとえば、優先順位の値が小さい (100 など) ルールは、優先順位の値が大きい (200 など) ルールより前に処理されます。一致が見つかると、それ以上のルールは処理されません。
+Rules are processed in the order of priority. For example, a rule with a lower priority number such as 100 is processed before rules with a higher priority numbers such as 200. Once a match is found, no more rules are processed.
 
-ルールでは、次のことを指定します。
+A rule specifies the following:
 
--	名前: ルールの一意識別子
--	種類: 受信/送信
--	優先順位: 100 ～ 4096 の整数 (ルールは値が小さいものから値が大きいものの順に処理されます)
--	発信元 IP アドレス: 発信元 IP 範囲の CIDR
--	発信元ポート範囲: 0 ～ 65536 の整数 (範囲)
--	宛先 IP の範囲: 宛先 IP 範囲の CIDR
--	宛先ポートの範囲: 0 ～ 65536 の整数 (範囲)
--	プロトコル: TCP、UDP、または "*"
--	アクセス: 許可または拒否
+-   Name: A unique identifier for the rule
+-   Type: Inbound/Outbound
+-   Priority: An integer between 100 and 4096 (rules processed from low to high)
+-   Source IP Address: CIDR of source IP range
+-   Source Port Range: An integer or range between 0 and 65536
+-   Destination IP Range: CIDR of the destination IP Range
+-   Destination Port Range: An integer or range between 0 and 65536
+-   Protocol: TCP, UDP or ‘\*’
+-   Access: Allow/Deny
 
-### 既定のルール
+### <a name="default-rules"></a>Default rules
 
-NSG には、既定のルールが含まれています。既定のルールは削除できませんが、割り当てられている優先順位は最も低いため、ルールを作成することで上書きできます。既定のルールでは、プラットフォームによって推奨される既定の設定が指定されています。次の既定のルールが示すように、仮想ネットワーク内で発信および着信するトラフィックについては、受信方向と送信方向の両方で許可されます。
+An NSG contains default rules. The default rules can't be deleted, but because they are assigned the lowest priority, they can be overridden by the rules that you create. The default rules describe the default settings recommended by the platform. As illustrated by the default rules below, traffic originating and ending in a virtual network is allowed both in Inbound and Outbound directions.
 
-インターネットへの接続は送信方向で許可されていますが、既定で、受信方向はブロックされています。既定のルールは、Azure Load Balancer が VM の正常性をプローブするのを許可します。NSG の下の VM または一連の VM が負荷分散セットに参加しない場合は、このルールを上書きできます。
+While connectivity to the Internet is allowed for outbound direction, it is by default blocked for inbound direction. A default rule allows the Azure load balancer to probe the health of a VM. You can override this rule if the VM or set of VMs under the NSG does not participate in the load balanced set.
 
-既定のルールを次の表に示します。
+The default rules are shown in the tables below.
 
-**受信の既定のルール**
+**Inbound default rules**
 
-名前 |	優先順位 |	発信元 IP |	発信元ポート |	宛先 IP |	宛先ポート |	プロトコル |	アクセス
+Name |  Priority |  Source IP | Source Port |   Destination IP |    Destination Port |  Protocol |  Access
 --- | --- | --- | --- | --- | --- | --- | ---
-ALLOW VNET INBOUND | 65000 | VIRTUAL\_NETWORK |	* |	VIRTUAL\_NETWORK | * |	* | ALLOW
-ALLOW AZURE LOAD BALANCER INBOUND | 65001 | AZURE\_LOADBALANCER | * | * | * | * | ALLOW
-DENY ALL INBOUND | 65500 | * | * | * | * | * | DENY
+ALLOW VNET INBOUND  | 65000 | VIRTUAL_NETWORK | \* |    VIRTUAL_NETWORK | \* |  \*  | ALLOW
+ALLOW AZURE LOAD BALANCER INBOUND   | 65001 | AZURE_LOADBALANCER    | \*    | \*    | \*    | \*    | ALLOW
+DENY ALL INBOUND    | 65500 | \*    | \*    | \*    | \*    | \*    | DENY
 
-**送信の既定のルール**
+**Outbound default rules**
 
-名前 |	優先順位 |	発信元 IP |	発信元ポート |	宛先 IP |	宛先ポート |	プロトコル |	アクセス
+Name |  Priority |  Source IP | Source Port |   Destination IP |    Destination Port |  Protocol |  Access
 --- | --- | --- | --- | --- | --- | --- | ---
-ALLOW VNET OUTBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ALLOW
-ALLOW INTERNET OUTBOUND | 65001 | * | * | INTERNET | * | * | ALLOW
-DENY ALL OUTBOUND | 65500 | * | * | * | * | * | DENY
+ALLOW VNET OUTBOUND | 65000 | VIRTUAL_NETWORK   | \*    | VIRTUAL_NETWORK   | \*    | \*    | ALLOW
+ALLOW INTERNET OUTBOUND | 65001 | \*    | \*    | INTERNET  | \*    | \*    | ALLOW
+DENY ALL OUTBOUND   | 65500 | \*    | \*    | \*    | \*    | \*    | DENY
 
-### インフラストラクチャの特別なルール
+### <a name="special-infrastructure-rules"></a>Special infrastructure rules
 
-NSG ルールは、明示的です。NSG ルールで指定されていない限り、いかなるトラフィックも許可または拒否されません。ただし、ネットワーク セキュリティ グループの指定にかかわらず、常に許可される 2 種類のトラフィックがあります。インフラストラクチャをサポートするために、このように事前設定されています。
+NSG rules are explicit. No traffic is allowed or denied beyond what is specified in the NSG rules. However, two types of traffic are always allowed regardless of the Network Security group specification. These provisions are made to support the infrastructure:
 
-- **ホスト ノードの仮想 IP:** DHCP、DNS、および正常性の監視などの基本的なインフラストラクチャ サービスは、仮想化されたホストの IP アドレス 168.63.129.16 を通じて提供されます。このパブリック IP アドレスは Microsoft に属し、この目的のためにすべての地域で使用される唯一の仮想化 IP アドレスです。この IP アドレスは、VM をホストしているサーバー コンピューター (ホスト ノード) の物理 IP アドレスにマッピングされます。ホスト ノードは、DHCP リレー、DNS の再帰的リゾルバー、および Load Balancer の正常性プローブとマシンの正常性プローブのプローブ元として機能します。この IP アドレスへの通信を攻撃と見なさないでください。
-- **ライセンス (キー管理サービス):** VM で実行されている Windows イメージのライセンスを取得する必要があります。このためには、要求を処理するキー管理サービスのホスト サーバーにライセンス要求を送信します。これは、常に送信ポート 1688 上にあります。
+- **Virtual IP of the Host Node**: Basic infrastructure services such as DHCP, DNS, and Health monitoring are provided through the virtualized host IP address 168.63.129.16. This public IP address belongs to Microsoft and will be the only virtualized IP address used in all regions for this purpose. This IP address maps to the physical IP address of the server machine (host node) hosting the VM. The host node acts as the DHCP relay, the DNS recursive resolver, and the probe source for the load balancer health probe and the machine health probe. Communication to this IP address should not be considered as an attack.
+- **Licensing (Key Management Service)**: Windows images running in the VMs should be licensed. To do this, a licensing request is sent to the Key Management Service host servers that handle such queries. This will always be on outbound port 1688.
 
-### 既定のタグ
+### <a name="default-tags"></a>Default tags
 
-既定のタグは、IP アドレスのカテゴリに対応するシステム指定の識別子です。ユーザー定義のルールで、既定のタグを指定できます。
+Default tags are system-provided identifiers to address a category of IP addresses. Default tags can be specified in user-defined rules.
 
-**NSG の既定のタグ**
+**Default tags for NSGs**
 
-タグ |	説明
+Tag |   Description
 --- | ---
-VIRTUAL\_NETWORK |	ネットワーク アドレス空間のすべてを表します。これには、仮想ネットワーク アドレス空間 (Azure での IP CIDR) だけでなく、すべての接続されているオンプレミス アドレス空間 (ローカル ネットワーク) が含まれます。また、仮想ネットワーク間のアドレス空間も含まれています。
-AZURE\_LOADBALANCER | Azure インフラストラクチャの Load Balancer を表し、Azure の正常性プローブが開始される Azure データ センター IP に変換されます。これは、NSG に関連付けられている VM または一連の VM が、負荷分散セットに参加している場合にのみ必要です。
-INTERNET | パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。この範囲には、Azure に所有されているパブリック IP アドレス空間も含まれます。
+VIRTUAL_NETWORK |   Denotes all of your network address space. It includes the virtual network address space (IP CIDR in Azure) as well as all connected on-premises address space (Local Networks). This also includes virtual network-to-virtual network address spaces.
+AZURE_LOADBALANCER | Denotes the Azure Infrastructure load balancer and will translate to an Azure datacenter IP where Azure’s health probes will originate. This is needed only if the VM or set of VMs associated with the NSG is participating in a load balanced set.
+INTERNET | Denotes the IP address space that is outside the virtual network and can be reached by public Internet. This range includes Azure-owned public IP space as well.
 
-### ポートおよびポート範囲
+### <a name="ports-and-port-ranges"></a>Ports and port ranges
 
-NSG のルールは、1 つの発信元/宛先ポートまたはポート範囲で指定できます。この方法は、FTP などのアプリケーション用に広範囲のポートを開く場合に特に便利です。範囲は連続的に指定する必要があり、個々のポートの指定と混在させることはできません。ポートの範囲を指定するには、ハイフン (–) を使用します。たとえば、**100-500** のように指定します。
+NSG rules can be specified on a single source or destination port, or on a port range. This approach is particularly useful when you want to open a wide range of ports for an application, such as FTP. The range must be sequential and can't be mixed with individual port specifications.
+To specify a range of ports, use the hyphen (–) character. For example, **100-500**.
 
-### ICMP トラフィック
+### <a name="icmp-traffic"></a>ICMP traffic
 
-現在の NSG のルールでは、プロトコルとして TCP または UDP を指定できますが、ICMP は指定できません。ただし、ICMP トラフィックは、仮想ネットワーク内で任意のポートおよびプロトコル間のトラフィックをサポートする (*) 受信ルールによって、既定で仮想ネットワーク内で許可されます。
+With the current NSG rules, you can specify TCP or UDP as protocols but not ICMP. However, ICMP traffic is allowed within a virtual network by default through the Inbound rules that support traffic from and to any port and protocol (\*) within the virtual network.
 
-### NSG と VM の関連付け
+### <a name="associating-an-nsg-with-a-vm"></a>Associating an NSG with a VM
 
-NSG と VM を直接関連付けた場合、NSG のネットワーク アクセス ルールは、その VM を宛先とするすべてのトラフィックに直接適用されます。ルールの変更のために NSG が更新されると、その更新は数分のうちにトラフィックの処理に反映されます。NSG と VM の関連付けが解除されると、状態は NSG 前の状態、つまり NSG が導入される前のシステムの既定値に戻ります。
+When an NSG is directly associated with a VM, the network access rules in the NSG are directly applied to all traffic that is destined to the VM. Whenever the NSG is updated for rule changes, the traffic handling reflects the updates within minutes. When the NSG is disassociated from the VM, the state reverts to its pre-NSG condition—that is, to the system defaults before the NSG was introduced.
 
-### NSG とサブネットの関連付け
+### <a name="associating-an-nsg-with-a-subnet"></a>Associating an NSG with a subnet
 
-NSG をサブネットに関連付けた場合、NSG のネットワーク アクセス ルールは、サブネット内のすべての VM に適用されます。NSG のアクセス ルールが更新されると、変更は数分でサブネット内のすべての VM に適用されます。
+When an NSG is associated with a subnet, the network access rules in the NSG are applied to all the VMs in the subnet. Whenever the access rules in the NSG are updated, the changes are applied to all VMs in the subnet within minutes.
 
-### NSG とサブネットおよび VM の関連付け
+### <a name="associating-an-nsg-with-a-subnet-and-a-vm"></a>Associating an NSG with a subnet and a VM
 
-1 つの NSG を VM に関連付け、別の NSG をその VM が存在するサブネットに関連付けることができます。このシナリオは、2 つの保護レイヤーを持つ VM を提供するためにサポートされています。受信トラフィックの場合、パケットは、VM 内のルールの次に、サブネットで指定されたアクセス ルールに従います。送信の場合は、パケットは最初に VM で指定されたルールに従った後、次に示すように、サブネットで指定されたルールに従います。
+You can associate one NSG with a VM and another NSG with the subnet where the VM resides. This scenario is supported to provide the VM with two layers of protection.
+On the inbound traffic, the packet follows the access rules specified in the subnet, followed by rules in the VM. When outbound, the packet follows the rules specified in the VM first, then follows the rules specified in the subnet as shown below.
 
-![サブネットと VM に対する NSG の関連付け](./media/best-practices-resource-manager-security/nsg-subnet-vm.png)
+![Associating an NSG to a subnet and a VM](./media/best-practices-resource-manager-security/nsg-subnet-vm.png)
 
-VM またはサブネットに NSG を関連付ける場合、ネットワーク アクセス制御のルールは、きわめて明示的になります。プラットフォームによって、特定のポートへのトラフィックを許可する暗黙のルールが挿入されることはありません。この場合、VM 内にエンドポイントを作成するときには、インターネットからのトラフィックを許可するルールも作成する必要があります。これを行わないと、外部から *VIP:{Port}* にアクセスできなくなります。
+When an NSG is associated with a VM or subnet, the network access control rules become very explicit. The platform will not insert any implicit rule to allow traffic to a particular port. In this case, if you create an endpoint in the VM, you must also create a rule to allow traffic from the Internet. If you don't do this, the *VIP:{Port}* can't be accessed from outside.
 
-たとえば、新しい VM と新しい NSG を作成します。NSG と VM を関連付けます。この VM は、ALLOW VNET INBOUND ルールを使用して、仮想ネットワーク内の他の VM と通信できます。VM は、ALLOW INTERNET OUTBOUND ルールを使用して、インターネットへの送信接続を確立することもできます。後で、VM で動作している Web サイトへのトラフィックを受信するために、ポート 80 でエンドポイントを作成します。VIP (パブリック仮想 IP アドレス) のポート 80 を宛先とするインターネットからのパケットは、次の表に示すようなルールを NSG に追加するまで、VM にアクセスできません。
+For example, you can create a new VM and a new NSG. You associate the NSG with the VM. The VM can communicate with other VMs in the virtual network through the ALLOW VNET INBOUND rule. The VM can also make outbound connections to the Internet using the ALLOW INTERNET OUTBOUND rule. Later, you create an endpoint on port 80 to receive traffic to your website running in the VM. Packets destined to port 80 on the VIP (public Virtual IP address) from the Internet will not reach the VM until you add a rule similar to the following table to the NSG.
 
-**特定のポートにトラフィックを許可する明示的なルール**
+**Explicit rule allowing traffic to a particular port**
 
-名前 |	優先順位 |	発信元 IP |	発信元ポート |	宛先 IP |	宛先ポート |	プロトコル |	アクセス
+Name |  Priority |  Source IP | Source Port |   Destination IP |    Destination Port |  Protocol |  Access
 --- | --- | --- | --- | --- | --- | --- | ---
-WEB | 100 | INTERNET | * | * | 80 | TCP | ALLOW
+WEB | 100   | INTERNET | *  | * | 80    | TCP   | ALLOW
 
-## ユーザー定義のルート
+## <a name="user-defined-routes"></a>User-defined routes
 
-Azure では、IP トラフィックを各パケットの宛先に基づいて転送する方法がルート テーブルを使用して決定されます。Azure には、仮想ネットワークの設定に基づく既定のルート テーブルが備わっていますが、そのテーブルにカスタム ルートを追加しなければならないこともあります。
+Azure uses a route table to decide how to forward IP traffic based on the destination of each packet. Although Azure provides a default route table based on your virtual network settings, you may need to add custom routes to that table.
 
-ルート テーブルにカスタム エントリが必要となる最も一般的な状況は、Azure 環境で仮想アプライアンスを使用するケースです。以下の図のシナリオを考えてみます。フロントエンドのサブネットから中間層とバックエンドのサブネットに向かうすべてのトラフィックに仮想ファイアウォール アプライアンスを経由させる必要があるとします。そのアプライアンスを仮想ネットワークに追加して各サブネットに接続しただけでは、この機能を実現できません。仮想ファイアウォール アプライアンスに対してパケットが確実に転送されるように、サブネットに適用されたルーティング テーブルにも変更を加える必要があります。
+The most common need for a custom entry in the route table is the use of a virtual appliance in your Azure environment. Take into account the scenario shown in the Figure below. Suppose you want to ensure that all traffic directed to the mid-tier and backed subnets initiated from the front end subnet go through a virtual firewall appliance. Simply adding the appliance to your virtual network and connecting it to the different subnets will not provide this functionality.
+You must also change the routing table applied to your subnet to ensure packets are forwarded to the virtual firewall appliance.
 
-同じことは、Azure Virtual Network とインターネット間のトラフィックを制御する仮想 NAT アプライアンスが導入されている場合にも当てはまります。確実に仮想アプライアンスを経由させるためには、インターネットに向かうすべてのトラフィックを仮想アプライアンスに転送するようにルートを作成しなければなりません。
+The same would be true if you implemented a virtual NAT appliance to control traffic between your Azure virtual network and the Internet. To ensure the virtual appliance is used you have to create a route specifying that all traffic destined to the Internet must be forwarded to the virtual appliance.
 
-### ルーティング
+### <a name="routing"></a>Routing
 
-パケットは、物理ネットワーク上の各ノードに定義されているルート テーブルに基づき、TCP/IP ネットワークを介してルーティングされます。ルート テーブルは、宛先 IP アドレスに基づいてパケットの転送先を決定する目的で使用される個々のルートの集まりです。ルートの構成要素を次に示します。
+Packets are routed over a TCP/IP network based on a route table defined at each node on the physical network. A route table is a collection of individual routes used to decide where to forward packets based on the destination IP address. A route consists of the following:
 
-- アドレス プレフィックス。ルートの適用対象となる宛先の CIDR 表記 (例: 10.1.0.0/16)。
-- 次ホップの種類。パケットの送信先となる Azure ホップの種類。次のいずれかの値になります。
-  - Local。ローカルの仮想ネットワークを表します。たとえば、同じ仮想ネットワークに 10.1.0.0/16 と 10.2.0.0/16 の 2 つのサブネットがある場合、ルート テーブル内の各サブネットのルートは、次ホップの値が Local になります。
-  - VPN Gateway。Azure S2S VPN Gateway を表します。
-  - Internet。Azure インフラストラクチャによって提供される既定のインターネット ゲートウェイを表します。
-  - Virtual Appliance。Azure Virtual Network に追加した仮想アプライアンスを表します。
-  - NULL。ブラック ホールを表します。ブラック ホールに転送されたパケットはまったく転送されません。
--	次ホップの値。次ホップの値には、パケットの転送先となる IP アドレスが格納されます。次ホップの値が使用できるのは、次ホップの種類が *Virtual Appliance* であるルートに限られます。次ホップは、リモート サブネット上ではなくサブネット (ネットワーク ID にしたがった仮想アプライアンスのローカル インターフェイス) 上にある必要があります。
+- Address Prefix. The destination CIDR to which the route applies, such as 10.1.0.0/16.
+- Next hop type. The type of Azure hop the packet should be sent to. Possible values are:
+  - Local. Represents the local virtual network. For instance, if you have two subnets, 10.1.0.0/16 and 10.2.0.0/16 in the same virtual network, the route for each subnet in the route table will have a next hop value of Local.
+  - VPN Gateway. Represents an Azure S2S VPN Gateway.
+  - Internet. Represents the default Internet gateway provided by the Azure Infrastructure
+  - Virtual Appliance. Represents a virtual appliance you added to your Azure virtual network.
+  - NULL. Represents a black hole. Packets forwarded to a black hole will not be forwarded at all.
+-   Nexthop Value. The next hop value contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is *Virtual Appliance*. The next hop needs to be on the subnet (the local interface of the virtual appliance according to the network ID), not a remote subnet.
 
-![ルーティング](./media/best-practices-resource-manager-security/routing.png)
+![Routing](./media/best-practices-resource-manager-security/routing.png)
 
-### 既定のルート
+### <a name="default-routes"></a>Default routes
 
-仮想ネットワークで作成されるすべてのサブネットは、次の既定のルート ルールを含むルート テーブルに自動的に関連付けられます。
+Every subnet created in a virtual network is automatically associated with a route table that contains the following default route rules:
 
-- ローカル VNet ルール: このルールは、仮想ネットワーク内のすべてのサブネットに対して自動的に作成されます。これは、VNet 内の VM 間に直接リンクがあり、中間次ホップがないことを指定します。これにより、同じサブネット上の VM は、VM が存在するネットワーク ID に関係なく、既定のゲートウェイ アドレスを必要とせずに互いに通信できます。
-- オンプレミス ルール: このルールは、オンプレミス アドレス範囲宛てのすべてのトラフィックに適用され、次ホップの宛先として VPN Gateway を使用します。
-- インターネット ルール: このルールは、パブリック インターネット宛てのすべてのトラフィックを処理し、インターネット宛てのすべてのトラフィックの次ホップとしてインフラストラクチャ インターネット ゲートウェイを使用します。
+- Local VNet Rule: This rule is automatically created for every subnet in a virtual network. It specifies that there is a direct link between the VMs in the VNet and there is no intermediate next hop. This enables the VMs on the same subnet, regardless of the network ID that the VMs exist in, to communicate with each other without requiring a default gateway address.
+- On-premises Rule: This rule applies to all traffic destined to the on-premises address range and uses VPN gateway as the next hop destination.
+- Internet Rule: This rule handles all traffic destined to the public Internet and uses the infrastructure internet gateway as the next hop for all traffic destined to the Internet.
 
-### BGP のルート
+### <a name="bgp-routes"></a>BGP routes
 
-この記事の執筆時には、[ExpressRoute](./expressroute/expressroute-introduction.md) は Azure リソース マネージャー向け[ネットワーク リソース プロバイダー](./virtual-network/resource-groups-networking.md)ではまだサポートされていません。NRP で ExpressRoute がサポートされたら、オンプレミス ネットワークと Azure との間に ExpressRoute 接続が存在する場合に、BGP を有効にして、オンプレミス ネットワークから Azure へとルートを伝達することができます。これらの BGP ルートは、各 Azure サブネットで既定のルートやユーザー定義のルートと同じように使用されます。詳細については、[ExpressRoute の概要](./expressroute/expressroute-introduction.md)に関するページを参照してください。
+At the time of this writing, [ExpressRoute](./expressroute/expressroute-introduction.md) is not yet supported in the [Network Resource Provider](./virtual-network/resource-groups-networking.md) for Azure Resource Manager.  If you have an ExpressRoute connection between your on-premises network and Azure, you can enable BGP to propagate routes from your on-premises network to Azure once ExpressRoute is supported in the NRP. These BGP routes are used in the same way as default routes and user defined routes in each Azure subnet. For more information see [ExpressRoute Introduction](./expressroute/expressroute-introduction.md).
 
->[AZURE.NOTE] NRP で ExpressRoute がサポートされている場合は、VPN Gateway を次ホップとする、サブネット 0.0.0.0/0 宛てのユーザー定義のルートを作成することで、オンプレミス ネットワークを介した強制トンネリングを使用するように Azure 環境を構成することができます。ただし、この方法が利用できるのは、VPN Gateway を使用している場合に限られます。ExpressRoute では利用できません。ExpressRoute の場合、強制トンネリングは BGP を介して構成します。
+>[AZURE.NOTE] When ExpressRoute on NRP is supported, you will be able to configure your Azure environment to use forced tunneling through your on-premises network by creating a user defined route for subnet 0.0.0.0/0 that uses the VPN gateway as the next hop. However, this only works if you are using a VPN gateway, not ExpressRoute. For ExpressRoute, forced tunneling is configured through BGP.
 
-### ユーザー定義のルート
+### <a name="user-defined-routes"></a>User-defined routes
 
-以上、Azure 環境の既定のルートについて述べてきましたが、それらのルートを表示することはできません。また、実際に必要となるのは、ほとんどの環境では既定のルートだけです。ただし、ある特定のケースにおいては、ルート テーブルを作成して独自にルートを追加する必要があります。その例を次に示します。
+You cannot view the default routes specified above in your Azure environment, and for most environments, those are the only routes you will need.
+However, you may need to create a route table and add one or more routes in specific cases, such as:
 
--	インターネットへのオンプレミス ネットワークを介した強制トンネリング。
--	Azure 環境での仮想アプライアンスの使用。
+-   Forced tunneling to the Internet via your on-premises network.
+-   Use of virtual appliances in your Azure environment.
 
-以上のシナリオでは、ルート テーブルを作成してユーザー定義のルートを追加する必要があります。ルート テーブルは複数設定することができ、また、同じルート テーブルを 1 つまたは複数のサブネットに関連付けることができます。ただし、関連付けることができるルート テーブルは各サブネットにつき 1 つだけです。サブネット内のすべての VM および Cloud Services は、そのサブネットに関連付けられているルート テーブルを使用します。
+In the scenarios above, you will have to create a route table and add user defined routes to it. You can have multiple route tables, and the same route table can be associated to one or more subnets. And each subnet can only be associated to a single route table. All VMs and cloud services in a subnet use the route table associated to that subnet.
 
-サブネットにルート テーブルが関連付けられるまでは、既定のルートが使用されます。いったん関連付けがなされると、ユーザー定義のルートと既定のルートとで、[LPM (Longest Prefix Match)](https://en.wikipedia.org/wiki/Longest_prefix_match) に基づくルーティングが行われます。同じ LPM マッチの複数のルートが存在する場合は、そのルートが検出された経緯に応じて次の順序でルートが選択されます。
+Subnets rely on default routes until a route table is associated to the subnet. Once an association exists, routing is done based on [Longest Prefix Match (LPM)](https://en.wikipedia.org/wiki/Longest_prefix_match) among both user defined routes and default routes. If there is more than one route with the same LPM match then a route is selected based on its origin in the following order:
 
-1.	ユーザーの定義ルート
-2.	BGP のルート (ExpressRoute を使用している場合)
-3.	既定のルート
+1.  User defined route
+2.  BGP route (when ExpressRoute is used)
+3.  Default route
 
->[AZURE.NOTE] ユーザー定義のルートが適用されるのは、Azure VM と Cloud Services だけです。たとえば、オンプレミス ネットワークと Azure との間にファイアウォール仮想アプライアンスを追加する場合、オンプレミスのアドレス空間に向かうすべてのトラフィックを仮想アプライアンスに転送するユーザー定義のルートを Azure ルート テーブルに作成する必要があります。一方、オンプレミスのアドレス空間から入ってくるトラフィックは、VPN Gateway または ExpressRoute 回線を経由し、仮想アプライアンスを飛び越えて直接 Azure 環境に向かいます。
+>[AZURE.NOTE] User defined routes are only applied to Azure VMs and cloud services. For instance, if you want to add a firewall virtual appliance between your on-premises network and Azure, you will have to create a user defined route for your Azure route tables that forwards all traffic going to the on-premises address space to the virtual appliance. However, incoming traffic from the on-premises address space will flow through your VPN gateway or ExpressRoute circuit straight to the Azure environment, bypassing the virtual appliance.
 
-### IP 転送
+### <a name="ip-forwarding"></a>IP forwarding
 
-これまで説明してきたように、ユーザー定義のルートを作成する主な目的の 1 つは、トラフィックを仮想アプライアンスに転送することです。仮想アプライアンスは、アプリケーションを実行する VM にすぎません。ファイアウォールや NAT デバイスなど、ネットワーク トラフィックを何らかの方法で処理するために使用されるアプリケーションが仮想アプライアンスで実行されます。
+As described above, one of the main reasons to create a user defined route is to forward traffic to a virtual appliance. A virtual appliance is nothing more than a VM that runs an application used to handle network traffic in some way, such as a firewall or a NAT device.
 
-仮想アプライアンスとして機能するこの VM は、自分宛てではない着信トラフィックを受信できることが必要です。VM が自分以外の宛先に向かうトラフィックを受信するためには、VM の IP 転送を有効にする必要があります。
+This virtual appliance VM must be able to receive incoming traffic that is not addressed to itself. To allow a VM to receive traffic addressed to other destinations, you must enable IP Forwarding in the VM.
 
-## 次のステップ
-- 組織内のリソースに適切にアクセスして操作するセキュリティ プリンシパルの設定方法については、「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」を参照してください。
-- リソースへのアクセスをロックする必要がある場合は、管理ロックを使用できます。「[Azure リソース マネージャーによるリソースのロック](resource-group-lock-resources.md)」を参照してください。
-- ルーティングと IP 転送を構成する方法については、「[テンプレートを使用して Resource Manager でユーザー定義ルート (UDR) を作成する](./virtual-network/virtual-network-create-udr-arm-template.md)」をご覧ください。
-- ロールベースのアクセス制御の概要については、「[Microsoft Azure ポータルでのロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+- To understand how to set up security principals with the correct access to work with resources in your organization, see [Authenticating a Service Principal with Azure Resource Manager](resource-group-authenticate-service-principal.md)
+- If you need to lock access to a resource, you can use management locks. See [Lock Resources with Azure Resource Manager](resource-group-lock-resources.md)
+- To configure routing and IP forwarding, see [Create User Defined Routes (UDR) in Resource Manager by using a template](./virtual-network/virtual-network-create-udr-arm-template.md)
+- For an overview of role-based access control, see [Role-based access control in the Microsoft Azure portal](./active-directory/role-based-access-control-configure.md)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

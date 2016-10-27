@@ -1,19 +1,22 @@
 
-## 分析
+## <a name="analytics"></a>Analytics
 
-- [概要](../articles/application-insights/app-insights-analytics.md)
-- [Analytics について](../articles/application-insights/app-insights-analytics-tour.md)
- - ここから開始します。主な機能について説明するチュートリアルです。
-- [クエリ](../articles/application-insights/app-insights-analytics-reference.md#queries)
- - `where` や `count` などの演算子を使用してクエリを作成します。
-- [集計](../articles/application-insights/app-insights-analytics-reference.md#aggregations)
- - レコードのグループに対して統計値を計算します。
-- [スカラー](../articles/application-insights/app-insights-analytics-reference.md#scalars)
- - クエリ パラメーターの作成に使用する数値、文字列、その他の式です。
-- [Analytics の使用](../articles/application-insights/app-insights-analytics-using.md)
- - Analytics の使用。
-- [言語のリファレンス](../articles/application-insights/app-insights-analytics-reference.md)
- - 1 ページのリファレンス。
-- [トラブルシューティング](../articles/application-insights/app-insights-analytics-troubleshooting.md)
+- [Overview](../articles/application-insights/app-insights-analytics.md)
+- [Tour of Analytics](../articles/application-insights/app-insights-analytics-tour.md)
+ - Start here. A tutorial covering the main features.
+- [Queries](../articles/application-insights/app-insights-analytics-reference.md#queries)
+ - Use operators such as `where` and `count` to build queries.
+- [Aggregation](../articles/application-insights/app-insights-analytics-reference.md#aggregations)
+ - Used to compute statistics over groups of records
+- [Scalars](../articles/application-insights/app-insights-analytics-reference.md#scalars)
+ - Numbers, strings, and other expressions used to form query parameters.
+- [Using Analytics](../articles/application-insights/app-insights-analytics-using.md)
+ - Using Analytics.
+- [Language Reference](../articles/application-insights/app-insights-analytics-reference.md)
+ - One-page reference.
+- [Troubleshooting](../articles/application-insights/app-insights-analytics-troubleshooting.md)
 
-<!---HONumber=AcomDC_0615_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

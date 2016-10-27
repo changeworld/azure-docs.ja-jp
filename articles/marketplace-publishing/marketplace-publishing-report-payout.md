@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Marketplace 支払いレポートについて | Microsoft Azure"
-   description="Azure Marketplace 支払いレポートを確認および取り込む方法について説明します。"
+   pageTitle="Understand the Azure Marketplace payout reporting | Microsoft Azure"
+   description="Learn how to review and ingest the Azure Marketplace payout report."
    services="marketplace-publishing"
    documentationCenter="na"
    authors="v-jeana"
@@ -16,95 +16,97 @@
    ms.date="09/19/2016"
    ms.author="v-jeana; hascipio; v-dabosl"/>
 
-# Azure Marketplace 支払いレポートについて
 
-## 支払いレポートへのアクセスと表示
+# <a name="understand-your-azure-marketplace-payout-reports"></a>Understand your Azure Marketplace payout reports
 
-デベロッパー センターに移行中に、一部の支払いレポートは https://dev.windows.com/ja-JP のデベロッパー センターで利用できる場合がありますが、他の支払いレポートは、https://publish.windowsazure.com の公開ポータルに表示されたままになる可能性があります。
+## <a name="access-and-view-your-payout-reports"></a>Access and view your payout reports
 
-支払いレポートは、最新の支払いに関連付けられているすべての Marketplace サービスについて、**デベロッパー センター**で利用できるようになります。現在は以下が対象となります。
-- VM
-- B+C プラン
-- EA で提供される Data Services と Dev Services
+While we transition to Dev Center some of your payout reports may be available in the Dev Center at https://dev.windows.com/en-us while others may still be found in Publishing Portal at https://publish.windowsazure.com.
 
-支払いレポートは、次の**発行ポータル**に引き続き存在します。
-- Web Direct (従来の支払いシステムを引き続き使用) で提供される Data Services と Dev Services
+Payout reporting will now be available in **Dev Center** for any Marketplace offerings that are associated with modern payouts; this currently includes:
+- VMs
+- B+C offers
+- Data and Dev Services offered under EA
 
-レポートは四半期の終了後 45 日間入手可能であり、返金後に計算されます。
+Payout reporting will still be in **Publishing Portal** for:
+- Data and Dev Services offered under Web Direct (which still uses the legacy payout system).
 
-### デベロッパー センターでの支払いレポートへのアクセス
+Reports are available 45 days after the close of the quarter and are calculated after any refunds.
 
-1. https://dev.windows.com/ja-JP でデベロッパー センターに移動します。
-2. **[ダッシュボード]** をクリックします。
+### <a name="access-payout-reports-in-dev-center"></a>Access payout reports in Dev Center
+
+1. Navigate to Dev Center at https://dev.windows.com/en-us.
+2. Click **Dashboard**.
 
     ![LandingPageDashboardHighlight][1]
 
-3. **[入金状況]** をクリックします。
+3. Click **Payout Summary**.
 
     ![DashboardPayoutSummary][2]
 
 
-## デベロッパー センターでの支払いレポートの表示
+## <a name="view-your-payout-reports-in-dev-center"></a>View your payout reports in Dev Center
 
-四半期ごとの支払いレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
+The payout report for each quarter records all transactions that occurred within that quarter.
 
-- 予約済みの額は、今後の入金サイクルの他に生じる支払いを示します (たとえば、この額は翌月の今後の入金に移動されます)。(事前に顧客の給料が多い場合を除き)、通常、この額は 0 ドルになります。
-- 今後の入金または最近の入金の **[詳細の表示]** リンクをクリックし、これらの支払いに関する注意を確認します。
-- **[入金明細書]** をクリックして、アプリまたは製品の収益の詳細を表示します。
-- **[表示]** リンクをクリックして、個々の明細書を表示します。
+- The Reserved amount indicates any payments that are accruing outside of the upcoming payment cycle (e.g. this amount will move to upcoming payment the following month).  This amount will typically be $0 (unless a customer pays well in advance).
+- Click on the Upcoming payment or Most recent payment **View details** links to see a note about those payouts.
+- Click on **Payment Statements** to view the details under proceeds by app/product.
+- Click on the **View** link to see individual statements.
 
     ![PayoutSummaryUpcomingMostRecentLinksStatement][3]
 
-- 個々の明細書の下部にある **[収益の内訳]** フィルターを使用して、複数のアプリまたは製品を表示します (存在する場合)。
+- Use the **Proceeds Breakdown** filter at the bottom of the individual statement to view multiple apps/products if they exist.
 
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
 
 
-## 発行ポータルでの支払いレポートの表示
-四半期ごとの支払いレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
+## <a name="view-your-payout-reports-in-publishing-portal"></a>View your payout reports in Publishing Portal
+The payout report for each quarter records all transactions that occurred within that quarter.
 
-1. https://publish.windowsazure.com で発行ポータルに移動します
-2. **[発行元]** セクションで **[支払いレポート]** をクリックします
-3. ドロップダウン リストをクリックすると、使用可能なすべての四半期支払いレポートが表示されます。
+1. Navigate to the publishing portal at https://publish.windowsazure.com.
+2. From the **Publishers** section, click **Payout Reports**.
+3. Click the drop-down to display all available quarterly payout reports.
 
     ![accessingpayoutreport][5]
 
 
-### 支払いレポートの読み取り
+### <a name="read-your-payout-reports"></a>Read your payout reports
 
-四半期ごとの支払いレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
+The payout report for each quarter records all transactions that occurred within that quarter.
 
-- 特定の四半期に関連する台帳項目を探すには、ドロップダウン リストからその四半期の支払いレポートを選択します。たとえば、2015 年 4 月から 6 月までの台帳項目を確認するには、ドロップダウン リストからその日付範囲を選択します。
-- 特定の四半期に関連する支払いの詳細を探すには、ドロップダウン リストからその四半期の後続の支払いレポートを選択します。たとえば、2015 年 4 月から 6 月までの支払額は、後続の 2015 年 7 月から 9 月までの支払いレポートで確認できます。![readingpayoutreport][6]
+- If you are looking for ledger entries that relate to a particular quarter, select the payout report for that quarter from the drop-down. For example, if you are interested in ledger entries for April to June 2015, select that date range from the drop-down.
+- If you are looking for details of payouts that relate to a particular quarter, select the payout report for the subsequent quarter. For example, if you are interested in the payouts for April to June 2015, these amounts will appear in the subsequent payout report for July to September 2015.
+![readingpayoutreport][6]
 
-- [財務の概要] パネルには、残高、貸方、および借方が分類別に表示されます。
-- 元帳項目は個々のトランザクションを示します。
+- The financial summary panel shows balances, credits, and debits by category.
+- Ledger entries show individual transactions.
 
-## 定義
+## <a name="definitions"></a>Definitions
 
-**[財務の概要] パネル:**
+**Financial summary panel:**
 
 ![financialdefinitions][7]
 
-**元帳項目:**
+**Ledger entries:**
 
 ![ledgerdefinitions][8]
 
-## 支払いの質問
+## <a name="payout-questions"></a>Payout questions
 
-支払いに関連する質問がある場合は、サポート チームにお問い合わせください。
+If you have a question related to your payouts, contact our support team.
 
 ![payoutquestions][9]
 
-1. サポート ページに移動します。
-2. **[支払い]** を選択します。
-3. **[支払いに関連する質問]** を選択します。
-4. **[要求の開始]** をクリックします。
+1. Navigate to the support pages.
+2. Select **Payouts**.
+3. Select **Payout related inquiries**.
+4. Click **Start request**.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-その他のサポートの問い合わせについては、<https://portal.azure.com> に問題をログしてください。
+For other support queries, please log an issue at <https://portal.azure.com>.
 
 [1]: ./media/marketplace-publishing-report-payout/LandingPage-DashboardHighlight.png
 [2]: ./media/marketplace-publishing-report-payout/Dashboard-PayoutSummary.png
@@ -116,4 +118,8 @@
 [8]: ./media/marketplace-publishing-report-payout/ledgerdefinitions.png
 [9]: ./media/marketplace-publishing-report-payout/payoutquestions.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

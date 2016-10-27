@@ -1,11 +1,12 @@
-## Azure リソース マネージャー テンプレートの概要
+## <a name="overview-of-azure-resource-manager-templates"></a>Overview of Azure Resource Manager templates
 
-Azure Resource Manager テンプレートでは、リソース間の依存関係を定義することで、JSON 言語で Azure IaaS インフラストラクチャを宣言によって指定できます。Azure Resource Manager テンプレートの概要については、次の記事をご覧ください。
+Azure Resource Manager templates allow you to declaratively specify the Azure IaaS infrastructure in Json language by defining the dependencies between resources. For a detailed overview of Azure Resource Manager Templates, please refer to the article below:
 
-[リソース グループの概要](../articles/resource-group-overview.md)
+[Resource Group Overview](../articles/resource-group-overview.md)
 
-## VM 拡張機能のサンプル テンプレート スニペット
-VM 拡張機能を Azure Resource Manager のテンプレートの一部としてデプロイするには、テンプレートで拡張機能の構成を宣言で指定する必要があります。拡張機能の構成の指定形式を次に示します。
+## <a name="sample-template-snippet-for-vm-extensions"></a>Sample template snippet for VM extensions
+Deploying VM extensions as part of an Azure Resource Manager template requires you to declaratively specify the extension configuration in the template.
+Here is the format for specifying the extension configuration.
 
       {
       "type": "Microsoft.Compute/virtualMachines/extensions",
@@ -24,13 +25,15 @@ VM 拡張機能を Azure Resource Manager のテンプレートの一部とし�
       }
       }
 
-上記からわかるように、拡張機能テンプレートには次の 2 つの主要な部分があります。
+As you can see from the above, the extension template contains two main parts:
 
-1. 拡張機能の名前、発行元、およびバージョン。
-2. 拡張機能の構成。
+1. Extension name, publisher and version
+2. Extension Configuration.
 
-## 任意の拡張機能の発行元、種類、typeHandlerVersion の識別
+## <a name="identifying-the-publisher,-type,-and-typehandlerversion-for-any-extension"></a>Identifying the publisher, type, and typeHandlerVersion for any extension
 
-Azure VM 拡張機能は、マイクロソフトと信頼されたサード パーティの発行元によって発行されています。それぞれの拡張機能は、その発行元、種類、typeHandlerVersion によって一意に識別されます。これらは、次の方法で確認できます。
+Azure VM extensions are published by Microsoft and trusted 3rd party publishers and each extension is uniquely identified by its publisher,type and the typeHandlerVersion. These can be determined as following:  
 
-<!---HONumber=AcomDC_0330_2016------>
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,89 +1,94 @@
 <properties 
-	pageTitle="Team Data Science Process 用に Hadoop クラスターをカスタマイズ | Microsoft Azure" 
-	description="一般的な Python モジュールは、カスタムの Azure HDInsight Hadoop クラスターで利用できます。"
-	services="machine-learning" 
-	documentationCenter="" 
-	authors="bradsev" 
-	manager="jhubbard" 
-	editor="cgronlun"  />
+    pageTitle="Customize Hadoop clusters for the Team Data Science Process | Microsoft Azure" 
+    description="Popular Python modules made available in custom Azure HDInsight Hadoop clusters."
+    services="machine-learning" 
+    documentationCenter="" 
+    authors="bradsev" 
+    manager="jhubbard" 
+    editor="cgronlun"  />
 
 <tags 
-	ms.service="machine-learning" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="09/19/2016" 
-	ms.author="hangzh;bradsev" />
+    ms.service="machine-learning" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/19/2016" 
+    ms.author="hangzh;bradsev" />
 
-# Team Data Science Process 用に Azure HDInsight Hadoop クラスターをカスタマイズ 
 
-この記事では、HDInsight サービスでクラスターをプロビジョニングするときに各ノードで 64 ビット Anaconda (Python 2.7) をインストールして、HDInsight Hadoop クラスターをカスタマイズする方法について説明します。また、クラスターにカスタム ジョブを送信するためにヘッドノードにアクセスする方法も示します。このカスタマイズでは、便宜上 Anaconda に含まれる多くの一般的な Python モジュールを、クラスター内のハイブ レコードを処理するように設計されたユーザー定義関数 (UDF) で使用できるようにします。このシナリオで用いている手順については、「[Hive クエリを送信する方法](machine-learning-data-science-move-hive-tables.md#submit)」を参照してください。
+# <a name="customize-azure-hdinsight-hadoop-clusters-for-the-team-data-science-process"></a>Customize Azure HDInsight Hadoop clusters for the Team Data Science Process 
 
-次のメニューは、[Team Data Science Process (TDSP)](data-science-process-overview.md) で使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
+This article describes how to customize an HDInsight Hadoop cluster by installing 64-bit Anaconda (Python 2.7) on each node when the cluster is provisioned as an HDInsight service. It also shows how to access the headnode to submit custom jobs to the cluster. This customization makes many popular Python modules that are included in Anaconda conveniently available for use in user defined functions (UDFs) that are designed to process Hive records in the cluster. For instructions on the procedures used in this scenario, see [How to submit Hive queries](machine-learning-data-science-move-hive-tables.md#submit).
+
+The menu below links to topics that describe how to set up the various data science environments used by the [Team Data Science Process (TDSP)](data-science-process-overview.md).
 
 [AZURE.INCLUDE [data-science-environment-setup](../../includes/cap-setup-environments.md)]
 
 
-## <a name="customize"></a>Azure HDInsight Hadoop クラスターのカスタマイズ
+## <a name="<a-name="customize"></a>customize-azure-hdinsight-hadoop-cluster"></a><a name="customize"></a>Customize Azure HDInsight Hadoop Cluster
 
-カスタマイズされた HDInsight Hadoop クラスターをユーザーが作成するには、[**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログオンし、左下隅にある **[新規]** をクリックした後、[DATA SERVICES] -> [HDINSIGHT] -> **[カスタム作成]** を選択して **[クラスターの詳細]** ウィンドウを表示する必要があります。
-
-![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
-
-構成ページ 1 で作成したクラスターの名前を入力し、他のフィールドの既定値をそのまま使用します。矢印をクリックして、次の構成ページに移動します。
+To create a customized HDInsight Hadoop cluster, users need to log on to [**Classic Portal of Azure**](https://manage.windowsazure.com/), click **New** at the left bottom corner, and then select DATA SERVICES -> HDINSIGHT -> **CUSTOM CREATE** to bring up the **Cluster Details** window. 
 
 ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
 
-構成ページ 2 で **[データ ノード]** の番号を入力し、**[リージョン/仮想ネットワーク]** を選択して、**[ヘッド ノード]** と **[データ ノード]** のサイズを選択します。矢印をクリックして、次の構成ページに進みます。
+Input the name of the cluster to be created on configuration page 1, and accept default values for the other fields. Click on the arrow to go to the next configuration page. 
 
->[AZURE.NOTE] **[リージョン/仮想ネットワーク]** は、HDInsight Hadoop クラスターに使用するストレージ アカウントのリージョンと同じにする必要があります。同じにしないと、4 番目の構成ページで、ユーザーが使用するストレージ アカウントが **[アカウント名]** ドロップダウン リストに表示されません。
+![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img1.png)
+
+On configuration page 2, input the number of **DATA NODES**, select the **REGION/VIRTUAL NETWORK**, and select the sizes of the **HEAD NODE** and the **DATA NODE**. Click the arrow to go to the next configuration page.
+
+>[AZURE.NOTE] The **REGION/VIRTUAL NETWORK** has to be the same as the region of the storage account that is going to be used for the HDInsight Hadoop cluster. Otherwise, in fourth configuration page, the storage account that the users want to use will not appear on the dropdown list of **ACCOUNT NAME**.
 
 ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img3.png)
 
-構成ページ 3 では、HDInsight Hadoop クラスターのユーザー名とパスワードを指定します。**[Hive/Oozie メタストアの入力]** は選択しないでください。矢印をクリックして、次の構成ページに進みます。
+On configuration page 3, provide a user name and password for the HDInsight Hadoop cluster. **Do not** select the _Enter the Hive/Oozie Metastore_. Then, click the arrow to go to the next configuration page. 
 
 ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img4.png)
 
-構成ページ 4 では、ストレージ アカウント名 (HDInsight Hadoop クラスターの既定のコンテナー) を指定します。ユーザーが **[既定のコンテナー]** ドロップダウン リストで _[既定のコンテナーの作成]_ を選択した場合、クラスターと同じ名前のコンテナーが作成されます。矢印をクリックして、最後の構成ページに進みます。
+On configuration page 4, specify the storage account name, the default container of the HDInsight Hadoop cluster. If users select _Create default container_ in the **DEFAULT CONTAINER** drop down list, a container with the same name as the cluster will be created. Click the arrow to go to the last configuration page.
 
 ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/customize-cluster-img5.png)
 
-最後の **[スクリプトのアクション]** 構成ページで **[スクリプト アクションの追加]** ボタンをクリックし、テキスト フィールドに次の値を入力します。
+On the final **Script Actions** configuration page, click **add script action** button, and fill the text fields with the following values.
  
-* **[名前]** - このスクリプト アクションの名前として任意の文字列を入力します。
-* **[ノード タイプ]** - **[すべてのノード]** を選択します。
-* **スクリプト URI** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1*
-	* *publicscripts* は、ストレージ アカウントのパブリック コンテナーです。
-	* *getgoing* は、Azure でユーザーが作業しやすくなるように、PowerShell スクリプト ファイルを共有するために使用します。
-* **[パラメーター]** - (空白のままにします)
+* **NAME** - any string as the name of this script action. 
+* **NODE TYPE** - select **All nodes**. 
+* **SCRIPT URI** - *http://getgoing.blob.core.windows.net/publicscripts/Azure_HDI_Setup_Windows.ps1* 
+    * *publicscripts* is a public container in storage account 
+    * *getgoing* we use to share PowerShell script files to facilitate users work in Azure. 
+* **PARAMETERS** - (leave blank)
 
-最後に、チェック マークをクリックして、カスタマイズされた HDInsight Hadoop クラスターの作成を開始します。
+Finally, click on the check mark to start the creation of the customized HDInsight Hadoop cluster. 
 
 ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/script-actions.png)
 
-## <a name="headnode"></a>Hadoop クラスターのヘッド ノードへのアクセス
+## <a name="<a-name="headnode"></a>-access-the-head-node-of-hadoop-cluster"></a><a name="headnode"></a> Access the Head Node of Hadoop Cluster
 
-ユーザーが RDP を介して Hadoop クラスターのヘッド ノードにアクセスするには、その前に Azure での Hadoop クラスターへのリモート アクセスを有効にする必要があります。
+Users must enable remote access to the Hadoop cluster in Azure before they can access the head node of the Hadoop cluster through RDP. 
 
-1. [**Azure クラシック ポータル**](https://manage.windowsazure.com/)にログインし、左側で **[HDInsight]** を選択して、クラスターのリストから Hadoop クラスターを選択します。次に、**[構成]** タブをクリックし、ページの下部にある **[リモートを有効にする]** アイコンをクリックします。
-	
-	![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-1.png)
+1. Log in to the [**Classic Portal of Azure**](https://manage.windowsazure.com/), select **HDInsight** on the left, select your Hadoop cluster from the list of clusters, click the **CONFIGURATION** tab, and then click the **ENABLE REMOTE** icon at the bottom of the page.
+    
+    ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-1.png)
 
-2. **[リモート デスクトップの構成]** ウィンドウで、[ユーザー名]、[パスワード] の各フィールドに入力し、リモート アクセスの有効期限を選択します。チェック マークをクリックして Hadoop クラスターのヘッド ノードへのリモート アクセスを有効にします。
+2. In the **Configure Remote Desktop** window, enter the USER NAME and PASSWORD fields, and select the expiration date for remote access. Then click the check mark to enable the remote access to the head node of the Hadoop cluster.
 
-	![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-2.png)
-	
->[AZURE.NOTE] リモート アクセスのユーザー名とパスワードは、Hadoop クラスターを作成したときに使用するユーザー名とパスワードではありません。これらは別個の資格情報のセットです。また、リモート アクセスの有効期限は、現在の日付から 7 日以内にする必要があります。
+    ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-2.png)
+    
+>[AZURE.NOTE] The user name and password for the remote access are not the user name and password that you use when you created the Hadoop cluster. These are a separate set of credentials. Also, the expiration date of the remote access has to be within 7 days from the current date.
 
-リモート アクセスを有効にした後、ページ下部の **[接続]** をクリックして、ヘッド ノードにリモートで接続します。以前に指定したリモート アクセス ユーザーの資格情報を入力して、Hadoop クラスターのヘッド ノードにログオンします。
+After remote access is enabled, click **CONNECT** at the bottom of the page to remote into the head node. You log on to the head node of the Hadoop cluster by entering the credentials for the remote access user that you specified earlier.
 
 ![Create workspace](./media/machine-learning-data-science-customize-hadoop-cluster/enable-remote-access-3.png)
 
-高度な分析プロセスの次のステップは、「[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)」に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
+The next steps in the advanced analytics process are mapped in the [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) and may include steps that move data into HDInsight, process and sample it there in preparation for learning from the data with Azure Machine Learning.
 
-Hive レコードを処理するために使用されるクラスターに格納されたユーザー定義関数 (UDF) で、クラスターのヘッド ノードから Anaconda に含まれる Python モジュールにアクセスする方法については、「[Hive クエリを送信する方法](machine-learning-data-science-move-hive-tables.md#submit)」をご覧ください。
+See [How to submit Hive queries](machine-learning-data-science-move-hive-tables.md#submit) for instructions on how to access the Python modules that are included in Anaconda from the head node of the cluster in user defined functions (UDFs) that are used to process Hive records stored in the cluster.
 
  
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

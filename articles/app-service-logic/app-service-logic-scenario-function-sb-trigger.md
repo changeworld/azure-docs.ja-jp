@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ロジック アプリのシナリオ: Azure Functions Service Bus トリガーの作成 | Microsoft Azure"
-   description="Azure Functions を使用してロジック アプリの Service Bus トリガーを作成する"
+   pageTitle="Logic app scenario: Create an Azure Functions Service Bus trigger | Microsoft Azure"
+   description="Use Azure Functions to create a Service Bus trigger for a logic app"
    services="logic-apps,functions"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
@@ -16,30 +16,32 @@
    ms.date="05/23/2016"
    ms.author="jehollan"/>
 
-# ロジック アプリのシナリオ: Azure Functions を使用した Azure Service Bus トリガーの作成
 
-Azure Functions を使用して、実行時間の長いリスナーまたはタスクをデプロイする必要がある場合に、ロジック アプリのトリガーを作成できます。たとえば、キューをリッスンする関数を作成し、プッシュ トリガーとしてすぐにロジック アプリを起動することができます。
+# <a name="logic-app-scenario:-create-an-azure-service-bus-trigger-by-using-azure-functions"></a>Logic app scenario: Create an Azure Service Bus trigger by using Azure Functions
 
-## ロジック アプリを構築する
+You can use Azure Functions to create a trigger for a logic app when you need to deploy a long-running listener or task. For example, you can create a function that will listen in on a queue and then immediately fire a logic app as a push trigger.
 
-この例では、トリガーする必要のあるロジック アプリごとに関数を実行します。最初に、HTTP 要求トリガーのあるロジック アプリを作成します。関数は、キュー メッセージが受信されたときに、そのエンドポイントを呼び出します。
+## <a name="build-the-logic-app"></a>Build the logic app
 
-1. 新しいロジック アプリを作成して、**[手動 - HTTP 要求を受信したとき]** トリガーを選択します。必要に応じて、[jsonschema.net](http://jsonschema.net) などのツールを使用して、キュー メッセージで使用する JSON スキーマを指定することができます。スキーマをトリガーに貼り付けます。そうすることでデザイナーがデータの形状を把握し、ワークフローを介して簡単にプロパティを流し込むことができます。
-1. キュー メッセージを受信した後に発生する追加の手順を追加します。たとえば、Office 365 を使用して電子メールを送信します。
-1. このロジック アプリを保存して、このロジック アプリのトリガーに使用するコールバック URL を生成します。この URL がトリガー カードに表示されます。
+In this example, you have a function running for each logic app that needs to be triggered. First, create a logic app that has an HTTP request trigger. The function calls that endpoint whenever a queue message is received.  
 
-![コールバック URL がトリガー カードに表示されます。][1]
+1. Create a new logic app; select the **Manual - When an HTTP Request is Received** trigger.  
+   Optionally, you can specify a JSON schema to use with the queue message by using a tool like [jsonschema.net](http://jsonschema.net). Paste the schema in the trigger. This helps the designer understand the shape of the data and more easily flow properties through the workflow.
+1. Add any additional steps that you want to occur after a queue message is received. For example, send an email via Office 365.  
+1. Save the logic app to generate the callback URL for the trigger to this logic app. The URL appears on the trigger card.
 
-## 関数を構築する
+![The callback URL appears on the trigger card][1]
 
-次に作成するのは、トリガーとしてキューをリッスンする関数です。
+## <a name="build-the-function"></a>Build the function
 
-1. [Azure Functions ポータル](https://functions.azure.com/signin)で、**[新しい関数]** を選択し、次に **[ServiceBusQueueTrigger - C#]** テンプレートを選択します。
+Next, you need to create a function that will act as the trigger and listen to the queue.
 
-    ![Azure Functions ポータル][2]
+1. In the [Azure Functions portal](https://functions.azure.com/signin), select **New Function**, and then select the **ServiceBusQueueTrigger - C#** template.
 
-2. Service Bus キュー (Azure Service Bus SDK の `OnMessageReceive()` リスナーを使用) への接続を構成します。
-3. キュー メッセージをトリガーとしてロジック アプリのエンドポイント (先ほど作成したもの) を呼び出す単純な関数を作成します。関数の完全な例を次に示します。例では、 `application/json` メッセージのコンテンツの種類を使用していますが、必要に応じて変更できます。
+    ![Azure Functions portal][2]
+
+2. Configure the connection to the Service Bus queue (which will use the Azure Service Bus SDK `OnMessageReceive()` listener).
+3. Write a simple function to call the logic app endpoint (created earlier) by using the queue message as a trigger. Here's a full example of a function. The example uses an `application/json` message content type, but you can change this if needed.
 
    ```
    using System;
@@ -60,10 +62,14 @@ Azure Functions を使用して、実行時間の長いリスナーまたはタ�
    }
    ```
 
-テストするには、[Service Bus エクスプ ローラー](https://github.com/paolosalvatori/ServiceBusExplorer)などのツールを使用してキュー メッセージを追加します。関数がメッセージを受信した直後にロジック アプリが起動することを確認します。
+To test, add a queue message via a tool like [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer). See the logic app fire immediately after the function receives the message.
 
 <!-- Image References -->
 [1]: ./media/app-service-logic-scenario-function-sb-trigger/manualTrigger.PNG
 [2]: ./media/app-service-logic-scenario-function-sb-trigger/newQueueTriggerFunction.PNG
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

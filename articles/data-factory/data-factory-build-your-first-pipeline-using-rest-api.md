@@ -1,411 +1,417 @@
 <properties
-	pageTitle="初めてのデータ ファクトリの作成 (REST) | Microsoft Azure"
-	description="このチュートリアルでは、Data Factory REST API を使用して、サンプルの Azure Data Factory パイプラインを作成します。"
-	services="data-factory"
-	documentationCenter=""
-	authors="spelluru"
-	manager="jhubbard"
-	editor="monicar"
+    pageTitle="Build your first data factory (REST) | Microsoft Azure"
+    description="In this tutorial, you create a sample Azure Data Factory pipeline using Data Factory REST API."
+    services="data-factory"
+    documentationCenter=""
+    authors="spelluru"
+    manager="jhubbard"
+    editor="monicar"
 />
 
 <tags
-	ms.service="data-factory"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="08/16/2016"
-	ms.author="spelluru"/>
+    ms.service="data-factory"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="08/16/2016"
+    ms.author="spelluru"/>
 
-# チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
+
+# <a name="tutorial:-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Tutorial: Build your first Azure data factory using Data Factory REST API
 > [AZURE.SELECTOR]
-- [概要と前提条件](data-factory-build-your-first-pipeline.md)
-- [Azure ポータル](data-factory-build-your-first-pipeline-using-editor.md)
+- [Overview and prerequisites](data-factory-build-your-first-pipeline.md)
+- [Azure portal](data-factory-build-your-first-pipeline-using-editor.md)
 - [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 - [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
-- [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
+- [Resource Manager Template](data-factory-build-your-first-pipeline-using-arm.md)
 - [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
-この記事では、Data Factory REST API を使用して最初の Azure データ ファクトリを作成します。
+In this article, you use Data Factory REST API to create your first Azure data factory.
 
-## 前提条件
-- 「[チュートリアルの概要](data-factory-build-your-first-pipeline.md)」に目を通し、**前提条件**の手順を完了する必要があります。
-- コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。データ ファクトリを作成するには、CURL ツールと REST コマンドを使用します。
-- [この記事](../resource-group-create-service-principal-portal.md)の手順に従って、次の操作を行います。
-	1. Azure Active Directory に、**ADFGetStartedApp** という名前の Web アプリケーションを作成します。
-	2. **クライアント ID** と**秘密キー**を取得します。
-	3. **テナント ID** を取得します。
-	4. **ADFGetStartedApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。
-- [Azure PowerShell](../powershell-install-configure.md) をインストールします。
-- **PowerShell** を起動し、次のコマンドを実行します。Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-	1. **Login-AzureRmAccount** を実行し、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
-	2. **Get-AzureRmSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-	3. **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription を実行します。| Set-AzureRmContext** to select the subscription that you want to work with. Replace **NameOfAzureSubscription** with the name of your Azure subscription. 
-3. PowerShell で次のコマンドを実行して、**ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
+## <a name="prerequisites"></a>Prerequisites
+- Read through [Tutorial Overview](data-factory-build-your-first-pipeline.md) article and complete the **prerequisite** steps.
+- Install [Curl](https://curl.haxx.se/dlwiz/) on your machine. You use the CURL tool with REST commands to create a data factory. 
+- Follow instructions from [this article](../resource-group-create-service-principal-portal.md) to: 
+    1. Create a Web application named **ADFGetStartedApp** in Azure Active Directory.
+    2. Get **client ID** and **secret key**. 
+    3. Get **tenant ID**. 
+    4. Assign the **ADFGetStartedApp** application to the **Data Factory Contributor** role.  
+- Install [Azure PowerShell](../powershell-install-configure.md).  
+- Launch **PowerShell** and run the following command. Keep Azure PowerShell open until the end of this tutorial. If you close and reopen, you need to run the commands again.
+    1. Run **Login-AzureRmAccount** and enter the user name and password that you use to sign in to the Azure portal.  
+    2. Run **Get-AzureRmSubscription** to view all the subscriptions for this account.
+    3. Run **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext** to select the subscription that you want to work with. Replace **NameOfAzureSubscription** with the name of your Azure subscription. 
+3. Create an Azure resource group named **ADFTutorialResourceGroup** by running the following command in the PowerShell:  
 
-		New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+        New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
 
-	このチュートリアルの一部の手順は、ADFTutorialResourceGroup という名前のリソース グループを使用することを前提としています。異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループの名前を使用する必要があります。
+    Some of the steps in this tutorial assume that you use the resource group named ADFTutorialResourceGroup. If you use a different resource group, you need to use the name of your resource group in place of ADFTutorialResourceGroup in this tutorial.
 
-## JSON 定義の作成
-curl.exe があるフォルダーに、以下の JSON ファイルを作成します。
+## <a name="create-json-definitions"></a>Create JSON definitions
+Create following JSON files in the folder where curl.exe is located. 
 
-### datafactory.json 
-> [AZURE.IMPORTANT] 名前はグローバルに一意である必要があります。一意の名前にするために、ADFCopyTutorialDF にプレフィックス/サフィックスを付けることができます。
+### <a name="datafactory.json"></a>datafactory.json 
+> [AZURE.IMPORTANT] Name must be globally unique, so you may want to prefix/suffix ADFCopyTutorialDF to make it a unique name. 
 
-	{  
-	    "name": "FirstDataFactoryREST",  
-	    "location": "WestUS"
-	}  
+    {  
+        "name": "FirstDataFactoryREST",  
+        "location": "WestUS"
+    }  
 
-### azurestoragelinkedservice.json
-> [AZURE.IMPORTANT] **accountname** と **accountkey** を Azure ストレージ アカウントの名前とキーに置き換えます。ストレージ アクセス キーを取得する方法については、「[ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+### <a name="azurestoragelinkedservice.json"></a>azurestoragelinkedservice.json
+> [AZURE.IMPORTANT] Replace **accountname** and **accountkey** with name and key of your Azure storage account. To learn how to get your storage access key, see [View, copy and regenerate storage access keys](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
 
-	{
-	    "name": "AzureStorageLinkedService",
-	    "properties": {
-	        "type": "AzureStorage",
-	        "typeProperties": {
-	            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-	        }
-	    }
-	}
+    {
+        "name": "AzureStorageLinkedService",
+        "properties": {
+            "type": "AzureStorage",
+            "typeProperties": {
+                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
+        }
+    }
 
 
-### hdinsightondemandlinkedservice.json
+### <a name="hdinsightondemandlinkedservice.json"></a>hdinsightondemandlinkedservice.json
 
-	{
-		"name": "HDInsightOnDemandLinkedService",
-		"properties": {
-			"type": "HDInsightOnDemand",
-			"typeProperties": {
-				"version": "3.2",
-				"clusterSize": 1,
-				"timeToLive": "00:30:00",
-				"linkedServiceName": "AzureStorageLinkedService"
-			}
-		}
-	}
+    {
+        "name": "HDInsightOnDemandLinkedService",
+        "properties": {
+            "type": "HDInsightOnDemand",
+            "typeProperties": {
+                "version": "3.2",
+                "clusterSize": 1,
+                "timeToLive": "00:30:00",
+                "linkedServiceName": "AzureStorageLinkedService"
+            }
+        }
+    }
 
-次の表に、このスニペットで使用される JSON プロパティの説明を示します。
+The following table provides descriptions for the JSON properties used in the snippet:
 
-| プロパティ | 説明 |
+| Property | Description |
 | :------- | :---------- |
-| バージョン | 作成された HDInsight のバージョンが 3.2 になるように指定します。 | 
-| ClusterSize | HDInsight クラスターのサイズ。 | 
-| TimeToLive | 削除されるまでの HDInsight クラスターのアイドル時間を指定します。 |
-| linkedServiceName | HDInsight によって生成されるログを保存するために使用されるストレージ アカウントを指定します。 |
+| Version | Specifies that the version of the HDInsight created to be 3.2. | 
+| ClusterSize | Size of the HDInsight cluster. | 
+| TimeToLive | Specifies that the idle time for the HDInsight cluster, before it is deleted. |
+| linkedServiceName | Specifies the storage account that is used to store the logs that are generated by HDInsight |
 
-以下の点に注意してください。
+Note the following points: 
 
-- Data Factory は、上記の JSON で **Windows ベース**の HDInsight クラスターを自動的に作成します。**Linux ベース**の HDInsight クラスターを作成させることもできます。詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
-- オンデマンド HDInsight クラスターの代わりに、**独自の HDInsight クラスター**を使用できます。詳細については、[HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)に関するセクションを参照してください。
-- HDInsight クラスターは、JSON (**linkedServiceName**) で指定した Blob Storage に**既定のコンテナー**を作成します。クラスターを削除しても、HDInsight はこのコンテナーを削除しません。この動作は仕様です。オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
+- The Data Factory creates a **Windows-based** HDInsight cluster for you with the above JSON. You could also have it create a **Linux-based** HDInsight cluster. See [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) for details. 
+- You could use **your own HDInsight cluster** instead of using an on-demand HDInsight cluster. See [HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) for details.
+- The HDInsight cluster creates a **default container** in the blob storage you specified in the JSON (**linkedServiceName**). HDInsight does not delete this container when the cluster is deleted. This behavior is by design. With on-demand HDInsight linked service, a HDInsight cluster is created every time a slice is processed unless there is an existing live cluster (**timeToLive**) and is deleted when the processing is done.
 
-	処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。これらのコンテナーの名前は、"adf**<データ ファクトリ名>**-**<リンクされたサービス名>**-<日時スタンプ>" というパターンに従います。Azure Blob Storage 内のコンテナーを削除するには、[Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。
+    As more slices are processed, you see many containers in your Azure blob storage. If you do not need them for troubleshooting of the jobs, you may want to delete them to reduce the storage cost. The names of these containers follow a pattern: "adf**yourdatafactoryname**-**linkedservicename**-datetimestamp". Use tools such as [Microsoft Storage Explorer](http://storageexplorer.com/) to delete containers in your Azure blob storage.
 
-詳細については、[オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関するセクションを参照してください。
+See [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) for details. 
 
-### inputdataset.json
+### <a name="inputdataset.json"></a>inputdataset.json
 
-	{
-		"name": "AzureBlobInput",
-		"properties": {
-			"type": "AzureBlob",
-			"linkedServiceName": "AzureStorageLinkedService",
-			"typeProperties": {
-				"fileName": "input.log",
-				"folderPath": "adfgetstarted/inputdata",
-				"format": {
-					"type": "TextFormat",
-					"columnDelimiter": ","
-				}
-			},
-			"availability": {
-				"frequency": "Month",
-				"interval": 1
-			},
-			"external": true,
-			"policy": {}
-		}
-	}
+    {
+        "name": "AzureBlobInput",
+        "properties": {
+            "type": "AzureBlob",
+            "linkedServiceName": "AzureStorageLinkedService",
+            "typeProperties": {
+                "fileName": "input.log",
+                "folderPath": "adfgetstarted/inputdata",
+                "format": {
+                    "type": "TextFormat",
+                    "columnDelimiter": ","
+                }
+            },
+            "availability": {
+                "frequency": "Month",
+                "interval": 1
+            },
+            "external": true,
+            "policy": {}
+        }
+    }
 
 
-この JSON では **AzureBlobInput** という名前のデータセットを定義します。これはパイプラインのアクティビティの入力データを表します。さらに、**adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します。
+The JSON defines a dataset named **AzureBlobInput**, which represents input data for an activity in the pipeline. In addition, it specifies that the input data is located in the blob container called **adfgetstarted** and the folder called **inputdata**.
 
-次の表に、このスニペットで使用される JSON プロパティの説明を示します。
+The following table provides descriptions for the JSON properties used in the snippet:
 
-| プロパティ | Description |
+| Property | Description |
 | :------- | :---------- |
-| type | データは Azure Blob Storage に存在するため、type プロパティを AzureBlob に設定しています。 |  
-| linkedServiceName | 前に作成した StorageLinkedService を参照します。 |
-| fileName | このプロパティは省略可能です。このプロパティを省略した場合は、folderPath のすべてのファイルが取得されます。このチュートリアルでは、input.log のみが処理されます。 |
-| type | ログ ファイルはテキスト形式です。そのため、TextFormat を使用します。 | 
-| columnDelimiter | ログ ファイル内の列はコンマ (,) で区切られています。 |
-| frequency/interval | frequency を Month に設定し、interval を 1 に設定しています。そのため、入力スライスは 1 か月ごとになります。 | 
-| 外部 | Data Factory サービスによって入力データが生成されない場合は、このプロパティを true に設定します。 | 
+| type | The type property is set to AzureBlob because data resides in Azure blob storage. |  
+| linkedServiceName | refers to the StorageLinkedService you created earlier. |
+| fileName | This property is optional. If you omit this property, all the files from the folderPath are picked. In this case, only the input.log is processed. |
+| type | The log files are in text format, so we use TextFormat. | 
+| columnDelimiter | columns in the log files are delimited by a comma character (,) |
+| frequency/interval | frequency set to Month and interval is 1, which means that the input slices are available monthly. | 
+| external | this property is set to true if the input data is not generated by the Data Factory service. | 
 
-### outputdataset.json
+### <a name="outputdataset.json"></a>outputdataset.json
 
-	{
-		"name": "AzureBlobOutput",
-		"properties": {
-			"type": "AzureBlob",
-			"linkedServiceName": "AzureStorageLinkedService",
-			"typeProperties": {
-				"folderPath": "adfgetstarted/partitioneddata",
-				"format": {
-					"type": "TextFormat",
-					"columnDelimiter": ","
-				}
-			},
-			"availability": {
-				"frequency": "Month",
-				"interval": 1
-			}
-		}
-	}
+    {
+        "name": "AzureBlobOutput",
+        "properties": {
+            "type": "AzureBlob",
+            "linkedServiceName": "AzureStorageLinkedService",
+            "typeProperties": {
+                "folderPath": "adfgetstarted/partitioneddata",
+                "format": {
+                    "type": "TextFormat",
+                    "columnDelimiter": ","
+                }
+            },
+            "availability": {
+                "frequency": "Month",
+                "interval": 1
+            }
+        }
+    }
 
-この JSON では **AzureBlobOutput** という名前のデータセットを定義します。これはパイプラインのアクティビティの入力データを表します。さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。**availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
+The JSON defines a dataset named **AzureBlobOutput**, which represents output data for an activity in the pipeline. In addition, it specifies that the results are stored in the blob container called **adfgetstarted** and the folder called **partitioneddata**. The **availability** section specifies that the output dataset is produced on a monthly basis.
 
-### pipeline.json
-> [AZURE.IMPORTANT] **storageaccountname** を Azure ストレージ アカウントの名前に置き換えます。
-
-
-	{
-		"name": "MyFirstPipeline",
-		"properties": {
-			"description": "My first Azure Data Factory pipeline",
-			"activities": [{
-				"type": "HDInsightHive",
-				"typeProperties": {
-					"scriptPath": "adfgetstarted/script/partitionweblogs.hql",
-					"scriptLinkedService": "AzureStorageLinkedService",
-					"defines": {
-						"inputtable": "wasb://adfgetstarted@<stroageaccountname>.blob.core.windows.net/inputdata",
-						"partitionedtable": "wasb://adfgetstarted@<stroageaccountname>t.blob.core.windows.net/partitioneddata"
-					}
-				},
-				"inputs": [{
-					"name": "AzureBlobInput"
-				}],
-				"outputs": [{
-					"name": "AzureBlobOutput"
-				}],
-				"policy": {
-					"concurrency": 1,
-					"retry": 3
-				},
-				"scheduler": {
-					"frequency": "Month",
-					"interval": 1
-				},
-				"name": "RunSampleHiveActivity",
-				"linkedServiceName": "HDInsightOnDemandLinkedService"
-			}],
-			"start": "2016-07-10T00:00:00Z",
-			"end": "2016-07-11T00:00:00Z",
-			"isPaused": false
-		}
-	}
-
-この JSON スニペットでは、Hive を使用して HDInsight クラスターのデータを処理する 1 つのアクティビティで構成されるパイプラインを作成します。
-
-Hive スクリプト ファイル **partitionweblogs.hql** は、Azure ストレージ アカウント (scriptLinkedService によって指定され、**StorageLinkedService** という名前) と **adfgetstarted** コンテナーの **script** フォルダーに格納されます。
-
-**defines** セクションでは、Hive 構成値 (例: ${hiveconf:inputtable}、${hiveconf:partitionedtable}) として Hive スクリプトに渡される実行時設定を指定します。
-
-パイプラインの **start** および **end** プロパティでは、パイプラインのアクティブな期間を指定します。
-
-アクティビティ JSON では、**linkedServiceName** に指定されたコンピューティング **HDInsightOnDemandLinkedService** で Hive スクリプトが実行されるように指定します。
-
-> [AZURE.NOTE] 前の例で使用した JSON プロパティの詳細については、「[パイプラインのしくみ](data-factory-create-pipelines.md#anatomy-of-a-pipeline)」を参照してください。
-
-## グローバル変数の設定
-
-Azure PowerShell で、値を独自の値に置き換えて、以下のコマンドを実行します。
-
-> [AZURE.IMPORTANT] クライアント ID、クライアント シークレット、テナント ID、サブスクリプション ID を取得する手順については、「[前提条件](#prerequisites)」セクションを参照してください。
-
-	$client_id = "<client ID of application in AAD>"
-	$client_secret = "<client key of application in AAD>"
-	$tenant = "<Azure tenant ID>";
-	$subscription_id="<Azure subscription ID>";
-
-	$rg = "ADFTutorialResourceGroup"
-	$adf = "FirstDataFactoryREST"
+### <a name="pipeline.json"></a>pipeline.json
+> [AZURE.IMPORTANT] Replace **storageaccountname** with name of your Azure storage account. 
 
 
+    {
+        "name": "MyFirstPipeline",
+        "properties": {
+            "description": "My first Azure Data Factory pipeline",
+            "activities": [{
+                "type": "HDInsightHive",
+                "typeProperties": {
+                    "scriptPath": "adfgetstarted/script/partitionweblogs.hql",
+                    "scriptLinkedService": "AzureStorageLinkedService",
+                    "defines": {
+                        "inputtable": "wasb://adfgetstarted@<stroageaccountname>.blob.core.windows.net/inputdata",
+                        "partitionedtable": "wasb://adfgetstarted@<stroageaccountname>t.blob.core.windows.net/partitioneddata"
+                    }
+                },
+                "inputs": [{
+                    "name": "AzureBlobInput"
+                }],
+                "outputs": [{
+                    "name": "AzureBlobOutput"
+                }],
+                "policy": {
+                    "concurrency": 1,
+                    "retry": 3
+                },
+                "scheduler": {
+                    "frequency": "Month",
+                    "interval": 1
+                },
+                "name": "RunSampleHiveActivity",
+                "linkedServiceName": "HDInsightOnDemandLinkedService"
+            }],
+            "start": "2016-07-10T00:00:00Z",
+            "end": "2016-07-11T00:00:00Z",
+            "isPaused": false
+        }
+    }
 
-## AAD での認証
+In the JSON snippet, you are creating a pipeline that consists of a single activity that uses Hive to process data on a HDInsight cluster.
 
-	$cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
-	$responseToken = Invoke-Command -scriptblock $cmd;
-	$accessToken = (ConvertFrom-Json $responseToken).access_token;
-	
-	(ConvertFrom-Json $responseToken) 
+The Hive script file, **partitionweblogs.hql**, is stored in the Azure storage account (specified by the scriptLinkedService, called **StorageLinkedService**), and in **script** folder in the container **adfgetstarted**.
+
+The **defines** section specifies runtime settings that are passed to the hive script as Hive configuration values (e.g ${hiveconf:inputtable}, ${hiveconf:partitionedtable}).
+
+The **start** and **end** properties of the pipeline specifies the active period of the pipeline.
+
+In the activity JSON, you specify that the Hive script runs on the compute specified by the **linkedServiceName** – **HDInsightOnDemandLinkedService**.
+
+> [AZURE.NOTE] See [Anatomy of a Pipeline](data-factory-create-pipelines.md#anatomy-of-a-pipeline) for details about JSON properties used in the preceding example. 
+
+## <a name="set-global-variables"></a>Set global variables
+
+In Azure PowerShell, execute the following commands after replacing the values with your own:
+
+> [AZURE.IMPORTANT] See [Prerequisites](#prerequisites) section for instructions on getting client ID, client secret, tenant ID, and subscription ID.   
+
+    $client_id = "<client ID of application in AAD>"
+    $client_secret = "<client key of application in AAD>"
+    $tenant = "<Azure tenant ID>";
+    $subscription_id="<Azure subscription ID>";
+
+    $rg = "ADFTutorialResourceGroup"
+    $adf = "FirstDataFactoryREST"
 
 
 
-## データ ファクトリの作成
+## <a name="authenticate-with-aad"></a>Authenticate with AAD
 
-この手順では、**FirstDataFactoryREST** という名前の Azure Dデータ ファクトリを作成します。データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。パイプラインには、1 つまたは複数のアクティビティを含めることができます。たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行してデータを変換する HDInsight Hive アクティビティなどを含めることができます。以下のコマンドを実行して、データ ファクトリを作成します。
+    $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
+    $responseToken = Invoke-Command -scriptblock $cmd;
+    $accessToken = (ConvertFrom-Json $responseToken).access_token;
+    
+    (ConvertFrom-Json $responseToken) 
 
-1. コマンドを **cmd** という名前の変数に割り当てます。
 
-	ここで指定するデータ ファクトリの名前 (ADFCopyTutorialDF) が、**datafactory.json** で指定した名前と一致することを確認します。
 
-		$cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
-2. **Invoke-Command** を使用して、コマンドを実行します。
+## <a name="create-data-factory"></a>Create data factory
 
-		$results = Invoke-Command -scriptblock $cmd;
-3. 結果を表示します。データ ファクトリが正常に作成された場合は、**results** にデータ ファクトリの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
+In this step, you create an Azure Data Factory named **FirstDataFactoryREST**. A data factory can have one or more pipelines. A pipeline can have one or more activities in it. For example, a Copy Activity to copy data from a source to a destination data store and a HDInsight Hive activity to run Hive script to transform data. Run the following commands to create the data factory: 
 
-		Write-Host $results
+1. Assign the command to variable named **cmd**. 
 
-以下の点に注意してください。
+    Confirm that the name of the data factory you specify here (ADFCopyTutorialDF) matches the name specified in the **datafactory.json**. 
+
+        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
+2. Run the command by using **Invoke-Command**.
+
+        $results = Invoke-Command -scriptblock $cmd;
+3. View the results. If the data factory has been successfully created, you see the JSON for the data factory in the **results**; otherwise, you see an error message.  
+
+        Write-Host $results
+
+Note the following points:
  
-- Azure Data Factory の名前はグローバルに一意にする必要があります。results に "**データ ファクトリ名 "FirstDataFactoryREST" は利用できません**" というエラーが表示される場合は、次の手順に従います。
-	1. **datafactory.json** ファイルで名前を変更します (例: yournameFirstDataFactoryREST)。Data Factory アーティファクトの名前付け規則については、「[Azure Data Factory - 名前付け規則](data-factory-naming-rules.md)」を参照してください。
-	2. **$cmd** 変数に値が割り当てられる最初のコマンドで、FirstDataFactoryREST を新しい名前に置き換え、コマンドを実行します。
-	3. REST API を呼び出す次の 2 つのコマンドを実行して、データ ファクトリを作成し、操作の結果を出力します。
-- Data Factory インスタンスを作成するには、Azure サブスクリプションの共同作成者または管理者である必要があります。
-- データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
-- "**サブスクリプションが名前空間 Microsoft.DataFactory を使用するように登録されていません**" というエラー メッセージが表示されたら、以下のいずれかの操作をしてから、もう一度発行してみます。
+- The name of the Azure Data Factory must be globally unique. If you see the error in results: **Data factory name “FirstDataFactoryREST” is not available**, do the following steps:  
+    1. Change the name (for example, yournameFirstDataFactoryREST) in the **datafactory.json** file. See [Data Factory - Naming Rules](data-factory-naming-rules.md) topic for naming rules for Data Factory artifacts.
+    2. In the first command where the **$cmd** variable is assigned a value, replace FirstDataFactoryREST with the new name and run the command. 
+    3. Run the next two commands to invoke the REST API to create the data factory and print the results of the operation. 
+- To create Data Factory instances, you need to be a contributor/administrator of the Azure subscription
+- The name of the data factory may be registered as a DNS name in the future and hence become publicly visible.
+- If you receive the error: "**This subscription is not registered to use namespace Microsoft.DataFactory**", do one of the following and try publishing again: 
 
-	- Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
-		
-			Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
-	
-		Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
-	
-			Get-AzureRmResourceProvider
-	- Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com)にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。この操作によって、プロバイダーが自動的に登録されます。
+    - In Azure PowerShell, run the following command to register the Data Factory provider: 
+        
+            Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    
+        You can run the following command to confirm that the Data Factory provider is registered: 
+    
+            Get-AzureRmResourceProvider
+    - Login using the Azure subscription into the [Azure portal](https://portal.azure.com) and navigate to a Data Factory blade (or) create a data factory in the Azure portal. This action automatically registers the provider for you.
 
-パイプラインを作成する前に、まず、Data Factory エンティティをいくつか作成する必要があります。まずはデータ ストアやコンピューティングを自分のデータ ストアにリンクするリンクされたサービスを作成し、リンクされたデータ ストア内のデータを表す入力データセットと出力データセットを定義します。
+Before creating a pipeline, you need to create a few Data Factory entities first. You first create linked services to link data stores/computes to your data store, define input and output datasets to represent data in linked data stores. 
 
-## リンクされたサービスの作成 
-この手順では、Azure ストレージ アカウントとオンデマンド Azure HDInsight クラスターをデータ ファクトリにリンクします。Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。HDInsight のリンクされたサービスは、このサンプルのパイプラインのアクティビティに指定された Hive スクリプトを実行するために使用されます。
+## <a name="create-linked-services"></a>Create linked services 
+In this step, you link your Azure Storage account and an on-demand Azure HDInsight cluster to your data factory. The Azure Storage account holds the input and output data for the pipeline in this sample. The HDInsight linked service is used to run Hive script specified in the activity of the pipeline in this sample. 
 
-### Azure Storage のリンクされたサービスを作成する
-この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。このチュートリアルでは、同じ Azure ストレージ アカウントを使用して、入力/出力データと HQL スクリプト ファイルを格納します。
+### <a name="create-azure-storage-linked-service"></a>Create Azure Storage linked service
+In this step, you link your Azure Storage account to your data factory. With this tutorial, you use the same Azure Storage account to store input/output data and the HQL script file.
 
-1. コマンドを **cmd** という名前の変数に割り当てます。
+1. Assign the command to variable named **cmd**. 
 
-		$cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
-2. **Invoke-Command** を使用して、コマンドを実行します。
+        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
+2. Run the command by using **Invoke-Command**.
  
-		$results = Invoke-Command -scriptblock $cmd;
-3. 結果を表示します。リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
+        $results = Invoke-Command -scriptblock $cmd;
+3. View the results. If the linked service has been successfully created, you see the JSON for the linked service in the **results**; otherwise, you see an error message.
   
-		Write-Host $results
+        Write-Host $results
 
-### Azure HDInsight のリンクされたサービスを作成する
-この手順では、オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。HDInsight クラスターは、実行時に自動的に作成されます。また、処理が終わり、アイドル状態が一定時間続くと削除されます。オンデマンド HDInsight クラスターの代わりに、独自の HDInsight クラスターを使用できます。詳細については、「[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)」を参照してください。
+### <a name="create-azure-hdinsight-linked-service"></a>Create Azure HDInsight linked service
+In this step, you link an on-demand HDInsight cluster to your data factory. The HDInsight cluster is automatically created at runtime and deleted after it is done processing and idle for the specified amount of time. You could use your own HDInsight cluster instead of using an on-demand HDInsight cluster. See [Compute Linked Services](data-factory-compute-linked-services.md) for details.  
 
-1. コマンドを **cmd** という名前の変数に割り当てます。
+1. Assign the command to variable named **cmd**.
  
-		$cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
-2. **Invoke-Command** を使用して、コマンドを実行します。
+        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
+2. Run the command by using **Invoke-Command**.
 
-		$results = Invoke-Command -scriptblock $cmd;
-3. 結果を表示します。リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
+        $results = Invoke-Command -scriptblock $cmd;
+3. View the results. If the linked service has been successfully created, you see the JSON for the linked service in the **results**; otherwise, you see an error message.  
 
-		Write-Host $results
+        Write-Host $results
 
-## データセットを作成する
-この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。これらのデータセットは、このチュートリアルで前に作成した **StorageLinkedService** を参照します。このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。
+## <a name="create-datasets"></a>Create datasets
+In this step, you create datasets to represent the input and output data for Hive processing. These datasets refer to the **StorageLinkedService** you have created earlier in this tutorial. The linked service points to an Azure Storage account and datasets specify container, folder, file name in the storage that holds input and output data.   
 
-### 入力データセットの作成
-この手順では、Azure BLOB ストレージに格納される入力データを表す入力データセットを作成します。
+### <a name="create-input-dataset"></a>Create input dataset
+In this step, you create the input dataset to represent input data stored in the Azure Blob storage.
 
-1. コマンドを **cmd** という名前の変数に割り当てます。
+1. Assign the command to variable named **cmd**. 
 
-		$cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
-2. **Invoke-Command** を使用して、コマンドを実行します。
+        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
+2. Run the command by using **Invoke-Command**.
 
-		$results = Invoke-Command -scriptblock $cmd;
-3. 結果を表示します。データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
+        $results = Invoke-Command -scriptblock $cmd;
+3. View the results. If the dataset has been successfully created, you see the JSON for the dataset in the **results**; otherwise, you see an error message.
   
-		Write-Host $results
-### 出力データセットの作成
-この手順では、Azure BLOB ストレージに格納される出力データを表す出力データセットを作成します。
+        Write-Host $results
+### <a name="create-output-dataset"></a>Create output dataset
+In this step, you create the output dataset to represent output data stored in the Azure Blob storage.
 
-1. コマンドを **cmd** という名前の変数に割り当てます。
+1. Assign the command to variable named **cmd**.
  
-		$cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
-2. **Invoke-Command** を使用して、コマンドを実行します。
+        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
+2. Run the command by using **Invoke-Command**.
 
-		$results = Invoke-Command -scriptblock $cmd;
-3. 結果を表示します。データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
+        $results = Invoke-Command -scriptblock $cmd;
+3. View the results. If the dataset has been successfully created, you see the JSON for the dataset in the **results**; otherwise, you see an error message.
   
-		Write-Host $results 
+        Write-Host $results 
 
-## パイプラインの作成
-この手順では、**HDInsightHive** アクティビティを含む最初のパイプラインを作成します。入力スライスは 1 か月ごと (frequency: Month、interval: 1) に使用可能であり、出力スライスは 1 か月ごとに生成されるため、アクティビティの scheduler プロパティも 1 か月ごとに設定します。出力データセットとアクティビティの scheduler の設定は一致している必要があります。現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。
+## <a name="create-pipeline"></a>Create pipeline
+In this step, you create your first pipeline with a **HDInsightHive** activity. Input slice is available monthly (frequency: Month, interval: 1), output slice is produced monthly, and the scheduler property for the activity is also set to monthly. The settings for the output dataset and the activity scheduler must match. Currently, output dataset is what drives the schedule, so you must create an output dataset even if the activity does not produce any output. If the activity doesn't take any input, you can skip creating the input dataset.  
 
-Azure Blob Storage の **adfgetstarted/inputdata** フォルダーに **input.log** ファイルがあることを確認し、次のコマンドを実行して、パイプラインをデプロイします。**start** と **end** が過去の日時に設定され、**isPaused** が false に設定されているため、パイプライン (パイプラインのアクティビティ) はデプロイするとすぐに実行されます。
+Confirm that you see the **input.log** file in the **adfgetstarted/inputdata** folder in the Azure blob storage, and run the following command to deploy the pipeline. Since the **start** and **end** times are set in the past and **isPaused** is set to false, the pipeline (activity in the pipeline) runs immediately after you deploy. 
 
-1. コマンドを **cmd** という名前の変数に割り当てます。
+1. Assign the command to variable named **cmd**.
  
-		$cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
-2. **Invoke-Command** を使用して、コマンドを実行します。
+        $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
+2. Run the command by using **Invoke-Command**.
 
-		$results = Invoke-Command -scriptblock $cmd;
-3. 結果を表示します。データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
+        $results = Invoke-Command -scriptblock $cmd;
+3. View the results. If the dataset has been successfully created, you see the JSON for the dataset in the **results**; otherwise, you see an error message.  
 
-		Write-Host $results
-5. これで、Azure PowerShell を使用して最初のパイプラインを作成できました。
+        Write-Host $results
+5. Congratulations, you have successfully created your first pipeline using Azure PowerShell!
 
-## パイプラインを監視する
-この手順では、Data Factory REST API を使用して、パイプラインによって生成されるスライスを監視します。
+## <a name="monitor-pipeline"></a>Monitor pipeline
+In this step, you use Data Factory REST API to monitor slices being produced by the pipeline.
 
-	$ds ="AzureBlobOutput"
+    $ds ="AzureBlobOutput"
 
-	$cmd = {.\curl.exe -X GET -H "Authorization: Bearer $accessToken" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/$ds/slices?start=1970-01-01T00%3a00%3a00.0000000Z"&"end=2016-08-12T00%3a00%3a00.0000000Z"&"api-version=2015-10-01};
+    $cmd = {.\curl.exe -X GET -H "Authorization: Bearer $accessToken" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/$ds/slices?start=1970-01-01T00%3a00%3a00.0000000Z"&"end=2016-08-12T00%3a00%3a00.0000000Z"&"api-version=2015-10-01};
 
-	$results2 = Invoke-Command -scriptblock $cmd;
+    $results2 = Invoke-Command -scriptblock $cmd;
 
-	IF ((ConvertFrom-Json $results2).value -ne $NULL) {
-	    ConvertFrom-Json $results2 | Select-Object -Expand value | Format-Table
-	} else {
-    	    (convertFrom-Json $results2).RemoteException
-	}
+    IF ((ConvertFrom-Json $results2).value -ne $NULL) {
+        ConvertFrom-Json $results2 | Select-Object -Expand value | Format-Table
+    } else {
+            (convertFrom-Json $results2).RemoteException
+    }
 
 
 > [AZURE.IMPORTANT] 
-オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。そのため、パイプラインによるスライスの処理に**約 30 分**かかると想定してください。
+> Creation of an on-demand HDInsight cluster usually takes sometime (approximately 20 minutes). Therefore, expect the pipeline to take **approximately 30 minutes** to process the slice.  
 
-**Ready** 状態または **Failed** 状態のスライスが見つかるまで、順番に Invoke-Command を実行します。スライスが Ready 状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。オンデマンド HDInsight クラスターの作成には、通常はしばらく時間がかかります。
+Run the Invoke-Command and the next one until you see the slice in **Ready** state or **Failed** state. When the slice is in Ready state, check the **partitioneddata** folder in the **adfgetstarted** container in your blob storage for the output data.  The creation of an on-demand HDInsight cluster usually takes some time.
 
 ![output data](./media/data-factory-build-your-first-pipeline-using-rest-api/three-ouptut-files.png)
 
-> [AZURE.IMPORTANT] 入力ファイルは、スライスが正常に処理された時点で削除されます。そのためスライスを取得したり、このチュートリアルをもう一度行ったりする場合は、adfgetstarted コンテナーの inputdata フォルダーに入力ファイル (input.log) をアップロードしてください。
+> [AZURE.IMPORTANT] The input file gets deleted when the slice is processed successfully. Therefore, if you want to rerun the slice or do the tutorial again, upload the input file (input.log) to the inputdata folder of the adfgetstarted container.
 
-Azure ポータルを使用して、スライスを監視し、問題のトラブルシューティングを行うこともできます。詳細については、[Azure ポータルを使用したパイプラインの監視](data-factory-build-your-first-pipeline-using-editor.md##monitor-pipeline)に関する記事を参照してください。
+You can also use Azure portal to monitor slices and troubleshoot any issues. See [Monitor pipelines using Azure portal](data-factory-build-your-first-pipeline-using-editor.md##monitor-pipeline) details.  
 
-## 概要 
-このチュートリアルでは、HDInsight Hadoop クラスター上で Hive スクリプトを実行してデータを処理するために、Azure データ ファクトリを作成しました。以下の手順を実行するために、Azure ポータルで Data Factory エディターを使用しました。
+## <a name="summary"></a>Summary 
+In this tutorial, you created an Azure data factory to process data by running Hive script on a HDInsight hadoop cluster. You used the Data Factory Editor in the Azure portal to do the following steps:  
 
-1.	Azure **データ ファクトリ**を作成しました。
-2.	次の 2 つの**リンクされたサービス**を作成しました。
-	1.	入出力ファイルを保持する Azure Blob Storage をデータ ファクトリにリンクするための **Azure Storage** のリンクされたサービス。
-	2.	オンデマンド HDInsight Hadoop クラスターをデータ ファクトリにリンクするための **Azure HDInsight** オンデマンドのリンクされたサービス。Azure Data Factory は、入力データを処理し、出力データを生成するために、HDInsight Hadoop クラスターをジャストインタイムで作成します。
-3.	パイプラインの HDInsight Hive アクティビティ向けの入出力データを記述する 2 つの**データセット**を作成しました。
-4.	**HDInsight Hive** アクティビティを持つ**パイプライン**を作成しました。
+1.  Created an Azure **data factory**.
+2.  Created two **linked services**:
+    1.  **Azure Storage** linked service to link your Azure blob storage that holds input/output files to the data factory.
+    2.  **Azure HDInsight** on-demand linked service to link an on-demand HDInsight Hadoop cluster to the data factory. Azure Data Factory creates a HDInsight Hadoop cluster just-in-time to process input data and produce output data. 
+3.  Created two **datasets**, which describe input and output data for HDInsight Hive activity in the pipeline. 
+4.  Created a **pipeline** with a **HDInsight Hive** activity. 
 
-## 次のステップ
-この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「[チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+In this article, you have created a pipeline with a transformation activity (HDInsight Activity) that runs a Hive script on an on-demand Azure HDInsight cluster. To see how to use a Copy Activity to copy data from an Azure Blob to Azure SQL, see [Tutorial: Copy data from an Azure Blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-## 関連項目
-| トピック | Description |
+## <a name="see-also"></a>See Also
+| Topic | Description |
 | :---- | :---- |
-| [Data Factory REST API リファレンス](https://msdn.microsoft.com/library/azure/dn906738.aspx) | Data Factory コマンドレットに関する包括的なドキュメントです。 |
-| [データ変換のアクティビティ](data-factory-data-transformation-activities.md) | この記事には、Azure Data Factory でサポートされているデータ変換のアクティビティ (このチュートリアルで使用した HDInsight Hive 変換など) の一覧を示します。 |
-| [スケジュールと実行](data-factory-scheduling-and-execution.md) | この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
-| [パイプライン](data-factory-create-pipelines.md) | この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
-| [データセット](data-factory-create-datasets.md) | この記事では、Azure Data Factory のデータセットについて説明します。
-| [Azure ポータルのブレードを使用したパイプラインの監視と管理に関するページ](data-factory-monitor-manage-pipelines.md) | この記事では、Azure ポータルのブレードを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
-| [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) | この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 
+| [Data Factory REST API Reference](https://msdn.microsoft.com/library/azure/dn906738.aspx) |  See comprehensive documentation on Data Factory cmdlets |
+| [Data Transformation Activities](data-factory-data-transformation-activities.md) | This article provides a list of data transformation activities (such as HDInsight Hive transformation you used in this tutorial) supported by Azure Data Factory. |
+| [Scheduling and Execution](data-factory-scheduling-and-execution.md) | This article explains the scheduling and execution aspects of Azure Data Factory application model. |
+| [Pipelines](data-factory-create-pipelines.md) | This article helps you understand pipelines and activities in Azure Data Factory and how to use them to construct end-to-end data-driven workflows for your scenario or business. |
+| [Datasets](data-factory-create-datasets.md) | This article helps you understand datasets in Azure Data Factory.
+| [Monitor and Manage Pipelines using Azure portal blades](data-factory-monitor-manage-pipelines.md) | This article describes how to monitor, manage, and debug your pipelines using Azure portal blades. |
+| [Monitor and manage pipelines using Monitoring App](data-factory-monitor-manage-app.md) | This article describes how to monitor, manage, and debug pipelines using the Monitoring & Management App. 
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

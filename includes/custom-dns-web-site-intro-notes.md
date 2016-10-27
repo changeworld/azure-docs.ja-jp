@@ -1,7 +1,9 @@
-この記事は Azure App Service (Web Apps、API Apps、Mobile Apps、Logic Apps) について記載しています。Cloud Services については、[「Azure クラウド サービスのカスタム ドメイン名の構成」](../articles/cloud-services/cloud-services-custom-domain-name.md) を参照してください。
+This article is for Azure App Service (Web Apps, API Apps, Mobile Apps, Logic Apps); for Cloud Services, see [Configuring a custom domain name for an Azure cloud service](../articles/cloud-services/cloud-services-custom-domain-name.md).
 
-> [AZURE.NOTE]  アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) によって負荷分散される場合、この記事の上部にあるセレクターをクリックして、具体的な手順を確認してください。
+> [AZURE.NOTE]  If you app is load-balanced by [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), click the selector at the top of this article to get specific steps.
 >
-> **Free モードでは、カスタム ドメイン名を使用できません**。[より高い価格レベルに上げる](../articles/app-service-web/web-sites-scale.md) 必要があります。その場合、サブスクリプションに対して課金される金額が変更される可能性があります。詳細については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」をご覧ください。
+> **Custom domain names are not enabled for Free tier**. You must [scale up to a higher pricing tier](../articles/app-service-web/web-sites-scale.md), which may change how much you are billed for your subscription. See [App Service Pricing](https://azure.microsoft.com/pricing/details/app-service/) for more information.
 
-<!---HONumber=AcomDC_0727_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

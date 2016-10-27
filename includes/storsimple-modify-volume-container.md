@@ -1,29 +1,35 @@
 <!--author=SharS last changed: 1/7/2016-->
 
-#### ボリューム コンテナーを変更するには
+#### <a name="to-modify-a-volume-container"></a>To modify a volume container
 
-1. **[デバイス]** ページで、デバイスを選択してダブルクリックし、**[ボリューム コンテナー]** タブをクリックします。
+1. On the **Devices** page, select the device, double-click it, and then click the **Volume containers** tab.
 
-2. ボリューム コンテナーの表形式の一覧で、変更する設定を選択し、**[変更]** をクリックします。
+2. In the tabular listing of the volume containers, select the setting that you want to modify, and click **Modify**.
 
-3. **[ボリューム コンテナーの変更]** ダイアログ ボックスで、次の操作を行います。
+3. In the **Modify Volume container** dialog box, do the following:
 
-    1. ボリューム コンテナーの名前を変更し、関連付けられている帯域幅の設定を変更します。 
+    1. Change the name of the volume container and modify the associated bandwidth setting. 
 
         ![Modify Volume Container with Bandwidth Template 1](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
 
-    2. 暗号化キーとストレージ アカウントは、指定後は変更できません。**[帯域幅テンプレートの選択]** を指定した場合は、矢印をクリックして次のページに進みます。
+    2. The encryption key and storage account cannot be changed after they are specified. If you specified **Select a bandwidth template**, click the arrow to proceed to the next page.
 
-4. **[ボリューム コンテナーの変更]** ダイアログ ボックスの次のページで、次の操作を行います。
+4. In the next page of the **Modify Volume Container** dialog box:
 
-    1. ドロップダウン リストから、既存の帯域幅テンプレートを選択します。
+    1. From the drop-down list, choose an existing bandwidth template.
 
-    2. 指定した帯域幅テンプレートのスケジュール設定を確認します。
+    2. Review the schedule settings for the specified bandwidth template.
 
         ![Modify Volume Container with Bandwidth Template 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
 
-    3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) をクリックして、更新した設定を保存します。**[ボリューム コンテナー]** ページが更新され、変更が反映されます。
+    3. Click the check icon ![check icon](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) to save the updated settings. The **Volume containers** page will be updated to reflect the changes.
 
  
 
-<!---HONumber=AcomDC_0114_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

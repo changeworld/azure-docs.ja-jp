@@ -1,65 +1,70 @@
 <properties
-	pageTitle="Azure サービスの中断が Azure 仮想マシンに影響を与える場合の対処方法 | Microsoft Azure"
-	description="Azure サービスの中断が Azure 仮想マシンに影響を与える場合の対処方法について説明します。"
-	services="virtual-machines"
-	documentationCenter=""
-	authors="kmouss"
-	manager="timlt"
-	editor=""/>
+    pageTitle="What to do in the event that an Azure service disruption impacts Azure virtual machines | Microsoft Azure"
+    description="Learn what to do in the event that an Azure service disruption impacts Azure virtual machines."
+    services="virtual-machines"
+    documentationCenter=""
+    authors="kmouss"
+    manager="timlt"
+    editor=""/>
 
 <tags
-	ms.service="virtual-machines"
-	ms.workload="virtual-machines"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="05/16/2016"
-	ms.author="kmouss;aglick"/>
+    ms.service="virtual-machines"
+    ms.workload="virtual-machines"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="05/16/2016"
+    ms.author="kmouss;aglick"/>
 
-#Azure サービスの中断が Azure 仮想マシンに影響を与える場合の対処方法
 
-Microsoft では、必要なときにサービスがいつでも使用できるように取り組んでいますが、やむを得ない事情により、計画されていないサービス中断が発生することがあります。
+#<a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-virtual-machines"></a>What to do in the event that an Azure service disruption impacts Azure virtual machines
 
-Microsoft は、稼働時間と接続に関するコミットメントとして、サービスのサービス レベル アグリーメント (SLA) を提供しています。個々の Azure サービスの SLA については、[Azure サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)に関するページを参照してください。
+At Microsoft, we work hard to make sure that our services are always available to you when you need them. Forces beyond our control sometimes impact us in ways that cause unplanned service disruptions.
 
-Azure には、可用性の高いアプリケーションをサポートするさまざまなプラットフォーム機能が既に組み込まれています。これらのサービスの詳細については、[Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関する記事をご覧ください。
+Microsoft provides a Service Level Agreement (SLA) for its services as a commitment for uptime and connectivity. The SLA for individual Azure services can be found at [Azure Service Level Agreements](https://azure.microsoft.com/support/legal/sla/).
 
-この記事では、大きな自然災害や広範囲にわたるサービス中断により、リージョン全体で障害が発生した場合の真の障害復旧シナリオについて説明します。こうした状況はほとんど発生しませんが、リージョン全体で中断が発生する可能性に対して準備する必要があります。リージョン全体でサービス中断が発生した場合、データのローカル冗長コピーは、一時的に使用できなくなります。geo レプリケーションを有効にしてある場合は、Azure Storage の BLOB とテーブルのコピーがさらに 3 つ、別のリージョンに格納されます。地域的な停電や災害が発生し、プライマリ リージョンを復旧できない場合は、すべての DNS エントリが、geo レプリケートされたリージョンに再マッピングされます。
+Azure already has many built-in platform features that support highly available applications. For more about these services, read [Disaster recovery and high availability for Azure applications](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
->[AZURE.NOTE]ユーザーはこのプロセスを制御できないこと、およびリージョン全体のサービス中断の場合にのみ行われることに注意してください。そのため、最高レベルの可用性を実現するには、アプリケーション固有の他のバックアップ戦略にも依存する必要があります。詳細については、[障害復旧のためのデータ戦略](../resiliency/resiliency-disaster-recovery-azure-applications.md#data-strategies-for-disaster-recovery)に関するセクションをご覧ください。
+This article covers a true disaster recovery scenario, when a whole region experiences an outage due to major natural disaster or widespread service interruption. These are rare occurrences, but you must prepare for the possibility that there is an outage of an entire region. If an entire region experiences a service disruption, the locally redundant copies of your data would temporarily be unavailable. If you have enabled geo-replication, three additional copies of your Azure Storage blobs and tables are stored in a different region. In the event of a complete regional outage or a disaster in which the primary region is not recoverable, Azure remaps all of the DNS entries to the geo-replicated region.
 
-こうした状況はほとんど発生しませんが、Azure 仮想マシンのアプリケーションがデプロイされているリージョン全体でサービス中断が発生した場合は、Azure 仮想マシンに関する次のガイダンスに従って対応してください。
+>[AZURE.NOTE]Be aware that you do not have any control over this process, and it will only occur for region-wide service disruptions. Because of this, you must also rely on other application-specific backup strategies to achieve the highest level of availability. For more information, see the section on [Data strategies for disaster recovery](../resiliency/resiliency-disaster-recovery-azure-applications.md#data-strategies-for-disaster-recovery).
 
-##オプション 1: 復旧を待つ
-この場合、ユーザーによる操作は必要ありません。サービスを利用できるようにするために鋭意取り組んでいることをご理解ください。現在のサービスの状態は [Azure サービスの正常性ダッシュボード](https://azure.microsoft.com/status/)で確認できます。
+To help you handle these rare occurrences, we provide the following guidance for Azure virtual machines in the case of a service disruption of the entire region where your Azure virtual machine application is deployed.
 
->[AZURE.NOTE]中断前に Azure Site Recovery、仮想マシンのバックアップ、読み取りアクセス geo 冗長ストレージ、または geo 冗長ストレージを設定しなかった場合は、このオプションを使用することをお勧めします。VM 仮想ハード ドライブ (VHD) が格納されているストレージ アカウントに対して geo 冗長ストレージまたは読み取りアクセス geo 冗長ストレージを設定した場合は、基本イメージ VHD の回復を当てにして、そこから新しい VM のプロビジョニングを試みることができます。このオプションはお勧めできません。Azure VM バックアップまたは Azure Site Recovery が使用されていない限り、データの同期が保証されていないためです。そのため、このオプションの動作は保証されません。
+##<a name="option-1:-wait-for-recovery"></a>Option 1: Wait for recovery
+In this case, no action on your part is required. Know that we are working diligently to restore service availability. You can see the current service status on our [Azure Service Health Dashboard](https://azure.microsoft.com/status/).
 
-仮想マシンにすぐにアクセスする必要があるお客様は、次の 2 つのオプションを使用できます。
+>[AZURE.NOTE]This is the best option if you have not set up Azure Site Recovery, virtual machine backup, read-access geo-redundant storage, or geo-redundant storage prior to the disruption. If you have set up geo-redundant storage or read-access geo-redundant storage for the storage account where your VM virtual hard drives (VHDs) are stored, you can look to recover the base image VHD and try to provision a new VM from it. This is not a preferred option because there are no guarantees of synchronization of data unless Azure VM backup or Azure Site Recovery are used. Consequently, this option is not guaranteed to work.
 
->[AZURE.NOTE]次のオプションは両方とも、一部のデータが失われる可能性があることに注意してください。
+For customers who want immediate access to virtual machines, the following two options are available.  
 
-##オプション 2: バックアップから VM を復元する
-VM バックアップが構成されているお客様の場合は、そのバックアップと回復ポイントから VM を復元できます。
+>[AZURE.NOTE]Be aware that both of the following options have the possibility of some data loss.     
 
-Azure バックアップから新しい VM を復元するには、「[Azure での仮想マシンの復元](../backup/backup-azure-restore-vms.md)」をご覧ください。
+##<a name="option-2:-restore-a-vm-from-a-backup"></a>Option 2: Restore a VM from a backup
+For customers who have configured a VM backup, you can restore the VM from its backup and recovery point.
 
-Azure 仮想マシンのバックアップ インフラストラクチャの計画については、「[Azure における VM バックアップ インフラストラクチャの計画を立てる](../backup/backup-azure-vms-introduction.md)」をご覧ください。
+To restore a new VM from Azure Backup, see [Restore virtual machines in Azure](../backup/backup-azure-restore-vms.md).
 
-##オプション 3: Azure Site Recovery を使用してフェールオーバーを開始する
-影響を受ける Azure 仮想マシンで動作するように Azure Site Recovery を構成した場合は、そのレプリカから VM を復元できます。このレプリカは、Azure またはオンプレミスのいずれかに配置できます。この場合は、既存のレプリカから新しい VM を作成できます。Azure Site Recovery レプリカから VM を復元するには、「[Azure Site Recovery を使用した Azure リージョン間での Azure IaaS 仮想マシンの移行](../site-recovery/site-recovery-migrate-azure-to-azure.md)」をご覧ください。
+To help you plan for your Azure virtual machines backup infrastructure, see [Plan your VM backup infrastructure in Azure](../backup/backup-azure-vms-introduction.md).
 
->[AZURE.NOTE]Azure の仮想マシンのオペレーティング システムとデータ ディスクはセカンダリ VHD にレプリケートされますが、レプリケートの対象が geo 冗長ストレージまたは読み取りアクセス geo 冗長ストレージ アカウント内にある場合は、各 VHD のレプリケートは個別に実行されます。このレベルのレプリケーションでは、レプリケートされた VHD 間の一貫性が保証されません。こうしたデータ ディスクを使用しているアプリケーション/データベースが相互に依存している場合は、すべての VHD が 1 つのスナップショットとしてレプリケートされるとは限りません。また、geo 冗長ストレージまたは読み取りアクセス geo 冗長ストレージの VHD レプリカを使用した場合、VM を起動できるアプリケーション整合性スナップショットが作成されるとは限りません。
+##<a name="option-3:-initiate-a-failover-by-using-azure-site-recovery"></a>Option 3: Initiate a failover by using Azure Site Recovery
+If you have configured Azure Site Recovery to work with your impacted Azure virtual machines, you can restore your VMs from their replicas. These replicas can reside either on Azure or on premises. In this case, you can create a new VM from its existing replica. To restore your VMs from an Azure Site Recovery replica, see [Migrate Azure IaaS virtual machines between Azure regions with Azure Site Recovery](../site-recovery/site-recovery-migrate-azure-to-azure.md).
 
-##次のステップ
-障害復旧と高可用性戦略を実装する方法の詳細については、[Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関するページを参照してください。
+>[AZURE.NOTE]Although Azure virtual machine operating system and data disks will be replicated to a secondary VHD, if they are in a geo-redundant storage or read-access geo-redundant storage account, each VHD is replicated independently. This level of replication doesn’t guarantee consistency across the replicated VHDs. If your application and/or databases that use these data disks have dependencies on each other, it is not guaranteed that all VHDs are replicated as one snapshot. It is also not guaranteed that the VHD replica from geo-redundant storage or read-access geo-redundant storage will result in an application consistent snapshot to boot the VM.
 
-クラウド プラットフォームの機能の詳細な技術について理解を深めるには、「[Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)」を参照してください。
+##<a name="next-steps"></a>Next steps
+To learn more about how to implement a disaster recovery and high availability strategy, see [Disaster recovery and high availability for Azure applications](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-仮想マシンをバックアップする方法を「[Azure 仮想マシンのバックアップ](../backup/backup-azure-vms.md)」で参照します。
+To develop a detailed technical understanding of a cloud platform’s capabilities, see [Azure resiliency technical guidance](../resiliency/resiliency-technical-guidance.md).
 
-Azure Site Recovery を使用して、VMWare、HYPER-V 仮想マシン上で実行されている物理的 (および仮想的) な Windows コンピューターと Linux コンピューターの保護を調整し自動化する方法を [Azure Site Recovery](https://azure.microsoft.com/documentation/learning-paths/site-recovery/) で参照します。
+To learn how to back up VMs, see [Back up Azure virtual machines](../backup/backup-azure-vms.md).
 
-不明な点がある場合、または Microsoft による代理操作をご希望の場合は、[カスタマー サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)までご連絡ください。
+Learn how to use Azure Site Recovery to orchestrate and automate protection of your physical (and virtual) Windows and Linux machines that run on VMWare and Hyper-V VMs, see [Azure Site Recovery](https://azure.microsoft.com/documentation/learning-paths/site-recovery/).
 
-<!---HONumber=AcomDC_0824_2016-->
+If the instructions are not clear, or if you would like Microsoft to do the operations on your behalf, contact [Customer Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

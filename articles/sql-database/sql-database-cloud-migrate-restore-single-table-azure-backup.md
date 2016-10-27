@@ -1,74 +1,84 @@
 <properties
-	pageTitle="Azure SQL Database のバックアップから 1 つのテーブルを復元する | Microsoft Azure"
-	description="Azure SQL Database のバックアップから 1 つのテーブルを復元する方法を説明します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="dalechen"
-	manager="felixwu"
-	editor=""/>
+    pageTitle="Restore a single table from Azure SQL Database backup | Microsoft Azure"
+    description="Learn how to restore a single table from Azure SQL Database backup."
+    services="sql-database"
+    documentationCenter=""
+    authors="dalechen"
+    manager="felixwu"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/31/2016"
-	ms.author="daleche"/>
+    ms.service="sql-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/31/2016"
+    ms.author="daleche"/>
 
 
-# Azure SQL Database のバックアップから 1 つのテーブルを復元する方法
 
-SQL Database のデータを誤って変更してしまい、影響を受けた 1 つのテーブルを回復することが必要になる場合があります。この記事では、SQL Database [自動バックアップ](sql-database-automated-backups.md)のいずれかからデータベース内の 1 つのテーブルを復元する方法を説明します。
+# <a name="how-to-restore-a-single-table-from-an-azure-sql-database-backup"></a>How to restore a single table from an Azure SQL Database backup
 
-## 準備手順: テーブルの名前を変更し、データベースのコピーを復元する
-1. Azure SQL Database で、復元したコピーで置き換えるテーブルを識別します。テーブルの名前を変更するには、Microsoft SQL Management Studio を使用します。たとえば、&lt;テーブル名&gt;\_old のような名前に変更します。
+You may encounter a situation in which you accidentally modified some data in a SQL database and now you want to recover the single affected table. This article describes how to restore a single table in a database from one of the SQL Database [automatic backups](sql-database-automated-backups.md).
 
-	**注意** ブロックされるのを防ぐため、名前を変更するテーブルでアクティビティが実行されていないことを確認します。問題が発生する場合は、メンテナンス期間中にこの手順を実行するようにしてください。
+## <a name="preparation-steps:-rename-the-table-and-restore-a-copy-of-the-database"></a>Preparation steps: Rename the table and restore a copy of the database
+1. Identify the table in your Azure SQL database that you want to replace with the restored copy. Use Microsoft SQL Management Studio to rename the table. For example, rename the table as &lt;table name&gt;_old.
 
-2. [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)手順を使用して、データベースのバックアップを復元したい時点に復元します。
+    **Note** To avoid being blocked, make sure that there's no activity running on the table that you are renaming. If you encounter issues, make sure that perform this procedure during a maintenance window.
 
-	**注**:
-	- 復元されたデータベースの名前は、"データベース名 + タイムスタンプ" という形式になります (例: **Adventureworks2012\_2016-01-01T22-12Z**)。この手順では、サーバー上の既存のデータベース名は上書きされません。これは安全のためであり、ユーザーは現在のデータベースを削除して実稼働用に復元されたデータベースの名前を変更する前に、復元されたデータベースを確認できます。
-	- Basic から Premium までのすべてのパフォーマンス レベルが、サービスによって自動的にバックアップされます。バックアップ リテンション期間メトリックは、レベルによって異なります。
+2. Restore a backup of your database to a point in time that you want to recover to using the [Point-In_Time Restore](sql-database-recovery-using-backups.md#point-in-time-restore) steps.
 
-| DB 復元 | Basic レベル | Standard レベル | Premium レベル |
+    **Notes**:
+    - The name of the restored database will be in the DBName+TimeStamp format; for example, **Adventureworks2012_2016-01-01T22-12Z**. This step won't overwrite the existing database name on the server. This is a safety measure, and it's intended to allow you to verify the restored database before they drop their current database and rename the restored database for production use.
+    - All performance tiers from Basic to Premium are automatically backed up by the service, with varying backup retention metrics, depending on the tier:
+
+| DB Restore | Basic tier | Standard tiers | Premium tiers |
 | :-- | :-- | :-- | :-- |
-| ポイントインタイム リストア | 7 日間以内のあらゆる復元ポイント|35 日間以内のあらゆる復元ポイント| 35 日間以内のあらゆる復元ポイント|
+|  Point In Time Restore |  Any restore point within 7 days|Any restore point within 35 days| Any restore point within 35 days|
 
-## SQL Database 移行ツールを使用して、復元されたデータベースからテーブルをコピーする
-1. [SQL Database 移行ウィザード](https://sqlazuremw.codeplex.com)をダウンロードしてインストールします。
+## <a name="copying-the-table-from-the-restored-database-by-using-the-sql-database-migration-tool"></a>Copying the table from the restored database by using the SQL Database Migration tool
+1. Download and install the [SQL Database Migration Wizard](https://sqlazuremw.codeplex.com).
 
-2. SQL Database 移行ウィザードを開き、**[処理の選択]** ページの **[分析と移行] の下にある [データベース]** を選択して、**[次へ]** をクリックします。![SQL Database 移行ウィザード - プロセスの選択](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/1.png)
-3. **[サーバーへの接続]** ダイアログで、次の設定を適用します。
- - **[サーバー名]**: SQL Azure インスタンス
- - **[認証]**: **[SQL Server 認証]**。ログイン資格情報を入力します。
- - **[Database]**: **[Master DB (データベース一覧を表示する)]**。
- - **注意** 既定では、ウィザードによってログイン情報が保存されます。保存したくない場合は、**[ログイン情報を忘れてください]** を選択します。 ![SQL Database 移行ウィザード - ソースの選択 - ステップ 1](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/2.png)
-4. **[移行元の選択]** ダイアログ ボックスで、「**準備手順**」セクションで復元したデータベースの名前を移行元として選択し、**[次へ]** をクリックします。
+2. Open the SQL Database Migration Wizard, on the **Select Process** page, select **Database under Analyze/Migrate**, and then click **Next**.
+![SQL Database Migration wizard - Select Process](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/1.png)
+3. In the **Connect to Server** dialog box, apply the following settings:
+ - **Server name**: Your SQL Azure instance
+ - **Authentication**: **SQL Server Authentication**. Enter your login credentials.
+ - **Database**: **Master DB (List all databases)**.
+ - **Note** By default the wizard saves your login information. If you don't want it to, select **Forget Login Information**.
+![SQL Database Migration wizard - Select Source - step 1](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/2.png)
+4. In the **Select Source** dialog box, select the restored database name from the **Preparation steps** section as your source, and then click **Next**.
 
-	![SQL Database 移行ウィザード - ソースの選択 - ステップ 2](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/3.png)
+    ![SQL Database Migration wizard - Select Source - step 2](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/3.png)
 
-5. **[オブジェクトの選択]** ダイアログ ボックスで **[スクリプト化するオブジェクトの選択]** オプションを選択し、対象サーバーに移行するテーブル (複数選択可) を選択します。 ![SQL Database 移行ウィザード - オブジェクトの選択](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/4.png)
+5. In the **Choose Objects** dialog box, select the **Select specific database objects** option, and then select the table(or tables) that you want to migrate to the target server.
+![SQL Database Migration wizard - Choose Objects](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/4.png)
 
-6. **[スクリプトウィザード設定確認]** ページで、SQL スクリプト生成の準備ができたことの確認を求められたら、**[はい]** をクリックします。後で使用するために TSQL スクリプトを保存するオプションもあります。 ![SQL Database 移行ウィザード - スクリプト ウィザードの概要](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/5.png)
+6. On the **Script Wizard Summary** page, click **Yes** when you’re prompted about whether you’re ready to generate a SQL script. You also have the option to save the TSQL Script for later use.
+![SQL Database Migration wizard - Script Wizard Summary](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/5.png)
 
-7. **[結果]** ページで、**[次へ]** をクリックします。 ![SQL Database 移行ウィザード - 結果の概要](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/6.png)
+7. On the **Results Summary** page, click **Next**.
+![SQL Database Migration wizard - Results Summary](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/6.png)
 
-8. **[対象サーバーへの接続情報の設定]** ページで、**[サーバーへ接続]** をクリックし、詳細を次のように入力します。
-	- **[サーバー名]**: 対象サーバーのインスタンス
-	- **[認証]**: **[SQL Server 認証]**。ログイン資格情報を入力します。
-	- **[Database]**: **[Master DB (データベース一覧を表示する)]**。ターゲット サーバー上のすべてのデータベースが一覧表示されます。
+8. On the **Setup Target Server Connection** page, click **Connect to Server**, and then enter the details as follows:
+    - **Server Name**: Target server instance
+    - **Authentication**: **SQL Server authentication**. Enter your login credentials.
+    - **Database**: **Master DB (List all databases)**. This option lists all the databases on the target server.
 
-	![SQL Database 移行ウィザード - ターゲット サーバー接続のセットアップ](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/7.png)
+    ![SQL Database Migration wizard - Setup Target Server Connection](./media/sql-database-cloud-migrate-restore-single-table-azure-backup/7.png)
 
-9. **[接続]** をクリックし、テーブルの移行先とする対象データベースを選択して、**[次へ]** をクリックします。以前に生成されたスクリプトの実行が終了し、ターゲット データベースに新たにコピーされたテーブルが表示されます。
+9. Click **Connect**, select the target database that you want to move the table to, and then click **Next**. This should finish running the previously generated script, and you should see the newly moved table copied to the target database.
 
-## 確認手順
-1. 新しくコピーしたテーブルをクエリしてテストし、データが正しいことを確認します。確認できたら、「**準備手順**」セクションで名前を変更したテーブルを削除できます (例: &lt;テーブル名&gt;\_old)。
+## <a name="verification-step"></a>Verification step
+1. Query and test the newly copied table to make sure that the data is intact. Upon confirmation, you can drop the renamed table form **Preparation steps** section. (for example, &lt;table name&gt;_old).
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[SQL Database 自動バックアップ](sql-database-automated-backups.md)
+[SQL Database automatic backups](sql-database-automated-backups.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

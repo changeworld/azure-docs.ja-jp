@@ -1,369 +1,372 @@
 <properties
-	pageTitle="Azure Data Lake のスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル | Microsoft Azure"
-	description="Azure Data Lake を使用してデータセットに対してデータ探索と二項分類タスクを行う方法について説明します。"  
-	services="machine-learning"
-	documentationCenter=""
-	authors="bradsev"
-	manager="jhubbard"
-	editor="cgronlun" />
+    pageTitle="Scalable Data Science in Azure Data Lake: An end-to-end Walkthrough | Microsoft Azure"
+    description="How to use Azure Data Lake to do data exploration and binary classification tasks on a dataset."  
+    services="machine-learning"
+    documentationCenter=""
+    authors="bradsev"
+    manager="jhubbard"
+    editor="cgronlun" />
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/19/2016"
-	ms.author="bradsev;weig"/>
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/19/2016"
+    ms.author="bradsev;weig"/>
 
 
-# Azure Data Lake のスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル
 
-このチュートリアルでは、NYC タクシー乗車と料金のデータセットを例にして、Azure Data Lake を使用してデータ探索タスクと二項分類タスクを実行し、料金ごとにチップが支払われるかどうかを予測します。また、データの取得から、モデルのトレーニング、モデルを公開する Web サービスのデプロイまで、[Team Data Science Process](http://aka.ms/datascienceprocess) のエンド ツー エンドの手順について説明します。
+# <a name="scalable-data-science-in-azure-data-lake:-an-end-to-end-walkthrough"></a>Scalable Data Science in Azure Data Lake: An end-to-end Walkthrough
 
-
-### Azure Data Lake Analytics
-
-[Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) には、データ科学者が、拡張性が高く、コスト効率がよい方法で、任意のサイズ、形状、および速度のデータを格納し、データ処理、高度な分析、および機械学習モデリングを行うために必要なすべての機能が揃っています。データが実際に処理されたときにのみ、ジョブごとに課金されます。Azure Data Lake Analytics には U-SQL が含まれています。U-SQL は、SQL の宣言型の性質と C# の表現力を兼ね備え、スケーラブルな分散クエリ機能を持つ言語です。読み取り時にスキーマを適用して非構造化データを処理し、カスタム ロジックとユーザー定義関数 (UDF) を挿入できます。また、規模に応じて実行する方法を細かく制御できる拡張性もあります。U-SQL の背景にある設計理念の詳細については、[Visual Studio ブログの投稿](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)を参照してください。
-
-Data Lake Analytics は、Cortana Analytics Suite の重要な部分でもあり、Azure SQL Data Warehouse、Power BI、Data Factory と連携します。そのため、一式そろったクラウド ビッグ データと高度な分析プラットフォームを利用できます。
-
-このチュートリアルでは、まず、データ サイエンス プロセスを構成する Data Lake Analytics を使用したタスクの実行に必要な前提条件およびリソースと、そのインストール方法について説明します。その後、U-SQL を使用したデータ処理手順の概要を説明し、最後に予測モデルを構築およびデプロイするために Azure Machine Learning Studio と共に Python と Hive を使用する方法を示します。
+This walkthrough shows how to use Azure Data Lake to do data exploration and binary classification tasks on a sample of the NYC taxi trip and fare dataset to predict whether or not a tip will be paid by a fare. It walks you through the steps of the [Team Data Science Process](http://aka.ms/datascienceprocess), end-to-end, from data acquisition to model training, and then to the deployment of a web service that publishes the model.
 
 
-### U-SQL と Visual Studio
+### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
-このチュートリアルでは、データセットを処理する U-SQL スクリプトの編集に Visual Studio を使用することをお勧めします。ここでは U-SQL スクリプトについて説明します。また、スクリプトは別ファイルで提供されます。プロセスには、データの取り込み、探索、サンプリングが含まれています。また、U-SQL スクリプトで作成したジョブを Azure ポータルから実行する方法についても説明します。Azure Machine Learning Studio の二項分類モデルの構築とデプロイを容易にするために、関連する HDInsight クラスターのデータについて Hive テーブルを作成します。
+The [Microsoft Azure Data Lake](https://azure.microsoft.com/solutions/data-lake/) has all the capabilities required to make it easy for data scientists to store data of any size, shape and speed, and to conduct data processing, advanced analytics, and machine learning modeling with high scalability in a cost-effective way.   You pay on a per-job basis, only when data is actually being processed. Azure Data Lake Analytics includes U-SQL, a language that blends the declarative nature of SQL with the expressive power of C# to provide scalable distributed query capability. It enables you to process unstructured data by applying schema on read, insert custom logic and user defined functions (UDFs), and includes extensibility to enable fine grained control over how to execute at scale. To learn more about the design philosophy behind U-SQL, see [Visual Studio blog post](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
+Data Lake Analytics is also a key part of Cortana Analytics Suite and works with Azure SQL Data Warehouse, Power BI, and Data Factory. This gives you a complete cloud big data and advanced analytics platform.
 
-### Python
-
-このチュートリアルには、Python と Azure Machine Learning Studio を使用して予測モデルを構築およびデプロイする方法について説明するセクションも含まれています。このプロセスのこれらの手順に関する Python スクリプトを含む Jupyter Notebook を提供します。この Notebook には、ここで概要を説明する二項分類モデルに加え、追加機能のエンジニアリング手順とモデル構築のコードが含まれています。たとえば、多クラス分類や回帰モデリングなどです。回帰タスクでは、チップの他の特徴に基づいてチップの金額を予測します。
-
-
-### Azure Machine Learning
-Azure Machine Learning Studio は、予測モデルを構築およびデプロイするために使用します。その操作は、2 つのアプローチで行います。まず、Python スクリプトを使用し、次に HDInsight (Hadoop) クラスターの Hive テーブルを使用します。
+This walkthrough begins by describing the prerequisites and resources that are needed to complete the tasks with Data Lake Analytics that form the data science process and how to install them. Then it outlines the data processing steps using U-SQL and concludes by showing how to use Python and Hive with Azure Machine Learning Studio to build and deploy the predictive models. 
 
 
-### スクリプト
+### <a name="u-sql-and-visual-studio"></a>U-SQL and Visual Studio
 
-このチュートリアルでは、基本的な手順の概要のみを説明します。完全な **U-SQL スクリプト**と **Jupyter Notebook** は、[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) からダウンロードできます。
+This walkthrough recommends using Visual Studio to edit U-SQL scripts to process the dataset. The U-SQL scripts are described here and provided in a separate file. The process includes ingesting, exploring, and sampling the data. It also shows how to run a U-SQL scripted job from the Azure portal. Hive tables are created for the data in an associated HDInsight cluster to facilitate the building and deployment of a binary classification model in Azure Machine Learning Studio.  
 
 
-## 前提条件
+### <a name="python"></a>Python
 
-以下のトピックを読む前に、次の項目を用意する必要があります。
+This walkthrough also contains a section that shows how to build and deploy a predictive model using Python with Azure Machine Learning Studio.  We provide a Jupyter notebook with the Python scripts for these steps in this process. The notebook includes code for some additional feature engineering steps and models construction such as multiclass classification and regression modeling in addition to the binary classification model outlined here. The regression task is to predict the amount of the tip based on other tip features. 
 
-- Azure サブスクリプション。Azure サブスクリプションがない場合は、[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-- [推奨] Visual Studio 2013 または 2015。いずれかのバージョンがインストールされていない場合、無料の Community エディションを[ここ](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)からダウンロードできます。[Visual Studio] セクションの **[Community 2015 のダウンロード]** ボタンをクリックします。
+### <a name="azure-machine-learning"></a>Azure Machine Learning
+Azure Machine Learning Studio is used to build and deploy the predictive models. This is done using two approaches: first with Python scripts and then with Hive tables on an HDInsight (Hadoop) cluster.
 
->[AZURE.NOTE] Visual Studio ではなく、Azure ポータルを使用して Azure Data Lake クエリを送信することもできます。Visual Studio とポータルの両方でこの手順を実行する方法については、このページの「**U-SQL を使用してデータを処理する**」を参照してください。
 
-- Azure Data Lake プレビューにサインアップする
+### <a name="scripts"></a>Scripts
 
->[AZURE.NOTE] Azure Data Lake Store (ADLS) と Azure Data Lake Analytics (ADLA) はプレビュー期間なので、使用する承認を受ける必要があります。初めて ADLS または ADLA を作成するときに、サインアップするように求められます。サインアップするには、**[プレビューにサインアップ]** をクリックし、契約を読んで **[OK]** をクリックします。たとえば、ADLS のサインアップ ページは次のとおりです。
+Only the principal steps are outlined in this walkthrough. You can download the full **U-SQL script** and **Jupyter Notebook** from [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
+
+
+## <a name="prerequisites"></a>Prerequisites
+
+Before you begin these topics, you must have the following:
+
+- An Azure subscription. If you do not already have one, see [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+
+- [Recommended] Visual Studio 2013, or 2015. If you do not already have one of these versions installed, you can download a free Community edition from [here](https://www.visualstudio.com/visual-studio-homepage-vs.aspx). Click on the **Download Community 2015** button under the Visual Studio section. 
+
+>[AZURE.NOTE] Instead of Visual Studio, you can also use the Azure Portal to submit Azure Data Lake queries. We will provide instructions on how to do so both with Visual Studio and on the portal in the section titled **Process data with U-SQL**. 
+
+- Signup for Azure Data Lake Preview
+
+>[AZURE.NOTE] You need to get approval to use Azure Data Lake Store (ADLS) and Azure Data Lake Analytics (ADLA) as these services are in preview. You will be prompted to sign up when you create your first ADLS or ADLA. To sigh up, click on **Sign up to preview**, read the agreement, and click **OK**. Here, for example, is the ADLS sign up page:
 
  ![2](./media/machine-learning-data-science-process-data-lake-walkthrough/2-ADLA-preview-signup.PNG)
 
 
-## Azure Data Lake のデータ サイエンス環境を準備する
-このチュートリアルのデータ サイエンス環境を準備するには、次のリソースを作成します。
+## <a name="prepare-data-science-environment-for-azure-data-lake"></a>Prepare data science environment for Azure Data Lake
+To prepare the data science environment for this walkthrough, create the following resources:
 
-- Azure Data Lake Store (ADLS)
+- Azure Data Lake Store (ADLS) 
 - Azure Data Lake Analytics (ADLA)
-- Azure BLOB ストレージ アカウント
-- Azure Machine Learning Studio アカウント
-- Azure Data Lake Tools for Visual Studio (推奨)
+- Azure Blob storage account
+- Azure Machine Learning Studio account
+- Azure Data Lake Tools for Visual Studio (Recommended)
 
-このセクションでは、これらの各リソースを作成する手順について説明します。Python ではなく、Azure Machine Learning で Hive テーブルを使用してモデルを構築する場合は、HDInsight (Hadoop) クラスターもプロビジョニングする必要があります。この代替手順については、以降の該当するセクションで説明します。<br/>
->AZURE.NOTE **Azure Data Lake Store** は、個別に作成することも、**Azure Data Lake Analytics** を作成するときに既定のストレージとして作成することもできます。以降のセクションでは、これらの各リソースを個別に作成する手順を説明していますが、Data Lake ストレージ アカウントを個別に作成する必要はありません。<br/>
-### Azure Data Lake Store を作成する
+This section provides instructions on how to create each of these resources. If you choose to use Hive tables with Azure Machine Learning, instead of Python, to build a model,you will also need to provision an HDInsight (Hadoop) cluster. This alternative procedure in described in the appropriate section below.
+<br/>
+>AZURE.NOTE The **Azure Data Lake Store** can be created either separately or when you create the **Azure Data Lake Analytics** as the default storage. Instructions are referenced for creating each of these resources separately below, but the Data Lake storage account need not be created separately.
+<br/>
+### <a name="create-an-azure-data-lake-store"></a>Create an Azure Data Lake Store
 
-[Azure ポータル](http://portal.azure.com)から ADLS を作成します。詳細については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。そこで説明されている **[オプションの構成]** ブレードの **[データソース]** ブレードで、クラスター AAD ID をセットアップする必要があります。
+Create an ADLS from the [Azure Portal](http://portal.azure.com). For details, see [Create an HDInsight cluster with Data Lake Store using Azure Portal](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md). Be sure to set up the Cluster AAD Identity in the **DataSource** blade of the **Optional Configuration** blade described there. 
 
  ![3](./media/machine-learning-data-science-process-data-lake-walkthrough/3-create-ADLS.PNG)
 
 
-### Azure Data Lake Analytics アカウントを作成する
-Azure ポータルで [ADLA アカウント](http://portal.azure.com)を作成します。詳細については、「[チュートリアル: Azure ポータルで Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)」を参照してください。
+### <a name="create-an-azure-data-lake-analytics-account"></a>Create an Azure Data Lake Analytics account
+Create an ADLA account from the [Azure Portal](http://portal.azure.com). For details, see [Tutorial: get started with Azure Data Lake Analytics using Azure Portal](../data-lake-analytics/data-lake-analytics-get-started-portal.md). 
 
  ![4](./media/machine-learning-data-science-process-data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 
-### Azure BLOB ストレージ アカウントを作成する
-[Azure ポータル](http://portal.azure.com)で Azure BLOB ストレージ アカウントを作成します。詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
-	
+### <a name="create-an-azure-blob-storage-account"></a>Create an Azure Blob storage account
+Create an Azure Blob storage account from the [Azure Portal](http://portal.azure.com). For details, see the Create a storage account section in [About Azure storage accounts](../storage/storage-create-storage-account.md).
+    
  ![5](./media/machine-learning-data-science-process-data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
 
-### Azure Machine Learning Studio アカウントをセットアップする
-[[Azure Machine Learning]](https://azure.microsoft.com/services/machine-learning/) ページから Azure Machine Learning Studio にサインアップまたはサインインします。**[今すぐ開始]** ボタンをクリックし、"Free ワークスペース" または "Standard ワークスペース" を選択します。選択すると、Azure ML Studio で実験を作成できるようになります。
+### <a name="set-up-an-azure-machine-learning-studio-account"></a>Set up an Azure Machine Learning Studio account
+Sign up/into Azure Machine Learning Studio from the [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) page. Click on the **Get started now** button and then choose a "Free Workspace" or "Standard Workspace". After this you will be able to create experiments in Azure ML Studio.  
 
-### Azure Data Lake Tools をインストールする [推奨]
-お使いの Visual Studio バージョン用の Azure Data Lake Tools は、[Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504) からインストールします。
+### <a name="install-azure-data-lake-tools-[recommended]"></a>Install Azure Data Lake Tools [Recommended]
+Install Azure Data Lake Tools for your version of Visual Studio from [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
 
  ![6](./media/machine-learning-data-science-process-data-lake-walkthrough/6-install-ADL-tools-VS.PNG)
 
-インストールが正常に完了したら、Visual Studio を開きます。上部のメニューに [Data Lake] タブが表示されます。Azure アカウントにサインインすると、左側のパネルに Azure リソースが表示されます。
+After the installation finishes successfully, open up Visual Studio. You should see the Data Lake tab the menu at the top. Your Azure resources should appear in the left panel when you sign into your Azure account.
 
  ![7](./media/machine-learning-data-science-process-data-lake-walkthrough/7-install-ADL-tools-VS-done.PNG)
 
 
-## NYC タクシー乗車データセット
-ここで使用したデータセットは、[NYC タクシー乗車データセット](http://www.andresmh.com/nyctaxitrips/)という一般公開されているデータセットです。NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、およびメダリオン (タクシーの一意の ID) 番号が含まれています。データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
+## <a name="the-nyc-taxi-trips-dataset"></a>The NYC Taxi Trips dataset
+The data set we used here is a publicly available dataset -- the [NYC Taxi Trips dataset](http://www.andresmh.com/nyctaxitrips/). The NYC Taxi Trip data consists of about 20GB of compressed CSV files (~48GB uncompressed), recording more than 173 million individual trips and the fares paid for each trip. Each trip record includes the pickup and drop-off locations and times, anonymized hack (driver's) license number, and the medallion (taxi’s unique id) number. The data covers all trips in the year 2013 and is provided in the following two datasets for each month:
 
- - 「trip\_data」の CSV ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。いくつかのサンプル レコードを次に示します。
+ - The 'trip_data' CSV contains trip details, such as number of passengers, pickup and dropoff points, trip duration, and trip length. Here are a few sample records:
 
-		medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count, trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-		89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count, trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
+        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
+        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
+        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
+        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
+        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
 
- - 「trip\_fare」の CSV ファイルには、各乗車に対して支払われた料金の詳細 (支払いの種類、料金、追加料金と税、チップ、道路などの通行料、および合計支払金額など) が含まれます。いくつかのサンプル レコードを次に示します。
+ - The 'trip_fare' CSV contains details of the fare paid for each trip, such as payment type, fare amount, surcharge and taxes, tips and tolls, and the total amount paid. Here are a few sample records:
 
-		medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-		89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-		0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-		DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
+        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
+        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
+        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
+        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
+        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-trip\_data と trip\_fare を結合するための一意のキーは、medallion、hack\_license、pickup\_datetime という 3 つのフィールドで構成されています。パブリック Azure ストレージ BLOB から、生の CSV ファイルにアクセスできます。この結合の U-SQL スクリプトは、「[乗車テーブルと料金テーブルの結合](#join)」セクションにあります。
+The unique key to join trip\_data and trip\_fare is composed of the following three fields: medallion, hack\_license and pickup\_datetime. The raw CSV files can be accessed from a public Azure storage blob. The U-SQL script for this join is in the [Join trip and fare tables](#join) section.
 
-## U-SQL を使用してデータを処理する
+## <a name="process-data-with-u-sql"></a>Process data with U-SQL
 
-このセクションで説明するデータ処理タスクには、データの取り込み、品質チェック、探索、サンプリングが含まれています。また、乗車テーブルと料金テーブルを結合する方法についても説明します。最後のセクションでは、U-SQL スクリプトで作成したジョブを Azure ポータルから実行する方法について説明します。以下は各セクションのリンクです。
+The data processing tasks illustrated in this section include ingesting, checking quality, exploring, and sampling the data. We also show how to join trip and fare tables. The final section shows run a U-SQL scripted job from the Azure portal. Here are links to each subsection:
 
-- [データの取り込み: パブリック BLOB からデータを取り込む](#ingest)
-- [データ品質チェック](#quality)
-- [データの探索](#explore)
-- [乗車テーブルと料金テーブルの結合](#join)
-- [データのサンプリング](#sample)
-- [U-SQL ジョブの実行](#run)
+- [Data ingestion: read in data from public blob](#ingest)
+- [Data quality checks](#quality)
+- [Data exploration](#explore)
+- [Join trip and fare tables](#join)
+- [Data sampling](#sample)
+- [Run U-SQL jobs](#run)
 
-ここでは U-SQL スクリプトについて説明します。また、スクリプトは別ファイルで提供されます。完全な **U-SQL スクリプト**は、[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) からダウンロードできます。
+The U-SQL scripts are described here and provided in a separate file. You can download the full **U-SQL scripts** from [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
-U-SQL を実行するには、Visual Studio を開き、**[ファイル]、[新規作成]、[プロジェクト]** の順にクリックし、**[U-SQL プロジェクト]** を選択して、名前を付けてフォルダーに保存します。
+To execute U-SQL, Open Visual Studio, click **File --> New --> Project**, choose **U-SQL Project**, name and save it to a folder.
 
 ![8](./media/machine-learning-data-science-process-data-lake-walkthrough/8-create-USQL-project.PNG)
 
->[AZURE.NOTE] Visual Studio ではなく Azure ポータルを使用して、U-SQL を実行することができます。ポータルで Azure Data Lake Analytics リソースに移動し、次の図に示すように、直接クエリを送信できます。
+>[AZURE.NOTE] It is possible to use the Azure Portal to execute U-SQL instead of Visual Studio. You can navigate to the Azure Data Lake Analytics resource on the portal and submit queries directly as illustrated in the following figure.
 
 ![9](./media/machine-learning-data-science-process-data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="ingest"></a>データの取り込み: パブリック BLOB からデータを読み込む
+### <a name="<a-name="ingest"></a>data-ingestion:-read-in-data-from-public-blob"></a><a name="ingest"></a>Data Ingestion: Read in data from public blob
 
-Azure BLOB のデータの場所は、**wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** **と指定して参照します。Extractors.Csv()** を使用して展開することができます。次のスクリプトで wasb アドレスの container_name@blob\_storage\_account\_name を、独自のコンテナー名とストレージ アカウント名に置き換えます。ファイル名は同じ形式なので、**trip\_data\_{*}.csv** を使用して、12 個の乗車ファイルすべてを読み込むことができます。
+The location of the data in the Azure blob is referenced as **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** and can be extracted using **Extractors.Csv()**. Substitute your own container name and storage account name in following scripts for container_name@blob_storage_account_name in the wasb address. Since the file names are in same format, we can use **trip\_data_{\*\}.csv** to read in all 12 trip files. 
 
-	///Read in Trip data
-	@trip0 =
-	    EXTRACT 
-	    medallion string,
-	    hack_license string,
-	    vendor_id string,
-	    rate_code string,
-	    store_and_fwd_flag string,
-	    pickup_datetime string,
-	    dropoff_datetime string,
-	    passenger_count string,
-	    trip_time_in_secs string,
-	    trip_distance string,
-	    pickup_longitude string,
-	    pickup_latitude string,
-	    dropoff_longitude string,
-	    dropoff_latitude string
+    ///Read in Trip data
+    @trip0 =
+        EXTRACT 
+        medallion string,
+        hack_license string,
+        vendor_id string,
+        rate_code string,
+        store_and_fwd_flag string,
+        pickup_datetime string,
+        dropoff_datetime string,
+        passenger_count string,
+        trip_time_in_secs string,
+        trip_distance string,
+        pickup_longitude string,
+        pickup_latitude string,
+        dropoff_longitude string,
+        dropoff_latitude string
     // This is reading 12 trip data from blob
     FROM "wasb://container_name@blob_storage_account_name.blob.core.windows.net/nyctaxitrip/trip_data_{*}.csv"
     USING Extractors.Csv();
 
-1 行目にヘッダーがあるので、ヘッダーを削除し、列を適切な種類に変更する必要があります。処理したデータは **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_** を使用して Azure Data Lake ストレージに保存するか、wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** を使用して Azure BLOB ストレージ アカウントに保存することができます。
+Since there are headers in the first row, we need to remove the headers and change column types into appropriate ones. We can either save the processed data to Azure Data Lake Storage using **swebhdfs://data_lake_storage_name.azuredatalakestorage.net/folder_name/file_name**_ or to Azure Blob storage account using  **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name**. 
 
-	// change data types
-	@trip =
-	    SELECT 
-	    medallion,
-	    hack_license,
-	    vendor_id,
-	    rate_code,
-	    store_and_fwd_flag,
-	    DateTime.Parse(pickup_datetime) AS pickup_datetime,
-	    DateTime.Parse(dropoff_datetime) AS dropoff_datetime,
-	    Int32.Parse(passenger_count) AS passenger_count,
-	    Double.Parse(trip_time_in_secs) AS trip_time_in_secs,
-	    Double.Parse(trip_distance) AS trip_distance,
-	    (pickup_longitude==string.Empty ? 0: float.Parse(pickup_longitude)) AS pickup_longitude,
-	    (pickup_latitude==string.Empty ? 0: float.Parse(pickup_latitude)) AS pickup_latitude,
-	    (dropoff_longitude==string.Empty ? 0: float.Parse(dropoff_longitude)) AS dropoff_longitude,
-	    (dropoff_latitude==string.Empty ? 0: float.Parse(dropoff_latitude)) AS dropoff_latitude
+    // change data types
+    @trip =
+        SELECT 
+        medallion,
+        hack_license,
+        vendor_id,
+        rate_code,
+        store_and_fwd_flag,
+        DateTime.Parse(pickup_datetime) AS pickup_datetime,
+        DateTime.Parse(dropoff_datetime) AS dropoff_datetime,
+        Int32.Parse(passenger_count) AS passenger_count,
+        Double.Parse(trip_time_in_secs) AS trip_time_in_secs,
+        Double.Parse(trip_distance) AS trip_distance,
+        (pickup_longitude==string.Empty ? 0: float.Parse(pickup_longitude)) AS pickup_longitude,
+        (pickup_latitude==string.Empty ? 0: float.Parse(pickup_latitude)) AS pickup_latitude,
+        (dropoff_longitude==string.Empty ? 0: float.Parse(dropoff_longitude)) AS dropoff_longitude,
+        (dropoff_latitude==string.Empty ? 0: float.Parse(dropoff_latitude)) AS dropoff_latitude
     FROM @trip0
     WHERE medallion != "medallion";
 
-	////output data to ADL
-	OUTPUT @trip   
-	TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_trip.csv"
-	USING Outputters.Csv(); 
+    ////output data to ADL
+    OUTPUT @trip   
+    TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_trip.csv"
+    USING Outputters.Csv(); 
 
-	////Output data to blob
-	OUTPUT @trip   
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
-	USING Outputters.Csv();  
+    ////Output data to blob
+    OUTPUT @trip   
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_trip.csv"
+    USING Outputters.Csv();  
 
-同様に、料金データセットを読み込むことができます。Azure Data Lake Store を右クリックし、**[Azure Portal] の [データ エクスプローラー]** か、Visual Studio の **[ファイル エクスプローラー]** でデータを確認することができます。
+Similarly we can read in the fare data sets. Right click Azure Data Lake Store, you can choose to look at your data in **Azure Portal --> Data Explorer** or **File Explorer** within Visual Studio. 
 
  ![10](./media/machine-learning-data-science-process-data-lake-walkthrough/10-data-in-ADL-VS.PNG)
 
  ![11](./media/machine-learning-data-science-process-data-lake-walkthrough/11-data-in-ADL.PNG)
 
 
-### <a name="quality"></a>データ品質チェック
+### <a name="<a-name="quality"></a>data-quality-checks"></a><a name="quality"></a>Data quality checks
 
-乗車テーブルと料金テーブルを読み込んだら、次の方法でデータ品質チェックを実行できます。結果の CSV ファイルは、Azure BLOB Storage または Azure Data Lake Store に出力できます。
+After trip and fare tables have been read in, data quality checks can be done in the following way. The resulting CSV files can be output to Azure Blob storage or Azure Data Lake Store. 
 
-メダリオンの数とメダリオンの一意の数を検索します。
+Find the number of medallions and unique number of medallions:
 
-	///check the number of medallions and unique number of medallions
-	@trip2 =
-	    SELECT
-	    medallion,
-	    vendor_id,
-	    pickup_datetime.Month AS pickup_month
-	    FROM @trip;
-	
-	@ex_1 =
-	    SELECT
-	    pickup_month, 
-	    COUNT(medallion) AS cnt_medallion,
-	    COUNT(DISTINCT(medallion)) AS unique_medallion
-	    FROM @trip2
-	    GROUP BY pickup_month;
-	    OUTPUT @ex_1   
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_1.csv"
-	USING Outputters.Csv(); 
+    ///check the number of medallions and unique number of medallions
+    @trip2 =
+        SELECT
+        medallion,
+        vendor_id,
+        pickup_datetime.Month AS pickup_month
+        FROM @trip;
+    
+    @ex_1 =
+        SELECT
+        pickup_month, 
+        COUNT(medallion) AS cnt_medallion,
+        COUNT(DISTINCT(medallion)) AS unique_medallion
+        FROM @trip2
+        GROUP BY pickup_month;
+        OUTPUT @ex_1   
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_1.csv"
+    USING Outputters.Csv(); 
 
-乗車回数が 100 回を超えたメダリオンを検索します。
+Find those medallions that had more than 100 trips:
 
-	///find those medallions that had more than 100 trips
-	@ex_2 =
-	    SELECT medallion,
-	           COUNT(medallion) AS cnt_medallion
-	    FROM @trip2
-	    //where pickup_datetime >= "2013-01-01t00:00:00.0000000" and pickup_datetime <= "2013-04-01t00:00:00.0000000"
-	    GROUP BY medallion
-	    HAVING COUNT(medallion) > 100;
-	    OUTPUT @ex_2   
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_2.csv"
-	USING Outputters.Csv(); 
+    ///find those medallions that had more than 100 trips
+    @ex_2 =
+        SELECT medallion,
+               COUNT(medallion) AS cnt_medallion
+        FROM @trip2
+        //where pickup_datetime >= "2013-01-01t00:00:00.0000000" and pickup_datetime <= "2013-04-01t00:00:00.0000000"
+        GROUP BY medallion
+        HAVING COUNT(medallion) > 100;
+        OUTPUT @ex_2   
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_2.csv"
+    USING Outputters.Csv(); 
 
-pickup\_longitude に関して無効なレコードを検索します。
+Find those invalid records in terms of pickup_longitude:
 
-	///find those invalid records in terms of pickup_longitude
-	@ex_3 =
-	    SELECT COUNT(medallion) AS cnt_invalid_pickup_longitude
-	    FROM @trip
-	    WHERE
-	    pickup_longitude <- 90 OR pickup_longitude > 90;
-	    OUTPUT @ex_3   
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_3.csv"
-	USING Outputters.Csv(); 
+    ///find those invalid records in terms of pickup_longitude
+    @ex_3 =
+        SELECT COUNT(medallion) AS cnt_invalid_pickup_longitude
+        FROM @trip
+        WHERE
+        pickup_longitude <- 90 OR pickup_longitude > 90;
+        OUTPUT @ex_3   
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_3.csv"
+    USING Outputters.Csv(); 
 
-特定の変数について欠落値を検索します。
+Find missing values for some variables:
 
-	//check missing values
-	@res =
-	    SELECT *,
-	           (medallion == null? 1 : 0) AS missing_medallion
-	    FROM @trip;
-	
-	@trip_summary6 =
-	    SELECT 
-	        vendor_id,
-	    SUM(missing_medallion) AS medallion_empty, 
-	    COUNT(medallion) AS medallion_total,
-	    COUNT(DISTINCT(medallion)) AS medallion_total_unique  
-	    FROM @res
-	    GROUP BY vendor_id;
-	OUTPUT @trip_summary6
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_16.csv"
-	USING Outputters.Csv();
-
-
-
-### <a name="explore"></a>データの探索
-
-データの探索を実行して、データの理解を深めることができます。
-
-チップが払われた乗車と払われなかった乗車の分布を検索します。
-
-	///tipped vs. not tipped distribution
-	@tip_or_not =
-	    SELECT *,
-	           (tip_amount > 0 ? 1: 0) AS tipped
-	    FROM @fare;
-	
-	@ex_4 =
-	    SELECT tipped,
-	           COUNT(*) AS tip_freq
-	    FROM @tip_or_not
-	    GROUP BY tipped;
-	    OUTPUT @ex_4   
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
-	USING Outputters.Csv(); 
-
-0、5、10、および 20 ドルというカットオフ値でチップ金額の分布を検索します。
-
-	//tip class/range distribution
-	@tip_class =
-	    SELECT *,
-	           (tip_amount >20? 4: (tip_amount >10? 3:(tip_amount >5 ? 2:(tip_amount > 0 ? 1: 0)))) AS tip_class
-	    FROM @fare;
-	@ex_5 =
-	    SELECT tip_class,
-	           COUNT(*) AS tip_freq
-	    FROM @tip_class
-	    GROUP BY tip_class;
-	    OUTPUT @ex_5   
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_5.csv"
-	USING Outputters.Csv(); 
-
-乗車距離の基本的な統計情報を検索します。
-
-	// find basic statistics for trip_distance
-	@trip_summary4 =
-	    SELECT 
-	        vendor_id,
-	        COUNT(*) AS cnt_row,
-	        MIN(trip_distance) AS min_trip_distance,
-	        MAX(trip_distance) AS max_trip_distance,
-	        AVG(trip_distance) AS avg_trip_distance 
-	    FROM @trip
-	    GROUP BY vendor_id;
-	OUTPUT @trip_summary4
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_14.csv"
-	USING Outputters.Csv();
-
-乗車距離のパーセンタイルを検索します。
-
-	// find percentiles of trip_distance
-	@trip_summary3 =
-	    SELECT DISTINCT vendor_id AS vendor,
-	                    PERCENTILE_DISC(0.25) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc,
-	                    PERCENTILE_DISC(0.5) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc,
-	                    PERCENTILE_DISC(0.75) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc
-	    FROM @trip;
-	   // group by vendor_id;
-	OUTPUT @trip_summary3
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_13.csv"
-	USING Outputters.Csv(); 
+    //check missing values
+    @res =
+        SELECT *,
+               (medallion == null? 1 : 0) AS missing_medallion
+        FROM @trip;
+    
+    @trip_summary6 =
+        SELECT 
+            vendor_id,
+        SUM(missing_medallion) AS medallion_empty, 
+        COUNT(medallion) AS medallion_total,
+        COUNT(DISTINCT(medallion)) AS medallion_total_unique  
+        FROM @res
+        GROUP BY vendor_id;
+    OUTPUT @trip_summary6
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_16.csv"
+    USING Outputters.Csv();
 
 
-### <a name="join"></a>乗車テーブルと料金テーブルの結合
 
-乗車テーブルと料金テーブルは、medallion、hack\_license、pickup\_time によって結合できます。
+### <a name="<a-name="explore"></a>data-exploration"></a><a name="explore"></a>Data exploration
 
-	//join trip and fare table
+We can do some data exploration to get a better understanding of the data.
+
+Find the distribution of tipped and non-tipped trips:
+
+    ///tipped vs. not tipped distribution
+    @tip_or_not =
+        SELECT *,
+               (tip_amount > 0 ? 1: 0) AS tipped
+        FROM @fare;
+    
+    @ex_4 =
+        SELECT tipped,
+               COUNT(*) AS tip_freq
+        FROM @tip_or_not
+        GROUP BY tipped;
+        OUTPUT @ex_4   
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
+    USING Outputters.Csv(); 
+
+Find the distribution of tip amount with cut-off values: 0,5,10,and 20 dollars.
+
+    //tip class/range distribution
+    @tip_class =
+        SELECT *,
+               (tip_amount >20? 4: (tip_amount >10? 3:(tip_amount >5 ? 2:(tip_amount > 0 ? 1: 0)))) AS tip_class
+        FROM @fare;
+    @ex_5 =
+        SELECT tip_class,
+               COUNT(*) AS tip_freq
+        FROM @tip_class
+        GROUP BY tip_class;
+        OUTPUT @ex_5   
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_5.csv"
+    USING Outputters.Csv(); 
+
+Find basic statistics of trip distance:
+
+    // find basic statistics for trip_distance
+    @trip_summary4 =
+        SELECT 
+            vendor_id,
+            COUNT(*) AS cnt_row,
+            MIN(trip_distance) AS min_trip_distance,
+            MAX(trip_distance) AS max_trip_distance,
+            AVG(trip_distance) AS avg_trip_distance 
+        FROM @trip
+        GROUP BY vendor_id;
+    OUTPUT @trip_summary4
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_14.csv"
+    USING Outputters.Csv();
+
+Find the percentiles of trip distance:
+
+    // find percentiles of trip_distance
+    @trip_summary3 =
+        SELECT DISTINCT vendor_id AS vendor,
+                        PERCENTILE_DISC(0.25) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc,
+                        PERCENTILE_DISC(0.5) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc,
+                        PERCENTILE_DISC(0.75) WITHIN GROUP(ORDER BY trip_distance) OVER(PARTITION BY vendor_id) AS median_trip_distance_disc
+        FROM @trip;
+       // group by vendor_id;
+    OUTPUT @trip_summary3
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_13.csv"
+    USING Outputters.Csv(); 
+
+
+### <a name="<a-name="join"></a>join-trip-and-fare-tables"></a><a name="join"></a>Join trip and fare tables
+
+Trip and fare tables can be joined by medallion, hack_license, and pickup_time.
+
+    //join trip and fare table
 
     @model_data_full =
     SELECT t.*, 
@@ -374,82 +377,82 @@ pickup\_longitude に関して無効なレコードを検索します。
     ON   (t.medallion == f.medallion AND t.hack_license == f.hack_license AND t.pickup_datetime == f.pickup_datetime)
     WHERE   (pickup_longitude != 0 AND dropoff_longitude != 0 );
 
-	//// output to blob
-	OUTPUT @model_data_full   
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_full_data.csv"
-	USING Outputters.Csv(); 
+    //// output to blob
+    OUTPUT @model_data_full   
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_full_data.csv"
+    USING Outputters.Csv(); 
 
-	////output data to ADL
-	OUTPUT @model_data_full   
-	TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_7_full_data.csv"
-	USING Outputters.Csv(); 
-
-
-各レベルの乗客数について、レコード数、平均チップ金額、チップ金額の分散、チップが支払われた乗車の割合を計算します。
-
-	// contigency table
-	@trip_summary8 =
-	    SELECT passenger_count,
-	           COUNT(*) AS cnt,
-	           AVG(tip_amount) AS avg_tip_amount,
-	           VAR(tip_amount) AS var_tip_amount,
-	           SUM(tipped) AS cnt_tipped,
-	           (float)SUM(tipped)/COUNT(*) AS pct_tipped
-	    FROM @model_data_full
-	    GROUP BY passenger_count;
-	    OUTPUT @trip_summary8
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_17.csv"
-	USING Outputters.Csv();
+    ////output data to ADL
+    OUTPUT @model_data_full   
+    TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_7_full_data.csv"
+    USING Outputters.Csv(); 
 
 
-### <a name="sample"></a>データのサンプリング
+For each level of passenger count, calculate the number of records, average tip amount, variance of tip amount, percentage of tipped trips.
 
-まず、結合したテーブルから 0.1% のデータをランダムに選択します。
-
-	//random select 1/1000 data for modeling purpose
-	@addrownumberres_randomsample =
-	SELECT *,
-	        ROW_NUMBER() OVER() AS rownum
-	FROM @model_data_full;
-	
-	@model_data_random_sample_1_1000 =
-	SELECT *
-	FROM @addrownumberres_randomsample
-	WHERE rownum % 1000 == 0;
-	
-	OUTPUT @model_data_random_sample_1_1000   
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_random_1_1000.csv"
-	USING Outputters.Csv(); 
-
-次に、バイナリ変数 tip\_class で階層サンプリングを実行します。
-
-	//stratified random select 1/1000 data for modeling purpose
-	@addrownumberres_stratifiedsample =
-	SELECT *,
-	        ROW_NUMBER() OVER(PARTITION BY tip_class) AS rownum
-	FROM @model_data_full;
-	
-	@model_data_stratified_sample_1_1000 =
-	SELECT *
-	FROM @addrownumberres_stratifiedsample
-	WHERE rownum % 1000 == 0;
-	//// output to blob
-	OUTPUT @model_data_stratified_sample_1_1000   
-	TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_9_stratified_1_1000.csv"
-	USING Outputters.Csv(); 
-	////output data to ADL
-	OUTPUT @model_data_stratified_sample_1_1000   
-	TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_9_stratified_1_1000.csv"
-	USING Outputters.Csv(); 
+    // contigency table
+    @trip_summary8 =
+        SELECT passenger_count,
+               COUNT(*) AS cnt,
+               AVG(tip_amount) AS avg_tip_amount,
+               VAR(tip_amount) AS var_tip_amount,
+               SUM(tipped) AS cnt_tipped,
+               (float)SUM(tipped)/COUNT(*) AS pct_tipped
+        FROM @model_data_full
+        GROUP BY passenger_count;
+        OUTPUT @trip_summary8
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_17.csv"
+    USING Outputters.Csv();
 
 
-### <a name="run"></a>U-SQL ジョブの実行
+### <a name="<a-name="sample"></a>data-sampling"></a><a name="sample"></a>Data sampling
 
-U-SQL スクリプトの編集を完了したら、Azure Data Lake Analytics アカウントを使用してサーバーに送信できます。**[Data Lake]**、**[ジョブの送信]** の順にクリックし、**[Analytics アカウント]** を選択し、**[並列処理]** を選択して、**[送信]** ボタンをクリックします。
+First we randomly select 0.1% of the data from the joined table:
+
+    //random select 1/1000 data for modeling purpose
+    @addrownumberres_randomsample =
+    SELECT *,
+            ROW_NUMBER() OVER() AS rownum
+    FROM @model_data_full;
+    
+    @model_data_random_sample_1_1000 =
+    SELECT *
+    FROM @addrownumberres_randomsample
+    WHERE rownum % 1000 == 0;
+    
+    OUTPUT @model_data_random_sample_1_1000   
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_7_random_1_1000.csv"
+    USING Outputters.Csv(); 
+
+Then we do stratified sampling by binary variable tip_class:
+
+    //stratified random select 1/1000 data for modeling purpose
+    @addrownumberres_stratifiedsample =
+    SELECT *,
+            ROW_NUMBER() OVER(PARTITION BY tip_class) AS rownum
+    FROM @model_data_full;
+    
+    @model_data_stratified_sample_1_1000 =
+    SELECT *
+    FROM @addrownumberres_stratifiedsample
+    WHERE rownum % 1000 == 0;
+    //// output to blob
+    OUTPUT @model_data_stratified_sample_1_1000   
+    TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_9_stratified_1_1000.csv"
+    USING Outputters.Csv(); 
+    ////output data to ADL
+    OUTPUT @model_data_stratified_sample_1_1000   
+    TO "swebhdfs://data_lake_storage_name.azuredatalakestore.net/nyctaxi_folder/demo_ex_9_stratified_1_1000.csv"
+    USING Outputters.Csv(); 
+
+
+### <a name="<a-name="run"></a>run-u-sql-jobs"></a><a name="run"></a>Run U-SQL jobs
+
+When you finish editing U-SQL scripts, you can submit them to the server using your Azure Data Lake Analytics account. Click **Data Lake**, **Submit Job**, select your **Analytics Account**, choose **Parallelism**, and click **Submit** button.  
 
  ![12](./media/machine-learning-data-science-process-data-lake-walkthrough/12-submit-USQL.PNG)
 
-ジョブが正常にコンパイルされると、ジョブの状態が Visual Studio に表示され、監視できるようになります。ジョブの実行が完了した後は、ジョブの実行プロセスを再現し、ボトルネックになっている手順を特定してジョブの効率を改善することもできます。また、Azure ポータルを開いて、U-SQL ジョブの状態を確認することもできます。
+When the job is complied successfully, the status of your job will be displayed in Visual Studio for monitoring. After the job finishes running, you can even replay the job execution process and find out the bottleneck steps to improve your job efficiency. You can also go to Azure Portal to check the status of your U-SQL jobs.
 
  ![13](./media/machine-learning-data-science-process-data-lake-walkthrough/13-USQL-running-v2.PNG)
 
@@ -457,286 +460,291 @@ U-SQL スクリプトの編集を完了したら、Azure Data Lake Analytics ア
  ![14](./media/machine-learning-data-science-process-data-lake-walkthrough/14-USQL-jobs-portal.PNG)
 
 
-以上で、Azure BLOB ストレージまたは Azure ポータルで出力ファイルを確認できるようになりました。次の手順のモデリングには、階層サンプル データを使用します。
+Now you can check the output files in either Azure Blob storage or Azure Portal. We will use the stratified sample data for our modeling in the next step.
 
  ![15](./media/machine-learning-data-science-process-data-lake-walkthrough/15-U-SQL-output-csv.PNG)
 
  ![16](./media/machine-learning-data-science-process-data-lake-walkthrough/16-U-SQL-output-csv-portal.PNG)
 
 
-## Azure Machine Learning でモデルを構築してデプロイする
+## <a name="build-and-deploy-models-in-azure-machine-learning"></a>Build and deploy models in Azure Machine Learning
 
-実行可能な 2 つのオプションを例にして、モデルを構築してデプロイするために Azure Machine Learning にデータをプルする方法について説明します。
+We demonstrate two options available for you to pull data into Azure Machine Learning to build and 
 
-- 最初のオプションでは、上記の「**データのサンプリング**」手順で Azure BLOB に書き込まれたサンプリング データを使用し、Python を使用して Azure Machine Learning からモデルを構築およびデプロイします。
-- 2 つ目のオプションでは、Hive クエリを使用して、Azure Data Lake のデータを直接クエリします。このオプションの場合、新しい HDInsight クラスターを作成するか、Hive テーブルが Azure Data Lake ストレージの NYC タクシー データを指している既存の HDInsight クラスターを使用する必要があります。ここでは、これらの両方のオプションについて説明します。
+- In the first option, you use the sampled data that has been written to an Azure Blob (in the **Data sampling** step above) and use Python to build and deploy models from Azure Machine Learning. 
+- In the second option, you query the data in Azure Data Lake directly using a Hive query. This option requires that you create a new HDInsight cluster or use an existing HDInsight cluster where the Hive tables point to the NY Taxi data in Azure Data Lake Storage.  We discuss both these options below. 
 
-## オプション 1: Python を使用して機械学習モデルを構築してデプロイする
+## <a name="option-1:-use-python-to-build-and-deploy-machine-learning-models"></a>Option 1: Use Python to build and deploy machine learning models
 
-Python を使用して機械学習モデルを構築およびデプロイするには、ローカル コンピューターまたは Azure Machine Learning Studio に Jupyter Notebook を作成します。[GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) で提供される Jupyter Notebook には、探索、データの視覚化、特徴エンジニアリング、モデリング、デプロイを行う完全なコードが含まれています。この記事では、モデリングとデプロイの手順についてのみ説明します。
+To build and deploy machine learning models using Python, create a Jupyter Notebook on your local machine or in Azure Machine Learning Studio. The Jupyter Notebook  provided on [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) contains the full code to explore, visualize data, feature engineering, modeling and deployment. In this article, we show just the modeling and deployment. 
 
-### Python ライブラリをインポートする
+### <a name="import-python-libraries"></a>Import Python libraries
 
-サンプルの Jupyter Notebook または Python スクリプト ファイルを実行するには、以下の Python パッケージが必要です。AzureML Notebook サービスを使用している場合、これらのパッケージはプレインストールされています。
+In order to run the sample Jupyter Notebook or the Python script file, the following Python packages are needed. If you are using the AzureML Notebook service, these packages have been pre-installed.
 
-	import pandas as pd
-	from pandas import Series, DataFrame
-	import numpy as np
-	import matplotlib.pyplot as plt
-	from time import time
-	import pyodbc
-	import os
-	from azure.storage.blob import BlobService
-	import tables
-	import time
-	import zipfile
-	import random
-	import sklearn
-	from sklearn.linear_model import LogisticRegression
-	from sklearn.cross_validation import train_test_split
-	from sklearn import metrics
-	from __future__ import division
-	from sklearn import linear_model
-	from azureml import services
+    import pandas as pd
+    from pandas import Series, DataFrame
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from time import time
+    import pyodbc
+    import os
+    from azure.storage.blob import BlobService
+    import tables
+    import time
+    import zipfile
+    import random
+    import sklearn
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.cross_validation import train_test_split
+    from sklearn import metrics
+    from __future__ import division
+    from sklearn import linear_model
+    from azureml import services
 
 
-### BLOB のデータを読み込む
+### <a name="read-in-the-data-from-blob"></a>Read in the data from blob
 
-- 接続文字列
+- Connection String   
 
-		CONTAINERNAME = 'test1'
-		STORAGEACCOUNTNAME = 'XXXXXXXXX'
-		STORAGEACCOUNTKEY = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYY'
-		BLOBNAME = 'demo_ex_9_stratified_1_1000_copy.csv'
-		blob_service = BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
-	
-- テキストとして読み込む
+        CONTAINERNAME = 'test1'
+        STORAGEACCOUNTNAME = 'XXXXXXXXX'
+        STORAGEACCOUNTKEY = 'YYYYYYYYYYYYYYYYYYYYYYYYYYYY'
+        BLOBNAME = 'demo_ex_9_stratified_1_1000_copy.csv'
+        blob_service = BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
+    
+- Read in as text
 
-		t1 = time.time()
-		data = blob_service.get_blob_to_text(CONTAINERNAME,BLOBNAME).split("\n")
-		t2 = time.time()
-		print(("It takes %s seconds to read in "+BLOBNAME) % (t2 - t1))
+        t1 = time.time()
+        data = blob_service.get_blob_to_text(CONTAINERNAME,BLOBNAME).split("\n")
+        t2 = time.time()
+        print(("It takes %s seconds to read in "+BLOBNAME) % (t2 - t1))
 
- ![17](./media/machine-learning-data-science-process-data-lake-walkthrough/17-python_readin_csv.PNG)
+ ![17](./media/machine-learning-data-science-process-data-lake-walkthrough/17-python_readin_csv.PNG)    
  
-- 列名と別の列を追加する
+- Add column names and separate columns
 
-		colnames = ['medallion','hack_license','vendor_id','rate_code','store_and_fwd_flag','pickup_datetime','dropoff_datetime',
-		'passenger_count','trip_time_in_secs','trip_distance','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
-		'payment_type', 'fare_amount', 'surcharge', 'mta_tax', 'tolls_amount',  'total_amount', 'tip_amount', 'tipped', 'tip_class', 'rownum']
-		df1 = pd.DataFrame([sub.split(",") for sub in data], columns = colnames)
-	
+        colnames = ['medallion','hack_license','vendor_id','rate_code','store_and_fwd_flag','pickup_datetime','dropoff_datetime',
+        'passenger_count','trip_time_in_secs','trip_distance','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
+        'payment_type', 'fare_amount', 'surcharge', 'mta_tax', 'tolls_amount',  'total_amount', 'tip_amount', 'tipped', 'tip_class', 'rownum']
+        df1 = pd.DataFrame([sub.split(",") for sub in data], columns = colnames)
+    
 
 
-- 一部の列を数値に変更する
+- Change some columns to numeric
 
-		cols_2_float = ['trip_time_in_secs','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
-		'fare_amount', 'surcharge','mta_tax','tolls_amount','total_amount','tip_amount', 'passenger_count','trip_distance'
-		,'tipped','tip_class','rownum']
-		for col in cols_2_float:
-		    df1[col] = df1[col].astype(float)
+        cols_2_float = ['trip_time_in_secs','pickup_longitude','pickup_latitude','dropoff_longitude','dropoff_latitude',
+        'fare_amount', 'surcharge','mta_tax','tolls_amount','total_amount','tip_amount', 'passenger_count','trip_distance'
+        ,'tipped','tip_class','rownum']
+        for col in cols_2_float:
+            df1[col] = df1[col].astype(float)
 
-### 機械学習モデルを構築する
+### <a name="build-machine-learning-models"></a>Build machine learning models
 
-ここでは、乗車にチップが支払われたかどうかを予測する二項分類モデルを構築します。Jupyter Notebook には、他に多クラス分類モデルと回帰モデルという 2 つのモデルがあります。
+Here we build a binary classification model to predict whether a trip is tipped or not. In the Jupyter Notebook you can find other two models: multiclass classification, and regression models.
 
-- まず、scikit-learn モデルで使用できるダミー変数を作成する必要があります。
+- First we need to create dummy variables that can be used in scikit-learn models
 
-		df1_payment_type_dummy = pd.get_dummies(df1['payment_type'], prefix='payment_type_dummy')
-		df1_vendor_id_dummy = pd.get_dummies(df1['vendor_id'], prefix='vendor_id_dummy')
+        df1_payment_type_dummy = pd.get_dummies(df1['payment_type'], prefix='payment_type_dummy')
+        df1_vendor_id_dummy = pd.get_dummies(df1['vendor_id'], prefix='vendor_id_dummy')
 
-- モデリングのデータ フレームを作成する
+- Create data frame for the modeling
 
-		cols_to_keep = ['tipped', 'trip_distance', 'passenger_count']
-		data = df1[cols_to_keep].join([df1_payment_type_dummy,df1_vendor_id_dummy])
-		
-		X = data.iloc[:,1:]
-		Y = data.tipped
+        cols_to_keep = ['tipped', 'trip_distance', 'passenger_count']
+        data = df1[cols_to_keep].join([df1_payment_type_dummy,df1_vendor_id_dummy])
+        
+        X = data.iloc[:,1:]
+        Y = data.tipped
 
-- 60-40 分割のトレーニングとテスト
+- Training and testing 60-40 split
 
-		X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.4, random_state=0)
+        X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.4, random_state=0)
 
-- トレーニング セットのロジスティック回帰
+- Logistic Regression in training set
 
-		model = LogisticRegression()
-		logit_fit = model.fit(X_train, Y_train)
-		print ('Coefficients: \n', logit_fit.coef_)
-		Y_train_pred = logit_fit.predict(X_train)
+        model = LogisticRegression()
+        logit_fit = model.fit(X_train, Y_train)
+        print ('Coefficients: \n', logit_fit.coef_)
+        Y_train_pred = logit_fit.predict(X_train)
 
        ![c1](./media/machine-learning-data-science-process-data-lake-walkthrough/c1-py-logit-coefficient.PNG)
 
-- テスト データ セットにスコアを付ける
+- Score testing data set
 
-		Y_test_pred = logit_fit.predict(X_test)
+        Y_test_pred = logit_fit.predict(X_test)
 
-- 評価メトリックを計算する
+- Calculate Evaluation metrics
 
-		fpr_train, tpr_train, thresholds_train = metrics.roc_curve(Y_train, Y_train_pred)
-		print fpr_train, tpr_train, thresholds_train
-		
-		fpr_test, tpr_test, thresholds_test = metrics.roc_curve(Y_test, Y_test_pred) 
-		print fpr_test, tpr_test, thresholds_test
-		
-		#AUC
-		print metrics.auc(fpr_train,tpr_train)
-		print metrics.auc(fpr_test,tpr_test)
-		
-		#Confusion Matrix
-		print metrics.confusion_matrix(Y_train,Y_train_pred)
-		print metrics.confusion_matrix(Y_test,Y_test_pred)
+        fpr_train, tpr_train, thresholds_train = metrics.roc_curve(Y_train, Y_train_pred)
+        print fpr_train, tpr_train, thresholds_train
+        
+        fpr_test, tpr_test, thresholds_test = metrics.roc_curve(Y_test, Y_test_pred) 
+        print fpr_test, tpr_test, thresholds_test
+        
+        #AUC
+        print metrics.auc(fpr_train,tpr_train)
+        print metrics.auc(fpr_test,tpr_test)
+        
+        #Confusion Matrix
+        print metrics.confusion_matrix(Y_train,Y_train_pred)
+        print metrics.confusion_matrix(Y_test,Y_test_pred)
 
        ![c2](./media/machine-learning-data-science-process-data-lake-walkthrough/c2-py-logit-evaluation.PNG)
 
 
  
-### Web サービス API を構築して Python で使用する
+### <a name="build-web-service-api-and-consume-it-in-python"></a>Build Web Service API and consume it in Python
 
-機械学習モデルの構築後に、運用可能な状態にする必要があります。ここでは、二項ロジスティック モデルを例として使用します。ローカル コンピューターの scikit-learn のバージョンが 0.15.1 であることを確認してください。Azure ML Studio サービスを使用している場合、確認する必要はありません。
+We want to operationalize the machine learning model after it has been built. Here we use the binary logistic model as an example. Make sure the scikit-learn version in your local machine is 0.15.1. You don't have to worry about this if you use Azure ML studio service.
 
-- Azure ML Studio 設定でワークスペースの資格情報を確認します。Azure Machine Learning Studio で、**[設定]**、**[名前]**、**[承認トークン]** の順にクリックします。
+- Find your workspace credentials from Azure ML studio settings. In Azure Machine Learning Studio, click **Settings** --> **Name** --> **Authorization Tokens**. 
 
-	![c3](./media/machine-learning-data-science-process-data-lake-walkthrough/c3-workspace-id.PNG)
+    ![c3](./media/machine-learning-data-science-process-data-lake-walkthrough/c3-workspace-id.PNG)
 
 
-		workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
-		auth_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
+        workspaceid = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
+        auth_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
-- Web サービスを作成する
+- Create Web Service
 
-		@services.publish(workspaceid, auth_token) 
-		@services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float, payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
-		@services.returns(int) #0, or 1
-		def predictNYCTAXI(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
-		    inputArray = [trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH, payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS]
-		    return logit_fit.predict(inputArray)
+        @services.publish(workspaceid, auth_token) 
+        @services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float, payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
+        @services.returns(int) #0, or 1
+        def predictNYCTAXI(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
+            inputArray = [trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH, payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS]
+            return logit_fit.predict(inputArray)
 
-- Web サービスの資格情報を取得する
+- Get web service credentials
 
-		url = predictNYCTAXI.service.url
-		api_key =  predictNYCTAXI.service.api_key
-		
-		print url
-		print api_key
+        url = predictNYCTAXI.service.url
+        api_key =  predictNYCTAXI.service.api_key
+        
+        print url
+        print api_key
 
-		@services.service(url, api_key)
-		@services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float,payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
-		@services.returns(float)
-		def NYCTAXIPredictor(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
-		    pass
+        @services.service(url, api_key)
+        @services.types(trip_distance = float, passenger_count = float, payment_type_dummy_CRD = float, payment_type_dummy_CSH=float,payment_type_dummy_DIS = float, payment_type_dummy_NOC = float, payment_type_dummy_UNK = float, vendor_id_dummy_CMT = float, vendor_id_dummy_VTS = float)
+        @services.returns(float)
+        def NYCTAXIPredictor(trip_distance, passenger_count, payment_type_dummy_CRD, payment_type_dummy_CSH,payment_type_dummy_DIS, payment_type_dummy_NOC, payment_type_dummy_UNK, vendor_id_dummy_CMT, vendor_id_dummy_VTS ):
+            pass
 
-- Web サービス API を呼び出す。前の手順の後に、5 ～ 10 秒待つ必要があります。
+- Call Web service API. You have to wait 5-10 seconds after the previous step.
 
-		NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
+        NYCTAXIPredictor(1,2,1,0,0,0,0,0,1)
 
        ![c4](./media/machine-learning-data-science-process-data-lake-walkthrough/c4-call-API.PNG)
 
 
-## オプション 2: Azure Machine Learning で直接モデルを作成してデプロイする
+## <a name="option-2:-create-and-deploy-models-directly-in-azure-machine-learning"></a>Option 2: Create and deploy models directly in Azure Machine Learning
 
-Azure Machine Learning Studio では、Azure Data Lake Store から直接データを読み取り、モデルを作成してデプロイできます。このアプローチでは、Azure Data Lake ストアを指す Hive テーブルを使用します。そのためには、別の Azure HDInsight クラスターをプロビジョニングする必要があります。そこに Hive テーブルが作成されます。以降のセクションでは、その方法について説明します。
+Azure Machine Learning Studio can read data directly from Azure Data Lake Store and then be used to create and deploy models. This approach uses a Hive table that points at the Azure Data Lake Store. This requires that a separate Azure HDInsight cluster be provisioned, on which the Hive table is created. The following sections show how to do this. 
 
-### HDInsight Linux クラスターを作成する
+### <a name="create-an-hdinsight-linux-cluster"></a>Create an HDInsight Linux Cluster
 
-[Azure Portal](http://portal.azure.com) から HDInsight クラスター (Linux) を作成します。詳細については、「[Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」の「**Azure Data Lake Store にアクセスできる HDInsight クラスターを作成する**」セクションを参照してください。
+Create an HDInsight Cluster (Linux) from the [Azure Portal](http://portal.azure.com).For details, see the **Create an HDInsight cluster with access to Azure Data Lake Store** section in [Create an HDInsight cluster with Data Lake Store using Azure Portal](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
  ![18](./media/machine-learning-data-science-process-data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
-### HDInsight で Hive テーブルを作成する
+### <a name="create-hive-table-in-hdinsight"></a>Create Hive table in HDInsight
 
-次に、前の手順で Azure Data Lake Store に格納したデータを使用して、HDInsight クラスターに Azure Machine Learning Studio で使用される Hive テーブルを作成します。先ほど作成した HDInsight クラスターに移動します。**[設定]**、**[プロパティ]**、**[クラスター AAD ID]**、**[ADLS アクセス]** の順にクリックし、読み取り、書き込み、実行の権限がある Azure Data Lake Store アカウントが一覧に追加されたことを確認します。
+Now we create Hive tables to be used in Azure Machine Learning Studio in the HDInsight cluster using the data stored in Azure Data Lake Store in the previous step. Go to the HDInsight cluster just created. Click **Settings** --> **Properties** --> **Cluster AAD Identity** --> **ADLS Access**, make sure your Azure Data Lake Store account is added in the list with read, write and execute rights. 
 
  ![19](./media/machine-learning-data-science-process-data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
 
-**[設定]** ボタンの横にある **[ダッシュボード]** をクリックします。ウィンドウがポップアップ表示されます。ページの右上にある **[Hive ビュー]** をクリックします。**クエリ エディター**が表示されます。
+Then click **Dashboard** next to the **Settings** button and a window will pop up. Click **Hive View** in the upper right corner of the page and you will see the **Query Editor**.
 
  ![20](./media/machine-learning-data-science-process-data-lake-walkthrough/20-HDI-dashboard.PNG)
 
  ![21](./media/machine-learning-data-science-process-data-lake-walkthrough/21-Hive-Query-Editor-v2.PNG)
 
 
-次の Hive スクリプトを貼り付けてテーブルを作成します。データ ソースの場所は Azure Data Lake Store 内であり、**adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name** のように参照できます。
+Paste in the following Hive scripts to create a table. The location of data source is in Azure Data Lake Store reference in this way: **adl://data_lake_store_name.azuredatalakestore.net:443/folder_name/file_name**.
 
-	CREATE EXTERNAL TABLE nyc_stratified_sample
-	(
-	    medallion string,
-	    hack_license string,
-	    vendor_id string,
-	    rate_code string,
-	    store_and_fwd_flag string,
-	    pickup_datetime string,
-	    dropoff_datetime string,
-	    passenger_count string,
-	    trip_time_in_secs string,
-	    trip_distance string,
-	    pickup_longitude string,
-	    pickup_latitude string,
-	    dropoff_longitude string,
-	    dropoff_latitude string,
-	  payment_type string,
-	  fare_amount string,
-	  surcharge string,
-	  mta_tax string,
-	  tolls_amount string,
-	  total_amount string,
-	  tip_amount string,
-	  tipped string,
-	  tip_class string,
-	  rownum string
-	  )
-	ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-	LOCATION 'adl://data_lake_storage_name.azuredatalakestore.net:443/nyctaxi_folder/demo_ex_9_stratified_1_1000_copy.csv';
+    CREATE EXTERNAL TABLE nyc_stratified_sample
+    (
+        medallion string,
+        hack_license string,
+        vendor_id string,
+        rate_code string,
+        store_and_fwd_flag string,
+        pickup_datetime string,
+        dropoff_datetime string,
+        passenger_count string,
+        trip_time_in_secs string,
+        trip_distance string,
+        pickup_longitude string,
+        pickup_latitude string,
+        dropoff_longitude string,
+        dropoff_latitude string,
+      payment_type string,
+      fare_amount string,
+      surcharge string,
+      mta_tax string,
+      tolls_amount string,
+      total_amount string,
+      tip_amount string,
+      tipped string,
+      tip_class string,
+      rownum string
+      )
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+    LOCATION 'adl://data_lake_storage_name.azuredatalakestore.net:443/nyctaxi_folder/demo_ex_9_stratified_1_1000_copy.csv';
 
 
-クエリの実行が完了すると、次のような結果が表示されます。
+When the query finishes running, you will see the results like this:
 
  ![22](./media/machine-learning-data-science-process-data-lake-walkthrough/22-Hive-Query-results.PNG)
 
 
 
-### Azure Machine Learning Studio でモデルを構築してデプロイする
+### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>Build and deploy models in Azure Machine Learning Studio
 
-これで、チップが支払われるかどうかを予測するモデルを Azure Machine Learning で構築およびデプロイする準備が整いました。階層サンプル データは、この二項分類 (チップが支払われるか支払われないか) 問題で使用する準備ができています。多クラス分類 (tip\_class) と回帰 (tip\_amount) を使用する予測モデルも Azure Machine Learning Studio で構築およびデプロイできますが、ここでは二項分類モデルを使用するケースの処理方法だけを示します。
+We are now ready to build and deploy a model that predicts whether or not a tip is paid with Azure Machine Learning. The stratified sample data is ready to be used in this binary classification (tip or not) problem. The predictive models using multiclass classification (tip_class) and regression (tip_amount) can also be built and deployed with Azure Machine Learning Studio, but here we only show how to handle the case using the binary classification model.
 
-1. **データのインポート** モジュール (「**データの入力と出力**」セクションで使用可能) を使用して、Azure ML にデータを取得します。詳細については、[データのインポート](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) モジュールのリファレンスのページをご覧ください。
-2. **[プロパティ]** パネルで、**データ ソース**として **Hive クエリ**を選択します。
-3. **Hive データベース クエリ** エディターに次の Hive スクリプトを貼り付けます。
+1. Get the data into Azure ML using the **Import Data** module, available in the **Data Input and Output** section. For more information, see the [Import Data module](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) reference page.
+2. Select **Hive Query** as the **Data source** in the **Properties** panel.
+3. Paste the following Hive script in the **Hive database query** editor
 
-    	select * from nyc_stratified_sample;
+        select * from nyc_stratified_sample;
 
-4. HDInsight クラスターの URI (Azure ポータルで確認できます)、Hadoop の資格情報、出力データの場所、Azure ストレージ アカウントの名前/キー/コンテナー名を入力します。
+4. Enter the URI of HDInsight cluster (this can be found in Azure Portal), Hadoop credentials, location of output data, and Azure storage account name/key/container name.
 
- ![23](./media/machine-learning-data-science-process-data-lake-walkthrough/23-reader-module-v3.PNG)
+ ![23](./media/machine-learning-data-science-process-data-lake-walkthrough/23-reader-module-v3.PNG)  
 
-Hive テーブルからデータを読み取る二項分類の実験の例を次の図に示します。
+An example of a binary classification experiment reading data from Hive table is shown in the figure below.
 
  ![24](./media/machine-learning-data-science-process-data-lake-walkthrough/24-AML-exp.PNG)
 
-実験の作成後に、**[Web サービスのセットアップ]**、**[予測 Web サービス]** の順にクリックします。
+After the experiment is created, click  **Set Up Web Service** --> **Predictive Web Service**
 
  ![25](./media/machine-learning-data-science-process-data-lake-walkthrough/25-AML-exp-deploy.PNG)
 
-自動的に作成されたスコア付け実験を実行し、完了したら、**[Web サービスのデプロイ]** をクリックします。
+Run the automatically created scoring experiment, when it finishes, click **Deploy Web Service**
 
  ![26](./media/machine-learning-data-science-process-data-lake-walkthrough/26-AML-exp-deploy-web.PNG)
 
-Web サービス ダッシュボードがすぐに表示されます。
+The web service dashboard will be displayed shortly:
 
  ![27](./media/machine-learning-data-science-process-data-lake-walkthrough/27-AML-web-api.PNG)
 
 
-## 概要
+## <a name="summary"></a>Summary
 
-このチュートリアルを終了すると、Azure Data Lake でスケーラブルなエンド ツー エンド ソリューションを構築するデータ サイエンス環境を作成することができます。この環境を使用して、大規模なパブリック データセットが分析されました。モデル トレーニングによるデータの取得から、Web サービスとしてのモデルのデプロイまで、データ サイエンス プロセスの正規の手順を使用して行われました。データの処理、調査、およびサンプリングには、U-SQL が使用されました。予測モデルの構築とデプロイには、Azure Machine Learning Studio と共に、Python と Hive が使用されました。
+By completing this walkthrough you have created a data science environment for building scalable end-to-end solutions in Azure Data Lake. This environment was used to analyze a large public dataset, taking it through the canonical steps of the Data Science Process, from data acquisition through model training, and then to the deployment of the model as a web service. U-SQL was used to process, explore and sample the data. Python and Hive were used with Azure Machine Learning Studio to build and deploy predictive models.
 
-## 次の手順
+## <a name="what's-next?"></a>What's next?
 
-[Team Data Science Process (TDSP)](http://aka.ms/datascienceprocess) のラーニング パスには、高度な分析プロセスの各手順を説明するトピックへのリンクが用意されています。「[Team Data Science Process のチュートリアル](data-science-process-walkthroughs.md)」ページには一連のチュートリアルがあります。チュートリアルには、さまざまな予測分析シナリオでリソースとサービスを使用する方法が示されています。
+The learning path for the [Team Data Science Process (TDSP)](http://aka.ms/datascienceprocess) provides links to topics describing each step in the advanced analytics process. There are a series of walkthroughs itemized on the [Team Data Science Process walkthroughs](data-science-process-walkthroughs.md) page that showcase how to use resources and services in various predictive analytics scenarios:
 
-- [Team Data Science Process の活用: SQL Data Warehouse の使用](machine-learning-data-science-process-sqldw-walkthrough.md)
-- [Team Data Science Process の活用: HDInsight Hadoop クラスターの使用](machine-learning-data-science-process-hive-walkthrough.md)
-- [Team Data Science Process: SQL Sever の使用](machine-learning-data-science-process-sql-walkthrough.md)
-- [Azure HDInsight 上の Spark を使用したデータ サイエンス プロセスの概要](machine-learning-data-science-spark-overview.md)
+- [The Team Data Science Process in action: using SQL Data Warehouse](machine-learning-data-science-process-sqldw-walkthrough.md)
+- [The Team Data Science Process in action: using HDInsight Hadoop clusters](machine-learning-data-science-process-hive-walkthrough.md)
+- [The Team Data Science Process: using SQL Server](machine-learning-data-science-process-sql-walkthrough.md)
+- [Overview of the Data Science Process using Spark on Azure HDInsight](machine-learning-data-science-spark-overview.md)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

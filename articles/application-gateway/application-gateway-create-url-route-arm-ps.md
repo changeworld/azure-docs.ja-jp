@@ -1,6 +1,6 @@
 <properties
-   pageTitle="URL ルーティング ルールを使用してApplication Gateway を作成する | Microsoft Azure"
-   description="このページでは、URL ルーティング ルールを使用して Azure Application Gateway を作成し、構成する方法について説明します。"
+   pageTitle="Create an application gateway using URL routing rules | Microsoft Azure"
+   description="This page provides instructions to create, configure an Azure application gateway using URL routing rules"
    documentationCenter="na"
    services="application-gateway"
    authors="georgewallace"
@@ -16,215 +16,219 @@
    ms.author="gwallace"/>
 
 
-# パスベースのルーティングを使用して Application Gateway を作成する 
+
+# <a name="create-an-application-gateway-using-path-based-routing"></a>Create an application gateway using Path-based routing 
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](application-gateway-create-url-route-portal.md)
-- [Azure Resource Manager の PowerShell](application-gateway-create-url-route-arm-ps.md)
+- [Azure portal](application-gateway-create-url-route-portal.md)
+- [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
 
-URL パスベースのルーティングを使用すると、HTTP 要求の URL パスに基づいてルートの関連付けを行うことができます。Application Gateway の URL 一覧に対して構成されたバックエンド プールへのルートがあるかどうかを調べ、定義されたバックエンド プールにネットワーク トラフィックを送信します。URL ベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
+URL Path-based routing enables you to associate routes based on the URL path of Http request. It checks if there is a route to a back-end pool configured for the URL lists in Application Gateway and send the network traffic to the defined back-end pool. A common use for URL-based routing is to load balance requests for different content types to different back-end server pools.
 
-URL ベースのルーティングでは、新しいルールの種類が Application Gateway に導入されています。Application Gateway には、basic と PathBasedRouting という 2 つのルールの種類があります。basic は、バックエンド プールに対してラウンドロビン サービスを提供します。一方、PathBasedRouting はラウンドロビン サービスに加えて、バックエンド プールを選択しながら要求 URL のパス パターンも考慮に入れます。
+URL-based routing introduces a new rule type to application gateway. Application gateway has two rule types: basic and PathBasedRouting. Basic rule type provides round-robin service for the back-end pools while PathBasedRouting in addition to round robin distribution, also takes path pattern of the request URL into account while choosing the backend pool.
 
->[AZURE.IMPORTANT] PathPattern: これは照合するパス パターンの一覧です。それぞれ "/" で始まる必要があり、"*" を配置できるのは末尾だけです。有効な例としては、/xyz、/xyz*、または /xyz/* があります。パス照合に提供する文字列では、最初の "?" または "#" の後にテキストを含めません (これらの文字は許可されません)。
+>[AZURE.IMPORTANT] PathPattern: The list of path patterns to match. Each must start with / and the only place a "\*" is allowed is at the end. Valid examples are /xyz, /xyz* or /xyz/*. The string fed to the path matcher does not include any text after the first "?" or "#", and those characters are not allowed. 
 
-## シナリオ
-次の例で、Application Gateway は、2 つのバックエンド サーバー プール (ビデオ サーバー プールとイメージ サーバー プール) を使用して contoso.com のトラフィックを処理します。
+## <a name="scenario"></a>Scenario
+In the following example, Application Gateway is serving traffic for contoso.com with two back-end server pools: video server pool and image server pool.
 
-http://contoso.com/image* に対する要求はイメージ サーバー プール (pool1) にルーティングされ、http://contoso.com/video* に対する要求はビデオ サーバー プール (pool2) にルーティングされます。一致するパス パターンがない場合は、既定のサーバー プール (pool1) が選択されます。
+Requests for http://contoso.com/image* are routed to image server pool (pool1), and http://contoso.com/video* are routed to video server pool (pool2). A default server pool (pool1) is selected if none of the path patterns match.
 
-![url ルート](./media/application-gateway-create-url-route-arm-ps/figure1.png)
+![url route](./media/application-gateway-create-url-route-arm-ps/figure1.png)
 
-## 開始する前に
+## <a name="before-you-begin"></a>Before you begin
 
-1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。[ダウンロード ページ](https://azure.microsoft.com/downloads/)の **Windows PowerShell** セクションから最新バージョンをダウンロードしてインストールできます。
-2. Application Gateway の仮想ネットワークとサブネットを作成します。仮想マシンまたはクラウドのデプロイメントでサブネットを使用していないことを確認します。Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
-3. Application Gateway を使用するためにバックエンド プールに追加されたサーバーが存在している必要があります。つまり、仮想ネットワーク内、または割り当てられたパブリック IP/VIP を使用してエンドポイントが作成されている必要があります。
-
-
-
-## Application Gateway の作成に必要な構成
+1. Install the latest version of the Azure PowerShell cmdlets by using the Web Platform Installer. You can download and install the latest version from the **Windows PowerShell** section of the [Downloads page](https://azure.microsoft.com/downloads/).
+2. You create a virtual network and subnet for Application Gateway. Make sure that no virtual machines or cloud deployments are using the subnet. The application gateway must be by itself in a virtual network subnet.
+3. The servers added to the back-end pool to use the application gateway must exist or have their endpoints created either in the virtual network or with a public IP/VIP assigned.
 
 
-- **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。
-- **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-- **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-- **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、SSL 証明書名 (SSL オフロードを構成する場合) があります。
-- **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。
 
-## アプリケーション ゲートウェイの作成
-
-Azure クラシックと Azure Resource Manager の使用方法の違いは、設定が必要なアプリケーション ゲートウェイと項目を作成する順番にあります。
-
-Resource Manager を使用すると、アプリケーション ゲートウェイを作成するすべての項目は個別に構成され、その後結合されてアプリケーション ゲートウェイのリソースが作成されます。
+## <a name="what-is-required-to-create-an-application-gateway?"></a>What is required to create an application gateway?
 
 
-Application Gateway を作成するために必要な手順を次に示します。
+- **Back-end server pool:** The list of IP addresses of the back-end servers. The IP addresses listed should either belong to the virtual network subnet or should be a public IP/VIP.
+- **Back-end server pool settings:** Every pool has settings like port, protocol, and cookie-based affinity. These settings are tied to a pool and are applied to all servers within the pool.
+- **Front-end port:** This port is the public port that is opened on the application gateway. Traffic hits this port, and then gets redirected to one of the back-end servers.
+- **Listener:** The listener has a front-end port, a protocol (Http or Https, these are case-sensitive), and the SSL certificate name (if configuring SSL offload).
+- **Rule:** The rule binds the listener, the back-end server pool and defines which back-end server pool the traffic should be directed to when it hits a particular listener.
 
-1. リソース マネージャーのリソース グループを作成します。
-2. Application Gateway の仮想ネットワーク、サブネット、およびパブリック IP を作成します。
-3. Application Gateway 構成オブジェクトを作成します。
-4. Application Gateway のリソースを作成します。
+## <a name="create-an-application-gateway"></a>Create an application gateway
 
-## リソース マネージャーのリソース グループの作成
+The difference between using Azure Classic and Azure Resource Manager is the order in which you create the application gateway and the items that need to be configured.
 
-Azure PowerShell の最新バージョンを使用していることを確認します。詳細については、[Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページを参照してください。
-
-### 手順 1
-
-Azure へのログイン
-
-	Login-AzureRmAccount
-
-資格情報を使用して認証を行うように求めるメッセージが表示されます。<BR>
-
-### 手順 2.
-
-アカウントのサブスクリプションを確認します。
-
-	Get-AzureRmSubscription
-
-### 手順 3.
-
-使用する Azure サブスクリプションを選択します。<BR>
+With Resource Manager, all items that make an application gateway are configured individually and then put together to create the application gateway resource.
 
 
-	Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+Here are the steps that are needed to create an application gateway:
 
-### 手順 4.
+1. Create a resource group for Resource Manager.
+2. Create a virtual network, subnet, and public IP for the application gateway.
+3. Create an application gateway configuration object.
+4. Create an application gateway resource.
 
-リソース グループを作成します (既存のリソース グループを使用する場合は、この手順をスキップしてください)。
+## <a name="create-a-resource-group-for-resource-manager"></a>Create a resource group for Resource Manager
+
+Make sure that you are using the latest version of Azure PowerShell. More info is available at [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md).
+
+### <a name="step-1"></a>Step 1
+
+Log in to Azure
+
+    Login-AzureRmAccount
+
+You are prompted to authenticate with your credentials.<BR>
+
+### <a name="step-2"></a>Step 2
+
+Check the subscriptions for the account.
+
+    Get-AzureRmSubscription
+
+### <a name="step-3"></a>Step 3
+
+Choose which of your Azure subscriptions to use. <BR>
+
+
+    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+
+### <a name="step-4"></a>Step 4
+
+Create a resource group (skip this step if you're using an existing resource group).
 
     New-AzureRmResourceGroup -Name appgw-RG -location "West US"
 
-あるいは、Application Gateway のリソース グループに対してタグを作成することもできます。
-	
-	$resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway URL routing"} 
-
-Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。アプリケーション ゲートウェイを作成するためのすべてのコマンドで、同じリソース グループが使用されていることを確認します。
-
-上記の例では、"appgw-RG" という名前のリソース グループと "West US" という名前の場所を作成しました。
-
->[AZURE.NOTE] アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、[PowerShell を使用したカスタム プローブとアプリケーション ゲートウェイの作成](application-gateway-create-probe-ps.md)に関するページを参照してください。詳細については、[カスタム プローブと正常性監視](application-gateway-probe-overview.md)に関するページを参照してください。
-
-## アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
-
-次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。
-
-### 手順 1
-
-アドレス範囲 10.0.0.0/24 を仮想ネットワークの作成に使用するサブネットの変数に割り当てます。
-
-	$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
-
-
-### 手順 2.
-
-サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、米国西部リージョンのリソース グループ "appgw-rg" に、"appgwvnet" という名前の仮想ネットワークを作成します。
-
-	$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-
-
-### 手順 3.
-
-Application Gateway を作成する次の手順のために、サブネット変数を割り当てます。
-
-	$subnet=$vnet.Subnets[0]
-
-## フロントエンド構成のパブリック IP アドレスの作成
-
-米国西部リージョンのリソース グループ "appgw-rg" に、パブリック IP リソース "publicIP01" を作成します。
-
-	$publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -name publicIP01 -location "West US" -AllocationMethod Dynamic
-
-サービスが開始すると、Application Gateway に IP アドレスが割り当てられます。
-
-## Application Gateway 構成の作成
-
-Application Gateway を作成するには、すべての構成項目を設定する必要があります。次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
-
-### 手順 1
-
-"gatewayIP01" という名前の Application Gateway の IP 構成を作成します。アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得されて、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。各インスタンスが IP アドレスを 1 つ取得することに注意してください。
-
-
-	$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
-
-
-### 手順 2.
-
-"pool01" および "pool2" という名前のバックエンド IP アドレス プールを構成します。"pool1" には IP アドレス "134.170.185.46, 134.170.188.221,134.170.185.50" を使用し、"pool2" には IP アドレス "134.170.186.46, 134.170.189.221,134.170.186.50" を使用します。
-
-
-	$pool1 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
-
-	$pool2 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool02 -BackendIPAddresses 134.170.186.46, 134.170.189.221,134.170.186.50
-
-この例では、URL パスに基づいてネットワーク トラフィックをルーティングするためのバックエンド プールが 2 つあります。1 つのプールは、URL パス "/video" からトラフィックを受信し、もう 1 つのプールはパス "/image" からトラフィックを受信します。独自のアプリケーションの IP アドレス エンドポイントを追加するために、上記の IP アドレスを置き換えます。
-
-### 手順 3.
-
-バックエンド プール内の負荷を分散したネットワーク トラフィックに対して、Application Gateway の設定 "poolsetting01" と "poolsetting02" を構成します。この例では、各バックエンド プールに対してそれぞれ異なるバックエンド プール設定を構成します。各バックエンド プールは、独自のバックエンド プール設定を持つことができます。
-
-	$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
-
-	$poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting02" -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 240
-
-### 手順 4.
-
-パブリック IP エンドポイントでフロント エンド IP を構成します。
-
-	$fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -PublicIPAddress $publicip
-
-### 手順 5. 
-
-Application Gateway のフロント エンド ポートを構成します。
-
-	$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "fep01" -Port 80
-### 手順 6.
-
-リスナーを構成します。この手順では、着信ネットワーク トラフィックを受信するために使用するポートとパブリック IP アドレスについて、リスナーを構成します。
- 
-	$listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol Http -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01
-
-### 手順 7. 
-
-バックエンド プールの URL ルール パスを構成します。この手順では、Application Gateway が使用する相対パスを構成します。これにより、URL パスと、着信トラフィックを処理するために割り当てられるバックエンド プールとの間のマッピングが定義されます。
-
-次の例では 2 つのルールを作成します。1 つは、トラフィックをバックエンド "pool1" にルーティングする "/image/" パス用で、もう 1 つは、トラフィックをバックエンド "pool2" にルーティングする "/video/" パス用です。
+Alternatively you can also create tags for a resource group for application gateway:
     
-	$imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule1" -Paths "/image/*" -BackendAddressPool $pool1 -BackendHttpSettings $poolSetting01
+    $resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway URL routing"} 
 
-	$videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule2" -Paths "/video/*" -BackendAddressPool $pool2 -BackendHttpSettings $poolSetting02
+Azure Resource Manager requires that all resource groups specify a location. This is used as the default location for resources in that resource group. Make sure that all commands to create an application gateway use the same resource group.
 
-パスがあらかじめ定義されているパス ルールのいずれとも一致しない場合、ルール パス マップ構成では、既定のバックエンド アドレス プールも構成します。
+In the example above, we created a resource group called "appgw-RG" and location "West US".
 
-	$urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $videoPathRule, $imagePathRule -DefaultBackendAddressPool $pool1 -DefaultBackendHttpSettings $poolSetting02
+>[AZURE.NOTE] If you need to configure a custom probe for your application gateway, see [Create an application gateway with custom probes by using PowerShell](application-gateway-create-probe-ps.md). Check out [custom probes and health monitoring](application-gateway-probe-overview.md) for more information.
 
-### 手順 8.
+## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Create a virtual network and a subnet for the application gateway
 
-ルール設定を作成します。この手順では、URL パスベースのルーティングを使用する Application Gateway を構成します。
+The following example shows how to create a virtual network by using Resource Manager.
 
-	$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
+### <a name="step-1"></a>Step 1
 
-### 手順 9.
+Assign the address range 10.0.0.0/24 to the subnet variable to be used to create a virtual network.
 
-Application Gateway のインスタンス数とサイズを構成します。
+    $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 
-	$sku = New-AzureRmApplicationGatewaySku -Name "Standard_Small" -Tier Standard -Capacity 2
 
-## Application Gateway の作成
+### <a name="step-2"></a>Step 2
 
-前述の手順の構成オブジェクトをすべて使用して、Application Gateway を作成します。
+Create a virtual network named "appgwvnet" in resource group "appgw-rg" for the West US region using the prefix 10.0.0.0/16 with subnet 10.0.0.0/24.
 
-	$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG -Location "West US" -BackendAddressPools $pool1,$pool2 -BackendHttpSettingsCollection $poolSetting01, $poolSetting02 -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku
+    $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 
-## Application Gateway の取得
 
-	$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG
+### <a name="step-3"></a>Step 3
 
-## 次のステップ
+Assign a subnet variable for the next steps, which creates an application gateway.
 
-Secure Sockets Layer (SSL) オフロードの詳細については、[SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl-arm.md)に関するページを参照してください。
+    $subnet=$vnet.Subnets[0]
 
-<!---HONumber=AcomDC_0824_2016-->
+## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Create a public IP address for the front-end configuration
+
+Create a public IP resource "publicIP01" in resource group "appgw-rg" for the West US region.
+
+    $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -name publicIP01 -location "West US" -AllocationMethod Dynamic
+
+An IP address is assigned to the application gateway when the service starts.
+
+## <a name="create-application-gateway-configuration"></a>Create application gateway configuration
+
+All configuration items must be set up before creating the application gateway. The following steps create the configuration items that are needed for an application gateway resource.
+
+### <a name="step-1"></a>Step 1
+
+Create an application gateway IP configuration named "gatewayIP01". When Application Gateway starts, it picks up an IP address from the subnet configured and route network traffic to the IP addresses in the back-end IP pool. Keep in mind that each instance takes one IP address.
+
+
+    $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
+
+
+### <a name="step-2"></a>Step 2
+
+Configure the back-end IP address pool named "pool01"and "pool2" with IP addresses "134.170.185.46, 134.170.188.221,134.170.185.50" for "pool1" and "134.170.186.46, 134.170.189.221,134.170.186.50" for "pool2".
+
+
+    $pool1 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221,134.170.185.50
+
+    $pool2 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool02 -BackendIPAddresses 134.170.186.46, 134.170.189.221,134.170.186.50
+
+In this example, there are two back-end pools to route network traffic based on the URL path. One pool receives traffic from URL path "/video" and other pool receive traffic from path "/image". Replace the preceding IP addresses to add your own application IP address endpoints. 
+
+### <a name="step-3"></a>Step 3
+
+Configure application gateway setting "poolsetting01" and "poolsetting02" for the load-balanced network traffic in the back-end pool. In this example, you configure different back-end pool settings for the back-end pools. Each back-end pool can have its own back-end pool setting.
+
+    $poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
+
+    $poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting02" -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 240
+
+### <a name="step-4"></a>Step 4
+
+Configure the front-end IP with public IP endpoint.
+
+    $fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -PublicIPAddress $publicip
+
+### <a name="step-5"></a>Step 5 
+
+Configure the front-end port for an application gateway.
+
+    $fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "fep01" -Port 80
+### <a name="step-6"></a>Step 6
+
+Configure the listener. This step configures the listener for the public IP address and port used to receive incoming network traffic. 
+ 
+    $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol Http -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01
+
+### <a name="step-7"></a>Step 7 
+
+Configure URL rule paths for the back-end pools. This step configures the relative path used by application gateway to define the mapping between URL path and which back-end pool is assigned to handle the incoming traffic.
+
+The example below creates two rules: one for "/image/" path routing traffic to back-end "pool1" and another one for "/video/" path routing traffic to back-end "pool2".
+    
+    $imagePathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule1" -Paths "/image/*" -BackendAddressPool $pool1 -BackendHttpSettings $poolSetting01
+
+    $videoPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "pathrule2" -Paths "/video/*" -BackendAddressPool $pool2 -BackendHttpSettings $poolSetting02
+
+The rule path map configuration also configures a default back-end address pool if the path doesn't match any of the pre-defined path rules. 
+
+    $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $videoPathRule, $imagePathRule -DefaultBackendAddressPool $pool1 -DefaultBackendHttpSettings $poolSetting02
+
+### <a name="step-8"></a>Step 8
+
+Create a rule setting. This step configures the application gateway to use URL path-based routing.
+
+    $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
+
+### <a name="step-9"></a>Step 9
+
+Configure the number of instances and size for the application gateway.
+
+    $sku = New-AzureRmApplicationGatewaySku -Name "Standard_Small" -Tier Standard -Capacity 2
+
+## <a name="create-application-gateway"></a>Create Application Gateway
+
+Create an application gateway with all configuration objects from the preceding steps.
+
+    $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG -Location "West US" -BackendAddressPools $pool1,$pool2 -BackendHttpSettingsCollection $poolSetting01, $poolSetting02 -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku
+
+## <a name="get-application-gateway"></a>Get Application Gateway
+
+    $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-RG
+
+## <a name="next-steps"></a>Next steps
+
+If you want to learn Secure Sockets Layer (SSL) offload, see [Configure an application gateway for SSL offload](application-gateway-ssl-arm.md).
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Kintone の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Kintone を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory Integration with Kintone | Microsoft Azure" 
+    description="Learn how to use Kintone with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,155 +14,161 @@
     ms.date="09/01/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Kintone の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-kintone"></a>Tutorial: Azure Active Directory Integration with Kintone
   
-このチュートリアルの目的は、Azure と Kintone の統合を紹介することです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and Kintone.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   Kintone でのシングル サインオンが有効なサブスクリプション
+-   A valid Azure subscription
+-   A Kintone single sign-on enabled subscription
   
-このチュートリアルを完了すると、Kintone に割り当てた Azure AD ユーザーは、Kintone 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to Kintone will be able to single sign into the application at your Kintone company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Kintone のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for Kintone
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-kintone-tutorial/IC785859.png "シナリオ")
-##Kintone のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-kintone-tutorial/IC785859.png "Scenario")
+##<a name="enabling-the-application-integration-for-kintone"></a>Enabling the application integration for Kintone
   
-このセクションでは、Kintone のアプリケーション統合を有効にする方法について説明します。
+The objective of this section is to outline how to enable the application integration for Kintone.
 
-###Kintone のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-kintone,-perform-the-following-steps:"></a>To enable the application integration for Kintone, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-kintone-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-kintone-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-kintone-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-kintone-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-kintone-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-kintone-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-kintone-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Kintone**」と入力します。
+6.  In the **search box**, type **Kintone**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-kintone-tutorial/IC785867.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-kintone-tutorial/IC785867.png "Application Gallery")
 
-7.  結果ウィンドウで **[Kintone]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Kintone**, and then click **Complete** to add the application.
 
     ![Kintone](./media/active-directory-saas-kintone-tutorial/IC785871.png "Kintone")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Kintone に対する認証を行えるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to Kintone with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Kintone** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Kintone** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-kintone-tutorial/IC785872.png "Configure Single Sign-On")
 
-2.  **Kintone にサインオンする方法について尋ねる** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Kintone** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-kintone-tutorial/IC785873.png "Configure Single Sign-On")
 
-3.  **[アプリ URL の構成]** ページの **[Kintone サインオン URL]** ボックスに、"*https://company.kintone.com*" というパターンの URL を入力して、**[次へ]**をクリックします。
+3.  On the **Configure App URL** page, in the **Kintone Sign On URL** textbox, type your URL using the following pattern "*https://company.kintone.com*", and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-kintone-tutorial/IC785875.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-kintone-tutorial/IC785875.png "Configure App URL")
 
-4.  **[Kintone でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
+4.  On the **Configure single sign-on at Kintone** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-kintone-tutorial/IC785878.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザーのウィンドウで、**Kintone** の企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your **Kintone** company site as an administrator.
 
-6.  **[設定]** をクリックします
+6.  Click **Settings**.
 
     ![Settings](./media/active-directory-saas-kintone-tutorial/IC785879.png "Settings")
 
-7.  **[ユーザーとシステム管理]** をクリックします。
+7.  Click **Users & System Administration**.
 
-    ![ユーザーとシステム管理](./media/active-directory-saas-kintone-tutorial/IC785880.png "ユーザーとシステム管理")
+    ![Users & System Administration](./media/active-directory-saas-kintone-tutorial/IC785880.png "Users & System Administration")
 
-8.  **[システム管理] > [セキュリティ]** で、**[ログイン]** をクリックします。
+8.  Under **System Administration \> Security** click **Login**.
 
-    ![ログイン](./media/active-directory-saas-kintone-tutorial/IC785881.png "ログイン")
+    ![Login](./media/active-directory-saas-kintone-tutorial/IC785881.png "Login")
 
-9.  **[SAML 認証を有効にする]** を選択します。
+9.  Click **Enable SAML authentication**.
 
-    ![SAML 認証](./media/active-directory-saas-kintone-tutorial/IC785882.png "SAML 認証")
+    ![SAML Authentication](./media/active-directory-saas-kintone-tutorial/IC785882.png "SAML Authentication")
 
-10. [SAML 承認] セクションで、次の手順に従います。
+10. In the SAML Authentication section, perform the following steps:
 
-    ![SAML 認証](./media/active-directory-saas-kintone-tutorial/IC785883.png "SAML 認証")
+    ![SAML Authentication](./media/active-directory-saas-kintone-tutorial/IC785883.png "SAML Authentication")
 
-    1.  Azure クラシック ポータルで、**[Kintone でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[Login URL (ログイン URL)]** ボックスに貼り付けます。
-    2.  Azure クラシック ポータルで、**[Kintone でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[Logout URL (ログアウト URL)]** ボックスに貼り付けます。
-    3.  **[参照]** をクリックして、ダウンロードした証明書をアップロードします。
-    4.  [**Save**] をクリックします。
+    1.  In the Azure classic portal, on the **Configure single sign-on at Kintone** dialog page, copy the **Remote Login URL** value, and then paste it into the **Login URL** textbox.
+    2.  In the Azure classic portal, on the **Configure single sign-on at Kintone** dialog page, copy the **Remote Logout URL** value, and then paste it into the **Logout URL** textbox.
+    3.  Click **Browse** to upload your downloaded certificate.
+    4.  Click **Save**.
 
-11. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+11. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-kintone-tutorial/IC785884.png "Configure Single Sign-On")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが Kintone にログインできるようにするには、そのユーザーを Kintone にプロビジョニングする必要があります。Kintone の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into Kintone, they must be provisioned into Kintone.  
+In the case of Kintone, provisioning is a manual task.
 
-###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
+###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
 
-1.  **Kintone** の企業サイトに管理者としてログインします。
+1.  Log in to your **Kintone** company site as an administrator.
 
-2.  **[設定]** をクリックします。
+2.  Click **Setting**.
 
     ![Settings](./media/active-directory-saas-kintone-tutorial/IC785879.png "Settings")
 
-3.  **[ユーザーとシステム管理]** をクリックします。
+3.  Click **Users & System Administration**.
 
-    ![ユーザーとシステム管理](./media/active-directory-saas-kintone-tutorial/IC785880.png "ユーザーとシステム管理")
+    ![User & System Administration](./media/active-directory-saas-kintone-tutorial/IC785880.png "User & System Administration")
 
-4.  **[ユーザー管理]** で、**[Departments & Users (部門とユーザー)]** をクリックします。
+4.  Under **User Administration**, click **Departments & Users**.
 
-    ![部門とユーザー](./media/active-directory-saas-kintone-tutorial/IC785888.png "部門とユーザー")
+    ![Department & Users](./media/active-directory-saas-kintone-tutorial/IC785888.png "Department & Users")
 
-5.  **[新しいユーザー]** をクリックします。
+5.  Click **New User**.
 
-    ![新しいユーザー](./media/active-directory-saas-kintone-tutorial/IC785889.png "新しいユーザー")
+    ![New Users](./media/active-directory-saas-kintone-tutorial/IC785889.png "New Users")
 
-6.  **[新しいユーザー]** セクションで、次の手順に従います。
+6.  In the **New User** section, perform the following steps:
 
-    ![新しいユーザー](./media/active-directory-saas-kintone-tutorial/IC785890.png "新しいユーザー")
+    ![New Users](./media/active-directory-saas-kintone-tutorial/IC785890.png "New Users")
 
-    1.  プロビジョニングする有効な AAD アカウントの **[表示名]**、**[ログイン名]**、**[新しいパスワード]**、**[確認パスワード]**、**[メール アドレス]**、その他の詳細を該当するボックスに入力します。
-    2.  [**Save**] をクリックします。
+    1.  Type a **Display Name**, **Login Name**, **New Password**, **Confirm Password**, **E-mail Address** and other details of a valid AAD account you want to provision into the related texboxes.
+    2.  Click **Save**.
 
->[AZURE.NOTE] 他の Kintone ユーザー アカウント作成ツールや Kintone から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other Kintone user account creation tools or APIs provided by Kintone to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Kintone に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-kintone,-perform-the-following-steps:"></a>To assign users to Kintone, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Kintone** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Kintone **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-kintone-tutorial/IC785891.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-kintone-tutorial/IC785891.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-kintone-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

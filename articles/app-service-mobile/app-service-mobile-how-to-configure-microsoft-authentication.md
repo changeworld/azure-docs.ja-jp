@@ -1,67 +1,69 @@
 <properties
-	pageTitle="App Services アプリケーションに Microsoft アカウント認証を構成する方法"
-	description="App Services アプリケーションに Microsoft アカウント認証を構成する方法について説明します。"
-	authors="mattchenderson"
-	services="app-service"
-	documentationCenter=""
-	manager="erikre"
-	editor=""/>
+    pageTitle="How to configure Microsoft Account authentication for your App Services application"
+    description="Learn how to configure Microsoft Account authentication for your App Services application."
+    authors="mattchenderson"
+    services="app-service"
+    documentationCenter=""
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="app-service"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="multiple"
-	ms.topic="article"
-	ms.date="08/22/2016"
-	ms.author="mahender"/>
+    ms.service="app-service"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="na"
+    ms.devlang="multiple"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="mahender"/>
 
-# Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
+
+# <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>How to configure your App Service application to use Microsoft Account login
 
 [AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-このトピックでは、認証プロバイダーとして Microsoft アカウントを使用するように Azure App Services を構成する方法を示します。
+This topic shows you how to configure Azure App Service to use Microsoft Account as an authentication provider. 
 
-## <a name="register-microsoft-account"> </a>Microsoft アカウントにアプリを登録する
+## <a name="<a-name="register-microsoft-account">-</a>register-your-app-with-microsoft-account"></a><a name="register-microsoft-account"> </a>Register your app with Microsoft Account
 
-1. [Azure ポータル]にログオンし、アプリケーションに移動します。**URL** をコピーします。この URL は、後でアプリに Microsoft アカウント アプリを構成するために使用します。
+1. Log on to the [Azure portal], and navigate to your application. Copy your **URL**, which later you use to configure your app with Microsoft Account.
 
-2. Microsoft アカウント デベロッパー センターの [マイ アプリケーション] ページに移動し、必要に応じて、Microsoft アカウントでログオンします。
+2. Navigate to the [My Applications] page in the Microsoft Account Developer Center, and log on with your Microsoft account, if required.
 
-3. **[アプリの追加]** をクリックし、アプリケーション名を入力して、**[アプリケーションの作成]** をクリックします。
+3. Click **Add an app**, then type an application name, and click **Create application**.
 
-4. **アプリケーション ID** をメモします。この情報は後で必要になります。
+4. Make a note of the **Application ID**, as you will need it later. 
 
-5. [プラットフォーム] で **[プラットフォームの追加]** をクリックし、[Web] を選択します。
+5. Under "Platforms," click **Add Platform** and select "Web".
 
-6. [リダイレクト URI] で、アプリケーションのエンドポイントを指定し、**[保存]** をクリックします。
+6. Under "Redirect URIs" supply the endpoint for your application, then click **Save**. 
  
-	>[AZURE.NOTE]リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/microsoftaccount/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
+    >[AZURE.NOTE]Your redirect URI is the URL of your application appended with the path, _/.auth/login/microsoftaccount/callback_. For example, `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`.   
+    >Make sure that you are using the HTTPS scheme.
 
-7. [アプリケーション シークレット] で **[新しいパスワードを生成]** をクリックします。表示される値をメモします。ページから移動すると、このパスワードが再度表示されることはありません。
+7. Under "Application Secrets," click **Generate New Password**. Make note of the value that appears. Once you leave the page, it will not be displayed again.
 
 
-    > [AZURE.IMPORTANT] パスワードは重要なセキュリティ資格情報です。このパスワードを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
+    > [AZURE.IMPORTANT] The password is an important security credential. Do not share the password with anyone or distribute it within a client application.
 
-## <a name="secrets"> </a>Microsoft アカウントの情報を App Service アプリケーションに追加する
+## <a name="<a-name="secrets">-</a>add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"> </a>Add Microsoft Account information to your App Service application
 
-1. [Azure ポータル] に戻り、アプリケーションに移動して、**[設定]**、**[認証/承認]** の順にクリックします。
+1. Back in the [Azure portal], navigate to your application, click **Settings** > **Authentication / Authorization**.
 
-2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
+2. If the Authentication / Authorization feature is not enabled, switch it **On**.
 
-3. **[Microsoft アカウント]** をクリックします。前の手順で取得したアプリケーション ID とパスワードの値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。次に、 **[OK]** をクリックします
+3. Click **Microsoft Account**. Paste in the Application ID and Password values which you obtained previously, and optionally enable any scopes your application requires. Then click **OK**.
 
     ![][1]
 
-	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
+    By default, App Service provides authentication but does not restrict authorized access to your site content and APIs. You must authorize users in your app code.
 
-4. (省略可能) Microsoft によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されていないときに実行するアクション]** を **[Microsoft アカウント]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Microsoft アカウントにリダイレクトされます。
+4. (Optional) To restrict access to your site to only users authenticated by Microsoft account, set **Action to take when request is not authenticated** to **Microsoft Account**. This requires that all requests be authenticated, and all unauthenticated requests are redirected to Microsoft account for authentication.
 
-5. **[保存]** をクリックします。
+5. Click **Save**.
 
-これで、アプリケーションで認証に Microsoft アカウントを使用する準備ができました。
+You are now ready to use Microsoft Account for authentication in your app.
 
-## <a name="related-content"></a>関連コンテンツ
+## <a name="<a-name="related-content">-</a>related-content"></a><a name="related-content"> </a>Related content
 
 [AZURE.INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
@@ -73,7 +75,11 @@
 
 <!-- URLs. -->
 
-[マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure ポータル]: https://portal.azure.com/
+[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
+[Azure portal]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

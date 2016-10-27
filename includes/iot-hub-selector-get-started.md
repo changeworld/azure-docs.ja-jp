@@ -1,20 +1,22 @@
 > [AZURE.SELECTOR]
 - [C#](../articles/iot-hub/iot-hub-csharp-csharp-getstarted.md)
 - [Java](../articles/iot-hub/iot-hub-java-java-getstarted.md)
-- [Node.JS](../articles/iot-hub/iot-hub-node-node-getstarted.md)
+- [Node.js](../articles/iot-hub/iot-hub-node-node-getstarted.md)
 
-## はじめに
+## <a name="introduction"></a>Introduction
 
-Azure IoT Hub は、何百万もの IoT (モノのインターネット) デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、完全に管理されたサービスです。IoT プロジェクトが直面する最も大きな課題の 1 つは、ソリューション バックエンドにデバイスを確実かつ安全に接続する方法です。この課題に対応するために、IoT Hub は次の機能を備えています。
+Azure IoT Hub is a fully managed service that enables reliable and secure bi-directional communications between millions of Internet of Things (IoT) devices and a solution back end. One of the biggest challenges that IoT projects face is how to reliably and securely connect devices to the solution back end. To address this challenge, IoT Hub:
 
-- 非常にスケール性が高く信頼性に優れた、デバイスとクラウド間の双方向メッセージングを提供します。
-- デバイスごとのセキュリティ資格情報とアクセス制御を使用して、セキュリティで保護された通信を可能します。
-- 最も一般的な言語とプラットフォームのデバイスのライブラリが含まれます。
+- Offers reliable device-to-cloud and cloud-to-device hyper-scale messaging.
+- Enables secure communications using per-device security credentials and access control.
+- Includes device libraries for the most popular languages and platforms.
 
-このチュートリアルでは、次の操作方法について説明します。
+This tutorial shows you how to:
 
-- Azure ポータルを使用して IoT Hub を作成する。
-- IoT Hub におけるデバイス ID を作成する。
-- クラウド バックエンドへのテレメトリの送信とクラウド バックエンドからのコマンドの受信をシミュレーション対象デバイスを作成する。
+- Use the Azure portal to create an IoT hub.
+- Create a device identity in your IoT hub.
+- Create a simulated device that sends telemetry to your cloud back end, and receives commands from your cloud back end.
 
-<!---HONumber=AcomDC_0622_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

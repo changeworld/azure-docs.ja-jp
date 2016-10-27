@@ -1,60 +1,67 @@
 <properties
-	pageTitle=" Azure ポータルを使用したメディア処理のスケール設定 | Microsoft Azure"
-	description="このチュートリアルでは、Azure ポータルを使用したメディア処理のスケール設定の手順について説明します。"
-	services="media-services"
-	documentationCenter=""
-	authors="Juliako"
-	manager="erikre"
-	editor=""/>
+    pageTitle=" Scale Media Processing using the Azure portal | Microsoft Azure"
+    description="This tutorial walks you through the steps of scaling Media Processing using the Azure portal."
+    services="media-services"
+    documentationCenter=""
+    authors="Juliako"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/01/2016"
-	ms.author="juliako"/>
+    ms.service="media-services"
+    ms.workload="media"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/01/2016"
+    ms.author="juliako"/>
 
-# 予約ユニットの種類の変更
+
+# <a name="change-the-reserved-unit-type"></a>Change the reserved unit type
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-dotnet-encoding-units.md)
-- [ポータル](media-services-portal-scale-media-processing.md)
-- [REST ()](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+- [Portal](media-services-portal-scale-media-processing.md)
+- [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 - [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
-## Overview
+## <a name="overview"></a>Overview
 
->[AZURE.IMPORTANT] メディア処理のスケール設定の詳細については、[概要](media-services-scale-media-processing-overview.md)に関するトピックを必ず確認してください。
+>[AZURE.IMPORTANT] Make sure to review the [overview](media-services-scale-media-processing-overview.md) topic to get more information about scaling media processing topic.
 
-## メディア処理のスケール設定
+## <a name="scale-media-processing"></a>Scale media processing
 
-予約ユニットの種類と予約ユニットの数を変更するには、以下の手順に従います。
+To change the reserved unit type and the number of reserved units, do the following:
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. Log in at the [Azure portal](https://portal.azure.com/).
 
-2. **[設定]** ウィンドウで **[Media reserved units (メディア予約ユニット)]** をクリックします。
+2. In the **Settings** window, select **Media reserved units**.
 
-	選択した予約ユニットの種類の予約ユニット数を変更するには、**[Media Serverd Units (メディア予約ユニット)]** スライダーを使用します。
+    To change the number of reserved units for the selected reserved unit type, use the **Media Served Units** slider.
 
-	**[占有ユニットの種類]** を変更するには、[S1]、[S2]、または [S3] をクリックします。
+    To change the **RESERVED UNIT TYPE**, press S1, S2, or S3.
 
-	![[プロセッサ] ページ](./media/media-services-portal-scale-media-processing/media-services-scale-media-processing.png)
+    ![Processors page](./media/media-services-portal-scale-media-processing/media-services-scale-media-processing.png)
 
-3. [保存] ボタンを押して、変更を保存します。
+3. Press the SAVE button to save your changes.
 
-	[保存] をクリックすると、新しい予約ユニットが割り当てられます。
+    The new reserved units are allocated when you press SAVE.
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-Media Services のラーニング パスを確認します。
+Review Media Services learning paths.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##フィードバックの提供
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

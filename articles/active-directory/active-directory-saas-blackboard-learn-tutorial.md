@@ -1,279 +1,280 @@
 <properties
-	pageTitle="チュートリアル: Azure Active Directory と Blackboard Learn の統合 | Microsoft Azure"
-	description="Azure Active Directory と Blackboard Learn の間でシングル サインオンを構成する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with Blackboard Learn | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and Blackboard Learn."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/11/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/29/2016"
+    ms.author="jeedes"/>
 
 
-# チュートリアル: Azure Active Directory と Blackboard Learn の統合
 
-このチュートリアルでは、Blackboard Learn と Azure Active Directory (Azure AD) を統合する方法について説明します。
+# <a name="tutorial:-azure-active-directory-integration-with-blackboard-learn"></a>Tutorial: Azure Active Directory integration with Blackboard Learn
 
-Blackboard Learn と Azure AD の統合には、次の利点があります。
+In this tutorial, you learn how to integrate Blackboard Learn with Azure Active Directory (Azure AD).
 
-- Blackboard Learn にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Blackboard Learn にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+Integrating Blackboard Learn with Azure AD provides you with the following benefits:
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+- You can control in Azure AD who has access to Blackboard Learn
+- You can enable your users to automatically get signed-on to Blackboard Learn (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## 前提条件
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Blackboard Learn と Azure AD の統合を構成するには、次のものが必要です。
+## <a name="prerequisites"></a>Prerequisites
 
-- Azure AD サブスクリプション
-- Blackboard Learn Cloud Platform でのシングル サインオンが有効なサブスクリプション
+To configure Azure AD integration with Blackboard Learn, you need the following items:
 
-
-> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+- An Azure AD subscription
+- A Blackboard Learn Cloud Platform single-sign on enabled subscription
 
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
 
-## シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
+To test the steps in this tutorial, you should follow these recommendations:
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
-
-1. ギャラリーからの Blackboard Learn の追加
-2. Azure AD シングル サインオンの構成とテスト
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## ギャラリーからの Blackboard Learn の追加
-Azure AD への Blackboard Learn の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Blackboard Learn を追加する必要があります。
+## <a name="scenario-description"></a>Scenario Description
+In this tutorial, you test Azure AD single sign-on in a test environment.
 
-**ギャラリーから Blackboard Learn を追加するには、次の手順に従います。**
+The scenario outlined in this tutorial consists of two main building blocks:
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
-
-	![Active Directory][1]
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
-
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-
-	![アプリケーション][2]
-
-4. ページの下部にある **[追加]** をクリックします。
-
-	![アプリケーション][3]
-
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
-
-	![アプリケーション][4]
-
-6. 検索ボックスに、「**Blackboard Learn**」と入力します。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_01.png)
-
-7. 結果ウィンドウで **[Blackboard Learn]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-	
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_06.png)
+1. Adding Blackboard Learn from the gallery
+2. Configuring and testing Azure AD single sign-on
 
 
-##  Azure AD シングル サインオンの構成とテスト
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Blackboard Learn で Azure AD のシングル サインオンを構成し、テストします。
+## <a name="adding-blackboard-learn-from-the-gallery"></a>Adding Blackboard Learn from the gallery
+To configure the integration of Blackboard Learn into Azure AD, you need to add Blackboard Learn from the gallery to your list of managed SaaS apps.
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Blackboard Learn ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Blackboard Learn の関連ユーザーの間で、リンク関係が確立されている必要があります。
+**To add Blackboard Learn from the gallery, perform the following steps:**
 
-このリンクの関係を確立するには、Azure AD の **[ユーザー名]** の値を、Blackboard Learn の **[Username]** の値として割り当てます。
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-Blackboard Learn で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+    ![Active Directory][1]
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Blackboard Learn のテスト ユーザーの作成](#creating-a-blackboard-learn-test-user)** - Blackboard Learn で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
 
-### Azure AD シングル サインオンの構成
+    ![Applications][2]
 
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、Blackboard Learn アプリケーションでシングル サインオンを構成します。
+4. Click **Add** at the bottom of the page.
 
-Blackboard Learn アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。このアプリケーションには、次の要求を構成してください。この属性の値は、アプリケーションの **[属性]** タブから管理できます。次のスクリーンショットはその例です。
+    ![Applications][3]
 
-![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_51.png)
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-**Blackboard Learn で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+    ![Applications][4]
+
+6. In the search box, type **Blackboard Learn**.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_01.png)
+
+7. In the results pane, select **Blackboard Learn**, and then click **Complete** to add the application.
+    
+    ![Creating an Azure AD test user](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_06.png)
 
 
-1. Azure クラシック ポータルの **[Blackboard Learn]** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+In this section, you configure and test Azure AD single sign-on with Blackboard Learn based on a test user called "Britta Simon".
 
-	![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_general_80.png)
+For single sign-on to work, Azure AD needs to know what the counterpart user in Blackboard Learn is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in Blackboard Learn needs to be established.
+
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Blackboard Learn.
+
+To configure and test Azure AD single sign-on with Blackboard Learn, you need to complete the following building blocks:
+
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Creating a Blackboard Learn test user](#creating-a-blackboard-learn-test-user)** - to have a counterpart of Britta Simon in Blackboard Learn that is linked to the Azure AD representation of her.
+4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+
+In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your Blackboard Learn application.
+
+Blackboard Learn application expects the SAML assertions in a specific format. Please configure the following claims for this application. You can manage the values of these attributes from the **"Atrribute"** tab of the application. The following screenshot shows an example for this. 
+
+![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_51.png) 
+
+**To configure Azure AD single sign-on with Blackboard Learn, perform the following steps:**
 
 
-1. **[Saml トークン属性]** ダイアログで、以下の表の各行について、次の手順を実行します。ここでは、一意のユーザー属性として、Userprincipalname をマッピングしていますが、組織内のユーザーを一意に識別し、Blackboard learn ユーザー名フィールドにマッピングする適切な値にマッピングすることができます。
+1. In the Azure classic portal, on the **Blackboard Learn** application integration page, in the menu on the top, click **Attributes**.
 
-	| 属性名 | 属性値 |
-	| --- | --- |    
-	| urn:oid:1.3.6.1.4.1.5923.1.1.1.6 | user.userprincipalname |
+    ![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_general_80.png) 
+
+
+1. On the **SAML token attributes** dialog, for each row shown in the table below, perform the following steps: We have map the Userprincipalname as the unique user attribute here but you can map it to the appropriate value which uniquely distinguish the user in the organization and that maps to Blackboard learn username field.
+
+  	| Attribute Name | Attribute Value |
+  	| --- | --- |    
+  	| urn:oid:1.3.6.1.4.1.5923.1.1.1.6  | user.userprincipalname |
    
  
-	a.**[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
+    a. Click **add user attribute** to open the **Add User Attribure** dialog.
 
-	![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_general_81.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_general_81.png) 
 
 
-	b.**[属性名]** ボックスに、その行に対して表示される属性名を入力します。
+    b. In the **Attrubute Name** textbox, type the attribute name shown for that row.
 
-    c.**[属性値]** リストから、その行に対して表示される属性値を選択します。
+    c. From the **Attribute Value** list, selsect the attribute value shown for that row.
 
-    d.**[完了]** をクリックします。
+    d. Click **Complete**.  
 
-2. クラシック ポータルの **Blackboard Learn** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
-	 
-	![Configure Single Sign-On][6]
+2. In the classic portal, on the **Blackboard Learn** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+     
+    ![Configure Single Sign-On][6] 
 
-3. **[ユーザーの Blackboard Learn へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+3. On the **How would you like users to sign on to Blackboard Learn** page, select **Azure AD Single Sign-On**, and then click **Next**.
 
-	![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_03.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_03.png) 
 
-4. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+4. On the **Configure App Settings** dialog page, perform the following steps:
 
-	![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_04.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_04.png) 
 
-    a.**[サインオン URL]** ボックスに、ユーザーが Blackboard Learn アプリケーションへのサインオンに使用する URL を入力します。その際、**https://\<企業名-価格>.blackboard.com/** パターンを使用します。
-	
-	b. **[次へ]** をクリックします。
+    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Blackboard Learn application using the following pattern: **https://\<company name-pricing\>.blackboard.com/**
+    
+    b. click **Next**
  
-5. **[Blackboard Learn でのシングル サインオンの構成]** ページで、次の手順を実行します。
+5. On the **Configure single sign-on at Blackboard Learn** page, perform the following steps:
 
-	![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_05.png)
 
-    a.**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. Click **Download metadata**, and then save the file on your computer.
 
-    b.**[次へ]** をクリックします。
-
-
-6. アプリケーション用に構成された SSO を入手するには、Blackboard Learn サポート チームに連絡し、次のものを情報として提供してください。
-
-	• ダウンロードしたメタデータ
+    b. Click **Next**.
 
 
-7. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
-	
-	![Azure AD Single Sign-On][10]
+6. To get SSO configured for your application, contact Blackboard Learn support team and provide them with the following:
 
-8. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+    • The downloaded metadata
+
+
+7. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+    
+    ![Azure AD Single Sign-On][10]
+
+8. On the **Single sign-on confirmation** page, click **Complete**.  
  
-	![Azure AD Single Sign-On][11]
+    ![Azure AD Single Sign-On][11]
 
 
-### Azure AD のテスト ユーザーの作成
-このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+In this section, you create a test user in the classic portal called Britta Simon.
 
 
-![Azure AD ユーザーの作成][20]
+![Create Azure AD User][20]
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+**To create a test user in Azure AD, perform the following steps:**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_09.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_09.png) 
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
+3. To display the list of users, in the menu on the top, click **Users**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_03.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_03.png) 
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_04.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_04.png) 
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_05.png)
+5. On the **Tell us about this user** dialog page, perform the following steps:  ![Creating an Azure AD test user](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_05.png) 
 
-    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. As Type Of User, select New user in your organization.
 
-    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-    c.**[次へ]** をクリックします。
+    c. Click **Next**.
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_06.png)
+6.  On the **User Profile** dialog page, perform the following steps: ![Creating an Azure AD test user](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_06.png) 
 
-    a.**[名]** ボックスに「**Britta**」と入力します。
+    a. In the **First Name** textbox, type **Britta**.  
 
-    b.**[姓]** ボックスに「**Simon**」と入力します。
+    b. In the **Last Name** textbox, type, **Simon**.
 
-    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. In the **Role** list, select **User**.
 
-    e.**[次へ]** をクリックします。
+    e. Click **Next**.
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
+7. On the **Get temporary password** dialog page, click **create**.
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_07.png) 
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+8. On the **Get temporary password** dialog page, perform the following steps:
 
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-blackboard-learn-tutorial/create_aaduser_08.png) 
 
-    a.**[新しいパスワード]** の値を書き留めます。
+    a. Write down the value of the **New Password**.
 
-    b.**[完了]** をクリックします。
-
-
-
-### Blackboard のテスト ユーザーの作成
-
-このセクションでは、Blackboard Learn で Britta Simon というユーザーを作成します。
-
-Blackboard Learn アプリケーションは、ジャスト イン タイム ユーザー プロビジョニングをサポートしています。「**[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)**」セクションで説明しているように要求が構成されていることを確認してください。
-
-### Azure AD テスト ユーザーの割り当て
-
-このセクションでは、Britta Simon に Blackboard Learn へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようします。
-
-![ユーザーの割り当て][200]
-
-**Blackboard Learn に Britta Simon を割り当てるには、次の手順に従います。**
-
-1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-
-	![ユーザーの割り当て][201]
-
-2. アプリケーションの一覧で **[Blackboard Learn]** を選択します。
-
-	![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_50.png)
-
-3. 上部のメニューで **[ユーザー]** をクリックします。
-
-	![ユーザーの割り当て][203]
-
-4. ユーザーの一覧で **[Britta Simon]** を選択します。
-
-5. 下部にあるツール バーで **[割り当て]** をクリックします。
-
-	![ユーザーの割り当て][205]
+    b. Click **Complete**.   
 
 
-### シングル サインオンのテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+### <a name="creating-an-blackboard-learn-test-user"></a>Creating an Blackboard Learn test user
 
-Blackboard Learn アプリケーションのサポート。アクセス パネルで [Blackboard Learn] タイルをクリックすると、自動的に Blackboard Learn アプリケーションにサインオンします。
+In this section, you create a user called Britta Simon in Blackboard Learn. 
+
+Blackboard Learn application support  just in time user provisioning. Please make sure that you have configured the claims as described in the section **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**
+
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+
+In this section, you enable Britta Simon to use Azure single sign-on by granting her access to Blackboard Learn.
+
+![Assign User][200] 
+
+**To assign Britta Simon to Blackboard Learn, perform the following steps:**
+
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+
+    ![Assign User][201] 
+
+2. In the applications list, select **Blackboard Learn**.
+
+    ![Configure Single Sign-On](./media/active-directory-saas-blackboard-learn-tutorial/tutorial_blackboardlearn_50.png) 
+
+3. In the menu on the top, click **Users**.
+
+    ![Assign User][203]
+
+4. In the Users list, select **Britta Simon**.
+
+5. In the toolbar on the bottom, click **Assign**.
+
+    ![Assign User][205]
 
 
-## その他のリソース
+### <a name="testing-single-sign-on"></a>Testing Single Sign-On
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
+
+Blackboard Learn application support When you click the Blackboard Learn tile in the Access Panel, you should get automatically signed-on to your Blackboard Learn application.
+
+
+## <a name="additional-resources"></a>Additional Resources
+
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -294,4 +295,8 @@ Blackboard Learn アプリケーションのサポート。アクセス パネ�
 [204]: ./media/active-directory-saas-blackboard-learn-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-blackboard-learn-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

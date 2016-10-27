@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Manager サービスのダッシュボード - Virtual Array | Microsoft Azure"
-   description="StorSimple Manager サービス ダッシュボードについて説明すると共に、サービス ダッシュボードを使用して StorSimple Virtual Array の状態を監視する方法を説明します。"
+   pageTitle="StorSimple Manager service dashboard - Virtual Array | Microsoft Azure"
+   description="Describes the StorSimple Manager service dashboard and explains how to use it to monitor the health of your StorSimple Virtual Array."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,51 +15,55 @@
    ms.date="04/07/2016"
    ms.author="alkohli" />
 
-# StorSimple Virtual Array の StorSimple Manager サービス ダッシュボードを使用する
 
-## 概要
+# <a name="use-the-storsimple-manager-service-dashboard-for-the-storsimple-virtual-array"></a>Use the StorSimple Manager service dashboard for the StorSimple Virtual Array
 
-StorSimple Manager サービスのダッシュボード ページには、StorSimple Manager サービスに接続されている StorSimple Virtual Array (StorSimple のオンプレミスの仮想デバイスまたは仮想デバイスとも呼ばれる) の概要が表示され、システム管理者が注意を必要とする内容が強調表示されます。このチュートリアルでは、ダッシュボード ページを紹介してから、ダッシュボードの内容と機能について、さらに、このページで実行できるタスクについて説明します。
+## <a name="overview"></a>Overview
 
-![サービスのダッシュボード](./media/storsimple-ova-service-dashboard/dashboard1.png)
+The StorSimple Manager service dashboard page provides a summary view of the StorSimple Virtual Arrays (also known as StorSimple on-premises virtual devices or virtual devices) that are connected to the StorSimple Manager service, highlighting those that need a system administrator's attention. This tutorial introduces the dashboard page, explains the dashboard content and function, and describes the tasks that you can perform from this page.
 
-StorSimple Manager サービスのダッシュボードには、次の情報が表示されます。
+![Service dashboard](./media/storsimple-ova-service-dashboard/dashboard1.png)
 
-- ページ上部にある**グラフ**領域では、仮想デバイスの関連メトリックを確認できます。ここでは、すべての仮想デバイスで使用されるプライマリ ストレージと、一定期間仮想デバイスによって使用されるクラウド ストレージを確認できます。グラフの右上隅にあるコントロールを使用して、相対的または絶対的な使用状況を指定したり、1 週間、1 か月、3 か月、または 1 年間のタイム スケールを表示したりできます。更新コントロール ![更新コントロール](./media/storsimple-ova-service-dashboard/refresh-control.png) を使用して、グラフを更新します。
+The StorSimple Manager service dashboard displays the following information:
 
-- **[使用状況の概要]** では、すべての仮想デバイスで使用可能な合計ストレージに対して、すべての仮想デバイスによってプロビジョニングされ、使用されているプライマリ ストレージの割合を示します。**[プロビジョニング済み]** は、使用するための準備および割り当てが完了しているストレージ容量を示し、**[使用済み]** は、仮想デバイスに接続されているイニシエーターで確認された、共有やボリュームの使用状況を示し、**[最大容量]** は、すべての仮想デバイスの最大容量を示します。
+- In the **chart** area at the top of the page, you can see the relevant metrics for your virtual devices. You can view the primary storage used across all virtual devices, as well as the cloud storage consumed by virtual devices over a period of time. Use the controls in the top-right corner of the chart to specify relative or absolute usage and to see a 1-week, 1-month, 3-month, or 1-year time scale. Use the refresh control ![refresh-control](./media/storsimple-ova-service-dashboard/refresh-control.png) to refresh the chart.
 
-- **[アラート]** 領域には、すべての仮想デバイスでアクティブになっているアラートを重大度別に分類したスナップショットが表示されます。重大度レベルをクリックすると、**[アラート]** ページが開き、該当する重大度レベルのアラートが表示対象となります。**[アラート]** ページでは、個々のアラートをクリックすることで、それぞれのアラートに関する詳細情報 (推奨される対応など) を確認できます。問題が解決した場合は、アラートをクリアすることもできます。
+- The **usage overview** shows the primary storage that is provisioned and consumed by all virtual devices relative to the total storage available across all virtual devices. **Provisioned** refers to the amount of storage that is prepared and allocated for use, **Used** refers to usage of shares or volumes as viewed by the initiators that are connected to the virtual devices, and **Max. capacity** shows the maximum capacity of all virtual devices.
 
-- **[ジョブ]** 領域には、サービスに接続されているすべての仮想デバイスで最近行われたジョブのスナップショットが表示されます。現在進行中のジョブ、過去 24 時間に成功または失敗したジョブを確認するために使用できるリンクがあります。
+- The **alerts** area provides a snapshot of all the active alerts across all virtual devices, grouped by alert severity. Clicking the severity level opens the **Alerts** page, scoped to show those alerts. On the **Alerts** page, you can click an individual alert to view additional details about that alert, including any recommended actions. You can also clear the alert if the issue has been resolved.
 
-- ページの右側にある **[概要]** 領域には、サービスの状態、サービスに接続されている仮想デバイスの合計数、サービスの場所、サービスに関連付けられているサブスクリプションの詳細など、役に立つ情報が表示されます。操作ログへのリンクもあります。このリンクをクリックすると、完了したすべての StorSimple Manager サービス操作が一覧表示されます。
+- The **jobs** area provides a snapshot of recent jobs across all virtual devices that are connected to your service. There are links that you can use to look at jobs that are currently in progress and those that succeeded or failed in the last 24 hours. 
 
-StorSimple Manager サービスのダッシュボード ページを使用して、次のタスクを実行できます。
+- The **quick glance** area on the right of the page provides useful information such as service status, total number of virtual devices connected to the service, location of the service, and details of the subscription that is associated with the service. There is also a link to the operations log. Click the link to see a list of all completed StorSimple Manager service operations. 
 
-- サービス登録キーの取得に関するページを参照してください。
-- 操作ログの表示
+You can use the StorSimple Manager service dashboard page to initiate the following tasks:
 
-## サービス登録キーを取得する
+- Get the service registration key.
+- View the operation logs.
 
-サービス登録キーを使用して、StorSimple 仮想デバイスを StorSimple Manager サービスに登録します。これにより、Azure クラシック ポータルにデバイスが表示され、管理操作の対象となります。キーは最初の仮想デバイスで作成され、残りの仮想デバイスと共有されます。
+## <a name="get-the-service-registration-key"></a>Get the service registration key
 
-**[登録キー]** (ページの下部にある) をクリックすると、**[サービス登録キー]** ダイアログ ボックスが表示されます。ここでは、現在のサービス登録キーをクリップボードにコピーすることも、サービス登録キーを再生成することもできます。
+The service registration key is used to register a StorSimple virtual device with the StorSimple Manager service, so that the device appears in the Azure classic portal for further management actions. The key is created on the first virtual device and shared with the remaining virtual devices. 
 
-![登録キー](./media/storsimple-ova-service-dashboard/service-dashboard3.png)
+Clicking **Registration Key** (at the bottom of the page) opens the **Service Registration Key** dialog box, where you can either copy the current service registration key to the clipboard or regenerate the service registration key.
 
-キーを再生成しても、以前に登録した仮想デバイスには影響ありません。キーを再生成した後にサービスに登録された仮想デバイスのみが影響を受けます。
+![registration key](./media/storsimple-ova-service-dashboard/service-dashboard3.png)
 
-サービス登録キーの取得に関する詳細は、「[サービス登録キーを取得する](storsimple-ova-manage-service.md#get-the-service-registration-key)」をご覧ください。
+Regenerating the key does not affect previously registered virtual devices: it affects only the virtual devices that are registered with the service after the key is regenerated.
 
-## 操作ログの表示
+For more information about getting the service registration key, go to [Get the service registration key](storsimple-ova-manage-service.md#get-the-service-registration-key).
 
-操作ログを表示するには、ダッシュ ボードの **[概要]** ウィンドウにある操作ログ リンクをクリックします。これにより、管理サービス ページが表示されます。このページでは、フィルター機能を使用して、特定の StorSimple Manager サービスに限定したログを表示することができます。
+## <a name="view-the-operations-logs"></a>View the operations logs
 
-![操作ログ](./media/storsimple-ova-service-dashboard/ops-log.png)
+You can view the operation logs by clicking the operation logs link available in the **quick glance** pane of the dashboard. This will take you to the management services page, where you can filter and see the logs specific to your StorSimple Manager service.
 
-## 次のステップ
+![Operations log](./media/storsimple-ova-service-dashboard/ops-log.png)
 
-[ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法](storsimple-ova-web-ui-admin.md)を確認します。
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0413_2016-->
+Learn how to [use the local web UI to administer your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,332 +1,333 @@
 <properties
-	pageTitle="チュートリアル: Azure Active Directory と Cezanne HR Software の統合 | Microsoft Azure"
-	description="Azure Active Directory と Cezanne HR Software の間でシングル サインオンを構成する方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="jeevansd"
-	manager="femila"
-	editor=""/>
+    pageTitle="Tutorial: Azure Active Directory integration with Cezanne HR Software | Microsoft Azure"
+    description="Learn how to configure single sign-on between Azure Active Directory and Cezanne HR Software."
+    services="active-directory"
+    documentationCenter=""
+    authors="jeevansd"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/15/2016"
-	ms.author="jeedes"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/15/2016"
+    ms.author="jeedes"/>
 
 
-# チュートリアル: Azure Active Directory と Cezanne HR Software の統合
 
-このチュートリアルの目的は、Cezanne HR Software と Azure Active Directory (Azure AD) を統合する方法を説明することです。
+# <a name="tutorial:-azure-active-directory-integration-with-cezanne-hr-software"></a>Tutorial: Azure Active Directory integration with Cezanne HR Software
 
-Cezanne HR Software と Azure AD の統合には、次の利点があります。
+The objective of this tutorial is to show you how to integrate Cezanne HR Software with Azure Active Directory (Azure AD).
 
-- Cezanne HR Software にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Cezanne HR Software にサインオン (シングル サインオン) できるようにします。
-- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
+Integrating Cezanne HR Software with Azure AD provides you with the following benefits:
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
+- You can control in Azure AD who has access to Cezanne HR Software
+- You can enable your users to automatically get signed-on to Cezanne HR Software (Single Sign-On) with their Azure AD accounts
+- You can manage your accounts in one central location - the Azure classic portal
 
-## 前提条件
+If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
-Cezanne HR Software と Azure AD の統合を構成するには、次のものが必要です。
+## <a name="prerequisites"></a>Prerequisites
 
-- Azure AD サブスクリプション
-- Cezanne HR Software でのシングル サインオンが有効なサブスクリプション
+To configure Azure AD integration with Cezanne HR Software, you need the following items:
 
-
-> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+- An Azure AD subscription
+- A Cezanne HR Software single-sign on enabled subscription
 
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
-
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
 
-## シナリオの説明
-このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
+To test the steps in this tutorial, you should follow these recommendations:
 
-このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
-
-1. ギャラリーからの Cezanne HR Software の追加
-2. Azure AD シングル サインオンの構成とテスト
+- You should not use your production environment, unless this is necessary.
+- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
 
-## ギャラリーからの Cezanne HR Software の追加
-Azure AD への Cezanne HR Software の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Cezanne HR Software を追加する必要があります。
+## <a name="scenario-description"></a>Scenario description
+The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.
 
-**ギャラリーから Cezanne HR Software を追加するには、次の手順に従います。**
+The scenario outlined in this tutorial consists of two main building blocks:
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. Adding Cezanne HR Software from the gallery
+2. Configuring and testing Azure AD single sign-on
 
-	![Active Directory][1]
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+## <a name="adding-cezanne-hr-software-from-the-gallery"></a>Adding Cezanne HR Software from the gallery
+To configure the integration of Cezanne HR Software into Azure AD, you need to add Cezanne HR Software from the gallery to your list of managed SaaS apps.
 
-3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
-	
-	![アプリケーション][2]
+**To add Cezanne HR Software from the gallery, perform the following steps:**
 
-4. ページの下部にある **[追加]** をクリックします。
-	
-	![アプリケーション][3]
+1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**. 
 
-5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+    ![Active Directory][1]
 
-	![アプリケーション][4]
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-6. 検索ボックスに、「**Cezanne HR Software**」と入力します。
-
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_01.png)
-
-7. 結果ウィンドウで **[Cezanne HR Software]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
-
-	![ギャラリーでアプリを選択する](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_0001.png)
-
-##  Azure AD シングル サインオンの構成とテスト
-このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Cezanne HR Software で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
-
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Cezanne HR Software ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Cezanne HR Software の関連ユーザーの間で、リンク関係が確立されている必要があります。
-
-このリンクの関係を確立するには、Azure AD の **[ユーザー名]** の値を、Cezanne HR Software の **[Username (ユーザー名)]** の値として割り当てます。
-
-Cezanne HR Software で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Cezanne HR Software のテスト ユーザーの作成](#creating-a-cezanne-hr-software-test-user)** - Cezanne HR Software で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### Azure AD シングル サインオンの構成
-
-このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、Cezanne HR Software アプリケーションでシングル サインオンを構成します。
-
-**Cezanne HR Software で Azure AD シングル サインオンを構成するには、次の手順に従います。**
-
-1. クラシック ポータルの **Cezanne HR Software** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
-	 
-	![Configure Single Sign-On][6]
-
-2. **[ユーザーの Cezanne HR Software へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+3. To open the applications view, in the directory view, click **Applications** in the top menu.
     
-	![Configure Single Sign-On](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_03.png)
+    ![Applications][2]
 
-3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
+4. Click **Add** at the bottom of the page.
+    
+    ![Applications][3]
+
+5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+
+    ![Applications][4]
+
+6. In the search box, type **Cezanne HR Software**.
+
+    ![Creating an Azure AD test user](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_01.png)
+
+7. In the results panel, select **Cezanne HR Software**, and then click **Complete** to add the application.
+
+    ![Selecting the app in the gallery](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_0001.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
+The objective of this section is to show you how to configure and test Azure AD single sign-on with Cezanne HR Software based on a test user called "Britta Simon".
+
+For single sign-on to work, Azure AD needs to know what the counterpart user in Cezanne HR Software to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Cezanne HR Software needs to be established.
+
+This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Cezanne HR Software.
+
+To configure and test Azure AD single sign-on with Cezanne HR Software, you need to complete the following building blocks:
+
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
+2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Creating a Cezanne HR Software test user](#creating-a-cezanne-hr-software-test-user)** - to have a counterpart of Britta Simon in Cezanne HR Software that is linked to the Azure AD representation of her.
+4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+
+In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your Cezanne HR Software application.
+
+**To configure Azure AD single sign-on with Cezanne HR Software, perform the following steps:**
+
+1. In the classic portal, on the **Cezanne HR Software** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+     
+    ![Configure Single Sign-On][6] 
+
+2. On the **How would you like users to sign on to Cezanne HR Software** page, select **Azure AD Single Sign-On**, and then click **Next**.
+    
+    ![Configure Single Sign-On](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_03.png)
+
+3. On the **Configure App Settings** dialog page, perform the following steps and click **Next**:
 
     ![Configure Single Sign-On](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_04.png)
 
-	a.**[サインオン URL]** ボックスに、`https://w3.cezanneondemand.com/cezannehr/-/<tenant id>` という形式で URL を入力します。
+    a. In the **Sign On URL** textbox, type a URL using the following pattern: `https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`.
 
-    b.**[識別子]** ボックスに、「`https://w3.cezanneondemand.com/CezanneOnDemand/`」と入力します。
+    b. In the **Identifier** textbox, type: `https://w3.cezanneondemand.com/CezanneOnDemand/`.
 
-	c.**[応答 URL]** ボックスに、`https://w3.cezanneondemand.com:443/CezanneOnDemand/-/<tenant id>/Saml/samlp` の形式で URL を入力します。
+    c. In the **Reply URL** textbox, type a URL using the following pattern: `https://w3.cezanneondemand.com:443/CezanneOnDemand/-/<tenant id>/Saml/samlp`.
 
-	d.**[次へ]** をクリックします。
+    d. Click **Next**
 
-	> [AZURE.NOTE] 実際のサインオン URL、識別子、応答 URL で値を更新する必要があることに注意してください。これらの値を取得するには、Cezanne HR Software サポート チーム (<mailto:info@cezannehr.com>) に連絡してください。
+    > [AZURE.NOTE] Please note that you have to update these values with the actual Sign On URL, Identifier and Reply URL. To get these values, contact Cezanne HR Software support team via <mailto:info@cezannehr.com>.
 
-4. **[Cezanne HR Software でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
+4. On the **Configure single sign-on at Cezanne HR Software** page, perform the following steps and click **Next**:
 
-	![Configure Single Sign-On](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_05.png)
 
-    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+    a. Click **Download certificate**, and then save the file on your computer.
 
-    b.**[次へ]** をクリックします。
+    b. Click **Next**.
 
-5. 別の Web ブラウザーのウィンドウで、管理者として Cezanne HR Software テナントにサインオンします。
+5. In a different web browser window, sign-on to your Cezanne HR Software tenant as an administrator.
 
-6. 左側のナビゲーション ウィンドウで、**[System Setup (システム設定)]** をクリックします。**[Security Settings (セキュリティの設定)]** に移動します。次に、**[Single Sign-On Configuration (シングル サインオンの構成)]** に移動します。
+6. On the left navigation pane, click **System Setup**. Go to **Security Settings**. Then navigate to **Single Sign-On Configuration**.
 
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-7. **[Allow users to log in using the following Single Sign-On (SSO) Service (ユーザーに次のシングル サインオン (SSO) サービスを使用したログインを許可する)]** パネルで **[SAML 2.0]** チェック ボックスをオンにし、その横にある **[Advanced Configuration (詳細設定)]** オプションを選択します。
+7. In the **Allow users to log in using the following Single Sign-On (SSO) Service** panel check the **SAML 2.0** box and select the **Advanced Configuration** option beside it.
 
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
-8. **[Add New (新規追加)]** ボタンをクリックします。
+8. Click **Add New** button.
 
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-9. **[SAML 2.0 IDENTITY PROVIDERS (SAML 2.0 ID プロバイダー)]** セクションで、次の手順に従います。
+9. Perform the following steps on **SAML 2.0 IDENTITY PROVIDERS** section.
 
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
 
-	a.**[Display Name (表示名)]** に ID プロバイダー名を入力します。
+    a. Enter the name of your Identity Provider as the **Display Name**.
 
-	b.**[Entity Identifier (エンティティ識別子)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[エンティティ ID]** の値を入力します。
+    b. In the **Entity Identifier** textbox put the value of **Entity ID** from Azure AD application configuration wizard.
 
-	c.**[SAML Binding (SAML バインディング)]** を "POST" に変更します。
+    c. Change the **SAML Binding** to 'POST'.
 
-	d.**[Security Token Service Endpoint (セキュリティ トークン サービス エンドポイント)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[シングル サインオン サービス URL]** の値を入力します。
+    d. In the **Security Token Service Endpoint** textbox put the value of **Single Sign-on Service URL** from Azure AD application configuration wizard.
 
-	e.**[User ID Attribute Name (ユーザー ID 属性名)]** に、「http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name」と入力します。
+    e. Enter 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name' in the **User ID Attribute Name**.
 
-	f.**アップロード** アイコンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
+    f. Click **Upload** icon to upload the downloaded certificate from Azure AD.
 
-	g.**[OK]** ボタンをクリックします。
+    g. Click the **Ok** button. 
 
-10. **[保存]** ボタンをクリックします。
+10. Click **Save** button.
 
-	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![Configure Single Sign-On On App side](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
-11. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+11. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
     
-	![Azure AD Single Sign-On][10]
+    ![Azure AD Single Sign-On][10]
 
-12. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+12. On the **Single sign-on confirmation** page, click **Complete**.  
     
-	![Azure AD Single Sign-On][11]
+    ![Azure AD Single Sign-On][11]
 
 
 
-### Azure AD のテスト ユーザーの作成
-このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
+### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
+The objective of this section is to create a test user in the classic portal called Britta Simon.
 
-![Azure AD ユーザーの作成][20]
+![Create Azure AD User][20]
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+**To create a test user in Azure AD, perform the following steps:**
 
-1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_09.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_09.png)
 
-2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
+3. To display the list of users, in the menu on the top, click **Users**.
     
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png)
 
-4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
+4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png)
 
-5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+5. On the **Tell us about this user** dialog page, perform the following steps:
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_05.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_05.png)
 
-    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+    a. As Type Of User, select New user in your organization.
 
-    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+    b. In the User Name **textbox**, type **BrittaSimon**.
 
-    c.**[次へ]** をクリックします。
+    c. Click **Next**.
 
-6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+6.  On the **User Profile** dialog page, perform the following steps:
     
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_06.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_06.png)
 
-    a.**[名]** ボックスに「**Britta**」と入力します。
+    a. In the **First Name** textbox, type **Britta**.  
 
-    b.**[Last Name]** ボックスに「**Simon**」と入力します。
+    b. In the **Last Name** textbox, type **Simon**.
 
-    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
+    c. In the **Display Name** textbox, type **Britta Simon**.
 
-    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
+    d. In the **Role** list, select **User**.
 
-    e.**[次へ]** をクリックします。
+    e. Click **Next**.
 
-7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
+7. On the **Get temporary password** dialog page, click **create**.
     
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_07.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_07.png)
 
-8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+8. On the **Get temporary password** dialog page, perform the following steps:
     
-	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_08.png)
+    ![Creating an Azure AD test user](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_08.png)
 
-    a.**[新しいパスワード]** の値を書き留めます。
+    a. Write down the value of the **New Password**.
 
-    b.**[完了]** をクリックします。
-
-
-
-### Cezanne HR Software のテスト ユーザーの作成
-
-Azure AD ユーザーが Cezanne HR Software にログインできるようにするには、ユーザーを Cezanne HR Software にプロビジョニングする必要があります。Cezanne HR Software の場合、プロビジョニングは手動で行います。
-
-####ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
-
-1.  Cezanne HR Software 企業サイトに管理者としてログインします。
-
-2.  左側のナビゲーション ウィンドウで、**[System Setup (システム設定)]** をクリックします。**[ユーザーの管理]** に移動します。**[Add New User (新しいユーザーの追加)]** に移動します。
-
-    ![新しいユーザー](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "新しいユーザー")
-
-3.  **[Person Details (個人の詳細)]** セクションで、次の手順を実行します。
-
-    ![新しいユーザー](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "新しいユーザー")
-
-	a.**[Internal User (内部ユーザー)]** をオフに設定します。
-
-	b.**[名]** ボックスに「**Britta**」と入力します。
-
-    c.**[Last Name]** ボックスに「**Simon**」と入力します。
-
-	d.**[E-mail (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
-
-4.  **[Account Information (アカウント情報)]** セクションで、次の手順を実行します。
-
-    ![新しいユーザー](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "新しいユーザー")
-
-	a.**[Username (ユーザー名)]** ボックスに、Britta Simon の電子メール アドレスを入力します。
-
-	b.**[Password (パスワード)]** ボックスに、Britta Simon アカウントのパスワードを入力します。
-
-	c.**[Security Role (セキュリティ ロール)]** で **[HR Professional (人事担当者)]** を選択します。
-
-	d. **[OK]** をクリックします。
-
-5. **[Single Sign-On (シングル サインオン)]** タブに移動し、**[SAML 2.0 Identifiers (SAML 2.0 識別子)]** 領域で **[Add New (新規追加)]** を選択します。
-
-	![User](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")
-
-6. **[Identity Provider (ID プロバイダー)]** でお使いの ID プロバイダーを選択し、**[User Identifier (ユーザー識別子)]** ボックスに Britta Simon アカウントの電子メール アドレスを入力します。
-
-	![User](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")
-	
-7. **[保存]** ボタンをクリックします。
-
-	![User](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")
+    b. Click **Complete**.   
 
 
-### Azure AD テスト ユーザーの割り当て
 
-このセクションの目的は、Britta Simon に Cezanne HR Software へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
-	
-![ユーザーの割り当て][200]
+### <a name="creating-a-cezanne-hr-software-test-user"></a>Creating a Cezanne HR Software test user
 
-**Cezanne HR Software に Britta Simon を割り当てるには、次の手順に従います。**
+In order to enable Azure AD users to log into Cezanne HR Software, they must be provisioned into Cezanne HR Software. In the case of Cezanne HR Software, provisioning is a manual task.
 
-1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+####<a name="to-provision-a-user-account,-perform-the-following-steps:"></a>To provision a user account, perform the following steps:
+
+1.  Log into your Cezanne HR Software company site as an administrator.
+
+2.  On the left navigation pane, click **System Setup**. Go to **Manage Users**. Then navigate to **Add New User**.
+
+    ![New User](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "New User")
+
+3.  On **Person Details** section, perform below steps:
+
+    ![New User](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "New User")
+
+    a. Set **Internal User** as OFF.
+
+    b. In the **First Name** textbox, type **Britta**.  
+
+    c. In the **Last Name** textbox, type **Simon**.
+
+    d. In the **E-mail** textbox, type the email address of Britta Simon account.
+
+4.  On **Account Information** section, perform below steps:
+
+    ![New User](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "New User")
+
+    a. In the **Username** textbox, type the email address of Britta Simon.
+
+    b. In the **Password** textbox, type the password of Britta Simon account.
+
+    c. Select **HR Professional** as **Security Role**.
+
+    d. click **OK**.
+
+5. Navigate to **Single Sign-On** tab and select **Add New** in the **SAML 2.0 Identifiers** area.
+
+    ![User](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "User")
+
+6. Choose your Identity Provider for the **Identity Provider** and in the text box of **User Identifier**, enter the email address of Britta Simon account.
+
+    ![User](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "User")
     
-	![ユーザーの割り当て][201]
+7. Click **Save** button.
 
-2. アプリケーションの一覧で **[Cezanne HR Software]** を選択します。
+    ![User](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "User")
+
+
+### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+
+The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Cezanne HR Software.
     
-	![Configure Single Sign-On](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_50.png)
+![Assign User][200]
 
-3. 上部のメニューで **[ユーザー]** をクリックします。
+**To assign Britta Simon to Cezanne HR Software, perform the following steps:**
+
+1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
     
-	![ユーザーの割り当て][203]
+    ![Assign User][201]
 
-4. ユーザーの一覧で **[Britta Simon]** を選択します。
-
-5. 下部にあるツール バーで **[割り当て]** をクリックします。
+2. In the applications list, select **Cezanne HR Software**.
     
-	![ユーザーの割り当て][205]
+    ![Configure Single Sign-On](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_50.png)
 
-### シングル サインオンのテスト
+3. In the menu on the top, click **Users**.
+    
+    ![Assign User][203]
 
-このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+4. In the Users list, select **Britta Simon**.
+
+5. In the toolbar on the bottom, click **Assign**.
+    
+    ![Assign User][205]
+
+### <a name="testing-single-sign-on"></a>Testing single sign-on
+
+The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
  
-アクセス パネルで [Cezanne HR Software] タイルをクリックすると、自動的に Cezanne HR Software アプリケーションにサインオンします。
+When you click the Cezanne HR Software tile in the Access Panel, you should get automatically signed-on to your Cezanne HR Software application.
 
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -348,4 +349,8 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 [204]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_205.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,66 +1,67 @@
 <properties
-	pageTitle="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を追加する"
-	description="Azure App Service を使用して Xamarin iOS アプリにプッシュ通知を送信する方法について説明します"
-	services="app-service\mobile"
-	documentationCenter="xamarin"
-	authors="wesmc7777"
-	manager="dwrede"
-	editor=""/>
+    pageTitle="Add push notifications to your Xamarin.iOS app with Azure App Service"
+    description="Learn how to use Azure App Service to send push notifications to your Xamarin.iOS app"
+    services="app-service\mobile"
+    documentationCenter="xamarin"
+    authors="adrianhall"
+    manager="dwrede"
+    editor=""/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="mobile-xamarin-ios"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="08/19/2016"
-	ms.author="wesmc"/>
+    ms.service="app-service-mobile"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="mobile-xamarin-ios"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="10/01/2016"
+    ms.author="adrianha"/>
 
-# Xamarin iOS アプリへのプッシュ通知の追加
+
+# <a name="add-push-notifications-to-your-xamarin.ios-app"></a>Add push notifications to your Xamarin.iOS App
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-##Overview
+##<a name="overview"></a>Overview
 
-最初に、このチュートリアルの基になっている [Xamarin.iOS のクイックスタート](app-service-mobile-xamarin-ios-get-started.md)に関するチュートリアルを完了しておく必要があります。Xamarin.iOS クイック スタート プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
+This tutorial is based on the [Xamarin.iOS quickstart](app-service-mobile-xamarin-ios-get-started.md) tutorial, which you must complete first. You will add push notifications to the Xamarin.iOS quick start project so that every time a record is inserted, a push notification is sent. If you do not use the downloaded quick start server project, you must add the push notification extension package to your project. For more information about server extension packages, see [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-##前提条件
+##<a name="prerequisites"></a>Prerequisites
 
-* [Xamarin.iOS のクイックスタート](app-service-mobile-xamarin-ios-get-started.md)に関するチュートリアルを完了していること。
+* Complete the [Xamarin.iOS quickstart](app-service-mobile-xamarin-ios-get-started.md) tutorial.
 
-* 物理的な iOS デバイスiOS シミュレーターでは、プッシュ通知はサポートされていません。
+* A physical iOS device. Push notifications are not supported by the iOS simulator.
 
-##Apple の開発者ポータルにプッシュ通知のアプリを登録する
+##<a name="register-the-app-for-push-notifications-on-apple's-developer-portal"></a>Register the app for push notifications on Apple's developer portal
 
-[AZURE.INCLUDE [Notification Hubs Xamarin で Apple プッシュ通知を有効にする](../../includes/notification-hubs-xamarin-enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Notification Hubs Xamarin Enable Apple Push Notifications](../../includes/notification-hubs-xamarin-enable-apple-push-notifications.md)]
 
-##プッシュ通知を送信するようにモバイル アプリを構成する
+##<a name="configure-your-mobile-app-to-send-push-notifications"></a>Configure your Mobile App to send push notifications
 
-通知を送信するようにアプリを構成するには、新しいハイブリッドを作成し、使用するプラットフォームの通知サービスに合わせて構成します。
+To configure your app to send notifications, create a new hub and configure it for the platform notification services that you will use.
 
-1. [Azure ポータル](https://portal.azure.com/)で、**[参照]**、**[Mobile Apps]**、作成したモバイル アプリ、**[設定]**、**[モバイル]**、**[プッシュ]**、**[通知ハブ]**、**[+ 通知ハブ]** の順にクリックし、新しい通知ハブの名前と名前空間を指定してから、**[OK]** をクリックします。
+1. In the [Azure portal](https://portal.azure.com/), click **Browse** > **Mobile Apps** > your Mobile App > **Settings** > **Mobile** > **Push** > **Notification Hub** > **+ Notification Hub**, and provide a name and namespace for a new notification hub, and then click the **OK** button.
 
-	![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-configure-notification-hub.png)
+    ![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-configure-notification-hub.png)
 
-2. [通知ハブの作成] ブレードで、**[作成]** をクリックします。
+2. In the Create Notification Hub blade, click **Create**.
 
-3. **[プッシュ]**、**[Apple (APNs)]**、**[証明書のアップロード]** の順にクリックします。以前にエクスポートした .p12 プッシュ証明書ファイルをアップロードします。開発とテスト用に開発プッシュ証明書を作成した場合は、**[サンドボックス]** を選択します。それ以外の場合は、**[運用]** を選択します。
+3. Click **Push** > **Apple (APNS)** > **Upload Certificate**. Upload the .p12 push certificate file you exported earlier.  Make sure to select **Sandbox** if you created a development push certificate for development and testing.  Otherwise, choose **Production**.
 
-	![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-upload-apns-cert.png)
+    ![](./media/app-service-mobile-xamarin-ios-get-started-push/mobile-app-upload-apns-cert.png)
 
-これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
+Your service is now configured to work with push notifications on iOS.
 
-##プッシュ通知を送信するようにサーバー プロジェクトを更新する
+##<a name="update-the-server-project-to-send-push-notifications"></a>Update the server project to send push notifications
 
 [AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-##Xamarin.iOS プロジェクトを構成する
+##<a name="configure-your-xamarin.ios-project"></a>Configure your Xamarin.iOS project
 
 [AZURE.INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
-##アプリケーションにプッシュ通知を追加する
+##<a name="add-push-notifications-to-your-app"></a>Add push notifications to your app
 
-1. **QSTodoService** で次のプロパティを追加して、**AppDelegate** でモバイル クライアントを取得できるようにします。
+1. In **QSTodoService**, add the following property so that **AppDelegate** can acquire the mobile client:
 
             public MobileServiceClient GetClient {
             get
@@ -73,12 +74,12 @@
             }
         }
 
-1. 次の `using` ステートメントを **AppDelegate.cs** ファイルの先頭に追加します。
+1. Add the following `using` statement to the top of the **AppDelegate.cs** file.
 
-		using Microsoft.WindowsAzure.MobileServices;
-		using Newtonsoft.Json.Linq;
+        using Microsoft.WindowsAzure.MobileServices;
+        using Newtonsoft.Json.Linq;
 
-2. **AppDelegate** で、**FinishedLaunching** イベントをオーバーライドします。
+2. In **AppDelegate**, override the **FinishedLaunching** event:
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
@@ -95,16 +96,16 @@
             return true;
         }
 
-3. 同じファイルで **RegisteredForRemoteNotifications** イベントをオーバーライドします。このコードでは、サーバーでサポートされているすべてのプラットフォームに送信される単純なテンプレート通知を登録します。
+3. In the same file, override the **RegisteredForRemoteNotifications** event. In this code you are registering for a simple template notification that will be sent across all supported platforms by the server.
 
-	Notification Hubs を使用するテンプレートの詳細については、「[テンプレート](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)」を参照してください。
+    For more information on templates with Notification Hubs, see [Templates](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
 
 
         public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
             MobileServiceClient client = QSTodoService.DefaultService.GetClient;
 
-            const string templateBodyAPNS = "{"aps":{"alert":"$(messageParam)"}}";
+            const string templateBodyAPNS = "{\"aps\":{\"alert\":\"$(messageParam)\"}}";
 
             JObject templates = new JObject();
             templates["genericMessage"] = new JObject
@@ -118,7 +119,7 @@
         }
 
 
-4. 次に、**DidReceivedRemoteNotification** イベントをオーバーライドします。
+4. Then, override the **DidReceivedRemoteNotification** event:
 
         public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
@@ -136,24 +137,31 @@
             }
         }
 
-これで、アプリケーションがプッシュ通知をサポートするように更新されました。
+Your app is now updated to support push notifications.
 
-## <a name="test"></a>アプリケーションでプッシュ通知をテストする
+## <a name="<a-name="test"></a>test-push-notifications-in-your-app"></a><a name="test"></a>Test push notifications in your app
 
-1. **[Run]** ボタンを押して、プロジェクトをビルドし、iOS 対応のデバイスでアプリケーションを開始します。**[OK]** をクリックして、プッシュ通知を受け入れます。
+1. Press the **Run** button to build the project and start the app in an iOS capable device, then click **OK** to accept push notifications.
 
-	> [AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
+    > [AZURE.NOTE] You must explicitly accept push notifications from your app. This request only occurs the first time that the app runs.
 
-2. アプリケーションで、タスクを入力し、プラス (**+**) アイコンをクリックします。
+2. In the app, type a task, and then click the plus (**+**) icon.
 
-3. 通知が受信されたことを確認し、**[OK]** をクリックして通知を破棄します。
+3. Verify that a notification is received, then click **OK** to dismiss the notification.
 
-4. 手順 2. を繰り返してすぐにアプリケーションを閉じたら、通知が表示されることを確認します。
+4. Repeat step 2 and immediately close the app, then verify that a notification is shown.
 
-これで、このチュートリアルは終了です。
+You have successfully completed this tutorial.
 
 <!-- Images. -->
 
 <!-- URLs. -->
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,247 +1,250 @@
 <properties
-	pageTitle="Azure Active Directory を使用して自分のパスワードを更新する方法 | Microsoft Azure"
-	description="パスワードのリセットのための登録方法、パスワードの変更方法、パスワードを忘れた場合のリセット方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="asteen"
-	manager="femila"
-	editor="curtand"/>
+    pageTitle="How to update your own password using Azure Active Directory| Microsoft Azure"
+    description="Learn that ways you can register for password reset, how to change your password, and how to reset your own password in case you ever forget it."
+    services="active-directory"
+    documentationCenter=""
+    authors="asteen"
+    manager="femila"
+    editor="curtand"/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/30/2016"
-	ms.author="asteen"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/30/2016"
+    ms.author="asteen"/>
 
-# 自分のパスワードを更新する方法
-ここでは、職場または学校アカウントのパスワードを管理する方法について説明します。 パスワードの変更、パスワードのリセット、パスワードのリセットの登録などの一般的な手順を実行する方法については、次を参照してください。
 
-* [**アカウントへのアクセス権を失わないでください**](#dont-lose-access-to-your-account)
-* [**Office365 の自分のパスワードを変更する**](#how-to-change-your-password-from-o365)
-* [**アクセス パネルからパスワードを変更する**](#how-to-change-your-password-from-the-access-panel)
-* [**パスワードをリセットする**](#how-to-reset-your-password)
-* [**自分のアカウントのロックを解除する**](#how-to-unlock-your-account)
-* [**一般的な問題とその解決方法**](#common-problems-and-their-solutions)
+# <a name="how-to-update-your-own-password"></a>How to update your own password
+If you are unsure how to manage your work or school account password, you've come to the right place!  Read below to learn how to perform common steps, like changing a password, resetting a password, or registering for password reset.
 
-## アカウントへのアクセス権を失わないでください
+* [**Don’t lose access to your account!**](#dont-lose-access-to-your-account)
+* [**How to change your password from Office 365**](#how-to-change-your-password-from-o365)
+* [**How to change your password from the access panel**](#how-to-change-your-password-from-the-access-panel)
+* [**How to reset your password**](#how-to-reset-your-password)
+* [**How to unlock your account**](#how-to-unlock-your-account)
+* [**Common problems and their solutions**](#common-problems-and-their-solutions)
+
+## <a name="don’t-lose-access-to-your-account!"></a>Don’t lose access to your account!
 
 > [AZURE.IMPORTANT]
-**このページが表示される理由:** リンクをたどってこのページにアクセスした場合、管理者によってパスワードのリセット登録が要求されている可能性があります。アプリにアクセスするためには、パスワードのリセット登録を行う必要があります。電話または電子メールの情報を求められたり、セキュリティの質問を設定するよう求められたりすることがあります。その情報がスパム目的に使用されることはないのでご安心ください。いただいた情報は、お客様のアカウントのセキュリティを強化する目的でのみ使用されます。必要な作業は、ここに記載した手順に従って実行できます。
+> **Why am I seeing this?** If you followed a link to get here, you're probably seeing this because your administrator requires you to register for password reset to gain access to your app. You might be asked for phone or email information, or to set up security questions.  Don’t worry – we won’t use this information to spam you, just to keep your account more secure. The steps presented here should help you to reach your goal.
 
-パスワードのリセット登録を最速で行うには、[http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) にアクセスしてください。
+The fastest way to register for password reset is to go to [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup).  
 
- 1. [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) に移動します。
- 2. ユーザー名とパスワードを入力します。
- 3. **[今すぐセットアップ]** をクリックして登録するオプションを選択します。この場合は、**[認証用電話]** で登録する例を示します。
+ 1. Navigate to [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup).
+ 2. Enter your username and password.
+ 3. Choose an option to register for by clicking **set it up now**.  In this case, I'll demonstrate registering my **authentication phone**.
 
     ![][011]
 
- 4. ドロップダウン リストからご自分の国コードを選択し、**[完全な電話番号 + 市外局番]** を入力します。
+ 4. Select your country code from the dropdown and enter your **full phone number + area code**.
 
-    ![][012] ![][013]
+    ![][012]
+    ![][013]
 
- 5. **[テキスト メッセージを送信する]** または **[電話で確認コードを受け取る]** オプションのいずれかを選択します。この場合は電話に 6 桁のコードが送信される **[テキスト メッセージを送信する]** を選択します。電話にコードが送信されるまで待機します。
+ 5. Select one of the **text me** or **call me** options.  In this case, I'll select **text me**, which will send a 6 digit code to my phone.  Wait for the code to arrive on your phone.
 
     ![][014]
 
- 6. コードが送信されたらそれを入力ボックスに入力し、[確認] をクリックします。
- 7. **[ご利用ありがとうございました]** と表示されたら終わりです。 これで [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com) に移動し、登録したものを使用していつでもパスワードをリセットできます。
+ 6. Once the code arrives, enter it into the input box, and then click "verify."
+ 7. When you see **thanks**, that's it! Now you can use what you registered for to reset your password at any time by going to [https://passwordreset.microsoftonline.com](https://passwordreset.microsoftonline.com).
 
     ![][015]
 
- >[AZURE.IMPORTANT] 管理者が 1 つ以上のオプションの登録を許可している場合、携帯電話を紛失した場合や電子メールにアクセスできない場合のために、バックアップのオプションを登録することを強くお勧めします。
+ >[AZURE.IMPORTANT] If your admin lets you register for more than one option, we highly recommend you also register a back-up option in case you lose your phone or access to your email.
 
-## O365 の自分のパスワードを変更する
-Office 365 で職場または学校のアカウントのパスワードを変更するには、次の手順に従います。パスワードを忘れてしまって、それをリセットしたい場合は、[この](#how-to-reset-your-password)手順に従います。
+## <a name="how-to-change-your-password-from-o365"></a>How to change your password from O365
+Follow the steps below to change your work or school account password in Office 365.  If you have forgotten your password and want to reset it, follow the steps [here](#how-to-reset-your-password).
 
- 1. 職場または学校のアカウントを使用して Office 365 にサインインします。
- 2. **[設定]**、**[Office 365 設定]**、**[パスワード]**、**[パスワードの変更]** の順に進みます。
- 3. 古いパスワードを入力した後、新しいパスワードを入力して、それを確認します。
- 4. **[保存]** をクリックします。
+ 1. Sign in to Office 365 with your work or school account.
+ 2. Go to **Settings** > **Office 365 settings** > **Password** > **Change password**.
+ 3. Type your old password, and then type a new password and confirm it.
+ 4. Click **Save**.
 
-この詳細については、[Office 365 ドキュメント センター](https://support.office.com/article/Change-my-password-in-Office-365-for-business-d1efbaee-63a7-4c08-ab1d-71bf932bbb5d)を参照してください。
+You can read more about this on the [Office 365 documentation center](https://support.office.com/article/Change-my-password-in-Office-365-for-business-d1efbaee-63a7-4c08-ab1d-71bf932bbb5d).
 
-## アクセス パネルからパスワードを変更する
-[[アクセス パネル]](https://myapps.microsoft.com) から職場または学校のアカウントのパスワードを変更するには、次の手順に従います。パスワードを忘れてしまって、それをリセットしたい場合は、[この](#how-to-reset-your-password)手順に従います。
+## <a name="how-to-change-your-password-from-the-access-panel"></a>How to change your password from the access panel
+Follow the steps below to change your work or school account password from the [Access Panel](https://myapps.microsoft.com).  If you have forgotten your password and want to reset it, follow the steps [here](#how-to-reset-your-password).
 
- 1. 職場または学校のアカウントを使用し、https://myapps.microsoft.com にサインインします。
- 2. **[プロファイル]** タブをクリックします。
- 3. 画面右側の **[パスワードを変更]** タイルをクリックします。
- 4. 古いパスワードを入力した後、新しいパスワードを入力して、それを確認します。
- 5. **[送信]** をクリックします。
+ 1. Sign into https://myapps.microsoft.com with your work or school account.
+ 2. Click on the **profile** tab.
+ 3. Click on the **change my password** tile on the right hand side of the screen.
+ 4. Type your old password, and then type a new password and confirm it.
+ 5. Click **Submit**.
 
- パスワードの変更で問題が発生しましたか? 「[一般的な問題とその解決方法](#common-problems-and-their-solutions)」を参照してください。
+ Run into a problem changing your password?  Read about [common problems and their solutions](#common-problems-and-their-solutions).
 
-## パスワードをリセットする
+## <a name="how-to-reset-your-password"></a>How to reset your password
 
 
-任意の職場または学校のアカウントのサインイン画面から、職場または学校のアカウントをリセットするには、次の手順に従います。
+Follow the steps below to reset your work or school account password from any work or school account sign in screen.
 
->[AZURE.IMPORTANT] この機能は、管理者が有効にしている場合のみ使用できます。オンになっていない場合、この機能はアカウントでは有効になっていないというメッセージが表示されます。この場合、[管理者に問い合わせてください] のリンクを使用し、管理者に連絡してアカウントのロックを解除できます。
+>[AZURE.IMPORTANT] This feature is only available to you if your admin has turned it on. If it's not turned on, you'll see a message indicating your account is not enabled for this feature.  You can use the "contact your administrator" link in this case to get in touch with your admin to unlock your account.
 >
-> 管理者がユーザーに対してこの機能を有効にしている場合、使用するにはまずサインアップする必要があります。これは、http://aka.ms/ssprsetup から行います。
+> If your admin has enabled you for this feature, you'll first need to sign up before you can use it. You can do that here: http://aka.ms/ssprsetup.
 
 
- 1. 任意の職場または学校アカウントのサインイン ページで、[アカウントにアクセスできない場合] リンクと [パスワードを忘れた場合] リンクのいずれかをクリックするか、https://passwordreset.microsoftonline.com に直接移動します。
+ 1. On the any work or school account sign-in page, click on one of the "can't access your account?" or "forgot your password?" links, or navigate to https://passwordreset.microsoftonline.com directly.
 
     ![][001]
 
- 2. [ID を入力] ページで職場または学校のアカウントの ID を入力し、CAPTCHA チャレンジを渡してロボットでないことを証明します。
+ 2. On the "who are you?" page, enter your work or school account ID and prove you aren't a robot by passing the CAPTCHA challenge.
 
     ![][002]
 
- 3. [次へ] ボタンをクリックします。
- 4. パスワードをリセットするオプションを選択します。管理者によるシステムの構成に応じて、次の 1 つ以上の選択肢が表示されます。
-     * **連絡用電子メール アドレスにメールを送信** - (選択した) **[連絡用メール アドレス]** または **[認証用メール アドレス]** のいずれかに 6 桁のコードが記載されたメールが送信されます。
-	 * **携帯電話に SMS 送信** - (選択した) **[携帯電話]** または **[認証用メール アドレス]** のいずれかに 6 桁のコードが SMS 送信されます。
-	 * **携帯電話に発信** - (選択した) **[携帯電話]** または **[認証用電話]** へ呼び出しが行われます。*#* キーを押すと、呼び出しを確認できます。
-	 * **会社電話に発信** - **[会社電話]** へ呼び出しが行われます。*#* キーを押すと、呼び出しを確認できます。
-	 * **セキュリティの質問に回答する** - 事前に登録済みのセキュリティの質問をユーザーが回答するために表示します。
+ 3. Click the "next" button.
+ 4. Choose an option to reset your password.  Depending on how your admin has configured the system, you might see one or more of the following choices:
+     * **Email my alternate email** - sends an email with a 6 digit code to either your **alternate email** or **authentication email** (you choose).
+     * **Text my mobile phone** - texts your phone with a 6 digit code to either your **mobile phone** or **authentication email** (you choose).
+     * **Call my mobile phone** - calls your **mobile phone** or **authentication phone** (you choose) - press the *#* key to verify the call.
+     * **Call my office phone** - calls your **office phone** - press the *#* key to verify the call.
+     * **Answer my security questions** - displays your pre-registered security questions for you to answer.
 
     ![][003]
 
- 5. この例では、[携帯電話に SMS 送信] を使用します。携帯電話を使用するオプションを使用する場合、SMS を送信する前に携帯電話の番号を確認する必要があります。電話番号を完全に入力し、**[次へ]** をクリックして正しいことを確認して、テキストを送信します。
+ 5. We'll use the "text my mobile phone" option as an example.  If you are using a phone based option, you'll need to verify your phone number before we'll send a text.  Enter your full phone number and then click **Next** to verify it's correct and send a text.
 
     ![][004]
 
- 6. テキストを受信したら、送信されたコードの番号ではなく、メッセージ本文の確認コードを使用するようにしてください。テキストの受信には数分かかる場合があるので、コーヒーでもお飲みになっていてください。
+ 6. When you receive the text, make sure you use the verification code in the message body, not the number the code was sent from.  It might take a few minutes to get the text, so grab a coffee!
 
     ![][009]
 
- 8. ここで、携帯電話で受信したばかりのコードを、ページの入力ボックスに入力します。
+ 8. Now, enter the code you just received on your phone into the input box on the page.
 
     ![][005]
 
- 9. 管理者が 2 つ目の確認手段を求めている場合もあるので、その場合は、手順 4 を選択したオプションで繰り返します。
- 10. [新しいパスワードの選択] 画面で、新しいパスワードを選択して選択内容を確認し、**[完了]** をクリックします。
+ 9. Your admin may require a second verification step, in which case repeat step 4 with a different option selected.
+ 10. On the "choose a new password" screen, select a new password and confirm your choice, then click **Finish**.
 
-    ![][006] ![][007]
+    ![][006]
+    ![][007]
 
- 11. 成功がページに示されたら、そのまま進みます。 これで新しいパスワードを使用してサインインできるようになりました。
+ 11. Once you see the success page, you are good to go!  You can now sign in with your new password.
 
     ![][008]
 
-パスワードのリセットで問題が発生しましたか? 「[一般的な問題とその解決方法](#common-problems-and-their-solutions)」を参照してください。
+Run into a problem resetting your password?  Read about [common problems and their solutions](#common-problems-and-their-solutions).
 
-## 自分のアカウントのロックを解除する
-任意の職場または学校のアカウントのサインイン画面から、ローカル アカウントをリセットするには、次の手順に従います。**注: アカウントのロック解除は、オンプレミスでロックされた場合のみ行えます。**
+## <a name="how-to-unlock-your-account"></a>How to unlock your account
+Follow the steps below to unlock your local account from any work or school account sign in screen.  **Note: You will only be able to unlock your account if it has been locked on-premises.**
 
->[AZURE.IMPORTANT] この機能は、管理者が有効にしている場合のみ使用できます。オンになっていない場合、この機能はアカウントでは有効になっていないというメッセージが表示されます。この場合、[管理者に問い合わせてください] のリンクを使用し、管理者に連絡してアカウントのロックを解除できます。
+>[AZURE.IMPORTANT] This feature is only available to you if your admin has turned it on.  If it's not turned on, you'll see a message indicating your account is not enabled for this feature.  You can use the "contact your administrator" link in this case to get in touch with your admin to unlock your account.
 >
-> 管理者がユーザーに対してこの機能を有効にしている場合、使用するにはまずサインアップする必要があります。これは、http://aka.ms/ssprsetup から行います。
+> If your admin has enabled you for this feature, you'll first need to sign up before you can use it.  You can do that here: http://aka.ms/ssprsetup.
 
 
- 1. 任意の職場または学校のアカウントのサインイン ページで、[アカウントにアクセスできない場合] または [パスワードを忘れた場合] リンクのいずれかをクリックするか、https://passwordreset.microsoftonline.com に直接移動します。
+ 1. On the any work or school account sign in page, click on one of the "can't access your account?" or "forgot your password?" links, or navigate to https://passwordreset.microsoftonline.com directly.
 
     ![][001]
 
- 2. [ID を入力] ページで職場または学校のアカウントの ID を入力し、CAPTCHA チャレンジを渡してロボットでないことを証明します。
+ 2. On the "who are you?" page, enter your work or school account ID and prove you aren't a robot by passing the CAPTCHA challenge.
 
     ![][002]
 
- 3. [次へ] ボタンをクリックします。
- 4. 自分のアカウントをロック解除するオプションを選択します。管理者によるシステムの構成に応じて、次の 1 つ以上の選択肢が表示されます。
-     * **連絡用電子メール アドレスにメールを送信** - (選択した) **[連絡用メール アドレス]** または **[認証用メール アドレス]** のいずれかに 6 桁のコードが記載されたメールが送信されます。
-	 * **携帯電話に SMS 送信** - (選択した) **[携帯電話]** または **[認証用メール アドレス]** のいずれかに 6 桁のコードが SMS 送信されます。
-	 * **携帯電話に発信** - (選択した) **[携帯電話]** または **[認証用電話]** へ呼び出しが行われます。*#* キーを押すと、呼び出しを確認できます。
-	 * **会社電話に発信** - **[会社電話]** へ呼び出しが行われます。*#* キーを押すと、呼び出しを確認できます。
-	 * **セキュリティの質問に回答する** - 事前に登録済みのセキュリティの質問をユーザーが回答するために表示します。
+ 3. Click the "next" button.
+ 4. Choose an option to unlock your account.  Depending on how your admin has configured the system, you might see one or more of the following choices:
+     * **Email my alternate email** - sends an email with a 6 digit code to either your **alternate email** or **authentication email** (you choose).
+     * **Text my mobile phone** - texts your phone with a 6 digit code to either your **mobile phone** or **authentication email** (you choose).
+     * **Call my mobile phone** - calls your **mobile phone** or **authentication phone** (you choose) - press the *#* key to verify the call.
+     * **Call my office phone** - calls your **office phone** - press the *#* key to verify the call.
+     * **Answer my security questions** - displays your pre-registered security questions for you to answer.
 
     ![][003]
 
- 5. この例では、[携帯電話に SMS 送信] を使用します。携帯電話を使用するオプションを使用する場合、SMS を送信する前に携帯電話の番号を確認する必要があります。電話番号を完全に入力し、**[次へ]** をクリックして正しいことを確認して、テキストを送信します。
+ 5. We'll use the "text my mobile phone" option as an example.  If you are using a phone based option, you'll need to verify your phone number before we'll send a text.  Enter your full phone number and then click **Next** to verify it's correct and send a text.
 
     ![][004]
 
- 6. テキストを受信したら、送信されたコードの番号ではなく、メッセージ本文の確認コードを使用するようにしてください。テキストの受信には数分かかる場合があるので、コーヒーでもお飲みになっていてください。
+ 6. When you receive the text, make sure you use the verification code in the message body, not the number the code was sent from.  It might take a few minutes to get the text, so grab a coffee!
 
     ![][009]
 
- 8. ここで、携帯電話で受信したばかりのコードを、ページの入力ボックスに入力します。
+ 8. Now, enter the code you just received on your phone into the input box on the page.
 
     ![][005]
 
- 9. 管理者が 2 つ目の確認手段を求めている場合場合は、別のオプションを選択してステップ 4 を繰り返す必要があります。
+ 9. Your admin may require a second verification step, in which case you must repeat step 4 with a different option selected.
 
- 11. 成功がページに示されたら、そのまま進みます。 これでオンプレミスのアカウントがロック解除されたので、再度サインインできます。
+ 11. Once you see the success page, you are good to go!  Your on-premises account has been unlocked and you can now sign in once more.
 
     ![][010]
 
- >[AZURE.IMPORTANT] 最初にアカウントがロックアウトされた原因は、古いパスワードを使用する (携帯電話の電子メール クライアントなどの) 悪意のあるアプリである可能性がしばしばあるので、必ずすべてのデバイスのパスワードを新しいものに更新してください。
+ >[AZURE.IMPORTANT] Make sure you update all your devices to your newest password, as often times a rogue app with an old password (like your phone email client) can be the culprit behind why your account got locked out in the first place.
 
-アカウントのロック解除で問題が発生しましたか? 「[一般的な問題とその解決方法](#common-problems-and-their-solutions)」を参照してください。
+Run into a problem unlocking your account?  Read about [common problems and their solutions](#common-problems-and-their-solutions).
 
-## 一般的な問題とその解決方法
-次に、一般にエラーになる場合とその解決方法を示します。
+## <a name="common-problems-and-their-solutions"></a>Common problems and their solutions
+Here are some common error cases and their solutions:
 
 <table>
           <tbody><tr>
             <td>
               <p>
-                <strong>エラー ケース</strong>
+                <strong>Error Case</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>表示されるエラー</strong>
+                <strong>What error do you see?</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>ソリューション</strong>
+                <strong>Solution</strong>
               </p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>ユーザー ID を入力した後に [管理者に連絡してください] ページが表示されます。</p>
+              <p>I get a "please contact your admin" page after entering my user ID</p>
             </td>
             <td>
-              <p>管理者に連絡してください <br><br>お客様のユーザー アカウントのパスワードは Microsoft によって管理されていません。そのため、パスワードを自動的にリセットすることはできません。<br><br>詳細については、お客様の管理者またはヘルプデスクにお問い合わせください。</p>
+              <p>Please contact your admin <br><br>We've detected that your user account password is not managed by Microsoft. As a result, we are unable to automatically reset your password. <br><br>You will need to contact your admin or helpdesk for any further assistance. </p>
             </td>
             <td>
-              <p>このメッセージは、管理者がオンプレミス環境でパスワードを管理しており、<b>[アカウントにアクセスできません]</b> リンクからパスワードをリセットすることを許可していない場合に表示されます。<br><br> パスワードをリセットするには、管理者に直接連絡して支援を依頼し、Office 365 からパスワードをリセットしたいことを伝え、この機能を有効にしてもらう必要があります。</p>
+              <p>You are seeing this message because your administrator manages your password in your on-premises environment and does not allow you to reset your password from the <b>Can't access your account link</b>. <br><br> To reset your password, please contact your administrator directly for help, and let him or her know you want to reset your password from Office 365 so he or she can enable this feature for you.</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>ユーザー ID の入力後、「アカウントは、パスワード リセットが有効になっていません。」エラーが表示されます</p>
+              <p>I get a "your account is not enabled for password reset" error after entering my user ID</p>
             </td>
             <td>
-              <p>このアカウントはパスワードのリセットが有効になっていません<br><br>申し訳ありませんが、管理者はこのサービスで使用できるアカウントを設定していません。<br><br> ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。</p>
+              <p>Your account is not enabled for password reset<br><br>We're sorry, but your administrator has not set up your account for use with this service.<br><br> If you'd like, we can contact an administrator in your organization to reset your password for you.</p>
             </td>
             <td>
-              <p>これは管理者が <b>[アカウントにアクセスできません]</b> リンクからのパスワードのリセットを有効にしていないため、または機能を使用するライセンスを付与していないために表示されます。<br><br> パスワードをリセットするには、<b>[管理者に連絡してください]</b> リンクをクリックして会社の管理者に電子メールを送信するか、Office 365 からパスワードをリセットしたいことを伝え、この機能を有効にしてもらう必要があります。</p>
+              <p>You are seeing this message because your administrator has not enabled password reset for your organization from the <b>Can't access your account</b> link, or hasn't licensed you to use the feature. <br><br> To reset your password, click the <b>contact an administrator</b> link to send an email to your company's admin, and let him or her know you want to reset your password from Office 365 so he or she can enable this feature for you.</p>
             </td>
           </tr>
-		  <tr>
+          <tr>
             <td>
-              <p>ユーザー ID の入力後に「お客様のアカウントを確認できませんでした」エラーが表示されます</p>
+              <p>I get a "we could not verify your account" error after entering my user ID</p>
             </td>
             <td>
-              <p>お客様のアカウントを確認できませんでした<br><br>ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。</p>
+              <p>We could not verify your account<br><br>If you'd like, we can contact an administrator in your organization to reset your password for you. </p>
             </td>
             <td>
-              <p>このメッセージは、パスワードのリセットは有効になっているが、サービスの使用を登録していない場合に表示されます。パスワードのリセットを登録するには、アカウントに再アクセスできるようになった後に http://aka.ms/ssprsetup に進みます。<br><br> パスワードをリセットするには、<b>[管理者に連絡してください]</b> リンクをクリックし、会社の管理者に電子メールを送信します。</p>
+              <p>You are seeing this message because you are enabled for password reset, but you have not registered to use the service.  To register for password reset, go to http://aka.ms/ssprsetup after you have regained access to your account. <br><br> To reset your password, click the <b>contact an administrator</b> link to send an email to your company's admin.</p>
             </td>
           </tr>
         </tbody></table>
 
 
-## パスワードのリセットに関するドキュメントへのリンク
-Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
+## <a name="links-to-password-reset-documentation"></a>Links to password reset documentation
+Below are links to all of the Azure AD Password Reset documentation pages:
 
-* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
-* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
-* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
-* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
-* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
-* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
+* [**How it works**](active-directory-passwords-how-it-works.md) - learn about the six different components of the service and what each does
+* [**Getting started**](active-directory-passwords-getting-started.md) - learn how to allow you users to reset and change their cloud or on-premises passwords
+* [**Customize**](active-directory-passwords-customize.md) - learn how to customize the look & feel and behavior of the service to your organization's needs
+* [**Best practices**](active-directory-passwords-best-practices.md) - learn how to quickly deploy and effectively manage passwords in your organization
+* [**Get insights**](active-directory-passwords-get-insights.md) - learn about our integrated reporting capabilities
+* [**FAQ**](active-directory-passwords-faq.md) - get answers to frequently asked questions
+* [**Troubleshooting**](active-directory-passwords-troubleshoot.md) - learn how to quickly troubleshoot problems with the service
+* [**Learn more**](active-directory-passwords-learn-more.md) - go deep into the technical details of how the service works
 
 
 
@@ -261,4 +264,8 @@ Azure AD のパスワードのリセットに関するすべてのドキュメ�
 [014]: ./media/active-directory-passwords-update-your-own-password/014.jpg "Image_014.jpg"
 [015]: ./media/active-directory-passwords-update-your-own-password/015.jpg "Image_015.jpg"
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

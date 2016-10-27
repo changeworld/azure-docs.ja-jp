@@ -2,4 +2,7 @@
 - [Azure Portal](../articles/storage/storage-e2e-troubleshooting.md)
 - [Azure Classic Portal](../articles/storage/storage-e2e-troubleshooting-classic-portal.md)
 
-<!---HONumber=AcomDC_1203_2015-->
+
+<!--HONumber=Oct16_HO2-->
+
+

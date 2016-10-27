@@ -1,93 +1,94 @@
 <properties 
-	pageTitle="Azure App Service での Web アプリの管理" 
-	description="Azure App Service で Web アプリを管理するためのリソースへリンクしています。" 
-	services="app-service\web" 
-	documentationCenter="" 
-	authors="erikre" 
-	manager="wpickett" 
-	editor=""/>
+    pageTitle="Manage a web app in Azure App Service" 
+    description="Links to resources for managing a web app in Azure App Service." 
+    services="app-service\web" 
+    documentationCenter="" 
+    authors="erikre" 
+    manager="wpickett" 
+    editor=""/>
 
 <tags 
-	ms.service="app-service-web" 
-	ms.workload="web" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="rachelap"/>
-
-# Azure App Service での Web アプリの管理
-
-このトピックには、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web アプリの管理に関するさまざまなリソースへのリンクが含まれています。管理作業には、Web アプリのスムースな運用を維持するためのすべての作業が含まれます。
-
-Web アプリのライフタイム全体にわたって、初期デプロイから、通常の運用、保守、更新に至るまで、さまざまな管理作業を実行することになります。
-
-Azure ポータルでは、多くの Web アプリ管理作業を実行できます。
-
-## Web アプリを運用環境にデプロイする前
-
-### レベルの選択
-
-Azure App Service には、 Free、Shared、Basic、Standard、および Premium の 5 つのレベルが用意されています。それぞれのレベルの機能と料金については、[料金の詳細](/pricing/details/app-service/)を参照してください。
-
-- [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)により、複数の Web アプリを同じレベルにグループ化できます。
-- Web アプリ作成後、いつでも[レベルの切り替え](web-sites-scale.md)が可能です。
-
-### 構成
-
-さまざまな構成オプションを設定するには、[Azure ポータル](https://portal.azure.com/)を使用します。詳細については、「[Azure App Service での Web アプリの構成](web-sites-configure.md)」を参照してください。以下にクイック チェックリストを示します。
-
-- 必要に応じて、.NET、PHP、Java、または Python の**ランタイム バージョン**を選択します。
-- Web アプリで WebSocket プロトコルを使用する場合、**WebSockets** を有効にします。(これには [ASP.NET SignalR](http://www.asp.net/signalr) や [socket.io](web-sites-nodejs-chat-app-socketio.md) を使用するアプリが含まれます。)
-- 継続的な Web ジョブを実行していますか? そうであれば、**[常時接続]** を有効にします。
-- index.html など、**既定文書**を設定します。
-
-これらの基本的な設定に加えて、以下の設定もあります。
-
-- **Secure Socket Layer (SSL)** 暗号化。カスタム ドメイン名で SSL を使用するには、SSL 証明書を取得し、それを使用するように Web アプリを設定する必要があります。「[Azure App Service での Web アプリの HTTPS の有効化](web-sites-configure-ssl-certificate.md)」を参照してください。
-- **カスタム ドメイン名。** Web アプリは、自動的に azurewebsites.net 下のサブドメインを持ちます。contoso.com などのカスタム ドメイン名を関連付けることができます。「[Azure App Service でのカスタム ドメイン名の構成](web-sites-custom-domain-name.md)」を参照してください。
-
-言語固有の構成:
-
-- **PHP**: 「[Azure App Service Web Apps での PHP の構成](web-sites-php-configure.md)」
-- **Python**: 「[Azure App Service Web Apps による Python の構成](web-sites-python-configure.md)」
+    ms.service="app-service-web" 
+    ms.workload="web" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/24/2016" 
+    ms.author="rachelap"/>
 
 
-## Web アプリの運用中
+# <a name="manage-a-web-app-in-azure-app-service"></a>Manage a web app in Azure App Service
 
-Web アプリの運用中、それが利用可能であり、ユーザー トラフィックに対して適切なスケーリングになっていることを確認する必要があります。また、エラーのトラブルシューティングが必要になることがあるかもしれません。
+This topic contains links to resources for managing a web app in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Management includes all of the tasks that keep your web app running smoothly. 
 
-### 監視
+Over the lifetime of a web app, you will perform different management tasks, as you move from initial deployment to normal operation, maintenance, and updates.
 
-- Azure ポータルにより、CPU 使用率やクライアント要求の数などの[パフォーマンス メトリックを追加する](web-sites-monitor.md)ことができます。
-- トラフィックに応じた [Web アプリのスケーリング](web-sites-scale.md)。レベルに応じて、VM の数や VM インスタンスのサイズのスケーリングが可能です。 Standard および Premium レベルの場合には、自動スケーリングを設定することができます。その場合、Web アプリは、固定スケジュールに従って、または負荷に応じて、自動スケールされます。
+Many web app management tasks can be performed in the Azure Portal.
+
+## <a name="before-you-deploy-your-web-app-to-production"></a>Before you deploy your web app to production
+
+### <a name="choose-a-tier"></a>Choose a tier
+
+Azure App Service is offered in five tiers: Free, Shared, Basic, Standard, and Premium. For information about the features and pricing for each tier, see [Pricing details](/pricing/details/app-service/). 
+
+- [App Service plans](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) let you group multiple web apps under the same tier.
+- You can always [switch tiers](web-sites-scale.md) after you create your web app.
+
+### <a name="configuration"></a>Configuration
+
+Use the [Azure Portal](https://portal.azure.com/) to set various configuration options. For details, see [Configure web apps in Azure App Service](web-sites-configure.md). Here is a quick checklist:
+
+- Select **runtime versions** for .NET, PHP, Java, or Python, if needed.
+- Enable **WebSockets** if your web app uses the WebSocket protocol. (This includes apps that use [ASP.NET SignalR](http://www.asp.net/signalr) or [socket.io](web-sites-nodejs-chat-app-socketio.md).)
+- Are you running continuous web jobs? If so, enable **Always On**.
+- Set the **default document**, such as index.html.
+
+In addition to these basic configuration settings, you may want to configure the following:
+
+- **Secure Socket Layer (SSL)** encryption. To use SSL with a custom domain name, you must get an SSL certificate and configure your web app to use it. See [Enable HTTPS for a web app in Azure App Service](web-sites-configure-ssl-certificate.md).
+- **Custom domain name.** Your web app automatically has a subdomain under azurewebsites.net. You can associate a custom domain name, such as contoso.com. See [Configure a custom domain name in Azure App Service](web-sites-custom-domain-name.md).
+
+Language-specific configuration:
+
+- **PHP**: [Configure PHP in Azure App Service Web Apps](web-sites-php-configure.md).
+- **Python**: [Configuring Python with Azure App Service Web Apps](web-sites-python-configure.md)
+
+
+## <a name="while-your-web-app-is-running"></a>While your web app is running
+
+While your web app is running, you want to make sure it is available, and that it scales to meet user traffic. You may also need to troubleshoot errors.
+
+### <a name="monitoring"></a>Monitoring
+
+- Through the Azure Portal, you can [add performance metrics](web-sites-monitor.md) such as CPU usage and number of client requests.
+- [Scale your web app](web-sites-scale.md) in response to traffic. Depending on your tier, you can scale the number of VMs and/or the size of the VM instances. In the Standard and Premium tiers, you can also set up autoscaling, so your web app scales automatically, either on a fixed schedule, or in response to load.  
  
-### バックアップ
+### <a name="backups"></a>Backups
 
-- Web アプリの[自動バックアップ](web-sites-backup.md)を設定します。バックアップについては、[このビデオ](https://azure.microsoft.com/documentation/videos/azure-websites-automatic-and-easy-backup/)を参照してください。
-- Azure SQL データベースの[データベース復旧](../sql-database/sql-database-business-continuity.md)のさまざまなオプションを確認してください。
+- Set [automatic backups](web-sites-backup.md) of your web app. Learn more about backups in [this video](https://azure.microsoft.com/documentation/videos/azure-websites-automatic-and-easy-backup/).
+- Learn about the options for [database recovery](../sql-database/sql-database-business-continuity.md) in Azure SQL Database.
 
-### トラブルシューティング
+### <a name="troubleshooting"></a>Troubleshooting
 
-- 問題がある場合、クラウドで診断ログおよびライブ デバッグ機能を使用することにより、[Visual Studio でのトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug)を実行できます。
-- Visual Studio 以外にも、診断ログ収集のためのさまざまな方法があります。「[Azure App Service での Web アプリの診断ログの有効化](web-sites-enable-diagnostic-log.md)」を参照してください。
-- Node.js アプリケーションについては、「[Azure App Service での Node.js Web アプリのデバッグ方法](web-sites-nodejs-debug.md)」を参照してください。
+- If something goes wrong, you can [troubleshoot in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md#remotedebug), using diagnostic logs and live debugging in the cloud. 
+- Outside of Visual Studio, there are various ways to collect diagnostic logs. See [Enable diagnostics logging for web apps in Azure App Service](web-sites-enable-diagnostic-log.md).
+- For Node.js applications, see [How to debug a Node.js web app in Azure App Service](web-sites-nodejs-debug.md).
 
-### データの復元
+### <a name="restoring-data"></a>Restoring Data
 
-- 以前にバックアップを取った Web アプリを[復元](web-sites-restore.md)します。
+- [Restore](web-sites-restore.md) a web app that was previously backed up.
 
 
-## Web アプリの更新時
+## <a name="when-you-update-your-web-app"></a>When you update your web app
 
-自動バックアップを有効にしていない場合は、[手動バックアップ](web-sites-backup.md)を作成することができます。
+If you have not enabled automatic backups, you can create a [manual backup](web-sites-backup.md).
 
-[ステージング デプロイ](web-sites-staged-publishing.md)の使用を考慮してください。このオプションを使用すると、運用デプロイと併用実行されるステージング デプロイへ更新を公開することができます。
+Consider using [staged deployment](web-sites-staged-publishing.md). This option lets you publish updates to a staging deployment that runs side-by-side with your production deployment. 
 
-Visual Studio Team Services を使用する場合は、ソース管理から継続的デプロイを設定することができます。
+If you use Visual Studio Team Services, you can set up continuous deployment from source control:
 
-- [Team Foundation バージョン管理 (TFVC) の使用](../cloud-services/cloud-services-continuous-delivery-use-vso.md)
-- [Git の使用](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)
+- [Using Team Foundation Version Control (TFVC)](../cloud-services/cloud-services-continuous-delivery-use-vso.md) 
+- [Using Git](../cloud-services/cloud-services-continuous-delivery-use-vso-git.md)
  
 <!-- Anchors. -->
 
@@ -97,4 +98,8 @@ Visual Studio Team Services を使用する場合は、ソース管理から継�
 
   
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

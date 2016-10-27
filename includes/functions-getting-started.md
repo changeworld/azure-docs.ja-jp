@@ -1,5 +1,7 @@
-Azure Functions は、イベント駆動型のオンデマンドのコンピューティング エクスペリエンスを提供します。これは、他の Azure サービス、SaaS 製品、オンプレミス システムで発生するイベントによってトリガーされるコードを実装する機能により、既存の Azure アプリケーション プラットフォームを拡張するものです。Azure Functions を利用すれば、アプリケーションを必要に応じてスケールでき、消費したリソースに対して料金を支払うだけで済みます。Azure Functions にはブラウザー ベースの直感的なユーザー インターフェイスが用意されています。このインターフェイスでは、さまざまなプログラミング言語で実装される、スケジュール設定やトリガーに対応したコードを作成できます。
+Azure Functions is an event-driven, compute-on-demand experience that extends the existing Azure application platform with capabilities to implement code triggered by events occurring in other Azure services, SaaS products, and on-premises systems. With Azure Functions, your applications scale based on demand and you pay only for the resources you consume. Azure Functions provides an intuitive, browser-based user interface allowing you to create scheduled or triggered pieces of code implemented in a variety of programming languages. 
 
-この概要のビデオでは、Functions アプリの作成方法、コードの変更方法、トリガーとバインドの操作方法について説明します。
+This getting started video shows how to create a function app, modify the code, as well as how to interact with the triggers and bindings.
 
-<!---HONumber=AcomDC_0406_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

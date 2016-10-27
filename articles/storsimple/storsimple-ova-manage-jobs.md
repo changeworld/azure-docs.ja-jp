@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array ジョブの表示と管理 | Microsoft Azure"
-   description="StorSimple Manager サービスの [ジョブ] ページと、それを使用して、StorSimple Virtual Array の最近のジョブと現在のジョブを追跡する方法を説明します。"
+   pageTitle="View and manage StorSimple Virtual Array jobs | Microsoft Azure"
+   description="Describes the StorSimple Manager service Jobs page and how to use it to track recent and current jobs for the StorSimple Virtual Array."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,61 +15,66 @@
    ms.date="06/07/2016"
    ms.author="alkohli" />
 
-# StorSimple Manager サービスを使用した StorSimple Virtual Array のジョブの表示
 
-## 概要
+# <a name="use-the-storsimple-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>Use the StorSimple Manager service to view jobs for the StorSimple Virtual Array
 
-**[ジョブ]** ページには、StorSimple Manager サービスに接続されている仮想アレイ (オンプレミスの仮想デバイスとも呼ばれる) で開始されたジョブを表示および管理するための一元的なポータルがあります。複数の仮想デバイスについて、実行中のジョブ、完了したジョブ、および失敗したジョブを表示できます。結果は表形式で表示されます。
+## <a name="overview"></a>Overview
 
-![[ジョブ] ページ](./media/storsimple-ova-manage-jobs/ovajobs1.png)
+The **Jobs** page provides a single central portal for viewing and managing jobs that are started on Virtual Arrays (also known as on-premises virtual devices) that are connected to your StorSimple Manager service. You can view running, completed, and failed jobs for multiple virtual devices. Results are presented in a tabular format. 
 
-以下のフィールドにフィルター処理を行うことで、関心のあるジョブを素早く見つけることができます。
+![Jobs page](./media/storsimple-ova-manage-jobs/ovajobs1.png)
 
-- **状態** – すべてのジョブ、実行中のジョブ、完了したジョブ、または失敗したジョブを検索できます。
-- **[開始日時] と [終了日時]** - ジョブには、日時の範囲に基づいてフィルターをかけることができます。
-- **種類** – ジョブの種類には、すべて、バックアップ、復元、フェールオーバー、更新のダウンロード、または更新のインストールがあります。
-- **デバイス** - ジョブは、サービスに接続されている特定のデバイスで開始されます。フィルター選択されたジョブは、次の属性に基づいて表形式で表示されます。
+You can quickly find the jobs you are interested in by filtering on fields such as:
 
-    - **種類** – ジョブの種類には、すべて、バックアップ、復元、フェールオーバー、更新のダウンロード、または更新のインストールがあります。
+- **Status** – You can search for all, running, completed, or failed jobs.
+- **From and To** – Jobs can be filtered based on the date and time range.
+- **Type** – The job type can be all, backup, restore, failover, download updates, or install updates.
+- **Devices** – Jobs are initiated on a specific device connected to your service. The filtered jobs are then tabulated on the basis of the following attributes:
 
-    - **状態** – ジョブは、すべてのジョブ、実行中のジョブ、完了したジョブ、または失敗したジョブです。
+    - **Type** – The job type can be all, backup, restore, failover, download updates, or install updates.
 
-    - **エンティティ** - ジョブは、ボリューム、共有、デバイスに関連付けることができます。
+    - **Status** – Jobs can be all, running, completed, or failed.
 
-    - **デバイス** - ジョブが開始されたデバイスの名前。
+    - **Entity** – The jobs can be associated with a volume, share, or device. 
 
-    - **開始日** - ジョブが開始された日時。
+    - **Device** – The name of the device on which the job was started.
 
-    - **進行状況**– 実行中のジョブの完了率。完了したジョブの場合、これは常に 100% です。
+    - **Started on** – The time when the job was started.
 
-ジョブの一覧は 30 秒ごとに更新されます。
+    - **Progress** – The percentage completion of a running job. For a completed job, this should always be 100%.
 
-## ジョブの詳細を表示する
+The list of jobs is refreshed every 30 seconds.
 
-任意のジョブの詳細を表示するには、以下の手順を実行します。
+## <a name="view-job-details"></a>View job details
 
-#### ジョブの詳細を表示するには
+Perform the following steps to view the details of any job.
 
-1. **[ジョブ]** ページで適切なフィルターを使用してクエリを実行し、関心のあるジョブを表示します。完了したジョブまたは実行中のジョブを検索できます。
+#### <a name="to-view-job-details"></a>To view job details
 
-2. ジョブの表形式の一覧からジョブを選択します。
+1. On the **Jobs** page, display the job(s) you are interested in by running a query with appropriate filters. You can search for completed or running jobs.
 
-3. ページの下部にある **[詳細]** をクリックします。
+2. Select a job from the tabular list of jobs.
 
-4. **[詳細]** ダイアログ ボックスで、状態、詳細、および時間の統計情報を表示することができます。次の図に **[バックアップ ジョブの詳細]** ダイアログ ボックスの例を示します。
+3. At the bottom of the page, click **Details**.
+
+4. In the **Details** dialog box, you can view status, details,  and time statistics. The following illustration shows an example of the **Backup Job Details** dialog box.
  
-    ![[ジョブの詳細] ページ](./media/storsimple-ova-manage-jobs/ovajobs2.png)
+    ![Job details page](./media/storsimple-ova-manage-jobs/ovajobs2.png)
 
-#### 仮想マシンがハイパーバイザーで一時停止しているときにジョブが失敗する
+#### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>Job failures when the virtual machine is paused in the hypervisor
 
-StorSimple Virtual Array でジョブが進行しているときや、デバイス (ハイパーバイザーにプロビジョニングされた仮想マシン) が 15 分以上一時停止しているときにジョブが失敗します。これは、StorSimple Virtual Array の時間と Microsoft Azure 時間との同期が失われてしまった場合に発生します。次のスクリーンショットは、復元ジョブのエラーの例です。
+When a job is in progress on your StorSimple Virtual Array and the device (virtual machine provisioned in hypervisor) is paused for greater than 15 minutes, the job will fail. This is due to your StorSimple Virtual Array time being out of sync with the Microsoft Azure time. An example for a restore job failure is shown in the following screenshot.
 
-![復元ジョブの失敗](./media/storsimple-ova-manage-jobs/restorejobfailure.png)
+![Restore job failure](./media/storsimple-ova-manage-jobs/restorejobfailure.png)
 
-これらのエラーは、ジョブのバックアップ、復元、更新、およびフェールオーバーで発生します。仮想マシンを Hyper-V にプロビジョニングした場合、コンピューターは最終的にハイパーバイザーと同期します。このエラーが発生したら、ジョブの再起動をお試しください。
+These failures will apply to backup, restore, update, and failover jobs. If your virtual machine is provisioned in Hyper-V, the machine will eventually synchronize time with your hypervisor. Once that happens, you can restart your job. 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法を確認します](storsimple-ova-web-ui-admin.md)。
+[Learn how to use the local web UI to administer your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

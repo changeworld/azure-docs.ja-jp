@@ -1,6 +1,6 @@
 <properties
-    pageTitle="スキーマが異なるクラウド データベース間のクエリ | Microsoft Azure"
-    description="列方向のパーティションでデータベース間クエリを設定する方法"    
+    pageTitle="Query across cloud databases with different schema | Microsoft Azure"
+    description="how to set up cross-database queries over vertical partitions"    
     services="sql-database"
     documentationCenter=""  
     manager="jhubbard"
@@ -15,20 +15,21 @@
     ms.date="05/27/2016"
     ms.author="torsteng" />
 
-# スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 
-![異なるデータベースのテーブルにまたがるクエリ][1]
+# <a name="query-across-cloud-databases-with-different-schemas-(preview)"></a>Query across cloud databases with different schemas (preview)
 
-列方向にパーティション分割されたデータベースでは、データベースごとに異なるテーブル セットを使用します。これは、異なるデータベースではスキーマが異なることを意味します。たとえば、あるデータベースに在庫に関するすべてのテーブルが含まれていて、別のデータベースには会計に関連するすべてのテーブルが含まれているケースが該当します。
+![Query across tables in different databases][1]
 
-## 前提条件
+Vertically-partitioned databases use different sets of tables on different databases. That means that the schema is different on different databases. For instance, all tables for inventory are on one database while all accounting-related tables are on a second database. 
 
-* ユーザーは、ALTER ANY EXTERNAL DATA SOURCE アクセス許可を所有している必要があります。このアクセス許可は、ALTER DATABASE アクセス許可に含まれています。
-* ALTER ANY EXTERNAL DATA SOURCE アクセス許可は、基になるデータ ソースを参照するために必要です。
+## <a name="prerequisites"></a>Prerequisites
 
-## 概要
+* The user must possess ALTER ANY EXTERNAL DATA SOURCE permission. This permission is included with the ALTER DATABASE permission.
+* ALTER ANY EXTERNAL DATA SOURCE permissions are needed to refer to the underlying data source.
 
-**注**: 行方向のパーティション分割とは異なり、これらの DDL ステートメントは、エラスティック データベース クライアント ライブラリを介したシャード マップを使ったデータ層の定義に依存しません。
+## <a name="overview"></a>Overview
+
+**NOTE**:  Unlike with horizontal partitioning, these DDL statements do not depend on defining a data tier with a shard map through the elastic database client library.
 
 1. [CREATE MASTER KEY](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
@@ -36,20 +37,20 @@
 4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
 
 
-## データベース スコープのマスター キーと資格情報の作成 
+## <a name="create-database-scoped-master-key-and-credentials"></a>Create database scoped master key and credentials 
 
-この資格情報は、リモート データベースに接続するために、エラスティック クエリによって使用されます。
+The credential is used by the elastic query to connect to your remote databases.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
     SECRET = '<password>'
     [;]
  
-**注**: *<username>* にサフィックス *"@servername"* が含まれていないことを確認してください。
+**Note**    Ensure that the *<username>* does not include any *"@servername"* suffix. 
 
-## 外部データ ソースの作成
+## <a name="create-external-data-sources"></a>Create external data sources
 
-構文:
+Syntax:
 
     <External_Data_Source> ::=
     CREATE EXTERNAL DATA SOURCE <data_source_name> WITH 
@@ -59,135 +60,135 @@
                 CREDENTIAL = <credential_name> 
                 ) [;] 
 
-**重要**: TYPE パラメーターを **RDBMS** に設定する必要があります。
+**Important**   The TYPE parameter must be set to **RDBMS**. 
 
-### 例 
+### <a name="example"></a>Example 
 
-次の例では、外部データ ソースに対して CREATE ステートメントを使用する方法について説明します。
+The following example illustrates the use of the CREATE statement for external data sources. 
 
-	CREATE EXTERNAL DATA SOURCE RemoteReferenceData 
-	WITH 
-	( 
-		TYPE=RDBMS, 
-		LOCATION='myserver.database.windows.net', 
-		DATABASE_NAME='ReferenceData', 
-		CREDENTIAL= SqlUser 
-	); 
+    CREATE EXTERNAL DATA SOURCE RemoteReferenceData 
+    WITH 
+    ( 
+        TYPE=RDBMS, 
+        LOCATION='myserver.database.windows.net', 
+        DATABASE_NAME='ReferenceData', 
+        CREDENTIAL= SqlUser 
+    ); 
  
-現在の外部データ ソースの一覧を取得するには:
+To retrieve the list of current external data sources: 
 
     select * from sys.external_data_sources; 
 
-### 外部テーブル 
+### <a name="external-tables"></a>External Tables 
 
-構文:
+Syntax:
 
-	CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name . ] table_name  
+    CREATE EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name . ] table_name  
     ( { <column_definition> } [ ,...n ])     
-	{ WITH ( <rdbms_external_table_options> ) } 
-	)[;] 
-	
-	<rdbms_external_table_options> ::= 
+    { WITH ( <rdbms_external_table_options> ) } 
+    )[;] 
+    
+    <rdbms_external_table_options> ::= 
       DATA_SOURCE = <External_Data_Source>, 
       [ SCHEMA_NAME = N'nonescaped_schema_name',] 
       [ OBJECT_NAME = N'nonescaped_object_name',] 
 
-### 例  
+### <a name="example"></a>Example  
 
-	CREATE EXTERNAL TABLE [dbo].[customer]( 
-		[c_id] int NOT NULL, 
-		[c_firstname] nvarchar(256) NULL, 
-		[c_lastname] nvarchar(256) NOT NULL, 
-		[street] nvarchar(256) NOT NULL, 
-		[city] nvarchar(256) NOT NULL, 
-		[state] nvarchar(20) NULL, 
-		[country] nvarchar(50) NOT NULL, 
-	) 
-	WITH 
-	( 
-	       DATA_SOURCE = RemoteReferenceData 
-	); 
+    CREATE EXTERNAL TABLE [dbo].[customer]( 
+        [c_id] int NOT NULL, 
+        [c_firstname] nvarchar(256) NULL, 
+        [c_lastname] nvarchar(256) NOT NULL, 
+        [street] nvarchar(256) NOT NULL, 
+        [city] nvarchar(256) NOT NULL, 
+        [state] nvarchar(20) NULL, 
+        [country] nvarchar(50) NOT NULL, 
+    ) 
+    WITH 
+    ( 
+           DATA_SOURCE = RemoteReferenceData 
+    ); 
 
-次の例では、外部テーブルの一覧を現在のデータベースから取得する方法を示します。
+The following example shows how to retrieve the list of external tables from the current database: 
 
-	select * from sys.external_tables; 
+    select * from sys.external_tables; 
 
-### 解説
+### <a name="remarks"></a>Remarks
 
-エラスティック クエリでは、既存の外部テーブル構文を拡張して、RDBMS 型の外部データ ソースを使用する外部テーブルを定義します。列方向のパーティション分割のための外部テーブルの定義は、次の側面に対応しています。
+Elastic query extends the existing external table syntax to define external tables that use external data sources of type RDBMS. An external table definition for vertical partitioning covers the following aspects: 
 
-* **スキーマ**: 外部テーブル DDL は、クエリで使用できるスキーマを定義します。外部テーブル定義に指定するスキーマは、実際のデータが格納されているリモート データベース内のテーブルのスキーマに一致する必要があります。 
+* **Schema**: The external table DDL defines a schema that your queries can use. The schema provided in your external table definition needs to match the schema of the tables in the remote database where the actual data is stored. 
 
-* **リモート データベース参照**: 外部テーブル DDL は、外部データ ソースを参照します。外部データ ソースは、実際のテーブル データが格納されているリモート データベース論理サーバー名とデータベース名を指定します。
+* **Remote database reference**: The external table DDL refers to an external data source. The external data source specifies the logical server name and database name of the remote database where the actual table data is stored. 
 
-前のセクションで説明したように外部データ ソースを使用する、外部テーブルを作成するための構文を次に示します。
+Using an external data source as outlined in the previous section, the syntax to create external tables is as follows: 
 
-DATA\_SOURCE 句は、外部テーブルに使用される外部データ ソース (つまり、列方向のパーティション分割の場合はリモート データベース) を定義します。
+The DATA_SOURCE clause defines the external data source (i.e. the remote database in case of vertical partitioning) that is used for the external table.  
 
-SCHEMA\_NAME 句と OBJECT\_NAME 句は、外部テーブル定義をリモート データベース上の別のスキーマのテーブルまたは別の名前を持つテーブルにマップする機能をそれぞれ提供します。これは、リモート データベースのカタログ ビューまたは DMV に対して外部テーブルを定義する場合や、リモート テーブル名が既にローカルに取得されている場合に便利です。
+The SCHEMA_NAME and OBJECT_NAME clauses provide the ability to map the external table definition to a table in a different schema on the remote database, or to a table with a different name, respectively. This is useful if you want to define an external table to a catalog view or DMV on your remote database – or any other situation where the remote table name is already taken locally.  
 
-次の DDL ステートメントは、ローカル カタログから既存の外部テーブル定義を削除します。リモート データベースには影響しません。
+The following DDL statement drops an existing external table definition from the local catalog. It does not impact the remote database. 
 
-	DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
+    DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 
-**CREATE/DROP EXTERNAL TABLE** に対するアクセス許可: 外部テーブル DDL に ALTER ANY EXTERNAL DATA SOURCE アクセス許可が必要です。これは、基になるデータ ソースを参照する場合にも必要です。
+**Permissions for CREATE/DROP EXTERNAL TABLE**: ALTER ANY EXTERNAL DATA SOURCE permissions are needed for external table DDL which is also needed to refer to the underlying data source.  
 
-## セキュリティに関する考慮事項
-外部テーブルへのアクセス権を持つユーザーは、外部データ ソース定義に指定された資格情報の下で、基になるリモート テーブルへのアクセス権を自動的に取得します。外部データ ソースの資格情報を介した特権の不要な昇格を回避するために、外部テーブルへのアクセスを慎重に管理する必要があります。外部テーブルへのアクセスは、通常の SQL 権限を使用して、通常のテーブルの場合と同様に許可または禁止することができます。
-
-
-## 例: 列方向にパーティション分割されたデータベースのクエリ 
-
-次のクエリは、注文と注文明細行用の 2 つのローカル テーブルと、顧客用のリモート テーブルの間で 3 方向の結合を実行します。これは、エラスティック クエリの参照データのユース ケースの例を示します。
-
-	SELECT  	
-	 c_id as customer,
-	 c_lastname as customer_name,
-	 count(*) as cnt_orderline, 
-	 max(ol_quantity) as max_quantity,
-	 avg(ol_amount) as avg_amount,
-	 min(ol_delivery_d) as min_deliv_date
-	FROM customer 
-	JOIN orders 
-	ON c_id = o_c_id
-	JOIN  order_line 
-	ON o_id = ol_o_id and o_c_id = ol_c_id
-	WHERE c_id = 100
+## <a name="security-considerations"></a>Security considerations
+Users with access to the external table automatically gain access to the underlying remote tables under the credential given in the external data source definition. You should carefully manage access to the external table in order to avoid undesired elevation of privileges through the credential of the external data source. Regular SQL permissions can be used to GRANT or REVOKE access to an external table just as though it were a regular table.  
 
 
-## T-SQL リモート実行のストアド プロシージャ: sp\_execute\_remote
+## <a name="example:-querying-vertically-partitioned-databases"></a>Example: querying vertically partitioned databases 
 
-エラスティック クエリには、シャードへの直接アクセスを提供するストアド プロシージャも導入されています。このストアド プロシージャは [sp\_execute\_remote](https://msdn.microsoft.com/library/mt703714) と呼ばれ、リモート データベースでリモート ストアド プロシージャまたは T-SQL コードを実行するときに使用できます。使用できるパラメーターは次のとおりです。
+The following query performs a three-way join between the two local tables for orders and order lines and the remote table for customers. This is an example of the reference data use case for elastic query: 
 
-* データ ソース名 (nvarchar): RDBMS 型の外部データ ソースの名前。 
-* クエリ (nvarchar): 各シャードで実行する T-SQL クエリ。 
-* パラメーター宣言 (nvarchar) (省略可能): (sp\_executesql などの) クエリ パラメーターで使用される、パラメーターのデータ型定義を含む文字列。 
-* パラメーター値のリスト (省略可能): (sp\_executesql などの) パラメーター値のコンマ区切りリスト。
+    SELECT      
+     c_id as customer,
+     c_lastname as customer_name,
+     count(*) as cnt_orderline, 
+     max(ol_quantity) as max_quantity,
+     avg(ol_amount) as avg_amount,
+     min(ol_delivery_d) as min_deliv_date
+    FROM customer 
+    JOIN orders 
+    ON c_id = o_c_id
+    JOIN  order_line 
+    ON o_id = ol_o_id and o_c_id = ol_c_id
+    WHERE c_id = 100
 
-sp\_execute\_remote では、起動パラメーターで指定された外部データ ソースを使用して、指定された T-SQL ステートメントをリモート データベースで実行します。shardmap マネージャー データベースとリモート データベースへの接続には、外部データ ソースの資格情報を使用します。
 
-例:
+## <a name="stored-procedure-for-remote-t-sql-execution:-sp\_execute_remote"></a>Stored procedure for remote T-SQL execution: sp\_execute_remote
 
-	EXEC sp_execute_remote
-		N'MyExtSrc',
-		N'select count(w_id) as foo from warehouse' 
+Elastic query also introduces a stored procedure that provides direct access to the shards. The stored procedure is called [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) and can be used to execute remote stored procedures or T-SQL code on the remote databases. It takes the following parameters: 
+
+* Data source name (nvarchar): The name of the external data source of type RDBMS. 
+* Query (nvarchar): The T-SQL query to be executed on each shard. 
+* Parameter declaration (nvarchar) - optional: String with data type definitions for the parameters used in the Query parameter (like sp_executesql). 
+* Parameter value list - optional: Comma-separated list of parameter values (like sp_executesql).
+
+The sp\_execute\_remote uses the external data source provided in the invocation parameters to execute the given T-SQL statement on the remote databases. It uses the credential of the external data source to connect to the shardmap manager database and the remote databases.  
+
+Example: 
+
+    EXEC sp_execute_remote
+        N'MyExtSrc',
+        N'select count(w_id) as foo from warehouse' 
 
 
   
-## ツールの接続性
+## <a name="connectivity-for-tools"></a>Connectivity for tools
 
-通常の SQL Server 接続文字列を使用して、BI およびデータ統合ツールを、エラスティック クエリが有効でかつ外部テーブルが定義されている SQL DB サーバー上のデータベースに接続できます。ご使用のツールのデータ ソースとして SQL Server がサポートされていることを確認してください。次に、ツールを使用して接続する他の SQL Server データベースと同様に、エラスティック クエリ データベースと外部テーブルを参照します。
+You can use regular SQL Server connection strings to connect your BI and data integration tools to databases on the SQL DB server that has elastic query enabled and external tables defined. Make sure that SQL Server is supported as a data source for your tool. Then refer to the elastic query database and its external tables just like any other SQL Server database that you would connect to with your tool. 
 
-## ベスト プラクティス 
+## <a name="best-practices"></a>Best practices 
  
-* SQL DB のファイアウォール構成で Azure Services のアクセスを有効にすることで、エラスティック クエリ エンドポイント データベースにリモート データベースへのアクセスが許可されていることを確認します。さらに、外部データ ソース定義に指定された資格情報を使ってリモート データベースに正常にログインでき、リモート テーブルへのアクセス許可を取得できることを確認します。  
+* Ensure that the elastic query endpoint database has been given access to the remote database by enabling access for Azure Services in its SQL DB firewall configuration. Also ensure that the credential provided in the external data source definition can successfully log into the remote database and has the permissions to access the remote table.  
 
-* エラスティック クエリは、計算の大部分をリモート データベース上で実行できるクエリに最適です。通常、最適なクエリ パフォーマンスが得られるのは、リモート データベース上で評価可能な選択的なフィルター述語を使用した場合、またはリモート データベース上で完全に実行できる結合を使用した場合となります。その他のクエリ パターンでは、リモート データベースから大量のデータを読み込むことが必要になる場合があり、パフォーマンスが低下する可能性があります。
+* Elastic query works best for queries where most of the computation can be done on the remote databases. You typically get the best query performance with selective filter predicates that can be evaluated on the remote databases or joins that can be performed completely on the remote database. Other query patterns may need to load large amounts of data from the remote database and may perform poorly. 
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-行方向にパーティション分割されたデータベース (シャード化されたデータベースとも呼ばれます) を照会する場合は、[シャード化された (行方向にパーティション分割された) クラウド データベース間のクエリ](sql-database-elastic-query-horizontal-partitioning.md)に関する記事をご覧ください。
+To query horizontally partitioned databases (also known as sharded databases), see [Queries across sharded cloud databases (horizontally partitioned)](sql-database-elastic-query-horizontal-partitioning.md).
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
@@ -198,4 +199,8 @@ sp\_execute\_remote では、起動パラメーターで指定された外部デ
 
 <!--anchors-->
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

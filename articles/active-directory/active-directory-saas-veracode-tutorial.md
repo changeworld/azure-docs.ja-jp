@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Veracode の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Veracode を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Veracode | Microsoft Azure" 
+    description="Learn how to use Veracode with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,166 +14,174 @@
     ms.date="09/11/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Veracode の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-veracode"></a>Tutorial: Azure Active Directory integration with Veracode
   
-このチュートリアルでは、Azure と Veracode の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and Veracode. The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   Veracode でのシングル サインオンが有効なサブスクリプション
+-   A valid Azure subscription
+-   A Veracode single sign-on enabled subscription
   
-このチュートリアルを完了すると、Veracode に割り当てた Azure AD ユーザーは、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to Veracode will be able to single sign into the application using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Veracode のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for Veracode
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-veracode-tutorial/IC802903.png "シナリオ")
+![Scenario](./media/active-directory-saas-veracode-tutorial/IC802903.png "Scenario")
 
-##Veracode のアプリケーション統合の有効化
+##<a name="enabling-the-application-integration-for-veracode"></a>Enabling the application integration for Veracode
   
-このセクションでは、Veracode のアプリケーション統合を有効にする方法について説明します。
+The objective of this section is to outline how to enable the application integration for Veracode.
 
-###Veracode のアプリケーション統合を有効にするには、次の手順を実行します。
+###<a name="to-enable-the-application-integration-for-veracode,-perform-the-following-steps:"></a>To enable the application integration for Veracode, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-veracode-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-veracode-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-veracode-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-veracode-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-veracode-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-veracode-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-veracode-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Veracode**」と入力します。
+6.  In the **search box**, type **Veracode**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-veracode-tutorial/IC802904.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-veracode-tutorial/IC802904.png "Application Gallery")
 
-7.  結果ウィンドウで **[Vercode]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Veracode**, and then click **Complete** to add the application.
 
     ![Veracode](./media/active-directory-saas-veracode-tutorial/IC802905.png "Veracode")
 
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Veracode に対する認証を行うことができるようにする方法を説明します。Veracode アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを **SAML トークン属性**の構成に追加する必要があります。次のスクリーンショットはその例です。
+The objective of this section is to outline how to enable users to authenticate to Veracode with their account in Azure AD using federation based on the SAML protocol.  
+Your Veracode application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your **saml token attributes** configuration.  
+The following screenshot shows an example for this.
 
-![属性](./media/active-directory-saas-veracode-tutorial/IC802906.png "属性")
+![Attributes](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attributes")
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **[Veracode]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Veracode** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802907.png "Configure Single Sign-On")
 
-2.  **[ユーザーの Veracode へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Veracode** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802908.png "Configure Single Sign-On")
 
-3.  **[アプリ設定の構成]** ページで、**[次へ]** をクリックします。
+3.  On the **Configure App Settings** page, click **Next**.
 
     ![Configure App Settings](./media/active-directory-saas-veracode-tutorial/IC802909.png "Configure App Settings")
 
-4.  **[Veracode でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、コンピューターで証明書ファイルをローカルに保存します。
+4.  On the **Configure single sign-on at Veracode** page, to download your certificate, click **Download certificate**, and then save the certificate file locally on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802910.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザーのウィンドウで、Veracode 企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your Veracode company site as an administrator.
 
-6.  上部のメニューで、**[設定]**、**[管理者]** の順にクリックします。
+6.  In the menu on the top, click **Settings**, and then click **Admin**.
 
-    ![管理](./media/active-directory-saas-veracode-tutorial/IC802911.png "管理")
+    ![Administration](./media/active-directory-saas-veracode-tutorial/IC802911.png "Administration")
 
-7.  **[SAML]** タブをクリックします。
+7.  Click the **SAML** tab.
 
-8.  **[組織の SAML 設定]** セクションで、次の手順に従います。
+8.  In the **Organization SAML Settings** section, perform the following steps:
 
-    ![管理](./media/active-directory-saas-veracode-tutorial/IC802912.png "管理")
+    ![Administration](./media/active-directory-saas-veracode-tutorial/IC802912.png "Administration")
 
-    1.  Azure クラシック ポータルの **[Veracode でのシングル サインオンの構成]** ダイアログ ページで **[発行者の URL]** の値をコピーし、それを **[発行者]** テキスト ボックスに貼り付けます。
-    2.  ダウンロードした証明書をアップロードするには、**[ファイルの選択]** をクリックします。
-    3.  **[自己登録を有効にする]** を選択します。
+    1.  In the Azure classic portal, on the **Configure single sign-on at Veracode** dialog page, copy the **Issuer URL** value, and then paste it into the **Issuer** textbox
+    2.  To upload your downloaded certificate, click **Choose File**.
+    3.  Select **Enable Self Registration**.
 
-9.  **[自己登録の設定]** セクションで次の手順を実行し、**[保存]** をクリックします。
+9.  In the **Self Registration Settings** section, perform the following steps, and then click **Save**:
 
-    ![管理](./media/active-directory-saas-veracode-tutorial/IC802913.png "管理")
+    ![Administration](./media/active-directory-saas-veracode-tutorial/IC802913.png "Administration")
 
-    1.  **[新しいユーザーのアクティブ化]** として **[アクティブ化不要]** を選択します。
-    2.  **[ユーザー データの更新]** として **[優先 Veracode ユーザー データ]** を選択します。
-    3.  **[SAML 属性の詳細]** では、以下を選択します。
-        -   **ユーザー ロール**
-        -   **ポリシー管理者**
-        -   **レビュー担当者**
-        -   **セキュリティ リーダー**
-        -   **役員**
-        -   **申請者**
-        -   **作成者**
-        -   **すべてのスキャンの種類**
-        -   **チームのメンバーシップ**
-        -   **既定のチーム**
+    1.  As **New User Activation**, select **No Activation Required**.
+    2.  As **User Data Updates**, select **Preference Veracode User Data**.
+    3.  For **SAML Attribute Details**, select the following:
+        -   **User Roles**
+        -   **Policy Administrator**
+        -   **Reviewer**
+        -   **Security Lead**
+        -   **Executive**
+        -   **Submitter**
+        -   **Creator**
+        -   **All Scan Types**
+        -   **Team Memberships**
+        -   **Default Team**
 
-10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-veracode-tutorial/IC802914.png "Configure Single Sign-On")
 
-11. 上部のメニューで、**[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
+11. In the menu on the top, click **Attributes** to open the **SAML Token Attributes** dialog.
 
-    ![属性](./media/active-directory-saas-veracode-tutorial/IC795920.png "属性")
+    ![Attributes](./media/active-directory-saas-veracode-tutorial/IC795920.png "Attributes")
 
-12. 必要な属性のマッピングを追加するには、次の手順を実行します。
+12. To add the required attribute mappings, perform the following steps:
 
-    ![属性](./media/active-directory-saas-veracode-tutorial/IC802906.png "属性")
+    ![Attributes](./media/active-directory-saas-veracode-tutorial/IC802906.png "Attributes")
 
-	| 属性名 | 属性値 |
-	|:---------------|:----------------|
-	| firstname | User.givenname |
-	| lastname | User.surname |
-	| 電子メール | User.mail |
+  	| Attribute Name | Attribute Value |
+  	|:---------------|:----------------|
+  	| firstname      | User.givenname  |
+  	| lastname       | User.surname    |
+  	| email          | User.mail       |
 
-    1.  上記の表の各データ行で、**[ユーザー属性の追加]** をクリックします。
+    1.  For each data row in the table above, click **add user attribute**.
     
-	2.  **[属性名]** ボックスに、その行に対して表示される属性名を入力します。
+    2.  In the **Attribute Name** textbox, type the attribute name shown for that row.
 
-    3.  **[属性値]** ボックスで、その行に対して表示される属性値を選択します。
+    3.  In the **Attribute Value** textbox, select the attribute value shown for that row.
 
-    4.  **[完了]** をクリックします。
+    4.  Click **Complete**.
 
-13. **[変更の適用]** をクリックします。
+13. Click **Apply Changes**.
 
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが Veracode にログインできるようにするには、そのユーザーを Veracode にプロビジョニングする必要があります。Veracode の場合、プロビジョニングは自動化されています。ユーザー側で必要な操作はありません。
+In order to enable Azure AD users to log into Veracode, they must be provisioned into Veracode.  
+In the case of Veracode, provisioning is an automated task.  
+There is no action item for you..
   
-最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
+Users are automatically created if necessary during the first single sign-on attempt.
 
->[AZURE.NOTE] Veracode から提供されている他の Veracode ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other Veracode user account creation tools or APIs provided by Veracode to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Veracode に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-veracode,-perform-the-following-steps:"></a>To assign users to Veracode, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Veracode** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Veracode **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-veracode-tutorial/IC802915.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-veracode-tutorial/IC802915.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-veracode-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

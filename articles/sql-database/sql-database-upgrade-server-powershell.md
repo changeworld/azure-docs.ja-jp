@@ -1,98 +1,100 @@
 <properties
-	pageTitle="PowerShell を使用した Azure SQL Database V12 へのアップグレード | Microsoft Azure"
-	description="Web および Business データベースのアップグレード方法を含む Azure SQL Database V12 へのアップグレード方法を説明します。また、PowerShell を使用してエラスティック データベース プールにデータベースを直接移行することで V11 サーバーをアップグレードする方法も説明します。"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Upgrade to Azure SQL Database V12 using PowerShell | Microsoft Azure"
+    description="Explains how to upgrade to Azure SQL Database V12 including how to upgrade Web and Business databases, and how to upgrade a V11 server migrating its databases directly into an elastic database pool using PowerShell."
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/19/2016"
-	ms.author="sstein"/>
+    ms.service="sql-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/19/2016"
+    ms.author="sstein"/>
 
-# PowerShell を使用した Azure SQL Database V12 へのアップグレード
+
+# <a name="upgrade-to-azure-sql-database-v12-using-powershell"></a>Upgrade to Azure SQL Database V12 using PowerShell
 
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](sql-database-upgrade-server-portal.md)
+- [Azure portal](sql-database-upgrade-server-portal.md)
 - [PowerShell](sql-database-upgrade-server-powershell.md)
 
 
-SQL Database V12 が最新バージョンであるため、SQL Database V12 にアップグレードすることをお勧めします。SQL Database V12 には、[以前のバージョンと比較して次のような利点が](sql-database-v12-whats-new.md)多数あります。
+SQL Database V12 is the latest version so upgrading to SQL Database V12 is recommended.
+SQL Database V12 has many [advantages over the previous version](sql-database-v12-whats-new.md) including:
 
-- SQL Server との互換性の強化。
-- Premium のパフォーマンスの向上と新しいパフォーマンス レベル。
-- [エラスティック データベース プール](sql-database-elastic-pool.md)。
+- Increased compatibility with SQL Server.
+- Improved premium performance and new performance levels.
+- [Elastic database pools](sql-database-elastic-pool.md).
 
-この記事では、既存の SQL Database V11 サーバーとデータベースを SQL Database V12 にアップグレードする方法について説明します。
+This article provides directions for upgrading existing SQL Database V11 servers and databases to SQL Database V12.
 
-V12 にアップグレードする過程で、すべての Web および Business データベースを新しいサービス レベルにアップグレードするため、Web および Business データベースのアップグレードに関する説明も含まれています。
+During the process of upgrading to V12, you upgrade any Web and Business databases to a new service tier so directions for upgrading Web and Business databases are included.
 
-また、[エラスティック データベース プール](sql-database-elastic-pool.md)への移行は、データベースが 1 台の場合に個々のパフォーマンス レベル (価格レベル) にアップグレードするよりもコスト効率が良くなる可能性があります。プールを使用してデータベース管理を簡略化することもできます。これは、個々のデータベースのパフォーマンス レベルを個別に管理するのではなく、プールのパフォーマンス設定を管理するだけでよいからです。複数のサーバーにデータベースがある場合は、それらを同じサーバーに移動し、それらを 1 つのプールに置くと便利です。
+In addition, migrating to an [elastic database pool](sql-database-elastic-pool.md) can be more cost effective than upgrading to individual performance levels (pricing tiers) for single databases. Pools also simplify database management because you only need to manage the performance settings for the pool rather than separately managing the performance levels of individual databases. If you have databases on multiple servers, consider moving them into the same server and taking advantage of putting them into a pool.
 
-この記事で説明する手順に従うと、V11 サーバーからエラスティック データベース プールにデータベースを簡単に自動移行できます。
+You can follow the steps in this article to easily migrate databases from V11 servers directly into elastic database pools.
 
-アップグレード操作全体にわたって、データベースはオンラインのままであり、機能し続けます。新しいパフォーマンス レベルに実際に切り替えるときには、データベースへの接続が非常に短い時間、一時的に解除される場合があります。多くの場合、これは 90 秒程度ですが、最長で 5 分間ほど解除される場合もあります。[接続が終了した場合に発生する一時的なエラーに対処するための機能](sql-database-connectivity-issues.md)がアプリケーションに備わっている場合は、アップグレードの終了時の接続解除に対して保護するだけで十分です。
+Note that your databases will remain online and continue to work throughout the upgrade operation. At the time of the actual transition to the new performance level temporary dropping of the connections to the database can happen for a very small duration that is typically around 90 seconds but can be as much as 5 minutes. If your application has [transient fault handling for connection terminations](sql-database-connectivity-issues.md) then it is sufficient to protect against dropped connections at the end of the upgrade.
 
-SQL Database V12 へのアップグレードを元に戻すことはできません。アップグレードした後に、サーバーを V11 に戻すことはできません。
+Upgrading to SQL Database V12 cannot be undone. After an upgrade the server cannot be reverted to V11.
 
-V12 にアップグレードした後、[サービス レベルの推奨事項](sql-database-service-tier-advisor.md)と[エラスティック プールの推奨事項](sql-database-elastic-pool-create-portal.md)は、サービスが新しいサーバーでのワークロードを評価し終わるまで、すぐには利用できません。V11 サーバーの推奨履歴は V12 サーバーには適用されないため、履歴は保持されません。
+After upgrading to V12, [service tier recommendations](sql-database-service-tier-advisor.md) and [elastic pool recommendations](sql-database-elastic-pool-create-portal.md) will not immediately be available until the service has time to evaluate your workloads on the new server. V11 server recommendation history does not apply to V12 servers so it is not retained.  
 
-## アップグレードの準備
+## <a name="prepare-to-upgrade"></a>Prepare to upgrade
 
-- **すべての Web および Business データベースのアップグレード**: 以下の「[すべての Web および Business データベースのアップグレード](sql-database-v12-upgrade.md#upgrade-all-web-and-business-databases)」セクションを参照するか、[PowerShell を使用してデータベースとサーバーをアップグレード](sql-database-upgrade-server-powershell.md)します。
-- **geo レプリケーションをレビューして一時停止**: Azure SQL Database が geo レプリケーション用に構成されている場合、現在の構成を文書化し、[geo レプリケーションを停止](sql-database-geo-replication-portal.md#remove-secondary-database)する必要があります。アップグレードが完了したら、geo レプリケーション用にデータベースを再構成します。
-- **Azure VM にクライアントがある場合、これらのポートを開く**: クライアントが Azure 仮想マシン (VM) で実行されるときに、クライアント プログラムが SQL Database V12 に接続する場合、VM でポート範囲の 11000 ～ 11999 と 14000 ～ 14999 を開く必要があります。詳細については、「[SQL Database V12のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」をご覧ください。
-
-
-## 前提条件
-
-PowerShell を使用してサーバーを V12 にアップグレードするには、最新の Azure PowerShell をインストールして実行する必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+- **Upgrade all Web and Business databases**: Use the portal, or use [PowerShell to upgrade databases and server](sql-database-upgrade-server-powershell.md).
+- **Review and suspend Geo-Replication**: If your Azure SQL database is configured for Geo-Replication you should document its current configuration and [stop Geo-Replication](sql-database-geo-replication-portal.md#remove-secondary-database). After the upgrade completes reconfigure your database for Geo-Replication.
+- **Open these ports if you have clients on an Azure VM**: If your client program connects to SQL Database V12 while your client runs on an Azure virtual machine (VM), you must open port ranges 11000-11999 and 14000-14999 on the VM. For details, see [Ports for SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md).
 
 
-## 資格情報を構成してサブスクリプションを選択
+## <a name="prerequisites"></a>Prerequisites
 
-Azure サブスクリプションに PowerShell コマンドレットを実行するには、Azure アカウントにまずアクセスできるようにする必要があります。次を実行すると資格情報を入力するサインイン画面が表示されます。Azure ポータルへのサインインに使用しているものと同じ電子メールとパスワードを使用します。
+To upgrade a server to V12 with PowerShell, you need to have the latest Azure PowerShell installed and running. For detailed information, see [How to install and configure Azure PowerShell](../powershell-install-configure.md).
 
-	Add-AzureRmAccount
 
-正常にサインインすると、サインインしている ID や使用中の Azure サブスクリプションを含む情報が画面に表示されます。
+## <a name="configure-your-credentials-and-select-your-subscription"></a>Configure your credentials and select your subscription
 
-使用するサブスクリプションを選択するには、サブスクリプション ID (**SubscriptionId**) またはサブスクリプション名 (**SubscriptionName**) が必要になります。前の手順からコピーするか、複数のサブスクリプションがある場合は **Get-AzureRmSubscription** コマンドレットを実行して結果セットから目的のサブスクリプション情報をコピーできます。
+To run PowerShell cmdlets against your Azure subscription you must first establish access to your Azure account. Run the following and you will be presented with a sign-in screen to enter your credentials. Use the same email and password that you use to sign in to the Azure portal.
 
-現在のサブスクリプションを設定するには、サブスクリプション情報と共に次のコマンドレットを実行します。
+    Add-AzureRmAccount
 
-	Set-AzureRmContext -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
+After successfully signing in you should see some information on screen that includes the Id you signed in with and the Azure subscriptions you have access to.
 
-上で選択したサブスクリプションに対し、次のコマンドが実行されます。
+To select the subscription you want to work with you need your subscription Id (**-SubscriptionId**) or subscription name (**-SubscriptionName**). You can copy it from the previous step, or if you have multiple subscriptions you can run the **Get-AzureRmSubscription** cmdlet and copy the desired subscription information from the resultset.
 
-## 推奨の取得
+Run the following cmdlet with your subscription information to set your current subscription:
 
-サーバーのアップグレードに関する推奨設定を取得するには、次のコマンドレットを実行します。
+    Set-AzureRmContext -SubscriptionId 4cac86b0-1e56-bbbb-aaaa-000000000000
+
+The following commands will be run against the subscription you just selected above.
+
+## <a name="get-recommendations"></a>Get Recommendations
+
+To get the recommendation for the server upgrade run the following cmdlet:
 
     $hint = Get-AzureRmSqlServerUpgradeHint -ResourceGroupName “resourcegroup1” -ServerName “server1”
 
-詳細については、「[エラスティック データベース プールの作成](sql-database-elastic-pool-create-portal.md)」と「[Azure SQL Database の価格レベルに関する提案](sql-database-service-tier-advisor.md)」を参照してください。
+For more information, see [Create an elastic database pool](sql-database-elastic-pool-create-portal.md) and [Azure SQL Database pricing tier recommendations](sql-database-service-tier-advisor.md).
 
 
 
-## アップグレードを開始する
+## <a name="start-the-upgrade"></a>Start the upgrade
 
-サーバーのアップグレードを開始するには、次のコマンドレットを実行します。
+To start the upgrade of the server run the following cmdlet:
 
     Start-AzureRmSqlServerUpgrade -ResourceGroupName “resourcegroup1” -ServerName “server1” -ServerVersion 12.0 -DatabaseCollection $hint.Databases -ElasticPoolCollection $hint.ElasticPools  
 
 
-このコマンドを実行すると、アップグレード プロセスが開始されます。推奨設定の出力をカスタマイズし、編集した推奨設定をこのコマンドレットに提供できます。
+When you run this command upgrade process will begin. You can customize the output of the recommendation and provide the edited recommendation to this cmdlet.
 
 
-## サーバーをアップグレードする
+## <a name="upgrade-a-server"></a>Upgrade a server
 
 
     # Adding the account
@@ -118,11 +120,11 @@ Azure サブスクリプションに PowerShell コマンドレットを実行�
     Start-AzureRmSqlServerUpgrade -ResourceGroupName $ResourceGroupName -ServerName $ServerName -ServerVersion 12.0 -DatabaseCollection $hint.Databases -ElasticPoolCollection $hint.ElasticPools  
 
 
-## カスタム アップグレードのマッピング
+## <a name="custom-upgrade-mapping"></a>Custom upgrade mapping
 
-推奨設定がお使いのサーバーとビジネス ケースに適していない場合は、データベースをどのようにアップグレードするかを選択でき、それらを単一のデータベースまたはエラスティック データベースにマップできます。
+If the recommendations are not appropriate for your server and business case, then you can choose how your databases are upgraded and can map them to either single or elastic databases.
 
-ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
+ElasticPoolCollection and DatabaseCollection parameters are optional:
 
     # Creating elastic pool mapping
     #
@@ -153,50 +155,54 @@ ElasticPoolCollection と DatabaseCollection parameters は省略可能です。
 
 
 
-## SQL Database V12 へのアップグレード後のデータベースの監視
+## <a name="monitor-databases-after-upgrading-to-sql-database-v12"></a>Monitor databases after upgrading to SQL Database V12
 
 
-アップグレードした後は、アプリケーションが希望のパフォーマンスで実行されていることを確認し、必要に応じて最適化できるように、データベースを積極的に監視することをお勧めします。
+After upgrading, it is recommended to monitor the database actively to ensure applications are running at the desired performance and optimize usage as needed.
 
-個々のデータベースを監視するだけではなく、[ポータルを使用して](sql-database-elastic-pool-manage-portal.md)、または [PowerShell](sql-database-elastic-pool-manage-powershell.md) を使用してエラスティック データベース プールを監視することもできます。
+In addition to monitoring individual databases you can monitor elastic database pools [using the portal](sql-database-elastic-pool-manage-portal.md) or with [PowerShell](sql-database-elastic-pool-manage-powershell.md)
 
 
-**リソース消費データ:** Basic、Standard、Premium の各データベースの場合、ユーザー データベース内の [sys.dm_db_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV から、リソース消費データを利用できます。この DMV は、直近 1 時間の操作に関する 15 秒おきのほぼリアル タイムのリソース消費情報を提供します。1 つの間隔内の DTU 消費割合は、CPU、IO、ログにおける最大消費割合として算出されます。次は、過去 1 時間における DTU の平均消費割合を算出するクエリです。
+**Resource consumption data:** For Basic, Standard, and Premium databases resource consumption data is available through the [sys.dm_ db_ resource_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV in the user database. This DMV provides near real-time resource consumption information at 15 second granularity for the previous hour of operation. The DTU percentage consumption for an interval is computed as the maximum percentage consumption of the CPU, IO and log dimensions. Here is a query to compute the average DTU percentage consumption over the last hour:
 
     SELECT end_time
-    	 , (SELECT Max(v)
+         , (SELECT Max(v)
              FROM (VALUES (avg_cpu_percent)
                          , (avg_data_io_percent)
                          , (avg_log_write_percent)
-    	   ) AS value(v)) AS [avg_DTU_percent]
+           ) AS value(v)) AS [avg_DTU_percent]
     FROM sys.dm_db_resource_stats
     ORDER BY end_time DESC;
 
-その他の監視情報
+Additional monitoring information:
 
-- [データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](http://msdn.microsoft.com/library/azure/dn369873.aspx)。
-- [エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)。
-- [動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)
-
-
-
-**アラート:** アップグレードしたデータベースの DTU 消費が特定の高レベルに近づいた場合に通知を表示するには、Azure ポータルで 'アラート' を設定します。データベース アラートは、Azure Portal で、DTU、CPU、IO、ログといったさまざまなパフォーマンス指標に対して設定できます。データベースを参照し、**[設定]** ブレードで **[アラート ルール]** を選択します。
-
-たとえば、DTU の平均割合の値が 5 分間にわたって 75% を超過したような場合に、「DTU 割合」に関する電子メール アラートを送るように設定できます。アラート通知の構成方法については、「[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)」をご覧ください。
+- [Azure SQL Database performance guidance for single databases](http://msdn.microsoft.com/library/azure/dn369873.aspx).
+- [Price and performance considerations for an elastic database pool](sql-database-elastic-pool-guidance.md).
+- [Monitoring Azure SQL Database using dynamic management views](sql-database-monitoring-with-dmvs.md)
 
 
 
-## 次のステップ
+**Alerts:** Set up 'Alerts' in the Azure portal to notify you when the DTU consumption for an upgraded database approaches certain high level. Database alerts can be set up in the Azure portal for various performance metrics like DTU, CPU, IO, and Log. Browse to your database and select **Alert rules** in the **Settings** blade.
 
-- [エラスティック データベース プールを作成し](sql-database-elastic-pool-create-portal.md)、データベースの一部またはすべてをプールに追加する。
-- [データベースのサービス レベルとパフォーマンス レベルを変更する](sql-database-scale-up.md)。
-
+For example, you can set up an email alert on “DTU Percentage” if the average DTU percentage value exceeds 75% over the last 5 minutes. Refer to [Receive alert notifications](../azure-portal/insights-receive-alert-notifications.md) to learn more about how to configure alert notifications.
 
 
-## 関連情報
+
+## <a name="next-steps"></a>Next steps
+
+- [Create an elastic database pool](sql-database-elastic-pool-create-portal.md) and add some or all of the databases into the pool.
+- [Change the service tier and performance level of your database](sql-database-scale-up.md).
+
+
+
+## <a name="related-information"></a>Related Information
 
 - [Get-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603582.aspx)
 - [Start-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt619403.aspx)
 - [Stop-AzureRmSqlServerUpgrade](https://msdn.microsoft.com/library/azure/mt603589.aspx)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

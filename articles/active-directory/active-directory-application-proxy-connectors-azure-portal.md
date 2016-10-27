@@ -1,67 +1,72 @@
 <properties
-	pageTitle="Azure AD アプリケーション プロキシ コネクタの使用 | Microsoft Azure"
-	description="Azure AD アプリケーション プロキシにおけるコネクタのグループの作成と管理の方法について説明します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+    pageTitle="Working with Azure AD Application Proxy connectors | Microsoft Azure"
+    description="Covers how to create and manage groups of connectors in Azure AD Application Proxy."
+    services="active-directory"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/09/2016"
-	ms.author="kgremban"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/09/2016"
+    ms.author="kgremban"/>
 
 
-# コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する - パブリック プレビュー
+
+# <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups---public-preview"></a>Publish applications on separate networks and locations using connector groups - Public Preview
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](active-directory-application-proxy-connectors-azure-portal.md)
-- [Azure クラシック ポータル](active-directory-application-proxy-connectors.md)
+- [Azure portal](active-directory-application-proxy-connectors-azure-portal.md)
+- [Azure classic portal](active-directory-application-proxy-connectors.md)
 
 
-コネクタ グループは、次のようなさまざまなシナリオで役立ちます。
+Connector groups are useful for various scenarios, including:
 
-- 複数のデータセンターが相互接続されたサイト。この場合、データセンター間リンクはコストがかかり、低速であるため、できるだけ多くのトラフィックをデータセンター内に留める必要があります。各データセンターにコネクタをデプロイして、データセンター内にあるアプリケーションにのみサービスを提供できます。この方法で、データセンター間のリンクを最小限に抑えて、ユーザーに完全に透過的なエクスペリエンスを提供できます。
-- メインの企業ネットワークに属していない分離されたネットワークにインストールされているアプリケーションの管理。コネクタ グループを使用して、分離されたネットワークに専用のコネクタをインストールし、そのネットワークに対してアプリケーションの分離も実現できます。
-- クラウド アクセスを実現するためにアプリケーションが IaaS 上にインストールされている場合。コネクタ グループは、すべてのアプリケーションへのアクセスをセキュリティで保護する共通サービスを提供します。コネクタ グループによって、企業ネットワークに対する追加の依存関係が生じることも、アプリケーション エクスペリエンスが分断されることもありません。各クラウド データセンターにコネクタをインストールし、このネットワーク上にあるアプリケーションにのみサービスを提供できます。複数のコネクタをインストールして、高可用性を実現できます。
-- マルチ フォレスト環境のサポート。フォレストごとに専用のコネクタをデプロイし、特定のアプリケーションにサービスを提供するよう設定できます。
-- 障害復旧サイトでコネクタ グループを使用してフェールオーバーを検出したり、メイン サイトのバックアップとして使用したりできます。
-- コネクタ グループを使用して、シングル テナントから複数の企業にサービスを提供できます。
+- Sites with multiple interconnected datacenters. In this case, you want to keep as much traffic within the datacenter as possible because cross-datacenter links are expensive and slow. You can deploy connectors in each datacenter to serve only the applications that reside within the datacenter. This approach minimizes cross-datacenter links and provides an entirely transparent experience to your users.
+- Managing applications installed on isolated networks that are not part of the main corporate network. You can use connector groups to install dedicated connectors on isolated networks to also isolate applications to the network.
+- For applications installed on IaaS for cloud access, connector groups provide a common service to secure the access to all the apps. Connector groups don't create additional dependency on your corporate network, or fragment the app experience. Connectors can be installed on every cloud datacenter and serve only applications that reside in this network. You can install several connectors to achieve high availability.
+- Support for multi-forest environments in which specific connectors can be deployed per forest and set to serve specific applications.
+- Connector groups can be used in Disaster Recovery sites to either detect failover or as backup for the main site.
+- Connector groups can also be used to serve multiple companies from a single tenant.
 
-## 前提条件: コネクタの作成
-コネクタをグループ化するには、[複数のコネクタがインストールされている](active-directory-application-proxy-enable.md)ことを確認する必要があります。新しいコネクタをインストールすると、そのコネクタは自動的に **Default** コネクタ グループに追加されます。
+## <a name="prerequisite:-create-your-connectors"></a>Prerequisite: Create your connectors
+To group your connectors, you have to make sure you [installed multiple connectors](active-directory-application-proxy-enable.md). When you install a new connector, it automatically joins the **Default** connector group.
 
-## 手順 1: コネクタ グループを作成する
-コネクタ グループは必要な数だけ作成できます。コネクタ グループの作成は、[Azure ポータル](https://portal.azure.com)で実行します。
+## <a name="step-1:-create-connector-groups"></a>Step 1: Create connector groups
+You can create as many connector groups as you want. Connector group creation is accomplished in the [Azure portal](https://portal.azure.com).
 
-1. **[Azure Active Directory]** を選択して、ディレクトリの管理ダッシュボードに移動します。管理ダッシュボードで、**[Enterprise applications (エンタープライズ アプリケーション)]**、**[アプリケーション プロキシ]** の順に選択します。
+1. Select **Azure Active Directory** to go to the management dashboard for your directory. From there, select **Enterprise applications** > **Application proxy**.
 
-2. **[コネクタ グループ]** ボタンをクリックします。[New Connector Group (新しいコネクタ グループ)] ブレードが表示されます。
+2. Select the **Connector Groups** button. The New Connector Group blade appears.
 
-3. 新しいコネクタ グループに名前を付け、ドロップダウン メニューを使用して、このグループに含めるコネクタを選択します。
+3. Give your new connector group a name, then use the dropdown menu to select which connectors belong in this group.
 
-4. コネクタ グループが完成したら、**[保存]** をクリックします。
+4. Select **Save** when your connector Group is complete.
 
-## 手順 2: コネクタ グループにアプリケーションを割り当てる
-最後の手順では、アプリケーションにサービスを提供するコネクタ グループに各アプリケーションを設定します。
+## <a name="step-2:-assign-applications-to-your-connector-groups"></a>Step 2: Assign applications to your connector groups
+The last step is to set each application to the connector group that will serve it.
 
-1. ディレクトリの管理ダッシュボードで、**[Enterprise applications (エンタープライズ アプリケーション)]**、**[すべてのアプリケーション]**、コネクタ グループに割り当てるアプリケーション、**[アプリケーション プロキシ]** の順に選択します。
-2. **[コネクタ グループ]** のドロップダウン メニューで、アプリケーションで使用するグループを選択します。
-3. **[保存]** をクリックして変更を適用します。
+1. From the management dashboard for your directory, select **Enterprise applications** > **All applications** > the application you want to assign to a connector group > **Application Proxy**.
+2. Under **Connector group**, use the dropdown menu to select the group you want the application to use.
+3. Select **Save** to apply the change.
 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-- [アプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
-- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
-- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
-- [アプリケーション プロキシで発生した問題のトラブルシューティングを行う](active-directory-application-proxy-troubleshoot.md)
+- [Enable Application Proxy](active-directory-application-proxy-enable.md)
+- [Enable single-sign on](active-directory-application-proxy-sso-using-kcd.md)
+- [Enable conditional access](active-directory-application-proxy-conditional-access.md)
+- [Troubleshoot issues you're having with Application Proxy](active-directory-application-proxy-troubleshoot.md)
 
-最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
+For the latest news and updates, check out the [Application Proxy blog](http://blogs.technet.com/b/applicationproxyblog/)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,142 +1,147 @@
 <properties
-	pageTitle="Azure Active Directory B2C: FAQ | Microsoft Azure"
-	description="Azure Active Directory B2C についてよく寄せられる質問"
-	services="active-directory-b2c"
-	documentationCenter=""
-	authors="swkrish"
-	manager="msmbaldwin"
-	editor="bryanla"/>
+    pageTitle="Azure Active Directory B2C: FAQs | Microsoft Azure"
+    description="Frequently asked questions about Azure Active Directory B2C"
+    services="active-directory-b2c"
+    documentationCenter=""
+    authors="swkrish"
+    manager="mbaldwin"
+    editor="bryanla"/>
 
 <tags
-	ms.service="active-directory-b2c"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/09/2016"
-	ms.author="swkrish"/>
+    ms.service="active-directory-b2c"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/09/2016"
+    ms.author="swkrish"/>
 
-# Azure Active Directory B2C: FAQ
 
-このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。常に最新情報をチェックしてください。
+# <a name="azure-active-directory-b2c:-faqs"></a>Azure Active Directory B2C: FAQs
 
-### 既存の従業員ベースの Azure AD テナントで Azure AD B2C 機能を使用できますか。
+This page answers frequently asked questions about the Azure Active Directory (Azure AD) B2C. Keep checking back for updates.
 
-現在のところ、既存の Azure AD テナントで Azure AD B2C 機能を有効にすることはできません。Azure AD B2C 機能を使用するための別個のテナントを作成し、お客様を管理することをお勧めします。
+### <a name="can-i-use-azure-ad-b2c-features-in-my-existing,-employee-based-azure-ad-tenant?"></a>Can I use Azure AD B2C features in my existing, employee-based Azure AD tenant?
 
-### Azure AD B2C を使用してソーシャル ログイン (Facebook および Google+) を Office 365 に提供することはできますか。
+Currently Azure AD B2C features can't be turned on in your existing Azure AD tenant. We recommend that you create a separate tenant to use Azure AD B2C features to manage your consumers.
 
-Azure AD B2C は Microsoft Office 365 と共に使用することはできません。一般に、SaaS アプリ (Office 365、Salesforce、Workday など) に認証を提供するために使用することはできません。Azure AD B2C は、コンシューマー向けの Web およびモバイル アプリケーションの ID とアクセスの管理を提供するだけであり、従業員またはパートナーのシナリオには適用されません。
+### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-(facebook-and-google+)-into-office-365?"></a>Can I use Azure AD B2C to provide social login (Facebook and Google+) into Office 365?
 
-### Azure AD B2C のローカル アカウントとは何ですか。 それらは、Azure AD の職場または学校アカウントとはどのような点が異なるのですか。
+Azure AD B2C can't be used with Microsoft Office 365. In general, it can't be used to provide authentication to any SaaS apps (Office 365, Salesforce, Workday, etc.). It provides identity and access management only for consumer-facing web and mobile applications, and is not applicable to employee or partner scenarios.
 
-Azure AD テナントでは、テナント内のすべてのユーザー (既存の Microsoft アカウントを持つユーザーを除く) は、`<xyz>@<tenant domain>` という形式の電子メール アドレスを使用してサインインします。`<tenant domain>` はテナント内のいずれかの有効なドメイン、または初期 `<...>.onmicrosoft.com` ドメインです。この種類のアカウントは、職場または学校アカウントです。
+### <a name="what-are-local-accounts-in-azure-ad-b2c?-how-are-they-different-from-work-or-school-accounts-in-azure-ad?"></a>What are local accounts in Azure AD B2C? How are they different from work or school accounts in Azure AD?
 
-Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意の電子メール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com など) を使用してサインインします。この種類のアカウントはローカル アカウントです。現在、ローカル アカウントとして任意のユーザー名 (単なるプレーン文字列) もサポートしています (joe、bob、sarah、jim など)。Azure AD B2C サービスでは、これらの 2 種類のローカル アカウントのいずれかを選択できます。
+In an Azure AD tenant, every user in the tenant (except users with existing Microsoft accounts) signs in with an email address of the form `<xyz>@<tenant domain>`, where `<tenant domain>` is one of the verified domains in the tenant or the initial `<...>.onmicrosoft.com` domain. This type of account is a work or school account.
 
-### 現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
+In an Azure AD B2C tenant, most apps want the user to sign in with any arbitrary email address (for example, joe@comcast.net, bob@gmail.com, sarah@contoso.com, or jim@live.com). This type of account is a local account. Today, we also support arbitrary user names (just plain strings) as local accounts (for example, joe, bob, sarah, or jim). You can choose one of these two local account types in the Azure AD B2C service.
 
-現在、Facebook、Google+、LinkedIn、および Amazon をサポートしています。お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
+### <a name="which-social-identity-providers-do-you-support-now?-which-ones-do-you-plan-to-support-in-the-future?"></a>Which social identity providers do you support now? Which ones do you plan to support in the future?
 
-### さまざまなソーシャル ID プロバイダーからお客様に関する情報をさらに収集するためにスコープを構成できますか。
+We currently support Facebook, Google+, LinkedIn, and Amazon. We will add support for other popular social identity providers based on customer demand.
 
-いいえ。ただし、この機能は検討中です。サポートされている一連のソーシャル ID プロバイダーに使用されている、既定のスコープは次のとおりです。
+### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers?"></a>Can I configure scopes to gather more information about consumers from various social identity providers?
 
-- Facebook: 電子メール
-- Google +: 電子メール
-- Microsoft アカウント: openid 電子メール プロファイル
-- Amazon: プロファイル
-- LinkedIn: r\_emailaddress、r\_basicprofile
+No, but this feature is on our roadmap. The default scopes used for our supported set of social identity providers are:
 
-### 使用しているアプリケーションを Azure AD B2C で機能させるには、Azure で実行する必要がありますか。
+- Facebook: email
+- Google+: email
+- Microsoft account: openid email profile
+- Amazon: profile
+- LinkedIn: r_emailaddress, r_basicprofile
 
-いいえ。アプリケーションは任意の場所でホストできます (クラウドまたはオンプレミス)。Azure AD B2C とやり取りするために必要なのは、パブリックにアクセス可能なエンドポイントで HTTP 要求を送受信する機能のみです。
+### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c?"></a>Does my application have to be run on Azure for it work with Azure AD B2C?
 
-### 複数の Azure AD B2C テナントがあります。Azure ポータルでこれらのテナントを管理するにはどうすればよいですか。
+No, you can host your application anywhere (in the cloud or on-premises). All it needs to interact with Azure AD B2C is the ability to send and receive HTTP requests on publicly-accessible endpoints.
 
-Azure ポータルには、Azure AD B2C テナントごとに独自の B2C 機能ブレードがあります。Azure ポータルで特定のテナントの B2C 機能ブレードに移動する方法については、「[Azure Active Directory B2C: アプリケーションを登録する](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)」を参照してください。ほとんどのブラウザーでは、Azure ポータルで Azure AD B2C ディレクトリを切り替えると、B2C 機能ブレードは開いたままにはなりません。
+### <a name="i-have-multiple-azure-ad-b2c-tenants.-how-can-i-manage-them-on-the-azure-portal?"></a>I have multiple Azure AD B2C Tenants. How can I manage them on the Azure Portal?
 
-### Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツおよび "From:" フィールド)。
+Each Azure AD B2C tenant has its own B2C features blade on the Azure portal. See [Azure AD B2C: Register your application](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) to learn how you can navigate to a specific tenant's B2C features blade on the Azure portal. Switching between Azure AD B2C directories on the Azure portal will not keep your B2C features blade open on most browsers.
 
-検証電子メールの内容をカスタマイズするには、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用します。具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
+### <a name="how-do-i-customize-verification-emails-(the-content-and-the-"from:"-field)-sent-by-azure-ad-b2c?"></a>How do I customize verification emails (the content and the "From:" field) sent by Azure AD B2C?
 
-- **バナー ロゴ**: 右下に表示されます。
-- **背景色**: 上部に表示されます。
+You can use the [company branding feature](../active-directory/active-directory-add-company-branding.md) to customize the content of verification emails. Specifically, these two elements of the email can be customized:
 
-	![カスタマイズされた検証電子メールのスクリーンショット](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+- **Banner Logo**: Shown at the bottom-right.
+- **Background color**: Shown at the top.
 
-電子メールの署名には、最初に B2C テナントを作成したときに指定した B2C テナントの名前が含まれます。名前は次の手順を使用して変更できます。
+    ![Screen shot of a customized verification email](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
-- サブスクリプション管理者として [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
-- B2C テナントに移動します。
-- **[構成]** タブをクリックします。
-- **[ディレクトリのプロパティ]** セクションの **[名前]** フィールドを変更します。
-- ページの下部にある **[保存]** をクリックします。
+The email signature contains the B2C tenant's name that you provided when you first created the B2C tenant. You can change the name using these instructions:
 
-現在、電子メールの送信元フィールドを変更する方法はありません。この機能や検証電子メールの本文全体をカスタマイズすることに興味がある場合は、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails) でその機能に投票してください。
+- Sign into the [Azure classic portal](https://manage.windowsazure.com/) as the Subscription Administrator.
+- Navigate to your B2C tenant.
+- Click on the **Configure** tab.
+- Change the **Name** field under the **Directory properties** section.
+- Click **Save** at the bottom of the page.
 
-### 既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
+Currently there is no way to change the "From:" field on the email. If you are interested in this capability and in fully customizing the body of the verification email, do vote for the feature on [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/15334335-fully-customizable-verification-emails).
 
-Azure AD Graph API を使用して、移行ツールを作成できます。詳細については、[Graph API サンプル](active-directory-b2c-devquickstarts-graph-dotnet.md)に関するページを参照してください。将来、さまざまな移行オプションとツールをすぐに使用できる状態で提供する予定です。
+### <a name="how-can-i-migrate-my-existing-user-names,-passwords,-and-profiles-from-my-database-to-azure-ad-b2c?"></a>How can I migrate my existing user names, passwords, and profiles from my database to Azure AD B2C?
 
-### Azure AD B2C のローカル アカウントに使用されるパスワード ポリシーはどのようなものですか。
+You can use the Azure AD Graph API to write your migration tool. See the [Graph API sample](active-directory-b2c-devquickstarts-graph-dotnet.md) for details. We will provide various migration options and tools out-of-the-box in the future.
 
-Azure AD B2C のローカル アカウントのパスワード ポリシーは Azure AD のポリシーに基づいています。Azure AD B2C のサインアップ、サインアップまたはサインイン、パスワード リセットの各ポリシーでは、"強力な" パスワード強度を使用しており、いずれのパスワードにも有効期限がありません。詳細については、[Azure AD のパスワード ポリシー](https://msdn.microsoft.com/library/azure/jj943764.aspx)に関するページを参照してください。
+### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c?"></a>What password policy is used for local accounts in Azure AD B2C?
 
-### Azure AD Connect を使用して、自分のオンプレミス Active Directory に保存されているお客様の ID を Azure AD B2C に移行できますか。
+The Azure AD B2C password policy for local accounts is based on the policy for Azure AD. Azure AD B2C's sign-up, sign-up or sign-in and password reset policies uses the "strong" password strength and doesn't expire any passwords. Read the [Azure AD password policy](https://msdn.microsoft.com/library/azure/jj943764.aspx) for more details.
 
-いいえ。Azure AD Connect は Azure AD B2C と連携するようには設計されていません。将来、さまざまな移行オプションとツールをすぐに使用できる状態で提供する予定です。
+### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c?"></a>Can I use Azure AD Connect to migrate consumer identities that are stored on my on-premises Active Directory to Azure AD B2C?
 
-### Azure AD B2C は Microsoft Dynamics のような CRM システムと連携しますか。
+No, Azure AD Connect is not designed to work with Azure AD B2C. We will provide various migration options and tools out-of-the-box in the future.
 
-現時点では連携しません。これらのシステムとの統合を検討中です。
+### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics?"></a>Does Azure AD B2C work with CRM systems such as Microsoft Dynamics?
 
-### Azure AD B2C はオンプレミスの SharePoint 2016 以前と連携しますか。
+Not currently. Integrating these systems is on our roadmap.
 
-現時点では連携しません。Azure AD B2C では、ポータルおよび E コマース アプリケーションがオンプレミスの SharePoint のニーズに基づいて構築した SAML 1.1 トークンはサポートされません。Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには適していません。この記事ではなく、[Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) に関する記事を参照してください。
+### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier?"></a>Does Azure AD B2C work with SharePoint on-premises 2016 or earlier?
 
-### 外部 ID を管理するために Azure AD B2C または B2B を使用する必要がありますか。
+Not currently. Azure AD B2C doesn't have support for SAML 1.1 tokens that portals and e-commerce applications built on SharePoint on-premises need. Note that Azure AD B2C is not meant for the SharePoint external partner-sharing scenario; see [Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) instead.
 
-外部 ID のシナリオに適した機能を使用する方法の詳細については、[外部 ID](../active-directory/active-directory-b2b-compare-external-identities.md) に関するこの記事を参照してください。
+### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities?"></a>Should I use Azure AD B2C or B2B to manage external identities?
 
-### Azure AD B2C ではどのようなレポート機能と監査機能が提供されますか。 それは Azure AD Premium の機能と同じですか。
+Read this article about [external identities](../active-directory/active-directory-b2b-compare-external-identities.md) to learn more about applying the appropriate features to your external identity scenarios.
 
-いいえ。Azure AD B2C では Azure AD Premium と同じレポート セットはサポートされていません。Azure AD B2C では、基本レポート API および監査 API が間もなくリリースされる予定です。
+### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide?-are-they-the-same-as-in-azure-ad-premium?"></a>What reporting and auditing features does Azure AD B2C provide? Are they the same as in Azure AD Premium?
 
-### Azure AD B2C で提供されているページの UI をローカライズできますか。 どの言語がサポートされていますか。
+No, Azure AD B2C does not support the same set of reports as Azure AD Premium. Azure AD B2C will be releasing basic reporting and auditing APIs soon.
 
-現在、Azure AD B2C は英語のみに最適化されています。可能な限り早急にローカライズ機能を展開する予定です。
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c?-what-languages-are-supported?"></a>Can I localize the UI of pages served by Azure AD B2C? What languages are supported?
 
-### Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を login.microsoftonline.com から login.contoso.com に変更できますか。
+Currently, Azure AD B2C is optimized for English only. We plan to roll out localization features as soon as possible.
 
-現時点では連携しません。この機能は検討中です。また、Azure クラシック ポータルからテナントの **[ドメイン]** タブでドメインを検証しても、変更は行われません。
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c?-for-instance,-can-i-change-the-url-from-login.microsoftonline.com-to-login.contoso.com?"></a>Can I use my own URLs on my sign-up and sign-in pages that are served by Azure AD B2C? For instance, can I change the URL from login.microsoftonline.com to login.contoso.com?
 
-### Azure AD B2C テナントを削除する方法はありますか。
+Not currently. This feature is on our roadmap. Also note that verifying your domain in the **Domains** tab of your tenant on the Azure classic portal will not do this.
 
-Azure AD B2C テナントを削除するには、次の手順に従います。
+### <a name="how-do-i-delete-my-azure-ad-b2c-tenant?"></a>How do I delete my Azure AD B2C tenant?
 
-- この手順に従って、Azure ポータルで [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)します。
-- **[アプリケーション]**、**[ID プロバイダー]**、**[すべてのポリシー]** の各ブレードで、そのすべてのエントリを削除します。
-- 次に、サブスクリプション管理者として [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします (これは、Azure へのサインアップに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントです)。
-- 左側の Active Directory 拡張機能に移動し、B2C テナントをクリックします。
-- **[Users]** タブをクリックします。
-- 各ユーザーを順に選択します。ただし、現在サインインに使用しているユーザー (つまりサブスクリプション管理者) は除きます。ページ下部の **[削除]** をクリックし、確認プロンプトに **[はい]** をクリックします。
-- **[アプリケーション]** タブをクリックします。
-- **[表示]** ドロップダウン フィールドで **[自分の会社が所有するアプリケーション]** を選択し、チェック マークをクリックします。
-- 以下に示すように **b2c-extensions-app** というアプリケーションが表示されます。ページ下部の **[削除]** をクリックし、確認プロンプトに **[はい]** をクリックします。
-- Active Directory 拡張機能にもう一度移動し、B2C テナントをクリックします。
-- ページの下部にある **[削除]** をクリックします。画面に表示される指示に従って、処理を完了します。
+Follow these steps to delete your Azure AD B2C tenant:
 
-### Enterprise Mobility Suite の一部として Azure AD B2C を取得できますか。
+- Follow these steps to [navigate to the B2C features blade](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) on the Azure portal.
+- Navigate to the **Applications**, **Identity providers** and **All policies** blades and delete all the entries in each of them.
+- Now sign in to the [Azure classic portal](https://manage.windowsazure.com/) as the Subscription Administrator. (This is the same work or school account or the same Microsoft account that you used to sign up for Azure.)
+- Navigate to the Active Directory extension on the left and click your B2C tenant.
+- Click the **Users** tab.
+- Select each user in turn (exclude the user you are currently signed in as, i.e., the Subscription Administrator). Click **Delete** at the bottom of the page and click **YES** when prompted.
+- Click the **Applications** tab.
+- Select **Applications my company owns** in the **Show** drop-down field and click on the check mark.
+- You'll see an application called **b2c-extensions-app** listed below. Click **Delete** at the bottom of the page and click **YES** when prompted.
+- Navigate to the Active Directory extension again and select your B2C tenant.
+- Click **Delete** at the bottom of the page. Follow the instructions on the screen to complete the process.
 
-いいえ。Azure AD B2C は従量課金の Azure サービスであり、Enterprise Mobility Suite には含まれていません。
+### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite?"></a>Can I get Azure AD B2C as part of Enterprise Mobility Suite?
 
-### Azure AD B2C に関する問題を報告するにはどのようにすればいいですか。
+No, Azure AD B2C is a pay-as-you-go Azure service and is not part of Enterprise Mobility Suite.
 
-[Azure Active Directory B2C のサポート要求の提出](active-directory-b2c-support.md)に関するページを参照してください。
+### <a name="how-do-i-report-issues-with-azure-ad-b2c?"></a>How do I report issues with Azure AD B2C?
 
-## 詳細情報
+See [File support requests for Azure Active Directory B2C](active-directory-b2c-support.md).
 
-現在の[サービスの制限事項および制約事項](active-directory-b2c-limitations.md)を確認することもできます。
+## <a name="more-information"></a>More information
 
-<!---HONumber=AcomDC_0810_2016-->
+You also might want to review current [service limitations, restrictions, and constraints](active-directory-b2c-limitations.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric 高信頼アクターの概要 | Microsoft Azure"
-   description="Service Fabric Reliable Actors のプログラミング モデルの概要。"
+   pageTitle="Service Fabric Reliable Actors Overview | Microsoft Azure"
+   description="Introduction to the Service Fabric Reliable Actors programming model."
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,79 +13,80 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="07/06/2016"
+   ms.date="10/19/2016"
    ms.author="vturecek"/>
 
-# Service Fabric Reliable Actors の概要
 
-Reliable Actors は、[Virtual Actor](http://research.microsoft.com/ja-JP/projects/orleans/) パターンに基づく Service Fabric アプリケーション フレームワークです。Reliable Actors API は、Service Fabric による拡張性と信頼性の保証の上に構築された、シングル スレッドのプログラミング モデルを提供します。
+# <a name="introduction-to-service-fabric-reliable-actors"></a>Introduction to Service Fabric Reliable Actors
 
-## アクターとは
-アクターは、シングル スレッド実行のコンピューティングと状態の、分離されて独立したユニットです。[アクター パターン](https://en.wikipedia.org/wiki/Actor_model)は、同時実行システムまたは分散システム用のコンピューティング モデルです。このモデルでは、これらの多数のアクターが同時に、互いに独立して実行されます。アクターは、互いに通信することができ、さらにアクターを作成することができます。
+Reliable Actors is a Service Fabric application framework based on the [Virtual Actor](http://research.microsoft.com/en-us/projects/orleans/) pattern. The Reliable Actors API provides a single-threaded programming model built on the scalability and reliability guarantees provided by Service Fabric.
 
-### どのようなときに Reliable Actors を使用するか
+## <a name="what-are-actors?"></a>What are Actors?
+An actor is an isolated, independent unit of compute and state with single-threaded execution. The [actor pattern](https://en.wikipedia.org/wiki/Actor_model) is a computational model for concurrent or distributed systems in which a large number of these actors can execute simultaneously and independently of each other. Actors can communicate with each other and they can create more actors.
 
-Service Fabric Reliable Actors は、アクター設計パターンの実装です。他のソフトウェア設計パターンと同様に、特定のパターンを使用するかどうかの判断は、ソフトウェア設計の問題がパターンに適しているかどうかに基づいて行われます。
+### <a name="when-to-use-reliable-actors"></a>When to use Reliable Actors
 
-アクター設計パターンは、分散システムの多くの問題とシナリオに適していますが、パターンの制限とパターンを実装するフレームワークの制限を慎重に検討する必要があります。一般的なガイダンスとして、次のような場合に、問題やシナリオをモデル化するためにアクター パターンを検討してください。
+Service Fabric Reliable Actors is an implementation of the actor design pattern. As with any software design pattern, the decision whether to use a specific pattern is made based on whether or not a software design problem fits the pattern.
 
- - 問題空間に、状態とロジックの小さな分離されて独立したユニットが多数 (1,000 以上) 含まれている。
+Although the actor design pattern can be a good fit to a number of distributed systems problems and scenarios, careful consideration of the constraints of the pattern and the framework implementing it must be made. As general guidance, consider the actor pattern to model your problem or scenario if:
 
- - アクターのセット全体の状態に対するクエリなどの、外部コンポーネントとの重要なやり取りを必要としない、シングル スレッド オブジェクトを操作したい。
+ - Your problem space involves a large number (thousands or more) of small, independent, and isolated units of state and logic.
 
- - アクター インスタンスが、予期できない遅延がある呼び出し元を、I/O 操作を発行してブロックすることがない。
+ - You want to work with single-threaded objects that do not require significant interaction from external components, including querying state across a set of actors.
 
-## Service Fabric のアクター
+ - Your actor instances won't block callers with unpredictable delays by issuing I/O operations.
 
-Service Fabric では、アクターは Reliable Actors フレームワーク内に実装されます。これは、[Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md) 上に構築される、アクターとパターンをベースにしたアプリケーション フレームワークです。記述する各 Reliable Actors サービスは、実際にはパーティション分割されたステートフルな Reliable Service です。
+## <a name="actors-in-service-fabric"></a>Actors in Service Fabric
 
-各アクターは、アクター型のインスタンスとして定義されます。これは、.NET オブジェクトが .NET 型のインスタンスであるのと同様です。たとえば、電卓の機能を実装するアクター型がある場合や、クラスター全体のさまざまなノードで分散されるその型のアクターが多数存在する場合があります。このようなアクターはそれぞれ、アクター ID で一意に識別されます。
+In Service Fabric, actors are implemented in the Reliable Actors framework: An actor-pattern-based application framework built on top of [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md). Each Reliable Actor service you write is actually a partitioned, stateful Reliable Service.
 
-### アクターの有効期間
+Every actor is defined as an instance of an actor type, identical to the way a .NET object is an instance of a .NET type. For example, there may be an actor type that implements the functionality of a calculator and there could be many actors of that type that are distributed on various nodes across a cluster. Each such actor is uniquely identified by an actor ID.
 
-Service Fabric アクターは仮想アクターです。つまり、その有効期間は、メモリ内表現に関連付けられていません。したがって、明示的に作成したり、破棄したりする必要はありません。Reliable Actors ランタイムは、アクター ID への要求の初回受信時に、自動的にそのアクターをアクティブ化します。アクターが一定期間使用されていない場合、Reliable Actors ランタイムはメモリ内オブジェクトをガベージ コレクトします。また、アクターを後で再アクティブ化する場合に備えて、アクターの存在に関する情報を保持します。詳細については、「[アクターのライフ サイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)」を参照してください。
+### <a name="actor-lifetime"></a>Actor Lifetime
 
-この仮想アクターの有効期間の抽象化によって、仮想アクター モデルの結果として、いくつかの注意事項が発生します。実際には、Reliable Actors の実装は、ときどきこのモデルから逸脱します。
+Service Fabric actors are virtual, meaning that their lifetime is not tied to their in-memory representation. As a result, they do not need to be explicitly created or destroyed. The Reliable Actors runtime automatically activates an actor the first time it receives a request for that actor ID. If an actor is not used for a period of time, the Reliable Actors runtime garbage-collects the in-memory object. It will also maintain knowledge of the actor's existence should it need to be reactivated later. For more details, see [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md).
 
- - アクターは、そのアクター ID に初めてメッセージが送信されたときに、自動的にアクティブ化されます (アクター オブジェクトが構築されます)。しばらくしてから、アクター オブジェクトはガベージ コレクトされます。その後、もう一度そのアクター ID を使用すると、新しいアクター オブジェクトが構築されます。アクターの状態は、状態マネージャーに格納されると、オブジェクトの有効期間よりも長く保持されます。
+This virtual actor lifetime abstraction carries some caveats as a result of the virtual actor model, and in fact the Reliable Actors implementation deviates at times from this model.
+
+ - An actor is automatically activated (causing an actor object to be constructed) the first time a message is sent to its actor ID. After some period of time, the actor object is garbage collected. In the future, using the actor ID again, causes a new actor object to be constructed. An actor's state outlives the object's lifetime when stored in the state manager.
  
- - アクター ID に対していずれかのアクター メソッドを呼び出すと、そのアクターがアクティブ化されます。このような理由で、アクター型ではランタイムによってコンストラクターが暗黙的に呼び出されます。そのため、サービス自体はアクターのコンストラクターにパラメーターを渡すことができても、クライアント コードはパラメーターをアクター型のコンストラクターに渡すことができません。結果として、アクターがクライアントからの初期化パラメーターを必要とする場合、他のメソッドから呼び出されるときまで、アクターが部分的に初期化された状態で構築されることがあります。アクターのアクティブ化のための、クライアントからの単一のエントリ ポイントはありません。
+ - Calling any actor method for an actor ID activates that actor. For this reason, actor types have their constructor called implicitly by the runtime. Therefore, client code cannot pass parameters to the actor type's constructor, although parameters may be passed to the actor's constructor by the service itself. The result is that actors may be constructed in a partially-initialized state by the time other methods are called on it, if the actor requires initialization parameters from the client. There is no single entry point for the activation of an actor from the client.
 
- - Reliable Actors では暗黙的にアクター オブジェクトが作成されますが、ユーザーが明示的にアクターとその状態を削除できます。
+ - Although Reliable Actors implicitly create actor objects; you do have the ability to explicitly delete an actor and its state. 
 
-### 分散とフェールオーバー
+### <a name="distribution-and-failover"></a>Distribution and failover
 
-Service Fabric アクターは、拡張性と信頼性を実現するために、クラスター全体にアクターを分散し、障害が発生したノードのアクターを、正常に稼働しているノードに必要に応じて自動的に移行します。これは、[パーティション分割された、ステートフルな Reliable Service](./service-fabric-concepts-partitioning.md) の抽象化です。分散、拡張性、信頼性、および自動フェールオーバーは、アクターが *Actor Service* と呼ばれるステートフルな Reliable Service 内で実行されていることによって、すべてが実現されています。
+To provide scalability and reliability, Service Fabric distributes actors throughout the cluster and automatically migrates them from failed nodes to healthy ones as required. This is an abstraction over a [partitioned, stateful Reliable Service](./service-fabric-concepts-partitioning.md). Distribution, scalability, reliability, and automatic failover are all provided by virtue of the fact that actors are running inside a stateful Reliable Service called the *Actor Service*. 
 
-アクターは Actor Service のパーティション全体に分散され、これらのパーティションは Service Fabric クラスター内のノード全体に分散されます。各サービス パーティションには、アクターのセットが含まれています。Service Fabric は、分散とサービス パーティションのフェールオーバーを管理します。
+Actors are distributed across the partitions of the Actor Service, and those partitions are distributed across the nodes in a Service Fabric cluster. Each service partition contains a set of actors. Service Fabric manages distribution and failover of the service partitions. 
 
-たとえば、既定のアクター パーティション配置を使用して 3 つのノードに 9 つのパーティションをデプロイしているアクター サービスは、次のように分散されます。
+For example, an actor service with nine partitions deployed to three nodes using the default actor partition placement would be distributed thusly:
 
 ![Reliable Actors distribution][2]
 
-Actor Framework は、パーティション スキームとキー範囲設定を管理します。これは、いくつかの選択を簡略化しますが、次のような考慮事項も伴います。
+The Actor Framework manages partition scheme and key range settings for you. This simplifies some choices but also carries some consideration:
 
- - Reliable Services では、パーティション スキーム、キー範囲 (範囲パーティション スキームを使用する場合)、およびパーティション数を選択できます。Reliable Actors は範囲パーティション スキーム (uniform Int64 スキーム) に制限され、完全な Int64 キー範囲を使用する必要があります。
+ - Reliable Services allows you to choose a partitioning scheme, key range (when using a range partitioning scheme), and partition count. Reliable Actors is restricted to the range partitioning scheme (the uniform Int64 scheme) and requires you use the full Int64 key range.
  
- - 既定では、アクターは均等に分散するように、パーティションにランダムに配置されます。
+ - By default, actors are randomly placed into partitions resulting in uniform distribution. 
  
- - アクターがランダムに配置されるため、アクターの操作には常にネットワーク通信が必要になることを想定しておかなければなりません。また、メソッド呼び出しデータのシリアル化および逆シリアル化、遅延とオーバーヘッドの発生なども考慮する必要があります。
+ - Because actors are randomly placed, it should be expected that actor operations will always require network communication, including serialization and deserialization of method call data, incurring latency and overhead.
  
- - 高度なシナリオでは、特定のパーティションに割り当てられる Int64 アクター ID を使用して、アクターのパーティション配置を制御できます。ただし、そうした場合、パーティション間でアクターの分散が不均等になることがあります。
+ - In advanced scenarios, it is possible to control actor partition placement by using Int64 actor IDs that map to specific partitions. However, doing so can result in an unbalanced distribution of actors across partitions. 
 
-アクター サービスがパーティション分割される方法の詳細については、[アクターのパーティション分割の概念](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)の部分を参照してください。
+For more information on how actor services are partitioned, refer to [partitioning concepts for actors](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors). 
 
-### アクターの通信
-アクター間のやり取りは、インターフェイスを実装するアクターと、同じインターフェイスを介してアクターへのプロキシを取得するクライアントとで共有されるインターフェイス内で定義されます。このインターフェイスは、アクター メソッドを非同期で呼び出すために使用されるので、インターフェイスの各メソッドはタスクを返す必要があります。
+### <a name="actor-communication"></a>Actor communication
+Actor interactions are defined in an interface that is shared by the actor that implements the interface, and the client that gets a proxy to an actor via the same interface. Because this interface is used to invoke actor methods asynchronously, every method on the interface must be Task-returning.
 
-メソッド呼び出しとその応答が、最終的にはクラスター全体でネットワーク要求になるため、引数と返されるタスクの結果の型は、プラットフォームがシリアル化できる必要があります。具体的には、[データ コントラクト シリアル化可能](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)でなければなりません。
+Method invocations and their responses ultimately result in network requests across the cluster, so the arguments and the result types of the tasks that they return must be serializable by the platform. In particular, they must be [data contract serializable](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
-#### アクター プロキシ
-Reliable Actors API は、アクター インスタンスとアクター クライアント間の通信を提供します。アクターと通信するために、クライアントは、アクター インターフェイスを実装するアクター プロキシ オブジェクトを作成します。クライアントは、プロキシ オブジェクトでメソッドを呼び出すことによって、アクターと対話します。アクター間の通信だけでなく、クライアントとアクター間の通信でもアクター プロキシを使用できます。
+#### <a name="the-actor-proxy"></a>The actor proxy
+The Reliable Actors client API provides communication between an actor instance and an actor client. To communicate with an actor, a client creates an actor proxy object that implements the actor interface. The client interacts with the actor by invoking methods on the proxy object. The actor proxy can be used for client-to-actor and actor-to-actor communication. 
 
 ```csharp
 // Create a randomly distributed actor ID
-ActorId actorId = ActorId.NewId();
+ActorId actorId = ActorId.CreateRandom();
 
 // This only creates a proxy object, it does not activate an actor or invoke any methods yet.
 IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/MyActorService"));
@@ -94,68 +95,72 @@ IMyActor myActor = ActorProxy.Create<IMyActor>(actorId, new Uri("fabric:/MyApp/M
 await myActor.DoWorkAsync();
 ```
 
-アクター プロキシ オブジェクトの作成には、アクター ID とアプリケーション名という 2 つの情報が使用されていることに注意してください。アクター ID は、アクターを一意に識別します。アプリケーション名は、アクターがデプロイされている [Service Fabric アプリケーション](service-fabric-reliable-actors-platform.md#service-fabric-application-model-concepts-for-actors)を識別します。
+Note that the two pieces of information used to create the actor proxy object are the actor ID and the application name. The actor ID uniquely identifies the actor, while the application name identifies the [Service Fabric application](service-fabric-reliable-actors-platform.md#service-fabric-application-model-concepts-for-actors) where the actor is deployed.
 
-クライアント側の `ActorProxy` クラスは、必要な解決策を実行して、ID によってアクターを検索し、このアクターによって通信チャネルを開きます。また、`ActorProxy` は、通信のエラーとフェールオーバーが発生した場合にアクターの検索も再試行します。その結果、メッセージの配信には次のような特徴があります。
+The `ActorProxy` class on the client side performs the necessary resolution to locate the actor by ID and open a communication channel with it. The `ActorProxy` also retries to locate the actor in the cases of communication failures and failovers. As a result, message delivery has the following characteristics:
 
- - メッセージ配信は、ベスト エフォートです。
- - アクターは、同じクライアントから重複するメッセージを受け取る可能性があります。
+ - Message delivery is best effort.
+ - Actors may receive duplicate messages from the same client.
 
-### 同時実行
+### <a name="concurrency"></a>Concurrency
 
-Reliable Actors ランタイムは、アクター メソッドにアクセスするためのターンに基づくアクセス モデルを提供します。これは、アクター オブジェクトのコード内で、ある時点でアクティブにできるスレッドが 1 つだけであることを意味します。ターンに基づくアクセスは、データ アクセスの同期メカニズムを必要としないので、同時実行システムを大幅に簡略化できます。また、システムの設計で、各アクター インスタンスのシングル スレッド アクセスの性質に特別な配慮が必要であることも意味しています。
+The Reliable Actors runtime provides a simple turn-based access model for accessing actor methods. This means that no more than one thread can be active inside an actor object's code at any time. Turn-based access greatly simplifies concurrent systems as there is no need for synchronization mechanisms for data access. It also means systems must be designed with special considerations for the single-threaded access nature of each actor instance.
 
- - 1 つのアクター インスタンスは、一度に複数の要求を処理することはできません。アクター インスタンスが同時要求の処理を期待される場合は、アクター インスタンスがスループット ボトルネックになる可能性があります。
- - 2 つのアクターの一方に外部要求が同時に行われるときに、2 つのアクター間に循環要求があると、互いにデッドロックすることがあります。アクター ランタイムは、デッドロック状態を中断するために、自動的にアクター呼び出しをタイムアウトし、呼び出し元に例外をスローします。
+ - A single actor instance cannot process more than one request at a time. An actor instance can cause a throughput bottleneck if it is expected to handle concurrent requests. 
+ - Actors can deadlock on each other if there is a circular request between two actors while an external request is made to one of the actors simultaneously. The actor runtime will automatically time out on actor calls and throw an exception to the caller to interrupt possible deadlock situations.
 
 ![Reliable Actors communication][3]
 
-#### ターンに基づくアクセス
+#### <a name="turn-based-access"></a>Turn-based access
 
-ターンは、他のアクターまたはクライアントからの要求に応じたアクター メソッドの完全な実行、あるいは[タイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)のコールバックの完全な実行で構成されます。これらのメソッドとコールバックが非同期でも、アクター ランタイムはこれらをインターリーブしません。ターンは、新しいターンが許可される前に完全に完了する必要があります。つまり、現在実行しているアクター メソッドまたはタイマーとアラームのコールバックは、メソッドまたはコールバックの新しい呼び出しが許可される前に完全に完了する必要があります。実行がメソッドまたはコールバックから返され、メソッドまたはコールバックによって返されたタスクが完了した場合は、そのメソッドまたはコールバックは完了したと見なされます。ターンごとの同時実行は、メソッド、タイマーおよびコールバックが異なる場合でも優先されることに注意してください。
+A turn consists of the complete execution of an actor method in response to a request from other actors or clients, or the complete execution of a [timer/reminder](service-fabric-reliable-actors-timers-reminders.md) callback. Even though these methods and callbacks are asynchronous, the Actors runtime does not interleave them. A turn must be fully finished before a new turn is allowed. In other words, an actor method or timer/reminder callback that is currently executing must be fully finished before a new call to a method or callback is allowed. A method or callback is considered to have finished if the execution has returned from the method or callback and the task returned by the method or callback has finished. It is worth emphasizing that turn-based concurrency is respected even across different methods, timers, and callbacks.
 
-アクター ランタイムは、ターンの開始時にアクターごとのロックを取得し、ターンの終了時にロックを解除することで、ターンごとの同時実行を強制します。そのため、ターンごとの同時実行は、アクター全体ではなく、アクターごとに強制されます。アクターのメソッドおよびタイマーとアラームのコールバックは、別のアクターの代わりに同時に実行できます。
+The Actors runtime enforces turn-based concurrency by acquiring a per-actor lock at the beginning of a turn and releasing the lock at the end of the turn. Thus, turn-based concurrency is enforced on a per-actor basis and not across actors. Actor methods and timer/reminder callbacks can execute simultaneously on behalf of different actors.
 
-上記の概念を以下の例で示します。2 つの非同期メソッド (つまり、*Method1* と *Method2*)、タイマーおよびアラームを実装するアクター型があるとします。以下の図は、このアクター型に属する 2 つのアクター (*ActorId1* と *ActorId2*) の代わりにこれらのメソッドとコールバックを実行する場合のタイムラインの例を示しています。
+The following example illustrates the above concepts. Consider an actor type that implements two asynchronous methods (say, *Method1* and *Method2*), a timer, and a reminder. The diagram below shows an example of a timeline for the execution of these methods and callbacks on behalf of two actors (*ActorId1* and *ActorId2*) that belong to this actor type.
 
-![Reliable Actors ランタイムのターンごとの同時実行とアクセス][1]
+![Reliable Actors runtime turn-based concurrency and access][1]
 
-この図は、次の規則に従っています。
+This diagram follows these conventions:
 
-- 各垂直線は、特定のアクターの代わりにメソッドまたはコールバックを実行する場合の論理フローを示しています。
-- 各垂直線上にマークされているイベントは発生順になっており、古いイベントの下に新しいイベントが続きます。
-- タイムラインでは、異なるアクターに対応する異なる色が使用されています。
-- 強調表示は、アクターごとのロックがメソッドまたはコールバックの代わりに保持される期間を示すために使用されています。
+- Each vertical line shows the logical flow of execution of a method or a callback on behalf of a particular actor.
+- The events marked on each vertical line occur in chronological order, with newer events occurring below older ones.
+- Different colors are used for timelines corresponding to different actors.
+- Highlighting is used to indicate the duration for which the per-actor lock is held on behalf of a method or callback.
 
-次のような、考慮すべき重要な点がいくつかあります。
+Some important points to consider:
 
-- クライアント要求 *xyz789* に応じて *ActorId2* の代わりに *Method1* を実行しているときに、別のクライアント要求 (*abc123*) が到着する場合があります。その場合も、*ActorId2* が *Method1* を実行する必要があります。ただし、*Method1* の 2 回目の実行は、前の実行が完了するまで開始されません。同様に、*Method1* がクライアント要求 *xyz789* に応じて実行されている間に、*ActorId2* によって登録されたアラームが開始されます。アラームのコールバックが実行されるのは、*Method1* の両方の実行が完了した場合のみです。これはすべてターンごとの同時実行が *ActorId2* に対して強制されるためです。
-- 同様に、ターンごとの同時実行は *ActorId1* に対しても強制されます。図に示されているように、*ActorId1* の代わりに *Method1*、*Method2* およびタイマーのコールバックが順次実行されます。
-- *ActorId1* の代理としての *Method1* の実行は、*ActorId2* の代理として実行と重複しています。これは、ターンごとの同時実行が、アクター全体ではなくアクター内でのみ強制されるためです。
-- メソッドやコールバックのいくつかの実行では、メソッドやコールバックによって返される `Task` は、メソッドが応答した後に完了します。その他の実行では、メソッドやコールバックが応答するまでに `Task` は既に完了しています。いずれの場合でも、アクターごとのロックは、メソッドとコールバックが応答し、`Task` が完了した後にのみ解放されます。
+- While *Method1* is executing on behalf of *ActorId2* in response to client request *xyz789*, another client request (*abc123*) arrives that also requires *Method1* to be executed by *ActorId2*. However, the second execution of *Method1* does not begin until the prior execution has finished. Similarly, a reminder registered by *ActorId2* fires while *Method1* is being executed in response to client request *xyz789*. The reminder callback is executed only after both executions of *Method1* are complete. All of this is due to turn-based concurrency being enforced for *ActorId2*.
+- Similarly, turn-based concurrency is also enforced for *ActorId1*, as demonstrated by the execution of *Method1*, *Method2*, and the timer callback on behalf of *ActorId1* happening in a serial fashion.
+- Execution of *Method1* on behalf of *ActorId1* overlaps with its execution on behalf of *ActorId2*. This is because turn-based concurrency is enforced only within an actor and not across actors.
+- In some of the method/callback executions, the `Task` returned by the method/callback finishes after the method returns. In some others, the `Task` has already finished by the time the method/callback returns. In both cases, the per-actor lock is released only after both the method/callback returns and the `Task` finishes.
 
-#### 再入
+#### <a name="reentrancy"></a>Reentrancy
 
-アクター ランタイムでは、既定で再入が許可されます。つまり、*アクター A* のアクター メソッドが*アクター B* に対してメソッドを呼び出してから、アクター B が*アクター A* に対して別のメソッドを呼び出す場合、実行が許可されます。これは、メソッドが同じ論理呼び出しチェーン コンテキストの一部であるためです。すべてのタイマーとアラームの呼び出しは新しい論理呼び出しコンテキストで始まります。詳細については、「[Reliable Actors の再入](service-fabric-reliable-actors-reentrancy.md)」を参照してください。
+The Actors runtime allows reentrancy by default. This means that if an actor method of *Actor A* calls a method on *Actor B*, which in turn calls another method on *Actor A*, that method is allowed to run. This is because it is part of the same logical call-chain context. All timer and reminder calls start with the new logical call context. See the [Reliable Actors reentrancy](service-fabric-reliable-actors-reentrancy.md) for more details.
 
-#### 同時実行の保証の範囲
+#### <a name="scope-of-concurrency-guarantees"></a>Scope of concurrency guarantees
 
-アクター ランタイムは、これらのメソッドの呼び出しを制御する状況でこのような同時実行を保証します。たとえば、クライアント要求の受信に対する応答として行われるメソッド呼び出しおよびタイマーとアラームのコールバックに対して、このような保証を提供します。ただし、アクター コードがアクター ランタイムによって提供されるメカニズム以外でこれらのメソッドを直接呼び出す場合、ランタイムは同時実行を保証できません。たとえば、メソッドが、アクター メソッドによって返されるタスクに関連付けられていない一部のタスクのコンテキストで呼び出される場合、ランタイムは同時実行を保証することはできません。アクターが独自に作成するスレッドからメソッドが呼び出される場合、ランタイムは同時実行を保証できません。そのため、バックグラウンド操作を実行するには、アクターは、ターンごとの同時実行を優先する[アクターのタイマーおよびアクターのアラーム](service-fabric-reliable-actors-timers-reminders.md)を使用する必要があります。
+The Actors runtime provides these concurrency guarantees in situations where it controls the invocation of these methods. For example, it provides these guarantees for the method invocations that are done in response to a client request, as well as for timer and reminder callbacks. However, if the actor code directly invokes these methods outside of the mechanisms provided by the Actors runtime, then the runtime cannot provide any concurrency guarantees. For example, if the method is invoked in the context of some task that is not associated with the task returned by the actor methods, then the runtime cannot provide concurrency guarantees. If the method is invoked from a thread that the actor creates on its own, then the runtime also cannot provide concurrency guarantees. Therefore, to perform background operations, actors should use [actor timers and actor reminders](service-fabric-reliable-actors-timers-reminders.md) that respect turn-based concurrency.
 
-## 次のステップ
- - [Reliable Actors の使用](service-fabric-reliable-actors-get-started.md)
- - [Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
- - [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
- - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
- - [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
- - [アクター イベント](service-fabric-reliable-actors-events.md)
- - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
- - [アクターのポリモーフィズムとオブジェクト指向設計パターン](service-fabric-reliable-actors-polymorphism.md)
- - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
+## <a name="next-steps"></a>Next steps
+ - [Getting started with Reliable Actors](service-fabric-reliable-actors-get-started.md)
+ - [How Reliable Actors use the Service Fabric platform](service-fabric-reliable-actors-platform.md)
+ - [Actor state management](service-fabric-reliable-actors-state-management.md)
+ - [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md)
+ - [Actor timers and reminders](service-fabric-reliable-actors-timers-reminders.md)
+ - [Actor events](service-fabric-reliable-actors-events.md)
+ - [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
+ - [Actor polymorphism and object-oriented design patterns](service-fabric-reliable-actors-polymorphism.md)
+ - [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png
 [2]: ./media/service-fabric-reliable-actors-introduction/distribution.png
 [3]: ./media/service-fabric-reliable-actors-introduction/actor-communication.png
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

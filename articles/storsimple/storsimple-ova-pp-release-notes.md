@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array のリリース ノート | Microsoft Azure"
-   description="StorSimple Virtual Array の未解決の重大な問題と解決方法について説明します。"
+   pageTitle="StorSimple Virtual Array release notes| Microsoft Azure"
+   description="Describes critical open issues and resolutions for the StorSimple Virtual Array."
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,31 +15,36 @@
    ms.date="05/13/2016"
    ms.author="alkohli" />
 
-# StorSimple Virtual Array のリリース ノート
 
-## 概要
+# <a name="storsimple-virtual-array-release-notes"></a>StorSimple Virtual Array release notes
 
-以下のリリース ノートは、Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) の 2016 年 3 月の一般提供 (GA) リリースでの未解決の重大な問題を示しています。このリリースは、ソフトウェア バージョン 10.0.10271.0 に対応します。
+## <a name="overview"></a>Overview
 
-リリース ノートは継続的に更新されます。対応策を必要とする重大な問題が見つかった場合は、それらの問題が追加されます。StorSimple 仮想マシンをデプロイする前に、リリース ノートに含まれる情報を十分に確認してください。
+The following release notes identify the critical open issues for the March 2016 general availability (GA) release of the Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device or the StorSimple virtual device). This release corresponds to software version 10.0.10271.0.
 
-次の表に、このリリースでの既知の問題の概要を示します。
+The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they are added. Before you deploy your StorSimple virtual device, carefully review the information contained in the release notes. 
+
+The following table provides a summary of known issues in this release.
 
 
-| 番号 | 機能 | 問題 | 対応策/コメント |
+| No. | Feature | Issue | Workaround/comments |
 |-----|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **1.** | 更新プログラム | プレビュー リリースで作成された仮想デバイスは、サポートされている一般提供版に更新することはできません。 | これらの仮想デバイスは、障害復旧 (DR) ワークフローを使用して一般提供リリースにフェールオーバーする必要があります。 |
-| **2.** | プロビジョニング済みのデータ ディスク | 特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する StorSimple 仮想デバイスを作成した後は、データ ディスクを拡張または縮小することはできません。これを行おうとすると、デバイスのローカル層のすべてのデータが失われます。 | |
-| **3.** | グループ ポリシー | デバイスがドメインに参加しているときに、グループ ポリシーを適用すると、デバイスの動作に悪影響を及ぼすことがあります。 | 仮想アレイが Active Directory の独自の組織単位 (OU) にあり、グループ ポリシー オブジェクト (GPO) が適用されていないことを確認します。|
-| **4.** | ローカル Web UI | Internet Explorer で拡張セキュリティ機能 (IE ESC) を有効にすると、[Troubleshooting] や [Maintenance] など、ローカル Web UI の一部のページが正しく動作しないことがあります。これらのページ上のボタンも動作しないことがあります。 | Internet Explorer で拡張セキュリティ機能を無効にします。|
-| **5.** | ローカル Web UI | Hyper-V 仮想マシンでは、Web UI のネットワーク インターフェイスは 10 Gbps のインターフェイスとして表示されます。 | この動作には、Hyper-V の動作が反映されています。Hyper-V では、仮想ネットワーク アダプターに対して常に 10 Gbps と表示されます。 |
-| **6.** | 階層化ボリューム/共有 | StorSimple の階層化ボリュームを使用するアプリケーションのバイト範囲ロックはサポートされていません。バイト範囲ロックを有効にすると、StorSimple の階層化が機能しなくなります。 | 推奨される対策は、次のとおりです。<br></br>アプリケーション ロジックでバイト範囲ロックをオフにします。<br></br>階層化ボリュームではなく、ローカル固定ボリュームにこのアプリケーションのデータを配置します。<br></br>*注意*: ローカル固定ボリュームを使用しているときにバイト範囲ロックを有効にすると、復元が完了する前でも、ローカル固定ボリュームがオンラインになる場合があることに注意してください。このような場合、復元中であれば、復元が完了するまで待つ必要があります。 |
-| **7.** | 階層化共有 | 複数の大きなファイルを処理すると、階層化に時間がかかる可能性があります。 | 複数の大きなファイルを処理するときは、最も大きなファイルのサイズを共有のサイズの 3% 未満にすることをお勧めします。 |
-| **8.** | 共有の使用済み容量 | 共有にデータがなくても、共有の使用量が表示されることがあります。これは、共有の使用済み容量にメタデータが含まれているためです。 | |
-| **9.** | 障害復旧 | ファイル サーバーの障害復旧はソース デバイスと同じドメインに対してのみ実行できます。このリリースでは、別のドメインのターゲット デバイスに対する障害復旧はサポートされていません。 | これは今後のリリースで実装される予定です。 |
-| **10.** | Azure PowerShell | このリリースでは、Azure PowerShell を使用して StorSimple 仮想デバイスを管理することはできません。 | 仮想デバイスの管理はすべて、Azure クラシック ポータルとローカル Web UI を使用して行う必要があります。 |
-| **11.** | パスワードの変更 | 仮想アレイ デバイス コンソールは、ja-JP キーボード形式の入力のみを受け入れます。 | |
-| **12.** | CHAP | 作成された CHAP 資格情報は、削除できません。また、CHAP 資格情報を変更する場合は、変更を有効にするために、ボリュームをオフラインにしてからオンラインにする必要があります。 | この問題には、今後のリリースで対処する予定です。 |
-| **13.** | iSCSI サーバー | iSCSI ボリュームに対して表示される '使用済みストレージ' は、StorSimple Manager サービスと iSCSI ホストで異なる場合があります。 | iSCSI ホストには、ファイル システム ビューがあります。<br></br>デバイスでは、ボリュームが最大サイズのときに割り当てられるブロックを確認できます。|
+| **1.** | Updates | The virtual devices created in the preview release cannot be updated to a supported General Availability version. | These virtual devices must be failed over for the General Availability release using a disaster recovery (DR) workflow. |
+| **2.** | Provisioned data disk | Once you have provisioned a data disk of a certain specified size and created the corresponding StorSimple virtual device, you must not expand or shrink the data disk. Attempting to do so will result in a  loss of all the data in the local tiers of the device. |   |
+| **3.** | Group policy | When a device is domain-joined, applying a group policy can adversely affect the device operation. | Ensure that your virtual array is in its own organizational unit (OU) for Active Directory and no group policy objects (GPO) are applied to it.|
+| **4.** | Local web UI | If enhanced security features are enabled in Internet Explorer (IE ESC), some local web UI pages such as Troubleshooting or Maintenance may not work properly. Buttons on these pages may also not work. | Turn off enhanced security features in Internet Explorer.|
+| **5.** | Local web UI | In a Hyper-V virtual machine, the network interfaces in the web UI are displayed as 10 Gbps interfaces. | This behavior is a reflection of Hyper-V. Hyper-V always shows 10 Gbps for virtual network adapters. |
+| **6.** | Tiered volumes or shares | Byte range locking for applications that work with the StorSimple tiered volumes is not supported. If byte range locking is enabled, StorSimple tiering will not work. | Recommended measures include: <br></br>Turn off byte range locking in your application logic.<br></br>Choose to put data for this application in locally pinned volumes as opposed to tiered volumes.<br></br>*Caveat*: If using locally pinned volumes and byte range locking is enabled, be aware that the locally pinned volume can be online even before the restore is complete. In such instances, if a restore is in progress, then you must wait for the restore to complete. |
+| **7.** | Tiered shares | Working with large files could result in slow tier out. | When working with large files, we recommend that the largest file is smaller than 3% of the share size. |
+| **8.** | Used capacity for shares | You may see share consumption in the absence of any data on the share. This is because the used capacity for shares includes metadata. |   |
+| **9.** | Disaster recovery | You can only perform the disaster recovery of a file server to the same domain as that of the source device. Disaster recovery to a target device in another domain is not supported in this release. | This will be implemented in a later release. |
+| **10.** | Azure PowerShell | The StorSimple virtual devices cannot be managed through the Azure PowerShell in this release. | All the management of the virtual devices should be done through the Azure classic portal and the local web UI. |
+| **11.** | Password change | The virtual array device console only accepts input in en-US keyboard format. |   |
+| **12.** | CHAP | CHAP credentials once created cannot be removed. Additionally, if you modify the CHAP credentials, you will need to take the volumes offline and then bring them online for the change to take effect. | These will be addressed in a later release. |
+| **13.** | iSCSI server  | The 'Used storage' displayed for an iSCSI volume may be different in the StorSimple Manager service and the iSCSI host. | The iSCSI host has the filesystem  view.<br></br>The device sees the blocks allocated when the volume was at the maximum size.|
 
-<!---HONumber=AcomDC_0518_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

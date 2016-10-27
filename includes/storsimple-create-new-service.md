@@ -1,31 +1,33 @@
 <!--author=alkohli last changed:01/14/2016-->
 
 
-#### 新しいサービスを作成するには
+#### <a name="to-create-a-new-service"></a>To create a new service
 
-1. Microsoft アカウント資格情報を使用して、この URL ([https://manage.windowsazure.com/](https://manage.windowsazure.com/)) から Azure クラシック ポータルにログオンします。
+1. Using your Microsoft account credentials, log on to the Azure classic portal at this URL: [https://manage.windowsazure.com/](https://manage.windowsazure.com/).
 
-2. Azure クラシック ポータルで、**[新規]**、**[Data Services]**、**[StorSimple Manager]**、**[簡易作成]** の順にクリックします。
+2. In the Azure classic portal , click **New** > **Data Services** > **StorSimple Manager** > **Quick Create**.
 
-3. 表示されるフォームで、次の手順を実行します。
-  1. サービスの一意の **[名前]** を指定します。これは、サービスの識別に使用できるフレンドリ名です。名前の長さは 2 ～ 50 文字とし、文字、数字、ハイフンを含めることができます。名前の最初と最後は、文字か数字とする必要があります。
-  2. サービスの **[場所]** を指定します。一般的に、デバイスをデプロイする地理的リージョンに最も近い場所を選択します。あるいは次も考慮できます。 
-	 
-		- Azure 内の既存のワークロードを StorSimple デバイスにもデプロイする場合、そのデータセンターを使用する必要があります。
-		- StorSimple Manager サービスと Azure Storage は 2 つの別々の場所に置くことができます。 そのような場合、StorSimple Manager と Azure Storage のアカウントを別々に作成する必要があります。 Azure Storage アカウントを作成するには、管理ポータルで Azure Storage サービスを開き、[Azure Storage アカウントの作成に関するページ](storage-create-storage-account.md#create-a-storage-account)に記載されている手順を実行してください。 このアカウントを作成したら、それを StorSimple Manager サービスに追加します。それには、[サービスの新しいストレージ アカウントの構成に関するページ](storsimple-deployment-walkthrough.md#configure-a-new-storage-account-for-the-service) に記載されている手順を実行してください。
-		 
-  3. **[サブスクリプション]** ボックスの一覧で、サブスクリプションを選択します。サブスクリプションは、課金アカウントにリンクされます。このフィールドは、保有するサブスクリプションが 1 つだけの場合は表示されません。
-  4. **[新しいストレージ アカウントを作成する]** をオンにすると、サービスの作成時にストレージ アカウントが自動的に作成されます。このストレージ アカウントは、"storsimplebwv8c6dcnf" などの特別な名前になります。 別の場所でデータが必要になる場合、このボックスをオフにします。 
-  5. **[StorSimple Manager の作成]** をクリックしてサービスを作成します。
+3. In the form that is displayed, do the following:
+  1. Supply a unique **Name** for your service. This is a friendly name that can be used to identify the service. The name can have between 2 and 50 characters that can be letters, numbers, and hyphens. The name must start and end with a letter or a number.
+  2. Supply a **Location** for your service. In general, choose a Location closest to the geographical region where you want to deploy your device. You may also want to factor in the following: 
+     
+        - If you have existing workloads in Azure that you also intend to deploy with your StorSimple device, you should use that datacenter.
+        - Your StorSimple Manager service and Azure storage can be in two separate locations. In such a case, you are required to create the StorSimple Manager and Azure storage account separately. To create an Azure storage account, go to the Azure Storage service in the Azure classic portal and follow the steps in [Create an Azure Storage account](storage-create-storage-account.md#create-a-storage-account). After you create this account, add it to the StorSimple Manager service by following the steps in [Configure a new storage account for the service](storsimple-deployment-walkthrough.md#configure-a-new-storage-account-for-the-service).
+         
+  3. Choose a **Subscription** from the drop-down list. The subscription is linked to your billing account. This field is not present if you have only one subscription.
+  4. Select **Create a new storage account** to automatically create a storage account with the service. This storage account will have a special name such as "storsimplebwv8c6dcnf." If you need your data in a different location, uncheck this box. 
+  5. Click **Create StorSimple Manager** to create the service.
 
-   ![StorSimple Manager の作成](./media/storsimple-create-new-service/HCS_CreateAService-include.png)
+   ![Create StorSimple Manager](./media/storsimple-create-new-service/HCS_CreateAService-include.png)
 
-  **[サービス]** ランディング ページが表示されます。サービスの作成には数分かかります。サービスが正常に作成されると、適宜、通知が表示され、サービスの状態が **"アクティブ"** に変わります。
+  You will be directed to the **Service** landing page. The service creation will take a few minutes. After the service is successfully created, you will be notified appropriately and the status of the service will change to **Active**.
  
-   ![サービスの作成](./media/storsimple-create-new-service/HCS_StorSimpleManagerServicePage-include.png)
+   ![Service creation](./media/storsimple-create-new-service/HCS_StorSimpleManagerServicePage-include.png)
 
-![ビデオ](./media/storsimple-create-new-service/Video_icon.png) **ビデオ**
+![Video available](./media/storsimple-create-new-service/Video_icon.png) **Video available**
 
-新しい StorSimple Manager サービスを作成する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/)を参照してください。
+To watch a video that demonstrates how to create a new StorSimple Manager service, click [here](https://azure.microsoft.com/documentation/videos/create-a-storsimple-manager-service/).
 
-<!----HONumber=AcomDC_0128_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database チュートリアルの確認 | Microsoft Azure"
-   description="SQL Database の機能について説明します。"
+   pageTitle="Explore Azure SQL Database Tutorials | Microsoft Azure"
+   description="Learn about SQL Database features and capabilities"
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -17,171 +17,176 @@
    ms.date="08/24/2016"
    ms.author="carlrab"/>
    
-# Azure SQL Database チュートリアルの確認
 
-以下のリンクで、記載されている各機能領域の概要とその領域のクイック スタート チュートリアルを提供します。実世界のシナリオに基づく、完全なソリューションで SQL Database の利用方法を実演するソリューション中心のクイック スタートについては、「[Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md)」 (Azure SQL Database ソリューション クイック スタート) を参照してください。
+# <a name="explore-azure-sql-database-tutorials"></a>Explore Azure SQL Database Tutorials
 
-## SQL Server Management Studio を使用する
+The links below take you to an overview of each listed feature area and a simple step-by-start tutorial for each area. For solution-scoped quick starts that demonstrate the use of SQL Database in a complete solution based on real world scenarios, see [Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md).
 
-以下のチュートリアルでは、SQL Server Management Studio を使用して Azure SQL Database を管理し、クエリを実行する方法を学習します。
+## <a name="using-sql-server-management-studio"></a>Using SQL Server Management Studio
 
-
-> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
+In the following tutorials, you will learn about using SQL Server Management Studio to administer and query Azure SQL Database.
 
 
-| チュートリアル | Description |
+> [AZURE.IMPORTANT] It is recommended that you always use the latest version of Management Studio to remain synchronized with updates to Microsoft Azure and SQL Database. [Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+
+
+| Tutorial  | Description  |
 |---|---|---|
-| [サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-using-a-server-level-principal-login)| このチュートリアルでは、サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する方法を学習します。|
-| [Azure SQL Database にユーザーとして接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-as-a-user) | このチュートリアルでは、データベース レベルのユーザー アカウントを使用して Azure SQL Database に接続する方法を学習します。|
+| [Connect to Azure SQL Database using a server-level principal login](sql-database-get-started-security.md#connect-to-azure-sql-database-using-a-server-level-principal-login)| In this tutorial, you learn how to connect to Azure SQL Database using a server-level principal login.|
+| [Connect to Azure SQL Database as a user](sql-database-get-started-security.md#connect-to-azure-sql-database-as-a-user) | In this tutorial, you will learn how to connect to an Azure SQL database using a database-level user account.|
 ||||
 
-## エラスティック プール
+## <a name="elastic-pools"></a>Elastic pools
 
-次のチュートリアルでは、[エラスティック プール](sql-database-elastic-pool.md)を使用して、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理する方法を学習します。
+In the following tutorials, you will learn about using [elastic pools](sql-database-elastic-pool.md) to manage the performance goals for multiple databases that have widely varying and unpredictable usage patterns.
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---|
-| [エラスティック プールの作成](sql-database-elastic-pool-create-portal.md) | このチュートリアルでは、Azure SQL Database のスケーラブルなプールを作成する方法を学習します。 |
-| [エラスティック データベースの監視](sql-database-elastic-pool-manage-portal.md#elastic-database-monitoring) | このチュートリアルでは、個々のエラスティック データベースを監視して潜在的なトラブルを見つける方法を学習します。 |
-| [プール リソースへのアラートの追加](sql-database-elastic-pool-manage-portal.md#add-an-alert-to-a-pool-resource) | このチュートリアルでは、リソースにルールを追加して、設定した使用率のしきい値にリソースが達したときに、ユーザーへの電子メールの送信や URL エンドポイントへのアラート文字列の送信を実行する方法を学習します。 |
-| [エラスティック プールへのデータベースの移動](sql-database-elastic-pool-manage-portal.md#move-a-database-into-an-elastic-pool) | このチュートリアルでは、エラスティック プールにデータベースを移動する方法を学習します。 |
-| [エラスティック プールからのデータベースの移動](sql-database-elastic-pool-manage-portal.md#move-a-database-out-of-an-elastic-pool) | このチュートリアルでは、エラスティック プールからデータベースを移動する方法を学習します。 |
-| [プールのパフォーマンス設定を変更する](sql-database-elastic-pool-manage-portal.md#change-performance-settings-of-a-pool) | このチュートリアルでは、プールのパフォーマンスとストレージの制限を調整する方法を学習します。 |
+| [Create an elastic pool](sql-database-elastic-pool-create-portal.md) | In this tutorial, you learn how to create a scalable pool of Azure SQL databases. |
+| [Monitor an elastic database](sql-database-elastic-pool-manage-portal.md#elastic-database-monitoring) | In this tutorial, you learn how to monitor an individual elastic database for potential trouble. |
+| [Add an alert to a pool resource](sql-database-elastic-pool-manage-portal.md#add-an-alert-to-a-pool-resource) | In this tutorial, you learn how to add rules to resources that send email to people or alert strings to URL endpoints when the resource hits a utilization threshold that you set up. |
+| [Move a database into an elastic pool](sql-database-elastic-pool-manage-portal.md#move-a-database-into-an-elastic-pool) | In this tutorial, you learn how to move a database into an elastic pool. |
+| [Move a database out of an elastic pool](sql-database-elastic-pool-manage-portal.md#move-a-database-out-of-an-elastic-pool) | In this tutorial, you learn how to move a database out of an elastic pool. |
+| [Change performance settings of a pool](sql-database-elastic-pool-manage-portal.md#change-performance-settings-of-a-pool) | In this tutorial, you learn how to adjust the performance and storage limits for a pool. |
 ||||
 
-## エラスティック データベース ジョブ
+## <a name="elastic-database-jobs"></a>Elastic database jobs
 
-以下のチュートリアルでは、[エラスティック データベース ジョブ](sql-database-elastic-jobs-overview.md)の使用について学習します。
+In the following tutorials, you will learn about using [elastic database jobs](sql-database-elastic-jobs-overview.md).
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---|
-| [Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md) | このチュートリアルでは、単純なシャーディング アプリケーションを使用して、エラスティック データベース ツールの機能を使用する方法を学習します。 |
-| [Azure SQL Database エラスティック ジョブの概要](sql-database-elastic-jobs-getting-started.md) | このチュートリアルでは、関連データベースのグループを管理するジョブを作成し、管理する方法を学習します。 | 
+| [Get started with Elastic Database tools](sql-database-elastic-scale-get-started.md) | In this tutorial, you learn how to use the capabilities of elastic database tools using a simple sharded application. |
+| [Get started with Azure SQL Database elastic jobs](sql-database-elastic-jobs-getting-started.md)  | In this tutorial, you learn how to  how to create and manage jobs that manage a group of related databases.  | 
 ||||
 
-## エラスティック クエリ
+## <a name="elastic-queries"></a>Elastic queries
 
-以下のチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)の実行について学習します。
+In the following tutorials, you will learn about running [elastic queries](sql-database-elastic-query-overview.md). 
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---|
-| [水平方向にパーティション分割 (シャーディング) されたデータベースにまたがるクエリ](sql-database-elastic-query-getting-started.md) | このチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用して、水平方向にパーティション分割 (シャード) されたすべてのデータベースからレポートを作成する方法を学習します |
-| [垂直方向にパーティション分割されたデータベースにまたがるクエリ](sql-database-elastic-query-getting-started-vertical.md#create-database-objects) | このチュートリアルでは、[エラスティック クエリ](sql-database-elastic-query-overview.md)を使用して、垂直方向にパーティション分割されたすべてのデータベースからレポートを作成する方法を学習します |
-| [既存のデータベースを移行してスケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)| このチュートリアルでは、Azure SQL Database を水平方向にスケーリング (シャード) する方法を学習します。 |
+| [Querying across a horizontally partitioned (sharded) database)](sql-database-elastic-query-getting-started.md) | In this tutorial, you learn how to create reports from all databases in a horizontally partitioned (sharded) database using [elastic query](sql-database-elastic-query-overview.md) |
+| [Querying across a vertically partitioned database)](sql-database-elastic-query-getting-started-vertical.md#create-database-objects) | In this tutorial, you learn how to create reports from all databases in a vertically database using [elastic query](sql-database-elastic-query-overview.md) |
+| [Migrate an existing database to scale-out](sql-database-elastic-convert-to-use-elastic-tools.md)| In this tutorial, you learn to horizontally scale (shard) an Azure SQL database. |
 ||||
 
-## パフォーマンスの最適化
+## <a name="performance-optimization"></a>Performance Optimization
 
-以下のチュートリアルでは、[単一のデータベースのパフォーマンス](sql-database-performance-guidance.md)の最適化について学習します。複数のデータベースのパフォーマンスの最適化については、「[エラスティック プール](#elastic-pools)」を参照してください。
+In the following tutorials, you will learn about optimizing the [performance of single databases](sql-database-performance-guidance.md). For optimizing the performance of multiple databases, see [Elastic pools](#elastic-pools).
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---|
-| [データベースのサービス階層とパフォーマンス レベルを変更する](sql-database-scale-up.md#change-the-service-tier-and-performance-level-of-your-database) | このチュートリアルでは、サービス階層を使用して Azure SQL Database のパフォーマンスをスケールアップまたはスケールダウンする方法を学習します。 |
-| [SQL Database Advisor Query Performance Insight](sql-database-performance.md#performance-overview) | このチュートリアルでは、SQL Database Advisor Query Performance Insight を開き、使用する方法を学習します。|
-| [SQL Database Advisor のパフォーマンスに関する推奨事項](sql-database-advisor.md#viewing-recommendations) | このチュートリアルでは、SQL Database Advisor のパフォーマンスに関する推奨事項を表示し、適用する方法を学習します。 |
-| [CPU 消費量上位クエリを確認する](sql-database-query-performance.md#review-top-cpu-consuming-queries)| このチュートリアルでは、SQL Database Advisor Query Performance Insight を使用して、CPU 消費量上位クエリを確認する方法を学習します。|
-| [個々のクエリの詳細表示](sql-database-query-performance.md#viewing-individual-query-details)| このチュートリアルでは、SQL Database Advisor Query Performance Insight を使用して、個々のクエリのパフォーマンスの詳細を表示する方法を学習します。|
+| [Change the service tier and performance level of your database](sql-database-scale-up.md#change-the-service-tier-and-performance-level-of-your-database) | In this tutorial, you learn how to scale up or scale down the performance of an Azure SQL database using service tiers. |
+| [SQL Database Advisor Query Performance Insight](sql-database-performance.md#performance-overview) | In this tutorial, you learn how to open and use SQL Database Advisor Query Performance Insight.|
+| [SQL Database Advisor performance recommendations](sql-database-advisor.md#viewing-recommendations) | In this tutorial, you learn how to view and apply SQL Database Advisor performance recommendations. |
+| [Review top CPU consuming queries](sql-database-query-performance.md#review-top-cpu-consuming-queries)| In this tutorial, you learn how to use SQL Database Advisor Query Performance Insight to review top CPU consuming queries.|
+| [Viewing individual query details](sql-database-query-performance.md#viewing-individual-query-details)| In this tutorial, you learn how to use SQL Database Advisor Query Performance Insight to view individual query performance details.|
 ||||
 
-## SQL Database の移行とアーカイブ 
+## <a name="sql-database-migration-and-archive"></a>SQL Database Migration and Archive 
 
-以下のチュートリアルでは、[Azure SQL Database への既存の SQL Server データベースの移行](sql-database-cloud-migrate.md)について学習します。
+In the following tutorials, you will learn about [migrating an existing SQL Server database to Azure SQL Database](sql-database-cloud-migrate.md).
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---|
-| [Visual Studio 用の SQL Server Data Tools を使用して互換性に関する問題を検出する](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md#detecting-compatibility-issues-using-sql-server-data-tools-for-visual-studio) | このチュートリアルでは、Visual Studio 用の SQL Server Data Tools を使用して、Azure SQL Database の互換性を判定する方法を学習します。 |
-| [Visual Studio 用の SQL Server Data Tools を使用して互換性に関する問題を修正する](sql-database-cloud-migrate-fix-compatibility-issues-ssdt#fixing-compatibility-issues-using-sql-server-data-tools-for-visual-studio) | このチュートリアルでは、Visual Studio 用の SQL Server Data Tools を使用して、Azure SQL Database の互換性の問題を修正する方法を学習します。 |
-| [SqlPackage.exe を使用して SQL Database の互換性を判定する](ql-database-cloud-migrate-determine-compatibility-sqlpackage.md#using-sqlpackageexe) | このチュートリアルでは、SqlPackage.exe コマンドライン ユーティリティを使用して、Azure SQL Database の互換性を判定する方法を学習します。|
-| [SSMS を使用して SQL Database の互換性を判定する](sql-database-cloud-migrate-determine-compatibility-ssms.md#using-sql-server-management-studio) |このチュートリアルでは、SQL Server Management Studio を使用して、Azure SQL Database の互換性を判定する方法を学習します。|
-| [[データベースの Microsoft Azure Database へのデプロイ] ウィザードを使用して SQL Server データベースを SQL Database に移行する](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md#use-the-deploy-database-to-microsoft-azure-database-wizard) | このチュートリアルでは、SQL Server Management Studio のデータベースの Microsoft Azure Database へのデプロイ ウィザードを使用して、互換性のある SQL Server データベースを Azure SQL Database に移行する方法を学習します。
-| [SSMS を使用して SQL Server データベースを BACPAC ファイルにエクスポートする](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md) | このチュートリアルでは、SQL Server Management Studio のデータ層アプリケーションのエクスポート ウィザードを使用して、互換性のある SQL Server データベースを BACPAC ファイルにエクスポートする方法を学習します。|
-| [SqlPackage を使用して SQL Server データベースを BACPAC ファイルにエクスポートする](sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage.md) | このチュートリアルでは、SqlPackage.exe コマンドライン ユーティリティを使用して、互換性のある SQL Server データベースを BACPAC ファイルにエクスポートする方法を学習します。|
-| [SSMS を使用して BACPAC ファイルを Azure SQL Database にインポートする](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md) | このチュートリアルでは、SQL Server Management Studio のデータ層アプリケーションのエクスポート ウィザードを使用して、データベースを BACPAC ファイルから Azure SQL Database にインポートする方法を学習します。 |
-| [SqlPackage を使用して BACPAC ファイルを Azure SQL Database にインポートする](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md#import-from-a-bacpac-file-into-azure-sql-database-using-sqlpackage) | このチュートリアルでは、SqlPackage コマンドライン ユーティリティを使用して、BACPAC ファイルから Azure SQL Database にデータベースをインポートする方法を学習します。 |
-| [Azure ポータルを使用して BACPAC ファイルを Azure SQL Database にインポートする](sql-database-import.md) | このチュートリアルでは、Azure ポータルを使用して、Azure BLOB に格納されている BACPAC ファイルから Azure SQL Database にデータベースをインポートする方法を学習します。|
-| [PowerShell を使用して BACPAC ファイルを Azure SQL Database にインポートする](sql-database-import-powershell.md) | このチュートリアルでは、PowerShell を使用して、BACPAC ファイルから Azure SQL Database にデータベースをインポートする方法を学習します。|
-| [Azure ポータルを使用して Azure SQL Database をアーカイブする](sql-database-export.md#export-your-database) | このチュートリアルでは、Azure ポータルを使用して、Azure SQL Database を BACPAC ファイルにアーカイブする方法を学習します。 |
-| [PowerShell を使用して Azure SQL Database をアーカイブする](sql-database-export-powershell.md) | このチュートリアルでは、PowerShell を使用し、Azure SQL Database を BACPAC ファイルにアーカイブする方法を学習します。 |
-| [Azure ポータルを使用した Azure SQL Database のコピー](sql-database-copy.md#copy-your-sql-database) | このチュートリアルでは、Azure ポータルを使用して Azure SQL Database をコピーする方法を学習します。 |
-| [PowerShell を使用した Azure SQL Database のコピー](sql-database-copy-powershell#copy-your-sql-database) | このチュートリアルでは、PowerShell を使用して Azure SQL Database をコピーする方法を学習します。 |
-| [Transact-SQL を使用した Azure SQL Database のコピー](sql-database-copy-transact-sql.md#copy-your-sql-database) | このチュートリアルでは、Transact-SQL を使用して Azure SQL Database をコピーする方法を学習します。 |
+| [Detecting Compatibility Issues Using SQL Server Data Tools for Visual Studio](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md#detecting-compatibility-issues-using-sql-server-data-tools-for-visual-studio) | In this tutorial, you learn how to use SQL Server Data Tools for Visual Studio to determine Azure SQL Database compatibility. |
+| [Fixing Compatibility Issues Using SQL Server Data Tools for Visual Studio](sql-database-cloud-migrate-fix-compatibility-issues-ssdt#fixing-compatibility-issues-using-sql-server-data-tools-for-visual-studio) | In this tutorial, you learn how to use SQL Server Data Tools for Visual Studio to fix Azure SQL Database compatibility issues. |
+| [Determine SQL Database compatibility using SqlPackage.exe](sql-database-cloud-migrate-determine-compatibility-sqlpackage.md#using-sqlpackageexe) | In this tutorial, you learn how to use the SQLPackage.exe command-line utility to determine Azure SQL Database compatibility.|
+| [Determine SQL Database compatibility using SSMS](sql-database-cloud-migrate-determine-compatibility-ssms.md#using-sql-server-management-studio) |In this tutorial, you learn how to use SQL Server Management Studio to determine Azure SQL Database compatibility.|
+| [Migrate SQL Server database to SQL Database using Deploy Database to Microsoft Azure Database Wizard](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md#use-the-deploy-database-to-microsoft-azure-database-wizard) | In this tutorial, you will learn how to migrate a compatible SQL Server database to Azure SQL Database using the Deploy Database to Microsoft Azure Database Wizard in SQL Server Management Studio.
+| [Export a SQL Server database to a BACPAC file using SSMS](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md) | In this tutorial, you will learn how to export a compatible SQL Server database to a BACPAC file using the Export Data Tier Application Wizard in SQL Server Management Studio.|
+| [Export a SQL Server database to a BACPAC file using SqlPackage](sql-database-cloud-migrate-compatible-export-bacpac-sqlpackage.md) | In this tutorial, you will learn how to export a compatible SQL Server database to a BACPAC file using the SQLPackage.exe command-line utility.|
+| [Import a BACPAC file into Azure SQL Database using SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md) | In this tutorial, you will learn how to import a database into Azure SQL Database from a BACPAC file using the Export Data Tier Application Wizard in SQL Server Management Studio. |
+| [Import a BACPAC file into Azure SQL Database using SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md#import-from-a-bacpac-file-into-azure-sql-database-using-sqlpackage) | In this tutorial, you will learn how to import a database into Azure SQL Database from a BACPAC file using the SQLPackage command-line utility. |
+| [Import a BACPAC file into Azure SQL Database using the Azure portal](sql-database-import.md) | In this tutorial, you will learn how to import a database into Azure SQL Database from a BACPAC file that is stored in an Azure blob using the Azure Portal.|
+| [Import a BACPAC file into Azure SQL Database using PowerShell](sql-database-import-powershell.md) | In this tutorial, you will learn how to import a database into Azure SQL Database from a BACPAC file using PowerShell.|
+| [Archive an Azure SQL database using the Azure portal](sql-database-export.md#export-your-database) | In this tutorial, you learn how to archive an Azure SQL database to a BACPAC file using the Azure portal. |
+| [Archive an Azure SQL database using PowerShell](sql-database-export-powershell.md) | In this tutorial, you learn how to archive an Azure SQL database to a BACPAC file using PowerShell. |
+| [Copy an Azure SQL database using the Azure portal](sql-database-copy.md#copy-your-sql-database) | In this tutorial, you learn how to copy an Azure SQL database using the Azure portal. |
+| [Copy an Azure SQL database using PowerShell](sql-database-copy-powershell#copy-your-sql-database) | In this tutorial, you learn how to copy an Azure SQL database using PowerShell. |
+| [Copy an Azure SQL database using Transact-SQL](sql-database-copy-transact-sql.md#copy-your-sql-database) | In this tutorial, you learn how to copy an Azure SQL database using Transact-SQL. |
 ||||
 
-##開発
+##<a name="develop"></a>Develop
 
-以下のチュートリアルでは、[SQL Database の開発](sql-database-develop-overview.md)と[接続ライブラリ](sql-database-libraries.md)の使用について学習します。
+In the following tutorials, you will learn about [SQL Database Development](sql-database-develop-overview.md) and using [connectivity libraries](sql-database-libraries.md).
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---|
-| [.NET (C#) を使用して SQL Database に接続する](sql-database-develop-dotnet-simple.md) | このチュートリアルでは、C# を使用して Azure SQL Database に接続する方法を学習します。 |
-| [Java を使用して SQL Database に接続する](sql-database-develop-java-simple.md) | このチュートリアルでは、Java を使用して Azure SQL Database に接続する方法について説明します。 |
-| [Node.js を使用して SQL Database に接続する](sql-database-develop-nodejs-simple.md) | このチュートリアルでは、Node.js を使用して Azure SQL Database に接続する方法を学習します。 |
-| [PHP を使用して SQL Database に接続する](sql-database-develop-php-simple.md) | このチュートリアルでは、PHP を使用して Azure SQL Database に接続する方法を学習します。 |
-| [Python を使用して SQL Database に接続する](sql-database-develop-python-simple.md) | このチュートリアルでは、Python を使用して Azure SQL Database に接続する方法を学習します。 |
-| [Ruby を使用して SQL Database に接続する](sql-database-develop-ruby-simple.md) | このチュートリアルでは、Ruby を使用して Azure SQL Database に接続する方法を学習します。 |
+| [Connect to SQL Database by using .NET (C#)](sql-database-develop-dotnet-simple.md) | In this tutorial, you learn how to connect to an Azure SQL database using C#. |
+| [Connect to SQL Database by using Java](sql-database-develop-java-simple.md) | In this tutorial, you learn how to connect to an Azure SQL database using Java. |
+| [Connect to SQL Database by using Node.js](sql-database-develop-nodejs-simple.md) | In this tutorial, you learn how to connect to an Azure SQL database using Node.js. |
+| [Connect to SQL Database by using PHP](sql-database-develop-php-simple.md) | In this tutorial, you learn how to connect to an Azure SQL database using PHP. |
+| [Connect to SQL Database by using Python](sql-database-develop-python-simple.md) | In this tutorial, you learn how to connect to an Azure SQL database using Python. |
+| [Connect to SQL Database by using Ruby](sql-database-develop-ruby-simple.md) | In this tutorial, you learn how to connect to an Azure SQL database using Ruby. |
 ||||
  
-## データベース アクセス
+## <a name="database-access"></a>Database Access
 
-以下のチュートリアルでは、[ログインおよびユーザーの作成と管理](sql-database-manage-logins.md)について学習します。
+In the following tutorials, you will learn about [creating and managing logins and users](sql-database-manage-logins.md).
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---|
-| [Azure ポータルを使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md) | このチュートリアルでは、Azure ポータルを使用して SQL Database のサーバー レベルのファイアウォールを構成する方法を学習します。 |
-| [Transact-SQL を使用してデータベース レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings-tsql.md#database-level-firewall-rules) | このチュートリアルでは、Transact-SQL を使用してデータベース レベルのファイアウォール規則を作成する方法を学習します。|
-| [Transact-SQL を使用してサーバー レベルのファイアウォール規則を管理する](sql-database-configure-firewall-settings-tsql.md#manage-server-level-firewall-rules-through-transact-sql) | このチュートリアルでは、Transact-SQL を使用して SQL Database のサーバー レベルのファイアウォールを管理する方法を学習します。|
-| [PowerShell を使用してサーバー レベルのファイアウォール規則を管理する](sql-database-configure-firewall-settings-powershell.md#manage-firewall-rules-using-powershell) | このチュートリアルでは、PowerShell を使用して Azure SQL Database のサーバー レベルのファイアウォールを管理する方法を学習します。|
-| [REST API を使用してサーバー レベルのファイアウォール規則を管理する](sql-database-configure-firewall-settings-rest.md#manage-firewall-rules-using-the-service-management-rest-api) | このチュートリアルでは、REST API を使用して Azure SQL Database のサーバー レベルのファイアウォールを管理する方法を学習します。|
-| [サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-using-a-server-level-principal-login)| このチュートリアルでは、サーバー レベルのプリンシパル ログインを使用して Azure SQL Database に接続する方法を学習します。|
-| [ログインに対するデータベース アクセスの付与](sql-database-manage-logins.md#granting-database-access-to-a-login() | このチュートリアルでは、サーバー レベルのログインに対してデータベース アクセスを付与する方法を学習します。|
-| [SSMS を使用して新しいデータベース ユーザーを作成する](sql-database-get-started-security.md#create-new-database-user-using-ssms) | このチュートリアルでは、SSMS を使用して既存のデータベースに新しいデータベース ユーザーを作成する方法を学習します。|
-| [新しいデータベース ユーザーに db\_owner 権限を付与する](sql-database-get-started-security.md#grant-new-database-user-dbowner-permissions) | このチュートリアルでは、既存のデータベース ユーザーに db\_owner 権限を付与する方法を学習します。|
-| [Azure SQL Database にユーザーとして接続する](sql-database-get-started-security.md#connect-to-azure-sql-database-as-a-user) | このチュートリアルでは、データベース レベルのユーザー アカウントを使用して Azure SQL Database に接続する方法を学習します。|
+| [Create an Azure SQL Database server-level firewall rule using the Azure portal](sql-database-configure-firewall-settings.md)  | In this tutorial, you learn how to configure a SQL Database server-level firewall using the Azure portal.  |
+| [Create a database-level firewall rule using Transact-SQL](sql-database-configure-firewall-settings-tsql.md#database-level-firewall-rules) | In this tutorial, you will learn how to create a database-level firewall rule using Transact-SQL.|
+| [Manage server-level firewall rules using Transact-SQL](sql-database-configure-firewall-settings-tsql.md#manage-server-level-firewall-rules-through-transact-sql) | In this tutorial, you will learn how to manage an Azure SQL Database server-level firewall using Transact-SQL.|
+| [Manage server-level firewall rules using PowerShell](sql-database-configure-firewall-settings-powershell.md#manage-firewall-rules-using-powershell) | In this tutorial, you will learn how to manage an Azure SQL Database server-level firewall using PowerShell.|
+| [Manage server-level firewall rules using the REST API](sql-database-configure-firewall-settings-rest.md#manage-firewall-rules-using-the-service-management-rest-api) | In this tutorial, you will learn how to manage an Azure SQL Database server-level firewall using the RESET API.|
+| [Connect to Azure SQL Database using a server-level principal login](sql-database-get-started-security.md#connect-to-azure-sql-database-using-a-server-level-principal-login)| In this tutorial, you learn how to connect to Azure SQL Database using a server-level principal login.|
+| [Granting database access to a login](sql-database-manage-logins.md#granting-database-access-to-a-login() | In this tutorial, you learn how to grant database access to a server-level login.|
+| [Create new database user using SSMS](sql-database-get-started-security.md#create-new-database-user-using-ssms) | In this tutorial, you learn how to create a new database user in an existing database using SSMS.|
+| [Grant new database user db_owner permissions](sql-database-get-started-security.md#grant-new-database-user-dbowner-permissions) | In this tutorial, you learn how to grant an existing database user db_owner permissions.|
+| [Connect to Azure SQL Database as a user](sql-database-get-started-security.md#connect-to-azure-sql-database-as-a-user) | In this tutorial, you learn how to connect to an Azure SQL database using a database-level user account.|
 ||||
 
 
-## データのセキュリティ
+## <a name="data-security"></a>Data Security
 
-以下のチュートリアルでは、[Azure SQL Database のデータのセキュリティ保護](sql-database-security.md)について学習します。
+In the following tutorials, you will learn about [securing Azure SQL Database data](sql-database-security.md). 
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---|
-| [Azure ポータルを使用してデータベースの脅威検出を有効にする](sql-database-threat-detection-get-started.md#set-up-threat-detection-for-your-database) | このチュートリアルでは、Azure ポータルでデータベースの脅威検出を設定する方法を学習します。|
-| [Always Encrypted を使用して機密データを保護する](sql-database-always-encrypted-azure-key-vault.md) | このチュートリアルでは、Always Encrypted ウィザードを使用して Azure SQL Database の機密データをセキュリティで保護する方法を学習します。|
-| [Transparent Data Encryption を使用して機密データを保護する](https://msdn.microsoft.com/library/dn948096.aspx)| このチュートリアルでは、Transparent Data Encryption を使用して、機密データをセキュリティで保護する方法を学習します。|
-| [データの列の暗号化](https://msdn.microsoft.com/library/ms179331.aspx)| このチュートリアルでは、Transact-SQL を使用してデータの列を暗号化する方法を学習します。|
-| [動的データ マスクを設定する](sql-database-dynamic-data-masking-get-started.md#set-up-dynamic-data-masking-for-your-database-using-the-azure-portal) | このチュートリアルでは、Azure SQL Database に動的データ マスクを設定する方法を学習します。 |
+| [Enable threat detection for your database using the Azure portal](sql-database-threat-detection-get-started.md#set-up-threat-detection-for-your-database) | In this tutorial, you learn how to set up threat detection in the Azure portal for your database.|
+| [Secure sensitive data uisng Always Encrypted ](sql-database-always-encrypted-azure-key-vault.md) | In this tutorial, you will use the Always Encrypted wizard to secure sensitive data in an Azure SQL database.|
+| [Secure senstive data using transparent data encryption](https://msdn.microsoft.com/library/dn948096.aspx)| In this tutorial, you learn how to use transparent data encryption to secure senstive data.|
+| [Encrypt a column of data](https://msdn.microsoft.com/library/ms179331.aspx)| In this tutorial, you learn how to encrypt a column of data using Transact-SQL.|
+| [Set up dynamic data masking](sql-database-dynamic-data-masking-get-started.md#set-up-dynamic-data-masking-for-your-database-using-the-azure-portal)  | In this tutorial, you learn how to set up dynamic data masking for your Azure SQL database. |
 ||||
 
-## ビジネス継続性とクエリのスケール アウト
+## <a name="business-continuity-and-query-scale-out"></a>Business Continuity and Query Scale-Out
 
-以下のチュートリアルでは、ビジネス継続性とクエリのスケール アウトのために、[geo リストアとアクティブ geo レプリケーション](sql-database-business-continuity.md)を使用してエラーから回復する方法を学習します。
+In the following tutorials, you will learn about using [Geo-Restore and Active Geo-Replication](sql-database-business-continuity.md) to reccover from errors, for business continuity and for query scale-out.
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---|
-| [Azure ポータルで以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-portal.md)| このチュートリアルでは、Azure ポータルを使用して以前の時点にデータベースを復元する方法を学習します。|
-| [PowerShell で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-powershell.md) | このチュートリアルでは、PowerShell を使用して以前の時点にデータベースを復元する方法を学習します。|
-| [Azure ポータルを使用した、削除済み Azure SQL データベースの復元](sql-database-restore-deleted-database-portal.md) | このチュートリアルでは、Azure ポータルを使用して、削除済みのデータベースを復元する方法を学習します。|
-| [PowerShell を使用して削除済み Azure SQL Database を復元する](sql-database-restore-deleted-database-powershell.md) | このチュートリアルでは、PowerShell を使用して、削除済みのデータベースを復元する方法を学習します。|
-| [Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)| このチュートリアルでは、Azure ポータルを使用してアクティブ geo レプリケーションを構成する方法を学習します。|
-| [PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)| このチュートリアルでは、PowerShell を使用してアクティブ geo レプリケーションを構成する方法を学習します。|
-| [Transact-SQL を使用した Azure SQL Database の geo レプリケーションの構成](sql-database-geo-replication-transact-sql.md)| このチュートリアルでは、Transact-SQL を使用してアクティブ geo レプリケーションを構成する方法を学習します。|
-| [Azure ポータルを使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-portal.md) | このチュートリアルでは、Azure ポータルを使用して、geo レプリケーションされたセカンダリ レプリカにフェールオーバーする方法を学習します。|
-| [PowerShell を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-powershell.md) | このチュートリアルでは、PowerShell を使用して、geo レプリケーションされたセカンダリ レプリカにフェールオーバーする方法を学習します。|
-| [Transact-SQL を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-transact-sql.md) | このチュートリアルでは、Transact-SQL を使用して、geo レプリケーションされたセカンダリ レプリカにフェールオーバーする方法を学習します。|
+| [Restore an Azure SQL Database to a previous point in time with the Azure Portal](sql-database-point-in-time-restore-portal.md)| In this tutorial, you learn how to restore your database to an earlier point in time using the Azure portal.|
+| [Restore an Azure SQL Database to a previous point in time with PowerShell](sql-database-point-in-time-restore-powershell.md) | In this tutorial, you learn how to restore your database to an earlier point in time using PowerShell|
+| [Restore a deleted Azure SQL database using the Azure Portal](sql-database-restore-deleted-database-portal.md) | In this tutorial, you learn how to restore a deleted database using the Azure portal.|
+| [Restore a deleted Azure SQL database using the PowerShell](sql-database-restore-deleted-database-powershell.md) | In this tutorial, you learn how to restore a deleted database using PowerShell.|
+| [Configure Geo-Replication for Azure SQL Database using the Azure portal](sql-database-geo-replication-portal.md)| In this tutorial, you learn how to configure Active Geo-Replication using the Azure portal.|
+| [Configure Geo-Replication for Azure SQL Database using PowerShell](sql-database-geo-replication-powershell.md)| In this tutorial, you learn how to configure Active Geo-Replication using PowerShell.|
+| [Configure Geo-Replication for Azure SQL Database using Transact-SQL](sql-database-geo-replication-transact-sql.md)| In this tutorial, you learn how to configure Active Geo-Replication using Transact-SQL.|
+| [Initiate a planned or unplanned failover for Azure SQL Database using the Azure portal](sql-database-geo-replication-failover-portal.md) | In this tutorial, you learn how to failover to a geo-replicated secondary replica using the Azure portal.|
+| [Initiate a planned or unplanned failover for Azure SQL Database using PowerShell](sql-database-geo-replication-failover-powershell.md) | In this tutorial, you learn how to failover to a geo-replicated secondary replica using PowerShell.|
+| [Initiate a planned or unplanned failover for Azure SQL Database using Transact-SQL](sql-database-geo-replication-failover-transact-sql.md) | In this tutorial, you learn how to failover to a geo-replicated secondary replica using Transact-SQL.|
 ||||
 
-## データ同期
+## <a name="data-sync"></a>Data Sync
 
-このチュートリアルでは、[データ同期](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf)について学習します。
+In this tutorial, you will learn about [Data Sync](http://download.microsoft.com/download/4/E/3/4E394315-A4CB-4C59-9696-B25215A19CEF/SQL_Data_Sync_Preview.pdf).
 
-| チュートリアル | Description |
+| Tutorial  | Description  |
 |---|---|---| 
-| [Azure SQL データ同期の概要 (プレビュー)](sql-database-get-started-sql-data-sync.md) | このチュートリアルでは、Azure クラシック ポータルを使用して、Azure SQL データ同期の基礎を学習します。 |
+| [Getting Started with Azure SQL Data Sync (Preview)](sql-database-get-started-sql-data-sync.md)  | In this tutorial, you learn the fundamentals of Azure SQL Data Sync using the Azure Classic Portal. |
 ||||
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[Azure SQL Database ソリューション クイック スタート ガイド](sql-database-solution-quick-starts.md)
+[Explore Azure SQL Database Solution Quick Starts](sql-database-solution-quick-starts.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Kudos の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Kudos を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Kudos | Microsoft Azure" 
+    description="Learn how to use Kudos with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,151 +11,156 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/08/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Kudos の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-kudos"></a>Tutorial: Azure Active Directory integration with Kudos
   
-このチュートリアルの目的は、Azure と Kudos の統合を紹介することです。
-このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and Kudos.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   Kudos テナント
+-   A valid Azure subscription
+-   A Kudos tenant
   
-このチュートリアルを完了すると、Kudos に割り当てた Azure AD ユーザーは、Kudos 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to Kudos will be able to single sign into the application at your Kudos company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Kudos のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for Kudos
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-kudos-tutorial/IC787799.png "シナリオ")
-##Kudos のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-kudos-tutorial/IC787799.png "Scenario")
+##<a name="enabling-the-application-integration-for-kudos"></a>Enabling the application integration for Kudos
   
-このセクションでは、Kudos のアプリケーション統合を有効にする方法について説明します。
+The objective of this section is to outline how to enable the application integration for Kudos.
 
-###Kudos のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-kudos,-perform-the-following-steps:"></a>To enable the application integration for Kudos, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-kudos-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-kudos-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-kudos-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-kudos-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-kudos-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-kudos-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-kudos-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Kudos**」と入力します。
+6.  In the **search box**, type **Kudos**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-kudos-tutorial/IC787800.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-kudos-tutorial/IC787800.png "Application Gallery")
 
-7.  結果ウィンドウで **[Kudos]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Kudos**, and then click **Complete** to add the application.
 
     ![Kudos](./media/active-directory-saas-kudos-tutorial/IC787801.png "Kudos")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Kudos に対する認証を行えるようにする方法を説明します。  
-この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。  
-この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+The objective of this section is to outline how to enable users to authenticate to Kudos with their account in Azure AD using federation based on the SAML protocol.  
+As part of this procedure, you are required to create a base-64 encoded certificate file.  
+If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Kudos** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Kudos** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-kudos-tutorial/IC787802.png "Configure single sign-on")
 
-2.  **[ユーザーの Kudos へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Kudos** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure single sign-on](./media/active-directory-saas-kudos-tutorial/IC787803.png "Configure single sign-on")
 
-3.  **[アプリ URL の構成]** ページの **[Kudos サインオン URL]** テキストボックスに、"*https://company.kudosnow.com*" というパターンの URL を入力して、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **Kudos Sign On URL** textbox, type your URL using the following pattern "*https://company.kudosnow.com*", and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-kudos-tutorial/IC787804.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-kudos-tutorial/IC787804.png "Configure App URL")
 
-4.  **[Kudos でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、コンピューターに証明書ファイルを保存します。
+4.  On the **Configure single sign-on at Kudos** page, click **Download certificate**, and then save the certificate file on your computer.
 
     ![Configure single sign-on](./media/active-directory-saas-kudos-tutorial/IC787805.png "Configure single sign-on")
 
-5.  別の Web ブラウザーのウィンドウで、Kudos の企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your Kudos company site as an administrator.
 
-6.  上部のメニューで **[設定]** をクリックします。
+6.  In the menu on the top, click **Settings**.
 
     ![Settings](./media/active-directory-saas-kudos-tutorial/IC787806.png "Settings")
 
-7.  **[Integrations] > [SSO]** をクリックします。
+7.  Click **Integrations \> SSO**.
 
-8.  **[SSO]** セクションで、次の手順に従います。
+8.  In the **SSO** section, perform the following steps:
 
     ![SSO](./media/active-directory-saas-kudos-tutorial/IC787807.png "SSO")
 
-    1.  Azure クラシック ポータルの **[Kudos でのシングル サインオンの構成]** ダイアログ ページで、**シングル サインオン サービス URL** の値をコピーし、**[シングル サインオン サービス URL]** テキストボックスに貼り付けます。
-    2.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
+    1.  In the Azure classic portal, on the **Configure single sign-on at Kudos** dialog page, copy the **Single Sign-On Service URL** value, and then paste it into the **Sign on URL ** textbox.
+    2.  Create a **base-64 encoded** file from your downloaded certificate.  
 
         >[AZURE.TIP]
-        詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
 
-    3.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** テキストボックスに貼り付けます。
-    4.  Azure クラシック ポータルの **[Kudos でのシングル サインオンの構成]** ダイアログ ページで、**シングル サインアウト サービス URL** の値をコピーし、**[とログアウト リダイレクト]** テキストボックスに貼り付けます。
-    5.  **[Your Kudos URL (Kudos の URL)]** テキストボックスに、企業名を入力します。
-    6.  **[保存]** をクリックします。
+    3.  Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **X.509 certificate** textbox
+    4.  In the Azure classic portal, on the **Configure single sign-on at Kudos** dialog page, copy the **Single Sign-Out Service URL** value, and then paste it into the **Logout To URL ** textbox.
+    5.  In the **Your Kudos URL** textbox, type your company name.
+    6.  Click **Save**.
 
-9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+9.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure single sign-on](./media/active-directory-saas-kudos-tutorial/IC787808.png "Configure single sign-on")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが Kudos にログインできるようにするには、そのユーザーを Kudos にプロビジョニングする必要があります。Kudos の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into Kudos, they must be provisioned into Kudos.  
+In the case of Kudos, provisioning is a manual task.
 
-###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
+###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
 
-1.  **Kudos** の企業サイトに管理者としてログインします。
+1.  Log in to your **Kudos** company site as administrator.
 
-2.  上部のメニューで **[設定]** をクリックします。
+2.  In the menu on the top, click **Settings**.
 
     ![Settings](./media/active-directory-saas-kudos-tutorial/IC787806.png "Settings")
 
-3.  **[ユーザー管理者]** をクリックします。
+3.  Click **User Admin**.
 
-4.  **[ユーザー]** タブをクリックして、**[ユーザーの追加]** をクリックします。
+4.  Click the **Users** tab, and then click **Add a user**.
 
-    ![ユーザー管理者](./media/active-directory-saas-kudos-tutorial/IC787809.png "ユーザー管理者")
+    ![User Admin](./media/active-directory-saas-kudos-tutorial/IC787809.png "User Admin")
 
-5.  **[ユーザーの追加]** セクションで、次の手順に従います。
+5.  In the **Add a User** section, perform the following steps:
 
-    ![ユーザーの追加](./media/active-directory-saas-kudos-tutorial/IC787810.png "ユーザーの追加")
+    ![Add a User](./media/active-directory-saas-kudos-tutorial/IC787810.png "Add a User")
 
-    1.  プロビジョニングする有効な Azure Active Directory アカウントの**[名]**、**[姓]**、**[メール]**、その他の詳細を該当するボックスに入力します。
-    2.  **[ユーザーの作成]** をクリックします。
+    1.  Type the **First Name**, **Last Name**, **Email** and other details of a valid Azure Active Directory account you want to provision into the related textboxes.
+    2.  Click **Create User**.
 
->[AZURE.NOTE]Kudos から提供されている他の Canvas ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE]You can use any other Kudos user account creation tools or APIs provided by Kudos to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Kudos に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-kudos,-perform-the-following-steps:"></a>To assign users to Kudos, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Kudos** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Kudos **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-kudos-tutorial/IC787811.png "ユーザーの割り当て")
+    ![Assign users](./media/active-directory-saas-kudos-tutorial/IC787811.png "Assign users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-kudos-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

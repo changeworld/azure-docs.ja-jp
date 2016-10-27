@@ -2,34 +2,34 @@
 
 
 
-テンプレート通知を送信する場合、一連のプロファイルの指定だけが必要になります。この場合は、最新ニュースのローカライズされたバージョンを含む一連のプロパティを送信します。次に例を示します。
+When you send template notifications you only need to provide a set of properties, in our case we will send the set of properties containing the localized version of the current news, for instance:
 
-	{
-		"News_English": "World News in English!",
-    	"News_French": "World News in French!",
-    	"News_Mandarin": "World News in Mandarin!"
-	}
-
-
-このセクションでは、コンソール アプリケーションを使用して通知を送信する方法について説明します。
-
-使用されるコードは、Windows ストアと iOS デバイスの両方に対してブロードキャストされます。これは、バックエンドはサポートされているすべてのデバイスにブロードキャストできるためです。
+    {
+        "News_English": "World News in English!",
+        "News_French": "World News in French!",
+        "News_Mandarin": "World News in Mandarin!"
+    }
 
 
-### C# コンソール アプリケーションを使用して通知を送信するには 
+This section shows how to send notifications using a console app
 
-次のコードを使用して、以前に作成したコンソール アプリケーションで `SendTemplateNotificationAsync` メソッドを変更します。この場合、異なるロケールやプラットフォームに対して複数の通知を送信する必要はありません。
+The included code broadcasts to both Windows Store and iOS devices, since the backend can broadcast to any of the supported devices.
+
+
+### <a name="to-send-notifications-using-a-c#-console-app"></a>To send notifications using a C# console app 
+
+Modify the `SendTemplateNotificationAsync` method in the console app you previously created with the following code. Notice how in this case there is no need to send multiple notifications for different locales and platforms.
 
         private static async void SendTemplateNotificationAsync()
         {
             // Define the notification hub.
             NotificationHubClient hub = 
-				NotificationHubClient.CreateClientFromConnectionString(
-					"<connection string with full access>", "<hub name>");
+                NotificationHubClient.CreateClientFromConnectionString(
+                    "<connection string with full access>", "<hub name>");
 
             // Sending the notification as a template notification. All template registrations that contain 
-			// "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
-			// This includes APNS, GCM, WNS, and MPNS template registrations.
+            // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
+            // This includes APNS, GCM, WNS, and MPNS template registrations.
             Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
             // Create an array of breaking news categories.
@@ -45,7 +45,7 @@
                 {
                     string key = "News_" + locale;
 
-					// Your real localized news content would go here.
+                    // Your real localized news content would go here.
                     templateParams[key] = "Breaking " + category + " News in " + locale + "!";
                 }
 
@@ -54,24 +54,28 @@
         }
 
 
-この単純な呼び出しでは、プラットフォームに関係なく、ローカライズされた各ニュースが**すべての**デバイスに配信されます。これは、通知ハブが適切なネイティブ ペイロードを作成し、そのペイロードを特定のタグにサブスクライブされているすべてのデバイスに配信するためです。
+Note that this simple call will deliver the localized piece of news to **all** your devices, irrespective of the platform, as your Notification Hub builds and delivers the correct native payload to all the devices subscribed to a specific tag.
 
-### Mobile Services を使用した通知の送信
+### <a name="sending-the-notification-with-mobile-services"></a>Sending the notification with Mobile Services
 
-モバイル サービス スケジューラでは、次のスクリプトを使用できます。
+In your Mobile Service scheduler, you can use the following script:
 
-	var azure = require('azure');
+    var azure = require('azure');
     var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');
     var notification = {
-			"News_English": "World News in English!",
-			"News_French": "World News in French!",
-			"News_Mandarin", "World News in Mandarin!"
-	}
-	notificationHubService.send('World', notification, function(error) {
-		if (!error) {
-			console.warn("Notification successful");
-		}
-	});
-	
+            "News_English": "World News in English!",
+            "News_French": "World News in French!",
+            "News_Mandarin", "World News in Mandarin!"
+    }
+    notificationHubService.send('World', notification, function(error) {
+        if (!error) {
+            console.warn("Notification successful");
+        }
+    });
+    
 
-<!---HONumber=AcomDC_1217_2015-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

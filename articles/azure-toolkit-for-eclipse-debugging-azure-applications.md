@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Eclipse での Azure アプリケーションのデバッグ"
-    description="Azure Toolkit for Eclipse を使用する Azure アプリケーションのデバッグについて説明します。"
+    pageTitle="Debugging Azure Applications in Eclipse"
+    description="Learn about the Debugging Azure Applications using the Azure Toolkit for Eclipse."
     services=""
     documentationCenter="java"
     authors="rmcmurray"
@@ -16,123 +16,128 @@
     ms.date="08/11/2016" 
     ms.author="robmcm"/>
 
+
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/hh690949.aspx -->
 
-# Eclipse での Azure アプリケーションのデバッグ #
+# <a name="debugging-azure-applications-in-eclipse"></a>Debugging Azure Applications in Eclipse #
 
-Azure Toolkit for Eclipse を使用すると、Azure で実行しているアプリケーションでも、オペレーティング システムとして Windows を使用している場合はコンピューティング エミュレーター内のアプリケーションでも、デバッグできます。次の図は、リモート デバッグを有効にするために使用する **[デバッグ]** プロパティ ダイアログを示しています。
+Using the Azure Toolkit for Eclipse, you can debug your applications whether they are running in Azure, or in the compute emulator if you are using Windows as your operating system. The following image shows the **Debugging** properties dialog used to enable remote debugging:
 
 ![][ic719504]
 
-このチュートリアルでは、アプリケーションが正常に作成されていて、コンピューティング エミュレーターおよび Azure へのデプロイを理解しているものとします。
+This tutorial assumes you already have an application that has been successfully created, and are familiar with the compute emulator and deploying to Azure.
 
-このトピックでは、「[JSP で Azure サービス ランタイム ライブラリを使用する][]」チュートリアルで作成したアプリケーションから始めます。アプリケーションをまだ作成していない場合は、先に進む前に作成してください。
+We'll use the application from the [Using the Azure Service Runtime Library in JSP][] tutorial as the starting point for this topic. Before proceeding, create that application if you have not already done so.
 
-## Azure で実行しながらアプリケーションをデバッグするには ##
+## <a name="to-debug-your-application-while-running-in-azure"></a>To debug your application while running in Azure ##
 
->[AZURE.WARNING] Toolkit でのリモート Java デバッグの現在のサポートは、主に、Azure コンピューティング エミュレーターで実行中のデプロイメントに対するものです。デバッグ接続はセキュリティで保護されていないため、運用環境のデプロイメントではリモート デバッグを有効にしないでください。Azure クラウドで実行しているアプリケーションをデバッグする必要がある場合は、ステージング デプロイメントを使用します。ただし、ステージング デプロイメントであっても、クラウド デプロイメントの IP アドレスがわかると、デバッグ セッションに不正アクセスできることを理解しておいてください。
+>[AZURE.WARNING] The toolkit's current support for remote Java debugging is intended primarily for deployments running in the Azure compute emulator. Because the debugging connection is not secure, you should not enable remote debugging in production deployments. If you need to debug an application running in the Azure cloud, use a staging deployment, but realize that unauthorized access to your debug session is possible if someone knows the IP address of your cloud deployment, even if it is a staging deployment.
 
-1. エミュレーターでのテスト用のプロジェクトをビルドします。Eclipse のプロジェクト エクスプローラーで、**[MyAzureProject]** を右クリックし、**[プロパティ]**、**[Azure]** の順にクリックして、**[ビルド対象]** を **[クラウドへのデプロイ]** に設定します。
-1. プロジェクトをビルドし直します。Eclipse メニューから、**[プロジェクト]**、**[すべてビルド]** の順にクリックします。
-1. アプリケーションを Azure の*ステージング*にデプロイします。
-    >[AZURE.IMPORTANT] 前述のように、ほとんどの場合はコンピューティング エミュレーターでデバッグし、追加のデバッグが必要な場合にのみステージング環境でデバッグすることを、強くお勧めします。運用環境ではデバッグしないことをお勧めします。
-1. Azure でデプロイメントの準備ができたら、[Microsoft Azure 管理ポータル][]からデプロイメントの DNS 名を取得します。ステージング デプロイメントの DNS 名の形式は http://*&lt;guid&gt;*.cloudapp.net であり、*&lt;guid&gt;* は Azure によって割り当てられる GUID の値です。
-1. Eclipse のプロジェクト エクスプローラーで、**[WorkerRole1]** を右クリックし、**[Azure]** をクリックしてから **[デバッグ]** をクリックします。
-1. **[WorkerRole1 デバッグのプロパティ]** ダイアログで次のようにします。
-    1. **[このロールのリモート デバッグを有効にする]** をオンにします。
-    1. **[使用する入力エンドポイント]** では、**[デバッグ (パブリック: 8090、プライベート: 8090)]** を使用します。
-    1. **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** がオフになっていることを確認します。
-        >[AZURE.IMPORTANT] **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションは、コンピューティング エミュレーターのみでの高度なデバッグ シナリオ用です (クラウド デプロイメント用ではありません)。**[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションを使用する場合は、Eclipse デバッガーが JVM に接続されるまで、サーバーのスタートアップ プロセスは中断されます。コンピューティング エミュレーターを使用するデバッグ セッションにこのオプションを使用している間は、クラウド デプロイメントでのデバッグ セッションに使用しないでください。Azure のスタートアップ タスクでサーバーの初期化が行われ、スタートアップ タスクが完了するまで、Azure クラウドはパブリック エンドポイントを利用できるようにしません。したがって、クラウド デプロイメントでこのオプションを有効にした場合、外部 Eclipse クライアントからの接続を受けられないため、スタートアップ プロセスが正常に完了しません。
-    1. **[デバッグ構成の作成]** をクリックします。
-1. **[Azure デバッグ構成]** ダイアログで次のようにします。
-    1. **[デバッグする Java プロジェクト]** で、**MyHelloWorld** プロジェクトを選択します。
-    1. **[デバッグ構成の対象]** で、**[Azure クラウド (ステージング)]** をオンにします。
-    1. **[Azure コンピューティング エミュレーター]** がオフになっていることを確認します。
-    1. **[ホスト]** には、ステージングされたデプロイの DNS 名を入力します。ただし、先頭の **http://** は省略します。例 (ここで示す GUID の代わりに実際の GUID を使用してください): **4e616d65-6f6e-6d65-6973-526f62657274.cloudapp.net**
-1. **[OK]** をクリックして **[Azure デバッグ構成]** ダイアログを閉じます。
-1. **[OK]** をクリックして **[WorkerRole1 デバッグのプロパティ]** ダイアログを閉じます。
-1. index.jsp でブレークポイントをまだ設定していない場合は、設定します。
-    1. Eclipse のプロジェクト エクスプローラーで、**[MyHelloWorld]**、**[WebContent]** の順に展開し、**index.jsp** をダブルクリックします。
-    1. 次の図のように、index.jsp で Java コードの左側にある青いバーを右クリックし、**[ブレークポイントの切り替え]** をクリックします。  
-    	![][ic551537]
-1. Eclipse のメニューで、**[実行]**、**[デバッグ構成]** の順にクリックします。
-1. **[デバッグ構成]** ダイアログで、左側のウィンドウの **[リモート Java アプリケーション]** を展開し、**[Azure クラウド (WorkerRole1)]** を選択して、**[デバッグ]** をクリックします。
-1. ブラウザーで、ステージングしたアプリケーション **http://***&lt;guid&gt;***.cloudapp.net/MyHelloWorld** を実行します。*&lt;guid&gt;* は実際の DNS 名の GUID に置き換えてください。**[パースペクティブ スイッチの確認]** ダイアログ ボックスにプロンプトが表示されたら、**[はい]** をクリックします。ブレークポイントを設定したコード行まで、デバッグ セッションが実行されます。
+1. Build your project for testing in the emulator: In Eclipse's Project Explorer, right-click **MyAzureProject**, click **Properties**, click **Azure**, and set **Build for** to **Deployment to cloud**.
+1. Rebuild your project: From the Eclipse menu, click **Project**, then click **Build All**.
+1. Deploy your application to *staging* in Azure.
+    >[AZURE.IMPORTANT] As mentioned above, it is highly recommended that you debug in the compute emulator in most cases, then debug in the staging environment only if additional debugging is needed. It is recommended to not debug in the production environment.
+1. Once your deployment is ready in Azure, obtain the DNS name for the deployment from the [Azure Management Portal][]. A staging deployment has a DNS name in the form of http://*&lt;guid&gt;*.cloudapp.net, where *&lt;guid&gt;* is a GUID value assigned by Azure.
+1. In Eclipse's Project Explorer, right-click **WorkerRole1**, click **Azure**, and then click **Debugging**.
+1. In the **Properties for WorkerRole1 Debugging** dialog:
+    1. Check **Enable remote debugging for this role.**
+    1. For **Input endpoint to use**, use **Debugging (public:8090, private:8090)**.
+    1. Ensure **Start JVM in suspended mode, waiting for a debugger connection** is unchecked.
+        >[AZURE.IMPORTANT] The **Start JVM in suspended mode, waiting for a debugger connection** option is intended for advanced debugging scenarios in the compute emulator only (not for cloud deployments). If the **Start JVM in suspended mode, waiting for a debugger connection** option is used, it will suspend the server's startup process until the Eclipse debugger is connected to its JVM. While you could use this option for a debugging session using the compute emulator, do not use it for a debugging session in a cloud deployment. A server's initialization takes place in an Azure startup task, and the Azure cloud does not make public endpoints available until the startup task is completed. Hence, a startup process will not complete successfully if this option is enabled in a cloud deployment, because it will not be able to receive a connection from an external Eclipse client.
+1. Click **Create Debug Configurations**.
+1. In the **Azure Debug Configuration** dialog:
+    1. For **Java project to debug**, select the **MyHelloWorld** project.
+    1. For **Configure debugging for**, check **Azure cloud (staging)**.
+    1. Ensure **Azure compute emulator** is unchecked.
+    1. For **Host**, enter the DNS name of your staged deployment, but without the preceding **http://**. For example (use your GUID in place of the GUID shown here): **4e616d65-6f6e-6d65-6973-526f62657274.cloudapp.net**
+1. Click **OK** to close the **Azure Debug Configuration** dialog.
+1. Click **OK** to close the **Properties for WorkerRole1 Debugging** dialog.
+1. If you don't have a breakpoint already set in index.jsp, set it:
+    1. Within Eclipse's Project Explorer, expand **MyHelloWorld**, expand **WebContent**, and double-click **index.jsp**.
+    1. Within index.jsp, right-click in the blue bar to the left of your Java code and click **Toggle Breakpoints**, as shown in the following:  ![][ic551537]
+1. Within Eclipse's menu, click **Run** and then click **Debug Configurations**.
+1. In the **Debug Configurations** dialog, expand **Remote Java Application** in the left-hand pane, select **Azure Cloud (WorkerRole1)**, and click **Debug**.
+1. Within your browser, run your staged application, **http://***&lt;guid&gt;***.cloudapp.net/MyHelloWorld**, substituting the GUID from your DNS name for *&lt;guid&gt;*. If prompted by a **Confirm Perspective Switch** dialog box, click **Yes**. Your debug session should now execute to the line of code where the breakpoint was set.
 
->[AZURE.NOTE] 複数のロール インスタンスが実行されているデプロイメントへのリモート デバッグ接続を開始する場合、現在は、デバッガーが最初に接続されるインスタンスを制御することはできません。Azure のロード バランサーがインスタンスをランダムに選択します。そのインスタンスに接続されても、同じインスタンスのデバッグを続けます。また、非アクティブな期間が 4 分を超えると (たとえば、ブレークポイントでの停止時間が長すぎた場合)、Azure が接続を閉じる場合があることにも注意してください。
+>[AZURE.NOTE] If you're attempting to start a remote debugging connection to a deployment that has multiple role instances running, you cannot currently control which instance the debugger will be initially connected to, as the Azure load balancer will pick an instance at random. Once you're connected with that instance, though, you will continue debugging the same instance. Note also, if there is a period of inactivity of more than 4 minutes (for example, when you're stopped at a breakpoint for too long), Azure may close the connection.
 
-## 複数インスタンス デプロイメントでの特定のロール インスタンスのデバッグ ##
+## <a name="debugging-a-specific-role-instance-in-a-multi-instance-deployment"></a>Debugging a specific role instance in a multi-instance deployment ##
 
-デプロイメントをクラウドで実行する場合、ほとんどは複数のコンピューティング インスタンス (つまり、ロール インスタンス) で実行します。これにより、Azure の 99.95% 可用性保証を利用でき、アプリケーションをスケールアウトできます。
+When your deployment is running in the cloud, you will most likely be running it in multiple compute, or role, instances. This enables you to take advantage of Azure 99.95% availability guarantee, and to scale out your application.
 
-このようなシナリオでは、特定のロール インスタンスの Java アプリケーションをリモート デバッグすることが必要になる場合があります。ただし、標準の入力エンドポイントのみでデバッグを有効にした場合、Azure ロード バランサーにより、ユーザーが特定のロール インスタンスにデバッガーを接続することはほぼ不可能になります。代わりに、ロード バランサーによってランダムに選択されたロール インスタンスに接続されます。
+In such scenarios, you may need to remotely debug your Java application in a specific role instance. However, if you enable only a regular input endpoint for debugging, the Azure load balancer will make it virtually impossible for you to connect the debugger to a specific role instance. Instead it will connect you to a role instance that it picks at random.
 
-この種のシナリオでは、インスタンスの入力エンドポイントを利用すると、特定のロール インスタンスのデバッグが容易になります。
+This is the type of scenario where taking advantage of instance input endpoints will make it easier for you to debug a specific role instance.
 
-たとえば、デプロイメントの最大 5 つのロール インスタンスを実行するとします。ロール プロパティ ダイアログの **[エンドポイント]** プロパティ ページを使用して、インスタンス入力エンドポイントを作成し、単一のポート番号ではなくパブリック ポートの範囲にそれを割り当てます。たとえば、**[パブリック ポート]** 入力ボックスで「**81-85**」と指定します。
+Let's say you plan to run up to 5 role instances of your deployment. Using the **Endpoints** property page in the role properties dialog, create an instance input endpoint and assign it a range of public ports, rather than a single port number. For example, in the **Public port** input box, specify **81-85**.
 
-このインスタンス エンドポイントでアプリケーションをデプロイすると、Azure はこの範囲から一意のポート番号を各ロール インスタンスに割り当てます。その場合、各インスタンスに割り当てられたポート番号を調べるには、Toolkit によってデプロイに自動的に構成される *InstanceEndpointName***\_PUBLICPORT** 環境変数 (ここで、*InstanceEndpointName* はインスタンス エンドポイントを作成したときに割り当てた名前) を使用できます (たとえば、Web ページのフッターでその値を返すと、参照時に確認できます)。
+After you deploy your application with this instance endpoint, Azure will assign a unique port number from this range to each of the role instances. Then, in order to find out which instance got assigned which port number, you can use the *InstanceEndpointName***_PUBLICPORT** environment variable (where *InstanceEndpointName* is the name you assigned when you created the instance endpoint) automatically configured by the toolkit in your deployment (for example, by returning its value in the footer of a webpage, so you could read it when you browse to it).
 
-インスタンスに割り当てられたパブリック ポート番号がわかったら、サービスのホスト名にそれを付加することによって、Eclipse のデバッグ構成で参照できます。これにより、Eclipse デバッガーは、他のインスタンスではなく、その特定のインスタンスに接続できます。
+Once you know what public port number that instance was assigned, you can reference it in your debug configuration in Eclipse, by affixing it to the host name of your service. This will enable the Eclipse debugger to connect to that specific instance, and not any of the other instances.
 
-## Windows のみ: コンピューティング エミュレーターで実行中のアプリケーションをデバッグするには ##
+## <a name="windows-only:-to-debug-your-application-while-running-in-the-compute-emulator"></a>Windows only: To debug your application while running in the compute emulator ##
 
->[AZURE.NOTE] Azure エミュレーターは Windows でのみ使用できます。Windows 以外のオペレーティング システムを使用する場合は、このセクションをスキップしてください。
+>[AZURE.NOTE] The Azure emulator is only available on Windows. Skip this section if you are using an operating system other than Windows. 
 
-1. エミュレーターでのテスト用のプロジェクトをビルドします。Eclipse のプロジェクト エクスプローラーで、**[MyAzureProject]** を右クリックし、**[プロパティ]**、**[Azure]** の順にクリックして、**[ビルド対象]** を **[エミュレーターでのテスト]** に設定します。
-1. プロジェクトをビルドし直します。Eclipse メニューから、**[プロジェクト]**、**[すべてビルド]** の順にクリックします。
-1. Eclipse のプロジェクト エクスプローラーで、**[WorkerRole1]** を右クリックし、**[Azure]** をクリックしてから **[デバッグ]** をクリックします。
-1. **[WorkerRole1 デバッグのプロパティ]** ダイアログで次のようにします。
-    1. **[このロールのリモート デバッグを有効にする]** をオンにします。
-    1. **[使用する入力エンドポイント]** では、Toolkit によって自動的に生成される既定のエンドポイントを使用します (一覧では **[デバッグ (パブリック: 8090、プライベート: 8090)]** と表示されます)。
-    1. **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションがオフになっていることを確認します。
-        >[AZURE.IMPORTANT] **[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションは、コンピューティング エミュレーターのみでの高度なデバッグ シナリオ用です (クラウド デプロイメント用ではありません)。**[JVM を一時停止モードで開始し、デバッガーの接続を待機する]** オプションを使用する場合は、Eclipse デバッガーが JVM に接続されるまで、サーバーのスタートアップ プロセスは中断されます。コンピューティング エミュレーターを使用するデバッグ セッションにこのオプションを使用している間は、クラウド デプロイメントでのデバッグ セッションに使用しないでください。Azure のスタートアップ タスクでサーバーの初期化が行われ、スタートアップ タスクが完了するまで、Azure クラウドはパブリック エンドポイントを利用できるようにしません。したがって、クラウド デプロイメントでこのオプションを有効にした場合、外部 Eclipse クライアントからの接続を受けられないため、スタートアップ プロセスが正常に完了しません。
-    1. **[デバッグ構成の作成]** をクリックします。
-1. **[Azure デバッグ構成]** ダイアログで次のようにします。
-    1. **[デバッグする Java プロジェクト]** で、**MyHelloWorld** プロジェクトを選択します。
-    1. **[デバッグ構成の対象]** で、**[Azure コンピューティング エミュレーター]** をオンにします。
-1. **[OK]** をクリックして **[Azure デバッグ構成]** ダイアログを閉じます。
-1. **[OK]** をクリックして **[WorkerRole1 デバッグのプロパティ]** ダイアログを閉じます。
-1. index.jsp でブレークポイントを設定します。
-    1. Eclipse のプロジェクト エクスプローラーで、**[MyHelloWorld]**、**[WebContent]** の順に展開し、**index.jsp** をダブルクリックします。
-    1. 次の図のように、index.jsp で Java コードの左側にある青いバーを右クリックし、**[ブレークポイントの切り替え]** をクリックします。
-    	![][ic551537]
+1. Build your project for testing in the emulator: In Eclipse's Project Explorer, right-click **MyAzureProject**, click **Properties**, click **Azure**, and set **Build for** to **Testing in emulator**.
+1. Rebuild your project: From the Eclipse menu, click **Project**, then click **Build All**.
+1. In Eclipse's Project Explorer, right-click **WorkerRole1**, click **Azure**, and then click **Debugging**.
+1. In the **Properties for WorkerRole1 Debugging** dialog:
+    1. Check **Enable remote debugging for this role.**
+    1. For **Input endpoint to use**, use the default endpoint automatically generated by the toolkit, listed as **Debugging (public:8090, private:8090)**.
+    1. Ensure the **Start JVM in suspended mode, waiting for a debugger connection** option is unchecked.
+        >[AZURE.IMPORTANT] The **Start JVM in suspended mode, waiting for a debugger connection** option is intended for advanced debugging scenarios in the compute emulator only (not for cloud deployments). If the **Start JVM in suspended mode, waiting for a debugger connection** option is used, it will suspend the server's startup process until the Eclipse debugger is connected to its JVM. While you could use this option for a debugging session using the compute emulator, do not use it for a debugging session in a cloud deployment. A server's initialization takes place in an Azure startup task, and the Azure cloud does not make public endpoints available until the startup task is completed. Hence, a startup process will not complete successfully if this option is enabled in a cloud deployment, because it will not be able to receive a connection from an external Eclipse client.
+1. Click **Create Debug Configurations**.
+1. In the **Azure Debug Configuration** dialog:
+    1. For **Java project to debug**, select the **MyHelloWorld** project.
+    1. For **Configure debugging for**, check **Azure compute emulator**.
+1. Click **OK** to close the **Azure Debug Configuration** dialog.
+1. Click **OK** to close the **Properties for WorkerRole1 Debugging** dialog.
+1. Set a breakpoint in index.jsp:
+    1. Within Eclipse's Project Explorer, expand **MyHelloWorld**, expand **WebContent**, and double-click **index.jsp**.
+    1. Within index.jsp, right-click in the blue bar to the left of your Java code and click **Toggle Breakpoints**, as shown in the following:  ![][ic551537]
 
-       Java コードの左側にある青いバー内にブレークポイント アイコンが表示される場合は、ブレークポイントが設定されています。
-1. Azure ツールバーの **[Azure エミュレーターで実行]** ボタンをクリックして、コンピューティング エミュレーターでアプリケーションを開始します。
-1. Eclipse のメニューで、**[実行]**、**[デバッグ構成]** の順にクリックします。
-1. **[デバッグ構成]** ダイアログで、左側のウィンドウの **[リモート Java アプリケーション]** を展開し、**[Azure エミュレーター (WorkerRole1)]** を選択して、**[デバッグ]** をクリックします。
-1. コンピューティング エミュレーターにアプリケーションが実行されていることが示されたら、ブラウザーで **http://localhost:8080/MyHelloWorld** を実行します。**[パースペクティブ スイッチの確認] ダイアログ ボックスにプロンプトが表示されたら、**[はい]** をクリックします。ブレークポイントを設定したコード行まで、デバッグ セッションが実行されます。
+       A breakpoint is set if you see a breakpoint icon within the blue bar to the left of your Java code.
+1. Start the application in the compute emulator by clicking the **Run in Azure Emulator** button on the Azure toolbar.
+1. Within Eclipse's menu, click **Run** and then click **Debug Configurations**.
+1. In the **Debug Configurations** dialog, expand **Remote Java Application** in the left-hand pane, select **Azure Emulator (WorkerRole1)**, and click **Debug**.
+1. After the compute emulator indicates that your application is running, within your browser, run **http://localhost:8080/MyHelloWorld**.
+    If prompted by a **Confirm Perspective Switch** dialog box, click **Yes**.
+    Your debug session should now execute to the line of code where the breakpoint was set.
 
-ここまでは、コンピューティング エミュレーターでのデバッグ方法を示しました。次のセクションでは、Azure にデプロイしたアプリケーションのデバッグ方法を示します。
+This showed you how to debug in the compute emulator; the next section shows you how to debug an application deployed to Azure.
 
-## デバッグに関する注意事項 ##
+## <a name="debugging-notes"></a>Debugging Notes ##
 
-* デバッグが終了したら、Eclipse のメニューで **[ウィンドウ]**、**[パースペクティブを開く]** の順にクリックして、使用するパースペクティブを選択することにより、パースペクティブを**デバッグ**から **Java** に切り替えることができます。
-* GlassFish でリモート デバッグを有効にする場合は、Azure Toolkit for Eclipse のリモート デバッグ構成機能を使用しないでください。代わりに、GlassFish を手動で構成します。環境変数で定義済みの Java オプションを GlassFish が処理する方法により、Toolkit のリモート デバッグ構成機能は GlassFish では正しく動作しません。Toolkit のリモート デバッグ構成機能が有効な場合、GlassFish が起動しない可能性があります。
+* After debugging, you can switch the perspective from **Debug** to **Java** via clicking Eclipse's menu, by clicking **Window**, **Open Perspective**, and selecting the perspective that you want to use.
+* To enable remote debugging in GlassFish, do not use the remote debugging configuration feature of the Azure Toolkit for Eclipse. Instead configure GlassFish manually. Because of the way GlassFish treats Java options predefined in environment variables, the toolkit's remote debugging configuration feature does not work properly with GlassFish. If the toolkit's remote debugging configuration feature is enabled, it may prevent GlassFish from starting.
 
-## 関連項目 ##
+## <a name="see-also"></a>See Also ##
 
 [Azure Toolkit for Eclipse][]
 
-[Azure の Hello World アプリケーションを Eclipse で作成する][]
+[Creating a Hello World Application for Azure in Eclipse][]
 
-[Azure Toolkit for Eclipse のインストール][]
+[Installing the Azure Toolkit for Eclipse][] 
 
-Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][]を参照してください。
+For more information about using Azure with Java, see the [Azure Java Developer Center][].
 
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
-[Microsoft Azure 管理ポータル]: http://go.microsoft.com/fwlink/?LinkID=512959
+[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure の Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
-[JSP で Azure サービス ランタイム ライブラリを使用する]: http://go.microsoft.com/fwlink/?LinkID=699551
+[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Using the Azure Service Runtime Library in JSP]: http://go.microsoft.com/fwlink/?LinkID=699551
 
 <!-- IMG List -->
 
 [ic719504]: ./media/azure-toolkit-for-eclipse-debugging-azure-applications/ic719504.png
 [ic551537]: ./media/azure-toolkit-for-eclipse-debugging-azure-applications/ic551537.png
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

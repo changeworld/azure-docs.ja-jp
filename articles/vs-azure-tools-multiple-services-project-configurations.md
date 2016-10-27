@@ -1,6 +1,6 @@
 <properties
-   pageTitle="複数のサービス構成を使用した Azure プロジェクトの構成 | Microsoft Azure"
-   description="ServiceDefinition.csdef および ServiceConfiguration.cscfg ファイルを変更して、Azure クラウド サービス プロジェクトを構成する方法について説明します。"
+   pageTitle="Configuring your Azure project using multiple service configurations | Microsoft Azure"
+   description="Learn how to configure an Azure cloud service project by changing the ServiceDefinition.csdef and ServiceConfiguration.cscfg files."
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,99 +15,104 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
-# 複数のサービス構成を使用した Azure プロジェクトの構成
 
-Azure クラウド サービス プロジェクトには、ServiceDefinition.csdef と ServiceConfiguration.cscfg の 2 つの構成ファイルが含まれています。これらのファイルは、Azure クラウド サービス アプリケーションと共にパッケージ化され、Azure にデプロイされます。
+# <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>Configuring Your Azure Project Using Multiple Service Configurations
 
-- **ServiceDefinition.csdef** ファイルには、クラウド サービス アプリケーションの要件 (含まれるロールなど) について Azure 環境で必要なメタデータが含まれます。このファイルには、すべてのインスタンスに適用される構成設定も含まれます。これらの構成設定は、Azure サービス ホスト ランタイム API を使用して実行時に読み込むことができます。このファイルは、Azure でサービスを実行しているときには更新できません。
+An Azure cloud service project includes two configuration files: ServiceDefinition.csdef and ServiceConfiguration.cscfg. These files are packaged with your Azure cloud service application and deployed to Azure.
 
-- **ServiceConfiguration.cscfg** ファイルは、サービス定義ファイルに定義された構成設定の値を設定し、各ロールに対して実行するインスタンスの数を指定します。このファイルは、Azure でクラウド サービスを実行しているときに更新できます。
+- The **ServiceDefinition.csdef** file contains the metadata that is required by the Azure environment for the requirements of your cloud service application, including what roles it contains. This file also contains configuration settings that apply to all instances. These configuration settings can be read at runtime using the Azure Service Hosting Runtime API. This file cannot be updated while your service is running in Azure.
 
-Azure Tools for Microsoft Visual Studio は、これらのファイルに格納されている構成設定を設定するために使用できるプロパティ ページを備えています。このプロパティ ページにアクセスするには、ソリューション エクスプローラーで Azure クラウド サービス プロジェクトの下にあるロールへの参照をダブルクリックするか、次の図に示すようにロールへの参照を右クリックして **[プロパティ]** を選択します。
+- The **ServiceConfiguration.cscfg** file sets values for the configuration settings defined in the service definition file and specifies the number of instances to run for each role. This file can be updated while your cloud service is running in Azure.
 
-![VS\_Solution\_Explorer\_Roles\_Properties](./media/vs-azure-tools-multiple-services-project-configurations/IC784076.png)
+The Azure Tools for Microsoft Visual Studio provide property pages that you can use to set configuration settings stored in these files. To access the property pages, double-click the role reference underneath the Azure cloud service project in Solution Explorer, or right-click the role reference and choose **Properties**, as shown in the following figure.
 
-サービス定義ファイルとサービス構成ファイルの基になるスキーマについては、[スキーマ リファレンス](https://msdn.microsoft.com/library/azure/dd179398.aspx)のページを参照してください。サービス構成の詳細については、「[クラウド サービスの構成方法](./cloud-services/cloud-services-how-to-configure.md)」を参照してください。
+![VS_Solution_Explorer_Roles_Properties](./media/vs-azure-tools-multiple-services-project-configurations/IC784076.png)
 
-## ロール プロパティの構成
+For information about the underlying schemas for the service definition and service configuration files, see the [Schema Reference](https://msdn.microsoft.com/library/azure/dd179398.aspx). For more information about service configuration, see [How to Configure Cloud Services](./cloud-services/cloud-services-how-to-configure.md).
 
-Web ロールと worker ロールのプロパティ ページは似ていますが、以降のセクションで説明するように、いくつかの違いがあります。
+## <a name="configuring-role-properties"></a>Configuring role properties
 
-**[キャッシュ]** ページで、Azure のキャッシュ サービスを構成できます。
+The property pages for a web role and a worker role are similar, although there are a few differences, pointed out in the following sections.
 
-### [構成] ページ
+From the **Caching** page, you can configure the Azure caching services.
 
-**[構成]** ページでは、次のプロパティを設定できます。
+### <a name="configuration-page"></a>Configuration page
 
-**インスタンス**
+On the **Configuration** page, you can set these properties:
 
-**[インスタンス数]** プロパティに、このロールに対してサービスが実行するインスタンスの数を設定します。
+**Instances**
 
-**[VM サイズ]** プロパティには、**[極小]**、**[小]**、**[中]**、**[大]**、**[特大]** のいずれかを設定します。詳細については、「[クラウド サービスのサイズを構成する](./cloud-services/cloud-services-sizes-specs.md)」をご覧ください。
+Set the **Instance** count property to the number of instances the service should run for this role.
 
-**スタートアップ アクション** (Web ロールのみ)
+Set the **VM size** property to **Extra Small**, **Small**, **Medium**, **Large**, or **Extra Large**.  For more information, see [Sizes for Cloud Services](./cloud-services/cloud-services-sizes-specs.md).
 
-このプロパティを設定して、デバッグの開始時に Visual Studio が HTTP エンドポイントと HTTPS エンドポイントのいずれか、または両方のエンドポイント用に Web ブラウザーを起動するように指定します。
+**Startup Action** (Web Role Only)
 
-[HTTPS エンドポイント] オプションは、ロールの HTTPS エンドポイントを既に定義している場合のみ使用できます。HTTPS エンドポイントは、**[エンドポイント]** プロパティ ページで定義できます。
+Set this property to specify that Visual Studio should launch a web browser for either the HTTP endpoints or the HTTPS endpoints, or both when you start debugging.
 
-HTTPS エンドポイントを既に追加している場合は、既定で [HTTPS エンドポイント] オプションが有効になり、Visual Studio はデバッグ開始時にこのエンドポイント用のブラウザーと HTTP エンドポイント用のブラウザーを起動します。これは、両方のスタートアップ オプションが有効になっていることを前提としています。
+The HTTPS endpoint option is available only if you have already defined an HTTPS endpoint for your role. You can define an HTTPS endpoint on the **Endpoints** property page.
 
-**診断**
+If you have already added an HTTPS endpoint, the HTTPS endpoint option is enabled by default, and Visual Studio will launch a browser for this endpoint when you start debugging, in addition to a browser for your HTTP endpoint. This assumes that both startup options are enabled.
 
-既定では、Web ロールに対して診断が有効になっています。Azure クラウド サービス プロジェクトとストレージ アカウントは、ローカル ストレージ エミュレーターを使用するように設定されています。Azure にデプロイする準備ができたら、ビルダーのボタン (**[…]**) を選択して、クラウドで Azure Storage を使用するようにストレージ アカウントを更新できます。要求時に、または自動的にスケジュールされた間隔で、ストレージ アカウントに診断データを転送できます。Azure の診断の詳細については、[Azure Cloud Services と Virtual Machines での診断機能の有効化](./cloud-services/cloud-services-dotnet-diagnostics.md)に関するページを参照してください。
+**Diagnostics**
 
-## [設定] ページ
+By default, diagnostics is enabled for the Web role. The Azure cloud service project and storage account are set to use the local storage emulator. When you are ready to deploy to Azure, you can select the builder button (**…**) to update the storage account to use Azure storage in the cloud. You can transfer the diagnostics data to the storage account on demand or at automatically scheduled intervals. For more information about Azure diagnostics, see [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](./cloud-services/cloud-services-dotnet-diagnostics.md).
 
-**[設定]** ページでは、サービスの構成設定を追加できます。構成設定は、名前と値のペアです。ロール内でコードを実行すると、[Azure マネージ ライブラリ](http://go.microsoft.com/fwlink?LinkID=171026)で提供されるクラスを使用して、実行時に構成設定の値を読み込むことができます。具体的には、[GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) メソッドによって、実行時に指定した構成設定の値が返されます。
+## <a name="settings-page"></a>Settings page
 
-### ストレージ アカウントへの接続文字列の構成
+On the **Settings** page, you can add configuration settings for your service. Configuration settings are name-value pairs. Code running in the role can read the values of your configuration settings at runtime using classes provided by the [Azure Managed Library](http://go.microsoft.com/fwlink?LinkID=171026). Specifically, the [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx) method returns the value of a named configuration setting at runtime.
 
-接続文字列とは、ストレージ エミュレーターまたは Azure ストレージ アカウントの接続情報と認証情報を提供する構成設定です。ロール内で実行されているコードから Azure Storage サービス データ (BLOB データ、キュー データ、またはテーブル データ) にアクセスする必要がある場合、そのストレージ アカウントの接続文字列を定義する必要があります。
+### <a name="configuring-a-connection-string-to-a-storage-account"></a>Configuring a connection string to a storage account
 
-Azure ストレージ アカウントを指す接続文字列には、定義された書式を使用する必要があります。接続文字列の作成方法の詳細については、「[Azure Storage の接続文字列を構成する](./storage/storage-configure-connection-string.md)」を参照してください。
+A connection string is a configuration setting that provides connection and authentication information for the storage emulator or for an Azure storage account. Whenever your code must access Azure storage services data – that is, blob, queue, or table data – from code running in a role, you will have to define a connection string for that storage account.
 
-Azure Storage サービスに対してサービスをテストする準備、またはクラウド サービスを Azure にデプロイする準備ができたら、Azure ストレージ アカウントを指すように任意の接続文字列の値を変更できます。**[…]** を選択し、**[ストレージ アカウントの資格情報の入力]** を選択します。アカウント名とアカウント キーを含むアカウント情報を入力します。**[ストレージ アカウント接続文字列]** ダイアログ ボックスで、既定の HTTPS エンドポイント (既定のオプション)、既定の HTTP エンドポイント、カスタム エンドポイントのどれを使用するかを指定することもできます。「[Azure ストレージ アカウントの BLOB データのカスタム ドメイン名の構成](./storage/storage-custom-domain-name.md)」で説明されているように、サービスのカスタム ドメイン名を登録している場合は、カスタム エンドポイントを使用できます。
+A connection string that points to an Azure storage account must use a defined format. For information about how to create connection strings, see [Configure Azure Storage Connection Strings](./storage/storage-configure-connection-string.md).
 
->[AZURE.IMPORTANT] サービスをデプロイする前に、Azure ストレージ アカウントを指すように接続文字列を変更する必要があります。変更していないと、ロールの起動に失敗したり、初期化状態、ビジー状態、停止状態を順に繰り返す可能性があります。
+When you are ready to test your service against the Azure storage services, or when you are ready to deploy your cloud service to Azure, you can change the value of any connection strings to point to your Azure storage account. Select (**…**), select **Enter storage account credentials**. Enter your account information that includes your account name and account key. In the **Storage Account Connection String** dialog box, you can also indicate whether you want to use the default HTTPS endpoints (the default option), the default HTTP endpoints, or custom endpoints. You might decide to use custom endpoints if you have registered a custom domain name for your service, as described in [Configure a custom domain name for blob data in an Azure storage account](./storage/storage-custom-domain-name.md).
 
-## [エンドポイント] ページ
+>[AZURE.IMPORTANT] You must modify your connection strings to point to an Azure storage account before you deploy your service. Failing to do this may cause your role not to start, or to cycle through the initializing, busy, and stopping states.
 
-worker ロールは、任意の数の HTTP、HTTPS、TCP エンドポイントを含むことができます。エンドポイントには、外部のクライアントが利用できる入力エンドポイント、またはサービスで実行されている他のロールが利用できる内部エンドポイントを指定できます。
+## <a name="endpoints-page"></a>Endpoints page
 
-- HTTP エンドポイントを外部クライアントおよび Web ブラウザーから利用できるようにするには、エンドポイントの種類を [入力] に変更し、名前とパブリック ポート番号を指定します。
+A worker role can have any number of HTTP, HTTPS, or TCP endpoints. Endpoints can be input endpoints, which are available to external clients, or internal endpoints, which are available to other roles that are running in the service.
 
-- HTTPS エンドポイントを外部クライアントおよび Web ブラウザーから利用できるようにするには、エンドポイントの種類を **[入力]** に変更し、名前、パブリック ポート番号、管理証明書名を指定します。
+- To make an HTTP endpoint available to external clients and Web browsers, change the endpoint type to input, and specify a name and a public port number.
 
-    管理証明書を指定するには、**[証明書]** プロパティ ページで証明書を定義しておく必要があります。
+- To make an HTTPS endpoint available to external clients and Web browsers, change the endpoint type to **input**, and specify a name, a public port number, and a management certificate name.
 
-- クラウド サービス内の他のロールからエンドポイントを内部利用できるようにするには、エンドポイントの種類を [内部] に変更し、名前とこのエンドポイントに使用可能なプライベート ポートを指定します。
+    Note that before you can specify a management certificate, you must define the certificate on the **Certificates** property page.
 
-## [ローカル ストレージ] ページ
+- To make an endpoint available for internal access by other roles in the cloud service, change the endpoint type to internal, and specify a name and possible private ports for this endpoint.
 
-**[ローカル ストレージ]** プロパティ ページを使用して、ロール用に 1 つ以上のローカル ストレージ リソースを予約できます。ローカル ストレージ リソースは、ロールのインスタンスが実行されている Azure 仮想マシンのファイル システム内の予約されたディレクトリです。
+## <a name="local-storage-page"></a>Local storage page
 
-## [証明書] ページ
+You can use the **Local Storage** property page to reserve one or more local storage resources for a role. A local storage resource is a reserved directory in the file system of the Azure virtual machine in which an instance of a role is running.
 
-**[証明書]** ページでは、証明書とロールを関連付けることができます。追加する証明書は、**[エンドポイント]** プロパティ ページでの HTTPS エンドポイントの構成に使用できます。
+## <a name="certificates-page"></a>Certificates page
 
-**[証明書]** プロパティ ページでは、証明書についての情報をサービス構成に追加します。証明書はサービスと共にパッケージ化されないことに注意してください。[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して、Azure に証明書を個別にアップロードする必要があります。
+On the **Certificates** page, you can associate certificates with your role. The certificates that you add can be used to configure your HTTPS endpoints on the **Endpoints** property page.
 
-証明書をロールに関連付けるには、証明書の名前を指定します。**[エンドポイント]** プロパティ ページで HTTPS エンドポイントを構成する際に、この名前を使用して証明書を参照します。次に、証明書ストアが **[ローカル コンピューター]** と **[現在のユーザー]** のどちらであるかと、ストアの名前を指定します。最後に、証明書のサムプリントを入力します。証明書が Current User\\Personal (My) ストアに存在する場合、表示されたリストから証明書を選択することで、証明書のサムプリントを入力できます。他の場所に存在する場合は、サムプリントの値を手動で入力します。
+The **Certificates** property page adds information about your certificates to your service configuration. Note that your certificates are not packaged with your service; you must upload your certificates separately to Azure through the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
 
-証明書ストアから証明書を追加すると、すべての中間証明書は自動的に構成設定に追加されます。SSL に対してサービスを適切に構成するために、これらの中間証明書も Azure にアップロードする必要があります。
+To associate a certificate with your role, provide a name for the certificate. You use this name to refer to the certificate when you configure an HTTPS endpoint on the **Endpoints** property page. Next, specify whether the certificate store is **Local Machine** or **Current User** and the name of the store. Finally, enter the certificate's thumbprint. If the certificate is in the Current User\Personal (My) store, you can enter the certificate's thumbprint by selecting the certificate from a populated list. If it resides in any other location, enter the thumbprint value by hand.
 
-サービスに関連付けられた管理証明書がサービスに適用されるのは、サービスがクラウドで実行されている場合のみです。サービスがローカル開発環境で実行されている場合には、コンピューティング エミュレーターが管理する標準の証明書が使用されます。
+When you add a certificate from the certificate store, any intermediate certificates are automatically added to the configuration settings for you. These intermediate certificates must also be uploaded to Azure in order to correctly configure your service for SSL.
 
-## Azure クラウド サービス プロジェクトの構成
+Any management certificates that you associate with your service apply to your service only when it is running in the cloud. When your service is running in the local development environment, it uses a standard certificate that is managed by the compute emulator.
 
-Azure クラウド サービス プロジェクト全体に適用される設定を構成するには、まずそのプロジェクト ノードのショートカット メニューを開き、次に [プロパティ] を選択し、プロパティ ページを開きます。これらのプロパティ ページを次の表に示します。
+## <a name="configuring-the-azure-cloud-service-project"></a>Configuring the Azure cloud service project
 
-|プロパティ ページ|Description|
+To configure settings that apply to an entire Azure cloud service project, you first open the shortcut menu for that project node, and then you choose Properties to open its property pages. The following table shows those property pages.
+
+|Property Page|Description|
 |---|---|
-|アプリケーション|このページでは、このクラウド サービス プロジェクトが使用する Azure Tools のバージョン情報を表示したり、ツールを最新バージョンにアップグレードすることができます。|
-|ビルド イベント|このページでは、ビルド前およびビルド後のイベントを設定できます。|
-|開発|このページでは、ビルド構成の手順や、ビルド後イベントを実行する条件を指定できます。|
-|Web|このページでは、Web サーバーに関連する設定を構成できます。|
+|Application|From this page, you can display information about the version of Azure Tools that this cloud service project uses, and you can upgrade to the current version of the tools.|
+|Build Events|From this page, you can set pre-build and post-build events.|
+|Development|From this page, you can specify build configuration instructions and the conditions under which any post-build events are run.|
+|Web|From this page, you can configure settings that relate to the web server.|
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

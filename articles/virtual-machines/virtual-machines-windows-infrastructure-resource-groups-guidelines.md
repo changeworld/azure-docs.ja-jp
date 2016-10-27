@@ -1,60 +1,64 @@
 <properties
-	pageTitle="リソース グループのガイドライン |Microsoft Azure"
-	description="Azure インフラストラクチャ サービスでのリソース グループのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
-	documentationCenter=""
-	services="virtual-machines-windows"
-	authors="iainfoulds"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-manager"/>
+    pageTitle="Resource Groups Guidelines | Microsoft Azure"
+    description="Learn about the key design and implementation guidelines for deploying Resource Groups in Azure infrastructure services."
+    documentationCenter=""
+    services="virtual-machines-windows"
+    authors="iainfoulds"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="virtual-machines-windows"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-windows"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/08/2016"
-	ms.author="iainfou"/>
-
-# Azure リソース グループのガイドライン
-
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
-
-この記事では、環境を論理的に構築し、リソース グループ内のすべてのコンポーネントをグループ化する方法について説明します。
+    ms.service="virtual-machines-windows"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-windows"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/08/2016"
+    ms.author="iainfou"/>
 
 
-## リソース グループに関する実装ガイドライン
+# <a name="azure-resource-group-guidelines"></a>Azure resource group guidelines
 
-決めること:
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)] 
 
-- リソース グループを構築するために、コア インフラストラクチャのコンポーネントを使用しますか。あるいはアプリケーションを完全デプロイしますか。
-- ロールベースのアクセス制御を使用してリソース グループへのアクセスを制限する必要がありますか。
-
-タスク:
-
-- 必要なコア インフラストラクチャのコンポーネントと、専用のリソース グループを定義します。
-- 一貫性があり、再現可能なデプロイのための Resource Manager テンプレートを実装する方法を確認します。
-- リソース グループへのアクセスを制御するために必要なユーザー アクセス ロールを定義します。
-- 名前付け規則を使用してリソース グループのセットを作成します。Azure PowerShell またはポータルを使用できます。
+This article focuses on understanding how to logically build out your environment and group all the components in Resource Groups.
 
 
-## リソース グループ
+## <a name="implementation-guidelines-for-resource-groups"></a>Implementation guidelines for Resource Groups
 
-Azure では、ストレージ アカウント、仮想ネットワーク、仮想マシン (VM) などの関連リソースを論理的にグループ化し、単一のエンティティとしてデプロイ、管理、保守します。このアプローチにより、管理上の観点からすべての関連リソースをまとめた状態でアプリケーションをデプロイすること、あるいは他者にリソースのグループへのアクセス権を付与することが容易になります。リソース グループの詳細については、「[Azure リソース マネージャーの概要](../resource-group-overview.md)」をご覧ください。
+Decisions:
 
-リソース グループの機能で重要なのは、テンプレートを使用して環境を構築できることです。テンプレートは、ストレージ、ネットワーク、コンピューティング リソースを宣言する JSON ファイルにすぎません。適用する関連カスタム スクリプトや構成を定義することもできます。このテンプレートを使用して、一貫性があり、再現可能なアプリケーションのデプロイを作成します。このアプローチにより、開発環境を構築し、同じテンプレートを使用して運用環境のデプロイを作成できます。また、その逆も可能です。テンプレートの使用に関する理解を深めるには、[テンプレートのチュートリアル](../resource-manager-template-walkthrough.md)に関するページをご覧ください。このページでは、テンプレートの構築の手順について説明しています。
+- Are you going to build out Resource Groups by the core infrastructure components, or by complete application deployment?
+- Do you need to restrict access to Resource Groups using Role-Based Access Controls?
 
-リソース グループを使用して環境を設計するには、2 つの異なるアプローチがあります。
+Tasks:
 
-- ストレージ アカウント、仮想ネットワーク、サブネット、VM、ロード バランサーなどを組み合わせた各アプリケーションのデプロイのためのリソース グループ。
-- コア仮想ネットワーク、サブネット、またはストレージ アカウントを含む一元的なリソース グループ。アプリケーションは、VM、ロード バランサー、ネットワーク インターフェイスなどのアイテムのみを含む独自のリソース グループに含まれます。
+- Define what core infrastructure components and dedicated Resource Groups you need.
+- Review how to implement Resource Manager templates for consistent, reproducible deployments.
+- Define what user access roles you need for controlling access to Resource Groups.
+- Create the set of Resource Groups using your naming convention. You can use Azure PowerShell or the portal.
 
-スケールアウトするとき、仮想ネットワークおよびサブネットの一元的なリソース グループを作成することで、ハイブリッド接続オプション用のクロスプレミス ネットワーク接続を容易に構築できます。もう 1 つのアプローチでは、アプリケーションごとに、構成と保守が必要な独自の仮想ネットワークを使用します。[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)により、リソース グループへのアクセスを詳細に制御できます。運用アプリケーションの場合は、リソースにアクセスできるユーザーを制御でき、コア インフラストラクチャのリソースの場合は、インフラストラクチャ エンジニアだけが扱えるように制限することができます。アプリケーション所有者はリソース グループ内のアプリケーション コンポーネントにのみアクセスでき、お使いの環境の Azure インフラストラクチャの中心となる部分にはアクセスできません。環境を設計する際、リソースへのアクセスを必要とするユーザーと、それに応じたリソース グループの設計を考慮してください。
+
+## <a name="resource-groups"></a>Resource Groups
+
+In Azure, you logically group related resources such as storage accounts, virtual networks, and virtual machines (VMs) to deploy, manage, and maintain them as a single entity. This approach makes it easier to deploy applications while keeping all the related resources together from a management perspective, or to grant others access to that group of resources. For a more comprehensive understanding of Resource Groups, read the [Azure Resource Manager overview](../resource-group-overview.md).
+
+A key feature to Resource Groups is ability to build out your environment using templates. A template is simply a JSON file that declares the storage, networking, and compute resources. You can also define any related custom scripts or configurations to apply. By using these templates, you create consistent, reproducible deployments for your applications. This approach makes it easy to build out an environment in development and then use that same template to create a production deployment, or vice versa. For a better understanding using templates, read [the template walkthrough](../resource-manager-template-walkthrough.md) that guides you through each step of the building out a template.
+
+There are two different approaches you can take when designing your environment with Resource Groups:
+
+- Resource Groups for each application deployment that combines the storage accounts, virtual networks, and subnets, VMs, load balancers, etc.
+- Centralized Resource Groups that contain your core virtual networking and subnets or storage accounts. Your applications are then in their own Resource Groups that only contain VMs, load balancers, network interfaces, etc.
+
+As you scale out, creating centralized Resource Groups for your virtual networking and subnets makes it easier to build cross-premises network connections for hybrid connectivity options. The alternative approach is for each application to have their own virtual network that requires configuration and maintenance.  [Role-Based Access Controls](../active-directory/role-based-access-control-what-is.md) provide a granular way to control access to Resource Groups. For production applications, you can control the users that may access those resources, or for the core infrastructure resources you can limit only infrastructure engineers to work with them. Your application owners only have access to the application components within their Resource Group and not the core Azure infrastructure of your environment. As you design your environment, consider the users that require access to the resources and design your Resource Groups accordingly. 
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)] 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Data Catalog に Data Lake Store のデータを登録する | Azure"
-   description="Azure Data Catalog に Data Lake Store のデータを登録する"
+   pageTitle="Register data from Data Lake Store in Azure Data Catalog | Azure"
+   description="Register data from Data Lake Store in Azure Data Catalog"
    services="data-lake-store,data-catalog" 
    documentationCenter=""
    authors="nitinme"
@@ -16,82 +16,87 @@
    ms.date="08/02/2016"
    ms.author="nitinme"/>
 
-# Azure Data Catalog に Data Lake Store のデータを登録する
 
-この記事では、Azure Data Lake Store と Azure Data Catalog を統合し、データを Data Catalog と統合することで組織内で検出できるようにする方法について説明します。データのカタログ化の詳細については、「[Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md)」を参照してください。Data Catalog を使用できるシナリオを理解するには、「[Azure Data Catalog の一般的なシナリオ](../data-catalog/data-catalog-common-scenarios.md)」を参照してください。
+# <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Register data from Data Lake Store in Azure Data Catalog
 
-## 前提条件
+In this article you will learn how to integrate Azure Data Lake Store with Azure Data Catalog to make your data discoverable within an organization by integrating it with Data Catalog. For more information on cataloging data, see [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). To understand scenarios in which you can use Data Catalog, see [Azure Data Catalog common scenarios](../data-catalog/data-catalog-common-scenarios.md).
 
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+## <a name="prerequisites"></a>Prerequisites
 
-- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+Before you begin this tutorial, you must have the following:
 
-- Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
+- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
 
-- **Azure Data Lake Store アカウント**。「[Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。このチュートリアルでは、**datacatalogstore** という Data Lake Store アカウントを作成します。
+- **Enable your Azure subscription** for Data Lake Store Public Preview. See [instructions](data-lake-store-get-started-portal.md#signup).
 
-	アカウントを作成したら、サンプル データ セットをアップロードします。このチュートリアルでは、[Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/) の **AmbulanceData** フォルダーにあるすべての .csv ファイルをアップロードします。[Azure Storage Explorer](http://storageexplorer.com/) などのさまざまなクライアントを使用して、BLOB コンテナーにデータをアップロードすることができます。
+- **Azure Data Lake Store account**. Follow the instructions at [Get started with Azure Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md). For this tutorial, let us create a Data Lake Store account called **datacatalogstore**. 
 
-- **Azure Data Catalog**。組織で Azure Data Catalog が既に作成されている必要があります。組織ごとに使用できるカタログは 1 つのみです。
+    Once you have created the account, upload a sample data set to it. For this tutorial, let us upload all the .csv files under the **AmbulanceData** folder in the [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). You can use various clients, such as [Azure Storage Explorer](http://storageexplorer.com/), to upload data to a blob container.
 
-## Data Catalog のソースとして Data Lake Store を登録する
+- **Azure Data Catalog**. Your organization must already have an Azure Data Catalog created for your organization. Only one catalog is allowed for each organization.
+
+## <a name="register-data-lake-store-as-a-source-for-data-catalog"></a>Register Data Lake Store as a source for Data Catalog
 
 >[AZURE.VIDEO adcwithadl] 
 
-1. `https://azure.microsoft.com/services/data-catalog` にアクセスし、**[はじめに]** をクリックします。
+1. Go to `https://azure.microsoft.com/services/data-catalog`, and click **Get started**.
 
-2. Azure Data Catalog ポータルにログインし、**[データの発行]** をクリックします。
+2. Log into the Azure Data Catalog portal, and click **Publish data**.
 
-	![データ ソースの登録](./media/data-lake-store-with-data-catalog/register-data-source.png "データ ソースの登録")
+    ![Register a data source](./media/data-lake-store-with-data-catalog/register-data-source.png "Register a data source")
 
-3. 次のページで、**[アプリケーションの起動]** をクリックします。これで、コンピューター上にアプリケーション マニフェスト ファイルがダウンロードされます。アプリケーションを起動するには、このマニフェスト ファイルをダブルクリックします。
+3. On the next page, click **Launch Application**. This will download the application manifest file on your computer. Double-click the manifest file to start the application.
 
-4. [ようこそ] ページで、**[サインイン]** をクリックし、資格情報を入力します。
+4. On the Welcome page, click **Sign in**, and enter your credentials.
 
-	![[ようこそ] 画面](./media/data-lake-store-with-data-catalog/welcome.screen.png "[ようこそ] 画面")
+    ![Welcome screen](./media/data-lake-store-with-data-catalog/welcome.screen.png "Welcome screen")
 
-5. [データ ソースの選択] ページで、**[Azure Data Lake]** を選択してから **[次へ]** をクリックします。
+5. On the Select a Data Source page, select **Azure Data Lake**, and then click **Next**.
 
-	![データ ソースの選択](./media/data-lake-store-with-data-catalog/select-source.png "データ ソースの選択")
+    ![Select data source](./media/data-lake-store-with-data-catalog/select-source.png "Select data source")
 
-6. 次のページで、Data Catalog に登録する Data Lake Store アカウントの名前を指定します。その他のオプションは既定値のままにし、**[接続]** をクリックします。
+6. On the next page, provide the Data Lake Store account name that you want to register in Data Catalog. Leave the other options as default and then click **Connect**.
 
-	![データ ソースへの接続](./media/data-lake-store-with-data-catalog/connect-to-source.png "データ ソースへの接続")
+    ![Connect to data source](./media/data-lake-store-with-data-catalog/connect-to-source.png "Connect to data source")
 
-7. 次のページは以下のセグメントに分けることができます。
+7. The next page can be divided into the following segments.
 
-	a.**[サーバー階層] **ボックスには Data Lake Store アカウントのフォルダー構造が示されます。**$Root** は Data Lake Store アカウントのルートを表し、**AmbulanceData** は Data Lake Store アカウントのルートに作成されているフォルダーを表します。
+    a. The **Server Hierarchy** box represents the Data Lake Store account folder structure. **$Root** represents the Data Lake Store account root, and **AmbulanceData** represents the folder created in the root of the Data Lake Store account.
 
-	b.**[使用可能なオブジェクト]** ボックスには、**AmbulanceData** フォルダーにあるファイルとフォルダーがリストされます。
+    b. The **Available objects** box lists the files and folders under the **AmbulanceData** folder.
 
-	c.**[登録するオブジェクト]** ボックスには、Azure Data Catalog に登録するファイルとフォルダーがリストされます。
+    c. **Objects to be registered box** lists the files and folders that you want to register in Azure Data Catalog.
 
-	![データ構造の表示](./media/data-lake-store-with-data-catalog/view-data-structure.png "データ構造の表示")
+    ![View data structure](./media/data-lake-store-with-data-catalog/view-data-structure.png "View data structure")
 
-8. このチュートリアルでは、ディレクトリ内のすべてのファイルを登録する必要があります。そのため、![オブジェクトの移動](./media/data-lake-store-with-data-catalog/move-objects.png "オブジェクトの移動") ボタンをクリックして、すべてのファイルを **[登録するオブジェクト]** ボックスに移動します。
+8. For this tutorial, you should register all the files in the directory. For that, click the (![move objects](./media/data-lake-store-with-data-catalog/move-objects.png "Move objects")) button to move all the files to **Objects to be registered** box. 
 
-	データは組織全体のデータ カタログに登録されるため、後でデータをすばやく見つけられるようにするために使用できるメタデータをいくつか追加することをお勧めします。たとえば、データの所有者 (データをアップロードするユーザー) の電子メール アドレスを追加したり、データを識別するタグを追加したりすることができます。以下の画面キャプチャには、データに追加するタグが示されています。
+    Because the data will be registered in an organization-wide data catalog, it is a recommened approach to add some metadata which you can later use to quickly locate the data. For example, you can add an e-mail address for the data owner (for example, one who is uploading the data) or add a tag to identify the data. The screen capture below shows a tag that we add to the data.
 
-	![データ構造の表示](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "データ構造の表示")
+    ![View data structure](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "View data structure")
 
-	**[登録]** をクリックします。
+    Click **Register**.
 
-8. 次のキャプチャ画面は、データが Data Catalog に正常に登録されたことを示しています。
+8. The following screen capture denotes that the data is successfully registered in the Data Catalog.
 
-	![登録の完了](./media/data-lake-store-with-data-catalog/registration-complete.png "データ構造の表示")
+    ![Registration complete](./media/data-lake-store-with-data-catalog/registration-complete.png "View data structure")
 
-9. **[ポータルの表示]** をクリックして Data Catalog ポータルに戻り、ポータルから登録されたデータにアクセスできるようになったことを確認します。データを検索する場合は、データの登録時に使用したタグを使用できます。
+9. Click **View Portal** to go back to the Data Catalog portal and verify that you can now access the registered data from the portal. To search the data, you can use the tag you used while registering the data.
 
-	![カタログ内のデータの検索](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "カタログ内のデータの検索")
+    ![Search data in catalog](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Search data in catalog")
 
-10. これで、データへの注釈やドキュメントの追加などの操作を実行できるようになりました。詳細については、次のリンクを参照してください。
-	* [データ ソースに注釈を付ける方法](../data-catalog/data-catalog-how-to-annotate.md)
-	* [データ ソースの文書化](../data-catalog/data-catalog-how-to-documentation.md)
+10. You can now perform operations like adding annotations and documentation to the data. For more information, see the following links.
+    * [Annotate data sources in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
+    * [Document data sources in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-* [データ ソースに注釈を付ける方法](../data-catalog/data-catalog-how-to-annotate.md)
-* [データ ソースの文書化](../data-catalog/data-catalog-how-to-documentation.md)
-* [Data Lake Store と他の Azure サービスを統合する](data-lake-store-integrate-with-other-services.md)
+* [Annotate data sources in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
+* [Document data sources in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
+* [Integrate Data Lake Store with other Azure services](data-lake-store-integrate-with-other-services.md)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

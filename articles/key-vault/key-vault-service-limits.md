@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Azure Key Vault サービスの制限 | Microsoft Azure"
-   description="Azure Key Vault のサービス制限について説明します。"
+   pageTitle="Azure Key Vault Service Limits | Microsoft Azure"
+   description="Learn about the service limits for Azure Key Vault."
    documentationCenter="dev-center-name"
    services="key-vault"  
-   authors="msmbaldwin"
+   authors="cabailey"
    manager="mbaldwin"
    editor=""/>
 
@@ -16,10 +16,15 @@
    ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
-# Azure Key Vault サービスの制限
 
-これらは、Azure Key Vault サービスの制限です。
+# <a name="azure-key-vault-service-limits"></a>Azure Key Vault Service Limits
+
+These are the service limits for Azure Key Vault.
 
 [AZURE.INCLUDE [key-vault-limits](../../includes/key-vault-limits.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

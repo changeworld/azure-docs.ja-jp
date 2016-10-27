@@ -1,52 +1,54 @@
-## Azure ポータルのネットワーク構成ファイルを使用して VNet を作成する方法
+## <a name="how-to-create-a-vnet-using-a-network-config-file-in-the-azure-portal"></a>How to create a VNet using a network config file in the Azure portal
 
-Azure では、xml ファイルを使用して、サブスクリプションに使用可能なすべての VNet を定義します。このファイルをダウンロードし、既存の Vnet が変更または削除されるようにファイルを編集することで、新しい VNet を作成します。このドキュメントでは、ネットワーク構成 (または netcgf) ファイルをダウンロードする方法と、そのファイルを編集して新しい VNet を作成する方法を説明します。ネットワーク構成ファイルの詳細については、[Azure 仮想ネットワークの構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)を参照してください。
+Azure uses an xml file to define all VNets available to a subscription. You can download this file, and edit it to modify or delete existing VNets, and create new ones. In this document, you will learn how to download this file, referred to as network configuration (or netcgf) file, and edit it to create a new VNet. Check the [Azure virtual network configuration schema](https://msdn.microsoft.com/library/azure/jj157100.aspx) to learn more about the network configuration file.
 
-Azure ポータルで取得した netcfg ファイルを使用して VNet を作成するには、次の手順に従います。
+To create a VNet using a netcfg file through the Azure portal, follow the steps below.
 
-1. ブラウザーから http://manage.windowsazure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. 以下に示すように、サービスの一覧を下へスクロールし、[**ネットワーク**] をクリックします。
+1. From a browser, navigate to http://manage.windowsazure.com and, if necessary, sign in with your Azure account.
+2. Scroll down on the list of services, and click on **NETWORKS** as seen below.
 
-	![Azure 仮想ネットワーク](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure1.gif)
+    ![Azure virtual networks](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure1.gif)
 
-3. ページ下部にある次のような [**エクスポート**] ボタンをクリックします。
+3. On the bottom of the page, click the **EXPORT** button, as shown below.
 
-	![[エクスポート] ボタン](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure2.png)
+    ![Export button](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure2.png)
 
-4. [**ネットワーク構成のエクスポート**] ページで、仮想ネットワーク構成のエクスポート元となるサブスクリプションを選択してから、ページ左下隅のチェック マーク ボタンをクリックします。
-5. ブラウザーの使用手順に従って、**NetworkConfig.xml** ファイルを保存します。ファイルの保存場所を覚えておいてください。
-6. 任意の XML またはテキスト エディター アプリケーションを使用して、上記の手順 5. で保存したファイルを開き、**<VirtualNetworkSites>**要素を探します。既に作成したネットワークがある場合、各ネットワークは**<VirtualNetworkSite>**要素として表示されます。
-7. このシナリオで説明した仮想ネットワークを作成するには、次の XML を**<VirtualNetworkSites>**要素のすぐ下に追加します。
+4. On the **Export network configuration** page, select the subscription you want to export the virtual network configuration from, and then click the check mark button on the bottom left hand corner of the page.
+5. Follow your browser instructions to save the **NetworkConfig.xml** file. Make sure you note where you are saving the file.
+6. Open the file you saved in step 5 above using any XML or text editor application, and look for the **<VirtualNetworkSites>** element. If you have any networks already created, each network will be displayed as its own **<VirtualNetworkSite>** element.
+7. To create the virtual network described in this scenario, add the following XML just under the **<VirtualNetworkSites>** element:
 
-		<VirtualNetworkSite name="TestVNet" Location="Central US">
-		  <AddressSpace>
-		    <AddressPrefix>192.168.0.0/16</AddressPrefix>
-		  </AddressSpace>
-		  <Subnets>
-		    <Subnet name="FrontEnd">
-		      <AddressPrefix>192.168.1.0/24</AddressPrefix>
-		    </Subnet>
-		    <Subnet name="BackEnd">
-		      <AddressPrefix>192.168.2.0/24</AddressPrefix>
-		    </Subnet>
-		  </Subnets>
-		</VirtualNetworkSite>
+        <VirtualNetworkSite name="TestVNet" Location="Central US">
+          <AddressSpace>
+            <AddressPrefix>192.168.0.0/16</AddressPrefix>
+          </AddressSpace>
+          <Subnets>
+            <Subnet name="FrontEnd">
+              <AddressPrefix>192.168.1.0/24</AddressPrefix>
+            </Subnet>
+            <Subnet name="BackEnd">
+              <AddressPrefix>192.168.2.0/24</AddressPrefix>
+            </Subnet>
+          </Subnets>
+        </VirtualNetworkSite>
 
-8.  ネットワーク構成ファイルを保存します。
-9.  次の図に示すように、Azure ポータルのページ左下隅で、[**新規**]、[**ネットワーク サービス**]、[**仮想ネットワーク**] 、[**構成のインポート**] の順にクリックします。
+8.  Save the network configuration file.
+9.  In the Azure portal, on the bottom left hand corner of the page, click **NEW**, then click **NETWORK SERVICES**, then click **VIRTUAL NETWORK**, and then click **IMPORT CONFIGURATION** as shown in the figure below.
 
-	![構成のインポート](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure3.gif)
+    ![Import configuration](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure3.gif)
 
-10.  [**ネットワーク構成ファイルをインポートする**] ページで、[**ファイルの参照...**] をクリックしてから、上記の手順 8. でファイルを保存したフォルダーに移動し、そのファイルを選択して [**開く**] をクリックします。この Web ページは、次の図のように表示されます。ページの右下隅にある矢印ボタンをクリックすると、次の手順に移動できます。
+10.  On the **Import the network configuration file** page, click **BROWSE FOR FILE...**, then navigate to the folder you saved your file in step 8 above, select the file, and then click **Open**. The web page should look similar to the figure below. On the bottom right hand corner of the page, click on the arrow button to move to the next step.
 
-	![[ネットワーク構成ファイルのインポート] ページ](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure4.png)
+    ![Import network configuration file page](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure4.png)
 
-11.   次の図のように、[**ネットワークを構築しています**] ページに新しい VNet のエントリが表示されます。
+11.   On the **Building your network** page, notice the entry for your new VNet, as shown in the figure below.
 
-	![[ネットワークを構築しています] ページ](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure5.png)
+    ![Building your network page](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure5.png)
 
-12.   ページの右下隅にあるチェック マーク ボタンをクリックすると、VNet が作成されます。数秒後、次の図に示すように、作成した VNet が利用可能な VNet の一覧に表示されます。
+12.   Click on the check mark button on the bottom right hand corner of the page to create the VNet. After a few seconds your VNet will be shown in the list of available VNets, as shown in the figure below.
 
-	![新しい仮想ネットワーク](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure6.png)
+    ![New virtual network](./media/virtual-networks-create-vnet-classic-portal-xml-include/vnet-create-portal-netcfg-figure6.png)
 
-<!---HONumber=Oct15_HO3-->
+<!--HONumber=Oct16_HO2-->
+
+

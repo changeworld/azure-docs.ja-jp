@@ -1,137 +1,142 @@
 <properties
-	pageTitle="DocumentDB のストレージとパフォーマンス | Microsoft Azure" 
-	description="DocumentDB 内のデータ ストレージとドキュメント ストレージ、およびアプリケーションの容量のニーズに合わせて DocumentDB を拡張する方法について説明します。" 
-	keywords="ドキュメント ストレージ"
-	services="documentdb" 
-	authors="mimig1" 
-	manager="jhubbard" 
-	editor="cgronlun" 
-	documentationCenter=""/>
+    pageTitle="DocumentDB storage and performance | Microsoft Azure" 
+    description="Learn about data storage and document storage in DocumentDB and how you can scale DocumentDB to meet the capacity needs of your application." 
+    keywords="document storage"
+    services="documentdb" 
+    authors="syamkmsft" 
+    manager="jhubbard" 
+    editor="cgronlun" 
+    documentationCenter=""/>
 
 <tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/18/2016" 
-	ms.author="mimig"/>
+    ms.service="documentdb" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/18/2016" 
+    ms.author="syamk"/>
 
-# DocumentDB のストレージと予測可能なパフォーマンスのプロビジョニングについて説明します
-Azure DocumentDB は、JSON ドキュメント用の完全に管理された、スケーラブルなドキュメント志向の NoSQL データベース サービスです。DocumentDB では、仮想マシンのレンタル、ソフトウェアのデプロイ、データベースの監視などを自分で行う必要はありません。Microsoft のエンジニアによって運用され、継続的な監視が行われる DocumentDB は、卓越した可用性、パフォーマンス、データ保護を提供します。
 
-DocumentDB を使用するには、最初に [Azure ポータル](https://portal.azure.com/)で[データベース アカウント](documentdb-create-account.md)と [DocumentDB データベース](documentdb-create-database.md)を作成します。DocumentDB データベースは、ソリッド ステート ドライブ (SSD) ベースのストレージとスループットから構成されるユニットで提供されます。これらのストレージ ユニットをプロビジョニングするには、データベース アカウント内に[データベース コレクションを作成](documentdb-create-collection.md)します。各コレクションには、アプリケーションのニーズを満たすためにいつでもスケールアップとスケールダウンが可能な予約されたスループットがあります。
+# <a name="learn-about-storage-and-predictable-performance-provisioning-in-documentdb"></a>Learn about storage and predictable performance provisioning in DocumentDB
+Azure DocumentDB is a fully managed, scalable document-oriented NoSQL database service for JSON documents. With DocumentDB, you don’t have to rent virtual machines, deploy software, or monitor databases. DocumentDB is operated and continuously monitored by Microsoft engineers to deliver world class availability, performance, and data protection.  
 
-1 つ以上のコレクションでアプリケーションが予約されたスループットを超えると、コレクションごとに要求が制限されます。つまり、アプリケーションの要求が成功する場合と調整される場合があります。
+You can get started with DocumentDB by [creating a database account](documentdb-create-account.md) and a [DocumentDB database](documentdb-create-database.md) through the [Azure portal](https://portal.azure.com/). DocumentDB databases are offered in units of solid-state drive (SSD) backed storage and throughput. These storage units are provisioned by [creating database collections](documentdb-create-collection.md) within your database account, each collection with reserved throughput that can be scaled up or down at any time to meet the demands of your application. 
 
-この記事では、容量を管理してデータ ストレージを計画するために使用できるリソースとメトリックの概要を示します。
+If your application exceeds your reserved throughput for one or multiple collections, requests are limited on a per collection basis. This means that some application requests may succeed while others may be throttled.
 
-## データベース アカウント
-Azure の利用者であるお客様は、1 つまたは複数の DocumentDB データベース アカウントをプロビジョニングして、データベース リソースを管理できます。各サブスクリプションは、1 つの Azure サブスクリプションに関連付けられます。
+This article provides an overview of the resources and metrics available to manage capacity and plan data storage. 
 
-DocumentDB アカウントは、[Azure ポータル](documentdb-create-account.md)、または [ARM テンプレートや Azure CLI](documentdb-automation-resource-manager-cli.md) を使用して作成できます。
+## <a name="database-account"></a>Database account
+As an Azure subscriber, you can provision one or more DocumentDB database accounts to manage your database resources. Each subscription is associated with a single Azure subscription. 
 
-## データベース
-1 つの DocumentDB データベースには、実質的に容量が無限の、コレクションにグループ化されたドキュメント ストレージを格納できます。コレクションによってパフォーマンスを分離できます。各コレクションは、同じデータベースまたはアカウント内の他のコレクションと共有されないスループットでプロビジョニングできます。DocumentDB データベースのサイズは柔軟で、数 GB から数 TB に上る SSD ベースのドキュメント ストレージとプロビジョニング済みスループットが用意されています。従来の RDBMS データベースとは異なり、DocumentDB のデータベースは単一のコンピューターにスコープが制限されず、複数のコンピューターまたはクラスターにまたがることができます。
+DocumentDB accounts can be created through the [Azure portal](documentdb-create-account.md), or by using [an ARM template or Azure CLI](documentdb-automation-resource-manager-cli.md).
 
-DocumentDB では、アプリケーションの規模を拡大することが必要になった時点で、さらに多くのコレクション、データベース、またはその両方を作成できます。データベースは [Azure ポータル](documentdb-create-database.md)またはいずれかの [DocumentDB SDK](documentdb-dotnet-samples.md) を使用して作成できます。
+## <a name="databases"></a>Databases
+A single DocumentDB database can contain practically an unlimited amount of document storage grouped into collections. Collections provide performance isolation - each collection can be provisioned with throughput that is not shared with other collections in the same database or account. A DocumentDB database is elastic in size, ranging from GBs to TBs of SSD backed document storage and provisioned throughput. Unlike a traditional RDBMS database, a database in DocumentDB is not scoped to a single machine and can span multiple machines or clusters.  
 
-## データベース コレクション
-各 DocumentDB データベースには 1 つまたは複数のコレクションを格納できます。コレクションはドキュメント ストレージやドキュメント処理の際に、可用性の高いデータ パーティションとして機能します。各コレクションには多種多様なスキーマを持つドキュメントを保存できます。DocumentDB の自動インデックス作成機能やクエリ機能により、ドキュメントを簡単にフィルター処理して取得できます。コレクションは、ドキュメント ストレージとクエリ実行のスコープを提供します。コレクションは、そこに含まれるすべてのドキュメントのトランザクション ドメインでもあります。コレクションには、Azure ポータルまたは SDK を使用して設定された値に基づいてスループットが割り当てられます。
+With DocumentDB, as you need to scale your applications, you can create more collections or databases or both. Databases can be created through the [Azure portal](documentdb-create-database.md) or through any one of the [DocumentDB SDKs](documentdb-dotnet-samples.md).   
 
-コレクションは、DocumentDB によって自動的に 1 つまたは複数の物理サーバーにパーティション分割されます。プロビジョニングするスループットは、コレクションを作成するときに、1 秒あたりの要求ユニット数とパーティション キー プロパティの観点から指定できます。DocumentDB がドキュメントを複数のパーティションに分散し、クエリなどの要求をルーティングする際に、このプロパティの値が使用されます。パーティション キーの値は、ストアド プロシージャやトリガーに対するトランザクションの境界としても作用します。コレクションごとに、同じアカウント内の他のコレクションとは共有されない、そのコレクション専用のスループットの量が予約されます。したがって、ストレージとスループットの両方の観点からアプリケーションをスケールアウトすることができます。
+## <a name="database-collections"></a>Database collections
+Each DocumentDB database can contain one or more collections. Collections act as highly available data partitions for document storage and processing. Each collection can store documents with heterogeneous schema. DocumentDB's automatic indexing and query capabilities allow you to easily filter and retrieve documents. A collection provides the scope for document storage and query execution. A collection is also a transaction domain for all the documents contained within it. Collections are allocated throughput based on the value set in the Azure portal or via the SDKs. 
 
-コレクションは [Azure ポータル](documentdb-create-collection.md)またはいずれかの [DocumentDB SDK](documentdb-sdk-dotnet.md) を使用して作成できます。
+Collections are automatically partitioned into one or more physical servers by DocumentDB. When you create a collection, you can specify the provisioned throughput in terms of request units per second and a partition key property. The value of this property is used by DocumentDB to distribute documents among partitions and route requests like queries. The partition key value also acts as the transaction boundary for stored procedures and triggers. Each collection has a reserved amount of throughput specific to that collection, which is not shared with other collections in the same account. Therefore, you can scale out your application both in terms of storage and throughput. 
+
+Collections can be created through the [Azure portal](documentdb-create-collection.md) or through any one of the [DocumentDB SDKs](documentdb-sdk-dotnet.md).   
  
-## 要求ユニットとデータベース操作
+## <a name="request-units-and-database-operations"></a>Request units and database operations
 
-コレクションを作成するときに、1 秒あたりの[要求ユニット (RU)](documentdb-request-units.md) でスループットを予約します。ハードウェア リソースの検討や管理をする代わりに、**要求ユニット**をさまざまなデータベース操作の実行やアプリケーション要求の処理に必要なリソースの 1 つのメジャーとして考えることができます。1 KB のドキュメントを読み取るには、コレクション内に格納されている項目数や、同時に実行されている並列要求数に関係なく、同じ 1 RU が使用されます。SQL クエリなどの複雑な操作を含め、DocumentDB に対するすべての要求には予測可能な RU 値があり、開発時に判断することができます。アプリケーションに対応するドキュメントのサイズと各処理 (読み取り、書き込み、クエリ) の頻度がわかっていれば、アプリケーションのニーズに合わせて正確な量のスループットをプロビジョニングし、パフォーマンスのニーズが変化するに従ってデータベースを拡張または縮小することができます。
+When you create a collection, you reserve throughput in terms of [request units (RU)](documentdb-request-units.md) per second. Instead of thinking about and managing hardware resources, you can think of a **request unit** as a single measure for the resources required to perform various database operations and service an application request. A read of a 1 KB document consumes the same 1 RU regardless of the number of items stored in the collection or the number of concurrent requests running at the same. All requests against DocumentDB, including complex operations like SQL queries have a predictable RU value that can be determined at development time. If you know the size of your documents and the frequency of each operation (reads, writes and queries) to support for your application, you can provision the exact amount of throughput to meet your application's needs, and scale your database up and down as your performance needs change. 
 
-各コレクションは、1 秒あたり 100 要求ユニットのブロックのスループットで、1 秒あたり数百から数百万の要求ユニットまで予約できます。プロビジョニングしたスループットは、そのコレクションの有効期間にわたって、アプリケーションの処理ニーズの変化やアクセス パターンに合わせて調整できます。詳細については、[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)に関する記事を参照してください。
+Each collection can be reserved with throughput in blocks of 100 request units per second, from hundreds up to millions of request units per second. The provisioned throughput can be adjusted throughout the life of a collection to adapt to the changing processing needs and access patterns of your application. For more information, see [DocumentDB performance levels](documentdb-performance-levels.md). 
 
->[AZURE.IMPORTANT] コレクションは課金対象のエンティティです。コストは、コレクションのプロビジョニングされたスループットで決まります。1 秒あたりの要求ユニット数と、合計使用ストレージ (GB 単位) で測定されます。
+>[AZURE.IMPORTANT] Collections are billable entities. The cost is determined by the provisioned throughput of the collection measured in request units per second along with the total consumed storage in gigabytes. 
 
-挿入、削除、クエリ、または格納されたプロシージャ実行などの各処理には、どのくらいの要求ユニットが使用されるでしょうか。 要求単位は、要求の処理コストを標準化した測定単位です。1 KB のドキュメントの読み取りは 1 RU ですが、同じドキュメントを挿入、置換、または削除する要求では、必要になるサービスの処理が多くなるため、使用される要求ユニットも多くなります。サービスからの各応答には、要求で使用される要求ユニットをレポートするカスタム ヘッダー (`x-ms-request-charge`) が含まれます。このヘッダーには、[SDK](documentdb-sdk-dotnet.md) を介してアクセスすることもできます。.NET SDK では、[RequestCharge](https://msdn.microsoft.com/library/azure/dn933057.aspx#P:Microsoft.Azure.Documents.Client.ResourceResponse`1.RequestCharge) は [ResourceResponse](https://msdn.microsoft.com/library/azure/dn799209.aspx) オブジェクトのプロパティです。1 回の呼び出しを行う前にスループット ニーズを見積もる場合は、[キャパシティ プランナー](documentdb-request-units.md#estimating-throughput-needs)をこの見積もりに利用することができます。
+How many request units will a particular operation like insert, delete, query, or stored procedure execution consume? A request unit is a normalized measure of request processing cost. A read of a 1 KB document is 1 RU, but a request to insert, replace or delete the same document will consume more processing from the service and thereby more request units. Each response from the service includes a custom header (`x-ms-request-charge`) that reports the request units consumed for the request. This header is also accessible through the [SDKs](documentdb-sdk-dotnet.md). In the .NET SDK, [RequestCharge](https://msdn.microsoft.com/library/azure/dn933057.aspx#P:Microsoft.Azure.Documents.Client.ResourceResponse`1.RequestCharge) is a property of the [ResourceResponse](https://msdn.microsoft.com/library/azure/dn799209.aspx) object. If you want to estimate your throughput needs before making a single call, you can use the [capacity planner](documentdb-request-units.md#estimating-throughput-needs) to help with this estimation. 
 
->[AZURE.NOTE] 1 KB のドキュメントは 1 要求ユニットという基本は、[セッションの一貫性](documentdb-consistency-levels.md)に関するドキュメントの単純な GET に対応します。
+>[AZURE.NOTE] The baseline of 1 request unit for a 1 KB document corresponds to a simple GET of the document with [Session Consistency](documentdb-consistency-levels.md). 
 
-DocumentDB データベース アカウントに対する操作に使用される要求ユニットに影響を及ぼす要因はいくつかあります。その要因には次のものがあります。
+There are several factors that impact the request units consumed for an operation against a DocumentDB database account. These factors include:
 
-- ドキュメント サイズ。ドキュメントのサイズが増大すると、データの読み取りまたは書き込みに使用される単位も増加します。
-- プロパティの数。すべてのプロパティに既定でインデックスが作成されると想定すると、プロパティ数の増加に伴って、ドキュメントの書き込みに使用される単位が増加します。
-- データの整合性。Strong または Bounded Staleness のデータの整合性レベルを使用すると、ドキュメントの参照に使用される単位が増加します。
-- インデックス付きプロパティ。各コレクションのインデックス ポリシーによって、既定でインデックスが作成されるプロパティが決まります。インデックス付きプロパティの数を制限することで、使用する要求ユニットを削減できます。
-- ドキュメントのインデックス作成。各ドキュメントには既定で自動的にインデックスが作成されます。一部のドキュメントにインデックスを作成しないようにすると、使用される要求ユニットが少なくなります。
+- Document size. As document sizes increase the units consumed to read or write the data will also increase.
+- Property count. Assuming default indexing of all properties, the units consumed to write a document will increase as the property count increases.
+- Data consistency. When using data consistency levels of Strong or Bounded Staleness, additional units will be consumed to read documents.
+- Indexed properties. An index policy on each collection determines which properties are indexed by default. You can reduce your request unit consumption by limiting the number of indexed properties. 
+- Document indexing. By default each document is automatically indexed, you will consume fewer request units if you choose not to index some of your documents.
 
-詳細については、[DocumentDB の要求ユニット](documentdb-request-units.md)に関するページを参照してください。
+For more information, see [DocumentDB request units](documentdb-request-units.md). 
 
-たとえば、次の表は、3 種類のサイズのドキュメント (1 KB、4 KB、64 KB) を 2 種類のパフォーマンス レベル (500 読み取り/秒 + 100 書き込み/秒と、500 読み取り/秒 + 500 書き込み/秒) でプロビジョニングした場合の要求ユニット数を示しています。データの一貫性はセッションで構成され、インデックス作成ポリシーはなしに設定されています。
+For example, here's a table that shows how many request units to provision at three different document sizes (1KB, 4KB, and 64KB) and at two different performance levels (500 reads/second + 100 writes/second and 500 reads/second + 500 writes/second). The data consistency was configured at Session, and the indexing policy was set to None.
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
-            <td valign="top"><p><strong>ドキュメント サイズ</strong></p></td>
-            <td valign="top"><p><strong>読み取り/秒</strong></p></td>
-            <td valign="top"><p><strong>書き込み数/秒</strong></p></td>
-            <td valign="top"><p><strong>要求ユニット</strong></p></td>
+            <td valign="top"><p><strong>Document size</strong></p></td>
+            <td valign="top"><p><strong>Reads/second</strong></p></td>
+            <td valign="top"><p><strong>Writes/second</strong></p></td>
+            <td valign="top"><p><strong>Request units</strong></p></td>
         </tr>
         <tr>
             <td valign="top"><p>1 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>100</p></td>
-            <td valign="top"><p>(500 * 1) + (100 * 5) = 1,000 RU/秒</p></td>
+            <td valign="top"><p>(500 * 1) + (100 * 5) = 1,000 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>1 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>500</p></td>
-            <td valign="top"><p>(500 * 5) + (100 * 5) = 3,000 RU/秒</p></td>
+            <td valign="top"><p>(500 * 5) + (100 * 5) = 3,000 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>4 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>100</p></td>
-            <td valign="top"><p>(500 * 1.3) + (100 * 7) = 1,350 RU/秒</p></td>
+            <td valign="top"><p>(500 * 1.3) + (100 * 7) = 1,350 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>4 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>500</p></td>
-            <td valign="top"><p>(500 * 1.3) + (500 * 7) = 4,150 RU/秒</p></td>
+            <td valign="top"><p>(500 * 1.3) + (500 * 7) = 4,150 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>64 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>100</p></td>
-            <td valign="top"><p>(500 * 10) + (100 * 48) = 9,800 RU/秒</p></td>
+            <td valign="top"><p>(500 * 10) + (100 * 48) = 9,800 RU/s</p></td>
         </tr>
         <tr>
             <td valign="top"><p>64 KB</p></td>
             <td valign="top"><p>500</p></td>
             <td valign="top"><p>500</p></td>
-            <td valign="top"><p>(500 * 10) + (500 * 48) = 29,000 RU/秒</p></td>
+            <td valign="top"><p>(500 * 10) + (500 * 48) = 29,000 RU/s</p></td>
         </tr>
     </tbody>
 </table>
 
-クエリ、ストアド プロシージャ、トリガーは、実行する操作の複雑さに基づいて要求ユニットを使用します。アプリケーションを開発するときは、ヘッダーを調べて、各操作で使用される要求ユニットの量を詳しく把握するようにしてください。
+Queries, stored procedures, and triggers consume request units based on the complexity of the operations being performed. As you develop your application, inspect the request charge header to better understand how each operation is consuming request unit capacity.  
 
 
-## 整合性レベルの選択とスループット
-既定の一貫性レベルの選択内容により、スループットと待機時間が影響を受けます。既定の一貫性レベルは、プログラムで設定することも Azure ポータルを通じて設定することもできます。また、要求ベースで一貫性レベルをオーバーライドすることもできます。既定の整合性レベルは、モノトニックな読み取り/書き込みおよび書き込みの読み取り保証を提供する **Session** 整合性レベルに設定されています。"Session" 整合性レベルは、ユーザー中心のアプリケーションに効果的で、整合性とパフォーマンスのトレードオフが優れたバランスで実現されます。
+## <a name="choice-of-consistency-level-and-throughput"></a>Choice of consistency level and throughput
+The choice of default consistency level has an impact on the throughput and latency. You can set the default consistency level both programmatically and through the Azure portal. You can also override the consistency level on a per request basis. By default, the consistency level is set to **Session**, which provides monotonic read/writes and read your write guarantees. Session consistency is great for user-centric applications and provides an ideal balance of consistency and performance trade-offs.    
 
-Azure ポータルで整合性レベルを変更する手順については、「[DocumentDB アカウントの管理方法](documentdb-manage-account.md#consistency)」を参照してください。または、一貫性レベルの詳細については、「[一貫性レベルの使用](documentdb-consistency-levels.md)」を参照してください。
+For instructions on changing your consistency level on the Azure portal, see [How to Manage a DocumentDB Account](documentdb-manage-account.md#consistency). Or, for more information on consistency levels, see [Using consistency levels](documentdb-consistency-levels.md).
 
-## プロビジョニング済みドキュメント ストレージとインデックス オーバーヘッド
-DocumentDB では、単一のパーティションとパーティション分割コレクションの両方の作成がサポートされています。DocumentDB 内の各パーティションは、最大 10 GB の SSD ベースのストレージをサポートしています。10 GB のドキュメント ストレージには、ドキュメントとインデックス用のストレージが含まれます。既定では、DocumentDB コレクションは、セカンダリ インデックスまたはスキーマを明示的に必要とすることなくすべてのドキュメントのインデックスを自動的に作成するように構成されます。DocumentDB を使用するアプリケーションに基づくと、一般的なインデックス オーバーヘッドは 2 ～ 20% です。DocumentDB で使用しているインデックス作成テクノロジでは、プロパティの値に関係なく、既定の設定でインデックス オーバーヘッドがドキュメント サイズの 80% を超えることはありません。
+## <a name="provisioned-document-storage-and-index-overhead"></a>Provisioned document storage and index overhead
+DocumentDB supports the creation of both single-partition and partitioned collections. Each partition in DocumentDB supports up to 10 GB of SSD backed storage. The 10GB of document storage includes the documents plus storage for the index. By default, a DocumentDB collection is configured to automatically index all of the documents without explicitly requiring any secondary indices or schema. Based on applications using DocumentDB, the typical index overhead is between 2-20%. The indexing technology used by DocumentDB ensures that regardless of the values of the properties, the index overhead does not exceed more than 80% of the size of the documents with default settings. 
 
-既定では、DocumentDB によって自動的にすべてのドキュメントのインデックスが作成されます。ただし、インデックス オーバーヘッドを調整する場合は、「[DocumentDB インデックス作成ポリシー](documentdb-indexing-policies.md)」で説明されているように、ドキュメントの挿入時または置換時におけるインデックス作成の対象から特定のドキュメントを除外することができます。コレクション内のすべてのドキュメントをインデックス作成の対象から除外するように DocumentDB コレクションを構成できます。また、[コレクションのインデックス作成ポリシーのカスタマイズ](documentdb-indexing-policies.md#configuring-the-indexing-policy-of-a-collection)に関するトピックで説明されているように、JSON ドキュメントのワイルドカードを使用して特定のプロパティまたはパスに関してのみ選択的にインデックスを作成するように DocumentDB コレクションを構成することもできます。プロパティまたはドキュメントを除外すると書き込みスループットが向上し、消費する要求ユニットが少なくなります。
+By default all documents are indexed by DocumentDB automatically. However, if you want to fine-tune the index overhead, you can choose to remove certain documents from being indexed at the time of inserting or replacing a document, as described in [DocumentDB indexing policies](documentdb-indexing-policies.md). You can configure a DocumentDB collection to exclude all documents within the collection from being indexed. You can also configure a DocumentDB collection to selectively index only certain properties or paths with wildcards of your JSON documents, as described in [Configuring the indexing policy of a collection](documentdb-indexing-policies.md#configuring-the-indexing-policy-of-a-collection). Excluding properties or documents also improves the write throughput – which means you will consume fewer request units.   
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-DocumentDB のしくみについて引き続き学習するには、「[Azure DocumentDB でのパーティション分割とスケーリング](documentdb-partition-data.md)」を参照してください。
+To continue learning about how DocumentDB works, see [Partitioning and scaling in Azure DocumentDB](documentdb-partition-data.md).
 
-Azure ポータルでパフォーマンス レベルを監視する手順については、[DocumentDB アカウントの監視](documentdb-monitor-accounts.md)に関するページを参照してください。コレクションのパフォーマンス レベルの選択の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
+For instructions on monitoring performance levels on the Azure portal, see [Monitor a DocumentDB account](documentdb-monitor-accounts.md). For more information on choosing performance levels for collections, see [Performance levels in DocumentDB](documentdb-performance-levels.md).
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

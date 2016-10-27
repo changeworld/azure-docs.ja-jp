@@ -1,39 +1,40 @@
 <properties 
-	pageTitle="マルチシャード クエリ |Microsoft Azure" 
-	description="エラスティック データベース クライアント ライブラリを使用して複数のシャードを対象にクエリを実行します。" 
-	services="sql-database" 
-	documentationCenter="" 
-	manager="jhubbard" 
-	authors="torsteng" 
-	editor=""/>
+    pageTitle="Multi-shard querying | Microsoft Azure" 
+    description="Run queries across shards using the elastic database client library." 
+    services="sql-database" 
+    documentationCenter="" 
+    manager="jhubbard" 
+    authors="torsteng" 
+    editor=""/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="sql-database" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="04/12/2016" 
-	ms.author="torsteng"/>
+    ms.service="sql-database" 
+    ms.workload="sql-database" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="04/12/2016" 
+    ms.author="torsteng"/>
 
-# マルチシャード クエリ実行
 
-## 概要
+# <a name="multi-shard-querying"></a>Multi-shard querying
 
-[Elastic Database ツール](sql-database-elastic-scale-introduction.md)を利用すれば、シャード化されたデータベース ソリューションを作成できます。**マルチシャード クエリ実行**は、複数のシャードにまたがるクエリが実行が必要となるデータ収集/レポート作成などのタスクに使用されます(すべての操作を単一のシャード上で実行する[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)と比べてください)。
+## <a name="overview"></a>Overview
 
-## 概要
+With the [Elastic Database tools](sql-database-elastic-scale-introduction.md), you can create sharded database solutions. **Multi-shard querying** is used for tasks such as data collection/reporting that require running a query that stretches across several shards. (Contrast this to [data-dependent routing](sql-database-elastic-scale-data-dependent-routing.md), which performs all work on a single shard.) 
 
-1. [**TryGetRangeShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)、[**TryGetListShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)、または [**GetShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx) メソッドを使用して、[**RangeShardMap**](https://msdn.microsoft.com/library/azure/dn807318.aspx) または [**ListShardMap**](https://msdn.microsoft.com/library/azure/dn807370.aspx) を取得する。「[**ShardMapManager の作成**](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager)」と「[**RangeShardMap または ListShardMap の取得**](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)」を参照してください。
-2. **[MultiShardConnection](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection.aspx)** オブジェクトを作成する。
-2. **[MultiShardCommand](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.aspx)** を作成する。 
-3. **[CommandText プロパティ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.commandtext.aspx#P:Microsoft.Azure.SqlDatabase.ElasticScale.Query.MultiShardCommand.CommandText)**に T-SQL コマンドを設定する。
-3. **[ExecuteReader メソッド](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.executereader.aspx)**を呼び出してコマンドを実行する。
-4. **[MultiShardDataReader クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader.aspx)**を使用して結果を表示する。 
+## <a name="overview"></a>Overview
 
-## 例
+1. Get a [**RangeShardMap**](https://msdn.microsoft.com/library/azure/dn807318.aspx) or [**ListShardMap**](https://msdn.microsoft.com/library/azure/dn807370.aspx) using the [**TryGetRangeShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx), the [**TryGetListShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx), or the [**GetShardMap**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx) method. See [**Constructing a ShardMapManager**](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager) and [**Get a RangeShardMap or ListShardMap**](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap).
+2. Create a **[MultiShardConnection](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardconnection.aspx)** object.
+2. Create a **[MultiShardCommand](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.aspx)**. 
+3. Set the **[CommandText property](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.commandtext.aspx#P:Microsoft.Azure.SqlDatabase.ElasticScale.Query.MultiShardCommand.CommandText)** to a T-SQL command.
+3. Execute the command by calling the **[ExecuteReader method](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multishardcommand.executereader.aspx)**.
+4. View the results using the **[MultiShardDataReader class](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader.aspx)**. 
 
-次のコードは、*myShardMap* という名前の **ShardMap** を使用してマルチシャード クエリを実行する方法を示しています。
+## <a name="example"></a>Example
+
+The following code illustrates the usage of multi-shard querying using a given **ShardMap** named *myShardMap*. 
 
     using (MultiShardConnection conn = new MultiShardConnection( 
                                         myShardMap.GetShards(), 
@@ -48,36 +49,39 @@
             cmd.ExecutionPolicy = MultiShardExecutionPolicy.PartialResults; 
 
             using (MultiShardDataReader sdr = cmd.ExecuteReader()) 
-            	{ 
-                	while (sdr.Read())
-                    	{ 
-                        	var c1Field = sdr.GetString(0); 
-                        	var c2Field = sdr.GetFieldValue<int>(1); 
-                        	var c3Field = sdr.GetFieldValue<Int64>(2);
-                    	} 
-             	} 
+                { 
+                    while (sdr.Read())
+                        { 
+                            var c1Field = sdr.GetString(0); 
+                            var c2Field = sdr.GetFieldValue<int>(1); 
+                            var c3Field = sdr.GetFieldValue<Int64>(2);
+                        } 
+                } 
            } 
     } 
 
  
-主な相違点は、マルチシャード接続の構築です。**SqlConnection** が単一のデータベースに作用する一方、**MultiShardConnection** は入力として***シャードのコレクション***を受け取ります。シャードのコレクションは、シャード マップから設定します。次に、**UNION ALL** セマンティクスを使用してシャードのコレクションに対するクエリを実行して、単一の全体的な結果を生成します。必要に応じて、コマンドの **ExecutionOptions** プロパティを使用して、行の元になっているシャードの名前を出力に追加できます。
+A key difference is the construction of multi-shard connections. Where **SqlConnection** operates on a single database, the **MultiShardConnection** takes a ***collection of shards*** as its input. Populate the collection of shards from a shard map. The query is then executed on the collection of shards using **UNION ALL** semantics to assemble a single overall result. Optionally, the name of the shard where the row originates from can be added to the output using the **ExecutionOptions** property on command. 
 
-ここで、**myShardMap.GetShards()** の呼び出しに注目してください。このメソッドは、シャード マップからすべてのシャードを取得し、すべての関連データベースを対象にクエリを実行する簡単な方法を提供します。マルチシャード クエリのためのシャードのコレクションは、**myShardMap.GetShards()** 呼び出しから返されたコレクションに対して LINQ クエリを実行することによって、さらに絞り込むことができます。部分的な結果のポリシーとの組み合わせにおいて、マルチシャード クエリ実行の現在の機能は、数十から最大で数百のシャードで適切に動作するように設計されています。
+Note the call to **myShardMap.GetShards()**. This method retrieves all shards from the shard map and provides an easy way to run a query across all relevant databases. The collection of shards for a multi-shard query can be refined further by performing a LINQ query over the collection returned from the call to **myShardMap.GetShards()**. In combination with the partial results policy, the current capability in multi-shard querying has been designed to work well for tens up to hundreds of shards.
 
-現在のマルチシャード クエリ実行には、クエリの対象となるシャードとシャードレットの検証が欠けているという制限があります。データ依存ルーティングでは特定のシャードがシャード マップの一部であることが照会時に確認されますが、マルチシャード クエリ実行ではこのようなチェックは実行されません。そのため、シャード マップから削除されたデータベースに対してマルチシャード クエリが実行される可能性があります。
+A limitation with multi-shard querying is currently the lack of validation for shards and shardlets that are queried. While data-dependent routing verifies that a given shard is part of the shard map at the time of querying, multi-shard queries do not perform this check. This can lead to multi-shard queries running on databases that have  been removed from the shard map.
 
-## マルチシャード クエリと分割/マージ操作
+## <a name="multi-shard-queries-and-split-merge-operations"></a>Multi-shard queries and split-merge operations
 
-マルチシャード クエリでは、照会されたデータベース上のシャードレットが進行中の分割/マージ操作に参加しているかどうかは確認されません。(「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください)。 そのため、同じマルチシャード クエリ内で複数のデータベースに対して同じシャードレットの行が表示される不整合が発生する可能性があります。これらの制限を考慮したうえで、マルチシャード クエリを実行するときは、進行中の分割/マージ操作とシャード マップへの変更をドレインすることを検討してください。
+Multi-shard queries do not verify whether shardlets on the queried database are participating in ongoing split-merge operations. (See [Scaling using the Elastic Database split-merge tool](sql-database-elastic-scale-overview-split-and-merge.md).) This can lead to inconsistencies where rows from the same shardlet show for multiple databases in the same multi-shard query. Be aware of these limitations and consider draining ongoing split-merge operations and changes to the shard map while performing multi-shard queries.
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
-## 関連項目
-**[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient.aspx)** のクラスとメソッド。
+## <a name="see-also"></a>See also
+**[System.Data.SqlClient](http://msdn.microsoft.com/library/System.Data.SqlClient.aspx)** classes and methods.
 
 
-[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用してシャードを管理します。ライブラリには、[Microsoft.Azure.SqlDatabase.ElasticScale.Query](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.aspx) と呼ばれる名前空間があり、これを使用すると、1 つのクエリと結果を使用して複数のシャードを照会できます。この名前空間により、シャードのコレクションに対するクエリ抽象化が提供されます。また、多数のシャードを照会したときのエラーを処理するための代替実行ポリシー (具体的には、部分的な結果) も提供されます。
+Manage shards using the [Elastic Database client library](sql-database-elastic-database-client-library.md). Includes a  namespace called [Microsoft.Azure.SqlDatabase.ElasticScale.Query](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.aspx) that provides the ability to query multiple shards using a single query and result. It provides a querying abstraction over a collection of shards. It also provides alternative execution policies, in particular partial results, to deal with failures when querying over many shards.  
 
  
 
-<!---HONumber=AcomDC_0420_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

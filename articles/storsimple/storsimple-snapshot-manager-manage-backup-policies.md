@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager のバックアップ ポリシー | Microsoft Azure"
-   description="StorSimple Snapshot Manager MMC スナップインを使用して、スケジュールされたバックアップを管理するバックアップ ポリシーを作成し、管理する方法について説明します。"
+   pageTitle="StorSimple Snapshot Manager backup policies | Microsoft Azure"
+   description="Describes how to use the StorSimple Snapshot Manager MMC snap-in to create and manage the backup policies that control scheduled backups."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,109 +15,114 @@
    ms.date="05/12/2016"
    ms.author="v-sharos" />
 
-# StorSimple Snapshot Manager を使用したバックアップ ポリシーの作成と管理
 
-## 概要
+# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Use StorSimple Snapshot Manager to create and manage backup policies
 
-バックアップ ポリシーでは、ローカルまたはクラウドのボリューム データをバックアップするスケジュールを作成します。バックアップ ポリシーを作成する際に、アイテム保持ポリシーも指定できます (最大 64 個のスナップショットを保持できます)。 バックアップ ポリシーの詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」の「[バックアップの種類](storsimple-what-is-snapshot-manager.md#backup-type)」をご覧ください。
+## <a name="overview"></a>Overview
 
-このチュートリアルでは、次の方法について説明します。
+A backup policy creates a schedule for backing up volume data locally or in the cloud. When you create a backup policy, you can also specify a retention policy. (You can retain a maximum of 64 snapshots.) For more information about backup policies, see [Backup types](storsimple-what-is-snapshot-manager.md#backup-type) in [StorSimple 8000 series: a hybrid cloud solution](storsimple-overview.md).
 
-- バックアップ ポリシーの作成 
-- バックアップ ポリシーの編集 
-- バックアップ ポリシーの削除 
+This tutorial explains how to:
 
-## バックアップ ポリシーの作成
+- Create a backup policy 
+- Edit a backup policy 
+- Delete a backup policy 
 
-新しいバックアップ ポリシーを作成するには、次の手順に従います。
+## <a name="create-a-backup-policy"></a>Create a backup policy
 
-#### バックアップ ポリシーを作成するには
+Use the following procedure to create a new backup policy.
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
+#### <a name="to-create-a-backup-policy"></a>To create a backup policy
 
-2. **スコープ** ウィンドウで **[バックアップ ポリシー]** を右クリックし、**[バックアップ ポリシーの作成]** をクリックします。
+1. Click the desktop icon to start StorSimple Snapshot Manager.
 
-    ![バックアップ ポリシーの作成](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
+2. In the **Scope** pane, right-click **Backup Policies**, and click **Create Backup Policy**.
 
-    **[ポリシーの作成]** ダイアログ ボックスが表示されます。
+    ![Create a backup policy](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
-    ![[ポリシーの作成] - [全般] タブ](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
+    The **Create a Policy** dialog box appears. 
 
-3. **[全般]** タブで、次の情報を入力します。
+    ![Create a Policy - General tab](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
 
-   1. **[名前]** ボックスに、ポリシーの名前を入力します。
+3. On the **General** tab, complete the following information:
 
-   2. **[ボリューム グループ]** ボックスに、ポリシーに関連付けるボリューム グループの名前を入力します。
+   1. In the **Name** text box, type a name for the policy.
 
-   3. **[ローカル スナップショット]** または **[クラウド スナップショット]** を選択します。
+   2. In the **Volume group** text box, type the name of the volume group associated with the policy.
 
-   4. 保持するスナップショットの数を選択します。**[すべて]** を選択すると、64 個のスナップショットが保持されます (最大)。
+   3. Select either **Local Snapshot** or **Cloud Snapshot**.
 
-4. **[スケジュール]** タブをクリックします。
+   4. Select the number of snapshots to retain. If you select **All**, 64 snapshots will be retained (the maximum). 
 
-    ![[ポリシーの作成] - [スケジュール] タブ](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
+4. Click the **Schedule** tab.
 
-5. **[スケジュール]** タブで、次の情報を入力します。
+    ![Create a Policy - Schedule tab](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
 
-   1. **[有効化]** チェック ボックスをオンにし、次回のバックアップをスケジュールします。
+5. On the **Schedule** tab, complete the following information: 
 
-   2. **[設定]** で、**[1 回限り]**、**[毎日]**、**[毎週]**、または **[毎月]** を選択します。
+   1. Click the **Enable** check box to schedule the next backup.
 
-   3. **[開始]** ボックスで、カレンダー アイコンをクリックし、開始日を選択します。
+   2. Under **Settings**, select **One time**, **Daily**, **Weekly**, or **Monthly**. 
 
-   4. **[詳細設定]** では、必要に応じて、繰り返しスケジュールと終了日を設定できます。
+   3. In the **Start** text box, click the calendar icon and select a start date.
 
-   5. **[OK]** をクリックします。
+   4. Under **Advanced Settings**, you can set optional repeat schedules and an end date.
 
-バックアップ ポリシーを作成すると、**結果**ウィンドウに次の情報が表示されます。
+   5. Click **OK**.
 
-- **[名前]** - バックアップ ポリシーの名前。
+After you create a backup policy, the following information appears in the **Results** pane:
 
-- **[種類]** - ローカル スナップショットまたはクラウド スナップショット。
+- **Name** – the name of backup policy.
 
-- **[ボリューム グループ]** - ポリシーに関連付けられているボリューム グループ。
+- **Type** – local snapshot or cloud snapshot.
 
-- **[保有期間]** - 保持するスナップショットの数。最大 64 個です。
+- **Volume Group** – the volume group associated with the policy.
 
-- **[作成日]** - このポリシーの作成日。
+- **Retention** – the number of snapshots retained; the maximum is 64.
 
-- **[有効化]** - ポリシーが現在有効になっているかどうか。**True** はポリシーが有効になっていることを示し、**False** は無効になっていることを示します。
+- **Created** – the date that this policy was created.
 
-## バックアップ ポリシーの編集
+- **Enabled** – whether the policy is currently in effect: **True** indicates that it is in effect; **False** indicates that it is not in effect. 
 
-既存のバックアップ ポリシーを編集するには、次の手順に従います。
+## <a name="edit-a-backup-policy"></a>Edit a backup policy
 
-#### バックアップ ポリシーを編集するには
+Use the following procedure to edit an existing backup policy.
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
+#### <a name="to-edit-a-backup-policy"></a>To edit a backup policy
 
-2. **スコープ** ウィンドウで **[バックアップ ポリシー]** ノードをクリックします。**結果**ウィンドウにすべてのバックアップ ポリシーが表示されます。
+1. Click the desktop icon to start StorSimple Snapshot Manager. 
 
-3. 編集するポリシーを右クリックし、**[編集]** をクリックします。
+2. In the **Scope** pane, click the **Backup Policies** node. All the backup policies appear in the **Results** pane. 
 
-    ![バックアップ ポリシーの編集](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
+3. Right-click the policy that you want to edit, and then click **Edit**. 
 
-4. **[ポリシーの作成]** ウィンドウが表示されたら、変更内容を入力し、**[OK]** をクリックします。
+    ![Edit a backup policy](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png) 
 
-## バックアップ ポリシーの削除
+4. When the **Create a Policy** window appears, enter your changes, and then click **OK**. 
 
-バックアップ ポリシーを削除するには、次の手順に従います。
+## <a name="delete-a-backup-policy"></a>Delete a backup policy
 
-#### バックアップ ポリシーを削除するには
+Use the following procedure to delete a backup policy.
 
-1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
+#### <a name="to-delete-a-backup-policy"></a>To delete a backup policy
 
-2. **スコープ** ウィンドウで **[バックアップ ポリシー]** ノードをクリックします。**結果**ウィンドウにすべてのバックアップ ポリシーが表示されます。
+1. Click the desktop icon to start StorSimple Snapshot Manager. 
 
-3. 削除するバックアップ ポリシーを右クリックし、**[削除]** をクリックします。
+2. In the **Scope** pane, click the **Backup Policies** node. All the backup policies appear in the **Results** pane. 
 
-4. 確認メッセージが表示されたら、**[はい]** をクリックします。
+3. Right-click the backup policy that you want to delete, and then click **Delete**.
 
-    ![バックアップ ポリシーの削除の確認](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
+4. When the confirmation message appears, click **Yes**.
 
-## 次のステップ
+    ![Delete backup policy confirmation](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
-- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
-- [StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理方法](storsimple-snapshot-manager-manage-backup-jobs.md)
+## <a name="next-steps"></a>Next steps
 
-<!---HONumber=AcomDC_0518_2016-->
+- Learn how to [use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
+- Learn how to [use StorSimple Snapshot Manager to view and manage backup jobs](storsimple-snapshot-manager-manage-backup-jobs.md).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

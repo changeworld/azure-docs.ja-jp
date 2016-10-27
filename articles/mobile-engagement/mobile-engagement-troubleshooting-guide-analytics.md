@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure モバイル エンゲージメント関連のトラブルシューティング ガイド - 分析" 
-   description="Azure モバイル エンゲージメントにおける分析、監視、セグメント化、ダッシュボードの問題に関するトラブルシューティング" 
+   pageTitle="Azure Mobile Engagement Troubleshooting Guide - Analytics" 
+   description="Troubleshooting Analytics, Monitoring, Segmentation, and Dashboard issues in Azure Mobile Engagement" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -16,53 +16,58 @@
    ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
-# 分析、監視、セグメント化、ダッシュ ボードの問題のトラブルシューティング ガイド
 
-次に説明するのは、Azure モバイル エンゲージメントが、アプリケーション、デバイス、ユーザーの情報を収集する方法に関して発生する可能性のある問題です。
+# <a name="troubleshooting-guide-for-analytics,-monitoring,-segmentation,-and-dashboard-issues"></a>Troubleshooting guide for Analytics, Monitoring, Segmentation, and Dashboard issues
 
-## 情報の不足 / 遅延
+The following are possible issues you may encounter with how Azure Mobile Engagement gathers information about your applications, devices, and users.
 
-### 問題
-- 分析、セグメント化、ダッシュ ボードに表示される際に情報が遅延します。
-- 監視によって情報が失われます。
-- 分析、セグメント化、ダッシュ ボードによって情報が失われます。
-- セグメント化が限界に達しています。
+## <a name="missing/delayed-information"></a>Missing/Delayed information
 
-### 原因
+### <a name="issue"></a>Issue
+- Information is delayed in appearing in Analytics, Segmentation, or Dashboard.
+- Information is missing from Monitoring.
+- Information is missing from Analytics, Segmentation, or Dashboard.
+- Hitting segmentation limits.
 
-- 分析 API、監視 API、セグメント API を使用して、UI で失われたデータが API で表示できるかどうかを確認できます。
-- Azure モバイル エンゲージメント SDK がアプリに正しく統合されていない場合は、分析、セグメント化、監視、またはダッシュ ボードで情報を表示できません。
-- セグメントは一度作成すると変更できませんが、「複製」(コピー) または「破棄」(削除) することはできます。セグメントには、10 の条件のみを含めることができます。
-- 監視によって失われた情報をテストする最適な方法は、テスト デバイスをセットアップするか、テスト デバイスのアプリをアンインストール/再インストールすることです。
-- 分析、セグメント化、ダッシュ ボードに関する情報は、24 時間ごとに更新されます。
-- 新しいセグメントの情報は、セグメントが前の情報に基づいている場合でも、作成後 24 時間は表示されません。
-- UI の分析データのフィルター処理では、アプリのバージョンにかかわらず、この型のすべての例が表示されます (たとえば、名前でフィルター処理された「Crashes」は、バージョン 1 とバージョン 2 のアプリで表示されます)。
-- 分析期間はユーザーのデバイス設定の日付に基づくため、電話の日付が正しく設定されていないユーザーには、誤った期間が表示されることがあります。
-- プッシュを "テスト" するボタンを使用するときは、サーバー側のデータは記録されません。データの記録は、実際のプッシュ キャンペーンでのみ行われます。
+### <a name="causes"></a>Causes
 
-## UI で項目が見つからない
+- You can use the Analytics API, Monitor API, and Segments API to see if any data you are missing from the UI is visible through the APIs.
+- If the Azure Mobile Engagement SDK is not correctly integrated into your app then you won't be able to see information in the Analytics, Segmentation, Monitoring, or Dashboards.
+- Segments can't be changed once they are created, segments can only be "cloned" (copied) or "destroyed" (deleted). Segments can only contain 10 criteria.
+- The best way to test missing information from monitoring is to setup a test device, uninstall and/or reinstall the app on the test device.
+- Information is refreshed every 24 hours for Analytics, Segmentation, or Dashboards.
+- Information in new segments may not be displayed until 24 hours after they are created even if the segment is based on previous information.
+- Filtering your analytics data in the UI will show all examples of this type regardless of the version of your app (e.g. "Crashes" filtered by name will show from version 1 and version 2 of your app).
+- The time period for Analytics is based on the date from the users' device settings, so a user whose phone has the date incorrectly set could show up in the wrong time period.
+- No server side data is logged when you use the button to "test" pushes, data is only logged for real push campaigns.
 
-### 問題
-- 特定の組み込みアプリまたはカスタム アプリの情報タグの条件に基づいて、セグメントを作成できません。
-- 分析、監視、ダッシュ ボードで、組み込みアプリまたはカスタム アプリの情報タグの条件が見つかりません。
-- 分析、監視、セグメント化、ダッシュ ボードでデータを解析できません。
+## <a name="can't-locate-items-in-ui"></a>Can't locate items in UI
 
-### 原因
+### <a name="issue"></a>Issue
+- Can't create segments based on certain built in or custom app info tag criteria.
+- Can't find certain built in or custom app info tag criteria in Analytics, Monitoring, or Dashboards.
+- Can't interpret the data in Analytics, Monitoring, Segmentation, or Dashboards.
 
-- 一部の組み込みアイテムやアプリ情報タグは、プッシュ条件としてのみ利用できますが、セグメントに追加したり、分析、監視、ダッシュ ボードから表示したりすることはできません。
-- セグメントに追加できない組み込みアイテムとアプリ情報タグの場合は、セグメントに基づく対象と同じ機能を実行するように、各キャンペーンの対象条件の一覧を設定する必要があります。
-- 詳細については、Azure モバイル エンゲージメント UI の分析、監視、セグメント化、ダッシュ ボードの各セクションにあるコンテキスト メニューをご覧ください。
+### <a name="causes"></a>Causes
 
-## トラブルシューティングのクラッシュ
+- Some built in items and app info tags are only available as push criteria but may not be added to a segment or visible from Analytics, Monitoring, or Dashboard. 
+- For built in items and app info tags that can't be added to a segment, you will need to setup list of targeting criteria in each campaign to perform the same function as targeting based on a segment.
+- See the context menus in the Analytics, Monitoring, Segmentation, and Dashboards sections of the Azure Mobile Engagement UI for more help and how to information.
 
-### 問題
-- アプリケーションのクラッシュが分析、監視、ダッシュ ボードに表示されます。
+## <a name="crash-troubleshooting"></a>Crash troubleshooting
 
-### 原因
+### <a name="issue"></a>Issue
+- Application Crashes appearing in Analytics, Monitoring, or Dashboard.
 
-- 分析、監視、ダッシュ ボードに表示されるアプリケーションのクラッシュをトラブルシューティングするには、以前のバージョンの SDK に関する既知の問題についてのリリース ノートをご確認ください。
-- アプリケーションのクラッシュをさらにトラブルシューティングするには、インストールされているアプリケーションを使用してテスト デバイスからイベントを実行し、Azure モバイル エンゲージメント UI の [Monitor – Events (監視 - イベント)] セクションでデバイス ID を検索します。次に、アプリケーションをクラッシュさせたイベントを実行し、Azure Mobile Engagement UI の [監視 - クラッシュ] セクションで追加情報を検索します。
+### <a name="causes"></a>Causes
+
+- To troubleshoot Application Crashes seen in Analytics, Monitoring, or Dashboard make sure to check the release notes for known issues with previous versions of the SDK.
+- To further troubleshoot application crashes perform an event from a test device with your application installed and look up your device ID in the “Monitor – Events” section of the Azure Mobile Engagement UI. Then perform the event that is causing your application to crash and look up additional information in the “Monitor – Crash” section of the Azure Mobile Engagement UI. 
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

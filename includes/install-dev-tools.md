@@ -1,7 +1,13 @@
-> [AZURE.NOTE]このセクションを適切に実行するには、正常に動作している Node.js のインストールと、ご利用のプラットフォーム用の Azure SDK for Node.js が必要です。
+> [AZURE.NOTE]
+> To successfully complete this section, you must have a working installation of Node.js and the Azure SDK for Node.js for your platform.
 
->* Node.js 用の Azure SDK のインストール: <a href="http://go.microsoft.com/fwlink/?LinkId=254279">Windows インストーラー</a> | <a href="http://go.microsoft.com/fwlink/?LinkId=253471">Mac インストーラー</a> | <a href="http://go.microsoft.com/fwlink/?LinkId=253472">Linux ダウンロード</a></li>
+>* Install the Azure SDK for Node.js: <a href="http://go.microsoft.com/fwlink/?LinkId=254279">Windows installer</a> | <a href="http://go.microsoft.com/fwlink/?LinkId=253471">Mac installer</a> | <a href="http://go.microsoft.com/fwlink/?LinkId=253472">Linux download</a></li>
 
->* Mac または Linux を使用している場合は、<a href="http://nodejs.org">http://nodejs.org</a> から Node.js をインストールします。Windows インストーラーには既に Node.js が含まれています。
+>* If you are using Mac or Linux, install Node.js from <a href="http://nodejs.org">http://nodejs.org</a>. The Windows installer already includes Node.js.
 
-<!---HONumber=Oct15_HO3-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

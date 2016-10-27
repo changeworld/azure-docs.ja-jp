@@ -1,9 +1,9 @@
 <properties
-   pageTitle="DocumentDB で TTL を使ってデータを期限切れにする | Microsoft Azure"
-   description="Microsoft Azure DocumentDB では TTL を使って、一定期間経過後にシステムからドキュメントを自動的に消去することができます。"
+   pageTitle="Expire data in DocumentDB with time to live | Microsoft Azure"
+   description="With TTL, Microsoft Azure DocumentDB provides the ability to have documents automatically purged from the system after a period of time."
    services="documentdb"
    documentationCenter=""
-   keywords="有効期限"
+   keywords="time to live"
    authors="kiratp"
    manager="jhubbard"
    editor=""/>
@@ -17,144 +17,153 @@
    ms.date="04/28/2016"
    ms.author="kipandya"/>
 
-# TTL (Time to Live) を使って DocumentDB コレクションのデータの有効期限が自動的に切れるようにする
 
-アプリケーションで膨大なデータを生成し、格納することができます。このデータの一部 (コンピューターによって生成されるイベント データ、ログ、およびユーザー セッション情報など) は、一定期間でのみ有効です。アプリケーションで必要以上のデータがある場合は、そのデータを消去し、アプリケーションでのストレージの必要性を減らすのが安全です。
+# <a name="expire-data-in-documentdb-collections-automatically-with-time-to-live"></a>Expire data in DocumentDB collections automatically with time to live
 
-Microsoft Azure DocumentDB では TTL を使って、一定期間経過後にデータベースからドキュメントを自動的に消去することができます。既定の TTL はコレクション レベルで設定し、ドキュメントごとにオーバーライドすることができます。TTL をコレクションの既定値として、またはドキュメント レベルで設定すると、DocumentDB は、最後に変更されてから一定期間 (秒単位) 経過後に存在するドキュメントを自動的に削除します。
+Applications can produce and store vast amounts of data. Some of this data, like machine generated event data, logs, and user session information is only useful for a finite period of time. Once the data becomes surplus to the needs of the application it is safe to purge this data and reduce the storage needs of an application.
 
-DocumentDB の TTL では、ドキュメントの最終変更時に対してオフセットを使用します。そのために、すべてのドキュメントに存在する \_ts フィールドを使用します。\_ts フィールドは、日付と時刻を表す UNIX 形式のエポック タイムスタンプです。この \_ts フィールドは、ドキュメントが変更されるたびに更新されます。
+With “time to live” or TTL, Microsoft Azure DocumentDB provides the ability to have documents automatically purged from the database after a period of time. The default time to live can be set at the collection level, and overridden on a per-document basis. Once TTL is set, either as a collection default or at a document level, DocumentDB will automatically remove documents that exist after that period of time, in seconds, since they were last modified.
 
-## TTL の動作
+Time to live in DocumentDB uses an offset against when the document was last modified. To do this it uses the _ts field which exists on every document. The _ts field is a unix-style epoch timestamp representing the date and time. The _ts field is updated every time a document is modified. 
 
-TTL 機能は、コレクション レベルとドキュメント レベルの 2 つのレベルで TTL プロパティによって制御されます。値は秒単位で設定され、ドキュメントが最後に変更された \_ts との差分として扱われます。
+## <a name="ttl-behavior"></a>TTL behavior
 
- 1.  コレクションの DefaultTTL
-  * 設定されていない (または null に設定されている) 場合、ドキュメントは自動的に削除されません。
+The TTL feature is controlled by TTL properties at two levels - the collection level and the document level. The values are set in seconds and are treated as a delta from the _ts that the document was last modified at.
+
+ 1.  DefaultTTL for the collection
+  * If missing (or set to null), documents are not deleted automatically.
   
-  * 設定されており、値が "-1" (無限) の場合、ドキュメントは既定で期限切れになりません。
+  * If present and the value is “-1” = infinite – documents don’t expire by default
   
-  * 設定されており、値がいずれかの数 ("n") の場合、ドキュメントは最後に変更されてから "n" 秒後に期限切れになります。
+  * If present and the value is some number (“n”) – documents expire “n” seconds after last modification
 
- 2.  ドキュメントの TTL:
-  * プロパティは、親コレクションの DefaultTTL が存在する場合にのみ適用されます。
+ 2.  TTL for the documents: 
+  * Property is applicable only if DefaultTTL is present for the parent collection.
   
-  * 親コレクションの DefaultTTL 値をオーバーライドします。
+  * Overrides the DefaultTTL value for the parent collection.
 
-ドキュメントの有効期限が切れるとすぐに (ttl + \_ts が現在のサーバー時間以上になった場合)、ドキュメントは "有効期限切れ" とマークされます。それ以降はドキュメントを操作することができず、実行されるどのクエリの結果からも除外されます。システムではドキュメントが物理的に削除され、バックグラウンドでは後で状況に応じて削除されます。その場合、コレクション予算から[要求ユニット (RU)](documentdb-request-units.md) は使用されません。
+As soon as the document has expired (ttl + _ts >= current server time), the document is marked as “expired”. No operation will be allowed on these documents after this time and they will be excluded from the results of any queries performed. The documents are physically deleted in the system, and are deleted in the background opportunistically at a later time. This does not consume any [Request Units (RUs)](documentdb-request-units.md) from the collection budget.
 
-上記のロジックを以下のマトリックスで表すことができます。
+The above logic can be shown in the following matrix:
 
-| | コレクションに DefaultTTL が存在しない/設定されていない | コレクションで、DefaultTTL = -1 | コレクションで、DefaultTTL = "n"|
+|       | DefaultTTL missing/not set on the collection | DefaultTTL = -1 on collection | DefaultTTL = "n" on collection|
 | ------------- |:-------------|:-------------|:-------------|
-| ドキュメントに TTL が存在しない| ドキュメントとコレクションの両方に TTL の概念がないために、ドキュメント レベルでオーバーライドされません。 | このコレクションのドキュメントは期限切れになりません。 | n 期間が経過すると、このコレクションのドキュメントは期限切れになります。 |
-| ドキュメントの TTL が -1 である | ドキュメントでオーバーライドできる DefaultTTL プロパティがコレクションで定義されていないため、ドキュメント レベルでオーバーライドされません。ドキュメントの TTL はシステムで解釈されません。 | このコレクションのドキュメントは期限切れになりません。 | このコレクションの TTL が -1 のドキュメントが期限切れになることはありません。その他のすべてのドキュメントは、"n" 期間が経過すると期限切れになります。 |
-| ドキュメントに対する TTL が n である | ドキュメント レベルでオーバーライドされません。ドキュメントの TTL はシステムで解釈されません。 | TTL が n のドキュメントは n (秒単位) 期間が経過すると期限切れになります。その他のドキュメントは -1 の期間を継承し、期限切れになることはありません。 | TTL が n のドキュメントは n (秒単位) 期間が経過すると期限切れになります。その他のドキュメントは、コレクションから "n" 期間を継承します。 |
+| TTL Missing on document| Nothing to override at document level since both the document and collection have no concept of TTL. | No documents in this collection will expire. | The documents in this collection will expire when interval n elapses. |
+| TTL = -1 on document | Nothing to override at the document level since the collection doesn’t define the DefaultTTL property that a document can override. TTL on a document is un-interpreted by the system. | No documents in this collection will expire. | The document with TTL=-1 in this collection will never expire. All other documents will expire after "n" interval. |
+|  TTL = n on document | Nothing to override at the document level. TTL on a document in un-interpreted by the system. | The document with TTL = n will expire after interval n, in seconds. Other documents will inherit interval of -1 and never expire. | The document with TTL = n will expire after interval n, in seconds. Other documents will inherit "n" interval from the collection. |
 
 
-## TTL の構成
+## <a name="configuring-ttl"></a>Configuring TTL
 
-既定では、すべての DocumentDB コレクションおよびすべてのドキュメントの TTL が無効になります。
+By default, time to live is disabled by default in all DocumentDB collections and on all documents.
 
-## TTL の有効化
+## <a name="enabling-ttl"></a>Enabling TTL
 
-コレクションまたはコレクション内のドキュメントに対して TTL を有効にするには、コレクションの DefaultTTL プロパティを -1、またはゼロ以外の正数に設定する必要があります。DefaultTTL を -1 に設定すると、既定でコレクションのすべてのドキュメントは永続的に存続しますが、DocumentDB サービスはこの既定値をオーバーライドしたドキュメントに対するこのコレクションを監視する必要があります。
+To enable TTL on a collection, or the documents within a collection, you need to set the DefaultTTL property of a collection to either -1 or a non-zero positive number. Setting the DefaultTTL to -1 means that by default all documents in the collection will live forever but the DocumentDB service should monitor this collection for documents that have overridden this default.
 
-## コレクションに対する既定の TTL の構成
+## <a name="configuring-default-ttl-on-a-collection"></a>Configuring default TTL on a collection
 
-コレクション レベルで既定の TTL を構成することができます。
+You are able to configure a default time to live at a collection level. 
 
-コレクションに対して TTL を設定するには、ドキュメントの最終変更タイムスタンプ (\_ts) 後にコレクションのすべてのドキュメントが期限切れになるように、期間 (秒単位) を示すゼロ以外の正数を指定する必要があります。
+To set the TTL on a collection, you need to provide a non-zero positive number that indicates the period, in seconds, to expire all documents in the collection after the last modified timestamp of the document (_ts).
 
-または、コレクションに挿入されたすべてのドキュメントが既定で無期限に存続することを意味する -1 に既定値を設定することができます。
+Or, you can set the default to -1, which implies that all documents inserted in to the collection will live indefinitely by default.
 
-## ドキュメントに対する TTL の設定
+## <a name="setting-ttl-on-a-document"></a>Setting TTL on a document
 
-コレクションに対する既定の TTL の設定に加え、ドキュメント レベルでは特定の TTL を設定することができます。これを行うと、コレクションの既定値がオーバーライドされます。
+In addition to setting a default TTL on a collection you can set specific TTL at a document level. Doing this will override the default of the collection.
 
-ドキュメントに対して TTL を設定するには、ドキュメントの最終変更タイムスタンプ (\_ts) 後にドキュメントが期限切れになるように、期間 (秒単位) を示すゼロ以外の正数を指定する必要があります。
+To set the TTL on a document, you need to provide a non-zero positive number which indicates the period, in seconds, to expire the document after the last modified timestamp of the document (_ts).
 
-この有効期限のオフセットを設定するには、ドキュメントに TTL フィールドを設定します。
+To set this expiry offset, set the TTL field on the document.
 
-ドキュメントに TTL フィールドがない場合は、コレクションの既定値が適用されます。
+If a document has no TTL field, then the default of the collection will apply.
 
-TTL がコレクション レベルで無効になっている場合、TTL がコレクションで再び有効になるまで、ドキュメントの TTL フィールドは無視されます。
-
-
-## 既存のドキュメントに対する TTL の延長
-
-ドキュメントで書き込み操作を実行して、ドキュメントの TTL をリセットすることができます。これを行うと、\_ts が現在の時刻に設定され、ttl で設定されたドキュメントの有効期限までのカウントダウンが再び始まります。
-
-ドキュメントの ttl を変更する場合は、他の設定可能なフィールドの場合と同じようにフィールドを更新できます。
+If TTL is disabled at the collection level, the TTL field on the document will be ignored until TTL is enabled again on the collection.
 
 
-## ドキュメントからの TTL の削除
+## <a name="extending-ttl-on-an-existing-document"></a>Extending TTL on an existing document
 
-TTL が設定されているドキュメントを期限切れにする必要がなくなった場合には、そのドキュメントを取得し、TTL フィールドを削除して、サーバーのドキュメントを置き換えることができます。
+You can reset the TTL on a document by doing any write operation on the document. Doing this will set the _ts to the current time, and the countdown to the document expiry, as set by the ttl, will begin again.
 
-ドキュメントから TTL フィールドが削除されると、コレクションの既定値が適用されます。
-
-ドキュメントが期限切れにならないようにし、コレクションから継承されないようにするには、TTL 値を -1 に設定する必要があります。
+If you wish to change the ttl of a document, you can update the field as you can do with any other settable field.
 
 
-## TTL の無効化
+## <a name="removing-ttl-from-a-document"></a>Removing TTL from a document
 
-コレクションの TTL を完全に無効にし、バックグラウンド プロセスで期限切れのドキュメントが検索されないようにするには、コレクションの DefaultTTL プロパティを削除する必要があります。
+If a TTL has been set on a document and you no longer want that document to expire, then you can retrieve the document, remove the TTL field and replace the document on the server.
 
-このプロパティの削除は、-1 に設定することとは異なります。-1 に設定すると、コレクションに追加される新しいドキュメントが永続的に存続しますが、コレクションの特定のドキュメントでこれをオーバーライドすることができます。
+When the TTL field is removed from the document, the default of the collection will be applied.
 
-コレクションからこのプロパティを完全に削除すると、以前の既定値を明示的にオーバーライドしたドキュメントがある場合でも、ドキュメントは期限切れになりません。
-
-
-## FAQ
-
-**TTL にコストはかかりますか?**
-
-ドキュメントに TTL を設定する場合、追加のコストはかかりません。
-
-**TTL が切れてからドキュメントが削除されるまでどれくらいかかりますか?**
-
-ドキュメントの有効期限が切れるとすぐに (ttl + \_ts が現在のサーバー時間以上になった場合)、ドキュメントは使用不可とマークされます。それ以降はドキュメントを操作することができず、実行されるどのクエリの結果からも除外されます。ドキュメントは、バック グラウンドでシステムによって物理的に削除されます。その場合、コレクションの予算からはどの RU も使用されません。
-
-**ドキュメントの削除にしばらく時間がかかる場合、削除されるまでクォータ (および請求額) に加算されますか?**
-
-いいえ、ドキュメントの期限が切れると、そのドキュメントのストレージに対しては課金されません。ドキュメントのサイズがコレクションのストレージ クォータに影響することはありません。
-
-**ドキュメントの TTL は RU 料金に影響しますか?**
-
-いいえ、DocumentDB 内のどのドキュメントに対して実行される操作でも、RU 料金に影響することはありません。
-
-**ドキュメントを削除すると、コレクションにプロビジョニングしたスループットに影響しますか?**
-
-いいえ、コレクションに対する要求の処理は、ドキュメントを削除するバックグラウンド プロセスの実行より優先されます。ドキュメントに TTL を追加しても影響はありません。
-
-**期限切れになったドキュメントは、削除されるまでコレクションにはどれくらい存続しますか?**
-
-ドキュメントは有効期限が切れるとすぐにアクセスできなくなります。ドキュメントが実際に削除されるまでコレクションに存続する正確な時間は確定されておらず、バックグラウンド プロセスがドキュメントを削除できるタイミングに基づきます。
-
-**期限切れのドキュメントはすべてのノードで削除されるのですか? それとも最終的に一貫性のある状態になるのでしょうか?**
-
-ドキュメントはすべての地域においてすべてのノードで同時に使用不可になります。
-
-**バックグラウンド タスクの TTL 監視に RU コストはかかりますか?**
-
-いいえ、これには RU コストはかかりません。
-
-**TTL 切れの確認はどれくらいの頻度で行われますか?**
-
-TTL 切れの確認はバックグラウンド プロセスとして行われません。要求への応答時に、バックエンド サービスがインラインで確認し、期限切れのドキュメントをすべて除外します。物理的なドキュメントの削除が、バックグラウンドで非同期的に実行される唯一のプロセスです。このプロセスの頻度は、コレクションで使用可能な RU によって決まります。
-
-**TTL 機能はドキュメント全体のみに適用されるのですか? それとも、個々のドキュメントのプロパティ値で有効期限を設定することはできますか?**
-
-TTL はドキュメント全体に適用されます。ドキュメントの一部のみを期限切れにしたい場合は、メイン ドキュメントの当該部分を別個の "リンク先" ドキュメントに抽出してから、その抽出したドキュメントで TTL を使用することをお勧めします。
-
-**TTL 機能には特定のインデックス作成要件がありますか?**
-
-はい。コレクションでは、Lazy または Consistent に[インデックス作成ポリシーを設定](documentdb-indexing-policies.md)する必要があります。インデックス作成が None に設定されているコレクションに対して DefaultTTL を設定しようとすると、エラーになります。DefaultTTL が既に設定されているコレクションのインデックス作成を無効にしようとする場合も同様です。
+To stop a document from expiring and not inherit from the collection then you need to set the TTL value to -1.
 
 
-## 次のステップ
+## <a name="disabling-ttl"></a>Disabling TTL
 
-Azure DocumentDB の詳細については、サービスの[*ドキュメント*](https://azure.microsoft.com/documentation/services/documentdb/)のページを参照してください。
+To disable TTL entirely on a collection and stop the background process from looking for expired documents the DefaultTTL property on the collection should be deleted.
 
-<!---HONumber=AcomDC_0720_2016-->
+Deleting this property is different from setting it to -1. Setting to -1 means new documents added to the collection will live forever but you can override this on specific documents in the collection.
+
+Removing this property entirely from the collection means that no documents will expire, even if there are documents that have explicitly overridden a previous default.
+
+
+## <a name="faq"></a>FAQ
+
+**What will TTL cost me?**
+
+There is no additional cost to setting a TTL on a document.
+
+**How long will it take to delete my document once the TTL is up?**
+
+The documents are marked as unavailable as soon as the document has expired (ttl + _ts >= current server time). No operation will be allowed on these documents after this time and they will be excluded from the results of any queries performed. The documents are physically deleted by the system in the background. This will not consume any RUs from the collection's budget.
+
+**If it takes a period of time to delete the documents, will they count toward my quota (and bill) until they get deleted?**
+
+No, once the document has expired you will not be billed for the storage of these documents and the size of the documents will not count toward the storage quota for a collection.
+
+**Will TTL on a document have any impact on RU charges?**
+
+No, there will be no impact on RU charges for operations performed on any document within DocumentDB.
+
+**Will the deleting of documents impact on the throughput I have provisioned on my collection?**
+
+No, serving requests against your collection will receive priority over running the background process to delete your documents. Adding TTL to any document will not impact this.
+
+**When a document expires, how long will it remain in my collection until it’s deleted?**
+
+As soon as the document expires it will no longer be accessible. The exact time a document will remain in your collection before actually being deleted is non-deterministic and will be based on when the background process is able to delete the document.
+
+**Are expired documents deleted across all nodes, or is it “eventually consistent?”**
+
+The document will become unavailable at the same time across all nodes and in all regions.
+
+**Is there an RU cost for TTL-monitoring background tasks?**
+
+No, there is no RU cost for this.
+
+**How often are TTL expirations checked?**
+
+Checking TTL expirations doesn’t happen as a background process. When responding to a request the backend service will do the checks inline and exclude any documents that have expired. The deletion of the physical document is the only process that is asynchronously run in the background. The frequency of this process is determined by the available RUs on the collection.
+
+**Does the TTL feature only apply to entire documents, or can I expire individual document property values?**
+
+TTL applies to the entire document. If you would like to expire just a portion of a document, then it is recommended that you extract the portion from the main document in to a separate “linked” document and then use TTL on that extracted document.
+
+**Does the TTL feature have any specific indexing requirements?**
+
+Yes. The collection must have [indexing policy set](documentdb-indexing-policies.md) to either Lazy or Consistent. Trying to set DefaultTTL on a collection with indexing set to None will result in an error, as will trying to turn off indexing on a collection that has a DefaultTTL already set.
+
+
+## <a name="next-steps"></a>Next steps
+
+To learn more about Azure DocumentDB, refer to the service [*documentation*](https://azure.microsoft.com/documentation/services/documentdb/) page.
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

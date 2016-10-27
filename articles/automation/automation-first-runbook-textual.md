@@ -1,12 +1,12 @@
 <properties
-    pageTitle="Azure Automation での最初の PowerShell Workflow Runbook | Microsoft Azure"
-    description="PowerShell Workflow を使用して簡単なテキスト形式の Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。"
+    pageTitle="My first PowerShell Workflow runbook in Azure Automation | Microsoft Azure"
+    description="Tutorial that walks you through the creation, testing, and publishing of a simple text runbook using PowerShell Workflow."
     services="automation"
     documentationCenter=""
     authors="mgoedtel"
     manager="jwhit"
     editor=""
-	keywords="PowerShell ワークフロー, PowerShell ワークフローの例, ワークフロー PowerShell"/>
+    keywords="powershell workflow, powershell workflow examples, workflow powershell"/>
 <tags
     ms.service="automation"
     ms.workload="tbd"
@@ -16,36 +16,38 @@
     ms.date="07/19/2016"
     ms.author="magoedte;bwren"/>
 
-# 最初の PowerShell Workflow Runbook
+
+# <a name="my-first-powershell-workflow-runbook"></a>My first PowerShell Workflow runbook
 
 > [AZURE.SELECTOR] - [Graphical](automation-first-runbook-graphical.md) - [PowerShell](automation-first-runbook-textual-PowerShell.md) - [PowerShell Workflow](automation-first-runbook-textual.md)
 
-このチュートリアルでは、Azure Automation で [PowerShell Workflow Runbook](automation-runbook-types.md#powerShell-workflow-runbooks) を作成します。簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure 仮想マシンを開始します。そして、Runbook のパラメーターを追加することによって、Runbook をいっそう堅牢にします。
+This tutorial walks you through the creation of a [PowerShell Workflow runbook](automation-runbook-types.md#powerShell-workflow-runbooks) in Azure Automation. We'll start with a simple runbook that we'll test and publish while we explain how to track the status of the runbook job. Then we'll modify the runbook to actually manage Azure resources, in this case starting an Azure virtual machine. We'll then make the runbook more robust by adding runbook parameters.
 
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-このチュートリアルを最後まで行うには、以下のものが必要です。
+To complete this tutorial, you will need the following.
 
--	Azure サブスクリプション。まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-account/" target="_blank">[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
--	[Automation アカウント](automation-security-overview.md)。Runbook の保存と Azure リソースの認証に使用します。このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
--	Azure 仮想マシン。マシンを停止して起動するので、運用環境のものは使用しないでください。
+-   Azure subscription. If you don't have one yet, you can [activate your MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) or <a href="/pricing/free-account/" target="_blank">[sign up for a free account](https://azure.microsoft.com/free/).
+-   [Automation account](automation-security-overview.md) to hold the runbook and authenticate to Azure resources.  This account must have permission to start and stop the virtual machine.
+-   An Azure virtual machine. We will stop and start this machine so it should not be production.
 
-## 手順 1 - 新しい Runbook を作成する
+## <a name="step-1---create-new-runbook"></a>Step 1 - Create new runbook
 
-最初に、*Hello World* というテキストを出力する簡単な Runbook を作成します。
+We'll start by creating a simple runbook that outputs the text *Hello World*.
 
-1.	Azure ポータルで、Automation アカウントを開きます。Automation アカウント ページでは、そのアカウントのリソースを簡単に確認できます。既に資産がいくつかあります。これらのほとんどは、新しい Automation アカウントに自動的に含まれるモジュールです。[前提条件](#prerequisites)で説明されている資格情報資産も必要です。
-2.	**[Runbook]** タイルをクリックして、Runbook の一覧を開きます。<br> ![Runbook の制御](media/automation-first-runbook-textual/runbooks-control.png)
-3.	**[Runbook の追加]** ボタンをクリックし、次に **[新しい Runbook の作成]** をクリックして、新しい Runbook を作成します
-4.	Runbook に *MyFirstRunbook-Workflow* という名前を付けます。
-5.	ここでは、[PowerShell Workflow Runbook](automation-runbook-types.md#powerShell-workflow-runbooks) を作成するため、**[Runbook の種類]** として **[PowerShell Workflow]** を選択します。<br> ![新しい Runbook](media/automation-first-runbook-textual/new-runbook.png)
-6.	**[作成]** をクリックして Runbook を作成し、テキスト エディターを開きます。
+1.  In the Azure Portal, open your Automation account.  
+    The Automation account page gives you a quick view of the resources in this account. You should already have some Assets. Most of those are the modules that are automatically included in a new Automation account. You should also have the Credential asset that's mentioned in the [prerequisites](#prerequisites).
+2.  Click on the **Runbooks** tile to open the list of runbooks.<br> ![Runbooks control](media/automation-first-runbook-textual/runbooks-control.png)
+3.  Create a new runbook by clicking on the **Add a runbook** button and then **Create a new runbook**.
+4.  Give the runbook the name *MyFirstRunbook-Workflow*.
+5.  In this case, we're going to create a [PowerShell Workflow runbook](automation-runbook-types.md#powerShell-workflow-runbooks) so select **Powershell Workflow** for **Runbook type**.<br> ![New runbook](media/automation-first-runbook-textual/new-runbook.png)
+6.  Click **Create** to create the runbook and open the textual editor.
 
-## 手順 2 - コードを Runbook に追加する
+## <a name="step-2---add-code-to-the-runbook"></a>Step 2 - Add code to the runbook
 
-Runbook に直接コードを入力するか、ライブラリ コントロールからコマンドレット、Runbook、資産を選択し、関連するパラメーターを使って Runbook に追加できます。このチュートリアルでは、Runbook に直接コードを入力します。
+You can either type code directly into the runbook, or you can select cmdlets, runbooks, and assets from the Library control and have them added to the runbook with any related parameters. For this walkthrough, we'll type directly into the runbook.
 
-1.	Runbook はこの時点で空です (必要な *Workflow* キーワード、Runbook の名前、ワークフロー全体を囲む中かっこ以外)。
+1.  Our runbook is currently empty with only the required *workflow* keyword, the name of our runbook, and the braces that will encase the entire workflow. 
 
     ```
     Workflow MyFirstRunbook-Workflow
@@ -53,7 +55,7 @@ Runbook に直接コードを入力するか、ライブラリ コントロー�
     }
     ```
 
-2.	中かっこ内に「*Write-Output "Hello World."*」と入力します。
+2.  Type *Write-Output "Hello World."* between the braces. 
    
     ```
     Workflow MyFirstRunbook-Workflow
@@ -62,43 +64,45 @@ Runbook に直接コードを入力するか、ライブラリ コントロー�
     }
     ```
 
-3.	**[保存]** をクリックして Runbook を保存します。<br> ![Runbook の保存](media/automation-first-runbook-textual/runbook-edit-toolbar-save.png)
+3.  Save the runbook by clicking **Save**.<br> ![Save runbook](media/automation-first-runbook-textual/runbook-edit-toolbar-save.png)
 
-## 手順 3 - Runbook をテストする
+## <a name="step-3---test-the-runbook"></a>Step 3 - Test the runbook
 
-Runbook を発行して運用環境で使用できるようにする前に、Runbook をテストして正常に動作することを確認します。Runbook をテストするときは、**ドラフト** バージョンを実行し、その出力を対話形式で表示します。
+Before we publish the runbook to make it available in production, we want to test it to make sure that it works properly. When you test a runbook, you run its **Draft** version and view its output interactively.
 
-1.	**[テスト ウィンドウ]** をクリックして、テスト ウィンドウを開きます。<br> ![Test pane](media/automation-first-runbook-textual/runbook-edit-toolbar-test-pane.png)
-2.	**[開始]** をクリックしてテストを開始します。有効なオプションはこれだけです。
-3.	[Runbook ジョブ](automation-runbook-execution.md)が作成され、その状態が表示されます。最初のジョブの状態は*キューに設定*であり、クラウドの Runbook ワーカーが使用できるようになるのを待っていることを示します。その後、ワーカーがジョブを要求すると*開始中*になり、Runbook が実際に実行を開始すると*実行中*になります。
-4.	Runbook ジョブが完了すると、その出力が表示されます。この例では、*Hello World* と表示されます。<br>![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
-5.	テスト ウィンドウを閉じてキャンバスに戻ります。
+1.  Click **Test pane** to open the Test pane.<br> ![Test pane](media/automation-first-runbook-textual/runbook-edit-toolbar-test-pane.png)
+2.  Click **Start** to start the test. This should be the only enabled option.
+3.  A [runbook job](automation-runbook-execution.md) is created and its status displayed.  
+    The job status will start as *Queued* indicating that it is waiting for a runbook worker in the cloud to come available. It will then move to *Starting* when a worker claims the job, and then *Running* when the runbook actually starts running.  
+4.  When the runbook job completes, its output is displayed. In our case, we should see *Hello World*.<br> ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
+5.  Close the Test pane to return to the canvas.
 
-## 手順 4 - Runbook を発行して開始する
+## <a name="step-4---publish-and-start-the-runbook"></a>Step 4 - Publish and start the runbook
 
-前の手順で作成した Runbook はまだドラフト モードです。運用環境で実行できるようにするには、発行する必要があります。Runbook を発行するときは、既存の発行済みバージョンをドラフト バージョンで上書きします。この例では、Runbook を作成したばかりなので、発行済みバージョンはまだありません。
+The runbook that we just created is still in Draft mode. We need to publish it before we can run it in production. When you publish a runbook, you overwrite the existing Published version with the Draft version. In our case, we don't have a Published version yet because we just created the runbook.
 
-1.	**[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。<br> ![Publish](media/automation-first-runbook-textual/runbook-edit-toolbar-publish.png)
-2.	**[Runbook]** ウィンドウで左にスクロールして Runbook を表示すると、**[作成状態]** は **[発行済]** になっています。
-3.	右にスクロールして戻り、**MyFirstRunbook-Workflowl** のウィンドウを表示します。上部のオプションを使用すると、Runbook の開始、将来の開始スケジュールの設定、または HTTP 呼び出しで開始できるようにする [Webhook](automation-webhooks.md) の作成を行うことができます。
-4.	ここでは単純に Runbook を開始するので、**[開始]** をクリックし、確認を求められたら **[はい]** をクリックします。<br> ![Runbook の開始](media/automation-first-runbook-textual/runbook-toolbar-start.png)
-5.	作成した Runbook ジョブのジョブ ウィンドウが開かれます。このウィンドウは閉じてもかまいませんが、ここではジョブの進行状況を確認できるように開いたままにします。
-6.	ジョブの状態が **[ジョブの概要]** に表示され、Runbook をテストしたときに確認した状態と一致しています。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-summary.png)
-7.	Runbook の状態が *[完了]* になったら、**[出力]** をクリックします。[出力] ウィンドウが開き、「*Hello World*」と表示されます。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-output.png)
-8.	[出力] ウィンドウを閉じます。
-9.	**[ストリーム]** をクリックして、Runbook ジョブのストリーム ウィンドウを開きます。出力ストリームでは *Hello World* だけが表示されますが、Runbook が詳細やエラーに書き込んでいる場合は、これらの Runbook ジョブの他のストリームも表示できます。<br> ![ジョブの概要](media/automation-first-runbook-textual/job-pane-streams.png)
-10.	ストリーム ウィンドウを閉じると、ジョブ ウィンドウは MyFirstRunbook ウィンドウに戻ります。
-11.	**[ジョブ]** をクリックして、この Runbook のジョブ ウィンドウを開きます。この Runbook によって作成されたジョブの一覧が表示されます。ジョブを 1 回実行しただけなので、一覧に表示されるジョブは 1 つだけです。<br> ![ジョブ](media/automation-first-runbook-textual/runbook-control-jobs.png)
-12.	このジョブをクリックすると、Runbook を開始したときに表示されたものと同じジョブ ウィンドウが開きます。これにより前に戻って、特定の Runbook に対して作成されたジョブの詳細を見ることができます。
+1.  Click **Publish** to publish the runbook and then **Yes** when prompted.<br> ![Publish](media/automation-first-runbook-textual/runbook-edit-toolbar-publish.png)
+2.  If you scroll left to view the runbook in the **Runbooks** pane now, it will show an **Authoring Status** of **Published**.
+3.  Scroll back to the right to view the pane for **MyFirstRunbook-Workflow**.  
+    The options across the top allow us to start the runbook, schedule it to start at some time in the future, or create a [webhook](automation-webhooks.md) so it can be started through an HTTP call.
+4.  We just want to start the runbook so click **Start** and then **Yes** when prompted.<br> ![Start runbook](media/automation-first-runbook-textual/runbook-toolbar-start.png)
+5.  A job pane is opened for the runbook job that we just created. We can close this pane, but in this case we'll leave it open so we can watch the job's progress.
+6.  The job status is shown in **Job Summary** and matches the statuses that we saw when we tested the runbook.<br> ![Job Summary](media/automation-first-runbook-textual/job-pane-summary.png)
+7.  Once the runbook status shows *Completed*, click **Output**. The Output pane is opened, and we can see our *Hello World*.<br> ![Job Summary](media/automation-first-runbook-textual/job-pane-output.png)  
+8.  Close the Output pane.
+9.  Click **Streams** to open the Streams pane for the runbook job. We should only see *Hello World* in the output stream, but this can show other streams for a runbook job such as Verbose and Error if the runbook writes to them.<br> ![Job Summary](media/automation-first-runbook-textual/job-pane-streams.png)
+10. Close the Streams pane and the Job pane to return to the MyFirstRunbook pane.
+11. Click **Jobs** to open the Jobs pane for this runbook. This lists all of the jobs created by this runbook. We should only see one job listed since we only ran the job once.<br> ![Jobs](media/automation-first-runbook-textual/runbook-control-jobs.png)
+12. You can click on this job to open the same Job pane that we viewed when we started the runbook. This allows you to go back in time and view the details of any job that was created for a particular runbook.
 
-## 手順 5 - Azure リソースを管理するための認証を追加する
+## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Step 5 - Add authentication to manage Azure resources
 
-Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。ここでは、Runbook で Azure リソースを管理します。ただし、[前提条件](#prerequisites)で示されている資格情報を使用して認証を行わないと、これを実現することはできません。認証は、**Add-AzureRMAccount** コマンドレットを使用して行います。
+We've tested and published our runbook, but so far it doesn't do anything useful. We want to have it manage Azure resources. It won't be able to do that though unless we have it authenticate using the credentials that are referred to in the [prerequisites](#prerequisites). We do that with the **Add-AzureRMAccount** cmdlet.
 
-1.	MyFirstRunbook-Workflow ウィンドウで **[編集]** をクリックして、テキスト エディターを開きます。<br> ![Edit runbook](media/automation-first-runbook-textual/runbook-toolbar-edit.png)
-2.	**Write-Output** の行は不要になったので削除します。
-3.	中かっこ内の空白行にカーソルを置きます。
-4.	Automation の実行アカウントを使用して認証を処理する次のコードを入力またはコピーして貼り付けます。
+1.  Open the textual editor by clicking **Edit** on the MyFirstRunbook-Workflow pane.<br> ![Edit runbook](media/automation-first-runbook-textual/runbook-toolbar-edit.png)
+2.  We don't need the **Write-Output** line anymore, so go ahead and delete it.
+3.  Position the cursor on a blank line between the braces.
+4.  Type or copy and paste the following code that will handle the authentication with your Automation Run As account:
 
     ```
     $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
@@ -106,14 +110,14 @@ Runbook をテストして発行しましたが、これまでのところ役に
     -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
     ```
 
-5.	**テスト ウィンドウ**をクリックして、Runbook をテストできるようにします。
-6.	**[開始]** をクリックしてテストを開始します。テストが完了すると、次のような情報が出力され、アカウントの基本情報が表示されます。これは、資格情報が有効であることの確認になります。<br> ![認証](media/automation-first-runbook-textual/runbook-auth-output.png)
+5.  Click **Test pane** so that we can test the runbook.
+6.  Click **Start** to start the test. Once it completes, you should receive output similar to the following, displaying basic information from your account. This confirms that the credential is valid.<br> ![Authenticate](media/automation-first-runbook-textual/runbook-auth-output.png)
 
-## 手順 6 - 仮想マシンを開始するコードを追加する
+## <a name="step-6---add-code-to-start-a-virtual-machine"></a>Step 6 - Add code to start a virtual machine
 
-これで、Runbook で Azure サブスクリプションに対する認証が行われ、リソースを管理できるようになります。仮想マシンを起動するコマンドを追加します。Azure サブスクリプション内の任意の仮想マシンを選択し、ここではその名前をコマンドレットにハードコーディングします。
+Now that our runbook is authenticating to our Azure subscription, we can manage resources. We'll add a command to start a virtual machine. You can pick any virtual machine in your Azure subscription, and for now we'll be hardcoding that name into the cmdlet.
 
-1.	*Add-AzureRmAccount* の後に、起動する仮想マシンの名前とリソース グループ名を指定して「*Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'*」と入力します。
+1.  After *Add-AzureRmAccount*, type *Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'* providing the name and Resource Group name of the virtual machine to start.  
 
     ```
     workflow MyFirstRunbook-Workflow
@@ -124,14 +128,14 @@ Runbook をテストして発行しましたが、これまでのところ役に
     }
     ``` 
 
-2.	Runbook を保存し、**テスト ウィンドウ**をクリックしてテストできるようにします。
-3.	**[開始]** をクリックしてテストを開始します。完了したら、仮想マシンが開始されたことを確認します。
+2.  Save the runbook and then click **Test pane** so that we can test it.
+3.  Click **Start** to start the test. Once it completes, check that the virtual machine was started.
 
-## 手順 7 - Runbook に入力パラメーターを追加する
+## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>Step 7 - Add an input parameter to the runbook
 
-この Runbook では、Runbook にハードコードした仮想マシンを開始しますが、Runbook を開始するときに仮想マシンを指定できるようにすればもっと便利です。そこで次に、入力パラメーターを Runbook に追加して、その機能を提供します。
+Our runbook currently starts the virtual machine that we hardcoded in the runbook, but it would be more useful if we could specify the virtual machine when the runbook is started. We will now add input parameters to the runbook to provide that functionality.
 
-1.	*VMName* と *ResourceGroupName* のパラメーターを Runbook に追加し、次の例に示すように、**Start-AzureRmVM** コマンドレットでこれらの変数を使用します。
+1.  Add parameters for *VMName* and *ResourceGroupName* to the runbook and use these variables with the **Start-AzureRmVM** cmdlet as in the example below. 
 
     ```
     workflow MyFirstRunbook-Workflow
@@ -146,19 +150,22 @@ Runbook をテストして発行しましたが、これまでのところ役に
     }
     ```
 
-2.	Runbook を保存してテスト ウィンドウを開きます。テストで使用される 2 つの入力変数の値を指定できることに注意してください。
-3.	テスト ウィンドウを閉じます。
-4.	**[発行]** をクリックして、新しいバージョンの Runbook を発行します。
-5.	前の手順で開始した仮想マシンを停止します。
-6.	**[開始]** をクリックして Runbook を開始します。起動する仮想マシンの **VMName** と **ResourceGroupName** を入力します。<br> ![Runbook の開始](media/automation-first-runbook-textual/automation-pass-params.png)
+2.  Save the runbook and open the Test pane. Note that you can now provide values for the two input variables that will be used in the test.
+3.  Close the Test pane.
+4.  Click **Publish** to publish the new version of the runbook.
+5.  Stop the virtual machine that you started in the previous step.
+6.  Click **Start** to start the runbook. Type in the **VMName** and **ResourceGroupName** for the virtual machine that you're going to start.<br> ![Start Runbook](media/automation-first-runbook-textual/automation-pass-params.png)
 
-7.	Runbook が完了したら、仮想マシンが開始されたことを確認します。
+7.  When the runbook completes, check that the virtual machine was started.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
--  グラフィカルな Runbook の使用を開始するには、「[初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)」を参照してください。
--  PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。
--  Runbook の種類とそれらの利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
--  PowerShell スクリプトのサポート機能の詳細については、[Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)に関するブログを参照してください。
+-  To get started with Graphical runbooks, see [My first graphical runbook](automation-first-runbook-graphical.md)
+-  To get started with PowerShell runbooks, see [My first PowerShell runbook](automation-first-runbook-textual-powershell.md)
+-  To learn more about runbook types, their advantages and limitations, see [Azure Automation runbook types](automation-runbook-types.md)
+-  For more information on PowerShell script support feature, see [Native PowerShell script support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
 
-<!---HONumber=AcomDC_0720_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

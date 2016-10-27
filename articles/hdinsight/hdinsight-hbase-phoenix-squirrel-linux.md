@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="HDInsight での Apache Phoenix および SQuirreL の使用 | Microsoft Azure" 
-   description="Apache Phoenix を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。" 
+   pageTitle="Use Apache Phoenix and SQuirreL in HDInsight | Microsoft Azure" 
+   description="Learn how to use Apache Phoenix in HDInsight, and how to install and configure SQuirreL on your workstation to connect to an HBase cluster in HDInsight." 
    services="hdinsight" 
    documentationCenter="" 
    authors="mumian" 
@@ -16,63 +16,64 @@
    ms.date="09/02/2016"
    ms.author="jgao"/>
 
-# HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用  
 
-HDInsight での [Apache Phoenix](http://phoenix.apache.org/) の使用方法、およびSQLLine の使用方法について説明します。Phoenix の詳細については、[Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。Phoenix の文法については、[Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
+# <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>Use Apache Phoenix with Linux-based HBase clusters in HDInsight  
 
->[AZURE.NOTE] HDInsight での Phoenix のバージョンの情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
+Learn how to use [Apache Phoenix](http://phoenix.apache.org/) in HDInsight, and how to use SQLLine. For more information about Phoenix, see [Phoenix in 15 minutes or less](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). For the Phoenix grammar, see [Phoenix Grammar](http://phoenix.apache.org/language/index.html).
 
-##SQLLine の使用
-[SQLLine](http://sqlline.sourceforge.net/) は、SQL を実行するためのコマンド ライン ユーティリティです。
+>[AZURE.NOTE] For the Phoenix version information in HDInsight, see [What's new in the Hadoop cluster versions provided by HDInsight?][hdinsight-versions].
 
-###前提条件
-SQLLine を使用するには、以下のものが必要です。
+##<a name="use-sqlline"></a>Use SQLLine
+[SQLLine](http://sqlline.sourceforge.net/) is a command line utility to execute SQL. 
 
-- **HDInsight 環境の HBase クラスター**。HBase クラスターのプロビジョニングについては、「[Get started with Apache HBase in HDInsight (HDInsight での Apache HBase の使用)][hdinsight-hbase-get-started]」を参照してください。
-- **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。方法については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。
+###<a name="prerequisites"></a>Prerequisites
+Before you can use SQLLine, you must have the following:
+
+- **A HBase cluster in HDInsight**. For information on provision HBase cluster, see [Get started with Apache HBase in HDInsight][hdinsight-hbase-get-started].
+- **Connect to the HBase cluster via the remote desktop protocol**. For instructions, see [Manage Hadoop clusters in HDInsight by using the Azure Classic Portal][hdinsight-manage-portal].
 
 
-HBase クラスターに接続するときは、いずれかの Zookeeper に接続する必要があります。各 HDInsight クラスターには 3 つの Zookeeper があります。
+When you connect to an HBase cluster, you will need to connect to one of the Zookeepers. Each HDInsight cluster has 3 Zookeepers. 
 
-**Zookeeper のホスト名を確認するには**
+**To find out the Zookeeper host name**
 
-1. **https://<ClusterName>.azurehdinsight.net** にアクセスして Ambari を開きます。
-2. HTTP (クラスター) ユーザー名とパスワードを入力してログインします。
-3. 左側のメニューで **[Zookeeper]** をクリックします。リストに 3 つの **Zookeeper サーバー**が表示されます。
-4. リストの **ZooKeeper サーバー**のいずれかをクリックします。[概要] ウィンドウで**ホスト名**を確認します。ホスト名は、*zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net* のように表示されます。
+1. Open Ambari by browse to **https://<ClusterName>.azurehdinsight.net**.
+2. Enter the HTTP (cluster) username and password to login.
+3. Click **ZooKeeper** from the left menu. You shall see 3 **ZooKeeper Server** listed.
+4. Click one of the **ZooKeeper Server** listed. On the Summary pane, find the **Hostname**. It is similar to *zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
 
-**SQLLine を使用するには**
+**To use SQLLine**
 
-1. SSH を使用したクラスターへの接続手順については、ご使用のクライアント コンピューターの OS に応じて、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」を参照してください。
+1. Connect to the cluster using SSH. For instructions, see [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md) or [Use SSH with Linux-based Hadoop on HDInsight from Windows](hdinsight-hadoop-linux-use-ssh-windows.md) depending on your client computer OS.
 
-2. SSH から次のコマンドを実行して、SQLLine を実行します。
+2. From SSH, run the following commands to run SQLLine:
 
         cd /usr/hdp/2.2.9.1-7/phoenix/bin
         ./sqlline.py <ClusterName>:2181:/hbase-unsecure
 
-2. 次のコマンドを実行して、HBase テーブルを作成していくつかのデータを挿入します。
+2. Run the following commands to create a HBase table, and insert some data:
 
-		CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
-	
-		!tables
-		
-		UPSERT INTO Company VALUES(1, 'Microsoft');
-		
-		SELECT * FROM Company;
+        CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
+    
+        !tables
+        
+        UPSERT INTO Company VALUES(1, 'Microsoft');
+        
+        SELECT * FROM Company;
         
         !quit
 
-詳細については、[SQLLine のマニュアル](http://sqlline.sourceforge.net/#manual)および [Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
+For more information, see [SQLLine manual](http://sqlline.sourceforge.net/#manual) and [Phoenix Grammar](http://phoenix.apache.org/language/index.html).
 
 
  
-##次のステップ
-この記事では、HDInsight で Apache Phoenix を使用する方法を説明しました。詳細については、次を参照してください。
+##<a name="next-steps"></a>Next steps
+In this article, you have learned how to use Apache Phoenix in HDInsight.  To learn more, see
 
-- 「[HDInsight HBase の概要][hdinsight-hbase-overview]」: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
-- 「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
-- 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-geo-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
-- 「[HDInsight 環境の HBase で Twitter のセンチメントを分析する][hbase-twitter-sentiment]」: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析する](http://en.wikipedia.org/wiki/Sentiment_analysis)方法について説明します。
+- [HDInsight HBase overview][hdinsight-hbase-overview]: HBase is an Apache, open-source, NoSQL database built on Hadoop that provides random access and strong consistency for large amounts of unstructured and semistructured data.
+- [Provision HBase clusters on Azure Virtual Network][hdinsight-hbase-provision-vnet]: With virtual network integration, HBase clusters can be deployed to the same virtual network as your applications so that applications can communicate with HBase directly.
+- [Configure HBase replication in HDInsight](hdinsight-hbase-geo-replication.md): Learn how to configure HBase replication across two Azure datacenters. 
+- [Analyze Twitter sentiment with HBase in HDInsight][hbase-twitter-sentiment]: Learn how to do real-time [sentiment analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) of big data by using HBase in a Hadoop cluster in HDInsight.
 
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
@@ -95,4 +96,8 @@ HBase クラスターに接続するときは、いずれかの Zookeeper に接
 
  
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

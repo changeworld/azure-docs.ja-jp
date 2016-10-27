@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示"
-   description="シングル サインオンをサポートするアプリケーションを Azure Active Directory ギャラリーに表示する方法 | Microsoft Azure"
+   pageTitle="Listing your application in the Azure Active Directory application gallery"
+   description="How to list an application that supports single sign-on in the Azure Active Directory gallery | Microsoft Azure"
    services="active-directory"
    documentationCenter="dev-center-name"
-   authors="msmbaldwin"
+   authors="bryanla"
    manager="mbaldwin"
    editor=""/>
 
@@ -17,84 +17,89 @@
    ms.author="mbaldwin"/>
 
 
-# Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示
 
-Azure Active Directory でのシングル サインオンをサポートするアプリケーション一覧を [Azure AD ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)に表示するには、まず次の統合モードのいずれかをアプリケーションに実装する必要があります。
+# <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Listing your application in the Azure Active Directory application gallery
 
-* **OpenID Connect** - 認証には OpenID Connect を使用し、構成には Azure AD Consent API を使用して Azure AD と直接統合します。統合を始めたばかりで、アプリケーションが SAML をサポートしていない場合、このモードが推奨されます。
+To list an application that supports single sign-on with Azure Active Directory in the [Azure AD gallery](https://azure.microsoft.com/marketplace/active-directory/all/), the application first needs to implement one of the following integration modes:
 
-* **SAML** - SAML プロトコルを使用してサードパーティの ID プロバイダーを構成する機能が既にアプリケーションにある場合に選択します。
+* **OpenID Connect** - Direct integration with Azure AD using OpenID Connect for authentication and the Azure AD consent API for configuration. If you are just starting an integration and your application does not support SAML, then this is the recommend mode.
 
-各モードの要件は次のとおりです。
+* **SAML** – Your application already has the ability to configure third-party identity providers using the SAML protocol.
 
-##OpenID Connect 統合
+Listing requirements for each mode are below.
 
-アプリケーションを Azure AD と統合するには、[開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。また、次の情報を記載し、waadpartners@microsoft.com に送信してください。
+##<a name="openid-connect-integration"></a>OpenID Connect Integration
 
-* Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。
+To integrate your application with Azure AD, following the [developer instructions](active-directory-authentication-scenarios.md). Then complete the questions below and send to waadpartners@microsoft.com.
 
-* [Azure AD Consent フレームワーク](active-directory-integrating-applications.md#overview-of-the-consent-framework)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。
+* Provide credentials for a test tenant or account with your application that can be used by the Azure AD team to test the integration.  
 
-* Azure AD チームがアプリケーションでシングル サインオンをテストするために必要な詳細な手順があれば、説明してください。
+* Provide instructions on how the Azure AD team can sign in and connect an instance of Azure AD to your application using the [Azure AD consent framework](active-directory-integrating-applications.md#overview-of-the-consent-framework). 
 
-* 次の情報を入力してください。
+* Provide any further instructions required for the Azure AD team to test single sign-on with your application. 
 
-> 会社名:
-> 
-> 会社の Web サイト:
-> 
-> アプリケーション名:
-> 
-> アプリケーションの説明 (256 文字以内):
-> 
-> アプリケーションの Web サイト (情報):
-> 
-> アプリケーションのテクニカル サポートの Web サイト、または連絡先情報:
-> 
-> https://manage.windowsazure.com でアプリケーションの詳細に示す、アプリケーションのクライアント ID:
-> 
-> 顧客がアプリケーションにサインアップしたり、アプリケーションを購入したりする際にアクセスする、アプリケーションのサインアップ URL:
-> 
-> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、Azure Active Directory Marketplace を参照してください)。
-> 
-> アプリケーションの小さいアイコン (PNG ファイル、45 x 45px、単色の背景色) を添付してください:
-> 
-> アプリケーションの大きいアイコン (PNG ファイル、215 x 215px、単色の背景色) を添付してください:
-> 
-> アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
+* Provide the info below:
 
-##SAML の統合
+> Company Name:
+> 
+> Company Website:
+> 
+> Application Name:
+> 
+> Application Description (256 character limit):
+> 
+> Application Website (informational):
+> 
+> Application Technical Support Website or Contact Info:
+> 
+> Client ID of the application, as shown in the application details at https://manage.windowsazure.com:
+> 
+> Application Sign-Up URL where customers go to sign up for and /or purchase the application:
+> 
+> Choose up to three categories for your application to be listed under (for available categories see the Azure Active Directory Marketplace):
+> 
+> Attach Application Small Icon (PNG file, 45px by 45px, solid background color):
+> 
+> Attach Application Large Icon (PNG file, 215px by 215px, solid background color):
+> 
+> Attach Application Logo (PNG file, 150px by 122px, transparent background color):
 
-SAML 2.0 をサポートするすべてのアプリケーションは、[この手順](active-directory-saas-custom-apps.md)を使用して Azure AD テナントと直接統合し、カスタム アプリケーションを追加できます。アプリケーションと Azure AD の統合をテストし終わったら、次の情報を <waadpartners@microsoft.com>に送信してください。
+##<a name="saml-integration"></a>SAML Integration
 
-* Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。
+Any app that supports SAML 2.0 can be integrated directly with an Azure AD tenant using [these instructions to add a custom application](active-directory-saas-custom-apps.md). Once you have tested that your application integration works with Azure AD, send the following information to <waadpartners@microsoft.com>.
 
-* [ここ](active-directory-saas-custom-apps.md)の説明に従って、アプリケーションの SAML サインオン URL (エンティティ ID) と Reply URL (Assertion Consumer Service) 値を記載してください。通常、SAML メタデータ ファイルの一部としてこれらの値を入力している場合は、それも送信してください。
+* Provide credentials for a test tenant or account with your application that can be used by the Azure AD team to test the integration.  
 
-* SAML 2.0 を使用してアプリケーションの ID プロバイダーとして Azure AD を構成する方法を簡単に説明してください。セルフサービス管理ポータルで ID プロバイダーとしての Azure AD の構成がアプリケーションでサポートされている場合、前述の資格情報にそれを設定する機能を含めてください。
+* Provide the SAML Sign-On URL, Issuer URL (entity ID), and Reply URL (assertion consumer service) values for your application, as described [here](active-directory-saas-custom-apps.md). If you typically provide these values as part of a SAML metadata file, then please send that as well.
 
-* 次の情報を入力してください。
+* Provide a brief description of how to configure Azure AD as an identity provider in your application using SAML 2.0. If your application supports configuring Azure AD as an identity provider through a self-service administrative portal, then please ensure the credentials provided above include the ability to set this up.
 
-> 会社名:
-> 
-> 会社の Web サイト:
-> 
-> アプリケーション名:
-> 
-> アプリケーションの説明 (256 文字以内):
-> 
-> アプリケーションの Web サイト (情報):
-> 
-> アプリケーションのテクニカル サポートの Web サイト、または連絡先情報:
-> 
-> 顧客がアプリケーションにサインアップしたり、アプリケーションを購入したりする際にアクセスする、アプリケーションのサインアップ URL:
-> 
-> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、[Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/) をご覧ください):
-> 
-> アプリケーションの小さいアイコン (PNG ファイル、45 x 45px、単色の背景色) を添付してください:
-> 
-> アプリケーションの大きいアイコン (PNG ファイル、215 x 215px、単色の背景色) を添付してください:
-> 
-> アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
+* Provide the info below:
 
-<!---HONumber=AcomDC_0921_2016-->
+> Company Name:
+> 
+> Company Website:
+> 
+> Application Name:
+> 
+> Application Description (256 character limit):
+> 
+> Application Website (informational):
+> 
+> Application Technical Support Website or Contact Info:
+> 
+> Application Sign-Up URL where customers go to sign up for and /or purchase the application:
+> 
+> Choose up to three categories for your application to be listed under (for available categories see the [Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/))):
+> 
+> Attach Application Small Icon (PNG file, 45px by 45px, solid background color):
+> 
+> Attach Application Large Icon (PNG file, 215px by 215px, solid background color):
+> 
+> Attach Application Logo (PNG file, 150px by 122px, transparent background color):
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

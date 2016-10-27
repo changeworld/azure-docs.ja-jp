@@ -1,35 +1,36 @@
 <properties
-	pageTitle="PowerShell を使用した Azure SQL Database の管理 | Microsoft Azure"
-	description="PowerShell による Azure SQL Database 管理。"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor="monicar"/>
+    pageTitle="Manage Azure SQL Database with PowerShell | Microsoft Azure"
+    description="Azure SQL Database management with PowerShell."
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor="monicar"/>
 
 <tags
-	ms.service="sql-database"
-	ms.workload="data-management"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="09/13/2016"
-	ms.author="sstein"/>
+    ms.service="sql-database"
+    ms.workload="data-management"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/13/2016"
+    ms.author="sstein"/>
 
-# PowerShell を使用した Azure SQL Database の管理
+
+# <a name="manage-azure-sql-database-with-powershell"></a>Manage Azure SQL Database with PowerShell
 
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](sql-database-manage-portal.md)
+- [Azure portal](sql-database-manage-portal.md)
 - [Transact-SQL (SSMS)](sql-database-manage-azure-ssms.md)
-- [PowerShell](sql-database-command-line-tools.md)
+- [PowerShell](sql-database-manage-powershell.md)
 
-このトピックで説明する PowerShell コマンドレットを使用すると、Azure SQL Database タスクの多くを実行できます。完全な一覧については、「[Azure SQL Database Cmdlets (Azure SQL Database コマンドレット)](https://msdn.microsoft.com/library/mt574084.aspx)」を参照してください。
+This topic shows the PowerShell cmdlets that are used to perform many Azure SQL Database tasks. For a complete list, see [Azure SQL Database Cmdlets](https://msdn.microsoft.com/library/mt574084.aspx).
 
 
-## リソース グループの作成
+## <a name="create-a-resource-group"></a>Create a resource group
 
-SQL Database および関連する Azure リソースのリソース グループは、[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt759837.aspx) コマンドレットを使用して作成します。
+Create a resource group for our SQL Database and related Azure resources with the [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt759837.aspx) cmdlet.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -37,11 +38,12 @@ $resourceGroupLocation = "northcentralus"
 New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
 ```
 
-詳細については、[リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。サンプル スクリプトについては、「[SQL データベースの PowerShell スクリプト作成](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script)」を参照してください。
+For more information, see [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md).
+For a sample script, see [Create a SQL database PowerShell script](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
 
-## SQL Database サーバーの作成
+## <a name="create-a-sql-database-server"></a>Create a SQL Database server
 
-[New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx) コマンドレットを使用して、SQL Database サーバーを作成します。*server1* を、ご利用のサーバー名に置き換えます。サーバー名は、すべての Azure SQL Database サーバーで一意であることが必要です。サーバー名を既に取得している場合は、エラーが表示されます。このコマンドは、完了までに数分かかる場合があります。サブスクリプションにリソース グループが既に存在している必要があります。
+Create a SQL Database server with the [New-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603715.aspx) cmdlet. Replace *server1* with the name for your server. Server names must be unique across all Azure SQL Database servers. If the server name is already taken, you get an error. This command may take several minutes to complete. The resource group must already exist in your subscription.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -60,12 +62,12 @@ $sqlServer = New-AzureRmSqlServer -ServerName $sqlServerName `
  -ResourceGroupName $resourceGroupName -ServerVersion $sqlServerVersion
 ```
 
-詳細については、[SQL Database の概要](sql-database-technical-overview.md)に関するページをご覧ください。サンプル スクリプトについては、「[SQL データベースの PowerShell スクリプト作成](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script)」を参照してください。
+For more information, see [What is SQL Database](sql-database-technical-overview.md). For a sample script, see [Create a SQL database PowerShell script](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
 
 
-## SQL Database サーバー ファイアウォール規則の作成
+## <a name="create-a-sql-database-server-firewall-rule"></a>Create a SQL Database server firewall rule
 
-サーバーにアクセスするためのファイアウォール規則は、[New-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860.aspx) コマンドレットを使用して作成します。次のコマンドを、開始 IP アドレスと終了 IP アドレスをご利用のクライアントの有効な値に置き換えて実行します。サブスクリプションにリソース グループとサーバーが既に存在している必要があります。
+Create a firewall rule to access the server with the [New-AzureRmSqlServerFirewallRule](https://msdn.microsoft.com/library/azure/mt603860.aspx) cmdlet. Run the following command, replacing the start and end IP addresses with valid values for your client. The resource group, and server must already exist in your subscription.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -80,14 +82,14 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
  -StartIpAddress $firewallStartIp -EndIpAddress $firewallEndIp
 ```
 
-サーバーへの他の Azure サービスのアクセスを許可するには、ファイアウォール規則を作成し、`-StartIpAddress` と `-EndIpAddress` の両方を **0.0.0.0** に設定します。この特別なファイアウォール規則により、すべての Azure トラフィックが、サーバーにアクセスできるようになります。
+To allow other Azure services access to your server, create a firewall rule and set both the `-StartIpAddress` and `-EndIpAddress` to **0.0.0.0**. This special firewall rule allows all Azure traffic to access the server.
 
-詳細については、「[Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx)」をご覧ください。サンプル スクリプトについては、「[SQL データベースの PowerShell スクリプト作成](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script)」を参照してください。
+For more information, see [Azure SQL Database Firewall](https://msdn.microsoft.com/library/azure/ee621782.aspx). For a sample script, see [Create a SQL database PowerShell script](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
 
 
-## SQL データベースの作成 (空白)
+## <a name="create-a-sql-database-(blank)"></a>Create a SQL database (blank)
 
-[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) コマンドレットを使用して、データベースを作成します。サブスクリプションにリソース グループとサーバーが既に存在している必要があります。
+Create a database with the [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) cmdlet. The resource group, and server must already exist in your subscription. 
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -102,12 +104,12 @@ $currentDatabase = New-AzureRmSqlDatabase -ResourceGroupName $resourceGroupName 
  -Edition $databaseEdition -RequestedServiceObjectiveName $databaseServiceLevel
 ```
 
-詳細については、[SQL Database の概要](sql-database-technical-overview.md)に関するページをご覧ください。サンプル スクリプトについては、「[SQL データベースの PowerShell スクリプト作成](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script)」を参照してください。
+For more information, see [What is SQL Database](sql-database-technical-overview.md). For a sample script, see [Create a SQL database PowerShell script](sql-database-get-started-powershell.md#create-a-sql-database-powershell-script).
 
 
-## SQL Database のパフォーマンス レベルを変更します
+## <a name="change-the-performance-level-of-a-sql-database"></a>Change the performance level of a SQL database
 
-[Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx) コマンドレットを使用して、データベースをスケールアップまたはスケールダウンします。サブスクリプションにリソース グループ、サーバー、およびデータベースが既に存在している必要があります。Basic レベルについては、(次のスニペットのように) `-RequestedServiceObjectiveName` を単一スペースに設定します。他のレベルについては、前の例のように、*S0*、*S1*、*P1*、*P6* などに設定します。
+Scale your database up or down with the [Set-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619433.aspx) cmdlet. The resource group, server, and database must already exist in your subscription. Set the `-RequestedServiceObjectiveName` to a single space (like the following snippet) for Basic tier. Set it to *S0*, *S1*, *P1*, *P6*, etc., like the preceding example for other tiers.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -122,11 +124,11 @@ Set-AzureRmSqlDatabase -ResourceGroupName $resourceGroupName `
  -Edition $databaseEdition -RequestedServiceObjectiveName $databaseServiceLevel
 ```
 
-詳細については、「[SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md)」を参照してください。サンプル スクリプトについては、「[SQL Database のサービス階層とパフォーマンス レベルを変更するサンプル PowerShell スクリプト](sql-database-scale-up-powershell.md#sample-powershell-script-to-change-the-service-tier-and-performance-level-of-your-sql-database)」を参照してください。
+For more information, see [SQL Database options and performance: Understand what's available in each service tier](sql-database-service-tiers.md). For a sample script, see [Sample PowerShell script to change the service tier and performance level of your SQL database](sql-database-scale-up-powershell.md#sample-powershell-script-to-change-the-service-tier-and-performance-level-of-your-sql-database).
 
-## SQL データベースを同じサーバーにコピーする
+## <a name="copy-a-sql-database-to-the-same-server"></a>Copy a SQL database to the same server
 
-[New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/azure/mt603644.aspx) コマンドレットを使用して、SQL データベースを同じサーバーにコピーします。`-CopyServerName` と `-CopyResourceGroupName` を、ソース データベース サーバーおよびリソース グループと同じ値に設定します。
+Copy a SQL database to the same server with the [New-AzureRmSqlDatabaseCopy](https://msdn.microsoft.com/library/azure/mt603644.aspx) cmdlet. Set the `-CopyServerName` and `-CopyResourceGroupName` to the same values as your source database server and resource group.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -143,12 +145,12 @@ New-AzureRmSqlDatabaseCopy -DatabaseName $databaseName `
  -CopyResourceGroupName $copyResourceGroupName
 ```
 
-詳細については、「[Azure SQL Database のコピー](sql-database-copy.md)」を参照してください。サンプル スクリプトについては、[SQL データベースの PowerShell スクリプトのコピー](sql-database-copy-powershell.md#example-powershell-script)に関するページをご覧ください。
+For more information, see [Copy an Azure SQL Database](sql-database-copy.md). For a sample script, see [Copy a SQL database PowerShell script](sql-database-copy-powershell.md#example-powershell-script).
 
 
-## SQL Database の削除
+## <a name="delete-a-sql-database"></a>Delete a SQL database
 
-[Remove-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619368.aspx) コマンドレットを使用して、SQL データベースを削除します。サブスクリプションにリソース グループ、サーバー、およびデータベースが既に存在している必要があります。
+Delete a SQL database with the [Remove-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619368.aspx) cmdlet. The resource group, server, and database must already exist in your subscription.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -159,9 +161,9 @@ Remove-AzureRmSqlDatabase -DatabaseName $databaseName `
  -ServerName $sqlServerName -ResourceGroupName $resourceGroupName
 ```
 
-## SQL Database サーバーの削除
+## <a name="delete-a-sql-database-server"></a>Delete a SQL Database server
 
-[Remove-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603488.aspx) コマンドレットを使用して、サーバーを削除します。
+Delete a server with the [Remove-AzureRmSqlServer](https://msdn.microsoft.com/library/azure/mt603488.aspx) cmdlet.
 
 ```
 $resourceGroupName = "resourcegroup1"
@@ -170,17 +172,21 @@ $sqlServerName = "server1"
 Remove-AzureRmSqlServer -ServerName $sqlServerName -ResourceGroupName $resourceGroupName
 ```
 
-## PowerShell を使用したエラスティック データベース プールの作成と管理
+## <a name="create-and-manage-elastic-database-pools-using-powershell"></a>Create and manage elastic database pools using PowerShell
 
-PowerShell を使用したエラスティック データベース プール作成の詳細については、「[PowerShell による新しい Elastic Database プールの作成](sql-database-elastic-pool-create-powershell.md)」を参照してください。
+For details about creating elastic database pools using PowerShell, see [Create a new elastic database pool with PowerShell](sql-database-elastic-pool-create-powershell.md).
 
-PowerShell を使用したエラスティック データベース プール管理の詳細については、「[PowerShell でのエラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-powershell.md)」を参照してください。
+For details about managing elastic database pools using PowerShell, see [Monitor and manage an elastic database pool with PowerShell](sql-database-elastic-pool-manage-powershell.md).
 
 
 
-## 関連情報
+## <a name="related-information"></a>Related information
 
-- [Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)
-- [Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/dn708514.aspx)
+- [Azure SQL Database Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx)
+- [Azure Cmdlet Reference](https://msdn.microsoft.com/library/azure/dn708514.aspx)
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

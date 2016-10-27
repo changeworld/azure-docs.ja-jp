@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Azure ポータルを使用して DNS ゾーンのレコード セットとレコードを作成する | Microsoft Azure"
-   description="Azure DNS のホスト レコードを作成する方法と、Azure ポータルを使用してレコード セットとレコードを作成する方法について説明します。"
+   pageTitle="Create a record set and records for a DNS Zone using the Azure portal | Microsoft Azure"
+   description="How to create host records for Azure DNS and create record sets and records using the Azure portal"
    services="dns"
    documentationCenter="na"
-   authors="cherylmc"
+   authors="sdwheeler"
    manager="carmonm"
    editor=""
    tags="azure-resource-manager"/>
@@ -15,53 +15,58 @@
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
    ms.date="08/16/2016"
-   ms.author="cherylmc"/>
+   ms.author="sewhee"/>
 
 
 
-# Azure ポータルを使用した DNS レコード セットとレコードの作成
+
+# <a name="create-dns-record-sets-and-records-by-using-the-azure-portal"></a>Create DNS record sets and records by using the Azure portal
 
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](dns-getstarted-create-recordset-portal.md)
+- [Azure Portal](dns-getstarted-create-recordset-portal.md)
 - [PowerShell](dns-getstarted-create-recordset.md)
 - [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
 
-この記事では、Azure ポータルを使用してレコードとレコード セットを作成する手順を説明します。DNS ゾーンを作成した後は、ドメインの DNS レコードを追加します。そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
+This article walks you through the process of creating records and records sets by using the Azure portal. After you create your DNS zone, you add the DNS records for your domain. To do this, you first need to understand DNS records and record sets.
 
 [AZURE.INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
 
-## レコード セットとレコードの作成
+## <a name="create-a-record-set-and-record"></a>Create a record set and record
 
-次の例では、Azure ポータルを使用してレコードとレコード セットを作成する手順を説明します。ここでは DNS "A" レコードを使用します。
+The following example walks you through the process of creating a record set and record by using the Azure portal. We'll use the DNS "A" record type.
 
-1. ポータルにサインインします。
+1. Sign in to the portal.
 
-2. レコード セットを作成する **DNS ゾーン**のブレードに移動します。
+2. Go to the **DNS zone** blade in which you want to create a record set.
 
-3. **DNS ゾーン**のブレードの上部にある **[レコード セット]** を選択して **[レコード セットの追加]** ブレードを開きます。
+3. At the top of the **DNS zone** blade, select **Record set** to open the **Add record set** blade.
 
-	![新しいレコード セット](./media/dns-getstarted-create-recordset-portal/newrecordset500.png)
+    ![New record set](./media/dns-getstarted-create-recordset-portal/newrecordset500.png)
 
-4. **[レコード セットの追加]** ブレードで、レコード セットの名前を入力します(例: "**www**")。
+4. On the **Add record set** blade, name your record set. For example, you could name your record set "**www**".
 
-	![レコード セットの追加](./media/dns-getstarted-create-recordset-portal/addrecordset500.png)
+    ![Add record set](./media/dns-getstarted-create-recordset-portal/addrecordset500.png)
 
-5. 作成するレコードの種類を選択します。たとえば、**[A]** を選択します。
+5. Select the type of record you want to create. For example, select **A**.
 
-6. **TTL** を設定します。ポータルの既定の有効期間は、1 時間です。
+6. Set the **TTL**. The default time to live in the portal is one hour.
 
-7. IP アドレスを 1 行に 1 つずつ追加します。上記のレコード セット名とレコードの種類を使用すると、www レコード セットの **A** レコードに IPv4 IP アドレスが追加されます。
+7. Add the IP addresses, one IP address per line. When you use the suggested record set name and record type described earlier, you add the IPv4 IP addresses to the **A** record for the www record set.
 
-8. IP アドレスの追加が完了したら、ブレードの下部にある **[OK]**を選択します。これで、DNS レコード セットが作成されます。
+8. After you finish adding IP addresses, select **OK** at the bottom of the blade. The DNS record set will be created.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-レコード セットとレコードを管理する方法については、[Azure ポータルを使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-portal.md)に関するページを参照してください。
+To manage your record set and records, see [Manage DNS records and record sets by using the Azure portal](dns-operations-recordsets-portal.md).
 
-Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)」を参照してください。
+For more information about Azure DNS, see the [Azure DNS overview](dns-overview.md).
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,58 +1,63 @@
 <properties
-	pageTitle="Windows 上で JDBC を含む Java を使用して、SQL Database に接続する | Microsoft Azure"
-	description="Azure SQL Database への接続に使用できる Java コード サンプルについて説明します。サンプルは JDBC を使用し、Windows クライアント コンピューター上で実行されます。"
-	services="sql-database"
-	documentationCenter=""
-	authors="LuisBosquez"
-	manager="jhubbard"
-	editor="genemi"/>
+    pageTitle="Connect to SQL Database by using Java with JDBC on Windows | Microsoft Azure"
+    description="Presents a Java code sample you can use to connect to Azure SQL Database. The sample uses JDBC, and it runs on a Windows client computer."
+    services="sql-database"
+    documentationCenter=""
+    authors="LuisBosquez"
+    manager="jhubbard"
+    editor="genemi"/>
 
 
 <tags
-	ms.service="sql-database"
-	ms.workload="drivers"
-	ms.tgt_pltfrm="na"
-	ms.devlang="java"
-	ms.topic="article"
-	ms.date="06/16/2016"
-	ms.author="lbosq"/>
+    ms.service="sql-database"
+    ms.workload="drivers"
+    ms.tgt_pltfrm="na"
+    ms.devlang="java"
+    ms.topic="article"
+    ms.date="10/03/2016"
+    ms.author="lbosq"/>
 
 
-# Windows 上で JDBC を含む Java を使用して、SQL Database に接続する
+
+# <a name="connect-to-sql-database-by-using-java-with-jdbc-on-windows"></a>Connect to SQL Database by using Java with JDBC on Windows
 
 
-[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)]
+[AZURE.INCLUDE [sql-database-develop-includes-selector-language-platform-depth](../../includes/sql-database-develop-includes-selector-language-platform-depth.md)] 
 
 
-このトピックでは、Azure SQL Database への接続に使用できる Java コード サンプルについて説明します。Java サンプルは、Java Development Kit (JDK) バージョン 1.8 に依存します。サンプルは、JDBC ドライバーを使用して、Azure SQL Database に接続されます。
+This topic presents a Java code sample that you can use to connect to Azure SQL Database. The Java sample relies on the Java Development Kit (JDK) version 1.8. The sample connects to an Azure SQL Database by using the JDBC driver.
 
-## 手順 1: 開発環境を設定する
+## <a name="step-1:-configure-development-environment"></a>Step 1:  Configure Development Environment
 
-[Java 開発用の開発環境を構成する](https://msdn.microsoft.com/library/mt720658.aspx)
+[Configure development environment for Java development](https://msdn.microsoft.com/library/mt720658.aspx)
 
-## 手順 2: SQL Database を作成する
+## <a name="step-2:-create-a-sql-database"></a>Step 2: Create a SQL database
 
-「[作業の開始](sql-database-get-started.md)」ページで、データベースを作成する方法についてご確認ください。
+See the [getting started page](sql-database-get-started.md) to learn how to create a database.  
 
-## 手順 3: 接続文字列を取得する
+## <a name="step-3:-get-connection-string"></a>Step 3: Get Connection String
 
 [AZURE.INCLUDE [sql-database-include-connection-string-jdbc-20-portalshots](../../includes/sql-database-include-connection-string-jdbc-20-portalshots.md)]
 
-> [AZURE.NOTE] JTDS JDBC ドライバーを使用している場合は、接続文字列の URL に "ssl=require" を追加し、JVM の次のオプションを設定する必要があります。"-Djsse.enableCBCProtection=false"。この JVM オプションはセキュリティの脆弱性を修正するプログラムを無効にするため、このオプションを設定する前に、どのようなリスクがあるかを必ず理解しておいてください。
+> [AZURE.NOTE] If you are using the JTDS JDBC driver, then you will need to add "ssl=require" to the URL of the connection string and you need to set the following option for the JVM "-Djsse.enableCBCProtection=false". This JVM option disables a fix for a security vulnerability, so make sure you understand what risk is involved before setting this option.
 
-## 手順 4: サンプル コードを実行する
+## <a name="step-4:-run-sample-code"></a>Step 4: Run sample code
 
-* [Java を使用した SQL 接続の概念実証](https://msdn.microsoft.com/library/mt720656.aspx)
+* [Proof of concept connecting to SQL using Java](https://msdn.microsoft.com/library/mt720656.aspx)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-* [Java Developer Center](/develop/java/) を参照して下さい。
-* 「[SQL Database の開発: 概要](sql-database-develop-overview.md)」の確認
-* [Microsoft JDBC Driver for SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) の詳細
+* Visit the [Java Developer Center](/develop/java/).
+* Review the [SQL Database Development Overview](sql-database-develop-overview.md)
+* More information on the [Microsoft JDBC Driver for SQL Server](https://msdn.microsoft.com/library/mt484311.aspx)
 
-## その他のリソース 
+## <a name="additional-resources"></a>Additional resources 
 
-* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
+* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/)
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

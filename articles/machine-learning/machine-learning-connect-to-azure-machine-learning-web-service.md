@@ -1,124 +1,142 @@
 <properties
-	pageTitle="Machine Learning Web サービスを発行する | Microsoft Azure"
-	description="C# または Python を使用して、Azure Machine Learning Web サービスに承認キーを利用して接続します。"
-	services="machine-learning"
-	documentationCenter=""
-	authors="garyericson"
-	manager="jhubbard"
-	editor="cgronlun" />
+    pageTitle="Connect to a Machine Learning Web Service | Microsoft Azure"
+    description="With C# or Python, connect to an Azure Machine Learning Web service using an authorization key."
+    services="machine-learning"
+    documentationCenter=""
+    authors="garyericson"
+    manager="jhubbard"
+    editor="cgronlun" />
 
 <tags
-	ms.service="machine-learning"
-	ms.workload="data-services"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/06/2016" 
-	ms.author="garye" />
+    ms.service="machine-learning"
+    ms.workload="data-services"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/10/2016" 
+    ms.author="garye" />
 
 
-# Azure Machine Learning Web サービスに接続する
-開発者が体験する Azure Machine Learning は、入力データから予測をリアルタイムまたはバッチ モードで作成する Web サービス API です。Azure Machine Learning Studio を使用して予測を作成し、Azure Machine Learning Web サービスをデプロイします。
+
+# <a name="connect-to-an-azure-machine-learning-web-service"></a>Connect to an Azure Machine Learning Web Service
+
+The Azure Machine Learning developer experience is a Web service API to make predictions from input data in real time or in batch mode. You use Azure Machine Learning Studio to create predictions and deploy an Azure Machine Learning Web service.
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Machine Learning Studio を使用して Machine Learning Web サービスを作成してデプロイする方法の詳細については、次を参照してください。
+To learn about how to create and deploy a Machine Learning Web service using Machine Learning Studio:
 
-- Machine Learning Studio で実験を作成する方法については、[初めての実験を作成する方法のチュートリアル](machine-learning-create-experiment.md)をご覧ください。
-- Web サービスをデプロイする方法の詳細については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
-- Machine Learning 全般の詳細については、[Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
+- For a tutorial on how to create an experiment in Machine Learning Studio, see [Create your first experiment](machine-learning-create-experiment.md).
+- For details on how to deploy a Web service, see [Deploy a Machine Learning Web service](machine-learning-publish-a-machine-learning-web-service.md).
+- For more information about Machine Learning in general, visit the [Machine Learning Documentation Center](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-## Azure Machine Learning Web サービス ##
+## <a name="azure-machine-learning-web-service"></a>Azure Machine Learning Web service ##
 
-Azure Machine Learning Web サービスを使用して、外部のアプリケーションが Machine Learning のワークフローのスコア付けモデルとリアルタイムで通信します。Machine Learning Web サービスの呼び出しは、予測結果を外部のアプリケーションに返します。Machine Learning Web サービスの呼び出しを実行するために、予測のデプロイ時に作成される API キーを渡します。Machine Learning Web サービスは、Web プログラミング プロジェクトでよく選択されるアーキテクチャの REST に基づいています。
+With the Azure Machine Learning Web service, an external application communicates with a Machine Learning workflow scoring model in real time. A Machine Learning Web service call returns prediction results to an external application. To make a Machine Learning Web service call, you pass an API key that is created when you deploy a prediction. The Machine Learning Web service is based on REST, a popular architecture choice for web programming projects.
 
-Azure Machine Learning には、2 種類のサービスがあります。
+Azure Machine Learning has two types of services:
 
-- 要求応答サービス (RRS) – 待ち時間が短く拡張性の高い、Machine Learning Studio から作成およびデプロイされるステートレスなモデルへのインターフェイスを提供するサービス。
-- バッチ実行サービス (BES) – データ レコードのバッチをスコア付けする非同期のサービス。
+- Request-Response Service (RRS) – A low latency, highly scalable service that provides an interface to the stateless models created and deployed from the Machine Learning Studio.
+- Batch Execution Service (BES) – An asynchronous service that scores a batch for data records.
 
-Machine Learning Web サービスの詳細については、「[Azure Machine Learning Web サービスをデプロイする](machine-learning-publish-a-machine-learning-web-service.md)」をご覧ください。
+For more information about Machine Learning Web services, see [Deploy a Machine Learning Web service](machine-learning-publish-a-machine-learning-web-service.md).
 
-## Azure Machine Learning の承認キーを取得する ##
+## <a name="get-an-azure-machine-learning-authorization-key"></a>Get an Azure Machine Learning authorization key ##
 
-実験をデプロイすると、Web サービスの API キーが生成されます。キーの取得元は、実験を新しい Web サービスとしてデプロイしたか、従来の Web サービスとしてデプロイしたかによって決まります。
+When you deploy your experiment, API keys are generated for the Web service. You can retrieve the keys from several locations.
 
-## 従来の Web サービス ##
+## <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>From the Microsoft Azure Machine Learning Web Services portal
 
- Machine Learning Studio または Azure ポータルからキーを取得できます。
+Sign in to the [Microsoft Azure Machine Learning Web Services](https://services.azureml.net) portal.
 
-### Machine Learning Studio ###
+To retrieve the API key for a New Machine Learning Web service:
 
-1. Machine Learning Studio で、左側の **[Web サービス]** をクリックします。
-2. Web サービスをクリックします。**[ダッシュボード]** タブに **[API キー]** があります。
-
-### Azure ポータル ###
-
-1. 左側の **[Machine Learning]** をクリックします。
-2. ワークスペースをクリックします。
-3. **[Web サービス]** をクリックします。
-4. Web サービスをクリックします。
-5. エンドポイントをクリックします。[API キー] が右下にあります。
+1. In the Azure Machine Learning Web Services portal, click **Web Services** the top menu.
+2. Click the Web service for which you want to retrieve the key.
+3. On the top menu, click **Consume**.
+4. Copy and save the **Primary Key**.
 
 
-## 新しい Web サービス 
+To retrieve the API key for a Classic Machine Learning Web service:
 
-新しい Machine Learning Web サービスの API キーを取得するには、[Microsoft Azure Machine Learning Web サービス](https://services.azureml.net/quickstart) ポータルにログインする必要があります。
+1. In the Azure Machine Learning Web Services portal, click **Classic Web Services** the top menu.
+2. Click the Web service with which you are working.
+3. Click the endpoint for which you want to retrieve the key.
+3. On the top menu, click **Consume**.
+4. Copy and save the **Primary Key**.
 
-1. Azure Machine Learning Web サービス ポータルで、上部メニューの **[WEB サービス]** をクリックします。
-2. キーを取得する Web サービスをクリックします。
-3. 上部のメニューで **[Consume(使用)]** をクリックします。
-4. **主キー**をコピーして保存します。
+## <a name="classic-web-service"></a>Classic Web service ##
 
-## <a id="connect"></a>Machine Learning Web サービスに接続する
+ You can also retrieve a key for a Classic Web service from Machine Learning Studio or the Azure portal.
 
-HTTP 要求と応答をサポートする任意のプログラミング言語を使用して、Machine Learning Web サービスに接続することができます。Machine Learning Web サービス ヘルプ ページから、C#、Python、および R の例を表示できます。
+### <a name="machine-learning-studio"></a>Machine Learning Studio ###
 
-**Machine Learning API ヘルプ** Machine Learning API ヘルプは、Web サービスをデプロイするときに作成されます。「[Azure Machine Learning チュートリアル - Web サービスをデプロイする](machine-learning-walkthrough-5-publish-web-service.md)」を参照してください。Machine Learning API ヘルプには、予測 Web サービスの詳細が含まれます。
+1. In Machine Learning Studio, click **WEB SERVICES** on the left.
+2. Click a Web service. The **API key** is on the **DASHBOARD** tab.
 
-**従来の Web サービスの Machine Learning API ヘルプを表示するには** Machine Learning Studio の場合:
+### <a name="azure-portal"></a>Azure portal ###
 
-1. **[Web サービス]** をクリックします。
-2. Web サービスをクリックします。
-3. **[API ヘルプ ページ]** - **[要求/応答]** または **[バッチの実行]** をクリックします。
+1. Click **MACHINE LEARNING** on the left.
+2. Click the workspace in which your Web service is located.
+3. Click **WEB SERVICES**.
+4. Click a Web service.
+5. Click an endpoint. The “API KEY” is down at the lower-right.
 
-**新しい Web サービスの Machine Learning API ヘルプを表示するには** Azure Machine Learning Web サービス ポータルの場合:
+## <a name="<a-id="connect"></a>connect-to-a-machine-learning-web-service"></a><a id="connect"></a>Connect to a Machine Learning Web service
 
-1. 上部のメニューで **[Web サービス]** をクリックします。
-2. キーを取得する Web サービスをクリックします。
+You can connect to a Machine Learning Web service using any programming language that supports HTTP request and response. You can view examples in C#, Python, and R from a Machine Learning Web service help page.
 
-**[Consume (使用)]** をクリックして、[要求/応答] および [バッチの実行] サービスの URI と、C#、R、および Python のサンプル コードを取得します。
+**Machine Learning API help** Machine Learning API help is created when you deploy a Web service. See [Azure Machine Learning Walkthrough- Deploy Web Service](machine-learning-walkthrough-5-publish-web-service.md).
+The Machine Learning API help contains details about a prediction Web service.
 
-**Swagger API** をクリックして、指定した URI から呼び出される API の Swagger ベースのドキュメントを取得します。
+2. Click the Web service with which you are working.
+3. Click the endpoint for which you want to view the API Help Page.
+3. On the top menu, click **Consume**.
+3. Click **API help page** under either the Request-Response or Batch Execution endpoints.
 
-### C# のサンプル ###
+**To view Machine Learning API help for a New Web service**
 
-Machine Learning Web サービスに接続するには、ScoreData を渡す **HttpClient** を使用します。ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。Machine Learning サービスの認証には、API キーを使用します。
+In the Azure Machine Learning Web Services Portal:
 
-Machine Learning Web サービスに接続するには、**Microsoft.AspNet.WebApi.Client** Nuget パッケージをインストールする必要があります。
+1. Click **WEB SERVICES** on the top menu.
+2. Click the Web service for which you want to retrieve the key.
 
-**Microsoft.AspNet.WebApi.Client Nuget in Visual Studio をインストールする**
+Click **Consume** to get the URIs for the Request-Reposonse and Batch Execution Services and Sample code in C#, R, and Python.
 
-1. 「UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」Web サービスを発行します。
-2. **[ツール]** > **[Nuget パッケージ マネージャー]** > **[Package Manager Console]** をクリックします。
-2. **[Install-Package Microsoft.AspNet.WebApi.Client]** を選択します。
+Click **Swagger API** to get Swagger based documentation for the APIs called from the supplied URIs.
 
-**サンプル コードを実行するには**
+### <a name="c#-sample"></a>C# Sample ###
 
-1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験を発行します。
-2. Web サービスからのキーを持つ apiKey を割り当てます。前述の「**Azure Machine Learning の承認キーを取得する**」をご覧ください。
-3. 要求の URI を含む serviceUri を割り当てます。
+To connect to a Machine Learning Web service, use an **HttpClient** passing ScoreData. ScoreData contains a FeatureVector, an n-dimensional vector of numerical features that represents the ScoreData. You authenticate to the Machine Learning service with an API key.
+
+To connect to a Machine Learning Web service, the **Microsoft.AspNet.WebApi.Client** NuGet package must be installed.
+
+**Install Microsoft.AspNet.WebApi.Client NuGet in Visual Studio**
+
+1. Publish the Download dataset from UCI: Adult 2 class dataset Web Service.
+2. Click **Tools** > **NuGet Package Manager** > **Package Manager Console**.
+2. Choose **Install-Package Microsoft.AspNet.WebApi.Client**.
+
+**To run the code sample**
+
+1. Publish "Sample 1: Download dataset from UCI: Adult 2 class dataset" experiment, part of the Machine Learning sample collection.
+2. Assign apiKey with the key from a Web service. See **Get an Azure Machine Learning authorization key** above.
+3. Assign serviceUri with the Request URI.
 
 
-### Python サンプル ###
+### <a name="python-sample"></a>Python Sample ###
 
-Machine Learning Web サービスに接続するには、ScoreData を渡す **urllib2** ライブラリを使用します。ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。Machine Learning サービスの認証には、API キーを使用します。
+To connect to a Machine Learning Web service, use the **urllib2** library passing ScoreData. ScoreData contains a FeatureVector, an n-dimensional  vector of numerical features that represents the ScoreData. You authenticate to the Machine Learning service with an API key.
 
 
-**サンプル コードを実行するには**
+**To run the code sample**
 
-1. Machine Learning サンプル コレクションに含まれる「サンプル 1: UCI からデータセットをダウンロード: 成人向け 2 クラス データセット」実験をデプロイします。
-2. Web サービスからのキーを持つ apiKey を割り当てます。前述の「**Azure Machine Learning の承認キーを取得する**」をご覧ください。
-3. 要求の URI を含む serviceUri を割り当てます。
+1. Deploy "Sample 1: Download dataset from UCI: Adult 2 class dataset" experiment, part of the Machine Learning sample collection.
+2. Assign apiKey with the key from a Web service. See the **Get an Azure Machine Learning authorization key** section near the beginning of this article.
+3. Assign serviceUri with the Request URI.
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

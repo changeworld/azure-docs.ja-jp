@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Directions on Microsoft の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Directions on Microsoft を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Directions on Microsoft | Microsoft Azure" 
+    description="Learn how to use Directions on Microsoft with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,105 +11,113 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Directions on Microsoft の統合
 
-このチュートリアルでは、Azure Active Directory と Directions on Microsoft の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+#<a name="tutorial:-azure-active-directory-integration-with-directions-on-microsoft"></a>Tutorial: Azure Active Directory integration with Directions on Microsoft
 
--   有効な Azure サブスクリプション
--   Directions on Microsoft サブスクリプション
+The objective of this tutorial is to show the integration of Azure Active Directory and Directions on Microsoft.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
-フェデレーション Directions on Microsoft サブスクリプションをまだ持っていない場合は、"*service@DirectionsOnMicrosoft.com*" に電子メールで要求してください。
+-   A valid Azure subscription
+-   A Directions on Microsoft subscription
 
-このチュートリアルを完了すると、Directions on Microsoft に割り当てた Azure Active Directory ユーザーは、シングル サインオンを使用して、アプリケーションにシングル サインインできるようになります。
+If you don’t have a federated Directions on Microsoft subscription yet, email a request to “*service@DirectionsOnMicrosoft.com*”.
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+After completing this tutorial, the Azure Active Directory users you have assigned to Directions on Microsoft will be able to single sign into the application using single sign-on.
 
-1.  Directions on Microsoft のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+The scenario outlined in this tutorial consists of the following building blocks:
 
-![シナリオ](./media/active-directory-saas-directions-microsoft-tutorial/IC786877.png "シナリオ")
-##Directions on Microsoft のアプリケーション統合の有効化
+1.  Enabling the application integration for Directions on Microsoft
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-このセクションでは、Directions on Microsoft のアプリケーション統合を有効にする方法について説明します。
+![Scenario](./media/active-directory-saas-directions-microsoft-tutorial/IC786877.png "Scenario")
+##<a name="enabling-the-application-integration-for-directions-on-microsoft"></a>Enabling the application integration for Directions on Microsoft
 
-###Directions on Microsoft のアプリケーション統合を有効にするには、次の手順を実行します。
+The objective of this section is to outline how to enable the application integration for Directions on Microsoft.
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+###<a name="to-enable-the-application-integration-for-directions-on-microsoft,-perform-the-following-steps:"></a>To enable the application integration for Directions on Microsoft, perform the following steps:
+
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-directions-microsoft-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-directions-microsoft-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-directions-microsoft-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-directions-microsoft-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-directions-microsoft-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-directions-microsoft-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-directions-microsoft-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Directions on Microsoft**」と入力します。
+6.  In the **search box**, type **Directions on Microsoft**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-directions-microsoft-tutorial/IC786878.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-directions-microsoft-tutorial/IC786878.png "Application Gallery")
 
-7.  結果ウィンドウで **[Directions on Microsoft]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Directions on Microsoft**, and then click **Complete** to add the application.
 
-    ![シナリオ](./media/active-directory-saas-directions-microsoft-tutorial/IC793922.png "シナリオ")
-##シングル サインオンの構成
+    ![Scenario](./media/active-directory-saas-directions-microsoft-tutorial/IC793922.png "Scenario")
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
 
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Directions on Microsoft に対する認証を行うことができるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to Directions on Microsoft with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Directions on Microsoft** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Directions on Microsoft** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Enable Single Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786879.png "Enable Single Sign-On")
 
-2.  **[ユーザーの Directions on Microsoft へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Directions on Microsoft** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
-    ![Microsoft Azure AD シングル サインオン](./media/active-directory-saas-directions-microsoft-tutorial/IC786880.png "Microsoft Azure AD シングル サインオン")
+    ![Microsoft Azure AD Singel Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786880.png "Microsoft Azure AD Singel Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページの [サインオン URL] ボックスに「**https://www.directionsonmicrosoft.com/user/login**」と入力し、**[次へ] をクリックします**。
+3.  On the **Configure App URL** page, in the Sign On URL textbox, type **https://www.directionsonmicrosoft.com/user/login**, and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-directions-microsoft-tutorial/IC786881.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-directions-microsoft-tutorial/IC786881.png "Configure App URL")
 
-4.  **[Directions on Microsoft でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターにローカルに保存します。
+4.  On the **Configure single sign-on at Directions on Microsoft** page, click **Download metadata**, and then save the metadata file locally on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786882.png "Configure Single Sign-On")
 
-5.  メタデータ ファイルを Directions on Microsoft サポート チーム (*service@DirectionsOnMicrosoft.com*) に送信します。Directions on Microsoft サポート チームがフェデレーション サイトのメンバーシップを見つけられるように、電子メールには会社の情報を含めます。
+5.  Send the metadata file to the Directions on Microsoft support team (*service@DirectionsOnMicrosoft.com*). To enable the Directions on Microsoft support team to locate your federated site membership, include your company information in your email.
 
-    >[AZURE.NOTE] Directions on Microsoft のシングル サインオンは、Directions on Microsoft サポート チームが有効にする必要があります。シングル サインオンが有効になると通知が届きます。
+    >[AZURE.NOTE] Single sign-on for Directions on Microsoft needs to be enabled by the Directions on Microsoft support team.
+You will receive a notification when single sign-on has been enabled.
 
-6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+6.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-directions-microsoft-tutorial/IC786883.png "Configure Single Sign-On")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
 
-Directions on Microsoft へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して Directions on Microsoft にログインしようとすると、そのユーザーが存在するかどうかが Directions on Microsoft によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは自動的に作成されます。
-##ユーザーの割り当て
+There is no action item for you to configure user provisioning to Directions on Microsoft.  
+When an assigned user tries to log into Directions on Microsoft using the access panel, Directions on Microsoft checks whether the user exists. If there is no user account available yet, it is automatically created by Directions on Microsoft.
+##<a name="assigning-users"></a>Assigning users
 
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Directions on Microsoft に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-directions-on-microsoft,-perform-the-following-steps:"></a>To assign users to Directions on Microsoft, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Directions on Microsoft** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Directions on Microsoft **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-directions-microsoft-tutorial/IC786884.png "ユーザーの割り当て")
+    ![Assign users](./media/active-directory-saas-directions-microsoft-tutorial/IC786884.png "Assign users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-directions-microsoft-tutorial/IC767830.png "Yes")
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

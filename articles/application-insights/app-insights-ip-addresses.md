@@ -1,56 +1,57 @@
 <properties 
-	pageTitle="Application Insights によって使用される IP アドレス | Microsoft Azure"
-	description="Application Insights で必要なサーバー ファイアウォール例外" 
-	services="application-insights"
+    pageTitle="IP addresses used by Application Insights | Microsoft Azure"
+    description="Server firewall exceptions required by Application Insights" 
+    services="application-insights"
     documentationCenter=".net"
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/24/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/24/2016" 
+    ms.author="awills"/>
  
-# Application Insights によって使用される IP アドレス
 
-[Visual Studio Application Insights](app-insights-overview.md) サービスは、多くの IP アドレスを使用します。監視しているアプリがファイアウォールの背後でホストされている場合は、これらのアドレスを確認する必要があります。
+# <a name="ip-addresses-used-by-application-insights"></a>IP addresses used by Application Insights
 
-> [AZURE.NOTE] これらは静的アドレスですが、しばしば変更の必要が生じることがあります。
+The [Visual Studio Application Insights](app-insights-overview.md) service uses a number of IP addresses. You might need to know these addresses if the app that you are monitoring is hosted behind a firewall.
+
+> [AZURE.NOTE] Although these addresses are static, it's possible that we will need to change them from time to time.
 
 
-## 送信ポート
+## <a name="outgoing-ports"></a>Outgoing ports
 
-Application Insights SDK や Status Monitor がポータルにデータを送信できるように、サーバーのファイアウォールでいくつかの送信ポートを開く必要があります。
+You need to open some outgoing ports in your server's firewall to allow the Application Insights SDK and/or Status Monitor to send data to the portal:
 
-|目的|URL|IP|ポート
+|Purpose|URL|IP|Ports
 |---|---|---|---
-| テレメトリ|dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com| 40\.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221|使用します
-|LiveStream|rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |可変|使用します
+| Telemetry|dc.services.visualstudio.com<br/>dc.applicationinsights.microsoft.com| 40.114.241.141<br/>104.45.136.42<br/>40.84.189.107<br/>168.63.242.221|443
+|LiveStream|rt.services.visualstudio.com<br/>rt.applicationinsights.microsoft.com |variable|443
 
 
 
-+ Status Monitor の構成 - 変更を加える場合にのみ必要です。
- -	`management.core.windows.net:443`
- -	`management.azure.com:443`
- -	`login.windows.net:443`
- -	`login.microsoftonline.com:443`
- -	`secure.aadcdn.microsoftonline-p.com:443`
- -	`auth.gfx.ms:443`
- -	`login.live.com:443`
-+ Status Monitor のインストール:
- +	`packages.nuget.org:443`
++ Status Monitor Configuration - needed only when making changes:
+ -  `management.core.windows.net:443` 
+ -  `management.azure.com:443`
+ -  `login.windows.net:443`
+ -  `login.microsoftonline.com:443`
+ -  `secure.aadcdn.microsoftonline-p.com:443`
+ -  `auth.gfx.ms:443`
+ -  `login.live.com:443`
++ Status Monitor Installation:
+ +  `packages.nuget.org:443`
 
-この一覧は時々変更される場合があります。
+This list may change from time to time.
 
-## 可用性テスト
+## <a name="availability-tests"></a>Availability tests
 
-これは[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の実行元のアドレスの一覧です。アプリで Web テストを実行しようとするが、Web サーバーが特定のクライアントの処理に制限されている場合は、可用性テスト サーバーからの着信トラフィックを許可する必要があります。
+This is the list of addresses from which [availability web tests](app-insights-monitor-web-app-availability.md) are run. If you want to run web tests on your app, but your web server is restricted to serving specific clients, then you will have to permit incoming traffic from our availability test servers.
 
-これらのアドレスからの着信トラフィック用にポート 80 (http) と 443 (https) を開きます。
+Open ports 80 (http) and 443 (https) for incoming traffic from these addresses:
 
 ```
 
@@ -104,6 +105,8 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 207.46.98.159
 207.46.98.160
 207.46.98.162
+207.46.98.169
+207.46.98.170
 207.46.98.171
 207.46.98.172
 213.199.178.54
@@ -136,6 +139,8 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 65.55.244.44
 65.55.244.46
 65.55.244.47
+65.55.82.77
+65.55.82.78
 65.55.82.81
 65.55.82.84
 65.55.82.85
@@ -158,6 +163,8 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 94.245.72.45
 94.245.72.46
 94.245.72.49
+94.245.72.52
+94.245.72.53
 94.245.78.40
 94.245.78.41
 94.245.78.42
@@ -167,16 +174,17 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 94.245.82.37
 94.245.82.38
 
+
 ```  
 
-## データ アクセス API
+## <a name="data-access-api"></a>Data access API
 
 
 
-|URI|IP|ポート
+|URI|IP|Ports
 |---|---|---
-|api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io|13\.82.26.252<br/>40.76.213.73|80,443
-|dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com|13\.82.24.149<br/>40.114.82.10|80,443
+|api.applicationinsights.io<br/>api1.applicationinsights.io<br/>api2.applicationinsights.io<br/>api3.applicationinsights.io<br/>api4.applicationinsights.io<br/>api5.applicationinsights.io|13.82.26.252<br/>40.76.213.73|80,443
+|dev.applicationinsights.io<br/>dev.applicationinsights.microsoft.com<br/>dev.aisvc.visualstudio.com<br/>www.applicationinsights.io<br/>www.applicationinsights.microsoft.com<br/>www.aisvc.visualstudio.com|13.82.24.149<br/>40.114.82.10|80,443
 
 
 
@@ -184,4 +192,8 @@ Application Insights SDK や Status Monitor がポータルにデータを送信
 
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

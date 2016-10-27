@@ -17,23 +17,24 @@
    ms.author="subramar"/>
 
 
-# ローカル コンピューターの開発のセットアップでのサービスの監視と診断
+
+# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
 
 
 > [AZURE.SELECTOR]
 - [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 - [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-監視、検出、診断、トラブルシューティングにより、ユーザー エクスペリエンスの中断を最小限に抑えてサービスを続行できます。監視と診断は、実際のデプロイされた運用環境で重要です。サービスの開発中に類似するモデルを採用することにより、運用環境に移行するときに診断のパイプラインが動作します。Service Fabric により、サービスの開発者は、1 台のコンピューターのローカルの開発のセットアップと実際の運用クラスターのセットアップの両方でシームレスに操作できる診断を簡単に実装できます。
+監視、検出、診断、トラブルシューティングにより、ユーザー エクスペリエンスの中断を最小限に抑えてサービスを続行できます。 監視と診断は、実際のデプロイされた運用環境で重要です。 サービスの開発中に類似するモデルを採用することにより、運用環境に移行するときに診断のパイプラインが動作します。 Service Fabric により、サービスの開発者は、1 台のコンピューターのローカルの開発のセットアップと実際の運用クラスターのセットアップの両方でシームレスに操作できる診断を簡単に実装できます。
 
 
-## Service Fabric の Java アプリケーションのデバッグ
+## <a name="debugging-service-fabric-java-applications"></a>Service Fabric の Java アプリケーションのデバッグ
 
-Java アプリケーションの場合は、[複数のログ記録フレームワーク](http://en.wikipedia.org/wiki/Java_logging_framework)を利用できます。`java.util.logging` は JRE の既定のオプションであるため、[GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)にも使用されています。以降では、`java.util.logging` フレームワークを構成する方法について説明します。
+Java アプリケーションの場合は、 [複数のログ記録フレームワーク](http://en.wikipedia.org/wiki/Java_logging_framework) を利用できます。 `java.util.logging` は JRE の既定のオプションであるため、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)にも使用されています。  以降では、 `java.util.logging` フレームワークを構成する方法について説明します。 
  
-java.util.logging を使用すると、アプリケーションのログを、メモリ、出力ストリーム、コンソール、ファイル、またはソケットにリダイレクトできます。これらのそれぞれのオプションに対して、フレームワークで既定のハンドラーが既に提供されています。`app.properties` ファイルを作成すると、すべてのログをローカル ファイルにリダイレクトするようにアプリケーションのファイル ハンドラーを構成できます。
+java.util.logging を使用すると、アプリケーションのログを、メモリ、出力ストリーム、コンソール、ファイル、またはソケットにリダイレクトできます。 これらのそれぞれのオプションに対して、フレームワークで既定のハンドラーが既に提供されています。 `app.properties` ファイルを作成すると、すべてのログをローカル ファイルにリダイレクトするようにアプリケーションのファイル ハンドラーを構成できます。 
 
-次のコード スニペットに構成例を示します。
+次のコード スニペットに構成例を示します。 
 
 ```java 
 handlers = java.util.logging.FileHandler
@@ -45,21 +46,25 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
 ```
 
-`app.properties` ファイルが指しているフォルダーが存在する必要があります。`app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `<applicationfolder>/<servicePkg>/Code/` フォルダー内の `entrypoint.sh` を修正して、`java.util.logging.config.file` プロパティを `app.propertes` ファイルに設定する必要があります。エントリは、次のスニペットのようになります。
+`app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `<applicationfolder>/<servicePkg>/Code/` フォルダー内の `entrypoint.sh` を修正して、`java.util.logging.config.file` プロパティを `app.propertes` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
 
 ```sh 
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
  
  
-この構成を使用すると、`/tmp/servicefabric/logs/` にログが輪番方式で収集されます。**%u** と **%g** を指定することにより、mysfapp0.log、mysfapp1.log や mysfapplog0.log、mysfapp1.log のようなファイル名で複数のファイルを作成できます。ハンドラーが明示的に構成されていない場合、既定でコンソール ハンドラーが登録されます。/var/log/syslog の syslog のログを表示できます。
+この構成を使用すると、 `/tmp/servicefabric/logs/`にログが輪番方式で収集されます。 **%u** と **%g** を指定することにより、mysfapp0.log や mysfapp1.log のようなファイル名で複数のファイルを作成できます。 ハンドラーが明示的に構成されていない場合、既定でコンソール ハンドラーが登録されます。 /var/log/syslog の syslog のログを表示できます。
  
-詳細については、[GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)を参照してください。
+詳細については、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)を参照してください。  
 
 
 
-## 次のステップ
-アプリケーションに追加した同じトレース コードで Azure のクラスター上のアプリケーションの診断を行うこともできます。ツールの各オプションや、その設定方法について説明した記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+アプリケーションに追加した同じトレース コードで Azure のクラスター上のアプリケーションの診断を行うこともできます。 ツールの各オプションや、その設定方法について説明した記事を参照してください。
 * [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

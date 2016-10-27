@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Marketplace のソリューション テンプレート プランのテスト | Microsoft Azure"
-   description="Azure Marketplace のソリューション テンプレート プランをテストする方法を理解します。"
+   pageTitle="Testing your solution template offer for the Marketplace | Microsoft Azure"
+   description="Understand how to test your solution template offer for the Azure Marketplace."
    services="marketplace-publishing"
    documentationCenter=""
    authors="HannibalSII"
@@ -16,27 +16,32 @@
    ms.date="12/04/2015"
    ms.author="hascipio; v-divte" />
 
-# ステージングでのソリューション テンプレート プランのテスト
-ステージングとは、プランをプライベートの「サンドボックス」にデプロイすることです。そこでは、本番にプッシュする前に、機能をテストおよび検証できます。ステージングでは、プランはそれをデプロイしたお客様に表示されるのと同じように表示されます。プランをステージングにプッシュするには認定を受ける必要があります。
 
-プランがステージングされると、[Azure ポータル](https://portal.azure.com/)でプランを表示したり、テストしたりできるようになります。
+# <a name="test-your-solution-template-offer-in-staging"></a>Test your solution template offer in staging
+Staging means deploying your offer in a private "sandbox" where you can test and verify its functionality before pushing it to production. The offer appears in staging just as it would to a customer who has deployed it. Your offer must be certified to be pushed to staging.
 
-次の手順に従って、プランをステージングにプッシュし、[Azure ポータル](https://portal.azure.com/)でテストしてください。
+After the offer is staged, you can view and test the offer in the [Azure Portal](https://portal.azure.com/).
 
-1.	[[発行ポータル]](https://publish.windowsazure.com) > **[ソリューション テンプレート]** タブ > 使用するプラン > **[発行]** > **[ステージングにプッシュ]** の順に移動します。
-2.	プランのプレビューおよびテストに使用する Azure サブスクリプションの一覧を指定します。
-3.	前の手順で使用したサブスクリプション ID を使用して、Azure プレビュー ポータルにサインインします。
-4.	以下の点について、Azure プレビュー ポータルで少なくとも 1 回テストを実行します。
-  -	マーケティング コンテンツが Azure Marketplace に正しく表示されているか
-  -	トポロジのエンド ツー エンドのデプロイメント
-  -	パフォーマンス テストとストレス テストの実行
-  -	トポロジがベスト プラクティスに準拠しているか
+Follow the steps below to push your offer to staging and test it in the [Azure Portal](https://portal.azure.com/):
 
-## 次のステップ
-結果に問題がなければ、プラン発行の最終段階である**手順 4** の「[Marketplace へのプランのデプロイ](marketplace-publishing-push-to-production.md)」に進むことができます。問題があれば、プランに変更を加え、もう一度認定を要求してください。
+1.  Go to the [Publishing Portal](https://publish.windowsazure.com) > **Solution Templates** tab > your offer > **Publish** > **Push to Staging**.
+2.  Provide the list of Azure subscriptions that you will use to preview and test your offer.
+3.  Sign in to the Azure preview portal by using the subscription ID that you used in the previous step.
+4.  Carry out at least one round of testing in the Azure preview portal on the points mentioned below:
+  - Make sure that marketing content shows up correctly in the Azure Marketplace.
+  - End-to-end deployment of the topology.
+  - Perform performance testing and stress testing.
+  - Ensure that your topology adheres to the best practices.
 
-> [AZURE.NOTE]マーケティング コンテンツの変更であれば、認定は必要ありません。
+## <a name="next-steps"></a>Next steps
+If you are satisfied with the results, then you can proceed to the final offer publishing phase, **Step 4**:  [Deploying your offer to the Marketplace](marketplace-publishing-push-to-production.md). Otherwise, make changes in your offer and request certification again.
 
-公開元のタスクの詳細については、「 [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)」を参照してください。
+> [AZURE.NOTE] For marketing content changes, certification is not required.
 
-<!---HONumber=AcomDC_1210_2015-->
+See [Getting started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md) for a guide to all publisher tasks.
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

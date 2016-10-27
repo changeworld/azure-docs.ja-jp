@@ -1,236 +1,247 @@
 <properties
-	pageTitle="Azure への SharePoint ファームの DPM/Azure Backup サーバー保護 | Microsoft Azure"
-	description="この記事では、Azure への SharePoint ファームの DPM/Azure Backup サーバー保護の概要について説明します"
-	services="backup"
-	documentationCenter=""
-	authors="adigan"
-	manager="Nkolli1"
-	editor=""/>
+    pageTitle="DPM/Azure Backup server protection of a SharePoint farm to Azure | Microsoft Azure"
+    description="This article provides an overview of DPM/Azure Backup server protection of a SharePoint farm to Azure"
+    services="backup"
+    documentationCenter=""
+    authors="adigan"
+    manager="Nkolli1"
+    editor=""/>
 
 <tags
-	ms.service="backup"
-	ms.workload="storage-backup-recovery"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/04/2016"
-	ms.author="giridham;jimpark;trinadhk;markgal"/>
+    ms.service="backup"
+    ms.workload="storage-backup-recovery"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="09/29/2016"
+    ms.author="adigan;giridham;jimpark;trinadhk;markgal"/>
 
 
-# SharePoint ファームの Azure へのバックアップ
-System Center Data Protection Manager (DPM) を使用して SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。DPM では、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期保有のためには Azure にコピーできます。
 
-## SharePoint のサポートされるバージョンと関連する保護シナリオ
-DPM 用 Azure Backup は、次のシナリオをサポートします。
+# <a name="back-up-a-sharepoint-farm-to-azure"></a>Back up a SharePoint farm to Azure
+You back up a SharePoint farm to Microsoft Azure by using System Center Data Protection Manager (DPM) in much the same way that you back up other data sources. Azure Backup provides flexibility in the backup schedule to create daily, weekly, monthly, or yearly backup points and gives you retention policy options for various backup points. DPM provides the capability to store local disk copies for quick recovery-time objectives (RTO) and to store copies to Azure for economical, long-term retention.
 
-| ワークロード | バージョン | SharePoint のデプロイ | DPM のデプロイの種類 | DPM - System Center 2012 R2 | 保護と回復 |
+## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint supported versions and related protection scenarios
+Azure Backup for DPM supports the following scenarios:
+
+| Workload | Version | SharePoint deployment | DPM deployment type | DPM - System Center 2012 R2 | Protection and recovery |
 | -------- | ------- | --------------------- | ------------------- | --------------------------- | ----------------------- |
-| SharePoint | SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 | 物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint <br> -------------- <br> SQL AlwaysOn | 物理サーバーまたはオンプレミスの Hyper-V 仮想マシン | 更新プログラム ロールアップ 5 から、Azure へのバックアップをサポートする | SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。Azure の回復ポイントからのファームとデータベースの回復。 |
+| SharePoint | SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 | SharePoint deployed as a physical server or Hyper-V/VMware virtual machine <br> -------------- <br> SQL AlwaysOn | Physical server or on-premises Hyper-V virtual machine | Supports backup to Azure from Update Rollup 5 | Protect SharePoint Farm recovery options: Recovery farm, database, and file or list item from disk recovery points.  Farm and database recovery from Azure recovery points. |
 
-## 開始する前に
-SharePoint ファームを Azure にバックアップする前に、確認する必要がある点がいくつかあります。
+## <a name="before-you-start"></a>Before you start
+There are a few things you need to confirm before you back up a SharePoint farm to Azure.
 
-### 前提条件
-続行する前に、[Microsoft Azure Backup を使用してワークロードを保護するための前提条件](backup-azure-dpm-introduction.md#prerequisites)がすべて満たされていることを確認します。前提条件を満たすための作業として、バックアップ コンテナーの作成、コンテナー資格情報のダウンロード、Azure Backup エージェントのインストール、コンテナーへの DPM/Azure Backup Server の登録などのがあります。
+### <a name="prerequisites"></a>Prerequisites
+Before you proceed, make sure that you have met all the [prerequisites for using Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites) to protect workloads. Some tasks for prerequisites include: create a backup vault, download vault credentials, install Azure Backup Agent, and register DPM/Azure Backup Server with the vault.
 
-### DPM エージェント
-DPM エージェントを、SharePoint を実行するサーバー、SQL Server を実行するサーバー、および SharePoint ファームを構成するその他のすべてのサーバーにインストールする必要があります。保護エージェントのセットアップ方法の詳細については、「[保護エージェントの設定](https://technet.microsoft.com/library/hh758034(v=sc.12).aspx)」をご覧ください。唯一の例外は、1 台の Web フロント エンド (WFE) サーバーにだけエージェントをインストールすることです。保護のエントリ ポイントとして使用するためにエージェントをインストールする必要がある WFE サーバーは 1 台だけです。
+### <a name="dpm-agent"></a>DPM agent
+The DPM agent must be installed on the server that's running SharePoint, the servers that are running SQL Server, and all other servers that are part of the SharePoint farm. For more information about how to set up the protection agent, see [Setup Protection Agent](https://technet.microsoft.com/library/hh758034(v=sc.12).aspx).  The one exception is that you install the agent only on a single web front end (WFE) server. DPM needs the agent on one WFE server only to serve as the entry point for protection.
 
-### SharePoint ファーム
-DPM フォルダーが存在するボリュームには、ファーム内の 1,000 万項目ごとに 2 GB 以上の容量が必要です。この容量はカタログ生成のために必要です。DPM が特定の項目 (サイト コレクション、サイト、リスト、ドキュメント ライブラリ、フォルダー、個々のドキュメント、リスト項目) を回復できるよう、カタログ生成では各コンテンツ データベースに含まれる URL のリストが作成されます。DPM 管理者コンソールの**回復**タスク領域の [回復可能な項目] ウィンドウで、URL の一覧を確認できます。
+### <a name="sharepoint-farm"></a>SharePoint farm
+For every 10 million items in the farm, there must be at least 2 GB of space on the volume where the DPM folder is located. This space is required for catalog generation. For DPM to recover specific items (site collections, sites, lists, document libraries, folders, individual documents, and list items), catalog generation creates a list of the URLs that are contained within each content database. You can view the list of URLs in the recoverable item pane in the **Recovery** task area of DPM Administrator Console.
 
-### SQL Server
-DPM は、LocalSystem アカウントとして実行されます。SQL Server データベースをバックアップする場合、DPM はそのアカウントに SQL Server を実行しているサーバーに対するsysadmin 権限が必要です。バックアップする前に、SQL Server を実行しているサーバーで NT AUTHORITY\\SYSTEM を *sysadmin* に設定します。
+### <a name="sql-server"></a>SQL Server
+DPM runs as a LocalSystem account. To back up SQL Server databases, DPM needs sysadmin privileges on that account for the server that's running SQL Server. Set NT AUTHORITY\SYSTEM to *sysadmin* on the server that's running SQL Server before you back it up.
 
-SharePoint ファームの SQL Server データベースが SQL Server エイリアスで構成されている場合は、DPM によって保護されるフロント エンド Web サーバーに SQL Server クライアント コンポーネントをインストールします。
+If the SharePoint farm has SQL Server databases that are configured with SQL Server aliases, install the SQL Server client components on the front-end Web server that DPM will protect.
 
-### SharePoint Server
-パフォーマンスは SharePoint ファームのサイズなどのさまざまな要因に依存しますが、一般的なガイダンスとしては、1 つの DPM サーバーで 25 TB の SharePoint ファームを保護できます。
+### <a name="sharepoint-server"></a>SharePoint Server
+While performance depends on many factors such as size of SharePoint farm, as general guidance one DPM server can protect a 25 TB SharePoint farm.
 
-### DPM の更新プログラム ロールアップ 5
-Azure への SharePoint ファームの保護を開始するには、DPM の更新プログラム ロールアップ 5 以降をインストールする必要があります。ファームが SQL AlwaysOn を使用して構成されている場合、更新プログラム ロールアップ 5 を使用すると SharePoint ファームを保護できます。詳細については、[DPM 更新プログラム ロールアップ 5](http://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx) に関するブログ投稿を参照してください。
+### <a name="dpm-update-rollup-5"></a>DPM Update Rollup 5
+To begin protection of a SharePoint farm to Azure, you need to install DPM Update Rollup 5 or later. Update Rollup 5 provides the ability to protect a SharePoint farm to Azure if the farm is configured by using SQL AlwaysOn.
+For more information, see the blog post that introduces [DPM Update Rollup 5]( http://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
 
-### サポートされていないもの
-- SharePoint ファームを保護する DPM では、検索インデックスまたはアプリケーション サービス データベースは保護されません。これらのデータベースの保護は別に構成する必要があります。
-- DPM では、スケールアウト ファイル サーバー (SOFS) 共有でホストされている SharePoint SQL Server データベースのバックアップはサポートしていません。
+### <a name="what's-not-supported"></a>What's not supported
+- DPM that protects a SharePoint farm does not protect search indexes or application service databases. You will need to configure the protection of these databases separately.
+- DPM does not provide backup of SharePoint SQL Server databases that are hosted on scale-out file server (SOFS) shares.
 
-## SharePoint の保護の構成
-DPM を使用して SharePoint を保護する前に、**ConfigureSharePoint.exe** を使用して SharePoint VSS ライター サービス (WSS ライター サービス) を構成する必要があります。
+## <a name="configure-sharepoint-protection"></a>Configure SharePoint protection
+Before you can use DPM to protect SharePoint, you must configure the SharePoint VSS Writer service (WSS Writer service) by using **ConfigureSharePoint.exe**.
 
-**ConfigureSharePoint.exe** は、フロント エンド Web サーバー上の [DPM のインストール パス]\\bin フォルダーにあります。このツールは、保護エージェントに SharePoint ファームに対する資格情報を提供します。1 つの WFE サーバーでこのツールを実行します。複数の WFE サーバーがある場合は、保護グループを構成するときに 1 つだけ選択します。
+You can find **ConfigureSharePoint.exe** in the [DPM Installation Path]\bin folder on the front-end web server. This tool provides the protection agent with the credentials for the SharePoint farm. You run it on a single WFE server. If you have multiple WFE servers, select just one when you configure a protection group.
 
-### SharePoint VSS ライター サービスを構成するには
-1. WFE サーバーのコマンド プロンプトで、[DPM のインストール場所]\\bin\\ に移動します。
-2. ConfigureSharePoint -EnableSharePointProtection を入力します。
-3. ファーム管理者の資格情報を入力します。このアカウントは、WFE サーバーのローカル管理者グループのメンバーである必要があります。ファーム管理者がローカル管理者ではない場合は、WFE サーバーで次の権限を付与します。
-  - DPM フォルダー (%Program Files%\\Microsoft Data Protection Manager\\DPM) に対するフル コントロールを WSS\_Admin\_WPG グループに付与します。
-  - DPM レジストリ キー (HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\Microsoft Data Protection Manager) に対する読み取りアクセスを WSS\_Admin\_WPG グループに付与します。
+### <a name="to-configure-the-sharepoint-vss-writer-service"></a>To configure the SharePoint VSS Writer service
+1. On the WFE server, at a command prompt, go to [DPM installation location]\bin\
+2. Enter ConfigureSharePoint -EnableSharePointProtection.
+3. Enter the farm administrator credentials. This account should be a member of the local Administrator group on the WFE server. If the farm administrator isn’t a local admin grant the following permissions on the WFE server:
+  - Grant the WSS_Admin_WPG group full control to the DPM folder (%Program Files%\Microsoft Data Protection Manager\DPM).
+  - Grant the WSS_Admin_WPG group read access to the DPM Registry key (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager).
 
->[AZURE.NOTE] SharePoint ファーム管理者の資格情報に変更がある場合は必ず、ConfigureSharePoint.exe を再実行する必要があります。
+>[AZURE.NOTE] You’ll need to rerun ConfigureSharePoint.exe whenever there’s a change in the SharePoint farm administrator credentials.
 
-## DPM を使用した SharePoint ファームのバックアップ
-前述のように DPM と SharePoint ファームを構成した後は、DPM で SharePoint を保護できます。
+## <a name="back-up-a-sharepoint-farm-by-using-dpm"></a>Back up a SharePoint farm by using DPM
+After you have configured DPM and the SharePoint farm as explained previously, SharePoint can be protected by DPM.
 
-### SharePoint ファームを保護するには
-1. DPM 管理者コンソールの **[保護]** タブで **[新規]** をクリックします。![新しい [保護] タブ](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
+### <a name="to-protect-a-sharepoint-farm"></a>To protect a SharePoint farm
+1. From the **Protection** tab of the DPM Administrator Console, click **New**.
+    ![New Protection Tab](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
 
-2. **新しい保護グループの作成**ウィザードの **[保護グループの種類の選択]** ページで **[サーバー]** を選択し、**[次へ]** をクリックします。
+2. On the **Select Protection Group Type** page of the **Create New Protection Group** wizard, select **Servers**, and then click **Next**.
 
-    ![保護グループの種類の選択](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
+    ![Select Protection Group type](./media/backup-azure-backup-sharepoint/select-protection-group-type.png)
 
-3. **[グループ メンバーの選択]** 画面で、保護する SharePoint サーバーのチェック ボックスをオンにして、**[次へ]** をクリックします。
+3. On the **Select Group Members** screen, select the check box for the SharePoint server you want to protect and click **Next**.
 
-    ![グループ メンバーの選択](./media/backup-azure-backup-sharepoint/select-group-members2.png)
+    ![Select group members](./media/backup-azure-backup-sharepoint/select-group-members2.png)
 
-    >[AZURE.NOTE] DPM エージェントがインストールされていると、ウィザードにサーバーが表示されます。DPM ではその構造も示されます。ConfigureSharePoint.exe を実行したので、DPM は SharePoint VSS ライター サービスおよびその対応する SQL Server Database と通信し、SharePoint ファームの構造、関連するコンテンツ データベース、および対応する項目を認識します。
+    >[AZURE.NOTE] With the DPM agent installed, you can see the server in the wizard. DPM also shows its structure. Because you ran ConfigureSharePoint.exe, DPM communicates with the SharePoint VSS Writer service and its corresponding SQL Server databases and recognizes the SharePoint farm structure, the associated content databases, and any corresponding items.
 
-4. **[データの保護方法の選択]** ページで、**保護グループ**の名前を入力し、適切な*保護方法*を選択します。**[次へ]** をクリックします。
+4. On the **Select Data Protection Method** page, enter the name of the **Protection Group**, and select your preferred *protection methods*. Click **Next**.
 
-    ![データ保護方法の選択](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
+    ![Select data protection method](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
-    >[AZURE.NOTE] ディスク保護方法は、短い目標復旧時間の達成に役立ちます。Azure は、テープと比較してコスト効果の高い長期的な保護対象です。詳細については、「[Azure Backup を使用してテープのインフラストラクチャを置換する](https://azure.microsoft.com/documentation/articles/backup-azure-backup-cloud-as-tape/)」を参照してください。
+    >[AZURE.NOTE] The disk protection method helps to meet short recovery-time objectives. Azure is an economical, long-term protection target compared to tapes. For more information, see [Use Azure Backup to replace your tape infrastructure](https://azure.microsoft.com/documentation/articles/backup-azure-backup-cloud-as-tape/)
 
-5. **[短期的な目標値の指定]** ページで、適切な**保有期間の範囲**を選択し、バックアップを行うタイミングを指定します。
+5. On the **Specify Short-Term Goals** page, select your preferred **Retention range** and identify when you want backups to occur.
 
-    ![短期的な目標の指定](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
+    ![Specify short-term goals](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
 
-    >[AZURE.NOTE] 回復が最も頻繁に必要になるのは作成されてから 5 日間未満のデータなので、この例では、ディスクへの保有期間として 5 日を選択し、業務時間外にバックアップが行われるようにします。
+    >[AZURE.NOTE] Because recovery is most often required for data that's less than five days old, we selected a retention range of five days on disk and ensured that the backup happens during non-production hours, for this example.
 
-6. 保護グループに割り当てられているストレージ プール ディスクの容量を確認し、**[次へ]** をクリックします。
+6. Review the storage pool disk space allocated for the protection group, and click then **Next**.
 
-7. すべての保護グループについて、DPM はレプリカを格納および管理するためのディスク領域を割り当てます。この時点で、DPM は選択されたデータのコピーを作成する必要があります。レプリカを作成する方法とタイミングを選択し、**[次へ]** をクリックします。
+7. For every protection group, DPM allocates disk space to store and manage replicas. At this point, DPM must create a copy of the selected data. Select how and when you want the replica created, and then click **Next**.
 
-    ![レプリカ作成方法の選択](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
+    ![Choose replica creation method](./media/backup-azure-backup-sharepoint/choose-replica-creation-method.png)
 
-    >[AZURE.NOTE] ネットワーク トラフィックが影響を受けないように、業務時間外の時刻を選択します。
+    >[AZURE.NOTE] To make sure that network traffic is not effected, select a time outside production hours.
 
-8. DPM はレプリカに対して整合性チェックを実行することにより、データの整合性を保証します。次の 2 つのオプションを使用できます。整合性チェックを実行するスケジュールを定義することも、レプリカが不整合になった場合に必ず DPM に自動的にレプリカの整合性チェックを実行させることもできます。適切なオプションを選択し、**[次へ]** をクリックします。
+8. DPM ensures data integrity by performing consistency checks on the replica. There are two available options. You can define a schedule to run consistency checks, or DPM can run consistency checks automatically on the replica whenever it becomes inconsistent. Select your preferred option, and then click **Next**.
 
-    ![整合性チェック](./media/backup-azure-backup-sharepoint/consistency-check.png)
+    ![Consistency Check](./media/backup-azure-backup-sharepoint/consistency-check.png)
 
-9. **[オンライン保護するデータの指定]** ページで、保護する SharePoint ファームを選択し、**[次へ]** をクリックします。
+9. On the **Specify Online Protection Data** page, select the SharePoint farm that you want to protect, and then click **Next**.
 
-    ![DPM の SharePoint 保護 1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
+    ![DPM SharePoint Protection1](./media/backup-azure-backup-sharepoint/select-online-protection1.png)
 
-10. **[オンライン バックアップ スケジュールの指定]** ページで、適切なスケジュールを選択して、**[次へ]** をクリックします。
+10. On the **Specify Online Backup Schedule** page, select your preferred schedule, and then click **Next**.
 
-    ![Online\_backup\_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
+    ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
-    >[AZURE.NOTE] DPM では、一日当たり最大で 2 回、それぞれ異なる時刻に Azure へのバックアップを行うことができます。Azure Backup では、[Azure Backup ネットワーク調整](https://azure.microsoft.com/en-in/documentation/articles/backup-configure-vault/#enable-network-throttling)を使用することで、ピーク時間帯とピーク外の時間帯のバックアップに使用できる WAN 帯域幅の量を制御することもできます。
+    >[AZURE.NOTE] DPM provides a maximum of two daily backups to Azure at different times. Azure Backup can also control the amount of WAN bandwidth that can be used for backups in peak and off-peak hours by using [Azure Backup Network Throttling](https://azure.microsoft.com/en-in/documentation/articles/backup-configure-vault/#enable-network-throttling).
 
-11. 選択したバックアップ スケジュールに応じて、**[オンライン保持ポリシーの指定]** ページで、日、週、月、年単位のバックアップ ポイントの保持ポリシーを選択します。
+11. Depending on the backup schedule that you selected, on the **Specify Online Retention Policy** page, select the retention policy for daily, weekly, monthly, and yearly backup points.
 
-    ![Online\_retention\_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
+    ![Online_retention_policy](./media/backup-azure-backup-sharepoint/specify-online-retention.png)
 
-    >[AZURE.NOTE] DPM が使用する祖父 - 父 - 子の保有方式では、異なるバックアップ ポイントに対して異なる保持ポリシーを選択できます。
+    >[AZURE.NOTE] DPM uses a grandfather-father-son retention scheme in which a different retention policy can be chosen for different backup points.
 
-12. ディスクと同様に、Azure でも最初の参照ポイント レプリカを作成する必要があります。Azure に対する初期バックアップ コピーの適切な作成オプションを選択して、**[次へ]** をクリックします。
+12. Similar to disk, an initial reference point replica needs to be created in Azure. Select your preferred option to create an initial backup copy to Azure, and then click **Next**.
 
-    ![Online\_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
+    ![Online_replica](./media/backup-azure-backup-sharepoint/online-replication.png)
 
-13. **[概要]** ページで選択した設定を確認し、**[グループの作成]** をクリックします。保護グループが作成されると、成功メッセージが表示されます。
+13. Review your selected settings on the **Summary** page, and then click **Create Group**. You will see a success message after the protection group has been created.
 
-    ![概要](./media/backup-azure-backup-sharepoint/summary.png)
+    ![Summary](./media/backup-azure-backup-sharepoint/summary.png)
 
-## DPM を使用したディスクからの SharePoint アイテムの復元
-次の例では、*Recovering SharePoint item* が誤って削除され、回復する必要があります。![DPM の SharePoint 保護 4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
+## <a name="restore-a-sharepoint-item-from-disk-by-using-dpm"></a>Restore a SharePoint item from disk by using DPM
+In the following example, the *Recovering SharePoint item* has been accidentally deleted and needs to be recovered.
+![DPM SharePoint Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
-1. **DPM 管理者コンソール**を開きます。DPM によって保護されているすべての SharePoint ファームが、**[保護]** タブに表示されます。
+1. Open the **DPM Administrator Console**. All SharePoint farms that are protected by DPM are shown in the **Protection** tab.
 
-    ![DPM の SharePoint 保護 3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
+    ![DPM SharePoint Protection3](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection4.png)
 
-2. アイテムの回復を始めるには、**[回復]** タブを選択します。
+2. To begin to recover the item, select the **Recovery** tab.
 
-    ![DPM の SharePoint 保護 5](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection6.png)
+    ![DPM SharePoint Protection5](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection6.png)
 
-3. 回復ポイントの範囲内でワイルドカード ベースの検索を使用して、SharePoint で *Recovering SharePoint item* を検索できます。
+3. You can search SharePoint for *Recovering SharePoint item* by using a wildcard-based search within a recovery point range.
 
-    ![DPM の SharePoint 保護 6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
+    ![DPM SharePoint Protection6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
 
-4. 検索結果から適切な回復ポイントを選択し、アイテムを右クリックして、**[回復]** を選択します。
+4. Select the appropriate recovery point from the search results, right-click the item, and then select **Recover**.
 
-5. さまざまな回復ポイントを参照して、回復するデータベースまたはアイテムを選択できます。**日付、回復時刻**の順に選択した後、正しい**データベース、SharePoint ファーム、回復ポイント、アイテム**を順番に選択します。
+5. You can also browse through various recovery points and select a database or item to recover. Select **Date > Recovery time**, and then select the correct **Database > SharePoint farm > Recovery point > Item**.
 
-    ![DPM の SharePoint 保護 7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
+    ![DPM SharePoint Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
 
-6. アイテムを右クリックして **[回復]** を選択し、**回復ウィザード**を開きます。**[次へ]** をクリックします。
+6. Right-click the item, and then select **Recover** to open the **Recovery Wizard**. Click **Next**.
 
-    ![回復の選択の確認](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
+    ![Review Recovery Selection](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
 
-7. 実行する回復の種類を選択して、**[次へ]** をクリックします。
+7. Select the type of recovery that you want to perform, and then click **Next**.
 
-    ![回復の種類](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
+    ![Recovery Type](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
-    >[AZURE.NOTE] 上図のように **[元のサイトに回復する]** を選択すると、アイテムは元の SharePoint サイトに回復します。
+    >[AZURE.NOTE] The selection of **Recover to original** in the example recovers the item to the original SharePoint site.
 
-8. 使用する**回復プロセス**を選択します。
-    - SharePoint ファームは変更されていなくて、復元する回復ポイントと同じである場合、**[回復ファームを使用しないで回復する]** を選択します。
-    - 回復ポイントの作成後に SharePoint ファームが変更された場合は、**[回復ファームを使用して回復する]** を選択します。
+8. Select the **Recovery Process** that you want to use.
+    - Select **Recover without using a recovery farm** if the SharePoint farm has not changed and is the same as the recovery point that is being restored.
+    - Select **Recover using a recovery farm** if the SharePoint farm has changed since the recovery point was created.
 
-    ![回復プロセス](./media/backup-azure-backup-sharepoint/recovery-process.png)
+    ![Recovery Process](./media/backup-azure-backup-sharepoint/recovery-process.png)
 
-9. 一時的にデータベースを回復するためのステージング SQL Server インスタンスの場所を指定し、DPM サーバー上と SharePoint を実行するサーバー上でアイテムを回復するためのステージング ファイル共有を指定します。
+9. Provide a staging SQL Server instance location to recover the database temporarily, and provide a staging file share on the DPM server and the server that's running SharePoint to recover the item.
 
-    ![ステージングの場所 1](./media/backup-azure-backup-sharepoint/staging-location1.png)
+    ![Staging Location1](./media/backup-azure-backup-sharepoint/staging-location1.png)
 
-    DPM は、SharePoint アイテムをホストしているコンテンツ データベースを、一時的な SQL Server インスタンスにアタッチします。DPM サーバーは、コンテンツ データベースからアイテムを回復し、DPM サーバー上のステージング ファイルの場所に格納します。次に、DPM サーバーのステージングの場所に回復されたアイテムを、SharePoint ファーム上のステージング場所にエクスポートする必要があります。
+    DPM attaches the content database that is hosting the SharePoint item to the temporary SQL Server instance. From the content database, the DPM server recovers the item and puts it on the staging file location on the DPM server. The recovered item that's on the staging location of the DPM server now needs to be exported to the staging location on the SharePoint farm.
 
-    ![ステージングの場所 2](./media/backup-azure-backup-sharepoint/staging-location2.png)
+    ![Staging Location2](./media/backup-azure-backup-sharepoint/staging-location2.png)
 
-10. **[回復オプションの指定]** を選択し、SharePoint ファームに対するセキュリティ設定を適用するか、または回復ポイントのセキュリティ設定を適用します。**[次へ]** をクリックします。
+10. Select **Specify recovery options**, and apply security settings to the SharePoint farm or apply the security settings of the recovery point. Click **Next**.
 
-    ![回復オプション](./media/backup-azure-backup-sharepoint/recovery-options.png)
+    ![Recovery Options](./media/backup-azure-backup-sharepoint/recovery-options.png)
 
-    >[AZURE.NOTE] ネットワーク帯域幅の使用量を調整できます。これにより、業務時間中の運用サーバーへの影響を最小限にします。
+    >[AZURE.NOTE] You can choose to throttle the network bandwidth usage. This minimizes impact to the production server during production hours.
 
-11. 概要情報を確認し、**[回復]** をクリックしてファイルの回復を開始します。
+11. Review the summary information, and then click **Recover** to begin recovery of the file.
 
-    ![回復の概要](./media/backup-azure-backup-sharepoint/recovery-summary.png)
+    ![Recovery summary](./media/backup-azure-backup-sharepoint/recovery-summary.png)
 
-12. **DPM 管理者コンソール**の **[監視]** タブを選択して、回復の**状態**を確認できます。
+12. Now select the **Monitoring** tab in the **DPM Administrator Console** to view the **Status** of the recovery.
 
-    ![回復の状態](./media/backup-azure-backup-sharepoint/recovery-monitoring.png)
+    ![Recovery Status](./media/backup-azure-backup-sharepoint/recovery-monitoring.png)
 
-    >[AZURE.NOTE] ファイルが復元されます。SharePoint サイトを更新して、復元されたファイルを確認すできます。
+    >[AZURE.NOTE] The file is now restored. You can refresh the SharePoint site to check the restored file.
 
-## DPM を使用した Azure からの SharePoint データベースの復元
+## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>Restore a SharePoint database from Azure by using DPM
 
-1. SharePoint コンテンツ データベースを回復するには、さまざまな回復ポイントを参照して (前述したように)、復元する回復ポイントを選択します。
+1. To recover a SharePoint content database, browse through various recovery points (as shown previously), and select the recovery point that you want to restore.
 
-    ![DPM の SharePoint 保護 8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
+    ![DPM SharePoint Protection8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)
 
-2. SharePoint の回復ポイントをダブルクリックして、使用可能な SharePoint カタログ情報を表示します。
+2. Double-click the SharePoint recovery point to show the available SharePoint catalog information.
 
-    > [AZURE.NOTE] SharePoint ファームは Azure では長期保有期間用に保護されているので、DPM サーバーには使用可能なカタログ情報 (メタデータ) がありません。その結果、特定時点の SharePoint コンテンツ データベースを回復する必要があるときは常に、SharePoint ファームを再カタログ化する必要があります。
+    > [AZURE.NOTE] Because the SharePoint farm is protected for long-term retention in Azure, no catalog information (metadata) is available on the DPM server. As a result, whenever a point-in-time SharePoint content database needs to be recovered, you need to catalog the SharePoint farm again.
 
-3. **[再カタログ化]** をクリックします。
+3. Click **Re-catalog**.
 
-    ![DPM の SharePoint 保護 10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
+    ![DPM SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
-    **[クラウドの再カタログ化]** ステータス ウィンドウが開きます。
+    The **Cloud Recatalog** status window opens.
 
-    ![DPM の SharePoint 保護 11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
+    ![DPM SharePoint Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    カタログ化が完了すると、ステータスが *[成功]* に変わります。**[閉じる]** をクリックします。
+    After cataloging is finished, the status changes to *Success*. Click **Close**.
 
-    ![DPM の SharePoint 保護 12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
+    ![DPM SharePoint Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 
-4. DPM の **[回復]** タブに表示される SharePoint オブジェクトをクリックして、コンテンツ データベースの構造を取得します。該当する項目を右クリックし、**[回復]** をクリックします。
+4. Click the SharePoint object shown in the DPM **Recovery** tab to get the content database structure. Right-click the item, and then click **Recover**.
 
-    ![DPM の SharePoint 保護 13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
+    ![DPM SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 
-5. この時点で、[この記事で前述した回復手順](#restore-a-sharepoint-item-from-disk-using-dpm)に従ってディスクから SharePoint コンテンツ データベースを回復します。
+5. At this point, follow the [recovery steps earlier in this article](#restore-a-sharepoint-item-from-disk-using-dpm) to recover a SharePoint content database from disk.
 
-## FAQ
-Q: SQL Server 2014 および SQL 2012 (SP2) は、DPM のどのバージョンでサポートされていますか。<br> A: 更新プログラム ロールアップ 4 を適用した DPM 2012 R2 では両方をサポートしています。
+## <a name="faqs"></a>FAQs
+Q: Which versions of DPM support SQL Server 2014 and SQL 2012 (SP2)?<br>
+A: DPM 2012 R2 with Update Rollup 4 supports both.
 
-Q: SharePoint が SQL AlwaysOn を使用して構成されている場合 (ディスクでの保護)、SharePoint アイテムを元の場所に回復できますか?<br> A: はい、元の SharePoint サイトにアイテムを回復できます。
+Q: Can I recover a SharePoint item to the original location if SharePoint is configured by using SQL AlwaysOn (with protection on disk)?<br>
+A: Yes, the item can be recovered to the original SharePoint site.
 
-Q: SharePoint が SQL AlwaysOn を使用して構成されている場合、SharePoint データベースを元の場所に回復できますか?<br> A: SharePoint データベースは SQL AlwaysOn で構成されているので、可用性グループを削除しない限り、変更することはできません。結果として、DPM は元の場所にデータベースを復元できません。SQL Server データベースを別の SQL Server インスタンスに回復することはできます。
+Q: Can I recover a SharePoint database to the original location if SharePoint is configured by using SQL AlwaysOn?<br>
+A: Because SharePoint databases are configured in SQL AlwaysOn, they cannot be modified unless the availability group is removed. As a result, DPM cannot restore a database to the original location. You can recover a SQL Server database to another SQL Server instance.
 
-## 次のステップ
-- SharePoint の DPM 保護に関する詳細 - [Video シリーズ「DPM Protection of SharePoint (SharePoint の DPM 保護)」](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)をご覧ください
-- 「[System Center 2012 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860415.aspx)」をご覧ください
-- 「[System Center 2012 SP1 - Data Protection Manager リリース ノート](https://technet.microsoft.com/library/jj860394.aspx)」をご覧ください
+## <a name="next-steps"></a>Next steps
+- Learn more about DPM Protection of SharePoint - see [Video Series - DPM Protection of SharePoint](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
+- Review [Release Notes for System Center 2012 - Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
+- Review [Release Notes for Data Protection Manager in System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

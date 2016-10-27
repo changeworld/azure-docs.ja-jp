@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric サービスのパーティション分割 | Microsoft Azure"
-   description="Service Fabric サービスのパーティションの分割方法について説明します"
+   pageTitle="Partitioning Service Fabric services | Microsoft Azure"
+   description="Describes how to partition Service Fabric services"
    services="service-fabric"
    documentationCenter=".net"
    authors="bmscholl"
@@ -16,123 +16,128 @@
    ms.date="06/20/2016"
    ms.author="bscholl"/>
 
-# Service Fabric Reliable Services のパーティション分割
-この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。この記事で使用するソース コードは、[GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) にも掲載されています。
 
-## パーティション分割
-パーティション分割は Service Fabric に固有のものではありません。それは、スケーラブルなサービスの構築の中心的なパターンです。パーティション分割とは、広義では状態 (データ) の分割に関する概念と考えることができます。計算してアクセスしやすい小さな単位に分割することで、スケーラビリティとパフォーマンスを改善できます。よく知られているパーティション分割の形式として、シャーディングとも呼ばれる[データのパーティション分割][wikipartition]があります。
+# <a name="partition-service-fabric-reliable-services"></a>Partition Service Fabric reliable services
+This article provides an introduction to the basic concepts of partitioning Azure Service Fabric reliable services. The source code used in the article is also available on [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions).
 
-
-### Service Fabric ステートレス サービスのパーティション分割
-ステートレス サービスの場合、パーティション分割は、1 つ以上のサービス インスタンスを含む論理単位と考えることができます。図 1 は、1 つのパーティションを使用するクラスター全体に分散する 5 つのインスタンスがあるステートレス サービスです。
-
-![ステートレス サービス](./media/service-fabric-concepts-partitioning/statelessinstances.png)
-
-実際には、2 種類のステートレス サービス ソリューションがあります。1 つ目は、Azure SQL Database など、外部で状態を維持するサービスです (セッション情報とデータを格納する Web サイトのようなサービス)。2 つ目は、永続的な状態を管理しない計算のみのサービスです (計算機や画像のサムネイル処理などのサービス)。
-
-いずれの場合でも、ステートレス サービスのパーティション分割はほとんど見られないシナリオです。通常、スケーラビリティと可用性を向上するためには、インスタンスが追加されます。ステートレス サービス インスタンスに複数のパーティション分割を検討するのは、特殊なルーティング要求を満たす必要がある場合に限られます。
-
-たとえば、特定の範囲の ID を持つユーザーにのみ、特定のサービス インスタンスを提供する場合があります。ステートレス サービスをパーティション分割するもう 1 つの例として、実際にパーティション分割されたバックエンド (シャード化された SQL Database など) があり、データベース シャードに書き込むことができるサービス インスタンスを制御したり、バックエンドと同じパーティション分割情報が必要なステートレス サービス内でその他の準備作業を実行したりする場合があります。このようなシナリオの場合、さまざまな方法で解決することができるので、サービスをパーティション分割する必要はありません。
-
-以降、このチュートリアルでは、ステートフル サービスを中心に説明します。
-
-### Service Fabric ステートフル サービスのパーティション分割
-Service Fabric には状態 (データ) をパーティション分割する高度な機能があるので、スケーラブルなステートフル サービスを簡単に開発できます。概念として、ステートフル サービスのパーティション分割は、クラスター内の複数のノードに分散され、バランスが保たれた[レプリカ](service-fabric-availability-services.md)を使用する、信頼性が高いスケール ユニットと考えることができます。
-
-Service Fabric ステートフル サービスのコンテキストでのパーティション分割とは、特定のサービス パーティションが、サービスの完全な状態の一部を担当することを判断するプロセスのことです。(前述のように、パーティションとは一連の[レプリカ](service-fabric-availability-services.md)です)。Service Fabric のメリットは、複数のノードにパーティションを配置することです。これにより、パーティションをノードのリソース上限まで拡大できます。データ ニーズの拡大に応じて、パーティションが拡大し、Service Fabric はノード間でパーティションのバランスを再調整します。これにより、ハードウェア リソースが継続して効率的に使用されます。
-
-たとえば、5 ノードのクラスターと、10 個のパーティションおよび 3 つのレプリカのターゲットで構成されたサービスから始めるとします。この場合、Service Fabric はクラスター全体でレプリカのバランスを調整して分散します。最終的には、1 つのノードにつき 2 つのプライマリ [レプリカ](service-fabric-availability-services.md)になります。ここで、クラスターを 10 ノードまでスケールアウトする必要がある場合、Service Fabric は、10 ノードすべてに分散するようにプライマリ [レプリカ](service-fabric-availability-services.md)のバランスを再調整します。同様に 5 ノードに縮小する場合、Service Fabric は 5 ノードすべてに分散するようにバランスを再調整します。
-
-図 2 は、クラスターのスケーリング前と後の 10 パーティションの分散を示しています。
-
-![ステートフル サービス](./media/service-fabric-concepts-partitioning/partitions.png)
-
-クライアントからの要求は複数のコンピューターに分散され、アプリケーションの全体的なパフォーマンスが改善され、データ チャンクへのアクセスの競合が軽減されるので、結果としてスケールアウトが達成されます。
-
-## パーティション分割の計画
-サービスを実装する前に、スケールアウトに必要なパーティション分割戦略を考えておく必要があります。さまざまな方法がありますが、どの方法でも、アプリケーションで達成する必要があることを中心に考えます。この記事では、重要度が高いいくつかの側面について検討してみましょう。
-
-最初の手順として、パーティション分割する必要がある状態の構造について考えることをお勧めします。
-
-簡単な例を見てみましょう。郡全体の投票のサービスを構築する場合、郡の都市ごとにパーティションを作成できます。次に、都市の各個人の投票をその都市に対応するパーティションに格納できます。図 3 は、ユーザーと、ユーザーが住んでいる市町村のセットを示します。
-
-![単純なパーティション](./media/service-fabric-concepts-partitioning/cities.png)
-
-市町村の人口はさまざまなので、大量のデータを含むパーティション (シアトルなど) と、あまり状態がないパーティション (カークランドなど) ができあがります。このように状態数が不均衡なパーティションがあると、どのような影響があるでしょうか。
-
-この例について考えてみると、シアトルの投票を含むパーティションは、カークランドのパーティションよりもトラフィック数が多くなることはすぐにわかります。既定で、Service Fabric は、各ノードに約同数のプライマリ レプリカとセカンダリ レプリカがあることを確認します。そのため、ノードに多くのトラフィックを処理するレプリカと、少ないトラフィックを処理するレプリカが存在することになる可能性があります。できれば、クラスター内にこのような落差ができないようにしたいところです。
-
-この問題を回避するために、パーティション分割の点で次の 2 つの手順を実行する必要があります。
-
-- すべてのパーティションに均等に分散されるように状態をパーティション分割します。
-- サービスの各レプリカの負荷をレポートします。(詳細については、「[Metrics and Load (メトリックと負荷)](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。)。Service Fabric には、メモリ量やレコード数など、サービスに使用される負荷をレポートする機能があります。Service Fabric では、レポートされたメトリックに基づいて一部のパーティションが他のパーティションよりも負荷が高いことが検出され、レプリカをより適切なノードに移動してクラスターのバランスが再調整されます。そのため、全体としては過負荷になるノードはありません。
-
-場合によっては、特定のパーティションのデータ量がどのくらいになるかわからないことがあります。そのため、一般的な推奨として、まずパーティション全体に均等に分散するパーティション分割戦略を採用してから、負荷をレポートするという、両方の方法を実行してみてください。1 つ目の方法で投票の例で説明されている状況を防ぎ、2 つ目の方法で長期間にわたるアクセスまたは負荷の一時的な差異を均等にすることができます。
-
-パーティション分割計画のもう 1 つの側面は、正しいパーティション数から始めるということです。Service Fabric では、シナリオで想定されるパーティション数よりも多い数から始めることができます。実際のところ、パーティションの最大数を予想することは有効なアプローチです。
-
-まれなケースではありますが、最初に選択した数よりも多いパーティションが必要になることもあります。パーティション分割後にパーティション数を変更することはできないので、何らかの高度なパーティション アプローチ (同じサービス タイプの新しいサービス インスタンスを作成するなど) を適用する必要がある場合があります。さらに、クライアント コードで保守する必要があるクライアント側情報に基づいて、正しいサービス インスタンスに要求をルーティングする何らかのクライアント側ロジックを実装する必要がある場合もあります。
-
-パーティション分割計画のもう 1 つの考慮事項は、使用可能なコンピューター リソースです。状態にアクセスし、状態を保存する必要があるので、次の制限が必要です。
-
-- ネットワーク帯域幅の制限
-- システム メモリの制限
-- ディスク記憶域の制限
-
-実行中のクラスターでリソースの上限に達した場合はどうなるでしょうか。 クラスターをスケールアウトするだけで、この新しい要件に対応できます。
-
-[容量計画ガイド](service-fabric-capacity-planning.md)では、クラスターに必要なノード数を決定する方法に関するガイダンスを説明しています。
-
-## パーティション分割の使用
-ここでは、サービスをパーティション分割する基本的な方法について説明します。
-
-Service Fabric には、3 つのパーティション スキーマが用意されています。
-
-- 範囲パーティション分割 (UniformInt64Partition とも呼ばれます)。
-- 名前付きパーティション分割。通常、このモデルを使用するアプリケーションには、上限のあるセット内でバケット化可能なデータがあります。名前付きパーティション分割キーとして使用されるデータ フィールドの一般的な例として、地域、郵便番号、顧客グループ、その他のビジネスの境界などがあります。
-- 単一パーティション分割。通常、単一パーティションは、サービスに追加のルーティングが必要ない場合に使用されます。たとえば、ステートレス サービスは、既定でこのパーティション構成を使用します。
-
-名前付きパーティション分割構成と単一パーティション分割構成は、範囲パーティションの特殊な形式です。Service Fabric の Visual Studio テンプレートの既定では、最も一般的で便利な範囲パーティション分割が使用されています。以降、この記事では、範囲パーティション分割構成を中心に説明します。
-
-### 範囲パーティション分割構成
-これは、整数の範囲 (最低値と最高値のキーで識別される) と、パーティションの数 (n) を指定するために使用されます。全体のパーティション キー範囲内の重複しないサブ範囲を担当する n 個のパーティションを作成します。たとえば、範囲パーティション分割構成で、最低値キー 0、最高値キー 99、数値 4 が指定されると、次に示すとおり 4 つのパーティションが作成されます。
-
-![範囲パーティション分割](./media/service-fabric-concepts-partitioning/range-partitioning.png)
-
-データセット内の一意のキーに基づいてハッシュを作成するのが一般的なアプローチです。キーの一般的な例としては、車両識別番号 (VIN)、従業員 ID、または一意の文字列などがあります。この一意キーを使用すると、キーの範囲を法とする剰余類により、キーとして使用できるハッシュ コードが生成されます。許可されるキー範囲の上限と下限の境界を指定することができます。
+## <a name="partitioning"></a>Partitioning
+Partitioning is not unique to Service Fabric. In fact, it is a core pattern of building scalable services. In a broader sense, we can think about partitioning as a concept of dividing state (data) and compute into smaller accessible units to improve scalability and performance. A well-known form of partitioning is [data partitioning][wikipartition], also known as sharding.
 
 
-### ハッシュ アルゴリズムの選択
-ハッシュで重要なのは、ハッシュ アルゴリズムの選択です。類似するキーを近接してグループ化することが目標か (局所性鋭敏型ハッシュ)、またはアクティビティをパーティション全体に広範に分散することが必要か (分散ハッシュ) という点を検討します。
+### <a name="partition-service-fabric-stateless-services"></a>Partition Service Fabric stateless services
+For stateless services, you can think about a partition being a logical unit that contains one or more instances of a service. Figure 1 shows a stateless service with five instances distributed across a cluster using one partition.
 
-適切な分散ハッシュ アルゴリズムの特徴は、計算が簡単で、競合がほとんどなく、キーが均等に分散されることです。効率的なハッシュ アルゴリズムのよい例として、[FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) ハッシュ アルゴリズムがあります。
+![Stateless service](./media/service-fabric-concepts-partitioning/statelessinstances.png)
+
+There are really two types of stateless service solutions. The first one is a service that persists its state externally, for example in an Azure SQL database (like a website that stores the session information and data). The second one is computation-only services (like a calculator or image thumbnailing) that do not manage any persistent state.
+
+In either case, partitioning a stateless service is a very rare scenario--scalability and availability are normally achieved by adding more instances. The only time you want to consider multiple partitions for stateless service instances is when you need to meet special routing requests.
+
+As an example, consider a case where users with IDs in a certain range should only be served by a particular service instance. Another example of when you could partition a stateless service is when you have a truly partitioned backend (e.g. a sharded SQL database) and you want to control which service instance should write to the database shard--or perform other preparation work within the stateless service that requires the same partitioning information as is used in the backend. Those types of scenarios can also be solved in different ways and do not necessarily require service partitioning.
+
+The remainder of this walkthrough focuses on stateful services.
+
+### <a name="partition-service-fabric-stateful-services"></a>Partition Service Fabric stateful services
+Service Fabric makes it easy to develop scalable stateful services by offering a first-class way to partition state (data). Conceptually, you can think about a partition of a stateful service as a scale unit that is highly reliable through [replicas](service-fabric-availability-services.md) that are distributed and balanced across the nodes in a cluster.
+
+Partitioning in the context of Service Fabric stateful services refers to the process of determining that a particular service partition is responsible for a portion of the complete state of the service. (As mentioned before, a partition is a set of [replicas](service-fabric-availability-services.md)). A great thing about Service Fabric is that it places the partitions on different nodes. This allows them to grow to a node's resource limit. As the data needs grow, partitions grow, and Service Fabric rebalances partitions across nodes. This ensures the continued efficient use of hardware resources.
+
+To give you an example, say you start with a 5-node cluster and a service that is configured to have 10 partitions and a target of three replicas. In this case, Service Fabric would balance and distribute the replicas across the cluster--and you would end up with two primary [replicas](service-fabric-availability-services.md) per node.
+If you now need to scale out the cluster to 10 nodes, Service Fabric would rebalance the primary [replicas](service-fabric-availability-services.md) across all 10 nodes. Likewise, if you scaled back to 5 nodes, Service Fabric would rebalance all the replicas across the 5 nodes.  
+
+Figure 2 shows the distribution of 10 partitions before and after scaling the cluster.
+
+![Stateful service](./media/service-fabric-concepts-partitioning/partitions.png)
+
+As a result, the scale-out is achieved since requests from clients are distributed across computers, overall performance of the application is improved, and contention on access to chunks of data is reduced.
+
+## <a name="plan-for-partitioning"></a>Plan for partitioning
+Before implementing a service, you should always consider the partitioning strategy that is required to scale out. There are different ways, but all of them focus on what the application needs to achieve. For the context of this article, let's consider some of the more important aspects.
+
+A good approach is to think about the structure of the state that needs to be partitioned, as the first step.
+
+Let's take a simple example. If you were to build a service for a countywide poll, you could create a partition for each city in the county. Then, you could store the votes for every person in the city in the partition that corresponds to that city. Figure 3 illustrates a set of people and the city in which they reside.
+
+![Simple partition](./media/service-fabric-concepts-partitioning/cities.png)
+
+As the population of cities varies widely, you may end up with some partitions that contain a lot of data (e.g. Seattle) and other partitions with very little state (e.g. Kirkland). So what is the impact of having partitions with uneven amounts of state?
+
+If you think about the example again, you can easily see that the partition that holds the votes for Seattle will get more traffic than the Kirkland one. By default, Service Fabric makes sure that there is about the same number of primary and secondary replicas on each node. So you may end up with nodes that hold replicas that serve more traffic and others that serve less traffic. You would preferably want to avoid hot and cold spots like this in a cluster.
+
+In order to avoid this, you should do two things, from a partitioning point of view:
+
+- Try to partition the state so that it is evenly distributed across all partitions.
+- Report load from each of the replicas for the service. (For information on how, check out this article on [Metrics and Load](service-fabric-cluster-resource-manager-metrics.md)). Service Fabric provides the capability to report load consumed by services, such as amount of memory or number of records. Based on the metrics reported, Service Fabric detects that some partitions are serving higher loads than others and rebalances the cluster by moving replicas to more suitable nodes, so that overall no node is overloaded.
+
+Sometimes, you cannot know how much data will be in a given partition. So a general recommendation is to do both--first, by adopting a partitioning strategy that spreads the data evenly across the partitions and second, by reporting load.  The first method prevents situations described in the voting example, while the second helps smooth out temporary differences in access or load over time.
+
+Another aspect of partition planning is to choose the correct number of partitions to begin with.
+From a Service Fabric perspective, there is nothing that prevents you from starting out with a higher number of partitions than anticipated for your scenario.
+In fact, assuming the maximum number of partitions is a valid approach.
+
+In rare cases, you may end up needing more partitions than you have initially chosen. As you cannot change the partition count after the fact, you would need to apply some advanced partition approaches, such as creating a new service instance of the same service type. You would also need to implement some client-side logic that routes the requests to the correct service instance, based on client-side knowledge that your client code must maintain.
+
+Another consideration for partitioning planning is the available computer resources. As the state needs to be accessed and stored, you are bound to follow:
+
+- Network bandwidth limits
+- System memory limits
+- Disk storage limits
+
+So what happens if you run into resource constraints in a running cluster? The answer is that you can simply scale out the cluster to accommodate the new requirements.
+
+[The capacity planning guide](service-fabric-capacity-planning.md) offers guidance for how to determine how many nodes your cluster needs.
+
+## <a name="get-started-with-partitioning"></a>Get started with partitioning
+This section describes how to get started with partitioning your service.
+
+Service Fabric offers a choice of three partition schemes:
+
+- Ranged partitioning (otherwise known as UniformInt64Partition).
+- Named partitioning. Applications using this model usually have data that can be bucketed, within a bounded set. Some common examples of data fields used as named partition keys would be regions, postal codes, customer groups, or other business boundaries.
+- Singleton partitioning. Singleton partitions are typically used when the service does not require any additional routing. For example, stateless services use this partitioning scheme by default.
+
+Named and Singleton partitioning schemes are special forms of ranged partitions. By default, the Visual Studio templates for Service Fabric use ranged partitioning, as it is the most common and useful one. The remainder of this article focuses on the ranged partitioning scheme.
+
+### <a name="ranged-partitioning-scheme"></a>Ranged partitioning scheme
+This is used to specify an integer range (identified by a low key and high key) and a number of partitions (n). It creates n partitions, each responsible for a non-overlapping subrange of the overall partition key range. For example, a ranged partitioning scheme with a low key of 0, a high key of 99, and a count of 4 would create four partitions, as shown below.
+
+![Range partitioning](./media/service-fabric-concepts-partitioning/range-partitioning.png)
+
+A common approach is to create a hash based on a unique key within the data set. Some common examples of keys would be a vehicle identification number (VIN), an employee ID, or a unique string. By using this unique key, you would then generate a hash code, modulus the key range, to use as your key. You can specify the upper and lower bounds of the allowed key range.
 
 
-[Wikipedia のハッシュ関数のページ](http://en.wikipedia.org/wiki/Hash_function)は、ハッシュ コードのアルゴリズム選択全般に関する優れたリソースです。
+### <a name="select-a-hash-algorithm"></a>Select a hash algorithm
+An important part of hashing is selecting your hash algorithm. A consideration is whether the goal is to group similar keys near each other (locality sensitive hashing)--or if activity should be distributed broadly across all partitions (distribution hashing), which is more common.
 
-## 複数のパーティションがあるステートフル サービスの構築
-まず、複数のパーティションがある信頼性の高いステートフル サービスを作成してみましょう。この例では、同じパーティション内に同じアルファベットから始まる姓をすべて格納するという、ごく単純なアプリケーションを構築します。
-
-コードを作成する前に、パーティションとパーティション キーについて考える必要があります。アルファベットの各文字に 1 つ、合計 26 個のパーティションが必要ですが、最低値と最高値のキーはどうなるでしょうか。 文字どおり、1 文字につき 1 つのパーティションを作成し、各文字に独自のキーがあるので、最低値キーには 0、最高値キーには 25 を使用します。
+The characteristics of a good distribution hashing algorithm are that it is easy to compute, it has few collisions, and it distributes the keys evenly. A good example of an efficient hash algorithm is the [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) hash algorithm.
 
 
->[AZURE.NOTE] 実際には分散は不均等なので、このシナリオは単純化しています。文字 "S" または "M" から始まる姓は、"X" や "Y" から始まる姓よりも一般的です。
+A good resource for general hash code algorithm choices is the [Wikipedia page on hash functions](http://en.wikipedia.org/wiki/Hash_function).
+
+## <a name="build-a-stateful-service-with-multiple-partitions"></a>Build a stateful service with multiple partitions
+Let's create your first reliable stateful service with multiple partitions. In this example, you will build a very simple application where you want to store all last names that start with the same letter in the same partition.
+
+Before you write any code, you need to think about the partitions and partition keys. You need 26 partitions (one for each letter in the alphabet), but what about the low and high keys?
+As we literally want to have one partition per letter, we can use 0 as the low key and 25 as the high key, as each letter is its own key.
 
 
-1. **Visual Studio** を開き、**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順にクリックします。
-2. **[新しいプロジェクト]** ダイアログ ボックスで、Service Fabric アプリケーションを選択します
-3. プロジェクトに "AlphabetPartitions" と名前を付けます
-4. **[サービスの作成]** ダイアログ ボックスで **[ステートフル サービス]** を選択し、下図のように "Alphabet.Processing" と名前を付けます。
+>[AZURE.NOTE] This is a simplified scenario, as in reality the distribution would be uneven. Last names starting with the letters "S" or "M" are more common than the ones starting with "X" or "Y".
 
-    ![ステートフル サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createstateful.png)
 
-5. パーティション数を設定します。AlphabetPartitions プロジェクトの ApplicationPackageRoot フォルダーにある ApplicationManifest.xml ファイルを開き、下図のようにパラメーター Processing\_PartitionCount を 26 に更新します。
+1. Open **Visual Studio** > **File** > **New** > **Project**.
+2. In the **New Project** dialog box, choose the Service Fabric application.
+3. Call the project "AlphabetPartitions".
+4. In the **Create a Service** dialog box, choose **Stateful** service and call it "Alphabet.Processing" as shown in the image below.
+
+    ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)
+
+5. Set the number of partitions. Open the Applicationmanifest.xml file located in the ApplicationPackageRoot folder of the AlphabetPartitions project and update the parameter Processing_PartitionCount to 26 as shown below.
 
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
     
-    また、次のように ApplicationManifest.xml の StatefulService 要素の LowKey と HighKey プロパティも更新する必要があります。
+    You also need to update the LowKey and HighKey properties of the StatefulService element in the ApplicationManifest.xml as shown below.
 
     ```xml
     <Service Name="Processing">
@@ -142,23 +147,24 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     </Service>
     ```
 
-6. サービスにアクセスできるようにするために、次のように、Alphabet.Processing サービスの ServiceManifest.xml (PackageRoot フォルダーにあります) のエンドポイント要素を追加して、ポートのエンドポイントを開きます。
+6. For the service to be accessible, open up an endpoint on a port by adding the endpoint element of ServiceManifest.xml (located in the PackageRoot folder) for the Alphabet.Processing service as shown below:
 
     ```xml
     <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
     ```
 
-    以上の手順で、26 個のパーティションがある内部エンドポイントをリッスンするようにサービスが構成されました。
+    Now the service is configured to listen to an internal endpoint with 26 partitions.
 
-7. 次に、Processing クラスの `CreateServiceReplicaListeners()` メソッドをオーバーライドする必要があります。
+7. Next, you need to override the `CreateServiceReplicaListeners()` method of the Processing class.
 
-    >[AZURE.NOTE] この例では、単純な HttpCommunicationListener を使用しているという想定です。Reliable Service 通信の詳細については、「[Reliable Service 通信モデル](service-fabric-reliable-services-communication.md)」を参照してください。
+    >[AZURE.NOTE] For this sample, we assume that you are using a simple HttpCommunicationListener. For more information on reliable service communication, see [The Reliable Service communication model](service-fabric-reliable-services-communication.md).
 
-8. レプリカがリッスンする URL の推奨されるパターンの形式は `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}` です。そのため、正しいエンドポイントでこのパターンでリッスンするように、通信リスナーを構成する必要があります。
+8. A recommended pattern for the URL that a replica listens on is the following format: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`.
+    So you want to configure your communication listener to listen on the correct endpoints and with this pattern.
 
-    このサービスの複数のレプリカは同じコンピューターでホストされる可能性があるので、レプリカに対するこのアドレスを一意にする必要があります。そのため、パーティション ID + レプリカ ID を URL に含めています。URL プレフィックスが一意であれば、HttpListener は同じポートでも複数のドレスをリッスンできます。
+    Multiple replicas of this service may be hosted on the same computer, so this address needs to be unique to the replica. This is why   partition ID + replica ID are in the URL. HttpListener can listen on multiple addresses on the same port as long as the URL prefix    is unique.
 
-    セカンダリ レプリカも読み取り専用要求をリッスンするような高度な場合に備えて、追加の GUID があります。この場合、プライマリからセカンダリに移行するときに新しい一意のアドレスを使用して、クライアントがアドレスを強制的に再解決するようにします。レプリカがすべての使用可能なホスト (IP、FQDM、localhost など) をリッスンするように、このアドレスとして ’+’ を使用します。 コード例を次に示します。
+    The extra GUID is there for an advanced case where secondary replicas also listen for read-only requests. When that's the case, you want to make sure that a new unique address is used when transitioning from primary to secondary to force clients to re-resolve the address. '+' is used as the address here so that the replica listens on all available hosts (IP, FQDM, localhost, etc.) The code below shows an example.
 
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -184,9 +190,10 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     }
     ```
 
-    また、公開される URL が、リッスンする URL プレフィックスと一部が異なる点に注目してください。リッスンする URL は HttpListener に渡されます。公開される URL は、Service Fabric Naming Service に公開される URL です。サービスの検出に使用されます。クライアントは検出サービスを介してこのアドレスを要求します。接続するには、クライアントが取得するアドレスにノードの実際の IP または FQDN が含まれる必要があります。そのため、上のように '+' をノードの IP または FQDN に置き換える必要があります。
+    It's also worth noting that the published URL is slightly different from the listening URL prefix.
+    The listening URL is given to HttpListener. The published URL is the URL that is published to the Service Fabric Naming Service, which is used for service discovery. Clients will ask for this address through that discovery service. The address that clients get needs to have the actual IP or FQDN of the node in order to connect. So you need to replace '+' with the node's IP or FQDN as shown above.
 
-9. 最後の手順は、次のように処理ロジックをサービスに追加する処理です。
+9. The last step is to add the processing logic to the service as shown below.
 
     ```CSharp
     private async Task ProcessInternalRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -230,23 +237,23 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     }
     ```
 
-    `ProcessInternalRequest`は、パーティションの呼び出しに使用するクエリ文字列パラメーターの値を読み取り、`AddUserAsync` を呼び出して、信頼性の高い辞書 `dictionary` に姓を追加します。
+    `ProcessInternalRequest` reads the values of the query string parameter used to call the partition and calls `AddUserAsync` to add the lastname to the reliable dictionary `dictionary`.
 
-10. プロジェクトにステートレス サービスを追加して、特定のパーティションを呼び出す方法を見てみましょう。
+10. Let's add a stateless service to the project to see how you can call a particular partition.
 
-    このサービスは、姓をクエリ文字列パラメーターとして受け取り、パーティション キーを決定し、Alphabet.Processing サービスに送信して処理するという、単純な Web インターフェイスとして機能します。
+    This service serves as a simple web interface that accepts the lastname as a query string parameter, determines the partition key, and sends it to the Alphabet.Processing service for processing.
     
-11. **[サービスの作成]** ダイアログ ボックスで **[ステートレス サービス]** を選択し、次のように "Alphabet.Web" と名前を付けます。
+11. In the **Create a Service** dialog box, choose **Stateless** service and call it "Alphabet.Web" as shown below.
     
-    ![ステートレス サービスのスクリーン ショット](./media/service-fabric-concepts-partitioning/createnewstateless.png)
+    ![Stateless service screenshot](./media/service-fabric-concepts-partitioning/createnewstateless.png).
 
-12. Alphabet.WebApi サービスの ServiceManifest.xml のエンドポイント情報を更新し、次のようにポートを開きます。
+12. Update the endpoint information in the ServiceManifest.xml of the Alphabet.WebApi service to open up a port as shown below.
 
     ```xml
     <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
     ```
 
-13. クラス Web で ServiceInstanceListeners のコレクションを返す必要があります。ここでも、単純な HttpCommunicationListener を実装することができます。
+13. You need to return a collection of ServiceInstanceListeners in the class Web. Again, you can choose to implement a simple HttpCommunicationListener.
 
     ```CSharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -263,7 +270,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     }
     ```
 
-14. 次に、処理ロジックを実装する必要があります。HttpCommunicationListener は要求を受信すると `ProcessInputRequest` を呼び出します。次のコードを追加してみましょう。
+14. Now you need to implement the processing logic. The HttpCommunicationListener calls `ProcessInputRequest` when a request comes in. So let's go ahead and add the code below.
 
     ```CSharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -309,7 +316,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     }
     ```
 
-    このコードを詳しく見ていきましょう。このコードは、クエリ文字列パラメーター `lastname` の最初の文字を char 型で読み取ります。その後、姓の最初の文字の 16 進数値から `A` の 16 進数値を引くことで、この文字のパーティション キーが決まります。
+    Let's walk through it step by step. The code reads the first letter of the query string parameter `lastname` into a char. Then, it determines the partition key for this letter by subtracting the hexadecimal value of `A` from the hexadecimal value of the last names' first letter.
 
     ```CSharp
     string lastname = context.Request.QueryString["lastname"];
@@ -317,19 +324,20 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     ServicePartitionKey partitionKey = new ServicePartitionKey(Char.ToUpper(firstLetterOfLastName) - 'A');
     ```
 
-    この例では、1 パーティションに 1 つのパーティション キーがある 26 個のパーティションを使用しています。次に、`servicePartitionResolver` オブジェクトに対して `ResolveAsync` メソッドを使用して、このキーのサービス パーティション `partition` を取得します。`servicePartitionResolver` は次のように定義されます。
+    Remember, for this example, we are using 26 partitions with one partition key per partition.
+    Next, we obtain the service partition `partition` for this key by using the `ResolveAsync` method on the `servicePartitionResolver` object. `servicePartitionResolver` is defined as
 
     ```CSharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
 
-    `ResolveAsync` メソッドには、サービス URI、パーティション キー、キャンセル トークンのパラメーターがあります。処理サービスのサービス URI は `fabric:/AlphabetPartitions/Processing` です。次に、パーティションのエンドポイントを取得します。
+    The `ResolveAsync` method takes the service URI, the partition key, and a cancellation token as parameters. The service URI for the processing service is `fabric:/AlphabetPartitions/Processing`. Next, we get the endpoint of the partition.
 
     ```CSharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
     ```
 
-    最後に、エンドポイントの URL とクエリ文字列を構築し、処理サービスを呼び出します。
+    Finally, we build the endpoint URL plus the querystring and call the processing service.
 
     ```CSharp
     JObject addresses = JObject.Parse(ep.Address);
@@ -341,9 +349,9 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     string result = await this.httpClient.GetStringAsync(primaryReplicaUriBuilder.Uri);
     ```
 
-    処理が完了したら、出力を書き戻します。
+    Once the processing is done, we write the output back.
 
-15. 最後の手順は、サービスのテストです。Visual Studio では、ローカル デプロイとクラウド デプロイにアプリケーション パラメーターを使用します。ローカルに 26 個のパーティションがあるサービスをテストする場合、次のように、AlphabetPartitions プロジェクトの ApplicationParameters フォルダーにある `Local.xml` ファイルを更新する必要があります。
+15. The last step is to test the service. Visual Studio uses application parameters for local and cloud deployment. To test the service with 26 partitions locally, you need to update the `Local.xml` file in the ApplicationParameters folder of the AlphabetPartitions project as shown below:
 
     ```xml
     <Parameters>
@@ -352,26 +360,30 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
     </Parameters>
     ```
 
-16. デプロイが完了したら、Service Fabric Explorer でサービスとそのすべてのパーティションを確認できます。
+16. Once you finish deployment, you can check the service and all of its partitions in the Service Fabric Explorer.
     
-    ![Service Fabric Explorer のスクリーン ショット](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
+    ![Service Fabric Explorer screenshot](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
     
-17. ブラウザーで `http://localhost:8081/?lastname=somename` を入力してパーティション分割ロジックをテストできます。同じ文字で始まる各姓が同じパーティションに格納されていることがわかります。
+17. In a browser, you can test the partitioning logic by entering `http://localhost:8081/?lastname=somename`. You will see that each last name that starts with the same letter is being stored in the same partition.
     
-    ![ブラウザーのスクリーン ショット](./media/service-fabric-concepts-partitioning/samplerunning.png)
+    ![Browser screenshot](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-サンプルの完全なソース コードについては、[Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions) を参照してください。
+The entire source code of the sample is available on [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/master/Services/AlphabetPartitions).
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-Service Fabric の概念についての詳細は、次を参照してください。
+For information on Service Fabric concepts, see the following:
 
-- [Service Fabric サービスの可用性](service-fabric-availability-services.md)
+- [Availability of Service Fabric services](service-fabric-availability-services.md)
 
-- [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
+- [Scalability of Service Fabric services](service-fabric-concepts-scalability.md)
 
-- [Service Fabric アプリケーションの容量計画](service-fabric-capacity-planning.md)
+- [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="makecert を使用したポイント対サイト仮想ネットワークのクロスプレミス接続の自己署名証明書の作成 | Microsoft Azure"
-   description="この記事では、makecert を使用して、Windows 10 で自己署名証明書を作成する手順について説明します。"
+   pageTitle="Create self-signed certificates for Point-to-Site virtual network cross-premises connections by using makecert | Microsoft Azure"
+   description="This article contains steps to use makecert to create self-signed certificates on Windows 10."
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -16,106 +16,110 @@
    ms.date="08/22/2016"
    ms.author="cherylmc" />
 
-# ポイント対サイト接続の自己署名証明書の操作
 
-この記事では、**makecert** を使用して自己署名証明書を作成し、そこからクライアント証明書を生成する方法について説明します。以下の手順は、Windows 10 で makecert を使用する方法を示しています。makecert は、P2S 接続と互換性がある証明書を作成できることが確認されています。
+# <a name="working-with-self-signed-certificates-for-point-to-site-connections"></a>Working with self-signed certificates for Point-to-Site connections
 
-P2S 接続では、エンタープライズ証明書ソリューションの使用が推奨されます。クライアント証明書は、共通名の形式 'name@yourdomain.com' ('NetBIOS domain name\\username' 形式ではなく) で発行するようにしてください。
+This article helps you create a self-signed certificate using **makecert**, and then generate client certificates from it. The steps are written for makecert on Windows 10. Makecert has been validated to create certificates that are compatible with P2S connections. 
 
-エンタープライズ ソリューションをお持ちでない場合、P2S クライアントが仮想ネットワークに接続するためには自己署名証明書が必要です。makecert は非推奨になっていますが、P2S 接続と互換性がある自己署名証明書を作成するための有効なメソッドです。Microsoft では、自己署名証明書を作成するための別のソリューションを開発中ですが、現時点では makecert の使用をお勧めします。
+For P2S connections, the preferred method for certificates is to use your enterprise certificate solution, making sure to issue the client certificates with the common name value format 'name@yourdomain.com', rather than the 'NetBIOS domain name\username' format.
 
-## 自己署名証明書の作成
+If you don't have an enterprise solution, a self-signed certificate is necessary to allow P2S clients to connect to a virtual network. We are aware that makecert has been deprecated, but it is still a valid method for creating self-signed certificates that are compatible with P2S connections. We're working on another solution for creating self-signed certificates, but at this time, makecert is the preferred method.
 
-makecert は、自己署名証明書を作成する方法の 1 つです。次の手順では、makecert を使用して自己署名証明書を作成する方法を説明します。これらの手順は、デプロイ モデル固有のものではありません。リソース マネージャーとクラシックの両方で有効です。
+## <a name="create-a-self-signed-certificate"></a>Create a self-signed certificate
 
-### 自己署名証明書を作成するには
+Makecert is one way of creating a self-signed certificate. The following steps walk you through creating a self-signed certificate using makecert. These steps are not deployment-model specific. They are valid for both Resource Manager and classic.
 
-1. Windows 10 を実行しているコンピューターで、[Windows 10 用 Windows ソフトウェア開発キット (SDK)](https://dev.windows.com/ja-JP/downloads/windows-10-sdk) をダウンロードしてインストールします。
+### <a name="to-create-a-self-signed-certificate"></a>To create a self-signed certificate
 
-2. インストール後、makecert.exe ユーティリティは C:\\Program Files (x86)\\Windows Kits\\10\\bin<arch> で見つかります。
-		
-	例: `C:\Program Files (x86)\Windows Kits\10\bin\x64`
+1. From a computer running Windows 10, download and install the [Windows Software Development Kit (SDK) for Windows 10](https://dev.windows.com/en-us/downloads/windows-10-sdk).
 
-3. 次に、コンピューターの個人証明書ストアで証明書を作成し、インストールします。次の例は、P2S を構成するときに Azure にアップロードする、対応する *.cer* ファイルを作成します。管理者として次のコマンドを実行します。*ARMP2SRootCert* と *ARMP2SRootCert.cer* を証明書に使用する名前に置き換えます。<br><br>証明書は Certificates - Current User\\Personal\\Certificates にあります。
+2. After installation, you can find the makecert.exe utility under this path: C:\Program Files (x86)\Windows Kits\10\bin\<arch>. 
+        
+    Example: `C:\Program Files (x86)\Windows Kits\10\bin\x64`
 
-    	makecert -sky exchange -r -n "CN=ARMP2SRootCert" -pe -a sha1 -len 2048 -ss My "ARMP2SRootCert.cer"
+3. Next, create and install a certificate in the Personal certificate store on your computer. The following example creates a corresponding *.cer* file that you upload to Azure when configuring P2S. Run the following command, as administrator. Replace  *ARMP2SRootCert* and *ARMP2SRootCert.cer* with the name that you want to use for the certificate.<br><br>The certificate will be located in your Certificates - Current User\Personal\Certificates.
+
+        makecert -sky exchange -r -n "CN=ARMP2SRootCert" -pe -a sha1 -len 2048 -ss My "ARMP2SRootCert.cer"
 
 
-###  <a name="rootpublickey"></a>公開キーを取得するには
+###  <a name="<a-name="rootpublickey"></a>to-obtain-the-public-key"></a><a name="rootpublickey"></a>To obtain the public key
 
-ポイント対サイト接続の VPN ゲートウェイの構成の一部として、ルート証明書の公開キーは、Azure にアップロードされます。
+As part of the VPN Gateway configuration for Point-to-Site connections, the public key for the root certificate is uploaded to Azure.
 
-1. 証明書から .cer ファイルを取得するには、**certmgr.msc** を開きます。自己署名ルート証明書を右クリックし、**[すべてのタスク]** をクリックしてから **[エクスポート]** をクリックします。**証明書のエクスポート ウィザード**が開きます。
+1. To obtain a .cer file from the certificate, open **certmgr.msc**. Right-click the self-signed root certificate, click **all tasks**, and then click **export**. This opens the **Certificate Export Wizard**.
 
-2. ウィザードで **[次へ]** をクリックし、**[いいえ、秘密キーをエクスポートしません]** を選択して、**[次へ]** をクリックします。
+2. In the Wizard, click **Next**, select **No, do not export the private key**, and then click **Next**.
 
-3. **[エクスポート ファイルの形式]** ページで、**[Base-64 encoded X.509 (.CER)]** を選択します。 次に、**[次へ]** をクリックします。
+3. On the **Export File Format** page, select **Base-64 encoded X.509 (.CER).** Then, click **Next**. 
 
-4. **[エクスポートするファイル]** で、**[参照]** をクリックして証明書をエクスポートする場所を選択します。**[ファイル名]** に証明書ファイルの名前を指定します。その後、**[次へ]** をクリックします。
+4. On the **File to Export**, **Browse** to the location to which you want to export the certificate. For **File name**, name the certificate file. Then click **Next**.
 
-5. **[完了]** をクリックして、証明書をエクスポートします。
+5. Click **Finish** to export the certificate.
 
  
-### 自己署名証明書のエクスポート (省略可能)
+### <a name="export-the-self-signed-certificate-(optional)"></a>Export the self-signed certificate (optional)
 
-自己署名証明書をエクスポートし、安全に保管する必要がある場合があります。必要に応じて、後から別のコンピューターにインストールして、さらに多くのクライアント証明書を生成したり、別の .cer ファイルをエクスポートしたりできます。クライアント証明書がインストールされ、また適切な VPN クライアント設定で構成されているコンピューターはいずれも P2S 経由の仮想ネットワークに接続できます。そのため、クライアント証明書は必要な場合にのみ生成およびインストールし、自己署名証明書は安全に保管するようにしてください。
+You may want to export the self-signed certificate and store it safely. If need be, you can later install it on another computer and generate more client certificates, or export another .cer file. Any computer with a client certificate installed and that is also configured with the proper VPN client settings can connect to your virtual network via P2S. For that reason, you want to make sure that client certificates are generated and installed only when needed and that the self-signed certificate is stored safely.
 
-自己署名証明書を .pfx としてエクスポートするには、ルート証明書を選択し、「[クライアント証明書をエクスポートする](#clientkey)」と同じ手順を実行してエクスポートします。
+To export the self-signed certificate as a .pfx, select the root certificate and use the same steps as described in [Export a client certificate](#clientkey) to export.
 
-## クライアント証明書の作成とインストール
+## <a name="create-and-install-client-certificates"></a>Create and install client certificates
 
-自己署名証明書をクライアント コンピューターに直接インストールすることはしません。自己署名証明書からクライアント証明書を生成し、生成したクライアント証明書をエクスポートして、クライアント コンピューターにインストールします。これらの手順は、デプロイ モデル固有のものではありません。リソース マネージャーとクラシックの両方で有効です。
+You don't install the self-signed certificate directly on the client computer. You need to generate a client certificate from the self-signed certificate. You then export and install the client certificate to the client computer. The following steps are not deployment-model specific. They are valid for both Resource Manager and classic.
 
-### パート 1 - 自己署名証明書からクライアント証明書を生成する
+### <a name="part-1---generate-a-client-certificate-from-a-self-signed-certificate"></a>Part 1 - Generate a client certificate from a self-signed certificate
 
-次の手順は、自己署名証明書からクライアント証明書を生成する 1 つの方法を段階的に説明するものです。同じ証明書から複数のクライアント証明書を生成できます。その後、各クライアント証明書をエクスポートし、クライアント コンピューターにインストールできます。
+The following steps walk you through one way to generate a client certificate from a self-signed certificate. You may generate multiple client certificates from the same certificate. Each client certificate can then be exported and installed on the client computer. 
 
-1. 自己署名証明書の作成に使用した同じコンピューターで、管理者としてコマンド プロンプトを開きます。
+1. On the same computer that you used to create the self-signed certificate, open a command prompt as administrator.
 
-2. この例では、"ARMP2SRootCert" は、生成した自己署名証明書を指します。
-	- *"ARMP2SRootCert"* を、クライアント証明書を生成している自己署名ルートの名前に変更します。
-	- *ClientCertificateName* を、クライアント証明書を生成する名前に変更します。
+2. In this example, "ARMP2SRootCert" refers to the self-signed certificate that you generated. 
+    - Change *"ARMP2SRootCert"* to the name of the self-signed root that you are generating the client certificate from. 
+    - Change *ClientCertificateName* to the name you want to generate a client certificate to be. 
 
 
-	クライアント証明書を生成するには、サンプルを変更して実行します。変更せずに下の例を実行すると、ルート証明書 ARMP2SRootCert から生成された個人用証明書ストアに ClientCertificateName という名前のクライアント証明書が作成されます。
+    Modify and run the sample to generate a client certificate. If you run the following example without modifying it, the result is a client certificate named ClientCertificateName in your Personal certificate store that was generated from root certificate ARMP2SRootCert.
 
-    	makecert.exe -n "CN=ClientCertificateName" -pe -sky exchange -m 96 -ss My -in "ARMP2SRootCert" -is my -a sha1
+        makecert.exe -n "CN=ClientCertificateName" -pe -sky exchange -m 96 -ss My -in "ARMP2SRootCert" -is my -a sha1
 
-4. 証明書はすべて、コンピューターの 'Certificates - Current User\\Personal\\Certificates' ストアに保存されます。この手順に基づいて、必要な数のクライアント証明書を生成することができます。
+4. All certificates are stored in your 'Certificates - Current User\Personal\Certificates' store on your computer. You can generate as many client certificates as needed based on this procedure.
 
-### <a name="clientkey"></a>パート 2 - クライアント証明書をエクスポートする
+### <a name="<a-name="clientkey"></a>part-2---export-a-client-certificate"></a><a name="clientkey"></a>Part 2 - Export a client certificate
 
-1. クライアント証明書をエクスポートするには、**certmgr.msc** を開きます。エクスポートするクライアント証明書を右クリックして、**[すべてのタスク]**、**[エクスポート]** の順にクリックします。**証明書のエクスポート ウィザード**が開きます。
+1. To export a client certificate, open **certmgr.msc**. Right-click the client certificate that you want to export, click **all tasks**, and then click **export**. This opens the **Certificate Export Wizard**.
 
-2. ウィザードで **[次へ]** をクリックし、**[はい、秘密キーをエクスポートします]** を選択して、**[次へ]** をクリックします。
+2. In the Wizard, click **Next**, then select **Yes, export the private key**, and then click **Next**.
 
-3. **[エクスポート ファイルの形式]** ページでは、既定値をそのまま使用します。その後、**[次へ]** をクリックします。
+3. On the **Export File Format** page, you can leave the defaults selected. Then click **Next**. 
  
-4. **[セキュリティ]** ページでは、秘密キーを保護する必要があります。パスワードを使用する場合は、この証明書に設定したパスワードを必ず記録しておくか、覚えておいてください。その後、**[次へ]** をクリックします。
+4. On the **Security** page, you must protect the private key. If you select to use a password, make sure to record or remember the password that you set for this certificate. Then click **Next**.
 
-5. **[エクスポートするファイル]** で、**[参照]** をクリックして証明書をエクスポートする場所を選択します。**[ファイル名]** に証明書ファイルの名前を指定します。その後、**[次へ]** をクリックします。
+5. On the **File to Export**, **Browse** to the location to which you want to export the certificate. For **File name**, name the certificate file. Then click **Next**.
 
-6. **[完了]** をクリックして、証明書をエクスポートします。
+6. Click **Finish** to export the certificate.  
 
-### パート 3 - クライアント証明書をインストールする
+### <a name="part-3---install-a-client-certificate"></a>Part 3 - Install a client certificate
 
-ポイント対サイト接続を使用して、仮想ネットワークに接続する各クライアントには、クライアント証明書がインストールされている必要があります。この証明書は必要な VPN 構成パッケージに追加されます。次の手順では、クライアント証明書の手動インストールについて説明します。
+Each client that you want to connect to your virtual network by using a Point-to-Site connection must have a client certificate installed. This certificate is in addition to the required VPN configuration package. The following steps walk you through installing the client certificate manually.
 
-1. *.pfx* ファイルを見つけ、クライアント コンピューターにコピーします。クライアント コンピューターで、*.pfx* ファイルをダブルクリックしてインストールします。**[ストアの場所]** は **[現在のユーザー]** のままにしておき、**[次へ]** をクリックします。
+1. Locate and copy the *.pfx* file to the client computer. On the client computer, double-click the *.pfx* file to install. Leave the **Store Location** as **Current User**, then click **Next**.
 
-2. **[インポートするファイル]** ページでは、何も変更しないでください。**[次へ]** をクリックします。
+2. On the **File** to import page, don't make any changes. Click **Next**.
 
-3. **[秘密キーの保護]** ページで、証明書にパスワードを使用した場合はそのパスワード入力するか、証明書をインストールするセキュリティ プリンシパルが正しいことを確認し、**[次へ]** をクリックします。
+3. On the **Private key protection** page, input the password for the certificate if you used one, or verify that the security principal that is installing the certificate is correct, then click **Next**.
 
-4. **[証明書ストア]** ページで、既定の場所をそのまま使用し、**[次へ]** をクリックします。
+4. On the **Certificate Store** page, leave the default location, and then click **Next**.
 
-5. **[完了]** をクリックします。証明書のインストールの **[セキュリティ警告]** で **[はい]** をクリックします。これで証明書がインポートされます。
+5. Click **Finish**. On the **Security Warning** for the certificate installation, click **Yes**. The certificate is now successfully imported.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-引き続きポイント対サイト構成を使用します。
+Continue with your Point-to-Site configuration. 
 
-- **Resource Manager** デプロイ モデルの手順については、「[PowerShell を使用した VNet へのポイント対サイト接続の構成](vpn-gateway-howto-point-to-site-rm-ps.md)」をご覧ください。
-- **クラシック** デプロイ モデルの手順については、「[クラシック ポータルを使用する VNet へのポイント対サイト VPN 接続の構成](vpn-gateway-point-to-site-create.md)」をご覧ください。
+- For **Resource Manager** deployment model steps, see [Configure a Point-to-Site connection to a VNet using PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md). 
+- For **classic** deployment model steps, see [Configure a Point-to-Site VPN connection to a VNet using the classic portal](vpn-gateway-point-to-site-create.md).
 
-<!---HONumber=AcomDC_0831_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

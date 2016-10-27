@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric ノードの種類と VM スケール セット | Microsoft Azure"
-   description="Service Fabric のノードの種類を VM スケール セットに関連付ける方法と、VM スケール セットのインスタンスまたはクラスター ノードにリモート接続する方法について説明します。"
+   pageTitle="Service Fabric node types and VM Scale Sets | Microsoft Azure"
+   description="Describes how Service Fabric node types relate to VM Scale Sets and how to remote connect to a VM Scale Set instance or a cluster node."
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -17,112 +17,113 @@
    ms.author="chackdan"/>
 
 
-# Service Fabric ノードの種類と仮想マシン スケール セットの関係
 
-仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure 計算リソースです。Service Fabric クラスターで定義されているすべてのノードの種類は、個別の VM スケール セットとしてセットアップされます。各ノードの種類は、個別にスケール アップまたはスケール ダウンすることができ、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。
+# <a name="the-relationship-between-service-fabric-node-types-and-virtual-machine-scale-sets"></a>The relationship between Service Fabric node types and Virtual Machine Scale Sets
 
-次のスクリーン ショットでは、ノードが 2 種類あるクラスターを示します (FrontEnd と BackEnd)。各ノードの種類に、5 つのノードがあります。
+Virtual Machine Scale Sets are an Azure Compute resource you can use to deploy and manage a collection of virtual machines as a set. Every node type that is defined in a Service Fabric cluster is set up as a separate VM Scale Set. Each node type can then be scaled up or down independently, have different sets of ports open, and can have different capacity metrics.
 
-![ノードが 2 種類あるクラスターのスクリーン ショット][NodeTypes]
+The following screen shot shows a cluster that has two node types: FrontEnd and BackEnd.  Each node type has five nodes each.
 
-## VM スケール セットのインスタンスをノードにマッピング
+![Screen shot of a cluster that has two Node Types][NodeTypes]
 
-上述のように、VM スケール セットのインスタンスは、インスタンス 0 から始まり増えていきます。番号設定は名前に反映されます。たとえば、BackEnd_0 は、BackEnd VM スケール セットのインスタンス 0 です。この特定の VM スケール セットには、BackEnd_0、BackEnd1、BackEnd2、BackEnd3、BackEnd4 という名前の 5 つのインスタンスがあります。
+## <a name="mapping-vm-scale-set-instances-to-nodes"></a>Mapping VM Scale Set instances to nodes
 
-VM スケール セットをスケール アップすると、新しいインスタンスが作成されます。通常、新しい VM スケール セットのインスタンス名は、VM スケール セットの名前 + 次のインスタンス番号になります。この例では、BackEnd\_5 です。
+As you can see above, the VM Scale Set instances start from instance 0 and then goes up. The numbering is reflected in the names. For example, BackEnd_0 is instance 0 of the BackEnd VM Scale Set. This particular VM Scale Set has five instances, named BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 and BackEnd_4.
 
-
-## VM スケール セットのロード バランサーを各ノードの種類/VM スケール セットにマッピングする
-
-ポータルからクラスターをデプロイした場合、または提供しているサンプル Resource Manager テンプレートを使用した場合、リソース グループ下のすべてのリソースの一覧を取得すると、VM スケール セットまたはノードの種類ごとにロード バランサーが表示されます。
-
-名前は次のようになります: **LB-&lt;NodeType name&gt;**。たとえば、次のスクリーンショットで示すように、LB-sfcluster4doc-0 などです。
+When you scale up a VM Scale Set a new instance is created. The new VM Scale Set instance name will typically be the VM Scale Set name + the next instance number. In our example, it is BackEnd_5.
 
 
-![リソース][Resources]
+## <a name="mapping-vm-scale-set-load-balancers-to-each-node-type/vm-scale-set"></a>Mapping VM scale set load balancers to each node type/VM Scale Set
+
+If you have deployed your cluster from the portal or have used the sample Resource Manager template that we provided, then when you get a list of all resources under a Resource Group then you will see the load balancers for each VM Scale Set or node type.
+
+The name would something like: **LB-&lt;NodeType name&gt;**. For example, LB-sfcluster4doc-0, as shown in this screenshot:
 
 
-## VM スケール セットのインスタンスまたはクラスター ノードへのリモート接続
-クラスターで定義されているすべてのノードの種類は、個別の VM スケール セットとしてセットアップされます。つまり、ノードの種類は個別にスケール アップまたはスケール ダウンすることができ、異なる VM SKU で作ることができます。単一のインスタンス VM とは異なり、VM スケール セットのインスタンスは、独自の仮想 IP アドレスを取得しません。そのため、特定のインスタンスにリモート接続するために使用できる IP アドレスとポートを検索するときに、少し難しい場合があります。
+![Resources][Resources]
 
-IP アドレスとポートを検出する手順を次に示します。
 
-### 手順 1: ノードの種類に仮想 IP アドレスを検索し、RDP に受信 NAT 規則を検索する
+## <a name="remote-connect-to-a-vm-scale-set-instance-or-a-cluster-node"></a>Remote connect to a VM Scale Set instance or a cluster node
+Every Node type that is defined in a cluster is set up as a separate VM Scale Set.  That means the node types can be scaled up or down independently and can be made of different VM SKUs. Unlike single instance VMs, the VM Scale Set instances do not get a virtual IP address of their own. So it can be a bit challenging when you are looking for an IP address and port that you can use to remote connect to a specific instance.
 
-これを取得するには、**Microsoft.Network/loadBalancers** のリソース定義の一部として定義された受信 NAT 規則の値を取得する必要があります。
+Here are the steps you can follow to discover them.
 
-ポータルで、[ロード バランサー] ブレード、**[設定]** の順に移動します。
+### <a name="step-1:-find-out-the-virtual-ip-address-for-the-node-type-and-then-inbound-nat-rules-for-rdp"></a>Step 1: Find out the virtual IP address for the node type and then Inbound NAT rules for RDP
+
+In order to get that, you need to get the inbound NAT rules values that were defined as a part of the resource definition for **Microsoft.Network/loadBalancers**.
+
+In the portal, navigate to the Load balancer blade and then **Settings**.
 
 ![LBBlade][LBBlade]
 
 
-**[設定]** で、**[受信 NAT 規則]** をクリックします。ここでは、最初の VM スケール セットのインスタンスにリモート接続するために使用できる IP アドレスとポートを提供します。次のスクリーンショットでは、**104.42.106.156** と **3389** です
+In **Settings**, click on **Inbound NAT rules**. This now gives you the IP address and port that you can use to remote connect to the first VM Scale Set instance. In the screenshot below, it is **104.42.106.156** and **3389**
 
 ![NATRules][NATRules]
 
-### 手順 2: 特定の VM スケール セットのインスタンス/ノードにリモート接続するために使用できるポートを検索する
+### <a name="step-2:-find-out-the-port-that-you-can-use-to-remote-connect-to-the-specific-vm-scale-set-instance/node"></a>Step 2: Find out the port that you can use to remote connect to the specific VM Scale Set instance/node
 
-このドキュメントの前半では、VM スケール セットのインスタンスをノードにマップする方法について説明しました。正確なポートを見つけるためにこのマッピングを使用します。
+Earlier in this document, I talked about how the VM Scale Set instances map to the nodes. We will use that to figure out the exact port.
 
-ポートは、VM スケール セットのインスタンスの昇順で割り当てられます。そのため、FrontEnd のノードの種類の例では、5 つのインスタンスの各ポートは次のようになります。ここでは、VM スケール セットのインスタンスと同じマッピングを行う必要があります。
+The ports are allocated in ascending order of the VM Scale Set instance. so in my example for the FrontEnd node type, the ports for each of the five instances are the following. you now need to do the same mapping for your VM Scale Set instance.
 
-|**VM スケール セットのインスタンス**|**ポート**|
+|**VM Scale Set Instance**|**Port**|
 |-----------------------|--------------------------|
-|FrontEnd\_0|3389|
-|FrontEnd\_1|3390|
-|FrontEnd\_2|3391|
-|FrontEnd\_3|3392|
-|FrontEnd\_4|3393|
-|FrontEnd\_5|3394|
+|FrontEnd_0|3389|
+|FrontEnd_1|3390|
+|FrontEnd_2|3391|
+|FrontEnd_3|3392|
+|FrontEnd_4|3393|
+|FrontEnd_5|3394|
 
 
-### 手順 3: 特定の VM スケール セットのインスタンスにリモート接続する
+### <a name="step-3:-remote-connect-to-the-specific-vm-scale-set-instance"></a>Step 3: Remote connect to the specific VM Scale Set instance
 
-次のスクリーンショットでは、リモート デスクトップ接続を使用して、FrontEnd\_1 に接続します。
+In the screenshot below I use Remote Desktop Connection to connect to the FrontEnd_1:
 
 ![RDP][RDP]
 
-## RDP ポート範囲の値を変更する方法
+## <a name="how-to-change-the-rdp-port-range-values"></a>How to change the RDP port range values
 
-### クラスター デプロイの前
+### <a name="before-cluster-deployment"></a>Before cluster deployment
 
-Resource Manager テンプレートを使用してクラスターを設定している場合、**inboundNatPools** の範囲を指定できます。
+When you are setting up the cluster using an Resource Manager template, you can specify the range in the **inboundNatPools**.
 
-**Microsoft.Network/loadBalancers** のリソース定義に移動します。その下に、**inboundNatPools** の説明があります。*frontendPortRangeStart* と *frontendPortRangeEnd* の値を置き換えます。
+Go to the resource definition for **Microsoft.Network/loadBalancers**. Under that you find the description for **inboundNatPools**.  Replace the *frontendPortRangeStart* and *frontendPortRangeEnd* values.
 
 ![InboundNatPools][InboundNatPools]
 
 
-### クラスター デプロイの後
-これは少し複雑で、VM がリサイクルされる可能性があります。Azure PowerShell を使用して、新しい値を設定する必要があります。Azure PowerShell 1.0 以降がコンピューターにインストールされていることを確認します。まだインストールされていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」の手順を実行することを強くお勧めします。
+### <a name="after-cluster-deployment"></a>After cluster deployment
+This is a bit more involved and may result in the VMs getting recycled. You will now have to set new values using Azure PowerShell. Make sure that Azure PowerShell 1.0 or later is installed on your machine. If you have not done this before, I strongly suggest that you follow the steps outlined in [How to install and configure Azure PowerShell.](../powershell-install-configure.md)
 
-Azure アカウントにサインインします。この PowerShell コマンドが何らかの理由で失敗する場合、Azure PowerShell が正しくインストールされているかどうかを確認することをお勧めします。
+Sign in to your Azure account. If this PowerShell command fails for some reason, you should check whether you have Azure PowerShell installed correctly.
 
 ```
 Login-AzureRmAccount
 ```
 
-次を実行して、ロード バランサーに関する詳細を取得すると、**inboundNatPools** の説明の値が表示されます。
+Run the following to get details on your load balancer and you see the values for the description for **inboundNatPools**:
 
 ```
 Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load balancer name>
 ```
 
-*frontendPortRangeEnd* と *frontendPortRangeStart* を必要な値に設定します。
+Now set *frontendPortRangeEnd* and *frontendPortRangeStart* to the values you want.
 
 ```
 $PropertiesObject = @{
-	#Property = value;
+    #Property = value;
 }
 Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG name> -ResourceType Microsoft.Network/loadBalancers -ResourceName <load Balancer name> -ApiVersion <use the API version that get returned> -Force
 ```
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- ["任意の場所にデプロイ" 機能の概要と Azure で管理されるクラスターとの比較](service-fabric-deploy-anywhere.md)
-- [クラスターのセキュリティ](service-fabric-cluster-security.md)
-- [Service Fabric SDK と概要](service-fabric-get-started.md)
+- [Overview of the "Deploy anywhere" feature and a comparison with Azure-managed clusters](service-fabric-deploy-anywhere.md)
+- [Cluster security](service-fabric-cluster-security.md)
+- [ Service Fabric SDK and getting started](service-fabric-get-started.md)
 
 
 <!--Image references-->
@@ -133,4 +134,8 @@ Set-AzureRmResource -PropertyObject $PropertiesObject -ResourceGroupName <RG nam
 [NATRules]: ./media/service-fabric-cluster-nodetypes/NATRules.png
 [RDP]: ./media/service-fabric-cluster-nodetypes/RDP.png
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

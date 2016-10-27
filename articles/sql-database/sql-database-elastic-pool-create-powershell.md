@@ -1,7 +1,7 @@
 <properties
-    pageTitle="PowerShell による新しい Elastic Database プールの作成 | Microsoft Azure"
-    description="PowerShell を使用し、複数のデータベースを管理するスケーラブルなエラスティック データベース プールを作成して、Azure SQL Database リソースをスケールアウトする方法について説明します。"
-	services="sql-database"
+    pageTitle="Create an new elastic database pool with PowerShell | Microsoft Azure"
+    description="Learn how to use PowerShell to scale-out Azure SQL Database resources by creating a scalable elastic database pool to manage multiple databases."
+    services="sql-database"
     documentationCenter=""
     authors="srinia"
     manager="jhubbard"
@@ -16,43 +16,44 @@
     ms.date="05/27/2016"
     ms.author="srinia"/>
 
-# PowerShell による新しい Elastic Database プールの作成
+
+# <a name="create-a-new-elastic-database-pool-with-powershell"></a>Create a new elastic database pool with PowerShell
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](sql-database-elastic-pool-create-portal.md)
+- [Azure portal](sql-database-elastic-pool-create-portal.md)
 - [PowerShell](sql-database-elastic-pool-create-powershell.md)
 - [C#](sql-database-elastic-pool-create-csharp.md)
 
 
-PowerShell コマンドレットを使った[エラスティック データベース プール](sql-database-elastic-pool.md)の作成方法について説明します。
+Learn how to create an [elastic database pool](sql-database-elastic-pool.md) using PowerShell cmdlets. 
 
-一般的なエラー コードについては、「[SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題](sql-database-develop-error-messages.md)」を参照してください。
+For common error codes, see [SQL error codes for SQL Database client applications: Database connection error and other issues](sql-database-develop-error-messages.md).
 
-> [AZURE.NOTE] エラスティック プールは、現在プレビュー段階にある米国中北部とインド西部を除くすべての Azure リージョンで一般公開 (GA) されています。プレビュー段階のリージョンでも、できるだけ早く一般公開される予定です。また、現在のところ、エラスティック プールでは、[インメモリ OLTP またはインメモリ分析](sql-database-in-memory.md)を使用するデータベースをサポートしていません。
-
-
-Azure PowerShell 1.0 以降を実行している必要があります。詳細については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
-
-## 新しいプールの作成
-
-プールの新規作成は、[New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378.aspx) コマンドレットで行います。プールあたりの eDTU、最小 DTU、最大 DTU は、サービス レベルの値 (Basic、Standard、Premium) によって制限されます。「[エラスティック プールとエラスティック データベースの eDTU と記憶域の上限](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases)」を参照してください。
-
-	New-AzureRmSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
+> [AZURE.NOTE] Elastic pools are generally available (GA) in all Azure regions except North Central US and West India where it is currently in preview.  GA of elastic pools in these regions will be provided as soon as possible. Also, elastic pools do not currently support databases using [in-memory OLTP or in-memory analytics](sql-database-in-memory.md).
 
 
-## プールに新しいエラスティック データベースを作成する
+You need to be running Azure PowerShell 1.0 or higher. For detailed information, see [How to install and configure Azure PowerShell](../powershell-install-configure.md).
 
-[New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) コマンドレットを使用して **ElasticPoolName** パラメーターを対象のプールに設定します。既存のデータベースをプールに移動する方法については、「[エラスティック プールへのデータベースの移動](sql-database-elastic-pool-manage-powershell.md#Move-a-database-into-an-elastic-pool)」を参照してください。
+## <a name="create-a-new-pool"></a>Create a new pool
 
-	New-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
+The [New-AzureRmSqlElasticPool](https://msdn.microsoft.com/library/azure/mt619378.aspx) cmdlet creates a new pool. The values for eDTU per pool, min, and max Dtus are constrained by the service tier value (basic, standard, or premium). See [eDTU and storage limits for elastic pools and elastic databases](sql-database-elastic-pool.md#eDTU-and-storage-limits-for-elastic-pools-and-elastic-databases).
 
-## プールを作成して複数の新しいデータベースを追加する 
+    New-AzureRmSqlElasticPool -ResourceGroupName "resourcegroup1" -ServerName "server1" -ElasticPoolName "elasticpool1" -Edition "Standard" -Dtu 400 -DatabaseDtuMin 10 -DatabaseDtuMax 100
 
-ポータルまたは PowerShell コマンドレットで一度に作成できるデータベースは 1 つのみであり、多数のデータベースをプールに作成しようとすると時間がかかる場合があります。新しいプールへの作成処理を自動化するには、「[CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae)」を参照してください。
 
-## 例: PowerShell を使用したプールの作成 
+## <a name="create-a-new-elastic-database-in-a-pool"></a>Create a new elastic database in a pool
 
-これは、新しい Azure リソース グループと新しいサーバーを作成するスクリプトです。メッセージが表示されたら、(自分の Azure 資格情報ではなく) 新しいサーバーの管理者のユーザー名とパスワードを指定してください。
+Use the [New-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt619339.aspx) cmdlet and set the **ElasticPoolName** parameter to the target pool. To move an existing database into a pool, see [Move a database into an elastic pool](sql-database-elastic-pool-manage-powershell.md#Move-a-database-into-an-elastic-pool).
+
+    New-AzureRmSqlDatabase -ResourceGroupName "resourcegroup1" -ServerName "server1" -DatabaseName "database1" -ElasticPoolName "elasticpool1"
+
+## <a name="create-a-pool-and-populate-it-with-multiple-new-databases"></a>Create a pool and populate it with multiple new databases 
+
+Creation of a large number of databases in a pool can take time when done using the portal or PowerShell cmdlets that create only a single database at a time. To automate creation into a new pool, see [CreateOrUpdateElasticPoolAndPopulate ](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).   
+
+## <a name="example:-create-a-pool-using-powershell"></a>Example: create a pool using PowerShell 
+
+This script creates a new Azure resource group and a new server. When prompted, supply an administrator username and password for the new server (not your Azure credentials).
 
     $subscriptionId = '<your Azure subscription id>'
     $resourceGroupName = '<resource group name>'
@@ -74,10 +75,15 @@ Azure PowerShell 1.0 以降を実行している必要があります。詳細�
 
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [プールを管理する](sql-database-elastic-pool-manage-powershell.md)
-- [エラスティック ジョブを作成する](sql-database-elastic-jobs-overview.md): エラスティック ジョブを使用すると、プール内にある任意の数のデータベースに対して T-SQL スクリプトを実行できます。
-- [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md): Elastic Database のツールを使用してスケールアウトを実施します。
+- [Manage your pool](sql-database-elastic-pool-manage-powershell.md)
+- [Create elastic jobs](sql-database-elastic-jobs-overview.md) Elastic jobs let you run T-SQL scripts against any number of databases in the pool.
+- [Scale out with Azure SQL Database](sql-database-elastic-scale-introduction.md): Use elastic database tools to scale-out.
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

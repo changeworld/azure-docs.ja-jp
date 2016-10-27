@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric クラスター リソース マネージャー：移動コスト | Microsoft Azure"
-   description="Service Fabric サービスの移動コストの概要"
+   pageTitle="Service Fabric Cluster Resource Manager: Movement cost | Microsoft Azure"
+   description="Overview of movement cost for Service Fabric services"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,38 +16,43 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
-# クラスター リソース マネージャーの選定に影響を与えるサービス移動コスト
-クラスターに対して行う変更とソリューションのスコアを決定するときに考慮すべき重要な要因は、そのソリューションを実現するための全体的なコストです。
 
-サービス インスタンスやレプリカの移動では、最低でも CPU 時間とネットワーク帯域幅のコストがかかります。ステートフル サービスの場合は、古いレプリカのシャット ダウン前に状態のコピーを作成するために必要なディスク領域のコストもかかります。Azure Service Fabric クラスター リソース マネージャーによって構成されるソリューションのコストが最小限であることが望ましいのは明らかですが、一方でクラスター内のリソースの割り当てを大幅に改善するソリューションを無視することは避けたいものです。
+# <a name="service-movement-cost-for-influencing-cluster-resource-manager-choices"></a>Service movement cost for influencing Cluster Resource Manager choices
+An important factor to consider when you're trying to determine what changes to make to a cluster and the score of a solution is the overall cost of achieving that solution.
 
-クラスター リソース マネージャーには、その他の目的に応じて、クラスターの管理時にもコストを計算して制限する方法が 2 つあります。第一に、クラスター リソース マネージャーはクラスターの新しいレイアウトを計画するときに、実行するすべての移動を個別にカウントします。2 つのソリューションの全体的なバランス (スコア) がほぼ同じになる単純な例では、片方を最低コスト (移動の合計数) にします。
+Moving service instances or replicas costs CPU time and network bandwidth at a minimum. For stateful services, it also costs the amount of space on disk that you need to create a copy of the state before shutting down old replicas. Clearly you’d want to minimize the cost of any solution that Azure Service Fabric Cluster Resource Manager comes up with. But you also don’t want to ignore solutions that would significantly improve the allocation of resources in the cluster.
 
-この方法はうまくいきますが、既定の負荷や静的な負荷の場合と同様に、すべての移動が等しい複雑なシステムではそうはいきません。一部のコストがはるかに高くなる可能性があります。
+Cluster Resource Manager has two ways of computing costs and limiting them, even while it tries to manage the cluster according to its other goals. The first is that when Cluster Resource Manager is planning a new layout for the cluster, it counts every move that it would make. In a simple case, if you get two solutions with about the same overall balance (score) at the end, then take the one with the lowest cost (total number of moves).
 
-## レプリカの移動コストと考慮事項を変更する
-負荷の報告機能 (クラスター リソース マネージャーの別の機能) と同様に、サービスに、特定の時点での移動にどれだけのコストがかかるかを自己報告させることができます。
+This works pretty well. But as with default or static loads, it's unlikely in any complex system that all moves are equal. Some are likely to be much more expensive.
 
-コード:
+## <a name="changing-a-replica's-move-cost-and-factors-to-consider"></a>Changing a replica's move cost and factors to consider
+As with reporting load (another feature of Cluster Resource Manager), you give the service a way of self-reporting how costly the service is to move at a particular time.
+
+Code:
 
 ```csharp
 this.ServicePartition.ReportMoveCost(MoveCost.Medium);
 ```
 
-MoveCost には、Zero、Low、Medium、High の 4 つのレベルがあります。これらのレベルは相対的なものです。ただし Zero は、レプリカの移動にコストがかからず、ソリューションのスコアに対してカウントしてはならないことを意味します。移動コストを High に設定しても、レプリカが移動されないことが保証されるわけでは*ありません*。相応の理由がない限り移動されないだけです。
+MoveCost has four levels: Zero, Low, Medium, and High. These are relative to each other, except for Zero. Zero means that moving a replica is free and should not count against the score of the solution. Setting your move cost to High is *not* a guarantee that the replica won’t move, just that it won't be moved unless there’s a good reason to.
 
-![移動するレプリカを選択する際の要因としての移動コスト][Image1]
+![Move cost as a factor in selecting replicas for movement][Image1]
 
-移動コストは、同等のバランスを最も簡単に維持したまま全体的な中断が最小限になるソリューションを見つけるのに役立ちます。サービスのコストの概念はさまざまなものに関係する可能性がありますが、移動コストの計算に関わる最も一般的な要素は次のとおりです。
+MoveCost helps you find the solutions that cause the least disruption overall and are easiest to achieve while still arriving at equivalent balance. A service’s notion of cost can be relative to many things. The most common factors in calculating your move cost are:
 
-- サービスが移動する必要のある状態またはデータの量。
-- クライアント切断のコスト。通常、プライマリ レプリカを移動するコストは、セカンダリ レプリカの移動コストより高くなります。
-- 実行中の操作を中断するコスト。一部のデータ ストア レベル操作またはクライアント コールの応答で実行される操作にはコストがかかるため、特定の時点以降では、必要でなければ処理を中止しない方が適切です。そのため、操作の実行中はコストを高くして、サービスのレプリカまたはインスタンスが移動される可能性を低くし、操作が完了したら元に戻します。
+- The amount of state or data that the service has to move.
+- The cost of disconnection of clients. The cost of moving a primary replica is usually higher than the cost of moving a secondary replica.
+- The cost of interrupting an in-flight operation. Some operations at the data store level or operations performed in response to a client call are costly. After a certain point, you don’t want to stop them if you don’t have to. So for the duration of the operation, you bump up the cost to reduce the likelihood that the service replica or instance will move. When the operation is done, you put it back to normal.
 
-## 次のステップ
-- Service Fabric クラスター リソース マネージャーは、メトリックを使用して、クラスターの利用量と容量を管理します。メトリックの詳細とその構成方法については、「[Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」を参照してください。
-- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、「[Service Fabric クラスターの均衡をとる](service-fabric-cluster-resource-manager-balancing.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+- Service Fabric Cluster Resource Manger uses metrics to manage consumption and capacity in the cluster. To learn more about metrics and how to configure them, check out [Managing resource consumption and load in Service Fabric with metrics](service-fabric-cluster-resource-manager-metrics.md).
+- To learn about how the Cluster Resource Manager manages and balances load in the cluster, check out [Balancing your Service Fabric cluster](service-fabric-cluster-resource-manager-balancing.md).
 
-[Image1]: ./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
+[Image1]:./media/service-fabric-cluster-resource-manager-movement-cost/service-most-cost-example.png
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

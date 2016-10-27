@@ -1,76 +1,80 @@
 <properties
-	pageTitle="Azure ポータルを使用した Web アプリの複製"
-	description="Azure ポータルを使用して既存の Web アプリを新しい Web アプリに複製する方法を説明します。"
-	services="app-service\web"
-	documentationCenter=""
-	authors="ahmedelnably"
-	manager="stefsch"
-	editor=""/>
+    pageTitle="Web App Cloning using Azure Portal"
+    description="Learn how to clone your Web Apps to new Web Apps using Azure Portal."
+    services="app-service\web"
+    documentationCenter=""
+    authors="ahmedelnably"
+    manager="stefsch"
+    editor=""/>
 
 <tags
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="03/08/2016"
-	ms.author="ahmedelnably"/>
-
-# Azure ポータルを使用した Azure App Service アプリの複製#
-
-[Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) の複製機能を使用すると、既存の Web アプリを複製して、別のリージョンまたは同じリージョンにアプリを新規作成することができます。これにより、お客様は、リージョンをまたいでさまざまなアプリを迅速かつ簡単にデプロイできるようになります。
-
-アプリの複製は、現在、Premium レベルの App Service プランでのみサポートされています。この新機能には Web アプリのバックアップ機能と同じ制限が適用されます。「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください。
-
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
+    ms.service="app-service-web"
+    ms.workload="web"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="03/08/2016"
+    ms.author="ahmedelnably"/>
 
 
-## 既存のアプリの複製 ##
+# <a name="azure-app-service-app-cloning-using-azure-portal#"></a>Azure App Service App Cloning Using Azure Portal#
 
-Web アプリの複製を作成するには、その Web アプリが **Premium** モードで実行されている必要があります。
+The cloning feature in [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714) lets you easily clone existing web apps to a newly created app in a different region or in the same region. This will enable customers to deploy a number of apps across different regions quickly and easily.
 
-1. [Azure ポータル](https://portal.azure.com/)の Web アプリのブレードを開きます。
-2. **[ツール]** をクリックします。次に、**[ツール]** ブレードで **[アプリの複製]** をクリックします。
+App cloning is currently only supported for premium tier app service plans. The new feature uses the same limitations as Web Apps Backup feature, see [Back up a web app in Azure App Service](web-sites-backup.md).
 
-	![][1]
-
-	> [AZURE.NOTE]
-	Web アプリがまだ **Premium** モードでない場合は、アプリの複製がサポートされているモードを示すメッセージが表示されます。この時点で、**[アップグレード]** を選択することもできます。
-	
-3. **[アプリの複製]** ブレードで、新しい Web アプリの名前、リソース グループ、App Service プランを入力します。また、複数のソース Web アプリの設定を複製するかどうかも選択できます。
-
-	![][2]
-
-4. **[作成]** をクリックすると、ソース Web アプリの複製の作成が開始されます。
-
-## App Service 環境への既存のアプリの複製##
-
-**[アプリの複製]** ブレードでは、既存の App Service 環境のアプリ プールを選択することもできます。
-
-## 現在の制限 ##
-
-この機能は現在プレビュー段階にあり、新機能を追加する作業が続けられています。次の一覧に、Azure ポータルでの現在のアプリの複製のサポートに関する既知の制限を示します。
-
-- Azure Traffic Manager の設定は複製されない
-- 自動スケールの設定は複製されない
-- バックアップ スケジュールの設定は複製されない
-- VNET の設定は複製されない
-- App Insights は複製先の Web アプリで自動的にセットアップされない
-- 簡単認証の設定は複製されない
-- Kudu 拡張機能は複製されない
-- TiP ルールは複製されない
-- データベースの内容は複製されない
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
 
-### 参照 ###
-- [PowerShell を使用した Web アプリの複製](app-service-web-app-cloning.md)
-- [Azure App Service での Web アプリのバックアップ](web-sites-backup.md)
-- [App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)
-- [App Service 環境で Web アプリを作成する](app-service-web-how-to-create-a-web-app-in-an-ase.md)
-- [App Service 環境の概要](app-service-app-service-environment-intro.md)
+## <a name="cloning-an-existing-app"></a>Cloning an existing App ##
+
+The web app must be running in the **Premium** mode in order for you to create a clone for the web app.
+
+1. In the [Azure Portal](https://portal.azure.com/), open your web app's blade.
+2. Click **Tools**. Then, in the **Tools** blade, click **Clone App**.
+
+    ![][1]
+
+    > [AZURE.NOTE]
+    > If the web app is not already in the **Premium** mode, you will receive a message indicating the supported modes for app cloning. At this point, you have the option to select **Upgrade**.
+    
+3. In the **Clone App** blade provide a name of the new web app, Resource Group, and App Service Plan. Also the user will be able to choose whether to clone a number of source web app settings or not.
+
+    ![][2]
+
+4. After clicking **create** the platform will start working on creating a clone of the source web app.
+
+## <a name="cloning-an-existing-app-to-an-app-service-environment##"></a>Cloning an existing App to an App Service Environment##
+
+In the **Clone App** blade the customer will have the option to choose an app pool in an existing App Service Environment.
+
+## <a name="current-restrictions"></a>Current Restrictions ##
+
+This feature is currently in preview, we are working to add new capabilities over time, the following list are the known restrictions on the current support of app cloning in Azure Portal:
+
+- Azure Traffic Manager settings are not cloned
+- Auto scale settings are not cloned
+- Backup schedule settings are not cloned
+- VNET settings are not cloned
+- App Insights are not automatically set up on the destination web app
+- Easy Auth settings are not cloned
+- Kudu Extension are not cloned
+- TiP rules are not cloned
+- Database content are not cloned
+
+
+### <a name="references"></a>References ###
+- [Web App Cloning using PowerShell](app-service-web-app-cloning.md)
+- [Back up a web app in Azure App Service](web-sites-backup.md)
+- [How to Create an App Service Environment](app-service-web-how-to-create-an-app-service-environment.md)
+- [Create a web app in an App Service Environment](app-service-web-how-to-create-a-web-app-in-an-ase.md)
+- [Introduction to App Service Environment](app-service-app-service-environment-intro.md)
 
 <!--Image references-->
 [1]: ./media/app-service-web-app-cloning-portal/CloningBlade.png
 [2]: ./media/app-service-web-app-cloning-portal/CloneSettings.png
 
-<!---HONumber=AcomDC_0601_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

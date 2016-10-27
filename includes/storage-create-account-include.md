@@ -1,10 +1,12 @@
-## Azure のストレージ アカウントの作成
+## <a name="create-an-azure-storage-account"></a>Create an Azure storage account
 
-最初の Azure ストレージ アカウントを作成する最も簡単な方法は、[Azure ポータル](https://portal.azure.com)を利用することです。詳細については、「[ストレージ アカウントの作成](../articles/storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+The easiest way to create your first Azure storage account is by using the [Azure Portal](https://portal.azure.com). To learn more, see [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account).
 
-Azure ストレージ アカウントは [Azure PowerShell](../articles/storage/storage-powershell-guide-full.md)、[Azure CLI](../articles/storage/storage-azure-cli.md)、[.NET 用のストレージ リソース プロバイダー クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt131037.aspx)を使用して作成することもできます。
+You can also create an Azure storage account by using [Azure PowerShell](../articles/storage/storage-powershell-guide-full.md), [Azure CLI](../articles/storage/storage-azure-cli.md), or the [Storage Resource Provider Client Library for .NET](https://msdn.microsoft.com/library/azure/mt131037.aspx).
 
-現時点でストレージ アカウントを作成しない場合は、Azure ストレージ エミュレーターを使用して、ローカル環境でコードの実行とテストを行うこともできます。詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](../articles/storage/storage-use-emulator.md)」を参照してください。
+If you prefer not to create a storage account at this time, you can also use the Azure storage emulator to run and test your code in a local environment. For more information, see [Use the Azure Storage Emulator for Development and Testing](../articles/storage/storage-use-emulator.md).
  
 
-<!---HONumber=AcomDC_0406_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

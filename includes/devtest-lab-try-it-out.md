@@ -1,8 +1,10 @@
-## Azure DevTest Labs を使用する
-Azure を利用するのが初めてであれば、 [無料の Azure アカウントを作成](https://azure.microsoft.com/free)してください。
+## <a name="get-started-with-azure-devtest-labs"></a>Get started with Azure DevTest Labs
+New to Azure? [Create a free Azure account](https://azure.microsoft.com/free)
 
-既に Azure をご利用中であれば、 次のボタンをクリックして、DevTest Labs でラボを作成してみてください。
+Already on Azure? Click the following button to create a lab in DevTest Labs!
 
 [![Get started with Azure DevTest Labs in minutes](./media/devtest-lab-try-it-out/get-started.png)](http://go.microsoft.com/fwlink/?LinkID=627034&clcid=0x409)
 
-<!---HONumber=AcomDC_0831_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

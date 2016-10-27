@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure ポータルを使用した仮想ネットワークの作成 | Microsoft Azure"
-   description="ARM で Azure ポータルを使用して仮想ネットワークを作成する方法を説明 | リソース マネージャー"
+   pageTitle="Create a virtual network using the Azure portal | Microsoft Azure"
+   description="Learn how to create a virtual network using the Azure portal in ARM | Resource Manager."
    services="virtual-network"
    documentationCenter=""
    authors="jimdial"
@@ -17,17 +17,21 @@
    ms.date="03/15/2016"
    ms.author="jdial"/>
 
-# Azure ポータルを使用した仮想ネットワークの作成
+
+# <a name="create-a-virtual-network-using-the-azure-portal"></a>Create a virtual network using the Azure portal
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-selectors-arm-include](../../includes/virtual-networks-create-vnet-selectors-arm-include.md)]
 
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] このドキュメントでは、リソース マネージャーのデプロイ モデルを使用して VNet を作成する方法を説明します。[Azure プレビュー ポータルを使用して、クラシック デプロイメント モデルで仮想ネットワークを作成](virtual-networks-create-vnet-classic-pportal.md)することもできます。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)] This document covers creating a VNet by using the Resource Manager deployment model. You can also [create a virtual network in the classic deployment model by using the Azure preview portal](virtual-networks-create-vnet-classic-pportal.md).
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
 [AZURE.INCLUDE [virtual-networks-create-vnet-arm-pportal-include](../../includes/virtual-networks-create-vnet-arm-pportal-include.md)]
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

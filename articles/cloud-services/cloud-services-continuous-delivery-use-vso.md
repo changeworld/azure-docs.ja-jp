@@ -1,274 +1,274 @@
 <properties
-	pageTitle="Visual Studio Team Services を使用した Azure での継続的な配信 | Microsoft Azure"
-	description="Visual Studio Team Services チーム プロジェクトを自動的にビルドして Azure App Service の Web アプリ機能またはクラウド サービスにデプロイするための構成方法について説明します。"
-	services="cloud-services"
-	documentationCenter=".net"
-	authors="mlearned"
-	manager="douge"
-	editor=""/>
+    pageTitle="Continuous delivery with Visual Studio Team Services in Azure | Microsoft Azure"
+    description="Learn how to configure your Visual Studio Team Services team projects to automatically build and deploy to the Web App feature in Azure App Service or cloud services."
+    services="cloud-services"
+    documentationCenter=".net"
+    authors="mlearned"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="cloud-services"
-	ms.workload="tbd"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="07/06/2016"
-	ms.author="mlearned"/>
+    ms.service="cloud-services"
+    ms.workload="tbd"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="07/06/2016"
+    ms.author="mlearned"/>
 
-# Visual Studio Team Services を使用した Azure への継続的な配信
 
-Visual Studio Team Services チーム プロジェクトを自動的にビルドして Azure Web アプリまたはクラウド サービスにデプロイするように構成できます。*オンプレミスの* Team Foundation Server を使用した継続的なビルドおよびデプロイ システムのセットアップ方法については、「[Continuous Delivery for Cloud Applications in Azure (Azure での Cloud Services の継続的な配信)](cloud-services-dotnet-continuous-delivery.md)」を参照してください。
+# <a name="continuous-delivery-to-azure-using-visual-studio-team-services"></a>Continuous delivery to Azure using Visual Studio Team Services
 
-このチュートリアルは、Visual Studio 2013 と Azure SDK がインストール済みであることを前提としています。Visual Studio 2013 がない場合は、**www.visualstudio.com** で[無料利用の開始](http://www.visualstudio.com)リンクをクリックしてダウンロードします。Azure SDK を[ここ](http://go.microsoft.com/fwlink/?LinkId=239540)からインストールしてください。
+You can configure your Visual Studio Team Services team projects to automatically build and deploy to Azure web apps or cloud services.  (For information on how to set up a continuous build and deploy system using an *on-premises* Team Foundation Server, see [Continuous Delivery for Cloud Services in Azure](cloud-services-dotnet-continuous-delivery.md).)
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Visual Studio Team Services アカウントが必要です。[Visual Studio Team Services アカウントは無料で開く](http://go.microsoft.com/fwlink/p/?LinkId=512979)ことができます。
+This tutorial assumes you have Visual Studio 2013 and the Azure SDK installed. If you don't already have Visual Studio 2013, download it by choosing the **Get started for free** link at [www.visualstudio.com](http://www.visualstudio.com). Install the Azure SDK from [here](http://go.microsoft.com/fwlink/?LinkId=239540).
 
-Visual Studio Team Services を使用してクラウド サービスを自動的にビルドして Azure にデプロイするようにセットアップするには、次の手順に従います。
+> [AZURE.NOTE] You need an Visual Studio Team Services account to complete this tutorial: You can [open a Visual Studio Team Services account for free](http://go.microsoft.com/fwlink/p/?LinkId=512979).
 
-## 1: チーム プロジェクトを作成する
+To set up a cloud service to automatically build and deploy to Azure by using Visual Studio Team Services, follow these steps.
 
-[この](http://go.microsoft.com/fwlink/?LinkId=512980)手順に従って、チーム プロジェクトを作成し、Visual Studio にリンクさせます。このチュートリアルでは、ソース管理ソリューションとして Team Foundation バージョン管理 (TFVC) を使用していることを前提としています。バージョン管理に Git を使用する場合は、「[このチュートリアルの Git バージョン](http://go.microsoft.com/fwlink/p/?LinkId=397358)」を参照してください。
+## <a name="1:-create-a-team-project"></a>1: Create a team project
 
-## 2: プロジェクトをソース管理にチェックインする
+Follow the instructions [here](http://go.microsoft.com/fwlink/?LinkId=512980) to create your team project and link it to Visual Studio. This walkthrough assumes you are using Team Foundation Version Control (TFVC) as your source control solution. If you want to use Git for version control, see [the Git version of this walkthrough](http://go.microsoft.com/fwlink/p/?LinkId=397358).
 
-1. Visual Studio で、デプロイするソリューションを開くか、新しいソリューションを作成します。
-このチュートリアルの手順に従って、Web アプリまたはクラウド サービス (Azure アプリケーション) をデプロイできます。
-新しいソリューションを作成する場合は、新しい Azure クラウド サービス プロジェクト、または新しい ASP.NET MVC プロジェクトを作成します。
-プロジェクトが .NET Framework 4 または 4.5 をターゲットにしていることを確認し、クラウド サービス プロジェクトを作成している場合は、ASP.NET MVC の Web ロールおよび worker ロールのプロジェクトを追加して、Web ロールに対応するインターネット アプリケーションを選択します。確認メッセージが表示されたら、**[インターネット アプリケーション]** を選択します。
-Web アプリを作成する場合は、ASP.NET Web アプリケーション プロジェクトのテンプレートを選択し、次に MVC を選択します。「[Azure アプリ サービスでの ASP.NET Web アプリの作成](../app-service-web/web-sites-dotnet-get-started.md)」を参照してください。
+## <a name="2:-check-in-a-project-to-source-control"></a>2: Check in a project to source control
 
-	> [AZURE.NOTE] Visual Studio Team Services では、現在、Visual Studio Web アプリケーションの CI デプロイメントのみをサポートしています。Web サイト プロジェクトはサポート対象外です。
+1. In Visual Studio, open the solution you want to deploy, or create a new one.
+You can deploy a web app or a cloud service (Azure Application) by following the steps in this walkthrough.
+If you want to create a new solution, create a new Azure Cloud Service project, or a new ASP.NET MVC project. Make sure that the project targets .NET Framework 4 or 4.5, and if you are creating a cloud service project, add an ASP.NET MVC web role and a worker role, and choose Internet application for the web role. When prompted, choose **Internet Application**.
+If you want to create a web app, choose the ASP.NET Web Application project template, and then choose MVC. See [Create an ASP.NET web app in Azure App Service](../app-service-web/web-sites-dotnet-get-started.md).
 
-1. ソリューションのコンテキスト メニューを開き、**[ソリューションをソース管理に追加]** を選択します。
+    > [AZURE.NOTE] Visual Studio Team Services only support CI deployments of Visual Studio Web Applications at this time. Web Site projects are out of scope.
 
-	![][5]
+1. Open the context menu for the solution, and choose **Add Solution to Source Control**.
 
-1. 既定値を受け入れるか変更し、**[OK]** を選択します。処理が完了すると、ソース管理アイコンが**ソリューション エクスプローラー**に表示されます。
+    ![][5]
 
-	![][6]
+1. Accept or change the defaults and choose the **OK** button. Once the process completes, source control icons appear in **Solution Explorer**.
 
-1. ソリューションのショートカット メニューを開き、**[チェックイン]** を選択します。
+    ![][6]
 
-	![][7]
+1. Open the shortcut menu for the solution, and choose **Check In**.
 
-1. **チーム エクスプローラー**の **[保留中の変更]** にチェックインのコメントを入力し、**[チェックイン]** を選択します。
+    ![][7]
 
-	![][8]
+1. In the **Pending Changes** area of **Team Explorer**, type a comment for the check-in and choose the **Check In** button.
 
-	チェックインをするときは、特定の変更を含むまたは除外するためのオプションに注意してください。必要な変更が除外されている場合は、**[すべて含む]** を選択します。
+    ![][8]
 
-	![][9]
+    Note the options to include or exclude specific changes when you check in. If desired changes are excluded, choose the **Include All** link.
 
-## 3: プロジェクトを Azure に接続する
+    ![][9]
 
-1. ソース コードが含まれる VS Team Services チーム プロジェクトが完成したので、チーム プロジェクトを Azure に接続することができます。[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で、クラウド サービスまたは Web アプリを選択するか、新たに作成します。作成するには、左下にある **[+]** アイコンを選択し、**[クラウド サービス]** または **[Web アプリ]** を選択して、**[簡易作成]** を選択します。**[Visual Studio Team Services を使用した発行の設定]** を選択します。
+## <a name="3:-connect-the-project-to-azure"></a>3: Connect the project to Azure
 
-	![][10]
+1. Now that you have a VS Team Services team project with some source code in it, you are ready to connect your team project to Azure.  In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), select your cloud service or web app, or create a new one by choosing the **+** icon at the bottom left and choosing **Cloud Service** or **Web App** and then **Quick Create**. Choose the **Set up publishing with Visual Studio Team Services** link.
 
-1. ウィザードで、テキスト ボックスに Visual Studio Team Services アカウントの名前を入力し、**[今すぐ承認]** をクリックします。サインインを求められることがあります。
+    ![][10]
 
-	![][11]
+1. In the wizard, type the name of your Visual Studio Team Services account in the textbox and click the **Authorize Now** link. You might be asked to sign in.
 
-1. **[接続要求]** ポップアップ ダイアログで **[承諾]** を選択して、Azure が VS Team Services でチーム プロジェクトを構成することを許可します。
+    ![][11]
 
-	![][12]
+1. In the **Connection Request** pop-up dialog, choose the **Accept** button to authorize Azure to configure your team project in VS Team Services.
 
-1. 承認が成功すると、VSTS チーム プロジェクトのリストが含まれるドロップダウンが表示されます。前の手順で作成したチーム プロジェクトの名前を選択し、ウィザードのチェックマーク ボタンを選択します。
+    ![][12]
 
-	![][13]
+1. When authorization succeeds, you see a dropdown containing a list of your Visual Studio Team Services team projects. Choose  the name of team project that you created in the previous steps, and then choose the wizard's checkmark button.
 
-1. プロジェクトがリンクされると、変更を VSTS チーム プロジェクトにチェックインするための手順が表示されます。次のチェックイン時に、VSTS はプロジェクトをビルドして Azure にデプロイします。これを試すには、**[Visual Studio 2012 からチェックインする]** をクリックし、**[Visual Studio 2012 を起動]** をクリックします (またはこれと同等の、ポータル画面下部にある **[Visual Studio]** をクリックします)。
+    ![][13]
 
-	![][14]
+1. After your project is linked, you will see some instructions for checking in changes to your Visual Studio Team Services team project.  On your next check-in, Visual Studio Team Services will build and deploy your project to Azure.  Try this now by clicking the **Check In from Visual Studio** link, and then the **Launch Visual Studio** link (or the equivalent **Visual Studio** button at the bottom of the portal screen).
 
-## 4: リビルドをトリガーし、プロジェクトを再デプロイする
+    ![][14]
 
-1. Visual Studio の**チーム エクスプローラー**で、**[ソース管理エクスプローラー]** を選択します。
+## <a name="4:-trigger-a-rebuild-and-redeploy-your-project"></a>4: Trigger a rebuild and redeploy your project
 
-	![][15]
+1. In Visual Studio's **Team Explorer**, choose the **Source Control Explorer** link.
 
-1. ソリューション ファイルの保存場所に移動し、ファイルを開きます。
+    ![][15]
 
-	![][16]
+1. Navigate to your solution file and open it.
 
-1. **ソリューション エクスプローラー**で、ファイルを開いて変更します。たとえば、MVC Web ロールの Views\\Shared フォルダーにある `_Layout.cshtml` ファイルを変更します。
+    ![][16]
 
-	![][17]
+1. In **Solution Explorer**, open up a file and change it. For example, change the file `_Layout.cshtml` under the Views\\Shared folder in an MVC web role.
 
-1. サイトのロゴを編集し、**Ctrl + S** キーを押してファイルを保存します。
+    ![][17]
 
-	![][18]
+1. Edit the logo for the site and choose **Ctrl+S** to save the file.
 
-1. **チーム エクスプローラー**で、**[保留中の変更]** を選択します。
+    ![][18]
 
-	![][19]
+1. In **Team Explorer**, choose the **Pending Changes** link.
 
-1. コメントを入力し、**[チェックイン]** を選択します。
+    ![][19]
 
-	![][20]
+1. Enter a comment and then choose the **Check In** button.
 
-1. **[ホーム]** を選択して、**チーム エクスプローラー**のホーム ページに戻ります。
+    ![][20]
 
-	![][21]
+1. Choose the **Home** button to return to the **Team Explorer** home page.
 
-1. **[ビルド]** を選択して、処理中のビルドを表示します。
+    ![][21]
 
-	![][22]
+1. Choose the **Builds** link to view the builds in progress.
 
-	**チーム エクスプローラー**に、チェックインのためにビルドが開始されたことが示されます。
+    ![][22]
 
-	![][23]
+    **Team Explorer** shows that a build has been triggered for your check-in.
 
-1. 処理中のビルドの名前をダブルクリックして、ビルドの進行に合わせて詳細ログを表示します。
+    ![][23]
 
-	![][24]
+1. Double-click the name of the build in progress to view a detailed log as the build progresses.
 
-1. ビルドの処理中、ウィザードを使用して TFS を Azure にリンクしたときに作成されたビルド定義を調べてください。ビルド定義のショートカット メニューを開き、**[ビルド定義の編集]** を選択します。
+    ![][24]
 
-	![][25]
+1. While the build is in-progress, take a look at the build definition that was created when you linked TFS to Azure by using the wizard.  Open the shortcut menu for the build definition and choose **Edit Build Definition**.
 
-	**[トリガー]** タブを見ると、既定ではチェックインごとにビルドを行うようにビルド定義が設定されていることがわかります。
+    ![][25]
 
-	![][26]
+    In the **Trigger** tab, you will see that the build definition is set to build on every check-in by default.
 
-	**[プロセス]** タブを見ると、デプロイメント環境がクラウド サービスまたは Web アプリの名前に設定されていることがわかります。Web アプリを操作している場合は、ここで示されているものとは異なるプロパティが表示されます。
+    ![][26]
 
-	![][27]
+    In the **Process** tab, you can see the deployment environment is set to the name of your cloud service or web app. If you are working with web apps, the properties you see will be different from those shown here.
 
-1. 既定値と異なる値を使用する場合は、プロパティに対して希望の値を指定します。Azure 発行のプロパティは **[デプロイメント]** セクションにあります。
+    ![][27]
 
-	次の表は、**[デプロイメント]** セクションで使用可能なプロパティを示しています。
+1. Specify values for the properties if you want different values than the defaults. The properties for Azure publishing are in the **Deployment** section.
 
-	|プロパティ|既定値|
-	|---|---|
-	|信頼されていない証明書を許可|false の場合、SSL 証明書はルート証明機関によって署名される必要があります。|
-	|アップグレードの許可|新規作成の代わりに、既存のデプロイメントを更新するデプロイメントを許可します。IP アドレスを保持します。|
-	|削除しない|true の場合、既存の関連のないデプロイメントを上書きしません (アップグレードは許可)。|
-	|デプロイメント設定へのパス|リポジトリのルート フォルダーを基準とした Web アプリの .pubxml ファイルへのパス。クラウド サービスでは無視されます。|
-	|Sharepoint デプロイメント環境|サービス名と同じ。|
-	|Azure デプロイメント環境|Web アプリ名またはクラウド サービス名。|
+    The following table shows the available properties in the **Deployment** section:
 
-1. 複数のサービス構成 (.cscfg ファイル) を使用している場合は、**[Build、Advanced、MSBuild 引数]** 設定で目的のサービス構成を指定できます。たとえば、ServiceConfiguration.Test.cscfg を使用するには、MSBuild 引数ライン オプション `/p:TargetProfile=Test` を設定します。
+  	|Property|Default Value|
+  	|---|---|
+  	|Allow Untrusted Certificates|If false, SSL certificates must be signed by a root authority.|
+  	|Allow Upgrade|Allows the deployment to update an existing deployment instead of creating a new one. Preserves the IP address.|
+  	|Do Not Delete|If true, do not overwrite an existing unrelated deployment (upgrade is allowed).|
+  	|Path to Deployment Settings|The path to your .pubxml file for a web app, relative to the root folder of the repo. Ignored for cloud services.|
+  	|Sharepoint Deployment Environment|The same as the service name.|
+  	|Azure Deployment Environment|The web app or cloud service name.|
 
-	![][38]
+1. If you are using multiple service configurations (.cscfg files), you can specify the desired service configuration in the **Build, Advanced, MSBuild arguments** setting. For example, to use ServiceConfiguration.Test.cscfg, set MSBuild arguments line option `/p:TargetProfile=Test`.
 
-	このころまでには、ビルドが正常に完了しています。
+    ![][38]
 
-	![][28]
+    By this time, your build should be completed successfully.
 
-1. ビルド名をダブルクリックすると、関連付けられた単体テスト プロジェクトのテスト結果を含む **[ビルドの概要]** が表示されます。
+    ![][28]
 
-	![][29]
+1. If you double-click the build name, Visual Studio shows a **Build Summary**, including any test results from associated unit test projects.
 
-1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)では、ステージング環境が選択されると、関連付けられたデプロイが **[デプロイ]** タブに表示されます。
+    ![][29]
 
-	![][30]
+1. In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), you can view the associated deployment on the **Deployments** tab when the staging environment is selected.
 
-1.	目的のサイトの URL に移動します。Web アプリの場合は、コマンド バーの **[参照]** ボタンをクリックします。クラウド サービスのステージング環境を示す **[ダッシュボード]** ページの **[概要]** セクションで URL を選択します。クラウド サービス向けの継続的な統合からのデプロイメントは、既定ではステージング環境に発行されます。**[代替クラウド サービス環境]** プロパティを **[運用]** に設定することで、これを変更できます。このスクリーンショットでは、クラウド サービスのダッシュボード ページでサイト URL が表示される場所を示しています。
+    ![][30]
 
-	![][31]
+1.  Browse to your site's URL. For a web app, just click the **Browse** button on the command bar. For a cloud service, choose the URL in the **Quick Glance** section of the **Dashboard** page that shows the Staging environment for a cloud service. Deployments from continuous integration for cloud services are published to the Staging environment by default. You can change this by setting the **Alternate Cloud Service Environment** property to **Production**. This screenshot shows where the site URL is on the cloud service's dashboard page.
 
-	新しいブラウザー タブが開いて、実行中のサイトが表示されます。
+    ![][31]
 
-	![][32]
+    A new browser tab will open to reveal your running site.
 
-	クラウド サービスの場合は、プロジェクトにその他の変更を加えると、さらにビルドが実行され、複数のデプロイメントが累積されます。最新のデプロイは [アクティブ] とマークされます。
+    ![][32]
 
-	![][33]
+    For cloud services, if you make other changes to your project, you trigger more builds, and you will accumulate multiple deployments. The latest one marked as Active.
 
-## 5: 以前のビルドを再デプロイする
+    ![][33]
 
-この手順の内容は、クラウド サービスのみに適用され、省略可能です。Azure クラシック ポータルで以前のデプロイメントを選択し、**[再デプロイ]** をクリックしてサイトを以前のチェックインに戻します。これによって、TFS で新しいビルドが開始され、デプロイメント履歴に新しいエントリが作成されます。
+## <a name="5:-redeploy-an-earlier-build"></a>5: Redeploy an earlier build
+
+This step applies to cloud services and is optional. In the Azure classic portal, choose an earlier deployment and then choose the **Redeploy** button to rewind your site to an earlier check-in.  Note that this will trigger a new build in TFS and create a new entry in your deployment history.
 
 ![][34]
 
-## 6: 運用デプロイを変更する
+## <a name="6:-change-the-production-deployment"></a>6: Change the Production deployment
 
-この手順の内容は、クラウド サービスのみに適用され、Web アプリには適用されません。準備が整ったら、Azure クラシック ポータルで **[スワップ]** を選択してステージング環境を運用環境へ昇格できます。新たにデプロイされたステージング環境は運用に昇格され、以前の運用環境がある場合、運用環境はステージング環境になります。運用環境とステージング環境でアクティブなデプロイメントは異なることはありますが、最近のビルドのデプロイメント履歴は環境にかかわらず同じです。
+This step applies only to cloud services, not web apps. When you are ready, you can promote the Staging environment to the production environment by choosing the **Swap** button in the Azure classic portal. The newly deployed Staging environment is promoted to Production, and the previous Production environment, if any, becomes a Staging environment. The Active deployment may be different for the Production and Staging environments, but the deployment history of recent builds is the same regardless of environment.
 
 ![][35]
 
-## 7: 単体テストを実行する
+## <a name="7:-run-unit-tests"></a>7: Run unit tests
 
-この手順の内容は、Web アプリのみに適用され、クラウド サービスには適用されません。デプロイメントにクオリティ ゲートを配置するには、単体テストを実行できます。失敗した場合は、デプロイメントを停止できます。
+This step applies only to web apps, not cloud services. To put a quality gate on your deployment, you can run unit tests and if they fail, you can stop the deployment.
 
-1.  Visual Studio で、単体テスト プロジェクトを追加します。
+1.  In Visual Studio, add a unit test project.
 
-	![][39]
+    ![][39]
 
-1.  テストするプロジェクトにプロジェクト参照を追加します。
+1.  Add project references to the project you want to test.
 
-	![][40]
+    ![][40]
 
-1.  複数の単体テストを追加します。開始するには、常に合格するダミーのテストを試してみてください。
+1.  Add some unit tests. To get started, try a dummy test that will always pass.
 
-		```
-		using System;
-		using Microsoft.VisualStudio.TestTools.UnitTesting;
+        ```
+        using System;
+        using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-		namespace UnitTestProject1
-		{
-		    [TestClass]
-		    public class UnitTest1
-		    {
-		        [TestMethod]
-		        [ExpectedException(typeof(NotImplementedException))]
-		        public void TestMethod1()
-		        {
-		            throw new NotImplementedException();
-		        }
-		    }
-		}
-		```
+        namespace UnitTestProject1
+        {
+            [TestClass]
+            public class UnitTest1
+            {
+                [TestMethod]
+                [ExpectedException(typeof(NotImplementedException))]
+                public void TestMethod1()
+                {
+                    throw new NotImplementedException();
+                }
+            }
+        }
+        ```
 
-1.  ビルド定義を編集し、**[プロセス]** タブを選択して、**[テスト]**·ノードを展開します。
+1.  Edit the build definition, choose the **Process** tab, and expand the **Test** node.
 
-1.  **[テスト失敗時にビルドを失敗させる]** を True に設定します。これは、テストに合格しない限り、デプロイメントが行われないことを意味します。
+1.  Set the **Fail build on test failure** to True. This means that the deployment won't occur unless the tests pass.
 
-	![][41]
+    ![][41]
 
-1.  新しいビルドがキューに追加されます。
+1.  Queue a new build.
 
-	![][42]
+    ![][42]
 
-	![][43]
+    ![][43]
 
-1. ビルドの進行中は、進行状況を確認します。
+1. While the build is proceeding, check on its progress.
 
-	![][44]
+    ![][44]
 
-	![][45]
+    ![][45]
 
-1. ビルドが完了したら、テスト結果を確認します。
+1. When the build is done, check the test results.
 
-	![][46]
+    ![][46]
 
-	![][47]
+    ![][47]
 
-1.  失敗するテストを作成してみます。最初のテストをコピーして新しいテストを追加し、その名前を変更して、NotImplementedException が予期される例外であるコード行をコメントアウトします。
+1.  Try creating a test that will fail. Add a new test by copying the first one, rename it, and comment out the line of code that states NotImplementedException is an expected exception.
 
-		```
-		[TestMethod]
-		//[ExpectedException(typeof(NotImplementedException))]
-		public void TestMethod2()
-		{
-		    throw new NotImplementedException();
-		}
-		```
+        ```
+        [TestMethod]
+        //[ExpectedException(typeof(NotImplementedException))]
+        public void TestMethod2()
+        {
+            throw new NotImplementedException();
+        }
+        ```
 
-1. 変更をチェックインし、新しいビルドをキューに追加します。
+1. Check in the change to queue a new build.
 
-	![][48]
+    ![][48]
 
-1. テスト結果を表示して失敗の詳細を確認します。
+1. View the test results to see details about the failure.
 
-	![][49]
+    ![][49]
 
-	![][50]
+    ![][50]
 
-## 次のステップ
-VSTS での単位テストの詳細については、[「ビルド プロセスでのテストの実行」](http://go.microsoft.com/fwlink/p/?LinkId=510474) を参照してください。Git を使用している場合は、「[Git でコードを共有する](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx)」および「[Azure App Service への継続的なデプロイ](../app-service-web/app-service-continuous-deployment.md)」を参照してください。Visual Studio Team Services の詳細については、[Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861) に関するページをご覧ください。
+## <a name="next-steps"></a>Next steps
+For more about unit testing in Visual Studio Team Services, see [Run unit tests in your build](http://go.microsoft.com/fwlink/p/?LinkId=510474). If you're using Git, see [Share your code in Git](http://www.visualstudio.com/get-started/share-your-code-in-git-vs.aspx) and [Continuous deployment to Azure App Service](../app-service-web/app-service-continuous-deployment.md).  For more information about Visual Studio Team Services, see [Visual Studio Team Services](http://go.microsoft.com/fwlink/?LinkId=253861).
 
 [0]: ./media/cloud-services-continuous-delivery-use-vso/tfs0.PNG
 [1]: ./media/cloud-services-continuous-delivery-use-vso/tfs1.png
@@ -321,4 +321,8 @@ VSTS での単位テストの詳細については、[「ビルド プロセス�
 [49]: ./media/cloud-services-continuous-delivery-use-vso/TestsFailed.PNG
 [50]: ./media/cloud-services-continuous-delivery-use-vso/TestsResultsFailed.PNG
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

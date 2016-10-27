@@ -1,6 +1,6 @@
 <properties
-   pageTitle="StorSimple Virtual Array をデプロイする 3 - ファイル サーバーとしてセットアップする"
-   description="StorSimple Virtual Array のデプロイの 3 番目のチュートリアルでは、ファイル サーバーとして仮想デバイスを設定する方法について説明します。"
+   pageTitle="Deploy StorSimple Virtual Array 3 - Set up the virtual device as file server"
+   description="This third tutorial in StorSimple Virtual Array deployment instructs you to set up a virtual device as file server."
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,220 +16,225 @@
    ms.date="05/26/2016"
    ms.author="alkohli"/>
 
-# StorSimple Virtual Array のデプロイ - ファイル サーバーとしてセットアップする
+
+# <a name="deploy-storsimple-virtual-array---set-up-as-file-server"></a>Deploy StorSimple Virtual Array - Set up as file server
 
 ![](./media/storsimple-ova-deploy3-fs-setup/fileserver4.png)
 
-## はじめに 
+## <a name="introduction"></a>Introduction 
 
-この記事は、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。この記事では、初期セットアップ、StorSimple ファイル サーバーの登録、デバイス セットアップ、および SMB 共有の作成と接続の方法について説明します。仮想アレイをファイル サーバーまたは iSCSI サーバーとして完全にデプロイするために必要なデプロイ チュートリアル シリーズの最後の記事です。
+This article applies to Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device or StorSimple virtual device) running March 2016 general availability (GA) release. This article describes how to perform initial setup, register your StorSimple file server, complete the device setup, and create and connect to SMB shares. This is the last article in the series of deployment tutorials required to completely deploy your virtual array as a file server or an iSCSI server.
 
-セットアップと構成のプロセスは、完了するまでに約 10 分かかることがあります。
-
-
-## セットアップの前提条件
-
-StorSimple 仮想デバイスを構成およびセットアップする前に、以下のことを確認します。
-
--   「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[VMware で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の説明に従って仮想デバイスをプロビジョニングし、接続していること。
-
--   StorSimple 仮想デバイスを管理するために作成した、StorSimple Manager サービスからのサービス登録キーがあること。詳細については、StorSimple Virtual Array の「[手順 2. サービス登録キーを取得する](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」をご覧ください。
-
--   既存の StorSimple Manager サービスに登録する 2 番目または後続の仮想デバイスである場合は、サービス データ暗号化キーがあるはずです。このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。このキーを紛失した場合は、StorSimple Virtual Array の「[サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)」をご覧ください。
-
-## セットアップの手順
-
-StorSimple 仮想デバイスをセットアップして構成するには、次の詳細な手順を実行します。
-
-## 手順 1: ローカル Web UI のセットアップを完了し、デバイスを登録する 
+The setup and configuration process can take around 10 minutes to complete.
 
 
-#### セットアップを完了し、デバイスを登録するには
+## <a name="setup-prerequisites"></a>Setup prerequisites
 
-1.  ブラウザー ウィンドウを開き、以下を入力してローカル Web UI に接続します。	
+Before you configure and set up your StorSimple virtual device, make sure that:
+
+-   You have provisioned a virtual device and connected to it as detailed in the [Provision a StorSimple Virtual Array in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) or [Provision a StorSimple Virtual Array in VMware](storsimple-ova-deploy2-provision-vmware.md).
+
+-   You have the service registration key from the StorSimple Manager service that you created to manage StorSimple virtual devices. For more information, see [Step 2: Get the service registration key](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key) for StorSimple Virtual Array.
+
+-   If this is the second or subsequent virtual device that you are registering with an existing StorSimple Manager service, you should have the service data encryption key. This key was generated when the first device was successfully registered with this service. If you have lost this key, see [Get the service data encryption key](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) for your StorSimple Virtual Array.
+
+## <a name="step-by-step-setup"></a>Step-by-step setup
+
+Use the following step-by-step instructions to set up and configure your StorSimple virtual device.
+
+## <a name="step-1:-complete-the-local-web-ui-setup-and-register-your-device"></a>Step 1: Complete the local web UI setup and register your device 
+
+
+#### <a name="to-complete-the-setup-and-register-the-device"></a>To complete the setup and register the device
+
+1.  Open a browser window and connect to the local web UI.Type: 
 
     `https://<ip-address of network interface>`
 
-	前の手順に記載されている接続 URL を使用します。Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。**[この Web ページの閲覧を続ける]** をクリックして、この Web ページに進みます。
+    Use the connection URL noted in the previous step. You will see an error indicating that there is a problem with the website’s security certificate. Click **Continue to this webpage**.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image2.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image2.png)
 
-1.  仮想デバイスの Web UI に **StorSimpleAdmin** としてサインインします。「[Hyper-V で StorSimple Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[VMware で Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の「手順 3: 仮想デバイスを起動し、IP アドレスを取得する」で変更したデバイス管理者のパスワードを入力します。
+1.  Sign in to the web UI of your virtual device as **StorSimpleAdmin**. Enter the device administrator password that you changed in Step 3: Start the virtual device in [Provision a StorSimple Virtual Array in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) or in [Provision a StorSimple Virtual Array in VMware](storsimple-ova-deploy2-provision-vmware.md).
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image3.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image3.png)
 
-1.  **[ホーム]** ページが表示されます。このページは、仮想デバイスを StorSimple Manager サービスに構成、登録するのに必要なさまざまな設定を掲載しています。**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**は省略可能であることに注意してください。必須の設定は、**デバイスの設定**と**クラウドの設定**のみです。
+1.  You will be taken to the **Home** page. This page describes the various settings required to configure and register the virtual device with the StorSimple Manager service. Note that the **Network settings**, **Web proxy settings**, and **Time settings** are optional. The only required settings are **Device settings** and **Cloud settings**.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image4.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image4.png)
 
-1.  **[ネットワークの設定]** ページの **[ネットワーク インターフェイス]** で、DATA 0 が自動的に構成されます。各ネットワーク インターフェイスは、既定で IP アドレスを自動的に取得するように設定されます (DHCP)。そのため、IP アドレス、サブネット、およびゲートウェイは自動的に割り当てられます (IPv4 と IPv6 の両方に対して)。
+1.  In the **Network settings** page under **Network interfaces**, DATA 0 will be automatically configured for you. Each network interface is set by default to get IP address automatically (DHCP). Hence, an IP address, subnet, and gateway will be automatically assigned (for both IPv4 and IPv6).
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image5.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image5.png)
 
-	デバイスのプロビジョニング中に複数のネットワーク インターフェイスを追加した場合は、それらをここで構成できます。ネットワーク インターフェイスは IPv4 だけで構成するか、IPv4 と IPv6 の両方で構成することができます。IPv6 だけで構成することはできません。
+    If you added more than one network interface during the provisioning of the device, you can configure them here. Note you can configure your network interface as IPv4 only or as both IPv4 and IPv6. IPv6 only configurations are not supported.
 
-1.  DNS サーバーは必須です。これは、デバイスがクラウド ストレージのサービス プロバイダーとやり取りしたり、デバイスがファイル サーバーとして構成されている場合にデバイスを名前により解決したりする際に使用されます。**[ネットワークの設定]** ページの **[DNS サーバー]** で、次の操作を行います。
+1.  DNS servers are required because they are used when your device attempts to communicate with your cloud storage service providers or to resolve your device by name when configured as a file server. In the **Network settings** page under the **DNS servers**:
 
-    1.  プライマリおよびセカンダリ DNS サーバーが自動的に構成されます。静的 IP アドレスを構成することを選択した場合は、DNS サーバーを指定できます。高可用性を確保するため、プライマリとセカンダリ DNS サーバーを構成することをお勧めします。
+    1.  A primary and secondary DNS server will be automatically configured. If you choose to configure static IP addresses, you can specify DNS servers. For high availability, we recommend that you configure a primary and a secondary DNS server.
 
-    2.  **[Apply]** をクリックします。これにより、ネットワークの設定が適用、検証されます。
+    2.  Click **Apply**. This will apply and validate the network settings.
 
-2.  **[デバイスの設定]** ページで次の操作を行います。
+2.  In the **Device settings** page:
 
-    1.  デバイスに一意の**名前**を割り当てます。この名前は 1 ～ 15 文字を指定でき、文字、数字、ハイフンを含めることができます。
+    1.  Assign a unique **Name** to your device. This name can be 1-15 characters and can contain letter, numbers and hyphens.
 
-    2.  作成するデバイスの**種類**として、**[ファイル サーバー] アイコン** ![](./media/storsimple-ova-deploy3-fs-setup/image6.png) をクリックします。ファイル サーバーにより、共有フォルダーを作成できるようになります。
+    2.  Click the **File server** icon ![](./media/storsimple-ova-deploy3-fs-setup/image6.png) for the **Type** of device that you are creating. A file server will allow you to create shared folders.
 
-    3.  デバイスの種類がファイル サーバーなので、そのデバイスをドメインに参加させる必要があります。**[ドメイン名]** を入力します。
+    3.  As your device is a file server, you will need to join the device to a domain. Enter a **Domain name**.
 
-	1.  **[Apply]** をクリックします。
+    1.  Click **Apply**.
 
-2.  ダイアログ ボックスが表示されます。ドメインの資格情報を指定された形式で入力します。チェック マーク アイコンをクリックします。ドメインの資格情報が検証されます。資格情報が間違っていると、エラー メッセージが表示されます。
+2.  A dialog box will appear. Enter your domain credentials in the specified format. Click the check icon. The domain credentials will be verified. You will see an error message if the credentials are incorrect.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image7.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image7.png)
 
-1.  **[Apply]** をクリックします。これにより、デバイスの設定が適用、検証されます。
+1.  Click **Apply**. This will apply and validate the device settings.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image8.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image8.png)
 
-	> [AZURE.NOTE]
-	> 
-	> 仮想アレイが Active Directory の独自の組織単位 (OU) にあり、グループ ポリシー オブジェクト (GPO) が適用または継承されていないことを確認します。グループ ポリシーにより、StorSimple Virtual Array にウイルス対策ソフトウェアなどのアプリケーションがインストールされる場合があります。追加のソフトウェアのインストールはサポートされていないので、データが破損するおそれがあります。
+    > [AZURE.NOTE]
+    > 
+    > Ensure that your virtual array is in its own organizational unit (OU) for Active Directory and no group policy objects (GPO) are applied to it or inherited. Group policy may install applications such as anti-virus software on the StorSimple Virtual Array. Installing additional software is not supported and could lead to data corruption. 
 
-1.  (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。
+1.  (Optionally) configure your web proxy server. Although web proxy configuration is optional, be aware that if you use a web proxy, you can only configure it here.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image9.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image9.png)
 
-	**[Web プロキシ]** ページで、以下のことを実行します。
+    In the **Web proxy** page:
 
-	1.  **Web プロキシ URL** を次の形式で指定します。*http://&lt;host-IP アドレスまたは FDQN&gt;:ポート番号*。HTTPS URL はサポートされていないことに注意してください。
+    1.  Supply the **Web proxy URL** in this format: *http://&lt;host-IP address or FDQN&gt;:Port number*. Note that HTTPS URLs are not supported.
 
-	2.  **[認証]** に **[基本]** または **[なし]** を指定します。
+    2.  Specify **Authentication** as **Basic** or **None**.
 
-	3.  認証を使用する場合は、**ユーザー名**と**パスワード**も指定する必要があります。
+    3.  If using authentication, you will also need to provide a **Username** and **Password**.
 
-	4.  **[Apply]** をクリックします。これにより、構成済みの Web プロキシ設定が検証され、適用されます。
+    4.  Click **Apply**. This will validate and apply the configured web proxy settings.
 
-1.  (省略可能) デバイスの時刻設定を構成します (タイム ゾーン、プライマリおよびセカンダリ NTP サーバーなど)。デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
+1.  (Optionally) configure the time settings for your device, such as time zone and the primary and secondary NTP servers. NTP servers are required because your device must synchronize time so that it can authenticate with your cloud service providers.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image10.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image10.png)
 
-	**[時刻の設定]** ページで、次の操作を行います。
+    In the **Time settings** page:
 
-	1.  ドロップダウン リストから、デバイスをデプロイする地理的な場所に基づいて**タイム ゾーン**を選択します。デバイスの既定のタイム ゾーンは太平洋標準時です。デバイスは、スケジュールされたすべての操作でこのタイム ゾーンを使用します。
+    1.  From the dropdown list, select the **Time zone** based on the geographic location in which the device is being deployed. The default time zone for your device is PST. Your device will use this time zone for all scheduled operations.
 
-	2.  デバイスの**プライマリ NTP サーバー**を指定するか、time.windows.com の既定値をそのまま使用します。データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
+    2.  Specify a **Primary NTP server** for your device or accept the default value of time.windows.com. Ensure that your network allows NTP traffic to pass from your datacenter to the Internet.
 
-	3.  必要に応じて、デバイスの**セカンダリ NTP サーバー**を指定します。
+    3.  Optionally specify a **Secondary NTP server** for your device.
 
-	4.  **[Apply]** をクリックします。これにより、構成済みの時刻設定が検証され、適用されます。
+    4.  Click **Apply**. This will validate and apply the configured time settings.
 
-1.  デバイスのクラウドの設定を構成します。この手順では、ローカル デバイスの構成を完了してから、StorSimple Manager サービスにデバイスを登録します。
+1.  Configure the cloud settings for your device. In this step, you will complete the local device configuration and then register the device with your StorSimple Manager service.
 
-    1.  StorSimple Virtual Array の「[手順 2. サービス登録キーを取得する](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」で取得した**サービス登録キー**を入力します。
+    1.  Enter the **Service registration key** that you got in [Step 2: Get the service registration key](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key) for StorSimple Virtual Array.
 
-    2.  これがこのサービスに登録する最初のデバイスの場合は、この手順をスキップして、次の手順に進みます。デバイスがこのサービスに登録する最初のデバイスでない場合は、**サービス データ暗号化キー**を指定する必要があります。このキーは、StorSimple Manager サービスに追加のデバイスを登録する際にサービス登録キーと共に必要になります。詳しくは、ローカル Web UI の「[サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)」を参照してください。
+    2.  Skip this step if this is your first device registering with this service and go to the next step. If this is not the first device that you are registering with this service, you will need to provide the **Service data encryption key**. This key is required with the service registration key to register additional devices with the StorSimple Manager service. For more information, refer to get the [service data encryption key](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) on your local web UI.
 
-    3.  **[登録]** をクリックします。これにより、デバイスが再起動します。デバイスが正常に登録されるまでに、2 ～ 3 分間待機する必要がある場合があります。デバイスが再起動したら、サインイン ページが表示されます。
+    3.  Click **Register**. This will restart the device. You may need to wait for 2-3 minutes before the device is successfully registered. After the device has restarted, you will be taken to the sign in page.
 
-		![](./media/storsimple-ova-deploy3-fs-setup/image13.png)
-	
+        ![](./media/storsimple-ova-deploy3-fs-setup/image13.png)
+    
 
-1.  Azure クラシック ポータルに戻ります。**[デバイス]** ページで、状態を参照して、デバイスが正常にサービスに接続されていることを確認します。デバイスの状態は "**アクティブ**" と表示されます。
+1.  Return to the Azure classic portal. On the **Devices** page, verify that the device has successfully connected to the service by looking up the status. The device status should be **Active**.
 
 ![](./media/storsimple-ova-deploy3-fs-setup/image12.png)
 
-## 手順 2: 必要なデバイスのセットアップを完了する
+## <a name="step-2:-complete-the-required-device-setup"></a>Step 2: Complete the required device setup
 
-StorSimple デバイスのデバイス構成を完了するには、次の手順を実行する必要があります。
+To complete the device configuration of your StorSimple device, you need to:
 
--   このデバイスに関連付けるストレージ アカウントを選択します。
+-   Select a storage account to associate with your device.
 
--   クラウドに送信されるデータの暗号化の設定を選択します。
+-   Choose encryption settings for the data that is sent to cloud.
 
-必要なデバイスのセットアップを完了するには、[Azure クラシック ポータル](https://manage.windowsazure.com/)で次の手順を実行します。
+Perform the following steps in the [Azure classic portal](https://manage.windowsazure.com/) to complete the required device setup.
 
-#### デバイスの最小セットアップを完了するには
+#### <a name="to-complete-the-minimum-device-setup"></a>To complete the minimum device setup
 
-1.  **[デバイス]** ページで、先ほど作成したデバイスを選択します。このデバイスは "**アクティブ**" として表示されます。デバイス名を指している矢印をクリックし、**[クイック スタート]** をクリックします。
+1.  From the **Devices** page, select the device you just created. This device would show up as **Active**. Click the arrow against the device name and then click **Quick Start**.
 
-2.  **[デバイスのセットアップの完了]** をクリックして、デバイスの構成ウィザードを起動します。
+2.  Click **complete device setup** to start the Configure device wizard.
 
-3.  デバイスの構成ウィザードの **[基本設定]** ページで、次の手順を実行します。
+3.  In the Configure device wizard on the **Basic Settings** page, do the following:
 
-	1.  このデバイスで使用するストレージ アカウントを指定します。ドロップダウン リストからこのサブスクリプションの既存のストレージ アカウントを選択したり、**[追加]** を指定して、別のサブスクリプションのアカウントを選択したりできます。
+    1.  Specify a storage account to be used with your device. You can select an existing storage account in this subscription from the dropdown list or specify **Add more** to choose an account from a different subscription.
 
-	2.  クラウドに送信される、保存された状態のすべてのデータの暗号化設定 (AES 暗号化) を定義します。データを暗号化するには、**[クラウド ストレージの暗号化の有効化]** チェック ボックスをオンにします。32 文字を含むクラウド ストレージの暗号化キーを入力します。確認のため、キーを再入力します。ユーザー定義のキーの暗号化には 256 ビット AES キーが使用されます。
+    2.  Define the encryption settings for all the data-at-rest (AES encryption) that will be sent to the cloud. To encrypt your data, check the combo box to **enable cloud storage encryption key**. Enter a cloud storage encryption that contains 32 characters. Reenter the key to confirm it. A 256-bit AES key will be used with the user-defined key for encryption.
 
-	3.  チェック マーク アイコン ![](./media/storsimple-ova-deploy3-fs-setup/image15.png) をクリックします。
+    3.  Click the check icon ![](./media/storsimple-ova-deploy3-fs-setup/image15.png).
 
-		![](./media/storsimple-ova-deploy3-fs-setup/image16.png)
+        ![](./media/storsimple-ova-deploy3-fs-setup/image16.png)
 
-これで設定が更新されました。設定が正常に更新されると、デバイスのセットアップの完了ボタンは淡色表示になります。デバイスの **[クイック スタート]** ページが再び表示されます。
+The settings will now be updated. After settings are updated successfully, the complete device setup button will be grayed out. You will return to the device **Quick Start** page.
 
  ![](./media/storsimple-ova-deploy3-fs-setup/image17.png)
 
 
 > [AZURE.NOTE]                                                              
 >
-> **[構成]** ページにアクセスすれば、その他すべてのデバイス設定をいつでも変更できます。
+> You can modify all the other device settings at any time by accessing the **Configure** page.
 
-## 手順 3: 共有を追加する
+## <a name="step-3:-add-a-share"></a>Step 3: Add a share
 
-共有を作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com/)で次の手順を実行します。
+Perform the following steps in the [Azure classic portal](https://manage.windowsazure.com/) to create a share.
 
-#### 共有を作成するには
+#### <a name="to-create-a-share"></a>To create a share
 
-1.  デバイスの **[クイック スタート]** ページで、**[共有の追加]** をクリックします。共有の追加ウィザードが開始されます。
+1.  On the device **Quick Start** page, click **Add a share**. This starts the Add a share wizard.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image17.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image17.png)
 
-1.  **[基本設定]** ページで次の操作を行います。
+1.  On the **Basic Settings** page, do the following:
 
-    1.  共有の一意の名前を指定します。名前は 3 ～ 127 文字を含む文字列である必要があります。
+    1.  Specify a unique name for your share. The name must be a string that contains 3 to 127 characters.
 
-    2.  (省略可能) 共有の説明を入力します。説明は、共有の所有者の特定に役立ちます。
+    2.  (Optional) Provide a description for the share. The description will help identify the share owners.
 
-    3.  共有の使用法の種類を選択します。使用法の種類には、**[階層化]** または **[ローカル固定]** を選択でき、既定では [階層化] に設定されています。ローカルの保証、低待機時間、高パフォーマンスを必要とするワークロードでは、**[ローカル固定]** 共有を選択します。それ以外のデータの場合は、**[階層化]** を選択します。
+    3.  Select a usage type for the share. The usage type can be **Tiered** or **Locally pinned**, with tiered being the default. For workloads that require local guarantees, low latencies, and higher performance, select a **Locally pinned** share. For all other data, select a **Tiered** share.
 
-	ローカル固定の共有はシック プロビジョニングされ、共有上のプライマリ データがデバイスに対してローカルのままになり、クラウドへの書き込みは行われません。一方、階層化共有はシン プロビジョニングされます。階層化共有を作成した場合、領域の 10% はローカル層にプロビジョニングされ、90% はクラウドにプロビジョニングされます。たとえば、1 TB ボリュームをプロビジョニングした場合、データが階層化されるとき、100 GB はローカル領域に格納され、900 GB はクラウドに使用されます。このため、これはデバイスのすべてのローカル領域が不足すると、階層化共有をプロビジョニングできないことを意味します。
+    A locally pinned share is thickly provisioned and ensures that the primary data on the share stays local to the device and does not spill to the cloud. A tiered share on the other hand is thinly provisioned. When you create a tiered share, 10% of the space is provisioned on the local tier and 90% of the space is provisioned in the cloud. For instance, if you provisioned a 1 TB volume, 100 GB would reside in the local space and 900 GB would be used in the cloud when the data tiers. This in turn implies that if you run out of all the local space on the device, you cannot provision a tiered share.
 
-1.  共有のプロビジョニングされた容量を指定します。利用できる容量より小さい容量を指定する必要があります。階層化された共有を使用している場合は、共有のサイズは 500 GB ～ 20 TB である必要があります。ローカル固定共有の場合、50 GB ～ 2 TB の共有サイズを指定します。利用できる容量を、共有のプロビジョニングのガイドとして使用します。利用可能なローカル容量が 0 GB の場合、ローカル固定共有または階層化共有をプロビジョニングすることはできません。
+1.  Specify the provisioned capacity for your share. Note that the specified capacity should be smaller than the available capacity. If using a tiered share, the share size should be between 500 GB and 20 TB. For a locally pinned share, specify a share size between 50 GB and 2 TB. Use the available capacity as a guide to provision a share. If the available local capacity is 0 GB, then you will not be allowed to provision local or tiered shares.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image18.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image18.png)
 
-1.  矢印アイコン ![](./media/storsimple-ova-deploy3-fs-setup/image19.png) をクリックして、次のページに進みます。
+1.  Click the arrow icon ![](./media/storsimple-ova-deploy3-fs-setup/image19.png) to go to the next page.
 
-1.  **[追加設定]** ページで、この共有にアクセスするユーザーまたはグループにアクセス許可を割り当てます。ユーザーまたはユーザー グループの名前を *<john@contoso.com>* の形式で指定します。この共有にアクセスする管理者特権を許可するには、(1 人のユーザーではなく) ユーザー グループを使用することをおすすめします。ここでアクセス許可を割り当てた後は、Windows エクスプローラーを使用してこれらのアクセス許可を変更することができます。
+1.  In the **Additional Settings** page, assign the permissions to the user or the group that will be accessing this share. Specify the name of the user or the user group in *<john@contoso.com>* format. We recommend that you use a user group (instead of a single user) to allow admin privileges to access these shares. After you have assigned the permissions here, you can then use Windows Explorer to modify these permissions.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image20.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image20.png)
 
-1.  チェック マーク アイコン ![](./media/storsimple-ova-deploy3-fs-setup/image21.png) をクリックします。指定された設定で共有が作成されます。既定では、監視とバックアップが共有に対して有効になります。
+1.  Click the check icon ![](./media/storsimple-ova-deploy3-fs-setup/image21.png). A share will be created with the specified settings. By default, monitoring and backup will be enabled for the share.
 
-## 手順 4: 共有に接続する
+## <a name="step-4:-connect-to-the-share"></a>Step 4: Connect to the share
 
-次に、前の手順で作成した共有に接続する必要があります。Windows Server ホスト上で次の手順を実行します。
+You will now need to connect to the share(s) that you created in the previous step. Perform these steps on your Windows Server host.
 
-#### 共有に接続するには
+#### <a name="to-connect-to-the-share"></a>To connect to the share
 
-1.  ![](./media/storsimple-ova-deploy3-fs-setup/image22.png) + R キーを押します。[ファイル名を指定して実行] ウィンドウで、パスとして *\<file server name>* を指定し、*ファイル サーバー名*をファイル サーバーに割り当てたデバイス名で置き換えます。**[OK]** をクリックします。
+1.  Press ![](./media/storsimple-ova-deploy3-fs-setup/image22.png) + R. In the Run window, specify the *\\<file server name>* as the path, replacing *file server name* with the device name that you assigned to your file server. Click **OK**.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image23.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image23.png)
 
-2.  エクスプローラーが開きます。フォルダーとして作成した共有が表示されます。コンテンツを表示するには、共有 (フォルダー) を選択してダブルクリックします。
+2.  This will open up Explorer. You should now be able to see the shares that you created as folders. Select and double-click a share (folder) to view the content.
 
-	![](./media/storsimple-ova-deploy3-fs-setup/image24.png)
+    ![](./media/storsimple-ova-deploy3-fs-setup/image24.png)
 
-3.  これらの共有にファイルを追加して、バックアップを作成することができます。
+3.  You can now add files to these shares and take a backup.
 
-![動画アイコン](./media/storsimple-ova-deploy3-fs-setup/video_icon.png) **ビデオ**
+![video icon](./media/storsimple-ova-deploy3-fs-setup/video_icon.png) **Video available**
 
-StorSimple Virtual Array をファイル サーバーとして構成、登録する方法を説明したビデオをご覧ください。
+Watch the video to see how you can configure and register a StorSimple Virtual Array as a file server.
 
 > [AZURE.VIDEO configure-a-storsimple-virtual-array]
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-ローカル Web UI を使用して [StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
+Learn how to use the local web UI to [administer your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 
-<!---HONumber=AcomDC_0601_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,25 +1,26 @@
 <properties
-	pageTitle="OpenSUSE VM への MySQL のインストール | Microsoft Azure"
-	description="Azure 上の OpenSUSE Linux 仮想マシンに MySQL をインストールする方法について説明します。"
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="cynthn"
-	manager="timlt"
-	editor=""
-	tags="azure-service-management"/>
+    pageTitle="Install MySQL on an OpenSUSE VM | Microsoft Azure"
+    description="Learn to install MySQL on an OpenSUSE Linux VMirtual machine in Azure."
+    services="virtual-machines-linux"
+    documentationCenter=""
+    authors="cynthn"
+    manager="timlt"
+    editor=""
+    tags="azure-service-management"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="07/19/2016"
-	ms.author="cynthn"/>
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="07/19/2016"
+    ms.author="cynthn"/>
 
-# Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
 
-[MySQL][MySQL] は広く普及しているオープン ソースの SQL Database です。このチュートリアルでは、OpenSUSE Linux を実行する仮想マシンを作成してから、MySQL をインストールする方法を説明します。
+# <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Install MySQL on a virtual machine running OpenSUSE Linux in Azure
+
+[MySQL][MySQL] is a popular, open-source SQL database. This tutorial shows you how to create a virtual machine running OpenSUSE Linux, then install MySQL.
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
@@ -27,18 +28,23 @@
 <br>
 
 
-## OpenSUSE Linux を実行する仮想マシンの作成
+## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Create a virtual machine running OpenSUSE Linux
 
 [AZURE.INCLUDE [create-and-configure-opensuse-vm-in-portal](../../includes/create-and-configure-opensuse-vm-in-portal.md)]
 
-## 仮想マシンへの MySQL のインストールと実行
+## <a name="install-and-run-mysql-on-the-virtual-machine"></a>Install and run MySQL on the virtual machine
 
 [AZURE.INCLUDE [install-and-run-mysql-on-opensuse-vm](../../includes/install-and-run-mysql-on-opensuse-vm.md)]
 
-## 次のステップ
-MySQL の詳細については、[MySQL のドキュメント][MySQLDocs]を参照してください。
+## <a name="next-steps"></a>Next steps
+For details about MySQL, see the [MySQL Documentation][MySQLDocs].
 
 [MySQLDocs]: http://dev.mysql.com/doc/index-topic.html
 [MySQL]: http://www.mysql.com
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

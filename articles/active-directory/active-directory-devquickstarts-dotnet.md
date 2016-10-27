@@ -1,74 +1,75 @@
 <properties
-	pageTitle="Azure AD .NET の概要 | Microsoft Azure"
-	description="サインインし、OAuth を使用して Azure AD で保護されている API を呼び出すために Azure AD と連携する .NET Windows デスクトップ アプリケーションを構築する方法を説明します。"
-	services="active-directory"
-	documentationCenter=".net"
-	authors="dstrockis"
-	manager="mbaldwin"
-	editor=""/>
+    pageTitle="Azure AD .NET Getting Started | Microsoft Azure"
+    description="How to build a .NET Windows Desktop application that integrates with Azure AD for sign in and calls Azure AD protected APIs using OAuth."
+    services="active-directory"
+    documentationCenter=".net"
+    authors="dstrockis"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="dotnet"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="dastrock"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="dotnet"
+    ms.topic="article"
+    ms.date="09/16/2016"
+    ms.author="dastrock"/>
 
 
-# Windows デスクトップ WPF アプリの Azure AD への統合
+
+# <a name="integrate-azure-ad-into-a-windows-desktop-wpf-app"></a>Integrate Azure AD into a Windows Desktop WPF App
 
 [AZURE.INCLUDE [active-directory-devquickstarts-switcher](../../includes/active-directory-devquickstarts-switcher.md)]
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-デスクトップ アプリケーションを開発する場合、Azure AD を使用すると、Active Directory アカウントを使用してユーザーの認証処理を容易に行うことができます。また、Office 365 API や Azure API などの Azure AD によって保護された任意の Web API をアプリケーションで安全に使用することもできます。
+If you're developing a desktop application, Azure AD makes it simple and straightforward for you to authenticate your users with their Active Directory accounts.  It also enables your application to securely consume any web API protected by Azure AD, such as the Office 365 APIs or the Azure API.
 
-保護されたリソースにアクセスする必要のある .NET ネイティブ クライアントに対しては、Azure AD により、Active Directory 認証ライブラリ (ADAL) が提供されます。ADAL の唯一の目的は、アプリからアクセス トークンを容易に取得できるようにすることです。それがどれほど簡単であるかを示すために、ここで、次のような、.NET WPF To-Do List アプリケーションを構築します。
+For .NET native clients that need to access protected resources, Azure AD provides the Active Directory Authentication Library, or ADAL.  ADAL's sole purpose in life is to make it easy for your app to get access tokens.  To demonstrate just how easy it is, here we'll build a .NET WPF To-Do List application that:
 
--	[OAuth 2.0 認証プロトコル](https://msdn.microsoft.com/library/azure/dn645545.aspx)を使用して Azure AD Graph API を呼び出すためのアクセス トークンを取得します。
--	指定されたエイリアスを持つユーザーをディレクトリで検索します。
--	ユーザーのサインアウト処理を行います。
+-   Gets access tokens for calling the Azure AD Graph API using the [OAuth 2.0 authentication protocol](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+-   Searches a directory for users with a given alias.
+-   Signs users out.
 
-完全に動作するアプリケーションを構築するには、次の手順を行う必要があります。
+To build the complete working application, you'll need to:
 
-2. Azure AD にアプリケーションを登録する
-3. ADAL をインストールおよび構成する
-5. ADAL を使用して、Azure AD からトークンを取得する
+2. Register your application with Azure AD.
+3. Install & Configure ADAL.
+5. Use ADAL to get tokens from Azure AD.
 
-最初に、[アプリのスケルトンをダウンロードするか](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/skeleton.zip)、または[完全なサンプルをダウンロードします](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)。また、ユーザーを作成し、アプリケーションを登録することを可能にするための Azure AD テナントも必要です。テナントを所有していない場合は、「[How to get an Azure Active Directory tenant (Azure Active Directory テナントの取得方法)](active-directory-howto-tenant.md)」を参照して取得してください。
+To get started, [download the app skeleton](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/skeleton.zip) or [download the completed sample](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip).  You'll also need an Azure AD tenant in which you can create users and register an application.  If you don't already have a tenant, [learn how to get one](active-directory-howto-tenant.md).
 
-## *1.DirectorySearcher アプリケーションを登録する*
-アプリでトークンを取得できるようにするには、まず、アプリを Azure AD テナントに登録し、Azure AD Graph API にアクセスするためのアクセス許可を付与する必要があります。
+## <a name="*1.-register-the-directorysearcher-application*"></a>*1. Register the DirectorySearcher Application*
+To enable your app to get tokens, you'll first need to register it in your Azure AD tenant and grant it permission to access the Azure AD Graph API:
 
--	Microsoft Azure の管理ポータルにサインインします。
--	左側のナビゲーションで **[Active Directory]** をクリックします。
--	アプリケーションの登録先となるテナントを選択します。
--	**[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
--	画面の指示に従い、新しい**ネイティブ クライアント アプリケーション**を作成します。
-    -	アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
-    -	**[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。アプリケーション固有の値 (たとえば、`http://DirectorySearcher`) を入力します。
--	登録が完了すると、AAD により、アプリケーションに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、**[構成]** タブからコピーします。
-- また、**[構成]** タブで、[他のアプリケーションに対するアクセス許可] セクションに移動します。"Azure Active Directory" アプリケーションに対して、**[委任されたアクセス許可]** の下の **[組織のディレクトリにアクセス]** アクセス許可を追加します。これにより、アプリケーションが Graph API を使用してユーザーをクエリできるようになります。
+-   Sign into the Azure Management Portal
+-   In the left hand nav, click on **Active Directory**
+-   Select a tenant in which to register the application.
+-   Click the **Applications** tab, and click **Add** in the bottom drawer.
+-   Follow the prompts and create a new **Native Client Application**.
+    -   The **Name** of the application will describe your application to end-users
+    -   The **Redirect Uri** is a scheme and string combination that Azure AD will use to return token responses.  Enter a value specific to your application, e.g. `http://DirectorySearcher`.
+-   Once you've completed registration, AAD will assign your app a unique client identifier.  You'll need this value in the next sections, so copy it from the **Configure** tab.
+- Also in **Configure** tab, locate the "Permissions to Other Applications" section.  For the "Azure Active Directory" application, add the **Access Your Organization's Directory** permission under **Delegated Permissions**.  This will enable your application to query the Graph API for users.
 
-## *2.ADAL をインストールおよび構成する*
-アプリケーションを Azure AD に登録したので、ADAL をインストールし、ID 関連のコードを記述できます。ADAL が Azure AD と通信できるようにするには、アプリの登録に関するいくつかの情報を ADAL に提供する必要があります。
--	最初に、パッケージ マネージャー コンソールを使用して、ADAL を DirectorySearcher プロジェクトに追加します。
+## <a name="*2.-install-&-configure-adal*"></a>*2. Install & Configure ADAL*
+Now that you have an application in Azure AD, you can install ADAL and write your identity-related code.  In order for ADAL to be able to communicate with Azure AD, you need to provide it with some information about your app registration.
+-   Begin by adding ADAL to the DirectorySearcher project using the Package Manager Console.
 
 ```
 PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 ```
 
--	DirectorySearcher プロジェクトで、`app.config` を開きます。Azure ポータルで入力した値が反映されるように、`<appSettings>` セクションの要素の値を置き換えます。これらの値は、コードで ADAL を使用する際に常に参照されます。
-    -	`ida:Tenant` は、Azure AD テナントのドメイン (たとえば、contoso.onmicrosoft.com) です。
-    -	`ida:ClientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
-    -	`ida:RedirectUri` は、ポータルに登録したリダイレクト URL です。
+-   In the DirectorySearcher project, open `app.config`.  Replace the values of the elements in the `<appSettings>` section to reflect the values you input into the Azure Portal.  Your code will reference these values whenever it uses ADAL.
+    -   The `ida:Tenant` is the domain of your Azure AD tenant, e.g. contoso.onmicrosoft.com
+    -   The `ida:ClientId` is the clientId of your application you copied from the portal.
+    -   The `ida:RedirectUri` is the redirect url you registered in the portal.
 
-## *3.ADAL を使用して AAD からトークンを取得する*
-ADAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、アプリは `authContext.AcquireTokenAsync(...)` を呼び出すだけで、残りの処理は ADAL が実行してくれることです。
+## <a name="*3.-use-adal-to-get-tokens-from-aad*"></a>*3.  Use ADAL to Get Tokens from AAD*
+The basic principle behind ADAL is that whenever your app needs an access token, it simply calls `authContext.AcquireTokenAsync(...)`, and ADAL does the rest.  
 
--	`DirectorySearcher` プロジェクトで、`MainWindow.xaml.cs` を開き、`MainWindow()` メソッドを見つけます。最初の手順は、アプリの `AuthenticationContext` (ADAL のプライマリ クラス) を初期化することです。ここでは、ADAL が Azure AD と通信し、トークンをキャッシュする方法を通知するために必要な調整項目を ADAL に渡します。
+-   In the `DirectorySearcher` project, open `MainWindow.xaml.cs` and locate the `MainWindow()` method.  The first step is to initialize your app's `AuthenticationContext` - ADAL's primary class.  This is where you pass ADAL the coordinates it needs to communicate with Azure AD and tell it how to cache tokens.
 
 ```C#
 public MainWindow()
@@ -81,7 +82,7 @@ public MainWindow()
 }
 ```
 
-- 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access\_token を含める必要があります。この処理を ADAL が実行します。
+- Now locate the `Search(...)` method, which will be invoked when the user cliks the "Search" button in the app's UI.  This method makes a GET request to the Azure AD Graph API to query for users whose UPN begins with the given search term.  But in order to query the Graph API, you need to include an access_token in the `Authorization` header of the request - this is where ADAL comes in.
 
 ```C#
 private async void Search(object sender, RoutedEventArgs e)
@@ -113,10 +114,10 @@ private async void Search(object sender, RoutedEventArgs e)
     ...
 }
 ```
-- アプリが `AcquireTokenAsync(...)` を呼び出すことによってトークンを要求すると、ADAL はユーザーに資格情報を要求することなく、トークンを返そうとします。ADAL は、トークンを取得するにはユーザーのサインインが必要であると判断した場合、ログイン ダイアログを表示し、ユーザーの資格情報を収集し、認証が成功するとトークンを返します。また、何らかの理由によりトークンを返せない場合、`AdalException` をスローします。
-- `AuthenticationResult` オブジェクトには、アプリが必要とする可能性のある情報を収集するために使用される `UserInfo` オブジェクトが含まれていることに注意してください。DirectorySearcher で、`UserInfo` は、ユーザーの ID を使用してアプリの UI をカスタマイズするために使用されます。
+- When your app requests a token by calling `AcquireTokenAsync(...)`, ADAL will attempt to return a token without asking the user for credentials.  If ADAL determines that the user needs to sign in to get a token, it will display a login dialog, collect the user's credentials, and return a token upon successful authentication.  If ADAL is unable to return a token for any reason, it will throw an `AdalException`.
+- Notice that the `AuthenticationResult` object contains a `UserInfo` object that can be used to collect information your app may need.  In the DirectorySearcher, `UserInfo` is used to customize the app's UI with the user's id.
 
-- ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` への呼び出しでは、ユーザーにサインインするように要求する必要があります。ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じぐらい容易に達成できます。
+- When the user clicks the "Sign Out" button, we want to ensure that the next call to `AcquireTokenAsync(...)` will ask the user to sign in.  With ADAL, this is as easy as clearing the token cache:
 
 ```C#
 private void SignOut(object sender = null, RoutedEventArgs args = null)
@@ -128,7 +129,7 @@ private void SignOut(object sender = null, RoutedEventArgs args = null)
 }
 ```
 
-- ただし、ユーザーが [サインアウト] ボタンをクリックしていない場合、ユーザーが次に DirectorySearcher を実行するときに備えて、ユーザーのセッションを維持する必要があります。アプリが起動したら、既存のトークン用の ADAL のトークン キャッシュをチェックし、必要に応じて UI を更新できます。`CheckForCachedToken()` メソッドで、`AcquireTokenAsync(...)` に対して別の呼び出しを行います。今回は、`PromptBehavior.Never` パラメーターを渡します。`PromptBehavior.Never` は ADAL に対して、トークンを返せない場合、ユーザーにサインイン用の認証情報の入力を求めるのではなく、代わりに ADAL は例外をスローする必要があることを通知します。
+- However, if the user does not click the "Sign Out" button, you will want to maintain the user's session for the next time they run the DirectorySearcher.  When the app launches, you can check ADAL's token cache for an existing token and update the UI accordingly.  In the `CheckForCachedToken()` method, make another call to `AcquireTokenAsync(...)`, this time passing in the `PromptBehavior.Never` parameter.  `PromptBehavior.Never` will tell ADAL that the user should not be prompted for sign in, and ADAL should instead throw an exception if it is unable to return a token.
 
 ```C#
 public async void CheckForCachedToken() 
@@ -157,14 +158,18 @@ public async void CheckForCachedToken()
 }
 ```
 
-お疲れさまでした。 これで、ユーザー認証を処理でき、OAuth 2.0 を使用して Web API を安全に呼び出すことができ、ユーザーについての基本情報を取得できる、動作する . WPF アプリケーションが完成しました。テナントに一連のユーザーを設定します (設定していない場合)。DirectorySearcher アプリを実行し、それらのユーザーの一人としてサインインします。UPN に基づいて、他のユーザーを検索します。アプリを閉じて、再び実行します。ユーザーのセッションがそのままに維持されていることに注意します。サインアウトし、別のユーザーとしてサインインします。
+Congratulations! You now have a working .NET WPF application that has the ability to authenticate users, securely call Web APIs using OAuth 2.0, and get basic information about the user.  If you haven't already, now is the time to populate your tenant with some users.  Run your DirectorySearcher app, and sign in with one of those users.  Search for other users based on their UPN.  Close the app, and re-run it.  Notice how the user's session remains intact.  Sign out, and sign back in as another user.
 
-ADAL を使用することにより、これらの共通 ID 機能のすべてを容易にアプリケーションに組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`authContext.AcquireTokenAsync(...)` のみです。
+ADAL makes it easy to incorporate all of these common identity features into your application.  It takes care of all the dirty work for you - cache management, OAuth protocol support, presenting the user with a login UI, refreshing expired tokens, and more.  All you really need to know is a single API call, `authContext.AcquireTokenAsync(...)`.
 
-完全なサンプル (構成値を除く) を取得するには、[ここ](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)をクリックしてください。ここからは、さらなるシナリオに進むことができます。次のチュートリアルを試してみてください。
+For reference, the completed sample (without your configuration values) is provided [here](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip).  You can now move on to additional scenarios.  You may want to try:
 
-[Protect a Web API using Bearer tokens from Azure AD (Azure AD からのベアラー トークンを使用することによる Web API の保護)](active-directory-devquickstarts-webapi-dotnet.md)
+[Secure a .NET Web API with Azure AD >>](active-directory-devquickstarts-webapi-dotnet.md)
 
 [AZURE.INCLUDE [active-directory-devquickstarts-additional-resources](../../includes/active-directory-devquickstarts-additional-resources.md)]
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

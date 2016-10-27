@@ -1,8 +1,11 @@
-リソース|既定の制限
+Resource|Default Limit
 ---|---
-可用性セットあたりの仮想マシン数 | 100 
-サブスクリプションあたりの証明書数|無制限<sup>1</sup>
+Virtual machines per availability set | 100 
+Certificates per subscription|Unlimited<sup>1</sup>
 
-<sup>1</sup>Azure リソース マネージャーでは、証明書は Azure Key Vault に格納されます。サブスクリプション 1 つあたりの証明書の数は無制限ですが、(1 つの VM または可用性セットから成る) デプロイあたりの証明書数には 1 MB という制限があります。
+<sup>1</sup>With Azure Resource Manager, certificates are stored in the Azure Key Vault. Although the number of certificates is unlimited for a subscription, there is still a 1 MB limit of certificates per deployment (which consists of either a single VM or an availability set).
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

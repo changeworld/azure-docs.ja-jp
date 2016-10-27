@@ -1,38 +1,41 @@
-## Azure ポータルで VNet を作成する方法
+## <a name="how-to-create-a-vnet-in-the-azure-portal"></a>How to create a VNet in the Azure portal
 
-Azure プレビュー ポータルを使用して、上記のシナリオに基づいた VNet を作成するには、次の手順に従います。
+To create a VNet based on the scenario above by using the Azure preview portal, follow the steps below.
 
-1. ブラウザーから http://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. 次の図に示すように、[**新規**] > [**ネットワーク**] > [**仮想ネットワーク**] の順にクリックしてから、[**デプロイ モデルの選択**] の一覧にある [**リソース マネージャー**] 、[**作成**] の順にクリックします。
+1. From a browser, navigate to http://portal.azure.com and, if necessary, sign in with your Azure account.
+2. Click **NEW** > **Networking** > **Virtual network**, then click **Resource Manager** from the **Select a deployment model** list, and then click **Create**, as seen in the figure below.
 
-	![Create VNet in Azure portal](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure1.gif)
+    ![Create VNet in Azure portal](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure1.gif)
 
-3. [**仮想ネットワークの作成**] ブレードで、次の図に示すように、VNet の設定を構成します。
+3. On the **Create virtual network** blade, configure the VNet settings as shown in the figure below.
 
-	![仮想ネットワーク ブレードの作成](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure2.png)
+    ![Create virtual network blade](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure2.png)
 
-4. [**リソース グループ**] をクリックし、VNet を追加するリソース グループを選択してから [**新規作成**] をクリックして VNet を新しいリソース グループに追加します。次の図は、**TestRG** という新しいリソース グループのリソース グループ設定を示しています。リソース グループの詳細については、[Azure リソース マネージャーの概要](../articles/resource-group-overview.md#resource-groups)を参照してください。
+4. Click **Resource group** and select a resource group to add the VNet to, or click **Create new** to add the VNet to a new resource group. The figure below shows the resource group settings for a new resource group called **TestRG**. For more information about resource groups, visit [Azure Resource Manager Overview](../articles/resource-group-overview.md#resource-groups).
 
-	![リソース グループ](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure3.png)
+    ![Resource group](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure3.png)
 
-5. 必要に応じて、VNet の [**サブスクリプション**] と [**場所**] の設定を変更してください。
+5. If necessary, change the **Subscription** and **Location** settings for your VNet. 
 
-6. VNet を**スタート 画面**にタイルとして表示させたくない場合は、[**スタート画面にピン留めする**] を無効にしてください。
+6. If you do not want to see the VNet as a tile in the **Startboard**, disable **Pin to Startboard**. 
 
-7. [**作成**] をクリックすると、次の図に示すような [**仮想ネットワークの作成**] という名前のタイルが表示されます。
+7. Click **Create** and notice the tile named **Creating Virtual network** as shown in the figure below.
 
-	![仮想ネットワーク タイルの作成](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure4.png)
+    ![Creating virtual network tile](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure4.png)
 
-8. VNet が作成されるのを待ってから、[**仮想ネットワーク**] ブレードで、[**すべての設定**] > [**サブネット**] > [**追加**] の順にクリックします。
+8. Wait for the VNet to be created, then in the **Virtual network** blade, click **All settings** > **Subnets** > **Add** as seen below.
 
-	![Adding subnet in the Azure portal](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure5.gif)
+    ![Adding subnet in the Azure portal](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure5.gif)
 
-9. 次に示すように、*BackEnd* サブネットのサブネット設定を指定し、[**OK**] をクリックします。
+9. Specify the subnet settings for the *BackEnd* subnet, as shown below, and then click **OK**. 
 
-	![サブネット設定](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure6.png)
+    ![Subnet settings](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure6.png)
 
-10. 次の図に示すように、サブネットの一覧が表示されます。
+10. Notice the list of subnets, as shown in the figure below.
 
-	![VNet 内のサブネットの一覧](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
+    ![List of subnets in VNet](./media/virtual-networks-create-vnet-arm-pportal-include/vnet-create-arm-pportal-figure7.png)
 
-<!---HONumber=AcomDC_0615_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Virtual Network FAQ"
-   description="Azure の仮想ネットワーク (VNet) に関する FAQ"
+   description="Azure virtual network (VNet) FAQ"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,12 +15,17 @@
    ms.date="03/15/2016"
    ms.author="jdial" />
 
-# Virtual Network FAQ
+
+# <a name="virtual-network-faq"></a>Virtual Network FAQ
 
 [AZURE.INCLUDE [virtual-networks-vnet-faq-include](../../includes/virtual-networks-vnet-faq-include.md)]
 
-## Virtual Network Cross-premises Connectivity (VPN)
+## <a name="virtual-network-cross-premises-connectivity-(vpns)"></a>Virtual Network Cross-premises Connectivity (VPNs)
 
-仮想ネットワーク VPN の最新の FAQ については、[VPN ゲートウェイ FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md) を参照してください。
+For the latest FAQ on virtual network VPNs, see the [VPN Gateway FAQ](../vpn-gateway/vpn-gateway-vpn-faq.md).
 
-<!----HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Portal を使用した VM へのポートの開放 | Microsoft Azure"
-   description="Azure Portal で Resource Manager デプロイメント モデルを使用して、Windows VM へのポートを開き、エンドポイントを作成する方法について説明します。"
+   pageTitle="Open ports to a VM using the Azure portal | Microsoft Azure"
+   description="Learn how to open a port / create an endpoint to your Windows VM using the resource manager deployment model in the Azure Portal"
    services="virtual-machines-windows"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,51 +16,56 @@
    ms.date="08/08/2016"
    ms.author="iainfou"/>
 
-# Azure Portal を使用した Azure の VM へのポートの開放
+
+# <a name="opening-ports-to-a-vm-in-azure-using-the-azure-portal"></a>Opening ports to a VM in Azure using the Azure Portal
 [AZURE.INCLUDE [virtual-machines-common-nsg-quickstart](../../includes/virtual-machines-common-nsg-quickstart.md)]
 
-## クイック コマンド
-[これらの手順は、Azure PowerShell を使用して実行](virtual-machines-windows-nsg-quickstart-powershell.md)することもできます。
+## <a name="quick-commands"></a>Quick commands
+You can also [perform these steps using Azure PowerShell](virtual-machines-windows-nsg-quickstart-powershell.md).
 
-最初に、ネットワーク セキュリティ グループを作成します。ポータルでリソース グループを選択し、[追加] をクリックして、[ネットワーク セキュリティ グループ] を探して選択します。
+First, create your Network Security Group. Select a resource group in the portal, click 'Add', then search for and select 'Network Security Group':
 
-![ネットワーク セキュリティ グループの追加](./media/virtual-machines-windows-nsg-quickstart-portal/add-nsg.png)
+![Add a Network Security Group](./media/virtual-machines-windows-nsg-quickstart-portal/add-nsg.png)
 
-ネットワーク セキュリティ グループの名前を入力し、場所を選択します。
+Enter a name for your Network Security Group and select a location:
 
-![ネットワーク セキュリティ グループの作成](./media/virtual-machines-windows-nsg-quickstart-portal/create-nsg.png)
+![Create a Network Security Group](./media/virtual-machines-windows-nsg-quickstart-portal/create-nsg.png)
 
-新しいネットワーク セキュリティ グループを選択します。ここで、受信規則を作成します。
+Select your new Network Security Group. You now create an inbound rule:
 
-![受信規則の追加](./media/virtual-machines-windows-nsg-quickstart-portal/add-inbound-rule.png)
+![Add an inbound rule](./media/virtual-machines-windows-nsg-quickstart-portal/add-inbound-rule.png)
 
-新しい規則の名前を指定します。ポート 80 が既定で入力されています。他の規則をネットワーク セキュリティ グループに追加する場合は、このブレードでソース、プロトコル、宛先を変更します。
+Provide a name for your new rule. Port 80 is already entered by default. This blade is where you would change the source, protocol, and destination when adding additional rules to your Network Security Group:
 
-![受信規則の作成](./media/virtual-machines-windows-nsg-quickstart-portal/create-inbound-rule.png)
+![Create an inbound rule](./media/virtual-machines-windows-nsg-quickstart-portal/create-inbound-rule.png)
 
-最後に、ネットワーク セキュリティ グループを、サブネットまたは特定のネットワーク インターフェイスに関連付けます。ネットワーク セキュリティ グループをサブネットに関連付けてみましょう。
+Your final step is to associate your Network Security Group with a subnet or a specific network interface. Let's associate the Network Security Group with a subnet:
 
-![ネットワーク セキュリティ グループとサブネットの関連付け](./media/virtual-machines-windows-nsg-quickstart-portal/associate-subnet.png)
+![Associate a Network Security Group with a subnet](./media/virtual-machines-windows-nsg-quickstart-portal/associate-subnet.png)
 
-仮想ネットワークを選択し、適切なサブネットを選択します。
+Select your virtual network, and then select the appropriate subnet:
 
-![ネットワーク セキュリティ グループと仮想ネットワークの関連付け](./media/virtual-machines-windows-nsg-quickstart-portal/select-vnet-subnet.png)
+![Associating a Network Security Group with virtual networking](./media/virtual-machines-windows-nsg-quickstart-portal/select-vnet-subnet.png)
 
-これで、ネットワーク セキュリティ グループの作成、ポート 80 のトラフィックを許可する受信規則の作成、ネットワーク セキュリティ グループとサブネットの関連付けが完了しました。そのサブネットに接続するすべての VM に、ポート 80 で到達できます。
+You have now created a Network Security Group, created an inbound rule that allows traffic on port 80, and associated it with a subnet. Any VMs you connect to that subnet are reachable on port 80.
 
 
-## ネットワーク セキュリティ グループの詳細
-このページのクイック コマンドでは、VM にフローするトラフィックの開始と実行を行うことができます。ネットワーク セキュリティ グループには優れた機能が多数用意されており、リソースへのアクセスをきめ細かく制御できます。詳細については、[ネットワーク セキュリティ グループと ACL 規則の作成](../virtual-network/virtual-networks-create-nsg-arm-ps.md)に関するページをご覧ください。
+## <a name="more-information-on-network-security-groups"></a>More information on Network Security Groups
+The quick commands here allow you to get up and running with traffic flowing to your VM. Network Security Groups provide many great features and granularity for controlling access to your resources. You can read more about [creating a Network Security Group and ACL rules here](../virtual-network/virtual-networks-create-nsg-arm-ps.md).
 
-ネットワーク セキュリティ グループと ACL 規則は、Azure Resource Manager のテンプレートの一部として定義できます。詳細については、[テンプレートを使用したネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-template.md)に関するページをご覧ください。
+You can define Network Security Groups and ACL rules as part of Azure Resource Manager templates. Read more about [creating Network Security Groups with templates](../virtual-network/virtual-networks-create-nsg-arm-template.md).
 
-ポート フォワーディングを使用して、一意の外部ポートを VM 上の内部ポートにマップする必要がある場合は、ロード バランサーとネットワーク アドレス変換 (NAT) 規則を使用します。たとえば、TCP ポート 8080 を外部に公開し、VM 上の TCP ポート 80 にトラフィックを送ることができます。詳細については、[インターネットに接続するロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-arm-ps.md)に関するページをご覧ください。
+If you need to use port-forwarding to map a unique external port to an internal port on your VM, use a load balancer and Network Address Translation (NAT) rules. For example, you may want to expose TCP port 8080 externally and have traffic directed to TCP port 80 on a VM. You can learn about [creating an Internet-facing load balancer](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
-## 次のステップ
-この例では、HTTP トラフィックを許可する単純な規則を作成します。より精密な環境の作成については、次の記事で確認できます。
+## <a name="next-steps"></a>Next steps
+In this example, you created a simple rule to allow HTTP traffic. You can find information on creating more detailed environments in the following articles:
 
-- [Azure リソース マネージャーの概要](../resource-group-overview.md)
-- [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
-- [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
+- [Azure Resource Manager overview](../resource-group-overview.md)
+- [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md)
+- [Azure Resource Manager Overview for Load Balancers](../load-balancer/load-balancer-arm.md)
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

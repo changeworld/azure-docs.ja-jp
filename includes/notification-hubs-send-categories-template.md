@@ -1,42 +1,42 @@
 
-このセクションでは、.NET コンソール アプリケーションからタグ付けされたテンプレート通知としてニュース速報を送信する方法について説明します。
+This section shows how to send breaking news as tagged template notifications from a .NET console app.
 
-Mobile Apps を使用している場合は、「[Windows Runtime 8.1 ユニバーサル アプリへのプッシュ通知の追加](../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)」チュートリアルを参照し、上部でプラットフォームを選択してください。
+If you are using Mobile Apps please refer to the [Add push notifications for Mobile Apps](../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) tutorial and select your platform at the top. 
 
-Java または PHP を使用する場合は、「[How to use Notification Hubs from Java/PHP (Java/PHP から Notification Hubs を使用する方法)](../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md)」を参照してください。[Notification Hub REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用することで、バックエンドから通知を送信できます。
+If you want to use Java or PHP refer to [How to use Notification Hubs from Java/PHP](../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md). You can send notifications from any backend using the [Notification Hub REST interface](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
 
-「[Notification Hubs の使用][get-started]」を実行したときに、通知を送信するためにコンソール アプリケーションを作成した場合は、ステップ 1. ～ 3. はスキップします。
+Skip steps 1-3 if you created the console app for sending notifications when you completed [Get started with Notification Hubs][get-started].
 
-1. Visual Studio で、Visual C# の新しいコンソール アプリケーションを作成します。 
+1. In Visual Studio create a new Visual C# console application: 
 
-   	![][13]
+    ![][13]
 
-2. Visual Studio のメイン メニューで、**[ツール]**、**[ライブラリ パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックし、コンソール ウィンドウで次のコマンドを入力して、**Enter** キーを押します。
+2. In the Visual Studio main menu, click **Tools**, **Library Package Manager**, and **Package Manager Console**, then in the console window type the following and press **Enter**:
 
         Install-Package Microsoft.Azure.NotificationHubs
- 	
-	これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
+    
+    This adds a reference to the Azure Notification Hubs SDK using the <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet package</a>. 
 
-3. Program.cs ファイルを開き、次の `using` ステートメントを追加します。
+3. Open the file Program.cs and add the following `using` statement:
 
         using Microsoft.Azure.NotificationHubs;
 
-4. `Program` クラス内で、次のメソッドを追加するか、既にメソッドが指定されている場合は置き換えます。
+4. In the `Program` class, add the following method, or replace it if it already exists:
 
         private static async void SendTemplateNotificationAsync()
         {
-			// Define the notification hub.
-		    NotificationHubClient hub = 
-				NotificationHubClient.CreateClientFromConnectionString(
-					"<connection string with full access>", "<hub name>");
+            // Define the notification hub.
+            NotificationHubClient hub = 
+                NotificationHubClient.CreateClientFromConnectionString(
+                    "<connection string with full access>", "<hub name>");
 
             // Create an array of breaking news categories.
             var categories = new string[] { "World", "Politics", "Business", 
-											"Technology", "Science", "Sports"};
+                                            "Technology", "Science", "Sports"};
 
             // Sending the notification as a template notification. All template registrations that contain 
-			// "messageParam" and the proper tags will receive the notifications. 
-			// This includes APNS, GCM, WNS, and MPNS template registrations.
+            // "messageParam" and the proper tags will receive the notifications. 
+            // This includes APNS, GCM, WNS, and MPNS template registrations.
 
             Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
@@ -45,18 +45,18 @@ Java または PHP を使用する場合は、「[How to use Notification Hubs f
                 templateParams["messageParam"] = "Breaking " + category + " News!";            
                 await hub.SendTemplateNotificationAsync(templateParams, category);
             }
-		 }
+         }
 
-	このコードでは、文字列の配列の 6 つのタグのそれぞれに対するテンプレート通知が送信されます。タグを使用することで、デバイスは登録されているカテゴリに関する通知のみを確実に受信できます。
+    This code sends a template notification for each of the six tags in the string array. The use of tags makes sure that devices receive notifications only for the registered categories. 
 
-6. 上のコード内で、`<hub name>` および `<connection string with full access>` プレースホルダーを、通知ハブの名前と通知ハブのダッシュボードの *DefaultFullSharedAccessSignature* の接続文字列に置き換えます。
+6. In the above code, replace the `<hub name>` and `<connection string with full access>` placeholders with your notification hub name and the connection string for *DefaultFullSharedAccessSignature* from the dashboard of your notification hub.
 
-7. **Main** メソッド内に、次の行を追加します。
+7. Add the following lines in the **Main** method:
 
          SendTemplateNotificationAsync();
-		 Console.ReadLine();
+         Console.ReadLine();
 
-8. コンソール アプリケーションをビルドします。
+8. Build the console app.
 
 <!-- Anchors -->
 [From a console app]: #console
@@ -78,4 +78,7 @@ Java または PHP を使用する場合は、「[How to use Notification Hubs f
 [Notification Hubs How-To for Windows Store]: http://msdn.microsoft.com/library/jj927172.aspx
 [Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 
-<!---HONumber=AcomDC_0622_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

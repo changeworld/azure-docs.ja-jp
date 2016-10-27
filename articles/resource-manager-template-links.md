@@ -1,6 +1,6 @@
 <properties
-   pageTitle="リソースをリンクするためのリソース マネージャー テンプレート | Microsoft Azure"
-   description="関連するリソース間のリンクをテンプレートを使ってデプロイするためのリソース マネージャー スキーマを示します。"
+   pageTitle="Resource Manager template for linking resources | Microsoft Azure"
+   description="Shows the Resource Manager schema for deploying links between related resources through a template."
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,13 +16,14 @@
    ms.date="04/05/2016"
    ms.author="tomfitz"/>
 
-# リソース リンク テンプレート スキーマ
 
-2 つのリソース間のリンクを作成します。リンクは、ソース リソースと呼ばれるリソースに適用されます。リンクの 2 番目のリソースは、ターゲット リソースと呼ばれます。
+# <a name="resource-links-template-schema"></a>Resource links template schema
 
-## スキーマの形式
+Creates a link between two resources. The link is applied to a resource known as the source resource. The second resource in the link is known as the target resource.
 
-リンクを作成するには、テンプレートのリソース セクションに次のスキーマを追加します。
+## <a name="schema-format"></a>Schema format
+
+To create a link, add the following schema to the resources section of your template.
     
     {
         "type": enum,
@@ -38,41 +39,42 @@
 
 
 
-## 値
+## <a name="values"></a>Values
 
-次の表では、スキーマに設定する必要がある値について説明します。
+The following tables describe the values you need to set in the schema.
 
-| 名前 | 値 |
+| Name | Value |
 | ---- | ---- |
-| type | 列挙型<br />必須<br />**{namespace}/{type}/providers/links**<br /><br />作成するリソースの種類。{namespace} と {type} の値は、ソース リソースのプロバイダー名前空間とリソース タイプです。 |
-| apiVersion | 列挙型<br />必須<br />**2015-01-01**<br /><br />リソースの作成に使用する API バージョン。 |  
-| name | 文字列<br />必須<br />**{resouce}/Microsoft.Resources/{linkname}**<br />最大 64 文字。<、>、%、&、?、制御文字を含めることはできません。<br /><br />ソース リソースの名前とリンクの名前の両方を指定する値。 | 
-| dependsOn | 配列<br />省略可能<br />リソース名またはリソースの一意識別子のコンマ区切りリスト。<br /><br />このリンクが依存するリソースのコレクション。リンクしているリソースを同じテンプレートでデプロイする場合は、それらのリソースが最初にデプロイされるように、リソース名をこの要素に含めます。| 
-| properties | オブジェクト<br />必須<br />[プロパティ オブジェクト](#properties)<br /><br />リンク先のリソースを識別し、リンクに関するメモが記述されたオブジェクト。 | 
+| type | Enum<br />Required<br />**{namespace}/{type}/providers/links**<br /><br />The resource type to create. The {namespace} and {type} values refer to the provider namespace and resource type of the source resource. |
+| apiVersion | Enum<br />Required<br />**2015-01-01**<br /><br />The API version to use for creating the resource. |  
+| name | String<br />Required<br />**{resouce}/Microsoft.Resources/{linkname}**<br /> up to 64 characters, and cannot contain <, > %, &, ?, or any control characters.<br /><br />A value that specifes both the name of source resource and a name for the link. |
+| dependsOn | Array<br />Optional<br />A comma-separated list of a resource names or resource unique identifiers.<br /><br />The collection of resources this link depends on. If the resources you are linking are deployed in the same template, include those resource names in this element to ensure they are deployed first. | 
+| properties | Object<br />Required<br />[properties object](#properties)<br /><br />An object that identifies the resource to link to, and notes about the link. |  
 
 <a id="properties" />
-### プロパティ オブジェクト
+### <a name="properties-object"></a>properties object
 
-| 名前 | 値 |
+| Name | Value |
 | ------- | ---- |
-| targetId | 文字列<br />必須<br />**{resource id}**<br /><br />リンク先のターゲット リソースの識別子。 | | notes | 文字列<br />省略可能<br />最大 512 文字<br /><br />ロックの説明。 |
+| targetId | String<br />Required<br />**{resource id}**<br /><br />The identifier of the target resource to link to. |
+| notes | String<br />Optional<br />up to 512 characters<br /><br />Description of the lock. |
 
 
-## リンク リソースの使用方法
+## <a name="how-to-use-the-link-resource"></a>How to use the link resource
 
-リソースの依存関係がデプロイ後も続く場合、2 つのリソース間のリンクを適用します。たとえば、あるアプリが別のリソース グループのデータベースに接続する場合があります。そのアプリからデータベースへのリンクを作成することで、その依存関係を定義できます。リンクにより、2 つのリソース間の関係を記録できます。後で、自分や組織の他の人間があるリソースのリンクを問い合わせれば、そのリソースが他のリソースと連動するしくみを理解できます。
+You apply a link between two resources when the resources have a dependency that continues after deployment. For example, an app may connect to a database in a different resource group. You can define that dependency by creating a link from the app to the database. Links enable you to document the relationship between two resources. Later, you or someone else in your organization can query a resource for links to discover how the resource works with other resources.
 
-リンクされるリソースは、すべて同じサブスクリプションに属する必要があります。各リソースは、そのリソース以外の 50 のリソースにリンクできます。リンクされたリソースを削除または移動する場合、リンクの所有者は、残りのリンクをクリーンアップする必要があります。
+All linked resources must belong to the same subscription. Each resource can be linked to 50 other resources. If any of the linked resources are deleted or moved, the link owner must clean up the remaining link.
 
-REST 経由でリンクを使用する方法については、「[リンク済みリソース](https://msdn.microsoft.com/library/azure/mt238499.aspx)」を参照してください。
+To work with links through REST, see [Linked Resources](https://msdn.microsoft.com/library/azure/mt238499.aspx).
 
-次の Azure PowerShell コマンドを使用すると、サブスクリプションのすべてのリンクが表示されます。他のパラメーターを指定し、結果を絞り込むことができます。
+Use the following Azure PowerShell command to see all of the links in your subscription. You can provide other parameters to limit the results.
 
     Get-AzureRmResource -ResourceType Microsoft.Resources/links -isCollection -ResourceGroupName <YourResourceGroupName>
 
-## 例
+## <a name="examples"></a>Examples
 
-次の例では、Web アプリに読み取り専用のロックが適用されます。
+The following example applies a read-only lock to a web app.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -119,25 +121,29 @@ REST 経由でリンクを使用する方法については、「[リンク済�
                     "targetId": "[resourceId('Microsoft.Storage/storageAccounts','storagecontoso')]",
                     "notes": "This web site uses the storage account to store user information."
                 }
-    	    }
+            }
         ],
         "outputs": {}
     }
 
-## クイック スタート テンプレート
+## <a name="quickstart-templates"></a>Quickstart templates
 
-次のクイック スタート テンプレートでは、リンクを使ってリソースがデプロイされます。
+The following quickstart templates deploy resources with a link.
 
-- [アラートによってキューに項目を追加するロジック アプリ](https://azure.microsoft.com/documentation/templates/201-alert-to-queue-with-logic-app)
-- [アラートによって Slack にメッセージを投稿するロジック アプリ](https://azure.microsoft.com/documentation/templates/201-alert-to-slack-with-logic-app)
-- [既存のゲートウェイを使用する API アプリのプロビジョニング](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-existing)
-- [新しいゲートウェイを使用する API アプリのプロビジョニング](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-new)
-- [テンプレートを使用したロジック アプリと API アプリの作成](https://azure.microsoft.com/documentation/templates/201-logic-app-api-app-create)
-- [アラートが発生したときにテキスト メッセージを送信するロジック アプリ](https://azure.microsoft.com/documentation/templates/201-alert-to-text-message-with-logic-app)
+- [Alert to queue with Logic app](https://azure.microsoft.com/documentation/templates/201-alert-to-queue-with-logic-app)
+- [Alert to Slack with Logic app](https://azure.microsoft.com/documentation/templates/201-alert-to-slack-with-logic-app)
+- [Provision an API app with an existing gateway](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-existing)
+- [Provision an API app with a new gateway](https://azure.microsoft.com/documentation/templates/201-api-app-gateway-new)
+- [Create a Logic App plus API app using a template](https://azure.microsoft.com/documentation/templates/201-logic-app-api-app-create)
+- [Logic app that sends a text message when an alert fires](https://azure.microsoft.com/documentation/templates/201-alert-to-text-message-with-logic-app)
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- テンプレートの構造の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+- For information about the template structure, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
 
-<!---HONumber=AcomDC_0406_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

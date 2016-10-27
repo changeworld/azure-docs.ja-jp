@@ -3,7 +3,7 @@
    description="クラシック デプロイメント モデルにおける Windows 仮想マシンに関する Microsoft Azure ドキュメント記事の一覧"
    services="virtual-machines-windows"
    documentationCenter=""
-   authors="dlepow"
+   authors="cynthn"
    manager="timlt"
    tags="azure-service-management"
    editor=""/>
@@ -15,9 +15,10 @@
    ms.tgt_pltfrm="vm-windows"
    ms.workload="infrastructure-services"
    ms.date="08/05/2016"
-   ms.author="danlep"/>
+   ms.author="cynthn"/>
 
-# クラシック デプロイメント モデルにおける Windows VM に関する技術解説記事
+
+# <a name="technical-articles-for-windows-vms-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルにおける Windows VM に関する技術解説記事
 
 
 ここでは、クラシック デプロイメント モデルで Windows ベースの Azure 仮想マシンを作成および管理するのに必要なすべてのドキュメントを紹介します。
@@ -25,7 +26,7 @@
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 
-## Overview
+## <a name="overview"></a>Overview
 
 [仮想マシンについて](virtual-machines-windows-about.md)
 
@@ -37,7 +38,7 @@
 
 
 
-## 環境のセットアップ
+## <a name="environment-setup"></a>環境のセットアップ
 
 [無料アカウント](https://azure.microsoft.com/free/)
  
@@ -46,7 +47,7 @@
 [Azure CLI のインストール](../xplat-cli-install.md)
 
 
-## 作業開始
+## <a name="get-started"></a>作業開始
 [Windows VM のラーニング パス](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
 
 [Azure クラシック ポータルで Windows 仮想マシンを作成する](virtual-machines-windows-classic-tutorial.md)
@@ -56,7 +57,7 @@
 
 
 
-## プラン
+## <a name="plan"></a>プラン
 
 [クラシック仮想マシンのイメージについて](virtual-machines-windows-classic-about-images.md)
 
@@ -71,7 +72,7 @@
 [仮想マシンの可用性セットの作成](virtual-machines-windows-classic-configure-availability.md)
 
 
-## デプロイ
+## <a name="deploy"></a>デプロイ
 
 [Windows を実行するカスタム仮想マシンの作成](virtual-machines-windows-classic-createportal.md)
 
@@ -86,12 +87,12 @@
 [Azure の仮想マシンにカスタム データを挿入する](virtual-machines-windows-classic-inject-custom-data.md)
 
 
-## 管理
+## <a name="manage"></a>管理
 
 [Azure PowerShell を使用した仮想マシンの管理](virtual-machines-windows-classic-manage-psh.md)
-	
+    
 [従来の VNet を新しい VNet に接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
-	
+    
 [仮想マシンのエージェントおよび拡張機能について](virtual-machines-windows-classic-agents-and-extensions.md)
 
 [仮想マシン拡張機能の管理](virtual-machines-windows-classic-manage-extensions.md)
@@ -106,43 +107,43 @@
 
 
 
-## 構成
+## <a name="configure"></a>構成
 
 [Windows 仮想マシンのパスワードまたはリモート デスクトップ サービスをリセットする方法](virtual-machines-windows-reset-rdp.md)
 
 [仮想マシンの拡張機能とその機能について](virtual-machines-windows-extensions-features.md)
 
 [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](virtual-machines-windows-classic-install-symantec.md)
-	
+    
 [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](virtual-machines-windows-classic-install-trend.md)
 
 [クラシック デプロイ モデルに仮想マシンの可用性セットを構成する方法](virtual-machines-windows-classic-configure-availability.md)
 
 [クラシック Azure 仮想マシンでエンドポイントをセットアップする方法](virtual-machines-windows-classic-setup-endpoints.md)
 
-## Storage
+## <a name="storage"></a>Storage
 
 [Azure 仮想マシン用のディスクと VHD について](virtual-machines-windows-about-disks-vhds.md)
-	
+    
 [クラシック Windows 仮想マシンにデータ ディスクを接続する方法](virtual-machines-windows-classic-attach-disk.md)
 
 [クラシック Windows 仮想マシンからデータ ディスクを切断する方法](virtual-machines-windows-classic-detach-disk.md)
 
 [Windows 仮想マシンのデータ ドライブとしての D ドライブの使用](virtual-machines-windows-classic-change-drive-letter.md)
 
-## ネットワーク
+## <a name="networking"></a>ネットワーク
 
 [Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
 
 [仮想ネットワークまたはクラウド サービスで構成されるクラシック デプロイ モデルで作成された仮想マシンに接続します。](virtual-machines-windows-classic-connect-vms.md)
-	
+    
 [Azure PowerShell で NSG を管理する方法](../virtual-network/virtual-networks-create-nsg-classic-ps.md)
-	
+    
 [ロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-classic-portal.md)
 
-	
+    
 
-## 開発
+## <a name="develop"></a>開発
 
 [Visual Studio での Azure Virtual Machines の作成と管理](virtual-machines-windows-classic-manage-visual-studio.md)
 
@@ -151,10 +152,10 @@
 [仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法](virtual-machines-windows-classic-java-run-compute-intensive-task.md)
 
 [Windows Server VM での Django Hello World Web アプリケーション](virtual-machines-windows-classic-python-django-web-app.md)
-		
+        
 
 
-## ワークロード
+## <a name="workloads"></a>ワークロード
 
 [HPC Pack](virtual-machines-windows-hpcpack-cluster-options.md)
 
@@ -171,7 +172,7 @@
 [Tomcat](virtual-machines-windows-classic-java-run-tomcat-app-server.md)
 
 
-## リファレンス
+## <a name="reference"></a>リファレンス
 [サービス管理モードでの Azure CLI コマンド](../virtual-machines-command-line-tools.md)
 
 [サービス管理 REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx)
@@ -180,7 +181,7 @@
 
 [Azure サービス管理 PowerShell コマンドレットのリファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn708504.aspx)
 
-## トラブルシューティング
+## <a name="troubleshooting"></a>トラブルシューティング
 
 [Windows を実行する Azure 仮想マシンへの Remote Desktop 接続に関するトラブルシューティング](virtual-machines-windows-troubleshoot-rdp-connection.md)
 
@@ -192,4 +193,12 @@
 
 [Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

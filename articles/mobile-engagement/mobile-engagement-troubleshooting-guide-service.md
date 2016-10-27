@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure モバイル エンゲージメント関連のトラブルシューティング ガイド - サービス" 
-   description="Azure モバイル エンゲージメント関連のトラブルシューティング ガイド" 
+   pageTitle="Azure Mobile Engagement Troubleshooting Guide - Service" 
+   description="Troubleshooting Guides for Azure Mobile Engagement" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -16,77 +16,82 @@
    ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
-# サービスの問題に関するトラブルシューティング ガイド
 
-次に説明するのは、Azure モバイル エンゲージメントの実行方法に関して発生する可能性のある問題です。
+# <a name="troubleshooting-guide-for-service-issues"></a>Troubleshooting guide for Service issues
 
-## サービスの停止
+The following are possible issues you may encounter with how Azure Mobile Engagement runs.
 
-### 問題
-- Azure モバイル エンゲージメント サービスの停止に起因すると思われる問題です。
+## <a name="service-outages"></a>Service Outages
 
-### 原因
-- Azure モバイル エンゲージメント サービスの停止に起因すると思われる問題は、いくつかの異なる問題が原因で発生します。
-    - すべての Azure モバイル エンゲージメントに元からシステム的に表れる単独の問題
-    - サーバーの停止に起因する既知の問題 (サーバー ステータスに表示されないことがあります)。
-	- スケジュールの遅延、ターゲティングのエラー、バッジ更新に関する問題、統計情報収集の停止、プッシュ機能の停止、API 機能の停止、新しいアプリやユーザーを作成できない、DNS エラー、デバイス上の UI、API、アプリのタイムアウト エラー。
-    - クラウドの依存関係の停止。[Azure サービスの状態](http://status.azure.com/)
-    - プッシュ通知サービス (PNS) の依存関係の停止
-    - アプリ ストアの停止
+### <a name="issue"></a>Issue
+- Issues that appear to be caused by Azure Mobile Engagement Service Outages.
 
-1) 問題がシステムの問題であるかどうかをテストするには、同じ機能を、以下を変えてテストします。
+### <a name="causes"></a>Causes
+- Issues that appear to be caused by Azure Mobile Engagement Service Outages can be caused by several different issues:
+    - Isolated issues that originally appear systemic to all of Azure Mobile Engagement
+    - Known issues caused by server outages (not always shows in server status):
+    - Scheduling delays, Targeting errors, Badge update issues, Statistics stop collecting, Push stops working, API's stop working, New apps or users can't be created, DNS errors, and Timeout errors in the UI, API, or Apps on a device.
+    - Cloud Dependency Outages [Azure Service Status](http://status.azure.com/)
+    - Push Notification Services (PNS) Dependency Outages
+    - App Store Outages
+
+1) To test to see if the problem is systemic you can test the same function from a different
    
-   - Azure Mobile Engagement 統合アプリケーション
-   - テスト デバイス
-   - テスト デバイスの OS バージョン
-   - キャンペーン
-   - 管理者のユーザー アカウント
-   - ブラウザー (Firefox、Chrome など)
-   - コンピューター
+   - Azure Mobile Engagement integrated application
+   - Test device
+   - Test device OS version
+   - Campaign
+   - Administrator user account
+   - Browser (IE, Firefox, Chrome, etc.)
+   - Computer
 
-2) 問題が UI または API にのみ影響するかどうかをテストするには、以下を実行します。
+2) To test if the problem only affects the UI or the API's:
 
-   - 同じ機能を、Azure Mobile Engagement UI と Azure Mobile Engagement API の両方からテストします。
+   - Test the same function from both the Azure Mobile Engagement UI and the Azure Mobile Engagement API's.
 
-3) 携帯電話ネットワークに問題があるかどうかをテストするには、以下を実行します。
+3) To test if the problem is with your Cellular Phone Network:
 
-   - WIFI を使用してインターネットに接続し、3 G 携帯電話ネットワーク経由で接続している間にテストを行います。
-   - ファイアウォールがいずれかの Azure Mobile Engagement IP アドレスまたはポートをブロックしていないことを確認します。
+   - Test while connected to the Internet via WIFI and while connected via your 3G cellular phone network.
+   - Confirm that your firewall is not blocking any of the Azure Mobile Engagement IP Addresses or Ports.
 
-4) デバイスに問題があるかどうかをテストするには、以下を実行します。
+4) To test if the problem is with your Device:
 
-   - デバイスが、別の Azure Mobile Engagement 統合アプリを使用して Azure Mobile Engagement に接続できるかどうかをテストします。
-   - Azure Mobile Engagement UI で確認できるイベント、ジョブ、およびクラッシュを電話から生成できることをテストします。
-   - Azure Mobile Engagement UI から、デバイス ID に基づいてデバイスにプッシュ通知を送信できるかどうかをテストします。
+   - Test if your Device is able to connect to Azure Mobile Engagement with another Azure Mobile Engagement integrated app.
+   - Test that you can generate Events, Jobs, and Crashes from your phone that can be seen in the Azure Mobile Engagement UI. 
+   - Test if you can send push notifications from the Azure Mobile Engagement UI to your device based on its Device ID. 
 
-5) アプリに問題があるかどうかをテストするには、以下を実行します。
+5) To test if the problem is with your App:
 
-   - エミュレーターをインストールし、物理デバイスの代わりにエミュレーターからアプリケーションをテストします。
+   - Install and test your application from an emulator instead of from a physical device:
    
-6) エンド ユーザー デバイスへの OS のアップグレードに問題があるかどうかをテストするには、以下を実行します。解決するには SDK のアップグレードが必要です。
+6) To test if the problem is with OS upgrades to end user Devices, which require an SDK upgrade to resolve:
 
-   - アプリケーションを、OS のバージョンが異なるさまざまなデバイスでテストします。
-   - 最新バージョンの SDK を使用していることを確認します。
+   - Test your application on different devices with different versions of the OS.
+   - Confirm that you are using the most recent version of the SDK.
  
-## 接続と誤った情報に関する問題
+## <a name="connectivity-and-incorrect-information-issues"></a>Connectivity and Incorrect Information Issues
 
-### 問題
-- Azure モバイル エンゲージメント UI にログインする際の問題。
-- Azure モバイル エンゲージメント API との接続エラー。
-- デバイス API を使用してアプリ情報タグをアップロードする際の問題。
-- Azure モバイル エンゲージメントからログをダウンロードまたはデータをエクスポートする際の問題。
-- 正しくない情報が Azure モバイル エンゲージメント UI に表示される。
-- 正しくない情報が Azure モバイル エンゲージメント ログに表示される。
+### <a name="issue"></a>Issue
+- Problems logging into the Azure Mobile Engagement UI.
+- Connection errors with the Azure Mobile Engagement API's.
+- Problems uploading App Info Tags via the Device API.
+- Problems downloading logs or exported data from Azure Mobile Engagement.
+- Incorrect information shown in the Azure Mobile Engagement UI.
+- Incorrect information shown in Azure Mobile Engagement logs.
 
-### 原因
-* ユーザー アカウントがタスクを実行するのに十分な権限があることを確認します。
-* 問題が 1 台のコンピューターまたはローカル ネットワークに分離されてないことを確認します。
-* Azure モバイル エンゲージメント サービスで障害が報告されていないことを確認します。
-* アプリ情報タグのファイルがすべてのルールに従っていることを確認します。
-	- UTF8 文字セットのみを使用します (ANSI 文字セットはサポートされていません)。
-    - 区切り文字としてコンマ「,」を使用します (サービス要求を開いて、.csv の区切り文字をコンマ「,」からセミコロン「;」などの別の文字に変更するように要求できます)。
-    - ブール値の「TRUE」と「FALSE」には、すべて小文字を使用します。
-    - 最大ファイル サイズの 35 MB よりも小さいファイルを使用します。
+### <a name="causes"></a>Causes
+* Confirm your user account has sufficient permissions to perform the task.
+* Confirm that the problem is not isolated to one computer or your local network.
+* Confirm that that the Azure Mobile Engagement service has no reported outages.
+* Confirm that your App Info Tag files follow all of these rules:
+    - Use only the UTF8 character set (the ANSI character set is not supported).
+    - Use a comma "," as the separator character (you can open a service request to request to change the .csv separator character from a comma "," to another character such as a semi-colon ";").
+    - Use all lower case for Boolean values "true" and "false".
+    - Use a file that is smaller than the maximum file size of 35MB.
  
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -3,4 +3,7 @@
 [Azure CLI](../articles/virtual-network/virtual-network-create-udr-arm-cli.md)
 [Template](../articles/virtual-network/virtual-network-create-udr-arm-template.md)
 
-<!---HONumber=AcomDC_0224_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

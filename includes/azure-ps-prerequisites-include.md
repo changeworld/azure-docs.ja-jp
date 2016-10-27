@@ -1,6 +1,8 @@
-## 前提条件: Azure PowerShell モジュールのインストール
-この記事の手順を実行するには、[Azure PowerShell をインストールして構成し](../articles/powershell-install-configure.md)、手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択する必要があります。
+## <a name="prerequisite:-install-the-azure-powershell-module"></a>Prerequisite: Install the Azure PowerShell Module
+To perform the steps in this article, you'll need to [to install and configure Azure PowerShell](../articles/powershell-install-configure.md) and follow the instructions all the way to the end to sign into Azure and select your subscription.
 
-> [AZURE.NOTE] Azure アカウントをお持ちでない場合は、取得する必要があります。[ここで無料試用版](../articles/active-directory/sign-up-organization.md)にサインアップしてください。
+> [AZURE.NOTE] If you don't have an Azure account, you'll need one. Go sign up for a [free trial here](../articles/active-directory/sign-up-organization.md). 
 
-<!---HONumber=AcomDC_0224_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

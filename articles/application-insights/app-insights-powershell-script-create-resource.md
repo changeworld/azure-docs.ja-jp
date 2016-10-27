@@ -1,39 +1,40 @@
 <properties 
-	pageTitle="Application Insights リソースを作成するための PowerShell スクリプト" 
-	description="Application Insights リソースの作成を自動化します。" 
-	services="application-insights" 
+    pageTitle="PowerShell script to create an Application Insights resource" 
+    description="Automate creation of Application Insights resources." 
+    services="application-insights" 
     documentationCenter="windows"
-	authors="alancameronwills" 
-	manager="douge"/>
+    authors="alancameronwills" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="02/19/2016" 
-	ms.author="awills"/>
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="02/19/2016" 
+    ms.author="awills"/>
 
-#  Application Insights リソースを作成するための PowerShell スクリプト
 
-*Application Insights はプレビュー段階です。*
+#  <a name="powershell-script-to-create-an-application-insights-resource"></a>PowerShell script to create an Application Insights resource
 
-[Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/) を使って新しいアプリケーションを監視する際や、新しいバージョンのアプリケーションを監視する際、Microsoft Azure で新しいリソースをセットアップします。このリソースは、アプリのテレメトリ データを分析、表示する場所です。
+*Application Insights is in preview.*
 
-PowerShell を使用して、新しいリソースの作成を自動化できます。
+When you want to monitor a new application - or a new version of an application - with [Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/), you set up a new resource in Microsoft Azure. This resource is where the telemetry data from your app is analyzed and displayed. 
 
-たとえば、モバイル デバイス アプリを開発している場合、顧客によって使用されている発行済みのアプリのバージョンは常に複数存在する可能性があります。複数のバージョンから取得したテレメトリの結果を混在させないようにします。それで、ビルド プロセスを取得して、各ビルドで新しいリソースを作成します。
+You can automate the creation of a new resource by using PowerShell.
 
-## Application Insights リソースを作成するスクリプト
+For example, if you are developing a mobile device app, it's likely that, at any time, there will be several published versions of your app in use by your customers. You don't want to get the telemetry results from different versions mixed up. So you get your build process to create a new resource for each build.
 
-関連するコマンドレットの仕様を参照してください。
+## <a name="script-to-create-an-application-insights-resource"></a>Script to create an Application Insights resource
+
+See the relevant cmdlet specs:
 
 * [New-AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
 * [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
 
 
-*PowerShell スクリプト*
+*PowerShell Script*  
 
 ```PowerShell
 
@@ -91,26 +92,29 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 
 ```
 
-## iKey を使用して行うこと
+## <a name="what-to-do-with-the-ikey"></a>What to do with the iKey
 
-各リソースは、インストルメンテーション キー (iKey) によって識別されます。iKey はリソース作成スクリプトの出力です。ビルド スクリプトで、アプリに組み込まれた Application Insights SDK に iKey を提供する必要があります。
+Each resource is identified by its instrumentation key (iKey). The iKey is an output of the resource creation script. Your build script should provide the iKey to the Application Insights SDK embedded in your app.
 
-iKey を SDK で使用できるようにする方法は 2 つあります。
+There are two ways to make the iKey available to the SDK:
   
-* [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) の場合: 
+* In [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md): 
  * `<instrumentationkey>`*ikey*`</instrumentationkey>`
-* [初期化コードの場合](app-insights-api-custom-events-metrics.md): 
+* Or in [initialization code](app-insights-api-custom-events-metrics.md): 
  * `Microsoft.ApplicationInsights.Extensibility.
     TelemetryConfiguration.Active.InstrumentationKey = "`*iKey*`";`
 
 
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-* [テンプレートから Application Insights と Web テスト リソースを作成する](app-insights-powershell.md)
-* [PowerShell で Azure 診断の監視を設定する](app-insights-powershell-azure-diagnostics.md) 
-* [PowerShell を使用したアラートの設定](app-insights-powershell-alerts.md)
+* [Create Application Insights and web test resources from templates](app-insights-powershell.md)
+* [Set up monitoring of Azure diagnostics with PowerShell](app-insights-powershell-azure-diagnostics.md) 
+* [Set alerts by using PowerShell](app-insights-powershell-alerts.md)
 
  
 
-<!---HONumber=AcomDC_0224_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

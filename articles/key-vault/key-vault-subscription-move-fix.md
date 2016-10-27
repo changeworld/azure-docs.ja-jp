@@ -1,46 +1,47 @@
 <properties
-	pageTitle="サブスクリプション移行後のキー コンテナー テナント ID の変更 | Microsoft Azure"
-	description="サブスクリプションを別のテナントに移行した後にキー コンテナーのテナント ID を切り替える方法について説明します。"
-	services="key-vault"
-	documentationCenter=""
-	authors="amitbapat"
-	manager="mbaldwin"
-	tags="azure-resource-manager"/>
+    pageTitle="Change key vault tenant ID after subscription move | Microsoft Azure"
+    description="Learn how to switch tenant ID for a key vault after a subscription is moved to a different tenant"
+    services="key-vault"
+    documentationCenter=""
+    authors="amitbapat"
+    manager="mbaldwin"
+    tags="azure-resource-manager"/>
 
 <tags
-	ms.service="key-vault"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="hero-article"
-	ms.date="09/13/2016"
-	ms.author="ambapat"/>
+    ms.service="key-vault"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="hero-article"
+    ms.date="09/13/2016"
+    ms.author="ambapat"/>
 
-# サブスクリプション移行後のキー コンテナー テナント ID の変更
-### Q: テナント A からテナント B にサブスクリプションを移行しました。既存のキー コンテナーのテナント ID を変更し、テナント B 内のプリンシパルに正しい ACL を設定する方法を教えてください。
 
-サブスクリプション内で新しいキー コンテナーを作成すると、作成したキー コンテナーは、そのサブスクリプションの既定の Azure Active Directory テナント ID に自動的に関連付けられます。また、すべてのアクセス ポリシー エントリがこのテナント ID に関連付けられます。テナント A からテナント B に Azure サブスクリプションを移行すると、テナント B のプリンシパル (ユーザーとアプリケーション) は既存のキー コンテナーにアクセスできなくなります。この問題を解決するには、次のことを行う必要があります。
+# <a name="change-key-vault-tenant-id-after-subscription-move"></a>Change key vault tenant ID after subscription move
+### <a name="q:-my-subscription-was-moved-from-tenant-a-to-tenant-b.-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b?"></a>Q: My subscription was moved from tenant A to tenant B. How do I change the tenant ID for my existing key vault and set correct ACLs for principals in tenant B?
 
-- このサブスクリプションにあるすべての既存のキー コンテナーに関連付けられたテナント ID を、テナント B に変更する
-- すべての既存のアクセス ポリシー エントリを削除する
-- テナント B に関連付けられた新しいアクセス ポリシー エントリを追加する
+When you create a new key vault in a subscription, it is automatically tied to the default Azure Active Directory tenant ID for that subscription. All access policy entries are also tied to this tenant ID. When you move your Azure subscription from tenant A to tenant B, your existing key vaults are inaccessible by the principals (users and applications) in tenant B. To fix this issue, you need to
 
-たとえば、テナント A からテナント B に移行したサブスクリプションに "myvault" というキー コンテナーがあるとすると、このキー コンテナーのテナント ID を変更して古いアクセス ポリシーを削除する方法は、次のようになります。
+- change the tenant ID associated with all existing key vaults in this subscription to tenant B
+- remove all existing access policy entries
+- add new access policy entries that are associated with tenant B.
+
+For example, if you have key vault 'myvault' in a subscription that has been moved from tenant A to tenant B, here's how to change the tenant ID for this key vault and remove old access policies.
 
 <pre>
-$vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId
-$vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties
-$vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId
-$vault.Properties.AccessPolicies = @()
-Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
+$vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId $vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties $vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId $vault.Properties.AccessPolicies = @() Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
-このコンテナーは移行前にテナント A にあったため、**$vault.Properties.TenantId** の元の値はテナント A です。一方、**(Get-AzureRmContext).Tenant.TenantId** の値はテナント B になります。
+Since this vault was in tenant A before move original value of **$vault.Properties.TenantId** is tenant A, while **(Get-AzureRmContext).Tenant.TenantId** is tenant B.
 
-これで、コンテナーが正しいテナント ID に関連付けられ、古いアクセス ポリシー エントリが削除されたので、[Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/mt603625.aspx) で新しいアクセス ポリシー エントリを設定します。
+Now that your vault is associated with the correct tenant Id and old access policy entries are removed, set new access policy entries with [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/mt603625.aspx).
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-- Key Vault に関する質問がある場合は、[Azure Key Vault フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)にアクセスしてください。
+- If you have questions about Key Vault, visit the [Azure Key Vault Forums](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

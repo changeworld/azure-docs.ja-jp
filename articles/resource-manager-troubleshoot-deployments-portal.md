@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ポータルでのデプロイ操作の表示 | Microsoft Azure"
-   description="Azure ポータルを使用して、リソース マネージャーのデプロイからのエラーを検出する方法について説明します。"
+   pageTitle="View deployment operations with portal | Microsoft Azure"
+   description="Describes how to use the Azure portal to detect errors from Resource Manager deployment."
    services="azure-resource-manager,virtual-machines"
    documentationCenter=""
    tags="top-support-issue"
@@ -17,94 +17,99 @@
    ms.date="06/15/2016"
    ms.author="tomfitz"/>
 
-# Azure ポータルでのデプロイ操作の表示
+
+# <a name="view-deployment-operations-with-azure-portal"></a>View deployment operations with Azure Portal
 
 > [AZURE.SELECTOR]
-- [ポータル](resource-manager-troubleshoot-deployments-portal.md)
+- [Portal](resource-manager-troubleshoot-deployments-portal.md)
 - [PowerShell](resource-manager-troubleshoot-deployments-powershell.md)
 - [Azure CLI](resource-manager-troubleshoot-deployments-cli.md)
 - [REST API](resource-manager-troubleshoot-deployments-rest.md)
 
-デプロイの操作は、Azure ポータルから確認することができます。最も一般的な確認の対象としては、デプロイ中にエラーが発生したときに実行されていた操作が挙げられます。この記事では、失敗した操作の表示について重点的に取り上げます。Azure ポータルには、すぐにエラーを見つけ出し、有効と考えられる解決策を特定できるインターフェイスが用意されています。
+You can view the operations for a deployment through the Azure portal. You may be most interested in viewing the operations when you have received an error during deployment so this article focuses on viewing operations that have failed. The portal provides an interface that enables you to easily find the errors and determine potential fixes.
 
 [AZURE.INCLUDE [resource-manager-troubleshoot-introduction](../includes/resource-manager-troubleshoot-introduction.md)]
 
-## デプロイ操作を使用してトラブルシューティングを行う
+## <a name="use-deployment-operations-to-troubleshoot"></a>Use deployment operations to troubleshoot
 
-デプロイ操作を表示するには、次の手順に従います。
+To see the deployment operations, use the following steps:
 
-1. デプロイに含まれるリソース グループには、最後のデプロイの状態を確認します。この状態を選択して、詳細を取得することができます。
+1. For the resource group involved in the deployment, notice the status of the last deployment. You can select this status to get more details.
 
-    ![デプロイの状態](./media/resource-manager-troubleshoot-deployments-portal/deployment-status.png)
+    ![deployment status](./media/resource-manager-troubleshoot-deployments-portal/deployment-status.png)
 
-2. デプロイの最近の履歴が表示されます。失敗したデプロイを選択します。
+2. You will see the recent deployment history. Select the deployment that failed.
 
-    ![デプロイの状態](./media/resource-manager-troubleshoot-deployments-portal/select-deployment.png)
+    ![deployment status](./media/resource-manager-troubleshoot-deployments-portal/select-deployment.png)
 
-3. **[失敗しました。詳細については、ここをクリックしてください]** を選択して、なぜデプロイに失敗したかの説明を表示します。以下の画像を見ると、DNS レコードの重複が原因であることがわかります。
+3. Select **Failed. Click here for details** to see a description of why the deployment failed. In the image below, the DNS record is not unique.  
 
-    ![失敗したデプロイの表示](./media/resource-manager-troubleshoot-deployments-portal/view-error.png)
+    ![view failed deployment](./media/resource-manager-troubleshoot-deployments-portal/view-error.png)
 
-    このエラー メッセージは、トラブルシューティングの糸口をつかむうえでは十分でしょう。しかし、どのようなタスクが実行されたのかについて、もっと詳しい情報が必要である場合は、以降の手順に従って操作を確認することができます。
+    This error message should be enough for you to begin troubleshooting. However, if you need more details about which tasks were completed, you can view the operations as shown in the following steps.
 
-4. すべてのデプロイ操作は、**[デプロイ]** ブレードで表示することができます。いずれかの操作を選択すると、さらに詳しい情報が表示されます。
+4. You can view all of the deployment operations in the **Deployment** blade. Select any operation to see more details.
 
     ![view operations](./media/resource-manager-troubleshoot-deployments-portal/view-operations.png)
 
-    このケースでは、ストレージ アカウント、仮想ネットワーク、可用性セットは正しく作成されていることが確認できます。パブリック IP アドレスはエラーとなり、他のリソースは実行されていません。
+    In this case, you see that the storage account, virtual network, and availability set were successfully created. The public IP address failed, and other resources were not attempted.
 
-5. デプロイのイベントは、**[イベント]** を選択して表示できます。
+5. You can view events for the deployment by selecting **Events**.
 
     ![view events](./media/resource-manager-troubleshoot-deployments-portal/view-events.png)
 
-6. デプロイに関するイベントをすべて表示し、いずれかを選択すると、さらに詳しい情報が表示されます。
+6. You see all of the events for the deployment and select any one for more details.
 
     ![see events](./media/resource-manager-troubleshoot-deployments-portal/see-all-events.png)
 
-## 監査ログを使用してトラブルシューティングを行う
+## <a name="use-audit-logs-to-troubleshoot"></a>Use audit logs to troubleshoot
 
 [AZURE.INCLUDE [resource-manager-audit-limitations](../includes/resource-manager-audit-limitations.md)]
 
-デプロイのエラーを表示するには、次の手順を使用します。
+To see errors for a deployment, use the following steps:
 
-1. **[監査ログ]** を選択してリソース グループの監査ログを表示します。
+1. View the audit logs for a resource group by selecting **Audit Logs**.
 
-    ![監査ログの選択](./media/resource-manager-troubleshoot-deployments-portal/select-audit-logs.png)
+    ![select audit logs](./media/resource-manager-troubleshoot-deployments-portal/select-audit-logs.png)
 
-2. **[監査ログ]** ブレードで、サブスクリプション内のすべてのリソース グループに対する最近の操作の概要が表示されます。これには、時間のグラフィック表示、操作の状態、および操作の一覧が含まれます。
+2. In the **Audit Logs** blade, you will see a summary of recent operations for all of the resource groups in your subscription. It includes a graphical representation of the time and status of the operations, as well as a list of the operations.
 
-    ![アクションの表示](./media/resource-manager-troubleshoot-deployments-portal/audit-summary.png)
+    ![show actions](./media/resource-manager-troubleshoot-deployments-portal/audit-summary.png)
 
-3. 特定の条件に注目するために、監査ログの表示をフィルター処理することができます。**[監査ログ]** ブレードの上部にある **[フィルター]** を選択します。
+3. You can filter your view of the audit logs to focus on particular conditions. Select **Filter** at the top of the **Audit logs** blade.
 
-    ![ログのフィルター](./media/resource-manager-troubleshoot-deployments-portal/filter-logs.png)
+    ![filter logs](./media/resource-manager-troubleshoot-deployments-portal/filter-logs.png)
 
-4. **[フィルター]** ブレードで条件を選択し、目的の操作だけが表示されるよう監査ログの表示を制限します。たとえば、操作をフィルター処理して、特定のリソース グループのエラーのみを表示することができます。
+4. From the **Filter** blade, select conditions to restrict your view of the audit logs to only those operations you want to see. For example, you can filter operations to only display errors for the resource group.
 
-    ![フィルター オプションの設定](./media/resource-manager-troubleshoot-deployments-portal/set-filter.png)
+    ![set filter options](./media/resource-manager-troubleshoot-deployments-portal/set-filter.png)
 
-5. 時間間隔を設定して、操作をさらにフィルター処理できます。次の図では、特定の 20 分間にビューをフィルター処理します。
+5. You can further filter operations by setting a time span. The following image filters the view to a particular 20-minute timespan.
 
-    ![時間の設定](./media/resource-manager-troubleshoot-deployments-portal/select-time.png)
+    ![set time](./media/resource-manager-troubleshoot-deployments-portal/select-time.png)
 
-6. 一覧で任意の操作を選択できます。調査するエラーを含む操作を選択します。
+6. You can select any of the operations in the list. Pick the operation that contains the error you wish to research.
 
-    ![操作の選択](./media/resource-manager-troubleshoot-deployments-portal/select-operation.png)
+    ![select operation](./media/resource-manager-troubleshoot-deployments-portal/select-operation.png)
   
-7. 操作のすべてのイベントが表示されます。サマリーの **[関連付け ID]** を確認します。この ID は、関連するイベントを追跡するために使用されます。これは、問題のトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときに、役立つ場合があります。イベントのいずれかを選択して、イベントに関する詳細を表示することができます。
+7. You will see all of the events for that operation. Notice the **Correlation IDS** in the summary. This ID is used to track related events. It can be helpful when working with technical support to troubleshoot an issue. You can select any of event to see details about the event.
 
-    ![イベントの選択](./media/resource-manager-troubleshoot-deployments-portal/select-event.png)
+    ![select event](./media/resource-manager-troubleshoot-deployments-portal/select-event.png)
 
-8. イベントに関する詳細が表示されます。特に、エラーに関する情報の **[プロパティ]** に注意します。
+8. You will see details about the event. In particular, pay attention to the **Properties** for information about the error.
 
-    ![監査ログの詳細の表示](./media/resource-manager-troubleshoot-deployments-portal/audit-details.png)
+    ![show audit log details](./media/resource-manager-troubleshoot-deployments-portal/audit-details.png)
 
-監査ログに適用したフィルターは、次回その監査ログを表示するまで保持されるため、操作のビューの範囲を広げるために、これらの値を変更する必要がある場合があります。
+The filter you applied to the audit log is retained the next time you view it, so you may need to change those values to broaden your view of the operations.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- 特定のデプロイ エラーの解決については、[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
-- 他の種類のアクションを監視するために監査ログを使用する方法については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
-- デプロイを実行する前に検証するには、[Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
+- For help with resolving particular deployment errors, see [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md).
+- To learn about using the audit logs to monitor other types of actions, see [Audit operations with Resource Manager](resource-group-audit.md).
+- To validate your deployment prior to executing it, see [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md).
 
-<!---HONumber=AcomDC_0622_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,8 +1,11 @@
 
-このトピックの目的は、できるだけ迅速に Notification Hubs の使用を開始できるようにすることです。このトピックでは、Notification Hubs の基本的な概念に集中するために、非常に単純なブロードキャスト シナリオの例を示しています。
+The goal of this topic is to help you get started using Notification Hubs quickly as possible. This topic presents a very simple broadcast scenario example in order to concentrate on the basic concepts for Notification Hubs.
 
-既に Notification Hubs の使用に慣れている場合は、左側のナビゲーションから別のトピックを選択するか、「[次のステップ](#next-steps)」で関連するリンクを参照できます。
+If you are already familiar with Notification Hubs, you may want to select another topic from the left-navigation or see the relevant links in [Next steps](#next-steps).
 
-マイクロソフトでは、お客様からのフィードバックを真剣に受け止めています。このトピックを完了するうえで問題がある場合、またはこのコンテンツを改善するためのご提案がある場合には、ページの下部でフィードバックを送信できます。
+We do take your feedback seriously. If you have any difficulties completing this topic, or recommendations for improving this content, we would appreciate your feedback at the bottom of the page.
 
-<!---HONumber=Oct15_HO3-->
+
+<!--HONumber=Oct16_HO2-->
+
+

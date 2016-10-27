@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Batch PowerShell の使用 | Microsoft Azure"
-   description="Azure Batch サービスの管理に使用できる Azure PowerShell のコマンドレットについて簡単に説明します。"
+   pageTitle="Get started with Azure Batch PowerShell | Microsoft Azure"
+   description="Get a quick introduction to the Azure PowerShell cmdlets you can use to manage the Azure Batch service"
    services="batch"
    documentationCenter=""
    authors="dlepow"
@@ -16,44 +16,45 @@
    ms.date="07/28/2016"
    ms.author="danlep"/>
 
-# Azure Batch PowerShell コマンドレットの使用
-Batch API、Azure ポータル、Azure コマンド ライン インターフェイス (CLI) を使用して実行するタスクの多くは、Azure Batch PowerShell コマンドレットで実行したりスクリプト化したりすることができます。この記事では、Batch アカウントを管理したり、プール、ジョブ、タスクといった Batch リソースを操作したりするときに使用できるコマンドレットについて説明します。この記事は、Azure PowerShell Version 1.6.0 のコマンドレットを基にしています。
 
-すべての Batch コマンドレットの一覧およびコマンドレットの詳細な構文については、[Azure Batch コマンドレットのリファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)を参照してください。
+# <a name="get-started-with-azure-batch-powershell-cmdlets"></a>Get started with Azure Batch PowerShell cmdlets
+With the Azure Batch PowerShell cmdlets, you can perform and script many of the same tasks you carry out with the Batch APIs, the Azure portal, and the Azure Command-Line Interface (CLI). This is a quick introduction to the cmdlets you can use to manage your Batch accounts and work with your Batch resources such as pools, jobs, and tasks. This article is based on cmdlets in Azure PowerShell version 1.6.0.
+
+For a complete list of Batch cmdlets and detailed cmdlet syntax, see the [Azure Batch cmdlet reference](https://msdn.microsoft.com/library/azure/mt125957.aspx). 
 
 
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-* **Azure PowerShell** - Azure PowerShell をダウンロードしてインストールする手順については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」をご覧ください。
+* **Azure PowerShell** - See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for instructions to download and install Azure PowerShell. 
    
-    * Azure Batch コマンドレットは Azure Resource Manager モジュールに付属しているので、**Login-AzureRmAccount** コマンドレットを使用してサブスクリプションに接続する必要があります。
+    * Because the Azure Batch cmdlets ship in the Azure Resource Manager module, you'll need to run the **Login-AzureRmAccount** cmdlet to connect to your subscription. 
     
-    * 最新のサービスや機能強化を活かすためにも、Azure PowerShell は定期的に更新することをお勧めします。
+    * We recommend that you update your Azure PowerShell frequently to take advantage of service updates and enhancements. 
     
-* **Batch プロバイダーの名前空間に登録する (1 回限りの操作)** - Batch アカウントを利用するには、Batch プロバイダーの名前空間に登録する必要があります。この操作は、サブスクリプションごとに 1 回のみ実行する必要があります。次のコマンドレットを実行します。
+* **Register with the Batch provider namespace (one-time operation)** - Before working with your Batch accounts, you have to register with the Batch provider namespace. This operation only needs to be performed once per subscription. Run the following cmdlet:
 
         Register-AzureRMResourceProvider -ProviderNamespace Microsoft.Batch
 
 
-## Batch アカウントとキーを管理する
+## <a name="manage-batch-accounts-and-keys"></a>Manage Batch accounts and keys
 
-### Batch アカウントを作成する
+### <a name="create-a-batch-account"></a>Create a Batch account
 
-**New-AzureRmBatchAccount** は、指定したリソース グループに新しい Batch アカウントを作成します。リソース グループがない場合は、[New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx) コマンドレットを実行して作成し、**Location** パラメーターでいずれかの Azure リージョン ("米国中央部" など) を指定します 次に例を示します。
+**New-AzureRmBatchAccount** creates a new Batch account in a specified resource group. If you don't already have a resource group, create one by running the [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/azure/mt603739.aspx) cmdlet, specifying one of the Azure regions in the **Location** parameter, such as "Central US". For example:
 
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
 
-次に、新しい Batch アカウントをリソース グループに作成します。<*account\_name*> にアカウントの名前を指定したうえで、リソース グループの場所と名前を指定します。Batch アカウントの作成は、完了までにしばらく時間がかかる場合があります。次に例を示します。
+Then, create a new Batch account account in the resource group, specifying a name for the account in <*account_name*> and the location and name of your resource group. Creating the Batch account can take some time to complete. For example:
 
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName MyBatchResourceGroup
 
-> [AZURE.NOTE] Batch アカウント名は、リソース グループの Azure リージョン内で重複しないこと、文字数が 3 ～ 24 文字であること、小文字と数字のみで構成されていることが必要になります。
+> [AZURE.NOTE] The Batch account name must be unique to the Azure region for the resource group, contain between 3 and 24 characters, and use lowercase letters and numbers only.
 
-### アカウントのアクセス キーを取得する
-**Get-AzureRmBatchAccountKeys** は、Azure Batch アカウントに関連付けられているアクセス キーを示します。たとえば、作成したアカウントのプライマリ キーとセカンダリ キーを取得するには、次のように実行します。
+### <a name="get-account-access-keys"></a>Get account access keys
+**Get-AzureRmBatchAccountKeys** shows the access keys associated with an Azure Batch account. For example, run the following to get the primary and secondary keys of the account you created.
 
     $Account = Get-AzureRmBatchAccountKeys –AccountName <accountname>
 
@@ -62,68 +63,68 @@ Batch API、Azure ポータル、Azure コマンド ライン インターフェ
     $Account.SecondaryAccountKey
 
 
-### 新しいアクセス キーを生成する
-**New-AzureRmBatchAccountKey** は、Azure Batch アカウントの新しいプライマリ アカウント キーまたはセカンダリ アカウント キーを生成します。たとえば、Batch アカウントの新しいプライマリ キーを生成するには、次のように入力します。
+### <a name="generate-a-new-access-key"></a>Generate a new access key
+**New-AzureRmBatchAccountKey** generates a new primary or secondary account key for an Azure Batch account. For example, to generate a new primary key for your Batch account, type:
 
 
     New-AzureRmBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 
-> [AZURE.NOTE] 新しいセカンダリ キーを生成するには、**KeyType** パラメーターの "Secondary" を指定します。プライマリ キーとセカンダリ キーは個別に再生成する必要があります。
+> [AZURE.NOTE] To generate a new secondary key, specify "Secondary" for the **KeyType** parameter. You have to regenerate the primary and secondary keys separately.
 
-### Batch アカウントを削除する
-**Remove-AzureRmBatchAccount** は、Batch アカウントを削除します。次に例を示します。
+### <a name="delete-a-batch-account"></a>Delete a Batch account
+**Remove-AzureRmBatchAccount** deletes a Batch account. For example:
 
 
     Remove-AzureRmBatchAccount -AccountName <account_name>
 
-メッセージが表示されたら、削除するアカウントを確認します。アカウントの削除は完了するまでに時間がかかる場合があります。
+When prompted, confirm you want to remove the account. Account removal can take some time to complete.
 
-## BatchAccountContext オブジェクトを作成する
+## <a name="create-a-batchaccountcontext-object"></a>Create a BatchAccountContext object
 
-Batch PowerShell コマンドレットを使用して Batch のリソース (プール、ジョブ、タスクなど) を認証するにはまず、BatchAccountContext オブジェクトを作成して、アカウントの名前とキーを格納します。
+To authenticate using the Batch PowerShell cmdlets when you create and manage Batch pools, jobs, tasks, and other resources, first create a BatchAccountContext object to store your account name and keys:
 
     $context = Get-AzureRmBatchAccountKeys -AccountName <account_name>
 
-BatchAccountContext オブジェクトは、**BatchContext** パラメーターを引数として受け取るコマンドレットに渡します。
+You pass the BatchAccountContext object into cmdlets that use the **BatchContext** parameter.
 
-> [AZURE.NOTE] 既定では、アカウントのプライマリ キーは認証に使用されますが、BatchAccountContext オブジェクトの **KeyInUse** プロパティ `$context.KeyInUse = "Secondary"` を変更することで使用するキーを明示的に選択できます。
+> [AZURE.NOTE] By default, the account's primary key is used for authentication, but you can explicitly select the key to use by changing your BatchAccountContext object’s **KeyInUse** property: `$context.KeyInUse = "Secondary"`.
 
 
 
-## Batch リソースを作成および変更する
-Batch アカウントでリソースを作成するには、**New-AzureBatchPool**、**New-AzureBatchJob**、**New-AzureBatchTask** などのコマンドレットを使用します。既存のリソースのプロパティを更新するための対応する **Get-** コマンドレットと **Set-** コマンドレットがあり、Batch アカウントのリソースを削除するための **Remove-** コマンドレットがあります。
+## <a name="create-and-modify-batch-resources"></a>Create and modify Batch resources
+Use cmdlets such as **New-AzureBatchPool**, **New-AzureBatchJob**, and **New-AzureBatchTask** to create resources under a Batch account. There are corresponding **Get-** and **Set-** cmdlets to update the properties of existing resources, and  **Remove-** cmdlets to remove resources under a Batch account. 
 
-以下の例を見るとわかるように、これらのコマンドレットの多くは、その使用時に、BatchContext オブジェクトを渡すことに加え、リソースの詳細な設定を含んだオブジェクトを作成するか、引数として渡す必要があります。その他の例については、各コマンドレットの詳細なヘルプを参照してください。
+When using many of these cmdlets, in addition to passing a BatchContext object, you need to create or pass objects that contain detailed resource settings, as shown in the following example. See the detailed help for each cmdlet for additional examples.
 
-### Create a Batch pool
+### <a name="create-a-batch-pool"></a>Create a Batch pool
 
-Batch プールを作成または更新する際は、コンピューティング ノードのオペレーティング システムに関してクラウド サービスの構成または仮想マシンの構成を選択します ([Batch 機能の概要](batch-api-basics.md#pool)を参照)。そのどちらを選択したかによって、コンピューティング ノードのイメージ化に、[Azure ゲスト OS のリリース](../cloud-services/cloud-services-guestos-update-matrix.md#releases)の 1 つを使用するか、Azure Marketplace でサポートされている Linux や Windows の VM イメージの 1 つを使用するかが決まります。
+When creating or updating a Batch pool, you select a cloud service configuration or a virtual machine configuration for the operating system on the compute nodes (see [Batch feature overview](batch-api-basics.md#pool)). Your choice determines whether your compute nodes are imaged with one of the [Azure Guest OS releases](../cloud-services/cloud-services-guestos-update-matrix.md#releases) or with one of the supported Linux or Windows VM images in the Azure Marketplace. 
 
-オペレーティング システムの設定は、**New-AzureBatchPool** を実行するときに、PSCloudServiceConfiguration オブジェクトまたは PSVirtualMachineConfiguration オブジェクトで渡します。たとえば以下のコマンドレットは、Small サイズのコンピューティング ノードで新しい Batch プールを作成しています。オペレーティング システムにはクラウド サービス構成を選び、最新バージョンであるファミリー 3 (Windows Server 2012) のイメージを使用しています。ここでは、**CloudServiceConfiguration** パラメーターに PSCloudServiceConfiguration オブジェクトとして *$configuration* 変数を指定しています。**BatchContext** パラメーターには、先ほど定義した *$context* 変数を BatchAccountContext オブジェクトとして指定しています。
+When you run **New-AzureBatchPool**, pass the operating system settings in a PSCloudServiceConfiguration or PSVirtualMachineConfiguration object. For example, the following cmdlet creates a new Batch pool with size Small compute nodes in the cloud service configuration, imaged with the latest operating system version of family 3 (Windows Server 2012). Here, the **CloudServiceConfiguration** parameter specifies the *$configuration* variable as the PSCloudServiceConfiguration object. The **BatchContext** parameter specifies a previously defined variable *$context* as the BatchAccountContext object.
 
 
     $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(3,"*")
     
     New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -AutoScaleFormula '$TargetDedicated=4;' -BatchContext $context
 
-新しいプール内のコンピューティング ノードの目標数は、自動スケールの式によって求められます。この例では、式は **$TargetDedicated=4** という簡単なものであり、プールのコンピューティング ノードの数が最大 4 であることを示します。
+The target number of compute nodes in the new pool is determined by an autoscaling formula. In this case, the formula is simply **$TargetDedicated=4**, indicating the number of compute nodes in the pool is 4 at most. 
 
-## プール、ジョブ、タスク、およびその他の詳細のクエリ
+## <a name="query-for-pools,-jobs,-tasks,-and-other-details"></a>Query for pools, jobs, tasks, and other details
 
-**Get-AzureBatchPool**、**Get-AzureBatchJob**、**Get-AzureBatchTask** などのコマンドレットを使用して、Batch アカウントで作成されたエンティティを照会します。
+Use cmdlets such as **Get-AzureBatchPool**, **Get-AzureBatchJob**, and **Get-AzureBatchTask** to query for entities created under a Batch account.
 
 
-### データのクエリ
+### <a name="query-for-data"></a>Query for data
 
-たとえば、**Get-AzureBatchPools** を使用してプールを検索します。既定では、これは、既に BatchAccountContext オブジェクトが *$context* に格納されていると仮定して、自分のアカウントのすべてのプールを照会します。
+As an example, use **Get-AzureBatchPools** to find your pools. By default this queries for all pools under your account, assuming you already stored the BatchAccountContext object in *$context*:
 
 
     Get-AzureBatchPool -BatchContext $context
 
-### OData フィルターを使用する
+### <a name="use-an-odata-filter"></a>Use an OData filter
 
-**Filter** パラメーターを使用して OData フィルターを指定すると、関心のあるオブジェクトのみを検索できます。たとえば、ID が "myPool" で始まるすべてのプールを検索できます。
+You can supply an OData filter using the **Filter** parameter to find only the objects you’re interested in. For example, you can find all pools with ids starting with “myPool”:
 
 
     $filter = "startswith(id,'myPool')"
@@ -131,40 +132,44 @@ Batch プールを作成または更新する際は、コンピューティン�
     Get-AzureBatchPool -Filter $filter -BatchContext $context
 
 
-このメソッドは、ローカルのパイプラインで “Where-Object” を使用するほど柔軟ではありません。ただし、クエリは Batch サービスに直接送信されるため、すべてのフィルター処理がサーバー側で行われ、インターネットの帯域幅を節約できます。
+This method is not as flexible as using “Where-Object” in a local pipeline. However, the query gets sent to the Batch service directly so that all filtering happens on the server side, saving Internet bandwidth.
 
-### ID パラメーターの使用
+### <a name="use-the-id-parameter"></a>Use the Id parameter
 
-OData フィルターに代わる方法として、**ID** パラメーターを使用します。"myPool" という ID の特定のプールを照会するには:
+An alternative to an OData filter is to use the **Id** parameter. To query for a specific pool with id "myPool":
 
 
     Get-AzureBatchPool -Id "myPool" -BatchContext $context
 
 
-**ID** パラメーターは、完全 ID の検索のみをサポートし、ワイルドカードや OData 形式のフィルターはサポートしません。
+The **Id** parameter supports only full-id search, not wildcards or OData-style filters.
 
 
 
-### MaxCount パラメーターを使用する
+### <a name="use-the-maxcount-parameter"></a>Use the MaxCount parameter
 
-既定では、各コマンドレットは最大で 1000 のオブジェクトを返します。この制限に達した場合は、オブジェクトが少なくなるようにフィルターで絞り込むか、**MaxCount** パラメーターを使用して明示的に最大値を設定してください。次に例を示します。
+By default, each cmdlet returns a maximum of 1000 objects. If you reach this limit, either refine your filter to bring back fewer objects, or explicitly set a maximum using the **MaxCount** parameter. For example:
 
 
     Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 
-上限を削除するには、**MaxCount** を 0 以下に設定します。
+To remove the upper bound, set **MaxCount** to 0 or less.
 
-### パイプラインを作成する
+### <a name="use-the-pipeline"></a>Use the pipeline
 
-Batch コマンドレットは、コマンドレット間でデータを送信するために PowerShell パイプラインを活用できます。これは、パラメーターを指定するのと同じ効果がありますが、複数のエンティティを簡単に一覧表示できます。たとえば、次のコマンドでは、自分のアカウントのすべてのタスクを検索しています。
+Batch cmdlets can leverage the PowerShell pipeline to send data between cmdlets. This has the same effect as specifying a parameter but makes listing multiple entities easier. For example, the following finds all tasks under your account:
 
 
     Get-AzureBatchJob -BatchContext $context | Get-AzureBatchTask -BatchContext $context
 
 
-## 次のステップ
-* コマンドレットの詳しい構文と例については、[Azure Batch コマンドレットのリファレンス](https://msdn.microsoft.com/library/azure/mt125957.aspx)を参照してください。
+## <a name="next-steps"></a>Next steps
+* For detailed cmdlet syntax and examples, see [Azure Batch cmdlet reference](https://msdn.microsoft.com/library/azure/mt125957.aspx).
 
-* Batch に対してクエリから返される情報の項目数と種類を制限する方法の詳細については、[効率的な Batch サービスのクエリ](batch-efficient-list-queries.md)に関する記事を参照してください。
+* See [Query the Batch service efficiently](batch-efficient-list-queries.md) for more about reducing the number of items and the type of information that is returned for queries to Batch. 
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,41 +1,46 @@
 <properties
-	pageTitle="DevTest ラボとは | Microsoft Azure"
-	description="Azure Virtual Machines を簡単に作成、管理、監視するために DevTest ラボを使用する方法について説明します"
-	services="devtest-lab,virtual-machines"
-	documentationCenter="na"
-	authors="tomarcher"
-	manager="douge"
-	editor=""/>
+    pageTitle="What is DevTest Labs? | Microsoft Azure"
+    description="Learn how DevTest Labs can make it easy to create, manage, and monitor Azure virtual machines"
+    services="devtest-lab,virtual-machines"
+    documentationCenter="na"
+    authors="tomarcher"
+    manager="douge"
+    editor=""/>
 
 <tags
-	ms.service="devtest-lab"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/25/2016"
-	ms.author="tarcher"/>
+    ms.service="devtest-lab"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/25/2016"
+    ms.author="tarcher"/>
 
-#DevTest ラボとは
+
+#<a name="what-is-devtest-labs?"></a>What is DevTest Labs?
 
 > [AZURE.NOTE]
-この記事は、3 部構成のシリーズの第 1 部です。
+> This article is part 1 of a 3 part series:
 > 
-> 1. **[DevTest Labs とは](devtest-lab-overview.md)**
-> 1. [DevTest ラボを使用する理由](devtest-lab-why.md)
-> 1. [DevTest ラボの概念](devtest-lab-concepts.md)
+> 1. **[What is DevTest Labs?](devtest-lab-overview.md)**
+> 1. [Why DevTest Labs?](devtest-lab-why.md)
+> 1. [DevTest Labs concepts](devtest-lab-concepts.md)
 
-##Overview
-開発者やテスト担当者は、クラウドへの移行による環境の作成および管理の遅延を解決する方法を求めています。Azure を使用することで、環境の遅延の問題を解決し、新しいコスト効率の高い構造内でセルフ サービスを使用できます。ただし、開発者やテスト担当者は、セルフ サービス環境の構成に、依然としてかなりの時間を費やす必要があります。また、意思決定者は、クラウドを使用して、プロセス オーバーヘッドを過剰に追加することなく、コストの削減を最大化する方法について確信を持てていません。
+##<a name="overview"></a>Overview
+Developers and testers are looking to solve the delays in creating and managing their environments by going to the cloud.  Azure solves the problem of environment delays and allows self-service within a new cost efficient structure.  However, developers and testers still need to spend considerable time configuring their self-served environments. Also, decision makers are uncertain about how to leverage the cloud to maximize their cost savings without adding too much process overhead.
 
-Azure DevTest Labs は、無駄を最小限に抑え、コストを管理しつつ、Azure で迅速に環境を作成するためのサポートを開発者とテスト担当者に提供するサービスです。再利用可能なテンプレートとアーティファクトを使用して Windows と Linux の環境を迅速にプロビジョニングすることで、アプリケーションの最新バージョンをテストできます。デプロイ パイプラインと DevTest ラボを簡単に統合し、オンデマンドの環境をプロビジョニングします。複数のテスト エージェントをプロビジョニングしてロード テストをスケール アップし、トレーニングおよびデモの事前プロビジョニング済み環境を作成します。
+Azure DevTest Labs is a service that helps developers and testers quickly create environments in Azure while minimizing waste and controlling cost. You can test the latest version of your application by quickly provisioning Windows and Linux environments using reusable templates and artifacts. Easily integrate your deployment pipeline with DevTest Labs to provision on-demand environments. Scale up your load testing by provisioning multiple test agents, and create pre-provisioned environments for training and demos.
 
 > [AZURE.VIDEO what-is-azure-devtest-labs]
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-[DevTest ラボを使用する理由](devtest-lab-why.md)
+[Why DevTest Labs?](devtest-lab-why.md)
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

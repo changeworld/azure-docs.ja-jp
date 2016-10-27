@@ -1,150 +1,156 @@
 <properties 
-	pageTitle="Application Insights: プロアクティブな異常診断 | Microsoft Azure" 
-	description="Application Insights は、アプリのテレメトリの詳細な分析を実行し、潜在的なパフォーマンスの問題について警告します。" 
-	services="application-insights" 
+    pageTitle="Application Insights: Proactive anomaly diagnostics | Microsoft Azure" 
+    description="Application Insights performs deep analysis of your app telemetry and warns you of potential problems." 
+    services="application-insights" 
     documentationCenter="windows"
-	authors="antonfrMSFT" 
-	manager="douge"/>
+    authors="antonfrMSFT" 
+    manager="douge"/>
 
 <tags 
-	ms.service="application-insights" 
-	ms.workload="tbd" 
-	ms.tgt_pltfrm="ibiza" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/31/2016" 
-	ms.author="awills"/>
-
-#  プロアクティブな異常診断
-
-*Application Insights はプレビュー段階です。*
-
-[Visual Studio Application Insights](app-insights-overview.md) は、アプリのテレメトリについて詳細に分析し、潜在的なパフォーマンスの問題について警告できます。この記事は、プロアクティブなアラートを電子メールで受信したユーザーを主に想定しています。
-
-この機能は、設定が不要であり、アプリによって十分なテレメトリが生成されると自動的にアクティブになります。
+    ms.service="application-insights" 
+    ms.workload="tbd" 
+    ms.tgt_pltfrm="ibiza" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/31/2016" 
+    ms.author="awills"/>
 
 
-## プロアクティブな異常検出とは
+#  <a name="proactive-anomaly-diagnostics"></a>Proactive anomaly diagnostics
 
-プロアクティブな異常検出機能は、アプリから Application Insights に送信されるテレメトリを分析することで、そのアプリのパフォーマンスの異常なパターンを検出します。
+*Application Insights is in preview.*
 
-具体的には、一部のユーザーにのみ影響する、または一部のケースでのみユーザーに影響するパフォーマンス上の問題を検出します。
+[Visual Studio Application Insights](app-insights-overview.md) performs deep analysis of your app telemetry, and can warn you about potential performance problems. You're probably reading this because you received one of our proactive alerts by email. 
 
-たとえば、あるブラウザーでお使いのアプリケーションのページが他のブラウザーと比較して読み込みが遅い場合や、特定のサーバーからの要求の処理が遅い場合などに通知します。また、ある地域の特定の時間帯におけるページ読み込みの遅延など、プロパティの組み合わせに関連する問題も検出します。
-
-上記のような異常はデータを調べるだけでは検出は困難ですが、想像以上によく発生します。多くの場合、お客様からのクレームによってのみ表面化します。その時点では遅すぎます。影響を受けたユーザーはすぐに競合他社のソリューションに切り替えてしまうからです。
-
-現時点では、このアルゴリズムはページの読み込み時間、サーバーにおける要求の応答時間、および依存関係の応答時間を監視します。
-
-しきい値規則や構成規則を設定する必要はありません。異常パターンの検出には、機械学習およびデータ マイニングのアルゴリズムが使用されます。
-
-ぜひフィードバックをお寄せください。どのように役立ったか、どうすればプロアクティブな検出を改善できるか、どのような機能を追加して欲しいかをお知らせください。フィードバックを送るには、ポータルで [気に入った機能の報告] または [問題点、改善点の報告] を使用するか、AppInsightsML@microsoft.com 宛てにメールをお送りください。
-
-## プロアクティブなアラートについて
-
-* *この電子メールが送られてきたのはなぜですか。*
- * プロアクティブな検出によって、アプリケーションから Application Insights に送信されたテレメトリが分析され、アプリケーションでパフォーマンスの問題が検出されたからです。
-* *この通知は、明らかに問題があることを意味していますか。*
- * いいえ。これは単に、より詳しく確認することを推奨するものです。
-* *どうすればよいですか。*
- * [提示されたデータを確認してください](#responding-to-an-alert)。メトリックス エクスプローラーを使用してパフォーマンスを経時的に見直し、その他のメトリックを調べます。[検索] を使用して、根本原因の特定に役立つ特定のイベントを除外します。
-* *私のデータはマイクロソフトからも見られるのですか。*
- * いいえ。サービスは完全に自動化されています。通知を受け取るだけです。ユーザーのデータは[プライベート](app-insights-data-retention-privacy.md)です。
+This feature requires no setup, and is automatically active when your app generates enough telemetry.
 
 
-## 検出プロセス
+## <a name="what-is-proactive-anomaly-detection?"></a>What is proactive anomaly detection?
 
-* *どのような異常が検出されますか。*
- * ユーザーご自身で確認するには時間がかかるようなパターンが検出されます。たとえば、場所、時刻、プラットフォームといった特定の組み合わせにおけるパフォーマンスの低下などです。
-* *Application Insights によって収集されたすべてのデータが分析されるのですか。*
- * 現時点ではすべてではありません。現在は、要求の応答時間、依存関係の応答時間、およびページの読み込み時間が分析されます。その他のメトリックの分析も間もなく行われる予定です。
-* *独自の異常検出ルールを作成できますか。*
- * まだありません。ただし、次のことができます。
- * メトリックがしきい値を超えたときに通知する[アラートをセットアップ](app-insights-alerts.md)する。
- * 自分で分析できるように、[テレメトリ](app-insights-export-telemetry.md)を[データベース](app-insights-code-sample-export-sql-stream-analytics.md)、[PowerBI](app-insights-export-power-bi.md)、または[その他の](app-insights-code-sample-export-telemetry-sql-database.md)ツールにエクスポートする。
-* *どのくらいの頻度で分析は実行されますか。*
- * 前日のテレメトリの分析が毎日実行されます。
-* *これにより、[メトリック アラート](app-insights-alerts.md)が置き換えられるのですか。
- * いいえ。異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
+Proactive anomaly detection discovers unusual patterns of performance in your app, by analyzing the telemetry it sends to Application Insights. 
 
-## 発生した問題をプロアクティブな検出によって調査する方法
+In particular, it finds performance issues that only affect some of your users, or only affect users in some cases.
 
-異常レポートは、メールまたは異常リストから開きます。
+For example, it can notify you if your app pages load much more slowly on one type of browser than others, or if requests are served more slowly from a particular server. It can also discover problems associated with combinations of properties, such as slow page loads in one geographical area at particular times of day.
+
+Anomalies like these are very hard to detect just by inspecting the data, but are more common than you might think. Often they only surface when your customers complain. By that time, it’s too late: the affected users are already switching to your competitors!
+
+Currently, our algorithms look at page load times, request response times at the server, and dependency response times.  
+
+You don't have to set any thresholds or configure rules. Machine learning and data mining algorithms are used to detect abnormal patterns. 
+
+We’re very eager to have your feedback. Please let us know how it helps you, how we can improve Proactive detection and what additional capabilities you want us to add. You can provide feedback through Send a smile/frown in the portal or email us to AppInsightsML@microsoft.com. 
+
+## <a name="about-the-proactive-alert"></a>About the proactive alert
+
+* *Why have I received this email?*
+ * Proactive detection analyzed the telemetry your application sent to Application Insights and detected a performance issue in your application. 
+* *Does the notification mean I definitely have a problem?*
+ * No. It's simply a suggestion about something you might want to look at more closely. 
+* *What should I do?*
+ * [Look at the data presented](#responding-to-an-alert). Use Metrics Explorer to review the performance over time and drill in to additional metrics. Use Search to filter out specific events that help you identify the root cause. 
+* *So, you guys look at my data?*
+ * No. The service is entirely automatic. Only you get the notifications. Your data is [private](app-insights-data-retention-privacy.md).
+
+
+## <a name="the-detection-process"></a>The detection process
+
+* *What kinds of anomalies are detected?*
+ * Patterns that you would find it time-consuming to check for yourself. For example, poor performance in a specific combination of location, time of day and platform.
+* *Do you analyze all the data collected by Application Insights?*
+ * Not at present. Currently, we analyze request response time, dependency response time and page load time. Analysis of additional metrics is coming soon. 
+* *Can I create my own anomaly detection rules?*
+ * Not yet. But you can:
+ * [Set up alerts](app-insights-alerts.md) that tell you when a metric crosses a threshold.)
+ * [Export telemetry](app-insights-export-telemetry.md) to a [database](app-insights-code-sample-export-sql-stream-analytics.md) or [to PowerBI](app-insights-export-power-bi.md) or [other](app-insights-code-sample-export-telemetry-sql-database.md) tools, where you can analyze it yourself.
+* *How often is the analysis performed?*
+ * We run the analysis daily on the telemetry from the previous day.
+* *So does this replace [metric alerts](app-insights-alerts.md)?
+ * No.  We don't commit to detect every behaviour that you might consider abnormal.
+
+## <a name="how-to-investigate-issues-raised-by-proactive-detection"></a>How to investigate issues raised by Proactive Detection
+
+Open the anomaly report either from the email or from the anomalies list.
 
 ![From the email alert, click the link to open the anomaly report in Azure](./media/app-insights-proactive-anomaly-diagnostics/03.png)
 
 
-* **[日時]** は、問題が検出された日時を示します。
-* **[内容]** には、以下が示されます。
- * 検出された問題。
- * 問題の動作が見られたイベント セットの特性。
-* パフォーマンスの低いセットと他のすべてのイベントの平均的な動作の比較表。
+* **When** shows the time the issue was detected.
+* **What** describes
+ * The problem that was detected;
+ * The characteristics of the set of events that we found displayed the problem behavior.
+* The table compares the poorly-performing set with the average behavior of all other events.
 
-リンクをクリックしてメトリックス エクスプローラーを開き、パフォーマンスの低いセットの時間とプロパティでフィルターされた関連するレポートで検索を実行します。
+Click the links to open Metric Explorer and Search on relevant reports, filtered on the time and properties of the slow performing set.
 
-時間の範囲とフィルターを変更して、テレメトリを調べます。
+Modify the time range and filters to explore the telemetry.
 
-## パフォーマンスを向上させるにはどうすればよいですか。
+## <a name="how-can-i-improve-performance?"></a>How can I improve performance?
 
-Web サイト ユーザーにとって最大の不満の 1 つは、自らの経験でわかるように、時間のかかる応答や応答障害です。したがって、この問題に対処することが重要です。
+Slow and failed responses are one of the biggest frustrations for web site users, as you know from your own experience. So it's important to address the issues.
 
-### トリアージ
+### <a name="triage"></a>Triage
 
-まず、それは重要なことですか。 ページの読み込みには常に時間がかかるが、そのページの閲覧を必要としているユーザーが 1 % にすぎない場合は、多分、他にもっと考えるべき重要なことがあります。一方、ユーザーの 1% しかそのページを開いていないが、毎回例外がスローされる場合、調べてみる価値はあるでしょう。
+First, does it matter? If a page is always slow to load, but only 1% of your site's users ever have to look at it, maybe you have more important things to think about. On the other hand, if only 1% of users open it, but it throws exceptions every time, that might be worth investigating.
 
-一般的なガイドラインとして、電子メールで IMPACT ステートメントを使用します。ただし、それがすべてではありません。確認すべきその他の証拠を収集します。
+Use the impact statement in the email as a general guide, but be aware that it isn't the whole story. Gather other evidence to confirm.
 
-問題のパラメーターを検討します。地理的な場所によって状況が異なる場合は、該当するリージョンを対象とする[可用性テスト](app-insights-monitor-web-app-availability.md)をセットアップします。単にそのエリアのネットワークの問題かもしれません。
+Consider the parameters of the issue. If it's geography-dependent, set up [availability tests](app-insights-monitor-web-app-availability.md) including that region: there might simply be network issues in that area. 
 
-### 遅いページ読み込みの診断 
+### <a name="diagnose-slow-page-loads"></a>Diagnose slow page loads 
 
-どこに問題がありますか。 サーバーは応答するのに時間がかかりますか。ページはかなり長いですか。ページを表示するのにブラウザーは多くの処理を必要としますか。
+Where is the problem? Is the server slow to respond, is the page very long, or does the browser have to do a lot of work to display it?
 
-ブラウザーのメトリック ブレードを開きます。[ブラウザーのページ読み込み時間のセグメント表示](app-insights-javascript.md#explore-your-data)で、どこで時間がかかっているかがわかります。
+Open the Browsers metric blade. The [segmented display of browser page load time](app-insights-javascript.md#explore-your-data) shows where the time is going. 
 
-* **[要求送信時間]** の値が大きい場合は、サーバーの応答に時間がかかっているか、または要求が大量のデータを伴う POST 要求です。応答時間を調べるには、[パフォーマンス メトリック](app-insights-web-monitor-performance.md#metrics)を確認します。
-* [依存関係の追跡](app-insights-dependencies.md)をセットアップして、パフォーマンス低下の原因が外部のサービスによるものか、内部のデータベースによるものかを確認します。
-* **[受信応答時間]** が大部分を占めている場合は、ページと、JavaScript、CSS、イメージなどのページの依存部分 (ただし、非同期で読み込まれるデータではない) が長くなっています。[可用性テスト](app-insights-monitor-web-app-availability.md)をセットアップし、依存部分を読み込むオプションを必ず設定します。いくつかの結果を取得したら、結果の詳細を開き展開して、各種ファイルの読み込み時間を表示します。
-* **[クライアントの処理時間]** の値が大きい場合は、スクリプトの実行に時間がかかっています。理由が明らかでない場合は、何らかのタイミング コードを追加することを検討し、trackMetric 呼び出しで時間を送信してください。
+* If **Send Request Time** is high, either the server is responding slowly, or the request is a post with a lot of data. Look at the [performance metrics](app-insights-web-monitor-performance.md#metrics) to investigate response times. 
+* Set up [dependency tracking](app-insights-dependencies.md) to see whether the slowness is due to external services or your database.
+* If **Receiving Response** is predominant, your page and its dependent parts - JavaScript, CSS, images and so on (but not asynchronously loaded data) are long. Set up an [availability test](app-insights-monitor-web-app-availability.md), and be sure to set the option to load dependent parts. When you get some results, open the detail of a result and expand it to see the load times of different files.
+* High **Client Processing time** suggests scripts are running slowly. If the reason isn't obvious, consider adding some timing code and send the times in trackMetric calls.
 
-### 表示が遅いページの改善
+### <a name="improve-slow-pages"></a>Improve slow pages
 
-サーバーの応答およびページ読み込み時間を短縮するためのアドバイスは Web に多数掲載されていますが、ここではその一部を取り上げます。把握済みかもしれませんがいくつかのヒントを参考までに以下に示します。
+There's a web full of advice on improving your server responses and page load times, so we won't try to repeat it all here. Here are a few tips that you probably already know about, just to get you thinking:
 
-* ファイルのサイズが大きいため読み込みに時間がかかる: スクリプトとその他の部分を非同期に読み込みます。スクリプトのバンドルを使用します。メイン ページをウィジェットに分割し、データを別々に読み込みます。長いテーブルに対して古いプレーンな HTML が送信されない: スクリプトを使用してデータを JSON またはその他のコンパクトな形式で要求し、所定のテーブルに入力します。このようなすべてにおいて有効な優れたフレームワークがあります (これらはまた、当然ながら、大きなスクリプトを伴います)。
-* サーバーの依存関係が低速: コンポーネントの地理的な場所について検討してください。たとえば、Azure を使用している場合、Web サーバーとデータベースが同じリージョンにあることを確認します。クエリで必要以上の情報が取得されませんか。 キャッシュまたはバッチは役に立ちますか。
-* 容量の問題: 応答時間と要求数のサーバー メトリックを確認してください。応答時間のピークと要求数のピークが合わない場合は、サーバーが拡大されている可能性があります。
+* Slow loading because of big files: Load the scripts and other parts asynchronously. Use script bundling. Break the main page into widgets that load their data separately. Don't send plain old HTML for long tables: use a script to request the data as JSON or other compact format, then fill the table in place. There are great frameworks to help with all this. (They also entail big scripts, of course.)
+* Slow server dependencies: Consider the geographical locations of your components. For example, if you're using Azure, make sure the web server and the database are in the same region. Do queries retrieve more information than they need? Would caching or batching help?
+* Capacity issues: Look at the server metrics of response times and request counts. If response times peak disproportionately with peaks in request counts, it's likely that your servers are stretched. 
 
 
-## 通知メール
+## <a name="notification-emails"></a>Notification emails
 
-* *通知を受信するために、このサービスに登録する必要はありますか。*
- * いいえ。ボットは定期的に Application Insights を使用するすべてのユーザーからのデータを調査し、問題を検出した場合に通知を送信します。
-* *登録を解除できますか。または、代わりに同僚に通知が送信されるように設定できますか。*
- * アラートまたはメールの登録解除リンクをクリックします。
+* *Do I have to subscribe to this service in order to receive notifications?*
+ * No. Our bot periodically surveys the data from all Application Insights users, and sends notifications if it detects problems.
+* *Can I unsubscribe or get the notifications sent to my colleagues instead?*
+ * Click the unsubscribe link in the alert or email. 
  
-    現在、通知は [Application Insights リソースへの書き込みアクセス権](app-insights-resources-roles-access-control.md)のあるユーザーに送信されます。
+    Currently they're sent to those who have [write access to the Application Insights resource](app-insights-resources-roles-access-control.md).
 
-    また、[プロアクティブ検出] ブレードで受信者のリストの設定を編集できます。
-* *メッセージで受信ボックスをいっぱいにしたくありません。*
- * まだ報告したことがない、最も関連性の高い問題について、1 日 1 件に制限されています。どのメッセージも繰り返し送信されることはありません。
-* *通知に対して何もしない場合、リマインダが送信されますか。*
- * いいえ。各問題についてのメッセージが送信されるのは 1 回のみです。
-* *メールが消えました。どうしたらポータルで通知を見つけられますか。*
- * アプリの Application Insights の概要で、**[プロアクティブな検出]** タイルをクリックします。これで、最大 7 日前までのすべての通知を検索できるようになります。
+    You can also edit the recipients list Settings in the Proactive Detection blade.
+* *I don't want to be flooded with these messages.*
+ * They are limited to one per day with the most relevant issue that we haven't reported about yet. You won't get repeats of any message.
+* *If I don't do anything, will I get a reminder?*
+ * No, you get a message about each issue only once. 
+* *I lost the email. Where can I find the notifications in the portal?*
+ * In the Application Insights overview of your app, click the **Proactive Detection** tile. There you'll be able to find all notifications up to 7 days back.
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
+These diagnostic tools help you inspect the telemetry from your app:
 
-* [メトリックス エクスプローラー](app-insights-metrics-explorer.md)
-* [Search エクスプローラー](app-insights-diagnostic-search.md)
-* [Analytics - 強力なクエリ言語](app-insights-analytics-tour.md)
+* [Metric explorer](app-insights-metrics-explorer.md)
+* [Search explorer](app-insights-diagnostic-search.md)
+* [Analytics - powerful query language](app-insights-analytics-tour.md)
 
-プロアクティブ検出は、すべて自動化されています。ただし、アラートを追加で設定する機能が用意されています。
+Proactive detections are completely automatic. But maybe you'd like to set up some more alerts?
 
-* [手動で構成するメトリックのアラート](app-insights-alerts.md)
-* [可用性 Web テスト](app-insights-monitor-web-app-availability.md)
+* [Manually configured metric alerts](app-insights-alerts.md)
+* [Availability web tests](app-insights-monitor-web-app-availability.md) 
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

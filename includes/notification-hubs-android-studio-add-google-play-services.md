@@ -1,26 +1,33 @@
-1. Android Studio のツールバーのアイコンをクリックするか、またはメニューから **[Tools]**、**[Android]** -> **[SDK Manager]** を順にクリックすることによって、Android SDK Manager を開きます。まだインストールしていない場合は、プロジェクトで使用する目的のバージョンの Android SDK を探し、**[Show Package Details]** をクリックして開き、**[Google APIs]** をオンにします。
+1. Open the Android SDK Manager by clicking the icon on the toolbar of Android Studio or by clicking **Tools** -> **Android** -> **SDK Manager** on the menu. Locate the target version of the Android SDK that is used in your project , open it by clicking **Show Package Details**, and choose **Google APIs**, if it is not already installed.
 
-2. **[SDK Tools]** タブをクリックします。Google Play Services をまだインストールしていない場合は、次に示すように **[Google Play Services]** をクリックします。次に、**[適用]** をクリックしてインストールします。
+2. Click the **SDK Tools** tab. If you haven't already installed Google Play Service, click **Google Play Services** as shown below. Then click **Apply** to install. 
  
-	SDK のパスは後の手順で使用するので、メモしておいてください。
+    Note the SDK path, for use in a later step. 
 
-   	![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
 
 
-3. アプリ ディレクトリの **build.gradle** ファイルを開きます。
+3. Open the **build.gradle** file in the app directory.
 
-	![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
+    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
 
-4. 次の行を *dependencies* の下に追加します。
+4. Add this line under *dependencies*: 
 
-   		compile 'com.google.android.gms:play-services-gcm:9.2.0'
+        compile 'com.google.android.gms:play-services-gcm:9.2.0'
 
-5. ツール バーで **[Sync Project with Gradle Files]** をクリックします。
+5. Click the **Sync Project with Gradle Files** icon in the tool bar.
 
-6. **AndroidManifest.xml** を開き、このタグを *application* タグに追加します。
+6. Open **AndroidManifest.xml** and add this tag to the *application* tag.
 
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
  
 
-<!---HONumber=AcomDC_0706_2016-->
+
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="StorSimple ボリュームの管理 | Microsoft Azure"
-   description="StorSimple ボリュームを追加、変更、監視、削除する方法と、必要に応じて StorSimple ボリュームをオフラインにする方法について説明します。"
+   pageTitle="Manage your StorSimple volumes | Microsoft Azure"
+   description="Explains how to add, modify, monitor, and delete StorSimple volumes, and how to take them offline if necessary."
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,187 +15,192 @@
    ms.date="05/11/2016"
    ms.author="v-sharos" />
 
-# StorSimple Manager サービスを使用してボリュームを管理する
+
+# <a name="use-the-storsimple-manager-service-to-manage-volumes"></a>Use the StorSimple Manager service to manage volumes
 
 [AZURE.INCLUDE [storsimple-version-selector-manage-volumes](../../includes/storsimple-version-selector-manage-volumes.md)]
 
-## 概要
+## <a name="overview"></a>Overview
 
-このチュートリアルでは、StorSimple Manager サービスを使用して、StorSimple デバイスおよび StorSimple 仮想デバイスにボリュームを作成して管理する方法について説明します。
+This tutorial explains how to use the StorSimple Manager service to create and manage volumes on the StorSimple device and StorSimple virtual device.
 
-StorSimple Manager サービスは、StorSimple ソリューションを単一の Web インターフェイスから管理できる、Azure クラシック ポータルの拡張機能です。StorSimple Manager サービスを使用すると、ボリュームの管理に加え、StorSimple サービスの作成と管理、デバイスの表示と管理、アラートの表示、バックアップ ポリシーやバックアップ カタログの表示と管理を行うことができます。
+The StorSimple Manager service is an extension of the Azure classic portal that lets you manage your StorSimple solution from a single web interface. In addition to managing volumes, you can use the StorSimple Manager service to create and manage StorSimple services, view and manage devices, view alerts, and view and manage backup policies and the backup catalog.
 
-> [AZURE.NOTE] Azure StorSimple は、仮想プロビジョニングされたボリュームのみを作成できます。完全にプロビジョニングされたボリュームまたは部分的にプロビジョニングされたボリュームを Azure StorSimple システム上に作成することはできません。
+> [AZURE.NOTE] Azure StorSimple can create thinly provisioned volumes only. You cannot create fully provisioned or partially provisioned volumes on an Azure StorSimple system.
 >
-> 仮想プロビジョニングは、物理リソースを超える空き容量がストレージにあるように見える仮想化テクノロジです。Azure StorSimple では、事前に十分なストレージを確保するのではなく、仮想プロビジョニングを使用して、現在の要件を満たすために必要な容量のみを割り当てます。Azure StorSimple では変化する需要に合わせてクラウド ストレージを増減できるため、クラウド ストレージの柔軟な性質がこの手法を容易にしています。
+> Thin provisioning is a virtualization technology in which available storage appears to exceed physical resources. Instead of reserving sufficient storage in advance, Azure StorSimple uses thin provisioning to allocate just enough space to meet current requirements. The elastic nature of cloud storage facilitates this approach because Azure StorSimple can increase or decrease cloud storage to meet changing demands.
 
-## [ボリューム] ページ
+## <a name="the-volumes-page"></a>The Volumes page
 
-**[ボリューム]** ページでは、イニシエーター (サーバー) 用に Microsoft Azure StorSimple デバイスにプロビジョニングされているストレージ ボリュームを管理することができます。このページには、StorSimple デバイス上のボリュームの一覧が表示されます。
+The **Volumes** page allows you to manage the storage volumes that are provisioned on the Microsoft Azure StorSimple device for your initiators (servers). It displays the list of volumes on your StorSimple device.
 
- ![[ボリューム] ページ](./media/storsimple-manage-volumes/HCS_VolumesPage.png)
+ ![Volumes page](./media/storsimple-manage-volumes/HCS_VolumesPage.png)
 
-ボリュームは、次の一連の属性で構成されます。
+A volume consists of a series of attributes:
 
-- **[名前]** - ボリュームを識別するのに役立つ、わかりやすい一意の名前。この名前は、特定のボリュームをフィルター処理する場合に監視レポートにも使用されます。
+- **Name** – A descriptive name that must be unique and helps identify the volume. This name is also used in monitoring reports when you filter on a specific volume.
 
-- **[状態]** - オンラインまたはオフラインにすることができます。ボリュームがオフラインの場合、ボリュームにアクセスして使用することが許可されているイニシエーター (サーバー) はこのボリュームを認識できません。
+- **Status** – Can be online or offline. If a volume if offline, it is not visible to initiators (servers) that are allowed access to use the volume.
 
-- **[容量]** - イニシエーター (サーバー) によって認識されるボリュームの大きさを指定します。容量は、イニシエーター (サーバー) によって格納できるデータの合計量を指定します。ボリュームは仮想プロビジョニングされ、データは重複除去されます。これは、デバイスが構成されたボリューム容量に従って物理ストレージ容量を内部的またはクラウド上に事前割り当てしないことを暗に意味します。ボリュームの容量は、要求に応じて割り当てられ、使用されます。
+- **Capacity** – Specifies how large the volume is, as perceived by the initiator (server). Capacity specifies the total amount of data that can be stored by the initiator (server). Volumes are thinly provisioned, and data is deduplicated. This implies that your device doesn’t pre-allocate physical storage capacity internally or on the cloud according to configured volume capacity. The volume capacity is allocated and consumed on demand.
 
-- **[種類]** - ボリュームの種類として、階層化またはアーカイブ (階層化のサブタイプ) を指定できます。
+- **Type** – The volume type can be tiered or archival (a sub-type of tiered)
 
-- **[アクセス]** - このボリュームへのアクセスを許可するイニシエーター (サーバー) を指定します。ボリュームに関連付けられているアクセス制御レコード (ACR) のメンバーではないイニシエーターは、このボリュームを認識できません。
+- **Access** – Specifies the initiators (servers) that are allowed access to this volume. Initiators that are not members of access control record (ACR) that is associated with the volume will not see the volume.
 
-- **[監視]** - ボリュームを監視するかどうかを指定します。ボリュームは、作成されると既定で監視が有効になります。ただし、ボリュームの複製に対する監視は無効になります。ボリュームの監視を有効にするには、「ボリュームを監視する」の手順に従います。
+- **Monitoring** – Specifies whether or not a volume is being monitored. A volume will have monitoring enabled by default when it is created. Monitoring will, however, be disabled for a volume clone. To enable monitoring for a volume, follow the instructions in Monitor a volume.
 
-ボリュームに関連する最も一般的なタスクは次のとおりです。
+The most common tasks associated with a volume are:
 
-- ボリュームを追加する
-- ボリュームを変更する
-- ボリュームを削除する
-- ボリュームをオフラインにする
-- ボリュームを監視する
+- Add a volume
+- Modify a volume
+- Delete a volume
+- Take a volume offline
+- Monitor a volume
 
-## ボリュームを追加する
+## <a name="add-a-volume"></a>Add a volume
 
-[ボリュームの作成](storsimple-deployment-walkthrough-u1.md#step-6-create-a-volume)は、StorSimple ソリューションのデプロイメント時に完了しています。ボリュームを追加するには、同様の手順を実行します。
+You [created a volume](storsimple-deployment-walkthrough-u1.md#step-6-create-a-volume) during deployment of your StorSimple solution. Adding a volume is a similar procedure.
 
-### ボリュームを追加するには
+### <a name="to-add-a-volume"></a>To add a volume
 
-1. **[デバイス]** ページで、デバイスを選択し、ダブルクリックします。次に、**[ボリューム コンテナー]** タブをクリックします。
+1. On the **Devices** page, select the device, double-click it, and then click the **Volume Containers** tab.
 
-2. ボリューム コンテナーを選択し、対応する行の矢印をクリックして、コンテナーに関連付けられているボリュームにアクセスします。
+2. Select a volume container and click the arrow in the corresponding row to access the volumes associated with the container.
 
-3. ページの下部にある **[追加]** をクリックします。ボリュームの追加ウィザードが起動されます。
+3. Click **Add** at the bottom of the page. The Add a volume wizard starts.
 
-     ![ボリュームの追加ウィザードの基本設定](./media/storsimple-manage-volumes/AddVolume1.png)
+     ![Add volume wizard Basic Settings](./media/storsimple-manage-volumes/AddVolume1.png)
 
-4. ボリュームの追加ウィザードの **[基本設定]** で、次の操作を行います。
+4. In the Add a volume wizard, under **Basic Settings**, do the following:
 
-  1. **[名前]** に、ボリュームの名前を指定します。
-  2. **[プロビジョニング容量]** に、ボリュームのプロビジョニング容量を GB または TB 単位で指定します。物理デバイスの場合、1 GB ～ 64 TB の範囲で容量を指定する必要があります。StorSimple 仮想デバイス上のボリュームにプロビジョニングできる最大容量は 30 TB です。
-  3. ボリュームの **[使用法の種類]** を選択します。階層化ボリュームをアーカイブ データに使用する場合は、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにすると、ボリュームの重複除去チャンク サイズが 512 KB に変更されます。このオプションをオフにすると、対応する階層化されたボリュームに 64 KB のチャンク サイズが使用されます。重複除去チャンク サイズを大きくすると、デバイスは大きなアーカイブ データをクラウドに迅速に転送できるようになります ("階層化ボリューム" は、以前は "プライマリ ボリューム" と呼ばれていました)。
-  5. 矢印アイコン ![矢印アイコン](./media/storsimple-manage-volumes/HCS_ArrowIcon.png) をクリックして **[追加設定]** ページに移動します。
+  1. Supply a **Name** for your volume.
+  2. Specify the **Provisioned Capacity** for your volume in GB or TB. The capacity must be between 1 GB and 64 TB for a physical device. The maximum capacity that can be provisioned for a volume on a StorSimple virtual device is 30 TB.
+  3. Select the **Usage Type** for your volume. If you are using the tiered volume for archival data, selecting the **Use this volume for less frequently accessed archival data** check box changes the deduplication chunk size for your volume to 512 KB. If you do not select this option, the corresponding tiered volume will use a chunk size of 64 KB. A larger deduplication chunk size allows the device to expedite the transfer of large archival data to the cloud.(Tiered volumes were formerly called primary volumes.)
+  5. Click the arrow icon ![Arrow icon](./media/storsimple-manage-volumes/HCS_ArrowIcon.png)to go to the **Additional Settings** page.
 
         ![Add Volume wizard Additional Settings](./media/storsimple-manage-volumes/AddVolume2.png)
 
-5. **[追加設定]** で、新しいアクセス制御レコード (ACR) を追加します。
+5. Under **Additional Settings**, add a new access control record (ACR):
 
-  1. ボックスの一覧で、アクセス制御レコード (ACR) を選択します。また、新しい ACR を追加することもできます。ACR は、ホストの IQN をレコードに記載されている IQN と照合することによって、ボリュームにアクセスできるホストを判定します。
-  2. **[このボリュームの既定のバックアップの有効化]** チェックボックスをオンにして、既定のバックアップを有効にすることをお勧めします。
-   3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして、指定した設定でボリュームを作成します。
+  1. Select an access control record (ACR) from the drop-down list. Alternatively, you can add a new ACR. ACRs determine which hosts can access your volumes by matching the host IQN with that listed in the record.
+  2. We recommend that you enable a default backup by selecting the **Enable a default backup for this volume** check box.
+   3. Click the check icon ![Check icon](./media/storsimple-manage-volumes/HCS_CheckIcon.png) to create the volume with the specified settings.
 
-新しいボリュームが使用できるようになります。
+Your new volume is now ready to use.
 
-## ボリュームを変更する
+## <a name="modify-a-volume"></a>Modify a volume
 
-ボリュームを拡張する必要がある場合やボリュームにアクセスするホストを変更する必要がある場合は、ボリュームを変更します。
+Modify a volume when you need to expand it or change the hosts that access the volume.
 
 > [AZURE.IMPORTANT]
 >
-> - デバイス上のボリューム サイズを変更した場合、ホスト上のボリュームのサイズも変更する必要があります。
-> - ここで説明されているホスト側の手順は、Windows Server 2012 (2012R2) 向けです。Linux などの他のホスト オペレーティング システムでは、手続きが異なります。別のオペレーティング システムで稼働しているホスト上のボリュームを変更する場合は、お使いのホスト オペレーティング システムの指示を参照してください。
+> - If you modify the volume size on the device, the volume size needs to be changed on the host as well.
+> - The host-side steps described here are for Windows Server 2012 (2012R2). Procedures for Linux or other host operating systems will be different. Refer to your host operating system instructions when modifying the volume on a host running another operating system.
 
-### ボリュームを変更するには
+### <a name="to-modify-a-volume"></a>To modify a volume
 
-1. **[デバイス]** ページで、デバイスを選択し、ダブルクリックします。次に、**[ボリューム コンテナー]** タブをクリックします。このページには、デバイスに関連付けられているすべてのボリューム コンテナーが表形式で表示されます。
+1. On the **Devices** page, select the device, double-click it, and then click the **Volume Container** tab. This page lists in a tabular format all the volume containers that are associated with the device.
 
-2. ボリューム コンテナーを選択し、クリックしてそのコンテナー内のすべてのボリュームを一覧表示します。
+2. Select a volume container and click it to display the list of all the volumes within the container.
 
-3. **[ボリューム]** ページで、ボリュームを選択し、**[変更]** をクリックします。
+3. On the **Volumes** page, select a volume and click **Modify**.
 
-4. ボリュームの変更ウィザードの **[基本設定]** では、次の操作を実行できます。
+4. In the Modify volume wizard, under **Basic Settings**, you can do the following:
 
-  - **[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにして、ボリュームの重複除去チャンク サイズを 512 KB に変更することで、階層化ボリュームをアーカイブ ボリュームに変更する場合は、**[名前]** と **[種類]** を編集します。
-  - **プロビジョニング容量**を増やす。**プロビジョニング容量**は、増やすことしかできません。ボリュームを作成した後で小さくすることはできません。
+  - Edit the **Name** and **Type** if you wish to modify a tiered volume to an archival volume by selecting the **Use this volume for less frequently accessed archival data** check box to change the deduplication chunk size for your volume to 512 KB.
+  - Increase the **Provisioned Capacity**. The **Provisioned Capacity** can only be increased. You cannot shrink a volume after it is created.
 
-    > [AZURE.NOTE] ボリュームにボリューム コンテナーを割り当てた後でボリューム コンテナーを変更することはできません。
+    > [AZURE.NOTE] You cannot change the volume container after it is assigned to a volume.
 
-5. **[追加設定]** では、次の操作を実行できます。
+5. Under **Additional Settings**, you can do the following:
 
-  - ACR を変更する (ボリュームがオフラインの場合)。ボリュームがオンラインの場合は、最初にボリュームをオフラインにする必要があります。ACR を変更する前に、「[ボリュームをオフラインにする](#take-a-volume-offline)」の手順を参照してください。
-  - ボリュームをオフラインにした後、ACR の一覧を変更する。
+  - Modify the ACRs, provided that the volume is offline. If the volume is online, you will need to take it offline first. Refer to the steps in [Take a volume offline](#take-a-volume-offline) prior to modifying the ACR.
+  - Modify the list of ACRs after the volume is offline.
 
-    > [AZURE.NOTE] ボリュームの **[このボリュームの既定のバックアップの有効化]** オプションは変更できません。
+    > [AZURE.NOTE] You cannot change the **Enable a default backup for this volume** option for the volume.
 
-6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-volumes/HCS_CheckIcon.png) をクリックして変更を保存します。ボリュームを更新中であることを示すメッセージが Azure クラシック ポータルに表示されます。ボリュームが正常に更新されると、成功メッセージが表示されます。
+6. Save your changes by clicking the check icon ![check-icon](./media/storsimple-manage-volumes/HCS_CheckIcon.png). The Azure classic portal will display an updating volume message. It will display a success message when the volume has been successfully updated.
 
-7. ボリュームを拡張する場合は、Windows ホスト コンピューターで次の手順を実行します。
+7. If you are expanding a volume, complete the following steps on your Windows host computer:
 
-   1. **[コンピューターの管理]**、**[ディスクの管理]** の順に移動します。
-   2. **[ディスクの管理]** を右クリックし、**[ディスクの再スキャン]** を選択します。
-   3. ディスクの一覧で、更新したボリュームを選択して右クリックし、**[ボリュームの拡張]** を選択します。ボリューム拡張ウィザードが起動します。**[次へ]** をクリックします。
-   4. 既定の値を使用してウィザードを完了します。ウィザードが終了すると、サイズが増えたボリュームが表示されます。
+   1. Go to **Computer Management** ->**Disk Management**.
+   2. Right-click **Disk Management** and select **Rescan Disks**.
+   3. In the list of disks, select the volume that you updated, right-click, and then select **Extend Volume**. The Extend Volume wizard starts. Click **Next**.
+   4. Complete the wizard, accepting the default values. After the wizard is finished, the volume should show the increased size.
 
-![ビデオ](./media/storsimple-manage-volumes/Video_icon.png) **ビデオ**
+![Video available](./media/storsimple-manage-volumes/Video_icon.png) **Video available**
 
-ボリュームを展開する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/expand-a-storsimple-volume/)を参照してください。
+To watch a video that demonstrates how to expand a volume, click [here](https://azure.microsoft.com/documentation/videos/expand-a-storsimple-volume/).
 
-## ボリュームをオフラインにする
+## <a name="take-a-volume-offline"></a>Take a volume offline
 
-ボリュームを変更または削除する場合は、ボリュームをオフラインにすることが必要になる場合があります。ボリュームがオフラインのときは、ボリュームに対して読み取り/書き込みアクセスを行うことはできません。デバイス上だけでなく、ホスト上のボリュームもオフラインにする必要があります。ボリュームをオフラインにするには、次の手順を実行します。
+You may need to take a volume offline when you are planning to modify it or delete it. When a volume is offline, it is not available for read-write access. You will need to take the volume offline on the host as well as on the device. Perform the following steps to take a volume offline.
 
-### ボリュームをオフラインにするには
+### <a name="to-take-a-volume-offline"></a>To take a volume offline
 
-1. ボリュームをオフラインにする前に、対象のボリュームが使用されていないことを確認します。
+1. Make sure that the volume in question is not in use before taking it offline.
 
-2. 最初に、ホスト上でボリュームをオフラインにします。これにより、ボリューム上のデータが破損するリスクを排除できます。具体的な手順については、ホストのオペレーティング システムの説明を参照してください。
+2. Take the volume offline on the host first. This eliminates any potential risk of data corruption on the volume. For specific steps, refer to the instructions for your host operating system.
 
-3. ホストがオフラインになったら、次の手順を実行して、デバイス上のボリュームをオフラインにします。
+3. After the host is offline, take the volume on the device offline by performing the following steps:
 
-  1. **[デバイス]** ページで、デバイスを選択し、ダブルクリックします。次に、**[ボリューム コンテナー]** タブをクリックします。**[ボリューム コンテナー]** タブには、デバイスに関連付けられているすべてのボリューム コンテナーが表形式で表示されます。
-  2. ボリューム コンテナーを選択し、クリックしてそのコンテナー内のすべてのボリュームを一覧表示します。
-  3. ボリュームを選択し、**[オフラインにする]** をクリックします。
-  4. 確認を求められたら、**[はい]** をクリックします。ボリュームがオフラインになります。
+  1. On the **Devices** page, select the device, double-click it, and then click the **Volume Containers** tab. The **Volume Containers** tab lists in a tabular format all the volume containers that are associated with the device.
+  2. Select a volume container and click it to display the list of all the volumes within the container.
+  3. Select a volume and click **Take offline**.
+  4. When prompted for confirmation, click **Yes**. The volume should now be offline.
 
-    ボリュームがオフラインになると、**[オンラインにする]** オプションが使用可能になります。
+    After a volume is offline, the **Bring Online** option becomes available.
 
-> [AZURE.NOTE] **[オフラインにする]** コマンドは、ボリュームをオフラインにする要求をデバイスに送信します。ホストがボリュームを使用しているときにこのコマンドを実行すると、接続が切断されますが、ボリュームをオフラインにする操作は失敗しません。
+> [AZURE.NOTE] The **Take Offline** command sends a request to the device to take the volume offline. If hosts are still using the volume, this results in broken connections, but taking the volume offline will not fail.
 
-## ボリュームを削除する
+## <a name="delete-a-volume"></a>Delete a volume
 
-> [AZURE.IMPORTANT] ボリュームは、オフラインのときに限り削除することができます。
+> [AZURE.IMPORTANT] You can delete a volume only if it is offline.
 
-ボリュームを削除するには、次の手順を実行します。
+Complete the following steps to delete a volume.
 
-### ボリュームを削除するには
+### <a name="to-delete-a-volume"></a>To delete a volume
 
-1. **[デバイス]** ページで、デバイスを選択し、ダブルクリックします。次に、**[ボリューム コンテナー]** タブをクリックします。
+1. On the **Devices** page, select the device, double-click it, and then click the **Volume Containers** tab.
 
-2. 削除するボリュームが含まれているボリューム コンテナーを選択します。ボリューム コンテナーをクリックして **[ボリューム]** ページにアクセスします。
+2. Select the volume container that has the volume you want to delete. Click the volume container to access the **Volumes** page.
 
-3. このコンテナーに関連付けられているすべてのボリュームが表形式で表示されます。削除するボリュームの状態を確認します。削除するボリュームがオフラインでない場合は、最初に 「[ボリュームをオフラインにする](#take-a-volume-offline)」の手順に従ってボリュームをオフラインにします。
+3. All the volumes associated with this container are displayed in a tabular format. Check the status of the volume you want to delete. If the volume you want to delete is not offline, take it offline first, following the steps in [Take a volume offline](#take-a-volume-offline).
 
-4. ボリュームがオフラインになったら、ページ下部にある **[削除]** をクリックします。
+4. After the volume is offline, click **Delete** at the bottom of the page.
 
-5. 確認を求められたら、**[はい]** をクリックします。ボリュームが削除されます。**[ボリューム]** ページに、コンテナー内のボリュームの更新された一覧が表示されます。
+5. When prompted for confirmation, click **Yes**. The volume will now be deleted and the **Volumes** page will show the updated list of volumes within the container.
 
-## ボリュームを監視する
+## <a name="monitor-a-volume"></a>Monitor a volume
 
-ボリュームの監視機能を使用すると、ボリュームの I/O に関連する統計情報を収集できます。既定では、最初に作成される 32 個のボリュームに対して監視が有効に設定されます。追加のボリュームに対しては、監視は既定で無効に設定されます。また、複製されたボリュームの監視も既定で無効に設定されます。
+Volume monitoring allows you to collect I/O-related statistics for a volume. Monitoring is enabled by default for the first 32 volumes that you create. Monitoring of additional volumes is disabled by default. Monitoring of cloned volumes is also disabled by default.
 
-ボリュームの監視を有効または無効にするには、次の手順を実行します。
+Perform the following steps to enable or disable monitoring for a volume.
 
-### ボリュームの監視を有効または無効にするには
+### <a name="to-enable-or-disable-volume-monitoring"></a>To enable or disable volume monitoring
 
-1. **[デバイス]** ページで、デバイスを選択し、ダブルクリックします。次に、**[ボリューム コンテナー]** タブをクリックします。
+1. On the **Devices** page, select the device, double-click it, and then click the **Volume Containers** tab.
 
-2. ボリュームが含まれているボリューム コンテナーを選択し、ボリューム コンテナーをクリックして **[ボリューム]** ページにアクセスします。
+2. Select the volume container in which the volume resides, and then click the volume container to access the **Volumes** page.
 
-3. このコンテナーに関連付けられているすべてのボリュームが表形式で表示されます。ボリュームまたはボリュームの複製をクリックして選択します。
+3. All the volumes associated with this container are listed in the tabular display. Click and select the volume or volume clone.
 
-4. ページの下部にある **[変更]** をクリックします。
+4. At the bottom of the page, click **Modify**.
 
-5. ボリュームの変更ウィザードの **[基本設定]** で、**[監視]** ボックスの一覧の **[有効]** または **[無効]** を選択します。
+5. In the Modify Volume wizard, under **Basic Settings**, select **Enable** or **Disable** from the **Monitoring** drop-down list.
 
-    ![ボリュームの基本設定を変更する](./media/storsimple-manage-volumes/HCS_MonitorVolumeM.png)
+    ![Modify a volume Basic Settings](./media/storsimple-manage-volumes/HCS_MonitorVolumeM.png)
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- [StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
+- Learn how to [clone a StorSimple volume](storsimple-clone-volume.md).
 
-- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
+- Learn how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
 
-<!---HONumber=AcomDC_0518_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

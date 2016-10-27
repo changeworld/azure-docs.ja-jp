@@ -1,121 +1,128 @@
 <properties
-	pageTitle="Azure 管理者ロールを追加または変更する方法 | Microsoft Azure"
-	description="Azure 共同管理者、サービス管理者、アカウント管理者を追加または変更する方法について説明します"
-	services=""
-	documentationCenter=""
-	authors="genlin"
-	manager="msmbaldwin"
-	editor=""
-	tags="billing"/>
+    pageTitle="How to add or change Azure administrator roles | Microsoft Azure"
+    description="Describes how to add or change Azure Co-Administrator, Service Administrator and Account Administrator"
+    services=""
+    documentationCenter=""
+    authors="genlin"
+    manager="mbaldwin"
+    editor=""
+    tags="billing"/>
 
 <tags
-	ms.service="billing"
-	ms.workload="na"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/17/2016"
-	ms.author="genli"/>
+    ms.service="billing"
+    ms.workload="na"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/17/2016"
+    ms.author="genli"/>
 
-# Azure 管理者ロールを追加または変更する方法
 
-Microsoft Azure には、3 種類の管理者ロールがあります。
+# <a name="how-to-add-or-change-azure-administrator-roles"></a>How to add or change Azure administrator roles
 
-| 管理ロール | 制限 | Description
+There are three kinds of administrator roles in Microsoft Azure:
+
+| Administrative role   | Limit  | Description
 | ------------- | ------------- |---------------|
-|アカウント管理者 (AA) | 1 Azure アカウントに 1 人 |Azure サブスクリプションをサインアップまたは購入し、[アカウント センター](https://account.windowsazure.com/Home/Index)にアクセスして多様な管理タスクを実行する権限を持っている個人。管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。
-| サービス管理者 (SA) | 1 Azure サブスクリプションに 1 人 |このロールには、[Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。|
-|[Azure クラシック ポータル](https://manage.windowsazure.com)の共同管理者 (CA)|サブスクリプションあたり 200 人| サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
+|Account Administrator (AA)  | 1 per Azure account  |This is the person who signed up for or bought Azure subscriptions, and is authorized to access the [Account Center](https://account.windowsazure.com/Home/Index) and perform various management tasks. These include being able to create subscriptions, cancel subscriptions, change the billing for a subscription, and change the Service Administrator.
+| Service Administrator (SA) | 1 per Azure subscription  |This role is authorized to manage services in the [Azure portal](https://portal.azure.com). By default, for a new subscription, the Account Administrator is also the Service Administrator.|
+|Co-administrator (CA) in the [Azure classic portal](https://manage.windowsazure.com)|200 per subscription| This role has the same access privileges as the Service Administrator, but can’t change the association of subscriptions to Azure directories. |
 
-> [AZURE.NOTE] Azure Active Directory のロールベースのアクセス制御 (RBAC) では、ユーザーを複数のロールに追加できます。詳細については、「[Azure Active Directory のロールベースの Access Control](./active-directory/role-based-access-control-configure.md)」を参照してください。
+> [AZURE.NOTE] Azure Active Directory Role-based Access Control (RBAC) allows users to be added to multiple roles. For more information, see [Azure Active Directory Role-based Access Control](./active-directory/role-based-access-control-configure.md).
 
-> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+> [AZURE.NOTE] If you need more help at any point in this article, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
 
-## サブスクリプションの管理者を追加する方法
+## <a name="how-to-add-an-admin-for-a-subscription"></a>How to add an admin for a subscription
 
-**Azure ポータル**
+**Azure portal**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-2. ハブ メニューで **[サブスクリプション]** を選択し、"*管理者にアクセス権を与えるサブスクリプション*" を選択します。
+2. On the Hub menu, select **Subscription** > *the subscription that you want the admin to access*.
 
-	![newselectsub](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
+    ![newselectsub](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
 
-3. サブスクリプション ブレードで、**[設定]**、**[ユーザー]** の順に選択します。
+3. In the subscription blade, select **Settings**> **Users**.
 
-	![newsettings](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
-4. [ユーザー] ブレードで、**[追加]**、**[役割を選択]**、**[所有者]** の順に選択します。
+    ![newsettings](./media/billing-add-change-azure-subscription-administrator/newsettings.png)
+4. In the Users blade, select **Add**>**Select a role** > **Owner**.
 
-	![newselectrole](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
+    ![newselectrole](./media/billing-add-change-azure-subscription-administrator/newselectrole.png)
 
-	**注**
-	- 所有者ロールには、共同管理者と同じアクセス権が付与されます。このロールには、[Azure アカウント センター](https://account.windowsazure.com/subscriptions)へのアクセス権がありません。
-	- [Azure ポータル](https://portal.azure.com)を通じて追加した所有者は、[Azure クラシック ポータル](https://manage.windowsazure.com)でサービスを管理できません。
+    **Note**
+    - The owner role has same access privileges as co-administrator. This role does not have access privilege to the [Azure Account Center](https://account.windowsazure.com/subscriptions).
+    - The owners you added through the [Azure portal](https://portal.azure.com) cannot manage services in the [Azure classic portal](https://manage.windowsazure.com).  
 
-5. 所有者として追加するユーザーの電子メール アドレスを入力し、ユーザーをクリックしてから、**[選択]** をクリックします。
+5. Type the email address of the user you want to add as owner, click the user, and then click **Select**.
 
-	![newadduser](./media/billing-add-change-azure-subscription-administrator/newadduser.png)
+    ![newadduser](./media/billing-add-change-azure-subscription-administrator/newadduser.png)
 
-**Azure クラシック ポータル**
+**Azure classic portal**
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
+1. Sign in to the [Azure classic portal](https://manage.windowsazure.com/).
 
-2. ナビゲーション ウィンドウで、**[設定]**、**[管理者]**、**[追加]** の順に選択します。</br>
+2. In the navigation pane, select **Settings**> **Administrators**> **Add**. </br>
 
-	![addcodmin](./media/billing-add-change-azure-subscription-administrator/addcoadmin.png)
+    ![addcodmin](./media/billing-add-change-azure-subscription-administrator/addcoadmin.png)
 
-3. 共同管理者として追加する個人の電子メール アドレスを入力し、共同管理者にアクセス権を付与するサブスクリプションを選択します。</br>
+3. Type the email address of the person you want to add as Co-administrator and then select the subscription that you want the Co-administrator to access.</br>
 
-	![addcoadmin2](./media/billing-add-change-azure-subscription-administrator/addcoadmin2.png)</br>
+    ![addcoadmin2](./media/billing-add-change-azure-subscription-administrator/addcoadmin2.png)</br>
 
-次の電子メール アドレスを共同管理者として追加できます。
+The following email address can be added as a Co-Administrator:
 
-* **Microsoft アカウント** (旧 Windows Live ID) </br> Microsoft アカウントを使用して、Outlook (Hotmail)、Skype (MSN)、OneDrive、Windows Phone、Xbox LIVE などのすべてのコンシューマー向け Microsoft 製品とクラウド サービスにサインインすることができます。
-* **組織アカウント**</br> 組織アカウントとは、Azure Active Directory で作成したアカウントです。組織アカウントのアドレスは、user@&lt;your domain&gt;.onmicrosoft.com のようになります。
+* **Microsoft Account** (formerly Windows Live ID) </br>
+ You can use a Microsoft Account to sign in to all consumer-oriented Microsoft products and cloud services, such as Outlook (Hotmail), Skype (MSN), OneDrive, Windows Phone, and Xbox LIVE.
+* **Organizational account**</br>
+ An organizational account is an account that is created under Azure Active Directory. The organizational account address resembles the following: user@&lt;your domain&gt;.onmicrosoft.com
 
-### 規則や制限
+### <a name="limitations-and-restrictions"></a>Limitations and restrictions
 
- * 各サブスクリプションは Azure AD ディレクトリ (既定のディレクトリとも呼ばれます) と関連付けられます。サブスクリプションが関連付けられている既定のディレクトリを探すには、[Azure クラシック ポータル](https://manage.windowsazure.com/)にアクセスし、**[設定]**、**[サブスクリプション]** の順に選択します。サブスクリプション ID をチェックして既定のディレクトリを見つけてください。
+ * Each subscription is associated with an Azure AD directory (also known as the Default Directory). To find the Default Directory the subscription is associated with, go to the [Azure classic portal](https://manage.windowsazure.com/), select **Settings** > **Subscriptions**. Check the subscription ID to find the Default Directory.
 
- * Microsoft アカウントを使用してログインした場合、他の Microsoft アカウントまたは既定のディレクトリ内のユーザーを共同管理者として追加することしかできません。
+ * If you are logged in with a Microsoft Account, you can only add other Microsoft Accounts or users within the Default Directory as Co-Administrator.
 
- * 組織アカウントを使用してログインした場合、組織内の他の組織アカウントを共同管理者として追加することができます。たとえば、abby@contoso.com はサービス管理者または共同管理者として bob@contoso.com を追加できますが、john@noncontoso.com が既定のディレクトリのユーザーでない限り john@notcontoso.com は追加できません。組織アカウントでログインしているユーザーは、Microsoft アカウント ユーザーをサービス管理者または共同管理者として引き続き追加できます。
+ * If you are logged in with an organizational account, you can add other organizational accounts in your organization as Co-Administrator. For example, abby@contoso.com can add bob@contoso.com as Service Administrator or Co-Administrator, but cannot add john@notcontoso.com unless john@noncontoso.com is the user in Default Directory. Users logged in with organizational accounts can continue to add Microsoft Account users as Service Administrator or Co-Administrator.
 
- * 組織アカウントで Azure にログインできるようになると、サービス管理者と共同管理者アカウントの要件は次のように変わります。
+ * Now that it is possible to log into Azure with an organizational account, here are the changes to Service Administrator and Co-administrator account requirements:
 
-	ログイン方法| Microsoft アカウントまたは既定のディレクトリ内のユーザーを CA または SA として追加できる |同じ組織内の組織アカウントを CA または SA として追加できる |異なる組織内の組織アカウントを CA または SA として追加できる
-	------------- | ------------- |---------------|---------------
-	Microsoft アカウント |はい|なし|なし
-	組織アカウント|はい|はい|なし
+    Login Method| Add Microsoft Account or users within Default Directory as CA or SA?  |Add organizational account in the same organization as CA or SA? |Add organizational account in different organization as CA or SA?
+    ------------- | ------------- |---------------|---------------
+    Microsoft Account |Yes|No|No
+    Organizational Account|Yes|Yes|No
 
-## サブスクリプションのサービス管理者を変更する方法
+## <a name="how-to-change-service-administrator-for-a-subscription"></a>How to change Service Administrator for a subscription
 
-サブスクリプションのサービス管理者を変更できるのは、アカウント管理者のみです。
+Only the Account Administrator can change the Service Administrator for a subscription.
 
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にログオンします。
+1. Log on into [Azure Account Center](https://account.windowsazure.com/subscriptions) by using the Account Administrator.
 
-2. 変更するサブスクリプションを選択します。
+2. Select the subscription you want to change.
 
-3. 右側にある **[サブスクリプション詳細の編集]** をクリックします。</br>
+3. On the right side, click **Edit subscription** details. </br>
 
-	![editsub](./media/billing-add-change-azure-subscription-administrator/editsub.png)
+    ![editsub](./media/billing-add-change-azure-subscription-administrator/editsub.png)
 
-4. **[サービス管理者]** ボックスに、新しいサービス管理者の電子メール アドレスを入力します。</br>
+4. In the **SERVICE ADMINISTRATOR** box, enter the email address of the new Service Administrator. </br>
 
-	![changeSA](./media/billing-add-change-azure-subscription-administrator/changeSA.png)
+    ![changeSA](./media/billing-add-change-azure-subscription-administrator/changeSA.png)
 
-## アカウント管理者の変更方法
+## <a name="how-to-change-the-account-administrator"></a>How to change the Account Administrator
 
-Azure アカウントの所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの所有権の譲渡](billing-subscription-transfer.md)」を参照してください。
+To transfer ownership of the Azure account to another account, see [Transferring Ownership of an Azure subscription](billing-subscription-transfer.md).
 
-## 次のステップ
+## <a name="next-steps"></a>Next Steps
 
-* Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](./active-directory/active-directory-understanding-resource-access.md)」を参照してください。
+* To learn more about how resource access is controlled in Microsoft Azure, see [Understanding resource access in Azure](./active-directory/active-directory-understanding-resource-access.md)
 
-* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](./active-directory/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+* For more information on how Azure Active Directory relates to your Azure subscription, see [How Azure subscriptions are associated with Azure Active Directory](./active-directory/active-directory-how-subscriptions-associated-directory.md)
 
-* Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure Active Directory での管理者ロールの割り当て](./active-directory/active-directory-assign-admin-roles.md)」を参照してください。
+* For more information on how Azure Active Directory relates to your Azure subscription, see [Assigning administrator roles in Azure Active Directory](./active-directory/active-directory-assign-admin-roles.md)
 
-> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+> [AZURE.NOTE] If you still have further questions, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
 
-<!---HONumber=AcomDC_0824_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

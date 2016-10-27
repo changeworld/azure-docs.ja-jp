@@ -1,41 +1,42 @@
 <properties
-	pageTitle="Azure App Service Mobile Apps で iOS アプリを作成する | Microsoft Azure"
-	description="このチュートリアルに従って、Objective-C または Swift で iOS を開発用するための Azure モバイル アプリ バックエンドの使用を開始します。"
-	services="app-service\mobile"
-	documentationCenter="ios"
-	authors="yuaxu"
-	manager="yochayk"
-	editor=""/>
+    pageTitle="Create an iOS app on Azure App Service Mobile Apps | Microsoft Azure"
+    description="Follow this tutorial to get started with using Azure mobile app backends for iOS development in Objective-C or Swift"
+    services="app-service\mobile"
+    documentationCenter="ios"
+    authors="yuaxu"
+    manager="yochayk"
+    editor=""/>
 
 <tags
-	ms.service="app-service-mobile"
-	ms.workload="na"
-	ms.tgt_pltfrm="mobile-ios"
-	ms.devlang="objective-c"
-	ms.topic="hero-article"
-	ms.date="10/01/2016"
-	ms.author="yuaxu"/>
+    ms.service="app-service-mobile"
+    ms.workload="na"
+    ms.tgt_pltfrm="mobile-ios"
+    ms.devlang="objective-c"
+    ms.topic="hero-article"
+    ms.date="10/01/2016"
+    ms.author="yuaxu"/>
 
-#iOS アプリの作成
+
+#<a name="create-an-ios-app"></a>Create an iOS app
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## Overview
+## <a name="overview"></a>Overview
 
-このチュートリアルでは、[Azure Mobile Apps](app-service-mobile-value-prop.md) (クラウドのバックエンド サービス) を iOS アプリに追加する方法について説明します。まず、新しいモバイル バックエンドを作成します。その後 _Todo list_ という単純な iOS アプリを使用して Azure にデータを格納します。
+This tutorial shows how to add [Azure Mobile Apps](app-service-mobile-value-prop.md), a cloud backend service, to an iOS app. We'll first create a new mobile backend. Then, we'll use a simple _Todo list_ iOS app to store data in Azure.
 
-このチュートリアルを完了するには、Mac と [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)が必要です。
+To complete this tutorial, you need a Mac and [an Azure account](https://azure.microsoft.com/pricing/free-trial/)
 
 
-## 手順 I: 新しい Azure Mobile App バックエンドの作成
+## <a name="step-i:-create-a-new-azure-mobile-app-backend"></a>Step I: Create a new Azure mobile app backend
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## 手順 II: バックエンド プロジェクトの構成
+## <a name="step-ii:-configure-the-backend-project"></a>Step II: Configure the backend project
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## 手順 III: iOS アプリのダウンロードと実行
+## <a name="step-iii:-download-and-run-the-ios-app"></a>Step III: Download and run the iOS app
 
 [AZURE.INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
@@ -47,4 +48,8 @@
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-<!---HONumber=AcomDC_1005_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

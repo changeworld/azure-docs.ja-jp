@@ -1,6 +1,6 @@
 <properties
- pageTitle="リモート監視の事前構成済みソリューションのチュートリアル | Microsoft Azure"
- description="Azure IoT リモート監視の事前構成済みソリューションとそのアーキテクチャの説明です。"
+ pageTitle="Remote Monitoring preconfigured solution walkthrough | Microsoft Azure"
+ description="A description of the Azure IoT preconfigured solution remote monitoring and its architecture."
  services=""
  suite="iot-suite"
  documentationCenter=""
@@ -17,89 +17,90 @@
  ms.date="08/17/2016"
  ms.author="dobett"/>
 
-# リモート監視の事前構成済みソリューションのチュートリアル
 
-## はじめに
+# <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>Remote monitoring preconfigured solution walkthrough
 
-IoT Suite リモート監視の[事前構成済みソリューション][lnk-preconfigured-solutions]は、遠隔地で実行されている複数のコンピューターを対象としたエンド ツー エンドの監視ソリューションの実装です。このソリューションは、主要な Azure サービスを組み合わせることで、汎用的なビジネス シナリオの実装環境を実現したものです。これを独自の実装の出発点として利用することができます。ソリューションを[カスタマイズ][lnk-customize]することで、独自のビジネス要件を満たすことができます。
+## <a name="introduction"></a>Introduction
 
-この記事では、リモート監視ソリューションのしくみについて理解しやすいように、その主な構成要素をいくつか取り上げて説明します。この知識は以下の作業に役立ちます。
+The IoT Suite remote monitoring [preconfigured solution][lnk-preconfigured-solutions] is an implementation of an end-to-end monitoring solution for multiple machines running in remote locations. The solution combines key Azure services to provide a generic implementation of the business scenario and you can use it as a starting point for your own implementation. You can [customize][lnk-customize] the solution to meet your own specific business requirements.
 
-- ソリューションの問題のトラブルシューティングを行う。
-- 独自の要件を満たすためにソリューションをカスタマイズする方法を計画する。
-- Azure サービスを利用する独自の IoT ソリューションを設計する。
+This article walks you through some of the key elements of the remote monitoring solution to enable you to understand how it works. This knowledge helps you to:
 
-## 論理アーキテクチャ
+- Troubleshoot issues in the solution.
+- Plan how to customize to the solution to meet your own specific requirements. 
+- Design your own IoT solution that uses Azure services.
 
-次の図は、事前構成済みソリューションの論理コンポーネントの概要を示したものです。
+## <a name="logical-architecture"></a>Logical architecture
 
-![論理アーキテクチャ](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
+The following diagram outlines the logical components of the preconfigured solution:
+
+![Logical architecture](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
 
-## シミュレートされたデバイス
+## <a name="simulated-devices"></a>Simulated devices
 
-事前構成済みソリューションにおいて、シミュレートされたデバイスは冷却装置 (建物のエアコンや施設の空気処理ユニットなど) を表します。事前構成済みのソリューションをデプロイすると、[Azure WebJob][lnk-webjobs] で動作する 4 つのシミュレーション デバイスが自動的にプロビジョニングされます。シミュレーション デバイスを使用することで、ソリューションの動作を簡単に調査することができます。物理デバイスをデプロイする必要はありません。実際の物理デバイスをデプロイするには、チュートリアル「[デバイスをリモート監視構成済みソリューションに接続する][lnk-connect-rm]」を参照してください。
+In the preconfigured solution, the simulated device represents a cooling device (such as a building air conditioner or facility air handling unit). When you deploy the preconfigured solution, you also automatically provision four simulated devices that run in an [Azure WebJob][lnk-webjobs]. The simulated devices make it easy for you to explore the behavior of the solution without the need to deploy any physical devices. To deploy a real physical device, see the [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm] tutorial.
 
-シミュレーション デバイスはそれぞれ、次の種類のメッセージを IoT Hub に送信することができます。
+Each simulated device can send the following message types to IoT Hub:
 
-| メッセージ | Description |
+| Message  | Description |
 |----------|-------------|
-| Startup | デバイスは、起動すると、デバイス自体に関する情報が含まれる **device-info** メッセージをバックエンドに送信します。このデータには、デバイス ID、デバイス メタデータ、デバイスでサポートされているコマンドの一覧、デバイスの現在の構成が含まれます。 |
-| プレゼンス | デバイスは定期的に **presence** メッセージを送信して、センサーの存在を感知できるかどうかを報告します。 |
-| テレメトリ | デバイスは定期的に **telemetry** メッセージを送信して、デバイスのシミュレーション センサーから収集した温度と湿度のシミュレーション値を報告します。 |
+| Startup  | When the device starts, it sends a **device-info** message containing information about itself to the back end. This data includes the device id, the device metadata, a list of the commands the device supports, and the current configuration of the device. |
+| Presence | A device periodically sends a **presence** message to report whether the device can sense the presence of a sensor. |
+| Telemetry | A device periodically sends a **telemetry** message that reports simulated values for the temperature and humidity collected from the device's simulated sensors. |
 
 
-シミュレーション デバイスから送信される **device-info** メッセージには、次のデバイス プロパティが格納されています。
+The simulated devices send the following device properties in a **device-info** message:
 
-| プロパティ | 目的 |
+| Property               |  Purpose |
 |------------------------|--------- |
-| Device ID | ソリューションでデバイスが作成されるときに指定されるか、割り当てられる ID。 |
-| Manufacturer | デバイスの製造元 |
-| Model Number | デバイスのモデル番号 |
-| Serial Number | デバイスのシリアル番号 |
-| Firmware | デバイスのファームウェアの現在のバージョン |
-| Platform | デバイスのプラットフォーム アーキテクチャ |
-| Processor | デバイスを実行しているプロセッサ |
-| Installed RAM | デバイスに搭載されている RAM の量 |
-| Hub Enabled State | デバイスの IoT Hub の状態プロパティ |
-| Created Time | ソリューションでデバイスが作成された時刻 |
-| Updated Time | デバイスのプロパティが最後に更新された時刻 |
-| Latitude | 緯度で表したデバイスの位置 |
-| Longitude | 経度で表したデバイスの位置 |
+| Device ID              | Id that is either provided or assigned when a device is created in the solution. |
+| Manufacturer           | Device manufacturer |
+| Model Number           | Model number of the device |
+| Serial Number          | Serial number of the device |
+| Firmware               | Current version of firmware on the device |
+| Platform               | Platform architecture of the device |
+| Processor              | Processor running the device |
+| Installed RAM          | Amount of RAM installed on the device |
+| Hub Enabled State      | IoT Hub state property of the device |
+| Created Time           | Time the device was created in the solution |
+| Updated Time           | Last time properties were updated for the device |
+| Latitude               | Latitude location of the device |
+| Longitude              | Longitude location of the device |
 
-シミュレーターは、シミュレートされたデバイスのこれらのプロパティをサンプル値と共に送信します。シミュレーターがシミュレートされたデバイスを初期化するたびに、デバイスは事前定義されたメタデータを IoT Hub に投稿します。これによりデバイス ポータルで行われたすべてのメタデータの更新がどのように上書きされるか、注目してください。
+The simulator seeds these properties in simulated devices with sample values.  Each time the simulator initializes a simulated device, the device posts the pre-defined metadata to IoT Hub. Note how this overwrites any metadata updates made in the device portal.
 
 
-シミュレーション デバイスは、ソリューション ダッシュボードから IoT Hub を介して送信された次のコマンドを処理することができます。
+The simulated devices can handle the following commands sent from the solution dashboard through the IoT hub:
 
-| コマンド | Description |
+| Command                | Description                                         |
 |------------------------|-----------------------------------------------------|
-| PingDevice | デバイスに _ping_ を送信して、デバイスが起動しているかどうかを確認します。 |
-| StartTelemetry | デバイスのテレメトリ送信を開始します。 |
-| StopTelemetry | デバイスのテレメトリ送信を停止します。 |
-| ChangeSetPointTemp | ランダムなデータが生成される設定ポイントの値を変更します。 |
-| DiagnosticTelemetry | デバイス シミュレーターをトリガーし、追加のテレメトリ値 (externalTemp) を送信します。 |
-| ChangeDeviceState | デバイスの拡張状態プロパティを変更し、デバイスからデバイス情報メッセージを送信します。 |
+| PingDevice             | Sends a _ping_ to the device to check it is alive   |
+| StartTelemetry         | Starts the device sending telemetry                 |
+| StopTelemetry          | Stops the device from sending telemetry             |
+| ChangeSetPointTemp     | Changes the set point value around which the random data is generated |
+| DiagnosticTelemetry    | Triggers the device simulator to send an additional telemetry value (externalTemp) |
+| ChangeDeviceState      | Changes an extended state property for the device and sends the device info message from the device |
 
-ソリューション バックエンドに対するデバイス コマンドの確認応答は、IoT Hub を介して送信されます。
+The device command acknowledgment to the solution back end is provided through the IoT hub.
 
-## IoT Hub
+## <a name="iot-hub"></a>IoT Hub
 
-[IoT Hub][lnk-iothub] は、デバイスから送信されたデータをクラウドに取り込んで、Azure Stream Analytics (ASA) ジョブから利用できる状態にします。また、デバイスには、デバイス ポータルに代わって IoT Hub からコマンドが送信されます。ストリームの ASA ジョブは、それぞれ別個の IoT Hub コンシューマー グループを使用して、デバイスから送られたメッセージのストリームを読み取ります。
+The [IoT hub][lnk-iothub] ingests data sent from the devices into the cloud and makes it available to the Azure Stream Analytics (ASA) jobs. IoT hub also sends commands to your devices on behalf of the device portal. Each stream ASA job uses a separate IoT Hub consumer group to read the stream of messages from your devices.
 
-## Azure Stream Analytics
+## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-リモート監視ソリューションでは、IoT Hub が受け取ったデバイス メッセージは、[Azure Stream Analytics][lnk-asa] \(ASA) によって他のバックエンド コンポーネントにディスパッチされて処理されるか、保存されます。メッセージの内容に基づく特定の機能が、各 ASA ジョブによって実行されます。
+In the remote monitoring solution, [Azure Stream Analytics][lnk-asa] (ASA) dispatches device messages received by the IoT hub to other back-end components for processing or storage. Different ASA jobs perform specific functions based on the content of the messages.
 
-**ジョブ 1: デバイス情報**は、受信メッセージ ストリームからデバイス情報メッセージをフィルター処理し、フィルター処理されたメッセージをイベント ハブ エンドポイントに送信します。デバイスは、起動時および **SendDeviceInfo** コマンドへの応答時に、デバイス情報メッセージを送信します。このジョブは、次のクエリ定義を使用して **device-info** メッセージを識別します。
+**Job 1: Device Info** filters device information messages from the incoming message stream and sends them to an Event Hub endpoint. A device sends device information messages at startup and in response to a **SendDeviceInfo** command. This job uses the following query definition to identify **device-info** messages:
 
 ```
 SELECT * FROM DeviceDataStream Partition By PartitionId WHERE  ObjectType = 'DeviceInfo'
 ```
 
-このジョブの出力は、後続の処理のためにイベント ハブに出力されます。
+This job sends its output to an Event Hub for further processing.
 
-**ジョブ 2: 規則**は、デバイスごとのしきい値に対して、温度と湿度の受信テレメトリ値を評価します。しきい値の値は、ソリューション ダッシュボードから利用できる規則エディターで設定します。デバイスと値の各ペアは、**参照データ**として Stream Analytics が読み取る BLOB に、タイムスタンプに基づいて格納されます。このジョブでは、空以外の値が、デバイスに設定された設定しきい値と比較されます。">" 条件を超えた場合、ジョブは **alarm** イベントを出力します。このイベントは、しきい値を超えたことを示し、デバイス、値、タイムスタンプ値を表示します。このジョブは、アラームのトリガーとなるテレメトリ メッセージを次のクエリ定義によって識別します。
+**Job 2: Rules** evaluates incoming temperature and humidity telemetry values against per-device thresholds. Threshold values are set in the rules editor available in the solution dashboard. Each device/value pair is stored by timestamp in a blob which Stream Analytics reads in as **Reference Data**. The job compares any non-empty value against the set threshold for the device. If it exceeds the '>' condition, the job outputs an **alarm** event that indicates that the threshold is exceeded and provides the device, value, and timestamp values. This job uses the following query definition to identify telemetry messages that should trigger an alarm:
 
 ```
 WITH AlarmsData AS 
@@ -140,9 +141,9 @@ INTO DeviceRulesHub
 FROM AlarmsData
 ```
 
-このジョブの出力は、後続の処理のためにイベント ハブに送信され、各アラートの詳細は Blob Storage に保存されます。ソリューション ダッシュボードは、ここからアラート情報を読み取ることができます。
+The job sends its output to an Event Hub for further processing and saves details of each alert to blob storage from where the solution dashboard can read the alert information.
 
-**ジョブ 3: テレメトリ**は、2 とおりの方法で、受信デバイス テレメトリ ストリームに対して動作します。1 つ目の方法では、デバイスから送信されたすべてのテレメトリ メッセージを長期保管を目的とした永続的な Blob Storage に送信します。2 つ目の方法では、5 分間のスライディング ウィンドウで湿度の平均値、最小値、最大値を計算し、そのデータを Blob Storage に送信します。ソリューション ダッシュボードは、Blob Storage からテレメトリ データを読み取ってグラフに反映します。このジョブは、次のクエリ定義を使用します。
+**Job 3: Telemetry** operates on the incoming device telemetry stream in two ways. The first sends all telemetry messages from the devices to persistent blob storage for long-term storage. The second computes average, minimum, and maximum humidity values over a five-minute sliding window and sends this data to blob storage. The solution dashboard reads the telemetry data from blob storage to populate the charts. This job uses the following query definition:
 
 ```
 WITH 
@@ -185,52 +186,52 @@ GROUP BY
     SlidingWindow (mi, 5)
 ```
 
-## Event Hubs
+## <a name="event-hubs"></a>Event Hubs
 
-ASA ジョブである**デバイス情報**と**規則**は、そのデータを Event Hubs に出力し、WebJob で実行されている**イベント プロセッサ**へと確実に転送します。
+The **device info** and **rules** ASA jobs output their data to Event Hubs to reliably forward on to the **Event Processor** running in the WebJob.
 
-## Azure Storage
+## <a name="azure-storage"></a>Azure storage
 
-このソリューションは、対象となるデバイスから未加工のまま集約されたすべてのテレメトリ データを Azure Blob Storage に永続化します。ダッシュボードは、Blob Storage からテレメトリ データを読み取ってグラフに反映します。ダッシュボードにアラートを表示する際は、しきい値の設定をテレメトリ値がいつ上回ったのかを記録した Blob Storage からデータが読み取られます。また、ダッシュボードで設定したしきい値を記録するときにも Blob Storage が使用されます。
+The solution uses Azure blob storage to persist all the raw and summarized telemetry data from the devices in the solution. The dashboard reads the telemetry data from blob storage to populate the charts. To display alerts, the dashboard reads the data from blob storage that records when telemetry values exceeded the configured threshold values. The solution also uses blob storage to record the threshold values you set in the dashboard.
 
-## Web ジョブ
+## <a name="webjobs"></a>WebJobs
 
-このソリューションの WebJobs は、デバイス シミュレーターに加え、Azure WebJobs 内で実行される**イベント プロセッサ**をホストします。デバイス情報メッセージとコマンドの応答が、このイベント プロセッサによって処理されます。イベント プロセッサで使用されるものは次のとおりです。
+In addition to hosting the device simulators, the WebJobs in the solution also host the **Event Processor** running in an Azure WebJob that handles device information messages and command responses. It uses:
 
-- 現在のデバイス情報を使用してデバイス レジストリ (DocumentDB データベースに格納されています) を更新する場合はデバイス情報メッセージ。
-- デバイス コマンドの履歴 (DocumentDB データベースに格納されています) を更新する場合はコマンド応答メッセージ。
+- Device information messages to update the device registry (stored in the DocumentDB database) with the current device information.
+- Command response messages to update the device command history (stored in the DocumentDB database).
 
-## DocumentDB
+## <a name="documentdb"></a>DocumentDB
 
-このソリューションでは、ソリューションに接続されているデバイスに関する情報を格納するために DocumentDB データベースを使用します。この情報には、デバイス メタデータのほか、ダッシュボードからデバイスに送信されたコマンドの履歴が含まれています。
+The solution uses a DocumentDB database to store information about the devices connected to the solution. This information includes device metadata and the history of commands sent to devices from the dashboard.
 
-## Web Apps
+## <a name="web-apps"></a>Web apps
 
-### リモート監視ダッシュボード
-Web アプリケーションのこのページでは、デバイスから送信されたテレメトリ データを、PowerBI JavaScript コントロール ([PowerBI-visuals リポジトリ](https://www.github.com/Microsoft/PowerBI-visuals)を参照) で視覚化します。このソリューションは、ASA テレメトリ ジョブを使用して Blob Storage にテレメトリ データを書き込みます。
+### <a name="remote-monitoring-dashboard"></a>Remote monitoring dashboard
+This page in the web application uses PowerBI javascript controls (See [PowerBI-visuals repo](https://www.github.com/Microsoft/PowerBI-visuals)) to visualize the telemetry data from the devices. The solution uses the ASA telemetry job to write the telemetry data to blob storage.
 
 
-### デバイス管理ポータル
+### <a name="device-administration-portal"></a>Device administration portal
 
-この Web アプリを使用すると、次のことができます。
+This web app enables you to:
 
-- 新しいデバイスをプロビジョニングする。このアクションによって一意のデバイス ID が設定され、認証キーが生成されます。デバイスに関する情報は、IoT Hub の ID レジストリとソリューション固有の DocumentDB データベースの両方に書き込まれます。
-- デバイスのプロパティを管理する。このアクションでは、既存のプロパティを表示したり、新しいプロパティで更新したりすることができます。
-- デバイスにコマンドを送信する
-- デバイスのコマンド履歴を表示する
-- デバイスの有効と無効を切り替える。
+- Provision a new device. This action sets the unique device id and generates the authentication key. It writes information about the device to both the IoT Hub identity registry and the solution-specific DocumentDB database.
+- Manage device properties. This action includes viewing existing properties and updating with new properties.
+- Send commands to a device.
+- View the command history for a device.
+- Enable and disable devices.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-以下の TechNet ブログ投稿には、リモート監視の構成済みソリューションについての詳細情報が記載されています。
+The following TechNet blog posts provide more detail about the remote monitoring preconfigured solution:
 
-- [IoT Suite - Under The Hood - Remote Monitoring (IoT スイート - 内部のしくみ - リモート監視)](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
-- [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices (IoT スイート - リモート監視 - ライブおよびシミュレートされたデバイスの追加)](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
+- [IoT Suite - Under The Hood - Remote Monitoring](http://social.technet.microsoft.com/wiki/contents/articles/32941.iot-suite-under-the-hood-remote-monitoring.aspx)
+- [IoT Suite - Remote Monitoring - Adding Live and Simulated Devices](http://social.technet.microsoft.com/wiki/contents/articles/32975.iot-suite-remote-monitoring-adding-live-and-simulated-devices.aspx)
 
-引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
+You can continue getting started with IoT Suite by reading the following articles:
 
-- [デバイスをリモート監視の事前構成済みソリューションに接続する][lnk-connect-rm]
-- [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
+- [Connect your device to the remote monitoring preconfigured solution][lnk-connect-rm]
+- [Permissions on the azureiotsuite.com site][lnk-permissions]
 
 [lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
 [lnk-customize]: iot-suite-guidance-on-customizing-preconfigured-solutions.md
@@ -240,4 +241,7 @@ Web アプリケーションのこのページでは、デバイスから送信�
 [lnk-connect-rm]: iot-suite-connecting-devices.md
 [lnk-permissions]: iot-suite-permissions.md
 
-<!---HONumber=AcomDC_0817_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

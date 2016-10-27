@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="リソース マネージャーで Azure ポータルを使用した静的パブリック IP を持つ VM のデプロイ | Microsoft Azure"
-   description="リソース マネージャーで Azure ポータルを使用して、静的パブリック IP を持つ VM をデプロイする方法について説明します"
+   pageTitle="Deploy a VM with a static public IP using the Azure portal in Resource Manager | Microsoft Azure"
+   description="Learn how to deploy VMs with a static public IP using the zure portal in Resource Manager"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -17,46 +17,50 @@
    ms.date="02/04/2016"
    ms.author="jdial" />
 
-# Azure ポータルを使用して静的パブリック IP を持つ VM をデプロイする
+
+# <a name="deploy-a-vm-with-a-static-public-ip-using-the-azure-portal"></a>Deploy a VM with a static public IP using the Azure portal
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-arm-selectors-include.md](../../includes/virtual-network-deploy-static-pip-arm-selectors-include.md)]
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
 
 [AZURE.INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
-## 静的 IP を持つ VM を作成する 
+## <a name="create-a-vm-with-a-static-public-ip"></a>Create a VM with a static public IP 
 
-Azure ポータルで静的パブリック IP アドレスを持つ VM を作成するには、次の手順に従います。
+To create a VM with a static public IP address in the Azure portal, follow the steps below.
 
-1. ブラウザーから [Azure ポータル](https://portal.azure.com)に移動します。必要であれば Azure アカウントでサインインします。
-2. ポータルの左上隅で、**[新規]**、**[コンピューティング]**、**[Windows Server 2012 R2 Datacenter]** の順にクリックします。
-3. **[デプロイ モデルの選択]** の一覧から **[リソース マネージャー]** を選択し、**[作成]** をクリックします。
-4. **[基本]** ブレードで、次に示す VM 情報を入力し、**[OK]** をクリックします。
+1. From a browser, navigate to the [Azure portal](https://portal.azure.com) and, if necessary, sign in with your Azure account.
+2. On the top left hand corner of the portal, click **New**>>**Compute**>**Windows Server 2012 R2 Datacenter**.
+3. In the **Select a deployment model** list, select **Resource Manager** and click **Create**.
+4. In the **Basics** blade, enter the VM information as shown below, and then click **OK**.
 
-	![Azure ポータル - 基本](./media/virtual-network-deploy-static-pip-arm-portal/figure1.png)
+    ![Azure portal - Basics](./media/virtual-network-deploy-static-pip-arm-portal/figure1.png)
 
-5. **[サイズの選択]** ブレードで、次に示す **[A1 標準]** をクリックした後、**[選択]** をクリックします。
+5. In the **Choose a size** blade, click **A1 Standard** as shown below, and then click **Select**.
 
-	![Azure ポータル - サイズの選択](./media/virtual-network-deploy-static-pip-arm-portal/figure2.png)
+    ![Azure portal - Choose a size](./media/virtual-network-deploy-static-pip-arm-portal/figure2.png)
 
-6. **[設定]** ブレードで、**[パブリック IP アドレス]** をクリックします。次に、**[パブリック IP アドレスの作成]** ブレードで、次に示す **[割り当て]** の下の **[静的]** をクリックします。次に、**[OK]** をクリックします
+6. In the **Settings** blade, click **Public IP address**, then in the **Create public IP address** blade, under **Assignment**, click **Static** as shown below. And then click **OK**.
 
-	![Azure ポータル - パブリック IP アドレスの作成](./media/virtual-network-deploy-static-pip-arm-portal/figure3.png)
+    ![Azure portal - Create public IP address](./media/virtual-network-deploy-static-pip-arm-portal/figure3.png)
 
-7. **[設定]** ブレードで **[OK]** をクリックします。
-8. 次に示す **[概要]** ブレードを見直し、**[OK]** をクリックします。
+7. In the **Settings** blade, click **OK**.
+8. Review the **Summary** blade, as shown below, and then click **OK**.
 
-	![Azure ポータル - パブリック IP アドレスの作成](./media/virtual-network-deploy-static-pip-arm-portal/figure4.png)
+    ![Azure portal - Create public IP address](./media/virtual-network-deploy-static-pip-arm-portal/figure4.png)
 
-9. ダッシュボードの新しいタイルに注意してください。
+9. Notice the new tile in your dashboard.
 
-	![Azure ポータル - パブリック IP アドレスの作成](./media/virtual-network-deploy-static-pip-arm-portal/figure5.png)
+    ![Azure portal - Create public IP address](./media/virtual-network-deploy-static-pip-arm-portal/figure5.png)
 
-10. VM が作成されると、次に示す **[設定]** ブレードが表示されます。
+10. Once the VM is created, the **Settings** blade will be displayed as shown below
 
-	![Azure ポータル - パブリック IP アドレスの作成](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
+    ![Azure portal - Create public IP address](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

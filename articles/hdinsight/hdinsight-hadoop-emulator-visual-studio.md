@@ -1,6 +1,6 @@
 <properties
-pageTitle="Hortonworks サンドボックスで Microsoft Azure Data Lake Tools for Visual Studio を使用する | Microsoft Azure"
-description="(ローカル VM で実行される) Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する方法について説明します。 このツールを使用すると、サンドボックスで Hive ジョブと Pig ジョブを作成して実行し、ジョブの出力と履歴を表示できます。"
+pageTitle="Use the Microsoft Azure Data Lake Tools for Visual Studio with the Hortonworks Sandbox | Microsoft Azure"
+description="Learn how to use the Azure Data Lake Tools for VIsual Studio with the Hortonworks sandbox (running in a local VM.) With these tools, you can create and run Hive and Pig jobs on the sandbox and view job output and history."
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
@@ -16,123 +16,124 @@ ms.workload="big-data"
 ms.date="08/26/2016"
 ms.author="larryfr"/>
 
-# Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する
 
-Azure Data Lake Tools for Visual Studio には、Azure Data Lake と HDInsight を操作するためのツールに加えて、汎用的な Hadoop クラスターを操作するためのツールも含まれています。このドキュメントでは、ローカルの仮想マシンで実行されている Hortonworks サンドボックスで、Azure Data Lake ツールを使用するために必要な手順を説明します。
+# <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Use the Azure Data Lake Tools for Visual Studio with the Hortonworks Sandbox
 
-Hortonworks サンドボックスを使用すると、ローカルの開発環境で Hadoop を使用できます。開発したソリューションを大規模にデプロイしたい場合に、HDInsight クラスターに移行できます。
+The Azure Data Lake tools for Visual Studio include tools for working with generic Hadoop clusters, in addition to tools for working with Azure Data Lake and HDInsight. This document provides the steps needed to use the Azure Data Lake tools with the Hortonworks Sandbox running in a local virtual machine.
 
-## 前提条件
+Using the Hortonworks Sandbox allows you to work with Hadoop locally on your development environment. Once you have developed a solution and want to deploy it at scale, you can then move to an HDInsight cluster.
 
-* 開発環境の仮想マシンで実行されている Hortonworks サンドボックス。このドキュメントに記載されている内容は、Oracle VirtualBox で実行されるサンドボックスを使用してテストされています。また、サンドボックスは、[Hadoop エコシステムの使用方法](hdinsight-hadoop-emulator-get-started.md)に関するドキュメントに記載された情報を使用して構成されています。
+## <a name="prerequisites"></a>Prerequisites
 
-* Visual Studio 2013 または 2015 の任意のエディション。
+* The Hortonworks Sandbox running in a virtual machine on your development environment. This document was written and tested with the sandbox running in Oracle VirtualBox, which was configured using the information in the [Get started in the Hadoop ecosystem](hdinsight-hadoop-emulator-get-started.md) document.
 
-* [Azure SDK for .NET](https://azure.microsoft.com/downloads/) 2.7.1 以降。
+* Visual Studio 2013 or 2015, any edition.
 
-* [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)。
+* The [Azure SDK for .NET](https://azure.microsoft.com/downloads/) 2.7.1 or higher
 
-## サンドボックスのパスワードを構成する
+* [Azure Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 
-Hortonworks サンドボックスが実行されていることを確認したら、[Hadoop エコシステムの使用方法](hdinsight-hadoop-emulator-get-started.md#set-passwords)に関するドキュメントに記載された手順に従い、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
+## <a name="configure-passwords-for-the-sandbox"></a>Configure passwords for the sandbox
 
-## サンドボックスにツールを接続する
+Make sure that the Hortonworks Sandbox is running, then follow the steps in [Get started in the Hadoop ecosystem](hdinsight-hadoop-emulator-get-started.md#set-passwords) to configure the password for the SSH `root` account, and the Ambari `admin` account. These passwords will be used when connecting to the sandbox from Visual Studio.
 
-1. Visual Studio を開き、__[表示]__、__[サーバー エクスプローラー]__ の順に選択します。
+## <a name="connect-the-tools-to-the-sandbox"></a>Connect the tools to the sandbox
 
-2. __[サーバー エクスプローラー]__ の __[HDInsight]__ エントリをクリックし、__[Connect to HDInsight Emulator (HDInsight Emulator に接続)]__ を選択します。
+1. Open Visual Studio, and select __View__, then __Server Explorer__.
+
+2. From __Server Explorer__, right click the __HDInsight__ entry, and then select __Connect to HDInsight Emulator__.
 
     ![Connect to HDInsight Emulator](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
 
-3. __[Connect to HDInsight Emulator (HDInsight Emulator に接続)]__ ダイアログ ボックスで、Ambari 用に構成したパスワードを入力します。
+3. From the __Connect to HDInsight Emulator__ dialog, enter the password that you configured for Ambari.
 
     ![Enter Ambari password](./media/hdinsight-hadoop-emulator-visual-studio/enter-ambari-password.png)
 
-    __[次へ]__ をクリックして続行します。
+    Select __Next__ to continue.
 
-4. __[パスワード]__ フィールドに、`root` アカウント用に構成したパスワードを入力します。他のフィールドは既定値のままにします。
+4. Use the __Password__ field to enter the password you configured for the `root` account. Leave the other fields at the default value.
 
     ![Enter root password](./media/hdinsight-hadoop-emulator-visual-studio/enter-root-password.png)
 
-    __[次へ]__ をクリックして続行します。
+    Select __Next__ to continue.
 
-5. サービスの検証が完了するのを待ちます。検証が失敗し、構成を更新するよう求められることがあります。その場合は、__[更新]__ をクリックし、サービスの構成と検証が完了するのを待ちます。
+5. Wait for validation of the services to complete. In some cases, validation may fail and prompt you to update the configuration. When this happens, select the __update__ button and wait for the configuration and verification for the service to complete.
 
     ![Errors and update button](./media/hdinsight-hadoop-emulator-visual-studio/fail-and-update.png)
 
-    > [AZURE.NOTE] 更新プロセスでは、Ambari を使用して、Azure Data Lake Tools for Visual Studio で必要とされる要件に合わせて Hortonworks サンドボックス構成が変更されます。
+    > [AZURE.NOTE] The update process uses Ambari to modify the Hortonworks Sandbox configuration to what is expected by the Azure Data Lake tools for Visual Studio.
 
-    検証が終わったら、__[完了]__ をクリックして、構成を完了します。
+    Once validation has completed, select __Finish__ to complete configuration.
 
     ![Finish connecting](./media/hdinsight-hadoop-emulator-visual-studio/finished-connect.png)
 
-    > [AZURE.NOTE] 開発環境の処理速度と仮想マシンに割り当てられたメモリの量によっては、サービスの構成と検証に数分かかることがあります。
+    > [AZURE.NOTE] Depending on the speed of your development environment, and the amount of memory allocated to the virtual machine, it can take several minutes to configure and validate the services.
 
-上記の手順を終了すると、[サーバー エクスプローラー] の [HDInsight] セクションに [HDInsight local cluster (HDInsight ローカル クラスター)] エントリが表示されます。
+After following these steps, you now have an "HDInsight local cluster" entry in Server Explorer under the HDInsight section.
 
-## Hive クエリを記述する
+## <a name="write-a-hive-query"></a>Write a Hive query
 
-Hive には、構造化データを操作するための、SQL に似たクエリ言語 (HiveQL) が用意されています。次の手順では、ローカル クラスターにアドホック クエリを実行する方法を示します。
+Hive provides a SQL-like query language (HiveQL,) for working with structured data. Use the following steps to learn how to run ad-hoc queries against the local cluster.
 
-1. __[サーバー エクスプローラー]__ で、前の手順で追加したローカル クラスターのエントリを右クリックし、__[Write a Hive query (Hive クエリの記述)]__ を選択します。
+1. In __Server Explorer__, right-click on the entry for the local cluster that you added previously, and then select __Write a Hive query__.
 
     ![Write a hive query](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
 
-    新しいクエリ ウィンドウが開き、短時間でクエリを入力して、ローカル クラスターに送信できます。
+    This opens a new query window that allows you to quickly type up and submit a query to the local cluster.
 
-2. 新しいクエリ ウィンドウに、次のように入力します。
+2. In the new query window, enter the following:
 
         select count(*) from sample_08;
     
-    クエリ ウィンドウの上部で、ローカル クラスターの構成が選択されていることを確認し、__[送信]__ をクリックします。他の値 (__[バッチ]__ とサーバー名) は既定値のままにします。
+    From the top of the query window, make sure that configuration for the local cluster is selected, and then select __Submit__. Leave the other values (__Batch__ and server name,) at the default values.
 
     ![query window and submit button](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
 
-    __[送信]__ の横にあるドロップダウン メニューで __[詳細設定]__ を選択することもできます。これを選択するとダイアログが開き、ジョブを送信するときに利用できる追加のオプションが表示されます。
+    Note that you can also use the drop down menu next to __Submit__ to select __Advanced__. This opens a dialog that lets you provide additional options when submitting the job.
 
     ![advanced submit](./media/hdinsight-hadoop-emulator-visual-studio/advanced-hive.png)
 
-3. クエリを送信すると、ジョブの状態が表示されます。ここには、Hadoop で処理されているジョブの情報が表示されます。__[ジョブの状態]__ エントリは、ジョブの現在の状態を示します。状態は定期的に更新されます。更新アイコンを使用して、状態を手動で更新することもできます。
+3. Once you submit the query, the job status will appear. This provides information on the job as it is processed by Hadoop. The __Job State__ entry provides the current status of the job. The state will be updated periodically, or you can use the refresh icon to manually refresh the state.
 
     ![Job state](./media/hdinsight-hadoop-emulator-visual-studio/job-state.png)
 
-    __[ジョブの状態]__ が __[完了]__ に変わったら、有向非巡回グラフ (DAG) が表示されます。このグラフは、Tez (ローカル クラスター上の Hive の既定の実行エンジン) によって決定される実行パスを示しています。
+    Once the __Job Status__ changes to __Finished__, a Directed Acyclic Graph (DAG) is displayed. This describes the execution path that was determined by Tez (the default execution engine for Hive on the local cluster.) 
     
-    > [AZURE.NOTE] Linux ベースの HDInsight クラスターを使用する場合も、Tez が既定の実行エンジンです。Windows ベースの HDInsight では既定ではありません。Tez を使用するには、Hive クエリの先頭に `set hive.execution.engine = tez;` という行を追加する必要があります。
+    > [AZURE.NOTE] Tez is also the default when using Linux-based HDInsight clusters. It is not the default on Windows-based HDInsight; to use it there, you must add the line `set hive.execution.engine = tez;` to the beginning of your Hive query. 
 
-    __[ジョブの出力]__ リンクをクリックすると、出力が表示されます。この例では、__823__ と表示されます。これは、sample\_08 テーブル内の行の数です。__[ジョブのログ]__ リンクと __[Download YARN Log (YARN ログのダウンロード)]__ リンクを使用すると、ジョブに関する診断情報を表示できます。
+    Use the __Job Output__ link to view the output. In this case, it is __823__; the number of rows in the sample_08 table. You can view diagnostics information about the job by using the __Job Log__ and __Download YARN Log__ links.
 
-4. また、__[バッチ]__ フィールドを __[対話型]__ に変更し、__[実行]__ をクリックすると、対話形式で Hive ジョブを実行できます。
+4. You can also run Hive jobs interactively by changing the __Batch__ field to __Interactive__, and then select __Execute__. 
 
     ![Interactive query](./media/hdinsight-hadoop-emulator-visual-studio/interactive-query.png)
 
-    これによって、処理中に生成された出力ログが __[HiveServer2 Output (HiveServer2 出力)]__ ウィンドウにストリーム表示されます。
+    This streams the output log generated during processing to the __HiveServer2 Output__ window.
     
-    > [AZURE.NOTE] これは、ジョブが完了した後に __[ジョブのログ]__ リンクから取得できるものと同じ情報です。
+    > [AZURE.NOTE] This is the same information that is available from the __Job Log__ link after a job has completed.
 
     ![HiveServer2 output](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output.png)
 
-## Hive プロジェクトを作成する
+## <a name="create-a-hive-project"></a>Create a Hive project
 
-複数の Hive スクリプトを含むプロジェクトを作成することもできます。これは、複数の関連スクリプトを 1 つにまとめておきたい場合や、バージョン管理システムを使用して管理する必要がある場合に便利です。
+You can also create a project that contains multiple Hive scripts. This is useful when you have related scripts that you need to keep together, or maintain using a version control systems.
 
-1. Visual Studio で、__[ファイル]__、__[新規]__、\_\_[プロジェクト]\_\_ の順に選択します。
+1. In Visual Studio, select __File__, __New__, and then__Project__.
 
-2. プロジェクトの一覧から、__[テンプレート]__、__[Azure Data Lake]__ の順に展開し、__[HIVE (HDInsight)]__ を選択します。テンプレートの一覧から __[Hive Sample (Hive サンプル)]__ を選択します。名前と場所を入力し、__[OK]__ を選択します。
+2. From the list of projects, expand __Templates__, __Azure Data Lake__ and then select __HIVE (HDInsight)__. From the list of templates, select __Hive Sample__. Enter a name and location, then select __OK__.
 
     ![HIVE (HDInsight) template](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
-__[Hive Sample (Hive サンプル)]__ プロジェクトには、__WebLogAnalysis.hql__ と __SensorDataAnalysis.hql__ という 2 つのスクリプトが含まれています。これらのスクリプトを送信する際も、ウィンドウの上部にある __[送信]__ ボタンをクリックします。
+The __Hive Sample__ project contains two scripts, __WebLogAnalysis.hql__ and __SensorDataAnalysis.hql__. You can submit these using the same __Submit__ button at the top of the window.
 
-## Pig プロジェクトを作成する
+## <a name="create-a-pig-project"></a>Create a Pig project
 
-Hive には構造化データを操作するための SQL に似た言語が用意されていますが、Pig はデータに適用される変換のパイプラインを作成できる言語 (Pig Latin) を備えています。ローカル クラスターで Pig を使用するには、次の手順に従います。
+While Hive provides a SQL-like language for working with structured data, Pig provides a language (Pig Latin,) that allows you to develop a pipeline of transformations that are applied to your data. Use the following steps to use Pig with the local cluster.
 
-1. Visual Studio を開いて、__[ファイル]__、__[新規]__、__[プロジェクト]__ の順に選択します。プロジェクトの一覧から、__[テンプレート]__、__[Azure Data Lake]__ の順に展開し、__[Pig (HDInsight)]__ を選択します。テンプレートの一覧から、__[Pig Application (Pig アプリケーション)]__ を選択します。名前と場所を入力し、__[OK]__ を選択します。
+1. Open Visual Studio and select __File__, __New__, and then __Project__. From the list of projects, expand __Templates__, __Azure Data Lake__, and then select __Pig (HDInsight)__. From the list of templates, select __Pig Application__. Enter a name, location, and then select __OK__.
 
     ![Pig (HDInsight) project](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 
-2. このプロジェクトで作成した __script.pig__ ファイルの内容として、次のコードを入力します。
+2. Enter the following as the contents of the __script.pig__ file that was created with this project.
 
         a = LOAD '/demo/data/Website/Website-Logs' AS (
             log_id:int, 
@@ -145,59 +146,62 @@ Hive には構造化データを操作するための SQL に似た言語が用�
         c = GROUP b BY ip_address;
         DUMP c;
 
-    Pig では Hive とは異なる言語を使用しますが、ジョブを実行する方法はどちらの言語でも同じで、__[送信]__ ボタンをクリックします。__[送信]__ の横にあるドロップダウンを選択すると、Pig の詳細な送信設定のためのダイアログが表示されます。
+    While Pig uses a different language than Hive, how you run the jobs is consistent between both languages through the __Submit__ button. Selecting the drop down beside __Submit__ displays an advanced submit dialog for Pig.
 
     ![Pig advanced submit](./media/hdinsight-hadoop-emulator-visual-studio/advanced-pig.png)
     
-3. 表示されるジョブの状態と出力は、Hive クエリの場合と同じです。
+3. The job status and output is also displayed the same as a Hive query.
 
     ![image of a completed pig job](./media/hdinsight-hadoop-emulator-visual-studio/completed-pig.png)
 
-## ジョブを表示する
+## <a name="view-jobs"></a>View jobs
 
-Azure Data Lake Tools では、Hadoop で実行されたジョブに関する情報も簡単に表示できます。ローカル クラスターで実行されたジョブを表示するには、次の手順に従います。
+Azure Data Lake Tools also allow you to easily view information about jobs that have been ran on Hadoop. Use the following steps to see the jobs that have been ran on the local cluster.
 
-1. __[サーバー エクスプローラー]__ で、ローカル クラスターを右クリックし、__[ジョブの表示]__ を選択します。クラスターに送信されたジョブの一覧が表示されます。
+1. From __Server Explorer__, right-click on the local cluster, and then select __View Jobs__. This will display a list of jobs that have been submitted to the cluster.
 
     ![View jobs](./media/hdinsight-hadoop-emulator-visual-studio/view-jobs.png)
 
-2. ジョブの一覧から、詳細を表示するジョブを選択します。
+2. From the list of jobs, select one to view the job details.
 
     ![select a job](./media/hdinsight-hadoop-emulator-visual-studio/view-job-details.png)
 
-    表示される情報は、Hive や Pig のクエリを実行した後に出力とログ情報を表示するためのリンクを使用して得られるものとほとんど同じです。
+    The information displayed is similar to what you see after running a Hive or Pig query, complete with links to view the output and log information.
 
-3. また、ここからジョブの変更と再送信を実行することもできます。
+3. You can also modify and resubmit the job from here.
 
-## Hive データベースを表示する
+## <a name="view-hive-databases"></a>View Hive databases
 
-1. __[サーバー エクスプローラー]__ で、__[HDInsight local cluster (HDInsight ローカル クラスター)]__ エントリ、__[Hive Databases (Hive データベース)]__ の順に展開します。ローカル クラスター上の __[既定]__ データベースと __[xademo]__ データベースが表示されます。データベースを展開すると、データベース内のテーブルが表示されます。
+1. In __Server Explorer__, expand the __HDInsight local cluster__ entry, and then expand __Hive Databases__. This will reveal the __Default__ and __xademo__ databases on the local cluster. Expanding a database reveals the tables within the database.
 
     ![expanded databases](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
 
-2. テーブルを展開すると、そのテーブルの列が表示されます。テーブルを右クリックし、__[View Top 100 Rows (上位 100 行の表示)]__ を選択すると、すぐにデータが表示されます。
+2. Expanding a table displays the columns for that table. You can right-click a table and select __View Top 100 Rows__ to quickly view the data.
 
     ![hive databases view](./media/hdinsight-hadoop-emulator-visual-studio/view-100.png)
 
-### データベースとテーブルのプロパティ
+### <a name="database-and-table-properties"></a>Database and Table properties
 
-お気付きかもしれませんが、データベースまたはテーブルで __[プロパティ]__ を選択して表示することができます。選択したアイテムの詳細が [プロパティ] ウィンドウに表示されます。
+You may have noticed that you can select to view __Properties__ on a database or table. This will show details for the selected item in the properties window.
 
-![プロパティ](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
+![Properties](./media/hdinsight-hadoop-emulator-visual-studio/properties.png)
 
-### テーブルを作成する
+### <a name="create-a-table"></a>Create a table
 
-新しいテーブルを作成するには、データベースを右クリックし、__[テーブルの作成]__ を選択します。
+To create a new table, right-click a database, and then select __Create Table__.
 
-![テーブルを作成する](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
+![Create table](./media/hdinsight-hadoop-emulator-visual-studio/create-table.png)
 
-ここでフォームを使用してテーブルを作成できます。このページの下部に表示されている未加工の HiveQL を使用してテーブルを作成します。
+You can then create the table using a form. You can see the raw HiveQL that will be used to create the table at the bottom of this page.
 
 ![create table form](./media/hdinsight-hadoop-emulator-visual-studio/create-table-form.png)
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-* [Hortonworks Sandbox の使い方のヒント](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop チュートリアル: HDP の概要](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Learning the ropes of the Hortonworks Sandbox](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Hadoop tutorial - Getting started with HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

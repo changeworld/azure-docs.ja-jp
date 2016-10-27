@@ -1,28 +1,28 @@
-## Traffic Manager プロファイル
+## <a name="traffic-manager-profile"></a>Traffic Manager Profile
 
-Traffic Manager とその子エンドポイントのリソースは、Azure 内と Azure 外部のエンドポイントへ DNS のルーティングをできるようにします。このようなトラフィック分散は、ルーティング ポリシー メソッドによって管理されます。Traffic Manager では、エンドポイントの正常性を監視できます。また、エンドポイントの正常性に基づいて、トラフィックが適切に転送できるようにします。
+Traffic manager and its child endpoint resource enable DNS routing to endpoints in Azure and outside of Azure. Such traffic distribution is governed by routing  policy methods. Traffic manager also allows endpoint health to be monitored, and traffic diverted appropriately based on the health of an endpoint. 
 
-| プロパティ | 説明 |
+| Property | Description |
 |---|---|
-|**trafficRoutingMethod**| 指定できる値は、*Performance*、*Weighted*、および *Priority* です。 | 
-| **dnsConfig** | プロファイルの FQDN | 
-| **プロトコル** | 監視プロトコル。有効な値は、*HTTP* と *HTTPS* です。|
-| **ポート** | 監視ポート |  
-| **パス** | 監視パス |
-| **Endpoints** | エンドポイント リソースのコンテナー | 
+|**trafficRoutingMethod**| possible values are *Performance*, *Weighted*, and *Priority* | 
+| **dnsConfig** | FQDN for the profile | 
+| **Protocol** | monitoring protocol, possible values are *HTTP* and *HTTPS*|
+| **Port** | monitoring port |  
+| **Path** | monitoring path |
+| **Endpoints** |  container for endpoint resources | 
 
-### エンドポイント 
+### <a name="endpoint"></a>Endpoint 
 
-エンドポイントは、Traffic Manager プロファイルの子リソースです。Traffic Manager プロファイル リソースに構成されたポリシーに基づいてユーザー トラフィックが配信されるサービスまたは Web エンドポイントを表します。
+An endpoint is a child resource of a Traffic Manager Profile. It represents a service or web endpoint to which user traffic is distributed based on the configured policy in the Traffic Manager Profile resource. 
 
-| プロパティ | 説明 | 
+| Property | Description | 
 |---|---| 
-| **型** | エンドポイントの種類。有効な値は *Azure エンドポイント*、*外部エンドポイント*、および*入れ子になったエンドポイント*です。 | 
-| **targetResourceId** | サービスまたは Web のエンドポイントのパブリック IP アドレスです。Azure のエンドポイントまたは外部のエンドポイントを指定できます。 | 
-| **重量** | トラフィック管理に使用されるエンドポイントの重み付けです。 | 
-| **優先順位** | フェールオーバー アクションを定義するために使用されるエンドポイントの優先度です。 |
+| **Type** |  the type of the endpoint, possible values are *Azure End point*, *External Endpoint*, and  *Nested Endpoint* | 
+| **targetResourceId** |  public IP address of a service or web endpoint. This can be an Azure or external endpoint. | 
+| **Weight** | endpoint weight used in traffic management. | 
+| **Priority** | priority of the endpoint, used to define a failover action |
 
-Json 形式での Traffic Manager のサンプル:
+Sample of Traffic Manager in Json format: 
 
 
         {
@@ -80,8 +80,11 @@ Json 形式での Traffic Manager のサンプル:
         }
 
  
-## その他のリソース
+## <a name="additional-resources"></a>Additional resources
 
-詳細については、[Traffic Manager の REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt163664.aspx)を参照してください。
+Read [REST API documentation for Traffic Manager](https://msdn.microsoft.com/library/azure/mt163664.aspx) for more information.
 
-<!---HONumber=AcomDC_1223_2015-->
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric クラスター リソース マネージャーの概要 | Microsoft Azure"
-   description="Service Fabric クラスター リソース マネージャーについての概要。"
+   pageTitle="Introducing the Service Fabric Cluster Resource Manager | Microsoft Azure"
+   description="An introduction to the Service Fabric Cluster Resource Manager."
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,44 +16,49 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
-# Service Fabric クラスター リソース マネージャーの概要
-従来、IT システムまたは一連のサービスの管理では、いくつかの物理または仮想マシンをそれらの特定のサービスまたはシステム専用に使用しました。多くの主要なサービスは "Web" 層と "データ" 層または "ストレージ" 層に分かれ、普通はそれ以外にキャッシュなどのいくつかの特殊なコンポーネントがあります。他には要求が出入りするメッセージング層を持つアプリケーションの種類があり、メッセージングの一部として必要な分析や変換のための処理層に接続されています。ワークロードの各種類には 1 個の専用マシンが使用されます。データベースには 2 個の専用マシンが使用され、Web サーバーには数個が使用されます。特定の種類のワークロードがそのワークロード用のマシンの能力を超えた場合は、そのワークロード用に構成されたマシンの数を増やすか、または何台かを大型のマシンに置き換えます。簡単です。マシンで障害が発生した場合、マシンが復元されるまで、アプリケーションのその部分の処理能力が低下します。まだ (楽しくはないにしても) 十分に簡単です。
 
-ところが、スケール アウトが必要になり、コンテナーやマイクロサービスを追加する場合を考えてみてください。突然、数十、数百または何千ものマシン、何十種類ものサービス、これらのサービスのおそらく何百ものインスタンスがあり、それぞれに高可用性 (HA) のためのインスタンスまたはレプリカが 1 つ以上あることに気付くのです。
+# <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Introducing the Service Fabric cluster resource manager
+Traditionally managing IT systems or a set of services meant getting a few physical or virtual machines dedicated to those specific services or systems. Many major services were broken down into a “web” tier and a “data” or “storage” tier, maybe with a few other specialized components like a cache. Other types of applications would have a messaging tier where requests flowed in and out, connected to a work tier for any analysis or transformation necessary as a part of the messaging. Each type of workload got a specific machines dedicated to it: the database got a couple machines dedicated to it, the web servers a few. If a particular type of workload caused the machines it was on to run too hot, then you added more machines with that type of workload configured to run on it, or replaced a few of the machines with larger machines. Easy. If a machine failed, that part of the overall application ran at lower capacity until the machine could be restored. Still fairly easy (if not necessarily fun).
 
-いきなり、環境の管理は、1 種類のワークロードに専用の数台のマシンの管理といった単純なものではなくなります。サーバーは仮想化されており、もはや名前を持ちません (考え方を[ペットから家畜の牛](http://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20)に変え*ます*)。マシンに関する構成は減り、サービス自体に関する構成が増えています。専用ハードウェアは過去のものであり、サービスは複数の細分化されたコモディティ ハードウェアにまで及ぶ小規模な分散システムになっています。
+Now however, let’s say you’ve found a need to scale out and have taken the containers and/or microservice plunge. Suddenly you find yourself with tens, hundreds, or even thousands of machines, dozens of different types of services, perhaps hundreds of different instances of those services, each with one or more instances or replicas for High Availability (HA).
 
-このように従来の単一の階層化されたアプリをコモディティ ハードウェアで実行している複数の異なるサービスに分割した結果として、はるかに多くの組み合わせに対応する必要があります。どのハードウェアまたは何台のハードウェアで実行できるワークロードの種類をだれが決定しますか。 どのワークロードが同じハードウェアで適切に動作し、競合しているでしょうか。 マシンがダウンをしたとき、そこでは何が実行していましたか。 確実にワークロードが再実行する責任はだれにありますか。 (仮想) マシンが回復するまで待ちますか、またはワークロードは自動的に他のマシンにフェールオーバーし、実行し続けていますか。 ユーザーの介入は必要ですか。 このような環境でのアップグレードについてはどうですか。
+Suddenly managing your environment is not so simple as managing a few machines dedicated to single types of workloads. Your servers are virtual and no longer have names (you *have* switched mindsets from [pets to cattle](http://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20) after all). Configuration is less about the machines and more about the services themselves. Dedicated hardware is a thing of the past, and services have become small distributed systems, spanning multiple smaller pieces of commodity hardware.
 
-このような世界に存在する開発者およびオペレーターとして、この複雑さを管理するには何らかの手助けが必要ですが、むやみに人を雇って複雑さを覆い隠そうとすることは正しい答えではないことは何となくわかっています。
+As a consequence of breaking your formerly monolithic, tiered app into separate services running on commodity hardware, you now have many more combinations to deal with. Who decides what types of workloads can run on which hardware, or how many? Which workloads work well on the same hardware, and which conflict? When a machine goes down… what was even running there? Who is in charge of making sure that workload starts running again? Do you wait for the (virtual?) machine to come back or do your workloads automatically fail over to other machines and keep running? Is human intervention required? What about upgrades in this sort of environment?
 
-どうすればよいでしょうか。
+As developers and operators living in this sort of world, we’re going to need some help managing this complexity, and you get the sense that a hiring binge and trying to paper over the complexity with people is not the right answer.
 
-## オーケストレーターの導入
-"オーケストレーター" とは、管理者がこの種の環境を管理するのを支援するソフトウェアの一般的な用語です。オーケストレーターは、"このサービスの 5 つのコピーを環境で実行したい" といった要求を受け取り、それを実現して維持するコンポーネントです。
+What to do?
 
-オーケストレーター (人ではありません) は、何らかの予期しない理由によってマシンで障害が発生したりワークロードが中断したりすると活動を開始します。ほとんどのオーケストレーターは、新しいデプロイの支援、アップグレードの処理、リソース消費の処理など、単なる障害対応以上のことを行いますが、基本的にはすべては環境内の構成を何らかの望ましい状態に維持することに関係しています。管理者としては、オーケストレーターに希望を伝えて重労働を任せることができればいいと思うでしょう。Mesos 上の Chronos または Marathon、Fleet、Swarm、Kubernetes、Service Fabric はすべて、オーケストレーターの例であるか、オーケストレーターが組み込まれています。異なる種類の環境と条件で実際のデプロイを管理する複雑さは拡大および変化しているので、常に新しいオーケストレーターが作成されています。
+## <a name="introducing-orchestrators"></a>Introducing orchestrators
+An “Orchestrator” is the general term for a piece of software that helps administrators manage these types of environments. Orchestrators are the components that take in requests like “I would like 5 copies of this service running in my environment”, make it true, and then (try) to keep it that way.
 
-## サービスとしてのオーケストレーション
-Service Fabric クラスターでのオーケストレーターのジョブは、主にクラスター リソース マネージャーによって行われます。Service Fabric クラスター リソース マネージャーは Service Fabric 内のシステム サービスの 1 つであり、各クラスターで自動的に起動されます。一般に、クラスター リソース マネージャーのジョブは 3 つの部分に分かれます。
+Orchestrators (not humans) are what swing into action when a machine fails or a workload terminates for some unexpected reason. Most Orchestrators do more than just deal with failure, such as helping with new deployments, handling upgrades, and dealing with resource consumption, but all are fundamentally about maintaining some desired state of configuration in the environment. You want to be able to tell an Orchestrator what you want and have it do the heavy lifting. Chronos or Marathon on top of Mesos, Fleet, Swarm, Kubernetes, and Service Fabric are all examples of Orchestrators (or have them built in). More are being created all the time as the complexities of managing real world deployments in different types of environments and conditions grow and change.
 
-1. ルールの強制
-2. 環境の最適化
-3. 他のプロセスの支援
+## <a name="orchestration-as-a-service"></a>Orchestration as a service
+The job of the Orchestrator within a Service Fabric cluster is handled primarily by the Cluster Resource Manager. The Service Fabric Cluster Resource Manager is one of the System Services within Service Fabric and is automatically started up within each cluster.  Generally, the Cluster Resource Manager’s job is broken down into three parts:
 
-### 説明
-従来の N 層 Web アプリには、常に "Load Balancer" の概念が存在しました。通常は、ネットワーク スタック内での位置によりネットワーク ロード バランサー (NLB) またはアプリケーション ロード バランサー (ALB) と呼ばれます。ロード バランサーには、F5 の BigIP のようなハードウェア ベースのものと、Microsoft の NLB のようなソフトウェア ベースのものがあります。他の環境では、このロールに HAProxy のようなものを確認できます。これらのアーキテクチャでの負荷分散の仕事は、すべての異なるステートレス フロントエンド マシンまたはクラスター内の異なるマシンが、(ほぼ) 同じ量の作業を受け取るようにすることです。その方法は、異なる各呼び出しを異なるサーバーに送るといったものから、セッションの固定/持続性や、予想されるコストと現在のマシンの負荷に基づく実際の推定と呼び出しの割り当てまで、さまざまです。
+1. Enforcing Rules
+2. Optimizing Your Environment
+3. Assisting in Other Processes
 
-これはせいぜい、Web 層をほぼ同じバランスに維持するメカニズムであったことに注意してください。データ層のバランスをとる方法はまったく異なるもので、データ ストレージ メカニズムに依存し、通常はデータ シャーディング、キャッシュ、管理されたデータベースのビュー、ストアド プロシージャなどが中心になります。
+### <a name="what-it-isn’t"></a>What it isn’t
+In traditional N tier web-apps there was always some notion of a “Load Balancer”, usually referred to as a Network Load Balancer (NLB) or an Application Load Balancer (ALB) depending on where it sat in the networking stack. Some load balancers are Hardware based like F5’s BigIP offering, others are software based such as Microsoft’s NLB. In other environments you might see something like HAProxy in this role. In these architectures the job of load balancing is to make sure that all of the different stateless front end machines or the different machines in the cluster receive (roughly) the same amount of work. Strategies for this varied, from sending each different call to a different server, to session pinning/stickiness, to actual estimation and call allocation based on its expected cost and current machine load.
 
-これらの方法の中には興味深いものもありますが、Service Fabric クラスター リソース マネージャーはネットワーク ロード バランサーやキャッシュとはまったく異なるものです。ネットワーク ロード バランサーがトラフィックをサービスが実行されている場所に移動することによってフロントエンドのバランスをとるのに対し、Service Fabric クラスター リソース マネージャーはまったく異なる方法を使用します。基本的には、Service Fabric は (トラフィックや負荷がそれに続くと想定して) *サービス*をそれが最も意味のある場所に移動します。たとえば、割り当てられているサービスがすぐにはあまりやることがない、または削除されたか別の場所に移動されたために現在コールド状態になっているノードなどです。または、別の例として、クラスター リソース マネージャーが、アップグレードされようとしているマシンや、実行されているサービスによる使用量の急増により過負荷状態になっているマシンからサービスを離す場合もあります。クラスター リソース マネージャーはサービスを移動させる役割を担う (ネットワーク トラフィックをサービスが既に実行している場所に提供しない) ため、ネットワーク ロード バランサーでの確認対象となるものと比較して大幅に異なる機能セットを含み、クラスター内のハードウェア リソースを適切に使用できるようにするまったく異なる方法を採用します。
+Note that this was at best the mechanism for ensuring that the web tier remained roughly balanced. Strategies for balancing the data tier were completely different and depended on the data storage mechanism, usually centering around data sharding, caching, database managed views and stored procedures, etc.
 
-## 次のステップ
-- クラスター リソース マネージャーのアーキテクチャと情報フローについては、[この記事](service-fabric-cluster-resource-manager-architecture.md)を参照してください。
-- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
-- サービスの構成に利用できるその他のオプションの詳細については、[サービスの構成の詳細に関する記事](service-fabric-cluster-resource-manager-configure-services.md)にある、その他のクラスター リソース マネージャーのトピックを参照してください。
-- メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
-- クラスター リソース マネージャーは Service Fabric の管理機能と連動します。その統合の詳細については、[この記事](service-fabric-cluster-resource-manager-management-integration.md)を参照してください。
-- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
+While some of these strategies are interesting, the Service Fabric Cluster Resource Manager is not anything like a network load balancer or a cache. While a Network Load Balancer ensures that the front ends are balanced by moving traffic to where the services are running, the Service Fabric Cluster Resource Manager takes a completely different strategy – fundamentally, Service Fabric moves *services* to where they make the most sense (and expects traffic or load to follow). This can be, for example, nodes which are currently cold because the services which are there are not doing a lot of work right now, or which were deleted or moved elsewhere. As another example the Cluster Resource Manager could also move a service away from a machine which is about to be upgraded or which is overloaded due to a spike in consumption by the services which were running on it. Because the Cluster Resource Manager is responsible for moving services around (not delivering network traffic to where services already are), it contains a significantly different feature set compared to what you would find in a network load balancer, and employs fundamentally different strategies for ensuring that the hardware resources in the cluster are well utilized.
 
-<!---HONumber=AcomDC_0824_2016-->
+## <a name="next-steps"></a>Next steps
+- For information on the architecture and information flow within the Cluster Resource manager, check out [this article ](service-fabric-cluster-resource-manager-architecture.md)
+- The Cluster Resource Manager has a lot of options for describing the cluster. To find out more about them check out this article on [describing a Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md)
+- For more information about the other options available for configuring services check out the topic on the other Cluster Resource Manager configurations available [Learn about configuring Services](service-fabric-cluster-resource-manager-configure-services.md)
+- Metrics are how the Service Fabric Cluster Resource Manger manages consumption and capacity in the cluster. To learn more about them and how to configure them check out [this article](service-fabric-cluster-resource-manager-metrics.md)
+- The Cluster Resource Manager works with Service Fabric's management capabilities. To find out more about that integration, read [this article](service-fabric-cluster-resource-manager-management-integration.md)
+- To find out about how the Cluster Resource Manager manages and balances load in the cluster, check out the article on [balancing load](service-fabric-cluster-resource-manager-balancing.md)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

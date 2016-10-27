@@ -1,81 +1,86 @@
 <properties 
-	pageTitle="エンコード ユニットの追加方法" 
-	description=".NET を使用して、エンコード ユニットを追加する方法を説明します。"  
-	services="media-services" 
-	documentationCenter="" 
-	authors="juliako" 
-	manager="erikre" 
-	editor=""/>
+    pageTitle="How to add encoding units" 
+    description="Learn how to how to add encoding units with .NET"  
+    services="media-services" 
+    documentationCenter="" 
+    authors="juliako" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="media-services" 
-	ms.workload="media" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
- 	ms.date="09/01/2016"
-	ms.author="juliako;milangada;gtrifonov"/>
+    ms.service="media-services" 
+    ms.workload="media" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="09/01/2016"
+    ms.author="juliako;milangada;gtrifonov"/>
 
 
-#.NET SDK を使用してエンコードを拡張する方法
+
+#<a name="how-to-scale-encoding-with-.net-sdk"></a>How to scale encoding with .NET SDK
 
 > [AZURE.SELECTOR]
-- [ポータル](media-services-portal-scale-media-processing.md)
+- [Portal](media-services-portal-scale-media-processing.md )
 - [.NET](media-services-dotnet-encoding-units.md)
-- [REST ()](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+- [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 - [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
-##Overview
+##<a name="overview"></a>Overview
 
->[AZURE.IMPORTANT] メディア処理のスケール設定の詳細については、[概要](media-services-scale-media-processing-overview.md)に関するトピックを必ず確認してください。
+>[AZURE.IMPORTANT] Make sure to review the [overview](media-services-scale-media-processing-overview.md) topic to get more information about scaling media processing topic.
  
-.NET SDK を使用して予約ユニットの種類とエンコード予約ユニットの数を変更するには、以下の手順に従います。
+To change the reserved unit type and the number of encoding reserved units using .NET SDK, do the following:
 
-	IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
-	encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
-	encodingS1ReservedUnit.Update();
-	Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
-	
-	encodingS1ReservedUnit.CurrentReservedUnits = 2;
-	encodingS1ReservedUnit.Update();
-	
-	Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
+    IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
+    encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
+    encodingS1ReservedUnit.Update();
+    Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
+    
+    encodingS1ReservedUnit.CurrentReservedUnits = 2;
+    encodingS1ReservedUnit.Update();
+    
+    Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
 
-##サポート チケットを開く
+##<a name="opening-a-support-ticket"></a>Opening a Support Ticket
 
-既定で、各 Media Services アカウントは最大 25 個のエンコードと 5 個のオンデマンド ストリーミング予約ユニットを設定できます。サポート チケットを開くと、上限の拡大を要求できます。
+By default every Media Services account can scale to up to 25 Encoding and 5 On-Demand Streaming Reserved Units. You can request a higher limit by opening a support ticket.
 
-###サポート チケットを開く
+###<a name="open-a-support-ticket"></a>Open a support ticket
 
-サポート チケットを開くには、以下の手順を実行します。
+To open a support ticket do the following:
 
-1. [[サポートの要求]](https://manage.windowsazure.com/?getsupport=true) をクリックします。ログインしていない場合は、資格情報を入力するように求められます。
+1. Click [Get Support](https://manage.windowsazure.com/?getsupport=true). If you are not logged in, you will be prompted to enter your credentials.
 
-1. サブスクリプションを選択します。
+1. Select your subscription.
 
-1. サポートの種類として [技術] を選択します。
+1. Under support type, select "Technical".
 
-1. [チケットの作成] をクリックします。
+1. Click on "Create Ticket".
 
-1. 次のページに示される製品一覧で [Azure Media Services] を選択します。
+1. Select "Azure Media Services" in the product list presented on the next page.
 
-1. 問題に適した「問題の種類」を選択します。
+1. Select a "Problem type" that is appropriate for your issue.
 
-1. [続行] をクリックして続行します。
+1. Click Continue.
 
-1. 次のページの指示に従って、問題に関する詳細を入力します。
+1. Follow instructions on next page and then enter details about your issue.
 
-1. [送信] をクリックして、チケットを開きます。
+1. Click submit to open the ticket.
 
 
 
-##Media Services のラーニング パス
+##<a name="media-services-learning-paths"></a>Media Services learning paths
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##フィードバックの提供
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,92 +1,93 @@
 <properties 
-	pageTitle="Elastic Database ツールの概要" 
-	description="実行が容易なサンプル アプリケーションを含む、Azure SQL Database の Elastic Database ツール機能の基本説明です。" 
-	services="sql-database" 
-	documentationCenter="" 
-	manager="jhubbard" 
-	authors="ddove" 
-	editor="CarlRabeler"/>
+    pageTitle="Get started with elastic database tools" 
+    description="Basic explanation of elastic database tools feature of Azure SQL Database, including easy to run sample app." 
+    services="sql-database" 
+    documentationCenter="" 
+    manager="jhubbard" 
+    authors="ddove" 
+    editor="CarlRabeler"/>
 
 <tags 
-	ms.service="sql-database" 
-	ms.workload="sql-database" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="05/27/2016" 
-	ms.author="ddove"/>
+    ms.service="sql-database" 
+    ms.workload="sql-database" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="05/27/2016" 
+    ms.author="ddove"/>
 
-# Elastic Database ツールの概要
 
-このドキュメントでは、サンプル アプリを実行して開発作業について説明します。サンプルでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。サンプルでは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の機能が実演されます。
+# <a name="get-started-with-elastic-database-tools"></a>Get started with Elastic Database tools
 
-ライブラリをインストールするには、[Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) に移動します。ライブラリは、次に示すサンプル アプリと共にインストールされることに注意してください。
+This document introduces you to the developer experience by running the sample app. The sample creates a simple sharded application and explores key capabilities of elastic database tools. The sample demonstrates functions of the [elastic database client library](sql-database-elastic-database-client-library.md)
 
-## 前提条件
+To install the library, go to [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Note that the library is installed with the sample app described below.
 
-1. C# と Visual Studio 2012 以上が必要です。「[Visual Studio のダウンロード](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償評価版をダウンロードしてください。
-2. Nuget 2.7 以上。最新版を入手するには、「[Installing NuGet (NuGet のインストール)](http://docs.nuget.org/docs/start-here/installing-nuget)」を参照してください。
+## <a name="prerequisites"></a>Prerequisites
 
-## サンプル アプリケーションのダウンロードと実行
+1. Visual Studio 2012 or higher with C# is required. Download a free version at [Visual Studio Downloads](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+2. Nuget 2.7 or higher. To get the latest version, see [Installing NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)
 
-**Azure SQL で使用する Elastic Database の概要**のページで示したサンプル アプリケーションでは、Azure SQL Elastic Database ツールを使用したシャーディング アプリケーションの開発エクスペリエンスにおける最も重要な側面を紹介しています。そこでは、主な使用事例として[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)、および[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)に焦点を当てています。サンプルをダウンロードして実行するには、次の手順を実行します。
+## <a name="download-and-run-the-sample-app"></a>Download and run the sample app
 
-1. Visual Studio を開き、**[ファイル]、[新規]、[プロジェクト]** の順に選択します。
-2. ダイアログで、**[オンライン]** をクリックします。
+The **Elastic Database with Azure SQL— Getting Started** sample application illustrates the most important aspects of the development experience for sharded applications using Azure SQL elastic database tools. It focuses on key use cases for [shard map management](sql-database-elastic-scale-shard-map-management.md), [data dependent routing](sql-database-elastic-scale-data-dependent-routing.md) and [multi-shard querying](sql-database-elastic-scale-multishard-querying.md). To download and run the sample, follow these steps: 
+
+1. Open Visual Studio and select **File -> New -> Project**.
+2. In the dialog, click **Online**.
 
     ![New Project>Online][2]
-3. 次に、**[サンプル]** の **[Visual C#]** をクリックします。
+3. Then click **Visual C#** under **Samples**.
 
     ![Click Visual C#][3]
-4. 検索ボックスに「**elastic db**」と入力してサンプルを検索します。**Elastic DB Tools for Azure SQL - Getting Started** (Azure SQL で使用する Elastic DB ツール - 概要) というタイトルが表示されます。
+4. In the search box, type **elastic db** to search for the sample.The title **Elastic DB Tools for Azure SQL - Getting Started** appears.
 
     ![Search Box][1]
  
-5. サンプルを選択し、新しいプロジェクトの名前と場所を選び、**[OK]** をクリックしてプロジェクトを作成します。
-6. サンプル プロジェクトのソリューションで **app.config** ファイルを開き、ファイルの指示に従って使用する Azure SQL データベース サーバー名とログイン情報 (ユーザー名とパスワード) を追加します。
-7. アプリケーションをビルドし、実行します。確認を求められたら、ソリューションの NuGet パッケージの復元を Visual Studio に許可してください。これで Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
-8. クライアント ライブラリの機能をより深く知るために、さまざまなオプションを試してみてください。アプリケーションで実行されたステップはコンソールに出力されますので、動作していたコードをじっくりと検討することができます。
+5. Select the sample, choose a name and a location for the new project and press **OK** to create the project.
+6. Open the **app.config** file in the solution for the sample project and follow the instructions in the file to add your Azure SQL database server name and your login information (user name and password).
+7. Build and run the application. When asked, please allow Visual Studio to restore the NuGet packages of the solution. This will download the latest version of the elastic database client library from NuGet.
+8. Play with the different options to learn more about the client library capabilities. Note the steps the application takes in the console output and feel free to explore the code behind the scenes.
 
     ![progress][4]
 
-これで、最初のシャーディング アプリケーションを Elastic Database ツールを使用して正しく Azure SQL Database にビルドし、実行できました。Azure DB Server に Visual Studio または SQL Server Management Studio を接続して、サンプルで作成したシャードの内容を簡単に確認してください。新しいサンプル シャード データベースと、シャード マップ マネージャー データベースがサンプルで作成されていることがわかります。
+Congratulations – you have successfully built and run your first sharded application using elastic database tools on Azure SQL Database. Take a quick look at the shards that the sample created by connecting with Visual Studio or SQL Server Management Studio to your Azure DB Server. You will notice new sample shard databases and a shard map manager database that the sample has created.
 
-> [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
-
-
-### コード サンプルの主要部
-
-1. **シャードとシャード マップの管理**: このコードは、シャード、範囲、マッピングが **ShardMapManagerSample.cs** ファイルでどのように機能するかを示します。このトピックの詳細については、「[Shard Map Management (シャード マップの管理)](http://go.microsoft.com/?linkid=9862595)」を参照してください。
-2. **データ依存ルーティング**: トランザクションの適切なシャードへのルーティングは、**DataDependentRoutingSample.cs** に示されます。詳細については、「[Data Dependent Routing (データ依存ルーティング)](http://go.microsoft.com/?linkid=9862596)」を参照してください。
-3. **複数のシャードにまたがるクエリ実行**: 複数のシャードに対するクエリの実行は、**MultiShardQuerySample.cs** ファイルに示されます。詳細については、「[Multi-Shard Querying (マルチシャード クエリ実行)](http://go.microsoft.com/?linkid=9862597)」を参照してください。
-4. **空のシャードの追加**: 新しい空のシャードの反復追加は、**AddNewShardsSample.cs** ファイルのコードによって実行されます。このトピックの詳細は、「[Shard Map Management (シャード マップの管理)](http://go.microsoft.com/?linkid=9862595)」に記載されています。
-
-### 他の Elastic Scale の操作
-
-1. **既存のシャードの分割**: シャードを分割する機能は、**分割/マージ ツール**を通じて提供されます。このツールの詳細については、「[分割/結合ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。
-2. **既存のシャードのマージ**: シャードのマージも**分割/マージ ツール**を使用して行われます。詳細については、「[分割/マージ ツールの概要](sql-database-elastic-scale-overview-split-and-merge.md)」を参照してください。
+> [AZURE.IMPORTANT] It is recommended that you always use the latest version of Management Studio to remain synchronized with updates to Microsoft Azure and SQL Database. [Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
 
 
-## コスト
+### <a name="key-pieces-of-the-code-sample"></a>Key pieces of the code sample
 
-Elastic Database ツールは無料です。Elastic Database ツールでは、Azure の利用料以外の追加料金は発生しません。
+1. **Managing Shards and Shard Maps**: The code illustrates how to work with shards, ranges, and mappings in file **ShardMapManagerSample.cs**. You can find more information about this topic here: [Shard Map Management](http://go.microsoft.com/?linkid=9862595).  
+2. **Data Dependent Routing**: Routing of transactions to the right shard is shown in **DataDependentRoutingSample.cs**. For more details, see [Data Dependent Routing](http://go.microsoft.com/?linkid=9862596). 
+3. **Querying over Multiple Shards**: Querying across shards is illustrated in the file **MultiShardQuerySample.cs**. For more details, see [Multi-Shard Querying](http://go.microsoft.com/?linkid=9862597).
+4. **Adding empty shards**: The iterative adding of new empty shards is performed by the code in file **AddNewShardsSample.cs**. Details of this topic are covered here: [Shard Map Management](http://go.microsoft.com/?linkid=9862595).
 
-たとえば、サンプル アプリケーションは新しいデータベースを作成します。その場合のコストは、選択した Azure SQL DB データベースのエディションと、アプリケーションによる Azure の使用状況に応じて異なります。
+### <a name="other-elastic-scale-operations"></a>Other elastic scale operations
 
-料金情報については、「[SQL Database の料金詳細](https://azure.microsoft.com/pricing/details/sql-database/)」を参照してください。
+1. **Splitting an existing shard**: The capability to split shards is provided through the **split-merge tool**. You can find more information on this tool here: [split-merge tool overview](sql-database-elastic-scale-overview-split-and-merge.md).
+2. **Merging existing shards**: Shard merges are also performed using the **split-merge tool**. For more information, refer to: [split-merge tool overview](sql-database-elastic-scale-overview-split-and-merge.md).   
 
-## 次のステップ
-Elastic Database ツールの詳細については、以下のページを参照してください。
 
-* [Elastic Database ツールのドキュメント マップ](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)
--    コード サンプル:
-    -    [Azure SQL で使用する Elastic DB - 概要](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)
-    -    [Azure DB で使用する Elastic DB - Entity Framework との統合](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
-    -    [スクリプト センターのシャードの弾力性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
--    ブログ: [Elastic Scale の発表](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
--    チャンネル 9: [Elastic Scale の概要に関するビデオ](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
--    ディスカッション フォーラム: [Azure SQL Database フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
--    パフォーマンスを測定するには: [シャード マップ マネージャーのパフォーマンス カウンター](sql-database-elastic-database-client-library.md)
+## <a name="cost"></a>Cost
+
+The elastic database tools are free of charge. Elastic database tools does not impose additional charges on top of the cost for your Azure usage. 
+
+For example, the sample application creates new databases. The cost depends on the Azure SQL DB database edition you choose and the Azure usage of your application.
+
+For pricing information see [SQL Database Pricing Details](https://azure.microsoft.com/pricing/details/sql-database/).
+
+## <a name="next-steps"></a>Next steps
+For more information about the elastic database tools, see:
+
+* [Elastic database tools documentation map](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/) 
+-    Code Samples: 
+    -    [Elastic DB with Azure SQL - Getting Started](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)
+    -    [Elastic DB with Azure SQL - Integrating with Entity Framework](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
+    -    [Shard Elasticity on Script Center](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
+-    Blog: [Elastic Scale Announcement](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
+-    Channel 9: [Elastic Scale Overview Video](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+-    Discussion Forum: [Azure SQL Database forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+-    To measure performance: [Performance counters for shard map manager](sql-database-elastic-database-client-library.md)
 
 
 <!--Anchors-->
@@ -102,4 +103,8 @@ Elastic Database ツールの詳細については、以下のページを参照
 [4]: ./media/sql-database-elastic-scale-get-started/output2.png
  
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

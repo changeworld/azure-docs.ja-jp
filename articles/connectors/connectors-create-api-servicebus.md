@@ -1,8 +1,8 @@
 <properties
-pageTitle="ロジック アプリでの Azure Service Bus コネクタの使用方法 | Microsoft Azure"
-description="Azure App Service を使用してロジック アプリを作成します。Azure Service Bus に接続して、メッセージを送受信します。キューに送信、トピックに送信、キューから受信、サブスクリプションから受信などのアクションを実行できます。"
+pageTitle="Learn to use the Azure Service Bus connector in your logic apps | Microsoft Azure"
+description="Create logic apps with Azure App service. Connect to Azure Service Bus to send and receive messages. You can perform actions such as send to queue, send to topic, receive from queue, and receive from subscription."
 services="logic-apps"
-documentationCenter=".net,nodejs,java" 	
+documentationCenter=".net,nodejs,java"  
 authors="msftman"
 manager="erikre"
 editor=""
@@ -17,168 +17,173 @@ ms.workload="integration"
 ms.date="08/02/2016"
 ms.author="deonhe"/>
 
-# Azure Service Bus コネクタの使用
 
-Azure Service Bus に接続して、メッセージを送受信します。キューに送信、トピックに送信、キューから受信、サブスクリプションから受信などのアクションを実行できます。
+# <a name="get-started-with-the-azure-service-bus-connector"></a>Get started with the Azure Service Bus connector
 
-[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
+Connect to Azure Service Bus to send and receive messages. You can perform actions such as send to queue, send to topic, receive from queue, and receive from subscription.
 
-## Service Bus への接続
+To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの接続を作成する必要があります。A [接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。
+## <a name="connect-to-service-bus"></a>Connect to Service Bus
 
->[AZURE.INCLUDE [Azure Service Bus への接続を作成する手順](../../includes/connectors-create-api-servicebus.md)]
+Before your logic app can access any service, you first need to create a connection to the service. A [connection](./connectors-overview.md) provides connectivity between a logic app and another service.  
 
-## Service Bus トリガーの使用
+>[AZURE.INCLUDE [Steps to create a connection to Azure Service Bus](../../includes/connectors-create-api-servicebus.md)]
 
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+## <a name="use-a-service-bus-trigger"></a>Use a Service Bus trigger
 
->[AZURE.INCLUDE [Service Bus トリガーを作成する手順](../../includes/connectors-create-api-servicebus-trigger.md)]
+A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
 
-## Service Bus アクションの使用
+>[AZURE.INCLUDE [Steps to create a Service Bus trigger](../../includes/connectors-create-api-servicebus-trigger.md)]  
 
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
+## <a name="use-a-service-bus-action"></a>Use a Service Bus action
 
-[AZURE.INCLUDE [Service Bus アクションを作成する手順](../../includes/connectors-create-api-servicebus-action.md)]
+An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
 
-## 技術的な詳細
+[AZURE.INCLUDE [Steps to create a Service Bus action](../../includes/connectors-create-api-servicebus-action.md)]  
 
-ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
+## <a name="technical-details"></a>Technical details
 
-### Service Bus トリガー
+Here are the details about the triggers, actions, and responses that this connection supports.
 
-Service Bus には、次のトリガーがあります。
+### <a name="service-bus-triggers"></a>Service Bus triggers
 
-|トリガー | 説明|
+Service Bus has the following triggers:  
+
+|Trigger | Description|
 |--- | ---|
-|[When a message is received in a queue (キューでメッセージを受け取ったとき)](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-queue)|この操作では、キューでメッセージを受け取ったときにフローをトリガーします。|
-|[When a message is received in a topic subscription (トピック サブスクリプションでメッセージを受け取ったとき)](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-topic-subscription)|この操作では、トピック サブスクリプションでメッセージを受け取ったときにフローをトリガーします。|
+|[When a message is received in a queue](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-queue)|This operation triggers a flow when a message is received in a queue.|
+|[When a message is received in a topic subscription](connectors-create-api-servicebus.md#when-a-message-is-received-in-a-topic-subscription)|This operation triggers a flow when a message is received in a topic subscription.|
 
 
-### Service Bus アクション
+### <a name="service-bus-actions"></a>Service Bus actions
 
-Service Bus には、次のアクションがあります。
+Service Bus has the following actions:
 
 
-|アクション|説明|
+|Action|Description|
 |--- | ---|
-|[メッセージを送信する](connectors-create-api-servicebus.md#send-message)|この操作では、キューまたはトピックにメッセージを送信します。|
-### アクションとトリガーの詳細
+|[Send message](connectors-create-api-servicebus.md#send-message)|This operation sends a message to a queue or topic.|
+### <a name="action-and-trigger-details"></a>Action and trigger details
 
-ここでは、このコネクタのアクションとトリガー、およびその応答について詳しく説明します。
+Here are the details for the actions and triggers for this connector, along with their responses.
 
 
 
-#### メッセージを送信する
+#### <a name="send-message"></a>Send message
 
-|プロパティ名| 表示名|説明|
+|Property name| Display name|Description|
 | ---|---|---|
-|ContentData*|コンテンツ|メッセージのコンテンツ|
-|ContentType|コンテンツの種類|メッセージのコンテンツの種類|
-|プロパティ|プロパティ|各ブローカー プロパティのキーと値のペア|
-|entityName*|キュー/トピック名|キューまたはトピックの名前|
+|ContentData*|Content|Content of the message.|
+|ContentType|Content Type|Content type of the message content.|
+|Properties|Properties|Key-value pairs for each brokered property.|
+|entityName*|Queue/Topic name|Name of the queue or topic.|
 
-他にも次の詳細パラメーターが用意されています。
+These advanced parameters are also available:
 
-|プロパティ名| 表示名|説明|
+|Property name| Display name|Description|
 | ---|---|---|
-|MessageId|メッセージ ID|有効になっている場合に、重複するメッセージを識別するために Service Bus が使用できるユーザー定義の値|
-|To|To|送信先アドレス|
-|ReplyTo|返信|返信するキューのアドレス|
-|ReplyToSessionId|返信セッション ID|返信するセッションの識別子|
-|ラベル|ラベル|アプリケーション固有のラベル|
-|ScheduledEnqueueTimeUtc|ScheduledEnqueueTimeUtc|メッセージがキューに追加される日付と時刻 (UTC)|
-|SessionId|セッション ID|セッションの識別子|
-|CorrelationId|関連付け ID|関連付けの識別子|
-|TimeToLive|有効期限|メッセージが有効である期間 (ティック単位)期間は、メッセージが Service Bus に送信されたときから開始します。|
+|MessageId|Message Id|A user-defined value that Service Bus can use to identify duplicate messages, if enabled.|
+|To|To|Address to send to.|
+|ReplyTo|Reply To|Address of the queue to reply to.|
+|ReplyToSessionId|Reply To Session Id|Identifier of the session to reply to.|
+|Label|Label|Application-specific label.|
+|ScheduledEnqueueTimeUtc|ScheduledEnqueueTimeUtc|Date and time, in UTC, when the message will be added to the queue.|
+|SessionId|Session Id|Identifier of the session.|
+|CorrelationId|Correlation Id|Identifier of the correlation.|
+|TimeToLive|Time To Live|The duration, in ticks, that a message is valid. The duration starts from when the message is sent to Service Bus.|
 
 
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required.
 
 
-#### When a message is received in a queue (キューでメッセージを受け取ったとき)
+#### <a name="when-a-message-is-received-in-a-queue"></a>When a message is received in a queue
 
-|プロパティ名| 表示名|説明|
+|Property name| Display name|Description|
 | ---|---|---|
-|queueName*|キュー名|キューの名前。|
+|queueName*|Queue name|Name of the queue.|
 
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required.
 
 
-##### 出力の詳細
+##### <a name="output-details"></a>Output details
 
-ServiceBusMessage: このオブジェクトには、Service Bus メッセージのコンテンツとプロパティが含まれます。
+ServiceBusMessage: This object has the content and properties of a Service Bus message.
 
 
-| プロパティ名 | データ型 | Description |
+| Property name | Data type | Description |
 |---|---|---|
-|ContentData|string|メッセージのコンテンツ|
-|ContentType|string|メッセージのコンテンツの種類|
-|プロパティ|オブジェクト|各ブローカー プロパティのキーと値のペア|
-|MessageId|文字列|有効になっている場合に、重複するメッセージを識別するために Service Bus が使用できるユーザー定義の値|
-|To|string|送信先アドレス|
-|ReplyTo|string|返信するキューのアドレス|
-|ReplyToSessionId|string|返信するセッションの識別子|
-|ラベル|string|アプリケーション固有のラベル|
-|ScheduledEnqueueTimeUtc|文字列|メッセージがキューに追加される日付と時刻 (UTC)|
-|SessionId|string|セッションの識別子|
-|CorrelationId|string|関連付けの識別子|
-|TimeToLive|string|メッセージが有効である期間 (ティック単位)期間は、メッセージが Service Bus に送信されたときから開始します。|
+|ContentData|string|Content of the message.|
+|ContentType|string|Content type of the message content.|
+|Properties|object|Key-value pairs for each brokered property.|
+|MessageId|string|A user-defined value that Service Bus can use to identify duplicate messages, if enabled.|
+|To|string|Send to address.|
+|ReplyTo|string|Address of the queue to reply to.|
+|ReplyToSessionId|string|Identifier of the session to reply to.|
+|Label|string|Application-specific label.|
+|ScheduledEnqueueTimeUtc|string|Date and time, in UTC, when the message will be added to the queue.|
+|SessionId|string|Identifier of the session.|
+|CorrelationId|string|Identifier of the correlation.|
+|TimeToLive|string|The duration, in ticks, that a message is valid. The duration starts from when the message is sent to Service Bus.|
 
 
 
 
-#### When a message is received in a topic subscription (トピック サブスクリプションでメッセージを受け取ったとき)
+#### <a name="when-a-message-is-received-in-a-topic-subscription"></a>When a message is received in a topic subscription
 
-|プロパティ名| 表示名|説明|
+|Property name| Display name|Description|
 | ---|---|---|
-|topicName*|トピック名|トピックの名前。|
-|subscriptionName*|Topic subscription name (トピック サブスクリプション名)|トピック サブスクリプションの名前。|
+|topicName*|Topic name|Name of the topic.|
+|subscriptionName*|Topic subscription name|Name of the topic subscription.|
 
 
-* は、必須のプロパティを示します。
+An * indicates that a property is required.
 
 
-##### 出力の詳細
+##### <a name="output-details"></a>Output details
 
-ServiceBusMessage: このオブジェクトには、Service Bus メッセージのコンテンツとプロパティが含まれます。
+ServiceBusMessage: This object has the content and properties of a Service Bus message.
 
 
-| プロパティ名 | データ型 | Description |
+| Property name | Data type | Description |
 |---|---|---|
-|ContentData|string|メッセージのコンテンツ|
-|ContentType|string|メッセージのコンテンツの種類|
-|プロパティ|オブジェクト|各ブローカー プロパティのキーと値のペア|
-|MessageId|文字列|有効になっている場合に、重複するメッセージを識別するために Service Bus が使用できるユーザー定義の値|
-|To|string|送信先アドレス|
-|ReplyTo|文字列|返信するキューのアドレス|
-|ReplyToSessionId|string|返信するセッションの識別子|
-|ラベル|文字列|アプリケーション固有のラベル|
-|ScheduledEnqueueTimeUtc|string|メッセージがキューに追加される日付と時刻 (UTC)|
-|SessionId|string|セッションの識別子|
-|CorrelationId|文字列|関連付けの識別子|
-|TimeToLive|文字列|メッセージが有効である期間 (ティック単位)期間は、メッセージが Service Bus に送信されたときから開始します。|
+|ContentData|string|Content of the message.|
+|ContentType|string|Content type of the message content.|
+|Properties|object|Key-value pairs for each brokered property.|
+|MessageId|string|A user-defined value that Service Bus can use to identify duplicate messages, if enabled.|
+|To|string|Send to address.|
+|ReplyTo|string|Address of the queue to reply to.|
+|ReplyToSessionId|string|Identifier of the session to reply to.|
+|Label|string|Application-specific label.|
+|ScheduledEnqueueTimeUtc|string|Date and time, in UTC, when the message will be added to the queue.|
+|SessionId|string|Identifier of the session.|
+|CorrelationId|string|Identifier of the correlation.|
+|TimeToLive|string|The duration, in ticks, that a message is valid. The duration starts from when the message is sent to Service Bus.|
 
 
 
-### HTTP 応答
+### <a name="http-responses"></a>HTTP responses
 
-上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
+The preceding actions and triggers can return one or more of the following HTTP status codes:
 
-|Name|説明|
+|Name|Description|
 |---|---|
 |200|OK|
-|202|承認済み|
-|400|正しくない要求|
-|401|権限がありません|
-|403|許可されていません|
-|404|見つかりません|
-|500|内部サーバー エラー。不明なエラーが発生しました。|
-|default|操作に失敗しました。|
+|202|Accepted|
+|400|Bad request|
+|401|Unauthorized|
+|403|Forbidden|
+|404|Not found|
+|500|Internal server error. Unknown error occurred.|
+|default|Operation failed.|
 
-## 次のステップ
-[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## <a name="next-steps"></a>Next steps
+[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
 
-<!----HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

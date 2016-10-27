@@ -1,75 +1,76 @@
 <properties
-	pageTitle="iOS で ADAL を使用してクロス アプリ SSO を有効にする方法 | Microsoft Azure"
-	description="ADAL SDK の機能を使用して、複数のアプリケーションでシングル サインオンを有効にする方法。"
-	services="active-directory"
-	documentationCenter=""
-	authors="brandwe"
-	manager="mbaldwin"
-	editor=""/>
+    pageTitle="How to enable cross-app SSO on iOS using ADAL | Microsoft Azure"
+    description="How to use the features of the ADAL SDK to enable Single Sign On across your applications. "
+    services="active-directory"
+    documentationCenter=""
+    authors="brandwe"
+    manager="mbaldwin"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.workload="identity"
-	ms.tgt_pltfrm="ios"
-	ms.devlang="objective-c"
-	ms.topic="article"
-	ms.date="09/16/2016"
-	ms.author="brandwe"/>
+    ms.service="active-directory"
+    ms.workload="identity"
+    ms.tgt_pltfrm="ios"
+    ms.devlang="objective-c"
+    ms.topic="article"
+    ms.date="09/16/2016"
+    ms.author="brandwe"/>
 
 
-# iOS で ADAL を使用してクロス アプリ SSO を有効にする方法
+
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>How to enable cross-app SSO on iOS using ADAL
 
 
-シングル サインオン (SSO) を提供すると、ユーザーが資格情報を 1 度入力するだけで、この資格情報が他のアプリケーションでも自動的に使用されるようになります。今では、この機能が一般的になってきました。小さな画面ではユーザー名とパスワードを入力しづらく、多くの場合は音声通話やテキスト化コードなどの他の要素 (2FA) も組み合わされるため、こうした操作が複数回必要になる製品は評価が低くなります。
+Providing Single Sign-On (SSO) so that users only need to enter their credentials once and have those credentials automatically work across applications is now expected by customers. The difficulty in entering their username and password on a small screen, often times combined with an additional factor (2FA) like a phone call or a texted code, results in quick dissatisfaction if a user has to do this more than one time for your product. 
 
-さらに、Microsoft アカウント、Office365 の職場アカウントなど、他のアプリケーションでも使用できる ID プラットフォームを利用している場合、ユーザーはこれらの資格情報が、ベンダーを問わず、すべてのアプリケーションで使用できることを期待します。
+In addition, if you leverage an identity platform that other applications may use such as Microsoft Accounts or a work account from Office365, customers expect that those credentials to be available to use across all their applications no matter the vendor. 
 
-Microsoft Identity プラットフォームと Microsoft Identity SDK を利用すると、こうした難しい課題を解決し、ユーザーに SSO を提供できます。ブローカー機能と Authenticator アプリケーションも利用すれば、独自のアプリケーション スイート内だけでなく、デバイス全体で SSO を実現できます。
+The Microsoft Identity platform, along with our Microsoft Identity SDKs, does all of this hard work for you and gives you the ability to delight your customers with SSO either within your own suite of applications or, as with our broker capability and Authenticator applications, across the entire device.
 
-このチュートリアルでは、この利点をユーザーに提供するためにアプリケーション内で SDK を構成する方法について説明します。
+This walkthrough will tell you how to configure our SDK within your application to provide this benefit to your customers.
 
-このチュートリアルの適用対象:
+This walkthrough applies to:
 
 * Azure Active Directory
 * Azure Active Directory B2C
 * Azure Active Directory B2B
-* Azure Active Directory の条件付きアクセス
+* Azure Active Directory Conditional Access 
 
 
-以下の説明では、[従来のポータルで Azure Active Directory 用にアプリケーションをプロビジョニングする](active-directory-how-to-integrate.md)方法と、アプリケーションを [Microsoft Identity iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc) と統合する方法についての知識があることを前提としています。
+Note that the document below assumes you have knowledge of how to [provision applications in the legacy portal for Azure Active Directory](active-directory-how-to-integrate.md) as well as have integrated your application with the [Microsoft Identity iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
 
-## Microsoft Identity プラットフォームでの SSO の概念
+## <a name="sso-concepts-in-the-microsoft-identity-platform"></a>SSO Concepts in the Microsoft Identity Platform
 
-### Microsoft Identity ブローカー
+### <a name="microsoft-identity-brokers"></a>Microsoft Identity Brokers
 
-Microsoft は、すべてのモバイル プラットフォーム用に、異なるベンダーのアプリケーション間で資格情報をブリッジできるようにするアプリケーションを提供しています。このアプリケーションでは、資格情報の検証を行う安全な単一の場所を必要とする、特別な拡張機能も利用できます。これらを**ブローカー**と言います。iOS および Android では、これらはダウンロード可能なアプリケーションを通じて提供されます。ユーザーが個別にインストールすることも、従業員のデバイスの一部またはすべてを管理している会社がデバイスにプッシュすることもできます。これらのブローカーは、IT 管理者の意図に基づいて、一部のアプリケーションまたはデバイス全体のセキュリティの管理をサポートします。Windows では、この機能はオペレーティング システムに組み込まれているアカウント セレクターによって提供されます。これは、技術的には Web 認証ブローカーと呼ばれています。
+Microsoft provides applications for every mobile platform that allow for the bridging of credentials across applications from different vendors as well as allows for special enhanced features that require a single secure place from where to validate credentials. We call these **brokers**. On iOS and Android these are provided through downloadable applications that customers either install independently or can be pushed to the device by a company who manages some or all of the device for their employee. These brokers support managing security just for some applications or the entire device based on what IT Administrators desire. In Windows this functionality is provided by an account chooser built in to the operating system, known technically as the Web Authentication Broker.
 
-これらのブローカーをどのように使用するかと、Microsoft Identity プラットフォームのログイン フローでユーザーにどのように表示されるかを理解するには、この後の詳細をお読みください。
+To understand how we use these brokers and how your customers might see them in their login flow for the Microsoft Identity platform read on for more information.
 
-### モバイル デバイスでのログインのパターン
+### <a name="patterns-for-logging-in-on-mobile-devices"></a>Patterns for logging in on mobile devices
 
-デバイスでの資格情報へのアクセスは、Microsoft Identity プラットフォームの 2 つの基本的なパターンに従います。
+Access to credentials on devices follow two basic patterns for the Microsoft Identity platform: 
 
-* 非ブローカーの支援によるログイン
-* ブローカーの支援によるログイン
+* Non-broker assisted logins
+* Broker assisted logins
 
-#### 非ブローカーの支援によるログイン
+#### <a name="non-broker-assisted-logins"></a>Non-broker assisted logins
 
-非ブローカーの支援によるログインは、アプリケーションに従って発生するログイン エクスペリエンスであり、そのアプリケーションのデバイスのローカル ストレージを使用します。このストレージは複数のアプリケーションで共有される場合がありますが、資格情報はアプリに、またはその資格情報を使用するアプリのスイートに、緊密にバインドされています。これは、多くのモバイル アプリケーションで一般的なエクスペリエンスであり、アプリケーション自体でユーザー名とパスワードを入力します。
+Non-broker assisted logins are login experiences that happen inline with the application and use the local storage on the device for that application. This storage may be shared across applications but the credentials are tightly bound to the app or suite of apps using that credential. This is the experience you've most likely experienced in many mobile applications where you enter a username and password within the application itself.
 
-このログインには、次のような利点があります。
+These logins have the following benefits:
 
--  ユーザー エクスペリエンス全体が、アプリケーション内に存在します。
--  資格情報は、同じ証明書によって署名されているアプリケーション間で共有することができ、アプリケーションのスイートにシングル サインオン エクスペリエンスを提供します。
--  ログインのエクスペリエンスに関する制御は、サインインの前後にアプリケーションに提供されます。
+-  User experience exists entirely within the application.
+-  Credentials can be shared across applications that are signed by the same certificate, providing a single sign-on experience to your suite of applications. 
+-  Control around the experience of logging in is provided to the application before and after sign-in.
 
-このログインには、次のような欠点があります。
+These logins have the following drawbacks:
 
-- ユーザーは、Microsoft Identity を使用するすべてのアプリにわたるシングル サインオンを利用できません。アプリケーションが所有していて構成した Microsoft ID 間でのみ利用できます。
-- アプリケーションで、条件付きアクセスなどのより高度なビジネス機能を利用したり、InTune 製品スイートを使用したりすることはできません。
-- アプリケーションが、ビジネス ユーザーに対する証明書ベースの認証をサポートできません。
+- User cannot experience single-sign on across all apps that use a Microsoft Identity, only across those Microsoft Identities that are your application owns and have configured.
+- Your application can not be used with more advanced business features such as Conditional Access or use the InTune suite of products.
+- Your application can't support certificate based authentication for business users.
 
-以下に、Microsoft Identity SDK が SSO を有効にするためにアプリケーションの共有ストレージとどのように動作するかを示します。
+Here is a representation of how the Microsoft Identity SDKs work with the shared storage of your applications to enable SSO:
 
 ```
 +------------+ +------------+  +-------------+
@@ -85,35 +86,35 @@ Microsoft は、すべてのモバイル プラットフォーム用に、異な
 +--------------------------------------------+
 ```
 
-#### ブローカーの支援によるログイン
+#### <a name="broker-assisted-logins"></a>Broker assisted logins
 
-ブローカーの支援によるログインは、ブローカー アプリケーション内で発生するログイン エクスペリエンスです。デバイス上の Microsoft Identity プラットフォームを利用するすべてのアプリケーションで資格情報を共有するために、ブローカーのストレージおよびセキュリティを使用します。つまり、各アプリケーションは、ユーザーのサインインをブローカーに依存します。iOS および Android では、これらはダウンロード可能なアプリケーションを通じて提供されます。ユーザーが個別にインストールすることも、ユーザーのためにデバイスを管理している会社がデバイスにプッシュすることもできます。この種類のアプリケーションの例は、iOS での Azure Authenticator アプリケーションです。Windows では、この機能はオペレーティング システムに組み込まれているアカウント セレクターによって提供されます。これは、技術的には Web 認証ブローカーと呼ばれています。プラットフォームによってエクスペリエンスが異なるため、適切に管理しないとユーザーが混乱することがあります。Facebook アプリケーションがインストールされていて、別のアプリケーションで Facebook ログイン機能を使用する場合、通常はこのパターンが最も一般的でしょう。Microsoft Identity プラットフォームでは、同じパターンを利用します。
+Broker-assisted logins are login experiences that occur within the broker application and use the storage and security of the broker to share credentials across all applications on the device that leverage the Microsoft Identity platform. This means that your applications will rely on the broker in order to sign users in. On iOS and Android these are provided through downloadable applications that customers either install independently or can be pushed to the device by a company who manages the device for their user. An example of this type of application is the Azure Authenticator application on iOS. In Windows this functionality is provided by an account chooser built in to the operating system, known technically as the Web Authentication Broker. The experience varies by platform and can sometimes be disruptive to users if not managed correctly. You're probably most familiar with this pattern if you have the Facebook application installed and use Facebook Login functionality in another application. The Microsoft Identity platform leverages the same pattern.
 
-iOS では、このようにすると "切り替え" アニメーションが表示され、アプリケーションはバックグラウンドに送られて、Azure Authenticator アプリケーションがフォアグラウンドになります。そこでユーザーは、どのアカウントでサインインするかを選択できます。
+For iOS this leads to a "transition" animation where your application is sent to the background while the Azure Authenticator applications comes to the foreground for the user to select which account they would like to sign in with.  
 
-Android と Windows では、アカウント セレクターがアプリケーションの上に表示されます。この方が、ユーザーにとってはわかりやすい方法です。
+For Android and Windows the account chooser is displayed on top of your application which is less disruptive to the user.
 
-#### ブローカーが呼び出されるしくみ
+#### <a name="how-the-broker-gets-invoked"></a>How the broker gets invoked
 
-デバイスに互換性のあるブローカー (Azure Authenticator アプリケーションなど) がインストールされている場合、Microsoft Identity SDK は、ユーザーが Microsoft Identity プラットフォームのいずれかのアカウントを使用してログインする意思を示したときに、自動的にブローカーを呼び出す処理を行います。その場合のアカウントは、個人の Microsoft アカウント、職場または学校のアカウント、B2C および B2B 製品を使用して Azure で提供およびホストしているアカウントのいずれかです。資格情報の要求とアプリケーションへの提供が、非常に安全なアルゴリズムと暗号化を使用して、確実な方法で行われることが保証されます。これらのメカニズムは、技術的な詳細は公開されていませんが、Apple と Google との共同作業で開発されたものです。
+If a compatible broker is installed on the device, like the Azure Authenticator application, the Microsoft Identity SDKs will automatically do the work of invoking the broker for you when a user indicates they wish to log in using any account from the Microsoft Identity platform. This could be a personal Microsoft Account, a work or school account, or an account that you provide and host in Azure using our B2C and B2B products. By using extremely secure algorithms and encryption we ensure that the credentials are asked for and delivered back to your application in a secure manner. The exact technical detail of these mechanisms is not published but have been developed with collaboration by Apple and Google.
 
-**開発者は、Microsoft Identity SDK がブローカーを呼び出すか、非ブローカーの支援によるフローを使用するかを選択できます。** ただし、ブローカーの支援によるフローを使用しないことを選択すると、ユーザーが既にデバイスで追加したかもしれない SSO 資格情報を利用できる利点を失うことになります。また、Microsoft がユーザーに提供しているビジネス機能 (条件付きアクセス、Intune 管理機能、証明書ベースの認証など) をアプリケーションで利用できなくなります。
+**The developer has the choice of if the Microsoft Identity SDK calls the broker or uses the non-broker assisted flow.** However if the developer chooses not to use the broker-assisted flow they lose the benefit of leveraging SSO credentials that the user may have already added on the device as well as prevents their application from being used with business features Microsoft provides its customers such as Conditional Access, Intune Management capabilities, and certificate based authentication.
 
-このログインには、次のような利点があります。
+These logins have the following benefits:
 
--  ユーザーは、ベンダーを問わず、すべてのアプリケーションで SSO を利用できます。
--  アプリケーションで、条件付きアクセスなどのより高度なビジネス機能を利用したり、InTune 製品スイートを使用したりすることができます。
--  アプリケーションが、ビジネス ユーザーに対する証明書ベースの認証をサポートできます。
-- アプリケーションとユーザーの ID が、追加のセキュリティ アルゴリズムと暗号化を使用するブローカー アプリケーションによって検証されるため、サインイン エクスペリエンスの安全性が大幅に向上します。
+-  User experiences SSO across all their applications no matter the vendor.
+-  Your application can leverage more advanced business features such as Conditional Access or use the InTune suite of products.
+-  Your application can support certificate based authentication for business users.
+- Much more secure sign-in experience as the identity of the application and the user are verified by the broker application with additional security algorithms and encryption.
 
-このログインには、次のような欠点があります。
+These logins have the following drawbacks:
 
-- iOS では、資格情報が選択されている間、ユーザーがアプリケーションのエクスペリエンスの外部に置かれます。
-- ユーザーのログイン エクスペリエンスをアプリケーション内で管理できなくなります。
+- In iOS the user is transitioned out of your application's experience while credentials are chosen.
+- Loss of the ability to manage the login experience for your customers within your application.
 
 
 
-以下に、Microsoft Identity SDK が SSO を有効にするためにブローカー アプリケーションとどのように動作するかを示します。
+Here is a representation of how the Microsoft Identity SDKs work with the broker applications to enable SSO:
 
 ```
 +------------+ +------------+   +-------------+
@@ -139,42 +140,42 @@ Android と Windows では、アカウント セレクターがアプリケー�
               +-------------+
 ```
               
-この背景情報を知ると、SSO をよりよく理解し、Microsoft Identity プラットフォームと SDK を使用してアプリケーション内で実装できるようになります。
+Armed with this background information you should be able to better understand and implement SSO within your application using the Microsoft Identity platform and SDKs.
 
 
-## ADAL を使用した、クロス アプリ SSO の有効化
+## <a name="enabling-cross-app-sso-using-adal"></a>Enabling cross-app SSO using ADAL
 
-ここでは、ADAL iOS SDK を使用して、以下の操作を行います。
+Here we'll use the ADAL iOS SDK to:
 
-- アプリのスイートに対して、非ブローカーの支援による SSO を有効にする
-- ブローカーの支援による SSO のサポートを有効にする
+- Turn on non-broker assisted SSO for your suite of apps
+- Turn on support for broker-assisted SSO
 
-### 非ブローカーの支援による SSO の有効化
+### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>Turning on SSO for non-broker assisted SSO
 
-複数のアプリケーション間での非ブローカーの支援による SSO の場合、SSO のほとんどの複雑な作業は Microsoft Identity SDK によって管理されます。たとえば、クエリに対処するための、キャッシュ内の適切なユーザーの検索や、ログインしたユーザーのリストの保持などです。
+For non-broker assisted SSO across applications the Microsoft Identity SDKs manage much of the complexity of SSO for you. This includes finding the right user in the cache and maintaining a list of logged in users for you to query. 
 
-所有している複数のアプリケーション間で SSO を有効にするには、以下の操作をする必要があります。
+To enable SSO across applications you own you need to do the following:
 
-1. すべてのアプリケーションが同じクライアント ID またはアプリケーション ID を使用していることを確認します。
-* キーチェーンを共有できるように、すべてのアプリケーションが Apple の同じ署名証明書を共有していることを確認します。
-* 各アプリケーション用に同じキーチェーン エンタイトルメントを要求します。
-* Microsoft Identity SDK に、使用することを希望する共有されたキーチェーンについて知らせます。
+1. Ensure all your applications user the same Client ID or Application ID. 
+* Ensure that all of your applications share the same signing certificate from Apple so that you can share keychains
+* Request the same keychain entitlement for each of your applications.
+* Tell the Microsoft Identity SDKs about the shared keychain you want us to use.
 
-#### アプリ スイートのすべてのアプリケーションで、同じクライアント ID/アプリケーション ID を使用する
+#### <a name="using-the-same-client-id-/-application-id-for-all-the-applications-in-your-suite-of-apps"></a>Using the same Client ID / Application ID for all the applications in your suite of apps
 
-Microsoft Identity プラットフォームが複数のアプリケーションでのトークンの共有を許可されていることが判断できるように、各アプリケーションは同じクライアント ID またはアプリケーション ID を共有する必要があります。これは、ポータルで最初のアプリケーションを登録したときに提供された一意の識別子です。
+In order for the Microsoft Identity platform to know that it's allowed to share tokens across your applications, each of your applications will need to share the same Client ID or Application ID. This is the unique identifier that was provided to you when you registered your first application in the portal. 
 
-各アプリが同じアプリケーション ID を使用しているのであれば、Microsoft Identity サービスはどのようにしてアプリケーションを識別できるのでしょうか。答えは、**リダイレクト URI** にあります。各アプリケーションには、オンボード ポータルで、複数のリダイレクト URI を登録することができます。スイートの各アプリは、異なるリダイレクト URI を持ちます。次の例は、これがどのようになっているかを示しています。
+You may be wondering how you will identify different apps to the Microsoft Identity service if it uses the same Application ID. The answer is with the **Redirect URIs**. Each application can have multiple Redirect URIs registered in the onboarding portal. Each app in your suite will have a different redirect URI. An example of how this looks is below:
 
-App1 のリダイレクト URI: `x-msauth-mytestiosapp://com.myapp.mytestapp`
+App1 Redirect URI: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-App2 のリダイレクト URI: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
+App2 Redirect URI: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-App3 のリダイレクト URI: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
+App3 Redirect URI: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 
-これらは同じクライアント ID/アプリケーション ID の下で入れ子になっており、SDK 構成で開発者から返されるリダイレクト URI に基づいて検索されます。
+These are nested under the same client ID / application ID and looked up based on the redirect URI you return to us in your SDK configuration. 
 
 ```
 +-------------------+
@@ -200,69 +201,69 @@ App3 のリダイレクト URI: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 ```
 
 
-*これらのリダイレクト URI の形式については、以下で説明しています。ブローカーをサポートしないのであれば、任意のリダイレクト URI を使用できます。サポートする場合は、上のようでなければなりません。*
+*Note that the format of these Redirect URIs are explained below. You may use any Redirect URI unless you wish to support the broker, in which case they must look something like the above*
 
 
 
-#### アプリケーション間のキーチェーン共有を作成する
+#### <a name="create-keychain-sharing-between-applications"></a>Create keychain sharing between applications
 
-キーチェーン共有の有効化はこのドキュメントでは説明していませんが、Apple のドキュメントの「[Adding Capabilities (機能の追加)](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)」で説明されています。重要なのは、キーチェーンが何と呼ばれるかを決め、すべてのアプリケーションにわたってその機能を追加することです。
+Enabling keychain sharing is beyond the scope of this document and covered by Apple in their document [Adding Capabilities](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html). What is important is that you decide what you want your keychain to be called and add that capability across all your applications. 
 
-エンタイトルメントを正しくセットアップすると、プロジェクト ディレクトリに `entitlements.plist` という名前のファイルが表示されるようになります。そのファイルには、次のような内容が含まれています。
+When you do have entitlements set up correctly you should see a file in your project directory entitled `entitlements.plist` that contains something that looks like the following:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>keychain-access-groups</key>
-	<array>
-		<string>$(AppIdentifierPrefix)com.myapp.mytestapp</string>
-		<string>$(AppIdentifierPrefix)com.myapp.mycache</string>
-	</array>
+    <key>keychain-access-groups</key>
+    <array>
+        <string>$(AppIdentifierPrefix)com.myapp.mytestapp</string>
+        <string>$(AppIdentifierPrefix)com.myapp.mycache</string>
+    </array>
 </dict>
 </plist>
 ```
 
-各アプリケーションでキーチェーン エンタイトルメントを有効にし、SSO を使用する準備ができたら、キーチェーンについて Microsoft Identity SDK に知らせます。そのためには、`ADAuthenticationSettings` を以下のように設定します。
+Once you have the keychain entitlement enabled in each of your applications, and you are ready to use SSO, tell the Microsoft Identity SDK about your keychain by using the following setting in your `ADAuthenticationSettings` with the following setting:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
 ```
 
 > [AZURE.WARNING] 
-複数のアプリケーション間でキーチェーンを共有すると、どのアプリケーションでもユーザーを削除できます。さらに、アプリケーション全体のすべてのトークンを削除することもできてしまいます。これは、バックグラウンド作業をトークンに依存するアプリケーションがある場合に、特に大きな問題になります。キーチェーンを共有したら、Microsoft Identity SDK によるどの削除作業も、十分に注意する必要があります。
+When you share a keychain across your applications any application can delete users or worse delete all the tokens across your application. This is particularly disastrous if you have applications that rely on the tokens to do background work. Sharing a keychain means that you must be very careful in any and all remove operations through the Microsoft Identity SDKs.
 
-これで完了です。 Microsoft Identity SDK が、すべてのアプリケーション間で資格情報を共有するようになりました。ユーザーの一覧も、アプリケーション インスタンス間で共有されます。
+That's it! The Microsoft Identity SDK will now share credentials across all your applications. The user list will also be shared across application instances.
 
-### ブローカーの支援による SSO の有効化
+### <a name="turning-on-sso-for-broker-assisted-sso"></a>Turning on SSO for broker assisted SSO
 
-デバイスにインストールされている任意のブローカーを使用するアプリケーションの機能は、**既定ではオフ**になっています。アプリケーションでブローカーを使用するには、追加の構成を行い、アプリケーションにいくつかのコードを追加する必要があります。
+The ability for an application to use any broker that is installed on the device is **turned off by default**. In order to use your application with the broker you must do some additional configuration and add some code to your application.
 
-実行する手順を次に示します。
+The steps to follow are:
 
-1. アプリケーション コード内の MS SDK の呼び出しで、ブローカー モードを有効にします。
-2. 新しいリダイレクト URI を確立し、アプリとアプリ登録の両方に提供します。
-3. URL スキームを登録します。
-4. iOS9 サポート: info.plist ファイルにアクセス許可を追加します。
+1. Enable broker mode in your application code's call to the MS SDK.
+2. Establish a new redirect URI and provide that to both the app and your app registration.
+3. Registering a URL Scheme.
+4. iOS9 Support: Add a permission to your info.plist file.
 
 
-#### 手順 1: アプリケーションでブローカー モードを有効にする
-ブローカーを使用するアプリケーションの機能は、認証オブジェクトの "コンテキスト" または初期セットアップを作成すると有効になります。これを実行するには、コードで次のように資格情報型を設定します。
+#### <a name="step-1:-enable-broker-mode-in-your-application"></a>Step 1: Enable broker mode in your application
+The ability for your application to use the broker is turned on when you create the "context" or initial setup of your Authentication object. You do this by setting your credentials type in your code:
 
 ```
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-`AD_CREDENTIALS_AUTO` 設定は、Microsoft Identity SDK がブローカーへの呼び出しを試行できるようにします。`AD_CREDENTIALS_EMBEDDED` は、Microsoft Identity SDK がブローカーを呼び出せないようにします。
+The `AD_CREDENTIALS_AUTO` setting will allow the Microsoft Identity SDK to try to call out to the broker, `AD_CREDENTIALS_EMBEDDED` will prevent the Microsoft Identity SDK from calling to the broker.
 
-#### Step 2: URL スキームを登録する
-Microsoft Identity プラットフォームは、URL を使用してブローカーを起動してから、制御をアプリケーションに返します。このラウンド トリップを完了するには、アプリケーションに登録した URL スキームが必要であり、それを Microsoft Identity プラットフォームが知っている必要があります。このスキームは、以前にアプリケーションに登録した他のアプリ スキームに加えて登録できます。
+#### <a name="step-2:-registering-a-url-scheme"></a>Step 2: Registering a URL Scheme
+The Microsoft Identity platform uses URLs to invoke the broker and then return control back to your application. To finish that round trip you need a URL scheme registered for your application that the Microsoft Identity platform will know about. This can be in addition to any other app schemes you may have previously registered with your application.
 
 > [AZURE.WARNING] 
-別のアプリが同じ URL スキームを使用する可能性を最小限にするために、ほぼ一意の URL スキームを作成することをお勧めします。Apple は、アプリ ストアに登録される URL スキームの一意性を強制しません。
+We recommend making the URL scheme fairly unique to minimize the chances of another app using the same URL scheme. Apple does not enforce the uniqueness of URL schemes that are registered in the app store. 
 
-以下に、プロジェクト構成内の例を示します。これは、XCode でも行うことができます。
+Below is an example of how this appears in your project configuration. You may also do this in XCode as well:
 
 ```
 <key>CFBundleURLTypes</key>
@@ -280,36 +281,52 @@ Microsoft Identity プラットフォームは、URL を使用してブローカ
 </array>
 ```
 
-#### 手順 3: URI スキームで新しいリダイレクト URL を確立する
+#### <a name="step-3:-establish-a-new-redirect-uri-with-your-url-scheme"></a>Step 3: Establish a new redirect URI with your URL Scheme
 
-常に資格情報トークンを正しいアプリケーションに返せるようにするために、iOS オペレーティング システムが検証できるような方法で確実にアプリケーションにコールバックする必要があります。iOS オペレーティング システムは、Microsoft ブローカー アプリケーションに、呼び出し元アプリケーションのバンドル ID を報告します。これは、悪意のあるアプリケーションによってなりすまされることがありません。そのため、これとブローカー アプリケーションの URI を利用して、トークンが正しいアプリケーションに確実に返されるようにしています。この一意のリダイレクト URI をアプリケーションで確立し、開発者ポータルでリダイレクト URI として設定する必要があります。
+In order to ensure that we always return the credential tokens to the correct application, we need to make sure we call back to your application in a way that the iOS operating system can verify. The iOS operating system reports to the Microsoft broker applications the Bundle ID of the application calling it. This cannot be spoofed by a rogue application. Therefore, we leverage this along with the URI of our broker application to ensure that the tokens are returned to the correct application. We require you to establish this unique redirect URI both in your application and set as a Redirect URI in our developer portal. 
 
-リダイレクト URI は、次のような適切な形式である必要があります。
+Your redirect URI must be in the proper form of:
 
 `<app-scheme>://<your.bundle.id>`
 
-例: *x-msauth-mytestiosapp://com.myapp.mytestapp*
+ex: *x-msauth-mytestiosapp://com.myapp.mytestapp*
 
-このリダイレクト URI は、[Azure クラシック ポータル](https://manage.windowsazure.com/)を使用して、アプリ登録に指定する必要があります。Azure AD のアプリ登録の詳細については、「[Azure Active Directory との統合](active-directory-how-to-integrate.md)」をご覧ください。
+This Redirect URI needs to be specified in your app registration using the [Azure classic portal](https://manage.windowsazure.com/). For more information on Azure AD app registration, see [Integrating with Azure Active Directory](active-directory-how-to-integrate.md).
 
 
-##### 手順 3a: 証明書ベースの認証をサポートするために、アプリと開発者ポータルでリダイレクト URI を追加する
+##### <a name="step-3a:-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>Step 3a: Add a redirect URI in your app and dev portal to support certificate based authentication
 
-証明書ベースの認証をアプリケーションに追加してサポートする場合は、証明書認証を処理するために、アプリケーションと [Azure クラシック ポータル](https://manage.windowsazure.com/)で 2 番目の "msauth" を登録する必要があります。
+To support cert based authentication a second "msauth"  needs to be registered in your application and the [Azure classic portal](https://manage.windowsazure.com/) to handle certificate authentication if you wish to add that support in your application.
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-例: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
+ex: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
 
-#### 手順 4: iOS9: アプリに構成パラメーターを追加する
+#### <a name="step-4:-ios9:-add-a-configuration-parameter-to-your-app"></a>Step 4: iOS9: Add a configuration parameter to your app
 
-ADAL は、ブローカーがデバイスにインストールされているかどうかを確認するために、–canOpenURL: を使用します。iOS 9 では、どのスキーマにアプリケーションがクエリを行うことができるかを、Apple がロックダウンしました。"msauth" を `info.plist file` の LSApplicationQueriesSchemes セクションに追加する必要があります。
+ADAL uses –canOpenURL: to check if the broker is installed on the device. In iOS 9 Apple locked down what schemes an application can query for. You will need to add “msauth” to the LSApplicationQueriesSchemes section of your `info.plist file`.
 
-<key>LSApplicationQueriesSchemes</key> <array> <string>msauth</string> </array>
+<key>LSApplicationQueriesSchemes</key>
+<array>
+     <string>msauth</string>
+</array>
 
-### SSO の構成の終了
+### <a name="you've-configured-sso!"></a>You've configured SSO!
 
-これで、Microsoft Identity SDK が自動的に複数のアプリケーションにわたって資格情報を共有し、デバイスにブローカーがあればそれを呼び出すようになります。
+Now the Microsoft Identity SDK will automatically both share credentials across your applications and invoke the broker if it's present on their device.
 
-<!---HONumber=AcomDC_0921_2016-->
+
+
+
+
+
+
+
+
+
+
+
+<!--HONumber=Oct16_HO4-->
+
+

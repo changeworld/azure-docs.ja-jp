@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と SimpleNexus の統合 | Microsoft Azure" 
-    description="Azure Active Directory で SimpleNexus を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with SimpleNexus | Microsoft Azure" 
+    description="Learn how to use SimpleNexus with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,103 +14,109 @@
     ms.date="09/19/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と SimpleNexus の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-simplenexus"></a>Tutorial: Azure Active Directory integration with SimpleNexus
   
-このチュートリアルの目的は、Azure と SimpleNexus の統合を示すことです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and SimpleNexus.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   SimpleNexus でのシングル サインオンが有効なサブスクリプション
+-   A valid Azure subscription
+-   A SimpleNexus single sign-on enabled subscription
   
-このチュートリアルを完了すると、SimpleNexus に割り当てた Azure AD ユーザーは、SimpleNexus 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to SimpleNexus will be able to single sign into the application at your SimpleNexus company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  SimpleNexus のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for SimpleNexus
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-simplenexus-tutorial/IC785893.png "シナリオ")
-##SimpleNexus のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-simplenexus-tutorial/IC785893.png "Scenario")
+##<a name="enabling-the-application-integration-for-simplenexus"></a>Enabling the application integration for SimpleNexus
   
-このセクションでは、SimpleNexus のアプリケーション統合を有効にする方法を説明します。
+The objective of this section is to outline how to enable the application integration for SimpleNexus.
 
-###SimpleNexus のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-simplenexus,-perform-the-following-steps:"></a>To enable the application integration for SimpleNexus, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-simplenexus-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-simplenexus-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-simplenexus-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-simplenexus-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-simplenexus-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-simplenexus-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-simplenexus-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**simple nexus**」と入力します。
+6.  In the **search box**, type **simple nexus**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-simplenexus-tutorial/IC785894.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-simplenexus-tutorial/IC785894.png "Application Gallery")
 
-7.  結果ウィンドウで **[SimpleNexus]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **SimpleNexus**, and then click **Complete** to add the application.
 
     ![Simple Nexus](./media/active-directory-saas-simplenexus-tutorial/IC809578.png "Simple Nexus")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、SimpleNexus で Azure AD のユーザー アカウントを使用してユーザーを認証できるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to SimpleNexus with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **SimpleNexus** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **SimpleNexus** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785896.png "Configure Single Sign-On")
 
-2.  **[ユーザーの SimpleNexus へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to SimpleNexus** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785897.png "Configure Single Sign-On")
 
-3.  **[アプリケーション URL の構成]** ページで、**[SimpleNexus サインイン URL]** ボックスに、*https://simplenexus.com/CompanyName\_login*" というパターンで URL を入力し、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **SimpleNexus Sign In URL** textbox, type your URL using the following pattern "*https://simplenexus.com/CompanyName\_login*", and then click **Next**.
 
-    ![Configure App URL](./media/active-directory-saas-simplenexus-tutorial/IC786904.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-simplenexus-tutorial/IC786904.png "Configure App URL")
 
-4.  **[SimpleNexus でのシングルサインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、メタ データファイルを SimpleNexus サポート チームに転送します。
+4.  On the **Configure single sign-on at SimpleNexus** page, click **Download metadata**, and then forward the metadata file to the SimpleNexus support team.
 
     ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785899.png "Configure Single Sign-On")
 
-    >[AZURE.NOTE] シングル サインオンは SimpleNexus サポート チームが有効にする必要があります。
+    >[AZURE.NOTE] Single sign-on needs to be enabled by the SimpleNexus support team.
 
-5.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+5.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-simplenexus-tutorial/IC785900.png "Configure Single Sign-On")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが SimpleNexus にログインできるようにするには、ユーザーを SimpleNexus にプロビジョニングする必要があります。SimpleNexus の場合、プロビジョニングは、テナント管理者が手動で実行するタスクです。
+In order to enable Azure AD users to log into SimpleNexus, they must be provisioned into SimpleNexus.  
+In the case of SimpleNexus, provisioning is a manual task performed by the tenant administrator.
 
->[AZURE.NOTE] SimpleNexus から提供されている他の SimpleNexus ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE] You can use any other SimpleNexus user account creation tools or APIs provided by SimpleNexus to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを SimpleNexus に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-simplenexus,-perform-the-following-steps:"></a>To assign users to SimpleNexus, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **SimpleNexus** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **SimpleNexus **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-simplenexus-tutorial/IC785901.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-simplenexus-tutorial/IC785901.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-simplenexus-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0921_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

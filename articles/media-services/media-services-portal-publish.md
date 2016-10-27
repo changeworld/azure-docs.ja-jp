@@ -1,98 +1,105 @@
 <properties
-	pageTitle=" Azure ポータルを使用したコンテンツの発行 | Microsoft Azure"
-	description="このチュートリアルでは、Azure ポータルを使用してコンテンツを発行する手順について説明します。"
-	services="media-services"
-	documentationCenter=""
-	authors="Juliako"
-	manager="erikre"
-	editor=""/>
+    pageTitle="  Publish content with the Azure portal | Microsoft Azure"
+    description="This tutorial walks you through the steps of publishing your content with the Azure portal."
+    services="media-services"
+    documentationCenter=""
+    authors="Juliako"
+    manager="erikre"
+    editor=""/>
 
 <tags
-	ms.service="media-services"
-	ms.workload="media"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/29/2016"
-	ms.author="juliako"/>
+    ms.service="media-services"
+    ms.workload="media"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/29/2016"
+    ms.author="juliako"/>
 
-# Azure ポータルを使用したコンテンツの発行
+
+# <a name="publish-content-with-the-azure-portal"></a>Publish content with the Azure portal
 
 > [AZURE.SELECTOR]
-- [ポータル](media-services-portal-publish.md)
+- [Portal](media-services-portal-publish.md)
 - [.NET](media-services-deliver-streaming-content.md)
-- [REST ()](media-services-rest-deliver-streaming-content.md)
+- [REST](media-services-rest-deliver-streaming-content.md)
 
-## Overview
+## <a name="overview"></a>Overview
 
-> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+> [AZURE.NOTE] To complete this tutorial, you need an Azure account. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/). 
 
-ストリーミングかダウンロードに使用できる URL を提供するには、まず、ロケーターを作成して資産を "発行" する必要があります。資産に含まれているファイルには、ロケーターを通じてアクセスできます。Media Services では、2 種類のロケーターがサポートされています。
+To provide your user with a  URL that can be used to stream or download your content, you first need to "publish" your asset by creating a locator. Locators provide access to files contained in the asset. Media Services supports two types of locators: 
 
-- ストリーミング (OnDemandOrigin) ロケーター。アダプティブ ストリーミング (MPEG DASH、HLS、スムーズ ストリーミングなどでのストリーミング) に使用します。ストリーミング ロケーターを作成する場合、資産に .ism ファイルが含まれている必要があります。
-- プログレッシブ (SAS) ロケーター。プログレッシブ ダウンロードを使用してビデオを配信する場合に使用します。
+- Streaming (OnDemandOrigin) locators, used for adaptive streaming (for example, to stream MPEG DASH, HLS, or Smooth Streaming). To create a streaming locator your asset must contain an .ism file. 
+- Progressive (SAS) locators, used for delivery of video via progressive download.
 
 
-ストリーミング URL には次の形式があり、スムーズ ストリーミング資産の再生に使用できます。
+A streaming URL has the following format and you can use it to play Smooth Streaming assets.
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest
 
-HLS ストリーミング URL を作成するには、(format=m3u8-aapl) を URL に追加します。
+To build an HLS streaming URL, append (format=m3u8-aapl) to the URL.
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
 
-MPEG DASH ストリーミング URL を作成するには、(format=mpd-time-csf) を URL に追加します。
+To build an  MPEG DASH streaming URL, append (format=mpd-time-csf) to the URL.
 
-	{streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+    {streaming endpoint name-media services account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
 
-SAS URL には次の形式があります。
+A SAS URL has the following format.
 
-	{blob container name}/{asset name}/{file name}/{SAS signature}
+    {blob container name}/{asset name}/{file name}/{SAS signature}
 
-詳細については、[コンテンツ配信の概要](media-services-deliver-content-overview.md)に関する記事を参照してください。
+For more information, see [Delivering content overview](media-services-deliver-content-overview.md).
 
->[AZURE.NOTE] 2015 年 3 月より前にポータルを使用してロケーターを作成した場合、有効期限が 2 年のロケーターが作成されています。
+>[AZURE.NOTE] If you used the portal to create locators before March 2015, locators with a two year expiration date were created.  
 
-ロケーターの有効期限を更新するには、[REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
+To update an expiration date on a locator, use [REST](http://msdn.microsoft.com/library/azure/hh974308.aspx#update_a_locator ) or [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) APIs. Note that when you update the expiration date of a SAS locator, the URL changes.
 
-### ポータルを使用して資産を発行するには
+### <a name="to-use-the-portal-to-publish-an-asset"></a>To use the portal to publish an asset
 
-ポータルを使用して資産を発行するには、次の操作を行います。
+To use the portal to publish an asset, do the following:
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
-1. **[設定]**、**[資産]** の順にクリックします。
-1. 発行する資産を選択します。
-1. **[発行]** ボタンをクリックします。
-1. ロケーターの種類を選択します。
-2. **[追加]** をクリックします。
+1. Log in at the [Azure portal](https://portal.azure.com/).
+1. Select **Settings** > **Assets**.
+1. Select the asset that you want to publish.
+1. Click the **Publish** button.
+1. Select the locator type.
+2. Press **Add**.
 
-	![Publish](./media/media-services-portal-vod-get-started/media-services-publish1.png)
+    ![Publish](./media/media-services-portal-vod-get-started/media-services-publish1.png)
 
-URL が **[発行された URL]** の一覧に追加されます。
+The URL will be added to the list of **Published URLs**.
 
-## ポータルでコンテンツを再生する
+## <a name="play-content-from-the-portal"></a>Play content from the portal
 
-ビデオは、Azure ポータルにあるコンテンツ プレーヤーを使用してテストできます。
+The Azure portal provides a content player that you can use to test your video.
 
-目的のビデオをクリックし、**[再生]** ボタンをクリックします。
+Click the desired video and then click the **Play** button.
 
 ![Publish](./media/media-services-portal-vod-get-started/media-services-play.png)
 
-いくつかの考慮事項が適用されます。
+Some considerations apply:
 
-- ビデオが発行されたことを確認します。
-- この**メディア プレイヤー**は既定のストリーミング エンドポイントから再生を行います。既定以外のストリーミング エンドポイントから再生する場合は、URL をクリックしてコピーし、別のプレーヤーを使用します。([Azure Media Services プレーヤーなど](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
-- ストリーミング元となるストリーミング エンドポイントが実行されている必要があります。
-- ストリーミング エンドポイントからストリーミングするには、1 つ以上のストリーミング ユニットを追加する必要があります。詳細については、[こちらの](media-services-portal-scale-streaming-endpoints.md)トピックを参照してください。
+- Make sure the video has been published.
+- This **Media player** plays from the default streaming endpoint. If you want to play from a non-default streaming endpoint, click to copy the URL and use another player. For example, [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+- The streaming endpoint from which you are streaming must be running.  
+- To stream from a streaming endpoint, you should add at least one streaming unit. For more information, see [this](media-services-portal-scale-streaming-endpoints.md) topic.   
 
-##次のステップ
+##<a name="next-steps"></a>Next steps
 
-Media Services のラーニング パスを確認します。
+Review Media Services learning paths.
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##フィードバックの提供
+##<a name="provide-feedback"></a>Provide feedback
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

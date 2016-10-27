@@ -1,48 +1,53 @@
 <properties
-	pageTitle="削除された Azure SQL データベースの復元 (Azure ポータル) | Microsoft Azure"
-	description="削除された Azure SQL データベースの復元 (Azure ポータル)。"
-	services="sql-database"
-	documentationCenter=""
-	authors="stevestein"
-	manager="jhubbard"
-	editor=""/>
+    pageTitle="Restore a deleted Azure SQL database (Azure portal) | Microsoft Azure"
+    description="Restore a deleted Azure SQL database (Azure portal)."
+    services="sql-database"
+    documentationCenter=""
+    authors="stevestein"
+    manager="jhubbard"
+    editor=""/>
 
 <tags
-	ms.service="sql-database"
-	ms.devlang="NA"
-	ms.date="07/09/2016"
-	ms.author="sstein"
-	ms.workload="NA"
-	ms.topic="article"
-	ms.tgt_pltfrm="NA"/>
+    ms.service="sql-database"
+    ms.devlang="NA"
+    ms.date="10/12/2016"
+    ms.author="sstein"
+    ms.workload="NA"
+    ms.topic="article"
+    ms.tgt_pltfrm="NA"/>
 
 
-# Azure ポータルを使用した、削除済み Azure SQL データベースの復元
+
+# <a name="restore-a-deleted-azure-sql-database-using-the-azure-portal"></a>Restore a deleted Azure SQL database using the Azure Portal
 
 > [AZURE.SELECTOR]
-- [概要](sql-database-recovery-using-backups.md)
-- [削除されたデータベースの復元: PowerShell](sql-database-restore-deleted-database-powershell.md)
+- [Overview](sql-database-recovery-using-backups.md)
+- [**Restore Deleted DB: Portal**](sql-database-restore-deleted-database-portal.md)
+- [Restore Deleted DB: PowerShell](sql-database-restore-deleted-database-powershell.md)
 
-## 復元するデータベースの選択 
+## <a name="select-the-database-to-restore"></a>Select the database to restore 
 
-Azure ポータルでデータベースを復元するには、次の手順を実行します。
+To restore a deleted database in the Azure portal:
 
-1.	[Azure ポータル](https://portal.azure.com) を開きます。
-2.  画面の左側で、**[参照]**、**[SQL サーバー]** の順に選択します。
-3.  復元する削除済みデータベースが含まれるサーバーに移動し、サーバーを選択します。
-4.  下へスクロールしてサーバー ブレードの **[操作]** セクションに移動し、**[削除済みデータベース]** を選択します: ![Azure SQL データベースの復元](./media/sql-database-restore-deleted-database-portal/restore-deleted-trashbin.png)
-5.  復元する削除済みデータベースを選択します。
-6.  データベースの名前を指定し、[OK] をクリックします。
+1.  In the [Azure portal](https://portal.azure.com), click **More services** > **SQL servers**.
+3.  Select the server that contained the database you want to restore.
+4.  Scroll down to the **operations** section of your server blade and select **Deleted databases**: ![Restore an Azure SQL database](./media/sql-database-restore-deleted-database-portal/restore-deleted-trashbin.png)
+5.  Select the database you want to restore.
+6.  Specify a database name, and click **OK**:
 
-    ![Azure SQL データベースの復元](./media/sql-database-restore-deleted-database-portal/restore-deleted.png)
+    ![Restore an Azure SQL database](./media/sql-database-restore-deleted-database-portal/restore-deleted.png)
 
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
-- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
-- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
-- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
-- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
+- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md)
+- To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](sql-database-recovery-using-backups.md)
+- To learn about faster recovery options, see [Active-Geo-Replication](sql-database-geo-replication-overview.md)  
+- To learn about using automated backups for archiving, see [database copy](sql-database-copy.md)
 
-<!---HONumber=AcomDC_0727_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

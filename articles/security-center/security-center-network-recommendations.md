@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center でのネットワークの保護 | Microsoft Azure"
-   description="このドキュメントでは、Azure Security Center での推奨事項に従ってご使用の Azure ネットワークを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。"
+   pageTitle="Protecting your network in Azure Security Center  | Microsoft Azure"
+   description="This document addresses recommendations in Azure Security Center that help you protect your Azure network and stay in compliance with security policies."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,33 +16,38 @@
    ms.date="08/04/2016"
    ms.author="terrylan"/>
 
-# Azure Security Center でのネットワークの保護
 
-Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。推奨事項は、仮想マシン (VM)、ネットワーク、SQL、およびアプリケーションといった、Azure のリソースの種類に適用されます。
+# <a name="protecting-your-network-in-azure-security-center"></a>Protecting your network in Azure Security Center
 
-この記事では、ネットワークに適用される推奨事項について説明します。ネットワークに関する推奨事項は、次世代ファイアウォール、ネットワーク セキュリティ グループ、受信トラフィック規則の構成などが中心です。次の表を参考にすると、ネットワークに関する利用可能な推奨事項と、それぞれを適用した場合の結果を理解しやすくなります。
+Azure Security Center analyzes the security state of your Azure resources. When Security Center identifies potential security vulnerabilities, it creates recommendations that guide you through the process of configuring the needed controls.  Recommendations apply to Azure resource types: virtual machines (VMs), networking, SQL, and applications.
 
-## ネットワークに関する利用可能な推奨事項
+This article addresses recommendations that apply to your network.  Network recommendations center around next generation firewalls, Network Security Groups, configuring inbound traffic rules, and more.  Use the table below as a reference to help you understand the available network recommendations and what each one will do if you apply it.
 
-|推奨|Description|
+## <a name="available-network-recommendations"></a>Available network recommendations
+
+|Recommendation|Description|
 |-----|-----|
-|[次世代ファイアウォールの追加](security-center-add-next-generation-firewall.md)|セキュリティ保護を強化するために、Microsoft パートナーの次世代ファイアウォール (NGFW) を追加することをお勧めします。|
-|[NGFW 経由に限定したトラフィックのルーティング](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)|VM への受信トラフィックを必ず NGFW 経由にするようにネットワーク セキュリティ グループ (NSG) の規則を構成することをお勧めします。|
-|[サブネットまたは仮想マシンでのネットワーク セキュリティ グループの有効化](security-center-enable-network-security-groups.md)|サブネットまたは VM で NSG を有効にすることをお勧めします。|
-|[インターネットに接続するエンドポイント経由のアクセスの制限](security-center-restrict-access-through-internet-facing-endpoints.md)|NSG に着信トラフィックのルールを構成することをお勧めします。|
+|[Add a Next Generation Firewall](security-center-add-next-generation-firewall.md)|Recommends that you add a Next Generation Firewall (NGFW) from a Microsoft partner in order to increase your security protections.|
+|[Route traffic through NGFW only](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)|Recommends that you configure network security group (NSG) rules that force inbound traffic to your VM through your NGFW.|
+|[Enable Network Security Groups on subnets or virtual machines](security-center-enable-network-security-groups.md)|Recommends that you enable NSGs on subnets or VMs.|
+|[Restrict access through Internet facing endpoint](security-center-restrict-access-through-internet-facing-endpoints.md)|Recommends that you configure inbound traffic rules for NSGs.|
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
+To learn more about recommendations that apply to other Azure resource types, see the following:
 
-- [Azure Security Center での仮想マシンの保護](security-center-virtual-machine-recommendations.md)
-- [Azure Security Center でのアプリケーションの保護](security-center-application-recommendations.md)
-- [Azure Security Center での Azure SQL サービスの保護](security-center-sql-service-recommendations.md)
+- [Protecting your virtual machines in Azure Security Center](security-center-virtual-machine-recommendations.md)
+- [Protecting your applications in Azure Security Center](security-center-application-recommendations.md)
+- [Protecting your Azure SQL service in Azure Security Center](security-center-sql-service-recommendations.md)
 
-セキュリティ センターの詳細については、次を参照してください。
+To learn more about Security Center, see the following:
 
-- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
+- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,186 +1,191 @@
 <properties
-	pageTitle="Azure Active Directory ドメイン サービス プレビュー: 管理ガイド | Microsoft Azure"
-	description="Red Hat Enterprise Linux 仮想マシンのAzure AD ドメイン サービスへの参加"
-	services="active-directory-ds"
-	documentationCenter=""
-	authors="mahesh-unnikrishnan"
-	manager="stevenpo"
-	editor="curtand"/>
+    pageTitle="Azure Active Directory Domain Services: Join a RHEL VM to a managed domain | Microsoft Azure"
+    description="Join a Red Hat Enterprise Linux virtual machine to Azure AD Domain Services"
+    services="active-directory-ds"
+    documentationCenter=""
+    authors="mahesh-unnikrishnan"
+    manager="stevenpo"
+    editor="curtand"/>
 
 <tags
-	ms.service="active-directory-ds"
-	ms.workload="identity"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/31/2016"
-	ms.author="maheshu"/>
-
-# Red Hat Enterprise Linux 7 仮想マシンの管理対象ドメインへの参加
-この記事では、Red Hat Enterprise Linux (RHEL) 7 仮想マシンを Azure AD ドメイン サービスの管理対象ドメインに参加させる方法について説明します。
-
-## Red Hat Enterprise Linux 仮想マシンのプロビジョニング
-Azure Portal を使用して RHEL 7 仮想マシンをプロビジョニングするには、次の手順を実行します。
-
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-
-    ![Azure ポータル ダッシュボード](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-dashboard.png)
-
-2. 次のスクリーンショットのように、左側のウィンドウの **[新規]** をクリックして、検索バーに「**Red Hat**」と入力します。検索結果に Red Hat Enterprise Linux の項目が表示されます。**Red Hat Enterprise Linux 7.2** をクリックします。
-
-    ![検索結果から RHEL を選択](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-find-rhel-image.png)
-
-3. **[すべて]** ウインドウの検索結果に、Red Hat Enterprise Linux 7.2 のイメージが表示されます。**[Red Hat Enterprise Linux 7.2]** をクリックして、仮想マシン イメージの詳細情報を表示します。
-
-    ![検索結果から RHEL を選択](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-select-rhel-image.png)
-
-4. **[Red Hat Enterprise Linux 7.2]** ウィンドウに、仮想マシン イメージの詳細情報が表示されます。**[デプロイ モデルの選択]** ボックスの一覧で **[クラシック]** を選択します。次に **[作成]** ボタンをクリックします。
-
-    ![イメージの詳細を表示](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-clicked.png)
-
-5. **[VM の作成]** ウインドウで、新しい仮想マシンの**ホスト名**を入力します。ローカル管理者のユーザー名を **[ユーザー名]** フィールドで指定し、**パスワード**を入力します。ローカル管理者ユーザーの認証に SSH キーを使用することもできます。仮想マシンの**価格レベル**を選択します。
-
-    ![VM の作成 - 基本情報](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-basic-details.png)
-
-6. **[オプションの構成]** をクリックします。**[オプションの構成]** ウインドウが開きます。**[オプションの構成]** ウィンドウで、**[ネットワーク]** をクリックします。
-
-    ![VM の作成 - 仮想ネットワークの構成](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-configure-vnet.png)
-
-7. **[ネットワーク]** ウィンドウが開きます。**[ネットワーク]** ウィンドウの **[仮想ネットワーク]** をクリックして、Linux VM をデプロイする仮想ネットワークを選択します。**[仮想ネットワーク]** ウィンドウが開きます。**[仮想ネットワーク]** ウインドウで、**[既存の仮想ネットワークの使用]** オプションを選択します。Azure AD ドメイン サービスを利用できる仮想ネットワークを選択します。この例では、”MyPreviewVNet” 仮想ネットワークを選択しています。
-
-    ![VM の作成 - 仮想ネットワークの選択](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-select-vnet.png)
-
-8. **[オプションの構成]** ウインドウで、**[OK]** ボタンをクリックします。
-
-    ![VM の作成 - 仮想ネットワークが選択されました](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-vnet-selected.png)
-
-9. これで、仮想マシンを作成する準備が整いました。**[VM の作成]** ウインドウで、**[作成]** ボタンをクリックします。
-
-    ![VM の作成 - 準備完了](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm.png)
-
-10. RHEL 7.2 のイメージに基づき、新しい仮想マシンのデプロイが開始されます。
-
-  ![VM の作成 - デプロイが開始されました](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-deployment-started.png)
-
-11. 数分後に仮想マシンのデプロイが完了し、使用する準備が整います。
-
-  ![VM の作成 - 展開済み](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-deployed.png)
+    ms.service="active-directory-ds"
+    ms.workload="identity"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="10/02/2016"
+    ms.author="maheshu"/>
 
 
+# <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Join a Red Hat Enterprise Linux 7 virtual machine to a managed domain
+This article shows you how to join a Red Hat Enterprise Linux (RHEL) 7 virtual machine to an Azure AD Domain Services managed domain.
 
-## 新しくプロビジョニングされた Linux 仮想マシンへのリモート接続
-RHEL 7.2 仮想マシンの Azure でのプロビジョニングが完了しました。続いて、仮想マシンへのリモート接続を行います。
+## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Provision a Red Hat Enterprise Linux virtual machine
+Perform the following steps to provision a RHEL 7 virtual machine using the Azure portal.
 
-**RHEL 7.2 仮想マシンへの接続** [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)に関する記事の手順に従ってください。
+1. Sign in to the [Azure portal](https://portal.azure.com).
 
-次の手順では、SSH クライアントである PuTTY を使用して、RHEL 仮想マシンに接続することを想定しています。詳細については、「[PuTTY Download Page (PuTTY のダウンロード ページ)](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)」を参照してください。
+    ![Azure portal dashboard](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-dashboard.png)
 
-1. PuTTY プログラムを開きます。
+2. Click **New** on the left pane and type **Red Hat** into the search bar as shown in the following screenshot. Entries for Red Hat Enterprise Linux appear in the search results. Click **Red Hat Enterprise Linux 7.2**.
 
-2. 新たに作成された RHEL 仮想マシンの**ホスト名**を入力します。 この例では、仮想マシンのホスト名は ”contoso rhel.cloudapp .net” です。仮想マシンのホスト名が不明な場合は、Azure ポータルの VM ダッシュボードを参照してください。
+    ![Select RHEL in results](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-find-rhel-image.png)
 
-    ![PuTTY 接続](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-connect.png)
+3. The search results in the **Everything** pane should list the Red Hat Enterprise Linux 7.2 image. Click **Red Hat Enterprise Linux 7.2** to view more information about the virtual machine image.
 
-3. 仮想マシンの作成時に指定したローカル管理者の資格情報を使用して、仮想マシンにログオンします。この例では、ローカル管理者アカウント ”mahesh” を使用しました。
+    ![Select RHEL in results](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-select-rhel-image.png)
 
-    ![PuTTY ログイン](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-login.png)
+4. In the **Red Hat Enterprise Linux 7.2** pane, you should see more information about the virtual machine image. In the **Select a deployment model** dropdown, select **Classic**. Then click the **Create** button.
+
+    ![View image details](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-clicked.png)
+
+5. In the **Create VM** pane, enter the **Host Name** for the new virtual machine. Also specify a local administrator user name in the **User name** field and a **Password**. You may also choose to use an SSH key to authenticate the local administrator user. Also select a **Pricing Tier** for the virtual machine.
+
+    ![Create VM - basic details](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-basic-details.png)
+
+6. Click **Optional Configuration**. In the **Optional config** pane, click **Network**.
+
+    ![Create VM - configure virtual network](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-configure-vnet.png)
+
+7. This brings up a pane titled **Network**. In the **Network** pane, click **Virtual Network** to select the virtual network to which the Linux VM should be deployed. This opens the **Virtual Network** pane. In the **Virtual Network** pane, choose the **Use an existing virtual network** option. Then select the virtual network in which Azure AD Domain Services is available. In this example, we pick the 'MyPreviewVNet' virtual network.
+
+    ![Create VM - select virtual network](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-select-vnet.png)
+
+8. On the **Optional config** pane, click the **OK** button.
+
+    ![Create VM - virtual network selected](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-vnet-selected.png)
+
+9. You are now ready to create the virtual machine. On the **Create VM** pane, click the **Create** button.
+
+    ![Create VM - ready](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm.png)
+
+10. Deployment of the new virtual machine based on the RHEL 7.2 image should start.
+
+  ![Create VM - deployment started](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-deployment-started.png)
+
+11. After a few minutes, the virtual machine should be deployed successfully and ready for use.
+
+  ![Create VM - deployed](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-deployed.png)
 
 
-## Linux 仮想マシンに必要なパッケージのインストール
-仮想マシンへの接続が完了したら、ドメイン参加に必要なパッケージを仮想マシンにインストールします。次の手順に従います。
 
-1. **realmd のインストール:** ドメイン参加には realmd パッケージを使用します。PuTTY ターミナルで、次のコマンドを入力します。
+## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Connect remotely to the newly provisioned Linux virtual machine
+The RHEL 7.2 virtual machine has been provisioned in Azure. The next task is to connect remotely to the virtual machine.
+
+**Connect to the RHEL 7.2 virtual machine** Follow the instructions in the article [How to log on to a virtual machine running Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md).
+
+The rest of the steps assume you use the PuTTY SSH client to connect to the RHEL virtual machine. For more information, see the [PuTTY Download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+
+1. Open the PuTTY program.
+
+2. Enter the **Host Name** for the newly created RHEL virtual machine. In this example, our virtual machine has the host name 'contoso-rhel.cloudapp.net'. If you are not sure of the host name of your VM, refer to the VM dashboard on the Azure portal.
+
+    ![PuTTY connect](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-connect.png)
+
+3. Log on to the virtual machine using the local administrator credentials you specified when the virtual machine was created. In this example, we used the local administrator account "mahesh".
+
+    ![PuTTY login](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-login.png)
+
+
+## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Install required packages on the Linux virtual machine
+After connecting to the virtual machine, the next task is to install packages required for domain join on the virtual machine. Perform the following steps:
+
+1. **Install realmd:** The realmd package is used for domain join. In your PuTTY terminal, type the following command:
 
     sudo yum install realmd
 
-    ![realmd のインストール](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-realmd.png)
+    ![Install realmd](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-realmd.png)
 
-    数分後に realmd パッケージが仮想マシンにインストールされます。
+    After a few minutes, the realmd package should get installed on the virtual machine.
 
-    ![realmd がインストールされました](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-installed.png)
+    ![realmd installed](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-installed.png)
 
-3. **sssd のインストール:** realmd パッケージは、ドメイン参加操作を実行するために sssd に依存します。PuTTY ターミナルで、次のコマンドを入力します。
+3. **Install sssd:** The realmd package depends on sssd to perform domain join operations. In your PuTTY terminal, type the following command:
 
     sudo yum install sssd
 
-	![sssd のインストール](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-sssd.png)
+    ![Install sssd](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-sssd.png)
 
-    数分後に sssd パッケージが仮想マシンにインストールされます。
+    After a few minutes, the sssd package should get installed on the virtual machine.
 
-    ![realmd がインストールされました](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-sssd-installed.png)
+    ![realmd installed](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-sssd-installed.png)
 
-4. **kerberos のインストール:** PuTTY ターミナルで、次のコマンドを入力します。
+4. **Install kerberos:** In your PuTTY terminal, type the following command:
 
     sudo yum install krb5-workstation krb5-libs
 
-	![kerberos のインストール](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-kerberos.png)
+    ![Install kerberos](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-kerberos.png)
 
-	数分後に realmd パッケージが仮想マシンにインストールされます。
+    After a few minutes, the realmd package should get installed on the virtual machine.
 
-	![Kerberos がインストールされました](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-kerberos-installed.png)
+    ![Kerberos installed](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-kerberos-installed.png)
 
 
-## Linux 仮想マシンの管理対象ドメインへの参加
-Linux 仮想マシンに必要なパッケージがインストールされたら、続いて仮想マシンを管理対象ドメインに参加させます。
+## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Join the Linux virtual machine to the managed domain
+Now that the required packages are installed on the Linux virtual machine, the next task is to join the virtual machine to the managed domain.
 
-1. AAD ドメイン サービスの管理対象ドメインを探します。PuTTY ターミナルで、次のコマンドを入力します。
+1. Discover the AAD Domain Services managed domain. In your PuTTY terminal, type the following command:
 
     sudo realm discover CONTOSO100.COM
 
-	![領域の検出](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-discover.png)
+    ![Realm discover](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-discover.png)
 
-	**「realm discover」**で管理対象ドメインが見つからない場合は、ドメインが仮想マシンから到達可能か確認します (ping をお試しください)。また、仮想マシンが、管理対象ドメインが利用可能な同じ仮想ネットワークにデプロイされているかも確認します。
+    If **realm discover** is unable to find your managed domain, ensure that the domain is reachable from the virtual machine (try ping). Also ensure that the virtual machine has indeed been deployed to the same virtual network in which the managed domain is available.
 
-2. kerberos を初期化します。PuTTY ターミナルで、次のコマンドを入力します。”AAD DC 管理者” グループに所属するユーザーを指定します。指定されたユーザーのみが、管理対象ドメインにコンピューターを参加させることができます。
+2. Initialize kerberos. In your PuTTY terminal, type the following command. Ensure that you specify a user who belongs to the 'AAD DC Administrators' group. Only these users can join computers to the managed domain.
 
     kinit bob@CONTOSO100.COM
 
     ![Kinit](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-kinit.png)
 
-    kinit のエラーを防ぐため、ドメイン名は必ず大文字で指定します。
+    Ensure that you specify the domain name in capital letters, else kinit fails.
 
-3. コンピューターをドメインに参加させます。PuTTY ターミナルで、次のコマンドを入力します。上記の手順で指定したのと同じユーザー (”kinit”) を指定します。
+3. Join the machine to the domain. In your PuTTY terminal, type the following command. Specify the same user you specified in the preceding step ('kinit').
 
     sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM'
 
-	![領域の結合](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-join.png)
+    ![Realm join](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-join.png)
 
-コンピューターの管理対象ドメインへの参加が完了すると、「Successfully enrolled machine in realm (コンピューターは領域に正常に登録されました)」という旨のメッセージが表示されます。
+You should get a message ("Successfully enrolled machine in realm") when the machine is successfully joined to the managed domain.
 
 
-## ドメイン参加の確認
-コンピューターが管理対象ドメインに参加できたか確認してみましょう。ドメインに新しく参加した RHEL VM に、ssh とドメイン ユーザー アカウントを使用して接続し、ユーザー アカウントが正しく解決済みかを確認します。
+## <a name="verify-domain-join"></a>Verify domain join
+You can quickly verify whether the machine has been successfully joined to the managed domain. Connect to the newly domain joined RHEL VM using SSH and a domain user account and then check to see if the user account is resolved correctly.
 
-1. PuTTY ターミナルで次のコマンドを入力し、ドメインに新しく参加した RHEL 仮想マシンに、SSH を使用して接続します。管理対象ドメインに属するドメイン アカウントを使用します (例: ここでは "bob@CONTOSO100.COM")。
+1. In your PuTTY terminal, type the following command to connect to the newly domain joined RHEL virtual machine using SSH. Use a domain account that belongs to the managed domain (for example, 'bob@CONTOSO100.COM' in this case.)
 
-    ssh-l bob@CONTOSO100.COM contoso rhel.cloudapp.net
+    ssh -l bob@CONTOSO100.COM contoso-rhel.cloudapp.net
 
-2. PuTTY ターミナルで次のコマンドを入力し、ユーザーのホーム ディレクトリが正しく初期化されているかを確認します。
+2. In your PuTTY terminal, type the following command to see if the home directory was initialized correctly.
 
-	pwd
+    pwd
 
-3. PuTTY ターミナルで次のコマンドを入力し、グループ メンバーシップが正しく解決済みかを確認します。
+3. In your PuTTY terminal, type the following command to see if the group memberships are being resolved correctly.
 
     id
 
-コマンドのサンプル出力は次のとおりです。
+A sample output of these commands follows:
 
-![ドメイン参加の確認](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-verify-domain-join.png)
-
-
-## ドメイン参加のトラブルシューティング
-「[Troubleshooting domain join (ドメイン参加のトラブルシューティング)](active-directory-ds-admin-guide-join-windows-vm.md#troubleshooting-domain-join)」を参照してください。
+![Verify domain join](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-verify-domain-join.png)
 
 
-## 関連コンテンツ
-- [Azure AD ドメイン サービス - 作業開始ガイド](./active-directory-ds-getting-started.md)
+## <a name="troubleshooting-domain-join"></a>Troubleshooting domain join
+Refer to the [Troubleshooting domain join](active-directory-ds-admin-guide-join-windows-vm.md#troubleshooting-domain-join) article.
 
-- [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 
-- [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md)
+## <a name="related-content"></a>Related Content
+- [Azure AD Domain Services - Getting Started guide](./active-directory-ds-getting-started.md)
 
-- [Installing Kerberos (Kerberos のインストール)](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
+- [Join a Windows Server virtual machine to an Azure AD Domain Services managed domain](active-directory-ds-admin-guide-join-windows-vm.md)
 
-- [Red Hat Enterprise Linux 7 - Windows Integration Guide (Red Hat Enterprise Linux 7 - Windows 統合ガイド)](https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)
+- [How to log on to a virtual machine running Linux](../virtual-machines/virtual-machines-linux-mac-create-ssh-keys.md).
 
-<!---HONumber=AcomDC_0907_2016-->
+- [Installing Kerberos](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
+
+- [Red Hat Enterprise Linux 7 - Windows Integration Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

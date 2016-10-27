@@ -1,12 +1,12 @@
 <properties
-	pageTitle="動的テレメトリの使用 | Microsoft Azure"
-	description="事前構成済みのリモート監視ソリューションで動的テレメトリを使用する方法については、このチュートリアルを参照してください。"
-	services=""
+    pageTitle="Use dynamic telemetry | Microsoft Azure"
+    description="Follow this tutorial to learn how to use dynamic telemetry with the remote monitoring preconfigured solution."
+    services=""
     suite="iot-suite"
-	documentationCenter=""
-	authors="dominicbetts"
-	manager="timlt"
-	editor=""/>
+    documentationCenter=""
+    authors="dominicbetts"
+    manager="timlt"
+    editor=""/>
 
 <tags
      ms.service="iot-suite"
@@ -17,80 +17,81 @@
      ms.date="08/25/2016"
      ms.author="dobett"/>
 
-# 事前構成済みのリモート監視ソリューションによる動的テレメトリの使用
 
-## はじめに
+# <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>Use dynamic telemetry with the remote monitoring preconfigured solution
 
-事前構成済みのリモート監視ソリューションに送信されたテレメトリは、動的テレメトリによって視覚化できます。事前構成済みのソリューションと一緒にデプロイされたシミュレーション対象デバイスからは、温度と湿度のテレメトリが送信されます。このテレメトリをダッシュボードで視覚化することができます。既存のシミュレーション対象デバイスをカスタマイズする場合や、新しいシミュレーション対象デバイスを作成する場合、または事前構成済みのソリューションに物理デバイスを接続する場合は、他にも外部温度や RPM、風速などのテレメトリ値を送信することができます。そのうえでこうした追加のテレメトリをダッシュボードで視覚化できます。
+## <a name="introduction"></a>Introduction
 
-このチュートリアルでは、変更を加えやすい単純な Node.js のシミュレーション対象デバイスを使用して、動的テレメトリの実験を行います。
+Dynamic telemetry enables you to visualize any telemetry sent to the remote monitoring preconfigured solution. The simulated devices that deploy with the preconfigured solution send temperature and humidity telemetry, which you can visualize on the dashboard. If you customize the existing simulated devices, create new simulated devices, or connect physical devices to the preconfigured solution you can send other telemetry values such as the external temperature, RPM, or windspeed. You can then visualize this additional telemetry on the dashboard.
 
-このチュートリアルを完了するには、以下が必要になります。
+This tutorial uses a simple Node.js simulated device that you can easily modify to experiment with dynamic telemetry.
 
-- 有効な Azure サブスクリプションアカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk_free_trial]を参照してください。
-- [Node.js][lnk-node] バージョン 0.12.x 以降。
+To complete this tutorial, you’ll need:
 
-このチュートリアルに使用するオペレーティング システムは、Windows や Linux など、Node.js がインストールできれば何でもかまいません。
+- An active Azure subscription. If you don’t have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][lnk_free_trial].
+- [Node.js][lnk-node] version 0.12.x or later.
+
+You can complete this tutorial on any operating system, such as Windows or Linux, where you can install Node.js.
 
 [AZURE.INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
-## Node.js のシミュレーション対象デバイスの構成
+## <a name="configure-the-node.js-simulated-device"></a>Configure the Node.js simulated device
 
-1. リモート監視ダッシュボードで **[+ デバイスの追加]** をクリックし、カスタム デバイスを追加します。IoT Hub のホスト名、デバイス ID、デバイス キーをメモします。これらの情報は、後でこのチュートリアルの中で remote\_monitoring.js デバイス クライアント アプリケーションを準備するときに必要となります。
+1. On the remote monitoring dashboard, click **+ Add a device** and then add a custom device. Make a note of the IoT Hub hostname, device id, and device key. You need them later in this tutorial when you prepare the remote_monitoring.js device client application.
 
-2. 開発コンピューターに Node.js のバージョン 0.12.x 以降がインストールされていることを確認します。バージョンを確認するには、コマンド プロンプトまたはシェルから「`node --version`」を実行します。パッケージ マネージャーを使用して Linux に Node.js をインストールする方法については、[パッケージ マネージャーによる Node.js のインストール][node-linux]に関するページを参照してください。
+2. Ensure that Node.js version 0.12.x or later is installed on your development machine. Run `node --version` at a command prompt or in a shell to check the version. For information about using a package manager to install Node.js on Linux, see [Installing Node.js via package manager][node-linux].
 
-3. Node.js をインストールしたら、ご使用の開発コンピューターに最新バージョンの [azure-iot-sdks][lnk-github-repo] リポジトリを複製します。最新バージョンのライブラリとサンプルを入手するために、必ず **master** ブランチを使用してください。
+3. When you have installed Node.js, clone the latest version of the [azure-iot-sdks][lnk-github-repo] repository to your development machine. Always use the **master** branch for the latest version of the libraries and samples.
 
-4. ローカルにコピーした [azure-iot-sdks][lnk-github-repo] リポジトリの node/device/samples フォルダーから次の 2 つのファイルを開発コンピューター上の空のフォルダーにコピーします。
+4. From your local copy of the [azure-iot-sdks][lnk-github-repo] repository, copy the following two files from the node/device/samples folder to an empty folder on your development machine:
 
   - packages.json
-  - remote\_monitoring.js
+  - remote_monitoring.js
 
-5. remote\_monitoring.js ファイルを開き、次の変数の定義を探します。
+5. Open the remote_monitoring.js file and look for the following variable definition:
 
     ```
     var connectionString = "[IoT Hub device connection string]";
     ```
 
-6. **[IoT Hub device connection string]** を、デバイスの接続文字列に置き換えます。手順 1. でメモした IoT Hub のホスト名、デバイス ID、デバイス キーの値を使用してください。デバイスの接続文字列は、次の形式にする必要があります。
+6. Replace **[IoT Hub device connection string]** with your device connection string. Use the values for your IoT Hub hostname, device id, and device key that you made a note of in step 1. A device connection string has the following format:
 
     ```
     HostName={your IoT Hub hostname};DeviceId={your device id};SharedAccessKey={your device key}
     ```
 
-    IoT Hub のホスト名が **contoso**、デバイス ID が **mydevice** の場合、接続文字列は以下のようになります。
+    If your IoT Hub hostname is **contoso** and your device id is **mydevice**, your connection string looks like the following:
 
     ```
     var connectionString = "HostName=contoso.azure-devices.net;DeviceId=mydevice;SharedAccessKey=2s ... =="
     ```
 
-7. ファイルを保存します。これらのファイルが格納されているフォルダーから、シェルまたはコマンド プロンプトで次のコマンドを実行して必要なパッケージをインストールし、サンプル アプリケーションを実行します。
+7. Save the file. Run the following commands in a shell or command prompt in the folder that contains these files to install the necessary packages and then run the sample application:
 
     ```
     npm install
     node remote_monitoring.js
     ```
 
-## 作動中の動的テレメトリの観察
+## <a name="observe-dynamic-telemetry-in-action"></a>Observe dynamic telemetry in action
 
-ダッシュボードには、既に実行されているシミュレーション対象デバイスから取得した温度と湿度のテレメトリが表示されます。
+The dashboard shows the temperature and humidity telemetry from the existing simulated devices:
 
 ![The default dashboard][image1]
 
-前のセクションで実行した Node.js のシミュレーション対象デバイスを選択した場合は、温度、湿度、外部温度のテレメトリが表示されます。
+If you select the Node.js simulated device you ran in the previous section, you see temperature, humidity, and external temperature telemetry:
 
 ![Add external temperature to the dashboard][image2]
 
-このリモート監視ソリューションは、その他の種類の外部温度テレメトリを自動的に検出し、ダッシュボード上のグラフに追加します。
+The remote monitoring solution automatically detects the additional external temperature telemetry type and adds it to the chart on the dashboard.
 
-## テレメトリ タイプの追加
+## <a name="add-a-telemetry-type"></a>Add a telemetry type
 
-次の手順では、Node.js のシミュレーション対象デバイスによって生成されるテレメトリを、新しい値に差し替えます。
+The next step is to replace the telemetry generated by the Node.js simulated device with a new set of values:
 
-1. コマンド プロンプトまたはシェルで **Ctrl + C** キーを押し、Node.js のシミュレーション対象デバイスを停止します。
+1. Stop the Node.js simulated device by typing **Ctrl+C** in your command prompt or shell.
 
-2. 既存の温度、湿度、外部温度のテレメトリに使用されるベース データ値は、remote\_monitoring.js ファイルで確認できます。次のように、**rpm** に使用するベース データ値を追加します。
+2. In the remote_monitoring.js file, you can see the base data values for the existing temperature, humidity, and external temperature telemetry. Add a base data value for **rpm** as follows:
 
     ```
     // Sensors data
@@ -100,7 +101,7 @@
     var rpm = 200;
     ```
 
-3. Node.js のシミュレーション対象デバイスは、remote\_monitoring.js ファイルの **generateRandomIncrement** 関数を使用して、ベース データ値にランダムな増分値を加算します。既にある無作為化の処理に続けて次のコード行を追加し、**rpm** の値を無作為化します。
+3. The Node.js simulated device uses the **generateRandomIncrement** function in the remote_monitoring.js file to add a random increment to the base data values. Randomize the **rpm** value by adding a line of code after the existing randomizations as follows:
 
     ```
     temperature += generateRandomIncrement();
@@ -109,7 +110,7 @@
     rpm += generateRandomIncrement();
     ```
 
-4. デバイスから IoT Hub に送信される JSON ペイロードに新しい rpm 値を追加します。
+4. Add the new rpm value to the JSON payload the device sends to IoT Hub:
 
     ```
     var data = JSON.stringify({
@@ -121,21 +122,21 @@
     });
     ```
 
-5. 次のコマンドを使用して、Node.js のシミュレーション対象デバイスを実行します。
+5. Run the Node.js simulated device using the following command:
 
     ```
     node remote_monitoring.js
     ```
 
-6. ダッシュボードのグラフに表示される新しい RPM テレメトリ タイプを観察します。
+6. Observe the new RPM telemetry type that displays on the chart in the dashboard:
 
 ![Add RPM to the dashboard][image3]
 
-> [AZURE.NOTE] 変更がすぐに反映されない場合は、ダッシュボードの **[デバイス]** ページで一度 Node.js デバイスを無効にしてから有効にしてください。
+> [AZURE.NOTE] You may need to disable and then enable the Node.js device on the **Devices** page in the dashboard to see the change immediately.
 
-## ダッシュボード表示のカスタマイズ
+## <a name="customize-the-dashboard-display"></a>Customize the dashboard display
 
-**Device-Info** メッセージには、デバイスから IoT Hub に送信できるテレメトリについてのメタデータを含めることができます。デバイスから送信されるテレメトリのタイプをこのメタデータで指定することができます。remote\_monitoring.js ファイルの **deviceMetaData** の値に変更を加えます。**Commands** の定義に続けて **Telemetry** の定義を追加してください。次のコード スニペットは、**Commands** の定義を示しています (**Commands** の定義の後、忘れずに `,` を追加してください)。
+The **Device-Info** message can include metadata about the telemetry the device can send to IoT Hub. This metadata can specify the telemetry types the device sends. Modify the **deviceMetaData** value in the remote_monitoring.js file to include a **Telemetry** definition following the **Commands** definition. The following code snippet shows the **Commands** definition (be sure to add a `,` after the **Commands** definition):
 
 ```
 'Commands': [{
@@ -166,9 +167,9 @@
 }]
 ```
 
-> [AZURE.NOTE] リモート監視ソリューションでは、メタデータの定義とテレメトリ ストリーム内のデータとを比較する際、大文字と小文字が区別されません。
+> [AZURE.NOTE] The remote monitoring solution uses a case-insensitive match to compare the metadata definition with data in the telemetry stream.
 
-前のコード スニペットに示すように **Telemetry** の定義を追加しても、ダッシュボードの動作は変わりません。一方、ダッシュボードの表示は、メタデータに **DisplayName** 属性を追加することによってカスタマイズすることもできます。**Telemetry** のメタデータ定義を以下のスニペットに示すように更新します。
+Adding a **Telemetry** definition as shown in the preceding code snippet does not change the behavior of the dashboard. However, the metadata can also include a **DisplayName** attribute to customize the display in the dashboard. Update the **Telemetry** metadata definition as shown in the following snippet:
 
 ```
 'Telemetry': [
@@ -190,17 +191,17 @@
 ]
 ```
 
-次のスクリーンショットは、ダッシュボードに表示されるグラフの凡例が、この変更によってどのように変わるかを示しています。
+The following screenshot shows how this change modifies the chart legend on the dashboard:
 
 ![Customize the chart legend][image4]
 
-> [AZURE.NOTE] 変更がすぐに反映されない場合は、ダッシュボードの **[デバイス]** ページで一度 Node.js デバイスを無効にしてから有効にしてください。
+> [AZURE.NOTE] You may need to disable and then enable the Node.js device on the **Devices** page in the dashboard to see the change immediately.
 
-## テレメトリの種類のフィルタリング
+## <a name="filter-the-telemetry-types"></a>Filter the telemetry types
 
-既定では、テレメトリのストリームに含まれるすべてのデータ系列がダッシュボード上のグラフに表示されます。**Device-Info** のメタデータを使用すると、特定の種類のテレメトリがグラフに表示されないようにすることができます。
+By default, the chart on the dashboard shows every data series in the telemetry stream. You can use the **Device-Info** metadata to suppress the display of specific telemetry types on the chart. 
 
-温度と湿度のテレメトリだけがグラフに表示されるようにするには、**Device-Info** の **Telemetry** メタデータから **ExternalTemperature** をコメントアウトします。
+To make the chart show only Temperature and Humidity telemetry, omit **ExternalTemperature** from the **Device-Info** **Telemetry** metadata as follows:
 
 ```
 'Telemetry': [
@@ -222,21 +223,21 @@
 ]
 ```
 
-**Outdoor Temperature (屋外の温度)** がグラフに表示されなくなります。
+The **Outdoor Temperature** no longer displays on the chart:
 
 ![Filter the telemetry on the dashboard][image5]
 
-この変更は、グラフの表示のみに影響します。**ExternalTemperature** データの値は保存されており、バックエンド処理に利用することができます。
+This change only affects the chart display. The **ExternalTemperature** data values are still stored and made available for any backend processing.
 
-> [AZURE.NOTE] 変更がすぐに反映されない場合は、ダッシュボードの **[デバイス]** ページで一度 Node.js デバイスを無効にしてから有効にしてください。
+> [AZURE.NOTE] You may need to disable and then enable the Node.js device on the **Devices** page in the dashboard to see the change immediately.
 
-## エラーを処理する
+## <a name="handle-errors"></a>Handle errors
 
-データ ストリームがグラフに表示されるためには、**Device-Info** メタデータにおける対応する **Type** がテレメトリの値のデータ型と一致する必要があります。たとえば湿度データの **Type** が、メタデータで **int** と指定されているとき、テレメトリ ストリームに検出されたデータが **double** である場合、その湿度テレメトリはグラフに表示されません。それでも **Humidity** の値は保存されており、バックエンド処理に利用することができます。
+For a data stream to display on the chart, its **Type** in the **Device-Info** metadata must match the data type of the telemetry values. For example, if the metadata specifies that the **Type** of humidity data is **int** and a **double** is found in the telemetry stream then the humidity telemetry does not display on the chart. However, the **Humidity** values are still stored and made available for any backend processing.
 
-## 次のステップ
+## <a name="next-steps"></a>Next steps
 
-動的なテレメトリを使用する方法を確認したので、構成済みのソリューションでデバイス情報を使用する方法について「[リモート監視構成済みソリューションのデバイス情報メタデータ][lnk-devinfo]」からさらに学ぶことができます。
+Now that you've seen how to use dynamic telemetry, you can learn more about how the preconfigured solutions use device information: [Device information metadata in the remote monitoring preconfigured solution][lnk-devinfo].
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 
@@ -251,4 +252,8 @@
 [node-linux]: https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager
 [lnk-github-repo]: https://github.com/Azure/azure-iot-sdks
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

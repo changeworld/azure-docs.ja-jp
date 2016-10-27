@@ -1,63 +1,68 @@
 <properties
-	pageTitle="アクセス変更履歴レポートの作成 | Microsoft Azure"
-	description="ロールベースのアクセス制御を使用した Azure サブスクリプションへのアクセス権の変更について、過去 90 日間分をすべて一覧表示するレポートを生成します。"
-	services="active-directory"
-	documentationCenter=""
-	authors="kgremban"
-	manager="femila"
-	editor=""/>
+    pageTitle="Create an access change history report | Microsoft Azure"
+    description="Generate a report that lists all changes in access to your Azure subscriptions with Role-Based Access Control over the past 90 days."
+    services="active-directory"
+    documentationCenter=""
+    authors="kgremban"
+    manager="femila"
+    editor=""/>
 
 <tags
-	ms.service="active-directory"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.tgt_pltfrm="na"
-	ms.workload="identity"
-	ms.date="08/03/2016"
-	ms.author="kgremban"/>
+    ms.service="active-directory"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.tgt_pltfrm="na"
+    ms.workload="identity"
+    ms.date="08/03/2016"
+    ms.author="kgremban"/>
 
-# アクセス変更履歴レポートの作成
 
-サブスクリプション内でだれかがアクセス権を付与したり取り消したりしたときは、その変更が常に Azure イベントに記録されます。アクセス変更履歴レポートを作成すると、過去 90 日間のすべての変更を確認できます。
+# <a name="create-an-access-change-history-report"></a>Create an access change history report
 
-## Azure PowerShell を使用したレポートの作成
-PowerShell でアクセス変更履歴レポートを作成するには、`Get-AzureRMAuthorizationChangeLog` コマンドを使用します。このコマンドレットの詳細は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureRM.Storage/1.0.6/Content/ResourceManagerStartup.ps1)で確認できます。
+Any time someone grants or revokes access within your subscriptions, the changes get logged in Azure events. You can create access change history reports to see all changes for the past 90 days.
 
-このコマンドを呼び出すには、表示する割り当てのプロパティを指定します。プロパティの例を次に示します。
+## <a name="create-a-report-with-azure-powershell"></a>Create a report with Azure PowerShell
+To create an access change history report in PowerShell, use the `Get-AzureRMAuthorizationChangeLog` command. More details about this cmdlet are available in the [PowerShell Gallery](https://www.powershellgallery.com/packages/AzureRM.Storage/1.0.6/Content/ResourceManagerStartup.ps1).
 
-| プロパティ | Description |
+When you call this command, you can specify which property of the assignments you want listed, including the following:
+
+| Property | Description |
 | -------- | ----------- |
-| **アクション** | アクセス権が付与されているか取り消されているか |
-| **Caller** | アクセス権の変更を担当する所有者 |
-| **日付** | アクセス権が変更された日時 |
-| **DirectoryName** | Azure Active Directory ディレクトリ |
-| **PrincipalName** | ユーザー、グループ、またはアプリケーションの名前 |
-| **PrincipalType** | 割り当てはユーザー、グループ、アプリケーションのどれか |
-| **RoleId** | 付与または取り消されたロールの GUID |
-| **RoleName** | 付与または取り消されたロール |
-| **ScopeName** | サブスクリプション、リソース グループ、またはリソースの名前 |
-| **ScopeType** | 割り当てはサブスクリプション、リソース グループ、またはリソース スコープのどのレベルで行われたか |
-| **SubscriptionId** | Azure サブスクリプションの GUID |
-| **SubscriptionName** | Azure サブスクリプションの名前 |
+| **Action** | Whether access was granted or revoked |
+| **Caller** | The owner responsible for the access change |
+| **Date** | The date and time that access was changed |
+| **DirectoryName** | The Azure Active Directory directory |
+| **PrincipalName** | The name of the user, group, or application |
+| **PrincipalType** | Whether the assignment was for a user, group, or application |
+| **RoleId** | The GUID of the role that was granted or revoked |
+| **RoleName** | The role that was granted or revoked |
+| **ScopeName** | The name of the subscription, resource group, or resource |
+| **ScopeType** | Whether the assignment was at the subscription, resource group, or resource scope |
+| **SubscriptionId** | The GUID of the Azure subscription |
+| **SubscriptionName** | The name of the Azure subscription |
 
-このコマンド例を実行すると、サブスクリプションにおける過去 7 日間のすべてのアクセス変更が一覧表示されます。
+This example command lists all access changes in the subscription for the past seven days:
 
 ```
 Get-AzureRMAuthorizationChangeLog -StartTime ([DateTime]::Now - [TimeSpan]::FromDays(7)) | FT Caller,Action,RoleName,PrincipalType,PrincipalName,ScopeType,ScopeName
 ```
 
-![PowerShell Get-AzureRMAuthorizationChangeLog - スクリーンショット](./media/role-based-access-control-configure/access-change-history.png)
+![PowerShell Get-AzureRMAuthorizationChangeLog - screenshot](./media/role-based-access-control-configure/access-change-history.png)
 
-## Azure CLI を使用したレポートの作成
-Azure コマンド ライン インターフェイス (CLI) でアクセス変更履歴レポートを作成するには、`azure role assignment changelog list` コマンドを使用します。
+## <a name="create-a-report-with-azure-cli"></a>Create a report with Azure CLI
+To create an access change history report in the Azure command-line interface (CLI), use the `azure role assignment changelog list` command.
 
-## スプレッドシートへのエクスポート
-レポートを保存したりデータを操作したりするには、アクセス変更を .csv ファイルにエクスポートします。このレポートをスプレッドシートで表示して確認することができます。
+## <a name="export-to-a-spreadsheet"></a>Export to a spreadsheet
+To save the report, or manipulate the data, export the access changes into a .csv file. You can then view the report in a spreadsheet for review.
 
-![スプレッドシートとして表示した Changelog - スクリーンショット](./media/role-based-access-control-configure/change-history-spreadsheet.png)
+![Changelog viewed as spreadsheet - screenshot](./media/role-based-access-control-configure/change-history-spreadsheet.png)
 
-## 関連項目
-- [Azure のロールベースのアクセス制御](role-based-access-control-configure.md)の基本事項の確認
-- [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)の操作
+## <a name="see-also"></a>See also
+- Get started with [Azure Role-Based Access Control](role-based-access-control-configure.md)
+- Work with [Custom roles in Azure RBAC](role-based-access-control-custom-roles.md)
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

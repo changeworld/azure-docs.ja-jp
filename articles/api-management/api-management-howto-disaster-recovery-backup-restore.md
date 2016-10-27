@@ -1,178 +1,179 @@
 <properties 
-	pageTitle="Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法 | Microsoft Azure" 
-	description="Azure API Management でバックアップと復元を使用して障害復旧を行う方法について説明します。" 
-	services="api-management" 
-	documentationCenter="" 
-	authors="steved0x" 
-	manager="erikre" 
-	editor=""/>
+    pageTitle="How to implement disaster recovery using service backup and restore in Azure API Management | Microsoft Azure" 
+    description="Learn how to use backup and restore to perform disaster recovery in Azure API Management." 
+    services="api-management" 
+    documentationCenter="" 
+    authors="steved0x" 
+    manager="erikre" 
+    editor=""/>
 
 <tags 
-	ms.service="api-management" 
-	ms.workload="mobile" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/09/2016" 
-	ms.author="sdanie"/>
+    ms.service="api-management" 
+    ms.workload="mobile" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/25/2016" 
+    ms.author="sdanie"/>
 
-# Azure API Management でサービスのバックアップと復元を使用して障害復旧を実装する方法
 
-Azure API Management を介して API の発行と管理を行うように選択することで、そうしなければ自分で設計、実装、および管理する必要のある、さまざまなフォールト トレランス機能やインフラストラクチャ機能を利用できるようになります。Azure プラットフォームにより、わずかな料金で潜在的な障害の大部分が軽減されます。
+# <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>How to implement disaster recovery using service backup and restore in Azure API Management
 
-API Management サービスがホストされているリージョンに影響する可用性の問題から復旧するためには、いつでも異なるリージョンにサービスを再構成できるように準備しておく必要があります。可用性の目標と復旧時間の目標に応じて、バックアップ サービスを 1 つ以上のリージョンに確保し、それらの構成と内容がアクティブ サービスと同期するように保守することができます。サービス バックアップと復元の機能は、障害復旧戦略を実装するために必要な構成要素となります。
+By choosing to publish and manage your APIs via Azure API Management you are taking advantage of many fault tolerance and infrastructure capabilities that you would otherwise have to design, implement, and manage. The Azure platform mitigates a large fraction of potential failures at a fraction of the cost.
 
-このガイドでは、Azure リソース マネージャーの要求を認証する方法と、API Management サービス インスタンスをバックアップおよび復元する方法を説明します。
+To recover from availability problems affecting the region where your API Management service is hosted you should be ready to reconstitute your service in a different region at any time. Depending on your availability goals and recovery time objective  you might want to reserve a backup service in one or more regions and try to maintain their configuration and content in sync with the active service. The service backup and restore feature provides the necessary building block for implementing your disaster recovery strategy.
 
->[AZURE.NOTE] 障害復旧用に API Management サービス インスタンスをバックアップおよび復元するプロセスは、ステージングなどのシナリオ用に API Management サービス インスタンスをレプリケートするためにも使用できます。
+This guide shows how to authenticate Azure Resource Manager requests, and how to backup and restore your API Management service instances.
+
+>[AZURE.NOTE] The process for backing up and restoring an API Management service instance for disaster recovery can also be used for replicating API Management service instances for scenarios such as staging.
 >
->各バックアップの有効期限は 7 日後です。7 日の有効期限が切れた後にバックアップを復元しようとしても、"`Cannot restore: backup expired`" というメッセージが表示されて復元は失敗します。
+>Note that each backup expires after 7 days. If you attempt to restore a backup after the 7 day expiration period has expired, the restore will fail with a `Cannot restore: backup expired` message.
 
-## Azure リソース マネージャーの要求の認証
+## <a name="authenticating-azure-resource-manager-requests"></a>Authenticating Azure Resource Manager requests
 
->[AZURE.IMPORTANT] バックアップと復元用の REST API では、Azure リソース マネージャーが使用されます。API Management のエンティティ管理には REST API 以外の認証メカニズムも用意されています。このセクションの手順では、Azure リソース マネージャーの要求を認証する方法について説明します。詳細については、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」を参照してください。
+>[AZURE.IMPORTANT] The REST API for backup and restore uses Azure Resource Manager and has a different authentication mechanism than the REST APIs for managing your API Management entities. The steps in this section describe how to authenticate Azure Resource Manager requests. For more information, see [Authenticating Azure Resource Manager requests](http://msdn.microsoft.com/library/azure/dn790557.aspx).
 
-Azure リソース マネージャーを使用してリソースに実行するすべてのタスクは、Azure Active Directory で以下の手順に従って認証する必要があります。
+All of the tasks that you do on resources using the Azure Resource Manager must be authenticated with Azure Active Directory using the following steps.
 
--	Azure Active Directory テナントにアプリケーションを追加する。
--	追加したアプリケーションのアクセス許可を設定する。
--	Azure リソース マネージャーへの要求を認証するためのトークンを取得する。
+-   Add an application to the Azure Active Directory tenant.
+-   Set permissions for the application that you added.
+-   Get the token for authenticating requests to Azure Resource Manager.
 
-最初の手順は、Azure Active Directory アプリケーションの作成です。API Management サービス インスタンスが含まれたサブスクリプションを使用して [Azure クラシック ポータル](http://manage.windowsazure.com/)にログインし、既定の Azure Active Directory の **[アプリケーション]** タブに移動します。
+The first step is to create an Azure Active Directory application. Log into the [Azure Classic Portal](http://manage.windowsazure.com/) using the subscription that contains your API Management service instance and navigate to the **Applications** tab for your default Azure Active Directory.
 
->[AZURE.NOTE] Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。既定のディレクトリを見つける方法の詳細については、「[既定のディレクトリを見つける](../virtual-machines/resource-group-create-work-id-from-persona.md#locate-your-default-directory-in-the-azure-portal)」を参照してください。
+>[AZURE.NOTE] If the Azure Active Directory default directory is not visible to your account, contact the administrator of the Azure subscription to grant the required permissions to your account. For information on locating your default directory, see [Locate your default directory](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-portal).
 
-![Azure Active Directory アプリケーションを作成する][api-management-add-aad-application]
+![Create Azure Active Directory application][api-management-add-aad-application]
 
-**[追加]**、**[組織で開発中のアプリケーションを追加]** を順にクリックし、**[ネイティブ クライアント アプリケーション]** を選択します。わかりやすい名前を入力し、次へ進む矢印をクリックします。**[リダイレクト URI]** に `http://resources` などのプレース ホルダー URL を入力します。これは必須フィールドですが、値を後で使用することはありません。チェック ボックスをオンにして、アプリケーションを保存します。
+Click **Add**, **Add an application my organization is developing**, and choose **Native client application**. Enter a descriptive name, and click the next arrow. Enter a placeholder URL such as `http://resources` for the **Redirect URI**, as it is a required field, but the value is not used later. Click the check box to save the application.
 
-アプリケーションが保存されたら、**[構成]** をクリックし、ページを **[他のアプリケーションに対するアクセス許可]** セクションが表示されるまで下へスクロールして、**[アプリケーションの追加]** をクリックします。
+Once the application is saved, click **Configure**, scroll down to the **permissions to other applications** section, and click **Add application**.
 
-![アクセス許可を追加する][api-management-aad-permissions-add]
+![Add permissions][api-management-aad-permissions-add]
 
-**[Windows** **Azure Service Management API]** を選択し、チェック ボックスをオンにしてアプリケーションを追加します。
+Select **Windows** **Azure Service Management API** and click the checkbox to add the application.
 
 ![Add permissions][api-management-aad-permissions]
 
-新たに追加された **Windows** **Azure Service Management API** アプリケーションの横にある **[デリゲートされたアクセス許可]** をクリックし、**[Azure Service 管理へのアクセス (プレビュー)]** のチェック ボックスをオンにして、**[保存]** をクリックします。
+Click **Delegated Permissions** beside the newly added **Windows** **Azure Service Management API** application, check the box for **Access Azure Service Management (preview)**, and click **Save**.
 
 ![Add permissions][api-management-aad-delegated-permissions]
 
-サービス インスタンスをバックアップおよび復元する API を呼び出す前に、トークンを取得する必要があります。次の例では、[Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet パッケージを使用して、トークンを取得します。
+Prior to invoking the APIs that generate the backup and restore it, it is necessary to get a token. The following example uses the [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) nuget package to retrieve the token.
 
-	using Microsoft.IdentityModel.Clients.ActiveDirectory;
-	using System;
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
+    using System;
 
-	namespace GetTokenResourceManagerRequests
-	{
+    namespace GetTokenResourceManagerRequests
+    {
         class Program
-	    {
-	        static void Main(string[] args)
-	        {
-	            var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenant id}");
-	            var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
+        {
+            static void Main(string[] args)
+            {
+                var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenant id}");
+                var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
 
-	            if (result == null) {
-	                throw new InvalidOperationException("Failed to obtain the JWT token");
-	            }
+                if (result == null) {
+                    throw new InvalidOperationException("Failed to obtain the JWT token");
+                }
 
-	            Console.WriteLine(result.AccessToken);
+                Console.WriteLine(result.AccessToken);
 
-	            Console.ReadLine();
-	        }
-    	}
-	}
+                Console.ReadLine();
+            }
+        }
+    }
 
-`{tentand id}`、`{application id}`、および `{redirect uri}` を、次の指示に従って置き換えます。
+Replace `{tentand id}`, `{application id}`, and `{redirect uri}` using the following instructions.
 
-`{tenant id}` を、作成した Azure Active Directory アプリケーションのテナント ID に置き換えます。ID にアクセスするには、**[エンドポイントの表示]** をクリックします。
+Replace `{tenant id}` with the tenant id of the Azure Active Directory application you just created. You can access the id by clicking **View endpoints**.
 
-![エンドポイント][api-management-aad-default-directory]
+![Endpoints][api-management-aad-default-directory]
 
-![エンドポイント][api-management-endpoint]
+![Endpoints][api-management-endpoint]
 
-`{application id}` および `{redirect uri}` を、Azure Active Directory アプリケーションの **[構成]** タブにある **[リダイレクト URI]** セクションに表示されている **クライアント ID** と URL に置き換えます。
+Replace `{application id}` and `{redirect uri}` using the **Client Id** and  the URL from the **Redirect Uris** section from your Azure Active Directory application's **Configure** tab. 
 
-![リソース][api-management-aad-resources]
+![Resources][api-management-aad-resources]
 
-値を指定したら、次の例のようなコードによってトークンが返されます。
+Once the values are specified, the code example should return a token similar to the following example.
 
-![トークン][api-management-arm-token]
+![Token][api-management-arm-token]
 
-以降のセクションで説明されているバックアップおよび復元の操作を呼び出す前に、REST 呼び出しに承認要求ヘッダーを設定します。
+Before calling the backup and restore operations described in the following sections, set the authorization request header for your REST call.
 
-	request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
+    request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 
-## <a name="step1"> </a>API Management サービスのバックアップ
-API Management サービスをバックアップするには、次の HTTP 要求を発行します。
+## <a name="<a-name="step1">-</a>backup-an-api-management-service"></a><a name="step1"> </a>Backup an API Management service
+To backup an API Management service issue the following HTTP request:
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
 
-各値の説明:
+where:
 
-* `subscriptionId` - バックアップ対象の API Management サービスを含むサブスクリプションの ID
-* `resourceGroupName` - "Api-Default-{service-region}" 形式の文字列。ここで、`service-region` はバックアップ対象の API Management サービスがホストされている Azure リージョンです。例: `North-Central-US`
-* `serviceName` - バックアップを作成する API Management サービスの、作成時に指定された名前
-* `api-version` - `2014-02-14` に置き換えます。
+* `subscriptionId` - id of the subscription containing the API Management service you are attempting to backup
+* `resourceGroupName` - a string in the form of 'Api-Default-{service-region}' where `service-region` identifies the Azure region where the API Management service you are trying to backup is hosted, e.g. `North-Central-US`
+* `serviceName` - the name of the API Management service you are making a backup of specified at the time of its creation
+* `api-version` - replace  with `2014-02-14`
 
-要求の本文に、ターゲットの Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
+In the body of the request, specify the target Azure storage account name, access key, blob container name, and backup name:
 
-	'{  
-	    storageAccount : {storage account name for the backup},  
-	    accessKey : {access key for the account},  
-	    containerName : {backup container name},  
-	    backupName : {backup blob name}  
-	}'
+    '{  
+        storageAccount : {storage account name for the backup},  
+        accessKey : {access key for the account},  
+        containerName : {backup container name},  
+        backupName : {backup blob name}  
+    }'
 
-`Content-Type` 要求ヘッダーの値を `application/json` に設定します。
+Set the value of the `Content-Type` request header to `application/json`.
 
-バックアップは完了まで何分もかかる長時間の処理です。要求が成功してバックアップ処理が開始されると、`Location` ヘッダーのある `202 Accepted` 応答状態コードを受け取ります。`Location` ヘッダー内の URL に "GET" 要求を出して、処理のステータスを確認します。バックアップの進行中は、「202 Accepted」状態コードの受け取りが続きます。応答コードの `200 OK` は、バックアップ処理が正常に終了したことを示します。
+Backup is a long running operation that may take multiple minutes to complete.  If the request was successful and the backup process was initiated you’ll receive a `202 Accepted` response status code with a `Location` header.  Make 'GET' requests to the URL in the `Location` header to find out the status of the operation. While the backup is in progress you will continue to receive a '202 Accepted' status code. A Response code of `200 OK` will indicate successful completion of the backup operation.
 
-**メモ**:
+**Note**:
 
-- 要求の本文に指定された**コンテナー**は、**存在する必要があります**。
-* バックアップの進行中には、SKU のアップグレードやダウングレード、ドメイン名の変更、その他の操作などの、**サービス管理操作は試行しないでください**。
-* バックアップの復元は、作成されたときから **7 日間だけ保証されます**。
-* 分析レポートの生成に使用される**使用状況データ**は、バックアップに**含まれません**。[Azure API Management REST API][] を使用して、分析レポートを保管用に定期的に取り出します。
-* サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して重要な変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
-* バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる**変更**は、**バックアップに含まれないので失われる可能性があります**。
+- **Container** specified in the request body **must exist**.
+* While backup is in progress you **should not attempt any service management operations** such as SKU upgrade or downgrade, domain name change, etc. 
+* Restore of a **backup is guaranteed only for 7 days** since the moment of its creation. 
+* **Usage data** used for creating analytics reports **is not included** in the backup. Use [Azure API Management REST API][] to periodically retrieve analytics reports for safekeeping.
+* The frequency with which you perform service backups will affect your recovery point objective. To minimize it we advise implementing regular backups as well as performing on-demand backups after making important changes to your API Management service.
+* **Changes** made to the service configuration (e.g. APIs, policies, developer portal appearance) while backup operation is in process **might not be included in the backup and therefore will be lost**.
 
-## <a name="step2"> </a>API Management サービスの復元
-以前に作成されたバックアップから API Management サービスを復元するには、次の HTTP 要求を行います。
+## <a name="<a-name="step2">-</a>restore-an-api-management-service"></a><a name="step2"> </a>Restore an API Management service
+To restore an API Management service from a previously created backup make the following HTTP request:
 
 `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}`
 
-各値の説明:
+where:
 
-* `subscriptionId` - バックアップの復元先の API Management サービスを含むサブスクリプションの ID
-* `resourceGroupName` - "Api-Default-{service-region}" 形式の文字列。ここで、`service-region` はバックアップの復元先の API Management サービスがホストされている Azure リージョンです。例: `North-Central-US`
-* `serviceName` - 復元先の API Management サービスの、作成時に指定された名前
-* `api-version` - `2014-02-14` に置き換えます。
+* `subscriptionId` - id of the subscription containing the API Management service you are restoring a backup into
+* `resourceGroupName` - a string in the form of 'Api-Default-{service-region}' where `service-region` identifies the Azure region where the API Management service you are restoring a backup into is hosted, e.g. `North-Central-US`
+* `serviceName` - the name of the API Management service being restored into specified at the time of its creation
+* `api-version` - replace  with `2014-02-14`
 
-要求の本文に、バックアップ ファイルの場所、つまり Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
+In the body of the request, specify the backup file location, i.e. Azure storage account name, access key, blob container name, and backup name:
 
-	'{  
-	    storageAccount : {storage account name for the backup},  
-	    accessKey : {access key for the account},  
-	    containerName : {backup container name},  
-	    backupName : {backup blob name}  
-	}'
+    '{  
+        storageAccount : {storage account name for the backup},  
+        accessKey : {access key for the account},  
+        containerName : {backup container name},  
+        backupName : {backup blob name}  
+    }'
 
-`Content-Type` 要求ヘッダーの値を `application/json` に設定します。
+Set the value of the `Content-Type` request header to `application/json`.
 
-復元は、完了までに 30 分以上かかることのある長時間の操作です。要求が成功して復元処理が開始されると、`Location` ヘッダーのある `202 Accepted` 応答状態コードを受け取ります。`Location` ヘッダー内の URL に "GET" 要求を出して、処理のステータスを確認します。復元の進行中は、「202 Accepted」状態コードの受け取りが続きます。応答コードの `200 OK` は、復元処理が正常に終了したことを示します。
+Restore is a long running operation that may take up to 30 or more minutes to complete.  If the request was successful and the restore process was initiated you’ll receive a `202 Accepted` response status code with a `Location` header.  Make 'GET' requests to the URL in the `Location` header to find out the status of the operation. While the restore is in progress you will continue to receive '202 Accepted' status code. A response code of `200 OK` will indicate successful completion of the restore operation.
 
->[AZURE.IMPORTANT] 復元先のサービスの **SKU** は、復元されるバックアップ サービスの SKU と**一致しなければなりません**。
+>[AZURE.IMPORTANT] **The SKU** of the service being restored into **must match** the SKU of the backed up service being restored.
 >
->復元処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる**変更**は、**上書きされることがあります**。
+>**Changes** made to the service configuration (e.g. APIs, policies, developer portal appearance) while restore operation is in progress **could be overwritten**.
 
-## 次のステップ
-バックアップ/復元プロセスに関する 2 つのチュートリアルを、次の Microsoft ブログで参照してください。
+## <a name="next-steps"></a>Next steps
+Check out the following Microsoft blogs for two different walkthroughs of the backup/restore process.
 
--	[Azure API Management アカウントのレプリケート](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
-	-	Gisela さんによって投稿された記事です。
--	[Azure API Management: 構成のバックアップと復元](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-	-	Stuart さんによる詳細なアプローチで、公式のガイダンスに沿ったものではありませんが、非常に興味深い記事です。
+-   [Replicate Azure API Management Accounts](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/) 
+    -   Thank you to Gisela for her contribution to this article.
+-   [Azure API Management: Backing Up and Restoring Configuration](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+    -   The approach detailed by Stuart does not match the official guidance but it is very interesting.
 
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2
@@ -191,4 +192,8 @@ API Management サービスをバックアップするには、次の HTTP 要�
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
  
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -1,32 +1,37 @@
 <!--author=SharS last changed: 11/04/15-->
 
 
-#### カスタム バックアップ ポリシーを作成するには
+#### <a name="to-create-a-custom-backup-policy"></a>To create a custom backup policy
 
-1. **[デバイス]** ページで **[バックアップ ポリシー]** をクリックし、**[追加]** をクリックします。
+1. On the **Devices** page, click **Backup Policies** and then click **Add**.
 
-2. **[バックアップ ポリシーの追加]** ダイアログ ボックスの **[バックアップ ポリシーの定義]** で、次の操作を行います。
+2. In the **Add a backup policy** dialog box, under **Define your backup policy**:
 
-    1. バックアップ ポリシー名を指定します。
+    1. Specify a backup policy name.
 
-    2. このポリシーに追加するボリュームを選択します。複数のチェック ボックスをオンにして、複数のボリュームを追加することもできます。
+    2. Select the volumes to be added to this policy. You can choose to add multiple volumes by selecting multiple check boxes.
 
-    3. 矢印アイコン ![チェック マーク アイコン](./media/storsimple-create-custom-backup-policy-u2/HCS_ArrowIcon-include.png) をクリックします。
+    3. Click the arrow icon ![check icon](./media/storsimple-create-custom-backup-policy-u2/HCS_ArrowIcon-include.png).
 
-6. **[スケジュールの定義]** で次の操作を行います。
+6. Under **Define a Schedule**:
 
-    1. **バックアップの種類** (**ローカル スナップショット**または**クラウド スナップショット**) を選択します。
+    1. Select the **Type of backup** (**Local Snapshot** or **Cloud Snapshot**).
 
-    3. バックアップの頻度を分、時間、日、または週で指定します。
+    3. Specify the backup frequency in minutes, hours, days, or weeks.
 
-    4. ドロップダウン リストから保持スケジュールを選択します。保存期間の選択肢はバックアップの頻度によって異なります。
+    4. Select a retention schedule from the drop-down list. The retention choices depend on the backup frequency. 
  
-    5. ポリシーの開始日時を選択します。
+    5. Select the starting time and date for the policy.
 
-    6. ポリシーを有効にするチェック ボックスをオンにします。
+    6. Select the check box to enable the policy.
 
-7. チェック マーク ![チェック マーク アイコン](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) をクリックして完了します。
+7. Click the check icon ![check icon](./media/storsimple-add-backup-policy-u2/HCS_CheckIcon-include.png) to finish.
 
-8. **[バックアップ ポリシー]** ページに戻ります。バックアップ ポリシーの表形式の一覧が更新され、カスタム ポリシーが表示されます。
+8. You will return to the **Backup Policies** page. The tabular listing of the backup policies will be updated to display the custom policy.
+
+
+
+
+<!--HONumber=Oct16_HO2-->
 
 

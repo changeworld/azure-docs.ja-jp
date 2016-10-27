@@ -9,4 +9,6 @@
 - [Storage](../articles/azure-functions/functions-bindings-storage.md)
 - [Timer](../articles/azure-functions/functions-bindings-timer.md)
 
-<!---HONumber=AcomDC_0824_2016-->
+<!--HONumber=Oct16_HO2-->
+
+

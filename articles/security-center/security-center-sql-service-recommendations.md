@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center での Azure SQL サービスの保護 | Microsoft Azure"
-   description="このドキュメントでは、Azure Security Center での推奨事項に従って Azure SQL サービスを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。"
+   pageTitle="Protecting Azure SQL service in Azure Security Center  | Microsoft Azure"
+   description="This document addresses recommendations in Azure Security Center that help you protect Azure SQL service and stay in compliance with security policies."
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,32 +16,37 @@
    ms.date="08/04/2016"
    ms.author="terrylan"/>
 
-# Azure Security Center での Azure SQL サービスの保護
 
-Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。推奨事項は、仮想マシン (VM)、ネットワーク、SQL、およびアプリケーションといった、Azure のリソースの種類に適用されます。
+# <a name="protecting-azure-sql-service-in-azure-security-center"></a>Protecting Azure SQL service in Azure Security Center
 
-この記事では、Azure SQL サービスに適用される推奨事項について説明します。Azure SQL サービスに関する推奨事項は、Azure SQL サーバーおよびデータベースの監査と SQL データベースの暗号化を有効にすることが中心です。次の表を参考にすると、SQL サービスに関する利用可能な推奨事項と、それぞれを適用した場合の結果を理解しやすくなります。
+Azure Security Center analyzes the security state of your Azure resources. When Security Center identifies potential security vulnerabilities, it creates recommendations that guide you through the process of configuring the needed controls.  Recommendations apply to Azure resource types: virtual machines (VMs), networking, SQL, and applications.
 
-## SQL サービスに関する利用可能な推奨事項
+This article addresses recommendations that apply to Azure SQL service.  Azure SQL service recommendations center around enabling auditing for Azure SQL servers and databases and enabling encryption for SQL databases.  Use the table below as a reference to help you understand the available SQL service recommendations and what each one will do if you apply it.
 
-|推奨|Description|
+## <a name="available-sql-service-recommendations"></a>Available SQL service recommendations
+
+|Recommendation|Description|
 |-----|-----|
-|[サーバーの SQL 監査の有効化](security-center-enable-auditing-on-sql-servers.md)|Azure SQL サーバーの監査を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。|
-|[データベースの SQL 監査の有効化](security-center-enable-auditing-on-sql-databases.md)|Azure SQL データベースの監査を有効にすることをお勧めします (Azure SQL サービスのみ。仮想マシンで実行されている SQL を除く)。|
-|[SQL データベースでの透過的なデータ暗号化の有効化](security-center-enable-transparent-data-encryption.md)|SQL データベース (Azure SQL のサービスのみ) に対して暗号化を有効にすることをお勧めします。|
+|[Enable server SQL Auditing](security-center-enable-auditing-on-sql-servers.md)|Recommends that you turn on auditing for Azure SQL servers (Azure SQL service only; doesn't include SQL running on your virtual machines).|
+|[Enable database SQL Auditing](security-center-enable-auditing-on-sql-databases.md)|Recommends that you turn on auditing for Azure SQL databases (Azure SQL service only; doesn't include SQL running on your virtual machines).|
+|[Enable Transparent Data Encryption on SQL databases](security-center-enable-transparent-data-encryption.md)|Recommends that you enable encryption for SQL databases (Azure SQL service only).|
 
-## 関連項目
+## <a name="see-also"></a>See also
 
-その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
+To learn more about recommendations that apply to other Azure resource types, see the following:
 
-- [Azure Security Center での仮想マシンの保護](security-center-virtual-machine-recommendations.md)
-- [Azure Security Center でのアプリケーションの保護](security-center-application-recommendations.md)
-- [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
+- [Protecting your virtual machines in Azure Security Center](security-center-virtual-machine-recommendations.md)
+- [Protecting your applications in Azure Security Center](security-center-application-recommendations.md)
+- [Protecting your network in Azure Security Center](security-center-network-recommendations.md)
 
-セキュリティ センターの詳細については、次を参照してください。
+To learn more about Security Center, see the following:
 
-- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理と対応の方法について説明しています。
-- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies for your Azure subscriptions and resource groups.
+- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
+- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
 
-<!---HONumber=AcomDC_0810_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

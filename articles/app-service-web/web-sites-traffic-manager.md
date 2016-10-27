@@ -1,61 +1,66 @@
 <properties
-	pageTitle="Azure トラフィック マネージャーによる Azure の Web アプリのトラフィックの制御"
-	description="この記事では、Azure の Web アプリに関連して、Azure トラフィック マネージャーの概要情報を提供します。"
-	services="app-service\web"
-	documentationCenter=""
-	authors="cephalin"
-	writer="cephalin"
-	manager="wpickett"
-	editor="mollybos"/>
+    pageTitle="Controlling Azure web app traffic with Azure Traffic Manager"
+    description="This article provides summary information for  Azure Traffic Manager as it relates to Azure web apps."
+    services="app-service\web"
+    documentationCenter=""
+    authors="cephalin"
+    writer="cephalin"
+    manager="wpickett"
+    editor="mollybos"/>
 
 <tags
-	ms.service="app-service-web"
-	ms.workload="web"
-	ms.tgt_pltfrm="na"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="02/25/2016"
-	ms.author="cephalin"/>
+    ms.service="app-service-web"
+    ms.workload="web"
+    ms.tgt_pltfrm="na"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="02/25/2016"
+    ms.author="cephalin"/>
 
-# Azure トラフィック マネージャーによる Azure の Web アプリのトラフィックの制御
 
-> [AZURE.NOTE] この記事では、Azure App Service Web Apps に関連して、Microsoft Azure トラフィック マネージャーの概要情報を提供します。"Azure トラフィック マネージャー自体の詳細については、この記事の最後にある関連情報を参照してください。
+# <a name="controlling-azure-web-app-traffic-with-azure-traffic-manager"></a>Controlling Azure web app traffic with Azure Traffic Manager
 
-## はじめに
-Azure トラフィック マネージャーを使用すると、Web クライアントからの要求を Azure App Service の Web アプリに振り分ける方法を制御できます。Web アプリのエンドポイントが Azure トラフィック マネージャーのプロファイルに追加されると、Azure トラフィック マネージャーは Web アプリの状態 (実行中、停止、または削除済み) を追跡して、トラフィックを受信する必要のあるエンドポイントを決定できるようになります。
+> [AZURE.NOTE] This article provides summary information for Microsoft Azure Traffic Manager as it relates to Azure App Service Web Apps. More information about Azure Traffic Manager itself can be found by visiting the links at the end of this article.
 
-## 負荷分散方法
-Azure トラフィック マネージャーは 3 つの異なる負荷分散方法を使用します。これらの方法について、Azure の Web アプリに関連して、次の一覧で説明します。
+## <a name="introduction"></a>Introduction
+You can use Azure Traffic Manager to control how requests from web clients are distributed to web apps in Azure App Service. When web app endpoints are added to a Azure Traffic Manager profile, Azure Traffic Manager keeps track of the status of your web apps (running, stopped or deleted) so that it can decide which of those endpoints should receive traffic.
 
-* **フェールオーバー**: Web アプリの複製がさまざまなリージョンにある場合、この方法では、すべての Web クライアント トラフィックを処理するように、1 つの Web アプリを構成でき、最初の Web アプリが利用不可になったときにトラフィックを処理するように、異なるリージョン内の別の Web アプリを構成できます。
+## <a name="load-balancing-methods"></a>Load Balancing Methods
+Azure Traffic Manager uses three different load balancing methods. These are described  in the following list as they pertain to Azure web apps.
 
-* **ラウンド ロビン**: Web アプリの複製がさまざまなリージョンにある場合、この方法では、異なるリージョン内の Web アプリ間でトラフィックを均等に振り分けることができます。
+* **Failover**: If you have web app clones in different regions, you can use this method to configure one web app to service all web client traffic, and configure another web app in a different region to service that traffic in case the first web app becomes unavailable.
 
-* **パフォーマンス**: この方法では、クライアントへの最短の往復時間に基づいてトラフィックを振り分けます。この方法は同じリージョン内または異なるリージョン内の Web アプリに使用できます。
+* **Round Robin**: If you have web app clones in different regions, you can use this method to distribute traffic equally across the web apps in different regions.
 
-##Web アプリとトラフィック マネージャーのプロファイル
-Web アプリのトラフィック制御を構成するには、Azure トラフィック マネージャーでプロファイルを作成し、前に説明している 3 つの負荷分散方法のいずれかをプロファイルで指定します。その後、トラフィックを制御するエンドポイント (この場合は Web アプリ) をプロファイルに追加します。Web アプリの状態 (実行中、停止、または削除済み) は定期的にプロファイルに反映されて、その状態に応じて Azure トラフィック マネージャーはトラフィックを振り分けることができます。
+* **Performance**: The Performance method distributes traffic based on the shortest round trip time to clients. The Performance method can be used for web apps within the same region or in different regions.
 
-Azure トラフィック マネージャーを Azure で使用する場合は、次の点に留意してください。
+##<a name="web-apps-and-traffic-manager-profiles"></a>Web Apps and Traffic Manager Profiles
+To configure the control of web app traffic, you create a profile in Azure Traffic Manager that uses one of the three load balancing methods described previously, and then add the endpoints (in this case, web apps) for which you want to control traffic to the profile. Your web app status (running, stopped or deleted) is regularly communicated to the profile so that Azure Traffic Manager can direct traffic accordingly.
 
-* 同じリージョンでの Web アプリのみの展開の場合、Web アプリはそのモードには関係なく、フェールオーバーとラウンド ロビンの機能を既に備えています。
+When using Azure Traffic Manager with Azure, keep in mind the following points:
 
-* 同じリージョンでの Web アプリのデプロイで、Azure の別のクラウド サービスと連携させる場合、両方の種類のエンドポイントを組み合わせたハイブリッドのシナリオが可能です。
+* For web app only deployments within the same region, Web Apps already provides failover and round-robin functionality without regard to web app mode.
 
-* リージョンごとに 1 つのみの Web アプリ エンドポイントをプロファイルで指定することもできます。1 つのリージョンのエンドポイントとして Web アプリを選択すると、そのリージョン内の残りの Web アプリはそのプロファイルで選択できなくなります。
+* For deployments in the same region that use Web Apps in conjunction with another Azure cloud service, you can combine both types of endpoints to enable hybrid scenarios.
 
-* Azure トラフィック マネージャーのプロファイルで指定した Web アプリ エンドポイントは、プロファイルで Web アプリの構成ページの **[ドメイン名]** セクションに表示されますが、そこでは構成できません。
+* You can only specify one web app endpoint per region in a profile. When you select a web app as an endpoint for one region, the remaining web apps in that region become unavailable for selection for that profile.
 
-* Web アプリをプロファイルに追加した後、Web アプリのポータル ページのダッシュボードの **[サイトの URL]** には、Web アプリのカスタム ドメインを設定していればその URL が表示されます。それ以外の場合は、Traffic Manager のプロファイルの URL (`contoso.trafficmgr.com` など) が表示されます。Web アプリの直接のドメイン名とトラフィック マネージャーの URL の両方が、Web アプリの構成ページの **[ドメイン名]** セクションに表示されます。
+* The web app endpoints that you specify in a Azure Traffic Manager profile will appear under the **Domain Names** section on the Configure page for the web app in the profile, but will not be configurable there.
 
-* カスタム ドメイン名は予期したとおりに機能しますが、それらのドメイン名を Web アプリに追加するだけでなく、トラフィック マネージャーの URL を参照するように DNS マップを構成する必要もあります。Azure Web アプリのカスタム ドメイン名の設定については、「[Azure Website のカスタム ドメインの構成](web-sites-custom-domain-name.md)」を参照してください。
+* After you add a web app to a profile, the **Site URL** on the Dashboard of the web app's portal page will display the custom domain URL of the web app if you have set one up. Otherwise, it will display the Traffic Manager profile URL (for example, `contoso.trafficmgr.com`). Both the direct domain name of the web app and the Traffic Manager URL will be visible on the web app's Configure page under the **Domain Names** section.
 
-* 標準モードの Web アプリのみを Azure トラフィック マネージャーのプロファイルに追加できます。
+* Your custom domain names will work as expected, but in addition to adding them to your web apps, you must also configure your DNS map to point to the Traffic Manager URL. For information on how to set up a custom domain for a Azure web app,  see [Configuring a custom domain name for an Azure web site](web-sites-custom-domain-name.md).
 
-## 次のステップ
+* You can only add web apps that are in standard mode to a Azure Traffic Manager profile.
 
-Azure トラフィック マネージャーの概念と技術的概要については、「[Traffic Manager Overview (トラフィック マネージャーの概要)](../traffic-manager/traffic-manager-overview.md)」を参照してください。
+## <a name="next-steps"></a>Next Steps
 
-Web Apps での Traffic Manager の使用の詳細については、ブログ記事「[Azure Web サイトでの Azure Traffic Manager の使用](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)」および「[Azure Traffic Manager と Azure Web サイトの統合が可能になりました](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)」を参照してください。
+For a conceptual and technical overview of Azure Traffic Manager, see [Traffic Manager Overview](../traffic-manager/traffic-manager-overview.md).
 
-<!---HONumber=AcomDC_0413_2016-->
+For more information about using Traffic Manager with Web Apps, see the blog posts [Using Azure Traffic Manager with Azure Web Sites](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx) and [Azure Traffic Manager can now integrate with Azure Web Sites](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/).
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

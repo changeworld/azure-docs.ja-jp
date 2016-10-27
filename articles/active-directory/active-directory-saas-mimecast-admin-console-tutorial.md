@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Mimecast Admin Console の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Mimecast Admin Console を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory Integration with Mimecast Admin Console | Microsoft Azure" 
+    description="Learn how to use Mimecast Admin Console with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,166 +11,174 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/08/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Mimecast Admin Console の統合
+
+#<a name="tutorial:-azure-active-directory-integration-with-mimecast-admin-console"></a>Tutorial: Azure Active Directory Integration with Mimecast Admin Console
   
-このチュートリアルでは、Azure と Mimecast Admin Console の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+The objective of this tutorial is to show the integration of Azure and Mimecast Admin Console.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
--   有効な Azure サブスクリプション
--   Mimecast Admin Console でのシングル サインオンが有効なサブスクリプション
+-   A valid Azure subscription
+-   A Mimecast Admin Console single sign-on enabled subscription
   
-このチュートリアルを完了すると、Mimecast Admin Console に割り当てた Azure AD ユーザーは、Mimecast Admin Console 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+After completing this tutorial, the Azure AD users you have assigned to Mimecast Admin Console will be able to single sign into the application at your Mimecast Admin Console company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
   
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+The scenario outlined in this tutorial consists of the following building blocks:
 
-1.  Mimecast Admin Console のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+1.  Enabling the application integration for Mimecast Admin Console
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-![シナリオ](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795008.png "シナリオ")
-##Mimecast Admin Console のアプリケーション統合の有効化
+![Scenario](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795008.png "Scenario")
+##<a name="enabling-the-application-integration-for-mimecast-admin-console"></a>Enabling the application integration for Mimecast Admin Console
   
-このセクションでは、Mimecast Admin Console のアプリケーション統合を有効にする方法を説明します。
+The objective of this section is to outline how to enable the application integration for Mimecast Admin Console.
 
-###Mimecast Admin Console のアプリケーション統合を有効にするには、次の手順に従います。
+###<a name="to-enable-the-application-integration-for-mimecast-admin-console,-perform-the-following-steps:"></a>To enable the application integration for Mimecast Admin Console, perform the following steps:
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-mimecast-admin-console-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-mimecast-admin-console-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-mimecast-admin-console-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-mimecast-admin-console-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-mimecast-admin-console-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-mimecast-admin-console-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-mimecast-admin-console-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **[検索ボックス]** に、**[Mimecast Admin Console]** と入力します。
+6.  In the **search box**, type **Mimecast Admin Console**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795009.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795009.png "Application Gallery")
 
-7.  結果ウィンドウで **[Mimecast Admin Console]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Mimecast Admin Console**, and then click **Complete** to add the application.
 
     ![Mimecast Admin Console](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795010.png "Mimecast Admin Console")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
   
-このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Mimecast Admin Console に対する認証を行うことができるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+The objective of this section is to outline how to enable users to authenticate to Mimecast Admin Console with their account in Azure AD using federation based on the SAML protocol.  
+As part of this procedure, you are required to create a base-64 encoded certificate file.  
+If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **[Mimecast Admin Console]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Mimecast Admin Console** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795011.png "Configure Single Sign-On")
 
-2.  **[ユーザーの Mimecast Admin Console へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Mimecast Admin Console** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795012.png "Configure Single Sign-On")
 
-3.  **[アプリ URL の構成]** ページで、**[Mimecast Admin Console サインオン URL]** テキストボックスに、ユーザーが Mimecast Admin Console アプリケーションへのサインオンする際に使用する URL (例: “https://webmail-uk.mimecast.com” や “https://webmail-us.mimecast.com”) を入力して、**[次へ]** をクリックします。
+3.  On the **Configure App URL** page, in the **Mimecast Admin Console Sign On URL** textbox, type the URL used by your users to sign on to your Mimecast Admin Console application (e.g.: “https://webmail-uk.mimecast.com” or “https://webmail-us.mimecast.com”), and then click **Next**.
 
-    >[AZURE.NOTE] サインオン URL は、リージョン固有のものになります。
+    >[AZURE.NOTE] The sign on URL is region specific.
 
-    ![Configure App URL](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795013.png "アプリケーション URL の構成")
+    ![Configure App URL](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795013.png "Configure App URL")
 
-4.  **[Mimecast Admin Console でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターのローカルに保存します。
+4.  On the **Configure single sign-on at Mimecast Admin Console** page, to download your certificate, click **Download certificate**, and then save the certificate file locally on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795014.png "Configure Single Sign-On")
 
-5.  別の Web ブラウザー ウィンドウで、Mimecast Admin Console の企業サイトに管理者としてログインします。
+5.  In a different web browser window, log into your Mimecast Admin Console as an administrator.
 
-6.  **[サービス] > [ アプリケーション]** に移動します。
+6.  Go to **Services \> Application**.
 
-    ![サービス](./media/active-directory-saas-mimecast-admin-console-tutorial/IC794998.png "サービス")
+    ![Services](./media/active-directory-saas-mimecast-admin-console-tutorial/IC794998.png "Services")
 
-7.  **[認証プロファイル]** をクリックします。
+7.  Click **Authentication Profiles**.
 
-    ![認証プロファイル](./media/active-directory-saas-mimecast-admin-console-tutorial/IC794999.png "認証プロファイル")
+    ![Authentication Profiles](./media/active-directory-saas-mimecast-admin-console-tutorial/IC794999.png "Authentication Profiles")
 
-8.  **[新しい認証プロファイル]** をクリックします。
+8.  Click **New Authentication Profile**.
 
-    ![新しい認証プロファイル](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795000.png "新しい認証プロファイル")
+    ![New Authentication Profiles](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795000.png "New Authentication Profiles")
 
-9.  [**認証プロバイダー**] セクションで、次の手順に従います。
+9.  In the **Authentication Profile** section, perform the following steps:
 
-    ![認証プロファイル](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795015.png "認証プロファイル")
+    ![Authentication Profile](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795015.png "Authentication Profile")
 
-    1.  **[説明]** テキストボックスに、構成の名前を入力します。
-    2.  **[Mimecast Admin Console に SAML 認証を適用]** を選択します。
-    3.  **[プロバイダー]** で **[Azure Active Directory]** を選択します。
-    4.  Azure クラシック ポータルの **[Mimecast Admin Console でのシングル サインオンの構成]** ダイアログ ページで **[発行者 URL]** の値をコピーし、それを **[発行者 URL]** テキストボックスに貼り付けます。
-    5.  Azure クラシック ポータルの **[Mimecast Admin Console でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、それを **[ログイン URL]** テキストボックスに貼り付けます。
-    6.  Azure クラシック ポータルの **[Mimecast Admin Console でのシングル サインオンの構成]** ダイアログ ページで **[リモート ログイン URL]** の値をコピーし、それを **[ログアウト URL]** テキストボックスに貼り付けます。
+    1.  In the **Description** textbox, type a name for your configuration.
+    2.  Select **Enforce SAML Authentication for Mimecast Admin Console**.
+    3.  As **Provider**, select **Azure Active Directory**.
+    4.  In the Azure classic portal, on the **Configure single sign-on at Mimecast Admin Console** dialog page, copy the **Issuer URL** value, and then paste it into the **Issuer URL** textbox.
+    5.  In the Azure classic portal, on the **Configure single sign-on at Mimecast Admin Console** dialog page, copy the **Remote Login URL** value, and then paste it into the **Login URL** textbox.
+    6.  In the Azure classic portal, on the **Configure single sign-on at Mimecast Admin Console** dialog page, copy the **Remote Login URL** value, and then paste it into the **Logout URL** textbox.  
 
-        >[AZURE.NOTE]Mimecast Admin Console では、[ログイン URL] と [ログアウト URL] の値は同じです。
+        >[AZURE.NOTE]The Login URL value and the Logout URL value are for the Mimecast Admin Console the same.
 
-    7.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
+    7.  Create a **base-64 encoded** file from your downloaded certificate.  
 
-        >[AZURE.TIP]詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
+        >[AZURE.TIP]For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
 
-    8.  base-64 でエンコードされた証明書をメモ帳で開き、最初の行 (“*--*“) と最後の行 (“*--*“) を削除し、残りの内容をクリップボードにコピーして、**[ID プロバイダー証明書 (メタデータ)]** テキストボックスに貼り付けます。
-    9.  **[シングル サインオンの許可]** を選択します。
-    10. **[保存]** をクリックします。
+    8.  Open your base-64 encoded certificate in notepad, remove the first line (“*--*“) and the last line (“*--*“), copy the remaining content of it into your clipboard, and then paste it to the **Identity Provider Certificate (Metadata)** textbox.
+    9.  Select **Allow Single Sign On**.
+    10. Click **Save**.
 
-10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795016.png "Configure Single Sign-On")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
   
-Azure AD ユーザーが Mimecast Admin Console にログインできるようにするには、そのユーザーを Mimecast Admin Console にプロビジョニングする必要があります。Mimecast Admin Console の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into Mimecast Admin Console, they must be provisioned into Mimecast Admin Console.  
+In the case of Mimecast Admin Console, provisioning is a manual task.
   
-ユーザーを作成する前に、ドメインを登録する必要があります。
+You need to register a domain before you can create users.
 
-###ユーザー プロビジョニングを構成するには、次の手順に従います。
+###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
 
-1.  管理者として **[Mimecast Admin Console]** にサインオンします。
+1.  Sign on to your **Mimecast Admin Console** as administrator.
 
-2.  **[ディレクトリ] > [内部]** に移動します。
+2.  Go to **Directories \> Internal**.
 
-    ![ディレクトリ](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795003.png "ディレクトリ")
+    ![Directories](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795003.png "Directories")
 
-3.  **[新規ドメインの登録]** をクリックします。
+3.  Click **Register New Domain**.
 
-    ![新規ドメインの登録](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795004.png "新規ドメインの登録")
+    ![Register New Domain](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795004.png "Register New Domain")
 
-4.  新しいドメインを作成したら、**[新規アドレス]** をクリックします。
+4.  After your new domain has been created, click **New Address**.
 
-    ![新規アドレス](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795005.png "新規アドレス")
+    ![New Address](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795005.png "New Address")
 
-5.  新しいアドレスのダイアログで、次の手順に従います。
+5.  In the new address dialog, perform the following steps:
 
     ![Save](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795006.png "Save")
 
-    1.  該当するテキストボックスに、プロビジョニングする有効な AAD アカウントの **[メール アドレス]**、**[グローバル名]**、**[パスワード]**、**[パスワードの確認]** 属性を入力します。
-    2.  **[保存]** をクリックします。
+    1.  Type the **Email Address**, **Global Name**, **Password** and **Confirm Password** attributes of a valid AAD account you want to provision into the related textboxes.
+    2.  Click **Save**.
 
->[AZURE.NOTE]Mimecast Admin Console から提供されている他の IdeaScale ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>[AZURE.NOTE]You can use any other Mimecast Admin Console user account creation tools or APIs provided by Mimecast Admin Console to provision AAD user accounts.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
   
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Mimecast Admin Console に割り当てるには、次の手順に従います。
+###<a name="to-assign-users-to-mimecast-admin-console,-perform-the-following-steps:"></a>To assign users to Mimecast Admin Console, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Mimecast Admin Console** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Mimecast Admin Console **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795017.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-mimecast-admin-console-tutorial/IC795017.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-mimecast-admin-console-tutorial/IC767830.png "Yes")
   
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

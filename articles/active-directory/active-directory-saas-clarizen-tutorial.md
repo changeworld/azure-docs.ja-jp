@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="チュートリアル: Azure Active Directory と Clarizen の統合 | Microsoft Azure" 
-    description="Azure Active Directory で Clarizen を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
+    pageTitle="Tutorial: Azure Active Directory integration with Clarizen | Microsoft Azure" 
+    description="Learn how to use Clarizen with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,139 +11,146 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="07/11/2016" 
+    ms.date="09/29/2016" 
     ms.author="jeedes" />
 
-#チュートリアル: Azure Active Directory と Clarizen の統合
 
-このチュートリアルでは、Azure と Clarizen の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+#<a name="tutorial:-azure-active-directory-integration-with-clarizen"></a>Tutorial: Azure Active Directory integration with Clarizen
 
--   有効な Azure サブスクリプション
--   Clarizen でのシングル サインオンが有効なサブスクリプション
+The objective of this tutorial is to show the integration of Azure and Clarizen.  
+The scenario outlined in this tutorial assumes that you already have the following items:
 
-このチュートリアルを完了すると、Clarizen に割り当てた Azure AD ユーザーは、Clarizen 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
+-   A valid Azure subscription
+-   A Clarizen single sign-on enabled subscription
 
-このチュートリアルで説明するシナリオは、次の要素で構成されています。
+After completing this tutorial, the Azure AD users you have assigned to Clarizen will be able to single sign into the application at your Clarizen company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-1.  Clarizen のアプリケーション統合の有効化
-2.  シングル サインオンの構成
-3.  ユーザー プロビジョニングの構成
-4.  ユーザーの割り当て
+The scenario outlined in this tutorial consists of the following building blocks:
 
-![シナリオ](./media/active-directory-saas-clarizen-tutorial/IC784679.png "シナリオ")
-##Clarizen のアプリケーション統合の有効化
+1.  Enabling the application integration for Clarizen
+2.  Configuring single sign-on
+3.  Configuring user provisioning
+4.  Assigning users
 
-このセクションでは、Clarizen のアプリケーション統合を有効にする方法について説明します。
+![Scenario](./media/active-directory-saas-clarizen-tutorial/IC784679.png "Scenario")
+##<a name="enabling-the-application-integration-for-clarizen"></a>Enabling the application integration for Clarizen
 
-###Clarizen のアプリケーション統合を有効にするには、次の手順を実行します。
+The objective of this section is to outline how to enable the application integration for Clarizen.
 
-1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+###<a name="to-enable-the-application-integration-for-clarizen,-perform-the-following-steps:"></a>To enable the application integration for Clarizen, perform the following steps:
+
+1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
 
     ![Active Directory](./media/active-directory-saas-clarizen-tutorial/IC700993.png "Active Directory")
 
-2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+2.  From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+3.  To open the applications view, in the directory view, click **Applications** in the top menu.
 
-    ![アプリケーション](./media/active-directory-saas-clarizen-tutorial/IC700994.png "アプリケーション")
+    ![Applications](./media/active-directory-saas-clarizen-tutorial/IC700994.png "Applications")
 
-4.  ページの下部にある **[追加]** をクリックします。
+4.  Click **Add** at the bottom of the page.
 
-    ![アプリケーションの追加](./media/active-directory-saas-clarizen-tutorial/IC749321.png "アプリケーションの追加")
+    ![Add application](./media/active-directory-saas-clarizen-tutorial/IC749321.png "Add application")
 
-5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
 
-    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-clarizen-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
+    ![Add an application from gallerry](./media/active-directory-saas-clarizen-tutorial/IC749322.png "Add an application from gallerry")
 
-6.  **検索ボックス**に、「**Clarizen**」と入力します。
+6.  In the **search box**, type **Clarizen**.
 
-    ![アプリケーション ギャラリー](./media/active-directory-saas-clarizen-tutorial/IC784680.png "アプリケーション ギャラリー")
+    ![Application Gallery](./media/active-directory-saas-clarizen-tutorial/IC784680.png "Application Gallery")
 
-7.  結果ウィンドウで **[Clarizen]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+7.  In the results pane, select **Clarizen**, and then click **Complete** to add the application.
 
     ![Clarizen](./media/active-directory-saas-clarizen-tutorial/IC784681.png "Clarizen")
-##シングル サインオンの構成
+##<a name="configuring-single-sign-on"></a>Configuring single sign-on
 
-このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Clarizen に対する認証を行うことができるようにする方法を説明します。
+The objective of this section is to outline how to enable users to authenticate to Clarizen with their account in Azure AD using federation based on the SAML protocol.
 
-###シングル サインオンを構成するには、次の手順に従います。
+###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
 
-1.  Azure クラシック ポータルの **Clarizen** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+1.  In the Azure classic portal, on the **Clarizen** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-clarizen-tutorial/IC784682.png "Configure Single Sign-On")
 
-2.  **[ユーザーの Clarizen へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+2.  On the **How would you like users to sign on to Clarizen** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
 
     ![Configure Single Sign-On](./media/active-directory-saas-clarizen-tutorial/IC784683.png "Configure Single Sign-On")
 
-3.  **[Clarizen でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
+3.  On the **Configure single sign-on at Clarizen** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-clarizen-tutorial/IC784684.png "Configure Single Sign-On")
 
-4.  別の Web ブラウザー ウィンドウで、**Clarizen** 企業サイトに管理者としてログインします (例：*https://app2.clarizen.com/Clarizen/Pages/Service/Login.aspx*)。
+4.  In a different web browser window, log into your **Clarizen** company site as an administrator (e.g.: *https://app2.clarizen.com/Clarizen/Pages/Service/Login.aspx*).
 
-5.  自分のユーザー名をクリックし、**[設定]** をクリックします。
+5.  Click your user name, and then click **Settings**.
 
     ![Settings](./media/active-directory-saas-clarizen-tutorial/IC784685.png "Settings")
 
-6.  **[グローバル設定]** タブをクリックし、**[フェデレーション認証]** の横にある **[編集]** をクリックします。
+6.  Click the **Global Settings** tab, and then, next to **Federated Authentication**, click **edit**.
 
-    ![グローバル設定](./media/active-directory-saas-clarizen-tutorial/IC786906.png "グローバル設定")
+    ![Global Settings](./media/active-directory-saas-clarizen-tutorial/IC786906.png "Global Settings")
 
-7.  **[フェデレーション認証]** ダイアログで、次の手順を実行します。
+7.  On the **Federated Authentication** dialog, perform the following steps:
 
-    ![フェデレーション認証](./media/active-directory-saas-clarizen-tutorial/IC785892.png "フェデレーション認証")
+    ![Federated Authentication](./media/active-directory-saas-clarizen-tutorial/IC785892.png "Federated Authentication")
 
-    1.  **[アップロード]** をクリックして、ダウンロードした証明書をアップロードします。
-    2.  Azure クラシック ポータルの **[Clarizen でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[サインイン URL]** テキストボックスに貼り付けます。
-    3.  Azure クラシック ポータルの **[Clarizen でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[サインイン URL]** テキストボックスに貼り付けます。
-    4.  **[POST を使用]** を選択します。
-    5.  **[保存]** をクリックします。
+    1.  Click **Upload** to upload your downloaded certificate.
+    2.  In the Azure classic portal, on the **Configure single sign-on at Clarizen** dialog page, copy the **Single Sign-On Service URL** value, and then paste it into the **Sign-in URL** textbox.
+    3.  In the Azure classic portal, on the **Configure single sign-out at Clarizen** dialog page, copy the **Single Sign-Out Service URL** value, and then paste it into the **Sign-out URL** textbox.
+    4.  Select **Use POST**.
+    5.  Click **Save**.
 
-8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+8.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
 
     ![Configure Single Sign-On](./media/active-directory-saas-clarizen-tutorial/IC784688.png "Configure Single Sign-On")
-##ユーザー プロビジョニングの構成
+##<a name="configuring-user-provisioning"></a>Configuring user provisioning
 
-Azure AD ユーザーが Clarizen にログインできるようにするには、そのユーザーを Clarizen にプロビジョニングする必要があります。Clarizen の場合、プロビジョニングは手動で行います。
+In order to enable Azure AD users to log into Clarizen, they must be provisioned into Clarizen.  
+In the case of Clarizen, provisioning is a manual task.
 
-###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
+###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
 
-1.  **Clarizen** 企業サイトに管理者としてログインします。
+1.  Log in to your **Clarizen** company site as an administrator.
 
-2.  **[ユーザー]** をクリックします。
+2.  Click **People**.
 
     ![People](./media/active-directory-saas-clarizen-tutorial/IC784689.png "People")
 
-3.  **[ユーザーの招待]** をクリックします。
+3.  Click **Invite User**.
 
-    ![ユーザーの招待](./media/active-directory-saas-clarizen-tutorial/IC784690.png "ユーザーの招待")
+    ![Invite Users](./media/active-directory-saas-clarizen-tutorial/IC784690.png "Invite Users")
 
-4.  [ユーザーの招待] ダイアログ ページで、次の手順を実行します。
+4.  On the Invite People dialog page, perform the following steps:
 
-    ![ユーザーの招待](./media/active-directory-saas-clarizen-tutorial/IC784691.png "ユーザーの招待")
+    ![Invite People](./media/active-directory-saas-clarizen-tutorial/IC784691.png "Invite People")
 
-    1.  **[電子メール]** テキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの電子メール アドレスを入力します。
-    2.  **[招待]** をクリックします。
+    1.  In the **Email** textbox, type the email address of a valid Azure Active Directory account you want to provision.
+    2.  Click **Invite**.
 
-    >[AZURE.NOTE] Azure Active Directory アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
+    >[AZURE.NOTE] The Azure Active Directory account holder will receive an email and follow a link to confirm their account before it becomes active.
 
-##ユーザーの割り当て
+##<a name="assigning-users"></a>Assigning users
 
-構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
+To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
 
-###ユーザーを Clarizen に割り当てるには、次の手順を実行します。
+###<a name="to-assign-users-to-clarizen,-perform-the-following-steps:"></a>To assign users to Clarizen, perform the following steps:
 
-1.  Azure クラシック ポータルで、テスト アカウントを作成します。
+1.  In the Azure classic portal, create a test account.
 
-2.  **Clarizen** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
+2.  On the **Clarizen **application integration page, click **Assign users**.
 
-    ![ユーザーの割り当て](./media/active-directory-saas-clarizen-tutorial/IC784692.png "ユーザーの割り当て")
+    ![Assign Users](./media/active-directory-saas-clarizen-tutorial/IC784692.png "Assign Users")
 
-3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
+3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
 
     ![Yes](./media/active-directory-saas-clarizen-tutorial/IC767830.png "Yes")
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
+If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

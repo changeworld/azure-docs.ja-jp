@@ -1,203 +1,204 @@
 <properties 
-	pageTitle="リソース マネージャーを使用した HDInsight の Apache Spark クラスターへのリソースの割り当て | Microsoft Azure" 
-	description="リソース マネージャーを使用して HDInsight の Spark クラスターのパフォーマンスを向上させる方法について説明します。" 
-	services="hdinsight" 
-	documentationCenter="" 
-	authors="nitinme" 
-	manager="jhubbard" 
-	editor="cgronlun"
-	tags="azure-portal"/>
+    pageTitle="Use Resource Manager to allocate resources to the Apache Spark cluster in HDInsight| Microsoft Azure" 
+    description="Learn how to use the Resource Manager for Spark clusters on HDInsight for better performance." 
+    services="hdinsight" 
+    documentationCenter="" 
+    authors="nitinme" 
+    manager="jhubbard" 
+    editor="cgronlun"
+    tags="azure-portal"/>
 
 <tags 
-	ms.service="hdinsight" 
-	ms.workload="big-data" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="08/25/2016" 
-	ms.author="nitinme"/>
+    ms.service="hdinsight" 
+    ms.workload="big-data" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="08/25/2016" 
+    ms.author="nitinme"/>
 
 
-# HDInsight Linux での Apache Spark クラスターのリソースの管理
 
-この記事では、Ambari UI、YARN UI、Spark History Server など、Spark クラスターに関連付けられているインターフェイスにアクセスする方法を説明します。クラスターの構成をチューニングしてパフォーマンスを最適化する方法についても取り上げます。
+# <a name="manage-resources-for-the-apache-spark-cluster-on-hdinsight-linux"></a>Manage resources for the Apache Spark cluster on HDInsight Linux
 
-**前提条件:**
+In this article you will learn how to access the interfaces like Ambari UI, YARN UI, and the Spark History Server associated with your Spark cluster. You will also learn about how to tune the cluster configuration for optimal performance.
 
-次のものが必要です。
+**Prerequisites:**
 
-- Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-- HDInsight Linux での Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+You must have the following:
 
-## Ambari Web UI の起動方法
+- An Azure subscription. See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+- An Apache Spark cluster on HDInsight Linux. For instructions, see [Create Apache Spark clusters in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
+## <a name="how-do-i-launch-the-ambari-web-ui?"></a>How do I launch the Ambari Web UI?
+
+1. From the [Azure Portal](https://portal.azure.com/), from the startboard, click the tile for your Spark cluster (if you pinned it to the startboard). You can also navigate to your cluster under **Browse All** > **HDInsight Clusters**. 
  
-2. Spark クラスター ブレードで、**[ダッシュ ボード]** をクリックします。入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+2. From the Spark cluster blade, click **Dashboard**. When prompted, enter the admin credentials for the Spark cluster.
 
-	![Launch Ambari](./media/hdinsight-apache-spark-resource-manager/hdispark.cluster.launch.dashboard.png "リソース マネージャーを開始する")
+    ![Launch Ambari](./media/hdinsight-apache-spark-resource-manager/hdispark.cluster.launch.dashboard.png "Start Resource Manager")
 
-3. これで、次の図のように、Ambari Web UI が起動されます。
+3. This should launch the Ambari Web UI, as shown below.
 
-	![Ambari Web UI](./media/hdinsight-apache-spark-resource-manager/ambari-web-ui.png "Ambari Web UI")
+    ![Ambari Web UI](./media/hdinsight-apache-spark-resource-manager/ambari-web-ui.png "Ambari Web UI")   
 
-## Spark History Server の起動方法
+## <a name="how-do-i-launch-the-spark-history-server?"></a>How do I launch the Spark History Server?
 
-1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。
+1. From the [Azure Portal](https://portal.azure.com/), from the startboard, click the tile for your Spark cluster (if you pinned it to the startboard).
 
-2. クラスター ブレードの **[クイック リンク]** で、**[クラスター ダッシュボード]** をクリックします。**[クラスター ダッシュボード]** ブレードで **[Spark History Server]** をクリックします。
+2. From the cluster blade, under **Quick Links**, click **Cluster Dashboard**. In the **Cluster Dashboard** blade, click **Spark History Server**.
 
-	![Spark History Server](./media/hdinsight-apache-spark-resource-manager/launch-history-server.png "Spark History Server")
+    ![Spark History Server](./media/hdinsight-apache-spark-resource-manager/launch-history-server.png "Spark History Server")
 
-	入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+    When prompted, enter the admin credentials for the Spark cluster.
 
 
-## Yarn UI の起動方法
+## <a name="how-do-i-launch-the-yarn-ui?"></a>How do I launch the Yarn UI?
 
-Spark クラスターで現在実行されているアプリケーションを監視するには、YARN UI を使用することができます。
+You can use the YARN UI to monitor applications that are currently running on the Spark cluster. 
 
-1. クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[YARN]** をクリックします。
+1. From the cluster blade, click **Cluster Dashboard**, and then click **YARN**.
 
-	![Launch YARN UI](./media/hdinsight-apache-spark-resource-manager/launch-yarn-ui.png)
+    ![Launch YARN UI](./media/hdinsight-apache-spark-resource-manager/launch-yarn-ui.png)
 
-	>[AZURE.TIP] Ambari UI から YARN UI を起動してもかまいません。Ambari UI を起動するには、クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[HDInsight クラスター ダッシュボード]** をクリックします。Ambari UI から **[YARN]**、**[クイック リンク]** の順にクリックし、アクティブなリソース マネージャーをクリックして、**[ResourceManager UI]** をクリックします。
+    >[AZURE.TIP] Alternatively, you can also launch the YARN UI from the Ambari UI. To launch the Ambari UI, from the cluster blade, click **Cluster Dashboard**, and then click **HDInsight Cluster Dashboard**. From the Ambari UI, click **YARN**, click **Quick Links**, click the active resource manager, and then click **ResourceManager UI**.
 
-## Spark アプリケーションを実行するための最適なクラスター構成とは
+## <a name="what-is-the-optimum-cluster-configuration-to-run-spark-applications?"></a>What is the optimum cluster configuration to run Spark applications?
 
-アプリケーションの要件に応じて Spark を構成するための主要なパラメーターは、`spark.executor.instances`、`spark.executor.cores`、`spark.executor.memory` の 3 つです。Executor は、Spark アプリケーション用に起動されるプロセスです。ワーカー ノードで動作し、アプリケーションのタスクを実行する役割を担います。それぞれのクラスターで使用される Executor の既定の数とサイズは、ワーカー ノードの数とワーカー ノードのサイズに基づいて計算され、クラスターのヘッド ノード上の `spark-defaults.conf` に保存されます。
+The three key parameters that can be used for Spark configuration depending on application requirements are `spark.executor.instances`, `spark.executor.cores`, and `spark.executor.memory`. An Executor is a process launched for a Spark application. It runs on the worker node and is responsible to carry out the tasks for the application. The default number of executors and the executor sizes for each cluster is calculated based on the number of worker nodes and the worker node size. These are stored in `spark-defaults.conf` on the cluster head nodes. 
 
-3 つの構成パラメーターは、クラスター レベルで (クラスター上で動作するすべてのアプリケーションに対して) 構成できるほか、個々のアプリケーションに対して指定することもできます。
+The three configuration parameters can be configured at the cluster level (for all applications that run on the cluster) or can be specified for each individual application as well.
 
-### Ambari UI を使用したパラメーターの変更
+### <a name="change-the-parameters-using-ambari-ui"></a>Change the parameters using Ambari UI
 
-1. Ambari UI から **[Spark]**、**[Configs (構成)]** の順にクリックし、**[Custom spark-defaults]** を展開します。
+1. From the Ambari UI click **Spark**, click **Configs**, and then expand **Custom spark-defaults**.
 
-	![Set parameters using Ambari](./media/hdinsight-apache-spark-resource-manager/set-parameters-using-ambari.png)
+    ![Set parameters using Ambari](./media/hdinsight-apache-spark-resource-manager/set-parameters-using-ambari.png)
 
-2. 一連の既定値は、クラスター上で 4 つの Spark アプリケーションを同時実行することを想定して決められています。これらの値は、次に示したようにユーザー インターフェイスから変更できます。
+2. The default values are good to have 4 Spark applications run concurrently on the cluster. You can changes these values from the user interface, as shown below.
 
-	![Set parameters using Ambari](./media/hdinsight-apache-spark-resource-manager/set-executor-parameters.png)
+    ![Set parameters using Ambari](./media/hdinsight-apache-spark-resource-manager/set-executor-parameters.png)
 
-3. **[保存]** をクリックして構成の変更を保存します。変更に関係したサービスをすべて再開するよう求めるメッセージがページの上部に表示されます。**[Restart (再開)]** をクリックします。
+3. Click **Save** to save the configuration changes. At the top of the page, you will be prompted to restart all the affected services. Click **Restart**.
 
-	![Restart services](./media/hdinsight-apache-spark-resource-manager/restart-services.png)
+    ![Restart services](./media/hdinsight-apache-spark-resource-manager/restart-services.png)
 
 
-### Jupyter Notebook で実行するアプリケーションのパラメーター変更
+### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Change the parameters for an application running in Jupyter notebook
 
-Jupyter Notebook で実行しているアプリケーションについては、`%%configure` マジックを使用して構成に変更を加えることができます。そのような変更は、できればアプリケーションの冒頭で、1 つ目のコード セルを実行する前に記述してください。そうすることで Livy セッションの作成時に、確実に構成が適用されます。アプリケーションの終盤で構成の変更が生じた場合は、`-f` パラメーターを使用する必要があります。ただしその場合、アプリケーションのすべての進捗が失われます。
+For applications running in the Jupyter notebook, you can use the `%%configure` magic to make the configuration changes. Ideally, you must make such changes at the beginning of the application, before you run your first code cell. This ensures that the configuration is applied to the Livy session, when it gets created. If you want to change the configuration at a later stage in the application, you must use the `-f` parameter. However, by doing so all progress in the application will be lost.
 
-以下のスニペットは、Jupyter で実行しているアプリケーションの構成を変更する方法を示しています。
+The snippet below shows how to change the configuration for an application running in Jupyter.
 
-	%%configure 
-	{"executorMemory": "3072M", "executorCores": 4, “numExecutors”:10}
+    %%configure 
+    {"executorMemory": "3072M", "executorCores": 4, “numExecutors”:10}
 
-例の列で示されているように、構成パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。
+Configuration parameters must be passed in as a JSON string and must be on the next line after the magic, as shown in the example column. 
 
-### spark-submit を使用して送信されたアプリケーションのパラメーター変更
+### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>Change the parameters for an application submitted using spark-submit
 
-次のコマンドは、`spark-submit` を使用して送信されたバッチ アプリケーションの構成パラメーターを変更する例です。
+Following command is an example of how to change the configuration parameters for a batch application that is submitted using `spark-submit`.
 
-	spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
+    spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
 
-### cURL を使用して送信されたアプリケーションのパラメーター変更
+### <a name="change-the-parameters-for-an-application-submitted-using-curl"></a>Change the parameters for an application submitted using cURL
 
-次のコマンドは、cURL を使用して送信されたバッチ アプリケーションの構成パラメーターを変更する例です。
+Following command is an example of how to change the configuration parameters for a batch application that is submitted using using cURL.
 
-	curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
+    curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
 
-### これらのパラメーターを Spark Thrift サーバーで変更する方法
+### <a name="how-do-i-change-these-parameters-on-a-spark-thrift-server?"></a>How do I change these parameters on a Spark Thrift Server?
 
-Spark Thrift サーバーを使用すると、Spark クラスターに JDBC/ODBC でアクセスし、Spark SQL クエリを実行することができます。Power BI や Tableau といったツールは、ODBC プロトコルを使用して Spark Thrift サーバーとやり取りし、Spark アプリケーションとして Spark SQL クエリを実行します。Spark クラスターを作成すると、Spark Thrift サーバーの 2 つのインスタンスが起動されます (ヘッド ノードごとに 1 つ)。YARN UI には、各 Spark Thrift サーバーが Spark アプリケーションとして表示されます。
+Spark Thrift Server provides JDBC/ODBC access to a Spark cluster and is used to service Spark SQL queries. Tools like Power BI, Tableau etc. use ODBC protocol to communicate with Spark Thrift Server to execute Spark SQL queries as a Spark Application. When a Spark cluster is created, two instances of the Spark Thrift Server are started, one on each head node. Each Spark Thrift Server is visible as a Spark application in the YARN UI. 
 
-Spark Thrift サーバーでは、Spark の Dynamic Executor Allocation が使用されるため、`spark.executor.instances` は使用されません。代わりに、Executor 数の指定に `spark.dynamicAllocation.minExecutors` と `spark.dynamicAllocation.maxExecutors` が使用されます。Executor のサイズ変更には、構成パラメーターとして `spark.executor.cores` と `spark.executor.memory` が使用されます。これらのパラメーターは、以下のように変更できます。
+Spark Thrift Server uses Spark dynamic executor allocation and hence the `spark.executor.instances` is not used. Instead, Spark Thrift Server uses `spark.dynamicAllocation.minExecutors` and `spark.dynamicAllocation.maxExecutors` to specify the executor count. The configuration parameters `spark.executor.cores` and `spark.executor.memory` is used to modify the executor size. You can change these parameters as shown below.
 
-* `spark.dynamicAllocation.minExecutors`、`spark.dynamicAllocation.maxExecutors`、`spark.executor.memory` の各パラメーターを更新するには、**Advanced spark-thrift-sparkconf** カテゴリを展開します。
+* Expand the **Advanced spark-thrift-sparkconf** category to update the parameters `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors`, and `spark.executor.memory`.
 
-	![Configure Spark thrift server](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-1.png)
+    ![Configure Spark thrift server](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-1.png) 
 
-* `spark.executor.cores` パラメーターを更新するには、**Custom spark-thrift-sparkconf** カテゴリを展開します。
+* Expand the **Custom spark-thrift-sparkconf** category to update the parameter `spark.executor.cores`.
 
-	![Configure Spark thrift server](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-2.png)
+    ![Configure Spark thrift server](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-2.png)
 
-### Spark Thrift サーバーのドライバーのメモリを変更する方法
+### <a name="how-do-i-change-the-driver-memory-of-the-spark-thrift-server?"></a>How do I change the driver memory of the Spark Thrift Server?
 
-ヘッド ノードの RAM の合計サイズが 14 GB を超える場合、Spark Thrift サーバーのドライバーのメモリはヘッド ノードの RAM サイズの 25% に構成されます。ドライバーのメモリ構成は、以下のように Ambari UI を使用して変更できます。
+Spark Thrift Server driver memory is configured to 25% of the head node RAM size, provided the total RAM size of the head node is greater than 14GB. You can use the Ambari UI to change the driver memory configuration, as shown below.
 
-* Ambari UI から **[Spark]**、**[Configs (構成)]** の順にクリックし、**[Advanced spark-env]** を展開して、**[spark\_thrift\_cmd\_opts]** の値を指定します。
+* From the Ambari UI click **Spark**, click **Configs**, expand **Advanced spark-env**, and then provide the value for **spark_thrift_cmd_opts**.
 
-	![Configure Spark thrift server RAM](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-ram.png)
+    ![Configure Spark thrift server RAM](./media/hdinsight-apache-spark-resource-manager/spark-thrift-server-ram.png)
 
-## Spark クラスターで BI は使用しません。リソースを取り戻すにはどうすればよいですか?
+## <a name="i-do-not-use-bi-with-spark-cluster.-how-do-i-take-the-resources-back?"></a>I do not use BI with Spark cluster. How do I take the resources back?
 
-Spark の動的割り当てを使用するため、Thrift サーバーから利用できるリソースは、2 つのアプリケーション マスターのリソースだけです。これらのリソースの領域を解放するには、クラスター上で実行されている Thrift サーバー サービスを停止する必要があります。
+Since we use Spark dynamic allocation, the only resources that are consumed by thrift server are the resources for the two application masters. To reclaim these resources you must stop the Thrift Server services running on the cluster.
 
-1. Ambari UI の左ペインで **[Spark]** をクリックします。
+1. From the Ambari UI, from the left pane, click **Spark**.
 
-2. 次のページで、**[Spark Thrift Servers]** をクリックします。
+2. In the next page, click **Spark Thrift Servers**.
 
-	![Restart thrift server](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-1.png)
+    ![Restart thrift server](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-1.png)
 
-3. Spark Thrift サーバーが実行されている 2 つのヘッド ノードが表示されます。いずれかのヘッド ノードをクリックしてください。
+3. You should see the two headnodes on which the Spark Thrift Server is running. Click one of the headnodes.
 
-	![Restart thrift server](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-2.png)
+    ![Restart thrift server](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-2.png)
 
-4. そのヘッド ノードで実行されているすべてのサービスが次のページに一覧表示されます。一覧内の Spark Thrift サーバーの横にあるドロップダウン ボタンをクリックし、**[Stop (停止)]** をクリックします。
+4. The next page lists all the services running on that headnode. From the list click the drop-down button next to Spark Thrift Server, and then click **Stop**.
 
-	![Restart thrift server](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-3.png)
+    ![Restart thrift server](./media/hdinsight-apache-spark-resource-manager/restart-thrift-server-3.png)
 
-5. もう一方のヘッド ノードについても同じ手順を繰り返します。
+5. Repeat these steps on the other headnode as well.
 
 
-## Jupyter Notebook が期待どおりに実行されていません。サービスを再起動するには、どうすればよいですか?
+## <a name="my-jupyter-notebooks-are-not-running-as-expected.-how-can-i-restart-the-service?"></a>My Jupyter notebooks are not running as expected. How can I restart the service?
 
-1. 上の手順に従って、Ambari Web UI を起動します。左側のナビゲーション ウィンドウで、**[Jupyter]**、**[Service Actions]**、**[Restart All]** の順にクリックします。これで、すべてのヘッドノードで Jupyter サービスが開始されます。
+1. Launch the Ambari Web UI as shown above. From the left navigation pane, click **Jupyter**, click **Service Actions**, and then click **Restart All**. This will start the Jupyter service on all the headnodes.
 
-	![Restart Jupyter](./media/hdinsight-apache-spark-resource-manager/restart-jupyter.png "Restart Jupyter")
+    ![Restart Jupyter](./media/hdinsight-apache-spark-resource-manager/restart-jupyter.png "Restart Jupyter")
 
-	
+    
 
 
-## <a name="seealso"></a>関連項目
+## <a name="<a-name="seealso"></a>see-also"></a><a name="seealso"></a>See also
 
 
-* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
+* [Overview: Apache Spark on Azure HDInsight](hdinsight-apache-spark-overview.md)
 
-### シナリオ
+### <a name="scenarios"></a>Scenarios
 
-* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
+* [Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools](hdinsight-apache-spark-use-bi-tools.md)
 
-* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Spark with Machine Learning: Use Spark in HDInsight for analyzing building temperature using HVAC data](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
+* [Spark Streaming: Use Spark in HDInsight for building real-time streaming applications](hdinsight-apache-spark-eventhub-streaming.md)
 
-* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Website log analysis using Spark in HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
-### アプリケーションの作成と実行
+### <a name="create-and-run-applications"></a>Create and run applications
 
-* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
+* [Create a standalone application using Scala](hdinsight-apache-spark-create-standalone-application.md)
 
-* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
+* [Run jobs remotely on a Spark cluster using Livy](hdinsight-apache-spark-livy-rest-interface.md)
 
-### ツールと拡張機能
+### <a name="tools-and-extensions"></a>Tools and extensions
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
-* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [Use Zeppelin notebooks with a Spark cluster on HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
-* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+* [Kernels available for Jupyter notebook in Spark cluster for HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 
-* [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+* [Use external packages with Jupyter notebooks](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 
-* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Install Jupyter on your computer and connect to an HDInsight Spark cluster](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
-### リソースの管理
+### <a name="manage-resources"></a>Manage resources
 
-* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md)
 
 
 
@@ -210,6 +211,10 @@ Spark の動的割り当てを使用するため、Thrift サーバーから利�
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [azure-management-portal]: https://manage.windowsazure.com/
-[azure-create-storageaccount]: storage-create-storage-account.md
+[azure-create-storageaccount]: storage-create-storage-account.md 
 
-<!---HONumber=AcomDC_0914_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+
